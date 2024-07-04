@@ -7,7 +7,7 @@ description: "Explains the key concepts for Tyk Operator"
 
 ## Multi-tenancy in Tyk
 
-Tyk Dashboard is multi-tenant capable, which means you can use a single Tyk Dashboard instance to host separate [organizations]({{< ref "basic-config-and-security/security/dashboard/organisations">}}) for each team or department. Each organisation is a completely isolated unit with its own:
+Tyk Dashboard is multi-tenant capable, which means you can use a single Tyk Dashboard instance to host separate [organizations]({{< ref "basic-config-and-security/security/dashboard/organizations">}}) for each team or department. Each organization is a completely isolated unit with its own:
 
 - API Definitions
 - API Keys
@@ -25,7 +25,7 @@ This structure is ideal for businesses with a complex hierarchy, where distinct 
 OperatorContext is a set of access parameters that define:
 
 - Which Tyk Dashboard the Operator is interacting with
-- Which organisation it belongs to
+- Which organization it belongs to
 - Which user it is using
 - Which environment it is working in
 

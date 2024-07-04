@@ -28,7 +28,7 @@ spec:
     # pro - dashboard (requires a license)
     mode: pro
     # Org ID to use
-    org: *YOUR_ORGANISATION_ID*
+    org: *YOUR_ORGANIZATION_ID*
     # The authorization token this will be set in x-tyk-authorization header on the
     # client while talking to the admin api
     auth: *YOUR_API_ACCESS_KEY*
@@ -69,4 +69,4 @@ spec:
     strip_listen_path: true
 ```
 
-In this example, the `ApiDefinition` object references the `team-alpha` context, ensuring that the configuration is applied within the `alpha` organisation.
+In this example, the `ApiDefinition` object references the `team-alpha` context, ensuring that the configuration is applied within the `alpha` organization.

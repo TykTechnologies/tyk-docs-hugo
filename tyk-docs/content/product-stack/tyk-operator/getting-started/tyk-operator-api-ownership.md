@@ -19,7 +19,7 @@ Tyk Operator is designed to interact with Tyk Dashboard as a system user. For th
 - Tyk Operator needs the correct access rights to modify any APIs.
 - It must be capable of managing APIs according to the ownership rules set in Tyk Dashboard.
 
-To facilitate API ownership and ensure secure operations, Tyk Operator must be able to 'impersonate' different users for API operations. This is where `OperatorContext` comes into play. Users can define different `OperatorContext` objects that act as different agents to connect to Tyk Dashboard. Each `OperatorContext` can specify different access parameters, including the user access key and organisation it belongs to. Within `OperatorContext`, users can specify the IDs of owner users or owner user groups. All APIs managed through that `OperatorContext` will be owned by the specified users and user groups, ensuring compliance with Tyk Dashboard's API ownership model.
+To facilitate API ownership and ensure secure operations, Tyk Operator must be able to 'impersonate' different users for API operations. This is where `OperatorContext` comes into play. Users can define different `OperatorContext` objects that act as different agents to connect to Tyk Dashboard. Each `OperatorContext` can specify different access parameters, including the user access key and organization it belongs to. Within `OperatorContext`, users can specify the IDs of owner users or owner user groups. All APIs managed through that `OperatorContext` will be owned by the specified users and user groups, ensuring compliance with Tyk Dashboard's API ownership model.
 
 Here's how `OperatorContext` allows Tyk Operator to manage APIs under different ownerships:
 
@@ -38,7 +38,7 @@ spec:
     # pro - dashboard (requires a license)
     mode: pro
     # Org ID to use
-    org: *YOUR_ORGANISATION_ID*
+    org: *YOUR_ORGANIZATION_ID*
     # The authorization token this will be set in x-tyk-authorization header on the
     # client while talking to the admin api
     auth: *YOUR_API_ACCESS_KEY*

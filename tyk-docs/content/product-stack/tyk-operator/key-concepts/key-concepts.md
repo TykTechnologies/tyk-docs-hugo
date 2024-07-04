@@ -13,7 +13,7 @@ This section provides an overview of the essential terminology and concepts used
 
 Tyk Operator is a Kubernetes Controller that manages Tyk Custom Resources (CRs) such as API Definitions and Security Policies. Developers define these resources as [Custom Resource Definitions (CRDs)](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/), and Tyk Operator ensures that the desired state is reconciled with the Tyk Gateway or Dashboard. This involves creating, updating, or deleting API configurations until the target state matches the desired state.
 
-For the Tyk Dashboard, Tyk Operator functions as a system user, bound by Organisation and RBAC rules.
+For the Tyk Dashboard, Tyk Operator functions as a system user, bound by Organization and RBAC rules.
 
 During start up, Tyk Operator looks for these keys from `tyk-operator-conf` secret or from the environment variables (listed in the table below).
 
@@ -21,7 +21,7 @@ During start up, Tyk Operator looks for these keys from `tyk-operator-conf` secr
 |:-----|:-------------|
 | `TYK_MODE` | “ce” for OSS or "pro" for licensed users |
 | `TYK_URL` | URL of Tyk Gateway or Dashboard API |
-| `TYK_ORG` | Organisation ID of Operator user |
+| `TYK_ORG` | Organization ID of Operator user |
 | `TYK_AUTH` | API key of Operator user |
 
 These would be the default credentials Tyk Operator use to connect to Tyk.
