@@ -2387,6 +2387,10 @@ menu:
           path: /product-stack/tyk-gateway/release-notes/overview
           category: page
           show: True
+        - title: "Tyk Gateway v5.4"
+          path: /product-stack/tyk-gateway/release-notes/version-5.4
+          category: Page
+          show: True
         - title: "Tyk Gateway v5.3"
           path: /product-stack/tyk-gateway/release-notes/version-5.3
           category: Page
@@ -2849,6 +2853,10 @@ menu:
         - title: "Overview"
           category: Page
           path: /product-stack/tyk-dashboard/release-notes/overview
+          show: True
+        - title: "Tyk Dashboard v5.4"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-5.4
           show: True
         - title: "Tyk Dashboard v5.3"
           category: Page
@@ -3433,6 +3441,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Version 1.10.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.10.0
+            category: Page
+            show: True
           - title: "Version 1.9.0"
             path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.9.0
             category: Page
@@ -3569,6 +3581,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "MDCB v2.6"
+          path: /product-stack/tyk-enterprise-mdcb/release-notes/version-2.6
+          category: Page
+          show: True
         - title: "MDCB v2.5"
           path: /product-stack/tyk-enterprise-mdcb/release-notes/version-2.5
           category: Page
@@ -3736,6 +3752,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Pump v1.10"
+            path: /product-stack/tyk-pump/release-notes/pump-1.10
+            category: Page
+            show: True
           - title: "Pump v1.9"
             path: /product-stack/tyk-pump/release-notes/pump-1.9
             category: Page
@@ -3821,6 +3841,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Tyk Operator v0.18"
+            path: /product-stack/tyk-operator/release-notes/operator-0.18
+            category: Page
+            show: False
           - title: "Tyk Operator v0.17"
             path: /product-stack/tyk-operator/release-notes/operator-0.17
             category: Page
@@ -3845,10 +3869,10 @@ menu:
         path: /product-stack/tyk-streaming/key-concepts
         category: Page
         show: True
-      - title: "Getting Started"
+      - title: "Quick Start"
         path: /product-stack/tyk-streaming/getting-started
         category: Page
-        show: True
+        show: false
       - title: "Configuration"
         category: Directory
         show: True
@@ -4025,12 +4049,28 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/mutation
             category: Page
             show: True
+          - title: "Noop"
+            path: /product-stack/tyk-streaming/configuration/processors/noop
+            category: Page
+            show: True
+          - title: "Parse Log"
+            path: /product-stack/tyk-streaming/configuration/processors/parse-log
+            category: Page
+            show: True
+          - title: "Processors"
+            path: /product-stack/tyk-streaming/configuration/processors/processors
+            category: Page
+            show: True
           - title: "Protobuf"
             path: /product-stack/tyk-streaming/configuration/processors/protobuf
             category: Page
             show: True
           - title: "Redis"
             path: /product-stack/tyk-streaming/configuration/processors/redis
+            category: Page
+            show: True
+          - title: "Retry"
+            path: /product-stack/tyk-streaming/configuration/processors/retry
             category: Page
             show: True
           - title: "Schema Registry Decode"
@@ -4045,8 +4085,44 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Error Handling"
+            path: /product-stack/tyk-streaming/configuration/common-configuration/error-handling
+            category: Page
+            show: True
+          - title: "Field Paths"
+            path: /product-stack/tyk-streaming/configuration/common-configuration/field-paths
+            category: Page
+            show: True
           - title: "Interpolation"
             path: /product-stack/tyk-streaming/configuration/common-configuration/interpolation
+            category: Page
+            show: True
+      - title: "Guides"
+        category: Directory
+        show: True
+        menu:
+        - title: "Bloblang"
+          category: Directory
+          show: True
+          menu:
+          - title: "Overview"
+            path: "/product-stack/tyk-streaming/guides/bloblang/overview"
+            category: Page
+            show: True
+          - title: "Advanced"
+            path: "/product-stack/tyk-streaming/guides/bloblang/advanced"
+            category: Page
+            show: True
+          - title: "Arithmetic"
+            path: "/product-stack/tyk-streaming/guides/bloblang/arithmetic"
+            category: Page
+            show: True
+          - title: "Functions"
+            path: "/product-stack/tyk-streaming/guides/bloblang/functions"
+            category: Page
+            show: True
+          - title: "Methods"
+            path: "/product-stack/tyk-streaming/guides/bloblang/methods"
             category: Page
             show: True
       - title: "Deployment Considerations"
@@ -4066,13 +4142,61 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        path: /tyk-sync
+        path: /product-stack/tyk-sync/overview
         category: Page
         show: True
+      - title: "Installing and running Tyk Sync"
+        path: /product-stack/tyk-sync/installing-tyk-sync
+        category: Page
+        show: True
+      - title: "Tutorials"
+        category: Directory
+        show: True
+        menu:
+        - title: "Keeping and updating API Definitions locally"
+          path: /product-stack/tyk-sync/tutorials/tutorial-update-api-configurations
+          category: Page
+          show: True
+        - title: "Synchronising API configurations with GitHub Actions"
+          path: /product-stack/tyk-sync/tutorials/tutorial-synchronise-api-configurations
+          category: Page
+          show: True
+        - title: "Backing up API configurations with Github Actions"
+          path: /product-stack/tyk-sync/tutorials/tutorial-backup-api-configurations
+          category: Page
+          show: True
+      - title: "Commands"
+        category: Directory
+        show: True
+        menu: 
+        - title: "Dump"
+          path: /product-stack/tyk-sync/commands/sync-dump
+          category: Page
+          show: True
+        - title: "Examples"
+          path: /product-stack/tyk-sync/commands/sync-examples
+          category: Page
+          show: True
+        - title: "Publish"
+          path: /product-stack/tyk-sync/commands/sync-publish
+          category: Page
+          show: True
+        - title: "Sync"
+          path: /product-stack/tyk-sync/commands/sync-sync
+          category: Page
+          show: True
+        - title: "Update"
+          path: /product-stack/tyk-sync/commands/sync-update
+          category: Page
+          show: True
       - title: "Release notes"
         category: Directory
         show: True
         menu:
+          - title: "Tyk Sync v1.5"
+            path: /product-stack/tyk-sync/release-notes/sync-1.5
+            category: Page
+            show: False
           - title: "Tyk Sync v1.4"
             path: /product-stack/tyk-sync/release-notes/sync-1.4
             category: Page
@@ -4141,6 +4265,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Tyk Charts 1.5"
+          path: /product-stack/tyk-charts/release-notes/version-1.5
+          category: Page
+          show: False
         - title: "Tyk Charts 1.4"
           path: /product-stack/tyk-charts/release-notes/version-1.4
           category: Page

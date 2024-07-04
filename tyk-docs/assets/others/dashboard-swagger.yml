@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Tyk Dashboard API
-  version: 5.3.0
+  version: 5.4.0
   description: |-
     ## <a name="introduction"></a> Introduction
 
@@ -60,6 +60,10 @@ tags:
     description: Organisations Management
   - name: System
     description: System API
+  - name: Assets
+    description: Assets management
+  - name: Data Graph APIs
+    description: Data Graph Import APIs
 paths:
   /api/portal/policies/:
     get:
@@ -294,10 +298,23 @@ paths:
           description: Query string for search/filtering.
         - name: sort
           in: query
+          description: Specifies the sort order of the returned results.
           required: false
           schema:
             type: string
-          description: Sorting criteria.
+            oneOf:
+              - enum: ['name']
+                description: 'Sort by name in ascending order'
+              - enum: ['-name']
+                description: 'Sort by name in descending order'
+              - enum: ['updated_at']
+                description: 'Sort by updated_at in ascending order'
+              - enum: ['-updated_at']
+                description: 'Sort by updated_at in descending order'
+              - enum: ['created_at']
+                description: 'Sort by created_at in ascending order'
+              - enum: ['-created_at']
+                description: 'Sort by created_at in descending order'
         - name: category
           in: query
           required: false
@@ -712,6 +729,180 @@ paths:
               example:
                 status: "error"
                 message: "Malformed API data"
+  /api/apis/oas/dry-run:
+    post:
+      description: |-
+        Generate a Tyk OAS API definition without saving it to the Dashboard database.
+        This endpoint is used to produce a Tyk OAS API definition without creating the API proxy itself. This provides a dry run functionality for Tyk OAS API creation, showing what would be created in the Dashboard given the set of inputs provided.
+      tags:
+        - OAS APIs
+      operationId: dryRunApiOAS
+      parameters:
+        - $ref: '#/components/parameters/UpstreamURL'
+        - $ref: '#/components/parameters/ListenPath'
+        - $ref: '#/components/parameters/CustomDomain'
+        - $ref: '#/components/parameters/AllowList'
+        - $ref: '#/components/parameters/ValidateRequest'
+        - $ref: '#/components/parameters/MockResponse'
+        - $ref: '#/components/parameters/Authentication'
+        - name: templateID
+          in: query
+          required: false
+          schema:
+            type: string
+          description: The asset ID of template to apply while importing an OAS API.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DryRunRequest"
+      responses:
+        '200':
+          description:  Successfully generated a Tyk OAS API definition from the provided input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TykOasApiDefinition"
+              examples:
+                example1:
+                  summary: Example of dry run providing only an OpenAPI document
+                  value:
+                    components:
+                      securitySchemes:
+                        apiKey:
+                          scheme: basic
+                          type: http
+                    info:
+                      description: This is a slimmed down single path version of the Petstore definition.
+                      title: Single Path
+                      version: '1.0.0'
+                    openapi: '3.0.0'
+                    paths:
+                      /pet/{id}:
+                        get:
+                          description: This operation will find a pet in the database.
+                          operationId: pet/{id}GET
+                          responses:
+                            '400':
+                              description: Invalid ID provided
+                            '404':
+                              description: Pet not found
+                          security: [ ]
+                          summary: Find a pet
+                          tags:
+                            - pet
+                        parameters:
+                          - in: path
+                            name: id
+                            required: true
+                            schema:
+                              type: integer
+                        put:
+                          description: This operation will update a pet in the database.
+                          operationId: pet/{id}PUT
+                          responses:
+                            '400':
+                              description: Invalid ID provided
+                            '404':
+                              description: Pet not found
+                            '409':
+                              description: Conflict, another pet with the same ID exists
+                          security:
+                            - apiKey: [ ]
+                          summary: Update a pet
+                          tags:
+                            - pet
+                    servers:
+                      - url: https://httpbin.org
+                    x-tyk-api-gateway:
+                      info:
+                        name: Single Path
+                        state:
+                          active: true
+                      upstream:
+                        url: https://httpbin.org
+                      server:
+                        listenPath:
+                          value: /
+                          strip: true
+                example2:
+                  summary: Example of dry run updating an existing Tyk OAS API Definition with the provided OpenAPI document
+                  value:
+                    components:
+                      securitySchemes:
+                        apiKey:
+                          scheme: basic
+                          type: http
+                    info:
+                      description: This is a slimmed down single path version of the Petstore definition.
+                      title: Single Path
+                      version: '1.0.0'
+                    openapi: '3.0.0'
+                    paths:
+                      /pet/{id}:
+                        get:
+                          description: This operation will find a pet in the database.
+                          operationId: pet/{id}GET
+                          responses:
+                            '400':
+                              description: Invalid ID provided
+                            '404':
+                              description: Pet not found
+                          security: [ ]
+                          summary: Find a pet
+                          tags:
+                            - pet
+                        parameters:
+                          - in: path
+                            name: id
+                            required: true
+                            schema:
+                              type: integer
+                        put:
+                          description: This operation will update a pet in the database.
+                          operationId: pet/{id}PUT
+                          responses:
+                            '400':
+                              description: Invalid id value
+                          security:
+                            - apiKey: [ ]
+                          summary: Update a pet
+                          tags:
+                            - pet
+                    servers:
+                      - url: https://httpbin.org
+                    x-tyk-api-gateway:
+                      info:
+                        id: 5616cd9b49bc465c6c7d27dd9195b20b
+                        dbId: 6646094a5f4a55451a9fa1ba
+                        orgId: 6645e9915f4a557b29654b9a
+                        name: Single Path
+                        state:
+                          active: true
+                      upstream:
+                        url: https://httpbin.org
+                      server:
+                        listenPath:
+                          value: /
+                          strip: true
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/apiStatusMessage"
+              example:
+                status: "error"
+                message: "Bad request"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/apiStatusMessage"
+              example:
+                status: "error"
+                message: "Internal server error"
   /api/apis/oas/{apiID}:
     parameters:
       - description: The API ID
@@ -2212,6 +2403,95 @@ paths:
                 Status: OK
                 Message: User created
                 Meta: ''
+  /api/users/search:
+    get:
+      summary: Retrieve user search results
+      deprecated: true
+      description: |
+        This endpoint allows you to search for users by providing their email address as a query parameter.
+        The endpoint was deprecated in favour of its POST alternative to avoid leaking sensitive information in the URL.
+      parameters:
+        - name: q
+          in: query
+          description: Query term used to search for users (email address)
+          required: true
+          schema:
+            type: string
+          example: "user"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                users:
+                  - api_model: { }
+                    id: "65e9a499b1f93be3d4b531fb"
+                    first_name: "John"
+                    last_name: "Smith"
+                    email_address: "user1@tyk.io"
+                    org_id: "65e9a499b1f93be3d4b531ea"
+                    active: true
+                    access_key: "e4800a05614848994429f83d410b549b"
+                    user_permissions:
+                      IsAdmin: "admin"
+                    group_id: ""
+                    password_max_days: 0
+                    password_updated: "2024-03-07T13:27:21.354+02:00"
+                    last_login_date: "0001-01-01T01:44:24+01:44"
+                    created_at: "2024-03-07T13:27:21.354+02:00"
+                pages: 1
+        '404':
+          description: Error response
+          content:
+            application/json:
+              example:
+                status: "Error"
+                message: "Could not search users"
+    post:
+      summary: Retrieve user search results
+      description: |
+        This endpoint allows you to search for users by providing their email address in the request payload.
+      requestBody:
+        description: User search criteria
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSearchCriteria'
+            example:
+              filters:
+                query: "user"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                users:
+                  - api_model: { }
+                    id: "65e9a499b1f93be3d4b531fb"
+                    first_name: "John"
+                    last_name: "Smith"
+                    email_address: "user1@tyk.io"
+                    org_id: "65e9a499b1f93be3d4b531ea"
+                    active: true
+                    access_key: "e4800a05614848994429f83d410b549b"
+                    user_permissions:
+                      IsAdmin: "admin"
+                    group_id: ""
+                    password_max_days: 0
+                    password_updated: "2024-03-07T13:27:21.354+02:00"
+                    last_login_date: "0001-01-01T01:44:24+01:44"
+                    created_at: "2024-03-07T13:27:21.354+02:00"
+                pages: 1
+        '404':
+          description: Error response
+          content:
+            application/json:
+              example:
+                status: "Error"
+                message: "Could not search users"
 
   /api/users/{USER_ID}:
     get:
@@ -2363,7 +2643,22 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/NewDataSource"
+              oneOf:
+                - $ref: "#/components/schemas/NewDataSource"
+                - $ref: "#/components/schemas/ImportOrPatchFromURL"
+          application/vnd.tyk.udg.v2.openapi:
+            schema:
+              oneOf:
+                - $ref: "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.0/schema.json"
+                - $ref: "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.0/schema.yaml"
+          application/vnd.tyk.udg.v2.asyncapi:
+            schema:
+              oneOf:
+                - $ref: "https://raw.githubusercontent.com/asyncapi/spec-json-schemas/master/schemas/2.0.0.json"
+                - $ref: "https://raw.githubusercontent.com/asyncapi/spec-json-schemas/master/schemas/2.1.0.json"
+                - $ref: "https://raw.githubusercontent.com/asyncapi/spec-json-schemas/master/schemas/2.2.0.json"
+                - $ref: "https://raw.githubusercontent.com/asyncapi/spec-json-schemas/master/schemas/2.3.0.json"
+                - $ref: "https://raw.githubusercontent.com/asyncapi/spec-json-schemas/master/schemas/2.4.0.json"
       responses:
         '200':
           description: A new data source imported
@@ -2517,6 +2812,13 @@ paths:
           schema:
             type: boolean
             default: false
+        - name: readme
+          in: query
+          description: If set to true, the response will contain the content of the Readme file for the specified example, the readme content will be present as the `readme` field.
+          required: false
+          schema:
+            type: boolean
+            default: false
       responses:
         '200':
           description: Details on the fetched example API definition.
@@ -2616,6 +2918,8 @@ paths:
                 message: Stats not found
   /api/assets:
     get:
+      tags:
+        - Assets
       summary: Retrieve list of assets
       description: Retrieves all types of assets with optional kind filter.
       parameters:
@@ -2657,6 +2961,8 @@ paths:
                 code: 500
                 message: something went wrong
     post:
+      tags:
+        - Assets
       summary: Create an asset
       description: Create a new asset.
       requestBody:
@@ -2697,6 +3003,8 @@ paths:
 
   /api/assets/{assetID}:
     get:
+      tags:
+        - Assets
       summary: Retrieve an asset.
       description: Retrieve an asset by ID.
       parameters:
@@ -2737,6 +3045,8 @@ paths:
                 code: 500
                 message: "error fetching asset: 'my-custom-asset'"
     put:
+      tags:
+        - Assets
       summary: Update an asset by ID.
       description: Update an existing asset.
       parameters:
@@ -2816,6 +3126,8 @@ paths:
                 code: 500
                 message: something went wrong
     delete:
+      tags:
+        - Assets
       summary: Delete an asset by ID.
       description: Remove an asset ID.
       parameters:
@@ -2908,6 +3220,10 @@ components:
           example: "5.0"
         apiDefinition:
           $ref: '#/components/schemas/APIDefinition'
+        readme:
+          type: string
+          description: Readme.md content (markdown) of the example.
+          example: "# Sample App\n\nThis is a sample app"
 
     APIDefinition:
       properties:
@@ -3086,7 +3402,7 @@ components:
           type: number
           x-go-name: HmacAllowedClockSkew
         id:
-          $ref: '#/components/schemas/ObjectId'
+          $ref: '#/components/schemas/ObjectID'
         internal:
           type: boolean
           x-go-name: Internal
@@ -3300,7 +3616,7 @@ components:
       type: object
       x-go-package: github.com/TykTechnologies/tyk/apidef
     APILimit:
-      description: APILimit stores quota and rate limit on ACL level (per API)
+      title: APILimit stores quota and rate limit on ACL level (per API)
       properties:
         per:
           format: double
@@ -3337,6 +3653,11 @@ components:
           format: int64
           type: integer
           x-go-name: ThrottleRetryLimit
+        smoothing:
+          type: object
+          $ref: '#/components/schemas/RateLimitSmoothing'
+          description: Smoothing contains rate limit smoothing settings.
+          x-go-name: Smoothing
       type: object
       x-go-package: github.com/TykTechnologies/tyk/user
     AccessDefinition:
@@ -3872,10 +4193,10 @@ components:
           x-go-name: Issuer
       type: object
       x-go-package: github.com/TykTechnologies/tyk/apidef
-    ObjectId:
+    ObjectID:
       description: 'http://www.mongodb.org/display/DOCS/Object+IDs'
       title: >-
-        ObjectId is a unique ID identifying a BSON value. It must be exactly 12
+        ObjectID is a unique ID identifying a BSON value. It must be exactly 12
         bytes
 
         long. MongoDB objects by default have such a property set in their "_id"
@@ -3898,9 +4219,9 @@ components:
     Policy:
       properties:
         _id:
-          $ref: '#/components/schemas/ObjectId'
+          $ref: '#/components/schemas/ObjectID'
           type: object
-          x-go-name: ID
+          x-go-name: MID
         id:
           type: string
           x-go-name: ID
@@ -3937,9 +4258,10 @@ components:
           type: number
           x-go-name: MaxQueryDepth
         access_rights:
-          $ref: '#/components/schemas/AccessDefinition'
           type: object
           x-go-name: AccessRights
+          additionalProperties:
+              $ref: '#/components/schemas/AccessDefinition'
         hmac_enabled:
           type: boolean
           x-go-name: HMACEnabled
@@ -3968,12 +4290,18 @@ components:
         last_updated:
           type: string
           x-go-name: LastUpdates
+        smoothing:
+          type: object
+          $ref: '#/components/schemas/RateLimitSmoothing'
+          description: Smoothing contains rate limit smoothing settings.
+          x-go-name: Smoothing
         meta_data:
           type: object
           x-go-name: MetaData
         graphql_access_rights:
           $ref: '#/components/schemas/GraphAccessDefinition'
       type: object
+      title: Policy represents a user policy
       x-go-package: github.com/TykTechnologies/tyk/user
     PolicyPartitions:
       properties:
@@ -3994,6 +4322,103 @@ components:
           x-go-name: PerAPI
       type: object
       x-go-package: github.com/TykTechnologies/tyk/user
+    RateLimitSmoothing:
+      properties:
+        delay:
+          type: integer
+          format: int64
+          description: Delay is a hold-off between smoothing events and controls how frequently the current allowance will step up or down (in seconds).
+          minimum: 1
+          x-go-name: Delay
+        enabled:
+          type: boolean
+          description: Enabled indicates if rate limit smoothing is active.
+          x-go-name: Enabled
+        step:
+          type: integer
+          format: int64
+          description: Step is the increment by which the current allowance will be increased or decreased each time a smoothing event is emitted.
+          minimum: 1
+          x-go-name: Step
+        threshold:
+          type: integer
+          format: int64
+          description: Threshold is the initial rate limit beyond which smoothing will be applied. It is a count of requests during the `per` interval and should be less than the maximum configured `rate`.
+          minimum: 1
+          x-go-name: Threshold
+        trigger:
+          type: number
+          format: double
+          description: Trigger is a fraction (typically in the range 0.1-1.0) of the step at which point a smoothing event will be emitted as the request rate approaches the current allowance.
+          minimum: 0
+          exclusiveMinimum: true
+          multipleOf: 0.01
+          x-go-name: Trigger
+      title:  RateLimitSmoothing holds the rate smoothing configuration.
+      description: |-
+        Rate Limit Smoothing is a mechanism to dynamically adjust the request rate
+        limits based on the current traffic patterns. It helps in managing request
+        spikes by gradually increasing or decreasing the rate limit instead of making
+        abrupt changes or blocking requests excessively.
+    
+        Once the rate limit smoothing triggers an allowance change, one of the
+        following events is emitted:
+    
+        - `RateLimitSmoothingUp` when the allowance increases
+        - `RateLimitSmoothingDown` when the allowance decreases
+    
+        Events are emitted based on the configuration:
+    
+        - `enabled` (boolean) to enable or disable rate limit smoothing
+        - `threshold` after which to apply smoothing (minimum rate for window)
+        - `trigger` configures at which fraction of a step a smoothing event is emitted
+        - `step` is the value by which the rate allowance will get adjusted
+        - `delay` is a hold-off in seconds providing a minimum period between rate allowance adjustments
+    
+        To determine if the request rate is growing and needs to be smoothed, the
+        `step * trigger` value is subtracted from the request allowance and, if
+        the request rate goes above that, then a RateLimitSmoothingUp event is
+        emitted and the rate allowance is increased by `step`.
+    
+        Once the request allowance has been increased above the `threshold`, Tyk
+        will start to check for decreasing request rate. When the request rate
+        drops `step * (1 + trigger)` below the request allowance, a
+        `RateLimitSmoothingDown` event is emitted and the rate allowance is
+        decreased by `step`.
+    
+        After the request allowance has been adjusted (up or down), the request
+        rate will be checked again over the next `delay` seconds and, if
+        required, further adjustment made to the rate allowance after the
+        hold-off.
+    
+        For any allowance, events are emitted based on the following calculations:
+    
+         - When the request rate rises above `allowance - (step * trigger)`,
+          a RateLimitSmoothingUp event is emitted and allowance increases by `step`.
+         - When the request rate falls below `allowance - (step + step * trigger)`,
+          a RateLimitSmoothingDown event is emitted and allowance decreases by `step`.
+    
+        Example: Threshold: 400, Request allowance: 600, Current rate: 500, Step: 100, Trigger: 0.5.
+    
+        To trigger a RateLimitSmoothingUp event, the request rate must exceed:
+    
+         - Calculation: Allowance - (Step * Trigger).
+         - Example: 600 - (100 * 0.5) = `550`.
+    
+        Exceeding a request rate of `550` will increase the allowance to 700 (Allowance + Step).
+    
+        To trigger a RateLimitSmoothingDown event, the request rate must fall below:
+    
+         - Calculation: Allowance - (Step + (Step * Trigger)).
+         - Example: 600 - (100 + (100 * 0.5)) = 450.
+    
+        As the request rate falls below 450, that will decrease the allowance to 500 (Allowance - Step).
+    
+        The request allowance will be smoothed between `threshold`, and the
+        defined `rate` limit (maximum). The request allowance will be updated
+        internally every `delay` seconds.
+      type: object
+      x-go-package: github.com/TykTechnologies/tyk/apidef
     Regexp:
       description: Regexp is a wrapper around regexp.Regexp but with caching
       properties:
@@ -4260,6 +4685,11 @@ components:
           format: int64
           type: integer
           x-go-name: SessionLifetime
+        smoothing:
+          type: object
+          $ref: '#/components/schemas/RateLimitSmoothing'
+          description: Smoothing contains rate limit smoothing settings.
+          x-go-name: Smoothing
         throttle_interval:
           format: double
           type: number
@@ -4385,6 +4815,19 @@ components:
           x-go-name: Triggers
       type: object
       x-go-package: github.com/TykTechnologies/tyk/apidef
+    UserSearchCriteria:
+      type: object
+      properties:
+        filters:
+          type: object
+          properties:
+            query:
+              type: string
+              description: Query term used to search for users (email address)
+          required:
+            - query
+      required:
+        - filters
     ValidatePathMeta:
       properties:
         error_response_code:
@@ -4691,6 +5134,55 @@ components:
           description: The URL from which to import the OpenAPI document.
       required:
         - url
+    XTykApiGateway:
+      type: object
+      properties:
+        x-tyk-api-gateway:
+          type: object
+          properties:
+            info:
+              type: object
+              properties:
+                id:
+                  type: string
+                dbId:
+                  type: string
+                orgId:
+                  type: string
+                name:
+                  type: string
+                state:
+                  type: object
+                  properties:
+                    active:
+                      type: boolean
+            upstream:
+              type: object
+              properties:
+                url:
+                  type: string
+            server:
+              type: object
+              properties:
+                listenPath:
+                  type: object
+                  properties:
+                    value:
+                      type: string
+                    strip:
+                      type: boolean
+    TykOasApiDefinition:
+        allOf:
+          - $ref: "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.0/schema.json"
+          - $ref: "#/components/schemas/XTykApiGateway"
+    DryRunRequest:
+      type: object
+      properties:
+        oas:
+          $ref: "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.0/schema.json"
+        tyk_oas:
+          $ref: "#/components/schemas/TykOasApiDefinition"
+
     APIAccessManagementPayload:
         description: APIAccessManagementPayload represents two lists containing users and user groups that have access to an API
         properties:

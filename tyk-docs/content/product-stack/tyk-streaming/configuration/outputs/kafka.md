@@ -4,7 +4,7 @@ description: Explains an overview of configuring Kafka output
 tags: [ "Tyk Streams", "Stream Outputs", "Outputs", "Kafka" ]
 ---
 
-The kafka output type writes a batch of messages to Kafka brokers and waits for acknowledgement before propagating it back to the input.
+The kafka output type writes a batch of messages to Kafka brokers and waits for acknowledgment before propagating it back to the input.
 
 ## Common
 
@@ -87,7 +87,7 @@ output:
       max_elapsed_time: 30s
 ```
 
-The config field `ack_replicas` determines whether we wait for acknowledgement from all replicas or just a single broker.
+The config field `ack_replicas` determines whether we wait for acknowledgment from all replicas or just a single broker.
 
 <!-- Add links to bloblang queries : Both the `key` and `topic` fields can be dynamically set using function interpolations described [here](/docs/configuration/interpolation#bloblang-queries). -->
 
@@ -501,7 +501,7 @@ Default: `[]`
 
 <!-- TODO: Add bloblang mapping link -->
 
-EXPERIMENTAL: A Bloblang mapping used to inject an object containing tracing propagation information into outbound messages. The specification of the injected fields will match the format used by the service wide tracer.
+EXPERIMENTAL: A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mapping used to inject an object containing tracing propagation information into outbound messages. The specification of the injected fields will match the format used by the service wide tracer.
 
 
 Type: `string`  
@@ -625,8 +625,7 @@ period: 500ms
 
 ### batching.check
 
-<!-- TODO: Add bloblang query link -->
-A Bloblang query that should return a boolean value indicating whether a message should end a batch.
+A [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) query that should return a boolean value indicating whether a message should end a batch.
 
 
 Type: `string`  

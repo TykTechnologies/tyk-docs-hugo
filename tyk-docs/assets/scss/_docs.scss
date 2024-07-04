@@ -18,7 +18,7 @@
   border-radius: 20px;
   width: 300px;
   min-width: 200px;
-  height: 180px;
+  min-height: 160px;
   overflow: hidden;
   padding: 25px;
   padding-top: 40px;
@@ -33,6 +33,12 @@
 
 .badge p {
   font-size: 14px;
+}
+
+.badge center p {
+  text-wrap: balance;
+  font-weight: 500;
+  line-height: 1.4em;
 }
 
 .badge p strong {
@@ -52,8 +58,8 @@
   margin: 0 !important;
   height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
   align-items: center;
   text-align: center;
 }
@@ -82,7 +88,7 @@
   position: absolute;
   left: 50%;
   top: 0px;
-  width: 116px;
+  width: 130px;
   border-radius: 0 0 18px 18px;
   text-align: center;
   color: white;
@@ -90,6 +96,7 @@
   padding: 4px;
   transform: translateX(-50%);
   background-color: $brandpurple-dark;
+  justify-content: center;
 }
 
 .badge .nav.read {
@@ -176,6 +183,7 @@
   padding-top: 0 !important;
   margin-top: 10px !important;
   margin-bottom: 10px !important;
+  line-height: 22px;
 }
 
 .badge h1 a,
@@ -196,6 +204,10 @@
 .grid .badge {
   width: 98%;
   max-width: 300px;
+  white-space: normal;
+  @media (max-width: 555px) {
+  max-width: 100%;
+  }
 }
 
 .grid.mid .badge {
@@ -524,11 +536,22 @@ iframe {
   margin-top: 10px;
   border-top: 1px solid rgba(122, 121, 161, 0.4);
   display: none;
+
 }
 
 .hasSidebar .docs-navigation {
   display: block;
-
+  @media (max-width: 1024px) {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+  #previousArticle, #nextArticle{
+    @media (max-width: 1024px) {
+      max-width: 160px;
+      margin: auto;
+    }
+  }
   @include breakpoint(xlarge) {
     background: url("../img/nav-center.png") 50% center no-repeat;
     background-size: 20%;

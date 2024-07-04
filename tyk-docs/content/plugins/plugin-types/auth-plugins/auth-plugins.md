@@ -20,7 +20,7 @@ See the supported languages tab for custom authentication plugin examples in a L
 - All Rich Plugins (gRPC, Python, Lua)
 - GoLang
 
-A very important thing to understand when using custom authentication plugins is that Tyk will continue to perform session authentication and authorisation using the information returned by your plugin.  Tyk will cache this Session information.  **This is necessary in order to do things like rate limiting, access control, quotas, throttling, etc.**
+A very important thing to understand when using custom authentication plugins is that Tyk will continue to perform session authentication and authorization using the information returned by your plugin.  Tyk will cache this Session information.  **This is necessary in order to do things like rate limiting, access control, quotas, throttling, etc.**
 
 Tyk will try to be clever about what to cache, but we need to help it. There are two ways to do that, with and without the `ID Extractor`.
 

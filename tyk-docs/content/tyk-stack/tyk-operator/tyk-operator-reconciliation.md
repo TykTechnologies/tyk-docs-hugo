@@ -39,7 +39,7 @@ Tyk Operator will compare desired state of the Kubernetes object with the observ
 - **DELETE** - an object is deleted in Kubernetes but exists in Tyk
 
 ### Drift Detection
-If human operators or any other system delete or modify ApiDefinition from Tyk Gateway or Dashboard, Tyk Operator will restore the desired state back to Tyk during reconciliation. This is called Drift Detection. It can protect your systems from unauthorised or accidental modifications. It is a best practice to limit user access rights on production environment to read-only in order to prevent accidental updates through API Manager directly.
+If human operators or any other system delete or modify ApiDefinition from Tyk Gateway or Dashboard, Tyk Operator will restore the desired state back to Tyk during reconciliation. This is called Drift Detection. It can protect your systems from unauthorized or accidental modifications. It is a best practice to limit user access rights on production environment to read-only in order to prevent accidental updates through API Manager directly.
 
 ### Start using Tyk Operator
 If you are already running Tyk for your APIs, you can convert existing APIs and Policies into CRDs and let Tyk Operator manages the state of it going forward. Check out our [Migration Guide]({{< ref "tyk-stack/tyk-operator/migration" >}}).

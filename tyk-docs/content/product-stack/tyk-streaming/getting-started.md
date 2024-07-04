@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Tyk Streams Quick Start
 description: Guide for how to quickly get started using Tyk Streaming
 tags: [ "streaming", "getting started" ]
 ---
@@ -48,10 +48,20 @@ Once downloaded, create and save a *.env* file with your Tyk Dashboard license k
 
 ```env
 DASH_LICENSE=<paste_your_license_here>
-GATEWAY_VERSION="v5.4.0-alpha5"
-DASHBOARD_VERSION="s5.4.0-alpha1"
+GATEWAY_VERSION="v5.5.0-alpha2"
+DASHBOARD_VERSION="s5.5.0-alpha1"
 PORTAL_VERSION="v1.10.0-alpha2"
 ```
+
+Additionally add the following line to `confs/tyk.env`:
+```env
+ TYK_GW_LABS='{"streaming":{"enabled": true}}'
+```
+And similar to `confs/tyk_analytics.env`:
+```env
+ TYK_DB_LABS='{"streaming":{"enabled": true}}'
+```
+
 
 ### Start Demo
 
@@ -117,7 +127,7 @@ wscat -c ws://localhost:8080/<listen-path>/subscribe
 
 2. Post a message to the `/post` endpoint using curl:
 
-```bash
+```curl
 curl -X POST -d '{"message":"Hello, Tyk Streams!"}' http://localhost:8080/<listen-path>/post
 ```
 

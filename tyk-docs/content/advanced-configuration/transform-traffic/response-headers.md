@@ -29,7 +29,7 @@ The response header transform allows you to add security headers to the response
 
 #### Adding metadata to response headers
 
-Adding metadata to response headers can be useful for tracking and analysing API usage, as well as for providing additional information to clients. For example, you may want to add a header that indicates the version of the API being used or the time taken to process the request.
+Adding metadata to response headers can be useful for tracking and analyzing API usage, as well as for providing additional information to clients. For example, you may want to add a header that indicates the version of the API being used or the time taken to process the request.
 
 #### Modifying response headers for dynamic performance optimisation
 

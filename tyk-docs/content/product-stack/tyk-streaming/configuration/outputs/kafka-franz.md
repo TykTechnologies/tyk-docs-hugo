@@ -64,7 +64,7 @@ output:
     sasl: [] # No default (optional)
 ```
 
-Writes a batch of messages to Kafka brokers and waits for acknowledgement before propagating it back to the input.
+Writes a batch of messages to Kafka brokers and waits for acknowledgment before propagating it back to the input.
 
 This output often out-performs the traditional `kafka` output as well as providing more useful logs and error messages.
 
@@ -286,7 +286,7 @@ period: 500ms
 ### batching.check
 
 <!-- TODO: add link to bloblang query -->
-A Bloblang query that should return a boolean value indicating whether a message should end a batch.
+A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) query that should return a boolean value indicating whether a message should end a batch.
 
 
 Type: `string`  

@@ -30,11 +30,11 @@ Let's start with certificate definition. Here is what [Wikipedia](https://en.wik
 
 > In cryptography, a public key certificate, also known as a digital certificate or identity certificate, is an electronic document used to prove the ownership of a public key. The certificate includes information about the key, information about the identity of its owner (called the subject), and the digital signature of an entity that has verified the certificate's contents (called the issuer). If the signature is valid, and the software examining the certificate trusts the issuer, then it can use that key to communicate securely with the certificate's subject.
 
-When it comes to authorisation, it is enough for the server that has a public client certificate in its trusted certificate storage to trust it. However, if you need to send a request to the server protected by mutual TLS, or need to configure the TLS server itself, you also need to have a private key, used while generating the certificate, to sign the request.
+When it comes to authorization, it is enough for the server that has a public client certificate in its trusted certificate storage to trust it. However, if you need to send a request to the server protected by mutual TLS, or need to configure the TLS server itself, you also need to have a private key, used while generating the certificate, to sign the request.
 
 Using Tyk, you have two main certificate use cases:
 
-1. Certificates without public keys used for authorisation and authentication
+1. Certificates without public keys used for authorization and authentication
 2. Certificates with private keys used for upstream access, and server certificates (in other words when we need to sign and encrypt the request or 
 response).
 
@@ -88,8 +88,8 @@ The Control Plane and Data Plane deployments usually do not share any secrets; t
 To solve this issue, you need to set `security.private_certificate_encoding_secret`  in the MDCB configuration file to the same value as specified in your management Gateway configuration file. By knowing the original secret, MDCB will be able to decode private keys, and 
 send them to client without password. Using a secure connection between Data Plane Gateways and MDCB is required in this case. See MDCB setup page for use_ssl usage.
 
-## Authorisation 
-At the TLS level, authorisation means allowing only clients who provide client certificates that are verified and trusted by the server. 
+## Authorization 
+At the TLS level, authorization means allowing only clients who provide client certificates that are verified and trusted by the server. 
 
 Tyk allows you to define a list of trusted certificates at the API level or Gateway (global) level. If you are updating API definition programmatically or via files, you need to set following the keys in your API 
 definition: 
@@ -103,15 +103,15 @@ If all your APIs have a common set of certificates, you can define them in your 
 
 Select **Strip Authorization Data** to strip any authorization data from your API requests.  
 
-Be aware that mutual TLS authorisation has special treatment because it is not "authentication" and does not provide any identifying functionality, like keys, so you need to mix it with another authentication modes options like **Auth Key** or **Keyless**. On the dashboard, you need to choose **Use multiple auth mechanism** in the **Authentication mode** drop-down, where you should select **Mutual TLS** and another option which suits your use-case. 
+Be aware that mutual TLS authorization has special treatment because it is not "authentication" and does not provide any identifying functionality, like keys, so you need to mix it with another authentication modes options like **Auth Key** or **Keyless**. On the dashboard, you need to choose **Use multiple auth mechanism** in the **Authentication mode** drop-down, where you should select **Mutual TLS** and another option which suits your use-case. 
 
-### Fallback to HTTP Authorisation 
+### Fallback to HTTP Authorization 
 The TLS protocol has no access to the HTTP payload and works on the lower level; thus the only information we have at the TLS handshake level is the domain. In fact, even a domain is not included into a TLS handshake by default, but there is TLS extension called SNI (Server Name Indication) 
 which allows the client to send the domain name to the TLS handshake level. 
 
-With this in mind, the only way to make API authorisation work fully at the  TLS level, each API protected by Mutual TLS should be deployed on its own domain.
+With this in mind, the only way to make API authorization work fully at the  TLS level, each API protected by Mutual TLS should be deployed on its own domain.
 
-However, Tyk will gracefully fallback to a client certificate authorisation at the HTTP level in cases when you want to have multiple mutual TLS protected APIs on the same domain, or you have clients that do not support the SNI extension. No additional configuration is needed. In case of such fallback, 
+However, Tyk will gracefully fallback to a client certificate authorization at the HTTP level in cases when you want to have multiple mutual TLS protected APIs on the same domain, or you have clients that do not support the SNI extension. No additional configuration is needed. In case of such fallback, 
 instead of getting TLS error, a client will receive 403 HTTP error.
 
 ## Authentication 
@@ -121,7 +121,7 @@ Tyk can be configured to guess a user authentication key based on the provided c
 
 
 ### Using with Authorization 
-Mutual TLS authentication does not require mutual TLS authorisation to be turned on, and can be used separately. For example, you may allow some of the users to be authenticated by using a token in the header or similar, and some of the users via client certificates. 
+Mutual TLS authentication does not require mutual TLS authorization to be turned on, and can be used separately. For example, you may allow some of the users to be authenticated by using a token in the header or similar, and some of the users via client certificates. 
 
 If you want to use them both, just configure them separately. No additional knowledge is required.
 

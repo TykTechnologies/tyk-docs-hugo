@@ -13,4 +13,4 @@ To track changes in Dashboard configurations, please submit a [support ticket](h
 
 #### If there's a configuration error or an unwanted change, can I easily revert to a previous API or Policy configuration? What are the options or best practices for effective rollbacks?
 
-You can configure [Tyk-Sync]({{< ref "/tyk-sync" >}}) to synchronise APIs and Policies with any version control system, like GitHub or GitLab and use it to perform roll back. Keys are not synchronised with Tyk Sync.
+You can configure [Tyk-Sync]({{< ref "/product-stack/tyk-sync/overview" >}}) to synchronise APIs and Policies with any version control system, like GitHub or GitLab and use it to perform roll back. Keys are not synchronised with Tyk Sync.
