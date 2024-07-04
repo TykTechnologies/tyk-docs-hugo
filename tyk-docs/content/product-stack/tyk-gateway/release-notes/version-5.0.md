@@ -14,6 +14,8 @@ aliases:
 
 ## 5.0.13 Release Notes
 
+### Release Date 4 July 2024
+
 ### Release Highlights
 
 Resolved an issue encountered in MDCB environments where changes to custom keys made via the Dashboard were not properly replicated to dataplanes. The issue impacted both key data and associated quotas, in the following versions:
@@ -74,6 +76,10 @@ Regardless of the chosen method, be aware that quotas will be reset and will nee
 </ul>
 
 ---
+
+## 5.0.12 Release Notes
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.12).
+
 ---
 
 ## 5.0.11 Release Notes
