@@ -3844,7 +3844,7 @@ menu:
           - title: "Tyk Operator v0.18"
             path: /product-stack/tyk-operator/release-notes/operator-0.18
             category: Page
-            show: False
+            show: True
           - title: "Tyk Operator v0.17"
             path: /product-stack/tyk-operator/release-notes/operator-0.17
             category: Page
@@ -4196,7 +4196,7 @@ menu:
           - title: "Tyk Sync v1.5"
             path: /product-stack/tyk-sync/release-notes/sync-1.5
             category: Page
-            show: False
+            show: True
           - title: "Tyk Sync v1.4"
             path: /product-stack/tyk-sync/release-notes/sync-1.4
             category: Page
@@ -4268,7 +4268,7 @@ menu:
         - title: "Tyk Charts 1.5"
           path: /product-stack/tyk-charts/release-notes/version-1.5
           category: Page
-          show: False
+          show: True
         - title: "Tyk Charts 1.4"
           path: /product-stack/tyk-charts/release-notes/version-1.4
           category: Page
