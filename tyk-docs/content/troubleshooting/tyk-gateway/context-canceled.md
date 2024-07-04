@@ -1,5 +1,5 @@
 ---
-title: "proxy error: context cancelled"
+title: "proxy error: context canceled"
 menu:
   main:
     parent: "Tyk Gateway Troubleshooting"

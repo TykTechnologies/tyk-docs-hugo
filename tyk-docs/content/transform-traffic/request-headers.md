@@ -45,7 +45,7 @@ The middleware is configured with a list of headers to delete from the request a
 
 The "delete header" functionality is intended to ensure that any header in the delete list is not present once the middleware completes - so if a header is not originally present in the request but is on the list to be deleted, the middleware will ignore its omission.
 
-The "add header" functionality will capitalise any header name provided, for example if you configure the middleware to append `x-request-id` it will be added to the request as `X-Request-Id`.
+The "add header" functionality will capitalize any header name provided, for example if you configure the middleware to append `x-request-id` it will be added to the request as `X-Request-Id`.
 
 In the request middleware chain, the API-level transform is applied before the endpoint-level transform so if both middleware are enabled, the endpoint-level transform will operate on the headers that have been added by the API-level transform (and will not receive those that have been deleted by it).
 
