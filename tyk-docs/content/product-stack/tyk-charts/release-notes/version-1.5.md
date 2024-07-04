@@ -129,7 +129,6 @@ Tyk Operator can now be installed as an optional component alongside any of the 
 - tyk-oss
 - tyk-stack
 - tyk-control-plane
-- tyk-data-plane
 
 With bootstrapping, the `tyk-operator-conf` secret will be automatically configured during the bootstrapping process. This means that the Tyk Operator will be ready for use with just one command, simplifying the deployment and configuration process.
 
