@@ -2336,7 +2336,7 @@ menu:
           path: /troubleshooting/tyk-gateway/502-error-tyk-gateway
           category: Page
           show: True
-        - title: "proxy error: context cancelled"
+        - title: "proxy error: context canceled"
           path: /troubleshooting/tyk-gateway/context-canceled
           category: Page
           show: True

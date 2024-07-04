@@ -29,7 +29,7 @@ Keys can be located in the following elements of the request:
 Note that there is no key name when using the request body location, as the entire body (payload) of the request is used as the key value.
 {{< /note >}}
 
-When using the request header location, the key name is the normalised form of the header name: with capitalisation and use of `-` as separator. For example, the header name`customer_identifier` would be identified in a rule via the key name `Customer-Identifier`.
+When using the request header location, the key name is the normalised form of the header name: with capitalization and use of `-` as separator. For example, the header name`customer_identifier` would be identified in a rule via the key name `Customer-Identifier`.
 
 When using the request path location, you can use wildcards in the key name (which is the URL path) - for example `/asset/{type}/author/`. The URL rewrite middleware will treat the wildcard as a `(.*)` regex so that any value matches. The wildcard value itself will be ignored, is not extracted from the key, and is not available for use in constructing the [rewrite path](#creating-the-rewrite-path).
 
