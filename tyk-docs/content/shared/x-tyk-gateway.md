@@ -676,7 +676,7 @@ SegregateByClientId is a boolean flag. If set to `true, the policies will be app
 Tyk classic API definition: `openid_options.segregate_by_client`.
 
 **Field: `providers` ([[]Provider](#provider))**
-Providers contains a list of authorised providers, their Client IDs and matched policies.
+Providers contains a list of authorized providers, their Client IDs and matched policies.
 
 
 Tyk classic API definition: `openid_options.providers`.
@@ -1227,6 +1227,10 @@ Default value is 0, ie if regexpMatchIndex is not provided ID is matched from in
 **Field: `xPathExp` (`string`)**
 XPathExp is the xpath expression to match ID.
 
+### **EndpointPostPlugins**
+
+Type defined as array of `EndpointPostPlugin` values, see [EndpointPostPlugin](#endpointpostplugin) definition.
+
 ### **OAuthProvider**
 
 **Field: `jwt` ([JWTValidation](#jwtvalidation))**
@@ -1298,10 +1302,6 @@ For introspection caching, it is suggested to use a short interval.
 
 **Field: `providers` ([[]OAuthProvider](#oauthprovider))**
 
-
-### **EndpointPostPlugins**
-
-Type defined as array of `EndpointPostPlugin` values, see [EndpointPostPlugin](#endpointpostplugin) definition.
 
 ### **Allowance**
 
