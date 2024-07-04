@@ -40,7 +40,7 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructi
 ##### Request Body Size Limits
 
 We have introduced a new Gateway-level option to limit the size of requests made
-to your APIs. You can use this as a first line of defence against overly large
+to your APIs. You can use this as a first line of defense against overly large
 requests that might affect your Tyk Gateways or upstream services. Of course,
 being Tyk, we also provide the flexibility to configure API-level and
 per-endpoint size limits so you can be as granular as you need to protect and

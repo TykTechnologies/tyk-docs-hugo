@@ -355,7 +355,7 @@ Lorem ipsum Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ### Buttons
 
-We have 3 button types that can be used in conjuction with the Grid layout shortcode. These all aligh centrally and use the Tyk colour palette.
+We have 3 button types that can be used in conjuction with the Grid layout shortcode. These all aligh centrally and use the Tyk color palette.
 
 ```
 {{< button href="/docs/basic-config-and-security/" color="black" content="More Tyk Configuration" >}}

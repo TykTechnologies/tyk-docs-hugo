@@ -18,7 +18,7 @@ If you are interested in getting access contact us at [support@tyk.io](<mailto:s
 
 ## Introduction
 
-In this section we will explain how to apply your branding (styling - CSS) on the portal elements with your own colours and logo within minutes.
+In this section we will explain how to apply your branding (styling - CSS) on the portal elements with your own colors and logo within minutes.
 
 ## Prerequisites
 
@@ -40,12 +40,12 @@ In this section we will explain how to apply your branding (styling - CSS) on th
 If you want to use different naming, path reference or extension, the code is `<img src="/assets/images/dev-portal-logo.svg">` and is found on line 6 from the `/themes/default/partials/footer.tmpl` template.
 {{< /note >}}
 
-### Part 2 - Changing brand colours
+### Part 2 - Changing brand colors
 
 Let’s now explain how to manage borders and change the colors of buttons, texts and backgrounds. The file we’ll be looking at is `/themes/default/assets/stylesheets/main.css` which contains some CSS variables that are used throughout the app. Let’s take a closer look.
-You can apply some changes in the portal based on your preferences. For example, you can change the navigation background colour, the text colour and the different button theme colours. Furthermore, you can change table border colour and radius.
+You can apply some changes in the portal based on your preferences. For example, you can change the navigation background color, the text color and the different button theme colors. Furthermore, you can change table border color and radius.
 
-If you want to change the navigation background colour you need to edit the variable called `--tdp-nav-bg-color` Similarly other variables as you can see where/how each one is used:
+If you want to change the navigation background color you need to edit the variable called `--tdp-nav-bg-color` Similarly other variables as you can see where/how each one is used:
 
 {{< note success >}}
 **Note**
@@ -54,18 +54,18 @@ If you want to change the navigation background colour you need to edit the vari
 
 {{< /note >}}
 
-#### Background colours
+#### Background colors
 
 {{< img src="/img/dashboard/portal-management/enterprise-portal/background-colors.png" alt="Background Colour settings Tyk Enterprise Portal" >}}
 
-- `--tdp-nav-bg-color` navigation background colour
-- `--tdp-body-bg-color` App background colour
+- `--tdp-nav-bg-color` navigation background color
+- `--tdp-body-bg-color` App background color
 
-#### Text colours
+#### Text colors
 
 {{< img src="/img/dashboard/portal-management/enterprise-portal/text-colors.png" alt="Text Colour settings Tyk Enterprise Portal" >}}
 
-- `--tdp-text-color` default text colour
+- `--tdp-text-color` default text color
 - `--tdp-link-color` links (anchor tags)
 - `--tdp-nav-link-color` navigation links
 
@@ -88,22 +88,22 @@ Buttons have four different concepts and each one of them has two or more variab
 
 **Primary**
 
-- `--tdp-primary-btn-color` background colour
-- `--tdp-primary-btn-border` border colour
+- `--tdp-primary-btn-color` background color
+- `--tdp-primary-btn-border` border color
 
 **Secondary**
 
-- `--tdp-secondary-btn-color` background colour
-- `--tdp-secondary-btn-border` border colour
+- `--tdp-secondary-btn-color` background color
+- `--tdp-secondary-btn-border` border color
 
 **Danger**
 
-- `--tdp-danger-btn-color` background colour
-- `--tdp-danger-btn-border` border colour
-- `--tdp-danger-outline-btn-border` border colour of the outline variation
+- `--tdp-danger-btn-color` background color
+- `--tdp-danger-btn-border` border color
+- `--tdp-danger-outline-btn-border` border color of the outline variation
 
 **Warning**
 
-- `--tdp-warning-btn-color` background colour
-- `--tdp-warning-btn-border` border colour
-- `--tdp-warning-outline-btn-border`  border colour of the outline variation
+- `--tdp-warning-btn-color` background color
+- `--tdp-warning-btn-border` border color
+- `--tdp-warning-outline-btn-border`  border color of the outline variation
