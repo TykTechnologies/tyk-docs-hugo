@@ -5,13 +5,14 @@ weight: 16
 menu:
     main:
         parent: "Tyk Stack"
+aliases:
+    - /tyk-stack/tyk-operator/getting-started-tyk-operator
 ---
 
 ### What is Tyk Operator?
-With Tyk Operator, you can manage your APIs on Tyk Gateway declaratively using [Kubernetes CRD](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)  manifests.
+When you have Tyk installed, either in your cluster, hybrid, or Tyk Cloud, you can use Tyk Operator to manage your APIs in Kubernetes declaratively using [Kubernetes CRD](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)  manifests.
 
-
-{{< img src="/img/2.10/tyk_operator2.svg" alt="Tyk Operator" >}}
+{{< img src="/img/operator/tyk-operator.svg" alt="Tyk Operator" >}}
 
 Tyk Operator is an open-source agent deployed to your Kubernetes cluster. It actively detects configuration drift between the API configurations on Gateway (the actual state) and the manifest (the desired state) to reconcile it. Therefore, the manifests become the source of truth for your API configurations.
 

@@ -3772,14 +3772,27 @@ menu:
         path: /tyk-operator
         category: Page
         show: True
+      - title: "Key Concepts"
+        path: /product-stack/tyk-operator/key-concepts/key-concepts
+        category: Directory
+        show: True
+        menu:
+        - title: "Operator User"
+          path: /product-stack/tyk-operator/key-concepts/key-concepts
+          category: Page
+          show: True
+        - title: "Operator Reconciliation"
+          path: /tyk-stack/tyk-operator/tyk-operator-reconciliation
+          category: Page
+          show: True
+        - title: "Operator Context"
+          path: /product-stack/tyk-operator/key-concepts/operator-context
+          category: Page
+          show: True
       - title: "Getting Started"
         category: Directory
         show: True
         menu:
-        - title: "Overview"
-          path: /tyk-stack/tyk-operator/getting-started-tyk-operator
-          category: Page
-          show: True
         - title: "Installing Tyk Operator"
           path: /tyk-stack/tyk-operator/installing-tyk-operator
           category: Page
@@ -3804,10 +3817,14 @@ menu:
           path: /product-stack/tyk-operator/tyk-ingress-controller
           category: Page
           show: True
-      - title: "Tyk Operator Reconciliation"
-        path: /tyk-stack/tyk-operator/tyk-operator-reconciliation
-        category: Page
-        show: True
+        - title: "Manage Multiple Organisations With OperatorContext"
+          path: /product-stack/tyk-operator/getting-started/tyk-operator-multiple-organisations
+          category: Page
+          show: True
+        - title: "Manage API Ownership with OperatorContext"
+          path: /product-stack/tyk-operator/getting-started/tyk-operator-api-ownership
+          category: Page
+          show: True
       - title: "Migration to Tyk Operator"
         path: /tyk-stack/tyk-operator/migration
         category: Page
