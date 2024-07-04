@@ -98,13 +98,14 @@ We've introducing a [Rate Limit Smoothing]({{< ref "/getting-started/key-concept
 
 #### Fixed MDCB Issue Relating To Replication Of Custom Keys To Dataplanes
 
-Relsolved an issue encountered in MDCB environments where changes to custom keys made via the Dashboard were not properly replicated to dataplanes. The issue impacted both key data and associated quotas, in the following versions:
+Resolved an issue encountered in MDCB environments where changes to custom keys made via the Dashboard were not properly replicated to dataplanes. The issue impacted both key data and associated quotas, in the following versions:
 
 - 5.0.4 to 5.0.12
 - 5.1.1 and 5.1.2
 - 5.2.0 to 5.2.6
 - 5.3.0 to 5.3.2
 
+##### Action Required
 Customers should clear their edge Redis instances of any potentially affected keys to maintain data consistency and ensure proper synchronization across their environments. Please refer to the item in the [fixed](#fixed) section of the changelog for recommended actions.
 
 #### Fixed Window Rate Limiter
