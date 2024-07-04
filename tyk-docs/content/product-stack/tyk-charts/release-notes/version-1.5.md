@@ -18,7 +18,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 1.5.0 Release Notes
 
-##### Release Date Releasing Soon
+##### Release Date 4 July 2024
 
 #### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
@@ -129,7 +129,6 @@ Tyk Operator can now be installed as an optional component alongside any of the 
 - tyk-oss
 - tyk-stack
 - tyk-control-plane
-- tyk-data-plane
 
 With bootstrapping, the `tyk-operator-conf` secret will be automatically configured during the bootstrapping process. This means that the Tyk Operator will be ready for use with just one command, simplifying the deployment and configuration process.
 
