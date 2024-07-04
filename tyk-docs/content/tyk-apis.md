@@ -50,9 +50,6 @@ Dashboard Admin API
 *Provision & administrate Tyk Dashboard*
 {{< /badge >}}
 
-<<<<<<< HEAD
-## [Tyk Portal API]({{< ref "tyk-portal-api" >}})
-=======
 {{< badge href="tyk-mdcb-api" title="OpenAPI" titleStyle="justify-content: center">}}
 MDCB API
 </br></br>
@@ -67,7 +64,6 @@ Enterprise Portal API
 {{< /badge >}}
 
 {{< /grid >}}
->>>>>>> b805c381f... Revamp Tyk APIs page to Tyk APIs Hub with improved layout (#4908)
 
 
 ## Tyk Open Source
