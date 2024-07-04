@@ -109,6 +109,12 @@ DetailedTracing enables OpenTelemetry's detailed tracing for this API.
 
 Tyk classic API definition: `detailed_tracing`.
 
+**Field: `eventHandlers` ([EventHandlers](#eventhandlers))**
+Events contains the configuration related to Tyk Events.
+
+
+Tyk classic API definition: `event_handlers`.
+
 ### **Middleware**
 
 Middleware holds configuration for Tyk's native middleware.
@@ -348,7 +354,7 @@ means up to 100 requests can be made per minute.
 
 Tyk classic API definition: `global_rate_limit.rate`.
 
-**Field: `per` (`string`)**
+**Field: `per` (`time.ReadableDuration`)**
 Per defines the time interval for rate limiting using shorthand notation.
 The value of Per is a string that specifies the interval in a compact form,
 where hours, minutes and seconds are denoted by 'h', 'm' and 's' respectively.
@@ -499,6 +505,12 @@ DetailedTracing holds the configuration of the detailed tracing.
 **Field: `enabled` (`boolean`)**
 Enabled activates detailed tracing.
 
+### **EventHandlers**
+
+EventHandlers holds the list of events to be processed for the API.
+
+Type defined as array of `EventHandler` values, see [EventHandler](#eventhandler) definition.
+
 ### **Global**
 
 Global contains configuration that affects the whole API (all endpoints).
@@ -565,6 +577,9 @@ Tyk classic API definition: `global_response_headers`/`global_response_headers_r
 
 **Field: `contextVariables` ([ContextVariables](#contextvariables))**
 ContextVariables contains the configuration related to Tyk context variables.
+
+**Field: `trafficLogs` ([TrafficLogs](#trafficlogs))**
+TrafficLogs contains the configurations related to API level log analytics.
 
 ### **Operations**
 
@@ -687,6 +702,28 @@ Tyk classic API definition: `custom_middleware.auth_check`.
 ### **SecuritySchemes**
 
 SecuritySchemes holds security scheme values, filled with Import().
+
+### **EventHandler**
+
+EventHandler holds information about individual event to be configured on the API.
+
+**Field: `enabled` (`boolean`)**
+Enabled enables the event handler.
+
+**Field: `trigger` (`event.Event`)**
+Trigger specifies the TykEvent that should trigger the event handler.
+
+**Field: `type` ([Kind](#kind))**
+Kind specifies the action to be taken on the event trigger.
+
+**Field: `id` (`string`)**
+ID is the ID of event handler in storage.
+
+**Field: `name` (`string`)**
+Name is the name of event handler
+
+**Field: `` ([WebhookEvent](#webhookevent))**
+
 
 ### **PluginConfig**
 
@@ -893,7 +930,7 @@ Enabled activates Header Transform for the given path and method.
 **Field: `remove` (`[]string`)**
 Remove specifies header names to be removed from the request/response.
 
-**Field: `add` ([[]Header](#header))**
+**Field: `add` ([Headers](#headers))**
 Add specifies headers to be added to the request/response.
 
 ### **TransformHeaders**
@@ -906,7 +943,7 @@ Enabled activates Header Transform for the given path and method.
 **Field: `remove` (`[]string`)**
 Remove specifies header names to be removed from the request/response.
 
-**Field: `add` ([[]Header](#header))**
+**Field: `add` ([Headers](#headers))**
 Add specifies headers to be added to the request/response.
 
 ### **ContextVariables**
@@ -917,6 +954,15 @@ ContextVariables holds the configuration related to Tyk context variables.
 Enabled enables context variables to be passed to Tyk middlewares.
 
 Tyk classic API definition: `enable_context_vars`.
+
+### **TrafficLogs**
+
+TrafficLogs holds configuration about API log analytics.
+
+**Field: `enabled` (`boolean`)**
+Enabled enables traffic log analytics for the API.
+
+Tyk classic API definition: `do_not_track`.
 
 ### **PinnedPublicKey**
 
@@ -966,6 +1012,44 @@ RawBodyOnly if set to true, do not fill body in request or response object.
 
 **Field: `idExtractor` ([IDExtractor](#idextractor))**
 IDExtractor configures ID extractor with coprocess custom authentication.
+
+### **Kind**
+
+Kind is an alias maintained to be used in imports.
+
+### **WebhookEvent**
+
+WebhookEvent stores the core information about a webhook event.
+
+**Field: `url` (`string`)**
+URL is the target URL for the webhook.
+
+**Field: `method` (`string`)**
+Method is the HTTP method for the webhook.
+
+**Field: `cooldownPeriod` (`time.ReadableDuration`)**
+CoolDownPeriod defines cool-down for the event, so it does not trigger again.
+It uses shorthand notation.
+The value of CoolDownPeriod is a string that specifies the interval in a compact form,
+where hours, minutes and seconds are denoted by 'h', 'm' and 's' respectively.
+Multiple units can be combined to represent the duration.
+
+Examples of valid shorthand notations:
+- "1h"   : one hour
+- "20m"  : twenty minutes
+- "30s"  : thirty seconds
+- "1m29s": one minute and twenty-nine seconds
+- "1h30m" : one hour and thirty minutes
+
+An empty value is interpreted as "0s", implying no cool-down.
+It's important to format the string correctly, as invalid formats will
+be considered as 0s/empty.
+
+**Field: `bodyTemplate` (`string`)**
+BodyTemplate is the template to be used for request payload.
+
+**Field: `headers` ([Headers](#headers))**
+Headers are the list of request headers to be used.
 
 ### **PluginBundle**
 
@@ -1071,15 +1155,11 @@ RawBodyOnly if set to true, do not fill body in request or response object.
 RequireSession if set to true passes down the session information for plugins after authentication.
 RequireSession is used only with JSVM custom middleware.
 
-### **Header**
+### **Headers**
 
-Header holds a header name and value pair.
+Headers is an array of Header.
 
-**Field: `name` (`string`)**
-Name is the name of the header.
-
-**Field: `value` (`string`)**
-Value is the value of the header.
+Type defined as array of `Header` values, see [Header](#header) definition.
 
 ### **ClientToPolicy**
 
@@ -1117,6 +1197,16 @@ With is the type of ID extractor to be used.
 **Field: `config` ([IDExtractorConfig](#idextractorconfig))**
 Config holds the configuration specific to ID extractor type mentioned via With.
 
+### **Header**
+
+Header holds a header name and value pair.
+
+**Field: `name` (`string`)**
+Name is the name of the header.
+
+**Field: `value` (`string`)**
+Value is the value of the header.
+
 ### **IDExtractorConfig**
 
 IDExtractorConfig specifies the configuration for ID extractor.
@@ -1136,10 +1226,6 @@ Default value is 0, ie if regexpMatchIndex is not provided ID is matched from in
 
 **Field: `xPathExp` (`string`)**
 XPathExp is the xpath expression to match ID.
-
-### **EndpointPostPlugins**
-
-Type defined as array of `EndpointPostPlugin` values, see [EndpointPostPlugin](#endpointpostplugin) definition.
 
 ### **OAuthProvider**
 
@@ -1212,6 +1298,10 @@ For introspection caching, it is suggested to use a short interval.
 
 **Field: `providers` ([[]OAuthProvider](#oauthprovider))**
 
+
+### **EndpointPostPlugins**
+
+Type defined as array of `EndpointPostPlugin` values, see [EndpointPostPlugin](#endpointpostplugin) definition.
 
 ### **Allowance**
 
@@ -1464,7 +1554,7 @@ Code is the HTTP response code that will be returned.
 **Field: `body` (`string`)**
 Body is the HTTP response body that will be returned.
 
-**Field: `headers` ([[]Header](#header))**
+**Field: `headers` ([Headers](#headers))**
 Headers are the HTTP response headers that will be returned.
 
 **Field: `fromOASExamples` ([FromOASExamples](#fromoasexamples))**
@@ -1623,6 +1713,10 @@ Cache allows you to cache the server side response.
 
 **Field: `enforcedTimeout` ([EnforceTimeout](#enforcetimeout))**
 EnforceTimeout allows you to configure a request timeout.
+
+### **ReadableDuration**
+
+ReadableDuration is an alias maintained to be used in imports.
 
 ### **RequestSizeLimit**
 

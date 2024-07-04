@@ -501,7 +501,7 @@ Default: `[]`
 
 <!-- TODO: Add bloblang mapping link -->
 
-EXPERIMENTAL: A Bloblang mapping used to inject an object containing tracing propagation information into outbound messages. The specification of the injected fields will match the format used by the service wide tracer.
+EXPERIMENTAL: A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mapping used to inject an object containing tracing propagation information into outbound messages. The specification of the injected fields will match the format used by the service wide tracer.
 
 
 Type: `string`  
@@ -625,8 +625,7 @@ period: 500ms
 
 ### batching.check
 
-<!-- TODO: Add bloblang query link -->
-A Bloblang query that should return a boolean value indicating whether a message should end a batch.
+A [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) query that should return a boolean value indicating whether a message should end a batch.
 
 
 Type: `string`  

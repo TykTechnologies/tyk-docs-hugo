@@ -3827,7 +3827,7 @@ menu:
           - title: "Tyk Operator v0.18"
             path: /product-stack/tyk-operator/release-notes/operator-0.18
             category: Page
-            show: True
+            show: False
           - title: "Tyk Operator v0.17"
             path: /product-stack/tyk-operator/release-notes/operator-0.17
             category: Page
@@ -4040,12 +4040,20 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/parse-log
             category: Page
             show: True
+          - title: "Processors"
+            path: /product-stack/tyk-streaming/configuration/processors/processors
+            category: Page
+            show: True
           - title: "Protobuf"
             path: /product-stack/tyk-streaming/configuration/processors/protobuf
             category: Page
             show: True
           - title: "Redis"
             path: /product-stack/tyk-streaming/configuration/processors/redis
+            category: Page
+            show: True
+          - title: "Retry"
+            path: /product-stack/tyk-streaming/configuration/processors/retry
             category: Page
             show: True
           - title: "Schema Registry Decode"
@@ -4060,8 +4068,44 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Error Handling"
+            path: /product-stack/tyk-streaming/configuration/common-configuration/error-handling
+            category: Page
+            show: True
+          - title: "Field Paths"
+            path: /product-stack/tyk-streaming/configuration/common-configuration/field-paths
+            category: Page
+            show: True
           - title: "Interpolation"
             path: /product-stack/tyk-streaming/configuration/common-configuration/interpolation
+            category: Page
+            show: True
+      - title: "Guides"
+        category: Directory
+        show: True
+        menu:
+        - title: "Bloblang"
+          category: Directory
+          show: True
+          menu:
+          - title: "Overview"
+            path: "/product-stack/tyk-streaming/guides/bloblang/overview"
+            category: Page
+            show: True
+          - title: "Advanced"
+            path: "/product-stack/tyk-streaming/guides/bloblang/advanced"
+            category: Page
+            show: True
+          - title: "Arithmetic"
+            path: "/product-stack/tyk-streaming/guides/bloblang/arithmetic"
+            category: Page
+            show: True
+          - title: "Functions"
+            path: "/product-stack/tyk-streaming/guides/bloblang/functions"
+            category: Page
+            show: True
+          - title: "Methods"
+            path: "/product-stack/tyk-streaming/guides/bloblang/methods"
             category: Page
             show: True
       - title: "Deployment Considerations"
@@ -4135,7 +4179,7 @@ menu:
           - title: "Tyk Sync v1.5"
             path: /product-stack/tyk-sync/release-notes/sync-1.5
             category: Page
-            show: True
+            show: False
           - title: "Tyk Sync v1.4"
             path: /product-stack/tyk-sync/release-notes/sync-1.4
             category: Page
@@ -4207,7 +4251,7 @@ menu:
         - title: "Tyk Charts 1.5"
           path: /product-stack/tyk-charts/release-notes/version-1.5
           category: Page
-          show: True
+          show: False
         - title: "Tyk Charts 1.4"
           path: /product-stack/tyk-charts/release-notes/version-1.4
           category: Page
