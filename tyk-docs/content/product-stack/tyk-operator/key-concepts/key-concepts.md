@@ -1,7 +1,7 @@
 ---
 title: "Key Concepts"
 date: 2024-06-25
-tags: ["Tyk Operator", "Organisations", "Kubernetes"]
+tags: ["Tyk Operator", "Kubernetes"]
 description: "Explains the key concepts for Tyk Operator"
 ---
 

@@ -1,15 +1,15 @@
 ---
-title: "Managing Multiple Organisations with Tyk Operator CRDs"
+title: "Managing Multiple Organizations with Tyk Operator CRDs"
 date: 2024-06-25
-tags: ["Tyk Operator", "Organisations", "Kubernetes"]
-description: "Learn how to use Tyk Operator Custom Resource Definitions (CRDs) to manage multiple organisations within Tyk. This guide explains how to leverage OperatorContext to efficiently manage resources for different teams. Examples and best practices are included for effective multi-tenant API management."
+tags: ["Tyk Operator", "Organizations", "Kubernetes"]
+description: "Learn how to use Tyk Operator Custom Resource Definitions (CRDs) to manage multiple organizations within Tyk. This guide explains how to leverage OperatorContext to efficiently manage resources for different teams. Examples and best practices are included for effective multi-tenant API management."
 ---
 
-This guide explains how to efficiently manage multiple organisations within Tyk using Tyk Operator Custom Resource Definitions (CRDs).
+This guide explains how to efficiently manage multiple organizations within Tyk using Tyk Operator Custom Resource Definitions (CRDs).
 
-Please consult the [key concepts for Tyk Operator]({{< ref "/product-stack/tyk-operator/key-concepts/operator-context" >}}) documentation for an overview of the fundamental concepts of organisations in Tyk and the use of OperatorContext to manage resources for different teams effectively.
+Please consult the [key concepts for Tyk Operator]({{< ref "/product-stack/tyk-operator/key-concepts/operator-context" >}}) documentation for an overview of the fundamental concepts of organizations in Tyk and the use of OperatorContext to manage resources for different teams effectively.
 
-The guide includes practical examples and best practices for multi-tenant API management. Key topics include defining OperatorContext for connecting and authenticating with a Tyk Dashboard, and using `contextRef` in API Definition objects to ensure configurations are applied within specific organisations. The provided YAML examples illustrate how to set up these configurations.
+The guide includes practical examples and best practices for multi-tenant API management. Key topics include defining OperatorContext for connecting and authenticating with a Tyk Dashboard, and using `contextRef` in API Definition objects to ensure configurations are applied within specific organizations. The provided YAML examples illustrate how to set up these configurations.
 
 ## Defining OperatorContext
 

@@ -1,7 +1,7 @@
 ---
 title: "Manage API Ownership with OperatorContext"
 date: 2024-06-25
-tags: ["Tyk Operator", "Organisations", "Kubernetes"]
+tags: ["Tyk Operator", "Organizations", "Kubernetes"]
 description: "Explains the key concepts for Tyk Operator"
 ---
 
@@ -9,7 +9,7 @@ This guide explains how to efficiently manage API Ownerships within Tyk using Ty
 
 Please consult the [API Ownership]({{< ref "product-stack/tyk-dashboard/advanced-configurations/user-management/api-ownership">}}) documentation for the fundamental concepts of API Ownership in Tyk and [Operator Context]({{< ref "/product-stack/tyk-operator/key-concepts/operator-context" >}}) documentation for an overview of the use of OperatorContext to manage resources for different teams effectively.
 
-The guide includes practical examples for managing API ownership via OperatorContext. Key topics include defining user owners and user group owners in OperatorContext for connecting and authenticating with a Tyk Dashboard, and using `contextRef` in API Definition objects to ensure configurations are applied within specific organisations. The provided YAML examples illustrate how to set up these configurations.
+The guide includes practical examples for managing API ownership via OperatorContext. Key topics include defining user owners and user group owners in OperatorContext for connecting and authenticating with a Tyk Dashboard, and using `contextRef` in API Definition objects to ensure configurations are applied within specific organizations. The provided YAML examples illustrate how to set up these configurations.
 
 ## How to manage API Ownership in Tyk Operator
 

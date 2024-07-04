@@ -1,13 +1,13 @@
 ---
 title: "Operator Context"
 date: 2024-06-25
-tags: ["Tyk Operator", "Organisations", "Kubernetes"]
+tags: ["Tyk Operator", "Organizations", "Kubernetes"]
 description: "Explains the key concepts for Tyk Operator"
 ---
 
 ## Multi-tenancy in Tyk
 
-Tyk Dashboard is multi-tenant capable, which means you can use a single Tyk Dashboard instance to host separate [organisations]({{< ref "basic-config-and-security/security/dashboard/organisations">}}) for each team or department. Each organisation is a completely isolated unit with its own:
+Tyk Dashboard is multi-tenant capable, which means you can use a single Tyk Dashboard instance to host separate [organizations]({{< ref "basic-config-and-security/security/dashboard/organisations">}}) for each team or department. Each organisation is a completely isolated unit with its own:
 
 - API Definitions
 - API Keys
@@ -29,7 +29,7 @@ OperatorContext is a set of access parameters that define:
 - Which user it is using
 - Which environment it is working in
 
-For example, if you have multiple organisations for different teams, each with its own set of users and API Definitions, you can create different `OperatorContext` objects for each team. These contexts are referenced in your API definition or security policy CRDs using `contextRef` field.
+For example, if you have multiple organizations for different teams, each with its own set of users and API Definitions, you can create different `OperatorContext` objects for each team. These contexts are referenced in your API definition or security policy CRDs using `contextRef` field.
 
 During reconciliation, Tyk Operator will use the identity defined in the referenced `OperatorContext` to make requests to the Tyk Dashboard.
 
