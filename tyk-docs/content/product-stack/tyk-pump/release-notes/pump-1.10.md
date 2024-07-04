@@ -58,20 +58,6 @@ This release focuses on improving security and compliance, enhancing integration
 - Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.10.0)
 
 ### Changelog {#Changelog-v1.10.0}
-
-#### Changed
-
-<ul>
-<li>
-<details>
-<summary>FIPS support</summary>
-
-Updated Pump to be FIPS compliant. To prepare a FIPS compliant image, a special build parameter is required.
-For more information, please [contact us](https://tyk.io/contact/).
-</details>
-</li>
-
-</ul>
  
 #### Fixed
 
