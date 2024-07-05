@@ -47,7 +47,7 @@ Do you need support for centrally managing your APIs while deploying edge gatewa
 
 {{< img src="/img/diagrams/tyk-selfmanaged-launch.png" alt="Tyk Self-managed Launch">}}
 
-## Flex - for multiple teams within a single data centre or cloud 
+## Flex - for multiple teams within a single data center or cloud 
 
 ✅ For multiple teams that require high availability and horizontal scaling <br/>
 ✅ For Kubernetes-based deployment within one cluster / region 

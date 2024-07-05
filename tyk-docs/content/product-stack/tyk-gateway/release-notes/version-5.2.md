@@ -160,7 +160,7 @@ Fixed an issue where Tyk was not autodetecting the installed Python version if i
  <details>
  <summary>Gateway blocked trying to retrieve keys via MDCB when using JWT auth</summary>
 
-Improved the behavior when using JWTs and the MDCB (Multi Data Centre Bridge) link is down; the Gateway will no longer be blocked attempting to fetch OAuth client info. We’ve also enhanced the error messages to specify which type of resource (API key, certificate, OAuth client) the data plane Gateway failed to retrieve due to a lost connection with the control plane.
+Improved the behavior when using JWTs and the MDCB (Multi Data Center Bridge) link is down; the Gateway will no longer be blocked attempting to fetch OAuth client info. We’ve also enhanced the error messages to specify which type of resource (API key, certificate, OAuth client) the data plane Gateway failed to retrieve due to a lost connection with the control plane.
  </details>
  </li>
  <li>

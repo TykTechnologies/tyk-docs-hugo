@@ -243,11 +243,11 @@ If you are deploying the **Tyk Enterprise Developer Portal**, set the appropriat
 >**Note**: Helm chart supports Enterprise Portal v1.2.0+
 
 ### Installing Tyk Self-managed Control Plane
-If you are deploying the **Tyk Control plane**, a.k.a **MDCB**, for a **Tyk Multi Data Centre Bridge** deployment then you set
+If you are deploying the **Tyk Control plane**, a.k.a **MDCB**, for a **Tyk Multi Data Center Bridge** deployment then you set
 the `mdcb.enabled: true` option in the local `values.yaml` to add of the **MDCB** component to your installation.
 Check [Tyk Control plane]({{< ref "tyk-multi-data-centre" >}}) for more configuration details.
 
-This setting enables multi-cluster, multi Data-Centre API management from a single dashboard.
+This setting enables multi-cluster, multi Data-Center API management from a single dashboard.
 
 
 ### Tyk Identity Broker (TIB)

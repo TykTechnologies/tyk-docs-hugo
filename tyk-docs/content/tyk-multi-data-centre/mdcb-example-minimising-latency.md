@@ -3,7 +3,7 @@ date: 2023-01-10
 title: Minimising latency with MDCB
 menu:
     main:
-        parent: "Tyk Multi Data Centre Bridge"
+        parent: "Tyk Multi Data Center Bridge"
 weight: 2
 tags: ["MDCB","poc","kubernetes","demo","latency"]
 description: "Proof Of Concept demo of how to use MDCB to minimise latency."
@@ -12,11 +12,11 @@ description: "Proof Of Concept demo of how to use MDCB to minimise latency."
 ## Overview
 As described [previously]({{< ref "/tyk-multi-data-centre.md#managing-geographically-distributed-gateways-to-minimise-latency-and-protect-data-sovereignty" >}}), Acme Global Bank has operations and customers in both the EU and USA.
 
-To decrease the latency in response from their systems and to ensure that data remains in the same legal jurisdiction as the customers (data residency), they have deployed backend (or, from the perspective of the API gateway, “upstream”) services in two data centres: one in the US, the other in the EU.
+To decrease the latency in response from their systems and to ensure that data remains in the same legal jurisdiction as the customers (data residency), they have deployed backend (or, from the perspective of the API gateway, “upstream”) services in two data centers: one in the US, the other in the EU.
 
-Without a dedicated solution for this multi-region use case, Acme Global Bank would deploy a Tyk Gateway cluster in each data centre and then have the operational inconvenience of maintaining two separate instances of Tyk Dashboard to configure, secure and publish the APIs.
+Without a dedicated solution for this multi-region use case, Acme Global Bank would deploy a Tyk Gateway cluster in each data center and then have the operational inconvenience of maintaining two separate instances of Tyk Dashboard to configure, secure and publish the APIs.
 
-By using Tyk's Multi-Data Centre Bridge (MDCB), however, they are able to centralise the management of their API Gateways and gain resilience against failure of different elements of the deployment - data or control plane - improving the availability of their public APIs.
+By using Tyk's Multi-Data Center Bridge (MDCB), however, they are able to centralise the management of their API Gateways and gain resilience against failure of different elements of the deployment - data or control plane - improving the availability of their public APIs.
 
 In this example we will show you how to create the Acme Global Bank deployment using our example Helm charts.
 
@@ -88,7 +88,7 @@ Note that you need to run the same command twice, once setting `<worker-namespac
 {{< img src="/img/mdcb/mdcb-poc1-screenshot7.png" alt="Data Plane #2" >}}
 
 ### Testing the deployment to prove the concept
-As you know, the Tyk Multi Data Centre Bridge provides a link from the Control Plane to the Data Plane (worker) gateways, so that we can control all the remote gateways from a single dashboard.
+As you know, the Tyk Multi Data Center Bridge provides a link from the Control Plane to the Data Plane (worker) gateways, so that we can control all the remote gateways from a single dashboard.
 
 1. Access Tyk Dashboard
     - You can log into the dashboard at the external IP address reported in the watch window for the Control Plane - in this example it was at `34.136.51.227:3000`, so just enter this in your browser

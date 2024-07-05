@@ -5,7 +5,7 @@ description: Explains how to configure Hashicorp Consul as an external key-value
 tags: ["external key value storage", "KV", "Consul", "key-value", "secrets", "configuration", "secure"]
 ---
 
-HashiCorp [Consul](https://www.consul.io) is a service networking solution that is used to connect and configure applications across dynamic, distributed infrastructure. Consul KV is a simple Key-Value (KV) store provided as a core feature of Consul that can be used to store and retrieve Tyk Gateway configuration across multiple data centres.
+HashiCorp [Consul](https://www.consul.io) is a service networking solution that is used to connect and configure applications across dynamic, distributed infrastructure. Consul KV is a simple Key-Value (KV) store provided as a core feature of Consul that can be used to store and retrieve Tyk Gateway configuration across multiple data centers.
 
 ### How to configure Tyk to access Consul
 

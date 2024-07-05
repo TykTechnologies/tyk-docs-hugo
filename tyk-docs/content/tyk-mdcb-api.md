@@ -4,7 +4,7 @@ title: Tyk MDCB API
 tags: ["OpenAPI Spec", "OpenAPI Specification", "OAS", "REST", "Tyk MDCB OpenAPI Spec", "Tyk MDCB OAS", "MDCB API REST"]
 menu:
   main:
-    parent: "Tyk Multi Data Centre Bridge"
+    parent: "Tyk Multi Data Center Bridge"
 weight: 3
 type: "swagger-ui"
 swagger: "/others/mdcb-swagger.yml"
