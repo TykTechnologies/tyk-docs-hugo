@@ -4044,6 +4044,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/schema-registry-encode
             category: Page
             show: True
+          - title: "Split"
+            path: /product-stack/tyk-streaming/configuration/processors/split
+            category: Page
+            show: True
         - title: "Common Configurations"
           category: Directory
           show: True
