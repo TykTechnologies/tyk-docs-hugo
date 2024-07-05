@@ -72,7 +72,7 @@ Given the potential time difference between your upgrade and the release of this
 
 ### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
-Deprecations should be announced here
+There are no deprecations in this release.
 
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc. 
