@@ -139,7 +139,8 @@ When the Gateway starts, Tyk will read the *Value* from the environment variable
 
 Prior to Tyk Gateway v5.3.0, **environment variables** used for the Target URL or Listen Path had to be named `TYK_SECRET_{KEY_NAME}`. They were referred to in the API definition using `env://{KEY_NAME}` excluding the `TYK_SECRET_` prefix.
 <br><br>
-From v5.3.0 onward, the environment variables can be given any `KEY_NAME` name and the full name should be provided in the API definition reference. The pre-5.3.0 naming method is still supported for backward compatibility, just for these two fields.
+From v5.3.0 onward, environment variables can have any `KEY_NAME`, and the full name should be provided in the API definition reference. The pre-v5.3.0 naming convention is still supported for backward compatibility, but only for these two fields.
+
 {{< /note >}}
 
 #### Transformation middleware
