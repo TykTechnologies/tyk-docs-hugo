@@ -3,7 +3,7 @@ date: 2023-01-10
 title: MDCB Configuration options
 menu:
     main:
-        parent: "Tyk Multi Data Centre Bridge"
+        parent: "Tyk Multi Data Center Bridge"
 weight: 3
 tags: ["MDCB", "configuration options","MDCB configuration options"]
 description: "Each of the config options that are available when deploying MDCB."

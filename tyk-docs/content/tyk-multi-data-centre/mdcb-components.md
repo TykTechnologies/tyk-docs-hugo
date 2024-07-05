@@ -3,7 +3,7 @@ date: 2023-01-10
 title: MDCB Components
 menu:
     main:
-        parent: "Tyk Multi Data Centre Bridge"
+        parent: "Tyk Multi Data Center Bridge"
 weight: 1
 tags: ["components","MDCB","MDCB components","worker"]
 description: "The elements that make up an MDCB environment."
@@ -11,8 +11,8 @@ description: "The elements that make up an MDCB environment."
 
 ## Overview
 
-Here we will give an overview of the main elements of a Tyk Multi Data Centre (distributed) solution, clarifying the terminology used by Tyk.
-{{< img src="/img/mdcb/mdcb-components.png" width="800" height="975" alt="A Tyk Multi Data Centre Bridge deployment" >}}
+Here we will give an overview of the main elements of a Tyk Multi Data Center (distributed) solution, clarifying the terminology used by Tyk.
+{{< img src="/img/mdcb/mdcb-components.png" width="800" height="975" alt="A Tyk Multi Data Center Bridge deployment" >}}
 
 ### Tyk Gateway 
 - The workhorse of any deployment, Tyk’s lightweight Open Source API gateway that exposes your APIs for consumption by your users. It is a reverse proxy that secures your APIs, manages session and policies, monitors, caches and manipulates requests/responses when needed before/after it proxies them to and from the upstream.
@@ -20,7 +20,7 @@ Here we will give an overview of the main elements of a Tyk Multi Data Centre (d
 ### Tyk Dashboard
 - Tyk’s management platform used to control the creation of API configurations, policies and keys in a persistent manner. It provides analytic information on the traffic the Gateways have processed which includes aggregated API usage and detailed information per transaction.
 
-### Tyk Multi Data Centre Bridge (MDCB)
+### Tyk Multi Data Center Bridge (MDCB)
 - The backbone of the distributed Tyk deployment, connecting the distributed Data Plane deployments back to the Control Plane.
 
 ### Tyk Pump

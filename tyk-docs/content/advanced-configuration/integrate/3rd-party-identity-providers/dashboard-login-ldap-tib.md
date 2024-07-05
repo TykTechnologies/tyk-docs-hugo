@@ -13,7 +13,7 @@ This is an end to end worked example of how you can use LDAP and our Tyk Identit
 
 ## Overview
 
-The Tyk Dashboard is the command and control centre of your Tyk installation. It allows users to manage APIs, policies, keys, etc. All of this data is stored in the Dashboard's MonogDB database, including the user accounts. This works well in a lot of situations as it allows Tyk to be self-contained, but if you already have a centralised system for managing users then you may prefer to use that instead of a separate Tyk-specific database.
+The Tyk Dashboard is the command and control center of your Tyk installation. It allows users to manage APIs, policies, keys, etc. All of this data is stored in the Dashboard's MonogDB database, including the user accounts. This works well in a lot of situations as it allows Tyk to be self-contained, but if you already have a centralised system for managing users then you may prefer to use that instead of a separate Tyk-specific database.
 
 Good news, Tyk supports this!
 

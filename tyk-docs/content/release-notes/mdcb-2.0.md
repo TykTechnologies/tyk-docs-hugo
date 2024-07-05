@@ -63,7 +63,7 @@ Release date: 2022-05-17
 ### Added
 
 #### SQL support
-Since Tyk v4.0, the dashboard supports SQL engine natively. This means that Tyk has support for an SQL relational database to be used instead of the default MongoDB and lets users decide which DB type is the best for their usage. MDCB 2.0 introduces support for SQL to the multi data centre bridge, enabling MDCB orchestrated deployments using SQL databases.
+Since Tyk v4.0, the dashboard supports SQL engine natively. This means that Tyk has support for an SQL relational database to be used instead of the default MongoDB and lets users decide which DB type is the best for their usage. MDCB 2.0 introduces support for SQL to the multi data center bridge, enabling MDCB orchestrated deployments using SQL databases.
 MDCB now uses embedded Tyk Mongo and SQL pumps to write analytics. 
 
 ### Fixed

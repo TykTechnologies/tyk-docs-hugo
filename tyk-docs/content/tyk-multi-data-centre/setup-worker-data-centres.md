@@ -3,7 +3,7 @@ date: 2023-01-10
 title: Setup MDCB Data Plane
 menu:
     main:
-        parent: "Tyk Multi Data Centre Bridge"
+        parent: "Tyk Multi Data Center Bridge"
 weight: 5
 tags: ["MDCB", "Data Plane", "worker", "setup"]
 description: "How to setup the MDCB Data Plane."
@@ -15,8 +15,8 @@ aliases:
 
 You may configure an unlimited number of [Tyk Data Planes]({{< ref "tyk-multi-data-centre/mdcb-components#data-plane" >}}) containing Worker Gateways for ultimate High Availablity (HA). We recommend that you deploy your worker gateways as close to your upstream services as possible in order to reduce latency.
 
-It is a requirement that all your Worker Gateways in a Data Plane data centre share the same Redis DB in order to take advantage of Tyk's DRL and quota features.
-Your Data Plane can be in the same physical data centre as the Control Plane with just a logical network separation. If you have many Tyk Data Planes, they can be deployed in a private-cloud, public-cloud, or even on bare-metal.
+It is a requirement that all your Worker Gateways in a Data Plane data center share the same Redis DB in order to take advantage of Tyk's DRL and quota features.
+Your Data Plane can be in the same physical data center as the Control Plane with just a logical network separation. If you have many Tyk Data Planes, they can be deployed in a private-cloud, public-cloud, or even on bare-metal.
 
 ## Installing in a Kubernetes Cluster with our Helm Chart
 
@@ -146,7 +146,7 @@ The most important elements here are:
 | Field         | Description    |
 |---------------|----------------|
 |`api_key`      |This the API key of a user used to authenticate and authorize the Gateway's access through MDCB. The user should be a standard Dashboard user with minimal privileges so as to reduce risk if compromised. The suggested security settings are `read` for `Real-time notifications` and the remaining options set to `deny`.|
-|`group_id`    |This is the "zone" that this instance inhabits, e.g. the cluster/data centre the gateway lives in. The group ID must be the same across all the gateways of a data centre/cluster which are also sharing the same Redis instance. This id should also be unique per cluster (otherwise another gateway's cluster can pick up your keyspace events and your cluster will get zero updates).
+|`group_id`    |This is the "zone" that this instance inhabits, e.g. the cluster/data center the gateway lives in. The group ID must be the same across all the gateways of a data center/cluster which are also sharing the same Redis instance. This id should also be unique per cluster (otherwise another gateway's cluster can pick up your keyspace events and your cluster will get zero updates).
 |`connection_string`     |The MDCB instance or load balancer.|
 |`bind_to_slugs` | For all Tyk installations except for Tyk Classic Cloud this should be set to false.|
 

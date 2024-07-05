@@ -173,7 +173,7 @@ Override your `systemd` unit files for each of the Tyk services using `systemctl
 * Gateway `systemctl edit tyk-gateway.service`
 * Dashboard `systemctl edit tyk-dashboard.service`
 * Pump `systemctl edit tyk-pump.service`
-* Multi Data-Centre Bridge `systemctl edit tyk-sink.service`
+* Multi Data-Center Bridge `systemctl edit tyk-sink.service`
 
 You may then add `LimitNOFILE=80000` to the `[Service]` directive as follows:
 

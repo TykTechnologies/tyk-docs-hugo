@@ -50,7 +50,7 @@ Use the table below to find the appropriate upgrade guide for your platform:
 |                      | [Docker]({{< ref "developer-support/upgrading-tyk/deployment-model/self-managed/docker" >}}) | Guide for upgrading Docker images |
 |                      | [Helm]({{< ref "developer-support/upgrading-tyk/deployment-model/self-managed/helm" >}}) | Guide for upgrading Helm Charts |
 |                      | [Kubernetes]({{< ref "developer-support/upgrading-tyk/deployment-model/self-managed/kubernetes" >}}) | Guide for upgrading Kubernetes environment |
-| **Tyk MDCB Self Managed** | [MDCB]({{< ref "/developer-support/upgrading-tyk/deployment-model/self-managed/overview#upgrade-mdcb" >}}) | Guide for upgrading Mutli Data Centre Bridge (MDCB) |
+| **Tyk MDCB Self Managed** | [MDCB]({{< ref "/developer-support/upgrading-tyk/deployment-model/self-managed/overview#upgrade-mdcb" >}}) | Guide for upgrading Mutli Data Center Bridge (MDCB) |
 | **Tyk Open Source**  | [Tyk Gateway]({{< ref "developer-support/upgrading-tyk/deployment-model/open-source" >}}) | Guide for upgrading Tyk open source environment |
 
 ---
