@@ -3969,6 +3969,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/outputs/retry
             category: Page
             show: True
+          - title: "Sleep"
+            path: /product-stack/tyk-streaming/configuration/processors/sleep
+            category: Page
+            show: True
           - title: "Stdout"
             path: /product-stack/tyk-streaming/configuration/outputs/stdout
             category: Page
