@@ -76,7 +76,7 @@ With this configuration, a consumer can only access the field called the `owner`
     ]
 }
 ```
-It's important to note that once you set a list of allowed types, Tyk will use this list to control access rights and disable the list of restricted types. The same behaviour will occur if an asterisk operator is used to control access.
+It's important to note that once you set a list of allowed types, Tyk will use this list to control access rights and disable the list of restricted types. The same behavior will occur if an asterisk operator is used to control access.
 
 ## Allow or restrict all fields with the asterisk operator
 

@@ -126,7 +126,7 @@ Resolved an issue in the `api/usage` endpoint where the Dashboard with PostgreSQ
 <details>
 <summary>Enhanced Password Reset security</summary>
 
-Modified default OPA rules to prevent unauthorized admins from modifying other admins' passwords, mitigating potential 'rogue admin' behaviour. Tyk Dashboard clients using custom OPA rules should update their rule set accordingly. Contact your assigned Tyk representative for assistance.
+Modified default OPA rules to prevent unauthorized admins from modifying other admins' passwords, mitigating potential 'rogue admin' behavior. Tyk Dashboard clients using custom OPA rules should update their rule set accordingly. Contact your assigned Tyk representative for assistance.
 </details>
 </li>
 <li>
@@ -241,7 +241,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 <details>
 <summary>Improved security: user search method transitioned to POST</summary>
 
-Improved the behaviour of the Dashboard when searching for users to avoid transmitting sensitive information (user email addresses) in the request query parameters. Deprecated the `GET` method for the `/api/users/search` endpoint in favor of a `POST` method with the same logic but with parameters supplied in the request body.
+Improved the behavior of the Dashboard when searching for users to avoid transmitting sensitive information (user email addresses) in the request query parameters. Deprecated the `GET` method for the `/api/users/search` endpoint in favor of a `POST` method with the same logic but with parameters supplied in the request body.
 </details>
 </li>
 <li>

@@ -161,7 +161,7 @@ Tyk Operator is installed with cluster permissions. However, you can optionally 
 #### Watching custom ingress class
 
 The value of the `kubernetes.io/ingress.class` annotation identifies Ingress objects to be processed.
-Tyk Operator looks for the value `tyk` and will ignore all other ingress classes by default. If you want to override this default behaviour, you may do so by setting `WATCH_INGRESS_CLASS` through `tyk-operator-conf` or the environment variable .
+Tyk Operator looks for the value `tyk` and will ignore all other ingress classes by default. If you want to override this default behavior, you may do so by setting `WATCH_INGRESS_CLASS` through `tyk-operator-conf` or the environment variable .
 
 For example:
 

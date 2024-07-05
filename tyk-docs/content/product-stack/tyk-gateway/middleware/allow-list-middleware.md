@@ -13,7 +13,7 @@ Note that this is not the same as Tyk's [IP allow list]({{< ref "tyk-apis/tyk-ga
 
 #### Restricting access to private endpoints
 
-If you have a service that exposes endpoints or supports methods that you do not want to be available to clients, you should use the allow list to perform strict restriction to a subset of methods and paths. If the allow list is not enabled, requests to endpoints that are not explicitly defined in Tyk will be proxied to the upstream service and may lead to unexpected behaviour.
+If you have a service that exposes endpoints or supports methods that you do not want to be available to clients, you should use the allow list to perform strict restriction to a subset of methods and paths. If the allow list is not enabled, requests to endpoints that are not explicitly defined in Tyk will be proxied to the upstream service and may lead to unexpected behavior.
 
 ## How the allow list works
 

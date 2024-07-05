@@ -95,13 +95,13 @@ For PVC, if you are stuck with a crashing issue on a newer portal release (versi
 
 ## Release Highlights
 #### Custom attributes for the User model and the sign-up form customization
-We added the capability to add additional data fields to the User model and set their behaviour. This way API Providers can:
+We added the capability to add additional data fields to the User model and set their behavior. This way API Providers can:
 Extend the User model with additional fields of one of four types:
   - String
   - Number
   - List of strings
   - Boolean
-- Configure the behaviour of these fields:
+- Configure the behavior of these fields:
   - Add the new data fields to the user sign-up form
   - Force the portal to add the fields to the key metadata to make them available to custom plugins during API calls
   - Make the fields required or optional and lock them once a user profile is created

@@ -70,7 +70,7 @@ The remainder of this section explains the *environment variables* that can be u
 
 ### How To Configure Tyk Pump To Write Uptime Data?
 
-Tyk Pump can be configured to write uptime data to SQL (Postgres and SQL Lite) and Mongo. The default behaviour is to write to Mongo.
+Tyk Pump can be configured to write uptime data to SQL (Postgres and SQL Lite) and Mongo. The default behavior is to write to Mongo.
 
 #### How To Configure Tyk Pump To Write Uptime Data To A PostgreSQL Database?
 

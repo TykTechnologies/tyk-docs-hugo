@@ -9,7 +9,7 @@ aliases:
 
 Tyk v2.3 is backwards-compatible with v2.2 in terms of the configuration file and the original `tyk.conf` can be used with the new version. If you would like to keep your v2.2 settings, please remember to <u>**backup your `tyk.conf` file before upgrading as it will be overwritten during the upgrade process.**</u>
 
-*However*, there are behavioural differences in a v2.3 cluster when hooked up to a Dashboard that can cause some odd behaviour if the upgrade is not conducted in the right order.
+*However*, there are behavioral differences in a v2.3 cluster when hooked up to a Dashboard that can cause some odd behavior if the upgrade is not conducted in the right order.
 
 Tyk v2.3 Gateways continuously talk to each other sharing load data, they also share information with the Dashboard regarding their current configuration. This chatter, if exposed to a v2.2 Gateway, can cause it go into a reload loop, which isn't ideal. Because of this, the recommended upgrade procedure for a Tyk v2.2 system is:
 
@@ -25,7 +25,7 @@ If the reload loop does occur it is not disastrous, Tyk will just keep proxying 
 
 #### Retaining rate limiter functionality
 
-Tyk v2.3 introduces a new in-memory leaky-bucket *distributed* rate limiter, this is much more performant than the older rate limiter which hard-synchronised via Redis, and puts far less strain on a Redis instance or cluster than the old rate limiter. By default, Tyk v2.3 will switch to this rate limiter, however it is possible to retain the old behaviour by enabling it explicitly in the `tyk.conf` file:
+Tyk v2.3 introduces a new in-memory leaky-bucket *distributed* rate limiter, this is much more performant than the older rate limiter which hard-synchronised via Redis, and puts far less strain on a Redis instance or cluster than the old rate limiter. By default, Tyk v2.3 will switch to this rate limiter, however it is possible to retain the old behavior by enabling it explicitly in the `tyk.conf` file:
 
 ```
     "enable_redis_rolling_limiter": true

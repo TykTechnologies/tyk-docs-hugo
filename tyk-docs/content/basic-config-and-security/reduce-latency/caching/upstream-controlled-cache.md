@@ -52,7 +52,7 @@ Tyk looks for the header `x-tyk-cache-action-set-ttl` in the response:
  - if this is found and has a positive integer value, the Gateway will cache the response for that many seconds
  - if the header is not present, Tyk falls back to the value specified in `cache_options.cache_timeout`
 
-By configuring these headers in the responses from your services, you can have precise control over caching behaviour.
+By configuring these headers in the responses from your services, you can have precise control over caching behavior.
 
 #### Using a custom TTL header key
 If you wish to use a different header value to indicate the TTL you can do so by adding the `cache_control_ttl_header` option to the API definition.

@@ -15,7 +15,7 @@ Monitoring the usage of your APIs is a key functionality provided by any API Man
 Tracking requests made to security-critical endpoints, like those used for authentication or authorization, can help in identifying and mitigating potential security threats. Monitoring these endpoints for unusual activity patterns is a proactive security measure.
 
 #### Development and testing
-Enabling tracking during the development and testing phases can provide detailed insights into the API's behaviour, facilitating bug identification and performance optimisation. Adjustments to tracking settings can be made as the API transitions to production based on operational requirements.
+Enabling tracking during the development and testing phases can provide detailed insights into the API's behavior, facilitating bug identification and performance optimisation. Adjustments to tracking settings can be made as the API transitions to production based on operational requirements.
 
 ## How traffic analytics logging works
 Traffic analytics logging is enabled in the Gateway configuration using the `enable_analytics` [option]({{< ref "tyk-oss-gateway/configuration#enable_analytics">}}) (or using the equivalent environment variable `TYK_GW_ENABLEANALYTICS`).

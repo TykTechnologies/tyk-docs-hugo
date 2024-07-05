@@ -5,7 +5,7 @@ menu:
     parent: "Tyk Dashboard"
 ---
 
-The Tyk Dashboard permission system can be extended by writing custom rules using an Open Policy Agent (OPA). The rules engine works on top of your Dashboard API, which means you can control not only access rules, but also behaviour of all Dashboard APIs (except your public developer portal).
+The Tyk Dashboard permission system can be extended by writing custom rules using an Open Policy Agent (OPA). The rules engine works on top of your Dashboard API, which means you can control not only access rules, but also behavior of all Dashboard APIs (except your public developer portal).
 
 To give you some inspiration here are some ideas of the rules you can implement now:
 

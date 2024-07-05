@@ -127,7 +127,7 @@ The structure of the `request` object is:
 - `AddParams`: you can add parameters to your request here, for example internal data headers that are only relevant to your network setup
 - `DeleteParams`: these parameters will be removed from the request as they pass through the middleware; note `DeleteParams` happens before `AddParams`
 - `ReturnOverrides`: values stored here are used to stop or halt middleware execution and return an error code
-- `IgnoreBody`: if this parameter is set to `true`, the original request body will be used; if set to `false` the `Body` field will be used (`false` is the default behaviour)
+- `IgnoreBody`: if this parameter is set to `true`, the original request body will be used; if set to `false` the `Body` field will be used (`false` is the default behavior)
 - `Method`: contains the HTTP method (`GET`, `POST`, etc.)
 - `RequestURI`: contains the request URI, including the query string, e.g. `/path?key=value`
 - `Scheme`: contains the URL scheme, e.g. `http`, `https`

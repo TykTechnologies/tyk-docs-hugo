@@ -48,7 +48,7 @@ Here are some [Ingress Examples](https://github.com/TykTechnologies/tyk-operator
 
 The value of the `kubernetes.io/ingress.class` annotation identifies the IngressClass that will process Ingress objects.
 
-Tyk Operator by default looks for the value `tyk` and will ignore all other ingress classes. If you wish to override this default behaviour,
+Tyk Operator by default looks for the value `tyk` and will ignore all other ingress classes. If you wish to override this default behavior,
  you may do so by setting the environment variable `WATCH_INGRESS_CLASS` in the operator manager deployment. [See Installing Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}) for further information.
 
 ### Sample Template ApiDefinition resource

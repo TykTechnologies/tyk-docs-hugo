@@ -37,7 +37,7 @@ Mapping documents is advantageous in situations where the result is a document w
 
 [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) mappings can fail, in which case the message remains unchanged, errors are logged, and the message is flagged as having failed, allowing you to use standard processor error handling patterns.
 
-However, [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behaviour.
+However, [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behavior.
 
 
 ## Examples
