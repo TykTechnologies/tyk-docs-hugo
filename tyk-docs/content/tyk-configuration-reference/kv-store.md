@@ -203,7 +203,7 @@ For example, if you create a Gateway environment variable `TYK_SECRET_NEW_UPSTRE
 }
 ```
 
-whilst to configure the URL rewrite `rewriteTo` field using this variable you could use either:
+To configure the URL rewrite `rewriteTo` field using this variable you could use either:
 
 ````json
 {
