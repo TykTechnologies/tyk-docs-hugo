@@ -8,7 +8,7 @@ aliases:
     - /getting-started/deployment-options/
 ---
 
-Tyk API Platform offers various deployment options, consisting of both [open and closed source]({{< ref "tyk-stack" >}})
+Tyk API Platform offers various deployment options, consisting of both [open source and proprietary]({{< ref "tyk-stack" >}})
 components.
 
 Choosing the right one for your organization depends on your specific requirements and preferences.
