@@ -60,11 +60,11 @@ MDCB keeps your Tyk API Gateways highly available because all the Worker Gateway
 
 {{< img src="/img/mdcb/mdcb-intro4.png" width="800" height="975" alt="Multi Data Center Bridge is down" >}}
 
-What happens if the worst happens and Worker Gateways fail while the link to the Control Plane is down? We’ve thought of that: Tyk will automatically configure the new Workers that spin up using the last known set of API resources in the worker’s cluster, minimising the impact on availability of your services.
+What happens if the worst happens and Worker Gateways fail while the link to the Control Plane is down? We’ve thought of that: Tyk will automatically configure the new Workers that spin up using the last known set of API resources in the worker’s cluster, minimizing the impact on availability of your services.
 
 ## When might you deploy MDCB?
 
-### Managing geographically distributed gateways to minimise latency and protect data sovereignty
+### Managing geographically distributed gateways to minimize latency and protect data sovereignty
 
 Consider Acme Global Bank: they have customers in the USA and the EU. Due to compliance, security and performance requirements they need to deploy their Tyk API Gateways locally in each of those regions. They need to manage the deployment and synchronisation of APIs and associated resources (e.g. keys, policies and certificates) between the data centers to ensure global service for their customers.
 
@@ -95,7 +95,7 @@ Here are some examples of the benefits that deploying Tyk MDCB can bring:
 - You can control geographic distribution of traffic, restricting traffic to data centers/regions of your choice.
 - You can put your Tyk API Gateways close to users, but still have a single management layer.
 - You have a single, simple, point of access for configuration of your complex API infrastructure and yet deploy multiple Developer Portals, if required, to provide access to different user groups (e.g. Internal and External).
-- You can physically [segment teams and environments]({{< ref "/advanced-configuration/manage-multiple-environments/with-tyk-multi-cloud.md" >}}) within a single physical data center, giving each team full control of its own API gateway and server resources without the noisy neighbours you might experience in a standard self-managed deployment.
+- You can physically [segment teams and environments]({{< ref "/advanced-configuration/manage-multiple-environments/with-tyk-multi-cloud.md" >}}) within a single physical data center, giving each team full control of its own API gateway and server resources without the noisy neighbors you might experience in a standard self-managed deployment.
 - You can deploy gateways with whichever mix of cloud vendors you wish.
 - You can mix and match cloud and on premises data centers.
 
@@ -111,7 +111,7 @@ Here are some examples of the benefits that deploying Tyk MDCB can bring:
 ### Reduced latency
 
 - Deploying Data Plane (Worker) Gateways close to your geographically distributed API consumers helps reduce their perceived request latency.
-- Deploying Worker Gateways close to your backend services will minimise round trip time servicing API requests.
+- Deploying Worker Gateways close to your backend services will minimize round trip time servicing API requests.
 - The Worker Gateways cache keys and other configuration locally, so all operations can be geographically localised.
 - All traffic to and from one Gateway cluster will have rate limiting, authentication and authorization performed within the data center rather than “calling home” to a central control point; this reduces the  API request round trip time.
 

@@ -25,7 +25,7 @@ Currently Operator only supports publishing API to the Tyk Classic Portal.
 ### Tutorial: Publish an API with Tyk Operator
 #### Step 1: Creating a security policy
 
-When you publish an API to the Portal, Tyk actually publishes a way for developers to enrol in a policy, not into the API directly. Therefore, you should first set up a security policy for the developers, before proceeding with the publishing.
+When you publish an API to the Portal, Tyk actually publishes a way for developers to enroll in a policy, not into the API directly. Therefore, you should first set up a security policy for the developers, before proceeding with the publishing.
 
 To do that, you can use the following command:
 

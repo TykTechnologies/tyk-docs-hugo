@@ -9,7 +9,7 @@ menu:
 weight: 6
 ---
 
-Tyk creates the API cache in Redis, as it gives high performance and low latency. By default, the cache will use the same database that is used to store the API keys, minimising the deployment footprint.
+Tyk creates the API cache in Redis, as it gives high performance and low latency. By default, the cache will use the same database that is used to store the API keys, minimizing the deployment footprint.
 
 For [multi-data center]({{< ref "tyk-multi-data-centre/mdcb-components#redis">}}) deployments, the Data Planes have a locally deployed Redis. This enables them to have a localised cache close to the traffic-serving Gateways.
 

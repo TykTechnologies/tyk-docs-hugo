@@ -83,7 +83,7 @@ You will need an API key for your organisation (to authenticate with the Dashboa
 
 - From the Tyk Dashboard, select "Users" in the "System Management" section.  
 - Click **Edit** for your username, then scroll to the bottom of the page.  
-- Your personal API key, granting you access to the Dashboard API, is labelled **Tyk Dashboard API Access Credentials** key
+- Your personal API key, granting you access to the Dashboard API, is labeled **Tyk Dashboard API Access Credentials** key
 
 {{< img src="/img/2.10/user_api_id.png" alt="API key location" >}}
 
