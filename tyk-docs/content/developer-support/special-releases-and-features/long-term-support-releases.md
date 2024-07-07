@@ -15,7 +15,7 @@ Welcome to Tyk's Long Term Support (LTS) Releases page. Here, we'll walk you thr
 Long Term Support describes a release of our Gateway and Dashboard which offers our customers, stability over a 1-2 year period. It also means we are committed to ensure you have uninterrupted service for the lifetime of the long term release. There are many customer benefits in keeping pace with our long term release:
 
 1. **Stability**: Tyk will always strive to avoid issuing its latest release as a long term support release. Instead we prefer to let the release be proven in a production setting before it becomes LTS so we can iron out any rare issues.
-2. **Security**: Tyk commits that the latest LTS will be secure at the point of release by containing the latest available Go version. This ensures Go related security issues are minimised.
+2. **Security**: Tyk commits that the latest LTS will be secure at the point of release by containing the latest available Go version. This ensures Go related security issues are minimized.
 3. **Functional Richness**: There will always be great capability contained in out latest LTS which moves your game on in terms of workflows.
 4. **Continuation of Service**: We will patch the LTS version every 7 weeks for the period it remains in full support.
 
@@ -144,7 +144,7 @@ We have established a detailed LTS structure for Tyk Gateway and Tyk Dashboard d
 
 These components are often more standalone in nature and are subject to infrequent and minor changes compared to the core products. Therefore, aligning them with the same LTS versioning isn’t necessary or practical. Instead, we employ a continuous delivery model that ensures these components are always updated with the latest improvements and security patches. Our commitment extends beyond version numbers, as we ensure each of these components is thoroughly tested for quality assurance with all active LTS releases of the Gateway and Dashboard.
 
-Ultimately, our diversified support approach aims to balance agility with assurance, offering the most appropriate level of support for each component while minimising risk and maximising value for our customers.
+Ultimately, our diversified support approach aims to balance agility with assurance, offering the most appropriate level of support for each component while minimizing risk and maximizing value for our customers.
 To provide the most secure and efficient environment, we advise the following with the release of a new LTS version:
 
 ### Developer Portal

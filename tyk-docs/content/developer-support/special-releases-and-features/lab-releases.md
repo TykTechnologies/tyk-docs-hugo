@@ -24,7 +24,7 @@ will be conducted before production release.
 - **APIs and Configuration Changes:** the lab release product may undergo interface and configuration changes, as well as API contract alterations, 
 as part of ongoing development and refinement efforts
 - **Documentation could be limited:** we will endeavor to document the proof of concepts, but we may miss things
-- **User Experience:** The user experience might not be finalised. Some features might only be accessible through API calls
+- **User Experience:** The user experience might not be finalized. Some features might only be accessible through API calls
 - **Limited Support:** official support is not available for lab products. We encourage reporting any issues or feedback directly through any of the following channels: 
   - [Tyk Public Issues Tracker](https://github.com/TykTechnologies/tyk/issues/new/choose)
   - [Tyk Community Forum](https://community.tyk.io/)

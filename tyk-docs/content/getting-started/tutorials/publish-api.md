@@ -49,7 +49,7 @@ Save the page.
 
 ### Step 4: Create a Policy
 
-When you publish an API to the Portal, Tyk actually publishes a way for developers to enrol in a policy, not the API directly.
+When you publish an API to the Portal, Tyk actually publishes a way for developers to enroll in a policy, not the API directly.
 
 > **Why?**: A Tyk policy can grant access to multiple APIs (so long as they all use the same access control mechanism) and set a template for any keys that are generated for the portal for things such as Tags, Rate Limits and Quotas. Another useful feature with a policy and the Portal is that when the key is generated for a developer, it can be made to expire after a certain time - e.g. a trial key.
 

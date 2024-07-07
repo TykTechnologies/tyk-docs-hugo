@@ -23,7 +23,7 @@ Rate limiting involves setting thresholds for the maximum number of requests tha
 
 Rate limiting may be used as an extra line of defence around attempted denial of service attacks. For instance, if you have load-tested your current system and established a performance threshold that you would not want to exceed to ensure system availability and/or performance then you may want to set a global rate limit as a defence to ensure it hasn't exceeded.
 
-Rate limiting can also be used to ensure that one particular user or system accessing the API is not exceeding a determined rate. This makes sense in a scenario such as APIs which are associated with a monetisation scheme where you may allow so many requests per second based on the tier in which that consumer is subscribed or paying for.
+Rate limiting can also be used to ensure that one particular user or system accessing the API is not exceeding a determined rate. This makes sense in a scenario such as APIs which are associated with a monetization scheme where you may allow so many requests per second based on the tier in which that consumer is subscribed or paying for.
 
 Of course, there are plenty of other scenarios where applying a rate limit may be beneficial to your APIs and the systems that your APIs leverage behind the scenes.
 

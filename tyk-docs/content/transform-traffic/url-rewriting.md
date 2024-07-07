@@ -23,7 +23,7 @@ API requests can be redirected to other endpoints or APIs deployed on Tyk using 
 
 #### Improved Performance Optimization
 
-You can use URL rewriting to route traffic intelligently to particular API endpoints, distributing the processing burden evenly across your system and minimising load on your backend resources. This reduces the chances of overwhelming individual nodes and ensures consistent performance levels throughout the entire infrastructure.
+You can use URL rewriting to route traffic intelligently to particular API endpoints, distributing the processing burden evenly across your system and minimizing load on your backend resources. This reduces the chances of overwhelming individual nodes and ensures consistent performance levels throughout the entire infrastructure.
 
 #### Enhanced Scalability
 

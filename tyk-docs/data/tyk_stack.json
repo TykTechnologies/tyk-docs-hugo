@@ -50,7 +50,7 @@
       },
       {
         "title": "Tyk Streams",
-        "description": "Enables to securely expose, manage and monetise real-time event streams, brokers and async APIs.",
+        "description": "Enables to securely expose, manage and monetize real-time event streams, brokers and async APIs.",
         "path": "product-stack/tyk-streaming/overview/"
       }
     ]
