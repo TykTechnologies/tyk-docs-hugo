@@ -563,9 +563,9 @@ This release introduces an enhanced trace generation system for Universal Data G
 </li>
 <li>
 <details>
-<summary>Disabled normalise and validate in GraphQL Engine</summary>
+<summary>Disabled normalize and validate in GraphQL Engine</summary>
 
-For GraphQL requests normalisation and validation has been disabled in the GraphQL engine. Both of those actions were performed in the Tyk Gateway and were unnecessary to be done again in the engine. This enhances performance slightly and makes detailed OTel traces concise and easier to read.
+For GraphQL requests normalization and validation has been disabled in the GraphQL engine. Both of those actions were performed in the Tyk Gateway and were unnecessary to be done again in the engine. This enhances performance slightly and makes detailed OTel traces concise and easier to read.
 </details>
 </li>
 <li>

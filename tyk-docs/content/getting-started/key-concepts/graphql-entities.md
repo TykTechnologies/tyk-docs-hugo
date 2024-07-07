@@ -68,11 +68,11 @@ extend type MyEntity @key(fields: "id") {
 Types that are identical by name and structure and feature in more than one subgraph are shared types.
 
 #### Can I extend a shared type?
-Subgraphs are normalised before federation. This means you can extend a type if the resolution of the extension after normalisation is exactly identical to the resolution of the type after normalisation in other subgraphs.
+Subgraphs are normalized before federation. This means you can extend a type if the resolution of the extension after normalization is exactly identical to the resolution of the type after normalization in other subgraphs.
 
 Unless the resolution of the extension in a single subgraph is exactly identical to all other subgraphs, extension is not possible.
 
-Here is a valid example where both subgraphs resolve to identical enums after normalisation:
+Here is a valid example where both subgraphs resolve to identical enums after normalization:
 
 **Subgraph 1:**
 

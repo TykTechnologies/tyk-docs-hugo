@@ -88,6 +88,6 @@ Sign up for a free trial to test it out:
 Please visit our [Self-Managed installation]({{< ref "tyk-self-managed/install" >}}) page to get started.
 
 
-## Licencing
+## Licensing
 
 Read more about licensing [here]({{< ref "tyk-on-premises/licensing" >}}).

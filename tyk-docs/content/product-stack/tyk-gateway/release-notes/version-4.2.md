@@ -67,10 +67,10 @@ Changed the look & feel of request logs in Playground tab for GraphQL APIs. New 
 
 ##### Shared types
 Types of the same name can be defined in more than one subgraph (a shared type). This will no longer produce an error if each definition is identical.
-Shared types cannot be extended outside of the current subgraph, and the resolved extension must be identical to the resolved extension of the shared type in all other subgraphs (see subgraph normalisation notes). Attempting to extend a shared type will result in an error.
+Shared types cannot be extended outside of the current subgraph, and the resolved extension must be identical to the resolved extension of the shared type in all other subgraphs (see subgraph normalization notes). Attempting to extend a shared type will result in an error.
 The federated supergraph will include a single definition of a shared type, regardless of how many times it has been identically defined in its subgraphs.
 
-##### Subgraph normalisation before federation
+##### Subgraph normalization before federation
 Extensions of types whose base type is defined in the same subgraph will be resolved before an attempt at federation. A valid example involving a shared type:
 
 Subgraph 1:
@@ -124,7 +124,7 @@ Added support for Kafka as a data source in Universal Data Graph. Configuration 
 ##### Fixed
 - Fixed an issue where the Gateway would not create the circuit breaker events (BreakerTripped and BreakerReset) for which the Tyk Dashboard offers webhooks.
 - Types of the same name can be defined in more than one subgraph (a shared type). This will no longer produce an error if each definition is exactly identical.
-- Apply Federation Subgraph normalisation do avoid merge errors. Extensions of types whose base type is defined in the same subgraph will be resolved before an attempt at federation.
+- Apply Federation Subgraph normalization do avoid merge errors. Extensions of types whose base type is defined in the same subgraph will be resolved before an attempt at federation.
 
 ## Updated Versions
 Tyk Gateway 4.2

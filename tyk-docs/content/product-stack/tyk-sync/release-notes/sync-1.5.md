@@ -77,7 +77,7 @@ Added support for API templates in `dump`, `sync`, `update`, and `publish` comma
 <details>
 <summary>Support for API Categories of OAS APIs </summary>
 
-Added support for API categories in OAS APIs. Users can now include API Category in the API Definition file. Tyk Sync will update the categories of the API accordingly. It improved organisation and categorisation of APIs, making management more intuitive.
+Added support for API categories in OAS APIs. Users can now include API Category in the API Definition file. Tyk Sync will update the categories of the API accordingly. It improved organisation and categorization of APIs, making management more intuitive.
 </details>
 </li>
 </ul>

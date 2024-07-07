@@ -363,7 +363,7 @@ Our function accepts three parameters:
 - **date_string** is the date extracted from the date header in the request sent by Tyk Gateway.
 - **secret_key** is the value of the secret used for signing.
 
-The function computes and returns the HMAC signature for a string formatted as *date: date_string*, where *date_string* corresponds to the value of the *date_string* parameter. The signature is computed using the secret value given in the *secret_key* parameter and the HMAC algorithm given in the *algorithm* parameter. A *ValueError* is raised if the hash algorithm is unrecognised. 
+The function computes and returns the HMAC signature for a string formatted as *date: date_string*, where *date_string* corresponds to the value of the *date_string* parameter. The signature is computed using the secret value given in the *secret_key* parameter and the HMAC algorithm given in the *algorithm* parameter. A *ValueError* is raised if the hash algorithm is unrecognized. 
 
 We use the following Python modules in our implementation:
 
@@ -464,7 +464,7 @@ The *Object* payload received from the Gateway is updated and returned as a resp
 Specifically, our function performs the following tasks:
 
 - Extracts the *Date* and *Authorization* headers from the request and verifies that the *Authorization* header is structured correctly, using our *parse_auth_header* function. We store the extracted *Authorization* header fields in the *parse_dict* dictionary. If the structure is invalid then a 400 bad request response is returned to Tyk Gateway, using our *set_response_error* function.
-- We use our *verify_hmac_signature* function to compute and verify the HMAC signature. A 400 bad request error is returned to the Gateway if HMAC signature verification fails, due to an unrecognised HMAC algorithm.
+- We use our *verify_hmac_signature* function to compute and verify the HMAC signature. A 400 bad request error is returned to the Gateway if HMAC signature verification fails, due to an unrecognized HMAC algorithm.
 - A 401 unauthorized error response is returned to the Gateway under the following conditions:
 
     - The client HMAC signature and the computed HMAC signature do not match.

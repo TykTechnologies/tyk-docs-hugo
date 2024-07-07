@@ -57,6 +57,6 @@ Install on Microsoft Azure
 
 {{< /grid >}}
 
-### Licencing
+### Licensing
 
 Read more about licensing [here]({{< ref "tyk-on-premises/licensing" >}}).
