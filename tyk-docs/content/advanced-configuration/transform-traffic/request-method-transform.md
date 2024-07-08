@@ -13,7 +13,7 @@ Tyk's Request Method Transform middleware allows you to modify the HTTP method o
 
 In cases where an upstream API requires different methods (e.g. `PUT` or `DELETE`) for different functionality but you want to wrap this in a single client-facing API, you can provide a simple interface offering a single method (e.g. `POST`) and then use the method transform middleware to map requests to correct upstream method.
 
-#### Enforcing API governance and standardisation
+#### Enforcing API governance and standardization
 
 You can use the transform middleware to ensure that all requests to a service are made using the same HTTP method, regardless of the original method used by the client. This can help maintain consistency across different client applications accessing the same upstream API.
 

@@ -229,7 +229,7 @@ Underscore.js is a JavaScript library that provides a lot of useful functional p
 - filter
 - invoke
 
-There are also more specialised goodies, including:
+There are also more specialized goodies, including:
 
 - function binding
 - JavaScript templating

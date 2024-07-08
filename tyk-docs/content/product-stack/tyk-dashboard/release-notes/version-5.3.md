@@ -133,7 +133,7 @@ Modified default OPA rules to prevent unauthorized admins from modifying other a
 <details>
 <summary>Fixed Universal Data Graph Schema Editor Import Issue</summary>
 
-Resolved an issue in the GQL schema editor for Data Graphs, where users couldn't utilise the 'Import Schema' button. Now, it's possible to import files containing GQL schemas into the Dashboard.
+Resolved an issue in the GQL schema editor for Data Graphs, where users couldn't utilize the 'Import Schema' button. Now, it's possible to import files containing GQL schemas into the Dashboard.
 </details>
 </li>
 <li>
@@ -483,7 +483,7 @@ From Tyk 5.3.0 we support the following features when using Tyk OAS APIs with Ty
 
 #### API Templates
 
-Exclusively for Tyk OAS APIs, we are pleased to announce the introduction of API Templates: an API governance feature provided to streamline the process of creating APIs. An API template is an asset managed by Tyk Dashboard that is used as the starting point - a blueprint - from which you can create a new Tyk OAS API definition. With templates you can standardise configuration of your APIs more easily, combining your service-specific OpenAPI descriptions with enterprise requirements such as health endpoints, caching and authorization.
+Exclusively for Tyk OAS APIs, we are pleased to announce the introduction of API Templates: an API governance feature provided to streamline the process of creating APIs. An API template is an asset managed by Tyk Dashboard that is used as the starting point - a blueprint - from which you can create a new Tyk OAS API definition. With templates you can standardize configuration of your APIs more easily, combining your service-specific OpenAPI descriptions with enterprise requirements such as health endpoints, caching and authorization.
 
 #### Enhanced User Permissions
 

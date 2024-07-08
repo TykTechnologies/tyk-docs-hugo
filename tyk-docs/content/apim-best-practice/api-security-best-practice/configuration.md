@@ -5,7 +5,7 @@ tags: ["API Security", "security configuration"]
 description: "General security configuration"
 ---
 
-Modern APIs are often backed by large technology stacks composed of numerous components and libraries. Each of these is a potential weak link in the security chain, so efforts must be made to ensure that security measures are implemented throughout. The API gateway plays a critical part in an overall security strategy, by utilising its ability to process requests in a secure manner.
+Modern APIs are often backed by large technology stacks composed of numerous components and libraries. Each of these is a potential weak link in the security chain, so efforts must be made to ensure that security measures are implemented throughout. The API gateway plays a critical part in an overall security strategy, by utilizing its ability to process requests in a secure manner.
 
 ### Secure Connections
 
