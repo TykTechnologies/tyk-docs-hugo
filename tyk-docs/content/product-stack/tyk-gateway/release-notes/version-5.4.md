@@ -178,7 +178,7 @@ Introduced an option for users to manually provide GQL schemas when creating API
 <details>
 <summary>Introduced Tyk v3 GraphQL Engine in Gateway</summary>
 
-The new GraphQL engine, version 3-preview, is now available in Tyk Gateway. It can be used for any GQL API by using the following enum in raw API definition: *"version": "3-preview"*. This experimental version offers optimised GQL operation resolution, faster response times, and a more efficient data loader. It is currently not recommended for production use and will be stabilised in future releases, eventually becoming the default for new GQL APIs in Tyk. 
+The new GraphQL engine, version 3-preview, is now available in Tyk Gateway. It can be used for any GQL API by using the following enum in raw API definition: *"version": "3-preview"*. This experimental version offers optimized GQL operation resolution, faster response times, and a more efficient data loader. It is currently not recommended for production use and will be stabilised in future releases, eventually becoming the default for new GQL APIs in Tyk. 
 </details>
 </li>
 <li>

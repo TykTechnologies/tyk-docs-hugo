@@ -10,7 +10,7 @@ menu:
 ---
 ## Introduction
 
-This page explains what Tyk Cloud is and how the Tyk SaaS solution makes it easy for you to optimise your platforms in just a few clicks, so that you can manage your APIs seamlessly.  
+This page explains what Tyk Cloud is and how the Tyk SaaS solution makes it easy for you to optimize your platforms in just a few clicks, so that you can manage your APIs seamlessly.  
 
 {{< button_left href="https://tyk.io/sign-up/#cloud" color="green" content="Cloud free trial" >}}
 
@@ -35,7 +35,7 @@ Paid plans and Enterprise trials allow users to select one of 5 AWS locations as
 
 Tyk is cloud native and has always been a true multi-cloud product and now we’re taking it to the next level with our next level SaaS platform, Tyk Cloud.
 
-Now you don’t need to worry about vendor lock-in, or complex deployments, you can benefit from being able to optimise your platforms across and between a myriad of providers such as AWS, Google Cloud etc.
+Now you don’t need to worry about vendor lock-in, or complex deployments, you can benefit from being able to optimize your platforms across and between a myriad of providers such as AWS, Google Cloud etc.
 
 ### Quick deployments Wherever you need them
 

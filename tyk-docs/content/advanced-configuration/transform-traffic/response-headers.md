@@ -31,9 +31,9 @@ The response header transform allows you to add security headers to the response
 
 Adding metadata to response headers can be useful for tracking and analyzing API usage, as well as for providing additional information to clients. For example, you may want to add a header that indicates the version of the API being used or the time taken to process the request.
 
-#### Modifying response headers for dynamic performance optimisation
+#### Modifying response headers for dynamic performance optimization
 
-You can use response header transformation to dynamically optimise the performance of the API. For example, you may want to indicate to the client the maximum number of requests that they can make in a given time period. By doing so through the response headers, you can perform dynamic optimisation of the load on the upstream service without triggering the rate limiter and so avoiding errors being sent to the client.
+You can use response header transformation to dynamically optimize the performance of the API. For example, you may want to indicate to the client the maximum number of requests that they can make in a given time period. By doing so through the response headers, you can perform dynamic optimization of the load on the upstream service without triggering the rate limiter and so avoiding errors being sent to the client.
 
 ## How the response header transform works
 

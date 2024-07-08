@@ -26,7 +26,7 @@ The two main questions that your monitoring system should address: _what’s bro
 * **Troubleshoot performance issues**→ Determine which hosts, containers, or other backend components are failing or experiencing latency issues during an incident.
     * Engineers have the data to determine which instance or backend service caused an outage.
     * This helps cross-functional teams resolve support tickets and address customer-facing issues.
-* **Optimise & Plan Infrastructure sizing**→ Statistics and data is used to lower infrastructure costs.
+* **Optimize & Plan Infrastructure sizing**→ Statistics and data is used to lower infrastructure costs.
     * For example, balance your infrastructure usage by directing requests from under provisioned hosts to overprovisioned hosts.
     * Size appropriately - Know if you’re over provisioned resources given your consumption to cut costs
 

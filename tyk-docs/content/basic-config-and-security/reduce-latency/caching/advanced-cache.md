@@ -13,10 +13,10 @@ For details on the API-level cache you should refer to the [API-level cache]({{<
 
 ## When to use the Endpoint Caching middleware
 #### API with multiple endpoints
-When your API has more than one endpoint the upstream data could have different degrees of freshness, for example the data returned by one endpoint might refresh only once every five minutes (and so should be suitably cached) whilst another might give real-time data and so should not be cached. The endpoint cache allows you to optimise the caching of each endpoint to meet your requirements.
+When your API has more than one endpoint the upstream data could have different degrees of freshness, for example the data returned by one endpoint might refresh only once every five minutes (and so should be suitably cached) whilst another might give real-time data and so should not be cached. The endpoint cache allows you to optimize the caching of each endpoint to meet your requirements.
 
 #### Request based caching
-If you have an API that's providing search capability (for example into a catalogue of products) and want to optimise the performance for the most frequently requested search terms, you could use the endpoint cache's [request-selective](#request-selective-cache-control) capability to cache only a subset of all requests to an endpoint.
+If you have an API that's providing search capability (for example into a catalogue of products) and want to optimize the performance for the most frequently requested search terms, you could use the endpoint cache's [request-selective](#request-selective-cache-control) capability to cache only a subset of all requests to an endpoint.
 
 ## How the endpoint cache works
 If caching is enabled then, by default, Tyk will create separate cache entries for every endpoint (path) of your API. This may be unnecessary for your particular API, so Tyk provides a facility to cache only specific endpoint(s).

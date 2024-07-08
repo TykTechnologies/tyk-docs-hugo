@@ -23,7 +23,7 @@ Sometimes you might have a legacy API and need to migrate the transactions to a 
 
 #### Shaping requests received from different devices
 
-You can detect device types via headers or context variables and transform the request payload to optimise it for that particular device. For example, you might send extra metadata to the upstream for mobile apps.
+You can detect device types via headers or context variables and transform the request payload to optimize it for that particular device. For example, you might send extra metadata to the upstream for mobile apps.
 
 #### SOAP to REST translation
 

@@ -1539,7 +1539,7 @@ menu:
               path: /basic-config-and-security/reduce-latency/caching/invalidate-cache/
               category: Page
               show: True
-            - title: "Optimising the Cache Storage"
+            - title: "Optimizing the Cache Storage"
               path: /basic-config-and-security/reduce-latency/caching/optimise-cache/
               category: Page
               show: True

@@ -21,7 +21,7 @@ Sometimes you might have a legacy API and need to migrate the transactions to a 
 
 #### Shaping responses for different devices
 
-You can detect the client device types via headers or context variables and transform the response payload to optimise it for that particular device. For example, you might optimise the response content for mobile apps.
+You can detect the client device types via headers or context variables and transform the response payload to optimize it for that particular device. For example, you might optimize the response content for mobile apps.
 
 #### SOAP to REST translation
 
