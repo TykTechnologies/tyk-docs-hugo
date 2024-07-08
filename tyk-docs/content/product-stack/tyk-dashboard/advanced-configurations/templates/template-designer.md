@@ -49,7 +49,7 @@ Returning to the **API Template** screen you will see your new template has been
 {{< img src="/img/dashboard/api-assets/api-templates/template-created.png" alt="Template has been successfully created" >}}
 
 ### Creating a template from an existing API
-You can use an existing API deployed on Tyk as the basis for a new API template - this is a great way to build up a portfolio of standardised APIs once you've got your first one correctly configured.
+You can use an existing API deployed on Tyk as the basis for a new API template - this is a great way to build up a portfolio of standardized APIs once you've got your first one correctly configured.
 
 From the **Created APIs** screen within the **APIs** section of the Tyk Dashboard, select the API that you wish to use as your starting point. In the **ACTIONS** drop-down select the **CREATE API TEMPLATE** option.
 

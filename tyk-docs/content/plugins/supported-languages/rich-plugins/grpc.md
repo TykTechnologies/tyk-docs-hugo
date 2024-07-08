@@ -47,7 +47,7 @@ Here we can see that Tyk Gateway sends requests to an external Java gRPC server 
 Deploying an external gRPC server to handle plugins provides numerous technical advantages:
 
 - Allows for independent scalability of the service from the Tyk Gateway.
-- Utilises a custom-designed server tailored to address specific security concerns, effectively mitigating various security risks associated with native plugins.
+- Utilizes a custom-designed server tailored to address specific security concerns, effectively mitigating various security risks associated with native plugins.
 
 ---
 

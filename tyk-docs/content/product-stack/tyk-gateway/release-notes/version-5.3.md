@@ -558,7 +558,7 @@ GraphQL APIs can now use the `detailed_tracing` setting in an API definition. Wi
 <details>
 <summary>Enhanced OpenTelemetry trace generation for UDG with mixed data sources</summary>
 
-This release introduces an enhanced trace generation system for Universal Data Graph (UDG). It consolidates all spans from both Tyk-managed and external data source executions into a single trace when used together. Furthermore, when UDG solely utilises Tyk-managed data sources, trace management is simplified and operational visibility is improved.
+This release introduces an enhanced trace generation system for Universal Data Graph (UDG). It consolidates all spans from both Tyk-managed and external data source executions into a single trace when used together. Furthermore, when UDG solely utilizes Tyk-managed data sources, trace management is simplified and operational visibility is improved.
 </details>
 </li>
 <li>
@@ -579,7 +579,7 @@ The Tyk Dashboard API endpoint */api/data-graphs/data-sources/import* now handle
 <details>
 <summary>OAS-to-UDG converter support for allOf/anyOf/oneOf keywords</summary>
 
-The OAS-to-UDG converter now seamlessly handles OpenAPI descriptions that utilise the *allOf*, *anyOf* and *oneOf* keywords, ensuring accurate and comprehensive conversion to a Tyk API definition. The feature expands the scope of OpenAPI documents that the converter can handle and allows our users to import REST API data sources defined in OAS in more complex cases.
+The OAS-to-UDG converter now seamlessly handles OpenAPI descriptions that utilize the *allOf*, *anyOf* and *oneOf* keywords, ensuring accurate and comprehensive conversion to a Tyk API definition. The feature expands the scope of OpenAPI documents that the converter can handle and allows our users to import REST API data sources defined in OAS in more complex cases.
 </details>
 </li>
 <li>

@@ -81,7 +81,7 @@ root.consecutive_doggos = counter(min: 1, set: if !this.sound.lowercase().contai
 # Out: {"consecutive_doggos":1}
 ```
 
-The `set` parameter can also be utilised to peek at the counter without mutating it by returning `null`.
+The `set` parameter can also be utilized to peek at the counter without mutating it by returning `null`.
 
 ```coffee
 root.things = counter(set: if this.id == null { null })

@@ -507,7 +507,7 @@ To add your custom Certificate Authority(CA) to your containers, you can mount y
 ```
 
 #### Enabling gateway autoscaling
-You can enable autoscaling of the gateway by `--set tyk-gateway.gateway.autoscaling.enabled=true`. By default, it will enable the `Horizontal Pod Autoscaler` resource with target average CPU utilisation at 60%, scaling between 1 and 3 instances. To customise those values you can modify the `tyk-gateway` section of `values.yaml` as shown below:
+You can enable autoscaling of the gateway by `--set tyk-gateway.gateway.autoscaling.enabled=true`. By default, it will enable the `Horizontal Pod Autoscaler` resource with target average CPU utilization at 60%, scaling between 1 and 3 instances. To customise those values you can modify the `tyk-gateway` section of `values.yaml` as shown below:
 
 ```yaml
 tyk-gateway:
@@ -735,7 +735,7 @@ tyk-mdcb:
 
 ### Tyk Bootstrap Configurations
 
-To enable bootstrapping, set `global.components.bootstrap` to `true`. It would run [tyk-k8s-bootstrap](https://github.com/TykTechnologies/tyk-k8s-bootstrap) to bootstrap `tyk-control-plane` and to create Kubernetes secrets that can be utilised in Tyk Operator and Tyk Developer Portal.
+To enable bootstrapping, set `global.components.bootstrap` to `true`. It would run [tyk-k8s-bootstrap](https://github.com/TykTechnologies/tyk-k8s-bootstrap) to bootstrap `tyk-control-plane` and to create Kubernetes secrets that can be utilized in Tyk Operator and Tyk Developer Portal.
 
 {{< note success >}}
 **Note**

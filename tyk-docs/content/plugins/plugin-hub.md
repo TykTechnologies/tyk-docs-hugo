@@ -27,7 +27,7 @@ Selected blogs for plugin development are included below. Further examples are a
 
 ## GitHub Repositories
 
-Here are some carefully selected GitHub repositories that will help you learn how to integrate and utilise Tyk Plugins in your development projects:
+Here are some carefully selected GitHub repositories that will help you learn how to integrate and utilize Tyk Plugins in your development projects:
 
 #### 1. [Tyk Awesome Plugins](https://github.com/TykTechnologies/tyk-awesome-plugins)
 - **Description**: Index of plugins developed using a variety of languages.

@@ -68,7 +68,7 @@ Tyk Streams will automatically set the connection name based off the label of th
 NATS component, so that monitoring tools between NATS and Tyk Streams can stay in sync.
 ### Authentication
 
-There are several components within Tyk Streams which utilise NATS services. You will find that each of these components
+There are several components within Tyk Streams which utilize NATS services. You will find that each of these components
 support optional advanced authentication parameters for [NKeys](https://docs.nats.io/nats-server/configuration/securing_nats/auth_intro/nkey_auth)
 and [User Credentials](https://docs.nats.io/developing-with-nats/security/creds).
 

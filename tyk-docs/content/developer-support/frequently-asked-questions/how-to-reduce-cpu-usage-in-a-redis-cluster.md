@@ -9,7 +9,7 @@ This FAQ explains a potential reason for high CPU usage in a Redis node within a
 
 ## What does high CPU usage in a Redis node within a Redis Cluster mean?
 
-When a single Redis node within a Redis Cluster exhibits high CPU usage, it indicates that the CPU resources of that particular node are being heavily utilised compared to others in the cluster.
+When a single Redis node within a Redis Cluster exhibits high CPU usage, it indicates that the CPU resources of that particular node are being heavily utilized compared to others in the cluster.
 
 The illustration below highlights the scenario where a single Redis node is exhibiting high CPU usage of 1.20% within a Redis Cluster. 
 
