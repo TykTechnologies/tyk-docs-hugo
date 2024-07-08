@@ -12,7 +12,7 @@ aliases:
 
 The Tyk Developer Portal enables you to expose a facade of your APIs and then allow third-party developers to register and use your APIs.
 
-The Tyk Developer Portal comes into two flavours:
+The Tyk Developer Portal comes into two flavors:
 *   Tyk Classic Developer Portal.
 *   Tyk Enterprise Developer Portal.
 

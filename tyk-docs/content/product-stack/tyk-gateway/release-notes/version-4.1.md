@@ -60,7 +60,7 @@ So, if you upgrade from Tyk v4.1.0 to v4.2.0 you only need to have the plugins c
 - Fixed an issue with the calculation of TTL for keys in an MDCB deployment such that TTL could be different between worker and controller Gateways
 - Fixed a bug when using Open ID where quota was not tracked correctly
 - Fixed multiple issues with schema merging in GraphQL federation. Federation subgraphs with the same name shared types like objects, interfaces, inputs, enums, unions and scalars will no longer cause errors when users are merging schemas into a federated supergraph.
-- Fixed an issue where schema merging in GraphQL federation could fail depending on the order or resolving subgraph schemas and only first instance of a type and its extension would be valid. Subgraphs are now individually normalised before a merge is attempted and all extensions that are possible in the federated schema are applied.
+- Fixed an issue where schema merging in GraphQL federation could fail depending on the order or resolving subgraph schemas and only first instance of a type and its extension would be valid. Subgraphs are now individually normalized before a merge is attempted and all extensions that are possible in the federated schema are applied.
 - Fixed an issue with accessing child properties of an object query variable for GraphQL where query {{.arguments.arg.foo}} would return "{ "foo":"123456" }" instead of "123456"
 
 ## Updated Versions

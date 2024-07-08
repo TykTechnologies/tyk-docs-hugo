@@ -2,7 +2,7 @@
 title: "Tyk API Management Deployment Options"
 date: 2020-06-24
 linkTitle: API Management
-tags: ["Tyk API Management", "Licencing", "Open Source", "Self-Managed", "Tyk Cloud", "API Gateway"]
+tags: ["Tyk API Management", "Licensing", "Open Source", "Self-Managed", "Tyk Cloud", "API Gateway"]
 description: "How to decide on which Tyk deployment option is best for you"
 aliases:
     - /getting-started/deployment-options/

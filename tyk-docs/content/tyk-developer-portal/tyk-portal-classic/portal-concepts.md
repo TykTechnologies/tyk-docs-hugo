@@ -55,7 +55,7 @@ If a new API requires key approval, the new key request will be generated, and a
 
 In the context of the developer portal, a security policy is the main "element" being exposed to public access. The policy is the same as a standard policy, and the policy forms the baseline template that gets used when the portal generates a token for the developer.
 
-Security policies are used instead of a one-to-one mapping because they encapsulate all the information needed for a public API programme:
+Security policies are used instead of a one-to-one mapping because they encapsulate all the information needed for a public API program:
 
 1.  Rate limits
 2.  Quota

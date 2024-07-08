@@ -5,7 +5,7 @@ description: "Using API categories with Tyk"
 tags: ["category", "categories", "governance", "API governance"]
 ---
 
-API categorisation is a governance feature provided within the Tyk Dashboard that helps you to manage a portfolio of APIs. You can filter the list of APIs visible in the Dashboard UI or to be returned by the Dashboard API by category. You can assign an API to any number of categories and any number of APIs to a category. All category names are entirely user defined.
+API categorization is a governance feature provided within the Tyk Dashboard that helps you to manage a portfolio of APIs. You can filter the list of APIs visible in the Dashboard UI or to be returned by the Dashboard API by category. You can assign an API to any number of categories and any number of APIs to a category. All category names are entirely user defined.
 
 ## When to use API categories
 #### Managing a large portfolio of APIs

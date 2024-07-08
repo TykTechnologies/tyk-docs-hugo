@@ -65,10 +65,10 @@ Changed the look & feel of request logs in Playground tab for GraphQL APIs. New 
 
 ##### Shared types
 Types of the same name can be defined in more than one subgraph (a shared type). This will no longer produce an error if each definition is identical.
-Shared types cannot be extended outside of the current subgraph, and the resolved extension must be identical to the resolved extension of the shared type in all other subgraphs (see subgraph normalisation notes). Attempting to extend a shared type will result in an error.
+Shared types cannot be extended outside of the current subgraph, and the resolved extension must be identical to the resolved extension of the shared type in all other subgraphs (see subgraph normalization notes). Attempting to extend a shared type will result in an error.
 The federated supergraph will include a single definition of a shared type, regardless of how many times it has been identically defined in its subgraphs.
 
-##### Subgraph normalisation before federation
+##### Subgraph normalization before federation
 Extensions of types whose base type is defined in the same subgraph will be resolved before an attempt at federation. A valid example involving a shared type:
 
 Subgraph 1:

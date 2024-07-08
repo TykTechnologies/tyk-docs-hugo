@@ -88,7 +88,7 @@ For example:
 
 In this example the allow list middleware has been configured for requests to the `GET /anything` and `PUT /anything` endpoints. Requests to any other endpoints will be rejected with `HTTP 403 Forbidden`, unless they also have the allow list middleware enabled.
 Note that the allow list has been configured to be case insensitive, so calls to `GET /Anything` will be allowed
-Note also that the endpoint path has not been terminated with `$`. Requests to, for example, `GET /anything/foobar` will be allowed as the [regular expression pattern match]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware#endpoint-parsing" >}}) will recognise this as `GET /anything`.
+Note also that the endpoint path has not been terminated with `$`. Requests to, for example, `GET /anything/foobar` will be allowed as the [regular expression pattern match]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware#endpoint-parsing" >}}) will recognize this as `GET /anything`.
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the allow list feature.
 
