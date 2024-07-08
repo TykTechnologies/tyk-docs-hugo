@@ -630,7 +630,7 @@ Previously, when operating in a worker configuration (in the data plane), the Ty
 
 <br>Now, the worker gateway fetches the session expiry information up front, while there is an active connection to MDCB. This ensures that this data is already available locally in the event of an MDCB disconnection.
 
-<br>This change significantly improves the API response time under MDCB disconnection scenarios by removing the need for the Gateway to wait for a timeout when attempting to fetch session information from the control plane, avoiding the previous 30-second delay. This optimisation enhances the resilience and efficiency of Tyk Gateway in distributed environments.
+<br>This change significantly improves the API response time under MDCB disconnection scenarios by removing the need for the Gateway to wait for a timeout when attempting to fetch session information from the control plane, avoiding the previous 30-second delay. This optimization enhances the resilience and efficiency of Tyk Gateway in distributed environments.
 </details>
 </li>
 <li>
@@ -643,9 +643,9 @@ We have made some changes to the Tyk OAS API Definition to provide a stable cont
 </li>
 <li>
 <details>
-<summary>Optimised Gateway memory usage and reduced network request payload with Redis Rate Limiter</summary>
+<summary>Optimized Gateway memory usage and reduced network request payload with Redis Rate Limiter</summary>
 
-We have optimised the allocation behavior of our sliding window log rate limiter implementation ([Redis Rate Limiter]({{< ref "getting-started/key-concepts/rate-limiting#redis-rate-limiter" >}})). Previously the complete request log would be retrieved from Redis. With this enhancement only the count of the requests in the window is retrieved, optimising the interaction with Redis and decreasing the Gateway memory usage.
+We have optimized the allocation behavior of our sliding window log rate limiter implementation ([Redis Rate Limiter]({{< ref "getting-started/key-concepts/rate-limiting#redis-rate-limiter" >}})). Previously the complete request log would be retrieved from Redis. With this enhancement only the count of the requests in the window is retrieved, optimizing the interaction with Redis and decreasing the Gateway memory usage.
 
 </details>
 </li>

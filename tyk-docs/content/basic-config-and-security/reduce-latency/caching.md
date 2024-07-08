@@ -20,7 +20,7 @@ Caching is best used on endpoints where responses infrequently change and are co
 
 ### Caching with Tyk
 
-Tyk uses Redis to store the cached responses and, as you'd expect from Tyk, there is lots of flexibility in how you configure caching so that you can optimise the performance of your system.
+Tyk uses Redis to store the cached responses and, as you'd expect from Tyk, there is lots of flexibility in how you configure caching so that you can optimize the performance of your system.
 
 There are two approaches to configure caching for an API deployed with Tyk:
 
@@ -65,7 +65,7 @@ This mode of operation is referred to as Global Caching because it is applied gl
 Tyk does support safe request caching at the more granular, per-endpoint level, as described [here]({{< ref "/basic-config-and-security/reduce-latency/caching/advanced-cache#selective-caching-by-endpoint-all-safe-requests">}}) - but `cache_all_safe_requests` must be set to `false` in that scenario.
 
 #### Cache Timeout
-The cache timeout (Time-To-Live or TTL) value can be configured per API and is the maximum age for which Tyk will consider a cache entry to be valid. You should use this to optimise the tradeoff between reducing calls to your upstream service and potential for changes to the upstream data.
+The cache timeout (Time-To-Live or TTL) value can be configured per API and is the maximum age for which Tyk will consider a cache entry to be valid. You should use this to optimize the tradeoff between reducing calls to your upstream service and potential for changes to the upstream data.
 
 If the timeout has been exceeded when a request is made to a cached API, that request will be passed to the upstream and the response will (if appropriate) be used to refresh the cache.
 

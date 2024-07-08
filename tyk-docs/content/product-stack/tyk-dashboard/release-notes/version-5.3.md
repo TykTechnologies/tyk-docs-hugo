@@ -689,7 +689,7 @@ We fixed an issue where OPA rules were preventing users from importing an OpenAP
 </li>
 <li>
 <details>
-<summary>Optimised Policy Creation Endpoint</summary>
+<summary>Optimized Policy Creation Endpoint</summary>
 
 Fixed an issue where applying security policies to large numbers of APIs took a long time. We’ve implemented bulk processing in the validation step at the api/portal/policies/POLICY_ID endpoint, resulting in an 80% reduction in the time taken to apply a policy to 2000 APIs.
 </details>

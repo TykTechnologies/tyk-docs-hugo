@@ -68,7 +68,7 @@ Rego focuses on providing powerful support for referencing nested documents and 
 
 Rego is declarative so policy authors can focus on what queries should return rather than how queries should be executed. These queries are simpler and more concise than the equivalent in an imperative language.
 
-Like other applications which support declarative query languages, OPA is able to optimise queries to improve performance.
+Like other applications which support declarative query languages, OPA is able to optimize queries to improve performance.
 
 Rego supports a variety of statements and functions. You can even use things like HTTP calls to build policies that depends on third-party APIs.
 See more about the language itself [here](https://www.openpolicyagent.org/docs/latest/policy-language/).
