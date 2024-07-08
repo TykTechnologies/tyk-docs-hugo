@@ -9,4 +9,4 @@ Register here to get a 14-day temporary licenses for the Tyk Dashboard & Develop
 {{< button href="https://tyk.io/sign-up/" color="green" content="Free trial" >}}
 
 For longer duration trials, or to request trials of the other proprietary software please contact the Tyk Team and tell
-us about your plans: {{< button href="https://tyk.io/contact/" color="green" content="Contact us" >}}
+us about your plans: {{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
