@@ -2,6 +2,8 @@
 title: Bloblang Methods
 description: Explains Bloblang Methods
 tags: [ "Tyk Streams", "Bloblang", "Bloblang Methods", "Methods" ]
+aliases:
+  - /product-stack/tyk-streaming/guides/bloblang/methods
 ---
 
 Methods provide most of the power in [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) as they allow you to augment values and can be added to any expression (including other methods):
