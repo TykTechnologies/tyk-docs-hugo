@@ -13,6 +13,6 @@ As we extend the capabilities of our Early Access features we may make changes t
 
 Early Access features are provided "as is" and Tyk disclaims and excludes to the fullest extent permitted by applicable laws all warranties, representations, conditions and all other terms, express or implied, including, but not limited to, implied warranties of merchantability and fitness for a particular purpose. 
 
-By accessing the Early Access features, you agree that Tyk will not be liable for any losses or damages caused in connection with Early Access features, unless the relevant losses or damages are due to our fraud, wilful misconduct or gross negligence. 
+By accessing the Early Access features, you agree that Tyk will not be liable for any losses or damages caused in connection with Early Access features, unless the relevant losses or damages are due to our fraud, willful misconduct or gross negligence. 
 
 This limitation does not apply to limitations that cannot be limited by law.

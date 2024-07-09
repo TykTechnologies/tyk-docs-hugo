@@ -6,7 +6,9 @@ Tyk Self-Managed is the easiest way to install Tyk Full Lifecycle API Management
 See [licensing and deployment models]({{< ref "tyk-on-premises/licensing" >}}) to learn about the different deployment options for Self-Managed.
 
 Register here to get a 14-day temporary licenses for the Tyk Dashboard & Developer Portal:
+
 {{< button_left href="https://tyk.io/sign-up/" color="green" content="Free trial" >}}
 
-For longer duration trials, or to request trials of the other proprietary software please contact the Tyk Team and tell
-us about your plans: {{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
+For longer duration trials, or to request trials of the other proprietary software please contact the Tyk Team and tell us about your plans:
+
+{{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}

@@ -562,7 +562,7 @@ Fixed an issue in *Tyk Dashboard* where duplicate APIs could be created with the
 <details>
 <summary>Connection issues were encountered with MongoDB connection strings</summary>
 
-Fixed an issue with *MongoDB* connection strings. To ensure consistent compatibility with both *mgo* and *mongo-go* drivers, users should now utilise URL-encoded values within the *MongoDB* connection string's username and password fields when they contain characters like "?", "@". This resolves the need for different handling across *MongoDB* drivers.
+Fixed an issue with *MongoDB* connection strings. To ensure consistent compatibility with both *mgo* and *mongo-go* drivers, users should now utilize URL-encoded values within the *MongoDB* connection string's username and password fields when they contain characters like "?", "@". This resolves the need for different handling across *MongoDB* drivers.
 </details>
 </li>
 </ul>

@@ -18,7 +18,7 @@ Tyk’s Multi Data Center Bridge (MDCB) is a separately licensed extension to th
 
 ## Challenges of managing APIs in a distributed environment
 
-When your users are spread geographically and want to access your APIs from different parts of the world you can optimise the performance, value and utility of your APIs by deploying API Gateways in data centers local to them.
+When your users are spread geographically and want to access your APIs from different parts of the world you can optimize the performance, value and utility of your APIs by deploying API Gateways in data centers local to them.
 
 {{< img src="/img/mdcb/mdcb-intro1.png" width="800" height="975" alt="Single API gateway" >}}
 
@@ -42,7 +42,7 @@ This is where Tyk’s Multi Data Center Bridge (MDCB) comes in.
 
 ## How does Tyk Multi Data Center Bridge help manage your APIs in a distributed environment?
 
-The Tyk MDCB makes it possible to manage federated global deployments easily, from a central Dashboard: you can confidently deploy a multi-data center, geographically isolated set of Tyk Gateway clusters for maximum redundancy, failover, latency optimisation, and uptime.
+The Tyk MDCB makes it possible to manage federated global deployments easily, from a central Dashboard: you can confidently deploy a multi-data center, geographically isolated set of Tyk Gateway clusters for maximum redundancy, failover, latency optimization, and uptime.
 
 Combining Tyk Dashboard with MDCB, you are provided with a “single pane of glass” or control plane that allows you to centrally manage multiple Tyk Gateway clusters. This has many advantages over having separate gateways and corresponding dashboard/portals, which would require manual synchronisation to roll out any changes (e.g. new APIs) across all the individual gateways. 
 
@@ -70,7 +70,7 @@ Consider Acme Global Bank: they have customers in the USA and the EU. Due to com
 
 {{< img src="/img/mdcb/mdcb-acme-global-bank1.png" width="600" height="750" alt="Acme Global Bank without MDCB" >}}
 
-Tyk MDCB enables Acme Global Bank to power this architecture by creating a primary data center with all the Tyk Control Plane components and secondary (worker) data centers that act as local caches to run validation and rate limiting operations to optimise latency and performance.
+Tyk MDCB enables Acme Global Bank to power this architecture by creating a primary data center with all the Tyk Control Plane components and secondary (worker) data centers that act as local caches to run validation and rate limiting operations to optimize latency and performance.
 
 {{< img src="/img/mdcb/mdcb-acme-global-bank2.png" width="600" height="750" alt="Acme Global Bank with MDCB" >}}
 

@@ -8,7 +8,6 @@ menu:
     main:
         parent: "API Management"
 aliases:
-  - /getting-started/installation/with-tyk-on-premises/
   - /tyk-on-premises/getting-started/
   - /getting-started/installation/with-tyk-on-premises/bootstrapper-cli/
   - /get-started/with-tyk-on-premise/
@@ -63,7 +62,7 @@ This init system variance implies there are different ways to manage the service
 For Upstart, service management can be performed through the `initctl` or a set of `start`, `stop`, `restart` and `status` commands. Upstart 1.x also works with the `service` command.
 
 #### systemd
-For systemd, either `systemctl` or `service` commands may be utilised.
+For systemd, either `systemctl` or `service` commands may be utilized.
 
 The `service` command can usually be used with SysVinit scripts, as well as invoking them directly.
 
@@ -71,7 +70,7 @@ The `service` command can usually be used with SysVinit scripts, as well as invo
 
 *   Upstart 0.6.x and SysVinit: log files are located in `/var/logs` for every respective service, e.g. `/var/logs/tyk-gateway.stderr` and `/var/logs/tyk-gateway.stdout`
 *   Upstart 1.x: by default everything is stored in `/var/logs/upstart` directory, e.g. `/var/logs/upstart/tyk-gateway.log`
-*   systemd utilises its own logging mechanism called journald, which is usable via the `journalctl` command, e.g. `journalctl -u tyk-gateway`
+*   systemd utilizes its own logging mechanism called journald, which is usable via the `journalctl` command, e.g. `journalctl -u tyk-gateway`
 
 
 Please consult with respective init system documentation for more details on how to use and configure it.

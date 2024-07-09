@@ -44,7 +44,7 @@ to your APIs. You can use this as a first line of defense against overly large
 requests that might affect your Tyk Gateways or upstream services. Of course,
 being Tyk, we also provide the flexibility to configure API-level and
 per-endpoint size limits so you can be as granular as you need to protect and
-optimise your services. Check out our improved documentation for full
+optimize your services. Check out our improved documentation for full
 description of how to use these powerful [features]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits" >}}).
 
 ##### Changed default RPC pool size for MDCB deployments
@@ -88,7 +88,7 @@ size using [slave_options.rpc_pool_size]({{< ref "tyk-oss-gateway/configuration#
 
 ##### Changed
 
-- Improved performance when opening the Portal page by optimising the pre-fetching of required data
+- Improved performance when opening the Portal page by optimizing the pre-fetching of required data
 
 
 ## Community Contributions

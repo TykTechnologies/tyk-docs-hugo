@@ -550,7 +550,7 @@ Note that this is a useful feature for learning how to develop gRPC plugins and 
 
 In this guide, we've delved into the integration of a Python gRPC server with Tyk Gateway.
 
-We have explained how to implement a Python gRPC server and equipped developers with the necessary tools, knowledge and capabilities to effectively utilise Tyk Gateway through gRPC services.
+We have explained how to implement a Python gRPC server and equipped developers with the necessary tools, knowledge and capabilities to effectively utilize Tyk Gateway through gRPC services.
 
 The following essential groundwork has been covered:
 

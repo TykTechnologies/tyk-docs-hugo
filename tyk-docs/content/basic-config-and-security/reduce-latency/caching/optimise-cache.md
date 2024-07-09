@@ -1,7 +1,7 @@
 ---
-title: "Optimising the Cache Storage"
+title: "Optimizing the Cache Storage"
 date: 2023-06-08
-tags: ["Optimise Cache Storage", "Cache", "Caching", "Redis", "Advanced"]
+tags: ["Optimize Cache Storage", "Cache", "Caching", "Redis", "Advanced"]
 description: ""
 menu:
   main:

@@ -1,7 +1,7 @@
 ---
 date: 2017-03-24T10:10:41Z
 title: Monitor Tyk Stack
-tags: ["Monitoring", "Observability", "SLO", "infrastructure", "CPU utilisation", "Helathcheck"]
+tags: ["Monitoring", "Observability", "SLO", "infrastructure", "CPU utilization", "Helathcheck"]
 description: "Monitor Tyk components and their dependencies; how to set up monitoring and observability of your API kingdom"
 weight: 1
 menu:
@@ -16,13 +16,13 @@ A common question that gets asked is how to monitor the Tyk components.
 
 The Gateway & Redis are the only components that will have a high on-demand performance requirement, which needs to scale with your API traffic.
 
-### Tyk Gateway CPU Utilisation
+### Tyk Gateway CPU Utilization
 
 Tyk Gateway is CPU bound. It will have better performance the more cores you throw at Tyk. Tyk will automatically spread itself across all available cores to handle the traffic. Be sure to limit the cores in a Kubernetes deployment otherwise, the Gateway will attempt to consume all cores in a node.
 
 Performance benchmarks on how Tyk performs across different CPU architectures, environments and sizes [here](https://tyk.io/performance-benchmarks/).
 
-A healthy and performant Tyk Gateway should have a CPU utilisation of under 60%. If the average CPU utilisation is above 60%, then we recommend you scale your Tyk Gateway services. A higher figure than 60% introduces risk because if one Gateway fails, the traffic spillover to healthy nodes might be overwhelming and result in a cascading failure.
+A healthy and performant Tyk Gateway should have a CPU utilization of under 60%. If the average CPU utilization is above 60%, then we recommend you scale your Tyk Gateway services. A higher figure than 60% introduces risk because if one Gateway fails, the traffic spillover to healthy nodes might be overwhelming and result in a cascading failure.
 
 
 ### Liveness Health Check
