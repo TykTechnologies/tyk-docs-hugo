@@ -10,16 +10,18 @@ menu:
         parent: Tyk Self-Managed
 aliases:
   - /tyk-self-managed/istio/
-  - "tyk-self-managed/install"
+  - /tyk-self-managed/install/
   - /getting-started/installation/with-tyk-on-premises/
   - /get-started/with-tyk-on-premise/installation/
 ---
 
-First, click here to get a free trial license - 
+First, click here to get a trial license
+
 </br>
+
 {{< button_left href="https://tyk.io/sign-up/#self" color="green" content="Self-managed Free License" >}}
 
-Now choose your the installation
+**Now choose your preferred installation option**
 
 {{< grid >}}
 
