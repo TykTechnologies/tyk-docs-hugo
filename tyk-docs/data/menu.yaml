@@ -4161,6 +4161,10 @@ menu:
               path: "/product-stack/tyk-streaming/guides/bloblang/methods/parsing"
               category: Page
               show: True
+            - title: "Timestamps"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/timestamps"
+              category: Page
+              show: True
       - title: "Deployment Considerations"
         path: /product-stack/tyk-streaming/deployment-considerations
         category: Page
