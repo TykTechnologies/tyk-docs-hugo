@@ -4150,7 +4150,7 @@ menu:
               category: Page
               show: True
             - title: "Numbers"
-              path: "/product-stack/tyk-streaming/guides/bloblang/methods/number-manipulation"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/numbers"
               category: Page
               show: True
             - title: "Objects and Arrays"
