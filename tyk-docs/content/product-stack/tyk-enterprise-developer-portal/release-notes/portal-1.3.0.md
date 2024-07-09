@@ -62,7 +62,7 @@ We introduced more verbose error logging for the DCR flow and for Single Sign-On
 - Fixes to the shopping cart flow were made as follows:
   - Fixed the bug where the 'Add to cart' button in the API Product page were not clickable; 
   - Added form validation in the checkout flow.
-- Fixed the API Product page to show only catalogues available to a developer.
+- Fixed the API Product page to show only catalogs available to a developer.
 
 ## Further Information
 

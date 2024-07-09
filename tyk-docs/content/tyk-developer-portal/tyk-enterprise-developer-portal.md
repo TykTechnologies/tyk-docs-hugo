@@ -16,7 +16,7 @@ The Tyk Enterprise Developer Portal enables you to:
 * Completely customise look and feel of the portal.
 * Combine multiple APIs into API product and supply them with OpenAPI documentation and tutorials.
 * Create multiple organisations and teams to segment your developer audience.
-* Create multiple API catalogues to tailor visibility of API products and plans to different audiences.
+* Create multiple API catalogs to tailor visibility of API products and plans to different audiences.
 * Integrate with the most popular Identity providers via Dynamic client registration.
 * Fully control the flow of the developer sign-up and enrollment.
 

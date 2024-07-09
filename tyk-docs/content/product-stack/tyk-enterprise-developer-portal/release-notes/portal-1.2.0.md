@@ -66,7 +66,7 @@ This new setting allows API Providers to set the logging [level]({{< ref "produc
 
 #### Fixed
 - Fixed grammar in the copy section of the admin application on the Application page.
-- Fixes an issue with DCR that was encountered when a developer deletes an app with two DCR products from different catalogues.  In that case, the client was deleted from IdP but the app was not deleted from the Portal.
+- Fixes an issue with DCR that was encountered when a developer deletes an app with two DCR products from different catalogs.  In that case, the client was deleted from IdP but the app was not deleted from the Portal.
 
 ## Further Information
 
