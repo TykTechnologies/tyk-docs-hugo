@@ -1,8 +1,10 @@
 ---
 title: String Manipulation Methods
 description: Explains Bloblang string manipulation methods
-tags: [ "Tyk Streams", "Bloblang", "Bloblang Methods", "Strings, "Methods" ]
+tags: [ "Tyk Streams", "Bloblang", "Bloblang Methods", "Strings", "Methods" ]
 ---
+
+Bloblang offers powerful string manipulation methods designed to handle a wide range of tasks from basic transformations to complex operations like hashing and formatting. These methods facilitate string manipulation, making Bloblang an ideal tool for data transformation pipelines and integration workflows.
 
 ## capitalize
 
