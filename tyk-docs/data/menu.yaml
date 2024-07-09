@@ -4150,7 +4150,7 @@ menu:
               category: Page
               show: True
             - title: "JSON web tokens"
-              path: "/product-stack/tyk-streaming/guides/bloblang/json-web-tokens"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/json-web-tokens"
               category: Page
               show: True
             - title: "Numbers"
