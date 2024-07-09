@@ -4,6 +4,7 @@ description: Explains Type Coercion Methods
 tags: [ "Tyk Streams", "Bloblang", "Bloblang Methods", "Type Coercion" ]
 ---
 
+Bloblang provides a robust set of type coercion methods designed to facilitate seamless transformation and manipulation of data across various types. This includes converting values into booleans, numbers, strings or byte arrays.
 
 ## bool
 
