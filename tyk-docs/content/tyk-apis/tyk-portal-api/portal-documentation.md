@@ -6,7 +6,7 @@ menu:
     parent: "Tyk Portal API"
 weight: 6
 ---
-This section covers both [Documentation](#documentation) and [Catalog](#catalogue) endpoints.
+This section covers both [Documentation](#documentation) and [Catalog](#catalog) endpoints.
 
 ## Documentation
 
