@@ -8,7 +8,6 @@ menu:
     main:
         parent: "API Management"
 aliases:
-  - /getting-started/installation/with-tyk-on-premises/
   - /tyk-on-premises/getting-started/
   - /getting-started/installation/with-tyk-on-premises/bootstrapper-cli/
   - /get-started/with-tyk-on-premise/
