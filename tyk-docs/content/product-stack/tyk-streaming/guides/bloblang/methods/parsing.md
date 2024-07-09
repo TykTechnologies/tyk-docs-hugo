@@ -4,6 +4,8 @@ description: Explains Bloblang parsing methods
 tags: [ "Tyk Streams", "Bloblang", "Bloblang Methods", "Methods", "Parsing" ]
 ---
 
+This page provides a comprehensive overview of the various parsing methods available in Bloblang, the data transformation language used within Tyk Streams. Whether you're looking to transform JSON, XML, CSV, or other data formats, these methods will help you achieve dynamic mappings and efficient data processing. Each method includes detailed parameters and practical examples to guide you through their implementation. 
+
 ## bloblang
 
 Executes an argument [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mapping on the target. This method can be used in order to execute dynamic mappings. Imports and functions that interact with the environment, such as `file` and `env`, or that access message information directly, such as `content` or `json`, are not enabled for dynamic [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mappings.
