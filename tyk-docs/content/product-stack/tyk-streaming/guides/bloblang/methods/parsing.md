@@ -8,11 +8,11 @@ tags: [ "Tyk Streams", "Bloblang", "Bloblang Methods", "Methods", "Parsing" ]
 
 Executes an argument [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) mapping on the target. This method can be used in order to execute dynamic mappings. Imports and functions that interact with the environment, such as `file` and `env`, or that access message information directly, such as `content` or `json`, are not enabled for dynamic [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) mappings.
 
-### Parameters
+#### Parameters
 
 **mapping** &lt;string&gt; The mapping to execute.  
 
-### Examples
+#### Examples
 
 
 ```coffee
@@ -29,12 +29,12 @@ root.body = this.body.bloblang(this.mapping)
 
 Serializes a target value into a pretty-printed JSON byte array (with 4 space indentation by default).
 
-### Parameters
+#### Parameters
 
 **indent** &lt;string, default `"    "`&gt; Indentation string. Each element in a JSON object or array will begin on a new, indented line followed by one or more copies of indent according to the indentation nesting.  
 **no_indent** &lt;bool, default `false`&gt; Disable indentation.  
 
-### Examples
+#### Examples
 
 
 ```coffee
@@ -81,7 +81,7 @@ root = this.doc.format_json(no_indent: true)
 
 Formats data as a [MessagePack](https://msgpack.org/) message in bytes format.
 
-### Examples
+#### Examples
 
 
 ```coffee
@@ -103,12 +103,12 @@ root.encoded = this.format_msgpack().encode("base64")
 Serializes a target value into an XML byte array.
 
 
-### Parameters
+#### Parameters
 
 **indent** &lt;string, default `"    "`&gt; Indentation string. Each element in an XML object or array will begin on a new, indented line followed by one or more copies of indent according to the indentation nesting.  
 **no_indent** &lt;bool, default `false`&gt; Disable indentation.  
 
-### Examples
+#### Examples
 
 
 Serializes a target value into a pretty-printed XML byte array (with 4 space indentation by default).
@@ -159,7 +159,7 @@ root = this.format_xml(no_indent: true)
 
 Serializes a target value into a YAML byte array.
 
-### Examples
+#### Examples
 
 
 ```coffee
@@ -182,13 +182,13 @@ root.doc = this.doc.format_yaml().string()
 
 Attempts to parse a string into an array of objects by following the CSV format described in RFC 4180.
 
-### Parameters
+#### Parameters
 
 **parse_header_row** &lt;bool, default `true`&gt; Whether to reference the first row as a header row. If set to true the output structure for messages will be an object where field keys are determined by the header row. Otherwise, the output will be an array of row arrays.  
 **delimiter** &lt;string, default `","`&gt; The delimiter to use for splitting values in each record. It must be a single character.  
 **lazy_quotes** &lt;bool, default `false`&gt; If set to `true`, a quote may appear in an unquoted field and a non-doubled quote may appear in a quoted field.  
 
-### Examples
+#### Examples
 
 
 Parses CSV data with a header row
@@ -231,7 +231,7 @@ root.orders = this.orders.parse_csv(lazy_quotes:true)
 
 Attempts to parse a url-encoded query string (from an x-www-form-urlencoded request body) and returns a structured result.
 
-### Examples
+#### Examples
 
 
 ```coffee
@@ -245,11 +245,11 @@ root.values = this.body.parse_form_url_encoded()
 
 Attempts to parse a string as a JSON document and returns the result.
 
-### Parameters
+#### Parameters
 
 **use_number** &lt;(optional) bool&gt; An optional flag that when set makes parsing numbers as json.Number instead of the default float64.  
 
-### Examples
+#### Examples
 
 
 ```coffee
@@ -270,7 +270,7 @@ root.doc = this.doc.parse_json(use_number: true)
 
 Parses a [MessagePack](https://msgpack.org/) message into a structured document.
 
-### Examples
+#### Examples
 
 
 ```coffee
@@ -291,11 +291,11 @@ root = this.encoded.decode("base64").parse_msgpack()
 
 Decodes a [Parquet file](https://parquet.apache.org/docs/) into an array of objects, one for each row within the file.
 
-### Parameters
+#### Parameters
 
 **byte_array_as_string** &lt;bool, default `false`&gt; Deprecated: This parameter is no longer used.  
 
-### Examples
+#### Examples
 
 
 ```coffee
@@ -306,7 +306,7 @@ root = content().parse_parquet()
 
 Attempts to parse a URL from a string value, returning a structured result that describes the various facets of the URL. The fields returned within the structured result roughly follow https://pkg.go.dev/net/url#URL, and may be expanded in future in order to present more information.
 
-### Examples
+#### Examples
 
 
 ```coffee
@@ -337,11 +337,11 @@ Attempts to parse a string as an XML document and returns a structured result, w
 - If cast is true, try to cast values to numbers and booleans instead of returning strings.
 
 
-### Parameters
+#### Parameters
 
 **cast** &lt;(optional) bool, default `false`&gt; whether to try to cast values that are numbers and booleans to the right type.  
 
-### Examples
+#### Examples
 
 
 ```coffee
@@ -369,7 +369,7 @@ root.doc = this.doc.parse_xml(cast: true)
 
 Attempts to parse a string as a single YAML document and returns the result.
 
-### Examples
+#### Examples
 
 
 ```coffee
