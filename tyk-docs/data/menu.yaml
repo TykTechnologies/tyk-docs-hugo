@@ -4141,6 +4141,10 @@ menu:
               path: "/product-stack/tyk-streaming/guides/bloblang/methods/encoding-and-encryption"
               category: Page
               show: True
+            - title: "JSON web tokens"
+              path: "/product-stack/tyk-streaming/guides/bloblang/json-web-tokens"
+              category: Page
+              show: True
             - title: "Parsing"
               path: "/product-stack/tyk-streaming/guides/bloblang/methods/parsing"
               category: Page
