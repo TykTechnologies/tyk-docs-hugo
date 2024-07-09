@@ -16,6 +16,9 @@ aliases:
 ---
 
 First, click here to get a trial license
+
+</br>
+
 {{< button_left href="https://tyk.io/sign-up/#self" color="green" content="Self-managed Free License" >}}
 
 **Now choose your preferred installation option**
