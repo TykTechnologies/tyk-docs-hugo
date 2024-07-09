@@ -4,6 +4,8 @@ description: Explains Object and Array Methods
 tags: [ "Tyk Streams", "Bloblang", "Bloblang Methods", "Objects", "Arrays" ]
 ---
 
+Bloblang, the query and transformation language used within Tyk Streams, offers methods for manipulating objects and arrays. These methods provide efficient ways to filter, transform, and manipulate structured data, enabling streamlined data processing pipelines. Whether you're working with JSON objects or arrays of varying complexity, Bloblang's Object and Array Methods offer a range of use cases for data validation and transformations.
+
 ## all
 
 Checks each element of an array against a query and returns true if all elements passed. An error occurs if the target is not an array, or if any element results in the provided query returning a non-boolean result. Returns false if the target array is empty.
@@ -158,7 +160,7 @@ Create a diff by comparing the current value with the given one. Wraps the githu
 
 **other** &lt;unknown&gt; The value to compare against.  
 
-### enumerated
+## enumerated
 
 Converts an array into a new array of objects, where each object has a field index containing the `index` of the element and a field `value` containing the original value of the element.
 

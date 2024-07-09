@@ -4153,6 +4153,10 @@ menu:
               path: "/product-stack/tyk-streaming/guides/bloblang/methods/number-manipulation"
               category: Page
               show: True
+            - title: "Objects and Arrays"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/object-and-arrays"
+              category: Page
+              show: True
             - title: "Regular expressions"
               path: "/product-stack/tyk-streaming/guides/bloblang/methods/regular-expressions"
               category: Page
