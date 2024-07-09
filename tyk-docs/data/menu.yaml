@@ -4169,6 +4169,10 @@ menu:
               path: "/product-stack/tyk-streaming/guides/bloblang/methods/timestamps"
               category: Page
               show: True
+            - title: "Type Coercion"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/type-coercion"
+              category: Page
+              show: True
       - title: "Deployment Considerations"
         path: /product-stack/tyk-streaming/deployment-considerations
         category: Page
