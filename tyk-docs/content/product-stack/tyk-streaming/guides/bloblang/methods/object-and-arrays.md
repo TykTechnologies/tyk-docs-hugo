@@ -4,7 +4,7 @@ description: Explains Object and Array Methods
 tags: [ "Tyk Streams", "Bloblang", "Bloblang Methods", "Objects", "Arrays" ]
 ---
 
-### all
+## all
 
 Checks each element of an array against a query and returns true if all elements passed. An error occurs if the target is not an array, or if any element results in the provided query returning a non-boolean result. Returns false if the target array is empty.
 
@@ -25,7 +25,7 @@ root.all_over_21 = this.patrons.all(patron -> patron.age >= 21)
 # Out: {"all_over_21":true}
 ```
 
-### any
+## any
 
 Checks the elements of an array against a query and returns true if any element passes. An error occurs if the target is not an array, or if an element results in the provided query returning a non-boolean result. Returns false if the target array is empty.
 
@@ -46,7 +46,7 @@ root.any_over_21 = this.patrons.any(patron -> patron.age >= 21)
 # Out: {"any_over_21":false}
 ```
 
-### append
+## append
 
 Returns an array with new elements appended to the end.
 
@@ -60,7 +60,7 @@ root.foo = this.foo.append("and", "this")
 # Out: {"foo":["bar","baz","and","this"]}
 ```
 
-### assign
+## assign
 
 Merge a source object into an existing destination object. When a collision is found within the merged structures (both a source and destination object contain the same non-object keys) the value in the destination object will be overwritten by that of source object. In order to preserve both values on collision use the [merge](#merge) method.
 
@@ -78,7 +78,7 @@ root = this.foo.assign(this.bar)
 # Out: {"first_name":"fooer","likes":"foos","second_name":"barer"}
 ```
 
-### collapse
+## collapse
 
 Collapse an array or object into an object of key/value pairs for each field, where the key is the full path of the structured field in dot path notation. Empty arrays an objects are ignored by default.
 
@@ -105,7 +105,7 @@ root.result = this.collapse(include_empty: true)
 # Out: {"result":{"foo.0.bar":"1","foo.1.bar":{},"foo.2.bar":"2","foo.3.bar":[]}}
 ```
 
-### concat
+## concat
 
 Concatenates an array value with one or more argument arrays.
 
@@ -119,7 +119,7 @@ root.foo = this.foo.concat(this.bar, this.baz)
 # Out: {"foo":["a","b","c","d","e","f"]}
 ```
 
-### contains
+## contains
 
 Checks whether an array contains an element matching the argument, or an object contains a value matching the argument, and returns a boolean result. Numerical comparisons are made irrespective of the representation type (float versus integer).
 
@@ -150,7 +150,7 @@ root.has_bar = this.thing.contains(20)
 # Out: {"has_bar":false}
 ```
 
-### diff
+## diff
 
 Create a diff by comparing the current value with the given one. Wraps the github.com/r3labs/diff/v3 package. See its [docs](https://pkg.go.dev/github.com/r3labs/diff/v3) for more information.
 
@@ -172,7 +172,7 @@ root.foo = this.foo.enumerated()
 # Out: {"foo":[{"index":0,"value":"bar"},{"index":1,"value":"baz"}]}
 ```
 
-### explode
+## explode
 
 Explodes an array or object at a [field path]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/field-paths" >}}).
 
@@ -205,7 +205,7 @@ root = this.explode("value")
 # Out: {"bar":{"id":1,"value":[3,4]},"baz":{"id":1,"value":{"bev":5}},"foo":{"id":1,"value":2}}
 ```
 
-### filter
+## filter
 
 Executes a mapping query argument for each element of an array or key/value pair of an object. If the query returns `false` the item is removed from the resulting array or object. The item will also be removed if the query returns any non-boolean value.
 
@@ -234,7 +234,7 @@ root.new_dict = this.dict.filter(item -> item.value.contains("foo"))
 # Out: {"new_dict":{"first":"hello foo","third":"this foo is great"}}
 ```
 
-### find
+## find
 
 Returns the index of the first occurrence of a value in an array. `-1` is returned if there are no matches. Numerical comparisons are made irrespective of the representation type (float versus integer).
 
@@ -259,7 +259,7 @@ root.index = this.things.find(this.goal)
 # Out: {"index":1}
 ```
 
-### find_all
+## find_all
 
 Returns an array containing the indexes of all occurrences of a value in an array. An empty array is returned if there are no matches. Numerical comparisons are made irrespective of the representation type (float versus integer).
 
@@ -283,7 +283,7 @@ root.indexes = this.things.find_all(this.goal)
 # Out: {"indexes":[1,3]}
 ```
 
-### find_all_by
+## find_all_by
 
 Returns an array containing the indexes of all occurrences of an array where the provided query resolves to a boolean `true`. An empty array is returned if there are no matches. Numerical comparisons are made irrespective of the representation type (float versus integer).
 
@@ -301,7 +301,7 @@ root.index = this.find_all_by(v -> v != "bar")
 # Out: {"index":[0,2]}
 ```
 
-### find_by
+## find_by
 
 Returns the index of the first occurrence of an array where the provided query resolves to a boolean `true`. `-1` is returned if there are no matches.
 
@@ -319,7 +319,7 @@ root.index = this.find_by(v -> v != "bar")
 # Out: {"index":0}
 ```
 
-### flatten
+## flatten
 
 Iterates an array and any element that is itself an array is removed and has its elements inserted directly in the resulting array.
 
@@ -333,7 +333,7 @@ root.result = this.flatten()
 # Out: {"result":["foo","bar","baz","buz"]}
 ```
 
-### fold
+## fold
 
 Takes two arguments: an initial value, and a mapping query. For each element of an array the mapping context is an object with two fields `tally` and `value`, where `tally` contains the current accumulated value and `value` is the value of the current element. The mapping must return the result of adding the value to the tally.
 
@@ -370,7 +370,7 @@ root.smoothie = this.fruits.fold({}, item -> item.tally.merge(item.value))
 # Out: {"smoothie":{"apple":5,"banana":3,"orange":8}}
 ```
 
-### get
+## get
 
 Extract a field value, identified via a [dot path]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/field-paths" >}}), from an object.
 
@@ -391,7 +391,7 @@ root.result = this.foo.get(this.target)
 # Out: {"result":"from baz"}
 ```
 
-### index
+## index
 
 Extract an element from an array by an index. The index can be negative, and if so the element will be selected from the end counting backwards starting from -1. E.g. an index of -1 returns the last element, an index of -2 returns the element before the last, and so on.
 
@@ -417,7 +417,7 @@ root.last_byte = this.name.bytes().index(-1)
 # Out: {"last_byte":110}
 ```
 
-### join
+## join
 
 Join an array of strings with an optional delimiter into a single string.
 
@@ -436,7 +436,7 @@ root.joined_numbers = this.numbers.map_each(this.string()).join(",")
 # Out: {"joined_numbers":"3,8,11","joined_words":"helloworld"}
 ```
 
-### json_path
+## json_path
 
 Executes the given [JSONPath expression](https://goessner.net/articles/JsonPath) on an object or array and returns the result. For more complex logic, you can use [Gval expressions](https://github.com/PaesslerAG/gval).
 
@@ -464,7 +464,7 @@ root.text_objects = this.json_path("$.body[?(@.type=='text')]")
 # Out: {"text_objects":[{"id":"bar","type":"text"}]}
 ```
 
-### json_schema
+## json_schema
 
 Checks a [JSON schema](https://json-schema.org/) against a value and returns the value if it matches or throws and error if it does not.
 
@@ -498,7 +498,7 @@ In order to load a schema from a file use the `file` function.
 root = this.json_schema(file(env("ENV_TEST_BLOBLANG_SCHEMA_FILE")))
 ```
 
-### key_values
+## key_values
 
 Returns the key/value pairs of an object as an array, where each element is an object with a `key` field and a `value` field. The order of the resulting array will be random.
 
@@ -512,7 +512,7 @@ root.foo_key_values = this.foo.key_values().sort_by(pair -> pair.key)
 # Out: {"foo_key_values":[{"key":"bar","value":1},{"key":"baz","value":2}]}
 ```
 
-### keys
+## keys
 
 Returns the keys of an object as an array.
 
@@ -525,7 +525,7 @@ root.foo_keys = this.foo.keys()
 # Out: {"foo_keys":["bar","baz"]}
 ```
 
-### length
+## length
 
 Returns the length of an array or object (number of keys).
 
@@ -542,7 +542,7 @@ root.foo_len = this.foo.length()
 # Out: {"foo_len":2}
 ```
 
-### map_each
+## map_each
 
 #### Parameters
 
@@ -576,7 +576,7 @@ root.new_dict = this.dict.map_each(item -> item.value.uppercase())
 # Out: {"new_dict":{"bar":"WORLD","foo":"HELLO"}}
 ```
 
-### map_each_key
+## map_each_key
 
 Apply a mapping to each key of an object, and replace the key with the result, which must be a string.
 
@@ -601,7 +601,7 @@ root = this.map_each_key(key -> if key.contains("kafka") { "_" + key })
 # Out: {"_kafka_key":"bar","_kafka_topic":"baz","amqp_key":"foo"}
 ```
 
-### merge
+## merge
 
 Merge a source object into an existing destination object. When a collision is found within the merged structures (both a source and destination object contain the same non-object keys) the result will be an array containing both values, where values that are already arrays will be expanded into the resulting array. In order to simply override destination fields on collision use the [assign](#assign) method.
 
@@ -619,7 +619,7 @@ root = this.foo.merge(this.bar)
 # Out: {"first_name":"fooer","likes":["bars","foos"],"second_name":"barer"}
 ```
 
-### patch
+## patch
 
 Create a diff by comparing the current value with the given one. Wraps the *github.com/r3labs/diff/v3* package. See its [docs](https://pkg.go.dev/github.com/r3labs/diff/v3) for more information.
 
@@ -627,7 +627,7 @@ Create a diff by comparing the current value with the given one. Wraps the *gith
 
 **changelog** &lt;unknown&gt; The changelog to apply.  
 
-### slice
+## slice
 
 Extract a slice from an array by specifying two indices, a low and high bound, which selects a half-open range that includes the first element, but excludes the last one. If the second index is omitted then it defaults to the length of the input sequence.
 
@@ -657,7 +657,7 @@ root.the_rest = this.value.slice(0, -2)
 # Out: {"last_chunk":["buz","bev"],"the_rest":["foo","bar","baz"]}
 ```
 
-### sort
+## sort
 
 Attempts to sort the values of an array in increasing order. The type of all values must match in order for the ordering to succeed. Supports string and number values.
 
@@ -684,7 +684,7 @@ root.sorted = this.foo.sort(item -> item.left.v < item.right.v)
 # Out: {"sorted":[{"id":"baz","v":"aaa"},{"id":"foo","v":"bbb"},{"id":"bar","v":"ccc"}]}
 ```
 
-### sort_by
+## sort_by
 
 Attempts to sort the elements of an array, in increasing order, by a value emitted by an argument query applied to each element. The type of all values must match in order for the ordering to succeed. Supports string and number values.
 
@@ -702,7 +702,7 @@ root.sorted = this.foo.sort_by(ele -> ele.id)
 # Out: {"sorted":[{"id":"aaa","message":"foo"},{"id":"bbb","message":"bar"},{"id":"ccc","message":"baz"}]}
 ```
 
-### squash
+## squash
 
 Squashes an array of objects into a single object, where key collisions result in the values being merged (following similar rules as the `.merge()` method)
 
@@ -716,7 +716,7 @@ root.locations = this.locations.map_each(loc -> {loc.state: [loc.name]}).squash(
 # Out: {"locations":{"NY":["New York"],"WA":["Seattle","Bellevue","Olympia"]}}
 ```
 
-### sum
+## sum
 
 Sum the numerical values of an array.
 
@@ -730,7 +730,7 @@ root.sum = this.foo.sum()
 # Out: {"sum":15}
 ```
 
-### unique
+## unique
 
 Attempts to remove duplicate values from an array. The array may contain a combination of different value types, but numbers and strings are checked separately (`"5"` is a different element to `5`).
 
@@ -748,7 +748,7 @@ root.uniques = this.foo.unique()
 # Out: {"uniques":["a","b","c"]}
 ```
 
-### values
+## values
 
 Returns the values of an object as an array. The order of the resulting array will be random.
 
@@ -762,7 +762,7 @@ root.foo_vals = this.foo.values().sort()
 # Out: {"foo_vals":[1,2]}
 ```
 
-### with
+## with
 
 Returns an object where all but one or more [field path]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/field-paths" >}}) arguments are removed. Each path specifies a specific field to be retained from the input object, allowing for nested fields.
 
@@ -778,7 +778,7 @@ root = this.with("inner.a","inner.c","d")
 # Out: {"d":"fourth","inner":{"a":"first","c":"third"}}
 ```
 
-### without
+## without
 
 Returns an object where one or more [field path]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/field-paths" >}}) arguments are removed. Each path specifies a specific field to be deleted from the input object, allowing for nested fields.
 
@@ -794,7 +794,7 @@ root = this.without("inner.a","inner.c","d")
 # Out: {"e":"fifth","inner":{"b":"second"}}
 ```
 
-### zip
+## zip
 
 Zip an array value with one or more argument arrays. Each array must match in length.
 
