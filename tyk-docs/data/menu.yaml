@@ -4089,6 +4089,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/split
             category: Page
             show: True
+          - title: "Try"
+            path: /product-stack/tyk-streaming/configuration/processors/try
+            category: Page
+            show: True
         - title: "Common Configurations"
           category: Directory
           show: True
