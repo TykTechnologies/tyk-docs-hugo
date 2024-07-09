@@ -4137,6 +4137,10 @@ menu:
             category: Directory
             show: True
             menu:
+            - title: "Encoding and encryption"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/encoding-and-encryption"
+              category: Page
+              show: True
             - title: "Parsing"
               path: "/product-stack/tyk-streaming/guides/bloblang/methods/parsing"
               category: Page
