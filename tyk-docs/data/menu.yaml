@@ -4149,6 +4149,10 @@ menu:
               path: "/product-stack/tyk-streaming/guides/bloblang/json-web-tokens"
               category: Page
               show: True
+            - title: "Number manipulation"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/number-manipulation"
+              category: Page
+              show: True
             - title: "Parsing"
               path: "/product-stack/tyk-streaming/guides/bloblang/methods/parsing"
               category: Page
