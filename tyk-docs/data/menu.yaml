@@ -4134,9 +4134,13 @@ menu:
             category: Page
             show: True
           - title: "Methods"
-            path: "/product-stack/tyk-streaming/guides/bloblang/methods"
-            category: Page
+            category: Directory
             show: True
+            menu:
+            - title: "Parsing"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/parsing"
+              category: Page
+              show: True
       - title: "Deployment Considerations"
         path: /product-stack/tyk-streaming/deployment-considerations
         category: Page
