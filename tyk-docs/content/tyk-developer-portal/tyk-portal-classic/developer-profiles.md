@@ -11,7 +11,7 @@ aliases:
 
 Users that are signed up to your portal are called "Developers", these users have access to a Dashboard page which show them their API usage over the past 7 days as well as the policy and quota limits on their relevant keys.
 
-Developers can sign up to multiple APIs using the API catalogue.
+Developers can sign up to multiple APIs using the API catalog.
 
 Developer accounts belong to an organisation ID, so accounts cannot be shared across organisations in a Tyk Dashboard setup.
 
@@ -69,7 +69,7 @@ Browse to the developers list view and select the developer that you wish to man
 
 #### Step 2: View Keys List
 
-This sections shows you the Keys and the policies connected to them. This view will always try to match the access level to a catalogue entry, if the policy assigned to a developer is not in the catalogue, the entry will read "(No Catalogue Entry)". We recommend that all policy levels are in your catalogue, even if they are not all live.
+This sections shows you the Keys and the policies connected to them. This view will always try to match the access level to a catalog entry, if the policy assigned to a developer is not in the catalog, the entry will read "(No Catalog Entry)". We recommend that all policy levels are in your catalog, even if they are not all live.
 
 #### Step 3: Click Options
 

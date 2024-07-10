@@ -23,7 +23,7 @@ Additionally you can now mix policies defined for the same API but having differ
 
 #### Developer Portal Updates
 
-Developers now can have multiple API keys, and subscribe to multiple catalogues with a single key. Go to the Portal settings and set `Enable subscribing to multiple APIs with single key` option to enable this new flow. When enabled, developers will see the new API generation user interface, which allows users to request access to multiple Catalogs of the **same type** with a single key.
+Developers now can have multiple API keys, and subscribe to multiple catalogs with a single key. Go to the Portal settings and set `Enable subscribing to multiple APIs with single key` option to enable this new flow. When enabled, developers will see the new API generation user interface, which allows users to request access to multiple Catalogs of the **same type** with a single key.
 
 From an implementation point of view, Developer objects now have a `Keys` attribute, which is the map where the key is a `key` and the value is an array of policy IDs. The `Subscriptions` field can be considered as deprecated, with retained backwards compatibility. We have added new set of Developer APIs to manage the keys, similar to the deprecated subscriptions APIs.
 

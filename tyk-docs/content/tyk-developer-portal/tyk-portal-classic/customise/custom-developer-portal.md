@@ -161,7 +161,7 @@ If the user credentials are verified, the HTTP response code will be 200, otherw
 
 ### Listing Available APIs
 
-Inside the admin dashboard in the portal menu, you can define **catalogues** with the list of APIs available to developers. Each defined API is identified by its policy id field.
+Inside the admin dashboard in the portal menu, you can define **catalogs** with the list of APIs available to developers. Each defined API is identified by its policy id field.
 
 #### Request
 
