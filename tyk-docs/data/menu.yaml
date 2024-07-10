@@ -4476,6 +4476,14 @@ menu:
       path: /developer-support/tyk-release-summary/overview
       category: Page
       show: True
+    - title: "Documentation Projects"
+      category: Directory
+      show: True
+      menu:
+      - title: "Inclusive Naming Initiative (INI)"
+        path: /developer-support/documentation-projects/inclusive-naming
+        category: Page
+        show: True
     - title: "Contribute to Tyk Docs"
       path: /contribute
       category: Page
