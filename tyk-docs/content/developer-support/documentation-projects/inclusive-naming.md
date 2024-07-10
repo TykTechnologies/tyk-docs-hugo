@@ -7,7 +7,8 @@ description: "Explains the inclusive naming initiative concerning Tyk docs"
 
 This document is intended for Tyk users, contributors, and anyone interested in our commitment to inclusive language within Tyk's documentation and product interfaces.
 
-We are excited to announce the launch of our *Inclusive Naming* project, in June 2024, dedicated to updating our documentation and working towards alignment with the [Inclusive Naming Initiative (INI)](https://inclusivenaming.org). This initiative reflects our commitment to fostering an inclusive and respectful environment for our users and within our company.
+## Introduction
+We are excited to announce the launch of our *Inclusive Naming* project, in June 2024, dedicated to updating our documentation and aligning with the [Inclusive Naming Initiative (INI)](https://inclusivenaming.org). This initiative reflects our commitment to fostering an inclusive and respectful environment for our users and within our company.
 
 The [Inclusive Naming Initiative](https://inclusivenaming.org/) is a community-driven effort to promote and standardize the use of inclusive language in software and documentation. By adhering to their guidelines, we aim to eliminate terms that can be considered exclusionary, offensive, or insensitive and replace them with language that is respectful and welcoming to all.
 
@@ -35,27 +36,27 @@ INI has identified that terms included in this list have one or all of the follo
 
 ---
 
-## Phase #1: Expert review
+## Phase #1: Review of Tyk Documentation for Tier 1 Words
 
 An initial review of the Tyk documentation was conducted in April 2024 to check which tier 1 words can be replaced, which can't, and why.
 
-### Findings
+### Findings and planning
 The main findings of the review are:
 
 1. **Explanatory content with INI tier 1 words**: The content on these pages can be easily rephrased and is now completed.
 2. **Configuration parameters containing INI tier 1 words**:
    - Some *INI tier 1 words* are embedded in the code as part of the name of parameters, fields, and keywords.
    - These words are sourced from Tyk products, and third-party libraries, and tooling, e.g. Redis.
-   - Possible action:
+   - Possible actions:
      - Being part of the source code, we can't simply rephrase and use a different terminology. Such change requires following a deprecation process to ensure there are no breaking changes for our users.
-     - For now, we can, however, minimize their usage and rephrase the explanatory content to use inclusive words.
-  
+     - For now, we can minimize their usage and rephrase the explanatory content to use inclusive words.
+
    
 ## Phase #2: Removing Tier 1 words from Tyk documentation
 
-In June 2024, based on the review we made changes to the content in our [documentation](https://github.com/tykTechnologies/tyk-docs/) where it was possible.
+In June 2024, based on the review we executed the planned changes to the content in our [documentation](https://github.com/tykTechnologies/tyk-docs/).
 
-### Phase 2: Status
+### Status update
 This is the update on the status of our documentation
 1. **Regular explanatory content with INI tier 1 words**: Content in the documentation has been rephrased and the work is now completed. 
 2. **Configuration parameters containing INI tier 1 words**: These words are still in our docs, however, we minimized their usage and rephrased their explanatory content to use inclusive words.
