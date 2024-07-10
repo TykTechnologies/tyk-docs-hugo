@@ -4145,6 +4145,10 @@ menu:
               path: "/product-stack/tyk-streaming/guides/bloblang/methods/encoding-and-encryption"
               category: Page
               show: True
+            - title: "General"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/general"
+              category: Page
+              show: True 
             - title: "GeoIP"
               path: "/product-stack/tyk-streaming/guides/bloblang/methods/geoip"
               category: Page
