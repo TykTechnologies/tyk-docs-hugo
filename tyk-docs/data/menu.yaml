@@ -4173,7 +4173,7 @@ menu:
               path: "/product-stack/tyk-streaming/guides/bloblang/methods/strings"
               category: Page
               show: True
-            - title: "Timestamps"
+            - title: "Timestamp Manipulation"
               path: "/product-stack/tyk-streaming/guides/bloblang/methods/timestamps"
               category: Page
               show: True
