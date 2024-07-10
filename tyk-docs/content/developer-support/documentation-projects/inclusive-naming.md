@@ -51,7 +51,7 @@ The main findings of the review are:
      - For now, we can, however, minimize their usage and rephrase the explanatory content to use inclusive words.
   
    
-## Phase #2: Content update
+## Phase #2: Removing Tier 1 words from Tyk documentation
 
 In June 2024, based on the review we made changes to the content in our [documentation](https://github.com/tykTechnologies/tyk-docs/) where it was possible.
 
