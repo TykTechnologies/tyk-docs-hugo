@@ -63,7 +63,7 @@ This is the update on the status of our documentation
    - **Tyk products**: These words are still in our docs, however, Tyk aims to gradually replace them (in a backward-compatible way) and update the docs accordingly.
    - **Third-party and dependencies**: There's nothing much we can do at the moment except wait for them to replace these parameters, however, we are committed to updating our docs once this gets done.
 
-### List of Configuration parameters containing INI tier 1 word
+### List of configuration parameters containing INI tier 1 word
 For your records, the following sections highlight the existing *INI tier 1 words* in our docs, per Tyk component:
 
 #### Tyk Gateway
