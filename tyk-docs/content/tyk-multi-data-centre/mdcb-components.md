@@ -27,7 +27,7 @@ Here we will give an overview of the main elements of a Tyk Multi Data Center (d
 - Tyk’s open source analytics purger that can be used to export transaction logs from the Tyk deployment to the visualisation tool or other data store of your choice
 
 ### Tyk Developer Portal
-- The access point for your API Consumers where you publish your API catalogue(s) and they obtain API keys.
+- The access point for your API Consumers where you publish your API catalog(s) and they obtain API keys.
 
 ### Redis
 - An in-memory data store used as a database, cache and message broker. We use it as pub/sub broker for inter-Gateway communication, and as a cache for API configurations, keys, certificates, and temporary store for analytics records.

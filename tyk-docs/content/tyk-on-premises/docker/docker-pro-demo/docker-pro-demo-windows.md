@@ -105,9 +105,9 @@ Click **Bootstrap** to save the details.
 
 You can now log in to the Tyk Dashboard from `127.0.0.1:3000`, using the username and password created in the Dashboard Setup screen.
 
-### Step Seven - Set up a Portal Catalogue
+### Step Seven - Set up a Portal Catalog
 
-This creates a portal catalogue for your developer portal. For the `Authorization` Header, the Value you need to enter is the `access_key` value from the create user request. In the body add the `org_id` value created in **Step One**.
+This creates a portal catalog for your developer portal. For the `Authorization` Header, the Value you need to enter is the `access_key` value from the create user request. In the body add the `org_id` value created in **Step One**.
 
 - **Request**: POST
 - **URL**: `127.0.0.1:3000/api/portal/catalogue`

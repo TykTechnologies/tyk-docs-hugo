@@ -27,23 +27,23 @@ You need to have successfully registered for a portal.
 ## Step by step instructions
 
 1. Login to the external developer portal
-2. Go to **Catalogues** to view the available API products
+2. Go to **Catalogs** to view the available API products
 
 {{< note success >}}
 **Note**
 
-Using the filter at the top, you can filter on the different created catalogues including different API Products, e.g. a custom catalogue that only you and a specific team can access.
+Using the filter at the top, you can filter on the different created catalogs including different API Products, e.g. a custom catalog that only you and a specific team can access.
 
 {{< /note >}}
 
 3. When selecting on a product, you can click **More info** to access the product overview page.
-4. On the product overview page, you can view documentation for each API included in the API product. You can also view information about which catalogue the API product is part of. Each catalogue may have different plans available so you need to select a catalogue based on which plan you want to access.
+4. On the product overview page, you can view documentation for each API included in the API product. You can also view information about which catalog the API product is part of. Each catalog may have different plans available so you need to select a catalog based on which plan you want to access.
 5. Click **Add to cart**.
 
 {{< note success >}}
 **Note**
 
-You can add multiple products to the cart. You can receive one set of access credentials for multiple products as long as they are part of the same cart. If you are adding two products to the cart, and they are part of different catalogues, e.g. Private and Public, you will need to go through two request flows, and you will get two different sets of credentials for each API Product.
+You can add multiple products to the cart. You can receive one set of access credentials for multiple products as long as they are part of the same cart. If you are adding two products to the cart, and they are part of different catalogs, e.g. Private and Public, you will need to go through two request flows, and you will get two different sets of credentials for each API Product.
 
 {{< /note >}}
 

@@ -34,7 +34,7 @@ Tyk Streams seamlessly integrates with the Tyk API Gateway, allowing you to mana
 - **Security**: Apply the same security policies and controls to your async APIs as you do to your synchronous APIs. This includes features like authentication and authorization.
 - **Transformations**: Transform and enrich your event data on the fly using Tyk's powerful middleware and plugin system. This allows you to adapt your event streams to meet the needs of different consumers.
 - **Analytics**: Monitor the usage and performance of your async APIs with detailed analytics and reporting. Gain insights into consumer behavior and system health.
-- **Developer Portal**: Publish your async APIs to the Tyk Developer Portal, providing a centralised catalogue for discovery, documentation and subscription management.
+- **Developer Portal**: Publish your async APIs to the Tyk Developer Portal, providing a centralised catalog for discovery, documentation and subscription management.
 
 
 #### Configuration as Code

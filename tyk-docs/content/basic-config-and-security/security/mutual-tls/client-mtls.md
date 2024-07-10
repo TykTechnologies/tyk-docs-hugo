@@ -63,7 +63,7 @@ $ curl -k \
 Instead of manually creating keys, we can expose the Above API via the Developer Portal, where developers can add their own certs to use to access APIs.
 
 1. Create a policy for the API we set up above
-2. Create a catalogue entry for this policy
+2. Create a catalog entry for this policy
 3. As a developer on the Portal, request a key for this API.  This will take us to this screen:
 
 {{< img src="/img/dashboard/system-management/portal_cert_request.png" alt="portal_cert_request" >}}

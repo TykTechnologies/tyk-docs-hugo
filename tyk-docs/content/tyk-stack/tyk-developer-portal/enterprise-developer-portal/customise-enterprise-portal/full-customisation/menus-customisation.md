@@ -82,7 +82,7 @@ Where:
 - `{{ .Path }}` is the Path we have defined from the UI and
 - `{{ .Tag }}` is the Name we have defined from the UI.
 
-So this will render all the menu items (Catalogues - as per screenshot) of the menu (Primary - the name we’ve given to the menu).
+So this will render all the menu items (Catalogs - as per screenshot) of the menu (Primary - the name we’ve given to the menu).
 
 3. `{{ if .Children }}`: This line checks if the menu item has any submenus. If it does it loops through those children `{{ range .Children }}` and finally renders them `<a class="dropdown-item" href="{{.Path}}">{{.Tag}}</a>` similarly as the main menu items.
-So now the child of **Catalogues** which we named **Product 1** has been rendered.
+So now the child of **Catalogs** which we named **Product 1** has been rendered.

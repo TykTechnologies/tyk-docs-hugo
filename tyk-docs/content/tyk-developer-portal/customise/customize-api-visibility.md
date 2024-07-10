@@ -8,12 +8,12 @@ aliases:
   - /tyk-developer-portal/customise/customize-api-visibility/
 ---
 
-By default, any user who accesses your developer Portal will be able to view all of the published APIs in the catalogue. This behavior may not be desired and you may want to have more control of what APIs developers see in the catalogue when accessing the portal. A common use case for this is if you have internal APIs that you want to publish only to your internal developers, and restrict view to others.
+By default, any user who accesses your developer Portal will be able to view all of the published APIs in the catalog. This behavior may not be desired and you may want to have more control of what APIs developers see in the catalog when accessing the portal. A common use case for this is if you have internal APIs that you want to publish only to your internal developers, and restrict view to others.
 
 We'll walk through how you can use custom Page Templates to control the visibility of your APIs so it can only be seen by specific group of developers.
-In a nutshell, we are going to assign a group field to an API catalogue profile, to a developer profile, and check if their group matched. 
+In a nutshell, we are going to assign a group field to an API catalog profile, to a developer profile, and check if their group matched. 
 
-*Please note that this does not support multiple groups for a single API catalogue entry, nor for a single developer profile.* 
+*Please note that this does not support multiple groups for a single API catalog entry, nor for a single developer profile.* 
 
 ## Prerequisites
 1. You have an API created in your Dashboard. See [Create an API]({{< ref "getting-started/create-api" >}}) for more details.
@@ -21,18 +21,18 @@ In a nutshell, we are going to assign a group field to an API catalogue profile,
 3. You have a Portal Catalog entry for this API. Here we will call it "Internal API"
 4. You have a developer account that can access your Developer Portal. 
 
-## Add a group field to the API Catalogue profile
+## Add a group field to the API Catalog profile
 
-For this example, we'll add a custom field to the Portal catalogue "Group". This group is set to "internal" which indicates that only developers in `internal` group shoud have access to the Catalogue.
+For this example, we'll add a custom field to the Portal catalog "Group". This group is set to "internal" which indicates that only developers in `internal` group shoud have access to the Catalog.
 
-Go to Portal Management > Catalogue -> Your API screen
+Go to Portal Management > Catalog -> Your API screen
 
 {{< img src="/img/dashboard/portal-management/portal_catalogue_field_group.png" alt="portal_catalogue_fied_group" width=800 >}}
 
 
 ## Add a custom field to the developer profile
 
-For this example, we'll add a custom field to the developer profile also called "Group". This group is set set to "internal" it means that developer should have access to the catalogues with the same Group restriction. 
+For this example, we'll add a custom field to the developer profile also called "Group". This group is set set to "internal" it means that developer should have access to the catalogs with the same Group restriction. 
 
 Go to Portal Management > Developers screen
 {{< img src="/img/dashboard/portal-management/deveoper_field_group.png" alt="developer_field_group.png" width=800 >}}
@@ -41,13 +41,13 @@ Go to Portal Management > Developers screen
 This flag can also be [set programatically](https://tyk.io/docs/tyk-developer-portal/customise/custom-developer-portal/#updating-a-developer-example-adding-custom-fields).
 
 
-## Modify the Portal Catalogue Template to add Show/Hide Logic
+## Modify the Portal Catalog Template to add Show/Hide Logic
 
-The developer portal is fully customizable via templates. We'll add custom logic to the portal catalogue template (catalogue.html) to show/hide the "Internal API" catalogue based on the value of the "Group" field for the developer.  
+The developer portal is fully customizable via templates. We'll add custom logic to the portal catalog template (catalogue.html) to show/hide the "Internal API" catalog based on the value of the "Group" field for the developer.  
 
 The main difference from the default template is two changes:
 1. Get user data state at the start of template: `{{$profile := .UserData }}`
-2. Before rendering api catalogue element, which renders list of APIs, we insert the following section:
+2. Before rendering api catalog element, which renders list of APIs, we insert the following section:
 
 ```go-html-template
 {{ $show := true }}
@@ -71,7 +71,7 @@ The main difference from the default template is two changes:
 {{ end }}
 
 {{if $show}}
-<!-- Render catalogue -->
+<!-- Render catalog -->
 {{end}}
 ```
 

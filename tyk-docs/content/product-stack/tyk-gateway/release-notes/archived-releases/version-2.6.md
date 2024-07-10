@@ -350,11 +350,11 @@ admin-auth: 12345
 }
 ```
 
-#### Set Catalogue settings for each individual API 
+#### Set Catalog settings for each individual API 
 
-Now you can override the global catalogue settings and specify settings per catalogue. 
-The Catalogue object now has `config` field, with exactly same structure as Portal Config, except new `override` boolean field. 
-If set, Catalogue settings will override global ones. 
+Now you can override the global catalog settings and specify settings per catalog. 
+The Catalog object now has `config` field, with exactly same structure as Portal Config, except new `override` boolean field. 
+If set, Catalog settings will override global ones. 
 
 At the moment the following options can be overriden: `Key request fields`, `Require key approval` and `Redirect on key request` (with `Redirect to` option as well).
 
