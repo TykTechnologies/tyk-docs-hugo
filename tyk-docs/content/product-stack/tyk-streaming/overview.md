@@ -58,8 +58,8 @@ alongside your existing synchronous APIs. It provides a range of capabilities to
 
 #### Configuration as Code
 
-Tyk Streams configuration natively integrates with our OpenAPI format. This enables a *configuration-as-code* approach,
-where async API definitions can be version-controlled, collaborated on and deployed using GitOps workflows.
+Tyk Streams configuration natively integrates with Tyk OAS (our OpenAPI format for APIs), enabling *configuration-as-code*
+approach. This allows async API definitions to be version-controlled, collaborated on and deployed using GitOps workflows.
 
 ```yaml
 {
@@ -100,7 +100,7 @@ The Tyk Dashboard provides a user-friendly interface for defining and managing a
 broker details, subscribe to specific topics or channels, configure security policies, transformations and other API
 management capabilities.
 
-{{< img src="/img/streams/configure-streams.png" alt="Tyk Dashboard API Streams" width="1000px" >}}
+{{< img src="/img/streams/configure-streams.png" alt="Screenshot of Tyk Dashboard configuring API Streams" width="1000px" >}}
 
 ---
 

@@ -12,7 +12,7 @@ Tyk (REST) in real-time.
 Before you start we have a small request -
 </br>
 Tyk Streams is currently in the
-[Lab Release]({{<ref "developer-support/special-releases-and-features/lab-releases">}}) phase. Your feedback is crucial
+[Lab Release]({{< ref "developer-support/special-releases-and-features/lab-releases">}}) phase. Your feedback is crucial
 in helping us improve and shape this capability while it’s still in the making. We'd love your input on your experience
 using Tyk Streams, the documentation, learning about your use case, areas for improvement and any other relevant
 information you can share with us.
