@@ -5,6 +5,8 @@ tags: ["Tyk Operator", "Kubernetes", "version compatibility"]
 description: "Version compatibility matrix with Tyk and Kubernetes version"
 ---
 
+Ensuring compatibility between different versions is crucial for maintaining stable and efficient operations. This document provides a comprehensive compatibility matrix for Tyk Operator with various versions of Tyk and Kubernetes. By understanding these compatibility details, you can make informed decisions about which versions to deploy in your environment, ensuring that you leverage the latest features and maintain backward compatibility where necessary.
+
 ## Compatibility with Tyk
 Tyk Operator can work with all version of Tyk beyond Tyk 3.x+. Since Tyk is backward compatible, you can safely use the
 latest version of Tyk Operator to work with any version of Tyk.
