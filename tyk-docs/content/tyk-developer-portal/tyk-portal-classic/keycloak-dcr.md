@@ -11,7 +11,7 @@ aliases:
 
 We are going walk you through a basic integration of Tyk with Keycloak using the [OpenID Connect Dynamic Client Registration protocol](https://tools.ietf.org/html/rfc7591). Our current implementation provides support for the client credentials flow with support for {{< tooltip >}}JWT{{< definition >}} JSON Web Tokens{{< /definition >}}{{< /tooltip >}}. To the developer it works like this:
 
-1. An API with its corresponding security policy is created in Tyk. It is then added to the Developer Portal Catalogue.
+1. An API with its corresponding security policy is created in Tyk. It is then added to the Developer Portal Catalog.
 
 2. A developer signs up and creates a Dynamic Client Registration provider using the Developer Portal.
 Tyk sends the Dynamic Client Registration call to your {{< tooltip >}}IDP{{< definition >}}Identity Provider{{< /definition >}}{{< /tooltip >}}. The IDP replies with the client ID and secret.
@@ -88,7 +88,7 @@ After the policy is created, switch back to the API settings and make sure that 
 {{< img src="/img/dcr/keycloak/step_5.png" alt="Step 5" >}}
 
 Now you're ready to add this API to the Developer Portal. 
-1. Click **Catalogue** under **Portal Management** on the navigation menu. 
+1. Click **Catalog** under **Portal Management** on the navigation menu. 
 2. Click **Add New API**, enter a name for it and select the newly created policy. Again, you will use **Keycloak Policy**:
 
 {{< img src="/img/dcr/keycloak/step_6.png" alt="Step 6" >}}

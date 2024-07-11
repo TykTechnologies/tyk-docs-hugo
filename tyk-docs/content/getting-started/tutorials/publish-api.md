@@ -25,7 +25,7 @@ This is for the closed source [Tyk Developer Portal]({{< ref "tyk-developer-port
 {{< tab_end >}}
 {{< tab_start "Self-Managed" >}}
 
-## Add an API and Swagger based Docs to your Portal Catalogue
+## Add an API and Swagger based Docs to your Portal Catalog
 
 Managing your portal is a key part of Tyk Dashboard, this tutorial helps you get started working with your portal and publishing your APIs to your developers.
 
@@ -65,15 +65,15 @@ Save the policy by clicking **Create**.
 
 The API that you defined earlier is active and will work as you've seen in the previous tutorial, this time we want to use the Portal to generate a token for a named developer.
 
-Not all APIs are visible to the Portal, only the ones you tell it about, so from the **Catalogue** menu, select **Add API** then:
+Not all APIs are visible to the Portal, only the ones you tell it about, so from the **Catalog** menu, select **Add API** then:
 
 1.  Select your **Default** policy
 2.  Fill in the description fields
 3.  Ensure the **Enable this API** is selected
 
-Save the API Catalogue entry by clicking **Update**.
+Save the API Catalog entry by clicking **Update**.
 
-{{< img src="/img/2.10/portal_confirmation_on_prem.png" alt="Catalogue Entry" >}}
+{{< img src="/img/2.10/portal_confirmation_on_prem.png" alt="Catalog Entry" >}}
 
 ### Step 6: Set your Portal hostname
 

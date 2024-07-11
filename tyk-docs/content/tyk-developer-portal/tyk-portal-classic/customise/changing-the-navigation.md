@@ -17,7 +17,7 @@ The Portal supports a data structure to hold rudimentary menus, all pages have a
   {{ range $index, $menuItem := .Menus.Main}}
   <li><a href="/portal/{{$menuItem.URL}}">{{$menuItem.Title}}</a></li>
   {{ end }}
-  <li><a href="/portal/apis/">API Catalogue</a></li>
+  <li><a href="/portal/apis/">API Catalog</a></li>
   {{ if not .PortalConfig.DisableSignup }}
     {{ if not .UserData }}
     <li><a href="/portal/register/">Register</a></li>

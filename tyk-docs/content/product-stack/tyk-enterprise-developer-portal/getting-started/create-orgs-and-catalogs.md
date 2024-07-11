@@ -30,7 +30,7 @@ In the below example, an API Provider offers two API Products (the Accounts API 
 Customers subscribed to the enterprise plan can use both APIs, offering a higher user limit. Conversely, customers subscribed to the Free plan (individual developers or hobbyists) only have visibility of the Payment API.
 
 To achieve that, the API Provider uses two catalogs to implement their business model so that they can offer different experiences for different customer audiences. This section explains how to achieve that using the Tyk Enterprise Developer Portal.
-{{< img src="/img/dashboard/portal-management/enterprise-portal/org-catalogue-product-relation.png" alt="Relationship between catalogues, API Products, plans, teams, and organisations" >}}
+{{< img src="/img/dashboard/portal-management/enterprise-portal/org-catalogue-product-relation.png" alt="Relationship between catalogs, API Products, plans, teams, and organisations" >}}
 
 ## Create organisation and teams
 The Tyk Enterprise Developer Portal uses Organisation and Catalogs to segment access to APIs and plans. Therefore, the first thing is to create an organisation for your customers. If you don't want to provision organisations manually, you can leverage the [Admin APIs]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api.md" >}}) or enable the [self-service organisation registration]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations.md" >}}).
@@ -73,7 +73,7 @@ While it is possible to create multiple public catalogs, we do not advise doing 
    Finally, add plans and API Products to the created catalog so that the selected developer teams can view them.
    {{< img src="/img/dashboard/portal-management/enterprise-portal/add-team-products-and-plans.png" alt="Add teams, products, and plans to the catalogue" >}}
 
-You can achieve the same result by navigating to the **API Products** menu. Adding an API Product to a catalogue through the **Catalogs** and the **API Products** menus will produce the same result.
+You can achieve the same result by navigating to the **API Products** menu. Adding an API Product to a catalog through the **Catalogs** and the **API Products** menus will produce the same result.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/publish-products-to-catalogues.png" alt="Adding a product to a catalogue through the API Products menu" >}}
 
 {{< note >}}

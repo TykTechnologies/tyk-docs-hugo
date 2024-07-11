@@ -98,9 +98,9 @@ spec:
 EOF
 ```
 
-#### Step 4: Creating a PortalAPICatalogue resource
+#### Step 4: Creating a PortalAPICatalog resource
 
-Unlike other platforms, Tyk will not auto-publish your APIs to the Portal, instead they are presented as a facade, you choose what APIs and what Policies to expose to the Portal. You can configure what APIs and what Policies to expose to the Portal via Tyk Operator by creating a PortalAPICatalogue resource.
+Unlike other platforms, Tyk will not auto-publish your APIs to the Portal, instead they are presented as a facade, you choose what APIs and what Policies to expose to the Portal. You can configure what APIs and what Policies to expose to the Portal via Tyk Operator by creating a PortalAPICatalog resource.
 
 Create a file called `api_portal.yaml`, then add the following:
 
