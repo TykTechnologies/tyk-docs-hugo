@@ -5,8 +5,6 @@ tags: ["Tyk Operator", "Kubernetes", "Operator User"]
 description: "Explains the key concepts for Tyk Operator"
 ---
 
-## What is a Custom Resource?
-
 In Kubernetes, a [Custom Resource (CR)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) is an extension of the Kubernetes API that allows you to introduce custom objects in your cluster. Custom Resources enable you to define and manage custom configurations and settings specific to your applications, making Kubernetes highly extensible. These custom objects are defined using Custom Resource Definitions (CRDs), which specify the schema and structure of the resource.
 
 ## Custom Resources in Tyk
