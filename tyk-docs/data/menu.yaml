@@ -4161,6 +4161,10 @@ menu:
               path: "/product-stack/tyk-streaming/guides/bloblang/methods/numbers"
               category: Page
               show: True
+            - title: "String Manipulation"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/strings"
+              category: Page
+              show: True
             - title: "Objects and Arrays"
               path: "/product-stack/tyk-streaming/guides/bloblang/methods/object-and-arrays"
               category: Page
@@ -4171,10 +4175,6 @@ menu:
               show: True
             - title: "Parsing"
               path: "/product-stack/tyk-streaming/guides/bloblang/methods/parsing"
-              category: Page
-              show: True
-            - title: "String Manipulation"
-              path: "/product-stack/tyk-streaming/guides/bloblang/methods/strings"
               category: Page
               show: True
             - title: "Timestamp Manipulation"
