@@ -7,6 +7,7 @@ menu:
         parent: "Tyk Stack"
 aliases:
     - /tyk-stack/tyk-operator/getting-started-tyk-operator
+    - /product-stack/tyk-operator/key-concepts/key-concepts
 ---
 
 ### What is Tyk Operator?
