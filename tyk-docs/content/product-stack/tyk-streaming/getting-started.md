@@ -9,10 +9,13 @@ guide, you will have a fully functional API that allows you to subscribe to a We
 Tyk (REST) in real-time.
 
 ## Your feedback
-Before you start we have a small request. Tyk Streams is currently in the [Lab Release]({{<ref "developer-support/special-releases-and-features/lab-releases">}}})
-phase. Your feedback is crucial in helping us improve and shape this capability while it’s still in the making. We'd
-love your input on your experience using Tyk Streams, the documentation, learning about your use case, areas for
-improvement and any other relevant information you can share with us.
+Before you start we have a small request -
+</br>
+Tyk Streams is currently in the
+[Lab Release]({{<ref "developer-support/special-releases-and-features/lab-releases">}}) phase. Your feedback is crucial
+in helping us improve and shape this capability while it’s still in the making. We'd love your input on your experience
+using Tyk Streams, the documentation, learning about your use case, areas for improvement and any other relevant
+information you can share with us.
 {{< button_left href="https://survey.hsforms.com/1lb_eMrtRR5W3WoEEuACQ2Q3ifmg" color="green" content="Feedback" >}}
 
 ---

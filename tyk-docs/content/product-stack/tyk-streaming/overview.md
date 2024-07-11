@@ -9,8 +9,8 @@ manage and monetize real-time event streams and asynchronous APIs.
 
 ## Getting started
 
-Tyk Streams is currently in the Lab Release phase, and we'd love for you to try it out. Please sign up below to
-get started
+Tyk Streams is currently in the [Lab Release]({{<ref "developer-support/special-releases-and-features/lab-releases">}})
+phase, and we'd love for you to try it out. Please click the button to get to the quick started guide:
 {{< button_left href="https://survey.hsforms.com/1ItPCBg-_Tre8WFJZL4pp6Q3ifmg" color="green" content="Signup" >}}
 
 ---
