@@ -16,7 +16,7 @@ In [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >})
 
 When a mathematical operation is performed with two or more integer values [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) will create an integer result, with the exception of division. However, if any number within a mathematical operation is a floating point then the result will be a floating point value.
 
-In order to explicitly coerce numbers into integer types you can use the [.ceil(), .floor(), or .round()]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods#number_manipulation" >}}) methods.
+In order to explicitly coerce numbers into integer types you can use the [.ceil(), .floor(), or .round()]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods/numbers" >}}) methods.
 
 ## Comparison
 
@@ -26,7 +26,7 @@ If you wish to reverse the boolean result of a complex query then simply place t
 
 ### Equality
 
-The equality operators (`==` and `!=`) are valid to use against any value type. In order for arguments to be considered equal they must match in both their basic type (`string`, `number`, `null`, `bool`, etc) as well as their value. If you wish to compare mismatched value types then use [coercion methods]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods#type-coercion" >}}).
+The equality operators (`==` and `!=`) are valid to use against any value type. In order for arguments to be considered equal they must match in both their basic type (`string`, `number`, `null`, `bool`, etc) as well as their value. If you wish to compare mismatched value types then use [coercion methods]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods/type-coercion" >}}).
 
 Number arguments are considered equal if their value is the same when represented the same way, which means their underlying representations (integer, float, etc) do not need to match in order for them to be considered equal.
 
