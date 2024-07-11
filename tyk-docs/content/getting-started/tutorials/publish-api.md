@@ -73,7 +73,7 @@ Not all APIs are visible to the Portal, only the ones you tell it about, so from
 
 Save the API Catalog entry by clicking **Update**.
 
-{{< img src="/img/2.10/portal_confirmation_on_prem.png" alt="Catalogue Entry" >}}
+{{< img src="/img/2.10/portal_confirmation_on_prem.png" alt="Catalog Entry" >}}
 
 ### Step 6: Set your Portal hostname
 
