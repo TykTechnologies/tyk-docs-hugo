@@ -38,4 +38,11 @@ Consider using Tyk Operator if:
 - You aim to streamline the operations of your API gateways with minimal manual intervention.
 
 ### Getting Started
-To get started with Tyk Operator, learn about Operator [Key Concepts]({{<ref "product-stack/tyk-operator/key-concepts/key-concepts">}}) and follow our [Installation Guide]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}) to set up Tyk Operator in your Kubernetes cluster.
+To get started with Tyk Operator, learn about Operator key concepts:
+
+- [Custom Resources]({{< ref "/product-stack/tyk-operator/key-concepts/custom-resources" >}})
+- [Operator Context]({{< ref "/product-stack/tyk-operator/key-concepts/operator-context" >}})
+- [Operator User]({{< ref "/product-stack/tyk-operator/key-concepts/operator-user" >}})
+- [Operator Reconciliation]({{< ref "/tyk-stack/tyk-operator/tyk-operator-reconciliation" >}})
+
+Follow our [Installation Guide]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}) to set up Tyk Operator in your Kubernetes cluster.
