@@ -1,11 +1,11 @@
 ---
-title: "Quick Customisation"
+title: "Quick Customization"
 date: 2022-02-08
 tags: [""]
 description: ""
 menu:
   main:
-    parent: "Customise the Enterprise Portal"
+    parent: "Customize the Enterprise Portal"
 weight: 1
 ---
 

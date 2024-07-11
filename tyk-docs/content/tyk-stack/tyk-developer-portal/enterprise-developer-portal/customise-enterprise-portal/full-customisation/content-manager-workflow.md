@@ -5,7 +5,7 @@ tags: [""]
 description: ""
 menu:
   main:
-    parent: "Full Customisation"
+    parent: "Full Customization"
 weight: 2
 ---
 {{< note success >}}

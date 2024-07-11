@@ -120,7 +120,7 @@ To generate the Protocol Buffers bindings we use the Gradle build task:
 gradle build
 ```
 
-If you need to customise any setting related to the bindings generation step, check the `build.gradle` file.
+If you need to customize any setting related to the bindings generation step, check the `build.gradle` file.
 
 ### Implement Server
 

@@ -19,7 +19,7 @@ These considerations are reflected in our structured upgrade guides, ensuring yo
 Our upgrade process adheres to the following standards:
 
 - **Breaking changes:** Breaking changes are rare and will be explicitly stated in the release notes.
-- **Configuration files:** Upgrades do not overwrite your configuration files. However, it’s good practice to routinely back up these files (using git or another tool) before upgrading, so any customisations are saved.
+- **Configuration files:** Upgrades do not overwrite your configuration files. However, it’s good practice to routinely back up these files (using git or another tool) before upgrading, so any customizations are saved.
 - **Migration scripts:** Migration scripts for your APIs, policies, or other assets are generally not required unless specified in the release notes.
 - **Long Term Support:** Refer to our [versioning and long-term support policies]({{< ref "developer-support/special-releases-and-features/long-term-support-releases" >}}) for details on major and minor releases, patches, and support dates.
 - **Preparations:** Review the [preparation guidelines]({{< ref "developer-support/upgrading-tyk/preparations/upgrade-guidelines" >}}) before starting the upgrade.

@@ -22,7 +22,7 @@ Built from the ground up to be the fastest API gateway on the planet. It does no
 
 **Content mediation**: Transform all the things, from request or response headers to converting between SOAP and GraphQL. 
 
-**Extensible Plugin Architecture**: Customise Tyk’s middleware chain by writing plugins in your language of choice - from Javascript to Go, or any language which supports gRPC.
+**Extensible Plugin Architecture**: Customize Tyk’s middleware chain by writing plugins in your language of choice - from Javascript to Go, or any language which supports gRPC.
 
 **Rate Limiting & Quotas:** Protect your upstreams from becoming overloaded and/or apply limits for each consumer. 
 

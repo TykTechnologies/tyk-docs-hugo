@@ -1,7 +1,7 @@
 ---
 Title: Request and response middleware
 tags: ["middleware", "API request", "API response", "request processing", "response processing"]
-description: "An overview of Tyk's customisable request and response processing chain"
+description: "An overview of Tyk's customizable request and response processing chain"
 aliases:
   - /transform-traffic/endpoint-designer/
 ---
@@ -10,7 +10,7 @@ When you configure an API on Tyk, the Gateway will proxy all requests received a
 
 Within that chain are a highly configurable set of optional middleware that can, on a per-endpint basis:
 - apply processing to [API requests](#middleware-applied-to-the-api-request) before they are proxied to the upstream service
-- apply customisation to the [API response](#middleware-applied-to-the-api-response) prior to it being proxied back to the client
+- apply customization to the [API response](#middleware-applied-to-the-api-response) prior to it being proxied back to the client
 
 Tyk also supports a powerful custom plugin feature that enables you to add custom processing at different stages in the processing chains. For more details on custom plugins please see the [dedicated guide]({{< ref "plugins" >}}).
 

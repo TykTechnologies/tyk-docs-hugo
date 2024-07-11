@@ -15,7 +15,7 @@ aliases:
     - /plugins/javascript-middleware/middleware-scripting-guide
 ---
 
-Tyk's JavaScript Virtual Machine (JSVM) provides a serverless compute function that allows for the execution of custom logic directly within the gateway itself. This can be accessed from [multiple locations]({{< ref "plugins/supported-languages/javascript-middleware" >}}) in the API processing chain and allows significant customisation and optimization of your request handling.
+Tyk's JavaScript Virtual Machine (JSVM) provides a serverless compute function that allows for the execution of custom logic directly within the gateway itself. This can be accessed from [multiple locations]({{< ref "plugins/supported-languages/javascript-middleware" >}}) in the API processing chain and allows significant customization and optimization of your request handling.
 
 In this guide we will cover the features and resources available to you when creating custom functions, highlighting where there are limitations for the different middleware stages.
 
