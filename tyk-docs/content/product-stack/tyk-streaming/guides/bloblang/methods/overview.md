@@ -25,10 +25,9 @@ root.foo_one = this.(bar | baz).trim().replace_all(old: "dog", new: "cat")
 root.foo_two = this.(bar | baz).trim().replace_all("dog", "cat")
 ```
 
-Bloblang provides a range of methods that provide robust capabilities for processing and shaping data. These methods are essential tools for developers and data engineers looking to perform complex transformations, handle errors gracefully and ensure data integrity throughout their pipelines.
+Bloblang provides a range of methods that provide robust capabilities for processing and shaping data. These methods are essential tools for developers and data engineers looking to perform complex transformations, handle errors gracefully and ensure data integrity throughout their pipelines. Tyk Streams supports the following Bloblang methods:
 
-Bloblang offers [general methods]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods/general" >}}), such as apply (applies a declared mapping to a target value), catch (returns a fallback value if a target query fails) and exists (checks if a field exists in an object). Tyk Streams also supports Bloblang methods relating to the following topics:
-
+- [general methods]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods/general" >}})
 - [encoding and encryption]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods/encoding-and-encryption" >}})
 - [geoIP]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods/geoip" >}})
 - [number manipulation]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods/numbers" >}})
