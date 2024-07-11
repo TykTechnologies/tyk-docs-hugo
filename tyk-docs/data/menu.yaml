@@ -4134,9 +4134,57 @@ menu:
             category: Page
             show: True
           - title: "Methods"
-            path: "/product-stack/tyk-streaming/guides/bloblang/methods"
-            category: Page
+            category: Directory
             show: True
+            menu:
+            - title: "Overview"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/overview"
+              category: Page
+              show: True 
+            - title: "General"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/general"
+              category: Page
+              show: True 
+            - title: "Encoding and encryption"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/encoding-and-encryption"
+              category: Page
+              show: True
+            - title: "GeoIP"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/geoip"
+              category: Page
+              show: True
+            - title: "JSON web tokens"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/json-web-tokens"
+              category: Page
+              show: True
+            - title: "Number Manipulation"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/numbers"
+              category: Page
+              show: True
+            - title: "String Manipulation"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/strings"
+              category: Page
+              show: True
+            - title: "Objects and Arrays"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/object-and-arrays"
+              category: Page
+              show: True
+            - title: "Regular expressions"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/regular-expressions"
+              category: Page
+              show: True
+            - title: "Parsing"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/parsing"
+              category: Page
+              show: True
+            - title: "Timestamp Manipulation"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/timestamps"
+              category: Page
+              show: True
+            - title: "Type Coercion"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/type-coercion"
+              category: Page
+              show: True
       - title: "Deployment Considerations"
         path: /product-stack/tyk-streaming/deployment-considerations
         category: Page
