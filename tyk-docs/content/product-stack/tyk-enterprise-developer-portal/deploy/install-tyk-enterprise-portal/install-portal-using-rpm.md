@@ -14,7 +14,7 @@ This guide provides a step-by-step recipe for launching the Tyk Enterprise Devel
 {{< warning success >}}
 **Note**
 
-This document is just an example. Customise all fields, including the username, password, root password, database name and more.
+This document is just an example. Customize all fields, including the username, password, root password, database name and more.
 
 Be sure to update the connection DSN in the env-file accordingly.
 {{< /warning >}}
@@ -51,7 +51,7 @@ sudo rpm -i portal-1.7.0-1.x86_64.rpm
 Before starting the portal service, you need to configure the portal. Once the rpm package has been installed, the portal configuration file will be located in `/opt/portal/portal.conf`.
 Initially, the config file is filled with the default values. The minimal configuration change to start the portal is to add the `LicenseKey` property to the config file.
 The below sample configuration will start the portal on portal 3001 with SQLite as a database, no TLS enabled, and all CMS assets (images, theme files, etc.) are stored in the filesystem.
-You can, however, customise the provided example and make more suitable for your need using the [configuration]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration" >}}) reference.
+You can, however, customize the provided example and make more suitable for your need using the [configuration]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration" >}}) reference.
 ```json
 {
   "HostPort": 3001,

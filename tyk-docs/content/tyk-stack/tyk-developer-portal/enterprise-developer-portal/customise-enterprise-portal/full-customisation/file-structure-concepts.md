@@ -18,7 +18,7 @@ If you are interested in getting access, contact us at [support@tyk.io](<mailto:
 
 ## Developer portal themes
 
-The Developer Portal uses themes for customising the live portal.
+The Developer Portal uses themes for customizing the live portal.
 We provide a perfect theme that is using our own branding. It’s called the ‘default’ theme. You are welcome to use it and modify it for your needs. If you want to start with a blank page, you can also create a completely new theme.
 
 The following page explains how they are structured and their main concepts. We recommend you to read this if you are creating your own theme, or making extensive changes to the ones we provide.

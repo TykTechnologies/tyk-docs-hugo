@@ -87,7 +87,7 @@ You can add your documentation before or after saving your API.
 We are not going to do anything with these options for this tutorial. For more information:
 
 * See [OAuth Clients]({{< ref "tyk-developer-portal/tyk-portal-classic/portal-oauth-clients" >}}) for details of using OAuth with your catalog entry.
-* See [Portal Customisation]({{< ref "tyk-developer-portal/customise" >}})for details about redirection of key requests and developer signup customisation.
+* See [Portal Customisation]({{< ref "tyk-developer-portal/customise" >}})for details about redirection of key requests and developer signup customization.
 
 ### Step 6: Save the API
 

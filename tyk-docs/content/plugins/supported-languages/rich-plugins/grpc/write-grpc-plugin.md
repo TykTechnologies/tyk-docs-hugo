@@ -16,11 +16,11 @@ This document serves as a developer's guide for understanding the key concepts a
 
 This comprehensive guide covers essential tasks, including:
 
-1. **Developing a gRPC Server:** Learn how to develop a gRPC server using [Tyk protocol buffers](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto). The gRPC server facilitates the execution of Tyk plugins, which offer custom middleware for various phases of the API request lifecycle. By integrating these plugins, developers can enable Tyk Gateway with enhanced control and flexibility in managing API requests, allowing for fine-grained customisation and tailored processing at each stage of the request lifecycle.
+1. **Developing a gRPC Server:** Learn how to develop a gRPC server using [Tyk protocol buffers](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto). The gRPC server facilitates the execution of Tyk plugins, which offer custom middleware for various phases of the API request lifecycle. By integrating these plugins, developers can enable Tyk Gateway with enhanced control and flexibility in managing API requests, allowing for fine-grained customization and tailored processing at each stage of the request lifecycle.
 
 2. **Configuring Tyk Gateway:** Set up Tyk Gateway to communicate with your gRPC Server and, optionally, an external secured web server hosting the gRPC plugin bundle for API configurations. Configure Tyk Gateway to fetch the bundle configured for an API from the web server, enabling seamless integration with gRPC plugins. Specify connection settings for streamlined integration.
 
-3. **API Configuration:** Customise API settings within Tyk Gateway to configure gRPC plugin utilization. Define plugin hooks directly within the API Definition or remotely via an external web server for seamless request orchestration. Tyk plugins provide custom middleware for different phases of the API request lifecycle, enhancing control and flexibility.
+3. **API Configuration:** Customize API settings within Tyk Gateway to configure gRPC plugin utilization. Define plugin hooks directly within the API Definition or remotely via an external web server for seamless request orchestration. Tyk plugins provide custom middleware for different phases of the API request lifecycle, enhancing control and flexibility.
 
 4. **API Testing:** Test that Tyk Gateway integrates with your gRPC server for the plugins configured for your API. 
 
