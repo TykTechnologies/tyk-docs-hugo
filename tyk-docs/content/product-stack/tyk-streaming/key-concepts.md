@@ -7,7 +7,7 @@ tags: [ "streaming", "events", "event driven architecture", "event driven archit
 {{< note success>}}
 
 Tyk Streams is currently in the [Lab Release]({{<ref "developer-support/special-releases-and-features/lab-releases">}})
-phase, and we'd love for you to try it out. Click the button to get to sign up and take it for a spin:
+phase, and we'd love for you to try it out. Click the button to sign up and take it for a spin:
 {{< button_left href="https://survey.hsforms.com/1ItPCBg-_Tre8WFJZL4pp6Q3ifmg" color="green" content="Get started with Tyk Streams" >}}
 
 </br>
