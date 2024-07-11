@@ -10,14 +10,12 @@ Tyk Streams is currently in the [Lab Release]({{<ref "developer-support/special-
 phase, and we'd love for you to try it out. Click the button to sign up and take it for a spin:
 {{< button_left href="https://survey.hsforms.com/1ItPCBg-_Tre8WFJZL4pp6Q3ifmg" color="green" content="Get started with Tyk Streams" >}}
 
-</br>
-
 {{< /note >}}
 
 <!-- Architectural overview
 - Tyk is now an intermediate broker between broker and subscribers, This is sometimes known as broker proxy
 - Integrate with multiple brokers
-- API Management hooks between publisher, gateway and subscriber (Events are availble as APIs)
+- API Management hooks between publisher, gateway, and subscriber (Events are available as APIs)
 
 Explain example roles of publisher and subscriber
 
@@ -37,19 +35,19 @@ Terms
 
 - Example application scenarios
     - IoT
-    - Infrastructure for domain driven design, e.g. event bus to notify state changes between micro-services -->
+    - Infrastructure for domain-driven design, e.g. event bus to notify state changes between micro-services -->
 
 Tyk Streams seamlessly integrates with the Tyk API Gateway to provide a unified platform for managing both synchronous
 and asynchronous APIs. This section will provide an overview of the architecture, integration points, and key
 capabilities. Please consult the [glossary]({{< ref "product-stack/tyk-streaming/glossary" >}}) for explanations of key
 terminology.
 
-Tyk Streams natively integrated as part of Tyk API Gateway and does not have any third party dependencies.
+Tyk Streams is natively integrated as part of Tyk API Gateway and has no third-party dependencies.
 
 <!-- <!TODO: Add architectural image> -->
 <!-- The above diagram illustrates the high-level architecture of Tyk Streams and its integration with the Tyk API Gateway. -->
 Key components in the architecture of Tyk Streams:
-- **Tyk API Gateway**: The core API management platform that handles API requests, applies policies and routes requests
+- **Tyk API Gateway**: The core API management platform that handles API requests, applies policies, and routes requests
 to the appropriate backend services.
 - **Tyk Streams**: An extension to the Tyk API Gateway that enables support for asynchronous APIs and event-driven
 architectures.
@@ -62,7 +60,7 @@ events.
 Tyk Streams operates as middleware within the Tyk API Gateway, providing the following functionalities:
 
 - **Middleware**: Tyk Streams introduces new middleware components that handle async-specific functionality such as
-protocol mediation, event transformations and pub/sub messaging.
+protocol mediation, event transformations, and pub/sub messaging.
 - **API Definitions**: Tyk Streams is configured using the standard Tyk OAS format, including additional fields tailored
 for async protocols and event configurations.
 - **Analytics**: Async API traffic is captured and reported via *Prometheus*, *OpenTelemetry* or *StatsD*, providing
@@ -83,7 +81,7 @@ Tyk Streams provides out-of-the-box connectors for popular event brokers and asy
 - [Webhooks](https://en.wikipedia.org/wiki/Webhook)
 
 In addition to the native protocol support, Tyk Streams offers powerful protocol mediation capabilities. This allows you
-to expose async APIs using different protocols than the backend event broker, making it easier to support diverse client
+to expose async APIs using different protocols than the backend event broker, making it easier to support a diverse client
 requirements.
 
 For example, you can:
