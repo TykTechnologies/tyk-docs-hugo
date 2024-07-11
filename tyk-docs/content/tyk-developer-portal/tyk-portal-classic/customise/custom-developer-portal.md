@@ -4,7 +4,7 @@ title: Creating a Custom Developer Portal
 linktitle: Custom Portal
 menu:
   main:
-    parent: "Customise"
+    parent: "Customize"
 weight: 5 
 aliases:
   - /tyk-developer-portal/customise/custom-developer-po...

@@ -2,7 +2,7 @@
 title: "Customize visual appearance of API Products and Plans"
 date: 2023-11-30
 tags: ["Tyk Developer Portal","Enterprise Portal","API Product","Customization"]
-description: "Make your API Products standout by customising their visual appearance"
+description: "Make your API Products standout by customizing their visual appearance"
 menu:
   main:
     parent: "Get Started"
@@ -18,14 +18,14 @@ If you are interested in getting access, contact us at [support@tyk.io](<mailto:
 
 ## Introduction
 
-In this section, you will learn how to customise the visual appearance of API Products and plans with the Tyk Enterprise Developer Portal. That includes:
+In this section, you will learn how to customize the visual appearance of API Products and plans with the Tyk Enterprise Developer Portal. That includes:
 - The display name for API Products and plans.
 - The description and logo of API Products that will be displayed on the API Product catalog page.
 - Tags for API Products to match them with related blog posts.
 
 ## Customize API Products
-To customise the visual appearance of API Products:
-1. Navigate to the **API Products** menu, select the product that you want to customise (the Payment API in example below). In this menu you can customise the following aspects of API Products:
+To customize the visual appearance of API Products:
+1. Navigate to the **API Products** menu, select the product that you want to customize (the Payment API in example below). In this menu you can customize the following aspects of API Products:
 - **Catalog display name**: This is the name that will be displayed in the external catalog.
 - **Featured API Product**: Tick this option for the API Product to appear on the home page under the **Featured products** section.
 - **Description**: A short description about what this API Product is. It is displayed in the catalog and on the API Product page.
@@ -39,8 +39,8 @@ From that page you can also manage [OAuth2.0 settings]({{< ref "/tyk-stack/tyk-d
 2. Save changes by clicking on the **Save** button. You should now be able to preview how the API Product will be displayed in the catalog:
 {{< img src="img/dashboard/portal-management/enterprise-portal/product-live-portal.png" alt="View the API Product in the catalogue" >}}
 
-Customise plans
-1. To customise visual appearance of plans, open the **Plans** menu and select the plan you want to customise. You can customise the following settings:
+Customize plans
+1. To customize visual appearance of plans, open the **Plans** menu and select the plan you want to customize. You can customize the following settings:
 - **Catalog display name**: The name of the catalog that will be displayed in the API Product page.
 - **Scope**: Scope for the [OAuth2.0 settings]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration.md" >}}). Please refer to the [OAuth2.0 documentation]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration" >}}) for further guidance.
 - **Catalogs**: The catalogs in which this plan is available. Catalogs and organisation are [covered]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/create-orgs-and-catalogs" >}}) later within this getting started guide.
@@ -49,13 +49,13 @@ Customise plans
 
 {{< img src="img/dashboard/portal-management/enterprise-portal/customize-plan.png" alt="Customize visual appearance of a plan" >}}
 
-2. Customise the plan's visual appearance as required and then click on the **Save** button. Now you can view the plan in the API Product page: 
+2. Customize the plan's visual appearance as required and then click on the **Save** button. Now you can view the plan in the API Product page: 
 {{< img src="img/dashboard/portal-management/enterprise-portal/plan-live-portal.png" alt="Customize visual appearance of a plan" >}}
 
 {{< note success >}}
 **Congratulations**
 
-You have now customised the visual appearance of your API Product and plan. By following the above steps you can customise visual appearance of your other API Products and plans. 
+You have now customized the visual appearance of your API Product and plan. By following the above steps you can customize visual appearance of your other API Products and plans. 
 {{< /note >}}
 
 ## Next step

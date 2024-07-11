@@ -55,7 +55,7 @@ The Tyk Dashboard and the Portal now support email notifications powered by Mand
 
 If you have enabled email notifications, the Portal will attempt to send notifications regarding a user's sign-up status or key request status to their username email address. These templates can be found in the `portal/email_templates` folder.
 
-The templates are available as text based or HTML. See the standard included ones to see the various template fields that can be customised.
+The templates are available as text based or HTML. See the standard included ones to see the various template fields that can be customized.
 
 ### Extra Dashboard And Portal Events
 

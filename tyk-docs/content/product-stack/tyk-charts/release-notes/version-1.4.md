@@ -202,8 +202,8 @@ We've added a convenient option to enable dashboard hybrid organization during b
 
 <li>
 <details>
-<summary>Enhanced security with customisable Pod or Container security context</summary>
-To harden security, we have made security context of all Pods and Containers customisable. Also, we have set `runAsNonRoot: true` in all Pod's `securityContext`. This prevents the Pods from running as root users, ensuring compatibility with the [*Restricted* Pod Security Policy](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted).
+<summary>Enhanced security with customizable Pod or Container security context</summary>
+To harden security, we have made security context of all Pods and Containers customizable. Also, we have set `runAsNonRoot: true` in all Pod's `securityContext`. This prevents the Pods from running as root users, ensuring compatibility with the [*Restricted* Pod Security Policy](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted).
 </details>
 </li>
 

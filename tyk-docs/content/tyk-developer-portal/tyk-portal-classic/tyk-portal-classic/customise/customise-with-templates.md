@@ -1,10 +1,10 @@
 ---
 date: 2017-03-24T17:21:39Z
-title: Customise Page Templates
+title: Customize Page Templates
 linktitle: Page Templates
 menu:
   main:
-    parent: "Customise"
+    parent: "Customize"
 weight: 2 
 aliases:
   - /tyk-developer-portal/customise/customise-with-temp...
@@ -12,7 +12,7 @@ aliases:
   - /tyk-developer-portal/customise/customise-with-templates/
 ---
 
-The Tyk Developer Portal can be fully customised using templates. The templates for the Portal are only available to Self-Managed users currently. These templates are located in the `/opt/tyk-dashboard/portal` folder of your Tyk installation.
+The Tyk Developer Portal can be fully customized using templates. The templates for the Portal are only available to Self-Managed users currently. These templates are located in the `/opt/tyk-dashboard/portal` folder of your Tyk installation.
 
 All templates are based on Twitter Bootstrap and are standard HTML with some Golang Template snippets to handle dynamic content rendering.
 
@@ -64,7 +64,7 @@ You do not need to pipe the content through the Markdown filter, but it is advis
 
 In existing page types, these content fields are already set out.
 
-### Dynamic Customisation
+### Dynamic Customization
 
 Portal templates now have access to the Developer object, its subscriptions and issued keys meta-data, providing the ability to conditionally show or hide content inside the Portal, based on the attributes described below.
 

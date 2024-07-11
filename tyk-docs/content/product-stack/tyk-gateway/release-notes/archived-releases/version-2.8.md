@@ -95,7 +95,7 @@ You can now add open (keyless) APIs to the developer portal. You have the same f
 
 ---
 
-## Dynamic Portal Customisation
+## Dynamic Portal Customization
 
 Portal templates now have access to the Developer object, its subscriptions, and issued key metadata, providing the ability to conditionally show or hide content inside the Portal based on the attributes below:
 

@@ -86,7 +86,7 @@ Here is a potential set-up
 
 ### Catalogs
 
-Catalogs enable the publishing API products and plans based on visibility and access requirements. The catalog can be set to public or private. As an admin you can customise the audience of a private catalog at a team level, allowing you to create completely custom catalogs if needed.
+Catalogs enable the publishing API products and plans based on visibility and access requirements. The catalog can be set to public or private. As an admin you can customize the audience of a private catalog at a team level, allowing you to create completely custom catalogs if needed.
 
 Here’s an example of how you could set up catalogs for the users above:
 
