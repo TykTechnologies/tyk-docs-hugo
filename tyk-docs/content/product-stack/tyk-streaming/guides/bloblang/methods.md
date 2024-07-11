@@ -2589,7 +2589,7 @@ root = this.doc.format_json()
 #      }
 ```
 
-Pass a string to the `indent` parameter in order to customise the indentation.
+Pass a string to the `indent` parameter in order to customize the indentation.
 
 ```coffee
 root = this.format_json("  ")
@@ -2667,7 +2667,7 @@ root = this.format_xml()
 #      </foo>
 ```
 
-Pass a string to the `indent` parameter in order to customise the indentation.
+Pass a string to the `indent` parameter in order to customize the indentation.
 
 ```coffee
 root = this.format_xml("  ")

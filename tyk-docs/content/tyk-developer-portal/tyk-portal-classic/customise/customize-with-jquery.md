@@ -1,15 +1,15 @@
 ---
 date: 2020-05-07T17:18:28Z
-title: Customising using jQuery
-linktitle: Customising using jQuery
+title: Customizing using jQuery
+linktitle: Customizing using jQuery
 menu:
   main:
-    parent: "Customise"
+    parent: "Customize"
 aliases:
   - /tyk-developer-portal/customise/customize-with-jquery/
 ---
 
-Tyk Portal comes prepackaged with jQuery.  This opens up a whole world of customisation, by extending our Portal using JavaScript and HTML to create dynamic content.
+Tyk Portal comes prepackaged with jQuery.  This opens up a whole world of customization, by extending our Portal using JavaScript and HTML to create dynamic content.
 
 
 ## Dynamic Content Rendering & Filtering

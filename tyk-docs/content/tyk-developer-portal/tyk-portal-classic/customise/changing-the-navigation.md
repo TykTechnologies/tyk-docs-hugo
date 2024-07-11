@@ -1,10 +1,10 @@
 ---
 date: 2017-03-24T17:24:32Z
-title: Customise the Portal Menus
+title: Customize the Portal Menus
 linktitle: Menus
 menu:
   main:
-    parent: "Customise"
+    parent: "Customize"
 weight: 1 
 aliases:
   - /tyk-developer-portal/customise/changing-the-navigation/
@@ -33,7 +33,7 @@ The Portal supports a data structure to hold rudimentary menus, all pages have a
 
 In the snippet above we can also see a set of settings fields, in order to react to the configuration of the Portal, the core Portal config object is exposed to the template and can be used to change how the template is rendered.
 
-### Customising the menu with the Dashboard
+### Customizing the menu with the Dashboard
 
 The Dashboard has a simple menu editor, you can create the above data structures from the **Portal Management > Menus** option
 
