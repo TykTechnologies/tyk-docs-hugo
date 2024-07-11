@@ -217,7 +217,7 @@ To test the DCR flow, you need to perform the following actions:
 
 ### Request access to the API Product
 To request access to the DCR enabled API Product:
-- Log in as a developer and navigate to the catalogue page.
+- Log in as a developer and navigate to the catalog page.
 - Select the DCR enabled API Product and add it to the shopping cart.
 - Navigate to the checkout page.
 - On the checkout page, select a plan to use with that product, select an existing application, or create a new one. If you plan to build an application that uses the Authorization code grant type, you also need to specify redirect URI of your application in the `Redirect URLs` field. If you have multiple redirect URI, you can separate them with commas.

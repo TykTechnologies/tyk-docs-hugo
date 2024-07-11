@@ -25,6 +25,7 @@
 <!-- Go over all the following points, and put an `x` in all the boxes that apply -->
 
 - [ ] I have added a **preview link** to the PR description.
+- [ ] I have reviewed the suggestions made by our AI (PR Agent) and updated them accordingly (spelling errors, rephrasing, etc.)
 - [ ] I have [reviewed the guidelines](https://github.com/TykTechnologies/tyk-docs/blob/master/CONTRIBUTING.md) for contributing to this repository.
 - [ ] I have [read the technical guidelines](https://github.com/TykTechnologies/tyk-docs/blob/master/CONTRIBUTING-TECHNICAL-GUIDE.md) for contributing to this repository.
 - [ ] Make sure you have started *your change* off *our latest `master`*.

@@ -171,11 +171,11 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 ### Create a key request
 
-Key requests are an easy way to associate developer accounts with new policies, they do not need to be linked to API Catalogue entries, they represent an instruction to Tyk to combine a generate a token with a specific policy ID, and to associate the token and policy with a specific developer account.
+Key requests are an easy way to associate developer accounts with new policies, they do not need to be linked to API Catalog entries, they represent an instruction to Tyk to combine a generate a token with a specific policy ID, and to associate the token and policy with a specific developer account.
 
 **It is now required to pass a version parameter of `v2` and `for_plan` if you wish to associate a key request with a policy ID** legacy key requests will continue to work, but could cause issues as this version is deprecated in future releases.
 
-By default, all key requests created for new catalogue entries will be version 2.
+By default, all key requests created for new catalog entries will be version 2.
 
 | **Property** | **Description**        |
 | ------------ | ---------------------- |

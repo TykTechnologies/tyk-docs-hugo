@@ -6,7 +6,7 @@ menu:
     parent: "Tyk Portal API"
 weight: 6
 ---
-This section covers both [Documentation](#documentation) and [Catalogue](#catalogue) endpoints.
+This section covers both [Documentation](#documentation) and [Catalog](#catalog) endpoints.
 
 ## Documentation
 
@@ -80,9 +80,9 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 }
 ```
 
-## Catalogue
+## Catalog
 
-### List Catalogue
+### List Catalog
 
 | **Property** | **Description**          |
 | ------------ | ------------------------ |
@@ -240,7 +240,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 }
 ```
 
-### Create Catalogue
+### Create Catalog
 
 | **Property** | **Description**          |
 | ------------ | ------------------------ |
@@ -266,7 +266,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 }
 ```
 
-### Update Catalogue
+### Update Catalog
 
 | **Property** | **Description**          |
 | ------------ | ------------------------ |

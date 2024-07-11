@@ -1,5 +1,5 @@
 ---
-title: "Customise the Enterprise Portal"
+title: "Customize the Enterprise Portal"
 date: 2022-02-08
 tags: [""]
 description: ""

@@ -84,11 +84,11 @@ Here is a potential set-up
 
 {{< img src="img/dashboard/portal-management/enterprise-portal/portal-org-team-user-example.png" alt="A sample org set-up" >}}
 
-### Catalogues
+### Catalogs
 
-Catalogues enable the publishing API products and plans based on visibility and access requirements. The catalogue can be set to public or private. As an admin you can customise the audience of a private catalogue at a team level, allowing you to create completely custom catalogues if needed.
+Catalogs enable the publishing API products and plans based on visibility and access requirements. The catalog can be set to public or private. As an admin you can customize the audience of a private catalog at a team level, allowing you to create completely custom catalogs if needed.
 
-Here’s an example of how you could set up catalogues for the users above:
+Here’s an example of how you could set up catalogs for the users above:
 
 {{< img src="img/dashboard/portal-management/enterprise-portal/portal-catalogue-sample-set-up.png" alt="A sample catalogue set-up" >}}
 

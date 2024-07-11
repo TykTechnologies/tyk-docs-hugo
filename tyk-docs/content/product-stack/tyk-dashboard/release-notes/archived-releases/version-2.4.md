@@ -33,7 +33,7 @@ We have updated the Dashboard **Apply Policies** section of the **Add Key** sect
 
 {{< img src="/img/release-notes/apply_policy.png" alt="apply-policy" >}}
 
-For this release multiple policies are only supported only via the Add Key section and via the API. Support for OIDC, oAuth, and Portal API Catalogues are planned for subsequent releases.
+For this release multiple policies are only supported only via the Add Key section and via the API. Support for OIDC, oAuth, and Portal API Catalogs are planned for subsequent releases.
 
 [Docs]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies" >}})
 
@@ -239,7 +239,7 @@ The country code in the log browser has been changed to a link to the geographic
 
 #### Redirect user to the login page if session is timed out.
 
-#### When creating a portal API catalogue, you can now attach documentation without saving the catalogue first.
+#### When creating a portal API catalog, you can now attach documentation without saving the catalog first.
 
 #### Fixed the` proxy.preserve_host_header` field when saved via the UI.
 Previously, the field was available in the API definition, but got removed if the API was saved via the UI.

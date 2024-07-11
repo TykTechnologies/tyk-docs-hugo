@@ -22,7 +22,7 @@ Additionally, all settings for the Portal are configured using an env-file.
 {{< warning success >}}
 **Note**
 
-This document is just an example. Customise all fields, including the username, password, root password, database name and more.
+This document is just an example. Customize all fields, including the username, password, root password, database name and more.
 {{< /warning >}}
 
 
@@ -64,7 +64,7 @@ Once you have completed this step, you are ready to launch the portal applicatio
 
 ### Create a docker-compose file and launch the stack 
 #### Create a docker-compose file
-Before launching the portal using docker-compose, you will need to create a `docker-compose.yaml` file. An example of the portal's docker-compose file is provided below, which you can use as a starting point and further customise to meet your specific requirements.
+Before launching the portal using docker-compose, you will need to create a `docker-compose.yaml` file. An example of the portal's docker-compose file is provided below, which you can use as a starting point and further customize to meet your specific requirements.
 
 Ensure that you replace `<tag>` with the specific version of the portal you intend to launch before executing the command, e.g. `tykio/portal:v1.7` for the portal v1.7. You can browse all available versions on [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) and in the [release notes section]({{< ref "product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0.md" >}}).
 

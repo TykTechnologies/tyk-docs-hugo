@@ -15,7 +15,7 @@ aliases:
 
 ## Install Tyk API Gateway on Heroku
 
-A full Tyk Self-Managed installation can be deployed to Heroku dynos and workers using [Heroku Container Registry and Runtime](https://devcenter.heroku.com/articles/) functionality. This guide will utilize [Tyk Docker images](https://hub.docker.com/u/tykio/) with a small amount of customisation as well as an external MongoDB service.
+A full Tyk Self-Managed installation can be deployed to Heroku dynos and workers using [Heroku Container Registry and Runtime](https://devcenter.heroku.com/articles/) functionality. This guide will utilize [Tyk Docker images](https://hub.docker.com/u/tykio/) with a small amount of customization as well as an external MongoDB service.
 
 
 ## Prerequisites
@@ -426,7 +426,7 @@ After re-starting the Gateway, the logs should be showing something similar to t
 
 Set this variable back to an empty value in order to revert back to the default behavior.
 
-## Upgrading or Customising Tyk
+## Upgrading or Customizing Tyk
 
 Since this deployment is based on Docker images and containers, upgrading or making changes to the deployment is as easy as building a new image and pushing it to the registry.
 
