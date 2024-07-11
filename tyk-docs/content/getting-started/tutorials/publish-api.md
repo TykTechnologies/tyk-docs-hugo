@@ -65,7 +65,7 @@ Save the policy by clicking **Create**.
 
 The API that you defined earlier is active and will work as you've seen in the previous tutorial, this time we want to use the Portal to generate a token for a named developer.
 
-Not all APIs are visible to the Portal, only the ones you tell it about, so from the **Catalog** menu, select **Add API** then:
+Not all APIs are visible to the Portal, only the ones you tell it about, so from the **Catalogue** menu, select **Add API** then:
 
 1.  Select your **Default** policy
 2.  Fill in the description fields
