@@ -138,7 +138,7 @@ Take note of the `Key Hash` and `Key ID` as they will be needed later.
 
 #### Publish the API to the Developer Portal
 
-The API and the Facade API are now configured and can used to publish the API to the Tyk Developer Portal. Navigate to **Portal Management** &rarr; **Catalogue**, then click **Add New API**. Give it a public name, ex. `OAuth Facade API` and select the `facade-policy`. 
+The API and the Facade API are now configured and can used to publish the API to the Tyk Developer Portal. Navigate to **Portal Management** &rarr; **Catalog**, then click **Add New API**. Give it a public name, ex. `OAuth Facade API` and select the `facade-policy`. 
 
 {{< img src="/img/dcr/curity/7-split-curity-publish-api.png" alt="Publish API" >}}
 
