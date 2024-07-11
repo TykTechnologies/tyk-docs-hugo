@@ -2,7 +2,7 @@
 date: 2019-07-30T11:30:02Z
 title: Bootstrapper CLI
 tags: ["Tyk Dasboard", "Self-Managed", "Bootstrapping", "CLI"]
-description: "How to Bootstrap the Tyk Dashboard to create your organisation and users"
+description: "How to Bootstrap the Tyk Dashboard to create your organization and users"
 menu:
   main:
     parent: "Self-Managed Installation"
@@ -25,15 +25,15 @@ To list the available flags, execute `tyk-analytics bootstrap -h`:
          --version              Show application version.
          --conf="tyk_analytics.conf"  
                                 Load a named configuration file.
-         --create-org           Create a new organisation.
-         --reuse-org=REUSE-ORG  Reuse the organisation with given ID.
-         --drop-org=DROP-ORG    Drop the organisation with given ID.
+         --create-org           Create a new organization.
+         --reuse-org=REUSE-ORG  Reuse the organization with given ID.
+         --drop-org=DROP-ORG    Drop the organization with given ID.
 ```
 
 
 ### Description
 
-The `bootstrap` command makes bootstrapping easier. It helps you to create organisations and users. The command needs a
+The `bootstrap` command makes bootstrapping easier. It helps you to create organizations and users. The command needs a
  config file path. By default, it looks at `tyk_analytics.conf` in the directory where the `tyk-analytics` binary is located.
  For example:
  

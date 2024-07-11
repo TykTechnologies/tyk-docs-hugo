@@ -60,7 +60,7 @@ Configure custom domain for your Dashboard and Developer Portal
 
 #### Manage environments
 
-Create and manage multiple environments within your Tyk Cloud organisation
+Create and manage multiple environments within your Tyk Cloud organization
 {{< /badge >}}
 
 {{< badge title="Administration" href="tyk-cloud/environments-deployments/managing-control-planes" >}}
@@ -74,7 +74,7 @@ Create and manage your Cloud Control Plane and Cloud Data Plane deployments
 
 #### Manage teams & users
 
-Create teams in your organisation, define roles and manage user access
+Create teams in your organization, define roles and manage user access
 {{< /badge >}}
 
 {{< badge title="Account" href="tyk-cloud/account-billing/" >}}

@@ -35,7 +35,7 @@ In the Tyk Developer Portal a “themes” folder is located in the root of the 
 - `assets`: It intended for static assets like CSS, JS or images that are used by the theme. All contents from this directory are mounted under the `/assets` path in the portal HTTP server.
 - `layouts`: The layout is the top level view of your theme.
 - `views`: The view is rendered as a part of a layout. Each view can be rendered using a different layout.
-- `partials`: Partials provide an easier way to handle snippets of code that are reused across different views or layouts, for example if you want to inject a JS snippet that’s used in different places, you could set this code in a partial and include it anywhere by using the appropriate 'Go template directive'. In this way you could improve code readability and organise the theme in the most efficient way.
+- `partials`: Partials provide an easier way to handle snippets of code that are reused across different views or layouts, for example if you want to inject a JS snippet that’s used in different places, you could set this code in a partial and include it anywhere by using the appropriate 'Go template directive'. In this way you could improve code readability and organize the theme in the most efficient way.
 
 ### Manifest file
 
