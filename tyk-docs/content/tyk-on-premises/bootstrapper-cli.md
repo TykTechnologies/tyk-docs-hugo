@@ -25,9 +25,9 @@ To list the available flags, execute `tyk-analytics bootstrap -h`:
          --version              Show application version.
          --conf="tyk_analytics.conf"  
                                 Load a named configuration file.
-         --create-org           Create a new organization.
-         --reuse-org=REUSE-ORG  Reuse the organization with given ID.
-         --drop-org=DROP-ORG    Drop the organization with given ID.
+         --create-org           Create a new organisation.
+         --reuse-org=REUSE-ORG  Reuse the organisation with given ID.
+         --drop-org=DROP-ORG    Drop the organisation with given ID.
 ```
 
 

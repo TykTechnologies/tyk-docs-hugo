@@ -324,7 +324,7 @@ auto configure based on currently MySQL version
 ENV: <b>TYK_DB_ADMINSECRET</b><br />
 Type: `string`<br />
 
-This secret is to be used by a special set of endpoints that we call “Admin APIs”. This API is part of the super-admin context and therefore has a separate endpoint prefix `/admin`. It also requires a special auth header called admin-auth. This purpose of these endpoints is to allow functionality that regular Dashboard users should not have, such as create new organizations, create super users etc. See the [Admin API](https://tyk.io/docs/dashboard-admin-api/) for more information on these endpoints.
+This secret is to be used by a special set of endpoints that we call “Admin APIs”. This API is part of the super-admin context and therefore has a separate endpoint prefix `/admin`. It also requires a special auth header called admin-auth. This purpose of these endpoints is to allow functionality that regular Dashboard users should not have, such as create new organisations, create super users etc. See the [Admin API](https://tyk.io/docs/dashboard-admin-api/) for more information on these endpoints.
 
 ### shared_node_secret
 ENV: <b>TYK_DB_NODESECRET</b><br />
@@ -1012,7 +1012,7 @@ Enable dashboard audit. Example:
 
 Audit records the following fields for json format:
  * req_id - unique request ID
- * org_id - organization ID
+ * org_id - organisation ID
  * date - date in RFC1123 format
  * timestamp - unix timestamp
  * ip - IP address the request originated from
@@ -1053,7 +1053,7 @@ Enables detailed records in the audit log. Set to false by default. If set to `t
 ENV: <b>TYK_DB_ENABLEMULTIORGUSERS</b><br />
 Type: `bool`<br />
 
-Enable support for users with the same email for multiple organizations
+Enable support for users with the same email for multiple organisations
 
 ### health_check_endpoint_name
 ENV: <b>TYK_DB_HEALTHCHECKENDPOINTNAME</b><br />
