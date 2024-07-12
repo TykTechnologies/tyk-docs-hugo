@@ -16,7 +16,7 @@ parallel:
 
 The [cap](#cap) field, if greater than zero, caps the maximum number of parallel processing threads.
 
-The functionality of this processor depends on being applied across messages that are [batched](TODO).
+The functionality of this processor depends on being applied across messages that are [batched]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/batching" >}}).
 
 ## Fields
 
