@@ -104,7 +104,7 @@ Id of API Definition requested.
 **Example:** `727dad853a8a45f64ab981154d1ffdad`.
 
 ### OrgID
-Organisation Id of API Definition requested.
+Organization Id of API Definition requested.
 
 **Example:** `5e9d9544a1dcd60001d0ed20`.
 
@@ -164,7 +164,7 @@ We record the round trip time of the call from the gateways reverse proxy. So wh
 ### Tags
 Session context tags.
 
-**Remarks:** Can contain many tags which refer to many things, such as the gateway, API key, organisation, API definition etc.<br/>
+**Remarks:** Can contain many tags which refer to many things, such as the gateway, API key, organization, API definition etc.<br/>
 **Example:** `["key-00000000","org-5e9d9544a1dcd60001d0ed20","api-accbdd1b89e84ec97f4f16d4e3197d5c"]`.
 
 ### Alias

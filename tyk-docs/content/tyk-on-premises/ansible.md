@@ -101,7 +101,7 @@ For a production environment, we recommend that the Gateway, Dashboard and Pump 
 | gateway.rpc.connString | | Use this setting to add the URL for your MDCB or load balancer host |
 | gateway.rpc.useSSL | `true` | Set this option to `true` to use an SSL RPC connection|
 | gateway.rpc.sslInsecureSkipVerify | `true` | Set this option to `true` to allow the certificate validation (certificate chain and hostname) to be skipped. This can be useful if you use a self-signed certificate |
-| gateway.rpc.rpcKey | | Your organisation ID to connect to the MDCB installation |
+| gateway.rpc.rpcKey | | Your organization ID to connect to the MDCB installation |
 | gateway.rpc.apiKey | | This the API key of a user used to authenticate and authorize the Gateway’s access through MDCB. The user should be a standard Dashboard user with minimal privileges so as to reduce any risk if the user is compromised. The suggested security settings are read for Real-time notifications and the remaining options set to deny |
 | gateway.rpc.groupId | | This is the `zone` that this instance inhabits, e.g. the cluster/data-center the Gateway lives in. The group ID must be the same across all the Gateways of a data-center/cluster which are also sharing the same Redis instance. This ID should also be unique per cluster (otherwise another Gateway cluster can pick up your keyspace events and your cluster will get zero updates). |
 
