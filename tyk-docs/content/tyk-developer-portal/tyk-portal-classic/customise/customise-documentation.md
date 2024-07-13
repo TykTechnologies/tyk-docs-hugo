@@ -4,13 +4,13 @@ title: Swap out Swagger UI for ReDoc
 linktitle: API Documentation
 menu:
   main:
-    parent: "Customise"
+    parent: "Customize"
 weight: 6
 aliases:
   - /tyk-developer-portal/customise/customise-documentation/
 ---
 
-This short guide will show you how easy it is to swap out out the default https://swagger.io/tools/swagger-ui/ library for Portal Catalogue API documentation for another tool like [ReDoc](http://rebilly.github.io/ReDoc/) 
+This short guide will show you how easy it is to swap out out the default https://swagger.io/tools/swagger-ui/ library for Portal Catalog API documentation for another tool like [ReDoc](http://rebilly.github.io/ReDoc/) 
 
 * Open up the default `/opt/tyk-dashboard/portal/templates/swagger.html`
 

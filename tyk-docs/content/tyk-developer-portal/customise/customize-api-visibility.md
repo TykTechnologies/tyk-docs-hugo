@@ -1,9 +1,9 @@
 ---
 date: 2020-07-24
-title: Customising API Visibility
-linktitle: Customising API Visibility
+title: Customizing API Visibility
+linktitle: Customizing API Visibility
 description: "A walk through how you can use custom Page Templates to control the visibility of your APIs so it can only be seen by specific group of developers."
-tags: ["customising EDP", EDP, "customising APIs EDP"]
+tags: ["customizing EDP", EDP, "customizing APIs EDP"]
 aliases:
   - /tyk-developer-portal/customise/customize-api-visibility/
 ---
@@ -76,7 +76,7 @@ The main difference from the default template is two changes:
 ```
 
 <details>
-<summary><b>Click to expand and see the customised catalogue template</b></summary>
+<summary><b>Click to expand and see the customized catalog template</b></summary>
 
 ```go-html-template
 {{ define "cataloguePage" }} {{ $org_id := .OrgId}} {{ template "header" .}}
@@ -88,7 +88,7 @@ The main difference from the default template is two changes:
     <!-- Main content here -->
     <div class="container" style="margin-top:80px;">
       <div class="row">
-        <h1>API Catalogue</h1>
+        <h1>API Catalog</h1>
       </div>
       {{ if .Error }}
       <div class="row">
@@ -155,7 +155,7 @@ The main difference from the default template is two changes:
       {{ else }}
       <div class="row">
         <p>
-          <em>It looks like there are no APIs in the Catalogue.</em>
+          <em>It looks like there are no APIs in the Catalog.</em>
         </p>
       </div>
       {{ end }}

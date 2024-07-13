@@ -5,7 +5,7 @@ tags: ["Tyk Developer Portal","Enterprise Portal","Webhooks","Customization","In
 description: "Configure webhooks to react on events happening in the portal"
 menu:
     main:
-        parent: "Customise the portal"
+        parent: "Customize the portal"
 weight: 3
 ---
 

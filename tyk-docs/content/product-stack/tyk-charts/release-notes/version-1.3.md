@@ -246,9 +246,9 @@ The control plane should be deployed with same `global.mdcbSynchronizer.enabled`
 
 <li>
 <details>
-<summary>Gateway: Customise ServiceAccount to be used</summary>
+<summary>Gateway: Customize ServiceAccount to be used</summary>
 
-Allow users to customise `serviceAccountName` for gateway, the name of the [Service Account](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) that is going to be used by the Pods.
+Allow users to customize `serviceAccountName` for gateway, the name of the [Service Account](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) that is going to be used by the Pods.
 </details>
 </li>
 
@@ -278,9 +278,9 @@ You can enable Internal [Tyk Identity Broker (TIB)]({{<ref "tyk-identity-broker"
 
 <li>
 <details>
-<summary>Dashboard: Customise ServiceAccount to be used</summary>
+<summary>Dashboard: Customize ServiceAccount to be used</summary>
 
-Allow users to customise `serviceAccountName` for dashboard, the name of the [Service Account](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) that is going to be used by the Pods.
+Allow users to customize `serviceAccountName` for dashboard, the name of the [Service Account](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) that is going to be used by the Pods.
 </details>
 </li>
 
@@ -302,9 +302,9 @@ Users can configure Tyk Dashboard service port name. Default is `http`.
 
 <li>
 <details>
-<summary>Pump: Customise ServiceAccount to be used</summary>
+<summary>Pump: Customize ServiceAccount to be used</summary>
 
-Allow users to customise `serviceAccountName` for pump, the name of the [Service Account](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) that is going to be used by the Pods.
+Allow users to customize `serviceAccountName` for pump, the name of the [Service Account](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) that is going to be used by the Pods.
 </details>
 </li>
 
@@ -318,9 +318,9 @@ Users can configure Tyk Pump service port name. Default is `http`.
 
 <li>
 <details>
-<summary>Portal: Customise ServiceAccount to be used</summary>
+<summary>Portal: Customize ServiceAccount to be used</summary>
 
-Allow users to customise `serviceAccountName` for portal, the name of the [Service Account](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) that is going to be used by the Pods.
+Allow users to customize `serviceAccountName` for portal, the name of the [Service Account](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) that is going to be used by the Pods.
 </details>
 </li>
 

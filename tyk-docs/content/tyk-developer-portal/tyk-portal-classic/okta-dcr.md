@@ -86,7 +86,7 @@ After the policy is created, switch back to the API settings and make sure that 
 {{< img src="/img/dcr/okta/step_7.png" alt="Step 7" >}}
 
 Now you're ready to add this API to the Developer Portal. 
-1. Click **Catalogue** under **Portal Management** on the navigation menu. 
+1. Click **Catalog** under **Portal Management** on the navigation menu. 
 2. Click **Add New API**, enter a name for it and select the newly created policy. Again, you will use **OKTA API**:
 
 {{< img src="/img/dcr/okta/step_8.png" alt="Step 8" >}}

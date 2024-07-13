@@ -80,7 +80,7 @@ After the policy is ready, switch back to the API settings and make sure that th
 
 {{< img src="/img/dcr/gluu/step_6.png" alt="Step 6" >}}
 
-Now you’re ready to add this API to the developer portal. Switch to the "Catalogue" section under "Portal Management" on the navigation menu. Click on "Add New API", set a name for it and select the newly created policy. For this example use "Gluu Policy":
+Now you’re ready to add this API to the developer portal. Switch to the "Catalog" section under "Portal Management" on the navigation menu. Click on "Add New API", set a name for it and select the newly created policy. For this example use "Gluu Policy":
 
 {{< img src="/img/dcr/gluu/step_7.png" alt="Step 7" >}}
 

@@ -78,7 +78,7 @@ The JavaScript Virtual Machine provides pluggable middleware that can modify a r
 *   **TCP Access**: The JSVM has no socket access so working with DB drivers and directly with Redis is not possible.
 
 ### Rich Plugins
-Rich Plugins can provide replacements for existing middleware functions (as opposed to augmentation) and are designed to be full-blown, optimized, highly capable services. They enable a full customised architecture to be built that integrates with a user's infrastructure.
+Rich Plugins can provide replacements for existing middleware functions (as opposed to augmentation) and are designed to be full-blown, optimized, highly capable services. They enable a full customized architecture to be built that integrates with a user's infrastructure.
 
 Rich Plugins bring about the following improvements:
 

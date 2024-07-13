@@ -1,5 +1,5 @@
 ---
-title: "Customise the menu of live portal"
+title: "Customize the menu of live portal"
 date: 2022-02-08
 tags: [""]
 description: ""
@@ -18,7 +18,7 @@ If you are interested in getting access, contact us at [support@tyk.io](<mailto:
 
 ## Introduction
 
-The Enterprise Developer portal enables admin users to customise the navigation menu that appears on the top navigational bar of the live portal. An admin user can create and manage menu items without any code from the admin dashboard of the Developer portal.
+The Enterprise Developer portal enables admin users to customize the navigation menu that appears on the top navigational bar of the live portal. An admin user can create and manage menu items without any code from the admin dashboard of the Developer portal.
 {{< img src="img/dashboard/portal-management/enterprise-portal/top-nav-menu.png" alt="The navigation menu" >}}
 
 Each menu item may:
@@ -27,7 +27,7 @@ Each menu item may:
 - show a dropdown list with possible navigational options:
   {{< img src="img/dashboard/portal-management/enterprise-portal/dropdown-menu-item.png" alt="Dropdown menu item" >}}
 
-Admin users can create additional navigational menus and render them on any page of the live portal. This customisation requires changes to a theme and is covered in the [Full customisation section]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation.md" >}}).
+Admin users can create additional navigational menus and render them on any page of the live portal. This customization requires changes to a theme and is covered in the [Full customization section]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation.md" >}}).
 
 ## Manage menu items
 
