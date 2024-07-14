@@ -13,7 +13,7 @@ weight: 0
 ### SSO - The generic use case
 
 SSO gives users the ability to log in to multiple applications without the need to enter their password more than once.
-[OIDC]({{< ref "basic-config-and-security/security/authentication-authorization/openid-connect" >}}) or SAML enables an application to verify the identity of users from an organisation without the need to self store and manage them, and without doing the identification process and exposing their passwords to that application. Their lists of users and passwords are kept safe in one single place, in the IDP that the organisation has chosen to use. The Authorization server of the IdP identify the users for a pre-registered and approved application (`client` in OAuth and OIDC terminology).
+[OIDC]({{< ref "basic-config-and-security/security/authentication-authorization/openid-connect" >}}) or SAML enables an application to verify the identity of users from an organization without the need to self store and manage them, and without doing the identification process and exposing their passwords to that application. Their lists of users and passwords are kept safe in one single place, in the IDP that the organization has chosen to use. The Authorization server of the IdP identify the users for a pre-registered and approved application (`client` in OAuth and OIDC terminology).
 
 ### SSO in Tyk
 
@@ -67,7 +67,7 @@ The provider config for SAML has the following values that can be configured in 
 
 `FailureRedirect` - Where to redirect failed login requests.
 
-`IDPMetaDataURL` - The metadata URL of your IDP which will provide Tyk Identity Broker with information about the IDP such as EntityID, Endpoints (Single Sign On Service Endpoint, Single Logout Service Endpoint), its public X.509 cert, NameId Format, Organisation info and Contact info.
+`IDPMetaDataURL` - The metadata URL of your IDP which will provide Tyk Identity Broker with information about the IDP such as EntityID, Endpoints (Single Sign On Service Endpoint, Single Logout Service Endpoint), its public X.509 cert, NameId Format, Organization info and Contact info.
 
 This metadata XML can be signed providing a public X.509 cert and the private key.     
 

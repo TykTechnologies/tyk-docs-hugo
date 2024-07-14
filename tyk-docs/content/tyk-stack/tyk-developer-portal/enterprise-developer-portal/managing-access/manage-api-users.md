@@ -32,7 +32,7 @@ Here you’ll learn about how to add and invite a new external user to the devel
 {{< img src="/img/dashboard/portal-management/enterprise-portal/users-menu.png" alt="Portal API Users menu" >}}
 
 2. In the **Add user** dialog, enter **First** and **Last** names, and **Email**.
-3. Select an organisation to which to register your user.
+3. Select an organization to which to register your user.
 4. You can also set a password for a user by typing it in the **Set password** field. Check the **User must change password at the next login** if you wish your developer to change their password at next login.
 Please note, that you can either send the invite email or set the password yourself, but you cannot use both methods. 
 

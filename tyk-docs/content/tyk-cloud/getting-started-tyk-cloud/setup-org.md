@@ -1,8 +1,8 @@
 ---
 date: 2020-03-17T19:13:22Z
-Title: Task 2 - Set up Your Organisation
-tags: ["Tyk Stack", "Tyk Cloud", "SaaS", "Organisation"]
-description: "Setting up your organisation for Tyk Cloud"
+Title: Task 2 - Set up Your Organization
+tags: ["Tyk Stack", "Tyk Cloud", "SaaS", "Organization"]
+description: "Setting up your organization for Tyk Cloud"
 menu:
   main:
     parent: "Getting Started with Tyk Cloud"
@@ -14,16 +14,16 @@ aliases:
 
 ## Introduction
 
-Now that you have created the new Tyk Cloud account with your basic details, it is time to set up your organisation. This page will tell you how to set up your organisation and also about the two ways of setting it up.
+Now that you have created the new Tyk Cloud account with your basic details, it is time to set up your organization. This page will tell you how to set up your organization and also about the two ways of setting it up.
 
-## What is an organisation?
+## What is an organization?
 
-* An organisation is the main entity for all your data (Environments, APIs, Users, etc)
-* An Organisation is connected to a single region and once connected, cannot be changed.
+* An organization is the main entity for all your data (Environments, APIs, Users, etc)
+* An Organization is connected to a single region and once connected, cannot be changed.
   
-## Steps to set up your organisation  
+## Steps to set up your organization  
 
-* **Step 1 - Name your Organisation:** Give your organisation a name. This is up to you, but most users use their company name.
+* **Step 1 - Name your Organisation:** Give your organization a name. This is up to you, but most users use their company name.
 
 * **Step 2 - Select a Home Region:** Select a region from the drop-down list where your [Control Plane]({{< ref "tyk-cloud/troubleshooting-&-support/glossary.md#control-plane" >}}) will be deployed and your data stored. The number of regions available will depend on your license. Further regions can be added as an upgrade option.
 

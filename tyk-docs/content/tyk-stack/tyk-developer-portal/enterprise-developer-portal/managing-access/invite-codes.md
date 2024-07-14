@@ -18,7 +18,7 @@ If you are interested in getting access contact us at [support@tyk.io](<mailto:s
 
 ## Introduction
 
-Here you’ll learn about how to create invite codes to add a new external user to the developer portal. Invite codes can be used to simplify user onboarding. Using invite codes, users will be directly assigned to a team and organisation, giving them the same access rights as this team. For example you can use invite codes to:
+Here you’ll learn about how to create invite codes to add a new external user to the developer portal. Invite codes can be used to simplify user onboarding. Using invite codes, users will be directly assigned to a team and organization, giving them the same access rights as this team. For example you can use invite codes to:
 - Run a promotional campaign like a Hackathon and give access to specific plans to the users.
 - Onboard a partner company into the portal by giving them this code for anyone registering.
 

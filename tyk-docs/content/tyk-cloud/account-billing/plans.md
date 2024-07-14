@@ -23,7 +23,7 @@ Here's an overview of all of the available plans:
 | Starter <p>[Standard Support SLA]({{< ref "frequently-asked-questions/sla-policies" >}})</p> | For single teams with low traffic, mostly small businesses that manage few APIs. | This plan includes all of the features of the Tyk Stack. You can have **[custom domains]({{< ref "tyk-cloud/using-custom-domains" >}})** and **[plugins]({{< ref "tyk-cloud/using-plugins" >}})**, along with management of upto 5 APIs. Standard support is provided.|
 | Launch <p>[Standard Support SLA]({{< ref "frequently-asked-questions/sla-policies" >}})</p> | For single teams with low traffic, mostly small businesses. | This plan includes all of the features of the Tyk Stack. You can have **[custom domains]({{< ref "tyk-cloud/using-custom-domains" >}})** and **[plugins]({{< ref "tyk-cloud/using-plugins" >}})** along with management of unlimited APIs. Standard support is provided. |
 | Grow <p>[Standard Support SLA]({{< ref "frequently-asked-questions/sla-policies" >}})</p> | For single teams with high traffic. | This plan includes all of the features of the Tyk Stack. In this plan, you have **[Hybrid Gateways]({{< ref "tyk-cloud/environments-deployments/hybrid-gateways" >}})** as an add on, along with standard support. |
-| Scale <p>[Enhanced Support SLA]({{< ref "frequently-asked-questions/sla-policies" >}})</p> | For global organisations with multiple teams, requiring gateway deployments in multiple locations. | This plan includes all of the features of the Tyk Stack. **Enhanced(silver) support** will be provided. |
+| Scale <p>[Enhanced Support SLA]({{< ref "frequently-asked-questions/sla-policies" >}})</p> | For global organizations with multiple teams, requiring gateway deployments in multiple locations. | This plan includes all of the features of the Tyk Stack. **Enhanced(silver) support** will be provided. |
 
 
 {{< button_left href="https://tyk.io/sign-up/#cloud" color="green" content="Get started with Cloud free trial" >}}
@@ -64,7 +64,7 @@ You can upgrade or downgrade your current plan at any point in your billing cycl
 
 ### Downgrading plan requirements
 
-If you downgrade your plan, the new plan may have less entitlements than your current plan. You will need to restructure your organisation to comply with the new plan entitlements before the downgraded billing starts.
+If you downgrade your plan, the new plan may have less entitlements than your current plan. You will need to restructure your organization to comply with the new plan entitlements before the downgraded billing starts.
 
 ### Checking the Tyk Cloud status
 

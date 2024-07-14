@@ -67,7 +67,7 @@ The API will have the following parameters configured:
 - **Target URL**: The target URL will be configured to send requests to *http://httpbin/*.
 - **Authentication Mode**: The authentication mode will be configured for custom authentication. This is used to trigger CoProcess (gRPC), Python or JSVM plugins to handle custom authentication.
 
-You can use the following Tyk Classic API definition to get you started, replacing the *org_id* with the ID of your organisation.
+You can use the following Tyk Classic API definition to get you started, replacing the *org_id* with the ID of your organization.
 
 ```json
 {
@@ -114,7 +114,7 @@ An illustrative example using *curl* is given below. Please note that you will n
 
 - Update the location to use the protocol scheme, host and port suitable for your environment.
 - Replace the value in the *x-tyk-authorization* header with the secret value in your *tyk.conf* file.
-- Replace the *org_id* with the ID of your organisation.
+- Replace the *org_id* with the ID of your organization.
 
 ```bash
 curl -v \
@@ -173,7 +173,7 @@ A response similar to that given below will be returned by Tyk Gateway:
 
 We will create an key configured to use HMAC signing, with a secret of *secret*. The key will configured to have access to our test API.
 
-You can use the following configuration below, replacing the value of the *org_id* with the ID of your organisation.
+You can use the following configuration below, replacing the value of the *org_id* with the ID of your organization.
 
 ```bash
 {
@@ -213,7 +213,7 @@ An illustrative example using *curl* is given below. Please note that you will n
 - Update the location to use the protocol scheme, host and port suitable for your environment.
 - Replace the value in the *x-tyk-authorization* header with the secret value in your *tyk.conf* file.
 
-Replace the *org_id* with the ID of your organisation.
+Replace the *org_id* with the ID of your organization.
 
 ```bash
 curl --location 'http://localhost:8080/tyk/keys/grpc_hmac_key' \
