@@ -40,7 +40,7 @@ Please note that this list only refers to v1.9.0 of the portal. The list of endp
 | Users              | /users/{user_id}                                                                       |
 | Users              | /users/{user_id}/custom-attributes                                                     |
 | Users              | /users/{user_id}/custom-attributes/{custom-attribute_id}                               |
-| Organizations      | /organizations                                                                         |
+| Organizations      | /organisations                                                                         |
 | Organizations      | /organisations/{organisation_id}                                                       |
 | Teams              | /organisations/{organisation_id}/teams                                                 |
 | Teams              | /organisations/{organisation_id}/teams                                                 |

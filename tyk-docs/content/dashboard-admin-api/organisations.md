@@ -110,7 +110,7 @@ admin-auth: 12345
 
 ```json
 {
-    "organizations": [
+    "organisations": [
         {
             "id": "5cc03283d07e7f00019404b3",
             "owner_name": "TestOrg5 Ltd.",
