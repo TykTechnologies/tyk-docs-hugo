@@ -30,7 +30,7 @@ Tyk allows each organization to own its own set of Gateways, for example when yo
 
 Self-Managed users should use [API tagging]({{< ref "advanced-configuration/manage-multiple-environments/with-tyk-on-premises" >}}) and enforce a tagging standard across all organizations.
 
-All actions in a Self-Managed installation of Tyk must use a base Organisation, and all actions should stem from a User owned by that organization.
+All actions in a Self-Managed installation of Tyk must use a base Organization, and all actions should stem from a User owned by that organization.
 
 {{< note success >}}
 **Note**
