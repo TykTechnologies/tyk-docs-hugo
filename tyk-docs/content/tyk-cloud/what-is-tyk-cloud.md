@@ -47,6 +47,6 @@ Seamlessly wire your environments between cloud providers, and your own infrastr
 
 ### Designed for Enterprises
 
-Tyk Cloud is designed for Enterprises who may have multi-organisations and multi-teams, so you can combine or isolate your platform and the underlying providers, the choice is completely yours!
+Tyk Cloud is designed for Enterprises who may have multi-organizations and multi-teams, so you can combine or isolate your platform and the underlying providers, the choice is completely yours!
 
 To make it even simpler, Tyk Cloud is pre-configured so you can be up and running within a few clicks, no laborious tasks for your internal teams and best practice configuration and security is delivered out of the box.

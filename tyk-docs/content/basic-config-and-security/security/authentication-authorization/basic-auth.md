@@ -135,7 +135,7 @@ curl -X POST -H "x-tyk-authorization: 352d20fe67be67f6340b4c0605b044c3" \
 
 You use `POST` to create a new user and `PUT` to update an existing entry.
 
-Be careful to ensure that the `org_id` is set correctly and consistently so that the Basic Authentication user is created in the correct organisation.
+Be careful to ensure that the `org_id` is set correctly and consistently so that the Basic Authentication user is created in the correct organization.
 {{< /note >}}
 
 ### Using the Tyk Dashboard API
@@ -180,7 +180,7 @@ curl -X POST -H "Authorization: 907aed9f88514f175f1dccf8a921f741"
 
 You use `POST` to create a new user and `PUT` to update an existing entry.
 
-Be careful to ensure that the `org_id` is set correctly and consistently so that the Basic Authentication user is created in the correct organisation.
+Be careful to ensure that the `org_id` is set correctly and consistently so that the Basic Authentication user is created in the correct organization.
 {{< /note >}}
 
 ## Extracting credentials from the request body
