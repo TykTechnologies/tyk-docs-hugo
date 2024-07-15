@@ -440,23 +440,19 @@ To improve the data maintenance processes, as querying or removing data from one
 ```yaml
   "storage": {
     "main": {
-      "type": "postgres",
-      "connection_string": "user=laurentiughiur password=test123 database='tyk-test' host=127.0.0.1 port=5432",
+      ...
       "table_sharding": true
     },
     "analytics": {
-      "type": "postgres",
-      "connection_string": "user=laurentiughiur password=test123 database='tyk-test' host=127.0.0.1 port=5432",
+      ...
       "table_sharding": true
     },
     "logs": {
-      "type": "postgres",
-      "connection_string": "user=laurentiughiur password=test123 database='tyk-test' host=127.0.0.1 port=5432",
+      ...
       "table_sharding": true
     },
     "uptime": {
-      "type": "postgres",
-      "connection_string": "user=laurentiughiur password=test123 database='tyk-test' host=127.0.0.1 port=5432",
+      ...
       "table_sharding": true
     }
   },
