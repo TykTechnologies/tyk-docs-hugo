@@ -438,24 +438,28 @@ To improve the data maintenance processes, as querying or removing data from one
 ### Tyk Dashboard Configuration
 
 ```yaml
-"sql": {
-  ...
-  "meta": {
-    ...
-    "table_sharding": true
-  }
-},
-"sql_aggregate" : {
-  ...
-  "meta": {
-    ...
-    "table_sharding": true
-  }
-},
-"uptime_pump_config": {
-  ...
-  "table_sharding": true
-},
+  "storage": {
+    "main": {
+      "type": "postgres",
+      "connection_string": "user=laurentiughiur password=test123 database='tyk-test' host=127.0.0.1 port=5432",
+      "table_sharding": true
+    },
+    "analytics": {
+      "type": "postgres",
+      "connection_string": "user=laurentiughiur password=test123 database='tyk-test' host=127.0.0.1 port=5432",
+      "table_sharding": true
+    },
+    "logs": {
+      "type": "postgres",
+      "connection_string": "user=laurentiughiur password=test123 database='tyk-test' host=127.0.0.1 port=5432",
+      "table_sharding": true
+    },
+    "uptime": {
+      "type": "postgres",
+      "connection_string": "user=laurentiughiur password=test123 database='tyk-test' host=127.0.0.1 port=5432",
+      "table_sharding": true
+    }
+  },
 ```
 
 {{< tab_end >}}
