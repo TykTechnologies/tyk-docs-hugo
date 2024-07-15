@@ -1,13 +1,10 @@
 ---
-title: Tyk Portal API
-weight: 190
-menu:
-  main:
-    parent: "Tyk Portal Classic"
-weight: 8
+title: Classic Portal API
+description: "Landing page for the Tyk Classic Portal API documentation"
+tags: ["Tyk Classic Portal API", "Classic Portal API "]
 ---
 
-The Tyk Portal API covers all available endpoints for your developer portal, including:
+This section describe the Tyk Classic Portal API endpoints for your classic developer portal. It includes the following:
 
 * [Portal Keys]({{< ref "tyk-apis/tyk-portal-api/portal-keys" >}})
 * [Portal Policies]({{< ref "tyk-apis/tyk-dashboard-api/portal-policies" >}})
