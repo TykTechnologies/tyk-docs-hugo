@@ -158,9 +158,9 @@ Resolved a bug in the API Designer where certain properties, such as `use_immuta
 </li>
 <li>
 <details>
-<summary>Corrected assignment issue for API Templates in Tyk organisations</summary>
+<summary>Corrected assignment issue for API Templates in Tyk organizations</summary>
 
-Fixed an issue where API Templates were not correctly assigned to Tyk Organisations, preventing potential accidental sharing of secret data between Organisations through the use of incorrect templates.
+Fixed an issue where API Templates were not correctly assigned to Tyk Organizations, preventing potential accidental sharing of secret data between Organizations through the use of incorrect templates.
 </details>
 </li>
 <li>

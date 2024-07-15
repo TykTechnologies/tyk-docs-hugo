@@ -56,7 +56,7 @@ We introduced display-only support for basic APIs. That means API Providers can 
 
 ## Security Fixes
 - [ZipSlip vulnerability](https://nvd.nist.gov/vuln/detail/CVE-2023-27475) in the theme upload flow is now resolved.
-- Added input validation for preventing XSS attacks for catalogs and organisations in the admin app.
+- Added input validation for preventing XSS attacks for catalogs and organizations in the admin app.
 
 ## Further Information
 

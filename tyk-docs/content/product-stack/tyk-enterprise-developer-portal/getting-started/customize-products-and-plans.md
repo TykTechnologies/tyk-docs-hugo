@@ -43,7 +43,7 @@ Customize plans
 1. To customize visual appearance of plans, open the **Plans** menu and select the plan you want to customize. You can customize the following settings:
 - **Catalog display name**: The name of the catalog that will be displayed in the API Product page.
 - **Scope**: Scope for the [OAuth2.0 settings]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration.md" >}}). Please refer to the [OAuth2.0 documentation]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration" >}}) for further guidance.
-- **Catalogs**: The catalogs in which this plan is available. Catalogs and organisation are [covered]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/create-orgs-and-catalogs" >}}) later within this getting started guide.
+- **Catalogs**: The catalogs in which this plan is available. Catalogs and organization are [covered]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/create-orgs-and-catalogs" >}}) later within this getting started guide.
 - **Auto-approve settings for access requests**: Determines if access requests for this plan should be approved automatically.
 - **Access request frequency**: Defines how often developers can request access to a specific plan. This way the admins can prevent developers from creating too many keys and abusing their automatically approved plans.
 
@@ -60,4 +60,4 @@ You have now customized the visual appearance of your API Product and plan. By f
 
 ## Next step
 
-Visit the [create API Consumer organisations and catalogs]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/create-orgs-and-catalogs" >}}) section to learn how to create API consumer organisations and catalogs.
+Visit the [create API Consumer organizations and catalogs]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/create-orgs-and-catalogs" >}}) section to learn how to create API consumer organizations and catalogs.

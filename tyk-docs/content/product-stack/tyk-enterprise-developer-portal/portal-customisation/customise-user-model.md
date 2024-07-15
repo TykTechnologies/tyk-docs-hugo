@@ -23,9 +23,9 @@ Customizing the User model enables the storage of custom data attributes in the 
 Additionally, it allows these attributes to be optionally included in the credentials metadata (therefore accessible by the gateway runtime) and exposed in the user sign-up form.
 
 This feature enables the implementation of complex business logic when processing API requests.
-For example, it is particularly useful when the quota for API calls needs to be distributed among all developers of consumer organisations.
+For example, it is particularly useful when the quota for API calls needs to be distributed among all developers of consumer organizations.
 In such cases, both the quota and the rate limit should be applied at the organization level, rather than according to individual credentials.
-In this event, the organisation ID should be known to the gateway in runtime. This feature helps to achieve that.
+In this event, the organization ID should be known to the gateway in runtime. This feature helps to achieve that.
 
 ## Add new Custom Attributes to the User model
 
@@ -68,7 +68,7 @@ By default, the portal assigns the following attributes to credentials metadata 
 |-----------------|---------------------------------------|-----------------------------------------------------------------------------------|
 | Developer ID    | DeveloperID                           | ID of the developer who created the credential                                    |
 | Application ID  | ApplicationID                         | ID of the application to which it belongs                                         |
-| Organisation ID | OrganisationID                        | ID of the organisation to which the developer who created the application belongs |
+| Organization ID | OrganizationID                        | ID of the organization to which the developer who created the application belongs |
 | Team IDs        | TeamIDs                               | Array of team IDs to which the developer, who created the application, belongs    |
 
 Additionally, it is possible to include other default attributes of the User model in the credential metadata fields.
@@ -80,5 +80,5 @@ Exercise caution when dealing with personally identifiable information (PII). Ad
 | Last name         | Last                                  | Last name of the developer who created the credential                               |
 | Email             | Email                                 | Email name of the developer who created the credential                              |
 | Role              | Role                                  | Array of team IDs to which the developer, who created the application, belongs      |
-| Organisation name | Organisation                          | Name of the organisation to which the developer who created the application belongs |
+| Organization name | Organization                          | Name of the organization to which the developer who created the application belongs |
 | Teams name        | TeamNames                             | Array of team names to which the developer, who created the application, belongs     |

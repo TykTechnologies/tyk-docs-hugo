@@ -145,9 +145,9 @@ Adjusted wording in Tyk's Dashboard UI to ensure inclusivity and clarity, removi
 </li>
 <li>
 <details>
-<summary>API Template not associated with Tyk Organisation</summary>
+<summary>API Template not associated with Tyk Organization</summary>
 
-Fixed an issue where API Templates were not correctly assigned to Tyk Organisations allowing the potential for accidental sharing of secret data between Organisations through use of the incorrect template.
+Fixed an issue where API Templates were not correctly assigned to Tyk Organizations allowing the potential for accidental sharing of secret data between Organizations through use of the incorrect template.
 </details>
 </li>
 <li>
@@ -262,7 +262,7 @@ Implemented a randomised delay to obscure login response times, mitigating brute
 <details>
 <summary>Improved security: now unable to log into deleted Orgs</summary>
 
-Fixed a bug where a user was still able to log into an Organisation on the Tyk Dashboard after that Organisation had been deleted. Now, when an Organisation is deleted, it will not be offered as an option when logging in.
+Fixed a bug where a user was still able to log into an Organization on the Tyk Dashboard after that Organization had been deleted. Now, when an Organization is deleted, it will not be offered as an option when logging in.
 </details>
 </li>
 <li>
@@ -559,7 +559,7 @@ Support for field-based permissions allow list has been added in the Dashboard. 
 <details>
 <summary>Added API Categories support for Tyk OAS APIs</summary>
 
-In this update, we've added support for API Categories for Tyk OAS APIs in the Tyk Dashboard, enhancing portfolio management by enabling efficient categorization and organisation of APIs.
+In this update, we've added support for API Categories for Tyk OAS APIs in the Tyk Dashboard, enhancing portfolio management by enabling efficient categorization and organization of APIs.
 </details>
 </li>
 <li>
