@@ -34,6 +34,6 @@ Out of the box, the following roles are setup:
 
 * **Team member:** They can manage deployment activity for the team they are added to.
 * **Team admin:** They can manage deployment activity and users for the team they are added to.
-* **Organisation admin:** They can manage deployment activity and users for a single organization.
+* **Organization admin:** They can manage deployment activity and users for a single organization.
 
 Next you'll create an [Environment]({{< ref "tyk-cloud/getting-started-tyk-cloud/setup-environment" >}}).

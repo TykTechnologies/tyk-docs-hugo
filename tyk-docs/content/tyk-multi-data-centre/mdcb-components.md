@@ -33,7 +33,7 @@ Here we will give an overview of the main elements of a Tyk Multi Data Center (d
 - An in-memory data store used as a database, cache and message broker. We use it as pub/sub broker for inter-Gateway communication, and as a cache for API configurations, keys, certificates, and temporary store for analytics records.
 
 ### MongoDB/SQL
-- A persistent data store for API configurations, policies, analytics and aggregated analytics, Dashboard organisations, configurations, dashboard users, portal developers and configuration.
+- A persistent data store for API configurations, policies, analytics and aggregated analytics, Dashboard organizations, configurations, dashboard users, portal developers and configuration.
 
 
 ## Control Plane

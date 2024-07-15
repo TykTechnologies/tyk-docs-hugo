@@ -23,9 +23,9 @@ In a production environment, you will need to change the default `admin_Secret` 
 {{< /warning >}}
 
 
-#### Export Organisations
+#### Export Organizations
 
-The organisation object is the most fundamental object in a Tyk setup, all other ownership properties hang off the relationship between an organisation and its APIs, Policies and API Tokens.
+The organization object is the most fundamental object in a Tyk setup, all other ownership properties hang off the relationship between an organization and its APIs, Policies and API Tokens.
 
 | **Property** | **Description**                 |
 | ------------ | ------------------------------- |

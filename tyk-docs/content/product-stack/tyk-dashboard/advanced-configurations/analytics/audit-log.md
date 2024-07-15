@@ -39,7 +39,7 @@ Audit records the following fields for `json` format:
 | Field | Description |
 | ---- | ---- |
 | req_id | Unique request ID |
-| org_id | Organisation ID |
+| org_id | Organization ID |
 | date   | Date in *RFC1123* format |
 | timestamp | UNIX timestamp |
 | ip | IP address the request originated from |

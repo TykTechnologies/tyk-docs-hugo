@@ -14,7 +14,7 @@ aliases:
 
 The following [user roles]({{< ref "tyk-cloud/teams-&-users/user-roles.md" >}}) can perform existing Team Admin tasks:
 
-* Organisation Admin - Can manage all teams in the organization they are a member of.
+* Organization Admin - Can manage all teams in the organization they are a member of.
 * Team Admin - Can only manage the team they are a member of.
 
 For an existing team, you can:

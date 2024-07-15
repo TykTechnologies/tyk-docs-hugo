@@ -13,7 +13,7 @@ You can see data in the log browser but the rest of the reports display nothing.
 
 ### Solution
 
-If your Pump is configured to use `mongo_selective_pump` (e.g. store data in a collection per organisation), ensure that the [Dashboard configuration setting]({{< ref "tyk-dashboard/configuration" >}}) `use_sharded_analytics` is set to `true`. 
+If your Pump is configured to use `mongo_selective_pump` (e.g. store data in a collection per organization), ensure that the [Dashboard configuration setting]({{< ref "tyk-dashboard/configuration" >}}) `use_sharded_analytics` is set to `true`. 
 
 The same applies in the reverse direction. If you are using `mongo-pump-aggregate` in your [pump configuration]({{< ref "tyk-pump/configuration" >}}), set `use_sharded_analytics` to false.
 
