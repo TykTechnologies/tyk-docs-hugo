@@ -626,7 +626,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Prefetch session expiry information from MDCB to reduce API call duration in case Gateway is temporarily disconnected from MDCB</summary>
 
-Previously, when operating in a worker configuration (in the data plane), the Tyk Gateway fetched session expiry information from the control plane the first time an API was accessed for a given organisation. This approach led to a significant issue: if the MDCB connection was lost, the next attempt to consume the API would incur a long response time. This delay, typically around 30 seconds, was caused by the Gateway waiting for the session-fetching operation to time out, as it tried to communicate with the now-inaccessible control plane.
+Previously, when operating in a worker configuration (in the data plane), the Tyk Gateway fetched session expiry information from the control plane the first time an API was accessed for a given organization. This approach led to a significant issue: if the MDCB connection was lost, the next attempt to consume the API would incur a long response time. This delay, typically around 30 seconds, was caused by the Gateway waiting for the session-fetching operation to time out, as it tried to communicate with the now-inaccessible control plane.
 
 <br>Now, the worker gateway fetches the session expiry information up front, while there is an active connection to MDCB. This ensures that this data is already available locally in the event of an MDCB disconnection.
 

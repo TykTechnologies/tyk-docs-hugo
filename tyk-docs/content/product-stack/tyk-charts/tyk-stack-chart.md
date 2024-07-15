@@ -769,7 +769,7 @@ During bootstrapping, admin user needs to reset its password. It may be denied b
 
 #### Bootstrapped Environments
 
-If Tyk is already bootstrapped, the application will bypass the creation of the Tyk Organisation and Admin User, proceeding directly with the creation of Kubernetes Secrets.
+If Tyk is already bootstrapped, the application will bypass the creation of the Tyk Organization and Admin User, proceeding directly with the creation of Kubernetes Secrets.
 
 Given that the Kubernetes Secrets require values for `TYK_AUTH` and `TYK_ORG`, it is essential to provide these values through the respective environment variables, called `TYK_K8SBOOTSTRAP_TYK_ADMIN_AUTH` for `TYK_AUTH` and `TYK_K8SBOOTSTRAP_TYK_ORG_ID` for `TYK_ORG`.
 

@@ -163,7 +163,7 @@ Now when the [PORTAL_DCR_LOG_ENABLED]({{< ref "product-stack/tyk-enterprise-deve
 - Fixed the bug where the DCR flow failed to create a client with policies managed by Tyk Operator.
 - Fixed the bug where an admin user couldn't upload a new theme file in Kubernetes environment.
 - Fixed the bug where the portal application went down after running for several hours in Kubernetes environment.
-- Fixed the bug where it was possible to remove the default organisation which resulted in the portal being non-operational.
+- Fixed the bug where it was possible to remove the default organization which resulted in the portal being non-operational.
 - Fixed the bug where the portal panicked when an IdP was not available while creating a new OAuth2.0 client.
 - Fixed the bug where a developer could access API Products regardless of the access rights set by catalogs.
 - Fixed the bug where it wasn't possible to change a team for a user.

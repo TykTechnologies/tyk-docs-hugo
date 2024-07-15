@@ -195,7 +195,7 @@ mdcb:
 
 <li>
 <details>
-<summary>Tyk Control Plane: Added option to enable Dashboard hybrid organisation</summary>
+<summary>Tyk Control Plane: Added option to enable Dashboard hybrid organization</summary>
 We've added a convenient option to enable dashboard hybrid organization during bootstrapping. This eliminates the manual step of calling the Dashboard Admin API post-deployment to enable hybrid organization, which is essential for MDCB deployment.
 </details>
 </li>
