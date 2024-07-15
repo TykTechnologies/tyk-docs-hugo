@@ -92,7 +92,7 @@ admin-auth: 12345
 
 | **Property** | **Description**                 |
 | ------------ | ------------------------------- |
-| Resource URL | `/admin/organisation/           |
+| Resource URL | `/admin/organisation/'          |
 | Method       | GET                             |
 | Type         | None                            |
 | Body         | Organization Object             |
