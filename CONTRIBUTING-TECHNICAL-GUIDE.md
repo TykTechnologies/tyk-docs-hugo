@@ -261,7 +261,7 @@ The Tyk Developer Portal is a small CMS-like system that enables you to expose a
 {{< badge href="/docs/getting-started/tyk-components/mdcb/" image="/docs/img/diagram.png" imageStyle="height:150px" >}}
 **MDCB**
 
-The Multi Data Centre Bridge allows for centralised management of multiple independent Tyk clusters and the seamless transition of APIs between environments, availability zones and segmented nodes.
+The Multi Data Center Bridge allows for centralised management of multiple independent Tyk clusters and the seamless transition of APIs between environments, availability zones and segmented nodes.
 {{< /badge >}}
 
 {{< badge href="/docs/getting-started/tyk-components/identity-broker/" image="/docs/img/diagram.png" imageStyle="height:150px" >}}
