@@ -7,7 +7,7 @@ menu:
 weight: 4 
 ---
 
-The import API enables you to add Organizations, APIs and Policies back into a Tyk installation while retaining their base IDs so that they work together.
+The import API enables you to add *Organizations*, *APIs* and *Policies* back into a Tyk installation while retaining their base IDs so that they work together.
 
 {{< note success >}}
 **Note**  
