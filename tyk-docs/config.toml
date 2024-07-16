@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 baseURL = "//tyk.io/docs/"
-languageCode = "en-gb"
-=======
-baseURL = "//tyk.io/docs/nightly/"
 languageCode = "en-US"
->>>>>>> 97df43c22... [DX-1427] Update config.toml (#5106)
 title = "Tyk Documentation"
 theme = "tykio"
 MetaDataFormat = "yaml"
