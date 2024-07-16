@@ -90,8 +90,8 @@ When working with Tyk OAS APIs, you can manage owners for an API using these end
 
 | Method | Endpoint path           | Action                                                                                 |
 |--------|-------------------------|----------------------------------------------------------------------------------------|
-| `PUT`  | `/apis/{apiID}/access`  | Assign a list of owners to the specified API                                           |
-| `GET`  | `/apis/{apiID}/access`  | Retrieve the list of owners of the specified API                                       |
+| `PUT`  | `/api/apis/{apiID}/access`  | Assign a list of owners to the specified API                                           |
+| `GET`  | `/api/apis/{apiID}/access`  | Retrieve the list of owners of the specified API                                       |
 
 For each of these endpoints, the payload consists of two string lists: one for user IDs, the other for user group IDs.
 ```json
