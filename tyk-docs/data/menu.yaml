@@ -1137,10 +1137,6 @@ menu:
             path: /getting-started/key-concepts/paths
             category: Page
             show: True
-          - title: "Versioning"
-            path: /getting-started/key-concepts/oas-versioning
-            category: Page
-            show: True
           - title: "Tyk OAS Maturity"
             path: /getting-started/using-oas-definitions/oas-reference
             category: Page
@@ -1191,14 +1187,6 @@ menu:
             show: True
           - title: "Uptime Tests"
             path: /tyk-apis/tyk-gateway-api/api-definition-objects/uptime-tests
-            category: Page
-            show: True
-          - title: "Tyk Classic API Versioning"
-            path: /getting-started/key-concepts/versioning
-            category: Page
-            show: True
-          - title: "Versioning and Endpoint Handling"
-            path: /tyk-apis/tyk-gateway-api/api-definition-objects/versioning-endpoint
             category: Page
             show: True
         - title: "GraphQL"
@@ -1863,6 +1851,22 @@ menu:
             show: True
           - title: "JQ Transforms"
             path: /advanced-configuration/transform-traffic/jq-transformations
+            category: Page
+            show: True
+        - title: "API Versioning"
+          category: Directory
+          show: True
+          menu:
+          - title: "Overview"
+            path: /product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning
+            category: Page
+            show: True          
+          - title: "Tyk OAS versioning"
+            path: /getting-started/key-concepts/oas-versioning
+            category: Page
+            show: True
+          - title: "Tyk Classic versioning"
+            path: /getting-started/key-concepts/versioning
             category: Page
             show: True
         - title: "Integration options"
