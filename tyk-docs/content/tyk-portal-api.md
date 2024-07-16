@@ -4,7 +4,7 @@ description: "Landing page for the Tyk Classic Portal API documentation"
 tags: ["Tyk Classic Portal API", "Classic Portal API "]
 ---
 
-This section describe the Tyk Classic Portal API endpoints for your classic developer portal. It includes the following:
+This section describes the Tyk Classic Portal API endpoints. It includes the following:
 
 * [Portal Keys]({{< ref "tyk-apis/tyk-portal-api/portal-keys" >}})
 * [Portal Policies]({{< ref "tyk-apis/tyk-dashboard-api/portal-policies" >}})
