@@ -82,4 +82,4 @@ You can achieve the same result by navigating to the **API Products** menu. Addi
 You have successfully added a catalog and associated a team with it. Furthermore, you have allocated plans and API products to this catalog.
 {{< /note >}}
 
-Visit [Customise the sign-up form]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/customize-sign-up-form" >}}) for the user sign-up form customization guide.
+Visit [Customize the sign-up form]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/customize-sign-up-form" >}}) for the user sign-up form customization guide.

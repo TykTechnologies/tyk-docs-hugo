@@ -102,7 +102,7 @@ pipeline:
     - mapping: root = if errored() { deleted() }
 ```
 
-This will remove any failed messages from a batch. Furthermore, dropping a message will propagate an acknowledgement (also known as "ack") upstream to the pipeline's input.
+This will remove any failed messages from a batch. Furthermore, dropping a message will propagate an acknowledgment (also known as "ack") upstream to the pipeline's input.
 
 ## Reject Messages
 
