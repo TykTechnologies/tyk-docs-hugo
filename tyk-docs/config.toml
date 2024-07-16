@@ -92,3 +92,4 @@ lastmod = ["lastmod", ":git",':fileModTime', "date", "publishDate"]
     toLower = false
     type = 'basic'
     weight = 80
+
