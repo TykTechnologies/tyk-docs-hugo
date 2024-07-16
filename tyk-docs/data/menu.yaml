@@ -3773,16 +3773,23 @@ menu:
         category: Page
         show: True
       - title: "Key Concepts"
-        path: /product-stack/tyk-operator/key-concepts/key-concepts
         category: Directory
         show: True
         menu:
-        - title: "Operator User"
-          path: /product-stack/tyk-operator/key-concepts/key-concepts
+        # - title: "Overview"
+        #   path: /product-stack/tyk-operator/key-concepts/key-concepts
+        #   category: Page
+        #   show: True
+        - title: "Custom Resources"
+          path: /product-stack/tyk-operator/key-concepts/custom-resources
           category: Page
           show: True
         - title: "Operator Reconciliation"
           path: /tyk-stack/tyk-operator/tyk-operator-reconciliation
+          category: Page
+          show: True
+        - title: "Operator User"
+          path: /product-stack/tyk-operator/key-concepts/operator-user
           category: Page
           show: True
         - title: "Operator Context"
@@ -3813,6 +3820,14 @@ menu:
           path: /tyk-stack/tyk-operator/publish-an-api
           category: Page
           show: True
+      - title: "Advanced configurations"
+        category: Directory
+        show: True
+        menu:
+        - title: "Migration to Tyk Operator"
+          path: /tyk-stack/tyk-operator/migration
+          category: Page
+          show: True
         - title: "Configure Tyk Operator as Ingress Controller"
           path: /product-stack/tyk-operator/tyk-ingress-controller
           category: Page
@@ -3825,10 +3840,6 @@ menu:
           path: /product-stack/tyk-operator/getting-started/tyk-operator-api-ownership
           category: Page
           show: True
-      - title: "Migration to Tyk Operator"
-        path: /tyk-stack/tyk-operator/migration
-        category: Page
-        show: True
       - title: "Troubleshooting"
         category: Directory
         show: True
@@ -3837,10 +3848,22 @@ menu:
           path: /product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting
           category: Page
           show: True
+      - title: "Reference"
+        category: Directory
+        show: True
+        menu:
+        - title: "Version compatibility"
+          path: /product-stack/tyk-operator/reference/version-compatibility
+          category: Page
+          show: True
       - title: "Release notes"
         category: Directory
         show: True
         menu:
+          - title: "Overview"
+            path: /product-stack/tyk-operator/release-notes/overview
+            category: Page
+            show: True
           - title: "Tyk Operator v0.18"
             path: /product-stack/tyk-operator/release-notes/operator-0.18
             category: Page
