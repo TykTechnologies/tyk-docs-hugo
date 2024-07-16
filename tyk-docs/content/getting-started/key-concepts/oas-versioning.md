@@ -46,6 +46,7 @@ The `versioning` [object]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#ve
 - `versions`: a list of key-value pairs storing details of the *child APIs*
 - `fallbackToDefault`: set to `true` for Tyk to [invoke the default version]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#fallback-to-default" >}}) if an invalid version is requested
 - `stripVersioningData`: set to `true` for Tyk to [remove the versioning identifier]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-version-identifier" >}}) prior to creating the upstream (target) URL
+- `urlVersioningPattern`: configure this with a regex that matches the format that you use for the versioning identifier (`name`) if you are using `stripVersioningData` and `fallBackToDefault` with `location=url` [with Tyk 5.5.0 or later]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-url-path-version-and-default-fallback" >}})
 
 The `versions` map contains, for each *child API*:
 - `id`: the unique API Id (`id`) assigned to the API (either automatically by Tyk or user-defined during API creation)
@@ -91,7 +92,8 @@ In the following example, we configure a *Base API*:
           }
         ],
         "fallbackToDefault": true,
-        "stripVersioningData": false
+        "stripVersioningData": false,
+        "urlVersioningPattern": ""
       },
       "expiration": "2030-01-01 00:00",
       "name": "example-base-api",

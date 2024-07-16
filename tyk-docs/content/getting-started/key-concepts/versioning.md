@@ -52,6 +52,7 @@ The `definition` section has the following fields:
 - `location`: used to configure where the versioning identifier should be provided: `header`, `url`, `url-param`
 - `strip_versioning_data`: set to `true` for Tyk to [remove the versioning identifier]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-version-identifier" >}}) prior to creating the upstream (target) URL)
 - `fallback_to_default`: set to `true` for Tyk to [invoke the default version]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#fallback-to-default" >}}) if an invalid version is requested
+- `url_versioning_pattern`: configure this with a regex that matches the format that you use for the versioning identifier (`versions.name`) if you are using `strip_versioning_data` and `fallback_to_default` with `location=url` [with Tyk 5.5.0 or later]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-url-path-version-and-default-fallback" >}})
 - `versions`: not used
 - `key`: the versioning identifier key used if `location` is set to `header` or `url-param`
 
@@ -157,6 +158,7 @@ Here's an example of a minimal configuration for an API with two versions:
     "location": "header",
     "strip_versioning_data": false,
     "fallback_to_default": true,
+    "url_versioning_pattern": "",
     "versions": {},
     "key": "x-api-version"
   }
