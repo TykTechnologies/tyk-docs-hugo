@@ -1,8 +1,8 @@
 ---
-title: "Create API Consumer organisations and catalogs"
+title: "Create API Consumer organizations and catalogs"
 date: 2022-02-10
-tags: ["Tyk Developer Portal","Enterprise Portal","Catalog","Audience","Developers","Organisations"]
-description: "Segment your developer audience with catalogs and organisations"
+tags: ["Tyk Developer Portal","Enterprise Portal","Catalog","Audience","Developers","Organizations"]
+description: "Segment your developer audience with catalogs and organizations"
 menu:
   main:
     parent: "Manage API Users"
@@ -18,7 +18,7 @@ If you are interested in getting access, contact us at [support@tyk.io](<mailto:
 
 ## Introduction
 
-In the Tyk Enterprise Developer Portal, Organisations and Catalogs are used to segment the user base and make different APIs available to different user audiences according to the business model.
+In the Tyk Enterprise Developer Portal, Organizations and Catalogs are used to segment the user base and make different APIs available to different user audiences according to the business model.
 For example, assume the following scenario:
 
 - Account Management API is available only to trusted partners
@@ -30,21 +30,21 @@ In the below example, an API Provider offers two API Products (the Accounts API 
 Customers subscribed to the enterprise plan can use both APIs, offering a higher user limit. Conversely, customers subscribed to the Free plan (individual developers or hobbyists) only have visibility of the Payment API.
 
 To achieve that, the API Provider uses two catalogs to implement their business model so that they can offer different experiences for different customer audiences. This section explains how to achieve that using the Tyk Enterprise Developer Portal.
-{{< img src="/img/dashboard/portal-management/enterprise-portal/org-catalogue-product-relation.png" alt="Relationship between catalogs, API Products, plans, teams, and organisations" >}}
+{{< img src="/img/dashboard/portal-management/enterprise-portal/org-catalogue-product-relation.png" alt="Relationship between catalogs, API Products, plans, teams, and organizations" >}}
 
-## Create organisation and teams
-The Tyk Enterprise Developer Portal uses Organisation and Catalogs to segment access to APIs and plans. Therefore, the first thing is to create an organisation for your customers. If you don't want to provision organisations manually, you can leverage the [Admin APIs]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api.md" >}}) or enable the [self-service organisation registration]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations.md" >}}).
-In this guide, we will create the **B2B customer** organisation to fulfill the above business model:
-1. To create an organisation for the **B2B customer**, navigate to the **Organisations** menu and click on the **Add new organisation** button.
-   {{< img src="/img/dashboard/portal-management/enterprise-portal/navigate-to-organisations.png" alt="Navigate to the Organisations menu" >}}
+## Create organization and teams
+The Tyk Enterprise Developer Portal uses Organization and Catalogs to segment access to APIs and plans. Therefore, the first thing is to create an organization for your customers. If you don't want to provision organizations manually, you can leverage the [Admin APIs]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api.md" >}}) or enable the [self-service organization registration]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations.md" >}}).
+In this guide, we will create the **B2B customer** organization to fulfill the above business model:
+1. To create an organization for the **B2B customer**, navigate to the **Organizations** menu and click on the **Add new organization** button.
+   {{< img src="/img/dashboard/portal-management/enterprise-portal/navigate-to-organisations.png" alt="Navigate to the Organizations menu" >}}
 
-2. Enter the name of your new organisation and click on the **Save** button. A new default-team will be automatically created and associated with your new organisation.
-   {{< img src="/img/dashboard/portal-management/enterprise-portal/create-b2b-customer-org.png" alt="Add a new Organisation" >}}
+2. Enter the name of your new organization and click on the **Save** button. A new default-team will be automatically created and associated with your new organization.
+   {{< img src="/img/dashboard/portal-management/enterprise-portal/create-b2b-customer-org.png" alt="Add a new Organization" >}}
 
 {{< note success >}}
 **Note**
 
-You can edit the default team name by navigating to **Teams** and opening up the team associated with the organisation you created. This will allow you to edit the team name as required.
+You can edit the default team name by navigating to **Teams** and opening up the team associated with the organization you created. This will allow you to edit the team name as required.
 
 {{< /note >}}
 

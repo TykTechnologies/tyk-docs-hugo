@@ -157,7 +157,7 @@ If you check the OKTA dashboard you will see this client too:
 
 {{< img src="/img/dcr/okta/step_13.png" alt="Step 13" >}}
 
-The next step is to generate a token and use it for accessing our **OKTA API**. We'll use Postman for this. You will need your token URL which is also the well-known URL for your organisation.
+The next step is to generate a token and use it for accessing our **OKTA API**. We'll use Postman for this. You will need your token URL which is also the well-known URL for your organization.
 For this guide you'll use `https://[org].okta.com/oauth2/default/v1/token`
 
 Your Postman request should contain the following body, where `"client_id"` and `"client_secret"` are the credentials you got from the developer portal:

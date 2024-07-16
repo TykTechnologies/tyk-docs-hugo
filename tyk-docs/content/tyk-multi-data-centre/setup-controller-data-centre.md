@@ -236,7 +236,7 @@ For example, to set up a `postgres` storage the `analytics` configurations would
   },
 } 
 ```
-This storage will work for fetching your organisation data (APIs, Policies, etc) and for analytics.
+This storage will work for fetching your organization data (APIs, Policies, etc) and for analytics.
 {{< /note >}}
 
 You should now be able to start the MDCB service, check that it is up and running and ensure that the service starts on system boot:
@@ -316,7 +316,7 @@ May 06 11:50:42 master tyk-sink[1798]: time="2018-05-06T11:50:42Z" level=info ms
 
 ## Gateway configuration
 
-Before a worker gateway can connect to MDCB, it is important to enable the organisation that owns all the APIs to be distributed to be allowed to utilize Tyk MDCB. To do this, the organisation record needs to be modified with two flags using the [Tyk Dashboard Admin API](https://tyk.io/docs/dashboard-admin-api/).
+Before a worker gateway can connect to MDCB, it is important to enable the organization that owns all the APIs to be distributed to be allowed to utilize Tyk MDCB. To do this, the organization record needs to be modified with two flags using the [Tyk Dashboard Admin API](https://tyk.io/docs/dashboard-admin-api/).
 
 To make things easier, we will first set a few [environment variables]({{< ref "tyk-environment-variables" >}}):
 
@@ -330,11 +330,11 @@ This is the URL you use to access the Dashboard (including the port if not using
 
 3. `export ORG_ID=<YOUR_ORG_ID>`
 
-You can find your organisation id in the Dashboard, under your user account details.
+You can find your organization id in the Dashboard, under your user account details.
 
 {{< img src="/img/2.10/user_api_id.png" alt="Org ID" >}}
 
-4. Send a GET request to the Dashboard API to `/admin/organisations/$ORG_ID` to retrieve the organisation object. In the example below, we are redirecting the output json to a file `myorg.json` for easy editing.
+4. Send a GET request to the Dashboard API to `/admin/organisations/$ORG_ID` to retrieve the organization object. In the example below, we are redirecting the output json to a file `myorg.json` for easy editing.
 
 ```curl
 curl $DASH_URL/admin/organisations/$ORG_ID -H "Admin-Auth: $DASH_ADMIN_SECRET" | python -mjson.tool > myorg.json
@@ -368,12 +368,12 @@ New fields are between the `...` .
 
 ### Field Reference
 
-`hybrid_enabled:` Allows a worker gateway to login as an organisation member into MDCB
+`hybrid_enabled:` Allows a worker gateway to login as an organization member into MDCB
 
 `event_options:` Enables key events such as updates and deletes, to be propagated to the various instance zones. API Definitions and Policies will be propagated by default, as well as the Redis key events, meaning that hashed and not hashed key events will be propagated by default in Redis and any config related to `hashed_key_event.redis` or `key_event.redis` will not be taken into consideration.
 
 
-6. Update your organisation with a PUT request to the same endpoint, but this time, passing in your modified `myorg.json` file.
+6. Update your organization with a PUT request to the same endpoint, but this time, passing in your modified `myorg.json` file.
 
 ```curl
 curl -X PUT $DASH_URL/admin/organisations/$ORG_ID -H "Admin-Auth: $DASH_ADMIN_SECRET" -d @myorg.json

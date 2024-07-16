@@ -83,12 +83,12 @@ You should get to the Tyk Dashboard Setup screen:
 
 {{< img src="/img/dashboard/system-management/bootstrap_screen.png" alt="Tyk Dashboard Bootstrap Screen" >}}
 
-### Step Six - Create your Organisation and Default User
+### Step Six - Create your Organization and Default User
 
 You need to enter the following:
 
-- Your **Organisation Name**
-- Your **Organisation Slug**
+- Your **Organization Name**
+- Your **Organization Slug**
 - Your User **Email Address**
 - Your User **First and Last Name**
 - A **Password** for your User

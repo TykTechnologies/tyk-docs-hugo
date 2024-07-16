@@ -78,7 +78,7 @@ API consumers are all external portal users/developers that are consuming and re
 This section includes:
 - **Users**: Individual external API consumers
 - **Teams**: Groups of API consumers
-- **Organisations**: Grouping teams of API consumers
+- **Organizations**: Grouping teams of API consumers
 
 Here is a potential set-up
 

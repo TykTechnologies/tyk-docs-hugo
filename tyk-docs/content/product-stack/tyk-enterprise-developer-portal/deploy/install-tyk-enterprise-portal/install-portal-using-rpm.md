@@ -27,7 +27,7 @@ To successfully install the Tyk Enterprise Developer Portal using RPM, your envi
 
 ### Download and install the portal package
 #### Download the portal package
-To start with, you need to download the portal package from [packagecloud.io](https://packagecloud.io). To keep things organised, first create a directory where all installation assets (packages and config files) will be stored:
+To start with, you need to download the portal package from [packagecloud.io](https://packagecloud.io). To keep things organized, first create a directory where all installation assets (packages and config files) will be stored:
 ```console
 mkdir ~/portal-install
 cd ~/portal-install

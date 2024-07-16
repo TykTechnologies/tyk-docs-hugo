@@ -63,7 +63,7 @@ db.tyk_analytics.createIndex( { "timestamp": 1 }, { expireAfterSeconds: 2592000 
 This [command](https://docs.mongodb.com/manual/tutorial/expire-data/#expire-documents-at-a-specific-clock-time) sets expiration rule to evict all the record from the collection which `timestamp` field is older then specified expiration time.
 
 ## Time Based Cap in multi-tenant environments
-When you have multiple organisations, you can control analytics expiration on per organisation basis.
+When you have multiple organizations, you can control analytics expiration on per organization basis.
 This technique also use TTL indexes, as described above, but index should look like:
 
 ```{.copyWrapper}
@@ -72,7 +72,7 @@ db.tyk_analytics.createIndex( { "expireAt": 1 }, { expireAfterSeconds: 0 } )
 
 This [command](https://docs.mongodb.com/manual/tutorial/expire-data/#expire-documents-at-a-specific-clock-time) sets the value of `expireAt` to correspond to the time the document should expire. MongoDB will automatically delete documents from the `tyk_analytics` collection 0 seconds after the `expireAt` time in the document. The `expireAt` will be calculated and created by Tyk in the following step.
 
-### Step 2. Create an Organisation Quota
+### Step 2. Create an Organization Quota
 
 ```{.copyWrapper}
 curl --header "x-tyk-authorization: {tyk-gateway-secret}" --header "content-type: application/json" --data @expiry.txt http://{tyk-gateway-ip}:{port}/tyk/org/keys/{org-id}
@@ -112,7 +112,7 @@ db.runCommand({"convertToCapped": "tyk_analytics", size: 100000});
 
 ### Adding the Size Cap if using a mongo_selective Pump
 
-The `mongo_selective` pump stores data on a per organisation basis. You will have to run the following command in your MongoDB shell for an individual organisation as follows.
+The `mongo_selective` pump stores data on a per organization basis. You will have to run the following command in your MongoDB shell for an individual organization as follows.
 
 
 ```{.copyWrapper}

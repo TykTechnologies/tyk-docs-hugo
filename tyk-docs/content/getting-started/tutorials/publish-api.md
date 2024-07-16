@@ -79,7 +79,7 @@ Save the API Catalog entry by clicking **Update**.
 
 When you set up your Tyk installation, you will have had to, at some point, define a hostname for your portal, either as a `/etc/hosts` file entry, or as a qualified hostname such as `portal.domain.com`. To make the Dashboard aware of this, from the **Your Developer portal > Set Your Portal Domain** enter the hostname and wait for Tyk to refresh.
 
-This process will bind your organisations' Portal to the domain name you've specified.
+This process will bind your organizations' Portal to the domain name you've specified.
 
 {{< note success >}}
 **Note**  

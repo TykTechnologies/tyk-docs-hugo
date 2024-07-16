@@ -4,13 +4,29 @@ description: Explains the purpose of Tyk Streaming and use cases
 tags: [ "streaming", "events", "event-driven architecture", "event-driven architectures", "kafka" ]
 ---
 We are excited to introduce our new product, *Tyk Streams*! 
-*Tyk Streams* is a powerful new feature in the Tyk API management platform that enables organisations to securely expose, manage and monetize real-time event streams and asynchronous APIs. With *Tyk Streams*, you can easily connect to various event brokers and streaming platforms, such as [Apache Kafka](https://github.com/TykTechnologies/tyk-pro-docker-demo/tree/kafka), MQTT, AMQP etc. and expose them as managed API endpoints to internal and external consumers.
+*Tyk Streams* is a powerful new feature in the Tyk API management platform that enables organizations to securely expose,
+manage and monetize real-time event streams and asynchronous APIs.
+
+## Getting started
+
+Tyk Streams is currently in the [Lab Release]({{<ref "developer-support/special-releases-and-features/lab-releases">}})
+phase, and we'd love for you to try it out. Click the button to sign up and take it for a spin:
+{{< button_left href="https://survey.hsforms.com/1ItPCBg-_Tre8WFJZL4pp6Q3ifmg" color="green" content="Get started with Tyk Streams" >}}
+
+---
+## Overview
+With *Tyk Streams*, you can easily connect to various event brokers and streaming platforms, such as
+[Apache Kafka](https://github.com/TykTechnologies/tyk-pro-docker-demo/tree/kafka), MQTT, AMQP etc. and expose them as
+managed API endpoints to internal and external consumers.
 
 <div style="display: flex; justify-content: center;">
 {{< img src="/img/streams/tyk-streams-overview.png" alt="Tyk Streams Overview" width="670px" height="500px" >}}
 </div>
 
-The purpose of Tyk Streams is to provide a unified platform for managing both synchronous APIs (such as REST and GraphQL) and asynchronous APIs, in addition to event-driven architectures. This allows organisations to leverage the full potential of their event-driven systems while maintaining the same level of security, control and visibility they expect from their API management solution.
+The purpose of Tyk Streams is to provide a unified platform for managing both synchronous APIs (such as REST and
+GraphQL) and asynchronous APIs, in addition to event-driven architectures. This allows organizations to leverage the
+full potential of their event-driven systems while maintaining the same level of security, control and visibility they
+expect from their API management solution.
 
 </br>
 
@@ -18,7 +34,9 @@ The purpose of Tyk Streams is to provide a unified platform for managing both sy
 
 **Important notice: Tyk Stream in Lab Release**
 
-*Tyk Streams* is currently in the *Lab Release* phase. It is under active development and testing, and is not intended for production use. For more details and to provide your feedback, please visit our [Lab Release Information Page]({{< ref "developer-support/special-releases-and-features/lab-releases" >}}).
+*Tyk Streams* is currently in the *Lab Release* phase. It is under active development and testing, and is not intended
+for production use. For more details and to provide your feedback, please visit our
+[Lab Release Information Page]({{< ref "developer-support/special-releases-and-features/lab-releases" >}}).
 
 </br>
 
@@ -28,7 +46,8 @@ The purpose of Tyk Streams is to provide a unified platform for managing both sy
 
 ## How Tyk Streams Enables Async API Support?
 
-Tyk Streams seamlessly integrates with the Tyk API Gateway, allowing you to manage asynchronous APIs and event streams alongside your existing synchronous APIs. It provides a range of capabilities to support async API management, including:
+Tyk Streams seamlessly integrates with the Tyk API Gateway, allowing you to manage asynchronous APIs and event streams
+alongside your existing synchronous APIs. It provides a range of capabilities to support async API management, including:
 
 - **Protocol Mediation**: Tyk Streams can mediate between different asynchronous protocols and API styles, such as WebSocket, Server-Sent Events (SSE) and Webhooks. This allows you to expose your event streams in a format that is compatible with your consumers' requirements.
 - **Security**: Apply the same security policies and controls to your async APIs as you do to your synchronous APIs. This includes features like authentication and authorization.
@@ -39,7 +58,8 @@ Tyk Streams seamlessly integrates with the Tyk API Gateway, allowing you to mana
 
 #### Configuration as Code
 
-Tyk Streams configuration natively integrates with our OpenAPI format. This enables a *configuration-as-code* approach, where async API definitions can be version-controlled, collaborated on and deployed using GitOps workflows.
+Tyk Streams configuration natively integrates with Tyk OAS (our OpenAPI format for APIs), enabling *configuration-as-code*
+approach. This allows async API definitions to be version-controlled, collaborated on and deployed using GitOps workflows.
 
 ```yaml
 {
@@ -76,20 +96,24 @@ Tyk Streams configuration natively integrates with our OpenAPI format. This enab
 
 ## Configuring Async APIs via Dashboard UI
 
-The Tyk Dashboard provides a user-friendly interface for defining and managing async APIs. You can easily specify event broker details, subscribe to specific topics or channels, configure security policies, transformations and other API management capabilities.
+The Tyk Dashboard provides a user-friendly interface for defining and managing async APIs. You can easily specify event
+broker details, subscribe to specific topics or channels, configure security policies, transformations and other API
+management capabilities.
 
-{{< img src="/img/streams/configure-streams.png" alt="Tyk Dashboard API Streams" width="1000px" >}}
+{{< img src="/img/streams/configure-streams.png" alt="Screenshot of Tyk Dashboard configuring API Streams" width="1000px" >}}
 
 ---
 
 ## Comparison to Other Products
 
-While some API management platforms offer basic support for async APIs and event-driven architectures, Tyk Streams stands out by providing a comprehensive and flexible solution:
+While some API management platforms offer basic support for async APIs and event-driven architectures, Tyk Streams
+stands out by providing a comprehensive and flexible solution:
 
 - **Extensive protocol support**: Tyk Streams supports a wide range of event brokers and protocols out of the box, including Kafka, MQTT, WebSocket, and more.
 - **Powerful mediation capabilities**: Tyk Streams allows you to transform and enrich event data, enabling protocol mediation and compatibility with diverse client requirements.
 - **Seamless integration**: Async APIs are managed alongside synchronous APIs within the Tyk platform, providing a unified developer portal, consistent security policies and centralised analytics.
 - **Flexibility and scalability**: Tyk Streams can be deployed in various architectures, from simple single-node setups to large-scale distributed deployments and can handle high-throughput event processing scenarios.
 
-By leveraging Tyk Streams, organisations can unlock the full potential of their event-driven architectures while benefiting from the robust API management capabilities of the Tyk platform.
+By leveraging Tyk Streams, organizations can unlock the full potential of their event-driven architectures while
+benefiting from the robust API management capabilities of the Tyk platform.
 

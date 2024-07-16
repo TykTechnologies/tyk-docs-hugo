@@ -121,13 +121,13 @@ In addition you can now use any Python 3.x version. Tyk will automatically detec
 
 ### Importing Custom Keys using the Dashboard API
 
-Previously if you wanted migrate to Tyk and keep existing API keys, you had to use our low level Tyk Gateway API, which has lot of constraints, especially regarding complex setups with multiple organisations and data centers.
+Previously if you wanted migrate to Tyk and keep existing API keys, you had to use our low level Tyk Gateway API, which has lot of constraints, especially regarding complex setups with multiple organizations and data centers.
 
 We have introduced a new Dashboard API for importing custom keys, which is as simple as `POST /api/keys/{custom_key} {key-payload}`. This new API ensures that Keys from multiple orgs will not intersect, and it also works for multi-data center setups, and even Tyk SaaS.
 
 ### Single sign on for the Tyk SaaS
 
-Before SSO was possible only for Tyk On-Premise, since it required access to low-level Dashboard Admin APIs. With 2.9 we have added new a new Dashboard SSO API, which you can use without having super admin access, and it works at the organisation level. This means that all our Tyk SaaS users can use 3rd party IDPs to manage Dashboard users and Portal developers.
+Before SSO was possible only for Tyk On-Premise, since it required access to low-level Dashboard Admin APIs. With 2.9 we have added new a new Dashboard SSO API, which you can use without having super admin access, and it works at the organization level. This means that all our Tyk SaaS users can use 3rd party IDPs to manage Dashboard users and Portal developers.
 
 > **NOTE**: This feature is available by request. Please contact our sales team for details.
 

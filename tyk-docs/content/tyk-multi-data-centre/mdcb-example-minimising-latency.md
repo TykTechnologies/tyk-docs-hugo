@@ -114,7 +114,7 @@ As you know, the Tyk Multi Data Center Bridge provides a link from the Control P
 
 Pretty cool, huh?
 
-There’s a lot more that you could do - for example by deploying real APIs (after all, this is a real Tyk deployment) and configuring different Organisation Ids for each Data Plane to control which APIs propagate to which workers (allowing you to ensure data localisation, as required by the Acme Global Bank).
+There’s a lot more that you could do - for example by deploying real APIs (after all, this is a real Tyk deployment) and configuring different Organization Ids for each Data Plane to control which APIs propagate to which workers (allowing you to ensure data localisation, as required by the Acme Global Bank).
 
 ### Closing everything down
 We’ve provided a simple script to tear down the demo as follows:
