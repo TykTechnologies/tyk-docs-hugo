@@ -13,7 +13,7 @@ Users that are signed up to your portal are called "Developers", these users hav
 
 Developers can sign up to multiple APIs using the API catalog.
 
-Developer accounts belong to an organisation ID, so accounts cannot be shared across organisations in a Tyk Dashboard setup.
+Developer accounts belong to an organization ID, so accounts cannot be shared across organizations in a Tyk Dashboard setup.
 
 ### Navigate to the Portal Developers Section
 

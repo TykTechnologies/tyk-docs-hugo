@@ -20,7 +20,7 @@ For more information on how to configure OPA see [Open Policy Agent]({{< ref "ty
 
 This endpoint returns by defaul the initial set of OPA rules defined in your Tyk Dashboard, which are located in [schema/dashboard.rego]({{< ref "tyk-dashboard/opa-rules" >}}) (accessible in Self-Managed installations).
 
-Once you update the rules via the API, the OPA rules will be stored at the organisation level.
+Once you update the rules via the API, the OPA rules will be stored at the organization level.
 
 | **Property** | **Description**       |
 | ------------ | --------------------- |

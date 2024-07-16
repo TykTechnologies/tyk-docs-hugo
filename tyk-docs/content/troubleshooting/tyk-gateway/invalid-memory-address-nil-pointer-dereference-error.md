@@ -13,7 +13,7 @@ weight: 5
 
 ### Cause
 
-There are a number of reasons, most commonly, an API may have been configured incorrectly in some way (for instance, it may have been set up without an organisation). The error itself is a specific to Go language which Tyk was written in and could also suggest that alterations made to the code by the user could also be the culprit.
+There are a number of reasons, most commonly, an API may have been configured incorrectly in some way (for instance, it may have been set up without an organization). The error itself is a specific to Go language which Tyk was written in and could also suggest that alterations made to the code by the user could also be the culprit.
 
 ### Solution
 

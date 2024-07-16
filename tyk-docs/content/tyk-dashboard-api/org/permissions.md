@@ -20,7 +20,7 @@ Only Admin Dashboard users will be authorized to use this API.
 ### List Additional Permissions
 This API returns by default the initial set of additional permissions defined in your Tyk Dashboard configuration, under [security.additional_permissions]({{< ref "tyk-dashboard/configuration#securityadditional_permissions" >}}).
 
-Once you update the permissions via the API, they will be stored at organisation level.
+Once you update the permissions via the API, they will be stored at organization level.
 
 | **Property** | **Description**       |
 | ------------ | --------------------- |

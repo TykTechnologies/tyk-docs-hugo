@@ -22,7 +22,7 @@ The Dashboard exposes the `/admin/sso` Admin API which allows you to generate a 
 You should provide JSON payload with the following data:
 
 * `ForSection` - scope with possible values of `"dashboard"` or `"portal"` 
-* `OrgID` - with your organisation id. 
+* `OrgID` - with your organization id. 
 * `GroupID` - the group id 
 * `EmailAddress` - user email 
 
