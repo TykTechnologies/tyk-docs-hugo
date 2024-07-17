@@ -29,7 +29,7 @@ Tyk OAS introduces the concept of a **Base API**, which acts as a "parent" API v
 
 The "child" versions do not have any reference back to the "parent" and so can operate completely independently if required. Typically, and we recommend, the "child" versions should be configured as [Internal APIs]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#state" >}}) that are not directly reachable by clients outside Tyk.
 
-The Base API is a working version of the API and is usually the only one configured as an *External API*, so that client requests and initially handled (and routed) according to the configuration set in the Base API.
+The Base API is a working version of the API and is usually the only one configured as an *External API*, so that client requests are handled (and routed) according to the configuration set in the Base API.
 
 Note that any version (including the Base API) can be set as `default` for [access control](#controlling-access-to-tyk-oas-api-versions) and [default fallback]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#default-api-version" >}}).
 
