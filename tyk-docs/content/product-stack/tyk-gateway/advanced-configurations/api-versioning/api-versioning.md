@@ -34,9 +34,14 @@ You might discover a more efficient way to structure your API requests and respo
 
 ## How API versioning works with Tyk
 
-When you implement versioning for a **Tyk OAS API**, you're essentially creating distinct iterations of your API, each with its own API definition file, allowing almost complete differentiation of configuration between your API versions.
+API versioning was originally implemented for the legacy Tyk Classic API. We took lessons from this and, for Tyk OAS, introduced a more flexible approach.
 
-With the legacy **Tyk Classic API**, all versions of an API are configured from a single API definition. This means that they share many features with only a subset available to be configured differently between versions.
+#### Tyk OAS API versioning
+With Tyk OAS APIs you're essentially creating distinct iterations of your API, each with its own API definition file, allowing almost complete differentiation of configuration between your API versions.
+
+
+#### Tyk Classic API versioning
+With Tyk Classic APIs all versions of an API are configured from a single API definition. This means that they share many features with only a subset available to be configured differently between versions.
 
 #### Comparison between Tyk OAS and Tyk Classic API versioning
 
@@ -92,15 +97,15 @@ The standard behaviour of Tyk, if an invalid version is requested in the version
 
 ### Stripping version identifier
 
-Typically Tyk will pass all request headers and parameters to the upstream service when proxying the request. The upstream (target) URL will be constructed by combining the configured `targetURL` with the full request path unless configured otherwise (for example, by using the [strip listen path]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#listenpath" >}}) option to remove the `listenPath` fragment from that URL).
+Typically Tyk will pass all request headers and parameters to the upstream service when proxying the request. For a versioned API, the version identifier (which may be in the form of a header, path parameter or URL fragment) will be included in this scope and passed to the upstream.
 
-For a versioned API, the version identifier (which may be in the form of a header, path parameter or URL fragment) will be included in this scope and passed to the upstream.
+The upstream (target) URL will be constructed by combining the configured `upstream.url` (`target_url` for Tyk Classic APIs) with the full request path unless configured otherwise (for example, by using the [strip listen path]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#listenpath" >}}) feature).
 
-If you don't want to include this identifier, then you can set `stripVersioningData` (`strip_versioning_data` for Tyk Classic APIs) and Tyk will remove it prior to proxying the request.
+If the version identifier is in the request URL then it will be included in the upstream (target) URL. If you don't want to include this identifier, then you can set `stripVersioningData` (`strip_versioning_data` for Tyk Classic APIs) and Tyk will remove it prior to proxying the request.
 
 ##### Stripping URL path version and default fallback
 
-When using the [Request URL](#request-url-path) for the versioning identifier, if Tyk is configured to strip the versioning identifier then the first URL fragment after the `listenPath` will be deleted prior to creating the proxy URL. If the request does not include a versioning identifier and Tyk is configured to [fallback to default](#fallback-to-default), this may lead to undesired behaviour as the first URL fragment of the endpoint will be deleted.
+When using the [Request URL](#request-url-path) for the versioning identifier, if Tyk is configured to strip the versioning identifier then the first URL fragment after the `listenPath` (`listen_path` for Tyk Classic APIs) will be deleted prior to creating the proxy URL. If the request does not include a versioning identifier and Tyk is configured to [fallback to default](#fallback-to-default), this may lead to undesired behaviour as the first URL fragment of the endpoint will be deleted.
 
 In Tyk 5.5.0 we implemented a new *URL versioning pattern* configuration option where you can set a regex that Tyk will use to determine whether the first URL fragment after the `listenPath` is a version identifier. If the first URL fragment does not match the regex, it will not be stripped and the unaltered URL will be used to create the upstream URL.
 

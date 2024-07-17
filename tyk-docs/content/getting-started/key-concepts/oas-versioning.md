@@ -15,13 +15,15 @@ If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{
 
 ### Controlling access to Tyk OAS API versions
 
-You can explicitly grant access to specific version(s) of an API by specifying only those version(s) in the [key]({{< ref "tyk-apis/tyk-gateway-api/token-session-object-details" >}}) (also known as an *authorization token*, *bearer token*, *access token*, *API token* or *token session object* - see [here]({{< ref "basic-config-and-security/security/authentication-authorization/bearer-tokens" >}})).
+You can explicitly grant access to specific version(s) of an API by specifying the individual API definitions for each version in the [key]({{< ref "tyk-apis/tyk-gateway-api/token-session-object-details" >}}) (also known as an *authorization token*, *bearer token*, *access token*, *API token* or *token session object* - see [here]({{< ref "basic-config-and-security/security/authentication-authorization/bearer-tokens" >}})).
 
-When using Tyk OAS APIs there are some subtleties to the propagation of access control between versions of an API due to the sharing of one API definition for all versions:
+When using Tyk OAS APIs there are some subtleties to the propagation of access control between versions of an API:
 - each version of an API is treated individually by Tyk Gateway, so access must be explicity granted for each version
 - an existing *key* will continue to work with a Tyk OAS API that is converted into a versioned API
 - existing *keys* will not automatically be granted access to new versions
 - a *key* will only have access to the `default` version if it explicitly has access to that version (e.g. if `v2` is set as default, a *key* must have access to `v2` to be able to fallback to the default if the versioning identifier is not correctly provided)
+
+This means that you could limit access to the [Base API](#base-and-child-apis) (which provides routing to the different versions) to the API owner, while allowing developers to create and test new versions independently. These will only be added to the "routing table" in the Base API when the API owner is ready. 
 
 ### Base and child APIs
 
@@ -31,7 +33,7 @@ The "child" versions do not have any reference back to the "parent" and so can o
 
 The Base API is a working version of the API and is usually the only one configured as an *External API*, so that client requests are handled (and routed) according to the configuration set in the Base API.
 
-Note that any version (including the Base API) can be set as `default` for [access control](#controlling-access-to-tyk-oas-api-versions) and [default fallback]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#default-api-version" >}}).
+Note that any version (including the Base API) can be set as *default* for [access control](#controlling-access-to-tyk-oas-api-versions) and [default fallback]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#default-api-version" >}}).
 
 ## Configuring API versioning in the Tyk OAS API Definition
 
@@ -40,7 +42,7 @@ You can configure a Tyk OAS API as a [Base API](#base-and-child-apis) by adding 
 The `versioning` [object]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#versioning" >}}) has the following configuration:
 - `enabled`: enable versioning
 - `name`: an identifier for this version of the API, for example `default` or `v1`
-- `default`: the `name` of the API definition that shall be treated as `default` (for [access control](#ccontrolling-access-to-tyk-oas-api-versions) and [default fallback]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#default-api-version" >}}))
+- `default`: the `name` of the API definition that shall be treated as *default* (for [access control](#ccontrolling-access-to-tyk-oas-api-versions) and [default fallback]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#default-api-version" >}})); if the base API is to be used as the default then you can instead use the value `self` in this field
 - `location`: used to configure where the versioning identifier should be provided: `header`, `url`, `url-param`
 - `key`: the versioning identifier key used if `location` is set to `header` or `url-param`
 - `versions`: a list of key-value pairs storing details of the *child APIs*
@@ -68,7 +70,7 @@ If an API definition (base or child API) is to be configured with an expiry date
 
 In the following example, we configure a *Base API*:
 
-```json {hl_lines=["11-26"],linenos=true, linenostart=1}
+```json {hl_lines=["11-27"],linenos=true, linenostart=1}
 {
   "info": {
     "title": "example-base-api",
