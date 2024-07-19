@@ -28,7 +28,7 @@ You can set different rate limits for various endpoints by specifying multiple `
 
 For example:
 
-~~~
+```json  {linenos=true, linenostart=1}
 {
     "use_extended_paths": true,
     "extended_paths": {
@@ -43,7 +43,6 @@ For example:
         ]
     }
 }
-~~~
 
 In this example, the rate limit middleware has been configured for HTTP
 `GET` requests to the `/anything` endpoint, limiting requests to 60 per

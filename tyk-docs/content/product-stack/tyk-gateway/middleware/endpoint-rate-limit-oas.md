@@ -34,7 +34,7 @@ The `rateLimit` object has the following configuration:
 
 For example:
 
-~~~
+```json {hl_lines=["39-43"],linenos=true, linenostart=1}
 {
     "components": {},
     "info": {
@@ -83,7 +83,6 @@ For example:
         }
     }
 }
-~~~
 
 In this example, a rate limit has been
 configured for the `GET /status/200` endpoint, limiting requests to 60
