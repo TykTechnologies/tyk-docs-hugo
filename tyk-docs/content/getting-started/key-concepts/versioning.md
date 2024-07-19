@@ -58,7 +58,7 @@ The `definition` section has the following fields:
 
 When you first create an API, it will not be "versioned" (i.e. `not_versioned` will be set to `true`) and there will be a single `Default` version created in the `version_data` section of the API definition.
 
-Here's an example of a minimal configuration for an API with two versions:
+Here's an example of the minimal configuration that would need to be added to the API definition for an API with two versions:
 
 ```json  {linenos=true, linenostart=1}
 {
@@ -182,9 +182,9 @@ You can use the API Designer in the Tyk Dashboard to add versions for your API b
 
 ##### Step 1: enable versioning
 
-In the API Designer, navigate to the **VERSIONS** tab.
+In the API Designer, navigate to the **Versions** tab.
 
-{{< img src="/img/2.10/no_versioning.png" alt="Enabling versioning for a Tyk Classic API" >}}
+{{< img src="/img/dashboard/endpoint-designer/tyk-classic-version-no-versioning.png" alt="Enabling versioning for a Tyk Classic API" >}}
 
 Deselect the **Do not use versioning** checkbox to enable versioning and display the options.
 
@@ -192,7 +192,15 @@ Deselect the **Do not use versioning** checkbox to enable versioning and display
 
 Choose from the drop-down where the version identifier will be located and, if applicable, provide the key name (for query parameter or request header locations).
 
-{{< img src="/img/2.10/versioning.png" alt="Configuring the versioning identifier" >}}
+{{< img src="/img/dashboard/endpoint-designer/tyk-classic-version-start.png" alt="Configuring the versioning identifier" >}}
+
+<br>
+{{< note success >}}
+**Note**  
+
+The Tyk Classic API Designer does not have support to configure `url_versioning_pattern` from this screen, however it is easy to add in the Raw Definition editor.
+{{< /note >}}
+
 
 ##### Step 3: add a new version
 
@@ -200,17 +208,17 @@ You will see the existing (`Default`) version of your API in the **Versions List
 
 You can optionally configure an **Override target host** that will replace the target path that was set in the base configuration for the version. Note that this is not compatible with Service Discovery or Load Balanced settings.
 
-Select **ADD** to create this new version for your API.
+Select **Add** to create this new version for your API.
 
-//**Image to be added**//
+{{< img src="/img/dashboard/endpoint-designer/tyk-classic-version-add.png" alt="Adding a new version to your API" >}}
 
 ##### Step 4: set the default version
 
 You can choose any of your API versions to act as the [default]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#default-api-version" >}}).
 
-//**Image to be added**//
+{{< img src="/img/dashboard/endpoint-designer/tyk-classic-version-set-default.png" alt="Choosing the default version for your API" >}}
 
-Select **UPDATE** to save the changes to your API.
+Select **Update** to save the changes to your API.
 
 ### Configuring an API version
 
@@ -218,6 +226,6 @@ As [explained]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-ve
 
 From the **Endpoint Designer** tab, you can select the version that you wish to configure from the **Edit Version** dropdown.
 
-//**Image to be added**//
+{{< img src="/img/dashboard/endpoint-designer/tyk-classic-version-endpoint.png" alt="Choosing the API version for which to configure endpoint middleware" >}}
 
-Select **UPDATE** to save the changes to your API.
+Select **Update** to save the changes to your API.

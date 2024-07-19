@@ -137,17 +137,17 @@ Starting from a Tyk OAS API (either newly created or an existing non-versioned A
 
 ##### Step 1: Create the new version
 
-Select **CREATE A NEW VERSION** from the **ACTIONS** menu.
+Select **Create A New Version** from the **Actions** menu.
 
-//**Image to be added**//
+{{< img src="/img/dashboard/api-designer/tyk-oas-version-menu-create-new.png" alt="Creating a new version of a Tyk OAS API from the Actions menu" >}}
 
 This will bring up the *Create new API version* pop-up.
 
-//**Image to be added**//
+{{< img src="/img/dashboard/api-designer/tyk-oas-version-modal-create-new.png" alt="Choosing the version name for a new version of a Tyk OAS API" >}}
 
 Assign your existing version a *version name* (e.g. v1), then assign a *name* for the new version (e.g. v2). You should then select one of these to use as the *default* version.
 
-Select **CREATE VERSION**
+Select **Create Version**
 
 ##### Step 2: Configure the new version
 
@@ -155,37 +155,44 @@ You'll be taken to the API designer view for the new version - remember that thi
 
 Tyk will have set the *Access* to *Internal*, so that this version cannot be directly accessed by clients, only via the original (base) API.
 
-//**Image to be added**//
+{{< img src="/img/dashboard/api-designer/tyk-oas-version-created.png" alt="New version of Tyk OAS API has been created" >}}
 
-Configure the API definition as required, then select **SAVE API**
+Configure the API definition as required, then select **Save API**
 
-By default, Tyk will have configured the versioning identifier location as Request Header, with the key `x-api-version`. You can modify this by following the steps [here](#configure-the-version-identifier), but if you're happy with this then that's it - your new API version is ready for use.
+By default, Tyk will have configured the versioning identifier location as Request Header, with the key `x-api-version`. You can modify this by following the steps [here](#configure-versioning-settings), but if you're happy with this then that's it - your new API version is ready for use.
 
 ### Managing API versions
 
 When you have a versioned API the *Base API* will appear in the **Created APIs** list, with an expansion icon that you can select to reveal the versions.
 
-//**Image to be added**//
+{{< img src="/img/dashboard/api-designer/tyk-oas-version-list.png" alt="Versioned API shows in the Created APIs list" >}}
 
-You can see that the *base* and *default* versions are indicated graphically. You can reach the API Designer for each version in the usual way, by selecting the API name in the list (or from the **ACTIONS** menu for the API)/
+You can see that the *base* and *default* versions are indicated graphically. You can reach the API Designer for each version in the usual way, by selecting the API name in the list (or from the **Actions** menu for the API)/
 
-//**Image to be added**//
+##### Switch between API versions
 
-When you are in the API Designer for a versioned API, you can switch between versions using thre drop-down next to the API name.
+When you are in the API Designer for a versioned API, you can switch between versions using the drop-down next to the API name.
 
-There is a new option in the **ACTIONS** menu: **MANAGE VERSIONS**.
+{{< img src="/img/dashboard/api-designer/tyk-oas-version-designer.png" alt="Choose between API versions in the API designer" >}}
 
-//**Image to be added**//
+There is a new option in the **Actions** menu: **Manage Versions**.
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-version-menu-manage.png" alt="New menu option to manage versions" >}}
 
 This takes you to the version management screen for the API where you can:
-- delete an API version from its **ACTIONS** menu
-- select a new *default* version from its **ACTIONS** menu
+- delete an API version from its **Actions** menu
+- select a new *default* version from its **Actions** menu
 
-//**Image to be added**//
+{{< img src="/img/dashboard/api-designer/tyk-oas-version-manage.png" alt="Manage the different versions of your API" >}}
 
-If you select **EDIT SETTINGS** you will open a pop-up that allows you to:
+##### Configure versioning settings
+
+If you select **Edit Settings** you will open a pop-up that allows you to:
 - change the versioning identifier (location and/or key)
+- set the [versioning identifier pattern]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-url-path-version-and-default-fallback" >}}) (optional, if using URL path location)
 - configure [fallback to default behaviour]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#fallback-to-default" >}})
 - configure [version identifier stripping]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-version-identifier" >}})
 
-//**Image to be added**//
+In this example, the version identifier location is set to *Header* allowing configuration of the *Key name*:
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-version-settings.png" alt="Configure the versioning settings for your API" >}}
