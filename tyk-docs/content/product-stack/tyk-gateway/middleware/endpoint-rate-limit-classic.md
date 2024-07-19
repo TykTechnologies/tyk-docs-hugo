@@ -9,7 +9,9 @@ The per-endpoint rate limit middleware allows you to enforce rate limits
 on specific endpoints. This middleware is configured in the Tyk Classic
 API Definition, either via the Tyk Dashboard API or in the API Designer.
 
-If you’re using the newer Tyk OAS APIs, then check out the [Tyk OAS](https://tyk.io/docs/product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas/) page.
+If you’re using the newer Tyk OAS APIs, then check out the
+[Tyk OAS](https://tyk.io/docs/product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas/) page.
+
 ## Configuring a rate limit in the Tyk Classic API Definition
 
 To enable the middleware, add a new `rate_limit` object to the `extended_paths` section of your API definition.
@@ -53,10 +55,11 @@ second.
 
 For more complex scenarios, you can configure rate limits for multiple
 paths. The order of evaluation matches the order defined in the
-`rate_limit` array. For example, if you wanted to limit the rate of `POST` requests to
-your API allowing a higher rate to one specific endpoint you could configure the API definition as follows: 
+`rate_limit` array. For example, if you wanted to limit the rate of
+`POST` requests to your API allowing a higher rate to one specific
+endpoint you could configure the API definition as follows: 
 
-```
+```json  {linenos=true, linenostart=1}
 {
     "use_extended_paths": true,
     "extended_paths": {
@@ -80,8 +83,8 @@ your API allowing a higher rate to one specific endpoint you could configure the
 }
 ```
 
-In this example, the first rule limits `POST` requests to
-`/user/login` to 100 requests per second (rps). Any other `POST` request matching
-the regex pattern `/.*/` will be limited to 60 requests per second. The
-order of evaluation ensures that the specific `/user/login` endpoint is
-matched and evaluated before the regex pattern.
+In this example, the first rule limits `POST` requests to `/user/login`
+to 100 requests per second (rps). Any other `POST` request matching the
+regex pattern `/.*/` will be limited to 60 requests per second. The order
+of evaluation ensures that the specific `/user/login` endpoint is matched
+and evaluated before the regex pattern.
