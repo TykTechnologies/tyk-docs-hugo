@@ -1497,18 +1497,18 @@ menu:
           category: Directory
           show: True
           menu:
-            - title: "Overview"
-              path: /basic-config-and-security/control-limit-traffic/rate-limiting
-              category: Page
-              show: True
-            - title: "Tyk OAS configuration"
-              path: /product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas
-              category: Page
-              show: True
-            - title: "Tyk Classic configuration"
-              path: /product-stack/tyk-gateway/middleware/endpoint-rate-limit-classic
-              category: Page
-              show: True
+          - title: "Overview"
+            path: /basic-config-and-security/control-limit-traffic/rate-limiting
+            category: Page
+            show: True
+          - title: "Tyk OAS configuration"
+            path: /product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas
+            category: Page
+            show: True
+          - title: "Tyk Classic configuration"
+            path: /product-stack/tyk-gateway/middleware/endpoint-rate-limit-classic
+            category: Page
+            show: True
         - title: "Reduce latency"
           category: Directory
           show: True
