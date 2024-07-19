@@ -43,6 +43,7 @@ For example:
         ]
     }
 }
+```
 
 In this example, the rate limit middleware has been configured for HTTP
 `GET` requests to the `/anything` endpoint, limiting requests to 60 per
@@ -55,7 +56,7 @@ paths. The order of evaluation matches the order defined in the
 `rate_limit` array. For example, if you wanted to limit the rate of `POST` requests to
 your API allowing a higher rate to one specific endpoint you could configure the API definition as follows: 
 
-~~~
+```
 {
     "use_extended_paths": true,
     "extended_paths": {
@@ -77,7 +78,7 @@ your API allowing a higher rate to one specific endpoint you could configure the
         ]
     }
 }
-~~~
+```
 
 In this example, the first rule limits `POST` requests to
 `/user/login` to 100 requests per second (rps). Any other `POST` request matching

@@ -161,7 +161,7 @@ paths. The order of evaluation matches the order that endpoints are defined in t
         }
     }
 }
-~~~
+```
 
 In this example, the first rule limits requests to the
 `POST /user/login` endpoint to 100 requests per second (rps). Any other `POST` request to an endpoint path that matches
