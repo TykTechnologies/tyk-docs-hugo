@@ -9,6 +9,8 @@ The per-endpoint rate limit middleware allows you to enforce rate limits
 on specific endpoints. This middleware is configured in the [Tyk OAS API
 Definition](https://tyk.io/docs/tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc/#operation), either via the Tyk Dashboard API or in the API Designer.
 
+If you’re using the legacy Tyk Classic APIs, then check out the [Tyk Classic](https://tyk.io/docs/product-stack/tyk-gateway/middleware/endpoint-rate-limit-classic/) page.
+
 ## Configuring a rate limit in the Tyk OAS API Definition
 
 The design of the Tyk OAS API Definition takes advantage of the
@@ -102,7 +104,7 @@ if you wanted to limit the rate of `POST` requests to your API allowing a
 higher rate to one specific endpoint you could configure the API
 definition as follows: 
 
-```json {hl_lines=["47-51", "54-58"],linenos=true, linenostart=1}
+```json {hl_lines=["49-53", "56-60"],linenos=true, linenostart=1}
 {
     "components": {},
     "info": {
@@ -113,7 +115,7 @@ definition as follows:
     "paths": {
         "/user/login": {
             "post": {
-                "operationId": "user/loginget",
+                "operationId": "user/loginpost",
                 "responses": {
                     "200": {
                         "description": ""
@@ -150,7 +152,7 @@ definition as follows:
         },
         "middleware": {
             "operations": {
-                "user/loginget": {
+                "user/loginpost": {
                     "rateLimit": {
                         "enabled": true,
                         "rate": 100,
