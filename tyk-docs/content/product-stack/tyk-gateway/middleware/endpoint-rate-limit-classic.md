@@ -85,6 +85,6 @@ endpoint you could configure the API definition as follows:
 
 In this example, the first rule limits `POST` requests to `/user/login`
 to 100 requests per second (rps). Any other `POST` request matching the
-regex pattern `/.*/` will be limited to 60 requests per second. The order
+regex pattern `/.*` will be limited to 60 requests per second. The order
 of evaluation ensures that the specific `/user/login` endpoint is matched
 and evaluated before the regex pattern.
