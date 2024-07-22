@@ -200,13 +200,13 @@ From the **API Designer** add an endpoint that matches the path and method to wh
 
 Select **ADD MIDDLEWARE** and choose **Rate Limit** from the *Add Middleware* screen.
 
-{{< img src="/img/dashboard/api-designer/tyk-oas-go-plugin.png" alt="Adding the Rate Limit middleware" >}}
+{{< img src="/img/dashboard/api-designer/tyk-oas-rate-limit.png" alt="Adding the Rate Limit middleware" >}}
 
 #### Step 3: Configure the middleware
 
 You must provide the path to the compiled plugin and the name of the Go function that should be invoked by Tyk Gateway when the middleware is triggered.
 
-{{< img src="/img/dashboard/api-designer/tyk-oas-go-plugin-config.png" alt="Configuring the per-endpoint custom plugin" >}}
+{{< img src="/img/dashboard/api-designer/tyk-oas-rate-limit-config.png" alt="Configuring the per-endpoint custom plugin" >}}
 
 #### Step 4: Save the API
 
