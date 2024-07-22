@@ -181,3 +181,33 @@ endpoint path that matches the regex pattern `/{any}` will be limited to
 The configuration above is a complete and valid Tyk OAS API Definition
 that you can import into Tyk to try out the Per-endpoint Rate Limiter
 middleware.
+
+## Configuring the middleware in the API Designer
+
+Configuring per-endpoint rate limits for your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
+
+#### Step 1: Add an endpoint
+
+From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-no-endpoints.png" alt="Tyk OAS API Designer showing no endpoints created" >}}
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-add-endpoint.png" alt="Adding an endpoint to an API using the Tyk OAS API Designer" >}}
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
+
+#### Step 2: Select the Rate Limit middleware
+
+Select **ADD MIDDLEWARE** and choose **Rate Limit** from the *Add Middleware* screen.
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-go-plugin.png" alt="Adding the Rate Limit middleware" >}}
+
+#### Step 3: Configure the middleware
+
+You must provide the path to the compiled plugin and the name of the Go function that should be invoked by Tyk Gateway when the middleware is triggered.
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-go-plugin-config.png" alt="Configuring the per-endpoint custom plugin" >}}
+
+#### Step 4: Save the API
+
+Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes.
