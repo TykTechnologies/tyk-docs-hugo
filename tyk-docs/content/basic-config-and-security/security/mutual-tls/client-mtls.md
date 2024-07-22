@@ -113,7 +113,7 @@ Key points:
 3. During verification, Tyk gateway traverses the certificate chain for validation.
 
 {{< note success >}}
-Note
+**Note**
 
 Root CA certificates can only be used with [static mTLS]({{<ref "#static-mtls" >}}); this approach does not work with [dynamic mTLS]({{<ref "#dynamic-client-mtls" >}}).
 {{< /note >}}
