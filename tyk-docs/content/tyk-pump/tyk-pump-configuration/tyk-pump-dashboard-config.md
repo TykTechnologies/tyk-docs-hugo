@@ -440,27 +440,6 @@ In order to improve the data maintenance processes, as querying or removing data
 
 ### Tyk Dashboard Configuration
 
-<<<<<<< HEAD
-```{.shell}
-"sql": {
-  ...
-  "meta": {
-    ...
-    "table_sharding": true
-  }
-},
-"sql_aggregate" : {
-  ...
-  "meta": {
-    ...
-    "table_sharding": true
-  }
-},
-"uptime_pump_config": {
-  ...
-  "table_sharding": true
-},
-=======
 ```yaml
   "storage": {
     "main": {
@@ -480,7 +459,6 @@ In order to improve the data maintenance processes, as querying or removing data
       "table_sharding": true
     }
   },
->>>>>>> 5e72eab85... [DX-1398] Update tyk-pump-dashboard-config.md (#5078)
 ```
 
 {{< tab_end >}}
