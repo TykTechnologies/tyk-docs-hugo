@@ -9,7 +9,7 @@ aliases:
 
 Observability is a key concept in modern software systems that enables teams to understand the internal state of their applications and infrastructure through external outputs. It encompasses three main pillars:
 
-- Metrics: quantitative measurements of system performance and behavior over time
+- **Metrics**: quantitative measurements of system performance and behavior over time
 - Logs: detailed records of events and state changes within the system
 - Traces: end-to-end tracking of requests as they flow through distributed systems
 
