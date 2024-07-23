@@ -438,24 +438,24 @@ To improve the data maintenance processes, as querying or removing data from one
 ### Tyk Dashboard Configuration
 
 ```yaml
-"sql": {
-  ...
-  "meta": {
-    ...
-    "table_sharding": true
-  }
-},
-"sql_aggregate" : {
-  ...
-  "meta": {
-    ...
-    "table_sharding": true
-  }
-},
-"uptime_pump_config": {
-  ...
-  "table_sharding": true
-},
+  "storage": {
+    "main": {
+      ...
+      "table_sharding": true
+    },
+    "analytics": {
+      ...
+      "table_sharding": true
+    },
+    "logs": {
+      ...
+      "table_sharding": true
+    },
+    "uptime": {
+      ...
+      "table_sharding": true
+    }
+  },
 ```
 
 {{< tab_end >}}
