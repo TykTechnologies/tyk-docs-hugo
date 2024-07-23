@@ -10,7 +10,7 @@ aliases:
 Observability is a key concept in modern software systems that enables teams to understand the internal state of their applications and infrastructure through external outputs. It encompasses three main pillars:
 
 - **Metrics**: quantitative measurements of system performance and behavior over time
-- Logs: detailed records of events and state changes within the system
+- **Logs**: detailed records of events and state changes within the system
 - Traces: end-to-end tracking of requests as they flow through distributed systems
 
 This section will explore how Tyk supports and enhances observability capabilities, enabling you to gain valuable insights into your systems and applications.
