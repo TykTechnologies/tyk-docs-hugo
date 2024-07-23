@@ -25,4 +25,4 @@ The metadata are exposed so that they can be used by the event handler (webhook 
 
 ### Raw Request Data
 
-The `OriginatingRequest` metadata is a Base64-encoded wire-protocol representation of the original request to the event handler, if you are running a service bus or queue that stores failed, throttled or other types of requests, you can decode this object and parse it in order to re-create the original intent of the request (e.g. for post-processing).
+The `OriginatingRequest` metadata is a Base64-encoded wire-protocol representation of the original request to the event handler. If you are running a service bus or queue that stores failed, throttled or other types of requests, you can decode this object and parse it in order to re-create the original intent of the request (e.g. for post-processing).
