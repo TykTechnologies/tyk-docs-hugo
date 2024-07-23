@@ -64,7 +64,7 @@ type JSVMContextGlobal struct {
 }
 ```
 
-It is populated with the the API ID and Org ID of the request that your custom function can use together with the `event` metadata to interact with the Tyk REST API functions, for example:
+It is populated with the API ID and Org ID of the request that your custom function can use together with the `event` metadata to interact with the Tyk REST API functions, for example:
 
 ```js
 // Use the TykGetKeyData function to retrieve a session from the session store, use the context variable to give the APIID for the key.
