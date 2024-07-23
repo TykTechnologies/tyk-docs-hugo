@@ -7,7 +7,7 @@ tags: ["rate limit", "middleware", "per-endpoint", "Tyk Classic", "Tyk Classic A
 
 The per-endpoint rate limit middleware allows you to enforce rate limits on specific endpoints. This middleware is configured in the Tyk Classic API Definition, either via the Tyk Dashboard API or in the API Designer.
 
-If you’re using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "tyk-gateway/middleware/endpoint-rate-limit-oas" >}}) page.
+If you’re using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "/tyk-gateway/middleware/endpoint-rate-limit-oas" >}}) page.
 
 ## Configuring a rate limit in the Tyk Classic API Definition
 
