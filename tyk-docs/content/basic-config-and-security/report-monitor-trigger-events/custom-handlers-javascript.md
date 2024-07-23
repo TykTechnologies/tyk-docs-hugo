@@ -7,7 +7,7 @@ description: "How to create your own custom event handlers in JavaScript"
 
 Tyk supports you to script your own custom code in JavaScript (JS) that will be invoked in response to API events. This is executed asynchronously so you don't need to worry about it blocking the Gateway handling requests. Event handlers like this can be very powerful for automating session, user and API-level functions.
 
-It is important to note that unlike custom JavaScript [plugins]({{< ref "plugins/supported-languages/javascript-middleware" >}}), custom event handlers execute in a *global* JavaScript environment. This means that if you need to be careful when naming the event handlers: if you use the same event handler name for different event handling code across two APIs, only one of them will execute, as the other will be overridden when loaded.
+It is important to note that unlike custom JavaScript [plugins]({{< ref "plugins/supported-languages/javascript-middleware" >}}), custom event handlers execute in a *global* JavaScript environment. This means that you need to be careful when naming the event handlers: if you use the same event handler name for different event handling code across two APIs, only one of them will execute, as the other will be overridden when loaded.
 
 Custom event handlers have access to the [JavaScript API]({{< ref "plugins/supported-languages/javascript-middleware/javascript-api" >}}) which gives access to the session object and enables your code to make HTTP calls. This is particularly useful if you want to interface with another API with a complex request/response cycle.
 
