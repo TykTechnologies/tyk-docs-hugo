@@ -9,7 +9,7 @@ aliases:
   - /tyk-developer-portal/portal-events-notifications/
 ---
 
-Tyk enables you to actively monitor both user and organisation quotas. These active notifications are managed in the same way as webhooks and provides an easy way to notify your stakeholders, your own organisation or the API end user when certain thresholds have been reached for their token.
+Tyk enables you to actively monitor both user and organization quotas. These active notifications are managed in the same way as webhooks and provides an easy way to notify your stakeholders, your own organization or the API end user when certain thresholds have been reached for their token.
 
 ### Tyk Cloud Users
 
@@ -33,7 +33,7 @@ The templates are available as text based or HTML. See the standard included one
 
 The Dashboard and Portal also support a certain level of events that you can use to notify your system of various things that have happened in the Portal.
 
-To configure them, add an `event_options` section to an Organisation when you are creating them. See [Creating an Organisation via the Dashboard Admin API]({{< ref "dashboard-admin-api/organisations#create-an-organisation" >}}) for more details.
+To configure them, add an `event_options` section to an Organization when you are creating them. See [Creating an Organization via the Dashboard Admin API]({{< ref "dashboard-admin-api/organisations#create-an-organization" >}}) for more details.
 
 Within this object, you can then register webhooks or/and an email address to notify when an event occurs:
 

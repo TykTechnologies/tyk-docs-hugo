@@ -16,7 +16,7 @@ Infrastructure monitoring is the process of tracking and collecting system healt
 
 The infrastructure and engineering team can take advantage of real-time quantitative data by using monitoring tools to help identify trends, set alerts when a system breaks, determine the root cause of the problem and mitigate the issue. 
 
-The two main questions that your monitoring system should address: _what’s broken (symptom)_, and _why (cause)_? Successful monitoring and alerting systems should identify areas to scale, backend issues that impact users, and drive value across the organisation to improve business performance.
+The two main questions that your monitoring system should address: _what’s broken (symptom)_, and _why (cause)_? Successful monitoring and alerting systems should identify areas to scale, backend issues that impact users, and drive value across the organization to improve business performance.
 
 
 ### Why is it important?

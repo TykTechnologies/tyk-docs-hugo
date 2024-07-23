@@ -144,7 +144,7 @@ If you check the Keycloak dashboard you will see this client too:
 
 {{< img src="/img/dcr/keycloak/step_11.png" alt="Step 11" >}}
 
-The next step is to generate a token and use it for accessing your **Keycloak API**. We'll use Postman for this. You will need your token URL which is also the well-known URL for your organisation.
+The next step is to generate a token and use it for accessing your **Keycloak API**. We'll use Postman for this. You will need your token URL which is also the well-known URL for your organization.
 For this guide we use `https://keycloak:8443/auth/realms/master/protocol/openid-connect/token`
 
 Your Postman request should contain the following body, where `"client_id"` and `"client_secret"` are the credentials you got from the developer portal:

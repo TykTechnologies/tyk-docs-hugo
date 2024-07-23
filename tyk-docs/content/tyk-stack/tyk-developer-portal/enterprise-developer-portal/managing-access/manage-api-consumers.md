@@ -24,7 +24,7 @@ External developers are referred to as API Consumers. In the Tyk Developer porta
 
 **API Consumers** - Refers to the whole section within the admin dashboard that manages individual external users, teams, and organizations.
 
-**Organisations** - An organization can represent larger business units of a company. It works as a container for various teams and users. An organization can be used which can include multiple teams.
+**Organizations** - An organization can represent larger business units of a company. It works as a container for various teams and users. An organization can be used which can include multiple teams.
 
 **Teams** - Teams are used to bundle multiple users, a team always needs to be part of an organization.
 

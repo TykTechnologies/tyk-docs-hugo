@@ -1,5 +1,5 @@
 baseURL = "//tyk.io/docs/nightly/"
-languageCode = "en-gb"
+languageCode = "en-US"
 title = "Tyk Documentation"
 theme = "tykio"
 MetaDataFormat = "yaml"
@@ -92,3 +92,4 @@ lastmod = ["lastmod", ":git",':fileModTime', "date", "publishDate"]
     toLower = false
     type = 'basic'
     weight = 80
+

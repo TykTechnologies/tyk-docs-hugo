@@ -1,12 +1,27 @@
 ---
 date: 2017-03-27T12:28:24+01:00
-title: Portal Documentation
-menu:
-  main:
-    parent: "Tyk Portal API"
-weight: 6
+title: API Publishing Endpoints
+description: "This page details the API endpoint used for publishing APIs to Tyk classic Dev Portal. API platform teams and API owners can use this endpoint to integrate their APIs, making them visible and accessible to developers."
+tags: ["Tyk Classic Portal API Publishing Endpoints", "Classic Portal API"]
 ---
-This section covers both [Documentation](#documentation) and [Catalog](#catalog) endpoints.
+This page describes the endpoints to create [catalog](#catalog) and [Swagger documentation](#documentation) for your API.
+
+</br>
+
+{{< note success >}}
+
+**Important Note on Spelling:**
+
+While our documentation now uses American English, the product itself, including UI, configuration fields, environment
+variables, and APIs endpoints, retain British English spellings. When interacting with the product, please continue
+using the British English spellings as they appear in the interface and API. (This means that for existing users nothing
+has changed).
+</br>
+**Example:** The API endpoint `/api/portal/catalogue` as shown throughout this page uses British spelling. In all other
+instances, such as when describing or referring to this object in the documentation, we will use the
+American spelling "catalog".
+
+{{< /note >}}
 
 ## Documentation
 
@@ -94,7 +109,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 #### Sample Request
 
-```{.copyWrapper}
+```http
 GET /api/portal/catalogue HTTP/1.1
 Host: localhost
 authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
@@ -102,7 +117,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 #### Sample Response
 
-```
+```json
 {
   "id":"5cc03284d07e7f00019404b4",
   "org_id":"5cc03283d07e7f00019404b3",
@@ -252,7 +267,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 #### Sample Request
 
-```{.copyWrapper}
+```http
 POST /api/portal/catalogue HTTP/1.1
 Host: localhost
 authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
@@ -260,7 +275,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 #### Sample Response
 
-```
+```yaml
 {
   Response here
 }
@@ -278,7 +293,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 #### Sample Request
 
-```{.copyWrapper}
+```http
 PUT /api/portal/catalogue HTTP/1.1
 Host: localhost
 authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
@@ -286,7 +301,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 #### Sample Response
 
-```
+```yaml
 {
   Response here
 }

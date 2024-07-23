@@ -6,7 +6,7 @@
 
 *   `name`: Human readable name of the API. It is used for identification purposes but does not act as an index.
 
-*   `slug`: The URL segment that will map to this API, e.g. if set to widgets then the full API URL will be `https://your-organisation.cloud.tyk.io/widgets`.
+*   `slug`: The URL segment that will map to this API, e.g. if set to widgets then the full API URL will be `https://your-organization.cloud.tyk.io/widgets`.
 
 *   `api_id`: The identifier for the API This should be unique, but can actually be any kind of string. For single-instance setups this can probably be set to `1`. It is recommended to make this a UUID. The `api_id` is used when querying the Tyk REST API for configuration details.
 

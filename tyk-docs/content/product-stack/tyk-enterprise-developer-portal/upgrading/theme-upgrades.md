@@ -28,7 +28,7 @@ The `main` branch contains code corresponding to the latest stable release. If y
 git checkout tags/1.8.3 -b my-custom-theme branch
 ```
 
-To organise local development in a way that facilitates seamless theme updates using git merge, follow the steps below:
+To organize local development in a way that facilitates seamless theme updates using git merge, follow the steps below:
 1. Fork the `portal-default-theme` repo in [github](https://github.com/TykTechnologies/portal-default-theme).
    {{< img src="/img/dashboard/portal-management/enterprise-portal/fork-portal-theme-repo.png" alt="Fork the portal-theme repo" >}}
 
