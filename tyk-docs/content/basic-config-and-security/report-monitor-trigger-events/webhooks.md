@@ -9,7 +9,7 @@ aliases:
 
 A webhook is a mechanism for real-time, event-driven communication between different systems or applications over the internet. It is an HTTP callback, typically an HTTP POST request that occurs when something happens. Webhooks are real-time, automated and lightweight. Notifications are sent immediately when events occur without the need for the receiving service to poll.
 
-In the context of Tyk Gateway, webhooks are event handlers that can be registered against API Events. The webhook will be triggered when the corresponding event is fired and will send a customisable fixed payload to any open endpoint.
+In the context of Tyk Gateway, webhooks are event handlers that can be registered against API Events. The webhook will be triggered when the corresponding event is fired and will send a customizable fixed payload to any open endpoint.
 
 ## When to use webhook event handlers
 
