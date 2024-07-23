@@ -22,7 +22,7 @@ To enable quota monitoring you will need to add a new `monitor` section to your 
 
 This has the following fields:
 - `enable_trigger_monitors`: set to `true` to have the monitors start to measure quota thresholds
-- `configuration`: a [webhook configuration](basic-config-and-security/report-monitor-trigger-events/webhooks) object
+- `configuration`: a [webhook configuration]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) object
 - `global_trigger_limit`: this is a percentage of the quota that the user must consume for the webhook to be fired
 - `monitor_user_keys`: set to `true` to monitor individual tokens, note that this may result in a large amount of webhooks
 - `monitor_org_keys`: set to `true` to have global organisation quotas monitored
