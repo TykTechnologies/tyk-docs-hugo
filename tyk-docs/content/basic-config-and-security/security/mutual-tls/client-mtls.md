@@ -115,5 +115,5 @@ Key points:
 {{< note success >}}
 **Note**
 
-Root CA certificates works only with [static mTLS]({{<ref "#static-mtls" >}} and is not compatible with dynamic  [dynamic mTLS]({{<ref "#dynamic-client-mtls" >}}).
+Root CA certificates work only with [static mTLS]({{<ref "#static-mtls" >}}) and are not compatible with dynamic  [dynamic mTLS]({{<ref "#dynamic-client-mtls" >}}).
 {{< /note >}}
