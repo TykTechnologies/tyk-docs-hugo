@@ -1,6 +1,6 @@
 ---
 title:  The Complete Docker Tyk Demo
-tags: ["Tyk Tutorials", "Getting Started", "PoC", "Proof of Concept", "Tyk PoC", "docker", "Self Managed", "Open Source", "demo", "Tyk demo", "Tyk quick start", "What is Tyk Demo", "Tyk Demo Deployments" ]
+tags: ["Tyk Tutorials", "Getting Started", "PoC", "Proof of Concept", "Tyk PoC", "docker", "Self Managed", "Open Source", "demo", "Tyk demo", "Tyk quick start", "What is Tyk Demo", "Tyk Demo Deployments", "Tyk Demo Videos" ]
 description: "Learn to deploy and run a Tyk deployment in minutes on Docker"
 menu:
     main:
