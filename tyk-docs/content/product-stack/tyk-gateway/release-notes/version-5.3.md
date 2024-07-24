@@ -112,16 +112,16 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
  <details>
- <summary>Add changelog summary</summary>
+ <summary>Optimised Key Creation to Reduce Redundant Redis Commands</summary>
 
-Add changelog description here
+Addressed an issue where creating or resetting a key caused an exponential number of Redis DeleteRawKey commands. Previously, the key creation sequence repeated for every API in the access list, leading to excessive deletion events, especially problematic for access lists with over 100 entries. Now, the key creation sequence executes only once, and redundant deletion of non-existent keys in Redis has been eliminated, significantly improving performance and stability for larger access lists.
 </details>
 </li>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Resolved SSE Streaming Issue</summary>
 
-Add changelog description here
+Fixed a bug that caused Server Side Event (SSE) streaming responses to be considered for caching, which required buffering the response and prevented SSE from being correctly proxied.
 </details>
 </li>
 </ul>
