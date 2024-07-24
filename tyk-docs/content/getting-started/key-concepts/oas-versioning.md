@@ -9,7 +9,7 @@ API versioning is a crucial practice in API development and management that allo
 
 When working with Tyk OAS APIs, each version of an API has its own API definition. This means that there is complete flexibility to configure each version differently from the others.
 
-API versioning is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
+API versioning is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}). You can do this via the Tyk Dashboard API (by creating/updating the API definition via the /apis/oas POST handler) or in the API Designer. 
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "getting-started/key-concepts/versioning" >}}) page.
 
@@ -27,11 +27,11 @@ This means that you could limit access to the [Base API](#base-and-child-apis) (
 
 ### Base and child APIs
 
-Tyk OAS introduces the concept of a **Base API**, which acts as a "parent" API version that acts as a router for requests to the different versions of the API. The Base API definition stores the information required for Tyk Gateway to locate and route requests to the appropriate "child" API version.
+Tyk OAS introduces the concept of a **Base API**, which acts as a "parent" API version that routes requests to the different versions of the API. The Base API definition stores the information required for Tyk Gateway to locate and route requests to the appropriate "child" API version.
 
 The "child" versions do not have any reference back to the "parent" and so can operate completely independently if required. Typically, and we recommend, the "child" versions should be configured as [Internal APIs]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#state" >}}) that are not directly reachable by clients outside Tyk.
 
-The Base API is a working version of the API and is usually the only one configured as an *External API*, so that client requests are handled (and routed) according to the configuration set in the Base API.
+The Base API is a working version of the API and is usually the only one configured as an *External API*, so that client requests are handled (and routed) according to the configuration set in the Base API (via the version identifier included in the header,url or query parameter).
 
 Note that any version (including the Base API) can be set as *default* for [access control](#controlling-access-to-tyk-oas-api-versions) and [default fallback]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#default-api-version" >}}).
 
@@ -42,10 +42,10 @@ You can configure a Tyk OAS API as a [Base API](#base-and-child-apis) by adding 
 The `versioning` [object]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#versioning" >}}) has the following configuration:
 - `enabled`: enable versioning
 - `name`: an identifier for this version of the API, for example `default` or `v1`
-- `default`: the `name` of the API definition that shall be treated as *default* (for [access control](#ccontrolling-access-to-tyk-oas-api-versions) and [default fallback]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#default-api-version" >}})); if the base API is to be used as the default then you can instead use the value `self` in this field
+- `default`: the `name` of the API definition that shall be treated as *default* (for [access control](#controlling-access-to-tyk-oas-api-versions) and [default fallback]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#default-api-version" >}})); if the base API is to be used as the default then you can instead use the value `self` in this field
 - `location`: used to configure where the versioning identifier should be provided: `header`, `url`, `url-param`
 - `key`: the versioning identifier key used if `location` is set to `header` or `url-param`
-- `versions`: a list of key-value pairs storing details of the *child APIs*
+- `versions`: a list of key-value pairs storing details of the *child APIs*; for example `[{"id": "08062e93127843ca76add614e766b0e4", "name": "exampleVersion"}]`
 - `fallbackToDefault`: set to `true` for Tyk to [invoke the default version]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#fallback-to-default" >}}) if an invalid version is requested
 - `stripVersioningData`: set to `true` for Tyk to [remove the versioning identifier]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-version-identifier" >}}) prior to creating the upstream (target) URL
 - `urlVersioningPattern`: configure this with a regex that matches the format that you use for the versioning identifier (`name`) if you are using `stripVersioningData` and `fallBackToDefault` with `location=url` [with Tyk 5.5.0 or later]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-url-path-version-and-default-fallback" >}})
@@ -151,7 +151,7 @@ Select **Create Version**
 
 ##### Step 2: Configure the new version
 
-You'll be taken to the API designer view for the new version - remember that this will be a completely separate Tyk OAS API Definition for the new version. By default, Tyk Dashboard will have given this API the same name as the original, appending the *version name* that you assigned in [step 1](#step-1-create-a-new-api-version).
+You'll be taken to the API designer view for the new version - remember that this will be a completely separate Tyk OAS API Definition for the new version. By default, Tyk Dashboard will have given this API the same name as the original, appending the *version name* that you assigned in [step 1](#step-1-create-the-new-version).
 
 Tyk will have set the *Access* to *Internal*, so that this version cannot be directly accessed by clients, only via the original (base) API.
 

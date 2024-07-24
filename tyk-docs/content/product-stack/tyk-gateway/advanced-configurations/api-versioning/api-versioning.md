@@ -69,7 +69,7 @@ Here's a comparison of some of the features that can be configured per-version (
 Tyk supports three different locations where the client can indicate which version of an API they wish to invoke with their request:
 - [URL path](#request-url-path)
 - [Query parameter](#query-parameter)
-- [Request heade](#request-header)
+- [Request header](#request-header)
 
 When choosing a version identifier location, consider your API design philosophy, infrastructure requirements, client needs, caching strategy, and backward compatibility concerns. Whichever method you choose, aim for consistency across your API portfolio to provide a uniform experience for your API consumers.
 

@@ -29,26 +29,26 @@ When using Tyk Classic APIs there are some subtleties to the propagation of acce
 The configuration for a new version of a Tyk Classic API is contained in the `version_data` section within the API definition.
 
 This has the following configuration:
-- `not_versioned`: set to `true` to treat this as a versioned API
+- `not_versioned`: set to `false` to treat this as a versioned API
 - `default_version`: this must contain the `name` of the version that shall be treated as `default` (for [access control](#controlling-access-to-tyk-classic-api-versions) and [default fallback]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#default-api-version" >}}))
 - `versions`: a list of objects that describe the versions of the API; there must be at least one (default) version defined for any API (even non-versioned APIs)
 
 To add an API version, you must add a new entry in the `versions` list:
 - `name`: an identifier for this version of the API, for example `default` or `v1`
-- `expires`: an optional expiry date for the API after which Tyk will reject any access request
+- `expires`: an optional expiry date for the API after which Tyk will reject any access request; accepted format is `2006-01-02 15:04`
 - `paths`: location for configuration of endpoint [ignore]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}), [allow]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}}) and [block]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware" >}}) lists
 - `use_extended_paths`: set to `true` to enable the `extended_paths` config
 - `extended_paths`: location for configuration of additional [endpoint-level middleware]({{< ref "advanced-configuration/transform-traffic" >}})
-- `global_*`: configuration of [API-level middleware]({{< ref "advanced-configuration/transform-traffic" >}}) 
+- `global_*`: configuration of [API-level middleware]({{< ref "advanced-configuration/transform-traffic" >}}). The wildcard can be replaced by any of the API-level settings e.g. `global_size_limit`
 - `override_target`: alternative upstream (target) URL that should be used for this version, overriding the `target_url` configured in the `proxy` [section]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/proxy-settings#proxytarget_url" >}}) of the API definition; this can be used to redirect to a different hostname or domain if required
 
 There is also some API-level configuration for versioning, which is located in the `definition` section of the Tyk Classic API definition:
 
 The `definition` section has the following fields:
-- `default`: not used by versioning
-- `enabled`: not used by versioning
-- `name`: not used by versioning
-- `strip_path`: not used by versioning
+- `default`: the default version of the API (this is the same as `default_version` in `version_data`); if left empty this will be automatically replaced with "self" and will point to the original API definition
+- `enabled`: toggle to enable or disable versioning
+- `name`: the chosen name for the version
+- `strip_path`: deprecated field, use `strip_versioning_data` instead
 - `location`: used to configure where the versioning identifier should be provided: `header`, `url`, `url-param`
 - `strip_versioning_data`: set to `true` for Tyk to [remove the versioning identifier]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-version-identifier" >}}) prior to creating the upstream (target) URL)
 - `fallback_to_default`: set to `true` for Tyk to [invoke the default version]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#fallback-to-default" >}}) if an invalid version is requested
@@ -174,7 +174,7 @@ In this example, there are two versions of the API
 
 ## Configuring API versioning in the API Designer
 
-When you first create a Tyk Classic API, it will not be "versioned" (i.e. `not_versioned` will be set to `true`) and there will be a single `Default` version created in the `version_data` section of the API definition (for explanation of these fields, please see [above](#configuring-api-versioning-in-the-tyk-classic-api-definition)).
+When you first create a Tyk Classic API, it will not be "versioned" (i.e. `not_versioned` will be set to `true`) and there will be a single `Default` version created in the `version_data` section of the API definition (for explanation of these fields, please see [above](#configuring-api-versioning-in-the-tyk-classic-api-definition)). The statement above holds only when designing an API "from scratch" as when importing an OAS API the versioning functionality is enabled by default.
 
 ### Creating a versioned API
 
