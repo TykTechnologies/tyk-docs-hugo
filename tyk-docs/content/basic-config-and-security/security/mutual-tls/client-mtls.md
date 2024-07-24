@@ -103,4 +103,17 @@ From a technical point of view, this is an extension of Auth token authenticatio
 
 You can do this ONLY through the manual "Create A Key" flow as an Admin Dashboard user.  Through the Portal, you must ONLY paste the contents of the public key, or cert as it is typically called.
 
+#### Can I register a root Certificate Authority (CA) certificate with Tyk so that Tyk will validate requests with certificates signed by this CA?
 
+Yes, you can upload a root CA certificate as a client certificate for static mTLS authentication. This configuration will allow clients presenting certificates signed by that CA to be validated.
+
+Key points:
+1. The root CA certificate can be used as a client certificate, simply upload it to Tyk as you would a client certificate.
+2. Clients with certificates signed by this CA will be accepted.
+3. During verification, Tyk gateway traverses the certificate chain for validation.
+
+{{< note success >}}
+**Note**
+
+Root CA certificates works only with [static mTLS]({{<ref "#static-mtls" >}} and is not compatible with dynamic  [dynamic mTLS]({{<ref "#dynamic-client-mtls" >}}).
+{{< /note >}}
