@@ -256,7 +256,7 @@ It is possible to perform a health check on the MDCB service. This allows you to
 
 Health checks are available via the HTTP port. This is defined by `http_port` configuration setting and defaults to `8181`. Do **not** use the standard MDCB listen port (`listen_port`) for MDCB health checks.
 
-From MDCB v2.7.0, there are 2 health check services available.
+From MDCB v2.7.0, there are 2 health check services available:
 1. `/liveness` endpoint returns a `HTTP 200 OK` response when the service is operational.
 2. `/readiness` endpoint returns a `HTTP 200 OK` response when MDCB is ready to accept request. It ensures that dependent components such as Redis and data store are connected, and grpc server is ready for connection.
 
