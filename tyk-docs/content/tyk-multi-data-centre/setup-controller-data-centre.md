@@ -254,7 +254,7 @@ sudo systemctl enable tyk-sink
 
 It is possible to perform a health check on the MDCB service. This allows you to determine if the service is running, so is useful when using MDCB with load balancers.
 
-Health checks is available via the HTTP port. This is defined by `http_port` configuration setting, and defaults to `8181`. Do **not** use the standard MDCB listen port (`listen_port`) for MDCB health checks.
+Health checks are available via the HTTP port. This is defined by `http_port` configuration setting and defaults to `8181`. Do **not** use the standard MDCB listen port (`listen_port`) for MDCB health checks.
 
 From MDCB v2.7.0, there are 2 health check services available.
 1. `/liveness` endpoint returns a `HTTP 200 OK` response when the service is operational.
