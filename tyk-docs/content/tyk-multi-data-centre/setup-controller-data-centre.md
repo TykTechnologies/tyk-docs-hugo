@@ -326,25 +326,35 @@ May 06 11:50:42 master tyk-sink[1798]: time="2018-05-06T11:50:42Z" level=info ms
 
 From MDCB v2.7.0, a secured HTTP endpoint `/config` can be enabled that allows you to query configuration of MDCB.
 
-To enable the secured HTTP endpoint, make sure you have following config:
+To enable the secured HTTP endpoint, make sure you have the following in your `/opt/tyk-sink/tyk_sink.conf` config file.
 
 ```json
 {
-  "security.enable_http_secure_endpoints": true,
-  "security.secret": "<secured-endpoint-secret>"
+  "security": {
+    "enable_http_secure_endpoints": true,
+    "secret": "<secured-endpoint-secret>"
+  },
+  "http_server_options": {
+    "use_ssl": true,
+    "certificate": {
+      "cert_file": ...,
+      "key_file": ...,
+      "min_version": ...
+    }
+  }
 }
 ```
 
 Subsequently, you can issue a request to the `/config` endpoint to return a json representation of your MDCB config:
 
 ```bash
-curl -H "x-tyk-authorization: <secured-endpoint-secret>" http://my-mdcb-host:8181/config
+curl -H "x-tyk-authorization: <secured-endpoint-secret>" https://my-mdcb-host:8181/config
 ```
 
 Alternatively, you can issue a request to the `/env` endpoint to return your MDCB config in the form of environment variables settings:
 
 ```bash
-curl -H "x-tyk-authorization: <secured-endpoint-secret>" http://my-mdcb-host:8181/env
+curl -H "x-tyk-authorization: <secured-endpoint-secret>" https://my-mdcb-host:8181/env
 ```
 
 ## Gateway configuration
