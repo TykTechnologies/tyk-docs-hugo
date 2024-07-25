@@ -73,7 +73,19 @@ Add upgrade steps here if necessary.
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
 -->
-Add release highlights here
+We are excited to announce Tyk Dashboard 5.5, featuring a brand-new dashboard identity, advanced rate-limiting capabilities, and enhanced security options. For a comprehensive list of changes, please refer to the change log below.
+
+### New Dashboard brand identity
+
+Experience a refreshed and modern look with our updated dashboard brand identity. The new design enhances usability and provides a cleaner, more intuitive interface for managing your APIs.
+
+### Implemented Upstream Endpoint rate limits
+
+ Introduced new controls to configure rate limits at the endpoint level for both Tyk OAS and Tyk Classic APIs. This feature allows for more granular protection of upstream services from abuse, similar to Tyk’s traditional 'API-level' or 'Global' rate limits but applied specifically at the endpoint level.
+
+### Root CA support for client certificate authentication
+
+We've added support for using root Certificate Authority (CA) certificates as client certificates in API definitions. This enhancement simplifies certificate management by allowing the system to authenticate clients with certificates signed by the configured root CA, applicable for static mutual TLS (mTLS) configurations only.
 
 ### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.5.0)
@@ -98,16 +110,34 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Dashboard support for upstream endpoint rate limits Added</summary>
 
-Add changelog description
+Introduced a UI for configuring the new upstream endpoint rate limit middleware in the OAS Designer.
+</details>
+</li>
+<details>
+<summary>Enhancement: Root CA Support for client certificate authentication</summary>
+
+We've added support for using root Certificate Authority (CA) certificates as client certificates in API definitions. The system now authenticates clients with certificates signed by the configured root CA, simplifying certificate management for multiple clients sharing a common CA. This functionality is available for static mutual TLS (mTLS) configurations only.
+</details>
+</li>
+<details>
+<summary> Implemented upstream endpoint rate limits</summary>
+
+Added new controls to configure rate limits at the endpoint level for both Tyk OAS and Tyk Classic APIs. This feature aims to protect upstream services from abuse, providing the same functionality as Tyk’s traditional 'API-level' or 'Global' rate limits but at a more granular level.
+</details>
+</li>
+<details>
+<summary>Updated NPM packages for React v18</summary>
+
+Updated npm packages for the Dashboard UI application to support React v18.
 </details>
 </li>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Improved Schema editor functionality for GQL APIs</summary>
 
-Add changelog description
+We've expanded the functionality of the schema editor for GQL APIs. Users can now easily import their schema from a file, export it, or quickly clean the entire editor if a mistake is made.
 </details>
 </li>
 </ul>
@@ -122,16 +152,16 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Resolved SSE streaming issue</summary>
 
-Add changelog description
+Addressed a bug that caused Server Side Event (SSE) streaming responses to be considered for caching, which required buffering the response and prevented SSE from being correctly proxied.
 </details>
 </li>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Public playground schema exposure fixed with Introspection disabled</summary>
 
-Add changelog description
+Resolved an issue where the Public GQL Playground displayed schema information despite introspection being turned off. Now, schema details are hidden unless valid authentication credentials are provided, ensuring a secure and consistent user experience.
 </details>
 </li>
 </ul>
