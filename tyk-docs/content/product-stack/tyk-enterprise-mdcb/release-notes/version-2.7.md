@@ -1,5 +1,5 @@
 ---
-title: Tyk MDCB v2.6 Release Notes
+title: Tyk MDCB v2.7 Release Notes
 description: "Tyk Multi Data-Center Bridge v2.6 release notes"
 tags: ["release notes", "MDCB", "Tyk Multi Data-Center", "Tyk Multi Data-Center", "v2.6", "2.6"]
 aliases:
@@ -50,10 +50,10 @@ If you are using a 2.5.x version, we advise you to upgrade ASAP to this latest r
 
 #### Release Highlights
 
-##### Tyk v5.4 Compatibility
-MDCB 2.6.0 is an update for compatibility for synchronisation with Tyk v5.4 API Definitions.
+##### Tyk v5.5 Compatibility
+MDCB 2.7.0 is an update for compatibility for synchronisation with Tyk v5.5 API Definitions.
 
-##### Comprehensive Data Plane Node Information
+##### Healthcheck and config...
 MDCB 2.6 introduces a new `/dataplanes` endpoint that provides a comprehensive view of all data plane nodes connected to MDCB, including crucial metadata and status information for each node. The admin secret is required in the header to access these information.
 
 Please refer to the [changelog]({{< ref "#Changelog-v2.6.0">}}) below.
