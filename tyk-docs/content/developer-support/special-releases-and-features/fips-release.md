@@ -10,56 +10,34 @@ description: "Explain what FIPS Release means, what it includes, and what to exp
  2. Do we want to detail which distros we support?
 -->
 
-FIPS (Federal Information Processing Standards) is a series of cryptography and hashing standards defined by the U.S.
-Federal Government for ensuring cybersecurity. These standards are crucial for organizations dealing with sensitive
-government data and are widely recognized as a benchmark for security in various regulated industries.
+FIPS (Federal Information Processing Standards) is a series of cryptography and hashing standards defined by the U.S. Federal Government for ensuring cybersecurity. These standards are crucial for organizations dealing with sensitive government data and are widely recognized as a benchmark for security in various regulated industries.
 
-The Federal Information Processing Standard (FIPS) 140-2 is a federal standard defined by the National Institute of
-Standards and Technology (NIST). It specifies the security requirements that must be satisfied by a cryptographic module.
+The Federal Information Processing Standard (FIPS) 140-2 is a federal standard defined by the National Institute of Standards and Technology (NIST). It specifies the security requirements that must be satisfied by a cryptographic module.
 
 ## FIPS 140-2 Overview
 
-[FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) is a specific standard within the FIPS framework
-that focuses on the security of cryptographic modules. It defines four levels of security, from Level 1 (lowest) to
-Level 4 (highest), each building upon the security requirements of the previous level. These levels are intended to cover
-the wide range of potential applications and environments in which cryptographic modules may be employed. A cryptographic
-module, as defined by FIPS 140-2, is a set of hardware, software, firmware, or some combination thereof that implements
-cryptographic functions or processes, including cryptographic algorithms and optional key generation, and is contained
-within a defined cryptographic boundary.
+[FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) is a specific standard within the FIPS framework that focuses on the security of cryptographic modules. It defines four levels of security, from Level 1 (lowest) to Level 4 (highest), each building upon the security requirements of the previous level. These levels cover a wide range of potential applications and environments in which cryptographic modules may be employed. A cryptographic module, as defined by FIPS 140-2, is a set of hardware, software, firmware, or some combination thereof that implements cryptographic functions or processes, including cryptographic algorithms and optional key generation, and is contained within a defined cryptographic boundary.
 
-FIPS 140-2 validation is performed by accredited [Cryptographic and Security Testing](https://csrc.nist.rip/Projects/cryptographic-module-validation-program/Standards#:~:text=FIPS%20140%2D2%20(effective%2015%2DNov%2D2001)&text=NVLAP%20accredited%20Cryptographic%20and%20Security,for%20Cryptographic%20Modules%20%5B%20PDF%20%5D.)
-(CST) laboratories. The validation covers various aspects of the cryptographic module, e.g. Electromagnetic
-Interference/Electromagnetic Compatibility (EMI/EMC), Cryptographic Module Specification, mitigation of Other Attacks
-and more.
+FIPS 140-2 validation is performed by accredited [Cryptographic and Security Testing](https://csrc.nist.rip/Projects/cryptographic-module-validation-program/Standards#:~:text=FIPS%20140%2D2%20(effective%2015%2DNov%2D2001)&text=NVLAP%20accredited%20Cryptographic%20and%20Security,for%20Cryptographic%20Modules%20%5B%20PDF%20%5D.) (CST) laboratories. The validation covers various aspects of the cryptographic module, including Electromagnetic Interference/Electromagnetic Compatibility (EMI/EMC), Cryptographic Module Specification, and mitigation of Other Attacks.
 
-For more details on the [importance on FIPS compliance]({{<ref "">}})
+For more details on the [importance of FIPS compliance]({{<ref "">}})
 
 ## Tyk's FIPS Compliance
 
-We are pleased to announce that Tyk Gateway and Pump now offer FIPS compliance. The FIPS Tyk Gateway and the FIPS Tyk
-Pump package (together, the *"FIPS Tyk Product"*) is FIPS 140-2 compliant.
+We are pleased to announce that Tyk Gateway and Pump now offer FIPS compliance. The FIPS Tyk Gateway and the FIPS Tyk Pump package (together, the *"FIPS Tyk Product"*) is FIPS 140-2 compliant.
 
-Previously, clients wishing to provide services to federal entities could not do so with Tyk due to lack of FIPS support.
-While Tyk could be configured to use FIPS-approved hashing and cryptography algorithms, this alone was not sufficient
-for FIPS compliance.
-To achieve FIPS compliance, our components can now be compiled with a FIPS-validated crypto/hashing library.
-Specifically, Tyk uses [BoringCrypto](https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp3678.pdf),
-the only FIPS-validated crypto/hashing library available for Go.
+To achieve FIPS compliance, our components are compiled with a FIPS-validated crypto/hashing library. Specifically, Tyk uses [BoringCrypto](https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp3678.pdf), a FIPS-validated crypto/hashing library available for Go.
 
 Note: The use of the *FIPS Tyk Product* is conditional on the user holding an active Tyk Global Enterprise license.
 
 ### The definition of "compliance"
-Compliance means that the *FIPS Tyk Product* only uses FIPS 140-2 approved algorithms while running in FIPS mode. However,
-it's important to note that the product has not been submitted to a NIST testing lab for validation. Compliance applies
-only to special built packages or docker images of the *FIPS Tyk Product* only.
+Compliance means that the *FIPS Tyk Product* only uses FIPS 140-2 approved algorithms while running in FIPS mode. However, the product has not been submitted to a NIST testing lab for validation. Compliance applies only to special built packages or docker images of the *FIPS Tyk Product*.
 
 These packages and images are not publicly accessible. You can request them by contacting your assigned account manager.
 
 ### Verification and Certification
 
-Tyk's FIPS compliance is based on the use of FIPS 140-2 validated cryptographic modules, specifically the BoringCrypto
-module. While the *FIPS Tyk Product* is compliant with FIPS 140-2, it has not undergone formal validation by a NIST testing lab.
-
+Tyk's FIPS compliance is based on the use of FIPS 140-2 validated cryptographic modules, specifically the BoringCrypto module. While the *FIPS Tyk Product* is compliant with FIPS 140-2, it has not undergone formal validation by a NIST testing lab.
 
 <!-- Find out
 Do we want to detail which distros we support?
@@ -72,20 +50,16 @@ Our FIPS Tyk Product provides a FIPS 140-2 compliant package for the following o
 
 ### FIPS-Compliant Cryptographic Operations
 
-The *FIPS Tyk Product* uses the [BoringCrypto](https://boringssl.googlesource.com/boringssl/+/master/crypto/fipsmodule/FIPS.md#fips-140_2)
-module to provide FIPS 140-2 validated cryptographic operations. This ensures that when running in FIPS mode, only FIPS
-140-2 approved algorithms are used.
+The *FIPS Tyk Product* uses the [BoringCrypto](https://boringssl.googlesource.com/boringssl/+/master/crypto/fipsmodule/FIPS.md#fips-140_2) module to provide FIPS 140-2 validated cryptographic operations. This ensures that when running in FIPS mode, only FIPS 140-2 approved algorithms are used.
 
-For more details on the cryptographic operations supported in Tyk's FIPS-compliant mode, please contact your Tyk account
-manager.
+For more details on the cryptographic operations supported in Tyk's FIPS-compliant mode, please contact your Tyk account manager.
 
 ## Configuring Tyk for FIPS Compliance
 
 <!-- Find out
 Anything we want to add?
 -->
-Detailed configuration instructions will be provided upon release of the FIPS-compliant versions, when delivering the
-packages.
+Detailed configuration instructions will be provided upon release of the FIPS-compliant versions, when delivering the packages.
 
 <!-- Find out about Limitations
 
@@ -114,19 +88,15 @@ Q: Does FIPS mode affect Tyk's performance?
 A: There may be a slight performance impact due to the use of FIPS-approved algorithms, but this is generally minimal.
 -->
 
-## 1Additional Resources
+## Additional Resources
 
 - [Official NIST FIPS 140-2 documentation](https://csrc.nist.gov/publications/detail/fips/140/2/final)
 
 For more information on FIPS compliance in Tyk, please contact our support team or your account manager.
 
+## API Management
 
-## API Mamangement
-
-FIPS validation is a prerequisite for gaining FedRAMP (Federal Risk and Authorization Management Program) authorization.
-FedRAMP authorization serves as a "seal of approval" required for providing cloud services to many government entities.
-
-
+FIPS validation is a prerequisite for gaining FedRAMP (Federal Risk and Authorization Management Program) authorization. FedRAMP authorization serves as a "seal of approval" required for providing cloud services to many government entities.
 
 ## Importance of FIPS Compliance
 
@@ -151,13 +121,13 @@ FIPS compliance is particularly important in API management for several reasons:
 
 1. **Security of Data in Transit:** API management often involves handling sensitive data as it moves between clients
 and backend services. FIPS compliance ensures that this data is encrypted using approved, robust cryptographic algorithms.
-2. **Authentication and Authorization:** API gateways typically handle user authentication and authorization.
-FIPS-compliant cryptographic modules ensure these processes are performed securely, using approved methods for key
-generation, storage, and cryptographic operations.
+2. **Authentication and Authorization:** API gateways typically handle user authentication and authorization. FIPS-compliant
+cryptographic modules ensure these processes are performed securely, using approved methods for key generation, storage,
+and cryptographic operations.
 3. **Regulatory Compliance:** For organizations working with U.S. government agencies or in regulated industries, using
 a FIPS-compliant API management solution can be a requirement to meet regulatory standards.
-4. **Key Management:** API keys and other secrets used in API management need to be securely generated, stored, and
-managed. FIPS provides standards for these cryptographic operations.
+4. **Key Management:** API keys and other secrets used in API management need to be securely generated, stored, and managed.
+FIPS provides standards for these cryptographic operations.
 5. **SSL/TLS Implementation:** API gateways often terminate SSL/TLS connections. FIPS compliance ensures that these
 connections use approved protocols and cipher suites.
 6. **Logging and Auditing:** FIPS compliance can extend to how API activity logs are stored and protected, which is a
