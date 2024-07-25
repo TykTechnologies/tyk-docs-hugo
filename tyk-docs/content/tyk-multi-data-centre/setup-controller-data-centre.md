@@ -254,11 +254,19 @@ sudo systemctl enable tyk-sink
 
 It is possible to perform a health check on the MDCB service. This allows you to determine if the service is running, so is useful when using MDCB with load balancers.
 
-MDCB uses a specific port for health checks. This is defined by the `healthcheck_port` configuration setting, and defaults to `8181`. Do **not** use the standard MDCB listen port (`listen_port`) for MDCB health checks.
+Health checks is available via the HTTP port. This is defined by `http_port` configuration setting, and defaults to `8181`. Do **not** use the standard MDCB listen port (`listen_port`) for MDCB health checks.
+
+From MDCB v2.7.0, there are 2 health check services available.
+1. `/liveness` endpoint returns a `HTTP 200 OK` response when the service is operational.
+2. `/readiness` endpoint returns a `HTTP 200 OK` response when MDCB is ready to accept request. It ensures that dependent components such as Redis and data store are connected, and grpc server is ready for connection.
+
+See [MDCB API]({{<ref "tyk-mdcb-api">}}) for details of the endpoints.
+
+In MDCB v2.6.0 or earlier, MDCB only offers one health check endpoint at `/health` via port defined by the `healthcheck_port` configuration setting. The default port is `8181`.
 
 To use the health check service, call the `/health` endpoint i.e. `http://my-mdcb-host:8181/health`. This will return a `HTTP 200 OK` response if the service is running.
 
-Please note that currently, the receipt of an HTTP 200 OK response merely indicates that the MDCB service is operational. However, it is important to note that the service may not yet be ready for use if it is unable to establish a connection with its dependent components (such as Redis and Data store) or if they are offline.
+Please note that an HTTP 200 OK response from `/health` endpoint merely indicates that the MDCB service is operational. However, it is important to note that the service may not yet be ready for use if it is unable to establish a connection with its dependent components (such as Redis and Data store) or if they are offline. Upgrade to v2.6.0 and later to have more accurate health checking.
 
 ## Troubleshooting
 
