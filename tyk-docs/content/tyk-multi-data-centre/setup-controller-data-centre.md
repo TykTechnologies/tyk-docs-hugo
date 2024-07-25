@@ -341,7 +341,7 @@ Subsequently, you can issue a request to the `/config` endpoint to return a json
 curl -H "x-tyk-authorization: <secured-endpoint-secret>" http://my-mdcb-host:8181/config
 ```
 
-Alternatively, you can query MDCB config at `/env` to return config in the form of environment variables settings
+Alternatively, you can issue a request to the `/env` endpoint to return your MDCB config in the form of environment variables settings:
 
 ```bash
 curl -H "x-tyk-authorization: <secured-endpoint-secret>" http://my-mdcb-host:8181/env
