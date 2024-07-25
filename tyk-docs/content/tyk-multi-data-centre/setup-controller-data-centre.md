@@ -324,7 +324,7 @@ May 06 11:50:42 master tyk-sink[1798]: time="2018-05-06T11:50:42Z" level=info ms
 
 #### Check MDCB configurations
 
-From MDCB v2.7.0, a secured HTTP endpoint `/config` can be enabled that allow you to query configuration of MDCB.
+From MDCB v2.7.0, a secured HTTP endpoint `/config` can be enabled that allows you to query configuration of MDCB.
 
 To enable the secured HTTP endpoint, make sure you have following config:
 
