@@ -42,7 +42,7 @@ paths:
                   type: array
                   items:
                     $ref: "#/components/schemas/Node"
-        "403":
+        "401":
           description: Forbidden access due to invalid or missing administrative key.
           content:
             application/json:
@@ -96,6 +96,25 @@ paths:
               schema:
                 type: string
                 format: binary
+  /config:
+    get:
+      summary: Retrieve current configuration status
+      description: >
+        Returns the current configuration status of the system.
+      operationId: configGet
+      responses:
+        "200":
+          description: Successful retrieval of the current configuration.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ConfigStatus"
+        "401":
+          description: Forbidden access due to invalid or missing administrative key.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     Node:
@@ -174,8 +193,381 @@ components:
         error:
           type: string
           example: "Attempted administrative access with invalid or missing key!"
-
-    
+    ConfigStatus:
+      type: object
+      properties:
+        listen_port:
+          type: integer
+          example: 9090
+        healthcheck_port:
+          type: integer
+          example: 8180
+        http_port:
+          type: integer
+          example: 8180
+        enable_http_profiler:
+          type: boolean
+          example: false
+        server_options:
+          type: object
+          properties:
+            use_ssl:
+              type: boolean
+              example: false
+            certificate:
+              type: object
+              properties:
+                cert_file:
+                  type: string
+                  example: "./server.crt"
+                key_file:
+                  type: string
+                  example: "./server.key"
+            min_version:
+              type: integer
+              example: 0
+            ssl_ciphers:
+              type: string
+              nullable: true
+            ssl_certificates:
+              type: string
+              nullable: true
+        http_server_options:
+          type: object
+          properties:
+            use_ssl:
+              type: boolean
+              example: false
+            certificate:
+              type: object
+              properties:
+                cert_file:
+                  type: string
+                  example: ""
+                key_file:
+                  type: string
+                  example: ""
+            min_version:
+              type: integer
+              example: 0
+            ssl_ciphers:
+              type: string
+              nullable: true
+            ssl_certificates:
+              type: string
+              nullable: true
+        security:
+          type: object
+          properties:
+            private_certificate_encoding_secret:
+              type: string
+              example: ""
+            enable_http_secure_endpoints:
+              type: boolean
+              example: true
+            secret:
+              type: string
+              example: ""
+        storage:
+          type: object
+          properties:
+            type:
+              type: string
+              example: "redis"
+            host:
+              type: string
+              example: "localhost"
+            port:
+              type: integer
+              example: 6379
+            master_name:
+              type: string
+              example: ""
+            sentinel_password:
+              type: string
+              example: ""
+            username:
+              type: string
+              example: ""
+            password:
+              type: string
+              example: ""
+            database:
+              type: integer
+              example: 0
+            optimisation_max_idle:
+              type: integer
+              example: 0
+            optimisation_max_active:
+              type: integer
+              example: 0
+            enable_cluster:
+              type: boolean
+              example: false
+            hosts:
+              type: string
+              nullable: true
+            addrs:
+              type: string
+              nullable: true
+            redis_use_ssl:
+              type: boolean
+              example: false
+            redis_ssl_insecure_skip_verify:
+              type: boolean
+              example: false
+            debug:
+              type: boolean
+              example: false
+            timeout:
+              type: integer
+              example: 0
+            use_ssl:
+              type: boolean
+              example: false
+            ssl_insecure_skip_verify:
+              type: boolean
+              example: false
+            ca_file:
+              type: string
+              example: ""
+            cert_file:
+              type: string
+              example: ""
+            key_file:
+              type: string
+              example: ""
+            max_version:
+              type: string
+              example: ""
+            min_version:
+              type: string
+              example: ""
+        analytics:
+          type: object
+          properties:
+            type:
+              type: string
+              example: "mongo"
+            connection_string:
+              type: string
+              example: ""
+            table_sharding:
+              type: boolean
+              example: false
+            batch_size:
+              type: integer
+              example: 0
+            postgres:
+              type: object
+              properties:
+                prefer_simple_protocol:
+                  type: boolean
+                  example: false
+            mysql:
+              type: object
+              properties:
+                default_string_size:
+                  type: integer
+                  example: 0
+                disable_datetime_precision:
+                  type: boolean
+                  example: false
+                dont_support_rename_index:
+                  type: boolean
+                  example: false
+                dont_support_rename_column:
+                  type: boolean
+                  example: false
+                skip_initialize_with_version:
+                  type: boolean
+                  example: false
+            mongo_url:
+              type: string
+              example: ""
+            mongo_use_ssl:
+              type: boolean
+              example: false
+            mongo_ssl_insecure_skip_verify:
+              type: boolean
+              example: false
+            mongo_ssl_allow_invalid_hostnames:
+              type: boolean
+              example: false
+            mongo_ssl_ca_file:
+              type: string
+              example: ""
+            mongo_ssl_pem_keyfile:
+              type: string
+              example: ""
+            mongo_session_consistency:
+              type: string
+              example: ""
+            mongo_batch_size:
+              type: integer
+              example: 0
+            driver:
+              type: string
+              example: "mongo-go"
+            mongo_direct_connection:
+              type: boolean
+              example: false
+        hash_keys:
+          type: boolean
+          example: true
+        session_timeout:
+          type: integer
+          example: 0
+        forward_analytics_to_pump:
+          type: boolean
+          example: false
+        enable_multiple_analytics_keys:
+          type: boolean
+          example: false
+        dont_store_selective:
+          type: boolean
+          example: false
+        dont_store_aggregate:
+          type: boolean
+          example: false
+        org_session_expiration:
+          type: integer
+          example: 60
+        org_session_cleanup:
+          type: integer
+          example: 60
+        license:
+          type: string
+          example: ""
+        aggregates_ignore_tags:
+          type: string
+          nullable: true
+        track_all_paths:
+          type: boolean
+          example: false
+        store_analytics_per_minute:
+          type: boolean
+          example: false
+        ignore_tag_prefix_list:
+          type: string
+          nullable: true
+        threshold_len_tag_list:
+          type: integer
+          example: 1000
+        omit_analytics_index_creation:
+          type: boolean
+          example: false
+        enable_separate_analytics_store:
+          type: boolean
+          example: false
+        analytics_storage:
+          type: object
+          properties:
+            type:
+              type: string
+              example: ""
+            host:
+              type: string
+              example: ""
+            port:
+              type: integer
+              example: 0
+            master_name:
+              type: string
+              example: ""
+            sentinel_password:
+              type: string
+              example: ""
+            username:
+              type: string
+              example: ""
+            password:
+              type: string
+              example: ""
+            database:
+              type: integer
+              example: 0
+            optimisation_max_idle:
+              type: integer
+              example: 0
+            optimisation_max_active:
+              type: integer
+              example: 0
+            enable_cluster:
+              type: boolean
+              example: false
+            hosts:
+              type: string
+              nullable: true
+            addrs:
+              type: string
+              nullable: true
+            redis_use_ssl:
+              type: boolean
+              example: false
+            redis_ssl_insecure_skip_verify:
+              type: boolean
+              example: false
+            debug:
+              type: boolean
+              example: false
+            timeout:
+              type: integer
+              example: 0
+            use_ssl:
+              type: boolean
+              example: false
+            ssl_insecure_skip_verify:
+              type: boolean
+              example: false
+            ca_file:
+              type: string
+              example: ""
+            cert_file:
+              type: string
+              example: ""
+            key_file:
+              type: string
+              example: ""
+            max_version:
+              type: string
+              example: ""
+            min_version:
+              type: string
+              example: ""
+        log_level:
+          type: string
+          example: "info"
+        enable_key_logging:
+          type: boolean
+          example: false
+        sync_worker_config:
+          type: object
+          properties:
+            enabled:
+              type: boolean
+              example: true
+            hash_keys:
+              type: boolean
+              example: true
+            max_batch_size:
+              type: integer
+              example: 1000
+            time_between_batches:
+              type: integer
+              example: 3
+            max_workers:
+              type: integer
+              example: 1000
+            warmup_time:
+              type: integer
+              example: 0
+            group_key_ttl:
+              type: integer
+              example: 30
+        enable_ownership:
+          type: boolean
+          example: false
   securitySchemes:
     api_key:
       in: header
