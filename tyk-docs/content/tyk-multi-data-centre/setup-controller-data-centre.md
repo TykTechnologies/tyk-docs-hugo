@@ -322,6 +322,31 @@ May 06 11:50:38 master tyk-sink[1798]: time="2018-05-06T11:50:38Z" level=info ms
 May 06 11:50:42 master tyk-sink[1798]: time="2018-05-06T11:50:42Z" level=info msg="Ping!"
 ```
 
+#### Check MDCB configurations
+
+From MDCB v2.7.0, a secured HTTP endpoint `/config` can be enabled that allow you to query configuration of MDCB.
+
+To enable the secured HTTP endpoint, make sure you have following config:
+
+```json
+{
+  "security.enable_http_secure_endpoints": true,
+  "security.secret": "<secured-endpoint-secret>"
+}
+```
+
+Then you can query MDCB config at `/config` to return a json representation of MDCB config
+
+```bash
+curl -H "x-tyk-authorization: <secured-endpoint-secret>" http://my-mdcb-host:8181/config
+```
+
+Alternatively, you can query MDCB config at `/env` to return config in the form of environment variables settings
+
+```bash
+curl -H "x-tyk-authorization: <secured-endpoint-secret>" http://my-mdcb-host:8181/env
+```
+
 ## Gateway configuration
 
 Before a worker gateway can connect to MDCB, it is important to enable the organization that owns all the APIs to be distributed to be allowed to utilize Tyk MDCB. To do this, the organization record needs to be modified with two flags using the [Tyk Dashboard Admin API](https://tyk.io/docs/dashboard-admin-api/).

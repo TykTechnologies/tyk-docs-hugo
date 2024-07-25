@@ -31,7 +31,7 @@ Environment variables (env var) can be used to override the settings defined in 
 |Management API           |      8080      |
 |**MDCB**                 |                |
 |RPC Listen               |      9091      |
-|Healthcheck              |      8181      |
+|HTTP                     |      8181      |
 
 
 {{< include "mdcb-config.md" >}}
