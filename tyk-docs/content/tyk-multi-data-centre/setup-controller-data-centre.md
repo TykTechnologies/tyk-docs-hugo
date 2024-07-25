@@ -262,7 +262,7 @@ From MDCB v2.7.0, there are 2 health check services available:
 
 See [MDCB API]({{<ref "tyk-mdcb-api">}}) for details of the endpoints.
 
-In MDCB v2.6.0 or earlier, MDCB only offers one health check endpoint at `/health` via port defined by the `healthcheck_port` configuration setting. The default port is `8181`.
+In MDCB v2.6.0 or earlier, MDCB only offers one health check endpoint at `/health` via the port defined by the `healthcheck_port` configuration setting. The default port is `8181`.
 
 To use the health check service, call the `/health` endpoint i.e. `http://my-mdcb-host:8181/health`. This will return a `HTTP 200 OK` response if the service is running.
 
