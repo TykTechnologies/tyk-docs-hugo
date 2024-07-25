@@ -335,7 +335,7 @@ To enable the secured HTTP endpoint, make sure you have following config:
 }
 ```
 
-Then you can query MDCB config at `/config` to return a json representation of MDCB config
+Subsequently, you can issue a request to the `/config` endpoint to return a json representation of your MDCB config:
 
 ```bash
 curl -H "x-tyk-authorization: <secured-endpoint-secret>" http://my-mdcb-host:8181/config
