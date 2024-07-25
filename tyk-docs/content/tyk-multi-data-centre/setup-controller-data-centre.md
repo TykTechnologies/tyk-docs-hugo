@@ -258,7 +258,7 @@ Health checks are available via the HTTP port. This is defined by `http_port` co
 
 From MDCB v2.7.0, there are 2 health check services available:
 1. `/liveness` endpoint returns a `HTTP 200 OK` response when the service is operational.
-2. `/readiness` endpoint returns a `HTTP 200 OK` response when MDCB is ready to accept request. It ensures that dependent components such as Redis and data store are connected, and the gRPC server is ready for connection.
+2. `/readiness` endpoint returns a `HTTP 200 OK` response when MDCB is ready to accept requests. It ensures that dependent components such as Redis and data store are connected, and the gRPC server is ready for connection.
 
 See [MDCB API]({{<ref "tyk-mdcb-api">}}) for details of the endpoints.
 
