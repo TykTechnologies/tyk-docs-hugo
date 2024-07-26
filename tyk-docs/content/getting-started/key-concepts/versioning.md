@@ -19,11 +19,6 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "ge
 
 You can explicitly grant access to specific version(s) of an API by specifying only those version(s) in the [key]({{< ref "tyk-apis/tyk-gateway-api/token-session-object-details" >}}) (also known as an *authorization token*, *bearer token*, *access token*, *API token* or *token session object* - see [here]({{< ref "basic-config-and-security/security/authentication-authorization/bearer-tokens" >}})).
 
-When using Tyk Classic APIs there are some subtleties to the propagation of access control between versions of an API due to the sharing of one API definition for all versions:
-- if an API is converted into a versioned API, then any pre-existing *keys* will lose access and will need to be re-issued
-- if a *key* is granted access to the `default` version of an API, then it will inherit access to all other versions of the API (including new versions as they are created)
-- if the `default` version is changed (e.g. from `v1` to `v2` as you deprecate the original) then only *keys* with explicit access to the new `default` (e.g. `v2`) will now inherit access to all other versions; any *key* that had explicit access only to the previous `default` (e.g. `v1`) will lose access to all other versions, including the new `default`
-
 ## Configuring API versioning in the Tyk Classic API Definition
 
 The configuration for a new version of a Tyk Classic API is contained in the `version_data` section within the API definition.
