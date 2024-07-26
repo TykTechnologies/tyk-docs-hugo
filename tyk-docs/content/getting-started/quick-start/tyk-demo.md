@@ -27,7 +27,7 @@ Consult our [What Is Tyk Demo](https://www.youtube.com/watch?v=MqVPyWg1YZM) vide
 
 ### Deploy Tyk Demo
 
-To quickly get started with installing [tyk-demo](https://github.com/TykTechnologies/tyk-demo) follow our [deploy the Tyk Demo repo](https://www.youtube.com/watch?v=bm0XZGYJa0w) video that explains how to:
+To quickly get started with installing [tyk-demo](https://github.com/TykTechnologies/tyk-demo) follow our deploy the Tyk Demo repo video that explains how to:
 - Download and start tyk-demo
 - Setup your license
 - Login to tyk-demo deployments
