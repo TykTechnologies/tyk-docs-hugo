@@ -19,8 +19,6 @@ A message with the contents `{"topic":"foo","message":"hello world"}` would be r
 
 If a literal string is required that matches this pattern (`${!foo}`) then you can escape it with double brackets. For example, the string `${{!foo}}` would be read as the literal `${!foo}`.
 
-<!-- //TODO:: For more in-depth details about the language [check out the docs][bloblang]. -->
-
 [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) supports arithmetic, boolean operators, coalesce and mapping expressions. 
 
 ## Examples
