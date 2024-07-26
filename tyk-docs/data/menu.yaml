@@ -3798,6 +3798,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Pump v1.11"
+            path: /product-stack/tyk-pump/release-notes/pump-1.11
+            category: Page
+            show: True
           - title: "Pump v1.10"
             path: /product-stack/tyk-pump/release-notes/pump-1.10
             category: Page
