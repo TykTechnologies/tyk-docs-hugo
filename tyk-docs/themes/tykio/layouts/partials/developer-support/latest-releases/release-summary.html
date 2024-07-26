@@ -44,7 +44,7 @@
                                 {{- with $component.data.latest -}}
                                     {{- $title = printf "%s v%s" $title $component.data.latest -}}
                                     {{- if $component.data.lts -}}
-                                        {{- $title = printf "%s | v%s" $title $component.data.lts -}}
+                                        {{- $title = printf "%s | v%s LTS" $title $component.data.lts -}}
                                     {{- end -}}
                                 {{- end -}}
                                 {{- $title -}}
