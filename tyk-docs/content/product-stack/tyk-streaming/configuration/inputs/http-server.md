@@ -60,7 +60,7 @@ When the rate limit is breached HTTP requests will have a 429 response returned 
 
 ### Responses
 
-<!-- TODO add links for syncnheronous responses -->
+<!-- TODO add links for synchronous responses -->
 
 It's possible to return a response for each message received using synchronous responses. When doing so you can customise headers with the `sync_response` field `headers`, which can also use [function interpolation]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}) in the value based on the response message contents.
 
