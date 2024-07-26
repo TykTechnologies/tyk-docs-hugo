@@ -1,5 +1,5 @@
 ---
-title: Tyk Dashboard 5.3 Release Notes
+title: Tyk Dashboard 5.3 LTS Release Notes
 date: 2023-09-27T15:49:11Z
 description: "Release notes documenting updates enhancements, and changes for Tyk Dashboard versions within the 5.3.X series."
 tags: ["Tyk Dashboard", "Release notes", "v5.3", "5.3.0", "5.3.1", "5.3.2", "5.3", "changelog"]
