@@ -63,21 +63,21 @@ This field supports [interpolation functions]({{< ref "/product-stack/tyk-stream
 
 Type: `string`
 
-### user_agent`
+### user_agent
 
 A user agent to assume when connecting.
 
 
 Type: `string`
 
-### tls`
+### tls
 
 Custom TLS settings can be used to override system defaults.
 
 
 Type: `object`
 
-### tls.enabled`
+### tls.enabled
 
 Whether custom TLS settings are enabled.
 
