@@ -48,14 +48,14 @@ This output benefits from sending multiple messages in flight in parallel for im
 
 ## Fields
 
-^### nsqd_tcp_address`
+### nsqd_tcp_address
 
 The address of the target NSQD server.
 
 
 Type: `string`
 
-### topic`
+### topic
 
 The topic to publish to.
 This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
