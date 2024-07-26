@@ -1,6 +1,6 @@
 ---
 title: Batching
-description: Explains batching
+description: Explains configuration settings required for batching, e,g batch size, time interval etc. in addition to how to optimize the performance and efficiency of how data is batched before being sent to the destination.
 tags: [ "Tyk Streams", "Batching" ]
 ---
 
