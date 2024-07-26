@@ -43,12 +43,12 @@ The `definition` section has the following fields:
 - `default`: the default version of the API (this is the same as `default_version` in `version_data`); if left empty this will be automatically replaced with "self" and will point to the original API definition
 - `enabled`: toggle to enable or disable versioning
 - `name`: the chosen name for the version
-- `strip_path`: deprecated field, use `strip_versioning_data` instead
+- `strip_path`: deprecated field; use `strip_path_versioning_data` instead. Defaults to false.
 - `location`: used to configure where the versioning identifier should be provided: `header`, `url`, `url-param`
 - `strip_versioning_data`: set to `true` for Tyk to [remove the versioning identifier]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-version-identifier" >}}) prior to creating the upstream (target) URL)
 - `fallback_to_default`: set to `true` for Tyk to [invoke the default version]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#fallback-to-default" >}}) if an invalid version is requested
 - `url_versioning_pattern`: configure this with a regex that matches the format that you use for the versioning identifier (`versions.name`) if you are using `strip_versioning_data` and `fallback_to_default` with `location=url` [with Tyk 5.5.0 or later]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-url-path-version-and-default-fallback" >}})
-- `versions`: not used
+- `versions`: not used; since this is a legacy option it will be visible as empty `{}` in the API definition
 - `key`: the versioning identifier key used if `location` is set to `header` or `url-param`
 
 When you first create an API, it will not be "versioned" (i.e. `not_versioned` will be set to `true`) and there will be a single `Default` version created in the `version_data` section of the API definition.
