@@ -1,3 +1,5 @@
+# yamllint disable rule:line-length rule:truthy
+---
 menu:
   - title: "Home"
     path: /
@@ -1467,10 +1469,6 @@ menu:
             path: /basic-config-and-security/control-limit-traffic/key-expiry
             category: Page
             show: True
-          - title: "Rate Limits"
-            path: /basic-config-and-security/control-limit-traffic/rate-limiting
-            category: Page
-            show: True
           - title: "Request Quotas"
             path: /basic-config-and-security/control-limit-traffic/request-quotas
             category: Page
@@ -1493,6 +1491,22 @@ menu:
               show: True
           - title: "Request Throttling"
             path: /basic-config-and-security/control-limit-traffic/request-throttling
+            category: Page
+            show: True
+        - title: "Rate Limits"
+          category: Directory
+          show: True
+          menu:
+          - title: "Overview"
+            path: /basic-config-and-security/control-limit-traffic/rate-limiting
+            category: Page
+            show: True
+          - title: "Tyk OAS configuration"
+            path: /product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas
+            category: Page
+            show: True
+          - title: "Tyk Classic configuration"
+            path: /product-stack/tyk-gateway/middleware/endpoint-rate-limit-classic
             category: Page
             show: True
         - title: "Reduce latency"
