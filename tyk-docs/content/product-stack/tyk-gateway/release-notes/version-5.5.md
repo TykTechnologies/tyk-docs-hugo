@@ -23,7 +23,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 5.5.0 Release Notes
 
-### Release Date 2 July 2024
+### Release Date xxx
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
@@ -90,7 +90,19 @@ Add upgrade steps here if necessary.
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
 -->
-Add release highlights here 
+We are thrilled to introduce Tyk Gateway 5.5, bringing advanced rate-limiting capabilities, enhanced certificate authentication, and performance optimizations. For a comprehensive list of changes, please refer to the change log below.
+
+### Per Endpoint Rate Limiting
+
+Now configure rate limits at the endpoint level for both Tyk OAS and Tyk Classic APIs, providing granular protection for upstream services against abuse.
+
+### Root CA Support for Client Certificates
+
+Simplify certificate management with support for root Certificate Authority (CA) certificates, enabling client authentication via certificates signed by the configured root CA.
+
+### Optimised AST Document Handling
+
+Experience improved performance with optimised creation and usage of Abstract Syntax Tree (AST) documents in our GQL library, reducing memory usage and enhancing efficiency.
 
 
 ### Downloads
@@ -121,16 +133,37 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Enhancement: root CA support for client certificate authentication</summary>
 
-Add description here 
+We've added support for using root Certificate Authority (CA) certificates as client certificates in API definitions. The system now authenticates clients with certificates signed by the configured root CA, simplifying certificate management for multiple clients sharing a common CA. This functionality is available for static mutual TLS (mTLS) configurations only.
 </details>
 </li>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Optimised creation and usage of AST documents in GQL library</summary>
 
-Add description here 
+Optimised the creation and usage of AST documents in our GQL library to reduce significant memory allocations caused by pre-allocations during initial creation. These optimizations free up resources more efficiently, minimising performance penalties with increased requests to the Gateway.
+</details>
+</li>
+<li>
+<details>
+<summary>Corrected ordering of OAS API paths to prevent middleware misapplication</summary>
+
+Fixed an issue where nested API endpoints, such as '/test' and '/test/abc', might incorrectly apply middleware from the parent path to the nested path. The fix ensures that API endpoint definitions are correctly ordered, preventing this middleware misapplication and ensuring both the HTTP method and URL match accurately.
+</details>
+</li>
+<li>
+<details>
+<summary>Implemented upstream Endpoint rate limits</summary>
+ 
+Introduced new controls to configure rate limits at the endpoint level for both Tyk OAS and Tyk Classic APIs. This feature allows for more granular protection of upstream services from abuse, similar to Tyk’s traditional 'API-level' or 'Global' rate limits but applied specifically at the endpoint level.
+</details>
+</li>
+<li>
+<details>
+<summary>Enhanced API versioning with Fallback option for 'First of Path' version data location<summary>
+ 
+Introduced a new configuration for API versioning with 'url_versioning_pattern'. This regex-based field helps identify if the first part of a URL is a version pattern, improving control over 'strip_versioning_data' and 'fallback_to_default' functionalities.
 </details>
 </li>
 </ul>
@@ -147,16 +180,16 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Add change log summary</summary>
+<summary>Optimised key creation process to reduce Redis DeleteRawKey commands</summary>
 
-Add changelog description
+Previously, key creation or reset led to an exponential number of Redis DeleteRawKey commands, especially problematic for access lists with over 100 entries. The key creation sequence now runs only once, eliminating redundant deletion of non-existent keys in Redis. This optimization significantly reduces deletion events, enhancing performance and stability for larger access lists.
 </details>
 </li>
 <li>
 <details>
-<summary>Add change log summary</summary>
+<summary>Resolved SSE Streaming issue</summary>
 
-Add changelog description
+Addressed a bug that caused Server Side Event (SSE) streaming responses to be considered for caching, which required buffering the response and prevented SSE from being correctly proxied.
 </details>
 </li>
 </ul>
