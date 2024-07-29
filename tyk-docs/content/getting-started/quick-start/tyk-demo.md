@@ -1,37 +1,38 @@
 ---
 title:  The Complete Docker Tyk Demo
-tags: ["Tyk Tutorials", "Getting Started", "PoC", "Proof of Concept", "Tyk PoC", "docker", "Self Managed", "Open Source", "demo", "Tyk demo", "Tyk quick start", "What is Tyk Demo", "Tyk Demo Deployments", "Tyk Demo Videos" ]
-description: "Learn to deploy and run a Tyk deployment in minutes on Docker"
-menu:
-    main:
-        parent: "Quick Start"
-weight: 1
+tags: ["Tyk Tutorials", "Getting Started", "PoC", "Proof of Concept", "Tyk PoC", "docker", "Tyk demo", "Tyk quick start", "Tyk Demo Videos" ]
+description: "Learn to deploy and run a Tyk deployment in minutes on Docker using our repository tyk-demo"
 ---
 
-The [tyk-demo](https://github.com/TykTechnologies/tyk-demo) repository allows you to start up an entire Tyk Stack with
-all its dependencies as well as other tooling that can integrate with Tyk. The library will spin up everything in
-Docker using `docker compose` and bash magic to get you started.
+Tyk-demo is a repository that enables you to start up an entire Tyk Stack with 
+all its dependencies. Tyk demo can also spin up deployments with all the other Tyk integrations such as Kafka and Prometheus. 
+
+The [tyk-demo](https://github.com/TykTechnologies/tyk-demo) repository lets you quickly set up a complete Tyk Stack and 
+its dependencies using docker-compose and bash scripts.
 
 ---
 
 ## Supporting Resources
 
-Please visit the [tyk-demo repository](https://github.com/TykTechnologies/tyk-demo) for further information.
-We also provide the following videos to get you started.
+For detailed information, visit the [tyk-demo repository](https://github.com/TykTechnologies/tyk-demo) repository. Additionally, the 
+following instructional videos will help you get started:
+
 
 ### What Is Tyk Demo?
 
-Consult our [What Is Tyk Demo](https://www.youtube.com/watch?v=MqVPyWg1YZM) video for an overview of [tyk-demo](https://github.com/TykTechnologies/tyk-demo) and the range of demo deployments included.
+Watch our *What Is Tyk Demo* video for an overview of the *tyk-demo* repository and the various demo deployments it offers.
 
 {{< youtube MqVPyWg1YZM >}}
 
+
 ### Deploy Tyk Demo
 
-To quickly get started with installing [tyk-demo](https://github.com/TykTechnologies/tyk-demo) follow our deploy the Tyk Demo repo video that explains how to:
-- Download and start tyk-demo
-- Setup your license
-- Login to tyk-demo deployments
+Our Deploy Tyk Demo video covers:
 
-An overview of the available features such as demo APIs, keys and analytics is also presented.
+	•	Downloading and starting tyk-demo
+	•	Setting up your license
+	•	Logging in to Tyk demo deployments
+
+The video also provides an overview of the available features, including demo APIs, keys, and analytics.
 
 {{< youtube bm0XZGYJa0w >}}
