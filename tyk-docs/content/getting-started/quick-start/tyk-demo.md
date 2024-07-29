@@ -13,7 +13,7 @@ its dependencies using docker-compose and bash scripts.
 
 ## Supporting Resources
 
-For detailed information, visit the [tyk-demo repository](https://github.com/TykTechnologies/tyk-demo) repository. Additionally, the 
+For detailed information, visit the [tyk-demo repository](https://github.com/TykTechnologies/tyk-demo). Additionally, the 
 following instructional videos will help you get started:
 
 
@@ -38,13 +38,13 @@ The video also provides an overview of the available features, including demo AP
 
 ## Getting Help
 
-If you need assistance, please visit our [Community Forum]([link-to-forum](https://community.tyk.io/)) or [contact our team](https://tyk.io/about/contact/).
+If you need assistance, please visit our [Community Forum](https://community.tyk.io/) or [contact our team](https://tyk.io/about/contact/).
 
 
 ## What's Next?
 
 After exploring the demo, consider:
-- [Deploying Tyk in Kubernetes](https://tyk.io/docs/getting-started/quick-start/tyk-k8s-demo/)
+- [Deploying Tyk in Kubernetes]({{< ref "getting-started/quick-start/tyk-k8s-demo" >}})
 - Exploring advanced features such as [Python gRPC plugin](https://github.com/TykTechnologies/tyk-demo/tree/master/deployments/plugin-python-grpc) and [Tyk multi datacenter](https://github.com/TykTechnologies/tyk-demo/tree/master/deployments/mdcb)
-- Exploring integrations, such as [Dynamic Client registration]({{< ref "tyk-developer-portal/tyk-portal-classic/keycloak-dcr/" }}) in [Keycloak IdP](https://github.com/TykTechnologies/tyk-demo/tree/master/deployments/keycloak-dcr), [Open Telemetry](https://github.com/TykTechnologies/tyk-demo/tree/master/deployments/otel-new-relic) with [New Relic](https://newrelic.com/)
-- Joining our [community]([link-to-forum](https://community.tyk.io/)) to share your experience and learn from others
+- Exploring integrations, such as [Dynamic Client registration]({{< ref "tyk-developer-portal/tyk-portal-classic/keycloak-dcr" >}}) in [Keycloak IdP](https://github.com/TykTechnologies/tyk-demo/tree/master/deployments/keycloak-dcr), [Open Telemetry](https://github.com/TykTechnologies/tyk-demo/tree/master/deployments/otel-new-relic) with [New Relic](https://newrelic.com/)
+- Joining our [community](https://community.tyk.io/) to share your experience and learn from others
