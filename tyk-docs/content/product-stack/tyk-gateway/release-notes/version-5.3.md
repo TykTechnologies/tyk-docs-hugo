@@ -119,6 +119,7 @@ Fixed an issue where nested API endpoints, such as /test and /test/abc, might in
 </details>
 </li>
 </ul>
+
 ---
 
 #### Fixed
@@ -144,6 +145,7 @@ Fixed a bug that caused Server Side Event (SSE) streaming responses to be consid
 </details>
 </li>
 </ul>
+
 ---
 
 ## 5.3.2 Release Notes
