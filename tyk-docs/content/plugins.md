@@ -96,7 +96,7 @@ So far we have seen that an API can have one or more plugins that are triggered 
 
 ---
 
-## Whats Next?
+## Supporting Resources
 
 - Get started with your first Go custom plugin using our [tutorial]({{< ref "/plugins/tutorials/quick-starts/go/quickstart" >}}).
 - Browse our [supported languages]({{< ref "/plugins/supported-languages" >}}) section for language specific tutorials.
