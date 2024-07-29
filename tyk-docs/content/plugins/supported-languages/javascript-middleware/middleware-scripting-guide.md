@@ -132,18 +132,28 @@ The structure of the `request` object is:
 - `RequestURI`: contains the request URI, including the query string, e.g. `/path?key=value`
 - `Scheme`: contains the URL scheme, e.g. `http`, `https`
 
-{{< warning >}}
-**Warning**
+{{< note success >}}
+**Virtual endpoint functions**
 
 For virtual endpoint functions the `request` object only contains the following properties:
 
-- Body
-- Headers
-- Params
-- Scheme
-- URL
+```go
+{
+  Body          string
+  Headers       map[string][]string
+  Params        map[string]string
+  Scheme        string
+  URL           string
+}
+```
 
-{{< /warning >}}
+In this instance `Params` is an object of string arrays that contains query and form parameters contained within the request, for example:
+
+```json
+{"formparam1":["a"],"formparam2":["b"],"queryparam1":["c"],"queryparam2":["d"]}
+```
+
+{{< /note >}}
 
 #### Using `ReturnOverrides`
 
