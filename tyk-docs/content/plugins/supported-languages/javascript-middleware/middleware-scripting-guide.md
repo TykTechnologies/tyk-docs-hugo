@@ -132,6 +132,19 @@ The structure of the `request` object is:
 - `RequestURI`: contains the request URI, including the query string, e.g. `/path?key=value`
 - `Scheme`: contains the URL scheme, e.g. `http`, `https`
 
+{{< warning >}}
+**Warning**
+
+For virtual endpoint functions the `request` object only contains the following properties:
+
+- Body
+- Headers
+- Params
+- Scheme
+- URL
+
+{{< /warning >}}
+
 #### Using `ReturnOverrides`
 
 If you configure values in `request.ReturnOverrides` then Tyk will terminate the request and provide a response to the client when the function completes. The request will not be proxied to the upstream.
