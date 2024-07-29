@@ -1,7 +1,7 @@
 ---
 date: 2024-06-25T12:59:42Z
 title: Bundle Configuration
-description: "This section explains ehow to configure APIs to use plugin bundles deployed on a remote web server"
+description: "This section explains how to configure APIs to use plugin bundles deployed on a remote web server"
 tags: ["tyk plugins", "API Gateway middleware", "Custom middleware", "Custom API request"]
 ---
 
