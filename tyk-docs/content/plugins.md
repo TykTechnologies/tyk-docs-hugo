@@ -92,7 +92,6 @@ So far we have seen that an API can have one or more plugins that are triggered 
 
 - They must run as a single process.
 - They must manage API-specific cases in the same process, only one CoProcess will be managed by a Tyk Instance.
-- To apply a custom plugin to an API you must modify the API definition and configure the plugin for one of the phases of the API Request Lifecycle as mentioned above.
 - Javascript plugins only support Pre and Post Request phases of the API Request Lifecycle.
 
 ---
