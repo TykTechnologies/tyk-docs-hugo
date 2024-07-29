@@ -1,13 +1,13 @@
 ---
 title: Tyk Pump v1.11 Release Notes
 date: 2024-02-02T26:33:11Z
-description: "Release notes documenting updates, enhancements and changes for Tyk Pump versions within the 1.10.X series."
+description: "Release notes documenting updates, enhancements and changes for Tyk Pump versions within the 1.11.X series."
 tags: ["Tyk Pump", "Release notes", "v1.11", "changelog"]
 ---
 
 **Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))
 
-**This page contains all release notes for version 1.9.X displayed in a reverse chronological order**
+**This page contains all release notes for version 1.11.X displayed in a reverse chronological order**
 
 ## Support Lifetime
 
@@ -43,7 +43,7 @@ There are no deprecations in this release.
 
 ### Upgrade instructions
 
-For users currently on v1.9.X, we strongly recommend promptly upgrading to the latest release. If you are working with an older version, it is advisable to bypass version 1.9 and proceed directly to this latest release.
+For users currently on v1.10.X, we strongly recommend promptly upgrading to the latest release. If you are working with an older version, it is advisable to bypass version 1.10 and proceed directly to this latest release.
 
 ### Release Highlights
 
@@ -51,20 +51,16 @@ For users currently on v1.9.X, we strongly recommend promptly upgrading to the l
 This release focuses on improving security and compliance, enhancing integration capabilities, and ensuring robust performance in secure environments.
 
 ### Downloads
-- <<[Docker Image v1.10.0](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.10)>>
+- <<[Docker Image v1.11.0](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.11)>>
 - ```bash
   docker pull tykio/tyk-pump-docker-pub:v1.11.0
   ```
-- Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.10.0)
+- Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.11.0)
 
 ### Changelog {#Changelog-v1.11.0}
 
-#### Changed
 
-Nothing
-
-
-#### Fixed
+#### Edit 
 
 <ul>
 <li>
@@ -76,22 +72,6 @@ Resolved an issue where `http_proxy` and `https_proxy` environment variables wer
 </details>
 </li>
 
-</ul>
-
-#### Security Fixes
-
-<ul>
-<li>
-<details>
-<summary>Fixed the following CVEs</summary>
-<ul>
-<li>PRISMA-2021-0108</li>
-<li>PRISMA-2023-0056</li>
-<li>[CVE-2024-27304](https://nvd.nist.gov/vuln/detail/CVE-2024-27304)</li>
-<li>[CVE-2023-45288](https://nvd.nist.gov/vuln/detail/CVE-2023-45288)</li>
-</ul>
-</details>
-</li>
 </ul>
 
 ---
