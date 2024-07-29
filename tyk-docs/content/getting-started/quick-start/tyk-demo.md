@@ -27,10 +27,9 @@ Watch our *What Is Tyk Demo* video for an overview of the *tyk-demo* repository 
 ## Deploy Tyk Demo
 
 Our Deploy Tyk Demo video covers:
-
-	•	Downloading and starting tyk-demo
-	•	Setting up your license
-	•	Logging in to Tyk demo deployments
+- Downloading and starting tyk-demo
+- Setting up your license
+- Logging in to Tyk demo deployments
 
 The video also provides an overview of the available features, including demo APIs, keys, and analytics.
 
