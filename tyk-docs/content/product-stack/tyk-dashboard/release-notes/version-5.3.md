@@ -88,6 +88,26 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 
+#### Added
+<!-- This section should be a bullet point list of new features. Explain:
+
+- The purpose of the new feature
+- How does the new feature benefit users?
+- Link to documentation of the new feature
+- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+
+Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
+<ul>
+<li>
+<details>
+<summary>Corrected ordering of OAS API paths to prevent Middleware misapplication</summary>
+
+Fixed an issue where nested API endpoints, such as /test and /test/abc, might incorrectly apply middleware from the parent path to the nested path. The fix ensures that API endpoint definitions are correctly ordered, preventing this middleware misapplication and ensuring both the HTTP method and URL match accurately.
+</details>
+</li>
+</ul>
+
+---
 
 #### Fixed
 <!-- This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
@@ -99,16 +119,23 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Save API Button now visible for all users</summary>
 
-Add changelog description here
+Addressed an issue in SSO where user permissions were not correctly applied, ensuring the Save API button is visible to all users in the Dashboard UI.
 </details>
 </li>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Dashboard blank page issue when retrieving key for API with mTLS and Dynamic JWT Auth fixed</summary>
 
-Add changelog description here
+Resolved a bug causing the Dashboard UI to display a blank page when creating a key for an API using static mTLS with dynamic JWT authentication. 
+</details>
+</li>
+<li>
+<details>
+<summary>Empty Endpoint popularity page issue resolved in version 5.3.1</summary>
+
+Addressed an issue where the Dashboard displayed an empty page when accessing Activity by Endpoint information after upgrading to Tyk 5.3.1. Users can now see all necessary information.             
 </details>
 </li>
 </ul>
