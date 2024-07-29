@@ -73,7 +73,7 @@ Plugins are enabled within the *coprocess_options* section of the Gateway config
 }
 ```
 
-Please consult our supporting documentation for further details relating to configuring plugins for [Javascript (JVSM)]({{< ref "plugins/supported-languages/javascript-middleware#enabling-the-javascript-virtual-machine-jsvm" >}}) and [gRPC]({{< ref "plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin#configure-tyk-gateway" >}}) plugins.
+Please consult our supporting documentation for further details relating to configuring [Javascript]({{< ref "plugins/supported-languages/javascript-middleware#enabling-the-javascript-virtual-machine-jsvm" >}}) plugins and [gRPC]({{< ref "plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin#configure-tyk-gateway" >}}) plugins.
 
 #### Webserver (optional)
 
