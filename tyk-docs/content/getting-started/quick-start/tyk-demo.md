@@ -17,9 +17,9 @@ For detailed information, visit the [tyk-demo repository](https://github.com/Tyk
 following instructional videos will help you get started:
 
 
-## What Is Tyk Demo?
+## Tyk Demo Overview
 
-Watch our *What Is Tyk Demo* video for an overview of the *tyk-demo* repository and the various demo deployments it offers.
+Watch our *What Is Tyk Demo* video for an overview of *tyk-demo* and the various demo deployments it offers.
 
 {{< youtube MqVPyWg1YZM >}}
 
