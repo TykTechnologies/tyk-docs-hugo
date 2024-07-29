@@ -8,7 +8,7 @@ menu:
 weight: 1
 ---
 
-The [tyk-demo](https://github.com/TykTechnologies/tyk-demo) library allows you to start up an entire Tyk Stack with
+The [tyk-demo](https://github.com/TykTechnologies/tyk-demo) repository allows you to start up an entire Tyk Stack with
 all its dependencies as well as other tooling that can integrate with Tyk. The library will spin up everything in
 Docker using `docker compose` and bash magic to get you started.
 
