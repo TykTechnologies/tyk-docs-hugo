@@ -133,6 +133,18 @@ Added new controls to configure rate limits at the endpoint level for both Tyk O
 Updated npm packages for the Dashboard UI application to support React v18.
 </details>
 </li>
+<details>
+<summary>Corrected ordering of OAS API paths to prevent Middleware misapplication</summary>
+
+Fixed an issue where nested API endpoints, such as '/test' and '/test/abc', might incorrectly apply middleware from the parent path to the nested path. The fix ensures that API endpoint definitions are correctly ordered, preventing this middleware misapplication and ensuring both the HTTP method and URL match accurately.
+</details>
+</li>
+<details>
+<summary>Enhanced API versioning with fallback option for 'First of Path' version data location</summary>
+
+Introduced a new configuration for API versioning with 'url_versioning_pattern'. This regex-based field helps identify if the first part of a URL is a version pattern, improving control over 'strip_versioning_data' and 'fallback_to_default' functionalities.
+</details>
+</li>
 <li>
 <details>
 <summary>Improved Schema editor functionality for GQL APIs</summary>
@@ -155,6 +167,20 @@ Each change log item should be expandable. The first line summarises the changel
 <summary>Resolved SSE streaming issue</summary>
 
 Addressed a bug that caused Server Side Event (SSE) streaming responses to be considered for caching, which required buffering the response and prevented SSE from being correctly proxied.
+</details>
+</li>
+<li>
+<details>
+<summary>Classic raw editor gains Endpoint rate limiter configuration</summary>
+
+Added functionality for users to configure rate limits per endpoint using the raw API definition for classic Tyk APIs.
+</details>
+</li>
+<li>
+<details>
+<summary>Save API button now visible for all users</summary>
+
+Addressed an issue in SSO where user permissions were not correctly applied, ensuring the Save API button is visible to all users in the Dashboard UI.
 </details>
 </li>
 <li>
