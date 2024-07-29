@@ -1,8 +1,8 @@
 ---
 date: 2024-06-21T12:59:42Z
-title: Custom Plugins
-description: "This section explains everything you need to know about plugins. This page gives plugins overview and provides links to the appropriate documentation."
-tags: ["tyk plugins", "API Gateway middleware", "Custom middleware", "Custom API request"]
+title: Developing Plugins
+description: "This section explains everything you need to know about developing your own plugins. This page gives an overview of plugins and provides links to the appropriate documentation."
+tags: ["Tyk plugins", "API Gateway middleware", "Custom middleware", "Custom API request"]
 aliases:
     - /customise-tyk/plugins/
 ---
