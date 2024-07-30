@@ -2,7 +2,7 @@
 date: 2024-06-21T12:59:42Z
 title: Developing Plugins
 description: "This section explains everything you need to know about developing your own plugins. This page gives an overview of plugins and provides links to the appropriate documentation."
-tags: ["Tyk plugins", "API Gateway middleware", "Custom middleware", "Custom API request"]
+tags: ["Plugins", "API Gateway middleware", "Custom middleware"]
 aliases:
     - /customise-tyk/plugins/
 ---
@@ -81,7 +81,7 @@ Optionally, Tyk Gateway can be [configured]({{< ref "/plugins/how-to-serve-plugi
 
 ### API
 
-So far we have seen that an API can have one or more plugins that are triggered to run at various phases of the API request lifecycle. Plugins for an API are deployed as source code with accompanying configuration. This deployment artefact can be deployed:
+So far we have seen that an API can have one or more plugins that can execute at various phases of the [API request/response lifecycle]({{< ref "plugins/plugin-types/plugintypes" >}}). Plugins for an API are deployed as source code with accompanying configuration. This deployment artefact can be deployed:
 
 - **Locally**: The source code is located at the Tyk Gateway file system. The API Definition allows the source file path and function name to be configured for each type of plugin. Consult [plugin source code file configuration]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/open-source/source-files" >}}) to learn how to configure plugins for [Tyk Classic APIs]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/open-source/source-files#tyk-classic-apis" >}}) and [Tyk OAS APIs]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/open-source/source-files#tyk-oas-apis" >}}).
 - **Remotely**: The source code and a *manifest.json* is [bundled]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) into a zip file and uploaded to an external remote web server. The *manifest.json* file references the source code file path and the function name for each type of plugin. Tyk Gateway downloads, caches, extracts and executes plugins from the bundle that was downloaded from the configured web server for your organisation's APIs. In this scenario the plugins for an API are configured with the name of the zip file bundle that should be downloaded from the remote web server. Please consult [bundle configuration]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/open-source/source-bundles" >}}) to learn how to configure plugins for [Tyk Classic APIs]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/open-source/source-bundles#tyk-classic-apis/" >}}) and [Tyk OAS APIs]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/open-source/source-bundles#tyk-oas-apis" >}}).
