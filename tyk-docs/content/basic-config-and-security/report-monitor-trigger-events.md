@@ -47,4 +47,4 @@ In response to an API, token lifecycle or custom event occuring, at the API-leve
 
 ### Event metadata
 
-When an API event is fired, if there is an event handler registered for that combination of API and event then the handler will be provided with a rich set of [metadata]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-data" >}}) that can be used by the external system (webhook) or custom (JavaScript) code to determine the action to be taken.
+When an API event is fired, if there is an event handler registered for an event from that API then the handler will be provided with a rich set of [metadata]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-data" >}}) that can be used by the external system (webhook) or custom (JavaScript) code to determine the action to be taken.
