@@ -90,8 +90,8 @@ So far we have seen that an API can have one or more plugins that are triggered 
 
 ## Plugin Caveats
 
-- They must run as a single process.
-- They must manage API-specific cases in the same process, only one CoProcess will be managed by a Tyk Instance.
+- Tyk Gateway manages plugins for each API within the same process.
+- For [gRPC plugins]({{< ref "plugins/supported-languages/rich-plugins/grpc" >}}), Tyk Gateway can only be configured to integrate with one gRPC server.
 - Javascript plugins only allow Pre and Post Request hooks of the API Request Lifecycle.
 
 ---
