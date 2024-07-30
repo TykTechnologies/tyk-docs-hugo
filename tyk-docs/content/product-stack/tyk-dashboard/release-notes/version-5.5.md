@@ -75,15 +75,15 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 -->
 We are excited to announce Tyk Dashboard 5.5, featuring a brand-new dashboard identity, advanced rate-limiting capabilities, and enhanced security options. For a comprehensive list of changes, please refer to the change log below.
 
-### New Dashboard brand identity
+#### New Dashboard brand identity
 
 Experience a refreshed and modern look with our updated dashboard brand identity. The new design enhances usability and provides a cleaner, more intuitive interface for managing your APIs.
 
-### Implemented Upstream Endpoint rate limits
+#### Implemented Upstream Endpoint rate limits
 
  Introduced new controls to configure rate limits at the endpoint level for both Tyk OAS and Tyk Classic APIs. This feature allows for more granular protection of upstream services from abuse, similar to Tyk’s traditional 'API-level' or 'Global' rate limits but applied specifically at the endpoint level.
 
-### Root CA support for client certificate authentication
+#### Root CA support for client certificate authentication
 
 We've added support for using root Certificate Authority (CA) certificates as client certificates in API definitions. This enhancement simplifies certificate management by allowing the system to authenticate clients with certificates signed by the configured root CA, applicable for static mutual TLS (mTLS) configurations only.
 
