@@ -163,7 +163,7 @@ Introduced new controls to configure rate limits at the endpoint level for both 
 <details>
 <summary>Enhanced API versioning with fallback option for *First of Path* version data location<summary>
  
-Introduced a new configuration for API versioning with 'url_versioning_pattern'. This regex-based field helps identify if the first part of a URL is a version pattern, improving control over 'strip_versioning_data' and 'fallback_to_default' functionalities.
+Introduced a new configuration for API versioning with `url_versioning_pattern`. This regex-based field helps identify if the first part of a URL is a version pattern, improving control over `strip_versioning_data` and `fallback_to_default` functionalities.
 </details>
 </li>
 </ul>
