@@ -147,7 +147,7 @@ Introduced a new configuration for API versioning with `url_versioning_pattern`.
 </li>
 <li>
 <details>
-<summary>Improved Schema editor functionality for GQL APIs</summary>
+<summary>Improved schema editor functionality for GQL APIs</summary>
 
 We've expanded the functionality of the schema editor for GQL APIs. Users can now easily import their schema from a file, export it, or quickly clean the entire editor if a mistake is made.
 </details>
