@@ -141,7 +141,7 @@ For virtual endpoint functions the `request` object only contains the following 
 {
   Body          string
   Headers       map[string][]string
-  Params        map[string]string
+  Params        map[string][]string
   Scheme        string
   URL           string
 }
