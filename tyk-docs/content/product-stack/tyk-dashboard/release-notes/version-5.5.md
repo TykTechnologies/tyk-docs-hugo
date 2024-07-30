@@ -124,7 +124,7 @@ We've added support for using root Certificate Authority (CA) certificates as cl
 <details>
 <summary> Implemented upstream endpoint rate limits</summary>
 
-Added new controls to configure rate limits at the endpoint level for both Tyk OAS and Tyk Classic APIs. This feature aims to protect upstream services from abuse, providing the same functionality as Tyk’s traditional 'API-level' or 'Global' rate limits but at a more granular level.
+Added new controls to configure rate limits at the endpoint level for both Tyk OAS and Tyk Classic APIs. This feature aims to protect upstream services from abuse, providing the same functionality as Tyk’s traditional *API-level* or *Global* rate limits but at a more granular level.
 </details>
 </li>
 <details>
