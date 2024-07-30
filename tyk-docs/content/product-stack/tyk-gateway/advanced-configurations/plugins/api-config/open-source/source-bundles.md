@@ -58,7 +58,7 @@ Please consult the [plugin bundles]({{< ref "/plugins/how-to-serve-plugins/plugi
 
 The configuration for an API to fetch the download of a plugin bundle from a remote web server is encapsulated within the *middleware* configuration section of the *x-tyk-api-gateway* part of a Tyk OAS API Definition. An illustrative example is listed below:
 
-```json{linesnos=true}
+```json{hl_lines=["37-45"], linenos=true, linenostart=1}
 {
     "components": {},
     "info": {
@@ -103,55 +103,8 @@ The configuration for an API to fetch the download of a plugin bundle from a rem
                 },
                 "driver": "goplugin"
               }
-            }, 
-            "operations": {
-                "anythingput": {
-                    "transformRequestBody": {
-                        "enabled": true,
-                        "format": "json",
-                        "body": "ewogICJ2YWx1ZTEiOiAie3sudmFsdWUyfX0iLAogICJ2YWx1ZTIiOiAie3sudmFsdWUxfX0iLAogICJyZXEtaGVhZGVyIjogInt7Ll90eWtfY29udGV4dC5oZWFkZXJzX1hfSGVhZGVyfX0iLAogICJyZXEtcGFyYW0iOiAie3suX3R5a19jb250ZXh0LnJlcXVlc3RfZGF0YS5wYXJhbX19Igp9"
-                    }
-                }
-            }
+            } 
         }
-    }
-}
-```
-
-```yaml
-{
-  ...
-  "x-tyk-api-gateway": {
-      "info": {
-        "dbId": "667acea17f6de50001508aca",
-        "id": "ff17f20282b44c2f6d646b35dd5a5ad6",
-        "orgId": "6672f4377f6de50001508abf",
-        "name": "API With Plugin Bundles",
-        "state": {
-          "active": true,
-          "internal": false
-        }
-      },
-      "middleware": {
-        "global": {
-          "pluginConfig": {
-            "bundle": {
-              "enabled": true,
-              "path": "plugin.zip"
-            },
-            "driver": "goplugin"
-          }
-        }
-      },
-      "server": {
-        "listenPath": {
-          "strip": true,
-          "value": "/api-with-plugin-bundle-config/"
-        }
-      },
-      "upstream": {
-        "url": "http://httpbin.org/"
-      }
     }
 }
 ```
@@ -161,4 +114,4 @@ In the example above we can see that the *pluginConfig* section contains a *bund
 - **enabled**: When `true`, enables the plugin.
 - **path**: The relative path of the zip file in relation to the base URL configured on the remote webserver that hosts plugin bundles.
 
-Please consult the [plugin bundles]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) documentation for  further details.
+Please consult the [plugin bundles]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) documentation for further details.
