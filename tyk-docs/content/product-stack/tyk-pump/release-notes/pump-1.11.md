@@ -60,14 +60,14 @@ This release focuses on improving security and compliance, enhancing integration
 ### Changelog {#Changelog-v1.11.0}
 
 
-#### Edit 
+#### Added
 
 <ul>
 <li>
 <details>
-<summary>Fixed: Tyk Pump Splunk Integration using http_proxy and https_proxy Environment Variables</summary>
+<summary>Added: </summary>
 
-Resolved an issue where `http_proxy` and `https_proxy` environment variables were not being respected in the Tyk Pump pod for Splunk connections.
+...
 
 </details>
 </li>
