@@ -81,7 +81,7 @@ Experience a refreshed and modern look with our updated dashboard brand identity
 
 #### Implemented Upstream Endpoint rate limits
 
- Introduced new controls to configure rate limits at the endpoint level for both Tyk OAS and Tyk Classic APIs. This feature allows for more granular protection of upstream services from abuse, similar to Tyk’s traditional 'API-level' or 'Global' rate limits but applied specifically at the endpoint level.
+Introduced new controls to configure rate limits at the endpoint level for both Tyk OAS and Tyk Classic APIs. This feature allows for more granular protection of upstream services from abuse, similar to Tyk’s traditional *API-level* or *Global* rate limits but applied specifically at the endpoint level.
 
 #### Root CA support for client certificate authentication
 
