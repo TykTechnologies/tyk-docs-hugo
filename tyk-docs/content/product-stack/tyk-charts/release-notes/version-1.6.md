@@ -103,6 +103,9 @@ helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
 #### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release: -->
 
+##### Updated MDCB Health check probes
+MDCB v2.7.0 release introduces /liveness and /readiness probes which give more accurate and detail health check information. MDCB dpeloyment has been updated to use the new endpoints. See [MDCB Health Check]({{<ref "tyk-multi-data-centre/setup-controller-data-centre#health-check">}}) section for information about the new probes.
+
 ##### Updated default Tyk versions
 Tyk Charts 1.6 will install the following Tyk component versions by default.
 - Tyk Gateway v5.5.0
@@ -140,7 +143,7 @@ Each change log item should be expandable. The first line summarises the changel
 
 <li>
 <details>
-<summary>MDCB: Add option to configure healthcheck cache renewal period</summary>
+<summary>MDCB: Added option to configure healthcheck cache renewal period</summary>
 
 Added `mdcb.healthcheck.cache_renewal_period` which configures the time interval (in seconds) at which the healthchecker refreshes its cached health status information (redis and DB). Default to 10 (seconds).
 </details>
