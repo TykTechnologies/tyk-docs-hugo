@@ -3,8 +3,6 @@ title: Tyk Sync 1.5 Release Notes
 tag: ["Tyk Sync", "Release notes", "v1.5", "1.5.0", "changelog" ]
 description: "Release notes documenting updates, enhancements, fixes and changes for Tyk Sync versions within the 1.5.X series."
 ---
-**Open Source ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))**
-
 **This page contains all release notes for version 1.5 displayed in reverse chronological order**
 
 ## Support Lifetime
