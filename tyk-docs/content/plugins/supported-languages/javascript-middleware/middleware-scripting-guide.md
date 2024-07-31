@@ -132,44 +132,6 @@ struct {
 - `RequestURI`: contains the request URI, including the query string, e.g. `/path?key=value`
 - `Scheme`: contains the URL scheme, e.g. `http`, `https`
 
-{{< note success >}}
-**Virtual endpoint functions**
-
-For virtual endpoint functions the `request` object contains the following properties:
-
-| Property | Description                          | Example                                                                |
-|----------|--------------------------------------|------------------------------------------------------------------------|
-| Body     | HTTP request body                    | `""`                                                                   |
-| Headers  | HTTP request headers                 | `{"Accept":["*/*"]}`                                                   |
-| Params   | Decoded query and form parameters    | `{"confirm": ["true"],"userId": ["123"]}`                              |
-| Scheme   | The scheme of the URL (http or https)| `"https"`                                                              |
-| URL      | The full URL of the request          | `"https://example.com/vendpoint/anything?userId=123&confirm=true"`     |
-
-A request against `/vendpoint/anything?user_id=123&confirm=true` would result in the following request object:
-
-```json
-{
-  "Headers": {"Accept":["*/*"]},
-  "Body": "",
-  "URL": "/vendpoint/anything?user_id=123\u0026confirm=true",
-  "Params": {"confirm": true, "user_id": ["123"]}
-  "Scheme": "https"
-}
-```
-
-Each query and form parameter within the request is stored as an array field in the `Params` field of the request object.
-Repeated parameter assignments are appended to the corresponding array. For example, a request against `/vendpoint/anything?user_id[]=123&user_id[]=234` would result in:
-
-```json
-{
-  "Headers": {"Accept":["*/*"],"User-Agent":["curl/8.1.2"]},
-  "Body": "",
-  "URL": "/vendpoint/anything?user_id[]=123\u0026user_id[]=234",
-  "Params": {"user_id[]":["123","234"]},
-  "Scheme": "http"
-}
-```
-{{< /note >}}
 
 #### Using `ReturnOverrides`
 
@@ -197,6 +159,49 @@ testJSVMData.NewProcessRequest(function(request, session, config) {
 	return testJSVMData.ReturnData(request, session.meta_data);
 });
 ```
+
+### The virtual endpoint `request` object
+
+For virtual endpoint functions the `request` object contains the following properties:
+
+| Property | Description                          | Example                                                                |
+|----------|--------------------------------------|------------------------------------------------------------------------|
+| Body     | HTTP request body                    | `""`                                                                   |
+| Headers  | HTTP request headers                 | `{"Accept":["*/*"]}`                                                   |
+| Params   | Decoded query and form parameters    | `{"confirm": ["true"],"userId": ["123"]}`                              |
+| Scheme   | The scheme of the URL (http or https)| `"https"`                                                              |
+| URL      | The full URL of the request          | `"https://example.com/vendpoint/anything?userId=123&confirm=true"`     |
+
+A request to `https://example.com/vendpoint/anything?user_id=123&confirm=true` given in the table above would result in the following request object:
+
+```json
+{
+  "Headers": {"Accept":["*/*"]},
+  "Body": "",
+  "URL": "/vendpoint/anything?user_id=123\u0026confirm=true",
+  "Params": {"confirm": true, "user_id": ["123"]},
+  "Scheme": "https"
+}
+```
+
+</br>
+
+{{< note success >}}
+**Note**
+
+Each query and form parameter within the request is stored as an array field in the `Params` field of the request object.
+Repeated parameter assignments are appended to the corresponding array. For example, a request against `/vendpoint/anything?user_id[]=123&user_id[]=234` would result in:
+
+```json
+{
+  "Headers": {"Accept":["*/*"],"User-Agent":["curl/8.1.2"]},
+  "Body": "",
+  "URL": "/vendpoint/anything?user_id[]=123\u0026user_id[]=234",
+  "Params": {"user_id[]":["123","234"]},
+  "Scheme": "http"
+}
+```
+{{< /note >}}
 
 ### The `session` object
 
