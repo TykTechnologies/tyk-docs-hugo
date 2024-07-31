@@ -40,7 +40,7 @@ There are no deprecations in this release, however with the introduction of new 
 
 ###### Recommendations for users:
 
-- Migrate to new healthcheck endpoints in order to get more detailed information.
+- Migrate to new health check endpoints in order to get more detailed information. For Kubernetes users, use Helm Charts v1.6 to upgrade MDCB to set liveness and readiness probes of MDCB deployment to the new health check endpoints.
 
 #### Upgrade instructions
 If you are using a 2.6.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.6.0 and upgrade directly to this release.
