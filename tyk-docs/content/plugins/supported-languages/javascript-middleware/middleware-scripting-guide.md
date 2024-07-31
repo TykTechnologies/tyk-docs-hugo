@@ -99,7 +99,7 @@ The `request` object provides a set of arrays that describe the API request. The
 The structure of the `request` object is:
 
 ```go
-{
+struct {
   Headers       map[string][]string
   SetHeaders    map[string]string
   DeleteHeaders []string
@@ -138,7 +138,7 @@ The structure of the `request` object is:
 For virtual endpoint functions the `request` object contains the following properties:
 
 ```go
-{
+struct {
   Body          string
   Headers       map[string][]string
   Params        map[string][]string
@@ -147,12 +147,29 @@ For virtual endpoint functions the `request` object contains the following prope
 }
 ```
 
-In this instance `Params` is an object of string arrays that contains query and form parameters contained within the request, for example:
+Each query and form parameter within the request is stored as an array field in the `Params` object. For example, a request against `/vendpoint/anything?user_id=123&confirm=true` would result in the following request object:
 
 ```json
-{"formparam1":["a"],"formparam2":["b"],"queryparam1":["c"],"queryparam2":["d"]}
+{
+  "Headers": {"Accept":["*/*"],"User-Agent":["curl/8.1.2"]},
+  "Body": "",
+  "URL": "/vendpoint/anything?user_id=123\u0026confirm=true",
+  "Params": {"confirm": true, "user_id": ["123"]}
+  "Scheme": "http"
+}
 ```
 
+Repeated parameter assignments are appended to the corresponding array. For example, a request against `/vendpoint/anything?user_id[]=123&user_id[]=234` would result in:
+
+```json
+{
+  "Headers": {"Accept":["*/*"],"User-Agent":["curl/8.1.2"]},
+  "Body": "",
+  "URL": "/vendpoint/anything?user_id[]=123\u0026user_id[]=234",
+  "Params": {"user_id[]":["123","234"]},
+  "Scheme": "http"
+}
+```
 {{< /note >}}
 
 #### Using `ReturnOverrides`
