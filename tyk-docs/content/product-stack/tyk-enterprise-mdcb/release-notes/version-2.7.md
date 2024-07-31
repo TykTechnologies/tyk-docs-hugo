@@ -57,7 +57,7 @@ Two new health check endpoints have been added to improve monitoring and diagnos
 These new endpoints allow for more granular monitoring of MDCB's operational status, enabling quicker identification and resolution of potential issues.
 
 ##### New Configuration Access Endpoint
-A new `/config` endpoint has been implemented, allowing developers to access the current configuration state of the MDCB instance in real-time. This feature provides:
+Two new `/config` and `/env` endpoints has been implemented, allowing developers to access the current configuration state of the MDCB instance in real-time. This feature provides:
 
 - Secure access to configuration data
 - Automatic redaction of sensitive information
