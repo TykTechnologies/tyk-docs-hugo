@@ -46,6 +46,8 @@ There are no deprecations in this release, however with the introduction of new 
 If you are using a 2.6.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.6.0 and upgrade directly to this release.
 
 #### Release Highlights
+
+#### New Health check probes
 Two new health check endpoints have been added to improve monitoring and diagnostics:
 
 1. `/liveness`: This endpoint provides a quick check to determine if the MDCB application is alive and running.
