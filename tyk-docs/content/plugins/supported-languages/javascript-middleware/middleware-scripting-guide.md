@@ -135,7 +135,7 @@ The structure of the `request` object is:
 {{< note success >}}
 **Virtual endpoint functions**
 
-For virtual endpoint functions the `request` object only contains the following properties:
+For virtual endpoint functions the `request` object contains the following properties:
 
 ```go
 {
