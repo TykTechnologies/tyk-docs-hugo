@@ -137,28 +137,27 @@ struct {
 
 For virtual endpoint functions the `request` object contains the following properties:
 
-```go
-struct {
-  Body          string
-  Headers       map[string][]string
-  Params        map[string][]string
-  Scheme        string
-  URL           string
-}
-```
+| Property | Description                          | Example                                                                |
+|----------|--------------------------------------|------------------------------------------------------------------------|
+| Body     | HTTP request body                    | `""`                                                                   |
+| Headers  | HTTP request headers                 | `{"Accept":["*/*"]}`                                                   |
+| Params   | Decoded query and form parameters    | `{"confirm": ["true"],"userId": ["123"]}`                              |
+| Scheme   | The scheme of the URL (http or https)| `"https"`                                                              |
+| URL      | The full URL of the request          | `"https://example.com/vendpoint/anything?userId=123&confirm=true"`     |
 
-Each query and form parameter within the request is stored as an array field in the `Params` object. For example, a request against `/vendpoint/anything?user_id=123&confirm=true` would result in the following request object:
+A request against `/vendpoint/anything?user_id=123&confirm=true` would result in the following request object:
 
 ```json
 {
-  "Headers": {"Accept":["*/*"],"User-Agent":["curl/8.1.2"]},
+  "Headers": {"Accept":["*/*"]},
   "Body": "",
   "URL": "/vendpoint/anything?user_id=123\u0026confirm=true",
   "Params": {"confirm": true, "user_id": ["123"]}
-  "Scheme": "http"
+  "Scheme": "https"
 }
 ```
 
+Each query and form parameter within the request is stored as an array field in the `Params` field of the request object.
 Repeated parameter assignments are appended to the corresponding array. For example, a request against `/vendpoint/anything?user_id[]=123&user_id[]=234` would result in:
 
 ```json
