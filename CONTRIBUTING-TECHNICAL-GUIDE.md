@@ -95,8 +95,6 @@ title: "New Section"
 date: 2021-02-10
 tags: [""]
 description: ""
-menu: "main"
-weight: 0
 ---
 
 **Insert Lead paragraph here.**
@@ -106,8 +104,6 @@ weight: 0
 - `date` is auto populated in a year-month-day format
 - `tags` are used to create meta keywords in the HTML output, and are added in the following format - `tags: ["tag 1", "tag 2", "tag 3"]`
 - `description` is used for the meta description in the HTML output
-- `menu` is used to place the page in the correct place within the navigation hierarchy. By default a new page is assigned to the root level (`main`)
-- `weight` is used to order pages within a section of the menu with `0` being the top level page within a section.
 
 You can create a dynamic, nested navigation hierarchy simply by changing the `parent` field to the name of the parent page. Note, **these names must be unique**.
 
@@ -119,10 +115,6 @@ title: "Test"
 date: 2021-02-10
 tags: ["Tyk", "advanced-configuration", "Dashboard"]
 description: "Testing the description and tagging functionality in Tyk"
-menu:
-  main:
-    parent: "Advanced Configuration"
-weight: 10
 ---
 ```
 
