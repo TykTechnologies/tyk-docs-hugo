@@ -190,6 +190,13 @@ Addressed an issue in SSO where user permissions were not correctly applied, ens
 Resolved an issue where the Public GQL Playground displayed schema information despite introspection being turned off. Now, schema details are hidden unless valid authentication credentials are provided, ensuring a secure and consistent user experience.
 </details>
 </li>
+<li>
+ <details>
+ <summary>Empty Endpoint popularity page issue resolved in version 5.3.1</summary>
+
+ Addressed an issue where the Dashboard displayed an empty page when accessing Activity by Endpoint information after upgrading to Tyk 5.3.1. Users can now see all necessary information.             
+ </details>
+ </li>
 </ul>
 
 #### Security Fixes
