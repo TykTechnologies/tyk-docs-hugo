@@ -207,8 +207,15 @@ Updated MDCB liveness and readiness probes to /liveness and /readiness respectiv
 </ul>
 
 ##### Fixed
-
 <ul>
+
+<li>
+<details>
+<summary>Portal: Ingress resource should not be created if not enabled</summary>
+
+Fixed the issue that when Developer Portal component is enabled, an Ingress resource is being created, although portal ingress is not enabled.
+</details>
+</li>
 
 
 </ul>
