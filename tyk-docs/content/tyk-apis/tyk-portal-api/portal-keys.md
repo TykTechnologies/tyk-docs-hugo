@@ -21,7 +21,7 @@ aliases:
 
 #### Sample Request
 
-```{.copyWrapper}
+```http
 GET /api/portal/requests HTTP/1.1
 Host: localhost
 authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
@@ -29,7 +29,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 #### Sample Response
 
-```
+```json
 {
   "Data":[
     {
@@ -995,7 +995,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 #### Sample Request
 
-```{.copyWrapper}
+```http
 GET /api/portal/requests/KEYID HTTP/1.1
 Host: localhost
 authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
@@ -1003,7 +1003,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 #### Sample Response
 
-```
+```json
 {
   "id":"5cf61bff0313b300010b89ac",
   "org_id":"5cc03283d07e7f00019404b3",
@@ -1208,7 +1208,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 #### Sample Request
 
-```{.copyWrapper}
+```http
 POST /api/portal/requests HTTP/1.1
 Host: localhost
 authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
@@ -1372,7 +1372,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 #### Sample Response
 
-```
+```json
 {
   "Status": "OK",
   "Message": "5efde61749960c000137f590",
@@ -1392,7 +1392,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 #### Sample Request
 
-```{.copyWrapper}
+```http
 UPDATE /api/portal/requests/5efde61749960c000137f590 HTTP/1.1
 Host: localhost
 authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
@@ -1556,7 +1556,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 #### Sample Response
 
-```
+```json
 {
   "Status": "OK",
   "Message": "5efde61749960c000137f590",
@@ -1576,7 +1576,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 #### Sample Request
 
-```{.copyWrapper}
+```http
 DELETE /api/portal/requests/5efde61749960c000137f590 HTTP/1.1
 Host: localhost
 authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
@@ -1584,7 +1584,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 #### Sample Response
 
-```
+```json
 {
   "Status": "OK",
   "Message": "Data deleted",
@@ -1604,7 +1604,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 #### Sample Request
 
-```{.copyWrapper}
+```http
 PUT /api/portal/requests HTTP/1.1
 Host: localhost
 authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
@@ -1612,7 +1612,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 #### Sample Response - Authentication Token
 
-```
+```json
 {
     "RawKey": "eyJvcmciOiI1ZTlkOTU0NGExZGNkNjAwMDFkMGVkMjAiLCJpZCI6ImQ0NzIzOWUxMjg3NTRjMGM5MTQ4MzYzMjg2YjhlZDQ2IiwiaCI6Im11cm11cjY0In0=",
     "Password": ""
@@ -1623,7 +1623,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 #### Sample Response - Basic Authentication
 
-```
+```json
 {
     "RawKey": "ffeLySpZR5",
     "Password": "XJSm3gZIeDdk"

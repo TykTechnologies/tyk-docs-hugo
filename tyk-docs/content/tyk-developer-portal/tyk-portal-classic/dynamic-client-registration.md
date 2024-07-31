@@ -23,7 +23,7 @@ We will go into the specifics of how it works in the context of Tyk, but if you 
 
 DCR is a way for you to integrate your developer portal with an external identity provider such as Keycloak, Gluu, Auth0, Okta etc... 
 The portal developer won't notice a difference. However when they create the app via Tyk Developer portal, Tyk will dynamically register that client on your authorization server. This means that it is the Authorization Server who will issue issue the Client ID and Client Secret for the app.
-Some of our users leverage external Identity Providers because they provide a variety of features to support organisations in managing identity in one place across all their stack. 
+Some of our users leverage external Identity Providers because they provide a variety of features to support organizations in managing identity in one place across all their stack. 
 
 This feature is optional and you can still have a great level of security only using Tyk as your authorization server. 
 

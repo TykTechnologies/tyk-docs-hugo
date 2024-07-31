@@ -1,6 +1,6 @@
 ---
 date: 2017-03-27T12:40:59+01:00
-title: Dashboard Admin API Organisations
+title: Dashboard Admin API Organizations
 menu:
   main:
     parent: "Tyk Dashboard Admin API"
@@ -9,33 +9,50 @@ aliases:
     - /tyk-apis/tyk-dashboard-admin-api/organisations/
 ---
 
+{{< note success >}}
+
+**Important Note on Spelling:**
+
+While our documentation now uses American English, the product itself, including UI, configuration fields, environment
+variables, and APIs endpoints, retain British English spellings. When interacting with the product, please continue
+using the British English spellings as they appear in the interface and API. (This means that for existing users nothing
+has changed).
+</br>
+**Example:** The API endpoint `/organisation` as shown throughout this page uses British spelling (with an 's' not 'z').
+In all other instances, such as when describing or referring to this object in the documentation, we will use the
+American spelling “organization” with a 'z'.
+
+{{< /note >}}
+
 {{< warning success >}}
 **Warning**  
 
-In a production environment, you will need to change the default `admin_Secret` value that is called by the `admin-auth` header in your `tyk_analytics.conf` file. This is located in `/opt/tyk-dashboard`.
+In a production environment, you will need to change the default `admin_Secret` value that is called by the `admin-auth`
+ header in your `tyk_analytics.conf` file. This is located in `/opt/tyk-dashboard`.
+</br>
 {{< /warning >}}
 
-### Retrieve a single Organisation
+### Retrieve a single Organization
 
 | **Property** | **Description**                 |
 | ------------ | ------------------------------- |
-| Resource URL | `/admin/organisations/{org-id}` |
+| Resource URL | `/admin/organisation/{org-id}`  |
 | Method       | GET                             |
 | Type         | None                            |
-| Body         | Organisation Object             |
+| Body         | Organization Object             |
 | Param        | None                            |
 
 #### Sample Request
 
-```{.copyWrapper}
-GET /admin/organisations/{ORG_ID}
+```http
+GET /admin/organisations/{ORG_ID} HTTP/1.1
 Host: localhost:3000
 admin-auth: 12345
 ```
 
 #### Sample Response
 
-```
+```json
 {
     "id": "5cc03283d07e7f00019404b3",
     "owner_name": "TestOrg5 Ltd.",
@@ -71,27 +88,27 @@ admin-auth: 12345
 ```
 
 
-### Retrieve all Organisations
+### Retrieve all Organizations
 
 | **Property** | **Description**                 |
 | ------------ | ------------------------------- |
-| Resource URL | `/admin/organisations/
+| Resource URL | `/admin/organisation/'          |
 | Method       | GET                             |
 | Type         | None                            |
-| Body         | Organisation Object             |
+| Body         | Organization Object             |
 | Param        | None                            |
 
 #### Sample Request
 
-```{.copyWrapper}
-GET /admin/organisations/
+```http
+GET /admin/organisations/ HTTP/1.1
 Host: localhost:3000
 admin-auth: 12345
 ```
 
 #### Sample Response
 
-```
+```json
 {
     "organisations": [
         {
@@ -158,19 +175,19 @@ admin-auth: 12345
 }
 ```
 
-### Create an Organisation
+### Create an Organization
 
 | **Property** | **Description**         |
 | ------------ | ----------------------- |
-| Resource URL | `/admin/organisations/` |
+| Resource URL | `/admin/organisation/`  |
 | Method       | POST                    |
 | Type         | None                    |
-| Body         | Organisation Object     |
+| Body         | Organization Object     |
 | Param        | None                    |
 
 #### Sample Request
 
-```{.copyWrapper}
+```http
 POST /admin/organisations/ HTTP/1.1
 Host: localhost:3000
 admin-auth: 12345
@@ -184,7 +201,7 @@ admin-auth: 12345
 
 #### Sample response
 
-```
+```json
 {
   "Status":"OK",
   "Message":"Org created",
@@ -192,19 +209,19 @@ admin-auth: 12345
 }
 ```
 
-### Update an Organisation
+### Update an Organization
 
 | **Property** | **Description**             |
 | ------------ | --------------------------- |
-| Resource URL | `/admin/organisations/{id}` |
+| Resource URL | `/admin/organisation/{id}`  |
 | Method       | PUT                         |
 | Type         | None                        |
-| Body         | Organisation Object         |
+| Body         | Organization Object         |
 | Param        | None                        |
 
 #### Sample Request
 
-```{.copyWrapper}
+```http
 PUT /admin/organisations/54b53d3aeba6db5c35000002 HTTP/1.1
 Host: localhost:3000
 admin-auth: 12345
@@ -218,7 +235,7 @@ admin-auth: 12345
 
 #### Sample Response
 
-```
+```json
 {
   "Status":"OK",
   "Message":"Org updated",
@@ -226,11 +243,11 @@ admin-auth: 12345
 }
 ```
 
-### Delete an Organisation
+### Delete an Organization
 
 | **Property** | **Description**             |
 | ------------ | --------------------------- |
-| Resource URL | `/admin/organisations/{id}` |
+| Resource URL | `/admin/organisation/{id}`  |
 | Method       | DELETE                      |
 | Type         | None                        |
 | Body         | None                        |
@@ -238,15 +255,15 @@ admin-auth: 12345
 
 #### Sample Request
 
-```{.copyWrapper}
-DELETE /admin/organisations/54b53d3aeba6db5c35000002 HTTP/1.1
+```http
+DELETE /admin/organisation/54b53d3aeba6db5c35000002 HTTP/1.1
 Host: localhost:3000
 admin-auth: 12345
 ```
 
 #### Sample Response
 
-```
+```json
 {
   "Status":"OK",
   "Message":"Org deleted",

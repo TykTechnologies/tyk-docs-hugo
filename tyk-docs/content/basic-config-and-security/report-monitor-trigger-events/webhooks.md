@@ -13,7 +13,7 @@ aliases:
 
 ## Set up an Event Webhook with an API Definition
 
-In order to add extensibility and interoperability to Tyk, a new webhook event handler has been added. This allows a fixed payload (which can be customised) to be delivered to any open endpoint.
+In order to add extensibility and interoperability to Tyk, a new webhook event handler has been added. This allows a fixed payload (which can be customized) to be delivered to any open endpoint.
 
 The webhook handler allows the configuration of the method, body, header values, and target URL and makes use of Go templates to expose the event metadata.
 

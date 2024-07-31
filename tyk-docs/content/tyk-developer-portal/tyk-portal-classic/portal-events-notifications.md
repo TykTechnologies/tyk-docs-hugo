@@ -9,7 +9,7 @@ aliases:
   - /tyk-developer-portal/portal-events-notifications/
 ---
 
-Tyk enables you to actively monitor both user and organisation quotas. These active notifications are managed in the same way as webhooks and provides an easy way to notify your stakeholders, your own organisation or the API end user when certain thresholds have been reached for their token.
+Tyk enables you to actively monitor both user and organization quotas. These active notifications are managed in the same way as webhooks and provides an easy way to notify your stakeholders, your own organization or the API end user when certain thresholds have been reached for their token.
 
 ### Tyk Cloud Users
 
@@ -19,9 +19,9 @@ Monitors are disabled by default in Tyk Cloud. Portal events are enabled and can
 
 See [Monitors]({{< ref "basic-config-and-security/report-monitor-trigger-events/monitors" >}}) for details of configuring monitors in your `tyk.conf`.
 
-#### Setting Custom Triggers on a Per Key or a Per-Organisation Basis
+#### Setting Custom Triggers on a Per Key or a Per-Organization Basis
 
-Sometimes you will not want to have every user have a trigger event at the same levels. You can set manual trigger levels by adding a `monitor` section to the Session Object that defines a key's access details. This can also be added to the session object of an organisation ID:
+Sometimes you will not want to have every user have a trigger event at the same levels. You can set manual trigger levels by adding a `monitor` section to the Session Object that defines a key's access details. This can also be added to the session object of an organization ID:
 
 ```{.copyWrapper}
 "monitor": {
@@ -45,7 +45,7 @@ The webhook payload will take the following format:
 } 
 ```
 
-If the event is triggered by an organisation, then the key field will be empty. If it is an auth token, then the `key` field will have raw representation of the token that caused the quota trigger to fire.
+If the event is triggered by an organization, then the key field will be empty. If it is an auth token, then the `key` field will have raw representation of the token that caused the quota trigger to fire.
 
 ### Portal Events
 
@@ -55,13 +55,13 @@ The Tyk Dashboard and the Portal now support email notifications powered by Mand
 
 If you have enabled email notifications, the Portal will attempt to send notifications regarding a user's sign-up status or key request status to their username email address. These templates can be found in the `portal/email_templates` folder.
 
-The templates are available as text based or HTML. See the standard included ones to see the various template fields that can be customised.
+The templates are available as text based or HTML. See the standard included ones to see the various template fields that can be customized.
 
 ### Extra Dashboard And Portal Events
 
 The Dashboard and Portal also support a certain level of events that you can use to notify your system of various things that have happened in the Portal.
 
-To configure them, add an `event_options` section to an Organisation when you are creating them. See [Creating an Organisation via the Dashboard Admin API]({{< ref "dashboard-admin-api/organisations#create-an-organisation" >}}) for more details.
+To configure them, add an `event_options` section to an Organization when you are creating them. See [Creating an Organization via the Dashboard Admin API]({{< ref "dashboard-admin-api/organisations#create-an-organization" >}}) for more details.
 
 Within this object, you can then register webhooks or/and an email address to notify when an event occurs:
 

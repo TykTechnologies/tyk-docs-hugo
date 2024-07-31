@@ -7,33 +7,43 @@ menu:
         parent: "Tyk Stack"
 aliases:
     - /tyk-stack/tyk-operator/getting-started-tyk-operator
+    - /product-stack/tyk-operator/key-concepts/key-concepts
 ---
 
 ### What is Tyk Operator?
-When you have Tyk installed, either in your cluster, hybrid, or Tyk Cloud, you can use Tyk Operator to manage your APIs in Kubernetes declaratively using [Kubernetes CRD](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)  manifests.
+Tyk Operator is a Kubernetes Operator designed to simplify the management of Tyk API configurations both inside and outside of Kubernetes environments. With our [custom resources]({{<ref "product-stack/tyk-operator/key-concepts/custom-resources">}}), Tyk Operator simplifies the processes of deploying and configuring API resources, allowing you to focus more on application development and less on infrastructure management. It is ideal for those who like to manage configurations declaratively or with GitOps workflows via tools such as Argo CD and Flux CD.
 
-{{< img src="/img/operator/tyk-operator.svg" alt="Tyk Operator" >}}
+{{< img src="/img/operator/tyk-operator.svg" alt="Tyk Operator" width="600" >}}
 
-Tyk Operator is an open-source agent deployed to your Kubernetes cluster. It actively detects configuration drift between the API configurations on Gateway (the actual state) and the manifest (the desired state) to reconcile it. Therefore, the manifests become the source of truth for your API configurations.
+### Why use Tyk Operator?
+Managing, checking, and synchronizing APIs from multiple teams across environments can be complex. Tyk Operator provides an efficient way to handle API configurations. Here’s why it matters:
+- **Simple custom resource**: Tyk's Classic API Definition is a large and complex JSON document, making maintenance difficult. Operator's CRD (Custom Resource Definition) is designed to be simple and does not require you to specify default values, resulting in a document that is easy to understand and maintain.
+- **Declarative configurations**: By using declarative configurations, users can store configurations in Git. Changes can then be managed via Git pull requests, making it easy to compare different API configuration versions. Automatic linting and checking can be implemented, ensuring that changes are properly reviewed and approved before merging.
+- **Kubernetes integration**: Operator works natively with Kubernetes, allowing both development and operations teams to follow their usual workflows for making changes and automating deployments. You can also benefit from Kubernetes tooling support for manifest management (e.g., using Helm or Kustomize) and GitOps deployment (e.g., using ArgoCD or Flux CD).
+- **Automated reconciliation**: Once you apply custom resources to your Kubernetes cluster, Operator will regularly check that the actual state at Tyk matches the target state in Kubernetes. This ensures any changes at Tyk, such as unauthorized manual updates or database corruption, can be corrected and the target state reinstated.
 
-Tyk Operator also offers an Ingress Controller, which dynamically manages Tyk ApiDefinition resources as per the ingress specification. This way your Tyk Gateway is configured as a drop-in replacement for a standard Kubernetes Ingress, providing Security, Traffic Control and Limiting for external access to the services in your Kubernetes cluster.
+### Key Features
 
-Tyk Operator works with the v3+ Open Source Tyk Gateway, our full self-managed Gateway, and Tyk Dashboard installation.
+1. [Manage Classic API definitions]({{< ref "tyk-stack/tyk-operator/create-an-api" >}})
+2. [Manage Security policies]({{< ref "tyk-stack/tyk-operator/secure-an-api" >}})
+3. [Manage Tyk Classic Dev Portal]({{< ref "tyk-stack/tyk-operator/publish-an-api" >}})
+4. [Kubernetes Ingress Controller]({{< ref "product-stack/tyk-operator/tyk-ingress-controller">}})
 
-### What can you do with Tyk Operator?
-Tyk Operator can configure Tyk Gateway as a drop-in replacement for standard Kubernetes Ingress. You can manage your API definitions and security policies with it. It also works with the classic portal so you can manage your Classic Portal declaratively.
+### Do You Need Tyk Operator?
 
+Consider using Tyk Operator if:
 
-- [Kubernetes Ingress Controller](https://github.com/TykTechnologies/tyk-operator/blob/master/docs/ingress.md)
-- [Manage API Definitions](https://github.com/TykTechnologies/tyk-operator/blob/master/docs/api_definitions.md)
-- [Manage Security Policies](https://github.com/TykTechnologies/tyk-operator/blob/master/docs/policies.md)
-- [Manage Developer Portal]({{< ref "/content/tyk-stack/tyk-operator/publish-an-api.md" >}})
+- You are running applications in a Kubernetes environment.
+- You need to manage multiple Tyk API Gateway instances efficiently.
+- You want to leverage Kubernetes-native automation for API management.
+- You aim to streamline the operations of your API gateways with minimal manual intervention.
 
-### What are the Tyk Operator benefits?
+### Getting Started
+To get started with Tyk Operator, learn about Operator key concepts:
 
-You can get the benefits of GitOps with declarative API configurations:
+- [Custom Resources]({{< ref "/product-stack/tyk-operator/key-concepts/custom-resources" >}})
+- [Operator Context]({{< ref "/product-stack/tyk-operator/key-concepts/operator-context" >}})
+- [Operator User]({{< ref "/product-stack/tyk-operator/key-concepts/operator-user" >}})
+- [Operator Reconciliation]({{< ref "/tyk-stack/tyk-operator/tyk-operator-reconciliation" >}})
 
-- **Security and Compliance:** All changes must go through peer review through pull requests. The configurations are versioned in your version control system and approved by your API Product Owner and Platform team.
-- **Kubernetes-Native Developer Experience:** API Developers enjoy a smoother Continuous Integration process as they can develop, test, and deploy the microservices and API configurations together using familiar development toolings and pipeline.
-
-- **Reliability:** With declarative API configurations, you have a single source of truth to recover after any system failures, reducing the meantime to recovery from hours to minutes.
+Follow our [Installation Guide]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}) to set up Tyk Operator in your Kubernetes cluster.

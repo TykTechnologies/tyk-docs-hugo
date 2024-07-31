@@ -7,7 +7,7 @@ description: "Using middleware with Tyk OAS APIs"
 
 ### Introduction
 
-Tyk OAS APIs have access to an increasing range of Tyk middleware that you can configure to customise the handling of API requests and responses. In this guide we will show you how to enable some of these features in your Tyk OAS APIs.
+Tyk OAS APIs have access to an increasing range of Tyk middleware that you can configure to customize the handling of API requests and responses. In this guide we will show you how to enable some of these features in your Tyk OAS APIs.
 
 {{< note success >}}
 **Note**  

@@ -14,13 +14,13 @@ aliases:
 
 The following [user roles]({{< ref "tyk-cloud/teams-&-users/user-roles.md" >}}) can perform existing Team Admin tasks:
 
-* Organisation Admin - Can manage all teams in the organisation they are a member of.
+* Organization Admin - Can manage all teams in the organization they are a member of.
 * Team Admin - Can only manage the team they are a member of.
 
 For an existing team, you can:
 
 * Change the team name
-* Create or delete a team (Organisation Admin only)
+* Create or delete a team (Organization Admin only)
 * Invite and manage users in a team
   
 ### Change the team name
@@ -32,15 +32,15 @@ For an existing team, you can:
 
 ### Create a new Team
 
-You need to be a [Organisation Admin]({{< ref "tyk-cloud/teams-&-users/user-roles.md#user-roles-within-tyk-cloud" >}}) to create a new team.
+You need to be a [Organization Admin]({{< ref "tyk-cloud/teams-&-users/user-roles.md#user-roles-within-tyk-cloud" >}}) to create a new team.
 
 1. From the Admin > Teams screen, click **Add Team**.
-2. Enter a name for the new team that will be added to the organisation.
+2. Enter a name for the new team that will be added to the organization.
 3. Click **Create**.
 
 ### Delete a team 
 
-You need to be a [Organisation Admin]({{< ref "tyk-cloud/teams-&-users/user-roles.md#user-roles-within-tyk-cloud" >}}) to delete a team.
+You need to be a [Organization Admin]({{< ref "tyk-cloud/teams-&-users/user-roles.md#user-roles-within-tyk-cloud" >}}) to delete a team.
 
 1. From the Teams screen, select the team name.
 2. Click **Edit**.

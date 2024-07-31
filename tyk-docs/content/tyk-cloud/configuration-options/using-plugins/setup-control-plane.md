@@ -13,7 +13,7 @@ aliases:
 
 ## Introduction
 
-This page explains how to set up a control plane with plugins to customise it on Tyk Cloud, so that you can ensure your API management solution is as effective as possible. 
+This page explains how to set up a control plane with plugins to customize it on Tyk Cloud, so that you can ensure your API management solution is as effective as possible. 
 
 ## What do I need to do to use Plugins?
 

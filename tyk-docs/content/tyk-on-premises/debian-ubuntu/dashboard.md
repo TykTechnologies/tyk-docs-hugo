@@ -260,7 +260,7 @@ sudo systemctl enable tyk-dashboard
 
 Follow the [Gateway installation instructions]({{< ref "tyk-on-premises/debian-ubuntu/gateway" >}}) to connect to your Dashboard instance before you continue on to step 4.
 
-### Step 4: Bootstrap the Tyk Dashboard with an initial User and Organisation
+### Step 4: Bootstrap the Tyk Dashboard with an initial User and Organization
 
 Go to:
 
@@ -272,12 +272,12 @@ You should get to the Tyk Dashboard Setup screen:
 
 {{< img src="/img/dashboard/system-management/bootstrap_screen.png" alt="Tyk Dashboard Bootstrap Screen" >}}
 
-### Step 5 - Create your Organisation and Default User
+### Step 5 - Create your Organization and Default User
 
 You need to enter the following:
 
-- Your **Organisation Name**
-- Your **Organisation Slug**
+- Your **Organization Name**
+- Your **Organization Slug**
 - Your User **Email Address**
 - Your User **First and Last Name**
 - A **Password** for your User
@@ -298,7 +298,7 @@ You can now log in to the Tyk Dashboard from `127.0.0.1:3000`, using the usernam
 
 ## Configure your Developer Portal
 
-To set up your [Developer Portal]({{< ref "/content/tyk-developer-portal.md" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalogue]({{< ref "/content/getting-started/tutorials/publish-api.md" >}}).
+To set up your [Developer Portal]({{< ref "/content/tyk-developer-portal.md" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalog]({{< ref "/content/getting-started/tutorials/publish-api.md" >}}).
 
 [1]: https://packagecloud.io/tyk
 [2]: /getting-started/installation/with-tyk-on-premises/on-ubuntu/#prerequisites

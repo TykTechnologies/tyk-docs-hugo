@@ -20,11 +20,11 @@ This page defines the different user roles within Tyk Cloud, so that you can see
 We have the following user roles defined in Tyk Cloud for your team members
 
 * Billing Admin
-* Organisation Admin
+* Organization Admin
 * Team Admin
 * Team Member
 
-Billing Admins are responsible for the billing management of the Tyk Cloud account. Organisation Admins, Team Admins and Team Members are responsible for managing the Tyk Cloud organisation hierarchy and deploying/managing stacks, as well as having access to the Tyk Dashboard to manage APIs. Users of Tyk Cloud are usually DevOps, Architects and sometimes Engineers or Managers.
+Billing Admins are responsible for the billing management of the Tyk Cloud account. Organization Admins, Team Admins and Team Members are responsible for managing the Tyk Cloud organization hierarchy and deploying/managing stacks, as well as having access to the Tyk Dashboard to manage APIs. Users of Tyk Cloud are usually DevOps, Architects and sometimes Engineers or Managers.
 
 You can [add users to the Tyk Dashboard]({{< ref "basic-config-and-security/security/dashboard/create-users" >}}) itself instead of inviting them as Tyk Cloud users. These users would likely be your API Developers and Engineers who manage the APIs.   
 
@@ -36,11 +36,11 @@ The following table shows the scope for each user role.
 | Use Case                                          | Billing Admin | Org Admin | Team Admin | Team Members |
 |---------------------------------------------------|---------------|-----------|------------|--------------|
 | Create a new account                              | X             |           |            |              |
-| Create a new organisation                         | X             |           |            |              |
+| Create a new organization                         | X             |           |            |              |
 | Managing a new account                            | X             |           |            |              |
-| Managing an organisation entitlement              | X             |           |            |              |
+| Managing an organization entitlement              | X             |           |            |              |
 | Ability to create other billing admins            | X             |           |            |              |
-| Editing organisation name                         | X             | X         |            |              |
+| Editing organization name                         | X             | X         |            |              |
 | Create team / delete                              |               | X         |            |              |
 | Future - Edit team entitlements                   |               | X         |            |              |
 | Invite, delete, edit org admins and team admins   |               | X         |            |              |
@@ -61,7 +61,7 @@ The following table shows the scope for each user role.
 
 The user who signs up for the initial Tyk Cloud account is uniquely assigned to two roles:
 
-1. Org admin of the organisation
+1. Org admin of the organization
 2. Billing admin of the account
 
 This is the only occasion where a user can be assigned to 2 roles. So, for example, if you invite a user to be a Team Admin, that is the only role (and team) they can belong to. For a user to be invited as a Billing admin, they can't have an existing Tyk Cloud account.

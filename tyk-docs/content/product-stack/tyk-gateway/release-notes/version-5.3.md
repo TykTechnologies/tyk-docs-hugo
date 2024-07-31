@@ -1,5 +1,5 @@
 ---
-title: Tyk Gateway 5.3 Release Notes
+title: Tyk Gateway 5.3 LTS Release Notes
 date: 2024-03-27T15:51:11Z
 description: "Release notes documenting updates, enhancements, and changes for Tyk Gateway versions within the 5.3.X series."
 tags: ["Tyk Gateway", "Release notes", "v5.3", "5.3.0", "5.3.1", "5.3", "changelog"]
@@ -551,7 +551,7 @@ We've added OpenTelemetry semantic conventions for GraphQL spans. Spans will now
 <details>
 <summary>Added support for detailed_tracing to be configured via GQL API definitions</summary>
 
-GraphQL APIs can now use the `detailed_tracing` setting in an API definition. With that property set to `true` any call to a GraphQL API will create a span for each middleware involved in request processing. While it is set to `false`, only two spans encapsulating the entire request lifecycle will be generated. This setting helps to reduce the size of traces, which can get large for GraphQL APIs. Furthermore, this gives users an option to customise the level of tracing detail to suit their monitoring needs.
+GraphQL APIs can now use the `detailed_tracing` setting in an API definition. With that property set to `true` any call to a GraphQL API will create a span for each middleware involved in request processing. While it is set to `false`, only two spans encapsulating the entire request lifecycle will be generated. This setting helps to reduce the size of traces, which can get large for GraphQL APIs. Furthermore, this gives users an option to customize the level of tracing detail to suit their monitoring needs.
 </details>
 </li>
 <li>
@@ -626,7 +626,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Prefetch session expiry information from MDCB to reduce API call duration in case Gateway is temporarily disconnected from MDCB</summary>
 
-Previously, when operating in a worker configuration (in the data plane), the Tyk Gateway fetched session expiry information from the control plane the first time an API was accessed for a given organisation. This approach led to a significant issue: if the MDCB connection was lost, the next attempt to consume the API would incur a long response time. This delay, typically around 30 seconds, was caused by the Gateway waiting for the session-fetching operation to time out, as it tried to communicate with the now-inaccessible control plane.
+Previously, when operating in a worker configuration (in the data plane), the Tyk Gateway fetched session expiry information from the control plane the first time an API was accessed for a given organization. This approach led to a significant issue: if the MDCB connection was lost, the next attempt to consume the API would incur a long response time. This delay, typically around 30 seconds, was caused by the Gateway waiting for the session-fetching operation to time out, as it tried to communicate with the now-inaccessible control plane.
 
 <br>Now, the worker gateway fetches the session expiry information up front, while there is an active connection to MDCB. This ensures that this data is already available locally in the event of an MDCB disconnection.
 

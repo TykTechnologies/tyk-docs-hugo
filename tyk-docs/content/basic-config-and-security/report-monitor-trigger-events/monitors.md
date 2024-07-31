@@ -9,7 +9,7 @@ menu:
 weight: 5 
 ---
 
-Tyk enables you to actively monitor both users and organisation quotas. The machinery that manages these active notifications is the same as webhooks and provides an easy way to notify your stakeholders, your own organisation or the API end user when certain thresholds have been reached for their token.
+Tyk enables you to actively monitor both users and organization quotas. The machinery that manages these active notifications is the same as webhooks and provides an easy way to notify your stakeholders, your own organization or the API end user when certain thresholds have been reached for their token.
 
 ## Enabling Monitors In Your Tyk Node?
 
@@ -43,11 +43,11 @@ From Dashboard v1.8.2, if you are using our [Developer Portal]({{< ref "tyk-deve
 
 
 *   `monitor_user_keys`: Set to `true` to monitor individual tokens, this may result in a large amount of webhooks.
-*   `monitor_org_keys`: Set to `true` to have global organisation quotas monitored.
+*   `monitor_org_keys`: Set to `true` to have global organization quotas monitored.
 
-## Setting custom triggers on a per-key or a per-organisation basis
+## Setting custom triggers on a per-key or a per-organization basis
 
-Sometimes you will not want to have every user have a trigger event at the same levels, you can set manual trigger levels by adding a `monitor` section to the Session Object that defines a key's access details, this can also be added to the session object of an organisation ID:
+Sometimes you will not want to have every user have a trigger event at the same levels, you can set manual trigger levels by adding a `monitor` section to the Session Object that defines a key's access details, this can also be added to the session object of an organization ID:
 
 ```json
 "monitor": {
@@ -71,4 +71,4 @@ The webhook payload will take the following format:
 }
 ```
 
-If the event is triggered by an organisation, then the `key` field will be empty, if it is an auth token, then the `key` field will have raw representation of the token that caused the quota trigger to fire.
+If the event is triggered by an organization, then the `key` field will be empty, if it is an auth token, then the `key` field will have raw representation of the token that caused the quota trigger to fire.

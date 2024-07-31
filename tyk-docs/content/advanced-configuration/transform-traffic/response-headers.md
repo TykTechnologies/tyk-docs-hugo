@@ -19,7 +19,7 @@ There are related [Request Header Transform]({{< ref "transform-traffic/request-
 
 ## When to use response header transformation
 
-#### Customising responses for specific clients
+#### Customizing responses for specific clients
 
 A frequent use case for response header transformation is when a client requires specific headers for their application to function correctly. For example, a client may require a specific header to indicate the status of a request or to provide additional information about the response.
 

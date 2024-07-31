@@ -6,7 +6,7 @@
 
 *   `name`: Human readable name of the API. It is used for identification purposes but does not act as an index.
 
-*   `slug`: The URL segment that will map to this API, e.g. if set to widgets then the full API URL will be `https://your-organisation.cloud.tyk.io/widgets`.
+*   `slug`: The URL segment that will map to this API, e.g. if set to widgets then the full API URL will be `https://your-organization.cloud.tyk.io/widgets`.
 
 *   `api_id`: The identifier for the API This should be unique, but can actually be any kind of string. For single-instance setups this can probably be set to `1`. It is recommended to make this a UUID. The `api_id` is used when querying the Tyk REST API for configuration details.
 
@@ -19,7 +19,7 @@
 *   `session_lifetime_respects_key_expiration`: If this is set to `true` and the key expiration date is less than the `session_lifetime`, the key expiration value will be set to `session_lifetime`. Don't forget that the key expiration is set in unix timestamp but `session_lifetime` is set in seconds. Also, `session_lifetime_respects_key_expiration` exists in the global config too. When the global one is set to `true`, the one set at the API level will be ignored.
 
 * `domain`: The domain to bind this API to. Multiple APIs can share the same domain, so long as their listen paths are unique.
-This domain will affect your API only. To set up the portal domain for your organisation, please register it in the main Tyk Dashboard settings file. 
+This domain will affect your API only. To set up the portal domain for your organization, please register it in the main Tyk Dashboard settings file. 
 Your Tyk Gateway can listen on multiple domains/subdomains through the use of regular expressions, more precisely the RE2 Syntax. They are defined using the format `{name}` or `{name:pattern}`. 
   * `www.example.com` Matches only if domain is www.example.com
   * `{subdomain:[a-z]+}.example.com` Matches dynamic subdomain
