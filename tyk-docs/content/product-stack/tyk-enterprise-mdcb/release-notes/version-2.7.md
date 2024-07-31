@@ -32,12 +32,6 @@ Given the time difference between your upgrade and the release of this version, 
 #### Deprecations
 There are no deprecations in this release, however with the introduction of new healthcheck endpoints we encourage customers to start using the new `/liveness` and `/readiness` endpoints and avoid using the old `/health` endpoint.
 
-###### Changes in MDCB v2.7.0:
-- Added `/liveness` endpoint for quick checks on MDCB application status.
-- Implemented `/readiness` endpoint to detail status of critical components and dependencies.
-- Introduced `/config` endpoint for secure, real-time access to MDCB instance configuration.
-- Updated API definition for compatibility with Tyk Gateway 5.5.0.
-
 ###### Recommendations for users:
 
 - Migrate to new health check endpoints in order to get more detailed information. For Kubernetes users, use Helm Charts v1.6 to upgrade MDCB to set liveness and readiness probes of MDCB deployment to the new health check endpoints.
