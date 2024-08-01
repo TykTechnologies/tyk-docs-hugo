@@ -104,7 +104,7 @@ helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release: -->
 
 ##### Updated MDCB Health check probes
-MDCB v2.7.0 release introduces /liveness and /readiness probes which give more accurate and detail health check information. MDCB dpeloyment has been updated to use the new endpoints. See [MDCB Health Check]({{<ref "tyk-multi-data-centre/setup-controller-data-centre#health-check">}}) section for information about the new probes.
+MDCB v2.7.0 release introduces `/liveness` and `/readiness` probes which give more accurate and detail health check information. MDCB deployment has been updated to use the new endpoints. See [MDCB Health Check]({{<ref "tyk-multi-data-centre/setup-controller-data-centre#health-check">}}) section for information about the new probes.
 
 ##### Updated default Tyk versions
 Tyk Charts 1.6 will install the following Tyk component versions by default.
@@ -145,7 +145,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>MDCB: Added option to configure healthcheck cache renewal period</summary>
 
-Added `mdcb.healthcheck.cache_renewal_period` which configures the time interval (in seconds) at which the healthchecker refreshes its cached health status information (redis and DB). Default to 10 (seconds).
+Added `mdcb.healthcheck.cache_renewal_period` which configures the time interval (in seconds) at which the healthchecker refreshes its cached health status information (Redis and DB). Default to 10 (seconds).
 </details>
 </li>
 
@@ -201,7 +201,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>MDCB: Updated liveness and readiness probes</summary>
 
-Updated MDCB liveness and readiness probes to /liveness and /readiness respectively. These endpoints are available from MDCB v2.7.0. If you are deploying an earlier version of MDCB, please update the paths to /health in values.yaml file.
+Updated MDCB liveness and readiness probes to `/liveness` and `/readiness` respectively. These endpoints are available from MDCB v2.7.0. If you are deploying an earlier version of MDCB, please update the paths to `/health` in values.yaml file.
 </details>
 </li>
 </ul>
@@ -213,7 +213,7 @@ Updated MDCB liveness and readiness probes to /liveness and /readiness respectiv
 <details>
 <summary>Portal: Ingress resource should not be created if not enabled</summary>
 
-Fixed the issue that when Developer Portal component is enabled, an Ingress resource is being created, although portal ingress is not enabled.
+Fixed the issue that when Developer Portal component is enabled, an Ingress resource is being created, although Portal Ingress is not enabled.
 </details>
 </li>
 
