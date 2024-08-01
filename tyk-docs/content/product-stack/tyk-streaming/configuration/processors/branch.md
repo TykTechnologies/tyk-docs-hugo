@@ -4,7 +4,7 @@ description: Branch Processor
 tags: ["Branch","Processors","Composition"]
 ---
 
-The `branch` processor allows you to create a new request message via a [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) mapping, execute a list of processors on the request messages, and, finally, map the result back into the source message using another mapping.
+The `branch` processor allows you to create a new request message via a [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mapping, execute a list of processors on the request messages, and, finally, map the result back into the source message using another mapping.
 
 ```yml
 # Config fields, showing default values
@@ -33,7 +33,7 @@ If the root of your request map is set to `deleted()` then the branch processors
 
 ### request_map
 <!-- TODO: add a link -->
-A [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) mapping that describes how to create a request payload suitable for the child processors of this branch. If left empty then the branch will begin with an exact copy of the origin message (including metadata).
+A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mapping that describes how to create a request payload suitable for the child processors of this branch. If left empty then the branch will begin with an exact copy of the origin message (including metadata).
 
 
 Type: `string`  
@@ -65,7 +65,7 @@ Type: `array`
 
 ### result_map
 
-A [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) mapping that describes how the resulting messages from branched processing should be mapped back into the original payload. If left empty the origin message will remain unchanged (including metadata).
+A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mapping that describes how the resulting messages from branched processing should be mapped back into the original payload. If left empty the origin message will remain unchanged (including metadata).
 
 
 Type: `string`  
