@@ -27,8 +27,9 @@ module, as defined by FIPS 140-2, is a set of hardware, software, firmware, or s
 cryptographic functions or processes, including cryptographic algorithms and optional key generation, and is contained
 within a defined cryptographic boundary.
 
-FIPS 140-2 validation is performed by accredited [Cryptographic and Security Testing](https://csrc.nist.rip/Projects/cryptographic-module-validation-program/Standards#:~:text=FIPS%20140%2D2%20(effective%2015%2DNov%2D2001)&text=NVLAP%20accredited%20Cryptographic%20and%20Security,for%20Cryptographic%20Modules%20%5B%20PDF%20%5D.) (CST) laboratories. The validation covers various aspects of the cryptographic module, including Electromagnetic Interference/Electromagnetic Compatibility (EMI/EMC), Cryptographic Module Specification, and mitigation of Other Attacks.
-
+FIPS 140-2 validation is performed by accredited [Cryptographic and Security Testing](https://csrc.nist.rip/Projects/cryptographic-module-validation-program/Standards#:~:text=FIPS%20140%2D2%20(effective%2015%2DNov%2D2001)&text=NVLAP%20accredited%20Cryptographic%20and%20Security,for%20Cryptographic%20Modules%20%5B%20PDF%20%5D.)
+(CST) laboratories. The validation covers various aspects of the cryptographic module, including Electromagnetic
+Interference/Electromagnetic Compatibility (EMI/EMC), Cryptographic Module Specification, and mitigation of Other Attacks.
 For more information, please check the detailed section on the
 [importance of FIPS compliance]({{< ref "#importance-of-FIPS-Compliance">}}).
 
