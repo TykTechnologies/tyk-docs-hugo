@@ -1,6 +1,6 @@
 ---
 title: Tyk Charts 1.6 Release Notes
-date: 2024-07-31T15:49:11Z
+date: 2024-07-31T15:49:10Z
 description: "Release notes documenting updates, enhancements and changes for Tyk Charts versions within the 1.6 series."
 tags: ["Tyk Charts", "Release notes", "changelog", "v1.6" ]
 ---
