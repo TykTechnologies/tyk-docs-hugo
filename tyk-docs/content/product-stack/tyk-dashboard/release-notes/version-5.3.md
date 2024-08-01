@@ -126,7 +126,7 @@ Addressed an issue in SSO where user permissions were not correctly applied, ens
 </li>
 <li>
 <details>
-<summary>Dashboard blank page issue when retrieving key for API with mTLS and Dynamic JWT Auth fixed</summary>
+<summary>Dashboard blank page issue when retrieving key for API with mTLS and dynamic JWT Auth fixed</summary>
 
 Resolved a bug causing the Dashboard UI to display a blank page when creating a key for an API using static mTLS with dynamic JWT authentication. 
 </details>
