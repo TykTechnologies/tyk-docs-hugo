@@ -82,7 +82,7 @@ Please refer to the [changelog]({{< ref "#Changelog-v2.7.0">}}) below.
    <li>
   <details>
    <summary> Implemented `/readiness` endpoint to detail status of critical components and dependencies </summary>
-   Added `/readiness` endpoint that report if MDCB is ready to serve request. It returns status 200 if MDCB is ready. It returns status 503 if MDCB or one of the dependencies is not ready. For more details, see [MDCB Health check]({{<ref "tyk-multi-data-centre/setup-controller-data-centre#health-check">}}) section.
+   Added `/readiness` endpoint that reports if MDCB is ready to serve request. It returns status 200 if MDCB is ready. It returns status 503 if MDCB or one of the dependencies is not ready. For more details, see [MDCB Health check]({{<ref "tyk-multi-data-centre/setup-controller-data-centre#health-check">}}) section.
       </details>
   </li>
    <li>
