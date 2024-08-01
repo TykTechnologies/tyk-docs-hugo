@@ -552,7 +552,7 @@ Key/value pairs to add to OAUTHBEARER authentication requests.
 
 Type: `object`  
 
-### `sasl[].aws`
+### sasl[].aws
 
 Contains AWS specific fields for when the `mechanism` is set to `AWS_MSK_IAM`.
 

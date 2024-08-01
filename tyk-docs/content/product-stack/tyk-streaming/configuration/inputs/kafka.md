@@ -101,7 +101,7 @@ By default messages of a topic partition can be processed in parallel, up to a l
 
 ### Troubleshooting
 
-If you're seeing issues writing to or reading from Kafka with this component then it's worth trying out the newer [`kafka_franz` input]({{< ref "/product-stack/tyk-streaming/configuration/inputs/kafka-franz" >}}).
+If you're seeing issues writing to or reading from Kafka with this component then it's worth trying out the newer [kafka_franz input]({{< ref "/product-stack/tyk-streaming/configuration/inputs/kafka-franz" >}}).
 
 - I'm seeing logs that report `Failed to connect to kafka: kafka: client has run out of available brokers to talk to (Is your cluster reachable?)`, but the brokers are definitely reachable.
 
