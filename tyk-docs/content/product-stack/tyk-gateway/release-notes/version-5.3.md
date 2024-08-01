@@ -132,7 +132,7 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
  <details>
- <summary>Optimised Key Creation to Reduce Redundant Redis Commands</summary>
+ <summary>Optimised key creation to reduce redundant Redis commands</summary>
 
 Addressed an issue where creating or resetting a key caused an exponential number of Redis DeleteRawKey commands. Previously, the key creation sequence repeated for every API in the access list, leading to excessive deletion events, especially problematic for access lists with over 100 entries. Now, the key creation sequence executes only once, and redundant deletion of non-existent keys in Redis has been eliminated, significantly improving performance and stability for larger access lists.
 </details>
