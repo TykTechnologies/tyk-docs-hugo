@@ -119,7 +119,7 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Save API Button now visible for all users</summary>
+<summary>Save API button now visible for all users</summary>
 
 Addressed an issue in SSO where user permissions were not correctly applied, ensuring the Save API button is visible to all users in the Dashboard UI.
 </details>
