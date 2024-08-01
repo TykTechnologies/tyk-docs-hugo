@@ -13,7 +13,11 @@ label: ""
 bloblang: ""
 ```
 
+<<<<<<< HEAD
 Bloblang is a powerful language that enables a wide range of mapping, transformation and filtering tasks.
+=======
+[Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) is a powerful language that enables a wide range of mapping, transformation and filtering tasks.
+>>>>>>> 1dc7956d0... Tyk Streams: [DX-1407, DX-1551] Rate Limits (#5050)
 
 If your mapping is large and you'd prefer for it to live in a separate file then you can execute a mapping directly from a file with the expression `from "<path>"`, where the path must be absolute, or relative from the location that Tyk Streams is executed from.
 
@@ -99,8 +103,16 @@ pipeline:
 
 ## Error Handling
 
+<<<<<<< HEAD
 Bloblang mappings can fail, in which case the message remains unchanged, errors are logged, and the message is flagged as having failed, allowing you to use
 <!-- TODO - add link [standard processor error handling patterns](/docs/configuration/error_handling). -->
 
 However, Bloblang itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behaviour.
 <!-- TODO - add link which you can read about [in this section](/docs/guides/bloblang/about#error-handling). -->
+=======
+[Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mappings can fail, in which case the message remains unchanged, errors are logged, and the message is flagged as having failed, allowing you to use [standard processor error handling patterns]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/error-handling" >}}).
+
+<!-- TODO add fallback link -->
+
+<!-- However, [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) itself also provides powerful ways of ensuring your mappings do not fail by specifying desired [fallback behavior]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/error-handling" >}}). -->
+>>>>>>> 1dc7956d0... Tyk Streams: [DX-1407, DX-1551] Rate Limits (#5050)

@@ -351,9 +351,13 @@ command: ${! meta("command") }
 
 ### args_mapping
 
+<<<<<<< HEAD
 <!-- TODO: add a link -->
 A Bloblang mapping which should evaluate to an array of values matching in size to the
 number of arguments required for the specified Redis command.
+=======
+A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mapping which should evaluate to an array of values matching in size to the number of arguments required for the specified Redis command.
+>>>>>>> 1dc7956d0... Tyk Streams: [DX-1407, DX-1551] Rate Limits (#5050)
 
 Type: `string`
 

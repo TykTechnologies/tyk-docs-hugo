@@ -4,7 +4,11 @@ description: Branch Processor
 tags: ["Branch","Processors","Composition"]
 ---
 
+<<<<<<< HEAD
 The `branch` processor allows you to create a new request message via a Bloblang mapping, execute a list of processors on the request messages, and, finally, map the result back into the source message using another mapping.
+=======
+The `branch` processor allows you to create a new request message via a [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mapping, execute a list of processors on the request messages, and, finally, map the result back into the source message using another mapping.
+>>>>>>> 1dc7956d0... Tyk Streams: [DX-1407, DX-1551] Rate Limits (#5050)
 
 ```yml
 # Config fields, showing default values
@@ -33,7 +37,11 @@ If the root of your request map is set to `deleted()` then the branch processors
 
 ### request_map
 <!-- TODO: add a link -->
+<<<<<<< HEAD
 A Bloblang mapping that describes how to create a request payload suitable for the child processors of this branch. If left empty then the branch will begin with an exact copy of the origin message (including metadata).
+=======
+A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mapping that describes how to create a request payload suitable for the child processors of this branch. If left empty then the branch will begin with an exact copy of the origin message (including metadata).
+>>>>>>> 1dc7956d0... Tyk Streams: [DX-1407, DX-1551] Rate Limits (#5050)
 
 
 Type: `string`  
@@ -65,7 +73,11 @@ Type: `array`
 
 ### result_map
 
+<<<<<<< HEAD
 A Bloblang mapping that describes how the resulting messages from branched processing should be mapped back into the original payload. If left empty the origin message will remain unchanged (including metadata).
+=======
+A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mapping that describes how the resulting messages from branched processing should be mapped back into the original payload. If left empty the origin message will remain unchanged (including metadata).
+>>>>>>> 1dc7956d0... Tyk Streams: [DX-1407, DX-1551] Rate Limits (#5050)
 
 
 Type: `string`  

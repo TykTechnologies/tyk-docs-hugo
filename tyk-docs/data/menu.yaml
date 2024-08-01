@@ -4028,6 +4028,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/protobuf
             category: Page
             show: True
+          - title: "Rate Limit"
+            path: /product-stack/tyk-streaming/configuration/processors/rate-limit 
+            category: Page
+            show: True
           - title: "Redis"
             path: /product-stack/tyk-streaming/configuration/processors/redis
             category: Page
@@ -4056,6 +4060,97 @@ menu:
             path: /product-stack/tyk-streaming/configuration/common-configuration/interpolation
             category: Page
             show: True
+<<<<<<< HEAD
+=======
+      - title: "Guides"
+        category: Directory
+        show: True
+        menu:
+        - title: "Bloblang"
+          category: Directory
+          show: True
+          menu:
+          - title: "Overview"
+            path: "/product-stack/tyk-streaming/guides/bloblang/overview"
+            category: Page
+            show: True
+          - title: "Advanced"
+            path: "/product-stack/tyk-streaming/guides/bloblang/advanced"
+            category: Page
+            show: True
+          - title: "Arithmetic"
+            path: "/product-stack/tyk-streaming/guides/bloblang/arithmetic"
+            category: Page
+            show: True
+          - title: "Functions"
+            path: "/product-stack/tyk-streaming/guides/bloblang/functions"
+            category: Page
+            show: True
+          - title: "Methods"
+            category: Directory
+            show: True
+            menu:
+            - title: "Overview"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/overview"
+              category: Page
+              show: True 
+            - title: "General"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/general"
+              category: Page
+              show: True 
+            - title: "Encoding and encryption"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/encoding-and-encryption"
+              category: Page
+              show: True
+            - title: "GeoIP"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/geoip"
+              category: Page
+              show: True
+            - title: "JSON web tokens"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/json-web-tokens"
+              category: Page
+              show: True
+            - title: "Number Manipulation"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/numbers"
+              category: Page
+              show: True
+            - title: "String Manipulation"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/strings"
+              category: Page
+              show: True
+            - title: "Objects and Arrays"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/object-and-arrays"
+              category: Page
+              show: True
+            - title: "Regular expressions"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/regular-expressions"
+              category: Page
+              show: True
+            - title: "Parsing"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/parsing"
+              category: Page
+              show: True
+            - title: "Timestamp Manipulation"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/timestamps"
+              category: Page
+              show: True
+            - title: "Type Coercion"
+              path: "/product-stack/tyk-streaming/guides/bloblang/methods/type-coercion"
+              category: Page
+              show: True
+      - title: "Rate Limits"
+        category: Directory
+        show: true
+        menu:
+        - title: "Overview"
+          path: /product-stack/tyk-streaming/configuration/rate-limits/overview 
+          category: Page
+          show: True
+        - title: "Local"
+          path: /product-stack/tyk-streaming/configuration/rate-limits/local
+          category: Page
+          show: True
+>>>>>>> 1dc7956d0... Tyk Streams: [DX-1407, DX-1551] Rate Limits (#5050)
       - title: "Deployment Considerations"
         path: /product-stack/tyk-streaming/deployment-considerations
         category: Page

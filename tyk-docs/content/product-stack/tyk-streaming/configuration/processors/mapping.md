@@ -3,8 +3,13 @@ title: Mapping
 description: Explains an overview of mapping
 tags: [ "Mapping", "Parsing","Processors" ]
 ---
+<<<<<<< HEAD
 <!-- TODO: add a link -->
 Executes a Bloblang mapping on messages, creating a new document that replaces (or filters) the original message.
+=======
+
+Executes a [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mapping on messages, creating a new document that replaces (or filters) the original message.
+>>>>>>> 1dc7956d0... Tyk Streams: [DX-1407, DX-1551] Rate Limits (#5050)
 
 
 ```yml
@@ -12,8 +17,13 @@ Executes a Bloblang mapping on messages, creating a new document that replaces (
 label: ""
 mapping: "" # No default (required)
 ```
+<<<<<<< HEAD
 <!-- TODO: add a link -->
 Bloblang is a powerful language that enables a wide range of mapping, transformation and filtering tasks.
+=======
+
+[Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) is a powerful language that enables a wide range of mapping, transformation and filtering tasks.
+>>>>>>> 1dc7956d0... Tyk Streams: [DX-1407, DX-1551] Rate Limits (#5050)
 
 If your mapping is large, and you'd prefer for it to live in a separate file then you can execute a mapping directly from a file with the expression `from "<path>"`, where the path must be absolute, or relative from the location that Tyk Streams is executed from.
 
@@ -37,7 +47,13 @@ Mapping documents is advantageous in situations where the result is a document w
 <!-- TODO: add a link -->
 Bloblang mappings can fail, in which case the message remains unchanged, errors are logged, and the message is flagged as having failed, allowing you to use standard processor error handling patterns.
 
+<<<<<<< HEAD
 However, Bloblang itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behaviour.
+=======
+[Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mappings can fail, in which case the message remains unchanged, errors are logged, and the message is flagged as having failed, allowing you to use standard processor error handling patterns.
+
+However, [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behavior.
+>>>>>>> 1dc7956d0... Tyk Streams: [DX-1407, DX-1551] Rate Limits (#5050)
 
 
 ## Examples

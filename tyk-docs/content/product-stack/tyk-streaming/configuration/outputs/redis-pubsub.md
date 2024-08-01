@@ -318,7 +318,11 @@ period: 500ms
 
 ### batching.check
 
+<<<<<<< HEAD
 A Bloblang query that should return a boolean value indicating whether a message should end a batch.
+=======
+A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) query that should return a boolean value indicating whether a message should end a batch.
+>>>>>>> 1dc7956d0... Tyk Streams: [DX-1407, DX-1551] Rate Limits (#5050)
 
 Type: `string`  
 Default: `""`  

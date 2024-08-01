@@ -4,8 +4,12 @@ description: Mutation Processor
 tags: ["Processors","Mapping","Parsing" ]
 ---
 
+<<<<<<< HEAD
 <!-- TODO: add a link -->
 Executes a Bloblang mapping and directly transforms the contents of messages, mutating (or deleting) them.
+=======
+Executes a [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mapping and directly transforms the contents of messages, mutating (or deleting) them.
+>>>>>>> 1dc7956d0... Tyk Streams: [DX-1407, DX-1551] Rate Limits (#5050)
 
 
 
@@ -15,8 +19,12 @@ label: ""
 mutation: "" # No default (required)
 ```
 
+<<<<<<< HEAD
 <!-- TODO: add a link -->
 Bloblang is a powerful language that enables a wide range of mapping, transformation and filtering tasks.
+=======
+[Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) is a powerful language that enables a wide range of mapping, transformation and filtering tasks.
+>>>>>>> 1dc7956d0... Tyk Streams: [DX-1407, DX-1551] Rate Limits (#5050)
 
 If your mapping is large and you'd prefer for it to live in a separate file then you can execute a mapping directly from a file with the expression `from "<path>"`, where the path must be absolute, or relative from the location that Tyk Streams is executed from.
 
@@ -44,7 +52,13 @@ Mutations are advantageous over a standard mapping in situations where the resul
 <!-- TODO: add a link -->
 Bloblang mappings can fail, in which case the error is logged and the message is flagged as having failed, allowing you to use standard processor error handling patterns.
 
+<<<<<<< HEAD
 However, Bloblang itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behaviour.
+=======
+[Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mappings can fail, in which case the error is logged and the message is flagged as having failed, allowing you to use standard processor error handling patterns.
+
+However, [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behavior.
+>>>>>>> 1dc7956d0... Tyk Streams: [DX-1407, DX-1551] Rate Limits (#5050)
 
 
 ## Examples
