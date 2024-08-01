@@ -31,7 +31,8 @@ FIPS 140-2 validation is performed by accredited [Cryptographic and Security Tes
 (CST) laboratories. The validation covers various aspects of the cryptographic module, including Electromagnetic
 Interference/Electromagnetic Compatibility (EMI/EMC), Cryptographic Module Specification, and mitigation of Other Attacks.
 For more information, please check the detailed section on the
-[importance of FIPS compliance]({{< ref "#importance-of-FIPS-Compliance">}}).
+[importance of FIPS compliance]({{< ref "#importance-of-FIPS-Compliance">}}). You can also learn about its significance
+in the context of [API management]({{< ref "#importance-of-FIPS-Compliance-in-API-Management" >}}).]
 
 ## Tyk's FIPS Compliance
 
@@ -105,22 +106,20 @@ A: Tyk provides FIPS 140-2 compliance, ensuring the use of approved algorithms i
 
 <!-- Find out
 Q: Can I use Tyk in FIPS mode in cloud environments?
-A: Yes but only for hybrid gateways deployed on your premise and connecting to the the Cloud control plane
+A: Yes but only for hybrid gateways deployed on your premise and connecting to the Cloud control plane
 
 Q: Does FIPS mode affect Tyk's performance?
 A: There may be a slight performance impact due to the use of FIPS-approved algorithms, but this is generally minimal.
 -->
 
-## Additional Resources
 
-- [Official NIST FIPS 140-2 documentation](https://csrc.nist.gov/publications/detail/fips/140/2/final)
-
-For more information on FIPS compliance in Tyk, please contact our support team or your account manager.
-
+<!--
 ## API Management
 
-FIPS validation is a prerequisite for gaining FedRAMP (Federal Risk and Authorization Management Program) authorization.
+FIPS validation is a prerequisite for gaining [FedRAMP](https://www.fedramp.gov/) (Federal Risk and Authorization
+Management Program) authorization.
 FedRAMP authorization serves as a "seal of approval" required for providing cloud services to many government entities.
+-->
 
 ## Importance of FIPS Compliance {#importance-of-FIPS-Compliance}
 
@@ -141,7 +140,7 @@ FIPS compliance is particularly important in industries such as:
 - Finance
 - Critical infrastructure
 
-### Importance of FIPS Compliance in API Management
+## Importance of FIPS Compliance in API Management  {#importance-of-FIPS-Compliance-in-API-Management}
 
 FIPS compliance is particularly important in API management for several reasons:
 
@@ -164,3 +163,10 @@ crucial part of API management.
 ensures that any cryptographic operations performed by these components also adhere to the required standards.
 8. **Identity Federation:** When API management platforms integrate with identity providers, FIPS compliance ensures
 that the cryptographic aspects of these integrations meet federal standards.
+
+
+## Additional Resources
+
+- [Official NIST FIPS 140-2 documentation](https://csrc.nist.gov/publications/detail/fips/140/2/final)
+
+For more information on FIPS compliance in Tyk, please your account manager or click to {{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}.
