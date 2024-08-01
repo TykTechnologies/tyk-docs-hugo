@@ -4455,6 +4455,10 @@ menu:
           path: /developer-support/special-releases-and-features/early-access-features
           category: Page
           show: True
+        - title: "FIPS Releases"
+          path: /developer-support/special-releases-and-features/fips-release
+          category: Page
+          show: True
     - title: "Frequently Asked Questions"
       category: Directory
       show: True
