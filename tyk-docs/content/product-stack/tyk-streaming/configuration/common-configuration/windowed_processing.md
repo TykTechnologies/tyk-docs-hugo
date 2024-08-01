@@ -66,7 +66,7 @@ pipeline:
 
 ## Aggregating
 
-Once our window has been grouped the next step is to calculate the aggregated passenger and unique cars counts. For this purpose the [Bloblang query language]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) comes in handy as the method [from_all]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods#from_all" >}}) executes the target function against the entire batch and returns an array of the values, allowing us to mutate the result with chained methods such as [sum]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods#sum" >}}):
+Once our window has been grouped the next step is to calculate the aggregated passenger and unique cars counts. For this purpose the [Bloblang query language]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) comes in handy as the method [from_all]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods/general#from_all" >}}) executes the target function against the entire batch and returns an array of the values, allowing us to mutate the result with chained methods such as [sum]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods/general#sum" >}}):
 
 ```yaml
 pipeline:
@@ -92,4 +92,4 @@ pipeline:
         }
 ```
 
-[Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) is very powerful, and by using [from]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods#from" >}}) and [from_all]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods#from_all" >}}) it's possible to perform a wide range of batch-wide processing.
+[Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) is very powerful, and by using [from]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods/general#from" >}}) and [from_all]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods/general#from_all" >}}) it's possible to perform a wide range of batch-wide processing.
