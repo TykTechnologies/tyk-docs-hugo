@@ -23,7 +23,7 @@ Our minor releases are supported until our next minor comes out.
 ## 5.3.3 Release Notes
 
 
-### Release Date xxx
+### Release Date August 2nd 2024
 
 
 ### Breaking Changes
