@@ -102,6 +102,7 @@ For information on plug-ins, dependencies, or other components, please contact y
 ## Frequently Asked Questions
 
 Q: What level of FIPS 140-2 compliance does Tyk support?
+
 A: Tyk provides FIPS 140-2 compliance, ensuring the use of approved algorithms in FIPS mode.
 
 <!-- Find out
