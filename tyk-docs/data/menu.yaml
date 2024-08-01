@@ -4092,6 +4092,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/protobuf
             category: Page
             show: True
+          - title: "Rate Limit"
+            path: /product-stack/tyk-streaming/configuration/processors/rate-limit 
+            category: Page
+            show: True
           - title: "Redis"
             path: /product-stack/tyk-streaming/configuration/processors/redis
             category: Page
@@ -4208,6 +4212,18 @@ menu:
               path: "/product-stack/tyk-streaming/guides/bloblang/methods/type-coercion"
               category: Page
               show: True
+      - title: "Rate Limits"
+        category: Directory
+        show: true
+        menu:
+        - title: "Overview"
+          path: /product-stack/tyk-streaming/configuration/rate-limits/overview 
+          category: Page
+          show: True
+        - title: "Local"
+          path: /product-stack/tyk-streaming/configuration/rate-limits/local
+          category: Page
+          show: True
       - title: "Deployment Considerations"
         path: /product-stack/tyk-streaming/deployment-considerations
         category: Page
