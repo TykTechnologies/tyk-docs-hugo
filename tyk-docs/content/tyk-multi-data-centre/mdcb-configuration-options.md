@@ -30,8 +30,8 @@ Environment variables (env var) can be used to override the settings defined in 
 |**Tyk Gateway**          |                |
 |Management API           |      8080      |
 |**MDCB**                 |                |
-|RPC Listen               |      9091      |
-|Healthcheck              |      8181      |
+|RPC services             |      9091      |
+|HTTP endpoints           |      8181      |
 
 
 {{< include "mdcb-config.md" >}}

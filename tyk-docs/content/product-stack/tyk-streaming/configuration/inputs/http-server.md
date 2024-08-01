@@ -285,7 +285,7 @@ Default: `[]`
 ### sync_response
 
 <!-- TODO add links to synchronous responses -->
-Customise messages returned via synchronous responses.
+Customize messages returned via synchronous responses.
 
 
 Type: `object`  

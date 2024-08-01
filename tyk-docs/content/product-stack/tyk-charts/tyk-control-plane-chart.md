@@ -507,7 +507,7 @@ To add your custom Certificate Authority(CA) to your containers, you can mount y
 ```
 
 #### Enabling gateway autoscaling
-You can enable autoscaling of the gateway by `--set tyk-gateway.gateway.autoscaling.enabled=true`. By default, it will enable the `Horizontal Pod Autoscaler` resource with target average CPU utilization at 60%, scaling between 1 and 3 instances. To customise those values you can modify the `tyk-gateway` section of `values.yaml` as shown below:
+You can enable autoscaling of the gateway by `--set tyk-gateway.gateway.autoscaling.enabled=true`. By default, it will enable the `Horizontal Pod Autoscaler` resource with target average CPU utilization at 60%, scaling between 1 and 3 instances. To customize those values you can modify the `tyk-gateway` section of `values.yaml` as shown below:
 
 ```yaml
 tyk-gateway:
@@ -745,7 +745,7 @@ During bootstrapping, admin user needs to reset its password. It may be denied b
 
 #### Bootstrapped Environments
 
-If Tyk is already bootstrapped, the application will bypass the creation of the Tyk Organisation and Admin User, proceeding directly with the creation of Kubernetes Secrets.
+If Tyk is already bootstrapped, the application will bypass the creation of the Tyk Organization and Admin User, proceeding directly with the creation of Kubernetes Secrets.
 
 Given that the Kubernetes Secrets require values for `TYK_AUTH` and `TYK_ORG`, it is essential to provide these values through the respective environment variables, called `TYK_K8SBOOTSTRAP_TYK_ADMIN_AUTH` for `TYK_AUTH` and `TYK_K8SBOOTSTRAP_TYK_ORG_ID` for `TYK_ORG`.
 

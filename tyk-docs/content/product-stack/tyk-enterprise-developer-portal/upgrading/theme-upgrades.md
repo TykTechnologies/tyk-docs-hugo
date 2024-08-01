@@ -12,11 +12,11 @@ weight: 1
 
 ## Overview
 
-The Tyk Enterprise Developer Portal does not automatically update the default theme with each new release of the product, because doing so could result in the loss of customisations made by customers.
+The Tyk Enterprise Developer Portal does not automatically update the default theme with each new release of the product, because doing so could result in the loss of customizations made by customers.
 Therefore, customers are required to manually upgrade their themes to access the latest updates and fixes. We recommend using GitFlow for the latest theme updates.
 Alternatively, you can download the theme package from the **Releases** section of the [portal-default-theme](https://github.com/TykTechnologies/portal-default-theme) repository.
-However, we advise against this method, as it requires you to merge your customised theme with the downloaded one, which is much simpler to accomplish via GitFlow.
-Follow the guide below to obtain the latest version of the portal theme and merge it with your customised version.
+However, we advise against this method, as it requires you to merge your customized theme with the downloaded one, which is much simpler to accomplish via GitFlow.
+Follow the guide below to obtain the latest version of the portal theme and merge it with your customized version.
 
 ## Updating Tyk Enterprise Developer Portal themes via gitflow
 
@@ -28,7 +28,7 @@ The `main` branch contains code corresponding to the latest stable release. If y
 git checkout tags/1.8.3 -b my-custom-theme branch
 ```
 
-To organise local development in a way that facilitates seamless theme updates using git merge, follow the steps below:
+To organize local development in a way that facilitates seamless theme updates using git merge, follow the steps below:
 1. Fork the `portal-default-theme` repo in [github](https://github.com/TykTechnologies/portal-default-theme).
    {{< img src="/img/dashboard/portal-management/enterprise-portal/fork-portal-theme-repo.png" alt="Fork the portal-theme repo" >}}
 
@@ -66,13 +66,13 @@ git checkout portal-default-theme-main
 git pull portal-default-theme main
 ```
 
-6. To start customising the theme, create a local develop branch from the `portal-default-theme-main`:
+6. To start customizing the theme, create a local develop branch from the `portal-default-theme-main`:
 ```console
 git checkout portal-default-theme-main
 git checkout -b dev-branch
 ```
 
-7. Once the required customisations are completed, commit the changes to the `dev-branch`.
+7. Once the required customizations are completed, commit the changes to the `dev-branch`.
 
 8. Merge the latest updates from the `portal-default-theme` into the `dev-branch`. Please remember to always pull the latest changes from the `portal-default-theme-main` branch before merging:
   - Checkout to the portal-default-theme-main and fetch the latest changes.
@@ -80,7 +80,7 @@ git checkout -b dev-branch
     git checkout portal-default-theme-main
     git pull portal-default-theme main
     ```
-  - Checkout the dev-branch and merge the changes from the portal-default-theme-main to retrieve the latest changes from the portal-default-theme repo with the customised theme.
+  - Checkout the dev-branch and merge the changes from the portal-default-theme-main to retrieve the latest changes from the portal-default-theme repo with the customized theme.
     ```console
     git checkout dev-branch
     git merge portal-default-theme-main
@@ -91,13 +91,13 @@ Finally, address merge conflicts and commit changes.
 {{< note success >}}
 **You have successfully updated your custom theme**
 
-Now you can repeat the above described process when upgrading the portal version to make sure you have incorporated the latest theme changes to your customised theme.
+Now you can repeat the above described process when upgrading the portal version to make sure you have incorporated the latest theme changes to your customized theme.
 
 {{< /note >}}
 
 ## Upload the theme to the portal
-Once you have merged your local changes with the latest changes from the `portal-default-theme` repo, you need to create a zip archive with the customised theme and upload it to the portal.
-1. Create a zip archive with the customised theme. Make sure you zip the content of the `src` folder and not the folder itself. To create a zip archive with the customised theme execute the following:
+Once you have merged your local changes with the latest changes from the `portal-default-theme` repo, you need to create a zip archive with the customized theme and upload it to the portal.
+1. Create a zip archive with the customized theme. Make sure you zip the content of the `src` folder and not the folder itself. To create a zip archive with the customized theme execute the following:
    - cd to the `src` directory to make sure you:
     ```console
     cd ./src

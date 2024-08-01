@@ -14,7 +14,7 @@ aliases:
 
 ## Introduction
 
-Environments are used to group your [Control Plane]({{< ref "tyk-cloud/troubleshooting-&-support/glossary.md#control-plane" >}}) and [Cloud Data Planes]({{< ref "tyk-cloud/troubleshooting-&-support/glossary.md#cloud-data-plane" >}}) into logical groups. For example you may want to create environments that reflect different departments of your organisation.
+Environments are used to group your [Control Plane]({{< ref "tyk-cloud/troubleshooting-&-support/glossary.md#control-plane" >}}) and [Cloud Data Planes]({{< ref "tyk-cloud/troubleshooting-&-support/glossary.md#cloud-data-plane" >}}) into logical groups. For example you may want to create environments that reflect different departments of your organization.
 
 {{< note success >}}
 **Note**
@@ -53,7 +53,7 @@ An Org Admin can perform the following:
 
 {{< img src="/img/admin/tyk-cloud-env-screen.png" alt="Env Edit Screen" >}}
 
-3. You can now rename the environment, or delete it from your organisation
+3. You can now rename the environment, or delete it from your organization
 
 {{< img src="/img/admin/tyk-cloud-rename-delete.png" alt="Delete or Rename Env" >}}
 

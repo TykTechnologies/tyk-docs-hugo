@@ -52,25 +52,7 @@ Tyk will look in the First part of the URL Path for the version information. For
     "location": "url"
   }
 }
-```
-{{< note success >}}
-**Note**  
-
-Similar to other routers, matching is performed on a first-come-first-served basis.
-<br/>
-Ensure that specific paths are higher up the list than generic ones.
-{{< /note >}}
-    
-```
-// In this example, PATH1 will always match, and /do-something will never match
-PATH1: (.*)
-PATH2: /do-something
-
-// In this example, (.*) will only match if /do-something did not match
-PATH1: /do-something
-PATH2: (.*)
-```
-
+ 
 * `version_data`: Information relating to your actual version are stored here, if you do not wish to use versioning, use the `not_versioned` option and set up an entry called `Default` (see below).
 
 * `version_data.not_versioned`: If set to `true` Tyk will skip version checking, you can still block or allow information to your API by specifying a `Default` version within the `versions` map.

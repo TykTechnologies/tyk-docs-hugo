@@ -28,15 +28,15 @@ Here are the most popular ways to secure your APIs.
 ## 2. Request Signing
 
 Tyk can [sign the request with HMAC or RSA]({{< ref "product-stack/tyk-gateway/release-notes/archived-releases/version-2.9.md#hmac-request-signing" >}}), before sending it to the API target. This is an implementation of an [RFC Signing HTTP Messages(draft 10)](https://datatracker.ietf.org/doc/html/draft-cavage-http-signatures-10). This RFC was designed to provide authenticity of the digital signature of the client. In our flow, the Tyk Cloud Data Planes, as the client, using a certificate private key, will add a header signature to the request. The API, using a pre-agreed public key (based on a meaningful keyId identifier) will verify the authenticity of the request coming from your Tyk Cloud Data Plane.
- A limitation is that the APIs or LB need to implement this signature verification and be able to update the certificates as mentioned in [Mutual TLS or Client authorisation](#1-mutual-tls-or-client-authorisation).
+ A limitation is that the APIs or LB need to implement this signature verification and be able to update the certificates as mentioned in [Mutual TLS or Client authorization](#1-mutual-tls-or-client-authorization).
 
  ## 3. IP Whitelisting
 
- Each Tyk Cloud organisation is dedicated to an IP range which is unique to them. This allows you to restrict access to your APIs to only API requests coming from your Tyk Cloud organisation.  
+ Each Tyk Cloud organization is dedicated to an IP range which is unique to them. This allows you to restrict access to your APIs to only API requests coming from your Tyk Cloud organization.  
 
 IP Whitelisting is susceptible to IP Spoofing, and it is recommended to be combined with an API Key in secure environments.
 
-In order to find your organisation’s IP range, please open a support ticket with our support team, which is available to all paying customers.
+In order to find your organization’s IP range, please open a support ticket with our support team, which is available to all paying customers.
 
 ## 4. Post plugin with OAuth flow
 

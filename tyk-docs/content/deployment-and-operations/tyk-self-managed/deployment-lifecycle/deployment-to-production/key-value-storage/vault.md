@@ -39,7 +39,7 @@ Alternatively, you can configure it using the equivalent [environment variables]
 
 ### How key-value data is stored in Vault
 
-In traditional systems secrets are typically stored individually, each with their own unique key. Vault, however, allows for a more flexible approach where multiple *keys* can be grouped together and stored under a single *secret*. This grouping allows for better organisation and management of related secrets, making it easier to retrieve and manage them collectively.
+In traditional systems secrets are typically stored individually, each with their own unique key. Vault, however, allows for a more flexible approach where multiple *keys* can be grouped together and stored under a single *secret*. This grouping allows for better organization and management of related secrets, making it easier to retrieve and manage them collectively.
 
 When retrieving data from Vault, you use the dot notation (`secret.key`) to access the *value* from a specific *key* within a *secret*.
 

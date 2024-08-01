@@ -22,7 +22,7 @@ We have a video that demonstrates how our Open Policy Agent enables you to add c
 ### Configuration
 
 By default the Dashboard OPA engine is turned off, and you need to explicitly enable it via your Dashboard `tyk_analytics.conf` file.
-You can then control OPA functionality on a global level via your `tyk_analytics.conf` file, or at an organisation level using either the [OPA API]({{< ref "tyk-dashboard-api/org/opa" >}}) or the [Dashboard](#using-the-open-policy-agent-in-the-dashboard).
+You can then control OPA functionality on a global level via your `tyk_analytics.conf` file, or at an organization level using either the [OPA API]({{< ref "tyk-dashboard-api/org/opa" >}}) or the [Dashboard](#using-the-open-policy-agent-in-the-dashboard).
 
 |   Key                               	|   Type        	|   Description                                                                                                          	|   Example                   	|
 |-------------------------------------	|---------------	|------------------------------------------------------------------------------------------------------------------------	|-----------------------------	|

@@ -15,7 +15,7 @@
 
 **First**: if you're unsure or afraid of anything, just ask or submit the issue or pull request anyway.
 You won't be yelled at for giving your best effort. The worst that can happen is that you'll be politely asked to change something.
-We appreciate any sort of contributions, and don't want a wall of rules to get in the way of that.
+We appreciate any sort of contributions and don't want a wall of rules to get in the way of that.
 
 However, for those individuals who want a bit more guidance on the best way to contribute to the project, read on.
 This document will cover what we're looking for.
@@ -36,47 +36,24 @@ issue](https://github.com/TykTechnologies/tyk-docs/issues/new/choose).
 
 ### Contributor License Agreements
 
-Before we can accept any PR the contributor need to sign the [TYK CLA](https://github.com/TykTechnologies/tyk/blob/master/CLA.md).
+Before we can accept any PR the contributor needs to sign the [TYK CLA](https://github.com/TykTechnologies/tyk/blob/master/CLA.md).
 
-Once you are CLA'ed, we'll be able to accept your pull requests.For any issues that you face during this process, please create a GitHub issue explaining the problem, and we will help get it sorted out.
+Once you are CLA'ed, we'll be able to accept your pull requests. For any issues that you face during this process, please create a GitHub issue explaining the problem, and we will help get it sorted out.
 
 ### Guidelines for Pull Requests
 
 We have created a few guidelines to help with creating PR. To make sure these requirements are followed we added them to the PR form as well:
 
-1. When working on an existing issue, simply respond to the issue and express interest in working on it. This helps other people know that the issue is active, and hopefully prevents duplicated efforts.
+1. When working on an existing issue, simply respond to the issue and express interest in working on it. This helps other people know that the issue is active and hopefully prevents duplicated efforts.
 2. For new ideas it is always better to open an issue and discuss your idea with our team first, before writing changing pages.
-3. Create small Pull request that address a single issue instead of multiple issues at the same time. This will make it possible for the PRs to be reviewed independently.
+3. Create a small Pull request that addresses a single issue instead of multiple issues at the same time. This will make it possible for the PRs to be reviewed independently.
 4. Make sure to run tests locally before submitting a pull request and verify that all of them are passing.
-5. CLA - Before we can accept any PR the contributor need to sign the [TYK CLA](https://github.com/TykTechnologies/tyk/blob/master/CLA.md).
-   Once you are CLA'ed, we'll be able to accept your pull requests.For any issues that you face during this process, please create a GitHub issue explaining the problem, and we will help get it sorted out.
+5. CLA - Before we can accept any PR the contributor needs to sign the [TYK CLA](https://github.com/TykTechnologies/tyk/blob/master/CLA.md).
+   Once you are CLA'ed, we'll be able to accept your pull requests. For any issues that you face during this process, please create a GitHub issue explaining the problem, and we will help get it sorted out.
 6. Tips for making sure we review your pull request faster :
-   1. Keep your pull request up to date with upstream master to avoid merge conflicts.
-   2. Use meaningful commit messages.
-   3. Provide a good PR description as a record of what change is being made and why it was made. Link to a GitHub issue if it exists.
-   4. Make sure there are no typos
-
-### Guidelines for Pull Requests Intended For Future Release
-
-To prevent PRs intended for future releases from being accidentally released
-immediately, please use GH labels. This helps us filter, distinguish and manage
-PRs for current and future releases.
-
-In this scenario two GitHub labels should be added:
-
-- A label with the release version number, e.g. 20.1
-- A label entitled future release
-
-For example, if a PR relates to a future release 20.1 then add two labels to the
-PR as follows: 20.1 future release
-
-Any additional information in the PR description would also be helpful.
-
-If no label is added to the PR then it will be released immediately once the
-reviews for the PR have been approved.
-
-Idea: Could we introduce a branching style guide also to assist with this? For
-example, a PR branch of /v20.1/feat/new_feature. Thoughts?
+   1. Keep your pull request up to date with the upstream main branch (currently called `master`) to avoid merge conflicts.
+   2. Check the `PR Agent` bot for any important suggestions, spelling mistakes or typos
+   3. The `PR Agent` bot creates a description for you. If needed, please add more info to it. Link to a GitHub issue if it exists.
 
 ### Pull Request Review Schedule
 
@@ -89,11 +66,11 @@ state the reason in the description of the PR in these circumstances.
 ### Project Structure
 
 Folder [tyk-docs/tyk-docs/content/](https://github.com/TykTechnologies/tyk-docs/tree/master/tyk-docs/content) contains the actual docs pages.
-Fill free to ignore anythig else ousite this folder unless you do Hugo changes.
+You can ignore anything outside this folder unless you want to make Hugo changes.
 
 ### Building and Running test
 
-If yo want to add tests and restrictions to our docs, you can do that by adding more GH actions under [.github/workflows](https://github.com/TykTechnologies/tyk-docs/tree/master/.github/workflows) folder.
+If you want to add tests and restrictions to our docs, you can do that by adding more GH actions under [.github/workflows](https://github.com/TykTechnologies/tyk-docs/tree/master/.github/workflows) folder.
 
 ### Coding Conventions
 

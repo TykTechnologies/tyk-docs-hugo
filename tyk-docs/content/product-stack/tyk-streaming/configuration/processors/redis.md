@@ -351,7 +351,7 @@ command: ${! meta("command") }
 
 ### args_mapping
 
-A [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) mapping which should evaluate to an array of values matching in size to the number of arguments required for the specified Redis command.
+A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mapping which should evaluate to an array of values matching in size to the number of arguments required for the specified Redis command.
 
 Type: `string`
 

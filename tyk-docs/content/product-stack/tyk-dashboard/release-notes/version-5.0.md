@@ -79,7 +79,7 @@ See how to [Choose a MongoDB driver]({{< ref "planning-for-production/database-s
 #### Changelog {#Changelog-v5.0.2}
 
 ##### Fixed
-- Fixed a bug on migration of a portal catalogue with deleted policy to SQL
+- Fixed a bug on migration of a portal catalog with deleted policy to SQL
 - Fixed: Redirect unregistered user to new page when SSOOnlyForRegisteredUsers is set to true
 
 ---

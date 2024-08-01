@@ -246,12 +246,12 @@ You should get to the Tyk Dashboard Setup screen:
 
 {{< img src="/img/dashboard/system-management/bootstrap_screen.png" alt="Tyk Dashboard Bootstrap Screen" >}}
 
-### Step 9 - Create your Organisation and Default User
+### Step 9 - Create your Organization and Default User
 
 You need to enter the following:
 
-* Your **Organisation Name**
-* Your **Organisation Slug**
+* Your **Organization Name**
+* Your **Organization Slug**
 * Your User **Email Address**
 * Your User **First and Last Name**
 * A **Password** for your User
@@ -273,7 +273,7 @@ You can now log in to the Tyk Dashboard from `127.0.0.1:3000`, using the usernam
 
 ## Configure your Developer Portal
 
-To set up your [Developer Portal]({{< ref "/content/tyk-developer-portal.md" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalogue]({{< ref "/content/getting-started/tutorials/publish-api.md" >}}).
+To set up your [Developer Portal]({{< ref "/content/tyk-developer-portal.md" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalog]({{< ref "/content/getting-started/tutorials/publish-api.md" >}}).
 
  [1]: https://packagecloud.io/tyk/tyk-dashboard/install#manual-rpm
 {{< tab_end >}}

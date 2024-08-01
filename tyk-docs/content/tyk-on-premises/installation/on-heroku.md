@@ -15,7 +15,7 @@ aliases:
 
 ## Install Tyk API Gateway on Heroku
 
-A full Tyk Self-Managed installation can be deployed to Heroku dynos and workers using [Heroku Container Registry and Runtime](https://devcenter.heroku.com/articles/) functionality. This guide will utilize [Tyk Docker images](https://hub.docker.com/u/tykio/) with a small amount of customisation as well as an external MongoDB service.
+A full Tyk Self-Managed installation can be deployed to Heroku dynos and workers using [Heroku Container Registry and Runtime](https://devcenter.heroku.com/articles/) functionality. This guide will utilize [Tyk Docker images](https://hub.docker.com/u/tykio/) with a small amount of customization as well as an external MongoDB service.
 
 
 ## Prerequisites
@@ -265,7 +265,7 @@ However, it doesn't yet have any accounts. It order to populate it please run th
 dashboard/bootstrap.sh evening-beach-40625.herokuapp.com
 ```
 ```
-Creating Organisation
+Creating Organization
 ORGID: 5b016ca530867500050b9e90
 Adding new user
 USER AUTH: a0f7c1e878634a60599dc037489a880f
@@ -279,7 +279,7 @@ User: c7ze82m8k3@default.com
 Pass: test123
 ```
 
-It will generate a default organisation with random admin username and a specified password. The bootstrap script can be edited to suit your needs as well as just editing the user info in the dashboard.
+It will generate a default organization with random admin username and a specified password. The bootstrap script can be edited to suit your needs as well as just editing the user info in the dashboard.
 
 If this was successful, you should be able to log into your dashboard now.
 
@@ -426,7 +426,7 @@ After re-starting the Gateway, the logs should be showing something similar to t
 
 Set this variable back to an empty value in order to revert back to the default behavior.
 
-## Upgrading or Customising Tyk
+## Upgrading or Customizing Tyk
 
 Since this deployment is based on Docker images and containers, upgrading or making changes to the deployment is as easy as building a new image and pushing it to the registry.
 

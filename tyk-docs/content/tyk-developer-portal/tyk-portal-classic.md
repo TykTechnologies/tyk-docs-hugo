@@ -14,12 +14,12 @@ The Tyk Classic Developer Portal is a small CMS-like system that enables you to 
 The Tyk Classic Developer Portal enables you to:
 
 *   Host pages written in Markdown to describe your API and product.
-*   Use Bootstrap based templates to completely customise the look and feel.
+*   Use Bootstrap based templates to completely customize the look and feel.
 *   Host your API documentation in Swagger/OpenAPI or API Blueprint for developers to use. In the case of Swagger/OpenAPI, you can either paste your Swagger content (JSON or YAML) into the code editor, or via a link to a public Swagger hosted URL, which can then be rendered by using [Swagger UI](https://swagger.io/tools/swagger-ui/).
 *   Unlike other platforms, Tyk will not auto-publish your APIs to the Portal, instead they are presented as a facade, you choose what APIs and what Policies to expose to the Portal.
 *   Fully control the flow of the developer sign-up and enrollment.
 
-The Tyk Classic Developer Portal is suitable for primary use cases, however if you want a more feature-rich experience then you should consider the [Tyk Enterprise Developer Portal]({{< ref "tyk-developer-portal/tyk-enterprise-developer-portal" >}}). This provides audience management, full UI customisation including custom JS insertion and custom page templates, forums and blog features, grouping APIs into API Products, and other enterprise-grade features.
+The Tyk Classic Developer Portal is suitable for primary use cases, however if you want a more feature-rich experience then you should consider the [Tyk Enterprise Developer Portal]({{< ref "tyk-developer-portal/tyk-enterprise-developer-portal" >}}). This provides audience management, full UI customization including custom JS insertion and custom page templates, forums and blog features, grouping APIs into API Products, and other enterprise-grade features.
 
 {{< note success >}}
 **Note**  
