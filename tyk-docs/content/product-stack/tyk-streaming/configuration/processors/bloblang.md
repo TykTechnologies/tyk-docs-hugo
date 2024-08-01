@@ -100,11 +100,6 @@ pipeline:
 
 [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mappings can fail, in which case the message remains unchanged, errors are logged, and the message is flagged as having failed, allowing you to use [standard processor error handling patterns]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/error-handling" >}}).
 
-<<<<<<< HEAD
-However, [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behaviour.
-<!-- TODO - add link which you can read about [in this section](/docs/guides/bloblang/about#error-handling). -->
-=======
 <!-- TODO add fallback link -->
 
 <!-- However, [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) itself also provides powerful ways of ensuring your mappings do not fail by specifying desired [fallback behavior]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/error-handling" >}}). -->
->>>>>>> 1dc7956d0... Tyk Streams: [DX-1407, DX-1551] Rate Limits (#5050)
