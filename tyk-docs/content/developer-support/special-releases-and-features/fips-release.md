@@ -40,8 +40,7 @@ Pump package (together, the *"FIPS Tyk Product"*) is FIPS 140-2 compliant.
 To achieve FIPS compliance, our components are compiled with a FIPS-validated crypto/hashing library. Specifically, Tyk
 uses [BoringCrypto](https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp3678.pdf), a FIPS-validated crypto/hashing library available for Go.
 
-**Note:**</br>
-The use of the *FIPS Tyk Product* is conditional on user accepting any specific terms and conditions applicable to this
+**Note:** The use of the *FIPS Tyk Product* is conditional on user accepting any specific terms and conditions applicable to this
 feature and a paid license. Please contact your account manager if you would like further information
 
 ### The definition of "compliance"
