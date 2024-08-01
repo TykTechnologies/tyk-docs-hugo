@@ -45,9 +45,11 @@ The use of the *FIPS Tyk Product* is conditional on user accepting any specific 
 feature and a paid license. Please contact your account manager if you would like further information
 
 ### The definition of "compliance"
-Compliance means that the *FIPS Tyk Product* only uses FIPS 140-2 approved algorithms while running in FIPS mode.
-However, the product has not been submitted to a NIST testing lab for validation. Compliance applies only to special
-built packages or docker images of the *FIPS Tyk Product*.
+The *FIPS Tyk Product* is designed to be compliant by using only FIPS 140-2 approved algorithms while running in FIPS
+mode. It's important to note that while the product adheres to compliance standards, it has not undergone formal
+validation by a [NIST](https://www.nist.gov/federal-information-processing-standards-fips) testing lab. This compliance
+is specific to specially built packages or docker images of the *FIPS Tyk Product*.
+
 
 These packages and images are not publicly accessible. You can request them by contacting your assigned account manager.
 
