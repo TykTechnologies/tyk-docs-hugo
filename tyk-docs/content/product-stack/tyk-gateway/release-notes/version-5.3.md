@@ -139,7 +139,7 @@ Addressed an issue where creating or resetting a key caused an exponential numbe
 </li>
 <li>
 <details>
-<summary>Resolved SSE Streaming Issue</summary>
+<summary>Resolved SSE streaming issue</summary>
 
 Fixed a bug that caused Server Side Event (SSE) streaming responses to be considered for caching, which required buffering the response and prevented SSE from being correctly proxied.
 </details>
