@@ -76,7 +76,7 @@ Please refer to the [changelog]({{< ref "#Changelog-v2.7.0">}}) below.
    <li>
  <details>
  <summary> Added `/liveness` endpoint for quick checks on MDCB application status </summary>
-   Added `/liveness` endpoint that report if MDCB is running. It returns status 200 if MDCB is alive. It returns status 503 if MDCB is not operational. In that case, a restart is recommended. For more details, see [MDCB Health check]({{<ref "tyk-multi-data-centre/setup-controller-data-centre#health-check">}}) section.
+   Added `/liveness` endpoint that reports if MDCB is running. It returns status 200 if MDCB is alive. It returns status 503 if MDCB is not operational. In that case, a restart is recommended. For more details, see [MDCB Health check]({{<ref "tyk-multi-data-centre/setup-controller-data-centre#health-check">}}) section.
     </details>
   </li>
    <li>
