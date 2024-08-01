@@ -32,7 +32,7 @@ FIPS 140-2 validation is performed by accredited [Cryptographic and Security Tes
 Interference/Electromagnetic Compatibility (EMI/EMC), Cryptographic Module Specification, and mitigation of Other Attacks.
 For more information, please check the detailed section on the
 [importance of FIPS compliance]({{< ref "#importance-of-FIPS-Compliance">}}). You can also learn about its significance
-in the context of [API management]({{< ref "#importance-of-FIPS-Compliance-in-API-Management" >}}).]
+in the context of [API management]({{< ref "#importance-of-FIPS-Compliance-in-API-Management" >}}).
 
 ## Tyk's FIPS Compliance
 
