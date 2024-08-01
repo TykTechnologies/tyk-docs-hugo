@@ -202,6 +202,7 @@ Each change log item should be expandable. The first line summarises the changel
 <summary>MDCB: Updated liveness and readiness probes</summary>
 
 Updated MDCB liveness and readiness probes to `/liveness` and `/readiness` respectively. These endpoints are available from MDCB v2.7.0. If you are deploying an earlier version of MDCB, please update the paths to `/health` in values.yaml file.
+For more details about new endpoints, check [MDCB Health check]({{<ref "tyk-multi-data-centre/setup-controller-data-centre#health-check">}}) section.
 </details>
 </li>
 </ul>
