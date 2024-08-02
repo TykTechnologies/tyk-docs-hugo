@@ -311,8 +311,6 @@ A plain text password for when the private key is password encrypted in PKCS#1 o
 obsolete `pbeWithMD5AndDES-CBC` algorithm is not supported for the PKCS#8 format. Warning: Since it does not
 authenticate the ciphertext, it is vulnerable to padding oracle attacks that can let an attacker recover the plaintext.
 
-This field contains sensitive information that usually shouldn't be added to a config directly.
-
 
 Type: `string`  
 Default: `""`
