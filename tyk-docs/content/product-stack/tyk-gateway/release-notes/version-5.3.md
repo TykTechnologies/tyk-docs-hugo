@@ -123,7 +123,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Added FIPS compliance</summary>
 
-Added [FIPS compliance]({{< ref "developer-support/special-releases-and-features/fips-release" >}}) for Tyk Pump.
+Added [FIPS compliance]({{< ref "developer-support/special-releases-and-features/fips-release" >}}) for Tyk Gateway.
 </details>
 </li>
 
