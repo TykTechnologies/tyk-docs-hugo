@@ -65,9 +65,10 @@ For example, the union schema `["null","string","Foo"]`, where `Foo` is a record
 - a `Foo` instance as `{"Foo": {...}}`, where `{...}` indicates the JSON encoding of a `Foo` instance.
 
 However, it is possible to instead create documents in [standard/raw JSON format](https://pkg.go.dev/github.com/linkedin/goavro/v2#NewCodecForStandardJSONFull) by setting the field [avro_raw_json](#avro_raw_json) to `true`.
+
 ### Protobuf Format
 
-This processor decodes protobuf messages to JSON documents, you can read more about JSON mapping of protobuf messages here: https://developers.google.com/protocol-buffers/docs/proto3#json
+This processor decodes protobuf messages to JSON documents, you can read more about JSON mapping of protobuf messages [here](https://developers.google.com/protocol-buffers/docs/proto3#json).
 
 
 ## Fields
