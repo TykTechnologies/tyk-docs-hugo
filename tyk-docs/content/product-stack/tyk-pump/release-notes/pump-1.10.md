@@ -47,6 +47,10 @@ For users currently on v1.9.X, we strongly recommend promptly upgrading to the l
 
 ### Release Highlights
 
+#### FIPS Compliance
+
+Tyk Pump now offers [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) compliance. For further details please consult [Tyk API Management FIPS support]({{< ref "developer-support/special-releases-and-features/fips-release" >}})
+
 #### Security fixes
 This release focuses on improving security and compliance, enhancing integration capabilities, and ensuring robust performance in secure environments.
 
@@ -59,9 +63,17 @@ This release focuses on improving security and compliance, enhancing integration
 
 ### Changelog {#Changelog-v1.10.0}
 
-#### Changed
+#### Added
 
-Nothing
+<ul>
+<li>
+<details>
+<summary>Added FIPS compliance</summary>
+
+Added [FIPS compliance]({{< ref "developer-support/special-releases-and-features/fips-release" >}}) for Tyk Pump.
+</details>
+</li>
+
 
 
 #### Fixed
