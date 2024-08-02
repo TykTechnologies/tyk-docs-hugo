@@ -229,8 +229,6 @@ Default: `false`
 An optional root certificate authority to use. This is a string, representing a certificate chain from the parent
 trusted root certificate, to possible intermediate signing certificates, to the host certificate.
 
-This field contains sensitive information that usually shouldn't be added to a config directly.
-
 
 Type: `string`  
 Default: `""`
