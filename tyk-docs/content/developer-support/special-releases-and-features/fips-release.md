@@ -34,7 +34,7 @@ in the context of [API management]({{< ref "#importance-of-FIPS-Compliance-in-AP
 We are pleased to announce that Tyk Gateway and Pump now offer a FIPS compliant package (together, the *"FIPS Tyk
 Product”*).
 FIPS compliance means that the *FIPS Tyk Product* only uses FIPS 140-2 approved algorithms while running in FIPS mode.
-However, the product has not been submitted to a NIST testing lab for validation. Compliance applies only to special
+However, the product has not been submitted to a [NIST](https://www.nist.gov/federal-information-processing-standards-fips) testing lab for validation. Compliance applies only to special
 built packages or docker images of the *FIPS Tyk Product*. These packages and images are not publicly accessible. Please
 speak to your assigned account manager for more information.
 
