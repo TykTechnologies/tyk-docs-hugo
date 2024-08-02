@@ -150,7 +150,6 @@ This field supports [interpolation functions]({{< ref "/product-stack/tyk-stream
 
 
 Type: `string`  
-Requires version 3.33.0 or newer
 
 ```yml
 # Examples
