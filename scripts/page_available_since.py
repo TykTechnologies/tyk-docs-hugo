@@ -30,7 +30,7 @@ versions = [
     },
     {
         "path": "/docs/5.0/",
-        "name": "5 LTS",
+        "name": "5 - LTS",
         "branch": "release-5"
     },
     {
@@ -50,7 +50,7 @@ versions = [
     },
     {
         "path": "/docs/4.0/",
-        "name": "4 LTS",
+        "name": "4 - LTS",
         "branch": "release-4"
     },
     {
@@ -65,7 +65,7 @@ versions = [
     },
     {
         "path": "/docs/3-lts/",
-        "name": "3 LTS",
+        "name": "3 - LTS",
         "branch": "release-3-lts"
     },
 
