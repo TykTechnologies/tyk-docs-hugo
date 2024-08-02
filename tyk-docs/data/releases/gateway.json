@@ -1,7 +1,7 @@
 {
   "home": "tyk-oss-gateway",
   "licensed": false,
-  "latest": "5.3.2",
+  "latest": "5.3.3",
   "lts": "5.3.3",
   "releaseNotesPath": "product-stack/tyk-gateway/release-notes/overview",
   "5.3.3": {
