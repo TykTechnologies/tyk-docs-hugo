@@ -15,7 +15,7 @@ parse_log:
   format: "" # No default (required)
 ```
 
-## Advanced
+## Advanced
 
 ```yml
 # All config fields, showing default values
