@@ -288,9 +288,6 @@ Default: `""`
 
 A plain text certificate key to use.
 
-This field contains sensitive information that usually shouldn't be added to a config directly.
-
-
 Type: `string`  
 Default: `""`
 
