@@ -1,14 +1,9 @@
 ---
-title: "FIPS Release"
+title: "Tyk API Management FIPS support"
 date: 2024-07-25
 tags: ["FAQ", "FIPS Releases", "Special Release - FIPS"]
 description: "Explain what FIPS Release means, what it includes, and what to expect"
 ---
-
-<!-- Thoughts
- 1. Which title? this or "FIPS Compliance Support" or "FIPS images and binaries"
- 2. Do we want to detail which distros we support?
--->
 
 FIPS (Federal Information Processing Standards) is a series of cryptography and hashing standards defined by the U.S.
 Federal Government for ensuring cybersecurity. These standards are crucial for organizations dealing with sensitive
@@ -43,14 +38,13 @@ To achieve FIPS compliance, our components are compiled with a FIPS-validated cr
 uses [BoringCrypto](https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp3678.pdf), a FIPS-validated crypto/hashing library available for Go.
 
 **Note:** The use of the *FIPS Tyk Product* is conditional on user accepting any specific terms and conditions applicable to this
-feature and a paid license. Please contact your account manager if you would like further information
+feature and a paid license. **Please contact your account manager** if you would like further information
 
 ### The definition of "compliance"
 The *FIPS Tyk Product* is designed to be compliant by using only FIPS 140-2 approved algorithms while running in FIPS
 mode. It's important to note that while the product adheres to compliance standards, it has not undergone formal
 validation by a [NIST](https://www.nist.gov/federal-information-processing-standards-fips) testing lab. This compliance
 is specific to specially built packages or docker images of the *FIPS Tyk Product*.
-
 
 These packages and images are not publicly accessible. You can request them by contacting your assigned account manager.
 
@@ -60,44 +54,20 @@ Tyk's FIPS compliance is based on the use of FIPS 140-2 validated cryptographic 
 module. While the *FIPS Tyk Product* is compliant with FIPS 140-2, it has not undergone formal validation by a NIST
 testing lab.
 
-<!-- Find out
-Do we want to detail which distros we support?
-Our FIPS Tyk Product provides a FIPS 140-2 compliant package for the following operating systems:
-- Ubuntu: 20.04/22.04 LTS, 22.10
-- CentOS: Stream 8, 7.3
-- Debian: 10 Buster, 11 Bullseye
-- RHEL: 9.3, 8.9, 7.9
--->
-
 ### FIPS-Compliant Cryptographic Operations
 
 The *FIPS Tyk Product* uses the [BoringCrypto](https://boringssl.googlesource.com/boringssl/+/master/crypto/fipsmodule/FIPS.md#fips-140_2) module to provide FIPS 140-2 validated cryptographic operations. This ensures that when running in FIPS mode, only FIPS 140-2 approved algorithms are used.
 
-For more details on the cryptographic operations supported in Tyk's FIPS-compliant mode, please contact your Tyk account
-manager.
+For more details on the cryptographic operations supported in Tyk's FIPS-compliant mode, please contact your Tyk account manager.
 
 ## Configuring Tyk for FIPS Compliance
 
-<!-- Find out
-Anything we want to add?
--->
-Detailed configuration instructions will be provided upon release of the FIPS-compliant versions, when delivering the
-packages.
+FIPS is enabled by default, if you install fips supported packages from our official channels. 
 
-<!-- Find out about Limitations
+The only change to configuration, is to update your key hashing algorithm to SHA256 either by setting `hash_key_function` in tyk.conf or TYK_GW_HASHKEYFUNCTION ENV var to `sha256` value. 
 
-## Limitations and Considerations
+When installed, FIPS compilant products be available on your machine with `-fips` suffix. E.g. `tyk-gateway-fips` or `tyk-pump-fips`.
 
-While operating in FIPS-compliant mode:
-- Some performance impact may be observed due to stricter cryptographic processes
-- Certain non-FIPS compliant features may be unavailable
-- Only FIPS-approved algorithms and key sizes can be used
-
-It's important to note that FIPS mode may affect the functionality of some plugins or custom extensions that rely on
-non-FIPS compliant cryptographic operations.
-
-For information on plug-ins, dependencies, or other components, please contact your account manager.
--->
 
 ## Frequently Asked Questions
 
@@ -105,22 +75,12 @@ Q: What level of FIPS 140-2 compliance does Tyk support?
 
 A: Tyk provides FIPS 140-2 compliance, ensuring the use of approved algorithms in FIPS mode.
 
-<!-- Find out
 Q: Can I use Tyk in FIPS mode in cloud environments?
-A: Yes but only for hybrid gateways deployed on your premise and connecting to the Cloud control plane
+A: Yes but only for hybrid gateways deployed on your premise and connecting to the Cloud control plane.
 
 Q: Does FIPS mode affect Tyk's performance?
 A: There may be a slight performance impact due to the use of FIPS-approved algorithms, but this is generally minimal.
--->
 
-
-<!--
-## API Management
-
-FIPS validation is a prerequisite for gaining [FedRAMP](https://www.fedramp.gov/) (Federal Risk and Authorization
-Management Program) authorization.
-FedRAMP authorization serves as a "seal of approval" required for providing cloud services to many government entities.
--->
 
 ## Importance of FIPS Compliance {#importance-of-FIPS-Compliance}
 
