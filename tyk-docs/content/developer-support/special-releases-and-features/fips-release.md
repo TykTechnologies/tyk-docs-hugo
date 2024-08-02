@@ -31,14 +31,19 @@ in the context of [API management]({{< ref "#importance-of-FIPS-Compliance-in-AP
 
 ## Tyk's FIPS Compliance
 
-We are pleased to announce that Tyk Gateway and Pump now offer FIPS compliance. The FIPS Tyk Gateway and the FIPS Tyk
-Pump package (together, the *"FIPS Tyk Product"*) is FIPS 140-2 compliant.
+We are pleased to announce that Tyk Gateway and Pump now offer a FIPS compliant package (together, the *"FIPS Tyk
+Product”*).
+FIPS compliance means that the *FIPS Tyk Product* only uses FIPS 140-2 approved algorithms while running in FIPS mode.
+However, the product has not been submitted to a NIST testing lab for validation. Compliance applies only to special
+built packages or docker images of the *FIPS Tyk Product*. These packages and images are not publicly accessible. Please
+speak to your assigned account manager for more information.
 
 To achieve FIPS compliance, our components are compiled with a FIPS-validated crypto/hashing library. Specifically, Tyk
-uses [BoringCrypto](https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp3678.pdf), a FIPS-validated crypto/hashing library available for Go.
+uses [BoringCrypto](https://csrc.nist.gov/CSRC/media/projects/cryptographic-module-validation-program/documents/security-policies/140sp3678.pdf),
+a FIPS-validated crypto/hashing library available for Go.
 
-**Note:** The use of the *FIPS Tyk Product* is conditional on user accepting any specific terms and conditions applicable to this
-feature and a paid license. **Please contact your account manager** if you would like further information
+**Note:** The use of the *FIPS Tyk Product* is conditional on user accepting any specific terms and conditions
+applicable to this feature and a paid license. Please contact your account manager if you would like further information.
 
 ### The definition of "compliance"
 The *FIPS Tyk Product* is designed to be compliant by using only FIPS 140-2 approved algorithms while running in FIPS
@@ -76,10 +81,12 @@ Q: What level of FIPS 140-2 compliance does Tyk support?
 A: Tyk provides FIPS 140-2 compliance, ensuring the use of approved algorithms in FIPS mode.
 
 Q: Can I use Tyk in FIPS mode in cloud environments?
+
 A: Yes but only for hybrid gateways deployed on your premise and connecting to the Cloud control plane.
 
 Q: Does FIPS mode affect Tyk's performance?
-A: There may be a slight performance impact due to the use of FIPS-approved algorithms, but this is generally minimal.
+
+A: There should be no material impact on performance.
 
 
 ## Importance of FIPS Compliance {#importance-of-FIPS-Compliance}
