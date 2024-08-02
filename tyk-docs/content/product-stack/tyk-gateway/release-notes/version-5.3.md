@@ -42,8 +42,14 @@ If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older 
 
 
 ### Release Highlights
+
+#### Bug Fixes
+
 This release primarily focuses on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.3">}}) below.
 
+#### FIPS Compliance
+
+Tyk Gateway now offers [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) compliance. For further details please consult [Tyk API Management FIPS support]({{< ref "developer-support/special-releases-and-features/fips-release" >}}).
 
 ### Dependencies
 
@@ -102,6 +108,8 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 
 #### Added
+
+
 <!-- This section should be a bullet point list of new features. Explain:
 
 - The purpose of the new feature
@@ -111,6 +119,14 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 
 Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
 <ul>
+<li>
+<details>
+<summary>Added FIPS compliance</summary>
+
+Added [FIPS compliance]({{< ref "developer-support/special-releases-and-features/fips-release" >}}) for Tyk Gateway.
+</details>
+</li>
+
 <li>
 <details>
 <summary>Corrected ordering of OAS API paths to prevent middleware misapplication</summary>
