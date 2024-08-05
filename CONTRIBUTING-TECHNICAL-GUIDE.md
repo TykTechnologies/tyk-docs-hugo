@@ -11,14 +11,14 @@ Contributing to the docs via the browser is fast and easy.
 GH provides great DX for making updates, committing and creating PRs via the browser. The DX for reviewing PRs is also pretty powerful.
 
 #### When To Use it?
-Use Github GUI browser when you:
+Use GitHub GUI browser when you:
 - Have simple and only a few edits of the markdown files. 
 - Already know the syntax for adding internal links and adding images. 
 - Already know what you are going to write and you **don't** need many iterative commits to see if the result looks okay. In this case, using a local environment will be much faster (explain in the next section)
 
 #### How To Use It?
 Will briefly explain it as it is quite trivial:
-1. Via the GUI you can simply click the pencil icon to start editing, then check the differences, click commit to commit the changes to a new branch and eventually create a PR. 
+1. Via the GUI you can simply click the pencil icon to start editing, then check the differences, click commit to commit the changes to a new branch, and eventually create a PR. 
 2. Check that the CI jobs started running. These jobs run tests on the website including your changes. Running CI jobs are displayed in yellow. 
 3. Once the CI job finishes it will turn green. Upon completion, you will see a preview link that you should use to check your changes on a real deployment of the Tyk docs website.
 
@@ -27,7 +27,7 @@ Will briefly explain it as it is quite trivial:
 Local environment means, checking out the tyk-docs repo and updating the files using an editor or an IDE. This allows you to test the changes by running Hugo locally and check for errors in Hugo or in the website Hugo generated.
 
 #### When To Use It?
-Using the browser is not always enough and you sometimes need to checkout the repo and work locally.
+Using the browser is not always enough and you sometimes need to check out the repo and work locally.
 You normally favor using a local environment when you need to:
 - Test things yourself before you push them
 - Repeatedly push changes and test the website
@@ -38,7 +38,7 @@ Doing so by **running Hugo locally will save you a lot of time** since it takes 
 When you need to:
 - Test things yourself before you push them
 - Check that the image you added work
-- See how images are rendered in the page
+- See how images are rendered on the page
 - Check that the internal links you added work
 - Are not sure about the syntax of links or images when you work on many pages
 - When adding new files, it's easier to run it locally since you cannot be sure of the internal links format and may need to validate referenced links to other content pages and sections
@@ -69,7 +69,7 @@ For external contributions, we recommend contributing to Tyk in the following wa
 
 ## Getting Started
 
-This section briefly explains how to work with [Hugo](http://gohugo.io/) for creating content in the Tyk Docs repository.
+This section briefly explains how to work with [Hugo](http://gohugo.io/) to create content in the Tyk Docs repository.
 
 To get started:
 1. Clone this repository 
@@ -92,11 +92,9 @@ For each new file created via `hugo new`, the following YAML formatted [Front Ma
 ```markdown
 ---
 title: "New Section"
-date: 2021-02-10
-tags: [""]
-description: ""
-menu: "main"
-weight: 0
+date: 2024-07-31
+tags: ["example-tag1", "example-tag2"]
+description: "Enter a brief description of the section here."
 ---
 
 **Insert Lead paragraph here.**
@@ -106,10 +104,6 @@ weight: 0
 - `date` is auto populated in a year-month-day format
 - `tags` are used to create meta keywords in the HTML output, and are added in the following format - `tags: ["tag 1", "tag 2", "tag 3"]`
 - `description` is used for the meta description in the HTML output
-- `menu` is used to place the page in the correct place within the navigation hierarchy. By default a new page is assigned to the root level (`main`)
-- `weight` is used to order pages within a section of the menu with `0` being the top level page within a section.
-
-You can create a dynamic, nested navigation hierarchy simply by changing the `parent` field to the name of the parent page. Note, **these names must be unique**.
 
 Example front matter for a page:
 
@@ -119,10 +113,6 @@ title: "Test"
 date: 2021-02-10
 tags: ["Tyk", "advanced-configuration", "Dashboard"]
 description: "Testing the description and tagging functionality in Tyk"
-menu:
-  main:
-    parent: "Advanced Configuration"
-weight: 10
 ---
 ```
 
@@ -130,7 +120,7 @@ weight: 10
 
 All links should be defined using the `ref` function. This ensures that links will be correct and will never break docs.
 
-As added value you can specify the file path relative to the "content" folder. However, because our URL structure is synced with file structure, it will be same as URL path.
+As an added value, you can specify the file path relative to the "content" folder. However, because our URL structure is synced with the file structure, it will be the same as the URL path.
 
 Example:
 
@@ -157,7 +147,7 @@ Various shortcodes are used within the Tyk documentation to facilitate writing c
 
 ### Grid Shortcode
 
-You can find 3 sizes of grid layouts. This is used in conjunction with the badges shortcode
+You can find 3 sizes of grid layouts. This is used in conjunction with the badge shortcode
 
 1. grid
 2. mid
@@ -303,7 +293,7 @@ Tyk supports GraphQL natively. Proxy to existing service or build it from scratc
 {{< badge title="Integration" href="/docs/advanced-configuration/integrate/sso/" >}}
 #### Single Sign On
 
-Log into dashboard and portal with your existing IDP.
+Log into the dashboard and portal with your existing IDP.
 {{< /badge >}}
 
 {{< /grid >}}
@@ -355,7 +345,7 @@ Lorem ipsum Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ### Buttons
 
-We have 3 button types that can be used in conjuction with the Grid layout shortcode. These all aligh centrally and use the Tyk color palette.
+We have 3 button types that can be used in conjunction with the Grid layout shortcode. These all align centrally and use the Tyk color palette.
 
 ```
 {{< button href="/docs/basic-config-and-security/" color="black" content="More Tyk Configuration" >}}
@@ -397,13 +387,13 @@ We recommend you restrict your IAM user as much as possible before sharing the c
 
 ![image](https://user-images.githubusercontent.com/1983518/104921245-f70e3c00-5990-11eb-927c-916204d90325.png)
 
-See the [Hugo Docs](https://gohugo.io/content-management/shortcodes/#use-hugos-built-in-shortcodes) for other built in shortcodes.
+See the [Hugo Docs](https://gohugo.io/content-management/shortcodes/#use-hugos-built-in-shortcodes) for other built-in shortcodes.
 
 ### Tooltips Shortcode
 
 You can add tooltips by using the following shortcode:
 
-```
+```markdown
 {{< tooltip >}}some link text definition{{< definition >}}
 the tooltip text to display{{< /definition >}}{{< /tooltip >}}
 ```
@@ -418,15 +408,20 @@ Tyk is released under the MPL v2.0 please see the [license file](LICENSE.md) for
 
 When you create a PR in this repository:
 
-1. CI pipeline will run tests (Hugo and Netlify).
+### 1. The CI pipeline will run tests (Hugo and Netlify).
    <img width="864" alt="image" src="https://user-images.githubusercontent.com/3155222/221001455-a196c09f-55d9-4c50-acc2-4ae7c5fd6343.png">
 
-2. Netlify will create a version of the website from your PR and provide you with a link:
+### 2. Netlify will create a version of the website from your PR and provide you with a link:
 
 - Don't forget to add `/docs/nightly` to the URL.
   <img width="948" alt="image" src="https://user-images.githubusercontent.com/3155222/221002201-5b0c8d49-8cc3-497c-b188-ffafa63b57f9.png">
 
-3. Verifing your changes in the Netlify build:
+### 3. Verifying your changes in the Netlify build:
 
-- There's no search in this Netlify build. To find your changes copy the from the file path, the text after `/content` till the end, add it to the netlify URL after `/docs/nightly` and delete `.md`.
-- For example to see doc page https://github.com/TykTechnologies/tyk-docs/blob/master/tyk-docs/content/tyk-self-managed/install.md in the Netlify build, copy from this path this bit `/tyk-self-managed/install` and paste after `/docs/nightly` so you get the url https://deploy-preview-2330--tyk-docs.netlify.app/docs/nightly/tyk-self-managed/install/
+**For Contributors Outside Tyk:** A Tyk team member will need to approve the Netlify CI build for your pull request (PR). You will need to wait 
+until the CI status is green.
+
+**Locating Your Changes:** Since there’s no search feature in this Netlify build, you can find your changes by following these steps:
+	1.	Copy the file path: From the file path in GitHub, copy the portion after `/content` up to the end, excluding the `.md` file extension.
+	2.	Construct the URL: Append this copied path to the Netlify URL after `/docs/nightly`.
+	3.	Example: To see the document at tyk-docs GitHub repository, copy `/tyk-self-managed/install` (omit `.md`) and add it after /docs/nightly/ in the Netlify URL, resulting in [https://deploy-preview-2330--tyk-docs.netlify.app/docs/nightly/tyk-self-managed/install/](https://deploy-preview-2330--tyk-docs.netlify.app/docs/nightly/tyk-self-managed/install/).

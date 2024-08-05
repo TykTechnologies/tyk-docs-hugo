@@ -8,7 +8,7 @@ This page provides access to release notes for Tyk Dashboard. Links to archived 
 
 ### Release 5
 - [v5.4]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.4.md" >}})
-- [v5.3]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.3.md" >}})
+- [v5.3]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.3.md" >}}) - LTS
 - [v5.2]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.2.md" >}})
 - [v5.1]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.1.md" >}})
 - [v5.0]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.0.md" >}})

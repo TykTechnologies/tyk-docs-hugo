@@ -17,7 +17,7 @@ To configure or create a Mock Response middleware you have two modes, manual and
 
 ## Manual configuration 
 
-you can configure a mock response directly in the API definition, in the middleware object under the Tyk extension section, `x-tyk-api-gateway`. Once added, you need to update or import it to Tyk Dashboard using Tyk Dashboard API or via Tyk Dashboard UI. This is useful when you have already tested your API in dev environments and now you need to deploy it to staging or production in a declarative manner.
+You can configure a mock response directly in the API definition, in the middleware object under the Tyk extension section, `x-tyk-api-gateway`. Once added, you need to update or import it to Tyk Dashboard using Tyk Dashboard API or via Tyk Dashboard UI. This is useful when you have already tested your API in dev environments and now you need to deploy it to staging or production in a declarative manner.
 
 The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added.
 
@@ -31,7 +31,7 @@ For basic operation, the `mockResponse` object has the following configuration:
 
 Please remember that this API definition needs to be updated in Tyk Dashboard. In the Dashboard UI it might be trivial but if you are doing it declaratively, you need to use the Tyk Dashboard API endpoint to update an existing API (PUT) or import as a new API (POST). Once updated, Tyk Gateway/s will return mock responses to all valid requests to the endpoint, depending on the [content of the request](#working-with-multiple-mock-responses-for-an-endpoint).
 
-In the following example, we configured a mock response middleware for requests to the `GET /example-mock-response1/anything` endpoint:
+In the following example, we configure a mock response middleware for requests to the `GET /example-mock-response1/anything` endpoint:
 
 ```json {hl_lines=["39-49"],linenos=true, linenostart=1}
 {
