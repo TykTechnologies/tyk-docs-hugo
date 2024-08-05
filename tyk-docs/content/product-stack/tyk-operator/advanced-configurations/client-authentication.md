@@ -8,7 +8,7 @@ keywords: ["Tyk Operator", "Kubernetes", "API Versioning"]
 
 Client to Gateway Authentication in Tyk ensures secure communication between clients and the Tyk Gateway. Tyk supports various authentication methods to authenticate and authorize clients before they can access your APIs. These methods include API keys, Static Bearer Tokens, JWT, mTLS, Basic Authentication, and more. This document provides example manifests for each authentication method supported by Tyk.
 
-### Keyless (Open)
+## Keyless (Open)
 
 This configuration allows [keyless (open)]({{<ref "basic-config-and-security/security/authentication-authorization/open-keyless">}}) access to the API without any authentication.
 
@@ -28,18 +28,18 @@ spec:
     strip_listen_path: true
 ```
 
-### Auth Token (Bearer Token)
+## Auth Token (Bearer Token)
 
 This setup requires a [bearer token]({{<ref "basic-config-and-security/security/authentication-authorization/bearer-tokens">}}) for access.
 
 In the below example, the authentication token is set by default to the `Authorization` header of the request. You can customize this behavior by configuring the following fields:
 
-* `use_cookie`: Set to true to use a cookie value for the token.
-* `cookie_name`: Specify the name of the cookie if use_cookie is enabled.
-* `use_param`: Set to true to allow the token to be passed as a query parameter.
-* `param_name`: Specify the parameter name if use_param is enabled.
-* `use_certificate`: Enable client certificate. This allows you to create dynamic keys based on certificates.
-* `validate_signature`: Enable [signature validation]({{<ref "basic-config-and-security/security/authentication-authorization/bearer-tokens#signature-validation">}}).
+- `use_cookie`: Set to true to use a cookie value for the token.
+- `cookie_name`: Specify the name of the cookie if use_cookie is enabled.
+- `use_param`: Set to true to allow the token to be passed as a query parameter.
+- `param_name`: Specify the parameter name if use_param is enabled.
+- `use_certificate`: Enable client certificate. This allows you to create dynamic keys based on certificates.
+- `validate_signature`: Enable [signature validation]({{<ref "basic-config-and-security/security/authentication-authorization/bearer-tokens#signature-validation">}}).
 
 ```yaml {hl_lines=["13-35"],linenos=false}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -79,17 +79,17 @@ spec:
         error_code: 0
 ```
 
-### JWT
+## JWT
 
 This configuration uses [JWT tokens]({{<ref "basic-config-and-security/security/authentication-authorization/json-web-tokens">}}) for authentication.
 
 Users can configure JWT authentication by defining the following fields:
 
-* `jwt_signing_method`: Specify the method used to sign the JWT. Refer to [JWT Signing Method]({{<ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#jwt-signing-method">}}) for supported methods.
-* `jwt_source`: Specify the public key used for verifying the JWT.
-* `jwt_identity_base_field`: Define the identity source, typically set to `sub` (subject), which uniquely identifies the user or entity.
-* `jwt_policy_field_name`: Specify the claim within the JWT payload that indicates the policy ID to apply.
-* `jwt_default_policies` (Optional): Define default policies to apply if no policy claim is found in the JWT payload.
+- `jwt_signing_method`: Specify the method used to sign the JWT. Refer to [JWT Signing Method]({{<ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#jwt-signing-method">}}) for supported methods.
+- `jwt_source`: Specify the public key used for verifying the JWT.
+- `jwt_identity_base_field`: Define the identity source, typically set to `sub` (subject), which uniquely identifies the user or entity.
+- `jwt_policy_field_name`: Specify the claim within the JWT payload that indicates the policy ID to apply.
+- `jwt_default_policies` (Optional): Define default policies to apply if no policy claim is found in the JWT payload.
 
 The following example configures an API to use JWT authentication. It specifies the ECDSA signing method and public key, sets the `sub` claim as the identity source, uses the `pol` claim for policy ID, and assigns a default policy (`jwt-policy` SecurityPolicy in `default` namespace) if no policy is specified in the token.
 
@@ -170,7 +170,7 @@ curl http://localhost:8080/httpbin-jwt1/get -H 'Authorization: Bearer eyJhbGciOi
 }
 ```
 
-### Client mTLS
+## Client mTLS
 
 This setup requires mutual TLS (mTLS) for client authentication using specified client certificates. The example provided shows how to create an API definition with mTLS authentication for `httpbin-client-mtls`.
 
@@ -218,7 +218,7 @@ spec:
     - my-test-tls
 ```
 
-### Basic Authentication
+## Basic Authentication
 
 This configuration uses [Basic Authentication]({{<ref "basic-config-and-security/security/authentication-authorization/basic-auth">}}), requiring a username and password for access.
 
@@ -238,7 +238,7 @@ spec:
   use_basic_auth: true
 ```
 
-### Custom Plugin Auth (go)
+## Custom Plugin Auth (go)
 
 This configuration uses a [Golang plugin]({{<ref "plugins/supported-languages/golang">}}) for custom authentication. The following example shows how to create an API definition with a Golang custom plugin for `httpbin-go-auth`.
 
@@ -268,7 +268,7 @@ spec:
         path: "/mnt/tyk-gateway/example-go-plugin.so"
 ```
 
-### Custom Plugin Auth (gRPC)
+## Custom Plugin Auth (gRPC)
 
 This configuration uses a [gRPC plugin]({{<ref "plugins/supported-languages/golang">}}) for custom authentication. The following example shows how to create an API definition with a gRPC custom plugin for `httpbin-grpc-auth`.
 
@@ -303,7 +303,7 @@ spec:
         header_name: Authorization
 ```
 
-### Multiple (Chained) Auth
+## Multiple (Chained) Auth
 
 This setup allows for [multiple authentication]({{<ref "basic-config-and-security/security/authentication-authorization/multiple-auth">}}) methods to be chained together, requiring clients to pass through each specified authentication provider.
 

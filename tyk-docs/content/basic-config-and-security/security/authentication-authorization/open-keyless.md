@@ -35,4 +35,6 @@ This will stop checking keys that are proxied by Tyk.
 Keyless APIs cannot be selected for [Access Rights]({{< ref "getting-started/create-security-policy" >}}) in a security policy.
 {{< /note >}}
 
+## Tyk Operator
 
+To configure Open Keyless authentication in Tyk Operator please refer to blah.
