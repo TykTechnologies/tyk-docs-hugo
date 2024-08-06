@@ -1571,36 +1571,48 @@ menu:
               path: /product-stack/tyk-gateway/middleware/do-not-track-tyk-classic
               category: Page
               show: True
-        - title: "Report, monitor and trigger events"
+        - title: "Gateway events"
           category: Directory
           show: True
           menu:
-          - title: "Report, Monitor and Trigger Events"
+          - title: "Overview"
             path: /basic-config-and-security/report-monitor-trigger-events
             category: Page
             show: True
-          - title: "Custom Handlers (JavaScript)"
-            path: /basic-config-and-security/report-monitor-trigger-events/custom-handlers-javascript
-            category: Page
-            show: True
-          - title: "Event Data"
-            path: /basic-config-and-security/report-monitor-trigger-events/event-data
-            category: Page
-            show: True
-          - title: "Event Types"
+          - title: "Event types"
             path: /basic-config-and-security/report-monitor-trigger-events/event-types
             category: Page
             show: True
-          - title: "Instrumentation"
-            path: /basic-config-and-security/report-monitor-trigger-events/instrumentation
+          - title: "Event metadata"
+            path: /basic-config-and-security/report-monitor-trigger-events/event-data
             category: Page
             show: True
-          - title: "Monitors"
+          - title: "Event handling with webhooks"
+            category: Directory
+            show: True
+            menu:   
+            - title: "Overview"
+              path: /basic-config-and-security/report-monitor-trigger-events/webhooks
+              category: Page
+              show: True
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/event-webhook-tyk-oas
+              category: Page
+              show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/event-webhook-tyk-classic
+              category: Page
+              show: True  
+          - title: "Logging events"
+            path: /product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/log-handlers
+            category: Page
+            show: True
+          - title: "Custom event handlers"
+            path: /basic-config-and-security/report-monitor-trigger-events/custom-handlers-javascript
+            category: Page
+            show: True
+          - title: "Advanced quota monitoring"
             path: /basic-config-and-security/report-monitor-trigger-events/monitors
-            category: Page
-            show: True
-          - title: "Webhooks"
-            path: /basic-config-and-security/report-monitor-trigger-events/webhooks
             category: Page
             show: True
       - title: "Advanced configurations"
@@ -1899,12 +1911,20 @@ menu:
               path: /advanced-configuration/integrate/api-auth-mode
               category: Page
               show: True
-        - title: "Distributed Tracing"
+        - title: "Observability"
           category: Directory
           show: True
           menu:
           - title: "Overview"
-            path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/distributed-tracing-overview
+            path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/observability
+            category: Page
+            show: True
+          - title: "Metrics"
+            path: /basic-config-and-security/report-monitor-trigger-events/instrumentation
+            category: Page
+            show: True
+          - title: "System logs"
+            path: /log-data
             category: Page
             show: True
           - title: "OpenTelemetry"
@@ -2250,10 +2270,6 @@ menu:
             show: True
         - title: "Request Context Variables"
           path: /context-variables
-          category: Page
-          show: True
-        - title: "Gateway Logs"
-          path: /log-data
           category: Page
           show: True
         - title: "Securing System Payloads"

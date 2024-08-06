@@ -7,7 +7,9 @@ tags: ["go templates", "golang", "body transform", "transform"]
 
 Tyk's [request]({{< ref "transform-traffic/request-body" >}}) and [response]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) body transform middleware use the [Go template language](https://golang.org/pkg/text/template/) to parse and modify the provided input.
 
-In this section of the documentation, we provide some guidance and a few examples on the use of Go templating within these middleware.
+Go templates are also used by Tyk's [webhook event handler]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) to produce the payload for the HTTP request sent to the target system.
+
+In this section of the documentation, we provide some guidance and a few examples on the use of Go templating with Tyk.
 
 ### Data format conversion using helper functions
 Tyk provides two helper functions to assist with data format translation between JSON and XML:
