@@ -46,12 +46,10 @@ An illustrative example is shown below. -->
 | 5.5.0 | MDCB v2.7     | MDCB v2.4.2 |
 |         | Operator v0.18 | Operator v0.17 |
 |         | Sync v1.5   | Sync v1.4.3 |
-|         | Helm Chart v1.6.0 | Helm all versions |
+|         | Helm Chart v1.6 | Helm all versions |
 | | EDP v1.10 | EDP all versions |
-| | Pump v1.11.0 | Pump all versions |
+| | Pump v1.11 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
-
-The above table needs reviewing and updating if necessary
 
 #### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
@@ -132,7 +130,7 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Enhancement: root CA support for client certificate authentication</summary>
+<summary>Added root CA support for client certificate authentication</summary>
 
 We've added support for using root Certificate Authority (CA) certificates as client certificates in API definitions. The system now authenticates clients with certificates signed by the configured root CA, simplifying certificate management for multiple clients sharing a common CA. This functionality is available for static mutual TLS (mTLS) configurations only.
 </details>
@@ -146,13 +144,6 @@ Optimised the creation and usage of AST documents in our GQL library to reduce s
 </li>
 <li>
 <details>
-<summary>Corrected ordering of OAS API paths to prevent middleware misapplication</summary>
-
-Fixed an issue where nested API endpoints, such as '/test' and '/test/abc', might incorrectly apply middleware from the parent path to the nested path. The fix ensures that API endpoint definitions are correctly ordered, preventing this middleware misapplication and ensuring both the HTTP method and URL match accurately.
-</details>
-</li>
-<li>
-<details>
 <summary>Implemented upstream Endpoint rate limits</summary>
  
 Introduced new controls to configure rate limits at the endpoint level for both Tyk OAS and Tyk Classic APIs. This feature allows for more granular protection of upstream services from abuse, similar to Tyk’s traditional 'API-level' or 'Global' rate limits but applied specifically at the endpoint level.
@@ -160,7 +151,7 @@ Introduced new controls to configure rate limits at the endpoint level for both 
 </li>
 <li>
 <details>
-<summary>Enhanced API versioning with fallback option for *First of Path* version data location<summary>
+<summary>Enhanced API versioning with fallback option for <i>First of Path</i> version data location</summary>
  
 Introduced a new configuration for API versioning with `url_versioning_pattern`. This regex-based field helps identify if the first part of a URL is a version pattern, improving control over `strip_versioning_data` and `fallback_to_default` functionalities.
 </details>
@@ -177,6 +168,13 @@ Introduced a new configuration for API versioning with `url_versioning_pattern`.
 
 Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
 <ul>
+<li>
+<details>
+<summary>Corrected ordering of OAS API paths to prevent middleware misapplication</summary>
+
+Fixed an issue where nested API endpoints, such as '/test' and '/test/abc', might incorrectly apply middleware from the parent path to the nested path. The fix ensures that API endpoint definitions are correctly ordered, preventing this middleware misapplication and ensuring both the HTTP method and URL match accurately.
+</details>
+</li>
 <li>
 <details>
 <summary>Optimised key creation process to reduce Redis DeleteRawKey commands</summary>
