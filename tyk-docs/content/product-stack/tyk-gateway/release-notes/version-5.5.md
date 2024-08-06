@@ -43,12 +43,12 @@ Version compatibility with other components in the Tyk stack. This takes the for
 An illustrative example is shown below. -->
 | Gateway Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.5.0 | MDCB v2.6     | MDCB v2.4.2 |
+| 5.5.0 | MDCB v2.7     | MDCB v2.4.2 |
 |         | Operator v0.18 | Operator v0.17 |
 |         | Sync v1.5   | Sync v1.4.3 |
-|         | Helm Chart v1.5.0 | Helm all versions |
-| | EDP v1.9 | EDP all versions |
-| | Pump v1.10.0 | Pump all versions |
+|         | Helm Chart v1.6.0 | Helm all versions |
+| | EDP v1.10 | EDP all versions |
+| | Pump v1.11.0 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
 The above table needs reviewing and updating if necessary
@@ -83,14 +83,13 @@ Once you put an item in this section, we must keep this item listed in all the f
 ### Upgrade instructions {#upgrade-5.5.0}
 If you are upgrading to 5.5.0, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
-Add upgrade steps here if necessary.
 
 ### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release:
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
 -->
-We are thrilled to introduce Tyk Gateway 5.5, bringing advanced rate-limiting capabilities, enhanced certificate authentication, and performance optimizations. For a comprehensive list of changes, please refer to the change log below.
+We are thrilled to introduce Tyk Gateway 5.5, bringing advanced rate-limiting capabilities, enhanced certificate authentication, and performance optimizations. For a comprehensive list of changes, please refer to the [changelog](#Changelog-v5.5.0) below.
 
 ### Per Endpoint Rate Limiting
 
