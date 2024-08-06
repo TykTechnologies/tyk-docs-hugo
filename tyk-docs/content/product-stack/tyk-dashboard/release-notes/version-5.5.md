@@ -116,30 +116,28 @@ Each change log item should be expandable. The first line summarises the changel
 Introduced a UI for configuring the new upstream endpoint rate limit middleware in the OAS Designer.
 </details>
 </li>
+<li>
 <details>
 <summary>Enhancement: Root CA Support for client certificate authentication</summary>
 
 We've added support for using root Certificate Authority (CA) certificates as client certificates in API definitions. The system now authenticates clients with certificates signed by the configured root CA, simplifying certificate management for multiple clients sharing a common CA. This functionality is available for static mutual TLS (mTLS) configurations only.
 </details>
 </li>
+<li>
 <details>
 <summary> Implemented upstream endpoint rate limits</summary>
 
 Added new controls to configure rate limits at the endpoint level for both Tyk OAS and Tyk Classic APIs. This feature aims to protect upstream services from abuse, providing the same functionality as Tyk’s traditional *API-level* or *Global* rate limits but at a more granular level.
 </details>
 </li>
+<li>
 <details>
 <summary>Updated NPM packages for React v18</summary>
 
 Updated npm packages for the Dashboard UI application to support React v18.
 </details>
 </li>
-<details>
-<summary>Corrected ordering of OAS API paths to prevent Middleware misapplication</summary>
-
-Fixed an issue where nested API endpoints, such as `/test` and `/test/abc`, might incorrectly apply middleware from the parent path to the nested path. The fix ensures that API endpoint definitions are correctly ordered, preventing this middleware misapplication and ensuring both the HTTP method and URL match accurately.
-</details>
-</li>
+<li>
 <details>
 <summary>Enhanced API versioning with fallback option for *First of Path* version data location</summary>
 
@@ -163,6 +161,13 @@ We've expanded the functionality of the schema editor for GQL APIs. Users can no
 - For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
 Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
 <ul>
+<li>
+<details>
+<summary>Corrected ordering of OAS API paths to prevent Middleware misapplication</summary>
+
+Fixed an issue where nested API endpoints, such as `/test` and `/test/abc`, might incorrectly apply middleware from the parent path to the nested path. The fix ensures that API endpoint definitions are correctly ordered, preventing this middleware misapplication and ensuring both the HTTP method and URL match accurately.
+</details>
+</li>
 <li>
 <details>
 <summary>Resolved SSE streaming issue</summary>
@@ -212,6 +217,7 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
 <li>
 <details>
 <summary>High priority CVEs fixed</summary>
+
 Fixed the following high priority CVEs identified in the Tyk Dashboard, providing increased protection against security vulnerabilities:
 - [CVE-2023-39325](https://nvd.nist.gov/vuln/detail/CVE-2023-39325)
 - [CVE-2023-45283](https://nvd.nist.gov/vuln/detail/CVE-2023-45283)
