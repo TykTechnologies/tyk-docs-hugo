@@ -1613,7 +1613,7 @@ menu:
             path: /basic-config-and-security/report-monitor-trigger-events/custom-handlers-javascript
             category: Page
             show: True
-          - title: "Monitoring quota usage"
+          - title: "Advanced quota monitoring"
             path: /basic-config-and-security/report-monitor-trigger-events/monitors
             category: Page
             show: True
