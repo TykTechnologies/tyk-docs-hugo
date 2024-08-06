@@ -79,8 +79,8 @@ Now:
 - select the *API Event* for which you want to trigger the webhook from the dropdown list
 - select the *Webhook to use* when the event fires, again from the dropdown list
 - finally, configure the required *Cooldown period*
-- click **ADD**
+- click **Add**
 
 Note that you can register multiple webhooks to be triggered in response to a single event and you can register the same webhook with multiple API events.
 
-Remember to click **UPDATE** to save your changes.
+Remember to click **Save** to save your changes.
