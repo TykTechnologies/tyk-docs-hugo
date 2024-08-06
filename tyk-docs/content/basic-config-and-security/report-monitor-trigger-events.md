@@ -13,10 +13,10 @@ Tyk has a flexible model for handling these API events.
 
 ## Event categories
 
-There are four different categories of events that can be fired by Tyk and for which event handlers can be triggered:
+There are four different categories of events that can be fired by Tyk:
 - [API events](#api-events)
 - [Token lifecycle events](#token-lifecycle-events)
-- [Quota usage monitoring events](#quota-usage-monitoring)
+- [Advanced quota usage events](#quota-usage-monitoring)
 - [Custom events](#custom-events)
 
 ### API events
@@ -27,24 +27,31 @@ Tyk can generate (or *fire*) a variety of built-in API events due to activity tr
 
 Alongside the events that are fired in response to API requests, Tyk will also mark the creation, update or deletion of access tokens (keys) with dedicated events as indicated [here]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types#token-lifecycle-events" >}}).
 
-### Quota usage monitoring
+### Advanced quota usage events
 
-Tyk will generate standard API events when an API client (`QuotaExceeded`) or organisation (`OrgQuotaExceeded`) quota is used up, but what if you want to have some advanced notice that your clients are approaching their quota limit?
+Tyk will generate [standard quota events]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types#standard-quota-events" >}}) when a client quota has been consumed, but what if you want to have more granular notification of quota usage as your clients are approaching their quota limit?
 
-For this, Tyk provides a dedicated [quota monitoring]({{< ref "basic-config-and-security/report-monitor-trigger-events/monitors" >}}) capability that can be configured to trigger a dedicated monitor event handler when the API usage exceeds different thresholds approaching the quota limit.
+For this, Tyk provides [advanced quota monitoring]({{< ref "basic-config-and-security/report-monitor-trigger-events/monitors" >}}) that can be configured to trigger a dedicated event handler when the API usage exceeds different thresholds approaching the quota limit.
 
 ### Custom events
 
-The event subsystem has been designed to be easily extensible, so the community can provide additional event handlers (and add events) to the Tyk codebase or they can be compiled into the version branch very easily for custom builds.
+The event subsystem has been designed to be easily extensible, so the community can define additional events within the Tyk codebase which can then be handled using the exsiting event handling system.
 
 ## Handling events with Tyk
 
-In response to an API, token lifecycle or custom event occuring, at the API-level you can:
-- register a [webhook]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) that will call out to an external endpoint
-- send an [event log]({{< ref "product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/log-handlers" >}}) to the configured [log output]({{< ref "log-data" >}})
-- create your own [custom event handler]({{< ref "basic-config-and-security/report-monitor-trigger-events/custom-handlers-javascript" >}}) that will run in a JavaScript virtual machine on the Tyk server
-- note that **quota usage monitoring** has a [dedicated monitor]({{< ref "basic-config-and-security/report-monitor-trigger-events/monitors" >}}) to handle these events
+Tyk has a simple event handling system where *event handlers* are assigned (or registered) to the different [events]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}) that Tyk can generate. These handlers are assigned per-API so when an event is generated for an API and there is an *event handler* registered for that *event*, the handler will be triggered.
+
+Three different categories of *event handler* can be registered for each event:
+- a [webhook]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) that will call out to an external endpoint
+- an [event log]({{< ref "product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/log-handlers" >}}) that will write to the configured [log output]({{< ref "log-data" >}})
+- your own [custom event handler]({{< ref "basic-config-and-security/report-monitor-trigger-events/custom-handlers-javascript" >}}) that will run in a JavaScript virtual machine on the Tyk server
+
+{{< note success >}}
+**Note**  
+
+Remember that <b>quota usage monitoring</b> has a [dedicated mechanism]({{< ref "basic-config-and-security/report-monitor-trigger-events/monitors" >}}) for handling these special events.
+{{< /note >}}
 
 ### Event metadata
 
-When an API event is fired, if there is an event handler registered for an event from that API then the handler will be provided with a rich set of [metadata]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-data" >}}) that can be used by the external system (webhook) or custom (JavaScript) code to determine the action to be taken.
+When an API event is fired, if there is an *event handler* registered for that combination of API and event then the handler will be provided with a rich set of [metadata]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-data" >}}) that can be used by the external system (webhook) or custom (JavaScript) code to determine the action to be taken.
