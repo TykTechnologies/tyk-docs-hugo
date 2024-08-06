@@ -84,7 +84,7 @@ Here are the supported features:
 | Plugin Bundles                       | ❌        | -              | -                                                                      |                                                                 |
 | Custom Plugins - Go                  | ⚠️         | v0.1           | Untested                                                               |
 | Custom Plugins - gRPC                | ✅        | v0.1           | -                                                                      | [Custom Plugin gRPC]({{<ref "plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin">}})        |
-| Custom Plugins - Javascript          | ✅        | v0.1           | -                                                                      | [Custom Plugin Javascript](./advanced-configurations/custom_plugin.md)                    |
+| Custom Plugins - Javascript          | ✅        | v0.1           | -                                                                      | [Custom Plugin Javascript]({{< ref "plugins/supported-languages/javascript-middleware" >}})                    |
 | Custom Plugins - Lua                 | ⚠️         | v0.1           | Untested                                                               |
 | Custom Plugins - Python              | ⚠️         | v0.1           | Untested                                                               |
 | Custom Plugins - Analytics Plugin    | ✅        | v0.16.0        | - | [Analytics Plugins]({{<ref "plugins/plugin-types/analytics-plugins">}})|
@@ -93,7 +93,7 @@ Here are the supported features:
 | Expire Analytics After               | ❌        | -              | -                                                                      |                                                                 |
 | Do not track Analytics (per API)     | ✅        | v0.1.0         | -                                                                      |                                                                 |
 | Webhooks                             | ❌        | -              | -   | |
-| Looping                              | ⚠️         | v0.6           | Untested                                                               | [Internal Looping](../advanced-configurations/looping.md)                          |
+| Looping                              | ⚠️         | v0.6           | Untested                                                               | [Internal Looping]({{< ref "advanced-configuration/transform-traffic/looping" >}})                          |
 | Round Robin Load Balancing           | ✅        | -              | -                                                                    | [Load Balancing]({{<ref "planning-for-production/ensure-high-availability/load-balancing">}})                    |
 
 ## Endpoint-level Features
