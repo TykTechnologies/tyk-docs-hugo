@@ -137,4 +137,47 @@ Select the headers to delete and insert using the provided fields. You need to c
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
 
+## Configuring the Request Header Transform in Tyk Operator
 
+Tyk Operator allows request headers to be modified at the **API level only**.
+
+Request headers can be removed and inserted using the following fields within an `ApiDefinition`:
+
+- `global_headers`: Mapping of key values corresponding to headers to add to API requests.
+- `global_headers_remove`: List containing the name of headers to remove from API requests.
+
+The example below shows an `ApiDefinition` custom resource that adds *foo-req* and *bar-req* headers to the request before it is sent upstream. The *foo-req* header has a value of *foo-val* and the *bar-req* header has a value of *bar-val*. Furthermore, the *hello* header is removed from the request before it is sent upstream.
+
+<!-- QUESTION: Is this example valid? -->
+
+```yaml
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-global-headers
+spec:
+  name: httpbin-global-headers
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-global-headers
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        paths:
+          black_list: []
+          ignored: []
+          white_list: []
+        global_headers:
+          foo-req: my-foo
+          bar-req: my-bar
+        global_headers_remove:
+          - hello
+```

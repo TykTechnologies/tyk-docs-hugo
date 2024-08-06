@@ -184,4 +184,95 @@ Select the headers to delete and insert using the provided fields. You need to c
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
 
+## Configuring the Response Header Transform in Tyk Operator
 
+Tyk Operator allows response headers to be modified at the **API level only**.
+
+Response headers can be removed and inserted using the following fields within an `ApiDefinition` resource:
+
+- `global_response_headers`: Mapping of key values corresponding to response headers that will be added to the upstream response before it is returned to the client.
+- `global_response_headers_remove`: List of response headers to be removed from the upstream response before it is returned to the client. Each response header to remove is identified by its header key.
+
+{{< note success >}}
+**Note**
+
+For Gateway versions prior to v5.3 the `ApiDefinition` resource must contain the following `response_processors` segment:
+
+```yaml
+spec:
+  response_processors:
+    - name: header_injector
+```
+{{< /note >}}
+
+### Example
+
+The example below shows an `ApiDefinition` resource that adds a *Foo* header, with the value *Bar*, to the response received from the upstream before it is sent back to the client. Furthermore, the *Server* header is removed from the upstream response before it is sent back to the client.
+
+```yaml
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-global-headers
+spec:
+  name: httpbin-global-headers
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-global-headers
+    strip_listen_path: true
+#  response_processors:
+#    - name: header_injector
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        paths:
+          black_list: []
+          ignored: []
+          white_list: []
+        global_response_headers:
+          Foo: Bar
+        global_response_headers_remove:
+          - Server
+```
+
+### Example compatible with Tyk Gateway < v5.3.0
+
+```yaml
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-global-headers
+spec:
+  name: httpbin-global-headers
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-global-headers
+    strip_listen_path: true
+  response_processors:
+    - name: header_injector
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        paths:
+          black_list: []
+          ignored: []
+          white_list: []
+        global_response_headers:
+          Foo: Bar
+        global_response_headers_remove:
+          - Server
+```
