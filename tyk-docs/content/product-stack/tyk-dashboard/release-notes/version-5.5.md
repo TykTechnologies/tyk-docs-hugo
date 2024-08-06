@@ -18,7 +18,9 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 ## 5.5.0 Release Notes
+
 ### Release Date xxx
+
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 **Attention: Please read this section carefully**
@@ -33,12 +35,12 @@ Version compatibility with other components in the Tyk stack. This takes the for
 An illustrative example is shown below. -->
 | Dashboard Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.5.0 | MDCB v2.6.0     | MDCB v2.5.1 |
+| 5.5.0 | MDCB v2.7.0     | MDCB v2.5.1 |
 |         | Operator v0.18 | Operator v0.17 |
 |         | Sync v1.5.0   | Sync v1.4.3 |
-|         | Helm Chart v1.5.0 | Helm all versions |
+|         | Helm Chart v1.6.0 | Helm all versions |
 | | EDP v1.10.0 | EDP all versions |
-| | Pump v1.10.0 | Pump all versions |
+| | Pump v1.11.0 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
 #### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.5.0}
@@ -65,15 +67,14 @@ Once you put an item in this section, we must keep this item listed in all the f
 <!-- ##### Future deprecations
 -->
 ### Upgrade instructions {#upgrade-5.5.0}
-If you are upgrading to 5.5.0, please follow the detailed [upgrade instructions](#upgrading-tyk).
-Add upgrade steps here if necessary.
+If you are upgrading to 5.5.0, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
 ### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release:
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
 -->
-We are excited to announce Tyk Dashboard 5.5, featuring a brand-new dashboard identity, advanced rate-limiting capabilities, and enhanced security options. For a comprehensive list of changes, please refer to the change log below.
+We are excited to announce Tyk Dashboard 5.5, featuring a brand-new dashboard identity, advanced rate-limiting capabilities, and enhanced security options. For a comprehensive list of changes, please refer to the [changelog]({{< ref "#Changelog-v5.5.0">}}) below.
 
 #### New Dashboard brand identity
 
