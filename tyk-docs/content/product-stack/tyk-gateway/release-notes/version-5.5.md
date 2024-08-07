@@ -193,7 +193,7 @@ Addressed a bug that caused Server Side Event (SSE) streaming responses to be co
 
  Resolved an issue where Host and Latency fields (Total and Upstream) were not correctly reported for Tyk Gateways in MDCB data planes. The fix ensures accurate Host values and Latency measurements are now captured and displayed in the generated traffic logs.
 </details>
- </li>
+</li>
 </ul>
 
 
