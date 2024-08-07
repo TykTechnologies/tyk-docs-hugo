@@ -119,7 +119,6 @@ Rate limits can now be configured at the endpoint level in Tyk OAS and Tyk Class
 <li>
 <details>
 
-We've added support for using root Certificate Authority (CA) certificates as client certificates in API definitions. The system now authenticates clients with certificates signed by the configured root CA, simplifying certificate management for multiple clients sharing a common CA. This functionality is available for static mutual TLS (mTLS) configurations only.
 </details>
 </li>
 <li>
