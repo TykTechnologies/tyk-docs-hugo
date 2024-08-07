@@ -6,7 +6,7 @@ description: "This documentation explains how to configure plugins using Tyk Ope
 keywords: [ "Tyk Operator", "custom plugins", "plugins" ]
 ---
 
-This guide explains how to configure a plugin within an API Definition. The souce code for the API Definition is located on the Gateway file system.
+This guide explains how to configure a plugin within an API Definition. The souce code referenced in the API Definition is located on the Gateway file system.
 
 In this example we will create a JavaScript plugin that will inject a request header *Hello* with a value of *World*. This will be configured as a pre request hook.
 

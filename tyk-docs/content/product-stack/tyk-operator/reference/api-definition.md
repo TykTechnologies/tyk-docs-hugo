@@ -84,7 +84,7 @@ Here are the supported features:
 | Plugin Bundles                       | ❌        | -              | -                                                                      |                                                                 |
 | Custom Plugins - Go                  | ⚠️         | v0.1           | Untested                                                               |
 | Custom Plugins - gRPC                | ✅        | v0.1           | -                                                                      | [Custom Plugin gRPC]({{<ref "plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin">}})        |
-| Custom Plugins - Javascript          | ✅        | v0.1           | -                                                                      | [Custom Plugin Javascript](./advanced-configurations/custom_plugin.md)                    |
+| Custom Plugins - Javascript          | ✅        | v0.1           | -                                                                      | [Custom Plugin Javascript]({{< ref "product-stack/tyk-operator/advanced-configurations/custom-plugins" >}})                    |
 | Custom Plugins - Lua                 | ⚠️         | v0.1           | Untested                                                               |
 | Custom Plugins - Python              | ⚠️         | v0.1           | Untested                                                               |
 | Custom Plugins - Analytics Plugin    | ✅        | v0.16.0        | - | [Analytics Plugins]({{<ref "plugins/plugin-types/analytics-plugins">}})|
