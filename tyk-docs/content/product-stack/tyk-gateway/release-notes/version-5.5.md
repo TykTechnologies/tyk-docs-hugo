@@ -168,7 +168,7 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Corrected ordering of OAS API paths to prevent middleware misapplication</summary>
+<summary>Fixed an issue where transformation middleware could incorrectly be applied to Tyk OAS API endpoints with nested paths</summary>
 
 Fixed an issue where nested API endpoints, such as '/test' and '/test/abc', might incorrectly apply middleware from the parent path to the nested path. The fix ensures that API endpoint definitions are correctly ordered, preventing this middleware misapplication and ensuring both the HTTP method and URL match accurately.
 </details>
