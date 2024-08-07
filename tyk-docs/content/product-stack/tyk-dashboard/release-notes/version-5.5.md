@@ -172,7 +172,6 @@ Fixed an issue where nested API endpoints, such as `/test` and `/test/abc`, migh
 <details>
 <summary>Resolved SSE streaming issue</summary>
 
-Addressed a bug that caused Server Side Event (SSE) streaming responses to be considered for caching, which required buffering the response and prevented SSE from being correctly proxied.
 </details>
 </li>
 <li>
