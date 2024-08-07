@@ -74,25 +74,25 @@ Please refer to the [changelog]({{< ref "#Changelog-v2.7.0">}}) below.
    <li>
  <details>
  <summary> Added `/liveness` endpoint for quick checks on MDCB application status </summary>
-   Added `/liveness` endpoint that reports if MDCB is running. It returns status 200 if MDCB is alive. It returns status 503 if MDCB is not operational. In that case, a restart is recommended. For more details, see [MDCB Health check]({{<ref "tyk-multi-data-centre/setup-controller-data-centre#health-check">}}) section.
+   Added `/liveness` endpoint that reports if MDCB is running. It returns status 200 if MDCB is alive. It returns status 503 if MDCB is not operational. In that case, a restart is recommended.
     </details>
   </li>
    <li>
   <details>
    <summary> Implemented `/readiness` endpoint to detail status of critical components and dependencies </summary>
-   Added `/readiness` endpoint that reports if MDCB is ready to serve request. It returns status 200 if MDCB is ready. It returns status 503 if MDCB or one of the dependencies is not ready. For more details, see [MDCB Health check]({{<ref "tyk-multi-data-centre/setup-controller-data-centre#health-check">}}) section.
+   Added `/readiness` endpoint that reports if MDCB is ready to serve request. It returns status 200 if MDCB is ready. It returns status 503 if MDCB or one of the dependencies is not ready.
       </details>
   </li>
    <li>
   <details>
    <summary> Introduced `/config` endpoint for secure, real-time access to MDCB instance configuration </summary>
-   Added `/config` endpoint that returns MDCB instance configuration in JSON format. It requires an administrative key provided in the `x-tyk-authorization` header for access, ensuring secure and controlled usage. Successful requests return MDCB JSON configurations with passwords and sensitive information redacted. For more details, see [check MDCB configurations]({{< ref "tyk-multi-data-centre/setup-controller-data-centre#check-mdcb-configurations" >}}) section.
+   Added `/config` endpoint that returns MDCB instance configuration in JSON format. It requires an administrative key provided in the `x-tyk-authorization` header for access, ensuring secure and controlled usage. Successful requests return MDCB JSON configurations with passwords and sensitive information redacted.
       </details>
   </li>
    <li>
   <details>
    <summary> Introduced `/env` endpoint for secure, real-time access to MDCB instance configuration </summary>
-      Added `/env` endpoint that returns MDCB instance configuration as a list of environment variable keys and values. It requires an administrative key provided in the `x-tyk-authorization` header for access, ensuring secure and controlled usage. Successful requests returns a list of environment variable keys and values with passwords and sensitive information redacted. For more details, see [check MDCB configurations]({{< ref "tyk-multi-data-centre/setup-controller-data-centre#check-mdcb-configurations" >}}) section.
+      Added `/env` endpoint that returns MDCB instance configuration as a list of environment variable keys and values. It requires an administrative key provided in the `x-tyk-authorization` header for access, ensuring secure and controlled usage. Successful requests returns a list of environment variable keys and values with passwords and sensitive information redacted.
       </details>
   </li>
  </details>
