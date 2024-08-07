@@ -162,7 +162,7 @@ testJSVMData.NewProcessRequest(function(request, session, config) {
 
 #### The virtual endpoint `request` object {#VirtualEndpoint-Request}
 
-For [virtual endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) functions the structure of the `request` object is:
+For [virtual endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) functions the structure of a Javascript `request` object is:
 
 ```javascript
 const httpRequest = {
@@ -192,7 +192,7 @@ const httpRequest = {
 
 Each query and form parameter within the request is stored as an array field in the `Params` field of the request object.
 
-Repeated parameter assignments are appended to the corresponding array. For example, a request against `/vendpoint/anything?user_id[]=123&user_id[]=234` would result in:
+Repeated parameter assignments are appended to the corresponding array. For example, a request against `/vendpoint/anything?user_id[]=123&user_id[]=234` would result in a Javascript request object similar to that shown below:
 
 ```javascript
 const httpRequest = {
