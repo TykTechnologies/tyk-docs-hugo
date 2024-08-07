@@ -13,7 +13,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 2.7.0 Release Notes
 
-##### Release date 01 August 2024
+##### Release date 09 August 2024
 
 #### Breaking Changes
 This release has no breaking changes.
