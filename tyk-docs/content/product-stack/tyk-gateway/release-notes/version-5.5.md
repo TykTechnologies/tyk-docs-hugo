@@ -182,7 +182,7 @@ Previously, key creation or reset led to an exponential number of Redis `DeleteR
 </li>
 <li>
 <details>
-<summary>Resolved SSE Streaming issue</summary>
+<summary>Resolved SSE streaming issue</summary>
 
 Addressed a bug that caused Server Side Event (SSE) streaming responses to be considered for caching, which required buffering the response and prevented SSE from being correctly proxied.
 </details>
