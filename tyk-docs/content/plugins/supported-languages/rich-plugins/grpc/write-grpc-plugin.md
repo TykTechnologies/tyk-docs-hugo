@@ -127,6 +127,10 @@ Plugin hooks for your APIs in Tyk can be configured either by directly specifyin
 
 ### Local
 
+This section provides examples for how to configure gRPC plugin hooks, locally within an API Definition. Examples are provided for Tyk Gateway and Tyk Operator.
+
+#### Tyk Gateway
+
 For configurations directly embedded within the Tyk Gateway, plugin hooks can be defined within your API Definition. An example snippet from a Tyk Classic API Definition is provided below:
 
 ```yaml
@@ -151,6 +155,55 @@ For configurations directly embedded within the Tyk Gateway, plugin hooks can be
 Ensure the plugin driver is configured as type *grpc*. Tyk will issue a request to your gRPC server for each plugin hook that you have configured.
 {{< /note >}}
 
+#### Tyk Operator
+
+The examples below illustrate how to configure configure plugin hooks for an API Definition within Tyk Operator:
+
+**Pre plugin hook example**
+
+```yaml {linenos=table,hl_lines=["14-18"],linenostart=1}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-grpc-pre
+spec:
+  name: httpbin-grpc-pre
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.default.svc:8000
+    listen_path: /httpbin-grpc-pre
+    strip_listen_path: true
+  custom_middleware:
+    driver: grpc
+    pre:
+      - name: HelloFromPre
+        path: ""
+```
+
+**Post plugin hook example**
+
+```yaml {linenos=table,hl_lines=["14-18"],linenostart=1}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-grpc-post
+spec:
+  name: httpbin-grpc-post
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.default.svc:8000
+    listen_path: /httpbin-grpc-post
+    strip_listen_path: true
+  custom_middleware:
+    driver: grpc
+    post:
+      - name: HelloFromPost
+        path: ""
+```
 
 ### Remote
 
