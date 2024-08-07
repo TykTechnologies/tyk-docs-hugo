@@ -130,7 +130,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Added root CA support for client certificate authentication</summary>
 
-We've added support for using root Certificate Authority (CA) certificates as client certificates in API definitions. The system now authenticates clients with certificates signed by the configured root CA, simplifying certificate management for multiple clients sharing a common CA. This functionality is available for static mutual TLS (mTLS) configurations only.
+We've added support for you to register Certificate Authority (CA) certificates in your API definitions when using static mutual TLS (mTLS). Tyk can now authenticate clients presenting certificates signed by the registered root CA, simplifying certificate management for multiple clients sharing a common CA.
 </details>
 </li>
 <li>
