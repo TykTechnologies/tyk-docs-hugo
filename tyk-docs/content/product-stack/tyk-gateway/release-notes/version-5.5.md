@@ -177,7 +177,7 @@ Fixed an issue when using Tyk OAS APIs where nested API endpoints, such as '/tes
 <details>
 <summary>Optimised key creation process to reduce Redis DeleteRawKey commands</summary>
 
-Previously, key creation or reset led to an exponential number of Redis DeleteRawKey commands, especially problematic for access lists with over 100 entries. The key creation sequence now runs only once, eliminating redundant deletion of non-existent keys in Redis. This optimization significantly reduces deletion events, enhancing performance and stability for larger access lists.
+Previously, key creation or reset led to an exponential number of Redis `DeleteRawKey` commands,; this was especially problematic for access lists with over 100 entries. The key creation sequence now runs only once, eliminating redundant deletion of non-existent keys in Redis. This optimization significantly reduces deletion events, enhancing performance and stability for larger access lists.
 </details>
 </li>
 <li>
