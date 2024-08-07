@@ -80,7 +80,7 @@ We are excited to announce Tyk Dashboard 5.5, featuring a brand-new dashboard id
 
 Experience a refreshed and modern look with our updated brand identity. The new design enhances usability and provides a cleaner, more intuitive interface for managing your APIs.
 
-#### Implemented Upstream Endpoint rate limits
+#### Per Endpoint Rate Limiting
 
 Introduced new controls to configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas" >}}) and [Tyk Classic APIs]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-classic" >}}). This feature allows for more granular protection of upstream services from abuse, similar to Tyk’s traditional *API-level* or *Global* rate limits but applied specifically at the endpoint level.
 
