@@ -78,7 +78,7 @@ We are excited to announce Tyk Dashboard 5.5, featuring a brand-new dashboard id
 
 #### New Tyk brand identity
 
-Experience a refreshed and modern look with our updated dashboard brand identity. The new design enhances usability and provides a cleaner, more intuitive interface for managing your APIs.
+Experience a refreshed and modern look with our updated brand identity. The new design enhances usability and provides a cleaner, more intuitive interface for managing your APIs.
 
 #### Implemented Upstream Endpoint rate limits
 
