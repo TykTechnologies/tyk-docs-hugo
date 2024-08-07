@@ -94,7 +94,7 @@ The system API provides access to resources outside of the JavaScript Virtual Ma
 
 ### The `request` object
 
-The `request` object provides a set of arrays that describe the API request. These can be manipulated and, when changed, will affect the request as it passes through the middleware pipeline.
+The `request` object provides a set of arrays that describe the API request. These can be manipulated and, when changed, will affect the request as it passes through the middleware pipeline. For [virtual endpoints]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) the request object has a [different structure](#virtual-endpoint-request-object).
 
 The structure of the `request` object is:
 
@@ -160,29 +160,30 @@ testJSVMData.NewProcessRequest(function(request, session, config) {
 });
 ```
 
-### The virtual endpoint `request` object
+#### The virtual endpoint `request` object {#virtual-endpoint-request-object}
 
-For virtual endpoint functions the `request` object contains the following properties:
+For [virtual endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) functions the structure of the `request` object is:
 
-| Property | Description                          | Example                                                                |
-|----------|--------------------------------------|------------------------------------------------------------------------|
-| Body     | HTTP request body                    | `""`                                                                   |
-| Headers  | HTTP request headers                 | `{"Accept":["*/*"]}`                                                   |
-| Params   | Decoded query and form parameters    | `{"confirm": ["true"],"userId": ["123"]}`                              |
-| Scheme   | The scheme of the URL (http or https)| `"https"`                                                              |
-| URL      | The full URL of the request          | `"https://example.com/vendpoint/anything?userId=123&confirm=true"`     |
-
-A request to `https://example.com/vendpoint/anything?user_id=123&confirm=true` given in the table above would result in the following request object:
-
-```json
-{
-  "Headers": {"Accept":["*/*"]},
-  "Body": "",
-  "URL": "/vendpoint/anything?user_id=123\u0026confirm=true",
-  "Params": {"confirm": true, "user_id": ["123"]},
-  "Scheme": "https"
-}
+```javascript
+const httpRequest = {
+  Body: "",
+  Headers: {
+    "Accept": ["*/*"]
+  },
+  Params: {
+    "confirm": ["true"],
+    "userId": ["123"]
+  },
+  Scheme: "https",
+  URL: "/vendpoint/anything?user_id=123\u0026confirm=true"
+};
 ```
+
+- `Body`: HTTP request body
+- `Headers`: HTTP request headers
+- `Params`: Decoded query and form parameters
+- `Scheme`: The scheme of the URL (http or https)
+- `URL`: The full URL of the request
 
 </br>
 
@@ -190,16 +191,22 @@ A request to `https://example.com/vendpoint/anything?user_id=123&confirm=true` g
 **Note**
 
 Each query and form parameter within the request is stored as an array field in the `Params` field of the request object.
+
 Repeated parameter assignments are appended to the corresponding array. For example, a request against `/vendpoint/anything?user_id[]=123&user_id[]=234` would result in:
 
-```json
-{
-  "Headers": {"Accept":["*/*"],"User-Agent":["curl/8.1.2"]},
-  "Body": "",
-  "URL": "/vendpoint/anything?user_id[]=123\u0026user_id[]=234",
-  "Params": {"user_id[]":["123","234"]},
-  "Scheme": "http"
-}
+```javascript
+const httpRequest = {
+  Headers: {
+    "Accept": ["*/*"],
+    "User-Agent": ["curl/8.1.2"]
+  },
+  Body: "",
+  URL: "/vendpoint/anything?user_id[]=123\u0026user_id[]=234",
+  Params: {
+    "user_id[]": ["123", "234"]
+  },
+  Scheme: "http"
+};
 ```
 {{< /note >}}
 
