@@ -184,7 +184,7 @@ Added functionality for users to configure rate limits per endpoint using the ra
 </li>
 <li>
 <details>
-<summary>Save API button now visible for all users</summary>
+<summary>Save API button now visible for SSO users</summary>
 
 Addressed an issue for SSO users where user permissions were not correctly applied. This led to the Save API button not being visible to all appropriate users in the API Designer.
 </details>
