@@ -134,7 +134,7 @@ Added new controls to configure rate limits at the endpoint level for both Tyk O
 <details>
 <summary>Updated NPM packages for React v18</summary>
 
-Updated npm packages for the Dashboard UI application to support React v18.
+Updated npm package dependencies of Dashboard, to address security vulnerabilities.
 </details>
 </li>
 <li>
