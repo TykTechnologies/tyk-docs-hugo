@@ -151,7 +151,7 @@ Introduced new more granular controls for request rate limiting. Rate limits can
 <details>
 <summary>Improved handling of requests to non-existent versions of APIs when using URL path versioning</summary>
  
-Introduced a new configuration for API versioning with `url_versioning_pattern`. This regex-based field helps identify if the first part of a URL is a version pattern, improving control over `strip_versioning_data` and `fallback_to_default` functionalities.
+When using the URL path to indicate the API version (for example `/v1/my-api`) it is common to strip the version identifier (e.g. `/v1`) from the path before proxying the request to the upstream. If the client doesn't provide any version identifier this could lead to an invalid target URL and failed requests, rather than correctly redirecting to the default version. We have introduced an optional configuration `url_versioning_pattern` where you can specify a regex that Tyk will use to identify if the URL contains a version identifier and avoiding the accidental stripping of valid upstream path.
 </details>
 </li>
 </ul>
