@@ -111,7 +111,7 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Dashboard support for upstream endpoint rate limits added</summary>
+<summary>Configure the new endpoint level rate limits in API Designer</summary>
 
 Introduced a UI for configuring the new upstream endpoint rate limit middleware in the OAS Designer.
 </details>
