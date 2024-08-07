@@ -141,7 +141,7 @@ Updated npm package dependencies of Dashboard, to address security vulnerabiliti
 <details>
 <summary>Enhanced API versioning with fallback option for *First of Path* version data location</summary>
 
-Introduced a new configuration for API versioning with `url_versioning_pattern`. This regex-based field helps identify if the first part of a URL is a version pattern, improving control over `strip_versioning_data` and `fallback_to_default` functionalities.
+When configuring API versioning settings for Tyk OAS APIs, you can now set a *Version Identifier Pattern* when using the URL path to indicate the API version (for example `/v1/my-api`). This will be used to avoid accidentally stripping part of the target URL (and failed upstream proxy) if the client doesn't provide any version identifier. If you're using Tyk Classic APIs you can set the `url_versioning_pattern` field in the API definition using the raw API editor.
 </details>
 </li>
 <li>
