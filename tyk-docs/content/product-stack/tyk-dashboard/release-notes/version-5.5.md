@@ -82,11 +82,11 @@ Experience a refreshed and modern look with our updated dashboard brand identity
 
 #### Implemented Upstream Endpoint rate limits
 
-Introduced new controls to configure rate limits at the endpoint level for both Tyk OAS and Tyk Classic APIs. This feature allows for more granular protection of upstream services from abuse, similar to Tyk’s traditional *API-level* or *Global* rate limits but applied specifically at the endpoint level.
+Introduced new controls to configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas" >}}) and [Tyk Classic APIs]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-classic" >}}). This feature allows for more granular protection of upstream services from abuse, similar to Tyk’s traditional *API-level* or *Global* rate limits but applied specifically at the endpoint level.
 
 #### Root CA support for client certificate authentication
 
-We've added support for using root Certificate Authority (CA) certificates as client certificates in API definitions. This enhancement simplifies certificate management by allowing the system to authenticate clients with certificates signed by the configured root CA, applicable for static mutual TLS (mTLS) configurations only.
+Simplify certificate management with support for root Certificate Authority (CA) certificates, enabling clients to authenticate using certificates signed by the [configured root CA]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#can-i-register-a-root-certificate-authority-ca-certificate-with-tyk-so-that-tyk-will-validate-requests-with-certificates-signed-by-this-ca" >}}).
 
 ### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.5.0)
