@@ -84,10 +84,6 @@ Experience a refreshed and modern look with our updated brand identity. The new 
 
 Introduced new controls to configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas" >}}) and [Tyk Classic APIs]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-classic" >}}). This feature allows for more granular protection of upstream services from abuse, similar to Tyk’s traditional *API-level* or *Global* rate limits but applied specifically at the endpoint level.
 
-#### Root CA support for client certificate authentication
-
-Simplify certificate management with support for root Certificate Authority (CA) certificates, enabling clients to authenticate using certificates signed by the [configured root CA]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#can-i-register-a-root-certificate-authority-ca-certificate-with-tyk-so-that-tyk-will-validate-requests-with-certificates-signed-by-this-ca" >}}).
-
 ### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.5.0)
 - ```bash
@@ -114,18 +110,6 @@ Each change log item should be expandable. The first line summarises the changel
 <summary>Configure the new endpoint level rate limits in API Designer</summary>
 
 Rate limits can now be configured at the endpoint level in Tyk OAS and Tyk Classic API definitions. Configure these new more granular controls from the API Designer. 
-</details>
-</li>
-<li>
-<details>
-
-</details>
-</li>
-<li>
-<details>
-<summary> Implemented upstream endpoint rate limits</summary>
-
-Added new controls to configure rate limits at the endpoint level for both Tyk OAS and Tyk Classic APIs. This feature aims to protect upstream services from abuse, providing the same functionality as Tyk’s traditional *API-level* or *Global* rate limits but at a more granular level.
 </details>
 </li>
 <li>
@@ -164,18 +148,6 @@ Each change log item should be expandable. The first line summarises the changel
 <summary>Response Plugins Issue with OAS API Definition Resolved</summary>
 
 Addressed a problem where Response Plugins were not being invoked for Tyk OAS APIs.
-</details>
-</li>
-<li>
-<details>
-<summary>Resolved SSE streaming issue</summary>
-
-</details>
-</li>
-<li>
-<details>
-<summary>Classic raw editor gains Endpoint rate limiter configuration</summary>
-
 </details>
 </li>
 <li>
