@@ -170,7 +170,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Fixed an issue where transformation middleware could incorrectly be applied to Tyk OAS API endpoints with nested paths</summary>
 
-Fixed an issue where nested API endpoints, such as '/test' and '/test/abc', might incorrectly apply middleware from the parent path to the nested path. The fix ensures that API endpoint definitions are correctly ordered, preventing this middleware misapplication and ensuring both the HTTP method and URL match accurately.
+Fixed an issue when using Tyk OAS APIs where nested API endpoints, such as '/test' and '/test/abc', might incorrectly apply middleware from the parent path to the nested path. The fix ensures that API endpoint definitions are correctly ordered so that the standard behaviour of Tyk is followed, whereby path matching is performed starting from the longest path, preventing middleware misapplication and ensuring both the HTTP method and URL match accurately.
 </details>
 </li>
 <li>
