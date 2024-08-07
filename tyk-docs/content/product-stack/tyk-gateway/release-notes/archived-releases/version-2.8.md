@@ -47,12 +47,12 @@ The Developer portal now fully supports exposing oAuth2 APIs:
 
 ---
 
-## Multi-organisation users
+## Multi-organization users
 
 NOTE: Currently only available with >2 node Dashboard license.
 
-You can now create users with the same email address in different organisations. Users will then be able to select an organisation 
-when logging in, and can easily switch between organisations via the navigation menu. To enable set 
+You can now create users with the same email address in different organizations. Users will then be able to select an organization 
+when logging in, and can easily switch between organizations via the navigation menu. To enable set 
 `"enable_multi_org_users": true`.
 
 ---
@@ -95,7 +95,7 @@ You can now add open (keyless) APIs to the developer portal. You have the same f
 
 ---
 
-## Dynamic Portal Customisation
+## Dynamic Portal Customization
 
 Portal templates now have access to the Developer object, its subscriptions, and issued key metadata, providing the ability to conditionally show or hide content inside the Portal based on the attributes below:
 
@@ -103,7 +103,7 @@ The Current logged in Developer can be accessed using the `.Profile` variable wi
 
 * `Id` - Internal developer ID
 * `Email` - Developer email
-* `OrgID` - Tyk Organisation ID
+* `OrgID` - Tyk Organization ID
 * `Subscriptions`  - A map containing subscriptions where the key is a policy ID and the value is an API key
 * `Fields` - A map containing custom developer fields
 * `OauthClients` - A map containing list of registered oAuth clients, where the key is the policy ID.

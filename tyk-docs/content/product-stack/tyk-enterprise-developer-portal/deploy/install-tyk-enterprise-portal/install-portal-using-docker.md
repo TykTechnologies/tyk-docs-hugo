@@ -18,7 +18,7 @@ Additionally, all settings for the Portal are configured using an env-file.
 {{< warning success >}}
 **Note**  
 
-This document is just an example. Customise all fields, including the username, password, root password, database name and more.
+This document is just an example. Customize all fields, including the username, password, root password, database name and more.
 
 Be sure to update the connection DSN in the env-file accordingly.
 {{< /warning >}}
@@ -71,7 +71,7 @@ postgres:10-alpine
 **Note**
 
 {{< warning success >}}
-The above PostgreSQL configuration is an example. You can customise deployment of your PostgreSQL instance. Please refer to [the PostgreSQL documentation](https://www.postgresql.org/docs/current/installation.html) for further guidance.
+The above PostgreSQL configuration is an example. You can customize deployment of your PostgreSQL instance. Please refer to [the PostgreSQL documentation](https://www.postgresql.org/docs/current/installation.html) for further guidance.
 {{< /warning >}}
 
 #### Create an environment variables file
@@ -154,7 +154,7 @@ mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci -
 {{< warning success >}}
 **Note**  
 
-The above MySQL configuration is an example. You can customise deployment of your MySQL instance.
+The above MySQL configuration is an example. You can customize deployment of your MySQL instance.
 
 Please refer to the [MySQL documentation](https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html) for further guidance.
 {{< /warning >}}

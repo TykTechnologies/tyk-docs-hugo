@@ -1,30 +1,31 @@
 ---
 date: 2017-03-24T12:42:33Z
-title: Custom Handlers (JavaScript)
-tags: ["Events", "Custom handlers", "JavaScript"]
-description: "How to script custom JavaScript handlers for events with Tyk"
-menu:
-  main:
-    parent: "Report, Monitor and Trigger Events"
-weight: 4
+title: Custom API event handlers
+tags: ["API events", "Custom handlers", "JavaScript", "event handling"]
+description: "How to create your own custom event handlers in JavaScript"
 ---
 
-## Events: JavaScript Functions
+Tyk supports you to script your own custom code in JavaScript (JS) that will be invoked in response to API events. This is executed asynchronously so you don't need to worry about it blocking the Gateway handling requests. Event handlers like this can be very powerful for automating session, user and API-level functions.
 
-### Overview
+It is important to note that unlike custom JavaScript [plugins]({{< ref "plugins/supported-languages/javascript-middleware" >}}), custom event handlers execute in a *global* JavaScript environment. This means that you need to be careful when naming the event handlers: if you use the same event handler name for different event handling code across two APIs, only one of them will execute, as the other will be overridden when loaded.
 
-It is possible to script your own event handlers for the key Tyk events. You can add these events the same way you add other event handlers (e.g. the webhook), they are executed asynchronously so you don't need to worry about them blocking.
+Custom event handlers have access to the [JavaScript API]({{< ref "plugins/supported-languages/javascript-middleware/javascript-api" >}}) which gives access to the session object and enables your code to make HTTP calls. This is particularly useful if you want to interface with another API with a complex request/response cycle.
 
-It is important to note that unlike Tyk JSVM middleware, Tyk JSVM event handlers execute in a *global* JavaScript environment, this means that if you have the same event handler name that contains slightly different code across two APIs, only one of them will execute, as the other will be overridden when loaded.
+<br>
+{{< note success >}}
+**Note**  
 
-Tyk JSVM event handlers have access to the Tyk JSVM API, which gives access to the session object store, and enables the ability for making HTTP calls outside of the Tyk environment, this is particularly useful if you want to interface with another API with a complex request/response cycle.
+Custom event handlers are currently only supported by Tyk Classic APIs.
+{{< /note >}}
 
-### Creating an Event Handler
+### Creating a custom event handler
 
-Creating an event handler is very similar to creating middleware, simply invoke the correct constructors with a closure in the TykJS namespace:
+A custom event handler consists of a function that accepts two variables (`event` and `context`) and has no return value.
 
-```
-// ---- Sample middleware creation by end-user -----
+Creating an event handler is very similar to [creating custom JS plugins]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide" >}}), simply invoke the correct constructors with a closure in the TykJS namespace:
+
+```js
+// ---- Sample custom event handler -----
 var sampleHandler = new TykJS.TykEventHandlers.NewEventHandler({});
 
 sampleHandler.NewHandler(function(event, context) {
@@ -35,10 +36,11 @@ sampleHandler.NewHandler(function(event, context) {
 });
 ```
 
-A handler consists of a function that accepts two variables called `event` and `context`. The event object is the same as is used by other event handlers and has the following structure:
+#### The `event` object
 
-```
-/* The Event object:
+This contains the [event metadata]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-data" >}}) in the following structure:
+
+```json
 {
   "EventType": "Event Type Code",
   "EventMetaData": {
@@ -47,56 +49,59 @@ A handler consists of a function that accepts two variables called `event` and `
     "Origin": "1.1.1.1:PORT",
     "Key": "{{Auth Key}}"
   },
-  "TimeStamp": "2015-01-15 17:21:15.111157073 +0000 UTC"
+  "TimeStamp": "2024-01-01 23:59:59.111157073 +0000 UTC"
 }
-
-*/
 ```
 
-An event handler has no return value, however it can interact with the outside world in various ways, as is described in the Tyk JSVM API section. Event handlers like this can be very powerful for automating session, user and API-level functions.
+#### The `context` Variable
 
-### The `context` Variable
+Tyk injects a `context` object into your event handler giving access to more information about the request. This object has the following structure:
 
-In order to provide more context around an event, Tyk injects a context object into your event handler, this gives more information around the Key, such as the Org and API ID of the request in order to interact better with the Tyk REST API functions:
-
-```
+```js
 type JSVMContextGlobal struct {
   APIID string
   OrgID string
 }
 ```
 
-This can be used as follows:
+It is populated with the API ID and Org ID of the request that your custom function can use together with the `event` metadata to interact with the Tyk REST API functions, for example:
 
-```
+```js
 // Use the TykGetKeyData function to retrieve a session from the session store, use the context variable to give the APIID for the key.
 var thisSession = JSON.parse(TykGetKeyData(event.EventMetaData.Key, context.APIID))
 log("Expires: " + thisSession.expires)
 ```
 
-### Hooking up a Dynamic Event Handler
+### Registering a custom event handler
 
-Adding a dynamic event handler to your API is the same as adding a regular event handler, however there is now a new type: `eh_dynamic_handler`. It can be invoked and configured as follows:
+Registering a custom event handler to your Tyk Classic API is the same as adding any other event handler, within the `event_handlers` section of the API definition.
 
-```
-/* test_app.json */
-...
-"event_handlers": {
-  "events": {
-    "KeyExpired": [
-      {
-        "handler_name":"eh_dynamic_handler",
-        "handler_meta": {
-          "name": "sessionHandler",
-          "path": "event_handlers/session_editor.js"
+The `handler_name` for a custom event handler should be set to: `eh_dynamic_handler`.
+
+The `handler_meta` for a custom event handler consists of two fields:
+- `name` is the unique name of your middleware object
+- `path` is the relative path to the file (it can be absolute)
+
+For example, to register a custom event handler with the name `sessionHandler` to be invoked in response to the `KeyExpired` event you would add the following to your API definition:
+
+```json
+{
+  "event_handlers": {
+    "events": {
+      "KeyExpired": [
+        {
+          "handler_name":"eh_dynamic_handler",
+          "handler_meta": {
+            "name": "sessionHandler",
+            "path": "event_handlers/session_editor.js"
+          }
         }
-      }
-    ]
+      ]
+    }
   }
-},
-...
+}
 ```
 
-The key differentiators here are the `handler_meta` configuration section. There are two fields: `name` and `path`. Similarly to dynamic middleware, the name represents the unique name of your middleware object, and the path is the relative path to the file (it can be absolute).
+### Loading custom event handlers
 
 The JavaScript files are loaded on API reload into the global JSVM. If a hot-reload event occurs, the global JSVM is re-set and files are re-loaded. This could cause event handlers that are currently executing to get abandoned. This is a measured risk and should not cause instability, however it should be noted that because of this, in an environment where reloads occur frequently, there is risk that event handler may not fire correctly.

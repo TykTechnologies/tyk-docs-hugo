@@ -5,7 +5,7 @@ tags: ["API Security", "governance"]
 description: "Management and governance of APIs"
 ---
 
-APIs need to be managed and governed just like any other resource, otherwise organisations risk losing track of their API estate and becoming unaware of potentially vulnerable APIs running within their infrastructure. This risk is magnified as the number of teams, environments and APIs increases. Use API management as part of overarching business processes to control how APIs are accessed, managed and deployed.
+APIs need to be managed and governed just like any other resource, otherwise organizations risk losing track of their API estate and becoming unaware of potentially vulnerable APIs running within their infrastructure. This risk is magnified as the number of teams, environments and APIs increases. Use API management as part of overarching business processes to control how APIs are accessed, managed and deployed.
 
 **Restrict Version Availability**: Enforce the expiry of [API versions]({{< ref "getting-started/key-concepts/versioning" >}}) that are planned for deprecation, by setting a sunset date, beyond which they will not be accessible.
 

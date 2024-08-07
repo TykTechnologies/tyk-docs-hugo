@@ -9,13 +9,13 @@ aliases:
   - /tyk-developer-portal/portal-concepts
 ---
 
-## API Catalogue
+## API Catalog
 
-The API Catalogue is a list of APIs that you have published to your portal.
+The API Catalog is a list of APIs that you have published to your portal.
 
-The API Catalogue entry is not a one-to-one map between an API you manage in Tyk, since you might want to compose multiple managed services into a single public-facing API Facade, a catalogue entry is actually an entry that maps against a security policy.
+The API Catalog entry is not a one-to-one map between an API you manage in Tyk, since you might want to compose multiple managed services into a single public-facing API Facade, a catalog entry is actually an entry that maps against a security policy.
 
-From the API Catalogue, a user can either:
+From the API Catalog, a user can either:
 
 - View the documentation for the API
 - Request for a token to the API
@@ -24,7 +24,7 @@ When a developer requests a token, a new Auth token is generated on the linked p
 
 ## Key Requests
 
-A key request is a record that is generated when a developer requests an access token for an API published in the API Catalogue. The Key request encompasses the following information:
+A key request is a record that is generated when a developer requests an access token for an API published in the API Catalog. The Key request encompasses the following information:
 
 Read more about them in the [Key Request section]({{< ref "tyk-developer-portal/tyk-portal-classic/key-requests" >}})
 
@@ -80,7 +80,7 @@ The developer portal supports two types of documentation, and will render them d
 Support for API Blueprint is being deprecated. See [Importing APIs]({{< ref "getting-started/import-apis#api-blueprint-is-being-deprecated" >}}) for more details.
 {{< /note >}}
 
-Within an API Catalogue entry, documentation must be attached to the catalogue entry for it to be published.
+Within an API Catalog entry, documentation must be attached to the catalog entry for it to be published.
 
 ## Developers
 

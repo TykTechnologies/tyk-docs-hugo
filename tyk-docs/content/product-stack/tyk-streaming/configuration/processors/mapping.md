@@ -4,7 +4,7 @@ description: Explains an overview of mapping
 tags: [ "Mapping", "Parsing","Processors" ]
 ---
 
-Executes a [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) mapping on messages, creating a new document that replaces (or filters) the original message.
+Executes a [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mapping on messages, creating a new document that replaces (or filters) the original message.
 
 
 ```yml
@@ -13,7 +13,7 @@ label: ""
 mapping: "" # No default (required)
 ```
 
-[Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) is a powerful language that enables a wide range of mapping, transformation and filtering tasks.
+[Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) is a powerful language that enables a wide range of mapping, transformation and filtering tasks.
 
 If your mapping is large, and you'd prefer for it to live in a separate file then you can execute a mapping directly from a file with the expression `from "<path>"`, where the path must be absolute, or relative from the location that Tyk Streams is executed from.
 
@@ -35,9 +35,9 @@ Mapping documents is advantageous in situations where the result is a document w
 
 ## Error Handling
 
-[Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) mappings can fail, in which case the message remains unchanged, errors are logged, and the message is flagged as having failed, allowing you to use standard processor error handling patterns.
+[Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mappings can fail, in which case the message remains unchanged, errors are logged, and the message is flagged as having failed, allowing you to use standard processor error handling patterns.
 
-However, [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behavior.
+However, [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behavior.
 
 
 ## Examples

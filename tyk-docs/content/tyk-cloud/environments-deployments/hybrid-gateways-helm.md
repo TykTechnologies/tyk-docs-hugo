@@ -46,7 +46,7 @@ helm show values tyk-helm/tyk-hybrid > values.yaml
 You need to modify the following values in your custom `values.yaml` file:
 
 * `gateway.rpc.apiKey` - Tyk Dashboard API Access Credentials of the user created earlier
-* `gateway.rpc.rpcKey` - Organisation ID
+* `gateway.rpc.rpcKey` - Organization ID
 * `gateway.rpc.connString` - MDCB connection string
 * `gateway.rpc.group_id`*(optional)*  - if you have multiple data plane (e.g. in different regions), specify the data plane group (string) to which the gateway you are deploying belong. The data planes in the same group share one Redis instance.
 * `gateway.sharding.enabled` and `gateway.sharding.tags`*(optional)*  - you can enable sharding to selectively load APIs to specific gateways, using tags. By default, sharding is disabled and the gateway will load all APIs.

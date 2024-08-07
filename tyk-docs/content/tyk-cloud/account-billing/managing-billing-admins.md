@@ -34,7 +34,7 @@ To be added as a Billing Admin, a user cannot have an existing Tyk Cloud account
 To add a new Billing Admin team member requires you to have one of the following roles:
 
 * Be an existing Billing Admin
-* Be the account creator Organisation Admin (this user also has the Billing Admin role assigned to them)
+* Be the account creator Organization Admin (this user also has the Billing Admin role assigned to them)
 
 1. Select **Account & Billing** from the Admin menu (if you only have Billing Admin permissions you will automatically be logged into the Account and Billing area).
 

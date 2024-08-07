@@ -17,7 +17,7 @@ This summary page explains the steps required to implement Tyk Cloud, which enab
 
 We've covered the following to get you started with the Tyk Cloud way of managing Tyk deployments:
 
-* We've created a new Organisation
+* We've created a new Organization
 * We've added a Team
 * We've added an Environment, including a Control Plane and an associated Cloud Data Plane and deployed them
 * We've added a very simple API to the Control Plane Dashboard and tested it via the first Cloud Data Plane

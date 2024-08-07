@@ -58,7 +58,7 @@ This new setting allows API Providers to set the logging [level]({{< ref "produc
 #### Added
 - Added Kubernetes support and [helm charts]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-helm" >}}).
 - Added [Single Sign-on]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso">}}) for API Consumers and admin users so that they can use their IdPs for managing admin users and developers.
-- Added organisation and application metadata to auth tokens and OAuth2.0 clients so that API Providers can use Tyk Pump to create aggregated reports based on the metadata from tokens and OAuth2.0 clients.
+- Added organization and application metadata to auth tokens and OAuth2.0 clients so that API Providers can use Tyk Pump to create aggregated reports based on the metadata from tokens and OAuth2.0 clients.
 - Added Admin APIs for API Products to enable API Providers to update API Products using CI/CD pipelines.
 - Added [TLS]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_enable" >}}) support for the portal's UI.
 - Added config options to set the logging [level]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_log_level" >}}) and [format]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_log_format" >}}). This offers API Providers more control over the logging behavior of their APIs.
@@ -66,7 +66,7 @@ This new setting allows API Providers to set the logging [level]({{< ref "produc
 
 #### Fixed
 - Fixed grammar in the copy section of the admin application on the Application page.
-- Fixes an issue with DCR that was encountered when a developer deletes an app with two DCR products from different catalogues.  In that case, the client was deleted from IdP but the app was not deleted from the Portal.
+- Fixes an issue with DCR that was encountered when a developer deletes an app with two DCR products from different catalogs.  In that case, the client was deleted from IdP but the app was not deleted from the Portal.
 
 ## Further Information
 
