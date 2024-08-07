@@ -113,7 +113,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Configure the new endpoint level rate limits in API Designer</summary>
 
-Introduced a UI for configuring the new upstream endpoint rate limit middleware in the OAS Designer.
+Rate limits can now be configured at the endpoint level in Tyk OAS and Tyk Classic API definitions. Configure these new more granular controls from the API Designer. 
 </details>
 </li>
 <li>
