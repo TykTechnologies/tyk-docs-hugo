@@ -191,7 +191,7 @@ Addressed a bug that caused Server Side Event (SSE) streaming responses to be co
   <details>
   <summary>Fixed Analytics Latency Reporting for MDCB Setups</summary>
 
- Resolved an issue where Host and Latency fields (Total and Upstream) were not correctly reported for edge gateways in MDCB setups. The fix ensures accurate Host values and Latency measurements are now captured and displayed in analytics data.
+ Resolved an issue where Host and Latency fields (Total and Upstream) were not correctly reported for Tyk Gateways in MDCB data planes. The fix ensures accurate Host values and Latency measurements are now captured and displayed in the generated traffic logs.
  </details>
  </li>
 </ul>
