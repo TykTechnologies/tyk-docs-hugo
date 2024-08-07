@@ -200,7 +200,7 @@ Resolved an issue where the Public GQL Playground displayed schema information d
  <details>
  <summary>Empty Endpoint popularity page issue resolved in version 5.3.1</summary>
 
- Addressed an issue where the Dashboard displayed an empty page when accessing Activity by Endpoint information after upgrading to Tyk 5.3.1. Users can now see all necessary information.             
+Addressed an issue where the Dashboard displayed a blank pane when accessing the Activity by Endpoint page after upgrading to Tyk 5.3.1.
  </details>
  </li>
 </ul>
