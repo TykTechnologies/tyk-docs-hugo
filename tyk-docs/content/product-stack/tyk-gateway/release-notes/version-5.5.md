@@ -149,7 +149,7 @@ Introduced new more granular controls for request rate limiting. Rate limits can
 </li>
 <li>
 <details>
-<summary>Enhanced API versioning with fallback option for <i>First of Path</i> version data location</summary>
+<summary>Improved handling of requests to non-existent versions of APIs when using URL path versioning</summary>
  
 Introduced a new configuration for API versioning with `url_versioning_pattern`. This regex-based field helps identify if the first part of a URL is a version pattern, improving control over `strip_versioning_data` and `fallback_to_default` functionalities.
 </details>
