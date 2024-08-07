@@ -163,9 +163,9 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Corrected ordering of OAS API paths to prevent Middleware misapplication</summary>
+<summary>Response Plugins Issue with OAS API Definition Resolved</summary>
 
-Fixed an issue where nested API endpoints, such as `/test` and `/test/abc`, might incorrectly apply middleware from the parent path to the nested path. The fix ensures that API endpoint definitions are correctly ordered, preventing this middleware misapplication and ensuring both the HTTP method and URL match accurately.
+Addressed a problem where Response Plugins were not being invoked for Tyk OAS APIs.
 </details>
 </li>
 <li>
