@@ -94,7 +94,7 @@ The system API provides access to resources outside of the JavaScript Virtual Ma
 
 ### The `request` object
 
-The `request` object provides a set of arrays that describe the API request. These can be manipulated and, when changed, will affect the request as it passes through the middleware pipeline. For [virtual endpoints]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) the request object has a [different structure](#virtual-endpoint-request-object).
+The `request` object provides a set of arrays that describe the API request. These can be manipulated and, when changed, will affect the request as it passes through the middleware pipeline. For [virtual endpoints]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) the request object has a [different structure](#VirtualEndpoint-Request).
 
 The structure of the `request` object is:
 
@@ -160,7 +160,7 @@ testJSVMData.NewProcessRequest(function(request, session, config) {
 });
 ```
 
-#### The virtual endpoint `request` object {#virtual-endpoint-request-object}
+#### The virtual endpoint `request` object {#VirtualEndpoint-Request}
 
 For [virtual endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) functions the structure of the `request` object is:
 
