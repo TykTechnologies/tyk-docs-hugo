@@ -176,7 +176,6 @@ Addressed a problem where Response Plugins were not being invoked for Tyk OAS AP
 <details>
 <summary>Classic raw editor gains Endpoint rate limiter configuration</summary>
 
-Added functionality for users to configure rate limits per endpoint using the raw API definition for classic Tyk APIs.
 </details>
 </li>
 <li>
