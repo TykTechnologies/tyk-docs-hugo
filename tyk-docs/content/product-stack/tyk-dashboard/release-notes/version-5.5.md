@@ -76,7 +76,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 -->
 We are excited to announce Tyk Dashboard 5.5, featuring a brand-new dashboard identity, advanced rate-limiting capabilities, and enhanced security options. For a comprehensive list of changes, please refer to the [changelog]({{< ref "#Changelog-v5.5.0">}}) below.
 
-#### New Dashboard brand identity
+#### New Tyk brand identity
 
 Experience a refreshed and modern look with our updated dashboard brand identity. The new design enhances usability and provides a cleaner, more intuitive interface for managing your APIs.
 
