@@ -142,7 +142,7 @@ Optimised the creation and usage of AST documents in our GQL library to reduce s
 </li>
 <li>
 <details>
-<summary>Implemented upstream Endpoint rate limits</summary>
+<summary>Implemented upstream endpoint rate limits</summary>
  
 Introduced new more granular controls for request rate limiting. Rate limits can now be configured at the endpoint level in Tyk OAS and Tyk Classic API definitions.
 </details>
