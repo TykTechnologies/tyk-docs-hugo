@@ -150,7 +150,7 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Response Plugins Issue with OAS API Definition Resolved</summary>
+<summary>Resolved an issue seen when using reponse plugins with Tyk OAS APIs</summary>
 
 Addressed a problem where Response Plugins were not being invoked for Tyk OAS APIs.
 </details>
