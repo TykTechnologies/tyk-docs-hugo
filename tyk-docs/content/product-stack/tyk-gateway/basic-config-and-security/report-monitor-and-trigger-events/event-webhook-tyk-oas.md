@@ -169,7 +169,7 @@ If you want to use a *global webhook* then you'll need to declare it first, foll
 
 #### Step 1: Add event handler
 
-From the **Settings** tab in the API Designer, scroll down to the **Server** section to find the **Event Handlers** pane. Select **ADD EVENT**.
+From the **Settings** tab in the API Designer, scroll down to the **Server** section to find the **Event Handlers** pane. Select **Add Event**.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-webhook-server.png" alt="Add an event handler from the Server section" >}}
 
@@ -191,7 +191,7 @@ Note that Tyk automatically retrieves the details of the *global webhook* and di
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-webhook-global-complete.png" alt="A fully configured global webhook" >}}
 
-Don't forget to select **SAVE API** to apply the changes.
+Don't forget to select **Save API** to apply the changes.
 
 #### Step 3b: Configure local webhook
 
@@ -199,8 +199,8 @@ If you don't want to use a shared *global webhook* but instead want to configure
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-webhook-local.png" alt="Ready to configure a local webhook">}}
 
-Now you can complete the various fields to set up your *local webhook*. If you want to add custom headers to send with the HTTP request, select **NEW HEADER** then enter the header key and value.
+Now you can complete the various fields to set up your *local webhook*. If you want to add custom headers to send with the HTTP request, select **New Header** then enter the header key and value.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-webhook-local-complete.png" alt="A fully configured global webhook" >}}
 
-Don't forget to select **SAVE API** to apply the changes.
+Don't forget to select **Save API** to apply the changes.

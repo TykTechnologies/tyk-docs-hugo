@@ -98,7 +98,7 @@ Select **Webhooks** from the **API Management** Menu:
 
 {{< img src="/img/2.10/webhooks_menu.png" alt="Webhooks menu item" >}}
 
-Click **ADD WEBHOOK**.
+Click **Add Webhook**.
 
 {{< img src="/img/2.10/add_webhook.png" alt="Add webhook button" >}}
 
@@ -108,7 +108,7 @@ Now you need to tell Tyk how and where to send the request. You can include cust
 
 {{< img src="/img/2.10/webhook_details.png" alt="Add webhook detail" >}}
 
-Click **SAVE** to save it.
+Click **Save** to save it.
 
 <hr>
 

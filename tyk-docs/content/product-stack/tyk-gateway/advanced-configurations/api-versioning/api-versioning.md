@@ -109,7 +109,7 @@ When using the [Request URL](#request-url-path) for the versioning identifier, i
 
 In Tyk 5.5.0 we implemented a new *URL versioning pattern* configuration option where you can set a regex that Tyk will use to determine whether the first URL fragment after the `listenPath` is a version identifier. If the first URL fragment does not match the regex, it will not be stripped and the unaltered URL will be used to create the upstream URL.
 
-### Sunsetting API versions
+## Sunsetting API versions
 
 API sunsetting is the process of phasing out or retiring an older version of an API or an entire API. It's a planned, gradual approach to ending support for an API or API version. To aid with the automation of this process, all Tyk API versions can be configured with an optional expiry date, after which the API will no longer be available. If this is left blank then the API version will never expire.
 
