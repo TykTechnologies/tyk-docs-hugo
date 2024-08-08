@@ -95,7 +95,7 @@ Now configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "prod
 
 Simplify certificate management with support for root Certificate Authority (CA) certificates, enabling clients to authenticate using certificates signed by the [configured root CA]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#can-i-register-a-root-certificate-authority-ca-certificate-with-tyk-so-that-tyk-will-validate-requests-with-certificates-signed-by-this-ca" >}}).
 
-### Optimised AST Document Handling
+#### Optimised AST Document Handling
 
 Experience improved performance with optimised creation and usage of Abstract Syntax Tree (AST) documents in our GQL library, reducing memory usage and enhancing efficiency.
 
