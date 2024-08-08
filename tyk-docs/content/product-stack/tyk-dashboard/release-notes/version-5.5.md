@@ -114,13 +114,6 @@ Rate limits can now be configured at the endpoint level in Tyk OAS and Tyk Class
 </li>
 <li>
 <details>
-<summary>Updated NPM packages for React v18</summary>
-
-Updated npm package dependencies of Dashboard, to address security vulnerabilities.
-</details>
-</li>
-<li>
-<details>
 <summary>Improved handling of requests to non-existent versions of APIs when using URL path versioning</summary>
 
 When configuring API versioning settings for Tyk OAS APIs, you can now set a *Version Identifier Pattern* when using the URL path to indicate the API version (for example `/v1/my-api`). This will be used to avoid accidentally stripping part of the target URL (and failed upstream proxy) if the client doesn't provide any version identifier. If you're using Tyk Classic APIs you can set the `url_versioning_pattern` field in the API definition using the raw API editor.
@@ -131,6 +124,18 @@ When configuring API versioning settings for Tyk OAS APIs, you can now set a *Ve
 <summary>Improved schema editor functionality for GQL APIs</summary>
 
 We've expanded the functionality of the schema editor for GQL APIs. Users can now easily import their schema from a file, export it, or quickly clean the entire editor if a mistake is made.
+</details>
+</li>
+</ul>
+
+#### Changed
+
+<ul>
+<li>
+<details>
+<summary>Updated NPM packages dependencies</summary>
+
+Updated npm package dependencies of Dashboard, to address security vulnerabilities.
 </details>
 </li>
 </ul>
