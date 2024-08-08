@@ -347,7 +347,7 @@ menu:
         path: /tyk-on-premises
         category: Page
         show: True
-      - title: "Quick Start - Free Trial"
+      - title: "Quick Start"
         path: /getting-started/quick-start
         category: Page
         show: True

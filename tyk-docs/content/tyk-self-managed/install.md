@@ -19,7 +19,7 @@ First, click here to get a trial license
 
 </br>
 
-{{< button_left href="https://tyk.io/sign-up/#self" color="green" content="Self-managed Free License" >}}
+{{< button_left href="https://tyk.io/sign-up/" color="green" content="Self-managed Evaluation" >}}
 
 **Now choose your preferred installation option**
 
