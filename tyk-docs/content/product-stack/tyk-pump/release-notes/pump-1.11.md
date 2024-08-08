@@ -17,7 +17,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 1.11 Release Notes
 
-### Release Date 3 July 2024
+### Release Date 15 August 2024
 
 ### Breaking Changes
 This release has no breaking changes.
@@ -65,9 +65,9 @@ This release focuses on improving security and compliance, enhancing integration
 <ul>
 <li>
 <details>
-<summary>Added: </summary>
+<summary>Add Kinesis backend support </summary>
 
-...
+Tyk Pump now supports Kinesis as a backend to push analytics to a data lake efficiently.
 
 </details>
 </li>
