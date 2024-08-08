@@ -223,8 +223,6 @@ spec:
     target_url: http://httpbin.org
     listen_path: /httpbin-global-headers
     strip_listen_path: true
-#  response_processors:
-#    - name: header_injector
   version_data:
     default_version: Default
     not_versioned: true
