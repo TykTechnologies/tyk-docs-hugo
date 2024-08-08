@@ -87,7 +87,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 -->
 We are thrilled to introduce Tyk Gateway 5.5, bringing advanced rate-limiting capabilities, enhanced certificate authentication, and performance optimizations. For a comprehensive list of changes, please refer to the [changelog](#Changelog-v5.5.0) below.
 
-### Per Endpoint Rate Limiting
+#### Per Endpoint Rate Limiting
 
 Now configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas" >}}) and [Tyk Classic APIs]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-classic" >}}), providing granular protection for upstream services against overloading and abuse.
 
