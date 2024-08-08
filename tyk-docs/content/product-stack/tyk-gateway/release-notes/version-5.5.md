@@ -91,7 +91,7 @@ We are thrilled to introduce Tyk Gateway 5.5, bringing advanced rate-limiting ca
 
 Now configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas" >}}) and [Tyk Classic APIs]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-classic" >}}), providing granular protection for upstream services against overloading and abuse.
 
-### Root CA Support for Client Certificates
+#### Root CA Support for Client Certificates
 
 Simplify certificate management with support for root Certificate Authority (CA) certificates, enabling clients to authenticate using certificates signed by the [configured root CA]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#can-i-register-a-root-certificate-authority-ca-certificate-with-tyk-so-that-tyk-will-validate-requests-with-certificates-signed-by-this-ca" >}}).
 
