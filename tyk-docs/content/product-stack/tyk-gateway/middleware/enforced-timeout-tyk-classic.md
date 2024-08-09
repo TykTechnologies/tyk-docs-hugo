@@ -101,6 +101,7 @@ spec:
               return_to_service_after: 10
               samples: 4
               threshold_percent: "0.5" # Tyk Dashboard API doesn't support strings.
+```
 
 We can test the example using the curl command as shown below:
 
