@@ -11,6 +11,8 @@ When working with Tyk Classic APIs the middleware is configured in the Tyk Class
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/endpoint-cache-tyk-oas" >}}) page.
 
+If using Tyk Operator please refer to section [configuring the middleware in the Tyk Operator](#tyk-operator).
+
 ## Configuring the middleware in the Tyk Classic API Definition
 
 When using the Tyk Classic API Definition, there are two options for endpoint caching - simple and advanced.
@@ -176,3 +178,56 @@ Body value match or [request selective]({{< ref "basic-config-and-security/reduc
 ##### Step 4: Save the API
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
+
+## Configuring the middleware in the Tyk Operator {#tyk-operator}
+
+You can use Tyk Operator to configure the endpoint caching middleware for your Tyk Classic API by following these steps.
+
+### Simple endpoint cache
+
+Configuring simple endpoint caching in Tyk Operator is similar to the process for a [Tyk Classic API Definition](#tyk-classic). A list of endpoints for which you wish to cache safe requests should be configured within the `cache` list in the `extended_paths` section.
+
+In the API-level `cache_options` object you must enable caching by setting `enable_cache` to true and configure the cache refresh period by setting a value for the `cache_timeout` in seconds. To allow selective caching per-endpoint you should also set `cache_all_safe_requests`to `false`.
+
+```yaml {linenos=true, linenostart=1}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-cache
+spec:
+  name: httpbin-cache
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-cache
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        paths:
+          black_list: []
+          ignored: []
+          white_list: []
+        extended_paths:
+          cache:
+            - /get
+            - /anything
+  cache_options:
+    cache_all_safe_requests: false
+#    cache_by_headers: []
+    cache_timeout: 10
+    cache_response_codes:
+      - 400
+    enable_cache: true
+```
+
+### Advanced endpoint cache
+
+<!-- TODO: awaiting example ->
+
