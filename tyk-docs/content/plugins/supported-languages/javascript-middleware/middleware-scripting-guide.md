@@ -202,7 +202,7 @@ class VirtualEndpointRequest {
 - `Headers`: HTTP request headers, e.g. `"Accept": ["*/*"]`
 - `Params`: Decoded query and form parameters, e.g. `{ "confirm": ["true"], "userId": ["123"] }`
 - `Scheme`: The scheme of the URL ( e.g. `http` or `https`)
-- `URL`: The full URL of the request, `/vendpoint/anything?user_id=123\u0026confirm=true`
+- `URL`: The full URL of the request, e.g `/vendpoint/anything?user_id=123\u0026confirm=true`
 
 </br>
 
