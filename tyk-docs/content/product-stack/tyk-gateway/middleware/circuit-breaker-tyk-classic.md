@@ -74,7 +74,7 @@ The Dashboard supports the separate `BreakerTripped` and `BreakerReset` events, 
 
 ## Confguring the Circuit Breaker in Tyk Operator {#tyk-operator}
 
-The example API Definition below configures an API to listen on path `/httpbin-timeout-breaker` and forward requests upstream to http://httpbin.org. A hard timeout value of 2 seconds is configured for path `/delay/{delay_seconds}`. This will return a `504 Gateway Timeout` response to the client if the upstream response is not received before expiry of the timer.
+The example API Definition below configures an API to listen on path `/httpbin-timeout-breaker` and forwards requests upstream to http://httpbin.org. A hard timeout value of 2 seconds is configured for path `/delay/{delay_seconds}`. This will return a `504 Gateway Timeout` response to the client if the upstream response is not received before expiry of the timer.
 
 ```yaml
 apiVersion: tyk.tyk.io/v1alpha1

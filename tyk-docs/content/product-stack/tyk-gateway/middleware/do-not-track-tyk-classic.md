@@ -11,7 +11,7 @@ When working with Tyk Classic APIs the middleware is configured in the Tyk Class
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-oas" >}}) page.
 
-If you're using Tyk Operator, then check out the [Tyk Operator](#tyk-operator) section below.
+If you're using Tyk Operator, then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 
 ## Configuring the middleware in the Tyk Classic API Definition {#tyk-classic}
 
@@ -60,9 +60,9 @@ Use the *save* or *create* buttons to save the changes and activate the middlewa
 
 ## Configuring the middleware in Tyk Operator {#tyk-operator}
 
-The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic).
+The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic). It is possible to specify which endpoints are tracked and which are not by using the `track_endpoints` and `do_not_track_endpoints` list fields in the API Definition.
 
-The example Tyk Operator API Definition below configures an API to listen on path `/httpbin` and forward requests upstream to http://httpbin.org. In this example the do-not-track middleware has been configured for requests to the GET /headers endpoint. Any such calls will not generate transaction records from the Gateway and so will not appear in the analytics.
+The example Tyk Operator API Definition below configures an API to listen on path `/httpbin` and forwards requests upstream to http://httpbin.org. In this example the do-not-track middleware has been configured for requests to the GET /headers endpoint. Any such calls will not generate transaction records from the Gateway and so will not appear in the analytics. Conversely, requests to the GET /get endpoint will appear in the analytics.
 
 ```yaml {linenos=true, linenostart=1}
 # `do_not_track_endpoints` allows you to manually disable tracking for requests to specific endpoints by method and path
@@ -92,6 +92,9 @@ spec:
           ignored: []
           white_list: []
         extended_paths:
+          track_endpoints:
+            - method: GET
+              path: "/get"
           do_not_track_endpoints:
             - method: GET
               path: "/headers"
