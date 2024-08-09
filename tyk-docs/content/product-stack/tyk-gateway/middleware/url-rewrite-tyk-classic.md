@@ -15,7 +15,9 @@ If you want to use dynamic data from context variables, you must [enable]({{< re
 
 If you're using the newer Tyk OAS APIs, then check out [this]({{< ref "/product-stack/tyk-gateway/middleware/url-rewrite-tyk-oas" >}}) page.
 
-## Configuring the URL rewriter in the Tyk Classic API Definition
+If you're using Tyk Operator then check out the [configuring the URL rewriter in Tyk Operator](#tyk-operator) section below.
+
+## Configuring the URL rewriter in the Tyk Classic API Definition {#tyk-classic}
 
 To configure the URL rewriter you must add a new `url_rewrites` object to the `extended_paths` section of your API definition, for example:
 
@@ -32,7 +34,7 @@ To configure the URL rewriter you must add a new `url_rewrites` object to the `e
 }
 ```
 
-In this example the basic trigger has been configured to match the path for arequest to the `GET /books/author` endpoint against the pure regex `(\w+)/(\w+)`. This is looking for two word groups in the path which, if found, will store the first string (`books`) in context variable `$1` and the second (`author`) in `$2`. The request (target) URL will then be rewritten to `library/service?value1=books&value2=author` ready for processing by the next middleware in the chain.
+In this example the basic trigger has been configured to match the path for a request to the `GET /books/author` endpoint against the pure regex `(\w+)/(\w+)`. This is looking for two word groups in the path which, if found, will store the first string (`books`) in context variable `$1` and the second (`author`) in `$2`. The request (target) URL will then be rewritten to `library/service?value1=books&value2=author` ready for processing by the next middleware in the chain.
 
 You can add advanced triggers to your URL rewriter configuration by adding the `triggers` element within the `url_rewrites` object.
 
@@ -161,3 +163,44 @@ When triggers are added, you can edit or remove them inside the **Advanced URL r
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
 
+## Configuring the URL rewriter in Tyk Operator {#tyk-operator}
+
+The process for configuring the URL rewriter in Tyk Operator is similar to that explained in [configuring the URL rewriter in the Tyk Classic API Definition](#tyk-classic). To configure the URL rewriter you must add a new `url_rewrites` object to the `extended_paths` section of your API definition, for example:
+
+The example API Definition below configures an API to listen on path `/url-rewrite` and forwards requests upstream to http://httpbin.org.
+
+In this example a basic trigger has been configured to match the path for a request to the `GET /get` endpoint against the pure regex `/get`. The request (target) URL will then be rewritten to `/xml` ready for processing by the next middleware in the chain.
+
+```yaml {linenos=true, linenostart=1}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: url-rewrite
+spec:
+  name: URL Rewrite
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /url-rewrite
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        paths:
+          black_list: [ ]
+          ignored: [ ]
+          white_list: [ ]
+        extended_paths:
+          url_rewrites:
+            - path: /get
+              match_pattern: /get
+              method: GET
+              rewrite_to: /xml
+              triggers: []
+```
