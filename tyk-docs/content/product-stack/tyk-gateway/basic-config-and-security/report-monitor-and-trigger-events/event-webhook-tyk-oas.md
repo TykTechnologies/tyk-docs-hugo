@@ -3,6 +3,8 @@ date: 2024-07-09
 title: Webhook event handlers with Tyk OAS APIs
 tags: ["event handling", "API events", "webhook", "Tyk OAS"]
 description: "Webhook event handlers with Tyk OAS APIs"
+aliases:
+    - /tyk-api-gateway-v-3-0/api-management/events/ 
 ---
 
 [Webhooks]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) are event handlers that can be registered against API Events. The webhook will be triggered when the corresponding event is fired and will send a customizable fixed payload to any open endpoint.
