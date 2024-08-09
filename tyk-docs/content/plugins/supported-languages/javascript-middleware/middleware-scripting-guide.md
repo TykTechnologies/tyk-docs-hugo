@@ -98,6 +98,30 @@ The `request` object provides a set of arrays that describe the API request. The
 
 The structure of the `request` object is:
 
+```typesecript
+class ReturnOverrides {
+  ResponseCode: number = 200;
+  ResponseBody: string = "";
+  ResponseHeaders: string[] = [];
+}
+
+class Request {
+  Headers: { [key: string]: string[] } = {};
+  SetHeaders: { [key: string]: string } = {};
+  DeleteHeaders: string[] = [];
+  Body: string = "";
+  URL: string = "";
+  AddParams: { [key: string]: string } = {};
+  DeleteParams: string[] = [];
+  ReturnOverrides: ReturnOverrides = new ReturnOverrides();
+  IgnoreBody: boolean = false;
+  Method: string = "";
+  RequestURI: string = "";
+  Scheme: string = "";
+}
+```
+
+<!--
 ```go
 struct {
   Headers       map[string][]string
@@ -117,7 +141,7 @@ struct {
   RequestURI    string
   Scheme        string
 }
-```
+``` -->
 
 - `Headers`: this is an object of string arrays, and represents the current state of the request header; this object cannot be modified directly, but can be used to read header data
 - `SetHeaders`: this is a key-value map that will be set in the header when the middleware returns the object; existing headers will be overwritten and new headers will be added
@@ -164,26 +188,21 @@ testJSVMData.NewProcessRequest(function(request, session, config) {
 
 For [virtual endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) functions the structure of a Javascript `request` object is:
 
-```javascript
-const httpRequest = {
-  Body: "",
-  Headers: {
-    "Accept": ["*/*"]
-  },
-  Params: {
-    "confirm": ["true"],
-    "userId": ["123"]
-  },
-  Scheme: "https",
-  URL: "/vendpoint/anything?user_id=123\u0026confirm=true"
-};
+```typescript
+class VirtualEndpointRequest {
+  Body: string = "";
+  Headers: { [key: string]: string[] } = {};
+  Params: { [key: string]: string[] } = {};
+  Scheme: string = "";
+  URL: string = "";
+}
 ```
 
-- `Body`: HTTP request body
-- `Headers`: HTTP request headers
-- `Params`: Decoded query and form parameters
-- `Scheme`: The scheme of the URL (http or https)
-- `URL`: The full URL of the request
+- `Body`: HTTP request body, e.g. `""`
+- `Headers`: HTTP request headers, e.g. `"Accept": ["*/*"]`
+- `Params`: Decoded query and form parameters, e.g. `{ "confirm": ["true"], "userId": ["123"] }`
+- `Scheme`: The scheme of the URL ( e.g. `http` or `https`)
+- `URL`: The full URL of the request, `/vendpoint/anything?user_id=123\u0026confirm=true`
 
 </br>
 
