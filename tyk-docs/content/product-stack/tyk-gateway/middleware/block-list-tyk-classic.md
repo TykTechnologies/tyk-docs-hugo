@@ -11,6 +11,8 @@ When working with Tyk Classic APIs the middleware is configured in the Tyk Class
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-oas" >}}) page.
 
+If you're using Tyk Operator then check out the [configuring the block list in Tyk Operator](#tyk-operator) section below.
+
 ## Configuring the block list in the Tyk Classic API Definition {#tyk-classic}
 
 To enable and configure the block list you must add a new `black_list` object to the `extended_paths` section of your API definition.
