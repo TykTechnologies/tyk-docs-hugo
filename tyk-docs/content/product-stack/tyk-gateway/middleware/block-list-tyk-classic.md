@@ -82,3 +82,48 @@ Once you have selected the middleware for the endpoint, the only additional feat
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
 
+## Configuring the block list in Tyk Operator
+
+```yaml
+# Blacklist example
+#
+# This example adds `/get` path of httpbin.org to the Blacklist. Therefore, any requests to 
+# this path will be blocked.
+# 
+# For reference: 
+# https://tyk.io/docs/nightly/advanced-configuration/transform-traffic/endpoint-designer/#hahahugoshortcode-s3-hbhb
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-blacklist
+spec:
+  name: httpbin-blacklist
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org/
+    listen_path: /httpbin
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        paths:
+          black_list: []
+          ignored: []
+          white_list: []
+        extended_paths:
+          black_list:
+            - ignore_case: true
+              method_actions:
+                GET:
+                  action: "no_action"
+                  code: 200
+                  data: ""
+                  headers: {}
+              path: "/get"
+```
