@@ -11,7 +11,7 @@ When working with Tyk Classic APIs the middleware is configured in the Tyk Class
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-oas" >}}) page.
 
-## Configuring the block list in the Tyk Classic API Definition
+## Configuring the block list in the Tyk Classic API Definition {#tyk-classic}
 
 To enable and configure the block list you must add a new `black_list` object to the `extended_paths` section of your API definition.
 
@@ -64,6 +64,8 @@ In this example the block list middleware has been configured for HTTP `GET` and
 Note that the block list has been configured to be case sensitive, so calls to `GET /Status/200` will not be rejected.
 Note also that the endpoint path has not been terminated with `$`. Requests to, for example, `GET /status/200/foobar` will be rejected as the [regular expression pattern match]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware#endpoint-parsing" >}}) will recognize this as `GET /status/200`.
 
+Consult section [configuring the Allow List in Tyk Operator](#tyk-operator) for details on how to configure allow lists for endpoints using Tyk Operator.
+
 ## Configuring the Block List in the API Designer
 
 You can use the API Designer in the Tyk Dashboard to configure the block list middleware for your Tyk Classic API by following these steps.
@@ -82,16 +84,17 @@ Once you have selected the middleware for the endpoint, the only additional feat
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
 
-## Configuring the block list in Tyk Operator
+## Configuring the block list in Tyk Operator {#tyk-operator}
+
+Similar to the configuration of a [Tyk Classic API Definition](#tyk-classic) you must add a new `black_list` object to the `extended_paths` section of your API definition. Furthermore, the `use_extended_paths` configuration parameter should be set to `true`.
+
+{{< note success >}}
+**Note**
+
+Historically, Tyk followed the out-dated whitelist/blacklist naming convention. We are working to remove this terminology from the product and documentation, however this configuration object currently retains the old name.
+{{< /note >}}
 
 ```yaml
-# Blacklist example
-#
-# This example adds `/get` path of httpbin.org to the Blacklist. Therefore, any requests to 
-# this path will be blocked.
-# 
-# For reference: 
-# https://tyk.io/docs/nightly/advanced-configuration/transform-traffic/endpoint-designer/#hahahugoshortcode-s3-hbhb
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:
@@ -127,3 +130,8 @@ spec:
                   headers: {}
               path: "/get"
 ```
+
+In this example the block list middleware has been configured for HTTP `GET` requests to the `/get` endpoint. Requests to these endpoints will be rejected with `HTTP 403 Forbidden`.
+Note that the block list has been configured to be case insensitive, so calls to `GET /Get` will not be rejected.
+Note also that the endpoint path has not been terminated with `$`. Requests to, for example, `GET /get/foobar` will be rejected as the [regular expression pattern match]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware#endpoint-parsing" >}}) will recognize this as `GET /get`.
+
