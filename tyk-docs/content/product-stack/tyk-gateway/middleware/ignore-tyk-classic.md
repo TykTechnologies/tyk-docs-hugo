@@ -78,7 +78,7 @@ Use the *save* or *create* buttons to save the changes and activate the middlewa
 
 The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic). It is possible to configure an enforced timeout using the `ignored` object within the `extended_paths` section of the API Definition.
 
-In this example the ignore authentication middleware has been configured for requests to the `GET /get` endpoint. Any such calls will skip the authentication step in the Tyk Gateway's processing chain.
+In the example below the ignore authentication middleware has been configured for requests to the `GET /get` endpoint. Any such calls will skip the authentication step in the Tyk Gateway's processing chain.
 - the middleware has been configured to be case insensitive, so calls to `GET /Get` will also skip authentication
 
 ```yaml {linenos=true, linenostart=1}
