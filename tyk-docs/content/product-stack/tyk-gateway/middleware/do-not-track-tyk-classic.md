@@ -11,7 +11,9 @@ When working with Tyk Classic APIs the middleware is configured in the Tyk Class
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-oas" >}}) page.
 
-## Configuring the middleware in the Tyk Classic API Definition
+If you're using Tyk Operator, then check out the [Tyk Operator](#tyk-operator) section below.
+
+## Configuring the middleware in the Tyk Classic API Definition {#tyk-classic}
 
 You can prevent tracking for all endpoints of an API by configuring the `do_not_track` field in the root of your API definition.
 - `true`: no transaction logs will be generated for requests to the API
@@ -55,3 +57,42 @@ From the **Endpoint Designer** add an endpoint that matches the path for which y
 #### Step 2: Save the API
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
+
+## Configuring the middleware in Tyk Operator {#tyk-operator}
+
+The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic).
+
+The example Tyk Operator API Definition below configures an API to listen on path `/httpbin` and forward requests upstream to http://httpbin.org. In this example the do-not-track middleware has been configured for requests to the GET /headers endpoint. Any such calls will not generate transaction records from the Gateway and so will not appear in the analytics.
+
+```yaml {linenos=true, linenostart=1}
+# `do_not_track_endpoints` allows you to manually disable tracking for requests to specific endpoints by method and path
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-endpoint-tracking
+spec:
+  name: httpbin - Endpoint Track
+  use_keyless: true
+  protocol: http
+  active: true
+  do_not_track: false
+  proxy:
+    target_url: http://httpbin.org/
+    listen_path: /httpbin
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        paths:
+          black_list: []
+          ignored: []
+          white_list: []
+        extended_paths:
+          do_not_track_endpoints:
+            - method: GET
+              path: "/headers"
+```
