@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Tyk Dashboard API
-  version: 5.3.0
+  version: 5.3.3
   description: |-
     ## <a name="introduction"></a> Introduction
 
@@ -60,6 +60,8 @@ tags:
     description: Organisations Management
   - name: System
     description: System API
+  - name: Assets
+    description: Assets management
 paths:
   /api/portal/policies/:
     get:
@@ -2616,6 +2618,8 @@ paths:
                 message: Stats not found
   /api/assets:
     get:
+      tags:
+        - Assets
       summary: Retrieve list of assets
       description: Retrieves all types of assets with optional kind filter.
       parameters:
@@ -2657,6 +2661,8 @@ paths:
                 code: 500
                 message: something went wrong
     post:
+      tags:
+        - Assets
       summary: Create an asset
       description: Create a new asset.
       requestBody:
@@ -2697,6 +2703,8 @@ paths:
 
   /api/assets/{assetID}:
     get:
+      tags:
+        - Assets
       summary: Retrieve an asset.
       description: Retrieve an asset by ID.
       parameters:
@@ -2737,6 +2745,8 @@ paths:
                 code: 500
                 message: "error fetching asset: 'my-custom-asset'"
     put:
+      tags:
+        - Assets
       summary: Update an asset by ID.
       description: Update an existing asset.
       parameters:
@@ -2816,6 +2826,8 @@ paths:
                 code: 500
                 message: something went wrong
     delete:
+      tags:
+        - Assets
       summary: Delete an asset by ID.
       description: Remove an asset ID.
       parameters:
