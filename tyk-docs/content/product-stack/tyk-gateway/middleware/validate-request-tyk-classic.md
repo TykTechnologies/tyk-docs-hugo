@@ -88,7 +88,7 @@ Use the *save* or *create* buttons to save the changes and activate the middlewa
 
 ## Configuring the middleware in Tyk Operator {#tyk-operator}
 
-The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring the URL rewriter in the Tyk Classic API Definition](#tyk-classic). To configure the request validation middleware you must add a new `validate_json` object to the `extended_paths` section of your API definition, for example:
+The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic). To configure the request validation middleware you must add a new `validate_json` object to the `extended_paths` section of your API definition, for example:
 
 The example API Definition below configures an API to listen on path `/httpbin` and forwards requests upstream to http://httpbin.org.
 
