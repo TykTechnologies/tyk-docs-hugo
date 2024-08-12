@@ -4,7 +4,7 @@ description: Explains Bloblang Arithmetic
 tags: [ "Tyk Streams", "Bloblang", "Bloblang Arithmetic", "Arithmetic" ]
 ---
 
-[Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) supports a range of comparison operators `!`, `>`, `>=`, `==`, `<`, `<=`, `&&`, `||` and mathematical operators `+`, `-`, `*`, `/`, `%`. How these operators behave is dependent on the type of the values they're used with, and therefore it's worth fully understanding these behaviors if you intend to use them heavily in your mappings.
+[Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) supports a range of comparison operators `!`, `>`, `>=`, `==`, `<`, `<=`, `&&`, `||` and mathematical operators `+`, `-`, `*`, `/`, `%`. How these operators behave is dependent on the type of the values they're used with, and therefore it's worth fully understanding these behaviors if you intend to use them heavily in your mappings.
 
 ## Mathematical
 
@@ -12,9 +12,9 @@ All mathematical operators (`+`, `-`, `*`, `/`, `%`) are valid against number va
 
 ### Number Degradation
 
-In [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) any number resulting from a method, function or arithmetic is either a 64-bit signed integer or a 64-bit floating point value. Numbers from input documents can be any combination of size and be signed or unsigned.
+In [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) any number resulting from a method, function or arithmetic is either a 64-bit signed integer or a 64-bit floating point value. Numbers from input documents can be any combination of size and be signed or unsigned.
 
-When a mathematical operation is performed with two or more integer values [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) will create an integer result, with the exception of division. However, if any number within a mathematical operation is a floating point then the result will be a floating point value.
+When a mathematical operation is performed with two or more integer values [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) will create an integer result, with the exception of division. However, if any number within a mathematical operation is a floating point then the result will be a floating point value.
 
 In order to explicitly coerce numbers into integer types you can use the [.ceil(), .floor(), or .round()]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods/numbers" >}}) methods.
 

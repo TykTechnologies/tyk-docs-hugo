@@ -1,65 +1,80 @@
 ---
 date: 2017-03-24T12:35:05Z
-title: Monitors
-tags: ["Monitors", "Quotas"]
-description: "How to enable monitors in Tyk"
-menu:
-  main:
-    parent: "Report, Monitor and Trigger Events"
-weight: 5 
+title: Monitoring quota consumption
+tags: ["monitors", "quotas", "event handling", "threshold monitoring"]
+description: "Advanced quota threshold monitoring"
 ---
 
-Tyk enables you to actively monitor both users and organization quotas. The machinery that manages these active notifications is the same as webhooks and provides an easy way to notify your stakeholders, your own organization or the API end user when certain thresholds have been reached for their token.
+Tyk provides the ability to actively monitor both user and organisation quotas, using a dedicated webhook to notify your stakeholders, your system stack or the requesting API client when certain thresholds have been reached for a token.
 
-## Enabling Monitors In Your Tyk Node?
+Unlike API event [webhooks]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) the quota monitor is configured at the Gateway level.
 
-Enabling monitors in your Tyk node means adding a new configuration section to your `tyk.conf`:
-
-```{.copyWrapper}
-"monitor": {
-  "enable_trigger_monitors": true,
-  "configuration": {
-    "method": "POST",
-    "target_path": "http://posttestserver.com/post.php?dir=tyk-monitor-drop",
-    "template_path": "templates/monitor_template.json",
-    "header_map": {"x-tyk-monitor-secret": "12345"},
-    "event_timeout": 10
-  },
-  "global_trigger_limit": 80.0,
-  "monitor_user_keys": false,
-  "monitor_org_keys": true
-}
-```
-
-*   `enable_trigger_monitors`: Set to true to have the monitors start to measure quota thresholds.
-*   `configuration`: A webhook configuration object, please see the webhooks documentation for details.
-*   `global_trigger_limit`: This is the global trigger threshold and will be applied to all tokens being measured. This number is a percentage of the quota that the user must reach before the notification is triggered.
-
+<br>
 {{< note success >}}
 **Note**  
 
-From Dashboard v1.8.2, if you are using our [Developer Portal]({{< ref "tyk-developer-portal" >}}), developers registered in the portal will also receive emails about quota threshold limits being reached.
+Advanced quota threshold monitoring is currently only supported by Tyk Classic APIs.
 {{< /note >}}
 
+## Configuring the quota consumption monitor
 
-*   `monitor_user_keys`: Set to `true` to monitor individual tokens, this may result in a large amount of webhooks.
-*   `monitor_org_keys`: Set to `true` to have global organization quotas monitored.
+To enable advanced quota monitoring you will need to add a new `monitor` section to your Tyk Gateway configuration file (`tyk.conf`).
 
-## Setting custom triggers on a per-key or a per-organization basis
+This has the following fields:
+- `enable_trigger_monitors`: set to `true` to have the monitors start to measure quota thresholds
+- `configuration`: a [webhook configuration]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) object
+- `global_trigger_limit`: this is a percentage of the quota that the key must consume for the webhook to be fired
+- `monitor_user_keys`: set to `true` to monitor individual tokens (this may result in a large number of triggers as it scales with the number of user tokens that are issued)
+- `monitor_org_keys`: set to `true` to monitor Organisation quotas
 
-Sometimes you will not want to have every user have a trigger event at the same levels, you can set manual trigger levels by adding a `monitor` section to the Session Object that defines a key's access details, this can also be added to the session object of an organization ID:
+For example:
 
 ```json
-"monitor": {
-  "trigger_limits": [80.0, 60.0, 50.0]
+{
+  "monitor": {
+    "enable_trigger_monitors": true,
+    "configuration": {
+      "method": "POST",
+      "target_path": "http://posttestserver.com/post.php?dir=tyk-monitor-drop",
+      "template_path": "templates/monitor_template.json",
+      "header_map": {"x-tyk-monitor-secret": "12345"},
+      "event_timeout": 10
+    },
+    "global_trigger_limit": 80.0,
+    "monitor_user_keys": false,
+    "monitor_org_keys": true
+  }
 }
 ```
 
-The `trigger_limits` must be in *descending* order and represent the percentage of the quota that must be reached in order for the trigger to be fired.
+With this configuration, a monitor is configured to issue a request to `POST http://posttestserver.com/post.php?dir=tyk-monitor-drop` when 80% of the API-level quota has been consumed. This request will have the `x-tyk-monitor-secret` header (set to a value of `12345`) and will provide the content of the template file found at `templates/monitor_template.json` in the request body. A minimum of 10 seconds will elapse between successive monitor webhooks being fired.
 
-## Webhook data
+<br>
+{{< note success >}}
+**Note**  
 
-The webhook payload will take the following format:
+If you are using our [Classic Developer Portal]({{< ref "tyk-developer-portal/tyk-portal-classic/portal-events-notifications" >}}), developers registered in the portal will also receive emails about quota threshold limits being reached.
+{{< /note >}}
+
+### Setting advanced thresholds
+
+The default quota consumption monitor will be triggered at the same level of quota usage for all users. Sometimes you might want to have a more granular approach with different triggering thresholds per user or organisation. Sometimes you might want to fire the event at multiple thresholds, for example when the user hits 50%, 75% and 90% of their allowed quota.
+
+You can set user specific trigger levels for a user by additionally adding a `monitor` section to the access key ([Session Object]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}})). This has one field, which is an array of `trigger_limits` (thresholds) that must be in *descending* order and represent the percentage of the quota that must be reached in order for the trigger to be fired, for example:
+
+```yaml
+"monitor": {
+  "trigger_limits": [90.0, 75.0, 50.0]
+}
+```
+
+If this is included in the session object, then the quota threshold event will be fired and the monitor webhook triggered when the user hits 50%, then 75%, and then again at 90% consumption.
+
+You can configure advanced thresholds for all users in an Organisation by adding the `monitor` section to the Organisation session object.
+
+## Webhook payload
+
+When the quota consumption monitor is fired, the webhook request that is issued will have the following payload:
 
 ```json
 {
@@ -71,4 +86,15 @@ The webhook payload will take the following format:
 }
 ```
 
-If the event is triggered by an organization, then the `key` field will be empty, if it is an auth token, then the `key` field will have raw representation of the token that caused the quota trigger to fire.
+- `trigger_limit` will indicate which threshold has been reached (as defined in the session object's `monitor` section).
+- `org` will contain the OrgID for the user or organisation that triggered the event
+- `key` will contain the *raw API key* used in the request only if the event was triggered by a user quota
+
+*Note: if the webhook was triggered by an organisation threshold, `key` will be blank.*
+
+<br>
+{{< warning success >}}
+**Warning**  
+
+When the monitor is triggered by a user hitting their quota threshold, the <b>raw API key</b> is provided in the webhook payload. It is important to secure the webhook endpoint and to handle the payload securely on the receiving end.
+{{< /warning >}}
