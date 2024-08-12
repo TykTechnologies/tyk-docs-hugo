@@ -67,7 +67,7 @@ The process for configuring a request method transform for an endpoint in Tyk Op
 
 To configure a transformation of the request method you must add a new `method_transforms` object to the `extended_paths` section of your API definition:
 
-```yaml
+```yaml {linenos=true, linenostart=1}
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:
