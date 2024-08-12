@@ -2892,6 +2892,10 @@ menu:
           category: Page
           path: /product-stack/tyk-dashboard/release-notes/overview
           show: True
+        - title: "Tyk Dashboard v5.5"
+          path: /product-stack/tyk-dashboard/release-notes/version-5.5
+          category: Page
+          show: True
         - title: "Tyk Dashboard v5.4"
           category: Page
           path: /product-stack/tyk-dashboard/release-notes/version-5.4
