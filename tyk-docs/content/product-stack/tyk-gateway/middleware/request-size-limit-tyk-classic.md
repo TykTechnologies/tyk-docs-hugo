@@ -88,7 +88,7 @@ The Tyk Classic API Designer does not provide an option to configure `global_siz
 
 ## Configuring the middleware in Tyk Operator {#tyk-operator}
 
-The process for configuring a request size limit is similar to that defined in section [configuring the middleware in the Tyk Classic API Definition](#tyk-classic). Tyk Operaor allows you to configure a request size limit for [all endpoints of an API](#tyk-operator-api) or for a [specific API endpoint](#tyk-operator-endpoint).
+The process for configuring a request size limit is similar to that defined in section [configuring the middleware in the Tyk Classic API Definition](#tyk-classic). Tyk Operator allows you to configure a request size limit for [all endpoints of an API](#tyk-operator-api) or for a [specific API endpoint](#tyk-operator-endpoint).
 
 ### Applying a size limit for a specific API {#tyk-operator-api}
 
