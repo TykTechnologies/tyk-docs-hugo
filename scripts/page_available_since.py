@@ -8,7 +8,7 @@ versions = [
         "branch": "release-5.5"
     },
     {
-        "path": "/docs/5.4",
+        "path": "/docs/5.4/",
         "name": "5.4",
         "branch": "release-5.4"
     }, 
