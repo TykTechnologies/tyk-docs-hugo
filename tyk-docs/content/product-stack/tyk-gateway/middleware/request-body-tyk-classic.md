@@ -90,7 +90,7 @@ Use the *save* or *create* buttons to save the changes and activate the Request 
 
 The process for configuring a request body transform is similar to that defined in section [Configuring the middleware in the Tyk Classic API Definition](#tyk-classic). Tyk Operator allows you to configure a request body transform by adding a `transform` object to the `extended_paths` section of your API definition.
 
-In the example below the Request Body middleware (`transform`) has been configured for HTTP `POST` requests to the `/anything` endpoint.
+In the example below the Request Body middleware (`transform`) has been configured for HTTP `POST` requests to the `/anything` endpoint. The Request Body Transform middleware is directed to use the template located in the blob included in the `template_source` field. The input (pre-transformation) request payload will be json format and session metadata will be available for use in the transformation.
 
 ```yaml
 apiVersion: tyk.tyk.io/v1alpha1
