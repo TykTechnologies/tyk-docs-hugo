@@ -92,7 +92,7 @@ The process for configuring a request body transform is similar to that defined 
 
 In the example below the Request Body middleware (`transform`) has been configured for HTTP `POST` requests to the `/anything` endpoint. The Request Body Transform middleware is directed to use the template located in the blob included in the `template_source` field. The input (pre-transformation) request payload will be json format and session metadata will be available for use in the transformation.
 
-```yaml
+```yaml {linenos=true, linenostart=1}
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:
