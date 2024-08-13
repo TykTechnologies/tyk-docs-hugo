@@ -11,6 +11,15 @@ Type: `int`<br />
 This port lets MDCB allow standard health checks.<br>If this value is not set, the MDCB component will apply a default value of 8181.
 Deprecated: Use `http_port` instead.
 
+### healthcheck
+Healthcheck settings
+
+### healthcheck.cache_renewal_period
+ENV: <b>TYK_MDCB_HEALTHCHECK_CACHERENEWALPERIOD</b><br />
+Type: `int`<br />
+
+Specifies the time interval (in seconds) at which the healthchecker refreshes its cached health status information (redis and DB).
+
 ### http_port
 ENV: <b>TYK_MDCB_HTTPPORT</b><br />
 Type: `int`<br />
