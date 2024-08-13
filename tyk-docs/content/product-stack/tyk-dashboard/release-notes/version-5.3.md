@@ -15,7 +15,7 @@ tags: ["Tyk Dashboard", "Release notes", "v5.3", "5.3.0", "5.3.1", "5.3.2", "5.3
 
 ## Support Lifetime
 
-As outlined in the [LTS policy]({{< ref "developer-support/special-releases-and-features/long-term-support-releases/" >}}), version 5.3 is a long-term support release with full support available until May 2025. Maintenance support will continue until May 2026. Our next long-term support release will be announced at the end of April 2025.
+As outlined in the [LTS policy]({{< ref "developer-support/special-releases-and-features/long-term-support-releases" >}}), version 5.3 is a long-term support release with full support available until May 2025. Maintenance support will continue until May 2026. Our next long-term support release will be announced at the end of April 2025.
 
 ---
 ## 5.3.3 Release Notes
