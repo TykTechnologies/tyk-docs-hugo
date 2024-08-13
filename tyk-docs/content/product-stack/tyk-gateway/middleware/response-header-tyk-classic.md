@@ -200,7 +200,7 @@ The note in section [configuring the Response Header Transform in the Tyk Classi
 
 The process of configuring a transformation of a response header for a specific endpoint is similar to that defined in section [Endpoint-level transform](#tyk-classic-endpoint) for the Tyk Classic API definition. To configure a transformation of the response headers for a specific endpoint you must add a new `transform_response_headers` object to the `extended_paths` section of your API definition.
 
-In the examples below the Response Header Transform middleware (`transform_response_headers`) has been configured for HTTP `GET` requests to the `/xml` endpoint. Any request received to that endpoint will have the `Content-Type` header added with a value of `application/json`.
+In this example the Response Header Transform middleware has been configured for HTTP `GET` requests to the `/status/200` endpoint. Any response received from the upstream service following a request to that endpoint will have the `X-Static` header removed and the `X-Secret` and `X-New` headers added (with values set to `the-secret-key-is-secret` and `another-header`).
 
 #### Example
 
