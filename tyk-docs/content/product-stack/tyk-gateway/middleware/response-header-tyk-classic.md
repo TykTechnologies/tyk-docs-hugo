@@ -190,6 +190,8 @@ Use the *save* or *create* buttons to save the changes and activate the middlewa
 
 The process for configuring a response header transform is similar to that defined in section [Configuring the Response Header Transform in the Tyk Classic API Definition](#tyk-classic). Tyk Operator allows you to configure a request size limit for [all endpoints of an API](#tyk-operator-api) or for a [specific API endpoint](#tyk-operator-endpoint).
 
+The note in section [configuring the Response Header Transform in the Tyk Classic API Definition](#tyk-classic) mentions that it is necessary to add a `response_processors` object if using Tyk Gateway < v5.3.0. This is highlighted in the examples below.  
+
 ### API level transform {#tyk-operator-api}
 
 <!-- Need an example here -->
@@ -198,9 +200,78 @@ The process for configuring a response header transform is similar to that defin
 
 The process of configuring a transformation of a response header for a specific endpoint is similar to that defined in section [Endpoint-level transform](#tyk-classic-endpoint) for the Tyk Classic API definition. To configure a transformation of the response headers for a specific endpoint you must add a new `transform_response_headers` object to the `extended_paths` section of your API definition.
 
-In the example below the Response Header Transform middleware (`transform_response_headers`) has been configured for HTTP `GET` requests to the `/xml` endpoint. Any request received to that endpoint will have the `Content-Type` header added with a value of `application/json`.
+In the examples below the Response Header Transform middleware (`transform_response_headers`) has been configured for HTTP `GET` requests to the `/xml` endpoint. Any request received to that endpoint will have the `Content-Type` header added with a value of `application/json`.
+
+#### Example
 
 ```yaml  {linenos=true, linenostart=1}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-transform
+spec:
+  contextRef:
+    name: tyk-cp-ctx
+    namespace: tyk-cp
+  name: httpbin-transform
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-transform
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        paths:
+          black_list: [ ]
+          ignored: [ ]
+          white_list: [ ]
+        extended_paths:
+          transform:
+            - method: POST
+              path: /anything
+              template_data:
+                enable_session: false
+                input_type: json
+                template_mode: blob
+                # base64 encoded template
+                template_source: eyJiYXIiOiAie3suZm9vfX0ifQ==
+          transform_headers:
+            - delete_headers:
+                - "remove_this"
+              add_headers:
+                foo: bar
+              path: /anything
+              method: POST
+          transform_response:
+            - method: GET
+              path: /xml
+              template_data:
+                enable_session: false
+                input_type: xml
+                template_mode: blob
+                # base64 encoded template
+                template_source: e3sgLiB8IGpzb25NYXJzaGFsIH19
+          transform_response_headers:
+            - method: GET
+              path: /xml
+              add_headers:
+                Content-Type: "application/json"
+              act_on: false
+              delete_headers: [ ]
+```
+
+#### Tyk Gateway < 5.3.0 Example
+
+If using Tyk Gateway < v5.3.0 then a `response_processor` object must be added to the API definition as highlighted below:
+
+```yaml  {linenos=true, linenostart=1, hl_lines=["17-19"]}
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:
