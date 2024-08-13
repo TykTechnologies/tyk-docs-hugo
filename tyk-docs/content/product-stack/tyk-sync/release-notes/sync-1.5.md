@@ -10,7 +10,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 1.5.1 Release Notes
 
-##### Release date XX August 2024
+##### Release date 13 August 2024
 
 #### Breaking Changes
 This release has no breaking changes.
