@@ -2429,7 +2429,7 @@ menu:
           path: /product-stack/tyk-gateway/release-notes/version-5.4
           category: Page
           show: True
-        - title: "Tyk Gateway v5.3"
+        - title: "Tyk Gateway v5.3 LTS"
           path: /product-stack/tyk-gateway/release-notes/version-5.3
           category: Page
           show: True
@@ -2900,7 +2900,7 @@ menu:
           category: Page
           path: /product-stack/tyk-dashboard/release-notes/version-5.4
           show: True
-        - title: "Tyk Dashboard v5.3"
+        - title: "Tyk Dashboard v5.3 LTS"
           category: Page
           path: /product-stack/tyk-dashboard/release-notes/version-5.3
           show: True
