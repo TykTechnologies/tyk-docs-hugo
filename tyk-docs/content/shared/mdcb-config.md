@@ -128,6 +128,21 @@ Type: `string`<br />
 
 Allows MDCB to use Mutual TLS. This requires to set `server_options.use_ssl` to true. See [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}) for more details.
 
+### security.enable_http_secure_endpoints
+ENV: <b>TYK_MDCB_SECURITY_ENABLEHTTPSECUREENDPOINTS</b><br />
+Type: `bool`<br />
+
+`EnableHTTPSecureEndpoints` controls the availability of HTTP endpoints for monitoring and debugging MDCB. These endpoints provide critical system information and are disabled by default for security reasons. Access to these endpoints requires a secret, defined in the `security.secret` configuration field.
+Available endpoints include:
+- /dataplanes - Provides information about the dataplanes connected to MDCB.
+- /config - Provides information about the current settings of the MDCB instance in JSON format
+
+### security.secret
+ENV: <b>TYK_MDCB_SECURITY_SECRET</b><br />
+Type: `string`<br />
+
+Secret is the secret key required for authenticating access to the secure HTTP endpoints. This secret should be provided as the `X-Tyk-Authorization` header in requests to these endpoints. Tyk assumes that you are sensible enough not to expose the management endpoints publicly and to keep this configuration value to yourself.
+
 ### storage
 This section describes your centralised Redis DB. This will act as your main key store for all of your clusters.
 
