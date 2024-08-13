@@ -23,7 +23,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
-**Attention: Please read this section carefully**
+
 There are no breaking changes in this release.
 
 ### Dependencies {#dependencies-5.5.0}
