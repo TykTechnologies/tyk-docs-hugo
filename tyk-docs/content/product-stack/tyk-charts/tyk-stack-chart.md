@@ -23,7 +23,6 @@ By default, this chart installs the following components as sub-charts on a [Kub
 |---------------------------------|--------------------|-----------------------------|
 | Tyk Gateway                     | true               | n/a                         |
 | Tyk Dashboard                   | true               | n/a                         |
-| Tyk MDCB                        | true               | n/a                         |
 | Tyk Pump                        | false              | global.components.pump      |
 | Tyk Enterprise Developer Portal | false              | global.components.devPortal | 
 | Tyk Operator                    | false              | global.components.operator  |
