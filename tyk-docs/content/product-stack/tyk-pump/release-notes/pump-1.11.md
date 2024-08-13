@@ -17,7 +17,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 1.11 Release Notes
 
-### Release Date 15 August 2024
+### Release Date 13 August 2024
 
 ### Breaking Changes
 This release has no breaking changes.
