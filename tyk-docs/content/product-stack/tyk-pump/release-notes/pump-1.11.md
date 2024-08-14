@@ -1,13 +1,13 @@
 ---
-title: Tyk Pump v1.10 Release Notes
+title: Tyk Pump v1.11 Release Notes
 date: 2024-02-02T26:33:11Z
-description: "Release notes documenting updates, enhancements and changes for Tyk Pump versions within the 1.10.X series."
-tags: ["Tyk Pump", "Release notes", "v1.10", "changelog"]
+description: "Release notes documenting updates, enhancements and changes for Tyk Pump versions within the 1.11.X series."
+tags: ["Tyk Pump", "Release notes", "v1.11", "changelog"]
 ---
 
 **Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))
 
-**This page contains all release notes for version 1.9.X displayed in a reverse chronological order**
+**This page contains all release notes for version 1.11.X displayed in a reverse chronological order**
 
 ## Support Lifetime
 
@@ -15,9 +15,9 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
-## 1.10 Release Notes
+## 1.11 Release Notes
 
-### Release Date 3 July 2024
+### Release Date 13 August 2024
 
 ### Breaking Changes
 This release has no breaking changes.
@@ -43,67 +43,35 @@ There are no deprecations in this release.
 
 ### Upgrade instructions
 
-For users currently on v1.9.X, we strongly recommend promptly upgrading to the latest release. If you are working with an older version, it is advisable to bypass version 1.9 and proceed directly to this latest release.
+For users currently on v1.10.X, we strongly recommend promptly upgrading to the latest release. If you are working with an older version, it is advisable to bypass version 1.10 and proceed directly to this latest release.
 
 ### Release Highlights
-
-#### FIPS Compliance
-
-Tyk Pump now offers [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) compliance. For further details please consult [Tyk API Management FIPS support]({{< ref "developer-support/special-releases-and-features/fips-release" >}})
 
 #### Security fixes
 This release focuses on improving security and compliance, enhancing integration capabilities, and ensuring robust performance in secure environments.
 
 ### Downloads
-- <<[Docker Image v1.10.0](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.10)>>
+- <<[Docker Image v1.11.0](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.11)>>
 - ```bash
-  docker pull tykio/tyk-pump-docker-pub:v1.10.0
+  docker pull tykio/tyk-pump-docker-pub:v1.11.0
   ```
-- Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.10.0)
+- Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.11.0)
 
-### Changelog {#Changelog-v1.10.0}
+### Changelog {#Changelog-v1.11.0}
+
 
 #### Added
 
 <ul>
 <li>
 <details>
-<summary>Added FIPS compliance</summary>
+<summary>Add Kinesis backend support </summary>
 
-Added [FIPS compliance]({{< ref "developer-support/special-releases-and-features/fips-release" >}}) for Tyk Pump.
-</details>
-</li>
-</ul>
-
-
-#### Fixed
-
-<ul>
-<li>
-<details>
-<summary>Fixed Tyk Pump Splunk Integration using http_proxy and https_proxy Environment Variables</summary>
-
-Resolved an issue where `http_proxy` and `https_proxy` environment variables were not being respected in the Tyk Pump pod for Splunk connections.
+Tyk Pump now supports Kinesis as a backend to push analytics to a data lake efficiently.
 
 </details>
 </li>
 
-</ul>
-
-#### Security Fixes
-
-<ul>
-<li>
-<details>
-<summary>Fixed the following CVEs</summary>
-<ul>
-<li>PRISMA-2021-0108</li>
-<li>PRISMA-2023-0056</li>
-<li>[CVE-2024-27304](https://nvd.nist.gov/vuln/detail/CVE-2024-27304)</li>
-<li>[CVE-2023-45288](https://nvd.nist.gov/vuln/detail/CVE-2023-45288)</li>
-</ul>
-</details>
-</li>
 </ul>
 
 ---
