@@ -25,7 +25,7 @@ If you add a `$` at the end of the `listen_path` (in our example `GET /anything$
 
 Thus, if you enable the middleware for `GET /anything$` then `GET /anything/somepath` will be proxied to the upstream and will not trigger the mock response.
 
-## Configuring the middleware in the Tyk Classic API Definition
+## Configuring the middleware in the Tyk Classic API Definition {#tyk-classic}
 
 To enable mock response, you must first add the endpoint to a list - one of [allow list]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}}), [block list]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware" >}}) or [ignore authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}). This will add a new object to the `extended_paths` section of your API definition - `white_list`, `black_list` or `ignored`. The mock response can then be configured within the `method_actions` element within the new object.
 
