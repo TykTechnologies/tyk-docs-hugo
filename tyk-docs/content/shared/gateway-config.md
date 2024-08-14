@@ -142,7 +142,7 @@ Enable HTTP2 protocol handling
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_ENABLESTRICTROUTES</b><br />
 Type: `bool`<br />
 
-EnableStrictRoutes changes the routing to avoid nearest-neighbor requests on overlapping routes
+EnableStrictRoutes changes the routing to avoid nearest-neighbour requests on overlapping routes
 
 - if disabled, `/apple` will route to `/app`, the current default behavior,
 - if enabled, `/app` only responds to `/app`, `/app/` and `/app/*` but not `/apple`
@@ -363,9 +363,11 @@ In this configuration, Tyk Gateway will allow policy management through the Gate
 ENV: <b>TYK_GW_PORTWHITELIST</b><br />
 Type: `PortsWhiteList`<br />
 
-Defines the ports that will be available for the API services to bind to in the following format: `"{“":“”}"`. Remember to escape JSON strings.
-This is a map of protocol to PortWhiteList. This allows per protocol
-configurations.
+Defines the ports that will be available for the API services to bind to in the format
+documented here https://tyk.io/docs/key-concepts/tcp-proxy/#allowing-specific-ports.
+Ports can be configured per protocol, e.g. https, tls etc.
+If configuring via environment variable `TYK_GW_PORTWHITELIST` then remember to escape
+JSON strings.
 
 ### disable_ports_whitelist
 ENV: <b>TYK_GW_DISABLEPORTWHITELIST</b><br />
