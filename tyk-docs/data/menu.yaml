@@ -4414,6 +4414,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Tyk Charts 1.6"
+          path: /product-stack/tyk-charts/release-notes/version-1.6
+          category: Page
+          show: True
         - title: "Tyk Charts 1.5"
           path: /product-stack/tyk-charts/release-notes/version-1.5
           category: Page
