@@ -18,7 +18,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 1.6.0 Release Notes
 
-##### Release Date XX August 2024
+##### Release Date 14 August 2024
 
 #### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
