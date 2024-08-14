@@ -90,7 +90,7 @@ Now configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "prod
   docker pull tykio/tyk-dashboard:v5.5.0
   ```
 - Helm charts
-  - [tyk-charts v1.5]({{< ref "/product-stack/tyk-charts/release-notes/version-1.5.md" >}})
+  - [tyk-charts v1.6]({{< ref "/product-stack/tyk-charts/release-notes/version-1.6.md" >}})
 
 ### Changelog {#Changelog-v5.5.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
