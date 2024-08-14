@@ -188,9 +188,7 @@ Use the *save* or *create* buttons to save the changes and activate the middlewa
 
 ## Configuring the Response Header Transform in Tyk Operator {#tyk-operator}
 
-The process for configuring a response header transform is similar to that defined in section [Configuring the Response Header Transform in the Tyk Classic API Definition](#tyk-classic). Tyk Operator allows you to configure a request size limit for [all endpoints of an API](#tyk-operator-api) or for a [specific API endpoint](#tyk-operator-endpoint).
-
-The note in section [configuring the Response Header Transform in the Tyk Classic API Definition](#tyk-classic) mentions that it is necessary to add a `response_processors` object if using Tyk Gateway < v5.3.0. This is highlighted in the examples below.  
+The process for configuring a response header transform in Tyk Operator is similar to that defined in section [configuring the Response Header Transform in the Tyk Classic API Definition](#tyk-classic). Tyk Operator allows you to configure a response header transformation for [all endpoints of an API](#tyk-operator-endpoint) or for a [specific API endpoint](#tyk-operator-api).
 
 ### API level transform {#tyk-operator-api}
 
@@ -198,9 +196,9 @@ The note in section [configuring the Response Header Transform in the Tyk Classi
 
 ### Endpoint transform {#tyk-operator-endpoint}
 
-The process of configuring a transformation of a response header for a specific endpoint is similar to that defined in section [Endpoint-level transform](#tyk-classic-endpoint) for the Tyk Classic API definition. To configure a transformation of the response headers for a specific endpoint you must add a new `transform_response_headers` object to the `extended_paths` section of your API definition.
+The process of configuring a transformation of a response header for a specific endpoint in Tyk Operator is similar to that defined in section [endpoint-level transform](#tyk-classic-endpoint) for the Tyk Classic API definition. To configure a transformation of the response headers for a specific endpoint you must add a new `transform_response_headers` object to the `extended_paths` section of your API definition.
 
-In this example the Response Header Transform middleware has been configured for HTTP `GET` requests to the `/status/200` endpoint. Any response received from the upstream service following a request to that endpoint will have the `X-Static` header removed and the `X-Secret` and `X-New` headers added (with values set to `the-secret-key-is-secret` and `another-header`).
+In this example the Response Header Transform middleware (`transform_response_headers`) has been configured for HTTP `GET` requests to the `/xml` endpoint. Any response received from the upstream service following a request to that endpoint will have the `Content-Type` header added with a value set to `application/json`.
 
 #### Example
 
@@ -269,9 +267,9 @@ spec:
 
 #### Tyk Gateway < 5.3.0 Example
 
-If using Tyk Gateway < v5.3.0 then a `response_processor` object must be added to the API definition as highlighted below:
+If using Tyk Gateway < v5.3.0 then a `response_processor` object must be added to the API definition containing a `header_injector` item, as highlighted below:
 
-```yaml  {linenos=true, linenostart=1, hl_lines=["17-19"]}
+```yaml  {linenos=true, linenostart=1, hl_lines=["17", "19"]}
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:
