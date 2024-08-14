@@ -3,12 +3,56 @@ title: Tyk Sync 1.5 Release Notes
 tag: ["Tyk Sync", "Release notes", "v1.5", "1.5.0", "changelog" ]
 description: "Release notes documenting updates, enhancements, fixes and changes for Tyk Sync versions within the 1.5.X series."
 ---
-**Open Source ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))**
-
 **This page contains all release notes for version 1.5 displayed in reverse chronological order**
 
 ## Support Lifetime
 Our minor releases are supported until our next minor comes out. 
+
+## 1.5.1 Release Notes
+
+##### Release date 13 August 2024
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
+
+#### Downloads
+- [Docker image v1.5.1](https://hub.docker.com/r/tykio/tyk-sync/tags?page=&page_size=&ordering=-name&name=v1.5.1)
+  - ```bash
+    docker pull tykio/tyk-sync:v1.5.1
+    ```
+
+#### Changelog {#Changelog-v1.5.1}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Fixed problem in synchronizing APIs with duplicate slugs</summary>
+
+In previous versions, the `sync` command in Tyk Sync checked for duplicate slugs among APIs. As slugs are now deprecated and APIs will have identical slugs by default starting from Tyk v5.3, this check became problematic. To resolve this, the checks for duplicate slugs have been removed in this version, ensuring compatibility with both Tyk Cloud and Tyk v5.3+.
+</details>
+</li>
+
+</ul>
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>API definitions supported up to Tyk Gateway v5.5.0 </summary>
+
+Tyk Sync 1.5.1 supports API definitions up to Tyk Gateway v5.5.0. This update ensures that Tyk Sync can manage API definitions compatible with Tyk Gateway v5.5.0.
+</details>
+</li>
+</ul>
 
 ## 1.5.0 Release Notes
 
