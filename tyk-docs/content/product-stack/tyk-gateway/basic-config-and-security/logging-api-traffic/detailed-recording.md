@@ -5,7 +5,7 @@ description: "Recording full detail in traffic analytics"
 tags: ["detailed recording", "traffic analytics", "analytics", "transaction logs", "traffic monitoring", "configuration"]
 ---
 
-When [traffic analytics]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/logging-api-traffic" >}}) are enabled the Gateway will not, by default, include the request and response payloads in these transaction records. This minimises the size of the records and also avoids logging any sensitive content.
+When [traffic analytics]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/logging-api-traffic" >}}) are enabled the Gateway will not, by default, include the request and response payloads in these transaction records. This minimizes the size of the records and also avoids logging any sensitive content.
 
 You can, however, configure Tyk to capture the payloads in the transaction records if required. This can be particularly useful during development and testing phases or when debugging an issue with an API.
 

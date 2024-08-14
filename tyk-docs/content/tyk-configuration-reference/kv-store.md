@@ -47,7 +47,7 @@ Tyk Gateway supports the following locations for storage of key-value data, prov
 
 #### Consul
 
-HashiCorp [Consul](https://www.consul.io) is a service networking solution that is used to connect and configure applications across dynamic, distributed infrastructure. Consul KV is a simple Key-Value store provided as a core feature of Consul that can be used to store and retrieve Tyk Gateway configuration across multiple data centres.
+HashiCorp [Consul](https://www.consul.io) is a service networking solution that is used to connect and configure applications across dynamic, distributed infrastructure. Consul KV is a simple Key-Value store provided as a core feature of Consul that can be used to store and retrieve Tyk Gateway configuration across multiple data centers.
 - to retrieve the value assigned to a `KEY` in Consul you will use `consul://KEY` or `$secret_consul.KEY` notation depending on the [location]({{< ref "tyk-configuration-reference/kv-store#how-to-access-the-externally-stored-data" >}}) of the reference
 
 #### Vault
@@ -137,9 +137,10 @@ When the Gateway starts, Tyk will read the *Value* from the environment variable
 {{< note success >}}
 **Note** 
 
-Prior to Tyk Gateway v5.3.0, environment variables to be used for Target URL or Listen Path must be named `TYK_SECRET_{KEY_NAME}` and would then be referred to using `env://{KEY_NAME}`, i.e. the `TYK_SECRET_` part should not be included in the API definition.
-<br>
-From v5.3.0 onward, the environment variables can be given any name and the full name should be provided in the API definition reference (though the pre-5.3.0 naming method is still supported for these two fields).
+Prior to Tyk Gateway v5.3.0, **environment variables** used for the Target URL or Listen Path had to be named `TYK_SECRET_{KEY_NAME}`. They were referred to in the API definition using `env://{KEY_NAME}` excluding the `TYK_SECRET_` prefix.
+<br><br>
+From v5.3.0 onward, environment variables can have any `KEY_NAME`, and the full name should be provided in the API definition reference. The pre-v5.3.0 naming convention is still supported for backward compatibility, but only for these two fields.
+
 {{< /note >}}
 
 #### Transformation middleware
@@ -155,7 +156,7 @@ To reference the *Value* assigned to a *Key* in one of the KV stores from these 
 - Consul: `$secret_consul.key`
 - Vault: `$secret_vault.key`
 - Tyk config secrets: `$secret_conf.key`
-- Environment variables: `$secret_env.key`
+- Environment variables: `$secret_env.key` or `env://key` (see [here]({{< ref "tyk-configuration-reference/kv-store#using-environment-variables-with-transformation-middleware" >}}))
 
 This notation is used to avoid ambiguity in the middleware parsing (for example where a KV secret is used in a URL rewrite path).
 
@@ -181,6 +182,42 @@ For example, if you create a Key-Value pair in Consul with the *Key* `user_id` t
 When a call is made to `GET /anything`, Tyk will retrieve the *Value* assigned to the `user_id` *Key* in Consul and rewrite the Target URL for the request to `/api/v1/users/{user_id}`.
 
 These references are read (and replaced with the values read from the KV location) during the processing of the API request or response.
+
+##### Using environment variables with transformation middleware
+
+There are some subtleties with the use of environment variables as KV storage for the transformation middleware.
+
+- **Request and Response Body Transforms** support only the `$secret_env.{KEY_NAME}` format.
+- **Request and Response Header Transforms** support both `env://{KEY_NAME}` and `$secret_env.{KEY_NAME}` formats.
+- **URL Rewrite** supports the `env://{KEY_NAME}` format for both the `pattern` and `rewriteTo` fields. The `rewriteTo` field also supports `$secret_env.{KEY_NAME}` format.
+
+{{< note success >}}
+**Notes**  
+
+Due to the way that Tyk Gateway processes the API definition, when you use transformation middleware with the `$secret_env` format, it expects the environment variable to be named `TYK_SECRET_{KEY_NAME}` and to be referenced from the API definition using `$secret_env.{KEY_NAME}`.
+<br><br>
+For example, if you create a Gateway environment variable `TYK_SECRET_NEW_UPSTREAM=http://new.upstream.com`, then in a request body transform middleware, you would reference it as follows:
+
+```json
+{
+  "custom_url": "$secret_env.NEW_UPSTREAM"
+}
+```
+
+To configure the URL rewrite `rewriteTo` field using this variable you could use either:
+
+````json
+{
+  "rewriteTo": "env://TYK_SECRET_NEW_UPSTREAM"
+}
+````
+or
+````json
+{
+  "rewriteTo": "$secret_env.NEW_UPSTREAM"
+}
+````
+{{< /note >}}
 
 #### Other `string` fields
 

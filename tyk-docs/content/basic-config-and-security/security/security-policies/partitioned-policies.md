@@ -357,6 +357,6 @@ A developer already has a key that gives access to Policy A and now requires acc
 **Note**  
 
 For v2.4 and 1.4 multiple policies are only supported only via the Add Key section and via the API.
-Support oAuth, and Portal API Catalogues are planned for subsequent releases.
+Support oAuth, and Portal API Catalogs are planned for subsequent releases.
 Support of multiple policies for JWT and OIDC is done through the API definition when using scopes.
 {{< /note >}}

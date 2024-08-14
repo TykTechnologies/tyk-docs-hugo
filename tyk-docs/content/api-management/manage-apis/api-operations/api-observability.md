@@ -32,7 +32,7 @@ Tyk also supports OpenTracing (now deprecated), but we recommend users to start 
 
 Metrics provide aggregated, quantitative data about the performance and behavior of an API over time. They offer insights into the overall health of the system. Here's how you can leverage metrics for API observability:
 
-- **Key Performance Indicators (KPIs):** Define and track essential metrics such as request rate, response time, error rate and resource utilisation to monitor the overall health and performance of the API.
+- **Key Performance Indicators (KPIs):** Define and track essential metrics such as request rate, response time, error rate and resource utilization to monitor the overall health and performance of the API.
     
 - **Custom Metrics:** Create custom metrics that are specific to your API's functionality or business objectives. For example, track the number of successful payments processed or the number of users signed up.
     

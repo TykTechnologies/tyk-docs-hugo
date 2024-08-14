@@ -62,7 +62,7 @@ When the rate limit is breached HTTP requests will have a 429 response returned 
 
 <!-- TODO add links for sycnrhonous responses and function interpolation -->
 
-It's possible to return a response for each message received using synchronous responses. When doing so you can customise headers with the `sync_response` field `headers`, which can also use function interpolation in the value based on the response message contents.
+It's possible to return a response for each message received using synchronous responses. When doing so you can customize headers with the `sync_response` field `headers`, which can also use function interpolation in the value based on the response message contents.
 
 ### Endpoints
 
@@ -285,7 +285,7 @@ Default: `[]`
 ### sync_response
 
 <!-- TODO add links to synchronous responses -->
-Customise messages returned via synchronous responses.
+Customize messages returned via synchronous responses.
 
 
 Type: `object`  

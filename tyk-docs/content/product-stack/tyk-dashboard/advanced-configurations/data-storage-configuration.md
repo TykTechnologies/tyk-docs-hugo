@@ -70,7 +70,7 @@ The remainder of this section explains the *environment variables* that can be u
 
 ### How To Configure Tyk Pump To Write Uptime Data?
 
-Tyk Pump can be configured to write uptime data to SQL (Postgres and SQL Lite) and Mongo. The default behaviour is to write to Mongo.
+Tyk Pump can be configured to write uptime data to SQL (Postgres and SQL Lite) and Mongo. The default behavior is to write to Mongo.
 
 #### How To Configure Tyk Pump To Write Uptime Data To A PostgreSQL Database?
 
@@ -180,7 +180,7 @@ TYK_PMP_PUMPS_SQLAGGREGATE_META_CONNECTIONSTRING=user=postgres password=topsecre
 
 #### How To Configure Tyk Pump To Write Aggregated Analytics To A Mongo Database?
 
-Tyk Pump can be configured to write aggregated analytics data to MongoDB. Aggregated analytics are written to a collection named *z_tyk_analyticz_aggregate_{ORG ID}*, where *ORG_ID* corresponds to the ID of your organisation assigned by Tyk.
+Tyk Pump can be configured to write aggregated analytics data to MongoDB. Aggregated analytics are written to a collection named *z_tyk_analyticz_aggregate_{ORG ID}*, where *ORG_ID* corresponds to the ID of your organization assigned by Tyk.
 
 The following environment variables can be used as a minimum to manage this configuration:
 

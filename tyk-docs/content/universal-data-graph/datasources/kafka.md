@@ -12,7 +12,7 @@ aliases:
 The Kafka DataSource is able to subscribe to Kafka topics and query the events with GraphQL.
 
 
-The Kafka DataSource utilises consumer groups to subscribe to the given topics, and inherits all behavior of the consumer group concept.   
+The Kafka DataSource utilizes consumer groups to subscribe to the given topics, and inherits all behavior of the consumer group concept.   
 
 Consumer groups are made up of multiple cooperating consumers, and the membership of these groups can change over time. Users can easily add a new consumer to the group to scale the processing load. A consumer can also go offline either for planned maintenance or due to an unexpected failure. Kafka maintains the membership of each group and redistributes work when necessary.   
 

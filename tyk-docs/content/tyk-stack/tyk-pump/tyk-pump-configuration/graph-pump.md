@@ -29,7 +29,7 @@ Starting with version `1.7.0` of Tyk Pump and version `4.3.0` of Tyk Gateway it 
 {{< note success >}}
 **Note**  
 
-This will enable detailed recording globally, across all APIs. This means that the behaviour of individual APIs that have this configuration parameter set will be overridden. The Gateway must be restarted after updating this configuration parameter.
+This will enable detailed recording globally, across all APIs. This means that the behavior of individual APIs that have this configuration parameter set will be overridden. The Gateway must be restarted after updating this configuration parameter.
 {{< /note >}}
 
 3. Set up your Mongo `collection_name`.
@@ -81,7 +81,7 @@ With the Graph SQL pump currently includes information (per request) like:
 {{< note success >}}
 **Note**  
 
-This will enable detailed recording globally, across all APIs. This means that the behaviour of individual APIs that have this configuration parameter set will be overridden. The Gateway must be restarted after updating this configuration parameter.
+This will enable detailed recording globally, across all APIs. This means that the behavior of individual APIs that have this configuration parameter set will be overridden. The Gateway must be restarted after updating this configuration parameter.
 {{< /note >}}   
 
 3. Configure your `pump.conf` using this sample configuration:

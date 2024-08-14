@@ -80,7 +80,7 @@ admin-auth: 12345
 {{< note success >}}
 **Note**  
 
-You can also create a user without an `org_id`. This will create a "Super User", who has global access to all APIs, Policies, etc, for all organisations created within Tyk.
+You can also create a user without an `org_id`. This will create a "Super User", who has global access to all APIs, Policies, etc, for all organizations created within Tyk.
 {{< /note >}}
 
 

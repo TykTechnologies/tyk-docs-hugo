@@ -12,10 +12,10 @@ menu:
 ## Introduction
 
 
-This page walks you through how to start using Tyk Cloud, creating organisation, environment and users before creating an API. If you are in a hurry, try the [Quick Start guide]({{< ref "../deployment-and-operations/tyk-cloud-platform/quick-start.md" >}}) for a 5 min version of this tutorial. 
+This page walks you through how to start using Tyk Cloud, creating organization, environment and users before creating an API. If you are in a hurry, try the [Quick Start guide]({{< ref "../deployment-and-operations/tyk-cloud-platform/quick-start.md" >}}) for a 5 min version of this tutorial. 
 
 * Creating your Tyk Cloud account
-* Your first Organisation
+* Your first Organization
 * Creating your first Team and Environment
 * Configuring and deploying your Control Plane and creating your Cloud Data Plane
 * Adding and testing your first API
@@ -26,9 +26,9 @@ Depending on your initial requirements in terms of Environments, Teams and Users
 
 ### Hierarchy
 
-This diagram shows how _Organisation, Teams, Environments, Control Planes and Cloud Data Planes_ fit in with each other and which object contains which:
+This diagram shows how _Organization, Teams, Environments, Control Planes and Cloud Data Planes_ fit in with each other and which object contains which:
 
-{{< img src="/img/cloud/Onboarding_Diagram_2-1_Ara.png" alt="Hierarchy of Organisation, Teams, Environments, Control Planes and Cloud Data Planes" >}}
+{{< img src="/img/cloud/Onboarding_Diagram_2-1_Ara.png" alt="Hierarchy of Organization, Teams, Environments, Control Planes and Cloud Data Planes" >}}
 
 ## Prerequisites
 

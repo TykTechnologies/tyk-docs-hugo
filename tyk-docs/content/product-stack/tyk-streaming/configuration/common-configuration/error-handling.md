@@ -33,7 +33,7 @@ pipeline:
       - resource: bar # Recover here
 ```
 
-Once messages finish the catch block they will have their failure flags removed and are treated like regular messages. If this behaviour is not desired then it is possible to simulate a catch block with a switch processor:
+Once messages finish the catch block they will have their failure flags removed and are treated like regular messages. If this behavior is not desired then it is possible to simulate a catch block with a switch processor:
 
 ```yaml
 pipeline:
@@ -102,7 +102,7 @@ pipeline:
     - mapping: root = if errored() { deleted() }
 ```
 
-This will remove any failed messages from a batch. Furthermore, dropping a message will propagate an acknowledgement (also known as "ack") upstream to the pipeline's input.
+This will remove any failed messages from a batch. Furthermore, dropping a message will propagate an acknowledgment (also known as "ack") upstream to the pipeline's input.
 
 ## Reject Messages
 

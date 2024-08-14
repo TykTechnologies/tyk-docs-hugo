@@ -13,7 +13,7 @@ The guide includes practical examples and best practices for multi-tenant API ma
 
 ## Defining OperatorContext
 
-An [OperatorContext]({{< ref "/product-stack/tyk-operator/key-concepts/key-concepts#operatorcontext" >}}) specifies the parameters for connecting and authenticating with a Tyk Dashboard. Below is an example of how to define an `OperatorContext`:
+An [OperatorContext]({{< ref "/product-stack/tyk-operator/key-concepts/operator-context" >}}) specifies the parameters for connecting and authenticating with a Tyk Dashboard. Below is an example of how to define an `OperatorContext`:
 
 ```yaml
 apiVersion: tyk.tyk.io/v1alpha1

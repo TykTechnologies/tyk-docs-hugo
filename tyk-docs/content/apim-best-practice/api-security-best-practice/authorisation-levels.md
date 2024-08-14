@@ -6,7 +6,7 @@ description: "Authorization levels"
 ---
 
 
-This section provides basic examples of where different authorization levels occur in the API management stack. The accompanying diagrams use colour-coding to show links between request element and the associated authorization locations and methods.
+This section provides basic examples of where different authorization levels occur in the API management stack. The accompanying diagrams use color-coding to show links between request element and the associated authorization locations and methods.
 
 This is how OWASP describe the attack vectors for the three authorization levels:
 

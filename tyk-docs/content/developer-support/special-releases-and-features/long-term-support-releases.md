@@ -15,7 +15,7 @@ Welcome to Tyk's Long Term Support (LTS) Releases page. Here, we'll walk you thr
 Long Term Support describes a release of our Gateway and Dashboard which offers our customers, stability over a 1-2 year period. It also means we are committed to ensure you have uninterrupted service for the lifetime of the long term release. There are many customer benefits in keeping pace with our long term release:
 
 1. **Stability**: Tyk will always strive to avoid issuing its latest release as a long term support release. Instead we prefer to let the release be proven in a production setting before it becomes LTS so we can iron out any rare issues.
-2. **Security**: Tyk commits that the latest LTS will be secure at the point of release by containing the latest available Go version. This ensures Go related security issues are minimised.
+2. **Security**: Tyk commits that the latest LTS will be secure at the point of release by containing the latest available Go version. This ensures Go related security issues are minimized.
 3. **Functional Richness**: There will always be great capability contained in out latest LTS which moves your game on in terms of workflows.
 4. **Continuation of Service**: We will patch the LTS version every 7 weeks for the period it remains in full support.
 
@@ -61,7 +61,7 @@ Although these releases receive support, it's essential to note their limited su
 
 We know that an LTS release which has a major semantic version is not a desirable practice.
 
-So, we will always endeavour to avoid shipping major versions, especially major versions as LTS releases. However, sometimes it is unavoidable and we have to ship a major version. 
+So, we will always endeavor to avoid shipping major versions, especially major versions as LTS releases. However, sometimes it is unavoidable and we have to ship a major version. 
 
 Our first commitment to you is to make our definitions of major / minor / patch transparent:
 
@@ -69,7 +69,7 @@ Our first commitment to you is to make our definitions of major / minor / patch 
 
 The major version is designated as X.0 and is defined by one or more of the following:
 
-1. Breaking changes to Tyk APIs, including Tyk Gateway API, Tyk Dashboard API, MDCB and Tyk EDP and any other component which exposes APIs. Changes include not just the endpoints, but also behaviour and functionality, schemas, input parameters, return error codes and messages. The APIs are documented and published as an OpenAPI Spec document. In case we need to introduce breaking changes, we will create a new version for the API. However, currently none of Tyk APIs are versioned.
+1. Breaking changes to Tyk APIs, including Tyk Gateway API, Tyk Dashboard API, MDCB and Tyk EDP and any other component which exposes APIs. Changes include not just the endpoints, but also behavior and functionality, schemas, input parameters, return error codes and messages. The APIs are documented and published as an OpenAPI Spec document. In case we need to introduce breaking changes, we will create a new version for the API. However, currently none of Tyk APIs are versioned.
 2. Breaking changes to Tyk custom plugins interfaces, breaking plugin compiler for customer Go plugins after plugins have been recompiled.
 3. Breaking changes in the config files in all Tyk components, fields in the config files, environment variables used by Tyk components, APIs (function calls) of Tyk middleware, Go template interface.
 4. Deprecation of existing functionality or engines that breaks a key business process.
@@ -144,7 +144,7 @@ We have established a detailed LTS structure for Tyk Gateway and Tyk Dashboard d
 
 These components are often more standalone in nature and are subject to infrequent and minor changes compared to the core products. Therefore, aligning them with the same LTS versioning isn’t necessary or practical. Instead, we employ a continuous delivery model that ensures these components are always updated with the latest improvements and security patches. Our commitment extends beyond version numbers, as we ensure each of these components is thoroughly tested for quality assurance with all active LTS releases of the Gateway and Dashboard.
 
-Ultimately, our diversified support approach aims to balance agility with assurance, offering the most appropriate level of support for each component while minimising risk and maximising value for our customers.
+Ultimately, our diversified support approach aims to balance agility with assurance, offering the most appropriate level of support for each component while minimizing risk and maximizing value for our customers.
 To provide the most secure and efficient environment, we advise the following with the release of a new LTS version:
 
 ### Developer Portal

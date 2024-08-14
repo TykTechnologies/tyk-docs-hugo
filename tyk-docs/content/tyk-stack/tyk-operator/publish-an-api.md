@@ -25,7 +25,7 @@ Currently Operator only supports publishing API to the Tyk Classic Portal.
 ### Tutorial: Publish an API with Tyk Operator
 #### Step 1: Creating a security policy
 
-When you publish an API to the Portal, Tyk actually publishes a way for developers to enrol in a policy, not into the API directly. Therefore, you should first set up a security policy for the developers, before proceeding with the publishing.
+When you publish an API to the Portal, Tyk actually publishes a way for developers to enroll in a policy, not into the API directly. Therefore, you should first set up a security policy for the developers, before proceeding with the publishing.
 
 To do that, you can use the following command:
 
@@ -98,9 +98,9 @@ spec:
 EOF
 ```
 
-#### Step 4: Creating a PortalAPICatalogue resource
+#### Step 4: Creating a PortalAPICatalog resource
 
-Unlike other platforms, Tyk will not auto-publish your APIs to the Portal, instead they are presented as a facade, you choose what APIs and what Policies to expose to the Portal. You can configure what APIs and what Policies to expose to the Portal via Tyk Operator by creating a PortalAPICatalogue resource.
+Unlike other platforms, Tyk will not auto-publish your APIs to the Portal, instead they are presented as a facade, you choose what APIs and what Policies to expose to the Portal. You can configure what APIs and what Policies to expose to the Portal via Tyk Operator by creating a PortalAPICatalog resource.
 
 Create a file called `api_portal.yaml`, then add the following:
 

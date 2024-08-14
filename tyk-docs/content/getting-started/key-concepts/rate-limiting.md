@@ -21,9 +21,9 @@ Rate limiting involves setting thresholds for the maximum number of requests tha
 
 ## When might you want to use rate limiting?
 
-Rate limiting may be used as an extra line of defence around attempted denial of service attacks. For instance, if you have load-tested your current system and established a performance threshold that you would not want to exceed to ensure system availability and/or performance then you may want to set a global rate limit as a defence to ensure it hasn't exceeded.
+Rate limiting may be used as an extra line of defense around attempted denial of service attacks. For instance, if you have load-tested your current system and established a performance threshold that you would not want to exceed to ensure system availability and/or performance then you may want to set a global rate limit as a defense to ensure it hasn't exceeded.
 
-Rate limiting can also be used to ensure that one particular user or system accessing the API is not exceeding a determined rate. This makes sense in a scenario such as APIs which are associated with a monetisation scheme where you may allow so many requests per second based on the tier in which that consumer is subscribed or paying for.
+Rate limiting can also be used to ensure that one particular user or system accessing the API is not exceeding a determined rate. This makes sense in a scenario such as APIs which are associated with a monetization scheme where you may allow so many requests per second based on the tier in which that consumer is subscribed or paying for.
 
 Of course, there are plenty of other scenarios where applying a rate limit may be beneficial to your APIs and the systems that your APIs leverage behind the scenes.
 
@@ -128,12 +128,12 @@ The characteristics of the Redis Rate Limiter (RRL) are:
 - the log is constantly trimmed to the duration of the defined window
 - requests are blocked if the count in the log exceeds the configured rate limit
 
-An important behaviour of this rate limiting algorithm is that it blocks
+An important behavior of this rate limiting algorithm is that it blocks
 access to the API when the rate exceeds the rate limit and does not let
 further API calls through until the rate drops below the specified rate
 limit. For example, if the configured rate limit is 3000 requests/minute the call rate would
 have to be reduced below 3000 requests/minute for a whole minute before the `HTTP 429`
-responses stop and traffic is resumed. This behaviour is called **spike arrest**.
+responses stop and traffic is resumed. This behavior is called **spike arrest**.
 
 The complete request log is stored in Redis so resource usage when using this rate limiter is high.
 This algorithm will use significant resources on Redis even when blocking requests, as it must
@@ -141,7 +141,7 @@ maintain the request log, mostly impacting CPU usage. Redis resource
 usage increases with traffic therefore shorter `per` values are recommended to
 limit the amount of data being stored in Redis.
 
-If you wish to avoid spike arrest behaviour but the DRL is not suitable, you might use the [Fixed Window Rate Limiter]({{< ref "#fixed-window-rate-limiter" >}}) algorithm.
+If you wish to avoid spike arrest behavior but the DRL is not suitable, you might use the [Fixed Window Rate Limiter]({{< ref "#fixed-window-rate-limiter" >}}) algorithm.
 
 You can configure [Rate Limit Smoothing]({{< ref "#rate-limit-smoothing" >}}) to manage the traffic spike, allowing time to increase upstream capacity if required.
 
@@ -204,7 +204,7 @@ The Redis Sentinel Rate Limiter option will:
 
 This optimizes the latency for connecting clients, as they don't have to
 wait for the sliding log write to complete. This algorithm exhibits spike
-arrest behaviour the same as the basic Redis Rate Limiter, however recovery may take longer as the blocking is in
+arrest behavior the same as the basic Redis Rate Limiter, however recovery may take longer as the blocking is in
 effect for a minimum of the configured window duration (`per`). Gateway and Redis
 resource usage is increased with this option.
 
@@ -243,7 +243,7 @@ constant.
 
 This algorithm can be enabled using the following configuration option [enable_fixed_window_rate_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_fixed_window_rate_limiter" >}}).
 
-If you need spike arrest behaviour, the [Redis Rate Limiter]({{< ref "#redis-rate-limiter" >}}) should be used.
+If you need spike arrest behavior, the [Redis Rate Limiter]({{< ref "#redis-rate-limiter" >}}) should be used.
 
 ### Dynamic algorithm selection based on request rate
 

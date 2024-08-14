@@ -9,14 +9,14 @@ aliases:
   - /tyk-developer-portal/monetise/
 ---
 
-Out of the box, the Tyk Developer Portal does not have a billing component, however, this does not mean that it is not possible to enable monetisation within a Portal developer access flow.
+Out of the box, the Tyk Developer Portal does not have a billing component, however, this does not mean that it is not possible to enable monetization within a Portal developer access flow.
 
 ### The Developer Key Request Flow
 
 When a developer enrolls for API access with a Tyk portal system, they will:
 
 1.  Sign up
-2.  Select a catalogue entry to participate in
+2.  Select a catalog entry to participate in
 3.  Submit a key request form
 4.  Receive their token
 

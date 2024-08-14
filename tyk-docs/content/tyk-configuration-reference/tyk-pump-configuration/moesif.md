@@ -69,7 +69,7 @@ TYK_GW_ANALYTICSCONFIG_ENABLEDETAILEDRECORDING=true
 {{< note success >}}
 **Note**  
 
-This will enable detailed recording globally, across all APIs. This means that the behaviour of individual APIs that have this configuration parameter set will be overridden. The Gateway must be restarted after updating this configuration parameter.
+This will enable detailed recording globally, across all APIs. This means that the behavior of individual APIs that have this configuration parameter set will be overridden. The Gateway must be restarted after updating this configuration parameter.
 {{< /note >}}
 ### 4. Restart Tyk Pump to pickup the Moesif config
 

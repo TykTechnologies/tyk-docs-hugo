@@ -1,7 +1,7 @@
 ---
 title: Tyk MDCB v2.4 Release Notes
-description: "Tyk Multi Data-Centre v2.4 release notes. Focusing on compatibility with Tyk API Definitions from Tyk Gateway v5.2 and enables better visualization in Tyk Dashboard"
-tags: ["release notes", "MDCB", "Tyk Multi Data-Centre", "Tyk Multi Data-Center", "v2.4", "2.4"]
+description: "Tyk Multi Data-Center v2.4 release notes. Focusing on compatibility with Tyk API Definitions from Tyk Gateway v5.2 and enables better visualization in Tyk Dashboard"
+tags: ["release notes", "MDCB", "Tyk Multi Data-Center", "Tyk Multi Data-Center", "v2.4", "2.4"]
 aliases:
   - /release-notes/mdcb-2.4/
 ---

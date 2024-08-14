@@ -95,13 +95,13 @@ For PVC, if you are stuck with a crashing issue on a newer portal release (versi
 
 ## Release Highlights
 #### Custom attributes for the User model and the sign-up form customization
-We added the capability to add additional data fields to the User model and set their behaviour. This way API Providers can:
+We added the capability to add additional data fields to the User model and set their behavior. This way API Providers can:
 Extend the User model with additional fields of one of four types:
   - String
   - Number
   - List of strings
   - Boolean
-- Configure the behaviour of these fields:
+- Configure the behavior of these fields:
   - Add the new data fields to the user sign-up form
   - Force the portal to add the fields to the key metadata to make them available to custom plugins during API calls
   - Make the fields required or optional and lock them once a user profile is created
@@ -163,9 +163,9 @@ Now when the [PORTAL_DCR_LOG_ENABLED]({{< ref "product-stack/tyk-enterprise-deve
 - Fixed the bug where the DCR flow failed to create a client with policies managed by Tyk Operator.
 - Fixed the bug where an admin user couldn't upload a new theme file in Kubernetes environment.
 - Fixed the bug where the portal application went down after running for several hours in Kubernetes environment.
-- Fixed the bug where it was possible to remove the default organisation which resulted in the portal being non-operational.
+- Fixed the bug where it was possible to remove the default organization which resulted in the portal being non-operational.
 - Fixed the bug where the portal panicked when an IdP was not available while creating a new OAuth2.0 client.
-- Fixed the bug where a developer could access API Products regardless of the access rights set by catalogues.
+- Fixed the bug where a developer could access API Products regardless of the access rights set by catalogs.
 - Fixed the bug where it wasn't possible to change a team for a user.
 - Fixed the bug where the error wasn't displayed to an admin user when the theme validation failed while uploading a theme package.
 - Fixed the bug where the rich text editor added extra `<p>` tags to the text.

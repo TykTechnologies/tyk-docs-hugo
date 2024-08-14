@@ -88,7 +88,7 @@ For example:
 
 In this example the block list middleware has been configured for requests to the `GET /anything` and `PUT /anything` endpoints. Requests to these endpoints will be rejected with `HTTP 403 Forbidden`.
 Note that the block list has been configured to be case insensitive, so calls to `GET /Anything` will also be blocked.
-Note also that the endpoint path has not been terminated with `$`. Requests to, for example, `GET /anything/foobar` will be rejected as the [regular expression pattern match]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware#endpoint-parsing" >}}) will recognise this as `GET /anything`.
+Note also that the endpoint path has not been terminated with `$`. Requests to, for example, `GET /anything/foobar` will be rejected as the [regular expression pattern match]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware#endpoint-parsing" >}}) will recognize this as `GET /anything`.
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the block list feature.
 

@@ -5,7 +5,7 @@ tags: [""]
 description: ""
 menu:
   main:
-    parent: "Full Customisation"
+    parent: "Full Customization"
 weight: 1
 ---
 {{< note success >}}
@@ -15,10 +15,10 @@ If you are interested in getting access, contact us at [support@tyk.io](<mailto:
 
 {{< /note >}}
 
-The Tyk Enterprise Developer Portal enables admin users to customise emails that are sent to the API consumers and admin users upon certain events that happen on the portal.
-As an admin user, you can fully customise emails that are sent from the  portal.
+The Tyk Enterprise Developer Portal enables admin users to customize emails that are sent to the API consumers and admin users upon certain events that happen on the portal.
+As an admin user, you can fully customize emails that are sent from the  portal.
 
-This section provides a guide to email customisation.
+This section provides a guide to email customization.
 
 ## List of email notifications
 
@@ -32,12 +32,12 @@ The Tyk Enterprise Developer Portal sends notifications for the following events
 | API access request rejected                            | Developer                     | Reject access request - subject                      | reject.text.tmpl               | reject.html.tmpl               | reject.tmpl               |
 | Pending developer registration request                 | All portal admins             | Invite new admin user - subject                      | newuser.text.tmpl              | newuser.html.tmpl              | newuser.tmpl              |
 | An admin user is invited to register in the portal     | Admin                         | Developer registration approval request - subject    | invite.text.tmpl               | invite.html.tmpl               | invite.tmpl               |
-| A developer is invited to register in the portal       | Developer                     | Invite new user to a consumer organisation - subject | auth/targeted_invite.text.tmpl | auth/targeted_invite.html.tmpl | auth/targeted_invite.tmpl |
+| A developer is invited to register in the portal       | Developer                     | Invite new user to a consumer organization - subject | auth/targeted_invite.text.tmpl | auth/targeted_invite.html.tmpl | auth/targeted_invite.tmpl |
 | Admin or developer account is activated                | Activated user                | Activate user - subject                              | activate.text.tmpl             | activate.html.tmpl             | activate.tmpl             |
 | Admin or developer account is deactivated              | Deactivated user              | Dectivate user - subject                             | deactivate.text.tmpl           | deactivate.html.tmpl           | deactivate.tmpl           |
-| New consumer organisation registration request         | All portal admins             | New organisation registration request - subject      | organisation_request.text.tmpl | organisation_request.html.tmpl | organisation_request.tmpl |
-| Consumer organisation registration request is approved | Consumer organisation admin   | Approve organisation registration request - subject  | organisation_approve.text.tmpl | organisation_approve.html.tmpl | organisation_approve.tmpl |
-| Consumer organisation registration request is rejected | Consumer organisation admin   | Reject organisation registration request - subject   | organisation_reject.text.tmpl  | organisation_reject.html.tmpl  | organisation_reject.tmpl  |
+| New consumer organization registration request         | All portal admins             | New organization registration request - subject      | organisation_request.text.tmpl | organisation_request.html.tmpl | organisation_request.tmpl |
+| Consumer organization registration request is approved | Consumer organization admin   | Approve organization registration request - subject  | organisation_approve.text.tmpl | organisation_approve.html.tmpl | organisation_approve.tmpl |
+| Consumer organization registration request is rejected | Consumer organization admin   | Reject organization registration request - subject   | organisation_reject.text.tmpl  | organisation_reject.html.tmpl  | organisation_reject.tmpl  |
 | New admin account is created                           | Admin                         | Welcome email for admins - subject                   | welcome_admin.text.tmpl        | welcome_admin.html.tmpl        | welcome_admin.tmpl        |
 | New developer account is created                       | Developer                     | Welcome email for developers - subject               | welcome_dev.text.tmpl          | welcome_dev.html.tmpl          | welcome_dev.tmpl          |
 

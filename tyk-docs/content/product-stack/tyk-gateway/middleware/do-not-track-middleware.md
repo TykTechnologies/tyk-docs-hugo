@@ -13,9 +13,9 @@ When [transaction logging]({{< ref "product-stack/tyk-gateway/basic-config-and-s
 
 Disabling tracking on endpoints that handle personal or sensitive information is crucial for adhering to privacy laws such as GDPR or HIPAA. This action prevents the storage and logging of sensitive data, ensuring compliance and safeguarding user privacy.
 
-#### Optimising performance
+#### Optimizing performance
 
-For endpoints experiencing high traffic, disabling tracking can mitigate the impact on the analytics processing pipeline and storage systems. Disabling tracking on endpoints used primarily for health checks or load balancing can prevent the analytics data from being cluttered with information that offers little insight. These optimisations help to maintain system responsiveness and efficiency by reducing unnecessary data load and help to ensure that analytics efforts are concentrated on more meaningful data. 
+For endpoints experiencing high traffic, disabling tracking can mitigate the impact on the analytics processing pipeline and storage systems. Disabling tracking on endpoints used primarily for health checks or load balancing can prevent the analytics data from being cluttered with information that offers little insight. These optimizations help to maintain system responsiveness and efficiency by reducing unnecessary data load and help to ensure that analytics efforts are concentrated on more meaningful data. 
 
 #### Cost Management
 

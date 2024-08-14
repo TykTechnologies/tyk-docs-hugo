@@ -10,16 +10,18 @@ menu:
         parent: Tyk Self-Managed
 aliases:
   - /tyk-self-managed/istio/
-  - "tyk-self-managed/install"
+  - /tyk-self-managed/install/
   - /getting-started/installation/with-tyk-on-premises/
   - /get-started/with-tyk-on-premise/installation/
 ---
 
-First, click here to get a free trial license - 
-</br>
-{{< button_left href="https://tyk.io/sign-up/#self" color="green" content="Self-managed Free License" >}}
+First, click here to get a trial license
 
-Now choose your the installation
+</br>
+
+{{< button_left href="https://tyk.io/sign-up/" color="green" content="Self-managed Evaluation" >}}
+
+**Now choose your preferred installation option**
 
 {{< grid >}}
 
@@ -57,6 +59,6 @@ Install on Microsoft Azure
 
 {{< /grid >}}
 
-### Licencing
+### Licensing
 
 Read more about licensing [here]({{< ref "tyk-on-premises/licensing" >}}).

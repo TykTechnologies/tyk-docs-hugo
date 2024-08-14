@@ -110,7 +110,7 @@ DetailedTracing enables OpenTelemetry's detailed tracing for this API.
 Tyk classic API definition: `detailed_tracing`.
 
 **Field: `eventHandlers` ([EventHandlers](#eventhandlers))**
-Events contains the configuration related to Tyk Events.
+EventHandlers contains the configuration related to Tyk Events.
 
 
 Tyk classic API definition: `event_handlers`.
@@ -169,6 +169,9 @@ Versions contains a list of versions that map to individual API IDs.
 
 **Field: `stripVersioningData` (`boolean`)**
 StripVersioningData is a boolean flag, if set to `true`, the API responses will be stripped of versioning data.
+
+**Field: `urlVersioningPattern` (`string`)**
+UrlVersioningPattern is a string that contains the pattern that if matched will remove the version from the URL.
 
 **Field: `fallbackToDefault` (`boolean`)**
 FallbackToDefault controls the behaviour of Tyk when a versioned API is called with a nonexistent version name.
@@ -354,7 +357,7 @@ means up to 100 requests can be made per minute.
 
 Tyk classic API definition: `global_rate_limit.rate`.
 
-**Field: `per` (`time.ReadableDuration`)**
+**Field: `per` ([ReadableDuration](#readableduration))**
 Per defines the time interval for rate limiting using shorthand notation.
 The value of Per is a string that specifies the interval in a compact form,
 where hours, minutes and seconds are denoted by 'h', 'm' and 's' respectively.
@@ -469,7 +472,7 @@ GatewayTags holds a list of segment tags that should apply for a gateway.
 Enabled activates use of segment tags.
 
 **Field: `tags` (`[]string`)**
-Tags is a list of segment tags
+Tags contains a list of segment tags.
 
 ### **Domain**
 
@@ -537,7 +540,7 @@ PostAuthenticationPlugin contains configuration related to the custom plugin tha
 Deprecated: Use PostAuthenticationPlugins instead.
 
 **Field: `postAuthenticationPlugins` ([CustomPlugins](#customplugins))**
-PostAuthenticationPlugin contains configuration related to the custom plugin that is run immediately after authentication.
+PostAuthenticationPlugins contains configuration related to the custom plugin that is run immediately after authentication.
 
 Tyk classic API definition: `custom_middleware.post_key_auth`.
 
@@ -551,7 +554,7 @@ PostPlugins contains configuration related to the custom plugin that is run imme
 Tyk classic API definition: `custom_middleware.post`.
 
 **Field: `responsePlugin` ([ResponsePlugin](#responseplugin))**
-Deprecated: ResponsePlugin contains configuration related to the custom plugin that is run during processing of the response from the upstream service.
+ResponsePlugin contains configuration related to the custom plugin that is run during processing of the response from the upstream service.
 Deprecated: Use ResponsePlugins instead.
 
 **Field: `responsePlugins` ([CustomPlugins](#customplugins))**
@@ -628,6 +631,10 @@ Certificate contains the certificate mapped to the domain.
 PinnedPublicKeys is a list of domains and pinned public keys for them.
 
 Type defined as array of `PinnedPublicKey` values, see [PinnedPublicKey](#pinnedpublickey) definition.
+
+### **ReadableDuration**
+
+ReadableDuration is an alias maintained to be used in imports.
 
 ### **HMAC**
 
@@ -720,10 +727,10 @@ Kind specifies the action to be taken on the event trigger.
 ID is the ID of event handler in storage.
 
 **Field: `name` (`string`)**
-Name is the name of event handler
+Name is the name of event handler.
 
 **Field: `` ([WebhookEvent](#webhookevent))**
-
+Webhook contains WebhookEvent configs. Encoding and decoding is handled by the custom marshaller.
 
 ### **PluginConfig**
 
@@ -1027,7 +1034,7 @@ URL is the target URL for the webhook.
 **Field: `method` (`string`)**
 Method is the HTTP method for the webhook.
 
-**Field: `cooldownPeriod` (`time.ReadableDuration`)**
+**Field: `cooldownPeriod` ([ReadableDuration](#readableduration))**
 CoolDownPeriod defines cool-down for the event, so it does not trigger again.
 It uses shorthand notation.
 The value of CoolDownPeriod is a string that specifies the interval in a compact form,
@@ -1227,82 +1234,6 @@ Default value is 0, ie if regexpMatchIndex is not provided ID is matched from in
 **Field: `xPathExp` (`string`)**
 XPathExp is the xpath expression to match ID.
 
-### **EndpointPostPlugins**
-
-Type defined as array of `EndpointPostPlugin` values, see [EndpointPostPlugin](#endpointpostplugin) definition.
-
-### **OAuthProvider**
-
-**Field: `jwt` ([JWTValidation](#jwtvalidation))**
-
-
-**Field: `introspection` ([Introspection](#introspection))**
-
-
-### **JWTValidation**
-
-**Field: `enabled` (`boolean`)**
-Enabled activates OAuth access token validation by introspection to a third party.
-
-**Field: `signingMethod` (`string`)**
-SigningMethod to verify signing method used in jwt - allowed values HMAC/RSA/ECDSA.
-
-**Field: `source` (`string`)**
-Source is the secret to verify signature. Valid values are:
-
-- a base64 encoded static secret,
-- a valid JWK URL in plain text,
-- a valid JWK URL in base64 encoded format.
-
-**Field: `identityBaseField` (`string`)**
-IdentityBaseField is the identity claim name.
-
-**Field: `issuedAtValidationSkew` (`uint64`)**
-IssuedAtValidationSkew is the clock skew to be considered while validating the iat claim.
-
-**Field: `notBeforeValidationSkew` (`uint64`)**
-NotBeforeValidationSkew is the clock skew to be considered while validating the nbf claim.
-
-**Field: `expiresAtValidationSkew` (`uint64`)**
-ExpiresAtValidationSkew is the clock skew to be considered while validating the exp claim.
-
-### **Introspection**
-
-**Field: `enabled` (`boolean`)**
-Enabled activates OAuth access token validation by introspection to a third party.
-
-**Field: `url` (`string`)**
-URL is the URL of the third party provider's introspection endpoint.
-
-**Field: `clientId` (`string`)**
-ClientID is the public identifier for the client, acquired from the third party.
-
-**Field: `clientSecret` (`string`)**
-ClientSecret is a secret known only to the client and the authorisation server, acquired from the third party.
-
-**Field: `identityBaseField` (`string`)**
-IdentityBaseField is the key showing where to find the user id in the claims. If it is empty, the `sub` key is looked at.
-
-**Field: `cache` ([IntrospectionCache](#introspectioncache))**
-Cache is the caching mechanism for introspection responses.
-
-### **IntrospectionCache**
-
-**Field: `enabled` (`boolean`)**
-Enabled activates the caching mechanism for introspection responses.
-
-**Field: `timeout` (`int64`)**
-Timeout is the duration in seconds of how long the cached value stays.
-For introspection caching, it is suggested to use a short interval.
-
-### **ExternalOAuth**
-
-**Field: `enabled` (`boolean`)**
-
-
-**Field: `providers` ([[]OAuthProvider](#oauthprovider))**
-
-
 ### **Allowance**
 
 Allowance describes allowance actions and behaviour.
@@ -1443,6 +1374,12 @@ FunctionName is the name of plugin function to be executed.
 **Field: `path` (`string`)**
 Path is the path to plugin.
 
+### **EndpointPostPlugins**
+
+EndpointPostPlugins is a list of EndpointPostPlugins. It's used where multiple plugins can be run.
+
+Type defined as array of `EndpointPostPlugin` values, see [EndpointPostPlugin](#endpointpostplugin) definition.
+
 ### **EnforceTimeout**
 
 EnforceTimeout holds the configuration for enforcing request timeouts.
@@ -1452,6 +1389,16 @@ Enabled is a boolean flag. If set to `true`, requests will enforce a configured 
 
 **Field: `value` (`int`)**
 Value is the configured timeout in seconds.
+
+### **ExternalOAuth**
+
+ExternalOAuth holds configuration for an external OAuth provider.
+
+**Field: `enabled` (`boolean`)**
+Enabled activates external oauth functionality.
+
+**Field: `providers` ([[]OAuthProvider](#oauthprovider))**
+Providers is used to configure OAuth providers.
 
 ### **ExtractCredentialsFromBody**
 
@@ -1496,50 +1443,142 @@ Tyk classic API definition: `version_data.versions...extended_paths.internal[*]`
 **Field: `enabled` (`boolean`)**
 Enabled if set to true makes the endpoint available only for internal requests.
 
+### **Introspection**
+
+Introspection holds configuration for OAuth token introspection.
+
+**Field: `enabled` (`boolean`)**
+Enabled activates OAuth access token validation by introspection to a third party.
+
+**Field: `url` (`string`)**
+URL is the URL of the third party provider's introspection endpoint.
+
+**Field: `clientId` (`string`)**
+ClientID is the public identifier for the client, acquired from the third party.
+
+**Field: `clientSecret` (`string`)**
+ClientSecret is a secret known only to the client and the authorisation server, acquired from the third party.
+
+**Field: `identityBaseField` (`string`)**
+IdentityBaseField is the key showing where to find the user id in the claims. If it is empty, the `sub` key is looked at.
+
+**Field: `cache` ([IntrospectionCache](#introspectioncache))**
+Cache is the caching mechanism for introspection responses.
+
+### **IntrospectionCache**
+
+IntrospectionCache holds configuration for caching introspection requests.
+
+**Field: `enabled` (`boolean`)**
+Enabled activates the caching mechanism for introspection responses.
+
+**Field: `timeout` (`int64`)**
+Timeout is the duration in seconds of how long the cached value stays.
+For introspection caching, it is suggested to use a short interval.
+
 ### **JWT**
 
 JWT holds the configuration for the JWT middleware.
 
 **Field: `enabled` (`boolean`)**
+Enabled activates the basic authentication mode.
 
+
+Tyk classic API definition: `enable_jwt`.
 
 **Field: `source` (`string`)**
+Source contains the source for the JWT.
 
+
+Tyk classic API definition: `jwt_source`.
 
 **Field: `signingMethod` (`string`)**
+SigningMethod contains the signing method to use for the JWT.
 
+
+Tyk classic API definition: `jwt_signing_method`.
 
 **Field: `identityBaseField` (`string`)**
+IdentityBaseField specifies the claim name uniquely identifying the subject of the JWT.
+The identity fields that are checked in order are: `kid`, IdentityBaseField, `sub`.
 
+
+Tyk classic API definition: `jwt_identity_base_field`.
 
 **Field: `skipKid` (`boolean`)**
+SkipKid controls skipping using the `kid` claim from a JWT (default behaviour).
+When this is true, the field configured in IdentityBaseField is checked first.
 
+
+Tyk classic API definition: `jwt_skip_kid`.
 
 **Field: `policyFieldName` (`string`)**
+PolicyFieldName is a configurable claim name from which a policy ID is extracted.
+The policy is applied to the session as a base policy.
 
+
+Tyk classic API definition: `jwt_policy_field_name`.
 
 **Field: `clientBaseField` (`string`)**
+ClientBaseField is used when PolicyFieldName is not provided. It will get
+a session key and use the policies from that. The field ensures that requests
+use the same session.
 
+
+Tyk classic API definition: `jwt_client_base_field`.
 
 **Field: `scopes` ([Scopes](#scopes))**
-
+Scopes holds the scope to policy mappings for a claim name.
 
 **Field: `defaultPolicies` (`[]string`)**
+DefaultPolicies is a list of policy IDs that apply to the session.
 
+
+Tyk classic API definition: `jwt_default_policies`.
 
 **Field: `issuedAtValidationSkew` (`uint64`)**
-
+IssuedAtValidationSkew contains the duration in seconds for which token issuance can predate the current time during the request.
 
 **Field: `notBeforeValidationSkew` (`uint64`)**
-
+NotBeforeValidationSkew contains the duration in seconds for which token validity can predate the current time during the request.
 
 **Field: `expiresAtValidationSkew` (`uint64`)**
-
+ExpiresAtValidationSkew contains the duration in seconds for which the token can be expired before we consider it expired.
 
 **Field: `idpClientIdMappingDisabled` (`boolean`)**
 IDPClientIDMappingDisabled prevents Tyk from automatically detecting the use of certain IDPs based on standard claims
 that they include in the JWT: `client_id`, `cid`, `clientId`. Setting this flag to `true` disables the mapping and avoids
 accidentally misidentifying the use of one of these IDPs if one of their standard values is configured in your JWT.
+
+### **JWTValidation**
+
+JWTValidation holds configuration for validating access tokens by inspecing them
+against a third party API, usually one provided by the IDP.
+
+**Field: `enabled` (`boolean`)**
+Enabled activates OAuth access token validation.
+
+**Field: `signingMethod` (`string`)**
+SigningMethod to verify signing method used in jwt - allowed values HMAC/RSA/ECDSA.
+
+**Field: `source` (`string`)**
+Source is the secret to verify signature. Valid values are:
+
+- a base64 encoded static secret,
+- a valid JWK URL in plain text,
+- a valid JWK URL in base64 encoded format.
+
+**Field: `identityBaseField` (`string`)**
+IdentityBaseField is the identity claim name.
+
+**Field: `issuedAtValidationSkew` (`uint64`)**
+IssuedAtValidationSkew is the clock skew to be considered while validating the iat claim.
+
+**Field: `notBeforeValidationSkew` (`uint64`)**
+NotBeforeValidationSkew is the clock skew to be considered while validating the nbf claim.
+
+**Field: `expiresAtValidationSkew` (`uint64`)**
+ExpiresAtValidationSkew is the clock skew to be considered while validating the exp claim.
 
 ### **MockResponse**
 
@@ -1575,19 +1614,29 @@ OnKeyChangeURL is the URL a request will be triggered against.
 OAuth configures the OAuth middleware.
 
 **Field: `enabled` (`boolean`)**
-
+Enabled activates the OAuth middleware.
 
 **Field: `allowedAuthorizeTypes` (`[]string`)**
-
+AllowedAuthorizeTypes is an array of OAuth authorization types.
 
 **Field: `refreshToken` (`boolean`)**
-
+RefreshToken enables clients using a refresh token to get a new bearer access token.
 
 **Field: `authLoginRedirect` (`string`)**
-
+AuthLoginRedirect configures a URL to redirect to after a successful login.
 
 **Field: `notifications` ([Notifications](#notifications))**
+Notifications configures a URL trigger on key changes.
 
+### **OAuthProvider**
+
+OAuthProvider holds the configuration for validation and introspection of OAuth tokens.
+
+**Field: `jwt` ([JWTValidation](#jwtvalidation))**
+JWT configures JWT validation.
+
+**Field: `introspection` ([Introspection](#introspection))**
+Introspection configures token introspection.
 
 ### **Operation**
 
@@ -1655,36 +1704,39 @@ DoNotTrackEndpoint contains the configuration for disabling analytics and logs.
 **Field: `requestSizeLimit` ([RequestSizeLimit](#requestsizelimit))**
 RequestSizeLimit limits the maximum allowed size of the request body in bytes.
 
+**Field: `rateLimit` ([RateLimitEndpoint](#ratelimitendpoint))**
+RateLimit contains endpoint level rate limit configuration.
+
 ### **Path**
 
 Path holds plugin configurations for HTTP method verbs.
 
 **Field: `DELETE` ([Plugins](#plugins))**
-
+Delete holds plugin configuration for DELETE requests.
 
 **Field: `GET` ([Plugins](#plugins))**
-
+Get holds plugin configuration for GET requests.
 
 **Field: `HEAD` ([Plugins](#plugins))**
-
+Head holds plugin configuration for HEAD requests.
 
 **Field: `OPTIONS` ([Plugins](#plugins))**
-
+Options holds plugin configuration for OPTIONS requests.
 
 **Field: `PATCH` ([Plugins](#plugins))**
-
+Patch holds plugin configuration for PATCH requests.
 
 **Field: `POST` ([Plugins](#plugins))**
-
+Post holds plugin configuration for POST requests.
 
 **Field: `PUT` ([Plugins](#plugins))**
-
+Put holds plugin configuration for PUT requests.
 
 **Field: `TRACE` ([Plugins](#plugins))**
-
+Trace holds plugin configuration for TRACE requests.
 
 **Field: `CONNECT` ([Plugins](#plugins))**
-
+Connect holds plugin configuration for CONNECT requests.
 
 ### **Paths**
 
@@ -1703,7 +1755,7 @@ Allow request by allowance.
 Block request by allowance.
 
 **Field: `ignoreAuthentication` ([Allowance](#allowance))**
-Ignore authentication on request by allowance.
+IgnoreAuthentication ignores authentication on request by allowance.
 
 **Field: `transformRequestMethod` ([TransformRequestMethod](#transformrequestmethod))**
 TransformRequestMethod allows you to transform the method of a request.
@@ -1714,9 +1766,11 @@ Cache allows you to cache the server side response.
 **Field: `enforcedTimeout` ([EnforceTimeout](#enforcetimeout))**
 EnforceTimeout allows you to configure a request timeout.
 
-### **ReadableDuration**
+### **RateLimitEndpoint**
 
-ReadableDuration is an alias maintained to be used in imports.
+RateLimitEndpoint carries same settings as RateLimit but for endpoints.
+
+Type defined as `RateLimit`, see [RateLimit](#ratelimit) definition.
 
 ### **RequestSizeLimit**
 
@@ -1737,28 +1791,46 @@ SecurityScheme defines an Importer interface for security schemes.
 Signature holds the configuration for signature validation.
 
 **Field: `enabled` (`boolean`)**
+Enabled activates signature validation.
 
+Tyk classic API definition: `auth_configs[X].validate_signature`.
 
 **Field: `algorithm` (`string`)**
+Algorithm is the signature method to use.
 
+Tyk classic API definition: `auth_configs[X].signature.algorithm`.
 
 **Field: `header` (`string`)**
+Header is the name of the header to consume.
 
+Tyk classic API definition: `auth_configs[X].signature.header`.
 
 **Field: `query` ([AuthSource](#authsource))**
+Query is the name of the query parameter to consume.
 
+Tyk classic API definition: `auth_configs[X].signature.use_param/param_name`.
 
 **Field: `secret` (`string`)**
+Secret is the signing secret used for signature validation.
 
+Tyk classic API definition: `auth_configs[X].signature.secret`.
 
 **Field: `allowedClockSkew` (`int64`)**
+AllowedClockSkew configures a grace period in seconds during which an expired token is still valid.
 
+Tyk classic API definition: `auth_configs[X].signature.allowed_clock_skew`.
 
 **Field: `errorCode` (`int`)**
+ErrorCode configures the HTTP response code for a validation failure.
+If unconfigured, a HTTP 401 Unauthorized status code will be emitted.
 
+Tyk classic API definition: `auth_configs[X].signature.error_code`.
 
 **Field: `errorMessage` (`string`)**
+ErrorMessage configures the error message that is emitted on validation failure.
+A default error message is emitted if unset.
 
+Tyk classic API definition: `auth_configs[X].signature.error_message`.
 
 ### **Token**
 
@@ -1817,34 +1889,6 @@ Enabled activates Method Transform for the given path and method.
 **Field: `toMethod` (`string`)**
 ToMethod is the http method value to which the method of an incoming request will be transformed.
 
-### **TykExtensionConfigParams**
-
-TykExtensionConfigParams holds the essential configuration required for the Tyk Extension schema.
-
-**Field: `UpstreamURL` (`string`)**
-
-
-**Field: `ListenPath` (`string`)**
-
-
-**Field: `CustomDomain` (`string`)**
-
-
-**Field: `ApiID` (`string`)**
-
-
-**Field: `Authentication` (`boolean`)**
-
-
-**Field: `AllowList` (`boolean`)**
-
-
-**Field: `ValidateRequest` (`boolean`)**
-
-
-**Field: `MockResponse` (`boolean`)**
-
-
 ### **URLRewrite**
 
 URLRewrite configures URL rewriting.
@@ -1868,8 +1912,8 @@ The triggers are processed only if the requested URL matches the pattern above.
 
 URLRewriteCondition defines the matching mode for an URL rewrite rules.
 
-- Value `any` means any of the defined trigger rules may match
-- Value `all` means all the defined trigger rules must match
+- Value `any` means any of the defined trigger rules may match.
+- Value `all` means all the defined trigger rules must match.
 
 ### **URLRewriteInput**
 
@@ -1885,23 +1929,14 @@ The following values are valid:
 - `requestBody`, match pattern against request body
 - `requestContext`, match pattern against request context
 
+The default `url` is used as the input source.
+
 ### **URLRewriteRule**
 
 URLRewriteRule represents a rewrite matching rules.
 
 **Field: `in` ([URLRewriteInput](#urlrewriteinput))**
 In specifies one of the valid inputs for URL rewriting.
-By default, it uses `url` as the input source.
-
-The following values are valid:
-
-- `url`, match pattern against URL
-- `query`, match pattern against named query parameter value
-- `path`, match pattern against named path parameter value
-- `header`, match pattern against named header value
-- `sessionMetadata`, match pattern against session metadata
-- `requestBody`, match pattern against request body
-- `requestContext`, match pattern against request context
 
 **Field: `name` (`string`)**
 Name is the index in the value declared inside `in`.
@@ -1925,10 +1960,7 @@ such that the rewrite will be triggered if the value does not match the `pattern
 URLRewriteTrigger represents a set of matching rules for a rewrite.
 
 **Field: `condition` ([URLRewriteCondition](#urlrewritecondition))**
-Condition indicates the logical combination that will be applied to the rules for an advanced trigger:
-
-- Value `any` means any of the defined trigger rules may match
-- Value `all` means all the defined trigger rules must match
+Condition indicates the logical combination that will be applied to the rules for an advanced trigger.
 
 **Field: `rules` ([[]*URLRewriteRule](#urlrewriterule))**
 Rules contain individual checks that are combined according to the

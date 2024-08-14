@@ -5,7 +5,7 @@ title: "Create Custom Authentication Plugin With Python"
 
 In the realm of API security, HMAC-signed authentication serves as a foundational concept. In this developer-focused blog post, we'll use HMAC-signed authentication as the basis for learning how to write gRPC custom authentication plugins with Tyk Gateway. Why learn how to write Custom Authentication Plugins?
 
-- **Foundational knowledge**: Writing custom authentication plugins provides foundational knowledge of Tyk's extensibility and customisation capabilities.
+- **Foundational knowledge**: Writing custom authentication plugins provides foundational knowledge of Tyk's extensibility and customization capabilities.
 - **Practical experience**: Gain hands-on experience in implementing custom authentication logic tailored to specific use cases, starting with HMAC-signed authentication.
 - **Enhanced control**: Exercise greater control over authentication flows and response handling, empowering developers to implement advanced authentication mechanisms beyond built-in features.
 
@@ -67,7 +67,7 @@ The API will have the following parameters configured:
 - **Target URL**: The target URL will be configured to send requests to *http://httpbin/*.
 - **Authentication Mode**: The authentication mode will be configured for custom authentication. This is used to trigger CoProcess (gRPC), Python or JSVM plugins to handle custom authentication.
 
-You can use the following Tyk Classic API definition to get you started, replacing the *org_id* with the ID of your organisation.
+You can use the following Tyk Classic API definition to get you started, replacing the *org_id* with the ID of your organization.
 
 ```json
 {
@@ -114,7 +114,7 @@ An illustrative example using *curl* is given below. Please note that you will n
 
 - Update the location to use the protocol scheme, host and port suitable for your environment.
 - Replace the value in the *x-tyk-authorization* header with the secret value in your *tyk.conf* file.
-- Replace the *org_id* with the ID of your organisation.
+- Replace the *org_id* with the ID of your organization.
 
 ```bash
 curl -v \
@@ -173,7 +173,7 @@ A response similar to that given below will be returned by Tyk Gateway:
 
 We will create an key configured to use HMAC signing, with a secret of *secret*. The key will configured to have access to our test API.
 
-You can use the following configuration below, replacing the value of the *org_id* with the ID of your organisation.
+You can use the following configuration below, replacing the value of the *org_id* with the ID of your organization.
 
 ```bash
 {
@@ -213,7 +213,7 @@ An illustrative example using *curl* is given below. Please note that you will n
 - Update the location to use the protocol scheme, host and port suitable for your environment.
 - Replace the value in the *x-tyk-authorization* header with the secret value in your *tyk.conf* file.
 
-Replace the *org_id* with the ID of your organisation.
+Replace the *org_id* with the ID of your organization.
 
 ```bash
 curl --location 'http://localhost:8080/tyk/keys/grpc_hmac_key' \
@@ -363,7 +363,7 @@ Our function accepts three parameters:
 - **date_string** is the date extracted from the date header in the request sent by Tyk Gateway.
 - **secret_key** is the value of the secret used for signing.
 
-The function computes and returns the HMAC signature for a string formatted as *date: date_string*, where *date_string* corresponds to the value of the *date_string* parameter. The signature is computed using the secret value given in the *secret_key* parameter and the HMAC algorithm given in the *algorithm* parameter. A *ValueError* is raised if the hash algorithm is unrecognised. 
+The function computes and returns the HMAC signature for a string formatted as *date: date_string*, where *date_string* corresponds to the value of the *date_string* parameter. The signature is computed using the secret value given in the *secret_key* parameter and the HMAC algorithm given in the *algorithm* parameter. A *ValueError* is raised if the hash algorithm is unrecognized. 
 
 We use the following Python modules in our implementation:
 
@@ -464,7 +464,7 @@ The *Object* payload received from the Gateway is updated and returned as a resp
 Specifically, our function performs the following tasks:
 
 - Extracts the *Date* and *Authorization* headers from the request and verifies that the *Authorization* header is structured correctly, using our *parse_auth_header* function. We store the extracted *Authorization* header fields in the *parse_dict* dictionary. If the structure is invalid then a 400 bad request response is returned to Tyk Gateway, using our *set_response_error* function.
-- We use our *verify_hmac_signature* function to compute and verify the HMAC signature. A 400 bad request error is returned to the Gateway if HMAC signature verification fails, due to an unrecognised HMAC algorithm.
+- We use our *verify_hmac_signature* function to compute and verify the HMAC signature. A 400 bad request error is returned to the Gateway if HMAC signature verification fails, due to an unrecognized HMAC algorithm.
 - A 401 unauthorized error response is returned to the Gateway under the following conditions:
 
     - The client HMAC signature and the computed HMAC signature do not match.
@@ -655,7 +655,7 @@ While Tyk Gateway already supports HMAC-signed authentication out of the box, th
 
 It's important to note that the authentication mechanism implemented in this guide solely verifies the HMAC signature's validity and does not include access control checks against specific API resources. Developers should enhance this implementation by integrating access control logic to ensure authenticated requests have appropriate access permissions.
 
-By mastering the techniques outlined in this guide, developers are better equipped to address complex authentication challenges and build robust API security architectures using Tyk Gateway's extensibility features. This guide serves as a foundation for further exploration and experimentation with custom authentication plugins, empowering developers to innovate and customise API authentication solutions according to their unique requirements.
+By mastering the techniques outlined in this guide, developers are better equipped to address complex authentication challenges and build robust API security architectures using Tyk Gateway's extensibility features. This guide serves as a foundation for further exploration and experimentation with custom authentication plugins, empowering developers to innovate and customize API authentication solutions according to their unique requirements.
 
 ---
 

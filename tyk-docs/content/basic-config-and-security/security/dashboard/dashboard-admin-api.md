@@ -8,7 +8,7 @@ aliases:
 ---
 
 The Tyk Dashboard Admin API provides the following administrator level functions:
- - managing [organisations]({{< ref "basic-config-and-security/security/dashboard/organisations" >}})
+ - managing [organizations]({{< ref "basic-config-and-security/security/dashboard/organisations" >}})
  - creating initial [users]({{< ref "tyk-apis/tyk-dashboard-admin-api/users" >}}) during boot-strapping of the system
  - forcing a [URL reload]({{< ref "tyk-apis/tyk-dashboard-api/dashboard-url-reload" >}})
  - [exporting]({{< ref "tyk-apis/tyk-dashboard-admin-api/export" >}}) and [importing]({{< ref "tyk-apis/tyk-dashboard-admin-api/import" >}}) Tyk assets (orgs, APIs, policies) for backup or when migrating between environments

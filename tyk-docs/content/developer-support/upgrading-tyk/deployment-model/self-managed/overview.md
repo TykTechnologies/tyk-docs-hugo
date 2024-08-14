@@ -24,9 +24,9 @@ upgrade components in the following sequence:
 3. Tyk Pump
 
 
-### Upgrade order with Multi Data Centre Bridge (MDCB) {#upgrade-mdcb}
+### Upgrade order with Multi Data Center Bridge (MDCB) {#upgrade-mdcb}
 For Enterprise customers, the Tyk control plane contains all the standard components of a Self-Managed installation with
-the addition of the [Multi Data Centre Bridge]({{< ref "tyk-multi-data-centre" >}}) (MDCB).
+the addition of the [Multi Data Center Bridge]({{< ref "tyk-multi-data-centre" >}}) (MDCB).
 
 Our recommended sequence for upgrading a self-managed MDCB installation is as follows:
 

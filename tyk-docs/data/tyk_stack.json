@@ -22,7 +22,7 @@
         "path": "tyk-developer-portal/tyk-enterprise-developer-portal/"
       },
       {
-        "title": "Tyk Multi Data Centre Bridge",
+        "title": "Tyk Multi Data Center Bridge",
         "description": "Control plane that performs management and synchronisation.",
         "path": "tyk-multi-data-centre/"
       }
@@ -50,7 +50,7 @@
       },
       {
         "title": "Tyk Streams",
-        "description": "Enables to securely expose, manage and monetise real-time event streams, brokers and async APIs.",
+        "description": "Enables to securely expose, manage and monetize real-time event streams, brokers and async APIs.",
         "path": "product-stack/tyk-streaming/overview/"
       }
     ]

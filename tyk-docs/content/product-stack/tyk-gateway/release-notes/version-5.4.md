@@ -72,7 +72,7 @@ Given the potential time difference between your upgrade and the release of this
 
 ### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
-Deprecations should be announced here
+There are no deprecations in this release.
 
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc. 
@@ -98,13 +98,14 @@ We've introducing a [Rate Limit Smoothing]({{< ref "/getting-started/key-concept
 
 #### Fixed MDCB Issue Relating To Replication Of Custom Keys To Dataplanes
 
-Relsolved an issue encountered in MDCB environments where changes to custom keys made via the Dashboard were not properly replicated to dataplanes. The issue impacted both key data and associated quotas, in the following versions:
+Resolved an issue encountered in MDCB environments where changes to custom keys made via the Dashboard were not properly replicated to dataplanes. The issue impacted both key data and associated quotas, in the following versions:
 
 - 5.0.4 to 5.0.12
 - 5.1.1 and 5.1.2
 - 5.2.0 to 5.2.6
 - 5.3.0 to 5.3.2
 
+##### Action Required
 Customers should clear their edge Redis instances of any potentially affected keys to maintain data consistency and ensure proper synchronization across their environments. Please refer to the item in the [fixed](#fixed) section of the changelog for recommended actions.
 
 #### Fixed Window Rate Limiter
@@ -117,7 +118,7 @@ We’ve added support for you to [register webhooks]({{< ref "/basic-config-and-
 
 #### Enhanced Header Handling in GraphQL APIs
 
-Introduced a features object in API definitions for GQL APIs, including the `use_immutable_headers` attribute. This allows advanced header control, enabling users to add new headers, rewrite existing ones, and selectively remove specific headers. Existing APIs will have this attribute set to `false` by default, ensuring no change in behaviour. For new APIs, this attribute is true by default, facilitating smoother migration and maintaining backward compatibility.
+Introduced a features object in API definitions for GQL APIs, including the `use_immutable_headers` attribute. This allows advanced header control, enabling users to add new headers, rewrite existing ones, and selectively remove specific headers. Existing APIs will have this attribute set to `false` by default, ensuring no change in behavior. For new APIs, this attribute is true by default, facilitating smoother migration and maintaining backward compatibility.
 
 ### Downloads
 - [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.4.0)
@@ -163,7 +164,7 @@ Implemented [Rate Limit Smoothing]({{< ref "/getting-started/key-concepts/rate-l
 <details>
 <summary>Introduced ‘use_immutable_headers’ for Advanced Header Control in GraphQL APIs</summary>
 
-We've added the `use_immutable_headers` option to the GraphQL API configuration, offering advanced header transformation capabilities. When enabled, users can add new headers, rewrite existing ones, and selectively remove specific headers, allowing granular control without altering the original request. Existing APIs will default to `false`, maintaining current behaviour until ready for upgrade.
+We've added the `use_immutable_headers` option to the GraphQL API configuration, offering advanced header transformation capabilities. When enabled, users can add new headers, rewrite existing ones, and selectively remove specific headers, allowing granular control without altering the original request. Existing APIs will default to `false`, maintaining current behavior until ready for upgrade.
 </details>
 </li>
 <li>
@@ -177,14 +178,14 @@ Introduced an option for users to manually provide GQL schemas when creating API
 <details>
 <summary>Introduced Tyk v3 GraphQL Engine in Gateway</summary>
 
-The new GraphQL engine, version 3-preview, is now available in Tyk Gateway. It can be used for any GQL API by using the following enum in raw API definition: *"version": "3-preview"*. This experimental version offers optimised GQL operation resolution, faster response times, and a more efficient data loader. It is currently not recommended for production use and will be stabilised in future releases, eventually becoming the default for new GQL APIs in Tyk. 
+The new GraphQL engine, version 3-preview, is now available in Tyk Gateway. It can be used for any GQL API by using the following enum in raw API definition: *"version": "3-preview"*. This experimental version offers optimized GQL operation resolution, faster response times, and a more efficient data loader. It is currently not recommended for production use and will be stabilised in future releases, eventually becoming the default for new GQL APIs in Tyk. 
 </details>
 </li>
 <li>
 <details>
 <summary>Introduced features Object in API Definition for GQL APIs</summary>
 
-Enhanced request headers handling in API definitions for GQL APIs by introducing a *features* object. Users can now set the `use_immutable_headers` attribute, which defaults to false for existing APIs, ensuring no change in header behaviour. For new APIs, this attribute is `true` by default, facilitating smoother migration and maintaining backwards compatibility.
+Enhanced request headers handling in API definitions for GQL APIs by introducing a *features* object. Users can now set the `use_immutable_headers` attribute, which defaults to false for existing APIs, ensuring no change in header behavior. For new APIs, this attribute is `true` by default, facilitating smoother migration and maintaining backwards compatibility.
 </details>
 </li>
 <li>
@@ -293,7 +294,7 @@ Fixed an issue where the Gateway did not respect API domain settings when there 
 <details>
 <summary>Resolved nested field mapping issue in Universal Data Graph</summary>
 
-Addressed a problem with nested field mapping in UDG for GraphQL (GQL) operations. Previously, querying a single nested field caused an error, while including another *normal* field from the same level allowed the query to succeed. This issue has been fixed to ensure consistent behaviour regardless of the query composition.
+Addressed a problem with nested field mapping in UDG for GraphQL (GQL) operations. Previously, querying a single nested field caused an error, while including another *normal* field from the same level allowed the query to succeed. This issue has been fixed to ensure consistent behavior regardless of the query composition.
 </details>
 </li>
 </ul>

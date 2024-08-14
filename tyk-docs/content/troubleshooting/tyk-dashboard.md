@@ -11,7 +11,7 @@ weight: 5
 
 [Receive a CSRF error in the Developer Portal]({{< ref "troubleshooting/tyk-dashboard/receive-csrf-error-developer-portal" >}})
 
-[“API catalogue not found“ error in the Developer Portal]({{< ref "troubleshooting/tyk-dashboard/api-catalogue-not-found-error-developer-portal" >}})
+[“API catalog not found“ error in the Developer Portal]({{< ref "troubleshooting/tyk-dashboard/api-catalogue-not-found-error-developer-portal" >}})
 
 [“Can't update policy. Please ensure at least one access rights setting is set“]({{< ref "troubleshooting/tyk-dashboard/cant-update-policy-please-ensure-least-one-access-rights-setting-set" >}})
 

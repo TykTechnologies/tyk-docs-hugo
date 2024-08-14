@@ -40,11 +40,11 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructi
 ##### Request Body Size Limits
 
 We have introduced a new Gateway-level option to limit the size of requests made
-to your APIs. You can use this as a first line of defence against overly large
+to your APIs. You can use this as a first line of defense against overly large
 requests that might affect your Tyk Gateways or upstream services. Of course,
 being Tyk, we also provide the flexibility to configure API-level and
 per-endpoint size limits so you can be as granular as you need to protect and
-optimise your services. Check out our improved documentation for full
+optimize your services. Check out our improved documentation for full
 description of how to use these powerful [features]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits" >}}).
 
 ##### Changed default RPC pool size for MDCB deployments
@@ -79,7 +79,7 @@ size using [slave_options.rpc_pool_size]({{< ref "tyk-oss-gateway/configuration#
 
 - Fixed an issue where invalid IP addresses could be added to the IP allow list
 - Fixed an issue when using custom authentication with multiple authentication methods, custom authentication could not be selected to provide the base identity
-- Fixed an issue where OAuth access keys were physically removed from Redis on expiry. Behaviour for OAuth is now the same as for other authorization methods
+- Fixed an issue where OAuth access keys were physically removed from Redis on expiry. Behavior for OAuth is now the same as for other authorization methods
 - Fixed an issue where the `global_size_limit` setting didn't enable request size limit middleware. Thanks to [PatrickTaibel](https://github.com/PatrickTaibel) for the contribution!
 - Fixed minor versioning, URL and field mapping issues when importing OpenAPI document as an API definition to UDG
 - When the control API is not protected with mTLS we now do not ask for a cert, even if all the APIs registered have mTLS as an authorization mechanism
@@ -88,7 +88,7 @@ size using [slave_options.rpc_pool_size]({{< ref "tyk-oss-gateway/configuration#
 
 ##### Changed
 
-- Improved performance when opening the Portal page by optimising the pre-fetching of required data
+- Improved performance when opening the Portal page by optimizing the pre-fetching of required data
 
 
 ## Community Contributions

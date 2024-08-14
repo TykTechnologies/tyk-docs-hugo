@@ -130,7 +130,7 @@ If you install Tyk Self Managed manually, you can access `TYK_AUTH` and `TYK_ORG
 
 Under the Users page, you can click on the Operator user to find associated values for that particular user.
 
-`TYK_AUTH` corresponds to `Tyk Dashboard API Access Credentials`. `TYK_ORG` corresponds to `Organisation ID`. You can follow the instructions for our Tyk Open Source Gateway to create a `tyk-operator-conf` secret using `kubectl` command.
+`TYK_AUTH` corresponds to `Tyk Dashboard API Access Credentials`. `TYK_ORG` corresponds to `Organization ID`. You can follow the instructions for our Tyk Open Source Gateway to create a `tyk-operator-conf` secret using `kubectl` command.
 
 {{< note success >}}
  **Note**
@@ -161,7 +161,7 @@ Tyk Operator is installed with cluster permissions. However, you can optionally 
 #### Watching custom ingress class
 
 The value of the `kubernetes.io/ingress.class` annotation identifies Ingress objects to be processed.
-Tyk Operator looks for the value `tyk` and will ignore all other ingress classes by default. If you want to override this default behaviour, you may do so by setting `WATCH_INGRESS_CLASS` through `tyk-operator-conf` or the environment variable .
+Tyk Operator looks for the value `tyk` and will ignore all other ingress classes by default. If you want to override this default behavior, you may do so by setting `WATCH_INGRESS_CLASS` through `tyk-operator-conf` or the environment variable .
 
 For example:
 
