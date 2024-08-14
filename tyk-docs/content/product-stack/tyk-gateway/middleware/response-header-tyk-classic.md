@@ -202,7 +202,7 @@ In this example the Response Header Transform middleware (`transform_response_he
 
 #### Example
 
-```yaml  {linenos=true, linenostart=1}
+```yaml {linenos=true, linenostart=1}
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:
