@@ -105,7 +105,7 @@ Experience improved performance with optimised creation and usage of Abstract Sy
     docker pull tykio/tyk-gateway:v5.5.0
     ``` 
 - Helm charts
-  - [tyk-charts v1.5]({{< ref "/product-stack/tyk-charts/release-notes/version-1.5.md" >}})
+  - [tyk-charts v1.6]({{< ref "/product-stack/tyk-charts/release-notes/version-1.6.md" >}})
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 ### Changelog {#Changelog-v5.5.0}
