@@ -83,11 +83,14 @@ Here we can see that the `rewrite_to` field has been generated with the value `t
 
 ### URL Rewrite Triggers {#url-rewrite-triggers}
 
-Triggers in Tyk Operator are configurations that specify actions based on certain conditions. These conditions can be:
+Triggers in Tyk Operator are configurations that specify actions based on certain conditions. These conditions can be based on:
 
 - HTTP headers
 - Query parameters
-- Other request attributes.
+- Path parameters
+- Session metadata
+- Request body
+- Request context
 
 Triggers are essential for executing specific actions when particular criteria are met, such as modifying requests, logging or rewriting URLs. They are useful for automating actions based on real-time data received in requests. For example, you might use triggers to:
 
@@ -95,7 +98,7 @@ Triggers are essential for executing specific actions when particular criteria a
 - Modify headers for security or compliance reasons.
 - Enforce business rules by redirecting requests based on certain parameters.
 
-Here’s how to configure a trigger that rewrites a URL based on the presence of a specific HTTP header:
+Assume that for all Basic Authentication requests we wish to instruct Tyk Operator to redirect to the API identified by `basic-auth-internal` within the `default` namespace. Subsequently, we can use a `rewrite_to_internal` object within the triggers configuration as follows:
 
 ```yaml
 triggers:
@@ -111,7 +114,9 @@ triggers:
       path: "basic/$2"
 ```
 
-The Operator will transform this into:
+In the example above we can see that a trigger is configured for all requests that include an `Authorization` header that contains `Basic` in the header value. A `rewrite_to_internal` configuration object is used to instruct Tyk Operator to generate a redirect to the API identified by the `basic-auth-internal` API resource in the `default` namespace. The redirect path will be prefixed with `basic`. For example, a basic authentication request to path `/` will be redirected to `/basic`.
+
+Tyk Operator will automatically generate a URL Rewrite (`rewrite_to`) to redirect the request to the API identified by `basic-auth-internal` within the `default` namespace as follows:
 
 ```yaml
 triggers:
@@ -125,4 +130,4 @@ triggers:
 
 ### Proxy to Internal APIs {#proxy-to-internal-apis}
 
-The proxy object’s target_internal field references other API resources. This field shares the same properties as those described for rewrite_to_internal, ensuring consistent configuration.
+The proxy object’s `target_internal` field references other API resources. This field shares the same properties as those described for `rewrite_to_internal`, ensuring consistent configuration.
