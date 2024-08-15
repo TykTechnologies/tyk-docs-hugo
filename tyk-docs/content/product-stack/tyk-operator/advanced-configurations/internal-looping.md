@@ -5,186 +5,46 @@ description: "Using the Response Header Transform middleware with Tyk Classic AP
 tags: ["Internal Looping", "Tyk Operator", "internal looping","per-API", "Tyk Classic"]
 ---
 
-In Tyk you target api's by `tyk://<API_ID>/<path>` scheme.
-This requires prior knowledge of the *API_ID*. Since Tyk Operator treats API's as objects and manages them by assigning an `API_ID`, we introduce a typed API to refer to other APIs.
+Tyk Operator simplifies the management and transformation of API traffic within Kubernetes environments. [Internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}) is the process of calling one API from within another API. This is particularly beneficial in scenarios requiring multiple API calls to complete a single logical operation. 
 
-Tyk Operator will automatically generate the correct URL before sending it to the Gateway.
+In Tyk, APIs are generally targeted using the `tyk://<API_ID>/<path>` scheme, which requires prior knowledge of the `API_ID`. Tyk Operator abstracts this by treating APIs as objects, managing them, and dynamically assigning `API_ID`s. Typed APIs enable you to refer to other APIs without explicitly knowing their `API_ID`s.
 
+With Tyk Operator, these URLs are automatically generated, enabling efficient inter-API communication without manual intervention.
 
-```yaml
----
-# Dynamic Auth
-
-# In this example, we have a bunch of legacy customers who authenticate with our service using Basic Authentication.
-# We want to be able to support API Keys also, where both types of clients hit the same ingress.
-# As such, Tyk needs to decide whether to perform Basic Authentication or Auth Token auth check.
-#
-# In order to achieve this, we need to configure 4 API Definitions inside Tyk.
-# 1. EntryPoint API
-# 2. BasicAuthInternal API
-# 3. AuthTokenInternal API
-# 4. ProxyInternal API
-#
-# When the request hits the ingress route, we configure a URL rewrite to pass the request to either the internal
-# BasicAuth api or the AuthToken API.
-# the internal APIs will then authenticate request, and assuming the happy path, proxy to the ProxyInternal API.
-# The ProxyInternal API is responsible for proxying to the underlying service.
-#
-# It is worth noting that there are no actual http redirect happening here, meaning that there is no performance penalty
-# in performing any of these "Internal Redirects".
-
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: entrypoint-api
-spec:
-  name: Entrypoint API
-  protocol: http
-  active: true
-  proxy:
-    listen_path: /entry
-    target_url: http://example.com
-  use_keyless: true
-  version_data:
-    default_version: Default
-    not_versioned: true
-    versions:
-      Default:
-        name: Default
-        use_extended_paths: true
-        extended_paths:
-          url_rewrites:
-            - path: "/{id}"
-              match_pattern: "/(.*)/(.*)"
-              method: GET
-              triggers:
-                - "on": "all"
-                  options:
-                    header_matches:
-                      "Authorization":
-                        match_rx: "^Basic"
-                  rewrite_to_internal:
-                    target:
-                      name: basic-auth-internal
-                      namespace: default
-                    path: "basic/$2"
-                - "on": "all"
-                  options:
-                    header_matches:
-                      "Authorization":
-                        match_rx: "^Bearer"
-                  rewrite_to_internal:
-                    target:
-                      name: auth-token-internal
-                      namespace: default
-                    path: "token/$2"
----
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: basic-auth-internal
-spec:
-  name: BasicAuth Internal API
-  protocol: http
-  proxy:
-    listen_path: "/basic"
-    target_url: http://example.com
-  active: true
-  use_keyless: true
-  version_data:
-    default_version: Default
-    not_versioned: true
-    versions:
-      Default:
-        name: Default
-        use_extended_paths: true
-        extended_paths:
-          url_rewrites:
-            - path: "/{id}"
-              match_pattern: "/basic/(.*)"
-              method: GET
-              rewrite_to_internal:
-                target:
-                  name: proxy-api
-                  namespace: default
-                path: proxy/$1
-          transform_headers:
-            - add_headers:
-                x-transform-api: "basic-auth"
-              method: GET
-              path: "/{id}"
-              delete_headers: []
----
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: auth-token-internal
-spec:
-  name: AuthToken Internal API
-  protocol: http
-  proxy:
-    listen_path: "/token"
-    target_url: http://example.com
-  active: true
-  use_keyless: true
-  version_data:
-    default_version: Default
-    not_versioned: true
-    versions:
-      Default:
-        name: Default
-        use_extended_paths: true
-        extended_paths:
-          url_rewrites:
-            - path: "/{id}"
-              match_pattern: "/token/(.*)"
-              method: GET
-              rewrite_to_internal:
-                target:
-                  name: proxy-api
-                  namespace: default
-                path: proxy/$1
-          transform_headers:
-            - add_headers:
-                x-transform-api: "token-auth"
-              method: GET
-              path: "/{id}"
-              delete_headers: []
----
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: proxy-api
-spec:
-  name: Proxy API
-  protocol: http
-  active: true
-  internal: true
-  proxy:
-    listen_path: "/proxy"
-    target_url: http://httpbin.org
-    strip_listen_path: true
-  use_keyless: true
----
-```
-
+<!-- 
+For more detailed configuration examples, refer to the [Full Sample File](../../config/samples/looping/dynamic_auth.yaml).
+-->
 
 ## URL Rewriting
 
-A `rewrite_to_internal` field is used to target other api resources.
+Tyk Operator has a powerful feature that enables dynamic URL rewriting for API requests. This configuration allows you to redirect incoming requests to different internal API endpoints managed by the Tyk Gateway, facilitating seamless interaction between various services and enhancing the modularity of your API infrastructure.
+
+### Configuration
+
+The `rewrite_to_internal` object is used to define how incoming API requests should be redirected to internal API resources. This mechanism is essential for routing traffic within a microservices architecture or when managing APIs across different namespaces in Kubernetes. Using this object you can effectively manage and optimize API traffic within your Tyk Gateway.
+
+This setup supports complex routing scenarios and enables efficient inter-service communication, via configuring the following properties:
+
+- **Path**: The `path` property specifies the endpoint on the target API where the request should be directed. This is the portion of the URL that follows the domain and is crucial for ensuring that the request reaches the correct resource. For example, setting a value of `"/myendpoint"` means that the request will be forwarded to the `/myendpoint` path on the target API.
+
+- **Query**: The `query` property allows you to append additional query parameters to the target URL. These parameters can be used to modify the behavior of the target API or to pass along specific request information. For instance, setting `query: "check_limits=true"` will include this query string in the redirected request, potentially triggering special handling by the target API.
+
+- **Target**: The `target` property identifies the API resource to which the request should be routed. It consists of two components: `name` and `namespace`. The `name` is the identifier of the target API, while the `namespace` specifies the Kubernetes namespace where the API resource resides. Together, these elements ensure that Tyk Operator accurately locates and routes the request to the intended API. For example, `name: "proxy-api"` and `namespace: "default"` direct the request to the `proxy-api` resource in the `default` namespace.
+
+The schema for the `rewrite_to_internal` configuration object is summarised below:
 
 ```yaml
 rewrite_to_internal:
-  description: RewriteToInternal defines options that constructs a url that refers to an api that is loaded into the gateway.
+  description: RewriteToInternal defines options that construct a URL referring to an API loaded into the gateway.
   properties:
     path:
-      description: "Path path on target , this does not include query parameters. \texample /myendpoint"
+      description: "The path on the target, excluding query parameters. Example: /myendpoint"
       type: string
     query:
-      description: "Query url query string to add to target \texample check_limits=true"
+      description: "The query string to add to the target URL. Example: check_limits=true"
       type: string
     target:
-      description: API a namespaced/name to the api definition resource that you are targetting
+      description: "The API resource being targeted, specified by namespace and name."
       properties:
         name:
           type: string
@@ -193,9 +53,11 @@ rewrite_to_internal:
       required:
       - name
       - namespace
-``` 
+```
 
-usage 
+### Example
+
+An example configuration for URL rewriting is listed below:
 
 ```yaml
 url_rewrites:
@@ -209,7 +71,7 @@ url_rewrites:
       path: proxy/$1
 ```
 
-This api is targeting an ApiDefinition resource `proxy-api` in `default` namespace. The operator will take care of transforming this into something like this
+In this example the `rewrite_to_internal` object targets an `ApiDefinition` resource named `proxy-api` in the `default` namespace. The `path` is configured as `proxy/$1`. The Operator will use this to automatically generate a URL to target a request to the `proxy-api` in the `default` namespace:
 
 ```yaml
 url_rewrites:
@@ -219,10 +81,20 @@ url_rewrites:
   rewrite_to: tyk://ZGVmYXVsdC9wcm94eS1hcGk/proxy/$1
 ```
 
-# URL Rewriting triggers
+The `rewrite_to` field is generated by Tyk Operator as `tyk://ZGVmYXVsdC9wcm94eS1hcGk/proxy/$1` where `ZGVmYXVsdC9wcm94eS1hcGk` represents the API ID for the `proxy-api` API resource in the `default` namespace. Notice that path `proxy/$1` is appended to the base URL `tyk://ZGVmYXVsdC9wcm94eS1hcGk`.
 
-A `rewrite_to_internal` used to target other api resources in `triggers`.
-For example
+Triggers
+Triggers in Tyk Operator are configurations that specify actions based on certain conditions. These conditions can be HTTP headers, query parameters, or other request attributes. Triggers are essential for executing specific actions when particular criteria are met, such as modifying requests, logging, or rewriting URLs.
+
+Use Case for Triggers
+Triggers are used to automate actions based on real-time data received in requests. For example, you might use triggers to:
+
+Redirect users based on their authentication status.
+Modify headers for security or compliance reasons.
+Enforce business rules by redirecting requests based on certain parameters.
+
+Triggers Configuration Example
+Here’s how to configure a trigger that rewrites a URL based on the presence of a specific HTTP header:
 
 ```yaml
 triggers:
@@ -237,7 +109,8 @@ triggers:
         namespace: default
       path: "basic/$2"
 ```
-The operator  transform that into something like this
+
+The Operator will transform this into:
 
 ```yaml
 triggers:
@@ -249,6 +122,5 @@ triggers:
   rewrite_to: tyk://ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs/basic/$2
 ```
 
-# Proxy to internal apis
-
-A `target_internal` field on `proxy` object is used to target other api resources. This field properties are the same as the ones described for `rewrite_to_internal`.
+Proxy to Internal APIs
+The proxy object’s target_internal field references other API resources. This field shares the same properties as those described for rewrite_to_internal, ensuring consistent configuration.
