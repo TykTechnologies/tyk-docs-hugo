@@ -9,7 +9,7 @@ Tyk Operator simplifies the management and transformation of API traffic within 
 
 In Tyk, looping is generally targeted using the `tyk://<API_ID>/<path>` scheme, which requires prior knowledge of the `API_ID`. Tyk Operator abstracts this by treating APIs as objects, managing them and dynamically assigning `API_ID`s. Typed APIs enable you to refer to other APIs by name without explicitly knowing their `API_ID`s.
 
-With Tyk Operator, looping URLs are automatically generated, enabling efficient inter-API communication without manual intervention.
+Tyk Operator can be configured to automatically generate looping URLs, enabling efficient inter-API communication without manual intervention.
 
 ## Configuration
 
@@ -49,7 +49,9 @@ rewrite_to_internal:
 
 ## Examples
 
-Looping can configured within Tyk Operator for [URL Rewrites](#url-rewrite-triggers), [URL Rewrite Triggers](#url-rewrite-triggers) and within a [Proxy](#proxy-to-internal-apis).
+Looping can configured within Tyk Operator for [URL Rewrites]({{< ref "transform-traffic/url-rewriting" >}}), [URL Rewrite Triggers]({{< ref "product-stack/tyk-gateway/middleware/url-rewrite-middleware#url-rewrite-triggers" >}}) and for [proxies]({{< ref "" >}}) to internal APIs.
+
+This section includes corresponding examples for Tyk Operator.
 
 ### URL Rewrites {#url-rewrites}
 
@@ -83,22 +85,16 @@ Here we can see that the `rewrite_to` field has been generated with the value `t
 
 ### URL Rewrite Triggers {#url-rewrite-triggers}
 
-Triggers in Tyk Operator are configurations that specify actions based on certain conditions. These conditions can be based on:
+[Triggers]({{< ref "product-stack/tyk-gateway/middleware/url-rewrite-middleware#url-rewrite-triggers" >}}) are configurations that specify actions based on certain conditions present in HTTP headers, query parameters, path parameters etc.
 
-- HTTP headers
-- Query parameters
-- Path parameters
-- Session metadata
-- Request body
-- Request context
+Triggers are essential for executing specific actions when particular criteria are met, such as rewriting URLs. They are useful for automating actions based on real-time data received in requests. For example, you might use triggers to:
 
-Triggers are essential for executing specific actions when particular criteria are met, such as modifying requests, logging or rewriting URLs. They are useful for automating actions based on real-time data received in requests. For example, you might use triggers to:
+- Redirect users to different APIs in the Gateway based on their authentication status.
+- Enforce business rules by redirecting requests to different APIs in the Gateway based on certain parameters.
 
-- Redirect users based on their authentication status.
-- Modify headers for security or compliance reasons.
-- Enforce business rules by redirecting requests based on certain parameters.
+The process for configuring triggers is similar to that explained in section [using the URL Rewrite middleware with Tyk Classic APIs]({{< ref "product-stack/tyk-gateway/middleware/url-rewrite-tyk-classic" >}}).
 
-Assume that for all Basic Authentication requests we wish to instruct Tyk Operator to redirect to the API identified by `basic-auth-internal` within the `default` namespace. Subsequently, we can use a `rewrite_to_internal` object within the triggers configuration as follows:
+Assume that we wish to instruct Tyk Operator to redirect all *Basic Authentication* requests to the API identified by `basic-auth-internal` within the `default` namespace. Subsequently, we can use a `rewrite_to_internal` object as follows:
 
 ```yaml
 triggers:
@@ -114,7 +110,9 @@ triggers:
       path: "basic/$2"
 ```
 
-In the example above we can see that a trigger is configured for all requests that include an `Authorization` header that contains `Basic` in the header value. A `rewrite_to_internal` configuration object is used to instruct Tyk Operator to generate a redirect to the API identified by the `basic-auth-internal` API resource in the `default` namespace. The redirect path will be prefixed with `basic`. For example, a basic authentication request to path `/` will be redirected to `/basic`.
+Here we we can see that a trigger is configured for all requests that include an `Authorization` header containing `Basic` in the header value.
+
+A `rewrite_to_internal` configuration object is used to instruct Tyk Operator to generate a redirect to the API identified by the `basic-auth-internal` API resource in the `default` namespace. The redirect path will be prefixed with `basic`. For example, a basic authentication request to path `/` will be redirected to `/basic/`.
 
 Tyk Operator will automatically generate a URL Rewrite (`rewrite_to`) to redirect the request to the API identified by `basic-auth-internal` within the `default` namespace as follows:
 
@@ -128,6 +126,10 @@ triggers:
   rewrite_to: tyk://ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs/basic/$2
 ```
 
+Here we can see that the `rewrite_to` field has been generated with the value `tyk://ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs/proxy/$1` where `ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs` represents the API ID for the `proxy-api` API resource in the `default` namespace. Notice also that path `basic/$2` is appended to the base URL `tyk://ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs` and contains the context variable `$2`. This will be substituted with the remainder of the request path
+
 ### Proxy to Internal APIs {#proxy-to-internal-apis}
+
+<!-- Question: Is there any example of target_internal field in use? -->
 
 The proxy object’s `target_internal` field references other API resources. This field shares the same properties as those described for `rewrite_to_internal`, ensuring consistent configuration.
