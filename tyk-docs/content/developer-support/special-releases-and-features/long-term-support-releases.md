@@ -12,9 +12,9 @@ Welcome to Tyk's Long Term Support (LTS) Releases page. Here, we'll walk you thr
 
 ## What Makes Long-Term Support (LTS) So Valuable to Our Customers?
 
-Long Term Support describes a release of our Gateway and Dashboard which offers our customers, stability over a 1-2 year period. It also means we are committed to ensure you have uninterrupted service for the lifetime of the long term release. There are many customer benefits in keeping pace with our long term release:
+Long Term Support describes a release of our Gateway and Dashboard which offers our customers, stability over a 1-2 year period. It also means we are committed to ensuring you have uninterrupted service for the lifetime of the long term release. There are many customer benefits in keeping pace with our long term release:
 
-1. **Stability**: Tyk will always strive to avoid issuing its latest release as a long term support release. Instead we prefer to let the release be proven in a production setting before it becomes LTS so we can iron out any rare issues.
+1. **Stability**: Tyk will always strive to avoid issuing its latest release as a long term support release. Instead, we prefer to let the release be proven in a production setting before it becomes LTS so we can iron out any rare issues.
 2. **Security**: Tyk commits that the latest LTS will be secure at the point of release by containing the latest available Go version. This ensures Go related security issues are minimized.
 3. **Functional Richness**: There will always be great capability contained in out latest LTS which moves your game on in terms of workflows.
 4. **Continuation of Service**: We will patch the LTS version every 7 weeks for the period it remains in full support.
@@ -29,20 +29,37 @@ Our current long term support release is 5.3 LTS. This is in full support from M
 
 ## What Is Our LTS Offering?
 
-We provide **full support for the first 12 months**, including regular maintenance intervals every seven weeks. Following this period, we transition to **maintenance support for an additional 12 months**, focusing on critical fixes and essential security patching as needed.
+We provide [full support]({{< ref "#full-support" >}}) for the first 12 months, including regular maintenance intervals every seven weeks. Following this period, we transition to [maintenance support]({{< ref "#maintenance-support" >}}) for an additional 12 months, focusing on critical fixes and essential security patching as needed.
 
-We release a new Gateway LTS version every 12 months which includes the [latest stable Golang version](https://go.dev/dl/).
+We release a new Gateway LTS version every 12 months, which includes the [latest stable Golang version](https://go.dev/dl/).
 
-The advantages of a 12-month Long-Term Support (LTS) window include:
-
+### Advantages of a 12-Month Long-Term Support (LTS) Cycle
 1. It allows us to keep pace with Golang versions and other key dependency upgrades, which keeps both our customers and your customers safe (low CVE).
 2. It allows us to bring you the best capability whilst offering stability.
 3. It allows us to get great product insight and use that to improve the product.
 
 In case there's a need to operate on a version beyond the established LTS policy, potential assistance may be available. However, this requires a discussion with your designated *Account Manager*.
 
+### Support Definitions
+
+#### Full Support {#full-support}
+
+During the full support period, we patch the LTS branch on a regular 7-week cadence. 
+These patches may include any of the following:
+- Security updates
+- Bug fixes
+- UX and UI improvements
+- Any other necessary changes, regardless of severity level.
+
+#### Maintenance Support {#maintenance-support}
+
+After the initial 12 months of full support, Tyk will release a new LTS version. This means that the previous LTS version now enters maintenance support. In maintenance support, we do not offer regular planned patching. Instead, we will only fix bugs and security issues deemed critical, and this will be a reactive process based on need. If your internal upgrade processes are heavily governed, this may be something you want to take advantage of
+If we find something critical we will react immediately and invoke our critical fix process. Generally critical fixes are expressed as a system down with no workaround, or an urgent security issue.
+
+### Current LTS releases Timeline
+
 | Version | Full Support Window | Maintenance Support Window | Completely Unsupported From |
-| ---- | ---- | ---- | ---- |
+| ------- | ------------------- | -------------------------- | --------------------------- |
 | 5.0 LTS | April 2023 - April 2024 | May 2024 - April 2025 | May 2025 |
 | 5.3 LTS | May 2024-May 2025 | June 2025 - May 2026 | June 2026 |
 | LTS+1 (version TBC) | April 2025 - April 2026 | May 2026 - April 2027 | May 2027 |
@@ -69,7 +86,7 @@ Our first commitment to you is to make our definitions of major / minor / patch 
 
 The major version is designated as X.0 and is defined by one or more of the following:
 
-1. Breaking changes to Tyk APIs, including Tyk Gateway API, Tyk Dashboard API, MDCB, Tyk EDP and any other component which exposes APIs. Changes include not just the endpoints, but also behavior and functionality, schemas, input parameters, return error codes and messages. The APIs are documented and published as an OpenAPI Spec document. In case we need to introduce breaking changes, we will create a new version for the API. However, currently none of Tyk APIs are versioned.
+1. Breaking changes to Tyk APIs, including Tyk Gateway API, Tyk Dashboard API, MDCB, Tyk EDP, and any other component that exposes APIs. Changes include not just the endpoints, but also behavior and functionality, schemas, input parameters, return error codes, and messages. The APIs are documented and published as an OpenAPI Spec document. In case we need to introduce breaking changes, we will create a new version of the API. However, currently, none of Tyk APIs are versioned.
 2. Breaking changes to Tyk custom plugins interfaces, breaking plugin compiler for customer Go plugins after plugins have been recompiled.
 3. Breaking changes in the config files in all Tyk components, fields in the config files, environment variables used by Tyk components, APIs (function calls) of Tyk middleware, Go template interface.
 4. Deprecation of existing functionalities or engines that break a key business process.
