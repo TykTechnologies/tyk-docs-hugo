@@ -164,11 +164,14 @@ There are no actual HTTP redirects in this scenario, meaning that there is no pe
 
 ### EntryPoint API
 
+The *EntryPoint* API is the first point of entry for a client request. It inspects the header to determine if the incoming client request requires authentication using *Basic Auhentication* or *Auth Token*. Consequently, it then redirects the request to the *BasicAuthInternal* or *AuthTokenInternal* API depending upon the header included in the client request.
+
 The API definiton resource for the *EntryPoint* API is listed below. It is configured to listen for requests on the `/entry` path and forward requests to `http://example.com`
 
-We can see that there is a URL Rewrite rule containing two triggers defined to match Basic Authentication and Auth Token requests:
+We can see that there is a URL Rewrite rule (`url_rewrites`) with two triggers configured to match Basic Authentication and Auth Token requests:
 
-<!-- TODO add explanation of forwarding to basic auth and token auth based on header values -->
+- **Basic Authentication trigger**: Activated for incoming client requests that include an *Authorization* header containing a value starting with *Basic*. In this case a `rewrite_to_internal` configuration object is used to instruct Tyk Operator to redirect the request to the *BasicAuthInternal* API, identified by name `basic-auth-internal` in the `default` namespace. The URL is rewritten to the `/basic/<path>` path.
+- **Auth Token trigger**: Activated for incoming client requests that include an *Authorization* header containing a value starting with *Bearer*. In this case a `rewrite_to_internal` configuration object is used to instruct Tyk Operator to redirect the request to the *AuthTokenInternal* API, identified by name `auth-token-internal` in the `default` namespace. The URL is rewritten to the `/token/<path>` path.
 
  ```yaml {linenos=true, linenostart=1}
 apiVersion: tyk.tyk.io/v1alpha1
