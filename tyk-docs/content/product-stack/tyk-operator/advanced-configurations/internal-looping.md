@@ -135,7 +135,7 @@ Here we can see that the `rewrite_to` field has been generated with the value `t
 
 The proxy object’s `target_internal` field references other API resources. This field shares the same properties as those described for `rewrite_to_internal`, ensuring consistent configuration.
 
-## Case Study
+## Example
 
 Assume that a business has existing legacy customers who authenticate with a service using *Basic Authentication*. Furthermore, the business wants to also support API Keys, allowing both types of clients to hit the same ingress.
 
@@ -164,7 +164,7 @@ There are no actual HTTP redirects in this scenario, meaning that there is no pe
 
 ### EntryPoint API
 
-The API definiton resource for the *EntryPoint* API is listed below. It is configured to listen for requests to the `/entry` path and forward requests to `http://example.com`
+The API definiton resource for the *EntryPoint* API is listed below. It is configured to listen for requests on the `/entry` path and forward requests to `http://example.com`
 
 We can see that there is a URL Rewrite rule containing two triggers defined to match Basic Authentication and Auth Token requests:
 
