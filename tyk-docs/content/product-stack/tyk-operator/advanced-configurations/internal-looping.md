@@ -50,9 +50,9 @@ rewrite_to_internal:
 ## Usage
 
 <!-- TODO where is the link for proxies? -->
-Looping can configured within Tyk Operator for [URL Rewrites]({{< ref "transform-traffic/url-rewriting" >}}), [URL Rewrite Triggers]({{< ref "product-stack/tyk-gateway/middleware/url-rewrite-middleware#url-rewrite-triggers" >}}) and for [proxies]({{< ref "" >}}) to internal APIs.
+Looping can configured within Tyk Operator for [URL Rewrites]({{< ref "transform-traffic/url-rewriting" >}}), [URL Rewrite Triggers]({{< ref "product-stack/tyk-gateway/middleware/url-rewrite-middleware#url-rewrite-triggers" >}}) and [proxies]({{< ref "" >}}) to internal APIs.
 
-This section includes corresponding usage examples of `rewrite_to_internal` with URL Rewrites, URL Rewrite Triggers and proxies.
+This section explains usage examples of `rewrite_to_internal` in the context of URL Rewrites, URL Rewrite Triggers and proxies.
 
 ### URL Rewrites {#url-rewrites}
 
