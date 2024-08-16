@@ -47,11 +47,12 @@ rewrite_to_internal:
 
 - **Target**: The `target` property identifies the API resource to which the request should be routed. It consists of two components: `name` and `namespace`. The `name` is the identifier of the target API, while the `namespace` specifies the Kubernetes namespace where the API resource resides. Together, these elements ensure that Tyk Operator accurately locates and routes the request to the intended API. For example, `name: "proxy-api"` and `namespace: "default"` direct the request to the `proxy-api` resource in the `default` namespace.
 
-## Examples
+## Usage
 
+<!-- TODO where is the link for proxies? -->
 Looping can configured within Tyk Operator for [URL Rewrites]({{< ref "transform-traffic/url-rewriting" >}}), [URL Rewrite Triggers]({{< ref "product-stack/tyk-gateway/middleware/url-rewrite-middleware#url-rewrite-triggers" >}}) and for [proxies]({{< ref "" >}}) to internal APIs.
 
-This section includes corresponding examples for Tyk Operator.
+This section includes corresponding usage examples of `rewrite_to_internal` with URL Rewrites, URL Rewrite Triggers and proxies.
 
 ### URL Rewrites {#url-rewrites}
 
