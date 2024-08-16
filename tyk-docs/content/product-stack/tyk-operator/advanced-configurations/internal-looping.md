@@ -56,6 +56,8 @@ This section explains usage examples of `rewrite_to_internal` in the context of 
 
 ### URL Rewrites {#url-rewrites}
 
+[URL rewriting]({{< ref "transform-traffic/url-rewriting" >}}) in Tyk enables the alteration of incoming API request paths to align with the expected endpoint format of your backend services.
+
 Assume that we wish to redirect incoming `GET /basic/` requests to the API in the Gateway represented by name `proxy-api` in the `default` namespace. We want the `/basic/` prefix to be stripped from the request path and the redirected path should be of the format `/proxy/$1`, where the context variable `$1` is substituted with the remainder of the path request. For example `GET /basic/456` should become `GET /proxy/456`.
 
 In this case we can use a `rewrite_to_internal` object to instruct Tyk Operator to automatically generate the API rewrite URL on our behalf for the API identified by name `proxy-api` in the `default` namespace:
@@ -166,7 +168,7 @@ There are no actual HTTP redirects in this scenario, meaning that there is no pe
 
 The *EntryPoint* API is the first point of entry for a client request. It inspects the header to determine if the incoming client request requires authentication using *Basic Auhentication* or *Auth Token*. Consequently, it then redirects the request to the *BasicAuthInternal* or *AuthTokenInternal* API depending upon the header included in the client request.
 
-The API definiton resource for the *EntryPoint* API is listed below. It is configured to listen for requests on the `/entry` path and forward requests to `http://example.com`
+The API definition resource for the *EntryPoint* API is listed below. It is configured to listen for requests on the `/entry` path and forward requests to `http://example.com`
 
 We can see that there is a URL Rewrite rule (`url_rewrites`) with two triggers configured to match Basic Authentication and Auth Token requests:
 
