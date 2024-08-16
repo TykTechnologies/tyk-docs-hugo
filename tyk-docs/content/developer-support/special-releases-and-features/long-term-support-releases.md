@@ -56,14 +56,6 @@ These patches may include any of the following:
 After the initial 12 months of full support, Tyk will release a new LTS version. This means that the previous LTS version now enters maintenance support. In maintenance support, we do not offer regular planned patching. Instead, we will only fix bugs and security issues deemed critical, and this will be a reactive process based on need. If your internal upgrade processes are heavily governed, this may be something you want to take advantage of
 If we find something critical we will react immediately and invoke our critical fix process. Generally critical fixes are expressed as a system down with no workaround, or an urgent security issue.
 
-Patches are applied as critical fixes and are reactive in nature. A critical fix is defined by strict criteria and is applied to the current LTS version minus one.
-Critical: Issues cause a very high impact on customers and immediate action is required.
-Critical fix criterias:
-- System down
-- Urgent security breach
-- No workaround
-
-
 ### Current LTS releases Timeline
 
 | Version | Full Support Window | Maintenance Support Window | Completely Unsupported From |
