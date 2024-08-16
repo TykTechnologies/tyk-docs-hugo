@@ -1,7 +1,7 @@
 ---
 title: Internal Looping
 date: 2024-08-07
-description: "Using the Response Header Transform middleware with Tyk Classic APIs"
+description: "Using internal looping with Tyk Operator"
 tags: ["Internal Looping", "Tyk Operator", "internal looping","per-API", "Tyk Classic"]
 ---
 
