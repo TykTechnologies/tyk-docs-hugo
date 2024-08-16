@@ -145,21 +145,20 @@ The proxy object’s `target_internal` field references other API resources. Thi
 
 ## Example
 
-Assume that a business has existing legacy customers who authenticate with a service using *Basic Authentication*. Furthermore, the business wants to also support API Keys, allowing both types of clients to hit the same ingress.
+Assume a business has legacy customers who authenticate with a service using *Basic Authentication*. The business also wants to support API Keys, enabling both client types to access the same ingress.
 
-Subsequently, Tyk needs to be configured to perform dynamic authentication for *Basic Authentication* or *Auth Token*.
+To facilitate this, Tyk must be configured for dynamic authentication, accommodating both *Basic Authentication* and *Auth Token* methods.
 
-In order to achieve this, we will need to configure 4 API Definitions inside Tyk:
+This setup requires configuring four API Definitions within Tyk:
 
-1. EntryPoint API
-2. BasicAuthInternal API
-3. AuthTokenInternal API
-4. ProxyInternal API
+1. Entry Point API
+2. BasicAuth Internal API
+3. AuthToken Internal API
+4. Proxy Internal API
 
-When the request hits the ingress route, we can configure a URL rewrite to pass the request to either the internal *BasicAuthInternal* or *AuthTokenInternal* API.
+When a request arrives at the ingress route, a URL rewrite can direct it to either the *BasicAuth Internal* or *AuthToken Internal* API, depending on the authentication method used.
 
-The internal APIs will then authenticate request, and assuming the happy path, proxy to the *ProxyInternal* API.
-The ProxyInternal API is responsible for proxying to the underlying service.
+These internal APIs will authenticate the requests. Assuming successful authentication (the happy path), they will forward the requests to the *Proxy Internal API*, which handles the proxying to the underlying service.
 
 </br>
 
@@ -170,11 +169,11 @@ There are no actual HTTP redirects in this scenario, meaning that there is no pe
 
 {{< /note >}}
 
-### EntryPoint API
+### Entry Point API
 
-The *EntryPoint* API is the first point of entry for a client request. It inspects the header to determine if the incoming client request requires authentication using *Basic Auhentication* or *Auth Token*. Consequently, it then redirects the request to the *BasicAuthInternal* or *AuthTokenInternal* API depending upon the header included in the client request.
+The *Entry Point* API is the first point of entry for a client request. It inspects the header to determine if the incoming client request requires authentication using *Basic Auhentication* or *Auth Token*. Consequently, it then redirects the request to the *BasicAuth Internal* or *AuthToken Internal* API depending upon the header included in the client request.
 
-The API definition resource for the *EntryPoint* API is listed below. It is configured to listen for requests on the `/entry` path and forwar requests upstream to `http://example.com`
+The API definition resource for the *Entry Point* API is listed below. It is configured to listen for requests on the `/entry` path and forward requests upstream to `http://example.com`
 
 We can see that there is a URL Rewrite rule (`url_rewrites`) with two triggers configured to match Basic Authentication and Auth Token requests:
 
@@ -229,9 +228,9 @@ spec:
                     path: "token/$2"
 ```
 
-### BasicAuthInternal API
+### BasicAuth Internal API
 
-The *BasicAuthInternal* API listens to requests on path `/basic` and forwards them upstream to `http://example.com`.
+The *BasicAuth Internal* API listens to requests on path `/basic` and forwards them upstream to `http://example.com`.
 
 The API is configured with a URL rewrite rule in `url_rewrites` to redirect incoming `GET /basic/` requests to the API in the Gateway represented by name `proxy-api` in the `default` namespace. The `/basic/` prefix will be stripped from the request URL and the URL will be rewritten with the format `/proxy/$1`. The context variable `$1` is substituted with the remainder of the path request. For example `GET /basic/456` will become `GET /proxy/456`.
 
@@ -275,9 +274,9 @@ spec:
               delete_headers: []
 ```
 
-### AuthTokenInternal API
+### AuthToken Internal API
 
-The *AuthTokenInternal* API listens to requests on path `/token` and forwards them upstream to `http://example.com`.
+The *AuthToken Internal* API listens to requests on path `/token` and forwards them upstream to `http://example.com`.
 
 The API is configured with a URL rewrite rule in `url_rewrites` to redirect incoming `GET /token/` requests to the API in the Gateway represented by name `proxy-api` in the `default` namespace. The `/token/` prefix will be stripped from the request URL and the URL will be rewritten to the format `/proxy/$1`. The context variable `$1` is substituted with the remainder of the path request. For example `GET /token/456` will become `GET /proxy/456`.
 
@@ -321,11 +320,11 @@ spec:
               delete_headers: []
 ```
 
-### ProxyInternal API
+### Proxy Internal API
 
-The *ProxyInternal* API is keyless and responsible for listening to requests on path `/proxy` and forwarding upstream to `http://httpbin.org`. The listen path is stripped from the request before it is sent upstream.
+The *Proxy Internal* API is keyless and responsible for listening to requests on path `/proxy` and forwarding upstream to `http://httpbin.org`. The listen path is stripped from the request before it is sent upstream.
 
-This API receives requests forwarded from the internal *AuthTokenInternal* and *BasicAuthInternal APIs*. Requests will contain the header `x-transform-api` with value `token-auth` or `basic-auth`, depending upon which internal API the request originated from.
+This API receives requests forwarded from the internal *AuthToken Internal* and *BasicAuth Internal APIs*. Requests will contain the header `x-transform-api` with value `token-auth` or `basic-auth`, depending upon which internal API the request originated from.
 
 ```yaml {linenos=true, linenostart=1}
 apiVersion: tyk.tyk.io/v1alpha1
