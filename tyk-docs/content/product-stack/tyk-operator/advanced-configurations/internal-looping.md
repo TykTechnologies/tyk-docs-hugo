@@ -5,7 +5,7 @@ description: "Using the Response Header Transform middleware with Tyk Classic AP
 tags: ["Internal Looping", "Tyk Operator", "internal looping","per-API", "Tyk Classic"]
 ---
 
-Tyk Operator simplifies the management and transformation of API traffic within Kubernetes environments. The concept of [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}) allows you to use URL Rewriting to redirect your URL to *another API endpoint* or to *another API* in the Gateway. This reduces latency since the redirection is handled internally within Tyk avoiding an external network request.
+Tyk Operator simplifies the management and transformation of API traffic within Kubernetes environments. The concept of [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}) allows you to use URL Rewriting to redirect your URL to *another API endpoint* or to *another API* in the Gateway. This reduces latency since the redirection is handled internally within Tyk, avoiding an external network request.
 
 In Tyk, looping is generally targeted using the `tyk://<API_ID>/<path>` scheme, which requires prior knowledge of the `API_ID`. Tyk Operator abstracts this by treating APIs as objects, managing them and dynamically assigning `API_ID`s. Typed APIs enable you to refer to other APIs by name without explicitly knowing their `API_ID`s.
 
