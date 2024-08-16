@@ -33,7 +33,7 @@ We provide [full support]({{< ref "#full-support" >}}) for the first 12 months, 
 
 We release a new Gateway LTS version every 12 months, which includes the [latest stable Golang version](https://go.dev/dl/).
 
-Advantages of a 12-Month Long-Term Support (LTS) Cycle:
+### Advantages of a 12-Month Long-Term Support (LTS) Cycle
 1. It allows us to keep pace with Golang versions and other key dependency upgrades, which keeps both our customers and your customers safe (low CVE).
 2. It allows us to bring you the best capability whilst offering stability.
 3. It allows us to get great product insight and use that to improve the product.
