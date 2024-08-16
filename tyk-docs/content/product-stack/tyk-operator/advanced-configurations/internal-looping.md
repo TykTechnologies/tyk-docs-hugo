@@ -11,6 +11,8 @@ In Tyk, looping is generally targeted using the `tyk://<API_ID>/<path>` scheme, 
 
 Tyk Operator can be configured to automatically generate looping URLs, enabling efficient inter-API communication without manual intervention.
 
+---
+
 ## Configuration
 
 Tyk Operator has a powerful feature that enables dynamic URL Rewriting for API requests. This configuration allows you to redirect incoming requests to different internal API endpoints managed by the Tyk Gateway, facilitating seamless interaction between various services and enhancing the modularity of your API infrastructure.
@@ -46,6 +48,8 @@ rewrite_to_internal:
 - **Query**: The `query` property allows you to append additional query parameters to the target URL. These parameters can be used to modify the behavior of the target API or to pass along specific request information. For instance, setting `query: "check_limits=true"` will include this query string in the redirected request, potentially triggering special handling by the target API.
 
 - **Target**: The `target` property identifies the API resource to which the request should be routed. It consists of two components: `name` and `namespace`. The `name` is the identifier of the target API, while the `namespace` specifies the Kubernetes namespace where the API resource resides. Together, these elements ensure that Tyk Operator accurately locates and routes the request to the intended API. For example, `name: "proxy-api"` and `namespace: "default"` direct the request to the `proxy-api` resource in the `default` namespace.
+
+---
 
 ## Usage
 
@@ -129,13 +133,15 @@ triggers:
   rewrite_to: tyk://ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs/basic/$2
 ```
 
-Here we can see that the `rewrite_to` field has been generated with the value `tyk://ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs/proxy/$1` where `ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs` represents the API ID for the `proxy-api` API resource in the `default` namespace. Notice also that path `basic/$2` is appended to the base URL `tyk://ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs` and contains the context variable `$2`. This will be substituted with the remainder of the request path
+Here we can see that the `rewrite_to` field has been generated with the value `tyk://ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs/proxy/$1` where `ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs` represents the API ID for the `proxy-api` API resource in the `default` namespace. Notice also that path `basic/$2` is appended to the base URL `tyk://ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs` and contains the context variable `$2`. This will be substituted with the remainder of the request path.
 
 ### Proxy to Internal APIs {#proxy-to-internal-apis}
 
 <!-- Question: Is there any example of target_internal field in use? -->
 
 The proxy object’s `target_internal` field references other API resources. This field shares the same properties as those described for `rewrite_to_internal`, ensuring consistent configuration.
+
+---
 
 ## Example
 
@@ -168,7 +174,7 @@ There are no actual HTTP redirects in this scenario, meaning that there is no pe
 
 The *EntryPoint* API is the first point of entry for a client request. It inspects the header to determine if the incoming client request requires authentication using *Basic Auhentication* or *Auth Token*. Consequently, it then redirects the request to the *BasicAuthInternal* or *AuthTokenInternal* API depending upon the header included in the client request.
 
-The API definition resource for the *EntryPoint* API is listed below. It is configured to listen for requests on the `/entry` path and forward requests to `http://example.com`
+The API definition resource for the *EntryPoint* API is listed below. It is configured to listen for requests on the `/entry` path and forwar requests upstream to `http://example.com`
 
 We can see that there is a URL Rewrite rule (`url_rewrites`) with two triggers configured to match Basic Authentication and Auth Token requests:
 
@@ -227,9 +233,9 @@ spec:
 
 The *BasicAuthInternal* API listens to requests on path `/basic` and forwards them upstream to `http://example.com`.
 
-The API is configured with a URL rewrite rule in `url_rewrites` to redirect incoming `GET /basic/` requests to the API in the Gateway represented by name `proxy-api` in the `default` namespace. The `/basic/` prefix will be stripped from the request path and the redirected path will be of the format `/proxy/$1`. The context variable `$1` is substituted with the remainder of the path request. For example `GET /basic/456` will become `GET /proxy/456`.
+The API is configured with a URL rewrite rule in `url_rewrites` to redirect incoming `GET /basic/` requests to the API in the Gateway represented by name `proxy-api` in the `default` namespace. The `/basic/` prefix will be stripped from the request URL and the URL will be rewritten with the format `/proxy/$1`. The context variable `$1` is substituted with the remainder of the path request. For example `GET /basic/456` will become `GET /proxy/456`.
 
-Furthermore, a header transform rule is configured within `transform_headers` to add the header `x-transform-api` with the value `basic-auth` to the request.
+Furthermore, a header transform rule is configured within `transform_headers` to add the header `x-transform-api` with value `basic-auth`, to the request.
 
 ```yaml {linenos=true, linenostart=1}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -273,9 +279,9 @@ spec:
 
 The *AuthTokenInternal* API listens to requests on path `/token` and forwards them upstream to `http://example.com`.
 
-The API is configured with a URL rewrite rule in `url_rewrites` to redirect incoming `GET /token/` requests to the API in the Gateway represented by name `proxy-api` in the `default` namespace. The `/token/` prefix will be stripped from the request path and the redirected path will be of the format `/proxy/$1`. The context variable `$1` is substituted with the remainder of the path request. For example `GET /token/456` will become `GET /proxy/456`.
+The API is configured with a URL rewrite rule in `url_rewrites` to redirect incoming `GET /token/` requests to the API in the Gateway represented by name `proxy-api` in the `default` namespace. The `/token/` prefix will be stripped from the request URL and the URL will be rewritten to the format `/proxy/$1`. The context variable `$1` is substituted with the remainder of the path request. For example `GET /token/456` will become `GET /proxy/456`.
 
-Furthermore, a header transform rule is configured within `transform_headers` to add the header `x-transform-api` with the value `token-auth` to the request.
+Furthermore, a header transform rule is configured within `transform_headers` to add the header `x-transform-api` with value `token-auth`, to the request.
 
 ```yaml {linenos=true, linenostart=1}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -319,7 +325,7 @@ spec:
 
 The *ProxyInternal* API is keyless and responsible for listening to requests on path `/proxy` and forwarding upstream to `http://httpbin.org`. The listen path is stripped from the request before it is sent upstream.
 
-This API receives requests forwarded from the internal *AuthTokenInternal* and *BasicAuthInternal APIs*. Requests will contain the header `x-transform-api` with the value `token-auth` or `basic-auth`depending upon which internal API the request originated from.
+This API receives requests forwarded from the internal *AuthTokenInternal* and *BasicAuthInternal APIs*. Requests will contain the header `x-transform-api` with value `token-auth` or `basic-auth`, depending upon which internal API the request originated from.
 
 ```yaml {linenos=true, linenostart=1}
 apiVersion: tyk.tyk.io/v1alpha1
