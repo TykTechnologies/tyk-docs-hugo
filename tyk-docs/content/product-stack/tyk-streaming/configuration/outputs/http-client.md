@@ -677,7 +677,7 @@ Default: `64`
 
 ### batching
 
-Allows you to configure a [batching policy]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/batching/" >}}).
+Allows you to configure a [batching policy]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/batching" >}}).
 
 
 Type: `object`  
