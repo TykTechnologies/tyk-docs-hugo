@@ -1,5 +1,5 @@
 ---
-title: Kafka
+title: Kafka Franz
 description: Explains configuration of Kafka Franz output
 tags: [ "Tyk Streams", "Stream Outputs", "Outputs", "Kafka", "Kafka Franz" ]
 ---
@@ -95,7 +95,7 @@ seed_brokers:
 ### topic
 
 A topic to write messages to.
-<!-- TODO add interpolation functions This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries). -->
+This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
 
 
 Type: `string`  
@@ -103,7 +103,7 @@ Type: `string`
 ### key
 
 An optional key to populate for each message.
-<!-- TODO add interpolation functions This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries). -->
+This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
 
 
 Type: `string`  
@@ -126,7 +126,7 @@ Type: `string`
 ### partition
 
 An optional explicit partition to set for each message. This field is only relevant when the `partitioner` is set to `manual`. The provided interpolation string must be a valid integer.
-<!-- TODO add interpolation functions This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries). -->
+This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
 
 Type: `string`  
 
@@ -225,8 +225,7 @@ Default: `"10s"`
 
 ### batching
 
-<!-- TODO: add link to batching policy -->
-Allows you to configure a batching policy.
+Allows you to configure a [batching policy]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/batching#batch-policy" >}}).
 
 
 Type: `object`  
@@ -285,7 +284,6 @@ period: 500ms
 
 ### batching.check
 
-<!-- TODO: add link to bloblang query -->
 A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) query that should return a boolean value indicating whether a message should end a batch.
 
 
@@ -377,7 +375,6 @@ Whether to allow the remote server to repeatedly request renegotiation. Enable t
 
 Type: `bool`  
 Default: `false`  
-Requires version 3.45.0 or newer  
 
 ### tls.root_cas
 
@@ -554,7 +551,7 @@ Key/value pairs to add to OAUTHBEARER authentication requests.
 
 Type: `object`  
 
-### `sasl[].aws`
+### sasl[].aws
 
 Contains AWS specific fields for when the `mechanism` is set to `AWS_MSK_IAM`.
 

@@ -53,8 +53,7 @@ schema_registry_encode:
 
 Encodes messages automatically from schemas obtains from a [Confluent Schema Registry service](https://docs.confluent.io/platform/current/schema-registry/index.html) by polling the service for the latest schema version for target subjects.
 
-<!-- TODO: add error handling methods link -->
-If a message fails to encode under the schema then it will remain unchanged and the error can be caught using error handling methods.
+If a message fails to encode under the schema then it will remain unchanged and the error can be caught using [error handling]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/error-handling" >}}) methods.
 
 Avro, Protobuf and JSON schemas are supported, all are capable of expanding from schema references.
 
@@ -71,15 +70,15 @@ For example, the union schema `["null","string","Foo"]`, where `Foo` is a record
 - the string `"a"` as `{"string": "a"}`; and
 - a `Foo` instance as `{"Foo": {...}}`, where `{...}` indicates the JSON encoding of a `Foo` instance.
 
-However, it is possible to instead consume documents in [standard/raw JSON format](https://pkg.go.dev/github.com/linkedin/goavro/v2#NewCodecForStandardJSONFull) by setting the field [`avro_raw_json`](#avro_raw_json) to `true`.
+However, it is possible to instead consume documents in [standard/raw JSON format](https://pkg.go.dev/github.com/linkedin/goavro/v2#NewCodecForStandardJSONFull) by setting the field [avro_raw_json](#avro_raw_json) to `true`.
 
 #### Known Issues
 
-Important! There is an outstanding issue in the [avro serializing library](https://github.com/linkedin/goavro) which means it [doesn't encode logical types correctly](https://github.com/linkedin/goavro/issues/252). It's still possible to encode logical types that are in-line with the spec if `avro_raw_json` is set to true, though now of course non-logical types will not be in-line with the spec.
+Important! There is an outstanding issue in the [avro serializing library](https://github.com/linkedin/goavro) which means it [does not encode logical types correctly](https://github.com/linkedin/goavro/issues/252). It's still possible to encode logical types that are in-line with the spec if `avro_raw_json` is set to true, though now of course non-logical types will not be in-line with the spec.
 
 ### Protobuf Format
 
-This processor encodes protobuf messages either from any format parsed within Tyk Streams (encoded as JSON by default), or from raw JSON documents, you can read more about JSON mapping of protobuf messages here: https://developers.google.com/protocol-buffers/docs/proto3#json
+This processor encodes protobuf messages either from any format parsed within Tyk Streams (encoded as JSON by default), or from raw JSON documents, you can read more about JSON mapping of protobuf messages [here](https://developers.google.com/protocol-buffers/docs/proto3#json).
 
 #### Multiple Message Support
 
@@ -97,7 +96,8 @@ Type: `string`
 ### subject
 
 The schema subject to derive schemas from.
-<!-- TODO: add link This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries). -->
+
+This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
 
 
 Type: `string`  

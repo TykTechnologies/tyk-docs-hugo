@@ -50,8 +50,7 @@ pipeline:
 <!-- TODO Need to add link to error when complete -->
 When an error occurs there will occasionally be useful information stored within the error flag that can be exposed with the interpolation function `error`. This allows you to expose the information with processors.
 
-<!-- TODO need to add link to log when complete -->
-For example, when catching failed processors you can `log` the messages:
+For example, when catching failed processors you can [log]({{< ref "/product-stack/tyk-streaming/configuration/processors/log" >}}) the messages:
 
 ```yaml
 pipeline:

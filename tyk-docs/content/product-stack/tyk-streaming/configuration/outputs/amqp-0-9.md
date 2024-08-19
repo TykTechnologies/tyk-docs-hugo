@@ -215,7 +215,7 @@ This field supports [function interpolation]({{< ref "/product-stack/tyk-streami
 Type: `string`  
 Default: `""`  
 
-### `app_id`
+### app_id
 
 Set the application ID of each message with a dynamic interpolated expression.
 This field supports [function interpolation]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
@@ -298,7 +298,7 @@ The maximum period to wait before abandoning it and reattempting. If not set, wa
 Type: `string`  
 Default: `""`  
 
-### `tls`
+### tls
 
 Custom TLS settings can be used to override system defaults.
 
@@ -328,7 +328,6 @@ Whether to allow the remote server to repeatedly request renegotiation. Enable t
 
 Type: `bool`  
 Default: `false`  
-Requires version 3.45.0 or newer  
 
 ### tls.root_cas
 

@@ -18,7 +18,6 @@ If your mapping is large and you'd prefer for it to live in a separate file then
 
 ## Component Rename
 
-<!-- TODO: add mapping processor and link to it -->
 This processor was recently renamed to the [mapping processor]({{< ref "/product-stack/tyk-streaming/configuration/processors/mapping" >}}) in order to make the purpose of the processor more prominent. It is still valid to use the existing `bloblang` name but eventually it will be deprecated and replaced by the new name in example configs.
 
 ## Examples
@@ -100,6 +99,4 @@ pipeline:
 
 [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mappings can fail, in which case the message remains unchanged, errors are logged, and the message is flagged as having failed, allowing you to use [standard processor error handling patterns]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/error-handling" >}}).
 
-<!-- TODO add fallback link -->
-
-<!-- However, [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) itself also provides powerful ways of ensuring your mappings do not fail by specifying desired [fallback behavior]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/error-handling" >}}). -->
+However, [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) itself also provides powerful ways of ensuring your mappings do not fail by specifying desired [fallback behavior]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview#error-handling" >}}).
