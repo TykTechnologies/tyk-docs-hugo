@@ -41,36 +41,36 @@ input:
       include_prefixes: []
       include_patterns: []
     dump_request_log_level: ""
-    # oauth:
-    #   enabled: false
-    #   consumer_key: ""
-    #   consumer_secret: ""
-    #   access_token: ""
-    #   access_token_secret: ""
-    # oauth2:
-    #   enabled: false
-    #   client_key: ""
-    #   client_secret: ""
-    #   token_url: ""
-    #   scopes: []
-    #   endpoint_params: {}
-    # basic_auth:
-    #   enabled: false
-    #   username: ""
-    #   password: ""
-    # jwt:
-    #   enabled: false
-    #   private_key_file: ""
-    #   signing_method: ""
-    #   claims: {}
-    #   headers: {}
-    # tls:
-    #   enabled: false
-    #   skip_cert_verify: false
-    #   enable_renegotiation: false
-    #   root_cas: ""
-    #   root_cas_file: ""
-    #   client_certs: []
+    oauth:
+      enabled: false
+      consumer_key: ""
+      consumer_secret: ""
+      access_token: ""
+      access_token_secret: ""
+    oauth2:
+      enabled: false
+      client_key: ""
+      client_secret: ""
+      token_url: ""
+      scopes: []
+      endpoint_params: {}
+    basic_auth:
+      enabled: false
+      username: ""
+      password: ""
+    jwt:
+      enabled: false
+      private_key_file: ""
+      signing_method: ""
+      claims: {}
+      headers: {}
+    tls:
+      enabled: false
+      skip_cert_verify: false
+      enable_renegotiation: false
+      root_cas: ""
+      root_cas_file: ""
+      client_certs: []
     extract_headers:
       include_prefixes: []
       include_patterns: []
@@ -102,7 +102,7 @@ If you enable streaming then Tyk Streams will consume the body of the response a
 
 ### Pagination
 
-This input supports interpolation functions in the `url` and `headers` fields where data from the previous successfully consumed message (if there was one) can be referenced. This can be used in order to support basic levels of pagination. However, in cases where pagination depends on logic it is recommended that you use an [http processor](TODO) instead, often combined with a [generate input]({{< ref "/product-stack/tyk-streaming/configuration/inputs/generate" >}}) in order to schedule the processor.
+This input supports interpolation functions in the `url` and `headers` fields where data from the previous successfully consumed message (if there was one) can be referenced. This can be used in order to support basic levels of pagination. However, in cases where pagination depends on logic it is recommended that you use an [http processor]({{< ref "/product-stack/tyk-streaming/configuration/processors/http" >}}) instead, often combined with a [generate input]({{< ref "/product-stack/tyk-streaming/configuration/inputs/generate" >}}) in order to schedule the processor.
 
 ## Examples
 
