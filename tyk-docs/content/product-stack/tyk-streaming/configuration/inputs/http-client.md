@@ -230,7 +230,6 @@ Optionally set a level at which the request and response payload of each request
 
 Type: `string`  
 Default: `""`  
-Requires version 4.12.0 or newer  
 Options: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`, ``.
 
 <!-- ### oauth
