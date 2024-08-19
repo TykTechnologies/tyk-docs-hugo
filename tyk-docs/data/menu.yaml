@@ -4076,8 +4076,6 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/split
             category: Page
             show: True
-<<<<<<< HEAD
-=======
           - title: "Switch"
             path: /product-stack/tyk-streaming/configuration/processors/switch
             category: Page
@@ -4090,7 +4088,6 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/while
             catgeory: Page
             show: True
->>>>>>> dd0e17b2c... [DX-1407] Tyk Streams: Add batching and dependencies (#5017)
         - title: "Common Configurations"
           category: Directory
           show: True
