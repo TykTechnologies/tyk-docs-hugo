@@ -9,7 +9,7 @@ menu:
 weight: 1
 aliases:
   - /tyk-cloud/account-and-billing/our-plans/
-  - tyk-cloud/account--billing/plans/
+  - /tyk-cloud/account--billing/plans/
 ---
 
 ## Introduction
