@@ -3966,6 +3966,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/inputs/amqp-1
             category: Page
             show: True
+          - title: "Broker"
+            path: /product-stack/tyk-streaming/configuration/inputs/broker
+            category: Page
+            show: True
           - title: "Http Server"
             path: /product-stack/tyk-streaming/configuration/inputs/http-server
             category: Page
@@ -4004,6 +4008,14 @@ menu:
             show: True
           - title: "Amqp_1"
             path: /product-stack/tyk-streaming/configuration/outputs/amqp-1
+            category: Page
+            show: True
+          - title: "Broker"
+            path: /product-stack/tyk-streaming/configuration/outputs/broker 
+            category: Page
+            show: True
+          - title: "Drop on"
+            path: /product-stack/tyk-streaming/configuration/outputs/drop_on
             category: Page
             show: True
           - title: "Fallback"
@@ -4094,6 +4106,14 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/for-each
             category: Page
             show: True
+          - title: "Group By"
+            path: /product-stack/tyk-streaming/configuration/processors/group-by
+            category: Page
+            show: True
+          - title: "Group By Value"
+            path: /product-stack/tyk-streaming/configuration/processors/group-by-value
+            category: Page
+            show: True
           - title: "Insert Part"
             path: /product-stack/tyk-streaming/configuration/processors/insert-part
             category: Page
@@ -4162,18 +4182,34 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/schema-registry-encode
             category: Page
             show: True
+          - title: "Select Parts"
+            path: /product-stack/tyk-streaming/configuration/processors/select-parts
+            category: Page
+            show: True
           - title: "Split"
             path: /product-stack/tyk-streaming/configuration/processors/split
+            category: Page
+            show: True
+          - title: "Switch"
+            path: /product-stack/tyk-streaming/configuration/processors/switch
             category: Page
             show: True
           - title: "Try"
             path: /product-stack/tyk-streaming/configuration/processors/try
             category: Page
             show: True
+          - title: "While"
+            path: /product-stack/tyk-streaming/configuration/processors/while
+            catgeory: Page
+            show: True
         - title: "Common Configurations"
           category: Directory
           show: True
           menu:
+          - title: "Batching"
+            path: /product-stack/tyk-streaming/configuration/common-configuration/batching
+            category: Page
+            show: True
           - title: "Error Handling"
             path: /product-stack/tyk-streaming/configuration/common-configuration/error-handling
             category: Page
@@ -4184,6 +4220,10 @@ menu:
             show: True
           - title: "Interpolation"
             path: /product-stack/tyk-streaming/configuration/common-configuration/interpolation
+            category: Page
+            show: True
+          - title: "Windowed Processing"
+            path: /product-stack/tyk-streaming/configuration/common-configuration/windowed_processing
             category: Page
             show: True
       - title: "Guides"

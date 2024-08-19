@@ -146,13 +146,4 @@ let header = if count("rows_in_file") == 1 {
 root = $header + $kvs.map_each(kv -> kv.value.string().apply("escape_csv")).join(",")
 ```
 
-And with this mapping we can write the data to a newly created CSV file using an output with a simple `lines` codec:
-
-```yaml
-output:
-  file:
-    path: ./result.csv
-    codec: lines
-```
-
-Perhaps the first expansion of this mapping that would be worthwhile is to add an explicit list of column names, or at least confirm that the number of values in a row matches an expected count.
+With this mapping we can write the data to an output such as [kafka]({{< ref "product-stack/tyk-streaming/configuration/outputs/kafka" >}}), [kafka_franz]({{< ref "product-stack/tyk-streaming/configuration/outputs/kafka-franz" >}}) or [redis_pubsub]({{< ref "product-stack/tyk-streaming/configuration/outputs/redis-pubsub" >}})

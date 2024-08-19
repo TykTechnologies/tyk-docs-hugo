@@ -52,8 +52,7 @@ Options: `FATAL`, `ERROR`, `WARN`, `INFO`, `DEBUG`, `TRACE`, `ALL`.
 
 ### fields_mapping
 
-<!-- TODO add link to Bloblang mapping An optional [Bloblang mapping](/docs/guides/bloblang/about) -->
-Used to specify extra fields to add to the log. If log fields are also added with `fields` then those values will override matching keys from this mapping.
+An optional [Bloblang mapping]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) that can be used to specify extra fields to add to the log. If log fields are also added with `fields` then those values will override matching keys from this mapping.
 
 
 Type: `string`  

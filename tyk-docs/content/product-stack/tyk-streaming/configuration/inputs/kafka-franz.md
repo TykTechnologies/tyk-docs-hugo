@@ -195,7 +195,7 @@ Determines whether to consume from the oldest available offset, otherwise messag
 Type: `bool`  
 Default: `true`  
 
-### `tls`
+### tls
 
 Custom TLS settings can be used to override system defaults.
 
@@ -351,7 +351,7 @@ sasl:
     username: foo
 ```
 
-### `sasl[].mechanism`
+### sasl[].mechanism
 
 The SASL mechanism to use.
 
@@ -402,7 +402,7 @@ Key/value pairs to add to OAUTHBEARER authentication requests.
 
 Type: `object`  
 
-### `sasl[].aws`
+### sasl[].aws
 
 Contains AWS specific fields for when the `mechanism` is set to `AWS_MSK_IAM`.
 
@@ -504,8 +504,7 @@ Default: `false`
 
 ### batching
 
-<!-- TODO add batching policy link -->
-Allows you to configure a batching policy that applies to individual topic partitions in order to batch messages together before flushing them for processing. Batching can be beneficial for performance as well as useful for windowed processing, and doing so this way preserves the ordering of topic partitions.
+Allows you to configure a [batching policy]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/batching#batch-policy" >}}) that applies to individual topic partitions in order to batch messages together before flushing them for processing. Batching can be beneficial for performance as well as useful for windowed processing, and doing so this way preserves the ordering of topic partitions.
 
 
 Type: `object`  
