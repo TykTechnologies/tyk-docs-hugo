@@ -41,36 +41,36 @@ output:
       include_prefixes: []
       include_patterns: []
     dump_request_log_level: ""
-    # oauth:
-    #   enabled: false
-    #   consumer_key: ""
-    #   consumer_secret: ""
-    #   access_token: ""
-    #   access_token_secret: ""
-    # oauth2:
-    #   enabled: false
-    #   client_key: ""
-    #   client_secret: ""
-    #   token_url: ""
-    #   scopes: []
-    #   endpoint_params: {}
-    # basic_auth:
-    #   enabled: false
-    #   username: ""
-    #   password: ""
-    # jwt:
-    #   enabled: false
-    #   private_key_file: ""
-    #   signing_method: ""
-    #   claims: {}
-    #   headers: {}
-    # tls:
-    #   enabled: false
-    #   skip_cert_verify: false
-    #   enable_renegotiation: false
-    #   root_cas: ""
-    #   root_cas_file: ""
-    #   client_certs: []
+    oauth:
+      enabled: false
+      consumer_key: ""
+      consumer_secret: ""
+      access_token: ""
+      access_token_secret: ""
+    oauth2:
+      enabled: false
+      client_key: ""
+      client_secret: ""
+      token_url: ""
+      scopes: []
+      endpoint_params: {}
+    basic_auth:
+      enabled: false
+      username: ""
+      password: ""
+    jwt:
+      enabled: false
+      private_key_file: ""
+      signing_method: ""
+      claims: {}
+      headers: {}
+    tls:
+      enabled: false
+      skip_cert_verify: false
+      enable_renegotiation: false
+      root_cas: ""
+      root_cas_file: ""
+      client_certs: []
     extract_headers:
       include_prefixes: []
       include_patterns: []
@@ -96,11 +96,11 @@ output:
     multipart: []
 ```
 
-When the number of retries expires the output will reject the message, the behaviour after this will depend on the pipeline but usually this simply means the send is attempted again until successful whilst applying back pressure.
+When the number of retries expires the output will reject the message, the behavior after this will depend on the pipeline but usually this simply means the send is attempted again until successful whilst applying back pressure.
 
 The URL and header values of this type can be dynamically set using [function interpolations]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
 
-The body of the HTTP request is the raw contents of the message payload. If the message has multiple parts (is a batch) the request will be sent according to [RFC1341](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). This behaviour can be disabled by setting the field [batch_as_multipart](#batch_as_multipart) to `false`.
+The body of the HTTP request is the raw contents of the message payload. If the message has multiple parts (is a batch) the request will be sent according to [RFC1341](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). This behavior can be disabled by setting the field [batch_as_multipart](#batch_as_multipart) to `false`.
 
 ### Propagating Responses
 
@@ -110,7 +110,7 @@ It's possible to propagate the response from each HTTP request back to the input
 
 This output benefits from sending multiple messages in flight in parallel for improved performance. You can tune the max number of in flight messages (or message batches) with the field `max_in_flight`.
 
-This output benefits from sending messages as a [batch](TODO) for improved performance. Batches can be formed at both the input and output level.
+This output benefits from sending messages as a [batch]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/batching" >}}) for improved performance. Batches can be formed at both the input and output level.
 
 ## Fields
 
@@ -213,7 +213,7 @@ Default: `""`
 Requires version 4.12.0 or newer  
 Options: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`, ``.
 
-<!-- ### oauth
+### oauth
 
 Allows you to specify open authentication via OAuth version 1.
 
@@ -239,9 +239,6 @@ Default: `""`
 ### oauth.consumer_secret
 
 A secret used to establish ownership of the consumer key.
-:::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-:::
 
 
 Type: `string`  
@@ -258,9 +255,6 @@ Default: `""`
 ### oauth.access_token_secret
 
 A secret provided in order to establish ownership of a given access token.
-:::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-:::
 
 
 Type: `string`  
@@ -292,9 +286,6 @@ Default: `""`
 ### oauth2.client_secret
 
 A secret used to establish ownership of the client key.
-:::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-:::
 
 
 Type: `string`  
@@ -315,7 +306,6 @@ A list of optional requested permissions.
 
 Type: `array`  
 Default: `[]`  
-Requires version 3.45.0 or newer  
 
 ### oauth2.endpoint_params
 
@@ -324,7 +314,6 @@ A list of optional endpoint parameters, values should be arrays of strings.
 
 Type: `object`  
 Default: `{}`  
-Requires version 4.21.0 or newer  
 
 ```yml
 # Examples
@@ -363,9 +352,6 @@ Default: `""`
 ### basic_auth.password
 
 A password to authenticate with.
-:::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-:::
 
 
 Type: `string`  
@@ -448,14 +434,10 @@ Whether to allow the remote server to repeatedly request renegotiation. Enable t
 
 Type: `bool`  
 Default: `false`  
-Requires version 3.45.0 or newer  
 
 ### tls.root_cas
 
 An optional root certificate authority to use. This is a string, representing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
-:::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-:::
 
 
 Type: `string`  
@@ -515,9 +497,6 @@ Default: `""`
 ### tls.client_certs[].key
 
 A plain text certificate key to use.
-:::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-:::
 
 
 Type: `string`  
@@ -542,9 +521,6 @@ Default: `""`
 ### tls.client_certs[].password
 
 A plain text password for when the private key is password encrypted in PKCS#1 or PKCS#8 format. The obsolete `pbeWithMD5AndDES-CBC` algorithm is not supported for the PKCS#8 format. Warning: Since it does not authenticate the ciphertext, it is vulnerable to padding oracle attacks that can let an attacker recover the plaintext.
-:::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-:::
 
 
 Type: `string`  
@@ -607,7 +583,7 @@ include_patterns:
 
 ### rate_limit
 
-An optional [rate limit](/docs/components/rate_limits/about) to throttle requests by.
+An optional [rate limit]({{< ref "/product-stack/tyk-streaming/configuration/rate-limits/overview" >}}) to throttle requests by.
 
 
 Type: `string`  
@@ -701,7 +677,7 @@ Default: `64`
 
 ### batching
 
-Allows you to configure a [batching policy](/docs/configuration/batching).
+Allows you to configure a [batching policy]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/batching/" >}}).
 
 
 Type: `object`  
@@ -774,7 +750,7 @@ check: this.type == "end_of_transaction"
 
 ### batching.processors
 
-A list of processorsto apply to a batch as it is flushed. This allows you to aggregate and archive the batch however you see fit. Please note that all resulting messages are flushed as a single batch, therefore splitting the batch into smaller batches using these processors is a no-op.
+A list of processors to apply to a batch as it is flushed. This allows you to aggregate and archive the batch however you see fit. Please note that all resulting messages are flushed as a single batch, therefore splitting the batch into smaller batches using these processors is a no-op.
 
 
 Type: `array`  
@@ -797,7 +773,7 @@ processors:
 
 ### multipart
 
-Create explicit multipart HTTP requests by specifying an array of parts to add to the request, each part specified consists of content headers and a data field that can be populated dynamically. If this field is populated it will override the default request creation behaviour.
+Create explicit multipart HTTP requests by specifying an array of parts to add to the request, each part specified consists of content headers and a data field that can be populated dynamically. If this field is populated it will override the default request creation behavior.
 
 
 Type: `array`  
