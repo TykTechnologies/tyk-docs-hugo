@@ -4,7 +4,7 @@ description: Explains an overview of Interpolation
 tags: [ "Tyk Streams", "Interpolation" ]
 ---
 
-Tyk Streams allows you to dynamically set config fields using [Bloblang]({{ ref "/product-stack/tyk-streaming/guides/bloblang/overview" }}) queries.
+Tyk Streams allows you to dynamically set config fields using [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) queries.
 
 ## Bloblang Queries
 
@@ -18,8 +18,6 @@ output:
 A message with the contents `{"topic":"foo","message":"hello world"}` would be routed to the Kafka topic `meow-foo`.
 
 If a literal string is required that matches this pattern (`${!foo}`) then you can escape it with double brackets. For example, the string `${{!foo}}` would be read as the literal `${!foo}`.
-
-<!-- //TODO:: For more in-depth details about the language [check out the docs][bloblang]. -->
 
 [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) supports arithmetic, boolean operators, coalesce and mapping expressions. 
 

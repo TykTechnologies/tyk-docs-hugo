@@ -32,7 +32,7 @@ If the root of your request map is set to `deleted()` then the branch processors
 ## Fields
 
 ### request_map
-<!-- TODO: add a link -->
+
 A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mapping that describes how to create a request payload suitable for the child processors of this branch. If left empty then the branch will begin with an exact copy of the origin message (including metadata).
 
 

@@ -135,7 +135,6 @@ Adds Cross-Origin Resource Sharing headers. Only valid with a custom `address`.
 
 
 Type: `object`  
-Requires version 3.63.0 or newer  
 
 ### cors.enabled
 
