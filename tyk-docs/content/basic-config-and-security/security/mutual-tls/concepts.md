@@ -70,9 +70,9 @@ Returns array of meta info objects, similar to above.
 The Dashboard Admin API is very similar, except for a few minor differences:
 
 * Endpoints start with `/api` instead of `/tyk`, e.g. `/api/certs`, `/api/certs/<cert-id>`, etc.
-* All certificates are managed in the context of the organisation. In other words, certificates are not shared between organisations.
+* All certificates are managed in the context of the organization. In other words, certificates are not shared between organizations.
 
-Certificate storage uses a hex encoded certificate SHA256 fingerprint as its ID. When used with the Dashboard API, Tyk additionally appends the organisation id to the certificate fingerprint. It means that certificate IDs are predictable, and you can check certificates by their IDs by manually 
+Certificate storage uses a hex encoded certificate SHA256 fingerprint as its ID. When used with the Dashboard API, Tyk additionally appends the organization id to the certificate fingerprint. It means that certificate IDs are predictable, and you can check certificates by their IDs by manually 
 generating certificate SHA256 fingerprint using the following command:
  
 ```{.copyWrapper}

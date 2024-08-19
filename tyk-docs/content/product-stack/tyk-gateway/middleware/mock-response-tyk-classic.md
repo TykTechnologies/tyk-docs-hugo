@@ -37,7 +37,7 @@ The `method_actions` object should be configured as follows, with an entry creat
 - `action`: this should be set to `reply`
 - `code`: the HTTP status code to be provided with the response
 - `headers`: the headers to inject with the response
-- `body`: the payload to be returned as the body of the response
+- `data`: the payload to be returned as the body of the response
 
 For example:
 ```json  {linenos=true, linenostart=1}

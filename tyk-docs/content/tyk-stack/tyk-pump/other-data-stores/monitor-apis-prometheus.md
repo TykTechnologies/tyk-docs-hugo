@@ -130,7 +130,7 @@ scrape_configs:
 
 ### Exploring your metrics in Grafana
 
-Before trying out, make sure to generate traffic by calling your APIs. You will find a [couple of useful queries](https://github.com/TykTechnologies/tyk-pump#prometheus) in our Tyk Pump GitHub repo based on the metrics exposed by Tyk. These will demonstrate which metric types are exported and how you can customise them.
+Before trying out, make sure to generate traffic by calling your APIs. You will find a [couple of useful queries](https://github.com/TykTechnologies/tyk-pump#prometheus) in our Tyk Pump GitHub repo based on the metrics exposed by Tyk. These will demonstrate which metric types are exported and how you can customize them.
 
 You also need to make sure that Grafana is connected to your Prometheus server. This can be configured under [Configuration / Data sources](https://grafana.com/docs/grafana/latest/datasources/add-a-data-source/)
 

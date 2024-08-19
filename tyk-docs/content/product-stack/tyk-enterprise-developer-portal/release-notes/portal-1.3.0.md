@@ -44,7 +44,7 @@ The theme management API enables SDLC for the theme management in the portal. Ad
 - Select the currently active theme.
 
 #### Enhanced error logging for DCR and SSO flows
-We introduced more verbose error logging for the DCR flow and for Single Sign-On to help customers set up the SSO and DCR faster. This is especially important for complex environments with highly customised or non-standard IdPs.
+We introduced more verbose error logging for the DCR flow and for Single Sign-On to help customers set up the SSO and DCR faster. This is especially important for complex environments with highly customized or non-standard IdPs.
 
 ## Download
 - [docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.3.0/images/sha256-87bc071b93e2fa4970e5ec512a4b0601f139ac9cbb73baf35662d4b5f3a0f290?context=explore)

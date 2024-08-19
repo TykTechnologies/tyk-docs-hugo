@@ -23,7 +23,7 @@ Your plan will go into [retirement]({{< ref "tyk-cloud/troubleshooting-&-support
 
 ## What does retirement mean?
 
-When a plan goes into retirement, it means your Organisation, Teams and any Environmenmts and APIs you manage are suspended for a grace period of up to 30 days and you won't be able to add or edit, only remove.
+When a plan goes into retirement, it means your Organization, Teams and any Environmenmts and APIs you manage are suspended for a grace period of up to 30 days and you won't be able to add or edit, only remove.
 
 ## How can I end retirement?
 

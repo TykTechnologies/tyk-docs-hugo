@@ -4,7 +4,7 @@ description: Explains some advanced Bloblang patterns
 tags: [ "Tyk Streams", "Bloblang", "Bloblang Advanced", "Bloblang Patterns" ]
 ---
 
-This section explains some advanced [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) patterns
+This section explains some advanced [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) patterns
 
 ## Map Parameters
 
@@ -122,7 +122,7 @@ pipeline:
 
 ## Creating CSV
 
-Tyk Streams has a few different ways of outputting a stream of CSV data. However, the best way to do it is by converting the documents into CSV rows with [Bloblang]({< ref "/product-stack/tyk-streaming/reference/guides/overview" >}) as this gives you full control over exactly how the schema is generated, erroneous data is handled, and escaping of column data is performed.
+Tyk Streams has a few different ways of outputting a stream of CSV data. However, the best way to do it is by converting the documents into CSV rows with [Bloblang]({{< ref "product-stack/tyk-streaming/guides/bloblang/overview" >}}) as this gives you full control over exactly how the schema is generated, erroneous data is handled, and escaping of column data is performed.
 
 A common and simple use case is to simply flatten documents and write out the column values in alphabetical order. The first row we generate should also be prefixed with a row containing those column names. Here's a mapping that achieves this by using a `count` function to detect the very first invocation of the mapping in a stream pipeline:
 
@@ -146,13 +146,4 @@ let header = if count("rows_in_file") == 1 {
 root = $header + $kvs.map_each(kv -> kv.value.string().apply("escape_csv")).join(",")
 ```
 
-And with this mapping we can write the data to a newly created CSV file using an output with a simple `lines` codec:
-
-```yaml
-output:
-  file:
-    path: ./result.csv
-    codec: lines
-```
-
-Perhaps the first expansion of this mapping that would be worthwhile is to add an explicit list of column names, or at least confirm that the number of values in a row matches an expected count.
+With this mapping we can write the data to an output such as [kafka]({{< ref "product-stack/tyk-streaming/configuration/outputs/kafka" >}}), [kafka_franz]({{< ref "product-stack/tyk-streaming/configuration/outputs/kafka-franz" >}}) or [redis_pubsub]({{< ref "product-stack/tyk-streaming/configuration/outputs/redis-pubsub" >}})

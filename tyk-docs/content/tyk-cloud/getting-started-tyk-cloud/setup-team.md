@@ -13,18 +13,18 @@ aliases:
 
 ## Introduction
 
-Following organisation setup, you will have to set up your team(s) on Tyk Cloud. This page will tell you all about the process.
+Following organization setup, you will have to set up your team(s) on Tyk Cloud. This page will tell you all about the process.
 
 ## What is a team?
 
-* A team is a sub-grouping inside an organisation. 
+* A team is a sub-grouping inside an organization. 
 * Inside a team, you can define users(team members) and roles(permissions that can be applied to a user or a team of users).
 
 ## Steps to set up your team
 
-After creating your Organisation you'll land on the success screen. Click **Get Started**.
+After creating your Organization you'll land on the success screen. Click **Get Started**.
 
-* **Step 1 - Name your Team:** Give your [Team]({{< ref "tyk-cloud/troubleshooting-&-support/glossary.md#team" >}}) a name. You may find it useful to reflect the names used within your organisation.
+* **Step 1 - Name your Team:** Give your [Team]({{< ref "tyk-cloud/troubleshooting-&-support/glossary.md#team" >}}) a name. You may find it useful to reflect the names used within your organization.
 
 * **Step Two - Invite your Users:** Invite your [users]({{< ref "tyk-cloud/troubleshooting-&-support/glossary.md#user" >}}) to your team. You'll only need their email address and which of the available [roles]({{< ref "tyk-cloud/troubleshooting-&-support/glossary#role" >}}) you want to assign to them. This step is optional and can be completed within the dashboard later.
 
@@ -34,6 +34,6 @@ Out of the box, the following roles are setup:
 
 * **Team member:** They can manage deployment activity for the team they are added to.
 * **Team admin:** They can manage deployment activity and users for the team they are added to.
-* **Organisation admin:** They can manage deployment activity and users for a single organisation.
+* **Organization admin:** They can manage deployment activity and users for a single organization.
 
 Next you'll create an [Environment]({{< ref "tyk-cloud/getting-started-tyk-cloud/setup-environment" >}}).

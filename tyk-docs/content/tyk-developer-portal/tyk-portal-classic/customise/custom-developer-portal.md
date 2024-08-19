@@ -4,7 +4,7 @@ title: Creating a Custom Developer Portal
 linktitle: Custom Portal
 menu:
   main:
-    parent: "Customise"
+    parent: "Customize"
 weight: 5 
 aliases:
   - /tyk-developer-portal/customise/custom-developer-po...
@@ -161,7 +161,7 @@ If the user credentials are verified, the HTTP response code will be 200, otherw
 
 ### Listing Available APIs
 
-Inside the admin dashboard in the portal menu, you can define **catalogues** with the list of APIs available to developers. Each defined API is identified by its policy id field.
+Inside the admin dashboard in the portal menu, you can define **catalogs** with the list of APIs available to developers. Each defined API is identified by its policy id field.
 
 #### Request
 

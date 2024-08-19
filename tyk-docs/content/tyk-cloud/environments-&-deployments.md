@@ -14,7 +14,7 @@ aliases:
 
 This section covers the administration of the various components of your Tyk Cloud installation:
 
-* [Managing Organisations]({{< ref "tyk-cloud/environments-&-deployments/managing-organisations.md" >}})
+* [Managing Organizations]({{< ref "tyk-cloud/environments-&-deployments/managing-organisations.md" >}})
 * [Managing Environments]({{< ref "tyk-cloud/environments-&-deployments/managing-environments.md" >}})
 * [Managing Control Planes]({{< ref "tyk-cloud/environments-&-deployments/managing-control-planes.md" >}})
 * [Managing Cloud Data Planes]({{< ref "tyk-cloud/environments-&-deployments/managing-gateways.md" >}})

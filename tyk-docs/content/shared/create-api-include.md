@@ -77,7 +77,7 @@ If you select the API from the list to open it again, the API URL will be displa
 ## Tutorial: Create an API with the Dashboard API
 
 It is easy to create APIs using Tyk Dashboard's own REST API.  
-You will need an API key for your organisation (to authenticate with the Dashboard API) and issue a request using these credentials to create your new API and make it live.
+You will need an API key for your organization (to authenticate with the Dashboard API) and issue a request using these credentials to create your new API and make it live.
 
 ### Step 1: Obtain your Tyk Dashboard API access credentials key & Dashboard URL
 

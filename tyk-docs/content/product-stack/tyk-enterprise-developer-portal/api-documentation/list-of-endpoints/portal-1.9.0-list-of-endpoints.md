@@ -40,8 +40,8 @@ Please note that this list only refers to v1.9.0 of the portal. The list of endp
 | Users              | /users/{user_id}                                                                       |
 | Users              | /users/{user_id}/custom-attributes                                                     |
 | Users              | /users/{user_id}/custom-attributes/{custom-attribute_id}                               |
-| Organisations      | /organisations                                                                         |
-| Organisations      | /organisations/{organisation_id}                                                       |
+| Organizations      | /organisations                                                                         |
+| Organizations      | /organisations/{organisation_id}                                                       |
 | Teams              | /organisations/{organisation_id}/teams                                                 |
 | Teams              | /organisations/{organisation_id}/teams                                                 |
 | Products           | /products                                                                              |
@@ -137,9 +137,9 @@ Please note that this list only refers to v1.9.0 of the portal. The list of endp
 | Users              | /admin/admin_users/{user_id}/send_invite                       |
 | Users              | /admin/users/{user_id}/deactivate                              |
 | Users              | /admin/admin_users/{user_id}/deactivate                        |
-| Organisations      | /admin/organisations                                           |
-| Organisations      | /admin/organisations/new                                       |
-| Organisations      | /admin/organisations/org:{organisation_id}                     |
+| Organizations      | /admin/organisations                                           |
+| Organizations      | /admin/organisations/new                                       |
+| Organizations      | /admin/organisations/org:{organisation_id}                     |
 | Teams              | /admin/teams                                                   |
 | Teams              | /admin/teams/new                                               |
 | Teams              | /admin/teams/{team_id}                                         |
@@ -214,11 +214,11 @@ Please note that this list only refers to v1.9.0 of the portal. The list of endp
 | Apps              | /portal/private/apps/{app_id}/cert/{cert_id}                  |
 | Credentials       | /portal/private/credentials                                   |
 | Profile           | /portal/private/profile                                       |
-| Organisation Flow | /portal/private/organisation                                  |
-| Organisation Flow | /portal/private/users                                         |
-| Organisation Flow | /portal/private/users/{user_id}                               |
-| Organisation Flow | /portal/private/users/{user_id}/edit                          |
-| Organisation Flow | /portal/private/users/invite                                  |
+| Organization Flow | /portal/private/organisation                                  |
+| Organization Flow | /portal/private/users                                         |
+| Organization Flow | /portal/private/users/{user_id}                               |
+| Organization Flow | /portal/private/users/{user_id}/edit                          |
+| Organization Flow | /portal/private/users/invite                                  |
 | Analytics         | /portal/private/analytics                                     |
 | Analytics         | /portal/private/analytics/api/chart/overview                  |
 | Analytics         | /portal/private/analytics/api/chart/traffic                   |

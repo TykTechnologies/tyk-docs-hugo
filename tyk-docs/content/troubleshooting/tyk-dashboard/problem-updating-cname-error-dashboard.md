@@ -19,4 +19,4 @@ The UI for setting the domain name has a very strict validation, so it may just 
 
 ### Solution
 
-The best way to set the domain is to use the Tyk Dashboard Admin API, to obtain the organisation object via a GET request and then update the object using a PUT request with the relevant CNAME added to the body of the request.<sup>[[1]({{<ref "dashboard-admin-api/organisations">}})]</sup> Restarting the process will then set the domain.
+The best way to set the domain is to use the Tyk Dashboard Admin API, to obtain the organization object via a GET request and then update the object using a PUT request with the relevant CNAME added to the body of the request.<sup>[[1]({{<ref "dashboard-admin-api/organisations">}})]</sup> Restarting the process will then set the domain.

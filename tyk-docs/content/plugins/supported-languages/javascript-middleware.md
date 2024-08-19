@@ -41,7 +41,7 @@ JavaScript functions are available globally in the same namespace. So, if you in
 
 The JavaScript Virtual Machine (JSVM) provided in the Gateway is a traditional ECMAScript5 compatible environment.
 
-Before you can use JavaScript customisation in any component you will need to enable the JSVM.
+Before you can use JavaScript customization in any component you will need to enable the JSVM.
 
 You do this by setting `enable_jsvm` to `true` in your `tyk.conf` [file]({{< ref "tyk-oss-gateway/configuration#enable_jsvm" >}}).
 

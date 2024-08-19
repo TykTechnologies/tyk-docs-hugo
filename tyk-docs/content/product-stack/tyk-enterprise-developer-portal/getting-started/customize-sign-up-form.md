@@ -1,8 +1,8 @@
 ---
-title: "Customise the sign-up form"
+title: "Customize the sign-up form"
 date: 2023-11-30
 tags: ["Tyk Developer Portal","Enterprise Portal","Sign-up","User attributes","Metadata"]
-description: "Customise the sign-up form and extend the data stored in the User profile"
+description: "Customize the sign-up form and extend the data stored in the User profile"
 menu:
     main:
         parent: "Get Started"
@@ -18,15 +18,15 @@ If you are interested in getting access, contact us at [support@tyk.io](<mailto:
 
 ## Introduction
 
-In this section, you will learn how to customise the sign-up form for your API Consumers and extend the data stored in the user profile.
+In this section, you will learn how to customize the sign-up form for your API Consumers and extend the data stored in the user profile.
 To achieve that, you will need to:
 - Add a new attribute to the user profile and make it available in the sign-up form.
 - Optionally, add a description and set other parameters that suit your requirements.
 
 ## Navigate to the Custom Attributes menu
 
-To customise the sign-up form, you need to add new data attributes to the user model so that when a user profile is being created, those attributes will be recorded against the user profile.
-To start customising the user sign-up form, navigate to the **Custom attributes** menu and the select the **User** model. Currently, it is possible to extend only the user model. In future releases we will add the same capabilities to other models.
+To customize the sign-up form, you need to add new data attributes to the user model so that when a user profile is being created, those attributes will be recorded against the user profile.
+To start customizing the user sign-up form, navigate to the **Custom attributes** menu and the select the **User** model. Currently, it is possible to extend only the user model. In future releases we will add the same capabilities to other models.
 {{< img src="img/dashboard/portal-management/enterprise-portal/navigate-to-user-attributes.png" alt="Navigate to the User's attributes" >}}
 
 ## Add a new attribute to the user model

@@ -15,7 +15,7 @@ aliases:
     - /plugins/javascript-middleware/middleware-scripting-guide
 ---
 
-Tyk's JavaScript Virtual Machine (JSVM) provides a serverless compute function that allows for the execution of custom logic directly within the gateway itself. This can be accessed from [multiple locations]({{< ref "plugins/supported-languages/javascript-middleware" >}}) in the API processing chain and allows significant customisation and optimization of your request handling.
+Tyk's JavaScript Virtual Machine (JSVM) provides a serverless compute function that allows for the execution of custom logic directly within the gateway itself. This can be accessed from [multiple locations]({{< ref "plugins/supported-languages/javascript-middleware" >}}) in the API processing chain and allows significant customization and optimization of your request handling.
 
 In this guide we will cover the features and resources available to you when creating custom functions, highlighting where there are limitations for the different middleware stages.
 
@@ -183,7 +183,7 @@ A new JSVM instance is created for *each* API that is managed. Consequently, int
 The third Tyk data object that is made available to the script running in the JSVM contains data from the API Definition. This is read-only and cannot be modified by the JS function. The structure of this object is:
 
 - `APIID`: the unique identifier for the API
-- `OrgID`: the organisation identifier
+- `OrgID`: the organization identifier
 - `config_data`: custom attributes defined in the API description
 
 #### Adding custom attributes to the API Definition

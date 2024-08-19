@@ -16,7 +16,7 @@ From Tyk Dashboard v1.8, you can now create and manage OAuth clients from the De
 
 1. An API created in your Dashboard using Tyk's ability to act as a OAuth provider. You need to have [OAuth 2.0]({{< ref "basic-config-and-security/security/authentication-authorization/oauth-2-0#option-2---use-the-tyk-oauth-flow" >}}) selected as the Authentication mode. See [Create an API]({{< ref "getting-started/create-api" >}}) for more details. 
 2. A Policy created in your Dashboard with the API created above selected in the **Access Rights > Add access rule** drop-down. See [Create a Security Policy]({{< ref "getting-started/create-security-policy" >}}) for more details.
-3. A Portal Catalogue entry for the API created above with the Policy you created selected from the **Available policies** drop-down. See [Create a Portal Entry]({{< ref "getting-started/tutorials/publish-api" >}}) for more details.
+3. A Portal Catalog entry for the API created above with the Policy you created selected from the **Available policies** drop-down. See [Create a Portal Entry]({{< ref "getting-started/tutorials/publish-api" >}}) for more details.
 4. A developer account created in your Developer Portal.
 
 ## Create the OAuth Client from the Portal
@@ -31,7 +31,7 @@ From Tyk Dashboard v1.8, you can now create and manage OAuth clients from the De
 {{< img src="/img/dashboard/portal-management/portal_first-oauth_client.png" alt="Developer OAuth Home Screen" >}}
 
 4. Click **Create first OAuth Client**
-5. Hover over the API you added to the Catalogue with OAuth Authentication mode from the drop-down list:
+5. Hover over the API you added to the Catalog with OAuth Authentication mode from the drop-down list:
 
 {{< img src="/img/dashboard/portal-management/portal_oauth_select_api2.png" alt="Select API Screen" >}}
 

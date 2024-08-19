@@ -19,15 +19,15 @@ This page explains the terms that we use across the Tyk Cloud documentation, so 
 
 ### Account
 
-The highest level container for one or more Organisations.
+The highest level container for one or more Organizations.
 
-### Organisation
+### Organization
 
-The main entity for all your data (Environments, APIs, Users, etc). An Organisation is connected to a single region and once connected, cannot be changed.
+The main entity for all your data (Environments, APIs, Users, etc). An Organization is connected to a single region and once connected, cannot be changed.
 
 ### Team 
 
-A sub-grouping within an Organisation.
+A sub-grouping within an Organization.
 
 ### User
 
@@ -43,7 +43,7 @@ The place that holds personal information for a user.
 
 ### Subscription
 
-A set of allowances assigned to an Organisation (made up of plan+addons+settings).
+A set of allowances assigned to an Organization (made up of plan+addons+settings).
 
 ### Plan
 
@@ -51,7 +51,7 @@ A portion of allowances (without add-ons) that feed into the main subscription.
 
 ### Operations
 
-The place to manage all deployments for an Organisation or Team. 
+The place to manage all deployments for an Organization or Team. 
 
 ### Environment
 
@@ -79,7 +79,7 @@ The Tyk Analytics Dashboard to manage APIs and services.
 
 ### Retirement
 
-Where an Organisation has expired due to either a subscription failure or cancelation and is now within a "retirement" period of 30 days, during which an [Billing Admin]({{< ref "tyk-cloud/teams-&-users/user-roles#user-roles-within-tyk-cloud" >}}) can reinstate full functionality by updating or creating a new subscription.
+Where an Organization has expired due to either a subscription failure or cancelation and is now within a "retirement" period of 30 days, during which an [Billing Admin]({{< ref "tyk-cloud/teams-&-users/user-roles#user-roles-within-tyk-cloud" >}}) can reinstate full functionality by updating or creating a new subscription.
 
 ## Action Terms
 
@@ -155,11 +155,11 @@ See [User Roles]({{< ref "tyk-cloud/teams-&-users/user-roles.md" >}}) for more d
 
 ### Super Administrator
 
-Can do everything across all organisations
+Can do everything across all organizations
 
-### Organisation Admin
+### Organization Admin
 
-Can do everything within the scope of the one organisation they have access to.
+Can do everything within the scope of the one organization they have access to.
 
 ### Team Admin
 

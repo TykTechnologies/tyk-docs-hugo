@@ -18,7 +18,7 @@ If you are interested in getting access, contact us at [support@tyk.io](<mailto:
 
 ## Developer portal themes
 
-The Developer Portal uses themes for customising the live portal.
+The Developer Portal uses themes for customizing the live portal.
 We provide a perfect theme that is using our own branding. It’s called the ‘default’ theme. You are welcome to use it and modify it for your needs. If you want to start with a blank page, you can also create a completely new theme.
 
 The following page explains how they are structured and their main concepts. We recommend you to read this if you are creating your own theme, or making extensive changes to the ones we provide.
@@ -35,7 +35,7 @@ In the Tyk Developer Portal a “themes” folder is located in the root of the 
 - `assets`: It intended for static assets like CSS, JS or images that are used by the theme. All contents from this directory are mounted under the `/assets` path in the portal HTTP server.
 - `layouts`: The layout is the top level view of your theme.
 - `views`: The view is rendered as a part of a layout. Each view can be rendered using a different layout.
-- `partials`: Partials provide an easier way to handle snippets of code that are reused across different views or layouts, for example if you want to inject a JS snippet that’s used in different places, you could set this code in a partial and include it anywhere by using the appropriate 'Go template directive'. In this way you could improve code readability and organise the theme in the most efficient way.
+- `partials`: Partials provide an easier way to handle snippets of code that are reused across different views or layouts, for example if you want to inject a JS snippet that’s used in different places, you could set this code in a partial and include it anywhere by using the appropriate 'Go template directive'. In this way you could improve code readability and organize the theme in the most efficient way.
 
 ### Manifest file
 
@@ -160,7 +160,7 @@ Follow the example below to create a new theme called "TestTheme" using the defa
 The Tyk Enterprise Developer Portal enables the admin users to preview the theme before it gets reflected on the public-facing portal. This enables to review the changes that are made to the theme before exposing them to the developer community.
 1. To preview a theme as an admin user, navigate to the **Themes** menu. Select a theme, and click on the **Preview** button.
    {{< img src="/img/dashboard/portal-management/enterprise-portal/preview-theme-button.png" alt="Preview theme" >}}
-2. The previewer will open the selected theme in a new tab. Now you can browse your theme and review the changes. For the demonstration purposes, we've modified the API Catalog page so it displays "Modified catalogue" instead of "Product Catalogs".
+2. The previewer will open the selected theme in a new tab. Now you can browse your theme and review the changes. For the demonstration purposes, we've modified the API Catalog page so it displays "Modified catalog" instead of "Product Catalogs".
    {{< img src="/img/dashboard/portal-management/enterprise-portal/theme-preview.png" alt="Preview theme" >}}
 3. Once the review is done, you can quit the preview by clicking on the **Quit preview button**.
    {{< img src="/img/dashboard/portal-management/enterprise-portal/quit-theme-preview.png" alt="Quite theme preview" >}}

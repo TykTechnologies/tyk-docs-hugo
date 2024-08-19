@@ -79,7 +79,7 @@ The `circuitBreaker` object has the following configuration:
 
 In this example Tyk OAS API Definition the circuit breaker has been configured to monitor requests to the `GET /status/200` endpoint.
 
-It will configure a minimum number of 10 requests (`sampleSize`) that must be received during a 10 second period and calculate the ratio of failed requests (those returning `HTTP 500` or above) within that window.
+It will configure the circuit breaker so that if a minimum of 10 requests (`sampleSize`) to this endpoint are received during the [rolling sampling window]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers#how-the-circuit-breaker-works" >}}) then it will calculate the ratio of failed requests (those returning `HTTP 500` or above) within that window.
 - if the ratio of failed requests exceeds 50% (`threshold = 0.5`) then the breaker will be tripped
 - after it has tripped, the circuit breaker will remain _open_ for 60 seconds (`coolDownPeriod`)
 - further requests to `GET /status/200` will return `HTTP 503 Service temporarily unavailable`
@@ -111,7 +111,7 @@ Select **ADD MIDDLEWARE** and choose the **Circuit Breaker** middleware from the
 
 Set the circuit breaker configuration parameters so that Tyk can protect your upstream service if it experiences failure:
 - threshold failure rate for the proportion of requests that can error before the breaker is tripped (a value between 0.0 and 1.0)
-- the minimum number of requests that must be received during the rolling sampling window before the circuit breaker can trip
+- the minimum number of requests that must be received during the [rolling sampling window]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers#how-the-circuit-breaker-works" >}}) before the circuit breaker can trip
 - the cooldown period for which the breaker will remain _open_ after being tripped before returning to service (in seconds)
 - optionally enable [half-open mode]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers#half-open-mode" >}}) for upstream services with variable recovery times
 

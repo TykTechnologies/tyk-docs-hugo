@@ -170,7 +170,7 @@ The maximum number of messages to pull at a time.
 Type: `int`  
 Default: `524288`  
 
-### `tls`
+### tls
 
 Custom TLS settings can be used to override system defaults.
 

@@ -17,7 +17,7 @@ bounds_check:
   min_part_size: 1
 ```
 
-## Advanced
+## Advanced
 
 ```yml
 # All config fields, showing default values
