@@ -45,7 +45,7 @@ output:
 
 Using the above example, POSTING *foo bar* to the path `/post` returns the response *FOO BAR*.
 
-It's also possible to combine a [sync_response]({{< ref "/product-stack/tyk-streaming/configuration/outputs/sync-response" >}}) output with other outputs using a [broker](TODO):
+It's also possible to combine a [sync_response]({{< ref "/product-stack/tyk-streaming/configuration/outputs/sync-response" >}}) output with other outputs using a [broker]({{< ref "/product-stack/tyk-streaming/configuration/outputs/broker" >}}):
 
 ```yaml
 input:
