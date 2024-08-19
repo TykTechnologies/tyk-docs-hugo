@@ -4234,6 +4234,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/scanners/overview
             category: Page
             show: true
+          - title: "CSV"
+            path: /product-stack/tyk-streaming/configuration/scanners/csv
+            category: Page
+            show: True
           - title: "Json Documents"
             path: /product-stack/tyk-streaming/configuration/scanners/json-documents
             category: Page
