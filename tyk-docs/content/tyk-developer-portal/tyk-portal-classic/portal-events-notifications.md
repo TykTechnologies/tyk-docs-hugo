@@ -17,35 +17,7 @@ Monitors are disabled by default in Tyk Cloud. Portal events are enabled and can
 
 ### How to Enable Monitors
 
-See [Monitors]({{< ref "basic-config-and-security/report-monitor-trigger-events/monitors" >}}) for details of configuring monitors in your `tyk.conf`.
-
-#### Setting Custom Triggers on a Per Key or a Per-Organization Basis
-
-Sometimes you will not want to have every user have a trigger event at the same levels. You can set manual trigger levels by adding a `monitor` section to the Session Object that defines a key's access details. This can also be added to the session object of an organization ID:
-
-```{.copyWrapper}
-"monitor": {
-  "trigger_limits": [80.0, 60.0, 50.0]
-}
-```
-
-The trigger limits should be in *descending* order and represent the percentage of the quota that must be reached in order for the trigger to be fired.
-
-### Webhook Data
-
-The webhook payload will take the following format:
-
-```{.copyWrapper}
-{
-  "event": "TriggerExceeded",
-  "message": "Quota trigger reached",
-  "org": "53ac07777cbb8c2d53000002",
-  "key": "",
-  "trigger_limit": "80",
-} 
-```
-
-If the event is triggered by an organization, then the key field will be empty. If it is an auth token, then the `key` field will have raw representation of the token that caused the quota trigger to fire.
+See [Monitors]({{< ref "basic-config-and-security/report-monitor-trigger-events/monitors" >}}) for details of how to configure quota consumption monitors.
 
 ### Portal Events
 

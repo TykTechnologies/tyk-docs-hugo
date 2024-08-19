@@ -1796,6 +1796,178 @@ Type: `string`<br />
 SASL algorithm. It's the algorithm specified for scram mechanism. It could be sha-512 or sha-256.
 Defaults to "sha-256".
 
+### pumps.kinesis.name
+ENV: <b>TYK_PMP_PUMPS_KINESIS_NAME</b><br />
+Type: `string`<br />
+
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
+
+### pumps.kinesis.type
+ENV: <b>TYK_PMP_PUMPS_KINESIS_TYPE</b><br />
+Type: `string`<br />
+
+Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
+
+### pumps.kinesis.filters
+This feature adds a new configuration field in each pump called filters and its structure is
+the following:
+```{.json}
+"filters":{
+  "api_ids":[],
+  "org_ids":[],
+  "response_codes":[],
+  "skip_api_ids":[],
+  "skip_org_ids":[],
+  "skip_response_codes":[]
+}
+```
+The fields api_ids, org_ids and response_codes works as allow list (APIs and orgs where we
+want to send the analytics records) and the fields skip_api_ids, skip_org_ids and
+skip_response_codes works as block list.
+
+The priority is always block list configurations over allow list.
+
+An example of configuration would be:
+```{.json}
+"csv": {
+ "type": "csv",
+ "filters": {
+   "org_ids": ["org1","org2"]
+ },
+ "meta": {
+   "csv_dir": "./bar"
+ }
+}
+```
+
+### pumps.kinesis.filters.org_ids
+ENV: <b>TYK_PMP_PUMPS_KINESIS_FILTERS_ORGSIDS</b><br />
+Type: `[]string`<br />
+
+Filters pump data by an allow list of org_ids.
+
+### pumps.kinesis.filters.api_ids
+ENV: <b>TYK_PMP_PUMPS_KINESIS_FILTERS_APIIDS</b><br />
+Type: `[]string`<br />
+
+Filters pump data by an allow list of api_ids.
+
+### pumps.kinesis.filters.response_codes
+ENV: <b>TYK_PMP_PUMPS_KINESIS_FILTERS_RESPONSECODES</b><br />
+Type: `[]int`<br />
+
+Filters pump data by an allow list of response_codes.
+
+### pumps.kinesis.filters.skip_org_ids
+ENV: <b>TYK_PMP_PUMPS_KINESIS_FILTERS_SKIPPEDORGSIDS</b><br />
+Type: `[]string`<br />
+
+Filters pump data by a block list of org_ids.
+
+### pumps.kinesis.filters.skip_api_ids
+ENV: <b>TYK_PMP_PUMPS_KINESIS_FILTERS_SKIPPEDAPIIDS</b><br />
+Type: `[]string`<br />
+
+Filters pump data by a block list of api_ids.
+
+### pumps.kinesis.filters.skip_response_codes
+ENV: <b>TYK_PMP_PUMPS_KINESIS_FILTERS_SKIPPEDRESPONSECODES</b><br />
+Type: `[]int`<br />
+
+Filters pump data by a block list of response_codes.
+
+### pumps.kinesis.timeout
+ENV: <b>TYK_PMP_PUMPS_KINESIS_TIMEOUT</b><br />
+Type: `int`<br />
+
+By default, a pump will wait forever for each write operation to complete; you can configure an optional timeout by setting the configuration option `timeout`.
+If you have deployed multiple pumps, then you can configure each timeout independently. The timeout is in seconds and defaults to 0.
+
+The timeout is configured within the main pump config as shown here; note that this example would configure a 5 second timeout:
+```{.json}
+"pump_name": {
+  ...
+  "timeout":5,
+  "meta": {...}
+}
+```
+
+Tyk will inform you if the pump's write operation is taking longer than the purging loop (configured via `purge_delay`) as this will mean that data is purged before being written to the target data sink.
+
+If there is no timeout configured and pump's write operation is taking longer than the purging loop, the following warning log will be generated:
+`Pump {pump_name} is taking more time than the value configured of purge_delay. You should try to set a timeout for this pump.`
+
+If there is a timeout configured, but pump's write operation is still taking longer than the purging loop, the following warning log will be generated:
+`Pump {pump_name} is taking more time than the value configured of purge_delay. You should try lowering the timeout configured for this pump.`.
+
+### pumps.kinesis.omit_detailed_recording
+ENV: <b>TYK_PMP_PUMPS_KINESIS_OMITDETAILEDRECORDING</b><br />
+Type: `bool`<br />
+
+Setting this to true will avoid writing raw_request and raw_response fields for each request
+in pumps. Defaults to `false`.
+
+### pumps.kinesis.max_record_size
+ENV: <b>TYK_PMP_PUMPS_KINESIS_MAXRECORDSIZE</b><br />
+Type: `int`<br />
+
+Defines maximum size (in bytes) for Raw Request and Raw Response logs, this value defaults
+to 0. If it is not set then tyk-pump will not trim any data and will store the full
+information. This can also be set at a pump level. For example:
+```{.json}
+"csv": {
+  "type": "csv",
+  "max_record_size":1000,
+  "meta": {
+    "csv_dir": "./"
+  }
+}
+```
+
+### pumps.kinesis.ignore_fields
+ENV: <b>TYK_PMP_PUMPS_KINESIS_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
+
+### pumps.kinesis.meta.EnvPrefix
+ENV: <b>TYK_PMP_PUMPS_KINESIS_META_ENVPREFIX</b><br />
+Type: `string`<br />
+
+The prefix for the environment variables that will be used to override the configuration.
+Defaults to `TYK_PMP_PUMPS_KINESIS_META`
+
+### pumps.kinesis.meta.StreamName
+ENV: <b>TYK_PMP_PUMPS_KINESIS_META_STREAMNAME</b><br />
+Type: `string`<br />
+
+A name to identify the stream. The stream name is scoped to the AWS account used by the application
+that creates the stream. It is also scoped by AWS Region.
+That is, two streams in two different AWS accounts can have the same name.
+Two streams in the same AWS account but in two different Regions can also have the same name.
+
+### pumps.kinesis.meta.Region
+ENV: <b>TYK_PMP_PUMPS_KINESIS_META_REGION</b><br />
+Type: `string`<br />
+
+AWS Region the Kinesis stream targets
+
+### pumps.kinesis.meta.BatchSize
+ENV: <b>TYK_PMP_PUMPS_KINESIS_META_BATCHSIZE</b><br />
+Type: `int`<br />
+
+Each PutRecords (the function used in this pump)request can support up to 500 records.
+Each record in the request can be as large as 1 MiB, up to a limit of 5 MiB for the entire request, including partition keys.
+Each shard can support writes up to 1,000 records per second, up to a maximum data write total of 1 MiB per second.
+
 ### pumps.logzio.name
 ENV: <b>TYK_PMP_PUMPS_LOGZIO_NAME</b><br />
 Type: `string`<br />

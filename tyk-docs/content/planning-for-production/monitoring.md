@@ -35,27 +35,27 @@ The two main questions that your monitoring system should address: _what’s bro
 
 
 
-#### 1. API Monitoring
+#### 1. System monitoring
 
-Monitoring encompasses the deep insight into the health of individual components.  Monitoring encompasses health statistics and instrumentations of servers as well as the software itself, APIs and Tyk components.
+Monitoring encompasses the deep insight into the health of individual components. Monitoring encompasses health statistics and instrumentations of servers as well as the software itself, APIs and Tyk components.
 
 Please [click here]({{< ref "/content/planning-for-production/monitoring/tyk-components.md" >}}) to read more about Tyk component monitoring and how to set it up.
 
 
 #### 2. Infrastructure sizing & scaling
 
-Though the Tyk Gateway is the [most performant Gateway][0] in the market, you want to avoid over/underprovisioning the hardware based on your traffic requirements.
+Tyk Gateway is the [most performant Gateway][0] in the market, but you'll still want to avoid over/underprovisioning the hardware based on your traffic requirements.
 
 Infrastructure sizing, benchmarks, and scaling will be explained in [this section]({{< ref "/content/planning-for-production/benchmarks.md" >}}).
 
 
 #### 3. API Observability
 
-API Observability is the practice of monitoring holistic health of your APIs.  
-- Are you APIs behaving as intended? 
-- Are you committed to your SLOs?
-- Which metrics to monitor, how to retrieve them, which tools to use for dashboarding and when to alert?
+API Observability is the practice of monitoring the holistic health of your APIs.  
+- are your APIs behaving as intended? 
+- are you committed to your SLOs?
+- which metrics to monitor, how to retrieve them, which tools to use for dashboarding and when to issue alerts
 
-Please consult [distributed tracing overview]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/distributed-tracing-overview" >}}) and [service level objectives for your APIs with Tyk, Prometheus and Grafana](https://tyk.io/blog/service-level-objectives-for-your-apis-with-tyk-prometheus-and-grafana/) for further details.
+Please consult the [observability]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/observability" >}}) and [service level objectives for your APIs with Tyk, Prometheus and Grafana](https://tyk.io/blog/service-level-objectives-for-your-apis-with-tyk-prometheus-and-grafana/) pages for further details.
 
 [0]: https://tyk.io/performance-benchmarks/
