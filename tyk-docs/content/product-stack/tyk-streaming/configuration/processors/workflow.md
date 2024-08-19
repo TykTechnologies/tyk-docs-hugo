@@ -52,7 +52,7 @@ A --|          |--> D
 ```
 
 <!-- TODO: add link to switch processor -->
-This flow would be easy to express in a standard Tyk Streams config, we could simply use a switch processor to route to either B or C depending on a condition on the result of A. However, this method of flow control quickly becomes unfeasible as the DAG gets more complicated, imagine expressing this flow using switch processors:
+This flow would be easy to express in a standard Tyk Streams config, we could simply use a [switch processor]({{< ref "/product-stack/tyk-streaming/configuration/processors/switch" >}}) to route to either B or C depending on a condition on the result of A. However, this method of flow control quickly becomes unfeasible as the DAG gets more complicated, imagine expressing this flow using switch processors:
 
 ```text
       /--> B -------------|--> D
@@ -62,7 +62,7 @@ A --|          /--> E --|
                \----------|--> F
 ```
 
-And imagine doing so knowing that the diagram is subject to change over time. Yikes! Instead, with a workflow we can either trust it to automatically resolve the DAG or express it manually as simply as `order: [ [ A ], [ B, C ], [ E ], [ D, F ] ]`, and the conditional logic for determining if a stage is executed is defined as part of the branch itself.
+Futhermore, the diagram is subject to change over time. Instead, with a workflow we can either trust it to automatically resolve the DAG or express it manually as simply as `order: [ [ A ], [ B, C ], [ E ], [ D, F ] ]`, and the conditional logic for determining if a stage is executed is defined as part of the branch itself.
 
 ## Examples
 
