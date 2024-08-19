@@ -661,7 +661,7 @@ Default: `false`
 
 ### propagate_response
 
-Whether responses from the server should be [propagated back](/docs/guides/sync_responses) to the input.
+Whether responses from the server should be [propagated back]({{< ref "/product-stack/tyk-streaming/guides/sync-responses" >}}) to the input.
 
 
 Type: `bool`  
