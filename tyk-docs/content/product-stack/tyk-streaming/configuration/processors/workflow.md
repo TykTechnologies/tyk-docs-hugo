@@ -33,7 +33,7 @@ workflow:
 
 ### Performance
 
-Most of the time the best way to compose processors is also the simplest, just configure them in series. This is because processors are often CPU bound, low-latency, and you can gain vertical scaling by increasing the number of processor pipeline threads, allowing Benthos to process [multiple messages in parallel]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/processing-pipelines" >}}).
+Most of the time the best way to compose processors is also the simplest, just configure them in series. This is because processors are often CPU bound, low-latency, and you can gain vertical scaling by increasing the number of processor pipeline threads, allowing Tyk Streams to process [multiple messages in parallel]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/processing-pipelines" >}}).
 
 However, some processors such as [aws_lambda]({{< ref "/product-stack/tyk-streaming/configuration/processors/aws-lambda" >}}) or [cache]({{< ref "/product-stack/tyk-streaming/configuration/processors/cache" >}}) interact with external services and therefore spend most of their time waiting for a response. These processors tend to be high-latency and low CPU activity, which causes messages to process slowly.
 
