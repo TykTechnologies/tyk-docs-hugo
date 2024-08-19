@@ -53,14 +53,14 @@ The 1.8.4 release addresses ten high-priority bugs and vulnerabilities, and intr
 | /portal/private/apps/        | Create an application  |
 | /portal/private/apps/:id     | Applications           |
 | /portal/private/users        | Users                  |
-| /portal/private/organisation | Create an organisation |
+| /portal/private/organisation | Create an organization |
 | /portal/private/users/invite | Invite a user          |
 | /portal/private/users        | Users                  |
 | /portal/private/users/:id    | Users                  |
 | /portal/private/profile      | Profile                |
 | /auth/password/login         | Developer portal login |
 | /auth/password/new           | Password reset         |
-- Changed the credential provisioning flow to automatically include DeveloperID, OrganisationID, ApplicationID, and TeamIDs in [the credential metadata]({{< ref "/product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model#default-attributes" >}}).
+- Changed the credential provisioning flow to automatically include DeveloperID, OrganizationID, ApplicationID, and TeamIDs in [the credential metadata]({{< ref "/product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model#default-attributes" >}}).
 - Added warning regarding potential PII exposure to the [custom attributes menu]({{< ref "/product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model#default-attributes" >}}).
 - Changed the behavior of the portal for 404 errors. Now whenever a user requests non-existing page both private (e.i. requiring sign-in to access) or public, the portal now always renders the `not_found.tmpl` template.
 - Changed the behavior of the `Secure` cookie attribute that is set by [PORTAL_SESSION_SECURE]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_session_secure" >}}) so that the `Secure` attribute is always add to the `Set-Cookie` header whenever `PORTAL_SESSION_SECURE` is set to `true` or when TLS is enabled.
@@ -68,7 +68,7 @@ The 1.8.4 release addresses ten high-priority bugs and vulnerabilities, and intr
 - Extended the `DELETE /users/:id` API endpoint by adding the [?force]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) query parameter to force removal of a user even if some of their credentials have been removed from the credentials provider, or if the provider itself is down or unreachable.
 - Extended the `GET /pages/:id/content-blocks/:id:` API endpoint by adding additional fields in the response body: `Content`, `MarkdownContent`, `MarkdownEnabled`, `Name`, and `PageID`.
 - Extended [filesize limit]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts#part-1-create-a-new-theme" >}}) for individual files in themes to 5 MB.
-- Made the organisation invite email's subject configurable via [the emails settings section]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization#list-of-email-notifications" >}}).
+- Made the organization invite email's subject configurable via [the emails settings section]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization#list-of-email-notifications" >}}).
 
 #### Fixed
 - Fixed the bug where it was impossible to create an ordered list in the rich text editor in the admin app due to CSS issues.

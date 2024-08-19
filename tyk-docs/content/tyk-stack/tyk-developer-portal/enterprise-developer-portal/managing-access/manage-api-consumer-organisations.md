@@ -1,5 +1,5 @@
 ---
-title: "Manage API Consumer organisations"
+title: "Manage API Consumer organizations"
 date: 2022-02-09
 tags: [""]
 description: ""
@@ -38,71 +38,71 @@ Please refer to the [email notification section]({{< ref "/product-stack/tyk-ent
 
 You can control if API Consumers can register an organization and if such registration requires approval from the portal admins.
 To enable API Consumer organization registration, navigate to the Settings/General menu and scroll to the API Consumer access section. In that section, there are two settings that control API Consumer registration:
-* **Enable API consumers to register organisations**: when this setting is enabled, API Consumers can register organisations, and the respective button appears in the navigation menu;
-* **Auto-approve API consumers registering organisation**: When this setting is enabled, no approval is required from the portal admins for an API Consumer to register an organisation. If this setting is disabled, API Consumer can register organisations, but they won’t be able to invite team members.
+* **Enable API consumers to register organizations**: when this setting is enabled, API Consumers can register organizations, and the respective button appears in the navigation menu;
+* **Auto-approve API consumers registering organization**: When this setting is enabled, no approval is required from the portal admins for an API Consumer to register an organization. If this setting is disabled, API Consumer can register organizations, but they won’t be able to invite team members.
 
 <br/>This is how it looks in the portal's UI:
-{{< img src="/img/dashboard/portal-management/enterprise-portal/api_consumer_org_registration_settings.png" alt="Organisation registration settings" >}}
+{{< img src="/img/dashboard/portal-management/enterprise-portal/api_consumer_org_registration_settings.png" alt="Organization registration settings" >}}
 
-<br/>To proceed with the following steps, enable the Enable API consumers setting to register organisations.
+<br/>To proceed with the following steps, enable the Enable API consumers setting to register organizations.
 
 ## Step 1: Request org registration
 
 Register a developer account or use an existing one and log in to the developer portal as a developer.
-To start the organisation registration flow, click on the **Create an organisation** button in the top right corner of the screen.
-{{< img src="/img/dashboard/portal-management/enterprise-portal/become_an_organisation_navbar.png" alt="Become an organisation button" >}}
+To start the organization registration flow, click on the **Create an organization** button in the top right corner of the screen.
+{{< img src="/img/dashboard/portal-management/enterprise-portal/become_an_organisation_navbar.png" alt="Become an organization button" >}}
 
-<br/><br/>You will be navigated to the screen where you can specify the name of your future organisation.
-{{< img src="/img/dashboard/portal-management/enterprise-portal/specify_name_of_an_organisation.png" alt="Specify name of the organisation" >}}
+<br/><br/>You will be navigated to the screen where you can specify the name of your future organization.
+{{< img src="/img/dashboard/portal-management/enterprise-portal/specify_name_of_an_organisation.png" alt="Specify name of the organization" >}}
 
-<br/><br/>If the **Auto-approve API consumers registering organisation** setting is enabled, the new organisation will instantly be provisioned.
-{{< img src="/img/dashboard/portal-management/enterprise-portal/org_registration_is_approved.png" alt="Organisation registration is approved" >}}
+<br/><br/>If the **Auto-approve API consumers registering organization** setting is enabled, the new organization will instantly be provisioned.
+{{< img src="/img/dashboard/portal-management/enterprise-portal/org_registration_is_approved.png" alt="Organization registration is approved" >}}
 
 <br/><br/>Otherwise, the developer will have to wait for approval from admin users.
-{{< img src="/img/dashboard/portal-management/enterprise-portal/org_registration_is_pending.png" alt="Organisation registration is pending" >}}
+{{< img src="/img/dashboard/portal-management/enterprise-portal/org_registration_is_pending.png" alt="Organization registration is pending" >}}
 
-## Step 2: Approve or reject organisation registration requests
+## Step 2: Approve or reject organization registration requests
 
-If the **Auto-approve API consumers registering organisation** setting is disabled and the email settings are configured correctly, the admin users will be notified about the new organisation registration request via email.
-{{< img src="/img/dashboard/portal-management/enterprise-portal/new_org_request_email.png" alt="New organisation registration request notification" >}}
+If the **Auto-approve API consumers registering organization** setting is disabled and the email settings are configured correctly, the admin users will be notified about the new organization registration request via email.
+{{< img src="/img/dashboard/portal-management/enterprise-portal/new_org_request_email.png" alt="New organization registration request notification" >}}
 
-<br/><br/>If the **Auto-approve API consumers registering organisation** setting is disabled, the new API Consumer organisations won’t be immediately provisioned.
-As an admin user, you can approve or reject organisation registration requests from the Organisation menu.
-{{< img src="/img/dashboard/portal-management/enterprise-portal/pending_org_registration_admin.png" alt="New organisation registration request view" >}}
+<br/><br/>If the **Auto-approve API consumers registering organization** setting is disabled, the new API Consumer organizations won’t be immediately provisioned.
+As an admin user, you can approve or reject organization registration requests from the Organization menu.
+{{< img src="/img/dashboard/portal-management/enterprise-portal/pending_org_registration_admin.png" alt="New organization registration request view" >}}
 
-When admin users approve or reject organisation registration requests, the respective email notification is sent to API Consumers.
+When admin users approve or reject organization registration requests, the respective email notification is sent to API Consumers.
 
-Notification when organisation request is approved:
-{{< img src="/img/dashboard/portal-management/enterprise-portal/org_request_approved_email.png" alt="Organisation registration request is approved" >}}
+Notification when organization request is approved:
+{{< img src="/img/dashboard/portal-management/enterprise-portal/org_request_approved_email.png" alt="Organization registration request is approved" >}}
 
-<br/><br/>Notification when organisation request is rejected:
-{{< img src="/img/dashboard/portal-management/enterprise-portal/org_request_rejected_email.png" alt="Organisation registration request is rejected" >}}
+<br/><br/>Notification when organization request is rejected:
+{{< img src="/img/dashboard/portal-management/enterprise-portal/org_request_rejected_email.png" alt="Organization registration request is rejected" >}}
 
 <br/><br/>Both emails are customizable. Refer to [the email customization documentation]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization.md" >}}) for further information on the email customization.
 
 
 ## Step 3: Invite or remove teammates
 
-Once admin users approve the organisation registration request, API Consumers can invite teammates.
+Once admin users approve the organization registration request, API Consumers can invite teammates.
 As an API Consumer, navigate to the Dashboard to invite new teammates.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/navigate_to_dashboard.png" alt="Navigate to the dashboard" >}}
 
 <br/><br/>Then select the Users tab in the side menu.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/open_users_tab.png" alt="Navigate to the Users tab" >}}
 
-<br/><br/>You can add a new team member to your API Consumer organisation in the Users tab. To invite a new team member, specify their first and last name, email address, and role.
+<br/><br/>You can add a new team member to your API Consumer organization in the Users tab. To invite a new team member, specify their first and last name, email address, and role.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/invite_team_member.png" alt="Invite new team member" >}}
 
 <br/><br/>There are two possible roles for API Consumers:
 * Super admin;
 * Team member.
 
-The difference between these two roles is that the Super admins can invite or remove users from their organisation and manage applications, while the Team members can only manage applications.
+The difference between these two roles is that the Super admins can invite or remove users from their organization and manage applications, while the Team members can only manage applications.
 
 <br/><br/>Once the invitation is sent, the invited team member should receive the following email:
 {{< img src="/img/dashboard/portal-management/enterprise-portal/team-member-invitation-email.png" alt="Invite new team member email" >}}
 
-<br/><br/>The invited team member can use the link from the email to register in the portal and join the organisation.
+<br/><br/>The invited team member can use the link from the email to register in the portal and join the organization.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/register-new-user.png" alt="Invite new team member email" >}}
 
 ## Step 4: Manage API Consumers' role

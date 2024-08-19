@@ -13,4 +13,4 @@ The Multi-Cloud Redis container is ephemeral, it isn't configured for persistenc
 
 If using Redis with Multi-Cloud we strongly recommend using an external Redis database.
 
-There are no settings for Redis available via environment variable, you would need to mount a new `redis.conf` into the container to customise the configuration, but again, we don't recommend it.
+There are no settings for Redis available via environment variable, you would need to mount a new `redis.conf` into the container to customize the configuration, but again, we don't recommend it.

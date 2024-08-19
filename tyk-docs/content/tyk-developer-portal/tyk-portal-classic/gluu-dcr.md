@@ -80,7 +80,7 @@ After the policy is ready, switch back to the API settings and make sure that th
 
 {{< img src="/img/dcr/gluu/step_6.png" alt="Step 6" >}}
 
-Now you’re ready to add this API to the developer portal. Switch to the "Catalogue" section under "Portal Management" on the navigation menu. Click on "Add New API", set a name for it and select the newly created policy. For this example use "Gluu Policy":
+Now you’re ready to add this API to the developer portal. Switch to the "Catalog" section under "Portal Management" on the navigation menu. Click on "Add New API", set a name for it and select the newly created policy. For this example use "Gluu Policy":
 
 {{< img src="/img/dcr/gluu/step_7.png" alt="Step 7" >}}
 
@@ -132,7 +132,7 @@ If you check the Gluu dashboard you will see new client (named "GluuClient"):
 
 {{< img src="/img/dcr/gluu/step_12.png" alt="Step 12" >}}
 
-The next step is to generate a token and use it for accessing your "Gluu API". you can use Postman for this. You will need the token URL which it’s also present in the Well-Known URI of your organisation. The field is named `"token_endpoint"`.
+The next step is to generate a token and use it for accessing your "Gluu API". you can use Postman for this. You will need the token URL which it’s also present in the Well-Known URI of your organization. The field is named `"token_endpoint"`.
 For this example use the following: https://gluu-server/oxauth/restv1/token
 
 Your Postman request should contain the following body, where `"client_id"` and `"client_secret"` are the values you got from the developer portal:

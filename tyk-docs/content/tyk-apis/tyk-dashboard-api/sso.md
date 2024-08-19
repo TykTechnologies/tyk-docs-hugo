@@ -25,7 +25,7 @@ The Dashboard exposes the `/api/sso` Dashboard API which allows you to generate 
 You should provide JSON payload with the following data:
 
 * `ForSection` - scope with possible values of `"dashboard"` or `"portal"` only.
-* `OrgID` - organisation id 
+* `OrgID` - organization id 
 * `EmailAddress` - user email
 * `GroupID` - user group id ( it is the mongo id and you can can find it in the url when opening a user group via Tyk- Dashboard UI or if you call Tyk-Dashboard REST API `/api/usergroups` )
 

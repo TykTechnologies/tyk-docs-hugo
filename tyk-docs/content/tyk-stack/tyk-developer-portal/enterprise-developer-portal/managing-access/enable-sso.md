@@ -339,7 +339,7 @@ This section relates to configuration and settings required to set up Single Sig
 However, for developers there is one additional.
 
 #### User group mapping
-In order to land a developer into the right API Consumer organisation, it is necessary to configure the UserGroupMapping
+In order to land a developer into the right API Consumer organization, it is necessary to configure the UserGroupMapping
 in the TIB profile that creates a binding between user groups in your IDP and developer teams in the portal.
 
 {{< img src="/img/dashboard/portal-management/enterprise-portal/user-group-mapping.png" alt="User group mapping" width="600">}}

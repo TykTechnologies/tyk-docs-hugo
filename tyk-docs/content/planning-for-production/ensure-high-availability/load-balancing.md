@@ -11,7 +11,7 @@ aliases:
   - /ensure-high-availability/load-balancing/
 ---
 
-Tyk supports native round-robin load-balancing in its proxy. This means that Tyk will rotate requests through a list of target hosts as requests come in. This can be very useful in microservice architectures where clusters of specialised services are launched for high availability.
+Tyk supports native round-robin load-balancing in its proxy. This means that Tyk will rotate requests through a list of target hosts as requests come in. This can be very useful in microservice architectures where clusters of specialized services are launched for high availability.
 
 Setting up load balancing is done on a per API basis, and is defined in the API Definition file/object:
 

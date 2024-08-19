@@ -43,7 +43,7 @@ Field access can be restricted by setting up an allowed types list in a policy o
 
 First, you need to learn [how to create a security policy with the API]({{< ref "getting-started/create-security-policy" >}}) or [how to create an API Key with the API]({{< ref "getting-started/create-security-policy" >}}).
 
-Once you learn how to utilise the API to create a security policy or key, you can use the following snippet:
+Once you learn how to utilize the API to create a security policy or key, you can use the following snippet:
 
 ```
 {

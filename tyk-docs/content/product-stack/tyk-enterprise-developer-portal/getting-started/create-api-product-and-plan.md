@@ -70,4 +70,4 @@ To create a Plan for the developer portal, follow the same steps as for creating
 
 ## Next step
 
-Visit [Customize visual appearance of API Products and Plans]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/customize-products-and-plans" >}}) to learn how to customise the visual appearance of API Products and plans.
+Visit [Customize visual appearance of API Products and Plans]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/customize-products-and-plans" >}}) to learn how to customize the visual appearance of API Products and plans.

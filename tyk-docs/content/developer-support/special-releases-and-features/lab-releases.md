@@ -30,7 +30,7 @@ as part of ongoing development and refinement efforts
   - [Tyk Community Forum](https://community.tyk.io/)
   - Contact your Account Manager directly.
  
-Your insight and feedback are paramount to us, that is why we make lab releases available. But, by using Tyk Lab Release, (a product that is in a lab phase) you acknowledge these conditions. You also agree that Tyk will not be liable for any losses or damages caused in connection with the usage of Lab Release unless the relevant losses or damages are due to our fraud, wilful misconduct or gross negligence. This limitation does not apply to limitations that cannot be limited by law.
+Your insight and feedback are paramount to us, that is why we make lab releases available. But, by using Tyk Lab Release, (a product that is in a lab phase) you acknowledge these conditions. You also agree that Tyk will not be liable for any losses or damages caused in connection with the usage of Lab Release unless the relevant losses or damages are due to our fraud, willful misconduct or gross negligence. This limitation does not apply to limitations that cannot be limited by law.
 
 **Thank you for your understanding and cooperation**
 

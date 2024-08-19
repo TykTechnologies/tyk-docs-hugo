@@ -16,7 +16,7 @@ The Tyk Developer Portal comes into two flavors:
 *   Tyk Classic Developer Portal.
 *   Tyk Enterprise Developer Portal.
 
-The Tyk Classic Developer Portal is relevant for the primary use-cases while the Tyk Enterprise Developer Portal is suitable for more advanced use cases such audience management, developer relatationship and deep look & feel customisation.
+The Tyk Classic Developer Portal is relevant for the primary use-cases while the Tyk Enterprise Developer Portal is suitable for more advanced use cases such audience management, developer relatationship and deep look & feel customization.
 
 {{< note success >}}
 **Tyk Enterprise Developer Portal**

@@ -22,7 +22,7 @@ We have a video that demonstrates how our Open Policy Agent enables you to add c
 ### Configuration
 
 By default the Dashboard OPA engine is turned off, and you need to explicitly enable it via your Dashboard `tyk_analytics.conf` file.
-You can then control OPA functionality on a global level via your `tyk_analytics.conf` file, or at an organisation level using either the [OPA API]({{< ref "tyk-dashboard-api/org/opa" >}}) or the [Dashboard](#using-the-open-policy-agent-in-the-dashboard).
+You can then control OPA functionality on a global level via your `tyk_analytics.conf` file, or at an organization level using either the [OPA API]({{< ref "tyk-dashboard-api/org/opa" >}}) or the [Dashboard](#using-the-open-policy-agent-in-the-dashboard).
 
 |   Key                               	|   Type        	|   Description                                                                                                          	|   Example                   	|
 |-------------------------------------	|---------------	|------------------------------------------------------------------------------------------------------------------------	|-----------------------------	|
@@ -68,7 +68,7 @@ Rego focuses on providing powerful support for referencing nested documents and 
 
 Rego is declarative so policy authors can focus on what queries should return rather than how queries should be executed. These queries are simpler and more concise than the equivalent in an imperative language.
 
-Like other applications which support declarative query languages, OPA is able to optimise queries to improve performance.
+Like other applications which support declarative query languages, OPA is able to optimize queries to improve performance.
 
 Rego supports a variety of statements and functions. You can even use things like HTTP calls to build policies that depends on third-party APIs.
 See more about the language itself [here](https://www.openpolicyagent.org/docs/latest/policy-language/).

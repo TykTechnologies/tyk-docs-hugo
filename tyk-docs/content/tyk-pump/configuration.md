@@ -98,13 +98,13 @@ This is specially useful when using Docker, since by default, the Tyk Pump has a
 
 ### Sharding analytics to different data sinks
 
-In a multi-organisation deployment, each organisation, team, or environment might have their preferred analytics tooling. This capability allows the Tyk Pump to send analytics for different organisations or various APIs to different destinations. 
+In a multi-organization deployment, each organization, team, or environment might have their preferred analytics tooling. This capability allows the Tyk Pump to send analytics for different organizations or various APIs to different destinations. 
 E.g.  Org A can send their analytics to MongoDB + DataDog 
 while Org B can send their analytics to DataDog + expose the Prometheus metrics endpoint.
 
 #### Configuring the sharded analytics
 
-You can achieve the sharding by setting both an {{<fn>}}allowlist{{</fn>}}t and a {{<fn>}}blocklist{{</fn>}}, meaning that some data sinks can receive information for all orgs, whereas other data sinks will not receive certain organisation's analytics if it was block listed.
+You can achieve the sharding by setting both an {{<fn>}}allowlist{{</fn>}}t and a {{<fn>}}blocklist{{</fn>}}, meaning that some data sinks can receive information for all orgs, whereas other data sinks will not receive certain organization's analytics if it was block listed.
 
 This feature makes use of the field called `filters`, which can be defined per pump. This is its structure:
 ```

@@ -40,7 +40,7 @@ collections of APIs on your Gateway. Well, from 5.1 we have added a new Role,
 which layers on top of the existing “Analytics” role and can be used to restrict
 a user’s access, within the Dashboard Analytics screens, to view only the
 statistics from APIs that they own; we’ve called this “Owned Analytics”. Due to
-the way the analytics data are aggregated (to optimise storage), a user granted
+the way the analytics data are aggregated (to optimize storage), a user granted
 this role will not have access to the full range of charts. Take a look at the
 documentation for a full description of this new [user role]({{< ref "basic-config-and-security/security/dashboard/user-roles" >}}).
 
@@ -113,7 +113,7 @@ size using [slave_options.rpc_pool_size]({{< ref "tyk-oss-gateway/configuration#
 - Fixed an issue where it was not possible to download Activity by API or Activity by Key from the Dashboard when using PostgreSQL for the analytics store
 - Fixed an issue where a new user could be stuck in a password reset loop in the dashboard if TYK_DB_SECURITY_FORCEFIRSTLOGINPWRESET was enabled
 - Fixed an issue where the `ssl_force_common_name_check` flag was disappearing. The flag was disappearing after being updated via dashboard UI raw API editor and a subsequent page reload. It was also disappearing when updating the API Definition via the GW/DB API.
-- Fixed an issue where a user could update their email address to match that of another user within the same organisation
+- Fixed an issue where a user could update their email address to match that of another user within the same organization
 - Fixed an issue where users without `user:write` permission were able to update their permissions through manipulation of Dashboard API calls
 - Fixed an issue where the versions endpoint returned APIs that were not owned by the logged-in user
 - Fixed an issue where the log browser showed analytics for APIs not owned by the logged-in user

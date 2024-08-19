@@ -236,7 +236,7 @@ For example, to set up a `postgres` storage the `analytics` configurations would
   },
 } 
 ```
-This storage will work for fetching your organisation data (APIs, Policies, etc) and for analytics.
+This storage will work for fetching your organization data (APIs, Policies, etc) and for analytics.
 {{< /note >}}
 
 You should now be able to start the MDCB service, check that it is up and running and ensure that the service starts on system boot:
@@ -254,11 +254,19 @@ sudo systemctl enable tyk-sink
 
 It is possible to perform a health check on the MDCB service. This allows you to determine if the service is running, so is useful when using MDCB with load balancers.
 
-MDCB uses a specific port for health checks. This is defined by the `healthcheck_port` configuration setting, and defaults to `8181`. Do **not** use the standard MDCB listen port (`listen_port`) for MDCB health checks.
+Health checks are available via the HTTP port. This is defined by `http_port` configuration setting and defaults to `8181`. Do **not** use the standard MDCB listen port (`listen_port`) for MDCB health checks.
+
+From MDCB v2.7.0, there are 2 health check services available:
+1. `/liveness` endpoint returns a `HTTP 200 OK` response when the service is operational.
+2. `/readiness` endpoint returns a `HTTP 200 OK` response when MDCB is ready to accept requests. It ensures that dependent components such as Redis and data store are connected, and the gRPC server is ready for connection.
+
+See [MDCB API]({{<ref "tyk-mdcb-api">}}) for details of the endpoints.
+
+In MDCB v2.6.0 or earlier, MDCB only offers one health check endpoint at `/health` via the port defined by the `healthcheck_port` configuration setting. The default port is `8181`. The `/health` endpoint is also available on v2.7.0 or later for backward compatibility.
 
 To use the health check service, call the `/health` endpoint i.e. `http://my-mdcb-host:8181/health`. This will return a `HTTP 200 OK` response if the service is running.
 
-Please note that currently, the receipt of an HTTP 200 OK response merely indicates that the MDCB service is operational. However, it is important to note that the service may not yet be ready for use if it is unable to establish a connection with its dependent components (such as Redis and Data store) or if they are offline.
+Please note that an HTTP 200 OK response from the `/health` endpoint merely indicates that the MDCB service is operational. However, it is important to note that the service may not yet be ready for use if it is unable to establish a connection with its dependent components (such as Redis and Data store) or if they are offline. Upgrade to v2.7.0 and later to have more accurate health checking.
 
 ## Troubleshooting
 
@@ -314,9 +322,44 @@ May 06 11:50:38 master tyk-sink[1798]: time="2018-05-06T11:50:38Z" level=info ms
 May 06 11:50:42 master tyk-sink[1798]: time="2018-05-06T11:50:42Z" level=info msg="Ping!"
 ```
 
+#### Check MDCB configurations
+
+From MDCB v2.7.0, a secured HTTP endpoint `/config` can be enabled that allows you to query configuration of MDCB.
+
+To enable the secured HTTP endpoint, make sure you have the following in your `/opt/tyk-sink/tyk_sink.conf` config file.
+
+```json
+{
+  "security": {
+    "enable_http_secure_endpoints": true,
+    "secret": "<secured-endpoint-secret>"
+  },
+  "http_server_options": {
+    "use_ssl": true,
+    "certificate": {
+      "cert_file": ...,
+      "key_file": ...,
+      "min_version": ...
+    }
+  }
+}
+```
+
+Subsequently, you can issue a request to the `/config` endpoint to return a json representation of your MDCB config:
+
+```bash
+curl -H "x-tyk-authorization: <secured-endpoint-secret>" https://my-mdcb-host:8181/config
+```
+
+Alternatively, you can issue a request to the `/env` endpoint to return your MDCB config in the form of environment variables settings:
+
+```bash
+curl -H "x-tyk-authorization: <secured-endpoint-secret>" https://my-mdcb-host:8181/env
+```
+
 ## Gateway configuration
 
-Before a worker gateway can connect to MDCB, it is important to enable the organisation that owns all the APIs to be distributed to be allowed to utilise Tyk MDCB. To do this, the organisation record needs to be modified with two flags using the [Tyk Dashboard Admin API](https://tyk.io/docs/dashboard-admin-api/).
+Before a worker gateway can connect to MDCB, it is important to enable the organization that owns all the APIs to be distributed to be allowed to utilize Tyk MDCB. To do this, the organization record needs to be modified with two flags using the [Tyk Dashboard Admin API](https://tyk.io/docs/dashboard-admin-api/).
 
 To make things easier, we will first set a few [environment variables]({{< ref "tyk-environment-variables" >}}):
 
@@ -330,11 +373,11 @@ This is the URL you use to access the Dashboard (including the port if not using
 
 3. `export ORG_ID=<YOUR_ORG_ID>`
 
-You can find your organisation id in the Dashboard, under your user account details.
+You can find your organization id in the Dashboard, under your user account details.
 
 {{< img src="/img/2.10/user_api_id.png" alt="Org ID" >}}
 
-4. Send a GET request to the Dashboard API to `/admin/organisations/$ORG_ID` to retrieve the organisation object. In the example below, we are redirecting the output json to a file `myorg.json` for easy editing.
+4. Send a GET request to the Dashboard API to `/admin/organisations/$ORG_ID` to retrieve the organization object. In the example below, we are redirecting the output json to a file `myorg.json` for easy editing.
 
 ```curl
 curl $DASH_URL/admin/organisations/$ORG_ID -H "Admin-Auth: $DASH_ADMIN_SECRET" | python -mjson.tool > myorg.json
@@ -368,12 +411,12 @@ New fields are between the `...` .
 
 ### Field Reference
 
-`hybrid_enabled:` Allows a worker gateway to login as an organisation member into MDCB
+`hybrid_enabled:` Allows a worker gateway to login as an organization member into MDCB
 
 `event_options:` Enables key events such as updates and deletes, to be propagated to the various instance zones. API Definitions and Policies will be propagated by default, as well as the Redis key events, meaning that hashed and not hashed key events will be propagated by default in Redis and any config related to `hashed_key_event.redis` or `key_event.redis` will not be taken into consideration.
 
 
-6. Update your organisation with a PUT request to the same endpoint, but this time, passing in your modified `myorg.json` file.
+6. Update your organization with a PUT request to the same endpoint, but this time, passing in your modified `myorg.json` file.
 
 ```curl
 curl -X PUT $DASH_URL/admin/organisations/$ORG_ID -H "Admin-Auth: $DASH_ADMIN_SECRET" -d @myorg.json

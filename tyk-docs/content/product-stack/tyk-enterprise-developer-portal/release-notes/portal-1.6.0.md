@@ -58,7 +58,7 @@ To display API Products that support custom authentication, you need simply to c
 ## Changelog
 
 #### Added
-- Added support for multiple IdPs of the OAuth2.0 flow. If a customer has multiple OAuth2.0 providers now they can utilise them all for OAuth2.0 authentication with Tyk.
+- Added support for multiple IdPs of the OAuth2.0 flow. If a customer has multiple OAuth2.0 providers now they can utilize them all for OAuth2.0 authentication with Tyk.
 - Added new admins APIs for querying all content-blocks to improve data migration capabilities of the portal. 
 - Added support for API Products that use Mutual TLS. Now API Providers can surface their API Products that use Mutual TLS authentication on the portal and developer can request access to them.
 - Added display-only support for API Products with custom authentication. This allows API Providers to expose on the portal their APIs that use custom authentication for documentation purposes. 

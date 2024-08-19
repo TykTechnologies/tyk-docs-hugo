@@ -17,9 +17,9 @@ There's a few things worth noting that can ensure high performance of your Tyk G
 
 ### Performance Expectations
 
-Our performance testing plan focused on replicating the setup of our customers, and tried not to optimise for "benchmarks": so no supercomputers and no sub-millisecond inner DC latency. Instead, we tested on a super-low performance 2 CPU Linode machine, with 50ms latency between Tyk and upstream. For testing, we used Tyk Gateway in Multi-Cloud mode, with default config. Test runner was using [Locust][2] framework and [Boomer][3] for load generation.
+Our performance testing plan focused on replicating the setup of our customers, and tried not to optimize for "benchmarks": so no supercomputers and no sub-millisecond inner DC latency. Instead, we tested on a super-low performance 2 CPU Linode machine, with 50ms latency between Tyk and upstream. For testing, we used Tyk Gateway in Multi-Cloud mode, with default config. Test runner was using [Locust][2] framework and [Boomer][3] for load generation.
 
-With the optimisations outlined below, and using our distributed rate limiter, Tyk can easily handle ~3,000 requests per second with analytics, key authentication, and quota checks enabled.
+With the optimizations outlined below, and using our distributed rate limiter, Tyk can easily handle ~3,000 requests per second with analytics, key authentication, and quota checks enabled.
 
 In the test below, Tyk v2.7 evaluates each request through its access control list, rate limiter, quota evaluator, and analytics recorder across a single test token and still retains a latency firmly under 70 milliseconds:
 
@@ -39,7 +39,7 @@ If you were to just test Tyk as a pass-through auth proxy, we can see that 4k RP
 
 {{< img src="/img/diagrams/deployGraphVanilla.png" alt="Tyk 2.7 performance" >}}
 
-This configuration has analytics recording disabled, but we are still authenticating the inbound request. As you can see, we easily handle the 4k RPS mark and we can go further with more optimisation.
+This configuration has analytics recording disabled, but we are still authenticating the inbound request. As you can see, we easily handle the 4k RPS mark and we can go further with more optimization.
 
 ### Change all the shared secrets
 
@@ -103,7 +103,7 @@ Tyk provides multiple [log levels]({{< ref "log-data" >}}): error, warn, info, d
 
 It is recommended to set to debug only for the duration of troubleshooting as it adds heavier resource overheads. In high performance use cases for Tyk Gateway, consider setting a log level lower than info to improve overall throughput.
 
-### Use the optimisation settings
+### Use the optimization settings
 The below settings will ensure connections are effectively re-used, removes a transaction from the middleware run that enforces org-level rules, enables the new rate limiter (by disabling sentinel rate limiter) and sets Tyk up to use an in-memory cache for session-state data to save a round-trip to Redis for some other transactions.
 
 Most of the changes below should be already in your `tyk.conf` by default:
@@ -134,7 +134,7 @@ If the latency between Tyk and your Upstream is around 50ms, then a single conne
 ### Protect Redis from overgrowing
 Please read carefully through this [doc]({{< ref "basic-config-and-security/security/authentication-authorization/physical-key-expiry" >}}) to make an *aware decision* about the expiration of your keys in Redis, after which they will be removed from Redis. If you don't set the lifetime, a zero default means that keys will stay in Redis until you manually delete them, which is no issue if you have a process outside Tyk Gateway to handle it. If you don't - and especially in scenarios that your flow creates many keys or access tokens for every user or even per call - your Redis can quickly get cluttered with obsolete tokens and eventually affect the performance of the Tyk Gateway.
 
-### Analytics Optimisations
+### Analytics Optimizations
 
 If using a [Redis cluster](https://redis.io/docs/management/scaling/) under high load it is recommended that analytics are distributed among the Redis shards. This can be configured by setting the [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) parameter to true. Furthermore, analytics can also be disabled for an API using the [do_not_track]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/other-root-objects" >}}) configuration parameter. Alternatively, tracking for analytics can be disabled for selected endpoints using the [do not track endpoint plugin]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#do-not-track-endpoint" >}}).
 

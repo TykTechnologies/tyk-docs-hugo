@@ -10,14 +10,14 @@ aliases:
 
 ## Key Requests
 
-A key request is a record that is generated when a developer requests an access token for an API published in the API Catalogue. The Key request encompasses the following information:
+A key request is a record that is generated when a developer requests an access token for an API published in the API Catalog. The Key request encompasses the following information:
 
 - The policy of which access is being requested
 - The developer doing the requesting
-- The catalogue entry in question
+- The catalog entry in question
 - The reasoning of why the developer should have access (these are dynamic fields and can be configured)
 
-When a developer requests access to an API Catalogue entry, this key request represents that request for access. The key request can then be acted on, either by the portal itself, or by an administrator. The key request does not grant a token yet, it simply marks the fact that a token has been requested and why.
+When a developer requests access to an API Catalog entry, this key request represents that request for access. The key request can then be acted on, either by the portal itself, or by an administrator. The key request does not grant a token yet, it simply marks the fact that a token has been requested and why.
 
 Tyk enables you to manage this flow in a few ways:
 
