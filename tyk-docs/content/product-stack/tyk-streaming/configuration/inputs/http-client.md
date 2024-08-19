@@ -119,11 +119,11 @@ input:
       ) }${! ("&next_token="+this.meta.next_token.not_null()) | "" }
     verb: GET
     rate_limit: foo_searches
-    # oauth2:
-    #   enabled: true
-    #   token_url: https://api.example.com/oauth2/token
-    #   client_key: "${EXAMPLE_KEY}"
-    #   client_secret: "${EXAMPLE_SECRET}"
+    oauth2:
+      enabled: true
+      token_url: https://api.example.com/oauth2/token
+      client_key: "${EXAMPLE_KEY}"
+      client_secret: "${EXAMPLE_SECRET}"
 
 rate_limit_resources:
   - label: foo_searches
@@ -232,7 +232,7 @@ Type: `string`
 Default: `""`  
 Options: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`, ``.
 
-<!-- ### oauth
+### oauth
 
 Allows you to specify open authentication via OAuth version 1.
 
@@ -258,9 +258,6 @@ Default: `""`
 ### oauth.consumer_secret
 
 A secret used to establish ownership of the consumer key.
-:::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-:::
 
 
 Type: `string`  
@@ -277,15 +274,12 @@ Default: `""`
 ### oauth.access_token_secret
 
 A secret provided in order to establish ownership of a given access token.
-:::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-:::
 
 
 Type: `string`  
-Default: `""`   -->
+Default: `""`
 
-<!-- ### oauth2
+### oauth2
 
 Allows you to specify open authentication via OAuth version 2 using the client credentials token flow.
 
@@ -311,9 +305,6 @@ Default: `""`
 ### oauth2.client_secret
 
 A secret used to establish ownership of the client key.
-:::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-:::
 
 
 Type: `string`  
@@ -334,7 +325,6 @@ A list of optional requested permissions.
 
 Type: `array`  
 Default: `[]`  
-Requires version 3.45.0 or newer  
 
 ### oauth2.endpoint_params
 
@@ -343,7 +333,6 @@ A list of optional endpoint parameters, values should be arrays of strings.
 
 Type: `object`  
 Default: `{}`  
-Requires version 4.21.0 or newer  
 
 ```yml
 # Examples
@@ -355,9 +344,8 @@ endpoint_params:
     - meow
     - quack
 ```
--->
 
-<!-- ### basic_auth
+### basic_auth
 
 Allows you to specify basic authentication.
 
@@ -383,15 +371,12 @@ Default: `""`
 ### basic_auth.password
 
 A password to authenticate with.
-:::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-:::
 
 
 Type: `string`  
-Default: `""`   -->
+Default: `""`
 
-<!-- ### jwt
+### jwt
 
 Allows you to specify JWT authentication.
 
@@ -468,14 +453,10 @@ Whether to allow the remote server to repeatedly request renegotiation. Enable t
 
 Type: `bool`  
 Default: `false`  
-Requires version 3.45.0 or newer  
 
-<!-- ### tls.root_cas
+### tls.root_cas
 
 An optional root certificate authority to use. This is a string, representing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
-:::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-:::
 
 
 Type: `string`  
@@ -502,9 +483,9 @@ Default: `""`
 # Examples
 
 root_cas_file: ./root_cas.pem
-``` -->
+```
 
-<!-- ### tls.client_certs
+### tls.client_certs
 
 A list of client certificates to use. For each certificate either the fields `cert` and `key`, or `cert_file` and `key_file` should be specified, but not both.
 
@@ -535,9 +516,6 @@ Default: `""`
 ### tls.client_certs[].key
 
 A plain text certificate key to use.
-:::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-:::
 
 
 Type: `string`  
@@ -562,10 +540,6 @@ Default: `""`
 ### tls.client_certs[].password
 
 A plain text password for when the private key is password encrypted in PKCS#1 or PKCS#8 format. The obsolete `pbeWithMD5AndDES-CBC` algorithm is not supported for the PKCS#8 format. Warning: Since it does not authenticate the ciphertext, it is vulnerable to padding oracle attacks that can let an attacker recover the plaintext.
-:::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-:::
-
 
 Type: `string`  
 Default: `""`  
@@ -576,7 +550,7 @@ Default: `""`
 password: foo
 
 password: ${KEY_PASSWORD}
-``` -->
+```
 
 ### extract_headers
 
@@ -736,7 +710,7 @@ Default: `true`
 
 ### stream.scanner
 
-The [scanner](TODO) by which the stream of bytes consumed will be broken out into individual messages. Scanners are useful for processing large sources of data without holding the entirety of it within memory. For example, the `csv` scanner allows you to process individual CSV rows without loading the entire CSV file in memory at once.
+The [scanner]({{< ref "/product-stack/tyk-streaming/configuration/scanners/overview" >}}) by which the stream of bytes consumed will be broken out into individual messages. Scanners are useful for processing large sources of data without holding the entirety of it within memory. For example, the `csv` scanner allows you to process individual CSV rows without loading the entire CSV file in memory at once.
 
 
 Type: `scanner`  
