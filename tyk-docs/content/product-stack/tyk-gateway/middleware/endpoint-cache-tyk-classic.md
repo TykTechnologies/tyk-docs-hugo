@@ -54,7 +54,7 @@ For example:
 
 In this example the endpoint caching middleware has been configured to cache all safe requests to two endpoints (`/widget` and `/fish`) with a cache refresh period of 60 seconds.
 
-#### Advanced endpoint cache
+#### Advanced endpoint cache {#tyk-classic-advanced-caching}
 
 For ultimate control over what Tyk caches, you should use the advanced configuration options for the per-endpoint cache. You can separately configure, for each HTTP method for an endpoint:
 - an individual cache refresh (timeout)
@@ -229,5 +229,52 @@ spec:
 
 ### Advanced endpoint cache
 
-<!-- TODO: awaiting example ->
+Advanced caching with Tyk Operator is a similar process to that for configuring the [advanced caching middleware in the Tyk Classic API Definition](#tyk-classic-advanced-caching).
 
+To enable the advanced middleware you must add a new `advance_cache_config` object to the `extended_paths` section of your API definition.
+
+This allows you to configure caching per endpoint. For each endpoint, it is possible to specify the endpoint path, method, list of response codes to cache, cache timeout and a cache key regular expression. The cache key regular expression represents a pattern match to cache only requests containing specific data in the [request body]({{< ref " basic-config-and-security/reduce-latency/caching/advanced-cache#selective-caching-by-body-value" >}})
+
+For example:
+
+```yaml
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-advance-cache
+spec:
+  name: httpbin-advance-cache
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-advance-cache
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        paths:
+          black_list: []
+          ignored: []
+          white_list: []
+        extended_paths:
+          advance_cache_config:
+          - path: /anything 
+            method: GET
+            cache_key_regex: ""
+            cache_response_codes: [200]
+  cache_options:
+    cache_timeout: 30
+    enable_cache: true
+```
+
+In this example the endpoint caching middleware has been configured to cache requests for the `/anything` endpoint as follows:
+
+| endpoint | HTTP response codes to cache | cache refresh timeout | body value regex |
+|----------|------------------------------|-----------------------|------------------|
+| `GET /anything` | 200 | 30 seconds (taken from `cache_options`) | none |
