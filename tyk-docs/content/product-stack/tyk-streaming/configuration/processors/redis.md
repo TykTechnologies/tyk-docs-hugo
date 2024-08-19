@@ -229,8 +229,6 @@ Default: `false`
 An optional root certificate authority to use. This is a string, representing a certificate chain from the parent
 trusted root certificate, to possible intermediate signing certificates, to the host certificate.
 
-This field contains sensitive information that usually shouldn't be added to a config directly.
-
 
 Type: `string`  
 Default: `""`
@@ -290,9 +288,6 @@ Default: `""`
 
 A plain text certificate key to use.
 
-This field contains sensitive information that usually shouldn't be added to a config directly.
-
-
 Type: `string`  
 Default: `""`
 
@@ -316,8 +311,6 @@ A plain text password for when the private key is password encrypted in PKCS#1 o
 obsolete `pbeWithMD5AndDES-CBC` algorithm is not supported for the PKCS#8 format. Warning: Since it does not
 authenticate the ciphertext, it is vulnerable to padding oracle attacks that can let an attacker recover the plaintext.
 
-This field contains sensitive information that usually shouldn't be added to a config directly.
-
 
 Type: `string`  
 Default: `""`
@@ -333,8 +326,8 @@ password: ${KEY_PASSWORD}
 ### command
 
 The command to execute.
-<!-- TODO: add a link -->
-This field supports interpolation functions.
+
+This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
 
 Type: `string`  
 
