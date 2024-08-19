@@ -51,7 +51,6 @@ A --|          |--> D
      \--> C --/
 ```
 
-<!-- TODO: add link to switch processor -->
 This flow would be easy to express in a standard Tyk Streams config, we could simply use a [switch processor]({{< ref "/product-stack/tyk-streaming/configuration/processors/switch" >}}) to route to either B or C depending on a condition on the result of A. However, this method of flow control quickly becomes unfeasible as the DAG gets more complicated, imagine expressing this flow using switch processors:
 
 ```text
