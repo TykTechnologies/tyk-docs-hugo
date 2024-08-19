@@ -601,7 +601,7 @@ include_patterns:
 
 ### rate_limit
 
-An optional [rate limit](/docs/components/rate_limits/about) to throttle requests by.
+An optional [rate limit]({{< ref "/product-stack/tyk-streaming/configuration/rate-limits/overview" >}}) to throttle requests by.
 
 
 Type: `string`  
