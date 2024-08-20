@@ -127,7 +127,7 @@ spec:
                   action: "no_action"
                   code: 200
                   data: ""
-                  headers: { }
+                  headers: {}
               path: "/get"
 ```
 
