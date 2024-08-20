@@ -309,7 +309,7 @@ Previously, Tyk would take the highest `rate` and the highest `per` from the pol
 
 With the fix applied in Tyk 5.4.0, the Gateway will now apply the highest effective rate to the key - so in this example, the key would take the rate limit from policy B: `rate = 100` and `per = 10` (10rps).
 
-Note that this corrected logic will be applied when creating new keys from Tyk 5.4.0 onwards, so if you have existing policies with rate limits defined and are applying these to keys, there may be a change in the effective rate limit configured in the key.
+Note that this corrected logic is applied when access keys are presented in API requests. If you are applying multiple policies to keys, there may be a change in the effective rate limit when using Tyk 5.4.0 compared with pre-5.4.0 versions.
 </details>
 </li>
 </ul>
