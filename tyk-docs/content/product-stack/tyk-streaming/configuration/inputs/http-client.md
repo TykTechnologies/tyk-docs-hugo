@@ -548,8 +548,6 @@ Default: `""`
 # Examples
 
 password: foo
-
-password: ${KEY_PASSWORD}
 ```
 
 ### extract_headers
