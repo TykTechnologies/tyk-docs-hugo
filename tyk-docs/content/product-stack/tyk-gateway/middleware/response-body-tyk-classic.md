@@ -170,7 +170,7 @@ spec:
               add_headers:
                 Content-Type: "application/json"
               act_on: false
-              delete_headers: [ ]
+              delete_headers: []
 ```
 
 ### Tyk Gateway < 5.3.0 Example {#gw-lt-5-3-example}
