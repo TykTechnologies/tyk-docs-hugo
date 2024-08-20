@@ -111,7 +111,6 @@ spec:
               path: /status/500
               return_to_service_after: 10
               samples: 4
-              # createOrUpdate failure  {"ApiDefinition": "default/httpbin-timeout-breaker", "error": "unable to create api: API Returned error: {\"Status\":\"Error\",\"Message\":\"Request body malformed\",\"Meta\":null} (code: 403)"
               threshold_percent: "0.5" # Tyk Dashboard API doesn't support strings.
 ```
 
