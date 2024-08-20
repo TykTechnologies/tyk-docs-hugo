@@ -2,10 +2,6 @@
 title: The Complete Kubernetes Tyk Demo
 tags: ["Tyk Tutorials", "Getting Started", "POC", "Proof of Concept", "Tyk PoC", "k8s", "Self Managed", "Open Source", "demo", "Tyk demo", "Tyk quick start", "Kubernetes"]
 description: "Learn to deploy and run a Tyk deployment in minutes on Kubernetes"
-menu:
-    main:
-        parent: "Quick Start"
-weight: 2
 ---
 
 The [tyk-k8s-demo](https://github.com/TykTechnologies/tyk-k8s-demo) repository allows you to start up an entire Tyk Stack
@@ -13,11 +9,12 @@ with all its dependencies as well as other tools that can integrate with Tyk.
 The repository will spin up everything in Kubernetes using `helm` and bash magic to get you started.
 
 ## Purpose
-Minimize the amount of effort needed to start up the Tyk infrastructure and show examples of how Tyk can be setup in k8s using different deployment architectures as well as different integrations.
+Minimize the amount of effort needed to start up the Tyk infrastructure and show examples of how Tyk can be set up in k8s 
+using different deployment architectures as well as different integrations.
 
-## Getting Started
+## Prerequisite 
 
-#### Requirements
+### Required CLIs
 You will need the following tools to be able to run this library.
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/)
 - [Helm](https://helm.sh/docs/intro/install/)
@@ -27,24 +24,35 @@ You will need the following tools to be able to run this library.
 
 Tested on Linux/Unix based systems on AMD64 and ARM architectures
 
-#### Initial setup
-Create `.env` file and update the appropriate fields with your licenses.
-If you require a trial license, you can obtain one [here](https://tyk.io/sign-up/).
-If you are looking to use the `tyk-gateway` deployment only you will
-not require any licensing as that is the open-source deployment.
+### License Key
 
-```
+#### When and how to obtain a license key
+If you are looking to use Tyk OSS (`tyk-gateway` deployment only) you will not require any licensing as that is the 
+open-source demo deployment.
+
+For the other deployments that are using our licensed product, you will need to sign up below (and 
+choose "Get in touch"). Take advantage of a free guided evaluation of the Tyk Dashboard & Developer Portal, and receive
+your temporary license along with installation instructions during the process. Alternatively, to get started quickly, 
+without infrastructure, or the need to install, get a 48-hour trial of Tyk Cloud and try the Tyk platform and get access 
+to all the features and capabilities.
+
+{{< button_left href="https://tyk.io/sign-up#self" color="green" content="Get started" >}}
+
+#### How to use the license key
+Once you obtained the license key, create `.env` file and update the appropriate fields with your licenses as follows:
+
+```bash
 git clone https://github.com/TykTechnologies/tyk-k8s-demo.git
 cd tyk-k8s-demo
 cp .env.example .env
 ```
 
-Depending on the deployments you would like install set values of the
-`LICENSE`, `MDCB_LICENSE` and `PORTAL_LICENSE` inside the `.env` file.
+Depending on the deployments you would like to install set values of the `LICENSE`, `MDCB_LICENSE`, and `PORTAL_LICENSE` inside the `.env` file.
 
 ### Minikube
-If you are deploying this on Minikube, you will need to enable the ingress
-addon. You can do so by running the following commands:
+
+If you are deploying this demo on [Minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fmacos%2Farm64%2Fstable%2Fhomebrew), 
+you will need to enable the **ingress addon**. You can do so by running the following commands:
 
 ```bash
 minikube start
@@ -56,14 +64,14 @@ minikube addons enable ingress
 ```bash
 ./up.sh --deployments portal,operator-httpbin tyk-stack
 ```
-This quick start command will stard up the entire Tyk stack along with the
-Tyk Enterprise Portal, Tyk Operator and httpbin CRD example.
+This quick start command will start up the entire Tyk stack along with the
+Tyk Enterprise Portal, Tyk Operator, and httpbin CRD example.
 
 ## Possible deployments
-- `tyk-stack`: Tyk single region self-managed deployment
-- `tyk-cp`: Tyk self-managed multi region control plane (Will be available in Q1 2024 with new Tyk Charts. Please use the [v2 tag](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v2) if you would like to deploy this)
-- `tyk-dp`: Tyk self-managed data plane, this can connect to Tyk Cloud or a Tyk Control Plane
-- `tyk-gateway`: Tyk oss self-managed single region
+- `tyk-stack`: Tyk Self Managed in a single region deployment
+- `tyk-cp`: Tyk control plane in a multi-region Tyk deployment. Until it is available with new Tyk Charts, please use the [v2 tag](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v2) if you would like this deployment.
+- `tyk-dp`: Tyk Self Managed data plane. This deployment is used for the hybrid gateways that can connect to Tyk Cloud or a Tyk Control Plane
+- `tyk-gateway`: Tyk OSS self-managed in a single region
 
 ## Dependencies Options
 ### Redis Options
