@@ -55,7 +55,7 @@ Version compatibility with other components in the Tyk stack. This takes the for
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 An illustrative example is shown below. -->
 <!-- TBP - to be published. Helm chart, MDCB, operator and sync versions are the new versions and as such will be published only a few hours after the main release of 
-the dashboard and gateway. We must clarify this at the time of publishing this RN and remove TBP later, once theHelm chart s are released -->
+the dashboard and gateway. We must clarify this at the time of publishing this RN and remove TBP later, once the Helm charts are released -->
 
 | Gateway Version | Recommended Compatibility | Backwards Compatibility |
 | --------------- | ------------------------- | ----------------------- |
