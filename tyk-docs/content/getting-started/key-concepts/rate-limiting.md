@@ -70,6 +70,20 @@ When multiple rate limits are configured, they are assessed in this order (if ap
 2. Key-level global rate limit
 3. Key-level per-API rate limit
 
+### Combining multiple policies configuring rate limits
+
+If more than one policy defining a rate limit is applied to a key then Tyk will apply the highest request rate permitted by any of the policies that defines a rate limit.
+
+If `rate` and `per` are configured in multiple policies applied to the same key then the Gateway will determine the effective rate limit configured for each policy and apply the highest to the key.
+
+Given, policy A with `rate` set to 90 and `per` set to 30 seconds (3rps) and policy B with `rate` set to 100 and `per` set to 10 seconds (10rps). If both are applied to a key, Tyk will take the rate limit from policy B as it results in a higher effective request rate (10rps).
+
+{{< note success >}}
+**Note**  
+
+Prior to Tyk 5.4.0 there was a long-standing bug in the calculation of the effective rate limit applied to the key where Tyk would combine the highest `rate` and highest `per` from the policies applied to the key, so for the example above the key would have `rate` set to 100 and `per` set to 30 giving an effective rate limit of 3.33rps. This has now been corrected.
+{{< /note >}}
+
 ## Rate limiting algorithms
 
 Different rate limiting algorithms are employed to cater to varying requirements, use cases and gateway deployments. A one-size-fits-all approach may not be suitable, as APIs can have diverse traffic patterns, resource constraints, and service level objectives. Some algorithms are more suited to protecting the upstream service from overload whilst others are suitable for per-client limiting to manage and control fair access to a shared resource.
