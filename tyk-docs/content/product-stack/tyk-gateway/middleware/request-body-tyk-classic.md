@@ -155,5 +155,5 @@ spec:
               add_headers:
                 Content-Type: "application/json"
               act_on: false
-              delete_headers: [ ]
+              delete_headers: []
 ```
