@@ -148,9 +148,7 @@ Request headers can be removed and inserted using the following fields within an
 
 The example below shows an `ApiDefinition` custom resource that adds *foo-req* and *bar-req* headers to the request before it is sent upstream. The *foo-req* header has a value of *foo-val* and the *bar-req* header has a value of *bar-val*. Furthermore, the *hello* header is removed from the request before it is sent upstream.
 
-<!-- QUESTION: Is this example valid? -->
-
-```yaml
+```yaml {linenos=true, linenostart=1, hl_lines=["25-29"]}
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:

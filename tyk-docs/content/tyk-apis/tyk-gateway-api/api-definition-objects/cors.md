@@ -33,7 +33,7 @@ It is possible to enable CORS for certain APIs so users can make browser-based r
 ```
 {{< tab_end >}}
 {{< tab_start "Tyk Operator API Definition" >}}
-```yaml
+```yaml {linenos=true, linenostart=1, hl_lines=["14-24"]}
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:

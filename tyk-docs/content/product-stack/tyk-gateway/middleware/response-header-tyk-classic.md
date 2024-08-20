@@ -209,7 +209,7 @@ spec:
 
 The example below shows an `ApiDefinition` resource that adds a *Foo* header, with the value *Bar*, to the response received from the upstream before it is sent back to the client. Furthermore, the *Server* header is removed from the upstream response before it is sent back to the client.
 
-```yaml
+```yaml {linenos=true, linenostart=1, hl_lines=["25-28"]}
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:
@@ -242,7 +242,7 @@ spec:
 
 ### Example compatible with Tyk Gateway < v5.3.0
 
-```yaml
+```yaml {linenos=true, linenostart=1, hl_lines=["14-15","27-30"]}
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:
