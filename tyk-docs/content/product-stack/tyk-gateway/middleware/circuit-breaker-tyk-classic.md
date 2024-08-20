@@ -111,7 +111,7 @@ spec:
               path: /status/500
               return_to_service_after: 10
               samples: 4
-              threshold_percent: "0.5" # Tyk Dashboard API doesn't support strings.
+              threshold_percent: "0.5"
 ```
 
 A circuit breaker has been configured to monitor HTTP GET requests to the /status/500 endpoint. It will configure a sampling window (samples) of 4 requests and calculate the ratio of failed requests (those returning HTTP 500 or above) within that window. If the ratio of failed requests exceeds 50% (threshold_percent = 0.5) then the breaker will be tripped. After it has tripped, the circuit breaker will remain open for 10 seconds (return_to_service_after). The circuit breaker will operate using the default half-open mode so when open, Tyk will periodically poll the upstream service to test if it has become available again.
