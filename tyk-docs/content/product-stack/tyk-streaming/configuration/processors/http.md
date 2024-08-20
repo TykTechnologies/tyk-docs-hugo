@@ -280,7 +280,7 @@ Allows you to specify open authentication via OAuth version 2 using the client c
 
 Type: `object`  
 
-### oauth2.enabled
+#### oauth2.enabled
 
 Whether to use OAuth version 2 in requests.
 
@@ -288,7 +288,7 @@ Whether to use OAuth version 2 in requests.
 Type: `bool`  
 Default: `false`  
 
-### oauth2.client_key
+#### oauth2.client_key
 
 A value used to identify the client to the token provider.
 
@@ -296,7 +296,7 @@ A value used to identify the client to the token provider.
 Type: `string`  
 Default: `""`  
 
-### oauth2.client_secret
+#### oauth2.client_secret
 
 A secret used to establish ownership of the client key.
 
@@ -304,7 +304,7 @@ A secret used to establish ownership of the client key.
 Type: `string`  
 Default: `""`  
 
-### oauth2.token_url
+#### oauth2.token_url
 
 The URL of the token provider.
 
@@ -312,7 +312,7 @@ The URL of the token provider.
 Type: `string`  
 Default: `""`  
 
-### oauth2.scopes
+#### oauth2.scopes
 
 A list of optional requested permissions.
 
@@ -320,7 +320,7 @@ A list of optional requested permissions.
 Type: `array`  
 Default: `[]`  
 
-### oauth2.endpoint_params
+#### oauth2.endpoint_params
 
 A list of optional endpoint parameters, values should be arrays of strings.
 
