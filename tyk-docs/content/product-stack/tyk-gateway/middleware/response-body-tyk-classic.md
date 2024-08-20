@@ -135,9 +135,9 @@ spec:
         name: Default
         use_extended_paths: true
         paths:
-          black_list: [ ]
-          ignored: [ ]
-          white_list: [ ]
+          black_list: []
+          ignored: []
+          white_list: []
         extended_paths:
           transform:
             - method: POST
