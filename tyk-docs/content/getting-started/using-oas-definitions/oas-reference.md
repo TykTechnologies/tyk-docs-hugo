@@ -22,19 +22,22 @@ If there's a feature you're looking to use that isn't yet implemented, let us kn
 
 | Feature                               | Implemented      | API Designer  |
 |---------------------------------------|------------------|---------------|
-| API Name                              | ✅               | ✅            |
+| API name                              | ✅               | ✅            |
 | Status (draft/active)                 | ✅               | ✅            |
-| API Categories                        | ✅               | ✅            |
+| API categories                        | ✅               | ✅            |
 | API ID/API URL(s)                     | ✅               | ✅            |
-| API Ownership                         | ✅               | ✅            |
-| API Versioning                        | ✅               | ✅            |
+| API ownership                         | ✅               | ✅            |
+| API versioning                        | ✅               | ✅            |
+| API segment tags                      | ✅               | ✅            |
 
 ### Traffic Routing
 
 | Feature                               | Implemented      | Api Designer  |
 |---------------------------------------|------------------|---------------|
-| Listen Path/ Slug                     | ✅               | ✅            |
+| Listen path                           | ✅               | ✅            |
 | Target URL                            | ✅               | ✅            |
+| Upstream load balancing               | ❌️               | ❌️            |
+| Uptime tests                          | ❌️               | ❌️            |
 
 ### Client to Gateway Authentication and Authorization
 
@@ -47,46 +50,51 @@ If there's a feature you're looking to use that isn't yet implemented, let us kn
 | OAuth 2                               | ✅               | ✅            |
 | mTLS                                  | ✅               | ✅            |
 | HMAC                                  | ✅               | ✅            |
-| Basic Authentication                  | ✅               | ✅            |
-| Custom Authentication Plugin          | ✅               | ✅            |
-| Multiple Authentication               | ✅               | ✅            |
-| IP Allowlist                          | ❌️               | ❌️            |
-| IP Blocklist                          | ❌️               | ❌️            |
-| GW Request Signing                    | ❌️               | ❌️            |
-| Token expiration (session_lifetime)   | ❌️               | ❌️            |
+| Basic authentication                  | ✅               | ✅            |
+| Custom authentication plugin          | ✅               | ✅            |
+| Multiple authentication               | ✅               | ✅            |
+| IP access control                     | ❌️               | ❌️            |
+| Client-GW request signing             | ❌️               | ❌️            |
+| Access token expiration               | ❌️               | ❌️            |
 
 ### Gateway to Upstream Authentication
 
 | Feature                               | Implemented      | API Designer  |
 |---------------------------------------|------------------|---------------|
-| Upstream Certificates (mTLS)          | ✅               | ✅            |
-| Public Key Certificate Pinning        | ✅               | ❌️            |
-| Upstream Request Signing              | ❌️               | ❌️            |
+| Upstream certificates (mTLS)          | ✅               | ✅            |
+| Public Key certificate pinning        | ✅               | ✅            |
+| GW-Upstream request signing           | ❌️               | ❌️            |
 
 ### API-level (Global) Features
 
 | Feature                               | Implemented      | API Designer  |
 |---------------------------------------|------------------|---------------|
-| Detailed recording (in Log Browser)   | ✅               | ✅            |
-| Config Data                           | ✅               | ✅            |
-| Context Variables                     | ✅               | ✅            |
+| Custom config data                    | ✅               | ✅            |
+| Context variables                     | ✅               | ✅            |
 | CORS                                  | ✅               | ✅            |
-| Service Discovery                     | ✅               | ✅            |
-| Segment Tags                          | ✅               | ✅            |
+| Service discovery                     | ✅               | ✅            |
 | Internal API (not exposed by Gateway) | ✅               | ✅            |
-| Global Header Transform               | ✅               | ✅            |
+| Header Transform (API-level)          | ✅               | ✅            |
 | API-level Rate Limit                  | ✅               | ✅            |
 | Plugin Bundles                        | ✅               | ✅            |
-| Custom Request Plugins (pre/preAuth/post) | ✅               | ✅            |
-| Custom Response Plugin                    | ✅               | ✅            |
-| Custom Analytics Plugin                   | ❌️               | ❌️            |
-| Batch Requests                        | ❌️               | ❌️            |
-| Analytics API Tagging (tag_headers)   | ❌️               | ❌️            |
-| expire_analytics_after                | ❌️               | ❌️            |
-| Do not track Analytics (per API)      | ❌️               | ❌️            |
-| Webhooks                              | ❌️               | ❌️            |
-| Preserve Host Header                  | ❌️               | ❌️            |
-| Transport (proxy.transport)           | ❌️               | ❌️            |
+| Custom request plugins (pre/preAuth/post) | ✅               | ✅            |
+| Custom response plugin                    | ✅               | ✅            |
+| Batch requests                        | ❌️               | ❌️            |
+| Request size limit (API-level)        | ❌️               | ❌️            |
+| Event handling: webhooks              | ✅               | ✅            |
+| Event handling: custom handlers       | ❌️               | ❌️            |
+| Preserve host header                  | ❌️               | ❌️            |
+
+### Traffic Logs
+
+| Feature                               | Implemented      | API Designer  |
+|---------------------------------------|------------------|---------------|
+| Detailed recording (in Log Browser)   | ✅               | ✅            |
+| Traffic log custom tags               | ❌️               | ❌️            |
+| Set traffic log expiry                | ❌️               | ❌️            |
+| Do not track (API-level)              | ✅               | ✅            |
+| Custom Analytics Plugin               | ❌️               | ❌️            |
+
 
 ### Endpoint-level Features
 
@@ -95,28 +103,19 @@ If there's a feature you're looking to use that isn't yet implemented, let us kn
 | Allow                                 | ✅               | ✅            |
 | Block                                 | ✅               | ✅            |
 | Cache                                 | ✅               | ✅            |
-| Circuit Breaker                       | ✅               | ✅            |
-| Track Endpoint                        | ✅               | ✅            |
-| Do Not Track                          | ✅               | ✅            |
-| Enforced Timeout                      | ✅               | ✅            |
-| Ignore Authentication                 | ✅               | ✅            |
-| Internal Endpoint                     | ✅               | ✅            |
-| URL Rewrite                           | ✅               | ✅            |
-| Validate Request                      | ✅               | ✅            |
-| Request Size Limit                    | ✅               | ✅            |
-| Request Method Transform              | ✅               | ✅            |
-| Request Header Transform              | ✅               | ✅            |
-| Request Body Transform                | ✅               | ✅            |
-| Response Header Transform             | ✅               | ✅            |
-| Response Body Transform               | ✅               | ✅            |
-| Mock Response                         | ✅               | ✅            |
-| Virtual Endpoint                      | ✅               | ✅            |
-
-### Working with Tyk OAS API Definitions
-
-| Feature                               | Implemented      | API Designer  |
-|---------------------------------------|------------------|---------------|
-| API Export                            | ✅               | ✅            |
-| API Raw OAS Editor                    | ✅               | ✅            |
-| API Endpoint CRUD Operations          | ✅               | ✅            |
-| Middleware CRUD Operations            | ✅               | ✅            |
+| Circuit breaker                       | ✅               | ✅            |
+| Track endpoint                        | ✅               | ✅            |
+| Do not track                          | ✅               | ✅            |
+| Enforced timeout                      | ✅               | ✅            |
+| Ignore authentication                 | ✅               | ✅            |
+| Internal endpoint (not exposed by Gateway) | ✅               | ✅            |
+| URL rewrite                           | ✅               | ✅            |
+| Validate request                      | ✅               | ✅            |
+| Request size limit                    | ✅               | ✅            |
+| Request method transform              | ✅               | ✅            |
+| Request header transform              | ✅               | ✅            |
+| Request body transform                | ✅               | ✅            |
+| Response header transform             | ✅               | ✅            |
+| Response body transform               | ✅               | ✅            |
+| Mock response                         | ✅               | ✅            |
+| Virtual endpoint                      | ✅               | ✅            |
