@@ -226,14 +226,14 @@ Type: `string`
 Default: `""`  
 Options: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`, ``.
 
-<!-- ### oauth
+### oauth
 
 Allows you to specify open authentication via OAuth version 1.
 
 
 Type: `object`  
 
-### oauth.enabled
+#### oauth.enabled
 
 Whether to use OAuth version 1 in requests.
 
@@ -241,7 +241,7 @@ Whether to use OAuth version 1 in requests.
 Type: `bool`  
 Default: `false`  
 
-### oauth.consumer_key
+#### oauth.consumer_key
 
 A value used to identify the client to the service provider.
 
@@ -249,18 +249,15 @@ A value used to identify the client to the service provider.
 Type: `string`  
 Default: `""`  
 
-### `oauth.consumer_secret`
+#### oauth.consumer_secret
 
 A secret used to establish ownership of the consumer key.
-:::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-:::
 
 
 Type: `string`  
 Default: `""`  
 
-### `oauth.access_token`
+#### oauth.access_token
 
 A value used to gain access to the protected resources on behalf of the user.
 
@@ -268,25 +265,22 @@ A value used to gain access to the protected resources on behalf of the user.
 Type: `string`  
 Default: `""`  
 
-### `oauth.access_token_secret`
+#### oauth.access_token_secret
 
 A secret provided in order to establish ownership of a given access token.
-:::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-:::
 
 
 Type: `string`  
 Default: `""`  
 
-### `oauth2`
+### oauth2
 
 Allows you to specify open authentication via OAuth version 2 using the client credentials token flow.
 
 
 Type: `object`  
 
-### `oauth2.enabled`
+### oauth2.enabled
 
 Whether to use OAuth version 2 in requests.
 
@@ -294,7 +288,7 @@ Whether to use OAuth version 2 in requests.
 Type: `bool`  
 Default: `false`  
 
-### `oauth2.client_key`
+### oauth2.client_key
 
 A value used to identify the client to the token provider.
 
@@ -302,18 +296,15 @@ A value used to identify the client to the token provider.
 Type: `string`  
 Default: `""`  
 
-### `oauth2.client_secret`
+### oauth2.client_secret
 
 A secret used to establish ownership of the client key.
-:::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-:::
 
 
 Type: `string`  
 Default: `""`  
 
-### `oauth2.token_url`
+### oauth2.token_url
 
 The URL of the token provider.
 
@@ -321,7 +312,7 @@ The URL of the token provider.
 Type: `string`  
 Default: `""`  
 
-### `oauth2.scopes`
+### oauth2.scopes
 
 A list of optional requested permissions.
 
@@ -329,7 +320,7 @@ A list of optional requested permissions.
 Type: `array`  
 Default: `[]`  
 
-### `oauth2.endpoint_params`
+### oauth2.endpoint_params
 
 A list of optional endpoint parameters, values should be arrays of strings.
 
