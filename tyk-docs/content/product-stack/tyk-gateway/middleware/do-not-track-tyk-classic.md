@@ -65,7 +65,6 @@ The process for configuring the middleware in Tyk Operator is similar to that ex
 The example Tyk Operator API Definition below configures an API to listen on path `/httpbin` and forwards requests upstream to http://httpbin.org. In this example the do-not-track middleware has been configured for requests to the GET /headers endpoint. Any such calls will not generate transaction records from the Gateway and so will not appear in the analytics. Conversely, requests to the GET /get endpoint will appear in the analytics.
 
 ```yaml {linenos=true, linenostart=1}
-# `do_not_track_endpoints` allows you to manually disable tracking for requests to specific endpoints by method and path
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:
