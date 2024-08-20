@@ -29,7 +29,7 @@ Our minor releases are supported until our next minor comes out.
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 **Attention: Please read this section carefully**
 
-There are no breaking changes in this release.
+We have fixed a bug in the way that Tyk calculates the [key-level rate limit]({{< ref "getting-started/key-concepts/rate-limiting#key-level-rate-limiting" >}}) when multiple policies are applied to the same key. This fix alters the logic used to calculate the effective rate limit and so may lead to a different rate limit being applied to keys generated from your existing policies. See the [change log](#fixed) for details of the change.
 
 ### Dependencies {#dependencies-5.4.0}
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
@@ -295,6 +295,21 @@ Fixed an issue where the Gateway did not respect API domain settings when there 
 <summary>Resolved nested field mapping issue in Universal Data Graph</summary>
 
 Addressed a problem with nested field mapping in UDG for GraphQL (GQL) operations. Previously, querying a single nested field caused an error, while including another *normal* field from the same level allowed the query to succeed. This issue has been fixed to ensure consistent behavior regardless of the query composition.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed an error in the calculation of effective rate limit from multiple policies</summary>
+
+Fixed a long-standing bug in the algorithm used to determine the effective rate limit when multiple policies are applied to a key. If more than one policy is applied to a key then Tyk will apply the highest request rate permitted by any of the policies that defines a rate limit.
+
+Rate limits in Tyk are defined using two elements: `rate`, which is the number of requests and `per`, which is the period over which those requests can be sent. So, if `rate` is 90 and `per` is 30 seconds for a key, Tyk will permit a maximum of 90 requests to be made using the key in a 30 second period, giving an effective maximum of 180 requests per minute (or 3 rps).
+
+Previously, Tyk would take the highest `rate` and the highest `per` from the policies applied to a key when determining the effective rate limit. So, if policy A had `rate` set to 90 and `per` set to 30 seconds (3rps) while policy B had `rate` set to 100 and `per` set to 10 seconds (10rps) and both were applied to a key, the rate limit configured in the key would be: `rate = 100` and `per = 30` giving a rate of 3.33rps.
+
+With the fix applied in Tyk 5.4.0, the Gateway will now apply the highest effective rate to the key - so in this example, the key would take the rate limit from policy B: `rate = 100` and `per = 10` (10rps).
+
+Note that this corrected logic is applied when access keys are presented in API requests. If you are applying multiple policies to keys, there may be a change in the effective rate limit when using Tyk 5.4.0 compared with pre-5.4.0 versions.
 </details>
 </li>
 </ul>
