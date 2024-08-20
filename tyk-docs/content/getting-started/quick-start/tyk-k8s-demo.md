@@ -201,7 +201,7 @@ Furthermore, you can also add any Tyk environment variables to your `.env` file 
 their respective Tyk deployments.
 
 Example:
-```
+```env
 ...
 TYK_MDCB_SYNCWORKER_ENABLED=true
 TYK_MDCB_SYNCWORKER_HASHKEYS=true
