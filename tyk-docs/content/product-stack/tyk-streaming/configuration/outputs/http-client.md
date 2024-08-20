@@ -210,7 +210,6 @@ Optionally set a level at which the request and response payload of each request
 
 Type: `string`  
 Default: `""`  
-Requires version 4.12.0 or newer  
 Options: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`, ``.
 
 ### oauth
@@ -530,10 +529,8 @@ Default: `""`
 # Examples
 
 password: foo
-
-password: ${KEY_PASSWORD}
 ```
--->
+
 ### extract_headers
 
 Specify which response headers should be added to resulting synchronous response messages as metadata. Header keys are lowercased before matching, so ensure that your patterns target lowercased versions of the header keys that you expect. This field is not applicable unless `propagate_response` is set to `true`.
@@ -777,8 +774,7 @@ Create explicit multipart HTTP requests by specifying an array of parts to add t
 
 
 Type: `array`  
-Default: `[]`  
-Requires version 3.63.0 or newer  
+Default: `[]`   
 
 ### multipart[].content_type
 
