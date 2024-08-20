@@ -101,4 +101,4 @@ spec:
 
 The example API Definition above configures an API to listen on path `/transform` and forwards requests upstream to http://httpbin.org.
 
-In this example the Request Method Transform middleware has been configured for HTTP `GET` requests to the `/anything` endpoint. Any request received to that endpoint will be modified to `POST /anything`.
+In this example the Request Method Transform middleware has been configured for `HTTP GET` requests to the `/anything` endpoint. Any request received to that endpoint will be modified to `POST /anything`.
