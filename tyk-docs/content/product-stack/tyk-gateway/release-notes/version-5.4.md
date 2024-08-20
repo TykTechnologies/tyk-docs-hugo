@@ -303,7 +303,7 @@ Addressed a problem with nested field mapping in UDG for GraphQL (GQL) operation
 
 Fixed a long-standing bug in the algorithm used to determine the effective rate limit when multiple policies are applied to a key. If more than one policy is applied to a key then Tyk will apply the highest request rate permitted by any of the policies that defines a rate limit.
 
-Rate limits in Tyk are defined using two elements: `rate`, which is the number of requests and `per`, which is the period over which those requests can be sent. So, if `rate` is 90 and `per` is 30 seconds for a key, Tyk will permit a maximum of 100 requests to be made using the key in a 30 second period, giving an effective maximum of 180 requests per minute (or 3 rps).
+Rate limits in Tyk are defined using two elements: `rate`, which is the number of requests and `per`, which is the period over which those requests can be sent. So, if `rate` is 90 and `per` is 30 seconds for a key, Tyk will permit a maximum of 90 requests to be made using the key in a 30 second period, giving an effective maximum of 180 requests per minute (or 3 rps).
 
 Previously, Tyk would take the highest `rate` and the highest `per` from the policies applied to a key when determining the effective rate limit. So, if policy A had `rate` set to 90 and `per` set to 30 seconds (3rps) while policy B had `rate` set to 100 and `per` set to 10 seconds (10rps) and both were applied to a key, the rate limit configured in the key would be: `rate = 100` and `per = 30` giving a rate of 3.33rps.
 
