@@ -133,7 +133,7 @@ spec:
               path: "/get"
 ```
 
-In this example the block list middleware has been configured for HTTP `GET` requests to the `/get` endpoint. Requests to these endpoints will be rejected with `HTTP 403 Forbidden`.
+In this example the block list middleware has been configured for HTTP `GET` requests to the `/get` endpoint. Requests to this endpoint will be rejected with `HTTP 403 Forbidden`.
 Note that the block list has been configured to be case insensitive, so calls to `GET /Get` will not be rejected.
 Note also that the endpoint path has not been terminated with `$`. Requests to, for example, `GET /get/foobar` will be rejected as the [regular expression pattern match]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware#endpoint-parsing" >}}) will recognize this as `GET /get`.
 
