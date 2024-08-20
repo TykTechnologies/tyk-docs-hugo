@@ -171,7 +171,7 @@ The example API Definition below configures an API to listen on path `/url-rewri
 
 In this example a basic trigger has been configured to match the path for a request to the `GET /get` endpoint against the pure regex `/get`. The request (target) URL will then be rewritten to `/xml` ready for processing by the next middleware in the chain.
 
-```yaml {linenos=true, linenostart=1}
+```yaml {linenos=true, linenostart=1, hl_lines=["26-31"]}
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:

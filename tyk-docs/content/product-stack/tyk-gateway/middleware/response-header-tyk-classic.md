@@ -202,7 +202,7 @@ In this example the Response Header Transform middleware (`transform_response_he
 
 #### Example
 
-```yaml {linenos=true, linenostart=1}
+```yaml {linenos=true, linenostart=1, hl_lines=["54-60"]}
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:
@@ -269,7 +269,7 @@ spec:
 
 If using Tyk Gateway < v5.3.0 then a `response_processor` object must be added to the API definition containing a `header_injector` item, as highlighted below:
 
-```yaml  {linenos=true, linenostart=1, hl_lines=["17", "19"]}
+```yaml  {linenos=true, linenostart=1, hl_lines=["17", "19", "57-63"]}
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:

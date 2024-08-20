@@ -81,7 +81,7 @@ The process for configuring the middleware in Tyk Operator is similar to that ex
 In the example below the ignore authentication middleware has been configured for requests to the `GET /get` endpoint. Any such calls will skip the authentication step in the Tyk Gateway's processing chain.
 - the middleware has been configured to be case insensitive, so calls to `GET /Get` will also skip authentication
 
-```yaml {linenos=true, linenostart=1}
+```yaml {linenos=true, linenostart=1, hl_lines=["27-35"]}
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:

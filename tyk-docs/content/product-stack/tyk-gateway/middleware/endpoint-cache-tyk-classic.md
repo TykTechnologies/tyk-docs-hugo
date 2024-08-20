@@ -189,7 +189,7 @@ Configuring simple endpoint caching in Tyk Operator is similar to the process fo
 
 In the API-level `cache_options` object you must enable caching by setting `enable_cache` to true and configure the cache refresh period by setting a value for the `cache_timeout` in seconds. To allow selective caching per-endpoint you should also set `cache_all_safe_requests`to `false`.
 
-```yaml {linenos=true, linenostart=1}
+```yaml {linenos=true, linenostart=1, hl_lines=["26-35"]}
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:
@@ -237,7 +237,7 @@ This allows you to configure caching per endpoint. For each endpoint, it is poss
 
 For example:
 
-```yaml
+```yaml {linenos=true, linenostart=1, hl_lines=["26-35"]}
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:

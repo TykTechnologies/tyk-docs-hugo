@@ -110,7 +110,7 @@ In the examples below, the Response Body Transform middleware (`transform_respon
 
 ### Example
 
-```yaml {linenos=true, linenostart=1}
+```yaml {linenos=true, linenostart=1, hl_lines=["45-53"]}
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:
@@ -177,7 +177,7 @@ spec:
 
 If using Tyk Gateway < v5.3.0 then a `response_processor` object must be added to the API definition containing a `response_body_transform` item, as highlighted below:
 
-```yaml {linenos=true, linenostart=1, hl_lines=["17-18"]}
+```yaml {linenos=true, linenostart=1, hl_lines=["17-18", "48-56"]}
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:

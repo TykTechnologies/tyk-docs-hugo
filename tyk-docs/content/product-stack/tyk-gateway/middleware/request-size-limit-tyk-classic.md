@@ -100,7 +100,7 @@ The process for configuring the request size_limits middleware for a specific en
 
 To configure the request size_limits middleware you must add a new `size_limits` object to the `extended_paths` section of your API definition, for example:
 
-```yaml {linenos=true, linenostart=1}
+```yaml {linenos=true, linenostart=1, hl_lines=["22-25"]}
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:
