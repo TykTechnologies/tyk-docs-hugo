@@ -92,7 +92,7 @@ The process for configuring the middleware in Tyk Operator is similar to that ex
 
 The example API Definition below configures an API to listen on path `/httpbin` and forwards requests upstream to http://httpbin.org.
 
-In this example the Validate JSON middleware has been configured for requests to the GET /get endpoint. For any call made to this endpoint, Tyk will compare the request body with the schema and, if it does not match, the request will be rejected with the error code HTTP 422 Unprocessable Entity.
+In this example, the Validate JSON middleware has been configured for requests to the `GET /get` endpoint. For any call made to this endpoint, Tyk will compare the request body with the schema and, if it does not match, the request will be rejected with the error code `HTTP 422 Unprocessable Entity`.
 
 ```yaml  {linenos=true, linenostart=1}
 apiVersion: tyk.tyk.io/v1alpha1
