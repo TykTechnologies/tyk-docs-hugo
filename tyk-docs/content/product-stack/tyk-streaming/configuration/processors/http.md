@@ -33,36 +33,36 @@ http:
     include_prefixes: []
     include_patterns: []
   dump_request_log_level: ""
-  # oauth:
-  #   enabled: false
-  #   consumer_key: ""
-  #   consumer_secret: ""
-  #   access_token: ""
-  #   access_token_secret: ""
-  # oauth2:
-  #   enabled: false
-  #   client_key: ""
-  #   client_secret: ""
-  #   token_url: ""
-  #   scopes: []
-  #   endpoint_params: {}
-  # basic_auth:
-  #   enabled: false
-  #   username: ""
-  #   password: ""
-  # jwt:
-  #   enabled: false
-  #   private_key_file: ""
-  #   signing_method: ""
-  #   claims: {}
-  #   headers: {}
-  # tls:
-  #   enabled: false
-  #   skip_cert_verify: false
-  #   enable_renegotiation: false
-  #   root_cas: ""
-  #   root_cas_file: ""
-  #   client_certs: []
+  oauth:
+    enabled: false
+    consumer_key: ""
+    consumer_secret: ""
+    access_token: ""
+    access_token_secret: ""
+  oauth2:
+    enabled: false
+    client_key: ""
+    client_secret: ""
+    token_url: ""
+    scopes: []
+    endpoint_params: {}
+  basic_auth:
+    enabled: false
+    username: ""
+    password: ""
+  jwt:
+    enabled: false
+    private_key_file: ""
+    signing_method: ""
+    claims: {}
+    headers: {}
+  tls:
+    enabled: false
+    skip_cert_verify: false
+    enable_renegotiation: false
+    root_cas: ""
+    root_cas_file: ""
+    client_certs: []
   extract_headers:
     include_prefixes: []
     include_patterns: []
@@ -85,7 +85,7 @@ The `rate_limit` field can be used to specify a rate limit to cap the rate of re
 
 The URL and header values of this type can be dynamically set using [function interpolations]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
 
-In order to map or encode the payload to a specific request body, and map the response back into the original payload instead of replacing it entirely, you can use the [branch]({{< ref "/product-stack/tyk-streaming/configuration/processors/branch" >}}).
+In order to map or encode the payload to a specific request body, and map the response back into the original payload instead of replacing it entirely, you can use the [branch]({{< ref "/product-stack/tyk-streaming/configuration/processors/branch" >}}) processor.
 
 ## Response Codes
 
