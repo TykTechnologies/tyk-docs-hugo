@@ -233,7 +233,7 @@ Allows you to specify open authentication via OAuth version 1.
 
 Type: `object`  
 
-#### oauth.enabled
+### oauth.enabled
 
 Whether to use OAuth version 1 in requests.
 
@@ -241,7 +241,7 @@ Whether to use OAuth version 1 in requests.
 Type: `bool`  
 Default: `false`  
 
-#### oauth.consumer_key
+### oauth.consumer_key
 
 A value used to identify the client to the service provider.
 
@@ -249,7 +249,7 @@ A value used to identify the client to the service provider.
 Type: `string`  
 Default: `""`  
 
-#### oauth.consumer_secret
+### oauth.consumer_secret
 
 A secret used to establish ownership of the consumer key.
 
@@ -257,7 +257,7 @@ A secret used to establish ownership of the consumer key.
 Type: `string`  
 Default: `""`  
 
-#### oauth.access_token
+### oauth.access_token
 
 A value used to gain access to the protected resources on behalf of the user.
 
@@ -265,7 +265,7 @@ A value used to gain access to the protected resources on behalf of the user.
 Type: `string`  
 Default: `""`  
 
-#### oauth.access_token_secret
+### oauth.access_token_secret
 
 A secret provided in order to establish ownership of a given access token.
 
@@ -280,7 +280,7 @@ Allows you to specify open authentication via OAuth version 2 using the client c
 
 Type: `object`  
 
-#### oauth2.enabled
+### oauth2.enabled
 
 Whether to use OAuth version 2 in requests.
 
@@ -288,7 +288,7 @@ Whether to use OAuth version 2 in requests.
 Type: `bool`  
 Default: `false`  
 
-#### oauth2.client_key
+### oauth2.client_key
 
 A value used to identify the client to the token provider.
 
@@ -296,7 +296,7 @@ A value used to identify the client to the token provider.
 Type: `string`  
 Default: `""`  
 
-#### oauth2.client_secret
+### oauth2.client_secret
 
 A secret used to establish ownership of the client key.
 
@@ -304,7 +304,7 @@ A secret used to establish ownership of the client key.
 Type: `string`  
 Default: `""`  
 
-#### oauth2.token_url
+### oauth2.token_url
 
 The URL of the token provider.
 
@@ -312,7 +312,7 @@ The URL of the token provider.
 Type: `string`  
 Default: `""`  
 
-#### oauth2.scopes
+### oauth2.scopes
 
 A list of optional requested permissions.
 
@@ -320,7 +320,7 @@ A list of optional requested permissions.
 Type: `array`  
 Default: `[]`  
 
-#### oauth2.endpoint_params
+### oauth2.endpoint_params
 
 A list of optional endpoint parameters, values should be arrays of strings.
 
@@ -346,7 +346,7 @@ Allows you to specify basic authentication.
 
 Type: `object`  
 
-#### basic_auth.enabled
+### basic_auth.enabled
 
 Whether to use basic authentication in requests.
 
@@ -354,7 +354,7 @@ Whether to use basic authentication in requests.
 Type: `bool`  
 Default: `false`  
 
-#### basic_auth.username
+### basic_auth.username
 
 A username to authenticate as.
 
@@ -362,7 +362,7 @@ A username to authenticate as.
 Type: `string`  
 Default: `""`  
 
-#### basic_auth.password
+### basic_auth.password
 
 A password to authenticate with.
 
@@ -377,7 +377,7 @@ Allows you to specify JWT authentication.
 
 Type: `object`  
 
-#### jwt.enabled
+### jwt.enabled
 
 Whether to use JWT authentication in requests.
 
@@ -385,7 +385,7 @@ Whether to use JWT authentication in requests.
 Type: `bool`  
 Default: `false`  
 
-#### jwt.private_key_file
+### jwt.private_key_file
 
 A file with the PEM encoded via PKCS1 or PKCS8 as private key.
 
@@ -393,7 +393,7 @@ A file with the PEM encoded via PKCS1 or PKCS8 as private key.
 Type: `string`  
 Default: `""`  
 
-#### jwt.signing_method
+### jwt.signing_method
 
 A method used to sign the token such as RS256, RS384, RS512 or EdDSA.
 
@@ -401,7 +401,7 @@ A method used to sign the token such as RS256, RS384, RS512 or EdDSA.
 Type: `string`  
 Default: `""`  
 
-#### jwt.claims
+### jwt.claims
 
 A value used to identify the claims that issued the JWT.
 
@@ -409,7 +409,7 @@ A value used to identify the claims that issued the JWT.
 Type: `object`  
 Default: `{}`  
 
-#### jwt.headers
+### jwt.headers
 
 Add optional key/value headers to the JWT.
 
@@ -424,7 +424,7 @@ Custom TLS settings can be used to override system defaults.
 
 Type: `object`  
 
-#### tls.enabled
+### tls.enabled
 
 Whether custom TLS settings are enabled.
 
@@ -432,7 +432,7 @@ Whether custom TLS settings are enabled.
 Type: `bool`  
 Default: `false`  
 
-#### tls.skip_cert_verify
+### tls.skip_cert_verify
 
 Whether to skip server side certificate verification.
 
@@ -440,7 +440,7 @@ Whether to skip server side certificate verification.
 Type: `bool`  
 Default: `false`  
 
-#### tls.enable_renegotiation
+### tls.enable_renegotiation
 
 Whether to allow the remote server to repeatedly request renegotiation. Enable this option if you're seeing the error message `local error: tls: no renegotiation`.
 
@@ -448,7 +448,7 @@ Whether to allow the remote server to repeatedly request renegotiation. Enable t
 Type: `bool`  
 Default: `false`  
 
-#### tls.root_cas
+### tls.root_cas
 
 An optional root certificate authority to use. This is a string, representing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
 
@@ -465,7 +465,7 @@ root_cas: |-
   -----END CERTIFICATE-----
 ```
 
-#### tls.root_cas_file
+### tls.root_cas_file
 
 An optional path of a root certificate authority file to use. This is a file, often with a .pem extension, containing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
 
@@ -479,7 +479,7 @@ Default: `""`
 root_cas_file: ./root_cas.pem
 ```
 
-#### tls.client_certs
+### tls.client_certs
 
 A list of client certificates to use. For each certificate either the fields `cert` and `key`, or `cert_file` and `key_file` should be specified, but not both.
 
@@ -499,7 +499,7 @@ client_certs:
     key_file: ./example.key
 ```
 
-#### tls.client_certs[].cert
+### tls.client_certs[].cert
 
 A plain text certificate to use.
 
@@ -507,7 +507,7 @@ A plain text certificate to use.
 Type: `string`  
 Default: `""`  
 
-#### tls.client_certs[].key
+### tls.client_certs[].key
 
 A plain text certificate key to use.
 
@@ -515,7 +515,7 @@ A plain text certificate key to use.
 Type: `string`  
 Default: `""`  
 
-#### tls.client_certs[].cert_file
+### tls.client_certs[].cert_file
 
 The path of a certificate to use.
 
@@ -523,7 +523,7 @@ The path of a certificate to use.
 Type: `string`  
 Default: `""`  
 
-#### tls.client_certs[].key_file
+### tls.client_certs[].key_file
 
 The path of a certificate key to use.
 
@@ -531,7 +531,7 @@ The path of a certificate key to use.
 Type: `string`  
 Default: `""`  
 
-#### tls.client_certs[].password
+### tls.client_certs[].password
 
 A plain text password for when the private key is password encrypted in PKCS#1 or PKCS#8 format. The obsolete `pbeWithMD5AndDES-CBC` algorithm is not supported for the PKCS#8 format. Warning: Since it does not authenticate the ciphertext, it is vulnerable to padding oracle attacks that can let an attacker recover the plaintext.
 
@@ -552,7 +552,7 @@ Specify which response headers should be added to resulting messages as metadata
 
 Type: `object`  
 
-#### extract_headers.include_prefixes
+### extract_headers.include_prefixes
 
 Provide a list of explicit metadata key prefixes to match against.
 
@@ -574,7 +574,7 @@ include_prefixes:
   - content-
 ```
 
-#### extract_headers.include_patterns
+### extract_headers.include_patterns
 
 Provide a list of explicit metadata key regular expression (re2) patterns to match against.
 
