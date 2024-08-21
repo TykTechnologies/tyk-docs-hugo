@@ -226,6 +226,12 @@ We recommend using the profiler only in non-production environments. Be sure to 
 **Config file:** TLSConfig.MinVersion <br/>
 **Type:** `string` <br/>
 **Description**: Minimum TLS version. Defaults to 769 (TLS 1.0).
+
+### PORTAL_TLS_MAX_VERSION
+**Config file:** TLSConfig.MaxVersion <br/>
+**Type:** `string` <br/>
+**Description**: Maximum TLS version. Defaults to 772 (TLS 1.3).
+
 Values for TLS Versions:
 
 | TLS Version   | Value to Use   |
