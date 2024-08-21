@@ -49,11 +49,13 @@ cd tyk-k8s-demo
 cp .env.example .env
 ```
 
-Depending on the deployments you would like to install set values of the `LICENSE`, `MDCB_LICENSE`, and `PORTAL_LICENSE` inside the `.env` file.
+Depending on the deployments you would like to install set values of the `LICENSE`, `MDCB_LICENSE`, and `PORTAL_LICENSE`
+inside the `.env` file.
 
 ### Minikube
 If you are deploying this demo on [Minikube](https://minikube.sigs.k8s.io/docs/start), 
-you will need to enable the [ingress addon](https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/#enable-the-ingress-controller). You can do so by running the following commands:
+you will need to enable the [ingress addon](https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/#enable-the-ingress-controller). 
+You can do so by running the following commands:
 
 ```bash
 minikube start
@@ -86,8 +88,11 @@ Tyk Enterprise Portal, Tyk Operator, and httpbin CRD example.
 ### Supplementary Deployments
 Please see this [page](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/docs/FEATURES_MATRIX.md) for Tyk deployments compatibility charts.
 - [cert-manager](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/cert-manager): deploys cert-manager.
-- [datadog](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/datadog): deploys Datadog agent and stands up a Tyk pump to push analytics data from the Tyk platform to Datadog. It will also create a Datadog dashboard for you to view the analytics.
-- [elasticsearch](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/elasticsearch): deploys Elasticsearch and stands up a Tyk pump to push analytics data from the Tyk platform to Elasticsearch.
+- [datadog](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/datadog): deploys Datadog agent 
+and stands up a Tyk pump to push analytics data from the Tyk platform to Datadog. It will also create a Datadog dashboard
+for you to view the analytics.
+- [elasticsearch](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/elasticsearch): deploys 
+Elasticsearch and stands up a Tyk pump to push analytics data from the Tyk platform to Elasticsearch.
   - [elasticsearch-kibana](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/elasticsearch-kibana): deploys the Elasticsearch deployment as well as a Kibana deployment and creates a Kibana dashboard for you to view the analytics.
 - [Jaeger](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/jaeger): deploys the Jaeger operator, a Jaeger instance, and the OpenTelemetry collector and configures the Tyk deployment to send telemetry data to Jaeger through the OpenTelemetry collector.
 - [k6](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/k6): deploys a Grafana K6 Operator.
@@ -121,14 +126,11 @@ specific tool, you are welcome to submit a [feature request](https://github.com/
   tyk-stack
 ```
 
-The deployment will take 10 minutes, as the installation is sequential and the
-dependencies require a bit of time before they are stood up. Once the
-installation is complete, the script will print out a list of all the services
-that were started and how to access them. The k6 job will start running
-after the script is finished and will run in the background for 15 minutes to
-generate traffic over that period of time. To visualize the live traffic, you
-can use the credentials provided by the script to access Grafana or the Tyk
-Dashboard.
+The deployment process takes approximately 10 minutes, as the installation is sequential and some dependencies take 
+time to initialize. Once the installation is complete, the script will output a list of all the services that were 
+started, along with instructions on how to access them. Afterward, the k6 job will begin running in the background, 
+generating traffic for 15 minutes. To monitor live traffic, you can use the credentials provided by the script to 
+access Grafana or the Tyk Dashboard
 
 ## Usage
 
@@ -175,7 +177,7 @@ Flags:
 ### Clusters
 You can get the repository to create demo clusters for you on AWS, GCP, or Azure. That can be set using the `--cloud` flag
 and requires the respective cloud CLI to be installed and authorized on your system. You will also need to specify the
-`CLUSTER_LOCATION`, `CLUSTER_MACHINE_TYPE`, `CLUSTER_NODE_COUNT` and `GCP_PROJECT` (for GCP only) parameters in the .env file.
+`CLUSTER_LOCATION`, `CLUSTER_MACHINE_TYPE`, `CLUSTER_NODE_COUNT`, and `GCP_PROJECT` (for GCP only) parameters in the .env file.
 
 You can find examples of .env files here:
 - [AWS](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/clouds/aws/.env.example)
@@ -194,7 +196,7 @@ For more information about cloud CLIs:
 ## Customization
 This repository can also act as a guide to help you get set up with Tyk. If you just want to know how to set up a specific
 tool with Tyk, you can run the repository with the `--dry-run` and `--verbose` flags. This will output all the commands that
-the repository will run to stand up any installation. This can be helpful for debugging as well as figuring out what
+the repository will run to stand up any installation. This can help debug as well as figure out what
 configuration options are required to set these tools up.
 
 Furthermore, you can also add any Tyk environment variables to your `.env` file and those variables will be mapped to
@@ -211,7 +213,7 @@ TYK_GW_SLAVEOPTIONS_SYNCHRONISERENABLED=true
 ## Variables
 The script has defaults for minimal settings in [this env file](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/.env.example),
 and it will give errors if something is missing.
-You can also add or change any Tyk environments variables in the `.env` file,
+You can also add or change any Tyk environment variables in the `.env` file,
 and they will be mapped to the respective `extraEnvs` section in the helm charts.
 
 | Variable                             |        Default        | Comments                                                                                                        |
@@ -234,10 +236,10 @@ and they will be mapped to the respective `extraEnvs` section in the helm charts
 | TYK_WORKER_SHARDING_ENABLED          |        `false`        | Set to `true` to enable API Sharding                                                                            |
 | TYK_WORKER_SHARDING_TAGS             |                       | API Gateway segmentation tags                                                                                   |
 | TYK_WORKER_GW_PORT                   |        `8081`         | Set the gateway service port to use                                                                             |
-| TYK_WORKER_OPERATOR_CONNECTIONSTRING |                       | Set the dashboard URL for the operator to be able manage APIs and Policies                                      |
+| TYK_WORKER_OPERATOR_CONNECTIONSTRING |                       | Set the dashboard URL for the operator to be able to manage APIs and Policies                                      |
 | DATADOG_APIKEY                       |                       | Datadog API key                                                                                                 |
 | DATADOG_APPKEY                       |                       | Datadog Application key. This is used to create a dashboard and create a pipeline for the Tyk logs              |
-| DATADOG_SITE                         |    `datadoghq.com`    | Datadog site. Change to `datadoghq.eu` if using the european site                                               |
+| DATADOG_SITE                         |    `datadoghq.com`    | Datadog site. Change to `datadoghq.eu` if using the European site                                               |
 | GCP_PROJECT                          |                       | The GCP project for terraform authentication on GCP                                                             |
 | CLUSTER_LOCATION                     |                       | Cluster location that will be created on AKS, EKS, or GKE                                                       |
 | CLUSTER_MACHINE_TYPE                 |                       | Machine type for the cluster that will be created on AKS, EKS, or GKE                                           |
