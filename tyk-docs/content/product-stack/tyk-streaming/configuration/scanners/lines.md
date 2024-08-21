@@ -7,9 +7,6 @@ tags: [ "Tyk Streams", "Scanners", "Line", "Line Scanner" ]
 
 Split an input stream into a message per line of data.
 
-<!-- TODO
-Give a concrete example, without using file since files may not be supported?
--->
 ```yml
 # Config fields, showing default values
 lines:
