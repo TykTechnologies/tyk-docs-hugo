@@ -2,7 +2,7 @@
 date: 2017-03-15T15:01:42Z
 title: "Installation Options for Tyk Self-Managed"
 tags: ["Tyk Stack", "Self-Managed", "Installation", "Installation options", "Containerized installation", "Open system installation"]
-description: "Installation options for the Self-Managed Tyk Stack"
+description: "Landing page for all the installation options we provide for the Self-Managed Tyk Stack"
 identifier: "tyk-self-managed-installation"
 weight: 1
 menu: 
