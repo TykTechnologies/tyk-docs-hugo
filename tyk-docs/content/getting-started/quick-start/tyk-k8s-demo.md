@@ -26,22 +26,15 @@ You will need the following tools to be able to run this repository.
 
 Tested on Linux/Unix based systems on AMD64 and ARM architectures
 
-### License Key
+### License Requirements
+- **Tyk OSS**: No license required as it is open-source.
 
-#### When and how to obtain a license key
-If you are looking to use Tyk OSS (`tyk-gateway` deployment only) you will not require any licensing as that is the 
-open-source demo deployment.
-
-For the other deployments that are using our licensed product, you will need to sign up below (and 
-choose "Get in touch"). Take advantage of a free guided evaluation of the Tyk Dashboard & Developer Portal, and receive
-your temporary license along with installation instructions during the process. Alternatively, to get started quickly, 
-without infrastructure, or the need to install, get a 48-hour trial of Tyk Cloud and try the Tyk platform and get access 
-to all the features and capabilities.
-
+- **Licensed Products**: Sign up [here](https://tyk.io/sign-up) using the button below, and choose "Get in touch" to receive a guided evaluation of the Tyk Dashboard and your temporary license. 
 {{< button_left href="https://tyk.io/sign-up#self" color="green" content="Get started" >}}
 
+
 #### How to use the license key
-Once you obtained the license key, create `.env` file and update the appropriate fields with your licenses as follows:
+Once you have the license key, create `.env` file and update the appropriate fields with your licenses as follows:
 
 ```bash
 git clone https://github.com/TykTechnologies/tyk-k8s-demo.git
