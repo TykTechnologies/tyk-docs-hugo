@@ -53,7 +53,7 @@ Depending on the deployments you would like to install set values of the `LICENS
 
 ### Minikube
 If you are deploying this demo on [Minikube](https://minikube.sigs.k8s.io/docs/start), 
-you will need to enable the **ingress addon**. You can do so by running the following commands:
+you will need to enable the [ingress addon](https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/#enable-the-ingress-controller). You can do so by running the following commands:
 
 ```bash
 minikube start
