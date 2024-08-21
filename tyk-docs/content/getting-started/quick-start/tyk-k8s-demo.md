@@ -35,7 +35,8 @@ Tested on Linux/Unix based systems on AMD64 and ARM architectures
 
 
 #### How to use the license key
-Once you have the license key, create `.env` file and update the appropriate fields with your licenses as follows:
+
+Once you obtained the license key, create a `.env` file using the [example provided](https://github.com/TykTechnologies/tyk-k8s-demo/blob/main/.env.example) and update it with your licenses as follows:
 
 ```bash
 git clone https://github.com/TykTechnologies/tyk-k8s-demo.git
@@ -64,11 +65,12 @@ This quick start command will start up the entire Tyk stack along with the
 Tyk Enterprise Portal, Tyk Operator, and httpbin CRD example.
 
 ## Possible deployments
-- `tyk-stack`: Tyk Self Managed in a single region deployment
-- `tyk-cp`: Tyk control plane in a multi-region Tyk deployment. Until it is available with new Tyk Charts, please use the [v2 tag](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v2) if you would like this deployment.
-- `tyk-dp`: Tyk Self Managed data plane. This deployment is used for the hybrid gateways that can connect to Tyk Cloud or a Tyk Control Plane
-- `tyk-gateway`: Tyk OSS self-managed in a single region
+- `tyk-stack`: A comprehensive Tyk Self Managed setup for a single region
+- `tyk-cp`: Tyk control plane in a multi-region Tyk deployment. Not yet available with the latest charts; use the [v2 tag](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v2) for now.
+- `tyk-dp`: Data plane of hybrid gateways that connect to either Tyk Cloud or a Tyk Control Plane, facilitating scalable deployments.
+- `tyk-gateway`: Open Source Software (OSS) version of Tyk, self-managed and suitable for single-region deployments
 
+ 
 ## Dependencies Options
 ### Redis Options
 - `redis`: Bitnami Redis deployment
