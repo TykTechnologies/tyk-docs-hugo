@@ -36,7 +36,8 @@ However, you can leverage the settings below to customize the deployment of your
         "CertFile": "portal.crt",
         "KeyFile": "portal.key"
       }
-    ]
+    ],
+    "MinVersion": "772"
   },
   "PortalAPISecret": "your-portal-api-secret"
 }
@@ -220,6 +221,19 @@ We recommend using the profiler only in non-production environments. Be sure to 
 **Config file:** TLSConfig.InsecureSkipVerify <br/>
 **Type:** `boolean` <br/>
 **Description**: Skip verification of self-signed certificates.
+
+### PORTAL_TLS_MIN_VERSION
+**Config file:** TLSConfig.MinVersion <br/>
+**Type:** `string` <br/>
+**Description**: Minimum TLS version. Defaults to 769 (TLS 1.0).
+Values for TLS Versions:
+
+| TLS Version   | Value to Use   |
+|---------------|----------------|
+|      1.0      |      769       |
+|      1.1      |      770       |
+|      1.2      |      771       |
+|      1.3      |      772       |
 
 ### PORTAL_TLS_CERTIFICATES
 **Config file:** TLSConfig.Certificates <br/>
