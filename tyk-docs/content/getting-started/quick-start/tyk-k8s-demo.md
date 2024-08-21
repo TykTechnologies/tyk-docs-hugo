@@ -4,7 +4,7 @@ tags: ["Tyk Tutorials", "Getting Started", "POC", "Proof of Concept", "Tyk PoC",
 description: "Learn to deploy and run a Tyk deployment in minutes on Kubernetes"
 ---
 
-The [tyk-k8s-demo](https://github.com/TykTechnologies/tyk-k8s-demo) repository allows you to stand up an entire Tyk Stack
+The [tyk-k8s-demo](https://github.com/TykTechnologies/tyk-k8s-demo) repository allows you to start up an entire Tyk Stack
 with all its dependencies as well as other tools that can integrate with Tyk.
 The repository will spin up everything in Kubernetes using `helm` and bash magic
 to get you started.
