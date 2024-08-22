@@ -66,8 +66,8 @@ Tyk Enterprise Portal, Tyk Operator, and httpbin CRD example.
 
 ## Possible deployments
 - `tyk-stack`: A comprehensive Tyk Self Managed setup for a single region
-- `tyk-cp`: Tyk control plane in a multi-region Tyk deployment.
-- `tyk-dp`: Data plane of hybrid gateways that connect to either Tyk Cloud or a Tyk Control Plane, facilitating scalable deployments.
+- `tyk-cp`: Tyk control plane in a multi-region Tyk deployment
+- `tyk-dp`: Data plane of hybrid gateways that connect to either Tyk Cloud or a Tyk Control Plane, facilitating scalable deployments
 - `tyk-gateway`: Open Source Software (OSS) version of Tyk, self-managed and suitable for single-region deployments
 
  
