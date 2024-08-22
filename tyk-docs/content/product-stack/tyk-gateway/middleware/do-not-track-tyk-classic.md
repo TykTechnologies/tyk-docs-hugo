@@ -11,7 +11,9 @@ When working with Tyk Classic APIs the middleware is configured in the Tyk Class
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-oas" >}}) page.
 
-## Configuring the middleware in the Tyk Classic API Definition
+If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
+
+## Configuring the middleware in the Tyk Classic API Definition {#tyk-classic}
 
 You can prevent tracking for all endpoints of an API by configuring the `do_not_track` field in the root of your API definition.
 - `true`: no transaction logs will be generated for requests to the API
@@ -55,3 +57,29 @@ From the **Endpoint Designer** add an endpoint that matches the path for which y
 #### Step 2: Save the API
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
+
+## Configuring the middleware in Tyk Operator {#tyk-operator}
+
+The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic).
+
+It is possible to prevent tracking for endpoints of an API by configuring the `do_not_track` field in the root of your API definition as follows:
+
+- `true`: no transaction logs will be generated for requests to the API
+- `false`: transaction logs will be generated for requests to the API
+
+```yaml {linenos=true, linenostart=1, hl_lines=["10"]}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-do-not-track
+spec:
+  name: httpbin-do-not-track 
+  use_keyless: true
+  protocol: http
+  active: true
+  do_not_track: true
+  proxy:
+    target_url: http://example.com
+    listen_path: /example
+    strip_listen_path: true
+```
