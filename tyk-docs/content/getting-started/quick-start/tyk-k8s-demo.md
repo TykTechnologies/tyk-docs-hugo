@@ -85,7 +85,7 @@ Tyk Enterprise Portal, Tyk Operator, and httpbin CRD example.
 Please see this [page](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/docs/FEATURES_MATRIX.md) for Tyk deployments compatibility charts.
 - [cert-manager](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/cert-manager): deploys cert-manager.
 - [datadog](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/datadog): deploys Datadog agent 
-and stands up a Tyk pump to push analytics data from the Tyk platform to Datadog. It will also create a Datadog dashboard
+and starts up Tyk Pump to push analytics data from the Tyk platform to Datadog. It will also create a Datadog dashboard
 for you to view the analytics.
 - [elasticsearch](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/elasticsearch): deploys 
 Elasticsearch and stands up a Tyk pump to push analytics data from the Tyk platform to Elasticsearch.
