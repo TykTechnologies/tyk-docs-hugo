@@ -22,7 +22,7 @@ You will need the following tools to be able to run this project.
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/) - CLI tool for controlling Kubernetes clusters
 - [Helm](https://helm.sh/docs/intro/install/) - Helps manage Kubernetes applications through Helm charts
 - [jq](https://stedolan.github.io/jq/download/) - CLI for working with JSON output and manipulating it 
-- [git](https://git-scm.com/downloads) - CLI used to obtain the project from GH
+- [git](https://git-scm.com/downloads) - CLI used to obtain the project from GitHub
 - [Terraform](https://www.terraform.io/) (only when using `--cloud` flag)
 
 Tested on Linux/Unix based systems on AMD64 and ARM architectures
