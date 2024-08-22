@@ -157,7 +157,7 @@ Ensure the plugin driver is configured as type *grpc*. Tyk will issue a request 
 
 #### Tyk Operator
 
-The examples below illustrate how to configure configure plugin hooks for an API Definition within Tyk Operator:
+The examples below illustrate how to configure plugin hooks for an API Definition within Tyk Operator:
 
 **Pre plugin hook example**
 
