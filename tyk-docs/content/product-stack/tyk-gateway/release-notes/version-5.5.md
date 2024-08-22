@@ -27,8 +27,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
-
-There are no breaking changes in this release.
+Docker images are now based on [distroless](https://github.com/GoogleContainerTools/distroless). No shell is shipped in the image.
 
 ### Dependencies {#dependencies-5.5.0}
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
