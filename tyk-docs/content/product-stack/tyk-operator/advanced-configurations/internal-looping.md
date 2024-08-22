@@ -13,7 +13,7 @@ Tyk Operator can be configured to automatically generate looping URLs, enabling 
 
 ---
 
-## Configuration
+## Configure URL rewrites to internal ApiDefinition resources
 
 Tyk Operator has a powerful feature that enables dynamic URL Rewriting for API requests. This configuration allows you to redirect incoming requests to different internal API endpoints managed by the Tyk Gateway, facilitating seamless interaction between various services and enhancing the modularity of your API infrastructure.
 
