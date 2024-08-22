@@ -192,7 +192,59 @@ The process for configuring a response header transform in Tyk Operator is simil
 
 ### API level transform {#tyk-operator-api}
 
-<!-- Need an example here -->
+The process of configuring transformation of response headers for a specific API in Tyk Operator is similar to that defined in section [API-level transform](#tyk-classic-api) for the Tyk Classic API definition. 
+
+To **append** headers to all responses from your API (i.e. for all endpoints) you must add a new `global_response_headers` object to the `versions` section of your API definition. This contains a list of key:value pairs, being the names and values of the headers to be added to responses.
+
+To **delete** headers from all responses from your API (i.e. for all endpoints), you must add a new `global_response_headers_remove` object to the `versions` section of the API definition. This contains a list of the names of existing headers to be removed from responses.
+
+An example is listed below:
+
+```yaml {linenos=true, linenostart=1, hl_lines=["25-30"]}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-global-header
+spec:
+  name: httpbin-global-header
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-global-header
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        paths:
+          black_list: []
+          ignored: []
+          white_list: []
+        global_response_headers:
+          X-Static: foobar
+          X-Request-ID: "$tyk_context.request_id"
+          X-User-ID: "$tyk_meta.uid"
+        global_response_headers_remove:
+          - X-Secret
+```
+
+The example API Definition above configures an API to listen on path `/httpbin-global-header` and forwards requests upstream to http://httpbin.org.
+
+This configuration will add three new headers to each response:
+
+- `X-Static` with the value `foobar`
+- `X-Request-ID` with a dynamic value taken from the `request_id` [context variable]({{< ref "context-variables" >}})
+- `X-User-ID` with a dynamic value taken from the `uid` field in the [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}})
+
+It will also delete one header (if present) from each response:
+
+- `X-Secret`
+
 
 ### Endpoint transform {#tyk-operator-endpoint}
 
