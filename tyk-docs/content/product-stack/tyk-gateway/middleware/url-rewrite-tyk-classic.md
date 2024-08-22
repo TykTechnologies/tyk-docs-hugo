@@ -15,6 +15,8 @@ If you want to use dynamic data from context variables, you must [enable]({{< re
 
 If you're using the newer Tyk OAS APIs, then check out [this]({{< ref "/product-stack/tyk-gateway/middleware/url-rewrite-tyk-oas" >}}) page.
 
+If you're using Tyk Operator, then check out [this]({{< ref "/product-stack/tyk-operator/advanced-configurations/internal-looping" >}}) page.
+
 ## Configuring the URL rewriter in the Tyk Classic API Definition
 
 To configure the URL rewriter you must add a new `url_rewrites` object to the `extended_paths` section of your API definition, for example:
