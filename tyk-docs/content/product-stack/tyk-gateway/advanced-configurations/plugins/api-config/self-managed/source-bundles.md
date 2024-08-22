@@ -5,7 +5,7 @@ description: "This section explains ehow to configure APIs to use plugin bundles
 tags: ["tyk plugins", "API Gateway middleware", "Custom middleware", "Custom API request"]
 ---
 
-This section explains how to use Tyk Dashboard to configure your API to download a [plugin bundle]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) from a secured web server managed by your organisation.
+This section explains how to use Tyk Dashboard to configure your API to download a [plugin bundle]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) from a secured web server managed by your organization.
 
 ---
 
