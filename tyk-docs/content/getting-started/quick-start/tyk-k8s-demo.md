@@ -66,8 +66,8 @@ Tyk Enterprise Portal, Tyk Operator, and httpbin CRD example.
 
 ## Possible deployments
 - `tyk-stack`: A comprehensive Tyk Self Managed setup for a single region
-- `tyk-cp`: Tyk control plane in a multi-region Tyk deployment. Not yet available with the latest charts; use the [v2 tag](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v2) for now.
-- `tyk-dp`: Data plane of hybrid gateways that connect to either Tyk Cloud or a Tyk Control Plane, facilitating scalable deployments.
+- `tyk-cp`: Tyk control plane in a multi-region Tyk deployment
+- `tyk-dp`: Data plane of hybrid gateways that connect to either Tyk Cloud or a Tyk Control Plane, facilitating scalable deployments
 - `tyk-gateway`: Open Source Software (OSS) version of Tyk, self-managed and suitable for single-region deployments
 
  
@@ -232,7 +232,7 @@ and they will be mapped to the respective `extraEnvs` section in the helm charts
 | TYK_WORKER_SHARDING_ENABLED          |        `false`        | Set to `true` to enable API Sharding                                                                            |
 | TYK_WORKER_SHARDING_TAGS             |                       | API Gateway segmentation tags                                                                                   |
 | TYK_WORKER_GW_PORT                   |        `8081`         | Set the gateway service port to use                                                                             |
-| TYK_WORKER_OPERATOR_CONNECTIONSTRING |                       | Set the dashboard URL for the operator to be able to manage APIs and Policies                                      |
+| TYK_WORKER_OPERATOR_CONNECTIONSTRING |                       | Set the dashboard URL for the operator to be able to manage APIs and Policies                                   |
 | DATADOG_APIKEY                       |                       | Datadog API key                                                                                                 |
 | DATADOG_APPKEY                       |                       | Datadog Application key. This is used to create a dashboard and create a pipeline for the Tyk logs              |
 | DATADOG_SITE                         |    `datadoghq.com`    | Datadog site. Change to `datadoghq.eu` if using the European site                                               |
