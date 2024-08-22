@@ -185,7 +185,7 @@ For more information about cloud CLIs:
   - [aws](https://aws.amazon.com/cli/)
 - GCP:
   - [gcloud](https://cloud.google.com/sdk/gcloud)
-  - `GOOGLE_APPLICATION_CREDENTIALS` environment variable per [google's documentation](https://cloud.google.com/docs/authentication/application-default-credentials)
+  - `GOOGLE_APPLICATION_CREDENTIALS` environment variable per [documentation from Google](https://cloud.google.com/docs/authentication/application-default-credentials)
 - Azure:
   - [az](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
 
