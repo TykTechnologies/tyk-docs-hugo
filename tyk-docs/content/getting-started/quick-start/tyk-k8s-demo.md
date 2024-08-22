@@ -14,7 +14,7 @@ Minimize the amount of effort needed to start up the Tyk infrastructure and
 show examples of how Tyk can be set up in k8s using different deployment
 architectures as well as different integrations.
 
-## Prerequisite 
+## Prerequisites
 
 ### Required Packages
 
