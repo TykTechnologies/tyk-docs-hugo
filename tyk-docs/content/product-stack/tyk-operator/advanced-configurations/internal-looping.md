@@ -19,7 +19,7 @@ Tyk Operator has a powerful feature that enables dynamic URL Rewriting for API r
 
 The `rewrite_to_internal` object is used to define how incoming API requests should be redirected to internal API resources. This mechanism is essential for routing traffic within a microservices architecture or when managing APIs across different namespaces in Kubernetes. Using this object you can effectively manage and optimize API traffic within your Tyk Gateway.
 
-This setup supports complex routing scenarios and enables efficient inter-service communication, via configuring the following properties:
+This setup supports complex routing scenarios and enables efficient inter-service communication, via configuring the following properties under `url_rewrites`:
 
 ```yaml
 rewrite_to_internal:
