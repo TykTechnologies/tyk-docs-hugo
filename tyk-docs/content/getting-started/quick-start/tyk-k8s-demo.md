@@ -2,49 +2,55 @@
 title: The Complete Kubernetes Tyk Demo
 tags: ["Tyk Tutorials", "Getting Started", "POC", "Proof of Concept", "Tyk PoC", "k8s", "Self Managed", "Open Source", "demo", "Tyk demo", "Tyk quick start", "Kubernetes"]
 description: "Learn to deploy and run a Tyk deployment in minutes on Kubernetes"
-menu:
-    main:
-        parent: "Quick Start"
-weight: 2
 ---
 
 The [tyk-k8s-demo](https://github.com/TykTechnologies/tyk-k8s-demo) repository allows you to start up an entire Tyk Stack
 with all its dependencies as well as other tools that can integrate with Tyk.
-The repository will spin up everything in Kubernetes using `helm` and bash magic to get you started.
+The repository will spin up everything in Kubernetes using `helm` and bash magic
+to get you started.
 
 ## Purpose
-Minimize the amount of effort needed to start up the Tyk infrastructure and show examples of how Tyk can be setup in k8s using different deployment architectures as well as different integrations.
+Minimize the amount of effort needed to start up the Tyk infrastructure and
+show examples of how Tyk can be set up in k8s using different deployment
+architectures as well as different integrations.
 
-## Getting Started
+## Prerequisites
 
-#### Requirements
-You will need the following tools to be able to run this library.
-- [Kubectl](https://kubernetes.io/docs/tasks/tools/)
-- [Helm](https://helm.sh/docs/intro/install/)
-- [jq](https://stedolan.github.io/jq/download/)
-- [git](https://git-scm.com/downloads)
+### Required Packages
+
+You will need the following tools to be able to run this project.
+- [Kubectl](https://kubernetes.io/docs/tasks/tools/) - CLI tool for controlling Kubernetes clusters
+- [Helm](https://helm.sh/docs/intro/install/) - Helps manage Kubernetes applications through Helm charts
+- [jq](https://stedolan.github.io/jq/download/) - CLI for working with JSON output and manipulating it 
+- [git](https://git-scm.com/downloads) - CLI used to obtain the project from GitHub
 - [Terraform](https://www.terraform.io/) (only when using `--cloud` flag)
 
 Tested on Linux/Unix based systems on AMD64 and ARM architectures
 
-#### Initial setup
-Create `.env` file and update the appropriate fields with your licenses.
-If you require a trial license, you can obtain one [here](https://tyk.io/sign-up/).
-If you are looking to use the `tyk-gateway` deployment only you will
-not require any licensing as that is the open-source deployment.
+### License Requirements
+- **Tyk OSS**: No license required as it is open-source.
 
-```
+- **Licensed Products**: Sign up [here](https://tyk.io/sign-up) using the button below, and choose "Get in touch" to receive a guided evaluation of the Tyk Dashboard and your temporary license. 
+{{< button_left href="https://tyk.io/sign-up#self" color="green" content="Get started" >}}
+
+
+#### How to use the license key
+
+Once you obtained the license key, create a `.env` file using the [example provided](https://github.com/TykTechnologies/tyk-k8s-demo/blob/main/.env.example) and update it with your licenses as follows:
+
+```bash
 git clone https://github.com/TykTechnologies/tyk-k8s-demo.git
 cd tyk-k8s-demo
 cp .env.example .env
 ```
 
-Depending on the deployments you would like install set values of the
-`LICENSE`, `MDCB_LICENSE` and `PORTAL_LICENSE` inside the `.env` file.
+Depending on the deployments you would like to install set values of the `LICENSE`, `MDCB_LICENSE`, and `PORTAL_LICENSE`
+inside the `.env` file.
 
 ### Minikube
-If you are deploying this on Minikube, you will need to enable the ingress
-addon. You can do so by running the following commands:
+If you are deploying this demo on [Minikube](https://minikube.sigs.k8s.io/docs/start), 
+you will need to enable the [ingress addon](https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/#enable-the-ingress-controller). 
+You can do so by running the following commands:
 
 ```bash
 minikube start
@@ -52,19 +58,19 @@ minikube addons enable ingress
 ```
 
 ## Quick Start
-
 ```bash
 ./up.sh --deployments portal,operator-httpbin tyk-stack
 ```
-This quick start command will stard up the entire Tyk stack along with the
-Tyk Enterprise Portal, Tyk Operator and httpbin CRD example.
+This quick start command will start up the entire Tyk stack along with the
+Tyk Enterprise Portal, Tyk Operator, and httpbin CRD example.
 
 ## Possible deployments
-- `tyk-stack`: Tyk single region self-managed deployment
-- `tyk-cp`: Tyk self-managed multi region control plane (Will be available in Q1 2024 with new Tyk Charts. Please use the [v2 tag](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v2) if you would like to deploy this)
-- `tyk-dp`: Tyk self-managed data plane, this can connect to Tyk Cloud or a Tyk Control Plane
-- `tyk-gateway`: Tyk oss self-managed single region
+- `tyk-stack`: A comprehensive Tyk Self Managed setup for a single region
+- `tyk-cp`: Tyk control plane in a multi-region Tyk deployment. Not yet available with the latest charts; use the [v2 tag](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v2) for now.
+- `tyk-dp`: Data plane of hybrid gateways that connect to either Tyk Cloud or a Tyk Control Plane, facilitating scalable deployments.
+- `tyk-gateway`: Open Source Software (OSS) version of Tyk, self-managed and suitable for single-region deployments
 
+ 
 ## Dependencies Options
 ### Redis Options
 - `redis`: Bitnami Redis deployment
@@ -76,40 +82,39 @@ Tyk Enterprise Portal, Tyk Operator and httpbin CRD example.
 - `postgres`: [Bitnami Postgres](https://artifacthub.io/packages/helm/bitnami/postgresql) database deployment as a Tyk backend
 
 ### Supplementary Deployments
-Please see this [page](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/docs/FEATURES_MATRIX.md) for Tyk deployments compatibility charts.
-- [cert-manager](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/cert-manager): Deploys cert-manager.
-- [datadog](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/datadog): Deploys Datadog agent and starts up Tyk Pump to push analytics data from the Tyk platform to Datadog. It will also create a Datadog dashboard for you to view the analytics.
-- [Elasticsearch](https://www.elastic.co/)
-  - [elasticsearch](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/elasticsearch): deploys Elasticsearch and starts up Tyk Pump to push analytics data from the Tyk platform to Elasticsearch.
-  - [elasticsearch-kibana](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/elasticsearch-kibana): deploys an Elasticsearch and Kibana deployment. A Kibana dashboard will be created for you to view the analytics.
-- [Jaeger](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/jaeger): deploys the Jaeger operator, a Jaeger instance and the OpenTelemetry collector. Configures the Tyk deployment to send telemetry data to Jaeger through the OpenTelemetry collector.
-- [k6](https://k6.io/)
-  - [k6](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/k6): deploys a Grafana K6 Operator.
-  - [k6-slo-traffic](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/k6-slo-traffic): deploys a k6 CRD to generate a load of traffic to seed analytics data.
-- [keycloak](https://www.keycloak.org/)
-  - [keycloak](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/keycloak): deploys the Keycloak Operator and a Keycloak instance.
-  - [keycloak-dcr](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/keycloak-dcr): starts up a Keycloak Dynamic Client Registration example.
-  - [keycloak-jwt](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/keycloak-jwt): starts up a Keycloak JWT Authentication example with Tyk.
-  - [keycloak-sso](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/keycloak-sso): starts up a Keycloak SSO example with the Tyk dashboard.
-- [Tyk Operator](https://github.com/TykTechnologies/tyk-operator)
-- [Tyk Operator](https://github.com/TykTechnologies/tyk-operator)
-  - [operator](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/operator): deploys the *Tyk Operator* and it's dependency [cert-manager](https://github.com/jetstack/cert-manager).
-  - [operator-federation](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/operator-federation): starts up a Federation v1 API examples using the tyk-operator.
-  - [operator-graphql](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/operator-graphql): starts up a GraphQL API examples using the tyk-operator.
-  - [operator-httpbin](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/operator-httpbin): starts up an API examples using the tyk-operator.
-  - [operator-jwt-hmac](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/operator-jwt-hmac): starts up an API examples using the tyk-operator to demonstrate JWT HMAC auth.
-  - [operator-udg](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/operator-udg): starts up a Universal Data Graph API example using the tyk-operator.
-- [portal](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/portal): deploys the [Tyk Enterprise Developer Portal](https://tyk.io/docs/tyk-developer-portal/tyk-enterprise-developer-portal/) as well as its dependency PostgreSQL.
-- [Prometheus](https://prometheus.io/)
-  - [Prometheus](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/prometheus): deploys Prometheus and starts up Tyk Pump to push analytics data from the Tyk platform to Prometheus.
-  - [prometheus-grafana](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/prometheus-grafana): deploys the Prometheus and Grafana deployments. Creates a Grafana dashboard for you to view the analytics.
-- [vault](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/vault): deploys Vault Operator and a Vault instance.
+Please see this [page](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/docs/FEATURES_MATRIX.md) for Tyk deployments compatibility charts.
+- [cert-manager](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/cert-manager): deploys cert-manager.
+- [datadog](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/datadog): deploys Datadog agent 
+and starts up Tyk Pump to push analytics data from the Tyk platform to Datadog. It will also create a Datadog dashboard
+for you to view the analytics.
+- [elasticsearch](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/elasticsearch): deploys 
+Elasticsearch and starts up Tyk pump to push analytics data from the Tyk platform to Elasticsearch.
+  - [elasticsearch-kibana](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/elasticsearch-kibana): deploys the Elasticsearch deployment as well as a Kibana deployment and creates a Kibana dashboard for you to view the analytics.
+- [Jaeger](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/jaeger): deploys the Jaeger operator, a Jaeger instance, and the OpenTelemetry collector and configures the Tyk deployment to send telemetry data to Jaeger through the OpenTelemetry collector.
+- [k6](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/k6): deploys a Grafana K6 Operator.
+  - [k6-slo-traffic](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/k6-slo-traffic): deploys a k6 CRD to generate a load of traffic to seed analytics data.
+- [keycloak](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/keycloak): deploys the Keycloak Operator and a Keycloak instance.
+  - [keycloak-dcr](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/keycloak-dcr): starts up a Keycloak Dynamic Client Registration example.
+  - [keycloak-jwt](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/keycloak-jwt): starts up a Keycloak JWT Authentication example with Tyk.
+  - [keycloak-sso](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/keycloak-sso): starts up a Keycloak SSO example with the Tyk Dashboard.
+- [newrelic](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/newrelic): deploys New Relic and starts up a Tyk Pump to push analytics data from the Tyk platform to New Relic.
+- [opa](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/opa): enables Open Policy Agent to allow for Dashboard APIs governance.
+- [opensearch](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/opensearch): deploys OpenSearch and starts up Tyk Pump to push analytics data from the Tyk platform to OpenSearch.
+- [operator](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/operator): deploys the [Tyk Operator](https://github.com/TykTechnologies/tyk-operator) and its dependency [cert-manager](https://github.com/jetstack/cert-manager).
+  - [operator-federation](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/operator-federation): starts up Federation v1 API examples using the tyk-operator.
+  - [operator-graphql](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/operator-graphql): starts up GraphQL API examples using the tyk-operator.
+  - [operator-httpbin](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/operator-httpbin): starts up an API examples using the tyk-operator.
+  - [operator-jwt-hmac](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/operator-jwt-hmac): starts up API examples using the tyk-operator to demonstrate JWT HMAC auth.
+  - [operator-udg](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/operator-udg): starts up Universal Data Graph API examples using the tyk-operator.
+- [portal](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/portal): deploys the [Tyk Enterprise Developer Portal](https://tyk.io/docs/tyk-developer-portal/tyk-enterprise-developer-portal/) as well as its dependency PostgreSQL.
+- [prometheus](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/prometheus): deploys Prometheus and starts up Tyk Pump to push analytics data from the Tyk platform to Prometheus.
+  - [prometheus-grafana](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/prometheus-grafana): deploys the Prometheus deployment as well as a Grafana deployment and creates a Grafana dashboard for you to view the analytics.
+- [vault](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/vault): deploys Vault Operator and a Vault instance.
 
-If you are running a POC and would like an example of how to integrate a specific tool, you are welcome to submit a [feature request](https://github.com/TykTechnologies/tyk-k8s-demo/issues/new/choose)
-
+If you are running a POC and would like an example of how to integrate a
+specific tool, you are welcome to submit a [feature request](https://github.com/TykTechnologies/tyk-k8s-demo/issues/new/choose)
 
 ### Example
-
 ```bash
 ./up.sh \
   --storage postgres \
@@ -117,14 +122,11 @@ If you are running a POC and would like an example of how to integrate a specifi
   tyk-stack
 ```
 
-The deployment will take 10 minutes, as the installation is sequential and the
-dependencies require a bit of time before they are started up. Once the
-installation is complete, the script will print out a list of all the services
-that were started and how those can be accessed. The k6 job will start running
-after the script is finished and will run in the background for 15 minutes to
-generate traffic over that period of time. To visualize the live traffic, you
-can use the credentials provided by the script to access Grafana or the Tyk
-Dashboard.
+The deployment process takes approximately 10 minutes, as the installation is sequential and some dependencies take 
+time to initialize. Once the installation is complete, the script will output a list of all the services that were 
+started, along with instructions on how to access them. Afterward, the k6 job will begin running in the background, 
+generating traffic for 15 minutes. To monitor live traffic, you can use the credentials provided by the script to 
+access Grafana or the Tyk Dashboard
 
 ## Usage
 
@@ -133,25 +135,25 @@ Create and start up the deployments
 
 ```bash
 Usage:
-./up.sh [flags] [command]
+  ./up.sh [flags] [command]
 
 Available Commands:
-tyk-stack
-tyk-cp
-tyk-dp
-tyk-gateway
+  tyk-stack
+  tyk-cp
+  tyk-dp
+  tyk-gateway
 
 Flags:
--v, --verbose         bool     set log level to debug
---dry-run         bool     set the execution mode to dry run. This will dump the kubectl and helm commands rather than execute them
--n, --namespace       string   namespace the tyk stack will be installed in, defaults to 'tyk'
--f, --flavor          enum     k8s environment flavor. This option can be set 'openshift' and defaults to 'vanilla'
--e, --expose          enum     set this option to 'port-forward' to expose the services as port-forwards or to 'load-balancer' to expose the services as load balancers or 'ingress' which exposes services as a k8s ingress object
--r, --redis           enum     the redis mode that tyk stack will use. This option can be set 'redis', 'redis-sentinel' and defaults to 'redis-cluster'
--s, --storage         enum     database the tyk stack will use. This option can be set 'mongo' and defaults to 'postgres'
--d, --deployments     string   comma separated list of deployments to launch
--c, --cloud           enum     stand up k8s infrastructure in 'aws', 'gcp' or 'azure'. This will require Terraform and the CLIs associate with the cloud of choice
--l, --ssl             bool     enable ssl on deployments
+  -v, --verbose         bool     set log level to debug
+      --dry-run         bool     set the execution mode to dry run. This will dump the kubectl and helm commands rather than execute them
+  -n, --namespace       string   namespace the tyk stack will be installed in, defaults to 'tyk'
+  -f, --flavor          enum     k8s environment flavor. This option can be set 'openshift' and defaults to 'vanilla'
+  -e, --expose          enum     set this option to 'port-forward' to expose the services as port-forwards or to 'load-balancer' to expose the services as load balancers or 'ingress' which exposes services as a k8s ingress object
+  -r, --redis           enum     the redis mode that tyk stack will use. This option can be set 'redis', 'redis-sentinel' and defaults to 'redis-cluster'
+  -s, --storage         enum     database the tyk stack will use. This option can be set 'mongo' (amd only) and defaults to 'postgres'
+  -d, --deployments     string   comma separated list of deployments to launch
+  -c, --cloud           enum     stand up k8s infrastructure in 'aws', 'gcp' or 'azure'. This will require Terraform and the CLIs associate with the cloud of choice
+  -l, --ssl             bool     enable ssl on deployments
 ```
 
 ### Stop Tyk deployment
@@ -169,31 +171,32 @@ Flags:
 ```
 
 ### Clusters
-You can get the library to create demo clusters for you on AWS, GCP, or Azure. That can be set using the `--cloud` flag
+You can get the repository to create demo clusters for you on AWS, GCP, or Azure. That can be set using the `--cloud` flag
 and requires the respective cloud CLI to be installed and authorized on your system. You will also need to specify the
-`CLUSTER_LOCATION`, `CLUSTER_MACHINE_TYPE`, `CLUSTER_NODE_COUNT` and `GCP_PROJECT` (for GCP only) parameters in the .env file.
+`CLUSTER_LOCATION`, `CLUSTER_MACHINE_TYPE`, `CLUSTER_NODE_COUNT`, and `GCP_PROJECT` (for GCP only) parameters in the .env file.
 
 You can find examples of .env files here:
-- [AWS](https://github.com/TykTechnologies/tyk-k8s-demo/blob/main/src/clouds/aws/.env.example)
-- [GCP](https://github.com/TykTechnologies/tyk-k8s-demo/blob/main/src/clouds/gcp/.env.example)
-- [Azure](https://github.com/TykTechnologies/tyk-k8s-demo/blob/main/src/clouds/azure/.env.example)
+- [AWS](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/clouds/aws/.env.example)
+- [GCP](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/clouds/gcp/.env.example)
+- [Azure](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/clouds/azure/.env.example)
 
 For more information about cloud CLIs:
 - AWS:
   - [aws](https://aws.amazon.com/cli/)
 - GCP:
   - [gcloud](https://cloud.google.com/sdk/gcloud)
-  - `GOOGLE_APPLICATION_CREDENTIALS` environment variable per [google's documentation](https://cloud.google.com/docs/authentication/application-default-credentials)
+  - `GOOGLE_APPLICATION_CREDENTIALS` environment variable per [documentation from Google](https://cloud.google.com/docs/authentication/application-default-credentials)
 - Azure:
   - [az](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
 
 ## Customization
-This library can also act as a guide to help you get set up with Tyk. If you just want to know how to set up a specific
-tool with Tyk, you can run the library with the `--dry-run` and `--verbose` flags. This will output all the commands that
-the library will run to stand up any installation. This can be helpful for debugging as well as figuring out what
+This repository can also act as a guide to help you get set up with Tyk. If you just want to know how to set up a specific
+tool with Tyk, you can run the repository with the `--dry-run` and `--verbose` flags. This will output all the commands that
+the repository will run to stand up any installation. This can help debug as well as figure out what
 configuration options are required to set these tools up.
 
-Furthermore, you can also add any Tyk environment variables to your `.env` file and those variables will be mapped to their respective Tyk deployments.
+Furthermore, you can also add any Tyk environment variables to your `.env` file and those variables will be mapped to
+their respective Tyk deployments.
 
 Example:
 ```env
@@ -204,15 +207,18 @@ TYK_GW_SLAVEOPTIONS_SYNCHRONISERENABLED=true
 ```
 
 ## Variables
-The script has defaults for minimal settings in a [.env](https://github.com/TykTechnologies/tyk-k8s-demo/blob/v3/.env.example) file and it will give errors if something is missing. You can also add or change any Tyk environments variables in the `.env` file and they will be mapped to the respective `extraEnvs` section in the helm charts.
+The script has defaults for minimal settings in [this env file](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/.env.example),
+and it will give errors if something is missing.
+You can also add or change any Tyk environment variables in the `.env` file,
+and they will be mapped to the respective `extraEnvs` section in the helm charts.
 
 | Variable                             |        Default        | Comments                                                                                                        |
 |--------------------------------------|:---------------------:|-----------------------------------------------------------------------------------------------------------------|
-| DASHBOARD_VERSION                    |        `v5.2`         | Dashboard version                                                                                               |
-| GATEWAY_VERSION                      |        `v5.2`         | Gateway version                                                                                                 |
-| MDCB_VERSION                         |        `v2.3`         | MDCB version                                                                                                    |
-| PUMP_VERSION                         |        `v1.8`         | Pump version                                                                                                    |
-| PORTAL_VERSION                       |        `v1.8`         | Portal version                                                                                                  |
+| DASHBOARD_VERSION                    |        `v5.5`         | Dashboard version                                                                                               |
+| GATEWAY_VERSION                      |        `v5.5`         | Gateway version                                                                                                 |
+| MDCB_VERSION                         |        `v2.7`         | MDCB version                                                                                                    |
+| PUMP_VERSION                         |        `v1.11`        | Pump version                                                                                                    |
+| PORTAL_VERSION                       |        `v1.10`        | Portal version                                                                                                  |
 | TYK_HELM_CHART_PATH                  |      `tyk-helm`       | Path to charts, can be a local directory or a helm repo                                                         |
 | TYK_USERNAME                         | `default@example.com` | Default password for all the services deployed                                                                  |
 | TYK_PASSWORD                         |  `topsecretpassword`  | Default password for all the services deployed                                                                  |
@@ -226,10 +232,10 @@ The script has defaults for minimal settings in a [.env](https://github.com/TykT
 | TYK_WORKER_SHARDING_ENABLED          |        `false`        | Set to `true` to enable API Sharding                                                                            |
 | TYK_WORKER_SHARDING_TAGS             |                       | API Gateway segmentation tags                                                                                   |
 | TYK_WORKER_GW_PORT                   |        `8081`         | Set the gateway service port to use                                                                             |
-| TYK_WORKER_OPERATOR_CONNECTIONSTRING |                       | Set the dashboard URL for the operator to be able manage APIs and Policies                                      |
+| TYK_WORKER_OPERATOR_CONNECTIONSTRING |                       | Set the dashboard URL for the operator to be able to manage APIs and Policies                                      |
 | DATADOG_APIKEY                       |                       | Datadog API key                                                                                                 |
 | DATADOG_APPKEY                       |                       | Datadog Application key. This is used to create a dashboard and create a pipeline for the Tyk logs              |
-| DATADOG_SITE                         |    `datadoghq.com`    | Datadog site. Change to `datadoghq.eu` if using the european site                                               |
+| DATADOG_SITE                         |    `datadoghq.com`    | Datadog site. Change to `datadoghq.eu` if using the European site                                               |
 | GCP_PROJECT                          |                       | The GCP project for terraform authentication on GCP                                                             |
 | CLUSTER_LOCATION                     |                       | Cluster location that will be created on AKS, EKS, or GKE                                                       |
 | CLUSTER_MACHINE_TYPE                 |                       | Machine type for the cluster that will be created on AKS, EKS, or GKE                                           |
