@@ -20,7 +20,7 @@ There are three different levels of granularity that can be used when configurin
 - [API-level]({{< ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic#applying-a-size-limit-for-a-specific-api" >}}): affecting all endpoints for an API
 - [endpoint-level]({{< ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic#applying-a-size-limit-for-a-specific-endpoint" >}}): affecting a single API endpoint
 
-### Applying a size limit for a specific API
+### Applying a size limit for a specific API {#tyk-classic-api}
 
 You can configure a request size limit (in bytes) to an API by configuring the `global_size_limit` within the `version` element of the API Definition, for example:
 ```
@@ -93,6 +93,36 @@ The process for configuring a request size limit is similar to that defined in s
 ### Applying a size limit for a specific API {#tyk-operator-api}
 
 <!-- Need an example -->
+The process for configuring the request size_limits middleware for a specific API is similar to that explained in [applying a size limit for a specific API](#tyk-classic-api).
+
+You can configure a request size limit (in bytes) for all endpoints within an API by configuring the `global_size_limit` within the `version` element of the API Definition, for example:
+
+```yaml {linenos=true, linenostart=1, hl_lines=["19"]}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-global-limit
+spec:
+  name: httpbin-global-limit
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-global-limit
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        global_size_limit: 5
+        name: Default
+```
+
+The example API Definition above configures an API to listen on path `/httpbin-global-limit` and forwards requests upstream to http://httpbin.org.
+
+In this example the request size limit is set to 5 bytes. If the limit is exceeded then the Tyk Gateway will report `HTTP 400 Request is too large`.
 
 ### Applying a size limit for a specific endpoint {#tyk-operator-endpoint}
 
