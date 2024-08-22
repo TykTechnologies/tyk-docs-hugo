@@ -4,7 +4,7 @@ tags: ["Tyk Tutorials", "Getting Started", "Tyk PoC", "Docker", "Demo Videos" ]
 description: "Learn to deploy and run a Tyk deployment in minutes on Docker using our repository tyk-demo"
 ---
 
-[Tyk-demo](https://github.com/TykTechnologies/tyk-demo) is a repository that enables you to start up locally (or on your premise an entire Tyk stack with all its dependencies and integrations such as
+[Tyk-demo](https://github.com/TykTechnologies/tyk-demo) is a repository that enables you to start up locally an entire Tyk stack with all its dependencies and integrations such as
 [SLIs and SLOs with Prometheus and Grafana](https://github.com/TykTechnologies/tyk-demo/tree/master/deployments/slo-prometheus-grafana)
 or [OpenTelemetry with Jaeger](https://github.com/TykTechnologies/tyk-demo/tree/master/deployments/otel-jaeger).
 
