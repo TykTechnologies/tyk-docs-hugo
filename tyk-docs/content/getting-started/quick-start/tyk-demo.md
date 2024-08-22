@@ -27,7 +27,7 @@ Watch the video *What Is Tyk Demo* for an overview and learn about the key featu
 
 {{< youtube-seo id="MqVPyWg1YZM" title="Overview of Tyk Demo and its features" >}}
 
-## Prerequisits
+## Prerequisites
 
 ### 1. Docker compose
 Make sure you have [docker compose](https://docs.docker.com/compose/install/) and that docker is running on your machine.
