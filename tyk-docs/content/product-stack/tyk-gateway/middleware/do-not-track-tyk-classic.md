@@ -88,7 +88,6 @@ If you want to disable tracking only for selected endpoints, then the process is
 This should contain a list of objects representing each endpoint `path` and `method` that should have tracking disabled:
 
 ```yaml {linenos=true, linenostart=1, hl_lines=["31-33"]}
-Copy code
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:

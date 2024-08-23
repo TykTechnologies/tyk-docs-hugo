@@ -11,7 +11,9 @@ When working with Tyk Classic APIs, the middleware is configured in the Tyk Clas
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/internal-endpoint-tyk-oas" >}}) page.
 
-## Configuring the middleware in the Tyk Classic API Definition
+If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
+
+## Configuring the middleware in the Tyk Classic API Definition {#tyk-classic}
 
 To enable the middleware you must add a new `internal` object to the `extended_paths` section of your API definition.
 
@@ -49,3 +51,40 @@ From the **Endpoint Designer** add an endpoint that matches the path that you wi
 #### Step 2: Save the API
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
+
+## Configuring the middleware in Tyk Operator {#tyk-operator}
+
+The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic). The middleware can be configured by adding a new `internal` object to the `extended_paths` section of your API definition.
+
+In the example below the internal endpoint middleware has been configured for HTTP `GET` requests to the `/status/200` endpoint. Any requests made to this endpoint that originate externally to Tyk will be rejected with `HTTP 403 Forbidden`. Conversely, the endpoint can be reached internally by another API at `tyk://<listen_path>/status/200`.
+
+```yaml {linenos=true, linenostart=1, hl_lines=["26-28"]}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-endpoint-internal
+spec:
+  name: httpbin - Endpoint Internal
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org/
+    listen_path: /httpbin-internal
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        paths:
+          black_list: []
+          ignored: []
+          white_list: []
+        extended_paths:
+          internal:
+            - path: /status/200
+              method: GET
+```

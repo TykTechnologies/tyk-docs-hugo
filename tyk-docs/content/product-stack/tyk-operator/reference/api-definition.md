@@ -100,28 +100,28 @@ Here are the supported features:
 
 | Endpoint Middleware               | Supported | Supported From | Comments                                       | Sample        |
 |-----------------------------------|-----------|----------------|------------------------------------------------|---------------|
-| Allow list                        | ✅️        | v0.8.2         | -                                              | [Sample]({{<ref "product-stack/tyk-gateway/middleware/allow-list-tyk-classic">}}) |
-| Block list                        | ✅️        | v0.8.2         | -                                              | [Sample]({{<ref "product-stack/tyk-gateway/middleware/block-list-tyk-classic">}}) |
-| Cache                             | ✅        | v0.1           | -                                              | [Sample]({{<ref "product-stack/tyk-gateway/middleware/endpoint-cache-tyk-classic">}}) |
-| Advance Cache                     | ✅        | v0.1           | -                                              | [Sample]({{<ref "product-stack/tyk-gateway/middleware/endpoint-cache-tyk-classic">}}) |
-| Circuit Breaker                   | ✅        | v0.5           | -                                              | [Sample]({{<ref "product-stack/tyk-gateway/middleware/circuit-breaker-tyk-classic">}})  |
-| Track Endpoint                    | ✅        | v0.1           |                                                | [Sample]({{<ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-classic">}}) |
-| Do Not Track Endpoint             | ✅        | v0.1           |                                                | [Sample]({{<ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-classic">}}) |
-| Enforced Timeouts                 | ✅        | v0.1           | -                                              | [Sample]({{<ref "product-stack/tyk-gateway/middleware/enforced-timeout-tyk-classic">}}) |
-| Ignore Authentication             | ✅        | v0.8.2         | -                                              | [Sample]({{<ref "product-stack/tyk-gateway/middleware/ignore-tyk-classic">}}) |
-| Internal Endpoint                 | ✅        | v0.1           | -                                              | [Sample]({{<ref "product-stack/tyk-gateway/middleware/internal-endpoint-tyk-classic">}}) |
-| URL Rewrite Basic                 | ✅️        | v0.1           | -                                              | [Sample]({{<ref "product-stack/tyk-gateway/middleware/url-rewrite-tyk-classic">}}) |
+| Allow list                        | ✅️        | v0.8.2         | -                                              | [Allow list]({{<ref "product-stack/tyk-gateway/middleware/allow-list-tyk-classic">}}) |
+| Block list                        | ✅️        | v0.8.2         | -                                              | [Block list]({{<ref "product-stack/tyk-gateway/middleware/block-list-tyk-classic">}}) |
+| Cache                             | ✅        | v0.1           | -                                              | [Cache]({{<ref "product-stack/tyk-gateway/middleware/endpoint-cache-tyk-classic">}}) |
+| Advance Cache                     | ✅        | v0.1           | -                                              | [Advanced Cache]({{<ref "product-stack/tyk-gateway/middleware/endpoint-cache-tyk-classic">}}) |
+| Circuit Breaker                   | ✅        | v0.5           | -                                              | [Circuit Breaker]({{<ref "product-stack/tyk-gateway/middleware/circuit-breaker-tyk-classic">}})  |
+| Track Endpoint                    | ✅        | v0.1           |                                                | [Track Endpoint]({{<ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-classic">}}) |
+| Do Not Track Endpoint             | ✅        | v0.1           |                                                | [Do Not Track Endpoint]({{<ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-classic">}}) |
+| Enforced Timeouts                 | ✅        | v0.1           | -                                              | [Enforced Timeouts]({{<ref "product-stack/tyk-gateway/middleware/enforced-timeout-tyk-classic">}}) |
+| Ignore Authentication             | ✅        | v0.8.2         | -                                              | [Ignore Authentication]({{<ref "product-stack/tyk-gateway/middleware/ignore-tyk-classic">}}) |
+| Internal Endpoint                 | ✅        | v0.1           | -                                              | [Internal Endpoint]({{<ref "product-stack/tyk-gateway/middleware/internal-endpoint-tyk-classic">}}) |
+| URL Rewrite Basic                 | ✅️        | v0.1           | -                                              | [URL Rewrite Basic]({{<ref "product-stack/tyk-gateway/middleware/url-rewrite-tyk-classic">}}) |
 | URL Rewrite (Advanced Trigger)    | ❌        | -              | -                                              | |
-| Validate Request                  | ✅        | v0.8.2         | -                                              | [Sample]({{<ref "product-stack/tyk-gateway/middleware/validate-request-tyk-classic">}}) |
-| Request Size Limit                | ✅️        | v0.1           | -                                              | [Sample]({{<ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic">}}) |
-| Request Method Transform          | ✅        | v0.5           | -                                              | [Sample]({{<ref "product-stack/tyk-gateway/middleware/request-method-tyk-classic">}}) |
-| Request Header Transform          | ✅        | v0.1           | -                                              | [Sample]({{<ref "product-stack/tyk-gateway/middleware/request-header-tyk-classic">}}) |
-| Request Body Transform            | ✅        | v0.1           | -                                              | [Sample]({{<ref "product-stack/tyk-gateway/middleware/request-body-tyk-classic">}}) |
+| Validate Request                  | ✅        | v0.8.2         | -                                              | [Validate Request]({{<ref "product-stack/tyk-gateway/middleware/validate-request-tyk-classic">}}) |
+| Request Size Limit                | ✅️        | v0.1           | -                                              | [Request Size Limit]({{<ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic">}}) |
+| Request Method Transform          | ✅        | v0.5           | -                                              | [Request Method Transform]({{<ref "product-stack/tyk-gateway/middleware/request-method-tyk-classic">}}) |
+| Request Header Transform          | ✅        | v0.1           | -                                              | [Request Header Transform]({{<ref "product-stack/tyk-gateway/middleware/request-header-tyk-classic">}}) |
+| Request Body Transform            | ✅        | v0.1           | -                                              | [Request Body Transform]({{<ref "product-stack/tyk-gateway/middleware/request-body-tyk-classic">}}) |
 | Request Body JQ Transform         | ⚠️         | v0.1           | Untested - Requires [JQ on Gateway Docker Image]({{<ref "advanced-configuration/transform-traffic/jq-transformations">}}) | |
-| Response Header Transform         | ✅        | v0.1           | -                                              | [Sample]({{<ref "product-stack/tyk-gateway/middleware/response-header-tyk-classic">}}) |
-| Response Body Transform           | ✅        | v0.1           | -                                              | [Sample]({{<ref "product-stack/tyk-gateway/middleware/response-body-tyk-classic">}}) |
+| Response Header Transform         | ✅        | v0.1           | -                                              | [Response Header Transform]({{<ref "product-stack/tyk-gateway/middleware/response-header-tyk-classic">}}) |
+| Response Body Transform           | ✅        | v0.1           | -                                              | [Response Body Transform]({{<ref "product-stack/tyk-gateway/middleware/response-body-tyk-classic">}}) |
 | Response Body JQ Transform        | ⚠️         | v0.1           | Untested - Requires [JQ on Gateway Docker Image]({{<ref "advanced-configuration/transform-traffic/jq-transformations">}}) | |
-| Mock Response                     | ✅        | v0.1           | -                                             | [Sample]({{<ref "product-stack/tyk-gateway/middleware/mock-response-tyk-classic">}})|
-| Virtual Endpoint                  | ✅        | v0.1           | -                                              | [Sample]({{<ref "product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-classic">}}) |
+| Mock Response                     | ✅        | v0.1           | -                                             | [Mock Response]({{<ref "product-stack/tyk-gateway/middleware/mock-response-tyk-classic">}})|
+| Virtual Endpoint                  | ✅        | v0.1           | -                                              | [Virtual Endpoint]({{<ref "product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-classic">}}) |
 | Go Plugin                         | ❌        | -              | -                                              |  |
 | Persist Graphql                   | ❌        | -              | -                                              |  |
