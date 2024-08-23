@@ -65,7 +65,7 @@ Tyk Operator configurations are set via Kubernetes secret. The default K8s secre
 | `TYK_ORG`| Yes | `myorgid`| `5e9d9544a1dcd60001d0ed20`|  Operator user ORG ID. |
 | `TYK_TLS_INSECURE_SKIP_VERIFY`| No | `true` | `true` | Set to `“true”` if the Tyk URL is HTTPS and has a self-signed certificate. If it isn't set, the default value is `false`.|
 | `WATCH_NAMESPACE` |No |  `foo,bar` |`foo,bar` | Comma separated list of namespaces for Operator to operate on. The default is to operate on all namespaces if not specified.|
-| `WATCH_INGRESS_CLASS` |No |  `customclass` |`customclass` | Define the ingress class Tyk Operator to watch for. Default is `tyk`|
+| `WATCH_INGRESS_CLASS` |No |  `customclass` |`customclass` | Define the ingress class Tyk Operator should watch. Default is `tyk`|
 | `TYK_HTTPS_INGRESS_PORT` |No |  `8443` |`8443` | Define the ListenPort for HTTPS ingress. Default is `8443`.|
 | `TYK_HTTP_INGRESS_PORT` |No |  `8080` |`8080` | Define the ListenPort for HTTP ingress. Default is `8080`.|
 
