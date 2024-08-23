@@ -108,7 +108,7 @@ Tyk Operator is installed with cluster permissions. However, you can optionally 
 
 You can configure [Tyk Operator as Ingress Controller]({{<ref "product-stack/tyk-operator/tyk-ingress-controller">}}) so that [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) resources can be managed by Tyk as APIs. By default, Tyk Operator looks for the value `tyk` in Ingress resources `kubernetes.io/ingress.class` annotation and will ignore all other ingress classes. If you want to override this default behavior, you may do so by setting `WATCH_INGRESS_CLASS` through `tyk-operator-conf` or the environment variable.
 
-#### Step 2: Installing Tyk Operator and CRDs
+#### Step 2: Installing Tyk Operator and Custom Resource Definitions (CRDs)
 
 You can install CRDs and Tyk Operator using the stand-alone Helm Chart by running the following command:
 
