@@ -70,3 +70,31 @@ curl http://tyk-gateway.localhost:8080/basic-open-api/get -H "X-Team-Name: devop
 {{< img src="/img/custom-analytics-tags/log-browser.png" alt="Log Browser" >}}
 
 ### We can now have Tyk track API requests which contain our business logic!!!
+
+
+## How to setup tag headers with Tyk Operator
+
+To setup tag headers with Tyk Operator add the list of headers to tag to the `tag_headers` object within the `spec` field of the API definition resource. An example is given below:
+
+<!-- is a string array of HTTP headers that can be extracted and transformed into analytic tags(statistics aggregated by tag, per hour). -->
+
+```yaml
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-tag-headers
+spec:
+  name: httpbin-tag-headers
+  use_keyless: true
+  protocol: http
+  active: true
+  tag_headers:
+  - Host
+  - User-Agent
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-tag-headers
+    strip_listen_path: true
+```
+
+In this example we can see that the `Host` and `User-Agent` headers exist within the `tag_headers` array. For each incoming request Tyk will add a `host-<header_value>` and `user-agent` tags to the list of tags in the request analytic record.
