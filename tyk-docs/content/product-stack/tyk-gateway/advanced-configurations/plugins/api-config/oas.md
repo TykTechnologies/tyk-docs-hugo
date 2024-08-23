@@ -26,7 +26,7 @@ The table below illustrates the Tyk OAS API configuration parameters that corres
     
 The example configuration below illustrates how to set up multiple plugins for different phases of the request lifecycle:
 
-```json
+```json {linenos=true, linenostart=1, hl_lines=["15-52"]}
 {
   "x-tyk-api-gateway": {
     "info": {
@@ -84,7 +84,9 @@ The example configuration below illustrates how to set up multiple plugins for d
 }
 ```
 
-We can see from the example above that the middleware section of the *x-tyk-api-gateway* configuration is used to configure plugins in a Tyk OAS API. The *pluginConfig* section contains the *driver* parameter that is used to configure the plugin implementation [language]({{< ref "/plugins/supported-languages#plugin-driver-names" >}}).
+We can see from the example above that the `global` object within the `middleware` section of the `x-tyk-api-gateway` configuration is used to configure plugins in a Tyk OAS API. The `pluginConfig` section contains the `driver` parameter that is used to configure the plugin implementation [language]({{< ref "/plugins/supported-languages#plugin-driver-names" >}}).
+
+In the example above we can see that there are Golang post authentication, post, pre and response plugins configured.
 
 Each plugin can have additional settings, such as:
 - `enabled`: When true, enables the plugin.

@@ -29,7 +29,7 @@ The table below illustrates the Tyk OAS API configuration parameters that corres
 
 The example configuration below illustrates how to set up multiple plugins for different phases of the request lifecycle:
 
-```json
+```json  {linenos=true, linenostart=1}
 {
     "custom_middleware": {
         "pre": [
@@ -87,14 +87,16 @@ The example configuration below illustrates how to set up multiple plugins for d
 }
 ```
 
-From the above example it can be seen that each plugin is configured with the specific function name and associated source file path of the file that contains the function. Furthermore, each lifecycle phase can have a list of plugins configured, allowing for complex processing workflows. For example, you might develop one plugin for logging and another for modifying the request in the pre request phase.
+In this example we can see that there are Golang custom authentication (`auth_check`), post authentication (`post_key_auth`), post, pre and response plugins configured.
 
-The *driver* configuration parameter describes the plugin implementation language. Please refer to the [supported languages]({{< ref "/plugins/supported-languages#plugin-driver-names" >}}) section for list of supported plugin driver names.
+It can be seen that each plugin is configured with the specific function name and associated source file path of the file that contains the function. Furthermore, each lifecycle phase can have a list of plugins configured, allowing for complex processing workflows. For example, you might develop one plugin for logging and another for modifying the request in the pre request phase.
+
+The `driver` configuration parameter describes the plugin implementation language. Please refer to the [supported languages]({{< ref "/plugins/supported-languages#plugin-driver-names" >}}) section for list of supported plugin driver names.
 
 Each plugin can have additional settings, such as:
 - `disabled`: When true, disables the plugin.
 - `raw_body_only`: When true, indicates that only the raw body should be processed.
-- `require_session`: When true, indicates that the plugin requires an active session. This is applicable only for Post, Post Authentication and Response plugins.
+- `require_session`: When true, indicates that the plugin requires an active session. This is applicable only for post, post authentication and response plugins.
 
 ---
 
