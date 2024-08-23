@@ -47,7 +47,7 @@ Please wait for the cert-manager to become available before continuing with the 
 
 ### Option 1: Installing Tyk Operator via Tyk's Umbrella Helm Charts
 
-If you are using [Tyk Stack]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}), [Tyk Control Plane]({{<ref "product-stack/tyk-charts/tyk-control-plane-chart">}}), or [Tyk Open Source Chart]({{<ref "product-stack/tyk-charts/tyk-oss-chart">}}), you can install Tyk Operator along side other Tyk components by setting value `global.components.operator` to `true`.
+If you are using [Tyk Stack]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}), [Tyk Control Plane]({{<ref "product-stack/tyk-charts/tyk-control-plane-chart">}}), or [Tyk Open Source Chart]({{<ref "product-stack/tyk-charts/tyk-oss-chart">}}), you can install Tyk Operator alongside other Tyk components by setting value `global.components.operator` to `true`.
 
 ### Option 2: Installing Tyk Operator via stand-alone Helm Chart
 
