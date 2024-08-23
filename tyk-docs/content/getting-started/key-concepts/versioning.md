@@ -46,7 +46,7 @@ The `definition` section has the following fields:
 - `fallback_to_default`: set this to `true` to [invoke the default version]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#fallback-to-default" >}}) if an invalid version is requested
 - `url_versioning_pattern`: if you are using `strip_versioning_data` and `fallback_to_default` with `location=url` [with Tyk 5.5.0 or later]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-url-path-version-and-default-fallback" >}}) you can configure this with a regex that matches the format that you use for the versioning identifier (`versions.name`)
 
-The following fields in `definition` are deprecated or otherwise not used for Tyk Classic API versioning and should be left with their default values:
+The following fields in `definition` are either deprecated or otherwise not used for Tyk Classic API versioning and should be left with their default values:
 - `enabled`: defaults to `false`
 - `default`: defaults to an empty string `""`
 - `name`: defaults to an empty string `""`
