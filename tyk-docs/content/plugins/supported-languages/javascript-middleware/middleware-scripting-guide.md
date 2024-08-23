@@ -94,12 +94,36 @@ The system API provides access to resources outside of the JavaScript Virtual Ma
 
 ### The `request` object
 
-The `request` object provides a set of arrays that describe the API request. These can be manipulated and, when changed, will affect the request as it passes through the middleware pipeline.
+The `request` object provides a set of arrays that describe the API request. These can be manipulated and, when changed, will affect the request as it passes through the middleware pipeline. For [virtual endpoints]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) the request object has a [different structure](#VirtualEndpoint-Request).
 
 The structure of the `request` object is:
 
+```typesecript
+class ReturnOverrides {
+  ResponseCode: number = 200;
+  ResponseBody: string = "";
+  ResponseHeaders: string[] = [];
+}
+
+class Request {
+  Headers: { [key: string]: string[] } = {};
+  SetHeaders: { [key: string]: string } = {};
+  DeleteHeaders: string[] = [];
+  Body: string = "";
+  URL: string = "";
+  AddParams: { [key: string]: string } = {};
+  DeleteParams: string[] = [];
+  ReturnOverrides: ReturnOverrides = new ReturnOverrides();
+  IgnoreBody: boolean = false;
+  Method: string = "";
+  RequestURI: string = "";
+  Scheme: string = "";
+}
+```
+
+<!--
 ```go
-{
+struct {
   Headers       map[string][]string
   SetHeaders    map[string]string
   DeleteHeaders []string
@@ -117,7 +141,7 @@ The structure of the `request` object is:
   RequestURI    string
   Scheme        string
 }
-```
+``` -->
 
 - `Headers`: this is an object of string arrays, and represents the current state of the request header; this object cannot be modified directly, but can be used to read header data
 - `SetHeaders`: this is a key-value map that will be set in the header when the middleware returns the object; existing headers will be overwritten and new headers will be added
@@ -131,6 +155,7 @@ The structure of the `request` object is:
 - `Method`: contains the HTTP method (`GET`, `POST`, etc.)
 - `RequestURI`: contains the request URI, including the query string, e.g. `/path?key=value`
 - `Scheme`: contains the URL scheme, e.g. `http`, `https`
+
 
 #### Using `ReturnOverrides`
 
@@ -158,6 +183,51 @@ testJSVMData.NewProcessRequest(function(request, session, config) {
 	return testJSVMData.ReturnData(request, session.meta_data);
 });
 ```
+
+#### The virtual endpoint `request` object {#VirtualEndpoint-Request}
+
+For [virtual endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) functions the structure of a Javascript `request` object is:
+
+```typescript
+class VirtualEndpointRequest {
+  Body: string = "";
+  Headers: { [key: string]: string[] } = {};
+  Params: { [key: string]: string[] } = {};
+  Scheme: string = "";
+  URL: string = "";
+}
+```
+
+- `Body`: HTTP request body, e.g. `""`
+- `Headers`: HTTP request headers, e.g. `"Accept": ["*/*"]`
+- `Params`: Decoded query and form parameters, e.g. `{ "confirm": ["true"], "userId": ["123"] }`
+- `Scheme`: The scheme of the URL ( e.g. `http` or `https`)
+- `URL`: The full URL of the request, e.g `/vendpoint/anything?user_id=123\u0026confirm=true`
+
+</br>
+
+{{< note success >}}
+**Note**
+
+Each query and form parameter within the request is stored as an array field in the `Params` field of the request object.
+
+Repeated parameter assignments are appended to the corresponding array. For example, a request against `/vendpoint/anything?user_id[]=123&user_id[]=234` would result in a Javascript request object similar to that shown below:
+
+```javascript
+const httpRequest = {
+  Headers: {
+    "Accept": ["*/*"],
+    "User-Agent": ["curl/8.1.2"]
+  },
+  Body: "",
+  URL: "/vendpoint/anything?user_id[]=123\u0026user_id[]=234",
+  Params: {
+    "user_id[]": ["123", "234"]
+  },
+  Scheme: "http"
+};
+```
+{{< /note >}}
 
 ### The `session` object
 
