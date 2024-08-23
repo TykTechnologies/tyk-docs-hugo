@@ -2037,12 +2037,12 @@ menu:
             category: Directory
             show: true
             menu:
-            - title: "Tyk Classic API"
-              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/classic
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/oas
               category: Page
               show: True
-            - title: "Tyk OAS API"
-              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/oas
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/classic
               category: Page
               show: True
           - title: "Plugin Types"
