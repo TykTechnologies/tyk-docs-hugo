@@ -70,7 +70,7 @@ Tyk Operator configurations are set via Kubernetes secret. The default K8s secre
 | `TYK_HTTP_INGRESS_PORT` |No |  `8080` |`8080` | Define the ListenPort for HTTP ingress. Default is `8080`.|
 
 ##### Connection to Tyk Gateway or Dashboard
-If you install Tyk using Helm Chart, `tyk-operator-conf` will have been created with the following keys: `TYK_AUTH, TYK_MODE, TYK_ORG`, and `TYK_URL` by default. If you didn't use Helm Chart for installation, please prepare `tyk-operator-conf` secret yourself following below instruction.
+If you install Tyk using Helm Chart, `tyk-operator-conf` will have been created with the following keys: `TYK_AUTH, TYK_MODE, TYK_ORG`, and `TYK_URL` by default. If you didn't use Helm Chart for installation, please prepare `tyk-operator-conf` secret yourself using the commands below:
 
 ```console
 $ kubectl create namespace tyk-operator-system
