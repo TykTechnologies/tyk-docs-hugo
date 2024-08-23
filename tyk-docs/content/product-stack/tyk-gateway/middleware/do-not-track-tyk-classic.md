@@ -62,7 +62,7 @@ Use the *save* or *create* buttons to save the changes and activate the middlewa
 
 The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic).
 
-It is possible to prevent tracking for endpoints of an API by configuring the `do_not_track` field in the root of your API definition as follows:
+It is possible to prevent tracking for all endpoints of an API by configuring the `do_not_track` field in the root of your API definition as follows:
 
 - `true`: no transaction logs will be generated for requests to the API
 - `false`: transaction logs will be generated for requests to the API
@@ -83,3 +83,44 @@ spec:
     listen_path: /example
     strip_listen_path: true
 ```
+
+If you want to disable tracking only for selected endpoints, then the process is similar to that defined in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic), i.e. you must add a new `do_not_track_endpoints` list to the extended_paths section of your API definition.
+This should contain a list of objects representing each endpoint `path` and `method` that should have tracking disabled:
+
+```yaml {linenos=true, linenostart=1, hl_lines=["31-33"]}
+Copy code
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-endpoint-tracking
+spec:
+  name: httpbin - Endpoint Track
+  use_keyless: true
+  protocol: http
+  active: true
+  do_not_track: false
+  proxy:
+    target_url: http://httpbin.org/
+    listen_path: /httpbin
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        paths:
+          black_list: []
+          ignored: []
+          white_list: []
+        extended_paths:
+          track_endpoints:
+            - method: GET
+              path: "/get"
+          do_not_track_endpoints:
+            - method: GET
+              path: "/headers"
+```
+
+In the example above we can see that the `do_not_track_endpoints` list is configured so that requests to `GET /headers` will have tracking disabled.
