@@ -55,7 +55,7 @@ If you prefer to install Tyk Operator separately, following this section to inst
 
 #### Step 1: Create tyk-operator-conf secret
 
-Tyk Operator configurations are set via Kubernetes secret. The default K8s secret name is `tyk-operator-conf`. If you want to use another name, configure it through Helm Chart [envFrom](#envFrom) value.
+Tyk Operator configurations are set via Kubernetes secret. The default K8s secret name is `tyk-operator-conf`. If you want to use another name, configure it through Helm Chart [envFrom](#helm-configurations) value.
 
 The secret should contain following keys: 
 
@@ -126,36 +126,36 @@ This process will deploy Tyk Operator and its required Custom Resource Definitio
 
 ##### Helm configurations
 
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| envFrom[0].secretRef.name | string | `"tyk-operator-conf"` | Loads environment variables from referenced secret to the operator. |{#envFrom}
-| envVars[0].name | string | `"TYK_HTTPS_INGRESS_PORT"` |  |
-| envVars[0].value | string | `"8443"` | Default HTTPS Ingress port |
-| envVars[1].name | string | `"TYK_HTTP_INGRESS_PORT"` |  |
-| envVars[1].value | string | `"8080"` | Default HTTP Ingress port |
-| extraVolumeMounts | list | `[]` |  |
-| extraVolumes | list | `[]` |  |
-| fullnameOverride | string | `""` |  |
-| healthProbePort | int | `8081` |  |
-| hostNetwork | bool | `false` |  |
-| image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"tykio/tyk-operator"` |  |
-| image.tag | string | `"v0.18.0"` |  |
-| imagePullSecrets | list | `[]` |  |
-| metricsPort | int | `8080` |  |
-| nameOverride | string | `""` |  |
-| nodeSelector | object | `{}` |  |
-| podAnnotations | object | `{}` | Annotations added to Operator Pods |
-| podSecurityContext.allowPrivilegeEscalation | bool | `false` |  |
-| rbac.image.pullPolicy | string | `"IfNotPresent"` |  |
-| rbac.image.repository | string | `"gcr.io/kubebuilder/kube-rbac-proxy"` |  |
-| rbac.image.tag | string | `"v0.8.0"` |  |
-| rbac.port | int | `8443` |  |
-| rbac.resources | object | `{}` |  |
-| replicaCount | int | `1` |  |
-| resources | object | `{}` |  |
-| serviceMonitor | bool | `false` |  |
-| webhookPort | int | `9443` |  |
+| Key | Type | Default |
+|-----|------|---------|
+| envFrom[0].secretRef.name | string | `"tyk-operator-conf"` |
+| envVars[0].name | string | `"TYK_HTTPS_INGRESS_PORT"` |
+| envVars[0].value | string | `"8443"` |
+| envVars[1].name | string | `"TYK_HTTP_INGRESS_PORT"` |
+| envVars[1].value | string | `"8080"` |
+| extraVolumeMounts | list | `[]` |
+| extraVolumes | list | `[]` |
+| fullnameOverride | string | `""` |
+| healthProbePort | int | `8081` |
+| hostNetwork | bool | `false` |
+| image.pullPolicy | string | `"IfNotPresent"` |
+| image.repository | string | `"tykio/tyk-operator"` |
+| image.tag | string | `"v0.18.0"` |
+| imagePullSecrets | list | `[]` |
+| metricsPort | int | `8080` |
+| nameOverride | string | `""` |
+| nodeSelector | object | `{}` |
+| podAnnotations | object | `{}` |
+| podSecurityContext.allowPrivilegeEscalation | bool | `false` |
+| rbac.image.pullPolicy | string | `"IfNotPresent"` |
+| rbac.image.repository | string | `"gcr.io/kubebuilder/kube-rbac-proxy"` |
+| rbac.image.tag | string | `"v0.8.0"` |
+| rbac.port | int | `8443` |
+| rbac.resources | object | `{}` |
+| replicaCount | int | `1` |
+| resources | object | `{}` |
+| serviceMonitor | bool | `false` |
+| webhookPort | int | `9443` |
 
 ## Upgrading Tyk Operator
 You can upgrade CRDs and Tyk Operator through Helm Chart by running the following command:
