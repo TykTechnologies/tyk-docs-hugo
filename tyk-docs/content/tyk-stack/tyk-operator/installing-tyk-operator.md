@@ -55,7 +55,9 @@ If you prefer to install Tyk Operator separately, following this section to inst
 
 #### Step 1: Create tyk-operator-conf secret
 
-Tyk Operator configurations are set via Kubernetes secret. The default K8s secret name is `tyk-operator-conf`. The secret should contain following keys: 
+Tyk Operator configurations are set via Kubernetes secret. The default K8s secret name is `tyk-operator-conf`. If you want to use another name, configure it through Helm Chart [envFrom](#envFrom) value.
+
+The secret should contain following keys: 
 
 | Key | Mandatory | Example Value (Open Source) | Example Value (Tyk Pro)  | Description  |
 |:-----|:-----|:----------------|:-------------|:-------------|
@@ -107,7 +109,7 @@ Tyk Operator is installed with cluster permissions. However, you can optionally 
 
 ##### Watching custom ingress class
 
-You can configure [Tyk Operator as Ingress Controller]({{<ref "product-stack/tyk-operator/tyk-ingress-controller">}}) so that [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) resources can be managed by Tyk as APIs. By default, Tyk Operator looks for the value `tyk` in Ingress resources `kubernetes.io/ingress.class` annotation and will ignore all other ingress classes. If you want to override this default behavior, you may do so by setting `WATCH_INGRESS_CLASS` through `tyk-operator-conf` or the environment variable.
+You can configure [Tyk Operator as Ingress Controller]({{<ref "product-stack/tyk-operator/tyk-ingress-controller">}}) so that [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) resources can be managed by Tyk as APIs. By default, Tyk Operator looks for the value `tyk` in Ingress resources `kubernetes.io/ingress.class` annotation and will ignore all other ingress classes. If you want to override this default behavior, you may do so by setting [WATCH_INGRESS_CLASS](#step-1-create-tyk-operator-conf-secret) through `tyk-operator-conf` or the environment variable.
 
 #### Step 2: Installing Tyk Operator and Custom Resource Definitions (CRDs)
 
@@ -122,6 +124,38 @@ $ helm install tyk-operator tyk-helm/tyk-operator -n tyk-operator-system
 
 This process will deploy Tyk Operator and its required Custom Resource Definitions (CRDs) into your Kubernetes cluster in `tyk-operator-system` namespace.
 
+##### Helm configurations
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| envFrom[0].secretRef.name | string | `"tyk-operator-conf"` | Loads environment variables from referenced secret to the operator. |{#envFrom}
+| envVars[0].name | string | `"TYK_HTTPS_INGRESS_PORT"` |  |
+| envVars[0].value | string | `"8443"` | Default HTTPS Ingress port |
+| envVars[1].name | string | `"TYK_HTTP_INGRESS_PORT"` |  |
+| envVars[1].value | string | `"8080"` | Default HTTP Ingress port |
+| extraVolumeMounts | list | `[]` |  |
+| extraVolumes | list | `[]` |  |
+| fullnameOverride | string | `""` |  |
+| healthProbePort | int | `8081` |  |
+| hostNetwork | bool | `false` |  |
+| image.pullPolicy | string | `"IfNotPresent"` |  |
+| image.repository | string | `"tykio/tyk-operator"` |  |
+| image.tag | string | `"v0.18.0"` |  |
+| imagePullSecrets | list | `[]` |  |
+| metricsPort | int | `8080` |  |
+| nameOverride | string | `""` |  |
+| nodeSelector | object | `{}` |  |
+| podAnnotations | object | `{}` | Annotations added to Operator Pods |
+| podSecurityContext.allowPrivilegeEscalation | bool | `false` |  |
+| rbac.image.pullPolicy | string | `"IfNotPresent"` |  |
+| rbac.image.repository | string | `"gcr.io/kubebuilder/kube-rbac-proxy"` |  |
+| rbac.image.tag | string | `"v0.8.0"` |  |
+| rbac.port | int | `8443` |  |
+| rbac.resources | object | `{}` |  |
+| replicaCount | int | `1` |  |
+| resources | object | `{}` |  |
+| serviceMonitor | bool | `false` |  |
+| webhookPort | int | `9443` |  |
 
 ## Upgrading Tyk Operator
 You can upgrade CRDs and Tyk Operator through Helm Chart by running the following command:
@@ -136,20 +170,3 @@ To uninstall Tyk Operator, you need to run the following command:
 ```console
 $ helm delete tyk-operator -n tyk-operator-system
 ```
-
-## Troubleshooting Tyk Operator
-If you experience issues with the behavior of the Tyk Operator (e.g. API changes not being applied), to investigate, you can check the logs of the tyk-operator-controller-manager pod in your cluster with the following command:
-
-```console
-$ kubectl logs <tyk-controller-manager-pod-name> -n tyk-operator-system manager
-```
-
-If the operator webhook cannot be reached, this internal error occurs:
-
-```console
-failed calling webhook "mapidefinition.kb.io": failed to call webhook: Post "https://tyk-operator-webhook-service.tyk.svc:443/mutate-tyk-tyk-io-v1alpha1-apidefinition?timeout=10s": context deadline exceeded
-Solution:
-```
-This typically happens when the webhook does not have access to the operator manager service. This is typically due to connectivity issues or if the manager is not up.
-
-Please refer to cert-manager [The Definitive Debugging Guide](https://cert-manager.io/docs/troubleshooting/webhook/#error-context-deadline-exceeded) for the cert-manager Webhook Pod documentation about possible solutions based on your environment (GKE, EKS, etc.)
