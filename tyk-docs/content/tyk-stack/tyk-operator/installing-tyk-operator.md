@@ -55,9 +55,9 @@ If you prefer to install Tyk Operator separately, following this section to inst
 
 #### Step 1: Create tyk-operator-conf secret
 
-Tyk Operator configurations are set via Kubernetes secret. The default K8s secret name is `tyk-operator-conf`. If you want to use another name, configure it through Helm Chart [envFrom](#helm-configurations) value.
+Tyk Operator configurations are set via a Kubernetes secret. The default K8s secret name is `tyk-operator-conf`. If you want to use another name, configure it through Helm Chart [envFrom](#helm-configurations) value.
 
-The secret should contain following keys: 
+The secret should contain the following keys: 
 
 | Key | Mandatory | Example Value (Open Source) | Example Value (Tyk Cloud, Self-managed, or Hybrid)  | Description  |
 |:-----|:-----|:----------------|:-------------|:-------------|
