@@ -19,7 +19,7 @@ Follow this guide to install and configure Tyk Operator using [Helm](https://hel
 {{< note success >}}
 **Note**  
 
-Tyk Operator supports any Tyk installation whether it is on Tyk Cloud, Hybrid, or self-managed on VMs and K8s. You only need to make sure that the control plane URL is accessible by Tyk Operator.
+Tyk Operator supports any Tyk installation whether it is on Tyk Cloud, Hybrid, or self-managed. You only need to make sure that the control plane URL is accessible by Tyk Operator.
 {{< /note >}}
 
 ### Configuring Tyk
