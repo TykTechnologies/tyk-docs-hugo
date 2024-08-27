@@ -33,7 +33,6 @@ There are no deprecations in this release.
 If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
 ### Release Highlights
-XXXXX
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.4">}}) below.
 
 ### Dependencies {#dependencies-5.3.0}
@@ -99,13 +98,30 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
 <ul>
 <li>
-<details>
-<summary></summary>
+<summary>
+   Fixed API’s stats not being shown when adding 2 or more tags in the Activity page and using Postgres
+</summary>
+</li>
 
-</details>
+<li>
+<summary>
+   Fixed 429 status codes not being shown on the Activity page when using Postgres
+</summary>
+</li>
+
+<li>
+<summary>
+   Fixed wrong graphs and incorrect requests counter on Portal when using Postgres
+</summary>
+</li>
+
+<li>
+<summary>
+   Fixed Error Breakdown issues with dates (it was showing errors that happened on different dates than the one that was actually displayed)
+</summary>
 </li>
 </ul>
-
+   
 ---
 ## 5.3.3 Release Notes
 
@@ -122,7 +138,7 @@ There are no deprecations in this release.
 If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
 ### Release Highlights
-Add release highlight here
+
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.3">}}) below.
 
 ### Dependencies {#dependencies-5.3.0}
