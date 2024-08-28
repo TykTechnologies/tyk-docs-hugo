@@ -18,6 +18,119 @@ tags: ["Tyk Dashboard", "Release notes", "v5.3", "5.3.0", "5.3.1", "5.3.2", "5.3
 As outlined in the [LTS policy]({{< ref "developer-support/special-releases-and-features/long-term-support-releases" >}}), version 5.3 is a long-term support release with full support available until May 2025. Maintenance support will continue until May 2026. Our next long-term support release will be announced at the end of April 2025.
 
 ---
+## 5.3.4 Release Notes
+
+### Release Date August 26 2024
+
+### Breaking Changes
+**Attention**: Please read this section carefully.
+There are no breaking changes in this release, however, if moving from a version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
+
+### Deprecations
+There are no deprecations in this release.
+
+### Upgrade Instructions
+If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+
+### Release Highlights
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.4">}}) below.
+
+### Dependencies {#dependencies-5.3.0}
+<!--Required. Use this section to announce the following types of dependencies compatible with the release:
+Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+3rd party dependencies and tools -->
+
+With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "planning-for-production/database-settings/mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.3).
+
+
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings/postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.3).
+
+
+#### Compatibility Matrix For Tyk Components
+<!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+An illustrative example is shown below. -->
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.3.4 | MDCB v2.5.1     | MDCB v2.5.1 |
+|         | Operator v0.17 | Operator v0.16 |
+|         | Sync v1.4.3   | Sync v1.4.3 |
+|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.4.0 | Helm all versions |
+| | EDP v1.8.3 | EDP all versions |
+| | Pump v1.9.0 | Pump all versions |
+| | TIB (if using standalone) v1.5.1 | TIB all versions |
+
+
+#### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.3.4}
+<!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
+Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
+An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
+| [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.21 |
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+
+### Downloads
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.4)
+ - ```bash
+   docker pull tykio/tyk-dashboard:v5.3.4
+   ```
+- Helm charts
+ - [tyk-charts v1.4]({{< ref "product-stack/tyk-charts/release-notes/version-1.4.md" >}})
+
+### Changelog {#Changelog-v5.3.4}
+<!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
+Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
+"...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
+"New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
+
+#### Fixed
+<!-- This section should be a bullet point list of new features. Explain:
+
+- The purpose of the new feature
+- How does the new feature benefit users?
+- Link to documentation of the new feature
+- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+
+Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
+<ul>
+<li>
+<details>
+<summary>Fixed display issue for API stats</summary>
+
+Fixed API’s stats not being shown when adding 2 or more tags in the Activity page and using Postgres
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed display issue of 429 status codes on the Activity page</summary>
+
+Fixed 429 status codes not being shown on the Activity page when using Postgres
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed display of graphs and requests counter on Portal</summary>
+
+Fixed wrong graphs and incorrect requests counter on Portal when using Postgres
+</details>
+</li>
+
+<li>
+<details>
+<summary>Fixed Error Breakdown display issues with dates</summary>
+
+Fixed Error Breakdown issues with dates (it was showing errors that happened on different dates than the one that was actually displayed)
+</details>
+</li>
+</ul>
+   
+---
 ## 5.3.3 Release Notes
 
 ### Release Date August 2nd 2024
@@ -33,7 +146,7 @@ There are no deprecations in this release.
 If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
 ### Release Highlights
-Add release highlight here
+
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.3">}}) below.
 
 ### Dependencies {#dependencies-5.3.0}
