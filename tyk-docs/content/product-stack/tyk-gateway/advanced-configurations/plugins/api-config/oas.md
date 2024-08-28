@@ -100,13 +100,17 @@ Each plugin has the following configuration parameters:
 
 ## Configuring plugins in the API Designer {#tyk-oas-dashboard}
 
-Click on the APIs menu item in the *API Management* menu of Dashboard and select your OAS API to display the OAS API editor screen.
+Click on the APIs menu item in the *API Management* menu of Dashboard and select your OAS API to display the OAS API editor screen. Subsequently, follow the steps below:
+
+#### Step 1: Configure implementation language for your plugin
 
 Scroll down until the *Plugins Configuration* section is displayed with the option to configure a plugin driver and a list of plugin types, e.g. *Pre Plugin*, *Post Plugin* etc. 
 
 {{< img src="/img/plugins/plugins_oas_api_driver_options.png" alt="OAS API Plugins Driver Config" >}}
 
 Select the implementation language of your plugins.
+
+#### Step 2: Add plugins
 
 For each type of plugin to configure, click on the *Add Plugin* button to display a plugin configuration section:
 
