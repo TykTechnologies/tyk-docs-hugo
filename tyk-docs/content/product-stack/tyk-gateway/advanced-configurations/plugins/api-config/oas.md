@@ -121,3 +121,7 @@ Complete the following fields:
 - `Function Name`: Enter the function name that implements the required behavior for your plugin.
 - `Path`: Enter the path to the source file that contains the function that implements your plugin.
 - `Raw Body Only`: Optionally, toggle the *Raw Body Only* switch to true when you do not wish to fill body in request or response object for your plugins.
+
+#### Step 3: Save the API
+
+Select **Save API** to apply the changes to your API.

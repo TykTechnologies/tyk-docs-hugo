@@ -104,14 +104,22 @@ Each plugin can have additional settings, such as:
 
 This section explains how to configure Plugins for a Tyk Classic API using Tyk Dashboard. It specifically covers the use case where the source files of your plugins are deployed on the Tyk Gateway file system. 
 
-To configure plugins for Tyk Classic APIs, click on the APIs item in the *API Management* menu of Dashboard and select your API to display the API editor screen.
+To configure plugins for Tyk Classic APIs, click on the APIs item in the *API Management* menu of Dashboard and select your API to display the API editor screen. Subsequently, following the steps below.
 
 {{< img src="/img/plugins/plugins_classic_api_source_config.png" alt="Plugins Classic API screen" >}}
 
-Click on the *View Raw Definition* button to display an editor for the Tyk Classic API Definition.
+#### Step 1: Display the Tyk Classic API Definition editor
+
+Click on the *View Raw Definition* button to display an editor for updating the Tyk Classic API Definition.
 
 {{< img src="/img/plugins/plugins_classic_api_definition_editor.png" alt="Plugins Classic API Definition editor screen" >}}
 
-Use the editor to edit the *custom_middleware* section of the [Tyk Classic API Definition]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/classic" >}}) and click the *Update* button to save your changes.
+#### Step 2: Edit the Tyk Classic API Definition to configure plugins
+
+Use the editor to edit the *custom_middleware* section of the [Tyk Classic API Definition]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/classic" >}}).
 
 {{< img src="/img/plugins/plugins_classic_api_bundles_config.png" alt="Plugins Classic API Bundle Field" >}}
+
+#### Step 3: Save changes
+
+Select the **Update** button to apply your changes to the Tyk Classic API Definition.
