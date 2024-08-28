@@ -35,7 +35,6 @@ change.
 |-------------------|-------------------------------------------------|------------------------------------------------------|
 | `/users`:         | `^/users`                                       | Matches paths that start with `/users`.              |
 | `users`:          | `^.*users`                                      | Matches any path containing the string `users`.      |
-| `/users*.`        | `^/users*.`                                     | Matches paths that start with `/user`, followed by any number of 's' characters and a single any character after s, of possibly multiple. |
 | `/users$`:        | `^/users$`                                      | Matches request paths exactly equalling `/users`. |
 | `/users/.*`:      | `^/users/.*`                                    | Matches any path that starts with `/users/` and can have anything after it. |
 
