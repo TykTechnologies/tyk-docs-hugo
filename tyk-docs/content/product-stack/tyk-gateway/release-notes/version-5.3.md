@@ -41,7 +41,7 @@ If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older 
 
 
 ### Release Highlights
-Gateway 5.3.4 was version bumped only, to align with Dashboard 5.3.4. Subsequently, no changes were encountered in release 5.3.4. For further information please see the release notes for Gateway [v5.3.4]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.3.md" >}}) 
+Gateway 5.3.4 was version bumped only, to align with Dashboard 5.3.4. Subsequently, no changes were encountered in release 5.3.4. For further information please see the release notes for Dashboard [v5.3.4]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.3.md" >}}) 
 
 ### Dependencies
 
