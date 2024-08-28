@@ -112,7 +112,7 @@ $ kubectl create secret -n tyk-operator-system generic tyk-operator-conf \
 
 For open source users, user API key corresponds to Gateway's [secret]({{<ref "tyk-oss-gateway/configuration#secret">}}).
 
-For licensed users, user API key and Organization ID can be found under "Add / Edit User" page within Tyk Dashboard. `TYK_AUTH` corresponds to **Tyk Dashboard API Access Credentials**. `TYK_ORG` corresponds to **Organization ID**.
+For licensed users, user API key and Organization ID can be found under "Add / Edit User" page within Tyk Dashboard. `TYK_AUTH` corresponds to <b>Tyk Dashboard API Access Credentials</b>. `TYK_ORG` corresponds to <b>Organization ID</b>.
 {{< /note >}}
 
 {{< note success >}}
