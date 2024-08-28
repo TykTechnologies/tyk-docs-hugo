@@ -98,30 +98,34 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
 <ul>
 <li>
-<summary>Fixed display issue for API stats</summary>
 <details>
+<summary>Fixed display issue for API stats</summary>
+
 Fixed API’s stats not being shown when adding 2 or more tags in the Activity page and using Postgres
 </details>
 </li>
 
 <li>
-<summary>Fixed display issue of 429 status codes on the Activity page</summary>
 <details>
+<summary>Fixed display issue of 429 status codes on the Activity page</summary>
+
 Fixed 429 status codes not being shown on the Activity page when using Postgres
 </details>
 </li>
 
 <li>
-<summary>Fixed display of graphs and requests counter on Portal</summary>
 <details>
+<summary>Fixed display of graphs and requests counter on Portal</summary>
+
 Fixed wrong graphs and incorrect requests counter on Portal when using Postgres
 </details>
 </li>
 
 <li>
-<summary>Fixed Error Breakdown display issues with dates</summary>
 <details>
-   Fixed Error Breakdown issues with dates (it was showing errors that happened on different dates than the one that was actually displayed)
+<summary>Fixed Error Breakdown display issues with dates</summary>
+
+Fixed Error Breakdown issues with dates (it was showing errors that happened on different dates than the one that was actually displayed)
 </details>
 </li>
 </ul>
