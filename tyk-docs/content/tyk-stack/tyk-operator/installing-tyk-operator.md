@@ -158,11 +158,33 @@ This process will deploy Tyk Operator and its required Custom Resource Definitio
 | webhookPort | int | `9443` |
 
 ## Upgrading Tyk Operator
-You can upgrade CRDs and Tyk Operator through Helm Chart by running the following command:
+You can upgrade Tyk Operator through Helm Chart by running the following command:
 
 ```console
 $ helm upgrade -n tyk-operator-system tyk-operator tyk-helm/tyk-operator  --wait
 ```
+
+[Helm does not upgrade or delete CRDs](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#some-caveats-and-explanations) when performing an upgrade. Because of this restriction, an additional step is required when upgrading Tyk Operator with Helm.
+```console
+$ kubectl apply -f https://raw.githubusercontent.com/TykTechnologies/tyk-operator/master/helm/crds/crds.yaml
+```
+
+### From Tyk Operator repository
+
+ You can install CRDs and Tyk Operator by checking out [tyk-operator](https://github.com/TykTechnologies/tyk-operator) repository. If there is a specific version you want to upgrade to, you can checkout the tag by running `git checkout tags/{.ReleaseTag}`.
+
+ To upgrade CRDs, run the following command:
+
+ ```console
+ $ kubectl apply -f ./helm/crds
+ ```
+
+ To upgrade helm release, run the following command:
+
+ ```console
+ $ helm upgrade tyk-operator ./helm -n tyk-operator-system
+ ```
+
 
 ## Uninstalling Tyk Operator
 To uninstall Tyk Operator, you need to run the following command:
