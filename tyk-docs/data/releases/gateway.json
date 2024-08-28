@@ -1,9 +1,30 @@
 {
   "home": "tyk-oss-gateway",
   "licensed": false,
+<<<<<<< HEAD
   "latest": "5.3.3",
   "lts": "5.3.3",
   "releaseNotesPath": "product-stack/tyk-gateway/release-notes/overview",
+=======
+  "latest": "5.5.0",
+  "lts": "5.3.4",
+  "releaseNotesPath": "product-stack/tyk-gateway/release-notes/overview",
+  "5.5.0": {
+    "date": "99/08/2024",
+    "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.5.0",
+    "docker": "https://hub.docker.com/r/tykio/tyk-gateway/tags?page=1&name=v5.5.0"
+  },
+  "5.4.0": {
+    "date": "02/07/2024",
+    "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.4.0",
+    "docker": "https://hub.docker.com/r/tykio/tyk-gateway/tags?page=1&name=v5.4.0"
+  },
+  "5.3.4": {
+    "date": "26/08/2024",
+    "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.3.4",
+    "docker": "https://hub.docker.com/r/tykio/tyk-gateway/tags?page=1&name=5.3.4"
+  },
+>>>>>>> 3d25f7624... [DX-1643] Update 5.4.3 RN landing page (#5315)
   "5.3.3": {
     "date": "02/08/2024",
     "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.3.3",
