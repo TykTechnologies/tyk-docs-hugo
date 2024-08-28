@@ -86,10 +86,13 @@ The example configuration below illustrates how to set up multiple plugins for d
 
 We can see from the example above that the `global` object within the `middleware` section of the `x-tyk-api-gateway` configuration is used to configure plugins in a Tyk OAS API. The `pluginConfig` section contains the `driver` parameter that is used to configure the plugin implementation [language]({{< ref "/plugins/supported-languages#plugin-driver-names" >}}).
 
-In the example above we can see that there are Golang post authentication, post, pre and response plugins configured.
+A list of plugins can be configured for each plugin type, e.g. Post Authentication (`postAuthenticationPlugins`), Pre (`prePlugins`) etc. In the example above we can see that there are Golang post authentication, post, pre and response plugins configured.
 
-Each plugin can have additional settings, such as:
+Each plugin has the following configuration parameters:
+
 - `enabled`: When true, enables the plugin.
+- `functionName`: The name of the function that implements the plugin within the source file.
+- `path`: The path to the plugin source file. 
 - `rawBodyOnly`: When true, indicates that only the raw body should be processed.
 - `requireSession`: When true, indicates that the plugin requires an active session. This is applicable only for Post, Post Authentication and Response plugins.
 
@@ -97,78 +100,20 @@ Each plugin can have additional settings, such as:
 
 ## Configuring plugins in the API Designer {#tyk-oas-dashboard}
 
-The table below illustrates the Tyk OAS API configuration parameters that correspond to each phase of the API request lifecycle:
+Click on the APIs menu item in the *API Management* menu of Dashboard and select your OAS API to display the OAS API editor screen.
 
-| Phase | Description       | Config |
-| ----- | ---               | ----   |
-| Pre   | Occurs before main request processing. | prePlugins |            
-| Post Auth | Occurs after key authentication | postAuthenticationPlugins |
-| Post | Occurs after the main request processing but bfore the response is sent. | postplugin |       
-| Response | Occurs after the main request processing but before the response is sent. | responsePlugins |      
-    
-The example configuration below illustrates how to set up multiple plugins for different phases of the request lifecycle:
+Scroll down until the *Plugins Configuration* section is displayed with the option to configure a plugin driver and a list of plugin types, e.g. *Pre Plugin*, *Post Plugin* etc. 
 
-```json
-{
-  "x-tyk-api-gateway": {
-    "info": {
-      "dbId": "667962397f6de50001508ac4",
-      "id": "b4d8ac6e5a274d7c7959d069b47dc206",
-      "orgId": "6672f4377f6de50001508abf",
-      "name": "OAS APIs Plugins",
-      "state": {
-        "active": true,
-        "internal": false
-      }
-    },
-    "middleware": {
-      "global": {
-        "pluginConfig": {
-          "driver": "goplugin"
-        },
-        "postAuthenticationPlugins": [
-          {
-            "enabled": true,
-            "functionName": "post_authentication_func",
-            "path": "/path/to/plugin1.so",
-            "rawBodyOnly": true,
-            "requireSession": true
-          }
-        ],
-        "postPlugins": [
-          {
-            "enabled": true,
-            "functionName": "postplugin",
-            "path": "/path/to/plugin1.so",
-            "rawBodyOnly": true,
-            "requireSession": true
-          }
-        ],
-        "prePlugins": [
-          {
-            "enabled": true,
-            "functionName": "pre-plugin",
-            "path": "/path/to/plugin1.so"
-          }
-        ],
-        "responsePlugins": [
-          {
-            "enabled": true,
-            "functionName": "Response",
-            "path": "/path/to/plugin1.so",
-            "rawBodyOnly": true,
-            "requireSession": true
-          }
-        ]
-      }
-    }
-  }
-}
-```
+{{< img src="/img/plugins/plugins_oas_api_driver_options.png" alt="OAS API Plugins Driver Config" >}}
 
-We can see from the example above that the middleware section of the *x-tyk-api-gateway* configuration is used to configure plugins in a Tyk OAS API. The *pluginConfig* section contains the *driver* parameter that is used to configure the plugin implementation [language]({{< ref "/plugins/supported-languages#plugin-driver-names" >}}).
+Select the implementation language of your plugins.
 
-Each plugin can have additional settings, such as:
-- `enabled`: When true, enables the plugin.
-- `rawBodyOnly`: When true, indicates that only the raw body should be processed.
-- `requireSession`: When true, indicates that the plugin requires an active session. This is applicable only for Post, Post Authentication and Response plugins.
+For each type of plugin to configure, click on the *Add Plugin* button to display a plugin configuration section:
+
+{{< img src="/img/plugins/plugins_oas_api_source_config.png" alt="OAS Plugins Config Section" >}}
+
+Complete the following fields:
+
+- `Function Name`: Enter the function name that implements the required behavior for your plugin.
+- `Path`: Enter the path to the source file that contains the function that implements your plugin.
+- `Raw Body Only`: Optionally, toggle the *Raw Body Only* switch to true when you do not wish to fill body in request or response object for your plugins.
