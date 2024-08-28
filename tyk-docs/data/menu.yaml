@@ -2457,6 +2457,10 @@ menu:
           path: /product-stack/tyk-gateway/release-notes/overview
           category: page
           show: True
+        - title: "Tyk Gateway v5.6"
+          path: /product-stack/tyk-gateway/release-notes/version-5.6
+          category: Page
+          show: True
         - title: "Tyk Gateway v5.5"
           path: /product-stack/tyk-gateway/release-notes/version-5.5
           category: Page
