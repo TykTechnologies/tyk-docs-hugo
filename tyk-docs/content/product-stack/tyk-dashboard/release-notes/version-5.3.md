@@ -99,30 +99,30 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <summary>Fixed display issue for API stats</summary>
-<detail>
+<details>
 Fixed API’s stats not being shown when adding 2 or more tags in the Activity page and using Postgres
-</detail>
+</details>
 </li>
 
 <li>
 <summary>Fixed display issue of 429 status codes on the Activity page</summary>
-<detail>
+<details>
 Fixed 429 status codes not being shown on the Activity page when using Postgres
-</detail>
+</details>
 </li>
 
 <li>
 <summary>Fixed display of graphs and requests counter on Portal</summary>
-<detail>
+<details>
 Fixed wrong graphs and incorrect requests counter on Portal when using Postgres
-</detail>
+</details>
 </li>
 
 <li>
 <summary>Fixed Error Breakdown display issues with dates</summary>
-<detail>
+<details>
    Fixed Error Breakdown issues with dates (it was showing errors that happened on different dates than the one that was actually displayed)
-</detail>
+</details>
 </li>
 </ul>
    
