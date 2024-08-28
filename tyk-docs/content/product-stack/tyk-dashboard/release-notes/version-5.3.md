@@ -20,7 +20,7 @@ As outlined in the [LTS policy]({{< ref "developer-support/special-releases-and-
 ---
 ## 5.3.4 Release Notes
 
-### Release Date August TBC
+### Release Date August 26 2024
 
 ### Breaking Changes
 **Attention**: Please read this section carefully.
