@@ -169,23 +169,6 @@ $ helm upgrade -n tyk-operator-system tyk-operator tyk-helm/tyk-operator  --wait
 $ kubectl apply -f https://raw.githubusercontent.com/TykTechnologies/tyk-operator/master/helm/crds/crds.yaml
 ```
 
-### From Tyk Operator repository
-
- You can install CRDs and Tyk Operator by checking out [tyk-operator](https://github.com/TykTechnologies/tyk-operator) repository. If there is a specific version you want to upgrade to, you can checkout the tag by running `git checkout tags/{.ReleaseTag}`.
-
- To upgrade CRDs, run the following command:
-
- ```console
- $ kubectl apply -f ./helm/crds
- ```
-
- To upgrade helm release, run the following command:
-
- ```console
- $ helm upgrade tyk-operator ./helm -n tyk-operator-system
- ```
-
-
 ## Uninstalling Tyk Operator
 To uninstall Tyk Operator, you need to run the following command:
 
