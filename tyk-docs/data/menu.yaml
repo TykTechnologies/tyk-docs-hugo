@@ -2037,6 +2037,10 @@ menu:
             category: Directory
             show: true
             menu:
+            - title: "Overview"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/overview
+              category: Page
+              show: True
             - title: "Tyk OAS configuration"
               path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/oas
               category: Page
