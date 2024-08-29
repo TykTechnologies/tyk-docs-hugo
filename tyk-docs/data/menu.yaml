@@ -3595,6 +3595,26 @@ menu:
                 path: /product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.9.0-list-of-endpoints
                 category: Page
                 show: True
+      - title: "Templates"
+        category: Directory
+        show: True
+        menu:
+          - title: "Overview"
+            path: /product-stack/tyk-enterprise-developer-portal/templates/overview
+            category: Page
+            show: True
+          - title: "Email Templates"
+            path: /product-stack/tyk-enterprise-developer-portal/templates/email
+            category: Page
+            show: True
+          - title: "Template data"
+            path: /product-stack/tyk-enterprise-developer-portal/templates/data
+            category: Page
+            show: True
+          - title: "Template Functions"
+            path: /product-stack/tyk-enterprise-developer-portal/templates/functions
+            category: Page
+            show: True
       - title: "Troubleshooting"
         category: Directory
         show: False
