@@ -412,7 +412,7 @@ New fields are between the `...` .
 In the example above it can be seen that the `hybrid_enabled` and `event_options` configuration fields have been added:
 
 - `hybrid_enabled:` Allows a worker gateway to login as an organization member into MDCB.
-- `event_options:` Enables key events such as updates and deletes, to be propagated to the various instance zones. API Definitions and Policies will be propagated by default, as well as the Redis key events, meaning that hashed and not hashed key events will be propagated by default in Redis and any config related to `hashed_key_event.redis` or `key_event.redis` will not be taken into consideration.
+- `event_options:` Allows Redis key events to be configured and propagated to various instance zones.The `hashed_key_event` configuration object enables propagation of updates and deletes of hashed Redis keys to various instance zones. Conversely, the `key_event` object enables propagation of updates and deletes of non hashed Redis keys. Please note that `key_event` and `hashed_key_event` take precedence over their counterpart, `key_event.redis` and `hashed_key_event.redis`. Furthermore, API Definitions and Policies will be propagated irrespectively.
 
 
 6. Update your organization with a PUT request to the same endpoint, but this time, passing in your modified `myorg.json` file.
