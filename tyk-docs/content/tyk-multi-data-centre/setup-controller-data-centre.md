@@ -385,7 +385,7 @@ curl $DASH_URL/admin/organisations/$ORG_ID -H "Admin-Auth: $DASH_ADMIN_SECRET" |
 5. Open `myorg.json` in your favorite text editor and add the following fields as follows.
 New fields are between the `...` .
 
-```json
+```json {linenos=table,hl_lines=["6-13"],linenostart=1}
 {
   "_id": "55780af69b23c30001000049",
   "owner_slug": "portal-test",
@@ -409,11 +409,10 @@ New fields are between the `...` .
 }
 ```
 
-### Field Reference
+In the example above it can be seen that the `hybrid_enabled` and `event_options` configuration fields have been added:
 
-`hybrid_enabled:` Allows a worker gateway to login as an organization member into MDCB
-
-`event_options:` Enables key events such as updates and deletes, to be propagated to the various instance zones. API Definitions and Policies will be propagated by default, as well as the Redis key events, meaning that hashed and not hashed key events will be propagated by default in Redis and any config related to `hashed_key_event.redis` or `key_event.redis` will not be taken into consideration.
+- `hybrid_enabled:` Allows a worker gateway to login as an organization member into MDCB.
+- `event_options:` Enables key events such as updates and deletes, to be propagated to the various instance zones. API Definitions and Policies will be propagated by default, as well as the Redis key events, meaning that hashed and not hashed key events will be propagated by default in Redis and any config related to `hashed_key_event.redis` or `key_event.redis` will not be taken into consideration.
 
 
 6. Update your organization with a PUT request to the same endpoint, but this time, passing in your modified `myorg.json` file.
