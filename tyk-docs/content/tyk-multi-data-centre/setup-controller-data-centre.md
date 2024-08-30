@@ -393,11 +393,10 @@ New fields are between the `...` .
   "hybrid_enabled": true,
   "event_options": {
     "key_event": {
-      "email": "test@test.com"
+         "webhook": "https://example.com/webhook",
+         "email": "user@example.com",
+         "redis": true
     },
-    "hashed_key_event": {
-      "email": "test@test.com"
-    }
   },
   ...
   "apis": [
@@ -412,8 +411,15 @@ New fields are between the `...` .
 In the example above it can be seen that the `hybrid_enabled` and `event_options` configuration fields have been added:
 
 - `hybrid_enabled:` Allows a worker gateway to login as an organization member into MDCB.
-- `event_options:` Allows Redis key events to be configured and propagated to various instance zones.The `hashed_key_event` configuration object enables propagation of updates and deletes of hashed Redis keys to various instance zones. Conversely, the `key_event` object enables propagation of updates and deletes of non hashed Redis keys. Please note that `key_event` and `hashed_key_event` take precedence over their counterparts, `key_event.redis` and `hashed_key_event.redis`. Furthermore, API Definitions and Policies are propagated irrespectively.
+- `event_options:` The `event_options` object is optional. By default the update and removal of Redis keys (hashed and unhashed), API Definitions and policies are propagated to various instance zones. The `event_options` object contains a `key_event` object that allows configuration of the following additional features:
 
+  - event notification mechanism for all Redis key (hashed and unhashed) events. Events can be notified via webhook by setting the `webhook` property to the value of the webhook URL. Similarly, events can be notified via email by setting the `email` property to the value of the target email address.
+  - enable propagation of events for when an OAuth token is revoked from Dashboard by setting the `redis` property to `true`.
+  
+  The `event_options` in the example above enables the following functionality:
+
+  - events are propagated when OAuth tokens are revoked from Dashboard since `redis` is `true`
+  - events associated with Redis keys (hashed and unhashed) and revoking OAuth tokens via Dashboard are sent to webhook `https://example.com/webhook` and email address `user@example.com`
 
 6. Update your organization with a PUT request to the same endpoint, but this time, passing in your modified `myorg.json` file.
 
