@@ -41,7 +41,7 @@ All plugins for an API should be implemented using **one** of the [supported tar
 {{< note >}}
 **Note**
 
-For a given API it is not possible to mix the implementation language of its associated plugins. For example, it is not possible to implement a pre request plugin in *Go* and also implement a post request plugin in *Python* for the same API.
+For a given API it is not possible to mix the implementation language for the plugin types: Pre, Authentication, Post, Post Authentication and Response plugins. For example, it is not possible to implement a pre request plugin in *Go* and also implement a post request plugin in *Python* for the same API.
 
 {{< /note >}}
 
