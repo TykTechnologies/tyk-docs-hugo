@@ -1,4 +1,14 @@
-# URL Matching Explained
+---
+title: URL matching in Tyk
+date: 2024-08-30
+tags:
+  - URL matching
+  - Regular expressions
+  - Allow requests
+  - Block requests
+  - Mock responses
+description: Overview of URL matching with the Tyk Gateway
+---
 
 This document explains how user inputs are converted into regular
 expressions for URL matching. The conversion is crucial for routing and
@@ -58,7 +68,8 @@ change.
 | `/users$`:     | `^/users$`                       | Matches request paths exactly equalling `/users`.                           |
 | `/users/.*`:   | `^/users/.*`                     | Matches any path that starts with `/users/` and can have anything after it. |
 
-The input has full go regex (RE2) support.
+The input has full go regex (RE2) support. See
+[pkg.go.dev/regexp](https://pkg.go.dev/regexp) for details.
 
 For a non-trivial example of regex pattern matching, one can configure a
 complex expression to match [ULID](https://github.com/ulid/spec) values.
