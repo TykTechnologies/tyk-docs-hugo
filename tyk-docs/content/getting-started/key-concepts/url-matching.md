@@ -68,10 +68,10 @@ change.
 
 | **User Input** | **Converted Regular Expression** | **Description**                                                             |
 |----------------|----------------------------------|-----------------------------------------------------------------------------|
-| `/users`:      | `^/users`                        | Matches paths that start with `/users`.                                     |
-| `users`:       | `^.*users`                       | Matches any path containing the string `users`.                             |
-| `/users$`:     | `^/users$`                       | Matches request paths exactly equalling `/users`.                           |
-| `/users/.*`:   | `^/users/.*`                     | Matches any path that starts with `/users/` and can have anything after it. |
+| `/users`       | `^/users`                        | Matches paths that start with `/users`.                                     |
+| `users`        | `^.*users`                       | Matches any path containing the string `users`.                             |
+| `/users$`      | `^/users$`                       | Matches request paths exactly equalling `/users`.                           |
+| `/users/.*`    | `^/users/.*`                     | Matches any path that starts with `/users/` and can have anything after it. |
 
 The input has full go regex (RE2) support. See
 [pkg.go.dev/regexp](https://pkg.go.dev/regexp) for details.
