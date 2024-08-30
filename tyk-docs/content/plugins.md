@@ -7,7 +7,7 @@ aliases:
     - /customise-tyk/plugins/
 ---
 
-Plugins provide a powerful and flexible way to extend Tyk’s API Gateway capabilities. They allow API developers to write custom middleware, in various programming languages, that can modify the behavior of a request or response. For example, the body, headers and/or query parameters can be extended or modified before a request is sent upstream, or a response is returned from the client.  These plugins can execute at different stages of the [API request / response lifecycle]({{< ref "/concepts/middleware-execution-order" >}}).
+Plugins provide a powerful and flexible way to extend Tyk’s API Gateway capabilities. They allow API developers to write custom middleware, in various programming languages, that can modify the behavior of a request or response. For example, the body, headers and/or query parameters can be extended or modified before a request is sent upstream, or a response is returned from the client.  These plugins can execute at different stages of the [API request lifecycle]({{< ref "/concepts/middleware-execution-order" >}}).
 
 Tyk supports a variety of different [plugin types]({{< ref "plugins/plugin-types/plugintypes" >}}) that developers can implement to enrich the behavior of requests and/or responses for their APIs. Subsequently, plugins can be used to enhance the capabilities of your APIs through integration with external services and databases to perform operations such as data transformation, custom authentication, logging and monitoring etc.
 
@@ -40,7 +40,7 @@ From the above illustration it can be seen that:
 - The processed request is then returned to Tyk Gateway, which forwards it upstream.
 - Finally, the upstream response is sent back to the client.
 
-There are a variety of scenarios relating to the location of the plugin source code for an API and its associated configuration:
+There are a variety of scenarios relating to the deployment of plugins for an API, concerning the location of the plugin source code and its associated configuration.
 
 ### Local Plugins
 
