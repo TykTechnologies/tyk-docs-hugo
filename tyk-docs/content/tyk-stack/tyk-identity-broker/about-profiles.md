@@ -43,9 +43,9 @@ In order to know and understand each of the attributes, implications as well as 
 | Field                  | Description                                                                                                                     | Required                      |
 |------------------------|---------------------------------------------------------------------------------------------------------------------------------|-------------------------------|
 | LDAPUseSSL             | Whether to connect with the LDAP server via TLS                                                                                  | No                            |
-| LDAPServer             | Server address                                                                                                                  | yes                           |
-| LDAPPort               | Server address                                                                                                                  | yes                           |
-| LDAPUserDN             | Required to uniquely identify and locate a user's entry in the LDAP directory                                                   | yes                           |
+| LDAPServer             | Server address                                                                                                                  | Yes                           |
+| LDAPPort               | Server address                                                                                                                  | Yes                           |
+| LDAPUserDN             | Required to uniquely identify and locate a user's entry in the LDAP directory                                                   | Yes                           |
 | LDAPBaseDN             | Distinguised Name from where the search will start                                                                              | No                            |
 | LDAPFilter             | Used for filtering in the LDAP server                                                                                           | No                            |
 | LDAPEmailAttribute     | Where the email comes                                                                                                           | No                            |
@@ -55,7 +55,7 @@ In order to know and understand each of the attributes, implications as well as 
 | LDAPAdminPassword      | Admin password                                                                                                                  | No                            |
 | LDAPAttributes         | To select which attributes do you want to be returned on the record found                                                       | Yes. It can be an empty array |
 | LDAPSearchScope        | The scope is an integer value that determines the depth of the search in the directory hierarchy                            | No                            |
-| FailureRedirect        | On fail in login where to redirect the user to                                                                                  | yes                           |
+| FailureRedirect        | On fail in login where to redirect the user to                                                                                  | Yes                           |
 | DefaultDomain          | Domain in which the LDAP is running. Used to build the username but not to perform the requests.                                | No                            |
 | GetAuthFromBAHeader    | On handle the request, wether to gather the user and password from the Authorization header in the request. Its a boolean value | No                            |
 | SlugifyUserName        | If its required to make the username url friendly.This is a boolean value                                                       | No                            |
