@@ -5,12 +5,13 @@ description: "This section explains an overview for how to configure plugins for
 tags: [ "plugins" ]
 ---
 
-An API can be configured to execute one or more custom plugins for each of the following [hooks]({{< ref "plugins/plugin-types/plugintypes#plugin-and-hook-types" >}}): Pre, Authentication, Post, Post Authentication, Analytics and Response.
+This page provides an overview for configuring one or more API-level custom plugins that can be optionally setup to execute for each of the following [hooks]({{< ref "plugins/plugin-types/plugintypes#plugin-and-hook-types" >}}) in the request/response lifecycle: *Pre*, *Authentication*, *Post*, *Post Authentication* and *Response*. If you wish to learn how to configure API-level Analytics plugins please refer to the [Analytics plugins]({{< ref "plugins/plugin-types/analytics-plugins" >}}) page. 
 
-Please refer to the [Analytics plugins]({{< ref "" >}}) page for details of how to configure API-level analytics plugins.
+If you desire fine grained control at the endpoint level then it is also possible to configure [per-endpoint plugins]({{< ref "product-stack/tyk-gateway/middleware/endpoint-plugin" >}}). These are custom Golang plugins that are triggered at the end of the request processing chain before API-level *Post* plugins are executed.
 
-If you wish to have finer grained control it is also possible to configure per-endpoint plugins. These are custom Go plugins that are triggered at the end of the request processing chain before the API-level Post plugin is executed.
+---
 
+## Introduction
 
 There are three scenarios for configuring Pre, Authentication, Post Authentication and Response plugins for an API:
 
