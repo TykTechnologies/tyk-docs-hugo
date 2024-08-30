@@ -9,28 +9,28 @@ aliases:
   - "/getting-started/tyk-components/tyk-identity-broker/profiles"
 ---
 
-### What are the TIB Profiles?
+## What are the TIB Profiles?
 
 TIB takes as input one or many profiles that are stored in mongo or a file (it depends on the type of installation), a profile is a configuration that outlines of how to match a identity provider with a handler and what action to perform (Example: enable Dashboard SSO using OpenID and Microsoft Azure as IDP). The Dashboard adds a user interface to manage the profiles.
 
 {{< img src="https://user-images.githubusercontent.com/4504205/105425983-58940c00-5c18-11eb-9c8c-ede3b8bae000.gif" alt="Identity Broker User Interface" >}}
 
-### Anatomy of a Profile
+## Anatomy of a Profile
 Each profile is outlined by a series of attributes that will describe: action to perform, IDP to connect, URL's to redirect on success and failure, etc.
 In order to know and understand each of the attributes, implications as well as configure your own profile please consult the profile structure below:
 
-#### Fields that are common for all the providers
+### Fields that are common for all the providers
 
 | Field                                     | Description                                                                                                                                                                                                                                   | Required |
 |-------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
 | ID                                        | Id of the profile, is a string, use the name of the profile                                                                                                                                                                                   | Yes      |
 | OrgID                                     | Organization ID                                                                                                                                                                                                                               | Yes      |
-| ActionType                                | Which action is expected to be executed while using this profile, valid values are:<ul><li>`GenerateOrLoginDeveloperProfile: sso portal`</li><li>`GenerateOrLoginUserProfile: sso dashboard`</li><li>`GenerateOAuthTokenForClient: generate oauth tokens`</li></ul> | Yes      |
-| Type                                      | Valid values are:<br>passthrough: for LDAP and ProxyProvider<br>redirect: for SAML and Social<br>                                                                                                                                             | Yes      |
+| ActionType                                | Which action is expected to be executed while using this profile, valid values are:<ul><li>`GenerateOrLoginDeveloperProfile`: sso portal</li><li>`GenerateOrLoginUserProfile`: sso dashboard</li><li>`GenerateOAuthTokenForClient`: generate oauth tokens</li></ul> | Yes      |
+| Type                                      | Valid values are:<ul><li>`passthrough`: for LDAP and ProxyProvider</li><li>`redirect`: for SAML and Social</li></ul>                                                                                                                                             | Yes      |
 | CustomEmailField                          | Name of the claim associated with the email value stored in the IDP (Identity Provider).                                                                                                                                                      | No       |
 | CustomUserIDField                         | Name of the claim associated with the User ID value stored in the IDP (Identity Provider).                                                                                                                                                    | No       |
 | IdentityHandlerConfig.DashboardCredential | Api Key that will be used to consume the dashboard api to issue nonce codes and validate user data                                                                                                                                            | yes      |
-| ReturnURL                                 | Where to redirect and send the claims from the idp on login. For dashboard SSO it would be:<br>- http://dashboard-host/tap<br><br>For classic portal SSO:<br>http://{portal-host}/sso<br>                                                     | yes      |
+| ReturnURL                                 | Where to redirect and send the claims from the idp on login. For dashboard SSO it would be `http://dashboard-host/tap`. For classic portal SSO it would be `http://{portal-host}/sso`                                                     | yes      |
 | DefaultUserGroup                          | When mapping groups, if not found the group then to which one fallback                                                                                                                                                                        | No       |
 | CustomUserGroupField                      | When mapping groups, if a group is not found, specify which group to fallback to.                                                                                                                                                             | No       |
 | UserGroupMapping                          | Map that contains the matching between tyk groups and idp group.                                                                                                                                                                              | No       |
@@ -38,7 +38,7 @@ In order to know and understand each of the attributes, implications as well as 
 | SSOOnlyForRegisteredUsers                 | A boolean value to restrict the SSO only to users that already exists in the database. Users that do not exist in the database and successfully logins in the IDP will not have access to tyk                                                 | No       |
 
 
-#### LDAP profile fields
+### LDAP profile fields
 
 | Field                  | Description                                                                                                                     | Required                      |
 |------------------------|---------------------------------------------------------------------------------------------------------------------------------|-------------------------------|
@@ -60,7 +60,7 @@ In order to know and understand each of the attributes, implications as well as 
 | GetAuthFromBAHeader    | On handle the request, wether to gather the user and password from the Authorization header in the request. Its a boolean value | No                            |
 | SlugifyUserName        | If its required to make the username url friendly.This is a boolean value                                                       | No                            |
 
-#### ProxyProvider profile fields
+### ProxyProvider profile fields
 
 | Field                              | Description                                                                                                                                                                                                                                                                                                                           | Required                                     |
 |------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|
@@ -72,13 +72,13 @@ In order to know and understand each of the attributes, implications as well as 
 | AccessTokenField                   | Field where the access token comes                                                                                                                                                                                                                                                                                                    | No                                           |
 | UsernameField                      | Name of the field in which the username comes                                                                                                                                                                                                                                                                                         | No                                           |
 | ExrtactUserNameFromBasicAuthHeader | On handle the request, wether to gather the user and password from the Authorization header in the request. Its a boolean value                                                                                                                                                                                                       | No                                           |
-#### Social profile fields
+### Social profile fields
 
 | Field                            | Description                                                                                                                                                                   | Required                                                         |
 |----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
 | CallbackBaseURL                  | URL to be redirected on success login                                                                                                                                         | Yes                                                              |
 | FailureRedirect                  | URL to be redirected on failure                                                                                                                                               | Yes                                                              |
-| UseProviders.Name                | Name of the provider to be used. Valid values: gplus, github, twitter, linkedin, dropbox, digitalocean, bitbucket, salesforce, openid-connect                                 | Yes                                                              |
+| UseProviders.Name                | Name of the provider to be used. Valid values: `gplus`, `github`, `twitter`, `linkedin`, `dropbox`, `digitalocean`, `bitbucket`, `salesforce`, `openid-connect`                                 | Yes                                                              |
 | UseProviders.Key                 | Oauth Client key                                                                                                                                                              | yes                                                              |
 | UseProviders.Secret              | Oauth Client Secret                                                                                                                                                           | yes                                                              |
 | UseProviders.DiscoverURL         | used to dynamically retrieve the OpenID Provider's configuration metadata, including endpoints and supported features, in JSON format from /.well-known/openid-configuration. | Only required when using openid-connect                          |
@@ -86,8 +86,7 @@ In order to know and understand each of the attributes, implications as well as 
 | UseProviders.SkipUserInfoRequest | Determines whether to bypass the UserInfo endpoint request, improving performance by relying on the ID token alone for user details.                                          | No                                                               |
 
 
-
-### Examples
+## Examples
 
 Depending on your authentication protocol you might find some working examples in the following links:
 
