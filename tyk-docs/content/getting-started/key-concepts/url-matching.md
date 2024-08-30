@@ -35,6 +35,7 @@ URL matching supports:
 - Explicit based matching, if you add `$` at the end of your URLs
 - Named parameter matching, if you use `/users/{id}`
 - Custom regular expressions, inline and as named parameters
+- Case sensitive matching
 
 The behaviour of the URL matching is to match the request by prefix. For
 a path like `/json`, it means that the URL matching will not match
@@ -76,7 +77,9 @@ The input has full go regex (RE2) support. See
 For a non-trivial example of regex pattern matching, one can configure a
 complex expression to match [ULID](https://github.com/ulid/spec) values.
 
-- `/users/(?i)[0-7][0-9A-HJKMNP-TV-Z]{25}$`
+- `/users/(?i)[0-7][0-9A-HJKMNP-TV-Z]{25}$` (`^` prefix automatically added)
+- [Go playground test example](https://go.dev/play/p/nlLUQmVxKsp)
+- Using `(?i)` makes the particular matching case-insensitive
 
 The explicit behaviour of the pattern match is to match the pattern by
 prefix all the way to the end of the defined pattern.
