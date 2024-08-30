@@ -9,7 +9,16 @@ aliases:
 
 Plugins provide a powerful and flexible way to extend Tyk’s API Gateway capabilities. They allow API developers to write custom middleware, in various programming languages, that can modify the behavior of a request or response. For example, the body, headers and/or query parameters can be extended or modified before a request is sent upstream, or a response is returned from the client.  These plugins can execute at different stages of the [API request lifecycle]({{< ref "/concepts/middleware-execution-order" >}}).
 
-Tyk supports a variety of different [plugin types]({{< ref "plugins/plugin-types/plugintypes" >}}) that developers can implement to enrich the behavior of requests and/or responses for their APIs. Subsequently, plugins can be used to enhance the capabilities of your APIs through integration with external services and databases to perform operations such as data transformation, custom authentication, logging and monitoring etc.
+Tyk supports a variety of different [plugin types]({{< ref "plugins/plugin-types/plugintypes" >}}) that developers can implement to enrich the behavior of requests and/or responses for their APIs. Users can execute, or *hook*, their plugins into the following phases of the API request / response lifecycle:
+
+1. [Pre (Request)]({{< ref "/plugins/plugin-types/request-plugins" >}})
+2. [Authentication]({{< ref "/plugins/plugin-types/auth-plugins/auth-plugins" >}})
+3. [Post-Auth (Request)]({{< ref "/plugins/plugin-types/request-plugins" >}})
+4. [Post (Request)]({{< ref "/plugins/plugin-types/request-plugins" >}})
+5. [Response]({{< ref "/plugins/plugin-types/response-plugins" >}})
+6. [Analytics (Response)]({{< ref "/plugins/plugin-types/analytics-plugins" >}})
+
+Subsequently, plugins can be used to customize and enhance the capabilities of your APIs through integration with external services and databases to perform operations such as data transformation, custom authentication, logging and monitoring etc.
 
 --- 
 
@@ -40,23 +49,23 @@ From the above illustration it can be seen that:
 - The processed request is then returned to Tyk Gateway, which forwards it upstream.
 - Finally, the upstream response is sent back to the client.
 
+### Plugin Deployment
+
 There are a variety of scenarios relating to the deployment of plugins for an API, concerning the location of the plugin source code and its associated configuration.
 
-### Local Plugins
+#### Local Plugins
 
 The plugin source code and associated configuration is co-located on Tyk Gateway's file system. The configuration is located within the API Definition. For further details please consult [API configuration]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/overview" >}}).
 
-### Plugin Bundles (Remote)
+#### Plugin Bundles (Remote)
 
 The plugin source code and associated configuration is bundled into a zip file and uploaded to a remote webserver. These types of plugins are termed *plugin bundles*. Tyk Gateway will download, extract, cache and execute plugin bundles from the remote webserver for each of the configured phases of the API request / response lifecycle. For further details on plugin bundles and how to configure them, please refer to the [plugin bundles]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) page.
 
-### gRPC Plugins (Remote)
+#### gRPC Plugins (Remote)
 
 It is possible to integrate Tyk Gateway with a gRPC server. Develop your gRPC server, using your preferred language, to handle requests from Tyk Gateway for each of the configured phases of the API request / response lifecycle. In this scenario the plugin source code is located at the gRPC server for remote execution with the associated configuration located within the API Definition at Tyk Gateway. For further details please consult our [gRPC]({{< ref "plugins/supported-languages/rich-plugins/grpc" >}}) documentation.
 
----
-
-## Tyk Gateway Configuration
+### Tyk Gateway Configuration
 
 Tyk Gateway must be configured to enable plugins. Plugins are enabled within the *coprocess_options* section of the Gateway configuration file, *tyk.conf*:
 
