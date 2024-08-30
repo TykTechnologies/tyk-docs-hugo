@@ -23,9 +23,9 @@ In order to know and understand each of the attributes, implications as well as 
 
 | Field                                     | Description                                                                                                                                                                                                                                   | Required |
 |-------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| ID                                        | Id of the profile, is a string, use the name of the profile                                                                                                                                                                                   | Yes      |
+| ID                                        | ID of the profile, is a string, use the name of the profile  
 | OrgID                                     | Organization ID                                                                                                                                                                                                                               | Yes      |
-| ActionType                                | Which action is expected to be executed while using this profile, valid values are:<ul><li>`GenerateOrLoginDeveloperProfile`: sso portal</li><li>`GenerateOrLoginUserProfile`: sso dashboard</li><li>`GenerateOAuthTokenForClient`: generate oauth tokens</li></ul> | Yes      |
+| ActionType                                | Which action is expected to be executed while using this profile, valid values are:<ul><li>`GenerateOrLoginDeveloperProfile`: SSO portal</li><li>`GenerateOrLoginUserProfile`: SSO dashboard</li><li>`GenerateOAuthTokenForClient`: generate OAuth tokens</li></ul> | Yes      |
 | Type                                      | Valid values are:<ul><li>`passthrough`: for LDAP and ProxyProvider</li><li>`redirect`: for SAML and Social</li></ul>                                                                                                                                             | Yes      |
 | CustomEmailField                          | Name of the claim associated with the email value stored in the IDP (Identity Provider).                                                                                                                                                      | No       |
 | CustomUserIDField                         | Name of the claim associated with the User ID value stored in the IDP (Identity Provider).                                                                                                                                                    | No       |
@@ -42,7 +42,7 @@ In order to know and understand each of the attributes, implications as well as 
 
 | Field                  | Description                                                                                                                     | Required                      |
 |------------------------|---------------------------------------------------------------------------------------------------------------------------------|-------------------------------|
-| LDAPUseSSL             | Wether to connect with the LDAP server via TLS                                                                                  | No                            |
+| LDAPUseSSL             | Whether to connect with the LDAP server via TLS                                                                                  | No                            |
 | LDAPServer             | Server address                                                                                                                  | yes                           |
 | LDAPPort               | Server address                                                                                                                  | yes                           |
 | LDAPUserDN             | Required to uniquely identify and locate a user's entry in the LDAP directory                                                   | yes                           |
@@ -54,7 +54,7 @@ In order to know and understand each of the attributes, implications as well as 
 | LDAPAdminUser          | Admin user name                                                                                                                 | No                            |
 | LDAPAdminPassword      | Admin password                                                                                                                  | No                            |
 | LDAPAttributes         | To select which attributes do you want to be returned on the record found                                                       | Yes. It can be an empty array |
-| LDAPSearchScope        | the scope determines how deep into the directory hierarchy the search should go. Its an int value                               | No                            |
+| LDAPSearchScope        | The scope is an integer value that determines the depth of the search in the directory hierarchy                            | No                            |
 | FailureRedirect        | On fail in login where to redirect the user to                                                                                  | yes                           |
 | DefaultDomain          | Domain in which the LDAP is running. Used to build the username but not to perform the requests.                                | No                            |
 | GetAuthFromBAHeader    | On handle the request, wether to gather the user and password from the Authorization header in the request. Its a boolean value | No                            |
@@ -83,7 +83,7 @@ In order to know and understand each of the attributes, implications as well as 
 | UseProviders.Secret              | Oauth Client Secret                                                                                                                                                           | yes                                                              |
 | UseProviders.DiscoverURL         | used to dynamically retrieve the OpenID Provider's configuration metadata, including endpoints and supported features, in JSON format from /.well-known/openid-configuration. | Only required when using openid-connect                          |
 | UseProviders.Scopes              | Specify the level of access or permissions a client is requesting from the user and the authorization server.                                                                 | No.  But, when using openID the a scope ‘openid’ should be added |
-| UseProviders.SkipUserInfoRequest | Determines whether to bypass the UserInfo endpoint request, improving performance by relying on the ID token alone for user details.                                          | No                                                               |
+| UseProviders.SkipUserInfoRequest | Determines whether to bypass the *UserInfo* endpoint request, improving performance by relying on the ID token alone for user details.                                          | No                                                               |
 
 
 ## Examples
