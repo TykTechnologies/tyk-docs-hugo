@@ -47,6 +47,8 @@ spec:
 
 For better security, you can also replace sensitive data with values contained within a referenced secret with `.spec.secretRef`.
 
+In this example, API access key `auth` and organization ID `org` are not specified in the manifest. They are provided through a Kubernetes secrets named `tyk-operator-conf` in `alpha` namespace. The secret contains keys `TYK_AUTH` and `TYK_ORG` which corresponds to the `auth` and `org` field respectively.
+
 ```yaml
 apiVersion: tyk.tyk.io/v1alpha1
 kind: OperatorContext
@@ -55,8 +57,8 @@ metadata:
   namespace: default
 spec:
   secretRef:
-    namespace: tyk-operator-conf ## Secret containing keys TYK_AUTH and TYK_ORG
-    name: alpha
+    name: tyk-operator-conf ## Secret containing keys TYK_AUTH and TYK_ORG
+    namespace: alpha
   env:
     mode: pro
     url: http://tyk.tykce-control-plane.svc.cluster.local:8001
@@ -70,9 +72,8 @@ spec:
     - 1a2b3c4d5f6e7f
 ```
 
-Mappings between `.spec.env` properties and secret `.spec.data` keys
+You can provide the following fields through secret as referenced by `secretRef`. The table shows mappings between `.spec.env` properties and secret `.spec.data` keys. If a value is configured in both the secret and OperatorContext `spec.env` field, the value from secret will take precedence.
 
-|------------|-----------|
 | Secret key | .spec.env |
 |------------|-----------|
 | TYK_MODE	 | mode |
