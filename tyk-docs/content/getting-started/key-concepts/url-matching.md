@@ -1,15 +1,17 @@
 ---
 title: URL matching in Tyk
-date: 2024-08-30
 tags:
-  - URL matching
-  - Regular expressions
-  - Granular access
-  - Allow requests
-  - Block requests
-  - Mock responses
-  - Routing
+    - URL matching
+    - Regular expressions
+    - Granular access
+    - Allow requests
+    - Block requests
+    - Mock responses
+    - Secure access
+    - Middleware
+    - Routing
 description: Overview of URL matching with the Tyk Gateway
+date: "2024-08-30"
 ---
 
 This document explains how user inputs are converted into regular
@@ -26,7 +28,7 @@ URL matching is used in:
 - [Secure Your APIs by Method and Path](https://tyk.io/docs/security/security-policies/secure-apis-method-path/)
 - [Allow List Middleware](https://tyk.io/docs/product-stack/tyk-gateway/middleware/allow-list-middleware/)
 - [Block List Middleware](https://tyk.io/docs/product-stack/tyk-gateway/middleware/block-list-middleware/)
-- [Mock Response for Tyk Classic](https://tyk.io/docs/product-stack/tyk-gateway/middleware/mock-response-tyk-classic/)
+- [Middleware](https://tyk.io/docs/product-stack/tyk-gateway/middleware/)
 
 URL matching supports:
 
