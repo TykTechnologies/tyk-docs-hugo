@@ -7,23 +7,43 @@ into three logical sections: Basic Path Matching, Named Route Parameters,
 and Advanced Pattern Matching. These sections highlight the transformation
 process and the flexibility of named route parameters.
 
-## Errata
+## Usage
 
-The following documentation applies to 5.3.5 or 5.6.0 or later releases.
+URL matching is used in:
 
-The behaviour or url matching before these versions was in essence a
-wildcard match. If the pattern `/user` was provided, it would effectively
-match `.*/user.*`, also matching deeper URLs. This may have lead to
-misconfigurations where a more permissive pattern was in effect than what
-was actually intended.
+- [Secure Your APIs by Method and Path](https://tyk.io/docs/security/security-policies/secure-apis-method-path/)
+- [Allow List Middleware](https://tyk.io/docs/product-stack/tyk-gateway/middleware/allow-list-middleware/)
+- [Block List Middleware](https://tyk.io/docs/product-stack/tyk-gateway/middleware/block-list-middleware/)
+- [Mock Response for Tyk Classic](https://tyk.io/docs/product-stack/tyk-gateway/middleware/mock-response-tyk-classic/)
 
-Previous versions did not match mux-style parameter paths as documented
-below. Mux supports named parameters, which are typically also documented
-in OpenAPI schemas as such, and while the gateway supported named
-parameters in areas like listen path and api endpoints, URL matching was
-historically just implemented as the wildcard match described above.
+URL matching supports:
 
----
+- Prefix based matching, the default if URL starts with `/`
+- Wildcard based matching, if the URL doesn't start with `/`
+- Explicit based matching, if you add `$` at the end of your URLs
+- Named parameter matching, if you use `/users/{id}`
+- Custom regular expressions, inline and as named parameters
+
+The behaviour of the URL matching is to match the request by prefix. For
+a path like `/json`, it means that the URL matching will not match
+`/path/json`. However, `json` would. For more examples on how to
+configure URLs, see documentation below.
+
+### Migration notes
+
+Before version 5.6.0 and LTS release 5.3.5, the implicit behaviour was a
+wildcard match. If the URL defined was just `/json`, any path containing
+that string would match. Additionally, the full request URL was matched.
+
+To achieve a prefix match for older versions, you must add the listen path
+to the url, and use a regex as `^/listen-path/users`, and consider using the
+ending `$` expression to achieve prefix matches. Wildcard matches, if desired,
+are still available in recent versions, by either omitting the `/` prefix
+in the input URL, or by defining a full regular expression.
+
+Misconfiguration is possible so special care should be taken to ensure
+that your regular expressions are valid; an invalid regular expression
+would have caused undesired behaviour in older versions.
 
 ## 1. Basic Path Matching
 
@@ -31,31 +51,22 @@ This section covers straightforward path matching without any dynamic
 parameters. These are useful for static routes where the path does not
 change.
 
-| **User Input**    | **Converted Regular Expression**                | **Description**                                      |
-|-------------------|-------------------------------------------------|------------------------------------------------------|
-| `/users`:         | `^/users`                                       | Matches paths that start with `/users`.              |
-| `users`:          | `^.*users`                                      | Matches any path containing the string `users`.      |
-| `/users$`:        | `^/users$`                                      | Matches request paths exactly equalling `/users`. |
-| `/users/.*`:      | `^/users/.*`                                    | Matches any path that starts with `/users/` and can have anything after it. |
-
-Please see errata for recent behaviour changes.
+| **User Input** | **Converted Regular Expression** | **Description**                                                             |
+|----------------|----------------------------------|-----------------------------------------------------------------------------|
+| `/users`:      | `^/users`                        | Matches paths that start with `/users`.                                     |
+| `users`:       | `^.*users`                       | Matches any path containing the string `users`.                             |
+| `/users$`:     | `^/users$`                       | Matches request paths exactly equalling `/users`.                           |
+| `/users/.*`:   | `^/users/.*`                     | Matches any path that starts with `/users/` and can have anything after it. |
 
 The input has full go regex (RE2) support.
 
-For a demonstation, if user input provides a pattern like `/users*.`, it
-will be converted to `^/users*.`, nothing is appended or amended within
-the provided input and the regular expression remains as is.
+For a non-trivial example of regex pattern matching, one can configure a
+complex expression to match [ULID](https://github.com/ulid/spec) values.
 
-The pattern is a bit complex however as it can match:
+- `/users/(?i)[0-7][0-9A-HJKMNP-TV-Z]{25}$`
 
-- `/users` (not matching, missing `.`)
-- `/users/`
-- `/usera` (`s*` matches any number of s, including 0, `.` matches `a`)
-- `/userssssb` (`s*` is greedy, still need a `b` to match `.`)
-
-This only serves for regexp demonstration purposes, and the regular
-expression is a bit exaggerated for this purpose demonstrating a fairly
-complex ruleset one can express.
+The explicit behaviour of the pattern match is to match the pattern by
+prefix all the way to the end of the defined pattern.
 
 ---
 
@@ -66,11 +77,11 @@ specific parts can be variable and populated from the OpenAPI
 definitions. These parameters are commonly used in APIs and dynamic
 routing.
 
-| **User Input**                          | **Converted Regular Expression**                             | **Description**                                      |
-|-----------------------------------------|--------------------------------------------------------------|------------------------------------------------------|
-| `/users/{id}`                           | `^/users/(?P<v0>[^/]+)`                                      | Matches paths like `/users/123`, where `id` is dynamic. |
-| `/static/{path}/assets/{file}`          | `^/static/(?P<v0>[^/]+)/assets/(?P<v1>[^/]+)`                | Matches paths like `/static/images/assets/logo.png`, where `path` and `file` are dynamic. |
-| `/orders/{orderId}/items/{itemId}`      | `^/orders/(?P<v0>[^/]+)/items/(?P<v1>[^/]+)`                 | Matches paths like `/orders/456/items/789`, where `orderId` and `itemId` are dynamic. |
+| **User Input**                     | **Converted Regular Expression**              | **Description**                                                                           |
+|------------------------------------|-----------------------------------------------|-------------------------------------------------------------------------------------------|
+| `/users/{id}`                      | `^/users/(?P<v0>[^/]+)`                       | Matches paths like `/users/123`, where `id` is dynamic.                                   |
+| `/static/{path}/assets/{file}`     | `^/static/(?P<v0>[^/]+)/assets/(?P<v1>[^/]+)` | Matches paths like `/static/images/assets/logo.png`, where `path` and `file` are dynamic. |
+| `/orders/{orderId}/items/{itemId}` | `^/orders/(?P<v0>[^/]+)/items/(?P<v1>[^/]+)`  | Matches paths like `/orders/456/items/789`, where `orderId` and `itemId` are dynamic.     |
 
 > **Note:** The `{id}`, `{path}`, `{file}`, `{orderId}`, and `{itemId}` in the
 > user input correspond to dynamic path segments that are converted into named
@@ -84,18 +95,10 @@ This section demonstrates more advanced pattern matching, which includes
 complex named route parameters, wildcard characters, and specific segment
 constraints.
 
-| **User Input**                              | **Converted Regular Expression**                                | **Description**                                      |
-|---------------------------------------------|-----------------------------------------------------------------|------------------------------------------------------|
-| `/users/{id}/profile/{type:[a-zA-Z]+}`      | `^/users/(?P<v0>[^/]+)/profile/(?P<v1>[a-zA-Z]+)`              | Matches paths where `id` is dynamic, and `type` only includes alphabetic characters. |
-| `/items/{itemID:[0-9]+}/details/{detail}`   | `^/items/(?P<v0>[0-9]+)/details/(?P<v1>[^/]+)`                 | Matches paths like `/items/45/details/overview`, where `itemID` is a number and `detail` is dynamic. |
-| `/products/{productId}/reviews/{rating:\d+}`| `^/products/(?P<v0>[^/]+)/reviews/(?P<v1>\d+)$`                | Matches paths like `/products/987/reviews/5`, where `productId` is dynamic and `rating` must be a digit. |
+| **User Input**                               | **Converted Regular Expression**                  | **Description**                                                                                          |
+|----------------------------------------------|---------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| `/users/{id}/profile/{type:[a-zA-Z]+}`       | `^/users/(?P<v0>[^/]+)/profile/(?P<v1>[a-zA-Z]+)` | Matches paths where `id` is dynamic, and `type` only includes alphabetic characters.                     |
+| `/items/{itemID:[0-9]+}/details/{detail}`    | `^/items/(?P<v0>[0-9]+)/details/(?P<v1>[^/]+)`    | Matches paths like `/items/45/details/overview`, where `itemID` is a number and `detail` is dynamic.     |
+| `/products/{productId}/reviews/{rating:\d+}` | `^/products/(?P<v0>[^/]+)/reviews/(?P<v1>\d+)$`   | Matches paths like `/products/987/reviews/5`, where `productId` is dynamic and `rating` must be a digit. |
 
 ---
-
-## Usage
-
-URL matching as described above is used in (TODO: collecting references for backlinks):
-
-- Granular access middlware
-- Per endpoint rate limits
-- ...
