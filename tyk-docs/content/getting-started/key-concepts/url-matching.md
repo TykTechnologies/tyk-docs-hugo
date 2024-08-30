@@ -4,9 +4,11 @@ date: 2024-08-30
 tags:
   - URL matching
   - Regular expressions
+  - Granular access
   - Allow requests
   - Block requests
   - Mock responses
+  - Routing
 description: Overview of URL matching with the Tyk Gateway
 ---
 
