@@ -11,29 +11,34 @@ When working with Tyk Classic APIs the middleware is configured in the Tyk Class
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas" >}}) page.
 
+For detailed documentation on URL matching behavior, please refer to [URL Matching in Tyk]({{< ref "getting-started/key-concepts/url-matching" >}}).
+
 ## Configuring the allow list in the Tyk Classic API Definition
 
 To enable and configure the allow list you must add a new `white_list` object to the `extended_paths` section of your API definition.
 
 {{< note success >}}
-**Note**  
+**Note**
 
 Historically, Tyk followed the out-dated whitelist/blacklist naming convention. We are working to remove this terminology from the product and documentation, however this configuration object currently retains the old name.
 {{< /note >}}
 
 The `white_list` object has the following configuration:
+
 - `path`: the endpoint path
 - `method`: this should be blank
 - `ignore_case`: if set to `true` then the path matching will be case insensitive
 - `method_actions`: a shared object used to configure the [mock response]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#mock-response" >}}) middleware
 
 The `method_actions` object should be configured as follows, with an entry created for each allowed method on the path:
+
 - `action`: this should be set to `no_action`
 - `code`: this should be set to `200`
 - `headers` : this should be blank
 
 For example:
-```.json  {linenos=true, linenostart=1}
+
+```json  {linenos=true, linenostart=1}
 {
     "extended_paths": {
         "white_list": [
