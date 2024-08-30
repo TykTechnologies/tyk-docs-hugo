@@ -19,7 +19,7 @@ An [OperatorContext]({{< ref "/product-stack/tyk-operator/key-concepts/operator-
 apiVersion: tyk.tyk.io/v1alpha1
 kind: OperatorContext
 metadata:
-  name: team-alpha
+  name: team-alpha-ctx
   namespace: default
 spec:
   env:
@@ -44,6 +44,44 @@ spec:
       httpPort: 8000
       httpsPort: 8443
 ```
+
+For better security, you can also replace sensitive data with values contained within a referenced secret with `.spec.secretRef`.
+
+```yaml
+apiVersion: tyk.tyk.io/v1alpha1
+kind: OperatorContext
+metadata:
+  name: team-alpha
+  namespace: default
+spec:
+  secretRef:
+    namespace: tyk-operator-conf # with keys TYK_AUTH and TYK_ORG
+    name: alpha
+  env:
+    mode: pro
+    url: http://tyk.tykce-control-plane.svc.cluster.local:8001
+    insecureSkipVerify: true
+    ingress:
+      httpPort: 8000
+      httpsPort: 8443
+    user_owners:
+    - a1b2c3d4f5e6f7
+    user_group_owners:
+    - 1a2b3c4d5f6e7f
+```
+
+Mappings between `.spec.env` properties and secret `.spec.data` keys
+
+|------------|-----------|
+| Secret key | .spec.env |
+|------------|-----------|
+| TYK_MODE	 | mode |
+| TYK_URL    | url |
+| TYK_AUTH	 | auth |
+| TYK_ORG	   | org |
+| TYK_TLS_INSECURE_SKIP_VERIFY | insecureSkipVerify |
+| TYK_USER_OWNERS (comma separated list) | user_owners |
+| TYK_USER_GROUP_OWNERS (comma separated list) | user_group_owners |
 
 ## Using contextRef in API Definitions
 
