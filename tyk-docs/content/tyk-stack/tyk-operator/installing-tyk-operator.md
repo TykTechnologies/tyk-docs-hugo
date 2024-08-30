@@ -77,7 +77,7 @@ The secret should contain the following keys:
 
 {{< tab_end >}}
 
-{{< tab_start "Self Managed" >}}
+{{< tab_start "Licensed mode (Self-managed or Tyk Cloud)" >}}
 
 | Key | Mandatory | Example Value | Description  |
 |:-----|:-----|:----------------|:-------------|
