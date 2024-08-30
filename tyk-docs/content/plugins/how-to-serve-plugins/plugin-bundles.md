@@ -85,10 +85,14 @@ The `custom_middleware` block follows the standard syntax we use for Tyk plugins
 
 ---
 
-If you’re using Tyk OAS APIs, then you can find details of how to configure your API to use plugin bundles [here]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/bundles/oas" >}}).
-
-If you're using Tyk Classic APIs, then you find details of how to your API to use plugin bundles [here]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/bundles/classic" >}}).
-
 ### Creating plugin bundles
 
 Tyk provides the Bundle CLI tool as part of the `tyk` binary. For further details please visit the [Bundle CLI tool]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/bundles/bundle-cli" >}}) page.
+
+---
+
+## Next Steps
+
+If you’re using Tyk OAS APIs, then you can find details of how to configure your API to use plugin bundles [here]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/bundles/oas" >}}).
+
+If you're using Tyk Classic APIs, then you find details of how to your API to use plugin bundles [here]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/bundles/classic" >}}).
