@@ -5,9 +5,14 @@ description: "This section explains an overview for how to configure plugins for
 tags: [ "plugins" ]
 ---
 
-An API can be configured with plugins for the following [hooks]({{< ref "plugins/plugin-types/plugintypes#plugin-and-hook-types" >}}): Pre, Authentication, Post, Post Authentication and Response. Each plugin hook can have zero or more plugins configured.
+An API can be configured to execute one or more custom plugins for each of the following [hooks]({{< ref "plugins/plugin-types/plugintypes#plugin-and-hook-types" >}}): Pre, Authentication, Post, Post Authentication, Analytics and Response.
 
-There are three scenarios for configuring plugins for an API:
+Please refer to the [Analytics plugins]({{< ref "" >}}) page for details of how to configure API-level analytics plugins.
+
+If you wish to have finer grained control it is also possible to configure per-endpoint plugins. These are custom Go plugins that are triggered at the end of the request processing chain before the API-level Post plugin is executed.
+
+
+There are three scenarios for configuring Pre, Authentication, Post Authentication and Response plugins for an API:
 
 1. Plugins are implemented by a gRPC server with the associated configuration specified with the API definition. For further details, please refer to the [gRPC]({{< ref "plugins/supported-languages/rich-plugins/grpc" >}}) section.
 2. The plugin source code and configuration is bundled into a zip file that is served by a remote web server. For further details, checkout the [plugin bundles]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) page.
