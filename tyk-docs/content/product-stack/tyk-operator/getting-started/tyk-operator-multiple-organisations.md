@@ -19,7 +19,7 @@ An [OperatorContext]({{< ref "/product-stack/tyk-operator/key-concepts/operator-
 apiVersion: tyk.tyk.io/v1alpha1
 kind: OperatorContext
 metadata:
-  name: team-alpha-ctx
+  name: team-alpha
   namespace: default
 spec:
   env:
@@ -55,7 +55,7 @@ metadata:
   namespace: default
 spec:
   secretRef:
-    namespace: tyk-operator-conf # with keys TYK_AUTH and TYK_ORG
+    namespace: tyk-operator-conf ## Secret containing keys TYK_AUTH and TYK_ORG
     name: alpha
   env:
     mode: pro
