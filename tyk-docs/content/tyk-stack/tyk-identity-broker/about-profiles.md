@@ -42,9 +42,9 @@ In order to know and understand each of the attributes, implications as well as 
 
 | Field                  | Description                                                                                                                     | Required                      |
 |------------------------|---------------------------------------------------------------------------------------------------------------------------------|-------------------------------|
-| LDAPUseSSL             | Whether to connect with the LDAP server via TLS                                                                                  | No                            |
-| LDAPServer             | Server address                                                                                                                  | Yes                           |
-| LDAPPort               | Server address                                                                                                                  | Yes                           |
+| LDAPUseSSL             | Whether to connect with the LDAP server via TLS, e.g. *true* or *false*                                                                                 | No                            |
+| LDAPServer             | LDAP Server  address, e.g. *ldap://hostname*.                                                                                                              | Yes                           |
+| LDAPPort               | LDAP  Port, e.g. *389* or *636*.                                                                                                                  | Yes                           |
 | LDAPUserDN             | Required to uniquely identify and locate a user's entry in the LDAP directory                                                   | Yes                           |
 | LDAPBaseDN             | Distinguised Name from where the search will start                                                                              | No                            |
 | LDAPFilter             | Used for filtering in the LDAP server                                                                                           | No                            |
