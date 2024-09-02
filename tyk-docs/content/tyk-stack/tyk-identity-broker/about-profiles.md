@@ -58,7 +58,7 @@ In order to know and understand each of the attributes, implications as well as 
 | FailureRedirect        | In the event of a login failure this is the URL that the user will be redirected to.                                                                                 | Yes                           |
 | DefaultDomain          | Domain in which the LDAP is running. Used to build the username but not to perform the requests.                                | No                            |
 | GetAuthFromBAHeader    | A boolean value that, when set to *true*, instructs TIB to gather the user and password from the Authorization header when handling the request. | No                            |
-| SlugifyUserName        | If its required to make the username url friendly.This is a boolean value                                                       | No                            |
+| SlugifyUserName        | When set to *true* enhance the username so that is URL friendly.                                                       | No                            |
 
 ### ProxyProvider profile fields
 
