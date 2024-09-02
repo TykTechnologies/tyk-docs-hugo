@@ -53,7 +53,7 @@ In order to know and understand each of the attributes, implications as well as 
 | LDAPLastNameAttribute  | Where the last name comes                                                                                                       | No                            |
 | LDAPAdminUser          | Admin user name                                                                                                                 | No                            |
 | LDAPAdminPassword      | Admin password                                                                                                                  | No                            |
-| LDAPAttributes         | To select which attributes do you want to be returned on the record found                                                       | Yes. It can be an empty array |
+| LDAPAttributes         | List of attributes to return when a matching LDAP record is found, for example ['cn', 'mail', 'ou']                                                       | Yes. It can be an empty array |
 | LDAPSearchScope        | The scope is an integer value that determines the depth of the search in the directory hierarchy                            | No                            |
 | FailureRedirect        | On fail in login where to redirect the user to                                                                                  | Yes                           |
 | DefaultDomain          | Domain in which the LDAP is running. Used to build the username but not to perform the requests.                                | No                            |
