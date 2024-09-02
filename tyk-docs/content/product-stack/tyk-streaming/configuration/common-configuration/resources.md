@@ -24,10 +24,10 @@ pipeline:
 output:
   resource: buz
 
-# input_resources:
-#   - label: foo
-#     file:
-#       paths: [ ./in.txt ]
+input_resources:
+  - label: foo
+    file:
+      paths: [ ./in.txt ]
 
 processor_resources:
   - label: bar
@@ -38,10 +38,10 @@ cache_resources:
     memory:
       default_ttl: 300s
 
-# output_resources:
-#   - label: buz
-#     file:
-#       path: ./out.txt
+output_resources:
+  - label: buz
+    file:
+      path: ./out.txt
 ```
 
 ## Reusability
