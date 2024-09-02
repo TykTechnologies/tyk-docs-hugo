@@ -385,7 +385,7 @@ curl $DASH_URL/admin/organisations/$ORG_ID -H "Admin-Auth: $DASH_ADMIN_SECRET" |
 5. Open `myorg.json` in your favorite text editor and add the following fields as follows.
 New fields are between the `...` .
 
-```json {linenos=table,hl_lines=["6-13"],linenostart=1}
+```json {linenos=table,hl_lines=["5-12"],linenostart=1}
 {
   "_id": "55780af69b23c30001000049",
   "owner_slug": "portal-test",
