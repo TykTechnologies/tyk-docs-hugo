@@ -46,7 +46,7 @@ In order to know and understand each of the attributes, implications as well as 
 | LDAPServer             | LDAP Server  address, e.g. *ldap://hostname*.                                                                                                              | Yes                           |
 | LDAPPort               | LDAP  Port, e.g. *389* or *636*.                                                                                                                  | Yes                           |
 | LDAPUserDN             | Required to uniquely identify and locate a user's entry in the LDAP directory                                                   | Yes                           |
-| LDAPBaseDN             | Distinguised Name from where the search will start                                                                              | No                            |
+| LDAPBaseDN             | Distinguished Name from where the search will start                                                                              | No                            |
 | LDAPFilter             | Used for filtering in the LDAP server                                                                                           | No                            |
 | LDAPEmailAttribute     | The name of the field in the LDAP schema that represents the user's email. Defaults to *mail*.                                                                                                       | No                            |
 | LDAPFirstNameAttribute | The name of the field in the LDAP schema that represents the user's first name. Defaults to *givenName*                                                                                                      | No                            |
@@ -55,7 +55,7 @@ In order to know and understand each of the attributes, implications as well as 
 | LDAPAdminPassword      | Admin password                                                                                                                  | No                            |
 | LDAPAttributes         | List of attributes to return when a matching LDAP record is found, for example ['cn', 'mail', 'ou']                                                       | Yes. It can be an empty list |
 | LDAPSearchScope        | The scope is an integer value that determines the depth of the search in the directory hierarchy                            | No                            |
-| FailureRedirect        | On fail in login where to redirect the user to                                                                                  | Yes                           |
+| FailureRedirect        | In the event of a login failure this is the URL that the user will be redirected to.                                                                                 | Yes                           |
 | DefaultDomain          | Domain in which the LDAP is running. Used to build the username but not to perform the requests.                                | No                            |
 | GetAuthFromBAHeader    | On handle the request, wether to gather the user and password from the Authorization header in the request. Its a boolean value | No                            |
 | SlugifyUserName        | If its required to make the username url friendly.This is a boolean value                                                       | No                            |
