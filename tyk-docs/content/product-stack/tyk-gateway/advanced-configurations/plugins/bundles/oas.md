@@ -2,7 +2,7 @@
 date: 2024-08-20T12:59:42Z
 title: Tyk OAS API Plugin Bundle Configuration
 description: "This section explains how to configure Tyk OAS APIs to use plugin bundles"
-tags: [ "tyk plugins", "API Gateway middleware", "Custom middleware", "Custom API request" ]
+tags: [ "Tyk plugins", "API Gateway middleware", "Custom middleware", "Custom API request", "Tyk OAS API" ]
 ---
 
 For API plugins that are deployed as [plugin bundles]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}), the API should be configured with the name of the plugin bundle file to download from your remote web server. Furthermore, the Gateway should be [configured]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles#gateway-configuration" >}}) to enable downloading plugin bundles.
