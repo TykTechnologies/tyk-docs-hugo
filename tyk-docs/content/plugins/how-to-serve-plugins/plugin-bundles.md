@@ -40,7 +40,7 @@ To configure Tyk Gateway to load plugin bundles the following parameters must be
 ```
 
 - `enable_bundle_downloader`: Enables the bundle downloader.
-- `bundle_base_url`: A base URL that will be used to download the bundle. For example if we have `bundle-latest.zip` specified in the API settings, Tyk will fetch the following URL: `http://my-bundle-server.com/bundles/bundle-latest.zip` (see the next section for details).
+- `bundle_base_url`: A base URL that will be used to download the bundle. For example if we have `bundle-latest.zip` specified in the API definition, Tyk will fetch the following file: `http://my-bundle-server.com/bundles/bundle-latest.zip` (see the next section for details).
 -  `public_key_path`: Sets a public key, used for verifying signed bundles. If unsigned bundles are used you may omit this.
 
 {{< note success >}}
