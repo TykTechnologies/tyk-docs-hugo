@@ -114,16 +114,11 @@ Interpolation functions within the `url` and `headers` fields can be used to ref
 input:
   http_client:
     url: >-
-      https://api.example.com/search?query=allmyfoos&start_time=${! (
+      http://api.example.com/search?query=allmyfoos&start_time=${! (
         (timestamp_unix()-300).ts_format("2006-01-02T15:04:05Z","UTC").escape_url_query()
       ) }${! ("&next_token="+this.meta.next_token.not_null()) | "" }
     verb: GET
     rate_limit: foo_searches
-    oauth2:
-      enabled: true
-      token_url: https://api.example.com/oauth2/token
-      client_key: "${EXAMPLE_KEY}"
-      client_secret: "${EXAMPLE_SECRET}"
 
 rate_limit_resources:
   - label: foo_searches
@@ -131,6 +126,33 @@ rate_limit_resources:
       count: 1
       interval: 30s
 ```
+
+<!--
+
+Update example when Tyk secrets Stream release has been performed
+
+```yaml
+input:
+  http_client:
+    url: >-
+      http://api.example.com/search?query=allmyfoos&start_time=${! (
+        (timestamp_unix()-300).ts_format("2006-01-02T15:04:05Z","UTC").escape_url_query()
+      ) }${! ("&next_token="+this.meta.next_token.not_null()) | "" }
+    verb: GET
+    rate_limit: foo_searches
+    # oauth2:
+    #   enabled: true
+    #   token_url: https://api.example.com/oauth2/token
+    #   client_key: "${EXAMPLE_KEY}"
+    #   client_secret: "${EXAMPLE_SECRET}"
+
+rate_limit_resources:
+  - label: foo_searches
+    local:
+      count: 1
+      interval: 30s
+```
+-->
 
 ## Fields
 
