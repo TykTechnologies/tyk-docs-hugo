@@ -14,7 +14,7 @@ A plugin bundle is a ZIP file that contains your plugin source code files and as
 
 Plugin bundles are intended to simplify the process of attaching and loading custom middleware. Multiple API definitions can refer to the same plugin bundle (containing the source code and configuration) if required. Having this common, shared resource avoids you from having to duplicate plugin configuration for each of your APIs definitions. 
 
-## How Plugin Bundles Works with Tyk
+## How Plugin Bundles Work
 
 The source code and a [manifest.json](#manifest) is bundled into a zip file and uploaded to an external remote web server. The [manifest.json](#manifest) file references the source code file path and the function name for each type of plugin. Tyk Gateway downloads, caches, extracts and executes plugins from the bundle that was downloaded from the configured web server for your organization’s APIs. Subsequently, plugins for an API are configured with the name of the zip file bundle that should be downloaded from the remote web server.
 
