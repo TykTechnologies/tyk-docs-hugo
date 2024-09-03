@@ -4238,10 +4238,6 @@ menu:
             path: /product-stack/tyk-streaming/configuration/scanners/csv
             category: Page
             show: True
-          - title: "Json Documents"
-            path: /product-stack/tyk-streaming/configuration/scanners/json-documents
-            category: Page
-            show: True
           - title: "Line"
             path: /product-stack/tyk-streaming/configuration/scanners/lines
             category: Page
