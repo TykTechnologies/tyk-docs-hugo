@@ -21,7 +21,7 @@ The table below illustrates the Tyk OAS API configuration parameters that corres
 | ----- | ---               | ----   |
 | Pre   | Occurs before main request processing. | prePlugins |            
 | Post Auth | Occurs after key authentication | postAuthenticationPlugins |
-| Post | Occurs after the main request processing but bfore the response is sent. | postplugin |       
+| Post | Executed at the end of the request processing chain | postPlugins |       
 | Response | Occurs after the main request processing but before the response is sent. | responsePlugins |      
     
 The example configuration below illustrates how to set up multiple plugins for different phases of the request lifecycle:
