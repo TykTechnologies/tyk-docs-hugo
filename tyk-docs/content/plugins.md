@@ -65,7 +65,7 @@ The plugin source code and associated configuration are bundled into a zip file 
 
 #### gRPC Plugins (Remote)
 
-It is possible to integrate Tyk Gateway with a gRPC server. Develop your gRPC server, using your preferred language, to handle requests from Tyk Gateway for each of the configured phases of the API request / response lifecycle. In this scenario the plugin source code is located at the gRPC server for remote execution with the associated configuration located within the API Definition at Tyk Gateway. For further details please consult our [gRPC]({{< ref "plugins/supported-languages/rich-plugins/grpc" >}}) documentation.
+Custom plugins can be hosted on a remote server and executed from the Tyk Gateway middleware chain via gRPC. These plugins can be written in any language you prefer, as they are executed on the gRPC server. You'll configure your API definition so that Tyk Gateway will send requests to your gRPC server at the appropriate points in the API request / response lifecycle. For further details please consult our [gRPC]({{< ref "plugins/supported-languages/rich-plugins/grpc" >}}) documentation.
 
 ### Tyk Gateway Configuration
 
