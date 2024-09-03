@@ -12,7 +12,7 @@ A plugin bundle is a ZIP file that contains your plugin source code files and as
 
 ## When To Use Plugin Bundles
 
-The idea behind plugin bundles is to enhance the process of attaching and loading custom middleware. It allows to avoid duplicating plugin configuration onto each of your APIs definitions, which is still possible if you do not want to support a bundle server within your global Tyk setup. Instead, one or more API definitions can refer to the same plugin bundle containing the source code and configuration. 
+Plugin bundles are intended to simplify the process of attaching and loading custom middleware. Multiple API definitions can refer to the same plugin bundle (containing the source code and configuration) if required. Having this common, shared resource avoids you from having to duplicate plugin configuration for each of your APIs definitions. 
 
 ## How Plugin Bundles Works with Tyk
 
