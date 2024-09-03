@@ -23,7 +23,7 @@ The table below illustrates the Tyk OAS API configuration parameters that corres
 | ----- | ---               | ----   |
 | Pre   | Executed at the start of the request processing chain | pre    |            
 | Auth  | Executed during the authentication step | auth_check |  
-| Post Auth | Occurs after key authentication | post_key_auth |
+| Post Auth | Executed after the requester has been authenticated | post_key_auth |
 | Post | Occurs after the main request processing but bfore the response is sent. | post |       
 | Response | Occurs after the main request processing but before the response is sent. | response |   
 
