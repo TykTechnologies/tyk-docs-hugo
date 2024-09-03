@@ -9,7 +9,9 @@ aliases:
 
 Plugins provide a powerful and flexible way to extend Tyk’s API Gateway capabilities. They allow API developers to write custom middleware, in various programming languages, that can modify the behavior of a request or response. For example, the body, headers and/or query parameters can be extended or modified before a request is sent upstream, or a response is returned from the client.  These plugins can execute at different stages of the [API request lifecycle]({{< ref "/concepts/middleware-execution-order" >}}).
 
-Tyk supports a variety of different [plugin types]({{< ref "plugins/plugin-types/plugintypes" >}}) that developers can implement to enrich the behavior of requests and/or responses for their APIs. Users can execute, or *hook*, their plugins into the following phases of the API request / response lifecycle:
+There are several different stages of the [API request lifecycle]({{< ref "/concepts/middleware-execution-order" >}}) where custom plugins can be attached (or *hooked*) into the middleware chain allowing significant customisation to meet your specific requirements.
+
+Custom plugins are usually referred to by the location where they can be *hooked* into the middleware processing chain as follows:
 
 1. [Pre (Request)]({{< ref "/plugins/plugin-types/request-plugins" >}})
 2. [Authentication]({{< ref "/plugins/plugin-types/auth-plugins/auth-plugins" >}})
