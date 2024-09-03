@@ -27,8 +27,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
-
-There are no breaking changes in this release.
+Docker images are now based on [distroless](https://github.com/GoogleContainerTools/distroless). No shell is shipped in the image.
 
 ### Dependencies {#dependencies-5.5.0}
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
@@ -84,7 +83,7 @@ If you are upgrading to 5.5.0, please follow the detailed [upgrade instructions]
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
 -->
-We are thrilled to introduce Tyk Gateway 5.5, bringing advanced rate-limiting capabilities, enhanced certificate authentication, and performance optimizations. For a comprehensive list of changes, please refer to the [changelog](#Changelog-v5.5.0) below.
+We are thrilled to introduce Tyk Gateway 5.5, bringing advanced rate-limiting capabilities, enhanced certificate authentication, and performance optimizations. For a comprehensive list of changes, please refer to the [changelog]({{< ref "#Changelog-v5.5.0">}}) below.
 
 #### Per Endpoint Rate Limiting
 

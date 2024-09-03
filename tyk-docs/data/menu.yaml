@@ -3894,7 +3894,11 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Understanding Reconciliation Status"
+        - title: "API changes not applied"
+          path: /product-stack/tyk-operator/troubleshooting/tyk-operator-changes-not-applied
+          category: Page
+          show: True
+        - title: "Understanding reconciliation status"
           path: /product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting
           category: Page
           show: True
@@ -4168,6 +4172,10 @@ menu:
             show: True
           - title: "Noop"
             path: /product-stack/tyk-streaming/configuration/processors/noop
+            category: Page
+            show: True
+          - title: "Parallel"
+            path: /product-stack/tyk-streaming/configuration/processors/parallel
             category: Page
             show: True
           - title: "Parse Log"

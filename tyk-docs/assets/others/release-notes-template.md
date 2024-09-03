@@ -8,7 +8,7 @@ should add additional sections to their release notes.
 ---
 title: Tyk <Dashboard|Gateway|Pump|etc.> <X.Y> Release Notes
 date: 2023-09-27T15:49:11Z
-description: "Release notes documenting updates, enhancements and changes for Tyk <Dashboard/Gateway/Pump> versions within the <X.Y.Z> series."
+description: "Release notes documenting updates, enhancements, and changes for Tyk <Dashboard/Gateway/Pump> versions within the <X.Y.Z> series."
 tags: ["Tyk Dashboard", "Release notes", "changelog", "vX.Y", "X.Y.0", "X.Y", "X.Y.Z"]
 ---
 
@@ -35,17 +35,17 @@ Our minor releases are supported until our next minor comes out. This would be <
 This release has no breaking changes.
 
 <!-- The following "Changed error log messages" section is Optional!
-Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
+Instructions: We should mention ALL changes in our application log messages in the changelog section. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
 <!-- #### Changed error log messages
-Important for users who monitor Tyk components using the application logs (i.e. Tyk Gateway log, Tyk Dashboard log etc.).
+Important for users who monitor Tyk components using the application logs (i.e. Tyk Gateway log, Tyk Dashboard log, etc.).
 We try to avoid making changes to our log messages, especially at error and critical levels. However, sometimes it's necessary. Please find the list of changes made to the application log in this release: -->
 
 <!-- The following "|Planned Breaking Changes" section is optional!
-Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc. -->
+Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates, etc. -->
 <!-- #### Planned Breaking Changes -->
 
 #### Dependencies
-<!--Required. Use this section to announce the following types of dependencies compatible with the release:
+<!-- Required. Use this section to announce the following types of dependencies compatible with the release:
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 
@@ -54,16 +54,19 @@ Version compatibility with other components in the Tyk stack. This takes the for
 ##### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 An illustrative example is shown below. -->
-| Gateway Version | Recommended Compatibility | Backwards Compatibility |
-|----    |---- |---- |
-| 5.3 LTS | Helm v2.2     | Helm vX - vY |
-|         | MDCB v2.5     | MDCB v1.7 - v2.4 |
-|         | Operator v1.8 | Operator vX - vY |
-|         | Sync v2.4.1   | Sync vX - vY |
-| | | EDP vX - vY |
-| | | Pump vX - vY |
-| | | TIB vX - vY |
+<!-- TBP - to be published. Helm chart, MDCB, operator and sync versions are the new versions and as such will be published only a few hours after the main release of 
+the dashboard and gateway. We must clarify this at the time of publishing this RN and remove TBP later, once the Helm charts are released -->
 
+| Gateway Version | Recommended Compatibility | Backwards Compatibility |
+| --------------- | ------------------------- | ----------------------- |
+| 5.3 LTS         | Helm v2.2 - TBP           | Helm vX - vY            |
+|                 | MDCB v2.5 - TBP           | MDCB v1.7 - v2.4        |
+|                 | Operator v1.8 - TBP       | Operator vX - vY        |
+|                 | Sync v2.4.1 - TBP         | Sync vX - vY            |
+|                 |                           | EDP vX - vY             |
+|                 |                           | Pump vX - vY            |
+|                 |                           | TIB vX - vY             |
+      
 #### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
@@ -109,9 +112,9 @@ Topic in The Release Highlights
 Topic in The Release Highlights
 
 #### Downloads
-- <<[docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/vX.Y.Z/images/blabla)>>
-- <<Helm charts links>>
-- <<source code tarball for oss projects>>
+- <<[docker image to pull](https://hub.docker.com/layers/tykio/tyk-{dashboard|gateway}/vX.Y.Z/images/{sha-image})>>
+- Helm chart - TBP (To Be Published separately after the release) <!-- This is the link to the Helm charts links. Please be mindful that this URL is only available a few hours or day/s after we release the main release, so this link needs to be updated in a separate iteration -->
+<!-- source code tarball for oss projects -->
 
 #### Changelog {#Changelog-vX.Y.Z}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
