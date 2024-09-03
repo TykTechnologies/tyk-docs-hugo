@@ -25,7 +25,7 @@ The table below illustrates the Tyk OAS API configuration parameters that corres
 | Auth  | Executed during the authentication step | auth_check |  
 | Post Auth | Executed after the requester has been authenticated | post_key_auth |
 | Post | Executed at the end of the request processing chain | post |       
-| Response | Occurs after the main request processing but before the response is sent. | response |   
+| Response | Executed on the response received from the upstream | response |   
 
 The example configuration below illustrates how to set up multiple plugins for different phases of the request lifecycle:
 
