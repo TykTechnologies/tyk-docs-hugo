@@ -8,7 +8,7 @@ aliases:
   - /plugins/how-to-serve/plugin-bundles
 ---
 
-A plugin bundle is a ZIP file that contains your plugin source code files and associated configuration block. A [manifest.json](#manifest) file is included with the bundle and contains the source code files and plugin configuration. 
+A plugin bundle is a ZIP file that contains your plugin source code files and associated configuration. A [manifest.json](#manifest) file must be included within the bundle containing a list of the source code files and plugin configuration. 
 
 ## When To Use Plugin Bundles
 
