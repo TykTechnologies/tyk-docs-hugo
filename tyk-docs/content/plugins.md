@@ -61,7 +61,7 @@ The plugin source code and associated configuration are co-located with Tyk Gate
 
 #### Plugin Bundles (Remote)
 
-The plugin source code and associated configuration is bundled into a zip file and uploaded to a remote webserver. These types of plugins are termed *plugin bundles*. Tyk Gateway will download, extract, cache and execute plugin bundles from the remote webserver for each of the configured phases of the API request / response lifecycle. For further details on plugin bundles and how to configure them, please refer to the [plugin bundles]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) page.
+The plugin source code and associated configuration are bundled into a zip file and uploaded to a remote webserver. Multiple plugins can be stored in a single *plugin bundle*. Tyk Gateway will download the plugin bundle from the remote webserver and then extract, cache and execute plugins for each of the configured phases of the API request / response lifecycle. For further details on plugin bundles and how to configure them, please refer to the [plugin bundles]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) page.
 
 #### gRPC Plugins (Remote)
 
