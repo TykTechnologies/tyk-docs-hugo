@@ -79,7 +79,7 @@ Tyk Gateway must be configured to enable plugins. Plugins are enabled within the
 }
 ```
 
-Optionally, Tyk Gateway can also be configured with the URL of the webserver that it should download plugin bundles from. For further details please consult the [Gateway configuration]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#gateway-configuration" >}}) section of the plugin bundles page.
+If you're using [plugin bundles]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#gateway-configuration" >}}) you'll need to configure Tyk Gateway with the URL of the webserver from which it should download the plugin bundles.
 
 Please consult our supporting documentation for further details relating to configuring Tyk Gateway for [Javascript]({{< ref "plugins/supported-languages/javascript-middleware#enabling-the-javascript-virtual-machine-jsvm" >}}) plugins and [gRPC]({{< ref "plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin#configure-tyk-gateway" >}}) plugins.
 
