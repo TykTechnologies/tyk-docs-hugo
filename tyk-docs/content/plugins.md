@@ -57,7 +57,7 @@ There are a variety of scenarios relating to the deployment of plugins for an AP
 
 #### Local Plugins
 
-The plugin source code and associated configuration is co-located on Tyk Gateway's file system. The configuration is located within the API Definition. For further details please consult [API configuration]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/overview" >}}).
+The plugin source code and associated configuration are co-located with Tyk Gateway in the same file system. The configuration is located within the API Definition. For further details please consult [API configuration]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/overview" >}}).
 
 #### Plugin Bundles (Remote)
 
