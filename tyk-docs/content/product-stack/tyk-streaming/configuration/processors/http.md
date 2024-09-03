@@ -80,8 +80,7 @@ http:
   parallel: false
 ```
 
-<!-- TODO: Add link to rate limit -->
-The `rate_limit` field can be used to specify a rate limit to cap the rate of requests across all parallel components service wide.
+The `rate_limit` field can be used to specify a [rate limit]({{< ref "/product-stack/tyk-streaming/configuration/rate-limits/overview" >}}) to cap the rate of requests across all parallel components service wide.
 
 The URL and header values of this type can be dynamically set using [function interpolations]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
 
@@ -594,8 +593,7 @@ include_patterns:
 
 ### rate_limit
 
-<!-- TODO: add link to rate limit -->
-An optional rate limit to throttle requests by.
+An optional [rate limit]({{< ref "/product-stack/tyk-streaming/configuration/rate-limits/overview" >}}) to throttle requests by.
 
 
 Type: `string`  
