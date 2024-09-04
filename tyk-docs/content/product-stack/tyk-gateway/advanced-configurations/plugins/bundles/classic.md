@@ -5,7 +5,7 @@ description: "This section explains how to configure Tyk Classic APIs to use plu
 tags: ["Tyk plugins", "API Gateway middleware", "Custom middleware", "Custom API request", "Tyk Classic API"]
 ---
 
-For API plugins that are deployed as [plugin bundles]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}), the API should be configured with the name of the plugin bundle file to download from your remote web server. Furthermore, the Gateway should be [configured]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles#gateway-configuration" >}}) to enable downloading plugin bundles.
+For custom plugins that are deployed as [plugin bundles]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}), the API should be configured with the name of the plugin bundle file to download from your remote web server. Furthermore, the Gateway should be [configured]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles#gateway-configuration" >}}) to enable downloading plugin bundles.
 
 You can configure your API with the name of the plugin bundle file to download within the Tyk Classic API definition or API Designer.
 
