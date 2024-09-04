@@ -89,7 +89,7 @@ This example configuration illustrates how to set up plugins for different phase
 
 In this example we can see that there are Golang custom authentication (`auth_check`), post authentication (`post_key_auth`), post, pre and response plugins configured.
 
-It can be seen that each plugin is configured with the specific function name and associated source file path of the file that contains the function. Furthermore, each lifecycle phase can have a list of plugins configured, allowing for complex processing workflows. For example, you might develop one plugin for logging and another for modifying the request in the pre request phase.
+It can be seen that each plugin is configured with the specific function name and associated source file path of the file that contains the function. Furthermore, each lifecycle phase (except `auth`) can have a list of plugins configured, allowing for complex processing workflows. For example, you might develop one plugin for logging and another for modifying the request in the pre request phase. When multiple plugins are configured for a phase they will be executed in the order that they appear in the API definition.
 
 The `driver` configuration parameter describes the plugin implementation language. Please refer to the [supported languages]({{< ref "/plugins/supported-languages#plugin-driver-names" >}}) section for list of supported plugin driver names.
 
