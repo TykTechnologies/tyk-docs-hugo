@@ -5,7 +5,7 @@ description: "This section explains how to configure Tyk Classic APIs to use plu
 tags: [ "Tyk Classic plugins" ]
 ---
 
-An API can be configured so that one or more of its associated plugins can execute at different phases of the request life cycle. Each plugin configuration serves to identify the plugin source file path and the name of the corresponding function, triggered at each request lifecycle stage.
+An API can be configured so that one or more of its associated plugins can execute at different phases of the request / response lifecycle. Each plugin configuration serves to identify the plugin source file path and the name of the corresponding function, triggered at each request / response lifecycle stage.
 
 This guide explains how to configure plugins for Tyk Classic APIs within the [Tyk Classic API definition](#tyk-classic-apidef) or via the [API designer](#tyk-classic-dashboard) in Tyk Dashboard.
 
@@ -96,7 +96,7 @@ The `driver` configuration parameter describes the plugin implementation languag
 Each plugin can have additional settings, such as:
 - `disabled`: When true, disables the plugin.
 - `raw_body_only`: When true, indicates that only the raw body should be processed.
-- `require_session`: When true, indicates that the plugin requires an active session. This is applicable only for post, post authentication and response plugins.
+- `require_session`: When true, indicates that session metadata will be available to the plugin. This is applicable only for post, post authentication and response plugins.
 
 ---
 
