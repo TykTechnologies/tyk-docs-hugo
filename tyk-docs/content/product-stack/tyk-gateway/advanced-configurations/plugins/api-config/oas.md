@@ -100,7 +100,7 @@ Each plugin has the following configuration parameters:
 
 ## Configuring plugins in the API Designer {#tyk-oas-dashboard}
 
-Click on the APIs menu item in the *API Management* menu of Dashboard and select your OAS API to display the OAS API editor screen. Subsequently, follow the steps below:
+Select your API from the list of *Created APIs* to reach the API designer and then follow these steps:
 
 #### Step 1: Configure implementation language for your plugin
 
