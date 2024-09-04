@@ -47,7 +47,7 @@ spec:
 
 For better security, you can also replace sensitive data with values contained within a referenced secret with `.spec.secretRef`.
 
-In this example, API access key `auth` and organization ID `org` are not specified in the manifest. They are provided through a Kubernetes secret named `tyk-operator-conf` in `alpha` namespace. The secret contains keys `TYK_AUTH` and `TYK_ORG` which corresponds to the `auth` and `org` field respectively.
+In this example, API access key `auth` and organization ID `org` are not specified in the manifest. They are provided through a Kubernetes secret named `tyk-operator-conf` in `alpha` namespace. The secret contains keys `TYK_AUTH` and `TYK_ORG` which correspond to the `auth` and `org` fields respectively.
 
 ```yaml
 apiVersion: tyk.tyk.io/v1alpha1
