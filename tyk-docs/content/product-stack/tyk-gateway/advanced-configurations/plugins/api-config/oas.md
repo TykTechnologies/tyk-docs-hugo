@@ -104,7 +104,9 @@ Click on the APIs menu item in the *API Management* menu of Dashboard and select
 
 #### Step 1: Configure implementation language for your plugin
 
-Scroll down until the *Plugins Configuration* section is displayed with the option to configure a plugin driver and a list of plugin types, e.g. *Pre Plugin*, *Post Plugin* etc. 
+In the *Plugins Configuration* section, select the *Plugin Driver*, which tells Tyk which type of plugin to expect: Go, gRPC, JavaScript (OTTO), Lua or Python.
+
+You can configure custom data that will be made available to your plugin function as a JSON formatted object in the *Config Data* option.
 
 {{< img src="/img/plugins/plugins_oas_api_driver_options.png" alt="OAS API Plugins Driver Config" >}}
 
