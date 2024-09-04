@@ -120,7 +120,7 @@ For each plugin that you wish to register with the API, click on the **Add Plugi
 
 Complete the following fields:
 
-- `Function Name`: Enter the function name that implements the required behavior for your plugin.
+- `Function Name`: Enter the name of the function within your plugin code that Tyk should invoke.
 - `Path`: Enter the path to the source file that contains the function that implements your plugin.
 - `Raw Body Only`: Optionally, toggle the *Raw Body Only* switch to true when you do not wish to fill body in request or response object for your plugins.
 
