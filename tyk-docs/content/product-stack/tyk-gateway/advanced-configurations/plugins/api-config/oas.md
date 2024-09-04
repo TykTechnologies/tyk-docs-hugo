@@ -102,7 +102,7 @@ Each plugin has the following configuration parameters:
 
 Select your API from the list of *Created APIs* to reach the API designer and then follow these steps:
 
-#### Step 1: Configure implementation language for your plugin
+#### Step 1: Configure plugin type and custom data
 
 In the *Plugins Configuration* section, select the *Plugin Driver*, which tells Tyk which type of plugin to expect: Go, gRPC, JavaScript (OTTO), Lua or Python.
 
