@@ -2,7 +2,7 @@
 date: 2024-06-25T12:59:42Z
 title: Tyk Classic API Configuring Plugin Bundles
 description: "This section explains how to configure Tyk Classic APIs to use plugin bundles deployed on a remote web server"
-tags: ["tyk plugins", "API Gateway middleware", "Custom middleware", "Custom API request"]
+tags: ["Tyk plugins", "API Gateway middleware", "Custom middleware", "Custom API request", "Tyk Classic API"]
 ---
 
 For API plugins that are deployed as [plugin bundles]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}), the API should be configured with the name of the plugin bundle file to download from your remote web server. Furthermore, the Gateway should be [configured]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles#gateway-configuration" >}}) to enable downloading plugin bundles.
