@@ -30,7 +30,7 @@ By default, Tyk will attempt to sign plugin bundles for improved security. If no
 Use `-y` to override this (see options below).
 {{< /note >}}
 
-Usage for creating plugin bundles is displayed by issuing the following command:
+Instructions on how to create plugin bundles is displayed by issuing the following command:
 
 ```bash
 /opt/tyk-gateway/bin/tyk bundle build -h
