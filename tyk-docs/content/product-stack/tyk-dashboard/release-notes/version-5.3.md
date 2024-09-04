@@ -34,8 +34,7 @@ There are no deprecations in this release.
 If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
 ### Release Highlights
-
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.5">}}) below.
+This release primarily focuses on the bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.5">}}) below.
 
 ### Dependencies {#dependencies-5.3.0}
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
@@ -96,12 +95,13 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 - Link to (new) documentation created as a result of a fix. For example, a new configuration parameter may have been introduced and documented for the fix
 - For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
 Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
+
 <ul>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Gateway Secret Exposed in Logs When Accessing /api/keys</summary>
 
-Add changelog description
+Resolved an issue where the Gateway secret was inadvertently logged by the Dashboard in debug mode. This issue has been fixed to prevent sensitive information from appearing in system logs, especially in non-production environments.
 </details>
 </li>
 <li>
