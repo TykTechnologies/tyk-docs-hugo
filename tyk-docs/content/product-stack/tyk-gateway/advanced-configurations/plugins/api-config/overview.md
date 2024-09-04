@@ -16,7 +16,7 @@ If you desire fine grained control at the endpoint level then it is also possibl
 There are three scenarios for configuring Pre, Authentication, Post Authentication and Response plugins for an API:
 
 1. **gRPC plugins**: Plugins are implemented by a gRPC server with the associated configuration specified with the API definition. For further details on how to configure gRPC plugins, please refer to our [gRPC]({{< ref "plugins/supported-languages/rich-plugins/grpc" >}}) documentation.
-2. **Plugin bundles**: The plugin source code and configuration is bundled into a zip file that is served by a remote web server. For further details and how to configure, checkout the [plugin bundles]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) page.
+2. **Plugin bundles**: The plugin source code and configuration are bundled into a zip file that is served by a remote web server. For further details see the [plugin bundles]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) page.
 3. **Local plugins**: Plugins are implemented by functions within source code files located on the Gateway's file system. The API Definition allows the source code file path and function name to be configured for each plugin. For further details read on.
 
 ## Plugin configuration
