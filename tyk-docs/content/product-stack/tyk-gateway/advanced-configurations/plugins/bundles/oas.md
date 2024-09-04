@@ -77,6 +77,8 @@ An illustrative example is listed below:
 
 In this example we can see that bundle plugin has been configured within the `middleware.global.pluginConfig.bundle` object. The plugin is enabled and bundled within file `plugin.zip`. The plugin bundle is a Go plugin, i.e. `middleware.global.pluginConfig.driver` has been configured with value `goplugin`.
 
+The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out custom plugin bundles, assuming that you have provided a valid bundle file named `plugin.zip`.
+
 ## Configuring Plugin Bundles in the API Designer
 
 To configure plugin bundles for Tyk OAS APIs click on the APIs menu item in the *API Management* menu of Dashboard and select your OAS API to display the OAS API editor screen. Subsequently, follow the steps below:
