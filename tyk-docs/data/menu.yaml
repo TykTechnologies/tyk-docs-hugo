@@ -3894,6 +3894,10 @@ menu:
             category: Directory
             show: True
             menu:
+            - title: "API changes not applied"
+              path: /product-stack/tyk-operator/troubleshooting/tyk-operator-changes-not-applied
+              category: Page
+              show: True
             - title: "Understanding Reconciliation Status"
               path: /product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting
               category: Page
