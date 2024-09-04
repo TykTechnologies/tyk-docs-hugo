@@ -5,7 +5,7 @@ description: "This section explains how to configure Tyk OAS APIs to use plugin 
 tags: [ "Tyk OAS plugins" ]
 ---
 
-An API can be configured so that one or more of its associated plugins can execute at different phases of the request life cycle. Each plugin configuration serves to identify the plugin source file path and the name of the corresponding function, triggered at each request lifecycle stage.
+An API can be configured so that one or more of its associated plugins can execute at different phases of the request / response life cycle. Each plugin configuration serves to identify the plugin source file path and the name of the corresponding function, triggered at each request / response lifecycle stage.
 
 This guide explains how to configure plugins for Tyk OAS APIs within the [Tyk OAS API definition](#tyk-oas-apidef) or via the [API designer](#tyk-oas-dashboard) in Tyk Dashboard.
 
