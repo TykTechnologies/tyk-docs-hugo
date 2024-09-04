@@ -15,7 +15,7 @@ If you’re using the legacy Tyk Classic APIs, then check out the [Tyk Classic](
 
 ## Configuring plugins in the Tyk OAS API Definition {#tyk-oas-apidef}
 
-The table below illustrates the Tyk OAS API configuration parameters that correspond to each phase of the API request lifecycle:
+This table illustrates the different phases of the API request lifecycle where custom plugins can be executed:
 
 | Phase | Description       | Config |
 | ----- | ---               | ----   |
