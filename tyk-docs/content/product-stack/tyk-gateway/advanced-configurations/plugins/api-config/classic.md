@@ -110,7 +110,7 @@ Select your API from the list of *Created APIs* to reach the API designer and th
 
 #### Step 1: Display the Tyk Classic API Definition editor
 
-Click on the *View Raw Definition* button to display an editor for updating the Tyk Classic API Definition.
+Click on the **View Raw Definition** button to display an editor for updating the Tyk Classic API Definition.
 
 {{< img src="/img/plugins/plugins_classic_api_definition_editor.png" alt="Plugins Classic API Definition editor screen" >}}
 
