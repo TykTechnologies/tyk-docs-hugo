@@ -112,7 +112,7 @@ You can configure custom data that will be made available to your plugin functio
 
 Select the implementation language of your plugins.
 
-#### Step 2: Add plugins
+#### Step 2: Configure the custom plugins
 
 For each type of plugin to configure, click on the *Add Plugin* button to display a plugin configuration section:
 
