@@ -24,7 +24,7 @@ This table illustrates the different phases of the API request lifecycle where c
 | Post | Executed at the end of the request processing chain | postPlugins |       
 | Response | Occurs after the main request processing but before the response is sent. | responsePlugins |      
     
-The example configuration below illustrates how to set up multiple plugins for different phases of the request lifecycle:
+This example configuration illustrates how to set up plugins for different phases of the request lifecycle:
 
 ```json {linenos=true, linenostart=1, hl_lines=["15-52"]}
 {
