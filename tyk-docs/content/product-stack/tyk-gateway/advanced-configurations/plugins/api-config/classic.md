@@ -102,7 +102,7 @@ Each plugin can have additional settings, such as:
 
 ## Configuring plugins in the API Designer {#tyk-classic-dashboard}
 
-This section explains how to configure Plugins for a Tyk Classic API using Tyk Dashboard. It specifically covers the use case where the source files of your plugins are deployed on the Tyk Gateway file system. 
+This section explains how to configure plugins for a Tyk Classic API using Tyk Dashboard. It specifically covers the use case where the source files of your plugins are deployed on the Tyk Gateway file system. 
 
 Select your API from the list of *Created APIs* to reach the API designer and then follow these steps:
 
