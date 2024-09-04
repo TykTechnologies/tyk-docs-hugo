@@ -15,16 +15,48 @@ If you’re using the legacy Tyk Classic APIs, then check out the [Tyk Classic](
 
 ## Configuring plugins in the Tyk OAS API Definition {#tyk-oas-apidef}
 
-This table illustrates the different phases of the API request lifecycle where custom plugins can be executed:
+The `x-tyk-api-gateway.middleware.global` section is used to configure plugins in a Tyk OAS API. It contains a `pluginConfig` section and a list of plugins for each phase of the API request / response lifecycle. 
 
-| Phase | Description       | Config |
+The `pluginConfig` section contains the `driver` parameter that is used to configure the plugin implementation [language]({{< ref "/plugins/supported-languages#plugin-driver-names" >}}):
+
+```yaml
+"pluginConfig": {
+  "driver": "goplugin"
+}
+```
+
+Within the `x-tyk-api-gateway.middleware.global` section, keyed lists of plugins can be configured for each phase of the API request / response lifecycle described in the table below:
+
+| Phase | Description       | Config Key  |
 | ----- | ---               | ----   |
-| Pre   | Executed at the start of the request processing chain | prePlugins |            
-| Post Auth | Executed after the requester has been authenticated | postAuthenticationPlugins |
-| Post | Executed at the end of the request processing chain | postPlugins |       
-| Response | Occurs after the main request processing but before the response is sent. | responsePlugins |      
-    
-This example configuration illustrates how to set up plugins for different phases of the request lifecycle:
+| Pre   | Executed at the start of the request processing chain | `prePlugins` |            
+| Post Auth | Executed after the requester has been authenticated | `postAuthenticationPlugins` |
+| Post | Executed at the end of the request processing chain | `postPlugins` |       
+| Response | Occurs after the main request processing but before the response is sent. | `responsePlugins` | 
+
+Each plugin configuration can have the following fields configured:
+
+- `enabled`: When true, enables the plugin.
+- `functionName`: The name of the function that implements the plugin within the source file.
+- `path`: The path to the plugin source file. 
+- `rawBodyOnly`: When true, indicates that only the raw body should be processed.
+- `requireSession`: When true, indicates that session metadata will be available to the plugin. This is applicable only for post, post authentication and response plugins.
+
+For example a Post Authentication plugin would be configured within a `postAuthenticationPlugins` list as shown below:
+
+```yaml
+"postAuthenticationPlugins": [
+  {
+    "enabled": true,
+    "functionName": "post_authentication_func",
+    "path": "/path/to/plugin1.so",
+    "rawBodyOnly": true,
+    "requireSession": true
+  }
+]
+```
+
+An full example is given below to illustrate how to set up plugins for different phases of the request / response lifecycle:
 
 ```json {linenos=true, linenostart=1, hl_lines=["15-52"]}
 {
@@ -84,17 +116,16 @@ This example configuration illustrates how to set up plugins for different phase
 }
 ```
 
-We can see from the example above that the `global` object within the `middleware` section of the `x-tyk-api-gateway` configuration is used to configure plugins in a Tyk OAS API. The `pluginConfig` section contains the `driver` parameter that is used to configure the plugin implementation [language]({{< ref "/plugins/supported-languages#plugin-driver-names" >}}).
+In this example we can see that the plugin driver has been configured by setting the `driver` field to `goplugin` within the `pluginConfig` object. This configuration instructs Tyk Gateway that our plugins are implemented using Golang.
 
-A list of plugins can be configured for each plugin type, e.g. Post Authentication (`postAuthenticationPlugins`), Pre (`prePlugins`) etc. In the example above we can see that there are Golang post authentication, post, pre and response plugins configured.
+We can also see that the following type of plugins are configured:
 
-Each plugin has the following configuration parameters:
+- **Pre**: A plugin is configured within the `prePlugins` list. The plugin is enabled and implemented by function `pre-plugin` within the source file located at path `/path/to/plugin1.so`.
+- **Post Authentication**: A plugin is configured within the `postAuthenticationPlugins` list. The plugin is enabled and implemented by function `post_authentication_func` within the source file located at path `/path/to/plugin1.so`. The raw request body and session metadata is available to the plugin.
+- **Post**: A plugin is configured within the `responsePlugins` list. The plugin is enabled and implemented by function `postplugin` within the source file located at path `/path/to/plugin1.so`. The raw request body and session metadata is available to the plugin.
+- **Response**: A plugin is configured within the `postPlugins` list. The plugin is enabled and implemented by function `Response` within the source file located at path `/path/to/plugin1.so`. The raw request body and session metadata is available to the plugin.
 
-- `enabled`: When true, enables the plugin.
-- `functionName`: The name of the function that implements the plugin within the source file.
-- `path`: The path to the plugin source file. 
-- `rawBodyOnly`: When true, indicates that only the raw body should be processed.
-- `requireSession`: When true, indicates that the plugin requires an active session. This is applicable only for Post, Post Authentication and Response plugins.
+The configuration above is a complete and valid Tyk OAS API Definition that you can use as a basis for trying out custom plugins. You will need to update the [driver]({{< ref "plugins/supported-languages#plugin-driver-names" >}}) parameter to reflect the target language type of your plugins. You will also need to update the `path` and `functionName` parameters for each plugin to reflect your source code.
 
 ---
 
