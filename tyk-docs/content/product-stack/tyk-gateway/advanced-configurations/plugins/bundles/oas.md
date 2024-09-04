@@ -13,7 +13,16 @@ If you’re using the legacy Tyk Classic APIs, then check out the [Tyk Classic](
 
 ## Configuring Plugin Bundles in the Tyk OAS API Definition
 
-The configuration for a Tyk OAS API to fetch the download of a plugin bundle from a remote web server is encapsulated within the *middleware* configuration section of the *x-tyk-api-gateway* part of a Tyk OAS API Definition. An illustrative example is listed below:
+The configuration for a Tyk OAS API to fetch the download of a plugin bundle from a remote web server is encapsulated within the `pluginConfig` section within the `middleware.global` section of the `x-tyk-api-gateway` part of a Tyk OAS API Definition.
+
+The `pluginConfig` section is structured as follows:
+
+- `bundle`: A JSON entity that contains the following configuration parameters:
+  - `enabled`: When `true`, enables the plugin.
+  - `path`: The relative path of the zip file in relation to the base URL configured on the remote webserver that hosts plugin bundles.
+- `driver`: Indicates the type of plugin, e.g. `golang`, `grpc`, `lua`, `otto` or `python`.
+
+An illustrative example is listed below:
 
 ```json{hl_lines=["37-45"], linenos=true, linenostart=1}
 {
@@ -66,10 +75,7 @@ The configuration for a Tyk OAS API to fetch the download of a plugin bundle fro
 }
 ```
 
-In the example above we can see that the *pluginConfig* section contains a *bundle* JSON entity that contains the following configuration parameters:
-
-- **enabled**: When `true`, enables the plugin.
-- **path**: The relative path of the zip file in relation to the base URL configured on the remote webserver that hosts plugin bundles.
+In this example we can see that bundle plugin has been configured within the `middleware.global.pluginConfig.bundle` object. The plugin is enabled and bundled within file `plugin.zip`. The plugin bundle is a Go plugin, i.e. `middleware.global.pluginConfig.driver` has been configured with value `goplugin`.
 
 ## Configuring Plugin Bundles in the API Designer
 

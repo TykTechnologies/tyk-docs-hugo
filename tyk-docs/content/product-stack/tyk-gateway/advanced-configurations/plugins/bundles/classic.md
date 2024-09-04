@@ -13,7 +13,7 @@ If you’re using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "
 
 ## Configuring Plugin Bundles in the Tyk Classic API Definition
 
-The configuration for an API to fetch the download of a plugin bundle from a remote server is encapsulated wihin the *custom_middleware_bundle* field of the Tyk Classic API Definition. An illustrative example is listed below:
+The configuration for an API to fetch the download of a plugin bundle from a remote server is encapsulated within the *custom_middleware_bundle* field of the Tyk Classic API Definition. An illustrative example is listed below:
 
 ```json {hl_lines=["33"], linenos=true, linenostart=1}
 {
