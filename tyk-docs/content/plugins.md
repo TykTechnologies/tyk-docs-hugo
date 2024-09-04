@@ -7,6 +7,8 @@ aliases:
     - /customise-tyk/plugins/
 ---
 
+Plugins can be used to customize and enhance the capabilities of your APIs through integration with external services and databases to perform operations such as data transformation, custom authentication, logging and monitoring etc.
+
 When Tyk receives an API request, it works through a [chain]({{< ref "middleware-execution-order" >}}) of processing *middleware* that is configured using the API definition. There are a large number of built-in middleware in the processing chain that are dedicated to performing [client authentication]({{< ref "basic-config-and-security/security/authentication-&-authorization" >}}), [request transformation]({{< ref "advanced-configuration/transform-traffic" >}}), [caching]({{< ref "basic-config-and-security/reduce-latency/caching" >}}) and many other processes before proxying the request to the upstream.
 
 Tyk's custom plugin facility provides a powerful and flexible way to extend the middleware chain. It allows API developers to write custom middleware, in various programming languages, that can perform additional processing of requests and responses.
@@ -24,7 +26,6 @@ Custom plugins are usually referred to by the location where they can be *hooked
 5. [Response]({{< ref "/plugins/plugin-types/response-plugins" >}})
 6. [Analytics (Response)]({{< ref "/plugins/plugin-types/analytics-plugins" >}})
 
-Subsequently, plugins can be used to customize and enhance the capabilities of your APIs through integration with external services and databases to perform operations such as data transformation, custom authentication, logging and monitoring etc.
 
 --- 
 

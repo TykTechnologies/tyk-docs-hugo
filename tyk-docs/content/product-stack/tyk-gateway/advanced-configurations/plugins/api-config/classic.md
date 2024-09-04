@@ -1,7 +1,7 @@
 ---
 date: 2024-06-25T12:59:42Z
 title: Configuring Plugins for Tyk Classic APIs
-description: "This section explains how to configure Tyk Classic APIs to use plugin bundles deployed on a remote web server"
+description: "This section explains how to configure Tyk Classic APIs to use plugin source code co-located on Tyk Gateway server"
 tags: [ "Tyk Classic plugins" ]
 ---
 

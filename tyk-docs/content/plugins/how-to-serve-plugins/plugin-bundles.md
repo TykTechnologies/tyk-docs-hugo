@@ -46,7 +46,7 @@ To configure Tyk Gateway to load plugin bundles the following parameters must be
 {{< note success >}}
 **Note**  
 
-Remember to set `"enable_coprocess": true` in your `tyk.conf` when using rich plugins!
+Remember to set `"enable_coprocess": true` in your `tyk.conf` when using [rich plugins]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}})!
 {{< /note >}}
 
 ### The manifest file {#manifest}
