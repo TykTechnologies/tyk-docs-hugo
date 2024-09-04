@@ -104,7 +104,7 @@ Each plugin can have additional settings, such as:
 
 This section explains how to configure Plugins for a Tyk Classic API using Tyk Dashboard. It specifically covers the use case where the source files of your plugins are deployed on the Tyk Gateway file system. 
 
-To configure plugins for Tyk Classic APIs, click on the APIs item in the *API Management* menu of Dashboard and select your API to display the API editor screen. Subsequently, following the steps below.
+Select your API from the list of *Created APIs* to reach the API designer and then follow these steps:
 
 {{< img src="/img/plugins/plugins_classic_api_source_config.png" alt="Plugins Classic API screen" >}}
 
