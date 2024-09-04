@@ -26,7 +26,7 @@ The resulting file will contain all your specified files and a modified `manifes
 {{< note success >}}
 **Note**  
 
-By default, the bundles are signed, if no private key is specified, the program will prompt for a confirmation. 
+By default, Tyk will attempt to sign plugin bundles for improved security. If no private key is specified, the program will prompt for a confirmation. 
 Use `-y` to override this (see options below).
 {{< /note >}}
 
