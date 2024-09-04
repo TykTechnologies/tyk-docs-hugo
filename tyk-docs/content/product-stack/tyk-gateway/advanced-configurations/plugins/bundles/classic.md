@@ -1,6 +1,6 @@
 ---
 date: 2024-06-25T12:59:42Z
-title: Tyk OAS API Configuring Plugin Bundles
+title: Tyk Classic API Configuring Plugin Bundles
 description: "This section explains how to configure Tyk OAS APIs to use plugin bundles deployed on a remote web server"
 tags: ["tyk plugins", "API Gateway middleware", "Custom middleware", "Custom API request"]
 ---
