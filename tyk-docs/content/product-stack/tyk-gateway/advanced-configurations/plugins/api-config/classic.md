@@ -116,7 +116,7 @@ Click on the **View Raw Definition** button to display an editor for updating th
 
 #### Step 2: Edit the Tyk Classic API Definition to configure plugins
 
-Use the editor to edit the *custom_middleware* section of the [Tyk Classic API Definition]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/classic" >}}).
+Use the editor to edit the `custom_middleware` section of the [Tyk Classic API Definition]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/classic" >}}).
 
 {{< img src="/img/plugins/plugins_classic_api_bundles_config.png" alt="Plugins Classic API Bundle Field" >}}
 
