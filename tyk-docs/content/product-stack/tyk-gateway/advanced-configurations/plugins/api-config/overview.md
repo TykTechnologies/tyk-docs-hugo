@@ -36,14 +36,9 @@ Each plugin for an API can be configured within the API Definition with the foll
 
 ## Language configuration
 
-All plugins for an API should be implemented using **one** of the [supported target languages]({{< ref "plugins/supported-languages" >}}). We configure the plugin implementation language for an API by specifying a [plugin driver]({{< ref "plugins/supported-languages#plugin-driver-names" >}}).
-
-{{< note >}}
-**Note**
+For local and bundle plugins a [plugin driver]({{< ref "plugins/supported-languages#plugin-driver-names" >}}) is configured to specify the plugin implementation language. If using gRPC plugins a `grpc` plugin driver should be used to instruct Tyk to request execution of plugins from within a gRPC server that is external to the Tyk process. This offers additional language support since Tyk can integrate with a gRPC server that is implemented using any supported [gRPC language](https://grpc.io/docs/).
 
 For a given API it is not possible to mix the implementation language for the plugin types: Pre, Authentication, Post, Post Authentication and Response plugins. For example, it is not possible to implement a pre request plugin in *Go* and also implement a post request plugin in *Python* for the same API.
-
-{{< /note >}}
 
 ---
 
