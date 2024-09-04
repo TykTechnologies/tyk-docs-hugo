@@ -110,7 +110,6 @@ You can configure custom data that will be made available to your plugin functio
 
 {{< img src="/img/plugins/plugins_oas_api_driver_options.png" alt="OAS API Plugins Driver Config" >}}
 
-Select the implementation language of your plugins.
 
 #### Step 2: Configure the custom plugins
 
