@@ -114,7 +114,7 @@ Select the implementation language of your plugins.
 
 #### Step 2: Configure the custom plugins
 
-For each type of plugin to configure, click on the *Add Plugin* button to display a plugin configuration section:
+For each plugin that you wish to register with the API, click on the **Add Plugin** button to display a plugin configuration section:
 
 {{< img src="/img/plugins/plugins_oas_api_source_config.png" alt="OAS Plugins Config Section" >}}
 
