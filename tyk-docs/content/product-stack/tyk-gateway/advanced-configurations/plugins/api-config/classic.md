@@ -17,7 +17,7 @@ If you’re using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "
 
 In Tyk Classic APIs, the *custom_middleware* section of the Tyk Classic API Definition is where you configure plugins that will run at different points during the lifecycle of an API request.
 
-The table below illustrates the Tyk OAS API configuration parameters that correspond to each phase of the API request lifecycle:
+This table illustrates the different phases of the API request lifecycle where custom plugins can be executed:
 
 | Phase | Description       | Config |
 | ----- | ---               | ----   |
