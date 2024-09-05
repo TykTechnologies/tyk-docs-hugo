@@ -1,7 +1,7 @@
 ---
 date: 2017-03-24T12:53:50Z
 title: Logging system and API events
-tags: ["logging", "observability", "system events", "logs", "json", "log format"]
+tags: ["logging", "observability", "system events", "logs", "log format"]
 aliases:
   - "/advanced-configuration/log-data"
 ---
