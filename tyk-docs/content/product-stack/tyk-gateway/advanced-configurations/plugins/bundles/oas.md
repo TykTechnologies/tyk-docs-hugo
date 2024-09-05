@@ -81,7 +81,7 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 
 ## Configuring Plugin Bundles in the API Designer
 
-To configure plugin bundles for Tyk OAS APIs click on the APIs menu item in the *API Management* menu of Dashboard and select your OAS API to display the OAS API editor screen. Subsequently, follow the steps below:
+To configure plugin bundles for Tyk OAS APIs click on the APIs menu item in the *API Management* menu of Dashboard and select your API to display the editor screen. Subsequently, follow the steps below:
 
 ##### Step 1: Access plugin options
 

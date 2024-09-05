@@ -13,7 +13,7 @@ If you’re using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "
 
 ## Configuring Plugin Bundles in the Tyk Classic API Definition
 
-The configuration for an API to fetch the download of a plugin bundle from a remote server is encapsulated within the *custom_middleware_bundle* field of the Tyk Classic API Definition. An illustrative example is listed below:
+The configuration for an API to fetch and download a plugin bundle from a remote server is encapsulated within the `custom_middleware_bundle` field of the Tyk Classic API Definition. An illustrative example is listed below:
 
 ```json {hl_lines=["33"], linenos=true, linenostart=1}
 {
@@ -51,6 +51,8 @@ The configuration for an API to fetch the download of a plugin bundle from a rem
   "custom_middleware_bundle": "bundle-latest.zip"
 }
 ```
+
+With the configuration given in the example above, calls to the API will invoke the custom plugins defined in the `manifest.json` file contained within `bundle-latest.zip` uploaded to your remote webserver, e.g. `http://your-example-plugin-server.com/plugins`.
 
 Tyk Gateway should be configured for downloading plugin bundles from a secured web server. Please consult the [plugin bundles]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) documentation for further details.
 
