@@ -1,7 +1,7 @@
 ---
 date: 2017-03-24T12:53:50Z
 title: Logging system and API events
-tags: ["logging", "observability", "system events", "logs"]
+tags: ["logging", "observability", "system events", "logs", "json", "log format"]
 aliases:
   - "/advanced-configuration/log-data"
 ---
@@ -53,6 +53,22 @@ Sometimes you will want to have more detailed logging for the Tyk Gateway than f
 ```
 
 If unset or left empty, it will default to `info`. 
+
+### Setting log format (only available for the Gateway)
+
+As of Tyk Gateway version `v5.6.0`, you can control log format using the `TYK_GW_LOGFORMAT` environment variable. By default, logs are in standard format, but setting `TYK_GW_LOGFORMAT` to `json` will output logs in JSON format.
+
+
+**Standard Format:**
+```
+time="Sep 05 09:04:12" level=info msg="Tyk API Gateway v5.6.0" prefix=main
+```
+
+**JSON Format:**
+```
+{"level":"info","msg":"Tyk API Gateway v5.6.0","prefix":"main","time":"2024-09-05T09:01:23-04:00"}
+```
+
 
 ## Integration with 3rd party aggregated log and error tools
 
