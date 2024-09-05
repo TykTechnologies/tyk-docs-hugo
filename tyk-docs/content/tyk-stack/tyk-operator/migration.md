@@ -1,6 +1,6 @@
 ---
 date: 2017-03-24T16:39:31Z
-title: Manage existing APIs and policies
+title: Getting started with existing APIs and policies
 weight: 16
 menu:
     main:

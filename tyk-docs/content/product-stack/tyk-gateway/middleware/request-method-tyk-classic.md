@@ -11,9 +11,7 @@ When working with Tyk Classic APIs the transformation is configured in the Tyk C
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/request-method-tyk-oas" >}}) page.
 
-If you're using Tyk Operator then check out the [configuring a Request Method Transform in Tyk Operator](#tyk-operator) section below.
-
-## Configuring a Request Method Transform in the Tyk Classic API Definition {#tyk-classic}
+## Configuring a Request Method Transform in the Tyk Classic API Definition
 
 To configure a transformation of the request method you must add a new `method_transforms` object to the `extended_paths` section of your API definition.
 
@@ -60,45 +58,3 @@ Then select the HTTP method to which you wish to transform the request.
 #### Step 3: Save the API
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
-
-## Configuring a Request Method Transform in Tyk Operator {#tyk-operator}
-
-The process for configuring a request method transform for an endpoint in Tyk Operator is similar to that defined in section [configuring a Request Method Transform in the Tyk Classic API Definition](#tyk-classic).
-
-To configure a transformation of the request method you must add a new `method_transforms` object to the `extended_paths` section of your API definition:
-
-```yaml {linenos=true, linenostart=1, hl_lines=["26-29"]}
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: httpbin
-spec:
-  name: httpbin
-  use_keyless: true
-  protocol: http
-  active: true
-  proxy:
-    target_url: http://httpbin.default.svc:8000
-    listen_path: /transform
-    strip_listen_path: true
-  version_data:
-    default_version: v1
-    not_versioned: true
-    versions:
-      v1:
-        name: v1
-        use_extended_paths: true
-        paths:
-          black_list: []
-          ignored: []
-          white_list: []
-        extended_paths:
-          method_transforms:
-            - path: /anything
-              method: GET
-              to_method: POST
-```
-
-The example API Definition above configures an API to listen on path `/transform` and forwards requests upstream to http://httpbin.org.
-
-In this example the Request Method Transform middleware has been configured for `HTTP GET` requests to the `/anything` endpoint. Any request received to that endpoint will be modified to `POST /anything`.

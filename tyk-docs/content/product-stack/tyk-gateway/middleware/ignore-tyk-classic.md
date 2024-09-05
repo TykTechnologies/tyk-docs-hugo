@@ -11,9 +11,7 @@ When working with Tyk Classic APIs the middleware is configured in the Tyk Class
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/ignore-tyk-oas" >}}) page.
 
-If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
-
-## Configuring the middleware in the Tyk Classic API Definition {#tyk-classic}
+## Configuring the middleware in the Tyk Classic API Definition
 
 To enable the middleware you must add a new `ignored` object to the `extended_paths` section of your API definition.
 
@@ -73,48 +71,3 @@ Once you have selected the Ignore middleware for the endpoint, the only addition
 #### Step 3: Save the API
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
-
-## Configuring the middleware in Tyk Operator {#tyk-operator}
-
-The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic). It is possible to configure an enforced timeout using the `ignored` object within the `extended_paths` section of the API Definition.
-
-In the example below the ignore authentication middleware has been configured for requests to the `GET /get` endpoint. Any such calls will skip the authentication step in the Tyk Gateway's processing chain.
-- the middleware has been configured to be case insensitive, so calls to `GET /Get` will also skip authentication
-
-```yaml {linenos=true, linenostart=1, hl_lines=["27-35"]}
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: httpbin-ignored
-spec:
-  name: httpbin-ignored
-  use_keyless: false
-  use_standard_auth: true
-  protocol: http
-  active: true
-  proxy:
-    target_url: http://httpbin.org/
-    listen_path: /httpbin
-    strip_listen_path: true
-  version_data:
-    default_version: Default
-    not_versioned: true
-    versions:
-      Default:
-        name: Default
-        use_extended_paths: true
-        paths:
-          black_list: []
-          ignored: []
-          white_list: []
-        extended_paths:
-          ignored:
-            - ignore_case: true
-              method_actions:
-                GET:
-                  action: "no_action"
-                  code: 200
-                  data: ""
-                  headers: {}
-              path: "/get"
-```

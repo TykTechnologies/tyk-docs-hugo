@@ -36,7 +36,7 @@ You must fill in the `target_list` section.
 
 See [Service Discovery]({{< ref "planning-for-production/ensure-high-availability/service-discovery" >}}) to see how you can integrate a service discovery system such as Consul or etcd with Tyk and enable dynamic load balancing support.
 
-### Configure load balancing and weighting via the Dashboard
+### Configure load balancing and Weighting via the Dashboard
 
 To set up load balancing via the Dashboard, from the **Core Settings** tab in the **API Designer** select **Enable round-robin load balancing** from the **API Settings** options:
 
@@ -49,35 +49,6 @@ You can now add your Load Balancing **Upstream targets** and apply weighting to 
 
 Weighting is new from v1.10 of the Dashboard
 {{< /note >}}
-
-## Configure load balancing via Tyk Operator
-
-Load balancing is configured within Tyk Operator, using the following configuration parameters within the proxy configuration block:
-
-- `enable_load_balancing`: Set to `true` to activate load balancing
-- `target_list`: Specifies a list of upstream targets
-
-An example is shown below:
-
-```yaml {linenos=table,hl_lines=["14-17"],linenostart=1}
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: enable-load-balancing-rr
-spec:
-  name: enable-load-balancing-rr
-  use_keyless: true
-  protocol: http
-  active: true
-  proxy:
-    target_url: httpbin.org
-    listen_path: /httpbin
-    strip_listen_path: true
-    enable_load_balancing: true
-    target_list: 
-        - "httpbin.org"
-        - "httpbingo.org"
-```
 
 ## gRPC load balancing
 

@@ -99,7 +99,3 @@ If you are migrating from platforms like Mashery, which use request signing, you
 ### Custom tokens
 
 It is possible to provide Tyk with your own custom tokens, this can be achieved using the Tyk Gateway REST API. This is very useful if you have your own identity provider and don't want Tyk to create and manage tokens for you, and instead just mirror those tokens within Tyk to off-load access control, quotas and rate limiting from your own application.
-
-## Enabling bearer tokens with Tyk Operator
-
-Please consult the Tyk Operator supporting documentation for an example of how to [enable a bearer tokens]({{< ref "product-stack/tyk-operator/advanced-configurations/client-authentication#auth-token-bearer-token" >}}) with Tyk Operator.
