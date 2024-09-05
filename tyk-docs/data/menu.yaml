@@ -3974,6 +3974,14 @@ menu:
             path: /product-stack/tyk-streaming/configuration/inputs/broker
             category: Page
             show: True
+          - title: "Generate"
+            path: /product-stack/tyk-streaming/configuration/inputs/generate
+            category: Page
+            show: True
+          - title: "Http Client"
+            path: /product-stack/tyk-streaming/configuration/inputs/http-client
+            category: Page
+            show: True
           - title: "Http Server"
             path: /product-stack/tyk-streaming/configuration/inputs/http-server
             category: Page
@@ -4026,6 +4034,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/outputs/fallback
             category: Page
             show: True
+          - title: "Http Client"
+            path: /product-stack/tyk-streaming/configuration/outputs/http-client
+            category: Page
+            show: True
           - title: "Http Server"
             path: /product-stack/tyk-streaming/configuration/outputs/http-server
             category: Page
@@ -4064,6 +4076,10 @@ menu:
             show: True
           - title: "Stdout"
             path: /product-stack/tyk-streaming/configuration/outputs/stdout
+            category: Page
+            show: True
+          - title: "Sync Response"
+            path: /product-stack/tyk-streaming/configuration/outputs/sync-response
             category: Page
             show: True
         - title: "Processors"
@@ -4116,6 +4132,10 @@ menu:
             show: True
           - title: "Group By Value"
             path: /product-stack/tyk-streaming/configuration/processors/group-by-value
+            category: Page
+            show: True
+          - title: "Http"
+            path: /product-stack/tyk-streaming/configuration/processors/http
             category: Page
             show: True
           - title: "Insert Part"
@@ -4202,6 +4222,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/switch
             category: Page
             show: True
+          - title: "Sync Response"
+            path: /product-stack/tyk-streaming/configuration/processors/sync-response
+            category: Page
+            show: True
           - title: "Try"
             path: /product-stack/tyk-streaming/configuration/processors/try
             category: Page
@@ -4209,6 +4233,30 @@ menu:
           - title: "While"
             path: /product-stack/tyk-streaming/configuration/processors/while
             catgeory: Page
+            show: True
+        - title: "Scanners"
+          category: Directory
+          show: True
+          menu:
+          - title: "Overview"
+            path: /product-stack/tyk-streaming/configuration/scanners/overview
+            category: Page
+            show: true
+          - title: "CSV"
+            path: /product-stack/tyk-streaming/configuration/scanners/csv
+            category: Page
+            show: True
+          - title: "Line"
+            path: /product-stack/tyk-streaming/configuration/scanners/lines
+            category: Page
+            show: True
+          - title: "Regular Expression Matching"
+            path: /product-stack/tyk-streaming/configuration/scanners/re-match
+            category: Page
+            show: True
+          - title: "Switch"
+            path: /product-stack/tyk-streaming/configuration/scanners/switch
+            category: Page
             show: True
         - title: "Common Configurations"
           category: Directory
@@ -4310,6 +4358,10 @@ menu:
               path: "/product-stack/tyk-streaming/guides/bloblang/methods/type-coercion"
               category: Page
               show: True
+        - title: "Sync Response"
+          path: "/product-stack/tyk-streaming/guides/sync-responses"
+          category: Page
+          show: True
       - title: "Rate Limits"
         category: Directory
         show: true
