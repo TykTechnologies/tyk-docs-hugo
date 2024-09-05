@@ -367,12 +367,8 @@ New fields are between the `...` .
 
 In the example above it can be seen that the `hybrid_enabled` and `event_options` configuration fields have been added:
 
-<<<<<<< HEAD
-`hybrid_enabled:` Allows a worker gateway to login as an organisation member into MDCB
-=======
 - `hybrid_enabled:` Allows a worker gateway to login as an organization member into MDCB.
 - `event_options:` The `event_options` object is optional. By default the update and removal of Redis keys (hashed and unhashed), API Definitions and policies are propagated to various instance zones. The `event_options` object contains a `key_event` object that allows configuration of the following additional features:
->>>>>>> 6f035ddc4... [DX-1649] Update MDCB Control Plane Improvement (#5321)
 
   - event notification mechanism for all Redis key (hashed and unhashed) events. Events can be notified via webhook by setting the `webhook` property to the value of the webhook URL. Similarly, events can be notified via email by setting the `email` property to the value of the target email address.
   - enable propagation of events for when an OAuth token is revoked from Dashboard by setting the `redis` property to `true`.
