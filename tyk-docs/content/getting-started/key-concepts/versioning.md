@@ -40,16 +40,18 @@ To add an API version, you must add a new entry in the `versions` list:
 There is also some API-level configuration for versioning, which is located in the `definition` section of the Tyk Classic API definition:
 
 The `definition` section has the following fields:
-- `default`: the default version of the API (this is the same as `default_version` in `version_data`); if left empty this will be automatically replaced with "self" and will point to the original API definition
-- `enabled`: toggle to enable or disable versioning
-- `name`: the chosen name for the version
-- `strip_path`: deprecated field; use `strip_path_versioning_data` instead. Defaults to false
 - `location`: used to configure where the versioning identifier should be provided: `header`, `url`, `url-param`
-- `strip_versioning_data`: set to `true` for Tyk to [remove the versioning identifier]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-version-identifier" >}}) prior to creating the upstream (target) URL)
-- `fallback_to_default`: set to `true` for Tyk to [invoke the default version]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#fallback-to-default" >}}) if an invalid version is requested
-- `url_versioning_pattern`: configure this with a regex that matches the format that you use for the versioning identifier (`versions.name`) if you are using `strip_versioning_data` and `fallback_to_default` with `location=url` [with Tyk 5.5.0 or later]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-url-path-version-and-default-fallback" >}})
-- `versions`: not used; since this is a legacy option it will be visible as empty `{}` in the API definition
 - `key`: the versioning identifier key used if `location` is set to `header` or `url-param`
+- `strip_versioning_data`: set this to `true` to [remove the versioning identifier]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-version-identifier" >}}) prior to creating the upstream (target) URL)
+- `fallback_to_default`: set this to `true` to [invoke the default version]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#fallback-to-default" >}}) if an invalid version is requested
+- `url_versioning_pattern`: if you are using `strip_versioning_data` and `fallback_to_default` with `location=url` [with Tyk 5.5.0 or later]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-url-path-version-and-default-fallback" >}}) you can configure this with a regex that matches the format that you use for the versioning identifier (`versions.name`)
+
+The following fields in `definition` are either deprecated or otherwise not used for Tyk Classic API versioning and should be left with their default values:
+- `enabled`: defaults to `false`
+- `default`: defaults to an empty string `""`
+- `name`: defaults to an empty string `""`
+- `strip_path`: deprecated field; defaults to `false`
+- `versions`: defaults to an empty array `{}`
 
 When you first create an API, it will not be "versioned" (i.e. `not_versioned` will be set to `true`) and there will be a single `Default` version created in the `version_data` section of the API definition.
 
@@ -146,16 +148,11 @@ Here's an example of the minimal configuration that would need to be added to th
     }
   },
   "definition": {
-    "default": "",
-    "enabled": false,
-    "name": "",
-    "strip_path": false,
     "location": "header",
+    "key": "x-api-version",
     "strip_versioning_data": false,
     "fallback_to_default": true,
-    "url_versioning_pattern": "",
-    "versions": {},
-    "key": "x-api-version"
+    "url_versioning_pattern": ""
   }
 }
 ```
