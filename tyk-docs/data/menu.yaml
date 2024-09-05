@@ -2037,30 +2037,18 @@ menu:
             category: Directory
             show: true
             menu:
-            - title: "Open Source"
-              category: Directory
+            - title: "Overview"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/overview
+              category: Page
               show: True
-              menu:
-              - title: "Source Files"
-                path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/open-source/source-files
-                category: Page
-                show: True
-              - title: "Bundle"
-                path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/open-source/source-bundles
-                category: Page
-                show: True
-            - title: "Self Managed"
-              category: Directory
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/oas
+              category: Page
               show: True
-              menu:
-              - title: "Source Files"
-                path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/self-managed/source-files
-                category: Page
-                show: True
-              - title: "Bundle"
-                path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/self-managed/source-bundles
-                category: Page
-                show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/classic
+              category: Page
+              show: True
           - title: "Plugin Types"
             path: /plugins/plugin-types/plugintypes
             category: Directory
@@ -2113,9 +2101,21 @@ menu:
             - title: "Serving Plugins to Tyk Gateway"
               path: /plugins/how-to-serve-plugins
               category: Page
-              show: True
-            - title: "Packaging plugins"
+              show: False
+            - title: "Overview"
               path: /plugins/how-to-serve-plugins/plugin-bundles
+              category: Page
+              show: True
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/bundles/oas
+              category: Page
+              show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/bundles/classic
+              category: Page
+              show: True
+            - title: "Bundle CLI tool"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/bundles/bundle-cli
               category: Page
               show: True
           - title: "Supported Languages"
