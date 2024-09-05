@@ -108,4 +108,4 @@ spec:
     strip_listen_path: true
 ```
 
-In this example, the `ApiDefinition` object references the `team-alpha` context, ensuring the configuration is applied within the `alpha` organization.
+In this example, the `ApiDefinition` object references the `team-alpha` context, ensuring that the configuration is applied within the `alpha` organization.
