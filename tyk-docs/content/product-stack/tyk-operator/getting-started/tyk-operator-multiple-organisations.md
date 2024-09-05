@@ -1,7 +1,7 @@
 ---
-title: "Managing Multiple Organizations with Tyk Operator CRDs"
+title: "Managing Multiple Organizations with OperatorContext"
 date: 2024-06-25
-tags: ["Tyk Operator", "Organizations", "Kubernetes"]
+tags: ["Tyk Operator", "Environments", "Organizations", "Kubernetes"]
 description: "Learn how to use Tyk Operator Custom Resource Definitions (CRDs) to manage multiple organizations within Tyk. This guide explains how to leverage OperatorContext to efficiently manage resources for different teams. Examples and best practices are included for effective multi-tenant API management."
 ---
 

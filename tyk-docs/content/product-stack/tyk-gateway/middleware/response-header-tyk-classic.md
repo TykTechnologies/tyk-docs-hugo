@@ -23,7 +23,9 @@ If you want to use dynamic data from context variables, you must [enable]({{< re
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/response-header-tyk-oas" >}}) page.
 
-## Configuring the Response Header Transform in the Tyk Classic API Definition
+If you're using Tyk Operator then check out the [configuring the Response Header Transform in Tyk Operator](#tyk-operator) section below.
+
+## Configuring the Response Header Transform in the Tyk Classic API Definition {#tyk-classic}
 
 The API-level and endpoint-level response header transforms have a common configuration but are configured in different sections of the API definition.
 {{< note success >}}
@@ -44,7 +46,7 @@ If using the Endpoint Designer in the Tyk Dashboard, this would be added automat
 We removed the need to configure the `response_processors` element in Tyk 5.3.0.
 {{< /note >}}
 
-#### API-level transform
+#### API-level transform {#tyk-classic-api}
 
 To **append** headers to all responses from your API (i.e. for all endpoints) you must add a new `global_response_headers` object to the `versions` section of your API definition. This contains a list of key:value pairs, being the names and values of the headers to be added to responses.
 
@@ -78,7 +80,7 @@ This configuration will add three new headers to each response:
 It will also delete one header (if present) from each response:
  - `X-Secret`
 
-#### Endpoint-level transform
+#### Endpoint-level transform {#tyk-classic-endpoint}
 
 To configure response header transformation for a specific endpoint you must add a new `transform_response_headers` object to the `extended_paths` section of your API definition.
 
@@ -184,4 +186,197 @@ Select the headers to delete and insert using the provided fields. You need to c
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
 
+## Configuring the Response Header Transform in Tyk Operator {#tyk-operator}
 
+The process for configuring a response header transform in Tyk Operator is similar to that defined in section [configuring the Response Header Transform in the Tyk Classic API Definition](#tyk-classic). Tyk Operator allows you to configure a response header transformation for [all endpoints of an API](#tyk-operator-endpoint) or for a [specific API endpoint](#tyk-operator-api).
+
+### API-level transform {#tyk-operator-api}
+
+The process of configuring transformation of response headers for a specific API in Tyk Operator is similar to that defined in section [API-level transform](#tyk-classic-api) for the Tyk Classic API definition. 
+
+To **append** headers to all responses from your API (i.e. for all endpoints) you must add a new `global_response_headers` object to the `versions` section of your API definition. This contains a list of key:value pairs, being the names and values of the headers to be added to responses.
+
+To **delete** headers from all responses from your API (i.e. for all endpoints), you must add a new `global_response_headers_remove` object to the `versions` section of the API definition. This contains a list of the names of existing headers to be removed from responses.
+
+An example is listed below:
+
+```yaml {linenos=true, linenostart=1, hl_lines=["25-30"]}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-global-header
+spec:
+  name: httpbin-global-header
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-global-header
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        paths:
+          black_list: []
+          ignored: []
+          white_list: []
+        global_response_headers:
+          X-Static: foobar
+          X-Request-ID: "$tyk_context.request_id"
+          X-User-ID: "$tyk_meta.uid"
+        global_response_headers_remove:
+          - X-Secret
+```
+
+The example API Definition above configures an API to listen on path `/httpbin-global-header` and forwards requests upstream to http://httpbin.org.
+
+This configuration will add three new headers to each response:
+
+- `X-Static` with the value `foobar`
+- `X-Request-ID` with a dynamic value taken from the `request_id` [context variable]({{< ref "context-variables" >}})
+- `X-User-ID` with a dynamic value taken from the `uid` field in the [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}})
+
+It will also delete one header (if present) from each response:
+
+- `X-Secret`
+
+
+### Endpoint-level transform {#tyk-operator-endpoint}
+
+The process of configuring a transformation of a response header for a specific endpoint in Tyk Operator is similar to that defined in section [endpoint-level transform](#tyk-classic-endpoint) for the Tyk Classic API definition. To configure a transformation of the response headers for a specific endpoint you must add a new `transform_response_headers` object to the `extended_paths` section of your API definition.
+
+In this example the Response Header Transform middleware (`transform_response_headers`) has been configured for HTTP `GET` requests to the `/xml` endpoint. Any response received from the upstream service following a request to that endpoint will have the `Content-Type` header added with a value set to `application/json`.
+
+##### Example
+
+```yaml {linenos=true, linenostart=1, hl_lines=["54-60"]}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-transform
+spec:
+  name: httpbin-transform
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-transform
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        paths:
+          black_list: []
+          ignored: []
+          white_list: []
+        extended_paths:
+          transform:
+            - method: POST
+              path: /anything
+              template_data:
+                enable_session: false
+                input_type: json
+                template_mode: blob
+                # base64 encoded template
+                template_source: eyJiYXIiOiAie3suZm9vfX0ifQ==
+          transform_headers:
+            - delete_headers:
+                - "remove_this"
+              add_headers:
+                foo: bar
+              path: /anything
+              method: POST
+          transform_response:
+            - method: GET
+              path: /xml
+              template_data:
+                enable_session: false
+                input_type: xml
+                template_mode: blob
+                # base64 encoded template
+                template_source: e3sgLiB8IGpzb25NYXJzaGFsIH19
+          transform_response_headers:
+            - method: GET
+              path: /xml
+              add_headers:
+                Content-Type: "application/json"
+              act_on: false
+              delete_headers: []
+```
+
+##### Tyk Gateway < 5.3.0 Example
+
+If using Tyk Gateway < v5.3.0 then a `response_processor` object must be added to the API definition containing a `header_injector` item, as highlighted below:
+
+```yaml  {linenos=true, linenostart=1, hl_lines=["17", "19", "57-63"]}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-transform
+spec:
+  name: httpbin-transform
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-transform
+    strip_listen_path: true
+  response_processors:
+    - name: response_body_transform
+    - name: header_injector
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        paths:
+          black_list: []
+          ignored: []
+          white_list: []
+        extended_paths:
+          transform:
+            - method: POST
+              path: /anything
+              template_data:
+                enable_session: false
+                input_type: json
+                template_mode: blob
+                # base64 encoded template
+                template_source: eyJiYXIiOiAie3suZm9vfX0ifQ==
+          transform_headers:
+            - delete_headers:
+                - "remove_this"
+              add_headers:
+                foo: bar
+              path: /anything
+              method: POST
+          transform_response:
+            - method: GET
+              path: /xml
+              template_data:
+                enable_session: false
+                input_type: xml
+                template_mode: blob
+                # base64 encoded template
+                template_source: e3sgLiB8IGpzb25NYXJzaGFsIH19
+          transform_response_headers:
+            - method: GET
+              path: /xml
+              add_headers:
+                Content-Type: "application/json"
+              act_on: false
+              delete_headers: []
+```

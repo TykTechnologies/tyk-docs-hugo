@@ -11,7 +11,9 @@ When working with Tyk Classic APIs the enforced timeout is configured in the Tyk
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/enforced-timeout-tyk-oas" >}}) page.
 
-## Configuring an enforced timeout in the Tyk Classic API Definition
+If you're using Tyk Operator then check out the [configuring an enforced timeout in Tyk Operator](#tyk-operator) section below.
+
+## Configuring an enforced timeout in the Tyk Classic API Definition {#tyk-classic}
 
 To configure an enforced timeout you must add a new `hard_timeouts` object to the `extended_paths` section of your API definition.
 
@@ -56,3 +58,62 @@ Then enter the timeout to be enforced for the endpoint (in seconds):
 #### Step 3: Save the API
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
+
+## Configuring an enforced timeout in Tyk Operator {#tyk-operator}
+
+The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring an enforced timeout in the Tyk Classic API Definition](#tyk-classic). It is possible to configure an enforced timeout using the `hard_timeouts` object within the `extended_paths` section of the API Definition.
+
+The example API Definition below configures an API to listen on path `/httpbin-timeout-breaker` and forwards requests upstream to http://httpbin.org. A hard timeout value of 2 seconds is configured for path `/delay/{delay_seconds}`. This will return a `504 Gateway Timeout` response to the client if the upstream response is not received before expiry of the timer.
+
+```yaml {linenos=true, linenostart=1, hl_lines=["26-29"]}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-timeout-breaker
+spec:
+  name: httpbin-timeout-breaker
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-timeout-breaker
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        paths:
+          black_list: []
+          ignored: []
+          white_list: []
+        extended_paths:
+          hard_timeouts:
+            - method: GET
+              path: /delay/{delay_seconds}
+              timeout: 2
+          circuit_breakers:
+            - method: GET
+              path: /status/500
+              return_to_service_after: 10
+              samples: 4
+              threshold_percent: "0.5" # Tyk Dashboard API doesn't support strings.
+```
+
+We can test the example using the curl command as shown below:
+
+```bash
+curl http://localhost:8081/httpbin-timeout/delay/3 -i
+    HTTP/1.1 504 Gateway Timeout
+Content-Type: application/json
+X-Generator: tyk.io
+Date: Fri, 09 Aug 2024 07:43:48 GMT
+Content-Length: 57
+
+{
+    "error": "Upstream service reached hard timeout."
+}
+```
