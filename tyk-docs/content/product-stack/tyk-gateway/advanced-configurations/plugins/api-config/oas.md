@@ -125,7 +125,7 @@ We can also see that the following type of plugins are configured:
 - **Post**: A plugin is configured within the `responsePlugins` list. The plugin is enabled and implemented by function `postplugin` within the source file located at path `/path/to/plugin1.so`. The raw request body and session metadata is available to the plugin.
 - **Response**: A plugin is configured within the `postPlugins` list. The plugin is enabled and implemented by function `Response` within the source file located at path `/path/to/plugin1.so`. The raw request body and session metadata is available to the plugin.
 
-The configuration above is a complete and valid Tyk OAS API Definition that you can use as a basis for trying out custom plugins. You will need to update the [driver]({{< ref "plugins/supported-languages#plugin-driver-names" >}}) parameter to reflect the target language type of your plugins. You will also need to update the `path` and `functionName` parameters for each plugin to reflect your source code.
+The configuration above is a complete and valid Tyk OAS API Definition that you can use as a basis for trying out custom plugins. You will need to update the [driver]({{< ref "plugins/supported-languages#plugin-driver-names" >}}) parameter to reflect the target language type of your plugins. You will also need to update the `path` and `functionName` parameters for each plugin to reflect the source code.
 
 ---
 
