@@ -63,7 +63,7 @@ As of Tyk Gateway versions LTS `v5.3` and `v5.6.0`, you can control log format u
 time="Sep 05 09:04:12" level=info msg="Tyk API Gateway v5.6.0" prefix=main
 ```
 
-**JSON Format:**
+##### JSON logging format
 ```
 {"level":"info","msg":"Tyk API Gateway v5.6.0","prefix":"main","time":"2024-09-05T09:01:23-04:00"}
 ```
