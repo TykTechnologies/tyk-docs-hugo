@@ -74,7 +74,11 @@ Custom plugins can be hosted on a remote server and executed from the Tyk Gatewa
 
 ### Tyk Gateway Configuration
 
-Tyk Gateway must be configured to enable plugins. Plugins are enabled within the *coprocess_options* section of the Gateway configuration file, *tyk.conf*:
+#### Coprocess Plugins
+
+In the context of Tyk, *coprocess* plugins refer to external plugins that run alongside the main Tyk Gateway process. These plugins allow for custom logic to be executed within the API lifecycle without modifying the core gateway. Essentially, *coprocess* plugins act as independent services that communicate with Tyk via APIs, enabling the integration of custom functionality written in various languages such as Python, or any other supported gRPC language.
+
+To enable these coprocess plugins, Tyk Gateway needs to be configured accordingly. This is done in the `tyk.conf` file under the `coprocess_options` section, where the option `enable_coprocess` must be set to `true`:
 
 ```json
 {
@@ -84,7 +88,11 @@ Tyk Gateway must be configured to enable plugins. Plugins are enabled within the
 }
 ```
 
+#### Plugin Bundles
+
 If you're using [plugin bundles]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#gateway-configuration" >}}) you'll need to configure Tyk Gateway with the URL of the webserver from which it should download the plugin bundles.
+
+#### Javascript and gRPC Plugins
 
 Please consult the supporting documentation for further details on configuring Tyk Gateway when using [Javascript]({{< ref "plugins/supported-languages/javascript-middleware#enabling-the-javascript-virtual-machine-jsvm" >}}) or [gRPC]({{< ref "plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin#configure-tyk-gateway" >}}) plugins.
 
