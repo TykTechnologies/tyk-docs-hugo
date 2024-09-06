@@ -78,16 +78,3 @@ Many processors are able to perform their behaviors on specific parts of a messa
 Part indexes can be negative, and if so the part will be selected from the end counting backwards starting from -1. E.g. if part = -1 then the selected part will be the last part of the message, if part = -2 then the part before the last element will be selected, and so on.
 
 Some processors such as [dedupe]({{< ref "/product-stack/tyk-streaming/configuration/processors/dedupe" >}}) act across an entire batch, when instead we might like to perform them on individual messages of a [batch]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/batching" >}}). In this case the [for_each]({{< ref "/product-stack/tyk-streaming/configuration/processors/for-each" >}}) processor can be used.
-
-[error_handling]: /docs/configuration/error_handling
-[batching]: /docs/configuration/batching
-[windowed_processing]: /docs/configuration/windowed_processing
-[pipelines]: /docs/configuration/processing_pipelines
-[output.reject]: /docs/components/outputs/reject
-[processor.sql_insert]: /docs/components/processors/sql_insert
-[processor.redis]: /docs/components/processors/redis
-[processor.mapping]: /docs/components/processors/mapping
-[processor.mutation]: /docs/components/processors/mutation
-[processor.dedupe]: /docs/components/processors/dedupe
-[processor.for_each]: /docs/components/processors/for_each
-[metrics.about]: /docs/components/metrics/about
