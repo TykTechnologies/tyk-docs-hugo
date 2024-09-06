@@ -4234,6 +4234,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/while
             catgeory: Page
             show: True
+          - title: "Workflow"
+            path: /product-stack/tyk-streaming/configuration/processors/workflow
+            category: Page
+            show: True
         - title: "Scanners"
           category: Directory
           show: True
@@ -4276,6 +4280,14 @@ menu:
             show: True
           - title: "Interpolation"
             path: /product-stack/tyk-streaming/configuration/common-configuration/interpolation
+            category: Page
+            show: True
+          - title: "Processing Pipelines"
+            path: /product-stack/tyk-streaming/configuration/common-configuration/processing-pipelines
+            category: Page
+            show: True
+          - title: "Resources"
+            path: /product-stack/tyk-streaming/configuration/common-configuration/resources
             category: Page
             show: True
           - title: "Windowed Processing"
