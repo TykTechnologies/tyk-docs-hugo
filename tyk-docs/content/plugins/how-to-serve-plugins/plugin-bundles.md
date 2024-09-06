@@ -22,7 +22,7 @@ The source code and a [manifest file](#manifest) are bundled into a zip file and
 
 ### Caching plugin bundles
 
-Tyk downloads a plugin bundle on startup, e.g. `http://my-bundle-server.com/bundles/bundle-latest.zip`. A plugin bundle will be cached after its initial download, if a Tyk reload event occurs, the same contents will be used. If you want to replace it, you must configure your API to use a different name and then trigger a reload.
+Tyk downloads a plugin bundle on startup based on the configuration in the API definition, e.g. `http://my-bundle-server.com/bundles/bundle-latest.zip`. The bundle contents will be cached so that, when a Tyk reload event occurs, the Gateway does not have to retrieve the bundle from the server again each time. If you want to use a different bundle then you must update your API to retrieve a different bundle filename and then trigger a reload. It is not sufficient simply to replace the bundle file on your server with an updated version with the same name - the caching ensures this will not be retrieved during a reload event.
 
 As a suggestion, you may organize your plugin bundle files using a Git commit reference or version number, e.g. `bundle-e5e6044.zip`, `bundle-48714c8.zip`, `bundle-1.0.0.zip`, `bundle-1.0.1.zip`, etc.
 
