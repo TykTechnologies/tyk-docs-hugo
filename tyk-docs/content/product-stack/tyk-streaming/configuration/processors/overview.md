@@ -18,7 +18,7 @@ pipeline:
         root.meta.link_count = this.links.length()
 ```
 
-The `threads` field in the pipeline section determines how many parallel processing threads are created. You can read more about parallel processing in the [pipeline guide][pipelines].
+The `threads` field in the pipeline section determines how many parallel processing threads are created. You can read more about parallel processing in the [pipeline guide]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/processing-pipelines" >}}).
 
 ## Labels
 

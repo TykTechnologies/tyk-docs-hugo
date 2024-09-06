@@ -4146,6 +4146,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/outputs/redis-pubsub
             category: Page
             show: True
+          - title: "Reject"
+            path: /product-stack/tyk-streaming/configuration/outputs/reject
+            category: Page
+            show: True
           - title: "Retry"
             path: /product-stack/tyk-streaming/configuration/outputs/retry
             category: Page

@@ -1,9 +1,7 @@
 ---
-title: reject
-slug: reject
-type: output
-status: stable
-categories: ["Utility"]
+title: Reject
+description: Explains an overview of the reject output
+tags: [ "Tyk Streams", "Stream Processors", "Outputs", "Reject" ]
 ---
 
 Rejects all messages, treating them as though the output destination failed to publish them.
