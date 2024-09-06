@@ -21,7 +21,7 @@ Run the following command to create the bundle:
 $ tyk bundle build
 ```
 
-The resulting file will contain all your specified files and a modified `manifest.json` with the right checksum and signature (if required), in ZIP format.
+The resulting file will contain all your specified files and a modified `manifest.json` with the checksum and signature (if required) applied, in ZIP format.
 
 {{< note success >}}
 **Note**  
