@@ -76,7 +76,7 @@ Default: `false`
 
 ### Consume N Messages
 
-A common reason to use this input is to consume only N messages from an input and then stop. This can easily be done with the [count](/docs/guides/bloblang/functions/#count) function:
+A common reason to use this input is to consume only N messages from an input and then stop. This can easily be done with the [count]({{< ref "/product-stack/tyk-streaming/guides/bloblang/functions#count" >}}) function:
 
 ```yaml
 # Only read 100 messages, and then exit.
