@@ -22,17 +22,33 @@ The `threads` field in the pipeline section determines how many parallel process
 
 ## Labels
 
-Processors have an optional field `label` that can uniquely identify them in observability data such as metrics and logs. This can be useful when running configs with multiple nested processors, otherwise their metrics labels will be generated based on their composition. For more information check out the [metrics documentation][metrics.about].
+<!-- 
+
+TODO: Replace paragraph below in subsequent iteration when know if metrics supported from product
+
+Processors have an optional field `label` that can uniquely identify them in observability data such as metrics and logs. This can be useful when running configs with multiple nested processors, otherwise their metrics labels will be generated based on their composition. For more information check out the [metrics documentation].
+
+-->
+
+Processors have an optional field `label` that can uniquely identify them in observability data such as metrics and logs.
 
 ## Error Handling
 
-Some processors have conditions whereby they might fail. Rather than throw these messages into the abyss Tyk Streams still attempts to send these messages onwards, and has mechanisms for filtering, recovering or dead-letter queuing messages that have failed which can be read about in the [error handling] section.
+Some processors have conditions whereby they might fail. Rather than throw these messages into the abyss Tyk Streams still attempts to send these messages onwards, and has mechanisms for filtering, recovering or dead-letter queuing messages that have failed which can be read about in the [error handling]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/error-handling" >}}) section.
 
 ### Error Logs
 
-Errors that occur during processing can be roughly separated into two groups; those that are unexpected intermittent errors such as connectivity problems, and those that are logical errors such as bad input data or unmatched schemas.
+Errors that occur during processing can be roughly separated into two groups; those that are unexpected intermittent errors such as connectivity problems and those that are logical errors such as bad input data or unmatched schemas.
+
+All processing errors result in the messages being flagged as failed and debug level logs being emitted that describe the error. Only errors that are known to be intermittent are also logged at the error level.
+
+<!-- 
+
+TODO: Subsequent iteration when know if metrics supported from product
 
 All processing errors result in the messages being flagged as failed, [error metrics][metrics.about] increasing for the given errored processor, and debug level logs being emitted that describe the error. Only errors that are known to be intermittent are also logged at the error level.
+
+-->
 
 The reason for this behavior is to prevent noisy logging in cases where logical errors are expected and will likely be [handled in config]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/error-handling" >}}). However, this can also sometimes make it easy to miss logical errors in your configs when they lack error handling. 
 
@@ -66,12 +82,15 @@ output:
 
 The way this works is that if your processor with the side effect (`redis` in this case) succeeds then the final `mapping` processor deletes the message which results in an acknowledgement. If the processor fails then the `try` block exits early without executing the `mapping` processor and instead the message is routed to the `reject` output, which nacks the message with an error message containing the error obtained from the `redis` processor.
 
-
-## Categories
-
 ## Batching and Multiple Part Messages
 
-All Benthos processors support multiple part messages, which are synonymous with batches. This enables some cool [windowed processing][windowed_processing] capabilities.
+All Tyk Streams processors support multiple part messages, which are synonymous with batches.
+
+<!-- TODO: Add referring link to windowed_processing when determine from product if this feature is supported 
+
+All Tyk Streams processors support multiple part messages, which are synonymous with batches. This enables some cool [windowed processing][windowed_processing] capabilities.
+
+-->
 
 Many processors are able to perform their behaviors on specific parts of a message batch, or on all parts, and have a field `parts` for specifying an array of part indexes they should apply to. If the list of target parts is empty these processors will be applied to all message parts.
 
