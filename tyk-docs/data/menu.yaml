@@ -2094,7 +2094,7 @@ menu:
                 path: /product-stack/tyk-gateway/middleware/endpoint-plugin-tyk-classic
                 category: Page
                 show: True
-          - title: "Serving plugins"
+          - title: "Plugin bundles"
             category: Directory
             show: True
             menu:
