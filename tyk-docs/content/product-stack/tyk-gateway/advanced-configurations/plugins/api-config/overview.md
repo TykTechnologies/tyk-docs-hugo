@@ -16,8 +16,8 @@ If you need fine-grained control at the endpoint level then it is also possible 
 There are three locations where Tyk Gateway can find plugin functions:
 
 1. **gRPC plugins**: Plugin functions are implemented by a gRPC server with the associated configuration specified with the API definition. For further details on how to configure gRPC plugins, please refer to our [gRPC]({{< ref "plugins/supported-languages/rich-plugins/grpc" >}}) documentation.
-2. **Plugin bundles**: The plugin source code and configuration are bundled into a zip file that is served by a remote web server. For further details see the [plugin bundles]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) page.
-3. **Local plugins**: Plugins are implemented by functions within source code files located on the Gateway's file system. The API Definition allows the source code file path and function name to be configured for each plugin. For further details read on.
+2. **Local plugins**: Plugins are implemented by functions within source code files located on the Gateway's file system. The API Definition allows the source code file path and function name to be configured for each plugin. For further details read on.
+3. **Plugin bundles**: The plugin source code and configuration are bundled into a zip file that is served by a remote web server. For further details see the [plugin bundles]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) page.
 
 ## Plugin configuration
 
@@ -44,6 +44,6 @@ For a given API it is not possible to mix the implementation language for the pl
 
 ## Next steps
 
-If you’re using the legacy Tyk Classic APIs, then check out the [configuring plugins for Tyk Classic APIs]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/classic" >}}) page for further details.
-
 If you’re using the newer Tyk OAS APIs, then check out the [configuring plugins for Tyk OAS APis]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/oas" >}}) page for further details.
+
+If you’re using the legacy Tyk Classic APIs, then check out the [configuring plugins for Tyk Classic APIs]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/classic" >}}) page for further details.
