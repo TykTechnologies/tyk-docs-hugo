@@ -4042,6 +4042,10 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Overview"
+            path: /product-stack/tyk-streaming/configuration/inputs/overview
+            category: Page
+            show: True
           - title: "Amqp_0_9"
             path: /product-stack/tyk-streaming/configuration/inputs/amqp-0-9
             category: Page
@@ -4094,6 +4098,10 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Overview"
+            path: /product-stack/tyk-streaming/configuration/outputs/overview
+            category: Page
+            show: True
           - title: "Amqp_0_9"
             path: /product-stack/tyk-streaming/configuration/outputs/amqp-0-9
             category: Page
