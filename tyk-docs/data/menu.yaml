@@ -4178,6 +4178,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/outputs/stdout
             category: Page
             show: True
+          - title: "Switch"
+            path: /product-stack/tyk-streaming/configuration/outputs/switch
+            category: Page
+            show: True
           - title: "Sync Response"
             path: /product-stack/tyk-streaming/configuration/outputs/sync-response
             category: Page
