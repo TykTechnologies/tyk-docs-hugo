@@ -20,7 +20,7 @@ The source code and a [manifest.json](#manifest) file are bundled into a zip fil
 
 {{< img src= "/img/plugins/plugin-bundles-overview.png" alt="plugin bundles architectural overview" >}}
 
-### Caching
+### Caching plugin bundles
 
 Tyk downloads a plugin bundle on startup, e.g. `http://my-bundle-server.com/bundles/bundle-latest.zip`. A plugin bundle will be cached after its initial download, if a Tyk reload event occurs, the same contents will be used. If you want to replace it, you must configure your API to use a different name and then trigger a reload.
 
