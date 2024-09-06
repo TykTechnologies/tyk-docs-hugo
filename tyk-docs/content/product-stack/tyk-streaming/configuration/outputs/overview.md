@@ -4,7 +4,7 @@ description: Explains an overview of outputs
 tags: [ "Tyk Streams", "Stream Outputs", "Outputs" ]
 ---
 
-An output is a sink where we wish to send our consumed data after applying an optional array of [processors]({{< ref "" >}}). Only one output is configured at the root of a Benthos config. However, the output can be a [broker]({{< ref "/product-stack/tyk-streaming/configuration/outputs/broker" >}}) which combines multiple outputs under a chosen brokering pattern, or a [switch]({{< ref "TODO" >}}) which is used to multiplex against different outputs.
+An output is a sink where we wish to send our consumed data after applying an optional array of [processors]({{< ref "/product-stack/tyk-streaming/configuration/processors/overview" >}}). Only one output is configured at the root of a Benthos config. However, the output can be a [broker]({{< ref "/product-stack/tyk-streaming/configuration/outputs/broker" >}}) which combines multiple outputs under a chosen brokering pattern, or a [switch]({{< ref "TODO" >}}) which is used to multiplex against different outputs.
 
 An output config section looks like this:
 
