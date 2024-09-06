@@ -13,9 +13,9 @@ input:
   redis_streams:
     url: tcp://localhost:6379
     streams:
-      - benthos_stream
+      - tyk_stream
     body_key: body
-    consumer_group: benthos_group
+    consumer_group: tyk_group
 
   # Optional list of processing steps
   processors:
@@ -44,9 +44,9 @@ input:
       - redis_streams:
           url: tcp://localhost:6379
           streams:
-            - benthos_stream
+            - tyk_stream
           body_key: body
-          consumer_group: benthos_group
+          consumer_group: tyk_group
 ```
 
 ## Labels

@@ -121,7 +121,7 @@ Type: `array`
 # Examples
 
 cases:
-  - check: this.urls.contains("http://benthos.dev")
+  - check: this.urls.contains("http://tyk.dev")
     continue: true
     output:
       cache:
@@ -146,7 +146,7 @@ Default: `""`
 
 check: this.type == "foo"
 
-check: this.contents.urls.contains("https://benthos.dev/")
+check: this.contents.urls.contains("https://tyk.dev/")
 ```
 
 ### cases[].output

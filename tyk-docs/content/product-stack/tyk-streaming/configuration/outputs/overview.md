@@ -4,7 +4,7 @@ description: Explains an overview of outputs
 tags: [ "Tyk Streams", "Stream Outputs", "Outputs" ]
 ---
 
-An output is a sink where we wish to send our consumed data after applying an optional array of [processors]({{< ref "/product-stack/tyk-streaming/configuration/processors/overview" >}}). Only one output is configured at the root of a Benthos config. However, the output can be a [broker]({{< ref "/product-stack/tyk-streaming/configuration/outputs/broker" >}}) which combines multiple outputs under a chosen brokering pattern, or a [switch]({{< ref "/product-stack/tyk-streaming/configuration/outputs/switch" >}}) which is used to multiplex against different outputs.
+An output is a sink where we wish to send our consumed data after applying an optional array of [processors]({{< ref "/product-stack/tyk-streaming/configuration/processors/overview" >}}). Only one output is configured at the root of a Tyk Streams config. However, the output can be a [broker]({{< ref "/product-stack/tyk-streaming/configuration/outputs/broker" >}}) which combines multiple outputs under a chosen brokering pattern, or a [switch]({{< ref "/product-stack/tyk-streaming/configuration/outputs/switch" >}}) which is used to multiplex against different outputs.
 
 An output config section looks like this:
 
@@ -23,13 +23,13 @@ output:
 
 ## Back Pressure
 
-Benthos outputs apply back pressure to components upstream. This means if your output target starts blocking traffic Benthos will gracefully stop consuming until the issue is resolved.
+Tyk Streams outputs apply back pressure to components upstream. This means if your output target starts blocking traffic Tyk Streams will gracefully stop consuming until the issue is resolved.
 
 ## Retries
 
-When a Benthos output fails to send a message the error is propagated back up to the input, where depending on the protocol it will either be pushed back to the source as a Noack (e.g. AMQP) or will be reattempted indefinitely with the commit withheld until success (e.g. Kafka).
+When a Tyk Streams output fails to send a message the error is propagated back up to the input, where depending on the protocol it will either be pushed back to the source as a Noack (e.g. AMQP) or will be reattempted indefinitely with the commit withheld until success (e.g. Kafka).
 
-It's possible to instead have Benthos indefinitely retry an output until success with a [retry]({{< ref "/product-stack/tyk-streaming/configuration/outputs/retry" >}}) output. Some other outputs, such as the [broker]({{< ref "/product-stack/tyk-streaming/configuration/outputs/broker" >}}), might also retry indefinitely depending on their configuration.
+It's possible to instead have Tyk Streams indefinitely retry an output until success with a [retry]({{< ref "/product-stack/tyk-streaming/configuration/outputs/retry" >}}) output. Some other outputs, such as the [broker]({{< ref "/product-stack/tyk-streaming/configuration/outputs/broker" >}}), might also retry indefinitely depending on their configuration.
 
 ## Dead Letter Queues
 
