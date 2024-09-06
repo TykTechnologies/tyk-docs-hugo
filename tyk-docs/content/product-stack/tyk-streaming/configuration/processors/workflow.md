@@ -262,7 +262,7 @@ Type: `array`
 
 ### branches.name.result_map
 
-A [Bloblang mapping]({{< ref "/product-stack/tyk-streaming/overview" >}}) that describes how the resulting messages from branched processing should be mapped back into the original payload. If left empty the origin message will remain unchanged (including metadata).
+A [Bloblang mapping]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) that describes how the resulting messages from branched processing should be mapped back into the original payload. If left empty the origin message will remain unchanged (including metadata).
 
 
 Type: `string`  
