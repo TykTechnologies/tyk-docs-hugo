@@ -2001,7 +2001,7 @@ menu:
               path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/zipkin
               category: Page
               show: True
-        - title: "Plugins"
+        - title: "Custom plugins"
           category: Directory
           show: True
           menu:
@@ -2033,24 +2033,20 @@ menu:
             path: /plugins/plugin-hub
             catgory: Page
             show: True
-          - title: "OpenTelemetry Instrumentation"
-            path: /product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins
-            category: Page
-            show: True
-          - title: "CICD Plugin Build"
-            path: /plugins/get-started-selfmanaged/deploy-plugins
-            category: Page
-            show: True
-          - title: "Serving plugins"
+          - title: "API Configuration"
             category: Directory
-            show: True
+            show: true
             menu:
-            - title: "Serving Plugins to Tyk Gateway"
-              path: /plugins/how-to-serve-plugins
+            - title: "Overview"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/overview
               category: Page
               show: True
-            - title: "Packaging plugins"
-              path: /plugins/how-to-serve-plugins/plugin-bundles
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/oas
+              category: Page
+              show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/classic
               category: Page
               show: True
           - title: "Plugin Types"
@@ -2098,6 +2094,30 @@ menu:
                 path: /product-stack/tyk-gateway/middleware/endpoint-plugin-tyk-classic
                 category: Page
                 show: True
+          - title: "Plugin bundles"
+            category: Directory
+            show: True
+            menu:
+            - title: "Serving Plugins to Tyk Gateway"
+              path: /plugins/how-to-serve-plugins
+              category: Page
+              show: False
+            - title: "Overview"
+              path: /plugins/how-to-serve-plugins/plugin-bundles
+              category: Page
+              show: True
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/bundles/oas
+              category: Page
+              show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/bundles/classic
+              category: Page
+              show: True
+            - title: "Bundle CLI tool"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/bundles/bundle-cli
+              category: Page
+              show: True
           - title: "Supported Languages"
             category: Directory
             show: True
@@ -2258,6 +2278,14 @@ menu:
                 path: /plugins/supported-languages/rich-plugins/luajit/tutorial-add-demo-plugin-api
                 category: Page
                 show: True
+          - title: "OpenTelemetry Instrumentation"
+            path: /product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins
+            category: Page
+            show: True
+          - title: "CICD Plugin Build"
+            path: /plugins/get-started-selfmanaged/deploy-plugins
+            category: Page
+            show: True
         - title: "Error Templates"
           path: /advanced-configuration/error-templates
           category: Page
