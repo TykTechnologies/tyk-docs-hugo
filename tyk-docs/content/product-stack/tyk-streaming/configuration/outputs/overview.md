@@ -33,7 +33,7 @@ It's possible to instead have Benthos indefinitely retry an output until success
 
 ## Dead Letter Queues
 
-It's possible to create fallback outputs for when an output target fails using a [fallback]({{< ref "" >}}) output:
+It's possible to create fallback outputs for when an output target fails using a [fallback]({{< ref "/product-stack/tyk-streaming/configuration/outputs/fallback" >}}) output:
 
 ```yaml
 output:
