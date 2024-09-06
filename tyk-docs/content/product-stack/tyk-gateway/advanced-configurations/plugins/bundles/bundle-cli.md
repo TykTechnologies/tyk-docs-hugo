@@ -7,7 +7,7 @@ tags: [ "Tag TODO" ]
 
 The bundler tool is a CLI service, provided by *Tyk Gateway* as part of its binary since v2.8. This lets you generate [plugin bundles]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}). Please note that the generated plugin bundles must be served using your own web server.
 
-Issue the following command below to see more details on the `bundle` command:
+Issue the following command to see more details on the `bundle` command:
 
 ```bash
 /opt/tyk-gateway/bin/tyk bundle -h
