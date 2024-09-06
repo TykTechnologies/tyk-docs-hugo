@@ -385,7 +385,7 @@ curl $DASH_URL/admin/organisations/$ORG_ID -H "Admin-Auth: $DASH_ADMIN_SECRET" |
 5. Open `myorg.json` in your favorite text editor and add the following fields as follows.
 New fields are between the `...` .
 
-```json
+```json {linenos=table,hl_lines=["5-12"],linenostart=1}
 {
   "_id": "55780af69b23c30001000049",
   "owner_slug": "portal-test",
@@ -393,11 +393,10 @@ New fields are between the `...` .
   "hybrid_enabled": true,
   "event_options": {
     "key_event": {
-      "email": "test@test.com"
+         "webhook": "https://example.com/webhook",
+         "email": "user@example.com",
+         "redis": true
     },
-    "hashed_key_event": {
-      "email": "test@test.com"
-    }
   },
   ...
   "apis": [
@@ -409,12 +408,18 @@ New fields are between the `...` .
 }
 ```
 
-### Field Reference
+In the example above it can be seen that the `hybrid_enabled` and `event_options` configuration fields have been added:
 
-`hybrid_enabled:` Allows a worker gateway to login as an organization member into MDCB
+- `hybrid_enabled:` Allows a worker gateway to login as an organization member into MDCB.
+- `event_options:` The `event_options` object is optional. By default the update and removal of Redis keys (hashed and unhashed), API Definitions and policies are propagated to various instance zones. The `event_options` object contains a `key_event` object that allows configuration of the following additional features:
 
-`event_options:` Enables key events such as updates and deletes, to be propagated to the various instance zones. API Definitions and Policies will be propagated by default, as well as the Redis key events, meaning that hashed and not hashed key events will be propagated by default in Redis and any config related to `hashed_key_event.redis` or `key_event.redis` will not be taken into consideration.
+  - event notification mechanism for all Redis key (hashed and unhashed) events. Events can be notified via webhook by setting the `webhook` property to the value of the webhook URL. Similarly, events can be notified via email by setting the `email` property to the value of the target email address.
+  - enable propagation of events for when an OAuth token is revoked from Dashboard by setting the `redis` property to `true`.
+  
+  The `event_options` in the example above enables the following functionality:
 
+  - events are propagated when OAuth tokens are revoked from Dashboard since `redis` is `true`
+  - events associated with Redis keys (hashed and unhashed) and revoking OAuth tokens via Dashboard are sent to webhook `https://example.com/webhook` and email address `user@example.com`
 
 6. Update your organization with a PUT request to the same endpoint, but this time, passing in your modified `myorg.json` file.
 

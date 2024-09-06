@@ -22,4 +22,6 @@ Tyk has three containers that are available to set up a Docker installation:
 
 All three are required for a full deployment. We recommend that each container is installed on a separate machine for optimum performance.
 
+From v5.5.0 onwards, these images are based on [distroless](https://github.com/GoogleContainerTools/distroless). This means that you will not be able to obtain a shell with `docker run --rm -it tykio/tyk-gateway:v5.5.0 sh`. The image can be inspected with tools like [dive](https://github.com/wagoodman/dive) or [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+
 We also have a [Docker Tyk Pro Demo]({{< ref "tyk-on-premises/docker/docker-pro-demo" >}}), which installs our full Self-Managed solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine.

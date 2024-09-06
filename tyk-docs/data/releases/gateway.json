@@ -2,7 +2,7 @@
   "home": "tyk-oss-gateway",
   "licensed": false,
   "latest": "5.5.0",
-  "lts": "5.3.3",
+  "lts": "5.3.4",
   "releaseNotesPath": "product-stack/tyk-gateway/release-notes/overview",
   "5.5.0": {
     "date": "99/08/2024",
@@ -13,6 +13,11 @@
     "date": "02/07/2024",
     "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.4.0",
     "docker": "https://hub.docker.com/r/tykio/tyk-gateway/tags?page=1&name=v5.4.0"
+  },
+  "5.3.4": {
+    "date": "26/08/2024",
+    "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.3.4",
+    "docker": "https://hub.docker.com/r/tykio/tyk-gateway/tags?page=1&name=5.3.4"
   },
   "5.3.3": {
     "date": "02/08/2024",
