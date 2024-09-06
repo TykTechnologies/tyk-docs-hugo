@@ -8,7 +8,7 @@ aliases:
   - /plugins/how-to-serve/plugin-bundles
 ---
 
-A plugin bundle is a ZIP file that contains your plugin source code files and associated configuration. A [manifest.json](#manifest) file must be included within the bundle containing a list of the source code files and plugin configuration. 
+For Tyk Gateway to execute local custom plugins during the processing of API requests and responses, the plugin source code must be loaded into the Gateway. The source is usually stored in files and the API definition is used to point the Gateway at the correct file for each [plugin type]({{< ref "plugins/plugin-types/plugintypes" >}}). To simplify the management of plugins, you can group (or *bundle*) multiple plugin files together in a ZIP file that is referred to as a *plugin bundle*.
 
 ## When To Use Plugin Bundles
 
