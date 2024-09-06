@@ -110,7 +110,7 @@ This field determines whether an error should be reported if no condition is met
 Type: `bool`  
 Default: `false`  
 
-### `cases`
+### cases
 
 A list of switch cases, outlining outputs that can be routed to.
 
@@ -135,7 +135,7 @@ cases:
 
 ### cases[].check
 
-A [Bloblang query](/docs/guides/bloblang/about/) that should return a boolean value indicating whether a message should be routed to the case output. If left empty the case always passes.
+A [Bloblang query]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) that should return a boolean value indicating whether a message should be routed to the case output. If left empty the case always passes.
 
 
 Type: `string`  
@@ -151,7 +151,7 @@ check: this.contents.urls.contains("https://benthos.dev/")
 
 ### cases[].output
 
-An [output](/docs/components/outputs/about/) for messages that pass the check to be routed to.
+An [output]({{< ref "/product-stack/tyk-streaming/configuration/outputs/overview" >}}) for messages that pass the check to be routed to.
 
 
 Type: `output`  
