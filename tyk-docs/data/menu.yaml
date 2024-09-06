@@ -2001,7 +2001,7 @@ menu:
               path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/zipkin
               category: Page
               show: True
-        - title: "Developing plugins"
+        - title: "Custom plugins"
           category: Directory
           show: True
           menu:
