@@ -57,7 +57,7 @@ In this example the endpoint caching middleware has been configured to cache all
 For ultimate control over what Tyk caches, you should use the advanced configuration options for the per-endpoint cache. You can separately configure, for each HTTP method for an endpoint:
 - an individual cache refresh (timeout)
 - a list of HTTP response codes that should be cached
-- a pattern match to cache only requests containing specific data in the [request body]({{< ref " basic-config-and-security/reduce-latency/caching/advanced-cache#selective-caching-by-body-value" >}})
+- a pattern match to cache only requests containing specific data in the [request body]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache#selective-caching-by-body-value" >}})
 
 To enable the advanced middleware you must add a new `advance_cache_config` object to the `extended_paths` section of your API definition.
 
