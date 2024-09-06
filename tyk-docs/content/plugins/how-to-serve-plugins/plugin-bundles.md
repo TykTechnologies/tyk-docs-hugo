@@ -16,7 +16,7 @@ Plugin bundles are intended to simplify the process of attaching and loading cus
 
 ## How Plugin Bundles Work
 
-The source code and a [manifest.json](#manifest) file are bundled into a zip file and uploaded to an external remote web server. The [manifest.json](#manifest) file references the source code file path and the function name within the code that should be invoked for each [plugin type]({{< ref "plugins/plugin-types/plugintypes" >}}). Within the API definition, custom plugins are configured simply using the name of the bundle (zip file). Tyk Gateway downloads, caches, extracts and executes plugins from the downloaded bundle according to the configuration in the manifest file. 
+The source code and a [manifest file](#manifest) are bundled into a zip file and uploaded to an external remote web server. The manifest file references the source code file path and the function name within the code that should be invoked for each [plugin type]({{< ref "plugins/plugin-types/plugintypes" >}}). Within the API definition, custom plugins are configured simply using the name of the bundle (zip file). Tyk Gateway downloads, caches, extracts and executes plugins from the downloaded bundle according to the configuration in the manifest file. 
 
 {{< img src= "/img/plugins/plugin-bundles-overview.png" alt="plugin bundles architectural overview" >}}
 
