@@ -4,14 +4,17 @@ tags: ["Tyk Tutorials", "Getting Started", "Tyk PoC", "Docker", "Demo Videos" ]
 description: "Learn to deploy and run a Tyk deployment in minutes on Docker using our repository tyk-demo"
 ---
 
-[Tyk-demo](https://github.com/TykTechnologies/tyk-demo) is a repository that enables you to start up an entire Tyk stack
-with all its dependencies. Tyk demo can also spin up deployments with all the other Tyk integrations such as
+[Tyk-demo](https://github.com/TykTechnologies/tyk-demo) is a repository that enables you to start up locally an entire Tyk stack with all its dependencies and integrations such as
 [SLIs and SLOs with Prometheus and Grafana](https://github.com/TykTechnologies/tyk-demo/tree/master/deployments/slo-prometheus-grafana)
 or [OpenTelemetry with Jaeger](https://github.com/TykTechnologies/tyk-demo/tree/master/deployments/otel-jaeger).
 
+
+## Purpose
+
 With *tyk-demo* repository, using docker-compose, you can set up quickly a **complete** Tyk stack, including
 dependencies and integrations.
-bash scripts.
+
+Minimize the amount of effort needed to start up the Tyk infrastructure and show end-to-end complete examples of how to set up various capabilities in Tyk as well as different integrations.
 
 ## Key Features
 
@@ -20,10 +23,19 @@ bash scripts.
 - Analytics and monitoring tools
 - Integration with common third-party services
 
-Watch the video *What Is Tyk Demo* for an overview and learning about the key features from our experts -
+Watch the video *What Is Tyk Demo* for an overview and learn about the key features from our experts -
 
 {{< youtube-seo id="MqVPyWg1YZM" title="Overview of Tyk Demo and its features" >}}
 
+## Prerequisites
+
+### 1. Docker compose
+Make sure you have [docker compose](https://docs.docker.com/compose/install/) and that docker is running on your machine.
+
+### 2. License key
+This Demo deploys and runs the full Tyk platform which is a licensed product. Please sign up using the button below, to obtain a license key. In the link, choose "Get in touch" to get a guided evaluation of the Tyk Dashboard and receive your temporary license. 
+
+{{< button_left href="https://tyk.io/sign-up#self" color="green" content="Get started" >}}
 
 ## Quick Start
 
