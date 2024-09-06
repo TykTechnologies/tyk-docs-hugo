@@ -22,7 +22,7 @@ This table illustrates the different phases of the API request lifecycle where c
 | Phase | Description       | Config |
 | ----- | ---               | ----   |
 | Pre   | Executed at the start of the request processing chain | `pre`    |            
-| Auth  | Executed during the authentication step | auth_check |  
+| Auth  | Executed during the authentication step | `auth_check` |  
 | Post Auth | Executed after the requester has been authenticated | `post_key_auth` |
 | Post | Executed at the end of the request processing chain | `post` |       
 | Response | Executed on the response received from the upstream | `response` |   
