@@ -12,6 +12,6 @@ label: ""
 for_each: []
 ```
 
-This is useful for forcing batch wide processors such as [dedupe]({{< ref "" >}}) or interpolations such as the `value` field of the `metadata` processor to execute on individual message parts of a batch instead.
+This is useful for forcing batch wide processors such as [dedupe]({{< ref "/product-stack/tyk-streaming/configuration/processors/dedupe" >}}) or interpolations such as the `value` field of the `metadata` processor to execute on individual message parts of a batch instead.
 
 Please note that most processors already process per message of a batch, and this processor is not needed in those cases.
