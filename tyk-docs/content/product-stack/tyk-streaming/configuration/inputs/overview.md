@@ -26,7 +26,7 @@ input:
 
 Some inputs have a logical end ends once the last row is consumed, when this happens the input gracefully terminates and Tyk Streams will shut itself down once all messages have been processed fully.
 
-It's also possible to specify a logical end for an input that otherwise doesn't have one with the [read_until]({{< ref "TODO" >}}), which checks a condition against each consumed message in order to determine whether it should be the last.
+It's also possible to specify a logical end for an input that otherwise doesn't have one with the [read_until]({{< ref "/product-stack/tyk-streaming/configuration/inputs/read-until" >}}), which checks a condition against each consumed message in order to determine whether it should be the last.
 
 ## Brokering
 
@@ -63,7 +63,7 @@ Inputs have an optional field `label` that can uniquely identify them in observa
 
 ### Sequential Reads
 
-Sometimes it's useful to consume a sequence of inputs, where an input is only consumed once its predecessor is drained fully, you can achieve this with the [sequence]({{< ref "TODO" >}}) input.
+Sometimes it's useful to consume a sequence of inputs, where an input is only consumed once its predecessor is drained fully, you can achieve this with the [sequence]({{< ref "/product-stack/tyk-streaming/configuration/inputs/sequence" >}}) input.
 
 ## Generating Messages
 
