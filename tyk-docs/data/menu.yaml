@@ -4094,6 +4094,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/inputs/redis-pubsub
             category: Page
             show: True
+          - title: "Sequence"
+            path: /product-stack/tyk-streaming/configuration/inputs/sequence
+            category: Page
+            show: True
         - title: "Outputs"
           category: Directory
           show: True
