@@ -26,4 +26,4 @@ output:
   resource: bar
 ```
 
-If the field `threads` is set to `-1` (the default) it will automatically match the number of logical CPUs available. By default almost all Tyk Streams sources will utilise as many processing threads as have been configured, which makes horizontal scaling easy.
+If the field `threads` is set to `-1` (the default) it will automatically match the number of logical CPUs available. By default almost all Tyk Streams sources will utilize as many processing threads as have been configured, which makes horizontal scaling easy.

@@ -4042,6 +4042,10 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Overview"
+            path: /product-stack/tyk-streaming/configuration/inputs/overview
+            category: Page
+            show: True
           - title: "Amqp_0_9"
             path: /product-stack/tyk-streaming/configuration/inputs/amqp-0-9
             category: Page
@@ -4094,6 +4098,10 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Overview"
+            path: /product-stack/tyk-streaming/configuration/outputs/overview
+            category: Page
+            show: True
           - title: "Amqp_0_9"
             path: /product-stack/tyk-streaming/configuration/outputs/amqp-0-9
             category: Page
@@ -4146,6 +4154,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/outputs/redis-pubsub
             category: Page
             show: True
+          - title: "Reject"
+            path: /product-stack/tyk-streaming/configuration/outputs/reject
+            category: Page
+            show: True
           - title: "Retry"
             path: /product-stack/tyk-streaming/configuration/outputs/retry
             category: Page
@@ -4158,6 +4170,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/outputs/stdout
             category: Page
             show: True
+          - title: "Switch"
+            path: /product-stack/tyk-streaming/configuration/outputs/switch
+            category: Page
+            show: True
           - title: "Sync Response"
             path: /product-stack/tyk-streaming/configuration/outputs/sync-response
             category: Page
@@ -4166,6 +4182,10 @@ menu:
           category: "Directory"
           show: True
           menu:
+          - title: "Overview"
+            path: /product-stack/tyk-streaming/configuration/processors/overview
+            category: Page
+            show: True
           - title: "Avro"
             path: /product-stack/tyk-streaming/configuration/processors/avro
             category: Page
