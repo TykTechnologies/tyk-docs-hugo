@@ -166,7 +166,7 @@ Example notification:
 * **Multi-API Access**: Enable access to multiple APIs using a single OAuth token. Configure one API for OAuth 2.0 token issuance and the other APIs with the "Auth Token" method, linking them through a common policy.
 
 
-## Use Authorization Code Grant
+### Use Authorization Code Grant
 
 The Authorization Code Grant Type is a widely used OAuth 2.0 flow for web applications. It allows client applications to access user resources securely.
 
@@ -178,7 +178,7 @@ This process requires three steps:
 
 {{< img src="/img/diagrams/diagram_docs_authorization-code-grant-type@2x.png" alt="Authorization grant type flow" >}}
 
-### Redirect the User to a Login Page
+#### Redirect the User to a Login Page
 
 First, the client application must redirect the user to the authorization server's login page. This is where the user will authenticate and authorize the client.
 
@@ -209,7 +209,7 @@ curl -X POST \
 
 This request generates a `307 Temporary Redirect` to the OAuth client redirect URI. The user is redirected to authenticate and authorize the client, and the data forwarded will be used to request an authorization code.
 
-### Request an Authorization Code
+#### Request an Authorization Code
 
 After the user authorizes the request, the authorization server provides an authorization code. The client application needs to request this code from the authorization server.
 
@@ -306,7 +306,7 @@ This grant will generate a notification sent from the Gateway to the OAuth Notif
 }
 ```
 
-## Use Refresh Token Grant
+### Use Refresh Token Grant
 
 The Refresh Token Grant Type is used to obtain a new access token when the current access token has expired or is about to expire. This allows clients to maintain a valid access token without requiring the user to re-authenticate.
 
@@ -317,7 +317,7 @@ This process involves two main steps:
 
 {{< img src="/img/diagrams/diagram_docs_refresh-token-grant-type@2x.png" alt="Refresh Token grant type flow" >}}
 
-### Obtain a Refresh Token
+#### Obtain a Refresh Token
 
 When you initially request an access token using the Authorization Code Grant Type, you can also receive a refresh token. This refresh token can be used later to obtain a new access token without requiring the user to re-authenticate.
 
@@ -360,7 +360,7 @@ The response includes an access token, a refresh token, and additional informati
 }
 ```
 
-### Use the Refresh Token to Request a New Access Token
+#### Use the Refresh Token to Request a New Access Token
 
 When the access token expires, the client can use the refresh token to obtain a new access token without requiring user interaction.
 
@@ -402,7 +402,7 @@ The response provides a new access token that can be used to access the API.
 ```
 
 
-## Use Client Credentials Grant
+### Use Client Credentials Grant
 
 The Client Credentials Grant Type is used when the client application needs to access resources on behalf of itself rather than on behalf of a user. This flow is ideal for server-to-server interactions.
 
@@ -412,7 +412,7 @@ The process is only a single step:
 
 {{< img src="/img/diagrams/diagram_docs_client-credentials-grant-type@2x.png" alt="Client Credentials grant type flow" >}}
 
-### Request an Access Token
+#### Request an Access Token
 
 The client application authenticates directly with the authorization server using its client credentials (client ID and secret) to request an access token.
 
@@ -452,7 +452,7 @@ The response provides an access token that can be used by the client to access r
 }
 ```
 
-### Use the Access Token
+#### Use the Access Token
 
 The client can now use the access token to access the API on behalf of itself.
 
@@ -471,7 +471,7 @@ curl -X GET \
 | **Authorization** | Bearer token, e.g., `Bearer abcd1234token`.         |
 
 
-## Use Username and Password Grant
+### Use Username and Password Grant
 
 The Username and Password Grant Type is used in scenarios where the client application collects the user's credentials directly. This flow is suitable for first-party applications.
 
@@ -481,7 +481,7 @@ The process is only a single step:
 
 {{< img src="/img/diagrams/diagram_docs_username-_-password-grant-type@2x.png" alt="Username and Password grant type flow" >}}
 
-### Request an Access Token
+#### Request an Access Token
 
 The client application sends the user's credentials (username and password) to the authorization server in exchange for an access token.
 
@@ -523,7 +523,7 @@ The response provides an access token that can be used by the client to access r
 }
 ```
 
-### Use the Access Token
+#### Use the Access Token
 
 The client can now use the access token to access the API on behalf of the user.
 
