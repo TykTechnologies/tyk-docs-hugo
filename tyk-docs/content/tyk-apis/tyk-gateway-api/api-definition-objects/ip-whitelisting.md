@@ -23,3 +23,7 @@ weight: 5
 ```
 
 For more details on CIDR notation, see [this Wikipedia entry](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation).
+
+#### Tyk Operator
+
+Please consult the Tyk Operator supporting documentation for an example of how to [configure an IP allow list]({{< ref "product-stack/tyk-operator/advanced-configurations/client-authentication#ip-allowlist" >}}) with Tyk Operator.

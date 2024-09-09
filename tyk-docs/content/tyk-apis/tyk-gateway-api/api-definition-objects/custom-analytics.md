@@ -13,6 +13,8 @@ aliases:
 
 For example if you include `X-test-header` header in the `tag_headers` array, then, for each incoming request Tyk will add a `x-test-header-<header_value>` tag to the list of tags in the request analytic record.
 
+If you are using Tyk Operator please refer to [how to setup tag headers with Tyk Operator](#tyk-operator).
+
 ## When is it useful?
 
 Example use cases are:
@@ -70,3 +72,29 @@ curl http://tyk-gateway.localhost:8080/basic-open-api/get -H "X-Team-Name: devop
 {{< img src="/img/custom-analytics-tags/log-browser.png" alt="Log Browser" >}}
 
 ### We can now have Tyk track API requests which contain our business logic!!!
+
+
+## How to setup tag headers with Tyk Operator {#tyk-operator}
+
+To setup tag headers with Tyk Operator add the list of headers to tag to the `tag_headers` object within the `spec` field of the API definition resource. An example is given below:
+
+```yaml {linenos=true, linenostart=1, hl_lines=["10-12"]}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-tag-headers
+spec:
+  name: httpbin-tag-headers
+  use_keyless: true
+  protocol: http
+  active: true
+  tag_headers:
+  - Host
+  - User-Agent
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-tag-headers
+    strip_listen_path: true
+```
+
+In this example we can see that the `Host` and `User-Agent` headers exist within the `tag_headers` array. For each incoming request Tyk will add a `host-<header_value>` and `user-agent-<header_value>` tags to the list of tags in the request analytic record.
