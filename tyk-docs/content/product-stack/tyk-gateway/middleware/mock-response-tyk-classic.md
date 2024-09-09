@@ -13,8 +13,6 @@ The middleware is configured in the Tyk Classic API Definition. You can do this 
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas" >}}) page.
 
-If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
-
 ### Endpoint parsing
 
 When you define an endpoint in your API Definition (for example `GET /anything`), Tyk will also match for `GET /anything/somepath` and any other sub-path based on the `GET /anything` route.
@@ -25,7 +23,7 @@ If you add a `$` at the end of the `listen_path` (in our example `GET /anything$
 
 Thus, if you enable the middleware for `GET /anything$` then `GET /anything/somepath` will be proxied to the upstream and will not trigger the mock response.
 
-## Configuring the middleware in the Tyk Classic API Definition {#tyk-classic}
+## Configuring the middleware in the Tyk Classic API Definition
 
 To enable mock response, you must first add the endpoint to a list - one of [allow list]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}}), [block list]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware" >}}) or [ignore authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}). This will add a new object to the `extended_paths` section of your API definition - `white_list`, `black_list` or `ignored`. The mock response can then be configured within the `method_actions` element within the new object.
 
@@ -110,52 +108,3 @@ Use the *save* or *create* buttons to save the changes and activate the middlewa
 
 For the mock response to be enabled, the endpoint must also be in a list. We recommend adding the path to an [allow list]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#allowlist" >}}). If this isn't done, then the mock will not be saved when you save your API in the designer.
 {{< /note >}}
-
-## Configuring the middleware in Tyk Operator {#tyk-operator}
-
-The process of configuring a mock response is similar to that defined in section [configuring the middleware in Tyk Classic API definition](#tyk-classic).
-
-To configure a mock response, you must first add a mock response configuration object to the `extended_paths` section, e.g. one of allow list (`white_list`), block list (`black_list`) or ignore authentication (`ignore`). The mock response configuration object has the following properties:
-
-- path: the path of the endpoint, e.g `/foo`.
-- ignore_case: when set to true the path matching is case insensitive.
-- method_actions: a configuration object that allows the mock response to be configured for a given method, including the response body, response headers and status code. This object should also contain an `action` field with a value set to `reply`.
-
-In the example below we can see that a mock response is configured to ignore authentication (`ignore`) for the `GET /foo` endpoint. When a request is made to the endpoint then authentication will be ignored and a mock response is returned with status code `200` and a response body payload of `{"foo": "bar"}`. The middleware has been configured to be case sensitive, so calls to `GET /Foo` will not ignore authentication.
-
-```yaml {linenos=true, linenostart=1, hl_lines=["26-34"]}
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: httpbin
-spec:
-  name: httpbin
-  protocol: http
-  active: true
-  use_keyless: true
-  proxy: 
-    target_url: http://httpbin.org
-    listen_path: /httpbin
-    strip_listen_path: true
-  version_data:
-    default_version: Default
-    not_versioned: true
-    versions:
-      Default:
-        name: Default
-        use_extended_paths: true
-        paths:
-          black_list: []
-          ignored: []
-          white_list: []
-        extended_paths:
-            ignored:
-              - ignore_case: false
-                method_actions:
-                  GET:
-                    action: "reply"
-                    code: 200
-                    data: "{\"foo\": \"bar\"}"
-                    headers: {}
-                path: /foo
-```

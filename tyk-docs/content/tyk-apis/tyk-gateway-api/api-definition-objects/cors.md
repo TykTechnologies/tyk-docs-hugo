@@ -8,15 +8,9 @@ weight: 6
 ---
 
 
-It is possible to enable CORS for certain APIs so users can make browser-based requests. The `CORS` section is added to an API definition as listed in the examples below for Tyk Gateway and Tyk Operator.
+It is possible to enable CORS for certain APIs so users can make browser-based requests. The `CORS` section is added to an API definition as follows:
 
----
-
-## Examples
-
-{{< tabs_start >}}
-{{< tab_start "Gateway API Definition" >}}
-```json
+```.json
 "CORS": {
   "enable": true,
   "allowed_origins": [
@@ -31,41 +25,7 @@ It is possible to enable CORS for certain APIs so users can make browser-based r
   "debug": false
 }
 ```
-{{< tab_end >}}
-{{< tab_start "Tyk Operator API Definition" >}}
-```yaml {linenos=true, linenostart=1, hl_lines=["14-24"]}
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: httpbin-cors-sample
-spec:
-  name: httpbin-cors-sample
-  use_keyless: true
-  protocol: http
-  active: true
-  proxy:
-    target_url: http://httpbin.org
-    listen_path: /cors
-    strip_listen_path: true
-  CORS:
-    enable: true
-    allowed_origins:
-      - "http://foo.com"
-    allowed_methods: null
-    allowed_headers: null
-    exposed_headers: null
-    allow_credentials: false
-    max_age: 24
-    options_passthrough: false
-    debug: false
-```
-{{< tab_end >}}
-{{< tabs_end >}}
-
----
-
-## Configuration
-
+    
 The CORS middleware has the following options:
 
 * `CORS.allowed_origins`: A list of origin domains to allow access from. Wildcards are also supported, e.g. `http://*.foo.com`

@@ -42,25 +42,3 @@ Scroll down to the **Segment Tags** options:
 Set the tag name you want to apply, and click **Add**.
 
 When you save the API, the tags will become immediately active. If any Gateways are configured to only load tagged API Definitions then this configuration will only be loaded by the relevant Gateway.
-
-## Tag an API for a shard using Tyk Operator
-
-Add the tag names to the tags mapping field within an API Definition as shown in the example below:
-
-```yaml {linenos=table,hl_lines=["8-9"],linenostart=1}
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: httpbin
-spec:
-  name: httpbin
-  use_keyless: true
-  tags:
-    - edge
-  protocol: http
-  active: true
-  proxy:
-    target_url: http://httpbin.org
-    listen_path: /httpbin
-    strip_listen_path: true
-```

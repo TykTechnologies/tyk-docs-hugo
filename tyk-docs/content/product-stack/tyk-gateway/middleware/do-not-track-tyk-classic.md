@@ -11,9 +11,7 @@ When working with Tyk Classic APIs the middleware is configured in the Tyk Class
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-oas" >}}) page.
 
-If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
-
-## Configuring the middleware in the Tyk Classic API Definition {#tyk-classic}
+## Configuring the middleware in the Tyk Classic API Definition
 
 You can prevent tracking for all endpoints of an API by configuring the `do_not_track` field in the root of your API definition.
 - `true`: no transaction logs will be generated for requests to the API
@@ -57,69 +55,3 @@ From the **Endpoint Designer** add an endpoint that matches the path for which y
 #### Step 2: Save the API
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
-
-## Configuring the middleware in Tyk Operator {#tyk-operator}
-
-The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic).
-
-It is possible to prevent tracking for all endpoints of an API by configuring the `do_not_track` field in the root of your API definition as follows:
-
-- `true`: no transaction logs will be generated for requests to the API
-- `false`: transaction logs will be generated for requests to the API
-
-```yaml {linenos=true, linenostart=1, hl_lines=["10"]}
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: httpbin-do-not-track
-spec:
-  name: httpbin-do-not-track 
-  use_keyless: true
-  protocol: http
-  active: true
-  do_not_track: true
-  proxy:
-    target_url: http://example.com
-    listen_path: /example
-    strip_listen_path: true
-```
-
-If you want to disable tracking only for selected endpoints, then the process is similar to that defined in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic), i.e. you must add a new `do_not_track_endpoints` list to the extended_paths section of your API definition.
-This should contain a list of objects representing each endpoint `path` and `method` that should have tracking disabled:
-
-```yaml {linenos=true, linenostart=1, hl_lines=["31-33"]}
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: httpbin-endpoint-tracking
-spec:
-  name: httpbin - Endpoint Track
-  use_keyless: true
-  protocol: http
-  active: true
-  do_not_track: false
-  proxy:
-    target_url: http://httpbin.org/
-    listen_path: /httpbin
-    strip_listen_path: true
-  version_data:
-    default_version: Default
-    not_versioned: true
-    versions:
-      Default:
-        name: Default
-        use_extended_paths: true
-        paths:
-          black_list: []
-          ignored: []
-          white_list: []
-        extended_paths:
-          track_endpoints:
-            - method: GET
-              path: "/get"
-          do_not_track_endpoints:
-            - method: GET
-              path: "/headers"
-```
-
-In the example above we can see that the `do_not_track_endpoints` list is configured so that requests to `GET /headers` will have tracking disabled.

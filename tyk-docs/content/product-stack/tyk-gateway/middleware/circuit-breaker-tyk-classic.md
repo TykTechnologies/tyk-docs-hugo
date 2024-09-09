@@ -11,9 +11,7 @@ When working with Tyk Classic APIs the circuit breaker is configured in the Tyk 
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/circuit-breaker-tyk-oas" >}}) page.
 
-If you're using Tyk Operator then check out the [confguring the Circuit Breaker in Tyk Operator](#tyk-operator) section below.
-
-## Configuring the Circuit Breaker in the Tyk Classic API Definition {#tyk-classic}
+## Configuring the Circuit Breaker in the Tyk Classic API Definition
 
 To configure the circuit breaker you must add a new `circuit_breakers` object to the `extended_paths` section of your API definition, with the following configuration:
 - `path`: the endpoint path
@@ -71,49 +69,3 @@ Use the *save* or *create* buttons to save the changes and activate the middlewa
 The Dashboard supports the separate `BreakerTripped` and `BreakerReset` events, but not the combined `BreakerTriggered` [event type]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}). You should use **API Designer > Advanced Options** to add a Webhook plugin to your endpoint for each event.
 
 {{< img src="/img/dashboard/system-management/webhook-breaker.png" alt="Webhook events" >}}
-
-## Confguring the Circuit Breaker in Tyk Operator {#tyk-operator}
-
-The example API Definition below configures an API to listen on path `/httpbin-timeout-breaker` and forwards requests upstream to http://httpbin.org. A hard timeout value of 2 seconds is configured for path `/delay/{delay_seconds}`. This will return a `504 Gateway Timeout` response to the client if the upstream response is not received before expiry of the timer.
-
-```yaml {linenos=true, linenostart=1, hl_lines=["30-35"]}
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: httpbin-timeout-breaker
-spec:
-  name: httpbin-timeout-breaker
-  use_keyless: true
-  protocol: http
-  active: true
-  proxy:
-    target_url: http://httpbin.org
-    listen_path: /httpbin-timeout-breaker
-    strip_listen_path: true
-  version_data:
-    default_version: Default
-    not_versioned: true
-    versions:
-      Default:
-        name: Default
-        use_extended_paths: true
-        paths:
-          black_list: []
-          ignored: []
-          white_list: []
-        extended_paths:
-          hard_timeouts:
-            - method: GET
-              path: /delay/{delay_seconds}
-              timeout: 2
-          circuit_breakers:
-            - method: GET
-              path: /status/500
-              return_to_service_after: 10
-              samples: 4
-              threshold_percent: "0.5"
-```
-
-A circuit breaker has been configured to monitor `HTTP GET` requests to the `/status/500` endpoint. It will configure a sampling window (samples) of 4 requests and calculate the ratio of failed requests (those returning HTTP 500 or above) within that window. If the ratio of failed requests exceeds 50% (threshold_percent = 0.5) then the breaker will be tripped. After it has tripped, the circuit breaker will remain open for 10 seconds (return_to_service_after). The circuit breaker will operate using the default half-open mode so when open, Tyk will periodically poll the upstream service to test if it has become available again.
-
-When the breaker has tripped, it will return HTTP 503 Service temporarily unavailable in response to any calls to GET /status/500.

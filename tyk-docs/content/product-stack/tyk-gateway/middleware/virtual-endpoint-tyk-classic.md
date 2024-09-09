@@ -16,9 +16,7 @@ This middleware is configured in the Tyk Classic API Definition. You can do this
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-oas" >}}) page.
 
-If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
-
-## Configuring the middleware in the Tyk Classic API Definition {#tyk-classic}
+## Configuring the middleware in the Tyk Classic API Definition
 
 If you want to use Virtual Endpoints, you must [enable Tyk's JavaScript Virtual Machine]({{< ref "tyk-oss-gateway/configuration#enable_jsvm" >}}) by setting `enable_jsvm` to `true` in your `tyk.conf` file.
 
@@ -128,97 +126,3 @@ Use the *save* or *create* buttons to save the changes and activate the Virtual 
 
 The Tyk Classic API Designer does not provide options to configure `use_session` or `proxy_on_error`, but you can do this from the Raw Definition editor.
 {{< /note >}}
-
-## Configuring the middleware in Tyk Operator {#tyk-operator}
-
-The process for configuring a virtual endpoint using Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic)
-
-The example API Definition below configures an API to listen on path `/httpbin` and forwards requests upstream to `http://httpbin.org`. The Virtual Endpoint middleware has been configured for requests to the `GET /virtual` endpoint. For any call made to this endpoint, Tyk will invoke the function `myVirtualHandler` that is base64 encoded in the `function_source_uri` field. This virtual endpoint does not require access to the session data and will not proxy the request on to the upstream if there is an error when processing the `myVirtualHandler` function.
-
-```yaml {linenos=true, linenostart=1, hl_lines=["23-35"]}
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: test-config-data-test
-spec:
-  name: test-config-data-test
-  protocol: http
-  proxy:
-    listen_path: /httpbin/
-    target_url: http://httpbin.org
-    strip_listen_path: true
-  active: true
-  use_keyless: true
-  enable_context_vars: true
-  version_data:
-    default_version: Default
-    not_versioned: false
-    versions:
-      Default:
-        name: Default
-        use_extended_paths: true
-        extended_paths:
-          virtual:
-            - function_source_type: blob
-              response_function_name: myVirtualHandler
-              function_source_uri: "ZnVuY3Rpb24gbXlWaXJ0dWFsSGFuZGxlciAocmVxdWVzdCwgc2Vzc2lvbiwgY29uZmlnKSB7ICAgICAgCiAgdmFyIHJlc3BvbnNlT2JqZWN0ID0gewogICAgQm9keTogIlRISVMgSVMgQSAgVklSVFVBTCBSRVNQT05TRSIsCiAgICBIZWFkZXJzOiB7CiAgICAgICJmb28taGVhZGVyIjogImJhciIsCiAgICAgICJtYXAtaGVhZGVyIjogSlNPTi5zdHJpbmdpZnkoY29uZmlnLmNvbmZpZ19kYXRhLm1hcCksCiAgICAgICJzdHJpbmctaGVhZGVyIjogY29uZmlnLmNvbmZpZ19kYXRhLnN0cmluZywKICAgICAgIm51bS1oZWFkZXIiOiBKU09OLnN0cmluZ2lmeShjb25maWcuY29uZmlnX2RhdGEubnVtKQogICAgfSwKICAgICAgQ29kZTogMjAwCiAgfQogIHJldHVybiBUeWtKc1Jlc3BvbnNlKHJlc3BvbnNlT2JqZWN0LCBzZXNzaW9uLm1ldGFfZGF0YSkKfQ=="
-              path: /virtual
-              method: GET
-              use_session: false
-              proxy_on_error: false
-  config_data:
-    string: "string"
-    map:
-      key: 3
-    num: 4
-```
-
-Decoding the value in `function_source_uri` we can see that the JavaScript code is:
-
-```javascript
-function myVirtualHandler (request, session, config) {      
-  var responseObject = {
-    Body: "THIS IS A  VIRTUAL RESPONSE",
-    Headers: {
-      "foo-header": "bar",
-      "map-header": JSON.stringify(config.config_data.map),
-      "string-header": config.config_data.string,
-      "num-header": JSON.stringify(config.config_data.num)
-    },
-    Code: 200
-  }
-  return TykJsResponse(responseObject, session.meta_data)
-}
-```
-
-This function will terminate the request without proxying it to the upstream, returning HTTP 200 as follows:
-
-```bash
-HTTP/1.1 200 OK
-Date: Wed, 14 Aug 2024 15:37:46 GMT
-Foo-Header: bar
-Map-Header: {"key":3}
-Num-Header: 4
-Server: tyk
-String-Header: string
-Content-Length: 27
-Content-Type: text/plain; charset=utf-8
- 
-THIS IS A VIRTUAL RESPONSE
-```
-
-If, however, we introduce an error to the JavaScript, such that Tyk fails to process the function, we will receive an HTTP 500 Internal Server Error as follows:
-
-```bash
-HTTP/1.1 500 Internal Server Error
-Date: Wed, 14 Aug 2024 15:37:46 GMT
-Server: tyk
-Content-Type: application/json
-Content-Length: 99
- 
-{
-"error": "Error during virtual endpoint execution. Contact Administrator for more details."
-}
-```
-
-If we set `proxy_on_error` to `true` and keep the error in the Javascript, the request will be forwarded to the upstream and Tyk will return the response received from that service.

@@ -1,7 +1,10 @@
 ---
 date: 2017-03-24T16:39:31Z
-title: Secure an API with Auth token
+title: Access an API with Tyk Operator
 weight: 3
+menu:
+    main:
+        parent: "Getting started with Tyk Operator"
 ---
 
 ### Tutorial: Update an API to require a key
@@ -78,7 +81,7 @@ Content-Length: 46
 
  
 
-Tyk Operator supported authentication types are listed in the [API Definition features]({{<ref "product-stack/tyk-operator/reference/api-definition">}}) page.
+Tyk Operator supported authentication types are listed [here](https://github.com/TykTechnologies/tyk-operator/blob/master/docs/api_definitions.md#client-to-gateway-authentication).
 
 {{< /note >}}
 
@@ -100,7 +103,7 @@ Metadata:
   ...
 Spec:
   ...
-  Name: httpbin
+  api_id:  ZGVmYXVsdC9odHRwYmlu
   ...
 Status:
   api_id:  ZGVmYXVsdC9odHRwYmlu

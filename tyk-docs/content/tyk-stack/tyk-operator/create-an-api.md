@@ -8,7 +8,7 @@ menu:
 ---
 
 ### Tutorial: Create an API with Tyk Operator
-Creating an API takes the same approach whether you are using Tyk Open Source or Self Managed. First, specify the details of your API using the [ApiDefinition CRD]({{<ref "product-stack/tyk-operator/reference/api-definition">}}), then deploy it to create the corresponding Kubernetes resource. Tyk Operator will take control of the CRD and create the actual API in the Tyk data plane.
+Creating an API takes the same approach whether you are using Tyk Open Source or Self Managed. First, specify the details of your API using the [ApiDefinition CRD](https://github.com/TykTechnologies/tyk-operator/blob/master/docs/api_definitions.md), then deploy it to create corresponding Kubernetes resource. Tyk Operator will take control of the CRD and create the actual API in the Tyk data plane.
 
 #### Step 1: Create an ApiDefinition resource in YAML format
 Create a file called `httpbin.yaml`, then add the following:
@@ -88,7 +88,7 @@ $ curl -i localhost:8080/httpbin/get
 
 We can walk you through the ApiDefinition that we created. We have an ApiDefinition called `httpbin`, as specified in `spec.name` field, which listens to path `/httpbin` and proxies requests to [http://httpbin.org](http://httpbin.org), as specified under `spec.proxy` field. Now, any requests coming to the `/httpbin` endpoint will be proxied to the target URL that we defined in `spec.proxy.target_url`, which is [http://httpbin.org](http://httpbin.org) in our example.
 
-You can visit the [ApiDefinition CRD]({{<ref "product-stack/tyk-operator/reference/api-definition">}}) page to see all the latest API Definitions fields and features we support.
+You can go to the [API Definitions](https://github.com/TykTechnologies/tyk-operator/blob/master/docs/api_definitions.md) page on GitHub to see all the latest API Definitions fields and features we support.
 
 ### Configure Kubernetes service as an upstream target
 

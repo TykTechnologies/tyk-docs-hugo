@@ -15,9 +15,7 @@ This middleware is configured in the Tyk Classic API Definition. You can do this
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/validate-request-tyk-oas" >}}) page.
 
-If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
-
-## Configuring the middleware in the Tyk Classic API Definition {#tyk-classic}
+## Configuring the middleware in the Tyk Classic API Definition
 
 To enable the middleware you must add a new `validate_json` object to the `extended_paths` section of your API definition.
 
@@ -85,56 +83,3 @@ Once you have selected the request validation middleware for the endpoint, you c
 #### Step 3: Save the API
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
-
-## Configuring the middleware in Tyk Operator {#tyk-operator}
-
-The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic). To configure the request validation middleware you must add a new `validate_json` object to the `extended_paths` section of your API definition, for example:
-
-The example API Definition below configures an API to listen on path `/httpbin` and forwards requests upstream to http://httpbin.org.
-
-In this example, the Validate JSON middleware has been configured for requests to the `GET /get` endpoint. For any call made to this endpoint, Tyk will compare the request body with the schema and, if it does not match, the request will be rejected with the error code `HTTP 422 Unprocessable Entity`.
-
-```yaml  {linenos=true, linenostart=1, hl_lines=["26-41"]}
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: httpbin-json-schema-validation
-spec:
-  name: httpbin-json-schema-validation
-  use_keyless: true
-  protocol: http
-  active: true
-  proxy:
-    target_url: http://httpbin.org
-    listen_path: /httpbin
-    strip_listen_path: true
-  version_data:
-    default_version: Default
-    not_versioned: true
-    versions:
-      Default:
-        name: Default
-        use_extended_paths: true
-        paths:
-          black_list: []
-          ignored: []
-          white_list: []
-        extended_paths:
-          validate_json:
-            - error_response_code: 422
-              disabled: false
-              path: /get
-              method: GET
-              schema:
-                properties:
-                  userName:
-                    type: string
-                    minLength: 2
-                  age:
-                    type: integer
-                    minimum: 1
-                required:
-                  - userName
-                type: object
-```
-

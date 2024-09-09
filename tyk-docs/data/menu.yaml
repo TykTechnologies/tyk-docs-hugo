@@ -3883,46 +3883,18 @@ menu:
           category: Page
           show: True
         - title: "Create an API"
-          category: Directory
-          show: True
-          menu:
-            - title: "Create an API with Tyk Operator"
-              path: /tyk-stack/tyk-operator/create-an-api
-              category: Page
-              show: True
-            - title: "HTTP Proxy example"
-              path: /product-stack/tyk-operator/getting-started/quick-start-http
-              category: Page
-              show: True
-            - title: "TCP Proxy example"
-              path: /product-stack/tyk-operator/getting-started/quick-start-tcp
-              category: Page
-              show: True
-            - title: "GraphQL Proxy example"
-              path: /product-stack/tyk-operator/getting-started/quick-start-graphql
-              category: Page
-              show: True
-            - title: "UDG example"
-              path: /product-stack/tyk-operator/getting-started/quick-start-udg
-              category: Page
-              show: True
-        - title: "Secure an API"
-          category: Directory
-          show: True
-          menu:
-          - title: "Secure an API with Auth token"
-            path: /tyk-stack/tyk-operator/access-an-api
-            category: Page
-            show: True
-          - title: "Authentication types"
-            path: /product-stack/tyk-operator/advanced-configurations/client-authentication
-            category: Page
-            show: True
-        - title: "Protect an API with Policy"
+          path: /tyk-stack/tyk-operator/create-an-api
           category: Page
           show: True
+        - title: "Access an API"
+          path: /tyk-stack/tyk-operator/access-an-api
+          category: Page
+          show: True
+        - title: "Secure an API"
           path: /tyk-stack/tyk-operator/secure-an-api
-        - title: "Publish an API to Dev Portal"
+          category: Page
+          show: True
+        - title: "Publish an API"
           path: /tyk-stack/tyk-operator/publish-an-api
           category: Page
           show: True
@@ -3930,36 +3902,20 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Management of APIs"
-          path: /product-stack/tyk-operator/advanced-configurations/management-of-api
-          category: Page
-          show: True
-        - title: "Manage existing APIs and policies"
+        - title: "Migration to Tyk Operator"
           path: /tyk-stack/tyk-operator/migration
           category: Page
           show: True
-        - title: "Kubernetes Ingress Controller"
+        - title: "Configure Tyk Operator as Ingress Controller"
           path: /product-stack/tyk-operator/tyk-ingress-controller
           category: Page
           show: True
-        - title: "Manage multiple organisations"
+        - title: "Manage Multiple Organisations With OperatorContext"
           path: /product-stack/tyk-operator/getting-started/tyk-operator-multiple-organisations
           category: Page
           show: True
-        - title: "Manage API Ownership"
+        - title: "Manage API Ownership with OperatorContext"
           path: /product-stack/tyk-operator/getting-started/tyk-operator-api-ownership
-          category: Page
-          show: True
-        - title: "GraphQL Federation"
-          path: /product-stack/tyk-operator/advanced-configurations/graphql-federation
-          category: Page
-          show: True
-        - title: "Custom Plugins"
-          path: /product-stack/tyk-operator/advanced-configurations/custom-plugins
-          category: Page
-          show: True
-        - title: "Looping"
-          path: /product-stack/tyk-operator/advanced-configurations/internal-looping
           category: Page
           show: True
       - title: "Troubleshooting"
@@ -3978,14 +3934,6 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "API Definition features"
-          path: /product-stack/tyk-operator/reference/api-definition
-          category: Page
-          show: True
-        - title: "Security Policy features"
-          path: /product-stack/tyk-operator/reference/security-policy
-          category: Page
-          show: True
         - title: "Version compatibility"
           path: /product-stack/tyk-operator/reference/version-compatibility
           category: Page

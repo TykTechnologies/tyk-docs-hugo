@@ -54,7 +54,3 @@ To enable this mode you must set the `base_identity_provided_by` field in your A
 The provider set here will then be the one that provides the session object that determines rate limits, ACL rules and quotas.
 
 Tyk will chain the auth mechanisms as they appear in the code and will default to auth token if none are specified. You can explicitly set auth token support by setting `use_standard_auth` to true.
-
-## Enable Multi (Chained) Authentication with Tyk Operator
-
-Please consult the Tyk Operator supporting documentation for an example of how to enable [multi chained authentication]({{< ref "product-stack/tyk-operator/advanced-configurations/client-authentication#multiple-chained-auth" >}}) with Tyk Operator.
