@@ -148,7 +148,7 @@ Access lists for API and versions:
 
 Path-based permissions for API:
 
-- `allowed_urls`: Restrict access on a per-path and per method basis to only allow access to specific portions of the API
+- `allowed_urls`: Restrict access per path and per method to restrict access to specific portions of the API
 
 Usage Quota fields:
 
