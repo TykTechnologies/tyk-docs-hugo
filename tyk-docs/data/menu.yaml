@@ -4090,16 +4090,8 @@ menu:
             path: /product-stack/tyk-streaming/configuration/inputs/nsq
             category: Page
             show: True
-          - title: "Read Until"
-            path: /product-stack/tyk-streaming/configuration/inputs/read-until
-            category: Page
-            show: True 
           - title: "Redis PubSub"
             path: /product-stack/tyk-streaming/configuration/inputs/redis-pubsub
-            category: Page
-            show: True
-          - title: "Sequence"
-            path: /product-stack/tyk-streaming/configuration/inputs/sequence
             category: Page
             show: True
         - title: "Outputs"
