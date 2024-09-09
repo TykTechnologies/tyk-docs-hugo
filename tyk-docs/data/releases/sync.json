@@ -1,8 +1,13 @@
 {
     "home": "tyk-sync",
     "licensed": false,
-    "latest": "1.5",
+    "latest": "1.6",
     "releaseNotesPath": "product-stack/tyk-sync/release-notes/sync-1.5",
+    "1.6": {
+      "date": "99/09/2024",
+      "tag": "https://github.com/TykTechnologies/tyk-sync/tags",
+      "docker": "https://hub.docker.com/r/tykio/tyk-sync/tags?page=1&name=v1.6" 
+    },
     "1.5": {
       "date": "04/07/2024",
       "tag": "https://github.com/TykTechnologies/tyk-sync/tags",
