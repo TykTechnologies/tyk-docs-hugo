@@ -234,7 +234,7 @@ We can see in the example below that one version is configured for the API withi
 - the default version (`default_version`) is `v1`
 - the `definition` configuration block contains a `location` field set to `header` and has an accompanying `key` field set to `x-api-version`. Subsequently, the version identifier for the API will be retrieved from the `x-api-version` header. The comments provide examples for how to configure the version identifier to be retrieved from URL or a named URL parameter
 - an allow list, black list and ignore authentication middleware have been configured for version `v1`
-- an alternative upstream URL (`override_target`) is configured for `v1` to send requests to `http://test.org`.
+- an alternative upstream URL (`override_target`) is configured for `v1` to send requests to `http://test.org`
 
 ```yaml {linenos=table,hl_lines=["14-17", "25-27", "29-82"], linenostart=1}
 apiVersion: tyk.tyk.io/v1alpha1
