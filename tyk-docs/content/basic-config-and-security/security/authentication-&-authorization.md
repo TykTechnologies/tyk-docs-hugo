@@ -1,14 +1,12 @@
 ---
 title: Authentication & Authorization
 date: 2017-03-23T15:23:32Z
-description: How you can apply security options to lock down your APIs with Tyk
-- Authentication
-- Authorization
+description: Learn how to apply security options to lock down your APIs with Tyk. Here you will find everything there is to know about Authentication and Authorization in Tyk.
 tags: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Secure APIs"]
 aliases:
-- /security/your-apis/
-- /basic-config-and-security/security/authentication-authorization/
-- /basic-config-and-security/security/authentication-&-authorization/
+  - /security/your-apis/
+  - /basic-config-and-security/security/authentication-authorization/
+  - /basic-config-and-security/security/authentication-&-authorization/
 ---
 
 # Authentication and Authorization in Tyk
