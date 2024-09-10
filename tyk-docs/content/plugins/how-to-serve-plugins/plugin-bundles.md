@@ -87,11 +87,7 @@ The `custom_middleware` block follows the standard syntax we use for Tyk plugins
 
 ### Creating plugin bundles
 
-<<<<<<< HEAD
-As a suggestion, you may organise this using a Git commit reference or version number, e.g. `bundle-e5e6044.zip`, `bundle-48714c8.zip`, `bundle-1.0.0.zip`, `bundle-1.0.1.zip`, etc.
-=======
 Tyk provides the Bundle CLI tool as part of the `tyk` binary. For further details please visit the [Bundle CLI tool]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/bundles/bundle-cli" >}}) page.
->>>>>>> f50594ff3... [DX 815] Improve Plugins Overview (#4918)
 
 ---
 
