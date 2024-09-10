@@ -50,14 +50,14 @@ For example:
 }
 ```
 
-In this example the endpoint caching middleware has been configured to cache all safe requests to two endpoints (`/widget` and `/fish`) with a cache refresh period of 60 seconds.
+In this example, the endpoint caching middleware has been configured to cache all safe requests to two endpoints (`/widget` and `/fish`) with a cache refresh period of 60 seconds.
 
 #### Advanced endpoint cache
 
 For ultimate control over what Tyk caches, you should use the advanced configuration options for the per-endpoint cache. You can separately configure, for each HTTP method for an endpoint:
 - an individual cache refresh (timeout)
 - a list of HTTP response codes that should be cached
-- a pattern match to cache only requests containing specific data in the [request body]({{< ref " basic-config-and-security/reduce-latency/caching/advanced-cache#selective-caching-by-body-value" >}})
+- a pattern match to cache only requests containing specific data in the [request body]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache#selective-caching-by-body-value" >}})
 
 To enable the advanced middleware you must add a new `advance_cache_config` object to the `extended_paths` section of your API definition.
 
@@ -67,7 +67,7 @@ The `advance_cache_config` object has the following configuration:
 - `path`: the endpoint path
 - `method`: the endpoint method
 - `timeout`: set to the refresh period for the cache (in seconds)
-- `cache_response_codes`: HTTP responses codes to be cached (for example `200`)
+- `cache_response_codes`: HTTP response codes to be cached (for example `200`)
 - `cache_key_regex`: pattern match for selective caching by body value
 
 For example:
@@ -176,3 +176,106 @@ Body value match or [request selective]({{< ref "basic-config-and-security/reduc
 ##### Step 4: Save the API
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
+<<<<<<< HEAD
+=======
+
+## Configuring the middleware in the Tyk Operator {#tyk-operator}
+
+You can use Tyk Operator to configure the endpoint caching middleware for your Tyk Classic API by following these steps.
+
+### Simple endpoint cache
+
+Configuring simple endpoint caching in Tyk Operator is similar to the process for a [Tyk Classic API Definition](#tyk-classic). A list of endpoints for which you wish to cache safe requests should be configured within the `cache` list in the `extended_paths` section.
+
+In the API-level `cache_options` object, you must enable caching by setting `enable_cache` to true and configure the cache refresh period by setting a value for the `cache_timeout` in seconds. To allow selective caching per endpoint you should also set `cache_all_safe_requests`to `false`.
+
+```yaml {linenos=true, linenostart=1, hl_lines=["26-35"]}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-cache
+spec:
+  name: httpbin-cache
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-cache
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        paths:
+          black_list: []
+          ignored: []
+          white_list: []
+        extended_paths:
+          cache:
+            - /get
+            - /anything
+  cache_options:
+    cache_all_safe_requests: false
+#    cache_by_headers: []
+    cache_timeout: 10
+    cache_response_codes:
+      - 400
+    enable_cache: true
+```
+
+### Advanced endpoint cache
+
+Advanced caching with Tyk Operator is a similar process to that for configuring the [advanced caching middleware in the Tyk Classic API Definition](#tyk-classic-advanced-caching).
+
+To enable the advanced middleware you must add a new `advance_cache_config` object to the `extended_paths` section of your API definition.
+
+This allows you to configure caching per endpoint. For each endpoint, it is possible to specify the endpoint path, method, list of response codes to cache, cache timeout and a cache key regular expression. The cache key regular expression represents a pattern match to cache only requests containing specific data in the [request body]({{< ref " basic-config-and-security/reduce-latency/caching/advanced-cache#selective-caching-by-body-value" >}})
+
+For example:
+
+```yaml {linenos=true, linenostart=1, hl_lines=["26-35"]}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-advance-cache
+spec:
+  name: httpbin-advance-cache
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-advance-cache
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        paths:
+          black_list: []
+          ignored: []
+          white_list: []
+        extended_paths:
+          advance_cache_config:
+          - path: /anything 
+            method: GET
+            cache_key_regex: ""
+            cache_response_codes: [200]
+  cache_options:
+    cache_timeout: 30
+    enable_cache: true
+```
+
+In this example the endpoint caching middleware has been configured to cache requests for the `/anything` endpoint as follows:
+
+| endpoint | HTTP response codes to cache | cache refresh timeout | body value regex |
+|----------|------------------------------|-----------------------|------------------|
+| `GET /anything` | 200 | 30 seconds (taken from `cache_options`) | none |
+>>>>>>> ef479521d... [DX-1680] Fix urls (#5388)
