@@ -48,7 +48,7 @@ From the **Authentication** section:
 
 You have the following options:
 
-- **Authentication mode**: This is the security method to use with your API. First, you can set it to `Open(Keyless)`, but that option is not advised for production APIs. See [Authentication and Authorization]({{< ref "basic-config-and-security/security/authentication-&-authorization" >}}) for more details on securing your API.
+- **Authentication mode**: This is the security method to use with your API. First, you can set it to `Open(Keyless)`, but that option is not advised for production APIs. See [Authentication and Authorization]({{< ref "basic-config-and-security/security/authentication-authorization" >}}) for more details on securing your API.
 - **Strip Authorization Data**: Select this option to strip any authorization data from your API requests.
 - **Auth Key Header Name**: The header name that will hold the token on inbound requests. The default for this is `Authorization`.
 - **Allow Query Parameter As Well As Header**: Set this option to enable checking the query parameter as well as the header for an auth token. **This is a setting that might be important if your GQL includes subscription operations**.

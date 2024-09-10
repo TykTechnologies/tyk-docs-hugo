@@ -743,7 +743,7 @@ menu:
         show: True
       - title: "Authentication and authorization"
         category: Page
-        path: /basic-config-and-security/security/authentication-authorization
+        path: /basic-config-and-security/security/authentication-&-authorization
         show: True
       - title: "Manage APIs"
         category: Directory

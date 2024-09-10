@@ -1,5 +1,5 @@
 ---
-title: Authentication & Authorization
+title: Authentication and Authorization
 date: 2017-03-23T15:23:32Z
 description: Learn how to apply security options to lock down your APIs with Tyk. Here you will find everything there is to know about Authentication and Authorization in Tyk.
 tags: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Secure APIs"]
@@ -7,11 +7,13 @@ aliases:
   - /security/your-apis/
   - /basic-config-and-security/security/authentication-authorization/
   - /basic-config-and-security/security/authentication-&-authorization/
+  - /basic-config-and-security/security/authentication--authorization/
 ---
 
-# Authentication and Authorization in Tyk
 
 Tyk provides a robust set of authentication and authorization mechanisms, ensuring your APIs are secure and accessible only to authorized users and applications. This page outlines the industry-standard methods Tyk supports, giving you the flexibility to choose the best fit for your needs.
+
+This guide is your comprehensive reference for Tyk's authentication and authorization methods. Use Ctrl+F or the sidebar to quickly find what you need. For example, search "JWT" for JSON Web Token details or "mTLS" to learn about mutual TLS implementation. Navigate effortlessly through this resource to secure your APIs effectively with Tyk.
 
 ## Secure Your APIs
 

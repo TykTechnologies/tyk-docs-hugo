@@ -349,7 +349,7 @@ For now, the only authentication mechanisms enabled with OAS API Definition conf
 - JSON Web Token (JWT)
 - Oauth.
 
-If you’re interested in protecting your APIs using a different mechanism such as HMAC or OpenID Connect, see [Authentication and Authorization]({{< ref "/content/basic-config-and-security/security/authentication-&-authorization.md" >}}) for more details.
+If you’re interested in protecting your APIs using a different mechanism such as HMAC or OpenID Connect, see [Authentication and Authorization]({{< ref "/content/basic-config-and-security/security/authentication-authorization.md" >}}) for more details.
 
 ### Automatically protecting OAS API Definition APIs
 
