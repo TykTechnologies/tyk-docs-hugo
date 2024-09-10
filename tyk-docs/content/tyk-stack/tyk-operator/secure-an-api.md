@@ -117,6 +117,10 @@ spec:
       namespace: default
       versions:
         - Default               # Mandatory, Default is created automatically
+      allowed_urls:             # Path-based permissions
+        - url: /get
+          methods:
+            - GET
   quota_max: 10
   quota_renewal_rate: 60
   rate: 5
@@ -141,6 +145,10 @@ Required fields in the policy:
 Access lists for API and versions:
 
 - `access_right_array`: The list of APIs security policy has access to.
+
+Path-based permissions for API:
+
+- `allowed_urls`: Restrict access per path and per method to specific portions of the API
 
 Usage Quota fields:
 
