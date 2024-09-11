@@ -8,7 +8,7 @@ menu:
     parent: "OAuth 2.0"
 weight: 2
 aliases:
-  - /basic-config-and-security/security/authentication-&-authorization/oauth2-0/refresh-token-grant/
+  - /basic-config-and-security/security/authentication-authorization/oauth2-0/refresh-token-grant/
   - /basic-config-and-security/security/authentication-&-authorization/oauth2-0/refresh-token-grant
 ---
 
