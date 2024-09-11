@@ -17,7 +17,7 @@ menu:
     - title: "Using Tyk Dashboard"
       path: /using-tyk-dashboard
       Category: Page
-      show: True
+      show: False
     - title: "Deployment and Operations"
       path: /apim
       category: Directory
