@@ -1,13 +1,13 @@
 ---
-description: How to decide on which Tyk deployment option is best for you
-linkTitle: API Lifecycle Automation
+description: Tyk Tools that help with automating deployment and API Management operations
+linkTitle: Automation Tools
 tags:
 - Tyk API Management
 - Open Source
 - Self-Managed
 - Tyk Cloud
 - API Gateway
-title: Lifecycle Automation
+title: Automation Tools
 date: 2020-06-24
 ---
 
