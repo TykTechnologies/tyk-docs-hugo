@@ -743,7 +743,11 @@ menu:
         show: True
       - title: "Authentication and authorization"
         category: Page
-        path: /basic-config-and-security/security/authentication--authorization
+        path: /api-management/authentication-authorization
+        show: True
+      - title: "Automation Tools"
+        category: Page
+        path: api-management/automation-tools
         show: True
       - title: "Manage APIs"
         category: Directory
@@ -3832,22 +3836,10 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Overview"
-          path: /tyk-operator
-          category: Page
-          show: True
         - title: "Key Concepts"
           category: Directory
           show: True
           menu:
-          # - title: "Overview"
-          #   path: /product-stack/tyk-operator/key-concepts/key-concepts
-          #   category: Page
-          #   show: True
-          - title: "Custom Resources"
-            path: /product-stack/tyk-operator/key-concepts/custom-resources
-            category: Page
-            show: True
           - title: "Operator Reconciliation"
             path: /tyk-stack/tyk-operator/tyk-operator-reconciliation
             category: Page
@@ -3858,30 +3850,6 @@ menu:
             show: True
           - title: "Operator Context"
             path: /product-stack/tyk-operator/key-concepts/operator-context
-            category: Page
-            show: True
-        - title: "Getting Started"
-          category: Directory
-          show: True
-          menu:
-          - title: "Installing Tyk Operator"
-            path: /tyk-stack/tyk-operator/installing-tyk-operator
-            category: Page
-            show: True
-          - title: "Create an API"
-            path: /tyk-stack/tyk-operator/create-an-api
-            category: Page
-            show: True
-          - title: "Access an API"
-            path: /tyk-stack/tyk-operator/access-an-api
-            category: Page
-            show: True
-          - title: "Secure an API"
-            path: /tyk-stack/tyk-operator/secure-an-api
-            category: Page
-            show: True
-          - title: "Publish an API"
-            path: /tyk-stack/tyk-operator/publish-an-api
             category: Page
             show: True
         - title: "Advanced configurations"
@@ -3902,18 +3870,6 @@ menu:
             show: True
           - title: "Manage API Ownership with OperatorContext"
             path: /product-stack/tyk-operator/getting-started/tyk-operator-api-ownership
-            category: Page
-            show: True
-        - title: "Troubleshooting"
-          category: Directory
-          show: True
-          menu:
-          - title: "API changes not applied"
-            path: /product-stack/tyk-operator/troubleshooting/tyk-operator-changes-not-applied
-            category: Page
-            show: True
-          - title: "Understanding reconciliation status"
-            path: /product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting
             category: Page
             show: True
         - title: "Reference"
@@ -4352,13 +4308,6 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Overview"
-          path: /product-stack/tyk-sync/overview
-          category: Page
-          show: True
-        - title: "Installing and running Tyk Sync"
-          path: /product-stack/tyk-sync/installing-tyk-sync
-          category: Page
           show: True
         - title: "Tutorials"
           category: Directory
@@ -4374,30 +4323,6 @@ menu:
             show: True
           - title: "Backing up API configurations with Github Actions"
             path: /product-stack/tyk-sync/tutorials/tutorial-backup-api-configurations
-            category: Page
-            show: True
-        - title: "Commands"
-          category: Directory
-          show: True
-          menu:
-          - title: "Dump"
-            path: /product-stack/tyk-sync/commands/sync-dump
-            category: Page
-            show: True
-          - title: "Examples"
-            path: /product-stack/tyk-sync/commands/sync-examples
-            category: Page
-            show: True
-          - title: "Publish"
-            path: /product-stack/tyk-sync/commands/sync-publish
-            category: Page
-            show: True
-          - title: "Sync"
-            path: /product-stack/tyk-sync/commands/sync-sync
-            category: Page
-            show: True
-          - title: "Update"
-            path: /product-stack/tyk-sync/commands/sync-update
             category: Page
             show: True
         - title: "Release notes"
