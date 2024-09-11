@@ -32,7 +32,7 @@ Docker images are now based on [distroless](https://github.com/GoogleContainerTo
 | 5.5.1 | MDCB v2.7     | MDCB v2.4.2 |
 |         | Operator v0.18 | Operator v0.17 |
 |         | Sync v1.5   | Sync v1.4.3 |
-|         | Helm Chart To Be Published (TBP) | Helm all versions |
+|         | Helm Chart v1.7 To Be Published (TBP) | Helm all versions |
 | | EDP v1.10 | EDP all versions |
 | | Pump v1.11 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
@@ -56,7 +56,7 @@ If you are upgrading to 5.5.1, please follow the detailed [upgrade instructions]
 
 
 ### Release Highlights
-This release primarily focuses on bug fixes. For a comprehensive list of changes, please refer to the detailed changelog below.
+This release primarily focuses on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v5.5.1) below.
 
 ### Downloads
 - [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.5.1)
@@ -64,12 +64,27 @@ This release primarily focuses on bug fixes. For a comprehensive list of changes
     docker pull tykio/tyk-gateway:v5.5.1
     ``` 
 - Helm charts
-  - tyk-charts To Be Published (TBP)
+  - tyk-charts v1.7 To Be Published (TBP)
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 ### Changelog {#Changelog-v5.5.1}
 
 #### Added
+
+<ul>
+<li>
+<details>
+<summary>Changelog item</summary>
+</details>
+</li>
+<li>
+<details>
+<summary>Another changelog item</summary>
+</details>
+</li>
+</ul>
+
+#### Changed
 
 <ul>
 <li>
@@ -95,20 +110,6 @@ This release primarily focuses on bug fixes. For a comprehensive list of changes
 <li>
 <details>
 <summary>Another changelog item</summary>
-</details>
-</li>
-</ul>
-
-#### Security Fixes
-
-<ul>
-<li>
-<details>
-<summary>High priority CVEs fixed</summary>
-
-Fixed the following high priority CVEs identified in the Tyk Gateway, providing increased protection against security vulnerabilities:
-- [CVE identifier](https://nvd.nist.gov/vuln/detail/CVE-2023-39325)
-- [CVE identifier](https://nvd.nist.gov/vuln/detail/CVE-2023-45283)
 </details>
 </li>
 </ul>
