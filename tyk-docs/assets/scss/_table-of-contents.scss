@@ -38,138 +38,109 @@
 	.sub_toc__item.js-active,.sub-sub-toc-item.js-active,.sub-sub-sub-toc-item.js-active {
 		color: #8438FA !important;
 	}
-
 	.accordion-content {
 		margin-bottom: 20px;
 	}
-
+	
 	.accordion-item {
 		.toc__item {
-			line-height: 20px;
+			line-height: 18px; /* Adjusted line-height for reduced font size */
 			position: relative;
 			padding: 0;
 			margin-bottom: 20px;
 			padding-right: 20px;
-			font-size: 14px;
-
-			&.accordion-up {
-				&:after {
-					transform: rotate(180deg);
-				}
-			}
-
+			font-size: 12px; /* Reduced font size */
+	
 			&.accordionHolder {
 				&:after {
 					display: none;
 				}
 			}
-
+	
 			&:after {
-				pointer-events: auto;
-				content: '';
-				background-image: url("../img/icon-caret.svg");
-				background-repeat: no-repeat;
-				background-position: right;
-				inline-size: 100%;
-				block-size: var(--caret-size);
-				position: absolute;
-				top: 0;
-				right: 0;
-				cursor: pointer;
-				transition: scale 0.2s;
-				width: 20px;
-				height: 20px;
+				/* Removed caret styles */
+				display: none; /* Hide caret */
 			}
 		}
-
+	
 		.accordion-content {
 			display: none;
-
+	
 			a {
-				font-size: 12px;
+				font-size: 10px; /* Reduced font size */
 				margin-bottom: 10px;
 				display: block;
 			}
-
+	
 			>* {
-				padding-left: 18px;
+				padding-left: 16px; /* Adjusted padding */
 			}
-
+	
 			.sub-accordionHolder {
 				position: relative;
 				padding-right: 30px;
-
+	
 				&:after {
-					pointer-events: auto;
-					content: '';
-					background-image: url(../img/icon-caret.svg);
-					background-repeat: no-repeat;
-					background-position: right;
-					inline-size: 100%;
-					block-size: var(--caret-size);
-					position: absolute;
-					top: 0;
-					right: 0;
-					cursor: pointer;
-					transition: scale 0.2s;
-					width: 20px;
-					height: 20px;
+					/* Removed caret styles */
+					display: none; /* Hide caret */
 				}
 			}
-
+	
 			&.accordion-up {
 				.sub-accordionHolder {
 					position: relative;
 				}
 			}
 		}
-
+	
 		.accordion-content.accordion-up {
 			>.sub-accordionHolder {
 				&:after {
-					transform: rotate(180deg);
+					/* Removed caret styles */
+					display: none; /* Hide caret */
 				}
 			}
-
+	
 			>.sub-accordion {
 				>.sub-accordionHolder {
 					&:after {
-						transform: rotate(180deg);
+						/* Removed caret styles */
+						display: none; /* Hide caret */
 					}
 				}
 			}
 		}
-
+	
 		.sub-accordion-content>* {
-			padding-left: 25px;
+			padding-left: 20px; /* Adjusted padding */
 		}
-
+	
 		.sub-accordion-content,
 		.sub-sub-accordion-content {
 			display: none;
 		}
-
+	
 		.accordion-up .sub-accordion-content,
 		.accordion-up .sub-accordion-content a,
 		.sub-accordion .sub-sub-accordion-content {
 			display: block;
 		}
-
+	
 		margin-bottom: 20px;
-
+	
 		>* {
-			font-size: 15px !important;
+			font-size: 13px !important; /* Reduced font size */
 			transition: all 400ms ease;
-
+	
 			&:hover {
 				font-weight: 700;
 				color: #000 !important;
 			}
-
+	
 			+ {
 				* {
 					position: relative;
-
+	
 					&:before {
 						content: "";
 						background: #cfcfe5;
@@ -181,15 +152,15 @@
 						position: absolute;
 						z-index: 1;
 					}
-
+	
 					.sub_toc__item {
-						font-size: 15px !important;
+						font-size: 13px !important; /* Reduced font size */
 						color: #03031c;
 						margin: 0 !important;
 						font-weight: 400;
 						padding-bottom: 10px !important;
-						padding-left: 14px;
-
+						padding-left: 12px; /* Adjusted padding */
+						
 						&:hover,
 						&.js-active {
 							color: #8438FA;
@@ -197,7 +168,7 @@
 					}
 				}
 			}
-
+	
 			&:last-child {
 				.sub_toc__item {
 					padding-bottom: 10px !important;
@@ -205,24 +176,26 @@
 			}
 		}
 	}
-
+	
 	.toc__content {
 		.accordion-group {
-
+	
 			.accordion-content {
 				margin-bottom: 0;
-
+	
 				a {
-					font-size: 15px !important;
+					font-size: 13px !important; /* Reduced font size */
 					color: #03031c;
 					margin: 0 !important;
 					font-weight: 400;
 					padding-bottom: 10px !important;
-					padding-left: 14px;
+					padding-left: 12px; /* Adjusted padding */
 				}
 			}
 		}
 	}
+	
+	
 
 	@include breakpoint(large) {
 		border-left: 1px solid $brandpurple-2;

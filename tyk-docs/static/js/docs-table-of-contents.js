@@ -31,19 +31,16 @@ var buildTableOfContents = function () {
             var h2 = $(this).text().replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
             var accordionItem = $('<div class="accordion-item"></div>');
             var accordionHeader = $(`<a href="#${$(this).attr("id")}" class="toc__item">${title}</a>`);
-            accordionHeader.click(function () {
-                $(this).toggleClass('accordion-up');
-                // Toggle visibility of H3 elements under this H2
-                $(this).siblings('.accordion-content').toggle();
-            });
-            accordionItem.append(accordionHeader);
+            // No click function needed for open state
+            accordionHeader.addClass('accordion-up');  // Always open
+            var accordionContent = $('<div class="accordion-content"></div>');
+            accordionItem.append(accordionHeader).append(accordionContent);
             accordionGroup.append(accordionItem);
         }
 
         if ($(this).is('h3')) {
             var link = $(`<a href="#${$(this).attr("id")}" class="sub_toc__item">${title}</a>`);
             var h3 = $(this).text().replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-            var link = $(`<a href="#${$(this).attr("id")}" class="sub_toc__item sub-accordion-title">${title}</a>`);
             var accordionContent = $('<div class="accordion-content"></div>').append(link);
             if (accordionGroup.find('.accordion-item:last').length) {
                 accordionGroup.find('.accordion-item:last').append(accordionContent);
@@ -51,43 +48,27 @@ var buildTableOfContents = function () {
                 ToContent.append(accordionContent);
             }
 
-            accordionContent.click(function () {
-                $(this).toggleClass('accordion-up');
-
-                // Toggle visibility of H4 elements under this H3
-                accordionContent.siblings('.sub-accordion-content').toggle();
-            });
-
+            accordionContent.addClass('accordion-up');  // Always open
         }
 
         if ($(this).is('h4')) {
             var h4 = $(this).text().replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-            var subLink = $(`<a href="#${$(this).attr("id")}" class="sub-sub-toc-item sub-accordion-title ">${title}</a>`);
+            var subLink = $(`<a href="#${$(this).attr("id")}" class="sub-sub-toc-item">${title}</a>`);
             var subAccordionContent = $('<div class="sub-accordion-content"></div>').append(subLink);
             if (accordionGroup.find('.accordion-item:last .accordion-content:last').length) {
                 accordionGroup.find('.accordion-item:last .accordion-content:last').append(subAccordionContent);
             }
-            subAccordionContent.click(function () {
-                $(this).parent().toggleClass('accordion-up');
-                // Toggle visibility of H5 elements under this H4
-                $(this).toggleClass('sub-accordion');
-
-                //subAccordionContent.find('.sub-sub-accordion-content').toggleClass('sub-accordion');
-            });
+            subAccordionContent.addClass('accordion-up');  // Always open
         }
 
         if ($(this).is('h5')) {
             var h5 = $(this).text().replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-            var subSubLink = $(`<a href="#${$(this).attr("id")}" class="sub-sub-sub-toc-item sub-accordion-title">${title}</a>`);
+            var subSubLink = $(`<a href="#${$(this).attr("id")}" class="sub-sub-sub-toc-item">${title}</a>`);
             var subSubAccordionContent = $('<div class="sub-sub-accordion-content"></div>').append(subSubLink);
             if (accordionGroup.find('.accordion-item:last .accordion-content:last .sub-accordion-content:last').length) {
                 accordionGroup.find('.accordion-item:last .accordion-content:last .sub-accordion-content:last').append(subSubAccordionContent);
             }
-            subSubAccordionContent.click(function () {
-                $(this).parent().toggleClass('sub-accordion');
-                subSubAccordionContent.find('.sub-sub-accordion-content').toggleClass('accordion-up');
-                // You can add further logic if needed for H5 content
-            });
+            subSubAccordionContent.addClass('accordion-up');  // Always open
         }
     });
 
@@ -101,7 +82,7 @@ var buildTableOfContents = function () {
     $('.accordion-item').each(function () {
         var accordionContent = $(this).find('.accordion-content');
         if (accordionContent.length) {
-            // Do something if there is accordion content
+            accordionContent.show();  // Ensure visibility
         } else {
             $(this).find('a.toc__item').addClass('accordionHolder');
         }        
@@ -110,8 +91,8 @@ var buildTableOfContents = function () {
     $('.accordion-content').each(function () {
         var accordionContent = $(this).find('.sub-accordion-content');
         if (accordionContent.length) {
-            // Do something if there is accordion content
             $(this).find('a.sub_toc__item').addClass('sub-accordionHolder');
+            accordionContent.show();  // Ensure visibility
         } else {
 
         }
@@ -120,8 +101,8 @@ var buildTableOfContents = function () {
     $('.sub-accordion-content').each(function () {
         var accordionContent = $(this).find('.sub-sub-accordion-content');
         if (accordionContent.length) {
-            // Do something if there is accordion content
             $(this).find('a.sub-sub-toc-item').addClass('sub-accordionHolder');
+            accordionContent.show();  // Ensure visibility
         } else {
 
         }
@@ -143,6 +124,7 @@ var buildTableOfContents = function () {
 // Call the function to build the table of contents with accordion functionality
 $(document).ready(buildTableOfContents);
 $(document).on("turbolinks:load", buildTableOfContents);
+
 /**
  * Toggle TOC for small devices
  */
@@ -248,7 +230,7 @@ function highlightAnchor() {
 // }
 
 // function highlightAnchor() {
-// 	$anchored_sections.each(function () {
+// 	 $anchored_sections.each(function () {
 // 		var sectionPosition = $(this).offset().top;
 
 // 		if (sectionPosition < windowScrolled) {
