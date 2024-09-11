@@ -38,109 +38,138 @@
 	.sub_toc__item.js-active,.sub-sub-toc-item.js-active,.sub-sub-sub-toc-item.js-active {
 		color: #8438FA !important;
 	}
+
 	.accordion-content {
 		margin-bottom: 20px;
 	}
-	
+
 	.accordion-item {
 		.toc__item {
-			line-height: 18px; /* Adjusted line-height for reduced font size */
+			line-height: 20px;
 			position: relative;
 			padding: 0;
 			margin-bottom: 20px;
 			padding-right: 20px;
-			font-size: 12px; /* Reduced font size */
-	
+			font-size: 14px;
+
+			&.accordion-up {
+				&:after {
+					transform: rotate(180deg);
+				}
+			}
+
 			&.accordionHolder {
 				&:after {
 					display: none;
 				}
 			}
-	
+
 			&:after {
-				/* Removed caret styles */
-				display: none; /* Hide caret */
+				pointer-events: auto;
+				content: '';
+				background-image: url("../img/icon-caret.svg");
+				background-repeat: no-repeat;
+				background-position: right;
+				inline-size: 100%;
+				block-size: var(--caret-size);
+				position: absolute;
+				top: 0;
+				right: 0;
+				cursor: pointer;
+				transition: scale 0.2s;
+				width: 20px;
+				height: 20px;
 			}
 		}
-	
+
 		.accordion-content {
 			display: none;
-	
+
 			a {
-				font-size: 10px; /* Reduced font size */
+				font-size: 12px;
 				margin-bottom: 10px;
 				display: block;
 			}
-	
+
 			>* {
-				padding-left: 16px; /* Adjusted padding */
+				padding-left: 18px;
 			}
-	
+
 			.sub-accordionHolder {
 				position: relative;
 				padding-right: 30px;
-	
+
 				&:after {
-					/* Removed caret styles */
-					display: none; /* Hide caret */
+					pointer-events: auto;
+					content: '';
+					background-image: url(../img/icon-caret.svg);
+					background-repeat: no-repeat;
+					background-position: right;
+					inline-size: 100%;
+					block-size: var(--caret-size);
+					position: absolute;
+					top: 0;
+					right: 0;
+					cursor: pointer;
+					transition: scale 0.2s;
+					width: 20px;
+					height: 20px;
 				}
 			}
-	
+
 			&.accordion-up {
 				.sub-accordionHolder {
 					position: relative;
 				}
 			}
 		}
-	
+
 		.accordion-content.accordion-up {
 			>.sub-accordionHolder {
 				&:after {
-					/* Removed caret styles */
-					display: none; /* Hide caret */
+					transform: rotate(180deg);
 				}
 			}
-	
+
 			>.sub-accordion {
 				>.sub-accordionHolder {
 					&:after {
-						/* Removed caret styles */
-						display: none; /* Hide caret */
+						transform: rotate(180deg);
 					}
 				}
 			}
 		}
-	
+
 		.sub-accordion-content>* {
-			padding-left: 20px; /* Adjusted padding */
+			padding-left: 25px;
 		}
-	
+
 		.sub-accordion-content,
 		.sub-sub-accordion-content {
 			display: none;
 		}
-	
+
 		.accordion-up .sub-accordion-content,
 		.accordion-up .sub-accordion-content a,
 		.sub-accordion .sub-sub-accordion-content {
 			display: block;
 		}
-	
+
 		margin-bottom: 20px;
-	
+
 		>* {
-			font-size: 13px !important; /* Reduced font size */
+			font-size: 15px !important;
 			transition: all 400ms ease;
-	
+
 			&:hover {
 				font-weight: 700;
 				color: #000 !important;
 			}
-	
+
 			+ {
 				* {
 					position: relative;
-	
+
 					&:before {
 						content: "";
 						background: #cfcfe5;
@@ -152,15 +181,15 @@
 						position: absolute;
 						z-index: 1;
 					}
-	
+
 					.sub_toc__item {
-						font-size: 13px !important; /* Reduced font size */
+						font-size: 15px !important;
 						color: #03031c;
 						margin: 0 !important;
 						font-weight: 400;
 						padding-bottom: 10px !important;
-						padding-left: 12px; /* Adjusted padding */
-						
+						padding-left: 14px;
+
 						&:hover,
 						&.js-active {
 							color: #8438FA;
@@ -168,7 +197,7 @@
 					}
 				}
 			}
-	
+
 			&:last-child {
 				.sub_toc__item {
 					padding-bottom: 10px !important;
@@ -176,26 +205,24 @@
 			}
 		}
 	}
-	
+
 	.toc__content {
 		.accordion-group {
-	
+
 			.accordion-content {
 				margin-bottom: 0;
-	
+
 				a {
-					font-size: 13px !important; /* Reduced font size */
+					font-size: 15px !important;
 					color: #03031c;
 					margin: 0 !important;
 					font-weight: 400;
 					padding-bottom: 10px !important;
-					padding-left: 12px; /* Adjusted padding */
+					padding-left: 14px;
 				}
 			}
 		}
 	}
-	
-	
 
 	@include breakpoint(large) {
 		border-left: 1px solid $brandpurple-2;

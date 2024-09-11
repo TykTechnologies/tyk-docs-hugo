@@ -31,16 +31,19 @@ var buildTableOfContents = function () {
             var h2 = $(this).text().replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
             var accordionItem = $('<div class="accordion-item"></div>');
             var accordionHeader = $(`<a href="#${$(this).attr("id")}" class="toc__item">${title}</a>`);
-            // No click function needed for open state
-            accordionHeader.addClass('accordion-up');  // Always open
-            var accordionContent = $('<div class="accordion-content"></div>');
-            accordionItem.append(accordionHeader).append(accordionContent);
+            accordionHeader.click(function () {
+                $(this).toggleClass('accordion-up');
+                // Toggle visibility of H3 elements under this H2
+                $(this).siblings('.accordion-content').toggle();
+            });
+            accordionItem.append(accordionHeader);
             accordionGroup.append(accordionItem);
         }
 
         if ($(this).is('h3')) {
             var link = $(`<a href="#${$(this).attr("id")}" class="sub_toc__item">${title}</a>`);
             var h3 = $(this).text().replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+            var link = $(`<a href="#${$(this).attr("id")}" class="sub_toc__item sub-accordion-title">${title}</a>`);
             var accordionContent = $('<div class="accordion-content"></div>').append(link);
             if (accordionGroup.find('.accordion-item:last').length) {
                 accordionGroup.find('.accordion-item:last').append(accordionContent);
@@ -48,27 +51,43 @@ var buildTableOfContents = function () {
                 ToContent.append(accordionContent);
             }
 
-            accordionContent.addClass('accordion-up');  // Always open
+            accordionContent.click(function () {
+                $(this).toggleClass('accordion-up');
+
+                // Toggle visibility of H4 elements under this H3
+                accordionContent.siblings('.sub-accordion-content').toggle();
+            });
+
         }
 
         if ($(this).is('h4')) {
             var h4 = $(this).text().replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-            var subLink = $(`<a href="#${$(this).attr("id")}" class="sub-sub-toc-item">${title}</a>`);
+            var subLink = $(`<a href="#${$(this).attr("id")}" class="sub-sub-toc-item sub-accordion-title ">${title}</a>`);
             var subAccordionContent = $('<div class="sub-accordion-content"></div>').append(subLink);
             if (accordionGroup.find('.accordion-item:last .accordion-content:last').length) {
                 accordionGroup.find('.accordion-item:last .accordion-content:last').append(subAccordionContent);
             }
-            subAccordionContent.addClass('accordion-up');  // Always open
+            subAccordionContent.click(function () {
+                $(this).parent().toggleClass('accordion-up');
+                // Toggle visibility of H5 elements under this H4
+                $(this).toggleClass('sub-accordion');
+
+                //subAccordionContent.find('.sub-sub-accordion-content').toggleClass('sub-accordion');
+            });
         }
 
         if ($(this).is('h5')) {
             var h5 = $(this).text().replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-            var subSubLink = $(`<a href="#${$(this).attr("id")}" class="sub-sub-sub-toc-item">${title}</a>`);
+            var subSubLink = $(`<a href="#${$(this).attr("id")}" class="sub-sub-sub-toc-item sub-accordion-title">${title}</a>`);
             var subSubAccordionContent = $('<div class="sub-sub-accordion-content"></div>').append(subSubLink);
             if (accordionGroup.find('.accordion-item:last .accordion-content:last .sub-accordion-content:last').length) {
                 accordionGroup.find('.accordion-item:last .accordion-content:last .sub-accordion-content:last').append(subSubAccordionContent);
             }
-            subSubAccordionContent.addClass('accordion-up');  // Always open
+            subSubAccordionContent.click(function () {
+                $(this).parent().toggleClass('sub-accordion');
+                subSubAccordionContent.find('.sub-sub-accordion-content').toggleClass('accordion-up');
+                // You can add further logic if needed for H5 content
+            });
         }
     });
 
@@ -82,7 +101,7 @@ var buildTableOfContents = function () {
     $('.accordion-item').each(function () {
         var accordionContent = $(this).find('.accordion-content');
         if (accordionContent.length) {
-            accordionContent.show();  // Ensure visibility
+            // Do something if there is accordion content
         } else {
             $(this).find('a.toc__item').addClass('accordionHolder');
         }        
@@ -91,8 +110,8 @@ var buildTableOfContents = function () {
     $('.accordion-content').each(function () {
         var accordionContent = $(this).find('.sub-accordion-content');
         if (accordionContent.length) {
+            // Do something if there is accordion content
             $(this).find('a.sub_toc__item').addClass('sub-accordionHolder');
-            accordionContent.show();  // Ensure visibility
         } else {
 
         }
@@ -101,8 +120,8 @@ var buildTableOfContents = function () {
     $('.sub-accordion-content').each(function () {
         var accordionContent = $(this).find('.sub-sub-accordion-content');
         if (accordionContent.length) {
+            // Do something if there is accordion content
             $(this).find('a.sub-sub-toc-item').addClass('sub-accordionHolder');
-            accordionContent.show();  // Ensure visibility
         } else {
 
         }
@@ -124,7 +143,6 @@ var buildTableOfContents = function () {
 // Call the function to build the table of contents with accordion functionality
 $(document).ready(buildTableOfContents);
 $(document).on("turbolinks:load", buildTableOfContents);
-
 /**
  * Toggle TOC for small devices
  */
@@ -178,16 +196,16 @@ function highlightAnchor() {
             $(".toc__item, .sub_toc__item, .sub-sub-toc-item, .sub-sub-sub-toc-item").removeClass("js-active accordion-up");
             $(`.toc__item[href*="#${currentSectionId}"], .sub_toc__item[href*="#${currentSectionId}"], .sub-sub-toc-item[href*="#${currentSectionId}"], .sub-sub-sub-toc-item[href*="#${currentSectionId}"]`).addClass("js-active accordion-up");
 
-            $('.accordion-up').each(function() {
+           /* $('.accordion-up').each(function() {
                 $(this).siblings('.accordion-content').show();
                 $(this).siblings('.sub-accordion-content').show();
             });
-          
+          */
             return false; 
         }
-        $('.sub_toc__item.accordion-up').click(function() {
+        /*$('.sub_toc__item.accordion-up').click(function() {
             $(this).siblings('.sub-accordion-content').hide();
-        });
+        });*/
     });
 }
 
@@ -230,7 +248,7 @@ function highlightAnchor() {
 // }
 
 // function highlightAnchor() {
-// 	 $anchored_sections.each(function () {
+// 	$anchored_sections.each(function () {
 // 		var sectionPosition = $(this).offset().top;
 
 // 		if (sectionPosition < windowScrolled) {
