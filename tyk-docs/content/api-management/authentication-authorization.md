@@ -11,24 +11,50 @@ aliases:
 ---
 
 
-Tyk provides a robust set of authentication and authorization mechanisms, ensuring your APIs are secure and accessible only to authorized users and applications. This page outlines the industry-standard methods Tyk supports, giving you the flexibility to choose the best fit for your needs.
+Tyk offers various authentication and authorization methods to secure your APIs. This page provides an overview of the industry-standard options available, helping you choose what works best for you.
 
-This guide is your comprehensive reference for Tyk's authentication and authorization methods. Use Ctrl+F or the sidebar to quickly find what you need. For example, search "JWT" for JSON Web Token details or "mTLS" to learn about mutual TLS implementation. Navigate effortlessly through this resource to secure your APIs effectively with Tyk.
+Use Ctrl+F or the sidebar to find specific topics, like “JWT” for JSON Web Tokens or “mTLS” for mutual TLS.
 
-## Secure Your APIs
+You can also use the links below to jump directly to sections on Tyk-supported methods for securing your APIs.
 
-Tyk supports a range of authentication and authorization methods, reflecting best practices in API security:
+{{< grid >}}
 
-* **OAuth 2.0:** Delegate user authentication and authorization using this widely adopted framework.
-* **Basic Authentication:** Secure your APIs with the simplicity of username and password credentials.
-* **Bearer Tokens:** Implement token-based authentication, commonly used with OAuth 2.0 flows.
-* **External OAuth Middleware:** Integrate with external OAuth providers like Auth0 and Okta for centralized authentication.
-* **HMAC Signatures:** Verify message integrity and authenticity using shared secret keys.
-* **JSON Web Tokens (JWT):** Leverage the industry-standard for securely transmitting information between parties.
-* **OpenID Connect (OIDC):** Verify user identities and obtain basic profile information.
-* **Mutual TLS (mTLS):** Establish secure communication channels by verifying both client and server identities using certificates.
-* **Open (Keyless):** Allow unrestricted access for public APIs where authentication is not required.
+{{< badge title="OAuth 2.0" href="api-management/authentication-authorization/#set-up-oauth-20-authorization" >}}
+Delegate authentication using a widely adopted framework.
+{{< /badge >}}
 
+{{< badge title="Bearer Tokens" href="api-management/authentication-authorization/#use-bearer-tokens" >}}
+Implement token-based authentication for API access.
+{{< /badge >}}
+
+{{< badge title="External OAuth" href="api-management/authentication-authorization/#integrate-external-oauth-middleware" >}}
+Integrate with external providers for centralized authentication.
+{{< /badge >}}
+
+{{< badge title="HMAC" href="api-management/authentication-authorization/#sign-requests-with-hmac" >}}
+Verify message integrity using shared secret keys.
+{{< /badge >}}
+
+{{< badge title="JWT" href="api-management/authentication-authorization/#use-json-web-tokens-jwt" >}}
+Securely transmit information between parties.
+{{< /badge >}}
+
+{{< badge title="mTLS" href="api-management/authentication-authorization/#enable-mutual-tls" >}}
+Establish secure channels with two-way certificate verification.
+{{< /badge >}}
+
+{{< badge title="Open Access" href="api-management/authentication-authorization/#use-open-keyless-authentication" >}}
+Allow unrestricted access for public APIs.
+{{< /badge >}}
+
+
+{{< badge title="Basic Auth" href="api-management/authentication-authorization/#use-basic-authentication" >}}
+Secure APIs with username and password credentials.
+{{< /badge >}}
+
+
+
+{{< /grid >}}
 
 ## Set Up OAuth 2.0 Authorization
 
@@ -48,6 +74,10 @@ Tyk offers comprehensive support for OAuth 2.0, providing two main approaches to
 1. **Simplify Authorization with Tyk:** Designate Tyk as your OAuth 2.0 provider, streamlining token generation and management.
 2. **Seamless Application Integration:** Integrate your application with Tyk's API and notification endpoints for streamlined OAuth 2.0 functionality.
 
+
+{{< youtube C4CUDTIHynk >}}
+
+
 ### Supported Grant Types
 
 Tyk offers extensive support for various OAuth 2.0 grant types, catering to diverse use cases:
@@ -66,7 +96,7 @@ Tyk offers extensive support for various OAuth 2.0 grant types, catering to dive
 * **Access Token Exchange and Notification:** Clients can then use the generated authorization code to request an access token from Tyk. Upon successful token generation, Tyk notifies your application via webhooks.
 * **Simplified Flow for Specific Applications:** Tyk offers a streamlined access token flow, well-suited for mobile and single-page applications, though it does not accommodate refresh tokens.
 
-### Enabling OAuth 2.0 via the Dashboard
+#### Enabling OAuth 2.0 via the Dashboard
 
 1. **Select OAuth 2.0 for Your API:** In the API Designer, go to the Core Settings tab for your API and choose "OAuth 2.0" as the authentication mode.
 
@@ -86,7 +116,7 @@ Tyk offers extensive support for various OAuth 2.0 grant types, catering to dive
 
     {{< img src="/img/dashboard/system-management/oauth-client-secret-details.png" alt="View Client ID and Secret" >}}
 
-### Enabling OAuth 2.0 via an API Definition
+#### Enabling OAuth 2.0 via an API Definition
 
 For programmatic control, configure OAuth 2.0 directly within your API's JSON definition:
 
@@ -137,10 +167,10 @@ Utilize Tyk's `/tyk/oauth/authorize-client/` endpoint with the `key_rules` param
   "hmac_string": ""
 }
 ```
-
-### Leverage Bound Policies
-
-Simplify token generation by directly associating policies with Client IDs during creation. This allows Tyk to apply access rules based on the policy associated with the Client ID.
+{{< note success >}}
+**Note**  
+Instead of passing a `key_rules` parameter when authorizing a client, Tyk can now have an API policy that manages access rules bound to the Client ID doing the accessing, if a bound policy ID is used when generating the OAuth client, when a token is generated for the client then Tyk will generate a token based on the policy data. This is especially useful in generative contexts such as the `client_credentials` grant.
+{{< /note >}}
 
 ### Configure Notifications
 
@@ -161,12 +191,13 @@ Example notification:
 }
 ```
 
-### Key Points for OAuth 2.0 in Tyk
+{{< note success >}}
+**Note**
 
 * **Fine-Grained Access Control:** Manage access using Tyk's built-in access controls, including versioning and named API IDs, going beyond Client ID-based control.
 * **Usage Analytics:** Leverage Tyk's analytics capabilities to monitor OAuth 2.0 usage effectively, grouping data by Client ID.
 * **Multi-API Access**: Enable access to multiple APIs using a single OAuth token. Configure one API for OAuth 2.0 token issuance and the other APIs with the "Auth Token" method, linking them through a common policy.
-
+{{< /note >}}
 
 ### Use Authorization Code Grant
 
@@ -251,7 +282,7 @@ The response provides the authorization code as `code` and the redirect URL as `
 }
 ```
 
-### Exchange the Authorization Code for an Access Token
+#### Exchange the Authorization Code for an Access Token
 
 Once the client application has the authorization code, it can exchange this code for an access token, which is used to access the API.
 
@@ -621,19 +652,8 @@ curl -X GET \
 ## Authenticate Using Go Plugins
 
 Go Plugin Authentication allows you to implement custom authentication logic using the Go programming language. This method is useful for scenarios where you need to implement specialized authentication mechanisms that are not natively supported by Tyk.
+To learn more about using Tyk Golang Plugins, go [here](plugins/supported-languages/golang/#authentication-with-a-golang-plugin)
 
-### Develop and Compile a Custom Go Plugin
-
-Write a custom Go plugin that implements your authentication logic, such as checking a custom header for a token and validating it against an internal system.
-
-**Example:**
-
-* Develop the Go plugin.
-* Compile the plugin and load it into Tyk.
-
-### Deploy and Test the Plugin
-
-Once the plugin is deployed in Tyk, it will be executed for each request to determine if access should be granted.
 
 ## Sign Requests with HMAC
 
@@ -672,7 +692,7 @@ This assumes you’ve already setup an API and are ready to protect it with JWT.
 
 Getting JWT support set up in the Dashboard only requires a few fields to be set up in the Core settings tab:
 
-### Obtain a JWT After Successful Authentication
+### Obtain a JWT
 
 The client application receives a JWT after successfully authenticating with the authorization server.
 
@@ -684,7 +704,7 @@ The client application receives a JWT after successfully authenticating with the
 }
 ```
 
-### Use the JWT to Access Protected Resources
+### Use the JWT
 
 The client includes the JWT in the Authorization header when making requests to the API.
 
@@ -1138,6 +1158,25 @@ Open or keyless authentication allows access to APIs without any authentication.
 ### Configure the API as Open or Keyless in Tyk
 
 In Tyk, configure the API to not require any authentication for access.
+To implement keyless access, simply set the flag in your API Definition:
+
+```{.copyWrapper}
+{
+  ...
+  "use_keyless": true,
+  "auth": {
+      "auth_header_name": ""
+  },
+  ...
+}
+```
+This will stop checking keys that are proxied by Tyk.
+
+{{< note success >}}
+**Note**  
+
+Keyless APIs cannot be selected for [Access Rights]({{< ref "getting-started/create-security-policy" >}}) in a security policy.
+{{< /note >}}
 
 ### Request a Public Resource
 
@@ -1155,23 +1194,6 @@ curl -X GET \
 | **Method**  | `GET`                                   |
 | **URL**     | The API endpoint for the public resource. |
 
-## Add OpenID Connect
-
-OpenID Connect is an identity layer on top of OAuth 2.0 that allows clients to verify the identity of the end-user. Tyk can act as a relying party, consuming ID tokens issued by an OpenID Connect provider.
-
-### Obtain an ID Token from the OpenID Connect Provider
-
-After the user authenticates, the OpenID Connect provider issues an ID token.
-
-### Use the ID Token to Access Protected Resources
-
-Include the ID token in the Authorization header when making requests to the API.
-
-```bash
-curl -X GET \
-  https://api.example.com/protected-resource \
-  -H 'Authorization: Bearer ID_TOKEN'
-```
 
 **Request:**
 
@@ -1207,18 +1229,8 @@ Tyk can be configured to automatically delete expired keys, or you can manually 
 
 Tyk allows for custom authentication logic using Python and JavaScript Virtual Machine (JSVM) plugins. This method is useful for implementing unique authentication mechanisms that are tailored to your specific requirements.
 
-### Develop Custom Authentication Logic
-
-Write your custom authentication logic in Python or JavaScript, depending on your requirements.
-
-**Example Implementation:**
-
-*   Develop the plugin to check user roles against an internal database.
-*   Deploy the plugin within Tyk.
-
-### Deploy and Test the Plugin
-
-Deploy the plugin in Tyk, and test it to ensure it is executing correctly and securing your API as expected.
+* See [Custom Authentication with a Python plugin]({{< ref "plugins/supported-languages/rich-plugins/python/custom-auth-python-tutorial" >}}) for a detailed example of a custom Python plugin.
+* See [JavaScript Middleware]({{< ref "plugins/supported-languages/javascript-middleware" >}}) for more details on using JavaScript Middleware. 
 
 ## Enable Mutual TLS
 
@@ -1284,7 +1296,12 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -node
 
 In the Tyk Dashboard, add a key for the API you set up in step #1. When uploading the certificate, ensure you only upload the public certificate.
 
-**Note:** The certificate you upload for this key must only be the public certificate.
+
+{{< note success >}}
+**Note**  
+The certificate you upload for this key must only be the public certificate.
+{{< /note >}}
+
 
 ##### Make an API Request Using the Certificate
 
@@ -1347,8 +1364,11 @@ The base identity can be anything, as the client certificate will be the primary
     *   The root CA certificate can be uploaded as a client certificate.
     *   Clients presenting certificates signed by this CA will be validated.
     *   Tyk traverses the certificate chain for validation.
-
-    **Note:** Root CA certificates are compatible only with Static mTLS and not with Dynamic mTLS.
+    {{< note success >}}
+      **Note** 
+      Root CA certificates are compatible only with Static mTLS and not with Dynamic mTLS.
+    {{< /note >}}
+    
 
 ### Upstream mTLS
 
