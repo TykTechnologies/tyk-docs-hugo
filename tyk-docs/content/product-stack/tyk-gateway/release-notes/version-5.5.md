@@ -5,19 +5,113 @@ description: "Release notes documenting updates, enhancements, and changes for T
 tags: ["Tyk Gateway", "Release notes", "v5.5", "5.5.0", "5.5", "changelog"]
 ---
 
-<!-- Required. oss or licensed. Choose one of the following:
-    **Licensed Protected Product**
-    Or
-    ****Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))**
--->
-
 **Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))
 
 **This page contains all release notes for version 5.5.X displayed in a reverse chronological order**
 
 ## Support Lifetime
-<!-- Required. replace X.Y with this release and set the correct quarter of the year -->
+
 Our minor releases are supported until our next minor comes out.
+
+---
+
+## 5.5.1 Release Notes
+
+### Release Date ?? September 2024
+
+### Breaking Changes
+
+Docker images are now based on [distroless](https://github.com/GoogleContainerTools/distroless). No shell is shipped in the image.
+
+### Dependencies {#dependencies-5.5.1}
+
+#### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.5.1 | MDCB v2.7     | MDCB v2.4.2 |
+|         | Operator v0.18 | Operator v0.17 |
+|         | Sync v1.5   | Sync v1.4.3 |
+|         | Helm Chart To Be Published (TBP) | Helm all versions |
+| | EDP v1.10 | EDP all versions |
+| | Pump v1.11 | Pump all versions |
+| | TIB (if using standalone) v1.5.1 | TIB all versions |
+
+#### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.21  |  1.21  | [Go plugins]({{< ref "/plugins/supported-languages/golang" >}}) must be built using Go 1.21 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "/tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+### Deprecations
+<!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
+There are no deprecations in this release.
+
+### Upgrade instructions {#upgrade-5.5.1}
+If you are upgrading to 5.5.1, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+
+### Release Highlights
+This release primarily focuses on bug fixes. For a comprehensive list of changes, please refer to the detailed changelog below.
+
+### Downloads
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.5.1)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.5.1
+    ``` 
+- Helm charts
+  - tyk-charts To Be Published (TBP)
+- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+
+### Changelog {#Changelog-v5.5.1}
+
+#### Added
+
+<ul>
+<li>
+<details>
+<summary>Changelog item</summary>
+</details>
+</li>
+<li>
+<details>
+<summary>Another changelog item</summary>
+</details>
+</li>
+</ul>
+
+#### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Changelog item</summary>
+</details>
+</li>
+<li>
+<details>
+<summary>Another changelog item</summary>
+</details>
+</li>
+</ul>
+
+#### Security Fixes
+
+<ul>
+<li>
+<details>
+<summary>High priority CVEs fixed</summary>
+
+Fixed the following high priority CVEs identified in the Tyk Gateway, providing increased protection against security vulnerabilities:
+- [CVE identifier](https://nvd.nist.gov/vuln/detail/CVE-2023-39325)
+- [CVE identifier](https://nvd.nist.gov/vuln/detail/CVE-2023-45283)
+</details>
+</li>
+</ul>
 
 ---
 
