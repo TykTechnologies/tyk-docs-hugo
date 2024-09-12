@@ -36,12 +36,12 @@ When configuring APIs, precise URL matching helps developers:
 
 URL matching is fundamental to many components of the system, including:
 
-- [Securing APIs by Method and Path](https://tyk.io/docs/security/security-policies/secure-apis-method-path/)
-- [Allow List Middleware](https://tyk.io/docs/product-stack/tyk-gateway/middleware/allow-list-middleware/)
-- [Block List Middleware](https://tyk.io/docs/product-stack/tyk-gateway/middleware/block-list-middleware/)
-- [Request and Response Middleware](https://tyk.io/docs/advanced-configuration/transform-traffic/)
+- [Securing APIs by Method and Path]({{< ref"security/security-policies/secure-apis-method-path/" >}})
+- [Allow List Middleware]({{< ref"product-stack/tyk-gateway/middleware/allow-list-middleware/" >}})
+- [Block List Middleware]({{< ref"product-stack/tyk-gateway/middleware/block-list-middleware/" >}})
+- [Request and Response Middleware]({{< ref"advanced-configuration/transform-traffic/" >}})
 
-Some components, like [URL Rewriting](https://tyk.io/docs/transform-traffic/url-rewriting/),
+Some components, like [URL Rewriting]({{< ref"transform-traffic/url-rewriting/" >}}),
 implement regular expression matching only, and do not apply path matching logic.
 
 ### Pattern Matching Overview
