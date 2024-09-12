@@ -175,11 +175,8 @@ would have caused undesired behaviour in older versions.
 
 #### ULID validation for a route
 
-The input has full go regex (RE2) support. See
-[pkg.go.dev/regexp](https://pkg.go.dev/regexp) for details.
-
 For a non-trivial example of regex pattern matching, one can configure a
-complex expression to match [ULID](https://github.com/ulid/spec) values.
+complex expression to match [ULID](https://github.com/ulid/spec) values:
 
 - `^/users/(?i)[0-7][0-9A-HJKMNP-TV-Z]{25}$`
 - [Go playground test example](https://go.dev/play/p/nlLUQmVxKsp)
@@ -187,6 +184,9 @@ complex expression to match [ULID](https://github.com/ulid/spec) values.
 
 The explicit behaviour of the pattern match is to match the pattern by
 prefix all the way to the end of the defined pattern.
+
+The input has full go regex (RE2) support. See
+[pkg.go.dev/regexp](https://pkg.go.dev/regexp) for details.
 
 ---
 
