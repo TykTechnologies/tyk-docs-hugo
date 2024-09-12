@@ -197,12 +197,17 @@ specific parts can be variable and populated from the OpenAPI
 definitions. These parameters are commonly used in APIs and dynamic
 routing.
 
-| **User Input**                     | **Converted Regular Expression** | **Description**                                                                           |
-|------------------------------------|----------------------------------|-------------------------------------------------------------------------------------------|
-| `/users/{id}`                      | `^/users/([^/]+)`                | Matches paths like `/users/123`, where `id` is dynamic.                                   |
-| `/static/{path}/assets/{file}`     | `^/static/([^/]+)/assets/[^/]+)` | Matches paths like `/static/images/assets/logo.png`, where `path` and `file` are dynamic. |
-| `/orders/{orderId}/items/{itemId}` | `^/orders/([^/]+)/items/([^/]+)` | Matches paths like `/orders/456/items/789`, where `orderId` and `itemId` are dynamic.     |
-| `/orders/{orderId}/items/{itemId}` | `^/orders/([^/]+)/items/([^/]+)` | Matches paths like `/orders/456/items/789`, where `orderId` and `itemId` are dynamic.     |
+| **User Input**                     | **Converted Regular Expression** |
+|------------------------------------|----------------------------------|
+| `/users/{id}`                      | `^/users/([^/]+)`                |
+| `/static/{path}/assets/{file}`     | `^/static/([^/]+)/assets/[^/]+)` |
+| `/orders/{orderId}/items/{itemId}` | `^/orders/([^/]+)/items/([^/]+)` |
+| `/orders/{orderId}/items/{itemId}` | `^/orders/([^/]+)/items/([^/]+)` |
+
+1. Matches paths like `/users/123`, where `id` is dynamic.
+2. Matches paths like `/static/images/assets/logo.png`, where `path` and `file` are dynamic.
+3. Matches paths like `/orders/456/items/789`, where `orderId` and `itemId` are dynamic.
+4. Matches paths like `/orders/456/items/789`, where `orderId` and `itemId` are dynamic.
 
 > **Note:** The `{id}`, `{path}`, `{file}`, `{orderId}`, and `{itemId}` in the
 > user input correspond to dynamic path segments that are converted into capturing
@@ -222,25 +227,27 @@ segment with a `*` (wildcard), or `{*}` in older versions.
 
 #### Advanced Pattern Matching
 
-This section demonstrates more advanced pattern matching, which includes
-complex named route parameters, wildcard characters, and specific segment
-constraints.
+Named parameters support specifying a regular expression to match. This
+is in use with API listen paths and endpoints.
 
-| **User Input**                               | **Converted Regular Expression**                  | **Description**                                                                                          |
-|----------------------------------------------|---------------------------------------------------|----------------------------------------------------------------------------------------------------------|
-| `/users/{id}/profile/{type:[a-zA-Z]+}`       | `^/users/(?P<v0>[^/]+)/profile/(?P<v1>[a-zA-Z]+)` | Matches paths where `id` is dynamic, and `type` only includes alphabetic characters.                     |
-| `/items/{itemID:[0-9]+}/details/{detail}`    | `^/items/(?P<v0>[0-9]+)/details/(?P<v1>[^/]+)`    | Matches paths like `/items/45/details/overview`, where `itemID` is a number and `detail` is dynamic.     |
-| `/products/{productId}/reviews/{rating:\d+}` | `^/products/(?P<v0>[^/]+)/reviews/(?P<v1>\d+)$`   | Matches paths like `/products/987/reviews/5`, where `productId` is dynamic and `rating` must be a digit. |
+| **User Input**                               | **Converted Regular Expression**      |
+|----------------------------------------------|---------------------------------------|
+| `/users/{id}/profile/{type:[a-zA-Z]+}`       | `^/users/([^/]+)/profile/([a-zA-Z]+)` |
+| `/items/{itemID:[0-9]+}/details/{detail}`    | `^/items/([0-9]+)/details/([^/]+)`    |
+| `/products/{productId}/reviews/{rating:\d+}` | `^/products/([^/]+)/reviews/(\d+)`    |
 
-Patterns like these work on listen paths and endpoints. In URL matching
-for the purposes as described above, the regular expressions will be as
-follows, matching any path segment, but not using the regular expression
-defined in the named parameter.
+1. Matches paths where `id` is dynamic, and `type` only includes alphabetic characters.
+2. Matches paths like `/items/45/details/overview`, where `itemID` is a number and `detail` is dynamic.
+3. Matches paths like `/products/987/reviews/5`, where `productId` is dynamic and `rating` must be a digit.
 
-| **User Input**                               | **Converted Regular Expression**      | **Suggested Regular Expression**      |
-|----------------------------------------------|---------------------------------------|---------------------------------------|
-| `/users/{id}/profile/{type:[a-zA-Z]+}`       | `^/users/([^/]+)/profile/([^/]+)`     | `^/users/([^/]+)/profile/([a-zA-Z]+)` |
-| `/items/{itemID:[0-9]+}/details/{detail}`    | `^/items/([^/]+)/details/([^/]+)`     | `^/items/([0-9]+)/details/([^/]+)`    |
-| `/products/{productId}/reviews/{rating:\d+}` | `^/products/([^/]+)/reviews/([^/]+)$` | `^/products/([^/]+)/reviews/(\d+)$`   |
+Patterns like these only work on listen paths and endpoints.
 
----
+In URL matching for the purposes as described above, the regular
+expressions will be as follows, matching any path segment, but not using
+the regular expression defined in the named parameter.
+
+| **User Input**                               | **Converted Regular Expression**     |
+|----------------------------------------------|--------------------------------------|
+| `/users/{id}/profile/{type:[a-zA-Z]+}`       | `^/users/([^/]+)/profile/([^/]+)`    |
+| `/items/{itemID:[0-9]+}/details/{detail}`    | `^/items/([^/]+)/details/([^/]+)`    |
+| `/products/{productId}/reviews/{rating:\d+}` | `^/products/([^/]+)/reviews/([^/]+)` |
