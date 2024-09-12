@@ -1,7 +1,7 @@
 ---
-title: "Managing Multiple Organizations with Tyk Operator CRDs"
+title: "Managing Multiple Organizations with OperatorContext"
 date: 2024-06-25
-tags: ["Tyk Operator", "Organizations", "Kubernetes"]
+tags: ["Tyk Operator", "Environments", "Organizations", "Kubernetes"]
 description: "Learn how to use Tyk Operator Custom Resource Definitions (CRDs) to manage multiple organizations within Tyk. This guide explains how to leverage OperatorContext to efficiently manage resources for different teams. Examples and best practices are included for effective multi-tenant API management."
 ---
 
@@ -44,6 +44,45 @@ spec:
       httpPort: 8000
       httpsPort: 8443
 ```
+
+For better security, you can also replace sensitive data with values contained within a referenced secret with `.spec.secretRef`.
+
+In this example, API access key `auth` and organization ID `org` are not specified in the manifest. They are provided through a Kubernetes secret named `tyk-operator-conf` in `alpha` namespace. The secret contains keys `TYK_AUTH` and `TYK_ORG` which correspond to the `auth` and `org` fields respectively.
+
+```yaml
+apiVersion: tyk.tyk.io/v1alpha1
+kind: OperatorContext
+metadata:
+  name: team-alpha
+  namespace: default
+spec:
+  secretRef:
+    name: tyk-operator-conf ## Secret containing keys TYK_AUTH and TYK_ORG
+    namespace: alpha
+  env:
+    mode: pro
+    url: http://tyk.tykce-control-plane.svc.cluster.local:8001
+    insecureSkipVerify: true
+    ingress:
+      httpPort: 8000
+      httpsPort: 8443
+    user_owners:
+    - a1b2c3d4f5e6f7
+    user_group_owners:
+    - 1a2b3c4d5f6e7f
+```
+
+You can provide the following fields through secret as referenced by `secretRef`. The table shows mappings between `.spec.env` properties and secret `.spec.data` keys. If a value is configured in both the secret and OperatorContext `spec.env` field, the value from secret will take precedence.
+
+| Secret key | .spec.env |
+|------------|-----------|
+| TYK_MODE	 | mode |
+| TYK_URL    | url |
+| TYK_AUTH	 | auth |
+| TYK_ORG	   | org |
+| TYK_TLS_INSECURE_SKIP_VERIFY | insecureSkipVerify |
+| TYK_USER_OWNERS (comma separated list) | user_owners |
+| TYK_USER_GROUP_OWNERS (comma separated list) | user_group_owners |
 
 ## Using contextRef in API Definitions
 

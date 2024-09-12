@@ -1,7 +1,7 @@
 ---
 title: stdout
 description: Explains an overview of configuring stdout output
-tags: [ "Tyk Streams", "Stream Outputs", "Outputs" ]
+tags: [ "Tyk Streams", "Stream Outputs", "Outputs", "stdout" ]
 ---
 
 Prints messages to stdout as a continuous stream of data.
