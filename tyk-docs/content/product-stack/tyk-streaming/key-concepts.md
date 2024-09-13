@@ -2,12 +2,12 @@
 title: Key Concepts
 description: Explains key concepts of streaming
 tags: [ "streaming", "events", "event driven architecture", "event driven architectures", "kafka" ]
+publishdate: 2024-07-12
 ---
 
 {{< note success>}}
 
-Tyk Streams is currently in the [Lab Release]({{<ref "developer-support/special-releases-and-features/lab-releases">}})
-phase, and we'd love for you to try it out. Click the button to sign up and take it for a spin:
+Our first release of Tyk Streams is now available, and we'd love for you to try it out. Click the button to sign up and take it for a spin:
 {{< button_left href="https://survey.hsforms.com/1ItPCBg-_Tre8WFJZL4pp6Q3ifmg" color="green" content="Get started with Tyk Streams" >}}
 
 {{< /note >}}
