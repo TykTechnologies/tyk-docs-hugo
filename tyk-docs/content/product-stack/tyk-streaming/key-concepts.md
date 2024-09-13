@@ -2,6 +2,7 @@
 title: Key Concepts
 description: Explains key concepts of streaming
 tags: [ "streaming", "events", "event driven architecture", "event driven architectures", "kafka" ]
+publishdate: 2024-07-12
 ---
 
 {{< note success>}}
