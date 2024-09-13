@@ -2,6 +2,7 @@
 title: Tyk Streams
 description: Explains the purpose of Tyk Streaming and use cases
 tags: [ "streaming", "events", "event-driven architecture", "event-driven architectures", "kafka" ]
+publishdate: 2024-07-15
 ---
 We are excited to introduce our new product, *Tyk Streams*! 
 *Tyk Streams* is a powerful new feature in the Tyk API management platform that enables organizations to securely expose,
@@ -9,8 +10,7 @@ manage and monetize real-time event streams and asynchronous APIs.
 
 ## Getting started
 
-Tyk Streams is currently in the [Lab Release]({{<ref "developer-support/special-releases-and-features/lab-releases">}})
-phase, and we'd love for you to try it out. Click the button to sign up and take it for a spin:
+Our first release of Tyk Streams is now available, and we'd love for you to try it out. Click the button to sign up and take it for a spin:
 {{< button_left href="https://survey.hsforms.com/1ItPCBg-_Tre8WFJZL4pp6Q3ifmg" color="green" content="Get started with Tyk Streams" >}}
 
 ---
@@ -27,20 +27,6 @@ The purpose of Tyk Streams is to provide a unified platform for managing both sy
 GraphQL) and asynchronous APIs, in addition to event-driven architectures. This allows organizations to leverage the
 full potential of their event-driven systems while maintaining the same level of security, control and visibility they
 expect from their API management solution.
-
-</br>
-
-{{< warning success>}}
-
-**Important notice: Tyk Stream in Lab Release**
-
-*Tyk Streams* is currently in the *Lab Release* phase. It is under active development and testing, and is not intended
-for production use. For more details and to provide your feedback, please visit our
-[Lab Release Information Page]({{< ref "developer-support/special-releases-and-features/lab-releases" >}}).
-
-</br>
-
-{{< /warning >}}
 
 ---
 
