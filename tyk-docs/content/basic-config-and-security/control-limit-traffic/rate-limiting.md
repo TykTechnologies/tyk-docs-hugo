@@ -75,6 +75,26 @@ Check out the following video to see this being done.
 
 {{< youtube n7jbmuWgPsw >}}
 
+## Setting up a Key-Level Per-endpoint rate limit
+
+If you want to restrict API clients to a certain rate of requests for a specific endpoint of an API, you will also configure the rate limiter via the security policy. However this time you'll assign per-endpoint limits. The allowance that you configure in the policy will be consumed by any requests made to that specific endpoint using a key generated from that policy. Thus, if a policy grants access to an API endpoint with `rate=5 per=60` then three clients using keys generated from that policy will each independently be able to make 5 requests in any 60 second period to that particular endpont of the API before receiving the `HTTP 429 Too Many Requests` error. Endpoints of the API that doesn't have endpoint level rate limits configured would be using the rate limits inherited to the API either via per-API rate limit or key level global rate limits based on the configurations.
+
+{{< note success >}}
+**Note**  
+ Following assumptions are made for the aforementioned setup.
+ - The APIs being protected with a rate limit are using our [Authentication token]({{< ref "basic-config-and-security/security/authentication-authorization/bearer-tokens" >}}) Authentication mode and have policies already created. 
+ - Ignore authentication plugin is not turned on for these endpoints.
+ - Path based permissions, if configured grants access to these endpoints
+{{< /note >}}
+
+You can configure this rate limit from the API Designer in Tyk Dashboard as follows:
+
+1. Navigate to the Tyk policy for which you want to set the rate limit
+2. Ensure that API that you want to apply rate limits to is selected
+3. Under **API Access** -> **Set endpoint-level usage limits** click on **Add Rate Lmit** to configure endpoint level rate limits.
+4. **Save/Update** the policy
+
+
 ## Setting Rate Limits in the Tyk Community Edition Gateway (CE)
 
 ### Configuring the rate limiter at the (Global) API-Level
