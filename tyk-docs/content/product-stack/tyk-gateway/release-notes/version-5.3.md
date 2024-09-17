@@ -99,7 +99,7 @@ Given the potential time difference between your upgrade and the release of this
     docker pull tykio/tyk-gateway:v5.3.5
     ```
 - Helm charts
-  - tyk-charts v1.6.1 To Be Publlished (TBP)
+  - tyk-charts v1.6.1 To Be Published (TBP)
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 
