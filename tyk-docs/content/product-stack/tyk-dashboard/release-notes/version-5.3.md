@@ -2,7 +2,7 @@
 title: Tyk Dashboard 5.3 LTS Release Notes
 date: 2023-09-27T15:49:11Z
 description: "Release notes documenting updates enhancements, and changes for Tyk Dashboard versions within the 5.3.X series."
-tags: ["Tyk Dashboard", "Release notes", "v5.3", "5.3.0", "5.3.1", "5.3.2", "5.3.3", "changelog"]
+tags: ["Tyk Dashboard", "Release notes", "changelog", "v5.3", "5.3.0", "5.3.1", "5.3.2", "5.3.3", "5.3.4", "5.3.5"]
 ---
 
 <!-- Required. oss or licensed. Choose one of the following:
@@ -21,22 +21,33 @@ As outlined in the [LTS policy]({{< ref "developer-support/special-releases-and-
 
 ## 5.3.5 Release Notes
 
-### Release Date xxx
+
+### Release Date XX September 2024
+
+
+### Release Highlights
+
+This release is a version bump to align with Gateway v5.3.5, no changes were implemented in this release.
+
 
 ### Breaking Changes
+
 **Attention**: Please read this section carefully.
 There are no breaking changes in this release, however, if moving from a version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
 
+
 ### Deprecations
+
 There are no deprecations in this release.
 
+
 ### Upgrade Instructions
+
 If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
-### Release Highlights
-This release primarily focuses on the bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.5">}}) below.
 
-### Dependencies {#dependencies-5.3.0}
+### Dependencies {#dependencies-5.3.5}
+
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 3rd party dependencies and tools -->
@@ -48,6 +59,7 @@ With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning
 
 
 #### Compatibility Matrix For Tyk Components
+
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 An illustrative example is shown below. -->
 | Dashboard Version | Recommended Releases | Backwards Compatibility |
@@ -62,6 +74,7 @@ An illustrative example is shown below. -->
 
 
 #### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.3.5}
+
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
 An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
@@ -75,6 +88,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
 
 ### Downloads
+
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.5)
  - ```bash
    docker pull tykio/tyk-dashboard:v5.3.5
@@ -82,38 +96,8 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 - Helm charts
  - tyk-charts v1.6.1 To Be Published (TBP)
 
-### Changelog {#Changelog-v5.3.5}
-<!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
-Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
-"...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
-"New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
-
-#### Fixed
-<!-- This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
-- What problem the issue caused
-- How was the issue fixed
-- Link to (new) documentation created as a result of a fix. For example, a new configuration parameter may have been introduced and documented for the fix
-- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
-Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
-
-<ul>
-<li>
-<details>
-<summary>Gateway Secret Exposed in Logs When Accessing /api/keys</summary>
-
-Resolved an issue where the Gateway secret was inadvertently logged by the Dashboard in debug mode. This issue has been fixed to prevent sensitive information from appearing in system logs, especially in non-production environments.
-</details>
-</li>
-<li>
-<details>
-<summary>Add changelog summary</summary>
-
-Add changelog description            
-</details>
-</li>
-</ul>
-
 ---
+
 ## 5.3.4 Release Notes
 
 ### Release Date August 26 2024
@@ -309,7 +293,7 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Corrected ordering of OAS API paths to prevent Middleware misapplication</summary>
+<summary>Corrected ordering of Tyk OAS API paths to prevent Middleware misapplication</summary>
 
 Fixed an issue where nested API endpoints, such as '/test' and '/test/abc', might incorrectly apply middleware from the parent path to the nested path. The fix ensures that API endpoint definitions are correctly ordered, preventing this middleware misapplication and ensuring both the HTTP method and URL match accurately.
 </details>
