@@ -77,11 +77,11 @@ If you are upgrading to 5.5.1, please follow the detailed [upgrade instructions]
 <details>
 <summary>Implemented Gateway configuration options to set URL path matching strictness</summary>
 
-We have introduced two new options in the `http_server_options` [Gateway configuration]({{< ref "tyk-oss-gateway/configuration#http_server_options" >}}) that will enforce prefix and/or suffix matching when Tyk performs checks on whether middleware or other logic should be applied to a request.
+We have introduced two new options in the `http_server_options` [Gateway configuration]({{< ref "tyk-oss-gateway/configuration#http_server_options" >}}) that will enforce prefix and/or suffix matching when Tyk performs checks on whether middleware or other logic should be applied to a request:
 
-`enable_path_prefix_matching` ensures that the start of the request path must match the path defined in the API definition
-`enable_path_suffix_matching` ensures that the end of the request path must match the path defined in the API definition
-combining `enable_path_prefix_matching` and `enable_path_suffix_matching` will ensure an exact (explicit) match is performed
+- `enable_path_prefix_matching` ensures that the start of the request path must match the path defined in the API definition
+- `enable_path_suffix_matching` ensures that the end of the request path must match the path defined in the API definition
+- combining `enable_path_prefix_matching` and `enable_path_suffix_matching` will ensure an exact (explicit) match is performed
 
 These configuration options provide control to avoid unintended matching of paths from Tyk's default *wildcard* match. Use of regex special characters when declaring the endpoint path in the API definition will automatically override these settings for that endpoint.
 
