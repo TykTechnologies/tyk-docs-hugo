@@ -2,7 +2,7 @@
 title: Tyk Dashboard 5.5 Release Notes
 date: 2024-03-27T15:51:11Z
 description: "Release notes documenting updates, enhancements, and changes for Tyk Dashboard versions within the 5.5.X series."
-tags: ["Tyk Dashboard", "Release notes", "v5.5", "5.5.0", "5.5", "changelog"]
+tags: ["Tyk Dashboard", "Release notes", "changelog", "v5.5", "5.5", "5.5.0", "5.5.1"]
 ---
 
 **This page contains all release notes for version 5.5.X displayed in a reverse chronological order**
@@ -16,6 +16,10 @@ Our minor releases are supported until our next minor comes out.
 ## 5.5.1 Release Notes
 
 ### Release Date ?? September 2024
+
+### Release Highlights
+
+This is a version bump to align with Gateway v5.5.1, no changes have been implemented in this release.
 
 ### Breaking Changes
 
@@ -53,10 +57,6 @@ There are no deprecations in this release.
 
 If you are upgrading to 5.5.1, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
-### Release Highlights
-
-This release primarily focuses on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v5.5.1) below.
-
 ### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.5.1)
 - ```bash
@@ -67,76 +67,28 @@ This release primarily focuses on bug fixes. For a comprehensive list of changes
 
 ### Changelog {#Changelog-v5.5.1}
 
-#### Added
-<ul>
-
-<li>
-<details>
-<summary>Changelog summary item</summary>
-
-Changelog description
-</details>
-</li>
-
-<li>
-<details>
-<summary>Changelog summary item</summary>
-
-Changelog details
-</details>
-</li>
-
-</ul>
-
-#### Changed
-
-<ul>
-
-<li>
-<details>
-<summary>Changelog summary</summary>
-
-Changelog details
-</details>
-</li>
-
-<li>
-<details>
-<summary>Changelog summary</summary>
-
-Changelog details
-</details>
-</li>
-
-</ul>
-
-#### Fixed
-
-<ul>
-
-<li>
-<details>
-<summary>Changelog summary</summary>
-
-Changelog details
-</details>
-</li>
-
-<li>
-<details>
-<summary>Changelog summary</summary>
-
-Changelog details
-</details>
-</li>
-
-</ul>
+No changes in this release.
 
 ---
 
 ## 5.5.0 Release Notes
 
 ### Release Date 12 August 2024
+
+### Release Highlights
+<!-- Required. Use similar ToV to previous release notes. For example for a patch release:
+This release primarily focuses on bug fixes.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
+-->
+We are excited to announce Tyk Dashboard 5.5, featuring a brand-new dashboard identity, advanced rate-limiting capabilities, and enhanced security options. For a comprehensive list of changes, please refer to the [changelog]({{< ref "#Changelog-v5.5.0">}}) below.
+
+#### New Tyk brand identity
+
+Experience a refreshed and modern look with our updated brand identity. The new design enhances usability and provides a cleaner, more intuitive interface for managing your APIs.
+
+#### Per Endpoint Rate Limiting
+
+Now configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas" >}}) and [Tyk Classic APIs]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-classic" >}}), providing granular protection for upstream services against overloading and abuse.
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
@@ -185,21 +137,6 @@ Once you put an item in this section, we must keep this item listed in all the f
 -->
 ### Upgrade instructions {#upgrade-5.5.0}
 If you are upgrading to 5.5.0, please follow the detailed [upgrade instructions](#upgrading-tyk). 
-
-### Release Highlights
-<!-- Required. Use similar ToV to previous release notes. For example for a patch release:
-This release primarily focuses on bug fixes.
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
--->
-We are excited to announce Tyk Dashboard 5.5, featuring a brand-new dashboard identity, advanced rate-limiting capabilities, and enhanced security options. For a comprehensive list of changes, please refer to the [changelog]({{< ref "#Changelog-v5.5.0">}}) below.
-
-#### New Tyk brand identity
-
-Experience a refreshed and modern look with our updated brand identity. The new design enhances usability and provides a cleaner, more intuitive interface for managing your APIs.
-
-#### Per Endpoint Rate Limiting
-
-Now configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas" >}}) and [Tyk Classic APIs]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-classic" >}}), providing granular protection for upstream services against overloading and abuse.
 
 ### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.5.0)
