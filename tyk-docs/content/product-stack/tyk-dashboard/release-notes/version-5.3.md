@@ -27,8 +27,7 @@ As outlined in the [LTS policy]({{< ref "developer-support/special-releases-and-
 
 ### Release Highlights
 
-This release is a version bump to align with Gateway v5.3.5, no changes were implemented in this release.
-
+This is a version bump to align with Gateway v5.3.5, no changes have been implemented in this release.
 
 ### Breaking Changes
 
@@ -95,6 +94,10 @@ An example is given below for illustrative purposes only. Tested Versions and Co
    ```
 - Helm charts
  - tyk-charts v1.6.1 To Be Published (TBP)
+
+### Changelog {#Changelog-v5.3.5}
+
+ No changes in this release.
 
 ---
 
