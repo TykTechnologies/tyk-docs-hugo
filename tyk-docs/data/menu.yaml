@@ -4308,7 +4308,6 @@ menu:
         category: Directory
         show: True
         menu:
-          show: True
         - title: "Tutorials"
           category: Directory
           show: True
