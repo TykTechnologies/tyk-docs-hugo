@@ -1026,6 +1026,14 @@ menu:
         category: Page
         path: /api-management/async-apis/advanced-use-cases
         show: True
+    - title: "AI Management"
+      category: Directory
+      show: True
+      menu:
+      - title: "Overview"
+        category: Page
+        path: /api-management/ai-management/overview
+        show: True
       - title: "Publish Ops"
         category: Directory
         show: False
