@@ -2,22 +2,11 @@
 title: Developer Portal Integration
 description: Explains how to integrate developer portal with Tyk streams
 tags: [ "Developer Portal Integration", "Developer Portal", "EDP" ]
+publishdate: 2024-06-07
 ---
 
 
 Tyk Streams seamlessly integrates with the Tyk Developer Portal, enabling developers to easily discover, subscribe to, and consume async APIs and event streams. This section covers how to publish async APIs to the developer portal, provide documentation and enable developers to subscribe to events and streams.
-
-</br>
-
-{{< warning success>}}
-
-**Important notice: Tyk Stream in Lab Release**
-
-*Tyk Streams* is currently in the *Lab Release* phase. It is under active development and testing, and is not intended for production use. For more details and to provide your feedback, please visit our [Lab Release Information Page]({{< ref "developer-support/special-releases-and-features/lab-releases" >}}).
-
-</br>
-
-{{< /warning >}}
 
 ---
 
