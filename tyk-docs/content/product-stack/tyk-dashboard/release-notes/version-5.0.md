@@ -1,12 +1,67 @@
 ---
 title: Tyk Dashboard v5.0
-tags: ["release notes", "Tyk Dashboard", "v5.0", "5.0", "5.0.0", "5.0.1", "5.0.1", "5.0.2", "5.0.3", "5.0.4", "5.0.5", "5.0.6", "5.0.7", "5.0.8", "5.0.9", "5.0.10"]
+tags: ["release notes", "Tyk Dashboard", "v5.0", "5.0", "5.0.0", "5.0.1", "5.0.1", "5.0.2", "5.0.3", "5.0.4", "5.0.5", "5.0.6", "5.0.7", "5.0.8", "5.0.9", "5.0.10", "5.0.11", "5.0.12", "5.0.13", "5.0.14"]
 weight: 2
 ---
 
 **Licensed Protected Product**
 
 **This page contains all release notes for version 5.0.X displayed in reverse chronological order**
+
+---
+
+## 5.0.14 Release Notes
+
+### Release Date XX September 2024
+
+### Release Highlights
+
+This release fixes some display issues in Tyk Dashboard and Tyk Classic Portal when using PostgreSQL.
+
+### Changelog {#Changelog-v5.0.14}
+
+#### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Fixed display issue for API stats</summary>
+
+Fixed an issue where API stats not being shown when adding two or more tags in the Activity page and using PostgreSQL
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed issue with display of HTTP 429 status codes on the Activity page</summary>
+
+Fixed an issue where HTTP 429 status codes were not being shown on the Activity page when using PostgreSQL
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed display of graphs and requests counter on Tyk Classic Portal</summary>
+
+Fixed wrong graphs and incorrect requests counter on Tyk Classic Portal when using PostgreSQL
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Error Breakdown display issues with dates</summary>
+
+Fixed Error Breakdown issues with dates (it was showing errors that happened on different dates than the one that was actually displayed)
+</details>
+</li>
+</ul>
+
+---
+
+## 5.0.13 Release Notes
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.13)
+
+---
+
+## 5.0.12 Release Notes
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.12)
 
 ---
 
