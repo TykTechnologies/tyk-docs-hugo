@@ -13,7 +13,7 @@ Golang templates use the following syntax:
 - `{{.MethodName}}` to call a method on an object 
 - `{{if }} {{else}} {{end}}` for conditionals
 - `{{range .}} {{.}} {{end}}` to iterate over a slice
-- Functions can be called like `{{FuncName .}}`
+- Functions can be called like `{{FuncName .}}` or just `{{FuncName}}`
 
 These templates are part of the default theme that ships with the portal, which can be fully customized by modifying the template files. The templates have access to [template data]({{< ref "/product-stack/tyk-enterprise-developer-portal/templates/data" >}}) which contains dynamic values that can be rendered into the HTML. There are also a number of [global helper functions]({{< ref "/product-stack/tyk-enterprise-developer-portal/templates/functions" >}}) available to transform data before output.
 

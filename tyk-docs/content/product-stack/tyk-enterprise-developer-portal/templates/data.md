@@ -451,6 +451,7 @@ This template is used to render the organisation user detail page.
 - `{{ .user }}`: The organisation user object.
 
 ### User Attributes
+
 Accessible via `{{ .user }}`
 
 | Attribute/Method | Description |
@@ -511,6 +512,7 @@ Accessible via `{{ range .roles }}`
 | `{{ .DisplayName }}` | Role display name |
 
 ### User Attributes
+
 Accessible via `{{ .user }}`
 
 | Attribute/Method | Description |
