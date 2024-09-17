@@ -1,0 +1,31 @@
+name: Create a new branch from master
+
+on:
+  workflow_dispatch:
+    inputs:
+      current_latest_branch:
+        description: 'The current latest branch (for reference or other operations)'
+        required: true
+      next_latest_branch:
+        description: 'The next latest branch to create from master'
+        required: true
+
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout master branch
+        uses: actions/checkout@v4
+        with:
+          ref: master  # Always checkout master branch
+
+      - name: Create the new branch from master
+        run: |
+          git checkout -b ${{ github.event.inputs.next_latest_branch }}
+
+      - name: Push the new branch to origin
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push origin ${{ github.event.inputs.next_latest_branch }}
