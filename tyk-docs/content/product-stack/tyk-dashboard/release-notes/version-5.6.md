@@ -99,16 +99,9 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Changelog item summary</summary>
+<summary>Endpoint-Level Rate Limits for Client Control</summary>
 
-Add new changelog description 
-</details>
-</li>
-<li>
-<details>
-<summary>Another changelog item summary</summary>
-
-Add new changelog description 
+We have introduced support for configuring endpoint-level rate limits in keys and policies. This new feature allows for more granular control over client consumption of API resources, enabling you to manage and optimize API usage more effectively. 
 </details>
 </li>
 </ul>
@@ -126,16 +119,24 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Changelog item summary</summary>
+<summary>Upgrade to Go 1.22 for Tyk Dashboard</summary>
 
-Add a new changelog description 
+The Tyk Dashboard has been upgraded from Golang 1.21 to Golang 1.22, bringing enhanced performance, strengthened security, and access to the latest features available in the new Golang release.
 </details>
 </li>
 <li>
 <details>
-<summary>Another changelog item summary</summary>
+<summary>Swagger Update: Enhanced Documentation and Schema for Dashboard</summary>
 
-Add a new changelog description 
+We have updated the swagger.yml schema for the Dashboard to reflect the latest changes in product endpoints, payloads, and responses. This update includes new fields and endpoints, improved examples, documentation adjustments, and fixes for schema issues. These enhancements aim to improve usability and ensure that the documentation accurately represents the current code state.
+</details>
+</li>
+
+<li>
+<details>
+<summary>UI Update: Renamed "Playground" Tab to "Playgrounds"</summary>
+
+The "Playground" tab in the API Designer has been renamed to "Playgrounds." This change consolidates access to both internal and external playgrounds within a single section, offering a more streamlined and intuitive experience for API design and testing.
 </details>
 </li>
 </ul>
@@ -150,18 +151,49 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Changelog item summary</summary>
+<summary>Correct Combination of Client Endpoint Rate Limits in Policies</summary>
 
-Add a new changelog description
+We have fixed an issue where API-level rate limits set in multiple policies were not correctly applied to the same key. With this update, when multiple policies configure rate limits for a key, the key will now receive the highest rate limit from the combined policies, ensuring proper enforcement of limits.
 </details>
 </li>
 <li>
 <details>
-<summary>Another changelog item summary</summary>
+<summary>Dashboard and Postgres Average Usage Per API</summary>
 
-Add a new changelog description 
+- Resolved an issue where 429 status codes were not being displayed on the Activity Overview page.
+- Fixed portal graphs when using Postgres by adding a default "day" grouping resolution to the query.
+- Corrected issues with the Error Breakdown related to date parameters, ensuring accurate date handling and display.
+
 </details>
 </li>
+
+<li>
+<details>
+<summary>UI Fix: Tyk Dashboard Keys Page Now Displays with 10+ Policies</summary>
+
+We have resolved an issue in the Tyk Dashboard where the Keys page would display a blank screen if more than 10 policies were associated with a key. The UI has been updated to correctly handle and display the page even when a key is linked to more than 10 policies, ensuring better visibility and management.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>UI Fix: Prevented Multiple Versions of the Same Tyk Classic API from Being Added to a Policy</summary>
+
+We have fixed an issue in the Dashboard UI that allowed users to attach the same version of a Tyk Classic API multiple times to a policy. The UI now correctly restricts duplicate API versions, ensuring accurate policy configuration and management.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>UI Fix: Corrected JWT Scope to Policy Mapping in Dashboard</summary>
+
+We have resolved an issue in the Dashboard UI where the scope name was incorrectly recorded instead of the policy ID for subsequent JWT scope mappings. The UI now accurately associates the defined scope with the correct policy, ensuring proper JWT scope to policy mappings.
+
+</details>
+</li>
+
 </ul>
 
 #### Security Fixes
@@ -175,12 +207,28 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
 <ul>
 <li>
 <details>
-<summary>Add a new CVE list</summary>
+<summary>Strengthened ResetPassword Permission Behavior</summary>
 
-Fixed the following high priority CVEs identified in the Tyk Dashboard, providing increased protection against security vulnerabilities:
-- [TBC](https://nvd.nist.gov/vuln/detail/CVE-2023-39325)
+We have fixed a privilege escalation vulnerability where a user with certain permissions could potentially reset other users' passwords, including admin accounts. The following changes have been made to tighten the behavior of the ResetPassword permission within the Dashboard's Role-Based Access Control (RBAC) system:
+- Only super-admins or admins can assign admin status to a user, and this cannot be assigned to user groups.
+- All users can reset their own passwords, but resetting other users' passwords now requires a specific ResetPassword permission.
+- The scope of the ResetPassword permission is limited to the Tyk Organization (OrgId) for which the user is an admin.
+- The ResetPassword permission can only be assigned by super-admins, directly to admin users (not user groups).
+- The allow_admin_reset_password configuration ensures that all admin users automatically receive the ResetPassword permission.
+
 </details>
 </li>
+
+<li>
+<details>
+<summary>Gateway Secret No Longer Logged in Dashboard Logs</summary>
+
+We have addressed a security issue where the Gateway secret was appearing in the Dashboard system logs when the /api/keys endpoint was called while in debug mode. This fix prevents the Gateway secret from being logged, enhancing the security of your system. Please note that running in debug mode is not recommended for production environments.
+
+</details>
+</li>
+
+
 </ul>
 <!-- Required. use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
 
