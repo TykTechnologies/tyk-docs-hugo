@@ -128,7 +128,7 @@ The Tyk Gateway now supports logging in JSON format. To enable this feature, set
 </li>
 </ul>
 
-##### Changed
+#### Changed
 <!-- This should be a bullet-point list of updated features. Explain:
 
 - Why was the update necessary?
