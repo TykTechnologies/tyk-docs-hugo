@@ -156,7 +156,7 @@ By fine-tuning these configurations, developers can create robust,
 secure, and maintainable routing rules tailored to their specific use
 cases.
 
-### Migration notes
+## Migration notes
 
 Configuration of URL matching behaviour was released on:
 
