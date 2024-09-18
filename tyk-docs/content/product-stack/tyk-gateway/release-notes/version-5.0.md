@@ -58,6 +58,14 @@ Fixed an issue when using granular [Path-Based Permissions]({{< ref "security/se
 Fixed an issue where a parameterized endpoint URL (e.g. `/user/{id}`) would be invoked if a request is made that omits the parameter. For example, a request to `/user/` will now be interpreted as a request to `/user` and not to `/user/{id}`.
 </details>
 </li>
+
+<li>
+<details>
+<summary>Enhancement: Improved Gateway Synchronization with MDCB for Policies and APIs</summary>
+
+We have enhanced the Tyk Gateway's synchronization with MDCB to ensure more reliable loading of policies and APIs. A synchronous initialization process has been implemented to prevent startup failures and reduce the risk of service disruptions caused by asynchronous operations. This update ensures smoother and more consistent syncing of policies and APIs from MDCB.
+</details>
+</li>
 </ul>
 
 ---
