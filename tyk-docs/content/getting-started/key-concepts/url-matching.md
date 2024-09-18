@@ -228,7 +228,7 @@ segment with a `*` (wildcard), or `{*}` in older versions.
 
 ---
 
-#### Advanced Pattern Matching
+#### Advanced pattern matching
 
 Named parameters support specifying a regular expression to match. This
 is in use with API listen paths and endpoints.
