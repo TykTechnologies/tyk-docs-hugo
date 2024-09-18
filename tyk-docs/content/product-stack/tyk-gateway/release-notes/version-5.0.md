@@ -14,7 +14,7 @@ aliases:
 
 ## 5.0.14 Release Notes
 
-### Release Date XX September 2024
+### Release Date 18th September 2024
 
 ### Release Highlights
 
