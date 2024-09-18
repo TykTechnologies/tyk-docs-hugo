@@ -61,7 +61,7 @@ Fixed an issue where a parameterized endpoint URL (e.g. `/user/{id}`) would be i
 
 <li>
 <details>
-<summary>Enhancement: Improved Gateway Synchronization with MDCB for Policies and APIs</summary>
+<summary>Improved Gateway Synchronization with MDCB for Policies and APIs</summary>
 
 We have enhanced the Tyk Gateway's synchronization with MDCB to ensure more reliable loading of policies and APIs. A synchronous initialization process has been implemented to prevent startup failures and reduce the risk of service disruptions caused by asynchronous operations. This update ensures smoother and more consistent syncing of policies and APIs from MDCB.
 </details>
