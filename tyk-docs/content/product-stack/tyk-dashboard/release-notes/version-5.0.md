@@ -51,6 +51,16 @@ Fixed wrong graphs and incorrect requests counter on Tyk Classic Portal when usi
 Fixed Error Breakdown issues with dates (it was showing errors that happened on different dates than the one that was actually displayed)
 </details>
 </li>
+
+<li>
+<details>
+<summary>Fixed: Dashboard and Postgres Average Usage Per API</summary>
+
++ Resolved an issue where 429 status codes were not being displayed on the Activity Overview page.
++ Fixed portal graphs when using Postgres by adding a default "day" grouping resolution to the query.
++ Corrected issues with the Error Breakdown related to date parameters, ensuring accurate date handling and display.
+</details>
+</li>
 </ul>
 
 ---
