@@ -26,7 +26,7 @@ routes, middleware, or security policies. This is especially important
 for developers configuring APIs and middleware to control which endpoints
 are exposed, restricted, or protected.
 
-### Why URL Matching Matters
+### Why URL matching matters
 
 When configuring APIs, precise URL matching helps developers:
 
@@ -34,17 +34,17 @@ When configuring APIs, precise URL matching helps developers:
 2. **Simplify Routing Logic**: Instead of defining individual routes for each endpoint, URL matching lets you group similar routes using patterns, reducing complexity.
 3. **Enhance Security**: Properly defined URL matching patterns are essential for enforcing security policies, like blocking or allowing access to specific resources.
 
-URL matching is fundamental to many components of the system, including:
+URL matching is fundamental to the behavior of many Tyk middleware, including:
 
-- [Securing APIs by Method and Path]({{< ref"security/security-policies/secure-apis-method-path/" >}})
-- [Allow List Middleware]({{< ref"product-stack/tyk-gateway/middleware/allow-list-middleware/" >}})
-- [Block List Middleware]({{< ref"product-stack/tyk-gateway/middleware/block-list-middleware/" >}})
-- [Request and Response Middleware]({{< ref"advanced-configuration/transform-traffic/" >}})
+- [Granular access control]({{< ref "security/security-policies/secure-apis-method-path" >}})
+- [Allow List]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}})
+- [Block List]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware" >}})
+- [Request and Response transformation]({{< ref "advanced-configuration/transform-traffic" >}})
 
-Some components, like [URL Rewriting]({{< ref"transform-traffic/url-rewriting/" >}}),
+Some middleware, such as [URL Rewriting]({{< ref "transform-traffic/url-rewriting" >}}),
 implement regular expression matching only, and do not apply path matching logic.
 
-### Pattern Matching Overview
+### Introduction to pattern matching
 
 We've divided URL matching into three logical categories:
 
@@ -52,13 +52,13 @@ We've divided URL matching into three logical categories:
 
 Basic path matching involves the direct comparison of a URL against
 predefined patterns. The system can operate in either wildcard or
-prefix/suffix modes (explained further below), allowing for flexible or
+prefix/suffix modes (explained further [below](#url_matching_configuration_options), allowing for flexible or
 strict matches based on the desired configuration.
 
 #### 2. **Named Route Parameters**
 
 Named parameters within routes allow for dynamic URL matching. For
-example, a route like `/users/{id}` would match any URL of the form
+example, the pattern `/users/{id}` would match any URL of the form
 `/users/123`, where `123` is treated as a dynamic segment. This is
 particularly useful for APIs where resource identifiers or user-specific
 endpoints need to be handled. One can use `*` for an unnamed segment,
@@ -66,20 +66,36 @@ for example `/users/*/info`.
 
 #### 3. **Advanced Pattern Matching**
 
-Advanced matching supports more complex regular expressions, enabling
-developers to define granular rules that handle varied use cases like
+Advanced pattern matching supports more complex regular expressions, enabling
+developers to define granular rules that handle varied use cases such as
 versioning, optional parameters, and multiple route patterns.
 
-### Configuration Parameters for Matching Behavior
+### URL matching configuration options
 
-Several configuration flags are available to control URL matching
-behavior. Here's a detailed explanation of how these flags influence
-matching:
+Tyk Gateway can be configured to perform URL matching in one of four modes:
 
-#### `EnablePathPrefixMatching`
+- [wildcard match](#wildcard_match)
+- [prefix match](#prefix_match)
+- [suffix match](#suffix_match)
+- [exact match](#exact_match)
 
-By enabling this flag, URL matching switches from a wildcard mode to
-prefix matching. This means that a URL pattern like `/json` is
+This configuration can be set in the Gateway config file (`tyk.conf`) or using the equivalent environment variables, as described below.
+
+**Tyk recommends the use of exact path matching for most use cases.**
+
+#### Wildcard match
+
+The default behavior of Tyk if neither of the configuration options is set to `true` is to perform wildcard matching. In this mode, Tyk will attempt to match the pattern with any part of the URL path.
+
+For example, the pattern `/user` will match all of the following URLs:
+- `/my-api/user`
+- `/my-api/users`
+- `/my-api/v2/user/12345`
+- `/my-api/groups/12/username/abc`
+#### Prefix match
+
+Enabling the `EnablePathPrefixMatching` flag will set Tyk to use the prefix matching method.
+This means that a URL pattern (for example `/json`) will be
 interpreted as a prefix, matching any URL that starts with `/json`. In
 prefix mode, the system will perform matches as follows:
 
@@ -94,9 +110,9 @@ with the specified path. For example, `/json` would be evaluated as
 `^/json`. If you're aiming for exact matches, you can combine this with
 the suffix matching option (see below).
 
-#### `EnablePathSuffixMatching`
+#### Suffix match
 
-This flag adjusts the behavior to match URLs by their suffix. When suffix
+Enabling the `EnablePathSuffixMatching` option adjusts the behavior to match URLs by their suffix. When suffix
 matching is enabled, a pattern like `/json` is treated as ending with a
 `$` symbol, ensuring that it only matches URLs that terminate in `/json`.
 Example matches include:
@@ -110,10 +126,10 @@ If the input pattern already ends with `$` (e.g., `/json$`), the system
 will not modify it, treating it as a strict match for URLs that end
 precisely with the provided pattern.
 
-#### Combining Prefix and Suffix Matching
+#### Exact match
 
-For exact URL matching, you can combine both prefix and suffix matching.
-For example, enabling both flags would result in `/json` being matched as
+Exact URL matching combines prefix and suffix matching, to ensure that the URL exactly matches the required pattern.
+For example, enabling both flags would result in `/json` being treated as
 `^/json$`, ensuring the URL exactly matches `/json` with no additional
 characters before or after it. This allows matching against any of the
 matching paths explicitly:
@@ -128,12 +144,12 @@ targeting individual APIs, versions or endpoints.
 
 ---
 
-### Practical Use Cases for URL Matching
+### Practical use cases for URL matching
 
-Understanding these behaviors is essential in scenarios where:
+Understanding these behaviors is essential in scenarios such as:
 
-- **API Versioning**: You may want to allow different versions of an API, like `/v1/users` and `/v2/users`, while still matching certain common paths or endpoints.
-- **Middleware Control**: Middleware often relies on URL matching to determine when specific behaviors, like rate limiting or authentication, should be applied.
+- **API Versioning**: You may want to allow different versions of an API, such as `/v1/users` and `/v2/users`, while still matching certain common paths or endpoints.
+- **Middleware Control**: Middleware often relies on URL matching to determine when specific behaviors, such as rate limiting or authentication, should be applied.
 - **Security Policies**: URL matching ensures that security policies, such as allow or block lists, are enforced for the correct paths without mistakenly leaving critical routes unprotected.
 
 By fine-tuning these configurations, developers can create robust,
@@ -153,10 +169,10 @@ In those versions, granular access middleware adds support for named
 parameters, extending the regular expressions to a wider set of supported
 patterns.
 
-Before these versions, the matching is done against the full request
+Prior to these versions, the matching is done against the full request
 path, `/listen-path/v4/json` in wildcard mode. To achieve prefix or
 suffix matching in older versions, consider that the input is a regular
-expression. Depending on your setup, you could use the `[^/]+` for any of
+expression. Depending on your setup, you could use `[^/]+` for any of
 the path segments or finer grained regular expressions.
 
 - `^/[^/]+/v4/json$` - exact match for any listen path, `/v4/json` below
@@ -164,7 +180,7 @@ the path segments or finer grained regular expressions.
 - `^/{*}/json`, prefix match (omits the `$`).
 
 To achieve a prefix match for older versions, you must add the listen
-path to the url, and use a regex as `^/listen-path/users`, and consider
+path to the URL, and use a regex such as `^/listen-path/users`, and consider
 using the ending `$` expression to achieve exact matches. Wildcard
 matches, if desired, are still available in recent versions, by either
 omitting the `/` prefix in the input URL, or by defining a full regular
@@ -185,7 +201,7 @@ complex expression to match [ULID](https://github.com/ulid/spec) values:
 - [Go playground test example](https://go.dev/play/p/nlLUQmVxKsp)
 - Using `(?i)` makes the particular matching case-insensitive
 
-The explicit behaviour of the pattern match is to match the pattern by
+The explicit behavior of the pattern match is to match the pattern by
 prefix all the way to the end of the defined pattern.
 
 The input has full go regex (RE2) support. See
@@ -193,7 +209,7 @@ The input has full go regex (RE2) support. See
 
 ---
 
-#### Named And Unnamed Route Parameters
+#### Named and unnamed route parameters
 
 Named route parameters allow for dynamic segments in paths, where
 specific parts can be variable and populated from the OpenAPI

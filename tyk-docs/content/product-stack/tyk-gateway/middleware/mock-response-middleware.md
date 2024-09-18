@@ -55,10 +55,9 @@ When working with Tyk OAS APIs, Tyk Gateway can parse the [examples and schema](
 
 <hr>
 
-## Tutorials
 
-- [Tyk OAS mock response tutorial]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas" >}}) or
-- [Tyk classic mock response tutorial]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-classic" >}}).
+If you’re using Tyk OAS APIs, then you can find details and examples of how to configure the mock response middleware [here]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas" >}}).
+If you’re using Tyk Classic APIs, then you can find details and examples of how to configure the response body transformation middleware [here]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  ## Mock Response middleware summary

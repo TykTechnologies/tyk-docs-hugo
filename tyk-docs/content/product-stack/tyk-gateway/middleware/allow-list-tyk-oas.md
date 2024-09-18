@@ -11,7 +11,6 @@ When working with Tyk OAS APIs the middleware is configured in the [Tyk OAS API 
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-classic" >}}) page.
 
-For detailed documentation on URL matching behavior, please refer to [URL Matching in Tyk]({{< ref "getting-started/key-concepts/url-matching" >}}).
 
 ## Configuring the allow list in the Tyk OAS API Definition
 
