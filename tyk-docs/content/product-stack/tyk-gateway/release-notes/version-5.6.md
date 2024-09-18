@@ -114,16 +114,16 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Changelog item summary</summary>
+<summary>Endpoint-Level Rate Limits for Client Control</summary>
 
-Add a new changelog description
+We have introduced support for configuring endpoint-level rate limits in keys and policies. This new feature allows for more granular control over client consumption of API resources, enabling you to manage and optimize API usage more effectively.
 </details>
 </li>
 <li>
 <details>
-<summary>Changelog item summary</summary>
+<summary>JSON Format for Gateway Logs</summary>
 
-Add a new changelog description
+The Tyk Gateway now supports logging in JSON format. To enable this feature, set the environment variable TYK_GW_LOGFORMAT to json. If a different value is provided, the logs will default to the standard format. This enhancement allows for improved log processing and integration with various monitoring tools.
 </details>
 </li>
 </ul>
@@ -140,16 +140,9 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Changelog item summary</summary>
+<summary>Upgrade to Go 1.22 for Tyk Dashboard</summary>
 
-Add a new changelog summary 
-</details>
-</li>
-<li>
-<details>
-<summary>Another changelog item summary</summary>
-
-Add a new changelog summary
+The Tyk Gateway and Tyk Dashboard have been upgraded from Golang 1.21 to Golang 1.22, bringing enhanced performance, strengthened security, and access to the latest features available in the new Golang release.
 </details>
 </li>
 </ul>
@@ -166,22 +159,30 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Changelog item summary</summary>
+<summary>Improved Gateway Synchronization with MDCB for Policies and APIs</summary>
 
-Add a new changelog description
+We have enhanced the Tyk Gateway's synchronization with MDCB to ensure more reliable loading of policies and APIs. A synchronous initialization process has been implemented to prevent startup failures and reduce the risk of service disruptions caused by asynchronous operations. This update ensures smoother and more consistent syncing of policies and APIs from MDCB.
 </details>
 </li>
 <li>
 <details>
-<summary>Another changelog item summary</summary>
+<summary>Quota Limit Respected During Spike Tests</summary>
 
-Add a new changelog description
+We have fixed an issue where the quota limit was not being consistently respected during spike tests, especially in deployments with multiple gateways. The problem occurred when multiple gateways cached the current and remaining quota counters at the end of quota periods. To address this, a distributed lock mechanism has been implemented, ensuring coordinated quota resets and preventing discrepancies across gateways.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Performance Improvement: Restored Key Creation Speed in Gateway 4.0.13 and Later</summary>
+
+We have addressed a performance regression in gateway versions 4.0.13 and later, where key creation for policies with a large number of APIs (100+) became significantly slower. The operation, which previously took around 1.5 seconds in versions 4.0.0 to 4.0.12, was taking over 20 seconds in versions 4.0.13 and beyond. This issue has been resolved by optimizing Redis operations during key creation, restoring the process to its expected speed of approximately 1.5 seconds, even with a large number of APIs in the policy.
 </details>
 </li>
 </ul>
 
 
-#### Security Fixes
+<!-- #### Security Fixes -->
 <!-- This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
 1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
 2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
@@ -192,7 +193,7 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
     - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
 -->
 
-<ul>
+<!-- <ul>
 <li>
 <details>
 <summary>Add a new CVE list</summary>
@@ -201,7 +202,7 @@ Fixed the following high priority CVEs identified in the Tyk Gateway, providing 
 - [CVE to add](https://nvd.nist.gov/vuln/detail/CVE-2023-39325)
 </details>
 </li>
-</ul>
+</ul> -->
 
 <!-- Required. use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
 ---
