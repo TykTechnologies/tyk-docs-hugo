@@ -2,7 +2,7 @@
 title: "Templates"
 date: 2024-08-28
 tags: ["Tyk Developer Portal", "Enterprise Portal", "Templates", "Customization"]
-description: "Comprehensive guide to templates, data structures, and functions in Tyk Enterprise Developer Portal"
+description: "Comprehensive guide to customizing the Tyk Enterprise Developer Portal using templates. Covers template types, data structures, global helper functions, and email templates to enable full control over portal appearance and functionality."
 menu:
     main:
         parent: "Customize the portal"
