@@ -9,10 +9,6 @@ on:
       next_latest_branch:
         description: 'The new branch to create from master'
         required: true
-permissions:
-  contents: write  # Required to push changes to the repository
-  pull-requests: write  # Required to create and update pull requests
-
 jobs:
   update-config-and-create-pr:
     runs-on: ubuntu-latest
@@ -65,7 +61,7 @@ jobs:
       - name: Create Pull Request for stable-updater.yaml update
         uses: peter-evans/create-pull-request@v7
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.ORG_GH_TOKEN }}
           branch: update-stable-updater-${{ github.run_id }}
           title: "Update stable-updater.yaml to use ${{ github.event.inputs.next_latest_branch }}"
           body: "This pull request updates the stable-updater.yaml file to use the next_latest_branch ${{ github.event.inputs.next_latest_branch }}."
