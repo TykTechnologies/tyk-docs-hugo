@@ -50,6 +50,13 @@ jobs:
           git add tyk-docs/config.toml
           git commit -m "Update baseURL in config.toml to //tyk.io/docs/$VERSION/"
 
+      # Push the new branch to origin
+      - name: Push new branch to origin
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push origin update-config-${{ github.event.inputs.current_latest_branch }}-${{ github.run_id }}
+
       # Create Pull Request using peter-evans action
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
