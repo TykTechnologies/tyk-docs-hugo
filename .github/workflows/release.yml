@@ -43,12 +43,10 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: update-config-${{ github.event.inputs.current_latest_branch }}-${{ github.run_id }}
-          base: ${{ github.event.inputs.current_latest_branch }}
           title: "Update baseURL to //tyk.io/docs/$VERSION/"
           body: "This pull request updates the baseURL in config.toml to //tyk.io/docs/$VERSION/."
           labels: update
           assignees: ${{ github.actor }}
-
       # Checkout master branch to create a new branch
       - name: Checkout master branch
         uses: actions/checkout@v4
