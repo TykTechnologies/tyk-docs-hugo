@@ -11,8 +11,6 @@ When working with Tyk Classic APIs the middleware is configured in the Tyk Class
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas" >}}) page.
 
-For detailed documentation on URL matching behavior, please refer to [URL Matching in Tyk]({{< ref "getting-started/key-concepts/url-matching" >}}).
-
 ## Configuring the allow list in the Tyk Classic API Definition
 
 To enable and configure the allow list you must add a new `white_list` object to the `extended_paths` section of your API definition.

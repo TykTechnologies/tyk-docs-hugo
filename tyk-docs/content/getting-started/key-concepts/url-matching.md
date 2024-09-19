@@ -1,37 +1,37 @@
 ---
-title: URL matching in Tyk
+title: URL Path Matching
 tags:
-    - URL matching
+    - URL path matching
     - Regular expressions
     - Secure access
     - Middleware
     - Routing
     - Endpoint
     - Listen path
-description: Overview of URL matching with the Tyk Gateway
+description: Overview of URL path matching with the Tyk Gateway
 date: "2024-08-30"
 ---
 
-When a request is made to an API hosted on Tyk Gateway, the gateway matches the incoming URL path against routes (patterns) defined in the API definition. Matching the request path against the *listen path* of an API exposed on the gateway is the first step for Tyk determining how to handle the request. Tyk provides a very flexible and configurable approach to URL matching to support a wide range of use cases.
+When a request is made to an API hosted on Tyk Gateway, the gateway matches the incoming URL path against routes (patterns) defined in the API definition. Matching the request path against the *listen path* of an API exposed on the gateway is the first step for Tyk determining how to handle the request. Tyk provides a very flexible and configurable approach to URL path matching to support a wide range of use cases.
  
 Understanding this process is crucial because it directly impacts how URLs are routed and matched, influencing both API behavior and security controls.
 
 
-## What is URL matching?
+## What is URL path matching?
 
-URL matching defines the rules for how request URLs are compared to
+URL path matching defines the rules for how request URLs are compared to
 predefined patterns, determining whether they should trigger certain
 routes, middleware, or security policies. This is especially important
 for developers configuring APIs and middleware to control which endpoints
 are exposed, restricted, or protected.
 
-When configuring APIs, precise URL matching helps developers:
+When configuring APIs, precise URL path matching helps developers:
 
-1. **Control Access to Endpoints**: By using strict or flexible URL matching patterns, you can fine-tune which routes are exposed to users or external systems.
-2. **Simplify Routing Logic**: Instead of defining individual routes for each endpoint, URL matching lets you group similar routes using patterns, reducing complexity.
-3. **Enhance Security**: Properly defined URL matching patterns are essential for enforcing security policies, like blocking or allowing access to specific resources.
+1. **Control Access to Endpoints**: By using strict or flexible URL path matching patterns, you can fine-tune which routes are exposed to users or external systems.
+2. **Simplify Routing Logic**: Instead of defining individual routes for each endpoint, URL path matching lets you group similar routes using patterns, reducing complexity.
+3. **Enhance Security**: Properly defined URL path matching patterns are essential for enforcing security policies, like blocking or allowing access to specific resources.
 
-URL matching is fundamental to the behavior of various Tyk middleware, including:
+URL path matching is fundamental to the behavior of various Tyk middleware, including:
 
 - [Granular access control]({{< ref "security/security-policies/secure-apis-method-path" >}})
 - [Allow List]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}})
@@ -42,18 +42,18 @@ URL matching is fundamental to the behavior of various Tyk middleware, including
 **Note**  
 
 The [URL Rewriting]({{< ref "transform-traffic/url-rewriting#how-url-rewriting-works" >}}) middleware's
-rule check implements regular expression matching only: it does not apply URL matching logic and is not
+rule check implements regular expression matching only: it does not apply URL path matching logic and is not
 affected by the configurations described in this section
 {{< /note >}}
 
 
-## When might you want to control URL matching?
+## When might you want to control URL path matching?
 
-Understanding the Gateway's URL matching behavior is essential in scenarios such as:
+Understanding the Gateway's URL path matching behavior is essential in scenarios such as:
 
 - **API Versioning**: You may want to allow different versions of an API, such as `/v1/users` and `/v2/users`, while still matching certain common paths or endpoints.
-- **Middleware Control**: Middleware often relies on URL matching to determine when specific behaviors, such as rate limiting or authentication, should be applied.
-- **Security Policies**: URL matching ensures that security policies, such as allow or block lists, are enforced for the correct paths without mistakenly leaving critical routes unprotected.
+- **Middleware Control**: Middleware often relies on URL path matching to determine when specific behaviors, such as rate limiting or authentication, should be applied.
+- **Security Policies**: URL path matching ensures that security policies, such as allow or block lists, are enforced for the correct paths without mistakenly leaving critical routes unprotected.
 
 By fine-tuning these configurations, developers can create robust,
 secure, and maintainable routing rules tailored to their specific use
@@ -233,7 +233,7 @@ Example:
 
 ### Exact match
 
-Exact URL matching combines [prefix](#prefix-match) and [suffix](#suffix-match) matching, to ensure that the URL exactly matches the required pattern.
+Exact URL path matching combines [prefix](#prefix-match) and [suffix](#suffix-match) matching, to ensure that the URL exactly matches the required pattern.
 
 For example, enabling both flags would result in `/json` being treated as `^/json$`, ensuring the URL exactly matches `/json` with no additional characters before or after it. This allows matching against any of the matching paths explicitly:
 
@@ -276,7 +276,7 @@ The following table indicates the matching that will be performed by the Gateway
 
 ## Migration notes
 
-Configuration of URL matching behavior was released in:
+Configuration of URL path matching behavior was released in:
 
 - Tyk Gateway 5.0.14
 - Tyk Gateway 5.3.5

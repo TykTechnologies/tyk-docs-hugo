@@ -21,15 +21,31 @@ Tyk Gateway does not actually maintain a list of allowed endpoints but rather wo
 
 Tyk Gateway will subsequently return `HTTP 403 Forbidden` to any requested endpoint that doesn't have the *allow list* middleware enabled, even if the endpoint is defined and configured in the API definition.
 
+<br>
 {{< note success >}}
 **Note**
 
 If you enable the allow list feature by adding the middleware to any endpoint, ensure that you also add the middleware to any other endpoint for which you wish to accept requests.
 {{< /note >}}
 
-## Configuring the allow list
+### Case sensitivity
 
-For detailed documentation on URL matching behavior, please refer to [URL Matching in Tyk]({{< ref "getting-started/key-concepts/url-matching" >}}).
+By default the allow list is case-sensitive, so for example if you have defined the endpoint `GET /userID` in your API definition then only calls to `GET /userID` will be allowed: calls to `GET /UserID` or `GET /userid` will be rejected. You can configure the middleware to be case-insensitive at the endpoint level.
+
+You can also set case sensitivity for the entire [gateway]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in the Gateway configuration file `tyk.conf`. If case insensitivity is configured at the gateway level, this will override the endpoint-level setting.
+
+### Endpoint parsing
+
+When using the allow list middleware, we recommend that you familiarize yourself with Tyk's [URL matching]({{< ref "getting-started/key-concepts/url-matching" >}}) options.
+
+<br>
+{{< note success >}}
+**Note**  
+
+Tyk recommended's that you use [exact]({{< ref "getting-started/key-concepts/url-matching#exact-match" >}}) matching for maximum security, though prefix and wildcard strategies might also apply for your particular deployment or use case.
+{{< /note >}}
+
+## Configuring the allow list
 
 If you're using Tyk OAS APIs, then you can find details and examples of how to configure the allow list middleware [here]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas" >}}).
 

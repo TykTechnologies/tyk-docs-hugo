@@ -9,7 +9,7 @@ The [Mock Response]({{< ref "product-stack/tyk-gateway/middleware/mock-response-
 
 When working with Tyk Classic APIs, this middleware is executed at the start of the request processing chain. Thus an endpoint with the mock response middleware will not be authenticated, will not process other middleware configured for the API (neither API nor endpoint level) and will have no analytics created. It will simply return the configured response for any request made to that endpoint.
 
-The middleware is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
+The middleware is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API, the API Designer or in [Tyk Operator](#tyk-operator).
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas" >}}) page.
 
@@ -106,7 +106,7 @@ For the mock response to be enabled, the endpoint must also be in a list. We rec
 
 ## Configuring the middleware in Tyk Operator {#tyk-operator}
 
-The process of configuring a mock response is similar to that defined in section [configuring the middleware in Tyk Classic API definition](#tyk-classic).
+The process of configuring a mock response is similar to that defined in the [configuring the middleware in Tyk Classic API definition](#tyk-classic) section.
 
 To configure a mock response, you must first add a mock response configuration object to the `extended_paths` section, e.g. one of allow list (`white_list`), block list (`black_list`) or ignore authentication (`ignore`). The mock response configuration object has the following properties:
 
