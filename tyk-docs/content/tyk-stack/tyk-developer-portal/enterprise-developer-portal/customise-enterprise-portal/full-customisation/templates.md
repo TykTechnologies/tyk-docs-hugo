@@ -5,9 +5,11 @@ tags: ["Tyk Developer Portal", "Enterprise Portal", "Templates", "Customization"
 description: "Comprehensive guide to customizing the Tyk Enterprise Developer Portal using templates. Covers template types, data structures, global helper functions, and email templates to enable full control over portal appearance and functionality."
 menu:
     main:
-        parent: "Customize the portal"
+        parent: "Full Customization"
 weight: 3
 ---
+
+# Overview
 
 Templates are a fundamental component of the Tyk Enterprise Developer Portal, enabling dynamic content generation and customization. The portal uses Golang templates to render the live portal views, allowing you to generate dynamic HTML by embedding directives inside HTML that are replaced with values when the template is executed.
 
@@ -22,7 +24,7 @@ Golang templates use the following syntax:
 These templates are part of the default theme that ships with the portal, which can be fully customized by modifying the template files. The templates have access to template data which contains dynamic values that can be rendered into the HTML. There are also a number of global helper functions available to transform data before output.
 
 The Tyk Enterprise Developer Portal uses several types of templates to render different parts of the portal:
-- Public Pages Templates: Render the portal's publicly accessible pages (such as Home, About Us, and Blog pages), forming the foundation of your portal's public-facing content.. These can be [customized]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation" >}}) through the Pages section of the admin dashboard.
+- Public Pages Templates: Render the portal's publicly accessible pages (such as Home, About Us, and Blog pages), forming the foundation of your portal's public-facing content.. These can be customized through the Pages [section]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content" >}}) of the admin dashboard.
 - Private Pages Templates: Responsible for rendering the portal's authenticated user pages, like Profile settings and My Apps.
 - Email Templates: Define the structure and content of emails sent by the portal, such as signup confirmations or access request approvals.
 
@@ -1458,9 +1460,12 @@ Returns the credential type ("oAuth2.0" or "authToken") given the credential.
 
 This section provides a detailed overview of the email template data available in the Tyk Enterprise Developer Portal. 
 
-The Tyk Enterprise Developer Portal uses a variety of email templates for different purposes, such as user registration and access request status or organisation status updates. Each template has access to specific data or functions relevant to its purpose.
+The Tyk Enterprise Developer Portal uses a variety of email templates for different purposes, such as user registration and access request status or organisation status updates. Each template has access to specific data or functions relevant to its purpose. 
 
 It's important to note that while email templates can include template data or specific template functions, they do not have access to the global helper functions available in other portal templates.
+
+Refer to [email workflow]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization" >}}) for additional detail on email notifications sent by the portal.
+
 
 ## Available Email Templates
 
