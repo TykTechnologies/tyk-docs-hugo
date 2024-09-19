@@ -1,31 +1,56 @@
+name: Update baseURL and Create Pull Request
+
+on:
+  workflow_dispatch:
+    inputs:
+      current_latest_branch:
+        description: 'The current latest branch to update config.toml'
+        required: true
+      next_latest_branch:
+        description: 'The new branch to create from master'
+        required: true
+
 jobs:
   update-config-and-create-pr:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout the current latest branch
       - name: Checkout the current latest branch
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.current_latest_branch }}
 
+      # Configure Git Identity for committing changes
       - name: Configure Git Identity
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+      # Extract version from the current_latest_branch (e.g., 'release-5.5' -> '5.5')
+      - name: Extract version from branch name
+        id: extract_version
+        run: |
+          VERSION=$(echo "${{ github.event.inputs.current_latest_branch }}" | grep -oP '\d+\.\d+')
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      # Create a new branch for the config update
       - name: Create a new branch for the config update
         run: |
           git checkout -b update-config-${{ github.event.inputs.current_latest_branch }}-${{ github.run_id }}
 
+      # Update baseURL in config.toml
       - name: Update baseURL in config.toml
         run: |
           sed -i 's|baseURL = "//tyk.io/docs/"|baseURL = "//tyk.io/docs/$VERSION/"|g' tyk-docs/config.toml
 
+      # Commit the changes
       - name: Commit changes to the new branch
         run: |
           git add tyk-docs/config.toml
           git commit -m "Update baseURL in config.toml to //tyk.io/docs/$VERSION/"
 
+      # Create Pull Request using peter-evans action
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
@@ -36,3 +61,21 @@ jobs:
           body: "This pull request updates the baseURL in config.toml to //tyk.io/docs/$VERSION/."
           labels: update
           assignees: ${{ github.actor }}
+
+      # Checkout master branch to create a new branch
+      - name: Checkout master branch
+        uses: actions/checkout@v4
+        with:
+          ref: master
+
+      # Create the new branch from master
+      - name: Create the new branch from master
+        run: |
+          git checkout -b ${{ github.event.inputs.next_latest_branch }}
+
+      # Push the new branch to origin
+      - name: Push the new branch to origin
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push origin ${{ github.event.inputs.next_latest_branch }}
