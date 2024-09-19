@@ -19,6 +19,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.current_latest_branch }}
+      - name: Create a new branch for the config update
+        run: |
+          git checkout -b update-config-${{ github.event.inputs.current_latest_branch }}-${{ github.run_id }}
       - name: Configure Git user
         run: |
           git config user.name "GitHub Actions"
@@ -28,9 +31,6 @@ jobs:
         run: |
           VERSION=$(echo "${{ github.event.inputs.current_latest_branch }}" | grep -oP '\d+\.\d+')
           echo "VERSION=$VERSION" >> $GITHUB_ENV
-      - name: Create a new branch for the config update
-        run: |
-          git checkout -b update-config-${{ github.run_id }}
       - name: Update baseURL in config.toml
         run: |
           sed -i 's|baseURL = "//tyk.io/docs/"|baseURL = "//tyk.io/docs/$VERSION/"|g' tyk-docs/config.toml
