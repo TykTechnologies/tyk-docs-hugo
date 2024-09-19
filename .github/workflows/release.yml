@@ -37,6 +37,7 @@ jobs:
       - name: Commit changes to the new branch
         run: |
           git status
+          git branch
           git add tyk-docs/config.toml
           git commit -m "Update baseURL in config.toml to //tyk.io/docs/$VERSION/"
       - name: Create Pull Request
