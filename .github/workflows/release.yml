@@ -9,6 +9,10 @@ on:
       next_latest_branch:
         description: 'The new branch to create from master'
         required: true
+permissions:
+  contents: write  # Required to push changes to the repository
+  pull-requests: write  # Required to create and update pull requests
+  workflows: write  # Required to update workflow files (for the current action only)
 
 jobs:
   update-config-and-create-pr:
