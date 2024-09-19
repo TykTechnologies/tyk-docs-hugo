@@ -55,15 +55,27 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: master
-
-      # Create the new branch from master
-      - name: Create the new branch from master
+      - name: Update stable-updater.yaml
         run: |
-          git checkout -b ${{ github.event.inputs.next_latest_branch }}
+          sed -i "s|${{ github.event.inputs.current_latest_branch }}|${{ github.event.inputs.next_latest_branch }}|g" .github/workflows/stable-updater.yaml
+
+      - name: Create Pull Request for stable-updater.yaml update
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: update-stable-updater-${{ github.run_id }}
+          title: "Update stable-updater.yaml to use ${{ github.event.inputs.next_latest_branch }}"
+          body: "This pull request updates the stable-updater.yaml file to use the next_latest_branch ${{ github.event.inputs.next_latest_branch }}."
+          labels: ${{ github.event.inputs.next_latest_branch }}
+          assignees: ${{ github.actor }}
+      # Create the new branch from master
+      #- name: Create the new branch from master
+       # run: |
+        #  git checkout -b ${{ github.event.inputs.next_latest_branch }}
 
       # Push the new branch to origin
-      - name: Push the new branch to origin
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git push origin ${{ github.event.inputs.next_latest_branch }}
+      #- name: Push the new branch to origin
+       # env:
+        #  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #run: |
+         # git push origin ${{ github.event.inputs.next_latest_branch }}
