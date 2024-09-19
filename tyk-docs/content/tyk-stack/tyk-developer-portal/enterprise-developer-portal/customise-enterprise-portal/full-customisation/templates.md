@@ -1,45 +1,59 @@
 ---
 title: "Templates"
-date: 2024-08-28
+date: 2024-09-18
 tags: ["Tyk Developer Portal", "Enterprise Portal", "Templates", "Customization"]
-description: "Comprehensive guide to customizing the Tyk Enterprise Developer Portal using templates. Covers template types, data structures, global helper functions, and email templates to enable full control over portal appearance and functionality."
-menu:
-    main:
-        parent: "Full Customization"
-weight: 3
+description: |
+    Comprehensive guide to customizing the Tyk Enterprise Developer Portal using templates. Covers template
+    types, data structures, global helper functions, and email templates to enable full control over portal appearance
+    and functionality.
 ---
 
 # Overview
 
-Templates are a fundamental component of the Tyk Enterprise Developer Portal, enabling dynamic content generation and customization. The portal uses Golang templates to render the live portal views, allowing you to generate dynamic HTML by embedding directives inside HTML that are replaced with values when the template is executed.
+Templates are a fundamental component of the Tyk Enterprise Developer Portal, enabling dynamic content generation and
+customization. The portal uses Golang templates to render the live portal views, allowing you to generate dynamic HTML
+by embedding directives inside HTML that are replaced with values when the template is executed.
 
-Golang templates use the following syntax:
+Golang's templates use the following syntax:
 - `{{.}}` to output a value
 - `{{.FieldName}}` to access a field of an object
 - `{{.MethodName}}` to call a method on an object 
-- `{{if }} {{else}} {{end}}` for conditionals
+- `{{if}} {{else}} {{end}}` for conditionals
 - `{{range .}} {{.}} {{end}}` to iterate over a slice
 - Functions can be called like `{{FuncName .}}` or just `{{FuncName}}`
 
-These templates are part of the default theme that ships with the portal, which can be fully customized by modifying the template files. The templates have access to template data which contains dynamic values that can be rendered into the HTML. There are also a number of global helper functions available to transform data before output.
+These templates are part of the default theme that ships with the portal, which can be fully customized by modifying the
+template files. The templates have access to template data which contains dynamic values that can be rendered into the
+HTML. There are also a number of global helper functions available to transform data before output.
 
 The Tyk Enterprise Developer Portal uses several types of templates to render different parts of the portal:
-- Public Pages Templates: Render the portal's publicly accessible pages (such as Home, About Us, and Blog pages), forming the foundation of your portal's public-facing content.. These can be customized through the Pages [section]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content" >}}) of the admin dashboard.
-- Private Pages Templates: Responsible for rendering the portal's authenticated user pages, like Profile settings and My Apps.
-- Email Templates: Define the structure and content of emails sent by the portal, such as signup confirmations or access request approvals.
+- Public Pages Templates: Render the portal's publicly accessible pages (such as Home, About Us, and Blog pages),
+forming the foundation of your portal's public-facing content. These can be customized through the Pages
+[section]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content" >}})
+of the admin dashboard.
+- Private Pages Templates: Responsible for rendering the portal's authenticated user pages, like Profile settings and
+My Apps.
+- Email Templates: Define the structure and content of emails sent by the portal, such as signup confirmations or access
+request approvals.
 
-Both Public and Private Pages Templates have access to global helper functions (funcmaps) and template-specific data. Email templates can include template data and specific template functions, but do not have access to the global helper functions.
+Both Public and Private Pages Templates have access to global helper functions (funcmaps) and template-specific data.
+Email templates can include template data and specific template functions, but do not have access to the global helper
+functions.
 
-The following sections provide comprehensive information on the various components of the Tyk Enterprise Developer Portal templates:
+The following sections provide comprehensive information on the various components of the Tyk Enterprise Developer
+Portal templates:
 
 - [Template Data](#template-data): Detailed explanation of the data structures available in different templates.
-- [Global Helper Functions](#global-helper-functions): A list of global functions that can be used across templates to manipulate and display data.
+- [Global Helper Functions](#global-helper-functions): A list of global functions that can be used across templates to
+manipulate and display data.
 - [Email Templates](#email-templates): Information about email-specific templates and their available data.
 
 # Template Data
 
 This section outlines the Tyk Enterprise Developer Portal templates that have access to specific template data. 
-It's important to note that data availability varies between templates, depending on their context and purpose. For instance, a product detail template has access to product-specific data that may not be available in a blog listing template.
+It's important to note that data availability varies between templates, depending on their context and purpose.
+For instance, a product detail template has access to product-specific data that may not be available in a blog listing
+template.
 
 ## Templates with specific template data
 
@@ -78,14 +92,14 @@ Accessible via `{{ range .apps }}`
 | `{{ .RedirectURLs }}` | Application redirect URLs |
 
 #### Example Usage
-```
+```html
 <select id="analytics-overview-select-apps" class="analytics-select-overview">
-<option value="0" selected>All apps</option>
-{{ range $app := .apps}}
-<option value="{{$app.ID}}">
-{{$app.Name}}
-</option>
-{{end}}
+  <option value="0" selected>All apps</option>
+  {{ range $app := .apps }}
+    <option value="{{ $app.ID }}">
+      {{ $app.Name }}
+    </option>
+  {{ end }}
 </select>
 ```
 
@@ -100,19 +114,19 @@ This template is used to render the application creation form.
 - `{{ .errors }}`: Map of template errors (Key: category, Value: error message)
 
 #### Example Usage
-```
+```html
 {{ if .errors }}
 {{ range $key, $errs := .errors }}
 <div class="alert alert-warning cart-error" role="alert">
-<i class="tyk-icon tykon tykon-warning "></i>
-<div class="alert__content">
-<strong>{{$key}}</strong>
-<ul>
-{{ range $errs }}
-<li>{{.}}</li>
-{{ end }}
-</ul>
-</div>
+  <i class="tyk-icon tykon tykon-warning"></i>
+  <div class="alert__content">
+    <strong>{{ $key }}</strong>
+    <ul>
+      {{ range $errs }}
+      <li>{{ . }}</li>
+      {{ end }}
+    </ul>
+  </div>
 </div>
 {{ end }}
 {{ end }}
@@ -225,24 +239,24 @@ Accessible via `{{ $acreq.Plan }}`
 | `{{ .AutoApproveAccessRequests }}` | true if auto-approve access requests is enabled |
 
 #### Example Usage
-```
-<h1>{{ .app.Name }}</h1>
+```html
+<h1>{{ .app.Name >}}</h1>
 <p>{{ .app.Description }}</p>
 <h2>Credentials</h2>
 {{ range $cred := .app.Credentials }}
 <div>
-<p>ID: {{ $cred.ID }}</p>
-<p>OAuth Client ID: {{ $cred.OAuthClientID }}</p>
-<p>Expires: {{ $cred.Expires }}</p>
+  <p>ID: {{ $cred.ID }}</p>
+  <p>OAuth Client ID: {{ $cred.OAuthClientID }}</p>
+  <p>Expires: {{ $cred.Expires }}</p>
 </div>
 {{ end }}
 <h2>Access Requests</h2>
 {{ range $acreq := .app.AccessRequests }}
 <div>
-<p>ID: {{ $acreq.ID }}</p>
-<p>Status: {{ $acreq.Status }}</p>
-<p>Product: {{ $acreq.Product.Name }}</p>
-<p>Plan: {{ $acreq.Plan.Name }}</p>
+  <p>ID: {{ $acreq.ID }}</p>
+  <p>Status: {{ $acreq.Status }}</p>
+  <p>Product: {{ $acreq.Product.Name }}</p>
+  <p>Plan: {{ $acreq.Plan.Name }}</p>
 </div>
 {{ end }}
 ```
@@ -276,13 +290,13 @@ Accessible via `{{ range .posts }}`
 | `{{ .URL }}` | Full URL of the blog post |
 
 #### Example Usage
-```
+```html
 <h1>Blog Posts</h1>
 {{ range .posts }}
 <div class="blog-post">
-<h2><a href="{{ .URL }}">{{ .Title }}</a></h2>
-<img src="{{ .HeaderImage.URL }}" alt="{{ .Title }}">
-<p>{{ .Lede }}</p>
+  <h2><a href="{{ .URL }}">{{ .Title }}</a></h2>
+  <img src="{{ .HeaderImage.URL }}" alt="{{ .Title }}">
+  <p>{{ .Lede }}</p>
 </div>
 {{ end }}
 ```
@@ -318,7 +332,7 @@ Accessible via `{{ .post }}` or `{{ range .latest_posts }}`
 
 #### Example Usage
 ```
-h1>{{ .post.Title }}</h1>
+<h1>{{ .post.Title }}</h1>
 <img src="{{ .post.HeaderImage.URL }}" alt="{{ .post.Title }}">
 <p>{{ .post.Lede }}</p>
 {{ if .post.MarkdownEnabled }}
@@ -330,8 +344,8 @@ h1>{{ .post.Title }}</h1>
 <h2>Latest Posts</h2>
 {{ range .latest_posts }}
 <div>
-<h3><a href="{{ .URL }}">{{ .Title }}</a></h3>
-<p>{{ .Lede }}</p>
+  <h3><a href="{{ .URL }}">{{ .Title }}</a></h3>
+  <p>{{ .Lede }}</p>
 </div>
 {{ end }}
 ```
@@ -439,34 +453,34 @@ Accessible via `{{ range $template := $product.Templates }}`
 | `{{ .OktaAppType }}` | Template Okta app type |
 
 #### Example Usage
-```
+```html
 <h1>Cart Checkout</h1>
 {{ range $key, $value := .cart }}
 <div class="cart-item">
-<p>Auth Type: {{ $value.AuthType }}</p>
-<p>Plan: {{ $value.Plan.Name }}</p>
-{{ range $product := $value.Products }}
-<div class="product">
-<h3>{{ $product.DisplayName }}</h3>
-<p>{{ $product.Description }}</p>
-<p>Path: {{ $product.Path }}</p>
-</div>
-{{ end }}
+  <p>Auth Type: {{ $value.AuthType }}</p>
+  <p>Plan: {{ $value.Plan.Name }}</p>
+  {{ range $product := $value.Products }}
+  <div class="product">
+    <h3>{{ $product.DisplayName }}</h3>
+    <p>{{ $product.Description }}</p>
+    <p>Path: {{ $product.Path }}</p>
+  </div>
+  {{ end }}
 </div>
 {{ end }}
 <h2>Your Applications</h2>
 {{ range $app := .apps }}
 <div class="application">
-<h3>{{ $app.Name }}</h3>
-<p>{{ $app.Description }}</p>
+  <h3>{{ $app.Name }}</h3>
+  <p>{{ $app.Description }}</p>
 </div>
 {{ end }}
 {{ if .certs }}
 <h2>MTLS Certificates</h2>
 {{ range $cert := .certs }}
 <div class="certificate">
-<p>ID: {{ $cert.ID }}</p>
-<p>Name: {{ $cert.Name }}</p>
+  <p>ID: {{ $cert.ID }}</p>
+  <p>Name: {{ $cert.Name }}</p>
 </div>
 {{ end }}
 {{ end }}
@@ -501,20 +515,20 @@ Accessible via `{{ .user }}`
 | `{{ .DisplayRole }}` | User's role |
 
 #### Example Usage
-```
+```html
 <h1>User Details</h1>
 {{ if .errors }}
 {{ range $key, $errs := .errors }}
 <div class="alert alert-warning cart-error error-wrapper" role="alert">
-<i class="tyk-icon tykon tykon-warning "></i>
-<div class="alert__content">
-<strong>{{$key}}</strong>
-<ul>
-{{ range $errs }}
-<li>{{.}}</li>
-{{ end }}
-</ul>
-</div>
+  <i class="tyk-icon tykon tykon-warning"></i>
+  <div class="alert__content">
+    <strong>{{ $key }}</strong>
+    <ul>
+      {{ range $errs }}
+      <li>{{ . }}</li>
+      {{ end }}
+    </ul>
+  </div>
 </div>
 {{ end }}
 {{ end }}
@@ -562,40 +576,40 @@ Accessible via `{{ .user }}`
 | `{{ .DisplayRole }}` | User's role |
 
 #### Example Usage
-```
+```html
 <form action="edit" method="post" id="user-edit">
-{{ if .error }}
-<div class="alert alert-danger" role="alert">
-{{ .error }}
-</div>
-{{ end }}
-<h2>Developer details</h2>
-<div>
-<label>Name:</label>
-<input type="text" name="first" value="{{ .user.First }}" required />
-</div>
-<div>
-<label>Last name:</label>
-<input type="text" name="last" value="{{ .user.Last }}" required />
-</div>
-<div>
-<label>Email:</label>
-<input type="email" name="email" value="{{ .user.Email }}" required disabled />
-</div>
-{{ if .roles }}
-<div>
-<label>Role:</label>
-<select name="role" required>
-{{ range $role := .roles }}
-<option value="{{ $role.ID }}">{{ $role.DisplayName }}</option>
-{{ end }}
-</select>
-</div>
-{{ end }}
-<div>
-<a href="/portal/private/users">Cancel</a>
-<input type="submit" value="Save Changes" />
-</div>
+  {{ if .error }}
+  <div class="alert alert-danger" role="alert">
+    {{ .error }}
+  </div>
+  {{ end }}
+  <h2>Developer details</h2>
+  <div>
+    <label>Name:</label>
+    <input type="text" name="first" value="{{ .user.First }}" required />
+  </div>
+  <div>
+    <label>Last name:</label>
+    <input type="text" name="last" value="{{ .user.Last }}" required />
+  </div>
+  <div>
+    <label>Email:</label>
+    <input type="email" name="email" value="{{ .user.Email }}" required disabled />
+  </div>
+  {{ if .roles }}
+  <div>
+    <label>Role:</label>
+    <select name="role" required>
+      {{ range $role := .roles }}
+      <option value="{{ $role.ID }}">{{ $role.DisplayName }}</option>
+      {{ end }}
+    </select>
+  </div>
+  {{ end }}
+  <div>
+    <a href="/portal/private/users">Cancel</a>
+    <input type="submit" value="Save Changes" />
+  </div>
 </form>
 ```
 ## Organisation Users List 
@@ -718,49 +732,49 @@ Accessible via `{{ range .posts }}`
 | `{{ .AuthorID }}` | Author ID |
 
 #### Example Usage
-```
+```html
 <div class="product-detail">
-<h1>{{ .product.DisplayName }}</h1>
-<img src="{{ .product.Logo.URL }}" alt="{{ .product.Name }} logo">
-<p>{{ .product.Description }}</p>
-<h2>API Details</h2>
-{{ range .product.APIDetails }}
-<h3>{{ .Name }}</h3>
-<p>Status: {{ .Status }}</p>
-<p>Target URL: {{ .TargetURL }}</p>
-{{ end }}
-<h2>Documentation</h2>
-{{ range .product.Docs }}
-<h3>{{ .Title }}</h3>
-{{ if .MarkdownEnabled }}
-{{ .MarkdownContent | markdownify }}
-{{ else }}
-{{ .Content }}
-{{ end }}
-{{ end }}
-<h2>Available in Catalogues</h2>
-<ul>
-{{ range .catalogues }}
-<li>{{ .Name }} ({{ .VisibilityStatus }})</li>
-{{ end }}
-</ul>
-<h2>Available Plans</h2>
-{{ range .unique_plans }}
-<div class="plan">
-<h3>{{ .DisplayName }}</h3>
-<p>{{ .Description }}</p>
-<p>Rate: {{ .Rate }} per {{ .Per }}</p>
-<p>Quota: {{ .QuotaMax }}</p>
-</div>
-{{ end }}
-<h2>Related Posts</h2>
-{{ range .posts }}
-<div class="related-post">
-<h3><a href="{{ .Path }}">{{ .Title }}</a></h3>
-<img src="{{ .HeaderImage.URL }}" alt="{{ .Title }}">
-<p>{{ .Lede }}</p>
-</div>
-{{ end }}
+  <h1>{{ .product.DisplayName }}</h1>
+  <img src="{{ .product.Logo.URL }}" alt="{{ .product.Name }} logo">
+  <p>{{ .product.Description }}</p>
+  <h2>API Details</h2>
+  {{ range .product.APIDetails }}
+  <h3>{{ .Name }}</h3>
+  <p>Status: {{ .Status }}</p>
+  <p>Target URL: {{ .TargetURL }}</p>
+  {{ end }}
+  <h2>Documentation</h2>
+  {{ range .product.Docs }}
+  <h3>{{ .Title }}</h3>
+  {{ if .MarkdownEnabled }}
+  {{ .MarkdownContent | markdownify }}
+  {{ else }}
+  {{ .Content }}
+  {{ end }}
+  {{ end }}
+  <h2>Available in Catalogues</h2>
+  <ul>
+    {{ range .catalogues }}
+    <li>{{ .Name }} ({{ .VisibilityStatus }})</li>
+    {{ end }}
+  </ul>
+  <h2>Available Plans</h2>
+  {{ range .unique_plans }}
+  <div class="plan">
+    <h3>{{ .DisplayName }}</h3>
+    <p>{{ .Description }}</p>
+    <p>Rate: {{ .Rate }} per {{ .Per }}</p>
+    <p>Quota: {{ .QuotaMax }}</p>
+  </div>
+  {{ end }}
+  <h2>Related Posts</h2>
+  {{ range .posts }}
+  <div class="related-post">
+    <h3><a href="{{ .Path }}">{{ .Title }}</a></h3>
+    <img src="{{ .HeaderImage.URL }}" alt="{{ .Title }}">
+    <p>{{ .Lede }}</p>
+  </div>
+  {{ end }}
 </div>
 ```
 
@@ -770,7 +784,8 @@ Accessible via `{{ range .posts }}`
 - `themes/default/views/product_doc_stoplight_spec.tmpl`
 - `themes/default/views/product_doc_redoc.tmpl`
 
-These templates are used to render the OpenAPI Specification (OAS) documentation for a product. The Stoplight Spec and ReDoc versions are available.
+These templates are used to render the OpenAPI Specification (OAS) documentation for a product. The Stoplight Spec and
+ReDoc versions are available.
 
 ### Available Attributes
 
@@ -782,29 +797,33 @@ These templates are used to render the OpenAPI Specification (OAS) documentation
 | `{{ .Url }}` | OAS document URL |
 
 #### Example Usage
-```
+```html
 <div class="docs-container">
-<div class="card mt-4">
-<div class="card-body">
-<h3 class="card-title"><a href="/portal/catalogue-products/{{.Path}}">{{.Name}}</a></h3>
-<p class="card-text">
-{{.Description}}
-</p>
-</div>
-</div>
-<div>
-<elements-api 
-apiDescriptionUrl='{{.Url}}'
-router="hash"
-layout="responsive"
-/>
-</div>
+  <div class="card mt-4">
+    <div class="card-body">
+      <h3 class="card-title">
+        <a href="/portal/catalogue-products/{{ .Path }}">{{ .Name }}</a>
+      </h3>
+      <p class="card-text">
+        {{ .Description }}
+      </p>
+    </div>
+  </div>
+  <div>
+    <elements-api
+      apiDescriptionUrl='{{ .Url }}'
+      router="hash"
+      layout="responsive"
+    />
+  </div>
 </div>
 ```
 
 # Global Helper Functions
 
-This section provides a detailed overview of the global helper functions available in the Tyk Enterprise Developer Portal templates. These functions are accessible across the public and private templates and allow you to perform various operations, retrieve specific data, and create dynamic content within your templates.
+This section provides a detailed overview of the global helper functions available in the Tyk Enterprise Developer
+Portal templates. These functions are accessible across the public and private templates and allow you to perform
+various operations, retrieve specific data, and create dynamic content within your templates.
 
 ## Available Functions
 
@@ -917,26 +936,25 @@ Accessible via `{{ $acreq.Plan }}`
 | `{{ .AutoApproveAccessRequests }}` | true if auto-approve access requests is enabled |
 
 #### Example Usage
-```
+```html
 {{ range $client := Clients req }}
 <div class="client">
-<h2>Client: {{ $client.Name }}</h2>
-{{ range $acreq := $client.AccessRequests }}
-<h4>Products:</h4>
-<ul>
-{{ range $product := $acreq.Products }}
-<li>
-<strong>{{ $product.Name }}</strong>
-{{ $product.Description }}
-</li>
-{{ end }}
-</ul>
-<h4>Plan:</h4>
-<p><strong>Name:</strong> {{ $acreq.Plan.Name }}</p>
-<p><strong>Rate:</strong> {{ $acreq.Plan.Rate }} per {{ $acreq.Plan.Per }}</p>
-<p><strong>Quota Max:</strong> {{ $acreq.Plan.QuotaMax }}</p>
-</div>
-{{ end }}
+  <h2>Client: {{ $client.Name }}</h2>
+  {{ range $acreq := $client.AccessRequests }}
+  <h4>Products:</h4>
+  <ul>
+    {{ range $product := $acreq.Products }}
+    <li>
+      <strong>{{ $product.Name }}</strong>
+      {{ $product.Description }}
+    </li>
+    {{ end }}
+  </ul>
+  <h4>Plan:</h4>
+  <p><strong>Name:</strong> {{ $acreq.Plan.Name }}</p>
+  <p><strong>Rate:</strong> {{ $acreq.Plan.Rate }} per {{ $acreq.Plan.Per }}</p>
+  <p><strong>Quota Max:</strong> {{ $acreq.Plan.QuotaMax }}</p>
+  {{ end }}
 </div>
 {{ end }}
 ```
@@ -964,19 +982,19 @@ Accessible via `{{ $user := CurrentUser req }}`
 | `{{ $user.DisplayRole }}` | User's role |
 
 #### Example Usage
-```
+```html
 {{ $user := CurrentUser req }}
 {{ if $user }}
 <div class="user-info">
-<h2>Welcome, {{ $user.DisplayName }}!</h2>
-<p>Email: {{ $user.Email }}</p>
-{{ if $user.IsAdmin }}
-<p>You have admin privileges.</p>
-{{ else if $user.IsOrgAdmin }}
-<p>You are an organisation admin.</p>
-{{ else }}
-<p>Your role: {{ $user.DisplayRole }}</p>
-{{ end }}
+  <h2>Welcome, {{ $user.DisplayName }}!</h2>
+  <p>Email: {{ $user.Email }}</p>
+  {{ if $user.IsAdmin }}
+  <p>You have admin privileges.</p>
+  {{ else if $user.IsOrgAdmin }}
+  <p>You are an organisation admin.</p>
+  {{ else }}
+  <p>Your role: {{ $user.DisplayRole }}</p>
+  {{ end }}
 </div>
 {{ else }}
 <p>Please log in to view your account information.</p>
@@ -1032,41 +1050,42 @@ Accessible via `{{ range .Catalogues }}`
 | `{{ .VisibilityStatus }}` | Catalogue visibility status |
 
 #### Example Usage
-```
+```html
 {{ $featured_products := FeaturedProducts }}
 <h2>Featured API Products</h2>
 <p>Explore our highlighted API offerings</p>
 <div class="featured-products-container">
-{{ range $featured_products }}
-<div class="product-card">
-{{ if .Logo }}
-<img src="{{ .Logo.URL }}" alt="{{ .Name }} logo">
-{{ end }}
-<div class="product-info">
-<span class="auth-type">{{ .AuthType }}</span>
-<h3>{{ .Name }}</h3>
-<p>{{ .Description }}</p>
-</div>
-<div class="product-actions">
-<a href="/portal/catalogue-products/{{ .Path }}" class="btn">More Info</a>
-<div class="dropdown-content">
-{{ range .APIDetails }}
-{{ if or (gt (.OASDocument.Base.Url | trim | length) 0) (gt (.OASUrl | trim | length) 0) }}
-<a href="/portal/catalogue-products/{{ $.Path }}/{{ .APIID }}/docs" target="blank">
-{{ .Name }}
-</a>
-{{ end }}
-{{ end }}
-</div>
-</div>
-</div>
-{{ end }}
+  {{ range $featured_products }}
+  <div class="product-card">
+    {{ if .Logo }}
+    <img src="{{ .Logo.URL }}" alt="{{ .Name }} logo">
+    {{ end }}
+    <div class="product-info">
+      <span class="auth-type">{{ .AuthType }}</span>
+      <h3>{{ .Name }}</h3>
+      <p>{{ .Description }}</p>
+    </div>
+    <div class="product-actions">
+      <a href="/portal/catalogue-products/{{ .Path }}" class="btn">More Info</a>
+      <div class="dropdown-content">
+        {{ range .APIDetails }}
+        {{ if or (gt (.OASDocument.Base.Url | trim | length) 0) (gt (.OASUrl | trim | length) 0) }}
+        <a href="/portal/catalogue-products/{{ $.Path }}/{{ .APIID }}/docs" target="blank">
+          {{ .Name }}
+        </a>
+        {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+  {{ end }}
 </div>
 ```
 
 ### FilterUserInvites
 
-Returns a list of users that were invited to the current user's organisation, if the user became an organisation. Expects the request as a parameter.
+Returns a list of users that were invited to the current user's organisation, if the user became an organisation.
+Expects the request as a parameter.
 
 #### User Attributes
 
@@ -1084,37 +1103,37 @@ Accessible via `{{ range $invite := FilterUserInvites req }}`
 | `{{ $invite.Uactive }}` | Whether the user is active |
 
 #### Example Usage
-```
+```html
 {{ $userInvites := FilterUserInvites req }}
 {{ if $userInvites }}
 <h2>Invited Users</h2>
 <table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Email</th>
-<th>Role</th>
-<th>Status</th>
-</tr>
-</thead>
-<tbody>
-{{ range $invite := $userInvites }}
-<tr>
-<td>{{ $invite.First }} {{ $invite.Last }}</td>
-<td>{{ $invite.Email }}</td>
-<td>{{ $invite.Role }}</td>
-<td>
-{{ if $invite.Joined }}
-Joined
-{{ else if $invite.Uactive }}
-Pending
-{{ else }}
-Inactive
-{{ end }}
-</td>
-</tr>
-{{ end }}
-</tbody>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{ range $invite := $userInvites }}
+    <tr>
+      <td>{{ $invite.First }} {{ $invite.Last }}</td>
+      <td>{{ $invite.Email }}</td>
+      <td>{{ $invite.Role }}</td>
+      <td>
+        {{ if $invite.Joined }}
+        Joined
+        {{ else if $invite.Uactive }}
+        Pending
+        {{ else }}
+        Inactive
+        {{ end }}
+      </td>
+    </tr>
+    {{ end }}
+  </tbody>
 </table>
 {{ else }}
 <p>No pending invitations.</p>
@@ -1126,17 +1145,20 @@ Inactive
 Formats a given time with a given format.
 
 #### Example Usage
-```
+```gotemplate
 {{ $user := CurrentUser req }}
 {{ if $user}}
 {{$time := FormatTime $user.CreatedAt "2 Jan, 2006 at 3:04:00 PM (MST)"}}
+<!-- Use $time or other variables here -->
 ...
 {{end}}
 ```
 
 ### GetCart
 
-Returns a map with the cart items for a given user ID. Expects the user ID as an argument. This function is useful for retrieving and displaying the contents of a user's cart, including detailed information about the products, their authentication types, and associated templates.
+Returns a map with the cart items for a given user ID. Expects the user ID as an argument. This function is useful for
+retrieving and displaying the contents of a user's cart, including detailed information about the products, their
+authentication types, and associated templates.
 
 #### Cart Item Attributes
 
@@ -1199,28 +1221,27 @@ Accessible via `{{ range $template := $product.Templates }}`
 | `{{ .OktaAppType }}` | Template Okta app type |
 
 #### Example Usage
-```
+```html
 {{ $user := CurrentUser req }}
 {{ if $user }}
-{{ $cart := GetCart $user.ID }}
-{{ if $cart }}
-<h2>Your Cart</h2>
-{{ range $key, $value := $cart }}
-<div class="cart-item">
-<h3>{{ $value.Catalogue.Name }}</h3>
-<p>Auth Type: {{ $value.AuthType }}</p>
-{{ range $product := $value.Products }}
-<div class="product">
-<h4>{{ $product.DisplayName }}</h4>
-<p>{{ $product.Description }}</p>
-</div>
-{{ end }}
-</div>
-{{ end }}
-{{ else }}
-<p>Your cart is empty.</p>
-{{ end }}
-{{ end }}
+  {{ $cart := GetCart $user.ID }}
+  {{ if $cart }}
+  <h2>Your Cart</h2>
+  {{ range $key, $value := $cart }}
+  <div class="cart-item">
+    <h3>{{ $value.Catalogue.Name }}</h3>
+    <p>Auth Type: {{ $value.AuthType }}</p>
+    {{ range $product := $value.Products }}
+    <div class="product">
+      <h4>{{ $product.DisplayName }}</h4>
+      <p>{{ $product.Description }}</p>
+    </div>
+    {{ end }}
+  </div>
+  {{ end }}
+  {{ else }}
+  <p>Your cart is empty.</p>
+  {{ end }}
 {{ end }}
 ```
 
@@ -1229,7 +1250,7 @@ Accessible via `{{ range $template := $product.Templates }}`
 Returns a list of catalogue names. Expects the request as parameter.
 
 #### Example Usage
-```
+```gotemplate
 {{ range $key, $value := GetCatalogueList req }}
 <option value="{{ $key }}" {{ if eq $value.Selected true }} selected {{ end }}>{{ $value.Name }}</option>
 {{ end }}
@@ -1249,18 +1270,18 @@ Accessible via `{{ range GetCataloguesForProduct req $user $product.ID }}`
 | `{{ .Name }}` | Catalogue name |
 
 #### Example Usage
-```
+```html
 {{ $thisProduct := .product }}
 {{ $user := CurrentUser req }}
 {{ $catalogues_for_product := GetCataloguesForProduct req $user $thisProduct.ID }}
 <h3>Catalogues for {{ $thisProduct.Name }}</h3>
 <ul>
-{{ range $catalogues_for_product }}
-<li>
-<strong>{{ .Name }}</strong>
-(Visibility: {{ .VisibilityStatus }})
-</li>
-{{ end }}
+  {{ range $catalogues_for_product }}
+  <li>
+    <strong>{{ .Name }}</strong>
+    (Visibility: {{ .VisibilityStatus }})
+  </li>
+  {{ end }}
 </ul>
 ```
 
@@ -1293,16 +1314,16 @@ Returns an application name given a credential ID.
 Returns a map of all [menus]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation" >}}).
 
 #### Example Usage
-```
+```html
 {{ if GetMenus.Primary }}
-{{ range GetMenus.Primary.Children }}
-{{ range .Children }}
-<li class="nav-item">
-<a class="dropdown-item" href="{{.Path}}">{{.Tag}}</a>
-</li>
+  {{ range GetMenus.Primary.Children }}
+    {{ range .Children }}
+    <li class="nav-item">
+      <a class="dropdown-item" href="{{ .Path }}">{{ .Tag }}</a>
+    </li>
+    {{ end }}
+  {{ end }}
 {{ end }}
-{{end}}
-{{end}}
 ```
 
 ### GetProducts
@@ -1354,37 +1375,38 @@ Accessible via `{{ range $catalogue := $product.Catalogues }}`
 | `{{ $catalogue.VisibilityStatus }}` | Catalogue visibility status |
 
 #### Example Usage
-```
+```html
 {{ range GetProducts req }}
 <div class="col-lg-12 card-container">
-<div class="card d-flex flex-row {{ if .Logo.URL }}has-logo{{end}}">
-{{ if .Logo.URL }}
-<img class="card-img-top img-fluid" src='{{.Logo.URL}}' alt="">
-{{ end }}
-<div class="card-body align-self-center w-100">
-<div class="card-title d-flex flex-column justify-content-end align-items-baseline">
-<div class="pill-container">
-<span class="pill">{{ .AuthType }}</span>
-</div>
-<h2>{{ .ProductName }}</h2>
-</div>
-{{if .Description }}
-<p class="card-text">{{ .Description }}</p>
-{{end}}
-</div>
-<div class="card-cta d-flex flex-column align-self-center justify-content-between align-items-baseline w-100">
-<div>
-<a href="/portal/catalogue-products/{{ .Path }}" class="btn btn-secondary">more info</a>
-</div>
-</div>
-</div>
+  <div class="card d-flex flex-row {{ if .Logo.URL }}has-logo{{ end }}">
+    {{ if .Logo.URL }}
+    <img class="card-img-top img-fluid" src="{{ .Logo.URL }}" alt="">
+    {{ end }}
+    <div class="card-body align-self-center w-100">
+      <div class="card-title d-flex flex-column justify-content-end align-items-baseline">
+        <div class="pill-container">
+          <span class="pill">{{ .AuthType }}</span>
+        </div>
+        <h2>{{ .ProductName }}</h2>
+      </div>
+      {{ if .Description }}
+      <p class="card-text">{{ .Description }}</p>
+      {{ end }}
+    </div>
+    <div class="card-cta d-flex flex-column align-self-center justify-content-between align-items-baseline w-100">
+      <div>
+        <a href="/portal/catalogue-products/{{ .Path }}" class="btn btn-secondary">More Info</a>
+      </div>
+    </div>
+  </div>
 </div>
 {{ end }}
 ```
 
 ### IsPortalDisabled
 
-Returns true (exception: for admins is always enabled) if portal visibility was set to hidden. Expects the request as parameter.
+Returns true (exception: for admins is always enabled) if portal visibility was set to hidden. Expects the request as
+parameter.
 
 #### Example Usage
 ```
@@ -1393,7 +1415,8 @@ Returns true (exception: for admins is always enabled) if portal visibility was 
 
 ### IsPortalPrivate
 
-Returns true (exception: for admins is always enabled) if portal visibility was set to private. Expects the request as parameter.
+Returns true (exception: for admins is always enabled) if portal visibility was set to private. Expects the request as
+parameter.
 
 #### Example Usage
 ```
@@ -1459,12 +1482,15 @@ Returns the credential type ("oAuth2.0" or "authToken") given the credential.
 # Email Templates
 
 This section provides a detailed overview of the email template data available in the Tyk Enterprise Developer Portal. 
+The Tyk Enterprise Developer Portal uses a variety of email templates for different purposes, such as user registration
+and access request status or organisation status updates. Each template has access to specific data or functions relevant
+to its purpose.
 
-The Tyk Enterprise Developer Portal uses a variety of email templates for different purposes, such as user registration and access request status or organisation status updates. Each template has access to specific data or functions relevant to its purpose. 
+It's important to note that while email templates can include template data or specific template functions, they do not
+have access to the global helper functions available in other portal templates.
 
-It's important to note that while email templates can include template data or specific template functions, they do not have access to the global helper functions available in other portal templates.
-
-Refer to [email workflow]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization" >}}) for additional detail on email notifications sent by the portal.
+Please refer to [email workflow]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization" >}})
+for additional detail on email notifications sent by the portal.
 
 
 ## Available Email Templates
@@ -1539,21 +1565,21 @@ Accessible via `{{ range $product := $acreq.Products }}`
 | `{{ $product.DCREnabled }}` | Indicates if DCR (Dynamic Client Registration) is enabled for the product |
 
 #### Example Usage
-```
-A new Access request has been submitted, please log in to the administration dashboard to view the request
+```html
+<p>A new Access request has been submitted. Please log in to the administration dashboard to view the request.</p>
 <ul>
-{{ range $acreq := .requests }}
-<li>
-<strong>Status:</strong> {{ $acreq.Status }}<br>
-<strong>User ID:</strong> {{ $acreq.UserID }}<br>
-<strong>Products:</strong>
-<ul>
-{{ range $product := $acreq.Products }}
-<li>{{ $product.DisplayName }} ({{ $product.AuthType }})</li>
-{{ end }}
-</ul>
-</li>
-{{ end }}
+  {{ range $acreq := .requests }}
+  <li>
+    <strong>Status:</strong> {{ $acreq.Status }}<br>
+    <strong>User ID:</strong> {{ $acreq.UserID }}<br>
+    <strong>Products:</strong>
+    <ul>
+      {{ range $product := $acreq.Products }}
+      <li>{{ $product.DisplayName }} ({{ $product.AuthType }})</li>
+      {{ end }}
+    </ul>
+  </li>
+  {{ end }}
 </ul>
 ```
 
@@ -1611,25 +1637,27 @@ Accessible via `{{ .user }}`
 
 #### Example Usage
 ```
-There is a new user request pending please approve it from the admin console<br/>
-Id: {{ .user.ID }}<br/>
-User: {{ .user.DisplayName }} ({{ .user.Email }})<br/>
-Role: {{ .user.Role }} <br/>
-{{ if gt .user.OrganisationID 0 }}
-Organisation: {{ .user.Organisation.Name }} <br/>
-{{ else }}
-Organisation: Administrators' organisation <br/>
-{{end}}
-{{ if gt (len .user.Teams) 0 }}
-Teams: <br/>
-<ul>
-{{ range .user.Teams }}
-li>{{.Name}}</li>
-{{ end }}
-</ul>
-{{ else }}
-Teams: none
-{{end}}
+<p>There is a new user request pending. Please approve it from the admin console.</p>
+<p>
+  Id: {{ .user.ID }}<br/>
+  User: {{ .user.DisplayName }} ({{ .user.Email }})<br/>
+  Role: {{ .user.Role }}<br/>
+  {{ if gt .user.OrganisationID 0 }}
+  Organisation: {{ .user.Organisation.Name }}<br/>
+  {{ else }}
+  Organisation: Administrators' organisation<br/>
+  {{ end }}
+  {{ if gt (len .user.Teams) 0 }}
+  Teams:<br/>
+  <ul>
+    {{ range .user.Teams }}
+    <li>{{ .Name }}</li>
+    {{ end }}
+  </ul>
+  {{ else }}
+  Teams: none
+  {{ end }}
+</p>
 ```
 
 ### Organisation Approve
@@ -1776,7 +1804,7 @@ Accessible via `{{ user }}`
 | `{{ .DisplayRole }}` | User's role |
 
 #### Example Usage
-```
+```html
 {{ $u := user }}
 Hi, <strong>{{ $u.DisplayName }}</strong><br/>
 <p>Someone is inviting you to join {{ if $u.IsAdmin }}as an Administrator{{ else }}the {{ team }} team{{end }}. You can do this through the link below.</p>
@@ -1820,15 +1848,15 @@ Accessible via `{{ .user }}`
 | `{{ .Teams.Default }}` | Indicates if the team is the default team (true/false) |
 
 #### Example Usage
-```
+```html
 <h1>Welcome to Tyk Enterprise Developer Portal</h1>
 <p>Hello {{ .user.DisplayName }},</p>
 <p>Your account has been created for the {{ .user.Organisation.Name }} organisation.</p>
 <p>Your assigned teams:</p>
 <ul>
-{{ range .user.Teams }}
-<li>{{ .Name }}{{ if .Default }} (Default){{ end }}</li>
-{{ end }}
+  {{ range .user.Teams }}
+  <li>{{ .Name }}{{ if .Default }} (Default){{ end }}</li>
+  {{ end }}
 </ul>
 <p>We're excited to have you on board!</p>
 ```
