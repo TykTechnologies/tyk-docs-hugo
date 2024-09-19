@@ -49,7 +49,7 @@ The following table shows the scope for each user role.
 | Delete / change environments                      |               | X         | X          |              |
 | View environments                                 |               | X         | X          | X            |
 | Create and delete cloud data planes               |               | X         | X          |              |
-| Create and delete control planes                  |               | X         | X          | X            |
+| Create and delete control planes                  |               | X         | X          |              |
 | View deployments                                  |               | X         | X          | X            |
 | Deploy, undeploy, redeploy, restart a deployment. |               | X         | X          | X            |
 | Create and manage basic SSO                       |               | X         | X          |              |
