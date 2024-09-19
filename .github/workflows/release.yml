@@ -15,17 +15,39 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout the current latest branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.current_latest_branch }}
+
+      - name: Extract version from branch
+        id: extract_version
+        run: |
+          VERSION=$(echo "${{ github.event.inputs.current_latest_branch }}" | grep -oP '\d+\.\d+')
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+      - name: Create a new branch for the config update
+        run: |
+          git checkout -b update-config-${{ github.run_id }}
+      - name: Update baseURL in config.yaml
+        run: |
+          sed -i 's|baseURL = "//tyk.io/docs/"|baseURL = "//tyk.io/docs/$VERSION/"|g' tyk-docs/config.yaml
+      - name: Commit changes to the new branch
+        run: |
+          git add tyk-docs/config.yaml
+          git commit -m "Update baseURL in config.yaml to //tyk.io/docs/$VERSION/"
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: update-config-${{ github.event.inputs.current_latest_branch }}-${{ github.run_id }}  # Combined branch name
+          base: ${{ github.event.inputs.current_latest_branch }}
+          title: "Update baseURL to //tyk.io/docs/$VERSION/"
+          body: "This pull request updates the baseURL in config.yaml to //tyk.io/docs/$VERSION/."
+          labels: update
+          assignees: ${{ github.actor }}
+
+
       - name: Checkout master branch
         uses: actions/checkout@v4
         with:
           ref: master  # Always checkout master branch
-
-      - name: Create the new branch from master
-        run: |
-          git checkout -b ${{ github.event.inputs.next_latest_branch }}
-
-      - name: Push the new branch to origin
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git push origin ${{ github.event.inputs.next_latest_branch }}
