@@ -36,6 +36,8 @@ jobs:
           sed -i 's|baseURL = "//tyk.io/docs/"|baseURL = "//tyk.io/docs/$VERSION/"|g' tyk-docs/config.toml
       - name: Commit changes to the new branch
         run: |
+          git status
+          git branch
           git add tyk-docs/config.toml
           git commit -m "Update baseURL in config.toml to //tyk.io/docs/$VERSION/"
       - name: Create Pull Request
