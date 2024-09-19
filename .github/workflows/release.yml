@@ -1,17 +1,17 @@
-name: Create a new branch from master
+name: Update config and Create Pull Request
 
 on:
   workflow_dispatch:
     inputs:
       current_latest_branch:
-        description: 'The current latest branch (for reference or other operations)'
+        description: 'The current latest branch to update config.toml'
         required: true
-      next_latest_branch:
-        description: 'The next latest branch to create from master'
+      new_base_url:
+        description: 'The new baseURL to replace in config.toml'
         required: true
 
 jobs:
-  create-branch:
+  update-config-and-create-pr:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,40 +19,33 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.current_latest_branch }}
+
       - name: Create a new branch for the config update
         run: |
           git checkout -b update-config-${{ github.event.inputs.current_latest_branch }}-${{ github.run_id }}
-      - name: Configure Git user
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-      - name: Extract version from branch
-        id: extract_version
-        run: |
-          VERSION=$(echo "${{ github.event.inputs.current_latest_branch }}" | grep -oP '\d+\.\d+')
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
       - name: Update baseURL in config.toml
         run: |
-          sed -i 's|baseURL = "//tyk.io/docs/"|baseURL = "//tyk.io/docs/$VERSION/"|g' tyk-docs/config.toml
+          sed -i 's|baseURL = "//tyk.io/docs/"|baseURL = "//tyk.io/docs/${{ github.event.inputs.new_base_url }}/"|g' tyk-docs/config.toml
+
       - name: Commit changes to the new branch
         run: |
-          git status
-          git branch
           git add tyk-docs/config.toml
-          git commit -m "Update baseURL in config.toml to //tyk.io/docs/$VERSION/"
+          git commit -m "Update baseURL in config.toml to //tyk.io/docs/${{ github.event.inputs.new_base_url }}/"
+
+      - name: Push the new branch to origin
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push origin update-config-${{ github.event.inputs.current_latest_branch }}-${{ github.run_id }}
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: update-config-${{ github.event.inputs.current_latest_branch }}-${{ github.run_id }}  # Combined branch name
           base: ${{ github.event.inputs.current_latest_branch }}
-          title: "Update baseURL to //tyk.io/docs/$VERSION/"
-          body: "This pull request updates the baseURL in config.toml to //tyk.io/docs/$VERSION/."
+          title: "Update baseURL to //tyk.io/docs/${{ github.event.inputs.new_base_url }}/"
+          body: "This pull request updates the baseURL in config.toml to //tyk.io/docs/${{ github.event.inputs.new_base_url }}/."
           labels: update
           assignees: ${{ github.actor }}
-
-
-      - name: Checkout master branch
-        uses: actions/checkout@v4
-        with:
-          ref: master  # Always checkout master branch
