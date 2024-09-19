@@ -33,7 +33,7 @@ When using the ignore authentication middleware, we recommend that you familiari
 {{< note success >}}
 **Note**  
 
-Tyk recommended's that you use [exact]({{< ref "getting-started/key-concepts/url-matching#exact-match" >}}) matching for maximum security, though prefix and wildcard strategies might also apply for your particular deployment or use case.
+Tyk recommends that you use [exact]({{< ref "getting-started/key-concepts/url-matching#exact-match" >}}) matching for maximum security, though prefix and wildcard strategies might also apply for your particular deployment or use case.
 {{< /note >}}
 
 <hr>

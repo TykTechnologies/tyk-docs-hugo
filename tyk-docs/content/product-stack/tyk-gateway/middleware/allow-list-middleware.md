@@ -42,10 +42,10 @@ When using the allow list middleware, we recommend that you familiarize yourself
 {{< note success >}}
 **Note**  
 
-Tyk recommended's that you use [exact]({{< ref "getting-started/key-concepts/url-matching#exact-match" >}}) matching for maximum security, though prefix and wildcard strategies might also apply for your particular deployment or use case.
+Tyk recommends that you use [exact]({{< ref "getting-started/key-concepts/url-matching#exact-match" >}}) matching for maximum security, though prefix and wildcard strategies might also apply for your particular deployment or use case.
 {{< /note >}}
 
-## Configuring the allow list
+<hr>
 
 If you're using Tyk OAS APIs, then you can find details and examples of how to configure the allow list middleware [here]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas" >}}).
 
