@@ -17,12 +17,13 @@ If you have a service that exposes endpoints or supports methods that you do not
 
 ## How the allow list works
 
-Tyk Gateway does not actually maintain a list of allowed endpoints but rather works on the model whereby if the _allow list_ middleware is added to an endpoint then this will automatically block all other endpoints.
+Tyk Gateway does not actually maintain a list of allowed endpoints but rather works on the model whereby if the *allow list* middleware is added to an endpoint then this will automatically block all other endpoints.
 
-Tyk Gateway will subsequently return `HTTP 403 Forbidden` to any requested endpoint that doesn't have the _allow list_ middleware enabled, even if the endpoint is defined and configured in the API definition.
+Tyk Gateway will subsequently return `HTTP 403 Forbidden` to any requested endpoint that doesn't have the *allow list* middleware enabled, even if the endpoint is defined and configured in the API definition.
 
+<br>
 {{< note success >}}
-**Note**  
+**Note**
 
 If you enable the allow list feature by adding the middleware to any endpoint, ensure that you also add the middleware to any other endpoint for which you wish to accept requests.
 {{< /note >}}
@@ -35,13 +36,14 @@ You can also set case sensitivity for the entire [gateway]({{< ref "tyk-oss-gate
 
 ### Endpoint parsing
 
-When you define an endpoint in your API Definition (for example `GET /anything`), Tyk will also match for `GET /anything/somepath` and any other sub-path based on the `GET /anything` route.
+When using the allow list middleware, we recommend that you familiarize yourself with Tyk's [URL matching]({{< ref "getting-started/key-concepts/url-matching" >}}) options.
 
-You will typically configure the _allow list_ middleware to restrict access to only specific paths, so you may not want Tyk to match `GET /anything/somepath`.
+<br>
+{{< note success >}}
+**Note**  
 
-If you add a `$` at the end of the `listen_path` (in our example `GET /anything$`) then Tyk's regular expression matching will be exact, and will not match endpoints with characters following the specified endpoint.
-
-Thus, if you enable the middleware for `GET /anything$` then `GET /anything/somepath` will be blocked unless explicitly added to the API definition with the _allow list_ middleware enabled for that endpoint.
+Tyk recommends that you use [exact]({{< ref "getting-started/key-concepts/url-matching#exact-match" >}}) matching for maximum security, though prefix and wildcard strategies might also apply for your particular deployment or use case.
+{{< /note >}}
 
 <hr>
 
@@ -54,4 +56,3 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
   - The Allow List is an optional stage in Tyk's API Request processing chain, sitting between the [TBC]() and [TBC]() middleware.
   - The Allow List can be configured at the per-endpoint level within the API Definition and is supported by the API Designer within the Tyk Dashboard. 
  -->
-
