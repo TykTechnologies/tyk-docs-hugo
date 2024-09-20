@@ -3,6 +3,8 @@ title: "Mock Response"
 date: 2022-10-18
 tags: ["Tyk Tutorials", "Getting Started", "First API", "Tyk Cloud", "Tyk Self-Managed", "Tyk Open Source", "Mock Response with an OAS API"]
 description: "Using mock response middleware with an OAS API"
+aliases:
+  - product-stack/tyk-gateway/middleware/mock-response-middleware/
 menu:
   main:
     parent: "OpenAPI Low Level Concepts"
