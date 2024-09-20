@@ -15,12 +15,12 @@ customization. The portal uses Golang templates to render the live portal views,
 by embedding directives inside HTML that are replaced with values when the template is executed.
 
 Golang's templates use the following syntax:
-- `{{.}}` to output a value
-- `{{.FieldName}}` to access a field of an object
-- `{{.MethodName}}` to call a method on an object 
-- `{{if}} {{else}} {{end}}` for conditionals
-- `{{range .}} {{.}} {{end}}` to iterate over a slice
-- Functions can be called like `{{FuncName .}}` or just `{{FuncName}}`
+- `{{ . }}` to output a value
+- `{{ .FieldName }}` to access a field of an object
+- `{{ .MethodName }}` to call a method on an object 
+- `{{ if }} {{ else }} {{ end }}` for conditionals
+- `{{ range . }} {{ . }} {{ end }}` to iterate over a slice
+- Functions can be called like `{{ FuncName . }}` or just `{{ FuncName }}`
 
 These templates are part of the default theme that ships with the portal, which can be fully customized by modifying the
 template files. The templates have access to template data which contains dynamic values that can be rendered into the
