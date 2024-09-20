@@ -67,7 +67,10 @@ time="Sep 05 09:04:12" level=info msg="Tyk API Gateway v5.6.0" prefix=main
 ```
 {"level":"info","msg":"Tyk API Gateway v5.6.0","prefix":"main","time":"2024-09-05T09:01:23-04:00"}
 ```
-As a general performance tuning note, the `json` output provides less allocation overhead than the standard logger. When tuning for performance, it's recommended to configure the JSON logging format.
+{{< note >}}
+**Note**  
+As a general performance tip, the `json` output format incurs less memory allocation overhead than the default logger. For optimal performance, it's recommended to configure logging in the JSON format.
+{{< /note >}}
 
 ## Integration with 3rd party aggregated log and error tools
 
