@@ -86,7 +86,13 @@ We have introduced two new options in the `http_server_options` [Gateway configu
 These configuration options provide control to avoid unintended matching of paths from Tyk's default *wildcard* match. Use of regex special characters when declaring the endpoint path in the API definition will automatically override these settings for that endpoint.
 
 Tyk recommends that exact matching is employed, but both options default to `false` to avoid introducing a breaking change for existing users.
-</details>
+
+The example Gateway configuration file `tyk.conf.example` has been updated to set the recommended *exact matching* with:
+
+ - `http_server_options.enable_path_prefix_matching = true`
+ - `http_server_options.enable_path_suffix_matching = true`
+ - `http_server_options.enable_strict_routes = true`
+ </details>
 </li>
 </ul>
 
