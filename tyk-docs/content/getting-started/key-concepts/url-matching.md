@@ -177,6 +177,8 @@ Tyk Gateway can be configured to perform path matching in one of four modes:
 
 This configuration can be set in the Gateway config file (`tyk.conf`) or using the equivalent environment variables, as described below.
 
+The default behavior of Tyk Gateway is *wildcard* matching as both prefix and suffix controls default to `false`; the introduction of these controls does not change the behavior of any existing API definitions unless either is set to `true` to enforce a different path matching mode.
+
 **Tyk recommends the use of exact path matching with [strict routes](#listen-path) for most use cases**
 
 ### Wildcard match
@@ -245,9 +247,15 @@ When we consider that keys and policies may apply access rights over multiple AP
 
 ### Overriding the configured matching mode
 
-If you include `^` at the start of the listen path/endpoint definition or `$` at the end then this will be combined with the Gateway suffix/prefix matching configuration, allowing for stricter path matching per-API if required.
+The Gateway-wide configuration of prefix and/or suffix matching can be overridden for an API or endpoint by manual addition of the control characters (`^` and `$`) or by omission of the `/` prefix from the pattern as follows:
 
-Note that if you omit the leading `/` from the listen path/endpoint definition then prefix matching will not be applied. If suffix matching is configured in the Gateway config, then this will still be applied to requests to this API.
+- if you include `^` at the start of the listen path/endpoint definition the Gateway will apply prefix matching when checking against this pattern
+- if you include `$` at the end of the listen path/endpoint definition the Gateway will apply prefix matching when checking against this pattern
+- if you omit the leading `/` from the listen path/endpoint definition then *prefix* matching will *not* be applied even if set in the Gateway config
+
+Note that if suffix matching is configured in the Gateway config this cannot be overridden using control characters in the pattern, though wildcard matches can be achieved by defining a full regular expression that starts with `^/` and ends with a `$`
+
+##### Summary of the effect of control characters with Gateway settings
 
 The following table indicates the matching that will be performed by the Gateway for different combinations of prefix and suffix modes with different patterns, demonstrating how the use of the `^` and `$` symbols in your *listen path* and *endpoint path* patterns will interact with the configured matching mode.
 
@@ -273,10 +281,18 @@ The following table indicates the matching that will be performed by the Gateway
 | ✅  | ❌️ | `my-api/my-endpoint/{my-param}` | wildcard |
 | ❌️ | ✅  | `my-api/my-endpoint/{my-param}` | suffix |
 | ✅  | ✅  | `my-api/my-endpoint/{my-param}` | suffix |
+| ❌️ | ❌️ | `/my-api/my-endpoint/*` | wildcard |
+| ✅  | ❌️ | `/my-api/my-endpoint/*` | prefix |
+| ❌️ | ✅  | `/my-api/my-endpoint/*` | wildcard |
+| ✅  | ✅  | `/my-api/my-endpoint/*` | prefix |
+| ❌️ | ❌️ | `my-api/my-endpoint/*` | wildcard |
+| ✅  | ❌️ | `my-api/my-endpoint/*` | wildcard |
+| ❌️ | ✅  | `my-api/my-endpoint/*` | wildcard |
+| ✅  | ✅  | `my-api/my-endpoint/*` | wildcard |
 
-## Migration notes
+## URL path matching without the Gateway configuration options
 
-Configuration of URL path matching behavior was released in:
+Gateway level configuration of URL path matching behavior was released in:
 
 - Tyk Gateway 5.0.14
 - Tyk Gateway 5.3.5
@@ -297,10 +313,6 @@ the path segments or finer grained regular expressions.
 You can achieve a [prefix match](#prefix-match) for older versions by adding the listen
 path to the URL, and using a regex such as `^/listen-path/users`. You might consider
 using the ending `$` expression to achieve [exact matching](#exact-match).
-
-Wildcard matches, if desired, can still be achieved in recent versions, by either
-omitting the `/` prefix from the input URL, or by defining a full regular
-expression that starts with `^/` and ends with a `$`.
 
 {{< warning success >}}
 **Warning**  
