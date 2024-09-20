@@ -452,7 +452,9 @@ Accessible via `{{ range $template := $product.Templates }}`
 | `{{ .TokenEndpointAuthMethod }}` | Template token endpoint auth method |
 | `{{ .OktaAppType }}` | Template Okta app type |
 
-#### Example Usage
+<details>
+<summary> <b>Example Usage</b></summary>
+
 ```html
 <h1>Cart Checkout</h1>
 {{ range $key, $value := .cart }}
@@ -485,6 +487,9 @@ Accessible via `{{ range $template := $product.Templates }}`
 {{ end }}
 {{ end }}
 ```
+</details>
+
+
 ## Organisation User Detail 
 
 **Template Path**: `themes/default/views/user_detail.tmpl`
@@ -514,7 +519,10 @@ Accessible via `{{ .user }}`
 | `{{ .IsOrgAdmin }}` | true if user is an organisation admin |
 | `{{ .DisplayRole }}` | User's role |
 
-#### Example Usage
+
+<details>
+<summary> <b>Example Usage</b></summary>
+
 ```html
 <h1>User Details</h1>
 {{ if .errors }}
@@ -536,7 +544,10 @@ Accessible via `{{ .user }}`
 <p>Email: {{ .user.Email }}</p>
 <p>Role: {{ .user.DisplayRole }}</p>
 ```
-## Organisation User Edit 
+
+</details>
+
+## Organisation User Edit
 
 **Template Path**: `themes/default/views/user_edit.tmpl`
 
@@ -575,7 +586,9 @@ Accessible via `{{ .user }}`
 | `{{ .IsOrgAdmin }}` | true if user is an organisation admin |
 | `{{ .DisplayRole }}` | User's role |
 
-#### Example Usage
+<details>
+<summary> <b>Example Usage</b></summary>
+
 ```html
 <form action="edit" method="post" id="user-edit">
   {{ if .error }}
@@ -612,6 +625,9 @@ Accessible via `{{ .user }}`
   </div>
 </form>
 ```
+
+</details>
+
 ## Organisation Users List 
 
 **Template Path**: `themes/default/views/user_list.tmpl`
@@ -623,7 +639,7 @@ This template is used to render the list of organisation users.
 - `{{ .roles }}`: Map of available roles (Key: role, Value: role display name)
 
 #### Example Usage
-```
+```html
 <td> {{ index $roles $userInvite.Role }} </td>
 {{ end }}
 ```
@@ -731,7 +747,9 @@ Accessible via `{{ range .posts }}`
 | `{{ .ProductID }}` | Associated product ID |
 | `{{ .AuthorID }}` | Author ID |
 
-#### Example Usage
+<details>
+<summary> <b>Example Usage</b></summary>
+
 ```html
 <div class="product-detail">
   <h1>{{ .product.DisplayName }}</h1>
@@ -778,6 +796,8 @@ Accessible via `{{ range .posts }}`
 </div>
 ```
 
+</details>
+
 ## Product OAS Documentation 
 
 **Template Paths**: 
@@ -796,7 +816,9 @@ ReDoc versions are available.
 | `{{ .Path }}` | Product path |
 | `{{ .Url }}` | OAS document URL |
 
-#### Example Usage
+<details>
+<summary> <b>Example Usage</b></summary>
+
 ```html
 <div class="docs-container">
   <div class="card mt-4">
@@ -818,6 +840,8 @@ ReDoc versions are available.
   </div>
 </div>
 ```
+
+</details>
 
 # Global Helper Functions
 
@@ -1049,7 +1073,9 @@ Accessible via `{{ range .Catalogues }}`
 | `{{ .Name }}` | Catalogue name |
 | `{{ .VisibilityStatus }}` | Catalogue visibility status |
 
-#### Example Usage
+<details>
+<summary> <b>Example Usage</b></summary>
+
 ```html
 {{ $featured_products := FeaturedProducts }}
 <h2>Featured API Products</h2>
@@ -1082,6 +1108,8 @@ Accessible via `{{ range .Catalogues }}`
 </div>
 ```
 
+</details>
+
 ### FilterUserInvites
 
 Returns a list of users that were invited to the current user's organisation, if the user became an organisation.
@@ -1102,7 +1130,9 @@ Accessible via `{{ range $invite := FilterUserInvites req }}`
 | `{{ $invite.Joined }}` | Whether the user has joined |
 | `{{ $invite.Uactive }}` | Whether the user is active |
 
-#### Example Usage
+<details>
+<summary> <b>Example Usage</b></summary>
+
 ```html
 {{ $userInvites := FilterUserInvites req }}
 {{ if $userInvites }}
@@ -1139,6 +1169,8 @@ Accessible via `{{ range $invite := FilterUserInvites req }}`
 <p>No pending invitations.</p>
 {{ end }}
 ```
+
+</details>
 
 ### FormatTime
 
@@ -1374,7 +1406,9 @@ Accessible via `{{ range $catalogue := $product.Catalogues }}`
 | `{{ $catalogue.Name }}` | Catalogue name |
 | `{{ $catalogue.VisibilityStatus }}` | Catalogue visibility status |
 
-#### Example Usage
+<details>
+<summary> <b>Example Usage</b></summary>
+
 ```html
 {{ range GetProducts req }}
 <div class="col-lg-12 card-container">
@@ -1402,6 +1436,8 @@ Accessible via `{{ range $catalogue := $product.Catalogues }}`
 </div>
 {{ end }}
 ```
+
+</details>
 
 ### IsPortalDisabled
 
@@ -1847,7 +1883,9 @@ Accessible via `{{ .user }}`
 | `{{ .Teams.Name }}` | Team name |
 | `{{ .Teams.Default }}` | Indicates if the team is the default team (true/false) |
 
-#### Example Usage
+<details>
+<summary> <b>Example Usage</b></summary>
+
 ```html
 <h1>Welcome to Tyk Enterprise Developer Portal</h1>
 <p>Hello {{ .user.DisplayName }},</p>
@@ -1860,3 +1898,5 @@ Accessible via `{{ .user }}`
 </ul>
 <p>We're excited to have you on board!</p>
 ```
+
+</details>
