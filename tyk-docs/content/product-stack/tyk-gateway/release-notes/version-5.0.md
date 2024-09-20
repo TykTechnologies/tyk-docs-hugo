@@ -1,11 +1,7 @@
 ---
 title: Tyk Gateway 5.0 Release Notes
 description: Tyk Gateway v5.0 release notes
-<<<<<<< HEAD
-tags: ["release notes", "Tyk Gateway", "v5.0", "5.0", "5.0.0", "5.0.1", "5.0.1", "5.0.2", "5.0.3", "5.0.4", "5.0.5", "5.0.6", "5.0.7", "5.0.8", "5.0.9", "5.0.10", "5.0.11"]
-=======
 tags: ["release notes", "Tyk Gateway", "v5.0", "5.0", "5.0.0", "5.0.1", "5.0.1", "5.0.2", "5.0.3", "5.0.4", "5.0.5", "5.0.6", "5.0.7", "5.0.8", "5.0.9", "5.0.10", "5.0.11", "5.0.13", "5.0.14"]
->>>>>>> 17cffabae... [DX-1684] Release notes for 5.0.14 (attempt 2) (#5428)
 aliases:
     - /release-notes/version-5.0/
 ---
@@ -16,8 +12,6 @@ aliases:
 
 ---
 
-<<<<<<< HEAD
-=======
 ## 5.0.14 Release Notes {#rn-v5.0.14}
 
 ### Release Date 18th September 2024
@@ -159,7 +153,6 @@ Please refer to our GitHub [release notes](https://github.com/TykTechnologies/ty
 
 ---
 
->>>>>>> 17cffabae... [DX-1684] Release notes for 5.0.14 (attempt 2) (#5428)
 ## 5.0.11 Release Notes
 Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.11).
 
