@@ -3499,6 +3499,10 @@ menu:
               path: /product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades
               category: Page
               show: True
+            - title: "Templates"
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/templates
+              category: Page
+              show: True
         - title: "Customize data models"
           path: /product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model
           category: Page
