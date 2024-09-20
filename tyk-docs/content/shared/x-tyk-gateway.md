@@ -1323,7 +1323,6 @@ PasswordRegexp is the regex for password e.g. `<Password>(.*)</Password>`.
 Tyk classic API definition: `basic_auth.passwordRegexp`.
 
 ### **FromOASExamples**
-<<<<<<< HEAD
 
 FromOASExamples configures mock responses that should be returned from OAS example responses.
 
@@ -1348,8 +1347,6 @@ Tyk classic API definition: `version_data.versions...extended_paths.internal[*]`
 Enabled if set to true makes the endpoint available only for internal requests.
 
 ### **Introspection**
-=======
->>>>>>> f96d38a1a... [TT-13125] Update documentation for 5.0 LTS (#5425)
 
 Introspection holds configuration for OAuth token introspection.
 
@@ -1727,10 +1724,7 @@ Tyk classic API definition: `auth_configs[X].signature.error_code`.
 ErrorMessage configures the error message that is emitted on validation failure.
 A default error message is emitted if unset.
 
-<<<<<<< HEAD
 Tyk classic API definition: `auth_configs[X].signature.error_message`.
-=======
->>>>>>> f96d38a1a... [TT-13125] Update documentation for 5.0 LTS (#5425)
 
 ### **Token**
 
@@ -1789,7 +1783,6 @@ Enabled activates Method Transform for the given path and method.
 **Field: `toMethod` (`string`)**
 ToMethod is the http method value to which the method of an incoming request will be transformed.
 
-<<<<<<< HEAD
 ### **URLRewrite**
 
 URLRewrite configures URL rewriting.
@@ -1872,8 +1865,6 @@ If empty, the trigger is ignored.
 RewriteTo specifies the URL to which the request shall be rewritten
 if indicated by the combination of `condition` and `rules`.
 
-=======
->>>>>>> f96d38a1a... [TT-13125] Update documentation for 5.0 LTS (#5425)
 ### **ValidateRequest**
 
 ValidateRequest holds configuration required for validating requests.
