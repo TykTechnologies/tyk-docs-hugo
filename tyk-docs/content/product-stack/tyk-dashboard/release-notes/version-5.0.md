@@ -1,12 +1,75 @@
 ---
 title: Tyk Dashboard v5.0
-tags: ["release notes", "Tyk Dashboard", "v5.0", "5.0", "5.0.0", "5.0.1", "5.0.1", "5.0.2", "5.0.3", "5.0.4", "5.0.5", "5.0.6", "5.0.7", "5.0.8", "5.0.9", "5.0.10"]
+tags: ["release notes", "Tyk Dashboard", "v5.0", "5.0", "5.0.0", "5.0.1", "5.0.1", "5.0.2", "5.0.3", "5.0.4", "5.0.5", "5.0.6", "5.0.7", "5.0.8", "5.0.9", "5.0.10", "5.0.11", "5.0.12", "5.0.13", "5.0.14"]
 weight: 2
 ---
 
 **Licensed Protected Product**
 
 **This page contains all release notes for version 5.0.X displayed in reverse chronological order**
+
+---
+
+## 5.0.14 Release Notes {#rn-v5.0.14}
+
+### Release Date 18th September 2024
+
+### Upgrade Instructions
+
+This release is not tightly coupled with Tyk Gateway v5.0.14, so you do not have to upgrade both together.
+
+
+Go to the [Upgrading Tyk](https://tyk.io/docs/product-stack/tyk-gateway/release-notes/version-5.0/#upgrading-tyk) section for detailed upgrade instructions.
+
+
+### Release Highlights
+
+This release fixes some display issues in Tyk Dashboard and Tyk Classic Portal when using PostgreSQL.
+
+### Changelog {#Changelog-v5.0.14}
+
+#### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Tyk Dashboard UI: Fixed display issue for API statistics</summary>
+
+Fixed an issue where API statistics were not being shown when using PostgreSQL and adding two or more tags in the Activity page
+</details>
+</li>
+<li>
+<details>
+<summary>Tyk Dashboard UI:  Fixed issue with display of HTTP 429 status codes on the Activity page</summary>
+
+Fixed an issue where HTTP 429 status codes were not being shown on the Activity page when using PostgreSQL
+</details>
+</li>
+<li>
+<details>
+<summary>Tyk Classic Portal UI: Fixed display of graphs and requests counter</summary>
+
+Fixed wrong graphs and incorrect requests counter on Tyk Classic Portal when using PostgreSQL
+</details>
+</li>
+<li>
+<details>
+<summary>Tyk Dashboard UI: fixed issues with the Error Breakdown display, specifically related to date handling</summary>
+
+Fixed Error Breakdown issue showing errors that happened on different dates than selected date
+</details>
+</li>
+</ul>
+
+---
+
+## 5.0.13 Release Notes
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.13)
+
+---
+
+## 5.0.12 Release Notes
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.12)
 
 ---
 
