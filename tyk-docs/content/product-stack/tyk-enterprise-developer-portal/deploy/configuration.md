@@ -179,7 +179,12 @@ The default value is `Strict`. If the value specified in the `PORTAL_SESSION_SAM
 ### PORTAL_SESSION_LIFETIME
 **Config file:** Session.LifeTime <br/>
 **Type:** `int` <br/>
-**Description**: The lifetime of the portal's cookie in seconds. The default value is 3600 seconds.
+**Description**: The lifetime of the portal's session in seconds. The default value is 604800 seconds.
+
+## PORTAL_SESSION_IDLE_TIMEOUT
+**Config file:** Session.IdleTimeout <br/>
+**Type:** `int` <br/>
+**Description**: The idle timeout of the portal's session in seconds. The default value is 3600 seconds.
 
 ### PORTAL_ENABLE_HTTP_PROFILER
 **Config file:** EnableHttpProfiler <br/>
@@ -240,6 +245,11 @@ Values for TLS Versions:
 |      1.1      |      770       |
 |      1.2      |      771       |
 |      1.3      |      772       |
+
+### PORTAL_TLS_CIPHER_SUITES
+**Config file:** TLSConfig.CipherSuites <br/>
+**Type:** `[]string` <br/>
+**Description**: Array of allowed cipher suites as defined at https://golang.org/pkg/crypto/tls/#pkg-constants.
 
 ### PORTAL_TLS_CERTIFICATES
 **Config file:** TLSConfig.Certificates <br/>
@@ -435,7 +445,7 @@ PORTAL_DATABASE_CONNECTION_MAX_LIFETIME=180000
 ### PORTAL_DATABASE_CONNECTION_MAX_LIFETIME
 **Config file:** Database.ConnectionMaxLifetime <br/>
 **Type:** `int` <br/>
-**Description**: Defines the maximum lifetime of a connection in Milliseconds. Optional, the default value is unlimited meaning connections are reused indefinitely as long as they are not closed due to errors or manually closed by the application.
+**Description**: Defines the maximum lifetime of a connection in Milliseconds. Optional, the default value is unlimited meaning connections are reused indefinitely as long as they are not closed due to errors or manually closed by the application. Defaults to 1800000 milliseconds.
 
 
 ## CORS settings
