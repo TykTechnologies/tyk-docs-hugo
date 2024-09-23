@@ -85,6 +85,9 @@ jobs:
           git checkout origin/${{ github.event.inputs.current_latest_branch }} -- _redirects
           git add _redirects
           git commit -m "Copy _redirects from ${{ github.event.inputs.current_latest_branch }}"
+          echo "/docs/${{ env.VERSION }}/* https://release-${{ env.VERSION//./- }}--tyk-docs.netlify.app/docs/:splat 200!" >> _redirects
+          git add _redirects
+          git commit -m "Add redirect for version ${{ env.VERSION }}"
 
       # Push the new branch to origin
       - name: Push the new branch to origin
