@@ -68,13 +68,20 @@ jobs:
           labels: ${{ github.event.inputs.next_latest_branch }}
           assignees: ${{ github.actor }}
       # Create the new branch from master
-      #- name: Create the new branch from master
-       # run: |
-        #  git checkout -b ${{ github.event.inputs.next_latest_branch }}
+      - name: Create the new branch from master
+        run: |
+          git checkout -b ${{ github.event.inputs.next_latest_branch }}
+
+      # Copy _redirects file from current_latest_branch
+      - name: Copy _redirects file
+        run: |
+          git checkout ${{ github.event.inputs.current_latest_branch }} -- _redirects
+          git add _redirects
+          git commit -m "Copy _redirects from ${{ github.event.inputs.current_latest_branch }}"
 
       # Push the new branch to origin
-      #- name: Push the new branch to origin
-       # env:
-        #  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        #run: |
-         # git push origin ${{ github.event.inputs.next_latest_branch }}
+      - name: Push the new branch to origin
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push origin ${{ github.event.inputs.next_latest_branch }}
