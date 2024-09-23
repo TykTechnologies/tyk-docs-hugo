@@ -32,6 +32,11 @@ jobs:
         run: |
           VERSION=$(echo "${{ github.event.inputs.current_latest_branch }}" | grep -oP '\d+\.\d+')
           echo "VERSION=$VERSION" >> $GITHUB_ENV
+      - name: Extract version from next branch name
+        id: extract_version_from_next_release
+        run: |
+          NEXT_VERSION=$(echo "${{ github.event.inputs.next_latest_branch }}" | grep -oP '\d+\.\d+')
+          echo "NEXT_VERSION=$NEXT_VERSION" >> $GITHUB_ENV
 
       # Update baseURL in config.toml with the extracted version
       - name: Update baseURL in config.toml
@@ -85,7 +90,7 @@ jobs:
           git checkout origin/${{ github.event.inputs.current_latest_branch }} -- _redirects
           git add _redirects
           git commit -m "Copy _redirects from ${{ github.event.inputs.current_latest_branch }}"
-          VERSION=${{ env.VERSION }}
+          VERSION=${{ env.NEXT_VERSION }}
           URL="https://release-${VERSION//./-}--tyk-docs.netlify.app/docs/:splat"
           echo "/docs/${VERSION}/* $URL 200!" >> _redirects
           git add _redirects
