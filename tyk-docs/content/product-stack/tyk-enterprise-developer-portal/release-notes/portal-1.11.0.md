@@ -66,7 +66,7 @@ To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "
 #### Changed
 - Changed recovery links to be valid for 24 hours.
 - Changed recovery links to be unique and valid for one use only.
-- Changed the default value of [PORTAL_DATABASE_CONNECTION_MAX_LIFETIME]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_connection_max_lifetime" >}}) to 1800000 milliseconds
+- Changed the default value of [PORTAL_DATABASE_CONNECTION_MAX_LIFETIME]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_connection_max_lifetime" >}}) to 1800000 milliseconds.
 - Changed session token queries for better performance.
 - Introduced new indexes for better performance.
 
