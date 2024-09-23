@@ -68,6 +68,8 @@ jobs:
           labels: ${{ github.event.inputs.next_latest_branch }}
           assignees: ${{ github.actor }}
       # Create the new branch from master
+      - name: Fetch all branches
+        run: git fetch --all
       - name: Create the new branch from master
         run: |
           git checkout -b ${{ github.event.inputs.next_latest_branch }}
