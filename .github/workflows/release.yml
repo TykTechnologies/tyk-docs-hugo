@@ -97,6 +97,8 @@ jobs:
           OLD_VERSION_DASH=${OLD_VERSION//./-}
           OLD_URL="https://release-${OLD_VERSION_DASH}--tyk-docs.netlify.app/docs/:splat"
           sed -i "/\/docs\/${OLD_VERSION}\/\* $OLD_URL 200!/a /docs/${NEXT_VERSION}/* $URL 200!" _redirects
+          # Use an alternative delimiter
+          sed -i "s|/docs/${OLD_VERSION}/* $OLD_URL 200!|&\n/docs/${NEXT_VERSION}/* $URL 200!|" _redirects
           git add _redirects
           git commit -m "Add redirect for version $VERSION"
 
