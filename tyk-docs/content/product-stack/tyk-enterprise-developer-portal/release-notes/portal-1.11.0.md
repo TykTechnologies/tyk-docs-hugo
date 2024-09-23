@@ -10,7 +10,7 @@ weight: 7
 
 **Licensed Protected Product**
 
-##### Release Date 27 Jun 2024
+##### Release Date 25 Sept 2024
 
 #### Breaking Changes
 This release has no breaking changes.
@@ -32,11 +32,11 @@ The v1.11.0 release includes the following new features and improvements:
 
 To enhance portal stability under high loads, we conducted extensive performance testing and did key database optimizations. Also, properly configuring the connection pool settings is *essential* to prevent unexpected pod restarts and maintain optimal performance, especially in environments with multiple portal pods.
 
-#### Recommended Configuration:
+##### Recommended Configuration:
 - [PORTAL_DATABASE_MAX_OPEN_CONNECTIONS]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_max_open_connections" >}}): Set this value based on your database’s maximum connection limit divided by the number of portal pods. For instance, if your database allows 200 connections and you are running 4 portal pods, set PORTAL_DATABASE_MAX_OPEN_CONNECTIONS to 50 per pod. This ensures that all pods can share the available connections without exceeding the database's limit, which could otherwise lead to performance degradation or errors.
 - [PORTAL_DATABASE_MAX_IDLE_CONNECTIONS]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_max_idle_connections" >}}): Set to 15 or a lower value based on your expected load. This setting keeps a reasonable number of connections readily available without tying up resources unnecessarily.
 
-For reference, with 2 pods, PORTAL_DATABASE_MAX_OPEN_CONNECTIONS set to 30 and PORTAL_DATABASE_MAX_IDLE_CONNECTIONS set to 15, we could handle 90 active users.
+For reference, with 2 pods, `PORTAL_DATABASE_MAX_OPEN_CONNECTIONS` set to 30 and `PORTAL_DATABASE_MAX_IDLE_CONNECTIONS` set to 15, we could handle 90 active users.
 
 #### Upgrade instructions
 If you are on 1.10.0 or an older version we advise you to upgrade ASAP directly to this release.
