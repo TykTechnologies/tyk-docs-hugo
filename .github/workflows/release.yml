@@ -68,10 +68,12 @@ jobs:
           labels: ${{ github.event.inputs.next_latest_branch }}
           assignees: ${{ github.actor }}
       # Create the new branch from master
+      # Fetch all branches to ensure current_latest_branch is available
       - name: Fetch all branches
-        run: | 
+        run: |
           git fetch --all
-          git branch
+
+      # Create the new branch from master
       - name: Create the new branch from master
         run: |
           git checkout -b ${{ github.event.inputs.next_latest_branch }}
@@ -79,7 +81,8 @@ jobs:
       # Copy _redirects file from current_latest_branch
       - name: Copy _redirects file
         run: |
-          git checkout ${{ github.event.inputs.current_latest_branch }} -- _redirects
+          git fetch origin ${{ github.event.inputs.current_latest_branch }}  # Ensure the branch is fetched
+          git checkout origin/${{ github.event.inputs.current_latest_branch }} -- _redirects
           git add _redirects
           git commit -m "Copy _redirects from ${{ github.event.inputs.current_latest_branch }}"
 
