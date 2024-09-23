@@ -92,7 +92,7 @@ jobs:
           git commit -m "Copy _redirects from ${{ github.event.inputs.current_latest_branch }}"
           VERSION=${{ env.NEXT_VERSION }}
           URL="https://release-${VERSION//./-}--tyk-docs.netlify.app/docs/:splat"
-          sed -i "/\/docs\/${{ env.VERSION }}\/* https:\/\/release-${{ env.VERSION//./- }}--tyk-docs.netlify.app\/docs/:splat 200!/a /docs/${VERSION}/* $URL 200!" _redirects
+          sed -i "/\/docs\/${{ env.VERSION }}\/* https:\/\/release-${{ env.VERSION//./- }}--tyk-docs.netlify.app\/docs/:splat 200!/a /docs/${NEXT_VERSION}/* $URL 200!" _redirects
           git add _redirects
           git commit -m "Add redirect for version $VERSION"
 
