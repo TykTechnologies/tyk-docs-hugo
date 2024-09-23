@@ -72,7 +72,7 @@ If a match is found, Tyk will then handle the request according to the configura
 
 Tyk treats the *listen path* configured in the API definition as a regex, allowing advanced users to perform complex listen path matching by setting a regex in the API definition.
 
-The [strict routes]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_strict_routes" >}}) option in the Tyk Gateway configuration is provided to avoid nearest-neighbour requests on overlapping routes. If this is set to `true` then Tyk will perform an exact match of the request against the configured *listen path* including the trailing `/` used to mark the end of the *listen path*. For example:
+The [TYK_GW_HTTPSERVEROPTIONS_ENABLESTRICTROUTES]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_strict_routes" >}}) option in the Tyk Gateway configuration is provided to avoid nearest-neighbour requests on overlapping routes. If this is set to `true` then Tyk will perform an exact match of the request against the configured *listen path* including the trailing `/` used to mark the end of the *listen path*. For example:
 - with strict routes enabled, an API with *listen path* set to `/app` will match requests to `/app`, `/app/` and `/app/*` but will not match `/app1/*` or `/apple/`
 - without strict routes, all of the above requests would match to the API with *listen path* set to `/app`
 
@@ -84,7 +84,7 @@ Tyk is acting as a secure proxy between the client and upstream service, so when
 <br>
 Thus a request to `<gateway-address>/<listen-path>/<version-identifier>/<endpoint-path>` will be proxied to `<target-url>/<listen-path>/<version-identifier>/<endpoint-path>`.
 <br>
-The [strip listen path]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/proxy-settings#proxystrip_listen_path" >}}) option is provided to remove the *listen path* from the upstream request; this allows differentiation between the publicly exposed API and private upstream API, for example to provide a cleaner, user-friendly facade to a legacy upstream service.
+The [strip listen path]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#listenpath" >}}) option in the API definition is provided to remove the *listen path* from the upstream request; this allows differentiation between the publicly exposed API and private upstream API, for example to provide a cleaner, user-friendly facade to a legacy upstream service.
 {{< /note >}}
 
 ### Versioning identifier
@@ -194,7 +194,7 @@ For example, the pattern `/user` will match all of the following URLs:
 
 ### Prefix match
 
-When [EnablePathPrefixMatching]({{< ref "tyk-oss-gateway/configuration#http_server_options" >}}) is enabled, the Gateway switches to prefix matching where it treats the configured pattern as a prefix which will only match against the beginning of the path. For example, a pattern such as `/json` will only match request URLs that begin with `/json`, rather than matching any URL containing `/json`.
+When [TYK_GW_HTTPSERVEROPTIONS_ENABLEPATHSUFFIXMATCHING]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_path_prefix_matching" >}}) is enabled, the Gateway switches to prefix matching where it treats the configured pattern as a prefix which will only match against the beginning of the path. For example, a pattern such as `/json` will only match request URLs that begin with `/json`, rather than matching any URL containing `/json`.
 
 The gateway checks the request URL against several variations depending on whether path versioning is enabled:
 
@@ -204,7 +204,7 @@ The gateway checks the request URL against several variations depending on wheth
 
 The logic behind prefix matching is that it prepends the start of string symbol (`^`) if the URL begins with a `/`, to ensure that the URL begins with the specified pattern. For example, `/json` would be evaluated as `^/json`.
 
-For patterns that already start with `^`, the gateway will already perform prefix matching so `EnablePathPrefixMatching` will have no impact.
+For patterns that already start with `^`, the gateway will already perform prefix matching so `TYK_GW_HTTPSERVEROPTIONS_ENABLEPATHSUFFIXMATCHING` will have no impact.
 
 This option allows for more specific and controlled routing of API requests, potentially reducing unintended matches. Note that you may need to adjust existing route definitions when enabling this option.
 
@@ -215,7 +215,7 @@ Example:
 
 ### Suffix match
 
-When [EnablePathSuffixMatching]({{< ref "tyk-oss-gateway/configuration#http_server_options" >}}) is enabled, the Gateway switches to suffix matching where it treats the configured pattern as a suffix which will only match against the end of the path. For example, a pattern such as `/json` will only match request URLs that end with `/json`, rather than matching any URL containing `/json`.
+When [TYK_GW_HTTPSERVEROPTIONS_ENABLEPATHSUFFIXMATCHING]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_path_suffix_matching" >}}) is enabled, the Gateway switches to suffix matching where it treats the configured pattern as a suffix which will only match against the end of the path. For example, a pattern such as `/json` will only match request URLs that end with `/json`, rather than matching any URL containing `/json`.
 
 The gateway checks the request URL against several variations depending on whether path versioning is enabled:
 - Full path (listen path + version + endpoint): `/listen-path/v4/json`
@@ -224,7 +224,7 @@ The gateway checks the request URL against several variations depending on wheth
 
 The logic behind prefix matching is that it appends the end of string symbol (`$`), to ensure that the URL ends with the specified pattern. For example, `/json` would be evaluated as `/json$`.
 
-For patterns that already end with `$`, the gateway will already perform suffix matching so EnablePathSuffixMatching will have no impact.
+For patterns that already end with `$`, the gateway will already perform suffix matching so `TYK_GW_HTTPSERVEROPTIONS_ENABLEPATHSUFFIXMATCHING` will have no impact.
 
 This option allows for more specific and controlled routing of API requests, potentially reducing unintended matches. Note that you may need to adjust existing route definitions when enabling this option.
 
