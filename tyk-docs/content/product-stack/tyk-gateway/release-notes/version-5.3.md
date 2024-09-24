@@ -33,7 +33,6 @@ This release fixes some issues related to the way that Tyk performs URL path mat
 
 ### Breaking Changes
 
-
 There are no breaking changes in this release, however if moving from an version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
 
 
@@ -46,10 +45,6 @@ There are no deprecations in this release.
 
 If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
-
-#### FIPS Compliance
-
-Tyk Gateway now offers [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) compliance. For further details please consult [Tyk API Management FIPS support]({{< ref "developer-support/special-releases-and-features/fips-release" >}}).
 
 ### Dependencies
 
