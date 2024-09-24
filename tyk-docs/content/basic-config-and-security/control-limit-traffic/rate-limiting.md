@@ -93,7 +93,7 @@ You can configure per-endpoint rate limits from the API Designer in Tyk Dashboar
 
 1. Navigate to the Tyk policy for which you want to set the rate limit
 2. Ensure that API that you want to apply rate limits to is selected
-3. Under **API Access** -> **Set endpoint-level usage limits** click on **Add Rate Lmit** to configure endpoint level rate limits.
+3. Under **API Access** -> **Set endpoint-level usage limits** click on **Add Rate Limit** to configure the rate limit. You will need to provide the rate limit and the endpoint path and method.
 4. **Save/Update** the policy
 
 
