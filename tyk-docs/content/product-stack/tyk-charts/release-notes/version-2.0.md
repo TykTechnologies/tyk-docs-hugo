@@ -32,9 +32,12 @@ These options allow more restrictive URL path matching by controlling whether th
 
 However, starting with **Tyk Charts v2.0**, these options will be set to `true` by default, enforcing stricter security by requiring precise path matches. This change applies to new installations or upgrades via Tyk Charts v2.0 and above.
 
+From this version of Tyk Charts we also set the following configuration option to `true` by default as part of the stricter path matching:
+
+- `http_server_options.enable_strict_routes`
 **Impact on existing users:**
 
-- The change is **backward-compatible** for users upgrading their Tyk Gateway directly (i.e. not via Helm Chart), because by default, the new options are set to `false`. This ensures that existing configurations are not affected if you update the Gateway manually.
+- The change is **backward-compatible** for users upgrading their Tyk Gateway directly (i.e. not via Helm Chart), because by default, these features will not be active. This ensures that existing configurations are not affected if you update the Gateway manually.
 - However, **if you install or upgrade via Tyk Charts v2.0**, these options will be set to `true` by default. This means stricter URL path matching will be enforced automatically, which could impact your existing routes or configurations if you're not prepared for it. Please ensure you understand and test these new configurations before upgrading your production environment.
 
 **Action required:**
@@ -138,10 +141,10 @@ helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release: -->
 
 ##### Support Gateway configuration for URL path matching
-MDCB v2.7.0 release introduces `/liveness` and `/readiness` probes which give more accurate and detail health check information. MDCB deployment has been updated to use the new endpoints. See [MDCB Health Check]({{<ref "tyk-multi-data-centre/setup-controller-data-centre#health-check">}}) section for information about the new probes.
+The default Gateway configuration in the Helm chart will set Tyk's URL path matching to **exact** mode. This ensures that the request URL must exactly match the listen path and endpoint patterns configured in the API definition. 
 
 ##### Updated default Tyk versions
-Tyk Charts 1.6 will install the following Tyk component versions by default.
+Tyk Charts 2.0 will install the following Tyk component versions by default.
 - Tyk Gateway v5.3.5
 - Tyk Dashboard v5.3.5
 - Tyk Pump v1.11.0
@@ -181,10 +184,11 @@ Each change log item should be expandable. The first line summarises the changel
 
 Tyk Charts v2.0 introduces support for the newly added Tyk Gateway configuration options: `enable_path_prefix_matching` and `enable_path_suffix_matching`. These settings allow more secure and explicit URL matching by restricting path pattern matching to the start or end of the request path. This enhancement benefits customers who need more precise route matching to ensure that only intended paths are matched in production environments, reducing the risk of unintentional routing.
 
-The options are configurable using these `tyk-gateway` chart's parameters:
+URL path matching mode is configurable using these `tyk-gateway` chart parameters:
 
 - `gateway.enablePathPrefixMatching` (default to `true`)
 - `gateway.enablePathSuffixMatching` (default to `true`)
+- `gateway.enableStrictRoutes` (default to `true`)
 
 Learn more about the settings in the [URL Path Matching]({{<ref "getting-started/key-concepts/url-matching">}}) documentation.
 
