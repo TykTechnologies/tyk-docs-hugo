@@ -84,7 +84,6 @@ Any API endpoints that don't have endpoint-level rate limits configured will inh
 {{< note success >}}
 **Note**  
 The following assumptions are made:
- - The APIs being protected with a rate limit are using our [Authentication token]({{< ref "basic-config-and-security/security/authentication-authorization/bearer-tokens" >}}) Authentication mode and have policies already created. 
  - the [ignore authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}) middleware is not turned enabled for these endpoints
  - if [path based permissions]({{< ref "getting-started/create-security-policy#path-based-permissions" >}}) are configured for the API then these grant access to these endpoints for keys generated from the policies
 {{< /note >}}
