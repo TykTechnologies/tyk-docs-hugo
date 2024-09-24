@@ -89,7 +89,7 @@ The following assumptions are made:
  - if [path based permissions]({{< ref "getting-started/create-security-policy#path-based-permissions" >}}) are configured for the API then these grant access to these endpoints for keys generated from the policies
 {{< /note >}}
 
-You can configure this rate limit from the API Designer in Tyk Dashboard as follows:
+You can configure per-endpoint rate limits from the API Designer in Tyk Dashboard as follows:
 
 1. Navigate to the Tyk policy for which you want to set the rate limit
 2. Ensure that API that you want to apply rate limits to is selected
