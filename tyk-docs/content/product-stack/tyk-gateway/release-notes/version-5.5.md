@@ -65,7 +65,7 @@ If you are upgrading to 5.5.1, please follow the detailed [upgrade instructions]
     docker pull tykio/tyk-gateway:v5.5.1
     ``` 
 - Helm charts
-  - tyk-charts v1.6.1 To Be Published (TBP)
+  - tyk-charts v2.0.0 To Be Published (TBP)
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 ### Changelog {#Changelog-v5.5.1}
