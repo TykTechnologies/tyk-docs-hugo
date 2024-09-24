@@ -1091,32 +1091,6 @@ PasswordRegexp is the regex for password e.g. `<Password>(.*)</Password>`.
 
 Tyk classic API definition: `basic_auth.passwordRegexp`.
 
-### **FieldDocError**
-
-FieldDocError holds a list of errors.
-
-### **FieldInfo**
-
-FieldInfo holds details about a field.
-
-**Field: `doc` (`string`)**
-Doc is field docs. comments that are not part of docs are excluded.
-
-**Field: `json_name` (`string`)**
-JSONName is the corresponding json name of the field.
-
-**Field: `json_type` (`string`)**
-JSONType valid json type if it was found
-
-**Field: `go_path` (`string`)**
-GoPath is the go path of this field starting from root object
-
-**Field: `map_key` (`string`)**
-MapKey is the map key type, if this field is a map
-
-**Field: `is_array` (`boolean`)**
-IsArray reports if this field is an array.
-
 ### **FromOASExamples**
 
 FromOASExamples configures mock responses should be returned from OAS example responses.
@@ -1365,16 +1339,6 @@ Signature holds the configuration for signature validation.
 **Field: `errorMessage` (`string`)**
 
 
-### **StructInfo**
-
-StructInfo holds ast field information for the docs generator.
-
-**Field: `Name` (`string`)**
-Name is struct go name.
-
-**Field: `fields` ([[]*FieldInfo](#fieldinfo))**
-Fields holds information of the fields, if this object is a struct.
-
 ### **Token**
 
 Token holds the values related to authentication tokens.
@@ -1423,34 +1387,6 @@ Enabled enables Method Transform for the given path and method.
 **Field: `toMethod` (`string`)**
 ToMethod is the http method value to which the method of an incoming request will be transformed.
 
-### **TykExtensionConfigParams**
-
-TykExtensionConfigParams holds the essential configuration required for the Tyk Extension schema.
-
-**Field: `UpstreamURL` (`string`)**
-
-
-**Field: `ListenPath` (`string`)**
-
-
-**Field: `CustomDomain` (`string`)**
-
-
-**Field: `ApiID` (`string`)**
-
-
-**Field: `Authentication` (`boolean`)**
-
-
-**Field: `AllowList` (`boolean`)**
-
-
-**Field: `ValidateRequest` (`boolean`)**
-
-
-**Field: `MockResponse` (`boolean`)**
-
-
 ### **ValidateRequest**
 
 ValidateRequest holds configuration required for validating requests.
@@ -1483,11 +1419,4 @@ ProxyOnError proxies if virtual endpoint errors out.
 
 **Field: `requireSession` (`boolean`)**
 RequireSession if enabled passes session to virtual endpoint.
-
-### **XTykDoc**
-
-XTykDoc is a list of information for exported struct type info,
-starting from the root struct declaration(XTykGateway).
-
-Type defined as array of `StructInfo` values, see [StructInfo](#structinfo) definition.
 
