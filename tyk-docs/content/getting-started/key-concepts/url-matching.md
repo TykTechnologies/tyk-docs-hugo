@@ -89,7 +89,7 @@ The [strip listen path]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects
 
 ### Versioning identifier
 
-If [URL path versioning]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#request-url-path" >}}) is in use for an API, Tyk will perform a match of the first fragment after the *listen path* to identify which version of the API should be invoked.
+When API versioning is set via URL path (using [location]({{< ref "getting-started/key-concepts/oas-versioning/#key-concepts" >}}) field), Tyk will perform a match of the first fragment after the *listen path* to identify which version of the API should be invoked.
 
 ### Endpoint path
 
