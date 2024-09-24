@@ -63,7 +63,6 @@ Fixed Error Breakdown issue showing errors that happened on different dates than
 ### Tyk Gateway
 
 ### Breaking Changes
-**Attention:** Please read this section carefully.
 
 There are no breaking changes in this release.
 
