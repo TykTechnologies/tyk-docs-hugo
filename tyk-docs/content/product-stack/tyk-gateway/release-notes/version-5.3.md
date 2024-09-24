@@ -33,7 +33,6 @@ This release fixes some issues related to the way that Tyk performs URL path mat
 
 ### Breaking Changes
 
-**Attention**: Please read this section carefully.
 
 There are no breaking changes in this release, however if moving from an version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
 
