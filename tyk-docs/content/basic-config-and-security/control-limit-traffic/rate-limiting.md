@@ -83,7 +83,7 @@ Any API endpoints that don't have endpoint-level rate limits configured will inh
 
 {{< note success >}}
 **Note**  
- Following assumptions are made for the aforementioned setup.
+The following assumptions are made:
  - The APIs being protected with a rate limit are using our [Authentication token]({{< ref "basic-config-and-security/security/authentication-authorization/bearer-tokens" >}}) Authentication mode and have policies already created. 
  - Ignore authentication plugin is not turned on for these endpoints.
  - Path based permissions, if configured grants access to these endpoints
