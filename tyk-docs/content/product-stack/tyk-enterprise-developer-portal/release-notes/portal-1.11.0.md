@@ -25,8 +25,8 @@ There are no deprecations in this release.
 The v1.11.0 release includes the following new features and improvements:
 - New Portal admin UI.
 - Closer to API Parity: APIs for Tags, Blogposts, Product images, Webhooks, and rotate credentials. A total of 23 new endpoints. 
-- [22 bugs fixed]({{< ref "product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.11.0/#fixed" >}})
-- [19 CVEs fixed]({{< ref "product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.11.0/#fixed" >}})
+- [22 bugs fixed](#fixed)
+- [19 CVEs fixed](#fixed)
 - CSRF protection, new TLS configuration and better recovery link security.
 
 
