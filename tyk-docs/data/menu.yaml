@@ -3858,7 +3858,7 @@ menu:
             path: /release-notes/pump-1.8
             category: Page
             show: True
-    - title: "Tyk Operator (Open Source)"
+    - title: "Tyk Operator"
       category: Directory
       show: True
       menu:
@@ -4514,7 +4514,7 @@ menu:
         path: /product-stack/tyk-streaming/troubleshooting
         category: Page
         show: True
-    - title: "Tyk Sync (Open Source)"
+    - title: "Tyk Sync"
       category: Directory
       show: True
       menu:
