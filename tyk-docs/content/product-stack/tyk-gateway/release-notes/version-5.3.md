@@ -24,7 +24,7 @@ Our minor releases are supported until our next minor comes out.
 ## 5.3.5 Release Notes
 
 
-### Release Date XX September 2024
+### Release Date 18 September 2024
 
 ### Release Highlights
 
@@ -157,7 +157,7 @@ Fixed an issue where a parameterized endpoint URL (e.g. `/user/{id}`) would be i
 
 ## 5.3.4 Release Notes
 
-## Release Date August 26th 2024
+### Release Date August 26th 2024
 
 ### Release Highlights
 
