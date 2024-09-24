@@ -184,7 +184,7 @@ Tyk Charts v2.0 introduces support for the newly added Tyk Gateway configuration
 The options are configurable using these `tyk-gateway` chart's parameters:
 
 - `gateway.enablePathPrefixMatching` (default to `true`)
-- `gateway.enablePathPrefixMatching` (default to `true`)
+- `gateway.enablePathSuffixMatching` (default to `true`)
 
 Learn more about the settings in the [URL Path Matching]({{<ref "getting-started/key-concepts/url-matching">}}) documentation.
 
