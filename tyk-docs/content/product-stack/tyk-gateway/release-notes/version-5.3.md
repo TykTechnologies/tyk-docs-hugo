@@ -66,7 +66,7 @@ An illustrative example is shown below. -->
 | 5.3.5 | MDCB v2.5.1     | MDCB v2.5.1 |
 |         | Operator v0.17 | Operator v0.16 |
 |         | Sync v1.4.3   | Sync v1.4.3 |
-|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.6.1 To Be Published (TBP) | Helm all versions |
+|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v2.0.0 To Be Published (TBP) | Helm all versions |
 | | EDP v1.8.3 | EDP all versions |
 | | Pump v1.9.0 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
@@ -98,7 +98,7 @@ Given the potential time difference between your upgrade and the release of this
     docker pull tykio/tyk-gateway:v5.3.5
     ```
 - Helm charts
-  - tyk-charts v1.6.1 To Be Published (TBP)
+  - tyk-charts v2.0.0 To Be Published (TBP)
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 
