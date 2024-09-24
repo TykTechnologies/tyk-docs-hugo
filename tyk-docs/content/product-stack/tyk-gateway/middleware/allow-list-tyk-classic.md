@@ -35,12 +35,7 @@ The `method_actions` object should be configured as follows, with an entry creat
 - `headers` : this should be blank
 
 For example:
-<<<<<<< HEAD
-```.json  {linenos=true, linenostart=1}
-=======
-
 ```json  {linenos=true, linenostart=1}
->>>>>>> b770f96a1... [TT-12871, TT-12550, TT-12865, DX-1678] Import draft of url matching (#5311)
 {
     "extended_paths": {
         "white_list": [
