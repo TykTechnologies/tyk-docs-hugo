@@ -51,7 +51,7 @@ Key-level rate limiting is more focused on controlling traffic from individual s
 
 - **key-level global limit** limiting the rate of calls the user of a key can make to all APIs authorized by that key
 - **key-level per-API limit** limiting the rate of calls the user of a key can make to specific individual APIs
-- **key-level per-endpoint limit** limiting the rate of calls the user of key can make to specific individual endpoints of an API
+- **key-level per-endpoint limit** limiting the rate of calls the user of a key can make to specific individual endpoints of an API
  
 These guides include explanation of how to configure key-level rate limits when using [API Keys]({{< ref "getting-started/create-api-key" >}}) and [Security Policies]({{< ref "getting-started/create-security-policy" >}}).
 
