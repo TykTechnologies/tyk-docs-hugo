@@ -96,7 +96,7 @@ You can now output Tyk Gateway system logs in JSON format. This allows for easie
 
 #### Go upgrade to 1.22
 
-We’ve upgraded the Tyk Gateway and Tyk Dashboard to Golang 1.22, bringing improved performance, better security, and enhanced stability to the core system.
+We’ve upgraded the Tyk Gateway to Golang 1.22, bringing improved performance, better security, and enhanced stability to the core system.
 
 ### Downloads
 - [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.6.0)
