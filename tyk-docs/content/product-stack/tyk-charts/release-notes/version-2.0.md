@@ -35,6 +35,7 @@ However, starting with **Tyk Charts v2.0**, these options will be set to `true
 From this version of Tyk Charts we also set the following configuration option to `true` by default as part of the stricter path matching:
 
 - `http_server_options.enable_strict_routes`
+
 **Impact on existing users:**
 
 - The change is **backward-compatible** for users upgrading their Tyk Gateway directly (i.e. not via Helm Chart), because by default, these features will not be active. This ensures that existing configurations are not affected if you update the Gateway manually.
