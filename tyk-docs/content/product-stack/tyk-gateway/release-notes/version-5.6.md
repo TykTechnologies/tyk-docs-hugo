@@ -84,7 +84,19 @@ If you are upgrading to 5.6.0, please follow the detailed [upgrade instructions]
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
 -->
-Add release highlights here
+We are thrilled to announce new updates and improvements in Tyk 5.6.0, bringing more control, flexibility, and performance.  For a comprehensive list of changes, please refer to the changelog below.
+
+#### Per endpoint Rate Limiting for clients
+
+We’ve introduced client-level per-endpoint rate limits. Rate limits can now be configured in security policies and keys, and are applicable to both Tyk OAS and Tyk Classic APIs, offering greater control over how resources are accessed.
+
+#### Gateway logs in JSON format
+
+You can now output Tyk Gateway system logs in JSON format. This allows for easier integration with logging systems and more structured log data.
+
+#### Go upgrade to 1.22
+
+We’ve upgraded the Tyk Gateway and Tyk Dashboard to Golang 1.22, bringing improved performance, better security, and enhanced stability to the core system.
 
 ### Downloads
 - [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.6.0)
