@@ -17,7 +17,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 5.5.1 Release Notes
 
-### Release Date 24 September 2024
+### Release Date 26 September 2024
 
 ### Release Highlights
 This release fixes some issues related to the way that Tyk performs URL path matching, introducing two new Gateway configuration options to control path matching strictness.
