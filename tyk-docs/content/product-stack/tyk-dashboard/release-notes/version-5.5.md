@@ -34,7 +34,7 @@ There are no breaking changes in this release.
 | 5.5.1 | MDCB v2.7     | MDCB v2.5.1 |
 |         | Operator v0.18 | Operator v0.17 |
 |         | Sync v1.5   | Sync v1.4.3 |
-|         | Helm Chart v2.0.0 To Be Published (TBP) | Helm all versions |
+|         | Helm Chart v2.0.0 | Helm all versions |
 | | EDP v1.10 | EDP all versions |
 | | Pump v1.11 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
@@ -63,7 +63,7 @@ If you are upgrading to 5.5.1, please follow the detailed [upgrade instructions]
   docker pull tykio/tyk-dashboard:v5.5.1
   ```
 - Helm charts
-  - Tyk Charts v2.0.0 To Be Published (TBP)
+  - [Tyk Charts v2.0.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.0.md">}})
 
 ### Changelog {#Changelog-v5.5.1}
 
