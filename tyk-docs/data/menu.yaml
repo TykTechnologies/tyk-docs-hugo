@@ -4412,8 +4412,6 @@ menu:
         category: Directory
         show: True
         menu:
-<<<<<<< HEAD
-=======
         - title: "Tyk Charts 2.0"
           path: /product-stack/tyk-charts/release-notes/version-2.0
           category: Page
@@ -4426,7 +4424,6 @@ menu:
           path: /product-stack/tyk-charts/release-notes/version-1.5
           category: Page
           show: True
->>>>>>> 7ea17f26b... Tyk Charts v2.0 release notes (#5459)
         - title: "Tyk Charts 1.4"
           path: /product-stack/tyk-charts/release-notes/version-1.4
           category: Page
