@@ -17,7 +17,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 2.0.0 Release Notes
 
-##### Release Date XX September 2024
+##### Release Date 26 September 2024
 
 #### Breaking Changes
 
