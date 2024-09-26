@@ -36,7 +36,8 @@ However, you can leverage the settings below to customize the deployment of your
         "CertFile": "portal.crt",
         "KeyFile": "portal.key"
       }
-    ]
+    ],
+    "MinVersion": "772"
   },
   "PortalAPISecret": "your-portal-api-secret"
 }
@@ -178,7 +179,12 @@ The default value is `Strict`. If the value specified in the `PORTAL_SESSION_SAM
 ### PORTAL_SESSION_LIFETIME
 **Config file:** Session.LifeTime <br/>
 **Type:** `int` <br/>
-**Description**: The lifetime of the portal's cookie in seconds. The default value is 3600 seconds.
+**Description**: The lifetime of the portal's session in seconds. The default value is 604800 seconds (7 days).
+
+## PORTAL_SESSION_IDLE_TIMEOUT
+**Config file:** Session.IdleTimeout <br/>
+**Type:** `int` <br/>
+**Description**: The duration in seconds before a portal session is considered idle. A session is deemed idle when there is no user activity, such as clicks, navigation, or input. Once the idle timeout is reached, the session will expire, requiring the user to log in again. The default value is 3600 seconds (1 hour).
 
 ### PORTAL_ENABLE_HTTP_PROFILER
 **Config file:** EnableHttpProfiler <br/>
@@ -220,6 +226,39 @@ We recommend using the profiler only in non-production environments. Be sure to 
 **Config file:** TLSConfig.InsecureSkipVerify <br/>
 **Type:** `boolean` <br/>
 **Description**: Skip verification of self-signed certificates.
+
+### PORTAL_TLS_MIN_VERSION
+**Config file:** TLSConfig.MinVersion <br/>
+**Type:** `string` <br/>
+**Description**: Minimum TLS version. Defaults to 769 (TLS 1.0).
+
+Values for TLS Versions:
+
+| TLS Version   | Value to Use   |
+|---------------|----------------|
+|      1.0      |      769       |
+|      1.1      |      770       |
+|      1.2      |      771       |
+|      1.3      |      772       |
+
+### PORTAL_TLS_MAX_VERSION
+**Config file:** TLSConfig.MaxVersion <br/>
+**Type:** `string` <br/>
+**Description**: Maximum TLS version. Defaults to 772 (TLS 1.3).
+
+Values for TLS Versions:
+
+| TLS Version   | Value to Use   |
+|---------------|----------------|
+|      1.0      |      769       |
+|      1.1      |      770       |
+|      1.2      |      771       |
+|      1.3      |      772       |
+
+### PORTAL_TLS_CIPHER_SUITES
+**Config file:** TLSConfig.CipherSuites <br/>
+**Type:** `[]string` <br/>
+**Description**: Array of allowed cipher suites as defined at https://golang.org/pkg/crypto/tls/#pkg-constants.
 
 ### PORTAL_TLS_CERTIFICATES
 **Config file:** TLSConfig.Certificates <br/>
@@ -415,7 +454,7 @@ PORTAL_DATABASE_CONNECTION_MAX_LIFETIME=180000
 ### PORTAL_DATABASE_CONNECTION_MAX_LIFETIME
 **Config file:** Database.ConnectionMaxLifetime <br/>
 **Type:** `int` <br/>
-**Description**: Defines the maximum lifetime of a connection in Milliseconds. Optional, the default value is unlimited meaning connections are reused indefinitely as long as they are not closed due to errors or manually closed by the application.
+**Description**: Defines the maximum lifetime of a connection in milliseconds. This setting is optional. If not specified, the default value is 1800000 milliseconds (30 minutes). If set to `0`, the connection lifetime is unlimited, meaning connections are reused indefinitely unless closed due to errors or manually by the application.
 
 
 ## CORS settings
