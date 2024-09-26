@@ -93,7 +93,7 @@ Given the potential time difference between your upgrade and the release of this
     docker pull tykio/tyk-gateway:v5.3.5
     ```
 - Helm charts
-  - [tyk-charts v2.0.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.0">}})
+  - [tyk-charts v2.0.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.0.md">}})
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 

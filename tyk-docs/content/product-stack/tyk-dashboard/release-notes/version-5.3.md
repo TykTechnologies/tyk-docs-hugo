@@ -94,7 +94,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
    docker pull tykio/tyk-dashboard:v5.3.5
    ```
 - Helm charts
- - [tyk-charts v2.0.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.0">}})
+ - [tyk-charts v2.0.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.0.md">}})
 
 ### Changelog {#Changelog-v5.3.5}
 
