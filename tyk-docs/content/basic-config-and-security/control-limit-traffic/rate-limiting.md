@@ -84,7 +84,7 @@ Any API endpoints that don't have endpoint-level rate limits configured will inh
 {{< note success >}}
 **Note**  
 The following assumptions are made:
- - the [ignore authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}) middleware is not turned enabled for these endpoints
+ - the [ignore authentication middleware]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}) is not enabled for these endpoints
  - if [path based permissions]({{< ref "getting-started/create-security-policy#path-based-permissions" >}}) are configured for the API then these grant access to these endpoints for keys generated from the policies
 {{< /note >}}
 
