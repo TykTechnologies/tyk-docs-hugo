@@ -15,7 +15,7 @@
     "docker": "https://hub.docker.com/r/tykio/tyk-gateway/tags?page=1&name=v5.4.0"
   },
   "5.3.5": {
-    "date": "26/08/2024",
+    "date": "26/09/2024",
     "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.3.5",
     "docker": "https://hub.docker.com/r/tykio/tyk-gateway/tags?page=1&name=v5.3.5"
   },
