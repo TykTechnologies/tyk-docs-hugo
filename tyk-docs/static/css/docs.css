@@ -21,10 +21,10 @@
   background-color: white;
   z-index: 11;
   width: 100%;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-top: 62px;
-  padding-bottom: 85px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .button {
@@ -69,12 +69,12 @@
 
 .header .links-container {
   float: left;
-  margin-left: 5em;
+  margin-left: 2em;
   padding-top: 0.5em;
 }
 
 .header .links-container a {
-  margin-right: 1em;
+  margin-right: 0.6em;
   position: relative;
   text-decoration: none;
 }
@@ -105,7 +105,7 @@
 
 .header-right {
   float: right;
-  margin-left: 2em;
+  margin-left: 1em;
 }
 
 .button.button-green {
@@ -143,7 +143,7 @@
 
 .hasSidebar .section-page .container {
   padding: 60px 30px 0;
-  max-width: 1500px;
+  max-width: 1200px;
   width: 100%;
   display: flex;
 }
@@ -154,13 +154,13 @@
 }
 
 .hasSidebar aside {
-  width: 25%;
-  min-width: 25%;
-  padding-right: 15px;
+  width: 22%;
+  min-width: 18%;
+  padding-right: 10px;
 }
 
 .hasSidebar .page-content {
-  width: 75%;
+  width: 80%;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -184,11 +184,11 @@
 .badge {
   background: #ffffff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
-  width: 300px;
+  border-radius: 15px;
+  width: 260px;
   min-width: 200px;
-  height: 180px;
-  overflow: hidden;
+  height: 150px;
+  overflow: auto;
   padding: 25px;
   padding-top: 40px;
   font-size: 14px;
@@ -196,8 +196,8 @@
   color: #505071;
   position: relative;
   flex: 0 0 auto;
-  display: block;
-  margin: 10px 1%;
+  display: inline-block;
+  margin: 8px 1%;
 }
 
 .badge p {
@@ -788,21 +788,21 @@ iframe {
   background: url("../img/nav-center.png") 50% center no-repeat;
 }
 
-.docs-navigation>div {
+docs-navigation>div {
   display: table-row;
 }
 
-.docs-navigation>div>* {
+docs-navigation>div>* {
   display: table-cell;
   vertical-align: middle;
 }
 
-.docs-navigation img {
+docs-navigation img {
   border: 0;
   display: none;
 }
 
-.docs-navigation #previousArticle {
+docs-navigation #previousArticle {
   position: relative;
   float: left;
   max-width: 250px;
@@ -810,7 +810,7 @@ iframe {
   margin-left: 50px;
 }
 
-.docs-navigation #nextArticle {
+docs-navigation #nextArticle {
   position: relative;
   float: right;
   max-width: 250px;
@@ -818,25 +818,25 @@ iframe {
   margin-right: 50px;
 }
 
-.docs-navigation .button {
+docs-navigation .button {
   margin-bottom: 0;
 }
 
-.docs-navigation #previousArticle::before {
+docs-navigation #previousArticle::before {
   content: url("../img/nav-left.png");
   position: absolute;
   left: -50px;
   top: 0px;
 }
 
-.docs-navigation #nextArticle::before {
+docs-navigation #nextArticle::before {
   content: url("../img/nav-right.png");
   position: absolute;
   right: -50px;
   top: 0px;
 }
 
-.docs-navigation a {
+docs-navigation a {
   color: #505071 !important;
   font-size: 16px;
   text-align: left !important;
@@ -844,7 +844,7 @@ iframe {
   font-weight: 600;
 }
 
-.docs-navigation a span {
+docs-navigation a span {
   font-size: 16px;
   font-weight: bold;
   color: #7a79a1;
@@ -904,7 +904,7 @@ iframe {
   position: fixed;
   right: 0;
   top: 250px;
-  max-height: 400px;
+  max-height: 350px;
   width: 9%;
   border-left: 1px solid #e1e1e1;
   border-bottom: 1px solid #e1e1e1;
@@ -928,11 +928,11 @@ iframe {
   display: none !important;
 }
 
-.toc-content {
+toc-content {
   height: 100%;
 }
 
-.toc-label {
+toc-label {
   position: fixed;
   top: 220px;
 }
@@ -946,7 +946,7 @@ iframe {
   margin-bottom: 30px;
 }
 
-.docs-share-print a {
+docs-share-print a {
   display: inline-block;
   margin-right: 50px;
 }
@@ -989,7 +989,7 @@ iframe {
 .hero {
   background: white;
   color: #fff;
-  height: 100px;
+  height: 70px;
   min-height: 0;
   z-index: 10;
 }
@@ -1005,7 +1005,7 @@ iframe {
 }
 
 .hero .search {
-  margin-top: 10px;
+  margin-top: 3px;
   max-width: 100%;
 }
 
@@ -1046,7 +1046,7 @@ iframe {
 }
 
 .page-content {
-  padding-top: 20px;
+  padding-top: 10px;
   margin-top: 20px;
 }
 
@@ -1182,7 +1182,7 @@ span.algolia-autocomplete {
 .algolia-autocomplete input,
 .hero input {
   -webkit-appearance: none;
-  height: 60px;
+  height: 45px;
   max-width: 100%;
   border: 2px solid #7a79a1;
   border-radius: 30px;
@@ -1191,7 +1191,7 @@ span.algolia-autocomplete {
   filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.25));
   color: #505071;
   padding-left: 3.5em;
-  font-size: 20px;
+  font-size: 18px;
   font-family: Smoolthan;
 }
 
@@ -1267,12 +1267,12 @@ span.algolia-autocomplete {
   background: #fff;
   border-bottom: 2px solid #4f4f71;
   color: #000;
-  max-height: 400px;
+  max-height: 350px;
   display: none;
   margin-top: 10px;
   font-family: Smoolthan;
-  width: 70%;
-  margin: 10px auto;
+  width: 65%;
+  margin: 8px auto;
 }
 
 .documentation-search-results * {
@@ -1282,7 +1282,7 @@ span.algolia-autocomplete {
 
 .documentation-search-results ul li {
   list-style: none;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   padding-top: 4px;
 }
 
@@ -1330,8 +1330,8 @@ h2#feature-setups {
 }
 
 pre {
-  margin-top: 2rem !important;
-  margin-bottom: 1rem !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.8rem !important;
 }
 
 /* ==========================================================================
@@ -1346,7 +1346,7 @@ pre {
   padding-left: 25px;
   list-style-type: none;
   line-height: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   position: relative;
 }
 
@@ -1361,7 +1361,7 @@ pre {
 }
 
 .st-treed ul {
-  margin-top: 20px;
+  margin-top: 15px;
   position: relative;
   /* pointer-events: none; */
 }
@@ -1424,7 +1424,7 @@ pre {
 }
 
 .st-treed>ul>li li {
-  padding-left: 15px;
+  padding-left: 10px;
 }
 
 .st-treed>ul>li>a {
@@ -1790,7 +1790,6 @@ pre {
   }
 }
 
-
 .edit-button{
   margin-top: 20px!important;
 }
@@ -1800,4 +1799,38 @@ pre {
     width: 100%;
     text-align: center;
   }
+}
+
+.hasSidebar aside {
+  width: 22%;
+  min-width: 18%;
+}
+
+.hasSidebar aside {
+  display: block;
+}
+
+.st-treed li {
+  margin-bottom: 10px;
+}
+
+.st-treed li {
+  padding-left: 15px;
+}
+
+.st-treed ul {
+  margin-top: 10px;
+}
+
+.st-treed a {
+  width: calc(100% - 20px);
+}
+
+.st-treed li .media-heading em {
+  height: 16px;
+  width: 16px;
+}
+
+.st-treed .st-open>ul:before {
+  background: #e0e0e0;
 }

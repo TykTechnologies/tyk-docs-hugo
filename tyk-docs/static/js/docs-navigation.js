@@ -103,10 +103,10 @@ var doNav = function() {
 		let extension = $('[data-filetype]').data('filetype') || 'md';
 		
     if ( $('.active').hasClass('st-open')){
-			window.open("https://github.com/TykTechnologies/tyk-docs/tree/master/tyk-docs/content/" + githubCustomLink + '/' + docName + '.md', "_blank");
+			window.open("https://github.com/TykTechnologies/tyk-docs/tree/master/tyk-docs" + githubCustomLink + '/' + docName + '.md', "_blank");
 		} else if ( $('.active').hasClass('st-file') && $('.active').closest('.st-open').length === 0) {
 			if(currentPageGH == '/docs'){
-				window.open("https://github.com/TykTechnologies/tyk-docs/tree/master/tyk-docs/content/documentation.md", "_blank");
+				window.open("https://github.com/TykTechnologies/tyk-docs/tree/master/tyk-docsdocumentation.md", "_blank");
 			} else {
 				window.open("https://github.com/TykTechnologies/tyk-docs/tree/master/tyk-docs/content" + githubIndexLink + githubCustomLink + '.md', "_blank");
 			}

@@ -150,6 +150,7 @@ $(document).on("turbolinks:load", buildTableOfContents);
 function activeTocToggle() {
     var tocLabel = $('.toc__label');
     var tocItems = $('.toc__item');
+    var subTocItems = $('.sub_toc__item.sub-accordion-title')
     var pageContent = $('.page-content__container, .header');
 
     tocLabel.on('click', function (e) {
@@ -160,11 +161,17 @@ function activeTocToggle() {
         }
     });
 
-    /* tocItems.on('click', function(e) {
+    tocItems.on('click', function(e) {
         if (window.innerWidth < 1024) {
             tocLabel.removeClass('js-open');
         }
-    }); */
+    });
+
+    subTocItems.on('click', function(e) {
+        if (window.innerWidth < 1024) {
+            tocLabel.removeClass('js-open');
+        }
+    });
 
     pageContent.on('click', function () {
         if (tocLabel.hasClass('js-open')) {
