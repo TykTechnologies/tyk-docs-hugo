@@ -1026,6 +1026,14 @@ menu:
         category: Page
         path: /api-management/async-apis/advanced-use-cases
         show: True
+    - title: "AI Management"
+      category: Directory
+      show: True
+      menu:
+      - title: "Overview"
+        category: Page
+        path: /api-management/ai-management/overview
+        show: True
       - title: "Publish Ops"
         category: Directory
         show: False
@@ -1251,6 +1259,10 @@ menu:
           show: True
         - title: "Request Middleware Chain"
           path: /concepts/middleware-execution-order
+          category: Page
+          show: True
+        - title: "What is URL path matching?"
+          path: /getting-started/key-concepts/url-matching
           category: Page
           show: True
         - title: "What is Rate Limiting?"
@@ -2001,7 +2013,7 @@ menu:
               path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/zipkin
               category: Page
               show: True
-        - title: "Plugins"
+        - title: "Custom plugins"
           category: Directory
           show: True
           menu:
@@ -2033,24 +2045,20 @@ menu:
             path: /plugins/plugin-hub
             catgory: Page
             show: True
-          - title: "OpenTelemetry Instrumentation"
-            path: /product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins
-            category: Page
-            show: True
-          - title: "CICD Plugin Build"
-            path: /plugins/get-started-selfmanaged/deploy-plugins
-            category: Page
-            show: True
-          - title: "Serving plugins"
+          - title: "API Configuration"
             category: Directory
-            show: True
+            show: true
             menu:
-            - title: "Serving Plugins to Tyk Gateway"
-              path: /plugins/how-to-serve-plugins
+            - title: "Overview"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/overview
               category: Page
               show: True
-            - title: "Packaging plugins"
-              path: /plugins/how-to-serve-plugins/plugin-bundles
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/oas
+              category: Page
+              show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/classic
               category: Page
               show: True
           - title: "Plugin Types"
@@ -2098,6 +2106,30 @@ menu:
                 path: /product-stack/tyk-gateway/middleware/endpoint-plugin-tyk-classic
                 category: Page
                 show: True
+          - title: "Plugin bundles"
+            category: Directory
+            show: True
+            menu:
+            - title: "Serving Plugins to Tyk Gateway"
+              path: /plugins/how-to-serve-plugins
+              category: Page
+              show: False
+            - title: "Overview"
+              path: /plugins/how-to-serve-plugins/plugin-bundles
+              category: Page
+              show: True
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/bundles/oas
+              category: Page
+              show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/bundles/classic
+              category: Page
+              show: True
+            - title: "Bundle CLI tool"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/bundles/bundle-cli
+              category: Page
+              show: True
           - title: "Supported Languages"
             category: Directory
             show: True
@@ -2258,6 +2290,14 @@ menu:
                 path: /plugins/supported-languages/rich-plugins/luajit/tutorial-add-demo-plugin-api
                 category: Page
                 show: True
+          - title: "OpenTelemetry Instrumentation"
+            path: /product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins
+            category: Page
+            show: True
+          - title: "CICD Plugin Build"
+            path: /plugins/get-started-selfmanaged/deploy-plugins
+            category: Page
+            show: True
         - title: "Error Templates"
           path: /advanced-configuration/error-templates
           category: Page
@@ -3463,6 +3503,10 @@ menu:
               path: /product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades
               category: Page
               show: True
+            - title: "Templates"
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/templates
+              category: Page
+              show: True
         - title: "Customize data models"
           path: /product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model
           category: Page
@@ -3483,6 +3527,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Version 1.11.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.11.0
+            category: Page
+            show: True
           - title: "Version 1.10.0"
             path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.10.0
             category: Page
@@ -3814,7 +3862,7 @@ menu:
             path: /release-notes/pump-1.8
             category: Page
             show: True
-    - title: "Tyk Operator (Open Source)"
+    - title: "Tyk Operator"
       category: Directory
       show: True
       menu:
@@ -3855,18 +3903,46 @@ menu:
           category: Page
           show: True
         - title: "Create an API"
-          path: /tyk-stack/tyk-operator/create-an-api
-          category: Page
+          category: Directory
           show: True
-        - title: "Access an API"
-          path: /tyk-stack/tyk-operator/access-an-api
-          category: Page
-          show: True
+          menu:
+            - title: "Create an API with Tyk Operator"
+              path: /tyk-stack/tyk-operator/create-an-api
+              category: Page
+              show: True
+            - title: "HTTP Proxy example"
+              path: /product-stack/tyk-operator/getting-started/quick-start-http
+              category: Page
+              show: True
+            - title: "TCP Proxy example"
+              path: /product-stack/tyk-operator/getting-started/quick-start-tcp
+              category: Page
+              show: True
+            - title: "GraphQL Proxy example"
+              path: /product-stack/tyk-operator/getting-started/quick-start-graphql
+              category: Page
+              show: True
+            - title: "UDG example"
+              path: /product-stack/tyk-operator/getting-started/quick-start-udg
+              category: Page
+              show: True
         - title: "Secure an API"
-          path: /tyk-stack/tyk-operator/secure-an-api
+          category: Directory
+          show: True
+          menu:
+          - title: "Secure an API with Auth token"
+            path: /tyk-stack/tyk-operator/access-an-api
+            category: Page
+            show: True
+          - title: "Authentication types"
+            path: /product-stack/tyk-operator/advanced-configurations/client-authentication
+            category: Page
+            show: True
+        - title: "Protect an API with Policy"
           category: Page
           show: True
-        - title: "Publish an API"
+          path: /tyk-stack/tyk-operator/secure-an-api
+        - title: "Publish an API to Dev Portal"
           path: /tyk-stack/tyk-operator/publish-an-api
           category: Page
           show: True
@@ -3874,20 +3950,36 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Migration to Tyk Operator"
+        - title: "Management of APIs"
+          path: /product-stack/tyk-operator/advanced-configurations/management-of-api
+          category: Page
+          show: True
+        - title: "Manage existing APIs and policies"
           path: /tyk-stack/tyk-operator/migration
           category: Page
           show: True
-        - title: "Configure Tyk Operator as Ingress Controller"
+        - title: "Kubernetes Ingress Controller"
           path: /product-stack/tyk-operator/tyk-ingress-controller
           category: Page
           show: True
-        - title: "Manage Multiple Organisations With OperatorContext"
+        - title: "Manage multiple organisations"
           path: /product-stack/tyk-operator/getting-started/tyk-operator-multiple-organisations
           category: Page
           show: True
-        - title: "Manage API Ownership with OperatorContext"
+        - title: "Manage API Ownership"
           path: /product-stack/tyk-operator/getting-started/tyk-operator-api-ownership
+          category: Page
+          show: True
+        - title: "GraphQL Federation"
+          path: /product-stack/tyk-operator/advanced-configurations/graphql-federation
+          category: Page
+          show: True
+        - title: "Custom Plugins"
+          path: /product-stack/tyk-operator/advanced-configurations/custom-plugins
+          category: Page
+          show: True
+        - title: "Looping"
+          path: /product-stack/tyk-operator/advanced-configurations/internal-looping
           category: Page
           show: True
       - title: "Troubleshooting"
@@ -3906,6 +3998,14 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "API Definition features"
+          path: /product-stack/tyk-operator/reference/api-definition
+          category: Page
+          show: True
+        - title: "Security Policy features"
+          path: /product-stack/tyk-operator/reference/security-policy
+          category: Page
+          show: True
         - title: "Version compatibility"
           path: /product-stack/tyk-operator/reference/version-compatibility
           category: Page
@@ -3962,6 +4062,10 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Overview"
+            path: /product-stack/tyk-streaming/configuration/inputs/overview
+            category: Page
+            show: True
           - title: "Amqp_0_9"
             path: /product-stack/tyk-streaming/configuration/inputs/amqp-0-9
             category: Page
@@ -3972,6 +4076,14 @@ menu:
             show: True
           - title: "Broker"
             path: /product-stack/tyk-streaming/configuration/inputs/broker
+            category: Page
+            show: True
+          - title: "Generate"
+            path: /product-stack/tyk-streaming/configuration/inputs/generate
+            category: Page
+            show: True
+          - title: "Http Client"
+            path: /product-stack/tyk-streaming/configuration/inputs/http-client
             category: Page
             show: True
           - title: "Http Server"
@@ -4006,6 +4118,10 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Overview"
+            path: /product-stack/tyk-streaming/configuration/outputs/overview
+            category: Page
+            show: True
           - title: "Amqp_0_9"
             path: /product-stack/tyk-streaming/configuration/outputs/amqp-0-9
             category: Page
@@ -4024,6 +4140,10 @@ menu:
             show: True
           - title: "Fallback"
             path: /product-stack/tyk-streaming/configuration/outputs/fallback
+            category: Page
+            show: True
+          - title: "Http Client"
+            path: /product-stack/tyk-streaming/configuration/outputs/http-client
             category: Page
             show: True
           - title: "Http Server"
@@ -4054,6 +4174,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/outputs/redis-pubsub
             category: Page
             show: True
+          - title: "Reject"
+            path: /product-stack/tyk-streaming/configuration/outputs/reject
+            category: Page
+            show: True
           - title: "Retry"
             path: /product-stack/tyk-streaming/configuration/outputs/retry
             category: Page
@@ -4066,10 +4190,22 @@ menu:
             path: /product-stack/tyk-streaming/configuration/outputs/stdout
             category: Page
             show: True
+          - title: "Switch"
+            path: /product-stack/tyk-streaming/configuration/outputs/switch
+            category: Page
+            show: True
+          - title: "Sync Response"
+            path: /product-stack/tyk-streaming/configuration/outputs/sync-response
+            category: Page
+            show: True
         - title: "Processors"
           category: "Directory"
           show: True
           menu:
+          - title: "Overview"
+            path: /product-stack/tyk-streaming/configuration/processors/overview
+            category: Page
+            show: True
           - title: "Avro"
             path: /product-stack/tyk-streaming/configuration/processors/avro
             category: Page
@@ -4116,6 +4252,10 @@ menu:
             show: True
           - title: "Group By Value"
             path: /product-stack/tyk-streaming/configuration/processors/group-by-value
+            category: Page
+            show: True
+          - title: "Http"
+            path: /product-stack/tyk-streaming/configuration/processors/http
             category: Page
             show: True
           - title: "Insert Part"
@@ -4202,6 +4342,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/switch
             category: Page
             show: True
+          - title: "Sync Response"
+            path: /product-stack/tyk-streaming/configuration/processors/sync-response
+            category: Page
+            show: True
           - title: "Try"
             path: /product-stack/tyk-streaming/configuration/processors/try
             category: Page
@@ -4209,6 +4353,34 @@ menu:
           - title: "While"
             path: /product-stack/tyk-streaming/configuration/processors/while
             catgeory: Page
+            show: True
+          - title: "Workflow"
+            path: /product-stack/tyk-streaming/configuration/processors/workflow
+            category: Page
+            show: True
+        - title: "Scanners"
+          category: Directory
+          show: True
+          menu:
+          - title: "Overview"
+            path: /product-stack/tyk-streaming/configuration/scanners/overview
+            category: Page
+            show: true
+          - title: "CSV"
+            path: /product-stack/tyk-streaming/configuration/scanners/csv
+            category: Page
+            show: True
+          - title: "Line"
+            path: /product-stack/tyk-streaming/configuration/scanners/lines
+            category: Page
+            show: True
+          - title: "Regular Expression Matching"
+            path: /product-stack/tyk-streaming/configuration/scanners/re-match
+            category: Page
+            show: True
+          - title: "Switch"
+            path: /product-stack/tyk-streaming/configuration/scanners/switch
+            category: Page
             show: True
         - title: "Common Configurations"
           category: Directory
@@ -4228,6 +4400,14 @@ menu:
             show: True
           - title: "Interpolation"
             path: /product-stack/tyk-streaming/configuration/common-configuration/interpolation
+            category: Page
+            show: True
+          - title: "Processing Pipelines"
+            path: /product-stack/tyk-streaming/configuration/common-configuration/processing-pipelines
+            category: Page
+            show: True
+          - title: "Resources"
+            path: /product-stack/tyk-streaming/configuration/common-configuration/resources
             category: Page
             show: True
           - title: "Windowed Processing"
@@ -4310,6 +4490,10 @@ menu:
               path: "/product-stack/tyk-streaming/guides/bloblang/methods/type-coercion"
               category: Page
               show: True
+        - title: "Sync Response"
+          path: "/product-stack/tyk-streaming/guides/sync-responses"
+          category: Page
+          show: True
       - title: "Rate Limits"
         category: Directory
         show: true
@@ -4334,7 +4518,7 @@ menu:
         path: /product-stack/tyk-streaming/troubleshooting
         category: Page
         show: True
-    - title: "Tyk Sync (Open Source)"
+    - title: "Tyk Sync"
       category: Directory
       show: True
       menu:
@@ -4462,6 +4646,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Tyk Charts 2.0"
+          path: /product-stack/tyk-charts/release-notes/version-2.0
+          category: Page
+          show: True
         - title: "Tyk Charts 1.6"
           path: /product-stack/tyk-charts/release-notes/version-1.6
           category: Page

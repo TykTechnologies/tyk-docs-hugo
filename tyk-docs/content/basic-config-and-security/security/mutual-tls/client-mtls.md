@@ -86,12 +86,14 @@ $ curl -k \
 
 Static mTLS simply means to allow client certs at the API level.
 
-to set it up, in the API authentication settings, choose mTLS and one other authentication type.  If you don't want to use additional authentication type, i.e. only client cert alone, then select "keyless" as the other.
+To set it up, in the API authentication settings, choose mTLS and one other authentication type.  If you don't want to use additional authentication type, i.e. only client cert alone, then select "keyless" as the other.
 
 The base Identity can be anything as the client cert is the only thing configured.
 
 Here's what it should look like:
 {{< img src="/img/2.10/client_mtls_multiple_auth.png" alt="enable_cert" >}}
+
+Please consult the Tyk Operator supporting documentation for an example of how to [configure static mTLS]({{< ref "product-stack/tyk-operator/advanced-configurations/client-authentication#client-mtls" >}}) with Tyk Operator.
 
 ## FAQ
 

@@ -81,6 +81,28 @@ Check out the following video to see this being done.
 
 Using the `global_rate_limit` field in the API definition you can specify the API-level rate limit in the following format: `{"rate": 10, "per": 60}`.
 
+An equivalent example using Tyk Operator is given below:
+
+```yaml {linenos=table,hl_lines=["14-17"],linenostart=1}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-global-rate-limit
+spec:
+  name: httpbin-global-rate-limit
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin
+    strip_listen_path: true
+  # setting a global rate-limit for the API of 10 requests per 60 seconds
+  global_rate_limit:
+    rate: 10
+    per: 60
+```
+
 ## Configuring the rate limiter on the session object
 
 All actions on the session object must be done via the Gateway API.

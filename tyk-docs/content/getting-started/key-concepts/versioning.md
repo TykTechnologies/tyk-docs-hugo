@@ -15,6 +15,8 @@ API versioning is configured in the Tyk Classic API Definition. You can do this 
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "getting-started/key-concepts/oas-versioning" >}}) page.
 
+If you're using Tyk Operator then check out the [configuring API versioning in Tyk Operator](#tyk-operator) section below.
+
 ### Controlling access to Tyk Classic API versions
 
 You can explicitly grant access to specific version(s) of an API by specifying only those version(s) in the [key]({{< ref "tyk-apis/tyk-gateway-api/token-session-object-details" >}}) (also known as an *authorization token*, *bearer token*, *access token*, *API token* or *token session object* - see [here]({{< ref "basic-config-and-security/security/authentication-authorization/bearer-tokens" >}})).
@@ -40,16 +42,18 @@ To add an API version, you must add a new entry in the `versions` list:
 There is also some API-level configuration for versioning, which is located in the `definition` section of the Tyk Classic API definition:
 
 The `definition` section has the following fields:
-- `default`: the default version of the API (this is the same as `default_version` in `version_data`); if left empty this will be automatically replaced with "self" and will point to the original API definition
-- `enabled`: toggle to enable or disable versioning
-- `name`: the chosen name for the version
-- `strip_path`: deprecated field; use `strip_path_versioning_data` instead. Defaults to false
 - `location`: used to configure where the versioning identifier should be provided: `header`, `url`, `url-param`
-- `strip_versioning_data`: set to `true` for Tyk to [remove the versioning identifier]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-version-identifier" >}}) prior to creating the upstream (target) URL)
-- `fallback_to_default`: set to `true` for Tyk to [invoke the default version]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#fallback-to-default" >}}) if an invalid version is requested
-- `url_versioning_pattern`: configure this with a regex that matches the format that you use for the versioning identifier (`versions.name`) if you are using `strip_versioning_data` and `fallback_to_default` with `location=url` [with Tyk 5.5.0 or later]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-url-path-version-and-default-fallback" >}})
-- `versions`: not used; since this is a legacy option it will be visible as empty `{}` in the API definition
 - `key`: the versioning identifier key used if `location` is set to `header` or `url-param`
+- `strip_versioning_data`: set this to `true` to [remove the versioning identifier]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-version-identifier" >}}) prior to creating the upstream (target) URL)
+- `fallback_to_default`: set this to `true` to [invoke the default version]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#fallback-to-default" >}}) if an invalid version is requested
+- `url_versioning_pattern`: if you are using `strip_versioning_data` and `fallback_to_default` with `location=url` [with Tyk 5.5.0 or later]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-url-path-version-and-default-fallback" >}}) you can configure this with a regex that matches the format that you use for the versioning identifier (`versions.name`)
+
+The following fields in `definition` are either deprecated or otherwise not used for Tyk Classic API versioning and should be left with their default values:
+- `enabled`: defaults to `false`
+- `default`: defaults to an empty string `""`
+- `name`: defaults to an empty string `""`
+- `strip_path`: deprecated field; defaults to `false`
+- `versions`: defaults to an empty array `{}`
 
 When you first create an API, it will not be "versioned" (i.e. `not_versioned` will be set to `true`) and there will be a single `Default` version created in the `version_data` section of the API definition.
 
@@ -146,16 +150,11 @@ Here's an example of the minimal configuration that would need to be added to th
     }
   },
   "definition": {
-    "default": "",
-    "enabled": false,
-    "name": "",
-    "strip_path": false,
     "location": "header",
+    "key": "x-api-version",
     "strip_versioning_data": false,
     "fallback_to_default": true,
-    "url_versioning_pattern": "",
-    "versions": {},
-    "key": "x-api-version"
+    "url_versioning_pattern": ""
   }
 }
 ```
@@ -224,3 +223,100 @@ From the **Endpoint Designer** tab, you can select the version that you wish to 
 {{< img src="/img/dashboard/endpoint-designer/tyk-classic-version-endpoint.png" alt="Choosing the API version for which to configure endpoint middleware" >}}
 
 Select **Update** to save the changes to your API.
+
+## Configuring API versioning in Tyk Operator {#tyk-operator}
+
+The process for configuring API versioning is similar to that defined in section [Configuring API versioning in the Tyk Classic API Definition](#configuring-api-versioning-in-the-tyk-classic-api-definition).
+
+We can see in the example below that one version is configured for the API within `spec.version_data`:
+
+- the version name is `v1`
+- the default version (`default_version`) is `v1`
+- the `definition` configuration block contains a `location` field set to `header` and has an accompanying `key` field set to `x-api-version`. Subsequently, the version identifier for the API will be retrieved from the `x-api-version` header. The comments provide examples for how to configure the version identifier to be retrieved from URL or a named URL parameter
+- an allow list, black list and ignore authentication middleware have been configured for version `v1`
+- an alternative upstream URL (`override_target`) is configured for `v1` to send requests to `http://test.org`
+
+```yaml {linenos=table,hl_lines=["14-17", "25-27", "29-82"], linenostart=1}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: versioned-api
+spec:
+  name: Versioned API
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://version-api.example.com
+    listen_path: /version-api
+    strip_listen_path: true
+  definition:
+  # Tyk should find version data in Header
+    location: header
+    key: x-api-version
+
+  # Tyk should find version data in First URL Element
+    #location: url
+
+  # Tyk should find version data in URL/Form Parameter
+    #location: url-param
+    #key: api-version
+  version_data:
+    default_version: v1
+    not_versioned: false
+    versions:
+      v1:
+        name: v1
+        expires: ""
+        override_target: "http://test.org"
+        use_extended_paths: true
+        extended_paths:
+          ignored:
+            - path: /v1/ignored/noregex
+              method_actions:
+                GET:
+                  action: no_action
+                  code: 200
+                  data: ""
+                  headers:
+                    x-tyk-override-test: tyk-override
+                    x-tyk-override-test-2: tyk-override-2
+          white_list:
+            - path: v1/allowed/allowlist/literal
+              method_actions:
+                GET:
+                  action: no_action
+                  code: 200
+                  data: ""
+                  headers:
+                    x-tyk-override-test: tyk-override
+                    x-tyk-override-test-2: tyk-override-2
+            - path: v1/allowed/allowlist/reply/{id}
+              method_actions:
+                GET:
+                  action: reply
+                  code: 200
+                  data: flump
+                  headers:
+                    x-tyk-override-test: tyk-override
+                    x-tyk-override-test-2: tyk-override-2
+            - path: v1/allowed/allowlist/{id}
+              method_actions:
+                GET:
+                  action: no_action
+                  code: 200
+                  data: ""
+                  headers:
+                    x-tyk-override-test: tyk-override
+                    x-tyk-override-test-2: tyk-override-2
+          black_list:
+            - path: v1/disallowed/blocklist/literal
+              method_actions:
+                GET:
+                  action: no_action
+                  code: 200
+                  data: ""
+                  headers:
+                    x-tyk-override-test: tyk-override
+                    x-tyk-override-test-2: tyk-override-2
+```

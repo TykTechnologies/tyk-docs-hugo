@@ -25,6 +25,17 @@ By default the ignore authentication middleware is case-sensitive. If, for examp
 
 You can also set case sensitivity for the entire Tyk Gateway in its [configuration file]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) `tyk.conf`. If case insensitivity is configured at the gateway level, this will override the endpoint-level setting.
 
+### Endpoint parsing
+
+When using the ignore authentication middleware, we recommend that you familiarize yourself with Tyk's [URL matching]({{< ref "getting-started/key-concepts/url-matching" >}}) options.
+
+<br>
+{{< note success >}}
+**Note**  
+
+Tyk recommends that you use [exact]({{< ref "getting-started/key-concepts/url-matching#exact-match" >}}) matching for maximum security, though prefix and wildcard strategies might also apply for your particular deployment or use case.
+{{< /note >}}
+
 <hr>
 
 If you're using Tyk OAS APIs, then you can find details and examples of how to configure the ignore authentication middleware [here]({{< ref "product-stack/tyk-gateway/middleware/ignore-tyk-oas" >}}).

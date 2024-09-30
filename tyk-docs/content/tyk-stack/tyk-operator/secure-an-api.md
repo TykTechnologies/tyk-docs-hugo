@@ -1,10 +1,6 @@
 ---
 date: 2017-03-24T16:39:31Z
-title: Secure an API with Tyk Operator
-weight: 4
-menu:
-    main:
-        parent: "Getting started with Tyk Operator"
+title: Protect an API with a Security Policy
 ---
 
 ### Introduction
@@ -44,10 +40,10 @@ spec:
 You can link this Security Policy to any APIs you have defined in `access_rights_array`. In this example, the security policy is applied to `httpbin` API in `default` namespace.
 
 #### Step 2: Deploy the SecurityPolicy resource
-You can do so either by applying sample manifests defined in [our repository](https://github.com/TykTechnologies/tyk-operator/tree/master/docs/policies), for example:
+You can do so by applying the above manifest:
 
 ```console
-$ kubectl apply -f docs/policies/ratelimit.yaml
+$ kubectl apply -f ratelimit.yaml
 ```
 
 Or, if you don’t have the manifest with you, you can run the following command:
@@ -121,6 +117,10 @@ spec:
       namespace: default
       versions:
         - Default               # Mandatory, Default is created automatically
+      allowed_urls:             # Path-based permissions
+        - url: /get
+          methods:
+            - GET
   quota_max: 10
   quota_renewal_rate: 60
   rate: 5
@@ -146,6 +146,10 @@ Access lists for API and versions:
 
 - `access_right_array`: The list of APIs security policy has access to.
 
+Path-based permissions for API:
+
+- `allowed_urls`: Restrict access per path and per method to specific portions of the API
+
 Usage Quota fields:
 
 - `quota_max`: The maximum number of allowed requests over a quota period.
@@ -169,4 +173,4 @@ Meta data:
 
 - `meta_data`: Metadata key and values.
 
-You can go to the [Policies](https://github.com/TykTechnologies/tyk-operator/blob/master/docs/policies.md) page on GitHub to see all the latest Security Policies fields and features we support.
+You can visit the [Security Policy features]({{<ref "product-stack/tyk-operator/reference/security-policy">}}) page to see all the latest Security Policies fields and features Tyk Operator supports.
