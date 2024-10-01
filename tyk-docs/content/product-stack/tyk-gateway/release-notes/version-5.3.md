@@ -968,6 +968,13 @@ Previously OAS-to-UDG converter had limitations in handling enums from OpenAPI d
 OAS-to-UDG converter can now handle HTTP status code ranges that are defined by the OpenAPI Specification. This means that code ranges defined as 1XX, 2XX, etc will be correctly converted by the tool.
 </details>
 </li>
+<li>
+<details>
+<summary>Added support for custom rate limit keys</summary>
+
+We have added the capability for users to define a [custom rate limit key]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/configuring-custom-rate-limit-keys" >}}) within session metadata. This increases flexibility with rate limiting, as the rate limit can be assigned to different entities identifiable from the session metadata (such as a client app or organization) and is particularly useful for users of Tyk's Enterprise Developer Portal.
+</details>
+</li>
 </ul>
 
 #### Changed
