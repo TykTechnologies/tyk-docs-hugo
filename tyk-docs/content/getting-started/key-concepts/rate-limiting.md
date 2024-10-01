@@ -68,10 +68,11 @@ The simplest way to figure out which level of rate limiting you’d like to appl
 
 When multiple rate limits are configured, they are assessed in this order (if applied):
 
-1. API-level global rate limit
-2. Key-level global rate limit
-3. Key-level per-API rate limit
-4. Key-level per-endpoint rate limit
+1. API-level per-endpoint rate limit (configured in API definition)
+2. API-level rate limit (configured in API definition)
+3. Key-level per-endpoint rate limit (configured in access key)
+4. Key-level per-API rate limit (configured in access key)
+5. Key-level global rate limit (configured in access key)
 
 ### Combining multiple policies configuring rate limits
 
