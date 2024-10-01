@@ -88,6 +88,22 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 
+#### Changed
+<!-- This should be a bullet-point list of updated features. Explain:
+- Why was the update necessary?
+- How does the update benefit users?
+- Link to documentation of the updated feature
+- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
+<ul>
+<li>
+<details>
+<summary>Upgrade to Go 1.22 for Tyk Dashboard</summary>
+The Tyk Dashboard has been upgraded from Golang 1.21 to Golang 1.22, bringing enhanced performance, strengthened security, and access to the latest features available in the new Golang release.
+</details>
+</li>
+</ul>
+
 #### Fixed
 <!-- This section should be a bullet point list of new features. Explain:
 
@@ -100,16 +116,37 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Gateway Secret Exposed in Logs When Accessing /api/keys
+</summary>
 
-Add chaneglog description
+Resolved an issue where the Gateway secret was inadvertently logged by the Dashboard in debug mode. This issue has been fixed to prevent sensitive information from appearing in system logs, especially in non-production environments.
 </details>
 </li>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>UI Fix: Tyk Dashboard Keys Page No Longer Blank with 10+ Policies
+</summary>
 
-Add changelog description
+We have resolved an issue in the Tyk Dashboard where the Keys page would display a blank screen if a key was associated with more than 10 policies. The UI has been fixed to properly display the page, regardless of the number of policies attached to a key, ensuring better usability and management in the Dashboard.
+</details>
+</li>
+</ul>
+
+<li>
+<details>
+<summary>UI Fix: Prevented Multiple Versions of the Same Tyk Classic API from Being Attached to a Policy</summary>
+
+We have fixed an issue in the Dashboard UI where users were able to attach multiple versions of the same Tyk Classic API to a policy. The UI now correctly prevents the addition of duplicate API versions to a single policy, ensuring accurate and streamlined policy management.
+</details>
+</li>
+</ul>
+
+<li>
+<details>
+<summary>UI Fix: Corrected JWT Scope to Policy Mapping in Dashboard
+</summary>
+
+We have fixed an issue in the Dashboard UI where the scope name was incorrectly recorded instead of the policy ID for the second and subsequent JWT scope mappings. The UI now correctly associates the defined scope with the appropriate policy, ensuring accurate JWT scope to policy mappings.
 </details>
 </li>
 </ul>
