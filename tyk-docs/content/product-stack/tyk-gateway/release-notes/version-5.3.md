@@ -149,7 +149,7 @@ A performance regression was identified in gateway versions 4.0.13 and later, wh
 We have enhanced the Tyk Gateway's synchronization with MDCB to ensure more reliable loading of policies and APIs. A synchronous initialization process has been implemented to prevent startup failures and reduce the risk of service disruptions caused by asynchronous operations. This update ensures smoother and more consistent syncing of policies and APIs from MDCB.
 </details>
 </li>
-</ul>
+
 
 <li>
 <details>
@@ -167,6 +167,7 @@ We have fixed an issue where the quota limit was not being consistently respecte
 We have addressed a performance regression in gateway versions 4.0.13 and later, where key creation for policies with a large number of APIs (100+) became significantly slower. The operation, which previously took around 1.5 seconds in versions 4.0.0 to 4.0.12, was taking over 20 seconds in versions 4.0.13 and beyond. This issue has been resolved by optimizing Redis operations during key creation, restoring the process to its expected speed of approximately 1.5 seconds, even with a large number of APIs in the policy.
 </details>
 </li>
+</ul>
 
 ---
 
