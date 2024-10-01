@@ -24,7 +24,7 @@ Please show your support for the Gateway by clicking the GitHub link, then addin
 {{< github_star_button "TykTechnologies" "tyk" "true" >}}
 
 
-{{< img src="/img/diagrams/oss-flow.png" alt="OSS-Guide" >}}
+{{< img src="/img/diagrams/oss-flow-2.png" alt="OSS-Guide" >}}
 
 {{< include "oss-product-list-include" >}}
 
