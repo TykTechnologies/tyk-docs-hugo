@@ -104,24 +104,69 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 
+#### Changed
+<!-- This should be a bullet-point list of updated features. Explain:
+
+- Why was the update necessary?
+- How does the update benefit users?
+- Link to documentation of the updated feature
+- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+
+Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
+<ul>
+<li>
+<details>
+<summary>Upgrade to Go 1.22 for Tyk Dashboard</summary>
+
+The Tyk Gateway has been upgraded from Golang 1.21 to Golang 1.22, bringing enhanced performance, strengthened security, and access to the latest features available in the new Golang release.
+</details>
+</li>
+</ul>
+
 #### Fixed
 
 <ul>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Fix for Response Plugins Not Working with Tyk OAS API Definition</summary>
 
-Add changelog description
+We have resolved an issue where Response Plugins were not being triggered for Tyk OAS API definitions. This fix ensures that Response Plugins now function correctly, allowing for consistent response processing and customization across all Tyk OAS APIs.
 </details>
 </li>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Performance Regression in Key Creation for Gateway 4.0.13 and Later Resolved
+</summary>
 
-Add changelog description
+A performance regression was identified in gateway versions 4.0.13 and later, where key creation for policies with a large number of APIs (100+) experienced a significant slowdown. An operation that took around 1.5 seconds in versions 4.0.0 to 4.0.12 was exceeding 20 seconds in versions 4.0.13 and beyond. This issue has been resolved by optimizing the handling of Redis operations during key creation, restoring the performance to the expected level. Key creation time has now been reduced back to approximately 1.5 seconds, even for policies with a large number of APIs.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Enhancement: Improved Gateway Synchronization with MDCB for Policies and APIs</summary>
+
+We have enhanced the Tyk Gateway's synchronization with MDCB to ensure more reliable loading of policies and APIs. A synchronous initialization process has been implemented to prevent startup failures and reduce the risk of service disruptions caused by asynchronous operations. This update ensures smoother and more consistent syncing of policies and APIs from MDCB.
 </details>
 </li>
 </ul>
+
+<li>
+<details>
+<summary>Fix: Quota Limit Respected During Spike Tests</summary>
+
+We have fixed an issue where the quota limit was not being consistently respected during spike tests, especially in deployments with multiple gateways. The problem occurred when multiple gateways cached the current and remaining quota counters at the end of quota periods. To address this, a distributed lock mechanism has been implemented, ensuring coordinated quota resets and preventing discrepancies across gateways.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Performance Improvement: Restored Key Creation Speed in Gateway 4.0.13 and Later
+</summary>
+
+We have addressed a performance regression in gateway versions 4.0.13 and later, where key creation for policies with a large number of APIs (100+) became significantly slower. The operation, which previously took around 1.5 seconds in versions 4.0.0 to 4.0.12, was taking over 20 seconds in versions 4.0.13 and beyond. This issue has been resolved by optimizing Redis operations during key creation, restoring the process to its expected speed of approximately 1.5 seconds, even with a large number of APIs in the policy.
+</details>
+</li>
 
 ---
 
