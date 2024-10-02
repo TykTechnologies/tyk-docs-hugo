@@ -22,15 +22,9 @@ We are excited to announce the release of **Tyk Operator v1.0**, marking a signi
 #### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 <!-- This release has no breaking changes. -->
-**License Requirement:** Tyk Operator is now a closed-source product and requires a valid license key to operate. There are three ways to set the license:
+**License Requirement:** Tyk Operator is now a closed-source product and requires a valid license key to operate. Please follow our [Installation and Upgrade Guide]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}) to set your license key before installation or upgrade.
 
-1. Through the tyk-operator Helm chart using the license field.
-2. By adding the license to the tyk-operator-conf secret under the license key.
-3. Setting the LICENSE environment variable.
-
-If the license is missing, invalid, or expired, Tyk Operator will exit with an error code. Please review the setup steps carefully before upgrading.
-
-[Tyk Operator Installation]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}})
+If the license is missing, invalid, or expired, Tyk Operator will exit with an error message. Ensure that you carefully review the setup steps to avoid any issues during the upgrade or installation process.
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention ALL changes in our application log messages in the changelog section. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
@@ -97,8 +91,9 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
 Tyk Operator v1.0 introduced new Custom Resource Definitions (CRDs). Before upgrading to Tyk Operator v1.0 with Helm Chart, please run the following commands to install the CRDs:
 
 ```bash
-TBD
+$ kubectl apply -f https://raw.githubusercontent.com/TykTechnologies/tyk-charts/refs/heads/main/tyk-operator-crds/crd-v1.0.0.yaml
 ```
+
 
 Go to the [Upgrading Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator#upgrading-tyk-operator">}}) section for detailed upgrade instructions.
 
@@ -158,7 +153,7 @@ Each change log item should be expandable. The first line summarises the changel
 
 The `TykOasApiDefinition` custom resource allows you to manage Tyk OAS APIs directly within your Kubernetes environment. You can now categorize APIs, manage multiple versions, and simplify SSL certificate management by referencing Kubernetes secrets. This enhancement offers a Kubernetes-native approach to managing Tyk APIs, streamlining operations and reducing the complexity of versioning and certificate handling across different environments.
 
-Learn More: [Create Tyk OAS API] "product-stack/tyk-operator/getting-started/create-an-oas-api"
+Learn More: [Create Tyk OAS API]({{<ref "product-stack/tyk-operator/getting-started/create-an-oas-api">}})
 </details>
 </li>
 <li>
@@ -166,26 +161,35 @@ Learn More: [Create Tyk OAS API] "product-stack/tyk-operator/getting-started/cre
 <summary>Ingress Controller: Support Tyk OAS API as an Ingress Template</summary>
 
 With this release, you can use the TykOasApiDefinition resource as a template for automatically creating Tyk OAS APIs based on Kubernetes Ingress specs. This simplifies the process of generating APIs by leveraging Ingress controller annotations, reducing manual intervention, and automating API creation workflows for better scalability and operational efficiency.
-Learn More: Tyk Ingress Controller.
-https://tyk.io/docs/product-stack/tyk-operator/tyk-ingress-controller/
+
+Learn More: [Tyk Ingress Controller]({{<ref "product-stack/tyk-operator/tyk-ingress-controller">}})
 </details>
 </li>
 <li>
 <details>
-<summary>SecurityPolicy: Support for API-Level Limits and Quotas</summary>
+<summary>SecurityPolicy: Support for Key-Level Per-API Rate Limits and Quota</summary>
 
 This release introduces the ability to configure specific rate limits, quotas, and throttling rules at the API level using the `access_rights_array` in the security policy. Each API now has the flexibility to inherit global limit settings or apply custom limits, making it easier to control API usage on a per-API basis. This provides enhanced granularity in managing traffic, ensuring optimal resource allocation and improved performance under heavy loads.
 
-Learn More: Per-API Limit in Security Policy. https://tyk.io/docs/product-stack/tyk-operator/getting-started/security-policy-example/#per-api-limit
+Learn More: [Key-Level Per-API Rate Limits and Quota]({{<ref "product-stack/tyk-operator/getting-started/security-policy-example#per-api-limit">}})
+</details>
+</li>
+<li>
+<details>
+<summary>SecurityPolicy: Support for Key-Level Per-Endpoint Rate Limits</summary>
+
+By configuring key-level per-endpoint limits, you can restrict the request rate for specific API clients to a specific endpoint of an API.
+
+Learn More: [Key-Level Per-Endpoint Rate Limits]({{<ref "product-stack/tyk-operator/getting-started/security-policy-example#per-endpoint-rate-limit">}})
 </details>
 </li>
 <li>
 <details>
 <summary>SecurityPolicy: Support for TykOasApiDefinition</summary>
 
-This update extends the security policy to include TykOasApiDefinition resources within the access_rights_array, allowing you to manage security policies for both Tyk Classic APIs and Tyk OAS APIs. By specifying the API kind, you can now apply rate limits, quotas, and other access controls to Tyk OAS APIs, streamlining security management in mixed environments.
-Learn More: TykOasApiDefinition in Security Policy.
-https://tyk.io/docs/product-stack/tyk-operator/getting-started/security-policy-example/
+This update extends the security policy to include TykOasApiDefinition resources within the `access_rights_array`, allowing you to manage security policies for both Tyk Classic APIs and Tyk OAS APIs. By specifying the API kind, you can now apply rate limits, quotas, and other access controls to Tyk OAS APIs, streamlining security management in mixed environments.
+
+Learn More: [TykOasApiDefinition in Security Policy]({{<ref "tyk-stack/tyk-operator/secure-an-api#security-policy-manifest">}})
 </details>
 </li>
 <li>
@@ -193,8 +197,8 @@ https://tyk.io/docs/product-stack/tyk-operator/getting-started/security-policy-e
 <summary>ApiDefinition: Support for Event Handler</summary>
 
 Tyk Operator now supports event handler integration for ApiDefinition, enabling webhooks to be triggered by specific API events. This allows for real-time, event-driven automation between Tyk and other systems, sending notifications or executing actions as events occur in the API lifecycle. The event_handlers field in the ApiDefinition CRD makes it easy to set up webhook-driven processes for better control and automation across your services.
-Learn More: Event Webhook with Tyk Classic.
-https://tyk.io/docs/product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/event-webhook-tyk-classic/
+
+Learn More: [Event Webhook with Tyk Classic]({{<ref "product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/event-webhook-tyk-classic">}})
 </details>
 </li>
 <li>

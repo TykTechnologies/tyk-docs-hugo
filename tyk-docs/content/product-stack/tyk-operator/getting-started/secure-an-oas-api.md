@@ -13,7 +13,7 @@ By the end of this tutorial, your API will require an API key for access, enhanc
 
 1. Completed previous tutorial on [creating an OAS API with Tyk Operator]({{<ref "product-stack/tyk-operator/getting-started/create-an-oas-api">}}).
 2. A Kubernetes cluster with [kubectl](https://kubernetes.io/docs/reference/kubectl/) configured to interact with it.
-3. [Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}) installed in your Kubernetes cluster.
+3. [Tyk Operator v1.0+]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}) installed in your Kubernetes cluster.
 4. Basic knowledge of Kubernetes resources like [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap), [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables), and [custom resources](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
 5. Basic knowledge of configuring [Authentication with Tyk OAS]({{<ref "getting-started/key-concepts/authentication">}}).
 

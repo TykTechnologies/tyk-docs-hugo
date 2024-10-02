@@ -24,11 +24,12 @@ Tyk Operator supports any Tyk installation whether it is on Tyk Cloud, Hybrid, o
 {{< /note >}}
 
 {{< note success >}}
-###### **Tyk Operator License**
+###### **Obtain a license key**
 
-Starting from Tyk Operator v1.0, a valid license key is required for the Tyk Operator to function. **--TBC call to action--** 
-Sign up [here](https://tyk.io/sign-up), and choose "Get in touch" to receive a guided evaluation of the Tyk Operator and your temporary license. 
+Starting from Tyk Operator v1.0, a license key is required to use the Tyk Operator. [Sign up here](https://tyk.io/sign-up), and choose “Get in touch” to receive a guided evaluation of the Tyk Operator and your temporary license.
 {{< /note >}}
+
+{{< button_left href="https://tyk.io/sign-up" color="green" content="Free Trial" >}}
 
 ### Configuring Tyk
 

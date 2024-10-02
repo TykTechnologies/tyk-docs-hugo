@@ -11,13 +11,15 @@ The TykOasApiDefinition Custom Resource Definition (CRD) manages [Tyk OAS API De
 
 `TykOasApiDefinition` can support all [features of the Tyk OAS API]({{<ref "getting-started/using-oas-definitions/oas-reference">}}). You just need to provide the Tyk OAS API definition via a ConfigMap. In addition to managing the CRUD (Create, Read, Update, Delete) of Tyk OAS API resources, the Tyk Operator helps you better manage resources through object linking to Ingress, Security Policies, and certificates stored as Kubernetes secrets. See below for a list of Operator features and examples:
 
-| Features | Support | Supported From | Comments | Sample |
+| Features | Support | Supported From | Comments | Example |
 |----------|---------|-----------------|----------|--------|
 | API Category | ✅      | v1.0 | - | [Manage API Categories]({{<ref "product-stack/tyk-operator/advanced-configurations/api-categories">}}) |
 | API Version | ✅      | v1.0 | - | [Manage API versioning]({{<ref "product-stack/tyk-operator/advanced-configurations/api-versioning">}}) |
 | API Ownership via OperatorContext | ✅      | v1.0 | - | [API Ownership]({{<ref "product-stack/tyk-operator/getting-started/tyk-operator-api-ownership">}}) |
 | Client Certificates | ✅      | v1.0 | - | [Manage TLS certificate]({{<ref "product-stack/tyk-operator/advanced-configurations/tls-certificate">}}) |
 | Custom Domain Certificates | ✅      | v1.0 | - | [Manage TLS certificate]({{<ref "product-stack/tyk-operator/advanced-configurations/tls-certificate">}}) |
+| Public keys pinning | ✅      | v1.0 | - | [Manage TLS certificate]({{<ref "product-stack/tyk-operator/advanced-configurations/tls-certificate">}}) |
+| Upstream mTLS | ✅      | v1.0 | - | [Manage TLS certificate]({{<ref "product-stack/tyk-operator/advanced-configurations/tls-certificate">}}) |
 | Kubernetes Ingress | ✅      | v1.0 | - | [Kubernetes Ingress Controller]({{<ref "product-stack/tyk-operator/tyk-ingress-controller">}}) |
 | Link with SecurityPolicy | ✅      | v1.0 | - | [Protect an API]({{<ref "tyk-stack/tyk-operator/secure-an-api">}}) |
 

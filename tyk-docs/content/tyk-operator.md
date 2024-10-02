@@ -19,10 +19,10 @@ Tyk Operator is a Kubernetes Operator designed to simplify the management of Tyk
 {{< note success >}}
 **Obtain a license key**
 
-Starting from Tyk Operator v1.0, a license key is required to use the Tyk Operator. **TBC the call to action** [Sign up here](https://tyk.io/sign-up), and choose “Get in touch” to receive a guided evaluation of the Tyk Operator and your temporary license.
+Starting from Tyk Operator v1.0, a license key is required to use the Tyk Operator. [Sign up here](https://tyk.io/sign-up), and choose “Get in touch” to receive a guided evaluation of the Tyk Operator and your temporary license.
 {{< /note >}}
 
-{{< button_left href="https://tyk.io/book-a-demo/" color="green" content="Contact us" >}}
+{{< button_left href="https://tyk.io/sign-up" color="green" content="Free Trial" >}}
 
 ### Why use Tyk Operator?
 Managing, checking, and synchronizing APIs from multiple teams across environments can be complex. Tyk Operator provides an efficient way to handle API configurations. Here’s why it matters:

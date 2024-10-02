@@ -11,7 +11,7 @@ This step-by-step tutorial will guide you through the process of creating a Tyk 
 Before you begin, ensure you have the following:
 
 1. A Kubernetes cluster with [kubectl](https://kubernetes.io/docs/reference/kubectl/) configured to interact with it.
-2. [Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}) installed in your Kubernetes cluster.
+2. [Tyk Operator v1.0+]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}) installed in your Kubernetes cluster.
 3. Basic knowledge of Kubernetes resources like [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap) and [custom resources](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
 4. A valid Tyk OAS API definition in JSON format.
 
