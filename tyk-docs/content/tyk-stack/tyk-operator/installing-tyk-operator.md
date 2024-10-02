@@ -10,24 +10,25 @@ Follow this guide to install and configure Tyk Operator using [Helm](https://hel
 
 ## Prerequisites
 
-- Tyk Operator license key: Starting from Tyk Operator v1.0, a valid license key is required for the Tyk Operator to function.
 - [Kubernetes v1.19+](https://kubernetes.io/docs/setup/)
 - [Helm 3+](https://helm.sh/docs/intro/install/)
 - Kubernetes Cluster Admin rights for installing [CustomResourceDefinitions](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/)
 - [cert-manager v1.8+](https://cert-manager.io/docs/installation/kubectl/). Check [cert-manager installation guide](#installing-cert-manager) if you do not have it.
 - Tyk Gateway or Tyk Dashboard v3+. Check [Required Tyk configurations](#configuring-tyk) for necessary configurations.
+- Tyk Operator license key. Starting from Tyk Operator v1.0, a valid [license key](#tyk-operator-license) is required.
 
 {{< note success >}}
-**Note**  
+###### **Note**  
 
 Tyk Operator supports any Tyk installation whether it is on Tyk Cloud, Hybrid, or self-managed. You only need to make sure that the control plane URL is accessible by Tyk Operator.
 {{< /note >}}
 
-### Tyk Operator License
+{{< note success >}}
+###### **Tyk Operator License**
 
-Starting from Tyk Operator v1.0, a valid license key is required for the Tyk Operator to function.
+Starting from Tyk Operator v1.0, a valid license key is required for the Tyk Operator to function. **--TBC call to action--** 
 Sign up [here](https://tyk.io/sign-up), and choose "Get in touch" to receive a guided evaluation of the Tyk Operator and your temporary license. 
-
+{{< /note >}}
 
 ### Configuring Tyk
 
@@ -68,23 +69,6 @@ The secret should contain the following keys:
 
 {{< tabs_start >}}
 
-{{< tab_start "Open Source" >}}
-
-| Key                          | Mandatory | Example Value                                      | Description                                                                                                                  |
-|:-----------------------------|:----------|:---------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|
-| TYK_OPERATOR_LICENSEKEY      | Yes       | <JWT_ENCODED_LICENSE_KEY>                          | Tyk Operator license key                                                                                                     |
-| TYK_MODE                     | Yes       | ce                                                 | “ce” for Tyk Open Source mode, “pro” for Tyk licensed mode.                                                                  |
-| TYK_URL                      | Yes       | http://gateway-svc-tyk-ce-tyk-gateway.tyk.svc:8080 | Management URL of Tyk Gateway (Open Source) or Tyk Dashboard                                                                 |
-| TYK_AUTH                     | Yes       | myapisecret                                        | Operator user API key.                                                                                                       |
-| TYK_ORG                      | Yes       | myorgid                                            | Operator user ORG ID.                                                                                                        |
-| TYK_TLS_INSECURE_SKIP_VERIFY | No        | true                                               | Set to `“true”` if the Tyk URL is HTTPS and has a self-signed certificate. If it isn't set, the default value is `false`.    |
-| WATCH_NAMESPACE              | No        | foo,bar                                            | Comma separated list of namespaces for Operator to operate on. The default is to operate on all namespaces if not specified. |
-| WATCH_INGRESS_CLASS          | No        | customclass                                        | Define the ingress class Tyk Operator should watch. Default is `tyk`                                                         |
-| TYK_HTTPS_INGRESS_PORT       | No        | 8443                                               | Define the ListenPort for HTTPS ingress. Default is `8443`.                                                                  |
-| TYK_HTTP_INGRESS_PORT        | No        | 8080                                               | Define the ListenPort for HTTP ingress. Default is `8080`.                                                                   |
-
-{{< tab_end >}}
-
 {{< tab_start "Licensed mode (Self-managed or Tyk Cloud)" >}}
 
 | Key                          | Mandatory | Example Value                                       | Description                                                                                                                  |
@@ -101,6 +85,26 @@ The secret should contain the following keys:
 | TYK_HTTP_INGRESS_PORT        | No        | 8080                                                | Define the ListenPort for HTTP ingress. Default is `8080`.                                                                   |
 
 {{< tab_end >}}
+
+{{< tab_start "Open Source" >}}
+
+**Note**: From Tyk Operator v1.0, although Tyk Operator is compatible with the Open Source Tyk Gateway, a valid license key is required for running Tyk Operator.
+
+| Key                          | Mandatory | Example Value                                      | Description                                                                                                                  |
+|:-----------------------------|:----------|:---------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|
+| TYK_OPERATOR_LICENSEKEY      | Yes       | <JWT_ENCODED_LICENSE_KEY>                          | Tyk Operator license key                                                                                                     |
+| TYK_MODE                     | Yes       | ce                                                 | “ce” for Tyk Open Source mode, “pro” for Tyk licensed mode.                                                                  |
+| TYK_URL                      | Yes       | http://gateway-svc-tyk-ce-tyk-gateway.tyk.svc:8080 | Management URL of Tyk Gateway (Open Source) or Tyk Dashboard                                                                 |
+| TYK_AUTH                     | Yes       | myapisecret                                        | Operator user API key.                                                                                                       |
+| TYK_ORG                      | Yes       | myorgid                                            | Operator user ORG ID.                                                                                                        |
+| TYK_TLS_INSECURE_SKIP_VERIFY | No        | true                                               | Set to `“true”` if the Tyk URL is HTTPS and has a self-signed certificate. If it isn't set, the default value is `false`.    |
+| WATCH_NAMESPACE              | No        | foo,bar                                            | Comma separated list of namespaces for Operator to operate on. The default is to operate on all namespaces if not specified. |
+| WATCH_INGRESS_CLASS          | No        | customclass                                        | Define the ingress class Tyk Operator should watch. Default is `tyk`                                                         |
+| TYK_HTTPS_INGRESS_PORT       | No        | 8443                                               | Define the ListenPort for HTTPS ingress. Default is `8443`.                                                                  |
+| TYK_HTTP_INGRESS_PORT        | No        | 8080                                               | Define the ListenPort for HTTP ingress. Default is `8080`.                                                                   |
+
+{{< tab_end >}}
+
 {{< tabs_end >}}
 
 ##### Connection to Tyk Gateway or Dashboard
