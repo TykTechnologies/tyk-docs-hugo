@@ -14,6 +14,15 @@ aliases:
 Tyk Operator is a Kubernetes Operator designed to simplify the management of Tyk API configurations both inside and outside of Kubernetes environments. With our [custom resources]({{<ref "product-stack/tyk-operator/key-concepts/custom-resources">}}), Tyk Operator simplifies the processes of deploying and configuring API resources, allowing you to focus more on application development and less on infrastructure management. It is ideal for those who like to manage configurations declaratively or with GitOps workflows via tools such as Argo CD and Flux CD.
 
 {{< img src="/img/operator/tyk-operator.svg" alt="Tyk Operator" width="600" >}}
+<br>
+
+{{< note success >}}
+**Obtain a license key**
+
+Starting from Tyk Operator v1.0, a license key is required to use the Tyk Operator. **TBC the call to action** [Sign up here](https://tyk.io/sign-up), and choose “Get in touch” to receive a guided evaluation of the Tyk Operator and your temporary license.
+{{< /note >}}
+
+{{< button_left href="https://tyk.io/book-a-demo/" color="green" content="Contact us" >}}
 
 ### Why use Tyk Operator?
 Managing, checking, and synchronizing APIs from multiple teams across environments can be complex. Tyk Operator provides an efficient way to handle API configurations. Here’s why it matters:
