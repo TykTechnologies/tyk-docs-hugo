@@ -124,7 +124,7 @@ Resolved an issue where the Gateway secret was inadvertently logged by the Dashb
 </li>
 <li>
 <details>
-<summary>UI Fix: Tyk Dashboard Keys Page No Longer Blank with 10+ Policies
+<summary>Tyk Dashboard Keys Page No Longer Blank with 10+ Policies
 </summary>
 
 We have resolved an issue in the Tyk Dashboard where the Keys page would display a blank screen if a key was associated with more than 10 policies. The UI has been fixed to properly display the page, regardless of the number of policies attached to a key, ensuring better usability and management in the Dashboard.
@@ -134,7 +134,7 @@ We have resolved an issue in the Tyk Dashboard where the Keys page would display
 
 <li>
 <details>
-<summary>UI Fix: Prevented Multiple Versions of the Same Tyk Classic API from Being Attached to a Policy</summary>
+<summary>Prevented Multiple Versions of the Same Tyk Classic API from Being Attached to a Policy</summary>
 
 We have fixed an issue in the Dashboard UI where users were able to attach multiple versions of the same Tyk Classic API to a policy. The UI now correctly prevents the addition of duplicate API versions to a single policy, ensuring accurate and streamlined policy management.
 </details>
@@ -143,7 +143,7 @@ We have fixed an issue in the Dashboard UI where users were able to attach multi
 
 <li>
 <details>
-<summary>UI Fix: Corrected JWT Scope to Policy Mapping in Dashboard
+<summary>Corrected JWT Scope to Policy Mapping in Dashboard
 </summary>
 
 We have fixed an issue in the Dashboard UI where the scope name was incorrectly recorded instead of the policy ID for the second and subsequent JWT scope mappings. The UI now correctly associates the defined scope with the appropriate policy, ensuring accurate JWT scope to policy mappings.
