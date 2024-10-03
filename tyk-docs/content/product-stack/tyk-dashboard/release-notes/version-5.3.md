@@ -108,6 +108,7 @@ The Tyk Dashboard has been upgraded from Golang 1.21 to Golang 1.22, bringing en
 <li>
  <details>
  <summary>Introducing Distroless Containers for Tyk Dashboard (2024 LTS)</summary>
+ 
  In this release, we've enhanced the security of the Tyk Dashboard image by changing the build process to support [distroless](https://github.com/GoogleContainerTools/distroless) containers. This significant update addresses critical CVEs associated with Debian, ensuring a more secure and minimal runtime environment. Distroless containers reduce the attack surface by eliminating unnecessary packages, which bolsters the security of your deployments.
  </details>
  </li>
