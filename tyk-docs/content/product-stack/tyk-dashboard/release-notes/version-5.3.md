@@ -165,16 +165,26 @@ We have fixed a privilege escalation vulnerability where a user with certain per
 </details>
 </li>
 
+</ul>
+
+#### Security Fixes
+<!-- This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
+1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
+2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
+For agreed CVE security fixes, provide a link to the corresponding entry on the NIST website. For example:
+- Fixed the following CVEs:
+    - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
+-->
+<ul>
 <li>
 <details>
-<summary>Address CVE-2024-6104 in Dashboard & Gateway
-</summary>
-
-Updated `go-retryablehttp` library to resolve CVE-2024-6104.
+<summary>High priority CVEs fixed</summary>
+Fixed the following high-priority CVEs identified in the Tyk Dashboard, providing increased protection against security vulnerabilities:
+- [CVE-2024-6104](https://nvd.nist.gov/vuln/detail/CVE-2024-6104)
 </details>
 </li>
-
 </ul>
+
 ---
 
 ## 5.3.5 Release Notes
