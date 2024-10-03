@@ -123,6 +123,15 @@ Each change log item should be expandable. The first line summarises the changel
 The Tyk Gateway has been upgraded from Golang 1.21 to Golang 1.22, bringing enhanced performance, strengthened security, and access to the latest features available in the new Golang release.
 </details>
 </li>
+
+<li>
+<details>
+<summary>Introducing Distroless Containers for Tyk Gateway (2024 LTS)</summary>
+
+In this release, we've enhanced the security of the Tyk Gateway image by changing the build process to support [distroless](https://github.com/GoogleContainerTools/distroless) containers. This significant update addresses critical CVEs associated with Debian, ensuring a more secure and minimal runtime environment. Distroless containers reduce the attack surface by eliminating unnecessary packages, which bolsters the security of your deployments.
+</details>
+</li>
+
 </ul>
 
 #### Fixed
@@ -144,16 +153,6 @@ We have resolved an issue where custom [response plugins]({{< ref "plugins/plugi
 We have enhanced the initial synchronization of Data Plane gateways with the Control Plane to ensure more reliable loading of policies and APIs on start-up. A synchronous initialization process has been implemented to avoid sync failures and reduce the risk of service disruptions caused by failed loads. This update ensures smoother and more consistent syncing of policies and APIs in distributed deployments.
 </details>
 </li>
-
-
-<li>
-<details>
-<summary>Introducing Distroless Containers for Tyk Gateway (2024 LTS)</summary>
-
-In this release, we've enhanced the security of the Tyk Gateway image by changing the build process to support [distroless](https://github.com/GoogleContainerTools/distroless) containers. This significant update addresses critical CVEs associated with Debian, ensuring a more secure and minimal runtime environment. Distroless containers reduce the attack surface by eliminating unnecessary packages, which bolsters the security of your deployments.
-</details>
-</li>
-
 
 <li>
 <details>
