@@ -116,7 +116,7 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Upgrade to Go 1.22 for Tyk Dashboard</summary>
+<summary>Upgrade to Go 1.22 for Tyk Gateway</summary>
 
 The Tyk Gateway has been upgraded from Golang 1.21 to Golang 1.22, bringing enhanced performance, strengthened security, and access to the latest features available in the new Golang release.
 </details>
