@@ -150,6 +150,30 @@ We have fixed an issue in the Dashboard UI where users were able to attach multi
 We have fixed an issue in the Dashboard UI where the scope name was incorrectly recorded instead of the policy ID for the second and subsequent JWT scope mappings. The UI now correctly associates the defined scope with the appropriate policy, ensuring accurate JWT scope to policy mappings.
 </details>
 </li>
+
+<li>
+<details>
+<summary>Security Update: Strengthened ResetPassword Permission Behavior
+</summary>
+
+We have fixed a privilege escalation vulnerability where a user with certain permissions could potentially reset other users' passwords, including admin accounts. The following changes have been made to tighten the behavior of the ResetPassword permission within the Dashboard's Role-Based Access Control (RBAC) system:
+- Only super-admins or admins can assign admin status to a user, and this cannot be assigned to user groups.
+- All users can reset their own passwords, but resetting other users' passwords now requires a specific ResetPassword permission.
+- The scope of the ResetPassword permission is limited to the Tyk Organization (OrgId) for which the user is an admin.
+- The ResetPassword permission can only be assigned by super-admins, directly to admin users (not user groups).
+- The allow_admin_reset_password configuration ensures that all admin users automatically receive the ResetPassword permission.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Address CVE-2024-6104 in Dashboard & Gateway
+</summary>
+
+Updated `go-retryablehttp` library to resolve CVE-2024-6104.
+</details>
+</li>
+
 </ul>
 ---
 
