@@ -128,7 +128,7 @@ The Tyk Gateway has been upgraded from Golang 1.21 to Golang 1.22, bringing enha
 <ul>
 <li>
 <details>
-<summary>Fix for Response Plugins Not Working with Tyk OAS API Definition</summary>
+<summary>Fix: Response Plugins Not Working with Tyk OAS API Definition</summary>
 
 We have resolved an issue where Response Plugins were not being triggered for Tyk OAS API definitions. This fix ensures that Response Plugins now function correctly, allowing for consistent response processing and customization across all Tyk OAS APIs.
 </details>
