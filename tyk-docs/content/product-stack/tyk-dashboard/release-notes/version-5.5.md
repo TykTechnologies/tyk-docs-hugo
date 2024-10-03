@@ -19,7 +19,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### Release Highlights
 
-This is a version bump to align with Gateway v5.5.2, no changes have been implemented in this release.
+This release replaces Tyk Dashboard 5.5.1 which was accidentally released as a non-distroless image.
 
 ### Breaking Changes
 
