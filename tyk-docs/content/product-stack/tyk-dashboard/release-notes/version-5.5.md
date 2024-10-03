@@ -2,7 +2,7 @@
 title: Tyk Dashboard 5.5 Release Notes
 date: 2024-03-27T15:51:11Z
 description: "Release notes documenting updates, enhancements, and changes for Tyk Dashboard versions within the 5.5.X series."
-tags: ["Tyk Dashboard", "Release notes", "changelog", "v5.5", "5.5", "5.5.0", "5.5.1"]
+tags: ["Tyk Dashboard", "Release notes", "changelog", "v5.5", "5.5", "5.5.0", "5.5.1", "5.5.2"]
 ---
 
 **This page contains all release notes for version 5.5.X displayed in a reverse chronological order**
@@ -15,7 +15,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 5.5.2 Release Notes
 
-### Release Date 01 October 2024
+### Release Date 03 October 2024
 
 ### Release Highlights
 
