@@ -128,7 +128,7 @@ Resolved an issue where the Gateway secret was inadvertently logged by the Dashb
 <summary>Tyk Dashboard Keys Page No Longer Blank with 10+ Policies
 </summary>
 
-We have resolved an issue in the Tyk Dashboard where the Keys page would display a blank screen if a key was associated with more than 10 policies. The UI has been fixed to properly display the page, regardless of the number of policies attached to a key, ensuring better usability and management in the Dashboard.
+We have resolved an issue in the Tyk Dashboard where the Keys page would display a blank screen if a key was associated with more than 10 policies. The UI has been fixed to properly display the page, regardless of the number of policies attached to a key.
 </details>
 </li>
 
