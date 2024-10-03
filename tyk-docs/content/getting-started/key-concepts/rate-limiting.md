@@ -60,6 +60,7 @@ These guides include explanation of how to configure key-level rate limits when 
 The simplest way to figure out which level of rate limiting you’d like to apply can be determined by asking a few questions:
 
 - do you want to protect your service against denial of service attacks or overwhelming amounts of traffic from **all users** of the API? **You’ll want to use an API-level rate limit!**
+- do you have a health endpoint that consumes very little resource on your service and can handle significantly more requests than your other endpoints? **You'll want to use an API-level per-endpoint rate limit!**
 - do you want to limit the number of requests a specific user can make to **all APIs** they have access to? **You’ll want to use a key-level global rate limit!**
 - do you want to limit the number of requests a specific user can make to **specific APIs** they have access to? **You’ll want to use a key-level per-API rate limit.**
 - do you want to limit the number of requests a specific user can make to a **specific endpoint of an API** they have access to? **You’ll want to use a key-level per-endpoint rate limit.**
