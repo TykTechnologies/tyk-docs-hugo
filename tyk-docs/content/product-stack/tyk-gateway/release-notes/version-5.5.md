@@ -2,7 +2,7 @@
 title: Tyk Gateway 5.5 Release Notes
 date: 2024-03-27T15:51:11Z
 description: "Release notes documenting updates, enhancements, and changes for Tyk Gateway versions within the 5.5.X series."
-tags: ["Tyk Gateway", "Release notes", "changelog", "v5.5", "5.5", "5.5.0", "5.5.1"]
+tags: ["Tyk Gateway", "Release notes", "changelog", "v5.5", "5.5", "5.5.0", "5.5.1", "5.5.2"]
 ---
 
 **Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))
@@ -17,7 +17,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 5.5.2 Release Notes
 
-### Release Date 01 October 2024
+### Release Date 03 October 2024
 
 ### Release Highlights
 This release replaces Tyk Gateway 5.5.1 which was accidentally released as a non-distroless image.
