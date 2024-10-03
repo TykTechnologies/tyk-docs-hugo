@@ -60,7 +60,7 @@ If you are using [Tyk Stack]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}
 
 ### Option 2: Installing Tyk Operator via stand-alone Helm Chart
 
-If you prefer to install Tyk Operator separately, following this section to install Tyk Operator using Helm.
+If you prefer to install Tyk Operator separately, follow this section to install Tyk Operator using Helm.
 
 #### Step 1: Create tyk-operator-conf secret
 
@@ -109,7 +109,7 @@ The secret should contain the following keys:
 {{< tabs_end >}}
 
 ##### Connection to Tyk Gateway or Dashboard
-If you install Tyk using Helm Chart, `tyk-operator-conf` will have been created with the following keys: `TYK_AUTH, TYK_MODE, TYK_ORG`, and `TYK_URL` by default. 
+If you install Tyk using Helm Chart, `tyk-operator-conf` will have been created with the following keys: `TYK_OPERATOR_LICENSEKEY, TYK_AUTH, TYK_MODE, TYK_ORG`, and `TYK_URL` by default. 
 If you didn't use Helm Chart for installation, please prepare `tyk-operator-conf` secret yourself using the commands below:
 
 ```console
@@ -211,9 +211,7 @@ When upgrading Tyk Operator between licensed versions, follow the standard upgra
 It is important to note that this process differs if transitioning from an unlicensed to a licensed version.
 {{< /note >}}
 
-To provide the license key for Tyk Operator, Kubernetes secret used to configure Tyk Operator (typically named tyk-operator-conf as described above) 
-requires an additional field called TYK_OPERATOR_LICENSEKEY. 
-Populate this field with your Tyk Operator license key. 
+To provide the license key for Tyk Operator, Kubernetes secret used to configure Tyk Operator (typically named tyk-operator-conf as described above) requires an additional field called `TYK_OPERATOR_LICENSEKEY`. Populate this field with your Tyk Operator license key. 
 
 To configure the license key:
 
