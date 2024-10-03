@@ -2,7 +2,7 @@
 title: Tyk Gateway 5.5 Release Notes
 date: 2024-03-27T15:51:11Z
 description: "Release notes documenting updates, enhancements, and changes for Tyk Gateway versions within the 5.5.X series."
-tags: ["Tyk Gateway", "Release notes", "changelog", "v5.5", "5.5", "5.5.0", "5.5.1"]
+tags: ["Tyk Gateway", "Release notes", "changelog", "v5.5", "5.5", "5.5.0", "5.5.1", "5.5.2"]
 ---
 
 **Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))
@@ -12,6 +12,60 @@ tags: ["Tyk Gateway", "Release notes", "changelog", "v5.5", "5.5", "5.5.0", "5.5
 ## Support Lifetime
 
 Our minor releases are supported until our next minor comes out.
+
+---
+
+## 5.5.2 Release Notes
+
+### Release Date 03 October 2024
+
+### Release Highlights
+This release replaces Tyk Gateway 5.5.1 which was accidentally released as a non-distroless image.
+
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Dependencies {#dependencies-5.5.2}
+
+#### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.5.2 | MDCB v2.7     | MDCB v2.4.2 |
+|         | Operator v0.18 | Operator v0.17 |
+|         | Sync v1.5   | Sync v1.4.3 |
+|         | Helm Chart v2.0.0 | Helm all versions |
+| | EDP v1.10 | EDP all versions |
+| | Pump v1.11 | Pump all versions |
+| | TIB (if using standalone) v1.5.1 | TIB all versions |
+
+#### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.21  |  1.21  | [Go plugins]({{< ref "/plugins/supported-languages/golang" >}}) must be built using Go 1.21 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "/tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+### Deprecations
+<!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
+There are no deprecations in this release.
+
+### Upgrade instructions {#upgrade-5.5.2}
+If you are upgrading to 5.5.2, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+### Downloads
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.5.2)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.5.2
+    ``` 
+- Helm charts
+  - [tyk-charts v2.0.0]({{< ref "product-stack/tyk-charts/release-notes/version-2.0.md" >}})
+- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 ---
 
