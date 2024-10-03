@@ -128,7 +128,7 @@ The Tyk Gateway has been upgraded from Golang 1.21 to Golang 1.22, bringing enha
 <ul>
 <li>
 <details>
-<summary>Fix: Response Plugins Not Working with Tyk OAS API Definition</summary>
+<summary>Response Plugins Not Working with Tyk OAS API Definition</summary>
 
 We have resolved an issue where Response Plugins were not being triggered for Tyk OAS API definitions. This fix ensures that Response Plugins now function correctly, allowing for consistent response processing and customization across all Tyk OAS APIs.
 </details>
@@ -137,7 +137,7 @@ We have resolved an issue where Response Plugins were not being triggered for Ty
 
 <li>
 <details>
-<summary>Enhancement: Improved Gateway Synchronization with MDCB for Policies and APIs</summary>
+<summary>Improved Gateway Synchronization with MDCB for Policies and APIs</summary>
 
 We have enhanced the Tyk Gateway's synchronization with MDCB to ensure more reliable loading of policies and APIs. A synchronous initialization process has been implemented to prevent startup failures and reduce the risk of service disruptions caused by asynchronous operations. This update ensures smoother and more consistent syncing of policies and APIs from MDCB.
 </details>
@@ -146,7 +146,16 @@ We have enhanced the Tyk Gateway's synchronization with MDCB to ensure more reli
 
 <li>
 <details>
-<summary>Fix: Quota Limit Respected During Spike Tests</summary>
+<summary>Debian CVE Fix for 5.3-LTS: Introducing Distroless Containers for Tyk 5-LTS</summary>
+
+In this release, we've enhanced the security of the Tyk 5-LTS image by changing the build process to support distroless containers. This significant update addresses critical CVEs associated with Debian 5.3-LTS, ensuring a more secure and minimal runtime environment. Distroless containers reduce the attack surface by eliminating unnecessary packages, which bolsters the security of your deployments.
+</details>
+</li>
+
+
+<li>
+<details>
+<summary>Quota Limit Respected During Spike Tests</summary>
 
 We have fixed an issue where the quota limit was not being consistently respected during spike tests, especially in deployments with multiple gateways. The problem occurred when multiple gateways cached the current and remaining quota counters at the end of quota periods. To address this, a distributed lock mechanism has been implemented, ensuring coordinated quota resets and preventing discrepancies across gateways.
 </details>
@@ -154,13 +163,36 @@ We have fixed an issue where the quota limit was not being consistently respecte
 
 <li>
 <details>
-<summary>Performance Improvement: Restored Key Creation Speed in Gateway 4.0.13 and Later
-</summary>
+<summary>Restored Key Creation Speed in Gateway 4.0.13 and Later</summary>
 
 We have addressed a performance regression in gateway versions 4.0.13 and later, where key creation for policies with a large number of APIs (100+) became significantly slower. The operation, which previously took around 1.5 seconds in versions 4.0.0 to 4.0.12, was taking over 20 seconds in versions 4.0.13 and beyond. This issue has been resolved by optimizing Redis operations during key creation, restoring the process to its expected speed of approximately 1.5 seconds, even with a large number of APIs in the policy.
 </details>
 </li>
 </ul>
+
+
+#### Security Fixes
+<!-- This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
+1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
+2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
+
+For agreed CVE security fixes, provide a link to the corresponding entry on the NIST website. For example:
+
+- Fixed the following CVEs:
+    - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
+-->
+
+<ul>
+<li>
+<details>
+<summary>High priority CVEs fixed</summary>
+
+Fixed the following high priority CVEs identified in the Tyk Gateway, providing increased protection against security vulnerabilities:
+- [CVE-2024-6104](https://nvd.nist.gov/vuln/detail/CVE-2024-6104)
+</details>
+</li>
+</ul>
+
 
 ---
 
