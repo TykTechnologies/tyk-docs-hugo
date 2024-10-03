@@ -85,7 +85,7 @@ Any API endpoints that don't have endpoint-level rate limits configured will inh
 **Note**  
 The following assumptions are made:
  - The [ignore authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}) middleware should not be enabled for the relevant endpoints.
- - If [path-based permissions]({{< ref "getting-started/create-security-policy#path-based-permissions" >}}) are configured, they must grant access to these endpoints for keys generated from the policies. {{< /note >}}
+ - If [path-based permissions]({{< ref "getting-started/create-security-policy#path-based-permissions" >}}) are configured, they must grant access to these endpoints for keys generated from the policies.
 {{< /note >}}
 
 You can configure per-endpoint rate limits from the API Designer in Tyk Dashboard as follows:
