@@ -133,14 +133,7 @@ The Tyk Gateway has been upgraded from Golang 1.21 to Golang 1.22, bringing enha
 We have resolved an issue where Response Plugins were not being triggered for Tyk OAS API definitions. This fix ensures that Response Plugins now function correctly, allowing for consistent response processing and customization across all Tyk OAS APIs.
 </details>
 </li>
-<li>
-<details>
-<summary>Performance Regression in Key Creation for Gateway 4.0.13 and Later Resolved
-</summary>
 
-A performance regression was identified in gateway versions 4.0.13 and later, where key creation for policies with a large number of APIs (100+) experienced a significant slowdown. An operation that took around 1.5 seconds in versions 4.0.0 to 4.0.12 was exceeding 20 seconds in versions 4.0.13 and beyond. This issue has been resolved by optimizing the handling of Redis operations during key creation, restoring the performance to the expected level. Key creation time has now been reduced back to approximately 1.5 seconds, even for policies with a large number of APIs.
-</details>
-</li>
 
 <li>
 <details>
