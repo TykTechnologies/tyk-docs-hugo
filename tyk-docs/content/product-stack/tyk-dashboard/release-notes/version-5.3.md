@@ -117,7 +117,7 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Gateway Secret Exposed in Logs When Accessing /api/keys
+<summary>Gateway Secret Exposed in Logs During Access to `/api/keys` Endpoint
 </summary>
 
 Resolved an issue where the Gateway secret was inadvertently logged by the Dashboard in debug mode. This issue has been fixed to prevent sensitive information from appearing in system logs.
