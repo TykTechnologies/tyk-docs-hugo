@@ -37,7 +37,7 @@ If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older 
 
 This release primarily focuses on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.6">}}) below.
 
-### Dependencies {#dependencies-5.3.0}
+### Dependencies {#dependencies-5.3.6}
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 3rd party dependencies and tools -->
