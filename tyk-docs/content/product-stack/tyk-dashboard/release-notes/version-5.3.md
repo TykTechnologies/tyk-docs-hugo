@@ -137,7 +137,7 @@ We have resolved an issue in the Tyk Dashboard where the Keys page would display
 <details>
 <summary>Prevented Multiple Versions of the Same Tyk Classic API from Being Attached to a Policy</summary>
 
-We have fixed an issue in the Dashboard UI where users were able to attach multiple versions of the same Tyk Classic API to a policy. The UI now correctly prevents the addition of duplicate API versions to a single policy, ensuring accurate and streamlined policy management.
+We have fixed an issue in the Dashboard UI where users were able to attach multiple versions of the same Tyk Classic API to a policy. The UI now correctly prevents the addition of duplicate API versions to a single policy.
 </details>
 </li>
 
