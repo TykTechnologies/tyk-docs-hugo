@@ -28,7 +28,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### Release Highlights
 
-This release fixes some issues related to the way that Tyk performs URL path matching, introducing two new Gateway configuration options to control path matching strictness. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.6">}}) below.
+This release primarily focuses on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.6">}}) below.
 
 
 ### Breaking Changes
