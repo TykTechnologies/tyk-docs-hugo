@@ -5,7 +5,7 @@
   "lts": "5.3.5",
   "releaseNotesPath": "product-stack/tyk-gateway/release-notes/overview",
   "5.5.2": {
-    "date": "26/08/2024",
+    "date": "03/10/2024",
     "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.5.2",
     "docker": "https://hub.docker.com/r/tykio/tyk-gateway/tags?page=1&name=v5.5.2"
   },
