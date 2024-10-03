@@ -20,7 +20,7 @@ Our minor releases are supported until our next minor comes out.
 ### Release Date 01 October 2024
 
 ### Release Highlights
-This release fixes some issues identified in 5.5.1 which have now been effected in this release. 
+This release replaces Tyk Gateway 5.5.1 which was accidentally released as a non-distroless image.
 
 
 ### Breaking Changes
