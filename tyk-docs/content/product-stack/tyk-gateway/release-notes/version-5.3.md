@@ -128,18 +128,18 @@ The Tyk Gateway has been upgraded from Golang 1.21 to Golang 1.22, bringing enha
 <ul>
 <li>
 <details>
-<summary>Response Plugins Not Working with Tyk OAS API Definition</summary>
+<summary>Custom Response Plugins not working for Tyk OAS APIs</summary>
 
-We have resolved an issue where Response Plugins were not being triggered for Tyk OAS API definitions. This fix ensures that Response Plugins now function correctly, allowing for consistent response processing and customization across all Tyk OAS APIs.
+We have resolved an issue where custom [response plugins]({{< ref "plugins/plugin-types/response-plugins" >}}) were not being triggered for Tyk OAS APIs. This fix ensures that all [supported]({{< ref "getting-started/using-oas-definitions/oas-reference" >}}) custom plugins are invoked as expected when using Tyk OAS APIs.
 </details>
 </li>
 
 
 <li>
 <details>
-<summary>Improved Gateway Synchronization with MDCB for Policies and APIs</summary>
+<summary>Data plane gateways sometimes didn't synchronise policies and APIs on start-up</summary>
 
-We have enhanced the Tyk Gateway's synchronization with MDCB to ensure more reliable loading of policies and APIs. A synchronous initialization process has been implemented to prevent startup failures and reduce the risk of service disruptions caused by asynchronous operations. This update ensures smoother and more consistent syncing of policies and APIs from MDCB.
+We have enhanced the initial synchronization of Data Plane gateways with the Control Plane to ensure more reliable loading of policies and APIs on start-up. A synchronous initialization process has been implemented to avoid sync failures and reduce the risk of service disruptions caused by failed loads. This update ensures smoother and more consistent syncing of policies and APIs in distributed deployments.
 </details>
 </li>
 
@@ -155,9 +155,9 @@ In this release, we've enhanced the security of the Tyk 5-LTS image by changing 
 
 <li>
 <details>
-<summary>Quota Limit Respected During Spike Tests</summary>
+<summary>Quota wasn't respected under extreme load</summary>
 
-We have fixed an issue where the quota limit was not being consistently respected during spike tests, especially in deployments with multiple gateways. The problem occurred when multiple gateways cached the current and remaining quota counters at the end of quota periods. To address this, a distributed lock mechanism has been implemented, ensuring coordinated quota resets and preventing discrepancies across gateways.
+We have fixed an issue where the quota limit was not being consistently respected during request spikes, especially in deployments with multiple gateways. The problem occurred when multiple gateways cached the current and remaining quota counters at the end of quota periods. To address this, a distributed lock mechanism has been implemented, ensuring coordinated quota resets and preventing discrepancies across gateways.
 </details>
 </li>
 
@@ -165,7 +165,7 @@ We have fixed an issue where the quota limit was not being consistently respecte
 <details>
 <summary>Restored Key Creation Speed in Gateway 4.0.13 and Later</summary>
 
-We have addressed a performance regression in gateway versions 4.0.13 and later, where key creation for policies with a large number of APIs (100+) became significantly slower. The operation, which previously took around 1.5 seconds in versions 4.0.0 to 4.0.12, was taking over 20 seconds in versions 4.0.13 and beyond. This issue has been resolved by optimizing Redis operations during key creation, restoring the process to its expected speed of approximately 1.5 seconds, even with a large number of APIs in the policy.
+We have addressed a performance regression identified in Tyk Gateway versions 4.0.13 and later, where key creation for policies with a large number of APIs (100+) became significantly slower. The operation, which previously took around 1.5 seconds in versions 4.0.0 to 4.0.12, was taking over 20 seconds in versions 4.0.13 and beyond. This issue has been resolved by optimizing Redis operations during key creation, restoring the process to its expected speed of approximately 1.5 seconds, even with a large number of APIs in the policy.
 </details>
 </li>
 </ul>
