@@ -33,7 +33,9 @@ This release primarily focuses on bug fixes. For a comprehensive list of changes
 
 ### Breaking Changes
 
-There are no breaking changes in this release, however if moving from an version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
+Docker images are now based on [distroless](https://github.com/GoogleContainerTools/distroless). No shell is shipped in the image.
+
+If moving from an version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
 
 
 ### Deprecations
@@ -146,9 +148,9 @@ We have enhanced the initial synchronization of Data Plane gateways with the Con
 
 <li>
 <details>
-<summary>Debian CVE Fix for 5.3-LTS: Introducing Distroless Containers for Tyk 5-LTS</summary>
+<summary>Introducing Distroless Containers for Tyk Gateway (2024 LTS)</summary>
 
-In this release, we've enhanced the security of the Tyk 5-LTS image by changing the build process to support distroless containers. This significant update addresses critical CVEs associated with Debian 5.3-LTS, ensuring a more secure and minimal runtime environment. Distroless containers reduce the attack surface by eliminating unnecessary packages, which bolsters the security of your deployments.
+In this release, we've enhanced the security of the Tyk Gateway image by changing the build process to support [distroless](https://github.com/GoogleContainerTools/distroless) containers. This significant update addresses critical CVEs associated with Debian, ensuring a more secure and minimal runtime environment. Distroless containers reduce the attack surface by eliminating unnecessary packages, which bolsters the security of your deployments.
 </details>
 </li>
 
