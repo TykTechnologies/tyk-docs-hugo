@@ -24,7 +24,7 @@ Our minor releases are supported until our next minor comes out.
 ## 5.3.6 Release Notes
 
 
-### Release Date xxx
+### Release Date 04 October 2024
 
 ### Release Highlights
 
