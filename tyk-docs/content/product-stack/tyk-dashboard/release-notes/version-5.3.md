@@ -83,7 +83,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
    docker pull tykio/tyk-dashboard:v5.3.6
    ```
 - Helm charts
- - [tyk-charts v1.4]({{< ref "product-stack/tyk-charts/release-notes/version-1.4.md" >}})
+ - [tyk-charts v2.0]({{< ref "product-stack/tyk-charts/release-notes/version-2.0.md" >}})
 
 ### Changelog {#Changelog-v5.3.6}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
