@@ -21,7 +21,7 @@ As outlined in the [LTS policy]({{< ref "developer-support/special-releases-and-
 
 ## 5.3.6 Release Notes
 
-### Release Date xxx
+### Release Date 04 October 2024
 
 ### Release Highlights
 
