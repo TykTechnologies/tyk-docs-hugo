@@ -77,9 +77,11 @@ Check out the following video to see this being done.
 
 ## Setting up a key-level per-endpoint rate limit
 
-If you want to restrict the request rate for specific API clients to a specific endpoint of an API, you should use the security policy to assign per-endpoint rate limits. The allowance that you configure in the policy will be consumed by any requests made to that specific endpoint using a key generated from that policy. Each key will have its own allowance, for example: if a policy grants access to an API endpoint with `rate=5 per=60` then three clients using keys generated from that policy will each independently be able to make 5 requests in any 60 second period to that particular endpoint of the API before receiving the `HTTP 429 Too Many Requests` error.
+To restrict the request rate for specific API clients on particular endpoints, you can use the security policy to assign per-endpoint rate limits. These limits are set within the policy and will be #enforced for any requests made to that endpoint by clients using keys generated from that policy.
 
-Any API endpoints that don't have endpoint-level rate limits configured will inherit the key-level per-API or key-level global rate limit depending upon which is configured.
+Each key will have its own independent rate limit allowance. For example, if a policy grants access to an endpoint with a rate limit of 5 requests per 60 seconds, each client with a key from that policy can make 5 requests to the endpoint in any 60-second period. Once the limit is reached, the client will receive an HTTP `429 Too Many Requests` error.
+
+If no per-endpoint rate limit is defined, the endpoint will inherit the key-level per-API rate limit or the global rate limit, depending on what is configured.
 
 {{< note success >}}
 **Note**  
