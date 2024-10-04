@@ -2,7 +2,7 @@
   "home": "tyk-oss-gateway",
   "licensed": false,
   "latest": "5.5.2",
-  "lts": "5.3.5",
+  "lts": "5.3.6",
   "releaseNotesPath": "product-stack/tyk-gateway/release-notes/overview",
   "5.5.2": {
     "date": "03/10/2024",
