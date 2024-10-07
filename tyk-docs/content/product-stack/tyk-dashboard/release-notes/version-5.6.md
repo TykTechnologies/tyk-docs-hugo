@@ -220,7 +220,7 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
 <ul>
 <li>
 <details>
-<summary>Strengthened ResetPassword Permission Behavior</summary>
+<summary>Strengthened RBAC password reset permissions</summary>
 
 We have fixed a privilege escalation vulnerability where a user with certain permissions could potentially reset other users' passwords, including admin accounts. The following changes have been made to tighten the behavior of the ResetPassword permission within the Dashboard's Role-Based Access Control (RBAC) system:
 - Only super-admins or admins can assign admin status to a user, and this cannot be assigned to user groups.
