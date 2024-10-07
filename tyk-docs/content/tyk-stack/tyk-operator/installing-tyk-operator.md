@@ -58,15 +58,28 @@ Please wait for the cert-manager to become available before continuing with the 
 
 If you are using [Tyk Stack]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}), [Tyk Control Plane]({{<ref "product-stack/tyk-charts/tyk-control-plane-chart">}}), or [Tyk Open Source Chart]({{<ref "product-stack/tyk-charts/tyk-oss-chart">}}), you can install Tyk Operator alongside other Tyk components by setting value `global.components.operator` to `true`.
 
+Starting from Tyk Operator v1.0, a license key is required to use the Tyk Operator. You can provide it while installing Tyk Stack or Tyk OSS helm chart by setting `global.license.operator` field. You can also set license key via a Kubernetes secret using `global.secrets.useSecretName` field. The secret should contain a key called `OperatorLicense`
+
 ### Option 2: Installing Tyk Operator via stand-alone Helm Chart
 
 If you prefer to install Tyk Operator separately, follow this section to install Tyk Operator using Helm.
 
 #### Step 1: Create tyk-operator-conf secret
 
-Tyk Operator configurations are set via a Kubernetes secret. The default K8s secret name is `tyk-operator-conf`. If you want to use another name, configure it through Helm Chart [envFrom](#helm-configurations) value.
+Tyk Operator configurations can be set using `envVars` field of helm chart.
 
-The secret should contain the following keys: 
+```yaml
+envVars:
+  - name: TYK_OPERATOR_LICENSEKEY
+    value: "{YOUR_LICENSE_KEY}"
+  - name: TYK_HTTP_INGRESS_PORT
+    value: "8080"
+```
+
+
+It can also be set via a Kubernetes secret. The default K8s secret name is `tyk-operator-conf`. If you want to use another name, configure it through Helm Chart [envFrom](#helm-configurations) value.
+
+The Kubernetes secret or envVars field should set the following keys: 
 
 {{< tabs_start >}}
 
