@@ -214,7 +214,7 @@ Fixed the following high priority CVEs identified in the Tyk Gateway, providing 
 - [CVE to add](https://nvd.nist.gov/vuln/detail/CVE-2023-39325)
 </details>
 </li>
-</ul> -->
+</ul>
 
 <!-- Required. use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
 ---
