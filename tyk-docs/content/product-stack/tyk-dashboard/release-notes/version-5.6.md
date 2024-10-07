@@ -228,7 +228,8 @@ We have fixed a privilege escalation vulnerability where a user with certain per
 - The scope of the ResetPassword permission is limited to the Tyk Organization (OrgId) for which the user is an admin.
 - This permission can only be assigned by an admin or super-admin
 - This permission can only be assigned to an admin and cannot be assigned to a user group
-- The allow_admin_reset_password configuration ensures that all admin users automatically receive the ResetPassword permission.
+- The allow_admin_reset_password configuration option automatically grants this permission to all admin users
+- Super-admins always have the password reset permission across all Tyk Organisations
 
 </details>
 </li>
