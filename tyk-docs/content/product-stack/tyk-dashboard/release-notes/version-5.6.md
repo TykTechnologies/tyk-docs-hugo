@@ -226,7 +226,8 @@ We have fixed a privilege escalation vulnerability where a user with certain per
 - Only super-admins or admins can assign admin status to a user, and this cannot be assigned to user groups.
 - All users can reset their own passwords, but resetting other users' passwords now requires a specific ResetPassword permission.
 - The scope of the ResetPassword permission is limited to the Tyk Organization (OrgId) for which the user is an admin.
-- The ResetPassword permission can only be assigned by super-admins, directly to admin users (not user groups).
+- This permission can only be assigned by an admin or super-admin
+- This permission can only be assigned to an admin and cannot be assigned to a user group
 - The allow_admin_reset_password configuration ensures that all admin users automatically receive the ResetPassword permission.
 
 </details>
