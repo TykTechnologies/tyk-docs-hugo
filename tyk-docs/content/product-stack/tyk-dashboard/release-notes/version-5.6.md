@@ -82,7 +82,7 @@ Now you can configure rate limits at the [endpoint level per client]({{< ref "ge
 
 #### Go upgrade to 1.22
 
-We’ve upgraded the Tyk Gateway and Tyk Dashboard to Golang 1.22, bringing improved performance, better security, and enhanced stability to the core system.
+We’ve upgraded the Tyk Dashboard to Golang 1.22, bringing improved performance, better security, and enhanced stability to the core system.
 
 #### Enhanced Role-Based Access Controls (RBAC) in Tyk Dashboard
 
