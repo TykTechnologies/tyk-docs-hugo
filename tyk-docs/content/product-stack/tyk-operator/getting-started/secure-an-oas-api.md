@@ -84,7 +84,7 @@ Modify your Tyk OAS API Definition `oas-api-definition.json` as follow.
 }
 ```
 
-In this example, we added the following sections to configure API key authentication for this API. 
+In this example, we added the following sections to configure key authentication for this API. 
 
 - `components.securitySchemes` defines the authentication method (in this case, `apiKey` in the header).
 - `security`: Applies the authentication globally to all endpoints.
