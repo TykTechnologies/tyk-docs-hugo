@@ -14,7 +14,7 @@ In the [Tyk OAS API Definition]({{<ref "getting-started/key-concepts/oas-version
 
 Here's an example:
 
-```yaml{linenos=true, linenostart=1, hl_lines=["12-28"]}
+```yaml{linenos=true, linenostart=1, hl_lines=["12-24"]}
 apiVersion: tyk.tyk.io/v1alpha1
 kind: TykOasApiDefinition
 metadata:
@@ -67,8 +67,10 @@ In this example, two different versions of an API are defined: `order-api` (v1) 
     - `stripVersioningData`: When true, removes versioning identifier (like headers or query parameters) from the upstream request to avoid exposing internal versioning details.
     - `urlVersioningPattern`: Specifies a regex that matches the format that you use for the versioning identifier (name) if you are using stripVersioningData and fallBackToDefault with location=url with Tyk 5.5.0 or later
     - `versions`: Defines the list of API versions available:
-        - `v1`: Refers to the `order-api` (version v1).
-        - `v2`: Refers to a separate `order-api-v2` definition (version v2).
+        - `name`: an identifier for this version of the API (v2).
+        - `tykOasApiDefinitionRef`: Refers to a separate TykOasApiDefinition resource that represent a new API version.
+          - `name`: Kubernetes metadata name of the resource (`order-api-v2`).
+          - `namespace`: Kubernetes metadata namespace of the resource (`default`).
 
 With Tyk Operator, you can easily associate different versions of your APIs using their Kubernetes names. This eliminates the need to include versioning information directly within the base API's definition (`x-tyk-api-gateway.versioning` object), which typically requires referencing specific API IDs. Instead, the Operator allows you to manage versioning declaratively in the `TykOasApiDefinition` CRD, using the `versioning` field to specify versions and their Kubernetes references (names and namespaces).
 
