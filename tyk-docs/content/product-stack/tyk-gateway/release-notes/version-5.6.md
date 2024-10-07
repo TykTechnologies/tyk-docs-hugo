@@ -133,7 +133,7 @@ Building on the [per-endpoint upstream rate limits]({{< ref "getting-started/key
 </li>
 <li>
 <details>
-<summary>JSON Format for Gateway Logs</summary>
+<summary>New option to generate Gateway system logs in JSON format</summary>
 
 The Tyk Gateway now supports logging in JSON format. To enable this feature, set the environment variable TYK_GW_LOGFORMAT to json. If a different value is provided, the logs will default to the standard format. This enhancement allows for improved log processing and integration with various monitoring tools.
 </details>
