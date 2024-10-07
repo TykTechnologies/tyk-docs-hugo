@@ -225,7 +225,6 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
 We have fixed a privilege escalation vulnerability where a user with certain permissions could potentially reset other users' passwords, including admin accounts. The following changes have been made to tighten the behavior of the ResetPassword permission within the Dashboard's Role-Based Access Control (RBAC) system:
 - Only super-admins or admins can assign admin status to a user, and this cannot be assigned to user groups.
 - All users can reset their own passwords, but resetting other users' passwords now requires a specific ResetPassword permission.
-- The scope of the ResetPassword permission is limited to the Tyk Organization (OrgId) for which the user is an admin.
 - This permission can only be assigned by an admin or super-admin
 - This permission can only be assigned to an admin and cannot be assigned to a user group
 - The allow_admin_reset_password configuration option automatically grants this permission to all admin users
