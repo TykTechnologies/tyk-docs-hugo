@@ -188,7 +188,7 @@ We have fixed an issue where the quota limit was not being consistently respecte
 <details>
 <summary>Restored key creation performance to Gateway 4.0.12/4.3.3 levels</summary>
 
-We have addressed a performance regression in gateway versions 4.0.13 and later, where key creation for policies with a large number of APIs (100+) became significantly slower. The operation, which previously took around 1.5 seconds in versions 4.0.0 to 4.0.12, was taking over 20 seconds in versions 4.0.13 and beyond. This issue has been resolved by optimizing Redis operations during key creation, restoring the process to its expected speed of approximately 1.5 seconds, even with a large number of APIs in the policy.
+We have addressed a performance regression where key creation for policies with a large number of APIs (100+) became significantly slower in Tyk 4.0.13/5.0.1. The operation, which previously took around 1.5 seconds, has been taking over 20 seconds since versions 4.0.13/5.0.1. This issue has been resolved by optimizing Redis operations during key creation, restoring the process to the previous duration, even with a large number of APIs in the policy.
 </details>
 </li>
 </ul>
