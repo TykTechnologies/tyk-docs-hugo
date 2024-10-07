@@ -913,7 +913,7 @@ Tyk Operator is a licensed component that requires a valid key for operation.
 Please refer to the [Tyk Operator Installation Guide]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}})
 for detailed information on the installation and upgrade processes. 
 
-Prior to installing Tyk Operator, ensure that a valid license key is provided.
+Prior to installing Tyk Operator, ensure that a valid license key is provided by setting `global.license.operator` field in values.yaml file. You can set license key via a Kubernetes secret using `global.secrets.useSecretName` field. The secret should contain a key called `OperatorLicense`.
 
 In order to enable installing Tyk Operator along-side Tyk Stack installation, please set `global.components.operator` to `true`.
 
