@@ -178,7 +178,7 @@ We have enhanced the Tyk Gateway's synchronization with MDCB to ensure more reli
 </li>
 <li>
 <details>
-<summary>Quota Limit Respected During Spike Tests</summary>
+<summary>uota wasn't respected under extreme load</summary>
 
 We have fixed an issue where the quota limit was not being consistently respected during request spikes, especially in deployments with multiple gateways. The problem occurred when multiple gateways cached the current and remaining quota counters at the end of quota periods. To address this, a distributed lock mechanism has been implemented, ensuring coordinated quota resets and preventing discrepancies across gateways.
 </details>
