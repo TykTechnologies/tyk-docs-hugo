@@ -205,7 +205,7 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
     - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
 -->
 
-<!-- <ul>
+<ul>
 <li>
 <details>
 <summary>Add a new CVE list</summary>
