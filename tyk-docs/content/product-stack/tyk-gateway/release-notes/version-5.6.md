@@ -171,7 +171,7 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Improved Gateway Synchronization with MDCB for Policies and APIs</summary>
+<summary>Data plane gateways sometimes didn't synchronise policies and APIs on start-up</summary>
 
 We have enhanced the Tyk Gateway's synchronization with MDCB to ensure more reliable loading of policies and APIs. A synchronous initialization process has been implemented to prevent startup failures and reduce the risk of service disruptions caused by asynchronous operations. This update ensures smoother and more consistent syncing of policies and APIs from MDCB.
 </details>
