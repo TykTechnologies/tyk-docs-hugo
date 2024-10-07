@@ -112,7 +112,7 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Endpoint-Level Rate Limits for Client Control</summary>
+<summary>Per endpoint client rate limiting</summary>
 
 We have introduced support for configuring endpoint-level rate limits in keys and policies. This new feature allows for more granular control over client consumption of API resources, enabling you to manage and optimize API usage more effectively. 
 </details>
