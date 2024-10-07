@@ -303,6 +303,8 @@ Default service port of gateway is 8080. You can change this at `global.serviceP
 An Ingress resource is created if `tyk-gateway.gateway.ingress.enabled` is set to true.
 
 ```yaml
+tyk-gateway:
+  gateway:
     ingress:
       # if enabled, creates an ingress resource for the gateway
       enabled: true
