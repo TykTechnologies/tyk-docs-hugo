@@ -186,7 +186,7 @@ We have fixed an issue where the quota limit was not being consistently respecte
 
 <li>
 <details>
-<summary>Performance Improvement: Restored Key Creation Speed in Gateway 4.0.13 and Later</summary>
+<summary>Restored key creation performance to Gateway 4.0.12/4.3.3 levels</summary>
 
 We have addressed a performance regression in gateway versions 4.0.13 and later, where key creation for policies with a large number of APIs (100+) became significantly slower. The operation, which previously took around 1.5 seconds in versions 4.0.0 to 4.0.12, was taking over 20 seconds in versions 4.0.13 and beyond. This issue has been resolved by optimizing Redis operations during key creation, restoring the process to its expected speed of approximately 1.5 seconds, even with a large number of APIs in the policy.
 </details>
