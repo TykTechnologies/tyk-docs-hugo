@@ -35,10 +35,6 @@ spec:
     fallbackToDefault: true
     stripVersioningData: true
     versions:
-      - name: v1
-        tykOasApiDefinitionRef:
-          name: order-api
-          namespace: default
       - name: v2
         tykOasApiDefinitionRef:
           name: order-api-v2
