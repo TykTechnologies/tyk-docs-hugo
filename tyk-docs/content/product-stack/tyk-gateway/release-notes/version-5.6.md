@@ -128,7 +128,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Endpoint-Level Rate Limits for Client Control</summary>
 
-We have introduced support for configuring endpoint-level rate limits in keys and policies. This new feature allows for more granular control over client consumption of API resources, enabling you to manage and optimize API usage more effectively.
+Building on the [per-endpoint upstream rate limits]({{< ref "getting-started/key-concepts/rate-limiting#api-level-rate-limiting" >}}) introduced in Tyk 5.5.0 we have now added [per-endpoint client rate limits]({{< ref "getting-started/key-concepts/rate-limiting#key-level-rate-limiting" >}}). This new feature allows for more granular control over client consumption of API resources by associating the rate limit with the access key, enabling you to manage and optimize API usage more effectively.
 </details>
 </li>
 <li>
