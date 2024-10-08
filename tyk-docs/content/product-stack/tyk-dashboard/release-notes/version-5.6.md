@@ -188,7 +188,7 @@ We have resolved an issue where the Keys page would display a blank screen if a 
 
 <li>
 <details>
-<summary>UI Fix: Prevented Multiple Versions of the Same Tyk Classic API from Being Added to a Policy</summary>
+<summary>Dashboard UI did not prevent multiple versions of a Tyk Classic API from being assigned to a policy</summary>
 
 When working with Tyk Classic APIs, you cannot permit access to multiple versions of the same API from a single policy. We have fixed an issue in the Dashboard UI where users were able to attach multiple versions to a policy leading to an unusable policy. The UI now correctly prevents the addition of multiple versions of an API to a single policy.
 
