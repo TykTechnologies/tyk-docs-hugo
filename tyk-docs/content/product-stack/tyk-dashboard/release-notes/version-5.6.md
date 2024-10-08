@@ -168,7 +168,7 @@ Each change log item should be expandable. The first line summarises the changel
 </li>
 <li>
 <details>
-<summary>Dashboard and Postgres Average Usage Per API</summary>
+<summary>Addressed some display issues in Dashboard Analytics and Classic Portal when using PostgreSQL storage</summary>
 
 - Resolved an issue where 429 status codes were not being displayed on the Activity Overview page.
 - Fixed portal graphs when using Postgres by adding a default "day" grouping resolution to the query.
