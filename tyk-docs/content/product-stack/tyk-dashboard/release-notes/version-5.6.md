@@ -59,7 +59,7 @@ An illustrative example is shown below. -->
 |         | Sync v2.0 - TBP   | Sync v1.4.3 |
 |         | Helm Chart v2.1 - TBP | Helm all versions |
 | | EDP v1.11 | EDP all versions |
-| | Pump v1.11.1 | Pump all versions |
+| | Pump v1.11 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
 #### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.6.0}
