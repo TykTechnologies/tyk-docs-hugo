@@ -474,6 +474,10 @@ global:
       keyName: "postgreConnectionURLkey"
 ```
 
+**_Tyk Operator License_**
+
+It can be configured via `global.license.operator` as a plain text or Kubernetes secret which includes `OperatorLicense` key in it. Then, this secret must be referenced via `global.secrets.useSecretName`.
+
 ### Gateway Configurations
 
 This section explains how to configure the `tyk-gateway` section for updating the Gateway version, enabling TLS, enabling autoscaling etc.

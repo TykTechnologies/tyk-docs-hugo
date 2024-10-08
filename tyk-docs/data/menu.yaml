@@ -4710,6 +4710,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Tyk Charts 2.1"
+          path: /product-stack/tyk-charts/release-notes/version-2.1
+          category: Page
+          show: True
         - title: "Tyk Charts 2.0"
           path: /product-stack/tyk-charts/release-notes/version-2.0
           category: Page
