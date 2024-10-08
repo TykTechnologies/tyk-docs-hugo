@@ -181,7 +181,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Dashboard didn't display correctly if more than 10 policies assigned to a key</summary>
 
-We have resolved an issue in the Tyk Dashboard where the Keys page would display a blank screen if more than 10 policies were associated with a key. The UI has been updated to correctly handle and display the page even when a key is linked to more than 10 policies, ensuring better visibility and management.
+We have resolved an issue where the Keys page would display a blank screen if a key was associated with more than 10 policies. The UI has been fixed to display the page properly, regardless of the number of policies attached to a key.
 
 </details>
 </li>
