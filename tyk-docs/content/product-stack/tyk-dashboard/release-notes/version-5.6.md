@@ -220,7 +220,8 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
 <summary>Strengthened RBAC password reset permissions</summary>
 
 We have fixed a privilege escalation vulnerability where a user with certain permissions could potentially reset other users' passwords, including admin accounts. The following changes have been made to tighten the behavior of the password reset permission:
-- All users can reset their own passwords, but resetting other users' passwords now requires a specific ResetPassword permission.
+- All users can reset their own passwords
+- A specific permission is required to reset the password of another user within the same Tyk Organisation
 - This permission can only be assigned by an admin or super-admin
 - This permission can only be assigned to an admin and cannot be assigned to a user group
 - The allow_admin_reset_password configuration option automatically grants this permission to all admin users
