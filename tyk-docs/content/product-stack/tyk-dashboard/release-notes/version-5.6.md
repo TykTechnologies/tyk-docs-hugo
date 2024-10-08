@@ -197,7 +197,7 @@ When working with Tyk Classic APIs, you cannot permit access to multiple version
 
 <li>
 <details>
-<summary>UI Fix: Corrected JWT Scope to Policy Mapping in Dashboard</summary>
+<summary>Dashboard didn't correctly record scope to policy mappings for JWTs</summary>
 
 We have resolved an issue in the Dashboard UI where the scope name was incorrectly recorded instead of the policy ID for subsequent JWT scope mappings. The UI now accurately associates the defined scope with the correct policy, ensuring proper JWT scope to policy mappings.
 
