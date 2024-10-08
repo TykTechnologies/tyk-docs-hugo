@@ -163,7 +163,6 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Correct Combination of Client Endpoint Rate Limits in Policies</summary>
 
 We have fixed an issue where API-level rate limits set in multiple policies were not correctly applied to the same key. With this update, when multiple policies configure rate limits for a key, the key will now receive the highest rate limit from the combined policies, ensuring proper enforcement of limits.
 </details>
