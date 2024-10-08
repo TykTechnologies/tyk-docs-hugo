@@ -146,7 +146,7 @@ We have updated the swagger.yml schema for Tyk Dashboard API to reflect the late
 
 <li>
 <details>
-<summary>UI Update: Renamed "Playground" Tab to "Playgrounds"</summary>
+<summary>Renamed GraphQL "Playground" tab to "Playgrounds"</summary>
 
 The "Playground" tab in the API Designer has been renamed to "Playgrounds." This change consolidates access to both internal and external playgrounds within a single section, offering a more streamlined and intuitive experience for API design and testing.
 </details>
