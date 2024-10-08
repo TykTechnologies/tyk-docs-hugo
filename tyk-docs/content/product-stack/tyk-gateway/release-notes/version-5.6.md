@@ -42,12 +42,12 @@ Version compatibility with other components in the Tyk stack. This takes the for
 An illustrative example is shown below. -->
 | Gateway Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.6.0 | MDCB v2.7 - TBP    | MDCB v2.4.2 |
-|         | Operator v0.18 - TBP | Operator v0.17 |
-|         | Sync v1.5 - TBP   | Sync v1.4.3 |
-|         | Helm Chart v1.6 - TBP | Helm all versions |
-| | EDP v1.10 | EDP all versions |
-| | Pump v1.11 | Pump all versions |
+| 5.6.0 | MDCB v2.7.1 - TBP    | MDCB v2.4.2 |
+|         | Operator v1.0.0 - TBP | Operator v0.17 |
+|         | Sync v2.0 - TBP   | Sync v1.4.3 |
+|         | Helm Chart v2.1 - TBP | Helm all versions |
+| | EDP v1.11 | EDP all versions |
+| | Pump v1.11.1 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
 #### 3rd Party Dependencies & Tools
