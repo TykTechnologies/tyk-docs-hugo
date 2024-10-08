@@ -25,6 +25,25 @@ Our minor releases are supported until our next minor comes out.
 
 ### Release Date xxx
 
+### Release Highlights
+<!-- Required. Use similar ToV to previous release notes. For example for a patch release:
+This release primarily focuses on bug fixes.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
+-->
+We are thrilled to announce new updates and improvements in Tyk 5.6.0, bringing more control, flexibility, and performance.  For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.6.0">}}) below.
+
+#### Per endpoint Rate Limiting for clients
+
+Now you can configure rate limits at the [endpoint level per client]({{< ref "getting-started/key-concepts/rate-limiting#key-level-rate-limiting" >}}), using new configuration options in the access key. Use Tyk's powerful [security policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) to create templates to set appropriate rate limits for your different categories of user.
+
+#### Gateway logs in JSON format
+
+You can now output Tyk Gateway system logs in JSON format. This allows for easier integration with logging systems and more structured log data.
+
+#### Go upgrade to 1.22
+
+We’ve upgraded the Tyk Gateway to Golang 1.22, bringing improved performance, better security, and enhanced stability to the core system.
+
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 
@@ -77,26 +96,6 @@ Once you put an item in this section, we must keep this item listed in all the f
 
 ### Upgrade instructions {#upgrade-5.6.0}
 If you are upgrading to 5.6.0, please follow the detailed [upgrade instructions](#upgrading-tyk).
-
-
-### Release Highlights
-<!-- Required. Use similar ToV to previous release notes. For example for a patch release:
-This release primarily focuses on bug fixes.
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
--->
-We are thrilled to announce new updates and improvements in Tyk 5.6.0, bringing more control, flexibility, and performance.  For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.6.0">}}) below.
-
-#### Per endpoint Rate Limiting for clients
-
-Now you can configure rate limits at the [endpoint level per client]({{< ref "getting-started/key-concepts/rate-limiting#key-level-rate-limiting" >}}), using new configuration options in the access key. Use Tyk's powerful [security policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) to create templates to set appropriate rate limits for your different categories of user.
-
-#### Gateway logs in JSON format
-
-You can now output Tyk Gateway system logs in JSON format. This allows for easier integration with logging systems and more structured log data.
-
-#### Go upgrade to 1.22
-
-We’ve upgraded the Tyk Gateway to Golang 1.22, bringing improved performance, better security, and enhanced stability to the core system.
 
 ### Downloads
 - [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.6.0)
