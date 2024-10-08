@@ -36,9 +36,9 @@ Now you can configure rate limits at the [endpoint level per client]({{< ref "ge
 
 We’ve upgraded the Tyk Dashboard to Golang 1.22, bringing improved performance, better security, and enhanced stability to the core system.
 
-#### Enhanced Role-Based Access Controls (RBAC) in Tyk Dashboard
+####  Strengthened Role-Based Access Controls (RBAC) to combat privilege escalation risks
 
-We’ve enhanced Role-Based Access Controls (RBAC) in the Tyk Dashboard to improve security. Now, only super-admins can create new admins, admin roles can't be assigned to user groups, and password resets are limited to admin users within their organization.
+We’ve tightened up the rules that govern a user's ability to create admin users and to reset other users' passwords when using Tyk's RBAC function. Now, only super-admins can create new admins, admin roles can't be assigned to user groups, and only admin users can reset another user's password (and only within their Tyk Organisation).
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
