@@ -21,6 +21,25 @@ Our minor releases are supported until our next minor comes out.
 
 ### Release Date xxx
 
+### Release Highlights
+<!-- Required. Use similar ToV to previous release notes. For example for a patch release:
+This release primarily focuses on bug fixes.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
+-->
+We are thrilled to announce new updates and improvements in Tyk 5.6.0, bringing more control, flexibility, and performance.  For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.6.0">}}) below.
+
+#### Per endpoint Rate Limiting for clients
+
+Now you can configure rate limits at the [endpoint level per client]({{< ref "getting-started/key-concepts/rate-limiting#key-level-rate-limiting" >}}), using new configuration options in the access key. Use Tyk's powerful [security policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) to create templates to set appropriate rate limits for your different categories of user.
+
+#### Go upgrade to 1.22
+
+We’ve upgraded the Tyk Dashboard to Golang 1.22, bringing improved performance, better security, and enhanced stability to the core system.
+
+#### Enhanced Role-Based Access Controls (RBAC) in Tyk Dashboard
+
+We’ve enhanced Role-Based Access Controls (RBAC) in the Tyk Dashboard to improve security. Now, only super-admins can create new admins, admin roles can't be assigned to user groups, and password resets are limited to admin users within their organization.
+
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 
@@ -68,26 +87,6 @@ Once you put an item in this section, we must keep this item listed in all the f
 -->
 ### Upgrade instructions {#upgrade-5.6.0}
 If you are upgrading to 5.6.0, please follow the detailed [upgrade instructions](#upgrading-tyk). 
-
-### Release Highlights
-<!-- Required. Use similar ToV to previous release notes. For example for a patch release:
-This release primarily focuses on bug fixes.
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
--->
-We are thrilled to announce new updates and improvements in Tyk 5.6.0, bringing more control, flexibility, and performance.  For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.6.0">}}) below.
-
-#### Per endpoint Rate Limiting for clients
-
-Now you can configure rate limits at the [endpoint level per client]({{< ref "getting-started/key-concepts/rate-limiting#key-level-rate-limiting" >}}), using new configuration options in the access key. Use Tyk's powerful [security policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) to create templates to set appropriate rate limits for your different categories of user.
-
-#### Go upgrade to 1.22
-
-We’ve upgraded the Tyk Dashboard to Golang 1.22, bringing improved performance, better security, and enhanced stability to the core system.
-
-#### Enhanced Role-Based Access Controls (RBAC) in Tyk Dashboard
-
-We’ve enhanced Role-Based Access Controls (RBAC) in the Tyk Dashboard to improve security. Now, only super-admins can create new admins, admin roles can't be assigned to user groups, and password resets are limited to admin users within their organization.
-
 
 ### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.6.0)
