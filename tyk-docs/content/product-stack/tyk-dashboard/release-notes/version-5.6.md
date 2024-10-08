@@ -138,7 +138,7 @@ The Tyk Dashboard has been upgraded from Golang 1.21 to Golang 1.22, bringing en
 </li>
 <li>
 <details>
-<summary>Swagger Update: Enhanced Documentation and Schema for Dashboard</summary>
+<summary>Improved documentation and schema for Tyk Dashboard API</summary>
 
 We have updated the swagger.yml schema for the Dashboard to reflect the latest changes in product endpoints, payloads, and responses. This update includes new fields and endpoints, improved examples, documentation adjustments, and fixes for schema issues. These enhancements aim to improve usability and ensure that the documentation accurately represents the current code state.
 </details>
