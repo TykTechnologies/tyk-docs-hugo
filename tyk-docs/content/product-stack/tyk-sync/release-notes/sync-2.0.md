@@ -17,7 +17,7 @@ Our minor releases are supported until our next minor comes out.
 
 From Tyk Sync v2.0, Tyk Sync will be closed source and we will only support use of Tyk Sync with licensed Tyk Dashboard.
 
-##### Release Date DD Oct 2024
+##### Release Date 10 Oct 2024
 
 #### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->

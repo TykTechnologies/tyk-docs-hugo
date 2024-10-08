@@ -17,7 +17,7 @@ Our minor releases are supported until our next minor comes out.
 
 We are excited to announce the release of **Tyk Operator v1.0**, marking a significant milestone with new features, enhancements, and critical changes. This release introduces support for Tyk OAS APIs, extended capabilities for managing Classic APIs and security policies, and includes **license changes** that you must be aware of before upgrading.
 
-##### Release Date DD Oct 2024
+##### Release Date 10 Oct 2024
 
 #### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
