@@ -64,7 +64,7 @@ Starting from Tyk Operator v1.0, a license key is required to use the Tyk Operat
 
 If you prefer to install Tyk Operator separately, follow this section to install Tyk Operator using Helm.
 
-#### Step 1: Create tyk-operator-conf secret
+#### Step 1: Configure Tyk Operator via environment variable or tyk-operator-conf secret
 
 Tyk Operator configurations can be set using `envVars` field of helm chart.
 
