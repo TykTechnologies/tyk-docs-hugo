@@ -163,11 +163,6 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-
-</details>
-</li>
-<li>
-<details>
 <summary>Addressed some display issues in Dashboard Analytics and Classic Portal when using PostgreSQL storage</summary>
 
 - Resolved an issue where HTTP 429 status codes were not being displayed on the Activity Overview page.
