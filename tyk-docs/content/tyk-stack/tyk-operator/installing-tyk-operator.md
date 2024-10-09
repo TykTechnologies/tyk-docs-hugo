@@ -66,7 +66,7 @@ If you prefer to install Tyk Operator separately, follow this section to install
 
 #### Step 1: Configure Tyk Operator via environment variable or tyk-operator-conf secret
 
-Tyk Operator configurations can be set using `envVars` field of helm chart.
+Tyk Operator configurations can be set using `envVars` field of helm chart. See the table below for a list of expected environment variable names and example values.
 
 ```yaml
 envVars:
