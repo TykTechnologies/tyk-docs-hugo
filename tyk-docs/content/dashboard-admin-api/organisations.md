@@ -13,7 +13,7 @@ aliases:
 
 **Important Note on Spelling:**
 
-While our documentation now uses American English (en-us),  the product itself, including all user interfaces, configuration 
+While our documentation now uses American English ((en-us)[https://www.andiamo.co.uk/resources/iso-language-codes/]), the product itself, including all user interfaces, configuration 
 fields, environment variables, and APIs, continues to use British English spellings. When interacting with the product, 
 please continue using the British English (en-gb) spellings as appear in the interface and API.  This change does not affect 
 how you use the product; all functionality remains the same. 
