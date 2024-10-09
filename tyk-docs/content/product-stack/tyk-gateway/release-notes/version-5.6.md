@@ -1,6 +1,6 @@
 ---
 title: Tyk Gateway 5.6 Release Notes
-date: 2024-10-10T15:51:11Z
+date: 2024-10-08T15:51:11Z
 description: "Release notes documenting updates, enhancements, and changes for Tyk Gateway versions within the 5.6.X series."
 tags: ["Tyk Gateway", "Release notes", "v5.6", "5.6.0", "5.6", "changelog"]
 ---
