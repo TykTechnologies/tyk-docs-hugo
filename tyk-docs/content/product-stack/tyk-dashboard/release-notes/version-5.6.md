@@ -54,10 +54,10 @@ Version compatibility with other components in the Tyk stack. This takes the for
 An illustrative example is shown below. -->
 | Dashboard Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.6.0 | MDCB v2.7.1 - TBP    | MDCB v2.5.1 |
-|         | Operator v1.0.0 - TBP | Operator v0.17 |
-|         | Sync v2.0 - TBP   | Sync v1.4.3 |
-|         | Helm Chart v2.1 - TBP | Helm all versions |
+| 5.6.0 | MDCB v2.7.1     | MDCB v2.5.1 |
+|         | Operator v1.0.0  | Operator v0.17 |
+|         | Sync v2.0    | Sync v1.4.3 |
+|         | Helm Chart v2.1  | Helm all versions |
 | | EDP v1.11 | EDP all versions |
 | | Pump v1.11 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
@@ -94,7 +94,7 @@ If you are upgrading to 5.6.0, please follow the detailed [upgrade instructions]
   docker pull tykio/tyk-dashboard:v5.6.0
   ```
 - Helm charts
-  - TBP (To Be Published separately after the release)
+  - [tyk-charts v2.1.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.1">}})
 
 ### Changelog {#Changelog-v5.6.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
