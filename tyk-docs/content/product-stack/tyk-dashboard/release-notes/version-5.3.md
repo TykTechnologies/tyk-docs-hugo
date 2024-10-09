@@ -19,6 +19,184 @@ As outlined in the [LTS policy]({{< ref "developer-support/special-releases-and-
 
 ---
 
+## 5.3.6 Release Notes
+
+### Release Date 04 October 2024
+
+### Release Highlights
+
+This release primarily focuses on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.6">}}) below.
+
+### Breaking Changes
+**Attention**: Please read this section carefully.
+Docker images are now based on [distroless](https://github.com/GoogleContainerTools/distroless). No shell is shipped in the image.  
+
+If moving from a version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
+
+### Deprecations
+There are no deprecations in this release.
+
+### Upgrade Instructions
+If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+
+### Dependencies {#dependencies-5.3.6}
+<!--Required. Use this section to announce the following types of dependencies compatible with the release:
+Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+3rd party dependencies and tools -->
+
+With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "planning-for-production/database-settings/mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.6).
+
+
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings/postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.6).
+
+
+#### Compatibility Matrix For Tyk Components
+<!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+An illustrative example is shown below. -->
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.3.6 | MDCB v2.5.1     | MDCB v2.5.1 |
+|         | Operator v0.17 | Operator v0.16 |
+|         | Sync v1.4.3   | Sync v1.4.3 |
+|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v2.0.0 | Helm all versions |
+| | EDP v1.8.3 | EDP all versions |
+| | Pump v1.9.0 | Pump all versions |
+| | TIB (if using standalone) v1.5.1 | TIB all versions |
+
+
+#### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.3.6}
+<!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
+Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
+An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
+| [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.22 |
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+
+### Downloads
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.6)
+ - ```bash
+   docker pull tykio/tyk-dashboard:v5.3.6
+   ```
+- Helm charts
+ - [tyk-charts v2.0]({{< ref "product-stack/tyk-charts/release-notes/version-2.0.md" >}})
+
+### Changelog {#Changelog-v5.3.6}
+<!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
+Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
+"...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
+"New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
+
+#### Changed
+<!-- This should be a bullet-point list of updated features. Explain:
+- Why was the update necessary?
+- How does the update benefit users?
+- Link to documentation of the updated feature
+- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
+<ul>
+<li>
+<details>
+<summary>Upgrade to Go 1.22 for Tyk Dashboard</summary>
+The Tyk Dashboard has been upgraded from Golang 1.21 to Golang 1.22, bringing enhanced performance, strengthened security, and access to the latest features available in the new Golang release.
+</details>
+</li>
+<li>
+ <details>
+ <summary>Introducing Distroless Containers for Tyk Dashboard (2024 LTS)</summary>
+ 
+ In this release, we've enhanced the security of the Tyk Dashboard image by changing the build process to support [distroless](https://github.com/GoogleContainerTools/distroless) containers. This significant update addresses critical CVEs associated with Debian, ensuring a more secure and minimal runtime environment. Distroless containers reduce the attack surface by eliminating unnecessary packages, which bolsters the security of your deployments.
+ </details>
+ </li>
+</ul>
+
+#### Fixed
+<!-- This section should be a bullet point list of new features. Explain:
+
+- The purpose of the new feature
+- How does the new feature benefit users?
+- Link to documentation of the new feature
+- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+
+Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
+<ul>
+<li>
+<details>
+<summary>Gateway secret could be exposed in debug logs
+</summary>
+
+Resolved an issue where the Gateway secret was inadvertently included in the log generated by the Dashboard for a call to the `/api/keys` endpoint when in debug mode. This issue has been fixed to prevent sensitive information from appearing in system logs.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Dashboard didn't display correctly if more than 10 policies assigned to a key
+</summary>
+
+We have resolved an issue where the Keys page would display a blank screen if a key was associated with more than 10 policies. The UI has been fixed to display the page properly, regardless of the number of policies attached to a key.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Dashboard UI did not prevent multiple versions of a Tyk Classic API from being assigned to a policy</summary>
+
+When working with Tyk Classic APIs, you cannot permit access to multiple versions of the same API from a single policy. We have fixed an issue in the Dashboard UI where users were able to attach multiple versions to a policy leading to an unusable policy. The UI now correctly prevents the addition of multiple versions of an API to a single policy.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Dashboard didn't correctly record scope to policy mappings for JWTs
+</summary>
+
+We have fixed an issue in the Dashboard UI when assigning multiple claim to policy mappings while configuring JWT auth for an API. The scope name was incorrectly recorded instead of the policy ID for the second and subsequent JWT scope mappings. The UI now correctly associates the defined claim with the appropriate policy, ensuring accurate JWT scope to policy mappings.
+</details>
+</li>
+
+</ul>
+
+#### Security Fixes
+<!-- This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
+1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
+2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
+For agreed CVE security fixes, provide a link to the corresponding entry on the NIST website. For example:
+- Fixed the following CVEs:
+    - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
+-->
+<ul>
+<li>
+<details>
+<summary>High priority CVEs fixed</summary>
+Fixed the following high-priority CVEs identified in the Tyk Dashboard, providing increased protection against security vulnerabilities:
+- [CVE-2024-6104](https://nvd.nist.gov/vuln/detail/CVE-2024-6104)
+</details>
+</li>
+
+<li>
+<details>
+<summary>Strengthened RBAC password reset permissions
+</summary>
+
+We have fixed a privilege escalation vulnerability where a user with certain permissions could reset any other users' password, potentially gaining control over admin accounts. The following changes have been made to tighten the behavior of the password reset permission within the Dashboard's Role-Based Access Control (RBAC) system:
+- All users can reset their own passwords
+- A specific permission is required to reset the password of another user within the same Tyk Organisation
+- This permission can only be assigned by an admin or super-admin
+- This permission can only be assigned to an admin and cannot be assigned to a user group
+- The `allow_admin_reset_password` configuration option automatically grants this permission to all admin users
+- Super-admins always have the password reset permission across all Tyk Organisations
+</details>
+</li>
+   
+</ul>
+
+---
+
 ## 5.3.5 Release Notes
 
 
