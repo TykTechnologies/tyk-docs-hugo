@@ -9,6 +9,14 @@ menu:
     parent: "Tyk Cloud"
 ---
 
+{{< note trial >}}
+**Note**
+
+The Tyk Cloud trial is limited to 48 hours. After this period, your data will be deleted.
+The Tyk Cloud trial does not include access to [Hybrid deployments]({{< ref "tyk-cloud/environments-deployments/hybrid-gateways" >}}) or the [Developer Portal]({{< ref "tyk-developer-portal/tyk-enterprise-developer-portal" >}}).
+To try out these capabilities, please get in touch for a [guided evaluation](https://tyk.io/guided-evaluation/) with our team.
+{{< /note >}}
+
 Welcome to the Tyk Cloud Platform!
 This guide will lead you through the following steps:
 1. Signing up with Tyk Cloud.
