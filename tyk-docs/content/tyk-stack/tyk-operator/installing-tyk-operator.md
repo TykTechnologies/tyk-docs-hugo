@@ -58,7 +58,7 @@ Please wait for the cert-manager to become available before continuing with the 
 
 If you are using [Tyk Stack]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}), [Tyk Control Plane]({{<ref "product-stack/tyk-charts/tyk-control-plane-chart">}}), or [Tyk Open Source Chart]({{<ref "product-stack/tyk-charts/tyk-oss-chart">}}), you can install Tyk Operator alongside other Tyk components by setting value `global.components.operator` to `true`.
 
-Starting from Tyk Operator v1.0, a license key is required to use the Tyk Operator. You can provide it while installing Tyk Stack or Tyk OSS helm chart by setting `global.license.operator` field. You can also set license key via a Kubernetes secret using `global.secrets.useSecretName` field. The secret should contain a key called `OperatorLicense`
+Starting from Tyk Operator v1.0, a license key is required to use the Tyk Operator. You can provide it while installing Tyk Stack, Tyk Control Plane or Tyk OSS helm chart by setting `global.license.operator` field. You can also set license key via a Kubernetes secret using `global.secrets.useSecretName` field. The secret should contain a key called `OperatorLicense`
 
 ### Option 2: Installing Tyk Operator via stand-alone Helm Chart
 
@@ -72,8 +72,14 @@ Tyk Operator configurations can be set using `envVars` field of helm chart. See 
 envVars:
   - name: TYK_OPERATOR_LICENSEKEY
     value: "{YOUR_LICENSE_KEY}"
-  - name: TYK_HTTP_INGRESS_PORT
-    value: "8080"
+  - name: TYK_MODE
+    value: "pro"
+  - name: TYK_URL 
+    value: "http://dashboard-svc-tyk-tyk-dashboard.tyk.svc:3000"
+  - name: TYK_AUTH
+    value: "2d095c2155774fe36d77e5cbe3ac963b"
+  - name: TYK_ORG
+    value: "5e9d9544a1dcd60001d0ed20"
 ```
 
 
@@ -181,10 +187,12 @@ This process will deploy Tyk Operator and its required Custom Resource Definitio
 | Key                                         | Type   | Default                                |
 |---------------------------------------------|--------|----------------------------------------|
 | envFrom[0].secretRef.name                   | string | `"tyk-operator-conf"`                  |
-| envVars[0].name                             | string | `"TYK_HTTPS_INGRESS_PORT"`             |
-| envVars[0].value                            | string | `"8443"`                               |
-| envVars[1].name                             | string | `"TYK_HTTP_INGRESS_PORT"`              |
-| envVars[1].value                            | string | `"8080"`                               |
+| envVars[0].name                             | string | `"TYK_OPERATOR_LICENSEKEY"`            |
+| envVars[0].value                            | string | `"{OPERATOR_LICENSEKEY}"`              |
+| envVars[1].name                             | string | `"TYK_HTTPS_INGRESS_PORT"`             |
+| envVars[1].value                            | string | `"8443"`                               |
+| envVars[2].name                             | string | `"TYK_HTTP_INGRESS_PORT"`              |
+| envVars[2].value                            | string | `"8080"`                               |
 | extraVolumeMounts                           | list   | `[]`                                   |
 | extraVolumes                                | list   | `[]`                                   |
 | fullnameOverride                            | string | `""`                                   |
