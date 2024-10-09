@@ -61,10 +61,10 @@ Version compatibility with other components in the Tyk stack. This takes the for
 An illustrative example is shown below. -->
 | Gateway Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.6.0 | MDCB v2.7.1 - TBP    | MDCB v2.4.2 |
-|         | Operator v1.0.0 - TBP | Operator v0.17 |
-|         | Sync v2.0 - TBP   | Sync v1.4.3 |
-|         | Helm Chart v2.1 - TBP | Helm all versions |
+| 5.6.0 | MDCB v2.7.1     | MDCB v2.4.2 |
+|         | Operator v1.0.0  | Operator v0.17 |
+|         | Sync v2.0    | Sync v1.4.3 |
+|         | Helm Chart v2.1  | Helm all versions |
 | | EDP v1.11 | EDP all versions |
 | | Pump v1.11 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
@@ -103,7 +103,8 @@ If you are upgrading to 5.6.0, please follow the detailed [upgrade instructions]
     docker pull tykio/tyk-gateway:v5.6.0
     ``` 
 - Helm charts
-  TBP (To Be Published separately after the release) 
+  - [tyk-charts v2.1.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.1">}})
+
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 ### Changelog {#Changelog-v5.6.0}
