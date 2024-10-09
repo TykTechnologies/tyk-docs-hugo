@@ -201,7 +201,7 @@ We have addressed a performance regression where key creation for policies with 
 </ul>
 
 
-<!-- #### Security Fixes -->
+#### Security Fixes
 <!-- This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
 1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
 2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
