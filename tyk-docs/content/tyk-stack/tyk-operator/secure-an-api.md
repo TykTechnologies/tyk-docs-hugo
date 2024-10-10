@@ -4,7 +4,7 @@ tags: ["Tyk Operator", "Kubernetes", "Security Policy"]
 description: "Step by step guide on how to create Security Policy using Tyk Operator CRD to protect an API" 
 ---
 
-A [Security Policy]({{<ref "basic-config-and-security/security/security-policies">}}) in Tyk defines the rules and limitations that control how an API can be accessed, protecting it from abuse and misuse. These rules include rate limits, quotas, throttling, and access restrictions. Using Tyk Operator, you can configure and manage security policies in a Kubernetes environment by defining them in custom resource definitions (CRDs). This guide will walk you through the process of creating a security policy that protect access to your APIs with rate limits and quota using Tyk Operator.
+A [Security Policy]({{<ref "basic-config-and-security/security/security-policies">}}) in Tyk defines the rules that control how an API can be accessed, protecting it from abuse. These rules include rate limits, quotas, throttling, and access restrictions. Using Tyk Operator, you can configure and manage security policies in a Kubernetes environment by defining them in custom resource definitions (CRDs). This guide will walk you through the process of creating a security policy that protect access to your APIs with rate limits and quota using Tyk Operator.
 
 ## Prerequisites
 Before you begin, ensure you have the following:
