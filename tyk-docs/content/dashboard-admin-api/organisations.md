@@ -13,10 +13,11 @@ aliases:
 
 **Important Note on Spelling:**
 
-While our documentation now uses American English, the product itself, including UI, configuration fields, environment
-variables, and APIs endpoints, retain British English spellings. When interacting with the product, please continue
-using the British English spellings as they appear in the interface and API. (This means that for existing users nothing
-has changed).
+While our documentation now uses American English ((en-us)[https://www.andiamo.co.uk/resources/iso-language-codes/]), the product itself, including all user interfaces, configuration 
+fields, environment variables, and APIs, continues to use British English spellings. When interacting with the product, 
+please continue using the British English (en-gb) spellings as appear in the interface and API.  This change does not affect 
+how you use the product; all functionality remains the same. 
+
 </br>
 **Example:** The API endpoint `/organisation` as shown throughout this page uses British spelling (with an 's' not 'z').
 In all other instances, such as when describing or referring to this object in the documentation, we will use the
