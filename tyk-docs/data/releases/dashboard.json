@@ -19,7 +19,7 @@
   "5.5.0": {
     "date": "12/08/2024",
     "docker": "https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=1&name=v5.5.0"
-  ],
+  },
   "5.4.0": {
     "date": "02/07/2024",
     "docker": "https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=1&name=v5.4.0"
