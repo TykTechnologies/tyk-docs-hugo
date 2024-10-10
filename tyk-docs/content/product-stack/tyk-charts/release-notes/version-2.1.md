@@ -165,7 +165,7 @@ Enables specifying an alternate port for the container while using standard port
 
 <li>
 <details>
-<summary>Operator: license key configuration</summary>
+<summary>From v1.0 Tyk Operator Requires License Key</summary>
 
 Starting from Tyk Operator v1.0, a license key is required to use the Tyk Operator. You can provide it while installing Tyk Stack, Tyk Control Plane, or Tyk OSS helm chart by setting `global.license.operator` field. You can also set license key via a Kubernetes secret using `global.secrets.useSecretName` field. The secret should contain a key called `OperatorLicense`.
 
