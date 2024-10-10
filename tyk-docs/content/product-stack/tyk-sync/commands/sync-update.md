@@ -5,32 +5,31 @@ description: "Learn about the usage and flags for tyk-sync update command"
 tags: [ "Tyk Sync", "GitOps" ]
 ---
 
-The tyk-sync `update` command updates existing API definitions, policies, and templates from source in a file system or Git repository to Tyk Gateway or Dashboard. This command will identify matching APIs or Policies and update them accordingly. It will not create new resources; for creating new ones, use the `publish` or `sync` commands.
+The tyk-sync `update` command updates existing API definitions, policies, and templates from source in a file system or Git repository to Tyk. This command will identify matching APIs or Policies and update them accordingly. It will not create new resources; for creating new ones, use the `publish` or `sync` commands.
 
-API teams can use this command to make changes to API configurations declaratively and then synchronise the Dashboard or Gateway with the latest configurations, ensuring consistency and version control across their API management infrastructure.
+API teams can use this command to make changes to API configurations declaratively and then synchronise the Dashboard with the latest configurations, ensuring consistency and version control across their API management infrastructure.
 
 ## Usage
 
 Update from Git repository:
 ```bash
-tyk-sync update {-d DASHBOARD_URL | -g GATEWAY_URL} [-s SECRET] [-b BRANCH] [-k SSHKEY] [-o ORG_ID] REPOSITORY_URL
+tyk-sync update -d DASHBOARD_URL [-s SECRET] [-b BRANCH] [-k SSHKEY] [-o ORG_ID] REPOSITORY_URL
 ```
 
 Update from file system:
 ```bash
-tyk-sync update {-d DASHBOARD_URL | -g GATEWAY_URL} [-s SECRET] [-o ORG_ID] -p PATH
+tyk-sync update -d DASHBOARD_URL [-s SECRET] [-o ORG_ID] -p PATH
 ```
 
 An index `.tyk.json` file is expected in the root directory of the Git repository or specified file path. An example index file is provided in the [example](#examples).
 
 ## Flags
 * `-b, --branch BRANCH`: Specify the branch of the GitHub repository to use. Defaults to `refs/heads/master` (optional).
-* `-d, --dashboard DASHBOARD_URL`: Specify the fully qualified URL of the Tyk Dashboard where configuration changes should be applied (Either -d or -g is required).
-* `-g, --gateway GATEWAY_URL`: Specify the fully qualified URL of the Tyk Gateway where configuration changes should be applied (Either -d or -g is required).
+* `-d, --dashboard DASHBOARD_URL`: Specify the fully qualified URL of the Tyk Dashboard where configuration changes should be applied.
 * `-h, --help`: Help for the `update` command.
 * `-k, --key SSHKEY`: Provide the location of the SSH key file for authentication to Git (optional).
 * `-p, --path PATH`: Specify the source file directory where API configuration files are located (Required for synchronising from file system).
-* `-s, --secret SECRET`: Your API secret for accessing Dashboard or Gateway API (optional).
+* `-s, --secret SECRET`: Your API secret for accessing Dashboard API (optional).
 * `--test`: Use test publisher, output results to stdio.
 
 ## Flags for specifying resources to update (Optional)

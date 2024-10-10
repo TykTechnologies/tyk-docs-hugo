@@ -28,7 +28,7 @@ Here are the supported features:
 |--------------------------------|---------|----------------|------------------------------|--------|
 | API Name                       | ✅      | v0.1           | - | [API Name]({{<ref "product-stack/tyk-operator/advanced-configurations/management-of-api#api-name">}}) |
 | API Status (inactive/active)   | ✅      | v0.2           | - | [API Active Status]({{<ref "product-stack/tyk-operator/advanced-configurations/management-of-api#api-active-status">}}) |
-| API Categories                 | ✅      | v0.1           | - | [API Categories]({{<ref "product-stack/tyk-operator/advanced-configurations/management-of-api#api-category">}}) |
+| API Categories                 | ✅      | v0.1           | - | [API Categories]({{<ref "product-stack/tyk-operator/advanced-configurations/api-categories">}}) |
 | API ID                         | ✅      | v0.1           | - | [API ID]({{<ref "product-stack/tyk-operator/advanced-configurations/management-of-api#api-id">}}) |-                            |                                                                                            |
 | API Ownership                  | ✅      | v0.12          | - | [API Ownership]({{<ref "product-stack/tyk-operator/advanced-configurations/management-of-api#api-ownership">}}) |
 | API Versioning                 | ✅      | v0.1           | - | [API Versioning]({{<ref "getting-started/key-concepts/versioning#configuring-api-versioning-in-tyk-operator">}}) |
@@ -51,7 +51,7 @@ Here are the supported features:
 | JWT                           | ✅️        | v0.5           | -        | [JWT]({{<ref "product-stack/tyk-operator/advanced-configurations/client-authentication#jwt">}}) |
 | OpenID Connect                | ❌        | -              | JWT is the recommended way configuring OIDC. Please see [OpenID Connect]({{<ref "basic-config-and-security/security/authentication-authorization/openid-connect">}}) documentation for details. | |
 | OAuth2                        | ❌        | -              | JWT is the recommended way to configure OAuth2. Please see [OpenID Connect]({{<ref "basic-config-and-security/security/authentication-authorization/openid-connect">}}) documentation for details. | |
-| Client mTLS                   | ✅        | v0.11              | Only static client mTLS is supported | [mTLS]({{<ref "product-stack/tyk-operator/advanced-configurations/client-authentication#client-mtls">}}) |
+| Client mTLS                   | ✅        | v0.11              | Only static client mTLS is supported | [Client mTLS]({{<ref "basic-config-and-security/security/mutual-tls/client-mtls#tyk-operator-classic">}}) |
 | HMAC                          | ❌        | -              | Not implemented | |
 | Basic Authentication          | ✅        | v0.12          | Only enabling with default metadata values is supported  | [Basic Auth]({{<ref "product-stack/tyk-operator/advanced-configurations/client-authentication#basic-authentication">}}) |
 | Custom Authentication Plugin (Go)   | ✅        | v0.11          | - | [Custom Auth (go)]({{<ref "product-stack/tyk-operator/advanced-configurations/client-authentication#custom-plugin-auth-go">}}) |

@@ -14,7 +14,7 @@ You can make use of Tyk Operator CRDs to publish the APIs as part of your CI/CD 
 
 
 
-Currently Operator only supports publishing API to the Tyk Classic Portal.
+Currently Operator only supports publishing Tyk Classic API to the Tyk Classic Portal.
 
 {{< /note >}}
 

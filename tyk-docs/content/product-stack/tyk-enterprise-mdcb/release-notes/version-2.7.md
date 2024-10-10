@@ -11,6 +11,63 @@ Licensed Protected Product
 ## Support Lifetime
 Our minor releases are supported until our next minor comes out.
 
+## 2.7.1 Release Notes
+
+##### Release date 10 October 2024
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### 3rd Party Dependencies & Tools
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by MDCB | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x | 4.4.x, 5.0.x, 6.0.x, 7.0.x | Used by MDCB | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by MDCB | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Release Highlights
+
+#### Support GraphQL analytics records
+MDCB (Multi-Data Center Bridge) has been enhanced to support the storage of GraphQL aggregate analytics directly. This allows for better tracking and analysis of GraphQL usage across distributed environments. This enhancement simplifies the storage and management of GraphQL analytics within MDCB, improving efficiency and ease of use.
+
+#### Downloads
+- [Docker image v2.7.1](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.7.1)
+- ```bash
+  docker pull tykio/tyk-mdcb-docker:v2.7.1
+  ```
+
+
+#### Changelog {#Changelog-v2.7.1}
+
+##### Added
+<ul>
+   <li>
+ <details>
+ <summary>Support the storage of GraphQL aggregate analytics </summary>
+MDCB (Multi-Data Center Bridge) has been enhanced to support the storage of GraphQL aggregate analytics directly. This allows for better tracking and analysis of GraphQL usage across distributed environments when Gateway send analytics data directly to MDCB, which processes and sends the data to the analytics storage. This enhancement simplifies the storage and management of GraphQL analytics without Tyk Pump, improving efficiency and ease of use.
+    </details>
+  </li>
+</ul>
+
+
+##### Updated
+<ul>
+ 
+ <li>
+ <details>
+ <summary>Update for compatibility with API definitions for Tyk v5.6</summary>
+
+MDCB 2.7.1 supports Tyk API definitions up to Tyk Gateway v5.6.0. Please use MDCB 2.7.1+ with Tyk Gateway v5.6.0+.
+ </details>
+ </li>
+ </ul>
+---
+
 ## 2.7.0 Release Notes
 
 ##### Release date 12 August 2024

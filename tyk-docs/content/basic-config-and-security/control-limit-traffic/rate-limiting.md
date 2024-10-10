@@ -75,6 +75,29 @@ Check out the following video to see this being done.
 
 {{< youtube n7jbmuWgPsw >}}
 
+## Setting up a key-level per-endpoint rate limit
+
+To restrict the request rate for specific API clients on particular endpoints, you can use the security policy to assign per-endpoint rate limits. These limits are set within the policy and will be #enforced for any requests made to that endpoint by clients using keys generated from that policy.
+
+Each key will have its own independent rate limit allowance. For example, if a policy grants access to an endpoint with a rate limit of 5 requests per 60 seconds, each client with a key from that policy can make 5 requests to the endpoint in any 60-second period. Once the limit is reached, the client will receive an HTTP `429 Too Many Requests` error.
+
+If no per-endpoint rate limit is defined, the endpoint will inherit the key-level per-API rate limit or the global rate limit, depending on what is configured.
+
+{{< note success >}}
+**Note**  
+The following assumptions are made:
+ - The [ignore authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}) middleware should not be enabled for the relevant endpoints.
+ - If [path-based permissions]({{< ref "getting-started/create-security-policy#path-based-permissions" >}}) are configured, they must grant access to these endpoints for keys generated from the policies.
+{{< /note >}}
+
+You can configure per-endpoint rate limits from the API Designer in Tyk Dashboard as follows:
+
+1. Navigate to the Tyk policy for which you want to set the rate limit
+2. Ensure that API that you want to apply rate limits to is selected
+3. Under **API Access** -> **Set endpoint-level usage limits** click on **Add Rate Limit** to configure the rate limit. You will need to provide the rate limit and the endpoint path and method.
+4. **Save/Update** the policy
+
+
 ## Setting Rate Limits in the Tyk Community Edition Gateway (CE)
 
 ### Configuring the rate limiter at the (Global) API-Level

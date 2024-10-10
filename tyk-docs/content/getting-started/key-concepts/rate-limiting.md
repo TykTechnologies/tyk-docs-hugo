@@ -51,6 +51,7 @@ Key-level rate limiting is more focused on controlling traffic from individual s
 
 - **key-level global limit** limiting the rate of calls the user of a key can make to all APIs authorized by that key
 - **key-level per-API limit** limiting the rate of calls the user of a key can make to specific individual APIs
+- **key-level per-endpoint limit** limiting the rate of calls the user of a key can make to specific individual endpoints of an API
  
 These guides include explanation of how to configure key-level rate limits when using [API Keys]({{< ref "getting-started/create-api-key" >}}) and [Security Policies]({{< ref "getting-started/create-security-policy" >}}).
 
@@ -59,16 +60,20 @@ These guides include explanation of how to configure key-level rate limits when 
 The simplest way to figure out which level of rate limiting you’d like to apply can be determined by asking a few questions:
 
 - do you want to protect your service against denial of service attacks or overwhelming amounts of traffic from **all users** of the API? **You’ll want to use an API-level rate limit!**
+- do you have a health endpoint that consumes very little resource on your service and can handle significantly more requests than your other endpoints? **You'll want to use an API-level per-endpoint rate limit!**
 - do you want to limit the number of requests a specific user can make to **all APIs** they have access to? **You’ll want to use a key-level global rate limit!**
 - do you want to limit the number of requests a specific user can make to **specific APIs** they have access to? **You’ll want to use a key-level per-API rate limit.**
+- do you want to limit the number of requests a specific user can make to a **specific endpoint of an API** they have access to? **You’ll want to use a key-level per-endpoint rate limit.**
 
 ### Applying multiple rate limits
 
 When multiple rate limits are configured, they are assessed in this order (if applied):
 
-1. API-level global rate limit
-2. Key-level global rate limit
-3. Key-level per-API rate limit
+1. API-level per-endpoint rate limit (configured in API definition)
+2. API-level rate limit (configured in API definition)
+3. Key-level per-endpoint rate limit (configured in access key)
+4. Key-level per-API rate limit (configured in access key)
+5. Key-level global rate limit (configured in access key)
 
 ### Combining multiple policies configuring rate limits
 

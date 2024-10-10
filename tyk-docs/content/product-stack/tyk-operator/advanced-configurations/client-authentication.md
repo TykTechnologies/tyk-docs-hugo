@@ -170,54 +170,6 @@ curl http://localhost:8080/httpbin-jwt1/get -H 'Authorization: Bearer eyJhbGciOi
 }
 ```
 
-## Client mTLS
-
-This setup requires mutual TLS (mTLS) for client authentication using specified client certificates. The example provided shows how to create an API definition with mTLS authentication for `httpbin-client-mtls`.
-
-1. **Generate Self-Signed Key Pair:**
-
-You can generate a self-signed key pair using the following OpenSSL command:
-
-```bash
-openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
-```
-
-2. **Create Kubernetes Secret:**
-
-Create a secret in Kubernetes to store the client certificate:
-
-```bash
-kubectl create secret tls my-test-tls --cert cert.pem --key key.pem
-```
-
-3. **Create API Definition:**
-
-Below is the YAML configuration for an API that uses mTLS authentication. Note that the `client_certificate_refs` field references the Kubernetes secret created in the previous step.
-
-```yaml {hl_lines=["19-21"],linenos=false}
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: httpbin-client-mtls
-spec:
-  name: Httpbin Client MTLS
-  protocol: http
-  active: true
-  proxy:
-    target_url: http://httpbin.org
-    listen_path: /httpbin
-    strip_listen_path: true
-  version_data:
-    default_version: Default
-    not_versioned: true
-    versions:
-      Default:
-        name: Default
-  use_mutual_tls_auth: true
-  client_certificate_refs:
-    - my-test-tls
-```
-
 ## Basic Authentication
 
 This configuration uses [Basic Authentication]({{<ref "basic-config-and-security/security/authentication-authorization/basic-auth">}}), requiring a username and password for access.

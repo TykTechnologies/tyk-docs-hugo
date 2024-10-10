@@ -64,7 +64,7 @@ You can define certificate public key pinning from the **Advanced** tab of the A
 1. From the **Add upstream certificates** options add the domain details and then add a new certificate ID or the server path to a certificate, or select from any certificates you have added previously.
 2. Click **Add**
 
-## Define via Tyk Operator
+## Define via Tyk Operator (Tyk Classic){#tyk-operator-classic}
 
 Tyk Operator supports configuring certificate pinning using one of the following fields within the ApiDefinition object:
 
@@ -150,3 +150,71 @@ spec:
         name: Default
 ```
 
+## Define via Tyk Operator (Tyk OAS){#tyk-operator-oas}
+
+Tyk Operator supports certificate pinning in Tyk OAS custom resource, allowing you to secure your API by pinning a public key stored in a secret to a specific domain.
+
+Example of public keys pinning
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm
+  namespace: default
+data:
+  test_oas.json: |-
+    {
+      "info": {
+        "title": "httpbin with certificate pinning",
+        "version": "1.0.0"
+      },
+      "openapi": "3.0.3",
+      "components": {},
+      "paths": {},
+      "x-tyk-api-gateway": {
+        "info": {
+          "name": "httpbin with certificate pinning",
+          "state": {
+            "active": true
+          }
+        },
+        "upstream": {
+          "url": "https://httpbin.org/"
+        },
+        "server": {
+          "listenPath": {
+            "value": "/httpbin/",
+            "strip": true
+          }
+        }
+      }
+    }
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: domain-secret
+type: kubernetes.io/tls # The secret needs to be a type of kubernetes.io/tls
+data:
+  tls.crt: <PUBLIC_KEY>
+  tls.key: ""
+---
+apiVersion: tyk.tyk.io/v1alpha1
+kind: TykOasApiDefinition
+metadata:
+  name: "oas-pinned-public-keys"
+spec:
+  tykOAS:
+    configmapRef:
+      keyName: test_oas.json
+      name: cm
+  certificatePinning:
+    enabled: true
+    domainToPublicKeysMapping:
+      - domain: "httpbin.org"
+        publicKeyRefs:
+          - domain-secret
+```
+
+This example demonstrates how to enable certificate pinning for the domain `httpbin.org` using a public key stored in a Kubernetes secret (`domain-secret`).

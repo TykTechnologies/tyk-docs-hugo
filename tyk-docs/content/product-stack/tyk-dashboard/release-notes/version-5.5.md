@@ -2,13 +2,8 @@
 title: Tyk Dashboard 5.5 Release Notes
 date: 2024-03-27T15:51:11Z
 description: "Release notes documenting updates, enhancements, and changes for Tyk Dashboard versions within the 5.5.X series."
-tags: ["Tyk Dashboard", "Release notes", "v5.5", "5.5.0", "5.5", "changelog"]
+tags: ["Tyk Dashboard", "Release notes", "changelog", "v5.5", "5.5", "5.5.0", "5.5.1", "5.5.2"]
 ---
-<!-- Required. oss or licensed. Choose one of the following:
-    **Licensed Protected Product**
-    Or
-    ****Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))**
--->
 
 **This page contains all release notes for version 5.5.X displayed in a reverse chronological order**
 
@@ -17,9 +12,141 @@ tags: ["Tyk Dashboard", "Release notes", "v5.5", "5.5.0", "5.5", "changelog"]
 Our minor releases are supported until our next minor comes out.
 
 ---
+
+## 5.5.2 Release Notes
+
+### Release Date 03 October 2024
+
+### Release Highlights
+
+This release replaces Tyk Dashboard 5.5.1 which was accidentally released as a non-distroless image.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Dependencies {#dependencies-5.5.2}
+
+#### Compatibility Matrix For Tyk Components
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.5.2 | MDCB v2.7     | MDCB v2.5.1 |
+|         | Operator v0.18 | Operator v0.17 |
+|         | Sync v1.5   | Sync v1.4.3 |
+|         | Helm Chart v2.0.0 | Helm all versions |
+| | EDP v1.10 | EDP all versions |
+| | Pump v1.11 | Pump all versions |
+| | TIB (if using standalone) v1.5.1 | TIB all versions |
+
+#### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.5.2}
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.21 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Upgrade instructions {#upgrade-5.5.2}
+
+If you are upgrading to 5.5.2, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+### Downloads
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.5.2)
+- ```bash
+  docker pull tykio/tyk-dashboard:v5.5.2
+  ```
+- Helm charts
+  - [Tyk Charts v2.0.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.0.md">}})
+
+### Changelog {#Changelog-v5.5.2}
+
+No changes in this release.
+
+---
+
+## 5.5.1 Release Notes
+
+### Release Date 26 September 2024
+
+### Release Highlights
+
+This is a version bump to align with Gateway v5.5.1, no changes have been implemented in this release.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Dependencies {#dependencies-5.5.1}
+
+#### Compatibility Matrix For Tyk Components
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.5.1 | MDCB v2.7     | MDCB v2.5.1 |
+|         | Operator v0.18 | Operator v0.17 |
+|         | Sync v1.5   | Sync v1.4.3 |
+|         | Helm Chart v2.0.0 | Helm all versions |
+| | EDP v1.10 | EDP all versions |
+| | Pump v1.11 | Pump all versions |
+| | TIB (if using standalone) v1.5.1 | TIB all versions |
+
+#### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.5.1}
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.21 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Upgrade instructions {#upgrade-5.5.1}
+
+If you are upgrading to 5.5.1, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+### Downloads
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.5.1)
+- ```bash
+  docker pull tykio/tyk-dashboard:v5.5.1
+  ```
+- Helm charts
+  - [Tyk Charts v2.0.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.0.md">}})
+
+### Changelog {#Changelog-v5.5.1}
+
+No changes in this release.
+
+---
+
 ## 5.5.0 Release Notes
 
 ### Release Date 12 August 2024
+
+### Release Highlights
+<!-- Required. Use similar ToV to previous release notes. For example for a patch release:
+This release primarily focuses on bug fixes.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
+-->
+We are excited to announce Tyk Dashboard 5.5, featuring a brand-new dashboard identity, advanced rate-limiting capabilities, and enhanced security options. For a comprehensive list of changes, please refer to the [changelog]({{< ref "#Changelog-v5.5.0">}}) below.
+
+#### New Tyk brand identity
+
+Experience a refreshed and modern look with our updated brand identity. The new design enhances usability and provides a cleaner, more intuitive interface for managing your APIs.
+
+#### Per Endpoint Rate Limiting
+
+Now configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas" >}}) and [Tyk Classic APIs]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-classic" >}}), providing granular protection for upstream services against overloading and abuse.
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
@@ -68,21 +195,6 @@ Once you put an item in this section, we must keep this item listed in all the f
 -->
 ### Upgrade instructions {#upgrade-5.5.0}
 If you are upgrading to 5.5.0, please follow the detailed [upgrade instructions](#upgrading-tyk). 
-
-### Release Highlights
-<!-- Required. Use similar ToV to previous release notes. For example for a patch release:
-This release primarily focuses on bug fixes.
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
--->
-We are excited to announce Tyk Dashboard 5.5, featuring a brand-new dashboard identity, advanced rate-limiting capabilities, and enhanced security options. For a comprehensive list of changes, please refer to the [changelog]({{< ref "#Changelog-v5.5.0">}}) below.
-
-#### New Tyk brand identity
-
-Experience a refreshed and modern look with our updated brand identity. The new design enhances usability and provides a cleaner, more intuitive interface for managing your APIs.
-
-#### Per Endpoint Rate Limiting
-
-Now configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas" >}}) and [Tyk Classic APIs]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-classic" >}}), providing granular protection for upstream services against overloading and abuse.
 
 ### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.5.0)

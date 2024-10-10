@@ -93,7 +93,114 @@ The base Identity can be anything as the client cert is the only thing configure
 Here's what it should look like:
 {{< img src="/img/2.10/client_mtls_multiple_auth.png" alt="enable_cert" >}}
 
-Please consult the Tyk Operator supporting documentation for an example of how to [configure static mTLS]({{< ref "product-stack/tyk-operator/advanced-configurations/client-authentication#client-mtls" >}}) with Tyk Operator.
+### Setup Static mTLS in Tyk Operator using the Tyk Classic API Definition{#tyk-operator-classic}
+
+This setup requires mutual TLS (mTLS) for client authentication using specified client certificates. The example provided shows how to create an API definition with mTLS authentication for `httpbin-client-mtls`.
+
+1. **Generate Self-Signed Key Pair:**
+
+You can generate a self-signed key pair using the following OpenSSL command:
+
+```bash
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
+```
+
+2. **Create Kubernetes Secret:**
+
+Create a secret in Kubernetes to store the client certificate:
+
+```bash
+kubectl create secret tls my-test-tls --cert cert.pem --key key.pem
+```
+
+3. **Create API Definition:**
+
+Below is the YAML configuration for an API that uses mTLS authentication. Note that the `client_certificate_refs` field references the Kubernetes secret created in the previous step.
+
+```yaml {hl_lines=["19-21"],linenos=false}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-client-mtls
+spec:
+  name: Httpbin Client MTLS
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+  use_mutual_tls_auth: true
+  client_certificate_refs:
+    - my-test-tls
+```
+
+### Setup Static mTLS in Tyk Operator using Tyk OAS API Definition{#tyk-operator-oas}
+
+Client certificates, In Tyk OAS API Definition, are managed using the `TykOasApiDefinition` CRD. You can reference Kubernetes secrets that store client certificates in your API definitions.
+
+**Example of Referencing Client Certificates in Tyk OAS**
+
+In this example, the `clientCertificate` section allows you to enable client certificate management and specify a list of Kubernetes secrets (`tls-cert`) that store allowed client certificates.
+
+```yaml {hl_lines=["48-50"],linenos=false}
+# Secret is not created in this manifest.
+# Please store client certificate in k8s TLS secret `tls-cert`.
+
+apiVersion: v1
+data:
+  test_oas.json: |-
+    {
+        "info": {
+          "title": "Petstore",
+          "version": "1.0.0"
+        },
+        "openapi": "3.0.3",
+        "components": {},
+        "paths": {},
+        "x-tyk-api-gateway": {
+          "info": {
+            "name": "Petstore",
+            "state": {
+              "active": true
+            }
+          },
+          "upstream": {
+            "url": "https://petstore.swagger.io/v2"
+          },
+          "server": {
+            "listenPath": {
+              "value": "/petstore/",
+              "strip": true
+            }
+          }
+        }
+      }
+kind: ConfigMap
+metadata:
+  name: cm
+  namespace: default
+---
+apiVersion: tyk.tyk.io/v1alpha1
+kind: TykOasApiDefinition
+metadata:
+  name: petstore
+spec:
+  tykOAS:
+    configmapRef:
+      name: cm
+      namespace: default
+      keyName: test_oas.json
+  clientCertificate: 
+      enabled: true
+      allowlist: [tls-cert]
+```
 
 ## FAQ
 

@@ -2,28 +2,197 @@
 title: Tyk Gateway 5.5 Release Notes
 date: 2024-03-27T15:51:11Z
 description: "Release notes documenting updates, enhancements, and changes for Tyk Gateway versions within the 5.5.X series."
-tags: ["Tyk Gateway", "Release notes", "v5.5", "5.5.0", "5.5", "changelog"]
+tags: ["Tyk Gateway", "Release notes", "changelog", "v5.5", "5.5", "5.5.0", "5.5.1", "5.5.2"]
 ---
-
-<!-- Required. oss or licensed. Choose one of the following:
-    **Licensed Protected Product**
-    Or
-    ****Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))**
--->
 
 **Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))
 
 **This page contains all release notes for version 5.5.X displayed in a reverse chronological order**
 
 ## Support Lifetime
-<!-- Required. replace X.Y with this release and set the correct quarter of the year -->
+
 Our minor releases are supported until our next minor comes out.
+
+---
+
+## 5.5.2 Release Notes
+
+### Release Date 03 October 2024
+
+### Release Highlights
+This release replaces Tyk Gateway 5.5.1 which was accidentally released as a non-distroless image.
+
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Dependencies {#dependencies-5.5.2}
+
+#### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.5.2 | MDCB v2.7     | MDCB v2.4.2 |
+|         | Operator v0.18 | Operator v0.17 |
+|         | Sync v1.5   | Sync v1.4.3 |
+|         | Helm Chart v2.0.0 | Helm all versions |
+| | EDP v1.10 | EDP all versions |
+| | Pump v1.11 | Pump all versions |
+| | TIB (if using standalone) v1.5.1 | TIB all versions |
+
+#### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.21  |  1.21  | [Go plugins]({{< ref "/plugins/supported-languages/golang" >}}) must be built using Go 1.21 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "/tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+### Deprecations
+<!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
+There are no deprecations in this release.
+
+### Upgrade instructions {#upgrade-5.5.2}
+If you are upgrading to 5.5.2, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+### Downloads
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.5.2)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.5.2
+    ``` 
+- Helm charts
+  - [tyk-charts v2.0.0]({{< ref "product-stack/tyk-charts/release-notes/version-2.0.md" >}})
+- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+
+---
+
+## 5.5.1 Release Notes
+
+### Release Date 26 September 2024
+
+### Release Highlights
+This release fixes some issues related to the way that Tyk performs URL path matching, introducing two new Gateway configuration options to control path matching strictness.
+
+For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v5.5.1) below.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Dependencies {#dependencies-5.5.1}
+
+#### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.5.1 | MDCB v2.7     | MDCB v2.4.2 |
+|         | Operator v0.18 | Operator v0.17 |
+|         | Sync v1.5   | Sync v1.4.3 |
+|         | Helm Chart v2.0.0 | Helm all versions |
+| | EDP v1.10 | EDP all versions |
+| | Pump v1.11 | Pump all versions |
+| | TIB (if using standalone) v1.5.1 | TIB all versions |
+
+#### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.21  |  1.21  | [Go plugins]({{< ref "/plugins/supported-languages/golang" >}}) must be built using Go 1.21 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "/tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+### Deprecations
+<!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
+There are no deprecations in this release.
+
+### Upgrade instructions {#upgrade-5.5.1}
+If you are upgrading to 5.5.1, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+### Downloads
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.5.1)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.5.1
+    ``` 
+- Helm charts
+  - [tyk-charts v2.0.0]({{< ref "product-stack/tyk-charts/release-notes/version-2.0.md" >}})
+- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+
+### Changelog {#Changelog-v5.5.1}
+
+#### Added
+
+<ul>
+<li>
+<details>
+<summary>Implemented Gateway configuration options to set URL path matching strictness</summary>
+
+We have introduced two new options in the `http_server_options` [Gateway configuration]({{< ref "tyk-oss-gateway/configuration#http_server_options" >}}) that will enforce prefix and/or suffix matching when Tyk performs checks on whether middleware or other logic should be applied to a request:
+
+- `enable_path_prefix_matching` ensures that the start of the request path must match the path defined in the API definition
+- `enable_path_suffix_matching` ensures that the end of the request path must match the path defined in the API definition
+- combining `enable_path_prefix_matching` and `enable_path_suffix_matching` will ensure an exact (explicit) match is performed
+
+These configuration options provide control to avoid unintended matching of paths from Tyk's default *wildcard* match. Use of regex special characters when declaring the endpoint path in the API definition will automatically override these settings for that endpoint.
+
+Tyk recommends that exact matching is employed, but both options default to `false` to avoid introducing a breaking change for existing users.
+
+The example Gateway configuration file `tyk.conf.example` has been updated to set the recommended *exact matching* with:
+
+ - `http_server_options.enable_path_prefix_matching = true`
+ - `http_server_options.enable_path_suffix_matching = true`
+ - `http_server_options.enable_strict_routes = true`
+ </details>
+</li>
+</ul>
+
+#### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Incorrectly configured regex in policy affected Path-Based Permissions authorization</summary>
+
+Fixed an issue when using granular [Path-Based Permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}) in access policies and keys that led to authorization incorrectly being granted to endpoints if an invalid regular expression was configured in the key/policy. Also fixed an issue where path-based parameters were not correctly handled by Path-Based Permissions. Now Tyk's authorization check correctly handles both of these scenarios granting access only to the expected resources.
+</details>
+</li>
+<li>
+<details>
+<summary>Missing path parameter can direct to the wrong endpoint</summary>
+
+Fixed an issue where a parameterized endpoint URL (e.g. `/user/{id}`) would be invoked if a request is made that omits the parameter. For example, a request to `/user/` will now be interpreted as a request to `/user` and not to `/user/{id}`.
+</details>
+</li>
+</ul>
 
 ---
 
 ## 5.5.0 Release Notes
 
 ### Release Date 12 August 2024
+
+### Release Highlights
+<!-- Required. Use similar ToV to previous release notes. For example for a patch release:
+This release primarily focuses on bug fixes.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
+-->
+We are thrilled to introduce Tyk Gateway 5.5, bringing advanced rate-limiting capabilities, enhanced certificate authentication, and performance optimizations. For a comprehensive list of changes, please refer to the [changelog]({{< ref "#Changelog-v5.5.0">}}) below.
+
+#### Per Endpoint Rate Limiting
+
+Now configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas" >}}) and [Tyk Classic APIs]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-classic" >}}), providing granular protection for upstream services against overloading and abuse.
+
+#### Root CA Support for Client Certificates
+
+Simplify certificate management with support for root Certificate Authority (CA) certificates, enabling clients to authenticate using certificates signed by the [configured root CA]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#can-i-register-a-root-certificate-authority-ca-certificate-with-tyk-so-that-tyk-will-validate-requests-with-certificates-signed-by-this-ca" >}}).
+
+#### Optimised AST Document Handling
+
+Experience improved performance with optimised creation and usage of Abstract Syntax Tree (AST) documents in our GQL library, reducing memory usage and enhancing efficiency.
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
@@ -76,27 +245,6 @@ Once you put an item in this section, we must keep this item listed in all the f
 
 ### Upgrade instructions {#upgrade-5.5.0}
 If you are upgrading to 5.5.0, please follow the detailed [upgrade instructions](#upgrading-tyk).
-
-
-### Release Highlights
-<!-- Required. Use similar ToV to previous release notes. For example for a patch release:
-This release primarily focuses on bug fixes.
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
--->
-We are thrilled to introduce Tyk Gateway 5.5, bringing advanced rate-limiting capabilities, enhanced certificate authentication, and performance optimizations. For a comprehensive list of changes, please refer to the [changelog]({{< ref "#Changelog-v5.5.0">}}) below.
-
-#### Per Endpoint Rate Limiting
-
-Now configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas" >}}) and [Tyk Classic APIs]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-classic" >}}), providing granular protection for upstream services against overloading and abuse.
-
-#### Root CA Support for Client Certificates
-
-Simplify certificate management with support for root Certificate Authority (CA) certificates, enabling clients to authenticate using certificates signed by the [configured root CA]({{< ref "basic-config-and-security/security/mutual-tls/client-mtls#can-i-register-a-root-certificate-authority-ca-certificate-with-tyk-so-that-tyk-will-validate-requests-with-certificates-signed-by-this-ca" >}}).
-
-#### Optimised AST Document Handling
-
-Experience improved performance with optimised creation and usage of Abstract Syntax Tree (AST) documents in our GQL library, reducing memory usage and enhancing efficiency.
-
 
 ### Downloads
 - [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.5.0)

@@ -40,13 +40,13 @@
   {{- $openSource = $openSource| append (dict "name" "Tyk Gateway" "data" $gateway) -}}
 {{ end }}
 {{- with $operator -}}
-  {{- $openSource = $openSource | append (dict "name" "Tyk Operator" "data" $operator) -}}
+  {{- $licensed = $licensed | append (dict "name" "Tyk Operator" "data" $operator) -}}
 {{ end }}
 {{- with $pump -}}
   {{- $openSource = $openSource| append (dict "name" "Tyk Pump" "data" $pump) -}}
 {{ end }}
 {{- with $sync -}}
-  {{- $openSource = $openSource| append (dict "name" "Tyk Sync" "data" $sync) -}}
+  {{- $licensed = $licensed | append (dict "name" "Tyk Sync" "data" $sync) -}}
 {{ end }}
 {{- with $tib -}}
   {{- $openSource = $openSource| append (dict "name" "Tyk Identity Broker" "data" $tib) -}}
