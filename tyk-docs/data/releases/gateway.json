@@ -19,6 +19,11 @@
     "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.4.0",
     "docker": "https://hub.docker.com/r/tykio/tyk-gateway/tags?page=1&name=v5.4.0"
   },
+  "5.3.6": {
+    "date": "04/10/2024",
+    "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.3.6",
+    "docker": "https://hub.docker.com/r/tykio/tyk-gateway/tags?page=1&name=5.3.6"
+  },
   "5.3.5": {
     "date": "26/09/2024",
     "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.3.5",
