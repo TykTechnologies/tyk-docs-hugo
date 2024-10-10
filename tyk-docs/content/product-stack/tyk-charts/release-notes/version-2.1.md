@@ -9,7 +9,7 @@ tags: ["Tyk Charts", "Release notes", "changelog", "v2.1" ]
 
 **This page contains all release notes for version 2.1.X displayed in a reverse chronological order**
 
-### Support Lifetime
+## Support Lifetime
 <!-- Required. replace X.Y with this release and set the correct quarter of the year -->
 Our minor releases are supported until our next minor comes out. 
 
@@ -17,9 +17,16 @@ Our minor releases are supported until our next minor comes out.
 
 ## 2.1.0 Release Notes
 
-##### Release Date 10 Oct 2024
+### Release Date 10 Oct 2024
 
-#### Breaking Changes
+### Release Highlights
+<!-- Required. Use similar ToV to previous release notes. For example for a patch release: -->
+
+Added the ability to specify a static IP for Kubernetes LoadBalancer services, giving users more control over network configurations for the Tyk Gateway and Dashboard. Added an option to configure the Dashboard container port, addressing issues with restricted port permissions. Updated the default versions of Tyk components.
+
+For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v2.1.0) below.
+
+### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
@@ -60,6 +67,8 @@ An illustrative example is shown below.
 | | | TIB vX - vY |
 -->
 
+### Dependencies {#dependencies-2.1}
+
 #### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
@@ -77,7 +86,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-#### Deprecations
+### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecation in this release.
 
@@ -86,7 +95,7 @@ Used to share and notify users about our plan to deprecate features, configs etc
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens
 ##### Future deprecations. -->
 
-#### Upgrade instructions
+### Upgrade instructions
 <!-- Required. For patches release (Z>0) use this: -->
 For users currently on v2.0.x, we strongly recommend promptly upgrading to the latest release. 
 <br/>
@@ -101,35 +110,16 @@ helm repo update
 helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
 ```
 
-#### Release Highlights
-<!-- Required. Use similar ToV to previous release notes. For example for a patch release: -->
-
-##### Updated default Tyk versions
-Tyk Charts 2.1 will install the latest Tyk LTS version (5.3.6) for Gateway and Dashboard.
-
-#### Downloads
+### Downloads
 - [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v2.1.0.tar.gz)
 - [ArtifactHub - tyk-stack](https://artifacthub.io/packages/helm/tyk-helm/tyk-stack/2.1.0)
 - [ArtifactHub - tyk-control-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-control-plane/2.1.0)
 - [ArtifactHub - tyk-data-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-data-plane/2.1.0)
 - [ArtifactHub - tyk-oss](https://artifacthub.io/packages/helm/tyk-helm/tyk-oss/2.1.0)
 
-#### Changelog {#Changelog-v2.1.0}
-<!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
+### Changelog {#Changelog-v2.1.0}
 
-Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
-"...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
-"New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
-
-##### Added
-<!-- This section should be a bullet point list of new features. Explain:
-
-- The purpose of the new feature
-- How does the new feature benefit users?
-- Link to documentation of the new feature
-- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
-
-Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
+#### Added
 
 <ul>
 
@@ -168,18 +158,7 @@ Starting from Tyk Operator v1.0, a license key is required to use the Tyk Operat
 
 </ul>
 
-<!-- 
-##### Changed
-<!-- This should be a bullet-point list of updated features. Explain:
-
-- Why was the update necessary?
-- How does the update benefit users?
-- Link to documentation of the updated feature
-- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
-
-Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
-
-##### Changed
+#### Changed
 
 <ul>
 

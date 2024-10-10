@@ -7,7 +7,7 @@ description: "Release notes documenting updates, enhancements, fixes and changes
 
 **This page contains all release notes for version 2.0.X displayed in a reverse chronological order**
 
-### Support Lifetime
+## Support Lifetime
 <!-- Required. replace X.Y with this release and set the correct quarter of the year -->
 Our minor releases are supported until our next minor comes out.
 
@@ -17,15 +17,21 @@ Our minor releases are supported until our next minor comes out.
 
 From Tyk Sync v2.0, Tyk Sync will be closed source and we will only support use of Tyk Sync with licensed Tyk Dashboard.
 
-##### Release Date 10 Oct 2024
+### Release Date 10 Oct 2024
 
-#### Breaking Changes
+### Release Highlights
+
+Tyk Sync 2.0 has been updated to support API configurations from Tyk 5.6.0.
+
+Please refer to the [changelog]({{< ref "#Changelog-v2.0.0">}}) below for detailed explanation.
+
+### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
-#### Deprecations
+### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
-##### Deprecation of `--gateway` Flag
+#### Deprecation of `--gateway` Flag
 
 As of Tyk Sync v2.0, support for the **Open Source Tyk Gateway** has been removed. Tyk Sync v2.0 is now compatible exclusively with licensed Tyk Dashboard. This change means that Tyk Sync can no longer be used with the Open Source (OSS) version of the Tyk Gateway.
 
@@ -34,7 +40,7 @@ The `--gateway` flag, previously used to sync with the OSS Tyk Gateway, is **dep
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc. 
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->
-##### Future deprecations
+#### Future deprecations
 As part of our ongoing efforts to streamline and improve Tyk Sync, we plan to deprecate the following options in future releases:
 
 - `--apis` for the `tyk-sync sync` command.
@@ -42,25 +48,19 @@ As part of our ongoing efforts to streamline and improve Tyk Sync, we plan to de
 
 We recommend users update their workflows to use the `publish` and `update` commands for managing individual API and Policy IDs. To continue using the `sync` command, ensure all required resources are listed in the `.tyk.json` index file. This file will serve as the source of truth for API configuration states, and Tyk Sync will create or update all specified resources while removing any others from Tyk Dashboard.
 
-#### Upgrade instructions
+### Upgrade instructions
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
-#### Release Highlights
-##### Support for Tyk 5.6.0
-Tyk Sync 2.0 has been updated to support API configurations from Tyk 5.6.0.
-
-Please refer to the [changelog]({{< ref "#Changelog-v2.0.0">}}) below for detailed explanation.
-
-#### Downloads
+### Downloads
 - [Docker image v2.0.0](https://hub.docker.com/r/tykio/tyk-sync/tags?page=&page_size=&ordering=-name&name=v2.0.0)
   - ```bash
     docker pull tykio/tyk-sync:v2.0.0
     ```
 - [Source code](https://github.com/TykTechnologies/tyk-sync/releases/tag/v2.0.0)
 
-#### Changelog {#Changelog-v2.0.0}
+### Changelog {#Changelog-v2.0.0}
 
-##### Updated
+#### Updated
 
 <ul>
 <li>

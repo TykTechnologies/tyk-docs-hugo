@@ -7,7 +7,7 @@ description: "Release notes documenting updates, enhancements, fixes and changes
 
 **This page contains all release notes for version 1.0.X displayed in a reverse chronological order**
 
-### Support Lifetime
+## Support Lifetime
 <!-- Required. replace X.Y with this release and set the correct quarter of the year -->
 Our minor releases are supported until our next minor comes out.
 
@@ -17,9 +17,35 @@ Our minor releases are supported until our next minor comes out.
 
 We are excited to announce the release of **Tyk Operator v1.0**, marking a significant milestone with new features, enhancements, and critical changes. This release introduces support for Tyk OAS APIs, extended capabilities for managing Classic APIs and security policies, and includes **license changes** that you must be aware of before upgrading.
 
-##### Release Date 10 Oct 2024
+### Release Date 10 Oct 2024
 
-#### Breaking Changes
+### Release Highlights
+<!-- Required. Use similar ToV to previous release notes. For example for a patch release:
+This release primarily focuses on bug fixes.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
+-->
+##### Support for Tyk OAS API
+The Tyk Operator v1.0 release introduces powerful new features designed to enhance how you manage APIs in Kubernetes environments. One of the key highlights is the full support for Tyk OAS APIs, allowing you to define and manage APIs through the new **`TykOasApiDefinition`** custom resource. This integration extends GitOps API Management to Tyk OAS, allowing you to have declarative, versioned, and fully automated control to your APIs in Kubernetes environments.
+
+Key features:
+
+- **Define and Manage Tyk OAS APIs** using the TykOasApiDefinition custom resource.
+- **Manage API Definitions in ConfigMaps**: Any changes are automatically tracked and synced to Tyk.
+- **Configure Tyk OAS in a Kubernetes-native way**: You can organize APIs by categories or manage multiple API versions easily with the new CRD.
+- **Simplify certificate management** by referencing Kubernetes secrets.
+- **Use the Tyk Ingress controller** to create Tyk OAS APIs from Ingress specs.
+
+With this release, users benefit from seamless GitOps workflows, ensuring a Kubernetes-native operation workflow. Security is also made simpler with automated certificate synchronization, removing the hassle of manual certificate management.
+
+##### Enhanced Classic API and Security Policy Features
+Enhanced support for Tyk Classic APIs continues, with improvements to security policies and new capabilities for setting API and endpoint-specific rate limits, making it easier than ever to customize API usage policies.
+
+This release represents a significant upgrade for both API management and security, offering a more efficient, scalable, and Kubernetes-native way to operate Tyk. Whether you're leveraging Tyk OAS APIs or continuing with Tyk Classic, this version brings the tools and features you need to streamline your workflows and enhance operational efficiency.
+
+For details please refer to the [changelog]({{< ref "#Changelog-v1.0.0">}}) below.
+
+
+### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 <!-- This release has no breaking changes. -->
 **License Requirement:** Tyk Operator is now a closed-source product and requires a valid license key to operate. Please follow our [Installation and Upgrade Guide]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}) to set your license key before installation or upgrade.
@@ -59,6 +85,8 @@ the dashboard and gateway. We must clarify this at the time of publishing this R
 |                 |                           | Pump vX - vY            |
 |                 |                           | TIB vX - vY             |
       -->
+
+### Dependencies {#dependencies-1.1}
 #### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
@@ -72,7 +100,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-#### Deprecations
+### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecations in this release.
 
@@ -82,7 +110,7 @@ Once you put an item in this section, we must keep this item listed in all the f
 <!-- ##### Future deprecations
 -->
 
-#### Upgrade instructions
+### Upgrade instructions
 <!-- Required. For patches release (Z>0) use this:
 For users currently on vX.Y.Z, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version X.Y.0 and proceed directly to this latest patch release.
 <br/>
@@ -97,32 +125,8 @@ $ kubectl apply -f https://raw.githubusercontent.com/TykTechnologies/tyk-charts/
 
 Go to the [Upgrading Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator#upgrading-tyk-operator">}}) section for detailed upgrade instructions.
 
-#### Release Highlights
-<!-- Required. Use similar ToV to previous release notes. For example for a patch release:
-This release primarily focuses on bug fixes.
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
--->
-##### Support for Tyk OAS API
-The Tyk Operator v1.0 release introduces powerful new features designed to enhance how you manage APIs in Kubernetes environments. One of the key highlights is the full support for Tyk OAS APIs, allowing you to define and manage APIs through the new **`TykOasApiDefinition`** custom resource. This integration extends GitOps API Management to Tyk OAS, allowing you to have declarative, versioned, and fully automated control to your APIs in Kubernetes environments.
 
-Key features:
-
-- **Define and Manage Tyk OAS APIs** using the TykOasApiDefinition custom resource.
-- **Manage API Definitions in ConfigMaps**: Any changes are automatically tracked and synced to Tyk.
-- **Configure Tyk OAS in a Kubernetes-native way**: You can organize APIs by categories or manage multiple API versions easily with the new CRD.
-- **Simplify certificate management** by referencing Kubernetes secrets.
-- **Use the Tyk Ingress controller** to create Tyk OAS APIs from Ingress specs.
-
-With this release, users benefit from seamless GitOps workflows, ensuring a Kubernetes-native operation workflow. Security is also made simpler with automated certificate synchronization, removing the hassle of manual certificate management.
-
-##### Enhanced Classic API and Security Policy Features
-Enhanced support for Tyk Classic APIs continues, with improvements to security policies and new capabilities for setting API and endpoint-specific rate limits, making it easier than ever to customize API usage policies.
-
-This release represents a significant upgrade for both API management and security, offering a more efficient, scalable, and Kubernetes-native way to operate Tyk. Whether you're leveraging Tyk OAS APIs or continuing with Tyk Classic, this version brings the tools and features you need to streamline your workflows and enhance operational efficiency.
-
-For details please refer to the [changelog]({{< ref "#Changelog-v1.0.0">}}) below.
-
-#### Downloads
+### Downloads
 - [Docker image v1.0.0](https://hub.docker.com/r/tykio/tyk-operator/tags?page=&page_size=&ordering=&name=v1.0.0)
   - ```bash
     docker pull tykio/tyk-operator:v1.0.0
@@ -130,14 +134,14 @@ For details please refer to the [changelog]({{< ref "#Changelog-v1.0.0">}}) belo
 - Helm chart - TBP (To Be Published separately after the release) <!-- This is the link to the Helm charts links. Please be mindful that this URL is only available a few hours or day/s after we release the main release, so this link needs to be updated in a separate iteration -->
 <!-- source code tarball for oss projects -->
 
-#### Changelog {#Changelog-v1.0.0}
+### Changelog {#Changelog-v1.0.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 
-##### Added
+#### Added
 <!-- This section should be a bullet point list of new features. Explain:
 
 - The purpose of the new feature
@@ -226,7 +230,7 @@ extended_paths:
 </ul>
 
   
-##### Changed
+#### Changed
 <!-- This should be a bullet-point list of updated features. Explain:
 
 - Why was the update necessary?
@@ -294,6 +298,7 @@ Repeat the release notes section above for every patch here
 
 <!-- The footer of the release notes page. It contains a further information section with details of how to upgrade Tyk,
 links to API documentation and FAQs. You can copy it from the previous release. -->
+
 ## Further Information
 
 ### Upgrading Tyk
