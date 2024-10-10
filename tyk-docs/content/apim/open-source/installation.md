@@ -57,7 +57,7 @@ The Tyk Gateway can run completely independently, requiring only a Redis databas
 
 Combine with the other [Tyk OSS products]({{< ref "tyk-stack" >}}) For even more power, such as analytics exporting, version control integration, and more.
 
-{{< img src="/img/diagrams/oss-flow-2.png" alt="Open Source Components" >}}
+{{< img src="/img/diagrams/oss-flow.png" alt="Open Source Components" >}}
 
 
 ## Next Steps

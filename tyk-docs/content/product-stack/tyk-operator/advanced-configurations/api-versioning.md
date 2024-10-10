@@ -80,6 +80,6 @@ In case if there is original versioning information in the base API Definition, 
 
 Tyk Operator would also protect you from accidentally deleting a version of an API that is being referenced by another API, maintaining your API integrity.
 
-## Configuring API Version in Tyk Classic API{#tyk-classic-api}
+## Configuring API Version in Tyk Classic API Definition{#tyk-classic-api}
 
 For Tyk Classic API, versioning can be configured via `ApiDefinition` custom resource definition (CRD). See [Tyk Classic versioning]({{<ref "getting-started/key-concepts/versioning">}}) for a comprehensive example of configuring API versioning for Tyk Classic API with Tyk Operator.

@@ -145,7 +145,9 @@ spec:
 
 Client certificates, In Tyk OAS API Definition, are managed using the `TykOasApiDefinition` CRD. You can reference Kubernetes secrets that store client certificates in your API definitions.
 
-Example of Referencing Client Certificates in Tyk OAS
+**Example of Referencing Client Certificates in Tyk OAS**
+
+In this example, the `clientCertificate` section allows you to enable client certificate management and specify a list of Kubernetes secrets (`tls-cert`) that store allowed client certificates.
 
 ```yaml {hl_lines=["48-50"],linenos=false}
 # Secret is not created in this manifest.
@@ -199,8 +201,6 @@ spec:
       enabled: true
       allowlist: [tls-cert]
 ```
-
-In this example, the `clientCertificate` section allows you to enable client certificate management and specify a list of Kubernetes secrets (`tls-cert`) that store allowed client certificates.
 
 ## FAQ
 

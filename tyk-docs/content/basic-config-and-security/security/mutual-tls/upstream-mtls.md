@@ -29,7 +29,7 @@ To do the same via the Tyk Dashboard, go to the **API Designer** > **Advanced Op
 
 {{< img src="/img/2.10/attach_upstream_cert.png" alt="upstream_cert" >}}
 
-### Via Tyk Operator (for Tyk Classic){#tyk-operator-classic}
+### Via Tyk Operator using the Tyk Classic API Definition{#tyk-operator-classic}
 
 Tyk Operator supports configuring upstream mTLS using one of the following fields within the ApiDefinition object:
 
@@ -142,10 +142,10 @@ spec:
         name: Default
 ```
 
-### Via Tyk Operator (for Tyk OAS){#tyk-operator-oas}
+### Via Tyk Operator using Tyk OAS API Definition{#tyk-operator-oas}
 Tyk Operator supports configuring upstream mTLS using the `mutualTLS` field in `TykOasApiDefinition` object:
 
-```yaml
+```yaml{hl_lines=["12-18"],linenos=false}
 apiVersion: tyk.tyk.io/v1alpha1
  kind: TykOasApiDefinition
  metadata:
