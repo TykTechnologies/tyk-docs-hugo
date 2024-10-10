@@ -14,7 +14,7 @@ Usage:
   tyk-sync examples [command]
 
 Available Commands:
-  publish     Publish a specific example to a gateway or dashboard by using its location
+  publish     Publish a specific example to a dashboard by using its location
   show        Shows details of a specific example by using its location
 
 Flags:
@@ -41,7 +41,6 @@ Usage:
 Flags:
   -b, --branch string      Branch to use (defaults to refs/heads/main) (default "refs/heads/main")
   -d, --dashboard string   Fully qualified dashboard target URL
-  -g, --gateway string     Fully qualified gateway target URL
   -h, --help               help for publish
   -k, --key string         Key file location for auth (optional)
   -l, --location string    Location to example
@@ -49,7 +48,7 @@ Flags:
       --test               Use test publisher, output results to stdio
 ```
 
-API secret refers to secret use to access your Gateway API or Dashboard API. For dashboard users, you can get it from "User" page under “Tyk Dashboard API Access key”.
+API secret refers to secret use to access your Dashboard API. For dashboard users, you can get it from "User" page under “Tyk Dashboard API Access key”.
 
 ## Examples
 ### Import Tyk example into Dashboard

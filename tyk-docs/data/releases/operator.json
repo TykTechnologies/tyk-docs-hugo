@@ -1,8 +1,12 @@
 {
   "home": "tyk-operator",
-  "licensed": false,
-  "latest": "0.18.0",
-  "releaseNotesPath": "product-stack/tyk-operator/release-notes/operator-0.18",
+  "licensed": true,
+  "latest": "1.0.0",
+  "releaseNotesPath": "product-stack/tyk-operator/release-notes/operator-1.0",
+  "1.0.0": {
+    "date": "10/10/2024",
+    "docker": "https://hub.docker.com/r/tykio/tyk-operator/tags?page=1&name=1.0.0"
+  },
   "0.18.0": {
     "date": "04/07/2024",
     "tag": "https://github.com/TykTechnologies/tyk-operator/releases/tag/v0.18.0",

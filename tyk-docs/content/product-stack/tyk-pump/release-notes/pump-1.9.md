@@ -68,7 +68,7 @@ There has been a significant enhancement in Tyk Graph Pump with the removal of t
 
 
 ### Downloads
-- <<[Docker Image v1.9.0](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.9.0)>>
+- [Docker Image v1.9.0](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.9.0)
 - ```bash
   docker pull tykio/tyk-pump-docker-pub:v1.9.0
   ```

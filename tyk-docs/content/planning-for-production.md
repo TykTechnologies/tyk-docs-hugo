@@ -92,6 +92,11 @@ Each gateway node must be configured in the same way, with the exception being i
 
 In addition to changing the default secrets (see [Change all the shared secrets]({{< ref "planning-for-production#change-all-the-shared-secrets" >}})) if you change the Control API port (see [Change your Control Port]({{< ref "planning-for-production#change-your-control-port" >}})), you also need to change the connection string settings in your `tyk_analytics.conf` file.
 
+### Ensure you are matching only the URL paths that you want to match
+
+We recommend that you configure Tyk Gateway to use [exact URL path matching]({{< ref "getting-started/key-concepts/url-matching#exact-match" >}}) and to enforce [strict route matching]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_strict_routes" >}}) to avoid accidentally invoking your unsecured `/health` endpoint when a request is made to `/customer/{customer_id}/account/health`...
+
+Unless you want to make use of Tyk's flexible *listen path* and *endpoint path* matching modes and understand the need to configure patterns carefully, you should enable `TYK_GW_HTTPSERVEROPTIONS_ENABLESTRICTROUTES`, `TYK_GW_HTTPSERVEROPTIONS_ENABLEPATHPREFIXMATCHING` and `TYK_GW_HTTPSERVEROPTIONS_ENABLEPATHSUFFIXMATCHING`.
 
 ### Health checks are expensive
 
@@ -104,6 +109,7 @@ Tyk provides multiple [log levels]({{< ref "log-data" >}}): error, warn, info, d
 It is recommended to set to debug only for the duration of troubleshooting as it adds heavier resource overheads. In high performance use cases for Tyk Gateway, consider setting a log level lower than info to improve overall throughput.
 
 ### Use the optimization settings
+
 The below settings will ensure connections are effectively re-used, removes a transaction from the middleware run that enforces org-level rules, enables the new rate limiter (by disabling sentinel rate limiter) and sets Tyk up to use an in-memory cache for session-state data to save a round-trip to Redis for some other transactions.
 
 Most of the changes below should be already in your `tyk.conf` by default:
@@ -132,6 +138,7 @@ You can calculate the right value using a straightforward formula:
 If the latency between Tyk and your Upstream is around 50ms, then a single connection can handle 1s / 50ms = 20 requests. So if you plan to handle 2000 requests per second using Tyk, the size of your connection pool should be at least 2000 / 20 = 100. For example, on low-latency environments (like 5ms), a connection pool of 100 connections will be enough for 20k RPS.
 
 ### Protect Redis from overgrowing
+
 Please read carefully through this [doc]({{< ref "basic-config-and-security/security/authentication-authorization/physical-key-expiry" >}}) to make an *aware decision* about the expiration of your keys in Redis, after which they will be removed from Redis. If you don't set the lifetime, a zero default means that keys will stay in Redis until you manually delete them, which is no issue if you have a process outside Tyk Gateway to handle it. If you don't - and especially in scenarios that your flow creates many keys or access tokens for every user or even per call - your Redis can quickly get cluttered with obsolete tokens and eventually affect the performance of the Tyk Gateway.
 
 ### Analytics Optimizations
@@ -139,6 +146,7 @@ Please read carefully through this [doc]({{< ref "basic-config-and-security/secu
 If using a [Redis cluster](https://redis.io/docs/management/scaling/) under high load it is recommended that analytics are distributed among the Redis shards. This can be configured by setting the [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) parameter to true. Furthermore, analytics can also be disabled for an API using the [do_not_track]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/other-root-objects" >}}) configuration parameter. Alternatively, tracking for analytics can be disabled for selected endpoints using the [do not track endpoint plugin]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#do-not-track-endpoint" >}}).
 
 #### Protobuf Serialisation
+
 In Tyk Gateway, using [protobuf]({{< ref "tyk-oss-gateway/configuration/#analytics_configserializer_type" >}}) serialisation, instead of [msgpack](https://msgpack.org) can increase performance for sending and processing analytics. 
 <br/>
 **Note:** *protobuf* is not currently supported in *MDCB* deployment.
@@ -165,9 +173,11 @@ Please note that a single file, with associated inode & dcache consumes approxim
 The changes will apply after a system reboot, but if you do not wish to reboot quite yet, you can apply the change for the current session using `echo 160000 > /proc/sys/fs/file-max`.
 
 ### File Handles / File Descriptors
+
 Now we need to configure the file handles available to your Tyk services.
 
 #### systemd
+
 Override your `systemd` unit files for each of the Tyk services using `systemctl edit {service_name}`.
 
 * Gateway `systemctl edit tyk-gateway.service`

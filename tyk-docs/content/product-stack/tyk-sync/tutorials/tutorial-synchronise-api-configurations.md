@@ -66,7 +66,7 @@ jobs:
 1. Go to your GitHub repository.
 2. Navigate to Settings > Secrets and variables > Actions.
 3. Add the following variable:
-    - `TYK_SYNC_VERSION`: The version of Tyk Sync you want to use (e.g., v1.5.0).
+    - `TYK_SYNC_VERSION`: The version of Tyk Sync you want to use (e.g., v2.0.0).
 4. Add the following secrets:
     - `TYK_DASHBOARD_URL`: The URL of your Tyk Dashboard.
     - `TYK_DASHBOARD_SECRET`: The secret key for your Tyk Dashboard.

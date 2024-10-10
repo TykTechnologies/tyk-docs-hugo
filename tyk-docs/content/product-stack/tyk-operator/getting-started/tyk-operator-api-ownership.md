@@ -5,25 +5,28 @@ tags: ["Tyk Operator", "Organizations", "Kubernetes"]
 description: "Explains the key concepts for Tyk Operator"
 ---
 
-This guide explains how to efficiently manage API Ownerships within Tyk using Tyk Operator Custom Resource Definitions (CRDs).
+This guide explains how to efficiently manage API Ownerships within Tyk using Tyk Operator Custom Resources (CRs).
 
 Please consult the [API Ownership]({{< ref "product-stack/tyk-dashboard/advanced-configurations/user-management/api-ownership">}}) documentation for the fundamental concepts of API Ownership in Tyk and [Operator Context]({{< ref "/product-stack/tyk-operator/key-concepts/operator-context" >}}) documentation for an overview of the use of OperatorContext to manage resources for different teams effectively.
 
-The guide includes practical examples for managing API ownership via OperatorContext. Key topics include defining user owners and user group owners in OperatorContext for connecting and authenticating with a Tyk Dashboard, and using `contextRef` in API Definition objects to ensure configurations are applied within specific organizations. The provided YAML examples illustrate how to set up these configurations.
+The guide includes practical examples for managing API ownership via OperatorContext. Key topics include defining user owners and user group owners in OperatorContext for connecting and authenticating with a Tyk Dashboard, and using `contextRef` in `TykOasApiDefinition` or `ApiDefinition` objects to ensure configurations are applied within specific organizations. The provided YAML examples illustrate how to set up these configurations.
 
-## How to manage API Ownership in Tyk Operator
+## How API Ownership works in Tyk Operator
 
 In Tyk Dashboard, API Ownership ensures that only designated 'users' who own an API can modify it. This security model is crucial for maintaining control over API configurations, especially in a multi-tenant environment where multiple teams or departments may have different responsibilities and permissions.
 
 Tyk Operator is designed to interact with Tyk Dashboard as a system user. For the Tyk Dashboard, Tyk Operator is just another user that must adhere to the same access controls and permissions as any other user. This means:
+
 - Tyk Operator needs the correct access rights to modify any APIs.
 - It must be capable of managing APIs according to the ownership rules set in Tyk Dashboard.
 
 To facilitate API ownership and ensure secure operations, Tyk Operator must be able to 'impersonate' different users for API operations. This is where `OperatorContext` comes into play. Users can define different `OperatorContext` objects that act as different agents to connect to Tyk Dashboard. Each `OperatorContext` can specify different access parameters, including the user access key and organization it belongs to. Within `OperatorContext`, users can specify the IDs of owner users or owner user groups. All APIs managed through that `OperatorContext` will be owned by the specified users and user groups, ensuring compliance with Tyk Dashboard's API ownership model.
 
-Here's how `OperatorContext` allows Tyk Operator to manage APIs under different ownerships:
+{{< img src="/img/operator/tyk-api-ownership.svg" alt="Enabling API ownership with OperatorContext" width="600" >}}
 
-## Defining OperatorContext
+## OperatorContext
+
+Here's how `OperatorContext` allows Tyk Operator to manage APIs under different ownerships:
 
 ```yaml
 apiVersion: tyk.tyk.io/v1alpha1
@@ -63,9 +66,65 @@ spec:
     - 1a2b3c4d5e6f
 ```
 
-## Using contextRef in API Definitions
+## Tyk OAS API
 
-Once an `OperatorContext` is defined, you can reference it in your API Definition objects using `contextRef`. Below is an example:
+Once an `OperatorContext` is defined, you can reference it in your Tyk OAS API Definition objects using `contextRef`. Below is an example:
+
+```yaml {hl_lines=["40-43"],linenos=true}
+apiVersion: v1
+data:
+  test_oas.json: |-
+    {
+        "info": {
+          "title": "Petstore",
+          "version": "1.0.0"
+        },
+        "openapi": "3.0.3",
+        "components": {},
+        "paths": {},
+        "x-tyk-api-gateway": {
+          "info": {
+            "name": "Petstore",
+            "state": {
+              "active": true
+            }
+          },
+          "upstream": {
+            "url": "https://petstore.swagger.io/v2"
+          },
+          "server": {
+            "listenPath": {
+              "value": "/petstore/",
+              "strip": true
+            }
+          }
+        }
+      }
+kind: ConfigMap
+metadata:
+  name: cm
+  namespace: default
+---
+apiVersion: tyk.tyk.io/v1alpha1
+kind: TykOasApiDefinition
+metadata:
+  name: petstore
+spec:
+  contextRef:
+    name: team-alpha
+    namespace: default
+  tykOAS:
+    configmapRef:
+      name: cm
+      namespace: default
+      keyName: test_oas.json
+```
+
+In this example, the `TykOasApiDefinition` object references the `team-alpha` context, ensuring that it is managed under the ownership of the specified users and user groups.
+
+## Tyk Classic API
+
+Similarly, if you are using Tyk Classic API, you can reference it in your API Definition objects using `contextRef`. Below is an example:
 
 ```yaml
 apiVersion: tyk.tyk.io/v1alpha1
@@ -88,5 +147,3 @@ spec:
 ```
 
 In this example, the `ApiDefinition` object references the `team-alpha` context, ensuring that it is managed under the ownership of the specified users and user groups.
-
-{{< img src="/img/operator/tyk-api-ownership.svg" alt="Enabling API ownership with OperatorContext" width="600" >}}

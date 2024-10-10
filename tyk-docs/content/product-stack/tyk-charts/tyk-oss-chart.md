@@ -213,6 +213,10 @@ global:
        keyName: "redisPassKey"
 ```
 
+**_Tyk Operator License_**
+
+It can be configured via `global.license.operator` as a plain text or Kubernetes secret which includes `OperatorLicense` key in it. Then, this secret must be referenced via `global.secrets.useSecretName`.
+
 ### Create a Kubernetes Secret for Tyk Operator
 
 When `operatorSecret.enabled` is set to `true`, `tyk-oss` chart will create a Kubernetes Secret named `tyk-operator-conf` in the same namespace. It can be used by Tyk Operator to connect to Gateway to manage Tyk API resources.
@@ -303,6 +307,8 @@ Default service port of gateway is 8080. You can change this at `global.serviceP
 An Ingress resource is created if `tyk-gateway.gateway.ingress.enabled` is set to true.
 
 ```yaml
+tyk-gateway:
+  gateway:
     ingress:
       # if enabled, creates an ingress resource for the gateway
       enabled: true
@@ -488,6 +494,12 @@ Uptime Pump can be configured by setting `tyk-pump.pump.uptimePumpBackend` in va
 To setup other backends for pump, refer to this [document](https://github.com/TykTechnologies/tyk-pump/blob/master/README.md#pumps--back-ends-supported) and add the required environment variables in `tyk-pump.pump.extraEnvs`
 
 ### Tyk Operator Configurations
+
+Tyk Operator is a licensed component that requires a valid key for operation. 
+Please refer to the [Tyk Operator Installation Guide]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}})
+for detailed information on the installation and upgrade processes. 
+
+Prior to installing Tyk Operator, ensure that a valid license key is provided by setting `global.license.operator` field in values.yaml file. You can set license key via a Kubernetes secret using `global.secrets.useSecretName` field. The secret should contain a key called `OperatorLicense`.
 
 In order to enable installing Tyk Operator along-side Tyk OSS installation, please set `global.components.operator` to `true`.
 

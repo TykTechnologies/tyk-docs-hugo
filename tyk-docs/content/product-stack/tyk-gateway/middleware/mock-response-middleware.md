@@ -7,7 +7,7 @@ aliases:
   - /getting-started/using-oas-definitions/mock-response/
 ---
 
-A mock response is a simulated API response that can be returned by the API gateway without actually sending the request to the backend API service. Mock responses are an integral feature for API development, enabling developers to emulate API behavior without the need for upstream execution. 
+A mock response is a simulated API response that can be returned by the API gateway without actually sending the request to the backend API service. Mock responses are an integral feature for API development, enabling developers to emulate API behavior without the need for upstream execution.
 
 Tyk's mock response middleware offers this functionality by allowing the configuration of custom responses for designated endpoints. This capability is crucial for facilitating front-end development, conducting thorough testing, and managing unexpected scenarios or failures.
 
@@ -44,19 +44,20 @@ When working with Tyk OAS APIs, Tyk Gateway can parse the [examples and schema](
 ## Middleware execution order during request processing
 
 ### With **Tyk OAS APIs**
+
 - the mock response middleware is executed at the **end** of the request processing chain, immediately prior to the request being proxied to the upstream
 - all other request processing middleware (e.g. authentication, request transforms) will be executed prior to the mock response.
 
 ### With **Tyk Classic APIs**
+
 - the mock response middleware is executed at the **start** of the request processing chain
 - an endpoint with a mock response will not run any other middleware and will immediately return the mocked response for any request. As such, it is always an unauthenticated (keyless) call.
 
 <hr>
 
-## Tutorials
-- [Tyk OAS mock response tutorial]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas" >}}) or 
-- [Tyk classic mock response tutorial]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-classic" >}}).
+If you’re using Tyk OAS APIs, then you can find details and examples of how to configure the mock response middleware [here]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas" >}}).
 
+If you’re using Tyk Classic APIs, then you can find details and examples of how to configure the response body transformation middleware [here]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  ## Mock Response middleware summary

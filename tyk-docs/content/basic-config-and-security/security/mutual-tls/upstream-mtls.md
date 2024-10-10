@@ -29,7 +29,7 @@ To do the same via the Tyk Dashboard, go to the **API Designer** > **Advanced Op
 
 {{< img src="/img/2.10/attach_upstream_cert.png" alt="upstream_cert" >}}
 
-### Via Tyk Operator
+### Via Tyk Operator using the Tyk Classic API Definition{#tyk-operator-classic}
 
 Tyk Operator supports configuring upstream mTLS using one of the following fields within the ApiDefinition object:
 
@@ -140,6 +140,30 @@ spec:
     versions:
       Default:
         name: Default
+```
+
+### Via Tyk Operator using Tyk OAS API Definition{#tyk-operator-oas}
+Tyk Operator supports configuring upstream mTLS using the `mutualTLS` field in `TykOasApiDefinition` object:
+
+```yaml{hl_lines=["12-18"],linenos=false}
+apiVersion: tyk.tyk.io/v1alpha1
+ kind: TykOasApiDefinition
+ metadata:
+   name: petstore
+   namespace: default
+ spec:
+   tykOAS:
+     configmapRef:
+       name: petstore
+       namespace: default
+       keyName: petstore.json
+   mutualTLS:
+     enabled: true
+     domainToCertificateMapping:
+       - domain: "petstore.com"
+         certificateRef: petstore-domain
+       - domain: "petstore.co.uk"
+         certificateRef: petstore-uk-domain
 ```
 
 ## Domain

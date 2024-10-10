@@ -17,6 +17,8 @@ The following Tyk components, created and maintained by the Tyk Team, are propri
 * [Tyk Developer Portal]({{< ref "tyk-developer-portal" >}})
 * [Tyk Multi Data Center Bridge]({{< ref "tyk-multi-data-centre" >}})
 * [Universal Data Graph]({{< ref "universal-data-graph" >}})
+* [Tyk Operator]({{< ref "tyk-operator" >}})
+* [Tyk Sync]({{< ref "product-stack/tyk-sync/overview" >}})
 
 If you plan to deploy and use the above components On-premise, license keys are required.
 

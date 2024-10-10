@@ -14,6 +14,15 @@ aliases:
 Tyk Operator is a Kubernetes Operator designed to simplify the management of Tyk API configurations both inside and outside of Kubernetes environments. With our [custom resources]({{<ref "product-stack/tyk-operator/key-concepts/custom-resources">}}), Tyk Operator simplifies the processes of deploying and configuring API resources, allowing you to focus more on application development and less on infrastructure management. It is ideal for those who like to manage configurations declaratively or with GitOps workflows via tools such as Argo CD and Flux CD.
 
 {{< img src="/img/operator/tyk-operator.svg" alt="Tyk Operator" width="600" >}}
+<br>
+
+{{< note success >}}
+**Obtain a license key**
+
+Starting from Tyk Operator v1.0, a license key is required to use the Tyk Operator. Prospects can obtain a license by using our [contact form](https://tyk.io/contact/). For existing customers, please reach out to your account manager directly. If you're unsure who to contact, you can also use the contact form and our team will guide you accordingly.
+{{< /note >}}
+
+{{< button_left href="https://tyk.io/sign-up" color="green" content="Free Trial" >}}
 
 ### Why use Tyk Operator?
 Managing, checking, and synchronizing APIs from multiple teams across environments can be complex. Tyk Operator provides an efficient way to handle API configurations. Here’s why it matters:
@@ -24,7 +33,7 @@ Managing, checking, and synchronizing APIs from multiple teams across environmen
 
 ### Key Features
 
-1. [Manage Classic API definitions]({{< ref "tyk-stack/tyk-operator/create-an-api" >}})
+1. [Manage API definitions]({{< ref "product-stack/tyk-operator/getting-started/create-an-api-overview" >}})
 2. [Manage Security policies]({{< ref "tyk-stack/tyk-operator/secure-an-api" >}})
 3. [Manage Tyk Classic Dev Portal]({{< ref "tyk-stack/tyk-operator/publish-an-api" >}})
 4. [Kubernetes Ingress Controller]({{< ref "product-stack/tyk-operator/tyk-ingress-controller">}})
@@ -34,9 +43,8 @@ Managing, checking, and synchronizing APIs from multiple teams across environmen
 Consider using Tyk Operator if:
 
 - You are running applications in a Kubernetes environment.
-- You need to manage multiple Tyk API Gateway instances efficiently.
 - You want to leverage Kubernetes-native automation for API management.
-- You aim to streamline the operations of your API gateways with minimal manual intervention.
+- You aim to streamline the operations of your APIs with minimal manual intervention.
 
 ### Getting Started
 To get started with Tyk Operator, learn about Operator key concepts:
