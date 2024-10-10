@@ -1,7 +1,9 @@
 ---
 title: "Configure Tyk Operator as Ingress Controller "
 tags: ["Tyk Operator", "Kubernetes", "Ingress", "Ingress Controller"]
-description: "Configure Tyk Operator as Ingress Controller" 
+description: "Configure Tyk Operator as Ingress Controller"
+aliases: 
+  - "/product-stack/tyk-operator/tyk-ingress-controller/"
 ---
 
 In a Kubernetes environment, networking is essential for managing how external traffic accesses services within a cluster. Kubernetes provides an [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) resource to manage these incoming connections. An Ingress is an API object that defines the rules for routing external HTTP and HTTPS traffic to services within the Kubernetes cluster, based on the domain name, path, or other HTTP headers.
