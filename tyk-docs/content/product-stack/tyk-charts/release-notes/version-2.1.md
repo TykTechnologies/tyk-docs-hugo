@@ -105,13 +105,7 @@ helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release: -->
 
 ##### Updated default Tyk versions
-Tyk Charts 2.1 will install the following Tyk component versions by default.
-- Tyk Gateway v5.3.6
-- Tyk Dashboard v5.3.6
-- Tyk Pump v1.11.0
-- Tyk MDCB v2.7.1
-- Tyk Developer Portal v1.10.0
-- Tyk Operator v1.0.0
+Tyk Charts 2.1 will install the latest Tyk LTS version (5.3.6) for Gateway and Dashboard.
 
 #### Downloads
 - [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v2.1.0.tar.gz)
