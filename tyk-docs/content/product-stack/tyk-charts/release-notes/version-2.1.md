@@ -137,7 +137,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Ability to specify static IP for Kubernetes LoadBalancer service</summary>
 
-Added optional `loadBalancerIP` parameter that allows users to set a static IP for Tyk Gateway and Dashboard services when using the `LoadBalancer` service type. This update provides enhanced control over IP configuration, useful for network stability in environments with multiple load balancers.
+Added an optional `loadBalancerIP` parameter in the chart that allows users to set a static IP for Tyk Gateway and Dashboard services when using the `LoadBalancer` service type. This update provides enhanced control over IP configuration, useful for network stability in environments with multiple load balancers.
 
 Tyk gateway service configuration:
 - `tyk-gateway.gateway.service.loadBalancerIP` (default to "")
