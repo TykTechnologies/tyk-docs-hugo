@@ -156,7 +156,7 @@ Tyk Dashboard service configuration:
 
 <li>
 <details>
-<summary>Dashboard: container port configuration</summary>
+<summary>Ability to configure Dashboard container port</summary>
 
 Enables specifying an alternate port for the container while using standard ports in the service. This option resolves permission issues associated with restricted ports, such as port 443, within containers.
 
