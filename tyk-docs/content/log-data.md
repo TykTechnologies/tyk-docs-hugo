@@ -64,7 +64,7 @@ time="Sep 05 09:04:12" level=info msg="Tyk API Gateway v5.6.0" prefix=main
 ```
 
 ##### JSON logging format
-```
+```json
 {"level":"info","msg":"Tyk API Gateway v5.6.0","prefix":"main","time":"2024-09-05T09:01:23-04:00"}
 ```
 {{< note >}}
