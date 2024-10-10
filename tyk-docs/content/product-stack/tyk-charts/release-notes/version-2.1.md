@@ -191,7 +191,7 @@ Each change log item should be expandable. The first line summarises the changel
 
 <li>
 <details>
-<summary>Update default Tyk versions</summary>
+<summary>Updated default versions of Tyk components</summary>
 Tyk Charts 2.1 will install the following Tyk component versions by default.
 - Tyk Gateway v5.3.6
 - Tyk Dashboard v5.3.6
