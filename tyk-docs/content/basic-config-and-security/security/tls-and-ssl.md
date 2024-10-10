@@ -279,7 +279,7 @@ You can set `proxy.transport.ssl_insecure_skip_verify` in an API definition to a
 
 If you include certificateID or certificate path to an API definition `certificates` field, Gateway will dynamically load this ceritficate for your custom domain, so you will not need to restart the process. You can do it from the Dashboard UI too, in the custom domain section.
 
-#### Define via Tyk Operator (Tyk Classic){#tyk-operator-classic}
+#### Setup in Tyk Operator using Tyk Classic API Definition {#tyk-operator-classic}
 
 Let say the domain certificate is stored in secret named `my-test-tls` in the same namespace as this ApiDefinition resource `httpbin`. You can provide the domain certificate in `certificate_secret_names` field. Tyk Operator will help you retrieve the certificate from secret and upload it to Tyk.
 

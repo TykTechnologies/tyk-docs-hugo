@@ -8,7 +8,7 @@ keywords: ["Tyk Operator", "Kubernetes", "API Versioning"]
 
 [API versioning]({{<ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning">}}) are configured differently for [Tyk OAS APIs](#tyk-oas-api) and [Tyk Classic APIs](#tyk-classic-api). Please see below for examples.
 
-## Configuring API Version in Tyk OAS API{#tyk-oas-api}
+## Configuring API Version in Tyk OAS API Definition{#tyk-oas-api}
 
 In the [Tyk OAS API Definition]({{<ref "getting-started/key-concepts/oas-versioning#configuring-api-versioning-in-the-tyk-oas-api-definition">}}), versioning can be configured via `x-tyk-api-gateway.versioning` object of the Base API, where the child API's IDs are specified. In the Kubernetes environment with Tyk Operator, where we reference API resources through its Kubernetes name and namespace, this is not desired. Therefore, we add support for versioning configurations through the field `versioning` in `TykOasApiDefinition` custom resource definition (CRD).
 

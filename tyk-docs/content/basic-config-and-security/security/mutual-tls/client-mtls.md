@@ -93,7 +93,8 @@ The base Identity can be anything as the client cert is the only thing configure
 Here's what it should look like:
 {{< img src="/img/2.10/client_mtls_multiple_auth.png" alt="enable_cert" >}}
 
-### Define via Tyk Operator (Tyk Classic){#tyk-operator-classic}
+### Setup Static mTLS in Tyk Operator using the Tyk Classic API Definition{#tyk-operator-classic}
+
 This setup requires mutual TLS (mTLS) for client authentication using specified client certificates. The example provided shows how to create an API definition with mTLS authentication for `httpbin-client-mtls`.
 
 1. **Generate Self-Signed Key Pair:**
@@ -140,9 +141,9 @@ spec:
     - my-test-tls
 ```
 
-### Define via Tyk Operator (Tyk OAS){#tyk-operator-oas}
+### Setup Static mTLS in Tyk Operator using Tyk OAS API Definition{#tyk-operator-oas}
 
-For Tyk OAS APIs, client certificates are managed using the `TykOasApiDefinition` CRD. You can reference Kubernetes secrets that store client certificates in your API definitions.
+Client certificates, In Tyk OAS API Definition, are managed using the `TykOasApiDefinition` CRD. You can reference Kubernetes secrets that store client certificates in your API definitions.
 
 Example of Referencing Client Certificates in Tyk OAS
 
