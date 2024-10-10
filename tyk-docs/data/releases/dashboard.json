@@ -20,6 +20,10 @@
     "date": "26/08/2024",
     "docker": "https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=1&name=5.3.4"
   },
+  "5.3.6": {
+    "date": "04/10/2024",
+    "docker": "https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=1&name=5.3.6"
+  },
   "5.3.5": {
     "date": "26/09/2024",
     "docker": "https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=1&name=5.3.5"
