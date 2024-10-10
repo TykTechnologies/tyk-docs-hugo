@@ -279,6 +279,91 @@ You can set `proxy.transport.ssl_insecure_skip_verify` in an API definition to a
 
 If you include certificateID or certificate path to an API definition `certificates` field, Gateway will dynamically load this ceritficate for your custom domain, so you will not need to restart the process. You can do it from the Dashboard UI too, in the custom domain section.
 
+#### Setup in Tyk Operator using Tyk Classic API Definition {#tyk-operator-classic}
+
+Let say the domain certificate is stored in secret named `my-test-tls` in the same namespace as this ApiDefinition resource `httpbin`. You can provide the domain certificate in `certificate_secret_names` field. Tyk Operator will help you retrieve the certificate from secret and upload it to Tyk.
+
+```yaml{linenos=true, linenostart=1, hl_lines=["10-11"]}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin
+spec:
+  name: httpbin
+  use_keyless: true
+  protocol: https
+  listen_port: 8443
+  certificate_secret_names:
+    - my-test-tls
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin
+    strip_listen_path: true
+```
+
+#### Define via Tyk Operator using Tyk OAS API Definition{#tyk-operator-oas}
+
+You can also manage custom domain certificates using Kubernetes secrets in Tyk OAS.
+
+Example of Defining Custom Domain Certificates
+
+```yaml{linenos=true, linenostart=1, hl_lines=["50-51"]}
+# Secret is not created in this manifest.
+# Please store custom domain certificate in a kubernetes TLS secret `custom-domain-secret`.
+apiVersion: v1
+data:
+  test_oas.json: |-
+    {
+      "info": {
+        "title": "Petstore with custom domain",
+        "version": "1.0.0"
+      },
+      "openapi": "3.0.3",
+      "components": {},
+      "paths": {},
+      "x-tyk-api-gateway": {
+        "info": {
+          "name": "Petstore with custom domain",
+          "state": {
+            "active": true
+          }
+        },
+        "upstream": {
+          "url": "https://petstore.swagger.io/v2"
+        },
+        "server": {
+          "listenPath": {
+            "value": "/petstore/",
+            "strip": true
+          }
+        }
+      }
+    }
+kind: ConfigMap
+metadata:
+  name: cm
+  namespace: default
+---
+apiVersion: tyk.tyk.io/v1alpha1
+kind: TykOasApiDefinition
+metadata:
+  name: petstore-with-customdomain
+spec:
+  tykOAS:
+    configmapRef:
+      name: cm
+      namespace: default
+      keyName: test_oas.json
+  customDomain:
+    enabled: true
+    name: "buraksekili.dev"
+    certificatesRef:
+      - custom-domain-secret
+```
+
+This example shows how to enable a custom domain (`buraksekili.dev`) with a TLS certificate stored in a Kubernetes secret (`custom-domain-secret`).
+
 ### Validate Hostname against Common Name
 
 From v2.9.3 you can force the validation of the hostname against the common name, both at the Gateway level via your `tyk.conf` and at the API level.

@@ -5,30 +5,29 @@ description: "Learn about the usage and flags for tyk-sync publish command"
 tags: [ "Tyk Sync", "GitOps" ]
 ---
 
-The tyk-sync `publish` command publishes API definitions, policies and templates from source in a file system or version control system to Tyk Gateway or Dashboard. Unlike the `sync` command, `publish` will not update existing APIs, and if it detects a collision, the operation will stop. It allows you to publish new API configurations to the target Dashboard without deleting or updating existing resources.
+The tyk-sync `publish` command publishes API definitions, policies and templates from source in a file system or version control system to Tyk Dashboard. Unlike the `sync` command, `publish` will not update existing APIs, and if it detects a collision, the operation will stop. It allows you to publish new API configurations to the target Dashboard without deleting or updating existing resources.
 
 ## Usage
 
 Publish from Git repository:
 ```bash
-tyk-sync publish {-d DASHBOARD_URL | -g GATEWAY_URL} [-s SECRET] [-b BRANCH] [-k SSHKEY] [-o ORG_ID] REPOSITORY_URL
+tyk-sync publish -d DASHBOARD_URL [-s SECRET] [-b BRANCH] [-k SSHKEY] [-o ORG_ID] REPOSITORY_URL
 ```
 
 Publish from file system:
 ```bash
-tyk-sync publish {-d DASHBOARD_URL | -g GATEWAY_URL} [-s SECRET] [-o ORG_ID] -p PATH
+tyk-sync publish -d DASHBOARD_URL [-s SECRET] [-o ORG_ID] -p PATH
 ```
 
 An index `.tyk.json` file is expected in the root directory of the Git repository or specified file path. An example index file is provided in the [example](#examples).
 
 ## Flags
 * `-b, --branch BRANCH`: Specify the branch of the GitHub repository to use. Defaults to `refs/heads/master` (optional).
-* `-d, --dashboard DASHBOARD_URL`: Specify the fully qualified URL of the Tyk Dashboard where configuration changes should be applied (Either -d or -g is required).
-* `-g, --gateway GATEWAY_URL`: Specify the fully qualified URL of the Tyk Gateway where configuration changes should be applied (Either -d or -g is required).
+* `-d, --dashboard DASHBOARD_URL`: Specify the fully qualified URL of the Tyk Dashboard where configuration changes should be applied.
 * `-h, --help`: Help for the `publish` command.
 * `-k, --key SSHKEY`: Provide the location of the SSH key file for authentication to Git (optional).
 * `-p, --path PATH`: Specify the source file directory where API configuration files are located (Required for synchronising from file system).
-* `-s, --secret SECRET`: Your API secret for accessing Dashboard or Gateway API (optional).
+* `-s, --secret SECRET`: Your API secret for accessing Dashboard API (optional).
 * `--test`: Use test publisher, output results to stdio.
 
 ## Flags for specifying resources to publish (Optional)

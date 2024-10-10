@@ -55,10 +55,6 @@ menu:
             path: /tyk-oss/ce-helm-chart-new
             category: Page
             show: True
-          - title: "Ingress Controller with Tyk Operator"
-            path: /tyk-oss/ce-kubernetes-ingress
-            category: Page
-            show: True
           - title: "Legacy Tyk Headless Helm Chart"
             path: /tyk-oss/ce-helm-chart
             category: Page
@@ -1026,6 +1022,14 @@ menu:
         category: Page
         path: /api-management/async-apis/advanced-use-cases
         show: True
+    - title: "AI Management"
+      category: Directory
+      show: True
+      menu:
+      - title: "Overview"
+        category: Page
+        path: /api-management/ai-management/overview
+        show: True
       - title: "Publish Ops"
         category: Directory
         show: False
@@ -1251,6 +1255,10 @@ menu:
           show: True
         - title: "Request Middleware Chain"
           path: /concepts/middleware-execution-order
+          category: Page
+          show: True
+        - title: "What is URL path matching?"
+          path: /getting-started/key-concepts/url-matching
           category: Page
           show: True
         - title: "What is Rate Limiting?"
@@ -2449,6 +2457,10 @@ menu:
           path: /product-stack/tyk-gateway/release-notes/overview
           category: page
           show: True
+        - title: "Tyk Gateway v5.6"
+          path: /product-stack/tyk-gateway/release-notes/version-5.6
+          category: Page
+          show: True
         - title: "Tyk Gateway v5.5"
           path: /product-stack/tyk-gateway/release-notes/version-5.5
           category: Page
@@ -2919,6 +2931,10 @@ menu:
         - title: "Overview"
           category: Page
           path: /product-stack/tyk-dashboard/release-notes/overview
+          show: True
+        - title: "Tyk Dashboard v5.6"
+          path: /product-stack/tyk-dashboard/release-notes/version-5.6
+          category: Page
           show: True
         - title: "Tyk Dashboard v5.5"
           path: /product-stack/tyk-dashboard/release-notes/version-5.5
@@ -3491,6 +3507,10 @@ menu:
               path: /product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades
               category: Page
               show: True
+            - title: "Templates"
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/templates
+              category: Page
+              show: True
         - title: "Customize data models"
           path: /product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model
           category: Page
@@ -3511,6 +3531,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Version 1.11.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.11.0
+            category: Page
+            show: True
           - title: "Version 1.10.0"
             path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.10.0
             category: Page
@@ -3842,7 +3866,7 @@ menu:
             path: /release-notes/pump-1.8
             category: Page
             show: True
-    - title: "Tyk Operator (Open Source)"
+    - title: "Tyk Operator"
       category: Directory
       show: True
       menu:
@@ -3886,42 +3910,86 @@ menu:
           category: Directory
           show: True
           menu:
-            - title: "Create an API with Tyk Operator"
-              path: /tyk-stack/tyk-operator/create-an-api
+            - title: "Overview"
+              path: /product-stack/tyk-operator/getting-started/create-an-api-overview
               category: Page
               show: True
-            - title: "HTTP Proxy example"
-              path: /product-stack/tyk-operator/getting-started/quick-start-http
-              category: Page
+            - title: "Create Tyk OAS API"
+              category: Directory
               show: True
-            - title: "TCP Proxy example"
-              path: /product-stack/tyk-operator/getting-started/quick-start-tcp
-              category: Page
+              menu:
+              - title: "Create Tyk OAS API with Tyk Operator"
+                path: /product-stack/tyk-operator/getting-started/create-an-oas-api
+                category: Page
+                show: True
+              - title: "Tyk OAS API example"
+                path: /product-stack/tyk-operator/getting-started/example-tyk-oas-api
+                category: Page
+                show: True
+            - title: "Create Tyk Classic API"
+              category: Directory
               show: True
-            - title: "GraphQL Proxy example"
-              path: /product-stack/tyk-operator/getting-started/quick-start-graphql
-              category: Page
-              show: True
-            - title: "UDG example"
-              path: /product-stack/tyk-operator/getting-started/quick-start-udg
-              category: Page
-              show: True
+              menu:
+              - title: "Create Tyk Classic API with Tyk Operator"
+                path: /tyk-stack/tyk-operator/create-an-api
+                category: Page
+                show: True
+              - title: "HTTP Proxy example"
+                path: /product-stack/tyk-operator/getting-started/quick-start-http
+                category: Page
+                show: True
+              - title: "TCP Proxy example"
+                path: /product-stack/tyk-operator/getting-started/quick-start-tcp
+                category: Page
+                show: True
+              - title: "GraphQL Proxy example"
+                path: /product-stack/tyk-operator/getting-started/quick-start-graphql
+                category: Page
+                show: True
+              - title: "UDG example"
+                path: /product-stack/tyk-operator/getting-started/quick-start-udg
+                category: Page
+                show: True
         - title: "Secure an API"
           category: Directory
           show: True
           menu:
-          - title: "Secure an API with Auth token"
-            path: /tyk-stack/tyk-operator/access-an-api
-            category: Page
-            show: True
-          - title: "Authentication types"
-            path: /product-stack/tyk-operator/advanced-configurations/client-authentication
-            category: Page
-            show: True
+            - title: "Overview"
+              path: /product-stack/tyk-operator/getting-started/secure-an-api-overview
+              category: Page
+              show: True
+            - title: "Secure Tyk OAS API"
+              category: Directory
+              show: True
+              menu:
+              - title: "Secure Tyk OAS API with Tyk Operator"
+                path: /product-stack/tyk-operator/getting-started/secure-an-oas-api
+                category: Page
+                show: True
+            - title: "Secure Tyk Classic API"
+              category: Directory
+              show: True
+              menu:
+                - title: "Secure an API with Auth token"
+                  path: /tyk-stack/tyk-operator/access-an-api
+                  category: Page
+                  show: True
+                - title: "Authentication types"
+                  path: /product-stack/tyk-operator/advanced-configurations/client-authentication
+                  category: Page
+                  show: True
         - title: "Protect an API with Policy"
-          category: Page
+          category: Directory
           show: True
-          path: /tyk-stack/tyk-operator/secure-an-api
+          menu:
+            - title: "Create Security Policy with Tyk Operator"
+              category: Page
+              show: True
+              path: /tyk-stack/tyk-operator/secure-an-api
+            - title: "Security Policy example"
+              category: Page
+              show: True
+              path: /product-stack/tyk-operator/getting-started/security-policy-example
         - title: "Publish an API to Dev Portal"
           path: /tyk-stack/tyk-operator/publish-an-api
           category: Page
@@ -3930,7 +3998,7 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Management of APIs"
+        - title: "Manage API metadata"
           path: /product-stack/tyk-operator/advanced-configurations/management-of-api
           category: Page
           show: True
@@ -3946,8 +4014,20 @@ menu:
           path: /product-stack/tyk-operator/getting-started/tyk-operator-multiple-organisations
           category: Page
           show: True
-        - title: "Manage API Ownership"
+        - title: "Manage API ownership"
           path: /product-stack/tyk-operator/getting-started/tyk-operator-api-ownership
+          category: Page
+          show: True
+        - title: "Manage API categories"
+          path: /product-stack/tyk-operator/advanced-configurations/api-categories
+          category: Page
+          show: True
+        - title: "Manage API versioning"
+          path: /product-stack/tyk-operator/advanced-configurations/api-versioning
+          category: Page
+          show: True
+        - title: "Manage TLS certificate"
+          path: /product-stack/tyk-operator/advanced-configurations/tls-certificate
           category: Page
           show: True
         - title: "GraphQL Federation"
@@ -3978,11 +4058,15 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "API Definition features"
+        - title: "TykOasApiDefinition CRD"
+          path: /product-stack/tyk-operator/reference/tyk-oas-api-definition
+          category: Page
+          show: True
+        - title: "ApiDefinition CRD"
           path: /product-stack/tyk-operator/reference/api-definition
           category: Page
           show: True
-        - title: "Security Policy features"
+        - title: "SecurityPolicy CRD"
           path: /product-stack/tyk-operator/reference/security-policy
           category: Page
           show: True
@@ -3996,6 +4080,10 @@ menu:
         menu:
           - title: "Overview"
             path: /product-stack/tyk-operator/release-notes/overview
+            category: Page
+            show: True
+          - title: "Tyk Operator v1.0"
+            path: /product-stack/tyk-operator/release-notes/operator-1.0
             category: Page
             show: True
           - title: "Tyk Operator v0.18"
@@ -4498,7 +4586,7 @@ menu:
         path: /product-stack/tyk-streaming/troubleshooting
         category: Page
         show: True
-    - title: "Tyk Sync (Open Source)"
+    - title: "Tyk Sync"
       category: Directory
       show: True
       menu:
@@ -4554,6 +4642,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Tyk Sync v2.0"
+            path: /product-stack/tyk-sync/release-notes/sync-2.0
+            category: Page
+            show: True
           - title: "Tyk Sync v1.5"
             path: /product-stack/tyk-sync/release-notes/sync-1.5
             category: Page
@@ -4626,6 +4718,14 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Tyk Charts 2.1"
+          path: /product-stack/tyk-charts/release-notes/version-2.1
+          category: Page
+          show: True
+        - title: "Tyk Charts 2.0"
+          path: /product-stack/tyk-charts/release-notes/version-2.0
+          category: Page
+          show: True
         - title: "Tyk Charts 1.6"
           path: /product-stack/tyk-charts/release-notes/version-1.6
           category: Page

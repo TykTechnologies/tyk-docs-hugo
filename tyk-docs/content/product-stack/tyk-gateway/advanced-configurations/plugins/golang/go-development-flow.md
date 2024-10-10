@@ -33,7 +33,7 @@ The commands in the following sections will create a `go.mod` file inside your f
 
 In Gateway version 5.1, the Gateway and plugins transitioned to using [Go modules builds](https://go.dev/ref/mod#introduction).
 
-The example below shows the set of commands for initialising a plugin for compatibility with Tyk Gateway 5.1.2.
+The example below shows the set of commands for initialising a plugin for compatibility with Tyk Gateway 5.2.1.
 
 ```bash
 mkdir tyk-plugin
@@ -43,7 +43,7 @@ go get github.com/TykTechnologies/tyk@ffa83a27d3bf793aa27e5f6e4c7106106286699d
 go mod tidy
 ```
 
-In the example above notice that the commit hash was used for [Tyk Gateway 5.1.2](https://github.com/TykTechnologies/tyk/releases?q=5.1.2&expanded=true)
+In the example above notice that the commit hash was used for [Tyk Gateway 5.2.1](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.1)
 
 #### Initialise plugin for Tyk Gateway versions between v4.2 and v5.0
 

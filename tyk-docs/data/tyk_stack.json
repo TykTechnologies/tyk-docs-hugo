@@ -34,12 +34,12 @@
         "path": "tyk-pump/"
       },
       {
-        "title": "Tyk Operator (Open source)",
+        "title": "Tyk Operator",
         "description": "Manage your APIs on Tyk Gateway.",
         "path": "tyk-operator/"
       },
       {
-        "title": "Tyk Sync (Open source)",
+        "title": "Tyk Sync",
         "description": "Command line tool to manage and synchronise Tyk installation.",
         "path": "tyk-sync/"
       },
