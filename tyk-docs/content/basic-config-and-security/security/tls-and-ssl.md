@@ -302,7 +302,7 @@ spec:
     strip_listen_path: true
 ```
 
-#### Define via Tyk Operator (Tyk OAS){#tyk-operator-oas}
+#### Define via Tyk Operator using Tyk OAS API Definition{#tyk-operator-oas}
 
 You can also manage custom domain certificates using Kubernetes secrets in Tyk OAS.
 
