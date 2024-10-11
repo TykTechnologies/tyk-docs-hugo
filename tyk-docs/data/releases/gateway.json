@@ -3,7 +3,7 @@
   "licensed": false,
   "latest": "5.6.0",
   "lts": "5.3.6",
-  "releaseNotesPath": "product-stack/tyk-gateway/release-notes/overview",
+  "releaseNotesPath": "product-stack/tyk-gateway/release-notes/version-5.6",
   "5.6.0": {
     "date": "10/10/2024",
     "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.6.0",
