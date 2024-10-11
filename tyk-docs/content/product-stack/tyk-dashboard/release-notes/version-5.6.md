@@ -203,7 +203,7 @@ We have fixed an issue in the Dashboard UI when assigning multiple claim to poli
 <details>
 <summary>Gateway logs page not displaying correctly</summary>
 
-We have fixed an issue in the Dashboard UI where the Gateway Logs page was not displaying correctly. The page is now rendered properly, ensuring users can view and manage Gateway logs as expected.
+We have fixed an issue in the Monitoring section of the Dashboard UI where the *Gateway logs* page was not displaying correctly. The page is now rendered properly, ensuring users with appropriate permissions can view and manage *Gateway logs* as expected.
 
 </details>
 </li>
