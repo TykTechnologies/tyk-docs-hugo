@@ -9,7 +9,7 @@ aliases:
 ---
 
 Tyk API Platform offers various deployment options, consisting of both [open source and proprietary]({{< ref "tyk-stack" >}})
-components.
+components. 
 
 Choosing the right one for your organization depends on your specific requirements and preferences.
 </br>Don’t hesitate to contact us for assistance {{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
