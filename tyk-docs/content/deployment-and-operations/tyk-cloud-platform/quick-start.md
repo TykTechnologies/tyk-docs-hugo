@@ -57,7 +57,7 @@ All the necessary infrastructure has been reserved for you for the next 48 hours
 
 * Select to which gateway you want to deploy this API, select the "edge" tags to deploy to the cloud data plane.
 
-{{< img src="/img/cloud/tyk-cloud-select-cloud-gateway.png" alt="Selecting Cloud Data Planes for an API" >}}
+{{< img src="/img/cloud/tyk-cloud-select-cloud-gateway.png" alt="Selecting Cloud Data Planes for an API" width="500px" >}}
 
 * Select "Active" in the "Gateway Status" section.
 * Select "External" in the "Access" section.
@@ -112,7 +112,7 @@ In this step, we will guide you through the process of creating a policy and key
 
 Congratulations! Your key has now been created!
 
-{{< img src="/img/cloud/tyk-cloud-copy-key-url.png" alt="Copy Key ID" >}}
+{{< img src="/img/cloud/tyk-cloud-copy-key-url.png" alt="Copy Key ID" width="500px" >}}
 
 <b>Note:</b> Please copy the "Key ID" as it will be necessary when testing the API.
 
@@ -141,7 +141,7 @@ After creating a Policy and a Key, proceed to "Postman" to test and interact wit
 * In the Tyk Gateway Dashboard, navigate to "Keys" under the "System Management" section on the left-hand side.
 * Copy the previously created "Key ID".
 
-{{< img src="/img/cloud/tyk-cloud-copy-key-url.png" alt="Copy key ID" >}}
+{{< img src="/img/cloud/tyk-cloud-copy-key-url.png" alt="Copy key ID" width="500px" >}}
 
 * On Postman, navigate to the "Authorization" tab.
 * Change the authentication type from "Inherit auth from parent" to "API Key".
