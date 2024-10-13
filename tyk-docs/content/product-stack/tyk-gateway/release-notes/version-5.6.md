@@ -42,7 +42,7 @@ Our minor releases are supported until our next minor comes out.
 We advise you to delay upgrading to the affected versions (5.6.0, 5.3.6, or 5.0.14) until the patch is available.
 
 <li><b>For users who have already upgraded to 5.6.0, 5.3.6, or 5.0.14 and are experiencing a panic in the gateway:</b><br>
-Restarting the gateway process will restore it to a healthy state. If you are operating in a Kubernetes environment, the gateway instance will automatically restart, resolving the issue.<br>
+Restarting the gateway process will restore it to a healthy state. If you are operating in a *Kubernetes* environment, Tyk Gateway instance should automatically restart, which ultimately resolves the issue.<br>
 </ul>
 <p>We appreciate your understanding and patience as we work to resolve this. Please stay tuned for the upcoming patch release, which will address this issue.
 {{< /note >}}
