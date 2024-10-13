@@ -19,7 +19,7 @@ aliases:
 {{< note success >}}
 **Important Update**<br>
 <br>
-<b>Date</b>: 12 Oct 2024<br>
+<b>Date</b>: 12 October 2024<br>
 <b>Topic</b>: Gateway panic when reconnecting to MDCB control plane or Tyk Cloud<br>
 <b>Workaround</b>: Restart Gateway<br>
 <b>Affected Product</b>: Tyk Gateway as an Edge Gateway<br>
