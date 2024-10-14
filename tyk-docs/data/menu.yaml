@@ -738,6 +738,10 @@ menu:
         - title: "Plan and define APIs"
           category: Page
           show: False
+        - title: "Useful Configurations"
+          path: /tyk-stack/tyk-gateway/important-prerequisites
+          category: Page
+          show: True
         - title: "Import APIs"
           category: Page
           show: False
@@ -2547,10 +2551,6 @@ menu:
           - title: "[version]"
             category: Page
             show: False
-      - title: "Important Prerequisites"
-        path: /tyk-stack/tyk-gateway/important-prerequisites
-        category: Page
-        show: True
     - title: "Tyk Dashboard"
       category: Directory
       show: True

@@ -185,11 +185,11 @@ Fixed the following high-priority CVEs identified in the Tyk Dashboard, providin
 
 We have fixed a privilege escalation vulnerability where a user with certain permissions could reset any other users' password, potentially gaining control over admin accounts. The following changes have been made to tighten the behavior of the password reset permission within the Dashboard's Role-Based Access Control (RBAC) system:
 - All users can reset their own passwords
-- A specific permission is required to reset the password of another user within the same Tyk Organisation
+- A specific permission is required to reset the password of another user within the same Tyk organization
 - This permission can only be assigned by an admin or super-admin
 - This permission can only be assigned to an admin and cannot be assigned to a user group
 - The `allow_admin_reset_password` configuration option automatically grants this permission to all admin users
-- Super-admins always have the password reset permission across all Tyk Organisations
+- Super-admins always have the password reset permission across all Tyk organizations
 </details>
 </li>
    

@@ -38,7 +38,7 @@ We’ve upgraded the Tyk Dashboard to Golang 1.22, bringing improved performance
 
 ####  Strengthened Role-Based Access Controls (RBAC) to combat privilege escalation risks
 
-We’ve tightened up the rules that govern a user's ability to create admin users and to reset other users' passwords when using Tyk's RBAC function. Now, only super-admins can create new admins, admin roles can't be assigned to user groups, and only admin users can reset another user's password (and only within their Tyk Organisation).
+We’ve tightened up the rules that govern a user's ability to create admin users and to reset other users' passwords when using Tyk's RBAC function. Now, only super-admins can create new admins, admin roles can't be assigned to user groups, and only admin users can reset another user's password (and only within their Tyk organization).
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
@@ -225,11 +225,11 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
 
 We have fixed a privilege escalation vulnerability where a user with certain permissions could potentially reset other users' passwords, including admin accounts. The following changes have been made to tighten the behavior of the password reset permission:
 - All users can reset their own passwords
-- A specific permission is required to reset the password of another user within the same Tyk Organisation
+- A specific permission is required to reset the password of another user within the same Tyk organization
 - This permission can only be assigned by an admin or super-admin
 - This permission can only be assigned to an admin and cannot be assigned to a user group
 - The allow_admin_reset_password configuration option automatically grants this permission to all admin users
-- Super-admins always have the password reset permission across all Tyk Organisations
+- Super-admins always have the password reset permission across all Tyk organization
 
 </details>
 </li>
