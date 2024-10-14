@@ -36,7 +36,7 @@ Using the workspace ensures build compatibility, matching plugin restrictions.
 ### 1. Checking out tyk
 
 ```
-# git clone --branch release-5.3.6 https://github.com/TykTechnologies/tyk.git tyk-release-5.3.6 || true
+git clone --branch release-5.3.6 https://github.com/TykTechnologies/tyk.git tyk-release-5.3.6 || true
 ```
 
 The example checkout uses a particular `release-5.3.6` branch, to match a release. With newer `git` version, you may pass `--branch v5.3.6` and it would use the tag. In case you want to use the tag it's also possible to navigate into the folder and issue `git checkout tags/v5.3.6`.
@@ -53,12 +53,12 @@ The plugin workspace can be very simple. Generally you would:
 For implementation examples, see [CustomGoPlugin.go](https://github.com/TykTechnologies/custom-go-plugin/blob/master/go/src/CustomGoPlugin.go). We'll be using this as the source for our plugin as shown:
 
 ```
-# mkdir -p plugins
-# rm -f go.mod go.sum
-# go mod init testplugin
-go: creating new go.mod: module testplugin
-# go mod edit -go "1.22.6"
-# wget -q https://raw.githubusercontent.com/TykTechnologies/custom-go-plugin/refs/heads/master/go/src/CustomGoPlugin.go
+mkdir -p plugins
+cd plugins
+go mod init testplugin
+go mod edit -go $(go mod edit -json go.mod | jq -r .Go)
+wget -q https://raw.githubusercontent.com/TykTechnologies/custom-go-plugin/refs/heads/master/go/src/CustomGoPlugin.go
+cd -
 ```
 
 The following snippets provide you with a way to:
@@ -68,7 +68,7 @@ The following snippets provide you with a way to:
 
 This should be used to ensure the matching between gateway and the plugin. The commit is used to `go get` the dependency in later steps.
 
-The internal `workspace:plugins` step ensures a few things:
+To summarize what was done:
 
 1. create a plugin, create go.mod,
 2. set go.mod go version to what's set in gateway,
@@ -78,27 +78,48 @@ At this point, we don't have a workspace yet. In order to share the gateway depe
 
 ### 3. Creating the Go workspace
 
+From the folder that contains the gateway checkout and the plugins folder, do:
+
 ```
-# go work init ./tyk-release-5.3.6
-# go work use ./plugins
-# cd plugins && go get github.com/TykTechnologies/tyk@c808608b9a3c44b2ef0e060f8d3f3d2269582a1c
+go work init ./tyk-release-5.3.6
+go work use ./plugins
+commit_hash=$(cd tyk-release-5.3.6 && git rev-parse HEAD)
+cd plugins && go get github.com/TykTechnologies/tyk@${commit_hash} && go mod tidy && cd -
 ```
 
-These are the final steps on how to create the workspace. The last step is used to update go.mod with the gateway commit corresponding to the checkout. After this step you're able to use `go mod tidy` in the plugins folder.
+These are the final steps on how to create the workspace. The last step is used to update go.mod with the gateway commit corresponding to the checkout. After this step you're able to use `go mod tidy` in the plugins folder as shown.
+
+With this step, the `go.work` file is created. It should look like this:
+
+```
+go 1.22.7
+
+use (
+	./plugins
+	./tyk-release-5.3.6
+)
+```
 
 ### 4. Testing out the plugin
 
-```
-# cd tyk-release-5.3.6 && go build -tags=goplugin -trimpath -race .
-# cd plugins           && go build -trimpath -race -buildmode=plugin .
-```
-
-The above few steps build gateway, and the plugin.
+To test out the gateway/plugin build, you can now to the following:
 
 ```
-# ./tyk-release-5.3.6/tyk plugin load -f plugins/testplugin.so -s AuthCheck
-time="Oct 01 21:29:24" level=info msg="--- Go custom plugin init success! ---- "
-[file=plugins/testplugin.so, symbol=AuthCheck] loaded ok, got 0x7fdcd650f980
+cd tyk-release-5.3.6 && go build -tags=goplugin -trimpath . && cd -
+cd plugins           && go build -trimpath -buildmode=plugin . && cd -
+```
+
+The above few steps build gateway, and the plugin. To test plugin loading:
+
+```
+./tyk-release-5.3.6/tyk plugin load -f plugins/testplugin.so -s AuthCheck
+```
+
+The command should output something similar to:
+
+```
+time="Oct 14 13:39:55" level=info msg="--- Go custom plugin init success! ---- "
+[file=plugins/testplugin.so, symbol=AuthCheck] loaded ok, got 0x76e1aeb52140
 ```
 
 We can use the built gateway binary to test plugin loading without invoking the plugin symbol like a request would. However, as demonstrated, the plugins `init` function is invoked, printing to the log.
