@@ -109,14 +109,6 @@ Each plugin can have additional settings, such as:
 
 At the endpoint-level, Tyk provides the facility to attach a custom Golang plugin at the end of the request processing chain (immediately before the API-level post-plugin is executed). Please note that [per-endpoint]({{< ref "product-stack/tyk-gateway/middleware/endpoint-plugin" >}}) level plugins are not currently supported by Tyk Operator.
 
-### Undocumented
-
-##### Plugin Bundles
-
-Tyk Operator also supports configuring custom plugins using plugin bundles, where the source code and associated configuration is packaged into a zip file and uploaded to a remote webserver. Tyk Gateway will then download, extract, cache and execute the plugin bundles for each of the configured phases of the [API request lifecycle]({{< ref "concepts/middleware-execution-order" >}}).
-
-Currently, there are no examples documented for configuring plugin bundles with Tyk Operator. Please refer to [plugin bundles]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) for further details of the equivalent Tyk Classic API configuration or reach out on the [community forum](https://community.tyk.io).
-
 ---
 
 ## Example: Configure Custom Plugins (JavaScript) With Tyk Operator
@@ -202,3 +194,11 @@ $ curl http://localhost:8080/httpbin/headers
 ```
 
 The header `"Hello: World"` should be injected by the custom plugin.
+
+---
+
+## Example: Configure Custom Plugins (Python) using plugin bundles via Tyk Operator
+
+Tyk Operator also supports configuring custom plugins using plugin bundles, where the source code and associated configuration is packaged into a zip file and uploaded to a remote webserver. Tyk Gateway will then download, extract, cache and execute the plugin bundles for each of the configured phases of the [API request lifecycle]({{< ref "concepts/middleware-execution-order" >}}).
+
+For a detailed guide, check out our blog post [How to Deploy Python Plugins in Tyk Running on Kubernetes], which walks you through all the steps required to create Python [plugin bundles]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}), load them into the Tyk Gateway, and configure an API Definition to use them with the Tyk Operator.
