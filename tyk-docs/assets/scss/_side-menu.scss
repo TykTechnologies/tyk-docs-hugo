@@ -164,7 +164,6 @@ Tree View
     font-size: 13px;
 
     ul {
-        margin-top: 5px;
         position: relative;
     }
 
@@ -173,9 +172,9 @@ Tree View
         width: 100%;
         padding-left: 25px;
         list-style-type: none;
-        line-height: 20px;
+        line-height: 25px;
         //margin-bottom: 20px; //
-        padding-bottom: 4px;
+        padding-bottom: 5px;
         position: relative;
         background: transparent !important;
         // cursor: pointer; //
@@ -186,7 +185,8 @@ Tree View
             content: '';
             background-image: url('../img/icon-caret.svg');
             background-repeat: no-repeat;
-            background-position: right;
+            background-position: left;
+            background-size: 12px;
             inline-size: 100%;
             block-size: var(--caret-size);
             position: absolute;
@@ -222,7 +222,7 @@ Tree View
         overflow: hidden;
         display: table;
         // padding-bottom: 20px; //
-        line-height: 30px;
+        line-height: 25px;
 
         ul {
             display: none;
@@ -293,7 +293,7 @@ Tree View
         padding-left: 0;
         padding-bottom: 14px;
         padding-top: 5px;
-        line-height: 20px;
+        line-height: 25px;
 
         &:before {
             display: none;
@@ -370,7 +370,7 @@ Tree View
             font-weight: bold;
             color: $brandpurple-dark;
             letter-spacing: initial;
-            padding-bottom: 5px;
+            padding-bottom: 3px;
         }
 
         &:last-child .st-open:last-child:before {

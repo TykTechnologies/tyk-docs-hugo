@@ -205,8 +205,9 @@
   width: 98%;
   max-width: 300px;
   white-space: normal;
+
   @media (max-width: 555px) {
-  max-width: 100%;
+    max-width: 100%;
   }
 }
 
@@ -405,12 +406,16 @@ iframe {
   margin-bottom: 26px;
   font-size: 30px;
   font-family: Inter, sans-serif;
+  font-weight: 500;
+  opacity: 0.78;
 }
 
 .wysiwyg h2 {
   font-weight: bold;
   font-family: Inter, sans-serif;
   padding-top: 2%;
+  font-weight: 500;
+  opacity: 0.78;
 }
 
 .wysiwyg h1:first-of-type {
@@ -425,6 +430,8 @@ iframe {
   font-weight: bold;
   padding-top: 35px;
   margin-top: 0;
+  font-weight: 500;
+  opacity: 0.78;
 }
 
 .wysiwyg h4 {
@@ -433,6 +440,8 @@ iframe {
   margin-top: 35px;
   font-family: "Inter", sans-serif;
   font-weight: bold;
+  font-weight: 500;
+  opacity: 0.78;
 }
 
 .wysiwyg h5 {
@@ -440,6 +449,8 @@ iframe {
   margin-bottom: 4px;
   margin-top: 27px;
   font-family: "Inter", sans-serif;
+  font-weight: 500;
+  opacity: 0.78;
 }
 
 .wysiwyg p {
@@ -454,6 +465,7 @@ iframe {
   border-top-right-radius: 25px;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
+
   @media screen and (min-width: 769px) and (max-width: 1049px) {
     max-width: 650px; // Change max-width for medium screens
   }
@@ -541,17 +553,21 @@ iframe {
 
 .hasSidebar .docs-navigation {
   display: block;
+
   @media (max-width: 1024px) {
     display: flex;
     justify-content: center;
     flex-direction: row;
   }
-  #previousArticle, #nextArticle{
+
+  #previousArticle,
+  #nextArticle {
     @media (max-width: 1024px) {
       max-width: 160px;
       margin: auto;
     }
   }
+
   @include breakpoint(xlarge) {
     background: url("../img/nav-center.png") 50% center no-repeat;
     background-size: 20%;
@@ -753,6 +769,7 @@ iframe {
 
 
 @media only screen and (max-width: 1000px) {
+
   .hero-sidebyside h1,
   .hero-sidebyside .hero-text {
     float: none;
@@ -806,7 +823,7 @@ iframe {
     margin-right: 0;
   }
 
- 
+
 
   .docs-navigation .button {
     margin-bottom: 5px;
@@ -893,9 +910,9 @@ iframe {
 
 .external-links::after {
   content: "";
-  background:  url("../img/external-link.svg") no-repeat 0 0;
-  width: 16px!important;
-  height: 16px!important;
+  background: url("../img/external-link.svg") no-repeat 0 0;
+  width: 16px !important;
+  height: 16px !important;
   display: inline-block;
   top: 0;
   background-size: 100%;
@@ -903,9 +920,9 @@ iframe {
 
 .external-links-black::after {
   content: "";
-  background:  url("../img/external-white.svg") no-repeat 0 0;
-  width: 16px!important;
-  height: 16px!important;
+  background: url("../img/external-white.svg") no-repeat 0 0;
+  width: 16px !important;
+  height: 16px !important;
   display: inline-block;
   top: 0;
   background-size: 100%;
