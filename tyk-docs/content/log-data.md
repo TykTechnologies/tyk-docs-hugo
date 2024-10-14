@@ -56,7 +56,7 @@ If unset or left empty, it will default to `info`.
 
 ### Setting log format (only available for the Gateway)
 
-As of Tyk Gateway versions LTS `v5.3.6` and `v5.6.0`, you can control log format using the `TYK_LOGFORMAT` environment variable. By default, logs are in `default` format, but setting `TYK_LOGFORMAT` to `json` will output logs in JSON format.
+As of Tyk Gateway `v5.6.0`, you can control log format using the `TYK_LOGFORMAT` environment variable. By default, logs are in `default` format, but setting `TYK_LOGFORMAT` to `json` will output logs in JSON format.
 
 ##### Default logging format
 ```
