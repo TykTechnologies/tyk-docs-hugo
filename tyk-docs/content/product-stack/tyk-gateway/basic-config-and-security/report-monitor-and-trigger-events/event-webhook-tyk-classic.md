@@ -111,6 +111,7 @@ spec:
       - handler_name: "eh_web_hook_handler"
         handler_meta:
           method: "POST"
+          name: "webhook name"
           target_path: "http://posttestserver.com/post.php?dir=tyk-event-test"
           template_path: "templates/default_webhook.json"
           header_map:
