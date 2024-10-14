@@ -2,7 +2,7 @@
 title: Tyk Gateway 5.3 LTS Release Notes
 date: 2024-03-27T15:51:11Z
 description: "Release notes documenting updates, enhancements, and changes for Tyk Gateway versions within the 5.3.X series."
-tags: ["Tyk Gateway", "Release notes", "changelog", "v5.3", "5.3.0", "5.3.1", "5.3.3", "5.3.5"]
+tags: ["Tyk Gateway", "Release notes", "changelog", "v5.3", "5.3.0", "5.3.1", "5.3.3", "5.3.5", "5.3.7"]
 ---
 
 <!-- Required. oss or licensed. Choose one of the following:
@@ -18,6 +18,113 @@ tags: ["Tyk Gateway", "Release notes", "changelog", "v5.3", "5.3.0", "5.3.1", "5
 ## Support Lifetime
 <!-- Required. replace X.Y with this release and set the correct quarter of the year -->
 Our minor releases are supported until our next minor comes out.
+
+---
+
+## 5.3.7 Release Notes
+
+### Release Date 15 October 2024
+
+### Release Highlights
+
+This patch release for Tyk Gateway addresses critical stability issues for users utilizing Tyk Gateway as a data plane connecting to the Multi-Data Center Bridge (MDCB) control plane or Tyk Cloud. Affected users should upgrade immediately to version 5.3.7 to avoid service interruptions and ensure reliable operations with MDCB or Tyk Cloud.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.7">}}) below.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Deprecations
+
+There are no deprecations in this release.
+
+
+### Upgrade Instructions
+
+If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+
+
+### Dependencies
+
+<!--Required. Use this section to announce the following types of dependencies compatible with the release:
+Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+3rd party dependencies and tools -->
+
+#### Compatibility Matrix For Tyk Components
+
+<!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+An illustrative example is shown below. -->
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.3.7 | MDCB v2.5.1     | MDCB v2.5.1 |
+|         | Operator v0.17 | Operator v0.16 |
+|         | Sync v1.4.3   | Sync v1.4.3 |
+|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v2.0.0 | Helm all versions |
+| | EDP v1.8.3 | EDP all versions |
+| | Pump v1.9.0 | Pump all versions |
+| | TIB (if using standalone) v1.5.1 | TIB all versions |
+
+
+#### 3rd Party Dependencies & Tools
+
+<!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
+
+Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
+
+An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
+
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments |
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- |
+| [Go](https://go.dev/dl/)                                     | 1.22  | 1.22  | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.22 |
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) |
+
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+
+### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.3.7)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.3.7
+    ```
+- Helm charts
+  - [tyk-charts v2.0.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.0.md">}})
+- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+
+
+### Changelog {#Changelog-v5.3.7}
+
+#### Fixed
+ <!-- This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
+ - What problem the issue caused
+ - How was the issue fixed
+ - Link to (new) documentation created as a result of a fix. For example, a new configuration parameter may have been introduced and documented for the fix
+ - For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+ Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
+ <ul>
+ <li>
+ <details>
+ <summary>Resolved gateway panic on reconnecting to MDCB control plane or Tyk Cloud</summary>
+ In prior versions (5.6.0, 5.3.6, and 5.0.14), Tyk Gateway could encounter a panic when attempting to reconnect to the control plane that was restarted. This issue has been resolved in patch versions 5.6.1, 5.3.7, and 5.0.15, to ensure stable connectivity between the gateway and control plane following reconnections, reducing manual intervention for recovery.
+ </details>
+ </li>
+ </ul>
+
+<!-- 
+#### Security Fixes
+This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
+1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
+2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
+
+For agreed CVE security fixes, provide a link to the corresponding entry on the NIST website. For example:
+
+- Fixed the following CVEs:
+    - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
+-->
 
 ---
 
