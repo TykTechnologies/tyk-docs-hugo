@@ -17,11 +17,11 @@ The Tyk Cloud trial does not include access to [Hybrid deployments]({{< ref "tyk
 To try out these capabilities, please get in touch for a [guided evaluation](https://tyk.io/guided-evaluation/) with our team.
 {{< /note >}}
 
-Welcome to the Tyk Cloud Platform!
+Welcome to the [Tyk Cloud Platform]({{< ref "tyk-cloud" >}})!
 This guide will lead you through the following steps:
-1. Signing up with Tyk Cloud.
-2. Creating your first API using the Tyk Dashboard.
-3. Setting up a Policy and Key to secure your APIs.
+1. Signing up with [Tyk Cloud ]({{< ref "tyk-cloud" >}}).
+2. Creating your first [API]({{< ref "getting-started/key-concepts/what-is-an-api-definition" >}}) using the [Tyk Dashboard]({{< ref "tyk-dashboard" >}}).
+3. Setting up a [Policy]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) and Key to secure your APIs.
 
 No installation required!
 
