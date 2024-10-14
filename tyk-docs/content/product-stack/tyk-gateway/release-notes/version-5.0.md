@@ -12,6 +12,39 @@ aliases:
 
 ---
 
+## 5.0.15 Release Notes {#rn-v5.0.15}
+
+### Release Date 15 October 2024
+
+### Breaking Changes
+**Attention:** Please read this section carefully.
+
+There are no breaking changes in this release.
+
+### Upgrade Instructions
+
+Go to the [Upgrading Tyk](https://tyk.io/docs/product-stack/tyk-gateway/release-notes/version-5.0/#upgrading-tyk) section for detailed upgrade instructions.
+
+### Release Highlights
+
+This patch release for Tyk Gateway addresses critical stability issues for users utilizing Tyk Gateway as a data plane connecting to the Multi-Data Center Bridge (MDCB) control plane or Tyk Cloud. Affected users should upgrade immediately to version 5.0.15 to avoid service interruptions and ensure reliable operations with MDCB or Tyk Cloud.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.0.15">}}) below.
+
+### Changelog {#Changelog-v5.0.15}
+
+#### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Resolved gateway panic on reconnecting to MDCB control plane or Tyk Cloud</summary>
+In prior versions (5.6.0, 5.3.6, and 5.0.14), Tyk Gateway could encounter a panic when attempting to reconnect to the control plane that was restarted. This issue has been resolved in patch versions 5.6.1, 5.3.7, and 5.0.15, to ensure stable connectivity between the gateway and control plane following reconnections, reducing manual intervention for recovery.
+</details>
+</li>
+</ul>
+
+---
 ## 5.0.14 Release Notes {#rn-v5.0.14}
 
 ### Release Date 18th September 2024
