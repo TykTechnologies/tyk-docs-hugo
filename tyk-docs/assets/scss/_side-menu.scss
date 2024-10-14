@@ -172,9 +172,9 @@ Tree View
         width: 100%;
         padding-left: 25px;
         list-style-type: none;
-        line-height: 25px;
+        line-height: 20px;
         //margin-bottom: 20px; //
-        padding-bottom: 5px;
+        padding-bottom: 10px;
         position: relative;
         background: transparent !important;
         // cursor: pointer; //
@@ -222,7 +222,7 @@ Tree View
         overflow: hidden;
         display: table;
         // padding-bottom: 20px; //
-        line-height: 25px;
+        line-height: 20px;
 
         ul {
             display: none;
@@ -293,7 +293,7 @@ Tree View
         padding-left: 0;
         padding-bottom: 14px;
         padding-top: 5px;
-        line-height: 25px;
+        line-height: 20px;
 
         &:before {
             display: none;
