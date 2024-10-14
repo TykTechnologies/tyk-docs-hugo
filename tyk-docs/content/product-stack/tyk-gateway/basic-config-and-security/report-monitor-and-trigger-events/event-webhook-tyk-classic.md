@@ -91,7 +91,7 @@ Tyk Operator supports event handler integration for Tyk Classic API Definition. 
 
 The process for configuring webhook event handlers using Tyk Operator is similar to that explained in [Set up a webhook event handler in the Tyk Classic API Definition](#set-up-a-webhook-event-handler-in-the-tyk-classic-api-definition). The example API Definition below enabled event handler by setting `spec.event_handlers`.
 
-```yaml {hl_lines=["14-24"],linenos=true, linenostart=1}
+```yaml {hl_lines=["14-25"],linenos=true, linenostart=1}
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:
