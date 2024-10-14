@@ -3,10 +3,6 @@ title: "Customize the User model"
 date: 2024-02-29
 tags: ["Tyk Developer Portal","Enterprise Portal","Sign-up","User attributes","Metadata"]
 description: "Customize the User model and extend the data stored in the User profile"
-menu:
-    main:
-        parent: "Customize the portal"
-weight: 3
 ---
 
 {{< note success >}}
@@ -68,7 +64,7 @@ By default, the portal assigns the following attributes to credentials metadata 
 |-----------------|---------------------------------------|-----------------------------------------------------------------------------------|
 | Developer ID    | DeveloperID                           | ID of the developer who created the credential                                    |
 | Application ID  | ApplicationID                         | ID of the application to which it belongs                                         |
-| Organization ID | OrganizationID                        | ID of the organization to which the developer who created the application belongs |
+| Organisation ID | OrganisationID                        | ID of the organization to which the developer who created the application belongs |
 | Team IDs        | TeamIDs                               | Array of team IDs to which the developer, who created the application, belongs    |
 
 Additionally, it is possible to include other default attributes of the User model in the credential metadata fields.
@@ -80,5 +76,5 @@ Exercise caution when dealing with personally identifiable information (PII). Ad
 | Last name         | Last                                  | Last name of the developer who created the credential                               |
 | Email             | Email                                 | Email name of the developer who created the credential                              |
 | Role              | Role                                  | Array of team IDs to which the developer, who created the application, belongs      |
-| Organization name | Organization                          | Name of the organization to which the developer who created the application belongs |
+| Organisation name | Organisation                          | Name of the organization to which the developer who created the application belongs |
 | Teams name        | TeamNames                             | Array of team names to which the developer, who created the application, belongs     |
