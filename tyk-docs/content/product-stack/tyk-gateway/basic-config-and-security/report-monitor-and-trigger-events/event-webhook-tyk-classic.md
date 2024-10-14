@@ -84,3 +84,36 @@ Now:
 Note that you can register multiple webhooks to be triggered in response to a single event and you can register the same webhook with multiple API events.
 
 Remember to click **Save** to save your changes.
+
+## Set up a webhook event handler in Tyk Operator
+
+Tyk Operator supports event handler integration for Tyk Classic API Definition. By configuring the `event_handlers` field in ApiDefinition Custom Resource Definition (CRD), you can enable webhooks to be triggered by specific API events. 
+
+The process for configuring webhook event handlers using Tyk Operator is similar to that explained in [Set up a webhook event handler in the Tyk Classic API Definition](#set-up-a-webhook-event-handler-in-the-tyk-classic-api-definition). The example API Definition below enabled event handler by setting `spec.event_handlers`.
+
+```yaml {hl_lines=["14-24"],linenos=true, linenostart=1}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: webhook-handler
+spec:
+  name: webhook-handler
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /webhook-handler
+    strip_listen_path: true
+  event_handlers:
+    events:
+      AuthFailure:
+      - handler_name: "eh_web_hook_handler"
+        handler_meta:
+          method: "POST"
+          target_path: "http://posttestserver.com/post.php?dir=tyk-event-test"
+          template_path: "templates/default_webhook.json"
+          header_map:
+            X-Tyk-Test-Header: "Tyk v1.BANANA"
+          event_timeout: 10
+```

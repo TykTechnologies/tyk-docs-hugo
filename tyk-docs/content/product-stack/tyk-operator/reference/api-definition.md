@@ -87,7 +87,7 @@ Here are the supported features:
 | Custom Analytics Tags (Tag Headers)  | ✅        | v0.10.0        | - | [Custom Analytics Tags (Tag Headers)]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/custom-analytics#tyk-operator" >}}) |
 | Expire Analytics After               | ❌        | -              | -                                                                      |                                                                 |
 | Do not track Analytics (per API)     | ✅        | v0.1.0         | - | [Do Not Track]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-classic" >}}) |-                                                                      |                                                                 |
-| Webhooks                             | ❌        | -              | -   | |
+| Webhook Event Handler                | ✅        | v1.0           | -   | [Webhook Event Handler]({{<ref "product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/event-webhook-tyk-classic">}}) |
 | Looping                              | ✅        | v0.6           | -   | [Internal Looping]({{< ref "product-stack/tyk-operator/advanced-configurations/internal-looping" >}})                          |
 | Round Robin Load Balancing           | ✅        | -              | -                                                                    | [Load Balancing]({{<ref "planning-for-production/ensure-high-availability/load-balancing">}})                    |
 
