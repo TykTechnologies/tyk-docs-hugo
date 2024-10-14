@@ -29,14 +29,14 @@ Our minor releases are supported until our next minor comes out.
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
 -->
-This patch release for Tyk Gateway addresses critical stability issues for users utilizing Tyk Gateway as a data plane connecting to the Multi-Data Center Bridge (MDCB) control plane or Tyk Cloud. Affected users should upgrade immediately to version 5.6.1 (or 5.3.7, 5.0.15) to avoid service interruptions and ensure reliable operations with MDCB or Tyk Cloud.
+This patch release for Tyk Gateway addresses critical stability issues for users utilizing Tyk Gateway as a data plane connecting to the Multi-Data Center Bridge (MDCB) control plane or Tyk Cloud. Affected users should upgrade immediately to version 5.6.1 to avoid service interruptions and ensure reliable operations with MDCB or Tyk Cloud.
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 
 There are no breaking changes in this release.
 
-### Dependencies {#dependencies-5.6.0}
+### Dependencies {#dependencies-5.6.1}
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
