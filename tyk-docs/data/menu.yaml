@@ -2,7 +2,7 @@
 ---
 menu:
   - title: "Home"
-    path: /
+    path: "/"
     category: Label
     show: True
   - title: "Deployment and Operations"
