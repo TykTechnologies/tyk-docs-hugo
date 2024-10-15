@@ -91,7 +91,7 @@ body {
 
   @include breakpoint(xlarge) {
     .hasSidebar &__container {
-      padding-right: 100px;
+      padding-right: 20px;
       padding-top: 60px;
       padding-left: 100px;
     }
