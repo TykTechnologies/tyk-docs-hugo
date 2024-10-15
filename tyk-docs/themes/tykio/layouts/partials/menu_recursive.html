@@ -87,7 +87,7 @@
         {{- partial "menu_recursive.html" (dict "menu" .menu "page" $page "site" $site) -}}
     </li>
       {{end}}
-  {{- else if (eq .category "Label") -}}
+  {{- else if and (.show) (eq .category "Label") -}}
   
     {{- if eq .title "Overview" -}}
       <a href="{{ "" | relURL }}" style="font-size: 15px;" >{{ .title }}</a>

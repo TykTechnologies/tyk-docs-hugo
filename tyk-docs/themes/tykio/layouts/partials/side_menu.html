@@ -10,7 +10,7 @@
         </div>
 
         <div data-tree class="st-treed">
-            {{- partial "menu_include.html" . -}}
+            {{- partial "menu_recursive.html" (dict "menu" .Site.Data.menu.menu "page" . "site" .Site) -}}
         </div>
     </nav>
 
