@@ -75,7 +75,7 @@ body {
   @include breakpoint(large) {
     .hasSidebar &__main {
       display: grid;
-      grid-template-columns: minmax(400px, 4fr) minmax(200px, 1fr);
+      grid-template-columns: minmax(400px, 2fr) minmax(200px, 1fr);
 
       &.no-toc {
         grid-template-columns: 1fr;
