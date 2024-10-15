@@ -89,7 +89,7 @@
       {{end}}
   {{- else if and (.show) (eq .category "Label") -}}
   
-    {{- if eq .title "Overview" -}}
+    {{- if eq .title "Home" -}}
       <a href="{{ "" | relURL }}" style="font-size: 15px;" >{{ .title }}</a>
     {{- else -}}
       <hr>
