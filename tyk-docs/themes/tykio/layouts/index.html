@@ -103,7 +103,6 @@ Start of most used section is here-->
       </div>
       <div class="row">
         {{- range $.Site.Data.tyk_stack.stacks -}}
-
           <div class="col-12 col-md-6">
             {{- range . -}}
               <a href="{{ .path | relURL }}" class="stack-box d-flex align-items-center">
