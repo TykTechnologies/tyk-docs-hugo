@@ -1,36 +1,31 @@
 <header class="home_header">
-    <nav style="padding: 16px 5px;">
-        <div class="header-refresh">
-            <a href= "{{ "" | relURL }}" >
-                <img src="{{ "img/Tyk-Docs-logo-Dark.svg" | relURL }}" width="147" height="32" alt="Tyk API Gateway and API Management">
-            </a>
-            <div class="search_widget">
-                <div style="padding: 8px 8px 7px 10px" class="search-input" id="search_container">
-                </div>
+  <nav style="padding: 16px 5px;">
+    <div class="header-refresh">
+      <a href="{{ "" | relURL }}">
+        <img
+          src="{{ "img/Tyk-Docs-logo-Dark.svg" | relURL }}"
+          width="147"
+          height="32"
+          alt="Tyk API Gateway and API Management" />
+      </a>
+      <div class="search_widget">
+        <div style="padding: 8px 8px 7px 10px" class="search-input" id="search_container"></div>
+      </div>
+      <div class="m-hide">
+        <div class="header__nav_container">
+          {{- partial "menu_top_external.html" . -}}
+          <a href="https://dashboard.cloud-ara.tyk.io/login" class="fs-xs text-nowrap mn-btn">Cloud Login</a>
+          <div class="dropdown">
+            <span class="dropbtn">Help &#9662;</span>
+            <div class="dropdown-content">
+              <a href="https://community.tyk.io/">Community</a>
+              <a href="https://support.tyk.io/">24/7 Support</a>
             </div>
-            <div class="m-hide">
-                <div class="header__nav_container">
-                {{- partial "menu_top_external.html" . -}}
-
-                <a href="https://dashboard.cloud-ara.tyk.io/login" class="sec-btn text-sec"
-                >Cloud Login</a>
-                <a href="https://tyk.io/sign-up/" class="fs-xs text-nowrap mn-btn"
-                >Install</a>
-                </div>
-            </div>
-
-            <button class="m-show burger" data-toggle="show-submenu"></button>
-
-
+          </div>
         </div>
+      </div>
 
-    </nav>
-    <div class="m-hide">
-
-        <div>
-            <div class="d-flex overflow-auto justify-content-start">
-                {{- partial "tabs_menu.html" . -}}
-            </div>
-        </div>
+      <button class="m-show burger" data-toggle="show-submenu"></button>
     </div>
+  </nav>
 </header>

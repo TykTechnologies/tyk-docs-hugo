@@ -43,7 +43,7 @@
       margin-right: 0;
     }
   }
-  
+
   .header__search {
     flex-grow: 1;
   }
@@ -81,7 +81,6 @@
       input.extend-links {
         display: none;
       }
-
 
       @media (min-width: 1001px) and (max-width: 1250px) {
         label[for="extend-links"] {
@@ -123,7 +122,6 @@
       display: block;
     }
   }
-
 }
 
 .header__tabs-menu {
@@ -141,7 +139,7 @@
     color: $brand-black;
     font-size: 18px;
     font-weight: bold;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     white-space: nowrap;
 
     &:not(:first-child) {
@@ -217,7 +215,7 @@
 }
 
 .menu .menu-underline {
-  background: #258B80;
+  background: #258b80;
   height: 2px;
   position: absolute;
   bottom: 0;
@@ -270,13 +268,9 @@
   visibility: visible;
 }
 
-
-
-
 /* ==========================================================================
    Header Media Queries
    ========================================================================== */
-
 
 @include breakpoint(large, down) {
   .burger {
@@ -289,7 +283,6 @@
     z-index: 3;
     display: inline-block;
     border-radius: 40px;
-    
 
     &:before,
     &:after {
@@ -325,9 +318,6 @@
     }
   }
 
-
-
-
   .header {
     padding: 0;
     height: $header-height-small;
@@ -357,23 +347,20 @@
         width: calc(100% - 80px);
       }
     }
-
   }
-
 }
 
 .home_header {
-  border-bottom: 1px solid #E3CEFF;
+  border-bottom: 1px solid #e3ceff;
 }
 @include breakpoint(large, up) {
   .home_header {
-    padding-left: 50px;
+    padding-left: 20px;
     padding-right: 20px;
-
   }
 }
 
-.header-refresh{
+.header-refresh {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -387,7 +374,6 @@
       margin-right: 70px;
     }
   }
-
 }
 .header__nav_container {
   display: flex;
@@ -397,7 +383,9 @@
 
 .header_link {
   color: var(--text-subdued, #515071);
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
