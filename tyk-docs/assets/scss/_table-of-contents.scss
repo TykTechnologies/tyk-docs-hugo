@@ -29,7 +29,7 @@
 }
 
 .documentation-table-of-contents {
-	padding: 0.5rem 1rem 0.5rem 1.5rem;
+	padding: 60px 1rem 0.5rem 1.5rem;
 
 	.sub_toc__item:hover,.sub-sub-toc-item:hover,.sub-sub-sub-toc-item:hover {
 		color: #8438FA !important;
@@ -225,7 +225,6 @@
 	}
 
 	@include breakpoint(large) {
-		border-left: 1px solid $brandpurple-2;
 		position: sticky;
 		top: 0;
 	}
@@ -252,7 +251,8 @@
 			position: relative;
 			text-transform: uppercase;
 			color: $brandpurple-11;
-			font-weight: 600;
+			font-weight: 400;
+			font-size: 13px;
 
 			@include breakpoint(large) {
 				margin-bottom: 1rem;
