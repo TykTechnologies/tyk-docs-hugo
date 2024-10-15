@@ -14,7 +14,7 @@ on:
 jobs:
   docs_linter:
     runs-on: ubuntu-latest
-    name: Lint the docs with prettier
+    name: Format PR files with Prettier
 
     steps:
       - uses: actions/checkout@v4
