@@ -15,8 +15,8 @@ var buildTableOfContents = function () {
 
     if (contentTitles.length < 3) {
         // Remove ToC if there are not enough links
-        ToCContainer.remove();
-        $('.page-content__main').addClass('no-toc');
+        //ToCContainer.remove();
+        //$('.page-content__main').addClass('no-toc');
         return;
     }
 
