@@ -453,6 +453,10 @@ global:
        keyName: "postgreConnectionURLkey"
 ```
 
+***Tyk Operator License***
+
+It can be configured via `global.license.operator` as a plain text or Kubernetes secret which includes `OperatorLicense` key in it. Then, this secret must be referenced via `global.secrets.useSecretName`.
+
 ### Gateway Configurations
 
 This section explains how to configure the `tyk-gateway` section for updating the Gateway version, enabling TLS, enabling autoscaling etc.
@@ -877,7 +881,14 @@ tyk-dev-portal:
 
 ### Tyk Operator Configurations
 
-In order to enable installing Tyk Operator along-side Tyk Stack installation, please set `global.components.operator` to `true`.
+Tyk Operator is a licensed component that requires a valid key for operation. 
+Please refer to the [Tyk Operator Installation Guide]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}})
+for detailed information on the installation and upgrade processes. 
+
+Prior to installing Tyk Operator, ensure that a valid license key is provided by setting `global.license.operator` field in values.yaml file. You can set license key via a Kubernetes secret using `global.secrets.useSecretName` field. The secret should contain a key called `OperatorLicense`.
+
+In order to enable installing Tyk Operator along-side Tyk Stack installation, please set `global.components.operator`
+to `true`.
 
 All other configurations related to Tyk Operator are available under `tyk-operator` section of `values.yaml` file.
 
