@@ -90,7 +90,7 @@
   {{- else if (eq .category "Label") -}}
   
     {{- if eq .title "Overview" -}}
-    
+      <a href="{{ "" | relURL }}" style="font-size: 15px;" >{{ .title }}</a>
     {{- else -}}
       <hr>
       <h6 style="font-size: 15px;" >{{ .title }}</h6>
