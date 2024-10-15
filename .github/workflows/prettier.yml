@@ -1,0 +1,59 @@
+# This GitHub Action is triggered on pull requests to:
+# 1. Format changed files using Prettier.
+# 2. Automatically install Prettier and its Go template plugin.
+# 3. Identify all files changed in the pull request.
+# 4. Format the changed files according to Prettier's rules, respecting the .prettierignore file.
+# 5. Commit any changes made to the files back to the repository.
+# 6. Optionally, check that the files are properly formatted after linting.
+#
+# This action helps ensure code quality and consistency in documentation and source files.
+name: "PR files Formatting"
+on:
+  pull_request:
+
+jobs:
+  docs_linter:
+    runs-on: ubuntu-latest
+    name: Format PR files with Prettier
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}  # Automatically checks out the PR branch
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Install Prettier and dependencies
+      - name: Install dependencies
+        run: |
+          npm install prettier@3.3.3 prettier-plugin-go-template
+
+      # Fetch the base branch and compare changes
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v45
+
+      - name: Lint all changed files
+        env:
+          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+        run: |
+          for file in ${ALL_CHANGED_FILES}; do
+            npx prettier --config .prettierrc --write "$file"
+            echo "$file was changed"
+          done
+
+      # Auto commit the changes if any
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: save formatted content
+
+      - name: Check all changed files are linted
+        env:
+          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+        run: |
+          for file in ${ALL_CHANGED_FILES}; do
+            npx prettier --config .prettierrc --check "$file"
+            echo "$file was linted"
+          done

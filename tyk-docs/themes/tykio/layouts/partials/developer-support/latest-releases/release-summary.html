@@ -2,126 +2,129 @@
 {{- $components := .components -}}
 
 {{- with $section -}}
+	{{ $slug := replace $section " " "-" }}
 
-    {{ $slug := replace $section " " "-" }}
 
-    <h2 id="{{- $slug -}}">{{- $section -}}</h2>
+	<h2 id="{{- $slug -}}">{{- $section -}}</h2>
 
-    {{- with $components -}}
-        <div class="container mt-4">
-            <div class="row justify-content-start">
-                {{ range $index, $component := $components }}
-                    {{/* Determine license type */}}
-                    {{- $license := "Licensed" -}}
-                    {{- $licensed := .data.licensed -}}
-                    {{- $releaseNotesPath := .data.releaseNotesPath -}}
-                    {{- if not $licensed -}}
-                        {{- $license = "Open Source" -}}
-                    {{ end }}
-                    
-                    {{/* Get latest and lts data */}}
-                    {{- $lts := false -}}
-                    {{- $ltsData := "" -}}
-                    {{- with .data.lts -}}
-                        {{- $ltsData = index $component.data $component.data.lts -}}
-                        {{- if $ltsData -}}
-                            {{- $lts = true -}}
-                        {{ end }}
-                    {{ end }}
-                    {{- $latest := false -}}
-                    {{- $latestData := "" -}}
-                    {{- with .data.latest -}}
-                        {{- $latestData = index $component.data $component.data.latest -}}
-                        {{- if $latestData -}}
-                            {{- $latest = true -}}
-                        {{ end }}
-                    {{ end }}
-                    <div class="col-md-4 mb-4">
-                        <div class="card h-100 release-card border-0">
-                            <!-- header -->
-                            <div class="card-header bg-dark text-white">
-                                {{- $title := $component.name -}}
-                                {{- with $component.data.latest -}}
-                                    {{- $title = printf "%s v%s" $title $component.data.latest -}}
-                                    {{- if $component.data.lts -}}
-                                        {{- $title = printf "%s | v%s LTS" $title $component.data.lts -}}
-                                    {{- end -}}
-                                {{- end -}}
-                                {{- $title -}}
-                            </div>
-                            <!-- body -->
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-12 mt-0 mb-0">
-                                        <p class="release-text">
-                                           Click to <a href="{{ $component.data.home | relURL }}"> discover more</a>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-12"></hr></div>
-                                    {{- with $latestData.docker -}}
-                                    <div class="col-md-6">
-                                        {{- if $latest -}}
-                                            <p class="release-title mb-0 mt-0">Docker</p>
-                                            <a href="{{ $latestData.docker}}"
-                                            target="_blank"
-                                            rel="nopener noreferrer"
-                                            class="release-link mb-0"
-                                            >
-                                                Latest {{ $component.data.latest}}
-                                            </a>
-                                        {{- end -}}
-                                        {{- if $lts -}}
-                                            <a href="{{ $ltsData.docker }}"
-                                            target="_blank"
-                                            rel="nopener noreferrer"
-                                            class="release-link mb-0"
-                                            >
-                                                LTS {{ $component.data.lts}}
-                                            </a> 
-                                        {{- end -}} 
-                                    </div>
-                                    {{ end }} 
-                                    {{- if not $licensed -}}
-                                    <div class="col-md-6">
-                                        <p class="release-title mb-0 mt-0">GitHub</p>
-                                        {{- if $latest -}}
-                                            <a href="{{- $latestData.tag -}}"
-                                            target="_blank"
-                                            rel="nopener noreferrer"
-                                            class="release-link mb-0"
-                                            >
-                                                Latest {{ $component.data.latest}}
-                                            </a>
-                                        {{- end -}}
-                                        {{- if $lts -}}
-                                            <a href="{{- $ltsData.tag -}}"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            class="release-link mb-0"
-                                            >
-                                                LTS {{ $component.data.lts -}}
-                                            </a>
-                                        {{- end -}}
-                                    </div>
-                                    {{- end -}}
-                                </div>
-                            </div>
-                    
-                            <!-- Footer -->
-                            <div class="card-footer bg-transparent border-0 p-0 d-flex">
-                                <a
-                                    href="{{ $releaseNotesPath | relURL }}"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="home_btn release-btn btn-block w-100 text-center"
-                                >
-                                    Release Notes
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                {{ end }}
-            </div>
-        </div>
-    {{ end }}
+	{{- with $components -}}
+		<div class="container mt-4">
+			<div class="row justify-content-start">
+				{{ range $index, $component := $components }}
+					{{/* Determine license type */}}
+					{{- $license := "Licensed" -}}
+					{{- $licensed := .data.licensed -}}
+					{{- $releaseNotesPath := .data.releaseNotesPath -}}
+					{{- if not $licensed -}}
+						{{- $license = "Open Source" -}}
+					{{ end }}
+
+					{{/* Get latest and lts data */}}
+					{{- $lts := false -}}
+					{{- $ltsData := "" -}}
+					{{- with .data.lts -}}
+						{{- $ltsData = index $component.data $component.data.lts -}}
+						{{- if $ltsData -}}
+							{{- $lts = true -}}
+						{{ end }}
+					{{ end }}
+					{{- $latest := false -}}
+					{{- $latestData := "" -}}
+					{{- with .data.latest -}}
+						{{- $latestData = index $component.data $component.data.latest -}}
+						{{- if $latestData -}}
+							{{- $latest = true -}}
+						{{ end }}
+					{{ end }}
+					<div class="col-md-4 mb-4">
+						<div class="card h-100 release-card border-0">
+							<!-- header -->
+							<div class="card-header bg-dark text-white">
+								{{- $title := $component.name -}}
+								{{- with $component.data.latest -}}
+									{{- $title = printf "%s v%s" $title $component.data.latest -}}
+									{{- if $component.data.lts -}}
+										{{- $title = printf "%s | v%s LTS" $title $component.data.lts -}}
+									{{- end -}}
+								{{- end -}}
+								{{- $title -}}
+							</div>
+							<!-- body -->
+							<div class="card-body">
+								<div class="row">
+									<div class="col-md-12 mt-0 mb-0">
+										<p class="release-text">
+											Click to <a href="{{ $component.data.home | relURL }}"> discover more</a>
+										</p>
+									</div>
+									<div class="col-md-12"><hr /></div>
+									{{- with $latestData.docker -}}
+										<div class="col-md-6">
+											{{- if $latest -}}
+												<p class="release-title mb-0 mt-0">Docker</p>
+												<a
+													href="{{ $latestData.docker }}"
+													target="_blank"
+													rel="nopener noreferrer"
+													class="release-link mb-0">
+													Latest
+													{{ $component.data.latest }}
+												</a>
+											{{- end -}}
+											{{- if $lts -}}
+												<a
+													href="{{ $ltsData.docker }}"
+													target="_blank"
+													rel="nopener noreferrer"
+													class="release-link mb-0">
+													LTS
+													{{ $component.data.lts }}
+												</a>
+											{{- end -}}
+										</div>
+									{{ end }}
+									{{- if not $licensed -}}
+										<div class="col-md-6">
+											<p class="release-title mb-0 mt-0">GitHub</p>
+											{{- if $latest -}}
+												<a
+													href="{{- $latestData.tag -}}"
+													target="_blank"
+													rel="nopener noreferrer"
+													class="release-link mb-0">
+													Latest
+													{{ $component.data.latest }}
+												</a>
+											{{- end -}}
+											{{- if $lts -}}
+												<a
+													href="{{- $ltsData.tag -}}"
+													target="_blank"
+													rel="noopener noreferrer"
+													class="release-link mb-0">
+													LTS
+													{{ $component.data.lts -}}
+												</a>
+											{{- end -}}
+										</div>
+									{{- end -}}
+								</div>
+							</div>
+
+							<!-- Footer -->
+							<div class="card-footer bg-transparent border-0 p-0 d-flex">
+								<a
+									href="{{ $releaseNotesPath | relURL }}"
+									target="_blank"
+									rel="noopener noreferrer"
+									class="home_btn release-btn btn-block w-100 text-center">
+									Release Notes
+								</a>
+							</div>
+						</div>
+					</div>
+				{{ end }}
+			</div>
+		</div>
+	{{ end }}
 {{ end }}
