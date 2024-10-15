@@ -14,7 +14,7 @@ menu:
         path: /apim
         category: Page
         show: True
-      - title: "Tyk Open Source API Gateway"
+      - title: "Open Source API Gateway"
         category: Directory
         show: True
         menu:
@@ -81,7 +81,7 @@ menu:
           - title: "Open source operations tooling"
             category: Page
             show: False
-      - title: "Tyk Cloud Platform"
+      - title: "Tyk Cloud"
         category: Directory
         show: True
         menu:
@@ -330,7 +330,7 @@ menu:
                         path: /tyk-cloud/troubleshooting--support/glossary
                         category: Page
                         show: True
-      - title: "Tyk Self Managed Platform"
+      - title: "Self Managed"
         category: Directory
         show: True
         menu:
@@ -342,7 +342,7 @@ menu:
             path: /getting-started/quick-start
             category: Page
             show: True
-          - title: "Tyk Demos & PoCs"
+          - title: "Demos & PoCs"
             category: Directory
             show: True
             menu:
@@ -460,7 +460,7 @@ menu:
                         path: /tyk-on-prem/kubernetes-on-windows
                         category: Page
                         show: True
-                      - title: "Legacy Tyk Pro Helm chart"
+                      - title: "Legacy Self Manage Helm chart"
                         path: /tyk-self-managed/tyk-helm-chart
                         category: Page
                         show: True
@@ -476,7 +476,7 @@ menu:
                         path: /tyk-on-prem/installation/redhat-rhel-centos/dashboard
                         category: Page
                         show: True
-                      - title: "Tyk Pump"
+                      - title: "Pump"
                         path: /tyk-on-prem/installation/redhat-rhel-centos/analytics-pump
                         category: Page
                         show: True
@@ -504,7 +504,7 @@ menu:
                         path: /tyk-on-premises/debian-ubuntu/gateway
                         category: Page
                         show: True
-                  - title: "AWS Marketplace"
+                  - title: "AWS"
                     category: Directory
                     show: True
                     menu:
@@ -512,7 +512,7 @@ menu:
                         path: /tyk-on-premises/installation/on-aws
                         category: Page
                         show: True
-                      - title: "Install Tyk on AWS EC2"
+                      - title: "EC2 Installation"
                         path: /tyk-on-premises/on-aws/ec2
                         category: Page
                         show: True
@@ -576,11 +576,11 @@ menu:
                             path: /planning-for-production/ensure-high-availability/enforced-timeouts
                             category: Page
                             show: True
-                          - title: "Tyk OAS configuration"
+                          - title: "Tyk OAS setting"
                             path: /product-stack/tyk-gateway/middleware/enforced-timeout-tyk-oas
                             category: Page
                             show: True
-                          - title: "Tyk Classic configuration"
+                          - title: "Tyk Classic setting"
                             path: /product-stack/tyk-gateway/middleware/enforced-timeout-tyk-classic
                             category: Page
                             show: True
