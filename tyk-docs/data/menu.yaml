@@ -1,7 +1,7 @@
 # yamllint disable rule:line-length rule:truthy
 ---
 menu:
-  - title: "Overview"
+  - title: "Home"
     path: /
     category: Label
     show: True
