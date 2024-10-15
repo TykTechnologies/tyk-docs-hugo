@@ -17,7 +17,6 @@ aliases:
 ### Release Date 15 October 2024
 
 ### Breaking Changes
-**Attention:** Please read this section carefully.
 
 There are no breaking changes in this release.
 
