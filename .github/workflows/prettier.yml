@@ -7,7 +7,7 @@
 # 6. Optionally, check that the files are properly formatted after linting.
 #
 # This action helps ensure code quality and consistency in documentation and source files.
-name: "Lint the docs with prettier"
+name: "PR files Formatting"
 on:
   pull_request:
 
