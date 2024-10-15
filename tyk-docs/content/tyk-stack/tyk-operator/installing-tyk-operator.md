@@ -232,13 +232,6 @@ When upgrading Tyk Operator between licensed versions, follow the standard upgra
 It is important to note that this process differs if transitioning from an unlicensed to a licensed version.
 {{< /note >}}
 
-
-### Option 1: Upgrading Tyk Operator via Tyk's Umbrella Helm Charts
-
-If you are using [Tyk Stack]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}), [Tyk Control Plane]({{<ref "product-stack/tyk-charts/tyk-control-plane-chart">}}), or [Tyk Open Source Chart]({{<ref "product-stack/tyk-charts/tyk-oss-chart">}}), you can provide the license key for Tyk Operator through `global.license.operator` or `global.secrets.useSecretName` field during upgrade. You can also update the Kubernetes secret used to configure Tyk Operator (typically named tyk-operator-conf as described above) with an additional field called `TYK_OPERATOR_LICENSEKEY`. 
-
-### Option 2: Upgrading Tyk Operator via stand-alone Helm Chart
-
 To provide the license key for Tyk Operator, Kubernetes secret used to configure Tyk Operator (typically named tyk-operator-conf as described above) requires an additional field called `TYK_OPERATOR_LICENSEKEY`. Populate this field with your Tyk Operator license key. 
 
 To configure the license key:
