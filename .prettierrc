@@ -2,10 +2,10 @@
   "plugins": [
     "prettier-plugin-go-template"
   ],
-  "goTemplateBracketSpacing": true,
   "printWidth": 120,
   "proseWrap": "always",
   "tabWidth": 2,
+  "useTabs": true,
   "overrides": [
     {
       "files": [
@@ -23,8 +23,6 @@
         "*.ts"
       ],
       "options": {
-        "useTabs": true,
-        "printWidth": 120,
         "singleQuote": false
       }
     }
