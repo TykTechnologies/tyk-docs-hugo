@@ -23,7 +23,7 @@ To create plugin bundles you will need the following:
 - **Plugin source code files**: The plugin source code files should be contained relative to the directory in which the *manifest.json* file is located. The *manifest.json* should contain relative path references to source code files. Please note that source code files are not required when creating a plugin bundle for gRPC plugins since the plugin source code is located at the gRPC server.
 - **Certificate key**: Plugin bundles can optionally be signed with an RSA private key. The corresponding public key should be located in the file configured in environmental variable `TYK_GW_PUBLICKEYPATH` or the `public_key_path` parameter in `tyk.conf`:
 
-```bash
+```json
 {
     "enable_bundle_downloader": true,
     "bundle_base_url": "http://my-bundle-server.com/bundles/",
