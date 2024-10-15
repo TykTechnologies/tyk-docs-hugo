@@ -117,7 +117,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Resolved gateway panic on reconnecting to MDCB control plane or Tyk Cloud</summary>
 
-In prior versions (5.6.0, 5.3.6, and 5.0.14), Tyk Gateway could encounter a panic when attempting to reconnect to the control plane that was restarted. This issue has been resolved in patch versions 5.6.1, 5.3.7, and 5.0.15, to ensure stable connectivity between the gateway and control plane following reconnections, reducing manual intervention for recovery.
+In version 5.6.0, Tyk Gateway could encounter a panic when attempting to reconnect to the control plane after it was restarted. This issues has been resolved in patch version 5.6.1, ensuring stable connectivity between the gateway and control plane following reconnections and reducing the need for manual intervention.
 </details>
 </li>
 </ul>
