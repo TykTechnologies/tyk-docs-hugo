@@ -2,40 +2,39 @@
 
 {{- if not .Params.hideSidebar -}}
 
-    <nav class="aside-submenu no-icons">
-        <div class="header__tabs-menu header__tabs-menu--collapsable">
-            <nav class="links-container">
-                {{- partial "tabs_menu.html" . -}}
-            </nav>
-        </div>
+	<nav class="aside-submenu no-icons">
+		<div class="header__tabs-menu header__tabs-menu--collapsable">
+			<nav class="links-container">
+				{{- partial "tabs_menu.html" . -}}
+			</nav>
+		</div>
 
-        <div data-tree class="st-treed">
-            {{- partial "menu_recursive.html" (dict "menu" .Site.Data.menu.menu "page" . "site" .Site) -}}
-        </div>
-    </nav>
+		<div data-tree class="st-treed">
+			{{- partial "menu_recursive.html" (dict "menu" .Site.Data.menu.menu "page" . "site" .Site) -}}
+		</div>
+	</nav>
+{{ else }}
 
-{{else}}
+	<section class="header__tabs-menu">
+		<nav class="links-container">
+			{{- partial "tabs_menu.html" . -}}
+		</nav>
+	</section>
+{{ end }}
 
-    <section class="header__tabs-menu">
-        <nav class="links-container">
-            {{- partial "tabs_menu.html" . -}}
-        </nav>
-    </section>
-
-{{end}}
 
 <div>
-    <div class="version-selector">
-      {{- partial "version_selector.html" . -}}
-    </div>
+	<div class="version-selector">
+		{{- partial "version_selector.html" . -}}
+	</div>
 
-    <nav class="menu-external">
-        {{- partial "menu_top_external.html" . -}}
-    </nav>
+	<nav class="menu-external">
+		{{- partial "menu_top_external.html" . -}}
+	</nav>
 
-    {{if .Params.hideSidebar}}
-        <div class="menu_top_cta">
-            {{- partial "menu_top_ctas.html" . -}}
-        </div>
-    {{end}}
+	{{ if .Params.hideSidebar }}
+		<div class="menu_top_cta">
+			{{- partial "menu_top_ctas.html" . -}}
+		</div>
+	{{ end }}
 </div>

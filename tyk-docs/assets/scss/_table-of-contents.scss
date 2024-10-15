@@ -31,12 +31,16 @@
 .documentation-table-of-contents {
 	padding: 60px 1rem 0.5rem 1.5rem;
 
-	.sub_toc__item:hover,.sub-sub-toc-item:hover,.sub-sub-sub-toc-item:hover {
-		color: #8438FA !important;
+	.sub_toc__item:hover,
+	.sub-sub-toc-item:hover,
+	.sub-sub-sub-toc-item:hover {
+		color: #8438fa !important;
 	}
 
-	.sub_toc__item.js-active,.sub-sub-toc-item.js-active,.sub-sub-sub-toc-item.js-active {
-		color: #8438FA !important;
+	.sub_toc__item.js-active,
+	.sub-sub-toc-item.js-active,
+	.sub-sub-sub-toc-item.js-active {
+		color: #8438fa !important;
 	}
 
 	.accordion-content {
@@ -66,7 +70,7 @@
 
 			&:after {
 				pointer-events: auto;
-				content: '';
+				content: "";
 				background-image: url("../img/icon-caret.svg");
 				background-repeat: no-repeat;
 				background-position: right;
@@ -91,7 +95,7 @@
 				display: block;
 			}
 
-			>* {
+			> * {
 				padding-left: 18px;
 			}
 
@@ -101,7 +105,7 @@
 
 				&:after {
 					pointer-events: auto;
-					content: '';
+					content: "";
 					background-image: url(../img/icon-caret.svg);
 					background-repeat: no-repeat;
 					background-position: right;
@@ -125,14 +129,14 @@
 		}
 
 		.accordion-content.accordion-up {
-			>.sub-accordionHolder {
+			> .sub-accordionHolder {
 				&:after {
 					transform: rotate(180deg);
 				}
 			}
 
-			>.sub-accordion {
-				>.sub-accordionHolder {
+			> .sub-accordion {
+				> .sub-accordionHolder {
 					&:after {
 						transform: rotate(180deg);
 					}
@@ -140,7 +144,7 @@
 			}
 		}
 
-		.sub-accordion-content>* {
+		.sub-accordion-content > * {
 			padding-left: 25px;
 		}
 
@@ -157,7 +161,7 @@
 
 		margin-bottom: 20px;
 
-		>* {
+		> * {
 			font-size: 13px !important;
 			transition: all 400ms ease;
 
@@ -192,7 +196,7 @@
 
 						&:hover,
 						&.js-active {
-							color: #8438FA;
+							color: #8438fa;
 						}
 					}
 				}
@@ -208,7 +212,6 @@
 
 	.toc__content {
 		.accordion-group {
-
 			.accordion-content {
 				margin-bottom: 0;
 
@@ -262,14 +265,14 @@
 				cursor: pointer;
 
 				&::after {
-					content: '';
+					content: "";
 					position: relative;
 					display: inline-block;
 					width: 20px;
 					height: 20px;
 					left: 15px;
 					top: 5px;
-					background-image: url('../img/icon-caret.svg');
+					background-image: url("../img/icon-caret.svg");
 					background-repeat: no-repeat;
 					background-position: center;
 					transition: rotate 0.2s;
@@ -281,7 +284,7 @@
 				padding-bottom: 0.5rem;
 				margin-bottom: 1rem;
 
-				&~.toc__content {
+				& ~ .toc__content {
 					display: block;
 				}
 
@@ -309,7 +312,6 @@
 		}
 	}
 }
-
 
 body:not(.hasSidebar) .documentation-table-of-contents {
 	display: none !important;
