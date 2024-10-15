@@ -54,6 +54,6 @@ jobs:
           ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         run: |
           for file in ${ALL_CHANGED_FILES}; do
-            npx prettier --check "$file"
+            npx prettier --config .prettierrc --check "$file"
             echo "$file was linted"
           done
