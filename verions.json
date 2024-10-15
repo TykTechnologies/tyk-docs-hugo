@@ -1,13 +1,13 @@
 [
-  {
-    "name": "4.3",
-    "branch": "release-4.3",
-    "url": "https://release-4.3--tyk-docs.netlify.app/docs/"
-    "stable": true
-  },
-  {
-    "name": "3.1",
-    "branch": "release-3.1",
-    "url": "https://release-3-1--tyk-docs.netlify.app/docs/"
-  }
+	{
+		"name": "4.3",
+		"branch": "release-4.3",
+		"url": "https://release-4.3--tyk-docs.netlify.app/docs/",
+		"stable": true
+	},
+	{
+		"name": "3.1",
+		"branch": "release-3.1",
+		"url": "https://release-3-1--tyk-docs.netlify.app/docs/"
+	}
 ]
