@@ -87,7 +87,7 @@ Example profile configuration:
 {
     "ActionType": "GenerateOrLoginUserProfile",
     "ID": "saml-sso-login",
-    "OrgID": "{YOUR_ORGANISATION_ID}",
+    "OrgID": "{YOUR_ORGANIZATION_ID}",
     "CustomEmailField": "",
     "IdentityHandlerConfig": {
         "DashboardCredential": "{DASHBOARD_USER_API_KEY}"
