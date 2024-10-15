@@ -5,7 +5,7 @@ tags: ["monitors", "quotas", "event handling", "threshold monitoring"]
 description: "Advanced quota threshold monitoring"
 ---
 
-Tyk provides the ability to actively monitor both user and organisation quotas, using a dedicated webhook to notify your stakeholders, your system stack or the requesting API client when certain thresholds have been reached for a token.
+Tyk provides the ability to actively monitor both user and organization quotas, using a dedicated webhook to notify your stakeholders, your system stack or the requesting API client when certain thresholds have been reached for a token.
 
 Unlike API event [webhooks]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) the quota monitor is configured at the Gateway level.
 
@@ -25,7 +25,7 @@ This has the following fields:
 - `configuration`: a [webhook configuration]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) object
 - `global_trigger_limit`: this is a percentage of the quota that the key must consume for the webhook to be fired
 - `monitor_user_keys`: set to `true` to monitor individual tokens (this may result in a large number of triggers as it scales with the number of user tokens that are issued)
-- `monitor_org_keys`: set to `true` to monitor Organisation quotas
+- `monitor_org_keys`: set to `true` to monitor organization quotas
 
 For example:
 
@@ -58,7 +58,7 @@ If you are using our [Classic Developer Portal]({{< ref "tyk-developer-portal/ty
 
 ### Setting advanced thresholds
 
-The default quota consumption monitor will be triggered at the same level of quota usage for all users. Sometimes you might want to have a more granular approach with different triggering thresholds per user or organisation. Sometimes you might want to fire the event at multiple thresholds, for example when the user hits 50%, 75% and 90% of their allowed quota.
+The default quota consumption monitor will be triggered at the same level of quota usage for all users. Sometimes you might want to have a more granular approach with different triggering thresholds per user or organization. Sometimes you might want to fire the event at multiple thresholds, for example when the user hits 50%, 75% and 90% of their allowed quota.
 
 You can set user specific trigger levels for a user by additionally adding a `monitor` section to the access key ([Session Object]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}})). This has one field, which is an array of `trigger_limits` (thresholds) that must be in *descending* order and represent the percentage of the quota that must be reached in order for the trigger to be fired, for example:
 
@@ -70,7 +70,7 @@ You can set user specific trigger levels for a user by additionally adding a `mo
 
 If this is included in the session object, then the quota threshold event will be fired and the monitor webhook triggered when the user hits 50%, then 75%, and then again at 90% consumption.
 
-You can configure advanced thresholds for all users in an Organisation by adding the `monitor` section to the Organisation session object.
+You can configure advanced thresholds for all users in an organization by adding the `monitor` section to the organization session object.
 
 ## Webhook payload
 
@@ -87,10 +87,10 @@ When the quota consumption monitor is fired, the webhook request that is issued 
 ```
 
 - `trigger_limit` will indicate which threshold has been reached (as defined in the session object's `monitor` section).
-- `org` will contain the OrgID for the user or organisation that triggered the event
+- `org` will contain the OrgID for the user or organization that triggered the event
 - `key` will contain the *raw API key* used in the request only if the event was triggered by a user quota
 
-*Note: if the webhook was triggered by an organisation threshold, `key` will be blank.*
+*Note: if the webhook was triggered by an organization threshold, `key` will be blank.*
 
 <br>
 {{< warning success >}}

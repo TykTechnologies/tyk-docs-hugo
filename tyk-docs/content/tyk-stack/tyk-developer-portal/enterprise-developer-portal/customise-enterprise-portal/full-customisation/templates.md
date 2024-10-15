@@ -63,9 +63,9 @@ template.
 - [Blogs](#blogs)
 - [Blog Detail](#blog-detail)
 - [Cart Checkout](#cart-checkout)
-- [Organisation User Detail](#organisation-user-detail)
-- [Organisation User Edit](#organisation-user-edit)
-- [Organisation Users List](#organisation-users-list)
+- [Organization User Detail](#organization-user-detail)
+- [Organization User Edit](#organization-user-edit)
+- [Organization Users List](#organization-users-list)
 - [Product Detail](#product-detail)
 - [Product OAS Documentation](#product-oas-documentation)
 
@@ -490,16 +490,16 @@ Accessible via `{{ range $template := $product.Templates }}`
 </details>
 
 
-## Organisation User Detail 
+## Organization User Detail
 
 **Template Path**: `themes/default/views/user_detail.tmpl`
 
-This template is used to render the organisation user detail page.
+This template is used to render the organization user detail page.
 
 ### Available Objects
 
 - `{{ .errors }}`: Map of template errors (Key: category, Value: error message)
-- `{{ .user }}`: The organisation user object.
+- `{{ .user }}`: The organization user object.
 
 ### User Attributes
 
@@ -511,12 +511,12 @@ Accessible via `{{ .user }}`
 | `{{ .First }}` | User name |
 | `{{ .Last }}` | User surname |
 | `{{ .Email }}` | User email |
-| `{{ .OrganisationID }}` | User organisation ID |
+| `{{ .OrganisationID }}` | User organization ID |
 | `{{ .DisplayName }}` | User complete name |
 | `{{ .IdentityProvider }}` | User provider (Portal or Tyk Identity Broker) |
-| `{{ .GetOrganisationID }}` | User's organisation ID |
+| `{{ .GetOrganisationID }}` | User's organization ID |
 | `{{ .IsAdmin }}` | true if user is an admin |
-| `{{ .IsOrgAdmin }}` | true if user is an organisation admin |
+| `{{ .IsOrgAdmin }}` | true if user is an organization admin |
 | `{{ .DisplayRole }}` | User's role |
 
 
@@ -547,17 +547,17 @@ Accessible via `{{ .user }}`
 
 </details>
 
-## Organisation User Edit
+## Organization User Edit
 
 **Template Path**: `themes/default/views/user_edit.tmpl`
 
-This template is used to render the edit page for organisation user.
+This template is used to render the edit page for organization user.
 
 ### Available Objects
 
 - `{{ .errors }}`: Map of template errors (Key: category, Value: error message)
 - `{{ .roles }}`: List of possible roles
-- `{{ .user }}`: The organisation user object. 
+- `{{ .user }}`: The organization user object.
 
 ### Role Attributes
 
@@ -578,12 +578,12 @@ Accessible via `{{ .user }}`
 | `{{ .First }}` | User name |
 | `{{ .Last }}` | User surname |
 | `{{ .Email }}` | User email |
-| `{{ .OrganisationID }}` | User organisation ID |
+| `{{ .OrganisationID }}` | User organization ID |
 | `{{ .DisplayName }}` | User complete name |
 | `{{ .IdentityProvider }}` | User provider (Portal or Tyk Identity Broker) |
-| `{{ .GetOrganisationID }}` | User's organisation ID |
+| `{{ .GetOrganisationID }}` | User's organization ID |
 | `{{ .IsAdmin }}` | true if user is an admin |
-| `{{ .IsOrgAdmin }}` | true if user is an organisation admin |
+| `{{ .IsOrgAdmin }}` | true if user is an organization admin |
 | `{{ .DisplayRole }}` | User's role |
 
 <details>
@@ -628,11 +628,11 @@ Accessible via `{{ .user }}`
 
 </details>
 
-## Organisation Users List 
+## Organization Users List
 
 **Template Path**: `themes/default/views/user_list.tmpl`
 
-This template is used to render the list of organisation users.
+This template is used to render the list of organization users.
 
 ### Available Objects
 
@@ -874,7 +874,7 @@ various operations, retrieve specific data, and create dynamic content within yo
 
 ### CanCreateOrganisation
 
-Returns true if user can create an organisation.
+Returns true if user can create an organization.
 
 #### Example Usage
 ```
@@ -997,12 +997,12 @@ Accessible via `{{ $user := CurrentUser req }}`
 | `{{ $user.First }}` | User name |
 | `{{ $user.Last }}` | User surname |
 | `{{ $user.Email }}` | User email |
-| `{{ $user.OrganisationID }}` | User organisation ID |
+| `{{ $user.OrganisationID }}` | User organization ID |
 | `{{ $user.DisplayName }}` | User complete name |
 | `{{ $user.IdentityProvider }}` | User provider (Portal or Tyk Identity Broker) |
-| `{{ $user.GetOrganisationID }}` | User's organisation ID |
+| `{{ $user.GetOrganisationID }}` | User's organization ID |
 | `{{ $user.IsAdmin }}` | true if user is an admin |
-| `{{ $user.IsOrgAdmin }}` | true if user is an organisation admin |
+| `{{ $user.IsOrgAdmin }}` | true if user is an organization admin |
 | `{{ $user.DisplayRole }}` | User's role |
 
 #### Example Usage
@@ -1015,7 +1015,7 @@ Accessible via `{{ $user := CurrentUser req }}`
   {{ if $user.IsAdmin }}
   <p>You have admin privileges.</p>
   {{ else if $user.IsOrgAdmin }}
-  <p>You are an organisation admin.</p>
+  <p>You are an organization admin.</p>
   {{ else }}
   <p>Your role: {{ $user.DisplayRole }}</p>
   {{ end }}
@@ -1112,7 +1112,7 @@ Accessible via `{{ range .Catalogues }}`
 
 ### FilterUserInvites
 
-Returns a list of users that were invited to the current user's organisation, if the user became an organisation.
+Returns a list of users that were invited to the current user's organization, if the user became an organization.
 Expects the request as a parameter.
 
 #### User Attributes
@@ -1519,7 +1519,7 @@ Returns the credential type ("oAuth2.0" or "authToken") given the credential.
 
 This section provides a detailed overview of the email template data available in the Tyk Enterprise Developer Portal. 
 The Tyk Enterprise Developer Portal uses a variety of email templates for different purposes, such as user registration
-and access request status or organisation status updates. Each template has access to specific data or functions relevant
+and access request status or organization status updates. Each template has access to specific data or functions relevant
 to its purpose.
 
 It's important to note that while email templates can include template data or specific template functions, they do not
@@ -1535,9 +1535,9 @@ for additional detail on email notifications sent by the portal.
 - [Access Request Submitted](#access-request-submitted)
 - [Activate and Deactivate](#activate-and-deactivate)
 - [New User Request](#new-user-request)
-- [Organisation Approve](#organisation-approve)
-- [Organisation Reject](#organisation-reject)
-- [Organisation Request](#organisation-request)
+- [Organization Approve](#organization-approve)
+- [Organization Reject](#organization-reject)
+- [Organization Request](#organization-request)
 - [Reset Password](#reset-password)
 - [Targeted Invite](#targeted-invite)
 - [Welcome User](#welcome-user)
@@ -1658,14 +1658,14 @@ Accessible via `{{ .user }}`
 | `{{ .First }}` | User name |
 | `{{ .Last }}` | User surname |
 | `{{ .Email }}` | User email |
-| `{{ .OrganisationID }}` | User organisation ID |
+| `{{ .OrganisationID }}` | User organization ID |
 | `{{ .DisplayName }}` | User complete name |
 | `{{ .IdentityProvider }}` | User provider (Portal or Tyk Identity Broker) |
-| `{{ .GetOrganisationID }}` | User's organisation ID |
+| `{{ .GetOrganisationID }}` | User's organization ID |
 | `{{ .IsAdmin }}` | true if user is an admin |
-| `{{ .IsOrgAdmin }}` | true if user is an organisation admin |
+| `{{ .IsOrgAdmin }}` | true if user is an organization admin |
 | `{{ .DisplayRole }}` | User's role |
-| `{{ .Organisation.Name }}` | Organisation name |
+| `{{ .Organisation.Name }}` | Organization name |
 | `{{ .Teams }}` | Array of user teams |
 | `{{ .Teams.ID }}` | Team ID |
 | `{{ .Teams.Name }}` | Team name |
@@ -1696,11 +1696,11 @@ Accessible via `{{ .user }}`
 </p>
 ```
 
-### Organisation Approve
+### Organization Approve
 
 **Template Path**: `themes/default/mailers/organisation_request.tmpl`
 
-This template is used for notifying users that their organisation creation request has been approved.
+This template is used for notifying users that their organization creation request has been approved.
 
 #### Available Objects
 
@@ -1709,16 +1709,16 @@ This template is used for notifying users that their organisation creation reque
 #### Example Usage
 ```
 Hello,
-The organisation registration request has been approved. You can now manage your organisation in your dashboard here: https://{{.site}}/portal/private/dashboard
+The organization registration request has been approved. You can now manage your organization in your dashboard here: https://{{.site}}/portal/private/dashboard
 Thanks,
 The team
 ```
 
-### Organisation Reject
+### Organization Reject
 
 **Template Path**: `themes/default/mailers/organisation_reject.tmpl`
 
-This template is used for notifying users that their organisation creation request has been rejected.
+This template is used for notifying users that their organization creation request has been rejected.
 
 #### Available Objects
 
@@ -1727,21 +1727,21 @@ There's no data sent to this template.
 #### Example Usage
 ```
 Hello,
-The organisation registration request has been rejected.
+The organization registration request has been rejected.
 Thanks,
 The team
 ```
 
-### Organisation Request
+### Organization Request
 
 **Template Path**: `themes/default/mailers/organisation_request.tmpl`
 
-This template is used for notifying administrators about new organisation creation requests.
+This template is used for notifying administrators about new organization creation requests.
 
 #### Available Objects
 
 - `{{ .user }}`: Returns the user who made the request. 
-- `{{ .organisationName }}`: Returns the new organisation name.
+- `{{ .organisationName }}`: Returns the new organization name.
 
 ### User Attributes
 
@@ -1753,18 +1753,18 @@ Accessible via `{{ .user }}`
 | `{{ .First }}` | User name |
 | `{{ .Last }}` | User surname |
 | `{{ .Email }}` | User email |
-| `{{ .OrganisationID }}` | User organisation ID |
+| `{{ .OrganisationID }}` | User organization ID |
 | `{{ .DisplayName }}` | User complete name |
 | `{{ .IdentityProvider }}` | User provider (Portal or Tyk Identity Broker) |
-| `{{ .GetOrganisationID }}` | User's organisation ID |
+| `{{ .GetOrganisationID }}` | User's organization ID |
 | `{{ .IsAdmin }}` | true if user is an admin |
-| `{{ .IsOrgAdmin }}` | true if user is an organisation admin |
+| `{{ .IsOrgAdmin }}` | true if user is an organization admin |
 | `{{ .DisplayRole }}` | User's role |
 
 #### Example Usage
 ```
-There is a new organisation registration request pending. Please approve it from the admin console.
-The organisation name: {{ .organisationName }}.
+There is a new organization registration request pending. Please approve it from the admin console.
+The organization name: {{ .organisationName }}.
 The user: {{ .user.DisplayName }} ({{ .user.Email }}).
 ```
 
@@ -1790,12 +1790,12 @@ Accessible via `{{ current_user }}`
 | `{{ .Last }}` | User surname |
 | `{{ .Email }}` | User email |
 | `{{ .Role }}` | User role |
-| `{{ .OrganisationID }}` | User organisation ID |
+| `{{ .OrganisationID }}` | User organization ID |
 | `{{ .DisplayName }}` | User complete name |
 | `{{ .IdentityProvider }}` | User provider (Portal or Tyk Identity Broker) |
-| `{{ .GetOrganisationID }}` | User's organisation ID |
+| `{{ .GetOrganisationID }}` | User's organization ID |
 | `{{ .IsAdmin }}` | true if user is an admin |
-| `{{ .IsOrgAdmin }}` | true if user is an organisation admin |
+| `{{ .IsOrgAdmin }}` | true if user is an organization admin |
 | `{{ .DisplayRole }}` | User's role |
 
 #### Example Usage
@@ -1831,12 +1831,12 @@ Accessible via `{{ user }}`
 | `{{ .Last }}` | User surname |
 | `{{ .Email }}` | User email |
 | `{{ .Role }}` | User role |
-| `{{ .OrganisationID }}` | User organisation ID |
+| `{{ .OrganisationID }}` | User organization ID |
 | `{{ .DisplayName }}` | User complete name |
 | `{{ .IdentityProvider }}` | User provider (Portal or Tyk Identity Broker) |
-| `{{ .GetOrganisationID }}` | User's organisation ID |
+| `{{ .GetOrganisationID }}` | User's organization ID |
 | `{{ .IsAdmin }}` | true if user is an admin |
-| `{{ .IsOrgAdmin }}` | true if user is an organisation admin |
+| `{{ .IsOrgAdmin }}` | true if user is an organization admin |
 | `{{ .DisplayRole }}` | User's role |
 
 #### Example Usage
@@ -1870,14 +1870,14 @@ Accessible via `{{ .user }}`
 | `{{ .First }}` | User name |
 | `{{ .Last }}` | User surname |
 | `{{ .Email }}` | User email |
-| `{{ .OrganisationID }}` | User organisation ID |
+| `{{ .OrganisationID }}` | User organization ID |
 | `{{ .DisplayName }}` | User complete name |
 | `{{ .IdentityProvider }}` | User provider (Portal or Tyk Identity Broker) |
-| `{{ .GetOrganisationID }}` | User's organisation ID |
+| `{{ .GetOrganisationID }}` | User's organization ID |
 | `{{ .IsAdmin }}` | true if user is an admin |
-| `{{ .IsOrgAdmin }}` | true if user is an organisation admin |
+| `{{ .IsOrgAdmin }}` | true if user is an organization admin |
 | `{{ .DisplayRole }}` | User's role |
-| `{{ .Organisation.Name }}` | Organisation name |
+| `{{ .Organisation.Name }}` | organization name |
 | `{{ .Teams }}` | Array of user teams |
 | `{{ .Teams.ID }}` | Team ID |
 | `{{ .Teams.Name }}` | Team name |
