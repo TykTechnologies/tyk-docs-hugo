@@ -38,7 +38,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 <li>
 <details>
 <summary>Resolved gateway panic on reconnecting to MDCB control plane or Tyk Cloud</summary>
-In prior versions, Tyk Gateway could encounter panic when attempting to reconnect to the control plane after it was restarted. This patch version has resolved this issue, ensuring stable connectivity between the gateway and control plane following reconnections and reducing the need for manual intervention.
+In version 5.0.14, Tyk Gateway could encounter panic when attempting to reconnect to the control plane after it was restarted. This patch version has resolved this issue, ensuring stable connectivity between the gateway and control plane following reconnections and reducing the need for manual intervention.
 </details>
 </li>
 </ul>
