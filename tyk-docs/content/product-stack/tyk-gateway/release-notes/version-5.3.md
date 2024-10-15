@@ -27,7 +27,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### Release Highlights
 
-This patch release for Tyk Gateway addresses critical stability issues for users utilizing Tyk Gateway as a data plane connecting to the Multi-Data Center Bridge (MDCB) control plane or Tyk Cloud. Affected users should upgrade immediately to version 5.3.7 to avoid service interruptions and ensure reliable operations with MDCB or Tyk Cloud.
+This patch release for Tyk Gateway addresses critical stability issues for users running Tyk Gateway within the data plane, connecting to the control plane or Tyk Hybrid. Affected users should upgrade immediately to version 5.6.1 to avoid service interruptions and ensure reliable operations with the control plane or Tyk Hybrid.
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.7">}}) below.
 
@@ -109,7 +109,7 @@ Given the potential time difference between your upgrade and the release of this
  <li>
  <details>
  <summary>Resolved gateway panic on reconnecting to MDCB control plane or Tyk Cloud</summary>
- In prior versions (5.6.0, 5.3.6, and 5.0.14), Tyk Gateway could encounter a panic when attempting to reconnect to the control plane that was restarted. This issue has been resolved in patch versions 5.6.1, 5.3.7, and 5.0.15, to ensure stable connectivity between the gateway and control plane following reconnections, reducing manual intervention for recovery.
+ In prior versions, Tyk Gateway could encounter a panic when attempting to reconnect to the control plane after it was restarted. This issue has been resolved in patch version 5.3.7, ensuring stable connectivity between the gateway and control plane following reconnections and reducing the need for manual intervention.
  </details>
  </li>
  </ul>
