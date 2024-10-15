@@ -1,5 +1,5 @@
 # This GitHub Action is triggered on pull requests to:
-# 1. Lint changed files using Prettier.
+# 1. Format changed files using Prettier.
 # 2. Automatically install Prettier and its Go template plugin.
 # 3. Identify all files changed in the pull request.
 # 4. Format the changed files according to Prettier's rules, respecting the .prettierignore file.
