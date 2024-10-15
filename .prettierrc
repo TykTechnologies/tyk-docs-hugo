@@ -5,7 +5,7 @@
   "printWidth": 120,
   "proseWrap": "always",
   "tabWidth": 2,
-  "useTabs": true,
+  "useTabs": false,
   "overrides": [
     {
       "files": [
@@ -28,3 +28,4 @@
     }
   ]
 }
+
