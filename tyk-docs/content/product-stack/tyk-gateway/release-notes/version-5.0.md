@@ -27,7 +27,7 @@ Go to the [Upgrading Tyk](https://tyk.io/docs/product-stack/tyk-gateway/release-
 
 ### Release Highlights
 
-This patch release for Tyk Gateway addresses critical stability issues for users utilizing Tyk Gateway as a data plane connecting to the Multi-Data Center Bridge (MDCB) control plane or Tyk Cloud. Affected users should upgrade immediately to version 5.0.15 to avoid service interruptions and ensure reliable operations with MDCB or Tyk Cloud.
+This patch release for Tyk Gateway addresses critical stability issues for users running Tyk Gateway within the data plane, connecting to the control plane or Tyk Hybrid. Affected users should upgrade immediately to version 5.6.1 to avoid service interruptions and ensure reliable operations with the control plane or Tyk Hybrid.
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.0.15">}}) below.
 
