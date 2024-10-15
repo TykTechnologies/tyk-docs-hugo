@@ -1,15 +1,15 @@
 {{ $s := . }}
 {{ $src := $s.Get "image" }}
 {{ if $src }}
-  {{ $image := resources.GetMatch $src }}
-  {{ if hasPrefix $src "http" }}
-  {{ else }}
-    {{ with $image }}
-      {{ $src = .RelPermalink }}
-    {{ else }}
-      {{ errorf "Wrong bage image url '%s' in %v" $src $s.Position }}
-    {{ end }}
-  {{ end }}
+	{{ $image := resources.GetMatch $src }}
+	{{ if hasPrefix $src "http" }}
+	{{ else }}
+		{{ with $image }}
+			{{ $src = .RelPermalink }}
+		{{ else }}
+			{{ errorf "Wrong bage image url '%s' in %v" $src $s.Position }}
+		{{ end }}
+	{{ end }}
 {{ end }}
 
 {{ $href := .Get "href" }}
@@ -18,27 +18,27 @@
 
 
 <a class="badge {{ .Get "type" }} {{ if .Get "image" }}with_image{{ end }}" href="{{ $href | relURL }}">
-  {{ if .Get "read" }}
-    <div class="nav read">{{ .Get "read" }}</div>
-  {{ end }}
-  {{ if .Get "title" }}
-    <div class="nav title" style="{{ .Get "titleStyle" }}">{{ .Get "title" }}</div>
-  {{ end }}
-  <p>
-    {{ if .Get "image" }}
-      <img src="{{ $src }}" style="{{ .Get "imageStyle" }}" alt="{{ .Get "alt" }}" />
-    {{ end }}
-    {{ if .Get "title" }}
-      <div style="text-align: center;">
-        {{ .Inner | markdownify }}
-      </div>
-    {{ else }}
-      {{ .Inner | markdownify }}
-    {{ end }}
-  </p>
+	{{ if .Get "read" }}
+		<div class="nav read">{{ .Get "read" }}</div>
+	{{ end }}
+	{{ if .Get "title" }}
+		<div class="nav title" style="{{ .Get "titleStyle" }}">{{ .Get "title" }}</div>
+	{{ end }}
+	<p>
+		{{ if .Get "image" }}
+			<img src="{{ $src }}" style="{{ .Get "imageStyle" }}" alt="{{ .Get "alt" }}" />
+		{{ end }}
+		{{ if .Get "title" }}
+			<div style="text-align: center;">
+				{{ .Inner | markdownify }}
+			</div>
+		{{ else }}
+			{{ .Inner | markdownify }}
+		{{ end }}
+	</p>
 
-  <div class="bottom">
-    <div class="read">{{ .Get "read" }}</div>
-    <span class="button center button-black">Keep reading</span>
-  </div>
+	<div class="bottom">
+		<div class="read">{{ .Get "read" }}</div>
+		<span class="button center button-black">Keep reading</span>
+	</div>
 </a>
