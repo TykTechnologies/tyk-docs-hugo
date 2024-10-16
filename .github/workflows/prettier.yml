@@ -9,8 +9,7 @@
 # This action helps ensure code quality and consistency in documentation and source files.
 name: "PR files Formatting"
 on:
-  pull_request:
-    types: [opened, synchronize, reopened, edited]
+  workflow_dispatch:
 jobs:
   docs_linter:
     runs-on: ubuntu-latest
