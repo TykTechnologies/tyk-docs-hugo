@@ -89,7 +89,7 @@ Remember to click **Save** to save your changes.
 
 Tyk Operator supports event handler integration for Tyk Classic API Definition. By configuring the `event_handlers` field in ApiDefinition Custom Resource Definition (CRD), you can enable webhooks to be triggered by specific API events. 
 
-The process for configuring webhook event handlers using Tyk Operator is similar to that explained in [Set up a webhook event handler in the Tyk Classic API Definition](#set-up-a-webhook-event-handler-in-the-tyk-classic-api-definition). The example API Definition below enabled event handler by setting `spec.event_handlers`.
+The process for configuring webhook event handlers using Tyk Operator is similar to that explained in [Set up a webhook event handler in the Tyk Classic API Definition](#set-up-a-webhook-event-handler-in-the-tyk-classic-api-definition). The example API Definition below enables the event handler by setting `spec.event_handlers`.
 
 ```yaml {hl_lines=["14-25"],linenos=true, linenostart=1}
 apiVersion: tyk.tyk.io/v1alpha1
