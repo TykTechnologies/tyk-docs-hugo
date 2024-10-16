@@ -9,33 +9,44 @@
 # This action helps ensure code quality and consistency in documentation and source files.
 name: "PR files Formatting"
 on:
-  pull_request:
-
+  workflow_dispatch:
 jobs:
   docs_linter:
     runs-on: ubuntu-latest
     name: Format PR files with Prettier
-
     steps:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}  # Automatically checks out the PR branch
+          token: ${{ secrets.ORG_GH_TOKEN }}
+      - name: Get Head Commit Message
+        id: get_head_commit_message
+        run: echo "HEAD_COMMIT_MESSAGE=$(git show -s --format=%s)" >> "$GITHUB_OUTPUT"
 
+      - name: Check for Skip Linter Marker
+        id: check_skip_marker
+        run: |
+          if [[ "${{ steps.get_head_commit_message.outputs.HEAD_COMMIT_MESSAGE }}" == *"[skip-linter-43n2w]"* ]]; then
+            echo "Skipping linter due to marker."
+            echo "skip_linter=true" >> "$GITHUB_ENV"  # Set an environment variable
+          fi
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-
       # Install Prettier and dependencies
       - name: Install dependencies
+        if: env.skip_linter != 'true'  # Only run if the skip marker is not found
         run: |
           npm install prettier@3.3.3 prettier-plugin-go-template
 
       # Fetch the base branch and compare changes
       - name: Get changed files
         id: changed-files
+        if: env.skip_linter != 'true'  # Only run if the skip marker is not found
         uses: tj-actions/changed-files@v45
 
       - name: Lint all changed files
+        if: env.skip_linter != 'true'  # Only run if the skip marker is not found
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         run: |
@@ -46,10 +57,14 @@ jobs:
 
       # Auto commit the changes if any
       - uses: stefanzweifel/git-auto-commit-action@v5
+        if: env.skip_linter != 'true'  # Only run if the skip marker is not found
         with:
-          commit_message: save formatted content
+          # skip-linter-43n2w is a Marker to skip rerun of the linter once it makes a commit
+          # This prevents cyclic run of the linter
+          commit_message: save content formatted by prettier linter [skip-linter-43n2w]
 
       - name: Check all changed files are linted
+        if: env.skip_linter != 'true'  # Only run if the skip marker is not found
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         run: |
