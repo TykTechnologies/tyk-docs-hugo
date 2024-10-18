@@ -35,7 +35,7 @@ By using the identity broker in conjunction with an IDP you have the ability to 
 
 TIB provides a simple API through which traffic can be sent. The API will match the request to a profile which then exposes two things:
 
-1. An **Identity Provider** that will authorise a user and validate their identity
+1. An **Identity Provider** that will authorize a user and validate their identity
 2. An **Identity Handler** that will authenticate a user with a delegated service (in this case, Tyk)
 
 #### Identity Providers

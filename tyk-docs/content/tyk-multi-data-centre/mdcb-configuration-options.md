@@ -3,7 +3,7 @@ date: 2023-01-10
 title: MDCB Configuration options
 menu:
     main:
-        parent: "Tyk Multi Data Centre Bridge"
+        parent: "Tyk Multi Data Center Bridge"
 weight: 3
 tags: ["MDCB", "configuration options","MDCB configuration options"]
 description: "Each of the config options that are available when deploying MDCB."
@@ -30,8 +30,8 @@ Environment variables (env var) can be used to override the settings defined in 
 |**Tyk Gateway**          |                |
 |Management API           |      8080      |
 |**MDCB**                 |                |
-|RPC Listen               |      9091      |
-|Healthcheck              |      8181      |
+|RPC services             |      9091      |
+|HTTP endpoints           |      8181      |
 
 
 {{< include "mdcb-config.md" >}}

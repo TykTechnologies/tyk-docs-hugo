@@ -19,7 +19,7 @@ There are related [Request Header Transform]({{< ref "transform-traffic/request-
 
 ## When to use response header transformation
 
-#### Customising responses for specific clients
+#### Customizing responses for specific clients
 
 A frequent use case for response header transformation is when a client requires specific headers for their application to function correctly. For example, a client may require a specific header to indicate the status of a request or to provide additional information about the response.
 
@@ -31,9 +31,9 @@ The response header transform allows you to add security headers to the response
 
 Adding metadata to response headers can be useful for tracking and analyzing API usage, as well as for providing additional information to clients. For example, you may want to add a header that indicates the version of the API being used or the time taken to process the request.
 
-#### Modifying response headers for dynamic performance optimisation
+#### Modifying response headers for dynamic performance optimization
 
-You can use response header transformation to dynamically optimise the performance of the API. For example, you may want to indicate to the client the maximum number of requests that they can make in a given time period. By doing so through the response headers, you can perform dynamic optimisation of the load on the upstream service without triggering the rate limiter and so avoiding errors being sent to the client.
+You can use response header transformation to dynamically optimize the performance of the API. For example, you may want to indicate to the client the maximum number of requests that they can make in a given time period. By doing so through the response headers, you can perform dynamic optimization of the load on the upstream service without triggering the rate limiter and so avoiding errors being sent to the client.
 
 ## How the response header transform works
 
@@ -41,7 +41,7 @@ The response header transform can be applied per-API or per-endpoint; each has a
 
 The middleware is configured with a list of headers to delete from the response and a list of headers to add to the response. Each header to be added to the response is configured as a key:value pair.
 - the "delete header" functionality is intended to ensure that any header in the delete list is not present once the middleware completes. If a header in the delete list is not present in the upstream response, the middleware will ignore the omission
-- the "add header" functionality will capitalise any header name provided. For example, if you configure the middleware to append `x-request-id` it will be added to the response as `X-Request-Id`
+- the "add header" functionality will capitalize any header name provided. For example, if you configure the middleware to append `x-request-id` it will be added to the response as `X-Request-Id`
 
 In the response middleware chain, the endpoint-level transform is applied before the API-level transform. Subsequently, if both middleware are enabled, the API-level transform will operate on the headers that have been added by the endpoint-level transform (and will not have access to those that have been deleted by it).
 

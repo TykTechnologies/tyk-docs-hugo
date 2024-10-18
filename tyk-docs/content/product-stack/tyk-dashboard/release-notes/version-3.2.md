@@ -8,8 +8,8 @@ tags: ["release notes", "Tyk Dashboard", "v3.2", "3.2"]
 
 #### Bring your own Identity Provider - Dynamic Client Registration now available!
 
-DCR is a protocol of the Internet Engineering Task Force put in place to set standards in the dynamic registration of clients with authorisation servers. This feature is a way for you to integrate your Tyk Developer Portal with an external identity provider such as Keycloak, Gluu, Auth0 or Okta. 
-The portal developer won't notice a difference. However when they create the app via Tyk Developer portal, Tyk will dynamically register that client on your authorisation server. This means that it is the Authorisation Server that will issue the Client ID and Client Secret for the app.
+DCR is a protocol of the Internet Engineering Task Force put in place to set standards in the dynamic registration of clients with authorization servers. This feature is a way for you to integrate your Tyk Developer Portal with an external identity provider such as Keycloak, Gluu, Auth0 or Okta. 
+The portal developer won't notice a difference. However, when they create the app via Tyk Developer portal, Tyk will dynamically register that client on your authorization server. This means that it is the Authorization Server that will issue the Client ID and Client Secret for the app.
 
 Check our DCR docs [here]({{< ref "/tyk-developer-portal/tyk-portal-classic/dynamic-client-registration" >}})
 
@@ -32,7 +32,7 @@ If you’re using GraphQL upstream services with UDG, you’re now able to forwa
 
 #### Extendable Tyk Dashboard permissions system
 
-The Tyk Dashboard permission system can now be extended by writing custom rules using an Open Policy Agent (OPA). The rule engine works on top of the Tyk Dashboard API, which means you can control not only access rules, but also the behaviour of all Dashboard APIs (except your public developer portal). You can find more details about OPA [here]({{< ref "/content/tyk-dashboard/open-policy-agent.md" >}}).
+The Tyk Dashboard permission system can now be extended by writing custom rules using an Open Policy Agent (OPA). The rule engine works on top of the Tyk Dashboard API, which means you can control not only access rules, but also the behavior of all Dashboard APIs (except your public developer portal). You can find more details about OPA [here]({{< ref "/content/tyk-dashboard/open-policy-agent.md" >}}).
 
 In addition, you can now create your own custom permissions using the Additional Permissions API or by updating `security.additional_permissions` map in the Tyk Dashboard config, and writing Opa rule containing logic for the new permission.
 

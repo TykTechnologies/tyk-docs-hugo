@@ -46,7 +46,7 @@ Tyk supports multiplexing based on certificate SNI information, which means that
 
 If Tyk sits behind another proxy, which has  the PROXY protocol enabled, you can set `enable_proxy_protocol` to `true`. 
 
-As for features such as load balancing, service discovery, Mutual TLS (both authorisation and communication with upstream), certificate pinning, etc. All work exactly the same way as for your HTTP APIs. 
+As for features such as load balancing, service discovery, Mutual TLS (both authorization and communication with upstream), certificate pinning, etc. All work exactly the same way as for your HTTP APIs. 
 
 ### Allowing specific ports
 
@@ -78,7 +78,7 @@ Since TCP services can be configured via the Dashboard, you should be careful wh
 
 As you can see, you can use either `ranges` or `ports` directives (or combine them). 
 
-You can also disable this behaviour and allow any TCP port by setting `disable_ports_whitelist` to `true`.
+You can also disable this behavior and allow any TCP port by setting `disable_ports_whitelist` to `true`.
 
 
 ### Health checks

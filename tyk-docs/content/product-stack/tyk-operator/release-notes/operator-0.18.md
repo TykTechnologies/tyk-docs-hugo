@@ -12,7 +12,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 0.18.0 Release Notes
 
-##### Release date 01 Jul 2024
+##### Release date 4 Jul 2024
 
 #### Breaking Changes
 This release has no breaking changes.

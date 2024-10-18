@@ -11,6 +11,6 @@ weight: 5
 
 [“504 GATEWAY_TIMEOUT“ error]({{< ref "troubleshooting/tyk-cloud-classic/504-gateway-timeout-error" >}})
 
-[“Organisation quota has been exceeded“ error in the Dashboard API]({{< ref "troubleshooting/tyk-cloud-classic/organisation-quota-exceeded-error-dashboard-api" >}})
+[“Organization quota has been exceeded“ error in the Dashboard API]({{< ref "troubleshooting/tyk-cloud-classic/organisation-quota-exceeded-error-dashboard-api" >}})
 
 ["301 Moved Permanently"]({{< ref "troubleshooting/tyk-cloud-classic/301-moved-permanently" >}})

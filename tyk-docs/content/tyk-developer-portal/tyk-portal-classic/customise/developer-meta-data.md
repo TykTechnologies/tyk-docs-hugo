@@ -1,18 +1,18 @@
 ---
 date: 2017-03-24T17:29:30Z
-title: Customise the Developer Signup Form
+title: Customize the Developer Signup Form
 linktitle: Developer Signup Form
 menu:
   main:
-    parent: "Customise"
+    parent: "Customize"
 weight: 4 
 aliases:
   - /tyk-developer-portal/customise/developer-meta-data/
 ---
 
-When a developer signs up to your developer Portal, you might wish to capture more information about the developer than is supplied by the default form. To enable new fields in this form (they are automatically added to the form as you add them), go to the **Portal Management > Settings** screen, and edit the **Sign up form customisation** section:
+When a developer signs up to your developer Portal, you might wish to capture more information about the developer than is supplied by the default form. To enable new fields in this form (they are automatically added to the form as you add them), go to the **Portal Management > Settings** screen, and edit the **Sign up form customization** section:
 
-{{< img src="/img/dashboard/portal-management/dev_cusomise_2.5.png" alt="Tyk developer portal sign up form customisation" >}}
+{{< img src="/img/dashboard/portal-management/dev_cusomise_2.5.png" alt="Tyk developer portal sign up form customization" >}}
 
 ### Developer metadata and keys
 

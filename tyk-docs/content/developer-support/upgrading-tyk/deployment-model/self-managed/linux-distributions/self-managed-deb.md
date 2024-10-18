@@ -106,7 +106,7 @@ the configuration parameters of a running Redis server.
 For detailed instructions on performing backups in MongoDB, please refer to the official MongoDB documentation:
 https://www.mongodb.com/docs/manual/core/backups/
 
-To capture a snapshot of a MongoDB database from a remote machine and store it locally, utilise the mongodump command on the primary node. Specify the host and port number (default is 27017) of the remote server, along with additional parameters such as the database name, user credentials and password. Lastly, designate the directory where the snapshot should be created.
+To capture a snapshot of a MongoDB database from a remote machine and store it locally, utilize the mongodump command on the primary node. Specify the host and port number (default is 27017) of the remote server, along with additional parameters such as the database name, user credentials and password. Lastly, designate the directory where the snapshot should be created.
 
 ```bash
 mongodump --db tyk_analytics --out /path/to/dump/directory

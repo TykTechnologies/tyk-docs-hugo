@@ -38,7 +38,7 @@ kubectl create secret generic tyk-enterprise-portal-conf -n ${NAMESPACE} \
   --from-literal=TYK_AUTH=${TYK_AUTH}
 ```
 
-Where `TYK_ORG` and `TYK_AUTH` are the Tyk Dashboard Organisation ID and the Tyk Dashboard API Access Credentials respectively. Which can be obtained under your profile in the Tyk Dashboard.
+Where `TYK_ORG` and `TYK_AUTH` are the Tyk Dashboard Organization ID and the Tyk Dashboard API Access Credentials respectively. Which can be obtained under your profile in the Tyk Dashboard.
 
 ## Config settings
 

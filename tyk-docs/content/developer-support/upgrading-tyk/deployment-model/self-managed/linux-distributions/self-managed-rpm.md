@@ -40,7 +40,7 @@ Tyk supports the following Centos and Rhel distributions:
 
 Our repositories will be updated at https://packagecloud.io/tyk when new versions are released.
 
-During the initial deployment of Tyk, your team may have utilised YUM repositories or directly downloaded the .rpm files. To verify the presence of YUM repositories on the server, inspect the following locations:
+During the initial deployment of Tyk, your team may have utilized YUM repositories or directly downloaded the .rpm files. To verify the presence of YUM repositories on the server, inspect the following locations:
 
 - Dashboard: `/etc/yum.repos.d/tyk_tyk-dashboard.repo`
 - Gateway: `/etc/yum.repos.d/tyk_tyk-gateway.repo`
@@ -106,7 +106,7 @@ Example:
 For detailed instructions on performing backups in MongoDB, please refer to the official MongoDB documentation:
 https://www.mongodb.com/docs/manual/core/backups/
 
-To capture a snapshot of a MongoDB database from a remote machine and store it locally, utilise the mongodump command on the primary node. Specify the host and port number (default is 27017) of the remote server, along with additional parameters such as the database name, user credentials and password. Lastly, designate the directory where the snapshot should be created.
+To capture a snapshot of a MongoDB database from a remote machine and store it locally, utilize the mongodump command on the primary node. Specify the host and port number (default is 27017) of the remote server, along with additional parameters such as the database name, user credentials and password. Lastly, designate the directory where the snapshot should be created.
 
 ```bash
 mongodump --db tyk_analytics --out /path/to/dump/directory

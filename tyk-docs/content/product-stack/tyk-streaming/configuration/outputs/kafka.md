@@ -91,8 +91,7 @@ The config field `ack_replicas` determines whether we wait for acknowledgment fr
 
 <!-- Add links to bloblang queries : Both the `key` and `topic` fields can be dynamically set using function interpolations described [here](/docs/configuration/interpolation#bloblang-queries). -->
 
-<!-- TODO add metadata link -->
-Metadata will be added to each message sent as headers (version 0.11+), but can be restricted using the field [`metadata`](#metadata).
+Metadata will be added to each message sent as headers (version 0.11+), but can be restricted using the field [metadata](#metadata).
 
 ### Strict Ordering and Retries
 
@@ -115,9 +114,7 @@ Unfortunately this error message will appear for a wide range of connection prob
 
 This output benefits from sending multiple messages in flight in parallel for improved performance. You can tune the max number of in flight messages (or message batches) with the field `max_in_flight`.
 
-This output benefits from sending messages as a batch for improved performance. Batches can be formed at both the input and output level. 
-
-<!-- TODO add link to batching You can find out more [in this doc](/docs/configuration/batching). -->
+This output benefits from sending messages as a [batch]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/batching" >}}) for improved performance. Batches can be formed at both the input and output level. 
 
 ## Fields
 
@@ -172,7 +169,6 @@ Whether to allow the remote server to repeatedly request renegotiation. Enable t
 
 Type: `bool`  
 Default: `false`  
-Requires version 3.45.0 or newer  
 
 ### tls.root_cas
 
@@ -266,21 +262,18 @@ Default: `""`
 ### tls.client_certs[].password
 
 A plain text password for when the private key is password encrypted in PKCS#1 or PKCS#8 format. The obsolete `pbeWithMD5AndDES-CBC` algorithm is not supported for the PKCS#8 format. Warning: Since it does not authenticate the ciphertext, it is vulnerable to padding oracle attacks that can let an attacker recover the plaintext.
-<!-- TODO add secret link :::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-::: -->
 
 
 Type: `string`  
 Default: `""`  
 
 ```yml
-# Examples
+# Example
 
 password: foo
-
-password: ${KEY_PASSWORD}
 ```
+
+<!-- When Tyk streams with secrets released include this in above example => password: ${KEY_PASSWORD} -->
 
 ### sasl
 
@@ -364,7 +357,7 @@ Default: `""`
 ### topic
 
 The topic to publish messages to.
-<!-- TODO: add interpolation functions link - This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries). -->
+This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
 
 
 Type: `string`  
@@ -403,7 +396,7 @@ Default: `""`
 ### key
 
 The key to publish messages with.
-<!-- TODO: add interpolation functions link - This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries). -->
+This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
 
 
 Type: `string`  
@@ -421,7 +414,7 @@ Options: `fnv1a_hash`, `murmur2_hash`, `random`, `round_robin`, `manual`.
 ### partition
 
 The manually-specified partition to publish messages to, relevant only when the field `partitioner` is set to `manual`. Must be able to parse as a 32-bit integer.
-<!-- TODO: add interpolation functions link - This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries). -->
+This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
 
 
 Type: `string`  
@@ -499,9 +492,7 @@ Default: `[]`
 
 ### inject_tracing_map
 
-<!-- TODO: Add bloblang mapping link -->
-
-EXPERIMENTAL: A Bloblang mapping used to inject an object containing tracing propagation information into outbound messages. The specification of the injected fields will match the format used by the service wide tracer.
+A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mapping used to inject an object containing tracing propagation information into outbound messages. The specification of the injected fields will match the format used by the service wide tracer.
 
 
 Type: `string`  
@@ -565,8 +556,7 @@ Default: `false`
 
 ### batching
 
-<!-- TODO: add batching policy link -->
-Allows you to configure a batching policy.
+Allows you to configure a [batching policy]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/batching#batch-policy" >}}).
 
 
 Type: `object`  
@@ -625,8 +615,7 @@ period: 500ms
 
 ### batching.check
 
-<!-- TODO: Add bloblang query link -->
-A Bloblang query that should return a boolean value indicating whether a message should end a batch.
+A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) query that should return a boolean value indicating whether a message should end a batch.
 
 
 Type: `string`  

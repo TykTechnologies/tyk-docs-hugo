@@ -15,7 +15,7 @@ The Open Web Application Security Project (OWASP) provides a top ten threat awar
 
 Broken Object Level Authorization (BOLA) can occur due to a lack of access control to API resources. This vulnerability allows attackers to manipulate or bypass authorization mechanisms, typically by tampering with resource identifiers to gain unauthorized access to specific resources or data. BOLA is a critical security concern as it can lead to data breaches and unauthorized actions within a system.
 
-It is the responsibility of the API to handle this form of attack since it can access and understand the data needed to make authorisation decisions on individual objects within the application database.
+It is the responsibility of the API to handle this form of attack since it can access and understand the data needed to make authorization decisions on individual objects within the application database.
 
 ## 2 - Broken Authentication
 
@@ -29,7 +29,7 @@ Tyk provides the following features and authentication mechanisms:
 - Tyk's default authentication setup disallows credentials in URLs, reducing the risk of inadvertent exposure through backend logs.
 - Tyk Gateway can be configured to enforce a [minimum TLS version]({{< ref "basic-config-and-security/security/tls-and-ssl#values-for-tls-versions" >}}), enhancing security by blocking outdated and insecure TLS versions.
 
-## 3 - Broken Object Property Level Authorisation (BOPLA)
+## 3 - Broken Object Property Level Authorization (BOPLA)
 
 REST APIs provide endpoints that return all properties of an object in the reponse, some of which could contain sensitive data. Conversely, GraphQL API requests allow the clients to specify which properties of an object should be retrieved.
 
@@ -56,9 +56,9 @@ As an APIM product, Tyk Gateway can be configured to use the following out-of-th
 
 For Denial of Service (DoS) attacks it is recommended to use specialist 3rd party services to prevent DoS attacks from reaching your infrastructure.
 
-## 5 - Broken Function Level Authorisation (BFLA)
+## 5 - Broken Function Level Authorization (BFLA)
 
-To prevent Broken Functional Level Authorization (BFLA), requests to REST API endpoints must be authorised correctly. This involves validating client permissions against the requested resources. Requests from clients with insufficient permissions must be rejected.
+To prevent Broken Functional Level Authorization (BFLA), requests to REST API endpoints must be authorized correctly. This involves validating client permissions against the requested resources. Requests from clients with insufficient permissions must be rejected.
 
 Tyk offers several measures to assist with protection from BFLA threats:
 
@@ -68,13 +68,13 @@ Tyk offers several measures to assist with protection from BFLA threats:
 
 ## 6 - Unrestricted Access To Sensitive Business Flows
 
-This involves attackers understanding an API's business model, identifying sensitive business processes and automating unauthorised access to these processes. This can disrupt business operations by preventing legitimate users from making purchases for example. Attackers manually locate target resources and work to bypass any existing mitigation measures.
+This involves attackers understanding an API's business model, identifying sensitive business processes and automating unauthorized access to these processes. This can disrupt business operations by preventing legitimate users from making purchases for example. Attackers manually locate target resources and work to bypass any existing mitigation measures.
 
 These business flows are application specific, being unique to the API's backend systems. Subsequently, the API owner is responsible for addressing the security issues posed by this threat. Furthermore, to discover points of exploitation and test IT security breaches, pentesting is recommended.
 
-The APIM can be used to protect sensitive endpoints using authentication and authorisation. Tyk recommends considering splitting Admin APIs from client facing APIs. This allows authentication and authorisation checks to be defined and managed by different governance models, thus establishing clear role models.
+The APIM can be used to protect sensitive endpoints using authentication and authorization. Tyk recommends considering splitting Admin APIs from client facing APIs. This allows authentication and authorization checks to be defined and managed by different governance models, thus establishing clear role models.
 
-Furthermore, the APIM can validate authentication and authorisation by scope to ensure that the client has the correct credentials before the upstream API processes the request.
+Furthermore, the APIM can validate authentication and authorization by scope to ensure that the client has the correct credentials before the upstream API processes the request.
 
 ## 7 - Server Side Request Forgery (SSRF)
 
@@ -90,10 +90,10 @@ Tyk offers several mechanisms to help protect an API from Security Misconfigurat
 - Use [response body manipulation]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) to remove or modify parts containing sensitive information.
 - [TLS]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) to ensure that clients use the right service and encrypt traffic.
 - [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}) with both the clients and API to ensure that callers with explicitly allowed client certificates can connect to the endpoints.
-- [Error Templates]({{< ref "advanced-configuration/error-templates" >}}) can be used to return a response body based on status code and content type. This can help minimise the implementation details returned to the client.
+- [Error Templates]({{< ref "advanced-configuration/error-templates" >}}) can be used to return a response body based on status code and content type. This can help minimize the implementation details returned to the client.
 - [CORS functionality]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}) allows the Tyk Gateway to limit API access to particular browser-based consumers.
-- [Policy Path-Based Permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}) and the [allowlist]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#allowlist" >}}) plugin can be used to prevent clients from accessing API endpoints using non-authorised HTTP methods. For example, blocking the use of the DELETE method on an endpoint which should only accept GET requests.
-- [Environment variables]({{< ref "tyk-environment-variables" >}}) can help standardise configuration across containerised deployments.
+- [Policy Path-Based Permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}) and the [allowlist]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#allowlist" >}}) plugin can be used to prevent clients from accessing API endpoints using non-authorized HTTP methods. For example, blocking the use of the DELETE method on an endpoint which should only accept GET requests.
+- [Environment variables]({{< ref "tyk-environment-variables" >}}) can help standardize configuration across containerised deployments.
 - For GraphQL APIs:
   - [Schema Introspection]({{< ref "graphql/introspection" >}}) ensures that the Tyk Dashboard automatically uses the schema of the upstream GraphQL API and can keep it synchronised if it changes.
   - [GraphQL Schema Validation]({{< ref "graphql/validation#schema-validation" >}}) prevents invalid schemas from being saved. This catches errors such as duplicate type names and usage of unknown types.
@@ -109,7 +109,7 @@ Tyk offers the following features to support improper inventory management:
 - [Versioning]({{< ref "getting-started/key-concepts/versioning" >}}) allows newer versions of APIs to coexist with the older versions, facilitating deprecation and sunsetting.
 - [Sunsetting]({{< ref "getting-started/key-concepts/versioning#sunsetting-api-versions" >}}) allows versions to be configured with an Expiry Time, ensuring that a version is not accessible after the expiry date.
 - [Key expiry]({{< ref "basic-config-and-security/control-limit-traffic/key-expiry" >}}) ensures that access to an API is short lived, with a per key configurable Time to Live (TTL) for which a token remains valid before it expires. The implementation of key expiry, with a configurable Time To Live (TTL), mitigates the impact of compromised tokens by narrowing the window of vulnerability. Setting a TTL reduces the time frame during which a compromised token could be exploited, enhancing overall security.
-- Tyk Developer Portal catalogues APIs and facilitates granting access to them.  Integrated with a CMDB it can help keep documentation updated.
+- Tyk Developer Portal catalogs APIs and facilitates granting access to them.  Integrated with a CMDB it can help keep documentation updated.
 - [Tyk Analytics]({{< ref "tyk-dashboard-analytics" >}}) can help identify the stagnant APIs and used stale APIs.
 - [Tyk Pump]({{< ref "tyk-pump" >}}) can ship metrics needed for analytics into Tyk Dashboard and other systems.
 - Third-party [Secret Storage]({{< ref "tyk-configuration-reference/kv-store" >}}) can be used to centralise and protect sensitive configuration data such as passwords, rather than exposing them as plain text in Tyk configuration files.
@@ -120,7 +120,7 @@ In addition, it is best practice to consider any definition of done to include c
 
 Attackers may identify and target the third party APIs/services used by an API. This can lead to leaked sensitive information, denial of service, injection attacks etc.
 
-It is the responsibility of the API to provide protection against these attacks. However, if the organisation uses the Gateway as a forwarding proxy to third party APIs, then the following features could be used:
+It is the responsibility of the API to provide protection against these attacks. However, if the organization uses the Gateway as a forwarding proxy to third party APIs, then the following features could be used:
 
 - [JSON Schema validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-tyk-classic" >}}) to validate that an incoming data payload meets a defined schema. Payloads that do not adhere to the schema are rejected.
 - [TLS]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) to ensure that clients use the right service and encrypt traffic.

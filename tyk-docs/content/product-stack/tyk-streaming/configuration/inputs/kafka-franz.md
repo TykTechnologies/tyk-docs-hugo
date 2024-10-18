@@ -195,7 +195,7 @@ Determines whether to consume from the oldest available offset, otherwise messag
 Type: `bool`  
 Default: `true`  
 
-### `tls`
+### tls
 
 Custom TLS settings can be used to override system defaults.
 
@@ -319,21 +319,18 @@ Default: `""`
 ### tls.client_certs[].password
 
 A plain text password for when the private key is password encrypted in PKCS#1 or PKCS#8 format. The obsolete `pbeWithMD5AndDES-CBC` algorithm is not supported for the PKCS#8 format. Warning: Since it does not authenticate the ciphertext, it is vulnerable to padding oracle attacks that can let an attacker recover the plaintext.
-<!-- TODO add secret link :::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-::: -->
 
 
 Type: `string`  
 Default: `""`  
 
 ```yml
-# Examples
+# Example
 
 password: foo
-
-password: ${KEY_PASSWORD}
 ```
+
+<!-- When Tyk streams with secrets released include this in above example => password: ${KEY_PASSWORD} -->
 
 ### sasl
 
@@ -351,7 +348,7 @@ sasl:
     username: foo
 ```
 
-### `sasl[].mechanism`
+### sasl[].mechanism
 
 The SASL mechanism to use.
 
@@ -402,7 +399,7 @@ Key/value pairs to add to OAUTHBEARER authentication requests.
 
 Type: `object`  
 
-### `sasl[].aws`
+### sasl[].aws
 
 Contains AWS specific fields for when the `mechanism` is set to `AWS_MSK_IAM`.
 
@@ -504,8 +501,7 @@ Default: `false`
 
 ### batching
 
-<!-- TODO add batching policy link -->
-Allows you to configure a batching policy that applies to individual topic partitions in order to batch messages together before flushing them for processing. Batching can be beneficial for performance as well as useful for windowed processing, and doing so this way preserves the ordering of topic partitions.
+Allows you to configure a [batching policy]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/batching#batch-policy" >}}) that applies to individual topic partitions in order to batch messages together before flushing them for processing. Batching can be beneficial for performance as well as useful for windowed processing, and doing so this way preserves the ordering of topic partitions.
 
 
 Type: `object`  
@@ -564,9 +560,7 @@ period: 500ms
 
 ### batching.check
 
-<!-- TODO: Add Bloblang query link -->
-
-A Bloblang query that should return a boolean value indicating whether a message should end a batch.
+A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) query that should return a boolean value indicating whether a message should end a batch.
 
 
 Type: `string`  

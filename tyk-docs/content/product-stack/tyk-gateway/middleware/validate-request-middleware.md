@@ -10,13 +10,13 @@ aliases:
 
 Requests to your upstream services should meet the contract that you have defined for those APIs. Checking the content and format of incoming requests before they are passed to the upstream APIs can avoid unexpected errors and provide additional security to those services. Tyk's request validation middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.
 
-Request validation enables cleaner backend APIs, better standardisation across consumers, easier API evolution and reduced failure risk leading to higher end-to-end reliability.
+Request validation enables cleaner backend APIs, better standardization across consumers, easier API evolution and reduced failure risk leading to higher end-to-end reliability.
 
 ## When to use the Request Validation middleware
 
 #### Improving security of upstream services
 
-Validating incoming requests against a defined schema protects services from unintended consequences arising from bad input, such as SQL injection or buffer overflow errors, or other unintended failures caused by missing parameters or invalid data types. Offloading this security check to the API Gateway provides an early line of defence as potentially bad requests are not proxied to your upstream services.
+Validating incoming requests against a defined schema protects services from unintended consequences arising from bad input, such as SQL injection or buffer overflow errors, or other unintended failures caused by missing parameters or invalid data types. Offloading this security check to the API Gateway provides an early line of defense as potentially bad requests are not proxied to your upstream services.
 
 #### Offloading contract enforcement
 
@@ -30,7 +30,7 @@ Validation goes hand-in-hand with request [header]({{< ref "transform-traffic/re
 
 The incoming request is compared with a defined schema, which is a structured description of the expected format for requests to the endpoint. This request schema defines the required and optional elements such as headers, path/query parameters, payloads and their data types. It acts as a contract for clients.
 
-If the incoming request does not match the schema, it will be rejected with an `HTTP 422 Unprocessable Entity` error. This error code can be customised if required.
+If the incoming request does not match the schema, it will be rejected with an `HTTP 422 Unprocessable Entity` error. This error code can be customized if required.
 
 When using [Tyk OAS APIs]({{< ref "product-stack/tyk-gateway/middleware/validate-request-tyk-oas" >}}), request validation is performed by the `Validate Request` middleware which can be enabled per-endpoint. The schema against which requests are compared is defined in the OpenAPI description of the endpoint. All elements of the request can have a `schema` defined in the OpenAPI description so requests to Tyk OAS APIs can be validated for headers, path/query parameters and body (payload).
 

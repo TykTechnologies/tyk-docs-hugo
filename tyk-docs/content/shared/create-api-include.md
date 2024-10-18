@@ -56,7 +56,7 @@ Take a look at the **Authentication** section:
 You have the following options:
 
 - **Authentication mode**: This is the method that Tyk should use to authenticate requests to call your API. Tyk supports several different authentication modes - see [Authentication and Authorization]({{< ref "basic-config-and-security/security/authentication-&-authorization" >}}) for more details on securing your API. For this tutorial, you should select `Open (Keyless)`. 
-- **Strip Authorization Data**: Select this option to ensure that any security (authentication) tokens provided to authorise requests to your API on Tyk are not leaked to the upstream. You can leave this unchecked for this tutorial.
+- **Strip Authorization Data**: Select this option to ensure that any security (authentication) tokens provided to authorize requests to your API on Tyk are not leaked to the upstream. You can leave this unchecked for this tutorial.
 - **Auth Key Header Name**: The header parameter that will hold the authentication token (or key) for requests to this API; the default for this is `Authorization`.
 - **Allow query parameter as well as header**: This option allows the authentication token to be set in the query parameter, not just in the Request Header. For this tutorial, leave this unchecked.
 - **Use Cookie Value**: Tyk also supports the use of a cookie value as an alternative authentication token location. For this tutorial, leave this unchecked.
@@ -77,13 +77,13 @@ If you select the API from the list to open it again, the API URL will be displa
 ## Tutorial: Create an API with the Dashboard API
 
 It is easy to create APIs using Tyk Dashboard's own REST API.  
-You will need an API key for your organisation (to authenticate with the Dashboard API) and issue a request using these credentials to create your new API and make it live.
+You will need an API key for your organization (to authenticate with the Dashboard API) and issue a request using these credentials to create your new API and make it live.
 
 ### Step 1: Obtain your Tyk Dashboard API access credentials key & Dashboard URL
 
 - From the Tyk Dashboard, select "Users" in the "System Management" section.  
 - Click **Edit** for your username, then scroll to the bottom of the page.  
-- Your personal API key, granting you access to the Dashboard API, is labelled **Tyk Dashboard API Access Credentials** key
+- Your personal API key, granting you access to the Dashboard API, is labeled **Tyk Dashboard API Access Credentials** key
 
 {{< img src="/img/2.10/user_api_id.png" alt="API key location" >}}
 

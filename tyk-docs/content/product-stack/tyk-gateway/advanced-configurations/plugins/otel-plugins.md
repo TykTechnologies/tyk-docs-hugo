@@ -9,7 +9,7 @@ menu:
 weight: 3
 ---
 
-By instrumenting your custom plugins with Tyk's *OpenTelemetry* library, you can gain additional insights into custom plugin behaviour like time spent and exit status. Read on to see some examples of creating span and setting attributes for your custom plugins.
+By instrumenting your custom plugins with Tyk's *OpenTelemetry* library, you can gain additional insights into custom plugin behavior like time spent and exit status. Read on to see some examples of creating span and setting attributes for your custom plugins.
 
 {{< note success >}}
 **Note:**
@@ -68,7 +68,7 @@ In this case, we are using our own OpenTelemetry library for convenience. You ca
 
 The function takes three parameters:
 
-1. `Context`: This is usually the current request’s context. However, you can also derive a new context from it, complete with timeouts and cancellations, to suit your specific needs.
+1. `Context`: This is usually the current request’s context. However, you can also derive a new context from it, complete with timeouts and cancelations, to suit your specific needs.
 2. `TracerName`: This is the identifier of the tracer that will be used to create the span. If you do not provide a name, the function will default to using the `tyk` tracer.
 3. `SpanName`: This parameter is used to set an initial name for the child span that is created. This name can be helpful for later identifying and referencing the span.
 
@@ -163,7 +163,7 @@ The illustration below, shows how the `go_plugin` attribute looks in Jaeger:
 
 ## Multiple functions = Multiple spans
 
-To effectively trace the execution of your plugin, you can create additional spans for each function execution. By using context propagation, you can link these spans, creating a detailed trace that covers multiple function calls. This allows you to better understand the sequence of operations, pinpoint performance bottlenecks, and analyze application behaviour.
+To effectively trace the execution of your plugin, you can create additional spans for each function execution. By using context propagation, you can link these spans, creating a detailed trace that covers multiple function calls. This allows you to better understand the sequence of operations, pinpoint performance bottlenecks, and analyze application behavior.
 
 Here's how you can implement it:
 

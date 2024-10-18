@@ -15,7 +15,7 @@ aliases:
     - /plugins/javascript-middleware/middleware-scripting-guide
 ---
 
-Tyk's JavaScript Virtual Machine (JSVM) provides a serverless compute function that allows for the execution of custom logic directly within the gateway itself. This can be accessed from [multiple locations]({{< ref "plugins/supported-languages/javascript-middleware" >}}) in the API processing chain and allows significant customisation and optimisation of your request handling.
+Tyk's JavaScript Virtual Machine (JSVM) provides a serverless compute function that allows for the execution of custom logic directly within the gateway itself. This can be accessed from [multiple locations]({{< ref "plugins/supported-languages/javascript-middleware" >}}) in the API processing chain and allows significant customization and optimization of your request handling.
 
 In this guide we will cover the features and resources available to you when creating custom functions, highlighting where there are limitations for the different middleware stages.
 
@@ -94,12 +94,36 @@ The system API provides access to resources outside of the JavaScript Virtual Ma
 
 ### The `request` object
 
-The `request` object provides a set of arrays that describe the API request. These can be manipulated and, when changed, will affect the request as it passes through the middleware pipeline.
+The `request` object provides a set of arrays that describe the API request. These can be manipulated and, when changed, will affect the request as it passes through the middleware pipeline. For [virtual endpoints]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) the request object has a [different structure](#VirtualEndpoint-Request).
 
 The structure of the `request` object is:
 
+```typesecript
+class ReturnOverrides {
+  ResponseCode: number = 200;
+  ResponseBody: string = "";
+  ResponseHeaders: string[] = [];
+}
+
+class Request {
+  Headers: { [key: string]: string[] } = {};
+  SetHeaders: { [key: string]: string } = {};
+  DeleteHeaders: string[] = [];
+  Body: string = "";
+  URL: string = "";
+  AddParams: { [key: string]: string } = {};
+  DeleteParams: string[] = [];
+  ReturnOverrides: ReturnOverrides = new ReturnOverrides();
+  IgnoreBody: boolean = false;
+  Method: string = "";
+  RequestURI: string = "";
+  Scheme: string = "";
+}
+```
+
+<!--
 ```go
-{
+struct {
   Headers       map[string][]string
   SetHeaders    map[string]string
   DeleteHeaders []string
@@ -117,7 +141,7 @@ The structure of the `request` object is:
   RequestURI    string
   Scheme        string
 }
-```
+``` -->
 
 - `Headers`: this is an object of string arrays, and represents the current state of the request header; this object cannot be modified directly, but can be used to read header data
 - `SetHeaders`: this is a key-value map that will be set in the header when the middleware returns the object; existing headers will be overwritten and new headers will be added
@@ -127,10 +151,11 @@ The structure of the `request` object is:
 - `AddParams`: you can add parameters to your request here, for example internal data headers that are only relevant to your network setup
 - `DeleteParams`: these parameters will be removed from the request as they pass through the middleware; note `DeleteParams` happens before `AddParams`
 - `ReturnOverrides`: values stored here are used to stop or halt middleware execution and return an error code
-- `IgnoreBody`: if this parameter is set to `true`, the original request body will be used; if set to `false` the `Body` field will be used (`false` is the default behaviour)
+- `IgnoreBody`: if this parameter is set to `true`, the original request body will be used; if set to `false` the `Body` field will be used (`false` is the default behavior)
 - `Method`: contains the HTTP method (`GET`, `POST`, etc.)
 - `RequestURI`: contains the request URI, including the query string, e.g. `/path?key=value`
 - `Scheme`: contains the URL scheme, e.g. `http`, `https`
+
 
 #### Using `ReturnOverrides`
 
@@ -159,6 +184,51 @@ testJSVMData.NewProcessRequest(function(request, session, config) {
 });
 ```
 
+#### The virtual endpoint `request` object {#VirtualEndpoint-Request}
+
+For [virtual endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) functions the structure of a Javascript `request` object is:
+
+```typescript
+class VirtualEndpointRequest {
+  Body: string = "";
+  Headers: { [key: string]: string[] } = {};
+  Params: { [key: string]: string[] } = {};
+  Scheme: string = "";
+  URL: string = "";
+}
+```
+
+- `Body`: HTTP request body, e.g. `""`
+- `Headers`: HTTP request headers, e.g. `"Accept": ["*/*"]`
+- `Params`: Decoded query and form parameters, e.g. `{ "confirm": ["true"], "userId": ["123"] }`
+- `Scheme`: The scheme of the URL ( e.g. `http` or `https`)
+- `URL`: The full URL of the request, e.g `/vendpoint/anything?user_id=123\u0026confirm=true`
+
+</br>
+
+{{< note success >}}
+**Note**
+
+Each query and form parameter within the request is stored as an array field in the `Params` field of the request object.
+
+Repeated parameter assignments are appended to the corresponding array. For example, a request against `/vendpoint/anything?user_id[]=123&user_id[]=234` would result in a Javascript request object similar to that shown below:
+
+```javascript
+const httpRequest = {
+  Headers: {
+    "Accept": ["*/*"],
+    "User-Agent": ["curl/8.1.2"]
+  },
+  Body: "",
+  URL: "/vendpoint/anything?user_id[]=123\u0026user_id[]=234",
+  Params: {
+    "user_id[]": ["123", "234"]
+  },
+  Scheme: "http"
+};
+```
+{{< /note >}}
+
 ### The `session` object
 
 Tyk uses an internal [session object]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}) to handle the quota, rate limits, access allowances and auth data of a specific key. JS middleware can be granted access to the session object but there is also the option to disable it as deserialising it into the JSVM is computationally expensive and can add latency. Other than the `meta_data` field, the session object itself cannot be directly edited as it is crucial to the correct functioning of Tyk.
@@ -183,7 +253,7 @@ A new JSVM instance is created for *each* API that is managed. Consequently, int
 The third Tyk data object that is made available to the script running in the JSVM contains data from the API Definition. This is read-only and cannot be modified by the JS function. The structure of this object is:
 
 - `APIID`: the unique identifier for the API
-- `OrgID`: the organisation identifier
+- `OrgID`: the organization identifier
 - `config_data`: custom attributes defined in the API description
 
 #### Adding custom attributes to the API Definition
@@ -229,7 +299,7 @@ Underscore.js is a JavaScript library that provides a lot of useful functional p
 - filter
 - invoke
 
-There are also more specialised goodies, including:
+There are also more specialized goodies, including:
 
 - function binding
 - JavaScript templating

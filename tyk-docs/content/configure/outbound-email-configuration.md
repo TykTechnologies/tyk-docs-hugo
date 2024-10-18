@@ -101,16 +101,16 @@ If `SMTPUsername` or `SMTPPassword` is omitted, Tyk assumes that authentication 
   "SecretAccessKey": "KEY"
 },
 ```
-### Customise your Welcome Emails
+### Customize your Welcome Emails
 
-You can customise the welcome email that a developer recieves when they signup to your portal. You can use images and other HTML formatted content. The following video walks you through the process.
+You can customize the welcome email that a developer recieves when they signup to your portal. You can use images and other HTML formatted content. The following video walks you through the process.
 
 {{< youtube XNyKRAlTDVs >}}
 
 
 1. Select **Settings** from your **Dashboard** > **Portal Management**
 2. You can change the from email address and the from email name for your welcome emails.
-3. To use customised email content, select **Enable custom welcome email**.
+3. To use customized email content, select **Enable custom welcome email**.
 4. You can then add the following custom content:
   * Email Subject
   * Email Body content
@@ -123,14 +123,14 @@ You can customise the welcome email that a developer recieves when they signup t
 6. Click **Save** at the top of the Portal Settings screen.
 
 
-### Customise your Key Approval Emails
+### Customize your Key Approval Emails
 
 #### Editing the Email Body
 
 1. Select **Settings** from your **Dashboard** > **Portal Management**
 2. From the "API Key approval email" section, select "Enable custom approval email", and edit the API Key email body.
 
-{{< img src="/img/2.10/key_approval_email_config.png" alt="Email-Customisation" >}}
+{{< img src="/img/2.10/key_approval_email_config.png" alt="Email-Customization" >}}
 
 #### Add an image or logo to the Key Approval Email
 
@@ -145,7 +145,7 @@ You can customise the welcome email that a developer recieves when they signup t
 The `LINK TO IMAGE` must be a publicly hosted resource.
 {{< /note >}}
 
-In an Self-Managed installation you have full access to the HTML template, allowing you further customisation.
+In an Self-Managed installation you have full access to the HTML template, allowing you further customization.
 
 #### Portal Manager Email Settings
 

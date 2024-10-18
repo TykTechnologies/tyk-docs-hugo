@@ -110,7 +110,7 @@ An AMQP queue to consume from.
 
 Type: `string`  
 
-### `queue_declare`
+### queue_declare
 
 Allows you to passively declare the target queue. If the queue already exists then the declaration passively verifies that they match the target fields.
 
@@ -347,10 +347,10 @@ Type: `string`
 Default: `""`  
 
 ```yml
-# Examples
+# Example
 
 password: foo
-
-password: ${KEY_PASSWORD}
 ```
+
+<!-- When Tyk streams with secrets released include this in above example => password: ${KEY_PASSWORD} -->
 

@@ -464,6 +464,10 @@ global:
        keyName: "postgreConnectionURLkey"
 ```
 
+**_Tyk Operator License_**
+
+It can be configured via `global.license.operator` as a plain text or Kubernetes secret which includes `OperatorLicense` key in it. Then, this secret must be referenced via `global.secrets.useSecretName`.
+
 ### Gateway Configurations
 
 {{< note success >}}
@@ -507,7 +511,7 @@ To add your custom Certificate Authority(CA) to your containers, you can mount y
 ```
 
 #### Enabling gateway autoscaling
-You can enable autoscaling of the gateway by `--set tyk-gateway.gateway.autoscaling.enabled=true`. By default, it will enable the `Horizontal Pod Autoscaler` resource with target average CPU utilisation at 60%, scaling between 1 and 3 instances. To customise those values you can modify the `tyk-gateway` section of `values.yaml` as shown below:
+You can enable autoscaling of the gateway by `--set tyk-gateway.gateway.autoscaling.enabled=true`. By default, it will enable the `Horizontal Pod Autoscaler` resource with target average CPU utilization at 60%, scaling between 1 and 3 instances. To customize those values you can modify the `tyk-gateway` section of `values.yaml` as shown below:
 
 ```yaml
 tyk-gateway:
@@ -735,7 +739,7 @@ tyk-mdcb:
 
 ### Tyk Bootstrap Configurations
 
-To enable bootstrapping, set `global.components.bootstrap` to `true`. It would run [tyk-k8s-bootstrap](https://github.com/TykTechnologies/tyk-k8s-bootstrap) to bootstrap `tyk-control-plane` and to create Kubernetes secrets that can be utilised in Tyk Operator and Tyk Developer Portal.
+To enable bootstrapping, set `global.components.bootstrap` to `true`. It would run [tyk-k8s-bootstrap](https://github.com/TykTechnologies/tyk-k8s-bootstrap) to bootstrap `tyk-control-plane` and to create Kubernetes secrets that can be utilized in Tyk Operator and Tyk Developer Portal.
 
 {{< note success >}}
 **Note**
@@ -745,7 +749,7 @@ During bootstrapping, admin user needs to reset its password. It may be denied b
 
 #### Bootstrapped Environments
 
-If Tyk is already bootstrapped, the application will bypass the creation of the Tyk Organisation and Admin User, proceeding directly with the creation of Kubernetes Secrets.
+If Tyk is already bootstrapped, the application will bypass the creation of the Tyk Organization and Admin User, proceeding directly with the creation of Kubernetes Secrets.
 
 Given that the Kubernetes Secrets require values for `TYK_AUTH` and `TYK_ORG`, it is essential to provide these values through the respective environment variables, called `TYK_K8SBOOTSTRAP_TYK_ADMIN_AUTH` for `TYK_AUTH` and `TYK_K8SBOOTSTRAP_TYK_ORG_ID` for `TYK_ORG`.
 
@@ -853,6 +857,12 @@ tyk-dev-portal:
 ```
 
 ### Tyk Operator Configurations
+
+Tyk Operator is a licensed component that requires a valid key for operation. 
+Please refer to the [Tyk Operator Installation Guide]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}})
+for detailed information on the installation and upgrade processes. 
+
+Prior to installing Tyk Operator, ensure that a valid license key is provided by setting `global.license.operator` field in values.yaml file. You can set license key via a Kubernetes secret using `global.secrets.useSecretName` field. The secret should contain a key called `OperatorLicense`.
 
 In order to enable installing Tyk Operator along-side Tyk Control Plane installation, please set `global.components.operator`
 to `true`.

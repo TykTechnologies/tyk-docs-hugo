@@ -79,17 +79,17 @@ This will will download and setup the five Docker containers. This may take some
 
 ### Step #5 - Bootstrap the Tyk installation
 
-Go to [http://localhost:3000](http://localhost:3000) in your browser. You will be presented with the Bootstrap UI to create your first organisation and admin user.
+Go to [http://localhost:3000](http://localhost:3000) in your browser. You will be presented with the Bootstrap UI to create your first organization and admin user.
 
 {{< img src="/img/dashboard/system-management/tyk-bootstrap.png" alt="Tyk Bootstrap sceen" width="768">}}
 
 
-### Step #6 - Create your organisation and default user
+### Step #6 - Create your organization and default user
 
 You need to enter the following:
 
-* Your **Organisation Name**
-* Your **Organisation Slug**
+* Your **Organization Name**
+* Your **Organization Slug**
 * Your User **Email Address**
 * Your User **First and Last Name**
 * A **Password** for your User

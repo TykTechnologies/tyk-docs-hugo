@@ -1,7 +1,7 @@
 ---
 title: Tyk MDCB v2.5 Release Notes
-description: "Tyk Multi Data-Centre v2.5 release notes. Focusing on compatibility with Tyk API Definitions from Tyk Gateway v5.3"
-tags: ["release notes", "MDCB", "Tyk Multi Data-Centre", "Tyk Multi Data-Center", "v2.5", "2.5"]
+description: "Tyk Multi Data-Center v2.5 release notes. Focusing on compatibility with Tyk API Definitions from Tyk Gateway v5.3"
+tags: ["release notes", "MDCB", "Tyk Multi Data-Center", "Tyk Multi Data-Center", "v2.5", "2.5"]
 aliases:
   - /release-notes/mdcb-2.5/
 ---

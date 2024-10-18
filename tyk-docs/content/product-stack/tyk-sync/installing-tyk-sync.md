@@ -7,12 +7,12 @@ tags: [ "Tyk Sync" ]
 
 ### Pre-requisites
 - Access to a Git repository or local file system for storing configurations
-- Tyk Gateway or Tyk Dashboard
+- Licensed Tyk Dashboard
 
 {{< note success >}}
-**Gateway and Dashboard Version**
+**Compatible Tyk Version**
 
-<br>Tyk Sync manages API definition and require an update whenever the API definition schema has changed in Gateway or Dashboard. Please check the "Compatibility Matrix For Tyk Components" section in [Tyk Gateway]({{<ref "product-stack/tyk-gateway/release-notes/overview">}}) and [Dashboard]({{< ref "product-stack/tyk-dashboard/release-notes/overview">}})'s release notes to select the correct version of Tyk Sync.
+<br>Tyk Sync manages API definition and require an update whenever the API definition schema has changed. Please check the "Compatibility Matrix For Tyk Components" section in [Tyk Dashboard]({{< ref "product-stack/tyk-dashboard/release-notes/overview">}})'s release notes to select the correct version of Tyk Sync.
 {{< /note >}}
 
 {{< note success >}}
@@ -32,10 +32,10 @@ To install Tyk Sync using Docker, follow these steps:
 
 ##### 1. Pull the Docker image from the Tyk repository
 
-Make sure to specify the version tag you need. For example, to pull version v1.5.0, use the following command:
+Make sure to specify the version tag you need. For example, to pull version v2.0.0, use the following command:
 
 ```bash
-SYNC_VERSION=v1.5.0
+SYNC_VERSION=v2.0.0
 docker pull tykio/tyk-sync:$SYNC_VERSION
 ```
 
@@ -44,7 +44,7 @@ All docker images are available on the [Tyk Sync Docker Hub](https://hub.docker.
 ##### 2. Run Tyk Sync
 
 ```bash
-SYNC_VERSION=v1.5.0
+SYNC_VERSION=v2.0.0
 docker run tykio/tyk-sync:$SYNC_VERSION [command] [flag]
 ```
 
@@ -84,7 +84,7 @@ tyk-sync [command] --help
 ### Specifying target Tyk installation
 
 #### Tyk Dashboard
-For Dashboard users, you can provide the necessary connection details using the `--dashboard` and `--secret` options.
+Dashboard users can provide the necessary connection details using the `--dashboard` and `--secret` options.
 
 ```bash
 tyk-sync --dashboard <DASHBOARD_URL> --secret <SECRET> [command] [flags]
@@ -97,22 +97,6 @@ If you prefer not to provide the secret via the command line, you can set the en
 ```bash
 export TYKGIT_DB_SECRET=<SECRET>
 tyk-sync --dashboard <DASHBOARD_URL> [command] [flags]
-```
-
-#### Open Source Gateway
-For open source Gateway users, you can provide the necessary connection details using the `--gateway` and `--secret` options.
-
-```bash
-tyk-sync --gateway <GATEWAY_URL> --secret <SECRET> [command] [flags]
-```
-
-GATEWAY_URL is the fully qualified gateway target URL (e.g. `http://localhost:8080`) and SECRET refers to the API secret (`secret` parameter in your tyk.conf file) used to access your Gateway API.
-
-If you prefer not to provide the secret via the command line, you can set the environment variable `TYKGIT_GW_SECRET` instead. This method keeps your secret secure and avoids exposure in command history.
-
-```bash
-export TYKGIT_GW_SECRET=<SECRET>
-tyk-sync --gateway <GATEWAY_URL> [command] [flags]
 ```
 
 ### Specifying source API configurations

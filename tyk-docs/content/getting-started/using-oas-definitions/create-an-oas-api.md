@@ -20,7 +20,7 @@ In this tutorial we show you how to create a minimal Tyk OAS API using the Tyk G
     Click to expand tutorial
   </summary>
 
-When making calls to the Tyk Gateway API you'll need to set the domain name and port for your environment and, in the API request header, must provide credentials in the `x-tyk-authorization` field for Tyk to authorise your request, as follows:
+When making calls to the Tyk Gateway API you'll need to set the domain name and port for your environment and, in the API request header, must provide credentials in the `x-tyk-authorization` field for Tyk to authorize your request, as follows:
 
 | Interface             | Port     |  Authorization Header  | Authorization credentials        |
 |-----------------------|----------|------------------------|----------------------------------|
@@ -107,7 +107,7 @@ In this tutorial we will also show you how to test and protect your new API by e
     Click to expand tutorial
   </summary>
   
-When making calls to the Tyk Dashboard API you'll need to set the domain name and port for your environment and, in the API request header, must provide credentials in the `Authorization` field for Tyk to authorise your request, as follows:
+When making calls to the Tyk Dashboard API you'll need to set the domain name and port for your environment and, in the API request header, must provide credentials in the `Authorization` field for Tyk to authorize your request, as follows:
 
 | Interface             | Port     | Authorization Header  | Authorization credentials        |
 |-----------------------|----------|-----------------------|----------------------------------|
@@ -328,3 +328,8 @@ Note that the Gateway will respond with the following error message:
 
 </details>
 
+### Tutorial 4: Create a Tyk OAS API using Tyk Operator
+
+You can make use of Tyk Operator custom resources to configure [Tyk OAS API]({{<ref "getting-started/using-oas-definitions/oas-glossary#tyk-oas-api-definition">}}) in a Kubernetes environment.
+
+In this [tutorial]({{<ref "product-stack/tyk-operator/getting-started/create-an-oas-api">}}) we guide you through the steps to create a new Tyk OAS API using Tyk Operator.

@@ -57,7 +57,7 @@ This input adds the following metadata fields to each message:
 - nsq_timestamp
 ```
 
-<!-- TODO add function interpolation link: You can access these metadata fields using [function interpolation](/docs/configuration/interpolation#bloblang-queries). -->
+You can access these metadata fields using [function interpolation]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
 
 
 ## Fields
@@ -199,12 +199,12 @@ Type: `string`
 Default: `""`  
 
 ```yml
-# Examples
+# Example
 
 password: foo
-
-password: ${KEY_PASSWORD}
 ```
+
+<!-- When Tyk streams with secrets released include this in above example => password: ${KEY_PASSWORD} -->
 
 ### topic
 

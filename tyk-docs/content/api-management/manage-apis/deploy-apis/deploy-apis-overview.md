@@ -37,7 +37,7 @@ Learn more:
 
 ## Tyk Sync
 
-Tyk Sync enables declarative API management and GitOps. With Tyk Sync, you can manage APIs and Policies in a transportable format, which can be version controlled using Git. This approach allows you to achieve automation in the API deployment process and maintain a source of truth for API configurations. By setting up a CI/CD pipeline, changes made in Git trigger the reload of configurations in Tyk Dashboard or Gateway.
+Tyk Sync enables declarative API management and GitOps. With Tyk Sync, you can manage API configurations in a transportable format, which can be version controlled using Git. This approach allows you to achieve automation in the API deployment process and maintain a source of truth for API configurations. By setting up a CI/CD pipeline, changes made in Git trigger the reload of configurations in Tyk Dashboard.
 
 Usage: Recommended for organizations looking to implement GitOps in API management and have portable API and Policy configurations.
 

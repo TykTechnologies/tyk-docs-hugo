@@ -56,7 +56,7 @@ API Ownership must be enabled in your Tyk Dashboard configuration, which you can
  - set the `TYK_DB_ENABLEOWNERSHIP` environment variable to `true`
 
 ### Owned Analytics
-Access to Tyk Dashboard's [traffic analytics]({{< ref "tyk-dashboard-analytics" >}}) is controlled via the `analytics` permission in the user or user group access control configuration. The default behaviour of this control is to grant or restrict access to all traffic analytics and does not take into account API ownership.
+Access to Tyk Dashboard's [traffic analytics]({{< ref "tyk-dashboard-analytics" >}}) is controlled via the `analytics` permission in the user or user group access control configuration. The default behavior of this control is to grant or restrict access to all traffic analytics and does not take into account API ownership.
 
 The additional `owned_analytics` permission was added in Tyk Dashboard v5.1 (and LTS patches v4.0.14 and v5.0.3) to provide more granular access to traffic analytics. By configuring this permission, the user (or user group) will gain visibility only of those analytics that can be filtered by API (due to the method Tyk Pump uses to aggregate the analytics records).
 
@@ -90,8 +90,8 @@ When working with Tyk OAS APIs, you can manage owners for an API using these end
 
 | Method | Endpoint path           | Action                                                                                 |
 |--------|-------------------------|----------------------------------------------------------------------------------------|
-| `PUT`  | `/apis/{apiID}/access`  | Assign a list of owners to the specified API                                           |
-| `GET`  | `/apis/{apiID}/access`  | Retrieve the list of owners of the specified API                                       |
+| `PUT`  | `/api/apis/{apiID}/access`  | Assign a list of owners to the specified API                                           |
+| `GET`  | `/api/apis/{apiID}/access`  | Retrieve the list of owners of the specified API                                       |
 
 For each of these endpoints, the payload consists of two string lists: one for user IDs, the other for user group IDs.
 ```json

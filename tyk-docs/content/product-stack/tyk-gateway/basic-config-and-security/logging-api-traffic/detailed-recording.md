@@ -5,7 +5,7 @@ description: "Recording full detail in traffic analytics"
 tags: ["detailed recording", "traffic analytics", "analytics", "transaction logs", "traffic monitoring", "configuration"]
 ---
 
-When [traffic analytics]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/logging-api-traffic" >}}) are enabled the Gateway will not, by default, include the request and response payloads in these transaction records. This minimises the size of the records and also avoids logging any sensitive content.
+When [traffic analytics]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/logging-api-traffic" >}}) are enabled the Gateway will not, by default, include the request and response payloads in these transaction records. This minimizes the size of the records and also avoids logging any sensitive content.
 
 You can, however, configure Tyk to capture the payloads in the transaction records if required. This can be particularly useful during development and testing phases or when debugging an issue with an API.
 
@@ -82,7 +82,7 @@ In the Dashboard UI, you can configure detailed recording using the Enable Detai
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-detailed-logs.png" alt="Enabling detailed activity logs for a Tyk OAS API" >}}
 
-#### Detailed recording with Tyk Classic APIs
+#### Detailed recording with Tyk Classic APIs {#tyk-classic}
 
 When working with Tyk Classic APIs, you should configure `enable_detailed_recording: "true"` in the root of the API definition:
 
@@ -93,6 +93,29 @@ When working with Tyk Classic APIs, you should configure `enable_detailed_record
 In the Dashboard UI, you can configure detailed recording using the Enable Detailed Logging option in Core Settings.
 
 {{< img src="/img/dashboard/endpoint-designer/classic-detailed-logging.png" alt="Enabling detailed activity logs for a Tyk Classic API" >}}
+
+#### Detailed recording with Tyk Operator
+
+The process for configuring detailed recording using Tyk Operator is similar to that explained in [Detailed recording with Tyk Classic APIs](#tyk-classic).
+
+The example API Definition below enabled detailed recording by setting `spec.enable_detailed_recording` to `true`.
+
+```yaml {linenos=true, linenostart=1, hl_lines=["10-10"]}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin
+spec:
+  name: httpbin
+  use_keyless: true
+  protocol: http
+  active: true
+  enable_detailed_recording: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin
+    strip_listen_path: true
+```
 
 ### Configuration at the key level
 An alternative approach to controlling detailed recording is to enable it only for specific [access keys]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}). This is particularly useful for debugging purposes where you can configure detailed recording only for the key(s) that are reporting issues.

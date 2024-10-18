@@ -4,8 +4,7 @@ description: Explains an overview of bloblang
 tags: [ "Tyk Streams", "Stream Processors", "Processors", "Bloblang" ]
 ---
 
-<!-- TODO: add a link -->
-Executes a Bloblang mapping on messages.
+Executes a [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mapping on messages.
 
 ```yml
 # Config fields, showing default values
@@ -13,13 +12,12 @@ label: ""
 bloblang: ""
 ```
 
-Bloblang is a powerful language that enables a wide range of mapping, transformation and filtering tasks.
+[Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) is a powerful language that enables a wide range of mapping, transformation and filtering tasks.
 
 If your mapping is large and you'd prefer for it to live in a separate file then you can execute a mapping directly from a file with the expression `from "<path>"`, where the path must be absolute, or relative from the location that Tyk Streams is executed from.
 
 ## Component Rename
 
-<!-- TODO: add mapping processor and link to it -->
 This processor was recently renamed to the [mapping processor]({{< ref "/product-stack/tyk-streaming/configuration/processors/mapping" >}}) in order to make the purpose of the processor more prominent. It is still valid to use the existing `bloblang` name but eventually it will be deprecated and replaced by the new name in example configs.
 
 ## Examples
@@ -99,8 +97,6 @@ pipeline:
 
 ## Error Handling
 
-Bloblang mappings can fail, in which case the message remains unchanged, errors are logged, and the message is flagged as having failed, allowing you to use
-<!-- TODO - add link [standard processor error handling patterns](/docs/configuration/error_handling). -->
+[Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mappings can fail, in which case the message remains unchanged, errors are logged, and the message is flagged as having failed, allowing you to use [standard processor error handling patterns]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/error-handling" >}}).
 
-However, Bloblang itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behaviour.
-<!-- TODO - add link which you can read about [in this section](/docs/guides/bloblang/about#error-handling). -->
+However, [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) itself also provides powerful ways of ensuring your mappings do not fail by specifying desired [fallback behavior]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview#error-handling" >}}).

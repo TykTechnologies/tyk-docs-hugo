@@ -91,3 +91,24 @@ URL Rewriter and Header Transform middleware cannot iterate through list indices
 {{< img src="/img/2.10/context_variables.png" alt="Context Variables" >}}
 
 If not using a Tyk Dashboard, add the field `enable_context_vars` to your API definition file at root level and set it to `true`.
+
+If you are using Tyk Operator, set the field `spec.enable_context_vars` to `true`.
+
+The example API Definition below enabled context variable:
+
+```yaml {linenos=true, linenostart=1, hl_lines=["10-10"]}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin
+spec:
+  name: httpbin
+  use_keyless: true
+  protocol: http
+  active: true
+  enable_context_vars: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin
+    strip_listen_path: true
+```

@@ -4,7 +4,22 @@ import json
 versions = [
     {
         "path": "/docs/",
-        "name": "Latest - 5.3",
+        "name": "5.6 - Latest",
+        "branch": "release-5.6"
+    },
+    {
+        "path": "/docs/5.5/",
+        "name": "5.5",
+        "branch": "release-5.5"
+    },
+    {
+        "path": "/docs/5.4/",
+        "name": "5.4",
+        "branch": "release-5.4"
+    }, 
+    {
+        "path": "/docs/5.3/",
+        "name": "5.3 - LTS",
         "branch": "release-5.3"
     },
     {
@@ -20,7 +35,7 @@ versions = [
     },
     {
         "path": "/docs/5.0/",
-        "name": "5 LTS",
+        "name": "5 - LTS",
         "branch": "release-5"
     },
     {
@@ -40,7 +55,7 @@ versions = [
     },
     {
         "path": "/docs/4.0/",
-        "name": "4 LTS",
+        "name": "4 - LTS",
         "branch": "release-4"
     },
     {
@@ -55,7 +70,7 @@ versions = [
     },
     {
         "path": "/docs/3-lts/",
-        "name": "3 LTS",
+        "name": "3 - LTS",
         "branch": "release-3-lts"
     },
 

@@ -19,7 +19,7 @@ API Templates are exclusive to [Tyk OAS APIs]({{< ref "getting-started/key-conce
 #### Gateway agnostic API design
 When working with OpenAPI described upstream service APIs, your service developers do not need to learn about Tyk. You can create and maintain a suitable suite of templates that contain the Tyk-specific configuration (`x-tyk-api-gateway`) that you require for your externally published API portfolio. Creating an API on Tyk is as simple as importing the OpenAPI document and selecting the correct template. Tyk will combine the OpenAPI description with the template to produce a valid Tyk OAS API.
 
-#### Standardising API configuration
+#### Standardizing API configuration
 If you have specific requirements for your external facing APIs - for example authentication, caching or even a healthcheck endpoint - you can define the appropriate API templates so that when APIs are created on Tyk these fields are automatically and correctly configured.
 
 ## How API templating works

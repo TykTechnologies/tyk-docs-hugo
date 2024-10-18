@@ -83,7 +83,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
  <details>
  <summary>Poor experience when using the Open Policy Agent (OPA) editor</summary>
 
- Fixed two UI issues with the [OPA editor]({{< ref "tyk-dashboard/open-policy-agent#using-the-open-policy-agent-in-the-dashboard" >}}) in the Tyk Dashboard to improve experience when using this feature. Scrolling beyond the end of the OPA window does not now start to scroll the API Designer window, and minimising then re-expanding the OPA editor no longer limits the text to one line.
+ Fixed two UI issues with the [OPA editor]({{< ref "tyk-dashboard/open-policy-agent#using-the-open-policy-agent-in-the-dashboard" >}}) in the Tyk Dashboard to improve experience when using this feature. Scrolling beyond the end of the OPA window does not now start to scroll the API Designer window, and minimizing then re-expanding the OPA editor no longer limits the text to one line.
  </details>
  </li>
  <li>
@@ -242,7 +242,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 <details>
 <summary>Added new Dashboard configuration option `allow_unsafe_oas`</summary>
 
-Added a new Dashboard configuration option `allow_unsafe_oas`. This permits the modification of Tyk OAS APIs via the Tyk Classic API endpoints. This is not a recommended action due to the risk of inconsistent behaviour and potential for breaking changes while Tyk OAS is in [Early Access]({{< ref "developer-support/special-releases-and-features/early-access-features" >}}). This is provided for early adopters and will be deprecated later, once Tyk OAS reaches full maturity.
+Added a new Dashboard configuration option `allow_unsafe_oas`. This permits the modification of Tyk OAS APIs via the Tyk Classic API endpoints. This is not a recommended action due to the risk of inconsistent behavior and potential for breaking changes while Tyk OAS is in [Early Access]({{< ref "developer-support/special-releases-and-features/early-access-features" >}}). This is provided for early adopters and will be deprecated later, once Tyk OAS reaches full maturity.
 </summary>
 </details>
 </li>
@@ -254,7 +254,7 @@ Added a new Dashboard configuration option `allow_unsafe_oas`. This permits the 
 <details>
 <summary>Fixed security policy grant permissions issue encountered with MongoDB</summary>
 
-Fixed an issue when using MongoDB and [Tyk Security Policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) where Tyk could incorrectly grant access to an API after that API had been deleted from the associated policy. This was due to the policy cleaning operation that is triggered when an API is deleted from a policy in a MongoDB installation. With this fix, the policy cleaning operation will not remove the final (deleted) API from the policy; Tyk recognises that the API record is invalid and denies granting access rights to the key.
+Fixed an issue when using MongoDB and [Tyk Security Policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) where Tyk could incorrectly grant access to an API after that API had been deleted from the associated policy. This was due to the policy cleaning operation that is triggered when an API is deleted from a policy in a MongoDB installation. With this fix, the policy cleaning operation will not remove the final (deleted) API from the policy; Tyk recognizes that the API record is invalid and denies granting access rights to the key.
 </details>
 </li>
 <li>
@@ -562,7 +562,7 @@ Fixed an issue in *Tyk Dashboard* where duplicate APIs could be created with the
 <details>
 <summary>Connection issues were encountered with MongoDB connection strings</summary>
 
-Fixed an issue with *MongoDB* connection strings. To ensure consistent compatibility with both *mgo* and *mongo-go* drivers, users should now utilise URL-encoded values within the *MongoDB* connection string's username and password fields when they contain characters like "?", "@". This resolves the need for different handling across *MongoDB* drivers.
+Fixed an issue with *MongoDB* connection strings. To ensure consistent compatibility with both *mgo* and *mongo-go* drivers, users should now utilize URL-encoded values within the *MongoDB* connection string's username and password fields when they contain characters like "?", "@". This resolves the need for different handling across *MongoDB* drivers.
 </details>
 </li>
 </ul>

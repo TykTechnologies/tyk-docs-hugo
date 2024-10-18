@@ -42,13 +42,9 @@ If the query does not emit any value then the message is filtered, if the query 
 
 The full query syntax is described in the [jq documentation](https://stedolan.github.io/jq/manual).
 
-<!--
-
-TODO: Add error handling after merging bloblang
-
 ## Error Handling
 
-Queries can fail, in which case the message remains unchanged, errors are logged, and the message is flagged as having failed, allowing you to use [standard processor error handling patterns](/docs/configuration/error_handling). -->
+Queries can fail, in which case the message remains unchanged, errors are logged, and the message is flagged as having failed, allowing you to use [standard processor error handling patterns]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/error-handling" >}}).
 
 ## Fields
 

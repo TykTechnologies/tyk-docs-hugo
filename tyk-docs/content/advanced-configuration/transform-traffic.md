@@ -1,7 +1,7 @@
 ---
 Title: Request and response middleware
 tags: ["middleware", "API request", "API response", "request processing", "response processing"]
-description: "An overview of Tyk's customisable request and response processing chain"
+description: "An overview of Tyk's customizable request and response processing chain"
 aliases:
   - /transform-traffic/endpoint-designer/
 ---
@@ -10,7 +10,7 @@ When you configure an API on Tyk, the Gateway will proxy all requests received a
 
 Within that chain are a highly configurable set of optional middleware that can, on a per-endpint basis:
 - apply processing to [API requests](#middleware-applied-to-the-api-request) before they are proxied to the upstream service
-- apply customisation to the [API response](#middleware-applied-to-the-api-response) prior to it being proxied back to the client
+- apply customization to the [API response](#middleware-applied-to-the-api-response) prior to it being proxied back to the client
 
 Tyk also supports a powerful custom plugin feature that enables you to add custom processing at different stages in the processing chains. For more details on custom plugins please see the [dedicated guide]({{< ref "plugins" >}}).
 
@@ -20,7 +20,7 @@ The following standard middleware can optionally be applied to API requests on a
 
 ### Allow list
 
-The [Allow List]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}}) middleware is a feature designed to restrict access to only specific API endpoints. It rejects requests to endpoints not specifically "allowed", returning `HTTP 403 Forbidden`. This enhances the security of the API by preventing unauthorised access to endpoints that are not explicitly permitted.
+The [Allow List]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}}) middleware is a feature designed to restrict access to only specific API endpoints. It rejects requests to endpoints not specifically "allowed", returning `HTTP 403 Forbidden`. This enhances the security of the API by preventing unauthorized access to endpoints that are not explicitly permitted.
 
 Enabling the allow list will cause the entire API to become blocked other than for endpoints that have this middleware enabled. This is great if you wish to have very strict access rules for your services, limiting access to specific published endpoints.
 
@@ -38,7 +38,7 @@ The [Circuit Breaker]({{< ref "planning-for-production/ensure-high-availability/
 
 ### Do Not Track Endpoint
 
-If [traffic logging]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/logging-api-traffic" >}}) is enabled for yout Tyk Gateway, then it will create transaction logs for all API requests (and responses) to deployed APIs. You can use the [Do-Not-Track]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-middleware" >}}) middleware to suppress creation of transaction records for specific endpoints.
+If [traffic logging]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/logging-api-traffic" >}}) is enabled for your Tyk Gateway, then it will create transaction logs for all API requests (and responses) to deployed APIs. You can use the [Do-Not-Track]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-middleware" >}}) middleware to suppress creation of transaction records for specific endpoints.
 
 ### Enforced Timeout
 
@@ -58,7 +58,7 @@ The [Method Transformation]({{< ref "advanced-configuration/transform-traffic/re
 
 ### Mock Response
 
-A [Mock Response]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}) is a simulated API response that can be returned by the API gateway without actually sending the request to the backend API. Mock responses are an integral feature for API development, enabling developers to emulate API behaviour without the need for upstream execution.
+A [Mock Response]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}) is a simulated API response that can be returned by the API gateway without actually sending the request to the backend API. Mock responses are an integral feature for API development, enabling developers to emulate API behavior without the need for upstream execution.
 
 ### Request Body Transform
 

@@ -1,16 +1,16 @@
 ---
 date: 2017-03-24T17:18:28Z
-title: Customise Pages with CSS and JavaScript
-linktitle: Customise Pages with CSS and JS
+title: Customize Pages with CSS and JavaScript
+linktitle: Customize Pages with CSS and JS
 menu:
   main:
-    parent: "Customise"
+    parent: "Customize"
 weight: 3 
 aliases:
   - /tyk-developer-portal/customise/customising-using-dashboard/
 ---
 
-The main customisation that can be done with the Tyk Dashboard is via the CSS Editor.
+The main customization that can be done with the Tyk Dashboard is via the CSS Editor.
 
 JS customization is also available in a programmatic way.
 
@@ -30,7 +30,7 @@ In the CSS Editor, add the classes that you would like to override in the home p
 
 {{< img src="/img/dashboard/portal-management/portal_email_css.png" alt="Email CSS editor" >}}
 
-If you wish to customise how emails are displayed to end-users, then you can also add new classes to the Email CSS editor, these classes will be added in-line to the email that is sent out.
+If you wish to customize how emails are displayed to end-users, then you can also add new classes to the Email CSS editor, these classes will be added in-line to the email that is sent out.
 
 Once you have finished making your changes, click **Update** and the new CSS will be available on your site.
 
@@ -56,7 +56,7 @@ Response:
 }
 ```
 Now we can use the `id` and the `org_id` to update the CSS.
-The below `curl` command will update the CSS for a specific organisation.
+The below `curl` command will update the CSS for a specific organization.
 
 ```{.copyWrapper}
 curl -X PUT http://tyk-dashboard.com/api/portal/css \

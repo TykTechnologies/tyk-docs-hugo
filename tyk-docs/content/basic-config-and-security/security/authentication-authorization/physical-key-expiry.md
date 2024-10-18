@@ -11,9 +11,9 @@ aliases:
   - /basic-config-and-security/security/authentication-authorization/physical-token-expiry/
 ---
 
-Tyk makes a clear distinction between an API authorisation key expiring and being deleted from the Redis storage.
+Tyk makes a clear distinction between an API authorization key expiring and being deleted from the Redis storage.
 
-- When a key expires, it remains in the Redis storage but is no longer valid. Consequently, it is no longer authorised to access any APIs. If a key in Redis has expired and is passed in an API request, Tyk will return `HTTP 401 Key has expired, please renew`.
+- When a key expires, it remains in the Redis storage but is no longer valid. Consequently, it is no longer authorized to access any APIs. If a key in Redis has expired and is passed in an API request, Tyk will return `HTTP 401 Key has expired, please renew`.
  - When a key is deleted from Redis, Tyk no longer knows about it, so if it is passed in an API request, Tyk will return `HTTP 400 Access to this API has been disallowed`.
 
 Tyk provides separate control for the expiration and deletion of keys.

@@ -10,10 +10,10 @@ weight: 1
 
 New to *Tyk Self Managed*? Click the button below to kickstart your journey with the basics.
 
-**Important note:** Upon clicking, you will need to sign up. Take advantage of our **2-week trial** for the *Tyk Dashboard & Developer Portal*, and receive your temporary license along with installation instructions during the process.
+**Important note:** Upon clicking, you will need to sign up. Take advantage of a free guided evaluation of the *Tyk Dashboard & Developer Portal*, and receive your temporary license along with installation instructions during the process. Alternatively, to get started quickly, get a 48 hour trial of Tyk Cloud and get access to all features and capabilities of Tyk without the need to install. 
 
 
-{{< button_left href="https://tyk.io/sign-up#self" color="green" content="Free trial" >}}
+{{< button_left href="https://tyk.io/sign-up#self" color="green" content="Get started" >}}
 
 ## What’s Included in the Quick Start?
 - View an example API secured through the Tyk Gateway, configured with rate limiting.
@@ -21,7 +21,7 @@ New to *Tyk Self Managed*? Click the button below to kickstart your journey with
 - Update rate limits for the example API.
 
 ## Trial Prerequisites
-The recommended way to start your free trial is via *Docker*. Follow the [instructions](https://docs.docker.com/get-docker/) to install *Docker*.
+The recommended way to start your evaluation is via *Docker*. Follow the [instructions](https://docs.docker.com/get-docker/) to install *Docker*.
 
 
 ## Next Step - Proof of Concept (PoC)
@@ -30,9 +30,6 @@ You have completed the quick start guide above and wonder what's next, please re
 
 ### PoC Guide 
 To find out more, visit our [Tyk Technical PoC Guide](https://tyk.io/customer-engineering/poc/technical-guide/).
-
-### Longer Trial Period Request
-If you would like an extended trial to conduct your POC, please reach out to the Tyk Team to share your plans with us:
 
 {{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
 

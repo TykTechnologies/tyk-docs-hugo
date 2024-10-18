@@ -79,6 +79,6 @@ There's a few new things here we need to take into account:
 *   `RedirectURI`: The Redirect URL set for this profile in the Tyk Gateway.
 *   `ResponseType`: This can be `token` or `authorization_code`, the first will generate a token directly, the second will generate an auth code for follow up access. For SPWA and Mobile Apps it is recommended to just use `token`.
 
-When TIB successfully authorises the user, and generates the token using the relevant OAuth credentials, it will redirect the user to the relevant redirect with their token or auth code as a fragment in the URL for the app to decode and use as needed.
+When TIB successfully authorizes the user, and generates the token using the relevant OAuth credentials, it will redirect the user to the relevant redirect with their token or auth code as a fragment in the URL for the app to decode and use as needed.
 
 There is a simplified flow, which does not require a corresponding OAuth client in Tyk Gateway, and can just generate a standard token with the same flow.

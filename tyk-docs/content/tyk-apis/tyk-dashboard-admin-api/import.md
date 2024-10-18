@@ -7,7 +7,7 @@ menu:
 weight: 4 
 ---
 
-The import API enables you to add Organisations, APIs and Policies back into a Tyk installation while retaining their base IDs so that they work together.
+The import API enables you to add *Organizations*, *APIs* and *Policies* back into a Tyk installation while retaining their base IDs so that they work together.
 
 {{< note success >}}
 **Note**  
@@ -22,9 +22,9 @@ To enable this feature, the minimum required versions for the Gateway and Dashbo
 In a production environment, you will need to change the default `admin_secret` value that is called by the `admin-auth` header in your `tyk_analytics.conf` file. This is located in `/opt/tyk-dashboard`.
 {{< /warning >}}
 
-#### Import Organisation
+#### Import Organization
 
-The [Organisation object]({{<ref "basic-config-and-security/security/dashboard/organisations#concept-dashboard-organisations" >}}) is the most fundamental object in a Tyk setup, all other ownership properties hang off the relationship between an Organisation and its APIs, Policies and API Tokens.
+The [Organization object]({{<ref "basic-config-and-security/security/dashboard/organisations#concept-dashboard-organisations" >}}) is the most fundamental object in a Tyk setup, all other ownership properties hang off the relationship between an Organization and its APIs, Policies and API Tokens.
 
 | **Property** | **Description**              |
 | ------------ | ---------------------------- |

@@ -57,7 +57,7 @@ This output will interpolate functions within the channel field, you can find a 
 
 This output benefits from sending multiple messages in flight in parallel for improved performance. You can tune the max number of in flight messages (or message batches) with the field `max_in_flight`.
 
-This output benefits from sending messages as a batch for improved performance. Batches can be formed at both the input and output level. <!-- TODO: add link to batching You can find out more [in this doc](/docs/configuration/batching) -->
+This output benefits from sending messages as a batch for improved performance. [Batches]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/batching" >}}) can be formed at both the input and output level.
 
 ## Fields
 
@@ -234,17 +234,17 @@ Type: `string`
 Default: `""`  
 
 ```yml
-# Examples
+# Example
 
 password: foo
-
-password: ${KEY_PASSWORD}
 ```
+
+<!-- When Tyk streams with secrets released include this in above example => password: ${KEY_PASSWORD} -->
 
 ### channel
 
 The channel to publish messages to.
-This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation.mdinterpolation#bloblang-queries" >}}).
+This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
 
 
 Type: `string`  
@@ -259,7 +259,7 @@ Default: `64`
 
 ### batching
 
-Allows you to configure a batching policy. <!-- TODO: Add link to batching policy -->
+Allows you to configure a [batching policy]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/batching#batch-policy" >}}).
 
 
 Type: `object`  
@@ -318,7 +318,7 @@ period: 500ms
 
 ### batching.check
 
-A Bloblang query that should return a boolean value indicating whether a message should end a batch.
+A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) query that should return a boolean value indicating whether a message should end a batch.
 
 Type: `string`  
 Default: `""`  

@@ -19,7 +19,7 @@ These considerations are reflected in our structured upgrade guides, ensuring yo
 Our upgrade process adheres to the following standards:
 
 - **Breaking changes:** Breaking changes are rare and will be explicitly stated in the release notes.
-- **Configuration files:** Upgrades do not overwrite your configuration files. However, it’s good practice to routinely back up these files (using git or another tool) before upgrading, so any customisations are saved.
+- **Configuration files:** Upgrades do not overwrite your configuration files. However, it’s good practice to routinely back up these files (using git or another tool) before upgrading, so any customizations are saved.
 - **Migration scripts:** Migration scripts for your APIs, policies, or other assets are generally not required unless specified in the release notes.
 - **Long Term Support:** Refer to our [versioning and long-term support policies]({{< ref "developer-support/special-releases-and-features/long-term-support-releases" >}}) for details on major and minor releases, patches, and support dates.
 - **Preparations:** Review the [preparation guidelines]({{< ref "developer-support/upgrading-tyk/preparations/upgrade-guidelines" >}}) before starting the upgrade.
@@ -50,7 +50,7 @@ Use the table below to find the appropriate upgrade guide for your platform:
 |                      | [Docker]({{< ref "developer-support/upgrading-tyk/deployment-model/self-managed/docker" >}}) | Guide for upgrading Docker images |
 |                      | [Helm]({{< ref "developer-support/upgrading-tyk/deployment-model/self-managed/helm" >}}) | Guide for upgrading Helm Charts |
 |                      | [Kubernetes]({{< ref "developer-support/upgrading-tyk/deployment-model/self-managed/kubernetes" >}}) | Guide for upgrading Kubernetes environment |
-| **Tyk MDCB Self Managed** | [MDCB]({{< ref "/developer-support/upgrading-tyk/deployment-model/self-managed/overview#upgrade-mdcb" >}}) | Guide for upgrading Mutli Data Centre Bridge (MDCB) |
+| **Tyk MDCB Self Managed** | [MDCB]({{< ref "/developer-support/upgrading-tyk/deployment-model/self-managed/overview#upgrade-mdcb" >}}) | Guide for upgrading Mutli Data Center Bridge (MDCB) |
 | **Tyk Open Source**  | [Tyk Gateway]({{< ref "developer-support/upgrading-tyk/deployment-model/open-source" >}}) | Guide for upgrading Tyk open source environment |
 
 ---

@@ -7,7 +7,7 @@ menu:
 weight: 5 
 ---
 
-Basic Auth users are essentially a form of API token, just with a customised, pre-set organisation-specific ID instead of a generated one. To interact with basic auth users, you can use the API Token API calls (list, get delete etc.)
+Basic Auth users are essentially a form of API token, just with a customized, pre-set organization-specific ID instead of a generated one. To interact with basic auth users, you can use the API Token API calls (list, get delete etc.)
 
 ### Create a user
 

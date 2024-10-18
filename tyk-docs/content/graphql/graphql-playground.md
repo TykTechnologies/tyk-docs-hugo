@@ -169,7 +169,7 @@ After creating and sending a query, the logs will automatically expand, and the 
 
 There are four levels (categories) of logs: `Info`, `Debug`, `Warning`, and `Error`, and each log belongs to one of these levels. 
 
-The first column of the table displays the colour-coded `“level”` property of the log. A log should never be absent of a level. The second column displays the log `“msg”` (message) property, if any. The third column displays the `“mw” `(middleware) property, if any.
+The first column of the table displays the color-coded `“level”` property of the log. A log should never be absent of a level. The second column displays the log `“msg”` (message) property, if any. The third column displays the `“mw” `(middleware) property, if any.
 
 #### Expansion/collapse of Request Logs
 
@@ -177,9 +177,9 @@ The Request Logs can be expanded or collapsed, using the chevron on the left sid
 
 #### Filter buttons and states
 
-Filter buttons have two states: active and inactive; the default of which is active. A solid background colour of the button indicates that a filter is active. 
+Filter buttons have two states: active and inactive; the default of which is active. A solid background color of the button indicates that a filter is active. 
 
-In the below picture, the `info` and `error` filters buttons are both active. If there are no logs for a particular level of log, the button will appear as a grey and disabled, as shown by the `Warning` filter button.
+In the below picture, the `info` and `error` filters buttons are both active. If there are no logs for a particular level of log, the button will appear as a gray and disabled, as shown by the `Warning` filter button.
 
 {{< img src="/img/dashboard/udg/getting-started/logs_navigation.png" alt="Logs navigation" >}}
 

@@ -1,7 +1,7 @@
 ---
 title: Tyk MDCB v2.6 Release Notes
-description: "Tyk Multi Data-Centre Bridge v2.6 release notes"
-tags: ["release notes", "MDCB", "Tyk Multi Data-Centre", "Tyk Multi Data-Center", "v2.6", "2.6"]
+description: "Tyk Multi Data-Center Bridge v2.6 release notes"
+tags: ["release notes", "MDCB", "Tyk Multi Data-Center", "Tyk Multi Data-Center", "v2.6", "2.6"]
 aliases:
   - /release-notes/mdcb-2.6/
 ---
@@ -15,7 +15,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 2.6.0 Release Notes
 
-##### Release date 1 July 2024
+##### Release date 2 July 2024
 
 #### Breaking Changes
 This release has no breaking changes.

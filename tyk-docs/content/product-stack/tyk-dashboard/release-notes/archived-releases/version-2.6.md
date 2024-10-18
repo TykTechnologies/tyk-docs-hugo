@@ -9,10 +9,10 @@ aliases:
 
 ### <a name="gateway"></a>Tyk Gateway v2.6.0
 
-#### Organisation Level Rate Limiting
+#### Organization Level Rate Limiting
 
-Endpoints Create organisation keys and 
-Add/update organisation keys now allow you to set rate limits at an organisation level. You will need to add the following fields in your create/add/update key request:
+Endpoints Create organization keys and 
+Add/update organization keys now allow you to set rate limits at an organization level. You will need to add the following fields in your create/add/update key request:
 
 * `"allowance"`
 * `"rate"`
@@ -21,14 +21,14 @@ These are the number of allowed requests for the specified `per` value, and need
 
 * `"per"` is the time period, in seconds.
 
-So, if you want to restrict an organisation rate limit to 100 requests per second you will need to add the following to your request:
+So, if you want to restrict an organization rate limit to 100 requests per second you will need to add the following to your request:
 ```
   "allowance": 100,
   "rate": 100,
   "per": 5
 ```
 
-> **NOTE:** if you don't want to have organisation level rate limiting, set `"rate"` or `"per"` to zero, or don't add them to your request.
+> **NOTE:** if you don't want to have organization level rate limiting, set `"rate"` or `"per"` to zero, or don't add them to your request.
 
 See the Keys section of the [Tyk Gateway REST API]({{< ref "tyk-gateway-api" >}}) Swagger doc for more details.
 
@@ -346,11 +346,11 @@ admin-auth: 12345
 }
 ```
 
-#### Set Catalogue settings for each individual API 
+#### Set Catalog settings for each individual API 
 
-Now you can override the global catalogue settings and specify settings per catalogue. 
-The Catalogue object now has `config` field, with exactly same structure as Portal Config, except new `override` boolean field. 
-If set, Catalogue settings will override global ones. 
+Now you can override the global catalog settings and specify settings per catalog. 
+The Catalog object now has `config` field, with exactly same structure as Portal Config, except new `override` boolean field. 
+If set, Catalog settings will override global ones. 
 
 At the moment the following options can be overriden: `Key request fields`, `Require key approval` and `Redirect on key request` (with `Redirect to` option as well).
 

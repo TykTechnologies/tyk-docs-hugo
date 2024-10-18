@@ -21,7 +21,7 @@ How you configure your PostgreSQL installation depends on whether you are instal
 
 ## Migrating from an existing MongoDB instance
 
-For v4.0 we have provided a migration command that will help you migrate all data from the main storage layer (APIs, Policies, Users, UserGroups, Webhooks, Certificates, Portal Settings, Portal Catalogues, Portal Pages, Portal CSS etc.).
+For v4.0 we have provided a migration command that will help you migrate all data from the main storage layer (APIs, Policies, Users, UserGroups, Webhooks, Certificates, Portal Settings, Portal Catalogs, Portal Pages, Portal CSS etc.).
 
 {{< note success >}}
 **Note**  

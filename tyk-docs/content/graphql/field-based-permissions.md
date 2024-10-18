@@ -43,7 +43,7 @@ Field access can be restricted by setting up an allowed types list in a policy o
 
 First, you need to learn [how to create a security policy with the API]({{< ref "getting-started/create-security-policy" >}}) or [how to create an API Key with the API]({{< ref "getting-started/create-security-policy" >}}).
 
-Once you learn how to utilise the API to create a security policy or key, you can use the following snippet:
+Once you learn how to utilize the API to create a security policy or key, you can use the following snippet:
 
 ```
 {
@@ -76,7 +76,7 @@ With this configuration, a consumer can only access the field called the `owner`
     ]
 }
 ```
-It's important to note that once you set a list of allowed types, Tyk will use this list to control access rights and disable the list of restricted types. The same behaviour will occur if an asterisk operator is used to control access.
+It's important to note that once you set a list of allowed types, Tyk will use this list to control access rights and disable the list of restricted types. The same behavior will occur if an asterisk operator is used to control access.
 
 ## Allow or restrict all fields with the asterisk operator
 

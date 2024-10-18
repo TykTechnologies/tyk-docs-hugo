@@ -4,7 +4,7 @@ title: Creating a Custom Developer Portal
 linktitle: Custom Portal
 menu:
   main:
-    parent: "Customise"
+    parent: "Customize"
 weight: 5 
 aliases:
   - /tyk-developer-portal/customise/custom-developer-po...
@@ -161,7 +161,7 @@ If the user credentials are verified, the HTTP response code will be 200, otherw
 
 ### Listing Available APIs
 
-Inside the admin dashboard in the portal menu, you can define **catalogues** with the list of APIs available to developers. Each defined API is identified by its policy id field.
+Inside the admin dashboard in the portal menu, you can define **catalogs** with the list of APIs available to developers. Each defined API is identified by its policy id field.
 
 #### Request
 
@@ -244,7 +244,7 @@ The Developer object contains the `subscriptions` field with information about u
 
 ## <a name="building-portal"></a> Building a Portal
 
-This guide includes the implementation of a full featured developer portal written in Ruby in just 250 lines of code. This portal implementation does not utilise any database and uses our Tyk Dashboard API to store and fetch all the data.
+This guide includes the implementation of a full featured developer portal written in Ruby in just 250 lines of code. This portal implementation does not utilize any database and uses our Tyk Dashboard API to store and fetch all the data.
 
 To run it, you need to have Ruby 2.3+ (latest version). Older versions may work but have not been tested.
 

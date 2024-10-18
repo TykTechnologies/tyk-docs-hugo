@@ -13,7 +13,7 @@ This is an end to end worked example of how you can use LDAP and our Tyk Identit
 
 ## Overview
 
-The Tyk Dashboard is the command and control centre of your Tyk installation. It allows users to manage APIs, policies, keys, etc. All of this data is stored in the Dashboard's MonogDB database, including the user accounts. This works well in a lot of situations as it allows Tyk to be self-contained, but if you already have a centralised system for managing users then you may prefer to use that instead of a separate Tyk-specific database.
+The Tyk Dashboard is the command and control center of your Tyk installation. It allows users to manage APIs, policies, keys, etc. All of this data is stored in the Dashboard's MonogDB database, including the user accounts. This works well in a lot of situations as it allows Tyk to be self-contained, but if you already have a centralised system for managing users then you may prefer to use that instead of a separate Tyk-specific database.
 
 Good news, Tyk supports this!
 
@@ -127,7 +127,7 @@ TIB ships with a default `profiles.json` file which contains many example config
 The key attributes for LDAP profile are:
 
 * `ID`: The ID by which we will activate the profile by calling the appropriate TIB endpoint
-* `OrgId`: The organisation id which the profile is connected to - make sure this is the correct id for your organisation (see the [Dashboard Admin API documentation]({{< ref "dashboard-admin-api/organisations" >}}) for details on how to retrieve this)
+* `OrgId`: The organization id which the profile is connected to - make sure this is the correct id for your organization (see the [Dashboard Admin API documentation]({{< ref "dashboard-admin-api/organisations" >}}) for details on how to retrieve this)
 * `IdentityHandlerConfig.DashboardCredential`: The Dashboard API Access credential which is used as authorization header
 * `ProviderConfig.FailureRedirect`: The URL which TIB will redirect to if the authentication fails
 * `ProviderConfig.LDAPPort`: The port through which TIB can communicate with your LDAP server

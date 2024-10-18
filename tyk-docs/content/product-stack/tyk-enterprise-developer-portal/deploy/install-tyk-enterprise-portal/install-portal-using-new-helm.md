@@ -34,7 +34,7 @@ kubectl create secret generic tyk-dev-portal-conf -n ${NAMESPACE} \
   --from-literal=TYK_AUTH=${TYK_AUTH}
 ```
 
-The fields `TYK_ORG` and `TYK_AUTH` are the Tyk Dashboard _Organisation ID_ and the Tyk Dashboard API _Access Credentials_ respectively. These can be obtained under your profile in the Tyk Dashboard.
+The fields `TYK_ORG` and `TYK_AUTH` are the Tyk Dashboard _Organization ID_ and the Tyk Dashboard API _Access Credentials_ respectively. These can be obtained under your profile in the Tyk Dashboard.
 
 ### Config settings
 
@@ -50,7 +50,7 @@ You must set the following values in the `values.yaml` or with `--set {field-nam
 | `database.dialect` | Portal database dialect, e.g. *mysql*, *postgres* and *sqlite3* |
 | `database.connectionString`| Connection string to the Portal's database, e.g. for the *mysql* dialect: `admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true` |
 
-In addition to `values.yaml`, you can also define the environment variables described in the [configuration section]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration.md" >}}) to further customise your portal deployment. These environment variables can also be listed as a name value list under the `extraEnvs` section of the helm chart.
+In addition to `values.yaml`, you can also define the environment variables described in the [configuration section]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration.md" >}}) to further customize your portal deployment. These environment variables can also be listed as a name value list under the `extraEnvs` section of the helm chart.
 
 ### Launch the portal using the helm chart
 

@@ -57,7 +57,7 @@ pipeline:
 In this example:
 
 - **Tyk Streams Setup**: Consumes events from a Kafka topic called *orders*.
-- **Processor Block Configuration**: Utilises a custom Bloblang script that performs the following operations:
+- **Processor Block Configuration**: Utilizes a custom Bloblang script that performs the following operations:
     - **Filters** orders, only processing those with a value greater than 1000.
     - **Enriches** the high-value orders by retrieving the customer ID and email from a separate data source.
     - **Adds** a new high_value_order flag to each qualifying event.

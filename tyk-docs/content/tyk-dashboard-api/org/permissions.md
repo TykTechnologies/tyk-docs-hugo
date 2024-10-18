@@ -13,14 +13,14 @@ aliases: /tyk-apis/tyk-dashboard-api/org/permissions
 This API helps you to add and delete (CRUD) a list of additional (custom) permissions for your Dashboard users.
 Once created, a custom permission will be added to standard list of user permissions.
 <br/>
-Only Admin Dashboard users will be authorised to use this API.
+Only Admin Dashboard users will be authorized to use this API.
 {{< /note >}}
 
 
 ### List Additional Permissions
 This API returns by default the initial set of additional permissions defined in your Tyk Dashboard configuration, under [security.additional_permissions]({{< ref "tyk-dashboard/configuration#securityadditional_permissions" >}}).
 
-Once you update the permissions via the API, they will be stored at organisation level.
+Once you update the permissions via the API, they will be stored at organization level.
 
 | **Property** | **Description**       |
 | ------------ | --------------------- |

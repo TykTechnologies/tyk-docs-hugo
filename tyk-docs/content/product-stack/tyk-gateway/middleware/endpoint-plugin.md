@@ -19,7 +19,7 @@ From a custom plugin, you can make calls out to other internal and upstream APIs
 
 #### Enforcing custom policies
 
-Tyk provides a very flexible middleware chain where you can combine functions to implement the access controls you require to protect your upstream services. Of course, not all scenarios can be covered by Tyk’s standard middleware functions, but you can use a custom plugin to apply whatever custom logic you require to optimise your API experience.
+Tyk provides a very flexible middleware chain where you can combine functions to implement the access controls you require to protect your upstream services. Of course, not all scenarios can be covered by Tyk’s standard middleware functions, but you can use a custom plugin to apply whatever custom logic you require to optimize your API experience.
 
 #### Dynamic Routing
 

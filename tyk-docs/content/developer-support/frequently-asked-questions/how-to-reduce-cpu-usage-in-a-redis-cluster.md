@@ -9,7 +9,7 @@ This FAQ explains a potential reason for high CPU usage in a Redis node within a
 
 ## What does high CPU usage in a Redis node within a Redis Cluster mean?
 
-When a single Redis node within a Redis Cluster exhibits high CPU usage, it indicates that the CPU resources of that particular node are being heavily utilised compared to others in the cluster.
+When a single Redis node within a Redis Cluster exhibits high CPU usage, it indicates that the CPU resources of that particular node are being heavily utilized compared to others in the cluster.
 
 The illustration below highlights the scenario where a single Redis node is exhibiting high CPU usage of 1.20% within a Redis Cluster. 
 
@@ -29,7 +29,7 @@ Consider distributing the analytics keys across multiple Redis nodes within the 
 
 In Redis, *key sharding* is a term used to describe the practice of distributing data across multiple Redis instances or *shards* based on the keys. This feature is provided by [Redis Cluster](https://redis.io/docs/management/scaling/) and provides horizontal scalability and improved performance. 
 
-Tyk supports configuring this behaviour so that analytics keys are distributed across multiple servers within a Redis cluster. The image below illustrates that CPU usage is reduced across two Redis servers after making this configuration change.
+Tyk supports configuring this behavior so that analytics keys are distributed across multiple servers within a Redis cluster. The image below illustrates that CPU usage is reduced across two Redis servers after making this configuration change.
 
 {{< img src="/img/faq/enable-multiple-analytics-keys/redis_distributed.png" width="600" alt="analytics keys distributed across Redis servers" >}}
 
@@ -48,8 +48,8 @@ Ensure that the `addrs` array is populated in the [Tyk Gateway]({{< ref "tyk-oss
 
 To distribute analytics keys across multiple Redis shards effectively you need to configure the Tyk components to leverage the Redis cluster's sharding capabilities:
 
-1. **Optimise Analytics Configuration**: In the Tyk Gateway configuration (tyk.conf), set [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) to true. This option allows Tyk to distribute analytics data across Redis nodes, using multiple keys for the analytics. There's a corresponding option for Self Managed MDCB, also named [enable_multiple_analytics_keys]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#enable_multiple_analytics_keys" >}}). Useful only if the gateways in the data plane are configured to send analytics to MDCB.
-2. **Optimise Connection Pool Settings**: Adjust the [optimisation_max_idle]({{< ref "tyk-oss-gateway/configuration#storageoptimisation_max_idle" >}}) and [optimisation_max_active]({{< ref "tyk-oss-gateway/configuration#storageoptimisation_max_active" >}}) settings in the configuration files to ensure that the connection pool can handle the analytics workload without overloading any Redis shard.
+1. **Optimize Analytics Configuration**: In the Tyk Gateway configuration (tyk.conf), set [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) to true. This option allows Tyk to distribute analytics data across Redis nodes, using multiple keys for the analytics. There's a corresponding option for Self Managed MDCB, also named [enable_multiple_analytics_keys]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#enable_multiple_analytics_keys" >}}). Useful only if the gateways in the data plane are configured to send analytics to MDCB.
+2. **Optimize Connection Pool Settings**: Adjust the [optimization_max_idle]({{< ref "tyk-oss-gateway/configuration#storageoptimisation_max_idle" >}}) and [optimization_max_active]({{< ref "tyk-oss-gateway/configuration#storageoptimisation_max_active" >}}) settings in the configuration files to ensure that the connection pool can handle the analytics workload without overloading any Redis shard.
 3. **Use a Separate Analytics Store**: For high analytics traffic, you can opt to use a dedicated *Redis Cluster* for analytics by setting [enable_separate_analytics_store]({{< ref "tyk-oss-gateway/configuration#enable_separate_analytics_store" >}}) to true in the Tyk Gateway configuration file (*tyk.conf*) and specifying the separate Redis cluster configuration in the `analytics_storage` section. Please consult the [separated analytics storage]({{< ref "tyk-stack/tyk-pump/separated-analytics-storage" >}}) guide for an example with *Tyk Pump* that can equally be applied to *Tyk Gateway*.
 4. **Review and Test**: After implementing these changes, thoroughly review your configurations and conduct load testing to verify that the analytics traffic is now evenly distributed across all Redis shards.
 

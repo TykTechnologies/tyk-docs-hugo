@@ -61,14 +61,14 @@ You can plug the whole thing into jwt.io and see the decoded payload as follows:
 
 {{< img src="/img/2.10/split_token2.png" alt="Split Token" >}}
 
-So back to Tyk, the API Gateway is perfectly positioned to act as a broker between the client and the authorisation server.  It can accept requests for new access tokens, given a client id and secret, and exchange that for an access token with the authorisation server. Then, it will break apart the JWT and return only the signature portion back to the client.  It then stores the rest of the JWT internally.
+So back to Tyk, the API Gateway is perfectly positioned to act as a broker between the client and the authorization server.  It can accept requests for new access tokens, given a client id and secret, and exchange that for an access token with the authorization server. Then, it will break apart the JWT and return only the signature portion back to the client.  It then stores the rest of the JWT internally.
 
 This means that the client can then simply use the signature as an access token and Tyk can validate the token as if it was a normal API Key.  Then it will pull the JWT out of cache and inject claims into the request or even rebuild the access token, which is safe.
 
 
 **Let’s get started IdP**
 
-Inside Tyk, create a virtual endpoint or API, listening to the path `/token`. This virtual endpoint is responsible for receiving the auth request from the client, and acting as an identity broker with the authorisation server.
+Inside Tyk, create a virtual endpoint or API, listening to the path `/token`. This virtual endpoint is responsible for receiving the auth request from the client, and acting as an identity broker with the authorization server.
 
 Let’s take a look at some sample code for the Virtual Endpoint:
 

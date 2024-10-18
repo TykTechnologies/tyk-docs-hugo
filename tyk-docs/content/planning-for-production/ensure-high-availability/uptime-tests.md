@@ -95,17 +95,13 @@ Or a long form, which allows for a full request to be checked or mocked:
     "this": "that",
     "more": "beans"
   },
-  "body": "VEhJUyBJUyBBIEJPRFkgT0JKRUNUIFRFWFQNCg0KTW9yZSBzdHVmZiBoZXJl"
+  "body": "VEhJUyBJUyBBIEJPRFkgT0JKRUNUIFRFWFQNCg0KTW9yZSBzdHVmZiBoZXJl",
+  "timeout": 1000
 }
 ```
 
-The `body` is Base64 encoded.
-
-{{< note success >}}
-**Note**  
-
-Using the quick form will not enforce a timeout, while the long form will fail with a 500ms timeout.
-{{< /note >}}
+*   `body`: The `body` is Base64 encoded.
+*   `timeout`: The `timeout` in milli seconds.
 
 
 ## Configure with the Dashboard

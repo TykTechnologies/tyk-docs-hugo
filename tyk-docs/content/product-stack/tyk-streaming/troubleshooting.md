@@ -27,13 +27,13 @@ If messages are not being successfully published to or consumed from the event b
 
 If you observe performance issues or connection throttling with async APIs, consider the following:
 - Review the configured rate limits and quotas for the async API. Adjust the limits if necessary to accommodate the expected traffic.
-- Monitor the resource utilisation of the Tyk Gateway instances and the event broker. Ensure that there is sufficient capacity to handle the load.
+- Monitor the resource utilization of the Tyk Gateway instances and the event broker. Ensure that there is sufficient capacity to handle the load.
 - Consider scaling the Tyk Gateway horizontally by adding more instances to distribute the traffic load.
 
 ## Best Practices
 
 - Use meaningful and descriptive names for your async APIs, topics, and subscriptions to improve readability and maintainability.
-- Implement proper security measures, such as authentication and authorization, to protect your async APIs and restrict access to authorised clients only.
+- Implement proper security measures, such as authentication and authorization, to protect your async APIs and restrict access to authorized clients only.
 - Set appropriate rate limits and quotas to prevent abuse and ensure fair usage of the async API resources.
 - Monitor the performance and health of your async APIs using Tyk's built-in analytics and monitoring capabilities. Set up alerts and notifications for critical events.
 - Version your async APIs to manage compatibility and enable seamless updates without disrupting existing clients.

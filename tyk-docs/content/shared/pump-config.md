@@ -323,37 +323,37 @@ An example of configuration would be:
 ENV: <b>TYK_PMP_PUMPS_CSV_FILTERS_ORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted org_ids.
+Filters pump data by an allow list of org_ids.
 
 ### pumps.csv.filters.api_ids
 ENV: <b>TYK_PMP_PUMPS_CSV_FILTERS_APIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted api_ids.
+Filters pump data by an allow list of api_ids.
 
 ### pumps.csv.filters.response_codes
 ENV: <b>TYK_PMP_PUMPS_CSV_FILTERS_RESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the whitelisted response_codes.
+Filters pump data by an allow list of response_codes.
 
 ### pumps.csv.filters.skip_org_ids
 ENV: <b>TYK_PMP_PUMPS_CSV_FILTERS_SKIPPEDORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted org_ids.
+Filters pump data by a block list of org_ids.
 
 ### pumps.csv.filters.skip_api_ids
 ENV: <b>TYK_PMP_PUMPS_CSV_FILTERS_SKIPPEDAPIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted api_ids.
+Filters pump data by a block list of api_ids.
 
 ### pumps.csv.filters.skip_response_codes
 ENV: <b>TYK_PMP_PUMPS_CSV_FILTERS_SKIPPEDRESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the blacklisted response_codes.
+Filters pump data by a block list of response_codes.
 
 ### pumps.csv.timeout
 ENV: <b>TYK_PMP_PUMPS_CSV_TIMEOUT</b><br />
@@ -478,37 +478,37 @@ An example of configuration would be:
 ENV: <b>TYK_PMP_PUMPS_DOGSTATSD_FILTERS_ORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted org_ids.
+Filters pump data by an allow list of org_ids.
 
 ### pumps.dogstatsd.filters.api_ids
 ENV: <b>TYK_PMP_PUMPS_DOGSTATSD_FILTERS_APIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted api_ids.
+Filters pump data by an allow list of api_ids.
 
 ### pumps.dogstatsd.filters.response_codes
 ENV: <b>TYK_PMP_PUMPS_DOGSTATSD_FILTERS_RESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the whitelisted response_codes.
+Filters pump data by an allow list of response_codes.
 
 ### pumps.dogstatsd.filters.skip_org_ids
 ENV: <b>TYK_PMP_PUMPS_DOGSTATSD_FILTERS_SKIPPEDORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted org_ids.
+Filters pump data by a block list of org_ids.
 
 ### pumps.dogstatsd.filters.skip_api_ids
 ENV: <b>TYK_PMP_PUMPS_DOGSTATSD_FILTERS_SKIPPEDAPIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted api_ids.
+Filters pump data by a block list of api_ids.
 
 ### pumps.dogstatsd.filters.skip_response_codes
 ENV: <b>TYK_PMP_PUMPS_DOGSTATSD_FILTERS_SKIPPEDRESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the blacklisted response_codes.
+Filters pump data by a block list of response_codes.
 
 ### pumps.dogstatsd.timeout
 ENV: <b>TYK_PMP_PUMPS_DOGSTATSD_TIMEOUT</b><br />
@@ -724,37 +724,37 @@ An example of configuration would be:
 ENV: <b>TYK_PMP_PUMPS_ELASTICSEARCH_FILTERS_ORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted org_ids.
+Filters pump data by an allow list of org_ids.
 
 ### pumps.elasticsearch.filters.api_ids
 ENV: <b>TYK_PMP_PUMPS_ELASTICSEARCH_FILTERS_APIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted api_ids.
+Filters pump data by an allow list of api_ids.
 
 ### pumps.elasticsearch.filters.response_codes
 ENV: <b>TYK_PMP_PUMPS_ELASTICSEARCH_FILTERS_RESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the whitelisted response_codes.
+Filters pump data by an allow list of response_codes.
 
 ### pumps.elasticsearch.filters.skip_org_ids
 ENV: <b>TYK_PMP_PUMPS_ELASTICSEARCH_FILTERS_SKIPPEDORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted org_ids.
+Filters pump data by a block list of org_ids.
 
 ### pumps.elasticsearch.filters.skip_api_ids
 ENV: <b>TYK_PMP_PUMPS_ELASTICSEARCH_FILTERS_SKIPPEDAPIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted api_ids.
+Filters pump data by a block list of api_ids.
 
 ### pumps.elasticsearch.filters.skip_response_codes
 ENV: <b>TYK_PMP_PUMPS_ELASTICSEARCH_FILTERS_SKIPPEDRESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the blacklisted response_codes.
+Filters pump data by a block list of response_codes.
 
 ### pumps.elasticsearch.timeout
 ENV: <b>TYK_PMP_PUMPS_ELASTICSEARCH_TIMEOUT</b><br />
@@ -1018,37 +1018,37 @@ An example of configuration would be:
 ENV: <b>TYK_PMP_PUMPS_GRAYLOG_FILTERS_ORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted org_ids.
+Filters pump data by an allow list of org_ids.
 
 ### pumps.graylog.filters.api_ids
 ENV: <b>TYK_PMP_PUMPS_GRAYLOG_FILTERS_APIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted api_ids.
+Filters pump data by an allow list of api_ids.
 
 ### pumps.graylog.filters.response_codes
 ENV: <b>TYK_PMP_PUMPS_GRAYLOG_FILTERS_RESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the whitelisted response_codes.
+Filters pump data by an allow list of response_codes.
 
 ### pumps.graylog.filters.skip_org_ids
 ENV: <b>TYK_PMP_PUMPS_GRAYLOG_FILTERS_SKIPPEDORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted org_ids.
+Filters pump data by a block list of org_ids.
 
 ### pumps.graylog.filters.skip_api_ids
 ENV: <b>TYK_PMP_PUMPS_GRAYLOG_FILTERS_SKIPPEDAPIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted api_ids.
+Filters pump data by a block list of api_ids.
 
 ### pumps.graylog.filters.skip_response_codes
 ENV: <b>TYK_PMP_PUMPS_GRAYLOG_FILTERS_SKIPPEDRESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the blacklisted response_codes.
+Filters pump data by a block list of response_codes.
 
 ### pumps.graylog.timeout
 ENV: <b>TYK_PMP_PUMPS_GRAYLOG_TIMEOUT</b><br />
@@ -1201,37 +1201,37 @@ An example of configuration would be:
 ENV: <b>TYK_PMP_PUMPS_HYBRID_FILTERS_ORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted org_ids.
+Filters pump data by an allow list of org_ids.
 
 ### pumps.hybrid.filters.api_ids
 ENV: <b>TYK_PMP_PUMPS_HYBRID_FILTERS_APIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted api_ids.
+Filters pump data by an allow list of api_ids.
 
 ### pumps.hybrid.filters.response_codes
 ENV: <b>TYK_PMP_PUMPS_HYBRID_FILTERS_RESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the whitelisted response_codes.
+Filters pump data by an allow list of response_codes.
 
 ### pumps.hybrid.filters.skip_org_ids
 ENV: <b>TYK_PMP_PUMPS_HYBRID_FILTERS_SKIPPEDORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted org_ids.
+Filters pump data by a block list of org_ids.
 
 ### pumps.hybrid.filters.skip_api_ids
 ENV: <b>TYK_PMP_PUMPS_HYBRID_FILTERS_SKIPPEDAPIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted api_ids.
+Filters pump data by a block list of api_ids.
 
 ### pumps.hybrid.filters.skip_response_codes
 ENV: <b>TYK_PMP_PUMPS_HYBRID_FILTERS_SKIPPEDRESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the blacklisted response_codes.
+Filters pump data by a block list of response_codes.
 
 ### pumps.hybrid.timeout
 ENV: <b>TYK_PMP_PUMPS_HYBRID_TIMEOUT</b><br />
@@ -1307,13 +1307,13 @@ MDCB URL connection string
 ENV: <b>TYK_PMP_PUMPS_HYBRID_META_RPCKEY</b><br />
 Type: `string`<br />
 
-Your organisation ID to connect to the MDCB installation.
+Your organization ID to connect to the MDCB installation.
 
 ### pumps.hybrid.meta.APIKey
 ENV: <b>TYK_PMP_PUMPS_HYBRID_META_APIKEY</b><br />
 Type: `string`<br />
 
-This the API key of a user used to authenticate and authorise the Hybrid Pump access through MDCB.
+This the API key of a user used to authenticate and authorize the Hybrid Pump access through MDCB.
 The user should be a standard Dashboard user with minimal privileges so as to reduce any risk if the user is compromised.
 
 ### pumps.hybrid.meta.ignore_tag_prefix_list
@@ -1424,37 +1424,37 @@ An example of configuration would be:
 ENV: <b>TYK_PMP_PUMPS_INFLUX_FILTERS_ORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted org_ids.
+Filters pump data by an allow list of org_ids.
 
 ### pumps.influx.filters.api_ids
 ENV: <b>TYK_PMP_PUMPS_INFLUX_FILTERS_APIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted api_ids.
+Filters pump data by an allow list of api_ids.
 
 ### pumps.influx.filters.response_codes
 ENV: <b>TYK_PMP_PUMPS_INFLUX_FILTERS_RESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the whitelisted response_codes.
+Filters pump data by an allow list of response_codes.
 
 ### pumps.influx.filters.skip_org_ids
 ENV: <b>TYK_PMP_PUMPS_INFLUX_FILTERS_SKIPPEDORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted org_ids.
+Filters pump data by a block list of org_ids.
 
 ### pumps.influx.filters.skip_api_ids
 ENV: <b>TYK_PMP_PUMPS_INFLUX_FILTERS_SKIPPEDAPIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted api_ids.
+Filters pump data by a block list of api_ids.
 
 ### pumps.influx.filters.skip_response_codes
 ENV: <b>TYK_PMP_PUMPS_INFLUX_FILTERS_SKIPPEDRESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the blacklisted response_codes.
+Filters pump data by a block list of response_codes.
 
 ### pumps.influx.timeout
 ENV: <b>TYK_PMP_PUMPS_INFLUX_TIMEOUT</b><br />
@@ -1612,37 +1612,37 @@ An example of configuration would be:
 ENV: <b>TYK_PMP_PUMPS_KAFKA_FILTERS_ORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted org_ids.
+Filters pump data by an allow list of org_ids.
 
 ### pumps.kafka.filters.api_ids
 ENV: <b>TYK_PMP_PUMPS_KAFKA_FILTERS_APIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted api_ids.
+Filters pump data by an allow list of api_ids.
 
 ### pumps.kafka.filters.response_codes
 ENV: <b>TYK_PMP_PUMPS_KAFKA_FILTERS_RESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the whitelisted response_codes.
+Filters pump data by an allow list of response_codes.
 
 ### pumps.kafka.filters.skip_org_ids
 ENV: <b>TYK_PMP_PUMPS_KAFKA_FILTERS_SKIPPEDORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted org_ids.
+Filters pump data by a block list of org_ids.
 
 ### pumps.kafka.filters.skip_api_ids
 ENV: <b>TYK_PMP_PUMPS_KAFKA_FILTERS_SKIPPEDAPIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted api_ids.
+Filters pump data by a block list of api_ids.
 
 ### pumps.kafka.filters.skip_response_codes
 ENV: <b>TYK_PMP_PUMPS_KAFKA_FILTERS_SKIPPEDRESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the blacklisted response_codes.
+Filters pump data by a block list of response_codes.
 
 ### pumps.kafka.timeout
 ENV: <b>TYK_PMP_PUMPS_KAFKA_TIMEOUT</b><br />
@@ -1796,6 +1796,178 @@ Type: `string`<br />
 SASL algorithm. It's the algorithm specified for scram mechanism. It could be sha-512 or sha-256.
 Defaults to "sha-256".
 
+### pumps.kinesis.name
+ENV: <b>TYK_PMP_PUMPS_KINESIS_NAME</b><br />
+Type: `string`<br />
+
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
+
+### pumps.kinesis.type
+ENV: <b>TYK_PMP_PUMPS_KINESIS_TYPE</b><br />
+Type: `string`<br />
+
+Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
+
+### pumps.kinesis.filters
+This feature adds a new configuration field in each pump called filters and its structure is
+the following:
+```{.json}
+"filters":{
+  "api_ids":[],
+  "org_ids":[],
+  "response_codes":[],
+  "skip_api_ids":[],
+  "skip_org_ids":[],
+  "skip_response_codes":[]
+}
+```
+The fields api_ids, org_ids and response_codes works as allow list (APIs and orgs where we
+want to send the analytics records) and the fields skip_api_ids, skip_org_ids and
+skip_response_codes works as block list.
+
+The priority is always block list configurations over allow list.
+
+An example of configuration would be:
+```{.json}
+"csv": {
+ "type": "csv",
+ "filters": {
+   "org_ids": ["org1","org2"]
+ },
+ "meta": {
+   "csv_dir": "./bar"
+ }
+}
+```
+
+### pumps.kinesis.filters.org_ids
+ENV: <b>TYK_PMP_PUMPS_KINESIS_FILTERS_ORGSIDS</b><br />
+Type: `[]string`<br />
+
+Filters pump data by an allow list of org_ids.
+
+### pumps.kinesis.filters.api_ids
+ENV: <b>TYK_PMP_PUMPS_KINESIS_FILTERS_APIIDS</b><br />
+Type: `[]string`<br />
+
+Filters pump data by an allow list of api_ids.
+
+### pumps.kinesis.filters.response_codes
+ENV: <b>TYK_PMP_PUMPS_KINESIS_FILTERS_RESPONSECODES</b><br />
+Type: `[]int`<br />
+
+Filters pump data by an allow list of response_codes.
+
+### pumps.kinesis.filters.skip_org_ids
+ENV: <b>TYK_PMP_PUMPS_KINESIS_FILTERS_SKIPPEDORGSIDS</b><br />
+Type: `[]string`<br />
+
+Filters pump data by a block list of org_ids.
+
+### pumps.kinesis.filters.skip_api_ids
+ENV: <b>TYK_PMP_PUMPS_KINESIS_FILTERS_SKIPPEDAPIIDS</b><br />
+Type: `[]string`<br />
+
+Filters pump data by a block list of api_ids.
+
+### pumps.kinesis.filters.skip_response_codes
+ENV: <b>TYK_PMP_PUMPS_KINESIS_FILTERS_SKIPPEDRESPONSECODES</b><br />
+Type: `[]int`<br />
+
+Filters pump data by a block list of response_codes.
+
+### pumps.kinesis.timeout
+ENV: <b>TYK_PMP_PUMPS_KINESIS_TIMEOUT</b><br />
+Type: `int`<br />
+
+By default, a pump will wait forever for each write operation to complete; you can configure an optional timeout by setting the configuration option `timeout`.
+If you have deployed multiple pumps, then you can configure each timeout independently. The timeout is in seconds and defaults to 0.
+
+The timeout is configured within the main pump config as shown here; note that this example would configure a 5 second timeout:
+```{.json}
+"pump_name": {
+  ...
+  "timeout":5,
+  "meta": {...}
+}
+```
+
+Tyk will inform you if the pump's write operation is taking longer than the purging loop (configured via `purge_delay`) as this will mean that data is purged before being written to the target data sink.
+
+If there is no timeout configured and pump's write operation is taking longer than the purging loop, the following warning log will be generated:
+`Pump {pump_name} is taking more time than the value configured of purge_delay. You should try to set a timeout for this pump.`
+
+If there is a timeout configured, but pump's write operation is still taking longer than the purging loop, the following warning log will be generated:
+`Pump {pump_name} is taking more time than the value configured of purge_delay. You should try lowering the timeout configured for this pump.`.
+
+### pumps.kinesis.omit_detailed_recording
+ENV: <b>TYK_PMP_PUMPS_KINESIS_OMITDETAILEDRECORDING</b><br />
+Type: `bool`<br />
+
+Setting this to true will avoid writing raw_request and raw_response fields for each request
+in pumps. Defaults to `false`.
+
+### pumps.kinesis.max_record_size
+ENV: <b>TYK_PMP_PUMPS_KINESIS_MAXRECORDSIZE</b><br />
+Type: `int`<br />
+
+Defines maximum size (in bytes) for Raw Request and Raw Response logs, this value defaults
+to 0. If it is not set then tyk-pump will not trim any data and will store the full
+information. This can also be set at a pump level. For example:
+```{.json}
+"csv": {
+  "type": "csv",
+  "max_record_size":1000,
+  "meta": {
+    "csv_dir": "./"
+  }
+}
+```
+
+### pumps.kinesis.ignore_fields
+ENV: <b>TYK_PMP_PUMPS_KINESIS_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
+
+### pumps.kinesis.meta.EnvPrefix
+ENV: <b>TYK_PMP_PUMPS_KINESIS_META_ENVPREFIX</b><br />
+Type: `string`<br />
+
+The prefix for the environment variables that will be used to override the configuration.
+Defaults to `TYK_PMP_PUMPS_KINESIS_META`
+
+### pumps.kinesis.meta.StreamName
+ENV: <b>TYK_PMP_PUMPS_KINESIS_META_STREAMNAME</b><br />
+Type: `string`<br />
+
+A name to identify the stream. The stream name is scoped to the AWS account used by the application
+that creates the stream. It is also scoped by AWS Region.
+That is, two streams in two different AWS accounts can have the same name.
+Two streams in the same AWS account but in two different Regions can also have the same name.
+
+### pumps.kinesis.meta.Region
+ENV: <b>TYK_PMP_PUMPS_KINESIS_META_REGION</b><br />
+Type: `string`<br />
+
+AWS Region the Kinesis stream targets
+
+### pumps.kinesis.meta.BatchSize
+ENV: <b>TYK_PMP_PUMPS_KINESIS_META_BATCHSIZE</b><br />
+Type: `int`<br />
+
+Each PutRecords (the function used in this pump)request can support up to 500 records.
+Each record in the request can be as large as 1 MiB, up to a limit of 5 MiB for the entire request, including partition keys.
+Each shard can support writes up to 1,000 records per second, up to a maximum data write total of 1 MiB per second.
+
 ### pumps.logzio.name
 ENV: <b>TYK_PMP_PUMPS_LOGZIO_NAME</b><br />
 Type: `string`<br />
@@ -1849,37 +2021,37 @@ An example of configuration would be:
 ENV: <b>TYK_PMP_PUMPS_LOGZIO_FILTERS_ORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted org_ids.
+Filters pump data by an allow list of org_ids.
 
 ### pumps.logzio.filters.api_ids
 ENV: <b>TYK_PMP_PUMPS_LOGZIO_FILTERS_APIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted api_ids.
+Filters pump data by an allow list of api_ids.
 
 ### pumps.logzio.filters.response_codes
 ENV: <b>TYK_PMP_PUMPS_LOGZIO_FILTERS_RESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the whitelisted response_codes.
+Filters pump data by an allow list of response_codes.
 
 ### pumps.logzio.filters.skip_org_ids
 ENV: <b>TYK_PMP_PUMPS_LOGZIO_FILTERS_SKIPPEDORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted org_ids.
+Filters pump data by a block list of org_ids.
 
 ### pumps.logzio.filters.skip_api_ids
 ENV: <b>TYK_PMP_PUMPS_LOGZIO_FILTERS_SKIPPEDAPIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted api_ids.
+Filters pump data by a block list of api_ids.
 
 ### pumps.logzio.filters.skip_response_codes
 ENV: <b>TYK_PMP_PUMPS_LOGZIO_FILTERS_SKIPPEDRESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the blacklisted response_codes.
+Filters pump data by a block list of response_codes.
 
 ### pumps.logzio.timeout
 ENV: <b>TYK_PMP_PUMPS_LOGZIO_TIMEOUT</b><br />
@@ -2037,37 +2209,37 @@ An example of configuration would be:
 ENV: <b>TYK_PMP_PUMPS_MOESIF_FILTERS_ORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted org_ids.
+Filters pump data by an allow list of org_ids.
 
 ### pumps.moesif.filters.api_ids
 ENV: <b>TYK_PMP_PUMPS_MOESIF_FILTERS_APIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted api_ids.
+Filters pump data by an allow list of api_ids.
 
 ### pumps.moesif.filters.response_codes
 ENV: <b>TYK_PMP_PUMPS_MOESIF_FILTERS_RESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the whitelisted response_codes.
+Filters pump data by an allow list of response_codes.
 
 ### pumps.moesif.filters.skip_org_ids
 ENV: <b>TYK_PMP_PUMPS_MOESIF_FILTERS_SKIPPEDORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted org_ids.
+Filters pump data by a block list of org_ids.
 
 ### pumps.moesif.filters.skip_api_ids
 ENV: <b>TYK_PMP_PUMPS_MOESIF_FILTERS_SKIPPEDAPIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted api_ids.
+Filters pump data by a block list of api_ids.
 
 ### pumps.moesif.filters.skip_response_codes
 ENV: <b>TYK_PMP_PUMPS_MOESIF_FILTERS_SKIPPEDRESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the blacklisted response_codes.
+Filters pump data by a block list of response_codes.
 
 ### pumps.moesif.timeout
 ENV: <b>TYK_PMP_PUMPS_MOESIF_TIMEOUT</b><br />
@@ -2278,37 +2450,37 @@ An example of configuration would be:
 ENV: <b>TYK_PMP_PUMPS_MONGO_FILTERS_ORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted org_ids.
+Filters pump data by an allow list of org_ids.
 
 ### pumps.mongo.filters.api_ids
 ENV: <b>TYK_PMP_PUMPS_MONGO_FILTERS_APIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted api_ids.
+Filters pump data by an allow list of api_ids.
 
 ### pumps.mongo.filters.response_codes
 ENV: <b>TYK_PMP_PUMPS_MONGO_FILTERS_RESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the whitelisted response_codes.
+Filters pump data by an allow list of response_codes.
 
 ### pumps.mongo.filters.skip_org_ids
 ENV: <b>TYK_PMP_PUMPS_MONGO_FILTERS_SKIPPEDORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted org_ids.
+Filters pump data by a block list of org_ids.
 
 ### pumps.mongo.filters.skip_api_ids
 ENV: <b>TYK_PMP_PUMPS_MONGO_FILTERS_SKIPPEDAPIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted api_ids.
+Filters pump data by a block list of api_ids.
 
 ### pumps.mongo.filters.skip_response_codes
 ENV: <b>TYK_PMP_PUMPS_MONGO_FILTERS_SKIPPEDRESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the blacklisted response_codes.
+Filters pump data by a block list of response_codes.
 
 ### pumps.mongo.timeout
 ENV: <b>TYK_PMP_PUMPS_MONGO_TIMEOUT</b><br />
@@ -2539,37 +2711,37 @@ An example of configuration would be:
 ENV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_FILTERS_ORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted org_ids.
+Filters pump data by an allow list of org_ids.
 
 ### pumps.mongoaggregate.filters.api_ids
 ENV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_FILTERS_APIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted api_ids.
+Filters pump data by an allow list of api_ids.
 
 ### pumps.mongoaggregate.filters.response_codes
 ENV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_FILTERS_RESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the whitelisted response_codes.
+Filters pump data by an allow list of response_codes.
 
 ### pumps.mongoaggregate.filters.skip_org_ids
 ENV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_FILTERS_SKIPPEDORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted org_ids.
+Filters pump data by a block list of org_ids.
 
 ### pumps.mongoaggregate.filters.skip_api_ids
 ENV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_FILTERS_SKIPPEDAPIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted api_ids.
+Filters pump data by a block list of api_ids.
 
 ### pumps.mongoaggregate.filters.skip_response_codes
 ENV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_FILTERS_SKIPPEDRESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the blacklisted response_codes.
+Filters pump data by a block list of response_codes.
 
 ### pumps.mongoaggregate.timeout
 ENV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_TIMEOUT</b><br />
@@ -2718,7 +2890,7 @@ prevent discovery, such as with SSH tunneling. Default is false.
 ENV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_USEMIXEDCOLLECTION</b><br />
 Type: `bool`<br />
 
-If set to `true` your pump will store analytics to both your organisation defined
+If set to `true` your pump will store analytics to both your organization defined
 collections z_tyk_analyticz_aggregate_{ORG ID} and your org-less tyk_analytics_aggregates
 collection. When set to 'false' your pump will only store analytics to your org defined
 collection.
@@ -2826,37 +2998,37 @@ An example of configuration would be:
 ENV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_FILTERS_ORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted org_ids.
+Filters pump data by an allow list of org_ids.
 
 ### pumps.mongoselective.filters.api_ids
 ENV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_FILTERS_APIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted api_ids.
+Filters pump data by an allow list of api_ids.
 
 ### pumps.mongoselective.filters.response_codes
 ENV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_FILTERS_RESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the whitelisted response_codes.
+Filters pump data by an allow list of response_codes.
 
 ### pumps.mongoselective.filters.skip_org_ids
 ENV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_FILTERS_SKIPPEDORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted org_ids.
+Filters pump data by a block list of org_ids.
 
 ### pumps.mongoselective.filters.skip_api_ids
 ENV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_FILTERS_SKIPPEDAPIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted api_ids.
+Filters pump data by a block list of api_ids.
 
 ### pumps.mongoselective.filters.skip_response_codes
 ENV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_FILTERS_SKIPPEDRESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the blacklisted response_codes.
+Filters pump data by a block list of response_codes.
 
 ### pumps.mongoselective.timeout
 ENV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_TIMEOUT</b><br />
@@ -3068,37 +3240,37 @@ An example of configuration would be:
 ENV: <b>TYK_PMP_PUMPS_PROMETHEUS_FILTERS_ORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted org_ids.
+Filters pump data by an allow list of org_ids.
 
 ### pumps.prometheus.filters.api_ids
 ENV: <b>TYK_PMP_PUMPS_PROMETHEUS_FILTERS_APIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted api_ids.
+Filters pump data by an allow list of api_ids.
 
 ### pumps.prometheus.filters.response_codes
 ENV: <b>TYK_PMP_PUMPS_PROMETHEUS_FILTERS_RESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the whitelisted response_codes.
+Filters pump data by an allow list of response_codes.
 
 ### pumps.prometheus.filters.skip_org_ids
 ENV: <b>TYK_PMP_PUMPS_PROMETHEUS_FILTERS_SKIPPEDORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted org_ids.
+Filters pump data by a block list of org_ids.
 
 ### pumps.prometheus.filters.skip_api_ids
 ENV: <b>TYK_PMP_PUMPS_PROMETHEUS_FILTERS_SKIPPEDAPIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted api_ids.
+Filters pump data by a block list of api_ids.
 
 ### pumps.prometheus.filters.skip_response_codes
 ENV: <b>TYK_PMP_PUMPS_PROMETHEUS_FILTERS_SKIPPEDRESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the blacklisted response_codes.
+Filters pump data by a block list of response_codes.
 
 ### pumps.prometheus.timeout
 ENV: <b>TYK_PMP_PUMPS_PROMETHEUS_TIMEOUT</b><br />
@@ -3255,37 +3427,37 @@ An example of configuration would be:
 ENV: <b>TYK_PMP_PUMPS_SPLUNK_FILTERS_ORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted org_ids.
+Filters pump data by an allow list of org_ids.
 
 ### pumps.splunk.filters.api_ids
 ENV: <b>TYK_PMP_PUMPS_SPLUNK_FILTERS_APIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted api_ids.
+Filters pump data by an allow list of api_ids.
 
 ### pumps.splunk.filters.response_codes
 ENV: <b>TYK_PMP_PUMPS_SPLUNK_FILTERS_RESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the whitelisted response_codes.
+Filters pump data by an allow list of response_codes.
 
 ### pumps.splunk.filters.skip_org_ids
 ENV: <b>TYK_PMP_PUMPS_SPLUNK_FILTERS_SKIPPEDORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted org_ids.
+Filters pump data by a block list of org_ids.
 
 ### pumps.splunk.filters.skip_api_ids
 ENV: <b>TYK_PMP_PUMPS_SPLUNK_FILTERS_SKIPPEDAPIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted api_ids.
+Filters pump data by a block list of api_ids.
 
 ### pumps.splunk.filters.skip_response_codes
 ENV: <b>TYK_PMP_PUMPS_SPLUNK_FILTERS_SKIPPEDRESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the blacklisted response_codes.
+Filters pump data by a block list of response_codes.
 
 ### pumps.splunk.timeout
 ENV: <b>TYK_PMP_PUMPS_SPLUNK_TIMEOUT</b><br />
@@ -3485,37 +3657,37 @@ An example of configuration would be:
 ENV: <b>TYK_PMP_PUMPS_SQL_FILTERS_ORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted org_ids.
+Filters pump data by an allow list of org_ids.
 
 ### pumps.sql.filters.api_ids
 ENV: <b>TYK_PMP_PUMPS_SQL_FILTERS_APIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted api_ids.
+Filters pump data by an allow list of api_ids.
 
 ### pumps.sql.filters.response_codes
 ENV: <b>TYK_PMP_PUMPS_SQL_FILTERS_RESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the whitelisted response_codes.
+Filters pump data by an allow list of response_codes.
 
 ### pumps.sql.filters.skip_org_ids
 ENV: <b>TYK_PMP_PUMPS_SQL_FILTERS_SKIPPEDORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted org_ids.
+Filters pump data by a block list of org_ids.
 
 ### pumps.sql.filters.skip_api_ids
 ENV: <b>TYK_PMP_PUMPS_SQL_FILTERS_SKIPPEDAPIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted api_ids.
+Filters pump data by a block list of api_ids.
 
 ### pumps.sql.filters.skip_response_codes
 ENV: <b>TYK_PMP_PUMPS_SQL_FILTERS_SKIPPEDRESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the blacklisted response_codes.
+Filters pump data by a block list of response_codes.
 
 ### pumps.sql.timeout
 ENV: <b>TYK_PMP_PUMPS_SQL_TIMEOUT</b><br />
@@ -3712,37 +3884,37 @@ An example of configuration would be:
 ENV: <b>TYK_PMP_PUMPS_SQLAGGREGATE_FILTERS_ORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted org_ids.
+Filters pump data by an allow list of org_ids.
 
 ### pumps.sqlaggregate.filters.api_ids
 ENV: <b>TYK_PMP_PUMPS_SQLAGGREGATE_FILTERS_APIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted api_ids.
+Filters pump data by an allow list of api_ids.
 
 ### pumps.sqlaggregate.filters.response_codes
 ENV: <b>TYK_PMP_PUMPS_SQLAGGREGATE_FILTERS_RESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the whitelisted response_codes.
+Filters pump data by an allow list of response_codes.
 
 ### pumps.sqlaggregate.filters.skip_org_ids
 ENV: <b>TYK_PMP_PUMPS_SQLAGGREGATE_FILTERS_SKIPPEDORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted org_ids.
+Filters pump data by a block list of org_ids.
 
 ### pumps.sqlaggregate.filters.skip_api_ids
 ENV: <b>TYK_PMP_PUMPS_SQLAGGREGATE_FILTERS_SKIPPEDAPIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted api_ids.
+Filters pump data by a block list of api_ids.
 
 ### pumps.sqlaggregate.filters.skip_response_codes
 ENV: <b>TYK_PMP_PUMPS_SQLAGGREGATE_FILTERS_SKIPPEDRESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the blacklisted response_codes.
+Filters pump data by a block list of response_codes.
 
 ### pumps.sqlaggregate.timeout
 ENV: <b>TYK_PMP_PUMPS_SQLAGGREGATE_TIMEOUT</b><br />
@@ -3970,37 +4142,37 @@ An example of configuration would be:
 ENV: <b>TYK_PMP_PUMPS_STATSD_FILTERS_ORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted org_ids.
+Filters pump data by an allow list of org_ids.
 
 ### pumps.statsd.filters.api_ids
 ENV: <b>TYK_PMP_PUMPS_STATSD_FILTERS_APIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted api_ids.
+Filters pump data by an allow list of api_ids.
 
 ### pumps.statsd.filters.response_codes
 ENV: <b>TYK_PMP_PUMPS_STATSD_FILTERS_RESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the whitelisted response_codes.
+Filters pump data by an allow list of response_codes.
 
 ### pumps.statsd.filters.skip_org_ids
 ENV: <b>TYK_PMP_PUMPS_STATSD_FILTERS_SKIPPEDORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted org_ids.
+Filters pump data by a block list of org_ids.
 
 ### pumps.statsd.filters.skip_api_ids
 ENV: <b>TYK_PMP_PUMPS_STATSD_FILTERS_SKIPPEDAPIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted api_ids.
+Filters pump data by a block list of api_ids.
 
 ### pumps.statsd.filters.skip_response_codes
 ENV: <b>TYK_PMP_PUMPS_STATSD_FILTERS_SKIPPEDRESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the blacklisted response_codes.
+Filters pump data by a block list of response_codes.
 
 ### pumps.statsd.timeout
 ENV: <b>TYK_PMP_PUMPS_STATSD_TIMEOUT</b><br />
@@ -4143,37 +4315,37 @@ An example of configuration would be:
 ENV: <b>TYK_PMP_PUMPS_STDOUT_FILTERS_ORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted org_ids.
+Filters pump data by an allow list of org_ids.
 
 ### pumps.stdout.filters.api_ids
 ENV: <b>TYK_PMP_PUMPS_STDOUT_FILTERS_APIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted api_ids.
+Filters pump data by an allow list of api_ids.
 
 ### pumps.stdout.filters.response_codes
 ENV: <b>TYK_PMP_PUMPS_STDOUT_FILTERS_RESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the whitelisted response_codes.
+Filters pump data by an allow list of response_codes.
 
 ### pumps.stdout.filters.skip_org_ids
 ENV: <b>TYK_PMP_PUMPS_STDOUT_FILTERS_SKIPPEDORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted org_ids.
+Filters pump data by a block list of org_ids.
 
 ### pumps.stdout.filters.skip_api_ids
 ENV: <b>TYK_PMP_PUMPS_STDOUT_FILTERS_SKIPPEDAPIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted api_ids.
+Filters pump data by a block list of api_ids.
 
 ### pumps.stdout.filters.skip_response_codes
 ENV: <b>TYK_PMP_PUMPS_STDOUT_FILTERS_SKIPPEDRESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the blacklisted response_codes.
+Filters pump data by a block list of response_codes.
 
 ### pumps.stdout.timeout
 ENV: <b>TYK_PMP_PUMPS_STDOUT_TIMEOUT</b><br />
@@ -4305,37 +4477,37 @@ An example of configuration would be:
 ENV: <b>TYK_PMP_PUMPS_SYSLOG_FILTERS_ORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted org_ids.
+Filters pump data by an allow list of org_ids.
 
 ### pumps.syslog.filters.api_ids
 ENV: <b>TYK_PMP_PUMPS_SYSLOG_FILTERS_APIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted api_ids.
+Filters pump data by an allow list of api_ids.
 
 ### pumps.syslog.filters.response_codes
 ENV: <b>TYK_PMP_PUMPS_SYSLOG_FILTERS_RESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the whitelisted response_codes.
+Filters pump data by an allow list of response_codes.
 
 ### pumps.syslog.filters.skip_org_ids
 ENV: <b>TYK_PMP_PUMPS_SYSLOG_FILTERS_SKIPPEDORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted org_ids.
+Filters pump data by a block list of org_ids.
 
 ### pumps.syslog.filters.skip_api_ids
 ENV: <b>TYK_PMP_PUMPS_SYSLOG_FILTERS_SKIPPEDAPIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted api_ids.
+Filters pump data by a block list of api_ids.
 
 ### pumps.syslog.filters.skip_response_codes
 ENV: <b>TYK_PMP_PUMPS_SYSLOG_FILTERS_SKIPPEDRESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the blacklisted response_codes.
+Filters pump data by a block list of response_codes.
 
 ### pumps.syslog.timeout
 ENV: <b>TYK_PMP_PUMPS_SYSLOG_TIMEOUT</b><br />
@@ -4494,37 +4666,37 @@ An example of configuration would be:
 ENV: <b>TYK_PMP_PUMPS_TIMESTREAM_FILTERS_ORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted org_ids.
+Filters pump data by an allow list of org_ids.
 
 ### pumps.timestream.filters.api_ids
 ENV: <b>TYK_PMP_PUMPS_TIMESTREAM_FILTERS_APIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the whitelisted api_ids.
+Filters pump data by an allow list of api_ids.
 
 ### pumps.timestream.filters.response_codes
 ENV: <b>TYK_PMP_PUMPS_TIMESTREAM_FILTERS_RESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the whitelisted response_codes.
+Filters pump data by an allow list of response_codes.
 
 ### pumps.timestream.filters.skip_org_ids
 ENV: <b>TYK_PMP_PUMPS_TIMESTREAM_FILTERS_SKIPPEDORGSIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted org_ids.
+Filters pump data by a block list of org_ids.
 
 ### pumps.timestream.filters.skip_api_ids
 ENV: <b>TYK_PMP_PUMPS_TIMESTREAM_FILTERS_SKIPPEDAPIIDS</b><br />
 Type: `[]string`<br />
 
-Filters pump data by the blacklisted api_ids.
+Filters pump data by a block list of api_ids.
 
 ### pumps.timestream.filters.skip_response_codes
 ENV: <b>TYK_PMP_PUMPS_TIMESTREAM_FILTERS_SKIPPEDRESPONSECODES</b><br />
 Type: `[]int`<br />
 
-Filters pump data by the blacklisted response_codes.
+Filters pump data by a block list of response_codes.
 
 ### pumps.timestream.timeout
 ENV: <b>TYK_PMP_PUMPS_TIMESTREAM_TIMEOUT</b><br />

@@ -21,9 +21,9 @@ Rate limiting involves setting thresholds for the maximum number of requests tha
 
 ## When might you want to use rate limiting?
 
-Rate limiting may be used as an extra line of defence around attempted denial of service attacks. For instance, if you have load-tested your current system and established a performance threshold that you would not want to exceed to ensure system availability and/or performance then you may want to set a global rate limit as a defence to ensure it hasn't exceeded.
+Rate limiting may be used as an extra line of defense around attempted denial of service attacks. For instance, if you have load-tested your current system and established a performance threshold that you would not want to exceed to ensure system availability and/or performance then you may want to set a global rate limit as a defense to ensure it hasn't exceeded.
 
-Rate limiting can also be used to ensure that one particular user or system accessing the API is not exceeding a determined rate. This makes sense in a scenario such as APIs which are associated with a monetisation scheme where you may allow so many requests per second based on the tier in which that consumer is subscribed or paying for.
+Rate limiting can also be used to ensure that one particular user or system accessing the API is not exceeding a determined rate. This makes sense in a scenario such as APIs which are associated with a monetization scheme where you may allow so many requests per second based on the tier in which that consumer is subscribed or paying for.
 
 Of course, there are plenty of other scenarios where applying a rate limit may be beneficial to your APIs and the systems that your APIs leverage behind the scenes.
 
@@ -49,8 +49,9 @@ API-level rate limiting aggregates the traffic coming into an API from all sourc
 
 Key-level rate limiting is more focused on controlling traffic from individual sources and making sure that users are staying within their prescribed limits. This approach to rate limiting allows you to configure a policy to rate limit in two ways:
 
-- **key-level global limit** limiting the rate of calls the user of a key can make to all APIs authorised by that key
+- **key-level global limit** limiting the rate of calls the user of a key can make to all APIs authorized by that key
 - **key-level per-API limit** limiting the rate of calls the user of a key can make to specific individual APIs
+- **key-level per-endpoint limit** limiting the rate of calls the user of a key can make to specific individual endpoints of an API
  
 These guides include explanation of how to configure key-level rate limits when using [API Keys]({{< ref "getting-started/create-api-key" >}}) and [Security Policies]({{< ref "getting-started/create-security-policy" >}}).
 
@@ -59,16 +60,34 @@ These guides include explanation of how to configure key-level rate limits when 
 The simplest way to figure out which level of rate limiting you’d like to apply can be determined by asking a few questions:
 
 - do you want to protect your service against denial of service attacks or overwhelming amounts of traffic from **all users** of the API? **You’ll want to use an API-level rate limit!**
+- do you have a health endpoint that consumes very little resource on your service and can handle significantly more requests than your other endpoints? **You'll want to use an API-level per-endpoint rate limit!**
 - do you want to limit the number of requests a specific user can make to **all APIs** they have access to? **You’ll want to use a key-level global rate limit!**
 - do you want to limit the number of requests a specific user can make to **specific APIs** they have access to? **You’ll want to use a key-level per-API rate limit.**
+- do you want to limit the number of requests a specific user can make to a **specific endpoint of an API** they have access to? **You’ll want to use a key-level per-endpoint rate limit.**
 
 ### Applying multiple rate limits
 
 When multiple rate limits are configured, they are assessed in this order (if applied):
 
-1. API-level global rate limit
-2. Key-level global rate limit
-3. Key-level per-API rate limit
+1. API-level per-endpoint rate limit (configured in API definition)
+2. API-level rate limit (configured in API definition)
+3. Key-level per-endpoint rate limit (configured in access key)
+4. Key-level per-API rate limit (configured in access key)
+5. Key-level global rate limit (configured in access key)
+
+### Combining multiple policies configuring rate limits
+
+If more than one policy defining a rate limit is applied to a key then Tyk will apply the highest request rate permitted by any of the policies that defines a rate limit.
+
+If `rate` and `per` are configured in multiple policies applied to the same key then the Gateway will determine the effective rate limit configured for each policy and apply the highest to the key.
+
+Given, policy A with `rate` set to 90 and `per` set to 30 seconds (3rps) and policy B with `rate` set to 100 and `per` set to 10 seconds (10rps). If both are applied to a key, Tyk will take the rate limit from policy B as it results in a higher effective request rate (10rps).
+
+{{< note success >}}
+**Note**  
+
+Prior to Tyk 5.4.0 there was a long-standing bug in the calculation of the effective rate limit applied to the key where Tyk would combine the highest `rate` and highest `per` from the policies applied to the key, so for the example above the key would have `rate` set to 100 and `per` set to 30 giving an effective rate limit of 3.33rps. This has now been corrected.
+{{< /note >}}
 
 ## Rate limiting algorithms
 
@@ -128,12 +147,12 @@ The characteristics of the Redis Rate Limiter (RRL) are:
 - the log is constantly trimmed to the duration of the defined window
 - requests are blocked if the count in the log exceeds the configured rate limit
 
-An important behaviour of this rate limiting algorithm is that it blocks
+An important behavior of this rate limiting algorithm is that it blocks
 access to the API when the rate exceeds the rate limit and does not let
 further API calls through until the rate drops below the specified rate
 limit. For example, if the configured rate limit is 3000 requests/minute the call rate would
 have to be reduced below 3000 requests/minute for a whole minute before the `HTTP 429`
-responses stop and traffic is resumed. This behaviour is called **spike arrest**.
+responses stop and traffic is resumed. This behavior is called **spike arrest**.
 
 The complete request log is stored in Redis so resource usage when using this rate limiter is high.
 This algorithm will use significant resources on Redis even when blocking requests, as it must
@@ -141,7 +160,7 @@ maintain the request log, mostly impacting CPU usage. Redis resource
 usage increases with traffic therefore shorter `per` values are recommended to
 limit the amount of data being stored in Redis.
 
-If you wish to avoid spike arrest behaviour but the DRL is not suitable, you might use the [Fixed Window Rate Limiter]({{< ref "#fixed-window-rate-limiter" >}}) algorithm.
+If you wish to avoid spike arrest behavior but the DRL is not suitable, you might use the [Fixed Window Rate Limiter]({{< ref "#fixed-window-rate-limiter" >}}) algorithm.
 
 You can configure [Rate Limit Smoothing]({{< ref "#rate-limit-smoothing" >}}) to manage the traffic spike, allowing time to increase upstream capacity if required.
 
@@ -204,7 +223,7 @@ The Redis Sentinel Rate Limiter option will:
 
 This optimizes the latency for connecting clients, as they don't have to
 wait for the sliding log write to complete. This algorithm exhibits spike
-arrest behaviour the same as the basic Redis Rate Limiter, however recovery may take longer as the blocking is in
+arrest behavior the same as the basic Redis Rate Limiter, however recovery may take longer as the blocking is in
 effect for a minimum of the configured window duration (`per`). Gateway and Redis
 resource usage is increased with this option.
 
@@ -243,7 +262,7 @@ constant.
 
 This algorithm can be enabled using the following configuration option [enable_fixed_window_rate_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_fixed_window_rate_limiter" >}}).
 
-If you need spike arrest behaviour, the [Redis Rate Limiter]({{< ref "#redis-rate-limiter" >}}) should be used.
+If you need spike arrest behavior, the [Redis Rate Limiter]({{< ref "#redis-rate-limiter" >}}) should be used.
 
 ### Dynamic algorithm selection based on request rate
 

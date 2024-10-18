@@ -32,7 +32,7 @@ Example `.tyk.json`:
 If you haven't installed Tyk Sync, you can do so via Docker:
 
 ```bash
-docker pull tykio/tyk-sync:v1.5.0
+docker pull tykio/tyk-sync:v2.0.0
 ```
 
 ### Step 4: Publish API Definitions to Tyk
@@ -40,7 +40,7 @@ docker pull tykio/tyk-sync:v1.5.0
 Use the `publish` command to upload your local API definitions to Tyk. Use Docker bind mounts to access your local files.
 
 ```bash
-docker run -v /path/to/your/directory:/app/data tykio/tyk-sync:v1.5.0 publish \
+docker run -v /path/to/your/directory:/app/data tykio/tyk-sync:v2.0.0 publish \
   --path /app/data \
   --dashboard [DASHBOARD_URL] \
   --secret [SECRET]
@@ -51,7 +51,7 @@ docker run -v /path/to/your/directory:/app/data tykio/tyk-sync:v1.5.0 publish \
 Similarly, to update existing API definitions, use the update command.
 
 ```bash
-docker run -v /path/to/your/directory:/app/data tykio/tyk-sync:v1.5.0 update \
+docker run -v /path/to/your/directory:/app/data tykio/tyk-sync:v2.0.0 update \
   --path /app/data \
   --dashboard [DASHBOARD_URL] \
   --secret [SECRET]

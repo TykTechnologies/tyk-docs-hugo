@@ -68,7 +68,7 @@ Tyk Streams will automatically set the connection name based off the label of th
 NATS component, so that monitoring tools between NATS and Tyk Streams can stay in sync.
 ### Authentication
 
-There are several components within Tyk Streams which utilise NATS services. You will find that each of these components
+There are several components within Tyk Streams which utilize NATS services. You will find that each of these components
 support optional advanced authentication parameters for [NKeys](https://docs.nats.io/nats-server/configuration/securing_nats/auth_intro/nkey_auth)
 and [User Credentials](https://docs.nats.io/developing-with-nats/security/creds).
 
@@ -170,7 +170,7 @@ The maximum number of messages to pull at a time.
 Type: `int`  
 Default: `524288`  
 
-### `tls`
+### tls
 
 Custom TLS settings can be used to override system defaults.
 
@@ -294,12 +294,12 @@ Type: `string`
 Default: `""`  
 
 ```yml
-# Examples
+# Example
 
 password: foo
-
-password: ${KEY_PASSWORD}
 ```
+
+<!-- When Tyk streams with secrets released include this in above example => password: ${KEY_PASSWORD} -->
 
 ### auth
 
@@ -350,7 +350,7 @@ Type: `string`
 
 ### extract_tracing_map
 
-EXPERIMENTAL: A Bloblang mapping that attempts to extract an object containing tracing propagation information, which will then be used as the root tracing span for the message. The specification of the extracted fields must match the format used by the service wide tracer.
+EXPERIMENTAL: A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mapping that attempts to extract an object containing tracing propagation information, which will then be used as the root tracing span for the message. The specification of the extracted fields must match the format used by the service wide tracer.
 
 
 Type: string 

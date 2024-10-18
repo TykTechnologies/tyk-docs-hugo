@@ -1,7 +1,7 @@
 ---
 title: Tyk Gateway 5.0 Release Notes
 description: Tyk Gateway v5.0 release notes
-tags: ["release notes", "Tyk Gateway", "v5.0", "5.0", "5.0.0", "5.0.1", "5.0.1", "5.0.2", "5.0.3", "5.0.4", "5.0.5", "5.0.6", "5.0.7", "5.0.8", "5.0.9", "5.0.10", "5.0.11"]
+tags: ["release notes", "Tyk Gateway", "v5.0", "5.0", "5.0.0", "5.0.1", "5.0.1", "5.0.2", "5.0.3", "5.0.4", "5.0.5", "5.0.6", "5.0.7", "5.0.8", "5.0.9", "5.0.10", "5.0.11", "5.0.13", "5.0.14"]
 aliases:
     - /release-notes/version-5.0/
 ---
@@ -9,6 +9,169 @@ aliases:
 **Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))
 
 **This page contains all release notes for version 5.0.X displayed in reverse chronological order**
+
+---
+
+## 5.0.14 Release Notes {#rn-v5.0.14}
+
+### Release Date 18th September 2024
+
+{{< note success >}}
+**Important Update**<br>
+<br>
+<b>Date</b>: 12 October 2024<br>
+<b>Topic</b>: Gateway panic when reconnecting to MDCB control plane or Tyk Cloud<br>
+<b>Workaround</b>: Restart Gateway<br>
+<b>Affected Product</b>: Tyk Gateway as an Edge Gateway<br>
+<b>Affected versions</b>: v5.6.0, v5.3.6, and v5.0.14<br>
+<b>Issue Description:</b><br>
+<p>We have identified an issue affecting Tyk Gateway deployed as a data plane connecting to the Multi-Data Center Bridge (MDCB) control plane or Tyk Cloud. In the above mentioned Gateway versions a panic may occur when gateway reconnect to the control plane after the control plane is restarted.
+<p>Our engineering team is actively working on a fix, and a patch (versions 5.6.1, 5.3.7, and 5.0.15) will be released soon.<br>
+<b>Recommendations:</b><br>
+<ul>
+<li><b>For users on versions 5.5.0, 5.3.5, and 5.0.13</b><br>
+We advise you to delay upgrading to the affected versions (5.6.0, 5.3.6, or 5.0.14) until the patch is available.
+
+<li><b>For users who have already upgraded to 5.6.0, 5.3.6, or 5.0.14 and are experiencing a panic in the gateway:</b><br>
+Restarting the gateway process will restore it to a healthy state. If you are operating in a *Kubernetes* environment, Tyk Gateway instance should automatically restart, which ultimately resolves the issue.<br>
+</ul>
+<p>We appreciate your understanding and patience as we work to resolve this. Please stay tuned for the upcoming patch release, which will address this issue.
+{{< /note >}}
+
+### Breaking Changes
+**Attention:** Please read this section carefully.
+
+There are no breaking changes in this release.
+
+### Upgrade Instructions
+
+This release is not tightly coupled with Tyk Dashboard v5.0.14, so you do not have to upgrade both together.
+
+
+Go to the [Upgrading Tyk](https://tyk.io/docs/product-stack/tyk-gateway/release-notes/version-5.0/#upgrading-tyk) section for detailed upgrade instructions.
+
+### Release Highlights
+
+This release fixes some issues related to the way that Tyk performs URL path matching, introducing two new Gateway configuration options to control path matching strictness.
+
+### Changelog {#Changelog-v5.0.14}
+
+#### Added
+
+<ul>
+<li>
+<details>
+<summary>Implemented Gateway configuration options to set URL path matching strictness</summary>
+
+We have introduced two new options in the `http_server_options` [Gateway configuration]({{< ref "tyk-oss-gateway/configuration#http_server_options" >}}) that will enforce prefix and/or suffix matching when Tyk performs checks on whether middleware or other logic should be applied to a request:
+
+- `enable_path_prefix_matching` ensures that the start of the request path must match the path defined in the API definition
+- `enable_path_suffix_matching` ensures that the end of the request path must match the path defined in the API definition
+- combining `enable_path_prefix_matching` and `enable_path_suffix_matching` will ensure an exact (explicit) match is performed
+
+These configuration options provide control to avoid unintended matching of paths from Tyk's default *wildcard* match. Use of regex special characters when declaring the endpoint path in the API definition will automatically override these settings for that endpoint.
+
+**Tyk recommends that exact matching is employed, but both options default to `false` to avoid introducing a breaking change for existing users.**
+</details>
+</li>
+</ul>
+
+#### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Incorrectly configured regex in policy affected Path-Based Permissions authorization</summary>
+
+Fixed an issue when using granular [Path-Based Permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}) in access policies and keys that led to authorization incorrectly being granted to endpoints if an invalid regular expression was configured in the key/policy. Also fixed an issue where path-based parameters were not correctly handled by Path-Based Permissions. Now Tyk's authorization check correctly handles both of these scenarios granting access only to the expected resources.
+</details>
+</li>
+<li>
+<details>
+<summary>Missing path parameter can direct to the wrong endpoint</summary>
+
+Fixed an issue where a parameterized endpoint URL (e.g. `/user/{id}`) would be invoked if a request is made that omits the parameter. For example, a request to `/user/` will now be interpreted as a request to `/user` and not to `/user/{id}`.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Improved Gateway Synchronization with MDCB for Policies and APIs</summary>
+
+We have enhanced the Tyk Gateway's synchronization with MDCB to ensure more reliable loading of policies and APIs. A synchronous initialization process has been implemented to prevent startup failures and reduce the risk of service disruptions caused by asynchronous operations. This update ensures smoother and more consistent syncing of policies and APIs from MDCB.
+</details>
+</li>
+</ul>
+
+---
+
+## 5.0.13 Release Notes
+
+### Release Date 4 July 2024
+
+### Release Highlights
+
+Resolved an issue encountered in MDCB environments where changes to custom keys made via the Dashboard were not properly replicated to dataplanes. The issue impacted both key data and associated quotas, in the following versions:
+- 5.0.4 to 5.0.12
+- 5.1.1 and 5.1.2
+- 5.2.0 to 5.2.6
+- 5.3.0 to 5.3.2
+
+##### Action Required
+Customers should clear their edge Redis instances of any potentially affected keys to maintain data consistency and ensure proper synchronization across their environments. Please refer to the item in the [fixed](#fixed) section of the changelog for recommended actions.
+
+### Changelog {#Changelog-v5.0.13}
+
+#### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Resolved an issue where changes to custom keys were not properly replicated to dataplanes</summary>
+
+Resolved a critical issue affecting MDCB environments, where changes to custom keys made via the dashboard were not properly replicated to dataplanes. This affected both the key data and associated quotas. This issue was present in versions:
+- 5.0.4 to 5.0.12
+- 5.1.1 and 5.1.2
+- 5.2.0 to 5.2.6
+- 5.3.0 to 5.3.2
+
+**Action Required**
+
+Customers are advised to clear their edge Redis instances of any keys that might have been affected by this bug to ensure data consistency and proper synchronization across their environments. There are several methods available to address this issue:
+
+1. **Specific Key Deletion via API**: To remove individual buggy keys, you can use the following API call:
+
+```bash
+curl --location --request DELETE 'http://tyk-gateway:{tyk-hybrid-port}/tyk/keys/my-custom-key' \ --header 'X-Tyk-Authorization: {dashboard-key}'
+```
+
+Replace `{tyk-hybrid-port}`, `my-custom-key` and `{dashboard-key}` with your specific configuration details. This method is safe and recommended for targeted removals without affecting other keys.
+
+2. **Bulk Key Deletion Using Redis CLI**: For environments with numerous affected keys, you might consider using the Redis CLI to remove keys en masse:
+
+```bash
+redis-cli --scan --pattern 'apikey-*' | xargs -L 1 redis-cli del
+redis-cli --scan --pattern 'quota-*' | xargs -L 1 redis-cli del
+```
+
+This method can temporarily impact the performance of the Redis server, so it should be executed during a maintenance window or when the impact on production traffic is minimal.
+
+3. **Complete Redis Database Flush**: If feasible, flushing the entire Redis database offers a clean slate:
+
+```bash
+redis-cli FLUSHALL ASYNC
+```
+
+**Implications**
+Regardless of the chosen method, be aware that quotas will be reset and will need to resynchronize across the system. This may temporarily affect reporting and rate limiting capabilities.
+</details>
+</li>
+</ul>
+
+---
+
+## 5.0.12 Release Notes
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.12).
 
 ---
 

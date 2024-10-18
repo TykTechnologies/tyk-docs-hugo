@@ -14,7 +14,7 @@ This guide should help a user of Tyk Self-Managed in debugging common issues. A 
 
 Querying the gateway's `/hello` health endpoint is the quickest way to determine the status of your Tyk instance. You can find more information in our docs about the [Gateway Liveness health check]({{< ref "planning-for-production/ensure-high-availability/health-check" >}}).
 
-This endpoint is important as it allows the user to isolate the problem's origin. At a glance, the `/hello` endpoint reports the Gateways connectivity to Redis, and the control plane components eg. Tyk Dashboard, Tyk Multi-Data Centre Bridge (MDCB), and Tyk Cloud. 
+This endpoint is important as it allows the user to isolate the problem's origin. At a glance, the `/hello` endpoint reports the Gateways connectivity to Redis, and the control plane components eg. Tyk Dashboard, Tyk Multi-Data Center Bridge (MDCB), and Tyk Cloud. 
 
 ```json
 {
@@ -139,7 +139,7 @@ You can access all Tyk release information on the [release notes](https://tyk.io
 We recommend always using the [Long-Term Support (LTS) release]({{< ref "developer-support/special-releases-and-features/long-term-support-releases" >}}) for stability and long term support.
 
 ### Non-LTS versions
-Tyk is backwards compatible, upgrading to newer versions won't turn on new features or change the behaviour of your existing environment.
+Tyk is backwards compatible, upgrading to newer versions won't turn on new features or change the behavior of your existing environment.
 
 For the best experience when experimenting with Tyk and exploring its latest capabilities, you can use our latest version. You can access all Tyk releases on the [release notes summary](https://tyk.io/docs/developer-support/tyk-release-summary/overview/) page. 
 

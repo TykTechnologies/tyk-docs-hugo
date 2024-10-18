@@ -23,11 +23,13 @@ If you want to use dynamic data from context variables, you must [enable]({{< re
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/request-header-tyk-oas" >}}) page.
 
-## Configuring the Request Header Transform in the Tyk Classic API Definition
+If you're using Tyk Operator then check out the [configuring the Request Header Transform in Tyk Operator](#tyk-operator) section below.
+
+## Configuring the Request Header Transform in the Tyk Classic API Definition {#tyk-classic}
 
 The API-level and endpoint-level request header transforms have a common configuration but are configured in different sections of the API definition.
 
-#### API-level transform
+#### API-level transform {#tyk-classic-api}
 
 To **append** headers to all requests to your API (i.e. for all endpoints) you must add a new `global_headers` object to the `versions` section of your API definition. This contains a list of key:value pairs, being the names and values of the headers to be added to requests.
 
@@ -61,7 +63,7 @@ This configuration will add three new headers to each request:
 It will also delete one header (if present) from each request:
 - `Auth_Id`
 
-#### Endpoint-level transform
+#### Endpoint-level transform {#tyk-classic-endpoint}
 
 To configure a transformation of the request header for a specific endpoint you must add a new `transform_headers` object to the `extended_paths` section of your API definition.
 
@@ -137,4 +139,116 @@ Select the headers to delete and insert using the provided fields. You need to c
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
 
+## Configuring the Request Header Transform in Tyk Operator {#tyk-operator}
 
+The process for configuring a request header transform is similar to that defined in section [Configuring the Request Header Transform in the Tyk Classic API Definition](#tyk-classic). Tyk Operator allows you to configure a request size limit for [all endpoints of an API](#tyk-operator-api) or for a [specific API endpoint](#tyk-operator-endpoint).
+
+### API-level transform {#tyk-operator-api}
+
+Request headers can be removed and inserted using the following fields within an `ApiDefinition`:
+
+- `global_headers`: Mapping of key values corresponding to headers to add to API requests.
+- `global_headers_remove`: List containing the name of headers to remove from API requests.
+
+The example below shows an `ApiDefinition` custom resource that adds *foo-req* and *bar-req* headers to the request before it is sent upstream. The *foo-req* header has a value of *foo-val* and the *bar-req* header has a value of *bar-val*. Furthermore, the *hello* header is removed from the request before it is sent upstream.
+
+```yaml {linenos=true, linenostart=1, hl_lines=["25-29"]}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-global-headers
+spec:
+  name: httpbin-global-headers
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-global-headers
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        paths:
+          black_list: []
+          ignored: []
+          white_list: []
+        global_headers:
+          foo-req: my-foo
+          bar-req: my-bar
+        global_headers_remove:
+          - hello
+```
+
+### Endpoint-level transform {#tyk-operator-endpoint}
+
+The process of configuring a transformation of a request header for a specific endpoint is similar to that defined in section [Endpoint-level transform](#tyk-classic-endpoint). To configure a transformation of the request header for a specific endpoint you must add a new `transform_headers` object to the `extended_paths` section of your API definition.
+
+In the example below the Request Header Transform middleware (`transform_headers`) has been configured for HTTP `POST` requests to the `/anything` endpoint. Any request received to that endpoint will have the `remove_this` header removed and the `foo` header added, with the value set to `bar`.
+
+```yaml {linenos=true, linenostart=1, hl_lines=["41-47"]}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-transform
+spec:
+  name: httpbin-transform
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-transform
+    strip_listen_path: true
+  response_processors:
+    - name: response_body_transform
+    - name: header_injector
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        paths:
+          black_list: []
+          ignored: []
+          white_list: []
+        extended_paths:
+          transform:
+            - method: POST
+              path: /anything
+              template_data:
+                enable_session: false
+                input_type: json
+                template_mode: blob
+                # base64 encoded template
+                template_source: eyJiYXIiOiAie3suZm9vfX0ifQ==
+          transform_headers:
+            - delete_headers:
+                - "remove_this"
+              add_headers:
+                foo: bar
+              path: /anything
+              method: POST
+          transform_response:
+            - method: GET
+              path: /xml
+              template_data:
+                enable_session: false
+                input_type: xml
+                template_mode: blob
+                # base64 encoded template
+                template_source: e3sgLiB8IGpzb25NYXJzaGFsIH19
+          transform_response_headers:
+            - method: GET
+              path: /xml
+              add_headers:
+                Content-Type: "application/json"
+              act_on: false
+              delete_headers: []
+```

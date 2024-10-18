@@ -103,7 +103,7 @@ This superclass contains a default stub implementation for the **Dispatch** and 
 
 The *request* parameter allows our server to access the message payload sent by Tyk Gateway. We can use this data, pertaining to the request and session, to process and generate a response.
 
-The *context* parameter provides additional information and functionalities related to the RPC call, such as timeout limits, cancellation signals etc. This is a [grpc.ServicerContext](https://grpc.github.io/grpc/python/grpc.html#grpc.ServicerContext) or a [grpc.aio.ServicerContext](https://grpc.github.io/grpc/python/grpc_asyncio.html#grpc.aio.ServicerContext), object depending upon whether a synchronous or AsyncIO gRPC server is implemented.
+The *context* parameter provides additional information and functionalities related to the RPC call, such as timeout limits, cancelation signals etc. This is a [grpc.ServicerContext](https://grpc.github.io/grpc/python/grpc.html#grpc.ServicerContext) or a [grpc.aio.ServicerContext](https://grpc.github.io/grpc/python/grpc_asyncio.html#grpc.aio.ServicerContext), object depending upon whether a synchronous or AsyncIO gRPC server is implemented.
 
 In the next step we will implement a subclass that will handle requests made by Tyk Gateway for remote execution of custom plugins.
 
@@ -550,7 +550,7 @@ Note that this is a useful feature for learning how to develop gRPC plugins and 
 
 In this guide, we've delved into the integration of a Python gRPC server with Tyk Gateway.
 
-We have explained how to implement a Python gRPC server and equipped developers with the necessary tools, knowledge and capabilities to effectively utilise Tyk Gateway through gRPC services.
+We have explained how to implement a Python gRPC server and equipped developers with the necessary tools, knowledge and capabilities to effectively utilize Tyk Gateway through gRPC services.
 
 The following essential groundwork has been covered:
 

@@ -34,7 +34,7 @@ Select JSON Web Tokens as the Authentication mode:
 
 #### Step 3: Set the Identity Source and Policy Field Name
 
-The "sub" is unique to our end user or client.  The policy rate limiting and authorisation will apply to this unique bearer.
+The "sub" is unique to our end user or client.  The policy rate limiting and authorization will apply to this unique bearer.
 
 {{< img src="/img/2.10/jwt_identity_source.png" alt="Policy and identity claim form" >}}
 
@@ -237,3 +237,7 @@ Several scopes in JWT claim will lead to have several policies applied to a key.
 
 ### JWT Diagram in Tyk API Gateway
 {{< img src="/img/diagrams/diagram_docs_JSON-web-tokens@2x.png" alt="JSON Web Tokens Flow" >}}
+
+### JWT authentication with Tyk Operator
+
+Please consult the Tyk Operator supporting documentation for an example of how to [configure JWT authentication]({{< ref "product-stack/tyk-operator/advanced-configurations/client-authentication#jwt" >}}) with Tyk Operator.
