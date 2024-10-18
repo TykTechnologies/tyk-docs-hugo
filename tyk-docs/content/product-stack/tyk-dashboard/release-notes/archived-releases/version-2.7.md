@@ -15,7 +15,7 @@ aliases:
 > **TLDR**
 > To get benefit or performance improvements ensure that you have `close_connections` set to `false` and set `max_idle_connections_per_host` according to our [production perfomance guide]({{< ref "planning-for-production" >}})
 
-We have thoroughly analysed every part of our Gateway, and the results are astounding, up to 160% improvement, compared to our 2.6 release.
+We have thoroughly analyzed every part of our Gateway, and the results are astounding, up to 160% improvement, compared to our 2.6 release.
 
 Such a performance boost comes from various factors, such as optimising our default configs, better HTTP connection re-use, optimisation of the analytics processing pipeline, regexp caching, doing fewer queries to the database, and numerous small changes in each of the  middleware we have.
 

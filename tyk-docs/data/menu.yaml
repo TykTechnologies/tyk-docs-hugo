@@ -3433,6 +3433,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Version 1.10.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.10.0
+            category: Page
+            show: True
           - title: "Version 1.9.0"
             path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.9.0
             category: Page
@@ -3812,6 +3816,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Tyk Operator v0.18"
+            path: /product-stack/tyk-operator/release-notes/operator-0.18
+            category: Page
+            show: True
           - title: "Tyk Operator v0.17"
             path: /product-stack/tyk-operator/release-notes/operator-0.17
             category: Page
@@ -4016,6 +4024,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/mutation
             category: Page
             show: True
+          - title: "Noop"
+            path: /product-stack/tyk-streaming/configuration/processors/noop
+            category: Page
+            show: True
           - title: "Protobuf"
             path: /product-stack/tyk-streaming/configuration/processors/protobuf
             category: Page
@@ -4180,6 +4192,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Tyk Charts 1.5"
+          path: /product-stack/tyk-charts/release-notes/version-1.5
+          category: Page
+          show: True
         - title: "Tyk Charts 1.4"
           path: /product-stack/tyk-charts/release-notes/version-1.4
           category: Page

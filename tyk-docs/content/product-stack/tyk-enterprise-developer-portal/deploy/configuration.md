@@ -316,6 +316,11 @@ If the bucket uses a policy to set permissions, you should leave the ACL value e
 This is particularly useful if the bucket is private and you need to access the object directly, such as when displaying an image on a web page.
 This option is only required for the `s3` storage type and will be ignored for the `fs` and `db` storage types.
 
+### PORTAL_ASSETS_CACHE_DISABLE
+**Config file:** AssetsCache.Disable <br/>
+**Type:** `boolean` <br/>
+**Description**: If the storage type is set to `db`, an in memory cache will be used for the themes storage. This configuration disables the assets cache. The default value is `false`.
+
 ## TLS configuration
 This section explains the TLS configuration settings to enable connection to the portal's UI over HTTPS.
 
@@ -348,7 +353,11 @@ This section provides a reference for the database connection settings used in t
     "ConnectionString": "admin:secr3t@(localhost:3308)/portal?charset=utf8&parseTime=True&loc=Local",
     "EnableLogs": true,
     "MaxRetries": 3,
-    "RetryDelay": 2000
+    "RetryDelay": 2000,
+    "MaxOpenConnections": 20,
+    "MaxIdleConnections": 2,
+    "ConnectionMaxLifetime": 180000
+
   }
 }
 ```
@@ -360,6 +369,9 @@ PORTAL_DATABASE_CONNECTIONSTRING="admin:secr3t@(localhost:3308)/portal?charset=u
 PORTAL_DATABASE_ENABLELOGS=true
 PORTAL_DATABASE_MAXRETRIES=3
 PORTAL_DATABASE_RETRYDELAY=5000
+PORTAL_DATABASE_MAX_OPEN_CONNECTIONS=20
+PORTAL_DATABASE_MAX_IDLE_CONNECTIONS=2
+PORTAL_DATABASE_CONNECTION_MAX_LIFETIME=180000
 ```
 
 ### PORTAL_DATABASE_DIALECT
@@ -389,6 +401,21 @@ PORTAL_DATABASE_RETRYDELAY=5000
 **Config file:** Database.MaxRetries <br/>
 **Type:** `boolean` <br/>
 **Description**: Defines delay between connect attempts (in milliseconds). Optional, the default value is 5000.
+
+### PORTAL_DATABASE_MAX_OPEN_CONNECTIONS
+**Config file:** Database.MaxOpenConnections <br/>
+**Type:** `int` <br/>
+**Description**: Defines the maximum number of concurrent connections that the database can handle from the application. When the number of open connections reaches this limit, new requests will wait until a connection becomes available. Optional, the default value is unlimited.
+
+### PORTAL_DATABASE_MAX_IDLE_CONNECTIONS
+**Config file:** Database.MaxIdleConnections <br/>
+**Type:** `int` <br/>
+**Description**: Defines the maximum number of idle connections in the database connection pool. Idle connections are open but not currently being used. Keeping some idle connections can improve performance by reducing the time it takes to establish a new connection when demand increases. Optional, the default value is 2.
+
+### PORTAL_DATABASE_CONNECTION_MAX_LIFETIME
+**Config file:** Database.ConnectionMaxLifetime <br/>
+**Type:** `int` <br/>
+**Description**: Defines the maximum lifetime of a connection in Milliseconds. Optional, the default value is unlimited meaning connections are reused indefinitely as long as they are not closed due to errors or manually closed by the application.
 
 
 ## CORS settings

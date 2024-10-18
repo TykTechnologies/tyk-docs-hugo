@@ -64,7 +64,7 @@ output:
     sasl: [] # No default (optional)
 ```
 
-Writes a batch of messages to Kafka brokers and waits for acknowledgement before propagating it back to the input.
+Writes a batch of messages to Kafka brokers and waits for acknowledgment before propagating it back to the input.
 
 This output often out-performs the traditional `kafka` output as well as providing more useful logs and error messages.
 

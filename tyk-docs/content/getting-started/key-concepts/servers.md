@@ -15,11 +15,11 @@ These are the URLs you would use to access an API. Once an API is added to Tyk, 
 
 ### Import OAS Definition
 
-When you import an OAS API definition, Tyk analyses the `servers` section of the definition so that it can automatically configure the upstream URL and the listen path for the Tyk API, as follows:
+When you import an OAS API definition, Tyk analyzes the `servers` section of the definition so that it can automatically configure the upstream URL and the listen path for the Tyk API, as follows:
 
-The servers section is analysed only if there is no `upstreamUrl` query parameter used together with the import API. If an upstreamUrl was specified, that will be used as the upstream for the API and the servers section will be ignored.
+The servers section is analyzed only if there is no `upstreamUrl` query parameter used together with the import API. If an upstreamUrl was specified, that will be used as the upstream for the API and the servers section will be ignored.
 
-The servers section may contain multiple upstream URLs. Currently, Tyk only analyses the first entry in the list, and uses it as the upstream URL if it is valid. For example:
+The servers section may contain multiple upstream URLs. Currently, Tyk only analyzes the first entry in the list, and uses it as the upstream URL if it is valid. For example:
 
 For the following imported OAS server section
 ```.json
@@ -125,7 +125,7 @@ will result in Tyk importing the API with the following upstream URL:
 
 ### Create API
 
-When creating an API, either using the Tyk Gateway or Dashboard API, Tyk analyses the first entry URL value from the Tyk OAS API Definition `servers` configuration:
+When creating an API, either using the Tyk Gateway or Dashboard API, Tyk analyzes the first entry URL value from the Tyk OAS API Definition `servers` configuration:
 - it won't provide any change, if it already matches the API URL, OR
 - it will insert a new first servers object containing the correct API URL value
 
@@ -133,7 +133,7 @@ This means that when you export this OAS API Definition to provide documentation
 
 ### Update API
 
-Whenever a Tyk API gets updated using either the Tyk Gateway or Dashboard API, Tyk analyses the first entry URL value from the Tyk OAS API Definition `servers` configuration:
+Whenever a Tyk API gets updated using either the Tyk Gateway or Dashboard API, Tyk analyzes the first entry URL value from the Tyk OAS API Definition `servers` configuration:
 
 - it won't provide any change, if it already matches the API URL, OR
 - it will insert a new first servers object containing the correct API URL value, if the servers section doesn’t exist at all in the Tyk OAS API Definition.

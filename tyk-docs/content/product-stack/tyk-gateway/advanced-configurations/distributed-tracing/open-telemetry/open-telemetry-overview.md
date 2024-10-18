@@ -57,7 +57,7 @@ By choosing the appropriate setting, you can customize the level of tracing deta
 
 ## Understanding Your Traces
 
-Tyk Gateway exposes a helpful set of *span attributes* and *resource attributes* with the generated spans. These attributes provide useful insights for analysing your API requests. A clear analysis can be obtained by observing the specific actions and associated context within each request/response. This is where span and resource attributes play a significant role.
+Tyk Gateway exposes a helpful set of *span attributes* and *resource attributes* with the generated spans. These attributes provide useful insights for analyzing your API requests. A clear analysis can be obtained by observing the specific actions and associated context within each request/response. This is where span and resource attributes play a significant role.
 
 ### Span Attributes
 
