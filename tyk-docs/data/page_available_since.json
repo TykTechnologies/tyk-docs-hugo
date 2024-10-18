@@ -2178,6 +2178,8 @@
             "/docs/5.4/": "/developer-support/special-releases-and-features/long-term-support-releases/",
             "/docs/5.3/": "/developer-support/special-releases-and-features/long-term-support-releases/",
             "/docs/nightly/": "/developer-support/special-releases-and-features/long-term-support-releases/",
+            "/docs/5.2/": "/developer-support/long-term-support-releases/",
+            "/docs/5.1/": "/developer-support/long-term-support-releases/",
             "/docs/5.0/": "/frequently-asked-questions/long-term-support-releases/",
             "/docs/4.3/": "/frequently-asked-questions/long-term-support-releases/",
             "/docs/4.2/": "/frequently-asked-questions/long-term-support-releases/",
@@ -2185,9 +2187,7 @@
             "/docs/4.0/": "/frequently-asked-questions/long-term-support-releases/",
             "/docs/3.2/": "/frequently-asked-questions/long-term-support-releases/",
             "/docs/3.1/": "/frequently-asked-questions/long-term-support-releases/",
-            "/docs/3-lts/": "/frequently-asked-questions/long-term-support-releases/",
-            "/docs/5.2/": "/developer-support/long-term-support-releases/",
-            "/docs/5.1/": "/developer-support/long-term-support-releases/"
+            "/docs/3-lts/": "/frequently-asked-questions/long-term-support-releases/"
         },
         "/developer-support/tyk-release-summary/overview/": {
             "/docs/": "/developer-support/tyk-release-summary/overview/",
@@ -4274,9 +4274,9 @@
             "/docs/4.1/": "/planning-for-production/database-settings/",
             "/docs/4.0/": "/planning-for-production/database-settings/",
             "/docs/nightly/": "/planning-for-production/database-settings/",
-            "/docs/3.2/": "/planning-for-production/redis-mongodb/",
-            "/docs/3.1/": "/planning-for-production/redis-mongodb/",
-            "/docs/3-lts/": "/planning-for-production/redis-mongodb/"
+            "/docs/3.2/": "/planning-for-production/redis-mongodb-sizing/",
+            "/docs/3.1/": "/planning-for-production/redis-mongodb-sizing/",
+            "/docs/3-lts/": "/planning-for-production/redis-mongodb-sizing/"
         },
         "/planning-for-production/database-settings/mongodb-sizing/": {
             "/docs/": "/planning-for-production/database-settings/mongodb-sizing/",
@@ -5450,6 +5450,7 @@
             "/docs/nightly/": "/product-stack/tyk-charts/release-notes/version-2.0/"
         },
         "/product-stack/tyk-charts/release-notes/version-2.1/": {
+            "/docs/": "/product-stack/tyk-charts/release-notes/version-2.1/",
             "/docs/nightly/": "/product-stack/tyk-charts/release-notes/version-2.1/"
         },
         "/product-stack/tyk-charts/tyk-control-plane-chart/": {
@@ -5791,6 +5792,7 @@
             "/docs/nightly/": "/product-stack/tyk-dashboard/release-notes/version-5.5/"
         },
         "/product-stack/tyk-dashboard/release-notes/version-5.6/": {
+            "/docs/": "/product-stack/tyk-dashboard/release-notes/version-5.6/",
             "/docs/nightly/": "/product-stack/tyk-dashboard/release-notes/version-5.6/"
         },
         "/product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.9.0-list-of-endpoints/": {
@@ -7100,12 +7102,15 @@
             "/docs/nightly/": "/product-stack/tyk-gateway/release-notes/version-5.5/"
         },
         "/product-stack/tyk-gateway/release-notes/version-5.6/": {
+            "/docs/": "/product-stack/tyk-gateway/release-notes/version-5.6/",
             "/docs/nightly/": "/product-stack/tyk-gateway/release-notes/version-5.6/"
         },
         "/product-stack/tyk-operator/advanced-configurations/api-categories/": {
+            "/docs/": "/product-stack/tyk-operator/advanced-configurations/api-categories/",
             "/docs/nightly/": "/product-stack/tyk-operator/advanced-configurations/api-categories/"
         },
         "/product-stack/tyk-operator/advanced-configurations/api-versioning/": {
+            "/docs/": "/product-stack/tyk-operator/advanced-configurations/api-versioning/",
             "/docs/nightly/": "/product-stack/tyk-operator/advanced-configurations/api-versioning/"
         },
         "/product-stack/tyk-operator/advanced-configurations/client-authentication/": {
@@ -7134,15 +7139,19 @@
             "/docs/nightly/": "/product-stack/tyk-operator/advanced-configurations/management-of-api/"
         },
         "/product-stack/tyk-operator/advanced-configurations/tls-certificate/": {
+            "/docs/": "/product-stack/tyk-operator/advanced-configurations/tls-certificate/",
             "/docs/nightly/": "/product-stack/tyk-operator/advanced-configurations/tls-certificate/"
         },
         "/product-stack/tyk-operator/getting-started/create-an-api-overview/": {
+            "/docs/": "/product-stack/tyk-operator/getting-started/create-an-api-overview/",
             "/docs/nightly/": "/product-stack/tyk-operator/getting-started/create-an-api-overview/"
         },
         "/product-stack/tyk-operator/getting-started/create-an-oas-api/": {
+            "/docs/": "/product-stack/tyk-operator/getting-started/create-an-oas-api/",
             "/docs/nightly/": "/product-stack/tyk-operator/getting-started/create-an-oas-api/"
         },
         "/product-stack/tyk-operator/getting-started/example-tyk-oas-api/": {
+            "/docs/": "/product-stack/tyk-operator/getting-started/example-tyk-oas-api/",
             "/docs/nightly/": "/product-stack/tyk-operator/getting-started/example-tyk-oas-api/"
         },
         "/product-stack/tyk-operator/getting-started/quick-start-graphql/": {
@@ -7166,12 +7175,15 @@
             "/docs/nightly/": "/product-stack/tyk-operator/getting-started/quick-start-udg/"
         },
         "/product-stack/tyk-operator/getting-started/secure-an-api-overview/": {
+            "/docs/": "/product-stack/tyk-operator/getting-started/secure-an-api-overview/",
             "/docs/nightly/": "/product-stack/tyk-operator/getting-started/secure-an-api-overview/"
         },
         "/product-stack/tyk-operator/getting-started/secure-an-oas-api/": {
+            "/docs/": "/product-stack/tyk-operator/getting-started/secure-an-oas-api/",
             "/docs/nightly/": "/product-stack/tyk-operator/getting-started/secure-an-oas-api/"
         },
         "/product-stack/tyk-operator/getting-started/security-policy-example/": {
+            "/docs/": "/product-stack/tyk-operator/getting-started/security-policy-example/",
             "/docs/nightly/": "/product-stack/tyk-operator/getting-started/security-policy-example/"
         },
         "/product-stack/tyk-operator/getting-started/tyk-operator-api-ownership/": {
@@ -7221,6 +7233,7 @@
             "/docs/nightly/": "/product-stack/tyk-operator/reference/security-policy/"
         },
         "/product-stack/tyk-operator/reference/tyk-oas-api-definition/": {
+            "/docs/": "/product-stack/tyk-operator/reference/tyk-oas-api-definition/",
             "/docs/nightly/": "/product-stack/tyk-operator/reference/tyk-oas-api-definition/"
         },
         "/product-stack/tyk-operator/reference/version-compatibility/": {
@@ -7252,6 +7265,7 @@
             "/docs/nightly/": "/product-stack/tyk-operator/release-notes/operator-0.18/"
         },
         "/product-stack/tyk-operator/release-notes/operator-1.0/": {
+            "/docs/": "/product-stack/tyk-operator/release-notes/operator-1.0/",
             "/docs/nightly/": "/product-stack/tyk-operator/release-notes/operator-1.0/"
         },
         "/product-stack/tyk-operator/release-notes/overview/": {
@@ -8205,6 +8219,7 @@
             "/docs/nightly/": "/product-stack/tyk-sync/release-notes/sync-1.5/"
         },
         "/product-stack/tyk-sync/release-notes/sync-2.0/": {
+            "/docs/": "/product-stack/tyk-sync/release-notes/sync-2.0/",
             "/docs/nightly/": "/product-stack/tyk-sync/release-notes/sync-2.0/"
         },
         "/product-stack/tyk-sync/tutorials/tutorial-backup-api-configurations/": {
@@ -12208,7 +12223,7 @@
             "all_versions_are_similar_to_path": true
         },
         "/tyk-oss/ce-kubernetes-ingress/": {
-            "/docs/": "/tyk-oss/ce-kubernetes-ingress/",
+            "/docs/": "/product-stack/tyk-operator/tyk-ingress-controller/",
             "/docs/5.5/": "/tyk-oss/ce-kubernetes-ingress/",
             "/docs/5.4/": "/tyk-oss/ce-kubernetes-ingress/",
             "/docs/5.3/": "/tyk-oss/ce-kubernetes-ingress/",
