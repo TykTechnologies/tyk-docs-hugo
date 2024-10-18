@@ -172,7 +172,8 @@ Tree View
     list-style-type: none;
     line-height: 20px;
     //margin-bottom: 20px; //
-    padding-bottom: 10px;
+    padding-bottom: 5px;
+    padding-top:10px;
     position: relative;
     background: transparent !important;
     // cursor: pointer; //
@@ -183,16 +184,17 @@ Tree View
       content: "";
       background-image: url("../img/icon-caret.svg");
       background-repeat: no-repeat;
-      background-position: left;
+      background-position: right;
       background-size: 12px;
       inline-size: 100%;
       block-size: var(--caret-size);
+      block-size:35px;
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       cursor: pointer;
-      scale: 1 -1;
+      scale: 1;
       transition: scale 0.2s;
     }
 
@@ -228,6 +230,8 @@ Tree View
 
     &:not(.st-file):after {
       scale: 1;
+      background-size: 7px;
+      background-image: url("../img/icon-caret-closed.svg");
     }
   }
 
