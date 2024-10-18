@@ -170,7 +170,7 @@ Fixed the following high priority CVEs identified in the Tyk Gateway, providing 
 </ul>
 -->
 
-## <!-- Required. use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
+<!-- Required. use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
 
 ## 5.6.0 Release Notes
 
@@ -446,7 +446,7 @@ vulnerabilities:
 </li>
 </ul>
 
-## <!-- Required. use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
+<!-- Required. use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
 
 <!--
 Repeat the release notes section above for every patch here
