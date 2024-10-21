@@ -6,8 +6,12 @@ tags: ["Tag TODO"]
 ---
 
 The bundler tool is a CLI service, provided by _Tyk Gateway_ as part of its binary since v2.8. This lets you generate
-[plugin bundles]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}). Please note that the generated plugin bundles
-must be served using your own web server.
+[plugin bundles]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}).
+
+{{< note >}}
+**Note**  
+Generated plugin bundles must be served using your own web server.
+{{< /note >}}
 
 Issue the following command to see more details on the `bundle` command:
 
@@ -28,8 +32,13 @@ To create plugin bundles you will need the following:
   can be specified using the `--manifest` command option.
 - **Plugin source code files**: The plugin source code files should be contained relative to the directory in which the
   _manifest.json_ file is located. The _manifest.json_ should contain relative path references to source code files.
-  Please note that source code files are not required when creating a plugin bundle for gRPC plugins since the plugin
+
+  {{< note >}}
+  **Note**  
+  Source code files are not required when creating a plugin bundle for gRPC plugins since the plugin
   source code is located at the gRPC server.
+  {{< /note >}}
+
 - **Certificate key**: Plugin bundles can optionally be signed with an RSA private key. The corresponding public key
   should be located in the file configured in environmental variable `TYK_GW_PUBLICKEYPATH` or the `public_key_path`
   parameter in `tyk.conf`:
