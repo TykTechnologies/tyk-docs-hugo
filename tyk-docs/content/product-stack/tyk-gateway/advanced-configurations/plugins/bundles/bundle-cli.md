@@ -23,7 +23,7 @@ To create plugin bundles you will need the following:
 
 - **Manifest.json**: The [manifest.json]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#manifest" >}}) file
   contains the paths to the plugin source files and the name of the function implementing each plugin. The
-  _manifest.json_ file is mandatory and must exist on the Tyk Gateway file system. By default the bundle file looks for
+  _manifest.json_ file is mandatory and must exist on the Tyk Gateway file system. By default the bundle CLI looks for
   a file named _manifest.json_ in the current working directory where the bundle command is run from. The exact location
   can be specified using the `--manifest` command option.
 - **Plugin source code files**: The plugin source code files should be contained relative to the directory in which the
