@@ -20,7 +20,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 5.6.1 Release Notes
 
-### Release Date 22 October 2024
+### Release Date 18 October 2024
 
 ### Release Highlights
 
