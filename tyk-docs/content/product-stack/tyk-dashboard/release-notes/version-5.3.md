@@ -46,7 +46,7 @@ An illustrative example is shown below. -->
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
 
-#### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.3.6}
+#### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.3.7}
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
 An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
