@@ -18,6 +18,68 @@ tags: ["Tyk Dashboard", "Release notes", "changelog", "v5.3", "5.3.0", "5.3.1", 
 As outlined in the [LTS policy]({{< ref "developer-support/special-releases-and-features/long-term-support-releases" >}}), version 5.3 is a long-term support release with full support available until May 2025. Maintenance support will continue until May 2026. Our next long-term support release will be announced at the end of April 2025.
 
 ---
+## 5.3.7 Release Notes
+
+### Release Date 22 October 2024
+
+### Release Highlights
+
+This is a version bump to align with Gateway v5.3.7, no changes have been implemented in this release.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Dependencies {#dependencies-5.3.7}
+
+#### Compatibility Matrix For Tyk Components
+<!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+An illustrative example is shown below. -->
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.3.7 | MDCB v2.5.1     | MDCB v2.5.1 |
+|         | Operator v0.17 | Operator v0.16 |
+|         | Sync v1.4.3   | Sync v1.4.3 |
+|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v2.0.0 | Helm all versions |
+| | EDP v1.8.3 | EDP all versions |
+| | Pump v1.9.0 | Pump all versions |
+| | TIB (if using standalone) v1.5.1 | TIB all versions |
+
+
+#### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.3.7}
+<!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
+Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
+An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
+| [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.22 |
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Upgrade instructions {#upgrade-5.3.7}
+
+If you are upgrading to 5.3.7, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+### Downloads
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.7)
+- ```bash
+  docker pull tykio/tyk-dashboard:v5.3.7
+  ```
+- Helm charts
+  - [Tyk Charts v2.0.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.0.md">}})
+
+### Changelog {#Changelog-v5.3.7}
+
+No changes in this release.
+
+---
 
 ## 5.3.6 Release Notes
 
