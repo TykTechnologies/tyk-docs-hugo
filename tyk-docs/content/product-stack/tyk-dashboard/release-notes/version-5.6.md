@@ -17,6 +17,71 @@ tags: ["Tyk Dashboard", "Release notes", "v5.6", "5.6.0", "5.6", "changelog"]
 Our minor releases are supported until our next minor comes out.
 
 ---
+
+## 5.6.1 Release Notes
+
+### Release Date 18 October 2024
+
+### Release Highlights
+
+This is a version bump to align with Gateway v5.6.1, no changes have been implemented in this release.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Dependencies {#dependencies-5.6.1}
+
+#### Compatibility Matrix For Tyk Components
+<!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+An illustrative example is shown below. -->
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.6.1 | MDCB v2.7.1     | MDCB v2.5.1 |
+|         | Operator v1.0.0  | Operator v0.17 |
+|         | Sync v2.0    | Sync v1.4.3 |
+|         | Helm Chart v2.1  | Helm all versions |
+| | EDP v1.11 | EDP all versions |
+| | Pump v1.11 | Pump all versions |
+| | TIB (if using standalone) v1.5.1 | TIB all versions |
+
+#### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.6.1}
+<!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
+
+Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
+
+An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.22 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Upgrade instructions {#upgrade-5.6.1}
+
+If you are upgrading to 5.6.1, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+### Downloads
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.6.1)
+- ```bash
+  docker pull tykio/tyk-dashboard:v5.6.1
+  ```
+- Helm charts
+  - [Tyk Charts v2.0.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.0.md">}})
+
+### Changelog {#Changelog-v5.6.1}
+
+No changes in this release.
+
+
+---
 ## 5.6.0 Release Notes
 
 ### Release Date 10 October 2024
