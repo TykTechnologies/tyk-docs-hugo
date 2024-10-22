@@ -1,73 +1,64 @@
-<div></div>
+</div>
+</div>
+
 
 <style>
-	.code-tabs .nav-tabs {
-		margin-bottom: 1em;
-		padding-left: 0;
-	}
+.code-tabs .nav-tabs {
+    margin-bottom: 1em;
+    padding-left: 0;
+}
 
-	.code-tabs .nav-tabs li {
-		display: inline;
-		margin-right: 0em;
-		opacity: 0.5;
-		padding: 1em 2em;
-	}
+.code-tabs .nav-tabs li {
+    display: inline;
+    margin-right: 0em;
+    opacity: 0.5;
+    padding: 1em 2em;
+}
 
-	.code-tabs .nav-tabs li.active {
-		opacity: 1;
-		border-bottom: 2px solid #8438fa;
-		font-weight: bold;
-	}
+.code-tabs .nav-tabs li.active {
+    opacity: 1;
+    border-bottom: 2px solid #8438FA;
+    font-weight: bold;
+}
 
-	.code-tabs .tab-pane {
-		display: none;
-	}
+.code-tabs .tab-pane {
+    display: none;
+}
 
-	.code-tabs .tab-pane.active {
-		display: block;
-	}
+.code-tabs .tab-pane.active {
+    display: block;
+}
 </style>
 
 <script>
-	var tabsBontainer = document.currentScript.previousElementSibling.previousElementSibling;
+var tabsBontainer = document.currentScript.previousElementSibling.previousElementSibling;
 
-	setTimeout(
-		function (container) {
-			$(container)
-				.find("> .tab-content > .tab-pane")
-				.each(function (idx, item) {
-					var navTabs = $(this.parentNode.parentNode).find("> .nav-tabs"),
-						title = $(this).attr("title");
-					navTabs.append('<li><a href="#">' + title + "</a></li");
-				});
+setTimeout(function(container){
+  $(container).find('> .tab-content > .tab-pane').each(function(idx, item) {
+    var navTabs = $(this.parentNode.parentNode).find('> .nav-tabs'),
+        title = $(this).attr('title');
+    navTabs.append('<li><a href="#">'+title+'</a></li');
+  });
 
-			$(container)
-				.find("> ul.nav-tabs")
-				.each(function () {
-					console.log(this, $(this).find("li:first"));
-					$(this).find("li:first").addClass("active");
-				});
+  $(container).find('> ul.nav-tabs').each(function() {
+    console.log(this, $(this).find("li:first"))
+    $(this).find("li:first").addClass('active');
+  })
 
-			$(container)
-				.find("> .tab-content")
-				.each(function () {
-					$(this).find("div:first").addClass("active");
-				});
+  $(container).find('> .tab-content').each(function() {
+    $(this).find("div:first").addClass('active');
+  });
 
-			$(container)
-				.find("> .nav-tabs a")
-				.click(function (e) {
-					e.preventDefault();
-					var tab = $(this).parent(),
-						tabIndex = tab.index(),
-						tabPane = $(container).find("> .tab-content > .tab-pane").eq(tabIndex);
-					$(container).find("> .nav-tabs > .active").removeClass("active");
-					$(container).find("> .tab-content > .active").removeClass("active");
-					tab.addClass("active");
-					tabPane.addClass("active");
-				});
-		},
-		0,
-		tabsBontainer,
-	);
+  $(container).find('> .nav-tabs a').click(function(e){
+    e.preventDefault();
+    var tab = $(this).parent(),
+        tabIndex = tab.index(),
+        tabPane = $(container).find('> .tab-content > .tab-pane').eq(tabIndex);
+    $(container).find('> .nav-tabs > .active').removeClass('active');
+    $(container).find('> .tab-content > .active').removeClass('active');
+    tab.addClass('active');
+    tabPane.addClass('active');
+  });
+}, 0, tabsBontainer)
+
 </script>
