@@ -11,13 +11,7 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "changelog"]
 
 ### Release Highlights
 
-We are thrilled to annoucne new updates and improvements in Tyk Cloud 1.23.0, ... For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-1.23.0">}}) below.
-
-#### Heading Highlight 1
-
-#### Heading Highlight 2
-
-#### Heading Highlight 3
+We are thrilled to announce new updates and improvements in Tyk Cloud 1.23.0, ... For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-1.23.0">}}) below.
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
@@ -26,7 +20,11 @@ There are no breaking changes in this release
 
 ### Dependencies {#dependencies-1.23.0}
 
-<!-- Link the release notes of Dashboard, Do we put the versions we support from gateway and dashboard here? -->
+Here you can find the link to [Long-Term Support Releases](https://tyk.io/docs/developer-support/special-releases-and-features/long-term-support-releases/)
+
+### Downloads
+
+Here you can find a link to the [latest version](https://github.com/TykTechnologies/mserv/releases/latest)
 
 ### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
