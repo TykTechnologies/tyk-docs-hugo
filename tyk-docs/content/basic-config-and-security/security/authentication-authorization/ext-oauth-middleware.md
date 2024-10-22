@@ -8,6 +8,11 @@ menu:
     parent: "OAuth 2.0"
 weight: 7
 ---
+{{< note success >}}
+**Note**  
+
+This will be deprecated from 5.7.0. To avoid any disruptions, please switch to JSON Web Token (JWT) for authentication.
+{{< /note >}}
 
 ## Introduction
 
