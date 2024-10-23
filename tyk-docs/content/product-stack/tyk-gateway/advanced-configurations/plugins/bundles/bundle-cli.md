@@ -2,7 +2,7 @@
 date: 2024-08-20T13:32:12Z
 title: Bundler CLI Tool
 description: "Explains usage of the bundler CLI tool"
-tags: ["Tag TODO"]
+tags: ["Bundle CLI Tool"]
 ---
 
 The bundler tool is a CLI service, provided by _Tyk Gateway_ as part of its binary since v2.8. This lets you generate
