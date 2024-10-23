@@ -145,7 +145,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 ### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 
-We are deprecating support for SQLite, External OAuth Middleware, and OpenID Connect (OIDC) in Tyk Dashboard to simplify the platform and enhance overall performance. These changes will take effect from 5.7.0.
+We are deprecating support for SQLite, External OAuth Middleware, and OpenID Connect (OIDC) Middleware in Tyk Dashboard to simplify the platform and enhance overall performance. These changes will take effect from 5.7.0.
 
 ### Why the Change?
 
