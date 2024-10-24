@@ -12,7 +12,7 @@ weight: 2
 
 ## 5.0.15 Release Notes
 
-### Release Date 22 October 2024
+### Release Date 24 October 2024
 
 ### Release Highlights
 
