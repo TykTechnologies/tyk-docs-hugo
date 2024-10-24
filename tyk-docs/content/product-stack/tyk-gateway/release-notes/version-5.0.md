@@ -35,7 +35,7 @@ aliases:
 
 ## 5.0.15 Release Notes {#rn-v5.0.15}
 
-### Release Date 15 October 2024
+### Release Date 24 October 2024
 
 ### Breaking Changes
 
