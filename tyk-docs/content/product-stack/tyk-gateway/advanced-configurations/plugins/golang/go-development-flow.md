@@ -14,7 +14,7 @@ We recommend that you familiarize yourself with the following official Go docume
 - [The official plugin package documentation - Warnings](https://pkg.go.dev/plugin)
 - [Tutorial: Getting started with multi-module workspaces](https://go.dev/doc/tutorial/workspaces)
 
-Plugins need to be compiled to native shared object code, which can then be loaded by Tyk Gateway. For best results it's important to understand the need for plugins to be compiled using exactly the same environment and [build flags]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-development-flow#build-flag-restrictions" >}}) as the Gateway. To simplify this and minimise the risk of compatibility problems, we strongly recommend the use of  [Go workspaces]({{< ref "https://go.dev/blog/get-familiar-with-workspaces" >}}), to provide a consistent environment.
+Plugins need to be compiled to native shared object code, which can then be loaded by Tyk Gateway. For best results it's important to understand the need for plugins to be compiled using exactly the same environment and [build flags]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-development-flow#build-flags" >}}) as the Gateway. To simplify this and minimise the risk of compatibility problems, we strongly recommend the use of  [Go workspaces]({{< ref "https://go.dev/blog/get-familiar-with-workspaces" >}}), to provide a consistent environment.
 
 ## Setting up your environment
 
@@ -31,7 +31,7 @@ We recommend that you set up a *Go workspace*, which, at the end, is going to co
 - `/go.work` - the *Go workspace* file
 - `/go.work.sum` - *Go workspace* package checksums
 
-Using the *Go workspace* ensures build compatibility, matching plugin restrictions.
+Using the *Go workspace* ensures build compatibility between the plugins and Gateway.
 
 ### 1. Checking out Tyk Gateway source code
 
@@ -131,9 +131,9 @@ The log shows that the plugin has correctly loaded into the Gateway and that its
 
 ### 5. Summary
 
-In the preceding steps we have put together an end-to-end build environment for both the Gateway and the plugin. Bear in mind that runtime environments have additional restrictions to which the plugin developer must pay attention.
+In the preceding steps we have put together an end-to-end build environment for both the Gateway and the plugin. Bear in mind that runtime environments may have additional restrictions beyond Go version and build flags to which the plugin developer must pay attention.
 
-Compatibility in general is a big concern when working with Go plugins: as the plugins are tightly coupled to the Gateway, they must be built with consideration to the restrictions around them.
+Compatibility in general is a big concern when working with Go plugins: as the plugins are tightly coupled to the Gateway, consideration must always be made for the build restrictions enforced by environment and configuration options.
 
 Continue with [Loading Go Plugins into Tyk](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/plugins/golang/loading-go-plugins/).
 
@@ -147,7 +147,7 @@ The plugin compiler also provides cross-compilation support.
 
 Continue with [Go Plugin Compiler](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler/).
 
-### Build flag restrictions
+### Build flags
 
 It's a requirement that build flags for plugins match the build flags for the Gateway. One such flag that must be included in builds is `-trimpath`:
 
