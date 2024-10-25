@@ -88,8 +88,6 @@ We have fixed a privilege escalation vulnerability where a user with certain per
 
 ### Release Date 18th September 2024
 
-<<<<<<< HEAD
-=======
 {{< note success >}} **Important Update**<br> <br> <b>Date</b>: 12 October 2024<br> <b>Topic</b>: Gateway panic when
 reconnecting to MDCB control plane or Tyk Cloud<br> <b>Workaround</b>: Restart Gateway<br> <b>Affected Product</b>: Tyk
 Gateway as an Edge Gateway<br> <b>Affected versions</b>: v5.6.0, v5.3.6, and v5.0.14<br> <b>Issue Description:</b><br>
@@ -107,7 +105,6 @@ Restarting the gateway process will restore it to a healthy state. If you are op
 <p>We appreciate your understanding and patience as we work to resolve this. Please stay tuned for the upcoming patch release, which will address this issue.
 {{< /note >}}
 
->>>>>>> 004064325... GW 5.0.15 release notes (#5596)
 ### Breaking Changes
 
 **Attention:** Please read this section carefully.
@@ -472,10 +469,4 @@ Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for furthe
 - [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/collection/27225007-374cc3d0-f16d-4620-a435-68c53553ca40)
 
 ### FAQ
-<<<<<<< HEAD
 Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
-=======
-
-Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating
-to reporting bugs, upgrading Tyk, technical support and how to contribute.
->>>>>>> 004064325... GW 5.0.15 release notes (#5596)
