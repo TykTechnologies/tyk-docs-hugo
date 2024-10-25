@@ -235,6 +235,7 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
 <li>
 <details>
 <summary>High priority CVEs fixed</summary>
+
 Fixed the following high-priority CVEs identified in the Tyk Dashboard, providing increased protection against security vulnerabilities:
 - [CVE-2024-6104](https://nvd.nist.gov/vuln/detail/CVE-2024-6104)
 </details>
