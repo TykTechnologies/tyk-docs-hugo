@@ -235,10 +235,12 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
 <li>
 <details>
 <summary>High priority CVEs fixed</summary>
+
 Fixed the following high-priority CVEs identified in the Tyk Dashboard, providing increased protection against security vulnerabilities:
 - [CVE-2024-6104](https://nvd.nist.gov/vuln/detail/CVE-2024-6104)
 </details>
 </li>
+<<<<<<< HEAD
 
 <li>
 <details>
@@ -254,6 +256,8 @@ We have fixed a privilege escalation vulnerability where a user with certain per
 - Super-admins always have the password reset permission across all Tyk Organisations
 </details>
 </li>
+=======
+>>>>>>> f1bc40d3d... Update 5.3.6 (#5668)
    
 </ul>
 
