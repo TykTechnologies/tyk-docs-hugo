@@ -9,48 +9,50 @@ description: Development flow working with Go Plugins
 date: "2024-10-11"
 ---
 
-For effectively developing go plugins, familiarize yourself with the following:
+We recommend that you familiarize yourself with the following official Go documentation to help you work effectively with Go plugins:
 
 - [The official plugin package documentation - Warnings](https://pkg.go.dev/plugin)
 - [Tutorial: Getting started with multi-module workspaces](https://go.dev/doc/tutorial/workspaces)
 
-Plugins need to be compiled to native shared object code, which are then loaded by Gateway. For best results, knowing the restrictions of plugins is recommended. For maximum compatibility, Go workspaces are recommended, as shown below.
+Plugins need to be compiled to native shared object code, which can then be loaded by Tyk Gateway. For best results it's important to understand the need for plugins to be compiled using exactly the same environment and [build flags]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-development-flow#build-flag-restrictions" >}}) as the Gateway. To simplify this and minimise the risk of compatibility problems, we strongly recommend the use of  [Go workspaces]({{< ref "https://go.dev/blog/get-familiar-with-workspaces" >}}), to provide a consistent environment.
 
 ## Setting up your environment
 
 To develop plugins, you'll need:
 
-- Go based on the gateway version (from go.mod)
-- Git to check out gateway source code
-- A folder with plugins to build
+- Go (matching the version used in the Gateway, which you can determine using `go.mod`)
+- Git to check out Tyk Gateway source code
+- A folder with the code that you want to build into plugins
 
-Set up a workspace, which, at the end, is going to look like:
+We recommend that you set up a *Go workspace*, which, at the end, is going to contain:
 
-- `/tyk-release-5.3.6` - the checkout
+- `/tyk-release-x.y.z` - the Tyk Gateway source code
 - `/plugins` - the plugins
-- `/go.work` - the go workspace file
-- `/go.work.sum` - workspace package checksums
+- `/go.work` - the *Go workspace* file
+- `/go.work.sum` - *Go workspace* package checksums
 
-Using the workspace ensures build compatibility, matching plugin restrictions.
+Using the *Go workspace* ensures build compatibility, matching plugin restrictions.
 
-### 1. Checking out tyk
+### 1. Checking out Tyk Gateway source code
 
 ```
 git clone --branch release-5.3.6 https://github.com/TykTechnologies/tyk.git tyk-release-5.3.6 || true
 ```
 
-The example checkout uses a particular `release-5.3.6` branch, to match a release. With newer `git` version, you may pass `--branch v5.3.6` and it would use the tag. In case you want to use the tag it's also possible to navigate into the folder and issue `git checkout tags/v5.3.6`.
+This example uses a particular `release-5.3.6` branch, to match Tyk Gateway release 5.3.6. With newer `git` versions, you may pass `--branch v5.3.6` and it would use the tag. In case you want to use the tag it's also possible to navigate into the folder and issue `git checkout tags/v5.3.6`.
 
-### 2. Preparing the workspace - plugins
+### 2. Preparing the Go workspace
 
-The plugin workspace can be very simple. Generally you would:
+Your Go workspace can be very simple.
 
-1. create a .go file with code for your plugin
-2. create a go.mod for the plugin
-3. ensure the correct go version is in use
-4. add gateway dependency with `go get`, using the commit hash
+Generally you would:
 
-For implementation examples, see [CustomGoPlugin.go](https://github.com/TykTechnologies/custom-go-plugin/blob/master/go/src/CustomGoPlugin.go). We'll be using this as the source for our plugin as shown:
+1. create a `.go` file containing the code for your plugin
+2. create a `go.mod` file for the plugin
+3. ensure the correct Go version is in use
+4. add a Tyk Gteway dependency with `go get`, using the commit hash
+
+As an example, we can use the [CustomGoPlugin.go](https://github.com/TykTechnologies/custom-go-plugin/blob/master/go/src/CustomGoPlugin.go) sample as the source for our plugin as shown:
 
 ```
 mkdir -p plugins
@@ -71,14 +73,16 @@ This should be used to ensure the matching between gateway and the plugin. The c
 To summarize what was done:
 
 1. create a plugin, create go.mod,
-2. set go.mod go version to what's set in gateway,
+2. set the Go version of `go.mod` to match the one set in the Gateway,
 3. have some code to compile in the folder
 
-At this point, we don't have a workspace yet. In order to share the gateway dependency across go modules we'll create a Go workspace next.
+At this point, we don't have a *Go workspace* but we will create one next so that we can effectively share the Gateway dependency across Go modules.
 
 ### 3. Creating the Go workspace
 
-From the folder that contains the gateway checkout and the plugins folder, do:
+From the folder that contains the Gateway checkout and the plugins folder, you will update `go.mod` with the Gateway commit hash that corresponds to the checkout and then run `go mod tidy`, creating the `go.work` workspace file.
+
+Follow these commands:
 
 ```
 go work init ./tyk-release-5.3.6
@@ -87,9 +91,8 @@ commit_hash=$(cd tyk-release-5.3.6 && git rev-parse HEAD)
 cd plugins && go get github.com/TykTechnologies/tyk@${commit_hash} && go mod tidy && cd -
 ```
 
-These are the final steps on how to create the workspace. The last step is used to update go.mod with the gateway commit corresponding to the checkout. After this step you're able to use `go mod tidy` in the plugins folder as shown.
 
-With this step, the `go.work` file is created. It should look like this:
+The Go workspace file (`go.work`) should look like this:
 
 ```
 go 1.22.7
@@ -100,35 +103,37 @@ use (
 )
 ```
 
-### 4. Testing out the plugin
+### 4. Building and validating the plugin
 
-To test out the gateway/plugin build, you can now to the following:
+Now that your *Go workspace* is ready, you can build your plugin as follows:
 
 ```
 cd tyk-release-5.3.6 && go build -tags=goplugin -trimpath . && cd -
 cd plugins           && go build -trimpath -buildmode=plugin . && cd -
 ```
 
-The above few steps build gateway, and the plugin. To test plugin loading:
+These steps build both the Gateway and the plugin.
+
+You can use the Gateway binary that you just built to test that your new plugin loads into the Gateway without having to configure and then make a request to an API using this command:
 
 ```
 ./tyk-release-5.3.6/tyk plugin load -f plugins/testplugin.so -s AuthCheck
 ```
 
-The command should output something similar to:
+You should see an output similar to:
 
 ```
 time="Oct 14 13:39:55" level=info msg="--- Go custom plugin init success! ---- "
 [file=plugins/testplugin.so, symbol=AuthCheck] loaded ok, got 0x76e1aeb52140
 ```
 
-We can use the built gateway binary to test plugin loading without invoking the plugin symbol like a request would. However, as demonstrated, the plugins `init` function is invoked, printing to the log.
+The log shows that the plugin has correctly loaded into the Gateway and that its `init` function has been successfully invoked.
 
 ### 5. Summary
 
-We've put together an end-to-end build environment for both the gateway and the plugin. However, runtime environments have additional restrictions which the plugin developer must pay attention to.
+In the preceding steps we have put together an end-to-end build environment for both the Gateway and the plugin. Bear in mind that runtime environments have additional restrictions to which the plugin developer must pay attention.
 
-Compatibility in general is a big concern around plugins; since the plugins are tightly coupled to gateway, they need to be built with some consideration to the restrictions around them.
+Compatibility in general is a big concern when working with Go plugins: as the plugins are tightly coupled to the Gateway, they must be built with consideration to the restrictions around them.
 
 Continue with [Loading Go Plugins into Tyk](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/plugins/golang/loading-go-plugins/).
 
@@ -136,7 +141,7 @@ Continue with [Loading Go Plugins into Tyk](https://tyk.io/docs/product-stack/ty
 
 ### Plugin compiler
 
-We provide a plugin build environment to manage compatibility restrictions for plugins. The plugin compiler ensures compatibility between the system architecture and the go version for your target environment.
+We provide a plugin build environment to manage compatibility restrictions for plugins. The plugin compiler ensures compatibility between the system architecture and the Go version for your target environment.
 
 The plugin compiler also provides cross-compilation support.
 
@@ -144,7 +149,7 @@ Continue with [Go Plugin Compiler](https://tyk.io/docs/product-stack/tyk-gateway
 
 ### Build flag restrictions
 
-It's a requirement that build flags for gateway match build flags for the plugin. One such flag that need to be included in builds is `-trimpath`:
+It's a requirement that build flags for plugins match the build flags for the Gateway. One such flag that must be included in builds is `-trimpath`:
 
 > `-trimpath` - remove all file system paths from the resulting executable.
 >
