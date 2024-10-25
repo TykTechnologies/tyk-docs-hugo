@@ -72,7 +72,7 @@ This should be used to ensure the matching between gateway and the plugin. The c
 
 To summarize what was done:
 
-1. create a plugin, create go.mod,
+1. create a plugin folder, create a go.mod for it,
 2. set the Go version of `go.mod` to match the one set in the Gateway,
 3. have some code to compile in the folder
 
