@@ -40,6 +40,7 @@ task: [test] cd plugins && go build -buildmode=plugin .
 task: [test] ./tyk-release-5.3.6/tyk plugin load -f plugins/testplugin.so -s AuthCheck
 tyk: error: unexpected error: plugin.Open("plugins/testplugin"): plugin was built with a different version of package internal/goarch, try --help
 ```
+
 Usually when the error hints at a standard library package, the build flags between the Gateway and plugin binaries don't match.
 
 Other error messages may be reported, depending on what triggered the issue. For example, if you omitted `-race` in the plugin but the gateway was built with `-race`, the following error will be reported:

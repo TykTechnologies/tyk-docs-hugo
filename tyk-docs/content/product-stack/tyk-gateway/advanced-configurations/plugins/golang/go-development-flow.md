@@ -14,7 +14,9 @@ We recommend that you familiarize yourself with the following official Go docume
 - [The official plugin package documentation - Warnings](https://pkg.go.dev/plugin)
 - [Tutorial: Getting started with multi-module workspaces](https://go.dev/doc/tutorial/workspaces)
 
-Plugins need to be compiled to native shared object code, which can then be loaded by Tyk Gateway. For best results it's important to understand the need for plugins to be compiled using exactly the same environment and [build flags]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-development-flow#build-flags" >}}) as the Gateway. To simplify this and minimise the risk of compatibility problems, we strongly recommend the use of  [Go workspaces]({{< ref "https://go.dev/blog/get-familiar-with-workspaces" >}}), to provide a consistent environment.
+> Plugins are currently supported only on Linux, FreeBSD, and macOS, making them unsuitable for applications intended to be portable.
+
+Plugins need to be compiled to native shared object code, which can then be loaded by Tyk Gateway. For best results it's important to understand the need for plugins to be compiled using exactly the same environment and [build flags]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-development-flow#build-flags" >}}) as the Gateway. To simplify this and minimise the risk of compatibility problems, we strongly recommend the use of [Go workspaces]({{< ref "https://go.dev/blog/get-familiar-with-workspaces" >}}), to provide a consistent environment.
 
 ## Setting up your environment
 
@@ -91,7 +93,6 @@ commit_hash=$(cd tyk-release-5.3.6 && git rev-parse HEAD)
 cd plugins && go get github.com/TykTechnologies/tyk@${commit_hash} && go mod tidy && cd -
 ```
 
-
 The Go workspace file (`go.work`) should look like this:
 
 ```
@@ -141,9 +142,12 @@ Continue with [Loading Go Plugins into Tyk](https://tyk.io/docs/product-stack/ty
 
 ### Plugin compiler
 
-We provide a plugin build environment to manage compatibility restrictions for plugins. The plugin compiler ensures compatibility between the system architecture and the Go version for your target environment.
+We provide a plugin build environment to manage compatibility restrictions for plugins.
 
-The plugin compiler also provides cross-compilation support.
+- Ensures compatibility of the system architecture and an official Tyk release
+- Provides a cross-compilation environment to build plugins for your target architecture
+
+It's recommended to use the Plugin Compiler to build plugins for an official release.
 
 Continue with [Go Plugin Compiler](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler/).
 
