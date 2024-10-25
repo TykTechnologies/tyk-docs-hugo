@@ -16,7 +16,7 @@ weight: 2
 
 ### Release Highlights
 
-This is a version bump to align with Gateway v5.0.15, no changes have been implemented in this release. 
+This is a version bump to align with Gateway v5.0.15, no changes have been implemented in this release.
 
 ### Breaking Changes
 
@@ -29,6 +29,7 @@ If you are upgrading to 5.0.15, please follow the detailed [upgrade instructions
 ### Changelog {#Changelog-v5.0.15}
 
 No changes in this release.
+
 
 ---
 
