@@ -52,7 +52,7 @@ Generally you would:
 1. create a `.go` file containing the code for your plugin
 2. create a `go.mod` file for the plugin
 3. ensure the correct Go version is in use
-4. add a Tyk Gteway dependency with `go get`, using the commit hash
+4. add a Tyk Gateway dependency with `go get`, using the commit hash
 
 As an example, we can use the [CustomGoPlugin.go](https://github.com/TykTechnologies/custom-go-plugin/blob/master/go/src/CustomGoPlugin.go) sample as the source for our plugin as shown:
 
