@@ -24,7 +24,7 @@ The *Plugin Compiler* also works around known Go issues such as:
 - https://github.com/golang/go/issues/19004
 - https://www.reddit.com/r/golang/comments/qxghjv/plugin_already_loaded_when_a_plugin_is_loaded/
 
-Supplying the argument `plugin_id` to the *Plugin Compiler* ensures the same plugin can be rebuilt. The *Plugin Compiler* does this by replacing the plugin `go.mod` module path.
+Supplying the argument `build_id` to the *Plugin Compiler* ensures the same plugin can be rebuilt. The *Plugin Compiler* does this by replacing the plugin `go.mod` module path.
 
 Continue with [Tyk Plugin Compiler](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler/).
 
