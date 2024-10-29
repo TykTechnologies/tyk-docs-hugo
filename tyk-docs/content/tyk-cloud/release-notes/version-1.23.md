@@ -48,10 +48,24 @@ Each change log item should be expandable. The first line summarises the changel
   <li>
     <details>
       <summary>
-        
+        Contact Form for PoC Requests on Trial Expiration
       </summary>
+      We've added a HubSpot contact form to facilitate contacting Tyk for a Proof of Concept (PoC) when a trial expires. This new form makes it easier to connect with our team and explore further options once   
+      the trial period ends.
     </details>
   </li>
+
+    <li>
+    <details>
+      <summary>
+        Support for Multiple Plugin Bundles in MServ
+      </summary>
+      MServ now supports multiple plugin bundles, allowing users to manage and deploy various binaries for different plugins. This enhancement provides greater flexibility in plugin configuration and deployment 
+      within MServ.
+    </details>
+  </li>
+
+  
 </ul>
 
 #### Changed
@@ -66,8 +80,10 @@ Each change log item should be expandable. The first line summarises the changel
   <li>
     <details>
       <summary>
-        
+        UX Improvement: Redirect to Activity by API Section from Monitoring Page
       </summary>
+      Users are now redirected to the "Activity by API" section in the Tyk Dashboard upon clicking on the Control Plane (CP) name within the Cloud Monitoring page. This update provides a more seamless 
+      transition for users needing detailed activity insights directly from the monitoring interface.
     </details>
   </li>
 </ul>
@@ -84,8 +100,10 @@ Each change log item should be expandable. The first line summarises the changel
   <li>
     <details>
       <summary>
-        
+        UI Update: "Add Portal Deployment" Widget Hidden for Team Members
       </summary>
+      The "Add Portal Deployment" widget on the Environment page is now hidden for team members, providing a cleaner and more tailored UI experience by limiting portal management options to authorized roles 
+      only.
     </details>
   </li>
 </ul>
