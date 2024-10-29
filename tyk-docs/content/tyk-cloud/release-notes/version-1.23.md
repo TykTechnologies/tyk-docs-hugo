@@ -55,7 +55,7 @@ Each change log item should be expandable. The first line summarises the changel
     </details>
   </li>
 
-    <li>
+  <li>
     <details>
       <summary>
         Support for Multiple Plugin Bundles in MServ
