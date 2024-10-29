@@ -51,10 +51,10 @@ plugin was built with a different version of package runtime/internal/sys, try -
 
 Strictly speaking:
 
-- build flags like `-trimpath`, `-race` need to match
-- Go toolchain / build env needs to be exactly the same
-- for cross compilation you must use the same `CC` value for the build (CGO)
-- `CGO_ENABLED=1`, `GOOS`, `GOARCH` must match with runtime
+- Build flags like `-trimpath`, `-race` need to match.
+- Go toolchain / build env needs to be exactly the same.
+- For cross compilation you must use the same `CC` value for the build (CGO).
+- `CGO_ENABLED=1`, `GOOS`, `GOARCH` must match with runtime.
 
 When something is off, you can check what is different by using the `go version -m` command for the Gateway (`go version -m tyk`) and plugin (`go version -m plugin.so`). Inspecting and comparing the output of `build` tokens usually yields the difference that caused the compatibility issue.
 
@@ -62,28 +62,28 @@ When something is off, you can check what is different by using the `go version 
 
 This is a short list of cases when dependencies may be causing problems.
 
-- A Gateway dependency does not have a `go.mod` and the plugin wants to use it,
-- Gateway and plugin have a shared dependency: the same version must be used by the plugin
-- A plugin wants to use a different dependency version
+- A Gateway dependency does not have a `go.mod` and the plugin wants to use it.
+- Gateway and plugin have a shared dependency: the same version must be used by the plugin.
+- A plugin wants to use a different dependency version.
 
 The cases need to be expanded, but the process for each is:
 
-Case 1:
+**Case 1:**
 
 - Plugin uses Gateway as a dependency but wants to use *A*
 - *A* does not have a `go.mod`, so a pseudo version is generated on both ends of the build
-- Expect: build success, error when loading plugin due to a version mismatch
+- Result: build success, error when loading plugin due to a version mismatch
 
 Fix: update to remove dependency *A*, or use a version with `go.mod`
 
-Case 2:
+**Case 2:**
 
 - Plugin uses Gateway as a dependency and wants to use a shared dependency
 - As the dependency has `go.mod`, the version matches
 - Dependency is promoted to *direct* in `go.mod`
 - Expect: you have to keep the dependency in sync with Gateway
 
-Case 3:
+**Case 3:**
 
 - Plugin uses Gateway as a dependency but wants to use a different version of a shared dependency
 - It's likely using a major release with `/v4` or similar works like a charm (new package)

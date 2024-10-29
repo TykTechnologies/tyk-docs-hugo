@@ -14,17 +14,21 @@ We recommend that you familiarize yourself with the following official Go docume
 - [The official plugin package documentation - Warnings](https://pkg.go.dev/plugin)
 - [Tutorial: Getting started with multi-module workspaces](https://go.dev/doc/tutorial/workspaces)
 
-> Plugins are currently supported only on Linux, FreeBSD, and macOS, making them unsuitable for applications intended to be portable.
+{{< note success >}}
+**Note**  
 
-Plugins need to be compiled to native shared object code, which can then be loaded by Tyk Gateway. For best results it's important to understand the need for plugins to be compiled using exactly the same environment and [build flags]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-development-flow#build-flags" >}}) as the Gateway. To simplify this and minimise the risk of compatibility problems, we strongly recommend the use of [Go workspaces](https://go.dev/blog/get-familiar-with-workspaces), to provide a consistent environment.
+Plugins are currently supported only on Linux, FreeBSD, and macOS, making them unsuitable for applications intended to be portable.
+{{< /note >}}
+
+Plugins need to be compiled to native shared object code, which can then be loaded by Tyk Gateway. It's important to understand the need for plugins to be compiled using exactly the same environment and [build flags]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-development-flow#build-flags" >}}) as the Gateway. To simplify this and minimise the risk of compatibility problems, we recommend the use of [Go workspaces](https://go.dev/blog/get-familiar-with-workspaces), to provide a consistent environment.
 
 ## Setting up your environment
 
 To develop plugins, you'll need:
 
-- Go (matching the version used in the Gateway, which you can determine using `go.mod`)
-- Git to check out Tyk Gateway source code
-- A folder with the code that you want to build into plugins
+- Go (matching the version used in the Gateway, which you can determine using `go.mod`).
+- Git to check out Tyk Gateway source code.
+- A folder with the code that you want to build into plugins.
 
 We recommend that you set up a *Go workspace*, which, at the end, is going to contain:
 
@@ -45,14 +49,12 @@ This example uses a particular `release-5.3.6` branch, to match Tyk Gateway rele
 
 ### 2. Preparing the Go workspace
 
-Your Go workspace can be very simple.
+Your Go workspace can be very simple:
 
-Generally you would:
-
-1. create a `.go` file containing the code for your plugin
-2. create a `go.mod` file for the plugin
-3. ensure the correct Go version is in use
-4. add a Tyk Gateway dependency with `go get`, using the commit hash
+1. Create a `.go` file containing the code for your plugin.
+2. Create a `go.mod` file for the plugin.
+3. Ensure the correct Go version is in use.
+4. Add a Tyk Gateway dependency with `go get`, using the commit hash.
 
 As an example, we can use the [CustomGoPlugin.go](https://github.com/TykTechnologies/custom-go-plugin/blob/master/go/src/CustomGoPlugin.go) sample as the source for our plugin as shown:
 
@@ -68,15 +70,14 @@ cd -
 The following snippets provide you with a way to:
 
 - `go mod edit -json go.mod | jq -r .Go` - get the go version from the gateway [go.mod](https://github.com/TykTechnologies/tyk/blob/release-5.3.6/go.mod#L3) file
-- `git rev-parse HEAD` - get the commit hash so the exact commit can be used with `go get`
 
-This should be used to ensure the matching between gateway and the plugin. The commit is used to `go get` the dependency in later steps.
+This should be used to ensure the version matches between gateway and the plugin. The commit is used to `go get` the dependency in later steps.
 
 To summarize what was done:
 
-1. create a plugin folder, create a go.mod for it,
-2. set the Go version of `go.mod` to match the one set in the Gateway,
-3. have some code to compile in the folder
+1. We created a plugins folder and initialzed a `go` project using `go mod` command.
+2. Set the Go version of `go.mod` to match the one set in the Gateway.
+3. Initialzied the project with sample plugin `go` code.
 
 At this point, we don't have a *Go workspace* but we will create one next so that we can effectively share the Gateway dependency across Go modules.
 
@@ -92,6 +93,8 @@ go work use ./plugins
 commit_hash=$(cd tyk-release-5.3.6 && git rev-parse HEAD)
 cd plugins && go get github.com/TykTechnologies/tyk@${commit_hash} && go mod tidy && cd -
 ```
+
+- `git rev-parse HEAD` - get the commit hash so the exact commit can be used with `go get`
 
 The Go workspace file (`go.work`) should look like this:
 
