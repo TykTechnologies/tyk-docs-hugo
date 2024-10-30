@@ -15,7 +15,7 @@ We recommend that you familiarize yourself with the following official Go docume
 - [Tutorial: Getting started with multi-module workspaces](https://go.dev/doc/tutorial/workspaces)
 
 {{< note success >}}
-**Note**  
+**Note**
 
 Plugins are currently supported only on Linux, FreeBSD, and macOS, making them unsuitable for applications intended to be portable.
 {{< /note >}}
