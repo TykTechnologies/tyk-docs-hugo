@@ -31,7 +31,9 @@ The `parameters` field in the OpenAPI description is an array of [parameter obje
 
 There are also optional `description` and `required` fields.
 
-For each parameter, a schema can be declared that defines the `type` of data that can be stored (e.g. `boolean`, `string`) and any `example` or `default` values.
+For each parameter, a schema can be declared that defines the `type` of data that can be stored (e.g. `boolean`, `string`) and any `example` or `default` values. 
+
+Parameters that apply to all operations within a path can be defined at the [path level](https://swagger.io/docs/specification/v3_0/describing-parameters/#common-parameters) rather than at the operation level. These path-level parameters, also known as common parameters, appear as read-only fields in Tyk Dashboard's OAS endpoint designer. To modify these common parameters, users need to use the OAS raw editor, as changes made from the OAS endpoint editor could impact other endpoints.
 
 ### Request body
 
@@ -54,6 +56,7 @@ The request validation middleware can be enabled for all endpoints that have def
 {{< img src="/img/dashboard/api-designer/tyk-oas-validate-request-import.png" alt="Select the option during OpenAPI import to validate requests" >}}
 
 If you want to adjust the configuration, for example to remove validation from specific endpoints or to change the HTTP status code returned on error, you can update the API definition as described [here](#manual-activation-of-request-validation-middleware).
+Note that path-level parameters, or [common parameters](https://swagger.io/docs/specification/v3_0/describing-parameters/#common-parameters), will also be validated when request validation middleware is enabled on an endpoint.
 
 ### Manually enabling the request validation middleware
 
