@@ -159,7 +159,7 @@ Each change log item should be expandable. The first line summarises the changel
       <summary>
         UI Consistency Fix: Standardized Behavior for 'Upgrade' and 'Account & Billing' Buttons
       </summary>
-We have standardized the behavior for accessing the billing app through the 'Upgrade' and 'Account & Billing' buttons. Previously, clicking the 'Upgrade' button opened the billing app in a new tab, while 'Account & Billing' opened it in the same tab. Now, both buttons open the billing app consistently in the same way
+We have standardized the behavior for accessing the billing app through the 'Upgrade' and 'Account & Billing' buttons. Previously, clicking the 'Upgrade' button opened the billing app in a new tab, while 'Account & Billing' opened it in the same tab. Now, both buttons open the billing app consistently in the same tab.
     </details>
   </li>
 
