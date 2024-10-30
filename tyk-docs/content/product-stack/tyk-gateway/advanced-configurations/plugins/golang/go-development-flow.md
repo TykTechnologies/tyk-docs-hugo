@@ -54,7 +54,6 @@ Your Go workspace can be very simple:
 1. Create a `.go` file containing the code for your plugin.
 2. Create a `go.mod` file for the plugin.
 3. Ensure the correct Go version is in use.
-4. Add a Tyk Gateway dependency with `go get`, using the commit hash.
 
 As an example, we can use the [CustomGoPlugin.go](https://github.com/TykTechnologies/custom-go-plugin/blob/master/go/src/CustomGoPlugin.go) sample as the source for our plugin as shown:
 
@@ -67,11 +66,11 @@ wget -q https://raw.githubusercontent.com/TykTechnologies/custom-go-plugin/refs/
 cd -
 ```
 
-The following snippets provide you with a way to:
+The following snippet provides you with a way to get the exact Go version used by Gateway from it's [go.mod](https://github.com/TykTechnologies/tyk/blob/release-5.3.6/go.mod#L3) file:
 
-- `go mod edit -json go.mod | jq -r .Go` - get the go version from the gateway [go.mod](https://github.com/TykTechnologies/tyk/blob/release-5.3.6/go.mod#L3) file
+- `go mod edit -json go.mod | jq -r .Go` (e.g. `1.22.7`)
 
-This should be used to ensure the version matches between gateway and the plugin. The commit is used to `go get` the dependency in later steps.
+This should be used to ensure the version matches between gateway and the plugin.
 
 To summarize what was done:
 
@@ -94,7 +93,9 @@ commit_hash=$(cd tyk-release-5.3.6 && git rev-parse HEAD)
 cd plugins && go get github.com/TykTechnologies/tyk@${commit_hash} && go mod tidy && cd -
 ```
 
-- `git rev-parse HEAD` - get the commit hash so the exact commit can be used with `go get`
+The following snippet provides you to get the commit hash exactly, so it can be used with `go get`.
+
+- `git rev-parse HEAD`
 
 The Go workspace file (`go.work`) should look like this:
 
