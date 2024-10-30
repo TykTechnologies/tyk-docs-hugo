@@ -27,7 +27,7 @@ Please check [here]({{< ref "planning-for-production/database-settings/mongodb.m
 {{< note success >}}
 **Note** 
 
-Starting from 5.7.0, SQLite support will be deprecated. To avoid disrputions, please transition to either PostgreSQL or MongoDB as alternative database options
+SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please transition to PostgreSQL, MongoDB or one of the listed compatible alternatives.
 {{< /note >}}
 
 ### Configuring PostgreSQL
