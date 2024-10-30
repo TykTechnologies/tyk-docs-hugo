@@ -11,7 +11,7 @@ weight: 7
 {{< note success >}}
 **Note**  
 
-This will be deprecated from 5.7.0. To avoid any disruptions, please switch to JSON Web Token (JWT) for authentication.
+Tyk's dedicated External OAuth middleware will be deprecated from Tyk 5.7.0. Tyk's [JSON Web Token (JWT)]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#about-jwts" >}}) authentication method also allows you to integrate with a third party OAuth provider, so the dedicated middleware will be deprecated to reduce duplication and potential for misconfiguration.
 {{< /note >}}
 
 ## Introduction
