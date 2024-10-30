@@ -164,6 +164,12 @@ Aggregated analytics corresponds to data that is used for the display of charts 
 
 #### How To Configure Tyk Pump To Write Aggregated Analytics To A SQL Database?
 
+{{< note success >}}
+**Note** 
+
+SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please transition to PostgreSQL, MongoDB or one of the listed compatible alternatives.
+{{< /note >}}
+
 Storage of aggregated analytics data has been tested with PostgreSQL and SqlLite databases. The following environment variables can be used to manage this configuration:
 
 - *TYK_PMP_PUMPS_SQLAGGREGATE_TYPE*: Set to *sql_aggregate* to configure Pump to store aggregated analytics data for charts and graphs in dashboard to a SQL based database.
