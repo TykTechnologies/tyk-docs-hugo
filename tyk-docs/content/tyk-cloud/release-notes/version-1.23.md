@@ -50,7 +50,7 @@ Each change log item should be expandable. The first line summarises the changel
       <summary>
         Contact Form for PoC Requests on Trial Expiration
       </summary>
-      We've added a HubSpot contact form to facilitate contacting Tyk for a Proof of Concept (PoC) when a trial expires. This new form makes it easier to connect with our team and explore further options once   
+      A HubSpot contact form has been added to facilitate contacting Tyk for a Proof of Concept (PoC) when a trial expires. This new form makes it easier to connect with our team and explore further options once   
       the trial period ends.
     </details>
   </li>
@@ -79,7 +79,7 @@ This update introduces a new configuration option in the Tyk Dashboard to displa
       <summary>
         Embedded Product Tour During Deployment Wait Time
       </summary>
-      We have added an embedded interactive product tour within the deployment screen to guide users through the Tyk Dashboard while they wait for their deployment to complete. This tour provides an overview of key features, helping users explore what they can do next in the dashboard.
+      An embedded interactive product tour has been added within the deployment screen to guide users through the Tyk Dashboard while they wait for their deployment to complete. This tour provides an overview of key features, helping users explore what they can do next in the dashboard.
     </details>
   </li>
 
@@ -150,7 +150,7 @@ Each change log item should be expandable. The first line summarises the changel
       <summary>
         UI Fix: "Delete User" Button Hidden for Org Admin on Org+Billing Admin Profiles
       </summary>
-      We have hidden the "Delete User" button for Org Admins when viewing Org+Billing Admin profiles on the Teams page. Previously, Org Admins could see this button but would encounter an error message, "operation on this class is not permitted," when attempting deletion.
+      The "Delete User" button for Org Admins has been hidden when viewing Org+Billing Admin profiles on the Teams page. Previously, Org Admins could see this button but would encounter an error message, "operation on this class is not permitted," when attempting deletion.
     </details>
   </li>
 
@@ -159,7 +159,7 @@ Each change log item should be expandable. The first line summarises the changel
       <summary>
         UI Consistency Fix: Standardized Behavior for 'Upgrade' and 'Account & Billing' Buttons
       </summary>
-We have standardized the behavior for accessing the billing app through the 'Upgrade' and 'Account & Billing' buttons. Previously, clicking the 'Upgrade' button opened the billing app in a new tab, while 'Account & Billing' opened it in the same tab. Now, both buttons open the billing app consistently in the same tab.
+ The behavior for accessing the billing app through the 'Upgrade' and 'Account & Billing' buttons has been standardized. Previously, clicking the 'Upgrade' button opened the billing app in a new tab, while 'Account & Billing' opened it in the same tab. Now, both buttons open the billing app consistently in the same tab.
     </details>
   </li>
 
@@ -208,7 +208,7 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
       <summary>
         Security Update: Bumped Vulnerable Dependencies in ARA Components
       </summary>
-We have updated vulnerable dependencies across all ARA components to address reported security issues. This update ensures compliance with security standards and reduces potential exposure to known vulnerabilities, aligning the project with best practices for secure dependency management.
+Vulnerable dependencies across all Ara components have been updated to address reported security issues. This update ensures compliance with security standards and reduces potential exposure to known vulnerabilities, aligning the project with best practices for secure dependency management.
     </details>
   </li>
 </ul>
