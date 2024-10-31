@@ -58,38 +58,37 @@ Strictly speaking:
 
 When something is off, you can check what is different by using the `go version -m` command for the Gateway (`go version -m tyk`) and plugin (`go version -m plugin.so`). Inspecting and comparing the output of `build` tokens usually yields the difference that caused the compatibility issue.
 
-## Plugin compatibility issues
+## Plugin Compatibility Issues
 
-This is a short list of cases when dependencies may be causing problems.
+Below are some common situations where dependencies might cause issues:
 
-- A Gateway dependency does not have a `go.mod` and the plugin wants to use it.
-- Gateway and plugin have a shared dependency: the same version must be used by the plugin.
-- A plugin wants to use a different dependency version.
+- The `Gateway` has a dependency without a `go.mod` file, but the plugin needs to use it.
+- Both the `Gateway` and the plugin share a dependency. In this case, the plugin must use the exact same version as the `Gateway`.
+- The plugin requires a different version of a shared dependency.
 
-The cases need to be expanded, but the process for each is:
+Here’s how to handle each case:
 
-**Case 1:**
+**Case 1: Gateway dependency lacks `go.mod`**
 
-- Plugin uses Gateway as a dependency but wants to use *A*
-- *A* does not have a `go.mod`, so a pseudo version is generated on both ends of the build
-- Result: build success, error when loading plugin due to a version mismatch
+- The plugin depends on the `Gateway`, which uses dependency *A*.
+- *A* doesn’t have a `go.mod` file, so a pseudo version is generated during the build.
+- Result: The build completes, but the plugin fails to load due to a version mismatch.
 
-Fix: update to remove dependency *A*, or use a version with `go.mod`
+**Solution:** Update the code to remove dependency *A*, or use a version of *A* that includes a `go.mod` file.
 
-**Case 2:**
+**Case 2: Shared dependency with version matching**
 
-- Plugin uses Gateway as a dependency and wants to use a shared dependency
-- As the dependency has `go.mod`, the version matches
-- Dependency is promoted to *direct* in `go.mod`
-- Expect: you have to keep the dependency in sync with Gateway
+- The plugin and `Gateway` share a dependency, and this dependency includes a `go.mod` file.
+- The version matches, and the dependency is promoted to *direct* in `go.mod`.
+- Outcome: You’ll need to keep this dependency version in sync with the `Gateway`.
 
-**Case 3:**
+**Case 3: Plugin requires a different version of a shared dependency**
 
-- Plugin uses Gateway as a dependency but wants to use a different version of a shared dependency
-- It's likely using a major release with `/v4` or similar works like a charm (new package)
-- Expectation: If it's just a different version of the same package, loading the plugin will fail
+- The plugin and `Gateway` share a dependency, but the plugin needs a different version.
+- If the other version is a major release (e.g., `/v4`), it’s treated as a separate package, allowing both versions to coexist.
+- If it’s just a minor/patch difference, the plugin will likely fail to load due to a version conflict.
 
-We recommend that all dependencies should follow Go package metaversion, however the reality is most Gateway dependencies follow a basic v1 semver which doesn't break import paths for every release.
+**Recommendation:** For best results, use Go package versions that follow the Go module versioning (metaversion). However, keep in mind that many `Gateway` dependencies use basic `v1` semantic versioning, which doesn’t always enforce strict versioned import paths. 
 
 ## List plugin symbols
 

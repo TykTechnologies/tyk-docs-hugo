@@ -82,7 +82,7 @@ At this point, we don't have a *Go workspace* but we will create one next so tha
 
 ### 3. Creating the Go workspace
 
-From the folder that contains the Gateway checkout and the plugins folder, you will update `go.mod` with the Gateway commit hash that corresponds to the checkout and then run `go mod tidy`, creating the `go.work` workspace file.
+To set up the Go workspace, start in the directory that contains the Gateway and the Plugins folder. You'll first, create the `go.work` file to set up your Go workspace, and include the `tyk-release-5.3.6` and `plugins` folders. Then, navigate to the plugins folder to fetch the Gateway dependency at the exact commit hash and run `go mod tidy` to ensure dependencies are up to date.
 
 Follow these commands:
 
