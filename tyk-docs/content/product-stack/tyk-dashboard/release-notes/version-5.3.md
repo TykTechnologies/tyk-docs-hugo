@@ -91,17 +91,30 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Add a changelog summary</summary>
+<summary>Path-Based Permissions in Combined Policies Not Preserved</summary>
 
-Add a changelog description
+We resolved an issue that caused path-based permissions in policies to be lost when policies were combined, potentially omitting URL values and restricting access based on the merge order. It ensures that all applicable policies merge their allowed URL access rights, regardless of the order in which they are applied.
 </details>
 </li>
 
+<details>
+<summary>User Group Dropdown Limitations in Dashboard</summary>
+
+This update resolves an issue with the user group dropdown, ensuring that all created user groups are displayed when creating a new user.
+</details>
+</li>
+
+<details>
+<summary>Rate Limiting Not Saved with Upstream Certificates Enabled for OAS API</summary>
+
+Fixed an issue in the Tyk OAS API Designer where Rate Limiting settings were not saved when Upstream Certificates were enabled. This fix ensures that both Rate Limits and Upstream Certificates configurations can now be saved together
+</details>
+</li>
 <li>
 <details>
-<summary>Add a changelog summary</summary>
+<summary>Deprecation notice of External OAuth and OpenID Connect Options</summary>
 
-Add a changelog description
+A deprecation notice for External OAuth and OpenID Connect (OIDC) authentication mechanisms has been implemented in the Dashboard UI. This ensures that users are informed if any APIs are configured with these authentication methods.
 </details>
 </li>
 </ul>
