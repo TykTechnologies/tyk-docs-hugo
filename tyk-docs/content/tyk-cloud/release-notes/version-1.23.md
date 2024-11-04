@@ -88,7 +88,7 @@ This update introduces a new configuration option in the Tyk Dashboard to displa
       <summary>
         Organisation Telemetry Configuration API
       </summary>
-A new API endpoint has been implemented for Tyk Cloud that enables organization admins to manage observability provider configurations. This API allows admins to set up, update, view, and delete configurations for OpenTelemetry integrations, providing flexibility in exporting telemetry data from their Tyk Cloud deployments. This is part of a broader Tyk 
+A new API endpoint has been implemented for Tyk Cloud that enables organization admins to manage observability provider configurations. This API allows admins to set up, update, view, and delete configurations for OpenTelemetry integrations, providing flexibility in exporting telemetry data from their Tyk Cloud deployments. This is part of a broader Tyk Cloud observability initiative to enable easier monitoring and troubleshooting through customers' chosen observability tools.
     </details>
   </li>
 
