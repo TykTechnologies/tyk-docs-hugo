@@ -102,34 +102,22 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 
-#### Added
-
-<ul>
-<li>
-<details>
-<summary>Add changelog summary</summary>
-
-Add changelog description
-</details>
-</li>
-</ul>
-
 #### Fixed
 
 <ul>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Gateway handling larger payloads</summary>
 
-Add changelog description
+This update addresses an issue that caused increased memory consumption while proxying large response payloads, even when 'enable_detailed_recording' was set to false.
 
 </details>
 </li>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Deprecation notice of External OAuth and OpenID Connect Options</summary>
 
-Add changelog description
+A deprecation notice for External OAuth and OpenID Connect (OIDC) authentication mechanisms has been implemented in the Gateway logs. This ensures that users are informed if any APIs are configured with these authentication methods.
 
 </details>
 </li>
