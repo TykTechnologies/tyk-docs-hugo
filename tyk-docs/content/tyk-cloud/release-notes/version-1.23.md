@@ -7,11 +7,18 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "changelog"]
 
 ## 1.23.0 Release Notes
 
-### Release Date xx
+### Release Date 14 of November 2024
 
 ### Release Highlights
 
 We are thrilled to announce new updates and improvements in Tyk Cloud 1.23.0, ... For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-1.23.0">}}) below.
+
+#### Support for Multiple Plugin Bundles in MServ
+MServ now supports multiple plugin bundles, allowing users to manage and deploy various binaries for different plugins. This enhancement provides greater flexibility in plugin configuration and deployment 
+within MServ.
+
+#### Embedded Product Tour During Deployment Wait Time
+An embedded interactive product tour has been added within the deployment screen to guide users through the Tyk Dashboard while they wait for their deployment to complete. This tour provides an overview of key features, helping users explore what they can do next in the dashboard. [Tyk sign up](https://tyk.io/sign-up/)
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
@@ -24,7 +31,7 @@ Here you can find the link to [Long-Term Support Releases](https://tyk.io/docs/d
 
 ### Downloads
 
-Here you can find a link to the [latest version](https://github.com/TykTechnologies/mserv/releases/latest)
+Here you can find a link to the [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
 
 ### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
@@ -50,7 +57,7 @@ Each change log item should be expandable. The first line summarises the changel
       <summary>
         Contact Form for PoC Requests on Trial Expiration
       </summary>
-      A HubSpot contact form has been added to facilitate contacting Tyk for a Proof of Concept (PoC) when a trial expires. This new form makes it easier to connect with our team and explore further options once   
+      A HubSpot contact form has been added in both Tyk Cloud and Dashboard to facilitate contacting Tyk for a Proof of Concept (PoC) when a trial expires. This new form makes it easier to connect with our team and explore further options once   
       the trial period ends.
     </details>
   </li>
@@ -68,36 +75,9 @@ Each change log item should be expandable. The first line summarises the changel
   <li>
     <details>
       <summary>
-        Trial Expiry Timestamp Configuration in Tyk Dashboard 
-      </summary>
-This update introduces a new configuration option in the Tyk Dashboard to display the remaining trial time for users. With the trial flow now starting directly on the Tyk Dashboard, users can monitor their trial period effectively
-    </details>
-  </li>
-
-  <li>
-    <details>
-      <summary>
         Embedded Product Tour During Deployment Wait Time
       </summary>
       An embedded interactive product tour has been added within the deployment screen to guide users through the Tyk Dashboard while they wait for their deployment to complete. This tour provides an overview of key features, helping users explore what they can do next in the dashboard.
-    </details>
-  </li>
-
-  <li>
-    <details>
-      <summary>
-        Organisation Telemetry Configuration API
-      </summary>
-A new API endpoint has been implemented for Tyk Cloud that enables organization admins to manage observability provider configurations. This API allows admins to set up, update, view, and delete configurations for OpenTelemetry integrations, providing flexibility in exporting telemetry data from their Tyk Cloud deployments. This is part of a broader Tyk Cloud observability initiative to enable easier monitoring and troubleshooting through customers' chosen observability tools.
-    </details>
-  </li>
-
-  <li>
-    <details>
-      <summary>
-        Expanded Cloud Data Plane Tracing Deployment Support
-      </summary>
-The Cloud Data Plane (CDP) deployer has been updated to allow Tyk Cloud users to enable or disable OpenTelemetry tracing in their Tyk Gateway deployments. This feature is in line with Tyk's initiative to improve API observability for SaaS customers and aid in troubleshooting APIs through integrated OpenTelemetry tracing.
     </details>
   </li>
   
@@ -187,7 +167,16 @@ We have resolved a display issue in the billing sidebar that occurred when no su
       <summary>
         Fix for NodesVisibility Logic to Manage Node Data Retention
       </summary>
-This update addresses a critical bug in the NodesVisibility logic, which previously retained all connected node data indefinitely. The fix ensures that the NodesData array only contains records from the last 7 days, effectively preventing memory spikes and excessive organization records in production environments. This enhancement improves system performance and resource management across all environments.
+This update addresses a critical bug in the NodesVisibility logic, which previously retained all connected node data indefinitely. The fix ensures that the NodesData array only contains records from the last 7 days. This enhancement improves system performance at all stages within the Tyk Cloud UI for organizations with hybrid data planes, especially those with multiple connected gateways.
+    </details>
+  </li>
+
+  <li>
+    <details>
+      <summary>
+        Improve stability for non-trial customers
+      </summary>
+We have enhanced separation between trial and non-trial deployments to improve resilience and stability.
     </details>
   </li>
   
@@ -208,7 +197,7 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
       <summary>
         Security Update: Bumped Vulnerable Dependencies in ARA Components
       </summary>
-Vulnerable dependencies across all Ara components have been updated to address reported security issues. This update ensures compliance with security standards and reduces potential exposure to known vulnerabilities, aligning the project with best practices for secure dependency management.
+Dependencies across all Tyk Cloud components have been updated to address reported security issues. This update ensures compliance with security standards, aligning the project with best practices for secure dependency management.
     </details>
   </li>
 </ul>
