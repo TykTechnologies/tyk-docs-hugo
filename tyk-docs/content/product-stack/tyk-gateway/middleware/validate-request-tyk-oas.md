@@ -5,7 +5,7 @@ description: "Using the Request Validation middleware with Tyk OAS APIs"
 tags: ["request validation", "validate request", "middleware", "per-endpoint", "Tyk OAS", "Tyk OAS API"]
 ---
 
-The [request validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-middleware" >}}) middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.
+The [request validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-middleware" >}}) middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints. If the incoming request fails validation, the Tyk Gateway will reject the request with an `HTTP 422 Unprocessable Entity` response. Tyk can be [configured](#configuring-the-request-validation-middleware) to return a different HTTP status code if required. 
 
 The middleware is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
@@ -25,13 +25,21 @@ As explained in the OpenAPI [documentation](https://learn.openapis.org/specifica
 
 ### Request parameters
 
-The `parameters` field in the OpenAPI description is an array of [parameter objects](https://swagger.io/docs/specification/describing-parameters/) that each describe one parameter shared by all operations on that path. Here, an operation is defined as a combination of HTTP method and path, or, as Tyk calls it, an endpoint. Each `parameter` has two mandatory fields:
+The `parameters` field in the OpenAPI description is an array of [parameter objects](https://swagger.io/docs/specification/describing-parameters/) that each describe one variable element in the request. Each `parameter` has two mandatory fields:
 - `in`: the location of the parameter (`path`, `query`, `header`)
 - `name`: a unique identifier within that location (i.e. no duplicate header names for a given operation/endpoint)
 
 There are also optional `description` and `required` fields.
 
-For each parameter, a schema can be declared that defines the `type` of data that can be stored (e.g. `boolean`, `string`) and any `example` or `default` values.
+For each parameter, a schema can be declared that defines the `type` of data that can be stored (e.g. `boolean`, `string`) and any `example` or `default` values. 
+
+#### Operation (endpoint-level) parameters
+
+An operation is a combination of HTTP method and path or, as Tyk calls it, an endpoint - for example `GET /users`. Operation, or endpoint-level parameters can be defined in the OpenAPI description and will apply only to that operation within the API. These can be added or modified within Tyk Dashboard's [API designer](#configuring-the-middleware-in-the-api-designer).
+
+#### Common (path-level) parameters
+
+[Common parameters](https://swagger.io/docs/specification/v3_0/describing-parameters/#common-parameters), that apply to all operations within a path, can be defined at the path level within the OpenAPI description. Tyk refers to these as path-level parameters and displays them as read-only fields in the Dashboard's API designer. If you need to add or modify common parameters you must use the *Raw Definition* editor, or edit your OpenAPI document outside Tyk and [update]({{< ref "/getting-started/using-oas-definitions/update-an-oas-api" >}}) the API.
 
 ### Request body
 
@@ -39,11 +47,15 @@ The `requestBody` field in the OpenAPI description is a [Request Body Object](ht
 
 ## Configuring the request validation middleware
 
-The request validation middleware does not require configuration when working with Tyk OAS APIs. If it is [enabled](#enabling-the-request-validation-middleware) for an endpoint, then the middleware will automatically validate requests made to that endpoint against the schema defined in the API definition. The default response, if validation fails, is for Tyk Gateway to reject the request with an `HTTP 422 Unprocessable Entity` response. If you want to return a different HTTP status code, this can be set when enabling the middleware.
+When working with Tyk OAS APIs, the request validation middleware automatically determines the validation rules based on the API schema. The only configurable option for the middleware is to set the desired HTTP status code that will be returned if a request fails validation. The default response will be `HTTP 422 Unprocessable Entity` unless otherwise configured.
 
 ## Enabling the request validation middleware
 
-When you create a Tyk OAS API by importing your OpenAPI description, you can instruct Tyk to enable request validation [automatically](#automatically-enabling-the-request-validation-middleware) for all endpoints with defined schemas. If you are creating your API without import, or if you only want to enable request validation for some endpoints, you can [manually enable](#manually-enabling-the-request-validation-middleware) the middleware in the Tyk OAS API definition.
+If the middleware is enabled for an endpoint, then Tyk will automatically validate requests made to that endpoint against the schema defined in the API definition.
+
+When you create a Tyk OAS API by importing your OpenAPI description, you can instruct Tyk to enable request validation [automatically](#automatically-enabling-the-request-validation-middleware) for all endpoints with defined schemas.
+
+If you are creating your API without import, or if you only want to enable request validation for some endpoints, you can [manually enable](#manually-enabling-the-request-validation-middleware) the middleware in the Tyk OAS API definition.
 
 ### Automatically enabling the request validation middleware
 
@@ -53,7 +65,7 @@ The request validation middleware can be enabled for all endpoints that have def
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-validate-request-import.png" alt="Select the option during OpenAPI import to validate requests" >}}
 
-If you want to adjust the configuration, for example to remove validation from specific endpoints or to change the HTTP status code returned on error, you can update the API definition as described [here](#manual-activation-of-request-validation-middleware).
+As noted, the automatic application of request validation during import will apply the middleware to all endpoints declared in your OpenAPI description. If you want to adjust this configuration, for example to remove validation from specific endpoints or to change the HTTP status code returned on error, you can update the Tyk OAS API definition as described [here](#manually-enabling-the-request-validation-middleware).
 
 ### Manually enabling the request validation middleware
 
