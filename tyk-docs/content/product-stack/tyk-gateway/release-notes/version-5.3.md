@@ -39,13 +39,11 @@ explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
 
 ### Deprecations
 
-There are no deprecations in this release.
+This is an advanced notice that External OAuth, OpenID Connect (OIDC) authentication methods, and SQLite support will be deprecated starting in version 5.7.0. Please review your API configurations, as the Gateway logs will provide notifications for any APIs utilizing these methods.
 
 ### Upgrade Instructions
 
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first
-[upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk)
-section for detailed upgrade instructions.
+If you are upgrading to 5.3.8, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
 ### Dependencies
 
@@ -107,18 +105,32 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 <ul>
 <li>
 <details>
-<summary>Gateway handling larger payloads</summary>
+<summary>Memory consumption reduced in Gateway for large payloads</summary>
 
-This update addresses an issue that caused increased memory consumption while proxying large response payloads, even when 'enable_detailed_recording' was set to false.
-
+This update fixes a bug that caused increased memory usage when proxying large response payloads in version 5.3.1, restoring memory requirements to the levels seen in version 5.0.6. Users experiencing out-of-memory errors with 1GB+ file downloads will notice improved performance and reduced latency.
 </details>
 </li>
 <li>
 <details>
-<summary>Deprecation notice of External OAuth and OpenID Connect Options</summary>
+<summary>Path-Based Permissions in Combined Policies Not Preserved</summary>
 
-A deprecation notice for External OAuth and OpenID Connect (OIDC) authentication mechanisms has been implemented in the Gateway logs. This ensures that users are informed if any APIs are configured with these authentication methods.
+We resolved an issue that caused path-based permissions in policies to be lost when policies were combined, potentially omitting URL values and restricting access based on the merge order. It ensures that all applicable policies merge their allowed URL access rights, regardless of the order in which they are applied.
+</details>
+</li>
+<li>
+<details>
+<summary>Enhanced flexibility in OAS JSON Schema: Additional Properties no longer enforced</summary>
 
+A backwards compatibility issue in the OAS API Definitions JSON schema has been addressed by reinstating support for 'additionalProperties'. Previously, version 5.3 enforced strict validation, causing problems for users downgrading from version 5.6. With this change, Tyk customers can move between versions seamlessly, ensuring their APIs remain functional and avoiding system performance issues.
+</details>
+</li>
+<li>
+<details>
+<summary>Deprecation notice for External OAuth and OpenID Connect options</summary>
+
+A deprecation notice for External OAuth and OpenID Connect (OIDC) authentication mechanisms has been added to the Gateway logs starting from version 5.3.8. This provides advanced notification to users regarding any APIs configured with these authentication methods in preparation for future upgrades where these middleware options may be removed in version 5.7.0.
+</details>
+</li>
 </details>
 </li>
 </ul>
