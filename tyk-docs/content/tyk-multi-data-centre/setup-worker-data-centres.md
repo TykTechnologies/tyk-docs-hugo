@@ -41,7 +41,7 @@ Set the below environment variables and replace values with connection details t
 ```bash
 USER_API_KEY=9d20907430e440655f15b851e4112345
 ORG_ID=64cadf60173be90001712345
-MDCB_CONNECTIONSTRING=mdcb-svc-tyk-control-plane-tyk-mdcb.tyk.svc:9091
+MDCB_CONNECTIONSTRING=mdcb-svc-tyk-cp-tyk-mdcb.tyk-cp.svc:9091
 GROUP_ID=your-group-id
 MDCB_USESSL=false
 ```
