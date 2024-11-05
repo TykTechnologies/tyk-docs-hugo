@@ -28,10 +28,11 @@ As outlined in the [LTS policy]({{< ref "developer-support/special-releases-and-
 There are no breaking changes in this release, however, if moving from a version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
 
 ### Deprecations
-There are no deprecations in this release.
+
+This is an advanced notice that External OAuth, OpenID Connect (OIDC) authentication methods, and SQLite support will be deprecated starting in version 5.7.0. Please review your API configurations, as the Gateway logs will provide notifications for any APIs utilizing these methods.
 
 ### Upgrade Instructions
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+If you are upgrading to 5.3.8, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
 ### Release Highlights
 This release focuses mainly on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.8">}}) below.
@@ -91,30 +92,23 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Path-Based Permissions in Combined Policies Not Preserved</summary>
-
-We resolved an issue that caused path-based permissions in policies to be lost when policies were combined, potentially omitting URL values and restricting access based on the merge order. It ensures that all applicable policies merge their allowed URL access rights, regardless of the order in which they are applied.
-</details>
-</li>
-
-<details>
-<summary>User Group Dropdown Limitations in Dashboard</summary>
+<summary>User Group dropdown limitations in Dashboard</summary>
 
 This update resolves an issue with the user group dropdown, ensuring that all created user groups are displayed when creating a new user.
 </details>
 </li>
-
+<li>
 <details>
-<summary>Rate Limiting Not Saved with Upstream Certificates Enabled for OAS API</summary>
+<summary>Rate Limiting not saved with Upstream Certificates enabled for OAS API</summary>
 
 Fixed an issue in the Tyk OAS API Designer where Rate Limiting settings were not saved when Upstream Certificates were enabled. This fix ensures that both Rate Limits and Upstream Certificates configurations can now be saved together
 </details>
 </li>
 <li>
 <details>
-<summary>Deprecation notice of External OAuth and OpenID Connect Options</summary>
+<summary>Deprecation notice of External OAuth and OpenID Connect options</summary>
 
-A deprecation notice for External OAuth and OpenID Connect (OIDC) authentication mechanisms has been implemented in the Dashboard UI. This ensures that users are informed if any APIs are configured with these authentication methods.
+A deprecation notice for External OAuth and OpenID Connect (OIDC) authentication mechanisms has been implemented in the UI starting from version 5.3.8. This provides advanced notification to users regarding any APIs configured with these authentication methods in preparation for future upgrades where these middleware options may be removed in version 5.7.0.
 </details>
 </li>
 </ul>
