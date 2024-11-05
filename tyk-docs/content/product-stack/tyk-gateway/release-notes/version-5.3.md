@@ -131,6 +131,12 @@ A backwards compatibility issue in the OAS API Definitions JSON schema has been 
 A deprecation notice for External OAuth and OpenID Connect (OIDC) authentication mechanisms has been added to the Gateway logs starting from version 5.3.8. This provides advanced notification to users regarding any APIs configured with these authentication methods in preparation for future upgrades where these middleware options may be removed in version 5.7.0.
 </details>
 </li>
+
+<li>
+<details>
+<summary>Fix for API Key Loss on Worker Gateways Due to Keyspace Sync Interruption</summary>
+
+This update resolves an issue where API keys were lost on worker gateways if the keyspace synchronization process was interrupted. The solution now enforces a resynchronization whenever a connection is re-established between MDCB and a Worker Gateway, ensuring key data integrity and seamless API access.
 </details>
 </li>
 </ul>
