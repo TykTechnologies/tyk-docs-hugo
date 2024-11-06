@@ -34,16 +34,7 @@ This release focuses mainly on bug fixes. For a comprehensive list of changes, p
 
 ### Breaking Changes
 
-There are no breaking changes in this release, however if moving from an version of Tyk older than 5.3.0 please read the
-explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
-
-### Deprecations
-
-This is an advanced notice that External OAuth, OpenID Connect (OIDC) authentication methods, and SQLite support will be deprecated starting in version 5.7.0. Please review your API configurations, as the Gateway logs will provide notifications for any APIs utilizing these methods.
-
-### Upgrade Instructions
-
-If you are upgrading to 5.3.8, please follow the detailed [upgrade instructions](#upgrading-tyk).
+This release has no breaking changes.
 
 ### Dependencies
 
@@ -82,6 +73,14 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the
 ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+### Deprecations
+
+This is an advanced notice that External OAuth, OpenID Connect (OIDC) authentication methods, and SQLite support will be deprecated starting in version 5.7.0. Please review your API configurations, as the Gateway logs will provide notifications for any APIs utilizing these methods.
+
+### Upgrade Instructions
+
+If you are upgrading to 5.3.8, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
 ### Downloads
 
