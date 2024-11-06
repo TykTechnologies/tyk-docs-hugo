@@ -159,6 +159,12 @@ The above MySQL configuration is an example. You can customize deployment of you
 Please refer to the [MySQL documentation](https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html) for further guidance.
 {{< /warning >}}
 
+{{< note success >}}
+**Note** 
+
+SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please transition to PostgreSQL, MongoDB or one of the listed compatible alternatives.
+{{< /note >}}
+
 #### Create an environment variables file
 Creating an environment variables file to specify settings for the portal is the next step.
 This is optional, as you can alternatively specify all the variables using the -e option when starting your deployment.
