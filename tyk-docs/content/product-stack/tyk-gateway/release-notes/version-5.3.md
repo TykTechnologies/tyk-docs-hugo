@@ -120,7 +120,7 @@ We resolved an issue that caused path-based permissions in policies to be lost w
 <details>
 <summary>Enhanced flexibility in OAS JSON Schema: Additional Properties no longer enforced</summary>
 
-A backwards compatibility issue in the OAS API Definitions JSON schema has been addressed by reinstating support for 'additionalProperties'. Previously, version 5.3 enforced strict validation, causing problems for users downgrading from version 5.6. With this change, Tyk customers can move between versions seamlessly, ensuring their APIs remain functional and avoiding system performance issues.
+A backwards compatibility issue in the OAS API Definitions JSON schema has been addressed by reinstating support for `additionalProperties`. Previously, version 5.3 enforced strict validation, causing problems for users downgrading from version 5.6. With this change, Tyk customers can move between versions seamlessly, ensuring their APIs remain functional and avoiding system performance issues.
 </details>
 </li>
 <li>
