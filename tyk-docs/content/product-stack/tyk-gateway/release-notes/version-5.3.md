@@ -46,7 +46,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are upgrading to 5.3.7, please follow the detailed [upgrade instructions](#upgrading-tyk).
+When upgrading to 5.3.7 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Dependencies
 
@@ -168,7 +168,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are upgrading to 5.3.6, please follow the detailed [upgrade instructions](#upgrading-tyk).
+When upgrading to 5.3.6 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Dependencies
 
@@ -360,7 +360,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are upgrading to 5.3.5, please follow the detailed [upgrade instructions](#upgrading-tyk).
+When upgrading to 5.3.5 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Dependencies
 
@@ -501,7 +501,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are upgrading to 5.3.4, please follow the detailed [upgrade instructions](#upgrading-tyk).
+When upgrading to 5.3.4 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Dependencies
 
@@ -574,7 +574,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are upgrading to 5.3.3, please follow the detailed [upgrade instructions](#upgrading-tyk).
+When upgrading to 5.3.3 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Release Highlights
 
@@ -739,7 +739,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are upgrading to 5.3.2, please follow the detailed [upgrade instructions](#upgrading-tyk).
+When upgrading to 5.3.2 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Release Highlights
 
@@ -881,7 +881,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are upgrading to 5.3.1, please follow the detailed [upgrade instructions](#upgrading-tyk).
+When upgrading to 5.3.1 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Release Highlights
 
