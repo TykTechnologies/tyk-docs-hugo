@@ -23,6 +23,9 @@ As outlined in the [LTS policy]({{< ref "developer-support/special-releases-and-
 
 ### Release Date xxx
 
+### Release Highlights
+This release focuses mainly on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.8">}}) below.
+
 ### Breaking Changes
 
 This release has no breaking changes.
@@ -65,8 +68,6 @@ This is an advanced notice that External OAuth, OpenID Connect (OIDC) authentica
 ### Upgrade Instructions
 If you are upgrading to 5.3.8, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
-### Release Highlights
-This release focuses mainly on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.8">}}) below.
 
 ### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.8)
