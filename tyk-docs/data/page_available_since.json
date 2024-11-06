@@ -6029,6 +6029,11 @@
             "/docs/5.5/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.11.0/",
             "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.11.0/"
         },
+        "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.12.0/": {
+            "/docs/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.12.0/",
+            "/docs/5.5/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.12.0/",
+            "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.12.0/"
+        },
         "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.2.0/": {
             "/docs/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.2.0/",
             "/docs/5.5/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.2.0/",
