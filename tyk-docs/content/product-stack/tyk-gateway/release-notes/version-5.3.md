@@ -46,9 +46,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first
-[upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk)
-section for detailed upgrade instructions.
+When upgrading to 5.3.7 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Dependencies
 
@@ -170,9 +168,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first
-[upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk)
-section for detailed upgrade instructions.
+When upgrading to 5.3.6 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Dependencies
 
@@ -364,9 +360,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first
-[upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk)
-section for detailed upgrade instructions.
+When upgrading to 5.3.5 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Dependencies
 
@@ -507,9 +501,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first
-[upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk)
-section for detailed upgrade instructions.
+When upgrading to 5.3.4 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Dependencies
 
@@ -582,9 +574,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first
-[upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk)
-section for detailed upgrade instructions.
+When upgrading to 5.3.3 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Release Highlights
 
@@ -749,9 +739,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first
-[upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk)
-section for detailed upgrade instructions.
+When upgrading to 5.3.2 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Release Highlights
 
@@ -893,9 +881,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first
-[upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk)
-section for detailed upgrade instructions.
+When upgrading to 5.3.1 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Release Highlights
 
