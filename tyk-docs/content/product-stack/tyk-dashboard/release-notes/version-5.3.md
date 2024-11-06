@@ -25,17 +25,7 @@ As outlined in the [LTS policy]({{< ref "developer-support/special-releases-and-
 
 ### Breaking Changes
 
-There are no breaking changes in this release, however, if moving from a version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
-
-### Deprecations
-
-This is an advanced notice that External OAuth, OpenID Connect (OIDC) authentication methods, and SQLite support will be deprecated starting in version 5.7.0. Please review your API configurations, as the Gateway logs will provide notifications for any APIs utilizing these methods.
-
-### Upgrade Instructions
-If you are upgrading to 5.3.8, please follow the detailed [upgrade instructions](#upgrading-tyk).
-
-### Release Highlights
-This release focuses mainly on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.8">}}) below.
+This release has no breaking changes.
 
 ### Dependencies {#dependencies-5.3.8}
 
@@ -47,7 +37,7 @@ An illustrative example is shown below. -->
 | 5.3.8 | MDCB v2.5.1     | MDCB v2.5.1 |
 |         | Operator v0.17 | Operator v0.16 |
 |         | Sync v1.4.3   | Sync v1.4.3 |
-|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.4.0 | Helm all versions |
+|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v2.0.0 | Helm all versions |
 | | EDP v1.8.3 | EDP all versions |
 | | Pump v1.9.0 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
@@ -60,11 +50,23 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
-| [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.21 |
+| [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.21 |
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+### Deprecations
+
+This is an advanced notice that External OAuth, OpenID Connect (OIDC) authentication methods, and SQLite support will be deprecated starting in version 5.7.0. Please review your API configurations, as the Gateway logs will provide notifications for any APIs utilizing these methods.
+
+### Upgrade Instructions
+If you are upgrading to 5.3.8, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+### Release Highlights
+This release focuses mainly on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.8">}}) below.
 
 ### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.8)
@@ -79,6 +81,17 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
+#### Added
+
+<ul>
+<li>
+<details>
+<summary>Deprecation notice of External OAuth and OpenID Connect options</summary>
+
+A deprecation notice for External OAuth and OpenID Connect (OIDC) authentication mechanisms has been implemented in the UI starting from version 5.3.8. This provides advanced notification to users regarding any APIs configured with these authentication methods in preparation for future upgrades where these middleware options may be removed in version 5.7.0.
+</details>
+</li>
+</ul>
 
 #### Fixed
 <!-- This section should be a bullet point list of new features. Explain:
@@ -102,13 +115,6 @@ This update resolves an issue with the user group dropdown, ensuring that all cr
 <summary>Rate Limiting not saved with Upstream Certificates enabled for OAS API</summary>
 
 Fixed an issue in the Tyk OAS API Designer where Rate Limiting settings were not saved when Upstream Certificates were enabled. This fix ensures that both Rate Limits and Upstream Certificates configurations can now be saved together
-</details>
-</li>
-<li>
-<details>
-<summary>Deprecation notice of External OAuth and OpenID Connect options</summary>
-
-A deprecation notice for External OAuth and OpenID Connect (OIDC) authentication mechanisms has been implemented in the UI starting from version 5.3.8. This provides advanced notification to users regarding any APIs configured with these authentication methods in preparation for future upgrades where these middleware options may be removed in version 5.7.0.
 </details>
 </li>
 </ul>
