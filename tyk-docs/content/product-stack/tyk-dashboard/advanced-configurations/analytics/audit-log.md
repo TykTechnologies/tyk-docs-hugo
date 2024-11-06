@@ -4,7 +4,7 @@ description: Audit log configuration
 tags: ["audit", "audit records", "audit log"]
 ---
 
-The audit log contains audit records for all requests made to all endpoints under the `/api` route. Audit logs are written to file in JSON or text format.
+The audit log system captures detailed records of all requests made to endpoints under the `/api` route. These audit logs can be stored either in files (in JSON or text format) or in the database, providing flexible options for log management and retrieval.
 
 Subsequently, if hosting Tyk Dashboard within a Kubernetes cluster, please ensure that the configured log file path is valid and writeable.
 
@@ -55,3 +55,24 @@ Audit records the following fields for `json` format:
 ### Text File Format
 
 The `text` format outputs all fields as plain text separated with a new line and provided in the same order as `json` format.
+
+### Database Storage Support
+
+In addition to file storage, audit logs can now be stored in the main database (MongoDB or Postgres), this feature is available since Tyk 5.7.0. To enable database storage set `audit.storage_type` to `db`:
+
+```yaml
+...
+    "audit": {
+      "enabled": true,
+      "store_type": "db",
+      "detailed_recording": false
+    }
+...
+```
+
+When `storage_type` is set to `db`, audit logs will be stored in the main Dashboard storage instead of a file.
+
+### Retrieving Audit Logs via API
+
+Since Tyk 5.7.0 a new API endpoint has been added to allow authorized users to retrieve audit logs from the database storage. For comprehensive details on the API specifications, including all available request parameters and the exact response format, please consult our Swagger documentation.
+To access the audit logs through the API ensure that your user account or group has been granted the "Audit Logs" RBAC group. If you do not have the necessary permissions, please contact your system administrator.
