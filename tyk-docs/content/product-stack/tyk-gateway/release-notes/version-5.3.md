@@ -98,6 +98,15 @@ If you are upgrading to 5.3.8, please follow the detailed [upgrade instructions]
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
+#### Added
+<ul>
+<li>
+<details>
+<summary>Deprecation notice of External OAuth and OpenID Connect options</summary>
+A deprecation notice for External OAuth and OpenID Connect (OIDC) authentication mechanisms has been implemented in the UI starting from version 5.3.8. This provides advanced notification to users regarding any APIs configured with these authentication methods in preparation for future upgrades where these middleware options may be removed in version 5.7.0.
+</details>
+</li>
+</ul>
 
 #### Fixed
 
@@ -123,14 +132,6 @@ We resolved an issue that caused path-based permissions in policies to be lost w
 A backwards compatibility issue in the OAS API Definitions JSON schema has been addressed by reinstating support for `additionalProperties`. Previously, version 5.3 enforced strict validation, causing problems for users downgrading from version 5.6. With this change, Tyk customers can move between versions seamlessly, ensuring their APIs remain functional and avoiding system performance issues.
 </details>
 </li>
-<li>
-<details>
-<summary>Deprecation notice for External OAuth and OpenID Connect options</summary>
-
-A deprecation notice for External OAuth and OpenID Connect (OIDC) authentication mechanisms has been added to the Gateway logs starting from version 5.3.8. This provides advanced notification to users regarding any APIs configured with these authentication methods in preparation for future upgrades where these middleware options may be removed in version 5.7.0.
-</details>
-</li>
-
 <li>
 <details>
 <summary>Fix for API Key Loss on Worker Gateways Due to Keyspace Sync Interruption</summary>
