@@ -103,7 +103,7 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 <li>
 <details>
 <summary>Deprecation notice of External OAuth and OpenID Connect options</summary>
-A deprecation notice for External OAuth and OpenID Connect (OIDC) authentication mechanisms has been implemented in the UI starting from version 5.3.8. This provides advanced notification to users regarding any APIs configured with these authentication methods in preparation for future upgrades where these middleware options may be removed in version 5.7.0.
+A deprecation notice for External OAuth and OpenID Connect (OIDC) authentication mechanisms has been implemented in the Gateway logs starting from version 5.3.8. This provides advanced notification to users regarding any APIs configured with these authentication methods in preparation for future upgrades where these middleware options may be removed in version 5.7.0.
 </details>
 </li>
 </ul>
