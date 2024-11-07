@@ -89,7 +89,7 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 <details>
 <summary>Advanced notice of deprecation of dedicated External OAuth and OpenID Connect auth options</summary>
 
-A deprecation notice for External OAuth and OpenID Connect (OIDC) authentication mechanisms has been implemented in the UI starting from version 5.3.8. This provides advanced notification to users regarding any APIs configured with these authentication methods in preparation for future upgrades where these middleware options may be removed in version 5.7.0.
+The UI now displays a deprecation notice for the dedicated [External OAuth]({{< ref "basic-config-and-security/security/authentication-authorization/ext-oauth-middleware" >}}) and [OpenID Connect (OIDC)]({{< ref "basic-config-and-security/security/authentication-authorization/openid-connect" >}}) authentication mechanisms. This provides advanced notification that these authentication options will be deprecated in version 5.7.0. Users are advised to migrate to the [JWT Auth]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#about-jwts" >}}) method, which supports integration with both OAuth and OIDC providers, in preparation for future upgrade.
 </details>
 </li>
 </ul>
