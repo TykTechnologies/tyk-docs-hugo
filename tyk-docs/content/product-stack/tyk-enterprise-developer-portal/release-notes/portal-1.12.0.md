@@ -208,7 +208,7 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
 <details>
 <summary>High priority CVEs fixed</summary>
 
-Fixed the following high priority CVEs identified in the Tyk Gateway, providing increased protection against security
+Fixed the following high priority CVEs identified in the Tyk Enterprise Developer Portal, providing increased protection against security
 vulnerabilities:
 
 - [CVE-2024-34158](https://nvd.nist.gov/vuln/detail/CVE-2024-34158)
