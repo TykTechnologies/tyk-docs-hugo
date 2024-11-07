@@ -71,7 +71,7 @@ In addition to file storage, audit logs can be stored in the main database (Mong
 ...
 ```
 
-When `storage_type` is set to `db`, audit logs will be stored in the main Dashboard storage instead of a file.
+When `storage_type` is set to `db`, audit logs will be stored in the main database storage instead of a file.
 
 ### Retrieving Audit Logs via API
 
