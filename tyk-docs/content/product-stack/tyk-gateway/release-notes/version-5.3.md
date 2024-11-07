@@ -138,7 +138,7 @@ A backwards compatibility issue in the OAS API Definitions JSON schema has been 
 <details>
 <summary>Fix for API Key Loss on Worker Gateways Due to Keyspace Sync Interruption</summary>
 
-This update resolves an issue where API keys were lost on worker gateways if the keyspace synchronization process was interrupted. The solution now enforces a resynchronization whenever a connection is re-established between MDCB and a Worker Gateway, ensuring key data integrity and seamless API access.
+This update resolves an issue where API keys were lost on worker gateways if the [keyspace synchronization]({{<ref "product-stack/tyk-enterprise-mdcb/advanced-configurations/synchroniser">}}) process was interrupted. The solution now enforces a resynchronization whenever a connection is re-established between MDCB and a Worker Gateway, ensuring key data integrity and seamless API access.
 </details>
 </li>
 </ul>
