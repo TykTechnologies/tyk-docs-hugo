@@ -138,7 +138,7 @@ A backwards compatibility issue in the way that the Gateway handles Tyk OAS API 
 <details>
 <summary>Fix for API key loss on worker Gateways due to keyspace sync interruption</summary>
 
-This update resolves an issue where API keys were lost on worker gateways if the [keyspace synchronization]({{<ref "product-stack/tyk-enterprise-mdcb/advanced-configurations/synchroniser">}}) process was interrupted. The solution now enforces a resynchronization whenever a connection is re-established between MDCB and a Worker Gateway, ensuring key data integrity and seamless API access.
+This update resolves an issue where API keys could be lost if the [keyspace synchronization]({{<ref "product-stack/tyk-enterprise-mdcb/advanced-configurations/synchroniser">}}) between control and data planes was interrupted. The solution now enforces a resynchronization whenever a connection is re-established between MDCB and the data plane, ensuring key data integrity and seamless API access.
 </details>
 </li>
 </ul>
