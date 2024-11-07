@@ -34,7 +34,7 @@ tags:
   - name: Tutorials for API Products
     description: Tutorials that are defined for the API products
   - name: API documentation for API Products
-    description: OpenAPI specs for APIs included into the API Prodcuts
+    description: OpenAPI specs for APIs included into the API Products
   - name: Plans
     description: >-
       Marketing description and visibility settings of usage plans defined in
