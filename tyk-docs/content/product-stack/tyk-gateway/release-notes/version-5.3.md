@@ -26,7 +26,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 5.3.8 Release Notes
 
-### Release Date XXX
+### Release Date 07 November 2024
 
 ### Release Highlights
 
