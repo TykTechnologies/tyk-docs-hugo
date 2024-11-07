@@ -11,7 +11,8 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "changelog"]
 
 ### Release Highlights
 
-We are thrilled to announce new updates and improvements in Tyk Cloud 1.23.0, ... For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-1.23.0">}}) below.
+We are thrilled to announce new updates and improvements in Tyk Cloud 1.23.0. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-1.23.0">}}) below.
+
 
 #### Support for Multiple Plugin Bundles in MServ
 MServ now supports multiple plugin bundles, allowing users to manage and deploy various binaries for different plugins. This enhancement provides greater flexibility in plugin configuration and deployment 
@@ -65,9 +66,11 @@ Each change log item should be expandable. The first line summarises the changel
   <li>
     <details>
       <summary>
-        Support for Multiple Plugin Bundles in MServ
+        Support for Bundles with Multiple Plugins
+
       </summary>
-      MServ now supports multiple plugin bundles, allowing users to manage and deploy various binaries for different plugins. This enhancement provides greater flexibility in plugin configuration and deployment 
+      Tyk Cloud now supports multiple plugins in a bundle, allowing users to manage and deploy various binaries for the same plugin bundle. This enhancement provides greater flexibility in plugin configuration and deployment using `mservctl`.
+
       within MServ.
     </details>
   </li>
@@ -77,7 +80,8 @@ Each change log item should be expandable. The first line summarises the changel
       <summary>
         Embedded Product Tour During Deployment Wait Time
       </summary>
-      An embedded interactive product tour has been added within the deployment screen to guide users through the Tyk Dashboard while they wait for their deployment to complete. This tour provides an overview of key features, helping users explore what they can do next in the dashboard.
+      An embedded interactive product tour has been added within the deployment screen to guide users through the Tyk Dashboard while they wait for their free trial on-boarding to complete. This tour provides an overview of key features, helping users explore what they can do on Tyk Cloud during their trial.
+
     </details>
   </li>
   
@@ -118,7 +122,8 @@ Each change log item should be expandable. The first line summarises the changel
   <li>
     <details>
       <summary>
-        UI Update: "Add Portal Deployment" Widget Hidden for Team Members
+        `Add Portal Deployment` Widget Hidden for Team Members
+
       </summary>
       The "Add Portal Deployment" widget on the Environment page is now hidden for team members, providing a cleaner and more tailored UI experience by limiting portal management options to authorized roles 
       only.
@@ -128,7 +133,8 @@ Each change log item should be expandable. The first line summarises the changel
   <li>
     <details>
       <summary>
-        UI Fix: "Delete User" Button Hidden for Org Admin on Org+Billing Admin Profiles
+        `Delete User` Button Hidden for Org Admin on Org+Billing Admin Profiles
+
       </summary>
       The "Delete User" button for Org Admins has been hidden when viewing Org+Billing Admin profiles on the Teams page. Previously, Org Admins could see this button but would encounter an error message, "operation on this class is not permitted," when attempting deletion.
     </details>
@@ -137,7 +143,8 @@ Each change log item should be expandable. The first line summarises the changel
   <li>
     <details>
       <summary>
-        UI Consistency Fix: Standardized Behavior for 'Upgrade' and 'Account & Billing' Buttons
+        Standardized Behavior for `Upgrade` and `Account & Billing` Buttons
+
       </summary>
  The behavior for accessing the billing app through the 'Upgrade' and 'Account & Billing' buttons has been standardized. Previously, clicking the 'Upgrade' button opened the billing app in a new tab, while 'Account & Billing' opened it in the same tab. Now, both buttons open the billing app consistently in the same tab.
     </details>
@@ -147,7 +154,8 @@ Each change log item should be expandable. The first line summarises the changel
   <li>
     <details>
       <summary>
-        Direct Access to /password-reset Page Now Accessible Without Redirect
+        Direct Access to `/password-reset` Page Now Accessible Without Redirect
+
       </summary>
 Fixed an issue where accessing the /password-reset page directly redirected users to the login page. Now, users can navigate directly to the /password-reset page without being redirected, providing a consistent experience for password-reset requests regardless of how the page is accessed.
     </details>
@@ -156,7 +164,8 @@ Fixed an issue where accessing the /password-reset page directly redirected user
   <li>
     <details>
       <summary>
-        UI Fix: Billing Sidebar Display Corrected When No Subscriptions Are Present
+        Billing Sidebar Display Corrected When No Subscriptions Are Present
+
       </summary>
 We have resolved a display issue in the billing sidebar that occurred when no subscriptions were active. Now, the sidebar menu displays correctly regardless of subscription status, providing a consistent and clear UI for all users.
     </details>
@@ -165,9 +174,11 @@ We have resolved a display issue in the billing sidebar that occurred when no su
   <li>
     <details>
       <summary>
-        Fix for NodesVisibility Logic to Manage Node Data Retention
+        Fix for Hybrid Nodes Visibility Logic to Manage Node Data Retention
+
       </summary>
-This update addresses a critical bug in the NodesVisibility logic, which previously retained all connected node data indefinitely. The fix ensures that the NodesData array only contains records from the last 7 days. This enhancement improves system performance at all stages within the Tyk Cloud UI for organizations with hybrid data planes, especially those with multiple connected gateways.
+This update addresses a critical bug in the Hybrid nodes visibility logic, which previously retained all connected node data for the Hybrid Data Planes indefinitely. The fix ensures that we only contains records from the last 7 days. This enhancement improves system performance at all stages within the Tyk Cloud UI for organizations with Hybrid Data Planes, especially those with multiple connected gateways.
+
     </details>
   </li>
 
