@@ -59,7 +59,7 @@ The `text` format outputs all fields as plain text separated with a new line and
 
 ### Database Storage Support
 
-In addition to file storage, audit logs can now be stored in the main database (MongoDB or Postgres), this feature is available since Tyk 5.7.0. To enable database storage set `audit.storage_type` to `db`:
+In addition to file storage, audit logs can be stored in the main database (MongoDB or Postgres), this feature has been available since Tyk 5.7.0. To enable database storage set `audit.storage_type` to `db`:
 
 ```yaml
 ...
