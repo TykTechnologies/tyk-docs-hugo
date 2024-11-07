@@ -108,7 +108,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>User Group dropdown limitations in Dashboard</summary>
 
-This update resolves an issue with the user group dropdown, ensuring that all created user groups are displayed when creating a new user.
+Fixed an issue with the user group dropdown in the Dashboard UI, ensuring that all available user groups are displayed when creating a new user.
 </details>
 </li>
 <li>
