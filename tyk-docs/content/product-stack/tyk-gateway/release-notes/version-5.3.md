@@ -129,7 +129,7 @@ We resolved an issue that caused path-based permissions in policies to be lost w
 </li>
 <li>
 <details>
-<summary>Enhanced flexibility in Tyk OAS JSON schema:additional properties no longer enforced</summary>
+<summary>Enhanced flexibility in Tyk OAS schema validation</summary>
 
 A backwards compatibility issue in the way that the Gateway handles Tyk OAS API definitions has been addressed by reducing the strictness of validation against the expected schema. Since Tyk version 5.3, the Gateway has enforced strict validation, potentially causing problems for users downgrading from newer versions. With this change, Tyk customers can move between versions seamlessly, ensuring their APIs remain functional and avoiding system performance issues.
 </details>
