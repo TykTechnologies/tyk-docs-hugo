@@ -10,18 +10,11 @@ weight: 7
 
 **Licensed Protected Product**
 
-##### Release Date 13 Nov 2024
+## 1.12.0 Release Notes
 
-#### Breaking Changes
-This release has no breaking changes.
+### Release Date 13 Nov 2024
 
-#### Future breaking changes
-This release doesn’t introduce future breaking changes.
-
-#### Deprecations
-There are no deprecations in this release.
-
-## Release Highlights
+### Release Highlights
 The v1.12.0 release includes the following new features and improvements:
 - Embedded Tyk Identity Broker. From this release, you don't need to deploy a separate Tyk Identity Broker to SSO into the portal.
 - Now admins can create Apps and Credentials for developers directly from the portal admin UI.
@@ -30,13 +23,22 @@ The v1.12.0 release includes the following new features and improvements:
 - Security: 3 new high CVEs fixed.
 - Bugfixes: 4 bugs fixed.
 
+For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.12.0) below.
 
-#### Upgrade instructions
+### Breaking Changes
+This release has no breaking changes.
+
+
+### Deprecations
+There are no deprecations in this release.
+
+
+### Upgrade instructions
 If you are on 1.11.0 or an older version we advise you to upgrade ASAP directly to this release.
 
 To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
 
-## Download
+### Download
 - [Docker image v1.12.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.12.0)
   - ```bash
     docker pull tykio/portal:v1.12.0
