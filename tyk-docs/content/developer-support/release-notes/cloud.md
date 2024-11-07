@@ -11,7 +11,8 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "changelog"]
 
 ### Release Highlights
 
-This release adds new features to Tyk Cloud, including Support for **Multiple Plugin Bundles** in MServ for greater flexibility in plugin management, and an **Embedded Product Tour** during deployment wait times, offering users a guided overview of Tyk Dashboard features.
+This release adds new features to Tyk Cloud, including Support for **Multiple plugin bundles** in *MServ* for greater flexibility in plugin management and an **Embedded product tour** during deployment wait times, offering users a guided overview of Tyk Dashboard features.
+
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-1.23.0">}}) below.
 
