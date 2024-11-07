@@ -330,18 +330,6 @@ menu:
                         path: /tyk-cloud/troubleshooting--support/glossary
                         category: Page
                         show: True
-          - title: "Release notes"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /tyk-cloud/release-notes/overview
-                category: page
-                show: True
-              - title: "Tyk Cloud v1.23"
-                path: /tyk-cloud/release-notes/version-1.23
-                category: Page
-                show: True
       - title: "Self Managed"
         category: Directory
         show: True
@@ -4936,6 +4924,14 @@ menu:
         path: /developer-support/backups/backup-apis-and-policies
         category: Page
         show: True
+      - title: "Release Notes"
+        category: Directory
+        show: True
+        menu:
+        - title: "Cloud"
+          path: /developer-support/release-notes/cloud
+          category: Page
+          show: True
       - title: "Latest Tyk Releases"
         path: /developer-support/tyk-release-summary/overview
         category: Page
