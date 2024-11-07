@@ -113,7 +113,7 @@ Fixed an issue with the user group dropdown in the Dashboard UI, ensuring that a
 </li>
 <li>
 <details>
-<summary>Rate Limiting not saved with Upstream Certificates enabled for OAS API</summary>
+<summary>Rate Limiting settings not saved when Upstream Certificates enabled for Tyk OAS API</summary>
 
 Fixed an issue in the Tyk OAS API Designer where Rate Limiting settings were not saved when Upstream Certificates were enabled. This fix ensures that both Rate Limits and Upstream Certificates configurations can now be saved together
 </details>
