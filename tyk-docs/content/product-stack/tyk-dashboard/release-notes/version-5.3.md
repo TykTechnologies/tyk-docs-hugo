@@ -75,7 +75,7 @@ If you are upgrading to 5.3.8, please follow the detailed [upgrade instructions]
    docker pull tykio/tyk-dashboard:v5.3.8
    ```
 - Helm charts
- - [tyk-charts v1.4]({{< ref "product-stack/tyk-charts/release-notes/version-1.4.md" >}})
+ - [tyk-charts v2.0.0]({{< ref "product-stack/tyk-charts/release-notes/version-2.0.md" >}})
 
 ### Changelog {#Changelog-v5.3.8}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
