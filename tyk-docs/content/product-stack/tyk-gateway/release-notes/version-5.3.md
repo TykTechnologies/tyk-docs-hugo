@@ -117,26 +117,26 @@ A deprecation notice for External OAuth and OpenID Connect (OIDC) authentication
 <details>
 <summary>Memory consumption reduced in Gateway for large payloads</summary>
 
-This update fixes a bug that caused increased memory usage when proxying large response payloads in version 5.3.1, restoring memory requirements to the levels seen in version 5.0.6. Users experiencing out-of-memory errors with 1GB+ file downloads will notice improved performance and reduced latency.
+This update fixes a bug that caused increased memory usage when proxying large response payloads that was introduced in version 5.3.1, restoring memory requirements to the levels seen in version 5.0.6. Users experiencing out-of-memory errors with 1GB+ file downloads will notice improved performance and reduced latency.
 </details>
 </li>
 <li>
 <details>
-<summary>Path-Based Permissions in Combined Policies Not Preserved</summary>
+<summary>Path-based permissions in combined policies not preserved</summary>
 
 We resolved an issue that caused path-based permissions in policies to be lost when policies were combined, potentially omitting URL values and restricting access based on the merge order. It ensures that all applicable policies merge their allowed URL access rights, regardless of the order in which they are applied.
 </details>
 </li>
 <li>
 <details>
-<summary>Enhanced flexibility in OAS JSON Schema: Additional Properties no longer enforced</summary>
+<summary>Enhanced flexibility in Tyk OAS JSON schema:additional properties no longer enforced</summary>
 
 A backwards compatibility issue in the OAS API Definitions JSON schema has been addressed by reinstating support for `additionalProperties`. Previously, version 5.3 enforced strict validation, causing problems for users downgrading from version 5.6. With this change, Tyk customers can move between versions seamlessly, ensuring their APIs remain functional and avoiding system performance issues.
 </details>
 </li>
 <li>
 <details>
-<summary>Fix for API Key Loss on Worker Gateways Due to Keyspace Sync Interruption</summary>
+<summary>Fix for API key loss on worker Gateways due to keyspace sync interruption</summary>
 
 This update resolves an issue where API keys were lost on worker gateways if the [keyspace synchronization]({{<ref "product-stack/tyk-enterprise-mdcb/advanced-configurations/synchroniser">}}) process was interrupted. The solution now enforces a resynchronization whenever a connection is re-established between MDCB and a Worker Gateway, ensuring key data integrity and seamless API access.
 </details>
