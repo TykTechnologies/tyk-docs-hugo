@@ -21,7 +21,7 @@ As outlined in the [LTS policy]({{< ref "developer-support/special-releases-and-
 
 ## 5.3.8 Release Notes
 
-### Release Date xxx
+### Release Date 07 November 2024
 
 ### Release Highlights
 This release focuses mainly on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.8">}}) below.
