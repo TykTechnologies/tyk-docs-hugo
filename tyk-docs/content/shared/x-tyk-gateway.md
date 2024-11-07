@@ -647,6 +647,9 @@ Tyk classic API definition: `hmac_allowed_clock_skew`.
 ### **OIDC**
 
 OIDC contains configuration for the OIDC authentication mode.
+OIDC support will be deprecated starting from 5.7.0.
+To avoid any disruptions, we recommend that you use JSON Web Token (JWT) instead,
+as explained in https://tyk.io/docs/basic-config-and-security/security/authentication-authorization/openid-connect/.
 
 **Field: `enabled` (`boolean`)**
 Enabled activates the OIDC authentication mode.
@@ -1296,6 +1299,9 @@ Value is the configured timeout in seconds.
 ### **ExternalOAuth**
 
 ExternalOAuth holds configuration for an external OAuth provider.
+ExternalOAuth support will be deprecated starting from 5.7.0.
+To avoid any disruptions, we recommend that you use JSON Web Token (JWT) instead,
+as explained in https://tyk.io/docs/basic-config-and-security/security/authentication-authorization/ext-oauth-middleware/.
 
 **Field: `enabled` (`boolean`)**
 Enabled activates external oauth functionality.
