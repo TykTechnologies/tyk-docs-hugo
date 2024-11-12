@@ -1,166 +1,275 @@
 ---
 title: Custom Go plugin development flow
-date: 2024-03-04
-description: "Development flow working with Go Plugins"
-tags: ["custom plugin", "golang", "go plugin", "middleware"]
+tags:
+    - custom plugin
+    - golang
+    - go plugin
+    - middleware
+    - debugging go plugins
+description: Development flow working with Go Plugins
+date: "2024-10-11"
 ---
 
-Go plugins must be compiled before they can be run. This applies to custom code that you want Tyk to run during the processing of API requests and responses in [custom plugins]({{< ref "plugins" >}}). In this section we describe the process and highlight important information that you must be aware of when working with custom Go plugins.
+We recommend that you familiarize yourself with the following official Go documentation to help you work effectively with Go plugins:
 
-## Creating a custom Go plugin for Tyk
-
-In this section, you will find step-by-step instructions to create a working Go Plugin to implement custom logic in your API processing.
-
-### Step 1: Initialise Go module for the plugin
-
-First we must perform some initialisation to configure the environment to build your Go Plugin.
-
-The general steps for initialising plugins can be summarised as follows:
-
-1. Create a new folder where you will create the plugin
-2. Initialise a Go module for your plugin from within the new folder
-3. Determine the commit hash for the Tyk Gateway version that will be used to build the plugin. Commit hashes can be found for tagged [Gateway releases](https://github.com/TykTechnologies/tyk/tags)
+- [The official plugin package documentation - Warnings](https://pkg.go.dev/plugin)
+- [Tutorial: Getting started with multi-module workspaces](https://go.dev/doc/tutorial/workspaces)
 
 {{< note success >}}
-**Note**  
-
-The process for initialising plugins changed with Tyk Gateway v5.1, please ensure that you follow the correct steps based on your Gateway version.
-{{< /note >}}
-
-The commands in the following sections will create a `go.mod` file inside your folder and will ensure that the plugin in compatible with your Tyk Gateway version.
-
-#### Initialise plugin for Tyk Gateway v5.1 and above (v5.1+)
-
-In Gateway version 5.1, the Gateway and plugins transitioned to using [Go modules builds](https://go.dev/ref/mod#introduction).
-
-The example below shows the set of commands for initialising a plugin for compatibility with Tyk Gateway 5.2.1.
-
-```bash
-mkdir tyk-plugin
-cd tyk-plugin
-go mod init tyk-plugin
-go get github.com/TykTechnologies/tyk@ffa83a27d3bf793aa27e5f6e4c7106106286699d
-go mod tidy
-```
-
-In the example above notice that the commit hash was used for [Tyk Gateway 5.2.1](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.1)
-
-#### Initialise plugin for Tyk Gateway versions between v4.2 and v5.0
-
-For Tyk Gateway versions earlier than v5.1 you also need to use [go mod vendor](https://go.dev/ref/mod#go-mod-vendor).
-
-The example below shows how to initialise a Golang plugin module for compiling with Tyk Gateway 5.0.3.
-
-```bash
-mkdir tyk-plugin
-cd tyk-plugin
-go mod init tyk-plugin
-go get github.com/TykTechnologies/tyk@54e1072a6a9918e29606edf6b60def437b273d0a
-go mod tidy
-go mod vendor
-```
-
-#### Initialise plugin for Tyk Gateway versions prior to v4.2
-
-Up to Tyk Gateway v4.2, plugin compilation relies on *graphql-go-tools*. An alias needs to be configured to associate imports of *github.com/TykTechnologies/graphql-go-tools* with *github.com/jensneuse/graphql-go-tools*. To determine the dependency version open the *go.mod* file in the associated release branch of the [Gateway repository](https://github.com/TykTechnologies/tyk).
-
-For example, for Tyk Gateway v4.0.3, the dependency version for *graphql-go-tools* is *v1.6.2-0.20220426094453-0cc35471c1ca*. This can be found by inspecting the contents of *go.mod* in the *release-4.0.3* branch, particularly the `replace` statements within.  
-
-```bash
-mkdir tyk-plugin
-cd tyk-plugin
-go mod init tyk-plugin
-go get github.com/TykTechnologies/tyk@6c76e802a29838d058588ff924358706a078d0c5
-go mod edit -replace github.com/jensneuse/graphql-go-tools=github.com/TykTechnologies/graphql-go-tools@v1.6.2-0.20220426094453-0cc35471c1ca
-go mod tidy
-go mod vendor
-```
-
-### Step 2: Write your plugin
-
-We provide details of the many features available to you when writing your custom logic in the [Writing Go Plugins]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/writing-go-plugins" >}}) section, but for this example we will create a plugin with very basic functionality:
-
-- we will add a custom header `"Foo: Bar"` to a request
-- we want this to happen right before the request is passed to the upstream service
-
-Create a file `plugin.go` with the following content:
-
-```go
-package main
-
-import (
-    "net/http"
-)
-
-// AddFooBarHeader adds custom "Foo: Bar" header to the request
-func AddFooBarHeader(rw http.ResponseWriter, r *http.Request) {
-    r.Header.Add("Foo", "Bar")
-}
-
-func main() {}
-```
-
-We see that the Golang plugin:
-
-- is a Golang project with a `main` package
-- has an empty `func main()`
-- has one exported `func AddFooBarHeader` which must have the same method signature as `type HandlerFunc func(ResponseWriter, *Request)` from the standard `"net/http"` Golang package
-
-{{< note success >}}
-**Note**  
-
-If a dependency that your plugin uses is also used by the gateway, the version _used by the gateway_ will be used in your plugin. This may mask conflicts between transitive dependencies.
-{{< /note >}}
-
-### Step 3: Synchronise dependencies
-
-If you are working with Tyk Gateway v5.1 or later, you can skip this step.
-
-If you are working with a Tyk Gateway prior to v5.1 you must download any required dependencies to ensure that all plugin dependencies are correctly resolved. All dependencies are saved to the `vendor` folder.
-
-Issue these commands to perform this sync:
-
-```bash
-go mod tidy
-go mod vendor    # only for Tyk Gateway <5.1
-```
-
-{{< note info >}}
 **Note**
 
-If you are working with a Tyk Gateway prior to v5.1 you must run these commands on initial plugin initialisation and every time you add a new third-party library in your code.
+Plugins are currently supported only on Linux, FreeBSD, and macOS, making them unsuitable for applications intended to be portable.
 {{< /note >}}
 
+Plugins need to be compiled to native shared object code, which can then be loaded by Tyk Gateway. It's important to understand the need for plugins to be compiled using exactly the same environment and [build flags]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-development-flow#build-flags" >}}) as the Gateway. To simplify this and minimise the risk of compatibility problems, we recommend the use of [Go workspaces](https://go.dev/blog/get-familiar-with-workspaces), to provide a consistent environment.
 
-### Step 4: Build the plugin
+## Setting up your environment
 
-A Golang plugin is built as a shared library (`.so`), and must use exactly the same Tyk Gateway binary as the one to be installed. We provide a [Docker image](https://hub.docker.com/r/tykio/tyk-plugin-compiler/tags), that we also use internally for building our official binaries.
+To develop plugins, you'll need:
 
-The steps for building a plugin are as follows:
+- Go (matching the version used in the Gateway, which you can determine using `go.mod`).
+- Git to check out Tyk Gateway source code.
+- A folder with the code that you want to build into plugins.
 
-1. Mount your plugin source code directory to the `/plugin-source` container location
-2. Specify the docker tag for the target Tyk Gateway version, e.g. `v5.2.1`
-3. Specify the name for your plugin's shared library file, e.g. `plugin.so`
+We recommend that you set up a *Go workspace*, which, at the end, is going to contain:
 
-An example is shown below that builds a plugin named *plugin.so*, compatible with Gateway version v5.2.1. This mounts the source code from the current directory into the docker container at `/plugin-source`.
+- `/tyk-release-x.y.z` - the Tyk Gateway source code
+- `/plugins` - the plugins
+- `/go.work` - the *Go workspace* file
+- `/go.work.sum` - *Go workspace* package checksums
 
-```bash
-docker pull tykio/tyk-plugin-compiler:v5.2.1 
-docker run --rm -v `pwd`:/plugin-source \
-           --platform=linux/amd64 \
-           tykio/tyk-plugin-compiler:v5.2.1 plugin.so
+Using the *Go workspace* ensures build compatibility between the plugins and Gateway.
+
+### 1. Checking out Tyk Gateway source code
+
+```
+git clone --branch release-5.3.6 https://github.com/TykTechnologies/tyk.git tyk-release-5.3.6 || true
 ```
 
-#### Building from source
+This example uses a particular `release-5.3.6` branch, to match Tyk Gateway release 5.3.6. With newer `git` versions, you may pass `--branch v5.3.6` and it would use the tag. In case you want to use the tag it's also possible to navigate into the folder and issue `git checkout tags/v5.3.6`.
 
-If you are building a plugin for a Gateway version compiled from the source, you can use the following command:
+### 2. Preparing the Go workspace
 
-```bash
-go build -trimpath -buildmode=plugin -o plugin.so
+Your Go workspace can be very simple:
+
+1. Create a `.go` file containing the code for your plugin.
+2. Create a `go.mod` file for the plugin.
+3. Ensure the correct Go version is in use.
+
+As an example, we can use the [CustomGoPlugin.go](https://github.com/TykTechnologies/custom-go-plugin/blob/master/go/src/CustomGoPlugin.go) sample as the source for our plugin as shown:
+
+```
+mkdir -p plugins
+cd plugins
+go mod init testplugin
+go mod edit -go $(go mod edit -json go.mod | jq -r .Go)
+wget -q https://raw.githubusercontent.com/TykTechnologies/custom-go-plugin/refs/heads/master/go/src/CustomGoPlugin.go
+cd -
 ```
 
-As a result of this build command, we get a shared library with the plugin implementation placed at `plugin.so`.
+The following snippet provides you with a way to get the exact Go version used by Gateway from it's [go.mod](https://github.com/TykTechnologies/tyk/blob/release-5.3.6/go.mod#L3) file:
 
-For older gateway versions (<5.1), using `go mod vendor` is used to vendor third party dependencies.
-If you are using [Go modules](https://blog.golang.org/using-go-modules), it should be as simple as running `go mod vendor` command.
-For newer Gateway verions than 5.1, the vendoring step is not required.
+- `go mod edit -json go.mod | jq -r .Go` (e.g. `1.22.7`)
+
+This should be used to ensure the version matches between gateway and the plugin.
+
+To summarize what was done:
+
+1. We created a plugins folder and initialzed a `go` project using `go mod` command.
+2. Set the Go version of `go.mod` to match the one set in the Gateway.
+3. Initialzied the project with sample plugin `go` code.
+
+At this point, we don't have a *Go workspace* but we will create one next so that we can effectively share the Gateway dependency across Go modules.
+
+### 3. Creating the Go workspace
+
+To set up the Go workspace, start in the directory that contains the Gateway and the Plugins folder. You'll first, create the `go.work` file to set up your Go workspace, and include the `tyk-release-5.3.6` and `plugins` folders. Then, navigate to the plugins folder to fetch the Gateway dependency at the exact commit hash and run `go mod tidy` to ensure dependencies are up to date.
+
+Follow these commands:
+
+```
+go work init ./tyk-release-5.3.6
+go work use ./plugins
+commit_hash=$(cd tyk-release-5.3.6 && git rev-parse HEAD)
+cd plugins && go get github.com/TykTechnologies/tyk@${commit_hash} && go mod tidy && cd -
+```
+
+The following snippet provides you to get the commit hash exactly, so it can be used with `go get`.
+
+- `git rev-parse HEAD`
+
+The Go workspace file (`go.work`) should look like this:
+
+```
+go 1.22.7
+
+use (
+	./plugins
+	./tyk-release-5.3.6
+)
+```
+
+### 4. Building and validating the plugin
+
+Now that your *Go workspace* is ready, you can build your plugin as follows:
+
+```
+cd tyk-release-5.3.6 && go build -tags=goplugin -trimpath . && cd -
+cd plugins           && go build -trimpath -buildmode=plugin . && cd -
+```
+
+These steps build both the Gateway and the plugin.
+
+You can use the Gateway binary that you just built to test that your new plugin loads into the Gateway without having to configure and then make a request to an API using this command:
+
+```
+./tyk-release-5.3.6/tyk plugin load -f plugins/testplugin.so -s AuthCheck
+```
+
+You should see an output similar to:
+
+```
+time="Oct 14 13:39:55" level=info msg="--- Go custom plugin init success! ---- "
+[file=plugins/testplugin.so, symbol=AuthCheck] loaded ok, got 0x76e1aeb52140
+```
+
+The log shows that the plugin has correctly loaded into the Gateway and that its `init` function has been successfully invoked.
+
+### 5. Summary
+
+In the preceding steps we have put together an end-to-end build environment for both the Gateway and the plugin. Bear in mind that runtime environments may have additional restrictions beyond Go version and build flags to which the plugin developer must pay attention.
+
+Compatibility in general is a big concern when working with Go plugins: as the plugins are tightly coupled to the Gateway, consideration must always be made for the build restrictions enforced by environment and configuration options.
+
+Continue with [Loading Go Plugins into Tyk](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/plugins/golang/loading-go-plugins/).
+
+
+## Debugging Golang Plugins
+
+Plugins are native Go code compiled to a binary shared object file. The code may depend on `cgo` and require libraries like `libc` provided by the runtime environment. The following are some debugging steps for diagnosing issues arising from using plugins.
+
+### Warnings
+
+The [Plugin package - Warnings](https://pkg.go.dev/plugin#hdr-Warnings) section in the Go documentation outlines several requirements which can't be ignored when working with plugins. The most important restriction is the following:
+
+> Runtime crashes are likely to occur unless all parts of the program (the application and all its plugins) are compiled using exactly the same version of the toolchain, the same build tags, and the same values of certain flags and environment variables.
+
+We provide the *Tyk Plugin Compiler* docker image, which we strongly recommend is used to build plugins compatible with the official Gateway releases. This tool provides the cross compilation toolchain, Go version used to build the release, and ensures that compatible flags are used when compiling plugins, like `-trimpath`, `CC`, `CGO_ENABLED`, `GOOS`, `GOARCH`.
+
+The *Plugin Compiler* also works around known Go issues such as:
+
+- https://github.com/golang/go/issues/19004
+- https://www.reddit.com/r/golang/comments/qxghjv/plugin_already_loaded_when_a_plugin_is_loaded/
+
+Supplying the argument `build_id` to the *Plugin Compiler* ensures the same plugin can be rebuilt. The *Plugin Compiler* does this by replacing the plugin `go.mod` module path.
+
+Continue with [Tyk Plugin Compiler](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler/).
+
+### Using Incorrect Build Flags
+
+When working with Go plugins, it's easy to miss the restriction that the plugin at the very least must be built with the same Go version, and the same flags (notably `-trimpath`) as the Tyk Gateway on which it is to be used.
+
+If you miss an argument (for example `-trimpath`) when building the plugin, the Gateway will report an error when your API attempts to load the plugin, for example:
+
+```
+task: [test] cd tyk-release-5.3.6 && go build -tags=goplugin -trimpath .
+task: [test] cd plugins && go build -buildmode=plugin .
+task: [test] ./tyk-release-5.3.6/tyk plugin load -f plugins/testplugin.so -s AuthCheck
+tyk: error: unexpected error: plugin.Open("plugins/testplugin"): plugin was built with a different version of package internal/goarch, try --help
+```
+
+Usually when the error hints at a standard library package, the build flags between the Gateway and plugin binaries don't match.
+
+Other error messages may be reported, depending on what triggered the issue. For example, if you omitted `-race` in the plugin but the gateway was built with `-race`, the following error will be reported:
+
+```
+plugin was built with a different version of package runtime/internal/sys, try --help
+```
+
+Strictly speaking:
+
+- Build flags like `-trimpath`, `-race` need to match.
+- Go toolchain / build env needs to be exactly the same.
+- For cross compilation you must use the same `CC` value for the build (CGO).
+- `CGO_ENABLED=1`, `GOOS`, `GOARCH` must match with runtime.
+
+When something is off, you can check what is different by using the `go version -m` command for the Gateway (`go version -m tyk`) and plugin (`go version -m plugin.so`). Inspecting and comparing the output of `build` tokens usually yields the difference that caused the compatibility issue.
+
+### Plugin Compatibility Issues
+
+Below are some common situations where dependencies might cause issues:
+
+- The `Gateway` has a dependency without a `go.mod` file, but the plugin needs to use it.
+- Both the `Gateway` and the plugin share a dependency. In this case, the plugin must use the exact same version as the `Gateway`.
+- The plugin requires a different version of a shared dependency.
+
+Here’s how to handle each case:
+
+**Case 1: Gateway dependency lacks `go.mod`**
+
+- The plugin depends on the `Gateway`, which uses dependency *A*.
+- *A* doesn’t have a `go.mod` file, so a pseudo version is generated during the build.
+- Result: The build completes, but the plugin fails to load due to a version mismatch.
+
+**Solution:** Update the code to remove dependency *A*, or use a version of *A* that includes a `go.mod` file.
+
+**Case 2: Shared dependency with version matching**
+
+- The plugin and `Gateway` share a dependency, and this dependency includes a `go.mod` file.
+- The version matches, and the dependency is promoted to *direct* in `go.mod`.
+- Outcome: You’ll need to keep this dependency version in sync with the `Gateway`.
+
+**Case 3: Plugin requires a different version of a shared dependency**
+
+- The plugin and `Gateway` share a dependency, but the plugin needs a different version.
+- If the other version is a major release (e.g., `/v4`), it’s treated as a separate package, allowing both versions to coexist.
+- If it’s just a minor/patch difference, the plugin will likely fail to load due to a version conflict.
+
+**Recommendation:** For best results, use Go package versions that follow the Go module versioning (metaversion). However, keep in mind that many `Gateway` dependencies use basic `v1` semantic versioning, which doesn’t always enforce strict versioned import paths. 
+
+### List plugin symbols
+
+Sometimes it's useful to list symbols from a plugin. For example, we can list the symbols as they are compiled into our testplugin:
+
+```
+# nm -gD testplugin.so | grep testplugin
+00000000014db4b0 R go:link.pkghashbytes.testplugin
+000000000170f7d0 D go:link.pkghash.testplugin
+000000000130f5e0 T testplugin.AddFooBarHeader
+000000000130f900 T testplugin.AddFooBarHeader.deferwrap1
+000000000130f980 T testplugin.AuthCheck
+0000000001310100 T testplugin.AuthCheck.deferwrap1
+000000000130f540 T testplugin.init
+0000000001310ce0 T testplugin.init.0
+0000000001ce9580 D testplugin..inittask
+0000000001310480 T testplugin.InjectConfigData
+0000000001310180 T testplugin.InjectMetadata
+0000000001d2a3e0 B testplugin.logger
+0000000001310cc0 T testplugin.main
+0000000001310820 T testplugin.MakeOutboundCall
+0000000001310c40 T testplugin.MakeOutboundCall.deferwrap1
+```
+
+This command prints other symbols that are part of the binary. In the worst case, a build compatibility issue may cause a crash in the Gateway due to an unrecoverable error and this can be used to further debug the binaries produced.
+
+A very basic check to ensure Gateway/plugin compatibility is using the built in `go version -m <file>`:
+
+```
+[output truncated]
+	build	-buildmode=exe
+	build	-compiler=gc
+	build	-race=true
+	build	-tags=goplugin
+	build	-trimpath=true
+	build	CGO_ENABLED=1
+	build	GOARCH=amd64
+	build	GOOS=linux
+	build	GOAMD64=v1
+	build	vcs=git
+	build	vcs.revision=1db1935d899296c91a55ba528e7b653aec02883b
+	build	vcs.time=2024-09-24T12:54:26Z
+	build	vcs.modified=false
+```
+
+These options should match between the Gateway binary and the plugin. You can use the command for both binaries and then compare the outputs.
+

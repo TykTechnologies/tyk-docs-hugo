@@ -99,7 +99,7 @@ If moving from a version of Tyk older than 5.3.0 please read the explanation pro
 There are no deprecations in this release.
 
 ### Upgrade Instructions
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+When upgrading to 5.3.6, please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Dependencies {#dependencies-5.3.6}
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
@@ -235,23 +235,9 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
 <li>
 <details>
 <summary>High priority CVEs fixed</summary>
+
 Fixed the following high-priority CVEs identified in the Tyk Dashboard, providing increased protection against security vulnerabilities:
 - [CVE-2024-6104](https://nvd.nist.gov/vuln/detail/CVE-2024-6104)
-</details>
-</li>
-
-<li>
-<details>
-<summary>Strengthened RBAC password reset permissions
-</summary>
-
-We have fixed a privilege escalation vulnerability where a user with certain permissions could reset any other users' password, potentially gaining control over admin accounts. The following changes have been made to tighten the behavior of the password reset permission within the Dashboard's Role-Based Access Control (RBAC) system:
-- All users can reset their own passwords
-- A specific permission is required to reset the password of another user within the same Tyk organization
-- This permission can only be assigned by an admin or super-admin
-- This permission can only be assigned to an admin and cannot be assigned to a user group
-- The `allow_admin_reset_password` configuration option automatically grants this permission to all admin users
-- Super-admins always have the password reset permission across all Tyk organizations
 </details>
 </li>
    
@@ -283,7 +269,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+When upgrading to 5.3.5, please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 
 ### Dependencies {#dependencies-5.3.5}
@@ -354,7 +340,8 @@ There are no breaking changes in this release, however, if moving from a version
 There are no deprecations in this release.
 
 ### Upgrade Instructions
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+When upgrading to 5.3.4 please follow the [detailed upgrade instructions](#upgrading-tyk).
+
 
 ### Release Highlights
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.4">}}) below.
@@ -467,7 +454,7 @@ There are no breaking changes in this release, however, if moving from a version
 There are no deprecations in this release.
 
 ### Upgrade Instructions
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+When upgrading to 5.3.3 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Release Highlights
 
@@ -597,7 +584,7 @@ There are no deprecations in this release.
 
 
 ### Upgrade Instructions
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+When upgrading to 5.3.2 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 
 ### Release Highlights
@@ -741,7 +728,8 @@ There are no breaking changes in this release, however if moving from a version 
 There are no deprecations in this release.
 
 ### Upgrade Instructions
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+When upgrading to 5.3.1, please follow the [detailed upgrade instructions](#upgrading-tyk).
+
 
 ### Release Highlights
 This release primarily focuses on bug fixes.
