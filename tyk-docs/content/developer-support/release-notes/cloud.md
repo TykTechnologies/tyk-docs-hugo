@@ -15,7 +15,7 @@ This Tyk Cloud update introduces features that improve both flexibility in plugi
 
 
 
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-1.23.0">}}) below.
+For a comprehensive list of improvements and fixes, please check the detailed [changelog]({{< ref "#Changelog-1.23.0">}}) below.
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
