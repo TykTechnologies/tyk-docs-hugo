@@ -26,7 +26,7 @@ Here you can find the link to [Long-Term Support Releases](https://tyk.io/docs/d
 
 ### Downloads
 
-Here you can find a link to the [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
+- [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
 
 ### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
