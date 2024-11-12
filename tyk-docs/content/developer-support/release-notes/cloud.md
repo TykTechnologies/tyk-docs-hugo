@@ -20,10 +20,6 @@ For a comprehensive list of improvements and fixes, please check the detailed [c
 
 There are no breaking changes in this release
 
-### Dependencies {#dependencies-1.23.0}
-
-Here you can find the link to [Long-Term Support Releases](https://tyk.io/docs/developer-support/special-releases-and-features/long-term-support-releases/)
-
 ### Downloads
 
 - [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
