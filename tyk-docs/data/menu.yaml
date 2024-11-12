@@ -4928,7 +4928,7 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Cloud"
+        - title: "Tyk Cloud"
           path: /developer-support/release-notes/cloud
           category: Page
           show: True

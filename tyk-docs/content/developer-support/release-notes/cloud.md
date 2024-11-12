@@ -11,9 +11,7 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "changelog"]
 
 ### Release Highlights
 
-This Tyk Cloud update introduces features that improve both flexibility in plugin management and user onboarding. Now, *Mserv* (a Tyk CLI Tool, used as a file server for plugin definitions),  supports **multiple plugin bundles**, allowing greater customization and easier deployment of plugin configurations. Additionally, we added an **embedded product tour* to enhance the deployment experience, offering a guided walkthrough of Tyk Dashboard’s features, ideal for users familiarizing themselves with the platform during onboarding.
-
-
+This Tyk Cloud update introduces features that improve both flexibility in plugin management and user onboarding. Now, [Mserv]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}),  supports **multiple plugin bundles**, allowing greater customization and easier deployment of plugin configurations. Additionally, we added an **embedded product tour* to enhance the deployment experience, offering a guided walkthrough of Tyk Dashboard’s features, ideal for users familiarizing themselves with the platform during onboarding.
 
 For a comprehensive list of improvements and fixes, please check the detailed [changelog]({{< ref "#Changelog-1.23.0">}}) below.
 
@@ -52,7 +50,7 @@ Each change log item should be expandable. The first line summarises the changel
   <li>
     <details>
       <summary>
-        Contact Form for PoC Requests on Trial Expiration
+        Contact form for POC requests on trial expiration
       </summary>
       A HubSpot contact form has been added in both Tyk Cloud and Dashboard to facilitate contacting Tyk for a Proof of Concept (PoC) when a trial expires. This new form makes it easier to connect with our team and explore further options once   
       the trial period ends.
@@ -62,7 +60,7 @@ Each change log item should be expandable. The first line summarises the changel
   <li>
     <details>
       <summary>
-        Support for Bundles with Multiple Plugins
+        Support for bundles with multiple plugins
       </summary>
       Tyk Cloud now supports multiple plugins in a bundle, allowing users to manage and deploy various binaries for the same plugin bundle. This enhancement provides greater flexibility in plugin configuration and deployment using `mservctl`.
       within MServ.
@@ -72,7 +70,7 @@ Each change log item should be expandable. The first line summarises the changel
   <li>
     <details>
       <summary>
-        Embedded Product Tour During Deployment Wait Time
+        Embedded product tour during deployment wait time
       </summary>
       An embedded interactive product tour has been added within the deployment screen to guide users through the Tyk Dashboard while they wait for their free trial on-boarding to complete. This tour provides an overview of key features, helping users explore what they can do on Tyk Cloud during their trial.
     </details>
@@ -94,7 +92,7 @@ Each change log item should be expandable. The first line summarises the changel
   <li>
     <details>
       <summary>
-        UX Improvement: Redirect to Activity by API Section from the Monitoring Page
+        UX Improvement: Redirect to activity by API section from the monitoring page
       </summary>
       Users are now redirected to the "Activity by API" section in the Tyk Dashboard upon clicking on the Control Plane (CP) name within the Cloud Monitoring page. This update provides a more seamless 
       transition for users needing detailed activity insights directly from the monitoring interface.
@@ -115,7 +113,7 @@ Each change log item should be expandable. The first line summarises the changel
   <li>
     <details>
       <summary>
-        "Add Portal Deployment" Widget Hidden for Team Members
+        "Add Portal Deployment" widget hidden for team members
       </summary>
       The "Add Portal Deployment" widget on the Environment page is now hidden for team members, providing a cleaner and more tailored UI experience by limiting portal management options to authorized roles 
       only.
@@ -125,7 +123,7 @@ Each change log item should be expandable. The first line summarises the changel
   <li>
     <details>
       <summary>
-        "Delete User" Button Hidden for Org Admin on Org+Billing Admin Profiles
+        "Delete User" button hidden for org admin on Org+Billing admin profiles
       </summary>
       The "Delete User" button for Org Admins has been hidden when viewing Org+Billing Admin profiles on the Teams page. Previously, Org Admins could see this button but would encounter an error message, "operation on this class is not permitted," when attempting deletion.
     </details>
@@ -134,7 +132,7 @@ Each change log item should be expandable. The first line summarises the changel
   <li>
     <details>
       <summary>
-        Standardized Behavior for "Upgrade" and "Account & Billing" Buttons
+        Standardized behavior for "Upgrade" and "Account & Billing" buttons
       </summary>
  The behavior for accessing the billing app through the 'Upgrade' and 'Account & Billing' buttons has been standardized. Previously, clicking the 'Upgrade' button opened the billing app in a new tab, while 'Account & Billing' opened it in the same tab. Now, both buttons open the billing app consistently in the same tab.
     </details>
@@ -144,7 +142,7 @@ Each change log item should be expandable. The first line summarises the changel
   <li>
     <details>
       <summary>
-        Direct Access to "/password-reset" Page Now Accessible Without Redirect
+        Direct access to "/password-reset" page now accessible without redirect
       </summary>
 Fixed an issue where accessing the /password-reset page directly redirected users to the login page. Now, users can navigate directly to the /password-reset page without being redirected, providing a consistent experience for password-reset requests regardless of how the page is accessed.
     </details>
@@ -153,7 +151,7 @@ Fixed an issue where accessing the /password-reset page directly redirected user
   <li>
     <details>
       <summary>
-        Billing Sidebar Display Corrected When No Subscriptions Are Present
+        Billing sidebar display corrected when no subscriptions are present
       </summary>
 We have resolved a display issue in the billing sidebar that occurred when no subscriptions were active. Now, the sidebar menu displays correctly regardless of subscription status, providing a consistent and clear UI for all users.
     </details>
@@ -162,7 +160,7 @@ We have resolved a display issue in the billing sidebar that occurred when no su
   <li>
     <details>
       <summary>
-        Fix for Hybrid Nodes Visibility Logic to Manage Node Data Retention
+        Fix for hybrid codes visibility logic to manage node data retention
       </summary>
 This update addresses a critical bug in the Hybrid nodes visibility logic, which previously retained all connected node data for the Hybrid Data Planes indefinitely. The fix ensures that we only contains records from the last 7 days. This enhancement improves system performance at all stages within the Tyk Cloud UI for organizations with Hybrid Data Planes, especially those with multiple connected gateways.
 
@@ -193,7 +191,7 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
   <li>
     <details>
       <summary>
-        Bumped Dependencies in Cloud Components
+        Bumped dependencies in Tyk Cloud components
       </summary>
 Dependencies across all Tyk Cloud components have been updated to address reported security issues. This update ensures compliance with security standards, aligning the project with best practices for secure dependency management.
     </details>
