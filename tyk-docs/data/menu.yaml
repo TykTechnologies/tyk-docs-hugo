@@ -3526,6 +3526,10 @@ menu:
             category: Directory
             show: True
             menu:
+              - title: "Version 1.12.0"
+                path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.12.0
+                category: Page
+                show: True
               - title: "Version 1.11.0"
                 path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.11.0
                 category: Page
