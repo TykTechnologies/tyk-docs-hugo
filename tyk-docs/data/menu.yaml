@@ -4928,6 +4928,14 @@ menu:
         path: /developer-support/backups/backup-apis-and-policies
         category: Page
         show: True
+      - title: "Release Notes"
+        category: Directory
+        show: True
+        menu:
+        - title: "Tyk Cloud"
+          path: /developer-support/release-notes/cloud
+          category: Page
+          show: True
       - title: "Latest Tyk Releases"
         path: /developer-support/tyk-release-summary/overview
         category: Page
