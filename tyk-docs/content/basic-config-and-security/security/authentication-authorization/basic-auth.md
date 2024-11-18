@@ -42,7 +42,7 @@ With Basic Authentication, the authentication credentials are transferred from c
 
 ## Protect your API with Basic Authentication
 
-Authentication type is configured within your API Definition; this can be done via the [Tyk Dashboard](#enable-basic-authentication-using-the-tyk-dashboard) or directly within the [API Definition file](#enable-basic-authentication-in-your-file-based-api-definition").
+Authentication type is configured within your API Definition; this can be done via the [Tyk Dashboard](#enable-basic-authentication-using-the-tyk-dashboard) or directly within the [API Definition file](#enable-basic-authentication-in-your-file-based-api-definition).
 
 ### Enable Basic Authentication using the Tyk Dashboard
 
