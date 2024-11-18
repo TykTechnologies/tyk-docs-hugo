@@ -895,7 +895,7 @@ Tyk supports the following options when importing an API:
 - From an existing Tyk API definition (Classic or OAS)
 - From a SOAP WSDL definition
 
-The process for importing from an existing Tyk API definition or SOAP WSDL definition is explained [here]({{< ref "/getting-started/import-apis#import-apis-via-the-dashboard" >}}). The import function will now accept an existing Tyk OAS API definition, the process is the same as for a Tyk Classic API definition.
+The process for importing from an existing Tyk API definition or SOAP WSDL definition is explained [here]({{< ref "/getting-started/import-apis#import-apis-via-the-dashboard-api" >}}). The import function will now accept an existing Tyk OAS API definition, the process is the same as for a Tyk Classic API definition.
 
 #### Importing an OpenAPI Document
 

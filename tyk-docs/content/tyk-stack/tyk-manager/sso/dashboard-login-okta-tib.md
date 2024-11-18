@@ -15,7 +15,7 @@ This is an end-to-end worked example of how you can use [Okta](https://www.okta.
 ) to log in to your Dashboard.
 This guide assumes the following:
 
-* You already have authorized access to Tyk's Dashboard. If you haven't, [get the authorization key by following this doc]({{< ref "basic-config-and-security/security/dashboard/create-users#a-name-with-api-a-create-a-dashboard-user-with-the-api" >}}).
+* You already have authorized access to Tyk's Dashboard. If you haven't, [get the authorization key by following this doc]({{< ref "basic-config-and-security/security/dashboard/create-users#creating-a-dashboard-user-using-the-dashboard-api" >}}).
 * For simplicity, you are running TIB locally on port 3010
 * You are able to edit TIB's configuration file.
 
@@ -78,7 +78,7 @@ This guide assumes the following:
 
 
 7. Start TIB by running the binary (`profiles.json` is in the same CWD)
-   See [Install TIB]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers#tib" >}}) for detailed instructions on how to install TIB
+   See [Install TIB]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers#tyk-identity-broker-tib-overview" >}}) for detailed instructions on how to install TIB
 8. Test that it works:
    From the broswer call `http://localhost:3010/auth/{PROFILE-NAME-IN-TIB}/openid-connect`
     - If it's working you'll be redirected to Okta's web page and will be asked to enter your Okta user name and password.

@@ -114,7 +114,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 You can add a user via the API without a password by leaving out the `password` field. You then use [Set User Password](#set-user-password) request to add a password.
 {{< /note >}}
 
-You need to have the `users` [Permission object]({{< ref "basic-config-and-security/security/dashboard/user-roles#the-permissions-object" >}}) set to write to use **Add User**.
+You need to have the `users` [Permission object]({{< ref "basic-config-and-security/security/dashboard/user-roles" >}}) set to write to use **Add User**.
 
 If you do set a password, you need to keep a record of it, to enable the password to be reset in the future.
 
@@ -157,7 +157,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 If a user is created with a blank password, you will need to add a password in a second API call to set a password. In this scenario, the `current_password` field is not required. To change an current password, you need to know the existing password set in **Add User**.
 
-You need to have the `users` [Permission object]({{< ref "basic-config-and-security/security/dashboard/user-roles#the-permissions-object" >}}) set to **read** to use **Set User Password**.
+You need to have the `users` [Permission object]({{< ref "basic-config-and-security/security/dashboard/user-roles" >}}) set to **read** to use **Set User Password**.
 
 | **Property** | **Description**                      |
 | ------------ | -------------------------------------|
@@ -244,7 +244,7 @@ PUT -H "admin-auth: <your secret>" http://<dashboard>/admin/users/{USER_ID}/acti
 
 ### Update User
 
-You need to have the `users` [Permission object]({{< ref "basic-config-and-security/security/dashboard/user-roles#the-permissions-object" >}}) set to write to use **Update User**.
+You need to have the `users` [Permission object]({{< ref "basic-config-and-security/security/dashboard/user-roles" >}}) set to write to use **Update User**.
 
 | **Property** | **Description**        |
 | ------------ | -----------------------|
@@ -284,7 +284,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 This call allows you to reset a user's current Dashboard session.
 
-You need to have the `users` [Permission object]({{< ref "basic-config-and-security/security/dashboard/user-roles#the-permissions-object" >}}) set to write to use this call.
+You need to have the `users` [Permission object]({{< ref "basic-config-and-security/security/dashboard/user-roles" >}}) set to write to use this call.
 
 {{< note success >}}
 **Note**  

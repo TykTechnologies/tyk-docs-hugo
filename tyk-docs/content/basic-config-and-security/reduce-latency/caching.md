@@ -62,7 +62,7 @@ Safe request caching at the API level is enabled by setting the `cache_all_safe_
 
 This mode of operation is referred to as Global Caching because it is applied globally within the scope of a single API. Picking this approach will override any per-endpoint (per-path) caching configuration, so it’s not suitable if granular control is required.
 
-Tyk does support safe request caching at the more granular, per-endpoint level, as described [here]({{< ref "/basic-config-and-security/reduce-latency/caching/advanced-cache#selective-caching-by-endpoint-all-safe-requests">}}) - but `cache_all_safe_requests` must be set to `false` in that scenario.
+Tyk does support safe request caching at the more granular, per-endpoint level, as described [here]({{< ref "/basic-config-and-security/reduce-latency/caching/advanced-cache#request-selective-cache-control">}}) - but `cache_all_safe_requests` must be set to `false` in that scenario.
 
 #### Cache Timeout
 The cache timeout (Time-To-Live or TTL) value can be configured per API and is the maximum age for which Tyk will consider a cache entry to be valid. You should use this to optimize the tradeoff between reducing calls to your upstream service and potential for changes to the upstream data.

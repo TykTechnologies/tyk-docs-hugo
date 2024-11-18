@@ -254,7 +254,7 @@ Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/t
 
 ### mockResponse: invoke an automatic response from the Gateway without accessing upstream service
 
-The OpenAPI Document that you used in the example [above]({{< ref "#validateRequest-check-that-the-API-request-payload-meets-a-defined-schema" >}}), we also defined a JSON schema that describes the response format for any request that hits the `GET /pet/{petId}` path.
+The OpenAPI Document that you used in the example [above]({{< ref "#validaterequest-check-that-the-api-request-payload-meets-a-defined-schema" >}}), we also defined a JSON schema that describes the response format for any request that hits the `GET /pet/{petId}` path.
 
 Tyk Gateway can "understand" and use this schema to create a mock response for any incoming requests.
 This is achieved by adding the `mockResponse` query parameter to the `PATCH` request, when updating the Tyk OAS API Definition.
