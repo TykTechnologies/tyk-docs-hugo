@@ -91,4 +91,4 @@ Please note, while the `headers` field will continue to be available and maintai
 
 ### Supported Response Plugin Languages
 
-See [Supported Plugins]({{< ref "plugins/supported-languages#plugin-support" >}}) for details on which languages the response plugin is supported in.
+See [Supported Plugins]({{< ref "plugins/supported-languages" >}}) for details on which languages the response plugin is supported in.
