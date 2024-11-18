@@ -59,7 +59,7 @@ In this example, the endpoint caching middleware has been configured to cache al
 For ultimate control over what Tyk caches, you should use the advanced configuration options for the per-endpoint cache. You can separately configure, for each HTTP method for an endpoint:
 - an individual cache refresh (timeout)
 - a list of HTTP response codes that should be cached
-- a pattern match to cache only requests containing specific data in the [request body]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache#selective-caching-by-body-value" >}})
+- a pattern match to cache only requests containing specific data in the [request body]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache#request-selective-cache-control" >}})
 
 To enable the advanced middleware you must add a new `advance_cache_config` object to the `extended_paths` section of your API definition.
 
@@ -185,7 +185,7 @@ You can use Tyk Operator to configure the endpoint caching middleware for your T
 
 ### Simple endpoint cache
 
-Configuring simple endpoint caching in Tyk Operator is similar to the process for a [Tyk Classic API Definition](#tyk-classic). A list of endpoints for which you wish to cache safe requests should be configured within the `cache` list in the `extended_paths` section.
+Configuring simple endpoint caching in Tyk Operator is similar to the process for a Tyk Classic API Definition. A list of endpoints for which you wish to cache safe requests should be configured within the `cache` list in the `extended_paths` section.
 
 In the API-level `cache_options` object, you must enable caching by setting `enable_cache` to true and configure the cache refresh period by setting a value for the `cache_timeout` in seconds. To allow selective caching per endpoint you should also set `cache_all_safe_requests`to `false`.
 
@@ -233,7 +233,7 @@ Advanced caching with Tyk Operator is a similar process to that for configuring 
 
 To enable the advanced middleware you must add a new `advance_cache_config` object to the `extended_paths` section of your API definition.
 
-This allows you to configure caching per endpoint. For each endpoint, it is possible to specify the endpoint path, method, list of response codes to cache, cache timeout and a cache key regular expression. The cache key regular expression represents a pattern match to cache only requests containing specific data in the [request body]({{< ref " basic-config-and-security/reduce-latency/caching/advanced-cache#selective-caching-by-body-value" >}})
+This allows you to configure caching per endpoint. For each endpoint, it is possible to specify the endpoint path, method, list of response codes to cache, cache timeout and a cache key regular expression. The cache key regular expression represents a pattern match to cache only requests containing specific data in the [request body]({{< ref " basic-config-and-security/reduce-latency/caching/advanced-cache#request-selective-cache-control" >}})
 
 For example:
 

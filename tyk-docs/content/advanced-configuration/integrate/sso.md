@@ -169,4 +169,4 @@ Host: localhost:3000
 ## SSO with LDAP Integration
 Detailed instruction on setting [SSO with LDAP]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/dashboard-login-ldap-tib" >}}).
 
-See [apply search filters]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/ldap#a-name-ldap-search-a-using-advanced-ldap-search" >}}) to add advanced search to your LDAP authentication.
+See [apply search filters]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/ldap#using-advanced-ldap-search" >}}) to add advanced search to your LDAP authentication.

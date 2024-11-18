@@ -27,7 +27,7 @@ There are three middleware components that can be scripted with Tyk:
 
 1. **Custom JavaScript plugins**: These execute either *pre* or *post* validation. A *pre* middleware component will execute before any session validation or token validation has taken place, while a *post* middleware component will execute after the request has been passed through all checks and is ready to be proxied upstream.
 
-2. **Dynamic event handlers**: These components fire on certain API events (see the event handlers section), these are fired Async and do not have a cooldown timer. These are documented [here]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks#setup-with-api" >}}).
+2. **Dynamic event handlers**: These components fire on certain API events (see the event handlers section), these are fired Async and do not have a cooldown timer. These are documented [here]({{< ref "/product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/event-webhook-tyk-oas#set-up-a-webhook-event-handler-in-the-tyk-oas-api-definition" >}}).
 
 3. **Virtual endpoints**: These are powerful programmable middleware invoked towards the end of the request processing chain. Unlike the custom JavaScript plugins, the virtual endpoint terminates the request. These are documented [here]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}).
 

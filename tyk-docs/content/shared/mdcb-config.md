@@ -719,7 +719,7 @@ Specifies the group key TTL in seconds. This key is used to prevent a group of g
 ENV: <b>TYK_MDCB_ENABLEOWNERSHIP</b><br />
 Type: `bool`<br />
 
-Enables [API Ownership]({{< ref "tyk-dashboard/rbac#enabling-api-ownership" >}}) in MDCB. It allows the gateways in the data plane cluster to load only APIs that are accessible by the user and user group associated with the `slave_options.api_key` that is used to connect to MDCB (defined in `tyk.config` of the gateway).
+Enables [API Ownership]({{< ref "product-stack/tyk-dashboard/advanced-configurations/user-management/api-ownership" >}}) in MDCB. It allows the gateways in the data plane cluster to load only APIs that are accessible by the user and user group associated with the `slave_options.api_key` that is used to connect to MDCB (defined in `tyk.config` of the gateway).
 This will be enforced if `enable_ownership` is also enabled in the Dashboard and your API definition has been associated with a user or user_group
 Defaults to `false`.
 

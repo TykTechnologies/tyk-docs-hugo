@@ -395,7 +395,7 @@ spec:
 
 ## Ingress Path Types
 
-Each path in an Ingress must have its own particular path type. Kubernetes offers three types of path types: `ImplementationSpecific`, `Exact`, and `Prefix`. Currently, not all path types are supported. The below table shows the unsupported path types for [Sample HTTP Ingress Resource](#sample-http-ingress-resource) based on the examples in the [Kubernetes Ingress documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/#examples).
+Each path in an Ingress must have its own particular path type. Kubernetes offers three types of path types: `ImplementationSpecific`, `Exact`, and `Prefix`. Currently, not all path types are supported. The below table shows the unsupported path types for sample HTTP Ingress Resource based on the examples in the [Kubernetes Ingress documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/#examples).
 
 | Kind   | Path(s)   | Request path(s) | Expected to match?               | Works as Expected                       |
 |--------|-----------|-----------------|----------------------------------|-----------------------------------------|
@@ -405,7 +405,7 @@ Each path in an Ingress must have its own particular path type. Kubernetes offer
 | Prefix | /aaa/bbb/ | /aaa/bbb        | Yes, ignores trailing slash      | No, /aaa/bbb does not match.            |
 | Prefix | /aaa/bbb  | /aaa/bbbxyz     | No, does not match string prefix | No, the request forwarded to service.   |
 
-Please bear in mind that if `proxy.strip_listen_path` is set to true on API Definition, Tyk strips the listen-path (for example, the listen-path for the Ingress under [Sample HTTP Ingress Resource](#sample-http-ingress-resource) is /httpbin) with an empty string.
+Please bear in mind that if `proxy.strip_listen_path` is set to true on API Definition, Tyk strips the listen-path (for example, the listen-path for the Ingress under sample HTTP Ingress Resource is /httpbin) with an empty string.
 
 The following table shows an example of path matching if the listen-path is set to `/httpbin` or `/httpbin/`.
 
