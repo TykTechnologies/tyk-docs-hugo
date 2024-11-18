@@ -88,7 +88,7 @@ TYK_PMP_UPTIMEPUMPCONFIG_TYPE=postgres
 TYK_PMP_UPTIMEPUMPCONFIG_CONNECTIONSTRING=user=postgres password=topsecretpassword host=tyk-postgres port=5432 database=tyk_analytics
 ```
 
-Further details for configuring an uptime SQL database are available [here]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#sql-uptime-pump" >}})
+Further details for configuring an uptime SQL database are available [here]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#uptime_pump_configuptime_type" >}})
 
 #### How To Configure Tyk Pump To Write Uptime Data To A Mongo Database?
 

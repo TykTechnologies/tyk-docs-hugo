@@ -12,8 +12,8 @@ This guide explains how to deploy your custom Go plugins on Tyk Cloud:
 
 | Path | Current Version | Target Version |
 | ---  | --- | --- |
-| [Path 1](#path1)    | < 4.1.0 | < 4.1.0 |
-| [Path 2](#path2)    | >= 4.1.0 | >= 4.2.0 |
+| [Path 1](#path-1)    | < 4.1.0 | < 4.1.0 |
+| [Path 2](#path-2)    | >= 4.1.0 | >= 4.2.0 |
 
 ## Path 1 - Current Version < 4.1.0 and Target Version < 4.1.0 {#path-1}
 

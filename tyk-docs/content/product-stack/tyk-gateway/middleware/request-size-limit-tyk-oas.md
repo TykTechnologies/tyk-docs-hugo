@@ -14,7 +14,7 @@ If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{
 ## Configuring the middleware in the Tyk OAS API Definition
 
 There are three different levels of granularity that can be used when configuring a request size limit.
-- [system-wide]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits#applying-a-system-wide-size-limit" >}}): affecting all APIs deployed on the gateway
+- [system-wide]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits#applying-a-system-level-size-limit" >}}): affecting all APIs deployed on the gateway
 - [API-level]({{< ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-oas#applying-a-size-limit-for-a-specific-api" >}}): affecting all endpoints for an API
 - [endpoint-level]({{< ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-oas#applying-a-size-limit-for-a-specific-endpoint" >}}): affecting a single API endpoint
 

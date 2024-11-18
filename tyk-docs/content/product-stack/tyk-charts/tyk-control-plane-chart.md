@@ -59,7 +59,7 @@ For further documentation relating to *helm* command usage, please refer to the 
 
 At a minimum, modify `values.yaml` for the following settings:
 1. [Set Redis connection details](#set-redis-connection-details-required)
-2. [Set Mongo or PostgreSQL connection details](#set-mongo-or-postgressql-connection-details-required)
+2. [Set Mongo or PostgreSQL connection details](#set-mongo-or-postgresql-connection-details-required)
 3. [Tyk Dashboard License](#tyk-dashboard-license-required)
 4. [Tyk MDCB License](#tyk-mdcb-license-required)
 5. If you would like to use Developer Portal, an additional license is required: [Tyk Developer Portal License](#tyk-developer-portal-license-required)
@@ -607,13 +607,13 @@ This will create a _PodMonitor_ resource for your Pump instance.
 ```
 
 #### Mongo pump
-To enable Mongo pump, add `mongo` to `tyk-pump.pump.backend` and add connection details for mongo under `global.mongo`. See [Mongo Installation](#set-mongo-or-postgressql-connection-details-required) section above.
+To enable Mongo pump, add `mongo` to `tyk-pump.pump.backend` and add connection details for mongo under `global.mongo`. See [Mongo Installation](#set-mongo-or-postgresql-connection-details-required) section above.
 
 By default, it will enable Mongo Aggregate, Mongo Graph Pump and Mongo Selective Pump.
 
 
 #### SQL Pump
-To enable SQL pump, add `postgres` to `tyk-pump.pump.backend` and add connection details for postgres under `global.postgres`. See [PostgresSQL Installation](#set-mongo-or-postgressql-connection-details-required) section above.
+To enable SQL pump, add `postgres` to `tyk-pump.pump.backend` and add connection details for postgres under `global.postgres`. See [PostgresSQL Installation](#set-mongo-or-postgresql-connection-details-required) section above.
 
 By default, it will enable Postgres Aggregate, Postgres Graph Aggregate, SQL Pump and SQL graph pump.
 

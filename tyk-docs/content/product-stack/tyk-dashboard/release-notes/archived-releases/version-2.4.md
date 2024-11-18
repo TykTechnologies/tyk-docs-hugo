@@ -121,7 +121,7 @@ We have added a new `log_level` configuration variable to `tyk.conf` to control 
 
 Possible values are: `debug`, `info`, `warn`, `error`
 
-[Docs]({{< ref "tyk-oss-gateway/configuration#a-name-log-level-a-log-level" >}})
+[Docs]({{< ref "tyk-oss-gateway/configuration#log_level" >}})
 
 #### Added jsonMarshal to body transform templates
 
@@ -267,7 +267,7 @@ This is a  UI only fix, it is still allowable via the API (which is OK).
 See https://tyk.io/docs/configure/tyk-pump-configuration/ for a sample pump.conf file.
 
 ### <a name="mdcb"></a> MDCB v1.4.0
-Added support for Mutual TLS, mentioned by Gateway and Dashboard above. See [Docs]({{< ref "basic-config-and-security/security/mutual-tls#a-name-mdcb-a-mdcb" >}})
+Added support for Mutual TLS, mentioned by Gateway and Dashboard above. See [Docs]({{< ref "basic-config-and-security/security/mutual-tls#how-tyk-supports-mutual-tls" >}})
   
 Also fixed bug when Mongo connections became growing though the roof if client with wrong credentials tries to connect.
 
@@ -282,7 +282,7 @@ Tyk Identity Broker now fully support LDAP search with complex filters! [Docs]({
 
 Cloud users will be automatically upgraded to the new release.
 
-Hybrid users should follow the upgrade instructions [here]({{< ref "upgrading-tyk#tyk-multi-cloud-gateway" >}}).
+Hybrid users should follow the upgrade instructions [here]({{< ref "upgrading-tyk#upgrade-guides-toc" >}}).
 
 Self-Managed users can download the new release packages from their usual repositories.
 

@@ -101,7 +101,7 @@ Use the *save* or *create* buttons to save the changes and activate the middlewa
 {{< note success >}}
 **Note**
 
-For the mock response to be enabled, the endpoint must also be in a list. We recommend adding the path to an [allow list]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#allowlist" >}}). If this isn't done, then the mock will not be saved when you save your API in the designer.
+For the mock response to be enabled, the endpoint must also be in a list. We recommend adding the path to an [allow list]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas" >}}). If this isn't done, then the mock will not be saved when you save your API in the designer.
 {{< /note >}}
 
 ## Configuring the middleware in Tyk Operator {#tyk-operator}
