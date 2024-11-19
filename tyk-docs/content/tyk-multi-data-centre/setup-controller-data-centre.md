@@ -91,16 +91,20 @@ ADMIN_EMAIL=admin@default.com
 ADMIN_PASSWORD=changeit
 DASHBOARD_LICENSE=changeit
 MDCB_LICENSE=changeit
+SECURITY_SECRET=changeit
+OPERATOR_LICENSE=changeit
 
 kubectl create namespace $NAMESPACE
 
 kubectl create secret generic my-secrets -n $NAMESPACE \
     --from-literal=APISecret=$API_SECRET \
     --from-literal=AdminSecret=$ADMIN_KEY \
-    --from-literal=DashLicense=$DASHBOARD_LICENSE
+    --from-literal=DashLicense=$DASHBOARD_LICENSE \
+    --from-literal=OperatorLicense=$OPERATOR_LICENSE
 
 kubectl create secret generic mdcb-secrets -n $NAMESPACE \
-    --from-literal=MDCBLicense=$MDCB_LICENSE
+    --from-literal=MDCBLicense=$MDCB_LICENSE \
+    --from-literal=securitySecret=$SECURITY_SECRET
 
 kubectl create secret generic admin-secrets -n $NAMESPACE \
     --from-literal=adminUserFirstName=Admin \

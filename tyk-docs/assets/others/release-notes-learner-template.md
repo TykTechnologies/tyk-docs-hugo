@@ -20,7 +20,7 @@ tags: ["Tyk Dashboard", "Release notes", "changelog", "vX.Y", "X.Y.0", "X.Y", "X
 
 **This page contains all release notes for version 5.2.X displayed in a reverse chronological order**
 
-### Support Lifetime
+## Support Lifetime
 <!-- Required. replace X.Y with this release and set the correct quarter of the year -->
 Our minor releases are supported until our next minor comes out. This would be <vX.Y+1> scheduled in Q<1-4> if this goes ahead as planned. If not, X.Y will remain in support until our next LTS version comes out in March 2024.
 
@@ -28,9 +28,15 @@ Our minor releases are supported until our next minor comes out. This would be <
 
 ## X.Y.Z Release Notes
 
-##### Release Date DD Mon YYYY <<update>>
+### Release Date DD Mon YYYY <<update>>
 
-#### Breaking Changes
+### Release Highlights
+<!-- Required. Use similar ToV to previous release notes. For example for a patch release:
+This release primarily focuses on bug fixes.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
+-->
+
+### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
@@ -44,14 +50,14 @@ We try to avoid making changes to our log messages, especially at error and crit
 Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates, etc. -->
 <!-- #### Planned Breaking Changes -->
 
-#### Dependencies
+### Dependencies {#dependencies-X.Y.Z}
 <!-- Required. Use this section to announce the following types of dependencies compatible with the release:
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 
 3rd party dependencies and tools -->
 
-##### Compatibility Matrix For Tyk Components
+#### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 An illustrative example is shown below. -->
 <!-- TBP - to be published. Helm chart, MDCB, operator and sync versions are the new versions and as such will be published only a few hours after the main release of 
@@ -83,7 +89,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-#### Deprecations
+### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecations in this release.
 
@@ -93,37 +99,26 @@ Once you put an item in this section, we must keep this item listed in all the f
 <!-- ##### Future deprecations
 -->
 
-#### Upgrade instructions
+### Upgrade instructions
 <!-- Required. For patches release (Z>0) use this:
 For users currently on vX.Y.Z, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version X.Y.0 and proceed directly to this latest patch release.
 <br/>
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 -->
 
-#### Release Highlights
-<!-- Required. Use similar ToV to previous release notes. For example for a patch release:
-This release primarily focuses on bug fixes.
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
--->
-##### Topic in The Release Highlights
-Topic in The Release Highlights
-
-##### Another Topic in The Release Highlights
-Topic in The Release Highlights
-
-#### Downloads
+### Downloads
 - <<!-- [docker image to pull](https://hub.docker.com/layers/tykio/tyk-{dashboard|gateway}/vX.Y.Z/images/{sha-image}) --!>>
 - Helm chart - TBP (To Be Published separately after the release) <!-- This is the link to the Helm charts links. Please be mindful that this URL is only available a few hours or day/s after we release the main release, so this link needs to be updated in a separate iteration -->
 <!-- source code tarball for oss projects -->
 
-#### Changelog {#Changelog-vX.Y.Z}
+### Changelog {#Changelog-vX.Y.Z}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 
-##### Added
+#### Added
 <!-- This section should be a bullet point list of new features. Explain:
 
 - The purpose of the new feature
@@ -150,7 +145,7 @@ The actual changelog item text should go here. It should be no more than three o
 </ul>
 
   
-##### Changed
+#### Changed
 <!-- This should be a bullet-point list of updated features. Explain:
 
 - Why was the update necessary?
@@ -176,7 +171,7 @@ The actual changelog item text should go here. It should be no more than three o
 </li>
 </ul>
  
-##### Fixed
+#### Fixed
 <!-- This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
 
 - What problem the issue caused
@@ -213,7 +208,7 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
     - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
 -->
 
-##### Comunity Contributions
+#### Community Contributions
 <!-- This section should thank external contributors and include a linked reference to their GitHub username with a summary of their contribution.
 
 Example
@@ -241,6 +236,7 @@ Repeat the release notes section above for every patch here
 
 <!-- The footer of the release notes page. It contains a further information section with details of how to upgrade Tyk,
 links to API documentation and FAQs. You can copy it from the previous release. -->
+
 ## Further Information
 
 ### Upgrading Tyk
@@ -255,7 +251,7 @@ If there were changes in any of Tyk’s API docs:
 - Has a link to the endpoint documentation being included?
 - Has the benefit of the new/updated endpoint been explained in the release highlights and changelog?
 -->
-- [OpenAPI Document]({{<ref "blabla" >}})
+- [OpenAPI Document]({{<ref "" >}})
 - [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/collection/<collection-id>)
 
 ### FAQ

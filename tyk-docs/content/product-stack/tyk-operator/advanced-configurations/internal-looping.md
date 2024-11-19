@@ -64,7 +64,7 @@ Triggers are essential for executing specific actions when particular criteria a
 - Redirect users to different APIs in the Gateway based on their authentication status.
 - Enforce business rules by redirecting requests to different APIs in the Gateway based on certain parameters.
 
-The process for configuring internal looping in triggers to is similar to that explained in section [URL Rewrites](#url-rewrites").
+The process for configuring internal looping in triggers to is similar to that explained in section [URL Rewrites](#url-rewrites).
 
 Assume that we wish to instruct Tyk Operator to redirect all *Basic Authentication* requests to the API identified by `basic-auth-internal` within the `default` namespace. Subsequently, we can use a `rewrite_to_internal` object as follows:
 

@@ -3,7 +3,7 @@ title: Tyk Gateway 5.3 LTS Release Notes
 date: 2024-03-27T15:51:11Z
 description:
   "Release notes documenting updates, enhancements, and changes for Tyk Gateway versions within the 5.3.X series."
-tags: ["Tyk Gateway", "Release notes", "changelog", "v5.3", "5.3.0", "5.3.1", "5.3.3", "5.3.5", "5.3.7"]
+tags: ["Tyk Gateway", "Release notes", "changelog", "v5.3", "5.3.0", "5.3.1", "5.3.3", "5.3.5", "5.3.7", "5.3.8" ]
 ---
 
 <!-- Required. oss or licensed. Choose one of the following:
@@ -21,6 +21,127 @@ tags: ["Tyk Gateway", "Release notes", "changelog", "v5.3", "5.3.0", "5.3.1", "5
 <!-- Required. replace X.Y with this release and set the correct quarter of the year -->
 
 Our minor releases are supported until our next minor comes out.
+
+---
+
+## 5.3.8 Release Notes
+
+### Release Date 07 November 2024
+
+### Release Highlights
+
+This release focuses mainly on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.8">}}) below.
+
+### Breaking Changes
+
+This release has no breaking changes.
+
+### Dependencies
+
+<!--Required. Use this section to announce the following types of dependencies compatible with the release:
+Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+3rd party dependencies and tools -->
+
+#### Compatibility Matrix For Tyk Components
+
+<!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+An illustrative example is shown below. -->
+
+| Gateway Version | Recommended Releases                                               | Backwards Compatibility |
+| --------------- | ------------------------------------------------------------------ | ----------------------- |
+| 5.3.8           | MDCB v2.5.1                                                        | MDCB v2.5.1             |
+|                 | Operator v0.17                                                     | Operator v0.16          |
+|                 | Sync v1.4.3                                                        | Sync v1.4.3             |
+|                 | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v2.0.0 | Helm all versions       |
+|                 | EDP v1.8.3                                                         | EDP all versions        |
+|                 | Pump v1.9.0                                                        | Pump all versions       |
+|                 | TIB (if using standalone) v1.5.1                                   | TIB all versions        |
+
+#### 3rd Party Dependencies & Tools
+
+<!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
+
+Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
+
+An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
+
+| Third Party Dependency                                        | Tested Versions       | Compatible Versions   | Comments                                                                                   |
+| ------------------------------------------------------------- | --------------------- | --------------------- | ------------------------------------------------------------------------------------------ |
+| [Go](https://go.dev/dl/)                                      |  1.22 (GW)            |  1.22 (GW)            | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.22 |
+| [Redis](https://redis.io/download/)                           | 6.2.x, 7.x            | 6.2.x, 7.x            | Used by Tyk Gateway                                                                        |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x                | v3.0.x                | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})           |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the
+ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+### Deprecations
+
+This is an advanced notice that the dedicated External OAuth, OpenID Connect (OIDC) authentication options, and SQLite support will be deprecated starting in version 5.7.0. We recommend that users of the [External OAuth]({{< ref "basic-config-and-security/security/authentication-authorization/ext-oauth-middleware" >}}) and [OpenID Connect]({{< ref "basic-config-and-security/security/authentication-authorization/openid-connect" >}}) methods migrate to Tyk's dedicated [JWT Auth]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#about-jwts" >}}) method. Please review your API configurations, as the Gateway logs will provide notifications for any APIs utilizing these methods.
+
+
+### Upgrade Instructions
+
+If you are upgrading to 5.3.8, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.3.8)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.3.8
+    ```
+- Helm charts
+  - [tyk-charts v2.0.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.0.md">}})
+- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+
+### Changelog {#Changelog-v5.3.8}
+
+<!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
+Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
+"...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
+"New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
+
+#### Added
+<ul>
+<li>
+<details>
+<summary>Deprecation notice of External OAuth and OpenID Connect options</summary>
+A deprecation notice for External OAuth and OpenID Connect (OIDC) authentication mechanisms has been implemented in the Gateway logs starting from version 5.3.8. This provides advanced notification to users regarding any APIs configured with these authentication methods in preparation for future upgrades where these middleware options may be removed in version 5.7.0.
+</details>
+</li>
+</ul>
+
+#### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Memory consumption reduced in Gateway for large payloads</summary>
+
+This update fixes a bug that caused increased memory usage when proxying large response payloads that was introduced in version 5.3.1, restoring memory requirements to the levels seen in version 5.0.6. Users experiencing out-of-memory errors with 1GB+ file downloads will notice improved performance and reduced latency.
+</details>
+</li>
+<li>
+<details>
+<summary>Path-based permissions in combined policies not preserved</summary>
+
+We resolved an issue that caused path-based permissions in policies to be lost when policies were combined, potentially omitting URL values and restricting access based on the merge order. It ensures that all applicable policies merge their allowed URL access rights, regardless of the order in which they are applied.
+</details>
+</li>
+<li>
+<details>
+<summary>Enhanced flexibility in Tyk OAS schema validation</summary>
+
+A backwards compatibility issue in the way that the Gateway handles Tyk OAS API definitions has been addressed by reducing the strictness of validation against the expected schema. Since Tyk version 5.3, the Gateway has enforced strict validation, potentially causing problems for users downgrading from newer versions. With this change, Tyk customers can move between versions seamlessly, ensuring their APIs remain functional and avoiding system performance issues.
+</details>
+</li>
+<li>
+<details>
+<summary>Fix for API key loss on worker Gateways due to keyspace sync interruption</summary>
+
+This update resolves an issue where API keys could be lost if the [keyspace synchronization]({{<ref "product-stack/tyk-enterprise-mdcb/advanced-configurations/synchroniser">}}) between control and data planes was interrupted. The solution now enforces a resynchronization whenever a connection is re-established between MDCB and the data plane, ensuring key data integrity and seamless API access.
+</details>
+</li>
+</ul>
 
 ---
 
@@ -46,9 +167,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first
-[upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk)
-section for detailed upgrade instructions.
+When upgrading to 5.3.7 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Dependencies
 
@@ -170,9 +289,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first
-[upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk)
-section for detailed upgrade instructions.
+When upgrading to 5.3.6 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Dependencies
 
@@ -364,9 +481,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first
-[upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk)
-section for detailed upgrade instructions.
+When upgrading to 5.3.5 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Dependencies
 
@@ -507,9 +622,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first
-[upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk)
-section for detailed upgrade instructions.
+When upgrading to 5.3.4 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Dependencies
 
@@ -582,9 +695,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first
-[upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk)
-section for detailed upgrade instructions.
+When upgrading to 5.3.3 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Release Highlights
 
@@ -749,9 +860,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first
-[upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk)
-section for detailed upgrade instructions.
+When upgrading to 5.3.2 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Release Highlights
 
@@ -893,9 +1002,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first
-[upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk)
-section for detailed upgrade instructions.
+When upgrading to 5.3.1 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Release Highlights
 
@@ -1200,7 +1307,7 @@ For OSS deployments -
 2. Backup all your API definitions (Tyk OAS API and Classic Definitions) by saving your API and policy files or by
    exporting them using the `GET /tyk/apis` and `Get /tyk/policies`
 3. Performing the upgrade - follow the instructions in the [upgrade
-   guide]({{<ref "upgrading-tyk#tyk-gateway-upgrade---used-in-licensed-and-open-source-deployments">}}) when upgrading Tyk.
+   guide]({{<ref "upgrading-tyk">}}) when upgrading Tyk.
 
 ### Release Highlights
 

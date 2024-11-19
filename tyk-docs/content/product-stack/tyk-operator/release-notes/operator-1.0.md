@@ -131,7 +131,8 @@ Go to the [Upgrading Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk
   - ```bash
     docker pull tykio/tyk-operator:v1.0.0
     ```
-- Helm chart - TBP (To Be Published separately after the release) <!-- This is the link to the Helm charts links. Please be mindful that this URL is only available a few hours or day/s after we release the main release, so this link needs to be updated in a separate iteration -->
+- Helm chart
+  - [tyk-charts v2.1.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.1.md">}}) <!-- This is the link to the Helm charts links. Please be mindful that this URL is only available a few hours or day/s after we release the main release, so this link needs to be updated in a separate iteration -->
 <!-- source code tarball for oss projects -->
 
 ### Changelog {#Changelog-v1.0.0}

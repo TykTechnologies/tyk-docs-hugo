@@ -532,6 +532,15 @@ PORTAL_CORS_ALLOWED_METHODS=GET,POST,HEAD
 **Type:** `boolean` <br/>
 **Description**: Indicates whether the request can include user credentials like cookies, HTTP authentication or client side SSL certificates. The default is `false`.
 
+### PORTAL_TIB_ENABLED
+**Config file:** TIB.Enabled <br/>
+**Type:** `boolean` <br/>
+**Description**: Enables or disables the Tyk Identity Broker (TIB) integration. When disabled, it will not appear in the UI. The default value is `false`.
+
+### PORTAL_NOTIFICATIONS_JOB_FREQUENCY
+**Config file:** NotificationsJobFrequency <br/>
+**Type:** `int` <br/>
+**Description**: Defines the frequency of the notifications job that fetch notifications from the portal's database in minutes. The default value is `30` minutes.
 
 ## Sample config file
 ```json
@@ -574,6 +583,9 @@ PORTAL_CORS_ALLOWED_METHODS=GET,POST,HEAD
     "EnableLogs": true,
     "MaxRetries": 3,
     "RetryDelay": 2000
+  },
+  "TIB": {
+    "Enabled": true
   }
 }
 ```
@@ -604,4 +616,5 @@ PORTAL_DATABASE_CONNECTIONSTRING="admin:secr3t@(localhost:3308)/portal?charset=u
 PORTAL_DATABASE_ENABLELOGS=true
 PORTAL_DATABASE_MAXRETRIES=3
 PORTAL_DATABASE_RETRYDELAY=5000
+PORTAL_TIB_ENABLED=true
 ```

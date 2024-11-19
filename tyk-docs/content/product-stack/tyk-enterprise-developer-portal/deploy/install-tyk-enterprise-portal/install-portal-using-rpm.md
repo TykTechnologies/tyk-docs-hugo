@@ -48,6 +48,13 @@ sudo rpm -i portal-1.7.0-1.x86_64.rpm
 ### Configure and launch the portal
 
 #### Update the configuration file with your license
+
+{{< note success >}}
+**Note** 
+
+SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please transition to PostgreSQL, MongoDB or one of the listed compatible alternatives.
+{{< /note >}}
+
 Before starting the portal service, you need to configure the portal. Once the rpm package has been installed, the portal configuration file will be located in `/opt/portal/portal.conf`.
 Initially, the config file is filled with the default values. The minimal configuration change to start the portal is to add the `LicenseKey` property to the config file.
 The below sample configuration will start the portal on portal 3001 with SQLite as a database, no TLS enabled, and all CMS assets (images, theme files, etc.) are stored in the filesystem.

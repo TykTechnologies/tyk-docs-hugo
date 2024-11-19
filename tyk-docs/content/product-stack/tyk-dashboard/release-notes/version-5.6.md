@@ -144,7 +144,27 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 ### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
-There are no deprecations in this release.
+
+We are deprecating support for SQLite, External OAuth Middleware, and OpenID Connect (OIDC) Middleware in Tyk Dashboard to simplify the platform and enhance overall performance. These changes will take effect from 5.7.0.
+
+### Why the Change?
+
+### SQLite
+
+While useful for testing, SQLite is not designed for production environments. By focusing on PostgreSQL and MongoDB, we can provide users with more scalable and reliable options.
+
+### External OAuth Middleware
+
+This feature serves a similar purpose to our JWT Authentication and may lead to confusion. We recommend transitioning to JWT Authentication for a more streamlined experience.
+
+### OpenID Connect (OIDC) Middleware 
+
+The low adoption of this option, along with its functional overlap with other supported authentication methods, prompts us to deprecate OIDC middleware to reduce complexity within the platform. We recommend users transition to JWT Authentication.
+
+
+We encourage users to switch to the recommended alternatives. For more detailed information, please refer to the [Documentation](https://tyk.io/docs/basic-config-and-security/security/authentication-authorization/openid-connect/) 
+
+
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc.
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->

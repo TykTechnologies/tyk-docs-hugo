@@ -2,7 +2,7 @@
 title: Tyk Dashboard 5.3 LTS Release Notes
 date: 2023-09-27T15:49:11Z
 description: "Release notes documenting updates enhancements, and changes for Tyk Dashboard versions within the 5.3.X series."
-tags: ["Tyk Dashboard", "Release notes", "changelog", "v5.3", "5.3.0", "5.3.1", "5.3.2", "5.3.3", "5.3.4", "5.3.5"]
+tags: ["Tyk Dashboard", "Release notes", "changelog", "v5.3", "5.3.0", "5.3.1", "5.3.2", "5.3.3", "5.3.4", "5.3.5", "5.3.6", "5.3.7", "5.3.8" ]
 ---
 
 <!-- Required. oss or licensed. Choose one of the following:
@@ -16,6 +16,109 @@ tags: ["Tyk Dashboard", "Release notes", "changelog", "v5.3", "5.3.0", "5.3.1", 
 ## Support Lifetime
 
 As outlined in the [LTS policy]({{< ref "developer-support/special-releases-and-features/long-term-support-releases" >}}), version 5.3 is a long-term support release with full support available until May 2025. Maintenance support will continue until May 2026. Our next long-term support release will be announced at the end of April 2025.
+
+---
+
+## 5.3.8 Release Notes
+
+### Release Date 07 November 2024
+
+### Release Highlights
+This release focuses mainly on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.8">}}) below.
+
+### Breaking Changes
+
+This release has no breaking changes.
+
+### Dependencies {#dependencies-5.3.8}
+
+#### Compatibility Matrix For Tyk Components
+<!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+An illustrative example is shown below. -->
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.3.8 | MDCB v2.5.1     | MDCB v2.5.1 |
+|         | Operator v0.17 | Operator v0.16 |
+|         | Sync v1.4.3   | Sync v1.4.3 |
+|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v2.0.0 | Helm all versions |
+| | EDP v1.8.3 | EDP all versions |
+| | Pump v1.9.0 | Pump all versions |
+| | TIB (if using standalone) v1.5.1 | TIB all versions |
+
+
+#### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.3.8}
+<!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
+Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
+An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
+| [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.22 |
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+### Deprecations
+
+This is an advanced notice that the dedicated External OAuth, OpenID Connect (OIDC) authentication options, and SQLite support will be deprecated starting in version 5.7.0. We recommend that users of the [External OAuth]({{< ref "basic-config-and-security/security/authentication-authorization/ext-oauth-middleware" >}}) and [OpenID Connect]({{< ref "basic-config-and-security/security/authentication-authorization/openid-connect" >}}) methods migrate to Tyk's dedicated [JWT Auth]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#about-jwts" >}}) method. Please review your API configurations, as the Gateway logs will provide notifications for any APIs utilizing these methods.
+
+### Upgrade Instructions
+If you are upgrading to 5.3.8, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+
+### Downloads
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.8)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.3.8
+    ```
+- Helm charts
+  - [tyk-charts v2.0.0]({{< ref "product-stack/tyk-charts/release-notes/version-2.0.md" >}})
+
+### Changelog {#Changelog-v5.3.8}
+<!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
+Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
+"...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
+"New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
+#### Added
+
+<ul>
+<li>
+<details>
+<summary>Advanced notice of deprecation of dedicated External OAuth and OpenID Connect auth options</summary>
+
+The UI now displays a deprecation notice for the dedicated [External OAuth]({{< ref "basic-config-and-security/security/authentication-authorization/ext-oauth-middleware" >}}) and [OpenID Connect (OIDC)]({{< ref "basic-config-and-security/security/authentication-authorization/openid-connect" >}}) authentication mechanisms. This provides advanced notification that these authentication options will be deprecated in version 5.7.0. Users are advised to migrate to the [JWT Auth]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#about-jwts" >}}) method, which supports integration with both OAuth and OIDC providers, in preparation for future upgrade.
+</details>
+</li>
+</ul>
+
+#### Fixed
+<!-- This section should be a bullet point list of new features. Explain:
+
+- The purpose of the new feature
+- How does the new feature benefit users?
+- Link to documentation of the new feature
+- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+
+Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
+<ul>
+<li>
+<details>
+<summary>User Group dropdown limitations in Dashboard</summary>
+
+Fixed an issue with the user group dropdown in the Dashboard UI, ensuring that all available user groups are displayed when creating a new user.
+</details>
+</li>
+<li>
+<details>
+<summary>Rate Limiting settings not saved when Upstream Certificates enabled for Tyk OAS API</summary>
+
+Fixed an issue in the Tyk OAS API Designer where Rate Limiting settings were not saved when Upstream Certificates were enabled. This fix ensures that both Rate Limits and Upstream Certificates configurations can now be saved together
+</details>
+</li>
+</ul>
 
 ---
 ## 5.3.7 Release Notes
@@ -99,7 +202,7 @@ If moving from a version of Tyk older than 5.3.0 please read the explanation pro
 There are no deprecations in this release.
 
 ### Upgrade Instructions
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+When upgrading to 5.3.6, please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Dependencies {#dependencies-5.3.6}
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
@@ -269,7 +372,7 @@ There are no deprecations in this release.
 
 ### Upgrade Instructions
 
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+When upgrading to 5.3.5, please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 
 ### Dependencies {#dependencies-5.3.5}
@@ -340,7 +443,8 @@ There are no breaking changes in this release, however, if moving from a version
 There are no deprecations in this release.
 
 ### Upgrade Instructions
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+When upgrading to 5.3.4 please follow the [detailed upgrade instructions](#upgrading-tyk).
+
 
 ### Release Highlights
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.4">}}) below.
@@ -453,7 +557,7 @@ There are no breaking changes in this release, however, if moving from a version
 There are no deprecations in this release.
 
 ### Upgrade Instructions
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+When upgrading to 5.3.3 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 ### Release Highlights
 
@@ -583,7 +687,7 @@ There are no deprecations in this release.
 
 
 ### Upgrade Instructions
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+When upgrading to 5.3.2 please follow the [detailed upgrade instructions](#upgrading-tyk).
 
 
 ### Release Highlights
@@ -727,7 +831,8 @@ There are no breaking changes in this release, however if moving from a version 
 There are no deprecations in this release.
 
 ### Upgrade Instructions
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+When upgrading to 5.3.1, please follow the [detailed upgrade instructions](#upgrading-tyk).
+
 
 ### Release Highlights
 This release primarily focuses on bug fixes.
@@ -972,7 +1077,7 @@ There are no deprecations in this release.
 
 **The following steps are essential to follow before upgrading**
 
-1. For Self Managed deployments - Backup Your environment using the [usual guidance]({{<ref "upgrading-tyk#tyk-self-managed">}}) documented with every release (this includes backup config file and database).
+1. For Self Managed deployments - Backup Your environment using the [usual guidance]({{<ref "upgrading-tyk#upgrade-guides-toc">}}) documented with every release (this includes backup config file and database).
 2. For all deployments - Backup all your API definitions (Tyk OAS API and Classic Definitions):
    - For Tyk Cloud deployments - To perform the backup please use our guide for [exporting APIs and policies]({{<ref "developer-support/backups/backup-apis-and-policies">}}).
    - For Self-Managed deployments -  To perform the backup please use [Tyk Sync]({{<ref "/product-stack/tyk-sync/overview" >}}).

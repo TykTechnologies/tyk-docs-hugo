@@ -46,7 +46,7 @@ Note: the field above is replacing `aggregates_ignore_tags` which is still worki
 {{< warning success >}}
 **Warning**
 
-If you add to the tags list headers that are **unique** per request, like timestamp or [X-Request-Id]({{<ref "context-variables#the-available-context-variables-are" >}}), then Tyk Gateway will essentially create an aggregation point _per request_ and the number of these tags in an hour will be equal to the number of requests.
+If you add to the tags list headers that are **unique** per request, like timestamp or [X-Request-Id]({{<ref "context-variables#available-context-variables" >}}), then Tyk Gateway will essentially create an aggregation point _per request_ and the number of these tags in an hour will be equal to the number of requests.
 <br/>
 Since there's no real value in aggregating something that has a total of 1 and also the hourly aggregation documents can grow very quickly, we recommend to always add the header name to the ignore list as follows:
 
