@@ -161,7 +161,7 @@ Content-Length: 59
 
 * [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
 * [Helm 3+](https://helm.sh/docs/intro/install/)
-* Connection details to remote control plane from the above [section](#create-hybrid-data-plane-configuration).
+* Connection details to remote control plane from the above [section](#tyk-hybrid-gateway-configuration).
 
 The following quick start guide explains how to use the [Tyk Data Plane Helm chart]({{<ref "/product-stack/tyk-charts/tyk-data-plane-chart">}}) to configure Tyk Gateway that includes:
 - Redis for key storage
@@ -171,7 +171,7 @@ At the end of this quickstart Tyk Gateway should be accessible through service `
 
 ### 1. Set connection details
 
-Set the below environment variables and replace values with connection details to your Tyk Cloud remote control plane. See the above [section](#create-hybrid-data-plane-configuration) on how to get the connection details.
+Set the below environment variables and replace values with connection details to your Tyk Cloud remote control plane. See the above [section](#tyk-hybrid-gateway-configuration) on how to get the connection details.
 
 ```bash
 MDCB_UserKey=9d20907430e440655f15b851e4112345

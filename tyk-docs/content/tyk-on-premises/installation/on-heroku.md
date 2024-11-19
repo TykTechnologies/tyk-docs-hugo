@@ -48,7 +48,7 @@ https://infinite-plains-14949.herokuapp.com/ | https://git.heroku.com/infinite-p
 {{< note success >}}
 **Note**  
 
-`--space` flag must be added to the command if the app is being created in a private space, see more details in the [section on Heroku private spaces](#private-spaces).
+`--space` flag must be added to the command if the app is being created in a private space, see more details in the [section on Heroku private spaces](#heroku-private-spaces).
 {{< /note >}}
 
 Provision a Redis add-on (we'll use a `hobby-dev` plan for demonstration purposes but that's not suitable for production), replacing the app name with your own:

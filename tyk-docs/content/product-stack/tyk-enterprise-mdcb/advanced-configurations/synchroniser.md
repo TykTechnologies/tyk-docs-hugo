@@ -70,7 +70,7 @@ If you are running a cluster of Gateways, you must have a _GroupID_ configured f
 `"slave_options":{ "group_id": "FOOBAR" }`
 
 
-Please see [Gateway configuration options]({{< ref "/tyk-oss-gateway/configuration##slave_optionsgroup_id" >}}) for reference
+Please see [Gateway configuration options]({{< ref "/tyk-oss-gateway/configuration#slave_optionsgroup_id" >}}) for reference
 
 **2. Control Plane configuration**
 

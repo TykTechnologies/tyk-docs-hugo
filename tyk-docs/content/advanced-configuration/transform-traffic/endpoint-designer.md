@@ -16,7 +16,7 @@ The Endpoint Designer allows to configure all elements of your Tyk Classic API a
 {{< img src="/img/dashboard/endpoint-designer/classic-endpoint-designer-core.png" alt="The Tyk Classic Endpoint Designer - Core Settings tab" >}}
 
 The **Core Settings** tab provides access to configure basic settings for the API:
-- [Detailed logging]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/detailed-recording#detailed-recording-with-tyk-classic-apis" >}})
+- [Detailed logging]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/detailed-recording#tyk-classic" >}})
 - API Settings including
    - Listen path
    - [API Categories]({{< ref "product-stack/tyk-dashboard/advanced-configurations/api-categories" >}})
@@ -41,7 +41,7 @@ At the top of the Endpoint Designer, you can see which version you are currently
 
 The **Endpoint Designer** is where you can define endpoints for your API so that you can enable and configure Tyk middleware to [perform checks and transformations]({{< ref "advanced-configuration/transform-traffic" >}}) on the API traffic.
 
-In some cases, you will want to set global settings that affect all paths that are managed by Tyk. The **Global Version Settings** section will enable you to configure API-level [request]({{< ref "product-stack/tyk-gateway/middleware/request-header-tyk-classic#api-level-transform-1" >}}) and [response]({{< ref "product-stack/tyk-gateway/middleware/response-header-tyk-classic#api-level-transform-1" >}}) header transformation.
+In some cases, you will want to set global settings that affect all paths that are managed by Tyk. The **Global Version Settings** section will enable you to configure API-level [request]({{< ref "product-stack/tyk-gateway/middleware/request-header-tyk-classic#tyk-classic-api" >}}) and [response]({{< ref "product-stack/tyk-gateway/middleware/response-header-tyk-classic#tyk-classic-api" >}}) header transformation.
 
 ## Advanced Options
 

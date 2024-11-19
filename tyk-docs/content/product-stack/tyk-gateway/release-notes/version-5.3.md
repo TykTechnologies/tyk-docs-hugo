@@ -1307,7 +1307,7 @@ For OSS deployments -
 2. Backup all your API definitions (Tyk OAS API and Classic Definitions) by saving your API and policy files or by
    exporting them using the `GET /tyk/apis` and `Get /tyk/policies`
 3. Performing the upgrade - follow the instructions in the [upgrade
-   guide]({{<ref "upgrading-tyk#tyk-gateway-upgrade---used-in-licensed-and-open-source-deployments">}}) when upgrading Tyk.
+   guide]({{<ref "upgrading-tyk">}}) when upgrading Tyk.
 
 ### Release Highlights
 

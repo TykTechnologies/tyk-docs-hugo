@@ -68,13 +68,13 @@ You can disable URL encoding using a new boolean `http_server_options` setting:
  
 `skip_target_path_escaping`
 
-[Docs]({{< ref "tyk-oss-gateway/configuration#a-name-http-server-options-a-http-server-options" >}})
+[Docs]({{< ref "tyk-oss-gateway/configuration#http_server_options" >}})
 
 #### Enable Key Logging
 
 By default all key ids in logs are hidden. You can now turn it on if you want to see them for debugging reasons using the `enable_key_logging` option.
 
-[Docs]({{< ref "tyk-oss-gateway/configuration#a-name-enable-key-logging-a-enable-key-logging" >}})
+[Docs]({{< ref "tyk-oss-gateway/configuration#enable_key_logging" >}})
 
 
 #### Specify TLS Cipher Suites
