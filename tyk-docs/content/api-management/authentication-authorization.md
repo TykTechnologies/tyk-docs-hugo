@@ -446,7 +446,7 @@ The Username and Password grant type uses a basic authentication key to generate
 {{< img src="/img/diagrams/diagram_docs_username-_-password-grant-type@2x.png" alt="Username and password grant sequence" >}}
 
 
-#### Token Request
+##### Token Request
 
 This request provides the client id and basic user credentials in exchange for an API token.
 
