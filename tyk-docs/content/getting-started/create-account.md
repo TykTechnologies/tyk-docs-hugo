@@ -128,9 +128,8 @@ Upgrading restores full functionality, letting you continue from where you pause
 
 Now that you have your Tyk account set up, here are some recommended next steps:
 
-- **Explore the Dashboard**: Familiarize yourself with the [Tyk Cloud interface](/tyk-dashboard).
-- **Create Your First API**: Follow our guide on [setting up and securing your first API](/getting-started/configure-first-api).
-- **Set Up Email Notifications**: Configure email notifications for important events and updates.
+- **Create Your First API**: Follow our guide on [setting up and securing your first API]({{< ref "getting-started/configure-first-api" >}}).
+- **Explore the Dashboard**: Familiarize yourself with the [Tyk Cloud interface]({{< ref "tyk-dashboard" >}}).
 
 ## Need Help?
 

@@ -36,94 +36,89 @@ Before you begin, make sure you have:
 Start by creating a new API in Tyk Cloud:
 
 1. **Log in to the Tyk Dashboard**.
-2. **Navigate to APIs** and click **Create New API**.
-3. **Configure API Details**:
-   - **API Name**: Name your API (e.g., `My First API`).
-   - **API Type**: Choose from HTTP, TCP, GraphQL, UDG, or Federation, depending on your use case.
-   - **API Style**: Select OpenAPI for standardized HTTP APIs or Classic for flexible configurations and non-HTTP APIs.
-   - **Target URL**: Provide the URL of your backend service (e.g., `http://httpbin.org`).
-   - **API Slug**: Define the path through which your API will be accessible (e.g., `/my-first-api/`).
+2. **Navigate to APIs** and click **Add New API** or **Design From Scratch** button.
 
   {{< img src="/img/getting-started/create-account-design-from-scratch.png" alt="Create New API" >}}
 
-<br>
+3. **Configure API Details**:
+  - **API Name**: Name your API (e.g., `My First API`).
+  - **API Type**: Choose from HTTP, TCP, GraphQL, UDG, or Federation, depending on your use case.
+  - **API Style**: Select OpenAPI for standardized HTTP APIs or Classic for flexible configurations and non-HTTP APIs.
+  - **Target URL**: Provide the URL of your backend service (e.g., `http://httpbin.org`).
 
-4. **Connect to Your Desired Gateway**
-  You may be prompted to choose between a Gateway and an Edge Gateway, which are already created for you.
-  - Edge Gateways generally provide low-latency, regionally distributed API processing, ideal for a global user base.
-  - Regular Gateways centralize API management, offering comprehensive API processing without additional edge optimizations.
+  {{< img src="/img/getting-started/create-new-api.png" alt="Create New API" >}}
+
+4. **Connect to Your Desired Gateway**:
+
+  You will be prompted to choose between a Gateway and an Edge Gateway, which are already created for you.
+  - `Edge Gateways` generally provide low-latency, regionally distributed API processing, ideal for a global user base.
+  - `Regular Gateways` centralize API management, offering comprehensive API processing without additional edge optimizations.
 
   {{< img src="/img/getting-started/apis-connect-gateways.png" alt="Connect Gateways" >}}
 
-<br>
+5. **Configure your API Settings**:
 
-
-5. **Configure Settings**
-Configure your API settings:
-
-  - API Name: Should be the same as in Step 3.
-  - Expiration Date: Set an end date for this API, where access will expire after this date. This can be edited at any time.
-  - Gateway Status: Setting this to "Active" will publish your API and make it public. When in the "Disabled" state, your API will stay in a draft state until you are ready to publish it.
-  - Access: Your API can be set to either "internal" or "external", determining whether you want to keep your API accessible only through Tyk or to external services, respectively.
+  - **Expiration Date**: An optional config that allows you to set an expiry date for this API, where access will expire after this date. This can be edited at any time.
+  - **Gateway Status**: Setting this to `Active` will publish your API and make it public. When in the `Disabled` state, your API will stay in a draft state until you are ready to publish it. This is a required field, for this guide we will set it to `Active`.
+  - **Access**: Your API can be set to either `Internal` or `External`, determining whether you want to keep your API accessible only through Tyk or to external services, respectively. This is a required field, for this guide we will set it to `External`.
 
 {{< img src="/img/getting-started/apis-configure-settings-1.png" alt="Configure Settings" >}}
 
-Scrolling down, configure further settings for setting up securing your APIs. 
+Scrolling down, In the **Upstream** section you can configure settings to control the behaviour of your upstream APIs. 
 {{< note success >}}
   **Note**  
 
   These are not necessary to add now but they are good to explore.
   {{< /note >}}
 
-  - API Rate Limiting: Set limits on the number of requests (e.g., 100 requests per minute) to control usage and prevent abuse.
-  - Service Discovery: Enable dynamic backend discovery with tools like Consul or Kubernetes, ensuring traffic is directed to healthy instances.
-  - Upstream Client Certificates: Use client certificates for secure backend connections via mutual TLS (mTLS), adding an extra layer of security.
-  - Certificate Public Key Pinning: Pin specific public keys to validate certificate authenticity and prevent unauthorized access.
+  - **API Rate Limiting**: Set limits on the number of requests (e.g., 100 requests per minute) to control usage and prevent abuse.
+  - **Service Discovery**: Enable dynamic backend discovery with tools like Consul or Kubernetes, ensuring traffic is directed to healthy instances.
+  - **Upstream Client Certificates**: Use client certificates for secure backend connections via mutual TLS (mTLS), adding an extra layer of security.
+  - **Certificate Public Key Pinning**: Pin specific public keys to validate certificate authenticity and prevent unauthorized access.
 
   {{< img src="/img/getting-started/apis-configure-settings-2.png" alt="Configure Settings cont" >}}
 
-<br>
+6. **Configuring the Server section**:
 
-6. **Authentication**: Choose the desired authentication method (e.g., **API Key**).
+  In the section you can configure Tyk Gateway related settings. Below are some important configurations.
+  - **Listen Path**: This is the `path` Tyk API will use to proxy your API requests. So a request made to this URL `https://<tyk-clou-url>/<listen-path>` will be proxied to the upstream URL configured above.
+  - **Authentication**: Choose the desired authentication method (e.g., **API Key**).
 
-    {{< img src="/img/getting-started/apis-add-authentication.png" alt="Add Authentication" >}}
+    {{< img src="/img/getting-started/create-api-select-authentication.png" alt="Add Authentication" >}}
 
 Save your API configuration once complete.
 
+7. **Copy the API URL**
+  - When you save the API configuration, Tyk generates a unique Gateway URL that can be used to access your API. Copy this URL, we will use it later during testing.
+
+    {{< img src="/img/getting-started/api-url-provided-by-tyk.png" alt="Tyk API Gateway URL" >}}
 
 ## Create an API Key
 
 The Tyk Dashboard provides the simplest way to generate a new API key. Follow these steps:
 
-1. **Select "Keys"** from the **System Management** section.
+1. **Select "Keys"** from the **API Security** section and **Click "Add Key"** to generate a new key.
    
-   {{< img src="/img/getting-started/apis-sidebar-security.png" alt="Keys Menu" >}}
+   {{< img src="/img/getting-started/create-api-security-key.png" alt="Create API Key" >}}
 
-<br>
-
-2. **Click "Add Key"** to generate a new key.
-
-   {{< img src="/img/getting-started/apis-add-key.png" alt="Add Key" >}}
-
-<br>
-
-3. **Add a Policy or API to Your Key**:
+2. **Add a Policy or API to Your Key**:
    - You can either add your key to an existing **Policy** or assign it to an individual **API**.
-   - For this guide, we will assign the key to the "My First API" which we created in the previous step. You can:
+   - For this guide, we will assign the key to the `My First API` which we created in the previous step. You can:
      - Scroll through your **API Name list**,
-     - Use the **Search field**,
-     - Or **Group by Authentication Type** or **Category** to filter APIs.
+     - Use the **Search field** or **Group by Authentication Type** to filter APIs.
    - Leave all other options at their default settings.
 
-4. **Add Configuration Details**:
+   {{< img src="/img/getting-started/configure-api-key.png" alt="Configure API Key" >}}
+
+4. Click on the **Configuration Tab** and add the below details.
    - **Enable Detailed Logging**: This is optional and disabled by default.
    - **Key Alias**: Assign an alias to your key for easier identification.
    - **Key Expiry**: Set an expiry time from the drop-down list. This is required.
    - **Tags**: Add tags for filtering data in Analytics. Tags are case-sensitive.
    - **Metadata**: Add metadata such as user IDs, which can be used by middleware components.
 
-5. **Click "CREATE"**:
-   - Once the key is created, a **Key successfully generated** pop-up will be displayed showing your key. **Copy the key** to your clipboard and save it for future reference as it will not be shown again. And that should result in a successfully generated key!
+5. Click **CREATE**:
+   - Once the key is created, a **Key successfully generated** pop-up will be displayed showing your key. **Copy the key ID** to your clipboard and save it for future reference as it will not be shown again. And that should result in a successfully generated key!
 
    {{< img src="/img/getting-started/apis-keys-success.png" alt="Key Success" >}}
   
@@ -150,6 +145,7 @@ After configuring and deploying your API, it’s essential to test it to ensure 
      curl -H "Authorization: {YOUR_API_KEY_ID}" https://{YOUR_TYK_GATEWAY_URL}/my-first-api/
      ```
    - Replace `{YOUR_API_KEY_ID}` with the actual key ID and `{YOUR_TYK_GATEWAY_URL}` with your gateway's URL.
+   - Send the request and you should get HTML output with `200` status code.
 
 
 ## Monitor Traffic and Analyze API Performance
@@ -158,7 +154,7 @@ With your API live, monitor its traffic and analyze performance:
 
 ### View Traffic Analytics
 
-1. **Navigate to the Analytics Section** in the dashboard.
+1. **Navigate to the Monitoring Section** in the dashboard. And click on **Activity Overview**.
 2. **View Traffic Metrics**: Review metrics such as request count, response times, and error rates.
 3. **Analyze Data**: Use traffic trends to identify performance issues or optimize API behavior.
 
@@ -167,31 +163,11 @@ With your API live, monitor its traffic and analyze performance:
 
 ### View Log Data
 
-1. **Go to the Logs Section** of your API.
+1. **Go to the Activity Logs Section** of your API.
 2. **Search and Filter Logs**: Use filters to drill down by response status, endpoint, or client IP.
 3. **Review Detailed Logs**: View full request and response data to troubleshoot issues.
 
-#### Example Log Entry
-
-```json
-{
-  "timestamp": "2024-09-05T12:00:00Z",
-  "method": "GET",
-  "path": "/my-api/users",
-  "status": 200,
-  "response_time": 95
-}
-```
-- **Timestamp**: The date and time when the API request was made (ISO 8601 format).
-
-- **Method**: The HTTP method used for the request (e.g., GET, POST).
-
-- **Path**: The API endpoint that was accessed.
-
-- **Status**: The HTTP status code returned by the API, indicating the result of the request (e.g., 200 for success).
-
-- **Response Time**: The time (in milliseconds) taken for the API to respond to the request.
-
+{{< img src="/img/getting-started/api-activity-logs.png" alt="APIs Logs" >}}
 
 ## Deploy Developer Portal
 Once your API is set up, you can access the Tyk Developer Portal. The portal allows you to manage your APIs, view analytics, and customize your API consumer experience.
@@ -227,6 +203,6 @@ Our Developer Portal is completely customizable. See [Portal Customization]({{< 
 
 ## Next Steps
 
-Congratulations! You've successfully created, secured, and deployed your first API in Tyk Cloud. Next, explore more advanced features like [rate-limiting](/getting-started/key-concepts/rate-limiting/) or [OAuth2](/basic-config-and-security/security/authentication--authorization).
+Congratulations! You've successfully created, secured, and deployed your first API in Tyk Cloud. Next, explore more advanced features like [rate-limiting]({{< ref "getting-started/key-concepts/rate-limiting" >}}) or [OAuth2]({{< ref "basic-config-and-security/security/authentication-authorization/oauth-2-0" >}}).
 
-Explore more features in your dashboard to optimize and scale your API offerings.
+Explore more features in your [dashboard]({{< ref "getting-started/using-tyk-dashboard" >}}) to optimize and scale your API offerings.
