@@ -504,6 +504,6 @@
     "basic-config-and-security/security/mutual-tls/upstream-mtls": "#wild-cards",
     "api-management/authentication-authorization": "#wildcards",
     "basic-config-and-security/security/mutual-tls/upstream-mtls": "#default-upstream-cert",
-    "api-management/authentication-authorization": "#default-upstream-certificate",
+    "api-management/authentication-authorization": "#default-upstream-certificate"
     
 }
