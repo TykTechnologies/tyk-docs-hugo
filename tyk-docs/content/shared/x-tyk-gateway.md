@@ -75,6 +75,9 @@ CertificatePinning contains the configuration related to certificate pinning.
 **Field: `rateLimit` ([RateLimit](#ratelimit))**
 RateLimit contains the configuration related to API level rate limit.
 
+**Field: `authentication` ([UpstreamAuth](#upstreamauth))**
+Authentication contains the configuration related to upstream authentication.
+
 ### **Server**
 
 Server contains the configuration that sets Tyk up to receive requests from the client applications.
@@ -377,6 +380,19 @@ be considered as 0s/empty.
 
 Tyk classic API definition: `global_rate_limit.per`.
 
+### **UpstreamAuth**
+
+UpstreamAuth holds the configurations related to upstream API authentication.
+
+**Field: `enabled` (`boolean`)**
+Enabled enables upstream API authentication.
+
+**Field: `basicAuth` ([UpstreamBasicAuth](#upstreambasicauth))**
+BasicAuth holds the basic authentication configuration for upstream API authentication.
+
+**Field: `oauth` ([UpstreamOAuth](#upstreamoauth))**
+OAuth contains the configuration for OAuth2 Client Credentials flow.
+
 ### **ListenPath**
 
 ListenPath is the base path on Tyk to which requests for this API
@@ -636,6 +652,38 @@ Type defined as array of `PinnedPublicKey` values, see [PinnedPublicKey](#pinned
 
 ReadableDuration is an alias maintained to be used in imports.
 
+### **UpstreamBasicAuth**
+
+UpstreamBasicAuth holds upstream basic authentication configuration.
+
+**Field: `enabled` (`boolean`)**
+Enabled enables upstream basic authentication.
+
+**Field: `header` ([AuthSource](#authsource))**
+Header contains configurations for the header value.
+
+**Field: `username` (`string`)**
+Username is the username to be used for upstream basic authentication.
+
+**Field: `password` (`string`)**
+Password is the password to be used for upstream basic authentication.
+
+### **UpstreamOAuth**
+
+UpstreamOAuth holds the configuration for OAuth2 Client Credentials flow.
+
+**Field: `enabled` (`boolean`)**
+Enabled activates upstream OAuth2 authentication.
+
+**Field: `allowedAuthorizeTypes` (`[]string`)**
+AllowedAuthorizeTypes specifies the allowed authorization types for upstream OAuth2 authentication.
+
+**Field: `clientCredentials` ([ClientCredentials](#clientcredentials))**
+ClientCredentials holds the configuration for OAuth2 Client Credentials flow.
+
+**Field: `password` ([PasswordAuthentication](#passwordauthentication))**
+PasswordAuthentication holds the configuration for upstream OAauth password authentication flow.
+
 ### **HMAC**
 
 HMAC holds the configuration for the HMAC authentication mode.
@@ -669,6 +717,9 @@ Tyk classic API definition: `hmac_allowed_clock_skew`.
 ### **OIDC**
 
 OIDC contains configuration for the OIDC authentication mode.
+OIDC support will be deprecated starting from 5.7.0.
+To avoid any disruptions, we recommend that you use JSON Web Token (JWT) instead,
+as explained in https://tyk.io/docs/basic-config-and-security/security/authentication-authorization/openid-connect/.
 
 **Field: `enabled` (`boolean`)**
 Enabled activates the OIDC authentication mode.
@@ -981,6 +1032,60 @@ Domain contains the domain name.
 **Field: `publicKeys` (`[]string`)**
 PublicKeys contains a list of the public keys pinned to the domain name.
 
+### **AuthSource**
+
+AuthSource defines an authentication source.
+
+**Field: `enabled` (`boolean`)**
+Enabled activates the auth source.
+
+Tyk classic API definition: `auth_configs[X].use_param/use_cookie`.
+
+**Field: `name` (`string`)**
+Name is the name of the auth source.
+
+Tyk classic API definition: `auth_configs[X].param_name/cookie_name`.
+
+### **ClientCredentials**
+
+ClientCredentials holds the configuration for OAuth2 Client Credentials flow.
+
+**Field: `header` ([AuthSource](#authsource))**
+Header holds the configuration for the custom header to be used for OAuth authentication.
+
+**Field: `tokenUrl` (`string`)**
+TokenURL is the resource server's token endpoint
+URL. This is a constant specific to each server.
+
+**Field: `scopes` (`[]string`)**
+Scopes specifies optional requested permissions.
+
+**Field: `extraMetadata` (`[]string`)**
+ExtraMetadata holds the keys that we want to extract from the token and pass to the upstream.
+
+### **PasswordAuthentication**
+
+PasswordAuthentication holds the configuration for upstream OAuth2 password authentication flow.
+
+**Field: `header` ([AuthSource](#authsource))**
+Header holds the configuration for the custom header to be used for OAuth authentication.
+
+**Field: `username` (`string`)**
+Username is the username to be used for upstream OAuth2 password authentication.
+
+**Field: `password` (`string`)**
+Password is the password to be used for upstream OAuth2 password authentication.
+
+**Field: `tokenUrl` (`string`)**
+TokenURL is the resource server's token endpoint
+URL. This is a constant specific to each server.
+
+**Field: `scopes` (`[]string`)**
+Scopes specifies optional requested permissions.
+
+**Field: `extraMetadata` (`[]string`)**
+ExtraMetadata holds the keys that we want to extract from the token and pass to the upstream.
+
 ### **Provider**
 
 Provider defines an issuer to validate and the Client ID to Policy ID mappings.
@@ -1248,20 +1353,6 @@ IgnoreCase is a boolean flag, If set to `true`, checks for requests allowance wi
 
 AllowanceType holds the valid allowance types values.
 
-### **AuthSource**
-
-AuthSource defines an authentication source.
-
-**Field: `enabled` (`boolean`)**
-Enabled activates the auth source.
-
-Tyk classic API definition: `auth_configs[X].use_param/use_cookie`.
-
-**Field: `name` (`string`)**
-Name is the name of the auth source.
-
-Tyk classic API definition: `auth_configs[X].param_name/cookie_name`.
-
 ### **AuthSources**
 
 AuthSources defines authentication source configuration: headers, cookies and query parameters.
@@ -1357,6 +1448,16 @@ HalfOpenStateEnabled , if enabled, allows some requests to pass through the circ
 
 Tyk classic API definition: `version_data.versions..extended_paths.circuit_breakers[*].disable_half_open_state`.
 
+### **ClientAuthData**
+
+ClientAuthData holds the client ID and secret for OAuth2 authentication.
+
+**Field: `clientId` (`string`)**
+ClientID is the application's ID.
+
+**Field: `clientSecret` (`string`)**
+ClientSecret is the application's secret.
+
 ### **EndpointPostPlugin**
 
 EndpointPostPlugin contains endpoint level post plugin configuration.
@@ -1393,6 +1494,9 @@ Value is the configured timeout in seconds.
 ### **ExternalOAuth**
 
 ExternalOAuth holds configuration for an external OAuth provider.
+ExternalOAuth support will be deprecated starting from 5.7.0.
+To avoid any disruptions, we recommend that you use JSON Web Token (JWT) instead,
+as explained in https://tyk.io/docs/basic-config-and-security/security/authentication-authorization/ext-oauth-middleware/.
 
 **Field: `enabled` (`boolean`)**
 Enabled activates external oauth functionality.
@@ -2007,4 +2111,11 @@ ProxyOnError proxies if virtual endpoint errors out.
 
 **Field: `requireSession` (`boolean`)**
 RequireSession if enabled passes session to virtual endpoint.
+
+### **XTykStreaming**
+
+XTykStreaming represents the structure for Tyk streaming configurations.
+
+**Field: `streams` (`any`)**
+Streams contains the configurations related to Tyk Streams.
 
