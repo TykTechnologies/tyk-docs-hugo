@@ -185,6 +185,7 @@ How about *Observed State*? Although the details of the observed state may chang
 Reconciliation is a special design paradigm used in Kubernetes controllers. Tyk Operator also uses the same paradigm, which is responsible for keeping our Kubernetes objects in sync with the underlying external APIs - which is Tyk in our case. 
 
 **When would reconciliation happen?**
+<br>
 Before diving into Tyk Operator reconciliation, let's briefly mention some technical details about how and when reconciliation happens. Reconciliation only happens when certain events happen on your cluster or objects. Therefore, Reconciliation will **NOT** be triggered when there is an update or modification on Tyk’s side. It only watches certain Kubernetes events and is triggered based on them. Usually, the reconciliation happens when you modify a Kubernetes object or when the cache used by the controller expires - side note, controllers, in general, use cached objects to reduce the load in the Kube API server. Typically, caches expire in ~10 hours or so but the expiration time might change based on Operator configurations.
 
 So, in order to trigger Reconciliation, you can either
@@ -192,6 +193,7 @@ So, in order to trigger Reconciliation, you can either
 - restart Tyk Operator pod, which will trigger reconciliation over each of the objects watched by Tyk Operator.
 
 **What happens during Reconciliation?**
+<br>
 Tyk Operator will compare desired state of the Kubernetes object with the observed state in Tyk. If there is a drift, Tyk Operator will update the actual state on Tyk with the desired state. In the reconciliation, Tyk Operator mainly controls three operations; DELETE, CREATE, and UPDATE.
 
 - **CREATE** - an object is created in Kubernetes but not exists in Tyk
@@ -199,6 +201,7 @@ Tyk Operator will compare desired state of the Kubernetes object with the observ
 - **DELETE** - an object is deleted in Kubernetes but exists in Tyk
 
 **Drift Detection**
+<br>
 If human operators or any other system delete or modify ApiDefinition from Tyk Gateway or Dashboard, Tyk Operator will restore the desired state back to Tyk during reconciliation. This is called Drift Detection. It can protect your systems from unauthorized or accidental modifications. It is a best practice to limit user access rights on production environment to read-only in order to prevent accidental updates through API Manager directly.
 
 
@@ -2029,7 +2032,7 @@ From the `status` field, you can see that this security policy has been linked t
 
 
 ##### Security Policy Example
-###### Key-Level Per-API Rate Limits and Quota{#per-api-limit}
+###### Key-Level Per-API Rate Limits and Quota
 
 By configuring per-API limits, you can set specific rate limits, quotas, and throttling rules for each API in the access rights array. When these per-API settings are enabled, the API inherits the global limit settings unless specific limits and quotas are set in the `limit` field for that API.
 
@@ -3038,7 +3041,7 @@ Tyk Operator would dynamically update the API definition by generating internal 
 
 ---
 
-#### URL Rewrites {#url-rewrites}
+#### URL Rewrites 
 
 [URL rewriting]({{< ref "transform-traffic/url-rewriting" >}}) in Tyk enables the alteration of incoming API request paths to align with the expected endpoint format of your backend services.
 
@@ -3070,7 +3073,7 @@ url_rewrites:
 
 Here we can see that the `rewrite_to` field has been generated with the value `tyk://ZGVmYXVsdC9wcm94eS1hcGk/proxy/$1` where `ZGVmYXVsdC9wcm94eS1hcGk` represents the API ID for the `proxy-api` API resource in the `default` namespace. Notice also that path `proxy/$1` is appended to the base URL `tyk://ZGVmYXVsdC9wcm94eS1hcGk` and contains the context variable `$1`. This will be substituted with the value of `{id}` in the `path` configuration parameter.
 
-#### URL Rewrite Triggers {#url-rewrite-triggers}
+#### URL Rewrite Triggers 
 
 [Triggers]({{< ref "product-stack/tyk-gateway/middleware/url-rewrite-middleware#url-rewrite-triggers" >}}) are configurations that specify actions based on certain conditions present in HTTP headers, query parameters, path parameters etc.
 
@@ -3115,7 +3118,7 @@ triggers:
 
 Here we can see that the `rewrite_to` field has been generated with the value `tyk://ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs/proxy/$1` where `ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs` represents the API ID for the `proxy-api` API resource in the `default` namespace. Notice also that path `basic/$2` is appended to the base URL `tyk://ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs` and contains the context variable `$2`. This will be substituted with the remainder of the request path.
 
-#### Proxy to Internal APIs {#proxy-to-internal-apis}
+#### Proxy to Internal APIs 
 
 Internal looping can also be used for [proxying to internal APIs]({{< ref "advanced-configuration/transform-traffic/looping" >}}).
 
@@ -3555,7 +3558,7 @@ spec:
 #### API Versioning
 [API versioning]({{<ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning">}}) are configured differently for [Tyk OAS APIs](#tyk-oas-api) and [Tyk Classic APIs](#tyk-classic-api). Please see below for examples.
 
-##### Configuring API Version in Tyk OAS API Definition{#tyk-oas-api}
+##### Configuring API Version in Tyk OAS API Definition
 
 In the [Tyk OAS API Definition]({{<ref "getting-started/key-concepts/oas-versioning#configuring-api-versioning-in-the-tyk-oas-api-definition">}}), versioning can be configured via `x-tyk-api-gateway.versioning` object of the Base API, where the child API's IDs are specified. In the Kubernetes environment with Tyk Operator, where we reference API resources through its Kubernetes name and namespace, this is not desired. Therefore, we add support for versioning configurations through the field `versioning` in `TykOasApiDefinition` custom resource definition (CRD).
 
@@ -3627,7 +3630,7 @@ In case if there is original versioning information in the base API Definition, 
 
 Tyk Operator would also protect you from accidentally deleting a version of an API that is being referenced by another API, maintaining your API integrity.
 
-##### Configuring API Version in Tyk Classic API Definition{#tyk-classic-api}
+##### Configuring API Version in Tyk Classic API Definition
 
 For Tyk Classic API, versioning can be configured via `ApiDefinition` custom resource definition (CRD). See [Tyk Classic versioning]({{<ref "getting-started/key-concepts/versioning">}}) for a comprehensive example of configuring API versioning for Tyk Classic API with Tyk Operator.
 
@@ -3692,7 +3695,7 @@ spec:
     - 1a2b3c4d5e6f
 ```
 
-#### Tyk OAS API
+##### Tyk OAS API
 
 Once an `OperatorContext` is defined, you can reference it in your Tyk OAS API Definition objects using `contextRef`. Below is an example:
 
@@ -3748,7 +3751,7 @@ spec:
 
 In this example, the `TykOasApiDefinition` object references the `team-alpha` context, ensuring that it is managed under the ownership of the specified users and user groups.
 
-#### Tyk Classic API
+##### Tyk Classic API
 
 Similarly, if you are using Tyk Classic API, you can reference it in your API Definition objects using `contextRef`. Below is an example:
 
