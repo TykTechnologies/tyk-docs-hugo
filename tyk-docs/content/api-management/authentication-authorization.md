@@ -2268,9 +2268,6 @@ instead of getting TLS error, a client will receive 403 HTTP error.
 #### Authentication 
 Tyk can be configured to guess a user authentication key based on the provided client certificate. In other words, a user does not need to provide any key, except the certificate, and Tyk will be able to identify the user, apply policies, and do the monitoring - the same as with regular Keys.
 
-[Go here for more details](../client-mtls)
-
-
 ###### Using with Authorization 
 Mutual TLS authentication does not require mutual TLS authorization to be turned on, and can be used separately. For example, you may allow some of the users to be authenticated by using a token in the header or similar, and some of the users via client certificates. 
 
