@@ -1299,7 +1299,7 @@ menu:
               - title: "oauth"
                 category: page
                 show: False
-                path: /basic-config-and-security/security/authentication-authorization/ext-oauth-middleware.md
+                path: /basic-config-and-security/security/authentication-authorization/ext-oauth-middleware
               - title: "Security policies"
                 category: Directory
                 show: True
