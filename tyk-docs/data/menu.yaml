@@ -1296,7 +1296,7 @@ menu:
                 category: Directory
                 show: True
                 menu:
-                  - title: "Security policies"
+                - title: "Security policies"
                     category: Directory
                     show: True
                     menu:
