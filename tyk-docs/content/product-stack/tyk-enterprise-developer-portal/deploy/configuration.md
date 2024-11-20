@@ -274,6 +274,46 @@ Values for TLS Versions:
 **Description**: API secret for enabling [Single Sign-on (SSO) flow]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso.md" >}}) with the Tyk Identity Broker.
 You can specify any string value in this setting. Omit this setting if you don't require SSO. 
 
+## Response Headers Configuration
+This section explains how to configure custom HTTP response headers that will be added to all responses from the Portal.
+
+### PORTAL_RESPONSE_HEADERS
+**Config file:** ResponseHeaders <br/>
+**Type:** `[]{Key: string, Value: string}` <br/>
+**Description**: Configures custom HTTP response headers that will be added to all responses from the Portal. The value must be a JSON array of objects containing Key and Value fields.
+
+**Example configuration via environment variable:**
+```bash
+export PORTAL_RESPONSE_HEADERS='[{"Key":"X-Frame-Options", "Value":"DENY"}, {"Key":"Content-Security-Policy", "Value":"default-src '\''self'\''"}]'
+```
+
+**Example configuration via config file:**
+```json
+{
+  "ResponseHeaders": [
+    {
+      "Key": "X-Frame-Options",
+      "Value": "DENY"
+    },
+    {
+      "Key": "Content-Security-Policy",
+      "Value": "default-src 'self'"
+    }
+  ]
+}
+```
+
+**Common use cases include:**
+- Security headers (X-Frame-Options, Content-Security-Policy)
+- CORS headers
+- Cache control headers
+- Custom application headers
+
+If the JSON format is invalid, the Portal will return an error message indicating the correct format:
+```
+Invalid value for PORTAL_RESPONSE_HEADERS. Valid Format: '[{"Key":"header-key", "Value":"value-for-given-key"}]'
+```
+
 ## Storage settings
 Using variables from this section, you can configure storage for the portal's CMS assets such as themes, images, and Open API Specification files. The portal supports two types of storage:
 - S3 volume;
