@@ -104,6 +104,8 @@ By default, the chart runs a bootstrapping job immediately after installation. T
 
 If you set `global.components.bootstrap` to `false`, only the dashboard license check will be performed.
 
+Bootstrapping is triggered only during a `helm install`. It will not run during a `helm upgrade`.
+
 In case the bootstrapping process fails, you can review the logs from the bootstrap pods to identify the issue. After reviewing, you may safely delete the bootstrap pods.
 
 ### Setting Environment Variables
