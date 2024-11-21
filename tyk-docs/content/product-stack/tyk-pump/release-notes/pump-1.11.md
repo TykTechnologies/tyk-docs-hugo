@@ -34,7 +34,6 @@ With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning
 
 | Third Party Dependency                                    | Tested Versions   | Compatible Versions      | Comments                   |
 | --------------------------------------------------------- | ----------------- | ------------------------ | -------------------------- |
-| [GoLang](https://go.dev/dl/)                              | 1.22  | 1.22         | All our binaries           |
 | [MongoDB](https://www.mongodb.com/try/download/community) | 5.x, 6.x, and 7.0 | 4.4.x, 5.x, 6.x, and 7.0 | Used by Tyk Dashboard      |
 | [PostgreSQL](https://www.postgresql.org/download/)        | 12.x - 16.x    | 12.x - 16.x              | Used by Tyk Dashboard      |
 | [Redis](https://redis.io/download/)                       | 6.x - 7.0         | 6.x - 7.x                | Used by all Tyk components |
