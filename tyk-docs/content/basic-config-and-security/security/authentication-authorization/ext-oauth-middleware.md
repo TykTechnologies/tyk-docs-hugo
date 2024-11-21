@@ -14,6 +14,12 @@ weight: 7
 Tyk's dedicated External OAuth middleware will be deprecated from Tyk 5.7.0. Tyk's [JSON Web Token (JWT)]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#about-jwts" >}}) authentication method also allows you to integrate with a third party OAuth provider, so the dedicated middleware will be deprecated to reduce duplication and potential for misconfiguration.
 {{< /note >}}
 
+{{< note success >}}
+**Note**  
+
+We've deprecated the External OAuth middleware in Tyk 5.7.0 to simplify configurations and avoid redundancy. For third-party OAuth integration, please switch to Tyk’s [JSON Web Tokens (JWT)](https://tyk.io/docs/basic-config-and-security/security/authentication-authorization/json-web-tokens/#about-jwts), which offers the same functionality with a more streamlined setup and reduced risk of misconfiguration.
+{{< /note >}}
+
 ## Introduction
 
 Tyk offers two types of OAuth authentication flow; Tyk itself as the identity provider (IdP) and Tyk connecting to an external 3rd party IdP. ‘External OAuth’ is what we call this second mechanism. To call an API that is protected by OAuth, you need to have an access token from the third party IDP (it could be an opaque token or a JWT). 

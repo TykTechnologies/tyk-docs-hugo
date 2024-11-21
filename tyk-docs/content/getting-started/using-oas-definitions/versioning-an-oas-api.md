@@ -47,7 +47,7 @@ You will also need to have ‘admin’ or ‘api’ rights if [RBAC]({{< ref "/t
 
 #### Step 1: Create your base API
 
-You need to create a new API that will be the [Base API]({{< ref "/getting-started/key-concepts/oas-versioning#key-concepts" >}}) for the future versions. You do this by sending a Tyk OAS API Definition to the Tyk Gateway API's `apis/oas` endpoint. Note that there is no special command required to create this new API as a Base API - i.e. any Tyk OAS API can be used as a Base API.
+You need to create a new API that will be the [Base API]({{< ref "/getting-started/key-concepts/oas-versioning" >}}) for the future versions. You do this by sending a Tyk OAS API Definition to the Tyk Gateway API's `apis/oas` endpoint. Note that there is no special command required to create this new API as a Base API - i.e. any Tyk OAS API can be used as a Base API.
 
 | Property     | Description            |
 |--------------|------------------------|

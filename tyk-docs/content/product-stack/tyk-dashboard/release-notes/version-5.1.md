@@ -18,10 +18,10 @@ Minor releases are supported until our next minor comes out in Q3.
 **Attention warning*: Please read carefully this section. We have two topics to report:
  
 ##### Golang Version upgrade
-Our Dashboard is using [Golang 1.19](https://tip.golang.org/doc/go1.19) programming language starting with the 5.1 release. This brings improvements to the code base and allows us to benefit from the latest features and security enhancements in Go. Don’t forget that, if you’re using GoPlugins, you'll need to [recompile]({{< ref "plugins/supported-languages/golang#initialise-plugin-for-gateway-51" >}}) these to maintain compatibility with the latest Gateway.
+Our Dashboard is using [Golang 1.19](https://tip.golang.org/doc/go1.19) programming language starting with the 5.1 release. This brings improvements to the code base and allows us to benefit from the latest features and security enhancements in Go. Don’t forget that, if you’re using GoPlugins, you'll need to [recompile]({{< ref "plugins/supported-languages/golang#upgrading-your-tyk-gateway" >}}) these to maintain compatibility with the latest Gateway.
 
 ##### Tyk OAS APIs
-To provide a superior experience with OAS APIs, we have made some changes which include various security fixes, improved validation etc. Upgrading to v5.1 from v4.x.x may be irreversible, rollback to v4.x.x could break your OAS API definitions. For this reason, we recommend making a database backup so you can always restore from the backup (of v4.X.X) in case you encounter a problem during the upgrade. Please refer to our guides for detailed information on [upgrading Tyk]({{<ref "upgrading-tyk#important-to-know">}}) and [how to back up tyk]({{<ref "frequently-asked-questions/how-to-backup-tyk">}})
+To provide a superior experience with OAS APIs, we have made some changes which include various security fixes, improved validation etc. Upgrading to v5.1 from v4.x.x may be irreversible, rollback to v4.x.x could break your OAS API definitions. For this reason, we recommend making a database backup so you can always restore from the backup (of v4.X.X) in case you encounter a problem during the upgrade. Please refer to our guides for detailed information on [upgrading Tyk]({{<ref "upgrading-tyk">}}) and [how to back up tyk]({{<ref "frequently-asked-questions/how-to-backup-tyk">}})
 
 #### Deprecation
 There are no deprecations in this release.

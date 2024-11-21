@@ -21,7 +21,7 @@ We recommend that you familiarize yourself with the following official Go docume
 Plugins are currently supported only on Linux, FreeBSD, and macOS, making them unsuitable for applications intended to be portable.
 {{< /note >}}
 
-Plugins need to be compiled to native shared object code, which can then be loaded by Tyk Gateway. It's important to understand the need for plugins to be compiled using exactly the same environment and [build flags]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-development-flow#build-flags" >}}) as the Gateway. To simplify this and minimise the risk of compatibility problems, we recommend the use of [Go workspaces](https://go.dev/blog/get-familiar-with-workspaces), to provide a consistent environment.
+Plugins need to be compiled to native shared object code, which can then be loaded by Tyk Gateway. It's important to understand the need for plugins to be compiled using exactly the same environment and build flags as the Gateway. To simplify this and minimise the risk of compatibility problems, we recommend the use of [Go workspaces](https://go.dev/blog/get-familiar-with-workspaces), to provide a consistent environment.
 
 ## Setting up your environment
 

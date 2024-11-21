@@ -24,7 +24,7 @@ In a production environment, you will need to change the default `admin_secret` 
 
 #### Import Organization
 
-The [Organization object]({{<ref "basic-config-and-security/security/dashboard/organisations#concept-dashboard-organisations" >}}) is the most fundamental object in a Tyk setup, all other ownership properties hang off the relationship between an Organization and its APIs, Policies and API Tokens.
+The [Organization object]({{<ref "basic-config-and-security/security/dashboard/organisations" >}}) is the most fundamental object in a Tyk setup, all other ownership properties hang off the relationship between an Organization and its APIs, Policies and API Tokens.
 
 | **Property** | **Description**              |
 | ------------ | ---------------------------- |
