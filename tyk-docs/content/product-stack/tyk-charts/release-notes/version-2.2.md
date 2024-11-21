@@ -267,6 +267,14 @@ This fix removed deprecated ControllerManagerConfig CRD from manifests and Opera
 </details>
 </li>
 
+<li>
+<details>
+<summary>Tyk Operator license key handling in tyk-oss chart</summary>
+
+Resolved an issue where the Tyk OSS chart did not set the Operator license key in the secret created for the Operator. This fix ensures seamless configuration of the license key when deploying Tyk Operator. 
+</details>
+</li>
+
 </ul>
 
 <!-- #### Security Fixes
