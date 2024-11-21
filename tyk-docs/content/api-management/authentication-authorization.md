@@ -1369,22 +1369,6 @@ To integrate a 3rd party OAuth2/OIDC IdP with Tyk, all you will need to do is en
 The client application authenticates with the IdP which then provides an access token that is accepted by Tyk. Tyk will take care of the rest, ensuring that the rate limits and quotas of the underlying identity of the bearer are maintained across JWT token re-issues, so long as the "sub" (or whichever identity claim you chose to use) is available and consistent throughout and the policy that underpins the security clearance of the token exists too.
 
 
-### Use OpenID Connect
-
-{{< note success >}}
-**Note**  
-
-Tyk's dedicated OpenID Connect Authentication middleware will be deprecated from Tyk 5.7.0. Tyk's [JSON Web Token (JWT)](#use-json-web-tokens-jwt) authentication method also allows you to integrate with an OIDC provider, so the dedicated OIDC middleware will be deprecated to reduce duplication and potential for misconfiguration.
-{{< /note >}}
-
-
-[OpenID Connect](https://openid.net/developers/how-connect-works) (OIDC) builds on top of OAuth 2.0, adding authentication. You can secure your APIs on Tyk by integrating with any standards compliant OIDC provider using [JSON Web Tokens]({{< ref "#use-json-web-tokens-jwt" >}}) (JWTs).
-JWTs offer a simple way to use the third-party Identity Provider (IdP) without needing any direct integration between the Tyk and 3rd-party systems.
-
-To integrate a 3rd party OAuth2/OIDC IdP with Tyk, all you will need to do is ensure that your IdP can issue OAuth2 JWT access tokens as opposed to opaque tokens.
-
-The client application authenticates with the IdP which then provides an access token that is accepted by Tyk. Tyk will take care of the rest, ensuring that the rate limits and quotas of the underlying identity of the bearer are maintained across JWT token re-issues, so long as the "sub" (or whichever identity claim you chose to use) is available and consistent throughout and the policy that underpins the security clearance of the token exists too.
-
 
 
 ### Use JSON Web Tokens (JWT)
