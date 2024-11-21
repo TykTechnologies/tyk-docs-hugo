@@ -32,9 +32,9 @@ We are thrilled to announce new updates and improvements in Tyk 5.7.0, bringing 
 
 Add release highlight summary
 
-#### Add release highlight summary
+#### Improved Audit Log Management
 
-Add release highlight summary
+Tyk 5.7.0 enhances Audit Log management with new features designed for efficiency and security. Users can now store Dashboard Audit Logs in a database for persistent retention and access them via the new /audit-logs API, which supports advanced filtering by attributes like action, IP, status, and user. Additionally, a dedicated Audit Log RBAC group ensures secure access to sensitive log data. These improvements simplify monitoring and compliance workflows, particularly in containerized environments.
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
@@ -175,6 +175,38 @@ Developed a step-by-step UI for Streaming API creation, enabling users to select
 <summary>Implemented HubSpot form for Contacting Tyk during trial period</summary>
 
 Introduced a HubSpot form on the Tyk Dashboard, allowing users to easily contact Tyk support during their trial period.
+</details>
+</li>
+<li>
+<details>
+<summary>Support for JWE in OIDC SSO</summary>
+
+We have enhanced security for customers in highly regulated industries by introducing JSON Web Encryption (JWE) support for OIDC single sign-on (SSO). This ensures that tokens used in authentication flows are securely encrypted, providing an additional layer of protection.
+
+[Setup guide for JWE OIDC SSO]({{<ref "tyk-stack/tyk-identity-broker/auth-user-for-api-access-github-oauth">}})
+</details>
+</li>
+<li>
+<details>
+<summary>Store Audit Logs in a Database</summary>
+
+Users can now choose to store Dashboard Audit Logs directly in a database, enabling efficient and reliable log storage. This feature is particularly beneficial for organizations needing persistent audit log retention to meet compliance requirements or for forensic purposes.
+</details>
+</li>
+<li>
+<details>
+<summary>Access Audit Logs via /audit-logs endpoint</summary>
+
+A new API endpoint, /audit-logs, has been introduced to provide programmatic access to stored audit logs. This allows users to retrieve, filter, and analyze logs more effectively. The API supports filtering logs by key attributes like action, IP address, URL accessed, date range, user, and page number.
+
+For detail usage of the /audit-logs endpoint, please see [Dashboard API documentation]({{<ref "tyk-dashboard-api">}}).
+</details>
+</li>
+<li>
+<details>
+<summary>New Role-Based Access Control (RBAC) for Audit Logs</summary>
+
+To secure access to audit logs, we’ve added a new Audit Log RBAC group. This ensures that only authorized users can view or retrieve sensitive log information. Administrators can assign this permission as part of their security and compliance strategy.
 </details>
 </li>
 </ul>
