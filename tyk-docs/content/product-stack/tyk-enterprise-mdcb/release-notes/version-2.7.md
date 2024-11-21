@@ -70,6 +70,7 @@ MDCB 2.7.2 supports Tyk API definitions up to Tyk Gateway v5.7.0. Please use MDC
  <li>
  <details>
  <summary>Fixed the following CVEs:</summary>
+   
     - [GHSA-7jwh-3vrq-q3m8](https://github.com/jackc/pgproto3/security/advisories/GHSA-7jwh-3vrq-q3m8)
     - [GHSA-mrww-27vc-gghv](https://github.com/advisories/GHSA-mrww-27vc-gghv)
     - [GO-2024-2611](https://pkg.go.dev/vuln/GO-2024-2611)
