@@ -197,7 +197,7 @@ Users can now choose to store Dashboard Audit Logs directly in a database, enabl
 <details>
 <summary>Access Audit Logs via /audit-logs endpoint</summary>
 
-A new API endpoint, /audit-logs, has been introduced to provide programmatic access to stored audit logs. This allows users to retrieve, filter, and analyze logs more effectively. The API supports filtering logs by key attributes like action, IP address, URL accessed, date range, user, and page number.
+A new API endpoint, /audit-logs, has been introduced to provide programmatic access to audit logs stored in database. This allows users to retrieve, filter, and analyze logs more effectively. The API supports filtering logs by key attributes like action, IP address, URL accessed, date range, user, and page number.
 
 For detail usage of the /audit-logs endpoint, please see [Dashboard API documentation]({{<ref "tyk-dashboard-api">}}).
 </details>
