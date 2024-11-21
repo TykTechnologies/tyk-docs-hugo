@@ -11,12 +11,21 @@ Licensed Protected Product
 ## Support Lifetime
 Our minor releases are supported until our next minor comes out.
 
+---
+
 ## 2.7.2 Release Notes
 
-##### Release date DD Mon YYYY <<update>>
+### Release Date DD Mon YYYY <<update>>
 
-#### Breaking Changes
+### Release Highlights
+
+#### Support Tyk 5.7
+Tyk MDCB 2.7.2 has been updated to support API configurations from Tyk 5.7.0.
+
+### Breaking Changes
 This release has no breaking changes.
+
+### Dependencies {#dependencies-X.Y.Z}
 
 #### 3rd Party Dependencies & Tools
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
@@ -27,20 +36,19 @@ This release has no breaking changes.
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-#### Deprecations
+### Deprecations
 There are no deprecations in this release.
 
-#### Release Highlights
+### Upgrade instructions
+For users currently on v2.7.1, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower minor), it is advisable to bypass version 2.7.0 and proceed directly to this latest patch release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
-#### Support Tyk 5.7
-Tyk MDCB 2.7.2 has been updated to support API configurations from Tyk 5.7.0.
-
-#### Downloads
+### Downloads
 - [Docker image v2.7.2](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.7.2)
 - ```bash
   docker pull tykio/tyk-mdcb-docker:v2.7.2
   ```
-
 
 ### Changelog {#Changelog-v2.7.2}
 
