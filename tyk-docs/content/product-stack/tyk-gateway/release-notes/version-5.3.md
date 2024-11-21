@@ -787,7 +787,7 @@ Added [FIPS compliance]({{< ref "developer-support/special-releases-and-features
 
 <li>
 <details>
-<summary>Corrected ordering of OAS API paths to prevent middleware misapplication</summary>
+<summary>Corrected ordering of Tyk OAS API paths to prevent middleware misapplication</summary>
 
 Fixed an issue where nested API endpoints, such as '/test' and '/test/abc', might incorrectly apply middleware from the
 parent path to the nested path. The fix ensures that API endpoint definitions are correctly ordered, preventing this
@@ -1818,7 +1818,7 @@ vulnerabilities:
 </li>
 </ul>
 
-## <!-- Required. use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
+<!-- Required. use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
 
 <!--
 Repeat the release notes section above for every patch here
