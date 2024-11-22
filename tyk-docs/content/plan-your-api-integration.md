@@ -73,7 +73,7 @@ Tyk’s platform makes security implementation straightforward, offering feature
 #### **Step 6: Monitor and Maintain the API**
 
 An API isn’t a one-time setup; it needs regular monitoring and updates:
-- **Monitor Performance**: Use [Tyk’s real-time analytics]({{< ref "tyk-pump" >}}) to track metrics like [latency]({{< ref "tyk-stack/tyk-pump/tyk-analytics-record-fields/#latency" >}}), error rates, and [usage](/tyk-cloud/environments--deployments/monitoring-usage). This helps identify any bottlenecks or security risks.
+- **Monitor Performance**: Use [Tyk’s real-time analytics]({{< ref "tyk-pump" >}}) to track metrics like [latency]({{< ref "tyk-stack/tyk-pump/tyk-analytics-record-fields/#latency" >}}), error rates, and [usage]({{< ref "tyk-cloud/environments-&-deployments/monitoring-usage" >}}). This helps identify any bottlenecks or security risks.
 - **Version and Update**: As you add new features, use [Tyk’s versioning]({{< ref "product-stack/tyk-operator/advanced-configurations/api-versioning/" >}}) to avoid breaking existing functionality.
 - **Optimize and Scale**: With Tyk, you can adjust your rate limits, caching, and load balancing to handle higher volumes as needed. Optimizing is especially necessary as you [move your workload into production]({{< ref "planning-for-production/" >}}).
 
@@ -110,4 +110,4 @@ After deployment, Tyk offers robust tools to ensure smooth API operations and ma
 
 Building and managing APIs is a process of continuous improvement. With Tyk, you have a partner that provides the tools to plan, develop, deploy, and maintain APIs with efficiency and security. As you refine your API strategy, you can rely on Tyk’s capabilities to adapt and scale with you, ensuring that your APIs deliver value to users and meet evolving business needs.
 
-To get started in your Tyk journey, [get started on Tyk Cloud]({{< ref "tyk-cloud/getting-started" >}}) and learn about [Tyk's components]({{< ref "tyk-components" >}}) to further understand how Tyk supports your specific goals.
+To get started in your Tyk journey, [get started on Tyk Cloud]({{< ref "tyk-cloud/getting-started" >}}) and learn about [Tyk components]({{< ref "tyk-components" >}}) to further understand how Tyk supports your specific goals.

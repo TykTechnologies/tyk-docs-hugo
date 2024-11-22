@@ -20,7 +20,7 @@ Below is a detailed introduction to each of Tyk’s components and their individ
 
 {{< grid >}}
 
-{{< badge title="Tyk Gateway" href="#tyk-gateway" >}} The open-source core of Tyk that handles request routing, rate-limiting, and caching. {{< /badge >}}
+{{< badge title="Tyk Gateway" href="/#tyk-gateway" >}} The open-source core of Tyk that handles request routing, rate-limiting, and caching. {{< /badge >}}
 
 {{< badge title="Tyk Dashboard" href="#tyk-dashboard" >}} A powerful interface for managing and monitoring APIs, users, and permissions. {{< /badge >}}
 
@@ -202,7 +202,7 @@ Now that you’ve been introduced to the Tyk suite, you have a strong foundation
 2. **[Set Up and Configure the Tyk Dashboard]({{< ref "tyk-dashboard" >}})**  
    Dive into the Tyk Dashboard to manage your API lifecycle from a user-friendly interface, allowing you to monitor, configure, and scale your APIs with ease.
 
-3. **[Explore API Security](/basic-config-and-security/security/authentication--authorization)**  
+3. **[Explore API Security]({{< ref "/basic-config-and-security/security/authentication-&-authorization" >}})**  
    Secure your APIs with Tyk’s robust authentication options like OAuth2, JWT, and HMAC, and learn how to apply rate limiting and quota policies to protect your resources.
 
 4. **[Implement Multi-Region Deployments with MDCB]({{< ref "tyk-multi-data-centre" >}})**  
