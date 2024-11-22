@@ -3,6 +3,45 @@ title: Tyk Streams
 description: Explains the purpose of Tyk Streaming and use cases
 tags: [ "streaming", "events", "event-driven architecture", "event-driven architectures", "kafka" ]
 publishdate: 2024-07-15
+aliases:
+ - /product-stack/tyk-streaming/configuration/processors/aws-lambda/
+ - /product-stack/tyk-streaming/configuration/processors/bloblang/
+ - /product-stack/tyk-streaming/configuration/processors/bounds-check/
+ - /product-stack/tyk-streaming/configuration/processors/branch/
+ - /product-stack/tyk-streaming/configuration/processors/cache/
+ - /product-stack/tyk-streaming/configuration/processors/cached/
+ - /product-stack/tyk-streaming/configuration/processors/catch/
+ - /product-stack/tyk-streaming/configuration/processors/dedupe/
+ - /product-stack/tyk-streaming/configuration/processors/for-each/
+ - /product-stack/tyk-streaming/configuration/processors/group-by-value/
+ - /product-stack/tyk-streaming/configuration/processors/group-by/
+ - /product-stack/tyk-streaming/configuration/processors/http/
+ - /product-stack/tyk-streaming/configuration/processors/insert-part/
+ - /product-stack/tyk-streaming/configuration/processors/jmes-path/
+ - /product-stack/tyk-streaming/configuration/processors/json-schema/
+ - /product-stack/tyk-streaming/configuration/processors/jq/
+ - /product-stack/tyk-streaming/configuration/processors/log/
+ - /product-stack/tyk-streaming/configuration/processors/mapping/
+ - /product-stack/tyk-streaming/configuration/processors/msgpack/
+ - /product-stack/tyk-streaming/configuration/processors/mutation/
+ - /product-stack/tyk-streaming/configuration/processors/noop/
+ - /product-stack/tyk-streaming/configuration/processors/parallel/
+ - /product-stack/tyk-streaming/configuration/processors/parse-log/
+ - /product-stack/tyk-streaming/configuration/processors/processors/
+ - /product-stack/tyk-streaming/configuration/processors/protobuf/
+ - /product-stack/tyk-streaming/configuration/processors/rate-limit/
+ - /product-stack/tyk-streaming/configuration/processors/redis/
+ - /product-stack/tyk-streaming/configuration/processors/retry/
+ - /product-stack/tyk-streaming/configuration/processors/schema-registry-decode/
+ - /product-stack/tyk-streaming/configuration/processors/schema-registry-encode/
+ - /product-stack/tyk-streaming/configuration/processors/select-parts/
+ - /product-stack/tyk-streaming/configuration/processors/sleep/
+ - /product-stack/tyk-streaming/configuration/processors/split/
+ - /product-stack/tyk-streaming/configuration/processors/switch/
+ - /product-stack/tyk-streaming/configuration/processors/sync-response/
+ - /product-stack/tyk-streaming/configuration/processors/try/
+ - /product-stack/tyk-streaming/configuration/processors/while/
+ - /product-stack/tyk-streaming/configuration/processors/workflow/
 ---
 We are excited to introduce our new product, *Tyk Streams*! 
 *Tyk Streams* is a powerful new feature in the Tyk API management platform that enables organizations to securely expose,
