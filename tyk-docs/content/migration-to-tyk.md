@@ -4089,7 +4089,7 @@ Or go to [Tyk Stack helm chart]({{<ref "product-stack/tyk-charts/tyk-stack-chart
 
 ##### Tyk Operator and Ingress 
 For a GitOps workflow used with a **Tyk Self-Managed** installation or setting the Tyk Gateway as a Kubernetes ingress controller, Tyk Operator enables you to manage API definitions, security policies and other Tyk features using Kubernetes manifest files.
-To get started go to [Tyk Operator]({{< ref "/tyk-operator#what-is-tyk-operator-" >}}).
+To get started go to [Tyk Operator]({{< ref "/tyk-operator#what-is-tyk-operator" >}}).
 
 
 ##### Install Tyk Stack with Helm Chart (PostgreSQL)
@@ -7758,7 +7758,7 @@ You're ready to follow the guide on [creating and managing your APIs]({{< ref "g
 To use the [geographic log distribution]({{< ref "tyk-stack/tyk-manager/analytics/geographic-distribution" >}}) feature in the Dashboard please supply the GeoLite2 DB in the `gateway` directory, uncomment the marked line in `Dockerfile.web` and set the `analytics_config.enable_geo_ip` setting (or `TYK_GW_ANALYTICSCONFIG_ENABLEGEOIP` env var) to `true`.
 {{< /note >}}
 
-**Heroku Private Spaces{#private-spaces}**
+**Heroku Private Spaces {#private-spaces}**
 
 Most instructions are valid for [Heroku Private Spaces runtime](https://devcenter.heroku.com/articles/private-spaces). However there are several differences to keep in mind.
 
