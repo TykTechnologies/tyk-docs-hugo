@@ -1252,10 +1252,6 @@ menu:
                     path: /advanced-configuration/manage-multiple-environments/with-tyk-on-premises
                     category: Page
                     show: True
-              - title: "How to secure your APIs in Tyk"
-                path: /basic-config-and-security/security
-                category: Page
-                show: True
               - title: "Request Middleware Chain"
                 path: /concepts/middleware-execution-order
                 category: Page
@@ -1434,10 +1430,6 @@ menu:
                     show: True
                   - title: "Key Level Security"
                     path: /basic-config-and-security/security/key-level-security
-                    category: Page
-                    show: True
-                  - title: "Tyk and OWASP Top Ten Threats"
-                    path: /basic-config-and-security/security/owasp-top-ten
                     category: Page
                     show: True
                   - title: "TLS and SSL"

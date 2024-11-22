@@ -5,6 +5,16 @@ tags: ["OWASP", "Security", "Top Ten", "API Management best practice", "API Secu
 aliases:
   - /advanced-configuration/integrate/api-auth-mode/json-web-tokens
   - /security/
+  - /apim-best-practice/overview
+  - /apim-best-practice/api-security-best-practice/overview
+  - /apim-best-practice/api-security-best-practice/authentication
+  - /apim-best-practice/api-security-best-practice/authorisation
+  - /apim-best-practice/api-security-best-practice/authorisation-levels
+  - /apim-best-practice/api-security-best-practice/resource-consumption
+  - /apim-best-practice/api-security-best-practice/configuration
+  - /apim-best-practice/api-security-best-practice/governance
+  - /basic-config-and-security/security
+  - /basic-config-and-security/security/owasp-top-ten
 ---
 
 ## Overview
@@ -43,7 +53,7 @@ Authorization can be a complex process that occurs at multiple locations through
 
 ### Split Authorization
 
-Implement authorization in the best locations across the stack. For an overview of the different authorization levels across the stack please visit this [page](#authorisation-levels). Use the gateway to handle general API authorization related to hosts, methods, paths and properties. This leaves the API to handle the finer details of object-level authorization. In terms of OWASPs authorization categories, it can be split as follows:
+Implement authorization in the best locations across the stack. For an overview of the different authorization levels across the stack please visit this [page](#authorization-levels). Use the gateway to handle general API authorization related to hosts, methods, paths and properties. This leaves the API to handle the finer details of object-level authorization. In terms of OWASPs authorization categories, it can be split as follows:
 
 #### Object Level Authorization
 

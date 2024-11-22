@@ -1,3 +1,14 @@
 {
-
+    "advanced-configuration/integrate/api-auth-mode/json-web-tokens": "#overview",
+    "security/": "#overview",
+    "apim-best-practice/overview": "#overview",
+    "apim-best-practice/api-security-best-practice/overview": "#overview",
+    "apim-best-practice/api-security-best-practice/authentication": "#authentication",
+    "apim-best-practice/api-security-best-practice/authorisation": "#authorization",
+    "apim-best-practice/api-security-best-practice/authorisation-levels": "#authorization-levels",
+    "apim-best-practice/api-security-best-practice/resource-consumption": "#resource-consumption",
+    "apim-best-practice/api-security-best-practice/configuration": "#configuration",
+    "apim-best-practice/api-security-best-practice/governance": "#governance",
+    "basic-config-and-security/security": "#how-to-secure-your-apis-in-tyk",
+    "basic-config-and-security/security/owasp-top-tne": "#tyk-and-owasp-top-ten-threats"
 }
