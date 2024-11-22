@@ -8743,7 +8743,7 @@ Use the *save* or *create* buttons to save the changes and activate the middlewa
 
 ##### Configuring an enforced timeout in Tyk Operator
 
-The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring an enforced timeout in the Tyk Classic API Definition](#configuring-an-enforced-timeout-in-the-tyk-classic-api-definition). It is possible to configure an enforced timeout using the `hard_timeouts` object within the `extended_paths` section of the API Definition.
+The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring an enforced timeout in the Tyk Classic API Definition](#using-the-enforced-timeout-middleware-with-tyk-classic-apis). It is possible to configure an enforced timeout using the `hard_timeouts` object within the `extended_paths` section of the API Definition.
 
 The example API Definition below configures an API to listen on path `/httpbin-timeout-breaker` and forwards requests upstream to http://httpbin.org. A hard timeout value of 2 seconds is configured for path `/delay/{delay_seconds}`. This will return a `504 Gateway Timeout` response to the client if the upstream response is not received before expiry of the timer.
 
