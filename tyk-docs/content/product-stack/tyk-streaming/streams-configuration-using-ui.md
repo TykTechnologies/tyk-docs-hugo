@@ -63,6 +63,8 @@ Before you begin, make sure you have:
    - **Limits**: Define **Rate Limiting**, **Throttling**, and **Usage Quota**.
    - **Configuration**: Provide a policy name and set a key expiration interval.  
 
+   {{< img src="/img/streams/pol-details-page.png" alt="Policy Details Page" width="670px" height="500px" >}}
+   
 4. Click **Create Policy** to save.
 
 ### Step 2: Generate a Key
