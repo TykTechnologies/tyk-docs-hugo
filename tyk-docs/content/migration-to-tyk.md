@@ -328,42 +328,42 @@ Quick Start
 
 {{< badge title="Configuration" href="tyk-cloud/configuration-options/using-plugins/python-custom-auth/" >}}
 
-#### Python custom plugins
+**Python custom plugins**
 
 Implement your own custom logic with Python based plugins
 {{< /badge >}}
 
 {{< badge title="Configuration" href="tyk-cloud/using-custom-domains/" >}}
 
-#### Using custom domains
+**Using custom domains**
 
 Configure custom domain for your Dashboard and Developer Portal
 {{< /badge >}}
 
 {{< badge title="Administration" href="tyk-cloud/environments-deployments/managing-environments" >}}
 
-#### Manage environments
+**Manage environments**
 
 Create and manage multiple environments within your Tyk Cloud organization
 {{< /badge >}}
 
 {{< badge title="Administration" href="tyk-cloud/environments-deployments/managing-control-planes" >}}
 
-#### Manage deployments
+**Manage deployments**
 
 Create and manage your Cloud Control Plane and Cloud Data Plane deployments
 {{< /badge >}}
 
 {{< badge title="Administration" href="tyk-cloud/teams-users/" >}}
 
-#### Manage teams & users
+**Manage teams & users**
 
 Create teams in your organization, define roles and manage user access
 {{< /badge >}}
 
 {{< badge title="Account" href="tyk-cloud/account-billing/" >}}
 
-#### Manage billing
+**Manage billing**
 
 Upgrade your subscription, billing details or card information
 {{< /badge >}}
