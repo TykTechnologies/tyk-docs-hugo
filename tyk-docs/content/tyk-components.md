@@ -20,27 +20,27 @@ Below is a detailed introduction to each of Tyk’s components and their individ
 
 {{< grid >}}
 
-{{< badge title="Tyk Gateway" href="/#tyk-gateway" >}} The open-source core of Tyk that handles request routing, rate-limiting, and caching. {{< /badge >}}
+{{< badge title="Tyk Gateway" href="tyk-components#tyk-gateway" >}} The open-source core of Tyk that handles request routing, rate-limiting, and caching. {{< /badge >}}
 
-{{< badge title="Tyk Dashboard" href="#tyk-dashboard" >}} A powerful interface for managing and monitoring APIs, users, and permissions. {{< /badge >}}
+{{< badge title="Tyk Dashboard" href="tyk-components#tyk-dashboard" >}} A powerful interface for managing and monitoring APIs, users, and permissions. {{< /badge >}}
 
-{{< badge title="Tyk Enterprise Developer Portal" href="#tyk-developer-portal" >}} A customizable portal for enabling API discovery and user self-service. {{< /badge >}}
+{{< badge title="Tyk Enterprise Developer Portal" href="tyk-components#tyk-developer-portal" >}} A customizable portal for enabling API discovery and user self-service. {{< /badge >}}
 
-{{< badge title="Tyk Multi Data Centre Bridge" href="#tyk-multi-data-centre" >}} Ensures high availability by synchronizing APIs across multiple data centers. {{< /badge >}}
+{{< badge title="Tyk Multi Data Centre Bridge" href="tyk-components#tyk-multi-data-centre" >}} Ensures high availability by synchronizing APIs across multiple data centers. {{< /badge >}}
 
-{{< badge title="Tyk Pump" href="#tyk-pump" >}} Pushes analytics data from the Gateway to external data stores for advanced insights. {{< /badge >}}
+{{< badge title="Tyk Pump" href="tyk-components#tyk-pump" >}} Pushes analytics data from the Gateway to external data stores for advanced insights. {{< /badge >}}
 
-{{< badge title="Tyk Operator" href="#tyk-operator" >}} Integrates with Kubernetes for seamless API management within containerized environments. {{< /badge >}}
+{{< badge title="Tyk Operator" href="tyk-components#tyk-operator" >}} Integrates with Kubernetes for seamless API management within containerized environments. {{< /badge >}}
 
-{{< badge title="Tyk Streams" href="#tyk-streams" >}} Enables real-time event streaming for APIs, ideal for push notifications and live data. {{< /badge >}}
+{{< badge title="Tyk Streams" href="tyk-components#tyk-streams" >}} Enables real-time event streaming for APIs, ideal for push notifications and live data. {{< /badge >}}
 
-{{< badge title="Tyk Sync" href="#tyk-sync" >}} Automates the synchronization of API configurations across environments. {{< /badge >}}
+{{< badge title="Tyk Sync" href="tyk-components#tyk-sync" >}} Automates the synchronization of API configurations across environments. {{< /badge >}}
 
-{{< badge title="Tyk Identity Broker" href="#tyk-identity-broker" >}} Facilitates single sign-on (SSO) and integrates external identity providers with APIs. {{< /badge >}}
+{{< badge title="Tyk Identity Broker" href="tyk-components#tyk-identity-broker" >}} Facilitates single sign-on (SSO) and integrates external identity providers with APIs. {{< /badge >}}
 
-{{< badge title="Tyk Helm Charts" href="#tyk-helm-charts" >}} Provides templated configurations to simplify deploying Tyk in Kubernetes. {{< /badge >}}
+{{< badge title="Tyk Helm Charts" href="tyk-components#tyk-helm-charts" >}} Provides templated configurations to simplify deploying Tyk in Kubernetes. {{< /badge >}}
 
-{{< badge title="Universal Data Graph" href="#universal-data-graph" >}} Combines multiple data sources into a unified API, supporting GraphQL and REST. {{< /badge >}}
+{{< badge title="Universal Data Graph" href="tyk-components#universal-data-graph" >}} Combines multiple data sources into a unified API, supporting GraphQL and REST. {{< /badge >}}
 
 {{< /grid >}}
 
