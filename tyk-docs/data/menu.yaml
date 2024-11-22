@@ -219,6 +219,10 @@ menu:
                   - title: "Manage subscriptions and add-ons"
                     category: Page
                     show: False
+                  - title: "Initial portal configuration"
+                    path: /tyk-cloud/initial-portal-config
+                    category: Page
+                    show: True
               - title: "Deployment phase"
                 category: Directory
                 show: True

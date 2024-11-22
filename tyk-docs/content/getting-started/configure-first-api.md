@@ -169,37 +169,6 @@ With your API live, monitor its traffic and analyze performance:
 
 {{< img src="/img/getting-started/api-activity-logs.png" alt="APIs Logs" >}}
 
-## Deploy Developer Portal
-Once your API is set up, you can access the Tyk Developer Portal. The portal allows you to manage your APIs, view analytics, and customize your API consumer experience.
-
-Watch our video on configuring your Tyk Cloud Developer Portal.
-
-{{< youtube 8_SPUake84w >}}
-
-1. From the Control Plane Dashboard, select **Pages** from the **Portal Management** menu
-2. Click **Add Page**
-
-{{< img src="/img/getting-started/create-account-portal-pages.png" alt="Add Portal Page" >}}
-
-3. In the Settings, give your page a name and slug. Below we've called it Home
-4. Select **Check to make this page the Home page**
-5. Select **Default Home page template** from the Page type drop-down list
-6. You can leave the Registered Fields sections for now
-
-{{< img src="/img/getting-started/create-account-portal-pages.png" alt="Portal Home page settings" >}}
-
-7. Click **Save**.
-
-You should now be able to access your Portal from **Open Your Portal** from the **Your Developer Portal** menu.
-
-{{< img src="/img/getting-started/portal_menu.png" alt="Portal Menu" >}}
-
-## Further Portal Configuration
-
-Our Developer Portal is completely customizable. See [Portal Customization]({{< ref "tyk-developer-portal/customise" >}}) for more details.
-
-
-
 
 ## Next Steps
 
