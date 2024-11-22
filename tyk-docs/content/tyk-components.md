@@ -48,7 +48,7 @@ Below is a detailed introduction to each of Tyk’s components and their individ
 
 ### Tyk Gateway
 
-The **[Tyk Gateway](/tyk-oss-gateway)** is the core of Tyk’s API management platform. This open-source, high-performance API gateway handles crucial API tasks:
+The **[Tyk Gateway]({{< ref "tyk-oss-gateway" >}})** is the core of Tyk’s API management platform. This open-source, high-performance API gateway handles crucial API tasks:
 
 - **Traffic Management**: Routes requests to backend services, balancing loads and ensuring high availability.
 - **Security and Authentication**: Supports OAuth2, JWT, OpenID Connect, and other protocols to secure APIs.
@@ -61,7 +61,7 @@ The Gateway is the primary component managing and securing all API interactions,
 
 ### Tyk Dashboard
 
-The **[Tyk Dashboard](/tyk-dashboard)** is a GUI interface for managing, monitoring, and configuring APIs. It integrates with the Tyk Gateway and offers centralized control for all API operations:
+The **[Tyk Dashboard]({{< ref "tyk-dashboard" >}})** is a GUI interface for managing, monitoring, and configuring APIs. It integrates with the Tyk Gateway and offers centralized control for all API operations:
 
 - **Design APIs**: Set up endpoints, security policies, and access controls.
 - **Monitor API Usage**: View real-time analytics to track API performance and identify trends.
@@ -73,7 +73,7 @@ The Tyk Dashboard simplifies API management, enabling teams to effectively admin
 
 ### Tyk Enterprise Developer Portal
 
-The **[Tyk Developer Portal](/tyk-developer-portal)** provides a self-service interface for developers to access and interact with APIs. Key functionalities include:
+The **[Tyk Developer Portal]({{< ref "tyk-developer-portal" >}})** provides a self-service interface for developers to access and interact with APIs. Key functionalities include:
 
 - **API Documentation**: Supplies developers with detailed API documentation, making integration easier.
 - **Self-Service Access**: Developers can register, request API keys, and manage subscriptions independently.
@@ -85,7 +85,7 @@ The Developer Portal streamlines API adoption by offering developers a comprehen
 
 ### Tyk Multi Data Centre Bridge (MDCB)
 
-The **[Tyk Multi Data Centre Bridge (MDCB)](/tyk-multi-data-centre)** enables centralized control over API configurations across distributed regions or data centers. It’s ideal for global API infrastructure, offering:
+The **[Tyk Multi Data Centre Bridge (MDCB)]({{< ref "tyk-multi-data-centre" >}})** enables centralized control over API configurations across distributed regions or data centers. It’s ideal for global API infrastructure, offering:
 
 - **Centralized Management**: Controls API configurations across different regions from a single interface.
 - **Data Isolation**: Supports regulatory compliance by keeping data within specified regions.
@@ -97,7 +97,7 @@ MDCB is designed for organizations with extensive geographic reach, supporting b
 
 ### Tyk Pump
 
-**[Tyk Pump](/tyk-pump)** is a lightweight tool that aggregates API analytics from the Tyk Gateway and exports them to various storage systems for analysis:
+**[Tyk Pump]({{< ref "tyk-pump" >}})** is a lightweight tool that aggregates API analytics from the Tyk Gateway and exports them to various storage systems for analysis:
 
 - **Data Collection**: Continuously gathers real-time API analytics.
 - **Data Export**: Integrates with multiple backends like MongoDB, AWS S3, and others.
@@ -109,7 +109,7 @@ With Tyk Pump, you can leverage powerful insights into API usage, helping teams 
 
 ### Tyk Operator
 
-The **[Tyk Operator](/tyk-operator)** is a Kubernetes-native API management solution, allowing teams to deploy and manage APIs as Kubernetes resources:
+The **[Tyk Operator]({{< ref "tyk-operator" >}})** is a Kubernetes-native API management solution, allowing teams to deploy and manage APIs as Kubernetes resources:
 
 - **Kubernetes Integration**: Simplifies API management within Kubernetes environments.
 - **Declarative Configuration**: Supports automated, scalable, and resilient API deployments.
@@ -121,7 +121,7 @@ For teams operating within Kubernetes, Tyk Operator integrates seamlessly, provi
 
 ### Tyk Streams
 
-**[Tyk Streams](/product-stack/tyk-streaming/overview)** is Tyk’s real-time data streaming tool for APIs, enabling applications to receive data as events happen:
+**[Tyk Streams]({{< ref "product-stack/tyk-streaming/overview" >}})** is Tyk’s real-time data streaming tool for APIs, enabling applications to receive data as events happen:
 
 - **Real-Time Data**: Pushes live data to clients in real time.
 - **Event-Driven Architecture**: Triggers immediate responses to data changes.
@@ -133,7 +133,7 @@ Tyk Streams is ideal for use cases like financial services, IoT, and live applic
 
 ### Tyk Sync
 
-**[Tyk Sync](/product-stack/tyk-sync/overview)** facilitates configuration synchronization, helping teams manage API configurations across different environments:
+**[Tyk Sync]({{< ref "product-stack/tyk-sync/overview" >}})** facilitates configuration synchronization, helping teams manage API configurations across different environments:
 
 - **Configuration Consistency**: Synchronizes API settings across development, staging, and production.
 - **DevOps Compatibility**: Integrates with CI/CD pipelines for seamless deployment.
@@ -145,7 +145,7 @@ Tyk Sync ensures that API configurations are consistent and reliable across envi
 
 ### Tyk Identity Broker
 
-The **[Tyk Identity Broker](/tyk-identity-broker)** simplifies authentication by connecting APIs with external identity providers (IDPs), supporting single sign-on (SSO) capabilities:
+The **[Tyk Identity Broker]({{< ref "tyk-identity-broker" >}})** simplifies authentication by connecting APIs with external identity providers (IDPs), supporting single sign-on (SSO) capabilities:
 
 - **Authentication Integration**: Works with IDPs like Google, Microsoft, and LDAP.
 - **Secure Access Control**: Manages API access for verified users.
@@ -157,7 +157,7 @@ The Identity Broker centralizes identity and access management, making it easier
 
 ### Tyk Helm Charts
 
-**[Tyk Helm Charts](/product-stack/tyk-charts/overview)** provide templated configurations for deploying Tyk components in Kubernetes, enabling efficient setup and management:
+**[Tyk Helm Charts]({{< ref "product-stack/tyk-charts/overview" >}})** provide templated configurations for deploying Tyk components in Kubernetes, enabling efficient setup and management:
 
 - **Efficient Deployment**: Simplifies installation and configuration within Kubernetes clusters.
 - **Version Control**: Manages versioning and consistency across deployments.
@@ -169,7 +169,7 @@ Tyk Helm Charts are particularly useful for teams deploying Tyk in Kubernetes, s
 
 ### Universal Data Graph (UDG)
 
-The **[Universal Data Graph (UDG)](/universal-data-graph)** provides a single API endpoint for accessing data from multiple sources using GraphQL, offering:
+The **[Universal Data Graph (UDG)]({{< ref "universal-data-graph" >}})** provides a single API endpoint for accessing data from multiple sources using GraphQL, offering:
 
 - **Data Aggregation**: Combines data from disparate sources into a unified API.
 - **Customizable Data Access**: Clients can query only the data they need.
@@ -196,21 +196,21 @@ Now that you’ve been introduced to the Tyk suite, you have a strong foundation
 
 ## Where to Go Next
 
-1. **[Getting Started with Tyk Gateway](/tyk-oss-gateway/)**  
+1. **[Getting Started with Tyk Gateway]({{< ref "tyk-oss-gateway/" >}})**  
    Start by setting up the Tyk Gateway, where you’ll configure your first API and explore the foundational capabilities of traffic management, security, and monitoring.
 
-2. **[Set Up and Configure the Tyk Dashboard](/tyk-dashboard)**  
+2. **[Set Up and Configure the Tyk Dashboard]({{< ref "tyk-dashboard" >}})**  
    Dive into the Tyk Dashboard to manage your API lifecycle from a user-friendly interface, allowing you to monitor, configure, and scale your APIs with ease.
 
-3. **[Explore API Security](/basic-config-and-security/security/authentication--authorization)**  
+3. **[Explore API Security]({{< ref "basic-config-and-security/security/authentication--authorization" >}})**  
    Secure your APIs with Tyk’s robust authentication options like OAuth2, JWT, and HMAC, and learn how to apply rate limiting and quota policies to protect your resources.
 
-4. **[Implement Multi-Region Deployments with MDCB](/tyk-multi-data-centre)**  
+4. **[Implement Multi-Region Deployments with MDCB]({{< ref "tyk-multi-data-centre" >}})**  
    If your infrastructure requires high availability and global reach, explore Tyk’s Multi Data Centre Bridge to deploy and manage APIs across different regions.
 
-5. **[Use Tyk Sync for Consistent Configuration Management](/product-stack/tyk-sync/overview)**  
+5. **[Use Tyk Sync for Consistent Configuration Management]({{< ref "product-stack/tyk-sync/overview" >}})**  
    For development teams working across environments, Tyk Sync offers a way to manage API configurations consistently, supporting CI/CD workflows and minimizing deployment errors.
 
-6. **[Explore Tyk Developer Portal for Enhanced Developer Experience](/tyk-developer-portal)**  
+6. **[Explore Tyk Developer Portal for Enhanced Developer Experience]({{< ref "tyk-developer-portal" >}})**  
    Provide external and internal developers with easy access to your APIs by setting up the Developer Portal, where they can find documentation, request access, and get started quickly.
 
