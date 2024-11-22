@@ -3636,7 +3636,7 @@ For Tyk Classic API, versioning can be configured via `ApiDefinition` custom res
 
 #### API Ownership
 
-Please consult the [API Ownership]({{<ref "product-stack/tyk-dashboard/advanced-configurations/user-management/api-ownership">}}) documentation for the fundamental concepts of API Ownership in Tyk and [Operator Context](#multi-tenancy-in-tyk) documentation for an overview of the use of OperatorContext to manage resources for different teams effectively.
+Please consult the [API Ownership]({{<ref "/product-stack/tyk-dashboard/advanced-configurations/user-management/api-ownership">}}) documentation for the fundamental concepts of API Ownership in Tyk and [Operator Context](#multi-tenancy-in-tyk) documentation for an overview of the use of OperatorContext to manage resources for different teams effectively.
 
 The guide includes practical examples for managing API ownership via OperatorContext. Key topics include defining user owners and user group owners in OperatorContext for connecting and authenticating with a Tyk Dashboard, and using `contextRef` in `TykOasApiDefinition` or `ApiDefinition` objects to ensure configurations are applied within specific organizations. The provided YAML examples illustrate how to set up these configurations.
 
