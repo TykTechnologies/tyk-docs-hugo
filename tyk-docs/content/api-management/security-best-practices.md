@@ -7,9 +7,11 @@ aliases:
   - /security/
 ---
 
-## Introduction
+## Overview
 
-Implementing best-practice API security requires a holistic approach that covers many different topics. It’s recommended to start by reading the [OWASP API Security Top 10](https://owasp.org/API-Security/editions/2023/en/0x00-header/), which is a great resource for API security practitioners that provides clear explanations of the various threats and solutions.
+Implementing API security best-practice requires a holistic approach that covers many different topics. It’s recommended to start by reading the [OWASP API Security Top 10](https://owasp.org/API-Security/editions/2023/en/0x00-header/), which is a great resource for API security practitioners that provides clear explanations of the various threats and solutions.
+
+In this guide, we’ll explore the core pillars of API security and management, delve into the security features Tyk offers to protect your APIs, and examine how Tyk mitigates OWASP API security threats.
 
 ## Authentication
 
@@ -87,7 +89,7 @@ Perform application performance monitoring by capturing gateway [instrumentation
 
 Use [CORS filtering]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}) to control the resources accessible by browser-based clients. This is a necessity for APIs that expect to be consumed by external websites.
 
-## Authorization Levels
+### Authorization Levels
 
 This section provides basic examples of where different authorization levels occur in the API management stack. The accompanying diagrams use color-coding to show links between request element and the associated authorization locations and methods.
 
@@ -100,7 +102,7 @@ This is how OWASP describe the attack vectors for the three authorization levels
 **Function Level Authorization**: “Exploitation requires the attacker to send legitimate API calls to an API endpoint that they should not have access to as anonymous users or regular, non-privileged users. Exposed endpoints will be easily exploited.” (source: [OWASP Github](https://github.com/OWASP/API-Security/blob/9c9a808215fcbebda9f657c12f3e572371697eb2/editions/2023/en/0xa3-broken-object-property-level-authorization.md))
 
 
-### REST API - Reading Data
+#### REST API - Reading Data
 
 {{< img src="/img/api-management/security/rest-api-read-data.jpeg" alt="Rest API - Read Data" width="150px" >}}
 
@@ -116,7 +118,7 @@ The gateway ignores the dynamic part of the part of the path, in this case `1`, 
 
 Lastly, the API handles object level authorization by using custom logic. This typically involves using the value of the `authorization` header in combination with the ownership and authorization model specific to the API to determine if the client is authorized to read is requested record.
 
-### REST API - Writing Data
+#### REST API - Writing Data
 
 {{< img src="/img/api-management/security/rest-api-write-data.jpeg" alt="Rest API - Write Data" width="150px" >}}
 
@@ -132,7 +134,7 @@ The gateway can also perform object property level authorization, by validating 
 
 Lastly, the API handles object level authorization by using custom logic. This typically involves using the value of the `authorization` header in combination with the ownership and authorization model specific to the API to determine if the client is authorized to write the requested data.
 
-### GraphQL API - Querying Data
+#### GraphQL API - Querying Data
 
 
 {{< img src="/img/api-management/security/graphql-query-data.jpeg" alt="Rest API - Write Data" width="150px" >}}
@@ -211,8 +213,6 @@ APIs need to be managed and governed just like any other resource, otherwise org
 **Control API Distribution**: Use [sharding]({{< ref "advanced-configuration/manage-multiple-environments#api-sharding" >}}) to control availability of APIs across multi-gateway, multi-environment deployments. This ensures that specific APIs are only available through specific gateways, which helps to prevent undesirable situations, such as internal APIs being published to externally accessible gateways, or test API configurations reaching the production environment.
 
 ## How to secure your APIs in Tyk
-
-### Introduction
 
 Securing your APIs is one of the primary uses of Tyk API management solution. Out of the box, the Gateway offers a lot of functionality for securing your APIs and the Gateway itself.
 
@@ -376,5 +376,3 @@ It is the responsibility of the API to provide protection against these attacks.
 - [JSON Schema validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-tyk-classic" >}}) to validate that an incoming data payload meets a defined schema. Payloads that do not adhere to the schema are rejected.
 - [TLS]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) to ensure that clients use the right service and encrypt traffic.
 - [Versioning]({{< ref "getting-started/key-concepts/versioning" >}}) allows newer versions of third party APIs to coexist with the older versions, facilitating deprecation and sunsetting.
-
-## Conclusion
