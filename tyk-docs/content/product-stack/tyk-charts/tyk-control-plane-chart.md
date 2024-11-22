@@ -101,13 +101,18 @@ To configure Tyk components, users can utilize both config files and [environmen
 
 ### Bootstrapping
 
-By default, the chart runs a bootstrapping job immediately after installation. This process verifies the presence of a dashboard license and prepares key components—such as tyk-dashboard, tyk-portal, and tyk-operator—for immediate use.
+By default, the chart executes a bootstrapping job immediately after installation. This process ensures the presence of a valid dashboard license and initializes key components such as tyk-dashboard, tyk-portal, and tyk-operator, enabling them for immediate use.
 
-If you set `global.components.bootstrap` to `false`, only the dashboard license check will be performed.
+Key Notes on Bootstrapping:
 
-Bootstrapping is triggered only during a `helm install`. It will not run during a `helm upgrade`.
+- Bootstrapping is triggered **only during** a `helm install` and does not run during a `helm upgrade`.
+- If `global.components.bootstrap` is set to `false`, only the dashboard license check will be performed. 
 
-In case the bootstrapping process fails, you can review the logs from the bootstrap pods to identify the issue. After reviewing, you may safely delete the bootstrap pods.
+Handling Bootstrapping Failures:
+
+- If the bootstrapping process fails, check the logs from the bootstrap pods to diagnose the issue.
+- Once reviewed, you can safely delete the bootstrap pods.
+- To re-trigger the bootstrapping process after a failure, you must run `helm uninstall` and start the installation process anew.
 
 ### Setting Environment Variables
 Should any environment variables not be set by the Helm Chart, users can easily add them under the `extraEnvs` section within the charts for further customization. Values set under `extraEnvs` would take precedence over all configurations.
