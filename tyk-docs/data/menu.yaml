@@ -1291,8 +1291,8 @@ menu:
               - title: "Security"
                 category: Directory
                 show: True
-                menu:
-                  - title: "Authentication and authorization"
+                menu:           
+                  - title: "Authentication and Authorization"
                     category: Directory
                     show: True
                     menu:
@@ -1380,7 +1380,7 @@ menu:
                         path: /basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-keycloak
                         category: Page
                         show: True
-                  - title: "MTLS"
+                  - title: "Mutual TLS"
                     category: Directory
                     show: True
                     menu:
@@ -1398,6 +1398,14 @@ menu:
                         show: True
                       - title: "Upstream mTLS"
                         path: /basic-config-and-security/security/mutual-tls/upstream-mtls
+                        category: Page
+                        show: True
+                  - title: "Upstream Authentication"
+                    category: Directory
+                    show: False
+                    menu:
+                      - title: "Upstream Authentication"
+                        path: /basic-config-and-security/security/upstream-authentication
                         category: Page
                         show: True
                   - title: "Security policies"
