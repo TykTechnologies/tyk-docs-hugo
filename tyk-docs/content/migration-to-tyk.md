@@ -2102,7 +2102,7 @@ Your first API has been added. What's next? Testing it! This page shows how you 
 
 * **Step 1 - Access the Gateway Ingress:** From the Cloud Data Plane overview, copy the Ingress link and open it in a browser tab. You will get a 404 error.
   
-* **Step 2 - Append the URL with your API:** You created a API named **my app** in [Task 5]({{< ref "tyk-cloud/getting-started-tyk-cloud/first-api" >}}). Add `/my-app/` to the end of the URL. You should be taken to [https://httpbin.org/](https://httpbin.org/), which you added as the **Target URL** for the API in [Task 5]({{< ref "tyk-cloud/getting-started-tyk-cloud/first-api#step-three---core-settings" >}}). 
+* **Step 2 - Append the URL with your API:** You created a API named **my app** in [Task 5]({{< ref "tyk-cloud/getting-started-tyk-cloud/first-api" >}}). Add `/my-app/` to the end of the URL. You should be taken to [https://httpbin.org/](https://httpbin.org/), which you added as the **Target URL** for the API in [Task 5]({{< ref "tyk-cloud/getting-started-tyk-cloud/first-api#steps-to-add-an-api-in-tyk-cloud" >}}). 
 
 
 Next you'll [view the analytics]({{< ref "tyk-cloud/getting-started-tyk-cloud/view-analytics" >}}) for your API in the Dashboard.
@@ -2582,7 +2582,7 @@ Content-Length: 59
 
 * [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
 * [Helm 3+](https://helm.sh/docs/intro/install/)
-* Connection details to remote control plane from the above [section](#create-hybrid-data-plane-configuration).
+* Connection details to remote control plane from the above [section](#deploy-hybrid-gateways).
 
 The following quick start guide explains how to use the [Tyk Data Plane Helm chart]({{<ref "/product-stack/tyk-charts/tyk-data-plane-chart">}}) to configure Tyk Gateway that includes:
 - Redis for key storage
@@ -2592,7 +2592,7 @@ At the end of this quickstart Tyk Gateway should be accessible through service `
 
 **1. Set connection details**
 
-Set the below environment variables and replace values with connection details to your Tyk Cloud remote control plane. See the above [section](#create-hybrid-data-plane-configuration) on how to get the connection details.
+Set the below environment variables and replace values with connection details to your Tyk Cloud remote control plane. See the above [section](#deploy-hybrid-gateways) on how to get the connection details.
 
 ```bash
 MDCB_UserKey=9d20907430e440655f15b851e4112345
@@ -2666,14 +2666,14 @@ Here are the most popular ways to secure your APIs.
   
     a. Depending on your setup, you might need to add it to every backend service. If you have a Load Balancer (LB), then it can be set at the LB level.
     
-    b. Sometimes the LBs (like Application Load Balancers) do not support mTLS and then you need to find other solutions, like [Request Signing](#2-request-signing).  Another option that might be possible, is to front your services or your LB with an L7 API Gateway (Like Tyk!) to do mTLS with the Tyk Cloud Data Planes on Tyk Cloud.
+    b. Sometimes the LBs (like Application Load Balancers) do not support mTLS and then you need to find other solutions, like Request Signing (below).  Another option that might be possible, is to front your services or your LB with an L7 API Gateway (Like Tyk!) to do mTLS with the Tyk Cloud Data Planes on Tyk Cloud.
 
 - You need to be able to update the list in case certificates expire or get revoked.
 
 **2. Request Signing**
 
 Tyk can [sign the request with HMAC or RSA]({{< ref "product-stack/tyk-gateway/release-notes/archived-releases/version-2.9.md#hmac-request-signing" >}}), before sending it to the API target. This is an implementation of an [RFC Signing HTTP Messages(draft 10)](https://datatracker.ietf.org/doc/html/draft-cavage-http-signatures-10). This RFC was designed to provide authenticity of the digital signature of the client. In our flow, the Tyk Cloud Data Planes, as the client, using a certificate private key, will add a header signature to the request. The API, using a pre-agreed public key (based on a meaningful keyId identifier) will verify the authenticity of the request coming from your Tyk Cloud Data Plane.
- A limitation is that the APIs or LB need to implement this signature verification and be able to update the certificates as mentioned in [Mutual TLS or Client authorization](#1-mutual-tls-or-client-authorization).
+ A limitation is that the APIs or LB need to implement this signature verification and be able to update the certificates as mentioned in Mutual TLS or Client authorization (above).
 
 **3. IP Whitelisting**
 
@@ -3736,7 +3736,7 @@ docker run \
   -c '/opt/tyk-gateway/tyk bundle build -y'
 ```
 
-* A plugin bundle is a packaged version of the plugin, it may also contain a cryptographic signature of its contents. The -y flag tells the Tyk CLI tool to skip the signing process in order to simplify this tutorial. For more information on the Tyk CLI tool, see [here]({{< ref "plugins/how-to-serve-plugins/plugin-bundles.md#bundler-tool" >}}).
+* A plugin bundle is a packaged version of the plugin, it may also contain a cryptographic signature of its contents. The -y flag tells the Tyk CLI tool to skip the signing process in order to simplify this tutorial. For more information on the Tyk CLI tool, see [here]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#how-plugin-bundles-work" >}}).
 * You should now have a `bundle.zip` file in the plugin working directory.
 * Next you will configure [uploading your plugin bundle file]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your Amazon S3 bucket.
 
@@ -3814,7 +3814,7 @@ A: When a Cloud Data Plane is deployed, the tag 'edge' and a location tag are au
 * Add the **edge** tag to your API to connect it to all Cloud Data Planes within the Control Plane.
 * Add the location tag to your API to connect it to only Cloud Data Planes with that location within the Control Plane.
 
-To add either of the tags, see [Adding an API]({{< ref "tyk-cloud/getting-started-tyk-cloud/first-api#step-three---add-a-new-api" >}}) in the Getting Started section.
+To add either of the tags, see [Adding an API](#steps-to-add-an-api-in-tyk-cloud) in the Getting Started section.
 
 {{< warning success >}}
 **Warning**
@@ -4089,7 +4089,7 @@ Or go to [Tyk Stack helm chart]({{<ref "product-stack/tyk-charts/tyk-stack-chart
 
 ##### Tyk Operator and Ingress 
 For a GitOps workflow used with a **Tyk Self-Managed** installation or setting the Tyk Gateway as a Kubernetes ingress controller, Tyk Operator enables you to manage API definitions, security policies and other Tyk features using Kubernetes manifest files.
-To get started go to [Tyk Operator]({{< ref "/tyk-operator#what-is-tyk-operator?" >}}).
+To get started go to [Tyk Operator]({{< ref "/tyk-operator#what-is-tyk-operator-" >}}).
 
 
 ##### Install Tyk Stack with Helm Chart (PostgreSQL)
@@ -7758,7 +7758,7 @@ You're ready to follow the guide on [creating and managing your APIs]({{< ref "g
 To use the [geographic log distribution]({{< ref "tyk-stack/tyk-manager/analytics/geographic-distribution" >}}) feature in the Dashboard please supply the GeoLite2 DB in the `gateway` directory, uncomment the marked line in `Dockerfile.web` and set the `analytics_config.enable_geo_ip` setting (or `TYK_GW_ANALYTICSCONFIG_ENABLEGEOIP` env var) to `true`.
 {{< /note >}}
 
-**Heroku Private Spaces**
+**Heroku Private Spaces{#private-spaces}**
 
 Most instructions are valid for [Heroku Private Spaces runtime](https://devcenter.heroku.com/articles/private-spaces). However there are several differences to keep in mind.
 
