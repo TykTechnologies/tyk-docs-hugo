@@ -3,22 +3,22 @@ title: "Migration to Tyk"
 description: "This page serves as a comprehensive guide to migrating workloads to Tyk"
 tags: ["Migration"]
 aliases:
-  - /apim/open-source/getting-started/
-  - /tyk-on-premises/on-ubuntu/
-  - /tyk-oss/ce-ubuntu/
-  - /tyk-oss/ce-centos/
-  - /tyk-oss/ce-redhat/
-  - /tyk-configuration-reference/redis-cluster-sentinel/
-  - /tyk-configuration-reference/import-apis/
-  - /getting-started/installation/with-tyk-multi-cloud/create-an-account/
-  - /tyk-cloud/create-account/
-  - /tyk-cloud/setup-org/
-  - /tyk-cloud/setup-team/
-  - /tyk-cloud/create-environment/
-  - /tyk-cloud/first-api/
-  - /tyk-cloud/test-api/
-  - /tyk-cloud/view-analytics/
-  - /tyk-cloud/what-we-covered/
+  - /apim/open-source/getting-started
+  - /tyk-on-premises/on-ubuntu
+  - /tyk-oss/ce-ubuntu
+  - /tyk-oss/ce-centos
+  - /tyk-oss/ce-redhat
+  - /tyk-configuration-reference/redis-cluster-sentinel
+  - /tyk-configuration-reference/import-apis
+  - /getting-started/installation/with-tyk-multi-cloud/create-an-account
+  - /tyk-cloud/create-account
+  - /tyk-cloud/setup-org
+  - /tyk-cloud/setup-team
+  - /tyk-cloud/create-environment
+  - /tyk-cloud/first-api
+  - /tyk-cloud/test-api
+  - /tyk-cloud/view-analytics
+  - /tyk-cloud/what-we-covered
   - /tyk-cloud/environments-&-deployments
   - /tyk-cloud/configuration-options
   - /tyk-cloud/environments-&-deployments/managing-organisations
@@ -28,95 +28,93 @@ aliases:
   - /tyk-cloud/environments-&-deployments/managing-control-planes
   - /tyk-cloud/environments-&-deployments/managing-gateways
   - tyk-cloud/environments-&-deployments/managing-apis
-  - /tyk-cloud/environments-deployments/managing-apis/
+  - /tyk-cloud/environments-deployments/managing-apis
   - /tyk-cloud/environments-&-deployments/hybrid-gateways
   - /tyk-cloud/environments--deployments/hybrid-gateways
   - /deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways
-  - /frequently-asked-questions/custom-domain-for-portal-cloud-multi-cloud/ 
-  - /tyk-cloud/environments-deployments/monitoring/
+  - /frequently-asked-questions/custom-domain-for-portal-cloud-multi-cloud
+  - /tyk-cloud/environments-deployments/monitoring
   - /tyk-cloud/environments-&-deployments/monitoring
-  - /tyk-cloud/environments-deployments/monitoring/
+  - /tyk-cloud/environments-deployments/monitoring
   - /tyk-cloud/environments-&-deployments/monitoring
   - /tyk-cloud/teams-&-users
   - /tyk-cloud/teams-users
   - tyk-cloud/teams-&-users/managing-teams
-  - /tyk-cloud/teams-users/managing-teams/
+  - /tyk-cloud/teams-users/managing-teams
   - tyk-cloud/teams-&-users/managing-users
-  - /tyk-cloud/teams-users/managing-users/
-  - /tyk-cloud/reference-docs/user-roles/
+  - /tyk-cloud/teams-users/managing-users
+  - /tyk-cloud/reference-docs/user-roles
   - /tyk-cloud/teams-&-users/user-roles
-  - /tyk-cloud/teams-users/user-roles/
-  - /tyk-cloud/account-and-billing/our-plans/
-  - /tyk-cloud/account-&-billing/plans/
-  - /tyk-cloud/account--billing/plans/
-  - /tyk-cloud/account-and-billing/add-payment-method/
-  - /tyk-cloud/account-and-billing/upgrade-free-trial/
-  - /tyk-cloud/account-billing/managing-billing-admins/
-  - /tyk-cloud/account-and-billing/retirement/
-  - /tyk-cloud/account--billing/retirement/
-  - /python-custom-auth-plugin/setup-control-plane/
-  - /python-custom-auth-plugin/uploading-bundle/
-  - /python-custom-auth-plugin/api-middleware-test/
-  - /python-custom-auth-plugin/python-code-bundle/
-  - /using-plugins/python-custom-auth-plugin/
-  - "/getting-started/licencing"
+  - /tyk-cloud/teams-users/user-roles
+  - /tyk-cloud/account-and-billing/our-plans
+  - /tyk-cloud/account-&-billing/plans
+  - /tyk-cloud/account--billing/plans
+  - /tyk-cloud/account-and-billing/add-payment-method
+  - /tyk-cloud/account-and-billing/upgrade-free-trial
+  - /tyk-cloud/account-billing/managing-billing-admins
+  - /tyk-cloud/account-and-billing/retirement
+  - /tyk-cloud/account--billing/retirement
+  - /python-custom-auth-plugin/setup-control-plane
+  - /python-custom-auth-plugin/uploading-bundle
+  - /python-custom-auth-plugin/api-middleware-test
+  - /python-custom-auth-plugin/python-code-bundle
+  - /using-plugins/python-custom-auth-plugin
   - getting-started/licensing
   - /getting-started/installation/with-tyk-on-premises/kubernetes
   - /tyk-on-premises/kubernetes
-  - /getting-started/installation/with-tyk-on-premises/kubernetes/tyk-kubernetes-ingress-controller/
+  - /getting-started/installation/with-tyk-on-premises/kubernetes/tyk-kubernetes-ingress-controller
   - /tyk-on-prem/kubernetes-ingress
   - /tyk-oss/ce-kubernetes-ingress
-  - /getting-started/installation/with-tyk-on-premises/kubernetes/k8s-docker-pro-wsl/
-  - /tyk-api-gateway-v-2-0/installation-options-setup/install-tyk-pro-edition-on-red-hat/
-  - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/
-  - /get-started/with-tyk-on-premise/installation/redhat-rhel-centos/dashboard/
-  - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/dashboard/
+  - /getting-started/installation/with-tyk-on-premises/kubernetes/k8s-docker-pro-wsl
+  - /tyk-api-gateway-v-2-0/installation-options-setup/install-tyk-pro-edition-on-red-hat
+  - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos
+  - /get-started/with-tyk-on-premise/installation/redhat-rhel-centos/dashboard
+  - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/dashboard
   - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/analytics-pump
   - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/gateway
-  - /tyk-api-gateway-v1-9/setup/install-tyk-on-ubuntu/
-  - /getting-started/installation/with-tyk-on-premises/on-ubuntu/
-  - /getting-started/installation/tyk-on-premises/on-ubuntu/
+  - /tyk-api-gateway-v1-9/setup/install-tyk-on-ubuntu
+  - /getting-started/installation/with-tyk-on-premises/on-ubuntu
+  - /getting-started/installation/tyk-on-premises/on-ubuntu
   - /tyk-on-premises/debian-ubuntu
-  - /getting-started/installation/with-tyk-on-premises/on-ubuntu/dashboard/
-  - /getting-started/installation/with-tyk-on-premises/debian-ubuntu/dashboard/
-  - /getting-started/installation/with-tyk-on-premises/on-ubuntu/analytics-pump/
+  - /getting-started/installation/with-tyk-on-premises/on-ubuntu/dashboard
+  - /getting-started/installation/with-tyk-on-premises/debian-ubuntu/dashboard
+  - /getting-started/installation/with-tyk-on-premises/on-ubuntu/analytics-pump
   - /getting-started/installation/with-tyk-on-premises/debian-ubuntu/analytics-pump
-  - /get-started/with-tyk-on-premise/installation/on-ubuntu/gateway/
-  - /getting-started/installation/with-tyk-on-premises/on-ubuntu/gateway/
-  - /getting-started/installation/with-tyk-on-premises/debian-ubuntu/gateway/
-  - /get-started/with-tyk-multi-cloud/tutorials/installation-on-aws/
-  - /get-started/with-tyk-on-premise/installation/on-aws/
-  - /getting-started/installation/with-tyk-multi-cloud/installation-on-aws/
-  - /getting-started/with-tyk-on-premises/installation/on-aws/
+  - /get-started/with-tyk-on-premise/installation/on-ubuntu/gateway
+  - /getting-started/installation/with-tyk-on-premises/on-ubuntu/gateway
+  - /getting-started/installation/with-tyk-on-premises/debian-ubuntu/gateway
+  - /get-started/with-tyk-multi-cloud/tutorials/installation-on-aws
+  - /get-started/with-tyk-on-premise/installation/on-aws
+  - /getting-started/installation/with-tyk-multi-cloud/installation-on-aws
+  - /getting-started/with-tyk-on-premises/installation/on-aws
   - /tyk-on-premises/installation/on-aws
-  - /tyk-on-premises/aws/
-  - /getting-started/with-tyk-on-premises/installation/on-aws/ec2/
-  - /getting-started/installation/with-tyk-on-premises/bootstrapper-cli/
+  - /tyk-on-premises/aws
+  - /getting-started/with-tyk-on-premises/installation/on-aws/ec2
+  - /getting-started/installation/with-tyk-on-premises/bootstrapper-cli
   - /get-started/with-tyk-on-premise/installation/docker
-  - /get-started/with-tyk-on-premise/installation/docker/
-  - /get-started/with-tyk-on-premise/installation/docker/docker-quickstart/
-  - /getting-started/installation/with-tyk-on-premises/docker/
-  - /getting-started/with-tyk-on-premises/installation/on-heroku/
+  - /get-started/with-tyk-on-premise/installation/docker/docker-quickstart
+  - /getting-started/installation/with-tyk-on-premises/docker
+  - /getting-started/with-tyk-on-premises/installation/on-heroku
   - /tyk-on-premises/installation/on-heroku
-  - /tyk-on-premises/heroku/
-  - /getting-started/installation/with-tyk-on-premises/install-tyk-microsoft-azure/
-  - /getting-started/installation/with-tyk-on-premises/install-tyk-google-cloud/
+  - /tyk-on-premises/heroku
+  - /getting-started/installation/with-tyk-on-premises/install-tyk-microsoft-azure
+  - /getting-started/installation/with-tyk-on-premises/install-tyk-google-cloud
   - /analyse/redis-mongodb-sizing
-  - /analytics-and-reporting/redis-mongodb-sizing/
-  - /planning-for-production/redis-mongodb/
-  - /planning-for-production/redis-mongodb-sizing/
-  - /analytics-and-reporting/redis-mongodb-sizing/
+  - /analytics-and-reporting/redis-mongodb-sizing
+  - /planning-for-production/redis-mongodb
+  - /planning-for-production/redis-mongodb-sizing
+  - /analytics-and-reporting/redis-mongodb-sizing
   - /analyse/redis-mongodb-sizing
   - /planning-for-production/database-settings/sql
-  - /ensure-high-availability/circuit-breakers/
-  - /tyk-rest-api/health-checking/
-  - /ensure-high-availability/load-balancing/
-  - /tyk-stack/tyk-gateway/kv-store/
-  - /tyk-configuration-reference/mdcb-configuration-options/
-  - /getting-started/tyk-components/mdcb/
-  - /tyk-multi-data-centre/setup-master-data-centre/
-  - /tyk-multi-data-centre/setup-slave-data-centres/
-  - /get-started/with-tyk-hybrid/
+  - /ensure-high-availability/circuit-breakers
+  - /tyk-rest-api/health-checking
+  - /ensure-high-availability/load-balancing
+  - /tyk-stack/tyk-gateway/kv-store
+  - /tyk-configuration-reference/mdcb-configuration-options
+  - /getting-started/tyk-components/mdcb
+  - /tyk-multi-data-centre/setup-master-data-centre
+  - /tyk-multi-data-centre/setup-slave-data-centres
+  - /get-started/with-tyk-hybrid
 ---
 
 Transitioning to Tyk’s API management platform is a strategic step toward optimizing your API infrastructure. Whether you're exploring Tyk for the first time or scaling your current environment, this guide simplifies the migration process for both Tyk Open Source and Tyk Cloud.
@@ -7436,7 +7434,7 @@ https://infinite-plains-14949.herokuapp.com/ | https://git.heroku.com/infinite-p
 {{< note success >}}
 **Note**  
 
-`--space` flag must be added to the command if the app is being created in a private space, see more details in the [section on Heroku private spaces](#private-spaces).
+`--space` flag must be added to the command if the app is being created in a private space, see more details in the section on Heroku private spaces (below).
 {{< /note >}}
 
 Provision a Redis add-on (we'll use a `hobby-dev` plan for demonstration purposes but that's not suitable for production), replacing the app name with your own:
@@ -7758,7 +7756,7 @@ You're ready to follow the guide on [creating and managing your APIs]({{< ref "g
 To use the [geographic log distribution]({{< ref "tyk-stack/tyk-manager/analytics/geographic-distribution" >}}) feature in the Dashboard please supply the GeoLite2 DB in the `gateway` directory, uncomment the marked line in `Dockerfile.web` and set the `analytics_config.enable_geo_ip` setting (or `TYK_GW_ANALYTICSCONFIG_ENABLEGEOIP` env var) to `true`.
 {{< /note >}}
 
-**Heroku Private Spaces{#private-spaces}**
+**Heroku Private Spaces**
 
 Most instructions are valid for [Heroku Private Spaces runtime](https://devcenter.heroku.com/articles/private-spaces). However there are several differences to keep in mind.
 
@@ -8422,7 +8420,7 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "pr
 
 If you're using Tyk Operator then check out the [confguring the Circuit Breaker in Tyk Operator](#tyk-operator) section below.
 
-##### Configuring the Circuit Breaker in the Tyk Classic API Definition {#tyk-classic}
+##### Configuring the Circuit Breaker in the Tyk Classic API Definition
 
 To configure the circuit breaker you must add a new `circuit_breakers` object to the `extended_paths` section of your API definition, with the following configuration:
 - `path`: the endpoint path
@@ -8481,7 +8479,7 @@ The Dashboard supports the separate `BreakerTripped` and `BreakerReset` events, 
 
 {{< img src="/img/dashboard/system-management/webhook-breaker.png" alt="Webhook events" >}}
 
-##### Confguring the Circuit Breaker in Tyk Operator {#tyk-operator}
+##### Confguring the Circuit Breaker in Tyk Operator
 
 The example API Definition below configures an API to listen on path `/httpbin-timeout-breaker` and forwards requests upstream to http://httpbin.org. A hard timeout value of 2 seconds is configured for path `/delay/{delay_seconds}`. This will return a `504 Gateway Timeout` response to the client if the upstream response is not received before expiry of the timer.
 
@@ -8697,7 +8695,7 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "pr
 
 If you're using Tyk Operator then check out the [configuring an enforced timeout in Tyk Operator](#tyk-operator) section below.
 
-**Configuring an enforced timeout in the Tyk Classic API Definition {#tyk-classic}**
+**Configuring an enforced timeout in the Tyk Classic API Definition**
 
 To configure an enforced timeout you must add a new `hard_timeouts` object to the `extended_paths` section of your API definition.
 
@@ -8743,7 +8741,7 @@ Then enter the timeout to be enforced for the endpoint (in seconds):
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
 
-##### Configuring an enforced timeout in Tyk Operator {#tyk-operator}
+##### Configuring an enforced timeout in Tyk Operator
 
 The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring an enforced timeout in the Tyk Classic API Definition](#tyk-classic). It is possible to configure an enforced timeout using the `hard_timeouts` object within the `extended_paths` section of the API Definition.
 
