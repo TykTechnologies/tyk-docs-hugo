@@ -5,7 +5,7 @@
       "image": "img/tyk_self_managed.svg",
       "steps": "",
       "button_text": "Get in touch",
-      "path": "getting-started/quick-start/",
+      "path": "https://tyk.io/guided-evaluation/",
       "description": "Looking to evaluate our powerful Hybrid or Self-Managed deployment types?",
       "includes": "Our Solution Architects will collaborate with you to understand your needs and guide you to success."
     },
@@ -14,7 +14,7 @@
       "image": "img/tyk_cloud.svg",
       "steps": "",
       "button_text": "Start trial",
-      "path": "deployment-and-operations/tyk-cloud-platform/quick-start/",
+      "path": "https://tyk.io/sign-up/",
       "description": "Dive in with a cloud-based trial.",
       "includes": "Get access to all features and capabilities of Tyk. No installation or credit card needed (and no need to speak with the sales team)."
     }
