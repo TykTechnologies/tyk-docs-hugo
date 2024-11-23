@@ -112,7 +112,7 @@ The format for these advanced trigger context variables is: `$tyk_context.trigge
 
 You can retrieve a value from KV storage by including a reference in the [appropriate notation]({{< ref "migration-to-tyk#store-configuration-with-key-value-store#transformation-middleware" >}}) for the KV location where the key-value pair is stored.
 
-If you use a value retrieved from [Consul]({{< ref "deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/consul">}}) or [Vault]({{< ref "deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/vault">}}), this must be the <b>last</b> part in the `rewriteTo` URL.
+If you use a value retrieved from [Consul]({{< ref "deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/consul">}}) or [Vault]({{< ref "migration-to-tyk#vault">}}), this must be the <b>last</b> part in the `rewriteTo` URL.
 
 For example, say you have a key named `userName` with value `jo` in my Consul KV store:
 - if you configure `rewriteTo` as `/my-api/users/$secret_consul.userName` this will redirect calls to `/my-api/users/jo`

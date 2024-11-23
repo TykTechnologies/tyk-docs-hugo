@@ -9876,7 +9876,7 @@ ie: `www.myapi.com:3000`
 #### Using external Key Value storage with Tyk
 
 
-With Tyk Gateway you can store configuration data (typically authentication secrets or upstream server locations) in Key-Value (KV) systems such as [Vault]({{< ref "vault">}}), and [Consul]({{< ref "#consul">}}) and then reference these values during configuration of the Tyk Gateway or APIs deployed on the Gateway.
+With Tyk Gateway you can store configuration data (typically authentication secrets or upstream server locations) in Key-Value (KV) systems such as [Vault]({{< ref "#vault">}}), and [Consul]({{< ref "#consul">}}) and then reference these values during configuration of the Tyk Gateway or APIs deployed on the Gateway.
 
 #### When to use external Key-Value storage
 

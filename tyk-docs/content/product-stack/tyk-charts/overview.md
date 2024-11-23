@@ -9,8 +9,8 @@ Tyk is working to provide a new set of helm charts, and will progressively roll 
 ## Quick start guides
 - [Quick Start with Tyk OSS Chart]({{<ref "/#quick-start-with-helm-chart">}})
 - [Quick Start with Tyk Data Plane Chart for Cloud Hybrid Gateways]({{<ref "/migration-to-tyk#deploy-hybrid-gateway">}})
-- [Quick Start with Tyk Stack Chart and PostgreSQL]({{<ref "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-postgresql">}})
-- [Quick Start with Tyk Stack Chart and MongoDB]({{<ref "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-mongodb">}})
+- [Quick Start with Tyk Stack Chart and PostgreSQL]({{<ref "/migration-to-tyk#install-tyk-stack-with-helm-chart-postgresql">}})
+- [Quick Start with Tyk Stack Chart and MongoDB]({{<ref "/migration-to-tyk#install-tyk-stack-with-helm-chart-mongodbb">}})
 
 ## Which chart is right for you?
 
