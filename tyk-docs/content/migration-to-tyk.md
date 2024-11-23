@@ -286,7 +286,13 @@ Tyk Dashboard requires a persistent datastore for its operations. By default Mon
 
 ##### Redis
 
-Tyk Gateway requires Redis for its operations. See [supported Redis versions]({{< ref "planning-for-production/redis#supported-versions">}}) for the list of releases.
+Tyk Gateway requires Redis for its operations. Here is the list of supported versions:
+
+
+**Supported Versions**
+- Tyk 5.3 supports Redis 6.2.x, 7.0.x, and 7.2.x
+- Tyk 5.2.x and earlier supports Redis 6.0.x and Redis 6.2.x only.
+
 
 Visit the [Gateway page]({{< ref "tyk-oss-gateway" >}}) for more info.
 
@@ -737,7 +743,7 @@ helm install tyk-redis bitnami/redis -n tyk --version 19.0.2
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "planning-for-production/redis" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "#redis" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password.
@@ -1082,7 +1088,7 @@ The Tyk Gateway can be installed following different installation methods includ
 Before you begin the installation process, make sure you have the following:
 
 *   Ensure port `8080` is open for Gateway traffic (the API traffic to be proxied).
-*   The Tyk Gateway has a [dependency](https://tyk.io/docs/planning-for-production/redis/#supported-versions) on Redis. Follow the steps provided by Red Hat to make the installation of Redis, conducting a [search](https://access.redhat.com/search/?q=redis) for the correct version and distribution.
+*   The Tyk Gateway has a [dependency](#redis) on Redis. Follow the steps provided by Red Hat to make the installation of Redis, conducting a [search](https://access.redhat.com/search/?q=redis) for the correct version and distribution.
 
 **Step 1: Create Tyk Gateway Repository Configuration**
 
@@ -2965,7 +2971,7 @@ helm install tyk-redis bitnami/redis -n tyk --version 19.0.2
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "planning-for-production/redis" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "#redis" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password.
@@ -4422,7 +4428,7 @@ The Bitnami chart also creates a secret `tyk-redis` which stores the connection 
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "planning-for-production/redis" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "#redis" >}}).
 {{< /note >}}
 
 **3. Install MongoDB (if you don't have a MongoDB instance)**
@@ -4621,7 +4627,7 @@ helm install tyk-redis bitnami/redis -n tyk --version 19.0.2
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "planning-for-production/redis" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "#redis" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password.
@@ -5580,7 +5586,7 @@ Select the preferred way of installing Tyk by selecting **Shell** or **Ansible**
 
 **Redis**
 
-Tyk Gateway has a [dependency]({{< ref "/planning-for-production/redis#supported-versions" >}}) on Redis. Follow the steps provided by Red Hat to make the installation of Redis, conducting a [search](https://access.redhat.com/search/?q=redis) for the correct version and distribution.
+Tyk Gateway has a [dependency]({{< ref "#redis" >}}) on Redis. Follow the steps provided by Red Hat to make the installation of Redis, conducting a [search](https://access.redhat.com/search/?q=redis) for the correct version and distribution.
 
 **Storage Database**
 
@@ -8668,7 +8674,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 **Using the Circuit Breaker middleware with Tyk OAS APIs**
 
 
-Tyk's [circuit breaker]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers" >}}) middleware is configured at the endpoint level, where it monitors the rate of failure responses (HTTP 500 or higher) received from the upstream service. If that failure rate exceeds the configured threshold, the circuit breaker will trip and Tyk will block further requests to that endpoint (returning `HTTP 503 Service temporarily unavailable`) until the end of a recovery (cooldown) time period.
+Tyk's [circuit breaker]({{< ref "#circuit-breakers" >}}) middleware is configured at the endpoint level, where it monitors the rate of failure responses (HTTP 500 or higher) received from the upstream service. If that failure rate exceeds the configured threshold, the circuit breaker will trip and Tyk will block further requests to that endpoint (returning `HTTP 503 Service temporarily unavailable`) until the end of a recovery (cooldown) time period.
 
 When working with Tyk OAS APIs the circuit breaker is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
@@ -8685,7 +8691,7 @@ The `circuitBreaker` object has the following configuration:
 - `threshold`: the proportion of requests that can error before the breaker is tripped, this must be a value between 0.0 and 1.0
 - `sampleSize`: the minimum number of requests that must be received during the rolling sampling window before the circuit breaker can trip
 - `coolDownPeriod`: the period for which the breaker will remain _open_ after being tripped before returning to service (seconds)
-- `halfOpenStateEnabled`: if set to `true` then the circuit breaker will operate in [half-open mode]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers#half-open-mode" >}}) once it has been tripped
+- `halfOpenStateEnabled`: if set to `true` then the circuit breaker will operate in [half-open mode]({{< ref "#circuit-breakers" >}}) once it has been tripped
 
 ```json {hl_lines=["39-45"],linenos=true, linenostart=1}
 {
@@ -8742,7 +8748,7 @@ The `circuitBreaker` object has the following configuration:
 
 In this example Tyk OAS API Definition the circuit breaker has been configured to monitor requests to the `GET /status/200` endpoint.
 
-It will configure the circuit breaker so that if a minimum of 10 requests (`sampleSize`) to this endpoint are received during the [rolling sampling window]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers#how-the-circuit-breaker-works" >}}) then it will calculate the ratio of failed requests (those returning `HTTP 500` or above) within that window.
+It will configure the circuit breaker so that if a minimum of 10 requests (`sampleSize`) to this endpoint are received during the [rolling sampling window]({{< ref "#circuit-breakers" >}}) then it will calculate the ratio of failed requests (those returning `HTTP 500` or above) within that window.
 - if the ratio of failed requests exceeds 50% (`threshold = 0.5`) then the breaker will be tripped
 - after it has tripped, the circuit breaker will remain _open_ for 60 seconds (`coolDownPeriod`)
 - further requests to `GET /status/200` will return `HTTP 503 Service temporarily unavailable`
@@ -8774,9 +8780,9 @@ Select **ADD MIDDLEWARE** and choose the **Circuit Breaker** middleware from the
 
 Set the circuit breaker configuration parameters so that Tyk can protect your upstream service if it experiences failure:
 - threshold failure rate for the proportion of requests that can error before the breaker is tripped (a value between 0.0 and 1.0)
-- the minimum number of requests that must be received during the [rolling sampling window]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers#how-the-circuit-breaker-works" >}}) before the circuit breaker can trip
+- the minimum number of requests that must be received during the [rolling sampling window]({{< ref "#circuit-breakers" >}}) before the circuit breaker can trip
 - the cooldown period for which the breaker will remain _open_ after being tripped before returning to service (in seconds)
-- optionally enable [half-open mode]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers#half-open-mode" >}}) for upstream services with variable recovery times
+- optionally enable [half-open mode]({{< ref "#circuit-breakers" >}}) for upstream services with variable recovery times
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-circuit-breaker-config.png" alt="Configuring the circuit breaker for the endpoint" >}}
 
@@ -8790,7 +8796,7 @@ Select **SAVE API** to apply the changes to your API.
 ##### Using the Circuit Breaker middleware with Tyk Classic APIs
 
 
-Tyk's [circuit breaker]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers" >}}) middleware is configured at the endpoint level, where it monitors the rate of failure responses (HTTP 500 or higher) received from the upstream service. If that failure rate exceeds the configured threshold, the circuit breaker will trip and Tyk will block further requests to that endpoint (returning `HTTP 503 Service temporarily unavailable`) until the end of a recovery (cooldown) time period.
+Tyk's [circuit breaker]({{< ref "#circuit-breakers" >}}) middleware is configured at the endpoint level, where it monitors the rate of failure responses (HTTP 500 or higher) received from the upstream service. If that failure rate exceeds the configured threshold, the circuit breaker will trip and Tyk will block further requests to that endpoint (returning `HTTP 503 Service temporarily unavailable`) until the end of a recovery (cooldown) time period.
 
 When working with Tyk Classic APIs the circuit breaker is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
@@ -8806,7 +8812,7 @@ To configure the circuit breaker you must add a new `circuit_breakers` object to
 - `threshold_percent`: the proportion of requests that can error before the breaker is tripped, this must be a value between 0.0 and 1.0
 - `samples`: the minimum number of requests that must be received during the rolling sampling window before the circuit breaker can trip
 - `return_to_service_after`: the period for which the breaker will remain _open_ after being tripped before returning to service (seconds)
-- `disable_half_open_state`: by default the Tyk circuit breaker will operate in [half-open mode]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers#half-open-mode" >}}) when working with Tyk Classic APIs, set this to `true` if you want Tyk to wait the full cooldown period before closing the circuit
+- `disable_half_open_state`: by default the Tyk circuit breaker will operate in [half-open mode]({{< ref "#circuit-breakers" >}}) when working with Tyk Classic APIs, set this to `true` if you want Tyk to wait the full cooldown period before closing the circuit
  
 For example:
 ```json  {linenos=true, linenostart=1}
@@ -8958,7 +8964,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 ##### Using the Enforced Timeout middleware with Tyk OAS APIs
 
 
-Tyk's [enforced timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) middleware is configured at the endpoint level, where it sets a limit on the response time from the upstream service. If the upstream takes too long to respond to a request, Tyk will terminate the request and return `504 Gateway Timeout` to the client.
+Tyk's [enforced timeout]({{< ref "#enforced-timeouts" >}}) middleware is configured at the endpoint level, where it sets a limit on the response time from the upstream service. If the upstream takes too long to respond to a request, Tyk will terminate the request and return `504 Gateway Timeout` to the client.
 
 When working with Tyk OAS APIs the enforced timeout is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
@@ -9065,7 +9071,7 @@ Select **SAVE API** to apply the changes to your API.
 ##### Using the Enforced Timeout middleware with Tyk Classic APIs
 
 
-Tyk's [enforced timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) middleware is configured at the endpoint level, where it sets a limit on the response time from the upstream service. If the upstream takes too long to respond to a request, Tyk will terminate the request and return `504 Gateway Timeout` to the client.
+Tyk's [enforced timeout]({{< ref "#enforced-timeouts" >}}) middleware is configured at the endpoint level, where it sets a limit on the response time from the upstream service. If the upstream takes too long to respond to a request, Tyk will terminate the request and return `504 Gateway Timeout` to the client.
 
 When working with Tyk Classic APIs the enforced timeout is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
@@ -9440,7 +9446,7 @@ You must fill in the `target_list` section.
 {{< /note >}}
 
 
-See [Service Discovery]({{< ref "planning-for-production/ensure-high-availability/service-discovery" >}}) to see how you can integrate a service discovery system such as Consul or etcd with Tyk and enable dynamic load balancing support.
+See [Service Discovery]({{< ref "#service-discovery" >}}) to see how you can integrate a service discovery system such as Consul or etcd with Tyk and enable dynamic load balancing support.
 
 ##### Configure load balancing and weighting via the Dashboard
 
@@ -10666,7 +10672,7 @@ We will assume that your account manager has provided you with a valid MDCB and 
 We will assume that the following components are up and running in your Controller DC:
 
 * MongoDB or SQL (check [supported versions]({{< ref "migration-to-tyk#database-management" >}}))
-* Redis (check [supported versions]({{< ref "planning-for-production/redis" >}}))
+* Redis (check [supported versions]({{< ref "#redis" >}}))
 * Tyk Dashboard
 * Tyk Gateway / Gateways Cluster
 * Working Tyk-Pro [Self-Managed installation]({{< ref "tyk-self-managed/install" >}})
@@ -10769,7 +10775,7 @@ The Bitnami chart also creates a secret `tyk-redis` which stores the connection 
 {{< note >}}
 **Note**
 
-Ensure that you are installing Redis versions that are supported by Tyk. Please consult the list of [supported versions]({{< ref "planning-for-production/redis#supported-versions" >}}) that are compatible with Tyk.
+Ensure that you are installing Redis versions that are supported by Tyk. Please consult the list of [supported versions]({{< ref "#redis" >}}) that are compatible with Tyk.
 {{< /note >}}
 
 **Step 3 - Install PostgreSQL (if you don't already have PostgreSQL installed)**
@@ -11294,9 +11300,9 @@ Currently, the receipt of an HTTP 200 OK response merely indicates that the Pump
 
 Based on the Tyk recommended approach for setting up your databases, our team has built tools that will help engineers better understand and plan their infrastructure around their use case:
 
-* [Redis Sizing](https://tyk.io/docs/planning-for-production/redis-sizing/)
-* [PostgreSQL Sizing](https://tyk.io/docs/migration-to-tyk#configuring-postgresql)
-* [MongoDB Sizing](https://tyk.io/docs/migration-to-tyk#redis-sizing-guidelines)
+* [Redis Sizing](#redis-sizing)
+* [PostgreSQL Sizing](#configuring-postgresql)
+* [MongoDB Sizing](#mongodb-sizing)
 
 
 #### Database Monitoring

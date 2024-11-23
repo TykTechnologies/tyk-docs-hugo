@@ -46,11 +46,11 @@ APIs can become overwhelmed if the resources upon which they rely are fully cons
 
 As an APIM product, Tyk Gateway can be configured to use the following out-of-the-box functionality when handling API traffic for legitimate users:
 
-- [Circuit breaker]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers" >}})
+- [Circuit breaker]({{< ref "migration-to-tyk#circuit-breakers" >}})
 - [Payload size limiter]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits" >}})
 - [Rate limiter / throttling]({{< ref "getting-started/key-concepts/rate-limiting" >}})
 - [Caching]({{< ref "basic-config-and-security/reduce-latency/caching" >}})
-- [Enforced timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}})
+- [Enforced timeout]({{< ref "migration-to-tyk#enforced-timeouts" >}})
 - [IP restriction]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting#ip-blocklist-middleware" >}})
 - [GraphQL query complexity limiting]({{< ref "graphql/complexity-limiting" >}})
 
