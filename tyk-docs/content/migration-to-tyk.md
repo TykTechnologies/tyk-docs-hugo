@@ -150,6 +150,58 @@ aliases:
   - /tyk-oss/ce-ubuntu
   - /using-plugins/python-custom-auth-plugin
   - /tyk-oss/ce-helm-chart-new
+  - /analytics-and-reporting/redis-mongodb-sizing
+  - /deploy-tyk-premise-production
+  - /deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/consul
+  - /deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/vault
+  - /deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-mongodb
+  - /deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-postgresql
+  - /deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview
+  - /get-started/with-tyk-on-premise/installation/docker
+  - /get-started/with-tyk-on-premise/installation/docker/docker-quickstart
+  - /getting-started/installation/with-tyk-on-premises/docker
+  - /getting-started/installation/with-tyk-on-premises/kubernetes/tyk-kubernetes-ingress-controller
+  - /getting-started/licensing
+  - /planning-for-production
+  - /product-stack/tyk-operator/tyk-ingress-controller
+  - /tyk-cloud/account-billing
+  - /tyk-cloud/configuration-options
+  - /tyk-cloud/environments-&-deployments
+  - /tyk-cloud/environments-&-deployments/managing-organisations
+  - /tyk-cloud/environments-deployments
+  - /tyk-cloud/environments-deployments/hybrid-gateways-helm
+  - /tyk-cloud/environments-deployments/managing-gateways
+  - /tyk-cloud/environments-deployments/managing-organisations
+  - /tyk-cloud/environments-deployments/monitoring-how-it-works
+  - /tyk-cloud/environments-deployments/monitoring-usage
+  - /tyk-cloud/glossary
+  - /tyk-cloud/securing-your-apis
+  - /tyk-cloud/teams-&-users
+  - /tyk-cloud/teams-users
+  - /tyk-cloud/teams-users/single-sign-on
+  - /tyk-cloud/troubleshooting-&-support
+  - /tyk-cloud/troubleshooting-&-support/faqs
+  - /tyk-cloud/troubleshooting-&-support/glossary
+  - /tyk-cloud/troubleshooting-support
+  - /tyk-cloud/troubleshooting-support/faqs
+  - /tyk-cloud/troubleshooting-support/glossary
+  - /tyk-cloud/troubleshooting-support/tyk-cloud-mdcb-supported-versions
+  - /tyk-cloud/using-plugins
+  - /tyk-cloud/what-is-tyk-cloud
+  - /tyk-on-prem/kubernetes-ingress
+  - /tyk-on-premises/ansible
+  - /tyk-on-premises/bootstrapper-cli
+  - /tyk-on-premises/docker
+  - /tyk-on-premises/installation/on-aws
+  - /tyk-on-premises/installation/on-heroku
+  - /tyk-oss/ce-ansible
+  - /tyk-oss/ce-docker
+  - /tyk-oss/ce-github
+  - /tyk-oss/ce-helm-chart
+  - /tyk-oss/ce-kubernetes
+  - /tyk-self-managed/tyk-helm-chart
+  - /tyk-stack/tyk-gateway/configuration/redis-sentinel
+
 
 ---
 
