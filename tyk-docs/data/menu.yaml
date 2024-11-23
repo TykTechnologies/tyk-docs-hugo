@@ -99,10 +99,6 @@ menu:
             category: Directory
             show: True
             menu:
-              - title: "Overview"
-                path: /deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview
-                category: Page
-                show: True
               - title: "The Complete demo - Kubernetes"
                 path: /getting-started/quick-start/tyk-k8s-demo
                 category: Page
@@ -273,18 +269,6 @@ menu:
                   - title: "Sending logs to your logging systems"
                     category: Page
                     show: False
-                  - title: "Key value configuration storage"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Using Consul"
-                        path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/consul
-                        category: Page
-                        show: True
-                      - title: "Using Vault"
-                        path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/vault
-                        category: Page
-                        show: True
                   - title: "Planning for Production"
                     path: /planning-for-production
                     category: Page
