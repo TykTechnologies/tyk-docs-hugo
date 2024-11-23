@@ -149,5 +149,10 @@
     "using-plugins/python-custom-auth-plugin": "migration-to-tyk#add-custom-authentication",
     "tyk-cloud/using-plugins": "migration-to-tyk#using-plugins",
     "tyk-oss/ce-helm-chart-new": "migration-to-tyk#quick-start-with-helm-chart",
-    "tyk-self-managed/tyk-helm-chart": "migration-to-tyk#quick-start-with-helm-chart"
+    "tyk-oss/ce-helm-chart": "",
+    "tyk-self-managed/tyk-helm-chart": "migration-to-tyk#quick-start-with-helm-chart",
+    "tyk-cloud/teams--users/single-sign-on": "migration-to-tyk#configure-single-sign-on-sso",
+    "tyk-cloud/troubleshooting-&-support/migration-to-tyk": "migration-to-tyk#troubleshooting-tyk-cloud",
+    "tyk-on-premises/docker/docker-pro-demo": "#docker-compose-setup",
+    "tyk-on-premises/docker": "#docker-compose-setup"
   }  

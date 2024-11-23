@@ -35,4 +35,4 @@ This diagram shows how _Organization, Teams, Environments, Control Planes and Cl
 The following information would be useful so you can set up Tyk Cloud as quickly as possible:
 
 * Team member information including their email address and the role you plan to assign to them.
-* We have some specific terminology used within Tyk Cloud. It would be useful to checkout our [Glossary]({{< ref "tyk-cloud/troubleshooting-&-support/glossary.md" >}}) so you understand what we are referring to.
+* We have some specific terminology used within Tyk Cloud. It would be useful to checkout our [Glossary]({{< ref "migration-to-tyk#glossary" >}}) so you understand what we are referring to.

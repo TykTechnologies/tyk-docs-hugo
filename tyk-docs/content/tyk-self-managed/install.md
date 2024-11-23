@@ -12,7 +12,7 @@ aliases:
   - /tyk-self-managed/istio/
   - /tyk-self-managed/install/
   - /getting-started/installation/with-tyk-on-premises/
-  - /migration-to-tyk#tyk-self-managed/installation/
+  - /get-started/with-tyk-on-premise/installation/
 ---
 
 First, click here to get a trial license

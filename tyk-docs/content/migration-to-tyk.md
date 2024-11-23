@@ -275,7 +275,7 @@ Please consult with respective init system documentation for more details on how
 
 #### Licensing
 
-Read more about licensing [here]({{< ref "tyk-on-premises/licensing" >}}).
+Read more about licensing [here]({{< ref "migration-to-tyk#understand-licensing-and-deployment-models" >}}).
 
 
 ### Tyk Cloud
@@ -3069,9 +3069,9 @@ Here you can see the metrics broken down per environment and a list of the top 5
 
 This section covers the following:
 
-- [Managing Teams]({{< ref "tyk-cloud/teams-&-users/managing-teams.md" >}})
-- [Managing Users]({{< ref "tyk-cloud/teams-&-users/managing-users.md" >}})
-- Available Tyk Cloud [User Roles]({{< ref "#user-roles-in-tyk-cloud" >}})
+- [Managing Teams]({{< ref "migration-to-tyk#organise-teams" >}})
+- [Managing Users]({{< ref "migration-to-tyk#add-and-manage-users" >}})
+- Available Tyk Cloud [User Roles]({{< ref "migration-to-tyk#user-roles-in-tyk-cloud" >}})
 - [Tyk Cloud Single Sign-On (SSO)]({{< ref "tyk-cloud/teams-&-users/single-sign-on.md" >}})
 
 ##### Organise Teams
@@ -3111,7 +3111,7 @@ You need to be a [Organization Admin]({{< ref "#user-roles-in-tyk-cloud#user-rol
 3. Click **Delete Team**.
 4. You'll be asked to confirm the deletion. Click **Delete Team** from the dialog box to confirm, or click **Cancel**.
 
-You can now invite users to your new team. See [Managing Users]({{< ref "tyk-cloud/teams-&-users/managing-users.md" >}}) for more details.
+You can now invite users to your new team. See [Managing Users]({{< ref "migration-to-tyk#add-and-manage-users" >}}) for more details.
 
 
 ##### Add and Manage Users
@@ -3295,7 +3295,7 @@ After profile deletion, the authentication URL will not be available anymore.
 This section covers the following:
 
 * The available [Tyk Cloud Plans]({{< ref "migration-to-tyk#select-a-payment-plan" >}})
-* Adding [Payment Methods]({{< ref "tyk-cloud/account-billing/add-payment-method" >}})
+* Adding [Payment Methods]({{< ref "migration-to-tyk#add-payment-methods" >}})
 * How to [upgrade from the free trial plan]({{< ref "#upgrade-your-free-trial" >}})
 * [Managing Billing Admins]({{< ref "#managing-billing-admin" >}}) on your account
 * What to do if your account goes into [retirement]({{< ref "#retire-your-account" >}})
@@ -3403,7 +3403,7 @@ If your free trial ends without you upgrading, your account enters what we call 
 **What does upgrading a free trial account involve?**
 
 To upgrade your free trial, you (as a Billing Admin) need to:
-* Add a [payment method]({{< ref "tyk-cloud/account-billing/add-payment-method" >}}) to your organization
+* Add a [payment method]({{< ref "migration-to-tyk#add-payment-methods" >}}) to your organization
 * Select a new [plan]({{< ref "migration-to-tyk#select-a-payment-plan" >}}) from our list
 
 **I've trialled more than what my desired paid plan allows.**
@@ -3417,7 +3417,7 @@ This page explains what a Tyk Cloud billing admin can do as part of your API man
 
 As a Billing Admin you can perform the following:
 
-* Add, edit and delete [payment methods]({{< ref "tyk-cloud/account-billing/add-payment-method" >}})
+* Add, edit and delete [payment methods]({{< ref "migration-to-tyk#add-payment-methods" >}})
 * Add further users as Billing Admins
 * Upgrade or downgrade plans
 
@@ -4516,7 +4516,7 @@ The following are required for a Tyk Self-Managed installation:
              You can find instructions for a simple Redis installation bellow.
  - MongoDB or SQL - Should be installed in the cluster or be reachable by the **Tyk Manager** (for SaaS option).
 
-You can find supported MongoDB and SQL versions [here]({{< ref "planning-for-production/database-settings" >}}).
+You can find supported MongoDB and SQL versions [here]({{< ref "migration-to-tyk#database-management" >}}).
 
 Installation instructions for Redis and MongoDB/SQL are detailed below.
 
@@ -5397,7 +5397,7 @@ This creates the developer portal URL. For the `Authorization` Header, the Value
 
 **Using WSL**
 
-The Tyk Pro Docker demo is our full [Self-Managed]({{< ref "/content/tyk-on-premises.md" >}}) solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and MongoDB. This demo is great for proof of concept and demo purposes, but if you want to test performance, you will need to move each component to a separate machine.
+The Tyk Pro Docker demo is our full [Self-Managed]({{< ref "migration-to-tyk#tyk-self-managed" >}}) solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and MongoDB. This demo is great for proof of concept and demo purposes, but if you want to test performance, you will need to move each component to a separate machine.
 
 {{< warning success >}}
 **Warning**  
@@ -5532,7 +5532,7 @@ Tyk Gateway has a [dependency]({{< ref "/planning-for-production/redis#supported
 
 **Storage Database**
 
-Tyk Dashboard has a dependency on a storage database that can be [PostgreSQL]({{< ref "/migration-to-tyk#configuring-postgresql" >}}) or [MongoDB]({{< ref "/planning-for-production/database-settings/mongodb" >}}).
+Tyk Dashboard has a dependency on a storage database that can be [PostgreSQL]({{< ref "/migration-to-tyk#configuring-postgresql" >}}) or [MongoDB]({{< ref "#mongodb-sizing" >}}).
   
 
 **Option 1: Install PostgreSQL**
@@ -5570,7 +5570,7 @@ sudo -u tyk createdb tyk_analytics
 ```
 **Option 2: Install MongoDB**
 <br>
-Check the MongoDB supported [versions]({{< ref "/planning-for-production/database-settings/mongodb" >}}). Follow the steps provided by [MongoDB](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-red-hat/) to install it.
+Check the MongoDB supported [versions]({{< ref "#mongodb-sizing" >}}). Follow the steps provided by [MongoDB](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-red-hat/) to install it.
 
 Optionally initialize the database and enable automatic start:
 ```console
@@ -5585,9 +5585,9 @@ You can install Tyk on RHEL or CentOS using our YUM repositories. Follow the gui
 
 The order is to install Tyk Dashboard, then Tyk Pump and then Tyk Gateway for a full stack.
 
-- [Dashboard]({{< ref "tyk-on-prem/installation/redhat-rhel-centos/dashboard" >}})
-- [Pump]({{< ref "tyk-on-prem/installation/redhat-rhel-centos/analytics-pump" >}})
-- [Gateway]({{< ref "tyk-on-prem/installation/redhat-rhel-centos/gateway" >}})
+- [Dashboard]({{< ref "#install-dashboard-on-red-hat-rhel-centos" >}})
+- [Pump]({{< ref "#install-tyk-pump-on-red-hat-rhel-centos" >}})
+- [Gateway]({{< ref "#install-tyk-gateway-on-red-hat-rhel-centos" >}})
 
 {{< note success >}}
 **Note**  
@@ -5728,7 +5728,7 @@ This configuration should also work (with some tweaks) for CentOS.
 **Prerequisites**
 
 *   Ensure port `3000` is open: This is used by the Dashboard to provide the GUI and the Classic Developer Portal.
-*   Follow the steps provided in this link [Getting started on Red Hat (RHEL / CentOS)]({{< ref "tyk-on-premises/redhat-rhel-centos.md" >}}) to install and configure Tyk dependencies.
+*   Follow the steps provided in this link [Getting started on Red Hat (RHEL / CentOS)]({{< ref "migration-to-tyk#install-tyk-gateway-on-red-hat-rhel-centos" >}}) to install and configure Tyk dependencies.
 
 **Step 1: Set up YUM Repositories**
 
@@ -7515,7 +7515,7 @@ All three are required for a full deployment. We recommend that each container i
 
 From v5.5.0 onwards, these images are based on [distroless](https://github.com/GoogleContainerTools/distroless). This means that you will not be able to obtain a shell with `docker run --rm -it tykio/tyk-gateway:v5.5.0 sh`. The image can be inspected with tools like [dive](https://github.com/wagoodman/dive) or [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 
-We also have a [Docker Tyk Pro Demo]({{< ref "tyk-on-premises/docker/docker-pro-demo" >}}), which installs our full Self-Managed solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine.
+We also have a [Docker Tyk Pro Demo]({{< ref "#docker-compose-setup" >}}), which installs our full Self-Managed solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine.
 
 
 ##### Install with Heroku
@@ -7958,7 +7958,7 @@ Azure allows you to install Tyk in the following ways:
 **On-Premises**
 
 1. Via our [Ubuntu Setup]({{< ref "migration-to-tyk#install-tyk-gateway-on-ubuntu" >}}) on an installed Ubuntu Server on Azure.
-2. Via our [Docker Installation]({{< ref "tyk-on-premises/docker" >}}) using Azure's Docker support.
+2. Via our [Docker Installation]({{< ref "#docker-compose-setup" >}}) using Azure's Docker support.
 
 See our video for installing Tyk on Ubuntu via Azure:
 
@@ -7980,7 +7980,7 @@ Google Cloud allows you to install Tyk in the following ways:
 **On-Premises**
 
 1. Via our [Ubuntu Setup]({{< ref "migration-to-tyk#install-tyk-gateway-on-ubuntu" >}}) on an installed Ubuntu Server within Google Cloud.
-2. Via our [Docker Installation]({{< ref "tyk-on-premises/docker" >}}) using Google Cloud's Docker support.
+2. Via our [Docker Installation]({{< ref "#docker-compose-setup" >}}) using Google Cloud's Docker support.
 
 **Tyk Pump on GCP**
 
@@ -8229,9 +8229,9 @@ An API Gateway serves as the single point of entry into your ecosystem, introduc
 ### Database Management
 
 Visit the following pages to see how to configure the Database for Production:
-* [Redis]({{< ref "planning-for-production/redis.md" >}})
-* [MongoDB]({{< ref "planning-for-production/database-settings/mongodb.md" >}})
-* [PostgreSQL]({{< ref "migration-to-tyk#configuring-postgresql.md" >}})
+* [Redis]({{< ref "#redis" >}})
+* [MongoDB]({{< ref "#mongodb-sizing" >}})
+* [PostgreSQL]({{< ref "#configuring-postgresql" >}})
 
 Please consult the [data storage configuration]({{< ref "product-stack/tyk-dashboard/advanced-configurations/data-storage-configuration" >}}) guide for further information relating to how to configure Tyk's data storage across different database engines.
 
@@ -9903,7 +9903,7 @@ There are two parts to external Key-Value storage - the KV store and the Tyk con
 
 Most Key-Value references are only retrieved when the configuration object (Gateway or API) is loaded, as explained above: changes to the externally stored value will not be detected until a subsequent gateway hot-reload.
 
-The exception to this is for specific [transformation middleware]({{< ref "tyk-configuration-reference/kv-store#transformation-middleware" >}}) where the value will be retrieved for each call to the API, during the processing of the API request or response.
+The exception to this is for specific [transformation middleware]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) where the value will be retrieved for each call to the API, during the processing of the API request or response.
 
 {{< note success >}}
 **Note**  
@@ -9918,25 +9918,25 @@ Tyk Gateway supports the following locations for storage of key-value data, prov
 ##### Consul
 
 HashiCorp [Consul](https://www.consul.io) is a service networking solution that is used to connect and configure applications across dynamic, distributed infrastructure. Consul KV is a simple Key-Value store provided as a core feature of Consul that can be used to store and retrieve Tyk Gateway configuration across multiple data centers.
-- to retrieve the value assigned to a `KEY` in Consul you will use `consul://KEY` or `$secret_consul.KEY` notation depending on the [location]({{< ref "tyk-configuration-reference/kv-store#how-to-access-the-externally-stored-data" >}}) of the reference
+- to retrieve the value assigned to a `KEY` in Consul you will use `consul://KEY` or `$secret_consul.KEY` notation depending on the [location]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) of the reference
 
 ##### Vault
 
 [Vault](https://vaultproject.io) from Hashicorp is a tool for securely accessing secrets. It provides a unified interface to any secret while providing tight access control and recording a detailed audit log. Tyk Gateway can use Vault to manage and retrieve sensitive secrets such as API keys and passwords.
-- to retrieve the value assigned to a `KEY` in Vault you will use `vault://KEY` or `$secret_vault.KEY` notation depending on the [location]({{< ref "tyk-configuration-reference/kv-store#how-to-access-the-externally-stored-data" >}}) of the reference
+- to retrieve the value assigned to a `KEY` in Vault you will use `vault://KEY` or `$secret_vault.KEY` notation depending on the [location]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) of the reference
 
 ##### Tyk Gateway config file
 
 The `secrets` section in the [Tyk Gateway configuration file]({{< ref "tyk-oss-gateway/configuration#secrets" >}}) allows you to store settings that are specific to a single Tyk Gateway instance. This is useful for storing instance-specific configuration to be injected into API middleware or if you prefer using configuration files.
-- to retrieve the value assigned to a `KEY` in the `secrets` config you will use `secrets://KEY` or `$secret_conf.KEY` notation depending on the [location]({{< ref "tyk-configuration-reference/kv-store#how-to-access-the-externally-stored-data" >}}) of the reference
+- to retrieve the value assigned to a `KEY` in the `secrets` config you will use `secrets://KEY` or `$secret_conf.KEY` notation depending on the [location]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) of the reference
 
 ##### Environment variables
 
 Tyk Gateway can access data declared in environment variables. This is a simple and straightforward way to manage secrets, especially in containerised environments like Docker or Kubernetes.
-- if you want to set the local "secrets" section (equivalent to the `secrets` section in the [Gateway config file]({{< ref "tyk-configuration-reference/kv-store#tyk-gateway-config-file" >}})) using environment variables, you should use the following notation: `TYK_GW_SECRETS=key:value,key2:value2`
+- if you want to set the local "secrets" section (equivalent to the `secrets` section in the [Gateway config file]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}})) using environment variables, you should use the following notation: `TYK_GW_SECRETS=key:value,key2:value2`
 - if you’re using a different key value secret store not explicitly supported by Tyk but can map it to `TYK_GW_SECRETS`
 then this will allow you to access those KV data
-- to retrieve the value assigned to an environment variable `VAR_NAME` you will use `env://VAR_NAME` or `$secret_env.VAR_NAME` notation depending on the [location]({{< ref "tyk-configuration-reference/kv-store#how-to-access-the-externally-stored-data" >}}) of the reference
+- to retrieve the value assigned to an environment variable `VAR_NAME` you will use `env://VAR_NAME` or `$secret_env.VAR_NAME` notation depending on the [location]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) of the reference
 
 #### How to access the externally stored data
 
@@ -9979,7 +9979,7 @@ Note that all of these references are read (and replaced with the values read fr
 
 ##### From API Definitions
 
-From Tyk Gateway v5.3.0 onwards, you can store [any string field]({{< ref "tyk-configuration-reference/kv-store#other-string-fields" >}}) from the API definition in any of the supported KV storage options; for earlier versions of Tyk Gateway only the [Target URL and Listen Path]({{< ref "tyk-configuration-reference/kv-store#target-url-and-listen-path" >}}) fields and [certain transformation middleware]({{< ref "tyk-configuration-reference/kv-store#transformation-middleware" >}}) configurations were supported. 
+From Tyk Gateway v5.3.0 onwards, you can store [any string field]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) from the API definition in any of the supported KV storage options; for earlier versions of Tyk Gateway only the [Target URL and Listen Path]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) fields and [certain transformation middleware]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) configurations were supported. 
 
 **Target URL and Listen Path**
 
@@ -10026,7 +10026,7 @@ To reference the *Value* assigned to a *Key* in one of the KV stores from these 
 - Consul: `$secret_consul.key`
 - Vault: `$secret_vault.key`
 - Tyk config secrets: `$secret_conf.key`
-- Environment variables: `$secret_env.key` or `env://key` (see [here]({{< ref "tyk-configuration-reference/kv-store#using-environment-variables-with-transformation-middleware" >}}))
+- Environment variables: `$secret_env.key` or `env://key` (see [here]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}))
 
 This notation is used to avoid ambiguity in the middleware parsing (for example where a KV secret is used in a URL rewrite path).
 
@@ -10102,7 +10102,7 @@ These references are read (and replaced with the values read from the KV locatio
 {{< note success >}}
 **Notes**  
 
-When accessing KV references from the `/tyk-apis` directory on Consul or Vault, you should not provide the `path/to/` the key except for Target URL and Listen Path (as described [above]({{< ref "tyk-configuration-reference/kv-store#target-url-and-listen-path" >}})).
+When accessing KV references from the `/tyk-apis` directory on Consul or Vault, you should not provide the `path/to/` the key except for Target URL and Listen Path (as described [above]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}})).
 {{< /note >}}
 
 For example, if you create a Key-Value pair in the `secrets` section of the `tyk.conf` file with the *Key* `auth_header_name`:
@@ -10191,7 +10191,7 @@ The notation used to refer to a KV pair stored in Consul depends upon the locati
 
 **Tyk Gateway configuration file**
 
-As described [here]({{< ref "tyk-configuration-reference/kv-store#from-the-tyk-gateway-configuration-file" >}}), from Tyk Gateway's configuration file (`tyk.conf`) you can retrieve values from Consul using the following notation:
+As described [here]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}), from Tyk Gateway's configuration file (`tyk.conf`) you can retrieve values from Consul using the following notation:
 - `consul://path/to/KEY`
 
 **API definition**
@@ -10199,7 +10199,7 @@ As described [here]({{< ref "tyk-configuration-reference/kv-store#from-the-tyk-g
 The **Target URL** and **Listen Path** key-value pairs can be stored in any directory in the Consul KV store as they are accessed using a different mechanism than other fields in the API definition. If storing these in a sub-directory, you can retrieve the values from Consul by providing the directory path within Consul KV using the following notation:
 - `consul://path/to/KEY`
 
-For [certain transformation middleware]({{< ref "tyk-configuration-reference/kv-store#transformation-middleware" >}}) because the secret resolution happens during the request context, a different notation is used to retrieve values from Consul:
+For [certain transformation middleware]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) because the secret resolution happens during the request context, a different notation is used to retrieve values from Consul:
 - `$secret_consul.KEY`
 
 From Tyk Gateway v5.3.0 onwards, you can store KV pairs to be used in **any `string` field** in the API definition in the Consul KV store. You can retrieve these values from Consul, noting that you do not provide the directory path (`/tyk-apis`) when accessing data for *these* fields, using the following notation:
@@ -10300,7 +10300,7 @@ The notation used to refer to a key-value pair stored in Vault depends upon the 
 
 **Tyk Gateway configuration file**
 
-As described [here]({{< ref "tyk-configuration-reference/kv-store#from-the-tyk-gateway-configuration-file" >}}), from Tyk Gateway's configuration file (`tyk.conf`) you can retrieve values from Vault using the following notation:
+As described [here]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}), from Tyk Gateway's configuration file (`tyk.conf`) you can retrieve values from Vault using the following notation:
 - `vault://path/to/secret.KEY`
 
 **API definition**
@@ -10308,7 +10308,7 @@ As described [here]({{< ref "tyk-configuration-reference/kv-store#from-the-tyk-g
 The **Target URL** and **Listen Path** key-value pairs can be stored in any directory in the Vault KV store as they are accessed using a different mechanism than other fields in the API definition. If storing these in a sub-directory, you can retrieve the values from Vault by providing the directory path within Consul KV using the following notation:
 - `vault://path/to/secret.KEY`
 
-For [certain transformation middleware]({{< ref "tyk-configuration-reference/kv-store#transformation-middleware" >}}) because the secret resolution happens during the request context, a different notation is used to retrieve values from Vault:
+For [certain transformation middleware]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) because the secret resolution happens during the request context, a different notation is used to retrieve values from Vault:
 - `$secret_vault.KEY`
 
 From Tyk Gateway v5.3.0 onwards, you can store KV pairs to be used in **any `string` field** in the API definition in the Vault KV store. You can retrieve these values from Vault, noting that you do not provide the directory path (`/tyk-apis`) when accessing data for *these* fields, using the following notation:
@@ -10613,7 +10613,7 @@ The MDCB component will however, by default, expose an RPC service on port 9091,
 We will assume that your account manager has provided you with a valid MDCB and Dashboard License and the command to enable you to download the MDCB package.
 We will assume that the following components are up and running in your Controller DC:
 
-* MongoDB or SQL (check [supported versions]({{< ref "planning-for-production/database-settings" >}}))
+* MongoDB or SQL (check [supported versions]({{< ref "migration-to-tyk#database-management" >}}))
 * Redis (check [supported versions]({{< ref "planning-for-production/redis" >}}))
 * Tyk Dashboard
 * Tyk Gateway / Gateways Cluster
@@ -10767,7 +10767,7 @@ helm upgrade tyk-cp tyk-helm/tyk-control-plane -n $NAMESPACE \
 
 Now Tyk Dashboard and Tyk MDCB should be accessible through service `dashboard-svc-tyk-cp-tyk-dashboard` at port `3000` and `mdcb-svc-tyk-cp-tyk-mdcb` at port `9091` respectively. You can login to Dashboard using the admin email and password to start managing APIs.
 
-You can use the MDCB connection details included in the installation output, to install the [MDCB Data Plane]({{<ref "tyk-multi-data-centre/setup-worker-data-centres">}}).
+You can use the MDCB connection details included in the installation output, to install the [MDCB Data Plane]({{<ref "migration-to-tyk#setup-mdcb-data-plane">}}).
 
 #### Configuration
 If you install MDCB component with package, modify your `/opt/tyk-sink/tyk_sink.conf` file as follows:
@@ -11220,7 +11220,7 @@ curl -X GET "http://localhost:8080/hello"
 }
 ```
 
-For information about our health check endpoint, please visit our [Liveness Health Check]({{< ref "planning-for-production/ensure-high-availability/health-check" >}}) documentation.
+For information about our health check endpoint, please visit our [Liveness Health Check]({{< ref "#liveness-health-check" >}}) documentation.
 
 ### Tyk Dashboard & Tyk MDCB
 
@@ -11228,7 +11228,7 @@ These other Tyk components won’t see load proportional to your API requests.  
 
 The Tyk Dashboard liveness health check endpoint can be configured [here]({{< ref "tyk-dashboard/configuration#health_check_endpoint_name" >}}). 
 
-The Tyk MDCB liveness health check endpoint can be configured [here]({{< ref "tyk-multi-data-centre/setup-controller-data-centre#health-check" >}}). 
+The Tyk MDCB liveness health check endpoint can be configured [here]({{< ref "#use-mdcb-for-health-checks" >}}). 
 
 Currently, Tyk Dashboard and MDCB liveness endpoints only report whether the service is operational. It is important to note that the service may not yet be ready for use if it is unable to establish a connection with its dependent components (such as Redis and Datastore) or if they are offline.
 

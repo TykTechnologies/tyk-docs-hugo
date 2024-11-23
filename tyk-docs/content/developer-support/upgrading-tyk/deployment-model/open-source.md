@@ -39,7 +39,7 @@ $ docker run \
   docker.tyk.io/tyk-gateway/tyk-gateway:v5.3
 ```
 
-For full installation details, check the usual [installation page]({{< ref "tyk-oss/ce-docker" >}}).
+For full installation details, check the usual [installation page]({{< ref "migration-to-tyk#install-with-docker" >}}).
 
 #### Docker compose upgrade in a simple environment
 For non-production environments where brief downtime is acceptable, you can upgrade by simply restarting your gateways.

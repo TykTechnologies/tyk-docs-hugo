@@ -514,8 +514,8 @@
         - title: "Manage plug-ins (install, monitor, update, configure)"
           category: Page
           show: False
-                  - title: "Manage third party integrations (API observability, observability, ...)"
-                    category: Page
+        - title: "Manage third party integrations (API observability, observability, ...)"
+          category: Page
           show: False
         - title: "Maintain Tyk configuration"
           category: Page

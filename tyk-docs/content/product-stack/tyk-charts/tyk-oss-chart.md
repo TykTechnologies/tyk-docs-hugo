@@ -30,7 +30,7 @@ For quick start guide, please see [Quick Start with Tyk OSS Helm Chart]({{<ref "
 
 * [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
 * [Helm 3+](https://helm.sh/docs/intro/install/)
-* [Redis](https://tyk.io/docs/tyk-oss/ce-helm-chart/#recommended-via-bitnami-chart) should already be installed or accessible by the gateway. 
+* [Redis](https://tyk.io/docs/migration-to-tyk#configure-legacy-tyk-headless-helm-chart) should already be installed or accessible by the gateway. 
 
 ## Tyk OSS Installations
 ### Installing the Chart

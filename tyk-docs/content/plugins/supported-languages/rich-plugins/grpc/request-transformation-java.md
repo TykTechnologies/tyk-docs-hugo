@@ -263,7 +263,7 @@ In this tutorial we learned how Tyk gRPC plugins work. For a production-level se
 
 - Configure an appropriate web server and path to serve your plugin bundles.
 
-[1]: https://tyk.io/docs/migration-to-tyk#tyk-self-managed/installation/
+[1]: https://tyk.io/docs/get-started/with-tyk-on-premise/installation/
 [2]: https://github.com/TykTechnologies/tyk-cli
 [3]: /img/dashboard/system-management/api_settings.png
 [4]: /img/dashboard/system-management/plugin_options.png
