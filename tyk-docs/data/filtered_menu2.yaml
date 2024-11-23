@@ -14,14 +14,14 @@ menu:
         path: /apim
         category: Page
         show: True
-      - title: "Migration To Tyk"
-        path: /migration-to-tyk
-        category: Page
-        show: True
       - title: "Open Source API Gateway"
         category: Directory
         show: True
         menu:
+          - title: "Overview"
+            path: /apim/open-source
+            category: Page
+            show: True
           - title: "Quick start"
             path: /deployment-and-operations/tyk-open-source-api-gateway/quick-start
             category: Page
@@ -58,6 +58,18 @@ menu:
                 path: /tyk-oss/ce-ansible
                 category: Page
                 show: True
+              - title: "Debian / Ubuntu"
+                path: /tyk-oss/ce-debian-ubuntu
+                category: Page
+                show: True
+              - title: "Red Hat (RHEL / CentOS)"
+                path: /tyk-oss/ce-redhat-rhel-centos
+                category: Page
+                show: True
+              - title: "Configure Redis Cluster"
+                path: /tyk-stack/tyk-gateway/configuration/redis-cluster
+                category: Page
+                show: True
               - title: "Configure Redis Sentinel"
                 path: /tyk-stack/tyk-gateway/configuration/redis-sentinel
                 category: Page
@@ -73,8 +85,16 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Overview"
+            path: /tyk-cloud
+            category: Page
+            show: True
           - title: "What Is Tyk Cloud?"
             path: /tyk-cloud/what-is-tyk-cloud
+            show: True
+          - title: "Free Trial"
+            path: /deployment-and-operations/tyk-cloud-platform/quick-start
+            category: Page
             show: True
           - title: "Deployment lifecycle"
             category: Directory
@@ -90,6 +110,38 @@ menu:
                     menu:
                       - title: "Getting started with Tyk Cloud"
                         path: /tyk-cloud/getting-started
+                        category: Page
+                        show: True
+                      - title: " Task 1 - Create Your Account"
+                        path: /tyk-cloud/getting-started-tyk-cloud/create-account
+                        category: Page
+                        show: True
+                      - title: "Task 2 - Set up Your Organisation"
+                        path: /tyk-cloud/getting-started-tyk-cloud/setup-org
+                        category: Page
+                        show: True
+                      - title: "Task 3 - Set up Your First Team"
+                        path: /tyk-cloud/getting-started-tyk-cloud/setup-team
+                        category: Page
+                        show: True
+                      - title: "Task 4 - Set Up Environment and Configure Deployments"
+                        path: /tyk-cloud/getting-started-tyk-cloud/setup-environment
+                        category: Page
+                        show: True
+                      - title: "Task 5 - Deploy your Cloud Data Plane and add your first API"
+                        path: /tyk-cloud/getting-started-tyk-cloud/first-api
+                        category: Page
+                        show: True
+                      - title: "Task 6 - Test your API"
+                        path: /tyk-cloud/getting-started-tyk-cloud/test-api
+                        category: Page
+                        show: True
+                      - title: "Task 7 - View Analytics"
+                        path: /tyk-cloud/getting-started-tyk-cloud/view-analytics
+                        category: Page
+                        show: True
+                      - title: "What we covered"
+                        path: /tyk-cloud/getting-started-tyk-cloud/to-conclude
                         category: Page
                         show: True
                   - title: "Availability of infrastructure"
@@ -164,8 +216,16 @@ menu:
                   - title: "Enable configuration and workflows between deployments"
                     category: Page
                     show: False
+                  - title: "Deploy hybrid gateways"
+                    path: /tyk-cloud/environments-deployments/hybrid-gateways
+                    category: Page
+                    show: True
                   - title: "Securing your APIs"
                     path: /tyk-cloud/securing-your-apis
+                    category: Page
+                    show: True
+                  - title: "Using custom domains"
+                    path: /tyk-cloud/using-custom-domains
                     category: Page
                     show: True
                   - title: "Deploy hybrid gateways using legacy helm chart"
@@ -190,12 +250,52 @@ menu:
                         path: /tyk-cloud/using-plugins
                         category: Page
                         show: True
+                      - title: "Setup your control plane"
+                        path: /tyk-cloud/configuration-options/using-plugins/setup-control-plane
+                        category: Page
+                        show: True
+                      - title: "Uploading your bundle"
+                        path: /tyk-cloud/configuration-options/using-plugins/uploading-bundle
+                        category: Page
+                        show: True
+                      - title: "API middleware test"
+                        path: /tyk-cloud/configuration-options/using-plugins/api-test
+                        category: Page
+                        show: True
+                      - title: "Create a python code bundle"
+                        path: /tyk-cloud/configuration-options/using-plugins/python-code-bundle
+                        category: Page
+                        show: True
+                      - title: "Python custom authentication"
+                        path: /tyk-cloud/configuration-options/using-plugins/python-custom-auth
+                        category: Page
+                        show: True
                   - title: "Accounts and billing"
                     category: Directory
                     show: True
                     menu:
                       - title: "Overview"
                         path: /tyk-cloud/account-billing
+                        category: Page
+                        show: True
+                      - title: "Our plans"
+                        path: /tyk-cloud/account-billing/plans
+                        category: Page
+                        show: True
+                      - title: "Payment method"
+                        path: /tyk-cloud/account-billing/add-payment-method
+                        category: Page
+                        show: True
+                      - title: "Upgrade free trial"
+                        path: /tyk-cloud/account-billing/upgrade-free-trial
+                        category: Page
+                        show: True
+                      - title: "Managing billing admins"
+                        path: /tyk-cloud/account-billing/managing-billing-admins
+                        category: Page
+                        show: True
+                      - title: "Retirement"
+                        path: /tyk-cloud/account-billing/retirement
                         category: Page
                         show: True
                   - title: "Monitoring"
@@ -234,6 +334,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Overview"
+            path: /tyk-on-premises
+            category: Page
+            show: True
           - title: "Quick Start"
             path: /getting-started/quick-start
             category: Page
@@ -278,6 +382,10 @@ menu:
                 category: Directory
                 show: True
                 menu:
+                  - title: "Licensing and deployment models"
+                    path: /tyk-on-premises/licensing
+                    category: Page
+                    show: True
                   - title: "Design for CI/CD"
                     category: Page
                     show: False
@@ -328,6 +436,110 @@ menu:
                     path: /tyk-self-managed/install
                     category: Page
                     show: True
+                  - title: "Kubernetes"
+                    category: Directory
+                    show: True
+                    menu:
+                      - title: "Overview"
+                        path: /tyk-on-premises/kubernetes
+                        category: Page
+                        show: True
+                      - title: "Quick Start with Helm Chart and PostgreSQL"
+                        path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-postgresql
+                        category: Page
+                        show: True
+                      - title: "Quick Start with Helm Chart and MongoDB"
+                        path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-mongodb
+                        category: Page
+                        show: True
+                      - title: "Ingress Controller with Tyk Operator"
+                        path: /tyk-on-prem/kubernetes-ingress
+                        category: Page
+                        show: True
+                      - title: "Windows with Helm chart"
+                        path: /tyk-on-prem/kubernetes-on-windows
+                        category: Page
+                        show: True
+                      - title: "Legacy Self Manage Helm chart"
+                        path: /tyk-self-managed/tyk-helm-chart
+                        category: Page
+                        show: True
+                  - title: "Red Hat (RHEL / CentOS)"
+                    category: Directory
+                    show: True
+                    menu:
+                      - title: "Redis, PostgreSQL or MongoDB"
+                        path: /tyk-on-premises/redhat-rhel-centos
+                        category: Page
+                        show: True
+                      - title: "Dashboard"
+                        path: /tyk-on-prem/installation/redhat-rhel-centos/dashboard
+                        category: Page
+                        show: True
+                      - title: "Pump"
+                        path: /tyk-on-prem/installation/redhat-rhel-centos/analytics-pump
+                        category: Page
+                        show: True
+                      - title: "Gateway"
+                        path: /tyk-on-prem/installation/redhat-rhel-centos/gateway
+                        category: Page
+                        show: True
+                  - title: "Ubuntu / Debian"
+                    category: Directory
+                    show: True
+                    menu:
+                      - title: "Redis and MongoDB"
+                        path: /tyk-on-premises/debian-ubuntu
+                        category: Page
+                        show: True
+                      - title: "Dashboard"
+                        path: /tyk-on-premises/debian-ubuntu/dashboard
+                        category: Page
+                        show: True
+                      - title: "Tyk Pump"
+                        path: /tyk-on-premises/debian-ubuntu/analytics-pump
+                        category: Page
+                        show: True
+                      - title: "Gateway"
+                        path: /tyk-on-premises/debian-ubuntu/gateway
+                        category: Page
+                        show: True
+                  - title: "AWS"
+                    category: Directory
+                    show: True
+                    menu:
+                      - title: "AWS Marketplace"
+                        path: /tyk-on-premises/installation/on-aws
+                        category: Page
+                        show: True
+                      - title: "EC2 Installation"
+                        path: /tyk-on-premises/on-aws/ec2
+                        category: Page
+                        show: True
+                  - title: "Ansible"
+                    path: /tyk-on-premises/ansible
+                    category: Page
+                    show: True
+                  - title: "Bootstrapper CLI"
+                    path: /tyk-on-premises/bootstrapper-cli
+                    category: Page
+                    show: True
+                  - title: "Docker"
+                    path: /tyk-on-premises/docker
+                    category: Page
+                    show: True
+                  - title: "Heroku"
+                    path: /tyk-on-premises/installation/on-heroku
+                    category: Page
+                    show: True
+                  - title: "Microsoft Azure"
+                    path: /tyk-on-premises/microsoft-azure
+                    category: Page
+                    show: True
+                  - title: "Google Cloud"
+                    path: /tyk-on-premises/google-cloud
+                    category: Page
+                    show: True
               - title: "Deployment phase"
                 category: Directory
                 show: True
@@ -372,6 +584,10 @@ menu:
                             path: /product-stack/tyk-gateway/middleware/enforced-timeout-tyk-classic
                             category: Page
                             show: True
+                      - title: "Liveness health check"
+                        path: /planning-for-production/ensure-high-availability/health-check
+                        category: Page
+                        show: True
                       - title: "Load Balancing"
                         path: /planning-for-production/ensure-high-availability/load-balancing
                         category: Page
@@ -399,12 +615,24 @@ menu:
                     category: Directory
                     show: True
                     menu:
+                      - title: "Overview"
+                        path: /planning-for-production/database-settings
+                        category: Page
+                        show: True
                       - title: "MongoDB Sizing"
                         path: /planning-for-production/database-settings/mongodb-sizing
                         category: Page
                         show: True
                       - title: "MongoDB"
                         path: /planning-for-production/database-settings/mongodb
+                        category: Page
+                        show: True
+                      - title: "PostgreSQL"
+                        path: /planning-for-production/database-settings/postgresql
+                        category: Page
+                        show: True
+                      - title: "Redis Sizing"
+                        path: /planning-for-production/redis-sizing
                         category: Page
                         show: True
                   - title: "Set-up GitOps"
@@ -420,6 +648,10 @@ menu:
                     category: Directory
                     show: True
                     menu:
+                      - title: "Overview"
+                        path: /tyk-configuration-reference/kv-store
+                        category: Page
+                        show: True
                       - title: "Using Consul"
                         path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/consul
                         category: Page
@@ -1727,19 +1959,19 @@ menu:
                       - title: "Overview"
                         path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview
                         category: Page
-                        show: True
+                        show: true
                       - title: "Datadog"
                         path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_datadog
                         category: Page
-                        show: True
+                        show: true
                       - title: "Dynatrace"
                         path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_dynatrace
                         category: Page
-                        show: True
+                        show: true
                       - title: "Elasticsearch"
                         path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_elastic
                         category: Page
-                        show: True
+                        show: true
                       - title: "Jaeger"
                         category: Directory
                         show: True
@@ -1747,15 +1979,15 @@ menu:
                           - title: "Docker"
                             path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger
                             category: Page
-                            show: True
+                            show: true
                           - title: "Kubernetes"
                             path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger_k8s
                             category: Page
-                            show: True
+                            show: true
                       - title: "New Relic"
                         path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_new_relic
                         category: Page
-                        show: True
+                        show: true
                   - title: "OpenTracing"
                     category: Directory
                     show: True
@@ -1786,7 +2018,7 @@ menu:
                     show: True
                   - title: "Quickstarts"
                     category: Directory
-                    show: True
+                    show: true
                     menu:
                       - title: "Go"
                         category: Directory
@@ -1810,7 +2042,7 @@ menu:
                     show: True
                   - title: "API Configuration"
                     category: Directory
-                    show: True
+                    show: true
                     menu:
                       - title: "Overview"
                         path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/overview
@@ -1905,6 +2137,10 @@ menu:
                         category: Directory
                         show: True
                         menu:
+                          - title: "Overview"
+                            path: /plugins/supported-languages/golang
+                            category: Page
+                            show: True
                           - title: "Writing Go Plugins"
                             path: /product-stack/tyk-gateway/advanced-configurations/plugins/golang/writing-go-plugins
                             category: Page
@@ -1951,6 +2187,10 @@ menu:
                             show: True
                           - title: "Using JS plugins with Tyk OSS"
                             path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-ce
+                            category: Page
+                            show: True
+                          - title: "WAF (OSS) ModSecurity Plugin example"
+                            path: /plugins/supported-languages/javascript-middleware/waf-js-plugin
                             category: Page
                             show: True
                       - title: "Rich Plugins"
@@ -2007,7 +2247,7 @@ menu:
                             show: True
                           - title: "Tutorials"
                             category: Directory
-                            show: True
+                            show: true
                             menu:
                               - title: "Create Java Request Transformation Plugin"
                                 path: /plugins/supported-languages/rich-plugins/grpc/request-transformation-java
@@ -2635,7 +2875,7 @@ menu:
                 path: /frequently-asked-questions/two-gateways-with-docker-compose
                 category: Page
                 show: True
-              - title: "Can't update policy. Please ensure at least one access rights setting is set"
+              - title: "“Can't update policy. Please ensure at least one access rights setting is set“"
                 path: /troubleshooting/tyk-dashboard/cant-update-policy-please-ensure-least-one-access-rights-setting-set
                 category: Page
                 show: True
@@ -2663,11 +2903,11 @@ menu:
                 path: /troubleshooting/tyk-dashboard/problem-updating-cname-error-dashboard
                 category: Page
                 show: True
-              - title: "“Runtime error invalid memory address or nil pointer dereference“"
+              - title: "“runtime error invalid memory address or nil pointer dereference“"
                 path: /troubleshooting/tyk-dashboard/runtime-error-invalid-memory-address-nil-pointer-dereference
                 category: Page
                 show: True
-              - title: "“ValueError No JSON object could be decoded“ when running Dashboard Bootstrap script"
+              - title: '“ValueError No JSON object could be decoded" when running Dashboard Bootstrap script'
                 path: /troubleshooting/tyk-dashboard/value-error-no-json-object-decoded-running-dashboard-bootstrap-script
                 category: Page
                 show: True
@@ -2751,29 +2991,29 @@ menu:
                 show: True
                 menu:
                   - title: "Tyk Dashboard v2.9"
-                    path: /product-stack/tyk-dashboard/release-notes/archived-releases/version-2.9
+                    path: "/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.9"
                     category: Page
-                    show: True
+                    show: true
                   - title: "Tyk Dashboard v2.8"
-                    path: /product-stack/tyk-dashboard/release-notes/archived-releases/version-2.8
+                    path: "/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.8"
                     category: Page
-                    show: True
+                    show: true
                   - title: "Tyk Dashboard v2.7"
-                    path: /product-stack/tyk-dashboard/release-notes/archived-releases/version-2.7
+                    path: "/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.7"
                     category: Page
-                    show: True
+                    show: true
                   - title: "Tyk Dashboard v2.6"
-                    path: /product-stack/tyk-dashboard/release-notes/archived-releases/version-2.6
+                    path: "/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.6"
                     category: Page
-                    show: True
+                    show: true
                   - title: "Tyk Dashboard v2.5"
-                    path: /product-stack/tyk-dashboard/release-notes/archived-releases/version-2.5
+                    path: "/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.5"
                     category: Page
-                    show: True
+                    show: true
                   - title: "Tyk Dashboard v2.4"
-                    path: /product-stack/tyk-dashboard/release-notes/archived-releases/version-2.4
+                    path: "/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.4"
                     category: Page
-                    show: True
+                    show: true
               - title: "Release highlights and upgrades"
                 category: Directory
                 show: False
@@ -2946,7 +3186,7 @@ menu:
                     path: /troubleshooting/tyk-dashboard/cors-issues-on-developer-portal
                     category: Page
                     show: True
-                  - title: "“Not Found“ error in the Developer Portal"
+                  - title: "“Not Found” error in the Developer Portal"
                     path: /troubleshooting/tyk-dashboard/not-found-error-developer-portal
                     category: Page
                     show: True
@@ -3378,6 +3618,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Overview"
+            path: /tyk-multi-data-centre
+            category: Page
+            show: True
           - title: "Getting started"
             category: Directory
             show: True
@@ -3388,6 +3632,14 @@ menu:
                 show: True
               - title: "Minimising latency with MDCB"
                 path: /tyk-multi-data-centre/mdcb-example-minimising-latency
+                category: Page
+                show: True
+              - title: "Setup MDCB Control Plane"
+                path: /tyk-multi-data-centre/setup-controller-data-centre
+                category: Page
+                show: True
+              - title: "Setup MDCB Data Plane"
+                path: /tyk-multi-data-centre/setup-worker-data-centres
                 category: Page
                 show: True
           - title: "Advanced configurations"
@@ -3566,7 +3818,7 @@ menu:
                 path: /troubleshooting/tyk-pump/panic-stack-exceeds-1000000000-byte-limit
                 category: Page
                 show: True
-              - title: "Pump overloaded"
+              - title: "“Pump overloaded“"
                 path: /troubleshooting/tyk-pump/pump-overloaded
                 category: Page
                 show: True
@@ -3625,6 +3877,10 @@ menu:
             category: Directory
             show: True
             menu:
+              # - title: "Overview"
+              #   path: /product-stack/tyk-operator/key-concepts/key-concepts
+              #   category: Page
+              #   show: True
               - title: "Custom Resources"
                 path: /product-stack/tyk-operator/key-concepts/custom-resources
                 category: Page
@@ -3860,7 +4116,7 @@ menu:
           - title: "Quick Start"
             path: /product-stack/tyk-streaming/getting-started
             category: Page
-            show: False
+            show: false
           - title: "Configuration"
             category: Directory
             show: True
@@ -4010,7 +4266,7 @@ menu:
                     category: Page
                     show: True
               - title: "Processors"
-                category: Directory
+                category: "Directory"
                 show: True
                 menu:
                   - title: "Overview"
@@ -4176,7 +4432,7 @@ menu:
                   - title: "Overview"
                     path: /product-stack/tyk-streaming/configuration/scanners/overview
                     category: Page
-                    show: True
+                    show: true
                   - title: "CSV"
                     path: /product-stack/tyk-streaming/configuration/scanners/csv
                     category: Page
@@ -4307,7 +4563,7 @@ menu:
                 show: True
           - title: "Rate Limits"
             category: Directory
-            show: True
+            show: true
             menu:
               - title: "Overview"
                 path: /product-stack/tyk-streaming/configuration/rate-limits/overview
@@ -4599,7 +4855,7 @@ menu:
             show: True
           - title: "Preparations"
             category: Directory
-            show: True
+            show: true
             menu:
               - title: "Upgrade guidelines"
                 path: /developer-support/upgrading-tyk/preparations/upgrade-guidelines
@@ -4676,10 +4932,10 @@ menu:
         category: Directory
         show: True
         menu:
-          - title: "Tyk Cloud"
-            path: /developer-support/release-notes/cloud
-            category: Page
-            show: True
+        - title: "Tyk Cloud"
+          path: /developer-support/release-notes/cloud
+          category: Page
+          show: True
       - title: "Latest Tyk Releases"
         path: /developer-support/tyk-release-summary/overview
         category: Page
