@@ -91,7 +91,7 @@ Here are the supported features:
 | Do not track Analytics (per API)      | ✅        | v0.1.0         | -        | [Do Not Track]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-classic" >}})                                                                       | -   |     |
 | Webhook Event Handler                 | ✅        | v1.0           | -        | [Webhook Event Handler]({{<ref "product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/event-webhook-tyk-classic">}})              |
 | Looping                               | ✅        | v0.6           | -        | [Internal Looping]({{< ref "product-stack/tyk-operator/advanced-configurations/internal-looping" >}})                                                             |
-| Round Robin Load Balancing            | ✅        | -              | -        | [Load Balancing]({{<ref "migration-to-tyk/#load-balancing">}})                                                                     |
+| Round Robin Load Balancing            | ✅        | -              | -        | [Load Balancing]({{<ref "migration-to-tyk#load-balancing">}})                                                                     |
 
 ## Endpoint-level Features
 

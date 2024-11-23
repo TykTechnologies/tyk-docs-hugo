@@ -8133,7 +8133,7 @@ Each gateway node must be configured in the same way, with the exception being i
 
 #### Other Dashboard Security Considerations
 
-In addition to changing the default secrets (see [Change all the shared secrets]({{< ref "planning-for-production#change-all-the-shared-secrets" >}})) if you change the Control API port (see [Change your Control Port]({{< ref "planning-for-production#change-your-control-port" >}})), you also need to change the connection string settings in your `tyk_analytics.conf` file.
+In addition to changing the default secrets (see [Change all the shared secrets]({{< ref "planning-for-production#change-all-the-shared-secrets" >}})) if you change the Control API port (see [Change your Control Port]({{< ref "#change-your-control-port" >}})), you also need to change the connection string settings in your `tyk_analytics.conf` file.
 
 #### Ensure you are matching only the URL paths that you want to match
 
@@ -8950,7 +8950,7 @@ If you are using the Service Discovery option, if an enforced timeout is trigger
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the enforced timeout middleware [here]({{< ref "using-the-enforced-timeout-middleware-with-tyk-oas-apis" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the enforced timeout middleware [here]({{< ref "#using-the-enforced-timeout-middleware-with-tyk-oas-apis" >}}).
 
 If you're using Tyk Classic APIs, then you can find details and examples of how to configure the enforced timeout middleware [here]({{< ref "#using-the-enforced-timeout-middleware-with-tyk-classic-apis" >}}).
 
@@ -9075,7 +9075,7 @@ Tyk's [enforced timeout]({{< ref "#enforced-timeouts" >}}) middleware is configu
 
 When working with Tyk Classic APIs the enforced timeout is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "using-the-enforced-timeout-middleware-with-tyk-oas-apis" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "#using-the-enforced-timeout-middleware-with-tyk-oas-apis" >}}) page.
 
 If you're using Tyk Operator then check out the [configuring an enforced timeout in Tyk Operator](#configuring-an-enforced-timeout-in-tyk-operator) section below.
 

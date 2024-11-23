@@ -44,7 +44,7 @@ From this version of Tyk Charts we also set the following configuration option t
 **Action required:**
 
 - Familiarize yourself with URL matching in Tyk [here]({{<ref "getting-started/key-concepts/url-matching">}}).
-- For production setup guidance, see [this guide]({{<ref "planning-for-production#ensure-you-are-matching-only-the-url-paths-that-you-want-to-match">}}).
+- For production setup guidance, see [this guide]({{<ref "migration-to-tyk#ensure-you-are-matching-only-the-url-paths-that-you-want-to-match">}}).
 - Configure the new options via the Helm chart, and test the changes in a non-production environment before upgrading.
 
 #### 2. Default Tyk Component Versions
