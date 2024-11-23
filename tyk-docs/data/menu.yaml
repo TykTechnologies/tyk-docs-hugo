@@ -2223,19 +2223,19 @@
               path: /troubleshooting/tyk-gateway/drl-not-ready
               category: Page
               show: True
-            - title: “Index out of range“ error in logs
+            - title: "“Index out of range“ error in logs"
               path: /troubleshooting/tyk-gateway/index-range-error-logs
               category: Page
               show: True
-            - title: “Invalid memory address or nil pointer dereference“ error
+            - title: "“Invalid memory address or nil pointer dereference“ error"
               path: /troubleshooting/tyk-gateway/invalid-memory-address-nil-pointer-dereference-error
               category: Page
               show: True
-            - title: “Key object validation failed“ error when updating a key
+            - title: "“Key object validation failed“ error when updating a key"
               path: /troubleshooting/tyk-gateway/key-object-validation-failed-error-updating-key
               category: Page
               show: True
-            - title: “There was a problem proxying the request“
+            - title: "“There was a problem proxying the request“"
               path: /troubleshooting/tyk-gateway/problem-proxying-request
               category: Page
               show: True
@@ -2685,8 +2685,7 @@
               path: /frequently-asked-questions/two-gateways-with-docker-compose
               category: Page
               show: True
-            - title: “Can't update policy. Please ensure at least one access rights setting is
-                set“
+            - title: "Can't update policy. Please ensure at least one access rights setting is set"
               path: /troubleshooting/tyk-dashboard/cant-update-policy-please-ensure-least-one-access-rights-setting-set
               category: Page
               show: True
@@ -2710,20 +2709,19 @@
               path: /troubleshooting/tyk-dashboard/port-5000-errors
               category: Page
               show: True
-            - title: “There was a problem updating your CNAME“ error in the Dashboard
+            - title: "“There was a problem updating your CNAME“ error in the Dashboard"
               path: /troubleshooting/tyk-dashboard/problem-updating-cname-error-dashboard
               category: Page
               show: True
-            - title: “Runtime error invalid memory address or nil pointer dereference“
+            - title: "“Runtime error invalid memory address or nil pointer dereference“"
               path: /troubleshooting/tyk-dashboard/runtime-error-invalid-memory-address-nil-pointer-dereference
               category: Page
               show: True
-            - title: "ValueError No JSON object could be decoded when running Dashboard"
-                Bootstrap script Bootstrap script
+            - title: "“ValueError No JSON object could be decoded" when running Dashboard Bootstrap script"
               path: /troubleshooting/tyk-dashboard/value-error-no-json-object-decoded-running-dashboard-bootstrap-script
               category: Page
               show: True
-            - title: “Payload signature is invalid!“ error
+            - title: "“Payload signature is invalid!“ error"
               path: /troubleshooting/tyk-installation/payload-signature-invalid-error
               category: Page
               show: True
@@ -2990,7 +2988,7 @@
                   path: /frequently-asked-questions/custom-developer-portal-options
                   category: Page
                   show: True
-                - title: “API catalogue not found“ error in the Developer Portal
+                - title: "“API catalogue not found“ error in the Developer Portal"
                   path: /troubleshooting/tyk-dashboard/api-catalogue-not-found-error-developer-portal
                   category: Page
                   show: True
@@ -2998,7 +2996,7 @@
                   path: /troubleshooting/tyk-dashboard/cors-issues-on-developer-portal
                   category: Page
                   show: True
-                - title: “Not Found” error in the Developer Portal
+                - title: "“Not Found” error in the Developer Portal"
                   path: /troubleshooting/tyk-dashboard/not-found-error-developer-portal
                   category: Page
                   show: True
@@ -3602,7 +3600,7 @@
               path: /tyk-stack/tyk-pump/useful-debug-modes
               category: Page
               show: True
-            - title: “Connection dropped, connecting...“
+            - title: "“Connection dropped, connecting...“"
               path: /troubleshooting/tyk-pump/connection-dropped-connecting
               category: Page
               show: True
@@ -3610,7 +3608,7 @@
               path: /troubleshooting/tyk-pump/data-in-log-browser-no-reports
               category: Page
               show: True
-            - title: “No Elasticsearch node available“
+            - title: "“No Elasticsearch node available“"
               path: /troubleshooting/tyk-pump/no-elasticsearch-node-available
               category: Page
               show: True
@@ -3618,7 +3616,7 @@
               path: /troubleshooting/tyk-pump/panic-stack-exceeds-1000000000-byte-limit
               category: Page
               show: True
-            - title: “Pump overloaded“
+            - title: "Pump overloaded"
               path: /troubleshooting/tyk-pump/pump-overloaded
               category: Page
               show: True
@@ -4788,7 +4786,7 @@
           path: /troubleshooting
           category: Page
           show: True
-        - title: “301 Moved permanently“ error in the Dashboard API
+        - title: "“301 Moved permanently“ error in the Dashboard API"
           path: /troubleshooting/tyk-cloud-classic/301-moved-permanently
           category: Page
           show: True
@@ -4796,11 +4794,11 @@
           path: /troubleshooting/tyk-cloud-classic/413-request-entity-large
           category: Page
           show: True
-        - title: “504 GATEWAY_TIMEOUT“ error
+        - title: "“504 GATEWAY_TIMEOUT“ error"
           path: /troubleshooting/tyk-cloud-classic/504-gateway-timeout-error
           category: Page
           show: True
-        - title: “Organisation quota has been exceeded“ error in the Dashboard API
+        - title: "“Organisation quota has been exceeded“ error in the Dashboard API"
           path: /troubleshooting/tyk-cloud-classic/organisation-quota-exceeded-error-dashboard-api
           category: Page
           show: True
