@@ -2374,7 +2374,7 @@ Our Developer Portal is completely customizable. See [Portal Customization]({{< 
 This section covers the administration of the various components of your Tyk Cloud installation:
 
 * [Managing Organizations]({{< ref "migration-to-tyk#set-up-your-organisation" >}})
-* [Managing Environments]({{< ref "migration-to-tyk#manage-environments" >}})
+* [Managing Environments]({{< ref "migration-to-tyk#manage-environments-and-deployments" >}})
 * [Managing Control Planes]({{< ref "migration-to-tyk#control-planes" >}})
 * [Managing Cloud Data Planes]({{< ref "migration-to-tyk#gateways-configuration" >}})
 
@@ -2422,7 +2422,7 @@ The Environments section shows the environments created within your organization
 
 ##### Adjust Environments
 
-Environments are used to group your [Control Plane]({{< ref "#glossary#control-plane" >}}) and [Cloud Data Planes]({{< ref "#glossary" >}}) into logical groups. For example you may want to create environments that reflect different departments of your organization.
+Environments are used to group your [Control Plane]({{< ref "#glossary" >}}) and [Cloud Data Planes]({{< ref "#glossary" >}}) into logical groups. For example you may want to create environments that reflect different departments of your organization.
 
 {{< note success >}}
 **Note**
@@ -10561,7 +10561,7 @@ If you want this Data Plane deployment to be resilient, available, and independe
 
 #### Minimizing latency with MDCB
 
-As described [previously]({{< ref "#managing-geographically-distributed-gateways-to-minimize-latency-and-protect-data-sovereignty" >}}), Acme Global Bank has operations and customers in both the EU and USA.
+As described [previously]({{< ref "#when-might-you-deploy-mdcb" >}}), Acme Global Bank has operations and customers in both the EU and USA.
 
 To decrease the latency in response from their systems and to ensure that data remains in the same legal jurisdiction as the customers (data residency), they have deployed backend (or, from the perspective of the API gateway, “upstream”) services in two data centers: one in the US, the other in the EU.
 
