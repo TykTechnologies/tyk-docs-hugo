@@ -2862,7 +2862,7 @@ When you point your custom domain to your deployment, we use [Let\'s Encrypt\'s]
 {{< warning success >}}
 **Warning**
 
-`tyk-hybrid` chart is deprecated. Please use our [Tyk Data Plane helm chart]({{<ref "migration-to-tyk#deploy-hybrid-gateways>}}) instead. 
+`tyk-hybrid` chart is deprecated. Please use our [Tyk Data Plane helm chart]({{<ref "migration-to-tyk#deploy-hybrid-gateways" >}}) instead. 
 
 We recommend that all users to migrate to the `tyk-data-plane` Chart. Please review the [Configuration]({{<ref "/product-stack/tyk-charts/tyk-data-plane-chart#configuration">}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
 {{< /warning >}}
@@ -11037,7 +11037,7 @@ Your Data Plane can be in the same physical data center as the Control Plane wit
 
 ##### Installing in a Kubernetes Cluster with our Helm Chart
 
-The [Tyk Data Plane]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart">}}) helm chart is pre-configured to install Tyk Gateway and Tyk Pump that connects to MDCB or Tyk Cloud, our SaaS MDCB Control Plane. After setting up Tyk Control Plane with Helm Chart, obtain the required connection details from installation output and configure data plane chart as below. For Tyk Cloud users, following [Tyk Cloud instructions]({{<ref "migration-to-tyk#deploy-hybrid-gateways>}}) to deploy your hybrid gateways.
+The [Tyk Data Plane]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart">}}) helm chart is pre-configured to install Tyk Gateway and Tyk Pump that connects to MDCB or Tyk Cloud, our SaaS MDCB Control Plane. After setting up Tyk Control Plane with Helm Chart, obtain the required connection details from installation output and configure data plane chart as below. For Tyk Cloud users, following [Tyk Cloud instructions]({{<ref "migration-to-tyk#deploy-hybrid-gateways" >}}) to deploy your hybrid gateways.
 
 **Prerequisites**
 
