@@ -34,38 +34,6 @@ menu:
                 path: /apim/open-source/installation
                 category: Page
                 show: True
-              - title: "Docker"
-                path: /tyk-oss/ce-docker
-                category: Page
-                show: True
-              - title: "Kubernetes"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /tyk-oss/ce-kubernetes
-                    category: Page
-                    show: True
-                  - title: "Quick Start with Tyk OSS Helm Chart"
-                    path: /tyk-oss/ce-helm-chart-new
-                    category: Page
-                    show: True
-                  - title: "Legacy Tyk Headless Helm Chart"
-                    path: /tyk-oss/ce-helm-chart
-                    category: Page
-                    show: True
-              - title: "Ansible"
-                path: /tyk-oss/ce-ansible
-                category: Page
-                show: True
-              - title: "Configure Redis Sentinel"
-                path: /tyk-stack/tyk-gateway/configuration/redis-sentinel
-                category: Page
-                show: True
-              - title: "Via GitHub"
-                path: /tyk-oss/ce-github
-                category: Page
-                show: True
           - title: "Open source operations tooling"
             category: Page
             show: False
@@ -73,9 +41,6 @@ menu:
         category: Directory
         show: True
         menu:
-          - title: "What Is Tyk Cloud?"
-            path: /tyk-cloud/what-is-tyk-cloud
-            show: True
           - title: "Deployment lifecycle"
             category: Directory
             show: True
@@ -95,58 +60,6 @@ menu:
                   - title: "Availability of infrastructure"
                     category: Page
                     show: False
-                  - title: "Teams and users"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /tyk-cloud/teams--users
-                        category: Page
-                        show: True
-                      - title: "Managing teams"
-                        path: /tyk-cloud/teams--users/managing-teams
-                        category: Page
-                        show: True
-                      - title: "Managing users"
-                        path: /tyk-cloud/teams--users/managing-users
-                        category: Page
-                        show: True
-                      - title: "Tyk Cloud user roles"
-                        path: /tyk-cloud/teams--users/user-roles
-                        category: Page
-                        show: True
-                      - title: "Tyk Cloud Single Sign-On (SSO)"
-                        path: /tyk-cloud/teams--users/single-sign-on
-                        category: Page
-                        show: True
-                  - title: "Environments and deployments"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /tyk-cloud/environments--deployments
-                        category: Page
-                        show: True
-                      - title: "Managing organisations"
-                        path: /tyk-cloud/environments--deployments/managing-organisations
-                        category: Page
-                        show: True
-                      - title: "Managing environments"
-                        path: /tyk-cloud/environments--deployments/managing-environments
-                        category: Page
-                        show: True
-                      - title: "Managing control planes"
-                        path: /tyk-cloud/environments--deployments/managing-control-planes
-                        category: Page
-                        show: True
-                      - title: "Managing cloud data planes"
-                        path: /tyk-cloud/environments--deployments/managing-gateways
-                        category: Page
-                        show: True
-                      - title: "Managing Your APIs"
-                        path: /tyk-cloud/environments--deployments/managing-apis
-                        category: Page
-                        show: True
                   - title: "Manage subscriptions and add-ons"
                     category: Page
                     show: False
@@ -164,14 +77,6 @@ menu:
                   - title: "Enable configuration and workflows between deployments"
                     category: Page
                     show: False
-                  - title: "Securing your APIs"
-                    path: /tyk-cloud/securing-your-apis
-                    category: Page
-                    show: True
-                  - title: "Deploy hybrid gateways using legacy helm chart"
-                    path: /tyk-cloud/environments-deployments/hybrid-gateways-helm
-                    category: Page
-                    show: True
               - title: "Operations and BAU"
                 category: Directory
                 show: True
@@ -182,54 +87,6 @@ menu:
                   - title: "Observability of cloud Data"
                     category: Page
                     show: False
-                  - title: "Using plugins"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Using Plugins"
-                        path: /tyk-cloud/using-plugins
-                        category: Page
-                        show: True
-                  - title: "Accounts and billing"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /tyk-cloud/account-billing
-                        category: Page
-                        show: True
-                  - title: "Monitoring"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "What metrics are monitored?"
-                        path: /tyk-cloud/environments--deployments/monitoring-how-it-works
-                        category: Page
-                        show: True
-                      - title: "Viewing usage"
-                        path: /tyk-cloud/environments--deployments/monitoring-usage
-                        category: Page
-                        show: True
-                  - title: "Troubleshooting and support"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /tyk-cloud/troubleshooting--support
-                        category: Page
-                        show: True
-                      - title: "Tyk Cloud FAQs"
-                        path: /tyk-cloud/troubleshooting--support/faqs
-                        category: Page
-                        show: True
-                      - title: "Tyk Cloud MDCB Supported versions"
-                        path: /tyk-cloud/troubleshooting--support/tyk-cloud-mdcb-supported-versions
-                        category: Page
-                        show: True
-                      - title: "Glossary"
-                        path: /tyk-cloud/troubleshooting--support/glossary
-                        category: Page
-                        show: True
       - title: "Self Managed"
         category: Directory
         show: True
@@ -3747,10 +3604,6 @@ menu:
                 show: True
               - title: "Manage existing APIs and policies"
                 path: /tyk-stack/tyk-operator/migration
-                category: Page
-                show: True
-              - title: "Kubernetes Ingress Controller"
-                path: /product-stack/tyk-operator/tyk-ingress-controller
                 category: Page
                 show: True
               - title: "Manage multiple organisations"
