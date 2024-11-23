@@ -167,7 +167,7 @@ Learn More: [Create Tyk OAS API]({{<ref "product-stack/tyk-operator/getting-star
 
 With this release, you can use the TykOasApiDefinition resource as a template for automatically creating Tyk OAS APIs based on Kubernetes Ingress specs. This simplifies the process of generating APIs by leveraging Ingress controller annotations, reducing manual intervention, and automating API creation workflows for better scalability and operational efficiency.
 
-Learn More: [Tyk Ingress Controller]({{<ref "product-stack/tyk-operator/tyk-ingress-controller">}})
+Learn More: [Tyk Ingress Controller]({{<ref "migration-to-tyk#install-more-tyk-components">}})
 </details>
 </li>
 <li>

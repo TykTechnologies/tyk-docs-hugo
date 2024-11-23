@@ -56,4 +56,4 @@ Next, [add your first API to Tyk ]({{< ref "getting-started/create-api" >}}) and
 
 ## Kubernetes
 
-This pages has shown the fasted way to get up and running with Tyk Open Source. If you are interested in deploying Tyk stack on a Kubernetes cluster please use our [Helm Charts]{{< ref "tyk-oss/ce-helm-chart-new">}}
+This pages has shown the fasted way to get up and running with Tyk Open Source. If you are interested in deploying Tyk stack on a Kubernetes cluster please use our [Helm Charts]{{< ref "#quick-start-with-helm-chart">}}

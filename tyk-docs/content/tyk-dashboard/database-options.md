@@ -36,8 +36,8 @@ Please check [here]({{< ref "migration-to-tyk#database-management/postgresql.md"
 
 See the following pages for configuring your SQL installation with Tyk:
 
-* [Configuring Tyk Dashboard]({{< ref "/content/migration-to-tyk#database-management/postgresql.md" >}})
-* [Configuring Tyk Pumps]({{< ref "/content/migration-to-tyk#database-management/postgresql.md" >}})
+* [Configuring Tyk Dashboard]({{< ref "/migration-to-tyk#database-management/postgresql.md" >}})
+* [Configuring Tyk Pumps]({{< ref "/migration-to-tyk#database-management/postgresql.md" >}})
 
 All data stored in SQL platforms will be identical to our existing MongoDB support.
 

@@ -1378,7 +1378,7 @@ Tyk is able to store configuration data from the API definition in KV systems, s
 reference these values during configuration of the Tyk Gateway or APIs deployed on the Gateway. Previously this was
 limited to the Target URL and Listen Path but from 5.3.0 you are able to store any `string` type field from your API
 definition, unlocking the ability to store sensitive information in a centralised location. For full details check out
-the [documentation]({{< ref "tyk-configuration-reference/kv-store" >}}) of this powerful feature.
+the [documentation]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) of this powerful feature.
 
 #### Redis v7.x Compatibility
 

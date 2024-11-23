@@ -36,7 +36,7 @@ Managing, checking, and synchronizing APIs from multiple teams across environmen
 1. [Manage API definitions]({{< ref "product-stack/tyk-operator/getting-started/create-an-api-overview" >}})
 2. [Manage Security policies]({{< ref "tyk-stack/tyk-operator/secure-an-api" >}})
 3. [Manage Tyk Classic Dev Portal]({{< ref "tyk-stack/tyk-operator/publish-an-api" >}})
-4. [Kubernetes Ingress Controller]({{< ref "product-stack/tyk-operator/tyk-ingress-controller">}})
+4. [Kubernetes Ingress Controller]({{< ref "migration-to-tyk#install-more-tyk-components">}})
 
 ### Do You Need Tyk Operator?
 

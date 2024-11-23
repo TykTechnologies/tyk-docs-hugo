@@ -34,7 +34,7 @@ Read more about the [GraphQL]({{< ref "graphql" >}}) and [Universal Data Graph](
 
 Want to reference secrets from a KV store in your API definitions? We now have native Vault & Consul integration. You can even pull from a tyk.conf dictionary or environment variable file.
 
-[Read more]({{< ref "tyk-configuration-reference/kv-store" >}})
+[Read more]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}})
 
 #### Co-Process Response Plugins
 

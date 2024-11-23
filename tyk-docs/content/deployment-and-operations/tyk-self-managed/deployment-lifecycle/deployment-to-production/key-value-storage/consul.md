@@ -61,7 +61,7 @@ The notation used to refer to a KV pair stored in Consul depends upon the locati
 
 #### Tyk Gateway configuration file
 
-As described [here]({{< ref "tyk-configuration-reference/kv-store#from-the-tyk-gateway-configuration-file" >}}), from Tyk Gateway's configuration file (`tyk.conf`) you can retrieve values from Consul using the following notation:
+As described [here]({{< ref "migration-to-tyk#store-configuration-with-key-value-store#from-the-tyk-gateway-configuration-file" >}}), from Tyk Gateway's configuration file (`tyk.conf`) you can retrieve values from Consul using the following notation:
 - `consul://path/to/KEY`
 
 #### API definition
@@ -69,7 +69,7 @@ As described [here]({{< ref "tyk-configuration-reference/kv-store#from-the-tyk-g
 The **Target URL** and **Listen Path** key-value pairs can be stored in any directory in the Consul KV store as they are accessed using a different mechanism than other fields in the API definition. If storing these in a sub-directory, you can retrieve the values from Consul by providing the directory path within Consul KV using the following notation:
 - `consul://path/to/KEY`
 
-For [certain transformation middleware]({{< ref "tyk-configuration-reference/kv-store#transformation-middleware" >}}) because the secret resolution happens during the request context, a different notation is used to retrieve values from Consul:
+For [certain transformation middleware]({{< ref "migration-to-tyk#store-configuration-with-key-value-store#transformation-middleware" >}}) because the secret resolution happens during the request context, a different notation is used to retrieve values from Consul:
 - `$secret_consul.KEY`
 
 From Tyk Gateway v5.3.0 onwards, you can store KV pairs to be used in **any `string` field** in the API definition in the Consul KV store. You can retrieve these values from Consul, noting that you do not provide the directory path (`/tyk-apis`) when accessing data for *these* fields, using the following notation:

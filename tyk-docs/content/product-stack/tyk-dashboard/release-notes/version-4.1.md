@@ -60,5 +60,5 @@ Tyk MDCB 2.0.1
 
 Follow the [standard upgrade guide]({{< ref "/content/upgrading-tyk.md" >}}), there are no breaking changes in this release.
 
-If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "/content/migration-to-tyk#database-management" >}}), but keep in mind that it does not yet support the migration of your analytics data.
+If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "/migration-to-tyk#database-management" >}}), but keep in mind that it does not yet support the migration of your analytics data.
  

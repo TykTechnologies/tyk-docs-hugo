@@ -195,7 +195,7 @@ of k8s namespaces. For example:
 
 ##### Watching custom ingress class
 
-You can configure [Tyk Operator as Ingress Controller]({{<ref "product-stack/tyk-operator/tyk-ingress-controller">}}) so
+You can configure [Tyk Operator as Ingress Controller]({{<ref "migration-to-tyk#install-more-tyk-components">}}) so
 that [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) resources can be managed by Tyk as
 APIs. By default, Tyk Operator looks for the value `tyk` in Ingress resources `kubernetes.io/ingress.class` annotation
 and will ignore all other ingress classes. If you want to override this default behavior, you may do so by setting

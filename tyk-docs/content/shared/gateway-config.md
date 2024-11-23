@@ -1977,7 +1977,7 @@ global session lifetime, in seconds.
 ENV: <b>TYK_GW_KV_KV</b><br />
 Type: `struct`<br />
 
-See more details https://tyk.io/docs/tyk-configuration-reference/kv-store/
+See more details https://tyk.io/docs/migration-to-tyk#store-configuration-with-key-value-store/
 
 ### kv.consul.address
 ENV: <b>TYK_GW_KV_CONSUL_ADDRESS</b><br />

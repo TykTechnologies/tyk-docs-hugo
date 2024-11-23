@@ -78,5 +78,5 @@ If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref
 {{< note success >}}
 **Note**  
 
-Note: Upgrading the Golang version implies that all the Golang custom plugins that you are using need to be recompiled before migrating to 4.3 version of the Gateway. Check our docs for more details [Golang Plugins]({{< ref "/content/migration-to-tyk#using-plugins.md" >}}).
+Note: Upgrading the Golang version implies that all the Golang custom plugins that you are using need to be recompiled before migrating to 4.3 version of the Gateway. Check our docs for more details [Golang Plugins]({{< ref "/migration-to-tyk#using-plugins.md" >}}).
 {{< /note >}}
