@@ -8133,7 +8133,7 @@ Each gateway node must be configured in the same way, with the exception being i
 
 #### Other Dashboard Security Considerations
 
-In addition to changing the default secrets (see [Change all the shared secrets]({{< ref "planning-for-production#change-all-the-shared-secrets" >}})) if you change the Control API port (see [Change your Control Port]({{< ref "#change-your-control-port" >}})), you also need to change the connection string settings in your `tyk_analytics.conf` file.
+In addition to changing the default secrets (see [Change all the shared secrets]({{< ref "#change-all-the-shared-secrets" >}})) if you change the Control API port (see [Change your Control Port]({{< ref "#change-your-control-port" >}})), you also need to change the connection string settings in your `tyk_analytics.conf` file.
 
 #### Ensure you are matching only the URL paths that you want to match
 
