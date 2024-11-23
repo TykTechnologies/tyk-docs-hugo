@@ -201,6 +201,25 @@ aliases:
   - /tyk-oss/ce-kubernetes
   - /tyk-self-managed/tyk-helm-chart
   - /tyk-stack/tyk-gateway/configuration/redis-sentinel
+  - /ensure-high-availability/circuit-breakers
+  - /ensure-high-availability/load-balancing
+  - /planning-for-production/benchmarks
+  - /planning-for-production/database-settings/mongodb
+  - /planning-for-production/database-settings/mongodb-sizing
+  - /planning-for-production/ensure-high-availability
+  - /planning-for-production/ensure-high-availability/circuit-breakers
+  - /planning-for-production/ensure-high-availability/enforced-timeouts
+  - /planning-for-production/ensure-high-availability/load-balancing
+  - /planning-for-production/ensure-high-availability/service-discovery
+  - /planning-for-production/ensure-high-availability/service-discovery/examples
+  - /planning-for-production/ensure-high-availability/uptime-tests
+  - /planning-for-production/monitoring
+  - /planning-for-production/monitoring/tyk-components
+  - /planning-for-production/redis
+  - /product-stack/tyk-gateway/middleware/circuit-breaker-tyk-classic
+  - /product-stack/tyk-gateway/middleware/circuit-breaker-tyk-oas
+  - /product-stack/tyk-gateway/middleware/enforced-timeout-tyk-classic
+  - /product-stack/tyk-gateway/middleware/enforced-timeout-tyk-oas
 
 
 ---
@@ -2122,7 +2141,7 @@ Now that you have created the new Tyk Cloud account with your basic details, it 
 
 * **Step 1 - Name your Organization:** Give your organization a name. This is up to you, but most users use their company name.
 
-* **Step 2 - Select a Home Region:** Select a region from the drop-down list where your [Control Plane]({{< ref "#glossary#control-plane" >}}) will be deployed and your data stored. The number of regions available will depend on your license. Further regions can be added as an upgrade option.
+* **Step 2 - Select a Home Region:** Select a region from the drop-down list where your [Control Plane]({{< ref "#glossary" >}}) will be deployed and your data stored. The number of regions available will depend on your license. Further regions can be added as an upgrade option.
 
 {{< note success >}}
 **Note**
@@ -2161,9 +2180,9 @@ Following organization setup, you will have to set up your team(s) on Tyk Cloud.
 
 After creating your Organization you'll land on the success screen. Click **Get Started**.
 
-* **Step 1 - Name your Team:** Give your [Team]({{< ref "#glossary#team" >}}) a name. You may find it useful to reflect the names used within your organization.
+* **Step 1 - Name your Team:** Give your [Team]({{< ref "#glossary" >}}) a name. You may find it useful to reflect the names used within your organization.
 
-* **Step Two - Invite your Users:** Invite your [users]({{< ref "#glossary#user" >}}) to your team. You'll only need their email address and which of the available [roles]({{< ref "#glossary" >}}) you want to assign to them. This step is optional and can be completed within the dashboard later.
+* **Step Two - Invite your Users:** Invite your [users]({{< ref "#glossary" >}}) to your team. You'll only need their email address and which of the available [roles]({{< ref "#glossary" >}}) you want to assign to them. This step is optional and can be completed within the dashboard later.
 
 ##### User Roles in Tyk Cloud
 
@@ -2185,11 +2204,11 @@ An environment is a grouping of ‘deployments’ that can have multiple Control
 
 ##### Steps to set up your environment
 
-* **Step 1 - Name your Environment:** Give your [Environment]({{< ref "#glossary#environment" >}}) a name. You may find it useful to reflect the names used within your organization such as Development, Production etc.
+* **Step 1 - Name your Environment:** Give your [Environment]({{< ref "#glossary" >}}) a name. You may find it useful to reflect the names used within your organization such as Development, Production etc.
   
-* **Step 2 - Name your Control Plane:** Give your [Control Plane]({{< ref "#glossary#control-plane" >}}) a name. Again, this is up to you and you may already have an infrastructure you want to re-create in Tyk Cloud.
+* **Step 2 - Name your Control Plane:** Give your [Control Plane]({{< ref "#glossary" >}}) a name. Again, this is up to you and you may already have an infrastructure you want to re-create in Tyk Cloud.
   
-* **Step 3 - Configure your first Cloud Data Plane:** Select the region you want to locate your [Cloud Data Plane]({{< ref "#glossary#cloud-data-plane" >}}) in from the drop-down list. Your Cloud Data Plane is not confined to the same region as your Organization and Control Plane but the amount of regions you have to choose from can be limited depending on your subscription plan. Give your Cloud Data Plane a name. 
+* **Step 3 - Configure your first Cloud Data Plane:** Select the region you want to locate your [Cloud Data Plane]({{< ref "#glossary" >}}) in from the drop-down list. Your Cloud Data Plane is not confined to the same region as your Organization and Control Plane but the amount of regions you have to choose from can be limited depending on your subscription plan. Give your Cloud Data Plane a name. 
 
 {{< note success >}}
 **Note**
@@ -2199,7 +2218,7 @@ You need to have at least one Cloud Data Plane with a *Deployed* status connecte
 
 * **Step 4 - Deployment:**
 
-1. Click [Deploy Control Plane and Create a Cloud Data Plane]({{< ref "#glossary#deploy" >}}). You can watch your Control Plane being deployed and your Cloud Data Plane being created. You will then be taken to the Control Plane overview screen within the Tyk Cloud dashboard.
+1. Click [Deploy Control Plane and Create a Cloud Data Plane]({{< ref "#glossary" >}}). You can watch your Control Plane being deployed and your Cloud Data Plane being created. You will then be taken to the Control Plane overview screen within the Tyk Cloud dashboard.
 2. From your Control Plane overview you will see the Cloud Data Plane is in a **Not Deployed** state. Click on your Cloud Data Plane to open its overview.
 3. In the top right of your Cloud Data Plane overview, click **Not Deployed** and choose **Deploy** from the drop-down.
 4. With your Cloud Data Plane successfully deployed, make a note of the tags assigned to your Cloud Data Plane. One tag is "edge" and the other is the location of your Cloud Data Plane. You'll add a tag when creating your API.
@@ -2227,7 +2246,7 @@ For further details, please refer to the [release notes]({{< ref "product-stack/
 
 ##### Steps to add an API in Tyk Cloud
 
-* **Step 1 - Access the Dashboard:** Go to the Control Plane overview and click the dashboard link in the Ingress list. You'll be redirected to the Tyk Dashboard for your [Control Plane]({{< ref "#glossary#control-plane" >}}).
+* **Step 1 - Access the Dashboard:** Go to the Control Plane overview and click the dashboard link in the Ingress list. You'll be redirected to the Tyk Dashboard for your [Control Plane]({{< ref "#glossary" >}}).
 * **Step 2 - Add a New API:** Click the APIs menu item and then click **Add New API**.
 * **Step 3 - Core Settings:**
 
@@ -2284,7 +2303,7 @@ Your first API has been added. What's next? Testing it! This page shows how you 
 
 * **Step 1 - Access the Gateway Ingress:** From the Cloud Data Plane overview, copy the Ingress link and open it in a browser tab. You will get a 404 error.
   
-* **Step 2 - Append the URL with your API:** You created a API named **my app** in [Task 5]({{< ref "migration-to-tyk#deploy-and-add-your-first-api" >}}). Add `/my-app/` to the end of the URL. You should be taken to [https://httpbin.org/](https://httpbin.org/), which you added as the **Target URL** for the API in [Task 5]({{< ref "migration-to-tyk#deploy-and-add-your-first-api#steps-to-add-an-api-in-tyk-cloud" >}}). 
+* **Step 2 - Append the URL with your API:** You created a API named **my app** in [Task 5]({{< ref "migration-to-tyk#deploy-and-add-your-first-api" >}}). Add `/my-app/` to the end of the URL. You should be taken to [https://httpbin.org/](https://httpbin.org/), which you added as the **Target URL** for the API in [Task 5]({{< ref "migration-to-tyk#steps-to-add-an-api-in-tyk-cloud" >}}). 
 
 
 Next you'll [view the analytics]({{< ref "migration-to-tyk#view-analytics" >}}) for your API in the Dashboard.
@@ -2355,7 +2374,7 @@ Our Developer Portal is completely customizable. See [Portal Customization]({{< 
 This section covers the administration of the various components of your Tyk Cloud installation:
 
 * [Managing Organizations]({{< ref "migration-to-tyk#set-up-your-organisation" >}})
-* [Managing Environments]({{< ref "migration-to-tyk#manage-environments.md" >}})
+* [Managing Environments]({{< ref "migration-to-tyk#manage-environments" >}})
 * [Managing Control Planes]({{< ref "migration-to-tyk#control-planes" >}})
 * [Managing Cloud Data Planes]({{< ref "migration-to-tyk#gateways-configuration" >}})
 
@@ -2403,7 +2422,7 @@ The Environments section shows the environments created within your organization
 
 ##### Adjust Environments
 
-Environments are used to group your [Control Plane]({{< ref "#glossary#control-plane" >}}) and [Cloud Data Planes]({{< ref "#glossary#cloud-data-plane" >}}) into logical groups. For example you may want to create environments that reflect different departments of your organization.
+Environments are used to group your [Control Plane]({{< ref "#glossary#control-plane" >}}) and [Cloud Data Planes]({{< ref "#glossary" >}}) into logical groups. For example you may want to create environments that reflect different departments of your organization.
 
 {{< note success >}}
 **Note**
@@ -2606,7 +2625,7 @@ From there you have access to the full scope of Tyk API management functionality
 * Viewing granular [Analytics]({{< ref "tyk-dashboard-analytics" >}}) for your Tyk managed APIs
 * [Transform traffic]({{< ref "advanced-configuration/transform-traffic" >}}) with the Tyk API Designer
 * Add integration options such as [SSO]({{< ref "advanced-configuration/integrate/sso" >}}) and [3rd Party IdentityProviders]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers" >}})
-* [Adding Segment Tags]({{< ref "#q8-how-do-segment-tags-work-with-tyk-cloud" >}})
+* [Adding Segment Tags]({{< ref "#faqs" >}})
 
 
 ##### Deploy Hybrid Gateways
@@ -2867,7 +2886,7 @@ In order to find your organization’s IP range, please open a support ticket wi
 
 **4. Post plugin with OAuth flow**
 
-The custom plugin approach is mentioned last because it involves writing a bit of code. However, if your appetite allows for it, custom plugins offer the most flexibility of all these solutions.  You can use Tyk’s custom plugins to execute an OAuth flow, for example, between Tyk (as the client) and your authorization server, and inject a Bearer token into the request. The backend service will need to validate the bearer as usual. You can write [custom plugins]({{< ref "migration-to-tyk#using-plugins.md" >}}) in a variety of languages.
+The custom plugin approach is mentioned last because it involves writing a bit of code. However, if your appetite allows for it, custom plugins offer the most flexibility of all these solutions.  You can use Tyk’s custom plugins to execute an OAuth flow, for example, between Tyk (as the client) and your authorization server, and inject a Bearer token into the request. The backend service will need to validate the bearer as usual. You can write [custom plugins]({{< ref "#using-plugins" >}}) in a variety of languages.
 
 **Where to Authenticate?**
 
@@ -3154,7 +3173,7 @@ For an existing team, you can:
 
 **Create a new Team**
 
-You need to be a [Organization Admin]({{< ref "#user-roles-in-tyk-cloud#user-roles-within-tyk-cloud" >}}) to create a new team.
+You need to be a [Organization Admin]({{< ref "#assign-user-roles" >}}) to create a new team.
 
 1. From the Admin > Teams screen, click **Add Team**.
 2. Enter a name for the new team that will be added to the organization.
@@ -3162,7 +3181,7 @@ You need to be a [Organization Admin]({{< ref "#user-roles-in-tyk-cloud#user-rol
 
 **Delete a team**
 
-You need to be a [Organization Admin]({{< ref "#user-roles-in-tyk-cloud#user-roles-within-tyk-cloud" >}}) to delete a team.
+You need to be a [Organization Admin]({{< ref "#assign-user-roles" >}}) to delete a team.
 
 1. From the Teams screen, select the team name.
 2. Click **Edit**.
@@ -3176,8 +3195,8 @@ You can now invite users to your new team. See [Managing Users]({{< ref "migrati
 
 The following [user roles]({{< ref "#user-roles-in-tyk-cloud" >}}) can perform existing User Admin tasks:
 
-* [Organization Admin]({{< ref "#user-roles-in-tyk-cloud#user-roles-within-tyk-cloud" >}}) - Can manage all users in the organization they are a member of.
-* [Team Admin]({{< ref "#user-roles-in-tyk-cloud#user-roles-within-tyk-cloud" >}}) - Can only manage the users of the team they are a member of.
+* [Organization Admin]({{< ref "#assign-user-roles" >}}) - Can manage all users in the organization they are a member of.
+* [Team Admin]({{< ref "#assign-user-roles" >}}) - Can only manage the users of the team they are a member of.
 
 {{< note success >}}
 **Note**
@@ -3456,7 +3475,7 @@ Every new Tyk Cloud account is assigned to a 48 hour free trial. You have the fo
 
 **What happens if my free trial expires?**
 
-If your free trial ends without you upgrading, your account enters what we call [retirement]({{< ref "#glossary#retirement" >}}).
+If your free trial ends without you upgrading, your account enters what we call [retirement]({{< ref "#glossary" >}}).
 
 **What does upgrading a free trial account involve?**
 
@@ -3516,7 +3535,7 @@ For this release, removing a billing Admin is not allowed. We can remove a Billi
 
 This section explains what it means when your Tyk Cloud account goes into retirement and what your options are when it does, from account reinstatement to closure.
 
-Your plan will go into [retirement]({{< ref "#glossary#retirement" >}}) in the following scenarios:
+Your plan will go into [retirement]({{< ref "#glossary" >}}) in the following scenarios:
 
 * Your subscription is manually canceled by a Billing Admin.
 * Your periodic subscription payment fails.
@@ -5455,7 +5474,7 @@ This creates the developer portal URL. For the `Authorization` Header, the Value
 
 **Using WSL**
 
-The Tyk Pro Docker demo is our full [Self-Managed]({{< ref "migration-to-tyk#tyk-self-managed" >}}) solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and MongoDB. This demo is great for proof of concept and demo purposes, but if you want to test performance, you will need to move each component to a separate machine.
+The Tyk Pro Docker demo is our full [Self-Managed]({{< ref "migration-to-tyk#configure-tyk-self-managed" >}}) solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and MongoDB. This demo is great for proof of concept and demo purposes, but if you want to test performance, you will need to move each component to a separate machine.
 
 {{< warning success >}}
 **Warning**  
@@ -5643,9 +5662,9 @@ You can install Tyk on RHEL or CentOS using our YUM repositories. Follow the gui
 
 The order is to install Tyk Dashboard, then Tyk Pump and then Tyk Gateway for a full stack.
 
-- [Dashboard]({{< ref "#install-dashboard-on-red-hat-rhel-centos" >}})
-- [Pump]({{< ref "#install-tyk-pump-on-red-hat-rhel-centos" >}})
-- [Gateway]({{< ref "#install-tyk-gateway-on-red-hat-rhel-centos" >}})
+- [Dashboard]({{< ref "#install-dashboard-on-red-hat-rhel--centos" >}})
+- [Pump]({{< ref "#install-tyk-pump-on-red-hat-rhel--centos" >}})
+- [Gateway]({{< ref "#install-tyk-gateway-on-red-hat-rhel--centos-1" >}})
 
 {{< note success >}}
 **Note**  
@@ -5786,7 +5805,7 @@ This configuration should also work (with some tweaks) for CentOS.
 **Prerequisites**
 
 *   Ensure port `3000` is open: This is used by the Dashboard to provide the GUI and the Classic Developer Portal.
-*   Follow the steps provided in this link [Getting started on Red Hat (RHEL / CentOS)]({{< ref "migration-to-tyk#install-tyk-gateway-on-red-hat-rhel-centos" >}}) to install and configure Tyk dependencies.
+*   Follow the steps provided in this link [Getting started on Red Hat (RHEL / CentOS)]({{< ref "migration-to-tyk#install-tyk-gateway-on-red-hat-rhel--centos" >}}) to install and configure Tyk dependencies.
 
 **Step 1: Set up YUM Repositories**
 
@@ -6526,7 +6545,7 @@ Installing Tyk on Ubuntu is very straightforward using our APT repositories, fol
 The suggested order would be to install Tyk Dashboard, then Tyk Pump and then Tyk Gateway for a full stack.
 
 - [Dashboard]({{< ref "#dashboard" >}})
-- [Pump]({{< ref "#analytics-pump" >}})
+- [Pump]({{< ref "#pump" >}})
 - [Gateway]({{< ref "#gateway" >}})
 
 {{< note success >}}
@@ -10542,7 +10561,7 @@ If you want this Data Plane deployment to be resilient, available, and independe
 
 #### Minimizing latency with MDCB
 
-As described [previously]({{< ref "/tyk-multi-data-centre.md#managing-geographically-distributed-gateways-to-minimize-latency-and-protect-data-sovereignty" >}}), Acme Global Bank has operations and customers in both the EU and USA.
+As described [previously]({{< ref "#managing-geographically-distributed-gateways-to-minimize-latency-and-protect-data-sovereignty" >}}), Acme Global Bank has operations and customers in both the EU and USA.
 
 To decrease the latency in response from their systems and to ensure that data remains in the same legal jurisdiction as the customers (data residency), they have deployed backend (or, from the perspective of the API gateway, “upstream”) services in two data centers: one in the US, the other in the EU.
 
@@ -11300,7 +11319,7 @@ Currently, the receipt of an HTTP 200 OK response merely indicates that the Pump
 
 Based on the Tyk recommended approach for setting up your databases, our team has built tools that will help engineers better understand and plan their infrastructure around their use case:
 
-* [Redis Sizing](#redis-sizing)
+* [Redis Sizing](#redis-sizing-guidelines)
 * [PostgreSQL Sizing](#configuring-postgresql)
 * [MongoDB Sizing](#mongodb-sizing)
 

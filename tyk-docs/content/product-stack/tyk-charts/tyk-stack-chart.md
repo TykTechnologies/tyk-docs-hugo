@@ -31,7 +31,7 @@ To enable or disable each component, change the corresponding enabled flag.
 
 Also, you can set the version of each component through `image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/u/tykio).
 
-For quick start guide, please see [Quick Start with Helm Chart and PostgreSQL]({{<ref "/migration-to-tyk#install-tyk-stack-with-helm-chart-postgresql">}}) or [Quick Start with Helm Chart and MongoDB]({{<ref "/migration-to-tyk#install-tyk-stack-with-helm-chart-mongodbb">}}).
+For quick start guide, please see [Quick Start with Helm Chart and PostgreSQL]({{<ref "/migration-to-tyk#install-tyk-stack-with-helm-chart-postgresql">}}) or [Quick Start with Helm Chart and MongoDB]({{<ref "/migration-to-tyk#install-tyk-stack-with-helm-chart-mongodb">}}).
 
 ## Prerequisites
 
@@ -134,7 +134,7 @@ tyk-gateway:
           key: backend-username
 ```
 
-In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{<ref "migration-to-tyk#store-configuration-with-key-value-store#how-to-access-the-externally-stored-data">}}).
+In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{<ref "migration-to-tyk#store-configuration-with-key-value-store">}}).
 
 ### Set Redis Connection Details (Required)
 

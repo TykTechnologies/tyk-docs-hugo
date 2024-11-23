@@ -48,4 +48,4 @@ Tyk OSS Gateway Tutorial
 
 ## Next Steps
 
-Try our advanced Go Plugin [tutorials]({{< ref "migration-to-tyk#using-plugins.md" >}}).
+Try our advanced Go Plugin [tutorials]({{< ref "migration-to-tyk#using-plugins" >}}).

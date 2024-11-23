@@ -34,7 +34,7 @@ Similarly to Tyk, Mongo has a health check that we can run to get the status of 
 
 ## Mongo version
 
-Does Tyk support the version of Mongo that you’re using? Read more about that [here]({{< ref "migration-to-tyk#database-management/mongodb" >}}).
+Does Tyk support the version of Mongo that you’re using? Read more about that [here]({{< ref "migration-to-tyk#database-management" >}}).
 
 ## Capped collections
 
@@ -44,7 +44,7 @@ In some cases, `enable_detailed_logging: true` adds fuel to the fire, as this pa
 
 We advise everyone to cap every collection in Mongo, as this prevents collections from growing out of control and bringing your dashboard down by hitting resource limits.
 
-You can determine each collection's cap size by visiting our [MongoDB sizing calculator]({{< ref "migration-to-tyk#database-management/mongodb-sizing" >}}).
+You can determine each collection's cap size by visiting our [MongoDB sizing calculator]({{< ref "migration-to-tyk#database-management" >}}).
 
 Here’s more information on how and why you want to [cap your collections](https://www.mongodb.com/docs/manual/core/capped-collections/).
 

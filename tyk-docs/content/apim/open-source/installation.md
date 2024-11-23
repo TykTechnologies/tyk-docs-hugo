@@ -17,7 +17,7 @@ The backbone of all our products is our open source Gateway. You can install our
 
 {{< grid >}}
 
-{{< badge read="10 mins" href="migration-to-tyk#install-with-docker/" image="/img/docker.png" alt="Docker install">}}
+{{< badge read="10 mins" href="migration-to-tyk#install-with-docker" image="/img/docker.png" alt="Docker install">}}
 Install with Docker. 
 {{< /badge >}}
 
@@ -29,11 +29,11 @@ Install with K8s.
 Install with Ansible. 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="migration-to-tyk#install-tyk-gateway-on-red-hat-rhel-centos/" image="/img/redhat-logo2.png" alt="Redhat / CentOS install">}}
+{{< badge read="10 mins" href="migration-to-tyk#install-tyk-gateway-on-red-hat-rhel--centos" image="/img/redhat-logo2.png" alt="Redhat / CentOS install">}}
 Install on RHEL / CentOS. 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="migration-to-tyk#install-tyk-gateway-on-ubuntu/" image="/img/debian-nd-753.png" alt="Debian / Ubuntu install">}}
+{{< badge read="10 mins" href="migration-to-tyk#install-tyk-gateway-on-ubuntu" image="/img/debian-nd-753.png" alt="Debian / Ubuntu install">}}
 Install on Debian / Ubuntu. 
 {{< /badge >}}
 

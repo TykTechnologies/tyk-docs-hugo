@@ -37,7 +37,7 @@ Install on K8s
 Install with Ansible 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/migration-to-tyk#install-tyk-gateway-on-red-hat-rhel-centos/" image="/img/redhat-logo2.png" alt="Red Hat install">}}
+{{< badge read="10 mins" href="/migration-to-tyk#install-tyk-gateway-on-red-hat-rhel--centos" image="/img/redhat-logo2.png" alt="Red Hat install">}}
 Install on Red Hat 
 {{< /badge >}}
 
@@ -53,7 +53,7 @@ Install on Amazon AWS
 Install Tyk on Heroku 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/migration-to-tyk#install-with-microsoft-azure/" image="/img/azure-2.png" alt="Azure install">}}
+{{< badge read="10 mins" href="/migration-to-tyk#install-with-microsoft-azure" image="/img/azure-2.png" alt="Azure install">}}
 Install on Microsoft Azure 
 {{< /badge >}}
 

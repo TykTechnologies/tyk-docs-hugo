@@ -65,7 +65,7 @@ Install and manage Tyk yourself with our open-source API Gateway.
 
 <br/>
 
-{{< button_left href="migration-to-tyk#tyk-open-source/installation" color="green" content="Install Tyk OSS" >}}
+{{< button_left href="migration-to-tyk#configure-tyk-self-managed" color="green" content="Install Tyk OSS" >}}
 
 ---
 

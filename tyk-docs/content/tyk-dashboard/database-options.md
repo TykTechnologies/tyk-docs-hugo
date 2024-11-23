@@ -18,7 +18,7 @@ Tyk Dashboard requires a persistent datastore for its operations. By default Mon
 
 ### Configuring MongoDB
 
-Please check [here]({{< ref "migration-to-tyk#database-management/mongodb.md" >}}) for MongoDB driver and production configurations.
+Please check [here]({{< ref "migration-to-tyk#mongodb-sizing" >}}) for MongoDB driver and production configurations.
 
 ## PostgreSQL Supported Versions and Drop-in Replacement
 
@@ -32,12 +32,12 @@ SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please t
 
 ### Configuring PostgreSQL
 
-Please check [here]({{< ref "migration-to-tyk#database-management/postgresql.md" >}}) for production configurations.
+Please check [here]({{< ref "migration-to-tyk#configuring-postgresql" >}}) for production configurations.
 
 See the following pages for configuring your SQL installation with Tyk:
 
-* [Configuring Tyk Dashboard]({{< ref "/migration-to-tyk#database-management/postgresql.md" >}})
-* [Configuring Tyk Pumps]({{< ref "/migration-to-tyk#database-management/postgresql.md" >}})
+* [Configuring Tyk Dashboard]({{< ref "/migration-to-tyk#configuring-postgresql" >}})
+* [Configuring Tyk Pumps]({{< ref "/migration-to-tyk#configuring-postgresql" >}})
 
 All data stored in SQL platforms will be identical to our existing MongoDB support.
 
