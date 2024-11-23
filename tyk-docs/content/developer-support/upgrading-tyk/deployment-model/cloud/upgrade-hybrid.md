@@ -36,7 +36,7 @@ following order:
 
 ## 1. Upgrade your control plane
 
-See Tyk Guide for how to [upgrade Control Planes]({{< ref "tyk-cloud/environments-&-deployments/managing-control-planes#upgrade-control-planes" >}})
+See Tyk Guide for how to [upgrade Control Planes]({{< ref "migration-to-tyk#control-planes" >}})
 
 ## 2.1. Upgrade Go plugins
 

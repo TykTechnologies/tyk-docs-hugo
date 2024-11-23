@@ -50,8 +50,6 @@ aliases:
   - /planning-for-production/redis-mongodb
   - /planning-for-production/redis-mongodb-sizing
   - /planning-for-production/redis-sizing
-  - /product-stack/tyk-dashboard/release-notes/version-3.0
-  - /product-stack/tyk-operator/tyk-ingress-controller
   - /python-custom-auth-plugin/api-middleware-test
   - /python-custom-auth-plugin/python-code-bundle
   - /python-custom-auth-plugin/setup-control-plane

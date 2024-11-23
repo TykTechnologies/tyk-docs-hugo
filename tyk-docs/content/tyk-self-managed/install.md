@@ -12,7 +12,7 @@ aliases:
   - /tyk-self-managed/istio/
   - /tyk-self-managed/install/
   - /getting-started/installation/with-tyk-on-premises/
-  - /get-started/with-tyk-on-premise/installation/
+  - /migration-to-tyk#tyk-self-managed/installation/
 ---
 
 First, click here to get a trial license
@@ -29,7 +29,7 @@ First, click here to get a trial license
 Install with Docker 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-on-premises/kubernetes" image="/img/k8s.png" alt="Kubernetes install">}}
+{{< badge read="10 mins" href="migration-to-tyk#install-with-kubernetes" image="/img/k8s.png" alt="Kubernetes install">}}
 Install on K8s 
 {{< /badge >}}
 
@@ -37,11 +37,11 @@ Install on K8s
 Install with Ansible 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/tyk-on-premises/redhat-rhel-centos/" image="/img/redhat-logo2.png" alt="Red Hat install">}}
+{{< badge read="10 mins" href="/migration-to-tyk#install-tyk-gateway-on-red-hat-rhel-centos/" image="/img/redhat-logo2.png" alt="Red Hat install">}}
 Install on Red Hat 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-on-premises/debian-ubuntu" image="/img/debian-nd-753.png" alt="Ubuntu install">}}
+{{< badge read="10 mins" href="migration-to-tyk#install-tyk-gateway-on-ubuntu" image="/img/debian-nd-753.png" alt="Ubuntu install">}}
 Install on Ubuntu 
 {{< /badge >}}
 
@@ -53,7 +53,7 @@ Install on Amazon AWS
 Install Tyk on Heroku 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/tyk-on-premises/microsoft-azure/" image="/img/azure-2.png" alt="Azure install">}}
+{{< badge read="10 mins" href="/migration-to-tyk#install-with-microsoft-azure/" image="/img/azure-2.png" alt="Azure install">}}
 Install on Microsoft Azure 
 {{< /badge >}}
 
@@ -61,4 +61,4 @@ Install on Microsoft Azure
 
 ### Licensing
 
-Read more about licensing [here]({{< ref "tyk-on-premises/licensing" >}}).
+Read more about licensing [here]({{< ref "migration-to-tyk#understand-licensing-and-deployment-models" >}}).

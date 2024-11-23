@@ -60,7 +60,7 @@ Tyk offers supporting tools for database migration and backing up APIs and polic
 
 #### Migrating from MongoDB to SQL
 
-Use our [migration tool]({{< ref "planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}) to manage the switch from MongoDB to SQL.
+Use our [migration tool]({{< ref "migration-to-tyk#database-management/postgresql" >}}) to manage the switch from MongoDB to SQL.
 
 #### Backup APIs Script
 

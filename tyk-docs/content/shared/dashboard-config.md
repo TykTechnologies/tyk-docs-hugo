@@ -355,7 +355,7 @@ The hostname for the Redis collection and can be an IP address.
 ENV: <b>TYK_DB_REDISADDRS</b><br />
 Type: `[]string`<br />
 
-Used for configuring Redis clusters. See [Redis Cluster and Tyk Dashboard](https://tyk.io/docs/tyk-stack/tyk-gateway/configuration/redis-cluster/) for more info. Example:
+Used for configuring Redis clusters. See [Redis Cluster and Tyk Dashboard](https://tyk.io/docs/migration-to-tyk#configure-redis-cluster/) for more info. Example:
 ```
    "addrs": [
      "server1:6379",

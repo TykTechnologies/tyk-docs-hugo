@@ -12,7 +12,7 @@ menu:
 ## Introduction
 
 
-This page walks you through how to start using Tyk Cloud, creating organization, environment and users before creating an API. If you are in a hurry, try the [Quick Start guide]({{< ref "../deployment-and-operations/tyk-cloud-platform/quick-start.md" >}}) for a 5 min version of this tutorial. 
+This page walks you through how to start using Tyk Cloud, creating organization, environment and users before creating an API. If you are in a hurry, try the [Quick Start guide]({{< ref "../migration-to-tyk#transition-to-tyk-cloud" >}}) for a 5 min version of this tutorial. 
 
 * Creating your Tyk Cloud account
 * Your first Organization

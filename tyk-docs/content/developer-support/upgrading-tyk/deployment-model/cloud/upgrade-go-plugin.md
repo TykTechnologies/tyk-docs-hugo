@@ -47,7 +47,7 @@ This guide explains how to deploy your custom Go plugins on Tyk Cloud:
     }
     ```
 
-2. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
+2. [Upload this bundle]({{< ref "migration-to-tyk#uploading-your-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
 
 
 ## Path 2 - Current Version >= 4.1.0 and Target Version >= 4.2.0 {#path-2}
@@ -91,4 +91,4 @@ This guide explains how to deploy your custom Go plugins on Tyk Cloud:
     then *“_v5.2.0_linux_amd64”* would be appended to the shared object filename that the compiler creates
     - Your bundle zip file should include both the current version and target versions of the plugin.
 
-2. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
+2. [Upload this bundle]({{< ref "migration-to-tyk#uploading-your-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.

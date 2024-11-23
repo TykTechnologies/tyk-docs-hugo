@@ -54,7 +54,7 @@ Combine the control of self-managed with the convenience of cloud using our hybr
 
 <br/>
 
-{{< button_left href="tyk-cloud/environments-deployments/hybrid-gateways" color="green" content="Install Tyk Hybrid" >}}
+{{< button_left href="migration-to-tyk#deploy-hybrid-gateways" color="green" content="Install Tyk Hybrid" >}}
 
  
 ### Open source Tyk Gateway (OSS)
@@ -65,7 +65,7 @@ Install and manage Tyk yourself with our open-source API Gateway.
 
 <br/>
 
-{{< button_left href="apim/open-source/installation" color="green" content="Install Tyk OSS" >}}
+{{< button_left href="migration-to-tyk#tyk-open-source/installation" color="green" content="Install Tyk OSS" >}}
 
 ---
 

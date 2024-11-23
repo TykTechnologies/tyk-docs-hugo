@@ -28,7 +28,7 @@ Please refer to our [upgrade guide video](https://tyk-1.wistia.com/medias/t0oamm
 
 ## Step #1: Upgrade Control Plane
 
-Follow our guide for [upgrading Cloud Control Planes]({{< ref "tyk-cloud/environments-&-deployments/managing-control-planes#upgrade-control-planes" >}}).
+Follow our guide for [upgrading Cloud Control Planes]({{< ref "migration-to-tyk#control-plane" >}}).
 
 ---
 
@@ -60,4 +60,4 @@ Follow our guide for deploying your [Go plugins on Tyk Cloud]({{< ref "/develope
 
 ## Step #3: Upgrade Cloud Data Plane {#upgrading-cloud-data-planes}
 
-Follow our guide for [upgrading Cloud Data Planes]({{< ref "tyk-cloud/environments-&-deployments/managing-gateways#upgrade-cloud-data-planes" >}}).
+Follow our guide for [upgrading Cloud Data Planes]({{< uref "migration-to-tyk#gateways-configuration" >}}).

@@ -14,7 +14,7 @@ It includes the following components:
 
 Furthermore, it has all the required modifications to easily connect to Tyk Cloud or Multi Data Center (MDCB) control plane.
 
-[Supported MDCB versions]({{< ref "tyk-cloud/troubleshooting-&-support/tyk-cloud-mdcb-supported-versions.md" >}})
+[Supported MDCB versions]({{< ref "tyk-cloud/troubleshooting-&-support/migration-to-tyk#begin-with-tyk-cloud-mdcb-supported-versions.md" >}})
 
 By default, this chart installs following components as subcharts on a [Kubernetes](https://kubernetes.io/) cluster using the [Helm](https://helm.sh/) package manager.
 
@@ -27,7 +27,7 @@ To enable or disable each component, change the corresponding enabled flag.
 
 Also, you can set the version of each component through `image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/u/tykio).
 
-For a quick start guide, please see [deploy hybrid gateway]({{<ref "tyk-cloud/environments-deployments/hybrid-gateways">}}).
+For a quick start guide, please see [deploy hybrid gateway]({{<ref "migration-to-tyk#deploy-hybrid-gateways">}}).
 
 ## Prerequisites
 
@@ -43,7 +43,7 @@ For Tyk Cloud users who want to deploy hybrid data planes, you can easily obtain
 1. Go to Deployment tab and create a Hybrid data plane configuration. You can also select from an existing one.
 2. Copy Key, Org ID, and Data Planes Connection String (MDCB) as `global.remoteControlPlane`'s `userApiKey`, `orgId`, and `connectionString` respectively.
 
-{{< img src="/img/tyk-charts/tyk-cloud-deployment.png" alt="tyk-cloud-deployment" >}}
+{{< img src="/img/tyk-charts/migration-to-tyk#begin-with-tyk-cloud-deployment.png" alt="migration-to-tyk#begin-with-tyk-cloud-deployment" >}}
 
 ## Obtain Remote Control Plane Connection Details from tyk-control-plane Chart
 

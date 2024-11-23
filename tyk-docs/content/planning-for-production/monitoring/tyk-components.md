@@ -59,7 +59,7 @@ curl -X GET "http://localhost:8080/hello"
 }
 ```
 
-For information about our health check endpoint, please visit our [Liveness Health Check]({{< ref "planning-for-production/ensure-high-availability/health-check" >}}) documentation.
+For information about our health check endpoint, please visit our [Liveness Health Check]({{< ref "migration-to-tyk#set-up-liveness-health-checks" >}}) documentation.
 
 ## Tyk Dashboard & Tyk MDCB
 
@@ -67,7 +67,7 @@ These other Tyk components won’t see load proportional to your API requests.  
 
 The Tyk Dashboard liveness health check endpoint can be configured [here]({{< ref "tyk-dashboard/configuration#health_check_endpoint_name" >}}). 
 
-The Tyk MDCB liveness health check endpoint can be configured [here]({{< ref "tyk-multi-data-centre/setup-controller-data-centre#health-check" >}}). 
+The Tyk MDCB liveness health check endpoint can be configured [here]({{< ref "migration-to-tyk#set-up-liveness-health-checks" >}}). 
 
 Currently, Tyk Dashboard and MDCB liveness endpoints only report whether the service is operational. It is important to note that the service may not yet be ready for use if it is unable to establish a connection with its dependent components (such as Redis and Datastore) or if they are offline.
 
@@ -81,9 +81,9 @@ Currently, the receipt of an HTTP 200 OK response merely indicates that the Pump
 
 Based on the Tyk recommended approach for setting up your databases, our team has built tools that will help engineers better understand and plan their infrastructure around their use case:
 
-* [Redis Sizing](https://tyk.io/docs/planning-for-production/redis-sizing/)
-* [PostgreSQL Sizing](https://tyk.io/docs/planning-for-production/database-settings/postgresql/#postgresql-sizing)
-* [MongoDB Sizing](https://tyk.io/docs/planning-for-production/database-settings/mongodb-sizing/)
+* [Redis Sizing](https://tyk.io/docs/migration-to-tyk#redis-sizing-guidelines/)
+* [PostgreSQL Sizing](https://tyk.io/docs/migration-to-tyk#database-management/postgresql/#postgresql-sizing)
+* [MongoDB Sizing](https://tyk.io/docs/migration-to-tyk#database-management/mongodb-sizing/)
 
 
 ### Database Monitoring

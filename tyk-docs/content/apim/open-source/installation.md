@@ -29,11 +29,11 @@ Install with K8s.
 Install with Ansible. 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-oss/ce-redhat-rhel-centos/" image="/img/redhat-logo2.png" alt="Redhat / CentOS install">}}
+{{< badge read="10 mins" href="migration-to-tyk#install-tyk-gateway-on-red-hat-rhel-centos/" image="/img/redhat-logo2.png" alt="Redhat / CentOS install">}}
 Install on RHEL / CentOS. 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-oss/ce-debian-ubuntu/" image="/img/debian-nd-753.png" alt="Debian / Ubuntu install">}}
+{{< badge read="10 mins" href="migration-to-tyk#install-tyk-gateway-on-ubuntu/" image="/img/debian-nd-753.png" alt="Debian / Ubuntu install">}}
 Install on Debian / Ubuntu. 
 {{< /badge >}}
 

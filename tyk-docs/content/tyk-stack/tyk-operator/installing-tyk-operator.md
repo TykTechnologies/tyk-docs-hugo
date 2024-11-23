@@ -44,7 +44,7 @@ directly. If you're unsure who to contact, you can also use the contact form and
 ### Configuring Tyk
 
 We assume you have already installed Tyk. If you don’t have it, check out [Tyk
-Cloud]({{<ref "deployment-and-operations/tyk-cloud-platform/quick-start">}}) or [Tyk Self
+Cloud]({{<ref "migration-to-tyk#transition-to-tyk-cloud">}}) or [Tyk Self
 Managed]({{<ref "getting-started/installation">}}) page. [Tyk Helm
 Chart]({{<ref "product-stack/tyk-charts/overview">}}) is the preferred (and easiest) way to install Tyk on Kubernetes.
 

@@ -6,7 +6,7 @@ description: "How to get started with the Tyk API Management Platform"
 weight: 5
 menu: "main"
 aliases:
-  - /get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/
+  - /migration-to-tyk#tyk-self-managed/tutorials/tyk-on-premise-pro/
   - /try-out-tyk/tutorials/tutorials/
   - /getting-started/tutorials
   - /getting-started/installation/tutorials/tutorials/
