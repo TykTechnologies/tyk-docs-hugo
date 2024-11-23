@@ -4202,7 +4202,7 @@ You get extra developer licenses (a single control plane with 1 connected gatewa
 
 We recommend a minimum of 2 gateways per environment for redundancy & fail over. Rolling updates or blue green deployment might require additional gateways to ensure high availability during deployments.
 
-You might also need more depending on your average load or to handle seasonal peak traffic. See [Planning for Production]({{< ref "planning-for-production.md" >}}) to learn more. 
+You might also need more depending on your average load or to handle seasonal peak traffic. See [Planning for Production]({{< ref "#planning-for-production" >}}) to learn more. 
 
 ##### 3. Are you deploying your software stack in multiple regions or datacenter?
 
@@ -5157,7 +5157,7 @@ The *Tyk Pro Docker Demo* is our [Self-Managed]({{< ref "tyk-on-premises" >}}) s
 {{< warning success >}}
 **Warning**
 
-This demo is NOT intended for production use or performance testing, since it uses docker compose and the configuration files are not specifically tuned for performance testing or high loads. Please visit the [Planning for Production]({{<ref "planning-for-production/">}}) page to learn how to configure settings for optimal performance.
+This demo is NOT intended for production use or performance testing, since it uses docker compose and the configuration files are not specifically tuned for performance testing or high loads. Please visit the [Planning for Production]({{<ref "#planning-for-production">}}) page to learn how to configure settings for optimal performance.
 
 {{< /warning >}}
 {{< note success >}}
@@ -5650,7 +5650,7 @@ The order is to install Tyk Dashboard, then Tyk Pump and then Tyk Gateway for a 
 {{< note success >}}
 **Note**  
 
-For a production environment, we recommend that the Tyk Gateway, Tyk Dashboard and Tyk Pump are installed on separate machines. If installing multiple Tyk Gateways, you should install each on a separate machine. See [Planning for Production]({{< ref "planning-for-production" >}}) for more details.
+For a production environment, we recommend that the Tyk Gateway, Tyk Dashboard and Tyk Pump are installed on separate machines. If installing multiple Tyk Gateways, you should install each on a separate machine. See [Planning for Production]({{< ref "#planning-for-production" >}}) for more details.
 {{< /note >}}
 
 
@@ -6532,7 +6532,7 @@ The suggested order would be to install Tyk Dashboard, then Tyk Pump and then Ty
 {{< note success >}}
 **Note**  
 
-For a production environment, we recommend that the Gateway, Dashboard and Pump are installed on separate machines. If installing multiple Gateways, you should install each on a separate machine. See [Planning for Production]({{< ref "planning-for-production" >}}) For more details.
+For a production environment, we recommend that the Gateway, Dashboard and Pump are installed on separate machines. If installing multiple Gateways, you should install each on a separate machine. See [Planning for Production]({{< ref "#planning-for-production" >}}) For more details.
 {{< /note >}}
 
 
@@ -7417,7 +7417,7 @@ You can choose to not install Redis, MongoDB or PostgreSQL by removing the `-t r
 {{< note success >}}
 **Note**  
 
-For a production environment, we recommend that the Gateway, Dashboard and Pump are installed on separate machines. If installing multiple Gateways, you should install each on a separate machine. See [Planning for Production]({{< ref "planning-for-production" >}}) For more details.
+For a production environment, we recommend that the Gateway, Dashboard and Pump are installed on separate machines. If installing multiple Gateways, you should install each on a separate machine. See [Planning for Production]({{< ref "#planning-for-production" >}}) For more details.
 {{< /note >}}
 
 **Supported Distributions**
@@ -8660,9 +8660,9 @@ Tyk does not have an API-level circuit breaker that can be applied across all en
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the circuit breaker middleware [here]({{< ref "product-stack/tyk-gateway/middleware/circuit-breaker-tyk-oas" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the circuit breaker middleware [here]({{< ref "#configuring-the-circuit-breaker-in-the-tyk-oas-api-definition" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the circuit breaker middleware [here]({{< ref "product-stack/tyk-gateway/middleware/circuit-breaker-tyk-classic" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the circuit breaker middleware [here]({{< ref "#configuring-the-circuit-breaker-in-the-tyk-classic-api-definition" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  ## Circuit Breaker middleware summary
@@ -8678,7 +8678,7 @@ Tyk's [circuit breaker]({{< ref "#circuit-breakers" >}}) middleware is configure
 
 When working with Tyk OAS APIs the circuit breaker is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/circuit-breaker-tyk-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "#configuring-the-circuit-breaker-in-the-tyk-classic-api-definition" >}}) page.
 
 ##### Configuring the Circuit Breaker in the Tyk OAS API Definition
 
@@ -8800,7 +8800,7 @@ Tyk's [circuit breaker]({{< ref "#circuit-breakers" >}}) middleware is configure
 
 When working with Tyk Classic APIs the circuit breaker is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/circuit-breaker-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "#configuring-the-circuit-breaker-in-the-tyk-oas-api-definition" >}}) page.
 
 If you're using Tyk Operator then check out the [configuring the Circuit Breaker in Tyk Operator](#configuring-the-circuit-breaker-in-tyk-operator) section below.
 
@@ -8950,9 +8950,9 @@ If you are using the Service Discovery option, if an enforced timeout is trigger
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the enforced timeout middleware [here]({{< ref "product-stack/tyk-gateway/middleware/enforced-timeout-tyk-oas" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the enforced timeout middleware [here]({{< ref "using-the-enforced-timeout-middleware-with-tyk-oas-apis" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the enforced timeout middleware [here]({{< ref "product-stack/tyk-gateway/middleware/enforced-timeout-tyk-classic" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the enforced timeout middleware [here]({{< ref "#using-the-enforced-timeout-middleware-with-tyk-classic-apis" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  ## Enforced Timeout middleware summary
@@ -8968,7 +8968,7 @@ Tyk's [enforced timeout]({{< ref "#enforced-timeouts" >}}) middleware is configu
 
 When working with Tyk OAS APIs the enforced timeout is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/enforced-timeout-tyk-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "#using-the-enforced-timeout-middleware-with-tyk-classic-apis" >}}) page.
 
 **Configuring an enforced timeout in the Tyk OAS API Definition**
 
@@ -9075,7 +9075,7 @@ Tyk's [enforced timeout]({{< ref "#enforced-timeouts" >}}) middleware is configu
 
 When working with Tyk Classic APIs the enforced timeout is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/enforced-timeout-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "using-the-enforced-timeout-middleware-with-tyk-oas-apis" >}}) page.
 
 If you're using Tyk Operator then check out the [configuring an enforced timeout in Tyk Operator](#configuring-an-enforced-timeout-in-tyk-operator) section below.
 
