@@ -185,14 +185,6 @@ menu:
                 category: Directory
                 show: True
                 menu:
-                  - title: "Observability & Monitoring"
-                    path: /planning-for-production/monitoring
-                    category: Page
-                    show: True
-                  - title: "Monitor Tyk Stack"
-                    path: /planning-for-production/monitoring/tyk-components
-                    category: Page
-                    show: True
                   - title: "GitOps with Tyk Operator"
                     path: /getting-started/key-concepts/gitops-with-tyk
                     category: Page
