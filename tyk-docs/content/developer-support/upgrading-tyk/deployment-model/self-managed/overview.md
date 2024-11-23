@@ -26,7 +26,7 @@ upgrade components in the following sequence:
 
 ### Upgrade order with Multi Data Center Bridge (MDCB) {#upgrade-mdcb}
 For Enterprise customers, the Tyk control plane contains all the standard components of a Self-Managed installation with
-the addition of the [Multi Data Center Bridge]({{< ref "migration-to-tyk#setup-mdcb-control-plane >}}) (MDCB).
+the addition of the [Multi Data Center Bridge]({{< ref "migration-to-tyk#setup-mdcb-control-plane" >}}) (MDCB).
 
 Our recommended sequence for upgrading a self-managed MDCB installation is as follows:
 
