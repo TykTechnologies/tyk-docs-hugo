@@ -67,26 +67,6 @@ menu:
                     path: /tyk-cloud/initial-portal-config
                     category: Page
                     show: True
-              - title: "Deployment phase"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Deploy features to the Tyk Cloud"
-                    category: Page
-                    show: False
-                  - title: "Enable configuration and workflows between deployments"
-                    category: Page
-                    show: False
-              - title: "Operations and BAU"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Manage, audit and govern cloud infrastructure"
-                    category: Page
-                    show: False
-                  - title: "Observability of cloud Data"
-                    category: Page
-                    show: False
       - title: "Self Managed"
         category: Directory
         show: True
