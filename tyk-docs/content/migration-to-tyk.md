@@ -3311,7 +3311,7 @@ Here's an overview of all of the available plans:
 | 48 hours free trial <p>[Free Support SLA]({{< ref "frequently-asked-questions/sla-policies" >}})</p> | This is for POC’s and those testing the Tyk platform. | Tyk Cloud has 48 hours free trial. You can always request a longer trial period or talk to support if you need help. |
 | Starter <p>[Standard Support SLA]({{< ref "frequently-asked-questions/sla-policies" >}})</p> | For single teams with low traffic, mostly small businesses that manage few APIs. | This plan includes all of the features of the Tyk Stack. You can have **[custom domains]({{< ref "migration-to-tyk#use-custom-domains" >}})** and **[plugins]({{< ref "migration-to-tyk#using-plugins" >}})**, along with management of upto 5 APIs. Standard support is provided.|
 | Launch <p>[Standard Support SLA]({{< ref "frequently-asked-questions/sla-policies" >}})</p> | For single teams with low traffic, mostly small businesses. | This plan includes all of the features of the Tyk Stack. You can have **[custom domains]({{< ref "migration-to-tyk#use-custom-domains" >}})** and **[plugins]({{< ref "migration-to-tyk#using-plugins" >}})** along with management of unlimited APIs. Standard support is provided. |
-| Grow <p>[Standard Support SLA]({{< ref "frequently-asked-questions/sla-policies" >}})</p> | For single teams with high traffic. | This plan includes all of the features of the Tyk Stack. In this plan, you have **[Hybrid Gateways]({{< ref "migration-to-tyk#deploy-hybrid-gateways >}})** as an add on, along with standard support. |
+| Grow <p>[Standard Support SLA]({{< ref "frequently-asked-questions/sla-policies" >}})</p> | For single teams with high traffic. | This plan includes all of the features of the Tyk Stack. In this plan, you have **[Hybrid Gateways]({{< ref "migration-to-tyk#deploy-hybrid-gateways" >}})** as an add on, along with standard support. |
 | Scale <p>[Enhanced Support SLA]({{< ref "frequently-asked-questions/sla-policies" >}})</p> | For global organizations with multiple teams, requiring gateway deployments in multiple locations. | This plan includes all of the features of the Tyk Stack. **Enhanced(silver) support** will be provided. |
 
 
@@ -7159,7 +7159,7 @@ Tyk Gateway has full domain support built-in, you can:
 
 Tyk offers a flexible and powerful API management solution through **Tyk Cloud** on the [AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-pboluroscnqro). Tyk Cloud is an end-to-end managed API platform where both the control plane and gateways are installed on AWS for a seamless, fully cloud-hosted experience.
 
-For those who need more deployment flexibility, Tyk Cloud also supports a [Hybrid Gateway]({{< ref "migration-to-tyk#deploy-hybrid-gateways >}}) option. In this setup, the control plane remains hosted and managed by Tyk on AWS, while the gateways can be deployed on your preferred cloud provider or on-premises environment—allowing you to meet data locality and compliance needs without sacrificing control.
+For those who need more deployment flexibility, Tyk Cloud also supports a [Hybrid Gateway]({{< ref "migration-to-tyk#deploy-hybrid-gateways" >}}) option. In this setup, the control plane remains hosted and managed by Tyk on AWS, while the gateways can be deployed on your preferred cloud provider or on-premises environment—allowing you to meet data locality and compliance needs without sacrificing control.
 
 **Available AWS Deployment Regions**
 
