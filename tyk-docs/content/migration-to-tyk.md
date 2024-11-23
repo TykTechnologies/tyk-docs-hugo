@@ -36,7 +36,6 @@ aliases:
   - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/dashboard
   - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/gateway
   - /getting-started/licencing
-  - /getting-started/licensing
   - /getting-started/tyk-components/mdcb
   - /getting-started/with-tyk-on-premises/installation/on-aws
   - /getting-started/with-tyk-on-premises/installation/on-aws/ec2
@@ -10317,7 +10316,7 @@ From Tyk Gateway v5.3.0 onwards, you can store KV pairs to be used in **any `str
 - `vault://KEY`
 
 
-### Implement Multi-Data Centre Setup
+### Implement Multi-Data Center Setup
     
 
 Tyk’s Multi Data Center Bridge (MDCB) is a separately licensed extension to the Tyk control plane that performs management and synchronisation of logically or geographically distributed clusters of Tyk API Gateways. We use it ourselves to support our Tyk Cloud offering.
