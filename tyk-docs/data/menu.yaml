@@ -2717,7 +2717,7 @@
               path: /troubleshooting/tyk-dashboard/runtime-error-invalid-memory-address-nil-pointer-dereference
               category: Page
               show: True
-            - title: "“ValueError No JSON object could be decoded" when running Dashboard Bootstrap script"
+            - title: "“ValueError No JSON object could be decoded“ when running Dashboard Bootstrap script"
               path: /troubleshooting/tyk-dashboard/value-error-no-json-object-decoded-running-dashboard-bootstrap-script
               category: Page
               show: True
@@ -2996,7 +2996,7 @@
                   path: /troubleshooting/tyk-dashboard/cors-issues-on-developer-portal
                   category: Page
                   show: True
-                - title: "“Not Found” error in the Developer Portal"
+                - title: "“Not Found“ error in the Developer Portal"
                   path: /troubleshooting/tyk-dashboard/not-found-error-developer-portal
                   category: Page
                   show: True
@@ -4628,7 +4628,7 @@
           path: /frequently-asked-questions/sla-policies
           category: Page
           show: True
-        - title: “Error initialising system couldn't unmarshal config“ error
+        - title: "“Error initialising system couldn't unmarshal config“ error"
           path: /troubleshooting/tyk-installation/couldnt-unmarshal-config-error
           category: Page
           show: True
