@@ -3072,7 +3072,7 @@ This section covers the following:
 - [Managing Teams]({{< ref "migration-to-tyk#organise-teams" >}})
 - [Managing Users]({{< ref "migration-to-tyk#add-and-manage-users" >}})
 - Available Tyk Cloud [User Roles]({{< ref "migration-to-tyk#user-roles-in-tyk-cloud" >}})
-- [Tyk Cloud Single Sign-On (SSO)]({{< ref "tyk-cloud/teams-&-users/single-sign-on.md" >}})
+- [Tyk Cloud Single Sign-On (SSO)]({{< ref "migration-to-tyk#configure-single-sign-on-sso" >}})
 
 ##### Organise Teams
 
