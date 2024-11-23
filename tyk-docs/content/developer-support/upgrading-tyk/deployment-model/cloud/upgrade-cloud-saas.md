@@ -60,4 +60,4 @@ Follow our guide for deploying your [Go plugins on Tyk Cloud]({{< ref "/develope
 
 ## Step #3: Upgrade Cloud Data Plane {#upgrading-cloud-data-planes}
 
-Follow our guide for [upgrading Cloud Data Planes]({{< uref "migration-to-tyk#gateways-configuration" >}}).
+Follow our guide for [upgrading Cloud Data Planes]({{< ref "migration-to-tyk#gateways-configuration" >}}).
