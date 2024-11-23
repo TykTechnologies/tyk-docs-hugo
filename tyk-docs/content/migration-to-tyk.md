@@ -4190,8 +4190,8 @@ to our teams on support or the cummunity forum if you have questions, requests o
 
 Get started with one of our quick start guides:
 
-- [Quick Start with PostgreSQL]({{<ref "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-postgresql">}})
-- [Quick Start with MongoDB]({{<ref "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-mongodb">}})
+- [Quick Start with PostgreSQL]({{<ref "#install-tyk-stack-with-helm-chart-postgresql">}})
+- [Quick Start with MongoDB]({{<ref "#install-tyk-stack-with-helm-chart-mongodb">}})
 
 Or go to [Tyk Stack helm chart]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}) for detailed installation instructions and configuration options.
 
@@ -4315,7 +4315,7 @@ The following guides provide instructions to install Redis, MongoDB, and Tyk sta
 {{< note success >}}
 **Note**
 
-If you want to enable Tyk Enterprise Developer Portal, please use [PostgreSQL]({{<ref "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-postgresql">}}). MongoDB is not supported in Developer Portal.
+If you want to enable Tyk Enterprise Developer Portal, please use [PostgreSQL]({{<ref "#install-tyk-stack-with-helm-chart-postgresql">}}). MongoDB is not supported in Developer Portal.
 {{< /note >}}
 
 **Quick Start**
@@ -5091,7 +5091,7 @@ This page outlines how to run Tyk Stack using Docker Compose.
 **Who is this page for?**
 This is the guide we recommend for a easy quick start. The instructions are the ones shared with you when you register to a [free trial]({{< ref "getting-started/quick-start" >}}).
 
-You can also use this guide for your PoC since it spins up a full Tyk Self Managed stack for you using our project *Docker Pro Demo*, however, if you are interested in learning Tyk, there's an option for [Tyk Demo]({{< ref "deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview" >}}) which is a project that spins up full Tyk stack that includes a prepopulate API definitions of all kinds, with various middleware options and can also spin up supporting tools such as Prometheus, Keycloak (IDP) etc.
+You can also use this guide for your PoC since it spins up a full Tyk Self Managed stack for you using our project *Docker Pro Demo*, however, if you are interested in learning Tyk, there's an option for [Tyk Demo]({{< ref "#explore-demos-and-proof-of-concepts" >}}) which is a project that spins up full Tyk stack that includes a prepopulate API definitions of all kinds, with various middleware options and can also spin up supporting tools such as Prometheus, Keycloak (IDP) etc.
 
 **What's included?**
 The *Tyk Pro Docker Demo* is our [Self-Managed]({{< ref "tyk-on-premises" >}}) solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and MongoDB. This demo is great for proof of concept and demo purposes, but if you want to test performance, you will need to move each component to a separate machine.
@@ -9876,7 +9876,7 @@ ie: `www.myapi.com:3000`
 #### Using external Key Value storage with Tyk
 
 
-With Tyk Gateway you can store configuration data (typically authentication secrets or upstream server locations) in Key-Value (KV) systems such as [Vault]({{< ref "deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/vault">}}), and [Consul]({{< ref "deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/consul">}}) and then reference these values during configuration of the Tyk Gateway or APIs deployed on the Gateway.
+With Tyk Gateway you can store configuration data (typically authentication secrets or upstream server locations) in Key-Value (KV) systems such as [Vault]({{< ref "vault">}}), and [Consul]({{< ref "#consul">}}) and then reference these values during configuration of the Tyk Gateway or APIs deployed on the Gateway.
 
 #### When to use external Key-Value storage
 
@@ -9925,12 +9925,12 @@ HashiCorp [Consul](https://www.consul.io) is a service networking solution that 
 [Vault](https://vaultproject.io) from Hashicorp is a tool for securely accessing secrets. It provides a unified interface to any secret while providing tight access control and recording a detailed audit log. Tyk Gateway can use Vault to manage and retrieve sensitive secrets such as API keys and passwords.
 - to retrieve the value assigned to a `KEY` in Vault you will use `vault://KEY` or `$secret_vault.KEY` notation depending on the [location]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) of the reference
 
-##### Tyk Gateway config file
+**Tyk Gateway config file**
 
 The `secrets` section in the [Tyk Gateway configuration file]({{< ref "tyk-oss-gateway/configuration#secrets" >}}) allows you to store settings that are specific to a single Tyk Gateway instance. This is useful for storing instance-specific configuration to be injected into API middleware or if you prefer using configuration files.
 - to retrieve the value assigned to a `KEY` in the `secrets` config you will use `secrets://KEY` or `$secret_conf.KEY` notation depending on the [location]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) of the reference
 
-##### Environment variables
+**Environment variables**
 
 Tyk Gateway can access data declared in environment variables. This is a simple and straightforward way to manage secrets, especially in containerised environments like Docker or Kubernetes.
 - if you want to set the local "secrets" section (equivalent to the `secrets` section in the [Gateway config file]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}})) using environment variables, you should use the following notation: `TYK_GW_SECRETS=key:value,key2:value2`
@@ -9967,7 +9967,7 @@ To reference the *Value* assigned to a *Key* in one of the KV stores from the Ga
 - `tyk.conf` secrets: `secrets://key`
 - Environment variables: `env://key`
 
-For example, if you create a Key-Value pair in [Vault]({{< ref "deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/vault#how-key-value-data-is-stored-in-vault" >}}) with the *key* `shared-secret` in *secret* `gateway-dashboard` within directory `tyk-secrets/` then you could use the *Value* as the `node_secret` in your Gateway config by including the following in your `tyk.conf` file:
+For example, if you create a Key-Value pair in [Vault]({{< ref "#vault" >}}) with the *key* `shared-secret` in *secret* `gateway-dashboard` within directory `tyk-secrets/` then you could use the *Value* as the `node_secret` in your Gateway config by including the following in your `tyk.conf` file:
 ``` .json
 {
   "node_secret":"vault://tyk-secrets/gateway-dashboard.shared-secret"
@@ -10181,7 +10181,7 @@ Alternatively, you can configure it using the equivalent [environment variables]
 
 ##### Where to store data in Consul
 
-When you want to reference KV data from Tyk Gateway config or transform middleware, you can store your KV pairs wherever you like within the Consul KV store. You can provide the Consul path to the key in the reference using the notation appropriate to the calling [location]({{< ref "deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/consul#how-to-access-data-stored-in-consul" >}}).
+When you want to reference KV data from Tyk Gateway config or transform middleware, you can store your KV pairs wherever you like within the Consul KV store. You can provide the Consul path to the key in the reference using the notation appropriate to the calling [location]({{< ref "#consul" >}}).
 
 From Tyk Gateway 5.3.0, you can reference KV data from any `string` field in the API definition. For these you should create a folder named `tyk-apis` in the root of your Consul KV store and store all keys in a flat structure there (sub-directories not currently supported). You should not include the `tyk-apis` path in the reference so, for example, given a key-value pair `"foo":"bar"` stored in `tyk-apis` in Consul, you would reference this from the API definition using `consul://foo`.
 
@@ -10285,12 +10285,12 @@ This would return a response along these lines, note that the response contains 
 }
 ```
 
-As explained [below]({{< ref "deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/vault#tyk-gateway-configuration-file" >}}), you could retrieve this value from within your Tyk Gateway config file using: 
+As explained [below]({{< ref "#vault" >}}), you could retrieve this value from within your Tyk Gateway config file using: 
    `TYK_GW_SECRET=vault://my-secret/tyk.gw`
 
 ##### Where to store data in Vault
 
-When you want to reference KV data from Tyk Gateway config or transform middleware, you can store your Vault *secrets* wherever you like within the KV store. You can provide the Vault path to the key in the reference using the notation appropriate to the calling [location]({{< ref "deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/vault#how-to-access-data-stored-in-vault" >}}).
+When you want to reference KV data from Tyk Gateway config or transform middleware, you can store your Vault *secrets* wherever you like within the KV store. You can provide the Vault path to the key in the reference using the notation appropriate to the calling [location]({{< ref "#vault" >}}).
 
 From Tyk Gateway 5.3.0, you can reference KV data from any `string` field in the API definition. For these you should create a folder named `tyk-apis` in the root of your Vault KV store and store all *secrets* in a flat structure there (sub-directories not currently supported). You should not include the `tyk-apis` path in the reference so, for example, given a key-value pair `"foo":"bar"` stored in a secret named `my-secret` in `/tyk-apis` in Vault, you would reference this from the API definition using `vault://my-secret.foo`.
 
