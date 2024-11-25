@@ -50,13 +50,13 @@ Version compatibility with other components in the Tyk stack. This takes the for
 An illustrative example is shown below. -->
 | Dashboard Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.7.0 | MDCB v2.7.1     | MDCB v2.5.1 |
-|         | Operator v1.0.0  | Operator v0.17 |
-|         | Sync v2.0    | Sync v1.4.3 |
-|         | Helm Chart v2.1  | Helm all versions |
-| | EDP v1.11 | EDP all versions |
-| | Pump v1.11 | Pump all versions |
-| | TIB (if using standalone) v1.5.1 | TIB all versions |
+| 5.7.0 | MDCB v2.7.2     | MDCB v2.5.1 |
+|         | Operator v1.1.0  | Operator v0.17 |
+|         | Sync v2.0.1    | Sync v1.4.3 |
+|         | Helm Chart v2.2  | Helm all versions |
+| | EDP v1.12 | EDP all versions |
+| | Pump v1.11.1 | Pump all versions |
+| | TIB (if using standalone) v1.6.1 | TIB all versions |
 
 #### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.7.0}
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
