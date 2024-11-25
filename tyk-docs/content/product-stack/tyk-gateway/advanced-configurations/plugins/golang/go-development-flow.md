@@ -14,10 +14,26 @@ We recommend that you familiarize yourself with the following official Go docume
 
 - [The official plugin package documentation - Warnings](https://pkg.go.dev/plugin)
 - [Tutorial: Getting started with multi-module workspaces](https://go.dev/doc/tutorial/workspaces)
+tags:
+    - custom plugin
+    - golang
+    - go plugin
+    - middleware
+    - debugging go plugins
+description: Development flow working with Go Plugins
+date: "2024-10-11"
+---
+
+We recommend that you familiarize yourself with the following official Go documentation to help you work effectively with Go plugins:
+
+- [The official plugin package documentation - Warnings](https://pkg.go.dev/plugin)
+- [Tutorial: Getting started with multi-module workspaces](https://go.dev/doc/tutorial/workspaces)
 
 {{< note success >}}
 **Note**
+**Note**
 
+Plugins are currently supported only on Linux, FreeBSD, and macOS, making them unsuitable for applications intended to be portable.
 Plugins are currently supported only on Linux, FreeBSD, and macOS, making them unsuitable for applications intended to be portable.
 {{< /note >}}
 
