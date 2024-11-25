@@ -213,7 +213,7 @@ For more details on Kubernetes CRD versioning practices, refer to the Kubernetes
 
 
 #### Operator User
-Tyk Operator is a Kubernetes Controller that manages Tyk Custom Resources (CRs) such as API Definitions and Security Policies. Developers define these resources as [Custom Resource (CRs)]({{< ref "#custom-resources-in-tyk), and Tyk Operator ensures that the desired state is reconciled with the Tyk Gateway or Dashboard. This involves creating, updating, or deleting API configurations until the target state matches the desired state." >}}
+Tyk Operator is a Kubernetes Controller that manages Tyk Custom Resources (CRs) such as API Definitions and Security Policies. Developers define these resources as [Custom Resource (CRs)]({{< ref "#custom-resources-in-tyk" >}}), and Tyk Operator ensures that the desired state is reconciled with the Tyk Gateway or Dashboard. This involves creating, updating, or deleting API configurations until the target state matches the desired state.
 
 For the Tyk Dashboard, Tyk Operator functions as a system user, bound by Organization and RBAC rules.
 
@@ -2899,7 +2899,7 @@ Each path in an Ingress must have its own particular path type. Kubernetes offer
 | Prefix | /aaa/bbb/ | /aaa/bbb        | Yes, ignores trailing slash      | No, /aaa/bbb does not match.            |
 | Prefix | /aaa/bbb  | /aaa/bbbxyz     | No, does not match string prefix | No, the request forwarded to service.   |
 
-Please bear in mind that if `proxy.strip_listen_path` is set to true on API Definition, Tyk strips the listen-path (for example, the listen-path for the Ingress under [Sample HTTP Ingress Resource]({{< ref "#set-up-manifest-for-http) is /httpbin" >}}) with an empty string.
+Please bear in mind that if `proxy.strip_listen_path` is set to true on API Definition, Tyk strips the listen-path (for example, the listen-path for the Ingress under [Sample HTTP Ingress Resource]({{< ref "#set-up-manifest-for-http" >}}) is /httpbin) with an empty string.
 
 The following table shows an example of path matching if the listen-path is set to `/httpbin` or `/httpbin/`.
 
