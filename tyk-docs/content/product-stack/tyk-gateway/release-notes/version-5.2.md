@@ -299,7 +299,7 @@ Fixed a potential race condition where the *DRL Manager* was not properly protec
 <details>
 <summary>Performance issue encountered when Tyk Gateway retrieves a key via MDCB for a JWT API</summary>
 
-Fixed a performance issue encountered when Tyk Gateway retrieves a key via MDCB for a JWT API. The token is now validated against [JWKS or the public key]({{<ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#dynamic-public-key-rotation-using-public-jwks-url" >}}) in the API Definition.
+Fixed a performance issue encountered when Tyk Gateway retrieves a key via MDCB for a JWT API. The token is now validated against [JWKS or the public key]({{<ref "/api-management/authentication-authorization#use-json-web-tokens-jwt" >}}) in the API Definition.
 </details>
 </li>
 <li>

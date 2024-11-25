@@ -25,7 +25,7 @@ The **Core Settings** tab provides access to configure basic settings for the AP
    - [Service Discovery]({{< ref "planning-for-production/ensure-high-availability/service-discovery" >}})
 - [API Ownership]({{< ref "product-stack/tyk-dashboard/advanced-configurations/user-management/api-ownership" >}})
 - [API level rate limiting]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting#configuring-the-rate-limiter-at-the-api-level" >}})
-- [Authentication]({{< ref "basic-config-and-security/security/authentication-&-authorization" >}})
+- [Authentication]({{< ref "/api-management/authentication-authorization" >}})
 
 ## Versions
 

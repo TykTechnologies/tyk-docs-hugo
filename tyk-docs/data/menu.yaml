@@ -740,6 +740,10 @@ menu:
         path: /getting-started
         category: Page
         show: True
+      - title: "Authentication and Authorization"
+        path: /api-management/authentication-authorization
+        category: Page
+        show: True
       - title: "Automations"
         path: /api-management/automations
         category: Page
@@ -1313,166 +1317,62 @@ menu:
                 category: Directory
                 show: True
                 menu:
-                  - title: "Authentication and authorization"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /basic-config-and-security/security/authentication--authorization
-                        category: Page
-                        show: True
-                      - title: "Authorization Code Grant Type"
-                        path: /basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant
-                        category: Page
-                        show: True
-                      - title: "Client Credentials Grant Type"
-                        path: /basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant
-                        category: Page
-                        show: True
-                      - title: "Refresh Token Grant Type"
-                        path: /basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant
-                        category: Page
-                        show: True
-                      - title: "Username and Password Grant Type"
-                        path: /basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant
-                        category: Page
-                        show: True
-                      - title: "Basic Authentication"
-                        path: /basic-config-and-security/security/authentication-authorization/basic-auth
-                        category: Page
-                        show: True
-                      - title: "Bearer Tokens"
-                        path: /basic-config-and-security/security/authentication-authorization/bearer-tokens
-                        category: Page
-                        show: True
-                      - title: "External OAuth Middleware"
-                        path: /basic-config-and-security/security/authentication-authorization/ext-oauth-middleware
-                        category: Page
-                        show: True
-                      - title: "Go Plugin Authentication"
-                        path: /basic-config-and-security/security/authentication-authorization/go-plugin-authentication
-                        category: Page
-                        show: True
-                      - title: "HMAC Signatures"
-                        path: /basic-config-and-security/security/authentication-authorization/hmac-signatures
-                        category: Page
-                        show: True
-                      - title: "JSON Web Tokens"
-                        path: /basic-config-and-security/security/authentication-authorization/json-web-tokens
-                        category: Page
-                        show: True
-                      - title: "JWT and Auth0 with Tyk"
-                        path: /basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-auth0
-                        category: Page
-                        show: True
-                      - title: "Split Token"
-                        path: /basic-config-and-security/security/authentication-authorization/json-web-tokens/split-token
-                        category: Page
-                        show: True
-                      - title: "Multiple Auth"
-                        path: /basic-config-and-security/security/authentication-authorization/multiple-auth
-                        category: Page
-                        show: True
-                      - title: "OAuth 2.0"
-                        path: /basic-config-and-security/security/authentication-authorization/oauth-2-0
-                        category: Page
-                        show: True
-                      - title: "Open (Keyless)"
-                        path: /basic-config-and-security/security/authentication-authorization/open-keyless
-                        category: Page
-                        show: True
-                      - title: "OpenID Connect"
-                        path: /basic-config-and-security/security/authentication-authorization/openid-connect
-                        category: Page
-                        show: True
-                      - title: "Key Expiry and Deletion"
-                        path: /basic-config-and-security/security/authentication-authorization/physical-key-expiry
-                        category: Page
-                        show: True
-                      - title: "Python CoProcess and JSVM Plugin Authentication"
-                        path: /basic-config-and-security/security/authentication-authorization/python-etc-plugin-authentication
-                        category: Page
-                        show: True
-                      - title: "Revoke OAuth Tokens"
-                        path: /basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens
-                        category: Page
-                        show: True
-                      - title: "JWT and Keycloak with Tyk"
-                        path: /basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-keycloak
-                        category: Page
-                        show: True
-                  - title: "MTLS"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Concepts"
-                        path: /basic-config-and-security/security/mutual-tls/concepts
-                        category: Page
-                        show: True
-                      - title: "Mutual TLS"
-                        path: /basic-config-and-security/security/mutual-tls
-                        category: Page
-                        show: True
-                      - title: "Client mTLS"
-                        path: /basic-config-and-security/security/mutual-tls/client-mtls
-                        category: Page
-                        show: True
-                      - title: "Upstream mTLS"
-                        path: /basic-config-and-security/security/mutual-tls/upstream-mtls
-                        category: Page
-                        show: True
-                  - title: "Security policies"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /basic-config-and-security/security/security-policies
-                        category: Page
-                        show: True
-                      - title: "Policies Guide"
-                        path: /basic-config-and-security/security/security-policies/policies-guide
-                        category: Page
-                        show: True
-                      - title: "Secure your APIs by Method and Path"
-                        path: /security/security-policies/secure-apis-method-path
-                        category: Page
-                        show: True
-                      - title: "Partitioned Policies"
-                        path: /basic-config-and-security/security/security-policies/partitioned-policies
-                        category: Page
-                        show: True
-                  - title: "Gateway"
-                    path: /basic-config-and-security/security/gateway
+              - title: "oauth"
+                category: page
+                show: False
+                path: /basic-config-and-security/security/authentication-authorization/ext-oauth-middleware
+              - title: "Security policies"
+                category: Directory
+                show: True
+                menu:
+                  - title: "Overview"
+                    path: /basic-config-and-security/security/security-policies
                     category: Page
                     show: True
-                  - title: "Key Hashing"
-                    path: /basic-config-and-security/security/key-hashing
+                  - title: "Policies Guide"
+                    path: /basic-config-and-security/security/security-policies/policies-guide
                     category: Page
                     show: True
-                  - title: "Key Level Security"
-                    path: /basic-config-and-security/security/key-level-security
+                  - title: "Secure your APIs by Method and Path"
+                    path: /security/security-policies/secure-apis-method-path
                     category: Page
                     show: True
-                  - title: "Tyk and OWASP Top Ten Threats"
-                    path: /basic-config-and-security/security/owasp-top-ten
+                  - title: "Partitioned Policies"
+                    path: /basic-config-and-security/security/security-policies/partitioned-policies
                     category: Page
                     show: True
-                  - title: "TLS and SSL"
-                    path: /basic-config-and-security/security/tls-and-ssl
-                    category: Page
-                    show: True
-                  - title: "Certificate Pinning"
-                    path: /security/certificate-pinning
-                    category: Page
-                    show: True
-                  - title: "Blocking Client IPs"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting
-                    category: Page
-                    show: True
-                  - title: "Allowing Client IPs"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting
-                    category: Page
-                    show: True
+              - title: "Gateway"
+                path: /basic-config-and-security/security/gateway
+                category: Page
+                show: True
+              - title: "Key Hashing"
+                path: /basic-config-and-security/security/key-hashing
+                category: Page
+                show: True
+              - title: "Key Level Security"
+                path: /basic-config-and-security/security/key-level-security
+                category: Page
+                show: True
+              - title: "Tyk and OWASP Top Ten Threats"
+                path: /basic-config-and-security/security/owasp-top-ten
+                category: Page
+                show: True
+              - title: "TLS and SSL"
+                path: /basic-config-and-security/security/tls-and-ssl
+                category: Page
+                show: True
+              - title: "Certificate Pinning"
+                path: /security/certificate-pinning
+                category: Page
+                show: True
+              - title: "Blocking Client IPs"
+                path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting
+                category: Page
+                show: True
+              - title: "Allowing Client IPs"
+                path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting
+                category: Page
+                show: True
               - title: "Control and limit traffic"
                 category: Directory
                 show: True
