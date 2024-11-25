@@ -4,6 +4,28 @@ description: Explains the purpose of Tyk Streaming and use cases
 tags: [ "streaming", "events", "event-driven architecture", "event-driven architectures", "kafka" ]
 publishdate: 2024-07-15
 aliases:
+ - /product-stack/tyk-streaming/configuration/inputs/amqp-0-9/
+ - /product-stack/tyk-streaming/configuration/inputs/amqp-1/
+ - /product-stack/tyk-streaming/configuration/inputs/generate/
+ - /product-stack/tyk-streaming/configuration/inputs/kafka-franz/
+ - /product-stack/tyk-streaming/configuration/inputs/mqtt/
+ - /product-stack/tyk-streaming/configuration/inputs/nats/
+ - /product-stack/tyk-streaming/configuration/inputs/nsq/
+ - /product-stack/tyk-streaming/configuration/inputs/redis-pubsub/
+ - /product-stack/tyk-streaming/configuration/outputs/amqp-0-9/
+ - /product-stack/tyk-streaming/configuration/outputs/amqp-1/
+ - /product-stack/tyk-streaming/configuration/outputs/drop_on/
+ - /product-stack/tyk-streaming/configuration/outputs/fallback/
+ - /product-stack/tyk-streaming/configuration/outputs/kafka-franz/
+ - /product-stack/tyk-streaming/configuration/outputs/mqtt/
+ - /product-stack/tyk-streaming/configuration/outputs/nats/
+ - /product-stack/tyk-streaming/configuration/outputs/nsq/
+ - /product-stack/tyk-streaming/configuration/outputs/reject/
+ - /product-stack/tyk-streaming/configuration/outputs/redis-pubsub/
+ - /product-stack/tyk-streaming/configuration/outputs/retry/
+ - /product-stack/tyk-streaming/configuration/outputs/stdout/
+ - /product-stack/tyk-streaming/configuration/outputs/switch/
+ - /product-stack/tyk-streaming/configuration/outputs/sync-response/
  - /product-stack/tyk-streaming/configuration/processors/aws-lambda/
  - /product-stack/tyk-streaming/configuration/processors/bloblang/
  - /product-stack/tyk-streaming/configuration/processors/bounds-check/
