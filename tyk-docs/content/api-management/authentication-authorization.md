@@ -696,7 +696,7 @@ It is possible to provide Tyk with your own custom tokens, this can be achieved 
 
 ##### Enabling bearer tokens with Tyk Operator
 
-Please consult the Tyk Operator supporting documentation for an example of how to [enable a bearer token]({{< ref "product-stack/tyk-operator/advanced-configurations/client-authentication#auth-token-bearer-token" >}}) with Tyk Operator.
+Please consult the Tyk Operator supporting documentation for an example of how to [enable a bearer token]({{< ref "api-management/automations#auth-token-bearer-token" >}}) with Tyk Operator.
 
 ### Revoke OAuth Tokens
 
@@ -807,7 +807,7 @@ As you can see in the above example, enabling Basic Authentication is as simple 
 
 ##### Enable basic authentication using Tyk Operator
 
-Please consult the Tyk Operator supporting documentation for an example of how to [enable basic authentication]({{< ref "product-stack/tyk-operator/advanced-configurations/client-authentication#basic-authentication" >}}) with Tyk Operator.
+Please consult the Tyk Operator supporting documentation for an example of how to [enable basic authentication]({{< ref "api-management/automations#basic-authentication" >}}) with Tyk Operator.
 
 #### Create a Basic Authentication user
 
@@ -1171,7 +1171,7 @@ See the example introspection cache configuration:
 ### Authenticate Using Go Plugins
 
 Go Plugin Authentication allows you to implement custom authentication logic using the Go programming language. This method is useful for scenarios where you need to implement specialized authentication mechanisms that are not natively supported by Tyk.
-To learn more about using Tyk Golang Plugins, go [here](/plugins/supported-languages/golang/#supported-plugin-types)
+To learn more about using Tyk Golang Plugins, go [here]({{ ref "/plugins/supported-languages/golang/#supported-plugin-types" >}})
 
 
 ### Sign Requests with HMAC
@@ -2031,7 +2031,7 @@ Tyk will chain the auth mechanisms as they appear in the code and will default t
 
 #### Enable Multi (Chained) Authentication with Tyk Operator
 
-Please consult the [Tyk Operator](/product-stack/tyk-operator/advanced-configurations/client-authentication#multiple-chained-auth) supporting documentation for an example of how to enable multi chained authentication with Tyk Operator.
+Please consult the [Tyk Operator]({{< ref "api-management/automations/#multiple-chained-auth" >}}) supporting documentation for an example of how to enable multi chained authentication with Tyk Operator.
 
 
 ## Use Python CoProcess and JSVM Plugin Authentication
@@ -2783,6 +2783,6 @@ This configuration will apply the specified certificate to all upstream requests
 
 Securing your APIs is a foundational step toward managing data integrity and access control effectively. Now that you've configured authentication and authorization, the next steps in your API journey with Tyk should involve:
 
-Defining Access Policies: Use Tyk’s policies to refine API access controls, rate limits, and quotas. This lets you align your security model with business needs and enhance user experience through granular permissions. You can learn more about policies [here](/basic-config-and-security/security/security-policies/).
+Defining Access Policies: Use Tyk’s policies to refine API access controls, rate limits, and quotas. This lets you align your security model with business needs and enhance user experience through granular permissions. You can learn more about policies [here]({{< ref "basic-config-and-security/security/security-policies" >}}).
 
-Exploring API Analytics: Leverage Tyk’s analytics to monitor access patterns, track usage, and gain insights into potential security risks or high-demand endpoints. Understanding usage data can help in optimizing API performance and enhancing security measures. You can learn more about analytics [here](/tyk-dashboard-analytics/).
+Exploring API Analytics: Leverage Tyk’s analytics to monitor access patterns, track usage, and gain insights into potential security risks or high-demand endpoints. Understanding usage data can help in optimizing API performance and enhancing security measures. You can learn more about analytics [here]({{< ref"tyk-dashboard-analytics"> }}).
