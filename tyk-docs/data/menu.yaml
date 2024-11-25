@@ -740,6 +740,10 @@ menu:
         path: /getting-started
         category: Page
         show: True
+      - title: "Automations"
+        path: /api-management/automations
+        category: Page
+        show: True
       - title: "Manage APIs"
         category: Directory
         show: True
@@ -3886,208 +3890,16 @@ menu:
         category: Directory
         show: True
         menu:
-          - title: "Overview"
-            path: /tyk-operator
-            category: Page
-            show: True
-          - title: "Key Concepts"
-            category: Directory
-            show: True
-            menu:
-              # - title: "Overview"
-              #   path: /product-stack/tyk-operator/key-concepts/key-concepts
-              #   category: Page
-              #   show: True
-              - title: "Custom Resources"
-                path: /product-stack/tyk-operator/key-concepts/custom-resources
-                category: Page
-                show: True
-              - title: "Operator Reconciliation"
-                path: /tyk-stack/tyk-operator/tyk-operator-reconciliation
-                category: Page
-                show: True
-              - title: "Operator User"
-                path: /product-stack/tyk-operator/key-concepts/operator-user
-                category: Page
-                show: True
-              - title: "Operator Context"
-                path: /product-stack/tyk-operator/key-concepts/operator-context
-                category: Page
-                show: True
-          - title: "Getting Started"
-            category: Directory
-            show: True
-            menu:
-              - title: "Installing Tyk Operator"
-                path: /tyk-stack/tyk-operator/installing-tyk-operator
-                category: Page
-                show: True
-              - title: "Create an API"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /product-stack/tyk-operator/getting-started/create-an-api-overview
-                    category: Page
-                    show: True
-                  - title: "Create Tyk OAS API"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Create Tyk OAS API with Tyk Operator"
-                        path: /product-stack/tyk-operator/getting-started/create-an-oas-api
-                        category: Page
-                        show: True
-                      - title: "Tyk OAS API example"
-                        path: /product-stack/tyk-operator/getting-started/example-tyk-oas-api
-                        category: Page
-                        show: True
-                  - title: "Create Tyk Classic API"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Create Tyk Classic API with Tyk Operator"
-                        path: /tyk-stack/tyk-operator/create-an-api
-                        category: Page
-                        show: True
-                      - title: "HTTP Proxy example"
-                        path: /product-stack/tyk-operator/getting-started/quick-start-http
-                        category: Page
-                        show: True
-                      - title: "TCP Proxy example"
-                        path: /product-stack/tyk-operator/getting-started/quick-start-tcp
-                        category: Page
-                        show: True
-                      - title: "GraphQL Proxy example"
-                        path: /product-stack/tyk-operator/getting-started/quick-start-graphql
-                        category: Page
-                        show: True
-                      - title: "UDG example"
-                        path: /product-stack/tyk-operator/getting-started/quick-start-udg
-                        category: Page
-                        show: True
-              - title: "Secure an API"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /product-stack/tyk-operator/getting-started/secure-an-api-overview
-                    category: Page
-                    show: True
-                  - title: "Secure Tyk OAS API"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Secure Tyk OAS API with Tyk Operator"
-                        path: /product-stack/tyk-operator/getting-started/secure-an-oas-api
-                        category: Page
-                        show: True
-                  - title: "Secure Tyk Classic API"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Secure an API with Auth token"
-                        path: /tyk-stack/tyk-operator/access-an-api
-                        category: Page
-                        show: True
-                      - title: "Authentication types"
-                        path: /product-stack/tyk-operator/advanced-configurations/client-authentication
-                        category: Page
-                        show: True
-              - title: "Protect an API with Policy"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Create Security Policy with Tyk Operator"
-                    category: Page
-                    show: True
-                    path: /tyk-stack/tyk-operator/secure-an-api
-                  - title: "Security Policy example"
-                    category: Page
-                    show: True
-                    path: /product-stack/tyk-operator/getting-started/security-policy-example
-              - title: "Publish an API to Dev Portal"
-                path: /tyk-stack/tyk-operator/publish-an-api
-                category: Page
-                show: True
           - title: "Advanced configurations"
             category: Directory
             show: True
             menu:
-              - title: "Manage API metadata"
-                path: /product-stack/tyk-operator/advanced-configurations/management-of-api
-                category: Page
-                show: True
-              - title: "Manage existing APIs and policies"
-                path: /tyk-stack/tyk-operator/migration
-                category: Page
-                show: True
-              - title: "Kubernetes Ingress Controller"
-                path: /product-stack/tyk-operator/tyk-ingress-controller
-                category: Page
-                show: True
-              - title: "Manage multiple organisations"
-                path: /product-stack/tyk-operator/getting-started/tyk-operator-multiple-organisations
-                category: Page
-                show: True
-              - title: "Manage API ownership"
-                path: /product-stack/tyk-operator/getting-started/tyk-operator-api-ownership
-                category: Page
-                show: True
-              - title: "Manage API categories"
-                path: /product-stack/tyk-operator/advanced-configurations/api-categories
-                category: Page
-                show: True
-              - title: "Manage API versioning"
-                path: /product-stack/tyk-operator/advanced-configurations/api-versioning
-                category: Page
-                show: True
-              - title: "Manage TLS certificate"
-                path: /product-stack/tyk-operator/advanced-configurations/tls-certificate
-                category: Page
-                show: True
               - title: "GraphQL Federation"
                 path: /product-stack/tyk-operator/advanced-configurations/graphql-federation
                 category: Page
                 show: True
               - title: "Custom Plugins"
                 path: /product-stack/tyk-operator/advanced-configurations/custom-plugins
-                category: Page
-                show: True
-              - title: "Looping"
-                path: /product-stack/tyk-operator/advanced-configurations/internal-looping
-                category: Page
-                show: True
-          - title: "Troubleshooting"
-            category: Directory
-            show: True
-            menu:
-              - title: "API changes not applied"
-                path: /product-stack/tyk-operator/troubleshooting/tyk-operator-changes-not-applied
-                category: Page
-                show: True
-              - title: "Understanding reconciliation status"
-                path: /product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting
-                category: Page
-                show: True
-          - title: "Reference"
-            category: Directory
-            show: True
-            menu:
-              - title: "TykOasApiDefinition CRD"
-                path: /product-stack/tyk-operator/reference/tyk-oas-api-definition
-                category: Page
-                show: True
-              - title: "ApiDefinition CRD"
-                path: /product-stack/tyk-operator/reference/api-definition
-                category: Page
-                show: True
-              - title: "SecurityPolicy CRD"
-                path: /product-stack/tyk-operator/reference/security-policy
-                category: Page
-                show: True
-              - title: "Version compatibility"
-                path: /product-stack/tyk-operator/reference/version-compatibility
                 category: Page
                 show: True
           - title: "Release notes"
@@ -4606,54 +4418,6 @@ menu:
         category: Directory
         show: True
         menu:
-          - title: "Overview"
-            path: /product-stack/tyk-sync/overview
-            category: Page
-            show: True
-          - title: "Installing and running Tyk Sync"
-            path: /product-stack/tyk-sync/installing-tyk-sync
-            category: Page
-            show: True
-          - title: "Tutorials"
-            category: Directory
-            show: True
-            menu:
-              - title: "Keeping and updating API Definitions locally"
-                path: /product-stack/tyk-sync/tutorials/tutorial-update-api-configurations
-                category: Page
-                show: True
-              - title: "Synchronising API configurations with GitHub Actions"
-                path: /product-stack/tyk-sync/tutorials/tutorial-synchronise-api-configurations
-                category: Page
-                show: True
-              - title: "Backing up API configurations with Github Actions"
-                path: /product-stack/tyk-sync/tutorials/tutorial-backup-api-configurations
-                category: Page
-                show: True
-          - title: "Commands"
-            category: Directory
-            show: True
-            menu:
-              - title: "Dump"
-                path: /product-stack/tyk-sync/commands/sync-dump
-                category: Page
-                show: True
-              - title: "Examples"
-                path: /product-stack/tyk-sync/commands/sync-examples
-                category: Page
-                show: True
-              - title: "Publish"
-                path: /product-stack/tyk-sync/commands/sync-publish
-                category: Page
-                show: True
-              - title: "Sync"
-                path: /product-stack/tyk-sync/commands/sync-sync
-                category: Page
-                show: True
-              - title: "Update"
-                path: /product-stack/tyk-sync/commands/sync-update
-                category: Page
-                show: True
           - title: "Release notes"
             category: Directory
             show: True

@@ -41,4 +41,4 @@ Keyless APIs cannot be selected for [Access Rights]({{< ref "getting-started/cre
 
 ## Tyk Operator Example
 
-Please consult the Tyk Operator supporting documentation for an example of how to configure an API within Tyk Operator for [Open Access]({{< ref "product-stack/tyk-operator/advanced-configurations/client-authentication#keyless-open" >}}).
+Please consult the Tyk Operator supporting documentation for an example of how to configure an API within Tyk Operator for [Open Access]({{< ref "/api-management/automations#keyless-open" >}}).

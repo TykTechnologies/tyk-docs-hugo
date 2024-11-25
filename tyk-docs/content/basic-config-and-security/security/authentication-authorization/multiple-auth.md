@@ -57,4 +57,4 @@ Tyk will chain the auth mechanisms as they appear in the code and will default t
 
 ## Enable Multi (Chained) Authentication with Tyk Operator
 
-Please consult the Tyk Operator supporting documentation for an example of how to enable [multi chained authentication]({{< ref "product-stack/tyk-operator/advanced-configurations/client-authentication#multiple-chained-auth" >}}) with Tyk Operator.
+Please consult the Tyk Operator supporting documentation for an example of how to enable [multi chained authentication]({{< ref "/api-management/automations#multiple-chained-auth" >}}) with Tyk Operator.
