@@ -240,4 +240,4 @@ Several scopes in JWT claim will lead to have several policies applied to a key.
 
 ### JWT authentication with Tyk Operator
 
-Please consult the Tyk Operator supporting documentation for an example of how to [configure JWT authentication]({{< ref "product-stack/tyk-operator/advanced-configurations/client-authentication#jwt" >}}) with Tyk Operator.
+Please consult the Tyk Operator supporting documentation for an example of how to [configure JWT authentication]({{< ref "/api-management/automations#jwt" >}}) with Tyk Operator.
