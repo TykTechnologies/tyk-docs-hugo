@@ -270,11 +270,7 @@ This is a  UI only fix, it is still allowable via the API (which is OK).
 See https://tyk.io/docs/configure/tyk-pump-configuration/ for a sample pump.conf file.
 
 ### <a name="mdcb"></a> MDCB v1.4.0
-<<<<<<< HEAD
-Added support for Mutual TLS, mentioned by Gateway and Dashboard above. See [Docs]({{< ref "basic-config-and-security/security/mutual-tls#a-name-mdcb-a-mdcb" >}})
-=======
-Added support for Mutual TLS, mentioned by Gateway and Dashboard above. See [Docs]({{< ref "/api-management/authentication-authorization#enable-mutual-tls" >}})
->>>>>>> 9a30614f2... New IA - Authentication & Authorization (#5690)
+Added support for Mutual TLS, mentioned by Gateway and Dashboard above. See [Docs]({{< ref "api-management/authentication-authorization#enable-mutual-tls" >}})
   
 Also fixed bug when Mongo connections became growing though the roof if client with wrong credentials tries to connect.
 
