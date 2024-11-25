@@ -5,6 +5,23 @@ menu:
     path: /
     category: Label
     show: True
+  - title: "Getting Started"
+    path: /
+    category: Label
+    show: True
+    menu:
+      - title: "Create Account"
+        path: /getting-started/create-account
+        category: Page
+        show: True
+      - title: "Configure Your First API"
+        path: /getting-started/configure-first-api
+        category: Page
+        show: True
+      - title: "Using Tyk Dashboard"
+        path: /getting-started/using-tyk-dashboard
+        category: Page
+        show: True
   - title: "Deployment and Operations"
     path: /apim
     category: Label
