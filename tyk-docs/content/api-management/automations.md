@@ -140,9 +140,9 @@ Tyk Operator manages multiple custom resources to help users create and maintain
 
 **TykOasApiDefinition**: Available from Tyk Operator v1.0. It represents a [Tyk OAS API configuration]({{<ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc">}}). Tyk OAS API is based on the OpenAPI specification (OAS) and is the recommended format for standard HTTP APIs. Tyk Operator supports all [Tyk OAS API feature]({{<ref "getting-started/using-oas-definitions/oas-reference">}}) as they become available on the Gateway.
 
-**ApiDefinition**: Available on all versions of Tyk Operator. It represents a [Tyk Classic API configuration]({{<ref "tyk-gateway-api/api-definition-objects">}}). Tyk Classic API is the traditional format used for defining all APIs in Tyk, and now the recommended format for non-HTTP APIs such as TCP, GraphQL, and Universal Data Graph (UDG). Tyk Operator supports the major features of Tyk Classic API and the feature support details can be tracked [here](#apidefinition-crd).
+**ApiDefinition**: Available on all versions of Tyk Operator. It represents a [Tyk Classic API configuration]({{<ref "tyk-gateway-api/api-definition-objects">}}). Tyk Classic API is the traditional format used for defining all APIs in Tyk, and now the recommended format for non-HTTP APIs such as TCP, GraphQL, and Universal Data Graph (UDG). Tyk Operator supports the major features of Tyk Classic API and the feature support details can be tracked [here]({{< ref "#apidefinition-crd" >}}).
 
-**SecurityPolicy**: Available on all versions of Tyk Operator. It represents a [Tyk Security Policy configuration](#security-policy-example). Security Policies in Tyk provide a way to define and enforce security controls, including authentication, authorization, and rate limiting for APIs managed in Tyk. Tyk Operator supports essential features of Security Policies, allowing users to centrally manage access control and security enforcement for all APIs across clusters.
+**SecurityPolicy**: Available on all versions of Tyk Operator. It represents a [Tyk Security Policy configuration]({{< ref "#security-policy-example" >}}). Security Policies in Tyk provide a way to define and enforce security controls, including authentication, authorization, and rate limiting for APIs managed in Tyk. Tyk Operator supports essential features of Security Policies, allowing users to centrally manage access control and security enforcement for all APIs across clusters.
 
 These custom resources enable users to leverage Kubernetes' declarative configuration management to define, modify, and version their APIs, seamlessly integrating with other Kubernetes-based workflows and tools.
 
@@ -157,7 +157,7 @@ The following custom resources can be used to configure APIs and policies at [Ty
 | SecurityPolicy     | tyk.tyk.io  | v1alpha1  | Defines configuration of [security policies]({{<ref "getting-started/key-concepts/what-is-a-security-policy">}}). Operator supports linking ApiDefinition custom resources in SecurityPolicy's access list so that API IDs do not need to be hardcoded in the resource manifest.        |
 | SubGraph           | tyk.tyk.io  | v1alpha1  | Defines a [GraphQL federation subgraph]({{<ref "getting-started/key-concepts/graphql-federation#subgraphs-and-supergraphs">}}).                                           |
 | SuperGraph         | tyk.tyk.io  | v1alpha1  | Defines a [GraphQL federation supergraph]({{<ref "getting-started/key-concepts/graphql-federation#subgraphs-and-supergraphs">}}).                                        |
-| OperatorContext    | tyk.tyk.io  | v1alpha1  | Manages the context in which the Tyk Operator operates, affecting its overall behavior and environment. See [Operator Context](#multi-tenancy-in-tyk) for details. |
+| OperatorContext    | tyk.tyk.io  | v1alpha1  | Manages the context in which the Tyk Operator operates, affecting its overall behavior and environment. See [Operator Context]({{< ref "#multi-tenancy-in-tyk" >}}) for details. |
 
 ##### Tyk Classic Developer Portal
 
@@ -213,7 +213,7 @@ For more details on Kubernetes CRD versioning practices, refer to the Kubernetes
 
 
 #### Operator User
-Tyk Operator is a Kubernetes Controller that manages Tyk Custom Resources (CRs) such as API Definitions and Security Policies. Developers define these resources as [Custom Resource (CRs)](#custom-resources-in-tyk), and Tyk Operator ensures that the desired state is reconciled with the Tyk Gateway or Dashboard. This involves creating, updating, or deleting API configurations until the target state matches the desired state.
+Tyk Operator is a Kubernetes Controller that manages Tyk Custom Resources (CRs) such as API Definitions and Security Policies. Developers define these resources as [Custom Resource (CRs)]({{< ref "#custom-resources-in-tyk), and Tyk Operator ensures that the desired state is reconciled with the Tyk Gateway or Dashboard. This involves creating, updating, or deleting API configurations until the target state matches the desired state." >}}
 
 For the Tyk Dashboard, Tyk Operator functions as a system user, bound by Organization and RBAC rules.
 
@@ -301,7 +301,7 @@ Chart]({{<ref "/product-stack/tyk-charts/overview">}}) is the preferred (and eas
 In order for policy ID matching to work correctly, Dashboard must have `allow_explicit_policy_id` and
 `enable_duplicate_slugs` set to `true` and Gateway must have `policies.allow_explicit_policy_id` set to `true`.
 
-Tyk Operator needs a [user credential](#operator-user) to connect with
+Tyk Operator needs a [user credential]({{< ref "#operator-user" >}}) to connect with
 Tyk Dashboard. The Operator user should have write access to the resources it is going to manage, e.g. APIs, Certificates,
 Policies, and Portal. It is the recommended practice to turn off write access for other users for the above resources. See
 [Using Tyk Operator to enable GitOps with Tyk]({{< ref "getting-started/key-concepts/gitops-with-tyk" >}}) about
@@ -361,7 +361,7 @@ envVars:
 ```
 
 It can also be set via a Kubernetes secret. The default K8s secret name is `tyk-operator-conf`. If you want to use
-another name, configure it through Helm Chart [envFrom](#install-tyk-operator-and-custom-resource-definitions-crds) value.
+another name, configure it through Helm Chart [envFrom]({{< ref "#install-tyk-operator-and-custom-resource-definitions-crds" >}}) value.
 
 The Kubernetes secret or envVars field should set the following keys:
 
@@ -445,11 +445,11 @@ of k8s namespaces. For example:
 
 **Watch custom ingress class**
 
-You can configure [Tyk Operator as Ingress Controller](#control-kubernetes-ingress-resources) so
+You can configure [Tyk Operator as Ingress Controller]({{< ref "#control-kubernetes-ingress-resources" >}}) so
 that [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) resources can be managed by Tyk as
 APIs. By default, Tyk Operator looks for the value `tyk` in Ingress resources `kubernetes.io/ingress.class` annotation
 and will ignore all other ingress classes. If you want to override this default behavior, you may do so by setting
-[WATCH_INGRESS_CLASS](#configure-tyk-operator-via-environment-variable-or-tyk-operator-conf-secret) through `tyk-operator-conf` or the environment variable.
+[WATCH_INGRESS_CLASS]({{< ref "#configure-tyk-operator-via-environment-variable-or-tyk-operator-conf-secret" >}}) through `tyk-operator-conf` or the environment variable.
 
 ##### Install Tyk Operator and Custom Resource Definitions (CRDs)
 
@@ -883,7 +883,7 @@ Request should fail with a `401 Unauthorized` response now as an API key is requ
 ### Set Up Tyk Classic API
 
 #### Create a Tyk Classic API
-First, specify the details of your API using the [ApiDefinition CRD](#apidefinition-crd), then deploy it to create the corresponding Kubernetes resource. Tyk Operator will take control of the CRD and create the actual API in the Tyk data plane.
+First, specify the details of your API using the [ApiDefinition CRD]({{< ref "#apidefinition-crd" >}}), then deploy it to create the corresponding Kubernetes resource. Tyk Operator will take control of the CRD and create the actual API in the Tyk data plane.
 
 ##### Create an ApiDefinition resource in YAML format
 Create a file called `httpbin.yaml`, then add the following:
@@ -906,10 +906,10 @@ spec:
 
 You can also use other sample files from the following pages:
 
-- [HTTP Proxy example](#set-up-manifest-for-http)
-- [TCP Proxy example](#set-up-manifest-for-tcp)
-- [GraphQL Proxy example](#set-up-manifest-for-graphql)
-- [UDG example](#set-up-manifest-for-udg)
+- [HTTP Proxy example]({{< ref "#set-up-manifest-for-http" >}})
+- [TCP Proxy example]({{< ref "#set-up-manifest-for-tcp" >}})
+- [GraphQL Proxy example]({{< ref "#set-up-manifest-for-graphql" >}})
+- [UDG example]({{< ref "#set-up-manifest-for-udg" >}})
 
 ##### Deploy the ApiDefinition resource
 We are going to create an ApiDefinition from the httpbin.yaml file, by running the  following command:
@@ -968,7 +968,7 @@ $ curl -i localhost:8080/httpbin/get
 
 We have an ApiDefinition called `httpbin`, as specified in `spec.name` field, which listens to path `/httpbin` and proxies requests to [http://httpbin.org](http://httpbin.org), as specified under `spec.proxy` field. Now, any requests coming to the `/httpbin` endpoint will be proxied to the target URL that we defined in `spec.proxy.target_url`, which is [http://httpbin.org](http://httpbin.org) in our example.
 
-You can visit the [ApiDefinition CRD](#apidefinition-crd) page to see all the latest API Definitions fields and features we support.
+You can visit the [ApiDefinition CRD]({{< ref "#apidefinition-crd" >}}) page to see all the latest API Definitions fields and features we support.
 
 ##### Configure Kubernetes service as an upstream target
 
@@ -1145,7 +1145,7 @@ Content-Length: 46
 
 **Note**  
 
-Tyk Operator supported authentication types are listed in the [API Definition features](#apidefinition-crd) section.
+Tyk Operator supported authentication types are listed in the [API Definition features]({{< ref "#apidefinition-crd" >}}) section.
 
 {{< /note >}}
 
@@ -1916,7 +1916,7 @@ spec:
 
 ### Add a Security Policy to your API
 To further protect access to your APIs, you will want to add a security policy. 
-Below, we take you through how to define the security policy but you can also find [Security Policy Example](#security-policy-example) below.
+Below, we take you through how to define the security policy but you can also find [Security Policy Example]({{< ref "#security-policy-example" >}}) below.
 
 ##### Define the Security Policy manifest
 
@@ -2849,7 +2849,7 @@ To make use of the TykOasApiDefinition template, make sure to add annotations `t
 The value of the `kubernetes.io/ingress.class` annotation identifies the IngressClass that will process Ingress objects.
 
 Tyk Operator by default looks for the value `tyk` and will ignore all other ingress classes. If you wish to override this default behavior,
- you may do so by setting the environment variable `WATCH_INGRESS_CLASS` in the operator manager deployment. [See Installing Tyk Operator](#install-and-configure-tyk-operator) for further information.
+ you may do so by setting the environment variable `WATCH_INGRESS_CLASS` in the operator manager deployment. [See Installing Tyk Operator]({{< ref "#install-and-configure-tyk-operator" >}}) for further information.
 
 #### API name
 
@@ -2889,7 +2889,7 @@ spec:
 
 #### Ingress Path Types
 
-Each path in an Ingress must have its own particular path type. Kubernetes offers three types of path types: `ImplementationSpecific`, `Exact`, and `Prefix`. Currently, not all path types are supported. The below table shows the unsupported path types for [Sample HTTP Ingress Resource](#set-up-manifest-for-http) based on the examples in the [Kubernetes Ingress documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/#examples).
+Each path in an Ingress must have its own particular path type. Kubernetes offers three types of path types: `ImplementationSpecific`, `Exact`, and `Prefix`. Currently, not all path types are supported. The below table shows the unsupported path types for [Sample HTTP Ingress Resource]({{< ref "#set-up-manifest-for-http" >}}) based on the examples in the [Kubernetes Ingress documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/#examples).
 
 | Kind   | Path(s)   | Request path(s) | Expected to match?               | Works as Expected                       |
 |--------|-----------|-----------------|----------------------------------|-----------------------------------------|
@@ -2899,7 +2899,7 @@ Each path in an Ingress must have its own particular path type. Kubernetes offer
 | Prefix | /aaa/bbb/ | /aaa/bbb        | Yes, ignores trailing slash      | No, /aaa/bbb does not match.            |
 | Prefix | /aaa/bbb  | /aaa/bbbxyz     | No, does not match string prefix | No, the request forwarded to service.   |
 
-Please bear in mind that if `proxy.strip_listen_path` is set to true on API Definition, Tyk strips the listen-path (for example, the listen-path for the Ingress under [Sample HTTP Ingress Resource](#set-up-manifest-for-http) is /httpbin) with an empty string.
+Please bear in mind that if `proxy.strip_listen_path` is set to true on API Definition, Tyk strips the listen-path (for example, the listen-path for the Ingress under [Sample HTTP Ingress Resource]({{< ref "#set-up-manifest-for-http) is /httpbin" >}}) with an empty string.
 
 The following table shows an example of path matching if the listen-path is set to `/httpbin` or `/httpbin/`.
 
@@ -2924,7 +2924,7 @@ If you want to set up multi-tenant API management with Tyk, follow these steps t
 
 #### Defining OperatorContext
 
-An [OperatorContext](#multi-tenancy-in-tyk) specifies the parameters for connecting and authenticating with a Tyk Dashboard. Below is an example of how to define an `OperatorContext`:
+An [OperatorContext]({{< ref "#multi-tenancy-in-tyk" >}}) specifies the parameters for connecting and authenticating with a Tyk Dashboard. Below is an example of how to define an `OperatorContext`:
 
 ```yaml
 apiVersion: tyk.tyk.io/v1alpha1
@@ -3029,7 +3029,7 @@ The concept of [internal looping]({{< ref "advanced-configuration/transform-traf
 
 #### Configuring looping to internal ApiDefinition resources
 
-Looping can be configured within Tyk Operator for [URL Rewrites](#url-rewrites), [URL Rewrite Triggers](#url-rewrite-triggers) and [Proxy to internal APIs](#proxy-to-internal-apis) by configuring the `rewrite_to_internal` in `url_rewrite`, `rewrite_to_internal` in `triggers`, and `proxy.target_internal` fields respectively with these properties:
+Looping can be configured within Tyk Operator for [URL Rewrites]({{< ref "#url-rewrites" >}}), [URL Rewrite Triggers]({{< ref "#url-rewrite-triggers" >}}) and [Proxy to internal APIs]({{< ref "#proxy-to-internal-apis" >}}) by configuring the `rewrite_to_internal` in `url_rewrite`, `rewrite_to_internal` in `triggers`, and `proxy.target_internal` fields respectively with these properties:
 
 - **Path**: The `path` property specifies the endpoint on the target API where the request should be directed. This is the portion of the URL that follows the domain and is crucial for ensuring that the request reaches the correct resource. For example, setting a value of `"/myendpoint"` means that the request will be forwarded to the `/myendpoint` path on the target API.
 
@@ -3082,7 +3082,7 @@ Triggers are essential for executing specific actions when particular criteria a
 - Redirect users to different APIs in the Gateway based on their authentication status.
 - Enforce business rules by redirecting requests to different APIs in the Gateway based on certain parameters.
 
-The process for configuring internal looping in triggers to is similar to that explained in section [URL Rewrites](#url-rewrites).
+The process for configuring internal looping in triggers to is similar to that explained in section [URL Rewrites]({{< ref "#url-rewrites" >}}).
 
 Assume that we wish to instruct Tyk Operator to redirect all *Basic Authentication* requests to the API identified by `basic-auth-internal` within the `default` namespace. Subsequently, we can use a `rewrite_to_internal` object as follows:
 
@@ -3556,7 +3556,7 @@ spec:
 ```
 
 #### API Versioning
-[API versioning]({{<ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning">}}) are configured differently for [Tyk OAS APIs](#tyk-oas-api) and [Tyk Classic APIs](#tyk-classic-api). Please see below for examples.
+[API versioning]({{<ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning">}}) are configured differently for [Tyk OAS APIs]({{< ref "#tyk-oas-api" >}}) and [Tyk Classic APIs]({{< ref "#tyk-classic-api" >}}). Please see below for examples.
 
 ##### Configuring API Version in Tyk OAS API Definition
 
@@ -3636,7 +3636,7 @@ For Tyk Classic API, versioning can be configured via `ApiDefinition` custom res
 
 #### API Ownership
 
-Please consult the [API Ownership]({{<ref "/product-stack/tyk-dashboard/advanced-configurations/user-management/api-ownership">}}) documentation for the fundamental concepts of API Ownership in Tyk and [Operator Context](#multi-tenancy-in-tyk) documentation for an overview of the use of OperatorContext to manage resources for different teams effectively.
+Please consult the [API Ownership]({{<ref "/product-stack/tyk-dashboard/advanced-configurations/user-management/api-ownership">}}) documentation for the fundamental concepts of API Ownership in Tyk and [Operator Context]({{< ref "#multi-tenancy-in-tyk" >}}) documentation for an overview of the use of OperatorContext to manage resources for different teams effectively.
 
 The guide includes practical examples for managing API ownership via OperatorContext. Key topics include defining user owners and user group owners in OperatorContext for connecting and authenticating with a Tyk Dashboard, and using `contextRef` in `TykOasApiDefinition` or `ApiDefinition` objects to ensure configurations are applied within specific organizations. The provided YAML examples illustrate how to set up these configurations.
 
@@ -4360,15 +4360,15 @@ The TykOasApiDefinition Custom Resource Definition (CRD) manages [Tyk OAS API De
 
 | Features | Support | Supported From | Comments | Example |
 |----------|---------|-----------------|----------|--------|
-| API Category | ✅      | v1.0 | - | [Manage API Categories](#api-categories) |
-| API Version | ✅      | v1.0 | - | [Manage API versioning](#api-versioning) |
+| API Category | ✅      | v1.0 | - | [Manage API Categories]({{< ref "#api-categories" >}}) |
+| API Version | ✅      | v1.0 | - | [Manage API versioning]({{< ref "#api-versioning" >}}) |
 | API Ownership via OperatorContext | ✅      | v1.0 | - | [API Ownership]({{<ref "product-stack/tyk-dashboard/advanced-configurations/user-management/api-ownership#when-to-use-api-ownership">}}) |
-| Client Certificates | ✅      | v1.0 | - | [Manage TLS certificate](#tls-certificates) |
-| Custom Domain Certificates | ✅      | v1.0 | - | [Manage TLS certificate](#tls-certificates) |
-| Public keys pinning | ✅      | v1.0 | - | [Manage TLS certificate](#tls-certificates) |
-| Upstream mTLS | ✅      | v1.0 | - | [Manage TLS certificate](#tls-certificates) |
-| Kubernetes Ingress | ✅      | v1.0 | - | [Kubernetes Ingress Controller](#control-kubernetes-ingress-resources) |
-| Link with SecurityPolicy | ✅      | v1.0 | - | [Protect an API](#add-a-security-policy-to-your-api) |
+| Client Certificates | ✅      | v1.0 | - | [Manage TLS certificate]({{< ref "#tls-certificates" >}}) |
+| Custom Domain Certificates | ✅      | v1.0 | - | [Manage TLS certificate]({{< ref "#tls-certificates" >}}) |
+| Public keys pinning | ✅      | v1.0 | - | [Manage TLS certificate]({{< ref "#tls-certificates" >}}) |
+| Upstream mTLS | ✅      | v1.0 | - | [Manage TLS certificate]({{< ref "#tls-certificates" >}}) |
+| Kubernetes Ingress | ✅      | v1.0 | - | [Kubernetes Ingress Controller]({{< ref "#control-kubernetes-ingress-resources" >}}) |
+| Link with SecurityPolicy | ✅      | v1.0 | - | [Protect an API]({{< ref "#add-a-security-policy-to-your-api" >}}) |
 
 
 
@@ -4422,13 +4422,13 @@ Here are the supported features:
 
 | Features                       | Support   | Supported From | Example |
 |--------------------------------|-----------|----------------|---------|
-| API Access                     | ✅        | v0.1           | [API Access](#define-the-security-policy-manifest)        |
-| Rate Limit, Throttling, Quotas | ✅        | v0.1           | [Rate Limit, Throttling, Quotas](#define-the-security-policy-manifest)        |
-| Meta Data & Tags               | ✅        | v0.1           | [Tags and Meta-data](#define-the-security-policy-manifest)        |
-| Path and Method based permissions | ✅     | v0.1           | [Path based permission](#security-policy-example)        |
-| Partitions                     | ✅        | v0.1           | [Partitioned policies](#security-policy-example)       |
-| Per API limit                  | ✅        | v1.0           | [Per API Limit](#security-policy-example)        |
-| Per-Endpoint limit             | ✅        | v1.0           | [Per Endpoint Limit](#security-policy-example)        |
+| API Access                     | ✅        | v0.1           | [API Access]({{< ref "#define-the-security-policy-manifest" >}})        |
+| Rate Limit, Throttling, Quotas | ✅        | v0.1           | [Rate Limit, Throttling, Quotas]({{< ref "#define-the-security-policy-manifest" >}})        |
+| Meta Data & Tags               | ✅        | v0.1           | [Tags and Meta-data]({{< ref "#define-the-security-policy-manifest" >}})        |
+| Path and Method based permissions | ✅     | v0.1           | [Path based permission]({{< ref "#security-policy-example" >}})        |
+| Partitions                     | ✅        | v0.1           | [Partitioned policies]({{< ref "#security-policy-example" >}})       |
+| Per API limit                  | ✅        | v1.0           | [Per API Limit]({{< ref "#security-policy-example" >}})        |
+| Per-Endpoint limit             | ✅        | v1.0           | [Per Endpoint Limit]({{< ref "#security-policy-example" >}})        |
 
 
 ### How are Tyk configurations synchronized to Git?
