@@ -5,11 +5,11 @@ menu:
     path: /
     category: Label
     show: True
+  - title: "Getting Started"
+    path: /
+    category: Label
+    show: True
     menu:
-      - title: "Getting Started"
-        path: /
-        category: Label
-        show: True
       - title: "Create Account"
         path: /getting-started/create-account
         category: Page
