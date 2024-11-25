@@ -73,7 +73,7 @@ As you can see in the above example, enabling Basic Authentication is as simple 
 
 ### Enable basic authentication using Tyk Operator
 
-Please consult the Tyk Operator supporting documentation for an example of how to [enable basic authentication]({{< ref "product-stack/tyk-operator/advanced-configurations/client-authentication#basic-authentication" >}}) with Tyk Operator.
+Please consult the Tyk Operator supporting documentation for an example of how to [enable basic authentication]({{< ref "/api-management/automations#basic-authentication" >}}) with Tyk Operator.
 
 ## Create a Basic Authentication user
 

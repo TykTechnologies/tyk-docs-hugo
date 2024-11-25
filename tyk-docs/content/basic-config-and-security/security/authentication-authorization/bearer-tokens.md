@@ -102,4 +102,4 @@ It is possible to provide Tyk with your own custom tokens, this can be achieved 
 
 ## Enabling bearer tokens with Tyk Operator
 
-Please consult the Tyk Operator supporting documentation for an example of how to [enable a bearer tokens]({{< ref "product-stack/tyk-operator/advanced-configurations/client-authentication#auth-token-bearer-token" >}}) with Tyk Operator.
+Please consult the Tyk Operator supporting documentation for an example of how to [enable a bearer tokens]({{< ref "/api-management/automations#auth-token-bearer-token" >}}) with Tyk Operator.
