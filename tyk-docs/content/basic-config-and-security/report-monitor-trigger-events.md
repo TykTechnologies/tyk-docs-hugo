@@ -16,12 +16,12 @@ Tyk has a flexible model for handling these API events.
 There are four different categories of events that can be fired by Tyk:
 - [API events](#api-events)
 - [Token lifecycle events](#token-lifecycle-events)
-- [Advanced quota usage events](#quota-usage-monitoring)
+- [Advanced quota usage events](#advanced-quota-usage-events)
 - [Custom events](#custom-events)
 
 ### API events
 
-Tyk can generate (or *fire*) a variety of built-in API events due to activity triggered by an API request, such as exceeded rate limits, depleted quotas or attempts to access using expired keys. The full list of standard API events is available [here]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types#api-events" >}}).
+Tyk can generate (or *fire*) a variety of built-in API events due to activity triggered by an API request, such as exceeded rate limits, depleted quotas or attempts to access using expired keys. The full list of standard API events is available [here]({{< ref "basic-config-and-security/report-monitor-trigger-events#api-events" >}}).
 
 ### Token lifecycle events
 

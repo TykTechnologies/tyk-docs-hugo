@@ -11,7 +11,7 @@ When considering upgrading your current configuration to a new Tyk release, we r
 
 Which strategy do you intend to use?
 
-  - If following the [Blue-Green upgrade]({{< ref "developer-support/upgrading-tyk/preparations/upgrade-strategies#blue-green" >}}) strategy, has the green environment been configured and verified as production-ready?
+  - If following the [Blue-Green upgrade]({{< ref "developer-support/upgrading-tyk/preparations/upgrade-strategies#blue-green-upgrade" >}}) strategy, has the green environment been configured and verified as production-ready?
   - If pursuing the [Rolling upgrade]({{< ref "developer-support/upgrading-tyk/preparations/upgrade-strategies#rolling-upgrade" >}}) strategy, do all Tyk components have a second instance?
   - If you'll have downtime, estimate the expected duration of the upgrade process and plan for potential downtime.
 

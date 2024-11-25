@@ -9,7 +9,7 @@ Modern APIs are often backed by large technology stacks composed of numerous com
 
 ### Secure Connections
 
-Use [transport layer security]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) where possible. Most importantly, on inbound connections to the gateway and outbound connection from the gateway to the upstream API and other services. TLS can also be used as a form of authentication, using [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}).
+Use [transport layer security]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) where possible. Most importantly, on inbound connections to the gateway and outbound connection from the gateway to the upstream API and other services. TLS can also be used as a form of authentication, using [Mutual TLS]({{< ref "/api-management/authentication-authorization#enable-mutual-tls" >}}).
 
 ### Limit Functionality
 

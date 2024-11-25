@@ -29,7 +29,8 @@ The permissions object, which is provided to the Dashboard API has this structur
   "portal": "write",
   "system": "write",
   "users": "write",
-  "user_groups": "write"
+  "user_groups": "write",
+  "audit_logs": "read"
  }
 ```
 
