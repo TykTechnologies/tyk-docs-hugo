@@ -131,6 +131,9 @@ With declarative API configurations, you have a single source of truth to recove
 ##### Single Source of Truth for API Configurations
 Tyk Operator will reconcile any divergence between the Kubernetes desired state and the actual state in [Tyk Gateway]({{<ref "tyk-oss-gateway">}}) or [Tyk Dashboard]({{<ref "tyk-dashboard">}}). Therefore, you should maintain the API definition manifests in Kubernetes as the single source of truth for your system. If you update your API configurations using Tyk Dashboard, those changes would be reverted by Tyk Operator eventually.
 
+To learn more about Gitops with Tyk, refer the following blog posts:
+- [GitOps-enabled API management in Kubernetes](https://tyk.io/blog/gitops-enabled-api-management-in-kubernetes/)
+- [A practical guide using Tyk Operator, ArgoCD, and Kustomize](https://tyk.io/blog/a-practical-guide-using-tyk-operator-argocd-and-kustomize/)
 
 #### Custom Resources in Tyk
 
