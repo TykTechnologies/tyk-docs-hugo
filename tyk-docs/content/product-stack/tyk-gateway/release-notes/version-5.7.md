@@ -57,13 +57,13 @@ Version compatibility with other components in the Tyk stack. This takes the for
 An illustrative example is shown below. -->
 | Gateway Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.7.0 | MDCB v2.7.1     | MDCB v2.4.2 |
-|         | Operator v1.0.0  | Operator v0.17 |
-|         | Sync v2.0    | Sync v1.4.3 |
-|         | Helm Chart v2.1  | Helm all versions |
-| | EDP v1.11 | EDP all versions |
-| | Pump v1.11 | Pump all versions |
-| | TIB (if using standalone) v1.5.1 | TIB all versions |
+| 5.7.0 | MDCB v2.7.2     | MDCB v2.4.2 |
+|         | Operator v1.1.0  | Operator v0.17 |
+|         | Sync v2.0.1    | Sync v1.4.3 |
+|         | Helm Chart v2.2  | Helm all versions |
+| | EDP v1.12 | EDP all versions |
+| | Pump v1.11.1 | Pump all versions |
+| | TIB (if using standalone) v1.6.1 | TIB all versions |
 
 #### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
@@ -122,35 +122,58 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Add changelog summary </summary>
+<summary>Support for Custom OAuth Server Response Fields</summary>
 
-Add changelog description
+This update enables the Tyk API Gateway to handle custom data fields from non-standard OAuth 2.0 token responses, like Salesforce’s instance_url. Users can now specify which custom fields to extract from the OAuth server response, storing them in request context for use in other Tyk middlewares. Custom fields are configurable within the API spec under extra_metadata.
 </details>
 </li>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Enhanced Stream Analytics Error Handling</summary>
 
-Add changelog description
+Expanded Streams analytics to capture and report common error scenarios, including broker connectivity issues and standard HTTP errors, ensuring comprehensive request tracking for Streams-processed requests.
 </details>
 </li>
-</ul>
-
-#### Changed
-<!-- This should be a bullet-point list of updated features. Explain:
-
-- Why was the update necessary?
-- How does the update benefit users?
-- Link to documentation of the updated feature
-- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
-
-Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
-<ul>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Improved Streams Analytics Integration</summary>
 
-Add changelog description
+Expanded Streams analytics to capture and report common error scenarios, including broker connectivity issues and standard HTTP errors, ensuring comprehensive request tracking for Streams-processed requests.
+</details>
+</li>
+<li>
+<details>
+<summary>Integrated Streams Validator with Streams API</summary>
+
+Connected the new OAS validator to the /streams endpoint, adding proper error handling and validation responses for invalid stream configurations.
+</details>
+</li>
+<li>
+<details>
+<summary>Extended Streams Configuration Validation</summary>
+
+Extended the OAS validator to include Streams configuration validation, enforcing allowlisted components and validating nested broker configurations while implementing schema validation for Streams configurations.
+</details>
+</li>
+<li>
+<details>
+<summary>New Streams Configuration Validator</summary>
+
+Introduced a new validator derived from the existing OAS schema, adapting it for Streams validation with modified requirements for upstreamURL and x-tyk-streaming fields. This validator is now used by both the Dashboard API streams endpoint and streams configuration validator.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Logging for Streams</summary>
+
+Refined streams logging behavior to match Tyk's logging patterns, reducing unnecessary log output and improving log clarity.
+</details>
+</li>
+<li>
+<details>
+<summary>Simplified Streams Configuration Support</summary>
+
+Implemented allowlist-based validation for components in streams configurations, replacing the previous blocklist approach. Supported components now include Kafka, WebSocket, SSE, and HTTP for both inputs and outputs (including broker combinations), along with JSON-Avro bidirectional conversion processors, while other components like scanners, caches, and buffers are blocked by default. This validation is enforced consistently across Gateway, Dashboard API, and UI.
 </details>
 </li>
 </ul>
@@ -167,16 +190,23 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Add changelog summary </summary>
+<summary>Resolved HTTP Input Timeout in Tyk Streams</summary>
 
-Add changelog description
+When using Tyk Streams and sending input via http, the requests sometimes timed out causing a problem for the consumers. The issue has been fixed and now inputs via http for Tyk Streams work as intended.
 </details>
 </li>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Enhanced OAS Schema Flexibility</summary>
 
-Add changelog description
+Fixed a backwards compatibility issue with schema validation. When downgrading from a Tyk version, schema validation could fail as it didn't allow additional properties. This change relaxes schema strictness to again allow additional properties.
+</details>
+</li>
+<li>
+<details>
+<summary>Optimized Gateway Handling for Large Payloads</summary>
+
+Fixed a regression that increased memory consumption when proxying large response payloads, even with enable_detailed_recording disabled. The Gateway now handles large payloads more efficiently in terms of speed and memory usage.
 </details>
 </li>
 </ul>
