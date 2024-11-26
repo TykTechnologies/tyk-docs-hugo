@@ -23,50 +23,50 @@ aliases:
 
 ### Setup process
 
-#### Step 1. Prepare encryption keys
-1.1. Load the certificate with the private key into Tyk:
-   - For embedded TIB in Dashboard: Use Tyk Dashboard's certificate manager. In the next image you can see the module in dashboard that allows to upload certificates:
-     {{< img src="/img/dashboard/certificate-manager/adding-certificate.gif" alt="Certificate manager" >}}
-   - For standalone TIB: Store the certificate as a file accessible to Tyk
+#### Step 1. Prepare Encryption Keys
+  
+  - Load the certificate with the private key into Tyk:
+    - **For embedded TIB in Dashboard:** Use Tyk Dashboard's certificate manager. In the below image you can see the module in dashboard that allows to upload certificates:
+      {{< img src="/img/dashboard/certificate-manager/adding-certificate.gif" alt="Certificate manager" >}}
+    - **For standalone TIB:** Store the certificate as a file accessible to Tyk
 
-1.2. Load the public key into your IdP for ID token encryption (process varies by IdP)
+  - Load the public key into your IdP for ID token encryption (process varies by IdP)
 
 #### Step 2. Configure the Identity Provider
 - Create a new client in your IdP for Tyk Identity Broker
 
 #### Step 3. Setup OIDC Profile
-3.1. Create a new TIB profile:
-  - Select Social > OIDC as the provider
-  - Enter the client key and client secret from the IdP
-  - Copy the callback URL from TIB and add it to the IdP client's allowed redirect URLs
-
-{{< img src="/img/tib/profiles/tib-profile-creation.gif" alt="Profile creation" >}}
-3.2. Test the basic SSO flow to ensure it's working correctly
+  - Create a new TIB profile:
+    - Select Social > OIDC as the provider
+    - Enter the client key and client secret from the IdP
+    - Copy the callback URL from TIB and add it to the IdP client's allowed redirect URLs
+    {{< img src="/img/tib/profiles/tib-profile-creation.gif" alt="Profile creation" >}}
+  - Test the basic SSO flow to ensure it's working correctly
 
 #### Step 4. Enable JWE
-4.1. Edit TIB profile
-  - Add the following fields to the `ProviderConfig` section:
+  - Edit TIB profile
+    - Add the following fields to the `ProviderConfig` section:
 
-    ```json
-     ...
-     "ProviderConfig": {
-      "JWE": {
-        "Enabled": true,
-        "PrivateKeyLocation": "CERT-ID"
-      },
+      ```json
       ...
-    ```
+      "ProviderConfig": {
+        "JWE": {
+          "Enabled": true,
+          "PrivateKeyLocation": "CERT-ID"
+        },
+      ...
+      ```
 
-  - Set `PrivateKeyLocation` to either:
-    - The certificate ID from the certificate manager, or
-    - The file path where the certificate and private key are stored
+    - Set `PrivateKeyLocation` to either:
+      - The certificate ID from the certificate manager, or
+      - The file path where the certificate and private key are stored
     
-4.2. Update the IdP client configuration
-  - Enable JWE for the client
-  - Provide the public key for encryption
+  - Update the IdP client configuration
+    - Enable JWE for the client
+    - Provide the public key for encryption
 
 #### Step 5. Verification
-5.1. Test the complete flow with JWE enabled to ensure proper functionality.
+  - Test the complete flow with JWE enabled to ensure proper functionality.
 
 ### Troubleshooting
 While setting up JWE with Tyk Identity Broker, you may encounter some challenges. This section outlines common issues and their solutions to help you navigate the implementation process smoothly. 
