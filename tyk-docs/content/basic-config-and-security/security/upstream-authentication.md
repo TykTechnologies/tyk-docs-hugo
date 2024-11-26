@@ -192,7 +192,7 @@ The Authentication Server (auth server) has the concept of an OAuth Client - thi
 
 The auth server is often managed by a trusted third party Identity Provider (IdP) such as Okta or Auth0.
 
-Tyk supports OAuth 2.0 as a method for authenticating **clients** with the **Gateway** - you can use Tyk's own auth server functionality via the [Tyk OAuth 2.0]{{{< ref "basic-config-and-security/security/authentication-authorization/oauth-2-0" >}}} auth method or obtain the access token via a third party auth server and use the [JWT Auth]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) method.
+Tyk supports OAuth 2.0 as a method for authenticating **clients** with the **Gateway** - you can use Tyk's own auth server functionality via the [Tyk OAuth 2.0]({{< ref "basic-config-and-security/security/authentication-authorization/oauth-2-0" >}}) auth method or obtain the access token via a third party auth server and use the [JWT Auth]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) method.
 
 If your **upstream service** is protected using OAuth 2.0 then similarly, Tyk will need to obtain a valid access token to provide in the request to the upstream.
 
