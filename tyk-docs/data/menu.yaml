@@ -1095,7 +1095,7 @@ menu:
         category: Page
         show: True
         path: /api-management/security-best-practices
-      - title: "Security Best Practices check"
+      - title: "Security Best Practices new"
         category: Page
         show: True
         path: /api-management/security-best-practices-new
