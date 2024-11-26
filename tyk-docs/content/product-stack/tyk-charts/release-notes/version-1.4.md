@@ -150,7 +150,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>OSS: Simplify Tyk Operator setup with Kubernetes Secret creation</summary>
 
-When you set `operatorSecret.enabled` to `true` in the `tyk-oss` chart, a Kubernetes Secret named `tyk-operator-conf` will be automatically created in the same namespace. This secret is essential for connecting Tyk Operator to the Gateway, enabling seamless management of Tyk API resources. To learn more about setting up Tyk Operator, check out [Tyk Operator installation]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}).
+When you set `operatorSecret.enabled` to `true` in the `tyk-oss` chart, a Kubernetes Secret named `tyk-operator-conf` will be automatically created in the same namespace. This secret is essential for connecting Tyk Operator to the Gateway, enabling seamless management of Tyk API resources. To learn more about setting up Tyk Operator, check out [Tyk Operator installation]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}}).
 </details>
 </li>
 

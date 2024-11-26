@@ -33,7 +33,7 @@ The `cache` object has the following configuration:
 - `enabled`: enable the middleware for the endpoint
 - `timeout`: set to the refresh period for the cache (in seconds)
 - `cacheResponseCodes`: HTTP responses codes to be cached (for example `200`)
-- `cacheByRegex`: Pattern match for [selective caching by body value]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache#selective-caching-by-body-value" >}})
+- `cacheByRegex`: Pattern match for [selective caching by body value]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache#request-selective-cache-control" >}})
 
 For example:
 ```json {hl_lines=["37-40", "45-51"],linenos=true, linenostart=1}

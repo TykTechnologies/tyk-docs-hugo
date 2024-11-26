@@ -332,4 +332,4 @@ Note that the Gateway will respond with the following error message:
 
 You can make use of Tyk Operator custom resources to configure [Tyk OAS API]({{<ref "getting-started/using-oas-definitions/oas-glossary#tyk-oas-api-definition">}}) in a Kubernetes environment.
 
-In this [tutorial]({{<ref "product-stack/tyk-operator/getting-started/create-an-oas-api">}}) we guide you through the steps to create a new Tyk OAS API using Tyk Operator.
+In this [tutorial]({{<ref "/api-management/automations#set-up-oas-api">}}) we guide you through the steps to create a new Tyk OAS API using Tyk Operator.
