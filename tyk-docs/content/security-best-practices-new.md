@@ -1,9 +1,21 @@
 ---
-title: "API security best practices using API management"
-date: 2020-09-01
-description: "API security best practices"
+title: Security Best Practices check
+description: "Guide on API management and security best practices, including authentication, authorization, resource protection, governance, and OWASP threat mitigation with Tyk."
+tags: ["OWASP", "Security", "Top Ten", "API Management best practice", "API Security", "Authentication", "Security", "Configuration", "SSL", "Certificates", "Authentication", "Authorization", "API security", "API Gateway Security"]
+aliases:
+  - /advanced-configuration/integrate/api-auth-mode/json-web-tokens
+  - /security/
+  - /apim-best-practice/overview
+  - /apim-best-practice/api-security-best-practice/overview
+  - /apim-best-practice/api-security-best-practice/authentication
+  - /apim-best-practice/api-security-best-practice/authorisation
+  - /apim-best-practice/api-security-best-practice/authorisation-levels
+  - /apim-best-practice/api-security-best-practice/resource-consumption
+  - /apim-best-practice/api-security-best-practice/configuration
+  - /apim-best-practice/api-security-best-practice/governance
+  - /basic-config-and-security/security
+  - /basic-config-and-security/security/owasp-top-ten
 ---
-
 
 ## Overview
 
