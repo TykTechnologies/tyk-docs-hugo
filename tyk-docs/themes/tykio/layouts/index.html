@@ -1,148 +1,129 @@
-{{define "content"}}
-<div class="banner border">
+{{ define "content" }}
+  <div class="banner border">
     <div class="container-xl section-padding">
-        <div class="row">
-            <div class="col-12 col-lg-7">
-                <div style="margin: 56px 0">
-                    <h1 style="font-size: 36px" class="fw-bold mb-3 lh-normal fs-normal">
-                        Tyk Documentation
-                    </h1>
-                    <p class="mb-4 fs-16 font-400 lh-normal text-sec">
-                        The hub for Tyk API management. Whether you're new or experienced, get started with Tyk, explore
-                        our product stack and core concepts, access in-depth guides, and actively contribute to our
-                        ever-evolving products.
-                    </p>
-                </div>
-            </div>
-            <div class="col-12 col-lg-5">
-            </div>
+      <div class="row">
+        <div class="col-12 col-lg-7">
+          <div style="margin: 56px 0">
+            <h1 style="font-size: 36px" class="fw-bold mb-3 lh-normal fs-normal">Tyk Documentation</h1>
+            <p class="mb-4 fs-16 font-400 lh-normal text-sec">
+              The hub for Tyk API management. Whether you're new or experienced, get started with Tyk, explore our
+              product stack and core concepts, access in-depth guides, and actively contribute to our ever-evolving
+              products.
+            </p>
+          </div>
         </div>
+        <div class="col-12 col-lg-5"></div>
+      </div>
     </div>
-</div>
+  </div>
 
-
-<!--Start of Try it out section is here-->
-<section class="home-section">
+  <!--Start of Try it out section is here-->
+  <section class="home-section">
     <div class="container-xl section-padding">
-        <div class="d-flex flex-wrap justify-content-between align-items-center component-heading">
-            <div>
-                <div class="home-section-heading">Try it out</div>
-                <div class="fs-16  font-400 fs-normal text-sec lh-normal">
-                    Get started on any of our platforms
-                </div>
-            </div>
-            <div class="mt-3 mt-md-0 ">
-                <a class="home_btn sec-btn"
-                   href= "{{ "apim/" | relURL }}">
-                    Full comparison
-                    <img class="home-img" title="Full comparison"
-                         alt="Full comparison" src="{{ "img/black-forward-arrow.svg" | relURL }}"/>
-                </a>
-            </div>
+      <div class="d-flex flex-wrap justify-content-between align-items-center component-heading">
+        <div>
+          <div class="home-section-heading">Try it out</div>
+          <div class="fs-16  font-400 fs-normal text-sec lh-normal">Get started on any of our platforms</div>
         </div>
-        <div class="row">
-            {{- range $.Site.Data.tyk_components.components -}}
-            <div class="col-12 col-md-4 mb-3 mb-md-0">
-                <div class="border p-3 mb-3 h-100 ">
-                    <div class="parent-container">
-                        <div>
-                            <div class="image-container">
-                                <img class="home-img" title={{.title}} alt={{.title}} src="{{ .image | relURL }}"/>
-                            </div>
-                            <div class="fs-xs mb-3 text-sec lh-normal fs-normal font-400">{{.steps}}</div>
-                            <p class="fs-xs mb-3 text-sec lh-normal fs-normal font-400">
-                                {{.description}}
-                            </p>
-                            <p class="fs-xs mb-3 text-sec lh-normal fs-normal font-400">
-                                {{.includes}}
-                            </p>
-                        </div>
+        <div class="mt-3 mt-md-0 ">
+          <a class="home_btn sec-btn" href="{{ "apim/" | relURL }}">
+            Full comparison
+            <img
+              class="home-img"
+              title="Full comparison"
+              alt="Full comparison"
+              src="{{ "img/black-forward-arrow.svg" | relURL }}" />
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        {{- range $.Site.Data.tyk_components.components -}}
+          <div class="col-12 col-md-4 mb-3 mb-md-0">
+            <div class="border p-3 mb-3 h-100 ">
+              <div class="parent-container">
+                <div>
+                  <div class="image-container">
+                    <img class="home-img" title="{{ .title }}" alt="{{ .title }}" src="{{ .image | relURL }}" />
+                  </div>
+                  <div class="fs-xs mb-3 text-sec lh-normal fs-normal font-400">{{ .steps }}</div>
+                  <p class="fs-xs mb-3 text-sec lh-normal fs-normal font-400">
+                    {{ .description }}
+                  </p>
+                  <p class="fs-xs mb-3 text-sec lh-normal fs-normal font-400">
+                    {{ .includes }}
+                  </p>
+                </div>
 
-                        <div class="bottom-container">
-                            <a href="{{.path | relURL }}" class="home_btn sec-btn">{{.button_text}}</a>
-                        </div>
-                    </div>
+                <div class="bottom-container">
+                  <a href="{{ .path | relURL }}" class="home_btn sec-btn">{{ .button_text }}</a>
                 </div>
+              </div>
             </div>
-            {{- end -}}
-        </div>
+          </div>
+        {{- end -}}
+      </div>
     </div>
-</section>
+  </section>
 
-
-<!--
+  <!--
 Start of most used section is here-->
-<section class="home-section">
+  <section class="home-section">
     <div class="container-xl section-padding">
-        <div class="d-flex justify-content-between align-items-center component-heading">
-            <div>
-                <div class="home-section-heading">Most viewed</div>
-                <div class="fs-16  font-400 fs-normal text-sec lh-normal">
-                    Quick links to pages our users visit most
-                </div>
-            </div>
+      <div class="d-flex justify-content-between align-items-center component-heading">
+        <div>
+          <div class="home-section-heading">Most viewed</div>
+          <div class="fs-16  font-400 fs-normal text-sec lh-normal">Quick links to pages our users visit most</div>
         </div>
+      </div>
 
-        <div class="row">
-
-            {{- range $.Site.Data.most_viewed.viewed -}}
-            <div class="col-12 col-md-4 col-lg-3">
-                <div class="mb-3">
-                    {{- range .items -}}
-                    <div class="mb-2">
-                        <a href="{{.path | relURL }}" class="home_link text-primary fs-xs">{{.title}}</a>
-                    </div>
-                    {{- end -}}
+      <div class="row">
+        {{- range $.Site.Data.most_viewed.viewed -}}
+          <div class="col-12 col-md-4 col-lg-3">
+            <div class="mb-3">
+              {{- range .items -}}
+                <div class="mb-2">
+                  <a href="{{ .path | relURL }}" class="home_link text-primary fs-xs">{{ .title }}</a>
                 </div>
+              {{- end -}}
             </div>
-            {{- end -}}
-        </div>
+          </div>
+        {{- end -}}
+      </div>
     </div>
-</section>
+  </section>
 
-
-<!--Start of explore by  tyk product stack-->
-<section class="home-section explore-section">
+  <!--Start of explore by  tyk product stack-->
+  <section class="home-section explore-section">
     <div class="container-xl section-padding">
-        <div class="d-flex justify-content-between align-items-center component-heading">
-            <div>
-                <div class="home-section-heading">Explore by Tyk Stack</div>
-                <div class="fs-16  font-400 fs-normal text-sec lh-normal">
-                    Explore everything Tyk has to offer
+      <div class="d-flex justify-content-between align-items-center component-heading">
+        <div>
+          <div class="home-section-heading">Explore by Tyk Stack</div>
+          <div class="fs-16  font-400 fs-normal text-sec lh-normal">Explore everything Tyk has to offer</div>
+        </div>
+      </div>
+      <div class="row">
+        {{- range $.Site.Data.tyk_stack.stacks -}}
+          <div class="col-12 col-md-6">
+            {{- range . -}}
+              <a href="{{ .path | relURL }}" class="stack-box d-flex align-items-center">
+                <div class="me-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <path
+                      d="M31.9559 14.5613C31.2507 6.45232 24.5069 0.0871935 16.2204 0H3.17355H2.73278H0V2.74659V3.57493V16.654C0.352617 24.9809 7.05234 31.6948 15.427 32H28.8264H29.2672H32V29.2534V14.6049C32 14.5613 31.9559 14.5613 31.9559 14.5613Z"
+                      fill="#20EDBA" />
+                  </svg>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            {{- range $.Site.Data.tyk_stack.stacks -}}
-
-            <div class="col-12 col-md-6">
-                {{- range . -}}
-                <a href="{{.path | relURL }}" class="stack-box d-flex align-items-center">
-                    <div class="me-2">
-                        <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="32"
-                                height="32"
-                                viewBox="0 0 32 32"
-                                fill="none"
-                        >
-                            <path
-                                    d="M31.9559 14.5613C31.2507 6.45232 24.5069 0.0871935 16.2204 0H3.17355H2.73278H0V2.74659V3.57493V16.654C0.352617 24.9809 7.05234 31.6948 15.427 32H28.8264H29.2672H32V29.2534V14.6049C32 14.5613 31.9559 14.5613 31.9559 14.5613Z"
-                                    fill="#20EDBA"
-                            />
-                        </svg>
-                    </div>
-                    <div>
-                        <div class="stack-heading">{{.title}}</div>
-                        <div class="fs-xs text-sec font-400 lh-20">
-                            {{.description}}
-                        </div>
-                    </div>
-                </a>
-                {{- end -}}
-            </div>
+                <div>
+                  <div class="stack-heading">{{ .title }}</div>
+                  <div class="fs-xs text-sec font-400 lh-20">
+                    {{ .description }}
+                  </div>
+                </div>
+              </a>
             {{- end -}}
-        </div>
+          </div>
+        {{- end -}}
+      </div>
     </div>
-</section>
-{{end}}
+  </section>
+{{ end }}

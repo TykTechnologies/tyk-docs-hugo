@@ -91,7 +91,10 @@ Specify public keys used for Certificate Pinning on global level.
 ENV: <b>TYK_GW_SECURITY_CERTIFICATES_UPSTREAM</b><br />
 Type: `map[string]string`<br />
 
-Specify upstream mutual TLS certificates at a global level in the following format: `{ "<host>": "<cert>" }``
+Upstream is used to specify the certificates to be used in mutual TLS connections to upstream services. These are set at gateway level as a map of domain -> certificate id or path.
+For example if you want Tyk to use the certificate `ab23ef123` for requests to the `example.com` upstream and `/certs/default.pem` for all other upstreams then:
+In `tyk.conf` you would configure `"security": {"certificates": {"upstream": {"*": "/certs/default.pem", "example.com": "ab23ef123"}}}`
+And if using environment variables you would set this to `*:/certs/default.pem,example.com:ab23ef123`.
 
 ### security.certificates.control_api
 ENV: <b>TYK_GW_SECURITY_CERTIFICATES_CONTROLAPI</b><br />
@@ -153,50 +156,46 @@ Regular expressions and parameterized routes will be left alone regardless of th
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_ENABLEPATHPREFIXMATCHING</b><br />
 Type: `bool`<br />
 
-EnablePathPrefixMatching changes the URL matching from wildcard mode to prefix mode.
-For example, `/json` matches `*/json*` by current default behaviour.
-If prefix matching is enabled, the match will be performed as a prefix match (`/json*`).
+EnablePathPrefixMatching changes how the gateway matches incoming URL paths against routes (patterns) defined in the API definition.
+By default, the gateway uses wildcard matching. When EnablePathPrefixMatching is enabled, it switches to prefix matching. For example, a defined path such as `/json` will only match request URLs that begin with `/json`, rather than matching any URL containing `/json`.
 
-The `/json` url would be matched as `^/json` against the following paths:
+The gateway checks the request URL against several variations depending on whether path versioning is enabled:
+- Full path (listen path + version + endpoint): `/listen-path/v4/json`
+- Non-versioned full path (listen path + endpoint): `/listen-path/json`
+- Path without version (endpoint only): `/json`
 
-- Full listen path and versioning URL (`/listen-path/v4/json`)
-- Stripped listen path URL (`/v4/json`)
-- Stripped version information (`/json`) - match.
+For patterns that start with `/`, the gateway prepends `^` before performing the check, ensuring a true prefix match.
+For patterns that start with `^`, the gateway will already perform prefix matching so EnablePathPrefixMatching will have no impact.
+This option allows for more specific and controlled routing of API requests, potentially reducing unintended matches. Note that you may need to adjust existing route definitions when enabling this option.
 
-If versioning is disabled then the following URLs are considered:
+Example:
 
-- Full listen path and endpoint (`/listen-path/json`)
-- Stripped listen path (`/json`) - match.
+With wildcard matching, `/json` might match `/api/v1/data/json`.
+With prefix matching, `/json` would not match `/api/v1/data/json`, but would match `/json/data`.
 
-For inputs that start with `/`, a prefix match is ensured by
-prepending the start of string `^` caret.
-
-For all other cases, the pattern remains unmodified.
-
-Combine this option with `enable_path_suffix_matching` to achieve
-exact url matching with `/json` being evaluated as `^/json$`.
+Combining EnablePathPrefixMatching with EnablePathSuffixMatching will result in exact URL matching, with `/json` being evaluated as `^/json$`.
 
 ### http_server_options.enable_path_suffix_matching
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_ENABLEPATHSUFFIXMATCHING</b><br />
 Type: `bool`<br />
 
-EnablePathSuffixMatching changes the URL matching to match as a suffix.
-For example: `/json` is matched as `/json$` against the following paths:
+EnablePathSuffixMatching changes how the gateway matches incoming URL paths against routes (patterns) defined in the API definition.
+By default, the gateway uses wildcard matching. When EnablePathSuffixMatching is enabled, it switches to suffix matching. For example, a defined path such as `/json` will only match request URLs that end with `/json`, rather than matching any URL containing `/json`.
 
-- Full listen path and versioning URL (`/listen-path/v4/json`)
-- Stripped listen path URL (`/v4/json`)
-- Stripped version information (`/json`) - match.
+The gateway checks the request URL against several variations depending on whether path versioning is enabled:
+- Full path (listen path + version + endpoint): `/listen-path/v4/json`
+- Non-versioned full path (listen path + endpoint): `/listen-path/json`
+- Path without version (endpoint only): `/json`
 
-If versioning is disabled then the following URLs are considered:
+For patterns that already end with `$`, the gateway will already perform suffix matching so EnablePathSuffixMatching will have no impact. For all other patterns, the gateway appends `$` before performing the check, ensuring a true suffix match.
+This option allows for more specific and controlled routing of API requests, potentially reducing unintended matches. Note that you may need to adjust existing route definitions when enabling this option.
 
-- Full listen path and endpoint (`/listen-path/json`)
-- Stripped listen path (`/json`) - match.
+Example:
 
-If the input pattern already ends with a `$` (`/json$`)
-then the pattern remains unmodified.
+With wildcard matching, `/json` might match `/api/v1/json/data`.
+With suffix matching, `/json` would not match `/api/v1/json/data`, but would match `/api/v1/json`.
 
-Combine this option with `enable_path_prefix_matching` to achieve
-exact url matching with `/json` being evaluated as `^/json$`.
+Combining EnablePathSuffixMatching with EnablePathPrefixMatching will result in exact URL matching, with `/json` being evaluated as `^/json$`.
 
 ### http_server_options.ssl_insecure_skip_verify
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_SSLINSECURESKIPVERIFY</b><br />
@@ -601,7 +600,7 @@ Type: `bool`<br />
 
 Disable the capability of the Gateway to `autodiscover` the Dashboard through heartbeat messages via Redis.
 The goal of zeroconf is auto-discovery, so you do not have to specify the Tyk Dashboard address in your Gateway`tyk.conf` file.
-In some specific cases, for example, when the Dashboard is bound to a public domain, not accessible inside an internal network, or similar, `disable_dashboard_zeroconf` can be set to `true`, in favour of directly specifying a Tyk Dashboard address.
+In some specific cases, for example, when the Dashboard is bound to a public domain, not accessible inside an internal network, or similar, `disable_dashboard_zeroconf` can be set to `true`, in favor of directly specifying a Tyk Dashboard address.
 
 ### slave_options
 The `slave_options` allow you to configure the RPC slave connection required for MDCB installations.
@@ -636,7 +635,7 @@ Use this setting to add the URL for your MDCB or load balancer host.
 ENV: <b>TYK_GW_SLAVEOPTIONS_RPCKEY</b><br />
 Type: `string`<br />
 
-Your organisation ID to connect to the MDCB installation.
+Your organization ID to connect to the MDCB installation.
 
 ### slave_options.api_key
 ENV: <b>TYK_GW_SLAVEOPTIONS_APIKEY</b><br />
@@ -668,8 +667,8 @@ Set this option to `true` if you don’t want to monitor changes in the keys fro
 ENV: <b>TYK_GW_SLAVEOPTIONS_GROUPID</b><br />
 Type: `string`<br />
 
-This is the `zone` that this instance inhabits, e.g. the cluster/data-centre the Gateway lives in.
-The group ID must be the same across all the Gateways of a data-centre/cluster which are also sharing the same Redis instance.
+This is the `zone` that this instance inhabits, e.g. the cluster/data-center the Gateway lives in.
+The group ID must be the same across all the Gateways of a data-center/cluster which are also sharing the same Redis instance.
 This ID should also be unique per cluster (otherwise another Gateway cluster can pick up your keyspace events and your cluster will get zero updates).
 
 ### slave_options.call_timeout
@@ -789,26 +788,26 @@ Controls which algorthm to use as a fallback when your distributed rate limiter 
 ENV: <b>TYK_GW_ENFORCEORGDATAAGE</b><br />
 Type: `bool`<br />
 
-Allows you to dynamically configure analytics expiration on a per organisation level
+Allows you to dynamically configure analytics expiration on a per organization level
 
 ### enforce_org_data_detail_logging
 ENV: <b>TYK_GW_ENFORCEORGDATADETAILLOGGING</b><br />
 Type: `bool`<br />
 
-Allows you to dynamically configure detailed logging on a per organisation level
+Allows you to dynamically configure detailed logging on a per organization level
 
 ### enforce_org_quotas
 ENV: <b>TYK_GW_ENFORCEORGQUOTAS</b><br />
 Type: `bool`<br />
 
-Allows you to dynamically configure organisation quotas on a per organisation level
+Allows you to dynamically configure organization quotas on a per organization level
 
 ### monitor
-The monitor section is useful if you wish to enforce a global trigger limit on organisation and user quotas.
+The monitor section is useful if you wish to enforce a global trigger limit on organization and user quotas.
 This feature will trigger a webhook event to fire when specific triggers are reached.
-Triggers can be global (set in the node), by organisation (set in the organisation session object) or by key (set in the key session object)
+Triggers can be global (set in the node), by organization (set in the organization session object) or by key (set in the key session object)
 
-While Organisation-level and Key-level triggers can be tiered (e.g. trigger at 10%, trigger at 20%, trigger at 80%), in the node-level configuration only a global value can be set.
+While Organization-level and Key-level triggers can be tiered (e.g. trigger at 10%, trigger at 20%, trigger at 80%), in the node-level configuration only a global value can be set.
 If a global value and specific trigger level are the same the trigger will only fire once:
 
 ```
@@ -881,7 +880,7 @@ Apply the monitoring subsystem to user keys.
 ENV: <b>TYK_GW_MONITOR_MONITORORGKEYS</b><br />
 Type: `bool`<br />
 
-Apply the monitoring subsystem to organisation keys.
+Apply the monitoring subsystem to organization keys.
 
 ### max_idle_connections
 ENV: <b>TYK_GW_MAXIDLECONNS</b><br />
@@ -919,7 +918,7 @@ Type: `bool`<br />
 
 If AllowMasterKeys is set to true, session objects (key definitions) that do not have explicit access rights set
 will be allowed by Tyk. This means that keys that are created have access to ALL APIs, which in many cases is
-unwanted behaviour unless you are sure about what you are doing.
+unwanted behavior unless you are sure about what you are doing.
 
 ### service_discovery.default_cache_timeout
 ENV: <b>TYK_GW_SERVICEDISCOVERY_DEFAULTCACHETIMEOUT</b><br />
@@ -1118,7 +1117,7 @@ Type: `bool`<br />
 
 Set this value to `true` to have Tyk store the inbound request and outbound response data in HTTP Wire format as part of the Analytics data.
 Please note, this will greatly increase your analytics DB size and can cause performance degradation on analytics processing by the Dashboard.
-This setting can be overridden with an organisation flag, enabed at an API level, or on individual Key level.
+This setting can be overridden with an organization flag, enabed at an API level, or on individual Key level.
 
 ### analytics_config.enable_geo_ip
 ENV: <b>TYK_GW_ANALYTICSCONFIG_ENABLEGEOIP</b><br />
@@ -1656,6 +1655,13 @@ Type: `string`<br />
 
 You can now set a logging level (log_level). The following levels can be set: debug, info, warn, error.
 If not set or left empty, it will default to `info`.
+
+### log_format
+ENV: <b>TYK_GW_LOGFORMAT</b><br />
+Type: `string`<br />
+
+You can now configure the log format to be either the standard or json format
+If not set or left empty, it will default to `standard`.
 
 ### tracing
 Section for configuring OpenTracing support

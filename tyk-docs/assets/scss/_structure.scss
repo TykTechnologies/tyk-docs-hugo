@@ -10,14 +10,13 @@ body {
   height: calc(100vh - #{$header-height} - #{$header-tabs-height});
   overflow: hidden;
 
-
   &.hasSidebar {
     background: $white;
     width: 100%;
     display: flex;
 
     @include breakpoint(large) {
-      padding-inline-start: var(--main-inline-padding);
+      padding-inline-start: 1.5rem;
     }
   }
 
@@ -41,12 +40,12 @@ body {
   overflow-x: hidden;
 
   .hasSidebar & {
-    width: 80%;
+    width: 90%;
     padding-left: 30px;
     border-left: 1px solid $brandpurple-light;
 
     @include breakpoint(large) {
-      padding-inline-end: var(--main-inline-padding);
+      // padding-inline-end: 16px;
     }
   }
 
@@ -60,9 +59,7 @@ body {
   .wysiwyg a:not(.button):not(.badge):not(.home_btn):not(.home_link) {
     color: $brandpurple-dark !important;
     text-decoration: underline;
-
   }
-
 
   &__container {
     width: 100%;
@@ -83,8 +80,22 @@ body {
     }
 
     .hasSidebar &__container {
-      padding-right: 2rem;
+      padding-right: 20px;
+      padding-top: 10px;
+      padding-left: 20px;
+    }
+  }
+
+  @include breakpoint(xlarge) {
+    .hasSidebar &__main {
+      display: grid;
+      grid-template-columns: minmax(400px, 2fr) minmax(200px, 1fr);
+    }
+
+    .hasSidebar &__container {
+      padding-right: 20px;
       padding-top: 60px;
+      padding-left: 100px;
     }
   }
 }
@@ -127,15 +138,13 @@ body {
   margin: 0 auto;
   max-width: 1240px;
   width: 100%;
-
 }
-
 
 .last-modified-date {
   margin-bottom: 1px !important;
   margin-top: 5px !important;
   font-size: 12px;
-  color: #44546F;
+  color: #44546f;
 }
 
 .metadata_heading {
@@ -144,16 +153,14 @@ body {
   font-weight: bold;
 }
 
-
 .see_also_heading {
   text-decoration: none !important;
   padding-top: 25px !important;
   margin-bottom: 15px !important;
 
-
   a {
     text-decoration: none !important;
-    color: $brand-black !important;;
+    color: $brand-black !important;
 
     &:hover {
       color: $brandpurple-dark !important;
@@ -163,7 +170,7 @@ body {
 
 .related_section {
   margin-top: 30px;
-  border-top: 1px solid #A8A8CF;
+  border-top: 1px solid #a8a8cf;
 }
 
 .improve-this-page::before {
@@ -176,7 +183,7 @@ body {
 }
 
 .responsive-frame {
-  max-width: 75% ;
+  max-width: 75%;
   height: auto;
   max-height: 201px;
 }
@@ -193,6 +200,5 @@ body {
     padding-top: 0 !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
-
   }
 }

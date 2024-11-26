@@ -59,7 +59,7 @@ For further documentation relating to *helm* command usage, please refer to the 
 
 At a minimum, modify `values.yaml` for the following settings:
 1. [Set Redis connection details](#set-redis-connection-details-required)
-2. [Set Mongo or PostgreSQL connection details](#set-mongo-or-postgressql-connection-details-required)
+2. [Set Mongo or PostgreSQL connection details](#set-mongo-or-postgresql-connection-details-required)
 3. [Tyk Dashboard License](#tyk-dashboard-license-required)
 4. [Tyk MDCB License](#tyk-mdcb-license-required)
 5. If you would like to use Developer Portal, an additional license is required: [Tyk Developer Portal License](#tyk-developer-portal-license-required)
@@ -464,6 +464,10 @@ global:
        keyName: "postgreConnectionURLkey"
 ```
 
+**_Tyk Operator License_**
+
+It can be configured via `global.license.operator` as a plain text or Kubernetes secret which includes `OperatorLicense` key in it. Then, this secret must be referenced via `global.secrets.useSecretName`.
+
 ### Gateway Configurations
 
 {{< note success >}}
@@ -603,13 +607,13 @@ This will create a _PodMonitor_ resource for your Pump instance.
 ```
 
 #### Mongo pump
-To enable Mongo pump, add `mongo` to `tyk-pump.pump.backend` and add connection details for mongo under `global.mongo`. See [Mongo Installation](#set-mongo-or-postgressql-connection-details-required) section above.
+To enable Mongo pump, add `mongo` to `tyk-pump.pump.backend` and add connection details for mongo under `global.mongo`. See [Mongo Installation](#set-mongo-or-postgresql-connection-details-required) section above.
 
 By default, it will enable Mongo Aggregate, Mongo Graph Pump and Mongo Selective Pump.
 
 
 #### SQL Pump
-To enable SQL pump, add `postgres` to `tyk-pump.pump.backend` and add connection details for postgres under `global.postgres`. See [PostgresSQL Installation](#set-mongo-or-postgressql-connection-details-required) section above.
+To enable SQL pump, add `postgres` to `tyk-pump.pump.backend` and add connection details for postgres under `global.postgres`. See [PostgresSQL Installation](#set-mongo-or-postgresql-connection-details-required) section above.
 
 By default, it will enable Postgres Aggregate, Postgres Graph Aggregate, SQL Pump and SQL graph pump.
 
@@ -767,6 +771,12 @@ tyk-dev-portal:
 
 #### Tyk Developer Portal Database
 
+{{< note success >}}
+**Note** 
+
+SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please transition to PostgreSQL, MongoDB or one of the listed compatible alternatives.
+{{< /note >}}
+
 By default, Tyk Developer Portal use `sqlite3` to store portal metadata. If you want to use a different SQL Database, please modify the section below.
 
 ```yaml
@@ -854,10 +864,16 @@ tyk-dev-portal:
 
 ### Tyk Operator Configurations
 
+Tyk Operator is a licensed component that requires a valid key for operation. 
+Please refer to the [Tyk Operator Installation Guide]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}})
+for detailed information on the installation and upgrade processes. 
+
+Prior to installing Tyk Operator, ensure that a valid license key is provided by setting `global.license.operator` field in values.yaml file. You can set license key via a Kubernetes secret using `global.secrets.useSecretName` field. The secret should contain a key called `OperatorLicense`.
+
 In order to enable installing Tyk Operator along-side Tyk Control Plane installation, please set `global.components.operator`
 to `true`.
 
 All other configurations related to Tyk Operator are available under `tyk-operator` section of `values.yaml` file.
 
 > Tyk Operator needs a cert-manager to be installed. Ensure that cert-manager is installed as described in the
-> official documentation: [Installing Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}).
+> official documentation: [Installing Tyk Operator]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}}).

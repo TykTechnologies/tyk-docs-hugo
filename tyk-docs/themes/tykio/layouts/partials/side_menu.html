@@ -2,47 +2,39 @@
 
 {{- if not .Params.hideSidebar -}}
 
-    <nav class="aside-submenu no-icons">
-        <div class="header__tabs-menu header__tabs-menu--collapsable">
-            <nav class="links-container">
-                {{- partial "tabs_menu.html" . -}}
-            </nav>
-        </div>
-
-        <div data-tree class="st-treed">
-            {{- partial "menu_include.html" . -}}
-        </div>
-    </nav>
-
-{{else}}
-
-    <section class="header__tabs-menu">
-        <nav class="links-container">
-            {{- partial "tabs_menu.html" . -}}
-        </nav>
-    </section>
-
-{{end}}
-
-<div>
-    <div class="version-selector">
-      {{- partial "version_selector.html" . -}}
+  <nav class="aside-submenu no-icons">
+    <div class="header__tabs-menu header__tabs-menu--collapsable">
+      <nav class="links-container">
+        {{- partial "tabs_menu.html" . -}}
+      </nav>
     </div>
 
-    <nav class="menu-external">
-        {{- partial "menu_top_external.html" . -}}
+    <div data-tree class="st-treed">
+      {{- partial "menu_recursive.html" (dict "menu" .Site.Data.menu.menu "page" . "site" .Site) -}}
+    </div>
+  </nav>
+{{ else }}
+
+  <section class="header__tabs-menu">
+    <nav class="links-container">
+      {{- partial "tabs_menu.html" . -}}
     </nav>
+  </section>
+{{ end }}
 
-    {{if .Params.hideSidebar}}
-        <div class="menu_top_cta">
-            {{- partial "menu_top_ctas.html" . -}}
-        </div>
-    {{end}}
-</div>
 
-<div class="page-submenu__footer">
-    <p>Need help from one of our engineers?</p>
-    <a href="https://tyk.io/contact/" title="Contact us">Get in contact</a>
-    <br>
-    <a href="https://tyk.io/book-a-demo/" title="Book a personalised demo">Book a personalised demo</a>
+<div>
+  <div class="version-selector">
+    {{- partial "version_selector.html" . -}}
+  </div>
+
+  <nav class="menu-external">
+    {{- partial "menu_top_external.html" . -}}
+  </nav>
+
+  {{ if .Params.hideSidebar }}
+    <div class="menu_top_cta">
+      {{- partial "menu_top_ctas.html" . -}}
+    </div>
+  {{ end }}
 </div>

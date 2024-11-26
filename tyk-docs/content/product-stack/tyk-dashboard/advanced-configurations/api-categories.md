@@ -46,7 +46,7 @@ The use of the `#` qualifier to identify a category prevents the use of `#` in y
 {{< /note >}}
 
 ## Using API categories
-API categories can be added and removed from APIs within the [API Designer]({{< ref "product-stack/tyk-dashboard/advanced-configurations/api-categories#api-designer" >}}) or via the [Tyk Dashboard API]({{< ref "product-stack/tyk-dashboard/advanced-configurations/api-categories#tyk-dashboard-api" >}}).
+API categories can be added and removed from APIs within the [API Designer]({{< ref "product-stack/tyk-dashboard/advanced-configurations/api-categories#api-designer" >}}), via the [Tyk Dashboard API]({{< ref "product-stack/tyk-dashboard/advanced-configurations/api-categories#tyk-dashboard-api" >}}), or via [Tyk Operator]({{< ref "/api-management/automations#what-is-tyk-operator" >}}).
 
 ### API Designer
 The API Designer in the Tyk Dashboard UI provides a simple method for assigning APIs to categories, removing categories and filtering the API list by category.
@@ -93,3 +93,6 @@ These endpoints will return information for categories across all APIs in the sy
 | `GET`  | `/api/apis/categories`               | Retrieve a list of all categories defined in the system and the number of APIs in each |
 | `GET`  | `/api/apis?category={category_name}` | Retrieve a list of all APIs assigned to the specified category                         |
 
+### Tyk Operator
+
+You can manage categories using Tyk Operator custom resources. Please refer to [Tyk Operator]({{<ref "/api-management/automations#api-categories">}}) documentation to see how to manage API categories for Tyk OAS APIs and Tyk Classic APIs.

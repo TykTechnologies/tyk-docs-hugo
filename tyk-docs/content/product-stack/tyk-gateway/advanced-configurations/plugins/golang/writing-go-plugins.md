@@ -200,7 +200,7 @@ You can terminate the request within your custom Go plugin and provide an HTTP r
 - the HTTP request round-trip to the upstream target won't happen
 - analytics records will still be created and sent to the analytics processing flow
 
-This [example]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-examples#custom-go-plugin-as-a-virtual-endpoint" >}}) demonstrates a custom Go plugin configured as a virtual endpoint.
+This [example]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-examples#using-a-custom-go-plugin-as-a-virtual-endpoint" >}}) demonstrates a custom Go plugin configured as a virtual endpoint.
 
 ## Logging from a custom plugin
 

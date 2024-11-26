@@ -1,0 +1,11 @@
+# Ignore artifacts:
+tyk-docs/public
+tyk-docs/resources
+tyk-docs/themes/tykio/layouts/_default/list.netlify.json
+tyk-docs/themes/tykio/layouts/_default/list.pagesurl.json
+tyk-docs/themes/tykio/layouts/_default/list.urlcheck.json
+.gitignore
+.prettierignore
+.prettierrc
+changed-files.txt
+.github

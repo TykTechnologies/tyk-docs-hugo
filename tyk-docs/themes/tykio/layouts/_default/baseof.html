@@ -1,84 +1,133 @@
 <!doctype html>
 
 <html class="no-js" lang="{{ .Site.LanguageCode }}">
+  <head>
+    <style>
+      /* Basic styles for the dropdown */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <title> {{ .Title }}</title>
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{{ .Description }}"/>
-  <meta name="keywords" content="{{ with .Params.tags }}{{ delimit . ", "}}{{ end }}" />
-  {{ partial "google_search_console_metadata.html" . }}
-  {{ partial "site_schema.html" . }}
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 140px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        right: 0; /* Align dropdown content to the left of the button */
+        border-radius: 8px; /* Add rounded corners */
+      }
 
-  <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+      .dropdown-content a {
+        color: black;
+        padding: 8px 12px;
+        text-decoration: none;
+        display: block;
+      }
 
-  {{ $canonicalLink := replace .Permalink .Site.BaseURL  .Site.Params.CanonicalBaseUrl }}
-  <link rel="canonical" href="{{ $canonicalLink}}" />
-  <!--{{ if not (or (findRE `docs/nightly` .Permalink) (findRE `docs/\d\.\d` .Permalink)) }}
-    <link rel="canonical" href="{{ .Permalink }}" />
-  {{ else }}
-    <meta name="robots" content="noindex" />
-  {{ end }}-->
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+        border-radius: 8px; /* Add rounded corners */
+      }
 
-  <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-32x32.png" | relURL }}" sizes="32x32" />
-  <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-16x16.png" | relURL }}" sizes="16x16" />
-  <link rel="shortcut icon" href="{{ "images/favicon/favicon.ico" | relURL }}" />
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
 
-  <link rel='dns-prefetch' href='//ajax.googleapis.com' />
-  <link
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-          crossorigin="anonymous"
-  />
-  <script src="{{ "js/scroll_to_active_tab.js" | relURL }}"></script>
-  <script src="{{ "js/modernizr.min.js" | relURL }}"></script>
-  <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js?ver=1.12.0'></script>
-  {{ if .HasShortcode "github_star_button" }}
-  <script defer src="https://buttons.github.io/buttons.js"></script>
-  {{ end }}
+      .dropdown:hover .dropbtn {
+        cursor: pointer;
+      }
+    </style>
 
-  {{ partial "head_tracking.html" . }}
+    <meta charset="UTF-8" />
+    <title>{{ .Title }}</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{{ .Description }}" />
+    <meta name="keywords" content="{{ with .Params.tags }}{{ delimit . ", " }}{{ end }}" />
+    {{ partial "google_search_console_metadata.html" . }}
+    {{ partial "site_schema.html" . }}
 
-  {{ $scss := resources.Get "scss/main.scss" }}
-  {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (eq hugo.Environment "development")) }}
-  {{ $css := $scss | resources.ToCSS $options }}
-  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
-</head>
 
-<body class="page-documentation {{if not .Params.hideSidebar}}hasSidebar{{end}}">
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVX4PCL"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet" />
+
+    {{ $canonicalLink := replace .Permalink .Site.BaseURL  .Site.Params.CanonicalBaseUrl }}
+    <link rel="canonical" href="{{ $canonicalLink }}" />
+    <!--{{ if not (or (findRE `docs/nightly` .Permalink) (findRE `docs/\d\.\d` .Permalink)) }}
+      <link rel="canonical" href="{{ .Permalink }}" />
+    {{ else }}
+      <meta name="robots" content="noindex" />
+    {{ end }}
+		-->
+
+    <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-32x32.png" | relURL }}" sizes="32x32" />
+    <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-16x16.png" | relURL }}" sizes="16x16" />
+    <link rel="shortcut icon" href="{{ "images/favicon/favicon.ico" | relURL }}" />
+
+    <link rel="dns-prefetch" href="//ajax.googleapis.com" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous" />
+    <script src="{{ "js/scroll_to_active_tab.js" | relURL }}"></script>
+    <script src="{{ "js/modernizr.min.js" | relURL }}"></script>
+    <script
+      type="text/javascript"
+      src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js?ver=1.12.0"></script>
+    {{ if .HasShortcode "github_star_button" }}
+      <script defer src="https://buttons.github.io/buttons.js"></script>
+    {{ end }}
+
+    {{ partial "head_tracking.html" . }}
+
+    {{ $scss := resources.Get "scss/main.scss" }}
+    {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (eq hugo.Environment "development")) }}
+    {{ $css := $scss | resources.ToCSS $options }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" />
+  </head>
+
+  <body class="page-documentation {{ if not .Params.hideSidebar }}hasSidebar{{ end }}">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-NVX4PCL"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe
+    ></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-  <!-- Header -->
-  {{ partial "header.html" . }}
+    <!-- Header -->
+    {{ partial "header.html" . }}
 
-  <!-- Page content -->
-  <section class="section-page {{if not .Params.hideSidebar}}hasSidebar{{end}}">
-     <!-- Side menu -->
+
+    <!-- Page content -->
+    <section class="section-page {{ if not .Params.hideSidebar }}hasSidebar{{ end }}">
+      <!-- Side menu -->
       <aside class="page-submenu" data-turbolinks-permanent>
         {{ partial "side_menu.html" . }}
       </aside>
 
-      <article class="page-content {{if .Params.hideSidebar}}home-mobile-padding{{end}}">
+      <article class="page-content {{ if .Params.hideSidebar }}home-mobile-padding{{ end }}">
         <main class="page-content__main">
           <div class="wysiwyg page-content__container">
-
             {{ if .Params.diffTitle }}
-              {{if .Params.diffTitleName}}
-              <h1>{{ .Params.diffTitleName }}</h1>
+              {{ if .Params.diffTitleName }}
+                <h1>{{ .Params.diffTitleName }}</h1>
               {{ end }}
-            {{else}}
-              <h1>{{.Title}}</h1>
+            {{ else }}
+              <h1>{{ .Title }}</h1>
             {{ end }}
 
             {{- partial "page_metadata.html" . -}}
+
 
             <div id="main-content">
               {{ block "content" . }}
@@ -88,7 +137,7 @@
             {{- partial "related_posts.html" . -}}
             {{- if not .Params.landingPage -}}
               {{- partial "contribute_data.html" . -}}
-              <nav class="docs-navigation clear" {{if .Params.hideSidebar}}style="display: none !important"{{end}}>
+              <nav class="docs-navigation clear" {{ if .Params.hideSidebar }}style="display: none !important"{{ end }}>
                 <a id="previousArticle"></a>
                 <img src="{{ "img/nav-center.png" | relURL }}" alt="Page forward and back image" />
                 <a id="nextArticle"></a>
@@ -113,15 +162,13 @@
 
         <a href="javascript:" class="icon-right" id="return-to-top"></a>
       </article>
+    </section>
+
+    <!-- Footer scripts -->
+    {{ partial "footer_scripts.html" . }}
 
 
-  </section>
-
-  <!-- Footer scripts -->
-  {{ partial "footer_scripts.html" . }}
-
-  <!-- Cookie Notice -->
-  {{ partial "cookie_notice.html" . }}
-</body>
-
+    <!-- Cookie Notice -->
+    {{ partial "cookie_notice.html" . }}
+  </body>
 </html>

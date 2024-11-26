@@ -40,9 +40,9 @@ The cache resource to target with this processor.
 Type: `string`  
 
 ### key
-
+https://tyk.io/docs/product-stack/tyk-streaming/guides/bloblang/overview/
 An interpolated string yielding the key to deduplicate by for each message.
-This field supports [interpolation functions](#bloblang-queries).
+This field supports [interpolation functions]({{< ref "product-stack/tyk-streaming/configuration/processors/dedupe" >}}).
 
 
 Type: `string`  
