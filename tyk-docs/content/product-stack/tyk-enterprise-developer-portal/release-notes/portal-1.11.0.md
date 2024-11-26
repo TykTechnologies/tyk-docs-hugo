@@ -10,7 +10,7 @@ weight: 7
 
 **Licensed Protected Product**
 
-##### Release Date 25 Sept 2024
+## Release Date 25 Sept 2024
 
 #### Breaking Changes
 This release has no breaking changes.
