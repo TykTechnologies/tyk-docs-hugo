@@ -3958,28 +3958,12 @@ menu:
                     path: /product-stack/tyk-streaming/configuration/common-configuration/batching
                     category: Page
                     show: True
-                  - title: "Error Handling"
-                    path: /product-stack/tyk-streaming/configuration/common-configuration/error-handling
-                    category: Page
-                    show: True
                   - title: "Field Paths"
                     path: /product-stack/tyk-streaming/configuration/common-configuration/field-paths
                     category: Page
                     show: True
-                  - title: "Interpolation"
-                    path: /product-stack/tyk-streaming/configuration/common-configuration/interpolation
-                    category: Page
-                    show: True
                   - title: "Processing Pipelines"
                     path: /product-stack/tyk-streaming/configuration/common-configuration/processing-pipelines
-                    category: Page
-                    show: True
-                  - title: "Resources"
-                    path: /product-stack/tyk-streaming/configuration/common-configuration/resources
-                    category: Page
-                    show: True
-                  - title: "Windowed Processing"
-                    path: /product-stack/tyk-streaming/configuration/common-configuration/windowed_processing
                     category: Page
                     show: True
           - title: "Guides"
