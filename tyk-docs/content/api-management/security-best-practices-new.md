@@ -27,7 +27,7 @@ Two of the most prevalent topics are [authentication]({{< ref "#authentication" 
 - [Configuration]({{< ref "#configuration" >}})
 - [Resource Consumption]({{< ref "#managing-api-resources" >}})
 
-## Mitigating Threats
+## Mitigating The Top 10 Threats 
 
 The Open Web Application Security Project (OWASP) provides a top ten threat awareness document compiled by security experts. For more details on the OWASP project visit [https://www.owasp.org](https://www.owasp.org). Below are the top ten threats and how Tyk guards against them. For further details please visit our [blog](https://tyk.io/blog/res-owasp-api-security-intro/)
 
@@ -272,7 +272,7 @@ The gateway can also perform object property level authorization, by validating 
 
 Lastly, the API handles object level authorization by using custom logic. This typically involves using the value of the `authorization` header in combination with the ownership and authorization model specific to the API to determine if the client is authorized to write the requested data.
 
-#### GraphQL API - Querying Data#
+#### GraphQL API - Querying Data
 
 {{< img src="/img/api-management/security/graphql-query-data.jpeg" alt="Rest API - Write Data" width="150px" >}}
 
@@ -341,6 +341,7 @@ Prevent sensitive data, such as usernames, passwords, license keys and other sec
 
 Modify or remove sensitive data from responses by using [transforms]({{< ref "advanced-configuration/transform-traffic" >}}) to alter the [response headers]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) and [body]({{< ref "advanced-configuration/transform-traffic/response-body" >}}).
 
+<br>
 
 ## Governing APIs Effectively
 
@@ -355,7 +356,7 @@ APIs need to be managed and governed just like any other resource, otherwise org
 **Understand API Usage**: Use [API analytics]({{< ref "tyk-dashboard-analytics" >}}) to report on usage. This captured data generates useful, actionable insights across a variety of metrics, such as API popularity, performance and trends.
 
 **Control API Distribution**: Use [sharding]({{< ref "advanced-configuration/manage-multiple-environments#api-sharding" >}}) to control availability of APIs across multi-gateway, multi-environment deployments. This ensures that specific APIs are only available through specific gateways, which helps to prevent undesirable situations, such as internal APIs being published to externally accessible gateways, or test API configurations reaching the production environment.
-
+<br>
 
 ## Glossary
 
