@@ -107,6 +107,6 @@ Once you have merged your local changes with the latest changes from the `portal
     zip -r9 default.zip 
     ```
 
-2. Upload the theme package that is created in the [previous step]({{< ref "/product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades#change-the-name-of-the-theme" >}}) to the portal. You can use the portal's [Admin dashboard]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts#part-1-create-a-new-theme" >}}) or the [admin API]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) to do it.
+2. Upload the theme package that is created in the previous step to the portal. You can use the portal's [Admin dashboard]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts#part-1-create-a-new-theme" >}}) or the [admin API]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) to do it.
 ![image](https://github.com/TykTechnologies/tyk-docs/assets/14009/f0e547b2-b521-4c3e-97ce-fd3a2a3b170b)
 3. Finally, you need to [activate]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts#part-3-activate-a-theme" >}}) the theme so that it will be applied to the portal.

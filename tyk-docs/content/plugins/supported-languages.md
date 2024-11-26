@@ -21,7 +21,7 @@ Rich plugins give ultimate flexibility in the language of implementation, howeve
 * Make Layer 4 (TCP) or Layer 7 (HTTP/REST/SOAP) calls
 * Open Persistent Connections
 * Modify the request in-flight
-* Used to stop the request and return a [custom response]({{< ref "plugins/plugin-types/request-plugins#return-overrides-returnoverrides" >}})
+* Used to stop the request and return a [custom response]({{< ref "plugins/plugin-types/request-plugins#return-overrides--returnoverrides" >}})
 * Be served using [Bundles]({{< ref "plugins/how-to-serve-plugins" >}}) or by files on the file system, except gRPC of course which by definition is served by some webserver in the language of your choosing
 
 
