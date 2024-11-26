@@ -46,9 +46,9 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
 
 ### Downloads
 - [Docker image v2.7.2](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.7.2)
-- ```bash
-  docker pull tykio/tyk-mdcb-docker:v2.7.2
-  ```
+  - ```bash
+    docker pull tykio/tyk-mdcb-docker:v2.7.2
+    ```
 
 ### Changelog {#Changelog-v2.7.2}
 
@@ -71,9 +71,9 @@ MDCB 2.7.2 supports Tyk API definitions up to Tyk Gateway v5.7.0. Please use MDC
  <details>
  <summary>Fixed the following CVEs:</summary>
    
-    - [GHSA-7jwh-3vrq-q3m8](https://github.com/jackc/pgproto3/security/advisories/GHSA-7jwh-3vrq-q3m8)
-    - [GHSA-mrww-27vc-gghv](https://github.com/advisories/GHSA-mrww-27vc-gghv)
-    - [GO-2024-2611](https://pkg.go.dev/vuln/GO-2024-2611)
+  - [GHSA-7jwh-3vrq-q3m8](https://github.com/jackc/pgproto3/security/advisories/GHSA-7jwh-3vrq-q3m8)
+  - [GHSA-mrww-27vc-gghv](https://github.com/advisories/GHSA-mrww-27vc-gghv)
+  - [GO-2024-2611](https://pkg.go.dev/vuln/GO-2024-2611)
  </details>
  </li>
  </ul>
