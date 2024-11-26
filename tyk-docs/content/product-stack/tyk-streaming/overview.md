@@ -64,6 +64,10 @@ aliases:
  - /product-stack/tyk-streaming/configuration/processors/try/
  - /product-stack/tyk-streaming/configuration/processors/while/
  - /product-stack/tyk-streaming/configuration/processors/workflow/
+ - /product-stack/tyk-streaming/configuration/common-configuration/error-handling/
+ - /product-stack/tyk-streaming/configuration/common-configuration/interpolation/
+ - /product-stack/tyk-streaming/configuration/common-configuration/resources/
+ - /product-stack/tyk-streaming/configuration/common-configuration/windowed_processing/
 ---
 We are excited to introduce our new product, *Tyk Streams*! 
 *Tyk Streams* is a powerful new feature in the Tyk API management platform that enables organizations to securely expose,
