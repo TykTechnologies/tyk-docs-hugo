@@ -13,7 +13,7 @@ tags: ["Tyk Gateway", "Release notes", "v5.7", "5.7.0", "5.7", "changelog"]
 
 **Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))
 
-**This page contains all release notes for version 5.6.X displayed in a reverse chronological order**
+**This page contains all release notes for version 5.7.X displayed in a reverse chronological order**
 
 ## Support Lifetime
 <!-- Required. replace X.Y with this release and set the correct quarter of the year -->
