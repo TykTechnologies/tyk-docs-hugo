@@ -745,7 +745,7 @@ menu:
         category: Page
         show: True
       - title: "Upstream Authentication"
-        path: /api-management/authentication-authorization/upstream-authentication
+        path: /api-management/upstream-authentication
         category: Page
         show: False
       - title: "Automations"
