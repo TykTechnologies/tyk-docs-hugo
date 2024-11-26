@@ -50,9 +50,9 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
 
 ### Downloads
 - [Docker Image v1.11.1](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.11.1)
-- ```bash
-  docker pull tykio/tyk-pump-docker-pub:v1.11.1
-  ```
+  - ```bash
+    docker pull tykio/tyk-pump-docker-pub:v1.11.1
+    ```
 - Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.11.1)
 
 ### Changelog {#Changelog-v1.11.1}
