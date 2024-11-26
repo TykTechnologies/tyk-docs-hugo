@@ -36,7 +36,7 @@ aliases:
 - Create a new client in your IdP for Tyk Identity Broker
 
 #### Step 3. Setup OIDC Profile
-  - Create a new TIB profile:
+  - Create a new [TIB profile]({{< ref "tyk-stack/tyk-identity-broker/about-profiles#what-are-the-tib-profiles" >}}):
     - Select Social > OIDC as the provider
     - Enter the client key and client secret from the IdP
     - Copy the callback URL from TIB and add it to the IdP client's allowed redirect URLs
@@ -44,7 +44,7 @@ aliases:
   - Test the basic SSO flow to ensure it's working correctly
 
 #### Step 4. Enable JWE
-  - Edit TIB profile
+  - [Updated the TIB profile via API]{{{< ref "tyk-identity-broker/tib-rest-api/#a-nameupdate-profilea-update-profile" >}}}
     - Add the following fields to the `ProviderConfig` section:
 
       ```json
