@@ -340,6 +340,8 @@ Tyk Stack, Tyk Control Plane or Tyk OSS helm chart by setting `global.license.op
 key via a Kubernetes secret using `global.secrets.useSecretName` field. The secret should contain a key called
 `OperatorLicense`
 
+Note: If you are using `global.secrets.useSecretName`, you must configure the operator license in the referenced Kubernetes secret. `global.license.operator` will not be used in this case.
+
 #### Option 2: Install Tyk Operator via stand-alone Helm Chart
 
 If you prefer to install Tyk Operator separately, follow this section to install Tyk Operator using Helm.
