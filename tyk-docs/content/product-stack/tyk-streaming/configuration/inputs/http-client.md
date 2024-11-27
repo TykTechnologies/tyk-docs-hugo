@@ -94,15 +94,13 @@ input:
     auto_replay_nacks: true
 ```
 
-The URL and header values of this type can be dynamically set using [function interpolations]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
-
 ### Streaming
 
 If you enable streaming then Tyk Streams will consume the body of the response as a continuous stream of data, breaking messages out following a chosen scanner. This allows you to consume APIs that provide long lived streamed data feeds (such as Twitter).
 
 ### Pagination
 
-This input supports interpolation functions in the `url` and `headers` fields where data from the previous successfully consumed message (if there was one) can be referenced. This can be used in order to support basic levels of pagination. However, in cases where pagination depends on logic it is recommended that you use an [http processor]({{< ref "/product-stack/tyk-streaming/configuration/processors/http" >}}) instead, often combined with a [generate input]({{< ref "/product-stack/tyk-streaming/configuration/inputs/generate" >}}) in order to schedule the processor.
+This input supports interpolation functions in the `url` and `headers` fields where data from the previous successfully consumed message (if there was one) can be referenced. This can be used in order to support basic levels of pagination.
 
 ## Examples
 
@@ -159,7 +157,6 @@ rate_limit_resources:
 ### url
 
 The URL to connect to.
-This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
 
 
 Type: `string`  
@@ -185,7 +182,9 @@ verb: DELETE
 ### headers
 
 A map of headers to add to the request.
-This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}})
+<!-- TODO: when interpolation supported:
+This field supports interpolation functions.
+-->
 
 Type: `object`  
 Default: `{}`  
@@ -692,7 +691,9 @@ Type: `string`
 ### payload
 
 An optional payload to deliver for each request.
-This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
+<!-- TODO: when interpolation supported:
+This field supports interpolation functions.
+-->
 
 
 Type: `string`  

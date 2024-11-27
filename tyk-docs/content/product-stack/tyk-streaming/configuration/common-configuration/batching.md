@@ -4,7 +4,7 @@ description: Explains configuration settings required for batching, e,g batch si
 tags: [ "Tyk Streams", "Batching" ]
 ---
 
-Tyk Streams is able to join sources and sinks with sometimes conflicting batching behaviours without sacrificing its strong delivery guarantees. It's also able to perform powerful [processing functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/windowed_processing" >}}) across batches of messages such as grouping and reduction. Therefore, batching within Tyk Streams is a mechanism that serves multiple purposes:
+Tyk Streams is able to join sources and sinks with sometimes conflicting batching behaviours without sacrificing its strong delivery guarantees. Therefore, batching within Tyk Streams is a mechanism that serves multiple purposes:
 
 1. [Performance (throughput)](#performance)
 2. [Compatibility (mixing multi and single part message protocols)](#compatibility)

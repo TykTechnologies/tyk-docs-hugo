@@ -145,9 +145,10 @@ period: 1m
 period: 500ms
 ```
 
+<!-- TODO: when bloblang is supported
 ### batching.check
 
-A [Bloblang query]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) that should return a boolean value indicating whether a message should end a batch.
+A Bloblang query that should return a boolean value indicating whether a message should end a batch.
 
 
 Type: `string`  
@@ -158,6 +159,7 @@ Default: `""`
 
 check: this.type == "end_of_transaction"
 ```
+-->
 
 ### batching.processors
 
@@ -191,8 +193,6 @@ The broker pattern determines the way in which messages are allocated and can be
 With the fan out pattern all outputs will be sent every message that passes through Tyk Streams in parallel.
 
 If an output applies back pressure it will block all subsequent messages, and if an output fails to send a message it will be retried continuously until completion or service shut down. This mechanism is in place in order to prevent one bad output from causing a larger retry loop that results in a good output from receiving unbounded message duplicates.
-
-Sometimes it is useful to disable the back pressure or retries of certain fan out outputs and instead drop messages that have failed or were blocked. In this case you can wrap outputs with a [drop_on]({{< ref "/product-stack/tyk-streaming/configuration/outputs/drop_on" >}}) output.
 
 ### fan_out_fail_fast
 
