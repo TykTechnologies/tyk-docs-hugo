@@ -162,7 +162,7 @@ This feature serves a similar purpose to our JWT Authentication and may lead to 
 The low adoption of this option, along with its functional overlap with other supported authentication methods, prompts us to deprecate OIDC middleware to reduce complexity within the platform. We recommend users transition to JWT Authentication.
 
 
-We encourage users to switch to the recommended alternatives. For more detailed information, please refer to the [Documentation](https://tyk.io/docs/basic-config-and-security/security/authentication-authorization/openid-connect/) 
+We encourage users to switch to the recommended alternatives. For more detailed information, please refer to the [Documentation](https://tyk.io/docs//api-management/authentication-authorization#use-openid-connect/) 
 
 
 <!-- Optional section!

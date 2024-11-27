@@ -60,7 +60,7 @@ To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "
 - Added APIs to manage blog posts along with their tags and categories.
 - Added a new API endpoint that allows the rotation of API credentials.
 - UI and API for themes soft delete. Soft deleted themes are not shown in the UI and API, but are kept in the database for future reference.
-- Added new TLS variables to set MinVersion ([PORTAL_TLSCONFIG_MINVERSION]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tlsconfig_minversion" >}}), MaxVersion ([PORTAL_TLSCONFIG_MAXVERSION]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tlsconfig_maxversion" >}}), and CipherSuites ([PORTAL_TLS_CIPHER_SUITES]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_cipher_suites" >}}).
+- Added new TLS variables to set MinVersion ([portal_tls_min_version]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_min_version" >}}), MaxVersion ([PORTAL_TLSCONFIG_MAXVERSION]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_max_version" >}}), and CipherSuites ([PORTAL_TLS_CIPHER_SUITES]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_cipher_suites" >}}).
 - Added a new configuration to manage the idle timeout of the portal's session ([PORTAL_SESSION_IDLE_TIMEOUT]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_session_idle_timeout" >}}).
 - Added CSRF protection injection to portal's form. Now you don't need to add it manually to your templates.
 

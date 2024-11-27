@@ -271,14 +271,14 @@ mdcb:
 
 `global.components.operator` added to determine whether the Tyk Operator component should be installed.
 
-This feature adds a dependency on the Tyk Operator to the umbrella charts, facilitating the installation of the Tyk Operator component. Users can now easily install the Tyk Operator component by setting the `global.components.operator` parameter. Note that the Tyk Operator requires `cert-manager` to be installed beforehand. It also expects secret `tyk-operator-conf` is present in the installation namespace. You can enable bootstrapping at `global.components.bootstrap` if you are working on a new installation to have this secret created for you. Refer to the Tyk Operator [installation guide]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}) for detailed information on pre-requisites.
+This feature adds a dependency on the Tyk Operator to the umbrella charts, facilitating the installation of the Tyk Operator component. Users can now easily install the Tyk Operator component by setting the `global.components.operator` parameter. Note that the Tyk Operator requires `cert-manager` to be installed beforehand. It also expects secret `tyk-operator-conf` is present in the installation namespace. You can enable bootstrapping at `global.components.bootstrap` if you are working on a new installation to have this secret created for you. Refer to the Tyk Operator [installation guide]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}}) for detailed information on pre-requisites.
 
 ```yaml
 global:
   components:
     # operator determines whether Tyk Operator component should be installed or not.
     # Tyk Operator needs cert-manager to be installed beforehand. Make sure that cert-manager is installed.
-    # For further details, please refer to https://tyk.io/docs/tyk-stack/tyk-operator/installing-tyk-operator/
+    # For further details, please refer to https://tyk.io/docs//api-management/automations#install-and-configure-tyk-operator/
     operator: false
 ```
 

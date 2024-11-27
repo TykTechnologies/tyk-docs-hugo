@@ -8,6 +8,7 @@ From Tyk 4.0, you can use PostgreSQL as your datastore. We support the following
 You can also use the following as a drop in replacement for PostgreSQL:
 
 - [Amazon RDS](https://aws.amazon.com/rds/)
+- [Amazon Aurora PostgreSQL](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.AuroraPostgreSQL.html)
 - [Azure CosmosDB for PostgreSQL](https://learn.microsoft.com/en-us/azure/cosmos-db/postgresql/introduction)
 
 {{< note success >}}

@@ -42,7 +42,7 @@ If you want to restrict an API client to a certain rate of requests to your APIs
 {{< note success >}}
 **Note**  
 
- It is assumed that the APIs being protected with a rate limit are using our [Authentication token]({{< ref "basic-config-and-security/security/authentication-authorization/bearer-tokens" >}}) Authentication mode and have policies already created
+ It is assumed that the APIs being protected with a rate limit are using our [Authentication token]({{< ref "/api-management/authentication-authorization#use-bearer-tokens" >}}) Authentication mode and have policies already created
 {{< /note >}}
 
 You can configure this rate limit from the API Designer in Tyk Dashboard as follows:
@@ -59,7 +59,7 @@ If you want to restrict API clients to a certain rate of requests for a specific
 {{< note success >}}
 **Note**  
 
- It is assumed that the APIs being protected with a rate limit are using our [Authentication token]({{< ref "basic-config-and-security/security/authentication-authorization/bearer-tokens" >}}) Authentication mode and have policies already created
+ It is assumed that the APIs being protected with a rate limit are using our [Authentication token]({{< ref "/api-management/authentication-authorization#use-bearer-tokens" >}}) Authentication mode and have policies already created
 {{< /note >}}
 
 You can configure this rate limit from the API Designer in Tyk Dashboard as follows:
