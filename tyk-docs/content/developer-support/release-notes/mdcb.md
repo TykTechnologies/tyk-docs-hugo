@@ -3,10 +3,16 @@ title: Tyk Multi Data Center Bridge Release Notes
 description: "Tyk Multi Data-Center Bridge v2.7 release notes"
 tags: ["release notes", "MDCB", "Tyk Multi Data-Center", "Tyk Multi Data-Center", "v2.7", "2.7"]
 aliases:
+  - "/release-notes/mdcb/mdcb"
+  - /release-notes/mdcb/
   - tyk-docs/content/product-stack/tyk-enterprise-mdcb/release-notes/version-2.4
   - tyk-docs/content/product-stack/tyk-enterprise-mdcb/release-notes/version-2.5
   - tyk-docs/content/product-stack/tyk-enterprise-mdcb/release-notes/version-2.6
   - tyk-docs/content/product-stack/tyk-enterprise-mdcb/release-notes/version-2.7
+  - release-notes/mdcb-2.0
+  - release-notes/mdcb-2.1
+  - release-notes/mdcb-2.2
+  - release-notes/mdcb-2.3
 ---
 
 Licensed Protected Product
@@ -15,6 +21,7 @@ Licensed Protected Product
 
 ## Support Lifetime
 Our minor releases are supported until our next minor comes out.
+
 ---
 
 ## 2.7.1 Release Notes
@@ -623,6 +630,139 @@ MDCB 2.4.0 is an update for compatibility for synchronisation with Tyk v5.2 API 
 - Update for compatibility with API definitions for Tyk v5.1
 
 ---
+
+## 2.3.1 Release Notes
+
+Release date: 2023-08-31
+
+### Fixed
+
+- In MDCB 2.3, the embedded OAS API Definition introduced in 5.1 is not backward compatible. It causes Gateway panic when MDCB is connecting to Tyk 5.0.x or earlier releases. In this fix, MDCB will transform the old API Definition to new format to avoid panic.
+- Users should use URL-encoded values in username and password of a MongoDB connection string if it contains following characters - "?", "@". The same connection string should always be accepted by both mgo and mongo-go drivers. (Note: Same fix for Dashboard will be available in upcoming release Tyk Dashboard v5.0.6 and v5.2.0)
+
+
+## 2.3.0 Release Notes
+
+Release date: 2023-06-28
+
+MDCB 2.3.0 is an update for compatibility for synchronisation with Tyk v5.1 API Definitions.
+
+### Updated
+
+- Update MDCB to Go 1.19
+- Update for compatibility with API definitions for Tyk v5.1
+
+## 2.2.0 Release Notes
+Release date: 2023-05-26
+
+MDCB 2.2.0 brings support for using the official [MongoDB go driver](https://www.mongodb.com/docs/drivers/go/current/?_ga=2.196564399.289488302.1688466439-526957880.1688466345#mongodb-go-driver), as well as some performance fixes.
+
+From MDCB 2.2.0, we added support for MongoDB 5.0.x and 6.0.x. To enable this, you have to set the new *MDCB* config option driver to `mongo-go`.
+
+The driver setting defines the driver type to use for MongoDB. It can be one of the following values:
+* [mgo](https://github.com/go-mgo/mgo) (default): Uses the `mgo` driver which is the existing one Tyk has been using till now. This driver supports *MongoDB* versions up to v4 (lower or equal to v4, <=v4). You can get more information about this driver [here](https://github.com/go-mgo/mgo). This driver will stay the default till the next release, to allow users more time for migration. After that, the default driver will be `mongo-go`.
+* [mongo-go](https://github.com/mongodb/mongo-go-driver): Uses the official *MongoDB driver*. This driver supports MongoDB v4 or newer (greater or equal to v4, >=v4).
+
+Tyk 5.0.2 and Tyk Pump 1.8.0 also support the new driver option.
+
+We have also worked on performance improvement and fixes like preventing successive frequent reloads, handling storage errors gracefully, retry connection to storage during startup. If ownership is enabled, gateways will also load APIs that are not associated with any user or group.
+
+### Added
+- Support for `mongo-go` driver option
+- Support for the `+srv` connection string with `mongo-go` driver option
+- Support for SCRAM-SHA-256 with “mongo-go” driver option
+- Performance Enhancement: MDCB enqueue APIs and Policies for reload to reduce multiple reloads
+### Fixed
+- MDCB handles errors from storage gracefully and prevents sending an empty list of APIs to gateways which would cause an outage
+- MDCB will retry the connection to storage to prevent startup failure
+### Updated
+- If both mongo_url and connection_type + connection_string are set, Mongo will be loaded by default.
+- When ownership is enabled, gateways should only load APIs that are associated with the user or group. Additionally, APIs with no association with any users or groups are also loaded.
+
+## 2.1.1 Release Notes
+Release date: 2023-03-29
+
+### Fixed
+- Updated API Definition to support 5.0.0 Gateways. 
+- Fixed one critical CVE issue with go.uuid package.
+
+
+## 2.1.0 Release Notes
+Release date: 2023-02-20
+
+### Added
+- Added a new configuration option [enable_ownership]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#enable_ownership" >}}) that allows MDCB filter APIs by API Ownership. 
+- MDCB works without group id. This means that when an Edge Gateway doesn’t have a group, it will defaults to the `ungrouped` group. This has some fallbacks, as we can’t use the synchroniser for the ungrouped gateways.
+
+
+### Fixed
+- Updated API Definition to support 4.3.3 Gateways. 
+
+## 2.0.5 Release Notes
+Release date: 2023-01-31
+
+### Added
+- Added a new configuration option (`group_key_ttl`) that specifies the group key TTL in seconds. This key is used to prevent a group of gateways from re-syncing when is not required. On login (GroupLogin call), if the key doesn't exist then the sync process is triggered. If the key exists then the TTL just gets renewed. In case the cluster of gateways is down, the key will expire and get removed and if they connect again a sync process will be triggered. Default value: 180 seconds. Min value: 30 seconds.
+
+### Fixed
+- Fixed an issue where gateways in the data plane couldn't re-sync with MDCB (in the control plane) after their Redis (in the data plane) has been reset. The only way was to change the `group_id`. The fix means that MDCB can overcome this situation independently and there's no need for the users to do anything (changing `group_id` or any other curing action). Check `group_key_ttl` for [more details](#added)
+
+## 2.0.4 Release Notes
+Release date: 2022-12-06
+
+### Added
+- Changes in the API definition introduced in Tyk Gateway 4.3 
+- Update to Go 1.16 
+- Update the embedded Pump to the latest (v1.7.0)
+
+### Fixed
+- Fixed a minor security issue when logging Mongo URL 
+
+## 2.0.3 Release Notes
+Release date: 2022-08-12
+
+### Fixed
+- Fixed a bug when using MDCB with Tyk Gateway versions prior to 4.1 where an error could be reported when querying an API from a worker gateway.
+- Fixed an incompatibility with MDCB logging format changes
+- Fixed an issue where, with the MDCB Synchroniser disabled, all API resources were still pushed out to workers upon creation in the controller; the behavior should be as it was pre-synchroniser.
+
+## 2.0.2 Release Notes
+Release date: 2022-08-12
+
+### Fixed
+- Fixed a bug when using MDCB with Tyk Gateway versions prior to 4.1 where an error could be reported when querying an API from a worker gateway.
+
+## 2.0.1 Release Notes
+Release date: 2022-07-20
+
+### Added
+- Updated MDCB to support Tyk Gateway v4.1
+- Added a new configuration option (`omit_analytics_index_creation`) that supresses the creation of indexes in Mongo pumps (to match Pump 1.6)
+- Added the option to configure MDCB certificates using environment variables.
+
+### Fixed
+- Fixed a bug when using MDCB to transfer analytics to MongoDB, where the indexes Tyk created in the MongoDB did not correctly include a time stamp.
+
+### Changed
+- Updated the pump embedded in MDCB to the latest version (Pump v1.6)
+
+
+## 2.0.0 Release Notes
+Release date: 2022-05-17
+
+### Added
+
+#### SQL support
+Since Tyk v4.0, the dashboard supports SQL engine natively. This means that Tyk has support for an SQL relational database to be used instead of the default MongoDB and lets users decide which DB type is the best for their usage. MDCB 2.0 introduces support for SQL to the multi data center bridge, enabling MDCB orchestrated deployments using SQL databases.
+MDCB now uses embedded Tyk Mongo and SQL pumps to write analytics. 
+
+### Fixed
+- Fixed a security risk where API keys could be logged in plain text in MDCB logs.
+
+### Changed
+- Improved the formatting of debug logs to align with the rest of the Tyk product suite.
+- Hide innocent and unhelpful error messages related to the RPC connection that were spamming the logs
+
 
 ## Further Information
 

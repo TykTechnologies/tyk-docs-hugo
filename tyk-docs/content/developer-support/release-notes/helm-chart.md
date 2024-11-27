@@ -1,7 +1,7 @@
 ---
 title: Tyk Charts Release Notes
 description: "Release notes documenting updates, enhancements and changes for Tyk Charts versions within the 2.1 series."
-tags: ["Tyk Charts", "Release notes", "changelog", "v2.1" ]
+tags: ["Tyk Charts", "Release notes", "changelog", "v2.1", "v2.1.0", "v2.0.0", "v1.6.0", "v1.5.0", "v1.4.0", "v1.3.0" ]
 aliases:
   - tyk-docs/content/product-stack/tyk-charts/release-notes/version-1.3
   - tyk-docs/content/product-stack/tyk-charts/release-notes/version-1.4
