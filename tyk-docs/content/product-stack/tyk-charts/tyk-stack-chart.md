@@ -98,6 +98,21 @@ Alternatively, you can use `--set` flag to set it in Tyk installation. See [Usin
 
 To configure Tyk components, users can utilize both config files and [environment variables](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/). Notably, environment variables take precedence over config files. To maintain simplicity and consistency, the Tyk Helm Charts deploy components with an empty config file while setting container environment variables based on user-defined [values](https://helm.sh/docs/chart_best_practices/values/). This approach ensures seamless integration with Kubernetes practices, allowing for efficient management of configurations. For a comprehensive overview of available configurations, please refer to the [configuration documentation]({{<ref "tyk-environment-variables">}}). 
 
+### Bootstrapping
+
+By default, the chart executes a bootstrapping job immediately after installation. This process ensures the presence of a valid dashboard license and initializes key components such as tyk-dashboard, tyk-portal, and tyk-operator, enabling them for immediate use.
+
+Key Notes on Bootstrapping:
+
+- Bootstrapping is triggered **only during** a `helm install` and does not run during a `helm upgrade`.
+- If `global.components.bootstrap` is set to `false`, only the dashboard license check will be performed. 
+
+Handling Bootstrapping Failures:
+
+- If the bootstrapping process fails, check the logs from the bootstrap pods to diagnose the issue.
+- Once reviewed, you can safely delete the bootstrap pods.
+- To re-trigger the bootstrapping process after a failure, you must run `helm uninstall` and start the installation process anew.
+
 ### Setting Environment Variables
 Should any environment variables not be set by the Helm Chart, users can easily add them under the `extraEnvs` section within the charts for further customization. Values set under `extraEnvs` would take precedence over all configurations.
 
