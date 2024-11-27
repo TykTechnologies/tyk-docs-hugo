@@ -2798,6 +2798,10 @@ menu:
                     path: /tyk-developer-portal/tyk-portal-classic/graphql
                     category: Page
                     show: True
+                  - title: "Streams with Classic Portal"
+                    path: /tyk-developer-portal/tyk-portal-classic/streams
+                    category: Page
+                    show: True
                   - title: "Monetising your APIs"
                     path: /tyk-developer-portal/tyk-portal-classic/monetise
                     category: Page
@@ -3462,6 +3466,10 @@ menu:
             path: /product-stack/tyk-streaming/key-concepts
             category: Page
             show: True
+          - title: "Configure Streams API using dashboard"
+            path: /product-stack/tyk-streaming/streams-configuration-using-ui
+            category: Page
+            show: True
           - title: "Quick Start"
             path: /product-stack/tyk-streaming/getting-started
             category: Page
@@ -3954,7 +3962,7 @@ menu:
                 path: /tyk-identity-broker/getting-started
                 category: Page
                 show: True
-              - title: "TIB implementation with GitHub and OAuth 2.0"
+              - title: "Practical TIB Integration Examples"
                 path: /tyk-stack/tyk-identity-broker/auth-user-for-api-access-github-oauth
                 category: Page
                 show: True
@@ -3972,6 +3980,14 @@ menu:
             menu:
               - title: "Tyk Identity Broker Configuration Options"
                 path: /tyk-configuration-reference/tyk-identity-broker-configuration
+                category: Page
+                show: True
+          - title: "Release Notes"
+            category: Directory
+            show: True
+            menu:
+              - title: "Tyk Identity Broker 1.6"
+                path: /product-stack/tyk-identity-broker/release-notes/tib-v1.6
                 category: Page
                 show: True
       - title: "Tyk Helm Charts (Open Source)"
