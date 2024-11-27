@@ -96,7 +96,7 @@ If you are upgrading to 5.6.1, please follow the detailed [upgrade instructions]
   docker pull tykio/tyk-dashboard:v5.6.1
   ```
 - Helm charts
-  - [Tyk Charts v2.0.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.0.md">}})
+  - [Tyk Charts v2.0.0]({{<ref "developer-support/release-notes/helm-chart#200-release-notes">}})
 
 ### Changelog {#Changelog-v5.6.1}
 
@@ -201,7 +201,7 @@ If you are upgrading to 5.6.0, please follow the detailed [upgrade instructions]
   docker pull tykio/tyk-dashboard:v5.6.0
   ```
 - Helm charts
-  - [tyk-charts v2.1.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.1.md">}})
+  - [tyk-charts v2.1.0]({{<ref "developer-support/release-notes/helm-chart#210-release-notes">}})
 
 ### Changelog {#Changelog-v5.6.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
@@ -377,7 +377,7 @@ If you are upgrading to 5.5.2, please follow the detailed [upgrade instructions]
   docker pull tykio/tyk-dashboard:v5.5.2
   ```
 - Helm charts
-  - [Tyk Charts v2.0.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.0.md">}})
+  - [Tyk Charts v2.0.0]({{<ref "developer-support/release-notes/helm-chart#200-release-notes">}})
 
 ### Changelog {#Changelog-v5.5.2}
 
@@ -435,7 +435,7 @@ If you are upgrading to 5.5.1, please follow the detailed [upgrade instructions]
   docker pull tykio/tyk-dashboard:v5.5.1
   ```
 - Helm charts
-  - [Tyk Charts v2.0.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.0.md">}})
+  - [Tyk Charts v2.0.0]({{<ref "developer-support/release-notes/helm-chart#200-release-notes">}})
 
 ### Changelog {#Changelog-v5.5.1}
 
@@ -516,7 +516,7 @@ If you are upgrading to 5.5.0, please follow the detailed [upgrade instructions]
   docker pull tykio/tyk-dashboard:v5.5.0
   ```
 - Helm charts
-  - [tyk-charts v1.6]({{< ref "/product-stack/tyk-charts/release-notes/version-1.6.md" >}})
+  - [tyk-charts v1.6]({{< ref "/developer-support/release-notes/helm-chart#160-release-notes" >}})
 
 ### Changelog {#Changelog-v5.5.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
@@ -705,7 +705,7 @@ Introduced a features object in API definitions for GQL APIs, including the `use
   docker pull tykio/tyk-dashboard:v5.4.0
   ```
 - Helm charts
-  - [tyk-charts v1.5]({{< ref "/product-stack/tyk-charts/release-notes/version-1.5.md" >}})
+  - [tyk-charts v1.5]({{< ref "/developer-support/release-notes/helm-chart#150-release-notes" >}})
 
 ### Changelog {#Changelog-v5.4.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
@@ -898,7 +898,7 @@ If you are upgrading to 5.3.8, please follow the detailed [upgrade instructions]
     docker pull tykio/tyk-dashboard:v5.3.8
     ```
 - Helm charts
-  - [tyk-charts v2.0.0]({{< ref "product-stack/tyk-charts/release-notes/version-2.0.md" >}})
+  - [tyk-charts v2.0.0]({{< ref "developer-support/release-notes/helm-chart#200-release-notes" >}})
 
 ### Changelog {#Changelog-v5.3.8}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
@@ -999,7 +999,7 @@ If you are upgrading to 5.3.7, please follow the detailed [upgrade instructions]
   docker pull tykio/tyk-dashboard:v5.3.7
   ```
 - Helm charts
-  - [Tyk Charts v2.0.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.0.md">}})
+  - [Tyk Charts v2.0.0]({{<ref "developer-support/release-notes/helm-chart#200-release-notes">}})
 
 ### Changelog {#Changelog-v5.3.7}
 
@@ -1071,7 +1071,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
    docker pull tykio/tyk-dashboard:v5.3.6
    ```
 - Helm charts
- - [tyk-charts v2.0]({{< ref "product-stack/tyk-charts/release-notes/version-2.0.md" >}})
+ - [tyk-charts v2.0]({{< ref "developer-support/release-notes/helm-chart#200-release-notes" >}})
 
 ### Changelog {#Changelog-v5.3.6}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
@@ -1246,7 +1246,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
    docker pull tykio/tyk-dashboard:v5.3.5
    ```
 - Helm charts
- - [tyk-charts v2.0.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.0.md">}})
+ - [tyk-charts v2.0.0]({{<ref "developer-support/release-notes/helm-chart#200-release-notes">}})
 
 ### Changelog {#Changelog-v5.3.5}
 
@@ -1316,7 +1316,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
    docker pull tykio/tyk-dashboard:v5.3.4
    ```
 - Helm charts
- - [tyk-charts v1.4]({{< ref "product-stack/tyk-charts/release-notes/version-1.4.md" >}})
+ - [tyk-charts v1.4]({{< ref "developer-support/release-notes/helm-chart#140-release-notes" >}})
 
 ### Changelog {#Changelog-v5.3.4}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
@@ -1430,7 +1430,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
    docker pull tykio/tyk-dashboard:v5.3.3
    ```
 - Helm charts
- - [tyk-charts v1.4]({{< ref "product-stack/tyk-charts/release-notes/version-1.4.md" >}})
+ - [tyk-charts v1.4]({{< ref "developer-support/release-notes/helm-chart#140-release-notes" >}})
 
 ### Changelog {#Changelog-v5.3.3}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
@@ -1571,7 +1571,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
     docker pull tykio/tyk-dashboard:v5.3.2
     ```
 - Helm charts
-  - [tyk-charts v1.4]({{< ref "product-stack/tyk-charts/release-notes/version-1.4.md" >}})
+  - [tyk-charts v1.4]({{< ref "developer-support/release-notes/helm-chart#140-release-notes" >}})
 
 
 ### Changelog {#Changelog-v5.3.2}
@@ -1704,7 +1704,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
   docker pull tykio/tyk-dashboard:v5.3.1
   ```
 - Helm charts
-  - [tyk-charts v1.3]({{< ref "product-stack/tyk-charts/release-notes/version-1.3.md" >}})
+  - [tyk-charts v1.3]({{< ref "developer-support/release-notes/helm-chart#130-release-notes" >}})
 
 ### Changelog {#Changelog-v5.3.1}
 
