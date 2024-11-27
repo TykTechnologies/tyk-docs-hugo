@@ -123,13 +123,6 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Support for Custom OAuth Server Response Fields</summary>
-
-This update enables the Tyk API Gateway to handle custom data fields from non-standard OAuth 2.0 token responses, like Salesforce’s instance_url. Users can now specify which custom fields to extract from the OAuth server response, storing them in request context for use in other Tyk middlewares. Custom fields are configurable within the API spec under extra_metadata.
-</details>
-</li>
-<li>
-<details>
 <summary>Enhanced Stream Analytics Error Handling</summary>
 
 Expanded Streams analytics to capture and report common error scenarios, including broker connectivity issues and standard HTTP errors, ensuring comprehensive request tracking for Streams-processed requests.
