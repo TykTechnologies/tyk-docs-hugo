@@ -17,7 +17,7 @@ tags: ["Tyk Gateway", "Release notes", "v5.7", "5.7.0", "5.7", "changelog"]
 
 ## Support Lifetime
 <!-- Required. replace X.Y with this release and set the correct quarter of the year -->
-Our minor releases are supported until our next minor comes out.
+Minor releases are supported only until the next minor comes out.
 
 ---
 
