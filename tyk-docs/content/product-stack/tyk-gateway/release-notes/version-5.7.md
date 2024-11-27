@@ -207,7 +207,7 @@ Fixed a backwards compatibility issue with Tyk OAS API schema validation. When d
 <details>
 <summary>Optimized Gateway Handling for Large Payloads</summary>
 
-Fixed a regression that increased memory consumption when proxying large response payloads, even with enable_detailed_recording disabled. The Gateway now handles large payloads more efficiently in terms of speed and memory usage.
+Fixed an issue that caused increased memory consumption when proxying large response payloads. The Gateway now handles large payloads more efficiently in terms of speed and memory usage.
 </details>
 </li>
 </ul>
