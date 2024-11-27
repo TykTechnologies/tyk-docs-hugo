@@ -744,6 +744,10 @@ menu:
         path: /api-management/authentication-authorization
         category: Page
         show: True
+      - title: "Upstream Authentication"
+        path: /api-management/upstream-authentication
+        category: Page
+        show: False
       - title: "Automations"
         path: /api-management/automations
         category: Page
@@ -1317,62 +1321,62 @@ menu:
                 category: Directory
                 show: True
                 menu:
-              - title: "oauth"
-                category: page
-                show: False
-                path: /basic-config-and-security/security/authentication-authorization/ext-oauth-middleware
-              - title: "Security policies"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /basic-config-and-security/security/security-policies
-                    category: Page
-                    show: True
-                  - title: "Policies Guide"
-                    path: /basic-config-and-security/security/security-policies/policies-guide
-                    category: Page
-                    show: True
-                  - title: "Secure your APIs by Method and Path"
-                    path: /security/security-policies/secure-apis-method-path
-                    category: Page
-                    show: True
-                  - title: "Partitioned Policies"
-                    path: /basic-config-and-security/security/security-policies/partitioned-policies
-                    category: Page
-                    show: True
-              - title: "Gateway"
-                path: /basic-config-and-security/security/gateway
-                category: Page
-                show: True
-              - title: "Key Hashing"
-                path: /basic-config-and-security/security/key-hashing
-                category: Page
-                show: True
-              - title: "Key Level Security"
-                path: /basic-config-and-security/security/key-level-security
-                category: Page
-                show: True
-              - title: "Tyk and OWASP Top Ten Threats"
-                path: /basic-config-and-security/security/owasp-top-ten
-                category: Page
-                show: True
-              - title: "TLS and SSL"
-                path: /basic-config-and-security/security/tls-and-ssl
-                category: Page
-                show: True
-              - title: "Certificate Pinning"
-                path: /security/certificate-pinning
-                category: Page
-                show: True
-              - title: "Blocking Client IPs"
-                path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting
-                category: Page
-                show: True
-              - title: "Allowing Client IPs"
-                path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting
-                category: Page
-                show: True
+                - title: "oauth"
+                  category: page
+                  show: False
+                  path: /basic-config-and-security/security/authentication-authorization/ext-oauth-middleware
+                - title: "Security policies"
+                  category: Directory
+                  show: True
+                  menu:
+                    - title: "Overview"
+                      path: /basic-config-and-security/security/security-policies
+                      category: Page
+                      show: True
+                    - title: "Policies Guide"
+                      path: /basic-config-and-security/security/security-policies/policies-guide
+                      category: Page
+                      show: True
+                    - title: "Secure your APIs by Method and Path"
+                      path: /security/security-policies/secure-apis-method-path
+                      category: Page
+                      show: True
+                    - title: "Partitioned Policies"
+                      path: /basic-config-and-security/security/security-policies/partitioned-policies
+                      category: Page
+                      show: True
+                - title: "Gateway"
+                  path: /basic-config-and-security/security/gateway
+                  category: Page
+                  show: True
+                - title: "Key Hashing"
+                  path: /basic-config-and-security/security/key-hashing
+                  category: Page
+                  show: True
+                - title: "Key Level Security"
+                  path: /basic-config-and-security/security/key-level-security
+                  category: Page
+                  show: True
+                - title: "Tyk and OWASP Top Ten Threats"
+                  path: /basic-config-and-security/security/owasp-top-ten
+                  category: Page
+                  show: True
+                - title: "TLS and SSL"
+                  path: /basic-config-and-security/security/tls-and-ssl
+                  category: Page
+                  show: True
+                - title: "Certificate Pinning"
+                  path: /security/certificate-pinning
+                  category: Page
+                  show: True
+                - title: "Blocking Client IPs"
+                  path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting
+                  category: Page
+                  show: True
+                - title: "Allowing Client IPs"
+                  path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting
+                  category: Page
+                  show: True
               - title: "Control and limit traffic"
                 category: Directory
                 show: True
