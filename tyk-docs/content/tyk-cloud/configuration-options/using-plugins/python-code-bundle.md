@@ -116,6 +116,6 @@ docker run \
   -c '/opt/tyk-gateway/tyk bundle build -y'
 ```
 
-* A plugin bundle is a packaged version of the plugin, it may also contain a cryptographic signature of its contents. The -y flag tells the Tyk CLI tool to skip the signing process in order to simplify this tutorial. For more information on the Tyk CLI tool, see [here]({{< ref "plugins/how-to-serve-plugins/plugin-bundles.md#bundler-tool" >}}).
+* A plugin bundle is a packaged version of the plugin, it may also contain a cryptographic signature of its contents. The -y flag tells the Tyk CLI tool to skip the signing process in order to simplify this tutorial. For more information on the Tyk CLI tool, see [here]({{< ref "plugins/how-to-serve-plugins/plugin-bundles.md" >}}).
 * You should now have a `bundle.zip` file in the plugin working directory.
 * Next you will configure [uploading your plugin bundle file]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your Amazon S3 bucket.
