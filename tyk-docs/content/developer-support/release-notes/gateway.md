@@ -3727,7 +3727,7 @@ There are no breaking changes in this release.
 
 ### Upgrade Instructions
 
-Go to the [Upgrading Tyk](https://tyk.io/docs/product-stack/tyk-gateway/release-notes/version-5.0/#upgrading-tyk)
+Go to the [Upgrading Tyk](https://tyk.io/docs/developer-support/release-notes/gateway#upgrading-tyk)
 section for detailed upgrade instructions.
 
 ### Release Highlights
@@ -3784,7 +3784,7 @@ There are no breaking changes in this release.
 
 This release is not tightly coupled with Tyk Dashboard v5.0.14, so you do not have to upgrade both together.
 
-Go to the [Upgrading Tyk](https://tyk.io/docs/product-stack/tyk-gateway/release-notes/version-5.0/#upgrading-tyk)
+Go to the [Upgrading Tyk](https://tyk.io/docs/developer-support/release-notes/gateway#upgrading-tyk)
 section for detailed upgrade instructions.
 
 ### Release Highlights

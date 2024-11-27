@@ -51,7 +51,7 @@ This release represents a significant upgrade for both API management and securi
 For details please refer to the [changelog]({{< ref "#Changelog-v1.0.0">}}) below.
 
 
-### Breaking Changes
+### Breaking Changes {#breaking-changesv1.0.0}
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 <!-- This release has no breaking changes. -->
 **License Requirement:** Tyk Operator is now a closed-source product and requires a valid license key to operate. Please follow our [Installation and Upgrade Guide]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}}) to set your license key before installation or upgrade.
