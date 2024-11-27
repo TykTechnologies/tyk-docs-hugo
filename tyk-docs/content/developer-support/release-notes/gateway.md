@@ -1740,7 +1740,7 @@ the parameter. For example, a request to `/user/` will now be interpreted as a r
 
 Gateway 5.3.4 was version bumped only, to align with Dashboard 5.3.4. Subsequently, no changes were encountered in
 release 5.3.4. For further information please see the release notes for Dashboard
-[v5.3.4]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.3.md" >}})
+[v5.3.4]({{< ref "developer-support/release-notes/dashboard#530-release-notes" >}})
 
 ### Breaking Changes
 
@@ -2323,7 +2323,7 @@ dependencies are used to provide plugin compiler functionality.
 
 This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "developer-support/special-releases-and-features/early-access-features" >}}).
 
-For licensed deployments (Tyk Cloud, Self Managed including MDCB), please refer to the [release notes of Tyk Dashboard 5.3.0]({{<ref "product-stack/tyk-dashboard/release-notes/version-5.3.md">}}).
+For licensed deployments (Tyk Cloud, Self Managed including MDCB), please refer to the [release notes of Tyk Dashboard 5.3.0]({{<ref "developer-support/release-notes/dashboard#530-release-notes">}}).
 
 - **Out of Early Access**
   - This means that from now on, all Tyk OAS APIs will be backwards compatible and in case of a downgrade from v5.3.X to
@@ -2431,7 +2431,7 @@ Once you put an item in this section, we must keep this item listed in all the f
 If you are upgrading to 5.3.0, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
 **The following steps are essential to follow before upgrading** Tyk Cloud (including Hybrid Gateways) and Self Managed
-users - Please refer to the [release notes of Tyk Dashboard 5.3.0]({{<ref "product-stack/tyk-dashboard/release-notes/version-5.3.md">}}).
+users - Please refer to the [release notes of Tyk Dashboard 5.3.0]({{<ref "developer-support/release-notes/dashboard#530-release-notes">}}).
 
 For OSS deployments -
 
