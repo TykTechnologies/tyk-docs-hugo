@@ -193,7 +193,7 @@ Fixed an issue in the Tyk Classic API Designer where if you changed the protocol
 <details>
 <summary>Unable to configure external OAuth flow using Raw API editor</summary>
 
-Fixed an issue in the Classic API Designer where the 'use_standard_auth' value was constantly reverting to 'true' when editing an API with an [external OAuth flow]({{< ref "basic-config-and-security/security/authentication-authorization/ext-oauth-middleware" >}}). This fix ensures the 'use_standard_auth' value remains consistent, enabling the use of external OAuth via the Raw API editor.
+Fixed an issue in the Classic API Designer where the 'use_standard_auth' value was constantly reverting to 'true' when editing an API with an [external OAuth flow]({{< ref "/api-management/authentication-authorization#integrate-external-oauth-middleware" >}}). This fix ensures the 'use_standard_auth' value remains consistent, enabling the use of external OAuth via the Raw API editor.
 </details>
 </li>
 <li>

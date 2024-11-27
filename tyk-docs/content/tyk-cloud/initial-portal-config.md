@@ -20,20 +20,20 @@ Watch our video on configuring your Tyk Cloud Developer Portal.
 1. From the Control Plane Dashboard, select **Pages** from the **Portal Management** menu
 2. Click **Add Page**
 
-{{< img src="/img/2.10/portal-home-page-add.png" alt="Add Portal Page" >}}
+{{< img src="/img/getting-started/create-account-portal-pages.png" alt="Add Portal Page" >}}
 
 3. In the Settings, give your page a name and slug. Below we've called it Home
 4. Select **Check to make this page the Home page**
 5. Select **Default Home page template** from the Page type drop-down list
 6. You can leave the Registered Fields sections for now
 
-{{< img src="/img/2.10/portal-home-page-settings.png" alt="Portal Home page settings" >}}
+{{< img src="/img/getting-started/create-account-portal-pages.png" alt="Portal Home page settings" >}}
 
 7. Click **Save**.
 
 You should now be able to access your Portal from **Open Your Portal** from the **Your Developer Portal** menu.
 
-{{< img src="/img/2.10/portal_menu.png" alt="Portal Menu" >}}
+{{< img src="/img/getting-started/portal_menu.png" alt="Portal Menu" >}}
 
 ## Further Portal Configuration
 

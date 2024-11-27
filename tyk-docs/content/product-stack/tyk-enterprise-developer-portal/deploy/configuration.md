@@ -566,6 +566,10 @@ PORTAL_CORS_ALLOWED_METHODS=GET,POST,HEAD
 **Type:** `int` <br/>
 **Description**: Indicates how long the results of a preflight request can be cached. The default value is `0` which stands for no max age.
 
+### PORTAL_DISABLE_CSRF_CHECK
+**Config file:** DisableCSRFCheck <br/>
+**Type:** `bool` <br/>
+**Description**: When set to `true`, disables CSRF protection for all routes. By default, CSRF protection is enabled to prevent cross-site request forgery attacks. Only disable this in development environments or when you have alternative security measures in place.
 
 ### PORTAL_CORS_ALLOW_CREDENTIALS
 **Config file:** CORS.AllowCredentials <br/>
@@ -581,6 +585,7 @@ PORTAL_CORS_ALLOWED_METHODS=GET,POST,HEAD
 **Config file:** NotificationsJobFrequency <br/>
 **Type:** `int` <br/>
 **Description**: Defines the frequency of the notifications job that fetch notifications from the portal's database in minutes. The default value is `30` minutes.
+
 
 ## Sample config file
 ```json
