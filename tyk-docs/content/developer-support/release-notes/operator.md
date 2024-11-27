@@ -2,6 +2,12 @@
 title: Tyk Operator 1.0 Release Notes
 tag: ["Tyk Operator", "Release notes", "v1.0", "changelog" ]
 description: "Release notes documenting updates, enhancements, fixes and changes for Tyk Operator versions within the 1.0.x series."
+aliases:
+  - tyk-docs/content/product-stack/tyk-operator/release-notes/operator-0.16
+  - tyk-docs/content/product-stack/tyk-operator/release-notes/operator-0.17
+  - tyk-docs/content/product-stack/tyk-operator/release-notes/operator-0.18
+  - tyk-docs/content/product-stack/tyk-operator/release-notes/operator-1.0
+  - tyk-docs/content/product-stack/tyk-operator/release-notes/overview
 ---
 **Licensed Protected Product**
 

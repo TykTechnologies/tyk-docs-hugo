@@ -3,6 +3,10 @@ title: Tyk Pump v1.11 Release Notes
 date: 2024-02-02T26:33:11Z
 description: "Release notes documenting updates, enhancements and changes for Tyk Pump versions within the 1.11.X series."
 tags: ["Tyk Pump", "Release notes", "v1.11", "changelog"]
+aliases:
+  - tyk-docs/content/product-stack/tyk-pump/release-notes/pump-1.10
+  - tyk-docs/content/product-stack/tyk-pump/release-notes/pump-1.11
+  - tyk-docs/content/product-stack/tyk-pump/release-notes/pump-1.9
 ---
 
 **Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))

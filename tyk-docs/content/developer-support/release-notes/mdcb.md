@@ -2,6 +2,11 @@
 title: Tyk MDCB v2.7 Release Notes
 description: "Tyk Multi Data-Center Bridge v2.7 release notes"
 tags: ["release notes", "MDCB", "Tyk Multi Data-Center", "Tyk Multi Data-Center", "v2.7", "2.7"]
+aliases:
+  - tyk-docs/content/product-stack/tyk-enterprise-mdcb/release-notes/version-2.4
+  - tyk-docs/content/product-stack/tyk-enterprise-mdcb/release-notes/version-2.5
+  - tyk-docs/content/product-stack/tyk-enterprise-mdcb/release-notes/version-2.6
+  - tyk-docs/content/product-stack/tyk-enterprise-mdcb/release-notes/version-2.7
 ---
 
 Licensed Protected Product

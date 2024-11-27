@@ -4,6 +4,29 @@ date: 2024-10-08T15:51:11Z
 description:
   "Release notes documenting updates, enhancements, and changes for Tyk Gateway versions within the 5.6.X series."
 tags: ["Tyk Gateway", "Release notes", "v5.6", "5.6.0", "5.6.1", "5.6", "changelog"]
+aliases:
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/archived-releases/upgrading-v2-3-v2-2
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/archived-releases/version-2.4
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/archived-releases/version-2.5
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/archived-releases/version-2.6
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/archived-releases/version-2.7
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/archived-releases/version-2.8
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/archived-releases/version-2.9
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/overview
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-3.0
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-3.1
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-3.2
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-4.0
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-4.1
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-4.2
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-4.3
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-5.0
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-5.1
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-5.2
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-5.3
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-5.4
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-5.5
+  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-5.6
 ---
 
 **Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))
@@ -3620,27 +3643,27 @@ Fixed a critical issue in MDCB v2.3 deployments, relating to *Data Plane* stabil
 
 ### Release Date 23 June 2023
 
-#### Breaking Changes
+### Breaking Changes
 
 **Attention warning*: Please read carefully this section.
 
-##### Golang Version upgrade
+#### Golang Version upgrade
 Our Gateway is using [Golang 1.19](https://tip.golang.org/doc/go1.19) programming language starting with the 5.1 release. This brings improvements to the code base and allows us to benefit from the latest features and security enhancements in Go. Don’t forget that, if you’re using GoPlugins, you'll need to [recompile]({{< ref "plugins/supported-languages/golang#upgrading-your-tyk-gateway" >}}) these to maintain compatibility with the latest Gateway.
 
-##### Early Access Features:
+#### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "developer-support/special-releases-and-features/early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
-#### Deprecations
+### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade Instructions
+### Upgrade Instructions
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
-#### Release Highlights
+### Release Highlights
  
-##### Request Body Size Limits
+#### Request Body Size Limits
 
 We have introduced a new Gateway-level option to limit the size of requests made
 to your APIs. You can use this as a first line of defense against overly large
@@ -3650,35 +3673,35 @@ per-endpoint size limits so you can be as granular as you need to protect and
 optimize your services. Check out our improved documentation for full
 description of how to use these powerful [features]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits" >}}).
 
-##### Changed default RPC pool size for MDCB deployments
+#### Changed default RPC pool size for MDCB deployments
 
 We have reduced the default RPC pool size from 20 to 5. This can reduce the CPU and
 memory footprint in high throughput scenarios. Please monitor the CPU and memory
 allocation of your environment and adjust accordingly. You can change the pool
 size using [slave_options.rpc_pool_size]({{< ref "tyk-oss-gateway/configuration#slave_optionsrpc_pool_size" >}})
 
-#### Downloads
+### Downloads
 
 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.1/images/sha256-3d1e64722be1a983d4bc4be9321ca1cdad10af9bb3662fd6824901d5f22820f1?context=explore)
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.1.0)
 
 
-#### Changelog
+### Changelog
 
-##### Added
+#### Added
 
 - Added `HasOperation`, `Operation` and `Variables` to GraphQL data source API definition for easier nesting
 - Added abstractions/interfaces for ExecutionEngineV2 and ExecutionEngine2Executor with respect to graphql-go-tools
 - Added support for the `:authority` header when making GRPC requests. If the `:authority` header is not present then some GRPC servers return PROTOCOL_ERROR which prevents custom GRPC plugins from running. Thanks to [vanhtuan0409](https://github.com/vanhtuan0409) from the Tyk Community for his contribution!
 
-##### Changed
+#### Changed
 
 - Tyk Gateway updated to use Go 1.19
 - Updated [_kin-openapi_](https://github.com/getkin/kin-openapi) dependency to the version [v0.114.0](https://github.com/getkin/kin-openapi/releases/tag/v0.114.0)
 - Enhanced the UDG parser to comprehensively extract all necessary information for UDG configuration when users import to Tyk their OpenAPI document as an API definition
 - Reduced default CPU and memory footprint by changing the default RPC pool size from 20 to 5 connections.
 
-##### Fixed
+#### Fixed
 
 - Fixed an issue where invalid IP addresses could be added to the IP allow list
 - Fixed an issue when using custom authentication with multiple authentication methods, custom authentication could not be selected to provide the base identity
@@ -3687,9 +3710,9 @@ size using [slave_options.rpc_pool_size]({{< ref "tyk-oss-gateway/configuration#
 - Fixed minor versioning, URL and field mapping issues when importing OpenAPI document as an API definition to UDG
 - When the control API is not protected with mTLS we now do not ask for a cert, even if all the APIs registered have mTLS as an authorization mechanism
 
-#### Tyk Classic Portal Changelog
+### Tyk Classic Portal Changelog
 
-##### Changed
+#### Changed
 
 - Improved performance when opening the Portal page by optimizing the pre-fetching of required data
 
@@ -3984,19 +4007,19 @@ Please refer to our GitHub [release notes](https://github.com/TykTechnologies/ty
 
 ### Release Date 29 May 2023
 
-#### Release Highlights
+### Release Highlights
 
 This release primarily focuses on bug fixes. For a comprehensive list of changes, please refer to the detailed
 [changelog]({{< ref "#Changelog-v5.0.2">}}) below.
 
-#### Downloads
+### Downloads
 
 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.0.2/images/sha256-5e126d64571989f9e4b746544cf7a4a53add036a68fe0df4502f1e62f29627a7?context=explore)
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.2)
 
-#### Changelog {#Changelog-v5.0.2}
+### Changelog {#Changelog-v5.0.2}
 
-##### Updated
+#### Updated
 
 - Internal refactoring to make storage related parts more stable and less affected by potential race issues
 
@@ -4006,23 +4029,23 @@ This release primarily focuses on bug fixes. For a comprehensive list of changes
 
 ### Release Date 25 Apr 2023
 
-#### Release Highlights
+### Release Highlights
 
 This release primarily focuses on bug fixes. For a comprehensive list of changes, please refer to the detailed
 [changelog]({{< ref "#Changelog-v5.0.1">}}) below.
 
-#### Downloads
+### Downloads
 
 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.0.1/images/sha256-5fa7aa910d62a7ed2c1cfbc68c69a988b4b0e9420d7a52018f80f9a45cadb083?context=explore
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.1)
 
-#### Changelog {#Changelog-v5.0.1}
+### Changelog {#Changelog-v5.0.1}
 
-##### Added
+#### Added
 
 - Added a new `enable_distributed_tracing` option to the NewRelic config to enable support for Distributed Tracer
 
-##### Fixed
+#### Fixed
 
 - Fixed panic when JWK method was used for JWT authentication and the token didn't include kid
 - Fixed an issue where failure to load GoPlugin middleware didn’t prevent the API from proxying traffic to the upstream:
@@ -4046,14 +4069,14 @@ This release primarily focuses on bug fixes. For a comprehensive list of changes
 
 ### Release Date 28 Mar 2023
 
-#### Deprecations
+### Deprecations
 
 - Tyk Gateway no longer natively supports **LetsEncrypt** integration. You still can use LetsEncrypt CLI tooling to
   generate certificates and use them with Tyk.
 
-#### Release Highlights
+### Release Highlights
 
-##### Improved OpenAPI support
+#### Improved OpenAPI support
 
 We have added some great features to the Tyk OAS API definition bringing it closer to parity with our Tyk Classic API
 and to make it easier to get on board with Tyk using your Open API workflows.
@@ -4079,14 +4102,14 @@ Thanks to our community contributors [armujahid](https://github.com/armujahid),
 [JordyBottelier](https://github.com/JordyBottelier) and [ls-michal-dabrowski](https://github.com/ls-michal-dabrowski)
 for your PRs that further improve the quality of Tyk OSS Gateway!
 
-#### Downloads
+### Downloads
 
 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.0.0/images/sha256-196815adff2805ccc14c267b14032f23913321b24ea86c052b62a7b1568b6725?context=explore)
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.0)
 
-#### Changelog {#Changelog-v5.0.0}
+### Changelog {#Changelog-v5.0.0}
 
-##### Added
+#### Added
 
 - Support for request validation (including query params, headers and the rest of OAS rules) with Tyk OAS APIs
 - Transform request/response middleware for Tyk OAS APIs
@@ -4097,9 +4120,513 @@ for your PRs that further improve the quality of Tyk OSS Gateway!
   information it to your subgraphs
 - Now you can control access to introspection on policy and key level
 
-#### Fixed
+### Fixed
 
 - Fixed potential race condition when using distributed rate limiter
 
 ---
 
+## 4.3.0 Release Notes
+
+### Release Highlights
+
+#### Mock Responses with Tyk OAS API Definitions
+
+Does your Tyk OAS API Definition define examples or a schema for your path responses? If so, starting with Tyk v4.3, Tyk can use those configurations to mock your API responses, enabling your teams to integrate easily without being immediately dependent on each other. Check it out! [Mock Responses Documentation]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}})
+
+#### External OAuth - 3rd party OAuth IDP integration
+
+If you’re using a 3rd party IDP to generate tokens for your OAuth applications, Tyk can now validate the generated tokens by either performing JWT validation or by communicating with the authorization server and executing token introspection. 
+
+This can be achieved by configuring the new External OAuth authentication mechanism. Find out more here [External OAuth Integration]({{< ref "/api-management/authentication-authorization#integrate-external-oauth-middleware" >}})
+
+#### Updated the Tyk Gateway version of Golang, to 1.16.
+
+**Our Gateway is using Golang 1.16 version starting with 4.3 release. This version of the Golang release deprecates x509 commonName certificates usage. This will be the last release where it's still possible to use commonName, users need to explicitly re-enable it with an environment variable.**
+
+The deprecated, legacy behavior of treating the CommonName field on X.509 certificates as a host name when no Subject Alternative Names are present is now disabled by default. It can be temporarily re-enabled by adding the value x509ignoreCN=0 to the GODEBUG environment variable.
+
+Note that if the CommonName is an invalid host name, it's always ignored, regardless of GODEBUG settings. Invalid names include those with any characters other than letters, digits, hyphens and underscores, and those with empty labels or trailing dots.
+
+#### Improved GQL security
+
+4.3 adds two important features that improve security settings for GraphQL APIs in Tyk.
+
+1. Ability to turn on/off introspection - this feature allows much more control over what consumers are able to do when interacting with a GraphQL API. In cases where introspection is not desirable, API managers can now disallow it. The setting is done on API key level, which means API providers will have very granular control over who can and who cannot introspect the API.
+2. Support for allow list in field-based permissions - so far Tyk was offering field-based permissions as a “block list” only. That meant that any new field/query added to a graph was by default accessible for all consumers until API manager explicitly blocked it on key/policy level. Adding support for “allow list” gives APi managers much more control over changing schemas and reduces the risk of unintentionally exposing part of the graph that are not ready for usage. See [Introspection]({{< ref "graphql/introspection" >}}) for more details.
+
+
+### Changelog
+
+#### Tyk Gateway
+
+##### Added
+- Minor modifications to the Gateway needed for enabling support for Graph Mongo Pump.
+- Added header `X-Tyk-Sub-Request-Id` to each request dispatched by federated supergraph and Universal Data Graph, so that those requests can be distinguished from requests directly sent by consumers.
+- Added a functionality that allows to block introspection for any GraphQL API, federated supergraph and Universal Data Graph (currently only supported via Gateway, UI support coming in the next release).
+- Added an option to use allow list in field-based permissions. Implemented for full types and individual fields. (currently only supported via Gateway, UI support coming in the next release)
+- Added new middleware that can be used with HTTP APIs to set up persisted queries for GraphQL upstreams.
+- Added support for two additional subscription protocols for GraphQL subscriptions. Default protocol used between the gateway and upstream remains to be `graphql-ws`, two additional protocols are possible to configure and use: `graphql-transport-ws` and `SSE`.
+
+##### Changed
+
+Updated the Tyk Gateway version of Golang, to 1.16. 
+
+**SECURITY: The release deprecates x509 commonName certificates usage. This will be the last release where it's still possible to use commonName, users need to explicitly re-enable it with an environment variable.**
+
+The deprecated, legacy behavior of treating the CommonName field on X.509 certificates as a host name when no Subject Alternative Names are present is now disabled by default. It can be temporarily re-enabled by adding the value x509ignoreCN=0 to the GODEBUG environment variable.
+
+Note that if the CommonName is an invalid host name, it's always ignored, regardless of GODEBUG settings. Invalid names include those with any characters other than letters, digits, hyphens and underscores, and those with empty labels or trailing dots.
+
+##### Fixed
+
+- Fixed an issue where introspection query was returning a wrong response in cases where introspection query had additional objects.
+- Fixed an issue where gateway was crashing when a subscription was started while no datasource was connected to it.
+- Fixed a problem with missing configuration in the GraphQL config adapter that caused issues with batching requests to subgraphs in GraphQL API federation setting.
+- A HTTP OAS API version lifetime respects now the date value of the expiration field from Tyk OAS API Definition.
+- Now it is possible to proxy traffic from a HTTP API (using Tyk Classic API Definition) to a HTTP OAS API (using Tyk OAS API Definition) and vice versa.
+
+
+### Updated Versions
+
+Tyk Gateway 4.3 ([docker images](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=1&name=4.3.0)
+
+### Upgrade process
+
+Follow the [standard upgrade guide]({{< ref "upgrading-tyk" >}}), there are no breaking changes in this release.
+
+If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "planning-for-production/database-settings/postgresql#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
+
+{{< note success >}}
+**Note**  
+
+Note: Upgrading the Golang version implies that all the Golang custom plugins that you are using need to be recompiled before migrating to 4.3 version of the Gateway. Check our docs for more details [Golang Plugins]({{< ref "/content/plugins/supported-languages/golang.md" >}}).
+{{< /note >}}
+
+## 4.2.0 Release Notes
+
+### Release Highlights
+
+#### GraphQL Federation improvements
+
+##### Changed GUI in Universal Data Graph configuration section.
+
+A new GUI introduces enhancements to the user experience and more consistent user journey for UDG. 
+This change does not yet cover all possible use cases and is released with a feature flag. To enable the new GUI, analytics.conf needs the following setting:
+
+```
+"ui": {
+  "dev": true
+}
+```
+
+What’s possible with this change:
+- Importing GraphQL schema created outside of Tyk (formats accepted .json, .graphql, .grahqls)
+- Creating GraphQL schema in Tyk using schema editor
+- Hide/Unhide schema editor to focus on graphical representation of the schema
+- Resizing schema editor to adjust workspace look & feel to user preferences
+- Improved search in schema editor (search and search & replace available)
+- Quick link to UDG documentation from schema editor
+
+> Note: Full configuration of new Universal Data Graph is not yet possible in the GUI, however any UDGs created earlier will not be broken and will work as previously. 
+
+#### Changes to federation entities
+##### Defining the base entity
+Entities must be defined with the `@key` directive. The fields argument must reference a field by which the entity can be uniquely identified. Multiple primary keys are possible. For example:
+
+Subgraph 1 (base entity):
+```
+type MyEntity @key(fields: "id") @key(fields: "name") {
+  id: ID!
+  name: String!
+}
+```
+ Attempting to extend a non-entity with an extension that includes the @key directive or attempting to extend a base entity with an extension that does not include the @key directive will both result in errors.
+
+##### Entity stubs
+
+Entities cannot be shared types (be defined in more than one single subgraph).
+If one subgraph references a base entity (an entity defined in another subgraph), that reference must be declared as a stub (stubs look like an extension without any new fields in federation v1). This stub would contain the minimal amount of information to identify the entity (referencing exactly one of the primary keys on the base entity regardless of whether there are multiple primary keys on the base entity). For example, a stub for MyEntity from Subgraph 1 (defined above):
+
+Subgraph 2 (stub)
+```
+extend type MyEntity @key(fields: "id") {
+  id: ID! @external
+}
+```
+
+##### Supergraph extension orphans
+It is now possible to define an extension for a type in a subgraph that does not define the base type.
+However, if an extension is unresolved (an extension orphan) after an attempted federation, the federation will fail and produce an error.
+
+##### Improved Dashboard UI and error messages
+GraphQL-related (for example when federating subgraphs into a supergraph) errors in the Dashboard UI will show a lean error message with no irrelevant prefixes or suffixes.
+
+Changed the look & feel of request logs in Playground tab for GraphQL APIs. New component presents all logs in a clearer way and is easier to read for the user
+
+##### Shared types
+Types of the same name can be defined in more than one subgraph (a shared type). This will no longer produce an error if each definition is identical.
+Shared types cannot be extended outside of the current subgraph, and the resolved extension must be identical to the resolved extension of the shared type in all other subgraphs (see subgraph normalization notes). Attempting to extend a shared type will result in an error.
+The federated supergraph will include a single definition of a shared type, regardless of how many times it has been identically defined in its subgraphs.
+
+##### Subgraph normalization before federation
+Extensions of types whose base type is defined in the same subgraph will be resolved before an attempt at federation. A valid example involving a shared type:
+
+Subgraph 1:
+```
+enum Example {
+  A,
+  B
+}
+
+extend enum Example {
+  C  
+}
+```
+
+Subgraph 2:
+```
+enum Example {
+  A,
+  B,
+  C
+}
+```
+ 
+The enum named “Example” defined in Subgraph 1 would resolve to be identical to the same-named enum defined in Subgraph 2 before federation takes place. The resulting supergraph would include a single definition of this enum.
+
+##### Validation
+Union members must be both unique and defined.
+Types must have bodies, e.g., enums must contain at least one value; inputs, interfaces, or objects must contain at least one field
+
+#### OpenAPI 
+Added support for the Request Body Transform middleware, for new Tyk OAS API Definitions.
+
+#### Universal Data Graph
+
+Added support for Kafka as a data source in Universal Data Graph. Configuration allows the user to provide multiple topics and broker addresses.
+
+### Changelog
+
+#### Tyk Gateway
+##### Added
+- Added support for Kafka as a data source in Universal Data Graph.
+- Adding a way to defining the base GraphQL entity via @key directive
+- It is now possible to define an extension for a type in a subgraph that does not define the base type.
+- Added support for the Request Body Transform middleware, for the new Tyk OAS API Definition
+- Session lifetime now can be controled by Key expiration, e.g. key removed when it is expired. Enabled by setting `session_lifetime_respects_key_expiration` to `true`
+##### Changed
+- Generate API ID when API ID is not provided while creating API. 
+- Updated the Go plugin loader to load the most appropriate plugin bundle, honoring the Tyk version, architecture and OS
+- When GraphQL query with a @skip directive is sent to the upstream it will no longer return “null” for the skipped field, but remove the field completely from the response
+- Added validation to Union members - must be both unique and defined.
+##### Fixed
+- Fixed an issue where the Gateway would not create the circuit breaker events (BreakerTripped and BreakerReset) for which the Tyk Dashboard offers webhooks.
+- Types of the same name can be defined in more than one subgraph (a shared type). This will no longer produce an error if each definition is exactly identical.
+- Apply Federation Subgraph normalization do avoid merge errors. Extensions of types whose base type is defined in the same subgraph will be resolved before an attempt at federation.
+
+### Updated Versions
+Tyk Gateway 4.2
+
+### Upgrade process
+
+Follow the [standard upgrade guide]({{< ref "/content/upgrading-tyk.md" >}}), there are no breaking changes in this release.
+
+If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "/content/planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
+
+## 4.1.0 Release Notes
+
+### Release Highlights
+
+#### OpenAPI as a native API definition format
+Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 we now support defining APIs using the Open API Specification (OAS) as well, which can offer significant time and complexity savings. [This is an early access capability]({{< ref "developer-support/special-releases-and-features/early-access-features" >}}).
+
+As we extend our OAS support, we would very much like your feedback on how we can extend and update to best meet your needs: .
+
+This capability is available in both the open source and paid versions of Tyk. See our [High Level Concepts]({{< ref "getting-started/key-concepts/high-level-concepts" >}}) for more details, or jump to [OAS Getting Started documentation]({{< ref "getting-started/using-oas-definitions/create-an-oas-api" >}}).
+
+
+#### MDCB Synchroniser
+
+Tyk Gateway v4.1 enables an improved synchroniser functionality within Multi Data Center Bridge (MDCB) v2.0. Prior to this release, the API keys, certificates and OAuth clients required by worker Gateways were synchronised from the controller Gateway on-demand. With Gateway v4.1 and MDCB v2.0 we introduce proactive synchronisation of these resources to the worker Gateways when they start up.
+ 
+This change improves resilience in case the MDCB link or controller Gateway is unavailable, because the worker Gateways can continue to operate independently using the resources stored locally. There is also a performance improvement, with the worker Gateways not having to retrieve resources from the controller Gateway when an API is first called.
+ 
+Changes to keys, certificates and OAuth clients are still synchronised to the worker Gateways from the controller when there are changes and following any failure in the MDCB link.
+
+#### Go Plugin Loader
+When upgrading your Tyk Installation you need to re-compile your plugin with the new version. At the moment of loading a plugin, the Gateway will try to find a plugin with the name provided in the API definition. If none is found then it will fallback to search the plugin file with the name: `{plugin-name}_{Gw-version}_{OS}_{arch}.so`
+
+From v4.1.0 the plugin compiler automatically names plugins with the above naming convention. It enables you to have one directory with different versions of the same plugin. For example:
+
+- `plugin_v4.1.0_linux_amd64.so`
+- `plugin_v4.2.0_linux_amd64.so`
+
+So, if you upgrade from Tyk v4.1.0 to v4.2.0 you only need to have the plugins compiled for v4.2.0 before performing the upgrade.
+
+### Changelog
+
+#### Tyk Gateway
+##### Added
+- Added support for new OAS API definition format
+- Added support for headers on subgraph level for federated GraphQL APIs
+- Added support for interfaces implementing interfaces in GQL schema editor
+- Added support for passing authorization header in GQL API Playgrounds for subscription APIs
+- Added TYK_GW_OMITCONFIGFILE option for Tyk Gateway to ignore the values in the config file and load its configuration only from environment variables and default values
+- Added a way to modify Tyk analytics record via Go plugins [configurable with API definition](https://tyk.io/docs/plugins/analytics-plugins/). Can be used to sanitise analytics data. 
+- Added new policy API REST endpoints
+- Added option to configure certificates for Tyk Gateway using [environment variable](https://tyk.io/docs/tyk-oss-gateway/configuration/#http_server_optionscertificates)
+- Added support for Python 3.9 plugins
+- Added support for headers on subgraph level for federated GraphQL APIs
+- Added support for introspecting schemas with interfaces implementing interfaces for proxy only GQL
+- Added support for input coercion in lists for GraphQL
+- Added support for repeatable directives for GraphQL
+##### Changed
+- Generate API ID when API ID is not provided while creating API. 
+- Updated the Go plugin loader to load the most appropriate plugin bundle, honoring Tyk version, architecture and OS
+- When a GraphQL query with a @skip directive is sent to the upstream it will no longer return “null” for the skipped field, but remove the field completely from the response
+##### Fixed
+- Fixed a bug where the MDCB worker Gateway could become unresponsive when a certificate is added in the Tyk Dashboard
+- Fixed an issue with the calculation of TTL for keys in an MDCB deployment such that TTL could be different between worker and controller Gateways
+- Fixed a bug when using Open ID where quota was not tracked correctly
+- Fixed multiple issues with schema merging in GraphQL federation. Federation subgraphs with the same name shared types like objects, interfaces, inputs, enums, unions and scalars will no longer cause errors when users are merging schemas into a federated supergraph.
+- Fixed an issue where schema merging in GraphQL federation could fail depending on the order or resolving subgraph schemas and only first instance of a type and its extension would be valid. Subgraphs are now individually normalized before a merge is attempted and all extensions that are possible in the federated schema are applied.
+- Fixed an issue with accessing child properties of an object query variable for GraphQL where query {{.arguments.arg.foo}} would return "{ "foo":"123456" }" instead of "123456"
+
+### Updated Versions
+Tyk Gateway 4.1
+Tyk MDCB 2.0.1
+
+### Upgrade process
+
+Follow the [standard upgrade guide]({{< ref "/content/upgrading-tyk.md" >}}), there are no breaking changes in this release.
+
+If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "/content/planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
+ 
+## 4.0.0 Release Notes
+
+### Release Highlights
+
+#### GraphQL federation
+
+As we know, ease-of-use is an important factor when adopting GraphQL. Modern enterprises have dozens of backend services and need a way to provide a unified interface for querying them. Building a single, monolithic GraphQL server is not the best option. It is hard to maintain and leads to a lot of dependencies and over-complication.
+
+To remedy this, Tyk 4.0 offers GraphQL federation that allows the division of GraphQL implementation across multiple backend services, while still exposing them all as a single graph for the consumers. Subgraphs represent backend services and define a distinct GraphQL schema. A subgraph can be queried directly, as a separate service or federated in the Tyk Gateway into a larger schema of a supergraph – a composition of several subgraphs that allows execution of a query across multiple services in the backend.
+
+[Federation docs]({{< ref "/content/getting-started/key-concepts/graphql-federation.md" >}})
+
+[Subgraphs and Supergraphs docs]({{< ref "/content/getting-started/key-concepts/graphql-federation.md#subgraphs-and-supergraphs" >}})
+
+#### GraphQL subscriptions
+
+Subscriptions are a way to push data from the server to the clients that choose to listen to real-time messages from the server, using the WebSocket protocol. There is no need to enable subscriptions separately; Tyk supports them alongside GraphQL as standard.
+
+With release 4.0, users can federate GraphQL APIs that support subscriptions. Federating subscriptions means that events pushed to consumers can be enriched with information from other federated graphs.
+
+[Subscriptions docs]({{< ref "/content/getting-started/key-concepts/graphql-subscriptions.md" >}})
+
+### Changelog
+
+- Now it is possible to configure GraphQL upstream authentification, in order for Tyk to work with its schema
+- JWT scopes now support array and comma delimeters
+- Go plugins can be attached on per-endpoint level, similar to virtual endpoints
+
+### Updated Versions
+
+Tyk Gateway 4.0
+Tyk Pump 1.5
+
+### Upgrade process
+
+Follow the [standard upgrade guide]({{< ref "/content/upgrading-tyk.md" >}}), there are no breaking changes in this release.
+
+If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "/content/planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
+ 
+## 3.2.0 Release Notes
+
+### Release Highlights
+
+#### GraphQL and UDG improvements
+
+We've updated the GraphQL functionality of our [Universal Data Graph]({{< ref "universal-data-graph" >}}). You’re now able to deeply nest GraphQL & REST APIs and stitch them together in any possible way.
+
+Queries are now possible via WebSockets and Subscriptions are coming in the next Release (3.3.0).
+
+You're also able to configure [upstream Headers dynamically]({{< ref "universal-data-graph/udg-getting-started/header-forwarding" >}}), that is, you’re able to inject Headers from the client request into UDG upstream requests. For example, it can be used to acccess protected upstreams. 
+
+We've added an easy to use URL-Builder to make it easier for you to inject object fields into REST API URLs when stitching REST APIs within UDG.
+
+Query-depth limits can now be configured on a per-field level.
+
+If you’re using GraphQL upstream services with UDG, you’re now able to forward upstream error objects through UDG so that they can be exposed to the client.
+
+#### Go response plugins
+
+With Go response plugins you are now able to modify and create a full request round trip made through the Tyk Gateway. 
+Find out more about [plugins]({{< ref "plugins" >}}) and how to write [Go response plugins]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/golang/writing-go-plugins#creating-a-custom-response-plugin" >}}).
+
+### Changelog
+
+In addition to the above, version 3.2 includes all the fixes that are part of 3.0.5
+https://github.com/TykTechnologies/tyk/releases/tag/v3.0.5
+
+### Updated Versions
+Tyk Gateway 3.2
+
+### Upgrade process
+If you already have GraphQL or UDG APIs you need to follow this upgrade guide https://tyk.io/docs/graphql/migration-guide/
+
+## 3.1.0 Release Notes
+
+### Release Highlights
+
+#### Identity Management UX and SAML support
+You will notice that the experience for creating a new profile in the Identity management section of the dashboard was changed to a ‘wizard’ approach which reduces the time it takes to get started and configure a profile. 
+In addition, users are now able to use SAML for the dashboard and portal login, whether you use TIB(Tyk Identity Broker) internally or externally of the dashboard.
+
+This follows the recent changes that we have made to embed TIB (Tyk Identity Broker)in the dashboard. See 3.0 [release notes](https://tyk.io/docs/release-notes/version-3.0/) for more information regarding this. 
+
+To learn more [see the documentation](https://tyk.io/docs/getting-started/tyk-components/identity-broker/)
+
+#### UDG (Universal Data Graph) & GraphQL
+##### Schema Validation
+
+For any GraphQL API that is created via Dashboard or through our API, the GraphQL schema is now validated before saving the definition. Instant feedback is returned in case of error.
+
+##### Sync / Update schema with upstream API (Proxy Only Mode)
+
+If you’ve configured just a proxy GraphQL API, you can now keep in sync the upstream schema with the one from the API definition, just by clicking on the `Get latest version` button on the `Schema` tab from API Designer
+
+Docs [here](https://tyk.io/docs/graphql/syncing-schema/)
+
+##### Debug logs
+
+You can now see what responses are being returned by the data sources used while configuring a UDG (universal data graph). These can be seen by calling the `/api/debug` API or using the playground tab within API designer.
+
+The data that will be displayed will show information on the query before and after the request to a data source happens, as follows:
+
+Before the request is sent:
+
+Example log message: "Query.countries: preSendHttpHook executed”. Along with this message, the log entry will contain the following set of fields: Typename, Fieldname and Upstream url;
+
+
+After the request is sent:
+
+Example log message: "Query.countries: postReceiveHttpHook executed”. Along with this message, the log entry will contain the following set of fields: Typename, Filename, response body, status code.
+
+Example: 
+
+```{"typename": "Query", "fielname": "countries", "response_body": "{\"data\":{}}", "status_code": 200}```
+
+Docs [here](https://tyk.io/docs/graphql/graphql-playground/)
+
+#### Portal
+##### GraphQL Documentation
+
+Documentation for the GraphQL APIs that you are exposing to the portal is available now through a GraphQL Playground UI component, same as on the playground tab of API Designer.
+
+Also to overcome the CORS issues that you might encounter while testing documentation pages on the portal, we have pre-filled the CORS settings section in API Designer with explicit values from the start. All you need to do is to check the “Enable CORS” option.
+
+##### Portal - API key is hidden in email
+You now have the option to hide the API key in the email generated after you approve the key request for a developer.
+
+[Docs here](https://tyk.io/docs/tyk-developer-portal/key-requests/)
+
+
+### Changelog
+The 3.1 version includes the fixes that are part of 3.0.1. 
+https://github.com/TykTechnologies/tyk/releases/tag/v3.0.1
+
+
+### Updated Versions
+
+- Tyk Gateway 3.1
+
+## 3.0.0 Release Notes
+
+### Release Highlights
+
+#### Version changes and LTS releases
+
+We have bumped our major Tyk Gateway version from 2 to 3, a long overdue change as we’ve been on version 2 for 3 years. We have also changed our Tyk Dashboard major version from 1 to 3, and from now on it will always be aligned with the Tyk Gateway for major and minor releases. The Tyk Pump has also now updated to 1.0, so we can better indicate major changes in future. 
+
+Importantly, such a big change in versions does not mean that we going to break backward compatibility. More-over we are restructuring our internal release strategy to guarantee more stability and to allow us to deliver all Tyk products at a faster pace. We aim to bring more clarity to our users on the stability criteria they can expect, based on the version number.
+Additionally we are introducing Long Term Releases (also known as LTS).
+
+Read more about this changes in our blogpost: https://tyk.io/introducing-long-term-support-some-changes-to-our-release-process-product-versioning/
+
+
+#### Universal Data Graph and GraphQL
+
+Tyk now supports GraphQL **natively**. This means Tyk doesn’t have to use any external services or process for any GraphQL middleware. You can securely expose existing GraphQL APIs using our GraphQL core functionality.
+
+In addition to this you can also use Tyk’s integrated GraphQL engine to build a Universal Data Graph. The Universal Data Graph (UDG) lets you expose existing services as one single combined GraphQL API.
+
+All this without even have to build your own GraphQL server. If you have existing REST APIs all you have to do is configure the UDG and Tyk has done the work for you.
+
+With the Universal Data Graph Tyk becomes your central integration point for all your internal as well as external APIs. In addition to this, the UDG benefits from all existing solutions that already come with your Tyk installation. That is, your Data Graph will be secure from the start and there’s a large array of out of the box middlewares you can build on to power your Graph.
+
+Read more about the [GraphQL]({{< ref "graphql" >}}) and [Universal Data Graph]({{< ref "universal-data-graph" >}})
+
+#### Using external secret management services
+
+Want to reference secrets from a KV store in your API definitions? We now have native Vault & Consul integration. You can even pull from a tyk.conf dictionary or environment variable file.
+
+[Read more]({{< ref "tyk-configuration-reference/kv-store" >}})
+
+#### Co-Process Response Plugins
+
+We added a new middleware hook allowing middleware to modify the response from the upstream. Using response middleware you can transform, inspect or obfuscate parts of the response body or response headers, or fire an event or webhook based on information received by the upstream service.
+
+At the moment the Response hook is supported for [Python and gRPC plugins]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-dispatcher---hooks" >}}).
+
+
+#### Enhanced Gateway health check API
+
+Now the standard Health Check API response include information about health of the dashboard, redis and mdcb connections.
+You can configure notifications or load balancer rules, based on new data. For example, you can be notified if your Tyk Gateway can’t connect to the Dashboard (or even if it was working correctly with the last known configuration).
+
+[Read More]({{< ref "planning-for-production/ensure-high-availability/health-check" >}})
+
+#### Enhanced Detailed logging
+Detailed logging is used in a lot of the cases for debugging issues. Now as well as enabling detailed logging globally (which can cause a huge overhead with lots of traffic), you can enable it for a single key, or specific APIs. 
+
+New detailed logging changes are available only to our Self-Managed customers currently.
+
+[Read More]({{< ref "tyk-stack/tyk-pump/useful-debug-modes" >}})
+
+#### Better Redis failover
+
+Now, if Redis is not available, Tyk will be more gracefully handle this scenario, and instead of simply timing out the Redis connection, will dynamically disable functionality which depends on redis, like rate limits or quotas, and will re-enable it back once Redis is available. The Tyk Gateway can even be started without Redis, which makes possible scenarios, such as when the Gateway proxies Redis though itself, like in a Redis Sentinel setup.
+
+#### Ability to shard analytics to different data-sinks
+
+In a multi-org deployment, each organization, team, or environment might have their preferred analytics tooling. At present, when sending analytics to the Tyk Pump, we do not discriminate analytics by org - meaning that we have to send all analytics to the same database - e.g. MongoDB. Now the Tyk Pump can be configured to send analytics for different organizations to different places. E.g. Org A can send their analytics to MongoDB + DataDog. But Org B can send their analytics to DataDog + expose the Prometheus metrics endpoint.
+
+It also becomes possible to put a {{<fn>}}blocklist{{</fn>}} in-place, meaning that some data sinks can receive information for all orgs, whereas others will not receive OrgA’s analytics if blocked.
+
+This change requires updating to new Tyk Pump 1.0
+
+[Read More]({{< ref "tyk-pump/configuration" >}})
+
+#### 404 Error logging - unmatched paths
+
+Concerned that client’s are getting a 404 response? Could it be that the API definition or URL rewrites have been misconfigured? Telling Tyk to track 404 logs, will cause the Tyk Gateway to produce error logs showing that a particular resource has not been found. 
+
+The feature can be enabled by setting the config `track_404_logs` to `true` in the gateway's config file.
+
+### Changelog
+
+#### Fixes
+
+- Fixed the bug when tokens created with non empty quota, and quota expiration set to `Never`, were treated as having unlimited quota. Now such tokens will stop working, once initial quota is reached. 
+
+### Updated Versions
+
+- Tyk Gateway 3.0
+- Tyk Pump 1.0
+
+### Upgrading From Version 2.9
+
+No specific actions required.
+If you are upgrading from version 2.8, pls [read this guide]({{< ref "product-stack/tyk-gateway/release-notes/archived-releases/version-2.9.md" >}})
