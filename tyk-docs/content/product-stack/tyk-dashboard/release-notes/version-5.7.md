@@ -174,7 +174,7 @@ Developed a step-by-step UI for Streaming API creation, enabling users to select
 <details>
 <summary>Easily contact Tyk Support during Tyk Cloud trial</summary>
 
-Introduced a HubSpot form on the Tyk Dashboard, allowing users to easily contact Tyk support during their trial period.
+Introduced a form on the Tyk Dashboard that allows users to easily contact Tyk support during their trial period.
 </details>
 </li>
 <li>
