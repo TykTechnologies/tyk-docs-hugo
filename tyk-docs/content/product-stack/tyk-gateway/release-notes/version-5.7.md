@@ -200,7 +200,7 @@ When using Tyk Streams and sending input via http, the requests sometimes timed 
 <details>
 <summary>Improved backwards compatibility when working with Tyk OAS APIs</summary>
 
-Fixed a backwards compatibility issue with schema validation. When downgrading from a Tyk version, schema validation could fail as it didn't allow additional properties. This change relaxes schema strictness to again allow additional properties.
+Fixed a backwards compatibility issue with Tyk OAS API schema validation. When downgrading from a Tyk version, schema validation could fail if new fields had been added to the Tyk OAS API definition. This change relaxes the strictness of validation to allow additional properties.
 </details>
 </li>
 <li>
