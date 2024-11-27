@@ -19,7 +19,7 @@ If you're using Tyk Operator then check out the [configuring API versioning in T
 
 ### Controlling access to Tyk Classic API versions
 
-You can explicitly grant access to specific version(s) of an API by specifying only those version(s) in the [key]({{< ref "tyk-apis/tyk-gateway-api/token-session-object-details" >}}) (also known as an *authorization token*, *bearer token*, *access token*, *API token* or *token session object* - see [here]({{< ref "basic-config-and-security/security/authentication-authorization/bearer-tokens" >}})).
+You can explicitly grant access to specific version(s) of an API by specifying only those version(s) in the [key]({{< ref "tyk-apis/tyk-gateway-api/token-session-object-details" >}}) (also known as an *authorization token*, *bearer token*, *access token*, *API token* or *token session object* - see [here]({{< ref "/api-management/authentication-authorization#use-bearer-tokens" >}})).
 
 ## Configuring API versioning in the Tyk Classic API Definition
 

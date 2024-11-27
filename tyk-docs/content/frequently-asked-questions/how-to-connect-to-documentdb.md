@@ -9,7 +9,7 @@ weight: 0
 
 As AWS DocumentDB runs with TLS enabled, we require a way to run it without disabling the TLS verification.
 DocumentDB uses self-signed certs for verification, and provides a bundle with root certificates for this purpose, so we need a way to load this bundle.
-Additionally DocumentDB can't be exposed to the local machine outside of the Amazon Virtual Private Cloud (VPC), which means that even if verification is turned on, it will always fail since if we use a SSH tunnel or a similar method, the domain will differ from the original. Also, it can have [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}) enabled.
+Additionally DocumentDB can't be exposed to the local machine outside of the Amazon Virtual Private Cloud (VPC), which means that even if verification is turned on, it will always fail since if we use a SSH tunnel or a similar method, the domain will differ from the original. Also, it can have [Mutual TLS]({{< ref "/api-management/authentication-authorization#enable-mutual-tls" >}}) enabled.
 
 So, in order to support it, we provide the following variables for both our [Tyk Analytics Dashboard]({{< ref "tyk-dashboard/configuration" >}}) and [Tyk Pump]({{< ref "tyk-pump/configuration" >}}):
 

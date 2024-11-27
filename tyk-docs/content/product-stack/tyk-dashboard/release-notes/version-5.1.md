@@ -47,7 +47,7 @@ documentation for a full description of this new [user role]({{< ref "basic-conf
 ##### Import API examples from within the Dashboard
 
 In 5.0 we introduced the possibility to import API examples manually or via
-[_Tyk Sync_]({{< ref "/product-stack/tyk-sync/overview" >}}). We have now extended this feature and it is now possible to do this without
+[_Tyk Sync_]({{< ref "/api-management/automations#synchronize-tyk-environment-with-github-repository" >}}). We have now extended this feature and it is now possible to do this without
 leaving the Dashboard. When having an empty “Data Graphs” section you will be
 presented with 3 icon buttons with one of them offering you to import an Example
 API.
@@ -94,7 +94,7 @@ size using [slave_options.rpc_pool_size]({{< ref "tyk-oss-gateway/configuration#
 - Added a way to display UDG examples from the [tyk-examples](https://github.com/TykTechnologies/tyk-examples) repository in the Dashboard UI
 - Added screens in Dashboard New Graph flow, that allows users to choose between creating a graph from scratch or importing one of our example graphs
 - Added a screen to display details of a UDG example API
-- Added a feature to display a full [_Tyk Sync_]({{<ref "/product-stack/tyk-sync/overview" >}}) command that will allow a user to import an example UDG into their Dashboard
+- Added a feature to display a full [_Tyk Sync_]({{<ref "/api-management/automations#synchronize-tyk-environment-with-github-repository" >}}) command that will allow a user to import an example UDG into their Dashboard
 - Added `/examples` endpoint to Dashboard API that returns a list of available API examples that can later be imported into the Dashboard `GET /api/examples`
 - Added `/data-graphs/data-sources/import` endpoint to Dashboard API that transforms an OpenAPI document into UDG config and publishes it in Dashboard `POST /api/data-graphs/data-sources/import`
 - Added query param `apidef=true` to example detail endpoint in Dashboard API to retrieve the API definition of an example
