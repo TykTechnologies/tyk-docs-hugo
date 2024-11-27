@@ -5,6 +5,23 @@ menu:
     path: /
     category: Label
     show: True
+  - title: "Getting Started"
+    path: /
+    category: Label
+    show: True
+    menu:
+      - title: "Create Account"
+        path: /getting-started/create-account
+        category: Page
+        show: True
+      - title: "Configure Your First API"
+        path: /getting-started/configure-first-api
+        category: Page
+        show: True
+      - title: "Using Tyk Dashboard"
+        path: /getting-started/using-tyk-dashboard
+        category: Page
+        show: True
   - title: "Deployment and Operations"
     path: /apim
     category: Label
@@ -723,6 +740,14 @@ menu:
         path: /getting-started
         category: Page
         show: True
+      - title: "Authentication and Authorization"
+        path: /api-management/authentication-authorization
+        category: Page
+        show: True
+      - title: "Automations"
+        path: /api-management/automations
+        category: Page
+        show: True
       - title: "Manage APIs"
         category: Directory
         show: True
@@ -1292,166 +1317,62 @@ menu:
                 category: Directory
                 show: True
                 menu:
-                  - title: "Authentication and authorization"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /basic-config-and-security/security/authentication--authorization
-                        category: Page
-                        show: True
-                      - title: "Authorization Code Grant Type"
-                        path: /basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant
-                        category: Page
-                        show: True
-                      - title: "Client Credentials Grant Type"
-                        path: /basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant
-                        category: Page
-                        show: True
-                      - title: "Refresh Token Grant Type"
-                        path: /basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant
-                        category: Page
-                        show: True
-                      - title: "Username and Password Grant Type"
-                        path: /basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant
-                        category: Page
-                        show: True
-                      - title: "Basic Authentication"
-                        path: /basic-config-and-security/security/authentication-authorization/basic-auth
-                        category: Page
-                        show: True
-                      - title: "Bearer Tokens"
-                        path: /basic-config-and-security/security/authentication-authorization/bearer-tokens
-                        category: Page
-                        show: True
-                      - title: "External OAuth Middleware"
-                        path: /basic-config-and-security/security/authentication-authorization/ext-oauth-middleware
-                        category: Page
-                        show: True
-                      - title: "Go Plugin Authentication"
-                        path: /basic-config-and-security/security/authentication-authorization/go-plugin-authentication
-                        category: Page
-                        show: True
-                      - title: "HMAC Signatures"
-                        path: /basic-config-and-security/security/authentication-authorization/hmac-signatures
-                        category: Page
-                        show: True
-                      - title: "JSON Web Tokens"
-                        path: /basic-config-and-security/security/authentication-authorization/json-web-tokens
-                        category: Page
-                        show: True
-                      - title: "JWT and Auth0 with Tyk"
-                        path: /basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-auth0
-                        category: Page
-                        show: True
-                      - title: "Split Token"
-                        path: /basic-config-and-security/security/authentication-authorization/json-web-tokens/split-token
-                        category: Page
-                        show: True
-                      - title: "Multiple Auth"
-                        path: /basic-config-and-security/security/authentication-authorization/multiple-auth
-                        category: Page
-                        show: True
-                      - title: "OAuth 2.0"
-                        path: /basic-config-and-security/security/authentication-authorization/oauth-2-0
-                        category: Page
-                        show: True
-                      - title: "Open (Keyless)"
-                        path: /basic-config-and-security/security/authentication-authorization/open-keyless
-                        category: Page
-                        show: True
-                      - title: "OpenID Connect"
-                        path: /basic-config-and-security/security/authentication-authorization/openid-connect
-                        category: Page
-                        show: True
-                      - title: "Key Expiry and Deletion"
-                        path: /basic-config-and-security/security/authentication-authorization/physical-key-expiry
-                        category: Page
-                        show: True
-                      - title: "Python CoProcess and JSVM Plugin Authentication"
-                        path: /basic-config-and-security/security/authentication-authorization/python-etc-plugin-authentication
-                        category: Page
-                        show: True
-                      - title: "Revoke OAuth Tokens"
-                        path: /basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens
-                        category: Page
-                        show: True
-                      - title: "JWT and Keycloak with Tyk"
-                        path: /basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-keycloak
-                        category: Page
-                        show: True
-                  - title: "MTLS"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Concepts"
-                        path: /basic-config-and-security/security/mutual-tls/concepts
-                        category: Page
-                        show: True
-                      - title: "Mutual TLS"
-                        path: /basic-config-and-security/security/mutual-tls
-                        category: Page
-                        show: True
-                      - title: "Client mTLS"
-                        path: /basic-config-and-security/security/mutual-tls/client-mtls
-                        category: Page
-                        show: True
-                      - title: "Upstream mTLS"
-                        path: /basic-config-and-security/security/mutual-tls/upstream-mtls
-                        category: Page
-                        show: True
-                  - title: "Security policies"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /basic-config-and-security/security/security-policies
-                        category: Page
-                        show: True
-                      - title: "Policies Guide"
-                        path: /basic-config-and-security/security/security-policies/policies-guide
-                        category: Page
-                        show: True
-                      - title: "Secure your APIs by Method and Path"
-                        path: /security/security-policies/secure-apis-method-path
-                        category: Page
-                        show: True
-                      - title: "Partitioned Policies"
-                        path: /basic-config-and-security/security/security-policies/partitioned-policies
-                        category: Page
-                        show: True
-                  - title: "Gateway"
-                    path: /basic-config-and-security/security/gateway
+              - title: "oauth"
+                category: page
+                show: False
+                path: /basic-config-and-security/security/authentication-authorization/ext-oauth-middleware
+              - title: "Security policies"
+                category: Directory
+                show: True
+                menu:
+                  - title: "Overview"
+                    path: /basic-config-and-security/security/security-policies
                     category: Page
                     show: True
-                  - title: "Key Hashing"
-                    path: /basic-config-and-security/security/key-hashing
+                  - title: "Policies Guide"
+                    path: /basic-config-and-security/security/security-policies/policies-guide
                     category: Page
                     show: True
-                  - title: "Key Level Security"
-                    path: /basic-config-and-security/security/key-level-security
+                  - title: "Secure your APIs by Method and Path"
+                    path: /security/security-policies/secure-apis-method-path
                     category: Page
                     show: True
-                  - title: "Tyk and OWASP Top Ten Threats"
-                    path: /basic-config-and-security/security/owasp-top-ten
+                  - title: "Partitioned Policies"
+                    path: /basic-config-and-security/security/security-policies/partitioned-policies
                     category: Page
                     show: True
-                  - title: "TLS and SSL"
-                    path: /basic-config-and-security/security/tls-and-ssl
-                    category: Page
-                    show: True
-                  - title: "Certificate Pinning"
-                    path: /security/certificate-pinning
-                    category: Page
-                    show: True
-                  - title: "Blocking Client IPs"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting
-                    category: Page
-                    show: True
-                  - title: "Allowing Client IPs"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting
-                    category: Page
-                    show: True
+              - title: "Gateway"
+                path: /basic-config-and-security/security/gateway
+                category: Page
+                show: True
+              - title: "Key Hashing"
+                path: /basic-config-and-security/security/key-hashing
+                category: Page
+                show: True
+              - title: "Key Level Security"
+                path: /basic-config-and-security/security/key-level-security
+                category: Page
+                show: True
+              - title: "Tyk and OWASP Top Ten Threats"
+                path: /basic-config-and-security/security/owasp-top-ten
+                category: Page
+                show: True
+              - title: "TLS and SSL"
+                path: /basic-config-and-security/security/tls-and-ssl
+                category: Page
+                show: True
+              - title: "Certificate Pinning"
+                path: /security/certificate-pinning
+                category: Page
+                show: True
+              - title: "Blocking Client IPs"
+                path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting
+                category: Page
+                show: True
+              - title: "Allowing Client IPs"
+                path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting
+                category: Page
+                show: True
               - title: "Control and limit traffic"
                 category: Directory
                 show: True
@@ -3873,208 +3794,16 @@ menu:
         category: Directory
         show: True
         menu:
-          - title: "Overview"
-            path: /tyk-operator
-            category: Page
-            show: True
-          - title: "Key Concepts"
-            category: Directory
-            show: True
-            menu:
-              # - title: "Overview"
-              #   path: /product-stack/tyk-operator/key-concepts/key-concepts
-              #   category: Page
-              #   show: True
-              - title: "Custom Resources"
-                path: /product-stack/tyk-operator/key-concepts/custom-resources
-                category: Page
-                show: True
-              - title: "Operator Reconciliation"
-                path: /tyk-stack/tyk-operator/tyk-operator-reconciliation
-                category: Page
-                show: True
-              - title: "Operator User"
-                path: /product-stack/tyk-operator/key-concepts/operator-user
-                category: Page
-                show: True
-              - title: "Operator Context"
-                path: /product-stack/tyk-operator/key-concepts/operator-context
-                category: Page
-                show: True
-          - title: "Getting Started"
-            category: Directory
-            show: True
-            menu:
-              - title: "Installing Tyk Operator"
-                path: /tyk-stack/tyk-operator/installing-tyk-operator
-                category: Page
-                show: True
-              - title: "Create an API"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /product-stack/tyk-operator/getting-started/create-an-api-overview
-                    category: Page
-                    show: True
-                  - title: "Create Tyk OAS API"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Create Tyk OAS API with Tyk Operator"
-                        path: /product-stack/tyk-operator/getting-started/create-an-oas-api
-                        category: Page
-                        show: True
-                      - title: "Tyk OAS API example"
-                        path: /product-stack/tyk-operator/getting-started/example-tyk-oas-api
-                        category: Page
-                        show: True
-                  - title: "Create Tyk Classic API"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Create Tyk Classic API with Tyk Operator"
-                        path: /tyk-stack/tyk-operator/create-an-api
-                        category: Page
-                        show: True
-                      - title: "HTTP Proxy example"
-                        path: /product-stack/tyk-operator/getting-started/quick-start-http
-                        category: Page
-                        show: True
-                      - title: "TCP Proxy example"
-                        path: /product-stack/tyk-operator/getting-started/quick-start-tcp
-                        category: Page
-                        show: True
-                      - title: "GraphQL Proxy example"
-                        path: /product-stack/tyk-operator/getting-started/quick-start-graphql
-                        category: Page
-                        show: True
-                      - title: "UDG example"
-                        path: /product-stack/tyk-operator/getting-started/quick-start-udg
-                        category: Page
-                        show: True
-              - title: "Secure an API"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /product-stack/tyk-operator/getting-started/secure-an-api-overview
-                    category: Page
-                    show: True
-                  - title: "Secure Tyk OAS API"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Secure Tyk OAS API with Tyk Operator"
-                        path: /product-stack/tyk-operator/getting-started/secure-an-oas-api
-                        category: Page
-                        show: True
-                  - title: "Secure Tyk Classic API"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Secure an API with Auth token"
-                        path: /tyk-stack/tyk-operator/access-an-api
-                        category: Page
-                        show: True
-                      - title: "Authentication types"
-                        path: /product-stack/tyk-operator/advanced-configurations/client-authentication
-                        category: Page
-                        show: True
-              - title: "Protect an API with Policy"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Create Security Policy with Tyk Operator"
-                    category: Page
-                    show: True
-                    path: /tyk-stack/tyk-operator/secure-an-api
-                  - title: "Security Policy example"
-                    category: Page
-                    show: True
-                    path: /product-stack/tyk-operator/getting-started/security-policy-example
-              - title: "Publish an API to Dev Portal"
-                path: /tyk-stack/tyk-operator/publish-an-api
-                category: Page
-                show: True
           - title: "Advanced configurations"
             category: Directory
             show: True
             menu:
-              - title: "Manage API metadata"
-                path: /product-stack/tyk-operator/advanced-configurations/management-of-api
-                category: Page
-                show: True
-              - title: "Manage existing APIs and policies"
-                path: /tyk-stack/tyk-operator/migration
-                category: Page
-                show: True
-              - title: "Kubernetes Ingress Controller"
-                path: /product-stack/tyk-operator/tyk-ingress-controller
-                category: Page
-                show: True
-              - title: "Manage multiple organisations"
-                path: /product-stack/tyk-operator/getting-started/tyk-operator-multiple-organisations
-                category: Page
-                show: True
-              - title: "Manage API ownership"
-                path: /product-stack/tyk-operator/getting-started/tyk-operator-api-ownership
-                category: Page
-                show: True
-              - title: "Manage API categories"
-                path: /product-stack/tyk-operator/advanced-configurations/api-categories
-                category: Page
-                show: True
-              - title: "Manage API versioning"
-                path: /product-stack/tyk-operator/advanced-configurations/api-versioning
-                category: Page
-                show: True
-              - title: "Manage TLS certificate"
-                path: /product-stack/tyk-operator/advanced-configurations/tls-certificate
-                category: Page
-                show: True
               - title: "GraphQL Federation"
                 path: /product-stack/tyk-operator/advanced-configurations/graphql-federation
                 category: Page
                 show: True
               - title: "Custom Plugins"
                 path: /product-stack/tyk-operator/advanced-configurations/custom-plugins
-                category: Page
-                show: True
-              - title: "Looping"
-                path: /product-stack/tyk-operator/advanced-configurations/internal-looping
-                category: Page
-                show: True
-          - title: "Troubleshooting"
-            category: Directory
-            show: True
-            menu:
-              - title: "API changes not applied"
-                path: /product-stack/tyk-operator/troubleshooting/tyk-operator-changes-not-applied
-                category: Page
-                show: True
-              - title: "Understanding reconciliation status"
-                path: /product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting
-                category: Page
-                show: True
-          - title: "Reference"
-            category: Directory
-            show: True
-            menu:
-              - title: "TykOasApiDefinition CRD"
-                path: /product-stack/tyk-operator/reference/tyk-oas-api-definition
-                category: Page
-                show: True
-              - title: "ApiDefinition CRD"
-                path: /product-stack/tyk-operator/reference/api-definition
-                category: Page
-                show: True
-              - title: "SecurityPolicy CRD"
-                path: /product-stack/tyk-operator/reference/security-policy
-                category: Page
-                show: True
-              - title: "Version compatibility"
-                path: /product-stack/tyk-operator/reference/version-compatibility
                 category: Page
                 show: True
           - title: "Release notes"
@@ -4115,6 +3844,10 @@ menu:
             show: True
           - title: "Key Concepts"
             path: /product-stack/tyk-streaming/key-concepts
+            category: Page
+            show: True
+          - title: "Configure Streams API using dashboard"
+            path: /product-stack/tyk-streaming/streams-configuration-using-ui
             category: Page
             show: True
           - title: "Quick Start"
@@ -4593,54 +4326,6 @@ menu:
         category: Directory
         show: True
         menu:
-          - title: "Overview"
-            path: /product-stack/tyk-sync/overview
-            category: Page
-            show: True
-          - title: "Installing and running Tyk Sync"
-            path: /product-stack/tyk-sync/installing-tyk-sync
-            category: Page
-            show: True
-          - title: "Tutorials"
-            category: Directory
-            show: True
-            menu:
-              - title: "Keeping and updating API Definitions locally"
-                path: /product-stack/tyk-sync/tutorials/tutorial-update-api-configurations
-                category: Page
-                show: True
-              - title: "Synchronising API configurations with GitHub Actions"
-                path: /product-stack/tyk-sync/tutorials/tutorial-synchronise-api-configurations
-                category: Page
-                show: True
-              - title: "Backing up API configurations with Github Actions"
-                path: /product-stack/tyk-sync/tutorials/tutorial-backup-api-configurations
-                category: Page
-                show: True
-          - title: "Commands"
-            category: Directory
-            show: True
-            menu:
-              - title: "Dump"
-                path: /product-stack/tyk-sync/commands/sync-dump
-                category: Page
-                show: True
-              - title: "Examples"
-                path: /product-stack/tyk-sync/commands/sync-examples
-                category: Page
-                show: True
-              - title: "Publish"
-                path: /product-stack/tyk-sync/commands/sync-publish
-                category: Page
-                show: True
-              - title: "Sync"
-                path: /product-stack/tyk-sync/commands/sync-sync
-                category: Page
-                show: True
-              - title: "Update"
-                path: /product-stack/tyk-sync/commands/sync-update
-                category: Page
-                show: True
           - title: "Release notes"
             category: Directory
             show: True
@@ -4673,7 +4358,7 @@ menu:
                 path: /tyk-identity-broker/getting-started
                 category: Page
                 show: True
-              - title: "TIB implementation with GitHub and OAuth 2.0"
+              - title: "Practical TIB Integration Examples"
                 path: /tyk-stack/tyk-identity-broker/auth-user-for-api-access-github-oauth
                 category: Page
                 show: True
@@ -4691,6 +4376,14 @@ menu:
             menu:
               - title: "Tyk Identity Broker Configuration Options"
                 path: /tyk-configuration-reference/tyk-identity-broker-configuration
+                category: Page
+                show: True
+          - title: "Release Notes"
+            category: Directory
+            show: True
+            menu:
+              - title: "Tyk Identity Broker 1.6"
+                path: /product-stack/tyk-identity-broker/release-notes/tib-v1.6
                 category: Page
                 show: True
       - title: "Tyk Helm Charts (Open Source)"
