@@ -238,7 +238,7 @@ Removed an unnecessary field from the API Designer page under the Streams sectio
 </li>
 <li>
 <details>
-<summary>Displayed path parameters in UI for request validation during Import/Patch</summary>
+<summary>Automatic configuration of request validation for path-level parameters during import of OpenAPI description</summary>
 
 Path-level parameters are now displayed in the UI for the validate request middleware during import or patch. This update allows the middleware to be applied with just the defined path-level parameters.
 </details>
