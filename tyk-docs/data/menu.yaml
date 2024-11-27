@@ -3982,14 +3982,6 @@ menu:
                 path: /tyk-configuration-reference/tyk-identity-broker-configuration
                 category: Page
                 show: True
-          - title: "Release Notes"
-            category: Directory
-            show: True
-            menu:
-              - title: "Tyk Identity Broker 1.6"
-                path: /product-stack/tyk-identity-broker/release-notes/tib-v1.6
-                category: Page
-                show: True
       - title: "Tyk Helm Charts (Open Source)"
         category: Directory
         show: True
@@ -4237,8 +4229,16 @@ menu:
           path: /developer-support/release-notes/helm-chart
           category: Page
           show: True
+        - title: "Tyk Identity Broker"
+          path: /developer-support/release-notes/tib
+          category: Page
+          show: True
         - title: "Tyk Cloud"
           path: /developer-support/release-notes/cloud
+          category: Page
+          show: True
+        - title: "Archived Releases"
+          path: /developer-support/release-notes/archived
           category: Page
           show: True
       - title: "Latest Tyk Releases"

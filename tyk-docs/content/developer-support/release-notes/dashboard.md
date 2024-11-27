@@ -4,12 +4,6 @@ date: 2024-10-08T15:51:11Z
 description: "Release notes documenting updates, enhancements, and changes for Tyk Dashboard versions within the 5.6.X series."
 tags: ["Tyk Dashboard", "Release notes", "v5.6", "5.6.0", "5.6", "changelog"]
 aliases:
-  - tyk-docs/content/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.4
-  - tyk-docs/content/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.5
-  - tyk-docs/content/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.6
-  - tyk-docs/content/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.7
-  - tyk-docs/content/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.8
-  - tyk-docs/content/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.9
   - tyk-docs/content/product-stack/tyk-dashboard/release-notes/overview
   - tyk-docs/content/product-stack/tyk-dashboard/release-notes/version-3.0
   - tyk-docs/content/product-stack/tyk-dashboard/release-notes/version-3.1
@@ -3705,7 +3699,7 @@ The feature can be enabled by setting the config `track_404_logs` to `true` in t
 ### Upgrading From Version 2.9
 
 No specific actions required.
-If you are upgrading from version 2.8, pls [read this guide]({{< ref "product-stack/tyk-gateway/release-notes/archived-releases/version-2.9.md#upgrading-from-version-28" >}})
+If you are upgrading from version 2.8, pls [read this guide]({{< ref "developer-support/release-notes/archived#upgrading-from-version-28" >}}")
 
 
 ## Further Information
