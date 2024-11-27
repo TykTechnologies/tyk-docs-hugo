@@ -51,6 +51,6 @@ Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please trans
 
 We recommend the following:
 
-* For PoC installations, you can use any of the following platforms (SQLite, PostgreSQL or MongoDB).
+* For PoC installations, you can use PostgreSQL or MongoDB.
 * For production installations, we **only** support MongoDB or PostgreSQL
 
