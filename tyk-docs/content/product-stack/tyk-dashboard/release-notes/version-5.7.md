@@ -261,7 +261,7 @@ The External OAuth and OpenID Connect authentication options have been deprecate
 <details>
 <summary>Updated NPM package dependencies</summary>
 
-Updated the NPM dependencies for the Dashboard UI to ensure compatibility. 
+Updated NPM package dependencies of Dashboard, to address security vulnerabilities.
 </details>
 </li>
 </ul>
