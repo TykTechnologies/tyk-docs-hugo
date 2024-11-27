@@ -4350,7 +4350,7 @@ menu:
                 path: /tyk-identity-broker/getting-started
                 category: Page
                 show: True
-              - title: "TIB implementation with GitHub and OAuth 2.0"
+              - title: "Practical TIB Integration Examples"
                 path: /tyk-stack/tyk-identity-broker/auth-user-for-api-access-github-oauth
                 category: Page
                 show: True
