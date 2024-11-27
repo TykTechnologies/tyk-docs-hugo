@@ -98,13 +98,15 @@ output:
 
 When the number of retries expires the output will reject the message, the behavior after this will depend on the pipeline but usually this simply means the send is attempted again until successful whilst applying back pressure.
 
-The URL and header values of this type can be dynamically set using [function interpolations]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
+<!-- TODO: when interpolation supported
+The URL and header values of this type can be dynamically set using function interpolations.
+-->
 
 The body of the HTTP request is the raw contents of the message payload. If the message has multiple parts (is a batch) the request will be sent according to [RFC1341](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). This behavior can be disabled by setting the field [batch_as_multipart](#batch_as_multipart) to `false`.
 
 ### Propagating Responses
 
-It's possible to propagate the response from each HTTP request back to the input source by setting `propagate_response` to `true`. Only inputs that support [synchronous responses]({{< ref "/product-stack/tyk-streaming/guides/sync-responses" >}}) are able to make use of these propagated responses.
+It's possible to propagate the response from each HTTP request back to the input source by setting `propagate_response` to `true`. Only inputs that support synchronous responses are able to make use of these propagated responses.
 
 ## Performance
 
@@ -117,7 +119,9 @@ This output benefits from sending messages as a [batch]({{< ref "/product-stack/
 ### url
 
 The URL to connect to.
-This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
+<!-- TODO: when interpolation supported
+This field supports interpolation functions.
+-->
 
 Type: `string`  
 
@@ -142,7 +146,9 @@ verb: DELETE
 ### headers
 
 A map of headers to add to the request.
-This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
+<!-- TODO: when interpolation supported
+This field supports interpolation functions.
+-->
 
 
 Type: `object`  
@@ -658,7 +664,7 @@ Default: `false`
 
 ### propagate_response
 
-Whether responses from the server should be [propagated back]({{< ref "/product-stack/tyk-streaming/guides/sync-responses" >}}) to the input.
+Whether responses from the server should be propagated back to the input.
 
 
 Type: `bool`  
@@ -731,9 +737,10 @@ period: 1m
 period: 500ms
 ```
 
+<!-- TODO: when bloblang supported
 ### batching.check
 
-A [Bloblang query]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) that should return a boolean value indicating whether a message should end a batch.
+A Bloblang query that should return a boolean value indicating whether a message should end a batch.
 
 
 Type: `string`  
@@ -744,6 +751,7 @@ Default: `""`
 
 check: this.type == "end_of_transaction"
 ```
+-->
 
 ### batching.processors
 
@@ -779,7 +787,9 @@ Default: `[]`
 ### multipart[].content_type
 
 The content type of the individual message part.
-This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}})
+<!-- TODO: when interpolation supported
+This field supports interpolation functions.
+-->
 
 
 Type: `string`  
@@ -794,7 +804,9 @@ content_type: application/bin
 ### multipart[].content_disposition
 
 The content disposition of the individual message part.
-This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}})
+<!-- TODO: when interpolation supported
+This field supports interpolation functions.
+-->
 
 
 Type: `string`  
@@ -809,7 +821,9 @@ content_disposition: form-data; name="bin"; filename='${! @AttachmentName }
 ### multipart[].body
 
 The body of the individual message part.
-This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
+<!-- TODO: when interpolation supported
+This field supports interpolation functions.
+-->
 
 
 Type: `string`  

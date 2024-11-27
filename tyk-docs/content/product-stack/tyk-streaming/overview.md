@@ -68,6 +68,23 @@ aliases:
  - /product-stack/tyk-streaming/configuration/common-configuration/interpolation/
  - /product-stack/tyk-streaming/configuration/common-configuration/resources/
  - /product-stack/tyk-streaming/configuration/common-configuration/windowed_processing/
+ - /product-stack/tyk-streaming/guides/sync-responses/
+ - /product-stack/tyk-streaming/guides/bloblang/overview/
+ - /product-stack/tyk-streaming/guides/bloblang/advanced/
+ - /product-stack/tyk-streaming/guides/bloblang/arithmetic/
+ - /product-stack/tyk-streaming/guides/bloblang/functions/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/overview/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/general/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/encoding-and-encryption/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/geoip/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/json-web-tokens/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/numbers/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/strings/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/object-and-arrays/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/regular-expressions/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/parsing/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/timestamps/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/type-coercion/
 ---
 We are excited to introduce our new product, *Tyk Streams*! 
 *Tyk Streams* is a powerful new feature in the Tyk API management platform that enables organizations to securely expose,
