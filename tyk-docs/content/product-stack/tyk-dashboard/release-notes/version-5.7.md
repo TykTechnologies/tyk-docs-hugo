@@ -297,7 +297,7 @@ Resolved a bug where enabling validate request middleware during import/patch OA
 </li>
 <li>
 <details>
-<summary>User group dropdown limitations in Dashboard</summary>
+<summary>Unable to see all *user groups* in Dashboard dropdown</summary>
 
 Fixed an issue with the *user group* dropdown in the Dashboard UI, ensuring that all available user groups are displayed when creating a new user.
 </details>
