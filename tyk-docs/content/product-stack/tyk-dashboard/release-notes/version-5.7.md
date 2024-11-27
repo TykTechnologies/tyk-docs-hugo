@@ -259,7 +259,7 @@ The External OAuth and OpenID Connect authentication options have been deprecate
 </li>
 <li>
 <details>
-<summary>Updated NPM dependencies for Tyk-Analytics-UI</summary>
+<summary>Updated NPM package dependencies</summary>
 
 Updated the NPM dependencies for the Dashboard UI to ensure compatibility. 
 </details>
