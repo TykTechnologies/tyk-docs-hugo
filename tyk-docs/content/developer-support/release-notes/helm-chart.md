@@ -1,5 +1,5 @@
 ---
-title: Tyk Charts 2.1 Release Notes
+title: Tyk Charts Release Notes
 description: "Release notes documenting updates, enhancements and changes for Tyk Charts versions within the 2.1 series."
 tags: ["Tyk Charts", "Release notes", "changelog", "v2.1" ]
 aliases:
@@ -14,7 +14,7 @@ aliases:
 ****Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))**
 
 
-**This page contains all release notes for version 2.1.X displayed in a reverse chronological order**
+**This page contains all release notes for Tyk Charts displayed in a reverse chronological order**
 
 ## Support Lifetime
 <!-- Required. replace X.Y with this release and set the correct quarter of the year -->

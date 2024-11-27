@@ -1,5 +1,5 @@
 ---
-title: Tyk MDCB v2.7 Release Notes
+title: Tyk Multi Data Center Bridge Release Notes
 description: "Tyk Multi Data-Center Bridge v2.7 release notes"
 tags: ["release notes", "MDCB", "Tyk Multi Data-Center", "Tyk Multi Data-Center", "v2.7", "2.7"]
 aliases:
@@ -11,10 +11,11 @@ aliases:
 
 Licensed Protected Product
 
-*This page contains all release notes for version 2.7 displayed in reverse chronological order*
+**This page contains all release notes for Multi Data Center Bridge displayed in reverse chronological order**
 
 ## Support Lifetime
 Our minor releases are supported until our next minor comes out.
+---
 
 ## 2.7.1 Release Notes
 

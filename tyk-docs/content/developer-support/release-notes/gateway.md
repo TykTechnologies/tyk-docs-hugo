@@ -1,5 +1,5 @@
 ---
-title: Tyk Gateway 5.6 Release Notes
+title: Tyk Gateway Release Notes
 date: 2024-10-08T15:51:11Z
 description:
   "Release notes documenting updates, enhancements, and changes for Tyk Gateway versions within the 5.6.X series."
@@ -24,7 +24,7 @@ aliases:
 
 **Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))
 
-**This page contains all release notes for version 5.6.X displayed in a reverse chronological order**
+**This page contains all release notes for Gateway displayed in a reverse chronological order**
 
 ## Support Lifetime
 

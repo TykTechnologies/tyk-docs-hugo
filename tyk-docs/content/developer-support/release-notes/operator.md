@@ -1,5 +1,5 @@
 ---
-title: Tyk Operator 1.0 Release Notes
+title: Tyk Operator Release Notes
 tag: ["Tyk Operator", "Release notes", "v1.0", "changelog" ]
 description: "Release notes documenting updates, enhancements, fixes and changes for Tyk Operator versions within the 1.0.x series."
 aliases:
@@ -11,7 +11,7 @@ aliases:
 ---
 **Licensed Protected Product**
 
-**This page contains all release notes for version 1.0.X displayed in a reverse chronological order**
+**This page contains all release notes for Tyk Operator displayed in a reverse chronological order**
 
 ## Support Lifetime
 <!-- Required. replace X.Y with this release and set the correct quarter of the year -->

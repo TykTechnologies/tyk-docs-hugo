@@ -1,5 +1,5 @@
 ---
-title: Tyk Sync 2.0 Release Notes
+title: Tyk Sync Release Notes
 tag: ["Tyk Sync", "Release notes", "v2.0", "2.0.0", "changelog" ]
 description: "Release notes documenting updates, enhancements, fixes and changes for Tyk Sync versions within the 2.0.X series."
 aliases:
@@ -9,7 +9,7 @@ aliases:
 ---
 **Licensed Protected Product**
 
-**This page contains all release notes for version 2.0.X displayed in a reverse chronological order**
+**This page contains all release notes for Sync displayed in a reverse chronological order**
 
 ## Support Lifetime
 <!-- Required. replace X.Y with this release and set the correct quarter of the year -->

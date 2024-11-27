@@ -1,12 +1,12 @@
 ---
-title: Tyk Identity Broker 1.6 Release Notes
+title: Tyk Identity Broker Release Notes
 date: 2024-10-27T15:49:11Z
 description: "Release notes documenting updates, enhancements, and changes for Tyk Identity Broker versions within the 1.6.x series."
 tags: ["Tyk Identity Broker", "Release notes", "changelog", "v1.6", "1.6.1"]
 ---
 ****Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))**
 
-**This page contains all release notes for version 1.6.x displayed in a reverse chronological order**
+**This page contains all release notes for Tyk Identity Broker displayed in a reverse chronological order**
 
 ## Support Lifetime
 <!-- Required. replace X.Y with this release and set the correct quarter of the year -->

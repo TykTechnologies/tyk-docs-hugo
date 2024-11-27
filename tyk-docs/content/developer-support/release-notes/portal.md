@@ -1,5 +1,5 @@
 ---
-title: Tyk Enterprise Developer Portal v1.12.0
+title: Tyk Enterprise Developer Portal Release Notes
 description: Release notes documenting updates, enhancements and changes for Tyk Enterprise Developer Portal v1.12.0
 tags: ["Developer Portal", "Release notes", "changelog", "v1.12.0"]
 menu:
@@ -27,6 +27,14 @@ aliases:
 ---
 
 **Licensed Protected Product**
+
+**This page contains all release notes for Enterprise Developer Portal displayed in a reverse chronological order**
+
+## Support Lifetime
+<!-- Required. replace X.Y with this release and set the correct quarter of the year -->
+Our minor releases are supported until our next minor comes out.
+
+---
 
 ## 1.12.0 Release Notes
 
