@@ -3936,7 +3936,7 @@ menu:
             show: True
       - title: "Tyk Sync"
         category: Directory
-        show: True
+        show: False
         menu:
       - title: "Tyk Identity Broker (Open Source)"
         category: Directory
