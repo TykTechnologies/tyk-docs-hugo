@@ -30,7 +30,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog](#C
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
-However, if you are upgrading to [Tyk Operator v1.0]({{<ref "product-stack/tyk-operator/release-notes/operator-1.0.md">}}) using the Helm Chart, please read the [license requirement]({{<ref "product-stack/tyk-operator/release-notes/operator-1.0.md#breaking-changes">}}) and Tyk Operator [installation and upgrade instructions]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}) carefully.
+However, if you are upgrading to [Tyk Operator v1.0]({{<ref "product-stack/tyk-operator/release-notes/operator-1.0.md">}}) using the Helm Chart, please read the [license requirement]({{<ref "product-stack/tyk-operator/release-notes/operator-1.0.md#breaking-changes">}}) and Tyk Operator [installation and upgrade instructions]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}}) carefully.
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->

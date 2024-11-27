@@ -126,7 +126,7 @@ SSL certificates used by your MDCB server. A list of certificate IDs or path to 
 ENV: <b>TYK_MDCB_SECURITY_PRIVATECERTIFICATEENCODINGSECRET</b><br />
 Type: `string`<br />
 
-Allows MDCB to use Mutual TLS. This requires to set `server_options.use_ssl` to true. See [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}) for more details.
+Allows MDCB to use Mutual TLS. This requires to set `server_options.use_ssl` to true. See [Mutual TLS]({{< ref "/api-management/authentication-authorization#enable-mutual-tls" >}}) for more details.
 
 ### security.enable_http_secure_endpoints
 ENV: <b>TYK_MDCB_SECURITY_ENABLEHTTPSECUREENDPOINTS</b><br />
