@@ -1799,7 +1799,7 @@ Fixed a bug where some Tyk Dashboard analytics screens stopped working when the 
 <details>
 <summary>Unable to delete APIs from DocumentDB storage</summary>
 
-In [Tyk 5.2.2]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.2.md#Changelog-v5.2.2" >}}) we fixed an issue when using MongoDB and Tyk Security Policies where Tyk could incorrectly grant access to an API after that API had been deleted from the associated policy. This introduced an unintended side-effect for users of DocumentDB such that they were unable to delete APIs from the persistent storage. We identified that this was due to the use of the `$expr` operator in the solution - and discovered that this is supported by MongoDB but not by DocumentDB. We have now reimplemented the fix and removed the limitation introduced for DocumentDB users.
+In [Tyk 5.2.2]({{< ref "#Changelog-v5.2.2" >}}) we fixed an issue when using MongoDB and Tyk Security Policies where Tyk could incorrectly grant access to an API after that API had been deleted from the associated policy. This introduced an unintended side-effect for users of DocumentDB such that they were unable to delete APIs from the persistent storage. We identified that this was due to the use of the `$expr` operator in the solution - and discovered that this is supported by MongoDB but not by DocumentDB. We have now reimplemented the fix and removed the limitation introduced for DocumentDB users.
 </details>
 </li>
 <li>
