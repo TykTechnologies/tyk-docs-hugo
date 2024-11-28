@@ -141,7 +141,6 @@ Added to Streams analytics capability to capture and report common error scenari
 </li>
 <li>
 <details>
-<summary>Improved Streams Analytics Integration</summary>
 
 Expanded Streams analytics to capture and report common error scenarios, including broker connectivity issues and standard HTTP errors, ensuring comprehensive request tracking for Streams-processed requests.
 </details>
