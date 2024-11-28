@@ -34,7 +34,18 @@ We are thrilled to announce new updates and improvements in Tyk 5.7.0, bringing 
 
 #### Add release highlight summary
 
-Add release highlight description
+Tyk is now entering the asynchronous API management space with a bang by delivering Tyk Streams to our users!
+Many API management solutions fail to fully support event-driven architectures, causing fragmented management, inconsistent security practices, and increased operational complexity. With event-driven architectures on the rise recently, keeping everything under control and enforcing standards at the organizational level has become a challenge.
+
+**Tyk Streams** is an event streaming solution available within the Tyk API Management Platform, which applies proven API management principles to simplify event and streams handling. 
+This release brings capabilities to stream data and events using Kafka, Websocket, SSE and HTTP protocols. It also becomes possible to mediate the message format between Avro and JSON on the fly.
+
+- Merge together various sources of events to present to consumers as a unified stream.
+- Apply authentication and authorization to streams of messages, just as you do for your RESTful APIs
+- Expose async APIs via Tyk Portal, so that they are easily discoverable
+
+All of this possible in self-managed and k8s deployments of Tyk!
+
 
 #### Add release highlight summary
 
