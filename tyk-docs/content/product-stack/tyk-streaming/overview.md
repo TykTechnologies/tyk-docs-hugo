@@ -178,7 +178,7 @@ management capabilities.
 While some API management platforms offer basic support for async APIs and event-driven architectures, Tyk Streams
 stands out by providing a comprehensive and flexible solution:
 
-- **Extensive protocol support**: Tyk Streams supports a wide range of event brokers and protocols out of the box, including Kafka, MQTT, WebSocket, and more.
+- **Extensive protocol support**: Tyk Streams supports event brokers and protocols out of the box, including Kafka, WebSockets, Server-Sent Events (SSE).
 - **Powerful mediation capabilities**: Tyk Streams allows you to transform and enrich event data, enabling protocol mediation and compatibility with diverse client requirements.
 - **Seamless integration**: Async APIs are managed alongside synchronous APIs within the Tyk platform, providing a unified developer portal, consistent security policies and centralised analytics.
 - **Flexibility and scalability**: Tyk Streams can be deployed in various architectures, from simple single-node setups to large-scale distributed deployments and can handle high-throughput event processing scenarios.
