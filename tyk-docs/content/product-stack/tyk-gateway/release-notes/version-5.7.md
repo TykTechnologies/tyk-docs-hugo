@@ -32,7 +32,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 -->
 We are thrilled to announce new updates and improvements in Tyk 5.7.0, bringing more control, flexibility, and performance.  For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.6.7">}}) below.
 
-#### Add release highlight summary
+#### Tyk Streams - asynchronous API management with Tyk
 
 Tyk is now entering the asynchronous API management space with a bang by delivering Tyk Streams to our users!
 Many API management solutions fail to fully support event-driven architectures, causing fragmented management, inconsistent security practices, and increased operational complexity. With event-driven architectures on the rise recently, keeping everything under control and enforcing standards at the organizational level has become a challenge.
