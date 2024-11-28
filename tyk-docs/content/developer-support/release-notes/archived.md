@@ -27,6 +27,7 @@ aliases:
   - /product-stack/tyk-gateway/release-notes/archived-releases/version-2.8
   - /product-stack/tyk-gateway/release-notes/archived-releases/version-2.9
   - /product-stack/tyk-gateway/release-notes/archived-releases/upgrading-v2-3-v2-2
+  - /upgrading-v2-3-v2-2
 
 ---
 

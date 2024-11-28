@@ -20,6 +20,15 @@ aliases:
   - /product-stack/tyk-gateway/release-notes/version-5.4
   - /product-stack/tyk-gateway/release-notes/version-5.5
   - /product-stack/tyk-gateway/release-notes/version-5.6
+  - /release-notes/version-3.0
+  - /release-notes/version-3.1
+  - /release-notes/version-3.2
+  - /release-notes/version-4.0
+  - /release-notes/version-4.1
+  - /release-notes/version-4.2
+  - /release-notes/version-4.3
+  - /release-notes/version-5.0
+  - /release-notes/version-5.1
 ---
 
 **Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))

@@ -13,6 +13,9 @@ aliases:
   - /release-notes/mdcb-2.1
   - /release-notes/mdcb-2.2
   - /release-notes/mdcb-2.3
+  - /release-notes/mdcb-2.4
+  - /release-notes/mdcb-2.5
+  - /release-notes/mdcb-2.6
 ---
 
 Licensed Protected Product
