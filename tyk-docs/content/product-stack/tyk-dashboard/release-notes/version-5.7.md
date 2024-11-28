@@ -291,13 +291,6 @@ Corrected an issue where the search box on the Tyk OAS and Streams API pages onl
 </li>
 <li>
 <details>
-<summary>Fixed request validation for Path Parameters During Import/Patch</summary>
-
-Resolved a bug where enabling validate request middleware during import/patch OAS requests did not trigger validation when only common parameters were specified. Now, path parameters are properly validated during these operations.
-</details>
-</li>
-<li>
-<details>
 <summary>Unable to see all *user groups* in Dashboard dropdown</summary>
 
 Fixed an issue with the *user group* dropdown in the Dashboard UI, ensuring that all available user groups are displayed when creating a new user.
