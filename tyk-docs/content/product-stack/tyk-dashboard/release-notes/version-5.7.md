@@ -28,7 +28,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 -->
 We are thrilled to announce new updates and improvements in Tyk 5.7.0, bringing more control, flexibility, and performance.  For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.7.0">}}) below.
 
-#### Add release highlight summary
+#### Tyk Streams can be configured through Tyk Dashboard
 
 Add release highlight summary
 
