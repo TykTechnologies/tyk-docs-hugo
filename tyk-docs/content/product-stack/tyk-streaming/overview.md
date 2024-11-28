@@ -73,6 +73,7 @@ aliases:
  - /product-stack/tyk-streaming/guides/bloblang/advanced/
  - /product-stack/tyk-streaming/guides/bloblang/arithmetic/
  - /product-stack/tyk-streaming/guides/bloblang/functions/
+ - /product-stack/tyk-streaming/guides/bloblang/methods
  - /product-stack/tyk-streaming/guides/bloblang/methods/overview/
  - /product-stack/tyk-streaming/guides/bloblang/methods/general/
  - /product-stack/tyk-streaming/guides/bloblang/methods/encoding-and-encryption/

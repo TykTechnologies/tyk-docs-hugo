@@ -3915,7 +3915,7 @@ menu:
                     category: Page
                     show: True
               - title: "Processors"
-                category: "Directory"
+                category: Directory
                 show: True
                 menu:
                   - title: "Overview"
