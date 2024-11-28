@@ -98,8 +98,8 @@ Our first release of Tyk Streams is now available, and we'd love for you to try 
 
 ---
 ## Overview
-With *Tyk Streams*, you can easily connect to various event brokers and streaming platforms, such as
-[Apache Kafka](https://github.com/TykTechnologies/tyk-pro-docker-demo/tree/kafka), MQTT, AMQP etc. and expose them as
+With *Tyk Streams*, you can easily connect to event brokers and streaming platforms, such as
+[Apache Kafka](https://github.com/TykTechnologies/tyk-pro-docker-demo/tree/kafka), and expose them as
 managed API endpoints to internal and external consumers.
 
 <div style="display: flex; justify-content: center;">
