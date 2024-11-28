@@ -46,11 +46,6 @@ This release brings capabilities to stream data and events using Kafka, Websocke
 
 All of this possible in self-managed and k8s deployments of Tyk!
 
-
-#### Add release highlight summary
-
-Add release highlight description
-
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 
@@ -203,6 +198,13 @@ When using Tyk Streams and sending input via http, the requests sometimes timed 
 <summary>Improved backwards compatibility when working with Tyk OAS APIs</summary>
 
 Fixed a backwards compatibility issue with Tyk OAS API schema validation. When downgrading from a Tyk version, schema validation could fail if new fields had been added to the Tyk OAS API definition. This change relaxes the strictness of validation to allow additional properties.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Policy Merge Issue with Path-Based Permissions</summary>
+
+Resolved a bug where path-based permissions in policies were not preserved when policies were combined, potentially omitting URL values and incorrectly restricting access. The updated behavior ensures that URL access rights from all applicable policies are merged, regardless of policy order, allowing seamless enforcement of combined permissions.
 </details>
 </li>
 <li>
