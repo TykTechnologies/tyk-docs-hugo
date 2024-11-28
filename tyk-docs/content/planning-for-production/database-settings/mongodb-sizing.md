@@ -43,13 +43,13 @@ In addition to storing working data in memory, MongoDB also requires space for s
 
 ## Audit Log storage
 
-From Tyk Dashboard v5.7+, audit log can be configured to be stored in the database. If you choose to store the audit logs in database, you need to account for an additional dedicated table for audit logs in their Data storage setup. The size of this table will depend on the number of operations recorded, with each record averaging 1350 to 1450 bytes.
+From Tyk Dashboard v5.7+, audit log can be configured to be stored in the database. If you choose to store the audit logs in database, you need to account for additional storage for audit logs in the database setup. The size of this table will depend on the number of operations recorded, with each record averaging 1350 to 1450 bytes.
 
 ### Audit Log Considerations
 
 - **Data Generation**: The total size of the audit log table will depend on the number of API operations, administrative actions, and system events that are being logged.
 - **Daily Estimate**: For example, logging 100,000 operations per day results in 135MB to 145MB of additional data daily.
-- **Storage Growth**: Over time, this can significantly impact MongoDB storage requirements, especially in high-traffic environments or systems with comprehensive logging enabled.
+- **Storage Growth**: Over time, this can significantly impact your storage requirements, especially in high-traffic environments or systems with comprehensive logging enabled.
 
 ### Recommendations for Housekeeping the Audit Log Table
 
@@ -63,16 +63,15 @@ From Tyk Dashboard v5.7+, audit log can be configured to be stored in the databa
   Use monitoring tools to track the size and growth rate of the audit log table. Adjust retention policies or resources proactively based on observed trends.
 
 4. Plan for Resource Scaling:
-Audit log storage can significantly impact overall database size, especially in high-traffic environments. Plan for storage and resource scaling based on daily log growth estimates.
+  Audit log storage can significantly impact overall database size, especially in high-traffic environments. Plan for storage and resource scaling based on daily log growth estimates.
 
-Example Calculation (For Both Databases):
+Example Calculation:
 
 - Daily Logs: 100,000 operations/day
 - Average Record Size: 1400 bytes
-- Storage Growth: 100,000 × 1400 bytes/day = 140MB/day For 90 days: 140MB × 90 = ~12.6GB
+- Storage Growth: 100,000 × 1400 bytes/day = 140MB/day 
 
-5. Schedule Housekeeping Tasks:
-Perform housekeeping tasks during low-traffic periods to minimize database performance impact.
+For 90 days: 140MB × 90 = ~12.6GB
 
 ## MongoDB Database Storage Calculator
 You can calculate your MongoDB storage requirements by entering your known values in the middle section of the calculator settings below:
