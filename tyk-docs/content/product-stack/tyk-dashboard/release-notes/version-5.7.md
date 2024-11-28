@@ -110,13 +110,6 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Implemented backend Telemetry tracking with configurable option</summary>
-
-Introduced backend telemetry tracking and added a new "disable_telemetry" field in the dashboard configuration, allowing users to enable or disable telemetry data collection.
-</details>
-</li>
-<li>
-<details>
 <summary>Added confirmation prompt for Stream deletion</summary>
 
 Introduced a confirmation prompt when deleting a stream, notifying users that this action will stop all data streaming and cannot be undone. This change ensures users are fully aware of the impact before proceeding with deletion.
