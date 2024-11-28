@@ -182,5 +182,10 @@
     "release-notes/mdcb-2.1": "",
     "release-notes/mdcb-2.2": "",
     "release-notes/mdcb-2.3": "",
-    "release-notes/pump-1.8": ""
+    "release-notes/pump-1.8": "",
+    "developer-support/special-releases-and-features/early-access-features": "",
+    "developer-support/special-releases-and-features/fips-release": "",
+    "developer-support/special-releases-and-features/lab-releases": "",
+    "developer-support/special-releases-and-features/long-term-support-releases": "",
+    "developer-support/tyk-release-summary/overview": ""
 }

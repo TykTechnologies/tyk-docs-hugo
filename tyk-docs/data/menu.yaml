@@ -4055,26 +4055,6 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Special Releases and Features"
-        category: Directory
-        show: True
-        menu:
-          - title: "Long Term Support Releases"
-            path: /developer-support/special-releases-and-features/long-term-support-releases
-            category: Page
-            show: True
-          - title: "Lab Releases"
-            path: /developer-support/special-releases-and-features/lab-releases
-            category: Page
-            show: True
-          - title: "Early Access Features"
-            path: /developer-support/special-releases-and-features/early-access-features
-            category: Page
-            show: True
-          - title: "FIPS Releases"
-            path: /developer-support/special-releases-and-features/fips-release
-            category: Page
-            show: True
       - title: "Frequently Asked Questions"
         category: Directory
         show: True
@@ -4201,6 +4181,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Overview"
+          path: /developer-support/release-notes/overview
+          category: Page
+          show: True
         - title: "Gateway"
           path: /developer-support/release-notes/gateway
           category: Page
@@ -4245,10 +4229,10 @@ menu:
           path: /developer-support/release-notes/archived
           category: Page
           show: True
-      - title: "Latest Tyk Releases"
-        path: /developer-support/tyk-release-summary/overview
-        category: Page
-        show: True
+        - title: "Special Releases"
+          path: /developer-support/release-notes/special-releases
+          category: Page
+          show: True
       - title: "Documentation Projects"
         category: Directory
         show: True
