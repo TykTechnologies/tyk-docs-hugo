@@ -12,6 +12,7 @@ aliases:
   - /developer-support/special-releases-and-features/fips-release
   - /developer-support/special-releases-and-features/lab-releases
   - /developer-support/special-releases-and-features/long-term-support-releases
+  - /frequently-asked-questions/using-early-access-features
 
 description: "Long Term Releases and how we support them"
 ---
