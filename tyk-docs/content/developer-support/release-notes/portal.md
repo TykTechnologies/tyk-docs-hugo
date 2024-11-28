@@ -7,23 +7,23 @@ main:
 parent: "Release Notes"
 weight: 7
 aliases:
-  - tyk-docs/content/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.1.0
-  - tyk-docs/content/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.10.0
-  - tyk-docs/content/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.11.0
-  - tyk-docs/content/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.12.0
-  - tyk-docs/content/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.2.0
-  - tyk-docs/content/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.3.0
-  - tyk-docs/content/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.4.0
-  - tyk-docs/content/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.5.0
-  - tyk-docs/content/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.6.0
-  - tyk-docs/content/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0
-  - tyk-docs/content/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.0
-  - tyk-docs/content/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.1
-  - tyk-docs/content/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.2
-  - tyk-docs/content/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.3
-  - tyk-docs/content/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.4
-  - tyk-docs/content/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.5
-  - tyk-docs/content/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.9.0
+  - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.1.0
+  - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.10.0
+  - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.11.0
+  - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.12.0
+  - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.2.0
+  - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.3.0
+  - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.4.0
+  - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.5.0
+  - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.6.0
+  - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0
+  - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.0
+  - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.1
+  - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.2
+  - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.3
+  - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.4
+  - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.5
+  - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.9.0
 ---
 
 **Licensed Protected Product**

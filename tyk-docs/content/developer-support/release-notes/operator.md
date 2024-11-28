@@ -3,11 +3,11 @@ title: Tyk Operator Release Notes
 tag: ["Tyk Operator", "Release notes", "v1.0", "changelog", "v1.0.0", "v0.18.0", "v0.17.1", "v0.17.0", "v0.16.0" ]
 description: "Release notes documenting updates, enhancements, fixes and changes for Tyk Operator versions within the 1.0.x series."
 aliases:
-  - tyk-docs/content/product-stack/tyk-operator/release-notes/operator-0.16
-  - tyk-docs/content/product-stack/tyk-operator/release-notes/operator-0.17
-  - tyk-docs/content/product-stack/tyk-operator/release-notes/operator-0.18
-  - tyk-docs/content/product-stack/tyk-operator/release-notes/operator-1.0
-  - tyk-docs/content/product-stack/tyk-operator/release-notes/overview
+  - /product-stack/tyk-operator/release-notes/operator-0.16
+  - /product-stack/tyk-operator/release-notes/operator-0.17
+  - /product-stack/tyk-operator/release-notes/operator-0.18
+  - /product-stack/tyk-operator/release-notes/operator-1.0
+  - /product-stack/tyk-operator/release-notes/overview
 ---
 **Licensed Protected Product**
 

@@ -5,21 +5,21 @@ description:
   "Release notes documenting updates, enhancements, and changes for Tyk Gateway versions within the 5.6.X series."
 tags: ["Tyk Gateway", "Release notes", "v5.6", "5.6.0", "5.6.1", "5.6", "changelog"]
 aliases:
-  - tyk-docs/content/product-stack/tyk-gateway/release-notes/overview
-  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-3.0
-  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-3.1
-  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-3.2
-  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-4.0
-  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-4.1
-  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-4.2
-  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-4.3
-  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-5.0
-  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-5.1
-  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-5.2
-  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-5.3
-  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-5.4
-  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-5.5
-  - tyk-docs/content/product-stack/tyk-gateway/release-notes/version-5.6
+  - /product-stack/tyk-gateway/release-notes/overview
+  - /product-stack/tyk-gateway/release-notes/version-3.0
+  - /product-stack/tyk-gateway/release-notes/version-3.1
+  - /product-stack/tyk-gateway/release-notes/version-3.2
+  - /product-stack/tyk-gateway/release-notes/version-4.0
+  - /product-stack/tyk-gateway/release-notes/version-4.1
+  - /product-stack/tyk-gateway/release-notes/version-4.2
+  - /product-stack/tyk-gateway/release-notes/version-4.3
+  - /product-stack/tyk-gateway/release-notes/version-5.0
+  - /product-stack/tyk-gateway/release-notes/version-5.1
+  - /product-stack/tyk-gateway/release-notes/version-5.2
+  - /product-stack/tyk-gateway/release-notes/version-5.3
+  - /product-stack/tyk-gateway/release-notes/version-5.4
+  - /product-stack/tyk-gateway/release-notes/version-5.5
+  - /product-stack/tyk-gateway/release-notes/version-5.6
 ---
 
 **Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))
@@ -4623,3 +4623,24 @@ The feature can be enabled by setting the config `track_404_logs` to `true` in t
 
 No specific actions required.
 If you are upgrading from version 2.8, pls [read this guide]({{< ref "developer-support/release-notes/archived#290-release-notes" >}})
+
+## Further Information
+
+### Upgrading Tyk
+Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance on the upgrade strategy.
+
+### API Documentation
+<!-- Required. Update the link to the Gateway "tyk-gateway-api" or dashboard "tyk-dashboard-api" and the Postman collection
+
+If there were changes in any of Tyk’s API docs:
+
+- Have API endpoints been documented in the release note summary and changelog?				
+- Has a link to the endpoint documentation being included?
+- Has the benefit of the new/updated endpoint been explained in the release highlights and changelog?
+-->
+- [OpenAPI Document]({{<ref "tyk-dashboard-api/" >}})
+- [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview)
+
+### FAQ
+
+Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.

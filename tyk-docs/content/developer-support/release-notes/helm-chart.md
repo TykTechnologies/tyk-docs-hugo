@@ -3,12 +3,12 @@ title: Tyk Charts Release Notes
 description: "Release notes documenting updates, enhancements and changes for Tyk Charts versions within the 2.1 series."
 tags: ["Tyk Charts", "Release notes", "changelog", "v2.1", "v2.1.0", "v2.0.0", "v1.6.0", "v1.5.0", "v1.4.0", "v1.3.0" ]
 aliases:
-  - tyk-docs/content/product-stack/tyk-charts/release-notes/version-1.3
-  - tyk-docs/content/product-stack/tyk-charts/release-notes/version-1.4
-  - tyk-docs/content/product-stack/tyk-charts/release-notes/version-1.5
-  - tyk-docs/content/product-stack/tyk-charts/release-notes/version-1.6
-  - tyk-docs/content/product-stack/tyk-charts/release-notes/version-2.0
-  - tyk-docs/content/product-stack/tyk-charts/release-notes/version-2.1
+  - /product-stack/tyk-charts/release-notes/version-1.3
+  - /product-stack/tyk-charts/release-notes/version-1.4
+  - /product-stack/tyk-charts/release-notes/version-1.5
+  - /product-stack/tyk-charts/release-notes/version-1.6
+  - /product-stack/tyk-charts/release-notes/version-2.0
+  - /product-stack/tyk-charts/release-notes/version-2.1
 ---
 
 ****Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))**

@@ -4,21 +4,21 @@ date: 2024-10-08T15:51:11Z
 description: "Release notes documenting updates, enhancements, and changes for Tyk Dashboard versions within the 5.6.X series."
 tags: ["Tyk Dashboard", "Release notes", "v5.6", "5.6.0", "5.6", "changelog"]
 aliases:
-  - tyk-docs/content/product-stack/tyk-dashboard/release-notes/overview
-  - tyk-docs/content/product-stack/tyk-dashboard/release-notes/version-3.0
-  - tyk-docs/content/product-stack/tyk-dashboard/release-notes/version-3.1
-  - tyk-docs/content/product-stack/tyk-dashboard/release-notes/version-3.2
-  - tyk-docs/content/product-stack/tyk-dashboard/release-notes/version-4.0
-  - tyk-docs/content/product-stack/tyk-dashboard/release-notes/version-4.1
-  - tyk-docs/content/product-stack/tyk-dashboard/release-notes/version-4.2
-  - tyk-docs/content/product-stack/tyk-dashboard/release-notes/version-4.3
-  - tyk-docs/content/product-stack/tyk-dashboard/release-notes/version-5.0
-  - tyk-docs/content/product-stack/tyk-dashboard/release-notes/version-5.1
-  - tyk-docs/content/product-stack/tyk-dashboard/release-notes/version-5.2
-  - tyk-docs/content/product-stack/tyk-dashboard/release-notes/version-5.3
-  - tyk-docs/content/product-stack/tyk-dashboard/release-notes/version-5.4
-  - tyk-docs/content/product-stack/tyk-dashboard/release-notes/version-5.5
-  - tyk-docs/content/product-stack/tyk-dashboard/release-notes/version-5.6
+  - /product-stack/tyk-dashboard/release-notes/overview
+  - /product-stack/tyk-dashboard/release-notes/version-3.0
+  - /product-stack/tyk-dashboard/release-notes/version-3.1
+  - /product-stack/tyk-dashboard/release-notes/version-3.2
+  - /product-stack/tyk-dashboard/release-notes/version-4.0
+  - /product-stack/tyk-dashboard/release-notes/version-4.1
+  - /product-stack/tyk-dashboard/release-notes/version-4.2
+  - /product-stack/tyk-dashboard/release-notes/version-4.3
+  - /product-stack/tyk-dashboard/release-notes/version-5.0
+  - /product-stack/tyk-dashboard/release-notes/version-5.1
+  - /product-stack/tyk-dashboard/release-notes/version-5.2
+  - /product-stack/tyk-dashboard/release-notes/version-5.3
+  - /product-stack/tyk-dashboard/release-notes/version-5.4
+  - /product-stack/tyk-dashboard/release-notes/version-5.5
+  - /product-stack/tyk-dashboard/release-notes/version-5.6
 ---
 <!-- Required. oss or licensed. Choose one of the following:
     **Licensed Protected Product**
@@ -3699,7 +3699,7 @@ The feature can be enabled by setting the config `track_404_logs` to `true` in t
 ### Upgrading From Version 2.9
 
 No specific actions required.
-If you are upgrading from version 2.8, pls [read this guide]({{< ref "developer-support/release-notes/archived#upgrading-from-version-28" >}}")
+If you are upgrading from version 2.8, pls [read this guide]({{< ref "developer-support/release-notes/archived#upgrading-from-version-28" >}})
 
 
 ## Further Information

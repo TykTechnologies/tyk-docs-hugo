@@ -3,9 +3,9 @@ title: Tyk Sync Release Notes
 tag: ["Tyk Sync", "Release notes", "v2.0", "2.0.0", "changelog" ]
 description: "Release notes documenting updates, enhancements, fixes and changes for Tyk Sync versions within the 2.0.X series."
 aliases:
-  - tyk-docs/content/product-stack/tyk-sync/release-notes/sync-1.4
-  - tyk-docs/content/product-stack/tyk-sync/release-notes/sync-1.5
-  - tyk-docs/content/product-stack/tyk-sync/release-notes/sync-2.0
+  - /product-stack/tyk-sync/release-notes/sync-1.4
+  - /product-stack/tyk-sync/release-notes/sync-1.5
+  - /product-stack/tyk-sync/release-notes/sync-2.0
 ---
 **Licensed Protected Product**
 
