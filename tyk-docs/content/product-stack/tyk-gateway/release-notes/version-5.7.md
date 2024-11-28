@@ -134,7 +134,7 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Enhanced Stream Analytics Error Handling</summary>
+<summary>Added Stream Analytics Error Handling</summary>
 
 Expanded Streams analytics to capture and report common error scenarios, including broker connectivity issues and standard HTTP errors, ensuring comprehensive request tracking for Streams-processed requests.
 </details>
