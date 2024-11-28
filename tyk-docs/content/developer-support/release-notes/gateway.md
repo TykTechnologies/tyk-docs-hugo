@@ -1843,7 +1843,7 @@ This release primarily focuses on bug fixes. For a comprehensive list of changes
 
 Tyk Gateway now offers [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) compliance. For further
 details please consult [Tyk API Management
-FIPS support]({{< ref "developer-support/special-releases-and-features/fips-release" >}}).
+FIPS support]({{< ref "developer-support/release-notes/special-releases#fips-releases" >}}).
 
 ### Dependencies
 
@@ -1915,7 +1915,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Added FIPS compliance</summary>
 
-Added [FIPS compliance]({{< ref "developer-support/special-releases-and-features/fips-release" >}}) for Tyk Gateway.
+Added [FIPS compliance]({{< ref "developer-support/release-notes/special-releases#fips-releases" >}}) for Tyk Gateway.
 
 </details>
 </li>
