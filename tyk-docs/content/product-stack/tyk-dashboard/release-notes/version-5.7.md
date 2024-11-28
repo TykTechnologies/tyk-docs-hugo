@@ -30,7 +30,8 @@ We are thrilled to announce new updates and improvements in Tyk 5.7.0, bringing 
 
 #### Tyk Streams can be configured through Tyk Dashboard
 
-Add release highlight summary
+With this release we are adding a possibility for users to configure their Stream & Events APIs using Tyk Dashboard. 
+The new API designer leads users step-by-step to create a new Stream configuration easily. Pre-filled stream configurations for different inputs and outputs make it easy to make sure that the Stream is configured correctly.
 
 #### Improved Audit Log Management
 
