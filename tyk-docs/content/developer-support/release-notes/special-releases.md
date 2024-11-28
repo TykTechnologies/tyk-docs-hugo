@@ -19,7 +19,7 @@ description: "Long Term Releases and how we support them"
 
 ## Long Term Support Releases
 
-Welcome to Tyk's Long Term Support (LTS) Releases page. Here, we'll walk you through the practical aspects of how LTS benefits your business. Explore our approach to stability, understand semantic versioning and learn about our compatibility policies. We'll also cover support for non-LTS components and provide links on upgrading and staying informed about new LTS releases.
+Welcome to Tyk's Long Term Support (LTS) Releases section. Here, we'll walk you through the practical aspects of how LTS benefits your business. Explore our approach to stability, understand semantic versioning and learn about our compatibility policies. We'll also cover support for non-LTS components and provide links on upgrading and staying informed about new LTS releases.
 
 ### What Makes Long-Term Support (LTS) So Valuable to Our Customers?
 
