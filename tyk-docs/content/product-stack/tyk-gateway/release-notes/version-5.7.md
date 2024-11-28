@@ -169,7 +169,7 @@ Introduced a new validator derived from the existing OAS schema, adapting it for
 </li>
 <li>
 <details>
-<summary>Improved Logging for Streams</summary>
+<summary>Added Logging for Streams</summary>
 
 Refined streams logging behavior to match Tyk's logging patterns, reducing unnecessary log output and improving log clarity.
 </details>
