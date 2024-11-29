@@ -136,11 +136,6 @@ Added to Streams analytics capability to capture and report common error scenari
 </li>
 <li>
 <details>
-
-</details>
-</li>
-<li>
-<details>
 <summary>Integrated Streams Validator with Streams API</summary>
 
 Connected the new OAS validator to the /streams endpoint, adding proper error handling and validation responses for invalid stream configurations.
@@ -227,17 +222,6 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
 - Fixed the following CVEs:
     - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
 -->
-
-<ul>
-<li>
-<details>
-<summary>Add priority CVEs fixed</summary>
-
-Add CVE summary
-</details>
-</li>
-</ul>
-
 <!-- Required. use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
 ---
 
