@@ -45,11 +45,14 @@
                   <div class="image-container">
                     <img class="home-img" title="{{ .title }}" alt="{{ .title }}" src="{{ .image | relURL }}" />
                   </div>
-                  <div class="fs-xs mb-3 text-sec lh-normal fs-normal font-400">{{ .steps }}</div>
-                  <p class="fs-xs mb-3 text-sec lh-normal fs-normal font-400">
+                  <div class="mb-3"></div>
+                  <div class="fs-xs mb-4 text-sec lh-normal fs-normal font-400" style="font-weight: bold; text-align: center;">
+                    {{ .steps }}
+                  </div>                  
+                  <p class="fs-xs mb-3 text-sec lh-normal fs-normal font-400" style="text-align: center;">
                     {{ .description }}
                   </p>
-                  <p class="fs-xs mb-3 text-sec lh-normal fs-normal font-400">
+                  <p class="fs-xs mb-3 text-sec lh-normal fs-normal font-400" style="text-align: center;">
                     {{ .includes }}
                   </p>
                 </div>

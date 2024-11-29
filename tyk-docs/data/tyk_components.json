@@ -2,8 +2,8 @@
   "components": [
     {
       "title": "Schedule your guided evaluation",
-      "image": "img/tyk_self_managed.svg",
-      "steps": "",
+      "image": "img/tyk_cloud.svg",
+      "steps": "Schedule your guided evaluation",
       "button_text": "Get in touch",
       "path": "https://tyk.io/guided-evaluation/",
       "description": "Looking to evaluate our powerful Hybrid or Self-Managed deployment types?",
@@ -12,7 +12,7 @@
     {
       "title": "Tyk Cloud",
       "image": "img/tyk_cloud.svg",
-      "steps": "",
+      "steps": "Start your 48-hour free trial",
       "button_text": "Start trial",
       "path": "https://tyk.io/sign-up/",
       "description": "Dive in with a cloud-based trial.",
