@@ -78,19 +78,19 @@ From Tyk Dashboard v5.7+, audit log can be configured to be stored in the databa
 
 ### Recommendations for Housekeeping the Audit Log Table
 
-1. Implement Data Retention Policies:
+1. **Implement Data Retention Policies:**
   Define a clear retention period based on business and regulatory requirements, such as 30, 90, or 180 days. Remove older logs that exceed the retention policy to prevent excessive storage growth.
 
-2. Archive Older Logs:
+2. **Archive Older Logs:**
   For long-term storage or compliance purposes, move older logs to external systems such as a data lake, object storage (e.g., S3), or a data warehouse.
 
-3. Monitor Growth Trends:
+3. **Monitor Growth Trends:**
   Use monitoring tools to track the size and growth rate of the audit log table. Adjust retention policies or resources proactively based on observed trends.
 
-4. Plan for Resource Scaling:
+4. **Plan for Resource Scaling:**
   Audit log storage can significantly impact overall database size, especially in high-traffic environments. Plan for storage and resource scaling based on daily log growth estimates.
 
-Example Calculation:
+**Example Calculation:**
 
 - Daily Logs: 100,000 operations/day
 - Average Record Size: 1400 bytes
