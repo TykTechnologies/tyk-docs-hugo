@@ -29,7 +29,7 @@ For GraphQL APIs, use the gateway to define [GraphQL schemas]({{< ref "graphql-p
 
 ### Function Level Authorization
 
-Handle with the gateway. Use [security policies]({{< ref "basic-config-and-security/security/security-policies" >}}), [path-based permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}), [allow lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#allowlist" >}}) and [block lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#blocklist" >}}) to manage authorization of hosts and paths.
+Handle with the gateway. Use [security policies]({{< ref "basic-config-and-security/security/security-policies" >}}), [path-based permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}), [allow lists]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) and [block lists]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-oas#configuring-the-block-list-in-the-api-designer" >}}) to manage authorization of hosts and paths.
 
 ## Assign Least Privileges
 
@@ -37,7 +37,7 @@ Design [security policies]({{< ref "getting-started/key-concepts/what-is-a-secur
 
 ### Deny by Default
 
-Favor use of [allow lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#allowlist" >}}) to explicitly allow endpoints access, rather than [block lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#blocklist" >}}) to explicitly deny. This approach prevents new API endpoints from being accessible by default, as the presence of other, allowed endpoints means that access to them is implicitly denied.
+Favor use of [allow lists]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) to explicitly allow endpoints access, rather than [block lists]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-oas#configuring-the-block-list-in-the-api-designer" >}}) to explicitly deny. This approach prevents new API endpoints from being accessible by default, as the presence of other, allowed endpoints means that access to them is implicitly denied.
 
 ### Validate and Control All User Input
 

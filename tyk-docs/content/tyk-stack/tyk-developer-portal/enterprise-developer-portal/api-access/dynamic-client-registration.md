@@ -86,7 +86,7 @@ Navigate to the Tyk Dashboard and create two policies: one for a plan and one fo
 
 
 ### Create the No Operation policy and API
-Tyk requires any API that uses the scope to policy mapping to have [a default policy]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#step-4-set-a-default-policy" >}} ). Access rights and rate limits defined in the default policy take priority over other policies, including policies for the API Product and plan.
+Tyk requires any API that uses the scope to policy mapping to have [a default policy]({{< ref "/api-management/authentication-authorization#use-json-web-tokens-jwt" >}} ). Access rights and rate limits defined in the default policy take priority over other policies, including policies for the API Product and plan.
 
 To avoid that, you need to create the No Operation API and policy that won't grant access to the APIs included in the API Product but will satisfy the requirement for a default policy.
 

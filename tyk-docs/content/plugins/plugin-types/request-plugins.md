@@ -30,7 +30,7 @@ There are 4 different phases in the [request lifecycle]({{< ref "concepts/middle
 ### Return Overrides / ReturnOverrides  
 You can have your plugin finish the request lifecycle and return a response with custom  payload & headers to the requestor.
 
-[Read more here]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures#returnoverrides-coprocess_return_overridesproto" >}})
+[Read more here]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures#returnoverrides" >}})
 
 ##### Python Example
 

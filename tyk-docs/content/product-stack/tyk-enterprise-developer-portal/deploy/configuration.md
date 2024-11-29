@@ -274,6 +274,46 @@ Values for TLS Versions:
 **Description**: API secret for enabling [Single Sign-on (SSO) flow]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso.md" >}}) with the Tyk Identity Broker.
 You can specify any string value in this setting. Omit this setting if you don't require SSO. 
 
+## Response Headers Configuration
+This section explains how to configure custom HTTP response headers that will be added to all responses from the Portal.
+
+### PORTAL_RESPONSE_HEADERS
+**Config file:** ResponseHeaders <br/>
+**Type:** `[]{Key: string, Value: string}` <br/>
+**Description**: Configures custom HTTP response headers that will be added to all responses from the Portal. The value must be a JSON array of objects containing Key and Value fields.
+
+**Example configuration via environment variable:**
+```bash
+export PORTAL_RESPONSE_HEADERS='[{"Key":"X-Frame-Options", "Value":"DENY"}, {"Key":"Content-Security-Policy", "Value":"default-src '\''self'\''"}]'
+```
+
+**Example configuration via config file:**
+```json
+{
+  "ResponseHeaders": [
+    {
+      "Key": "X-Frame-Options",
+      "Value": "DENY"
+    },
+    {
+      "Key": "Content-Security-Policy",
+      "Value": "default-src 'self'"
+    }
+  ]
+}
+```
+
+**Common use cases include:**
+- Security headers (X-Frame-Options, Content-Security-Policy)
+- CORS headers
+- Cache control headers
+- Custom application headers
+
+If the JSON format is invalid, the Portal will return an error message indicating the correct format:
+```
+Invalid value for PORTAL_RESPONSE_HEADERS. Valid Format: '[{"Key":"header-key", "Value":"value-for-given-key"}]'
+```
+
 ## Storage settings
 Using variables from this section, you can configure storage for the portal's CMS assets such as themes, images, and Open API Specification files. The portal supports two types of storage:
 - S3 volume;
@@ -526,11 +566,25 @@ PORTAL_CORS_ALLOWED_METHODS=GET,POST,HEAD
 **Type:** `int` <br/>
 **Description**: Indicates how long the results of a preflight request can be cached. The default value is `0` which stands for no max age.
 
+### PORTAL_DISABLE_CSRF_CHECK
+**Config file:** DisableCSRFCheck <br/>
+**Type:** `bool` <br/>
+**Description**: When set to `true`, disables CSRF protection for all routes. By default, CSRF protection is enabled to prevent cross-site request forgery attacks. Only disable this in development environments or when you have alternative security measures in place.
 
 ### PORTAL_CORS_ALLOW_CREDENTIALS
 **Config file:** CORS.AllowCredentials <br/>
 **Type:** `boolean` <br/>
 **Description**: Indicates whether the request can include user credentials like cookies, HTTP authentication or client side SSL certificates. The default is `false`.
+
+### PORTAL_TIB_ENABLED
+**Config file:** TIB.Enabled <br/>
+**Type:** `boolean` <br/>
+**Description**: Enables or disables the Tyk Identity Broker (TIB) integration. When disabled, it will not appear in the UI. The default value is `false`.
+
+### PORTAL_NOTIFICATIONS_JOB_FREQUENCY
+**Config file:** NotificationsJobFrequency <br/>
+**Type:** `int` <br/>
+**Description**: Defines the frequency of the notifications job that fetch notifications from the portal's database in minutes. The default value is `30` minutes.
 
 
 ## Sample config file
@@ -574,6 +628,9 @@ PORTAL_CORS_ALLOWED_METHODS=GET,POST,HEAD
     "EnableLogs": true,
     "MaxRetries": 3,
     "RetryDelay": 2000
+  },
+  "TIB": {
+    "Enabled": true
   }
 }
 ```
@@ -604,4 +661,5 @@ PORTAL_DATABASE_CONNECTIONSTRING="admin:secr3t@(localhost:3308)/portal?charset=u
 PORTAL_DATABASE_ENABLELOGS=true
 PORTAL_DATABASE_MAXRETRIES=3
 PORTAL_DATABASE_RETRYDELAY=5000
+PORTAL_TIB_ENABLED=true
 ```
