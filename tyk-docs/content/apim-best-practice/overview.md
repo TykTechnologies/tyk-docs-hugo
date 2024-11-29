@@ -23,6 +23,8 @@ API Management isn't just about security; it also streamlines the creation and d
 - Version Control
 - Scalability
 - Monitoring and Analytics
+  - Enable per-method monitoring and alarms to identify endpoints with issues or abnormal usage.
+  - Add tags for team, feature and cost center to track costs.
 - Documentation
 
 In conclusion, API Management is the cornerstone of modern business success, enhancing both security and operational efficiency. By securing digital assets and streamlining the processes of creating and deploying APIs, API Management paves the way for innovation, growth and seamless connectivity in the digital era. Embracing API Management is not just a strategic decision; it's an imperative one for businesses looking to thrive in today's interconnected world.
