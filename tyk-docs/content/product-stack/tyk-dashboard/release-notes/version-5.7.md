@@ -26,7 +26,7 @@ Our minor releases are supported until our next minor comes out.
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
 -->
-We are thrilled to announce new updates and improvements in Tyk 5.7.0, bringing more control, flexibility, and performance.  For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.7.0">}}) below.
+We are thrilled to announce new updates and improvements in Tyk 5.7.0, bringing more control, flexibility, and performance.  For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.7.0" >}}) below.
 
 #### Tyk Streams can be configured through Tyk Dashboard
 
@@ -93,7 +93,7 @@ If you are upgrading to 5.7.0, please follow the detailed [upgrade instructions]
   docker pull tykio/tyk-dashboard:v5.7.0
   ```
 - Helm charts
-  - [tyk-charts v2.2.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.2.md">}})
+  - [tyk-charts v2.2.0]({{< ref "product-stack/tyk-charts/release-notes/version-2.2.md" >}})
 
 ### Changelog {#Changelog-v5.7.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
@@ -177,7 +177,7 @@ Introduced a form on the Tyk Dashboard that allows users to easily contact Tyk s
 
 We have enhanced security for customers in highly regulated industries by introducing JSON Web Encryption (JWE) support for OIDC single sign-on (SSO). This ensures that tokens used in authentication flows are securely encrypted, providing an additional layer of protection.
 
-[Setup guide for JWE OIDC SSO]({{<ref "tyk-stack/tyk-identity-broker/auth-user-for-api-access-github-oauth">}})
+[Setup guide for JWE OIDC SSO]({{<ref "tyk-stack/tyk-identity-broker/auth-user-for-api-access-github-oauth" >}})
 </details>
 </li>
 <li>
@@ -193,7 +193,7 @@ Users can now choose to store Dashboard Audit Logs directly in a database, enabl
 
 A new API endpoint, /audit-logs, has been introduced to provide programmatic access to audit logs stored in database. This allows users to retrieve, filter, and analyze logs more effectively. The API supports filtering logs by key attributes like action, IP address, URL accessed, date range, user, and page number.
 
-For detail usage of the /audit-logs endpoint, please see [Dashboard API documentation]({{<ref "tyk-dashboard-api">}}).
+For detail usage of the /audit-logs endpoint, please see [Dashboard API documentation]({{<ref "tyk-dashboard-api" >}}).
 </details>
 </li>
 <li>
