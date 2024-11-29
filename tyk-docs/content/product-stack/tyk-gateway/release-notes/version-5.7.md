@@ -88,7 +88,7 @@ Given the potential time difference between your upgrade and the release of this
 
 ### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
-In 5.7.0, we have deprecated the dedicated [External OAuth]({{< ref “” >}})  (Tyk Classic: `external_oauth`, Tyk OAS: `server.authentication.securitySchemes.externalOAuth`) and [OpenID Connect]({{< ref “” >}})  (Tyk Classic: `auth_configs.oidc`, Tyk OAS: `server.authentication.oidc`) authentication methods. We advise users to switch to [JWT Authentication]({{< ref “” >}}) .
+In 5.7.0, we have deprecated the dedicated [External OAuth]({{< ref "" >}})  (Tyk Classic: `external_oauth`, Tyk OAS: `server.authentication.securitySchemes.externalOAuth`) and [OpenID Connect]({{< ref "" >}})  (Tyk Classic: `auth_configs.oidc`, Tyk OAS: `server.authentication.oidc`) authentication methods. We advise users to switch to [JWT Authentication]({{< ref "" >}}) .
 
 
 <!-- Optional section!
@@ -106,7 +106,7 @@ If you are upgrading to 5.7.0, please follow the detailed [upgrade instructions]
     docker pull tykio/tyk-gateway:v5.7.0
     ``` 
 - Helm charts
-  - [tyk-charts v2.2.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.2.md">}})
+  - [tyk-charts v2.2.0]({{<ref "" >}})
 
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
