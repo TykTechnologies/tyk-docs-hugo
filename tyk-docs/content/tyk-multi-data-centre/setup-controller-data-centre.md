@@ -91,16 +91,20 @@ ADMIN_EMAIL=admin@default.com
 ADMIN_PASSWORD=changeit
 DASHBOARD_LICENSE=changeit
 MDCB_LICENSE=changeit
+SECURITY_SECRET=changeit
+OPERATOR_LICENSE=changeit
 
 kubectl create namespace $NAMESPACE
 
 kubectl create secret generic my-secrets -n $NAMESPACE \
     --from-literal=APISecret=$API_SECRET \
     --from-literal=AdminSecret=$ADMIN_KEY \
-    --from-literal=DashLicense=$DASHBOARD_LICENSE
+    --from-literal=DashLicense=$DASHBOARD_LICENSE \
+    --from-literal=OperatorLicense=$OPERATOR_LICENSE
 
 kubectl create secret generic mdcb-secrets -n $NAMESPACE \
-    --from-literal=MDCBLicense=$MDCB_LICENSE
+    --from-literal=MDCBLicense=$MDCB_LICENSE \
+    --from-literal=securitySecret=$SECURITY_SECRET
 
 kubectl create secret generic admin-secrets -n $NAMESPACE \
     --from-literal=adminUserFirstName=Admin \
@@ -357,7 +361,7 @@ Alternatively, you can issue a request to the `/env` endpoint to return your MDC
 curl -H "x-tyk-authorization: <secured-endpoint-secret>" https://my-mdcb-host:8181/env
 ```
 
-## Gateway configuration
+## Enabling MDCB on Organization Object on Tyk Dashboard
 
 Before a worker gateway can connect to MDCB, it is important to enable the organization that owns all the APIs to be distributed to be allowed to utilize Tyk MDCB. To do this, the organization record needs to be modified with two flags using the [Tyk Dashboard Admin API](https://tyk.io/docs/dashboard-admin-api/).
 

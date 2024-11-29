@@ -24,7 +24,7 @@ There are no deprecations in this release.
 #### Upgrade instructions
 If you are on 1.7.0 or an older version we advise you to upgrade ASAP directly to this release.
 When upgrading from 1.6.0 or earlier versions, customers may experience problems when starting the portal. One of the possible issues is the following:
-- When the portal theme [manifest]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/developer-workflow#manifest-file" >}}) has a reference to a template that is not present in the theme then the theme won't be loaded. This check that prevents admin users from uploading themes with potential errors was introduced in version [1.7.0]({{< ref "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0.md#content-blocks-validation" >}}).
+- When the portal theme [manifest]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts#manifest-file" >}}) has a reference to a template that is not present in the theme then the theme won't be loaded. This check that prevents admin users from uploading themes with potential errors was introduced in version [1.7.0]({{< ref "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0.md#content-blocks-validation" >}}).
 - At the same time, the default theme in version 1.6.0 of the portal had a reference in the theme manifest to the `portal_home` template that didn't exist in the theme.
 - The portal doesn't update the theme automatically because in that case any customer-made changes will be lost. Subsequently, upgrading from 1.6.0 to 1.8.0 may result in the following error when loading the theme:
 ```yaml

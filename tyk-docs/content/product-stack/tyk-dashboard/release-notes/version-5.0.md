@@ -10,6 +10,29 @@ weight: 2
 
 ---
 
+## 5.0.15 Release Notes
+
+### Release Date 24 October 2024
+
+### Release Highlights
+
+This is a version bump to align with Gateway v5.0.15, no changes have been implemented in this release.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Upgrade instructions {#upgrade-5.0.15}
+
+If you are upgrading to 5.0.15, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+### Changelog {#Changelog-v5.0.15}
+
+No changes in this release.
+
+
+---
+
 ## 5.0.14 Release Notes {#rn-v5.0.14}
 
 ### Release Date 18th September 2024

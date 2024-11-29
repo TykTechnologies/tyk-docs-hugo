@@ -29,7 +29,7 @@ For basic operation, the `mockResponse` object has the following configuration:
 - `body`: the payload to be returned as the body of the response
 - `headers`: the headers to inject with the response
 
-Please remember that this API definition needs to be updated in Tyk Dashboard. In the Dashboard UI it might be trivial but if you are doing it declaratively, you need to use the Tyk Dashboard API endpoint to update an existing API (PUT) or import as a new API (POST). Once updated, Tyk Gateway/s will return mock responses to all valid requests to the endpoint, depending on the [content of the request](#working-with-multiple-mock-responses-for-an-endpoint).
+Please remember that this API definition needs to be updated in Tyk Dashboard. In the Dashboard UI it might be trivial but if you are doing it declaratively, you need to use the Tyk Dashboard API endpoint to update an existing API (PUT) or import as a new API (POST). Once updated, Tyk Gateway/s will return mock responses to all valid requests to the endpoint, depending on the [content of the request](#multiple-mock-responses-for-a-single-endpoint).
 
 In the following example, we configure a mock response middleware for requests to the `GET /example-mock-response1/anything` endpoint:
 
@@ -219,7 +219,7 @@ Content-Type: text/plain
 {{< note success >}}
 **Note**  
 
-If multiple `examples` are defined in the OpenAPI description but no default `exampleName` is set in the middleware configuration `fromOASExamples` Tyk will select randomly from the multiple `examples`. Yes, that means the response may change with every request. You can [control which response](#working-with-multiple-mock-responses-for-an-endpoint) will be returned using special headers in the request.
+If multiple `examples` are defined in the OpenAPI description but no default `exampleName` is set in the middleware configuration `fromOASExamples` Tyk will select randomly from the multiple `examples`. Yes, that means the response may change with every request. You can [control which response](#multiple-mock-responses-for-a-single-endpoint) will be returned using special headers in the request.
 {{< /note >}}
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the mock response middleware.
@@ -410,7 +410,7 @@ Tyk Dashboard will automatically select a valid HTTP response code from the drop
 
 Here you can edit the mock response:
 - modify, add or delete Response Body examples (note that this must follow the selected `content-type`)
-- choose a default Response Body example that will be provided (unless [overridden in the request]({{< ref "#working-with-multiple-mock-responses-for-an-endpoint" >}}))
+- choose a default Response Body example that will be provided (unless [overridden in the request]({{< ref "#multiple-mock-responses-for-a-single-endpoint" >}}))
 - add a description for your mock response
 - define headers to be provided with the response (note that these must be defined as a JSON schema)
 - add a schema

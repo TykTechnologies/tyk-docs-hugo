@@ -17,6 +17,71 @@ tags: ["Tyk Dashboard", "Release notes", "v5.6", "5.6.0", "5.6", "changelog"]
 Our minor releases are supported until our next minor comes out.
 
 ---
+
+## 5.6.1 Release Notes
+
+### Release Date 18 October 2024
+
+### Release Highlights
+
+This is a version bump to align with Gateway v5.6.1, no changes have been implemented in this release.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Dependencies {#dependencies-5.6.1}
+
+#### Compatibility Matrix For Tyk Components
+<!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+An illustrative example is shown below. -->
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.6.1 | MDCB v2.7.1     | MDCB v2.5.1 |
+|         | Operator v1.0.0  | Operator v0.17 |
+|         | Sync v2.0    | Sync v1.4.3 |
+|         | Helm Chart v2.1  | Helm all versions |
+| | EDP v1.11 | EDP all versions |
+| | Pump v1.11 | Pump all versions |
+| | TIB (if using standalone) v1.5.1 | TIB all versions |
+
+#### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.6.1}
+<!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
+
+Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
+
+An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.22 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Upgrade instructions {#upgrade-5.6.1}
+
+If you are upgrading to 5.6.1, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+### Downloads
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.6.1)
+- ```bash
+  docker pull tykio/tyk-dashboard:v5.6.1
+  ```
+- Helm charts
+  - [Tyk Charts v2.0.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.0.md">}})
+
+### Changelog {#Changelog-v5.6.1}
+
+No changes in this release.
+
+
+---
 ## 5.6.0 Release Notes
 
 ### Release Date 10 October 2024
@@ -79,7 +144,27 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 ### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
-There are no deprecations in this release.
+
+We are deprecating support for SQLite, External OAuth Middleware, and OpenID Connect (OIDC) Middleware in Tyk Dashboard to simplify the platform and enhance overall performance. These changes will take effect from 5.7.0.
+
+### Why the Change?
+
+### SQLite
+
+While useful for testing, SQLite is not designed for production environments. By focusing on PostgreSQL and MongoDB, we can provide users with more scalable and reliable options.
+
+### External OAuth Middleware
+
+This feature serves a similar purpose to our JWT Authentication and may lead to confusion. We recommend transitioning to JWT Authentication for a more streamlined experience.
+
+### OpenID Connect (OIDC) Middleware 
+
+The low adoption of this option, along with its functional overlap with other supported authentication methods, prompts us to deprecate OIDC middleware to reduce complexity within the platform. We recommend users transition to JWT Authentication.
+
+
+We encourage users to switch to the recommended alternatives. For more detailed information, please refer to the [Documentation](https://tyk.io/docs//api-management/authentication-authorization#use-openid-connect/) 
+
+
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc.
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->
@@ -210,41 +295,6 @@ We have fixed an issue in the Monitoring section of the Dashboard UI where the *
 
 </ul>
 
-#### Security Fixes
-<!-- This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
-1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
-2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
-For agreed CVE security fixes, provide a link to the corresponding entry on the NIST website. For example:
-- Fixed the following CVEs:
-    - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
--->
-<ul>
-<li>
-<details>
-<summary>Strengthened RBAC password reset permissions</summary>
-
-We have fixed a privilege escalation vulnerability where a user with certain permissions could potentially reset other users' passwords, including admin accounts. The following changes have been made to tighten the behavior of the password reset permission:
-- All users can reset their own passwords
-- A specific permission is required to reset the password of another user within the same Tyk organization
-- This permission can only be assigned by an admin or super-admin
-- This permission can only be assigned to an admin and cannot be assigned to a user group
-- The allow_admin_reset_password configuration option automatically grants this permission to all admin users
-- Super-admins always have the password reset permission across all Tyk organization
-
-</details>
-</li>
-
-<li>
-<details>
-<summary>Gateway secret could be exposed in debug logs</summary>
-
-Resolved an issue where the Gateway secret was inadvertently included in the log generated by the Dashboard for a call to the `/api/keys` endpoint when in debug mode. This issue has been fixed to prevent sensitive information from appearing in system logs. We do not recommend running production environments in debug mode.
-
-</details>
-</li>
-
-
-</ul>
 <!-- Required. use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
 
 ---
@@ -275,7 +325,6 @@ If there were changes in any of Tyk’s API docs:
 ### FAQ
 
 Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
-
 
 
 
