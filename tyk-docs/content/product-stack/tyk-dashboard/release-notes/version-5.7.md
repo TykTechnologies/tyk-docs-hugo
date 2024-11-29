@@ -24,7 +24,7 @@ Our minor releases are supported until our next minor comes out.
 ### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release:
 This release primarily focuses on bug fixes.
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0" >}}) below.
 -->
 We are thrilled to announce new updates and improvements in Tyk 5.7.0, bringing more control, flexibility, and performance.  For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.7.0" >}}) below.
 
@@ -76,7 +76,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 ### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
-In 5.7.0, we have deprecated the dedicated [External OAuth]({{< ref “” >}})  (Tyk Classic: `external_oauth`, Tyk OAS: `server.authentication.securitySchemes.externalOAuth`) and [OpenID Connect]({{< ref “” >}})  (Tyk Classic: `auth_configs.oidc`, Tyk OAS: `server.authentication.oidc`) authentication methods. We advise users to switch to [JWT Authentication]({{< ref “” >}}) .
+In 5.7.0, we have deprecated the dedicated [External OAuth]({{< ref "" >}})  (Tyk Classic: `external_oauth`, Tyk OAS: `server.authentication.securitySchemes.externalOAuth`) and [OpenID Connect]({{< ref "" >}})  (Tyk Classic: `auth_configs.oidc`, Tyk OAS: `server.authentication.oidc`) authentication methods. We advise users to switch to [JWT Authentication]({{< ref "" >}}).
 
 Additionally, SQLite has reached its End of Life in this release, enabling a fully static, CGO-free Tyk Dashboard optimised for RHEL8. Sqlite was previously recommended only to be used in basic proofs of concept. Now, for such scenarios and for production, we recommend migrating to PostgreSQL or MongoDB for better scalability and support.
 <!-- Optional section!
@@ -89,11 +89,11 @@ If you are upgrading to 5.7.0, please follow the detailed [upgrade instructions]
 
 ### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.7.0)
-- ```bash
-  docker pull tykio/tyk-dashboard:v5.7.0
-  ```
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.7.0
+    ```
 - Helm charts
-  - [tyk-charts v2.2.0]({{< ref "product-stack/tyk-charts/release-notes/version-2.2.md" >}})
+  - [tyk-charts v2.2.0]({{< ref "" >}})
 
 ### Changelog {#Changelog-v5.7.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
@@ -177,7 +177,7 @@ Introduced a form on the Tyk Dashboard that allows users to easily contact Tyk s
 
 We have enhanced security for customers in highly regulated industries by introducing JSON Web Encryption (JWE) support for OIDC single sign-on (SSO). This ensures that tokens used in authentication flows are securely encrypted, providing an additional layer of protection.
 
-[Setup guide for JWE OIDC SSO]({{<ref "tyk-stack/tyk-identity-broker/auth-user-for-api-access-github-oauth" >}})
+[Setup guide for JWE OIDC SSO]({{< ref "tyk-stack/tyk-identity-broker/auth-user-for-api-access-github-oauth" >}})
 </details>
 </li>
 <li>
@@ -193,7 +193,7 @@ Users can now choose to store Dashboard Audit Logs directly in a database, enabl
 
 A new API endpoint, /audit-logs, has been introduced to provide programmatic access to audit logs stored in database. This allows users to retrieve, filter, and analyze logs more effectively. The API supports filtering logs by key attributes like action, IP address, URL accessed, date range, user, and page number.
 
-For detail usage of the /audit-logs endpoint, please see [Dashboard API documentation]({{<ref "tyk-dashboard-api" >}}).
+For detail usage of the /audit-logs endpoint, please see [Dashboard API documentation]({{< ref "tyk-dashboard-api" >}}).
 </details>
 </li>
 <li>
@@ -225,7 +225,7 @@ Eliminated AJV validation in the Streams Config Editor to prevent false positive
 </li>
 <li>
 <details>
-<summary>Hid unnecessary field from API Designer page for Streams</summary>
+<summary>Hide unnecessary field from API Designer page for Streams</summary>
 
 Removed an unnecessary field from the API Designer page under the Streams section to enhance clarity. This update impacts the Event Handlers, Detailed Activity Logs, Caching, and Endpoints tabs.
 </details>
@@ -333,7 +333,7 @@ If there were changes in any of Tyk’s API docs:
 - Has a link to the endpoint documentation being included?
 - Has the benefit of the new/updated endpoint been explained in the release highlights and changelog?
 -->
-- [OpenAPI Document]({{<ref "tyk-dashboard-api/" >}})
+- [OpenAPI Document]({{< ref "tyk-dashboard-api/" >}})
 - [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview)
 
 ### FAQ
