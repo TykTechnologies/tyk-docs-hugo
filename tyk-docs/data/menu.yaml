@@ -2202,7 +2202,7 @@ menu:
               - title: "CICD Plugin Build"
                 path: /plugins/get-started-selfmanaged/deploy-plugins
                 category: Page
-                show: False
+                show: True
           - title: "TLS and certificate management"
             category: Directory
             show: True
