@@ -1095,6 +1095,10 @@ menu:
         category: Page
         show: True
         path: /api-management/security-best-practices
+      - title: "Security Best Practices new"
+        category: Page
+        show: True
+        path: /api-management/security-best-practices-new
   - title: "Product Stack"
     path: /tyk-stack
     category: Label
