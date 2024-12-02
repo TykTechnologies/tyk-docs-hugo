@@ -28,7 +28,7 @@ Below is a detailed introduction to each of Tyk’s components and their individ
 
 {{< badge title="Tyk Multi Data Centre Bridge" href="tyk-components#tyk-multi-data-centre-bridge-mdcb" >}} Ensures high availability by synchronizing APIs across multiple data centers. {{< /badge >}}
 
-{{< badge title="Tyk Pump" href="tyk-components#tyk-pump" >}} Pushes analytics data from the Gateway to external data stores for advanced insights. {{< /badge >}}
+{{< badge title="Tyk Pump" href="tyk-components#tyk-pump" >}} Aggregates and exports API analytics from Gateway to enable insights and advanced monitoring. {{< /badge >}}
 
 {{< badge title="Tyk Operator" href="tyk-components#tyk-operator" >}} Integrates with Kubernetes for seamless API management within containerized environments. {{< /badge >}}
 
