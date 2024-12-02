@@ -11,7 +11,13 @@ weight: 7
 {{< note success >}}
 **Note**  
 
-Tyk's dedicated External OAuth middleware will be deprecated from Tyk 5.7.0. Tyk's [JSON Web Token (JWT)]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#about-jwts" >}}) authentication method also allows you to integrate with a third party OAuth provider, so the dedicated middleware will be deprecated to reduce duplication and potential for misconfiguration.
+Tyk's dedicated External OAuth middleware will be deprecated from Tyk 5.7.0. Tyk's [JSON Web Token (JWT)]({{< ref "api-management/authentication-authorization#use-json-web-tokens-jwt" >}}) authentication method also allows you to integrate with a third party OAuth provider, so the dedicated middleware will be deprecated to reduce duplication and potential for misconfiguration.
+{{< /note >}}
+
+{{< note success >}}
+**Note**  
+
+We've deprecated the External OAuth middleware in Tyk 5.7.0 to simplify configurations and avoid redundancy. For third-party OAuth integration, please switch to Tyk’s [JSON Web Tokens (JWT)]({{< ref "api-management/authentication-authorization#use-json-web-tokens-jwt" >}}), which offers the same functionality with a more streamlined setup and reduced risk of misconfiguration.
 {{< /note >}}
 
 {{< note success >}}
@@ -106,7 +112,7 @@ There could be cases when you don’t need to introspect a JWT access token from
   - a base64 encoded static secret
   - a valid JWK url in plain text
   - a valid JWK url in base64 encoded format
-- `issuedAtValidationSkew` , `notBeforeValidationSkew`, `expiresAtValidationSkew` can be used to [configure clock skew]({{< ref "/content/basic-config-and-security/security/authentication-authorization/json-web-tokens.md#jwt-clock-skew-configuration" >}}) for json web token validation.
+- `issuedAtValidationSkew` , `notBeforeValidationSkew`, `expiresAtValidationSkew` can be used to [configure clock skew]({{< ref "api-management/authentication-authorization#use-json-web-tokens-jwt" >}}) for json web token validation.
 - `identityBaseField` - the identity key name for claims. If empty it will default to `sub`.
 
 ### Example: Tyk OAS API definition with JWT validation enabled
