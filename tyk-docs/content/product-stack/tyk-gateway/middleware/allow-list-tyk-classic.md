@@ -26,7 +26,7 @@ The `white_list` object has the following configuration:
 - `path`: the endpoint path
 - `method`: this should be blank
 - `ignore_case`: if set to `true` then the path matching will be case insensitive
-- `method_actions`: a shared object used to configure the [mock response]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#mock-response" >}}) middleware
+- `method_actions`: a shared object used to configure the [mock response]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas#configuring-mock-response-using-tyk-dashboard-ui" >}}) middleware
 
 The `method_actions` object should be configured as follows, with an entry created for each allowed method on the path:
 
@@ -89,7 +89,7 @@ Use the *save* or *create* buttons to save the changes and activate the allow li
 
 ## Configuring the Allow List in Tyk Operator {#tyk-operator}
 
-Similar to the configuration of a [Tyk Classic API Definition](#tyk-classic) you must add a new `white_list` object to the `extended_paths` section of your API definition. Furthermore, the `use_extended_paths` configuration parameter should be set to `true`.
+Similar to the configuration of a Tyk Classic API Definition you must add a new `white_list` object to the `extended_paths` section of your API definition. Furthermore, the `use_extended_paths` configuration parameter should be set to `true`.
 
 {{< note success >}}
 **Note**

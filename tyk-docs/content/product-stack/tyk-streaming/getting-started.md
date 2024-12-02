@@ -152,7 +152,7 @@ curl -X POST -d '{"message":"Hello, Tyk Streams!"}' http://localhost:8080/<liste
 
 If you encounter issues, here are a few things to check:
 - Ensure all Docker containers are running correctly
-- In case you used this repo before, ensure all Docker images are as defined in the [example env]({{< ref "#post-download" >}}) above.
+- In case you used this repo before, ensure all Docker images are as defined in the [example env]({{< ref "#configure-the-installation" >}}) above.
 - Verify the API definition is properly configured in the Tyk Dashboard
 - Check the Tyk Gateway logs for any error messages. Most of the time it'll be syntax errors in the stream configuration. In such case, you might see 404 since the API definition has not been created in Tyk
 
