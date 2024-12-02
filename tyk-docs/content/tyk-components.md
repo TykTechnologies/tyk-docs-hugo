@@ -26,7 +26,7 @@ Below is a detailed introduction to each of Tyk’s components and their individ
 
 {{< badge title="Tyk Enterprise Developer Portal" href="tyk-components#tyk-enterprise-developer-portal" >}} A customizable portal for enabling API discovery and user self-service. {{< /badge >}}
 
-{{< badge title="Tyk Multi Data Centre Bridge" href="tyk-components#tyk-multi-data-centre-bridge-mdcb" >}} Ensures high availability by synchronizing APIs across multiple data centers. {{< /badge >}}
+{{< badge title="Tyk Multi Data Centre Bridge" href="tyk-components#tyk-multi-data-centre-bridge-mdcb" >}} Enables centralized API management across distributed data centers for global reach and compliance. {{< /badge >}}
 
 {{< badge title="Tyk Pump" href="tyk-components#tyk-pump" >}} Aggregates and exports API analytics from Gateway to enable insights and advanced monitoring. {{< /badge >}}
 
