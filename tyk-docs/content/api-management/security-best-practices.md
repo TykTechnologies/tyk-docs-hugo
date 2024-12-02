@@ -23,8 +23,8 @@ This section serves as a detailed resource for understanding key concepts and to
 
 Two of the most prevalent topics are [authentication]({{< ref "#authentication" >}}) and [authorization]({{< ref "#authorization" >}}), which occupy four of the top five positions. These are critical elements of API security, which verify the identity of API clients and control what they’re able to do. Alongside these are a number of other beneficial topics that are also within the remit of API management, all of which will be covered in this section. These include:
 
-- [Governance]({{< ref "#governance" >}})
-- [Configuration]({{< ref "#configuration" >}})
+- [Governance]({{< ref "#governing-apis-effectively" >}})
+- [Configuration]({{< ref "#configuration-best-practices" >}})
 - [Resource Consumption]({{< ref "#managing-api-resources" >}})
 
 ## Mitigating The Top 10 Threats 
@@ -180,7 +180,7 @@ Authorization can be a complex process that occurs at multiple locations through
 
 #### Split Authorization
 
-Implement authorization in the best locations across the stack. For an overview of the different authorization levels across the stack please visit this [page]({{< ref "#authorization-levels" >}}). Use the gateway to handle general API authorization related to hosts, methods, paths and properties. This leaves the API to handle the finer details of object-level authorization. In terms of OWASPs authorization categories, it can be split as follows:
+Implement authorization in the best locations across the stack. For an overview of the different authorization levels across the stack please visit this [page]({{< ref "#managing-authorization-levels" >}}). Use the gateway to handle general API authorization related to hosts, methods, paths and properties. This leaves the API to handle the finer details of object-level authorization. In terms of OWASPs authorization categories, it can be split as follows:
 
 ##### Object Level Authorization
 
