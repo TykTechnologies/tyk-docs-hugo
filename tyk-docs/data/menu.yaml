@@ -20,7 +20,8 @@ menu:
         show: True
       - title: "Plan Your API Integration"
         path: /plan-your-api-integration
-
+        category: Page
+        show: True
   - title: "Getting Started"
     path: /
     category: Label

@@ -44,7 +44,7 @@ With your goals in mind, you’ll now design the API:
 - **Define Endpoints and Methods**: Identify the actions your API should allow (e.g., GET for retrieving data, POST for adding data).
 - **Specify Data Models**: Define the format of data exchanged. For instance, will product data include details like price, description, and availability?
   
-**Security Consideration:** Plan how users will [authenticate]({{< ref "apim-best-practice/api-security-best-practice/authentication/#implement-appropriate-authentication" >}}). Will they use [tokens]({{< ref "basic-config-and-security/security/authentication-authorization/bearer-tokens" >}}) or [OAuth]({{< ref "basic-config-and-security/security/authentication-authorization/oauth-2-0" >}}) (for user-specific access)? Tyk offers tools to implement any of these methods effectively.
+**Security Consideration:** Plan how users will [authenticate]({{< ref "apim-best-practice/api-security-best-practice/authentication/#implement-appropriate-authentication" >}}). Will they use [tokens]({{< ref "api-management/authentication-authorization#use-bearer-tokens" >}}) or [OAuth]({{< ref "api-management/authentication-authorization#set-up-oauth-20-authorization" >}}) (for user-specific access)? Tyk offers tools to implement any of these methods effectively.
 
 #### **Step 3: Document the API**
 
@@ -74,7 +74,7 @@ Tyk’s platform makes security implementation straightforward, offering feature
 
 An API isn’t a one-time setup; it needs regular monitoring and updates:
 - **Monitor Performance**: Use [Tyk’s real-time analytics]({{< ref "tyk-pump" >}}) to track metrics like [latency]({{< ref "tyk-stack/tyk-pump/tyk-analytics-record-fields/#latency" >}}), error rates, and [usage]({{< ref "tyk-cloud/environments-&-deployments/monitoring-usage" >}}). This helps identify any bottlenecks or security risks.
-- **Version and Update**: As you add new features, use [Tyk’s versioning]({{< ref "product-stack/tyk-operator/advanced-configurations/api-versioning/" >}}) to avoid breaking existing functionality.
+- **Version and Update**: As you add new features, use [Tyk’s versioning]({{< ref "api-management/automations#api-versioning" >}}) to avoid breaking existing functionality.
 - **Optimize and Scale**: With Tyk, you can adjust your rate limits, caching, and load balancing to handle higher volumes as needed. Optimizing is especially necessary as you [move your workload into production]({{< ref "planning-for-production/" >}}).
 
 ---
@@ -93,7 +93,7 @@ Tyk simplifies the early stages of API planning by providing:
 #### **Deployment and Configuration Phase**
 
 In this stage, Tyk streamlines deployment, whether on the cloud, on-premises, or hybrid:
-- **Kubernetes Integration with Tyk Operator**: If your API runs on microservices, [Tyk Operator]({{< ref "tyk-operator" >}}) integrates with Kubernetes to help you manage deployments as Kubernetes resources.
+- **Kubernetes Integration with Tyk Operator**: If your API runs on microservices, [Tyk Operator]({{< ref "api-management/automations#what-is-tyk-operator" >}}) integrates with Kubernetes to help you manage deployments as Kubernetes resources.
 - **Custom Domain Setup**: Configure custom domains to make your API URLs user-friendly and secure with SSL/TLS certificates.
 - **API Gateway Deployment**: [Tyk’s gateways]({{< ref "tyk-oss-gateway" >}}) let you deploy, monitor, and secure multiple APIs from a single platform, so you can [manage environments]({{< ref "advanced-configuration/manage-multiple-environments" >}}) (development, staging, production) with ease.
 
