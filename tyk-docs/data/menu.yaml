@@ -5,6 +5,23 @@ menu:
     path: /
     category: Label
     show: True
+  - title: "Overview"
+    path: /
+    category: Label
+    show: True
+    menu:
+      - title: "Tyk Overview"
+        path: /tyk-overview
+        category: Page
+        show: True
+      - title: "Tyk Components"
+        path: /tyk-components
+        category: Page
+        show: True
+      - title: "Plan Your API Integration"
+        path: /plan-your-api-integration
+        category: Page
+        show: True
   - title: "Getting Started"
     path: /
     category: Label
