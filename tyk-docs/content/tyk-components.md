@@ -26,15 +26,15 @@ Below is a detailed introduction to each of Tyk’s components and their individ
 
 {{< badge title="Tyk Enterprise Developer Portal" href="tyk-components#tyk-enterprise-developer-portal" >}} A customizable portal for enabling API discovery and user self-service. {{< /badge >}}
 
-{{< badge title="Tyk Multi Data Centre Bridge" href="tyk-components#tyk-multi-data-centre-bridge-mdcb" >}} Ensures high availability by synchronizing APIs across multiple data centers. {{< /badge >}}
+{{< badge title="Tyk Multi Data Centre Bridge" href="tyk-components#tyk-multi-data-centre-bridge-mdcb" >}} Enables centralized API management across distributed data centers for global reach and compliance. {{< /badge >}}
 
-{{< badge title="Tyk Pump" href="tyk-components#tyk-pump" >}} Pushes analytics data from the Gateway to external data stores for advanced insights. {{< /badge >}}
+{{< badge title="Tyk Pump" href="tyk-components#tyk-pump" >}} Aggregates and exports API analytics from Gateway to enable insights and advanced monitoring. {{< /badge >}}
 
 {{< badge title="Tyk Operator" href="tyk-components#tyk-operator" >}} Integrates with Kubernetes for seamless API management within containerized environments. {{< /badge >}}
 
 {{< badge title="Tyk Streams" href="tyk-components#tyk-streams" >}} Enables real-time event streaming for APIs, ideal for push notifications and live data. {{< /badge >}}
 
-{{< badge title="Tyk Sync" href="tyk-components#tyk-sync" >}} Automates the synchronization of API configurations across environments. {{< /badge >}}
+{{< badge title="Tyk Sync" href="tyk-components#tyk-sync" >}} Synchronizes API configurations across environments for consistency and streamlined deployments. {{< /badge >}}
 
 {{< badge title="Tyk Identity Broker" href="tyk-components#tyk-identity-broker" >}} Facilitates single sign-on (SSO) and integrates external identity providers with APIs. {{< /badge >}}
 
@@ -100,7 +100,7 @@ MDCB is designed for organizations with extensive geographic reach, supporting b
 **[Tyk Pump]({{< ref "tyk-pump" >}})** is a lightweight tool that aggregates API analytics from the Tyk Gateway and exports them to various storage systems for analysis:
 
 - **Data Collection**: Continuously gathers real-time API analytics.
-- **Data Export**: Integrates with multiple backends like MongoDB, AWS S3, and others.
+- **Data Export**: Integrates with multiple backends like Splunk, Prometheus, ElasticSearch, and others.
 - **Actionable Insights**: Enables advanced monitoring and analysis for data-driven decision-making.
 
 With Tyk Pump, you can leverage powerful insights into API usage, helping teams optimize API performance and improve user experience.
@@ -184,11 +184,12 @@ The UDG simplifies complex data interactions, enabling developers to work with a
 Tyk’s components create a unified API management ecosystem, covering all aspects of API lifecycle management:
 
 - **Traffic and Security**: The Tyk Gateway acts as the first line of defense, handling traffic and enforcing security protocols.
-- **Configuration and Deployment**: Tyk Dashboard, Tyk Operator, and Tyk Helm Charts provide tools for managing, deploying, and scaling APIs.
-- **Developer Experience**: The Tyk Developer Portal enhances the developer experience, promoting API discovery and user engagement.
-- **Global Reach and Resilience**: MDCB and Tyk Sync ensure consistent API configurations and high availability across regions.
-- **Data and Insights**: Tyk Pump and Tyk Streams support real-time monitoring and data streaming, enabling data-driven decisions.
-- **Unified Access**: UDG and Identity Broker provide unified data and identity management, simplifying complex API interactions.
+- **Configuration and Deployment**: Tyk Dashboard, Tyk Operator, and Tyk Sync provide tools for managing, deploying, and scaling APIs.
+- **Developer Experience**: The Tyk Developer Portal and Identity Broker enhances the developer experience, promoting API discovery and user engagement.
+- **Global Reach and Resilience**: MDCB ensures consistent API configurations and high availability across regions.
+- **Data and Insights**: Tyk Gateway's native support for OpenTelemetry, combined with Tyk Pump, enables real-time monitoring and analytics.
+- **Unified Access**: UDG and Tyk Streams unify API Management by enabling seamless, multi-protocol data integration and delivery.
+- **Kubernetes Deployment**: Tyk Helm Charts simplifies deployment of Tyk on Kubernetes.
 
 # Conclusion
 
