@@ -34,7 +34,7 @@ Below is a detailed introduction to each of Tyk’s components and their individ
 
 {{< badge title="Tyk Streams" href="tyk-components#tyk-streams" >}} Enables real-time event streaming for APIs, ideal for push notifications and live data. {{< /badge >}}
 
-{{< badge title="Tyk Sync" href="tyk-components#tyk-sync" >}} Automates the synchronization of API configurations across environments. {{< /badge >}}
+{{< badge title="Tyk Sync" href="tyk-components#tyk-sync" >}} Synchronizes API configurations across environments for consistency and streamlined deployments. {{< /badge >}}
 
 {{< badge title="Tyk Identity Broker" href="tyk-components#tyk-identity-broker" >}} Facilitates single sign-on (SSO) and integrates external identity providers with APIs. {{< /badge >}}
 
