@@ -49,6 +49,7 @@ aliases:
  - /product-stack/tyk-streaming/configuration/processors/noop/
  - /product-stack/tyk-streaming/configuration/processors/parallel/
  - /product-stack/tyk-streaming/configuration/processors/parse-log/
+ - /product-stack/tyk-streaming/configuration/processors/processors/
  - /product-stack/tyk-streaming/configuration/processors/protobuf/
  - /product-stack/tyk-streaming/configuration/processors/rate-limit/
  - /product-stack/tyk-streaming/configuration/processors/redis/
