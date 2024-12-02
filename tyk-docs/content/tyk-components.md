@@ -100,7 +100,7 @@ MDCB is designed for organizations with extensive geographic reach, supporting b
 **[Tyk Pump]({{< ref "tyk-pump" >}})** is a lightweight tool that aggregates API analytics from the Tyk Gateway and exports them to various storage systems for analysis:
 
 - **Data Collection**: Continuously gathers real-time API analytics.
-- **Data Export**: Integrates with multiple backends like MongoDB, AWS S3, and others.
+- **Data Export**: Integrates with multiple backends like Splunk, Prometheus, ElasticSearch, and others.
 - **Actionable Insights**: Enables advanced monitoring and analysis for data-driven decision-making.
 
 With Tyk Pump, you can leverage powerful insights into API usage, helping teams optimize API performance and improve user experience.
