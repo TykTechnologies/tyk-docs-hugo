@@ -184,7 +184,7 @@ The UDG simplifies complex data interactions, enabling developers to work with a
 Tyk’s components create a unified API management ecosystem, covering all aspects of API lifecycle management:
 
 - **Traffic and Security**: The Tyk Gateway acts as the first line of defense, handling traffic and enforcing security protocols.
-- **Configuration and Deployment**: Tyk Dashboard, Tyk Operator, and Tyk Helm Charts provide tools for managing, deploying, and scaling APIs.
+- **Configuration and Deployment**: Tyk Dashboard, Tyk Operator, and Tyk Sync provide tools for managing, deploying, and scaling APIs.
 - **Developer Experience**: The Tyk Developer Portal enhances the developer experience, promoting API discovery and user engagement.
 - **Global Reach and Resilience**: MDCB and Tyk Sync ensure consistent API configurations and high availability across regions.
 - **Data and Insights**: Tyk Pump and Tyk Streams support real-time monitoring and data streaming, enabling data-driven decisions.
