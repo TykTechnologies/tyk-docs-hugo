@@ -187,7 +187,7 @@ Tyk’s components create a unified API management ecosystem, covering all aspec
 - **Configuration and Deployment**: Tyk Dashboard, Tyk Operator, and Tyk Sync provide tools for managing, deploying, and scaling APIs.
 - **Developer Experience**: The Tyk Developer Portal and Identity Broker enhances the developer experience, promoting API discovery and user engagement.
 - **Global Reach and Resilience**: MDCB ensures consistent API configurations and high availability across regions.
-- **Data and Insights**: Tyk Pump and Tyk Streams support real-time monitoring and data streaming, enabling data-driven decisions.
+- **Data and Insights**: Tyk Gateway's native support for OpenTelemetry, combined with Tyk Pump, enables real-time monitoring and analytics.
 - **Unified Access**: UDG and Identity Broker provide unified data and identity management, simplifying complex API interactions.
 
 # Conclusion
