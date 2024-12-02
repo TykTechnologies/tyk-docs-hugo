@@ -147,7 +147,7 @@ Enabled URL view and copy functionality in the External Playgrounds tab, support
 <details>
 <summary>Introduced /streams endpoint to Tyk Dashboard API</summary>
 
-Rolled out the /streams endpoint to the Tyk Dashboard API, dedicated to creating Stream and Events APIs in Tyk Streams. Documentation for the endpoint and its methods is available in the Tyk Docs.
+Rolled out the `/streams` endpoint to the Tyk Dashboard API, dedicated to creating Stream and Events APIs in Tyk Streams. Documentation for the endpoint and its methods is available in the Tyk Docs.
 </details>
 </li>
 <li>
