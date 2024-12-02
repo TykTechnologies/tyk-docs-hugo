@@ -1141,10 +1141,6 @@ menu:
         category: Page
         show: True
         path: /api-management/security-best-practices
-      - title: "Security Best Practices new"
-        category: Page
-        show: True
-        path: /api-management/security-best-practices-new
   - title: "Product Stack"
     path: /tyk-stack
     category: Label
@@ -1376,10 +1372,6 @@ menu:
                   show: True
                 - title: "Key Level Security"
                   path: /basic-config-and-security/security/key-level-security
-                  category: Page
-                  show: True
-                - title: "Tyk and OWASP Top Ten Threats"
-                  path: /basic-config-and-security/security/owasp-top-ten
                   category: Page
                   show: True
                 - title: "TLS and SSL"

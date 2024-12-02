@@ -1,5 +1,5 @@
 ---
-title: Security Best Practices
+title: Security Best Practices new
 description: "Guide on API management and security best practices, including authentication, authorization, resource protection, governance, and OWASP threat mitigation with Tyk."
 tags: ["OWASP", "Security", "Top Ten", "API Management best practice", "API Security", "Authentication", "Security", "Configuration", "SSL", "Certificates", "Authentication", "Authorization", "API security", "API Gateway Security"]
 aliases:
@@ -19,47 +19,174 @@ aliases:
 
 ## Overview
 
-Implementing API security best-practice requires a holistic approach that covers many different topics. It’s recommended to start by reading the [OWASP API Security Top 10](https://owasp.org/API-Security/editions/2023/en/0x00-header/), which is a great resource for API security practitioners that provides clear explanations of the various threats and solutions.
+This section serves as a detailed resource for understanding key concepts and tools related to API security. It provides explanations of critical practices such as authentication, authorization, and governance, offering insights into how these concepts work and why they matter. Whether you're looking to mitigate threats identified by the [OWASP API Security Top 10](https://owasp.org/API-Security/editions/2023/en/0x00-header/) or to configure your APIs for better resilience, this page breaks down the essentials.
 
-In this guide, we’ll explore the core pillars of API security and management, delve into the security features Tyk offers to protect your APIs, and examine how Tyk mitigates OWASP API security threats.
+Two of the most prevalent topics are [authentication]({{< ref "#authentication" >}}) and [authorization]({{< ref "#authorization" >}}), which occupy four of the top five positions. These are critical elements of API security, which verify the identity of API clients and control what they’re able to do. Alongside these are a number of other beneficial topics that are also within the remit of API management, all of which will be covered in this section. These include:
 
-## Authentication
+- [Governance]({{< ref "#governance" >}})
+- [Configuration]({{< ref "#configuration" >}})
+- [Resource Consumption]({{< ref "#managing-api-resources" >}})
+
+## Mitigating The Top 10 Threats 
+
+The Open Web Application Security Project (OWASP) provides a top ten threat awareness document compiled by security experts. For more details on the OWASP project visit [https://www.owasp.org](https://www.owasp.org). Below are the top ten threats and how Tyk guards against them. For further details please visit our [blog](https://tyk.io/blog/res-owasp-api-security-intro/)
+
+##### 1 - Broken Object Level Authorization (BOLA)
+
+Broken Object Level Authorization (BOLA) can occur due to a lack of access control to API resources. This vulnerability allows attackers to manipulate or bypass authorization mechanisms, typically by tampering with resource identifiers to gain unauthorized access to specific resources or data. BOLA is a critical security concern as it can lead to data breaches and unauthorized actions within a system.
+
+It is the responsibility of the API to handle this form of attack since it can access and understand the data needed to make authorization decisions on individual objects within the application database.
+
+##### 2 - Broken Authentication
+
+Authentication is a vital aspect of API security. Failure to do so, as noted by OWASP, leads to *Broken Authentication* posing a significant risk to both API providers and data.
+
+Tyk provides the following features and authentication mechanisms:
+-  Prioritize secure methods, like [mutual TLS]({{< ref "/api-management/authentication-authorization#enable-mutual-tls" >}}), over [basic authentication]({{< ref "/api-management/authentication-authorization#use-basic-authentication" >}}) wherever feasible.
+- API owners can integrate external Identity Providers (IdPs) supporting methods like [OpenID Connect]({{< ref "/api-management/authentication-authorization#use-openid-connect" >}}), [OAuth 2.0]({{< ref "/api-management/authentication-authorization#use-authorization-code-grant" >}}) or [JSON Web Tokens]({{< ref "/api-management/authentication-authorization#use-json-web-tokens-jwt" >}}).
+- [Single Sign-On]({{< ref "advanced-configuration/integrate/sso" >}}) can be used for a centralized and trusted authentication source. API operators can choose from common authentication methods such as OAuth 2.0, LDAP, and SAML.
+- [Dynamic Client Registration]({{< ref "tyk-developer-portal/tyk-portal-classic/dynamic-client-registration#oauth-20-dynamic-client-registration-protocol-dcr" >}}), enables third-party authorization servers to issue client credentials via the Tyk Developer Portal. This streamlines Identity Management, eliminating the need to manage credentials across multiple systems.
+- Tyk's default authentication setup disallows credentials in URLs, reducing the risk of inadvertent exposure through backend logs.
+- Tyk Gateway can be configured to enforce a [minimum TLS version]({{< ref "basic-config-and-security/security/tls-and-ssl#values-for-tls-versions" >}}), enhancing security by blocking outdated and insecure TLS versions.
+
+##### 3 - Broken Object Property Level Authorization (BOPLA)
+
+REST APIs provide endpoints that return all properties of an object in the reponse, some of which could contain sensitive data. Conversely, GraphQL API requests allow the clients to specify which properties of an object should be retrieved.
+
+From a REST API perspespective, it is the responsibility of the API to ensure that the correct data is retrieved. The Gateway can provide additional security measures as follows:
+- [Body transformation plugins]({{< ref "advanced-configuration/transform-traffic/request-method-transform" >}}) can be used to remove sensitive data from the response if the API is unable to do so itself.
+- [JSON Schema validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-tyk-classic" >}}) to validate that an incoming data payload meets a defined schema. Payloads that do not adhere to the schema are rejected.
+
+For GraphQL APIs, the gateway can be used to define the GraphQL schemas, limiting which properties of an object are queryable. Furthermore, access can be controlled to specific properties by configuring [field-based permissions]({{< ref "graphql/field-based-permissions" >}}). Subsequently, the visiblity of a schema's properties can be controlled for different consumers of the GraphQL API.
+
+
+##### 4 - Unrestricted Resource Consumption
+
+APIs can become overwhelmed if the resources upon which they rely are fully consumed. In such situations, an API can no longer operate, and will no longer be able to service requests, or potentially even be unable to complete those currently in progress.
+
+As an APIM product, Tyk Gateway can be configured to use the following out-of-the-box functionality when handling API traffic for legitimate users:
+
+- [Circuit breaker]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers" >}})
+- [Payload size limiter]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits" >}})
+- [Rate limiter / throttling]({{< ref "getting-started/key-concepts/rate-limiting" >}})
+- [Caching]({{< ref "basic-config-and-security/reduce-latency/caching" >}})
+- [Enforced timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}})
+- [IP restriction]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting#ip-blocklist-middleware" >}})
+- [GraphQL query complexity limiting]({{< ref "graphql/complexity-limiting" >}})
+
+For Denial of Service (DoS) attacks it is recommended to use specialist 3rd party services to prevent DoS attacks from reaching your infrastructure.
+
+##### 5 - Broken Function Level Authorization (BFLA)
+
+To prevent Broken Functional Level Authorization (BFLA), requests to REST API endpoints must be authorized correctly. This involves validating client permissions against the requested resources. Requests from clients with insufficient permissions must be rejected.
+
+Tyk offers several measures to assist with protection from BFLA threats:
+
+- *Establish path-based access rights*: [Policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) are predefined sets of rules which grant access to particular APIs. These can include [path-based permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}), which restrict access to particular paths and methods within an API. Clients can be assigned one or more policies which the Gateway will validate when it receives a request.
+- *Access Control*: Tyk has plugins that control access to API endpoints. They are known as [allowlist]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) and [blocklist]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-oas#configuring-the-block-list-in-the-api-designer" >}}) and can be configured via the Endpoint Designer of an API Definition. Both plugins grant and deny access to API paths and methods, but do so in different ways, which makes them mutually exclusive. When the allowlist plugin is used, only the marked paths and methods are allowed, all other paths and methods are blocked. This can be perceived as *deny by default* since it provides the least privileges. The reverse is true for the blocklist plugin, only the paths and methods marked as blocklist are blocked, all other paths and methods are allowed. It is recommended to use the *allowlist* approach, since it is the most restrictive, only allowing marked endpoint paths and paths.
+- *CORS*: This [functionality]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}) allows the Tyk Gateway to limit API access to particular browser-based consumers.
+
+##### 6 - Unrestricted Access To Sensitive Business Flows
+
+This involves attackers understanding an API's business model, identifying sensitive business processes and automating unauthorized access to these processes. This can disrupt business operations by preventing legitimate users from making purchases for example. Attackers manually locate target resources and work to bypass any existing mitigation measures.
+
+These business flows are application specific, being unique to the API's backend systems. Subsequently, the API owner is responsible for addressing the security issues posed by this threat. Furthermore, to discover points of exploitation and test IT security breaches, pentesting is recommended.
+
+The APIM can be used to protect sensitive endpoints using authentication and authorization. Tyk recommends considering splitting Admin APIs from client facing APIs. This allows authentication and authorization checks to be defined and managed by different governance models, thus establishing clear role models.
+
+Furthermore, the APIM can validate authentication and authorization by scope to ensure that the client has the correct credentials before the upstream API processes the request.
+
+##### 7 - Server Side Request Forgery (SSRF)
+
+Server Side Request Forgery (SSRF) is a security vulnerability in web applications where an attacker can manipulate a server to make unauthorized requests to internal or external resources, potentially leading to data leaks or remote code execution. This can allow an attacker to probe or attack other parts of the application's infrastructure, potentially compromising sensitive information and systems.
+
+This is application specific and is largely the responsibility of the API. However, Tyk Gateway can assist with this form of attack through [JSON schema validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-tyk-classic" >}}) for incoming payloads. For example, a schema could contain a regular expression to reject localhost URLs. These URLs could be used by an attacker to perform port scanning for example.
+
+##### 8 - Security Misconfiguration
+
+Tyk offers several mechanisms to help protect an API from Security Misconfiguration exploits:
+
+- Use [response header manipulation]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) to remove or modify API sensitive information.
+- Use [response body manipulation]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) to remove or modify parts containing sensitive information.
+- [TLS]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) to ensure that clients use the right service and encrypt traffic.
+- [Mutual TLS]({{< ref "/api-management/authentication-authorization#enable-mutual-tls" >}}) with both the clients and API to ensure that callers with explicitly allowed client certificates can connect to the endpoints.
+- [Error Templates]({{< ref "advanced-configuration/error-templates" >}}) can be used to return a response body based on status code and content type. This can help minimize the implementation details returned to the client.
+- [CORS functionality]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}) allows the Tyk Gateway to limit API access to particular browser-based consumers.
+- [Policy Path-Based Permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}) and the [allowlist]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) plugin can be used to prevent clients from accessing API endpoints using non-authorized HTTP methods. For example, blocking the use of the DELETE method on an endpoint which should only accept GET requests.
+- [Environment variables]({{< ref "tyk-environment-variables" >}}) can help standardize configuration across containerised deployments.
+- For GraphQL APIs:
+- [Schema Introspection]({{< ref "graphql/introspection" >}}) ensures that the Tyk Dashboard automatically uses the schema of the upstream GraphQL API and can keep it synchronised if it changes.
+- [GraphQL Schema Validation]({{< ref "graphql/validation#schema-validation" >}}) prevents invalid schemas from being saved. This catches errors such as duplicate type names and usage of unknown types.
+- Third-party [Secret Storage]({{< ref "tyk-configuration-reference/kv-store" >}}) to centralise configuration of sensitive data such as passwords. This data can then be dynamically referenced by Tyk configuration files, rather than being hard coded.
+- Users can can write their own [custom plugins]({{< ref "plugins" >}}) in a variety of languages, either directly or through gRPC calls, to implement their requirements.
+
+The Ops team should also take reponsibility for monitoring the APIs for errors and patching accordingly. Regular [Penetration Tests](https://en.wikipedia.org/wiki/Penetration_test) should be scheduled to ensure the security of published services. Tyk, through our Professional Services or Partners, can assist in the process.
+
+##### 9 - Improper Inventory Management
+
+Tyk offers the following features to support improper inventory management:
+
+- [Versioning]({{< ref "getting-started/key-concepts/versioning" >}}) allows newer versions of APIs to coexist with the older versions, facilitating deprecation and sunsetting.
+- [Sunsetting]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#sunsetting-api-versions" >}}) allows versions to be configured with an Expiry Time, ensuring that a version is not accessible after the expiry date.
+- [Key expiry]({{< ref "basic-config-and-security/control-limit-traffic/key-expiry" >}}) ensures that access to an API is short lived, with a per key configurable Time to Live (TTL) for which a token remains valid before it expires. The implementation of key expiry, with a configurable Time To Live (TTL), mitigates the impact of compromised tokens by narrowing the window of vulnerability. Setting a TTL reduces the time frame during which a compromised token could be exploited, enhancing overall security.
+- Tyk Developer Portal catalogs APIs and facilitates granting access to them.  Integrated with a CMDB it can help keep documentation updated.
+- [Tyk Analytics]({{< ref "tyk-dashboard-analytics" >}}) can help identify the stagnant APIs and used stale APIs.
+- [Tyk Pump]({{< ref "tyk-pump" >}}) can ship metrics needed for analytics into Tyk Dashboard and other systems.
+- Third-party [Secret Storage]({{< ref "tyk-configuration-reference/kv-store" >}}) can be used to centralise and protect sensitive configuration data such as passwords, rather than exposing them as plain text in Tyk configuration files.
+
+In addition, it is best practice to consider any definition of done to include corresponding documentation updates.
+
+##### 10 - Unsafe Consumption Of APIs
+
+Attackers may identify and target the third party APIs/services used by an API. This can lead to leaked sensitive information, denial of service, injection attacks etc.
+
+It is the responsibility of the API to provide protection against these attacks. However, if the organization uses the Gateway as a forwarding proxy to third party APIs, then the following features could be used:
+
+- [JSON Schema validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-tyk-classic" >}}) to validate that an incoming data payload meets a defined schema. Payloads that do not adhere to the schema are rejected.
+- [TLS]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) to ensure that clients use the right service and encrypt traffic.
+- [Versioning]({{< ref "getting-started/key-concepts/versioning" >}}) allows newer versions of third party APIs to coexist with the older versions, facilitating deprecation and sunsetting.
+
+
+## Managing Authentication and Authorization
+
+### Authentication
 
 Authentication is the process of identifying API clients. It’s a broad topic, with many approaches to choose from. Choosing the right approach is important, as it forms a fundamental part of the overall security strategy. The decision depends on many risk factors; users, functionality, data, accessibility and compliance, to name just a few. While there isn’t necessarily a single, correct choice, it’s usually safe to assume that some form of authentication is needed, as it’s a crucial prerequisite in performing subsequent identity-based authorization checks.
 
-### Implement Appropriate Authentication
+**Implement Appropriate Authentication**
 
 Choose a suitable authentication approach based on the risk profile of the API. Is it publicly accessible or internal? Does it require user interaction or is it machine to machine? How sensitive is the data and functionality provided by the API? Simplistic approaches, such as [Bearer Tokens]({{< ref "/api-management/authentication-authorization#use-bearer-tokens" >}}), can work for low risk, basic APIs, but for higher risk or more sophisticated APIs, it may be more appropriate to use a standards-based approach such as [OAuth 2.0]({{< ref "/api-management/authentication-authorization#set-up-oauth-20-authorization" >}}) or [OpenID Connect]({{< ref "/api-management/authentication-authorization#use-openid-connect" >}}). Furthermore, using an [external identity provider]({{< ref "/api-management/authentication-authorization#integrate-external-oauth-middleware" >}}) can deliver additional benefits, such as [single sign-on]({{< ref "advanced-configuration/integrate/sso" >}}), as well as multi-factor authentication approaches such as [biometric verification](https://www.okta.com/identity-101/biometrics-secure-authentication).
 
-### Handle Data Securely
+**Handle Data Securely**
 
 Don’t undermine the authentication process by leaking sensitive authentication data. Use [transport layer security]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) and hashing to prevent credentials from being intercepted and stolen through insecure transmission and storage. These principles also apply to upstream requests made by the gateway and upstream API to other APIs and services.
 
-### Enforce Good Practices
+**Enforce Good Practices**
+
 
 Establish rules that reduce risk and enhance overall system security. Use [password policies]({{< ref "basic-config-and-security/security/password-policy" >}}) to prevent the use of weak passwords, and [TLS policies]({{< ref "basic-config-and-security/security/tls-and-ssl#values-for-tls-versions" >}}) to prevent the use of older TLS versions that are now deprecated and considered vulnerable.
 
-### Protect Sensitive Endpoints
+**Protect Sensitive Endpoints**
 
 Reduce susceptibility of sensitive endpoints to brute force dictionary or password stuffing attacks. The typical target for this type of attack are endpoints that use credentials, such as login and password recovery. Unfortunately, anonymous access is required for these endpoints, so authentication cannot be used to protect them, so the best approach is to hinder access by using techniques such as [rate limiting]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}}), [captcha](https://en.wikipedia.org/wiki/CAPTCHA) and one-time URLs.
 
-## Authorization
 
+### Authorization 
 Authorization is the process of validating API client requests against the access rights they have been granted, ensuring that the requests comply with any imposed limitations. It’s the most prevalent topic on the OWASP list, with three entries covering different levels of authorization.
 
 Almost any part of a request can be scrutinised as part of authorization, but choosing the best approach depends on the type of API. For example, with REST APIs, the requested method and path are good candidates, but they aren’t relevant for GraphQL APIs, which should focus on the GraphQL query instead.
 
 Authorization can be a complex process that occurs at multiple locations throughout the request lifecycle. For example, a gateway can use access control policies to determine whether a required path is acceptable. But for decisions based on object data, such as when a client requests a particular record from the database, it’s the API that’s best positioned, as only it has access to the necessary data. For more information about the authorization process, see Authorization Levels in the appendix.
 
-### Split Authorization
+#### Split Authorization
 
-Implement authorization in the best locations across the stack. For an overview of the different authorization levels across the stack please visit this [page](#authorization-levels). Use the gateway to handle general API authorization related to hosts, methods, paths and properties. This leaves the API to handle the finer details of object-level authorization. In terms of OWASPs authorization categories, it can be split as follows:
+Implement authorization in the best locations across the stack. For an overview of the different authorization levels across the stack please visit this [page]({{< ref "#authorization-levels" >}}). Use the gateway to handle general API authorization related to hosts, methods, paths and properties. This leaves the API to handle the finer details of object-level authorization. In terms of OWASPs authorization categories, it can be split as follows:
 
-#### Object Level Authorization
+##### Object Level Authorization
 
 Handle with the API. It can access and understand the data needed to make authorization decisions on individual objects within its database.
 
-#### Object Property Level Authorization
+##### Object Property Level Authorization
 
 Handle with both the API and the gateway. The approach depends on the type of API:
 
@@ -67,19 +194,19 @@ For REST APIs, it’s the API that’s primarily responsible for returning the c
 
 For GraphQL APIs, use the gateway to define [GraphQL schemas]({{< ref "graphql-proxy-only#managing-gql-schema" >}}) to limit which properties are queryable, then optionally use [field-based permissions]({{< ref "graphql-proxy-only#field-based-permission" >}}) to also specify access rights to those properties. 
 
-#### Function Level Authorization
+##### Function Level Authorization
 
 Handle with the gateway. Use [security policies]({{< ref "basic-config-and-security/security/security-policies" >}}), [path-based permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}), [allow lists]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) and [block lists]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-oas#configuring-the-block-list-in-the-api-designer" >}}) to manage authorization of hosts and paths.
 
-### Assign Least Privileges
+#### Assign Least Privileges
 
 Design [security policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) that contain the least privileges necessary for users to achieve the workflows supported by the API. By favoring specific, granular access over broad access, this enables user groups and use cases to be addressed directly, as opposed to broad policies that cover multiple use cases and expose functionality unnecessarily.
 
-#### Deny by Default
+##### Deny by Default
 
 Favor use of [allow lists]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) to explicitly allow endpoints access, rather than [block lists]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-oas#configuring-the-block-list-in-the-api-designer" >}}) to explicitly deny. This approach prevents new API endpoints from being accessible by default, as the presence of other, allowed endpoints means that access to them is implicitly denied.
 
-#### Validate and Control All User Input
+##### Validate and Control All User Input
 
 Protect APIs from erroneous or malicious data by validating all input before it’s processed by the API. Bad data, whether malicious or not, can cause many problems for APIs, from basic errors and bad user experience, to data leaks and downtime. The standard mitigation approach is to validate all user input, for which there are various solutions depending on the type of API:
 
@@ -87,19 +214,20 @@ For REST APIs, use [schema validation]({{< ref "graphql/validation#schema-valida
 
 For GraphQL APIs, use [GraphQL schema]({{< ref "graphql-proxy-only#managing-gql-schema" >}}) definitions to limit what data can be queried and mutated. Additionally, [complexity limiting]({{< ref "graphql/complexity-limiting" >}}) can be used to block resource-intensive queries.
 
-### Track Anomalies
+#### Track Anomalies
 
 Use [log aggregation]({{< ref "log-data#integration-with-3rd-party-aggregated-log-and-error-tools" >}}) and [event triggers]({{< ref "basic-config-and-security/report-monitor-trigger-events" >}}) to push data generated by application logs and events into centralised monitoring and reporting systems. This real-time data stream can be used to highlight application issues and security-related events, such as authentication and authorization failures.
 
-#### Understand System State
+##### Understand System State
 
 Perform application performance monitoring by capturing gateway [instrumentation data]({{< ref "basic-config-and-security/report-monitor-trigger-events/instrumentation" >}}). This enables the current system state, such as requests per second and response time, to be monitored and alerted upon.
 
-#### Manage Cross-Origin Resource Sharing
+##### Manage Cross-Origin Resource Sharing
 
 Use [CORS filtering]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}) to control the resources accessible by browser-based clients. This is a necessity for APIs that expect to be consumed by external websites.
 
-### Authorization Levels
+
+### Managing Authorization Levels
 
 This section provides basic examples of where different authorization levels occur in the API management stack. The accompanying diagrams use color-coding to show links between request element and the associated authorization locations and methods.
 
@@ -146,7 +274,6 @@ Lastly, the API handles object level authorization by using custom logic. This t
 
 #### GraphQL API - Querying Data
 
-
 {{< img src="/img/api-management/security/graphql-query-data.jpeg" alt="Rest API - Write Data" width="150px" >}}
 
 The client sends a `POST` request using the path `/graphql` and body data containing a GraphQL query. The path `/graphql` is static and requires function level authorization. The GraphQL query contains several elements:
@@ -164,7 +291,7 @@ Another difference between this and the REST examples is in the way that the bod
 
 Lastly, the API handles object level authorization by using custom logic. This typically involves using the value of the `authorization` header in combination with the ownership and authorization model specific to the API to determine if the client is authorized to access the requested data. This can be more complicated for GraphQL APIs, as the data presented by the schema may actually come from several different data sources.
 
-## Resource Consumption
+## Managing API Resources
 
 Excessive resource consumption poses a risk to APIs. As the number of concurrent requests handled by a server increases, so too does its consumption of CPU, RAM and storage resources. Should any of these become depleted, then the quality of service offered by applications running on the server will rapidly decline, and may even lead to their complete failure.
 
@@ -184,31 +311,39 @@ This issue can be caused by both legitimate consumers and malicious attackers, b
 
 **Mitigate DoS Attacks**: Increase the chance of maintaining API availability during a denial of service attack by using [specialist mitigation services](https://www.cloudflare.com). These have the infrastructure capacity needed to handle [large scale distributed attacks](https://www.cloudflare.com/en-gb/learning/ddos/what-is-a-ddos-attack), with the purpose of preventing attacks from reaching the API infrastructure, thereby enabling the API to continue operating normally.
 
-## Configuration
+
+## Configuration Best Practices
 
 Modern APIs are often backed by large technology stacks composed of numerous components and libraries. Each of these is a potential weak link in the security chain, so efforts must be made to ensure that security measures are implemented throughout. The API gateway plays a critical part in an overall security strategy, by utilizing its ability to process requests in a secure manner.
 
-### Secure Connections
+**Secure Connections**
+
 
 Use [transport layer security]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) where possible. Most importantly, on inbound connections to the gateway and outbound connection from the gateway to the upstream API and other services. TLS can also be used as a form of authentication, using [Mutual TLS]({{< ref "/api-management/authentication-authorization#enable-mutual-tls" >}}).
 
-### Limit Functionality
+**Limit Functionality**
+
 
 Use [security policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) to specify which paths, methods and schemas are accessible, whilst blocking all others.
 
-### Mitigate Server-Side Request Forgery
+**Mitigate Server-Side Request Forgery**
+
 
 Restrict any URL-based input data to specific schemas, hosts and paths by using [schema validation]({{< ref "graphql/validation#schema-validation" >}}). When data is fetched server-side, it should be validated and not returned to the client in raw format.
 
-### Protect Secrets
+**Protect Secrets**
+
 
 Prevent sensitive data, such as usernames, passwords, license keys and other secrets, from being stored as plain text in application configuration files. Use [key value secret storage]({{< ref "tyk-configuration-reference/kv-store" >}}) to dynamically load sensitive data from a secure secret manager.
 
-### Sanitise Responses
+**Sanitise Responses**
+
 
 Modify or remove sensitive data from responses by using [transforms]({{< ref "advanced-configuration/transform-traffic" >}}) to alter the [response headers]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) and [body]({{< ref "advanced-configuration/transform-traffic/response-body" >}}).
 
-## Governance
+<br>
+
+## Governing APIs Effectively
 
 APIs need to be managed and governed just like any other resource, otherwise organizations risk losing track of their API estate and becoming unaware of potentially vulnerable APIs running within their infrastructure. This risk is magnified as the number of teams, environments and APIs increases. Use API management as part of overarching business processes to control how APIs are accessed, managed and deployed.
 
@@ -221,34 +356,37 @@ APIs need to be managed and governed just like any other resource, otherwise org
 **Understand API Usage**: Use [API analytics]({{< ref "tyk-dashboard-analytics" >}}) to report on usage. This captured data generates useful, actionable insights across a variety of metrics, such as API popularity, performance and trends.
 
 **Control API Distribution**: Use [sharding]({{< ref "advanced-configuration/manage-multiple-environments#api-sharding" >}}) to control availability of APIs across multi-gateway, multi-environment deployments. This ensures that specific APIs are only available through specific gateways, which helps to prevent undesirable situations, such as internal APIs being published to externally accessible gateways, or test API configurations reaching the production environment.
+<br>
 
-## How to secure your APIs in Tyk
+## Securing APIs with Tyk
 
 Securing your APIs is one of the primary uses of Tyk API management solution. Out of the box, the Gateway offers a lot of functionality for securing your APIs and the Gateway itself.
 
 This section outlines all of the security configurations and components that are available to you when securing your Tyk stack.
 
-### Concepts
-
 This section outlines some of the key security concepts that Tyk uses and that you should be familiar with before setting up and using a Tyk stack to secure your API.
 
-#### Key Hashing
+**Key Hashing**
+
 
 See [Key Hashing]({{< ref "basic-config-and-security/security/key-hashing" >}}) for details on how Tyk obfuscates keys in Redis.
 
-#### TLS and SSL
+**TLS and SSL**
+
 
 Tyk supports TLS connections and Mutual TLS. All TLS connections also support HTTP/2. Tyk also supports Let's Encrypt. See [TLS and SSL]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) for more details.
 
-#### Trusted Certificates
+**Trusted Certificates**
+
 
 As part of using Mutual TLS, you can create a list of [trusted certificates]({{< ref "/api-management/authentication-authorization#how-does-mutual-tls-work" >}}).
 
-#### Certificate Pinning
+**Certificate Pinning**
+
 
 Introduced in Tyk Gateway 2.6.0, [certificate pinning]({{< ref "security/certificate-pinning" >}}) is a feature which allows you to allow only specified public keys used to generate certificates, so you will be protected in case an upstream certificate is compromised.
 
-#### API Security
+**API Security**
 
 Tyk supports various ways to secure your APIs, including:
 
@@ -261,128 +399,9 @@ Tyk supports various ways to secure your APIs, including:
 
 See [Authentication and Authorization]({{< ref "/api-management/authentication-authorization" >}}) for more details.
 
-#### Security Policies
+**Security Policies**
+
 
 A Tyk security policy incorporates several security options that can be applied to an API key. These include [Partioned Policies]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies.md" >}}) and securing by [Method and Path]({{< ref "security/security-policies/secure-apis-method-path" >}}).
 
 See [Security Policies]({{< ref "basic-config-and-security/security/security-policies" >}}) for more details.
-
-
-## Tyk and OWASP Top Ten Threats
-
-The Open Web Application Security Project (OWASP) provides a top ten threat awareness document compiled by security experts. For more details on the OWASP project visit [https://www.owasp.org](https://www.owasp.org). Below are the top ten threats and how Tyk guards against them. For further details please visit our [blog](https://tyk.io/blog/res-owasp-api-security-intro/)
-
-### 1 - Broken Object Level Authorization (BOLA)
-
-Broken Object Level Authorization (BOLA) can occur due to a lack of access control to API resources. This vulnerability allows attackers to manipulate or bypass authorization mechanisms, typically by tampering with resource identifiers to gain unauthorized access to specific resources or data. BOLA is a critical security concern as it can lead to data breaches and unauthorized actions within a system.
-
-It is the responsibility of the API to handle this form of attack since it can access and understand the data needed to make authorization decisions on individual objects within the application database.
-
-### 2 - Broken Authentication
-
-Authentication is a vital aspect of API security. Failure to do so, as noted by OWASP, leads to *Broken Authentication* posing a significant risk to both API providers and data.
-
-Tyk provides the following features and authentication mechanisms:
--  Prioritize secure methods, like [mutual TLS]({{< ref "/api-management/authentication-authorization#enable-mutual-tls" >}}), over [basic authentication]({{< ref "/api-management/authentication-authorization#use-basic-authentication" >}}) wherever feasible.
-- API owners can integrate external Identity Providers (IdPs) supporting methods like [OpenID Connect]({{< ref "/api-management/authentication-authorization#use-openid-connect" >}}), [OAuth 2.0]({{< ref "/api-management/authentication-authorization#use-authorization-code-grant" >}}) or [JSON Web Tokens]({{< ref "/api-management/authentication-authorization#use-json-web-tokens-jwt" >}}).
-- [Single Sign-On]({{< ref "advanced-configuration/integrate/sso" >}}) can be used for a centralized and trusted authentication source. API operators can choose from common authentication methods such as OAuth 2.0, LDAP, and SAML.
-- [Dynamic Client Registration]({{< ref "tyk-developer-portal/tyk-portal-classic/dynamic-client-registration#oauth-20-dynamic-client-registration-protocol-dcr" >}}), enables third-party authorization servers to issue client credentials via the Tyk Developer Portal. This streamlines Identity Management, eliminating the need to manage credentials across multiple systems.
-- Tyk's default authentication setup disallows credentials in URLs, reducing the risk of inadvertent exposure through backend logs.
-- Tyk Gateway can be configured to enforce a [minimum TLS version]({{< ref "basic-config-and-security/security/tls-and-ssl#values-for-tls-versions" >}}), enhancing security by blocking outdated and insecure TLS versions.
-
-### 3 - Broken Object Property Level Authorization (BOPLA)
-
-REST APIs provide endpoints that return all properties of an object in the reponse, some of which could contain sensitive data. Conversely, GraphQL API requests allow the clients to specify which properties of an object should be retrieved.
-
-From a REST API perspespective, it is the responsibility of the API to ensure that the correct data is retrieved. The Gateway can provide additional security measures as follows:
-- [Body transformation plugins]({{< ref "advanced-configuration/transform-traffic/request-method-transform" >}}) can be used to remove sensitive data from the response if the API is unable to do so itself.
-- [JSON Schema validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-tyk-classic" >}}) to validate that an incoming data payload meets a defined schema. Payloads that do not adhere to the schema are rejected.
-
-For GraphQL APIs, the gateway can be used to define the GraphQL schemas, limiting which properties of an object are queryable. Furthermore, access can be controlled to specific properties by configuring [field-based permissions]({{< ref "graphql/field-based-permissions" >}}). Subsequently, the visiblity of a schema's properties can be controlled for different consumers of the GraphQL API.
-
-
-### 4 - Unrestricted Resource Consumption
-
-APIs can become overwhelmed if the resources upon which they rely are fully consumed. In such situations, an API can no longer operate, and will no longer be able to service requests, or potentially even be unable to complete those currently in progress.
-
-As an APIM product, Tyk Gateway can be configured to use the following out-of-the-box functionality when handling API traffic for legitimate users:
-
-- [Circuit breaker]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers" >}})
-- [Payload size limiter]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits" >}})
-- [Rate limiter / throttling]({{< ref "getting-started/key-concepts/rate-limiting" >}})
-- [Caching]({{< ref "basic-config-and-security/reduce-latency/caching" >}})
-- [Enforced timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}})
-- [IP restriction]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting#ip-blocklist-middleware" >}})
-- [GraphQL query complexity limiting]({{< ref "graphql/complexity-limiting" >}})
-
-For Denial of Service (DoS) attacks it is recommended to use specialist 3rd party services to prevent DoS attacks from reaching your infrastructure.
-
-### 5 - Broken Function Level Authorization (BFLA)
-
-To prevent Broken Functional Level Authorization (BFLA), requests to REST API endpoints must be authorized correctly. This involves validating client permissions against the requested resources. Requests from clients with insufficient permissions must be rejected.
-
-Tyk offers several measures to assist with protection from BFLA threats:
-
-- *Establish path-based access rights*: [Policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) are predefined sets of rules which grant access to particular APIs. These can include [path-based permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}), which restrict access to particular paths and methods within an API. Clients can be assigned one or more policies which the Gateway will validate when it receives a request.
-- *Access Control*: Tyk has plugins that control access to API endpoints. They are known as [allowlist]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) and [blocklist]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-oas#configuring-the-block-list-in-the-api-designer" >}}) and can be configured via the Endpoint Designer of an API Definition. Both plugins grant and deny access to API paths and methods, but do so in different ways, which makes them mutually exclusive. When the allowlist plugin is used, only the marked paths and methods are allowed, all other paths and methods are blocked. This can be perceived as *deny by default* since it provides the least privileges. The reverse is true for the blocklist plugin, only the paths and methods marked as blocklist are blocked, all other paths and methods are allowed. It is recommended to use the *allowlist* approach, since it is the most restrictive, only allowing marked endpoint paths and paths. 
-- *CORS*: This [functionality]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}) allows the Tyk Gateway to limit API access to particular browser-based consumers.
-
-### 6 - Unrestricted Access To Sensitive Business Flows
-
-This involves attackers understanding an API's business model, identifying sensitive business processes and automating unauthorized access to these processes. This can disrupt business operations by preventing legitimate users from making purchases for example. Attackers manually locate target resources and work to bypass any existing mitigation measures.
-
-These business flows are application specific, being unique to the API's backend systems. Subsequently, the API owner is responsible for addressing the security issues posed by this threat. Furthermore, to discover points of exploitation and test IT security breaches, pentesting is recommended.
-
-The APIM can be used to protect sensitive endpoints using authentication and authorization. Tyk recommends considering splitting Admin APIs from client facing APIs. This allows authentication and authorization checks to be defined and managed by different governance models, thus establishing clear role models.
-
-Furthermore, the APIM can validate authentication and authorization by scope to ensure that the client has the correct credentials before the upstream API processes the request.
-
-### 7 - Server Side Request Forgery (SSRF)
-
-Server Side Request Forgery (SSRF) is a security vulnerability in web applications where an attacker can manipulate a server to make unauthorized requests to internal or external resources, potentially leading to data leaks or remote code execution. This can allow an attacker to probe or attack other parts of the application's infrastructure, potentially compromising sensitive information and systems.
-
-This is application specific and is largely the responsibility of the API. However, Tyk Gateway can assist with this form of attack through [JSON schema validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-tyk-classic" >}}) for incoming payloads. For example, a schema could contain a regular expression to reject localhost URLs. These URLs could be used by an attacker to perform port scanning for example.
-
-### 8 - Security Misconfiguration
-
-Tyk offers several mechanisms to help protect an API from Security Misconfiguration exploits:
-
-- Use [response header manipulation]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) to remove or modify API sensitive information.
-- Use [response body manipulation]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) to remove or modify parts containing sensitive information.
-- [TLS]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) to ensure that clients use the right service and encrypt traffic.
-- [Mutual TLS]({{< ref "/api-management/authentication-authorization#enable-mutual-tls" >}}) with both the clients and API to ensure that callers with explicitly allowed client certificates can connect to the endpoints.
-- [Error Templates]({{< ref "advanced-configuration/error-templates" >}}) can be used to return a response body based on status code and content type. This can help minimize the implementation details returned to the client.
-- [CORS functionality]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}) allows the Tyk Gateway to limit API access to particular browser-based consumers.
-- [Policy Path-Based Permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}) and the [allowlist]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) plugin can be used to prevent clients from accessing API endpoints using non-authorized HTTP methods. For example, blocking the use of the DELETE method on an endpoint which should only accept GET requests.
-- [Environment variables]({{< ref "tyk-environment-variables" >}}) can help standardize configuration across containerised deployments.
-- For GraphQL APIs:
-  - [Schema Introspection]({{< ref "graphql/introspection" >}}) ensures that the Tyk Dashboard automatically uses the schema of the upstream GraphQL API and can keep it synchronised if it changes.
-  - [GraphQL Schema Validation]({{< ref "graphql/validation#schema-validation" >}}) prevents invalid schemas from being saved. This catches errors such as duplicate type names and usage of unknown types.
-- Third-party [Secret Storage]({{< ref "tyk-configuration-reference/kv-store" >}}) to centralise configuration of sensitive data such as passwords. This data can then be dynamically referenced by Tyk configuration files, rather than being hard coded.
-- Users can can write their own [custom plugins]({{< ref "plugins" >}}) in a variety of languages, either directly or through gRPC calls, to implement their requirements.
-
-The Ops team should also take reponsibility for monitoring the APIs for errors and patching accordingly. Regular [Penetration Tests](https://en.wikipedia.org/wiki/Penetration_test) should be scheduled to ensure the security of published services. Tyk, through our Professional Services or Partners, can assist in the process.
-
-### 9 - Improper Inventory Management
-
-Tyk offers the following features to support improper inventory management:
-
-- [Versioning]({{< ref "getting-started/key-concepts/versioning" >}}) allows newer versions of APIs to coexist with the older versions, facilitating deprecation and sunsetting.
-- [Sunsetting]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#sunsetting-api-versions" >}}) allows versions to be configured with an Expiry Time, ensuring that a version is not accessible after the expiry date.
-- [Key expiry]({{< ref "basic-config-and-security/control-limit-traffic/key-expiry" >}}) ensures that access to an API is short lived, with a per key configurable Time to Live (TTL) for which a token remains valid before it expires. The implementation of key expiry, with a configurable Time To Live (TTL), mitigates the impact of compromised tokens by narrowing the window of vulnerability. Setting a TTL reduces the time frame during which a compromised token could be exploited, enhancing overall security.
-- Tyk Developer Portal catalogs APIs and facilitates granting access to them.  Integrated with a CMDB it can help keep documentation updated.
-- [Tyk Analytics]({{< ref "tyk-dashboard-analytics" >}}) can help identify the stagnant APIs and used stale APIs.
-- [Tyk Pump]({{< ref "tyk-pump" >}}) can ship metrics needed for analytics into Tyk Dashboard and other systems.
-- Third-party [Secret Storage]({{< ref "tyk-configuration-reference/kv-store" >}}) can be used to centralise and protect sensitive configuration data such as passwords, rather than exposing them as plain text in Tyk configuration files.
-
-In addition, it is best practice to consider any definition of done to include corresponding documentation updates.
-
-### 10 - Unsafe Consumption Of APIs 
-
-Attackers may identify and target the third party APIs/services used by an API. This can lead to leaked sensitive information, denial of service, injection attacks etc.
-
-It is the responsibility of the API to provide protection against these attacks. However, if the organization uses the Gateway as a forwarding proxy to third party APIs, then the following features could be used:
-
-- [JSON Schema validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-tyk-classic" >}}) to validate that an incoming data payload meets a defined schema. Payloads that do not adhere to the schema are rejected.
-- [TLS]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) to ensure that clients use the right service and encrypt traffic.
-- [Versioning]({{< ref "getting-started/key-concepts/versioning" >}}) allows newer versions of third party APIs to coexist with the older versions, facilitating deprecation and sunsetting.
