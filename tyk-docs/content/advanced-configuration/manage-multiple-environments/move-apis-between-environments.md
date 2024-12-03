@@ -13,7 +13,7 @@ It is possible to move APIs between Tyk environments in the following ways:
 
 If the environments are both Self-Managed installations and are sharing a Tyk Dashboard (and optionally an MDCB instance) then you can use API and Gateway tagging to transparently and effortlessly move an API from one environment to another.
 
-See [API Tagging]({{< ref "advanced-configuration/manage-multiple-environments/with-tyk-on-premises#a-name-api-tagging-a-api-tagging-with-on-premises" >}}) for more details.
+See [API Tagging]({{< ref "advanced-configuration/manage-multiple-environments/with-tyk-on-premises#api-tagging-with-on-premises" >}}) for more details.
 
 ### API Sharding
 
@@ -61,4 +61,4 @@ The ID you use in with any Dashboard API integrations will change as the documen
 
 ## Use Tyk-Sync
 
-You can also use our new Tyk-Sync tool which allows you to sync your APIs (and Policies) with a Version Control System (VCS). You can then move your APIs between environments. See [Tyk-Sync]({{< ref "/product-stack/tyk-sync/overview" >}}) for more details.
+You can also use our new Tyk-Sync tool which allows you to sync your APIs (and Policies) with a Version Control System (VCS). You can then move your APIs between environments. See [Tyk-Sync]({{< ref "/api-management/automations#synchronize-tyk-environment-with-github-repository" >}}) for more details.

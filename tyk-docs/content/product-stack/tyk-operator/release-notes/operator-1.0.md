@@ -48,7 +48,7 @@ For details please refer to the [changelog]({{< ref "#Changelog-v1.0.0">}}) belo
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 <!-- This release has no breaking changes. -->
-**License Requirement:** Tyk Operator is now a closed-source product and requires a valid license key to operate. Please follow our [Installation and Upgrade Guide]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}) to set your license key before installation or upgrade.
+**License Requirement:** Tyk Operator is now a closed-source product and requires a valid license key to operate. Please follow our [Installation and Upgrade Guide]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}}) to set your license key before installation or upgrade.
 
 If the license is missing, invalid, or expired, Tyk Operator will exit with an error message. Ensure that you carefully review the setup steps to avoid any issues during the upgrade or installation process.
 
@@ -123,7 +123,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/TykTechnologies/tyk-charts/
 ```
 
 
-Go to the [Upgrading Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator#upgrading-tyk-operator">}}) section for detailed upgrade instructions.
+Go to the [Upgrading Tyk Operator]({{<ref "/api-management/automations#upgrading-tyk-operator">}}) section for detailed upgrade instructions.
 
 
 ### Downloads
@@ -158,7 +158,7 @@ Each change log item should be expandable. The first line summarises the changel
 
 The `TykOasApiDefinition` custom resource allows you to manage Tyk OAS APIs directly within your Kubernetes environment. You can now categorize APIs, manage multiple versions, and simplify SSL certificate management by referencing Kubernetes secrets. This enhancement offers a Kubernetes-native approach to managing Tyk APIs, streamlining operations and reducing the complexity of versioning and certificate handling across different environments.
 
-Learn More: [Create Tyk OAS API]({{<ref "product-stack/tyk-operator/getting-started/create-an-oas-api">}})
+Learn More: [Create Tyk OAS API]({{<ref "/api-management/automations#set-up-oas-api">}})
 </details>
 </li>
 <li>
@@ -167,7 +167,7 @@ Learn More: [Create Tyk OAS API]({{<ref "product-stack/tyk-operator/getting-star
 
 With this release, you can use the TykOasApiDefinition resource as a template for automatically creating Tyk OAS APIs based on Kubernetes Ingress specs. This simplifies the process of generating APIs by leveraging Ingress controller annotations, reducing manual intervention, and automating API creation workflows for better scalability and operational efficiency.
 
-Learn More: [Tyk Ingress Controller]({{<ref "product-stack/tyk-operator/tyk-ingress-controller">}})
+Learn More: [Tyk Ingress Controller]({{<ref "/api-management/automations#control-kubernetes-ingress-resources">}})
 </details>
 </li>
 <li>
@@ -176,7 +176,7 @@ Learn More: [Tyk Ingress Controller]({{<ref "product-stack/tyk-operator/tyk-ingr
 
 This release introduces the ability to configure specific rate limits, quotas, and throttling rules at the API level using the `access_rights_array` in the security policy. Each API now has the flexibility to inherit global limit settings or apply custom limits, making it easier to control API usage on a per-API basis. This provides enhanced granularity in managing traffic, ensuring optimal resource allocation and improved performance under heavy loads.
 
-Learn More: [Key-Level Per-API Rate Limits and Quota]({{<ref "product-stack/tyk-operator/getting-started/security-policy-example#per-api-limit">}})
+Learn More: [Key-Level Per-API Rate Limits and Quota]({{<ref "/api-management/automations#security-policy-example">}})
 </details>
 </li>
 <li>
@@ -185,7 +185,7 @@ Learn More: [Key-Level Per-API Rate Limits and Quota]({{<ref "product-stack/tyk-
 
 By configuring key-level per-endpoint limits, you can restrict the request rate for specific API clients to a specific endpoint of an API.
 
-Learn More: [Key-Level Per-Endpoint Rate Limits]({{<ref "product-stack/tyk-operator/getting-started/security-policy-example#per-endpoint-rate-limit">}})
+Learn More: [Key-Level Per-Endpoint Rate Limits]({{<ref "/api-management/automations#security-policy-example">}})
 </details>
 </li>
 <li>
@@ -194,7 +194,7 @@ Learn More: [Key-Level Per-Endpoint Rate Limits]({{<ref "product-stack/tyk-opera
 
 This update extends the security policy to include TykOasApiDefinition resources within the `access_rights_array`, allowing you to manage security policies for both Tyk Classic APIs and Tyk OAS APIs. By specifying the API kind, you can now apply rate limits, quotas, and other access controls to Tyk OAS APIs, streamlining security management in mixed environments.
 
-Learn More: [TykOasApiDefinition in Security Policy]({{<ref "tyk-stack/tyk-operator/secure-an-api#security-policy-manifest">}})
+Learn More: [TykOasApiDefinition in Security Policy]({{<ref "/api-management/automations#add-a-security-policy-to-your-api">}})
 </details>
 </li>
 <li>
