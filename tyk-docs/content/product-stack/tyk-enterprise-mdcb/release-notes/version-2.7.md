@@ -15,7 +15,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 2.7.2 Release Notes
 
-### Release Date DD Mon YYYY <<update>>
+### Release Date 03 December 2024
 
 ### Release Highlights
 
