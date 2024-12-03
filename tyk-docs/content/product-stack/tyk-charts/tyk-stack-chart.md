@@ -102,6 +102,14 @@ To configure Tyk components, users can utilize both config files and [environmen
 
 By default, the chart executes a bootstrapping job immediately after installation. This process ensures the presence of a valid dashboard license and initializes key components such as tyk-dashboard, tyk-portal, and tyk-operator, enabling them for immediate use.
 
+The bootstrapping job uses three distinct applications acting as Helm chart hooks:
+
+| **Bootstrapping Component** | **Description** |
+|-----------------------------|-----------------|
+| `bootstrap-pre-install`     | - Runs as a pre-install hook. <br> - Validates the Tyk Dashboard license key to ensure proper installation prerequisites. |
+| `bootstrap-post-install`    | - Executes post-installation. <br> - Sets up an organization and admin user in the Tyk Dashboard. <br> - Creates Kubernetes secrets required by Tyk Operator and Tyk Enterprise Portal. <br> **Note**: If an existing organization and admin user are found in the database, the bootstrapping job will not set up a new organization and user. The Kubernetes secrets will not contain the expected Org ID or API key. Please update the Secret with existing credentials in this case. |
+| `bootstrap-pre-delete`      | - Functions as a pre-delete hook. <br> - Cleans up resources, ensuring no residual configurations remain post-uninstallation. |
+
 Key Notes on Bootstrapping:
 
 - Bootstrapping is triggered **only during** a `helm install` and does not run during a `helm upgrade`.
@@ -779,7 +787,7 @@ Optional Steps, if needed:
 
 ### Tyk Bootstrap Configurations
 
-To enable bootstrapping, set `global.components.bootstrap` to `true`. It would run [tyk-k8s-bootstrap](https://github.com/TykTechnologies/tyk-k8s-bootstrap) to bootstrap `tyk-stack` and to create Kubernetes secrets that can be utilized in Tyk Operator and Tyk Developer Portal.
+To enable [bootstrapping](#bootstrapping), set `global.components.bootstrap` to `true`. It would run [tyk-k8s-bootstrap](https://github.com/TykTechnologies/tyk-k8s-bootstrap) to bootstrap `tyk-stack` and to create Kubernetes secrets that can be utilized in Tyk Operator and Tyk Developer Portal.
 
 {{< note success >}}
 **Note**
