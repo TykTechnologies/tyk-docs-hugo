@@ -76,7 +76,7 @@ ongoing support of third-party dependencies they install, as their status may ha
 
 ### Deprecations
 
-This is an advanced notice that the dedicated External OAuth, OpenID Connect (OIDC) authentication options, and SQLite support will be deprecated starting in version 5.7.0. We recommend that users of the [External OAuth]({{< ref "basic-config-and-security/security/authentication-authorization/ext-oauth-middleware" >}}) and [OpenID Connect]({{< ref "basic-config-and-security/security/authentication-authorization/openid-connect" >}}) methods migrate to Tyk's dedicated [JWT Auth]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#about-jwts" >}}) method. Please review your API configurations, as the Gateway logs will provide notifications for any APIs utilizing these methods.
+This is an advanced notice that the dedicated External OAuth, OpenID Connect (OIDC) authentication options, and SQLite support will be deprecated starting in version 5.7.0. We recommend that users of the [External OAuth]({{< ref "/api-management/authentication-authorization#integrate-external-oauth-middleware" >}}) and [OpenID Connect]({{< ref "api-management/authentication-authorization#use-openid-connect" >}}) methods migrate to Tyk's dedicated [JWT Auth]({{< ref "/api-management/authentication-authorization#use-json-web-tokens-jwt" >}}) method. Please review your API configurations, as the Gateway logs will provide notifications for any APIs utilizing these methods.
 
 
 ### Upgrade Instructions
@@ -787,7 +787,7 @@ Added [FIPS compliance]({{< ref "developer-support/special-releases-and-features
 
 <li>
 <details>
-<summary>Corrected ordering of OAS API paths to prevent middleware misapplication</summary>
+<summary>Corrected ordering of Tyk OAS API paths to prevent middleware misapplication</summary>
 
 Fixed an issue where nested API endpoints, such as '/test' and '/test/abc', might incorrectly apply middleware from the
 parent path to the nested path. The fix ensures that API endpoint definitions are correctly ordered, preventing this
@@ -1818,7 +1818,7 @@ vulnerabilities:
 </li>
 </ul>
 
-## <!-- Required. use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
+<!-- Required. use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
 
 <!--
 Repeat the release notes section above for every patch here

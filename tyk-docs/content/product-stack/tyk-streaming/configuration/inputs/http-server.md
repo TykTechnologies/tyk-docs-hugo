@@ -60,9 +60,11 @@ When the rate limit is breached HTTP requests will have a 429 response returned 
 
 ### Responses
 
-<!-- TODO add links for synchronous responses -->
+<!-- TODO describe how to use synchronous responses when avail:
 
-It's possible to return a response for each message received using synchronous responses. When doing so you can customise headers with the `sync_response` field `headers`, which can also use [function interpolation]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}) in the value based on the response message contents.
+It's possible to return a response for each message received using synchronous responses. When doing so you can customise headers with the `sync_response` field `headers`, which can also use function interpolation in the value based on the response message contents.
+ -->
+
 
 ### Endpoints
 
@@ -112,7 +114,9 @@ If HTTPS is enabled, the following fields are added as well:
 - http_server_tls_cipher_suite
 ```
 
-You can access these metadata fields using [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
+<!-- TODO: when interpolaion supported
+You can access these metadata fields using interpolation functions.
+-->
 
 ## Examples
 
@@ -293,7 +297,9 @@ Type: `object`
 ### sync_response.status
 
 Specify the status code to return with synchronous responses. This is a string value, which allows you to customize it based on resulting payloads and their metadata.
-This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
+<!-- TODO: when inerpolation supported:
+This field supports interpolation functions.
+-->
 
 
 Type: `string`  
@@ -310,7 +316,9 @@ status: ${! meta("status") }
 ### sync_response.headers
 
 Specify headers to return with synchronous responses.
-This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
+<!-- TODO: when interpolation supported:
+This field supports interpolation functions.
+-->
 
 
 Type: `object`  

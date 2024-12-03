@@ -361,7 +361,7 @@ Alternatively, you can issue a request to the `/env` endpoint to return your MDC
 curl -H "x-tyk-authorization: <secured-endpoint-secret>" https://my-mdcb-host:8181/env
 ```
 
-## Gateway configuration
+## Enabling MDCB on Organization Object on Tyk Dashboard
 
 Before a worker gateway can connect to MDCB, it is important to enable the organization that owns all the APIs to be distributed to be allowed to utilize Tyk MDCB. To do this, the organization record needs to be modified with two flags using the [Tyk Dashboard Admin API](https://tyk.io/docs/dashboard-admin-api/).
 
