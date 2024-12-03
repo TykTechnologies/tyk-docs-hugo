@@ -19,7 +19,7 @@ Our minor releases are supported until our next minor comes out.
 ---
 ## 5.7.0 Release Notes
 
-### Release Date xxx
+### Release Date 03 December 2024
 
 ### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release:
