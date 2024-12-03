@@ -15,12 +15,8 @@ input:
 pipeline:
   threads: 4
   processors:
-    - mapping: |
-        root = this
-        fans = fans.map_each(match {
-          this.obsession > 0.5 => this
-          _ => deleted()
-        })
+    - avro:
+        operator: "to_json"
 
 output:
   resource: bar

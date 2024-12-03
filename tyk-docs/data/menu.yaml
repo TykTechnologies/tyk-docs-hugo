@@ -5,6 +5,23 @@ menu:
     path: /
     category: Label
     show: True
+  - title: "Overview"
+    path: /
+    category: Label
+    show: True
+    menu:
+      - title: "Tyk Overview"
+        path: /tyk-overview
+        category: Page
+        show: True
+      - title: "Tyk Components"
+        path: /tyk-components
+        category: Page
+        show: True
+      - title: "Plan Your API Integration"
+        path: /plan-your-api-integration
+        category: Page
+        show: True
   - title: "Getting Started"
     path: /
     category: Label
@@ -744,6 +761,10 @@ menu:
         path: /api-management/authentication-authorization
         category: Page
         show: True
+      - title: "Upstream Authentication"
+        path: /api-management/upstream-authentication
+        category: Page
+        show: False
       - title: "Automations"
         path: /api-management/automations
         category: Page
@@ -1116,6 +1137,10 @@ menu:
         category: Directory
         show: False
         menu:
+      - title: "Security Best Practices"
+        category: Page
+        show: True
+        path: /api-management/security-best-practices
   - title: "Product Stack"
     path: /tyk-stack
     category: Label
@@ -1273,10 +1298,6 @@ menu:
                     path: /advanced-configuration/manage-multiple-environments/with-tyk-on-premises
                     category: Page
                     show: True
-              - title: "How to secure your APIs in Tyk"
-                path: /basic-config-and-security/security
-                category: Page
-                show: True
               - title: "Request Middleware Chain"
                 path: /concepts/middleware-execution-order
                 category: Page
@@ -1317,62 +1338,58 @@ menu:
                 category: Directory
                 show: True
                 menu:
-              - title: "oauth"
-                category: page
-                show: False
-                path: /basic-config-and-security/security/authentication-authorization/ext-oauth-middleware
-              - title: "Security policies"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /basic-config-and-security/security/security-policies
-                    category: Page
-                    show: True
-                  - title: "Policies Guide"
-                    path: /basic-config-and-security/security/security-policies/policies-guide
-                    category: Page
-                    show: True
-                  - title: "Secure your APIs by Method and Path"
-                    path: /security/security-policies/secure-apis-method-path
-                    category: Page
-                    show: True
-                  - title: "Partitioned Policies"
-                    path: /basic-config-and-security/security/security-policies/partitioned-policies
-                    category: Page
-                    show: True
-              - title: "Gateway"
-                path: /basic-config-and-security/security/gateway
-                category: Page
-                show: True
-              - title: "Key Hashing"
-                path: /basic-config-and-security/security/key-hashing
-                category: Page
-                show: True
-              - title: "Key Level Security"
-                path: /basic-config-and-security/security/key-level-security
-                category: Page
-                show: True
-              - title: "Tyk and OWASP Top Ten Threats"
-                path: /basic-config-and-security/security/owasp-top-ten
-                category: Page
-                show: True
-              - title: "TLS and SSL"
-                path: /basic-config-and-security/security/tls-and-ssl
-                category: Page
-                show: True
-              - title: "Certificate Pinning"
-                path: /security/certificate-pinning
-                category: Page
-                show: True
-              - title: "Blocking Client IPs"
-                path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting
-                category: Page
-                show: True
-              - title: "Allowing Client IPs"
-                path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting
-                category: Page
-                show: True
+                - title: "oauth"
+                  category: page
+                  show: False
+                  path: /basic-config-and-security/security/authentication-authorization/ext-oauth-middleware
+                - title: "Security policies"
+                  category: Directory
+                  show: True
+                  menu:
+                    - title: "Overview"
+                      path: /basic-config-and-security/security/security-policies
+                      category: Page
+                      show: True
+                    - title: "Policies Guide"
+                      path: /basic-config-and-security/security/security-policies/policies-guide
+                      category: Page
+                      show: True
+                    - title: "Secure your APIs by Method and Path"
+                      path: /security/security-policies/secure-apis-method-path
+                      category: Page
+                      show: True
+                    - title: "Partitioned Policies"
+                      path: /basic-config-and-security/security/security-policies/partitioned-policies
+                      category: Page
+                      show: True
+                - title: "Gateway"
+                  path: /basic-config-and-security/security/gateway
+                  category: Page
+                  show: True
+                - title: "Key Hashing"
+                  path: /basic-config-and-security/security/key-hashing
+                  category: Page
+                  show: True
+                - title: "Key Level Security"
+                  path: /basic-config-and-security/security/key-level-security
+                  category: Page
+                  show: True
+                - title: "TLS and SSL"
+                  path: /basic-config-and-security/security/tls-and-ssl
+                  category: Page
+                  show: True
+                - title: "Certificate Pinning"
+                  path: /security/certificate-pinning
+                  category: Page
+                  show: True
+                - title: "Blocking Client IPs"
+                  path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting
+                  category: Page
+                  show: True
+                - title: "Allowing Client IPs"
+                  path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting
+                  category: Page
+                  show: True
               - title: "Control and limit traffic"
                 category: Directory
                 show: True
@@ -3003,6 +3020,10 @@ menu:
                     path: /tyk-developer-portal/tyk-portal-classic/graphql
                     category: Page
                     show: True
+                  - title: "Streams with Classic Portal"
+                    path: /tyk-developer-portal/tyk-portal-classic/streams
+                    category: Page
+                    show: True
                   - title: "Monetising your APIs"
                     path: /tyk-developer-portal/tyk-portal-classic/monetise
                     category: Page
@@ -3842,6 +3863,10 @@ menu:
             path: /product-stack/tyk-streaming/key-concepts
             category: Page
             show: True
+          - title: "Configure Streams API using dashboard"
+            path: /product-stack/tyk-streaming/streams-configuration-using-ui
+            category: Page
+            show: True
           - title: "Quick Start"
             path: /product-stack/tyk-streaming/getting-started
             category: Page
@@ -3862,20 +3887,8 @@ menu:
                     path: /product-stack/tyk-streaming/configuration/inputs/overview
                     category: Page
                     show: True
-                  - title: "Amqp_0_9"
-                    path: /product-stack/tyk-streaming/configuration/inputs/amqp-0-9
-                    category: Page
-                    show: True
-                  - title: "Amqp_1"
-                    path: /product-stack/tyk-streaming/configuration/inputs/amqp-1
-                    category: Page
-                    show: True
                   - title: "Broker"
                     path: /product-stack/tyk-streaming/configuration/inputs/broker
-                    category: Page
-                    show: True
-                  - title: "Generate"
-                    path: /product-stack/tyk-streaming/configuration/inputs/generate
                     category: Page
                     show: True
                   - title: "Http Client"
@@ -3890,26 +3903,6 @@ menu:
                     path: /product-stack/tyk-streaming/configuration/inputs/kafka
                     category: Page
                     show: True
-                  - title: "Kafka Franz"
-                    path: /product-stack/tyk-streaming/configuration/inputs/kafka-franz
-                    category: Page
-                    show: True
-                  - title: "MQTT"
-                    path: /product-stack/tyk-streaming/configuration/inputs/mqtt
-                    category: Page
-                    show: True
-                  - title: "Nats"
-                    path: /product-stack/tyk-streaming/configuration/inputs/nats
-                    category: Page
-                    show: True
-                  - title: "NSQ"
-                    path: /product-stack/tyk-streaming/configuration/inputs/nsq
-                    category: Page
-                    show: True
-                  - title: "Redis PubSub"
-                    path: /product-stack/tyk-streaming/configuration/inputs/redis-pubsub
-                    category: Page
-                    show: True
               - title: "Outputs"
                 category: Directory
                 show: True
@@ -3918,24 +3911,8 @@ menu:
                     path: /product-stack/tyk-streaming/configuration/outputs/overview
                     category: Page
                     show: True
-                  - title: "Amqp_0_9"
-                    path: /product-stack/tyk-streaming/configuration/outputs/amqp-0-9
-                    category: Page
-                    show: True
-                  - title: "Amqp_1"
-                    path: /product-stack/tyk-streaming/configuration/outputs/amqp-1
-                    category: Page
-                    show: True
                   - title: "Broker"
                     path: /product-stack/tyk-streaming/configuration/outputs/broker
-                    category: Page
-                    show: True
-                  - title: "Drop on"
-                    path: /product-stack/tyk-streaming/configuration/outputs/drop_on
-                    category: Page
-                    show: True
-                  - title: "Fallback"
-                    path: /product-stack/tyk-streaming/configuration/outputs/fallback
                     category: Page
                     show: True
                   - title: "Http Client"
@@ -3950,52 +3927,8 @@ menu:
                     path: /product-stack/tyk-streaming/configuration/outputs/kafka
                     category: Page
                     show: True
-                  - title: "Kafka Franz"
-                    path: /product-stack/tyk-streaming/configuration/outputs/kafka-franz
-                    category: Page
-                    show: True
-                  - title: "Nats"
-                    path: /product-stack/tyk-streaming/configuration/outputs/nats
-                    category: Page
-                    show: True
-                  - title: "NSQ"
-                    path: /product-stack/tyk-streaming/configuration/outputs/nsq
-                    category: Page
-                    show: True
-                  - title: "MQTT"
-                    path: /product-stack/tyk-streaming/configuration/outputs/mqtt
-                    category: Page
-                    show: True
-                  - title: "Redis PubSub"
-                    path: /product-stack/tyk-streaming/configuration/outputs/redis-pubsub
-                    category: Page
-                    show: True
-                  - title: "Reject"
-                    path: /product-stack/tyk-streaming/configuration/outputs/reject
-                    category: Page
-                    show: True
-                  - title: "Retry"
-                    path: /product-stack/tyk-streaming/configuration/outputs/retry
-                    category: Page
-                    show: True
-                  - title: "Sleep"
-                    path: /product-stack/tyk-streaming/configuration/processors/sleep
-                    category: Page
-                    show: True
-                  - title: "Stdout"
-                    path: /product-stack/tyk-streaming/configuration/outputs/stdout
-                    category: Page
-                    show: True
-                  - title: "Switch"
-                    path: /product-stack/tyk-streaming/configuration/outputs/switch
-                    category: Page
-                    show: True
-                  - title: "Sync Response"
-                    path: /product-stack/tyk-streaming/configuration/outputs/sync-response
-                    category: Page
-                    show: True
               - title: "Processors"
-                category: "Directory"
+                category: Directory
                 show: True
                 menu:
                   - title: "Overview"
@@ -4004,154 +3937,6 @@ menu:
                     show: True
                   - title: "Avro"
                     path: /product-stack/tyk-streaming/configuration/processors/avro
-                    category: Page
-                    show: True
-                  - title: "AWS Lambda"
-                    path: /product-stack/tyk-streaming/configuration/processors/aws-lambda
-                    category: Page
-                    show: True
-                  - title: "Bloblang"
-                    path: /product-stack/tyk-streaming/configuration/processors/bloblang
-                    category: Page
-                    show: True
-                  - title: "Branch"
-                    path: /product-stack/tyk-streaming/configuration/processors/branch
-                    category: Page
-                    show: True
-                  - title: "Bounds Check"
-                    path: /product-stack/tyk-streaming/configuration/processors/bounds-check
-                    category: Page
-                    show: True
-                  - title: "Cache"
-                    path: /product-stack/tyk-streaming/configuration/processors/cache
-                    category: Page
-                    show: True
-                  - title: "Cached"
-                    path: /product-stack/tyk-streaming/configuration/processors/cached
-                    category: Page
-                    show: True
-                  - title: "Catch"
-                    path: /product-stack/tyk-streaming/configuration/processors/catch
-                    category: Page
-                    show: True
-                  - title: "Dedupe"
-                    path: /product-stack/tyk-streaming/configuration/processors/dedupe
-                    category: Page
-                    show: True
-                  - title: "For Each"
-                    path: /product-stack/tyk-streaming/configuration/processors/for-each
-                    category: Page
-                    show: True
-                  - title: "Group By"
-                    path: /product-stack/tyk-streaming/configuration/processors/group-by
-                    category: Page
-                    show: True
-                  - title: "Group By Value"
-                    path: /product-stack/tyk-streaming/configuration/processors/group-by-value
-                    category: Page
-                    show: True
-                  - title: "Http"
-                    path: /product-stack/tyk-streaming/configuration/processors/http
-                    category: Page
-                    show: True
-                  - title: "Insert Part"
-                    path: /product-stack/tyk-streaming/configuration/processors/insert-part
-                    category: Page
-                    show: True
-                  - title: "JMESPath"
-                    path: /product-stack/tyk-streaming/configuration/processors/jmes-path
-                    category: Page
-                    show: True
-                  - title: "Jq"
-                    path: /product-stack/tyk-streaming/configuration/processors/jq
-                    category: Page
-                    show: True
-                  - title: "JSON Schema"
-                    path: /product-stack/tyk-streaming/configuration/processors/json-schema
-                    category: Page
-                    show: True
-                  - title: "Log"
-                    path: /product-stack/tyk-streaming/configuration/processors/log
-                    category: Page
-                    show: True
-                  - title: "Mapping"
-                    path: /product-stack/tyk-streaming/configuration/processors/mapping
-                    category: Page
-                    show: True
-                  - title: "Msgpack"
-                    path: /product-stack/tyk-streaming/configuration/processors/msgpack
-                    category: Page
-                    show: True
-                  - title: "Mutation"
-                    path: /product-stack/tyk-streaming/configuration/processors/mutation
-                    category: Page
-                    show: True
-                  - title: "Noop"
-                    path: /product-stack/tyk-streaming/configuration/processors/noop
-                    category: Page
-                    show: True
-                  - title: "Parallel"
-                    path: /product-stack/tyk-streaming/configuration/processors/parallel
-                    category: Page
-                    show: True
-                  - title: "Parse Log"
-                    path: /product-stack/tyk-streaming/configuration/processors/parse-log
-                    category: Page
-                    show: True
-                  - title: "Processors"
-                    path: /product-stack/tyk-streaming/configuration/processors/processors
-                    category: Page
-                    show: True
-                  - title: "Protobuf"
-                    path: /product-stack/tyk-streaming/configuration/processors/protobuf
-                    category: Page
-                    show: True
-                  - title: "Rate Limit"
-                    path: /product-stack/tyk-streaming/configuration/processors/rate-limit
-                    category: Page
-                    show: True
-                  - title: "Redis"
-                    path: /product-stack/tyk-streaming/configuration/processors/redis
-                    category: Page
-                    show: True
-                  - title: "Retry"
-                    path: /product-stack/tyk-streaming/configuration/processors/retry
-                    category: Page
-                    show: True
-                  - title: "Schema Registry Decode"
-                    path: /product-stack/tyk-streaming/configuration/processors/schema-registry-decode
-                    category: Page
-                    show: True
-                  - title: "Schema Registry Encode"
-                    path: /product-stack/tyk-streaming/configuration/processors/schema-registry-encode
-                    category: Page
-                    show: True
-                  - title: "Select Parts"
-                    path: /product-stack/tyk-streaming/configuration/processors/select-parts
-                    category: Page
-                    show: True
-                  - title: "Split"
-                    path: /product-stack/tyk-streaming/configuration/processors/split
-                    category: Page
-                    show: True
-                  - title: "Switch"
-                    path: /product-stack/tyk-streaming/configuration/processors/switch
-                    category: Page
-                    show: True
-                  - title: "Sync Response"
-                    path: /product-stack/tyk-streaming/configuration/processors/sync-response
-                    category: Page
-                    show: True
-                  - title: "Try"
-                    path: /product-stack/tyk-streaming/configuration/processors/try
-                    category: Page
-                    show: True
-                  - title: "While"
-                    path: /product-stack/tyk-streaming/configuration/processors/while
-                    catgeory: Page
-                    show: True
-                  - title: "Workflow"
-                    path: /product-stack/tyk-streaming/configuration/processors/workflow
                     category: Page
                     show: True
               - title: "Scanners"
@@ -4186,110 +3971,14 @@ menu:
                     path: /product-stack/tyk-streaming/configuration/common-configuration/batching
                     category: Page
                     show: True
-                  - title: "Error Handling"
-                    path: /product-stack/tyk-streaming/configuration/common-configuration/error-handling
-                    category: Page
-                    show: True
                   - title: "Field Paths"
                     path: /product-stack/tyk-streaming/configuration/common-configuration/field-paths
-                    category: Page
-                    show: True
-                  - title: "Interpolation"
-                    path: /product-stack/tyk-streaming/configuration/common-configuration/interpolation
                     category: Page
                     show: True
                   - title: "Processing Pipelines"
                     path: /product-stack/tyk-streaming/configuration/common-configuration/processing-pipelines
                     category: Page
                     show: True
-                  - title: "Resources"
-                    path: /product-stack/tyk-streaming/configuration/common-configuration/resources
-                    category: Page
-                    show: True
-                  - title: "Windowed Processing"
-                    path: /product-stack/tyk-streaming/configuration/common-configuration/windowed_processing
-                    category: Page
-                    show: True
-          - title: "Guides"
-            category: Directory
-            show: True
-            menu:
-              - title: "Bloblang"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: "/product-stack/tyk-streaming/guides/bloblang/overview"
-                    category: Page
-                    show: True
-                  - title: "Advanced"
-                    path: "/product-stack/tyk-streaming/guides/bloblang/advanced"
-                    category: Page
-                    show: True
-                  - title: "Arithmetic"
-                    path: "/product-stack/tyk-streaming/guides/bloblang/arithmetic"
-                    category: Page
-                    show: True
-                  - title: "Functions"
-                    path: "/product-stack/tyk-streaming/guides/bloblang/functions"
-                    category: Page
-                    show: True
-                  - title: "Methods"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/overview"
-                        category: Page
-                        show: True
-                      - title: "General"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/general"
-                        category: Page
-                        show: True
-                      - title: "Encoding and encryption"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/encoding-and-encryption"
-                        category: Page
-                        show: True
-                      - title: "GeoIP"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/geoip"
-                        category: Page
-                        show: True
-                      - title: "JSON web tokens"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/json-web-tokens"
-                        category: Page
-                        show: True
-                      - title: "Number Manipulation"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/numbers"
-                        category: Page
-                        show: True
-                      - title: "String Manipulation"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/strings"
-                        category: Page
-                        show: True
-                      - title: "Objects and Arrays"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/object-and-arrays"
-                        category: Page
-                        show: True
-                      - title: "Regular expressions"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/regular-expressions"
-                        category: Page
-                        show: True
-                      - title: "Parsing"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/parsing"
-                        category: Page
-                        show: True
-                      - title: "Timestamp Manipulation"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/timestamps"
-                        category: Page
-                        show: True
-                      - title: "Type Coercion"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/type-coercion"
-                        category: Page
-                        show: True
-              - title: "Sync Response"
-                path: "/product-stack/tyk-streaming/guides/sync-responses"
-                category: Page
-                show: True
           - title: "Rate Limits"
             category: Directory
             show: true
@@ -4350,7 +4039,7 @@ menu:
                 path: /tyk-identity-broker/getting-started
                 category: Page
                 show: True
-              - title: "TIB implementation with GitHub and OAuth 2.0"
+              - title: "Practical TIB Integration Examples"
                 path: /tyk-stack/tyk-identity-broker/auth-user-for-api-access-github-oauth
                 category: Page
                 show: True
@@ -4368,6 +4057,14 @@ menu:
             menu:
               - title: "Tyk Identity Broker Configuration Options"
                 path: /tyk-configuration-reference/tyk-identity-broker-configuration
+                category: Page
+                show: True
+          - title: "Release Notes"
+            category: Directory
+            show: True
+            menu:
+              - title: "Tyk Identity Broker 1.6"
+                path: /product-stack/tyk-identity-broker/release-notes/tib-v1.6
                 category: Page
                 show: True
       - title: "Tyk Helm Charts (Open Source)"
@@ -4733,68 +4430,6 @@ menu:
             path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/customise-enterprise-portal
             category: Page
             show: True
-  - title: "APIM Best Practice"
-    path: /apim-best-practice/overview
-    category: Label
-    show: True
-    menu:
-      - title: "Overview"
-        path: /apim-best-practice/overview
-        category: Page
-        show: True
-      - title: "API Security Best Practice"
-        category: Directory
-        show: True
-        menu:
-          - title: "API Security Overview"
-            path: /apim-best-practice/api-security-best-practice/overview
-            category: Page
-            show: True
-          - title: "Authentication"
-            path: /apim-best-practice/api-security-best-practice/authentication
-            category: Page
-            show: True
-          - title: "Authorisation"
-            path: /apim-best-practice/api-security-best-practice/authorisation
-            category: Page
-            show: True
-          - title: "Authorisation Levels"
-            path: /apim-best-practice/api-security-best-practice/authorisation-levels
-            category: Page
-            show: True
-          - title: "Resource Consumption"
-            path: /apim-best-practice/api-security-best-practice/resource-consumption
-            category: Page
-            show: True
-          - title: "Configuration"
-            path: /apim-best-practice/api-security-best-practice/configuration
-            category: Page
-            show: True
-          - title: "Governance"
-            path: /apim-best-practice/api-security-best-practice/governance
-            category: Page
-            show: True
-      - title: "API Lifecycle Best Practice"
-        category: Page
-        show: False
-      - title: "API Platform Architectures"
-        category: Page
-        show: False
-      - title: "Sector Specific Guides"
-        category: Page
-        show: False
-      - title: "API Observability"
-        category: Page
-        show: False
-      - title: "API Products"
-        category: Page
-        show: False
-      - title: "APIs as integration"
-        category: Page
-        show: False
-      - title: "Creating a PoC"
-        category: Page
-        show: False
   - title: "Orphan"
     path: /orphan
     category: Label

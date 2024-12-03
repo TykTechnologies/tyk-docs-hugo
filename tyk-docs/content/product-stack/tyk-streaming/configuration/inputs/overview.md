@@ -8,23 +8,18 @@ An input is a source of data piped through an array of optional [processors]({{<
 
 ```yaml
 input:
-  label: my_redis_input
+  label: my_kafka_input
 
-  redis_streams:
-    url: tcp://localhost:6379
-    streams:
-      - tyk_stream
-    body_key: body
-    consumer_group: tyk_group
+  kafka:
+    addresses: [ localhost:9092 ]
+    topics: [ foo, bar ]
+    consumer_group: foogroup
 
   # Optional list of processing steps
   processors:
-   - mapping: |
-       root.document = this.without("links")
-       root.link_count = this.links.length()
+    - avro:
+        operator: to_json 
 ```
-
-Some inputs have a logical end ends once the last row is consumed, when this happens the input gracefully terminates and Tyk Streams will shut itself down once all messages have been processed fully.
 
 ## Brokering
 
@@ -35,16 +30,15 @@ input:
   broker:
     inputs:
       - kafka:
-          addresses: [ TODO ]
+          addresses: [ localhost:9092 ]
           topics: [ foo, bar ]
           consumer_group: foogroup
 
-      - redis_streams:
-          url: tcp://localhost:6379
-          streams:
-            - tyk_stream
-          body_key: body
-          consumer_group: tyk_group
+      - http_client:
+          url: https://localhost:8085
+          verb: GET
+          stream:
+            enabled: true
 ```
 
 ## Labels
@@ -58,7 +52,3 @@ When know if Tyk Streams will support metrics then link to metrics
 Inputs have an optional field `label` that can uniquely identify them in observability data such as metrics and logs. This can be useful when running configs with multiple inputs, otherwise their metrics labels will be generated based on their composition. For more information check out the [metrics documentation][metrics.about].
 
 -->
-
-## Generating Messages
-
-It's possible to generate data with Tyk Streams using the [generate]({{< ref "/product-stack/tyk-streaming/configuration/inputs/generate" >}}) input, which is also a convenient way to trigger scheduled pipelines.
