@@ -5,6 +5,23 @@ menu:
     path: /
     category: Label
     show: True
+  - title: "Overview"
+    path: /
+    category: Label
+    show: True
+    menu:
+      - title: "Tyk Overview"
+        path: /tyk-overview
+        category: Page
+        show: True
+      - title: "Tyk Components"
+        path: /tyk-components
+        category: Page
+        show: True
+      - title: "Plan Your API Integration"
+        path: /plan-your-api-integration
+        category: Page
+        show: True
   - title: "Getting Started"
     path: /
     category: Label
@@ -1120,6 +1137,10 @@ menu:
         category: Directory
         show: False
         menu:
+      - title: "Security Best Practices"
+        category: Page
+        show: True
+        path: /api-management/security-best-practices
   - title: "Product Stack"
     path: /tyk-stack
     category: Label
@@ -1277,10 +1298,6 @@ menu:
                     path: /advanced-configuration/manage-multiple-environments/with-tyk-on-premises
                     category: Page
                     show: True
-              - title: "How to secure your APIs in Tyk"
-                path: /basic-config-and-security/security
-                category: Page
-                show: True
               - title: "Request Middleware Chain"
                 path: /concepts/middleware-execution-order
                 category: Page
@@ -1355,10 +1372,6 @@ menu:
                   show: True
                 - title: "Key Level Security"
                   path: /basic-config-and-security/security/key-level-security
-                  category: Page
-                  show: True
-                - title: "Tyk and OWASP Top Ten Threats"
-                  path: /basic-config-and-security/security/owasp-top-ten
                   category: Page
                   show: True
                 - title: "TLS and SSL"
@@ -4417,68 +4430,6 @@ menu:
             path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/customise-enterprise-portal
             category: Page
             show: True
-  - title: "APIM Best Practice"
-    path: /apim-best-practice/overview
-    category: Label
-    show: True
-    menu:
-      - title: "Overview"
-        path: /apim-best-practice/overview
-        category: Page
-        show: True
-      - title: "API Security Best Practice"
-        category: Directory
-        show: True
-        menu:
-          - title: "API Security Overview"
-            path: /apim-best-practice/api-security-best-practice/overview
-            category: Page
-            show: True
-          - title: "Authentication"
-            path: /apim-best-practice/api-security-best-practice/authentication
-            category: Page
-            show: True
-          - title: "Authorisation"
-            path: /apim-best-practice/api-security-best-practice/authorisation
-            category: Page
-            show: True
-          - title: "Authorisation Levels"
-            path: /apim-best-practice/api-security-best-practice/authorisation-levels
-            category: Page
-            show: True
-          - title: "Resource Consumption"
-            path: /apim-best-practice/api-security-best-practice/resource-consumption
-            category: Page
-            show: True
-          - title: "Configuration"
-            path: /apim-best-practice/api-security-best-practice/configuration
-            category: Page
-            show: True
-          - title: "Governance"
-            path: /apim-best-practice/api-security-best-practice/governance
-            category: Page
-            show: True
-      - title: "API Lifecycle Best Practice"
-        category: Page
-        show: False
-      - title: "API Platform Architectures"
-        category: Page
-        show: False
-      - title: "Sector Specific Guides"
-        category: Page
-        show: False
-      - title: "API Observability"
-        category: Page
-        show: False
-      - title: "API Products"
-        category: Page
-        show: False
-      - title: "APIs as integration"
-        category: Page
-        show: False
-      - title: "Creating a PoC"
-        category: Page
-        show: False
   - title: "Orphan"
     path: /orphan
     category: Label
