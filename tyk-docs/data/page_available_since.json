@@ -231,7 +231,7 @@
             "all_versions_are_similar_to_path": true
         },
         "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/": {
-            "/docs/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
@@ -245,10 +245,10 @@
             "/docs/3.2/": "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/",
             "/docs/3.1/": "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/",
             "/docs/3-lts/": "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication-authorization/openid-connect/"
+            "/docs/nightly/": "/api-management/security-best-practices/"
         },
         "/advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/": {
-            "/docs/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
@@ -262,10 +262,10 @@
             "/docs/3.2/": "/advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/",
             "/docs/3.1/": "/advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/",
             "/docs/3-lts/": "/advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication-authorization/openid-connect/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/advanced-configuration/integrate/api-auth-mode/open-id-connect/": {
-            "/docs/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
@@ -279,7 +279,7 @@
             "/docs/3.2/": "/advanced-configuration/integrate/api-auth-mode/open-id-connect/",
             "/docs/3.1/": "/advanced-configuration/integrate/api-auth-mode/open-id-connect/",
             "/docs/3-lts/": "/advanced-configuration/integrate/api-auth-mode/open-id-connect/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication-authorization/openid-connect/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/advanced-configuration/integrate/sso/": {
             "all_versions_are_similar_to_path": true
@@ -374,7 +374,7 @@
             "all_versions_are_similar_to_path": true
         },
         "/advanced-configuration/manage-multiple-environments/tyk-sync/": {
-            "/docs/": "/product-stack/tyk-sync/overview/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-sync/overview/",
             "/docs/5.4/": "/product-stack/tyk-sync/overview/",
             "/docs/5.3/": "/tyk-sync/",
@@ -388,7 +388,7 @@
             "/docs/3.2/": "/tyk-sync/",
             "/docs/3.1/": "/tyk-sync/",
             "/docs/3-lts/": "/tyk-sync/",
-            "/docs/nightly/": "/product-stack/tyk-sync/overview/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/advanced-configuration/manage-multiple-environments/with-tyk-cloud-classic/": {
             "all_versions_are_similar_to_path": true
@@ -816,6 +816,40 @@
             "/docs/5.3/": "/api-management/async-apis/use-cases/",
             "/docs/nightly/": "/api-management/async-apis/use-cases/"
         },
+        "/api-management/authentication-authorization/": {
+            "/docs/": "/api-management/authentication-authorization/",
+            "/docs/nightly/": "/api-management/authentication-authorization/",
+            "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/5.2/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/5.0/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/4.3/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/4.2/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/4.1/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/4.0/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/3.2/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/3.1/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/3-lts/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/"
+        },
+        "/api-management/automations/": {
+            "/docs/": "/api-management/automations/",
+            "/docs/nightly/": "/api-management/automations/",
+            "/docs/5.5/": "/product-stack/tyk-operator/advanced-configurations/management-of-api/",
+            "/docs/5.4/": "/tyk-stack/tyk-operator/tyk-operator-reconciliation/",
+            "/docs/5.3/": "/tyk-stack/tyk-operator/tyk-operator-reconciliation/",
+            "/docs/5.2/": "/tyk-stack/tyk-operator/tyk-operator-reconciliation/",
+            "/docs/5.1/": "/tyk-stack/tyk-operator/tyk-operator-reconciliation/",
+            "/docs/5.0/": "/tyk-stack/tyk-operator/tyk-operator-reconciliation/",
+            "/docs/4.3/": "/tyk-stack/tyk-operator/migration/",
+            "/docs/4.2/": "/tyk-stack/tyk-operator/migration/",
+            "/docs/4.1/": "/tyk-stack/tyk-operator/migration/",
+            "/docs/4.0/": "/tyk-stack/tyk-operator/migration/",
+            "/docs/3.2/": "/tyk-sync/",
+            "/docs/3.1/": "/tyk-sync/",
+            "/docs/3-lts/": "/tyk-sync/"
+        },
         "/api-management/manage-apis/api-operations/api-observability/": {
             "/docs/": "/api-management/manage-apis/api-operations/api-observability/",
             "/docs/5.5/": "/api-management/manage-apis/api-operations/api-observability/",
@@ -845,6 +879,26 @@
         "/api-management/oss/gateway-api/": {
             "all_versions_are_similar_to_path": true
         },
+        "/api-management/security-best-practices/": {
+            "/docs/nightly/": "/api-management/security-best-practices/",
+            "/docs/5.0/": "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/",
+            "/docs/4.3/": "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/",
+            "/docs/4.2/": "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/",
+            "/docs/4.1/": "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/",
+            "/docs/4.0/": "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/",
+            "/docs/3.2/": "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/",
+            "/docs/3.1/": "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/",
+            "/docs/3-lts/": "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/",
+            "/docs/": "/apim-best-practice/api-security-best-practice/governance/",
+            "/docs/5.5/": "/apim-best-practice/api-security-best-practice/governance/",
+            "/docs/5.4/": "/apim-best-practice/api-security-best-practice/governance/",
+            "/docs/5.3/": "/apim-best-practice/api-security-best-practice/governance/",
+            "/docs/5.2/": "/apim-best-practice/api-security-best-practice/governance/",
+            "/docs/5.1/": "/apim-best-practice/api-security-best-practice/governance/"
+        },
+        "/api-management/upstream-authentication/": {
+            "/docs/nightly/": "/api-management/upstream-authentication/"
+        },
         "/apim-best-practice/api-security-best-practice/authentication/": {
             "/docs/": "/apim-best-practice/api-security-best-practice/authentication/",
             "/docs/5.5/": "/apim-best-practice/api-security-best-practice/authentication/",
@@ -852,7 +906,7 @@
             "/docs/5.3/": "/apim-best-practice/api-security-best-practice/authentication/",
             "/docs/5.2/": "/apim-best-practice/api-security-best-practice/authentication/",
             "/docs/5.1/": "/apim-best-practice/api-security-best-practice/authentication/",
-            "/docs/nightly/": "/apim-best-practice/api-security-best-practice/authentication/"
+            "/docs/nightly/": "/api-management/security-best-practices/"
         },
         "/apim-best-practice/api-security-best-practice/authorisation-levels/": {
             "/docs/": "/apim-best-practice/api-security-best-practice/authorisation-levels/",
@@ -861,7 +915,7 @@
             "/docs/5.3/": "/apim-best-practice/api-security-best-practice/authorisation-levels/",
             "/docs/5.2/": "/apim-best-practice/api-security-best-practice/authorisation-levels/",
             "/docs/5.1/": "/apim-best-practice/api-security-best-practice/authorisation-levels/",
-            "/docs/nightly/": "/apim-best-practice/api-security-best-practice/authorisation-levels/"
+            "/docs/nightly/": "/api-management/security-best-practices/"
         },
         "/apim-best-practice/api-security-best-practice/authorisation/": {
             "/docs/": "/apim-best-practice/api-security-best-practice/authorisation/",
@@ -870,7 +924,7 @@
             "/docs/5.3/": "/apim-best-practice/api-security-best-practice/authorisation/",
             "/docs/5.2/": "/apim-best-practice/api-security-best-practice/authorisation/",
             "/docs/5.1/": "/apim-best-practice/api-security-best-practice/authorisation/",
-            "/docs/nightly/": "/apim-best-practice/api-security-best-practice/authorisation/"
+            "/docs/nightly/": "/api-management/security-best-practices/"
         },
         "/apim-best-practice/api-security-best-practice/configuration/": {
             "/docs/": "/apim-best-practice/api-security-best-practice/configuration/",
@@ -879,7 +933,7 @@
             "/docs/5.3/": "/apim-best-practice/api-security-best-practice/configuration/",
             "/docs/5.2/": "/apim-best-practice/api-security-best-practice/configuration/",
             "/docs/5.1/": "/apim-best-practice/api-security-best-practice/configuration/",
-            "/docs/nightly/": "/apim-best-practice/api-security-best-practice/configuration/"
+            "/docs/nightly/": "/api-management/security-best-practices/"
         },
         "/apim-best-practice/api-security-best-practice/governance/": {
             "/docs/": "/apim-best-practice/api-security-best-practice/governance/",
@@ -888,7 +942,7 @@
             "/docs/5.3/": "/apim-best-practice/api-security-best-practice/governance/",
             "/docs/5.2/": "/apim-best-practice/api-security-best-practice/governance/",
             "/docs/5.1/": "/apim-best-practice/api-security-best-practice/governance/",
-            "/docs/nightly/": "/apim-best-practice/api-security-best-practice/governance/"
+            "/docs/nightly/": "/api-management/security-best-practices/"
         },
         "/apim-best-practice/api-security-best-practice/overview/": {
             "/docs/": "/apim-best-practice/api-security-best-practice/overview/",
@@ -897,7 +951,7 @@
             "/docs/5.3/": "/apim-best-practice/api-security-best-practice/overview/",
             "/docs/5.2/": "/apim-best-practice/api-security-best-practice/overview/",
             "/docs/5.1/": "/apim-best-practice/api-security-best-practice/overview/",
-            "/docs/nightly/": "/apim-best-practice/api-security-best-practice/overview/"
+            "/docs/nightly/": "/api-management/security-best-practices/"
         },
         "/apim-best-practice/api-security-best-practice/resource-consumption/": {
             "/docs/": "/apim-best-practice/api-security-best-practice/resource-consumption/",
@@ -906,7 +960,7 @@
             "/docs/5.3/": "/apim-best-practice/api-security-best-practice/resource-consumption/",
             "/docs/5.2/": "/apim-best-practice/api-security-best-practice/resource-consumption/",
             "/docs/5.1/": "/apim-best-practice/api-security-best-practice/resource-consumption/",
-            "/docs/nightly/": "/apim-best-practice/api-security-best-practice/resource-consumption/"
+            "/docs/nightly/": "/api-management/security-best-practices/"
         },
         "/apim-best-practice/overview/": {
             "/docs/": "/apim-best-practice/overview/",
@@ -915,7 +969,7 @@
             "/docs/5.3/": "/apim-best-practice/overview/",
             "/docs/5.2/": "/apim-best-practice/overview/",
             "/docs/5.1/": "/apim-best-practice/overview/",
-            "/docs/nightly/": "/apim-best-practice/overview/"
+            "/docs/nightly/": "/api-management/security-best-practices/"
         },
         "/apim/": {
             "all_versions_are_similar_to_path": true
@@ -1036,10 +1090,24 @@
             "all_versions_are_similar_to_path": true
         },
         "/basic-config-and-security/security/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/basic-config-and-security/security/",
+            "/docs/5.5/": "/basic-config-and-security/security/",
+            "/docs/5.4/": "/basic-config-and-security/security/",
+            "/docs/5.3/": "/basic-config-and-security/security/",
+            "/docs/5.2/": "/basic-config-and-security/security/",
+            "/docs/5.1/": "/basic-config-and-security/security/",
+            "/docs/5.0/": "/basic-config-and-security/security/",
+            "/docs/4.3/": "/basic-config-and-security/security/",
+            "/docs/4.2/": "/basic-config-and-security/security/",
+            "/docs/4.1/": "/basic-config-and-security/security/",
+            "/docs/4.0/": "/basic-config-and-security/security/",
+            "/docs/3.2/": "/basic-config-and-security/security/",
+            "/docs/3.1/": "/basic-config-and-security/security/",
+            "/docs/3-lts/": "/basic-config-and-security/security/",
+            "/docs/nightly/": "/api-management/security-best-practices/"
         },
         "/basic-config-and-security/security/authentication-&-authorization/": {
-            "/docs/": "/basic-config-and-security/security/authentication--authorization/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication--authorization/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication--authorization/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication--authorization/",
@@ -1053,10 +1121,10 @@
             "/docs/3.2/": "/basic-config-and-security/security/authentication-&-authorization/",
             "/docs/3.1/": "/basic-config-and-security/security/authentication-&-authorization/",
             "/docs/3-lts/": "/basic-config-and-security/security/authentication-&-authorization/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication--authorization/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/auth-code-grant/": {
-            "/docs/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
@@ -1070,10 +1138,10 @@
             "/docs/3.2/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/auth-code-grant/",
             "/docs/3.1/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/auth-code-grant/",
             "/docs/3-lts/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/auth-code-grant/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/client-credentials-grant/": {
-            "/docs/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/",
@@ -1087,10 +1155,10 @@
             "/docs/3.2/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/client-credentials-grant/",
             "/docs/3.1/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/client-credentials-grant/",
             "/docs/3-lts/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/client-credentials-grant/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/refresh-token-grant/": {
-            "/docs/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/",
@@ -1104,10 +1172,10 @@
             "/docs/3.2/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/refresh-token-grant/",
             "/docs/3.1/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/refresh-token-grant/",
             "/docs/3-lts/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/refresh-token-grant/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant/": {
-            "/docs/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/",
@@ -1121,10 +1189,10 @@
             "/docs/3.2/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant/",
             "/docs/3.1/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant/",
             "/docs/3-lts/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication--authorization/": {
-            "/docs/": "/basic-config-and-security/security/authentication--authorization/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication--authorization/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication--authorization/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication--authorization/",
@@ -1132,7 +1200,7 @@
             "/docs/5.1/": "/basic-config-and-security/security/authentication--authorization/",
             "/docs/5.0/": "/basic-config-and-security/security/authentication--authorization/",
             "/docs/4.3/": "/basic-config-and-security/security/authentication--authorization/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication--authorization/",
+            "/docs/nightly/": "/api-management/authentication-authorization/",
             "/docs/4.2/": "/basic-config-and-security/security/authentication-&-authorization/",
             "/docs/4.1/": "/basic-config-and-security/security/authentication-&-authorization/",
             "/docs/4.0/": "/basic-config-and-security/security/authentication-&-authorization/",
@@ -1141,7 +1209,7 @@
             "/docs/3-lts/": "/basic-config-and-security/security/authentication-&-authorization/"
         },
         "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/": {
-            "/docs/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
@@ -1149,7 +1217,7 @@
             "/docs/5.1/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
             "/docs/5.0/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
             "/docs/4.3/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
+            "/docs/nightly/": "/api-management/authentication-authorization/",
             "/docs/4.2/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/auth-code-grant/",
             "/docs/4.1/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/auth-code-grant/",
             "/docs/4.0/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/auth-code-grant/",
@@ -1158,7 +1226,7 @@
             "/docs/3-lts/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/auth-code-grant/"
         },
         "/basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/": {
-            "/docs/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/",
@@ -1166,7 +1234,7 @@
             "/docs/5.1/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/",
             "/docs/5.0/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/",
             "/docs/4.3/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/",
+            "/docs/nightly/": "/api-management/authentication-authorization/",
             "/docs/4.2/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/client-credentials-grant/",
             "/docs/4.1/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/client-credentials-grant/",
             "/docs/4.0/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/client-credentials-grant/",
@@ -1175,7 +1243,7 @@
             "/docs/3-lts/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/client-credentials-grant/"
         },
         "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/": {
-            "/docs/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/",
@@ -1183,7 +1251,7 @@
             "/docs/5.1/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/",
             "/docs/5.0/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/",
             "/docs/4.3/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/",
+            "/docs/nightly/": "/api-management/authentication-authorization/",
             "/docs/4.2/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/refresh-token-grant/",
             "/docs/4.1/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/refresh-token-grant/",
             "/docs/4.0/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/refresh-token-grant/",
@@ -1192,7 +1260,7 @@
             "/docs/3-lts/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/refresh-token-grant/"
         },
         "/basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/": {
-            "/docs/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/",
@@ -1200,7 +1268,7 @@
             "/docs/5.1/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/",
             "/docs/5.0/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/",
             "/docs/4.3/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/",
+            "/docs/nightly/": "/api-management/authentication-authorization/",
             "/docs/4.2/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant/",
             "/docs/4.1/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant/",
             "/docs/4.0/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant/",
@@ -1209,7 +1277,7 @@
             "/docs/3-lts/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant/"
         },
         "/basic-config-and-security/security/authentication-authorization/": {
-            "/docs/": "/basic-config-and-security/security/authentication--authorization/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication--authorization/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication--authorization/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication--authorization/",
@@ -1220,13 +1288,41 @@
             "/docs/3.2/": "/basic-config-and-security/security/authentication-&-authorization/",
             "/docs/3.1/": "/basic-config-and-security/security/authentication-&-authorization/",
             "/docs/3-lts/": "/basic-config-and-security/security/authentication-&-authorization/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication--authorization/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-authorization/basic-auth/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/api-management/authentication-authorization/",
+            "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/basic-auth/",
+            "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/basic-auth/",
+            "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/basic-auth/",
+            "/docs/5.2/": "/basic-config-and-security/security/authentication-authorization/basic-auth/",
+            "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/basic-auth/",
+            "/docs/5.0/": "/basic-config-and-security/security/authentication-authorization/basic-auth/",
+            "/docs/4.3/": "/basic-config-and-security/security/authentication-authorization/basic-auth/",
+            "/docs/4.2/": "/basic-config-and-security/security/authentication-authorization/basic-auth/",
+            "/docs/4.1/": "/basic-config-and-security/security/authentication-authorization/basic-auth/",
+            "/docs/4.0/": "/basic-config-and-security/security/authentication-authorization/basic-auth/",
+            "/docs/3.2/": "/basic-config-and-security/security/authentication-authorization/basic-auth/",
+            "/docs/3.1/": "/basic-config-and-security/security/authentication-authorization/basic-auth/",
+            "/docs/3-lts/": "/basic-config-and-security/security/authentication-authorization/basic-auth/",
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-authorization/bearer-tokens/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/api-management/authentication-authorization/",
+            "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/bearer-tokens/",
+            "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/bearer-tokens/",
+            "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/bearer-tokens/",
+            "/docs/5.2/": "/basic-config-and-security/security/authentication-authorization/bearer-tokens/",
+            "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/bearer-tokens/",
+            "/docs/5.0/": "/basic-config-and-security/security/authentication-authorization/bearer-tokens/",
+            "/docs/4.3/": "/basic-config-and-security/security/authentication-authorization/bearer-tokens/",
+            "/docs/4.2/": "/basic-config-and-security/security/authentication-authorization/bearer-tokens/",
+            "/docs/4.1/": "/basic-config-and-security/security/authentication-authorization/bearer-tokens/",
+            "/docs/4.0/": "/basic-config-and-security/security/authentication-authorization/bearer-tokens/",
+            "/docs/3.2/": "/basic-config-and-security/security/authentication-authorization/bearer-tokens/",
+            "/docs/3.1/": "/basic-config-and-security/security/authentication-authorization/bearer-tokens/",
+            "/docs/3-lts/": "/basic-config-and-security/security/authentication-authorization/bearer-tokens/",
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-authorization/ext-oauth-middleware/": {
             "/docs/": "/basic-config-and-security/security/authentication-authorization/ext-oauth-middleware/",
@@ -1240,16 +1336,58 @@
             "/docs/nightly/": "/basic-config-and-security/security/authentication-authorization/ext-oauth-middleware/"
         },
         "/basic-config-and-security/security/authentication-authorization/go-plugin-authentication/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/api-management/authentication-authorization/",
+            "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/go-plugin-authentication/",
+            "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/go-plugin-authentication/",
+            "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/go-plugin-authentication/",
+            "/docs/5.2/": "/basic-config-and-security/security/authentication-authorization/go-plugin-authentication/",
+            "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/go-plugin-authentication/",
+            "/docs/5.0/": "/basic-config-and-security/security/authentication-authorization/go-plugin-authentication/",
+            "/docs/4.3/": "/basic-config-and-security/security/authentication-authorization/go-plugin-authentication/",
+            "/docs/4.2/": "/basic-config-and-security/security/authentication-authorization/go-plugin-authentication/",
+            "/docs/4.1/": "/basic-config-and-security/security/authentication-authorization/go-plugin-authentication/",
+            "/docs/4.0/": "/basic-config-and-security/security/authentication-authorization/go-plugin-authentication/",
+            "/docs/3.2/": "/basic-config-and-security/security/authentication-authorization/go-plugin-authentication/",
+            "/docs/3.1/": "/basic-config-and-security/security/authentication-authorization/go-plugin-authentication/",
+            "/docs/3-lts/": "/basic-config-and-security/security/authentication-authorization/go-plugin-authentication/",
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-authorization/hmac-signatures/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/api-management/authentication-authorization/",
+            "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
+            "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
+            "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
+            "/docs/5.2/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
+            "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
+            "/docs/5.0/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
+            "/docs/4.3/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
+            "/docs/4.2/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
+            "/docs/4.1/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
+            "/docs/4.0/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
+            "/docs/3.2/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
+            "/docs/3.1/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
+            "/docs/3-lts/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-authorization/json-web-tokens/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/api-management/authentication-authorization/",
+            "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/5.2/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/5.0/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/4.3/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/4.2/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/4.1/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/4.0/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/3.2/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/3.1/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/3-lts/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-auth0/": {
-            "/docs/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-auth0/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-auth0/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-auth0/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-auth0/",
@@ -1259,29 +1397,71 @@
             "/docs/4.3/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-auth0/",
             "/docs/4.1/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-auth0/",
             "/docs/4.0/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-auth0/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-auth0/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-keycloak/": {
-            "/docs/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-keycloak/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-keycloak/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-keycloak/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-keycloak/",
             "/docs/5.2/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-keycloak/",
             "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-keycloak/",
             "/docs/5.0/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-keycloak/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-keycloak/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-authorization/json-web-tokens/split-token/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/api-management/authentication-authorization/",
+            "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/split-token/",
+            "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/split-token/",
+            "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/split-token/",
+            "/docs/5.2/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/split-token/",
+            "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/split-token/",
+            "/docs/5.0/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/split-token/",
+            "/docs/4.3/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/split-token/",
+            "/docs/4.2/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/split-token/",
+            "/docs/4.1/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/split-token/",
+            "/docs/4.0/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/split-token/",
+            "/docs/3.2/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/split-token/",
+            "/docs/3.1/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/split-token/",
+            "/docs/3-lts/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/split-token/",
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-authorization/multiple-auth/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/api-management/authentication-authorization/",
+            "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/multiple-auth/",
+            "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/multiple-auth/",
+            "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/multiple-auth/",
+            "/docs/5.2/": "/basic-config-and-security/security/authentication-authorization/multiple-auth/",
+            "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/multiple-auth/",
+            "/docs/5.0/": "/basic-config-and-security/security/authentication-authorization/multiple-auth/",
+            "/docs/4.3/": "/basic-config-and-security/security/authentication-authorization/multiple-auth/",
+            "/docs/4.2/": "/basic-config-and-security/security/authentication-authorization/multiple-auth/",
+            "/docs/4.1/": "/basic-config-and-security/security/authentication-authorization/multiple-auth/",
+            "/docs/4.0/": "/basic-config-and-security/security/authentication-authorization/multiple-auth/",
+            "/docs/3.2/": "/basic-config-and-security/security/authentication-authorization/multiple-auth/",
+            "/docs/3.1/": "/basic-config-and-security/security/authentication-authorization/multiple-auth/",
+            "/docs/3-lts/": "/basic-config-and-security/security/authentication-authorization/multiple-auth/",
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-authorization/oauth-2-0/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/api-management/authentication-authorization/",
+            "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/oauth-2-0/",
+            "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/oauth-2-0/",
+            "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/oauth-2-0/",
+            "/docs/5.2/": "/basic-config-and-security/security/authentication-authorization/oauth-2-0/",
+            "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/oauth-2-0/",
+            "/docs/5.0/": "/basic-config-and-security/security/authentication-authorization/oauth-2-0/",
+            "/docs/4.3/": "/basic-config-and-security/security/authentication-authorization/oauth-2-0/",
+            "/docs/4.2/": "/basic-config-and-security/security/authentication-authorization/oauth-2-0/",
+            "/docs/4.1/": "/basic-config-and-security/security/authentication-authorization/oauth-2-0/",
+            "/docs/4.0/": "/basic-config-and-security/security/authentication-authorization/oauth-2-0/",
+            "/docs/3.2/": "/basic-config-and-security/security/authentication-authorization/oauth-2-0/",
+            "/docs/3.1/": "/basic-config-and-security/security/authentication-authorization/oauth-2-0/",
+            "/docs/3-lts/": "/basic-config-and-security/security/authentication-authorization/oauth-2-0/",
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-authorization/oauth2-0/auth-code-grant/": {
-            "/docs/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
@@ -1292,10 +1472,10 @@
             "/docs/3.2/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/auth-code-grant/",
             "/docs/3.1/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/auth-code-grant/",
             "/docs/3-lts/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/auth-code-grant/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-authorization/oauth2-0/client-credentials-grant/": {
-            "/docs/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/",
@@ -1306,10 +1486,10 @@
             "/docs/3.2/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/client-credentials-grant/",
             "/docs/3.1/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/client-credentials-grant/",
             "/docs/3-lts/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/client-credentials-grant/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-authorization/oauth2-0/refresh-token-grant/": {
-            "/docs/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/",
@@ -1317,10 +1497,10 @@
             "/docs/5.1/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/",
             "/docs/5.0/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/",
             "/docs/4.3/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-authorization/oauth2-0/username-password-grant/": {
-            "/docs/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/",
@@ -1331,10 +1511,10 @@
             "/docs/3.2/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant/",
             "/docs/3.1/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant/",
             "/docs/3-lts/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-authorization/oauth2.0/auth-code-grant/": {
-            "/docs/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
@@ -1342,19 +1522,44 @@
             "/docs/5.1/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
             "/docs/5.0/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
             "/docs/4.3/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-authorization/open-keyless/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/api-management/authentication-authorization/",
+            "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/open-keyless/",
+            "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/open-keyless/",
+            "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/open-keyless/",
+            "/docs/5.2/": "/basic-config-and-security/security/authentication-authorization/open-keyless/",
+            "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/open-keyless/",
+            "/docs/5.0/": "/basic-config-and-security/security/authentication-authorization/open-keyless/",
+            "/docs/4.3/": "/basic-config-and-security/security/authentication-authorization/open-keyless/",
+            "/docs/4.2/": "/basic-config-and-security/security/authentication-authorization/open-keyless/",
+            "/docs/4.1/": "/basic-config-and-security/security/authentication-authorization/open-keyless/",
+            "/docs/4.0/": "/basic-config-and-security/security/authentication-authorization/open-keyless/",
+            "/docs/3.2/": "/basic-config-and-security/security/authentication-authorization/open-keyless/",
+            "/docs/3.1/": "/basic-config-and-security/security/authentication-authorization/open-keyless/",
+            "/docs/3-lts/": "/basic-config-and-security/security/authentication-authorization/open-keyless/",
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-authorization/openid-connect/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/api-management/authentication-authorization/",
+            "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/5.2/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/5.0/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/4.3/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/4.2/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/4.1/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/4.0/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/3.2/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/3.1/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/3-lts/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/": {
-            "all_versions_are_similar_to_path": true
-        },
-        "/basic-config-and-security/security/authentication-authorization/physical-token-expiry/": {
-            "/docs/": "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/",
@@ -1368,10 +1573,41 @@
             "/docs/3.2/": "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/",
             "/docs/3.1/": "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/",
             "/docs/3-lts/": "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
+        },
+        "/basic-config-and-security/security/authentication-authorization/physical-token-expiry/": {
+            "/docs/": "/api-management/authentication-authorization/",
+            "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/",
+            "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/",
+            "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/",
+            "/docs/5.2/": "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/",
+            "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/",
+            "/docs/5.0/": "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/",
+            "/docs/4.3/": "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/",
+            "/docs/4.2/": "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/",
+            "/docs/4.1/": "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/",
+            "/docs/4.0/": "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/",
+            "/docs/3.2/": "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/",
+            "/docs/3.1/": "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/",
+            "/docs/3-lts/": "/basic-config-and-security/security/authentication-authorization/physical-key-expiry/",
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/authentication-authorization/python-etc-plugin-authentication/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/api-management/authentication-authorization/",
+            "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/python-etc-plugin-authentication/",
+            "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/python-etc-plugin-authentication/",
+            "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/python-etc-plugin-authentication/",
+            "/docs/5.2/": "/basic-config-and-security/security/authentication-authorization/python-etc-plugin-authentication/",
+            "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/python-etc-plugin-authentication/",
+            "/docs/5.0/": "/basic-config-and-security/security/authentication-authorization/python-etc-plugin-authentication/",
+            "/docs/4.3/": "/basic-config-and-security/security/authentication-authorization/python-etc-plugin-authentication/",
+            "/docs/4.2/": "/basic-config-and-security/security/authentication-authorization/python-etc-plugin-authentication/",
+            "/docs/4.1/": "/basic-config-and-security/security/authentication-authorization/python-etc-plugin-authentication/",
+            "/docs/4.0/": "/basic-config-and-security/security/authentication-authorization/python-etc-plugin-authentication/",
+            "/docs/3.2/": "/basic-config-and-security/security/authentication-authorization/python-etc-plugin-authentication/",
+            "/docs/3.1/": "/basic-config-and-security/security/authentication-authorization/python-etc-plugin-authentication/",
+            "/docs/3-lts/": "/basic-config-and-security/security/authentication-authorization/python-etc-plugin-authentication/",
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/certificate-pinning/": {
             "/docs/": "/security/certificate-pinning/",
@@ -1438,19 +1674,89 @@
             "all_versions_are_similar_to_path": true
         },
         "/basic-config-and-security/security/mutual-tls/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/api-management/authentication-authorization/",
+            "/docs/5.5/": "/basic-config-and-security/security/mutual-tls/",
+            "/docs/5.4/": "/basic-config-and-security/security/mutual-tls/",
+            "/docs/5.3/": "/basic-config-and-security/security/mutual-tls/",
+            "/docs/5.2/": "/basic-config-and-security/security/mutual-tls/",
+            "/docs/5.1/": "/basic-config-and-security/security/mutual-tls/",
+            "/docs/5.0/": "/basic-config-and-security/security/mutual-tls/",
+            "/docs/4.3/": "/basic-config-and-security/security/mutual-tls/",
+            "/docs/4.2/": "/basic-config-and-security/security/mutual-tls/",
+            "/docs/4.1/": "/basic-config-and-security/security/mutual-tls/",
+            "/docs/4.0/": "/basic-config-and-security/security/mutual-tls/",
+            "/docs/3.2/": "/basic-config-and-security/security/mutual-tls/",
+            "/docs/3.1/": "/basic-config-and-security/security/mutual-tls/",
+            "/docs/3-lts/": "/basic-config-and-security/security/mutual-tls/",
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/mutual-tls/client-mtls/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/api-management/authentication-authorization/",
+            "/docs/5.5/": "/basic-config-and-security/security/mutual-tls/client-mtls/",
+            "/docs/5.4/": "/basic-config-and-security/security/mutual-tls/client-mtls/",
+            "/docs/5.3/": "/basic-config-and-security/security/mutual-tls/client-mtls/",
+            "/docs/5.2/": "/basic-config-and-security/security/mutual-tls/client-mtls/",
+            "/docs/5.1/": "/basic-config-and-security/security/mutual-tls/client-mtls/",
+            "/docs/5.0/": "/basic-config-and-security/security/mutual-tls/client-mtls/",
+            "/docs/4.3/": "/basic-config-and-security/security/mutual-tls/client-mtls/",
+            "/docs/4.2/": "/basic-config-and-security/security/mutual-tls/client-mtls/",
+            "/docs/4.1/": "/basic-config-and-security/security/mutual-tls/client-mtls/",
+            "/docs/4.0/": "/basic-config-and-security/security/mutual-tls/client-mtls/",
+            "/docs/3.2/": "/basic-config-and-security/security/mutual-tls/client-mtls/",
+            "/docs/3.1/": "/basic-config-and-security/security/mutual-tls/client-mtls/",
+            "/docs/3-lts/": "/basic-config-and-security/security/mutual-tls/client-mtls/",
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/mutual-tls/concepts/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/api-management/authentication-authorization/",
+            "/docs/5.5/": "/basic-config-and-security/security/mutual-tls/concepts/",
+            "/docs/5.4/": "/basic-config-and-security/security/mutual-tls/concepts/",
+            "/docs/5.3/": "/basic-config-and-security/security/mutual-tls/concepts/",
+            "/docs/5.2/": "/basic-config-and-security/security/mutual-tls/concepts/",
+            "/docs/5.1/": "/basic-config-and-security/security/mutual-tls/concepts/",
+            "/docs/5.0/": "/basic-config-and-security/security/mutual-tls/concepts/",
+            "/docs/4.3/": "/basic-config-and-security/security/mutual-tls/concepts/",
+            "/docs/4.2/": "/basic-config-and-security/security/mutual-tls/concepts/",
+            "/docs/4.1/": "/basic-config-and-security/security/mutual-tls/concepts/",
+            "/docs/4.0/": "/basic-config-and-security/security/mutual-tls/concepts/",
+            "/docs/3.2/": "/basic-config-and-security/security/mutual-tls/concepts/",
+            "/docs/3.1/": "/basic-config-and-security/security/mutual-tls/concepts/",
+            "/docs/3-lts/": "/basic-config-and-security/security/mutual-tls/concepts/",
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/mutual-tls/upstream-mtls/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/api-management/authentication-authorization/",
+            "/docs/5.5/": "/basic-config-and-security/security/mutual-tls/upstream-mtls/",
+            "/docs/5.4/": "/basic-config-and-security/security/mutual-tls/upstream-mtls/",
+            "/docs/5.3/": "/basic-config-and-security/security/mutual-tls/upstream-mtls/",
+            "/docs/5.2/": "/basic-config-and-security/security/mutual-tls/upstream-mtls/",
+            "/docs/5.1/": "/basic-config-and-security/security/mutual-tls/upstream-mtls/",
+            "/docs/5.0/": "/basic-config-and-security/security/mutual-tls/upstream-mtls/",
+            "/docs/4.3/": "/basic-config-and-security/security/mutual-tls/upstream-mtls/",
+            "/docs/4.2/": "/basic-config-and-security/security/mutual-tls/upstream-mtls/",
+            "/docs/4.1/": "/basic-config-and-security/security/mutual-tls/upstream-mtls/",
+            "/docs/4.0/": "/basic-config-and-security/security/mutual-tls/upstream-mtls/",
+            "/docs/3.2/": "/basic-config-and-security/security/mutual-tls/upstream-mtls/",
+            "/docs/3.1/": "/basic-config-and-security/security/mutual-tls/upstream-mtls/",
+            "/docs/3-lts/": "/basic-config-and-security/security/mutual-tls/upstream-mtls/",
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/owasp-top-ten/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/basic-config-and-security/security/owasp-top-ten/",
+            "/docs/5.5/": "/basic-config-and-security/security/owasp-top-ten/",
+            "/docs/5.4/": "/basic-config-and-security/security/owasp-top-ten/",
+            "/docs/5.3/": "/basic-config-and-security/security/owasp-top-ten/",
+            "/docs/5.2/": "/basic-config-and-security/security/owasp-top-ten/",
+            "/docs/5.1/": "/basic-config-and-security/security/owasp-top-ten/",
+            "/docs/5.0/": "/basic-config-and-security/security/owasp-top-ten/",
+            "/docs/4.3/": "/basic-config-and-security/security/owasp-top-ten/",
+            "/docs/4.2/": "/basic-config-and-security/security/owasp-top-ten/",
+            "/docs/4.1/": "/basic-config-and-security/security/owasp-top-ten/",
+            "/docs/4.0/": "/basic-config-and-security/security/owasp-top-ten/",
+            "/docs/3.2/": "/basic-config-and-security/security/owasp-top-ten/",
+            "/docs/3.1/": "/basic-config-and-security/security/owasp-top-ten/",
+            "/docs/3-lts/": "/basic-config-and-security/security/owasp-top-ten/",
+            "/docs/nightly/": "/api-management/security-best-practices/"
         },
         "/basic-config-and-security/security/password-policy/": {
             "all_versions_are_similar_to_path": true
@@ -1485,7 +1791,7 @@
             "all_versions_are_similar_to_path": true
         },
         "/basic-config-and-security/security/tls-and-ssl/mutual-tls/": {
-            "/docs/": "/basic-config-and-security/security/mutual-tls/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/mutual-tls/",
             "/docs/5.4/": "/basic-config-and-security/security/mutual-tls/",
             "/docs/5.3/": "/basic-config-and-security/security/mutual-tls/",
@@ -1499,10 +1805,10 @@
             "/docs/3.2/": "/basic-config-and-security/security/mutual-tls/",
             "/docs/3.1/": "/basic-config-and-security/security/mutual-tls/",
             "/docs/3-lts/": "/basic-config-and-security/security/mutual-tls/",
-            "/docs/nightly/": "/basic-config-and-security/security/mutual-tls/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/your-apis/oauth2.0/revoke-oauth-tokens/": {
-            "/docs/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
             "/docs/5.4/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
             "/docs/5.3/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
@@ -1510,10 +1816,24 @@
             "/docs/5.1/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
             "/docs/5.0/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
             "/docs/4.3/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
-            "/docs/nightly/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/api-management/authentication-authorization/",
+            "/docs/5.5/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
+            "/docs/5.4/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
+            "/docs/5.3/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
+            "/docs/5.2/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
+            "/docs/5.1/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
+            "/docs/5.0/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
+            "/docs/4.3/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
+            "/docs/4.2/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
+            "/docs/4.1/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
+            "/docs/4.0/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
+            "/docs/3.2/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
+            "/docs/3.1/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
+            "/docs/3-lts/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/compose-apis/virtual-endpoints/": {
             "/docs/": "/advanced-configuration/compose-apis/virtual-endpoints/",
@@ -2145,6 +2465,10 @@
             "/docs/3.1/": "/frequently-asked-questions/long-term-support-releases/",
             "/docs/3-lts/": "/frequently-asked-questions/long-term-support-releases/"
         },
+        "/developer-support/release-notes/cloud/": {
+            "/docs/": "/developer-support/release-notes/cloud/",
+            "/docs/nightly/": "/developer-support/release-notes/cloud/"
+        },
         "/developer-support/special-releases-and-features/early-access-features/": {
             "/docs/": "/developer-support/special-releases-and-features/early-access-features/",
             "/docs/5.5/": "/developer-support/special-releases-and-features/early-access-features/",
@@ -2679,6 +3003,14 @@
         },
         "/getting-started/": {
             "all_versions_are_similar_to_path": true
+        },
+        "/getting-started/configure-first-api/": {
+            "/docs/": "/getting-started/configure-first-api/",
+            "/docs/nightly/": "/getting-started/configure-first-api/"
+        },
+        "/getting-started/create-account/": {
+            "/docs/": "/getting-started/create-account/",
+            "/docs/nightly/": "/getting-started/create-account/"
         },
         "/getting-started/create-api-key/": {
             "all_versions_are_similar_to_path": true
@@ -3949,6 +4281,10 @@
             "/docs/4.0/": "/getting-started/using-oas-definitions/versioning-an-oas-api/",
             "/docs/nightly/": "/getting-started/using-oas-definitions/versioning-an-oas-api/"
         },
+        "/getting-started/using-tyk-dashboard/": {
+            "/docs/": "/getting-started/using-tyk-dashboard/",
+            "/docs/nightly/": "/getting-started/using-tyk-dashboard/"
+        },
         "/getting-started/with-tyk-on-premises/installation/on-aws/": {
             "/docs/": "/tyk-on-premises/installation/on-aws/",
             "/docs/5.5/": "/tyk-on-premises/installation/on-aws/",
@@ -4254,6 +4590,10 @@
             "/docs/5.2/": "/orphan/",
             "/docs/5.1/": "/orphan/",
             "/docs/nightly/": "/orphan/"
+        },
+        "/plan-your-api-integration/": {
+            "/docs/": "/plan-your-api-integration/",
+            "/docs/nightly/": "/plan-your-api-integration/"
         },
         "/planning-for-production/": {
             "all_versions_are_similar_to_path": true
@@ -5841,7 +6181,7 @@
             "/docs/5.2/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/",
             "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/",
             "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/",
-            "/docs/5.0/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal/",
+            "/docs/5.0/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/",
             "/docs/4.3/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/",
             "/docs/4.2/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/",
             "/docs/4.1/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/",
@@ -5855,7 +6195,7 @@
             "/docs/5.2/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose/",
             "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose/",
             "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose/",
-            "/docs/5.0/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-mysql/"
+            "/docs/5.0/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-postgresql/"
         },
         "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker/": {
             "/docs/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker/",
@@ -6028,6 +6368,10 @@
             "/docs/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.11.0/",
             "/docs/5.5/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.11.0/",
             "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.11.0/"
+        },
+        "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.12.0/": {
+            "/docs/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.12.0/",
+            "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.12.0/"
         },
         "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.2.0/": {
             "/docs/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.2.0/",
@@ -7105,18 +7449,22 @@
             "/docs/": "/product-stack/tyk-gateway/release-notes/version-5.6/",
             "/docs/nightly/": "/product-stack/tyk-gateway/release-notes/version-5.6/"
         },
+        "/product-stack/tyk-identity-broker/release-notes/tib-v1.6/": {
+            "/docs/": "/product-stack/tyk-identity-broker/release-notes/tib-v1.6/",
+            "/docs/nightly/": "/product-stack/tyk-identity-broker/release-notes/tib-v1.6/"
+        },
         "/product-stack/tyk-operator/advanced-configurations/api-categories/": {
-            "/docs/": "/product-stack/tyk-operator/advanced-configurations/api-categories/",
-            "/docs/nightly/": "/product-stack/tyk-operator/advanced-configurations/api-categories/"
+            "/docs/": "/api-management/automations/",
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/advanced-configurations/api-versioning/": {
-            "/docs/": "/product-stack/tyk-operator/advanced-configurations/api-versioning/",
-            "/docs/nightly/": "/product-stack/tyk-operator/advanced-configurations/api-versioning/"
+            "/docs/": "/api-management/automations/",
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/advanced-configurations/client-authentication/": {
-            "/docs/": "/product-stack/tyk-operator/advanced-configurations/client-authentication/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-operator/advanced-configurations/client-authentication/",
-            "/docs/nightly/": "/product-stack/tyk-operator/advanced-configurations/client-authentication/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/advanced-configurations/custom-plugins/": {
             "/docs/": "/product-stack/tyk-operator/advanced-configurations/custom-plugins/",
@@ -7129,118 +7477,118 @@
             "/docs/nightly/": "/product-stack/tyk-operator/advanced-configurations/graphql-federation/"
         },
         "/product-stack/tyk-operator/advanced-configurations/internal-looping/": {
-            "/docs/": "/product-stack/tyk-operator/advanced-configurations/internal-looping/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-operator/advanced-configurations/internal-looping/",
-            "/docs/nightly/": "/product-stack/tyk-operator/advanced-configurations/internal-looping/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/advanced-configurations/management-of-api/": {
-            "/docs/": "/product-stack/tyk-operator/advanced-configurations/management-of-api/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-operator/advanced-configurations/management-of-api/",
-            "/docs/nightly/": "/product-stack/tyk-operator/advanced-configurations/management-of-api/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/advanced-configurations/tls-certificate/": {
-            "/docs/": "/product-stack/tyk-operator/advanced-configurations/tls-certificate/",
-            "/docs/nightly/": "/product-stack/tyk-operator/advanced-configurations/tls-certificate/"
+            "/docs/": "/api-management/automations/",
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/getting-started/create-an-api-overview/": {
-            "/docs/": "/product-stack/tyk-operator/getting-started/create-an-api-overview/",
-            "/docs/nightly/": "/product-stack/tyk-operator/getting-started/create-an-api-overview/"
+            "/docs/": "/api-management/automations/",
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/getting-started/create-an-oas-api/": {
-            "/docs/": "/product-stack/tyk-operator/getting-started/create-an-oas-api/",
-            "/docs/nightly/": "/product-stack/tyk-operator/getting-started/create-an-oas-api/"
+            "/docs/": "/api-management/automations/",
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/getting-started/example-tyk-oas-api/": {
-            "/docs/": "/product-stack/tyk-operator/getting-started/example-tyk-oas-api/",
-            "/docs/nightly/": "/product-stack/tyk-operator/getting-started/example-tyk-oas-api/"
+            "/docs/": "/api-management/automations/",
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/getting-started/quick-start-graphql/": {
-            "/docs/": "/product-stack/tyk-operator/getting-started/quick-start-graphql/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-operator/getting-started/quick-start-graphql/",
-            "/docs/nightly/": "/product-stack/tyk-operator/getting-started/quick-start-graphql/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/getting-started/quick-start-http/": {
-            "/docs/": "/product-stack/tyk-operator/getting-started/quick-start-http/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-operator/getting-started/quick-start-http/",
-            "/docs/nightly/": "/product-stack/tyk-operator/getting-started/quick-start-http/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/getting-started/quick-start-tcp/": {
-            "/docs/": "/product-stack/tyk-operator/getting-started/quick-start-tcp/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-operator/getting-started/quick-start-tcp/",
-            "/docs/nightly/": "/product-stack/tyk-operator/getting-started/quick-start-tcp/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/getting-started/quick-start-udg/": {
-            "/docs/": "/product-stack/tyk-operator/getting-started/quick-start-udg/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-operator/getting-started/quick-start-udg/",
-            "/docs/nightly/": "/product-stack/tyk-operator/getting-started/quick-start-udg/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/getting-started/secure-an-api-overview/": {
-            "/docs/": "/product-stack/tyk-operator/getting-started/secure-an-api-overview/",
-            "/docs/nightly/": "/product-stack/tyk-operator/getting-started/secure-an-api-overview/"
+            "/docs/": "/api-management/automations/",
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/getting-started/secure-an-oas-api/": {
-            "/docs/": "/product-stack/tyk-operator/getting-started/secure-an-oas-api/",
-            "/docs/nightly/": "/product-stack/tyk-operator/getting-started/secure-an-oas-api/"
+            "/docs/": "/api-management/automations/",
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/getting-started/security-policy-example/": {
-            "/docs/": "/product-stack/tyk-operator/getting-started/security-policy-example/",
-            "/docs/nightly/": "/product-stack/tyk-operator/getting-started/security-policy-example/"
+            "/docs/": "/api-management/automations/",
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/getting-started/tyk-operator-api-ownership/": {
-            "/docs/": "/product-stack/tyk-operator/getting-started/tyk-operator-api-ownership/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-operator/getting-started/tyk-operator-api-ownership/",
             "/docs/5.4/": "/product-stack/tyk-operator/getting-started/tyk-operator-api-ownership/",
-            "/docs/nightly/": "/product-stack/tyk-operator/getting-started/tyk-operator-api-ownership/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/getting-started/tyk-operator-multiple-organisations/": {
-            "/docs/": "/product-stack/tyk-operator/getting-started/tyk-operator-multiple-organisations/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-operator/getting-started/tyk-operator-multiple-organisations/",
             "/docs/5.4/": "/product-stack/tyk-operator/getting-started/tyk-operator-multiple-organisations/",
-            "/docs/nightly/": "/product-stack/tyk-operator/getting-started/tyk-operator-multiple-organisations/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/key-concepts/custom-resources/": {
-            "/docs/": "/product-stack/tyk-operator/key-concepts/custom-resources/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-operator/key-concepts/custom-resources/",
             "/docs/5.4/": "/product-stack/tyk-operator/key-concepts/custom-resources/",
-            "/docs/nightly/": "/product-stack/tyk-operator/key-concepts/custom-resources/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/key-concepts/key-concepts/": {
-            "/docs/": "/tyk-operator/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/tyk-operator/",
             "/docs/5.4/": "/tyk-operator/",
-            "/docs/nightly/": "/tyk-operator/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/key-concepts/operator-context/": {
-            "/docs/": "/product-stack/tyk-operator/key-concepts/operator-context/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-operator/key-concepts/operator-context/",
             "/docs/5.4/": "/product-stack/tyk-operator/key-concepts/operator-context/",
-            "/docs/nightly/": "/product-stack/tyk-operator/key-concepts/operator-context/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/key-concepts/operator-user/": {
-            "/docs/": "/product-stack/tyk-operator/key-concepts/operator-user/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-operator/key-concepts/operator-user/",
             "/docs/5.4/": "/product-stack/tyk-operator/key-concepts/operator-user/",
-            "/docs/nightly/": "/product-stack/tyk-operator/key-concepts/operator-user/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/reference/api-definition/": {
-            "/docs/": "/product-stack/tyk-operator/reference/api-definition/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-operator/reference/api-definition/",
-            "/docs/nightly/": "/product-stack/tyk-operator/reference/api-definition/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/reference/security-policy/": {
-            "/docs/": "/product-stack/tyk-operator/reference/security-policy/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-operator/reference/security-policy/",
-            "/docs/nightly/": "/product-stack/tyk-operator/reference/security-policy/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/reference/tyk-oas-api-definition/": {
-            "/docs/": "/product-stack/tyk-operator/reference/tyk-oas-api-definition/",
-            "/docs/nightly/": "/product-stack/tyk-operator/reference/tyk-oas-api-definition/"
+            "/docs/": "/api-management/automations/",
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/reference/version-compatibility/": {
-            "/docs/": "/product-stack/tyk-operator/reference/version-compatibility/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-operator/reference/version-compatibility/",
             "/docs/5.4/": "/product-stack/tyk-operator/reference/version-compatibility/",
-            "/docs/nightly/": "/product-stack/tyk-operator/reference/version-compatibility/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/release-notes/operator-0.16/": {
             "/docs/": "/product-stack/tyk-operator/release-notes/operator-0.16/",
@@ -7275,35 +7623,27 @@
             "/docs/nightly/": "/product-stack/tyk-operator/release-notes/overview/"
         },
         "/product-stack/tyk-operator/troubleshooting/tyk-operator-changes-not-applied/": {
-            "/docs/": "/product-stack/tyk-operator/troubleshooting/tyk-operator-changes-not-applied/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-operator/troubleshooting/tyk-operator-changes-not-applied/",
-            "/docs/nightly/": "/product-stack/tyk-operator/troubleshooting/tyk-operator-changes-not-applied/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting/": {
-            "/docs/": "/product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting/",
             "/docs/5.4/": "/product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting/",
             "/docs/5.3/": "/product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting/",
             "/docs/5.2/": "/product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting/",
             "/docs/5.1/": "/product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting/",
-            "/docs/nightly/": "/product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-operator/tyk-ingress-controller/": {
-            "/docs/": "/product-stack/tyk-operator/tyk-ingress-controller/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-operator/tyk-ingress-controller/",
             "/docs/5.4/": "/product-stack/tyk-operator/tyk-ingress-controller/",
             "/docs/5.3/": "/product-stack/tyk-operator/tyk-ingress-controller/",
             "/docs/5.2/": "/product-stack/tyk-operator/tyk-ingress-controller/",
             "/docs/5.1/": "/product-stack/tyk-operator/tyk-ingress-controller/",
-            "/docs/nightly/": "/product-stack/tyk-operator/tyk-ingress-controller/",
-            "/docs/5.0/": "/tyk-oss/ce-kubernetes-ingress/",
-            "/docs/4.3/": "/tyk-oss/ce-kubernetes-ingress/",
-            "/docs/4.2/": "/tyk-oss/ce-kubernetes-ingress/",
-            "/docs/4.1/": "/tyk-oss/ce-kubernetes-ingress/",
-            "/docs/4.0/": "/tyk-oss/ce-kubernetes-ingress/",
-            "/docs/3.2/": "/tyk-oss/ce-kubernetes-ingress/",
-            "/docs/3.1/": "/tyk-oss/ce-kubernetes-ingress/",
-            "/docs/3-lts/": "/tyk-oss/ce-kubernetes-ingress/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-pump/advanced-configurations/configure-data-sinks/csv/": {
             "/docs/": "/product-stack/tyk-pump/advanced-configurations/configure-data-sinks/csv/",
@@ -8143,6 +8483,9 @@
             "/docs/5.3/": "/product-stack/tyk-streaming/overview/",
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
+        "/product-stack/tyk-streaming/streams-configuration-using-ui/": {
+            "/docs/nightly/": "/product-stack/tyk-streaming/streams-configuration-using-ui/"
+        },
         "/product-stack/tyk-streaming/troubleshooting/": {
             "/docs/": "/product-stack/tyk-streaming/troubleshooting/",
             "/docs/5.5/": "/product-stack/tyk-streaming/troubleshooting/",
@@ -8151,46 +8494,46 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/troubleshooting/"
         },
         "/product-stack/tyk-sync/commands/sync-dump/": {
-            "/docs/": "/product-stack/tyk-sync/commands/sync-dump/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-sync/commands/sync-dump/",
             "/docs/5.4/": "/product-stack/tyk-sync/commands/sync-dump/",
-            "/docs/nightly/": "/product-stack/tyk-sync/commands/sync-dump/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-sync/commands/sync-examples/": {
-            "/docs/": "/product-stack/tyk-sync/commands/sync-examples/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-sync/commands/sync-examples/",
             "/docs/5.4/": "/product-stack/tyk-sync/commands/sync-examples/",
-            "/docs/nightly/": "/product-stack/tyk-sync/commands/sync-examples/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-sync/commands/sync-publish/": {
-            "/docs/": "/product-stack/tyk-sync/commands/sync-publish/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-sync/commands/sync-publish/",
             "/docs/5.4/": "/product-stack/tyk-sync/commands/sync-publish/",
-            "/docs/nightly/": "/product-stack/tyk-sync/commands/sync-publish/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-sync/commands/sync-sync/": {
-            "/docs/": "/product-stack/tyk-sync/commands/sync-sync/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-sync/commands/sync-sync/",
             "/docs/5.4/": "/product-stack/tyk-sync/commands/sync-sync/",
-            "/docs/nightly/": "/product-stack/tyk-sync/commands/sync-sync/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-sync/commands/sync-update/": {
-            "/docs/": "/product-stack/tyk-sync/commands/sync-update/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-sync/commands/sync-update/",
             "/docs/5.4/": "/product-stack/tyk-sync/commands/sync-update/",
-            "/docs/nightly/": "/product-stack/tyk-sync/commands/sync-update/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-sync/installing-tyk-sync/": {
-            "/docs/": "/product-stack/tyk-sync/installing-tyk-sync/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-sync/installing-tyk-sync/",
             "/docs/5.4/": "/product-stack/tyk-sync/installing-tyk-sync/",
-            "/docs/nightly/": "/product-stack/tyk-sync/installing-tyk-sync/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-sync/overview/": {
-            "/docs/": "/product-stack/tyk-sync/overview/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-sync/overview/",
             "/docs/5.4/": "/product-stack/tyk-sync/overview/",
-            "/docs/nightly/": "/product-stack/tyk-sync/overview/",
+            "/docs/nightly/": "/api-management/automations/",
             "/docs/5.3/": "/tyk-sync/",
             "/docs/5.2/": "/tyk-sync/",
             "/docs/5.1/": "/tyk-sync/",
@@ -8223,22 +8566,22 @@
             "/docs/nightly/": "/product-stack/tyk-sync/release-notes/sync-2.0/"
         },
         "/product-stack/tyk-sync/tutorials/tutorial-backup-api-configurations/": {
-            "/docs/": "/product-stack/tyk-sync/tutorials/tutorial-backup-api-configurations/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-sync/tutorials/tutorial-backup-api-configurations/",
             "/docs/5.4/": "/product-stack/tyk-sync/tutorials/tutorial-backup-api-configurations/",
-            "/docs/nightly/": "/product-stack/tyk-sync/tutorials/tutorial-backup-api-configurations/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-sync/tutorials/tutorial-synchronise-api-configurations/": {
-            "/docs/": "/product-stack/tyk-sync/tutorials/tutorial-synchronise-api-configurations/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-sync/tutorials/tutorial-synchronise-api-configurations/",
             "/docs/5.4/": "/product-stack/tyk-sync/tutorials/tutorial-synchronise-api-configurations/",
-            "/docs/nightly/": "/product-stack/tyk-sync/tutorials/tutorial-synchronise-api-configurations/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/product-stack/tyk-sync/tutorials/tutorial-update-api-configurations/": {
-            "/docs/": "/product-stack/tyk-sync/tutorials/tutorial-update-api-configurations/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-sync/tutorials/tutorial-update-api-configurations/",
             "/docs/5.4/": "/product-stack/tyk-sync/tutorials/tutorial-update-api-configurations/",
-            "/docs/nightly/": "/product-stack/tyk-sync/tutorials/tutorial-update-api-configurations/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/python-custom-auth-plugin/api-middleware-test/": {
             "/docs/": "/tyk-cloud/configuration-options/using-plugins/api-test/",
@@ -8307,6 +8650,10 @@
             "/docs/3.1/": "/tyk-cloud/configuration-options/using-plugins/uploading-bundle/",
             "/docs/3-lts/": "/tyk-cloud/configuration-options/using-plugins/uploading-bundle/",
             "/docs/nightly/": "/tyk-cloud/configuration-options/using-plugins/uploading-bundle/"
+        },
+        "/quickstart-configure-first-api/": {
+            "/docs/": "/getting-started/configure-first-api/",
+            "/docs/nightly/": "/getting-started/configure-first-api/"
         },
         "/reference-docs/user-roles/": {
             "/docs/": "/basic-config-and-security/security/dashboard/user-roles/",
@@ -8708,7 +9055,7 @@
             "/docs/5.1/": "/basic-config-and-security/security/",
             "/docs/5.0/": "/basic-config-and-security/security/",
             "/docs/4.3/": "/basic-config-and-security/security/",
-            "/docs/nightly/": "/basic-config-and-security/security/"
+            "/docs/nightly/": "/api-management/security-best-practices/"
         },
         "/security/certificate-pinning/": {
             "all_versions_are_similar_to_path": true
@@ -8790,7 +9137,7 @@
             "/docs/nightly/": "/basic-config-and-security/security/tls-and-ssl/"
         },
         "/security/tls-and-ssl/mutual-tls/": {
-            "/docs/": "/basic-config-and-security/security/mutual-tls/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/mutual-tls/",
             "/docs/5.4/": "/basic-config-and-security/security/mutual-tls/",
             "/docs/5.3/": "/basic-config-and-security/security/mutual-tls/",
@@ -8804,10 +9151,10 @@
             "/docs/3.2/": "/basic-config-and-security/security/mutual-tls/",
             "/docs/3.1/": "/basic-config-and-security/security/mutual-tls/",
             "/docs/3-lts/": "/basic-config-and-security/security/mutual-tls/",
-            "/docs/nightly/": "/basic-config-and-security/security/mutual-tls/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/security/your-apis/": {
-            "/docs/": "/basic-config-and-security/security/authentication--authorization/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication--authorization/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication--authorization/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication--authorization/",
@@ -8815,10 +9162,10 @@
             "/docs/5.1/": "/basic-config-and-security/security/authentication--authorization/",
             "/docs/5.0/": "/basic-config-and-security/security/authentication--authorization/",
             "/docs/4.3/": "/basic-config-and-security/security/authentication--authorization/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication--authorization/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/security/your-apis/bearer-tokens/": {
-            "/docs/": "/basic-config-and-security/security/authentication-authorization/bearer-tokens/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/bearer-tokens/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/bearer-tokens/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/bearer-tokens/",
@@ -8826,10 +9173,10 @@
             "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/bearer-tokens/",
             "/docs/5.0/": "/basic-config-and-security/security/authentication-authorization/bearer-tokens/",
             "/docs/4.3/": "/basic-config-and-security/security/authentication-authorization/bearer-tokens/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication-authorization/bearer-tokens/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/security/your-apis/json-web-tokens/": {
-            "/docs/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
@@ -8837,10 +9184,10 @@
             "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
             "/docs/5.0/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
             "/docs/4.3/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/security/your-apis/oauth-2-0/": {
-            "/docs/": "/basic-config-and-security/security/authentication-authorization/oauth-2-0/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/oauth-2-0/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/oauth-2-0/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/oauth-2-0/",
@@ -8848,10 +9195,10 @@
             "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/oauth-2-0/",
             "/docs/5.0/": "/basic-config-and-security/security/authentication-authorization/oauth-2-0/",
             "/docs/4.3/": "/basic-config-and-security/security/authentication-authorization/oauth-2-0/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication-authorization/oauth-2-0/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/security/your-apis/openid-connect/": {
-            "/docs/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
@@ -8859,7 +9206,7 @@
             "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
             "/docs/5.0/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
             "/docs/4.3/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication-authorization/openid-connect/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/transform-traffic/endpoint-designer/": {
             "/docs/": "/advanced-configuration/transform-traffic/",
@@ -9391,7 +9738,7 @@
             "all_versions_are_similar_to_path": true
         },
         "/tyk-apis/tyk-gateway-api/api-definition-objects/jwt/docs/basic-config-and-security/security/authentication-authorization/json-web-tokens/": {
-            "/docs/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
+            "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
@@ -9405,7 +9752,7 @@
             "/docs/3.2/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
             "/docs/3.1/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
             "/docs/3-lts/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/",
-            "/docs/nightly/": "/basic-config-and-security/security/authentication-authorization/json-web-tokens/"
+            "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/tyk-apis/tyk-gateway-api/api-definition-objects/other-root-objects/": {
             "all_versions_are_similar_to_path": true
@@ -10643,6 +10990,10 @@
             "/docs/3-lts/": "/tyk-cloud/getting-started-tyk-cloud/to-conclude/",
             "/docs/nightly/": "/tyk-cloud/getting-started-tyk-cloud/to-conclude/"
         },
+        "/tyk-components/": {
+            "/docs/": "/tyk-components/",
+            "/docs/nightly/": "/tyk-components/"
+        },
         "/tyk-configuration-reference/": {
             "/docs/": "/tyk-oss-gateway/configuration/",
             "/docs/5.5/": "/tyk-oss-gateway/configuration/",
@@ -11408,6 +11759,9 @@
             "/docs/3-lts/": "/tyk-stack/tyk-developer-portal/portal-oauth-clients/",
             "/docs/nightly/": "/tyk-developer-portal/tyk-portal-classic/portal-oauth-clients/"
         },
+        "/tyk-developer-portal/streams/": {
+            "/docs/nightly/": "/tyk-developer-portal/tyk-portal-classic/streams/"
+        },
         "/tyk-developer-portal/tutorials/": {
             "/docs/": "/getting-started/tutorials/publish-api/",
             "/docs/5.5/": "/getting-started/tutorials/publish-api/",
@@ -11826,6 +12180,9 @@
             "/docs/3.1/": "/tyk-stack/tyk-developer-portal/portal-oauth-clients/",
             "/docs/3-lts/": "/tyk-stack/tyk-developer-portal/portal-oauth-clients/"
         },
+        "/tyk-developer-portal/tyk-portal-classic/streams/": {
+            "/docs/nightly/": "/tyk-developer-portal/tyk-portal-classic/streams/"
+        },
         "/tyk-developer-portal/tyk-portal-classic/tyk-portal-classic/customise/customise-with-templates/": {
             "/docs/": "/tyk-developer-portal/tyk-portal-classic/tyk-portal-classic/customise/customise-with-templates/",
             "/docs/5.5/": "/tyk-developer-portal/tyk-portal-classic/tyk-portal-classic/customise/customise-with-templates/",
@@ -12146,7 +12503,7 @@
             "all_versions_are_similar_to_path": true
         },
         "/tyk-operator/": {
-            "/docs/": "/tyk-operator/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/tyk-operator/",
             "/docs/5.4/": "/tyk-operator/",
             "/docs/5.3/": "/tyk-operator/",
@@ -12157,7 +12514,7 @@
             "/docs/4.2/": "/tyk-operator/",
             "/docs/4.1/": "/tyk-operator/",
             "/docs/4.0/": "/tyk-operator/",
-            "/docs/nightly/": "/tyk-operator/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/tyk-oss-gateway/": {
             "all_versions_are_similar_to_path": true
@@ -12223,7 +12580,7 @@
             "all_versions_are_similar_to_path": true
         },
         "/tyk-oss/ce-kubernetes-ingress/": {
-            "/docs/": "/product-stack/tyk-operator/tyk-ingress-controller/",
+            "/docs/": "/tyk-on-prem/kubernetes-ingress/",
             "/docs/5.5/": "/tyk-oss/ce-kubernetes-ingress/",
             "/docs/5.4/": "/tyk-oss/ce-kubernetes-ingress/",
             "/docs/5.3/": "/tyk-oss/ce-kubernetes-ingress/",
@@ -12237,7 +12594,7 @@
             "/docs/3.2/": "/tyk-oss/ce-kubernetes-ingress/",
             "/docs/3.1/": "/tyk-oss/ce-kubernetes-ingress/",
             "/docs/3-lts/": "/tyk-oss/ce-kubernetes-ingress/",
-            "/docs/nightly/": "/product-stack/tyk-operator/tyk-ingress-controller/"
+            "/docs/nightly/": "/tyk-on-prem/kubernetes-ingress/"
         },
         "/tyk-oss/ce-kubernetes/": {
             "all_versions_are_similar_to_path": true
@@ -12278,6 +12635,10 @@
             "/docs/3.1/": "/tyk-oss/ce-debian-ubuntu/",
             "/docs/3-lts/": "/tyk-oss/ce-debian-ubuntu/",
             "/docs/nightly/": "/tyk-oss/ce-debian-ubuntu/"
+        },
+        "/tyk-overview/": {
+            "/docs/": "/tyk-overview/",
+            "/docs/nightly/": "/tyk-overview/"
         },
         "/tyk-portal-api/": {
             "all_versions_are_similar_to_path": true
@@ -13010,7 +13371,7 @@
             "/docs/nightly/": "/tyk-stack/tyk-manager/sso/sso-auth0-tib/"
         },
         "/tyk-stack/tyk-operator/access-an-api/": {
-            "/docs/": "/tyk-stack/tyk-operator/access-an-api/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/tyk-stack/tyk-operator/access-an-api/",
             "/docs/5.4/": "/tyk-stack/tyk-operator/access-an-api/",
             "/docs/5.3/": "/tyk-stack/tyk-operator/access-an-api/",
@@ -13021,10 +13382,10 @@
             "/docs/4.2/": "/tyk-stack/tyk-operator/access-an-api/",
             "/docs/4.1/": "/tyk-stack/tyk-operator/access-an-api/",
             "/docs/4.0/": "/tyk-stack/tyk-operator/access-an-api/",
-            "/docs/nightly/": "/tyk-stack/tyk-operator/access-an-api/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/tyk-stack/tyk-operator/create-an-api/": {
-            "/docs/": "/tyk-stack/tyk-operator/create-an-api/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/tyk-stack/tyk-operator/create-an-api/",
             "/docs/5.4/": "/tyk-stack/tyk-operator/create-an-api/",
             "/docs/5.3/": "/tyk-stack/tyk-operator/create-an-api/",
@@ -13035,10 +13396,10 @@
             "/docs/4.2/": "/tyk-stack/tyk-operator/create-an-api/",
             "/docs/4.1/": "/tyk-stack/tyk-operator/create-an-api/",
             "/docs/4.0/": "/tyk-stack/tyk-operator/create-an-api/",
-            "/docs/nightly/": "/tyk-stack/tyk-operator/create-an-api/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/tyk-stack/tyk-operator/getting-started-tyk-operator/": {
-            "/docs/": "/tyk-operator/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/tyk-operator/",
             "/docs/5.4/": "/tyk-operator/",
             "/docs/5.3/": "/tyk-stack/tyk-operator/getting-started-tyk-operator/",
@@ -13049,13 +13410,27 @@
             "/docs/4.2/": "/tyk-stack/tyk-operator/getting-started-tyk-operator/",
             "/docs/4.1/": "/tyk-stack/tyk-operator/getting-started-tyk-operator/",
             "/docs/4.0/": "/tyk-stack/tyk-operator/getting-started-tyk-operator/",
-            "/docs/nightly/": "/tyk-operator/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/tyk-stack/tyk-operator/installing-tyk-operator/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/api-management/automations/",
+            "/docs/5.5/": "/tyk-stack/tyk-operator/installing-tyk-operator/",
+            "/docs/5.4/": "/tyk-stack/tyk-operator/installing-tyk-operator/",
+            "/docs/5.3/": "/tyk-stack/tyk-operator/installing-tyk-operator/",
+            "/docs/5.2/": "/tyk-stack/tyk-operator/installing-tyk-operator/",
+            "/docs/5.1/": "/tyk-stack/tyk-operator/installing-tyk-operator/",
+            "/docs/5.0/": "/tyk-stack/tyk-operator/installing-tyk-operator/",
+            "/docs/4.3/": "/tyk-stack/tyk-operator/installing-tyk-operator/",
+            "/docs/4.2/": "/tyk-stack/tyk-operator/installing-tyk-operator/",
+            "/docs/4.1/": "/tyk-stack/tyk-operator/installing-tyk-operator/",
+            "/docs/4.0/": "/tyk-stack/tyk-operator/installing-tyk-operator/",
+            "/docs/3.2/": "/tyk-stack/tyk-operator/installing-tyk-operator/",
+            "/docs/3.1/": "/tyk-stack/tyk-operator/installing-tyk-operator/",
+            "/docs/3-lts/": "/tyk-stack/tyk-operator/installing-tyk-operator/",
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/tyk-stack/tyk-operator/migration/": {
-            "/docs/": "/tyk-stack/tyk-operator/migration/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/tyk-stack/tyk-operator/migration/",
             "/docs/5.4/": "/tyk-stack/tyk-operator/migration/",
             "/docs/5.3/": "/tyk-stack/tyk-operator/migration/",
@@ -13066,10 +13441,10 @@
             "/docs/4.2/": "/tyk-stack/tyk-operator/migration/",
             "/docs/4.1/": "/tyk-stack/tyk-operator/migration/",
             "/docs/4.0/": "/tyk-stack/tyk-operator/migration/",
-            "/docs/nightly/": "/tyk-stack/tyk-operator/migration/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/tyk-stack/tyk-operator/publish-an-api/": {
-            "/docs/": "/tyk-stack/tyk-operator/publish-an-api/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/tyk-stack/tyk-operator/publish-an-api/",
             "/docs/5.4/": "/tyk-stack/tyk-operator/publish-an-api/",
             "/docs/5.3/": "/tyk-stack/tyk-operator/publish-an-api/",
@@ -13080,10 +13455,10 @@
             "/docs/4.2/": "/tyk-stack/tyk-operator/publish-an-api/",
             "/docs/4.1/": "/tyk-stack/tyk-operator/publish-an-api/",
             "/docs/4.0/": "/tyk-stack/tyk-operator/publish-an-api/",
-            "/docs/nightly/": "/tyk-stack/tyk-operator/publish-an-api/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/tyk-stack/tyk-operator/secure-an-api/": {
-            "/docs/": "/tyk-stack/tyk-operator/secure-an-api/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/tyk-stack/tyk-operator/secure-an-api/",
             "/docs/5.4/": "/tyk-stack/tyk-operator/secure-an-api/",
             "/docs/5.3/": "/tyk-stack/tyk-operator/secure-an-api/",
@@ -13094,17 +13469,17 @@
             "/docs/4.2/": "/tyk-stack/tyk-operator/secure-an-api/",
             "/docs/4.1/": "/tyk-stack/tyk-operator/secure-an-api/",
             "/docs/4.0/": "/tyk-stack/tyk-operator/secure-an-api/",
-            "/docs/nightly/": "/tyk-stack/tyk-operator/secure-an-api/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/tyk-stack/tyk-operator/tyk-operator-reconciliation/": {
-            "/docs/": "/tyk-stack/tyk-operator/tyk-operator-reconciliation/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/tyk-stack/tyk-operator/tyk-operator-reconciliation/",
             "/docs/5.4/": "/tyk-stack/tyk-operator/tyk-operator-reconciliation/",
             "/docs/5.3/": "/tyk-stack/tyk-operator/tyk-operator-reconciliation/",
             "/docs/5.2/": "/tyk-stack/tyk-operator/tyk-operator-reconciliation/",
             "/docs/5.1/": "/tyk-stack/tyk-operator/tyk-operator-reconciliation/",
             "/docs/5.0/": "/tyk-stack/tyk-operator/tyk-operator-reconciliation/",
-            "/docs/nightly/": "/tyk-stack/tyk-operator/tyk-operator-reconciliation/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/tyk-stack/tyk-pump/other-data-stores/": {
             "all_versions_are_similar_to_path": true
@@ -13186,7 +13561,7 @@
             "all_versions_are_similar_to_path": true
         },
         "/tyk-sync/": {
-            "/docs/": "/product-stack/tyk-sync/overview/",
+            "/docs/": "/api-management/automations/",
             "/docs/5.5/": "/product-stack/tyk-sync/overview/",
             "/docs/5.4/": "/product-stack/tyk-sync/overview/",
             "/docs/5.3/": "/tyk-sync/",
@@ -13200,7 +13575,7 @@
             "/docs/3.2/": "/tyk-sync/",
             "/docs/3.1/": "/tyk-sync/",
             "/docs/3-lts/": "/tyk-sync/",
-            "/docs/nightly/": "/product-stack/tyk-sync/overview/"
+            "/docs/nightly/": "/api-management/automations/"
         },
         "/universal-data-graph/": {
             "all_versions_are_similar_to_path": true
@@ -13425,6 +13800,10 @@
             "/docs/3.1/": "/tyk-cloud/configuration-options/using-plugins/python-custom-auth/",
             "/docs/3-lts/": "/tyk-cloud/configuration-options/using-plugins/python-custom-auth/",
             "/docs/nightly/": "/tyk-cloud/configuration-options/using-plugins/python-custom-auth/"
+        },
+        "/using-tyk-dashboard/": {
+            "/docs/": "/getting-started/using-tyk-dashboard/",
+            "/docs/nightly/": "/getting-started/using-tyk-dashboard/"
         },
         "/with-tyk-community-edition/tutorials/create-api-token/": {
             "/docs/": "/getting-started/create-api-key/",
