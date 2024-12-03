@@ -7,7 +7,7 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "changelog"]
 
 
 ---
-## 1.24.0 Release Notes
+## 1.24.0 Release Notesss
 
 ### Release Date 14 of November 2024
 
