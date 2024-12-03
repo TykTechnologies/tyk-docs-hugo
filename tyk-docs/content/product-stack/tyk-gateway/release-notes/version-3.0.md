@@ -40,7 +40,7 @@ Want to reference secrets from a KV store in your API definitions? We now have n
 
 We added a new middleware hook allowing middleware to modify the response from the upstream. Using response middleware you can transform, inspect or obfuscate parts of the response body or response headers, or fire an event or webhook based on information received by the upstream service.
 
-At the moment the Response hook is supported for [Python and gRPC plugins]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#overriding-response" >}}).
+At the moment the Response hook is supported for [Python and gRPC plugins]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-dispatcher---hooks" >}}).
 
 
 #### Enhanced Gateway health check API
@@ -55,7 +55,7 @@ Detailed logging is used in a lot of the cases for debugging issues. Now as well
 
 New detailed logging changes are available only to our Self-Managed customers currently.
 
-[Read More]({{< ref "tyk-stack/tyk-pump/useful-debug-modes#enabling-detailed-logging" >}})
+[Read More]({{< ref "tyk-stack/tyk-pump/useful-debug-modes" >}})
 
 #### Better Redis failover
 

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html{{ with site.LanguageCode | default site.Language.Lang }} lang="{{ . }}"{{ end }}>
+<head>
+  <title>{{ .Permalink }}</title>
+  <link rel="canonical" href="{{ .Permalink }}">
+  <meta name="robots" content="noindex">
+  <meta charset="utf-8">
+  <script>
+    let aliasData = {{ site.Data.alias | jsonify }};
+    if (window.location.hash) {
+    window.location = "{{ .Permalink }}" + window.location.search + window.location.hash;
+    } else {
+      let currentPath = window.location.pathname //;
+
+      // Define the regex pattern to match "/docs/x.y" where x and y are digits
+      const versionPattern = /\/docs\/\d+\.\d+/g;
+
+      // Replace matches of the pattern with "/docs"
+      currentPath = currentPath.replace(versionPattern, "/docs");
+
+      // Remove "/docs" and "/nightly"
+      currentPath = currentPath.replace("/docs", "")
+      currentPath = currentPath.replace("/nightly", "");
+      currentPath=currentPath.replace(/^\/|\/$/g, "")
+      currentPath=currentPath.trim()
+      aliasData = JSON.parse(aliasData);
+      const hash = aliasData[currentPath] || "";
+      // Redirect to the constructed URL
+      window.location = "{{ .Permalink }}" + window.location.search + hash;
+
+    }
+  </script>
+</head>
+</html>

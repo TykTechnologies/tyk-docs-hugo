@@ -24,7 +24,7 @@ Importing OpenAPI v3 documents in order to generate Tyk OAS API definition is no
 - authentication mechanism
 - validation request rules and limit access only to the defined paths.
 
-[Importing OAS v3 via the Dashboard]({{< ref "/content/getting-started/using-oas-definitions/import-an-oas-api.md#tutorial-using-the-tyk-dashboard" >}})
+[Importing OAS v3 via the Dashboard]({{< ref "/content/getting-started/using-oas-definitions/import-an-oas-api.md#tutorial-7-using-the-tyk-dashboard-ui" >}})
 
 #### Updated the Tyk Dashboard version of Golang, to 1.16.
 

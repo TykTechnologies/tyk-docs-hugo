@@ -18,7 +18,7 @@ Here are the packages and their versions we are releasing today: Tyk Gateway v2.
 
 ### Mutual TLS
 
-A major feature of this release is the implementation of Mutual TLS. Now you can protect your APIs by allow listing certificates, idenitfy users based on them, and increase security between Tyk and upstream API. For details, see [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}).
+A major feature of this release is the implementation of Mutual TLS. Now you can protect your APIs by allow listing certificates, idenitfy users based on them, and increase security between Tyk and upstream API. For details, see [Mutual TLS]({{< ref "/api-management/authentication-authorization#enable-mutual-tls" >}}).
 
 
 ### Extended use of Multiple Policies
@@ -81,7 +81,7 @@ This release is packed with way more more cool stuff. Here are detailed release 
 ### <a name="gateway"></a>Tyk Gateway v2.4.0
 
 #### Mutual TLS support
-[Docs]({{< ref "basic-config-and-security/security/mutual-tls" >}})
+[Docs]({{< ref "/api-management/authentication-authorization#enable-mutual-tls" >}})
 
 #### Global API rate limits
 [Docs]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}})
@@ -124,7 +124,7 @@ We have added a new `log_level` configuration variable to `tyk.conf` to control 
 
 Possible values are: `debug`, `info`, `warn`, `error`
 
-[Docs]({{< ref "tyk-oss-gateway/configuration#a-name-log-level-a-log-level" >}})
+[Docs]({{< ref "tyk-oss-gateway/configuration#log_level" >}})
 
 #### Added jsonMarshal to body transform templates
 
@@ -166,7 +166,7 @@ This was very resource consuming and unstable feature. We recommend using load b
 ### <a name="dashboard"></a>Tyk Dashboard v1.4.0
 
 #### Mutual TLS support
-[Docs]({{< ref "basic-config-and-security/security/mutual-tls" >}})
+[Docs]({{< ref "/api-management/authentication-authorization#enable-mutual-tls" >}})
 
 #### Global API rate limits
 [Docs]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}})
@@ -270,7 +270,7 @@ This is a  UI only fix, it is still allowable via the API (which is OK).
 See https://tyk.io/docs/configure/tyk-pump-configuration/ for a sample pump.conf file.
 
 ### <a name="mdcb"></a> MDCB v1.4.0
-Added support for Mutual TLS, mentioned by Gateway and Dashboard above. See [Docs]({{< ref "basic-config-and-security/security/mutual-tls#a-name-mdcb-a-mdcb" >}})
+Added support for Mutual TLS, mentioned by Gateway and Dashboard above. See [Docs]({{< ref "/api-management/authentication-authorization#enable-mutual-tls" >}})
   
 Also fixed bug when Mongo connections became growing though the roof if client with wrong credentials tries to connect.
 
@@ -285,7 +285,7 @@ Tyk Identity Broker now fully support LDAP search with complex filters! [Docs]({
 
 Cloud users will be automatically upgraded to the new release.
 
-Hybrid users should follow the upgrade instructions [here]({{< ref "upgrading-tyk#tyk-multi-cloud-gateway" >}}).
+Hybrid users should follow the upgrade instructions [here]({{< ref "upgrading-tyk#upgrade-guides-toc" >}}).
 
 Self-Managed users can download the new release packages from their usual repositories.
 

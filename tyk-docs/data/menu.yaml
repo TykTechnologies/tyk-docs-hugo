@@ -5,6 +5,40 @@ menu:
     path: /
     category: Label
     show: True
+  - title: "Overview"
+    path: /
+    category: Label
+    show: True
+    menu:
+      - title: "Tyk Overview"
+        path: /tyk-overview
+        category: Page
+        show: True
+      - title: "Tyk Components"
+        path: /tyk-components
+        category: Page
+        show: True
+      - title: "Plan Your API Integration"
+        path: /plan-your-api-integration
+        category: Page
+        show: True
+  - title: "Getting Started"
+    path: /
+    category: Label
+    show: True
+    menu:
+      - title: "Create Account"
+        path: /getting-started/create-account
+        category: Page
+        show: True
+      - title: "Configure Your First API"
+        path: /getting-started/configure-first-api
+        category: Page
+        show: True
+      - title: "Using Tyk Dashboard"
+        path: /getting-started/using-tyk-dashboard
+        category: Page
+        show: True
   - title: "Deployment and Operations"
     path: /apim
     category: Label
@@ -723,6 +757,18 @@ menu:
         path: /getting-started
         category: Page
         show: True
+      - title: "Authentication and Authorization"
+        path: /api-management/authentication-authorization
+        category: Page
+        show: True
+      - title: "Upstream Authentication"
+        path: /api-management/upstream-authentication
+        category: Page
+        show: False
+      - title: "Automations"
+        path: /api-management/automations
+        category: Page
+        show: True
       - title: "Manage APIs"
         category: Directory
         show: True
@@ -1091,6 +1137,10 @@ menu:
         category: Directory
         show: False
         menu:
+      - title: "Security Best Practices"
+        category: Page
+        show: True
+        path: /api-management/security-best-practices
   - title: "Product Stack"
     path: /tyk-stack
     category: Label
@@ -1248,10 +1298,6 @@ menu:
                     path: /advanced-configuration/manage-multiple-environments/with-tyk-on-premises
                     category: Page
                     show: True
-              - title: "How to secure your APIs in Tyk"
-                path: /basic-config-and-security/security
-                category: Page
-                show: True
               - title: "Request Middleware Chain"
                 path: /concepts/middleware-execution-order
                 category: Page
@@ -1292,166 +1338,58 @@ menu:
                 category: Directory
                 show: True
                 menu:
-                  - title: "Authentication and authorization"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /basic-config-and-security/security/authentication--authorization
-                        category: Page
-                        show: True
-                      - title: "Authorization Code Grant Type"
-                        path: /basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant
-                        category: Page
-                        show: True
-                      - title: "Client Credentials Grant Type"
-                        path: /basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant
-                        category: Page
-                        show: True
-                      - title: "Refresh Token Grant Type"
-                        path: /basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant
-                        category: Page
-                        show: True
-                      - title: "Username and Password Grant Type"
-                        path: /basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant
-                        category: Page
-                        show: True
-                      - title: "Basic Authentication"
-                        path: /basic-config-and-security/security/authentication-authorization/basic-auth
-                        category: Page
-                        show: True
-                      - title: "Bearer Tokens"
-                        path: /basic-config-and-security/security/authentication-authorization/bearer-tokens
-                        category: Page
-                        show: True
-                      - title: "External OAuth Middleware"
-                        path: /basic-config-and-security/security/authentication-authorization/ext-oauth-middleware
-                        category: Page
-                        show: True
-                      - title: "Go Plugin Authentication"
-                        path: /basic-config-and-security/security/authentication-authorization/go-plugin-authentication
-                        category: Page
-                        show: True
-                      - title: "HMAC Signatures"
-                        path: /basic-config-and-security/security/authentication-authorization/hmac-signatures
-                        category: Page
-                        show: True
-                      - title: "JSON Web Tokens"
-                        path: /basic-config-and-security/security/authentication-authorization/json-web-tokens
-                        category: Page
-                        show: True
-                      - title: "JWT and Auth0 with Tyk"
-                        path: /basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-auth0
-                        category: Page
-                        show: True
-                      - title: "Split Token"
-                        path: /basic-config-and-security/security/authentication-authorization/json-web-tokens/split-token
-                        category: Page
-                        show: True
-                      - title: "Multiple Auth"
-                        path: /basic-config-and-security/security/authentication-authorization/multiple-auth
-                        category: Page
-                        show: True
-                      - title: "OAuth 2.0"
-                        path: /basic-config-and-security/security/authentication-authorization/oauth-2-0
-                        category: Page
-                        show: True
-                      - title: "Open (Keyless)"
-                        path: /basic-config-and-security/security/authentication-authorization/open-keyless
-                        category: Page
-                        show: True
-                      - title: "OpenID Connect"
-                        path: /basic-config-and-security/security/authentication-authorization/openid-connect
-                        category: Page
-                        show: True
-                      - title: "Key Expiry and Deletion"
-                        path: /basic-config-and-security/security/authentication-authorization/physical-key-expiry
-                        category: Page
-                        show: True
-                      - title: "Python CoProcess and JSVM Plugin Authentication"
-                        path: /basic-config-and-security/security/authentication-authorization/python-etc-plugin-authentication
-                        category: Page
-                        show: True
-                      - title: "Revoke OAuth Tokens"
-                        path: /basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens
-                        category: Page
-                        show: True
-                      - title: "JWT and Keycloak with Tyk"
-                        path: /basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-keycloak
-                        category: Page
-                        show: True
-                  - title: "MTLS"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Concepts"
-                        path: /basic-config-and-security/security/mutual-tls/concepts
-                        category: Page
-                        show: True
-                      - title: "Mutual TLS"
-                        path: /basic-config-and-security/security/mutual-tls
-                        category: Page
-                        show: True
-                      - title: "Client mTLS"
-                        path: /basic-config-and-security/security/mutual-tls/client-mtls
-                        category: Page
-                        show: True
-                      - title: "Upstream mTLS"
-                        path: /basic-config-and-security/security/mutual-tls/upstream-mtls
-                        category: Page
-                        show: True
-                  - title: "Security policies"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /basic-config-and-security/security/security-policies
-                        category: Page
-                        show: True
-                      - title: "Policies Guide"
-                        path: /basic-config-and-security/security/security-policies/policies-guide
-                        category: Page
-                        show: True
-                      - title: "Secure your APIs by Method and Path"
-                        path: /security/security-policies/secure-apis-method-path
-                        category: Page
-                        show: True
-                      - title: "Partitioned Policies"
-                        path: /basic-config-and-security/security/security-policies/partitioned-policies
-                        category: Page
-                        show: True
-                  - title: "Gateway"
-                    path: /basic-config-and-security/security/gateway
-                    category: Page
-                    show: True
-                  - title: "Key Hashing"
-                    path: /basic-config-and-security/security/key-hashing
-                    category: Page
-                    show: True
-                  - title: "Key Level Security"
-                    path: /basic-config-and-security/security/key-level-security
-                    category: Page
-                    show: True
-                  - title: "Tyk and OWASP Top Ten Threats"
-                    path: /basic-config-and-security/security/owasp-top-ten
-                    category: Page
-                    show: True
-                  - title: "TLS and SSL"
-                    path: /basic-config-and-security/security/tls-and-ssl
-                    category: Page
-                    show: True
-                  - title: "Certificate Pinning"
-                    path: /security/certificate-pinning
-                    category: Page
-                    show: True
-                  - title: "Blocking Client IPs"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting
-                    category: Page
-                    show: True
-                  - title: "Allowing Client IPs"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting
-                    category: Page
-                    show: True
+                - title: "oauth"
+                  category: page
+                  show: False
+                  path: /basic-config-and-security/security/authentication-authorization/ext-oauth-middleware
+                - title: "Security policies"
+                  category: Directory
+                  show: True
+                  menu:
+                    - title: "Overview"
+                      path: /basic-config-and-security/security/security-policies
+                      category: Page
+                      show: True
+                    - title: "Policies Guide"
+                      path: /basic-config-and-security/security/security-policies/policies-guide
+                      category: Page
+                      show: True
+                    - title: "Secure your APIs by Method and Path"
+                      path: /security/security-policies/secure-apis-method-path
+                      category: Page
+                      show: True
+                    - title: "Partitioned Policies"
+                      path: /basic-config-and-security/security/security-policies/partitioned-policies
+                      category: Page
+                      show: True
+                - title: "Gateway"
+                  path: /basic-config-and-security/security/gateway
+                  category: Page
+                  show: True
+                - title: "Key Hashing"
+                  path: /basic-config-and-security/security/key-hashing
+                  category: Page
+                  show: True
+                - title: "Key Level Security"
+                  path: /basic-config-and-security/security/key-level-security
+                  category: Page
+                  show: True
+                - title: "TLS and SSL"
+                  path: /basic-config-and-security/security/tls-and-ssl
+                  category: Page
+                  show: True
+                - title: "Certificate Pinning"
+                  path: /security/certificate-pinning
+                  category: Page
+                  show: True
+                - title: "Blocking Client IPs"
+                  path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting
+                  category: Page
+                  show: True
+                - title: "Allowing Client IPs"
+                  path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting
+                  category: Page
+                  show: True
               - title: "Control and limit traffic"
                 category: Directory
                 show: True
@@ -3082,6 +3020,10 @@ menu:
                     path: /tyk-developer-portal/tyk-portal-classic/graphql
                     category: Page
                     show: True
+                  - title: "Streams with Classic Portal"
+                    path: /tyk-developer-portal/tyk-portal-classic/streams
+                    category: Page
+                    show: True
                   - title: "Monetising your APIs"
                     path: /tyk-developer-portal/tyk-portal-classic/monetise
                     category: Page
@@ -3526,6 +3468,10 @@ menu:
             category: Directory
             show: True
             menu:
+              - title: "Version 1.12.0"
+                path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.12.0
+                category: Page
+                show: True
               - title: "Version 1.11.0"
                 path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.11.0
                 category: Page
@@ -3865,208 +3811,16 @@ menu:
         category: Directory
         show: True
         menu:
-          - title: "Overview"
-            path: /tyk-operator
-            category: Page
-            show: True
-          - title: "Key Concepts"
-            category: Directory
-            show: True
-            menu:
-              # - title: "Overview"
-              #   path: /product-stack/tyk-operator/key-concepts/key-concepts
-              #   category: Page
-              #   show: True
-              - title: "Custom Resources"
-                path: /product-stack/tyk-operator/key-concepts/custom-resources
-                category: Page
-                show: True
-              - title: "Operator Reconciliation"
-                path: /tyk-stack/tyk-operator/tyk-operator-reconciliation
-                category: Page
-                show: True
-              - title: "Operator User"
-                path: /product-stack/tyk-operator/key-concepts/operator-user
-                category: Page
-                show: True
-              - title: "Operator Context"
-                path: /product-stack/tyk-operator/key-concepts/operator-context
-                category: Page
-                show: True
-          - title: "Getting Started"
-            category: Directory
-            show: True
-            menu:
-              - title: "Installing Tyk Operator"
-                path: /tyk-stack/tyk-operator/installing-tyk-operator
-                category: Page
-                show: True
-              - title: "Create an API"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /product-stack/tyk-operator/getting-started/create-an-api-overview
-                    category: Page
-                    show: True
-                  - title: "Create Tyk OAS API"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Create Tyk OAS API with Tyk Operator"
-                        path: /product-stack/tyk-operator/getting-started/create-an-oas-api
-                        category: Page
-                        show: True
-                      - title: "Tyk OAS API example"
-                        path: /product-stack/tyk-operator/getting-started/example-tyk-oas-api
-                        category: Page
-                        show: True
-                  - title: "Create Tyk Classic API"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Create Tyk Classic API with Tyk Operator"
-                        path: /tyk-stack/tyk-operator/create-an-api
-                        category: Page
-                        show: True
-                      - title: "HTTP Proxy example"
-                        path: /product-stack/tyk-operator/getting-started/quick-start-http
-                        category: Page
-                        show: True
-                      - title: "TCP Proxy example"
-                        path: /product-stack/tyk-operator/getting-started/quick-start-tcp
-                        category: Page
-                        show: True
-                      - title: "GraphQL Proxy example"
-                        path: /product-stack/tyk-operator/getting-started/quick-start-graphql
-                        category: Page
-                        show: True
-                      - title: "UDG example"
-                        path: /product-stack/tyk-operator/getting-started/quick-start-udg
-                        category: Page
-                        show: True
-              - title: "Secure an API"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /product-stack/tyk-operator/getting-started/secure-an-api-overview
-                    category: Page
-                    show: True
-                  - title: "Secure Tyk OAS API"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Secure Tyk OAS API with Tyk Operator"
-                        path: /product-stack/tyk-operator/getting-started/secure-an-oas-api
-                        category: Page
-                        show: True
-                  - title: "Secure Tyk Classic API"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Secure an API with Auth token"
-                        path: /tyk-stack/tyk-operator/access-an-api
-                        category: Page
-                        show: True
-                      - title: "Authentication types"
-                        path: /product-stack/tyk-operator/advanced-configurations/client-authentication
-                        category: Page
-                        show: True
-              - title: "Protect an API with Policy"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Create Security Policy with Tyk Operator"
-                    category: Page
-                    show: True
-                    path: /tyk-stack/tyk-operator/secure-an-api
-                  - title: "Security Policy example"
-                    category: Page
-                    show: True
-                    path: /product-stack/tyk-operator/getting-started/security-policy-example
-              - title: "Publish an API to Dev Portal"
-                path: /tyk-stack/tyk-operator/publish-an-api
-                category: Page
-                show: True
           - title: "Advanced configurations"
             category: Directory
             show: True
             menu:
-              - title: "Manage API metadata"
-                path: /product-stack/tyk-operator/advanced-configurations/management-of-api
-                category: Page
-                show: True
-              - title: "Manage existing APIs and policies"
-                path: /tyk-stack/tyk-operator/migration
-                category: Page
-                show: True
-              - title: "Kubernetes Ingress Controller"
-                path: /product-stack/tyk-operator/tyk-ingress-controller
-                category: Page
-                show: True
-              - title: "Manage multiple organisations"
-                path: /product-stack/tyk-operator/getting-started/tyk-operator-multiple-organisations
-                category: Page
-                show: True
-              - title: "Manage API ownership"
-                path: /product-stack/tyk-operator/getting-started/tyk-operator-api-ownership
-                category: Page
-                show: True
-              - title: "Manage API categories"
-                path: /product-stack/tyk-operator/advanced-configurations/api-categories
-                category: Page
-                show: True
-              - title: "Manage API versioning"
-                path: /product-stack/tyk-operator/advanced-configurations/api-versioning
-                category: Page
-                show: True
-              - title: "Manage TLS certificate"
-                path: /product-stack/tyk-operator/advanced-configurations/tls-certificate
-                category: Page
-                show: True
               - title: "GraphQL Federation"
                 path: /product-stack/tyk-operator/advanced-configurations/graphql-federation
                 category: Page
                 show: True
               - title: "Custom Plugins"
                 path: /product-stack/tyk-operator/advanced-configurations/custom-plugins
-                category: Page
-                show: True
-              - title: "Looping"
-                path: /product-stack/tyk-operator/advanced-configurations/internal-looping
-                category: Page
-                show: True
-          - title: "Troubleshooting"
-            category: Directory
-            show: True
-            menu:
-              - title: "API changes not applied"
-                path: /product-stack/tyk-operator/troubleshooting/tyk-operator-changes-not-applied
-                category: Page
-                show: True
-              - title: "Understanding reconciliation status"
-                path: /product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting
-                category: Page
-                show: True
-          - title: "Reference"
-            category: Directory
-            show: True
-            menu:
-              - title: "TykOasApiDefinition CRD"
-                path: /product-stack/tyk-operator/reference/tyk-oas-api-definition
-                category: Page
-                show: True
-              - title: "ApiDefinition CRD"
-                path: /product-stack/tyk-operator/reference/api-definition
-                category: Page
-                show: True
-              - title: "SecurityPolicy CRD"
-                path: /product-stack/tyk-operator/reference/security-policy
-                category: Page
-                show: True
-              - title: "Version compatibility"
-                path: /product-stack/tyk-operator/reference/version-compatibility
                 category: Page
                 show: True
           - title: "Release notes"
@@ -4109,6 +3863,10 @@ menu:
             path: /product-stack/tyk-streaming/key-concepts
             category: Page
             show: True
+          - title: "Configure Streams API using dashboard"
+            path: /product-stack/tyk-streaming/streams-configuration-using-ui
+            category: Page
+            show: True
           - title: "Quick Start"
             path: /product-stack/tyk-streaming/getting-started
             category: Page
@@ -4129,20 +3887,8 @@ menu:
                     path: /product-stack/tyk-streaming/configuration/inputs/overview
                     category: Page
                     show: True
-                  - title: "Amqp_0_9"
-                    path: /product-stack/tyk-streaming/configuration/inputs/amqp-0-9
-                    category: Page
-                    show: True
-                  - title: "Amqp_1"
-                    path: /product-stack/tyk-streaming/configuration/inputs/amqp-1
-                    category: Page
-                    show: True
                   - title: "Broker"
                     path: /product-stack/tyk-streaming/configuration/inputs/broker
-                    category: Page
-                    show: True
-                  - title: "Generate"
-                    path: /product-stack/tyk-streaming/configuration/inputs/generate
                     category: Page
                     show: True
                   - title: "Http Client"
@@ -4157,26 +3903,6 @@ menu:
                     path: /product-stack/tyk-streaming/configuration/inputs/kafka
                     category: Page
                     show: True
-                  - title: "Kafka Franz"
-                    path: /product-stack/tyk-streaming/configuration/inputs/kafka-franz
-                    category: Page
-                    show: True
-                  - title: "MQTT"
-                    path: /product-stack/tyk-streaming/configuration/inputs/mqtt
-                    category: Page
-                    show: True
-                  - title: "Nats"
-                    path: /product-stack/tyk-streaming/configuration/inputs/nats
-                    category: Page
-                    show: True
-                  - title: "NSQ"
-                    path: /product-stack/tyk-streaming/configuration/inputs/nsq
-                    category: Page
-                    show: True
-                  - title: "Redis PubSub"
-                    path: /product-stack/tyk-streaming/configuration/inputs/redis-pubsub
-                    category: Page
-                    show: True
               - title: "Outputs"
                 category: Directory
                 show: True
@@ -4185,24 +3911,8 @@ menu:
                     path: /product-stack/tyk-streaming/configuration/outputs/overview
                     category: Page
                     show: True
-                  - title: "Amqp_0_9"
-                    path: /product-stack/tyk-streaming/configuration/outputs/amqp-0-9
-                    category: Page
-                    show: True
-                  - title: "Amqp_1"
-                    path: /product-stack/tyk-streaming/configuration/outputs/amqp-1
-                    category: Page
-                    show: True
                   - title: "Broker"
                     path: /product-stack/tyk-streaming/configuration/outputs/broker
-                    category: Page
-                    show: True
-                  - title: "Drop on"
-                    path: /product-stack/tyk-streaming/configuration/outputs/drop_on
-                    category: Page
-                    show: True
-                  - title: "Fallback"
-                    path: /product-stack/tyk-streaming/configuration/outputs/fallback
                     category: Page
                     show: True
                   - title: "Http Client"
@@ -4217,52 +3927,8 @@ menu:
                     path: /product-stack/tyk-streaming/configuration/outputs/kafka
                     category: Page
                     show: True
-                  - title: "Kafka Franz"
-                    path: /product-stack/tyk-streaming/configuration/outputs/kafka-franz
-                    category: Page
-                    show: True
-                  - title: "Nats"
-                    path: /product-stack/tyk-streaming/configuration/outputs/nats
-                    category: Page
-                    show: True
-                  - title: "NSQ"
-                    path: /product-stack/tyk-streaming/configuration/outputs/nsq
-                    category: Page
-                    show: True
-                  - title: "MQTT"
-                    path: /product-stack/tyk-streaming/configuration/outputs/mqtt
-                    category: Page
-                    show: True
-                  - title: "Redis PubSub"
-                    path: /product-stack/tyk-streaming/configuration/outputs/redis-pubsub
-                    category: Page
-                    show: True
-                  - title: "Reject"
-                    path: /product-stack/tyk-streaming/configuration/outputs/reject
-                    category: Page
-                    show: True
-                  - title: "Retry"
-                    path: /product-stack/tyk-streaming/configuration/outputs/retry
-                    category: Page
-                    show: True
-                  - title: "Sleep"
-                    path: /product-stack/tyk-streaming/configuration/processors/sleep
-                    category: Page
-                    show: True
-                  - title: "Stdout"
-                    path: /product-stack/tyk-streaming/configuration/outputs/stdout
-                    category: Page
-                    show: True
-                  - title: "Switch"
-                    path: /product-stack/tyk-streaming/configuration/outputs/switch
-                    category: Page
-                    show: True
-                  - title: "Sync Response"
-                    path: /product-stack/tyk-streaming/configuration/outputs/sync-response
-                    category: Page
-                    show: True
               - title: "Processors"
-                category: "Directory"
+                category: Directory
                 show: True
                 menu:
                   - title: "Overview"
@@ -4271,154 +3937,6 @@ menu:
                     show: True
                   - title: "Avro"
                     path: /product-stack/tyk-streaming/configuration/processors/avro
-                    category: Page
-                    show: True
-                  - title: "AWS Lambda"
-                    path: /product-stack/tyk-streaming/configuration/processors/aws-lambda
-                    category: Page
-                    show: True
-                  - title: "Bloblang"
-                    path: /product-stack/tyk-streaming/configuration/processors/bloblang
-                    category: Page
-                    show: True
-                  - title: "Branch"
-                    path: /product-stack/tyk-streaming/configuration/processors/branch
-                    category: Page
-                    show: True
-                  - title: "Bounds Check"
-                    path: /product-stack/tyk-streaming/configuration/processors/bounds-check
-                    category: Page
-                    show: True
-                  - title: "Cache"
-                    path: /product-stack/tyk-streaming/configuration/processors/cache
-                    category: Page
-                    show: True
-                  - title: "Cached"
-                    path: /product-stack/tyk-streaming/configuration/processors/cached
-                    category: Page
-                    show: True
-                  - title: "Catch"
-                    path: /product-stack/tyk-streaming/configuration/processors/catch
-                    category: Page
-                    show: True
-                  - title: "Dedupe"
-                    path: /product-stack/tyk-streaming/configuration/processors/dedupe
-                    category: Page
-                    show: True
-                  - title: "For Each"
-                    path: /product-stack/tyk-streaming/configuration/processors/for-each
-                    category: Page
-                    show: True
-                  - title: "Group By"
-                    path: /product-stack/tyk-streaming/configuration/processors/group-by
-                    category: Page
-                    show: True
-                  - title: "Group By Value"
-                    path: /product-stack/tyk-streaming/configuration/processors/group-by-value
-                    category: Page
-                    show: True
-                  - title: "Http"
-                    path: /product-stack/tyk-streaming/configuration/processors/http
-                    category: Page
-                    show: True
-                  - title: "Insert Part"
-                    path: /product-stack/tyk-streaming/configuration/processors/insert-part
-                    category: Page
-                    show: True
-                  - title: "JMESPath"
-                    path: /product-stack/tyk-streaming/configuration/processors/jmes-path
-                    category: Page
-                    show: True
-                  - title: "Jq"
-                    path: /product-stack/tyk-streaming/configuration/processors/jq
-                    category: Page
-                    show: True
-                  - title: "JSON Schema"
-                    path: /product-stack/tyk-streaming/configuration/processors/json-schema
-                    category: Page
-                    show: True
-                  - title: "Log"
-                    path: /product-stack/tyk-streaming/configuration/processors/log
-                    category: Page
-                    show: True
-                  - title: "Mapping"
-                    path: /product-stack/tyk-streaming/configuration/processors/mapping
-                    category: Page
-                    show: True
-                  - title: "Msgpack"
-                    path: /product-stack/tyk-streaming/configuration/processors/msgpack
-                    category: Page
-                    show: True
-                  - title: "Mutation"
-                    path: /product-stack/tyk-streaming/configuration/processors/mutation
-                    category: Page
-                    show: True
-                  - title: "Noop"
-                    path: /product-stack/tyk-streaming/configuration/processors/noop
-                    category: Page
-                    show: True
-                  - title: "Parallel"
-                    path: /product-stack/tyk-streaming/configuration/processors/parallel
-                    category: Page
-                    show: True
-                  - title: "Parse Log"
-                    path: /product-stack/tyk-streaming/configuration/processors/parse-log
-                    category: Page
-                    show: True
-                  - title: "Processors"
-                    path: /product-stack/tyk-streaming/configuration/processors/processors
-                    category: Page
-                    show: True
-                  - title: "Protobuf"
-                    path: /product-stack/tyk-streaming/configuration/processors/protobuf
-                    category: Page
-                    show: True
-                  - title: "Rate Limit"
-                    path: /product-stack/tyk-streaming/configuration/processors/rate-limit
-                    category: Page
-                    show: True
-                  - title: "Redis"
-                    path: /product-stack/tyk-streaming/configuration/processors/redis
-                    category: Page
-                    show: True
-                  - title: "Retry"
-                    path: /product-stack/tyk-streaming/configuration/processors/retry
-                    category: Page
-                    show: True
-                  - title: "Schema Registry Decode"
-                    path: /product-stack/tyk-streaming/configuration/processors/schema-registry-decode
-                    category: Page
-                    show: True
-                  - title: "Schema Registry Encode"
-                    path: /product-stack/tyk-streaming/configuration/processors/schema-registry-encode
-                    category: Page
-                    show: True
-                  - title: "Select Parts"
-                    path: /product-stack/tyk-streaming/configuration/processors/select-parts
-                    category: Page
-                    show: True
-                  - title: "Split"
-                    path: /product-stack/tyk-streaming/configuration/processors/split
-                    category: Page
-                    show: True
-                  - title: "Switch"
-                    path: /product-stack/tyk-streaming/configuration/processors/switch
-                    category: Page
-                    show: True
-                  - title: "Sync Response"
-                    path: /product-stack/tyk-streaming/configuration/processors/sync-response
-                    category: Page
-                    show: True
-                  - title: "Try"
-                    path: /product-stack/tyk-streaming/configuration/processors/try
-                    category: Page
-                    show: True
-                  - title: "While"
-                    path: /product-stack/tyk-streaming/configuration/processors/while
-                    catgeory: Page
-                    show: True
-                  - title: "Workflow"
-                    path: /product-stack/tyk-streaming/configuration/processors/workflow
                     category: Page
                     show: True
               - title: "Scanners"
@@ -4453,110 +3971,14 @@ menu:
                     path: /product-stack/tyk-streaming/configuration/common-configuration/batching
                     category: Page
                     show: True
-                  - title: "Error Handling"
-                    path: /product-stack/tyk-streaming/configuration/common-configuration/error-handling
-                    category: Page
-                    show: True
                   - title: "Field Paths"
                     path: /product-stack/tyk-streaming/configuration/common-configuration/field-paths
-                    category: Page
-                    show: True
-                  - title: "Interpolation"
-                    path: /product-stack/tyk-streaming/configuration/common-configuration/interpolation
                     category: Page
                     show: True
                   - title: "Processing Pipelines"
                     path: /product-stack/tyk-streaming/configuration/common-configuration/processing-pipelines
                     category: Page
                     show: True
-                  - title: "Resources"
-                    path: /product-stack/tyk-streaming/configuration/common-configuration/resources
-                    category: Page
-                    show: True
-                  - title: "Windowed Processing"
-                    path: /product-stack/tyk-streaming/configuration/common-configuration/windowed_processing
-                    category: Page
-                    show: True
-          - title: "Guides"
-            category: Directory
-            show: True
-            menu:
-              - title: "Bloblang"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: "/product-stack/tyk-streaming/guides/bloblang/overview"
-                    category: Page
-                    show: True
-                  - title: "Advanced"
-                    path: "/product-stack/tyk-streaming/guides/bloblang/advanced"
-                    category: Page
-                    show: True
-                  - title: "Arithmetic"
-                    path: "/product-stack/tyk-streaming/guides/bloblang/arithmetic"
-                    category: Page
-                    show: True
-                  - title: "Functions"
-                    path: "/product-stack/tyk-streaming/guides/bloblang/functions"
-                    category: Page
-                    show: True
-                  - title: "Methods"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/overview"
-                        category: Page
-                        show: True
-                      - title: "General"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/general"
-                        category: Page
-                        show: True
-                      - title: "Encoding and encryption"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/encoding-and-encryption"
-                        category: Page
-                        show: True
-                      - title: "GeoIP"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/geoip"
-                        category: Page
-                        show: True
-                      - title: "JSON web tokens"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/json-web-tokens"
-                        category: Page
-                        show: True
-                      - title: "Number Manipulation"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/numbers"
-                        category: Page
-                        show: True
-                      - title: "String Manipulation"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/strings"
-                        category: Page
-                        show: True
-                      - title: "Objects and Arrays"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/object-and-arrays"
-                        category: Page
-                        show: True
-                      - title: "Regular expressions"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/regular-expressions"
-                        category: Page
-                        show: True
-                      - title: "Parsing"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/parsing"
-                        category: Page
-                        show: True
-                      - title: "Timestamp Manipulation"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/timestamps"
-                        category: Page
-                        show: True
-                      - title: "Type Coercion"
-                        path: "/product-stack/tyk-streaming/guides/bloblang/methods/type-coercion"
-                        category: Page
-                        show: True
-              - title: "Sync Response"
-                path: "/product-stack/tyk-streaming/guides/sync-responses"
-                category: Page
-                show: True
           - title: "Rate Limits"
             category: Directory
             show: true
@@ -4585,54 +4007,6 @@ menu:
         category: Directory
         show: True
         menu:
-          - title: "Overview"
-            path: /product-stack/tyk-sync/overview
-            category: Page
-            show: True
-          - title: "Installing and running Tyk Sync"
-            path: /product-stack/tyk-sync/installing-tyk-sync
-            category: Page
-            show: True
-          - title: "Tutorials"
-            category: Directory
-            show: True
-            menu:
-              - title: "Keeping and updating API Definitions locally"
-                path: /product-stack/tyk-sync/tutorials/tutorial-update-api-configurations
-                category: Page
-                show: True
-              - title: "Synchronising API configurations with GitHub Actions"
-                path: /product-stack/tyk-sync/tutorials/tutorial-synchronise-api-configurations
-                category: Page
-                show: True
-              - title: "Backing up API configurations with Github Actions"
-                path: /product-stack/tyk-sync/tutorials/tutorial-backup-api-configurations
-                category: Page
-                show: True
-          - title: "Commands"
-            category: Directory
-            show: True
-            menu:
-              - title: "Dump"
-                path: /product-stack/tyk-sync/commands/sync-dump
-                category: Page
-                show: True
-              - title: "Examples"
-                path: /product-stack/tyk-sync/commands/sync-examples
-                category: Page
-                show: True
-              - title: "Publish"
-                path: /product-stack/tyk-sync/commands/sync-publish
-                category: Page
-                show: True
-              - title: "Sync"
-                path: /product-stack/tyk-sync/commands/sync-sync
-                category: Page
-                show: True
-              - title: "Update"
-                path: /product-stack/tyk-sync/commands/sync-update
-                category: Page
-                show: True
           - title: "Release notes"
             category: Directory
             show: True
@@ -4665,7 +4039,7 @@ menu:
                 path: /tyk-identity-broker/getting-started
                 category: Page
                 show: True
-              - title: "TIB implementation with GitHub and OAuth 2.0"
+              - title: "Practical TIB Integration Examples"
                 path: /tyk-stack/tyk-identity-broker/auth-user-for-api-access-github-oauth
                 category: Page
                 show: True
@@ -4683,6 +4057,14 @@ menu:
             menu:
               - title: "Tyk Identity Broker Configuration Options"
                 path: /tyk-configuration-reference/tyk-identity-broker-configuration
+                category: Page
+                show: True
+          - title: "Release Notes"
+            category: Directory
+            show: True
+            menu:
+              - title: "Tyk Identity Broker 1.6"
+                path: /product-stack/tyk-identity-broker/release-notes/tib-v1.6
                 category: Page
                 show: True
       - title: "Tyk Helm Charts (Open Source)"
@@ -4924,6 +4306,14 @@ menu:
         path: /developer-support/backups/backup-apis-and-policies
         category: Page
         show: True
+      - title: "Release Notes"
+        category: Directory
+        show: True
+        menu:
+        - title: "Tyk Cloud"
+          path: /developer-support/release-notes/cloud
+          category: Page
+          show: True
       - title: "Latest Tyk Releases"
         path: /developer-support/tyk-release-summary/overview
         category: Page
@@ -5040,68 +4430,6 @@ menu:
             path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/customise-enterprise-portal
             category: Page
             show: True
-  - title: "APIM Best Practice"
-    path: /apim-best-practice/overview
-    category: Label
-    show: True
-    menu:
-      - title: "Overview"
-        path: /apim-best-practice/overview
-        category: Page
-        show: True
-      - title: "API Security Best Practice"
-        category: Directory
-        show: True
-        menu:
-          - title: "API Security Overview"
-            path: /apim-best-practice/api-security-best-practice/overview
-            category: Page
-            show: True
-          - title: "Authentication"
-            path: /apim-best-practice/api-security-best-practice/authentication
-            category: Page
-            show: True
-          - title: "Authorisation"
-            path: /apim-best-practice/api-security-best-practice/authorisation
-            category: Page
-            show: True
-          - title: "Authorisation Levels"
-            path: /apim-best-practice/api-security-best-practice/authorisation-levels
-            category: Page
-            show: True
-          - title: "Resource Consumption"
-            path: /apim-best-practice/api-security-best-practice/resource-consumption
-            category: Page
-            show: True
-          - title: "Configuration"
-            path: /apim-best-practice/api-security-best-practice/configuration
-            category: Page
-            show: True
-          - title: "Governance"
-            path: /apim-best-practice/api-security-best-practice/governance
-            category: Page
-            show: True
-      - title: "API Lifecycle Best Practice"
-        category: Page
-        show: False
-      - title: "API Platform Architectures"
-        category: Page
-        show: False
-      - title: "Sector Specific Guides"
-        category: Page
-        show: False
-      - title: "API Observability"
-        category: Page
-        show: False
-      - title: "API Products"
-        category: Page
-        show: False
-      - title: "APIs as integration"
-        category: Page
-        show: False
-      - title: "Creating a PoC"
-        category: Page
-        show: False
   - title: "Orphan"
     path: /orphan
     category: Label
