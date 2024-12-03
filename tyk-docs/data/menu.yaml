@@ -2394,6 +2394,10 @@ menu:
                 path: /product-stack/tyk-gateway/release-notes/overview
                 category: page
                 show: True
+              - title: "Tyk Gateway v5.7"
+                path: /product-stack/tyk-gateway/release-notes/version-5.7
+                category: Page
+                show: True
               - title: "Tyk Gateway v5.6"
                 path: /product-stack/tyk-gateway/release-notes/version-5.6
                 category: Page
@@ -2864,6 +2868,10 @@ menu:
               - title: "Overview"
                 category: Page
                 path: /product-stack/tyk-dashboard/release-notes/overview
+                show: True
+              - title: "Tyk Dashboard v5.7"
+                path: /product-stack/tyk-dashboard/release-notes/version-5.7
+                category: Page
                 show: True
               - title: "Tyk Dashboard v5.6"
                 path: /product-stack/tyk-dashboard/release-notes/version-5.6
