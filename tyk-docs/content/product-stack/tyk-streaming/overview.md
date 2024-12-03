@@ -3,6 +3,89 @@ title: Tyk Streams
 description: Explains the purpose of Tyk Streaming and use cases
 tags: [ "streaming", "events", "event-driven architecture", "event-driven architectures", "kafka" ]
 publishdate: 2024-07-15
+aliases:
+ - /product-stack/tyk-streaming/configuration/inputs/amqp-0-9/
+ - /product-stack/tyk-streaming/configuration/inputs/amqp-1/
+ - /product-stack/tyk-streaming/configuration/inputs/generate/
+ - /product-stack/tyk-streaming/configuration/inputs/kafka-franz/
+ - /product-stack/tyk-streaming/configuration/inputs/mqtt/
+ - /product-stack/tyk-streaming/configuration/inputs/nats/
+ - /product-stack/tyk-streaming/configuration/inputs/nsq/
+ - /product-stack/tyk-streaming/configuration/inputs/redis-pubsub/
+ - /product-stack/tyk-streaming/configuration/outputs/amqp-0-9/
+ - /product-stack/tyk-streaming/configuration/outputs/amqp-1/
+ - /product-stack/tyk-streaming/configuration/outputs/drop_on/
+ - /product-stack/tyk-streaming/configuration/outputs/fallback/
+ - /product-stack/tyk-streaming/configuration/outputs/kafka-franz/
+ - /product-stack/tyk-streaming/configuration/outputs/mqtt/
+ - /product-stack/tyk-streaming/configuration/outputs/nats/
+ - /product-stack/tyk-streaming/configuration/outputs/nsq/
+ - /product-stack/tyk-streaming/configuration/outputs/reject/
+ - /product-stack/tyk-streaming/configuration/outputs/redis-pubsub/
+ - /product-stack/tyk-streaming/configuration/outputs/retry/
+ - /product-stack/tyk-streaming/configuration/outputs/stdout/
+ - /product-stack/tyk-streaming/configuration/outputs/switch/
+ - /product-stack/tyk-streaming/configuration/outputs/sync-response/
+ - /product-stack/tyk-streaming/configuration/processors/aws-lambda/
+ - /product-stack/tyk-streaming/configuration/processors/bloblang/
+ - /product-stack/tyk-streaming/configuration/processors/bounds-check/
+ - /product-stack/tyk-streaming/configuration/processors/branch/
+ - /product-stack/tyk-streaming/configuration/processors/cache/
+ - /product-stack/tyk-streaming/configuration/processors/cached/
+ - /product-stack/tyk-streaming/configuration/processors/catch/
+ - /product-stack/tyk-streaming/configuration/processors/dedupe/
+ - /product-stack/tyk-streaming/configuration/processors/for-each/
+ - /product-stack/tyk-streaming/configuration/processors/group-by-value/
+ - /product-stack/tyk-streaming/configuration/processors/group-by/
+ - /product-stack/tyk-streaming/configuration/processors/http/
+ - /product-stack/tyk-streaming/configuration/processors/insert-part/
+ - /product-stack/tyk-streaming/configuration/processors/jmes-path/
+ - /product-stack/tyk-streaming/configuration/processors/json-schema/
+ - /product-stack/tyk-streaming/configuration/processors/jq/
+ - /product-stack/tyk-streaming/configuration/processors/log/
+ - /product-stack/tyk-streaming/configuration/processors/mapping/
+ - /product-stack/tyk-streaming/configuration/processors/msgpack/
+ - /product-stack/tyk-streaming/configuration/processors/mutation/
+ - /product-stack/tyk-streaming/configuration/processors/noop/
+ - /product-stack/tyk-streaming/configuration/processors/parallel/
+ - /product-stack/tyk-streaming/configuration/processors/parse-log/
+ - /product-stack/tyk-streaming/configuration/processors/processors/
+ - /product-stack/tyk-streaming/configuration/processors/protobuf/
+ - /product-stack/tyk-streaming/configuration/processors/rate-limit/
+ - /product-stack/tyk-streaming/configuration/processors/redis/
+ - /product-stack/tyk-streaming/configuration/processors/retry/
+ - /product-stack/tyk-streaming/configuration/processors/schema-registry-decode/
+ - /product-stack/tyk-streaming/configuration/processors/schema-registry-encode/
+ - /product-stack/tyk-streaming/configuration/processors/select-parts/
+ - /product-stack/tyk-streaming/configuration/processors/sleep/
+ - /product-stack/tyk-streaming/configuration/processors/split/
+ - /product-stack/tyk-streaming/configuration/processors/switch/
+ - /product-stack/tyk-streaming/configuration/processors/sync-response/
+ - /product-stack/tyk-streaming/configuration/processors/try/
+ - /product-stack/tyk-streaming/configuration/processors/while/
+ - /product-stack/tyk-streaming/configuration/processors/workflow/
+ - /product-stack/tyk-streaming/configuration/common-configuration/error-handling/
+ - /product-stack/tyk-streaming/configuration/common-configuration/interpolation/
+ - /product-stack/tyk-streaming/configuration/common-configuration/resources/
+ - /product-stack/tyk-streaming/configuration/common-configuration/windowed_processing/
+ - /product-stack/tyk-streaming/guides/sync-responses/
+ - /product-stack/tyk-streaming/guides/bloblang/overview/
+ - /product-stack/tyk-streaming/guides/bloblang/advanced/
+ - /product-stack/tyk-streaming/guides/bloblang/arithmetic/
+ - /product-stack/tyk-streaming/guides/bloblang/functions/
+ - /product-stack/tyk-streaming/guides/bloblang/methods
+ - /product-stack/tyk-streaming/guides/bloblang/methods/overview/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/general/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/encoding-and-encryption/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/geoip/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/json-web-tokens/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/numbers/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/strings/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/object-and-arrays/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/regular-expressions/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/parsing/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/timestamps/
+ - /product-stack/tyk-streaming/guides/bloblang/methods/type-coercion/
 ---
 We are excited to introduce our new product, *Tyk Streams*! 
 *Tyk Streams* is a powerful new feature in the Tyk API management platform that enables organizations to securely expose,
@@ -16,8 +99,8 @@ Our first release of Tyk Streams is now available, and we'd love for you to try 
 
 ---
 ## Overview
-With *Tyk Streams*, you can easily connect to various event brokers and streaming platforms, such as
-[Apache Kafka](https://github.com/TykTechnologies/tyk-pro-docker-demo/tree/kafka), MQTT, AMQP etc. and expose them as
+With *Tyk Streams*, you can easily connect to event brokers and streaming platforms, such as
+[Apache Kafka](https://github.com/TykTechnologies/tyk-pro-docker-demo/tree/kafka), and expose them as
 managed API endpoints to internal and external consumers.
 
 <div style="display: flex; justify-content: center;">
@@ -96,7 +179,7 @@ management capabilities.
 While some API management platforms offer basic support for async APIs and event-driven architectures, Tyk Streams
 stands out by providing a comprehensive and flexible solution:
 
-- **Extensive protocol support**: Tyk Streams supports a wide range of event brokers and protocols out of the box, including Kafka, MQTT, WebSocket, and more.
+- **Extensive protocol support**: Tyk Streams supports event brokers and protocols out of the box, including Kafka, WebSockets, Server-Sent Events (SSE).
 - **Powerful mediation capabilities**: Tyk Streams allows you to transform and enrich event data, enabling protocol mediation and compatibility with diverse client requirements.
 - **Seamless integration**: Async APIs are managed alongside synchronous APIs within the Tyk platform, providing a unified developer portal, consistent security policies and centralised analytics.
 - **Flexibility and scalability**: Tyk Streams can be deployed in various architectures, from simple single-node setups to large-scale distributed deployments and can handle high-throughput event processing scenarios.
