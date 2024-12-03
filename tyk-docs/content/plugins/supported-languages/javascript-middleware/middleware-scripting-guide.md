@@ -34,7 +34,7 @@ JS functions can be given access to external data objects relating to the API re
 {{< note success >}}
 **Note**
 
-There are other ways of accessing and editing a session object using the [Tyk JavaScript API functions]({{< ref "plugins/supported-languages/javascript-middleware/javascript-api#Working-with-the-key-session-object" >}}).
+There are other ways of accessing and editing a session object using the [Tyk JavaScript API functions]({{< ref "plugins/supported-languages/javascript-middleware/javascript-api#working-with-the-key-session-object" >}}).
 {{< /note >}}
 
 ### Creating a middleware component

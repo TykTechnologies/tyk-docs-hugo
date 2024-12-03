@@ -114,7 +114,7 @@ You can also create a user without an `org_id`. This will create a "Super User",
 
 ### Update User
 
-You need to have the `users` [Permission object]({{< ref "basic-config-and-security/security/dashboard/user-roles#the-permissions-object" >}}) set to write to use **Update User**.
+You need to have the `users` [Permission object]({{< ref "basic-config-and-security/security/dashboard/user-roles" >}}) set to write to use **Update User**.
 
 | **Property** | **Description**          |
 | ------------ | ------------------------ |

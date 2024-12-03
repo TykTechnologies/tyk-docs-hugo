@@ -13,7 +13,7 @@ This is an end-to-end worked example of how you can use [AzureAD](https://azure.
 ) to log in to your Dashboard.
 This guide assumes the following:
 
-You already have authorized access to Tyk's Dashboard. If you haven't, get the authorization key by following this [guide]({{< ref "basic-config-and-security/security/dashboard/create-users#create-a-dashboard-user-with-the-api">}}).
+You already have authorized access to Tyk's Dashboard. If you haven't, get the authorization key by following this [guide]({{< ref "basic-config-and-security/security/dashboard/create-users#creating-a-dashboard-user-using-the-dashboard-api">}}).
 
 ## Azures's side
 1. Access your Azure Portal and navigate to the Azure Active Directory page.
@@ -67,7 +67,7 @@ As illustrated in the screen below the following information must be provided:
  - Identity provider role
  - Tyk User Group: This can be created from the User Groups section of the dashboard (reference a link to a page in tyk docs here to show how to create a user group). When creating your User Group, one can also select and adjust the permissions for each group. 
 
-For more information on how to set and change user permissions, head to this [guide]({{< ref "basic-config-and-security/security/dashboard/create-user-groups#set-user-group-permissions">}})
+For more information on how to set and change user permissions, head to this [guide]({{< ref "basic-config-and-security/security/dashboard/create-user-groups#step-4-set-user-group-permissions">}})
 
 {{< img src="/img/azureAD/raw-editor.png" alt="Profile Configuration - Raw-editor" >}}
 

@@ -15,7 +15,7 @@ info:
 
     This API requires an admin authorisation token that is available for admin
     users of the portal in the profile page.
-  version: v1.8.0
+  version: v1.12.0
 servers:
   - url: http://localhost:3001/portal-api
 tags:
@@ -4403,6 +4403,163 @@ paths:
       summary: Detach a tag from a post
       tags:
         - Posts
+
+  /apps/{app_id}/custom_credentials:
+    get:
+      summary: List Custom Credentials
+      description: Retrieve a list of custom credentials for a specific application.
+      tags:
+        - Applications and credentials
+      parameters:
+        - name: app_id
+          in: path
+          required: true
+          description: The ID of the application.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of custom credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomCredential-index'
+      security:
+        - AdminAPIToken: []
+
+    post:
+      summary: Create a Custom Credential
+      description: Create a new custom credential for a specific application.
+      tags:
+        - Applications and credentials
+      parameters:
+        - name: app_id
+          in: path
+          required: true
+          description: The ID of the application.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomCredential-create'
+      responses:
+        '201':
+          description: Custom credential created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomCredential-show'
+        "422":
+          description: Validator error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OnlyErrors"
+
+      security:
+        - AdminAPIToken: []
+
+  /apps/{app_id}/custom_credentials/{credential_id}:
+    get:
+      summary: Get a Custom Credential
+      description: Retrieve a specific custom credential by its ID.
+      tags:
+        - Applications and credentials
+      parameters:
+        - name: app_id
+          in: path
+          required: true
+          description: The ID of the application.
+          schema:
+            type: string
+        - name: credential_id
+          in: path
+          required: true
+          description: The ID of the custom credential.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Custom credential details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomCredential-show'
+      security:
+        - AdminAPIToken: []
+
+    put:
+      summary: Update a Custom Credential
+      description: Update an existing custom credential for a specific application.
+      tags:
+        - Applications and credentials
+      parameters:
+        - name: app_id
+          in: path
+          required: true
+          description: The ID of the application.
+          schema:
+            type: string
+        - name: credential_id
+          in: path
+          required: true
+          description: The ID of the custom credential.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomCredential-update'
+      responses:
+        '200':
+          description: Custom credential updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomCredential-show'
+        "422":
+          description: Validator error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OnlyErrors"
+
+      security:
+        - AdminAPIToken: []
+
+    delete:
+      summary: Delete a Custom Credential
+      description: Delete a specific custom credential for a specific application.
+      tags:
+        - Applications and credentials
+      parameters:
+        - name: app_id
+          in: path
+          required: true
+          description: The ID of the application.
+          schema:
+            type: string
+        - name: credential_id
+          in: path
+          required: true
+          description: The ID of the custom credential.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Custom credential deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusWithMessage'  # Updated to return StatusWithMessage
+      security:
+        - AdminAPIToken: []
+
 components:
   schemas:
     Product-APIDetail-index:
@@ -7438,6 +7595,121 @@ components:
                 type: integer
                 description: Unique identifier of the product's provider
                 example: 1
+  
+    CustomCredential:
+      type: object
+      properties:
+        ID:
+          type: integer
+          description: Unique identifier for the custom credential
+        Alias:
+          type: string
+          description: Alias for the custom credential
+        Type:
+          type: string
+          enum:
+            - CREDENTIAL_TYPE_TYK_MANAGED
+            - CREDENTIAL_TYPE_CUSTOM
+          description: Type of the custom credential
+        PlanID:
+          type: string
+          description: Plan ID associated with the custom credential
+        AuthenticationMethod:
+          type: string
+          description: Authentication method used for the custom credential
+        ProductIDs:
+          type: array
+          items:
+            type: integer
+          description: List of product IDs associated with the custom credential
+        AuthTokenType:
+          type: string
+          enum:
+            - AUTH_TOKEN_CUSTOM
+            - AUTH_TOKEN_STANDARD
+          description: Type of authentication token used
+        KeyID:
+          type: string
+          description: Key ID for the custom credential
+        ProviderID:
+          type: integer
+          description: ID for OAuth2.0 provider
+        ClientTypeID:
+          type: integer
+          description: ID for OAuth2.0 client type
+
+    CustomCredential-create:
+      type: object
+      properties:
+        Alias:
+          type: string
+          description: Alias for the custom credential
+        Type:
+          type: string
+          enum:
+            - CREDENTIAL_TYPE_TYK_MANAGED
+            - CREDENTIAL_TYPE_CUSTOM
+          description: Type of the custom credential
+        PlanID:
+          type: integer
+          description: Plan ID associated with the custom credential
+        AuthenticationMethod:
+          type: string
+          description: Authentication method used for the custom credential
+        ProductIDs:
+          type: array
+          items:
+            type: integer
+          description: List of product IDs associated with the custom credential
+        AuthTokenType:
+          type: string
+          enum:
+            - AUTH_TOKEN_CUSTOM
+            - AUTH_TOKEN_STANDARD
+          description: Type of authentication token used
+        KeyID:
+          type: string
+          description: Key ID for the custom credential
+        CredentialKey:
+          type: string
+          description: Key for the custom credential
+        CredentialSecret:
+          type: string
+          description: Secret for the custom credential
+        ProviderID:
+          type: integer
+          description: ID for OAuth2.0 provider
+        ClientTypeID:
+          type: integer
+          description: ID for OAuth2.0 client type
+
+    CustomCredential-update:
+      type: object
+      properties:
+        Alias:
+          type: string
+          description: Alias for the custom credential
+
+    CustomCredential-index:
+      type: array
+      items:
+        $ref: '#/components/schemas/CustomCredential'
+
+    CustomCredential-show:
+      allOf:
+        - $ref: '#/components/schemas/CustomCredential'
+        - type: object
+          properties:
+            CreatedAt:
+              pattern: ^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$
+              type: string
+              description: Timestamp of when this webhook was created
+              example: 2023-06-25 13:37
+            UpdatedAt:
+              pattern: ^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$
+              type: string
+              description: Timestamp of when this webhook was updated the last time
+              example: 2023-06-25 13:37
   securitySchemes:
     AdminAPIToken:
       type: apiKey
