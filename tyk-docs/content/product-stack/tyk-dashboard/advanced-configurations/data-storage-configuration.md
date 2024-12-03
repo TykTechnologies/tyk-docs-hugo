@@ -167,7 +167,7 @@ Aggregated analytics corresponds to data that is used for the display of charts 
 {{< note success >}}
 **Note** 
 
-SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please transition to PostgreSQL, MongoDB or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings/postgresql#introduction" >}}), [MongoDB]({{< ref "planning-for-production/database-settings/mongodb" >}}), or one of the listed compatible alternatives.
 {{< /note >}}
 
 Storage of aggregated analytics data has been tested with PostgreSQL and SqlLite databases. The following environment variables can be used to manage this configuration:
