@@ -203,6 +203,13 @@ Resolved a bug where path-based permissions in policies were not preserved when 
 </li>
 <li>
 <details>
+<summary>Resolved API Routing Issue with Trailing Slashes and Overlapping Listen Paths</summary>
+
+Fixed a routing issue that caused incorrect API matching when dealing with APIs that lacked a trailing slash, used custom domains, or had similar listen path patterns. Previously, the router prioritized APIs with longer subdomains and shorter listen paths, leading to incorrect matches when listen paths shared prefixes. This fix ensures accurate API matching, even when subdomains and listen paths overlap.
+</details>
+</li>
+<li>
+<details>
 <summary>Optimized Gateway Handling for Large Payloads</summary>
 
 Fixed an issue that caused increased memory consumption when proxying large response payloads. The Gateway now handles large payloads more efficiently in terms of speed and memory usage.
