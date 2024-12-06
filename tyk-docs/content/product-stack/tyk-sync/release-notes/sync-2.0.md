@@ -40,7 +40,6 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
   - ```bash
     docker pull tykio/tyk-sync:v2.0.1
     ```
-- [Source code](https://github.com/TykTechnologies/tyk-sync/releases/tag/v2.0.1)
 
 ### Changelog {#Changelog-v2.0.1}
 
@@ -113,7 +112,6 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
   - ```bash
     docker pull tykio/tyk-sync:v2.0.0
     ```
-- [Source code](https://github.com/TykTechnologies/tyk-sync/releases/tag/v2.0.0)
 
 ### Changelog {#Changelog-v2.0.0}
 
