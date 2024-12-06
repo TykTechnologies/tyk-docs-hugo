@@ -1,6 +1,6 @@
 ---
 title: Tyk Sync 2.0 Release Notes
-tag: ["Tyk Sync", "Release notes", "v2.0", "2.0.0", "changelog" ]
+tag: ["Tyk Sync", "Release notes", "v2.0", "2.0.0", "2.0.1", "changelog" ]
 description: "Release notes documenting updates, enhancements, fixes and changes for Tyk Sync versions within the 2.0.X series."
 ---
 **Licensed Protected Product**
@@ -10,6 +10,63 @@ description: "Release notes documenting updates, enhancements, fixes and changes
 ## Support Lifetime
 <!-- Required. replace X.Y with this release and set the correct quarter of the year -->
 Our minor releases are supported until our next minor comes out.
+
+---
+
+## 2.0.1 Release Notes
+
+### Release Date 05 December 2024
+
+### Release Highlights
+
+Tyk Sync 2.0.1 has been updated to support API configurations from Tyk 5.7.0.
+
+Please refer to the [changelog]({{< ref "#Changelog-v2.0.1">}}) below for detailed explanation.
+
+### Breaking Changes
+<!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
+This release has no breaking changes.
+
+### Deprecations
+There are no deprecations in this release.
+
+### Upgrade instructions
+For users currently on v2.0.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version 2.0.0 and proceed directly to this latest patch release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
+
+### Downloads
+- [Docker image v2.0.1](https://hub.docker.com/r/tykio/tyk-sync/tags?page=&page_size=&ordering=-name&name=v2.0.1)
+  - ```bash
+    docker pull tykio/tyk-sync:v2.0.1
+    ```
+- [Source code](https://github.com/TykTechnologies/tyk-sync/releases/tag/v2.0.1)
+
+### Changelog {#Changelog-v2.0.1}
+
+#### Changed
+
+<ul>
+<li>
+<details>
+<summary>API definitions and policies supported up to Tyk Gateway v5.7.0 </summary>
+
+Tyk Sync 2.0.1 supports API definitions and policies up to Tyk Gateway v5.7.0. This update ensures that Tyk Sync can manage API definitions and policies compatible with Tyk Gateway v5.7.0.
+</details>
+</li>
+</ul>
+
+#### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Improved Error Handling for Invalid MongoDB Object IDs in Tyk Sync </summary>
+
+Addressed an issue where Tyk Sync did not properly validate MongoDB Object IDs during API synchronization. Previously, invalid IDs would result in silent failures, causing APIs to remain unpublished without error logs, creating confusion for users. Tyk Sync now logs meaningful error messages and exits with an error if invalid IDs are detected. This fix enhances the reliability and transparency of the synchronization process, ensuring consistent behavior with the Tyk Dashboard API.
+</details>
+</li>
+</ul>
 
 ---
 
@@ -67,7 +124,7 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
 <details>
 <summary>API definitions and policies supported up to Tyk Gateway v5.6.0 </summary>
 
-Tyk Sync 2.0 supports API definitions and policies up to Tyk Gateway v5.6.0. This update ensures that Tyk Sync can manage API definitions and policies compatible with Tyk Gateway v5.6.0.
+Tyk Sync 2.0.0 supports API definitions and policies up to Tyk Gateway v5.6.0. This update ensures that Tyk Sync can manage API definitions and policies compatible with Tyk Gateway v5.6.0.
 </details>
 </li>
 
