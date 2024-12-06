@@ -14,10 +14,23 @@ menu:
         path: /apim
         category: Page
         show: True
-      - title: "Migration To Tyk"
+      - title: "Install and Configure"
         path: /migration-to-tyk
-        category: Page
+        category: Directory
         show: True
+        menu:
+          - title: "Tyk Open Source"
+            path: /tyk-open-source
+            category: Page
+            show: True
+          - title: "Tyk Cloud"
+            path: /tyk-cloud
+            category: Page
+            show: True
+          - title: "Tyk Self Managed"
+            path: /tyk-self-managed
+            category: Page
+            show: True
       - title: "Open Source API Gateway"
         category: Directory
         show: True
