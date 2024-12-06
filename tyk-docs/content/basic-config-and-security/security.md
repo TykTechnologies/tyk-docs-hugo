@@ -31,7 +31,7 @@ Tyk supports TLS connections and Mutual TLS. All TLS connections also support HT
 
 ### Trusted Certificates
 
-As part of using Mutual TLS, you can create a list of [trusted certificates]({{< ref "/api-management/authentication-authorization#how-does-mutual-tls-work" >}}).
+As part of using Mutual TLS, you can create a list of [trusted certificates]({{< ref "/api-management/client-authentication#how-does-mutual-tls-work" >}}).
 
 ### Certificate Pinning
 
@@ -41,14 +41,13 @@ Introduced in Tyk Gateway 2.6.0, [certificate pinning]({{< ref "security/certifi
 
 Tyk supports various ways to secure your APIs, including:
 
-* Bearer Tokens
+* Bearer (Auth) Tokens
 * HMAC
 * JSON Web Tokens (JWT)
 * Multi Chained Authentication
 * OAuth 2.0
-* OpenID Connect
 
-See [Authentication and Authorization]({{< ref "/api-management/authentication-authorization" >}}) for more details.
+See [Client Authentication]({{< ref "/api-management/client-authentication" >}}) for more details.
 
 ### Security Policies
 

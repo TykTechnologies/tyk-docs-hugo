@@ -744,8 +744,8 @@ menu:
         path: /getting-started
         category: Page
         show: True
-      - title: "Client Authentication"
-        path: /api-management/authentication-authorization
+      - title: "Authentication"
+        path: /api-management/client-authentication
         category: Page
         show: True
       - title: "Upstream Authentication"
