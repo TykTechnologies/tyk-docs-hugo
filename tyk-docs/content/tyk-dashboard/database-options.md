@@ -43,8 +43,14 @@ All data stored in SQL platforms will be identical to our existing MongoDB suppo
 
 ## Which platform should you use?
 
+{{< note success >}}
+**Note** 
+
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings/postgresql#introduction" >}}), [MongoDB]({{< ref "planning-for-production/database-settings/mongodb" >}}), or one of the listed compatible alternatives.
+{{< /note >}}
+
 We recommend the following:
 
-* For PoC installations, you can use any of the following platforms (SQLite, PostgreSQL or MongoDB).
+* For PoC installations, you can use PostgreSQL or MongoDB.
 * For production installations, we **only** support MongoDB or PostgreSQL
 

@@ -217,6 +217,8 @@ global:
 
 It can be configured via `global.license.operator` as a plain text or Kubernetes secret which includes `OperatorLicense` key in it. Then, this secret must be referenced via `global.secrets.useSecretName`.
 
+Note: If you are using `global.secrets.useSecretName`, you must configure the operator license in the referenced Kubernetes secret. `global.license.operator` will not be used in this case.
+
 ### Create a Kubernetes Secret for Tyk Operator
 
 When `operatorSecret.enabled` is set to `true`, `tyk-oss` chart will create a Kubernetes Secret named `tyk-operator-conf` in the same namespace. It can be used by Tyk Operator to connect to Gateway to manage Tyk API resources.
