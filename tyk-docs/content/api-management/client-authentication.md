@@ -722,7 +722,7 @@ where
 - `old_refresh_token` is the Refresh Token that has been consumed when refreshing an access token
 - `notification_type` will indicate the cause of the event:
   - `new`: a new access token has been issued
-  - ...TBC
+  - `refresh`: a token has been refreshed and a new refresh token has been issued
 
 ##### Configuring notifications in the Tyk API Designer
 
