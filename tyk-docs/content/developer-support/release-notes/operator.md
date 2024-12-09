@@ -19,6 +19,74 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
+## 1.1.0 Release Notes
+
+### Release Date 09 December 2024
+
+### Release Highlights
+<!-- Required. Use similar ToV to previous release notes. For example for a patch release:
+This release primarily focuses on bug fixes.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
+-->
+##### Support for Tyk Streams API
+Tyk Operator v1.1 supports management of Tyk Streams APIs through the new **`TykStreamsApiDefinition`** custom resource. This allows you to have declarative, versioned, and fully automated control to your streaming APIs.
+
+### Breaking Changes
+<!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
+This release has no breaking changes.
+
+### Dependencies {#dependencies-1.1}
+#### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [Kubernetes](https://kubernetes.io)                        | 1.26.x to 1.30.x       | 1.19.x to 1.30.x       |          | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+### Deprecations
+<!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
+There are no deprecations in this release.
+
+### Upgrade instructions
+
+Tyk Operator v1.1 introduced new Custom Resource Definitions (CRDs). Before upgrading to Tyk Operator v1.1 with Helm Chart, please run the following commands to install the CRDs:
+
+```bash
+$ kubectl apply -f https://raw.githubusercontent.com/TykTechnologies/tyk-charts/refs/heads/main/tyk-operator-crds/crd-v1.1.0.yaml
+```
+
+
+Go to the [Upgrading Tyk Operator]({{<ref "api-management/automations#install-and-configure-tyk-operator">}}) section for detailed upgrade instructions.
+
+
+### Downloads
+- [Docker image v1.1.0](https://hub.docker.com/r/tykio/tyk-operator/tags?page=&page_size=&ordering=&name=v1.1.0)
+  - ```bash
+    docker pull tykio/tyk-operator:v1.1.0
+    ```
+- Helm chart
+  - tyk-charts v2.2.0 <!-- This is the link to the Helm charts links. Please be mindful that this URL is only available a few hours or day/s after we release the main release, so this link needs to be updated in a separate iteration -->
+<!-- source code tarball for oss projects -->
+
+### Changelog {#Changelog-v1.1.0}
+
+#### Added
+
+<ul>
+<li>
+<details>
+<summary>TykStreamsApiDefinition: new Custom Resource for Tyk Streams</summary>
+
+The `TykStreamsApiDefinition` custom resource allows you to manage Tyk Streams APIs directly within your Kubernetes environment. This enhancement offers a Kubernetes-native approach to managing Tyk APIs, streamlining operations and ensure single source of truth in Kubernetes.
+
+[Learn More]({{< ref "api-management/automations#create-a-tykstreamsapidefinition-custom-resource" >}})
+</details>
+</li>
+</ul>
+
+---
+
 ## 1.0.0 Release Notes
 
 We are excited to announce the release of **Tyk Operator v1.0**, marking a significant milestone with new features, enhancements, and critical changes. This release introduces support for Tyk OAS APIs, extended capabilities for managing Classic APIs and security policies, and includes **license changes** that you must be aware of before upgrading.
