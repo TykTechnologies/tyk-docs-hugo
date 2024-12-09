@@ -17,7 +17,7 @@ avro:
 {{< warning success >}}
 **Note**
 
-If you are consuming or generating messages using a schema registry service then it is likely this processor will fail as those services require messages to be prefixed with the identifier of the schema version being used. Instead, try the [schema_registry_encode]({{< ref "/product-stack/tyk-streaming/configuration/processors/schema-registry-encode" >}}) and [schema_registry_decode]({{< ref "/product-stack/tyk-streaming/configuration/processors/schema-registry-decode" >}}) processors.
+If you are consuming or generating messages using a schema registry service then it is likely this processor will fail as those services require messages to be prefixed with the identifier of the schema version being used.
 
 {{< /warning >}}
 

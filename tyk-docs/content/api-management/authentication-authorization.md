@@ -446,7 +446,11 @@ The Username and Password grant type uses a basic authentication key to generate
 {{< img src="/img/diagrams/diagram_docs_username-_-password-grant-type@2x.png" alt="Username and password grant sequence" >}}
 
 
+<<<<<<< HEAD
 #### Token Request
+=======
+##### Token Request
+>>>>>>> origin/master
 
 This request provides the client id and basic user credentials in exchange for an API token.
 
@@ -696,7 +700,11 @@ It is possible to provide Tyk with your own custom tokens, this can be achieved 
 
 ##### Enabling bearer tokens with Tyk Operator
 
+<<<<<<< HEAD
 Please consult the Tyk Operator supporting documentation for an example of how to [enable a bearer token]({{< ref "product-stack/tyk-operator/advanced-configurations/client-authentication#auth-token-bearer-token" >}}) with Tyk Operator.
+=======
+Please consult the Tyk Operator supporting documentation for an example of how to [enable a bearer token]({{< ref "api-management/automations#auth-token-bearer-token" >}}) with Tyk Operator.
+>>>>>>> origin/master
 
 ### Revoke OAuth Tokens
 
@@ -807,7 +815,11 @@ As you can see in the above example, enabling Basic Authentication is as simple 
 
 ##### Enable basic authentication using Tyk Operator
 
+<<<<<<< HEAD
 Please consult the Tyk Operator supporting documentation for an example of how to [enable basic authentication]({{< ref "product-stack/tyk-operator/advanced-configurations/client-authentication#basic-authentication" >}}) with Tyk Operator.
+=======
+Please consult the Tyk Operator supporting documentation for an example of how to [enable basic authentication]({{< ref "api-management/automations#basic-authentication" >}}) with Tyk Operator.
+>>>>>>> origin/master
 
 #### Create a Basic Authentication user
 
@@ -1171,7 +1183,11 @@ See the example introspection cache configuration:
 ### Authenticate Using Go Plugins
 
 Go Plugin Authentication allows you to implement custom authentication logic using the Go programming language. This method is useful for scenarios where you need to implement specialized authentication mechanisms that are not natively supported by Tyk.
+<<<<<<< HEAD
 To learn more about using Tyk Golang Plugins, go [here](/plugins/supported-languages/golang/#supported-plugin-types)
+=======
+To learn more about using Tyk Golang Plugins, go [here]({{ ref "/plugins/supported-languages/golang/#supported-plugin-types" >}})
+>>>>>>> origin/master
 
 
 ### Sign Requests with HMAC
@@ -1370,6 +1386,10 @@ The client application authenticates with the IdP which then provides an access 
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 ### Use JSON Web Tokens (JWT)
 
 JSON Web Tokens (JWT) are a compact, URL-safe means of representing claims to be transferred between two parties. They are commonly used in API authentication and authorization.
@@ -2030,7 +2050,11 @@ Tyk will chain the auth mechanisms as they appear in the code and will default t
 
 #### Enable Multi (Chained) Authentication with Tyk Operator
 
+<<<<<<< HEAD
 Please consult the [Tyk Operator](/product-stack/tyk-operator/advanced-configurations/client-authentication#multiple-chained-auth) supporting documentation for an example of how to enable multi chained authentication with Tyk Operator.
+=======
+Please consult the [Tyk Operator]({{< ref "api-management/automations#multiple-chained-auth" >}}) supporting documentation for an example of how to enable multi chained authentication with Tyk Operator.
+>>>>>>> origin/master
 
 
 ## Use Python CoProcess and JSVM Plugin Authentication
@@ -2251,9 +2275,12 @@ instead of getting TLS error, a client will receive 403 HTTP error.
 #### Authentication 
 Tyk can be configured to guess a user authentication key based on the provided client certificate. In other words, a user does not need to provide any key, except the certificate, and Tyk will be able to identify the user, apply policies, and do the monitoring - the same as with regular Keys.
 
+<<<<<<< HEAD
 [Go here for more details](../client-mtls)
 
 
+=======
+>>>>>>> origin/master
 ###### Using with Authorization 
 Mutual TLS authentication does not require mutual TLS authorization to be turned on, and can be used separately. For example, you may allow some of the users to be authenticated by using a token in the header or similar, and some of the users via client certificates. 
 
@@ -2785,6 +2812,12 @@ This configuration will apply the specified certificate to all upstream requests
 
 Securing your APIs is a foundational step toward managing data integrity and access control effectively. Now that you've configured authentication and authorization, the next steps in your API journey with Tyk should involve:
 
+<<<<<<< HEAD
 Defining Access Policies: Use Tyk’s policies to refine API access controls, rate limits, and quotas. This lets you align your security model with business needs and enhance user experience through granular permissions. You can learn more about policies [here](/basic-config-and-security/security/security-policies/).
 
 Exploring API Analytics: Leverage Tyk’s analytics to monitor access patterns, track usage, and gain insights into potential security risks or high-demand endpoints. Understanding usage data can help in optimizing API performance and enhancing security measures. You can learn more about analytics [here](/tyk-dashboard-analytics/).
+=======
+Defining Access Policies: Use Tyk’s policies to refine API access controls, rate limits, and quotas. This lets you align your security model with business needs and enhance user experience through granular permissions. You can learn more about policies [here]({{< ref "basic-config-and-security/security/security-policies" >}}).
+
+Exploring API Analytics: Leverage Tyk’s analytics to monitor access patterns, track usage, and gain insights into potential security risks or high-demand endpoints. Understanding usage data can help in optimizing API performance and enhancing security measures. You can learn more about analytics [here]({{< ref"tyk-dashboard-analytics" >}}).
+>>>>>>> origin/master
