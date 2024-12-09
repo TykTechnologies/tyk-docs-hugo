@@ -34,4 +34,4 @@ You can disable the validation check on 3 claims `IssueAt`, `ExpireAt` and `NotB
   "jwt_disable_not_before_validation": true
 ```
 
-See [JSON Web Tokens](/api-management/authentication-authorization#use-json-web-tokens-jwt) for more details.
+See [JSON Web Tokens](/api-management/client-authentication#use-json-web-tokens-jwt) for more details.

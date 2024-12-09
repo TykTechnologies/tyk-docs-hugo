@@ -52,7 +52,7 @@ aliases:
   - /basic-config-and-security/security/your-apis/oauth2.0/revoke-oauth-tokens
   - /security/tls-and-ssl/mutual-tls
   - /security/your-apis/oauth-2-0
-  - /api-management/authentication-authorization.md
+  - /api-management/client-authentication.md
 
 
 
