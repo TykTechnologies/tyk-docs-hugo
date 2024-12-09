@@ -88,7 +88,7 @@ TYK_PMP_UPTIMEPUMPCONFIG_TYPE=postgres
 TYK_PMP_UPTIMEPUMPCONFIG_CONNECTIONSTRING=user=postgres password=topsecretpassword host=tyk-postgres port=5432 database=tyk_analytics
 ```
 
-Further details for configuring an uptime SQL database are available [here]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#sql-uptime-pump" >}})
+Further details for configuring an uptime SQL database are available [here]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#uptime_pump_configuptime_type" >}})
 
 #### How To Configure Tyk Pump To Write Uptime Data To A Mongo Database?
 
@@ -104,7 +104,7 @@ TYK_PMP_UPTIMEPUMPCONFIG_MONGOURL=mongodb://db_host_name:27017/tyk_uptime_db
 TYK_PMP_UPTIMEPUMPCONFIG_COLLECTIONNAME=umptime_analytics
 ```
 
-Further details for configuring a Tyk Mongo Pump are available [here]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#mongo-uptime-pump" >}}>)
+Further details for configuring a Tyk Mongo Pump are available [here]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#uptime_pump_config" >}})
 
 ### How to Configure Tyk Pump To Write Logs?
 
@@ -167,7 +167,7 @@ Aggregated analytics corresponds to data that is used for the display of charts 
 {{< note success >}}
 **Note** 
 
-SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please transition to PostgreSQL, MongoDB or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings/postgresql#introduction" >}}), [MongoDB]({{< ref "planning-for-production/database-settings/mongodb" >}}), or one of the listed compatible alternatives.
 {{< /note >}}
 
 Storage of aggregated analytics data has been tested with PostgreSQL and SqlLite databases. The following environment variables can be used to manage this configuration:

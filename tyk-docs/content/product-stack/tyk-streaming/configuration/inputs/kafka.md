@@ -93,15 +93,15 @@ This input adds the following metadata fields to each message:
 
 The field `kafka_lag` is the calculated difference between the high water mark offset of the partition at the time of ingestion and the current message offset.
 
-You can access these metadata fields using [function interpolation]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}})
+<!-- TODO: when interpolation supported
+You can access these metadata fields using function interpolation.
+-->
 
 ### Ordering
 
 By default messages of a topic partition can be processed in parallel, up to a limit determined by the field `checkpoint_limit`. However, if strict ordered processing is required then this value must be set to 1 in order to process shard messages in lock-step. When doing so it is recommended that you perform batching at this component for performance as it will not be possible to batch lock-stepped messages at the output level.
 
 ### Troubleshooting
-
-If you're seeing issues writing to or reading from Kafka with this component then it's worth trying out the newer [kafka_franz input]({{< ref "/product-stack/tyk-streaming/configuration/inputs/kafka-franz" >}}).
 
 - I'm seeing logs that report `Failed to connect to kafka: kafka: client has run out of available brokers to talk to (Is your cluster reachable?)`, but the brokers are definitely reachable.
 
@@ -458,9 +458,10 @@ A maximum estimate for the time taken to process a message, this is used for tun
 Type: `string`  
 Default: `"100ms"`  
 
+<!-- TODO: when bloblang is supported
 ### extract_tracing_map
 
-A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mapping that attempts to extract an object containing tracing propagation information, which will then be used as the root tracing span for the message. The specification of the extracted fields must match the format used by the service wide tracer.
+A Bloblang mapping that attempts to extract an object containing tracing propagation information, which will then be used as the root tracing span for the message. The specification of the extracted fields must match the format used by the service wide tracer.
 
 
 Type: `string`  
@@ -473,6 +474,7 @@ extract_tracing_map: root = @
 
 extract_tracing_map: root = this.meta.span
 ```
+-->
 
 ### group
 
@@ -579,9 +581,10 @@ period: 1m
 period: 500ms
 ```
 
+<!-- TODO: when bloblang is supported
 ### batching.check
 
-A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) query that should return a boolean value indicating whether a message should end a batch.
+A Bloblang query that should return a boolean value indicating whether a message should end a batch.
 
 Type: `string`  
 Default: `""`  
@@ -591,6 +594,7 @@ Default: `""`
 
 check: this.type == "end_of_transaction"
 ```
+-->
 
 ### batching.processors
 

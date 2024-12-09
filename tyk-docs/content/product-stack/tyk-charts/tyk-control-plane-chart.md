@@ -59,7 +59,7 @@ For further documentation relating to *helm* command usage, please refer to the 
 
 At a minimum, modify `values.yaml` for the following settings:
 1. [Set Redis connection details](#set-redis-connection-details-required)
-2. [Set Mongo or PostgreSQL connection details](#set-mongo-or-postgressql-connection-details-required)
+2. [Set Mongo or PostgreSQL connection details](#set-mongo-or-postgresql-connection-details-required)
 3. [Tyk Dashboard License](#tyk-dashboard-license-required)
 4. [Tyk MDCB License](#tyk-mdcb-license-required)
 5. If you would like to use Developer Portal, an additional license is required: [Tyk Developer Portal License](#tyk-developer-portal-license-required)
@@ -98,6 +98,29 @@ You can update any value in your local `values.yaml` file and use `-f [filename]
 Alternatively, you can use `--set` flag to set it in Tyk installation. See [Using Helm](https://helm.sh/docs/intro/using_helm/) for examples.
 
 To configure Tyk components, users can utilize both config files and [environment variables](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/). Notably, environment variables take precedence over config files. To maintain simplicity and consistency, the Tyk Helm Charts deploy components with an empty config file while setting container environment variables based on user-defined [values](https://helm.sh/docs/chart_best_practices/values/). This approach ensures seamless integration with Kubernetes practices, allowing for efficient management of configurations. For a comprehensive overview of available configurations, please refer to the [configuration documentation]({{<ref "tyk-environment-variables">}}). 
+
+### Bootstrapping
+
+By default, the chart executes a [bootstrapping job](https://github.com/TykTechnologies/tyk-k8s-bootstrap) immediately after installation. This process ensures the presence of a valid dashboard license and initializes key components such as tyk-dashboard, tyk-portal, and tyk-operator, enabling them for immediate use.
+
+The bootstrapping job uses three distinct applications acting as Helm chart hooks:
+
+| **Bootstrapping Component** | **Description** |
+|-----------------------------|-----------------|
+| `bootstrap-pre-install`     | - Runs as a pre-install hook. <br> - Validates the Tyk Dashboard license key to ensure proper installation prerequisites. |
+| `bootstrap-post-install`    | - Executes post-installation. <br> - Sets up an organization and admin user in the Tyk Dashboard. <br> - Creates Kubernetes secrets required by Tyk Operator and Tyk Enterprise Portal. <br> **Note**: If an existing organization and admin user are found in the database, the bootstrapping job will not set up a new organization and user. The Kubernetes secrets will not contain the expected Org ID or API key. Please update the Secret with existing credentials in this case. |
+| `bootstrap-pre-delete`      | - Functions as a pre-delete hook. <br> - Cleans up resources, ensuring no residual configurations remain post-uninstallation. |
+
+Key Notes on Bootstrapping:
+
+- Bootstrapping is triggered **only during** a `helm install` and does not run during a `helm upgrade`.
+- If `global.components.bootstrap` is set to `false`, only the dashboard license check will be performed. 
+
+Handling Bootstrapping Failures:
+
+- If the bootstrapping process fails, check the logs from the bootstrap pods to diagnose the issue.
+- Once reviewed, you can safely delete the bootstrap pods.
+- To re-trigger the bootstrapping process after a failure, you must run `helm uninstall` and start the installation process anew.
 
 ### Setting Environment Variables
 Should any environment variables not be set by the Helm Chart, users can easily add them under the `extraEnvs` section within the charts for further customization. Values set under `extraEnvs` would take precedence over all configurations.
@@ -468,6 +491,8 @@ global:
 
 It can be configured via `global.license.operator` as a plain text or Kubernetes secret which includes `OperatorLicense` key in it. Then, this secret must be referenced via `global.secrets.useSecretName`.
 
+Note: If you are using `global.secrets.useSecretName`, you must configure the operator license in the referenced Kubernetes secret. `global.license.operator` will not be used in this case.
+
 ### Gateway Configurations
 
 {{< note success >}}
@@ -607,13 +632,13 @@ This will create a _PodMonitor_ resource for your Pump instance.
 ```
 
 #### Mongo pump
-To enable Mongo pump, add `mongo` to `tyk-pump.pump.backend` and add connection details for mongo under `global.mongo`. See [Mongo Installation](#set-mongo-or-postgressql-connection-details-required) section above.
+To enable Mongo pump, add `mongo` to `tyk-pump.pump.backend` and add connection details for mongo under `global.mongo`. See [Mongo Installation](#set-mongo-or-postgresql-connection-details-required) section above.
 
 By default, it will enable Mongo Aggregate, Mongo Graph Pump and Mongo Selective Pump.
 
 
 #### SQL Pump
-To enable SQL pump, add `postgres` to `tyk-pump.pump.backend` and add connection details for postgres under `global.postgres`. See [PostgresSQL Installation](#set-mongo-or-postgressql-connection-details-required) section above.
+To enable SQL pump, add `postgres` to `tyk-pump.pump.backend` and add connection details for postgres under `global.postgres`. See [PostgresSQL Installation](#set-mongo-or-postgresql-connection-details-required) section above.
 
 By default, it will enable Postgres Aggregate, Postgres Graph Aggregate, SQL Pump and SQL graph pump.
 
@@ -758,7 +783,7 @@ tyk-mdcb:
 
 ### Tyk Bootstrap Configurations
 
-To enable bootstrapping, set `global.components.bootstrap` to `true`. It would run [tyk-k8s-bootstrap](https://github.com/TykTechnologies/tyk-k8s-bootstrap) to bootstrap `tyk-control-plane` and to create Kubernetes secrets that can be utilized in Tyk Operator and Tyk Developer Portal.
+To enable [bootstrapping](#bootstrapping), set `global.components.bootstrap` to `true`. It would run [tyk-k8s-bootstrap](https://github.com/TykTechnologies/tyk-k8s-bootstrap) to bootstrap `tyk-control-plane` and to create Kubernetes secrets that can be utilized in Tyk Operator and Tyk Developer Portal.
 
 {{< note success >}}
 **Note**
@@ -793,7 +818,7 @@ tyk-dev-portal:
 {{< note success >}}
 **Note** 
 
-SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please transition to PostgreSQL, MongoDB or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings/postgresql#introduction" >}}), [MongoDB]({{< ref "planning-for-production/database-settings/mongodb" >}}), or one of the listed compatible alternatives.
 {{< /note >}}
 
 By default, Tyk Developer Portal use `sqlite3` to store portal metadata. If you want to use a different SQL Database, please modify the section below.
@@ -884,7 +909,7 @@ tyk-dev-portal:
 ### Tyk Operator Configurations
 
 Tyk Operator is a licensed component that requires a valid key for operation. 
-Please refer to the [Tyk Operator Installation Guide]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}})
+Please refer to the [Tyk Operator Installation Guide]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}})
 for detailed information on the installation and upgrade processes. 
 
 Prior to installing Tyk Operator, ensure that a valid license key is provided by setting `global.license.operator` field in values.yaml file. You can set license key via a Kubernetes secret using `global.secrets.useSecretName` field. The secret should contain a key called `OperatorLicense`.
@@ -895,4 +920,4 @@ to `true`.
 All other configurations related to Tyk Operator are available under `tyk-operator` section of `values.yaml` file.
 
 > Tyk Operator needs a cert-manager to be installed. Ensure that cert-manager is installed as described in the
-> official documentation: [Installing Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}).
+> official documentation: [Installing Tyk Operator]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}}).
