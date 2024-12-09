@@ -100,9 +100,10 @@ The contents of `manifest.json`:
         "name": "AddFooBarHeader",
         "path": "AddFooBarHeader.so"
       }
-    ]
+    ],
+    "driver": "goplugin"
   },
-  "driver": "goplugin",
+
   ...
 }
 ```

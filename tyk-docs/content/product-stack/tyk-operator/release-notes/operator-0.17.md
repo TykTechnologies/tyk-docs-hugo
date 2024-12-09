@@ -21,7 +21,7 @@ This release has no breaking changes.
 There are no deprecations in this release.
 
 #### Upgrade Instructions
-Go to the [Upgrading Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator#upgrading-tyk-operator">}}) section for detailed upgrade instructions.
+Go to the [Upgrading Tyk Operator]({{<ref "/api-management/automations#upgrading-tyk-operator">}}) section for detailed upgrade instructions.
 
 #### Release Highlights
 This release is focused on bug fixes. For details please refer to the [changelog]({{< ref "#Changelog-v0.17.1">}}) below.
@@ -83,7 +83,7 @@ This release has no breaking changes.
 There are no deprecations in this release.
 
 #### Upgrade Instructions
-Go to the [Upgrading Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator#upgrading-tyk-operator">}}) section for detailed upgrade Instructions.
+Go to the [Upgrading Tyk Operator]({{<ref "/api-management/automations#upgrading-tyk-operator">}}) section for detailed upgrade Instructions.
 
 #### Release Highlights
 This release added support for `GraphQLIntrospectionConfig` in API definition and fixed an issue where the Tyk Operator creates duplicate APIs on Tyk.

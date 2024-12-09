@@ -30,6 +30,6 @@ If you select a key, you can get a drill down view of the activity of that key, 
 {{< note success >}}
 **Note**
 
-From Tyk v5.1 (and LTS patches v4.0.14 and v5.0.3) the <b>Traffic per Key</b> screen will not be visible to a user if they are assigned the [Owned Analytics]({{< ref "basic-config-and-security/security/dashboard/user-roles#user-owned-analytics" >}}) permission.
+From Tyk v5.1 (and LTS patches v4.0.14 and v5.0.3) the <b>Traffic per Key</b> screen will not be visible to a user if they are assigned the [Owned Analytics]({{< ref "basic-config-and-security/security/dashboard/user-roles" >}}) permission.
 {{< /note >}}
 

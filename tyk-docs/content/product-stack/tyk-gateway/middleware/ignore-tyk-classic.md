@@ -21,7 +21,7 @@ The `ignored` object has the following configuration:
 - `path`: the endpoint path
 - `method`: this should be blank
 - `ignore_case`: if set to `true` then the path matching will be case insensitive
-- `method_actions`: a shared object used to configure the [mock response]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#mock-response" >}}) middleware
+- `method_actions`: a shared object used to configure the [mock response]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware#when-is-it-useful" >}}) middleware
 
 The `method_actions` object should be configured as follows, with an entry created for each allowed method on the path:
 - `action`: this should be set to `no_action`
