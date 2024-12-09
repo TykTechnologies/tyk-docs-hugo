@@ -259,16 +259,6 @@ This fix ensures proper functionality and alignment with Kubernetes service conf
 
 <li>
 <details>
-<summary>Operator: Liveness and readiness probes failed due to deprecated ControllerManagerConfig CRD</summary>
-
-Tyk Operator manifests used ControllerManagerConfig CRD to configure Operator Manager. However, the ControllerManagerConfig CRD has been deprecated in Tyk Operator v1.0 when we upgraded controller-runtime. Even though, operator runtime has default values for the configurations defined in CRD, deprecated CRD creates confusion for customers while deploying Tyk Operator.
-
-This fix removed deprecated ControllerManagerConfig CRD from manifests and Operator runtime. It fixes liveness and readiness probes failure during upgrade.
-</details>
-</li>
-
-<li>
-<details>
 <summary>Tyk Operator license key handling in tyk-oss chart</summary>
 
 Resolved an issue where the Tyk OSS chart did not set the Operator license key in the secret created for the Operator. This fix ensures seamless configuration of the license key when deploying Tyk Operator. 
