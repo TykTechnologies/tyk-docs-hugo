@@ -135,7 +135,7 @@ Each change log item should be expandable. The first line summarises the changel
 
 The `TykStreamsApiDefinition` custom resource allows you to manage Tyk Streams APIs directly within your Kubernetes environment. This enhancement offers a Kubernetes-native approach to managing Tyk APIs, streamlining operations and ensure single source of truth in Kubernetes.
 
-Learn More: TBD
+[Learn More]({{< ref "api-management/automations#create-a-tykstreamsapidefinition-custom-resource" >}})
 </details>
 </li>
 </ul>
