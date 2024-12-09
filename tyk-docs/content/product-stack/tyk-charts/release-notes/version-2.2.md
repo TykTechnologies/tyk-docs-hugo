@@ -17,7 +17,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 2.2.0 Release Notes
 
-### Release Date DD Mon YYYY <<update>>
+### Release Date 09 December 2024
 
 ### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release: -->
