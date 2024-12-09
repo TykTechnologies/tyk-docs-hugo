@@ -15,7 +15,70 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
-## 1.11 Release Notes
+## 1.11.1 Release Notes
+
+### Release Date 04 December 2024
+
+### Release Highlights
+
+This patch release focuses on critical dependency updates to address security vulnerabilities and maintain compatibility with the latest tools. Users are encouraged to upgrade to benefit from enhanced security and improved stability.
+
+### Breaking Changes
+This release has no breaking changes.
+
+### Dependencies
+
+#### 3rd Party Dependencies & Tools
+
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings/postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
+
+| Third Party Dependency                                    | Tested Versions   | Compatible Versions      | Comments                   |
+| --------------------------------------------------------- | ----------------- | ------------------------ | -------------------------- |
+| [MongoDB](https://www.mongodb.com/try/download/community) | 5.x, 6.x, and 7.0 | 4.4.x, 5.x, 6.x, and 7.0 | Used by Tyk Dashboard      |
+| [PostgreSQL](https://www.postgresql.org/download/)        | 12.x - 16.x    | 12.x - 16.x              | Used by Tyk Dashboard      |
+| [Redis](https://redis.io/download/)                       | 6.x - 7.0         | 6.x - 7.x                | Used by all Tyk components |
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+### Deprecations
+There are no deprecations in this release.
+
+### Upgrade instructions
+For users currently on v1.11.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version 1.11.0 and proceed directly to this latest patch release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
+
+### Downloads
+- [Docker Image v1.11.1](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.11.1)
+  - ```bash
+    docker pull tykio/tyk-pump-docker-pub:v1.11.1
+    ```
+- Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.11.1)
+
+### Changelog {#Changelog-v1.11.1}
+  
+#### Changed
+
+<ul>
+<li>
+<details>
+<summary>Upgraded Golang to v1.22.7</summary>
+
+Updated to the [Go v1.22.7](https://go.dev/doc/devel/release#go1.22) to leverage its performance improvements, bug fixes, and security patches.  
+
+</details>
+</li>
+</ul>
+
+#### Security Fixes
+- Fixed the following CVEs:
+    - [GHSA-7jwh-3vrq-q3m8](https://github.com/jackc/pgproto3/security/advisories/GHSA-7jwh-3vrq-q3m8)
+    - [GHSA-mrww-27vc-gghv](https://github.com/advisories/GHSA-mrww-27vc-gghv)
+    - [GO-2024-2611](https://pkg.go.dev/vuln/GO-2024-2611)
+ 
+---
+
+## 1.11.0 Release Notes
 
 ### Release Date 13 August 2024
 

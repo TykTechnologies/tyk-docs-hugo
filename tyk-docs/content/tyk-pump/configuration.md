@@ -31,10 +31,10 @@ The Tyk Dashboard uses the `mongo-pump-aggregate` collection to display analytic
 {{< note success >}}
 **Note** 
 
-SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please transition to PostgreSQL, MongoDB or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings/postgresql#introduction" >}}), [MongoDB]({{< ref "planning-for-production/database-settings/mongodb" >}}), or one of the listed compatible alternatives.
 {{< /note >}}
 
-In v4.0 of the Tyk Dashboard, we have added support for the following SQL platforms:
+In v4.0 of the Tyk Dashboard, we added support for the following SQL platforms:
 - PostgreSQL
 - SQLite
 
