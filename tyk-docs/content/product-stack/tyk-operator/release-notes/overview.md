@@ -7,6 +7,7 @@ description: "Index to Operator release notes"
 
 This page provides access to release notes for Tyk Operator. 
 
+* [Operator v1.1]({{<ref "product-stack/tyk-operator/release-notes/operator-1.1.md">}})
 * [Operator v1.0]({{<ref "product-stack/tyk-operator/release-notes/operator-1.0.md">}})
 * [Operator v0.18]({{<ref "product-stack/tyk-operator/release-notes/operator-0.18.md">}})
 * [Operator v0.17]({{<ref "product-stack/tyk-operator/release-notes/operator-0.17.md">}})

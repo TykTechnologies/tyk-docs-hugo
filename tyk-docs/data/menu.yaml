@@ -3839,6 +3839,10 @@ menu:
                 path: /product-stack/tyk-operator/release-notes/overview
                 category: Page
                 show: True
+              - title: "Tyk Operator v1.1"
+                path: /product-stack/tyk-operator/release-notes/operator-1.1
+                category: Page
+                show: True
               - title: "Tyk Operator v1.0"
                 path: /product-stack/tyk-operator/release-notes/operator-1.0
                 category: Page
