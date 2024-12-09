@@ -17,37 +17,39 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
-## 2.0.1 Release Notes
+## 2.0 Release Notes
 
-### Release Date 05 December 2024
+### 2.0.1 Release Notes
 
-### Release Highlights
+#### Release Date 05 December 2024
+
+#### Release Highlights
 
 Tyk Sync 2.0.1 has been updated to support API configurations from Tyk 5.7.0.
 
 Please refer to the [changelog]({{< ref "#Changelog-v2.0.1">}}) below for detailed explanation.
 
-### Breaking Changes
+#### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
-### Deprecations
+#### Deprecations
 There are no deprecations in this release.
 
-### Upgrade instructions
+#### Upgrade instructions
 For users currently on v2.0.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version 2.0.0 and proceed directly to this latest patch release.
 <br/>
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
-### Downloads
+#### Downloads
 - [Docker image v2.0.1](https://hub.docker.com/r/tykio/tyk-sync/tags?page=&page_size=&ordering=-name&name=v2.0.1)
   - ```bash
     docker pull tykio/tyk-sync:v2.0.1
     ```
 
-### Changelog {#Changelog-v2.0.1}
+#### Changelog {#Changelog-v2.0.1}
 
-#### Changed
+###### Changed
 
 <ul>
 <li>
@@ -59,7 +61,7 @@ Tyk Sync 2.0.1 supports API definitions and policies up to Tyk Gateway v5.7.0. T
 </li>
 </ul>
 
-#### Fixed
+##### Fixed
 
 <ul>
 <li>
@@ -73,25 +75,25 @@ Addressed an issue where Tyk Sync did not properly validate MongoDB Object IDs d
 
 ---
 
-## 2.0.0 Release Notes
+### 2.0.0 Release Notes
 
 From Tyk Sync v2.0, Tyk Sync will be closed source and we will only support use of Tyk Sync with licensed Tyk Dashboard.
 
-### Release Date 10 Oct 2024
+#### Release Date 10 Oct 2024
 
-### Release Highlights
+#### Release Highlights
 
 Tyk Sync 2.0 has been updated to support API configurations from Tyk 5.6.0.
 
 Please refer to the [changelog]({{< ref "#Changelog-v2.0.0">}}) below for detailed explanation.
 
-### Breaking Changes
+#### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
-### Deprecations
+#### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
-#### Deprecation of `--gateway` Flag
+##### Deprecation of `--gateway` Flag
 
 As of Tyk Sync v2.0, support for the **Open Source Tyk Gateway** has been removed. Tyk Sync v2.0 is now compatible exclusively with licensed Tyk Dashboard. This change means that Tyk Sync can no longer be used with the Open Source (OSS) version of the Tyk Gateway.
 
@@ -100,7 +102,7 @@ The `--gateway` flag, previously used to sync with the OSS Tyk Gateway, is **dep
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc. 
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->
-#### Future deprecations
+##### Future deprecations
 As part of our ongoing efforts to streamline and improve Tyk Sync, we plan to deprecate the following options in future releases:
 
 - `--apis` for the `tyk-sync sync` command.
@@ -108,18 +110,18 @@ As part of our ongoing efforts to streamline and improve Tyk Sync, we plan to de
 
 We recommend users update their workflows to use the `publish` and `update` commands for managing individual API and Policy IDs. To continue using the `sync` command, ensure all required resources are listed in the `.tyk.json` index file. This file will serve as the source of truth for API configuration states, and Tyk Sync will create or update all specified resources while removing any others from Tyk Dashboard.
 
-### Upgrade instructions
+#### Upgrade instructions
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
-### Downloads
+#### Downloads
 - [Docker image v2.0.0](https://hub.docker.com/r/tykio/tyk-sync/tags?page=&page_size=&ordering=-name&name=v2.0.0)
   - ```bash
     docker pull tykio/tyk-sync:v2.0.0
     ```
 
-### Changelog {#Changelog-v2.0.0}
+#### Changelog {#Changelog-v2.0.0}
 
-#### Updated
+##### Updated
 
 <ul>
 <li>
@@ -141,28 +143,31 @@ The `--gateway` flag, previously used to sync with the OSS Tyk Gateway, is **dep
 </li>
 </ul>
 
-## 1.5.1 Release Notes
 
-### Release date 13 August 2024
+## 1.5 Release Notes
 
-### Breaking Changes
+### 1.5.1 Release Notes
+
+#### Release date 13 August 2024
+
+#### Breaking Changes
 This release has no breaking changes.
 
-### Deprecations
+#### Deprecations
 There are no deprecations in this release.
 
-### Upgrade instructions
+#### Upgrade instructions
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
-### Downloads
+#### Downloads
 - [Docker image v1.5.1](https://hub.docker.com/r/tykio/tyk-sync/tags?page=&page_size=&ordering=-name&name=v1.5.1)
   - ```bash
     docker pull tykio/tyk-sync:v1.5.1
     ```
 
-### Changelog {#Changelog-v1.5.1}
+#### Changelog {#Changelog-v1.5.1}
 
-#### Fixed
+##### Fixed
 
 <ul>
 <li>
@@ -175,7 +180,7 @@ In previous versions, the `sync` command in Tyk Sync checked for duplicate slugs
 
 </ul>
 
-#### Changed
+##### Changed
 
 <ul>
 <li>
@@ -187,23 +192,23 @@ Tyk Sync 1.5.1 supports API definitions up to Tyk Gateway v5.5.0. This update en
 </li>
 </ul>
 
-## 1.5.0 Release Notes
+### 1.5.0 Release Notes
 
-### Release date 4 July 2024
+#### Release date 4 July 2024
 
-### Breaking Changes
+#### Breaking Changes
 This release has no breaking changes.
 
-### Deprecations
+#### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
-#### Removed --allow-unsafe-oas flag
+##### Removed --allow-unsafe-oas flag
 
 With native support of Tyk OAS APIs in Sync v1.5, we have removed the `--allow-unsafe-oas` flag from all commands as this flag is no longer required. Users can manage OAS APIs with Tyk Gateway and Dashboard (v5.3.2+) without specifying this flag or setting configurations in the Dashboard. The synchronisation of OAS API Definitions with the Dashboard is now safer and more straightforward.
 
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc. 
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->
-#### Future deprecations
+##### Future deprecations
 As part of our ongoing efforts to streamline and improve Tyk Sync, we plan to deprecate the following options in future releases:
 
 - `--apis` for the `tyk-sync sync` command.
@@ -211,27 +216,27 @@ As part of our ongoing efforts to streamline and improve Tyk Sync, we plan to de
 
 We recommend users update their workflows to use the `publish` and `update` commands for managing individual API and Policy IDs. To continue using the `sync` command, ensure all required resources are listed in the `.tyk.json` index file. This file will serve as the source of truth for API configuration states, and Tyk Sync will create or update all specified resources while removing any others from the Gateway or Dashboard.
 
-### Upgrade instructions
+#### Upgrade instructions
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
-### Release Highlights
-#### Full support for OAS APIs and API templates
+#### Release Highlights
+##### Full support for OAS APIs and API templates
 Tyk Sync 1.5 now fully supports Tyk OpenAPI Specification (OAS) APIs and API Templates. This release is compatible with Tyk Gateway or Dashboard version 5.4.0 and above, enabling seamless management of OAS APIs and API templates, and also supports all Tyk API definitions (Tyk OAS APIs and Tyk Classic APIs) for Tyk Gateway and Tyk Dashboard v5.4.0.
 
 For Tyk Gateway v5.4.1+ make sure to use the latest Tyk Sync available and also check Tyk Gateway release notes in the section "Compatibility Matrix For Tyk Components" for further instructions.
 
 Please refer to the [changelog]({{< ref "#Changelog-v1.5.0">}}) below for detailed explanation.
 
-### Downloads
+#### Downloads
 - [Docker image v1.5.0](https://hub.docker.com/r/tykio/tyk-sync/tags?page=&page_size=&ordering=-name&name=v1.5.0)
   - ```bash
     docker pull tykio/tyk-sync:v1.5.0
     ```
 - [Source code](https://github.com/TykTechnologies/tyk-sync/releases/tag/v1.5.0)
 
-### Changelog {#Changelog-v1.5.0}
+#### Changelog {#Changelog-v1.5.0}
 
-#### Added
+##### Added
 
 <ul>
 <li>
@@ -259,7 +264,7 @@ Added support for API categories in OAS APIs. Users can now include API Category
 </li>
 </ul>
 
-#### Updated
+##### Updated
 
 <ul>
 <li>
@@ -279,7 +284,7 @@ With native support of Tyk OAS APIs in Sync v1.5, we have removed the `--allow-u
 </li>
 </ul>
 
-#### Fixed
+##### Fixed
 
 <ul>
 <li>
@@ -299,36 +304,38 @@ Fixed an issue with the `update` command where extra slashes in the endpoint cau
 </li>
 </ul>
 
-## 1.4.3 Release Notes
+## 1.4 Release Notes
 
-### Release date 5 Apr 2024
+### 1.4.3 Release Notes
 
-### Breaking Changes
+#### Release date 5 Apr 2024
+
+#### Breaking Changes
 This release has no breaking changes.
 
-### Deprecations
+#### Deprecations
 There are no deprecations in this release.
 
-### Upgrade instructions
+#### Upgrade instructions
 If you are using a 1.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, **you should skip 1.4.0** and upgrade directly to this release.
 
-### Release Highlights
+#### Release Highlights
 This release works with Tyk Dashboard and Tyk Gateway v5.3.0. As such it supports all Tyk API definitions (Tyk OAS APIs and Tyk Classic APIs) for [Tyk Gateway v5.3.0]({{< ref "developer-support/release-notes/gateway#compatibility-matrix-for-tyk-components-14" >}}) and [Tyk Dashboard]({{< ref "developer-support/release-notes/dashboard#compatibility-matrix-for-tyk-components-14" >}})
  
 For Tyk Gateway v5.3.1+ make sure to use the latest Tyk Sync available and also check Tyk Gateway release notes in the section "Compatibility Matrix For Tyk Components" for further instructions.
 
 Please refer to the [changelog]({{< ref "#Changelog-v1.4.3">}}) below for detailed explanation.
 
-### Downloads
+#### Downloads
 - [Docker image v1.4.3](https://hub.docker.com/r/tykio/tyk-sync/tags?page=&page_size=&ordering=-name&name=v1.4.3)
   - ```bash
     docker pull tykio/tyk-sync:v1.4.3
     ```
 - [Source code](https://github.com/TykTechnologies/tyk-sync/releases/tag/v1.4.3)
 
-### Changelog {#Changelog-v1.4.3}
+#### Changelog {#Changelog-v1.4.3}
 
-#### Updated
+##### Updated
 
 <ul>
 <li>
@@ -341,7 +348,7 @@ Recommended usage:
 Tyk Dashboard setting: [allow-unsafe-oas]({{<ref "tyk-dashboard/configuration#allow_unsafe_oas">}})
 Tyk Sync: use the [--allow-unsafe-oas]({{<ref "/api-management/automations#synchronize-tyk-environment-with-github-repository">}}) when invoking the CLI
 
-###### API Category is not yet supported
+####### API Category is not yet supported
 API Categories are a new capability with v5.3.0 of Tyk Dashboard. API Categories are currently not supported in Tyk Sync for Tyk OAS APIs. This means that Tyk Sync will not be able to save the category definition set for the Tyk OAS API. Until we update Tyk Sync you would need to manually recreate the categories in the new environment.
 </details>
 </li>
@@ -356,7 +363,7 @@ Tyk Sync is using Golang 1.21 Programming Language starting with the 1.4.3 relea
 </li>
 </ul>
 
-#### Security
+##### Security
 
 The following CVEs have been resolved in this release:
 
@@ -366,32 +373,32 @@ The following CVEs have been resolved in this release:
 
 ---
 
-## 1.4.2 Release Notes
+### 1.4.2 Release Notes
 
-#### Release date 07 Dec 2023
+##### Release date 07 Dec 2023
 
-### Breaking Changes
+#### Breaking Changes
 This release has no breaking changes.
 
-### Deprecations
+#### Deprecations
 There are no deprecations in this release.
 
-### Upgrade instructions
+#### Upgrade instructions
 If you are using a 1.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, **you should skip 1.4.0** and upgrade directly to this release.
 
-### Release Highlights
+#### Release Highlights
 This release enhances compatibility as detailed in the [changelog]({{< ref "#Changelog-v1.4.2">}}) below.
 
-### Downloads
+#### Downloads
 - [Docker image v1.4.2](https://hub.docker.com/layers/tykio/tyk-sync/v1.4.2/images/sha256-3a6473aedeb4963bc19b218b52c4649fffc6ad46113799e9c1055004d5dc754a?context=explore)
   - ```bash
     docker pull tykio/tyk-sync:v1.4.2
     ```
 - [Source code](https://github.com/TykTechnologies/tyk-sync/releases/tag/v1.4.2)
 
-### Changelog {#Changelog-v1.4.2}
+#### Changelog {#Changelog-v1.4.2}
 
-#### Updated
+##### Updated
 
 <ul>
 <li>
