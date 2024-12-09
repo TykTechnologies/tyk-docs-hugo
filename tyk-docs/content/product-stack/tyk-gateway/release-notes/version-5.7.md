@@ -105,7 +105,7 @@ If you are upgrading to 5.7.0, please follow the detailed [upgrade instructions]
     docker pull tykio/tyk-gateway:v5.7.0
     ``` 
 - Helm charts
-  - [tyk-charts v2.2.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.1.md" >}})
+  - [tyk-charts v2.2.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.2.md" >}})
 
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
@@ -199,6 +199,13 @@ Fixed a backwards compatibility issue with Tyk OAS API schema validation. When d
 <summary>Fixed Policy Merge Issue with Path-Based Permissions</summary>
 
 Resolved a bug where path-based permissions in policies were not preserved when policies were combined, potentially omitting URL values and incorrectly restricting access. The updated behavior ensures that URL access rights from all applicable policies are merged, regardless of policy order, allowing seamless enforcement of combined permissions.
+</details>
+</li>
+<li>
+<details>
+<summary>Resolved API Routing Issue with Trailing Slashes and Overlapping Listen Paths</summary>
+
+Fixed a routing issue that caused incorrect API matching when dealing with APIs that lacked a trailing slash, used custom domains, or had similar listen path patterns. Previously, the router prioritized APIs with longer subdomains and shorter listen paths, leading to incorrect matches when listen paths shared prefixes. This fix ensures accurate API matching, even when subdomains and listen paths overlap.
 </details>
 </li>
 <li>

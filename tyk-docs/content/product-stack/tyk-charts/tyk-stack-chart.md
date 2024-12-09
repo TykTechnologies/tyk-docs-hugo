@@ -661,6 +661,11 @@ You can also configure connection settings for it's exporter. By default `grpc` 
 
  To enable TLS settings for the exporter, you can set `gateway.opentelemetry.tls.enabled` to true. 
 
+#### Liveness and readiness probes{#gateway-probes}
+Gateway liveness probes can be customised via `gateway.livenessProbe` field. All fields from PodLivenessProbe object can be added here. If set to empty or nil, the default health check on /health will be performed.
+
+Gateway readiness probes can be customised via `gateway.readinessProbe` field. All fields from PodReadinessProbe object can be added here. If set to empty or nil, the default health check on /health will be performed.
+
 ### Pump Configurations
 
 To enable Pump, set `global.components.pump` to true, and configure below inside `tyk-pump` section.
@@ -784,6 +789,25 @@ Optional Steps, if needed:
 - If necessary, either enable `insecureSkipVerify` via `tyk-dashboard.dashboard.tls.certificates`, or mount CA information through `tyk-dashboard.dashboard.extraVolumes` and `tyk-dashboard.dashboard.extraVolumeMounts`.
 - If the `tyk-bootstrap` chart is used to bootstrap the Tyk Dashboard, ensure that it has certificates to send requests to the Tyk Dashboard or enable `insecureSkipVerify` in the `tyk-bootstrap` chart.
 - If the Tyk Gateway connects to the Tyk Dashboard, confirm that the Tyk Gateway has appropriate certificates for connecting to the Tyk Dashboard
+
+#### Audit Log Configurations
+
+You can manage audit logging for Tyk Dashboard via `auditLogs`:
+
+- `auditLogs.enabled`: Enables or disables audit logging. It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_ENABLED`. Disabled by default.
+- `auditLogs.type`: Specifies the storage type for audit logs (`db` or `file`). It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_STORETYPE`. Set to `file` by default.
+- `auditLogs.format`: Defines the format of audit log files (`json` or `text`). It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_FORMAT`. Set to `text` by default.
+- `auditLogs.path`: Sets the path to the audit log file. It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_PATH`. Set to "" by default.
+- `auditLogs.enableDetailedRecording`: Enables detailed logging, including HTTP requests (headers only) and full HTTP responses. It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_DETAILEDRECORDING`. Disabled by default.
+
+#### OPA Configurations{#opa-configurations}
+
+You can manage OPA (Open Agent Policy) for Tyk Dashboard via `opa`:
+
+- `opa.enabled`: Enables OPA support. It sets corresponding Dashboard environment `TYK_DB_SECURITY_OPENPOLICY_ENABLED`. Disabled by default.
+- `opa.debug`: Activates OPA debug mode for detailed logging of policy execution. It sets corresponding Dashboard environment `TYK_DB_SECURITY_OPENPOLICY_DEBUG`. Disabled by default.
+- `opa.api`: Enables OPA API mode to manage policies via the Dashboard API. It sets corresponding Dashboard environment `TYK_DB_SECURITY_OPENPOLICY_ENABLEAPI`. Disabled by default.
+- `opa.allowAdminPasswordReset`: Required if OPA is enabled with its default policies. It sets corresponding Dashboard environment `TYK_DB_SECURITY_ALLOWADMINRESETPASSWORD`. Enabled by default.
 
 ### Tyk Bootstrap Configurations
 
