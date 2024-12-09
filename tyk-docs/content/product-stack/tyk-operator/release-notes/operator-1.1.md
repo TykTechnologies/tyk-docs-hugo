@@ -15,7 +15,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 1.1.0 Release Notes
 
-### Release Date XX Nov 2024 (TBD)
+### Release Date 09 December 2024
 
 ### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release:
