@@ -1,5 +1,5 @@
 ---
-title: Client authentication
+title: Client Authentication and Authorization
 description: Learn how to apply the most appropriate authentication method to secure access your APIs with Tyk. Here you will find everything there is to know about authenticating and authorizing API clients with Tyk.
 tags: ["Authentication", "Authorization", "Tyk Authentication", "Tyk Authorization", "Secure APIs", "client"]
 aliases:
