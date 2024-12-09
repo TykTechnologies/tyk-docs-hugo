@@ -101,7 +101,15 @@ To configure Tyk components, users can utilize both config files and [environmen
 
 ### Bootstrapping
 
-By default, the chart executes a bootstrapping job immediately after installation. This process ensures the presence of a valid dashboard license and initializes key components such as tyk-dashboard, tyk-portal, and tyk-operator, enabling them for immediate use.
+By default, the chart executes a [bootstrapping job](https://github.com/TykTechnologies/tyk-k8s-bootstrap) immediately after installation. This process ensures the presence of a valid dashboard license and initializes key components such as tyk-dashboard, tyk-portal, and tyk-operator, enabling them for immediate use.
+
+The bootstrapping job uses three distinct applications acting as Helm chart hooks:
+
+| **Bootstrapping Component** | **Description** |
+|-----------------------------|-----------------|
+| `bootstrap-pre-install`     | - Runs as a pre-install hook. <br> - Validates the Tyk Dashboard license key to ensure proper installation prerequisites. |
+| `bootstrap-post-install`    | - Executes post-installation. <br> - Sets up an organization and admin user in the Tyk Dashboard. <br> - Creates Kubernetes secrets required by Tyk Operator and Tyk Enterprise Portal. <br> **Note**: If an existing organization and admin user are found in the database, the bootstrapping job will not set up a new organization and user. The Kubernetes secrets will not contain the expected Org ID or API key. Please update the Secret with existing credentials in this case. |
+| `bootstrap-pre-delete`      | - Functions as a pre-delete hook. <br> - Cleans up resources, ensuring no residual configurations remain post-uninstallation. |
 
 Key Notes on Bootstrapping:
 
@@ -681,6 +689,25 @@ Optional Steps, if needed:
 - If the `tyk-bootstrap` chart is used to bootstrap the Tyk Dashboard, ensure that bootstrap app can validate certificate of Tyk Dashboard or enable `insecureSkipVerify` in the `tyk-bootstrap` chart.
 - If the Tyk Gateway connects to the Tyk Dashboard, confirm that the Tyk Gateway has appropriate certificates for connecting to the Tyk Dashboard
 
+#### Audit Log Configurations
+
+You can manage audit logging for Tyk Dashboard via `auditLogs`:
+
+- `auditLogs.enabled`: Enables or disables audit logging. It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_ENABLED`. Disabled by default.
+- `auditLogs.type`: Specifies the storage type for audit logs (`db` or `file`). It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_STORETYPE`. Set to `file` by default.
+- `auditLogs.format`: Defines the format of audit log files (`json` or `text`). It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_FORMAT`. Set to `text` by default.
+- `auditLogs.path`: Sets the path to the audit log file. It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_PATH`. Set to "" by default.
+- `auditLogs.enableDetailedRecording`: Enables detailed logging, including HTTP requests (headers only) and full HTTP responses. It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_DETAILEDRECORDING`. Disabled by default.
+
+#### OPA Configurations{#opa-configurations}
+
+You can manage OPA (Open Agent Policy) for Tyk Dashboard via `opa`:
+
+- `opa.enabled`: Enables OPA support. It sets corresponding Dashboard environment `TYK_DB_SECURITY_OPENPOLICY_ENABLED`. Disabled by default.
+- `opa.debug`: Activates OPA debug mode for detailed logging of policy execution. It sets corresponding Dashboard environment `TYK_DB_SECURITY_OPENPOLICY_DEBUG`. Disabled by default.
+- `opa.api`: Enables OPA API mode to manage policies via the Dashboard API. It sets corresponding Dashboard environment `TYK_DB_SECURITY_OPENPOLICY_ENABLEAPI`. Disabled by default.
+- `opa.allowAdminPasswordReset`: Required if OPA is enabled with its default policies. It sets corresponding Dashboard environment `TYK_DB_SECURITY_ALLOWADMINRESETPASSWORD`. Enabled by default.
+
 ### Tyk MDCB Configurations
 
 #### Tyk MDCB License (Required)
@@ -756,7 +783,7 @@ tyk-mdcb:
 
 ### Tyk Bootstrap Configurations
 
-To enable bootstrapping, set `global.components.bootstrap` to `true`. It would run [tyk-k8s-bootstrap](https://github.com/TykTechnologies/tyk-k8s-bootstrap) to bootstrap `tyk-control-plane` and to create Kubernetes secrets that can be utilized in Tyk Operator and Tyk Developer Portal.
+To enable [bootstrapping](#bootstrapping), set `global.components.bootstrap` to `true`. It would run [tyk-k8s-bootstrap](https://github.com/TykTechnologies/tyk-k8s-bootstrap) to bootstrap `tyk-control-plane` and to create Kubernetes secrets that can be utilized in Tyk Operator and Tyk Developer Portal.
 
 {{< note success >}}
 **Note**
@@ -791,7 +818,7 @@ tyk-dev-portal:
 {{< note success >}}
 **Note** 
 
-SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please transition to PostgreSQL, MongoDB or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings/postgresql#introduction" >}}), [MongoDB]({{< ref "planning-for-production/database-settings/mongodb" >}}), or one of the listed compatible alternatives.
 {{< /note >}}
 
 By default, Tyk Developer Portal use `sqlite3` to store portal metadata. If you want to use a different SQL Database, please modify the section below.

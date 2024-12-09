@@ -374,6 +374,18 @@ You can configure persistent volume for APIs, Policies, and middlewares using `e
 
 For further details for configuring Tyk Gateway, consult the [Tyk Gateway Configuration Options]({{<ref "tyk-oss-gateway/configuration">}}) guide.
 
+#### OpenTelemetry
+To enable OpenTelemetry for Gateway set `gateway.opentelemetry.enabled` flag to true. It is disabled by default.
+
+You can also configure connection settings for it's exporter. By default `grpc` exporter is enabled on `localhost:4317` endpoint.
+
+ To enable TLS settings for the exporter, you can set `gateway.opentelemetry.tls.enabled` to true. 
+
+#### Liveness and readiness probes
+Gateway liveness probes can be customised via `gateway.livenessProbe` field. All fields from PodLivenessProbe object can be added here. If set to empty or nil, the default health check on /health will be performed.
+
+Gateway readiness probes can be customised via `gateway.readinessProbe` field. All fields from PodReadinessProbe object can be added here. If set to empty or nil, the default health check on /health will be performed.
+
 ### Pump Configurations
 
 To enable Pump, set `global.components.pump` to true, and configure below inside `tyk-pump` section.

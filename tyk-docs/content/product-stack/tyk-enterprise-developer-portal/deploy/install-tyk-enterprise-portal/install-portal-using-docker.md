@@ -225,6 +225,13 @@ docker volume rm tyk-portal-mysql-data
 SQLite is useful for quick deployment and testing, however we don't recommend using it in production.
 {{< /warning >}}
 
+{{< note success >}}
+**Note** 
+
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings/postgresql#introduction" >}}), [MongoDB]({{< ref "planning-for-production/database-settings/mongodb" >}}), or one of the listed compatible alternatives.
+{{< /note >}}
+
+
 ### Prepare an environment variables file and data volumes
 #### Create a volume for the portal's database
 To start with, you need to create a single volume for sqlite:
