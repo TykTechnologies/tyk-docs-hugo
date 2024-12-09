@@ -242,8 +242,8 @@
             "all_versions_are_similar_to_path": true
         },
         "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/": {
-            "/docs/": "/api-management/authentication-authorization/",
-            "/docs/5.6/": "/api-management/authentication-authorization/",
+            "/docs/": "/api-management/security-best-practices/",
+            "/docs/5.6/": "/api-management/security-best-practices/",
             "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
             "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
             "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
@@ -866,37 +866,37 @@
             "/docs/": "/api-management/authentication-authorization/",
             "/docs/5.6/": "/api-management/authentication-authorization/",
             "/docs/nightly/": "/api-management/authentication-authorization/",
-            "/docs/5.5/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
-            "/docs/5.4/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
-            "/docs/5.3/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
-            "/docs/5.2/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
-            "/docs/5.1/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
-            "/docs/5.0/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
-            "/docs/4.3/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
-            "/docs/4.2/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
-            "/docs/4.1/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
-            "/docs/4.0/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
-            "/docs/3.2/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
-            "/docs/3.1/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/",
-            "/docs/3-lts/": "/basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens/"
+            "/docs/4.2/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant/",
+            "/docs/4.1/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant/",
+            "/docs/4.0/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant/",
+            "/docs/3.2/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant/",
+            "/docs/3.1/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant/",
+            "/docs/3-lts/": "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant/",
+            "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/5.2/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/5.0/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/4.3/": "/basic-config-and-security/security/authentication-authorization/openid-connect/"
         },
         "/api-management/automations/": {
             "/docs/": "/api-management/automations/",
             "/docs/5.6/": "/api-management/automations/",
             "/docs/nightly/": "/api-management/automations/",
-            "/docs/5.5/": "/product-stack/tyk-operator/tyk-ingress-controller/",
-            "/docs/5.4/": "/product-stack/tyk-operator/tyk-ingress-controller/",
-            "/docs/5.3/": "/product-stack/tyk-operator/tyk-ingress-controller/",
-            "/docs/5.2/": "/product-stack/tyk-operator/tyk-ingress-controller/",
-            "/docs/5.1/": "/product-stack/tyk-operator/tyk-ingress-controller/",
-            "/docs/5.0/": "/tyk-stack/tyk-operator/publish-an-api/",
-            "/docs/4.3/": "/tyk-stack/tyk-operator/publish-an-api/",
-            "/docs/4.2/": "/tyk-stack/tyk-operator/publish-an-api/",
-            "/docs/4.1/": "/tyk-stack/tyk-operator/publish-an-api/",
-            "/docs/4.0/": "/tyk-stack/tyk-operator/publish-an-api/",
-            "/docs/3.2/": "/tyk-sync/",
-            "/docs/3.1/": "/tyk-sync/",
-            "/docs/3-lts/": "/tyk-sync/"
+            "/docs/5.5/": "/product-stack/tyk-operator/key-concepts/operator-context/",
+            "/docs/5.4/": "/product-stack/tyk-operator/key-concepts/operator-context/",
+            "/docs/5.3/": "/tyk-stack/tyk-operator/create-an-api/",
+            "/docs/5.2/": "/tyk-stack/tyk-operator/create-an-api/",
+            "/docs/5.1/": "/tyk-stack/tyk-operator/create-an-api/",
+            "/docs/5.0/": "/tyk-stack/tyk-operator/create-an-api/",
+            "/docs/4.3/": "/tyk-stack/tyk-operator/create-an-api/",
+            "/docs/4.2/": "/tyk-stack/tyk-operator/create-an-api/",
+            "/docs/4.1/": "/tyk-stack/tyk-operator/create-an-api/",
+            "/docs/4.0/": "/tyk-stack/tyk-operator/create-an-api/",
+            "/docs/3.2/": "/tyk-stack/tyk-operator/installing-tyk-operator/",
+            "/docs/3.1/": "/tyk-stack/tyk-operator/installing-tyk-operator/",
+            "/docs/3-lts/": "/tyk-stack/tyk-operator/installing-tyk-operator/"
         },
         "/api-management/manage-apis/api-operations/api-observability/": {
             "/docs/": "/api-management/manage-apis/api-operations/api-observability/",
@@ -931,14 +931,14 @@
             "all_versions_are_similar_to_path": true
         },
         "/api-management/security-best-practices/": {
+            "/docs/": "/api-management/security-best-practices/",
+            "/docs/5.6/": "/api-management/security-best-practices/",
             "/docs/nightly/": "/api-management/security-best-practices/",
-            "/docs/": "/basic-config-and-security/security/",
-            "/docs/5.6/": "/basic-config-and-security/security/",
-            "/docs/5.5/": "/basic-config-and-security/security/",
-            "/docs/5.4/": "/basic-config-and-security/security/",
-            "/docs/5.3/": "/basic-config-and-security/security/",
-            "/docs/5.2/": "/basic-config-and-security/security/",
-            "/docs/5.1/": "/basic-config-and-security/security/",
+            "/docs/5.5/": "/apim-best-practice/overview/",
+            "/docs/5.4/": "/apim-best-practice/overview/",
+            "/docs/5.3/": "/apim-best-practice/overview/",
+            "/docs/5.2/": "/apim-best-practice/overview/",
+            "/docs/5.1/": "/apim-best-practice/overview/",
             "/docs/5.0/": "/basic-config-and-security/security/",
             "/docs/4.3/": "/basic-config-and-security/security/",
             "/docs/4.2/": "/basic-config-and-security/security/",
@@ -949,11 +949,12 @@
             "/docs/3-lts/": "/basic-config-and-security/security/"
         },
         "/api-management/upstream-authentication/": {
+            "/docs/": "/api-management/upstream-authentication/",
             "/docs/nightly/": "/api-management/upstream-authentication/"
         },
         "/apim-best-practice/api-security-best-practice/authentication/": {
-            "/docs/": "/apim-best-practice/api-security-best-practice/authentication/",
-            "/docs/5.6/": "/apim-best-practice/api-security-best-practice/authentication/",
+            "/docs/": "/api-management/security-best-practices/",
+            "/docs/5.6/": "/api-management/security-best-practices/",
             "/docs/5.5/": "/apim-best-practice/api-security-best-practice/authentication/",
             "/docs/5.4/": "/apim-best-practice/api-security-best-practice/authentication/",
             "/docs/5.3/": "/apim-best-practice/api-security-best-practice/authentication/",
@@ -962,8 +963,8 @@
             "/docs/nightly/": "/api-management/security-best-practices/"
         },
         "/apim-best-practice/api-security-best-practice/authorisation-levels/": {
-            "/docs/": "/apim-best-practice/api-security-best-practice/authorisation-levels/",
-            "/docs/5.6/": "/apim-best-practice/api-security-best-practice/authorisation-levels/",
+            "/docs/": "/api-management/security-best-practices/",
+            "/docs/5.6/": "/api-management/security-best-practices/",
             "/docs/5.5/": "/apim-best-practice/api-security-best-practice/authorisation-levels/",
             "/docs/5.4/": "/apim-best-practice/api-security-best-practice/authorisation-levels/",
             "/docs/5.3/": "/apim-best-practice/api-security-best-practice/authorisation-levels/",
@@ -972,8 +973,8 @@
             "/docs/nightly/": "/api-management/security-best-practices/"
         },
         "/apim-best-practice/api-security-best-practice/authorisation/": {
-            "/docs/": "/apim-best-practice/api-security-best-practice/authorisation/",
-            "/docs/5.6/": "/apim-best-practice/api-security-best-practice/authorisation/",
+            "/docs/": "/api-management/security-best-practices/",
+            "/docs/5.6/": "/api-management/security-best-practices/",
             "/docs/5.5/": "/apim-best-practice/api-security-best-practice/authorisation/",
             "/docs/5.4/": "/apim-best-practice/api-security-best-practice/authorisation/",
             "/docs/5.3/": "/apim-best-practice/api-security-best-practice/authorisation/",
@@ -982,8 +983,8 @@
             "/docs/nightly/": "/api-management/security-best-practices/"
         },
         "/apim-best-practice/api-security-best-practice/configuration/": {
-            "/docs/": "/apim-best-practice/api-security-best-practice/configuration/",
-            "/docs/5.6/": "/apim-best-practice/api-security-best-practice/configuration/",
+            "/docs/": "/api-management/security-best-practices/",
+            "/docs/5.6/": "/api-management/security-best-practices/",
             "/docs/5.5/": "/apim-best-practice/api-security-best-practice/configuration/",
             "/docs/5.4/": "/apim-best-practice/api-security-best-practice/configuration/",
             "/docs/5.3/": "/apim-best-practice/api-security-best-practice/configuration/",
@@ -992,8 +993,8 @@
             "/docs/nightly/": "/api-management/security-best-practices/"
         },
         "/apim-best-practice/api-security-best-practice/governance/": {
-            "/docs/": "/apim-best-practice/api-security-best-practice/governance/",
-            "/docs/5.6/": "/apim-best-practice/api-security-best-practice/governance/",
+            "/docs/": "/api-management/security-best-practices/",
+            "/docs/5.6/": "/api-management/security-best-practices/",
             "/docs/5.5/": "/apim-best-practice/api-security-best-practice/governance/",
             "/docs/5.4/": "/apim-best-practice/api-security-best-practice/governance/",
             "/docs/5.3/": "/apim-best-practice/api-security-best-practice/governance/",
@@ -1002,8 +1003,8 @@
             "/docs/nightly/": "/api-management/security-best-practices/"
         },
         "/apim-best-practice/api-security-best-practice/overview/": {
-            "/docs/": "/apim-best-practice/api-security-best-practice/overview/",
-            "/docs/5.6/": "/apim-best-practice/api-security-best-practice/overview/",
+            "/docs/": "/api-management/security-best-practices/",
+            "/docs/5.6/": "/api-management/security-best-practices/",
             "/docs/5.5/": "/apim-best-practice/api-security-best-practice/overview/",
             "/docs/5.4/": "/apim-best-practice/api-security-best-practice/overview/",
             "/docs/5.3/": "/apim-best-practice/api-security-best-practice/overview/",
@@ -1012,8 +1013,8 @@
             "/docs/nightly/": "/api-management/security-best-practices/"
         },
         "/apim-best-practice/api-security-best-practice/resource-consumption/": {
-            "/docs/": "/apim-best-practice/api-security-best-practice/resource-consumption/",
-            "/docs/5.6/": "/apim-best-practice/api-security-best-practice/resource-consumption/",
+            "/docs/": "/api-management/security-best-practices/",
+            "/docs/5.6/": "/api-management/security-best-practices/",
             "/docs/5.5/": "/apim-best-practice/api-security-best-practice/resource-consumption/",
             "/docs/5.4/": "/apim-best-practice/api-security-best-practice/resource-consumption/",
             "/docs/5.3/": "/apim-best-practice/api-security-best-practice/resource-consumption/",
@@ -1022,8 +1023,8 @@
             "/docs/nightly/": "/api-management/security-best-practices/"
         },
         "/apim-best-practice/overview/": {
-            "/docs/": "/apim-best-practice/overview/",
-            "/docs/5.6/": "/apim-best-practice/overview/",
+            "/docs/": "/api-management/security-best-practices/",
+            "/docs/5.6/": "/api-management/security-best-practices/",
             "/docs/5.5/": "/apim-best-practice/overview/",
             "/docs/5.4/": "/apim-best-practice/overview/",
             "/docs/5.3/": "/apim-best-practice/overview/",
@@ -1156,8 +1157,8 @@
             "all_versions_are_similar_to_path": true
         },
         "/basic-config-and-security/security/": {
-            "/docs/": "/basic-config-and-security/security/",
-            "/docs/5.6/": "/basic-config-and-security/security/",
+            "/docs/": "/api-management/security-best-practices/",
+            "/docs/5.6/": "/api-management/security-best-practices/",
             "/docs/5.5/": "/basic-config-and-security/security/",
             "/docs/5.4/": "/basic-config-and-security/security/",
             "/docs/5.3/": "/basic-config-and-security/security/",
@@ -1847,8 +1848,8 @@
             "/docs/nightly/": "/api-management/authentication-authorization/"
         },
         "/basic-config-and-security/security/owasp-top-ten/": {
-            "/docs/": "/basic-config-and-security/security/owasp-top-ten/",
-            "/docs/5.6/": "/basic-config-and-security/security/owasp-top-ten/",
+            "/docs/": "/api-management/security-best-practices/",
+            "/docs/5.6/": "/api-management/security-best-practices/",
             "/docs/5.5/": "/basic-config-and-security/security/owasp-top-ten/",
             "/docs/5.4/": "/basic-config-and-security/security/owasp-top-ten/",
             "/docs/5.3/": "/basic-config-and-security/security/owasp-top-ten/",
@@ -2670,6 +2671,8 @@
             "/docs/5.4/": "/developer-support/special-releases-and-features/long-term-support-releases/",
             "/docs/5.3/": "/developer-support/special-releases-and-features/long-term-support-releases/",
             "/docs/nightly/": "/developer-support/special-releases-and-features/long-term-support-releases/",
+            "/docs/5.2/": "/developer-support/long-term-support-releases/",
+            "/docs/5.1/": "/developer-support/long-term-support-releases/",
             "/docs/5.0/": "/frequently-asked-questions/long-term-support-releases/",
             "/docs/4.3/": "/frequently-asked-questions/long-term-support-releases/",
             "/docs/4.2/": "/frequently-asked-questions/long-term-support-releases/",
@@ -2677,9 +2680,7 @@
             "/docs/4.0/": "/frequently-asked-questions/long-term-support-releases/",
             "/docs/3.2/": "/frequently-asked-questions/long-term-support-releases/",
             "/docs/3.1/": "/frequently-asked-questions/long-term-support-releases/",
-            "/docs/3-lts/": "/frequently-asked-questions/long-term-support-releases/",
-            "/docs/5.2/": "/developer-support/long-term-support-releases/",
-            "/docs/5.1/": "/developer-support/long-term-support-releases/"
+            "/docs/3-lts/": "/frequently-asked-questions/long-term-support-releases/"
         },
         "/developer-support/tyk-release-summary/overview/": {
             "/docs/": "/developer-support/tyk-release-summary/overview/",
@@ -6183,6 +6184,10 @@
             "/docs/5.6/": "/product-stack/tyk-charts/release-notes/version-2.1/",
             "/docs/nightly/": "/product-stack/tyk-charts/release-notes/version-2.1/"
         },
+        "/product-stack/tyk-charts/release-notes/version-2.2/": {
+            "/docs/": "/product-stack/tyk-charts/release-notes/version-2.2/",
+            "/docs/nightly/": "/product-stack/tyk-charts/release-notes/version-2.2/"
+        },
         "/product-stack/tyk-charts/tyk-control-plane-chart/": {
             "/docs/": "/product-stack/tyk-charts/tyk-control-plane-chart/",
             "/docs/5.6/": "/product-stack/tyk-charts/tyk-control-plane-chart/",
@@ -6566,6 +6571,10 @@
             "/docs/5.6/": "/product-stack/tyk-dashboard/release-notes/version-5.6/",
             "/docs/nightly/": "/product-stack/tyk-dashboard/release-notes/version-5.6/"
         },
+        "/product-stack/tyk-dashboard/release-notes/version-5.7/": {
+            "/docs/": "/product-stack/tyk-dashboard/release-notes/version-5.7/",
+            "/docs/nightly/": "/product-stack/tyk-dashboard/release-notes/version-5.7/"
+        },
         "/product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.9.0-list-of-endpoints/": {
             "/docs/": "/product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.9.0-list-of-endpoints/",
             "/docs/5.6/": "/product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.9.0-list-of-endpoints/",
@@ -6632,7 +6641,7 @@
             "/docs/5.2/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose/",
             "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose/",
             "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose/",
-            "/docs/5.0/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-postgresql/"
+            "/docs/5.0/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-mysql/"
         },
         "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker/": {
             "/docs/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker/",
@@ -8028,6 +8037,10 @@
             "/docs/5.6/": "/product-stack/tyk-gateway/release-notes/version-5.6/",
             "/docs/nightly/": "/product-stack/tyk-gateway/release-notes/version-5.6/"
         },
+        "/product-stack/tyk-gateway/release-notes/version-5.7/": {
+            "/docs/": "/product-stack/tyk-gateway/release-notes/version-5.7/",
+            "/docs/nightly/": "/product-stack/tyk-gateway/release-notes/version-5.7/"
+        },
         "/product-stack/tyk-identity-broker/release-notes/tib-v1.6/": {
             "/docs/": "/product-stack/tyk-identity-broker/release-notes/tib-v1.6/",
             "/docs/5.6/": "/product-stack/tyk-identity-broker/release-notes/tib-v1.6/",
@@ -8228,6 +8241,10 @@
             "/docs/5.6/": "/product-stack/tyk-operator/release-notes/operator-1.0/",
             "/docs/nightly/": "/product-stack/tyk-operator/release-notes/operator-1.0/"
         },
+        "/product-stack/tyk-operator/release-notes/operator-1.1/": {
+            "/docs/": "/product-stack/tyk-operator/release-notes/operator-1.1/",
+            "/docs/nightly/": "/product-stack/tyk-operator/release-notes/operator-1.1/"
+        },
         "/product-stack/tyk-operator/release-notes/overview/": {
             "/docs/": "/product-stack/tyk-operator/release-notes/overview/",
             "/docs/5.6/": "/product-stack/tyk-operator/release-notes/overview/",
@@ -8331,7 +8348,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/configuration/common-configuration/batching/"
         },
         "/product-stack/tyk-streaming/configuration/common-configuration/error-handling/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/common-configuration/error-handling/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/common-configuration/error-handling/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/common-configuration/error-handling/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/common-configuration/error-handling/",
@@ -8347,7 +8364,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/configuration/common-configuration/field-paths/"
         },
         "/product-stack/tyk-streaming/configuration/common-configuration/interpolation/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/common-configuration/interpolation/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/common-configuration/interpolation/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/common-configuration/interpolation/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/common-configuration/interpolation/",
@@ -8363,7 +8380,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/configuration/common-configuration/processing-pipelines/"
         },
         "/product-stack/tyk-streaming/configuration/common-configuration/resources/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/common-configuration/resources/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/common-configuration/resources/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/common-configuration/resources/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/common-configuration/resources/",
@@ -8379,7 +8396,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/configuration/overview/"
         },
         "/product-stack/tyk-streaming/configuration/common-configuration/windowed_processing/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/common-configuration/windowed_processing/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/common-configuration/windowed_processing/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/common-configuration/windowed_processing/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/common-configuration/windowed_processing/",
@@ -8387,7 +8404,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/inputs/amqp-0-9/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/inputs/amqp-0-9/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/inputs/amqp-0-9/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/inputs/amqp-0-9/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/inputs/amqp-0-9/",
@@ -8395,7 +8412,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/inputs/amqp-1/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/inputs/amqp-1/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/inputs/amqp-1/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/inputs/amqp-1/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/inputs/amqp-1/",
@@ -8411,7 +8428,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/configuration/inputs/broker/"
         },
         "/product-stack/tyk-streaming/configuration/inputs/generate/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/inputs/generate/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/inputs/generate/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/inputs/generate/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/inputs/generate/",
@@ -8435,7 +8452,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/configuration/inputs/http-server/"
         },
         "/product-stack/tyk-streaming/configuration/inputs/kafka-franz/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/inputs/kafka-franz/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/inputs/kafka-franz/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/inputs/kafka-franz/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/inputs/kafka-franz/",
@@ -8451,7 +8468,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/configuration/inputs/kafka/"
         },
         "/product-stack/tyk-streaming/configuration/inputs/mqtt/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/inputs/mqtt/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/inputs/mqtt/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/inputs/mqtt/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/inputs/mqtt/",
@@ -8459,7 +8476,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/inputs/nats/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/inputs/nats/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/inputs/nats/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/inputs/nats/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/inputs/nats/",
@@ -8467,7 +8484,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/inputs/nsq/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/inputs/nsq/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/inputs/nsq/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/inputs/nsq/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/inputs/nsq/",
@@ -8483,7 +8500,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/configuration/inputs/overview/"
         },
         "/product-stack/tyk-streaming/configuration/inputs/redis-pubsub/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/inputs/redis-pubsub/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/inputs/redis-pubsub/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/inputs/redis-pubsub/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/inputs/redis-pubsub/",
@@ -8491,7 +8508,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/outputs/amqp-0-9/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/amqp-0-9/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/outputs/amqp-0-9/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/outputs/amqp-0-9/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/outputs/amqp-0-9/",
@@ -8499,7 +8516,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/outputs/amqp-1/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/amqp-1/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/outputs/amqp-1/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/outputs/amqp-1/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/outputs/amqp-1/",
@@ -8515,7 +8532,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/configuration/outputs/broker/"
         },
         "/product-stack/tyk-streaming/configuration/outputs/drop_on/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/drop_on/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/outputs/drop_on/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/outputs/drop_on/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/outputs/drop_on/",
@@ -8523,7 +8540,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/outputs/fallback/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/fallback/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/outputs/fallback/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/outputs/fallback/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/outputs/fallback/",
@@ -8547,7 +8564,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/configuration/outputs/http-server/"
         },
         "/product-stack/tyk-streaming/configuration/outputs/kafka-franz/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/kafka-franz/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/outputs/kafka-franz/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/outputs/kafka-franz/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/outputs/kafka-franz/",
@@ -8563,7 +8580,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/configuration/outputs/kafka/"
         },
         "/product-stack/tyk-streaming/configuration/outputs/mqtt/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/mqtt/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/outputs/mqtt/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/outputs/mqtt/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/outputs/mqtt/",
@@ -8571,7 +8588,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/outputs/nats/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/nats/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/outputs/nats/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/outputs/nats/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/outputs/nats/",
@@ -8579,7 +8596,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/outputs/nsq/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/nsq/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/outputs/nsq/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/outputs/nsq/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/outputs/nsq/",
@@ -8595,7 +8612,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/configuration/outputs/overview/"
         },
         "/product-stack/tyk-streaming/configuration/outputs/redis-pubsub/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/redis-pubsub/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/outputs/redis-pubsub/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/outputs/redis-pubsub/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/outputs/redis-pubsub/",
@@ -8603,7 +8620,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/outputs/reject/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/reject/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/outputs/reject/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/outputs/reject/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/outputs/reject/",
@@ -8611,7 +8628,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/outputs/retry/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/retry/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/outputs/retry/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/outputs/retry/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/outputs/retry/",
@@ -8619,7 +8636,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/outputs/stdout/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/stdout/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/outputs/stdout/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/outputs/stdout/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/outputs/stdout/",
@@ -8627,7 +8644,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/outputs/switch/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/switch/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/outputs/switch/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/outputs/switch/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/outputs/switch/",
@@ -8635,7 +8652,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/outputs/sync-response/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/sync-response/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/outputs/sync-response/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/outputs/sync-response/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/outputs/sync-response/",
@@ -8659,7 +8676,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/configuration/processors/avro/"
         },
         "/product-stack/tyk-streaming/configuration/processors/aws-lambda/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/aws-lambda/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/aws-lambda/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/aws-lambda/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/aws-lambda/",
@@ -8667,7 +8684,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/bloblang/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/bloblang/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/bloblang/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/bloblang/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/bloblang/",
@@ -8675,7 +8692,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/bounds-check/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/bounds-check/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/bounds-check/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/bounds-check/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/bounds-check/",
@@ -8683,7 +8700,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/branch/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/branch/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/branch/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/branch/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/branch/",
@@ -8691,7 +8708,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/cache/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/cache/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/cache/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/cache/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/cache/",
@@ -8699,7 +8716,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/cached/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/cached/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/cached/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/cached/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/cached/",
@@ -8707,7 +8724,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/catch/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/catch/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/catch/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/catch/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/catch/",
@@ -8715,7 +8732,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/dedupe/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/dedupe/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/dedupe/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/dedupe/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/dedupe/",
@@ -8723,7 +8740,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/for-each/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/for-each/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/for-each/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/for-each/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/for-each/",
@@ -8731,7 +8748,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/group-by-value/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/group-by-value/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/group-by-value/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/group-by-value/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/group-by-value/",
@@ -8739,7 +8756,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/group-by/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/group-by/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/group-by/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/group-by/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/group-by/",
@@ -8747,7 +8764,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/http/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/http/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/http/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/http/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/http/",
@@ -8755,7 +8772,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/insert-part/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/insert-part/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/insert-part/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/insert-part/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/insert-part/",
@@ -8763,7 +8780,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/jmes-path/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/jmes-path/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/jmes-path/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/jmes-path/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/jmes-path/",
@@ -8771,7 +8788,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/jq/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/jq/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/jq/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/jq/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/jq/",
@@ -8779,7 +8796,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/json-schema/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/json-schema/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/json-schema/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/json-schema/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/json-schema/",
@@ -8787,7 +8804,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/log/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/log/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/log/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/log/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/log/",
@@ -8795,7 +8812,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/mapping/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/mapping/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/mapping/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/mapping/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/mapping/",
@@ -8803,7 +8820,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/msgpack/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/msgpack/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/msgpack/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/msgpack/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/msgpack/",
@@ -8811,7 +8828,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/mutation/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/mutation/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/mutation/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/mutation/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/mutation/",
@@ -8819,7 +8836,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/noop/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/noop/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/noop/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/noop/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/noop/",
@@ -8835,7 +8852,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/configuration/processors/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/parallel/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/parallel/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/parallel/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/parallel/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/parallel/",
@@ -8843,7 +8860,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/parse-log/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/parse-log/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/parse-log/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/parse-log/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/parse-log/",
@@ -8851,7 +8868,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/processors/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/processors/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/processors/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/processors/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/processors/",
@@ -8859,7 +8876,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/protobuf/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/protobuf/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/protobuf/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/protobuf/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/protobuf/",
@@ -8867,7 +8884,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/rate-limit/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/rate-limit/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/rate-limit/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/rate-limit/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/rate-limit/",
@@ -8875,7 +8892,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/redis/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/redis/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/redis/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/redis/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/redis/",
@@ -8883,7 +8900,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/retry/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/retry/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/retry/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/retry/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/retry/",
@@ -8891,7 +8908,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/schema-registry-decode/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/schema-registry-decode/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/schema-registry-decode/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/schema-registry-decode/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/schema-registry-decode/",
@@ -8899,7 +8916,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/schema-registry-encode/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/schema-registry-encode/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/schema-registry-encode/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/schema-registry-encode/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/schema-registry-encode/",
@@ -8907,7 +8924,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/select-parts/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/select-parts/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/select-parts/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/select-parts/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/select-parts/",
@@ -8915,7 +8932,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/sleep/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/sleep/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/sleep/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/sleep/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/sleep/",
@@ -8923,7 +8940,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/split/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/split/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/split/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/split/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/split/",
@@ -8931,7 +8948,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/switch/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/switch/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/switch/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/switch/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/switch/",
@@ -8939,7 +8956,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/sync-response/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/sync-response/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/sync-response/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/sync-response/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/sync-response/",
@@ -8947,7 +8964,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/try/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/try/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/try/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/try/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/try/",
@@ -8955,7 +8972,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/while/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/while/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/while/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/while/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/while/",
@@ -8963,7 +8980,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/configuration/processors/workflow/": {
-            "/docs/": "/product-stack/tyk-streaming/configuration/processors/workflow/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/configuration/processors/workflow/",
             "/docs/5.5/": "/product-stack/tyk-streaming/configuration/processors/workflow/",
             "/docs/5.4/": "/product-stack/tyk-streaming/configuration/processors/workflow/",
@@ -9059,7 +9076,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/glossary/"
         },
         "/product-stack/tyk-streaming/guides/bloblang/advanced/": {
-            "/docs/": "/product-stack/tyk-streaming/guides/bloblang/advanced/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/guides/bloblang/advanced/",
             "/docs/5.5/": "/product-stack/tyk-streaming/guides/bloblang/advanced/",
             "/docs/5.4/": "/product-stack/tyk-streaming/guides/bloblang/advanced/",
@@ -9067,7 +9084,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/guides/bloblang/arithmetic/": {
-            "/docs/": "/product-stack/tyk-streaming/guides/bloblang/arithmetic/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/guides/bloblang/arithmetic/",
             "/docs/5.5/": "/product-stack/tyk-streaming/guides/bloblang/arithmetic/",
             "/docs/5.4/": "/product-stack/tyk-streaming/guides/bloblang/arithmetic/",
@@ -9075,7 +9092,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/guides/bloblang/functions/": {
-            "/docs/": "/product-stack/tyk-streaming/guides/bloblang/functions/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/guides/bloblang/functions/",
             "/docs/5.5/": "/product-stack/tyk-streaming/guides/bloblang/functions/",
             "/docs/5.4/": "/product-stack/tyk-streaming/guides/bloblang/functions/",
@@ -9083,7 +9100,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/guides/bloblang/methods/": {
-            "/docs/": "/product-stack/tyk-streaming/guides/bloblang/methods/overview/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/guides/bloblang/methods/overview/",
             "/docs/5.5/": "/product-stack/tyk-streaming/guides/bloblang/methods/overview/",
             "/docs/5.4/": "/product-stack/tyk-streaming/guides/bloblang/methods/overview/",
@@ -9091,7 +9108,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/guides/bloblang/methods/encoding-and-encryption/": {
-            "/docs/": "/product-stack/tyk-streaming/guides/bloblang/methods/encoding-and-encryption/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/guides/bloblang/methods/encoding-and-encryption/",
             "/docs/5.5/": "/product-stack/tyk-streaming/guides/bloblang/methods/encoding-and-encryption/",
             "/docs/5.4/": "/product-stack/tyk-streaming/guides/bloblang/methods/encoding-and-encryption/",
@@ -9099,7 +9116,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/guides/bloblang/methods/general/": {
-            "/docs/": "/product-stack/tyk-streaming/guides/bloblang/methods/general/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/guides/bloblang/methods/general/",
             "/docs/5.5/": "/product-stack/tyk-streaming/guides/bloblang/methods/general/",
             "/docs/5.4/": "/product-stack/tyk-streaming/guides/bloblang/methods/general/",
@@ -9107,7 +9124,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/guides/bloblang/methods/geoip/": {
-            "/docs/": "/product-stack/tyk-streaming/guides/bloblang/methods/geoip/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/guides/bloblang/methods/geoip/",
             "/docs/5.5/": "/product-stack/tyk-streaming/guides/bloblang/methods/geoip/",
             "/docs/5.4/": "/product-stack/tyk-streaming/guides/bloblang/methods/geoip/",
@@ -9115,7 +9132,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/guides/bloblang/methods/json-web-tokens/": {
-            "/docs/": "/product-stack/tyk-streaming/guides/bloblang/methods/json-web-tokens/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/guides/bloblang/methods/json-web-tokens/",
             "/docs/5.5/": "/product-stack/tyk-streaming/guides/bloblang/methods/json-web-tokens/",
             "/docs/5.4/": "/product-stack/tyk-streaming/guides/bloblang/methods/json-web-tokens/",
@@ -9123,7 +9140,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/guides/bloblang/methods/numbers/": {
-            "/docs/": "/product-stack/tyk-streaming/guides/bloblang/methods/numbers/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/guides/bloblang/methods/numbers/",
             "/docs/5.5/": "/product-stack/tyk-streaming/guides/bloblang/methods/numbers/",
             "/docs/5.4/": "/product-stack/tyk-streaming/guides/bloblang/methods/numbers/",
@@ -9131,7 +9148,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/guides/bloblang/methods/object-and-arrays/": {
-            "/docs/": "/product-stack/tyk-streaming/guides/bloblang/methods/object-and-arrays/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/guides/bloblang/methods/object-and-arrays/",
             "/docs/5.5/": "/product-stack/tyk-streaming/guides/bloblang/methods/object-and-arrays/",
             "/docs/5.4/": "/product-stack/tyk-streaming/guides/bloblang/methods/object-and-arrays/",
@@ -9139,7 +9156,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/guides/bloblang/methods/overview/": {
-            "/docs/": "/product-stack/tyk-streaming/guides/bloblang/methods/overview/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/guides/bloblang/methods/overview/",
             "/docs/5.5/": "/product-stack/tyk-streaming/guides/bloblang/methods/overview/",
             "/docs/5.4/": "/product-stack/tyk-streaming/guides/bloblang/methods/overview/",
@@ -9147,7 +9164,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/guides/bloblang/methods/parsing/": {
-            "/docs/": "/product-stack/tyk-streaming/guides/bloblang/methods/parsing/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/guides/bloblang/methods/parsing/",
             "/docs/5.5/": "/product-stack/tyk-streaming/guides/bloblang/methods/parsing/",
             "/docs/5.4/": "/product-stack/tyk-streaming/guides/bloblang/methods/parsing/",
@@ -9155,7 +9172,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/guides/bloblang/methods/regular-expressions/": {
-            "/docs/": "/product-stack/tyk-streaming/guides/bloblang/methods/regular-expressions/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/guides/bloblang/methods/regular-expressions/",
             "/docs/5.5/": "/product-stack/tyk-streaming/guides/bloblang/methods/regular-expressions/",
             "/docs/5.4/": "/product-stack/tyk-streaming/guides/bloblang/methods/regular-expressions/",
@@ -9163,7 +9180,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/guides/bloblang/methods/strings/": {
-            "/docs/": "/product-stack/tyk-streaming/guides/bloblang/methods/strings/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/guides/bloblang/methods/strings/",
             "/docs/5.5/": "/product-stack/tyk-streaming/guides/bloblang/methods/strings/",
             "/docs/5.4/": "/product-stack/tyk-streaming/guides/bloblang/methods/strings/",
@@ -9171,7 +9188,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/guides/bloblang/methods/timestamps/": {
-            "/docs/": "/product-stack/tyk-streaming/guides/bloblang/methods/timestamps/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/guides/bloblang/methods/timestamps/",
             "/docs/5.5/": "/product-stack/tyk-streaming/guides/bloblang/methods/timestamps/",
             "/docs/5.4/": "/product-stack/tyk-streaming/guides/bloblang/methods/timestamps/",
@@ -9179,7 +9196,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/guides/bloblang/methods/type-coercion/": {
-            "/docs/": "/product-stack/tyk-streaming/guides/bloblang/methods/type-coercion/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/guides/bloblang/methods/type-coercion/",
             "/docs/5.5/": "/product-stack/tyk-streaming/guides/bloblang/methods/type-coercion/",
             "/docs/5.4/": "/product-stack/tyk-streaming/guides/bloblang/methods/type-coercion/",
@@ -9187,7 +9204,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/guides/bloblang/overview/": {
-            "/docs/": "/product-stack/tyk-streaming/guides/bloblang/overview/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/guides/bloblang/overview/",
             "/docs/5.5/": "/product-stack/tyk-streaming/guides/bloblang/overview/",
             "/docs/5.4/": "/product-stack/tyk-streaming/guides/bloblang/overview/",
@@ -9195,7 +9212,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/guides/sync-responses/": {
-            "/docs/": "/product-stack/tyk-streaming/guides/sync-responses/",
+            "/docs/": "/product-stack/tyk-streaming/overview/",
             "/docs/5.6/": "/product-stack/tyk-streaming/guides/sync-responses/",
             "/docs/5.5/": "/product-stack/tyk-streaming/guides/sync-responses/",
             "/docs/5.4/": "/product-stack/tyk-streaming/guides/sync-responses/",
@@ -9219,6 +9236,7 @@
             "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
         },
         "/product-stack/tyk-streaming/streams-configuration-using-ui/": {
+            "/docs/": "/product-stack/tyk-streaming/streams-configuration-using-ui/",
             "/docs/nightly/": "/product-stack/tyk-streaming/streams-configuration-using-ui/"
         },
         "/product-stack/tyk-streaming/troubleshooting/": {
@@ -9831,8 +9849,8 @@
             "/docs/nightly/": "/basic-config-and-security/report-monitor-trigger-events/webhooks/"
         },
         "/security/": {
-            "/docs/": "/basic-config-and-security/security/",
-            "/docs/5.6/": "/basic-config-and-security/security/",
+            "/docs/": "/api-management/security-best-practices/",
+            "/docs/5.6/": "/api-management/security-best-practices/",
             "/docs/5.5/": "/basic-config-and-security/security/",
             "/docs/5.4/": "/basic-config-and-security/security/",
             "/docs/5.3/": "/basic-config-and-security/security/",
@@ -12698,6 +12716,7 @@
             "/docs/nightly/": "/tyk-developer-portal/tyk-portal-classic/portal-oauth-clients/"
         },
         "/tyk-developer-portal/streams/": {
+            "/docs/": "/tyk-developer-portal/tyk-portal-classic/streams/",
             "/docs/nightly/": "/tyk-developer-portal/tyk-portal-classic/streams/"
         },
         "/tyk-developer-portal/tutorials/": {
@@ -13145,6 +13164,7 @@
             "/docs/3-lts/": "/tyk-stack/tyk-developer-portal/portal-oauth-clients/"
         },
         "/tyk-developer-portal/tyk-portal-classic/streams/": {
+            "/docs/": "/tyk-developer-portal/tyk-portal-classic/streams/",
             "/docs/nightly/": "/tyk-developer-portal/tyk-portal-classic/streams/"
         },
         "/tyk-developer-portal/tyk-portal-classic/tyk-portal-classic/customise/customise-with-templates/": {
