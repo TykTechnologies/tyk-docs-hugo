@@ -443,6 +443,18 @@ Configure the gateways to load APIs with specific tags only by enabling `tyk-gat
       tags: "edge,dc1,product"
 ```
 
+#### OpenTelemetry
+To enable OpenTelemetry for Gateway set `gateway.opentelemetry.enabled` flag to true. It is disabled by default.
+
+You can also configure connection settings for it's exporter. By default `grpc` exporter is enabled on `localhost:4317` endpoint.
+
+ To enable TLS settings for the exporter, you can set `gateway.opentelemetry.tls.enabled` to true. 
+
+#### Liveness and readiness probes
+Gateway liveness probes can be customised via `gateway.livenessProbe` field. All fields from PodLivenessProbe object can be added here. If set to empty or nil, the default health check on /health will be performed.
+
+Gateway readiness probes can be customised via `gateway.readinessProbe` field. All fields from PodReadinessProbe object can be added here. If set to empty or nil, the default health check on /health will be performed.
+
 For further details for configuring Tyk Gateway, please consult the [Tyk Gateway Configuration Options]({{<ref "tyk-oss-gateway/configuration">}}) guide.
 
 ### Pump Configurations

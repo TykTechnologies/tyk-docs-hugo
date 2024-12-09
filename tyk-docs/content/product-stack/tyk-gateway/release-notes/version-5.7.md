@@ -105,7 +105,7 @@ If you are upgrading to 5.7.0, please follow the detailed [upgrade instructions]
     docker pull tykio/tyk-gateway:v5.7.0
     ``` 
 - Helm charts
-  - [tyk-charts v2.2.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.1.md" >}})
+  - [tyk-charts v2.2.0]({{<ref "product-stack/tyk-charts/release-notes/version-2.2.md" >}})
 
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
