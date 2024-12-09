@@ -668,7 +668,7 @@ Optional Steps, if needed:
 
 You can manage audit logging for Tyk Dashboard via `auditLogs`:
 
-- `auditLogs.enabled`: Enables or disables audit logging. It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_ENABLED`. Enabled by default.
+- `auditLogs.enabled`: Enables or disables audit logging. It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_ENABLED`. Disabled by default.
 - `auditLogs.type`: Specifies the storage type for audit logs (`db` or `file`). It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_TYPE`. Set to `file` by default.
 - `auditLogs.format`: Defines the format of audit log files (`json` or `text`). It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_FORMAT`. Set to `text` by default.
 - `auditLogs.path`: Sets the path to the audit log file. It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_PATH`. Set to "" by default.
