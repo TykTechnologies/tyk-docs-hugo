@@ -13,9 +13,11 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "changelog"]
 
 ### Release Highlights
 
-This Tyk Cloud update introduces features that improve both flexibility in plugin management and user onboarding. Now, [Mserv]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}),  supports **multiple plugin bundles**, allowing greater customization and easier deployment of plugin configurations. Additionally, we added an **embedded product tour** to enhance the deployment experience, offering a guided walkthrough of Tyk Dashboard’s features, ideal for users familiarizing themselves with the platform during onboarding.
+This Tyk Cloud update introduces a groundbreaking feature for enhanced API observability and troubleshooting. With the new native OpenTelemetry (OTel) exporter, Tyk Cloud now allows organizations to seamlessly integrate their deployments with a variety of popular observability systems, as well as any platform supporting the OTel protocol. This feature enables trace export capabilities, providing deep insights into API and plugin performance.
 
-For a comprehensive list of improvements and fixes, please check the detailed [changelog]({{< ref "#Changelog-v1.23.0">}}) below.
+This marks the first step in Tyk Cloud’s broader observability journey, empowering users to monitor and troubleshoot their APIs more effectively while leveraging their existing observability tools.
+
+For more details, check out the documentation on setting up OpenTelemetry export.
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
@@ -29,94 +31,6 @@ There are no breaking changes in this release
 ### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecations in this release
-
-### Changelog {#Changelog-v1.23.0}
-<!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
-Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
-"...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
-"New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
-
-#### Added
-<!-- This section should be a bullet point list of new features. Explain:
-- The purpose of the new feature
-- How does the new feature benefit users?
-- Link to documentation of the new feature
-- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
-Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
-
-<ul>
-  <li>
-    <details>
-      <summary>
-        Contact form for POC requests on trial expiration
-      </summary>
-      A HubSpot contact form has been added in both Tyk Cloud and Dashboard to facilitate contacting Tyk for a Proof of Concept (PoC) when a trial expires. This new form makes it easier to connect with our team and explore further options once   
-      the trial period ends.
-    </details>
-  </li>
-  
-</ul>
-
-#### Changed
-<!-- This should be a bullet-point list of updated features. Explain:
-- Why was the update necessary?
-- How does the update benefit users?
-- Link to documentation of the updated feature
-- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
-Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
-
-<ul>
-  <li>
-    <details>
-      <summary>
-        UX Improvement: Redirect to activity by API section from the monitoring page
-      </summary>
-      Users are now redirected to the "Activity by API" section in the Tyk Dashboard upon clicking on the Control Plane (CP) name within the Cloud Monitoring page. This update provides a more seamless 
-      transition for users needing detailed activity insights directly from the monitoring interface.
-    </details>
-  </li>
-  
-</ul>
-
-#### Fixed
-<!-- This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
-- What problem the issue caused
-- How was the issue fixed
-- Link to (new) documentation created as a result of a fix. For example, a new configuration parameter may have been introduced and documented for the fix
-- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
-Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
-
-<ul>
-  <li>
-    <details>
-      <summary>
-        "Add Portal Deployment" widget hidden for team members
-      </summary>
-      The "Add Portal Deployment" widget on the Environment page is now hidden for team members, providing a cleaner and more tailored UI experience by limiting portal management options to authorized roles 
-      only.
-    </details>
-  </li>
-  
-</ul>
-
-#### Security Fixes
-<!-- This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
-1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
-2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
-For agreed CVE security fixes, provide a link to the corresponding entry on the NIST website. For example:
-- Fixed the following CVEs:
-    - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
--->
-<ul>
-  <li>
-    <details>
-      <summary>
-        Bumped dependencies in Tyk Cloud components
-      </summary>
-Dependencies across all Tyk Cloud components have been updated to address reported security issues. This update ensures compliance with security standards, aligning the project with best practices for secure dependency management.
-    </details>
-  </li>
-</ul>
 
 
 ### FAQ
