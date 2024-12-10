@@ -770,7 +770,7 @@ menu:
         category: Page
         show: True
       - title: "Custom Plugins And Middleware"
-        path: /api-managements/custom-plugins-middleware
+        path: /api-management/custom-plugins-middleware
         category: Page
         show: True
       - title: "Manage APIs"
