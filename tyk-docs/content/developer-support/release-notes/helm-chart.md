@@ -21,11 +21,13 @@ aliases:
 Our minor releases are supported until our next minor comes out. 
 
 ---
-## 2.2.0 Release Notes
+## 2.2 Release Notes
 
-### Release Date 09 December 2024
+### 2.2.0 Release Notes
 
-### Release Highlights
+#### Release Date 09 December 2024
+
+#### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release: -->
 
 The Tyk Helm Charts v2.2.0 release brings exciting new features, improvements, and crucial fixes to enhance deployment flexibility, customization, and reliability. Here are the highlights:
@@ -36,23 +38,23 @@ The Tyk Helm Charts v2.2.0 release brings exciting new features, improvements, a
 
 For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v2.2.0) below.
 
-### Breaking Changes
+#### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
-<!-- #### Changed error log messages
+<!-- ##### Changed error log messages
 Important for users who monitor Tyk components using the application logs (i.e. Tyk Gateway log, Tyk Dashboard log etc.).
 We try to avoid making changes to our log messages, especially at error and critical levels. However, sometimes it's necessary. Please find the list of changes made to the application log in this release: -->
 
 <!-- The following "|Planned Breaking Changes" section is optional!
 Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc.
-#### Planned Breaking Changes
+##### Planned Breaking Changes
  -->
 
 <!--
-#### Dependencies
+##### Dependencies
 Required. Use this section to announce the following types of dependencies compatible with the release:
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -61,7 +63,7 @@ Version compatibility with other components in the Tyk stack. This takes the for
 -->
 
 <!-- 
-##### Compatibility Matrix For Tyk Components
+###### Compatibility Matrix For Tyk Components
 Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 An illustrative example is shown below. 
 | Gateway Version | Recommended Compatibility | Backwards Compatibility |
@@ -75,9 +77,9 @@ An illustrative example is shown below.
 | | | TIB vX - vY |
 -->
 
-### Dependencies {#dependencies-2.2}
+#### Dependencies {#dependencies-2.2}
 
-#### 3rd Party Dependencies & Tools
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -94,16 +96,16 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-### Deprecations
+#### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecation in this release.
 
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc. 
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens
-##### Future deprecations. -->
+###### Future deprecations. -->
 
-### Upgrade instructions
+#### Upgrade instructions
 <!-- Required. For patches release (Z>0) use this: 
 For users currently on v2.1.x, we strongly recommend promptly upgrading to the latest release. 
 <br/>-->
@@ -118,16 +120,16 @@ helm repo update
 helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
 ```
 
-### Downloads
+#### Downloads
 - [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v2.2.0.tar.gz)
 - [ArtifactHub - tyk-stack](https://artifacthub.io/packages/helm/tyk-helm/tyk-stack/2.2.0)
 - [ArtifactHub - tyk-control-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-control-plane/2.2.0)
 - [ArtifactHub - tyk-data-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-data-plane/2.2.0)
 - [ArtifactHub - tyk-oss](https://artifacthub.io/packages/helm/tyk-helm/tyk-oss/2.2.0)
 
-### Changelog {#Changelog-v2.2.0}
+#### Changelog {#Changelog-v2.2.0}
 
-#### Added
+##### Added
 
 <ul>
 
@@ -218,7 +220,7 @@ Support for adding sidecar containers for Tyk components, enhancing flexibility 
 
 </ul>
 
-#### Changed
+##### Changed
 
 <ul>
 
@@ -240,7 +242,7 @@ Support for adding sidecar containers for Tyk components, enhancing flexibility 
 
 </ul>
 
-#### Fixed
+##### Fixed
 
 <ul>
 
@@ -273,7 +275,7 @@ Resolved an issue where the Tyk OSS chart did not set the Operator license key i
 
 </ul>
 
-<!-- #### Security Fixes
+<!-- ##### Security Fixes
 This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
 1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
 2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
@@ -294,18 +296,19 @@ Repeat the release notes section above for every patch here
 <!-- The footer of the release notes page. It contains a further information section with details of how to upgrade Tyk,
 links to API documentation and FAQs. You can copy it from the previous release. -->
 
-## 2.1.0 Release Notes
+## 2.1 Release Notes
+### 2.1.0 Release Notes
 
-### Release Date 10 Oct 2024
+#### Release Date 10 Oct 2024
 
-### Release Highlights
+#### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release: -->
 
 Added the ability to specify a static IP for Kubernetes LoadBalancer services, giving users more control over network configurations for the Tyk Gateway and Dashboard. Added an option to configure the Dashboard container port, addressing issues with restricted port permissions. Updated the default versions of Tyk components.
 
 For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v2.1.0) below.
 
-### Breaking Changes
+#### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
@@ -313,17 +316,17 @@ However, if you are upgrading to [Tyk Operator v1.0]({{<ref "developer-support/r
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
-<!-- #### Changed error log messages
+<!-- ##### Changed error log messages
 Important for users who monitor Tyk components using the application logs (i.e. Tyk Gateway log, Tyk Dashboard log etc.).
 We try to avoid making changes to our log messages, especially at error and critical levels. However, sometimes it's necessary. Please find the list of changes made to the application log in this release: -->
 
 <!-- The following "|Planned Breaking Changes" section is optional!
 Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc.
-#### Planned Breaking Changes
+##### Planned Breaking Changes
  -->
 
 <!--
-#### Dependencies
+##### Dependencies
 Required. Use this section to announce the following types of dependencies compatible with the release:
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -332,7 +335,7 @@ Version compatibility with other components in the Tyk stack. This takes the for
 -->
 
 <!-- 
-##### Compatibility Matrix For Tyk Components
+###### Compatibility Matrix For Tyk Components
 Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 An illustrative example is shown below. 
 | Gateway Version | Recommended Compatibility | Backwards Compatibility |
@@ -346,9 +349,9 @@ An illustrative example is shown below.
 | | | TIB vX - vY |
 -->
 
-### Dependencies {#dependencies-2.1}
+#### Dependencies {#dependencies-2.1}
 
-#### 3rd Party Dependencies & Tools
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -365,16 +368,16 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-### Deprecations
+#### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecation in this release.
 
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc. 
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens
-##### Future deprecations. -->
+###### Future deprecations. -->
 
-### Upgrade instructions
+#### Upgrade instructions
 <!-- Required. For patches release (Z>0) use this: -->
 For users currently on v2.0.x, we strongly recommend promptly upgrading to the latest release. 
 <br/>
@@ -389,16 +392,16 @@ helm repo update
 helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
 ```
 
-### Downloads
+#### Downloads
 - [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v2.1.0.tar.gz)
 - [ArtifactHub - tyk-stack](https://artifacthub.io/packages/helm/tyk-helm/tyk-stack/2.1.0)
 - [ArtifactHub - tyk-control-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-control-plane/2.1.0)
 - [ArtifactHub - tyk-data-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-data-plane/2.1.0)
 - [ArtifactHub - tyk-oss](https://artifacthub.io/packages/helm/tyk-helm/tyk-oss/2.1.0)
 
-### Changelog {#Changelog-v2.1.0}
+#### Changelog {#Changelog-v2.1.0}
 
-#### Added
+##### Added
 
 <ul>
 
@@ -437,7 +440,7 @@ Starting from Tyk Operator v1.0, a license key is required to use the Tyk Operat
 
 </ul>
 
-#### Changed
+##### Changed
 
 <ul>
 
@@ -456,7 +459,7 @@ Tyk Charts 2.1 will install the following Tyk component versions by default.
 
 </ul>
 
-<!-- #### Security Fixes
+<!-- ##### Security Fixes
 This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
 1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
 2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
@@ -477,13 +480,14 @@ Repeat the release notes section above for every patch here
 <!-- The footer of the release notes page. It contains a further information section with details of how to upgrade Tyk,
 links to API documentation and FAQs. You can copy it from the previous release. -->
 
-## 2.0.0 Release Notes
+## 2.0 Release Notes
+### 2.0.0 Release Notes
 
-### Release Date 26 September 2024
+#### Release Date 26 September 2024
 
-### Breaking Changes
+#### Breaking Changes
 
-#### 1. URL Path Matching Configuration Changes
+##### 1. URL Path Matching Configuration Changes
 
 Tyk Charts v2.0 introduces a **breaking change** related to URL path matching behavior in the Tyk Gateway. If you are using Tyk Gateway versions 5.0.14 (2023 LTS), 5.3.5 (2024 LTS), or 5.5.1 (latest feature branch) or above, two new configuration options have been added to the Gateway:
 
@@ -509,7 +513,7 @@ From this version of Tyk Charts we also set the following configuration option t
 - For production setup guidance, see [this guide]({{<ref "planning-for-production#ensure-you-are-matching-only-the-url-paths-that-you-want-to-match">}}).
 - Configure the new options via the Helm chart, and test the changes in a non-production environment before upgrading.
 
-#### 2. Default Tyk Component Versions
+##### 2. Default Tyk Component Versions
 
 This release changes the default component versions in Tyk Charts v2.0 to **Long-Term Support (LTS)** versions for greater stability in production environments. The new defaults are:
 
@@ -526,17 +530,17 @@ If you need to use a different version for any component, adjust the Helm chart 
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
-<!-- #### Changed error log messages
+<!-- ##### Changed error log messages
 Important for users who monitor Tyk components using the application logs (i.e. Tyk Gateway log, Tyk Dashboard log etc.).
 We try to avoid making changes to our log messages, especially at error and critical levels. However, sometimes it's necessary. Please find the list of changes made to the application log in this release: -->
 
 <!-- The following "|Planned Breaking Changes" section is optional!
 Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc.
-#### Planned Breaking Changes
+##### Planned Breaking Changes
  -->
 
 <!--
-#### Dependencies
+##### Dependencies
 Required. Use this section to announce the following types of dependencies compatible with the release:
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -545,7 +549,7 @@ Version compatibility with other components in the Tyk stack. This takes the for
 -->
 
 <!-- 
-##### Compatibility Matrix For Tyk Components
+###### Compatibility Matrix For Tyk Components
 Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 An illustrative example is shown below. 
 | Gateway Version | Recommended Compatibility | Backwards Compatibility |
@@ -559,7 +563,7 @@ An illustrative example is shown below.
 | | | TIB vX - vY |
 -->
 
-### 3rd Party Dependencies & Tools
+#### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -576,16 +580,16 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-### Deprecations
+#### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecation in this release.
 
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc. 
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens
-##### Future deprecations. -->
+###### Future deprecations. -->
 
-### Upgrade instructions
+#### Upgrade instructions
 <!-- Required. For patches release (Z>0) use this: -->
 For users currently on v1.x.x, we strongly recommend promptly upgrading to the latest release. 
 <br/>
@@ -600,13 +604,13 @@ helm repo update
 helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
 ```
 
-### Release Highlights
+#### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release: -->
 
-#### Support Gateway configuration for URL path matching
+##### Support Gateway configuration for URL path matching
 The default Gateway configuration in the Helm chart will set Tyk's URL path matching to **exact** mode. This ensures that the request URL must exactly match the listen path and endpoint patterns configured in the API definition. 
 
-#### Updated default Tyk versions
+##### Updated default Tyk versions
 Tyk Charts 2.0 will install the following Tyk component versions by default.
 - Tyk Gateway v5.3.5
 - Tyk Dashboard v5.3.5
@@ -615,21 +619,21 @@ Tyk Charts 2.0 will install the following Tyk component versions by default.
 - Tyk Developer Portal v1.10.0
 - Tyk Operator v0.18.0
 
-### Downloads
+#### Downloads
 - [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v2.0.0.tar.gz)
 - [ArtifactHub - tyk-stack](https://artifacthub.io/packages/helm/tyk-helm/tyk-stack/2.0.0)
 - [ArtifactHub - tyk-control-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-control-plane/2.0.0)
 - [ArtifactHub - tyk-data-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-data-plane/2.0.0)
 - [ArtifactHub - tyk-oss](https://artifacthub.io/packages/helm/tyk-helm/tyk-oss/2.0.0)
 
-### Changelog {#Changelog-v2.0.0}
+#### Changelog {#Changelog-v2.0.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 
-#### Added
+##### Added
 <!-- This section should be a bullet point list of new features. Explain:
 
 - The purpose of the new feature
@@ -674,7 +678,7 @@ The options are configurable using these `tyk-bootstrap` chart's parameters:
 </ul>
 
 <!-- 
-##### Changed
+###### Changed
 <!-- This should be a bullet-point list of updated features. Explain:
 
 - Why was the update necessary?
@@ -684,7 +688,7 @@ The options are configurable using these `tyk-bootstrap` chart's parameters:
 
 Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
 
-#### Changed
+##### Changed
 
 <ul>
 
@@ -697,7 +701,7 @@ Tyk Charts v2.0 now defaults to Long-Term Support (LTS) versions for Tyk Gateway
 
 </ul>
 
-<!-- #### Security Fixes
+<!-- ##### Security Fixes
 This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
 1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
 2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
@@ -718,27 +722,28 @@ Repeat the release notes section above for every patch here
 <!-- The footer of the release notes page. It contains a further information section with details of how to upgrade Tyk,
 links to API documentation and FAQs. You can copy it from the previous release. -->
 
-## 1.6.0 Release Notes
+## 1.6 Release Notes
+### 1.6.0 Release Notes
 
-### Release Date 14 August 2024
+#### Release Date 14 August 2024
 
-### Breaking Changes
+#### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
-<!-- #### Changed error log messages
+<!-- ##### Changed error log messages
 Important for users who monitor Tyk components using the application logs (i.e. Tyk Gateway log, Tyk Dashboard log etc.).
 We try to avoid making changes to our log messages, especially at error and critical levels. However, sometimes it's necessary. Please find the list of changes made to the application log in this release: -->
 
 <!-- The following "|Planned Breaking Changes" section is optional!
 Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc.
-#### Planned Breaking Changes
+##### Planned Breaking Changes
  -->
 
 <!--
-#### Dependencies
+##### Dependencies
 Required. Use this section to announce the following types of dependencies compatible with the release:
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -747,7 +752,7 @@ Version compatibility with other components in the Tyk stack. This takes the for
 -->
 
 <!-- 
-##### Compatibility Matrix For Tyk Components
+###### Compatibility Matrix For Tyk Components
 Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 An illustrative example is shown below. 
 | Gateway Version | Recommended Compatibility | Backwards Compatibility |
@@ -761,7 +766,7 @@ An illustrative example is shown below.
 | | | TIB vX - vY |
 -->
 
-### 3rd Party Dependencies & Tools
+#### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -778,16 +783,16 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-### Deprecations
+#### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecation in this release.
 
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc. 
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens
-##### Future deprecations. -->
+###### Future deprecations. -->
 
-### Upgrade instructions
+#### Upgrade instructions
 <!-- Required. For patches release (Z>0) use this: -->
 For users currently on v1.4.x, we strongly recommend promptly upgrading to the latest release. 
 <br/>
@@ -802,13 +807,13 @@ helm repo update
 helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
 ```
 
-### Release Highlights
+#### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release: -->
 
-#### Updated MDCB Health check probes
+##### Updated MDCB Health check probes
 MDCB v2.7.0 release introduces `/liveness` and `/readiness` probes which give more accurate and detail health check information. MDCB deployment has been updated to use the new endpoints. See [MDCB Health Check]({{<ref "tyk-multi-data-centre/setup-controller-data-centre#health-check">}}) section for information about the new probes.
 
-#### Updated default Tyk versions
+##### Updated default Tyk versions
 Tyk Charts 1.6 will install the following Tyk component versions by default.
 - Tyk Gateway v5.5.0
 - Tyk Dashboard v5.5.0
@@ -817,21 +822,21 @@ Tyk Charts 1.6 will install the following Tyk component versions by default.
 - Tyk Developer Portal v1.10.0
 - Tyk Operator v0.18.0
 
-### Downloads
+#### Downloads
 - [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v1.6.0.tar.gz)
 - [ArtifactHub - tyk-stack](https://artifacthub.io/packages/helm/tyk-helm/tyk-stack/1.6.0)
 - [ArtifactHub - tyk-control-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-control-plane/1.6.0)
 - [ArtifactHub - tyk-data-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-data-plane/1.6.0)
 - [ArtifactHub - tyk-oss](https://artifacthub.io/packages/helm/tyk-helm/tyk-oss/1.6.0)
 
-### Changelog {#Changelog-v1.6.0}
+#### Changelog {#Changelog-v1.6.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 
-#### Added
+##### Added
 <!-- This section should be a bullet point list of new features. Explain:
 
 - The purpose of the new feature
@@ -887,7 +892,7 @@ tyk-mdcb:
 </ul>
 
 <!-- 
-##### Changed
+###### Changed
 <!-- This should be a bullet-point list of updated features. Explain:
 
 - Why was the update necessary?
@@ -909,7 +914,7 @@ For more details about new endpoints, check [MDCB Health check]({{<ref "tyk-mult
 </li>
 </ul>
 
-#### Fixed
+##### Fixed
 <ul>
 
 <li>
@@ -924,7 +929,7 @@ Fixed the issue that when Developer Portal component is enabled, an Ingress reso
 </ul>
 
 
-<!-- #### Security Fixes
+<!-- ##### Security Fixes
 This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
 1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
 2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
@@ -945,27 +950,28 @@ Repeat the release notes section above for every patch here
 <!-- The footer of the release notes page. It contains a further information section with details of how to upgrade Tyk,
 links to API documentation and FAQs. You can copy it from the previous release. -->
 
-## 1.5.0 Release Notes
+## 1.5 Release Notes
+### 1.5.0 Release Notes
 
-### Release Date 4 July 2024
+#### Release Date 4 July 2024
 
-### Breaking Changes
+#### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
-<!-- #### Changed error log messages
+<!-- ##### Changed error log messages
 Important for users who monitor Tyk components using the application logs (i.e. Tyk Gateway log, Tyk Dashboard log etc.).
 We try to avoid making changes to our log messages, especially at error and critical levels. However, sometimes it's necessary. Please find the list of changes made to the application log in this release: -->
 
 <!-- The following "|Planned Breaking Changes" section is optional!
 Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc.
-#### Planned Breaking Changes
+##### Planned Breaking Changes
  -->
 
 <!--
-#### Dependencies
+##### Dependencies
 Required. Use this section to announce the following types of dependencies compatible with the release:
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -974,7 +980,7 @@ Version compatibility with other components in the Tyk stack. This takes the for
 -->
 
 <!-- 
-##### Compatibility Matrix For Tyk Components
+###### Compatibility Matrix For Tyk Components
 Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 An illustrative example is shown below. 
 | Gateway Version | Recommended Compatibility | Backwards Compatibility |
@@ -988,7 +994,7 @@ An illustrative example is shown below.
 | | | TIB vX - vY |
 -->
 
-### 3rd Party Dependencies & Tools
+#### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -1007,26 +1013,26 @@ With PostgreSQL v11 has reach [EOL](https://www.postgresql.org/support/versionin
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-### Deprecations
+#### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
-##### MDCB: Deprecated healthcheck_port and replaced with http_port
+###### MDCB: Deprecated healthcheck_port and replaced with http_port
 
 Starting with MDCB v2.6.0, the configuration parameter `http_port` has been introduced to replace the original `healthcheck_port`. This new HTTP port is designed to expose various endpoints for monitoring and debugging MDCB. For consistency and future compatibility, it is recommended to use `mdcb.httpPort`.
 
-###### Backward compatibility:
+####### Backward compatibility:
 
 The `mdcb.httpPort` parameter is backward compatible, meaning it will function correctly with all existing MDCB versions, ensuring a smooth transition.
 
-###### Recommendations for users:
+####### Recommendations for users:
 
 - **Helm Chart Adjustments**: Update your Helm chart configurations to use `mdcb.httpPort` instead of `mdcb.probes.healthcheckPort` to define the HTTP port.
 
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc. 
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens
-##### Future deprecations. -->
+###### Future deprecations. -->
 
-### Upgrade instructions
+#### Upgrade instructions
 <!-- Required. For patches release (Z>0) use this: -->
 For users currently on v1.4.x, we strongly recommend promptly upgrading to the latest release. 
 <br/>
@@ -1041,10 +1047,10 @@ helm repo update
 helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
 ```
 
-### Release Highlights
+#### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release: -->
 
-##### Updated default Tyk versions
+###### Updated default Tyk versions
 Tyk Charts 1.5 will install the following Tyk component versions by default.
 - Tyk Gateway v5.4.0
 - Tyk Dashboard v5.4.0
@@ -1053,7 +1059,7 @@ Tyk Charts 1.5 will install the following Tyk component versions by default.
 - Tyk Developer Portal v1.9.0
 - Tyk Operator v0.18.0
 
-##### Tyk Operator is covered under the same umbrella
+###### Tyk Operator is covered under the same umbrella
 Tyk Operator can now be installed as an optional component alongside any of the following Tyk umbrella charts:
 - tyk-oss
 - tyk-stack
@@ -1063,21 +1069,21 @@ With bootstrapping, the `tyk-operator-conf` secret will be automatically configu
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.5.0">}}) below.
 
-### Downloads
+#### Downloads
 - [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v1.5.0.tar.gz)
 - [ArtifactHub - tyk-stack](https://artifacthub.io/packages/helm/tyk-helm/tyk-stack/1.5.0)
 - [ArtifactHub - tyk-control-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-control-plane/1.5.0)
 - [ArtifactHub - tyk-data-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-data-plane/1.5.0)
 - [ArtifactHub - tyk-oss](https://artifacthub.io/packages/helm/tyk-helm/tyk-oss/1.5.0)
 
-### Changelog {#Changelog-v1.5.0}
+#### Changelog {#Changelog-v1.5.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 
-#### Added
+##### Added
 <!-- This section should be a bullet point list of new features. Explain:
 
 - The purpose of the new feature
@@ -1235,7 +1241,7 @@ Users can now add custom annotations to facilitate automation and improve the ma
 </ul>
 
 <!-- 
-##### Changed
+###### Changed
 <!-- This should be a bullet-point list of updated features. Explain:
 
 - Why was the update necessary?
@@ -1245,7 +1251,7 @@ Users can now add custom annotations to facilitate automation and improve the ma
 
 Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
 
-#### Fixed
+##### Fixed
 
 <ul>
 
@@ -1284,7 +1290,7 @@ We have fixed this issue by not passing required org ID and API key as command o
 </ul>
 
 
-<!-- #### Security Fixes
+<!-- ##### Security Fixes
 This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
 1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
 2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
@@ -1305,27 +1311,28 @@ Repeat the release notes section above for every patch here
 <!-- The footer of the release notes page. It contains a further information section with details of how to upgrade Tyk,
 links to API documentation and FAQs. You can copy it from the previous release. -->
 
-## 1.4.0 Release Notes
+## 1.4 Release Notes
+### 1.4.0 Release Notes
 
-### Release Date -- 6 May 2024
+#### Release Date -- 6 May 2024
 
-### Breaking Changes
+#### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
-<!-- #### Changed error log messages
+<!-- ##### Changed error log messages
 Important for users who monitor Tyk components using the application logs (i.e. Tyk Gateway log, Tyk Dashboard log etc.).
 We try to avoid making changes to our log messages, especially at error and critical levels. However, sometimes it's necessary. Please find the list of changes made to the application log in this release: -->
 
 <!-- The following "|Planned Breaking Changes" section is optional!
 Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc.
-#### Planned Breaking Changes
+##### Planned Breaking Changes
  -->
 
 <!--
-#### Dependencies
+##### Dependencies
 Required. Use this section to announce the following types of dependencies compatible with the release:
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -1334,7 +1341,7 @@ Version compatibility with other components in the Tyk stack. This takes the for
 -->
 
 <!-- 
-##### Compatibility Matrix For Tyk Components
+###### Compatibility Matrix For Tyk Components
 Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 An illustrative example is shown below. 
 | Gateway Version | Recommended Compatibility | Backwards Compatibility |
@@ -1348,7 +1355,7 @@ An illustrative example is shown below.
 | | | TIB vX - vY |
 -->
 
-### 3rd Party Dependencies & Tools
+#### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -1365,16 +1372,16 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-### Deprecations
+#### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 - In the `tyk-dashboard` chart, the `dashboard.hashKeys` field is deprecated and has been replaced with `.global.hashKeys`. This is to ensure Dashboard, Gateway, and MDCB always get the same hashKeys configurations. Setting `dashboard.hashKeys` will no longer take effect. Please only use `.global.hashKeys` field.
 
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc. 
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens
-##### Future deprecations. -->
+###### Future deprecations. -->
 
-### Upgrade instructions
+#### Upgrade instructions
 <!-- Required. For patches release (Z>0) use this: -->
 For users currently on v1.3.x, we strongly recommend promptly upgrading to the latest release. 
 <br/>
@@ -1389,17 +1396,17 @@ helm repo update
 helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
 ```
 
-### Release Highlights
+#### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release: -->
 
-#### General availability release of tyk-control-plane chart and tyk-mdcb chart
+##### General availability release of tyk-control-plane chart and tyk-mdcb chart
 We're pleased to announce the official release of the Tyk Helm Charts for Tyk Control Plane and MDCB! Following a successful beta phase, these charts are now stable and ready for production use. 
 
 With this release, we aim to provide a straightforward solution for deploying and managing Tyk Control Plane and Multi-Data Center Bridge (MDCB) using Helm Charts. Whether you're looking for our recommended setup configurations or need flexibility to adapt to your architectural requirements, our Helm Charts have you covered.
 
 To leverage this stable release and simplify your Tyk deployments, we invite you to explore our example setup for MDCB Control Plane using Helm Chart. Simply follow our [MDCB Control Plane setup guide]({{<ref "tyk-multi-data-centre/setup-controller-data-centre">}}) to get started.
 
-#### Updated default Tyk versions
+##### Updated default Tyk versions
 Tyk Charts 1.4 will install the following Tyk component versions by default.
 - Tyk Gateway v5.3.1
 - Tyk Dashboard v5.3.1
@@ -1409,21 +1416,21 @@ Tyk Charts 1.4 will install the following Tyk component versions by default.
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.4.0">}}) below.
 
-### Downloads
+#### Downloads
 - [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v1.4.0.tar.gz)
 - [ArtifactHub - tyk-stack](https://artifacthub.io/packages/helm/tyk-helm/tyk-stack/1.4.0)
 - [ArtifactHub - tyk-control-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-control-plane/1.4.0)
 - [ArtifactHub - tyk-data-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-data-plane/1.4.0)
 - [ArtifactHub - tyk-oss](https://artifacthub.io/packages/helm/tyk-helm/tyk-oss/1.4.0)
 
-### Changelog {#Changelog-v1.4.0}
+#### Changelog {#Changelog-v1.4.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 
-#### Added
+##### Added
 <!-- This section should be a bullet point list of new features. Explain:
 
 - The purpose of the new feature
@@ -1519,7 +1526,7 @@ We've added a `podAnnotations` field to the `tyk-dev-portal` chart, allowing you
 
 </ul>
 
-##### Changed
+###### Changed
 <!-- This should be a bullet-point list of updated features. Explain:
 
 - Why was the update necessary?
@@ -1561,7 +1568,7 @@ The `dashboard.hashKeys` field is now deprecated. Instead, users should utilize 
 
 </ul>
 
-#### Fixed
+##### Fixed
 
 <ul>
 <li>
@@ -1574,7 +1581,7 @@ We've corrected a typo in the values.yaml file within the "global.redis" section
 </ul>
 
 
-<!-- #### Security Fixes
+<!-- ##### Security Fixes
 This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
 1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
 2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
@@ -1595,27 +1602,28 @@ Repeat the release notes section above for every patch here
 <!-- The footer of the release notes page. It contains a further information section with details of how to upgrade Tyk,
 links to API documentation and FAQs. You can copy it from the previous release. -->
 
-## 1.3.0 Release Notes
+## 1.3. Release Notes
+### 1.3.0 Release Notes
 
-### Release Date 05 Apr 2024
+#### Release Date 05 Apr 2024
 
-### Breaking Changes
+#### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 For MongoDB users: Tyk Charts 1.3.0 uses `mongo-go` as the default driver to connect to MongoDB. `mongo-go` driver is compatible with MongoDB 4.4.x and above. For MongoDB versions prior to 4.4, please set `global.mongo.driver` to `mgo`. We recommend reading [Choose a MongoDB driver]({{<ref "/planning-for-production/database-settings/mongodb#choose-a-mongodb-driver">}}) when you need to change driver setting.
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
-<!-- #### Changed error log messages
+<!-- ##### Changed error log messages
 Important for users who monitor Tyk components using the application logs (i.e. Tyk Gateway log, Tyk Dashboard log etc.).
 We try to avoid making changes to our log messages, especially at error and critical levels. However, sometimes it's necessary. Please find the list of changes made to the application log in this release: -->
 
 <!-- The following "|Planned Breaking Changes" section is optional!
 Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc.
-#### Planned Breaking Changes
+##### Planned Breaking Changes
  -->
 
 <!--
-#### Dependencies
+##### Dependencies
 Required. Use this section to announce the following types of dependencies compatible with the release:
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -1624,7 +1632,7 @@ Version compatibility with other components in the Tyk stack. This takes the for
 -->
 
 <!-- 
-##### Compatibility Matrix For Tyk Components
+###### Compatibility Matrix For Tyk Components
 Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 An illustrative example is shown below. 
 | Gateway Version | Recommended Compatibility | Backwards Compatibility |
@@ -1638,7 +1646,7 @@ An illustrative example is shown below.
 | | | TIB vX - vY |
 -->
 
-### 3rd Party Dependencies & Tools
+#### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -1655,17 +1663,17 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-### Deprecations
+#### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecations in this release.
 
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc. 
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->
-#### Future deprecations
+##### Future deprecations
 - In `tyk-dashboard` chart, `dashboard.hashKeys` field will be deprecated in future and be replaced with `.global.hashKeys`. This is to ensure Dashboard, Gateway, and MDCB always get the same hashKeys configurations. It is recommended users do not set `dashboard.hashKeys` and only use `.global.hashKeys` field.
 
-### Upgrade instructions
+#### Upgrade instructions
 <!-- Required. For patches release (Z>0) use this: -->
 For users currently on v1.2.x, we strongly recommend promptly upgrading to the latest release. 
 <br/>
@@ -1680,7 +1688,7 @@ helm repo update
 helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
 ```
 
-### Release Highlights
+#### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release: -->
 This release primarily focuses on adding support for Tyk v5.3 configurations.
 
@@ -1693,29 +1701,29 @@ Tyk Charts 1.3 will install the following Tyk component versions by default.
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.3.0">}}) below.
 
-#### Support new features available from Tyk v5.3.0
+##### Support new features available from Tyk v5.3.0
 Tyk Charts 1.3 adds support for a number of new Tyk features available from Tyk 5.3.0. These include: Support use of SSL certificates when connecting to Redis, Configurations for OAS Validate examples and OAS Validate Schema defaults.
 
-#### Graph Pump
+##### Graph Pump
 Tyk Charts 1.3 adds support for Graph MongoDB Pump, Graph SQL Pump and Graph SQL Aggregate Pump. see [Graph Pump setup]({{<ref "/tyk-stack/tyk-pump/tyk-pump-configuration/graph-pump">}}) to learn more about the GraphQL-specific metrics available.
 
-#### Enable Tyk Identity Broker (TIB) in Tyk Dashboard
+##### Enable Tyk Identity Broker (TIB) in Tyk Dashboard
 Tyk Charts 1.3 adds a field to enable Internal [Tyk Identity Broker (TIB)]({{<ref "tyk-identity-broker">}}) in Tyk Dashboard by field `tyk-dashboard.tib.enabled` to `true`.
 
-### Downloads
+#### Downloads
 - [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v1.3.0.tar.gz)
 - [ArtifactHub - tyk-stack](https://artifacthub.io/packages/helm/tyk-helm/tyk-stack/1.3.0)
 - [ArtifactHub - tyk-data-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-data-plane/1.3.0)
 - [ArtifactHub - tyk-oss](https://artifacthub.io/packages/helm/tyk-helm/tyk-oss/1.3.0)
 
-### Changelog {#Changelog-v1.3.0}
+#### Changelog {#Changelog-v1.3.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 
-#### Added
+##### Added
 <!-- This section should be a bullet point list of new features. Explain:
 
 - The purpose of the new feature
@@ -1934,7 +1942,7 @@ read [Tyk Control Plane chart]({{<ref "product-stack/tyk-charts/tyk-control-plan
 </ul>
 
   
-#### Changed
+##### Changed
 <!-- This should be a bullet-point list of updated features. Explain:
 
 - Why was the update necessary?

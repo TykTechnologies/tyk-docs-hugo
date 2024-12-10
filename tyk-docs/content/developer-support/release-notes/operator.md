@@ -19,24 +19,25 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
-## 1.1.0 Release Notes
+## 1.1 Release Notes
+### 1.1.0 Release Notes
 
-### Release Date 09 December 2024
+#### Release Date 09 December 2024
 
-### Release Highlights
+#### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release:
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
 -->
-##### Support for Tyk Streams API
+###### Support for Tyk Streams API
 Tyk Operator v1.1 supports management of Tyk Streams APIs through the new **`TykStreamsApiDefinition`** custom resource. This allows you to have declarative, versioned, and fully automated control to your streaming APIs.
 
-### Breaking Changes
+#### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
-### Dependencies {#dependencies-1.1}
-#### 3rd Party Dependencies & Tools
+#### Dependencies {#dependencies-1.1}
+##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
@@ -44,11 +45,11 @@ This release has no breaking changes.
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-### Deprecations
+#### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecations in this release.
 
-### Upgrade instructions
+#### Upgrade instructions
 
 Tyk Operator v1.1 introduced new Custom Resource Definitions (CRDs). Before upgrading to Tyk Operator v1.1 with Helm Chart, please run the following commands to install the CRDs:
 
@@ -60,7 +61,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/TykTechnologies/tyk-charts/
 Go to the [Upgrading Tyk Operator]({{<ref "api-management/automations#install-and-configure-tyk-operator">}}) section for detailed upgrade instructions.
 
 
-### Downloads
+#### Downloads
 - [Docker image v1.1.0](https://hub.docker.com/r/tykio/tyk-operator/tags?page=&page_size=&ordering=&name=v1.1.0)
   - ```bash
     docker pull tykio/tyk-operator:v1.1.0
@@ -69,9 +70,9 @@ Go to the [Upgrading Tyk Operator]({{<ref "api-management/automations#install-an
   - tyk-charts v2.2.0 <!-- This is the link to the Helm charts links. Please be mindful that this URL is only available a few hours or day/s after we release the main release, so this link needs to be updated in a separate iteration -->
 <!-- source code tarball for oss projects -->
 
-### Changelog {#Changelog-v1.1.0}
+#### Changelog {#Changelog-v1.1.0}
 
-#### Added
+##### Added
 
 <ul>
 <li>
@@ -87,18 +88,19 @@ The `TykStreamsApiDefinition` custom resource allows you to manage Tyk Streams A
 
 ---
 
-## 1.0.0 Release Notes
+## 1.0 Release Notes
+### 1.0.0 Release Notes
 
 We are excited to announce the release of **Tyk Operator v1.0**, marking a significant milestone with new features, enhancements, and critical changes. This release introduces support for Tyk OAS APIs, extended capabilities for managing Classic APIs and security policies, and includes **license changes** that you must be aware of before upgrading.
 
-### Release Date 10 Oct 2024
+#### Release Date 10 Oct 2024
 
-### Release Highlights
+#### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release:
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
 -->
-#### Support for Tyk OAS API
+##### Support for Tyk OAS API
 The Tyk Operator v1.0 release introduces powerful new features designed to enhance how you manage APIs in Kubernetes environments. One of the key highlights is the full support for Tyk OAS APIs, allowing you to define and manage APIs through the new **`TykOasApiDefinition`** custom resource. This integration extends GitOps API Management to Tyk OAS, allowing you to have declarative, versioned, and fully automated control to your APIs in Kubernetes environments.
 
 Key features:
@@ -111,7 +113,7 @@ Key features:
 
 With this release, users benefit from seamless GitOps workflows, ensuring a Kubernetes-native operation workflow. Security is also made simpler with automated certificate synchronization, removing the hassle of manual certificate management.
 
-#### Enhanced Classic API and Security Policy Features
+##### Enhanced Classic API and Security Policy Features
 Enhanced support for Tyk Classic APIs continues, with improvements to security policies and new capabilities for setting API and endpoint-specific rate limits, making it easier than ever to customize API usage policies.
 
 This release represents a significant upgrade for both API management and security, offering a more efficient, scalable, and Kubernetes-native way to operate Tyk. Whether you're leveraging Tyk OAS APIs or continuing with Tyk Classic, this version brings the tools and features you need to streamline your workflows and enhance operational efficiency.
@@ -119,7 +121,7 @@ This release represents a significant upgrade for both API management and securi
 For details please refer to the [changelog]({{< ref "#Changelog-v1.0.0">}}) below.
 
 
-### Breaking Changes {#breaking-changesv1.0.0}
+#### Breaking Changes {#breaking-changesv1.0.0}
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 <!-- This release has no breaking changes. -->
 **License Requirement:** Tyk Operator is now a closed-source product and requires a valid license key to operate. Please follow our [Installation and Upgrade Guide]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}}) to set your license key before installation or upgrade.
@@ -128,23 +130,23 @@ If the license is missing, invalid, or expired, Tyk Operator will exit with an e
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention ALL changes in our application log messages in the changelog section. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
-<!-- #### Changed error log messages
+<!-- ##### Changed error log messages
 Important for users who monitor Tyk components using the application logs (i.e. Tyk Gateway log, Tyk Dashboard log, etc.).
 We try to avoid making changes to our log messages, especially at error and critical levels. However, sometimes it's necessary. Please find the list of changes made to the application log in this release: -->
 
 <!-- The following "|Planned Breaking Changes" section is optional!
 Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates, etc. -->
-<!-- #### Planned Breaking Changes -->
+<!-- ##### Planned Breaking Changes -->
 
 <!-- Required. Use this section to announce the following types of dependencies compatible with the release:
-#### Dependencies
+##### Dependencies
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 
 3rd party dependencies and tools -->
 
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
-##### Compatibility Matrix For Tyk Components
+###### Compatibility Matrix For Tyk Components
 An illustrative example is shown below. -->
 <!-- TBP - to be published. Helm chart, MDCB, operator and sync versions are the new versions and as such will be published only a few hours after the main release of 
 the dashboard and gateway. We must clarify this at the time of publishing this RN and remove TBP later, once the Helm charts are released 
@@ -160,8 +162,8 @@ the dashboard and gateway. We must clarify this at the time of publishing this R
 |                 |                           | TIB vX - vY             |
       -->
 
-### Dependencies {#dependencies-1.1}
-#### 3rd Party Dependencies & Tools
+#### Dependencies {#dependencies-1.1}
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -174,17 +176,17 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-### Deprecations
+#### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecations in this release.
 
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc. 
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->
-<!-- ##### Future deprecations
+<!-- ###### Future deprecations
 -->
 
-### Upgrade instructions
+#### Upgrade instructions
 <!-- Required. For patches release (Z>0) use this:
 For users currently on vX.Y.Z, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version X.Y.0 and proceed directly to this latest patch release.
 <br/>
@@ -200,7 +202,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/TykTechnologies/tyk-charts/
 Go to the [Upgrading Tyk Operator]({{<ref "/api-management/automations#upgrading-tyk-operator">}}) section for detailed upgrade instructions.
 
 
-### Downloads
+#### Downloads
 - [Docker image v1.0.0](https://hub.docker.com/r/tykio/tyk-operator/tags?page=&page_size=&ordering=&name=v1.0.0)
   - ```bash
     docker pull tykio/tyk-operator:v1.0.0
@@ -209,14 +211,14 @@ Go to the [Upgrading Tyk Operator]({{<ref "/api-management/automations#upgrading
   - [tyk-charts v2.1.0]({{<ref "developer-support/release-notes/helm-chart#210-release-notes">}}) <!-- This is the link to the Helm charts links. Please be mindful that this URL is only available a few hours or day/s after we release the main release, so this link needs to be updated in a separate iteration -->
 <!-- source code tarball for oss projects -->
 
-### Changelog {#Changelog-v1.0.0}
+#### Changelog {#Changelog-v1.0.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 
-#### Added
+##### Added
 <!-- This section should be a bullet point list of new features. Explain:
 
 - The purpose of the new feature
@@ -305,7 +307,7 @@ extended_paths:
 </ul>
 
   
-#### Changed
+##### Changed
 <!-- This should be a bullet-point list of updated features. Explain:
 
 - Why was the update necessary?
@@ -325,7 +327,7 @@ The underlying Go runtime for Tyk Operator has been updated to version 1.22. Thi
 </ul>
 
 <!-- 
-##### Fixed
+###### Fixed
 This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
 
 - What problem the issue caused
@@ -352,7 +354,7 @@ The actual changelog item text should go here. It should be no more than three o
 </ul>-->
 
 <!-- This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
-#### Security Fixes
+##### Security Fixes
 1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
 2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
 
@@ -374,34 +376,35 @@ Repeat the release notes section above for every patch here
 <!-- The footer of the release notes page. It contains a further information section with details of how to upgrade Tyk,
 links to API documentation and FAQs. You can copy it from the previous release. -->
 
-## 0.18.0 Release Notes
+## 0.18 Release Notes
+### 0.18.0 Release Notes
 
-### Release date 4 Jul 2024
+#### Release date 4 Jul 2024
 
-### Breaking Changes
+#### Breaking Changes
 This release has no breaking changes.
 
-### Deprecations
+#### Deprecations
 There are no deprecations in this release.
 
-### Upgrade Instructions
+#### Upgrade Instructions
 Go to the [Upgrading Tyk Operator]({{<ref "/api-management/automations#upgrading-tyk-operator">}}) section for detailed upgrade instructions.
 
-### Release Highlights
+#### Release Highlights
 This release added support for Tyk 5.4 API definition.
 
 For details please refer to the [changelog]({{< ref "#Changelog-v0.18.0">}}) below.
 
-### Downloads
+#### Downloads
 - [Docker image v0.18.0](https://hub.docker.com/r/tykio/tyk-operator/tags?page=&page_size=&ordering=&name=v0.18.0)
   - ```bash
     docker pull tykio/tyk-operator:v0.18.0
     ```
 - Source code tarball - [Tyk Operator Repo](https://github.com/TykTechnologies/tyk-operator/releases/tag/v0.18.0)
 
-### Changelog {#Changelog-v0.18.0}
+#### Changelog {#Changelog-v0.18.0}
 
-#### Added
+##### Added
 
 <ul>
 <li>
@@ -423,32 +426,33 @@ Added to ApiDefinition [Custom Resource Definition (CRD)](https://kubernetes.io/
 </ul>
 
 
-## 0.17.1 Release Notes
+## 0.17 Release Notes
+### 0.17.1 Release Notes
 
-### Release date 6 May 2024
+#### Release date 6 May 2024
 
-### Breaking Changes
+#### Breaking Changes
 This release has no breaking changes.
 
-### Deprecations
+#### Deprecations
 There are no deprecations in this release.
 
-### Upgrade Instructions
+#### Upgrade Instructions
 Go to the [Upgrading Tyk Operator]({{<ref "/api-management/automations#upgrading-tyk-operator">}}) section for detailed upgrade instructions.
 
-### Release Highlights
+#### Release Highlights
 This release is focused on bug fixes. For details please refer to the [changelog]({{< ref "#Changelog-v0.17.1">}}) below.
 
-### Downloads
+#### Downloads
 - [Docker image v0.17](https://hub.docker.com/r/tykio/tyk-operator/tags?page=&page_size=&ordering=&name=v0.17.1)
   - ```bash
     docker pull tykio/tyk-operator:v0.17.1
     ```
 - Source code tarball - [Tyk Operator Repo](https://github.com/TykTechnologies/tyk-operator/releases/tag/v0.17.1)
 
-### Changelog {#Changelog-v0.17.1}
+#### Changelog {#Changelog-v0.17.1}
 
-#### Fixed
+##### Fixed
 
 <ul>
 <li>
@@ -485,34 +489,34 @@ Addressed security vulnerabilities [CVE-2024-24786](https://nvd.nist.gov/vuln/de
 </ul>
 
 
-## 0.17.0 Release Notes
+### 0.17.0 Release Notes
 
-### Release date 05 Apr 2024
+#### Release date 05 Apr 2024
 
-### Breaking Changes
+#### Breaking Changes
 This release has no breaking changes.
 
-### Deprecations
+#### Deprecations
 There are no deprecations in this release.
 
-### Upgrade Instructions
+#### Upgrade Instructions
 Go to the [Upgrading Tyk Operator]({{<ref "/api-management/automations#upgrading-tyk-operator">}}) section for detailed upgrade Instructions.
 
-### Release Highlights
+#### Release Highlights
 This release added support for `GraphQLIntrospectionConfig` in API definition and fixed an issue where the Tyk Operator creates duplicate APIs on Tyk.
 
 For details please refer to the [changelog]({{< ref "#Changelog-v0.17.0">}}) below.
 
-### Downloads
+#### Downloads
 - [Docker image v0.17](https://hub.docker.com/r/tykio/tyk-operator/tags?page=&page_size=&ordering=&name=v0.17.0)
   - ```bash
     docker pull tykio/tyk-operator:v0.17.0
     ```
 - Source code tarball - [Tyk Operator Repo](https://github.com/TykTechnologies/tyk-operator/releases/tag/v0.17.0)
 
-### Changelog {#Changelog-v0.17.0}
+#### Changelog {#Changelog-v0.17.0}
 
-#### Fixed
+##### Fixed
 
 <ul>
 <li>
@@ -524,7 +528,7 @@ Fix creating duplicated API definitions on Tyk in case of cluster failures. If n
 </li>
 </ul>
 
-#### Added
+##### Added
 
 <ul>
 <li>
@@ -536,32 +540,33 @@ Added to ApiDefinition CRD: support of `GraphQLIntrospectionConfig` field at `gr
 </li>
 </ul>
 
-## 0.16.0 Release Notes
+## 0.16 Release Notes
+### 0.16.0 Release Notes
 
-### Release date 12 Jan 2024
+#### Release date 12 Jan 2024
 
-### Breaking Changes
+#### Breaking Changes
 This release has no breaking changes.
 
-### Deprecations
+#### Deprecations
 There are no deprecations in this release.
 
-### Upgrade Instructions
+#### Upgrade Instructions
 While upgrading Tyk Operator release via Helm, please make sure that the latest CRDs are also applied on the cluster, as follows:
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/TykTechnologies/tyk-operator/v0.16.0/helm/crds/crds.yaml
 ```
 
-### Release Highlights
+#### Release Highlights
 This release added support for analytics plugin, UDG global header, and detailed tracing setting in ApiDefinition as detailed in the [changelog]({{< ref "#Changelog-v0.16.0">}}) below.
 
-### Downloads
+#### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-operator/v0.16.0/images/sha256-7c5b526af96ef772e8e53b8817538f41585c4ad641388609b349368219bb3d7d?context=explore)
 - [Source code](https://github.com/TykTechnologies/tyk-operator/releases/tag/v0.16.0)
 
-### Changelog {#Changelog-v0.16.0}
+#### Changelog {#Changelog-v0.16.0}
 
-#### Added
+##### Added
 
 <ul>
 <li>
@@ -614,7 +619,7 @@ Added to ApiDefinition CRD: support for detail tracing configuration at [spec.de
 </ul>
 
 
-#### Updated
+##### Updated
 
 
 <ul>
@@ -627,7 +632,7 @@ Updated Go version to 1.21
 </li>
 </ul>
 
-#### Fixed
+##### Fixed
 
 <ul>
 <li>

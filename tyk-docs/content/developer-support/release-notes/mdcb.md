@@ -27,21 +27,22 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
-## 2.7.2 Release Notes
+## 2.7 Release Notes
+### 2.7.2 Release Notes
 
-### Release Date 03 December 2024
+#### Release Date 03 December 2024
 
-### Release Highlights
+#### Release Highlights
 
-#### Support Tyk 5.7
+##### Support Tyk 5.7
 Tyk MDCB 2.7.2 has been updated to support API configurations from Tyk 5.7.0.
 
-### Breaking Changes
+#### Breaking Changes
 This release has no breaking changes.
 
-### Dependencies {#dependencies-X.Y.Z}
+#### Dependencies {#dependencies-X.Y.Z}
 
-#### 3rd Party Dependencies & Tools
+##### 3rd Party Dependencies & Tools
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by MDCB | 
@@ -50,23 +51,23 @@ This release has no breaking changes.
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-### Deprecations
+#### Deprecations
 There are no deprecations in this release.
 
-### Upgrade instructions
+#### Upgrade instructions
 For users currently on v2.7.1, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower minor), it is advisable to bypass version 2.7.0 and proceed directly to this latest patch release.
 <br/>
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
-### Downloads
+#### Downloads
 - [Docker image v2.7.2](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.7.2)
   - ```bash
     docker pull tykio/tyk-mdcb-docker:v2.7.2
     ```
 
-### Changelog {#Changelog-v2.7.2}
+#### Changelog {#Changelog-v2.7.2}
 
-#### Updated
+##### Updated
 <ul>
  
  <li>
@@ -78,7 +79,7 @@ MDCB 2.7.2 supports Tyk API definitions up to Tyk Gateway v5.7.0. Please use MDC
  </li>
  </ul>
 
-#### Security Fixes
+##### Security Fixes
 <ul>
  
  <li>
@@ -94,14 +95,14 @@ MDCB 2.7.2 supports Tyk API definitions up to Tyk Gateway v5.7.0. Please use MDC
 
 ---
 
-## 2.7.1 Release Notes
+### 2.7.1 Release Notes
 
-### Release date 10 October 2024
+#### Release date 10 October 2024
 
-### Breaking Changes
+#### Breaking Changes
 This release has no breaking changes.
 
-### 3rd Party Dependencies & Tools
+#### 3rd Party Dependencies & Tools
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by MDCB | 
@@ -110,24 +111,24 @@ This release has no breaking changes.
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-### Deprecations
+#### Deprecations
 There are no deprecations in this release.
 
-### Release Highlights
+#### Release Highlights
 
-#### Support GraphQL analytics records
+##### Support GraphQL analytics records
 MDCB (Multi-Data Center Bridge) has been enhanced to support the storage of GraphQL aggregate analytics directly. This allows for better tracking and analysis of GraphQL usage across distributed environments. This enhancement simplifies the storage and management of GraphQL analytics within MDCB, improving efficiency and ease of use.
 
-### Downloads
+#### Downloads
 - [Docker image v2.7.1](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.7.1)
 - ```bash
   docker pull tykio/tyk-mdcb-docker:v2.7.1
   ```
 
 
-### Changelog {#Changelog-v2.7.1}
+#### Changelog {#Changelog-v2.7.1}
 
-#### Added
+##### Added
 <ul>
    <li>
  <details>
@@ -138,7 +139,7 @@ MDCB (Multi-Data Center Bridge) has been enhanced to support the storage of Grap
 </ul>
 
 
-#### Updated
+##### Updated
 <ul>
  
  <li>
@@ -151,14 +152,14 @@ MDCB 2.7.1 supports Tyk API definitions up to Tyk Gateway v5.6.0. Please use MDC
  </ul>
 ---
 
-## 2.7.0 Release Notes
+### 2.7.0 Release Notes
 
-### Release date 12 August 2024
+#### Release date 12 August 2024
 
-### Breaking Changes
+#### Breaking Changes
 This release has no breaking changes.
 
-### 3rd Party Dependencies & Tools
+#### 3rd Party Dependencies & Tools
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by MDCB | 
@@ -167,19 +168,19 @@ This release has no breaking changes.
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-### Deprecations
+#### Deprecations
 There are no deprecations in this release, however with the introduction of new healthcheck endpoints we encourage customers to start using the new `/liveness` and `/readiness` endpoints and avoid using the old `/health` endpoint.
 
-#### Recommendations for users:
+##### Recommendations for users:
 
 - Migrate to new [health check]({{< ref "tyk-multi-data-centre/setup-controller-data-centre#health-check" >}}) endpoints in order to get more detailed information. For Kubernetes users, use Helm Charts v1.6 to upgrade MDCB to set liveness and readiness probes of MDCB deployment to the new health check endpoints.
 
-### Upgrade instructions
+#### Upgrade instructions
 If you are using a 2.6.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.6.0 and upgrade directly to this release.
 
-### Release Highlights
+#### Release Highlights
 
-#### New Health check probes
+##### New Health check probes
 Two new [health check]({{< ref "tyk-multi-data-centre/setup-controller-data-centre#health-check" >}}) endpoints have been added to improve monitoring and diagnostics:
 
 1. `/liveness`: This endpoint provides a quick check to determine if the MDCB application is alive and running.
@@ -190,7 +191,7 @@ Two new [health check]({{< ref "tyk-multi-data-centre/setup-controller-data-cent
 
 These new endpoints allow for more granular monitoring of MDCB's operational status, enabling quicker identification and resolution of potential issues.
 
-#### New Configuration Access Endpoint
+##### New Configuration Access Endpoint
 Two new `/config` and `/env` [endpoints]({{< ref "tyk-multi-data-centre/setup-controller-data-centre#check-mdcb-configurations" >}}) have been implemented, allowing developers to access the current configuration state of the MDCB instance in real-time. This feature provides:
 
 - Secure access to configuration data
@@ -201,15 +202,15 @@ This addition enhances debugging capabilities and provides valuable insights int
 
 Please refer to the [changelog]({{< ref "#Changelog-v2.7.0">}}) below.
 
-### Downloads
+#### Downloads
 - [Docker image v2.7.0](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.7.0)
 - ```bash
   docker pull tykio/tyk-mdcb-docker:v2.7.0
   ``` 
 
-### Changelog {#Changelog-v2.7.0}
+#### Changelog {#Changelog-v2.7.0}
 
-#### Added
+##### Added
 <ul>
    <li>
  <details>
@@ -240,7 +241,7 @@ Please refer to the [changelog]({{< ref "#Changelog-v2.7.0">}}) below.
  </ul>
 
 
-#### Updated
+##### Updated
 <ul>
  
  <li>
@@ -253,14 +254,15 @@ MDCB 2.7.0 supports Tyk API definitions up to Tyk Gateway v5.5.0. Please use MDC
  </ul>
 ---
 
-## 2.6.0 Release Notes
+## 2.6 Release Notes
+### 2.6.0 Release Notes
 
-### Release date 2 July 2024
+#### Release date 2 July 2024
 
-### Breaking Changes
+#### Breaking Changes
 This release has no breaking changes.
 
-### 3rd Party Dependencies & Tools
+#### 3rd Party Dependencies & Tools
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by MDCB | 
@@ -269,44 +271,44 @@ This release has no breaking changes.
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-### Deprecations
+#### Deprecations
 Starting with MDCB v2.6.0, the configuration parameter `http_port` has been introduced to replace the original `healthcheck_port`. This new HTTP port is designed to expose various endpoints for monitoring and debugging MDCB.
 
-#### Changes in MDCB v2.6.0:
+##### Changes in MDCB v2.6.0:
 - **New Configuration**: `http_port` is the new parameter for defining the HTTP port, with a default value of `8181`.
 - **Deprecation**: The `healthcheck_port` parameter is deprecated and will no longer be used in future MDCB versions.
 - **Helm Chart Update**: The MDCB Helm chart now includes the option `mdcb.probes.httpPort`, which takes precedence over `mdcb.probes.healthcheckPort`. For consistency and future compatibility, it is recommended to use `mdcb.probes.httpPort`.
 
-#### Backward compatibility:
+##### Backward compatibility:
 
 The `http_port` parameter is backward compatible, meaning it will function correctly with all existing MDCB versions, ensuring a smooth transition.
 
-#### Recommendations for users:
+##### Recommendations for users:
 
 - **Update Configurations**: Modify your MDCB configurations to use the new `http_port` parameter.
 
-### Upgrade instructions
+#### Upgrade instructions
 If you are using a 2.5.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.5.0 and upgrade directly to this release.
 
-### Release Highlights
+#### Release Highlights
 
-#### Tyk v5.4 Compatibility
+##### Tyk v5.4 Compatibility
 MDCB 2.6.0 is an update for compatibility for synchronisation with Tyk v5.4 API Definitions.
 
-#### Comprehensive Data Plane Node Information
+##### Comprehensive Data Plane Node Information
 MDCB 2.6 introduces a new `/dataplanes` endpoint that provides a comprehensive view of all data plane nodes connected to MDCB, including crucial metadata and status information for each node. The admin secret is required in the header to access these information.
 
 Please refer to the [changelog]({{< ref "#Changelog-v2.6.0">}}) below.
 
-### Downloads
+#### Downloads
 - [Docker image v2.6.0](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.6.0)
 - ```bash
   docker pull tykio/tyk-mdcb-docker:v2.6.0
   ``` 
 
-### Changelog {#Changelog-v2.6.0}
+#### Changelog {#Changelog-v2.6.0}
 
-#### Security
+##### Security
 
 The following CVEs have been resolved in this release:
 
@@ -314,7 +316,7 @@ The following CVEs have been resolved in this release:
 - [CVE-2024-27304](https://nvd.nist.gov/vuln/detail/CVE-2024-27304)
 - [CVE-2023-45288](https://nvd.nist.gov/vuln/detail/CVE-2023-45288)
 
-#### Fixed
+##### Fixed
 <ul>
  <li>
  <details>
@@ -325,7 +327,7 @@ Fixed a bug where upgrading Tyk Dashboard from version 4 to version 5 caused an 
  
  </ul>
 
-#### Added
+##### Added
 <ul>
    <li>
  <details>
@@ -336,7 +338,7 @@ Fixed a bug where upgrading Tyk Dashboard from version 4 to version 5 caused an 
  </ul>
 
 
-#### Updated
+##### Updated
 <ul>
  
  <li>
@@ -359,14 +361,15 @@ MDCB 2.6.0 supports Tyk API definitions up to Tyk Gateway v5.4.0. Please use MDC
 
 ---
 
-## 2.5.1 Release Notes
+## 2.5 Release Notes
+### 2.5.1 Release Notes
 
-### Release date 24 Apr 2024
+#### Release date 24 Apr 2024
 
-### Breaking Changes
+#### Breaking Changes
 This release has no breaking changes.
 
-### 3rd Party Dependencies & Tools
+#### 3rd Party Dependencies & Tools
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by MDCB | 
@@ -375,24 +378,24 @@ This release has no breaking changes.
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-### Deprecations
+#### Deprecations
 There are no deprecations in this release.
 
-### Upgrade instructions
+#### Upgrade instructions
 If you are using a 2.4.x or 2.5.0 version, we advise you to upgrade as soon as possible to this latest release. If you are on an older version, you should skip 2.5.0 and upgrade directly to this release.
 
-### Release Highlights
+#### Release Highlights
 This release contains bug fixes as detailed in the [changelog]({{< ref "#Changelog-v2.5.1">}}) below.
 
-### Downloads
+#### Downloads
 - [Docker image v2.5.1](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.5.1)
 - ```bash
   docker pull tykio/tyk-mdcb-docker:v2.5.1
   ``` 
 
-### Changelog {#Changelog-v2.5.1}
+#### Changelog {#Changelog-v2.5.1}
 
-#### Fixed
+##### Fixed
 <ul>
  <li>
  <details>
@@ -422,14 +425,14 @@ This release contains bug fixes as detailed in the [changelog]({{< ref "#Changel
 
 ---
 
-## 2.5.0 Release Notes
+### 2.5.0 Release Notes
 
-#### Release date 5 Apr 2024
+##### Release date 5 Apr 2024
 
-### Breaking Changes
+#### Breaking Changes
 This release has no breaking changes.
 
-### 3rd Party Dependencies & Tools
+#### 3rd Party Dependencies & Tools
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by MDCB | 
@@ -438,37 +441,37 @@ This release has no breaking changes.
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-### Deprecations
+#### Deprecations
 There are no deprecations in this release.
 
-### Upgrade instructions
+#### Upgrade instructions
 If you are using a 2.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.4.0 and upgrade directly to this release.
 
-### Release Highlights
+#### Release Highlights
 
-#### Tyk v5.3 Compatibility
+##### Tyk v5.3 Compatibility
 MDCB 2.5.0 is an update for compatibility for synchronisation with Tyk v5.3 API Definitions.
 
-#### Redis v7.x Compatibility
+##### Redis v7.x Compatibility
 We have upgraded Redis driver [go-redis](https://github.com/redis/go-redis) to v9. Subsequently, Tyk 5.3 is compatible with Redis v7.x.
 
-#### MongoDB v7.0.x Compatibility
+##### MongoDB v7.0.x Compatibility
 We have upgraded mongo-go driver to [mongo-go v1.13.1](https://github.com/mongodb/mongo-go-driver/releases/tag/v1.13.1). It allows us to benefit from the bug fixes and enhancements released by MongoDB. We have also tested that both Tyk 5.0.x+ and Tyk 5.3 are compatible with MongoDB v7.0.x.
 
-#### Security Fixes
+##### Security Fixes
 We have fixed a security issue affecting MDCB v2.2.0 to v2.4.x, where certain per-API access rights from policies are not properly relayed to edge gateways. We strongly recommend upgrading to MDCB version 2.5.0 to ensure the proper enforcement of per-API access rights across all gateways in your deployment.
 
 Please refer to the [changelog]({{< ref "#Changelog-v2.5.0">}}) below.
 
-### Downloads
+#### Downloads
 - [Docker image v2.5.0](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.5.0)
 - ```bash
   docker pull tykio/tyk-mdcb-docker:v2.5.0
   ``` 
 
-### Changelog {#Changelog-v2.5.0}
+#### Changelog {#Changelog-v2.5.0}
 
-#### Fixed
+##### Fixed
 <ul>
  <li>
  <details>
@@ -511,7 +514,7 @@ It affected GraphQL's field-based permissions, query depth, per query depth limi
  </li>
  </ul>
 
-#### Added
+##### Added
 <ul>
    <li>
  <details>
@@ -525,7 +528,7 @@ It affected GraphQL's field-based permissions, query depth, per query depth limi
  </ul>
 
 
-#### Updated
+##### Updated
 <ul>
  
  <li>
@@ -569,14 +572,15 @@ It allows us to benefit from the bug fixes and enhancements released by MongoDB.
 
 ---
 
-## 2.4.3 Release Notes
+## 2.4 Release Notes
+### 2.4.3 Release Notes
 
-### Release date 27 Feb 2024
+#### Release date 27 Feb 2024
 
-### Breaking Changes
+#### Breaking Changes
 This release has no breaking changes.
 
-### 3rd Party Dependencies & Tools
+#### 3rd Party Dependencies & Tools
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 4.4.x, 5.0.x, 6.0.x, 7.0.x | 4.4.x, 5.0.x, 6.0.x, 7.0.x | Used by MDCB | 
@@ -585,21 +589,21 @@ This release has no breaking changes.
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-### Deprecations
+#### Deprecations
 There are no deprecations in this release.
 
-### Upgrade instructions
+#### Upgrade instructions
 If you are using a 2.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.4.0 and upgrade directly to this release.
 
-### Release Highlights
+#### Release Highlights
 This release resolved an issue causing partial outages in Tyk Cloud Hybrid gateways due to a blocked stats channel, affecting login RPC calls and gateway operations.
 
-### Downloads
+#### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-mdcb-docker/v2.4.3/images/sha256-832f461782fbc6182382798a89025b0489f529427521f92683f33df1ebbd4218?context=explore)
 
-### Changelog {#Changelog-v2.4.3}
+#### Changelog {#Changelog-v2.4.3}
 
-#### Fixed
+##### Fixed
 <ul>
  <li>
  <details>
@@ -612,28 +616,28 @@ Fixed a blockage in the stats channel of Tyk Cloud Hybrid gateways, improving lo
 
 ---
 
-## 2.4.2 Release Notes
+### 2.4.2 Release Notes
 
-### Release date 9 Jan 2024
+#### Release date 9 Jan 2024
 
-### Breaking Changes
+#### Breaking Changes
 This release has no breaking changes.
 
-### Deprecations
+#### Deprecations
 There are no deprecations in this release.
 
-### Upgrade instructions
+#### Upgrade instructions
 If you are using a 2.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.4.0 and upgrade directly to this release.
 
-### Release Highlights
+#### Release Highlights
 This release enhances compatibility as detailed in the [changelog]({{< ref "#Changelog-v2.4.2">}}) below.
 
-### Downloads
+#### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-mdcb-docker/v2.4.2/images/sha256-bdd708718153fdc25d13573d280fb5a715f11b1d2c97c6d59837d8dd83bf3c6c?context=explore)
 
-### Changelog {#Changelog-v2.4.2}
+#### Changelog {#Changelog-v2.4.2}
 
-#### Fixed
+##### Fixed
 <ul>
  <li>
  <details>
@@ -646,83 +650,85 @@ Fixed an issue where MDCB cannot pickup APIs created on Dashboard v3.x and v4.x.
 
 ---
 
-## 2.4.1 Release Notes
+### 2.4.1 Release Notes
 
-### Release date 21 Nov 2023
+#### Release date 21 Nov 2023
 
-### Breaking Changes
+#### Breaking Changes
 This release has no breaking changes.
 
-### Deprecations
+#### Deprecations
 There are no deprecations in this release.
 
-### Upgrade instructions
+#### Upgrade instructions
 If you are using a 2.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.4.0 and upgrade directly to this release.
 
-### Release Highlights
+#### Release Highlights
 This release enhances compatibility as detailed in the [changelog]({{< ref "#Changelog-v2.4.1">}}) below.
 
-### Downloads
+#### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-mdcb-docker/v2.4.1/images/sha256-2debf08c95c46a4662a00b2193ee142998826ed7c5e2bb4a4633737c0a4de2e3?context=explore)
 
-### Changelog {#Changelog-v2.4.1}
+#### Changelog {#Changelog-v2.4.1}
 
-#### Changed
+##### Changed
 - Update for compatibility with API definitions for Tyk v5.2.3
 
 ---
 
-## 2.4.0 Release Notes
+### 2.4.0 Release Notes
 
-### Release Date 14 November 2023
+#### Release Date 14 November 2023
 
-### Breaking Changes
+#### Breaking Changes
 This release has no breaking changes.
 
-### Deprecations
+#### Deprecations
 There are no deprecations in this release.
 
-### Upgrade instructions
+#### Upgrade instructions
 If you are using a 2.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.4.0 and upgrade directly to this release.
 
-### Release Highlights
+#### Release Highlights
 MDCB 2.4.0 is an update for compatibility for synchronisation with Tyk v5.2 API Definitions. It also enables gateway information visualisation on Tyk Dashboard v5.2+. Please refer to the [changelog]({{< ref "#Changelog-v2.4.0">}}) below.
 
-### Downloads
+#### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-mdcb-docker/v2.4.0/images/sha256-b5fad5b4c1c8b912999816ab51ff51e62fdd733fc43256187f22e1218b287f26?context=explore)
 
-### Changelog {#Changelog-v2.4.0}
+#### Changelog {#Changelog-v2.4.0}
 
-#### Added
+##### Added
 - Track number of connected gateways and gateway info. The connection statistics can be queried from Tyk Dashboard v5.2+. This allow greater visibility for Operation teams on the number of gateways they are using.
 
-#### Updated
+##### Updated
 - Update for compatibility with API definitions for Tyk v5.1
 
 ---
 
-## 2.3.1 Release Notes
+## 2.3 Release Notes
+### 2.3.1 Release Notes
 
 Release date: 2023-08-31
 
-### Fixed
+#### Fixed
 
 - In MDCB 2.3, the embedded OAS API Definition introduced in 5.1 is not backward compatible. It causes Gateway panic when MDCB is connecting to Tyk 5.0.x or earlier releases. In this fix, MDCB will transform the old API Definition to new format to avoid panic.
 - Users should use URL-encoded values in username and password of a MongoDB connection string if it contains following characters - "?", "@". The same connection string should always be accepted by both mgo and mongo-go drivers. (Note: Same fix for Dashboard will be available in upcoming release Tyk Dashboard v5.0.6 and v5.2.0)
 
 
-## 2.3.0 Release Notes
+### 2.3.0 Release Notes
 
 Release date: 2023-06-28
 
 MDCB 2.3.0 is an update for compatibility for synchronisation with Tyk v5.1 API Definitions.
 
-### Updated
+#### Updated
 
 - Update MDCB to Go 1.19
 - Update for compatibility with API definitions for Tyk v5.1
 
-## 2.2.0 Release Notes
+## 2.2 Release Notes
+### 2.2.0 Release Notes
 Release date: 2023-05-26
 
 MDCB 2.2.0 brings support for using the official [MongoDB go driver](https://www.mongodb.com/docs/drivers/go/current/?_ga=2.196564399.289488302.1688466439-526957880.1688466345#mongodb-go-driver), as well as some performance fixes.
@@ -737,99 +743,101 @@ Tyk 5.0.2 and Tyk Pump 1.8.0 also support the new driver option.
 
 We have also worked on performance improvement and fixes like preventing successive frequent reloads, handling storage errors gracefully, retry connection to storage during startup. If ownership is enabled, gateways will also load APIs that are not associated with any user or group.
 
-### Added
+#### Added
 - Support for `mongo-go` driver option
 - Support for the `+srv` connection string with `mongo-go` driver option
 - Support for SCRAM-SHA-256 with “mongo-go” driver option
 - Performance Enhancement: MDCB enqueue APIs and Policies for reload to reduce multiple reloads
-### Fixed
+#### Fixed
 - MDCB handles errors from storage gracefully and prevents sending an empty list of APIs to gateways which would cause an outage
 - MDCB will retry the connection to storage to prevent startup failure
-### Updated
+#### Updated
 - If both mongo_url and connection_type + connection_string are set, Mongo will be loaded by default.
 - When ownership is enabled, gateways should only load APIs that are associated with the user or group. Additionally, APIs with no association with any users or groups are also loaded.
 
-## 2.1.1 Release Notes
+## 2.1 Release Notes
+### 2.1.1 Release Notes
 Release date: 2023-03-29
 
-### Fixed
+#### Fixed
 - Updated API Definition to support 5.0.0 Gateways. 
 - Fixed one critical CVE issue with go.uuid package.
 
 
-## 2.1.0 Release Notes
+### 2.1.0 Release Notes
 Release date: 2023-02-20
 
-### Added
+#### Added
 - Added a new configuration option [enable_ownership]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#enable_ownership" >}}) that allows MDCB filter APIs by API Ownership. 
 - MDCB works without group id. This means that when an Edge Gateway doesn’t have a group, it will defaults to the `ungrouped` group. This has some fallbacks, as we can’t use the synchroniser for the ungrouped gateways.
 
 
-### Fixed
+#### Fixed
 - Updated API Definition to support 4.3.3 Gateways. 
 
-## 2.0.5 Release Notes
+## 2.0 Release Notes
+### 2.0.5 Release Notes
 Release date: 2023-01-31
 
-### Added
+#### Added
 - Added a new configuration option (`group_key_ttl`) that specifies the group key TTL in seconds. This key is used to prevent a group of gateways from re-syncing when is not required. On login (GroupLogin call), if the key doesn't exist then the sync process is triggered. If the key exists then the TTL just gets renewed. In case the cluster of gateways is down, the key will expire and get removed and if they connect again a sync process will be triggered. Default value: 180 seconds. Min value: 30 seconds.
 
-### Fixed
+#### Fixed
 - Fixed an issue where gateways in the data plane couldn't re-sync with MDCB (in the control plane) after their Redis (in the data plane) has been reset. The only way was to change the `group_id`. The fix means that MDCB can overcome this situation independently and there's no need for the users to do anything (changing `group_id` or any other curing action). Check `group_key_ttl` for [more details](#added)
 
-## 2.0.4 Release Notes
+### 2.0.4 Release Notes
 Release date: 2022-12-06
 
-### Added
+#### Added
 - Changes in the API definition introduced in Tyk Gateway 4.3 
 - Update to Go 1.16 
 - Update the embedded Pump to the latest (v1.7.0)
 
-### Fixed
+#### Fixed
 - Fixed a minor security issue when logging Mongo URL 
 
-## 2.0.3 Release Notes
+### 2.0.3 Release Notes
 Release date: 2022-08-12
 
-### Fixed
+#### Fixed
 - Fixed a bug when using MDCB with Tyk Gateway versions prior to 4.1 where an error could be reported when querying an API from a worker gateway.
 - Fixed an incompatibility with MDCB logging format changes
 - Fixed an issue where, with the MDCB Synchroniser disabled, all API resources were still pushed out to workers upon creation in the controller; the behavior should be as it was pre-synchroniser.
 
-## 2.0.2 Release Notes
+### 2.0.2 Release Notes
 Release date: 2022-08-12
 
-### Fixed
+#### Fixed
 - Fixed a bug when using MDCB with Tyk Gateway versions prior to 4.1 where an error could be reported when querying an API from a worker gateway.
 
-## 2.0.1 Release Notes
+### 2.0.1 Release Notes
 Release date: 2022-07-20
 
-### Added
+#### Added
 - Updated MDCB to support Tyk Gateway v4.1
 - Added a new configuration option (`omit_analytics_index_creation`) that supresses the creation of indexes in Mongo pumps (to match Pump 1.6)
 - Added the option to configure MDCB certificates using environment variables.
 
-### Fixed
+#### Fixed
 - Fixed a bug when using MDCB to transfer analytics to MongoDB, where the indexes Tyk created in the MongoDB did not correctly include a time stamp.
 
-### Changed
+#### Changed
 - Updated the pump embedded in MDCB to the latest version (Pump v1.6)
 
 
-## 2.0.0 Release Notes
+### 2.0.0 Release Notes
 Release date: 2022-05-17
 
-### Added
+#### Added
 
-#### SQL support
+##### SQL support
 Since Tyk v4.0, the dashboard supports SQL engine natively. This means that Tyk has support for an SQL relational database to be used instead of the default MongoDB and lets users decide which DB type is the best for their usage. MDCB 2.0 introduces support for SQL to the multi data center bridge, enabling MDCB orchestrated deployments using SQL databases.
 MDCB now uses embedded Tyk Mongo and SQL pumps to write analytics. 
 
-### Fixed
+#### Fixed
 - Fixed a security risk where API keys could be logged in plain text in MDCB logs.
 
-### Changed
+#### Changed
 - Improved the formatting of debug logs to align with the rest of the Tyk product suite.
 - Hide innocent and unhelpful error messages related to the RPC connection that were spamming the logs
 
