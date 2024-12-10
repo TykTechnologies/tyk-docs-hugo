@@ -206,17 +206,6 @@ SSL-Session:
     Master-Key: 88D36C895808BDF9A5481A8CFD68A0B821CF8E6A6B8C39B40DB22DA82F6E2E791C77A38FDF5DC6D21AAE3D09825E4A2A
 ```
 
-It is also possible to control whether the server selects the client's most preferred ciphersuite, or the server's most preferred ciphersuite.
-If true, the server's preference as expressed in the order of elements in `ssl_ciphers` is used.
-
-```json
-{
-  "http_server_options": {
-    "prefer_server_ciphers": true
-  }
-}
-```
-
 ### Using Tyk Certificate Storage
 In Tyk Gateway 2.4 and Tyk Dashboard 1.4 we added [Mutual TLS support](https://tyk.io/docs/security/tls-and-ssl/mutual-tls/) including special Certificate storage, which is used to store all kinds of certificates from public to server certificates with private keys.
 
