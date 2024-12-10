@@ -322,7 +322,7 @@ As we can see, when we send API requests, the Tyk Pump will scrape them from Red
 In this example, we've configured a simple `STDOUT` Pump where the records will be printed to the Standard OUT (docker logs!)
 
 
-### CICD Plugin Build
+## CICD Plugin Build
 
 It's very important to automate the deployment of your infrastructure.  
 
@@ -330,14 +330,14 @@ Ideally, you store your configurations and code in version control, and then thr
 
 With custom plugins, this is no different.
 
-To illustrate this, we can look at the GitHub Actions of the [example repo][0].
+To illustrate this, we can look at the GitHub Actions of the [example repo](https://github.com/TykTechnologies/custom-go-plugin/actions).
 
 We see that upon every pull request, a section of steps are taken to "Build, [Bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}), Release Go Plugin".
 
-Let's break down the [workflow file][1]:
+Let's break down the [workflow file](https://github.com/TykTechnologies/custom-go-plugin/blob/master/.github/workflows/makefile.yml):
 
 
-#### 1. Compiling the Plugin
+### 1. Compiling the Plugin
 
 We can see the first few steps replicate our first task, bootstrapping the environment and compiling the plugin into a binary format.
 
@@ -352,9 +352,9 @@ We can see the first few steps replicate our first task, bootstrapping the envir
       run: make go-build
 ```
 
-We can look at the [Makefile][2] to further break down the last `go-build` command.
+We can look at the [Makefile](https://github.com/TykTechnologies/custom-go-plugin/blob/master/Makefile#L59) to further break down the last `go-build` command.
 
-#### 2. Bundle The Plugin
+### 2. Bundle The Plugin
 
 The next step of the workflow is to "[bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}})" the plugin.
 
@@ -379,9 +379,9 @@ This process allows us to decouple the building of our custom plugins from the r
 
 In other words, Gateways can be scaled up and down, and pointed at different plugin repos very easily.  This makes it easier to deploy Custom plugins especially in containerized environments such as Kubernetes, where we don't have to worry about persistent volumes.
 
-You can read more about plugin bundles [here][3].
+You can read more about plugin bundles [here](/img/dashboard/system-management/api_settings.png).
 
-#### 3. Deploy The Plugin
+### 3. Deploy The Plugin
 
 Next step of the workflow is to publish our bundle to a server that's reachable by the Gateways.
 
@@ -412,7 +412,7 @@ For seamless deployments, take a look at multi-version [plugin support]({{< ref 
 
 {{< /note >}}
 
-#### 4. Configure the Gateway
+### 4. Configure the Gateway
 
 In order to instruct the Gateway to download the bundle, we need two things:
 
@@ -421,13 +421,6 @@ In order to instruct the Gateway to download the bundle, we need two things:
 2. The name of the bundle - this is generated during your workflow usually.  This is defined at the API level (this is where you declare Custom plugins, as evident in task 2)
 
 The field of the API Definition that needs to be set is `custom_middleware_bundle`.
-
-
-[0]: https://github.com/TykTechnologies/custom-go-plugin/actions
-[1]: https://github.com/TykTechnologies/custom-go-plugin/blob/master/.github/workflows/makefile.yml
-[2]: https://github.com/TykTechnologies/custom-go-plugin/blob/master/Makefile#L59
-[3]: https://github.com/TykTechnologies/custom-go-plugin#deploying-the-go-plugin
-[4]: https://github.com/TykTechnologies/custom-plugin-examples
 
 
 
@@ -1508,7 +1501,7 @@ For a quick-start guide to working with Go plugins, start [here]({{< ref "plugin
 
 The [Go plugin writing guide]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/writing-go-plugins" >}}) provides details of how to access dynamic data (such as the key session object) from your Go functions. Combining these resources provides you with a powerful set of tools for shaping and structuring inbound traffic to your API.
 
-## Supported plugin types
+#### Supported plugin types
 
 All of Tyk's [custom middleware hooks]({{< ref "plugins/plugin-types/plugintypes" >}}) support Go plugins. They represent different stages in the request and response [middleware chain]({{< ref "concepts/middleware-execution-order" >}}) where custom functionality can be added.
 
@@ -1528,7 +1521,7 @@ All of Tyk's [custom middleware hooks]({{< ref "plugins/plugin-types/plugintypes
 The `use_keyless` and `use_go_plugin_auth` fields are populated automatically with the correct values if you add a plugin to the **Auth** or **Post-Auth** hooks when using the Tyk Dashboard.
 {{< /note >}}
 
-## Upgrading your Tyk Gateway
+#### Upgrading your Tyk Gateway
 
 When upgrading your Tyk Gateway deployment, you need to re-compile your plugin with the new version. At the moment of loading a plugin, the Gateway will try to find a plugin with the name provided in the API definition. If none is found then it will fall back to search the plugin file with the name: `{plugin-name}_{Gw-version}_{OS}_{arch}.so`.
 
@@ -1537,7 +1530,7 @@ Since Tyk v4.1.0, the compiler [automatically]({{< ref "product-stack/tyk-gatewa
 This diagram shows how every Tyk Gateway will search and load the plugin binary that it is compatible with.
 {{< img src="/img/plugins/go-plugin-different-tyk-versions.png" alt="APIs Menu" >}}
 
-## Using custom Go plugins with Tyk Cloud
+#### Using custom Go plugins with Tyk Cloud
 
 The following supporting resources are provided for developing plugins on Tyk Cloud:
 
@@ -1546,7 +1539,7 @@ The following supporting resources are provided for developing plugins on Tyk Cl
 
 
 
-### Writing Custom Go Plugins
+#### Writing Custom Go Plugins
 
 Tyk's custom Go plugin middleware is very powerful as it provides you with access to different data types and functionality as explained in this section.
 
@@ -1562,7 +1555,7 @@ Custom Go plugins can also [terminate the request]({{< ref "product-stack/tyk-ga
 For more resources for writing plugins, please visit our [Plugin Hub]({{< ref "plugins/plugin-hub">}}).
 To see an example of a Go plugin, please visit our [Go plugin examples]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-examples" >}}) page.
 
-## Accessing the internal state of a custom plugin
+##### Accessing the internal state of a custom plugin
 
 A Golang plugin can be treated as a normal Golang package but:
 
@@ -1651,7 +1644,7 @@ func main() {}
 
 Here we see how the internal state of the Golang plugin is used by the exported function `MyProcessRequest` (the one we set in the API spec in the `"custom_middleware"` section). The map `hitCounter` is used to send internal state and count hits to different endpoints. Then our exported Golang plugin function sends an HTTP reply with endpoint hit statistics.
 
-## Accessing the API definition
+##### Accessing the API definition
 
 When Tyk passes a request to your plugin, the API definition is made available as part of the request context.
 
@@ -1661,7 +1654,7 @@ When Tyk passes a request to your plugin, the API definition is made available a
 The API definition is accessed differently for Tyk OAS APIs and Tyk Classic APIs, as indicated in the following sections. If you use the wrong call for your API type, it will return `nil`.
 {{< /note >}}
 
-### Working with Tyk OAS APIs
+**Working with Tyk OAS APIs**
 
 The API definition can be accessed as follows:
 
@@ -1686,7 +1679,7 @@ func main() {}
 The invocation of `ctx.GetOASDefinition(r)` returns an `OAS` object containing the Tyk OAS API definition.
 The Go data structure can be found [here](https://github.com/TykTechnologies/tyk/blob/master/apidef/oas/oas.go#L28).
 
-### Working with Tyk Classic APIs
+**Working with Tyk Classic APIs**
 
 The API definition can be accessed as follows:
 
@@ -1711,7 +1704,7 @@ func main() {}
 The invocation of `ctx.GetDefinition(r)` returns an APIDefinition object containing the Tyk Classic API Definition.
 The Go data structure can be found [here](https://github.com/TykTechnologies/tyk/blob/master/apidef/api_definitions.go#L583).
 
-## Accessing the session object
+##### Accessing the session object
 
 When Tyk passes a request to your plugin, the key session object is made available as part of the request context. This can be accessed as follows:
 
@@ -1735,7 +1728,7 @@ The Go data structure can be found [here](https://github.com/TykTechnologies/tyk
 
 Here is an [example](https://github.com/TykTechnologies/custom-plugin-examples/blob/master/plugins/go-auth-multiple_hook_example/main.go#L135) custom Go plugin that makes use of the session object.
 
-## Terminating the request
+##### Terminating the request
 
 You can terminate the request within your custom Go plugin and provide an HTTP response to the originating client, such that the plugin behaves similarly to a [virtual endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}).
 
@@ -1745,7 +1738,7 @@ You can terminate the request within your custom Go plugin and provide an HTTP r
 
 This [example]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-examples#using-a-custom-go-plugin-as-a-virtual-endpoint" >}}) demonstrates a custom Go plugin configured as a virtual endpoint.
 
-## Logging from a custom plugin
+##### Logging from a custom plugin
 
 Your plugin can write log entries to Tyk's logging system.
 
@@ -1771,7 +1764,7 @@ func AddFooBarHeader(rw http.ResponseWriter, r *http.Request) {
 func main() {}
 ```
 
-### Monitoring instrumentation for custom plugins
+**Monitoring instrumentation for custom plugins**
 
 All custom middleware implemented as Golang plugins support Tyk's current built in instrumentation.
 
@@ -1787,11 +1780,11 @@ The format for a metric with execution time (in nanoseconds) will have the same 
 "GoPluginMiddleware:/tmp/AddFooBarHeader.so:AddFooBarHeader.exec_time"
 ```
 
-## Creating a custom response plugin
+##### Creating a custom response plugin
 
 As explained [here]({{< ref "plugins/plugin-types/response-plugins" >}}), you can register a custom Go plugin to be triggered in the response middleware chain. You must configure the `driver` field to `goplugin` in the API definition when registering the plugin.
 
-### Response plugin method signature
+**Response plugin method signature**
 
 To write a response plugin in Go you need it to have a method signature as in the example below i.e. `func(http.ResponseWriter, *http.Response, *http.Request)`.
 You can then access and modify any part of the request or response. User session and API definition data can be accessed as with other Go plugin hook types.
@@ -1822,7 +1815,7 @@ func MyPluginResponse(rw http.ResponseWriter, res *http.Response, req *http.Requ
 func main() {}
 ```
 
-#### Custom Go plugin development flow
+**Custom Go plugin development flow**
 
 We recommend that you familiarize yourself with the following official Go documentation to help you work effectively with Go plugins:
 
@@ -1837,7 +1830,7 @@ Plugins are currently supported only on Linux, FreeBSD, and macOS, making them u
 
 Plugins need to be compiled to native shared object code, which can then be loaded by Tyk Gateway. It's important to understand the need for plugins to be compiled using exactly the same environment and build flags as the Gateway. To simplify this and minimise the risk of compatibility problems, we recommend the use of [Go workspaces](https://go.dev/blog/get-familiar-with-workspaces), to provide a consistent environment.
 
-## Setting up your environment
+##### Setting up your environment
 
 To develop plugins, you'll need:
 
@@ -1854,7 +1847,7 @@ We recommend that you set up a *Go workspace*, which, at the end, is going to co
 
 Using the *Go workspace* ensures build compatibility between the plugins and Gateway.
 
-### 1. Checking out Tyk Gateway source code
+**1. Checking out Tyk Gateway source code**
 
 ```
 git clone --branch release-5.3.6 https://github.com/TykTechnologies/tyk.git tyk-release-5.3.6 || true
@@ -1862,7 +1855,7 @@ git clone --branch release-5.3.6 https://github.com/TykTechnologies/tyk.git tyk-
 
 This example uses a particular `release-5.3.6` branch, to match Tyk Gateway release 5.3.6. With newer `git` versions, you may pass `--branch v5.3.6` and it would use the tag. In case you want to use the tag it's also possible to navigate into the folder and issue `git checkout tags/v5.3.6`.
 
-### 2. Preparing the Go workspace
+**2. Preparing the Go workspace**
 
 Your Go workspace can be very simple:
 
@@ -1895,7 +1888,7 @@ To summarize what was done:
 
 At this point, we don't have a *Go workspace* but we will create one next so that we can effectively share the Gateway dependency across Go modules.
 
-### 3. Creating the Go workspace
+**3. Creating the Go workspace**
 
 To set up the Go workspace, start in the directory that contains the Gateway and the Plugins folder. You'll first, create the `go.work` file to set up your Go workspace, and include the `tyk-release-5.3.6` and `plugins` folders. Then, navigate to the plugins folder to fetch the Gateway dependency at the exact commit hash and run `go mod tidy` to ensure dependencies are up to date.
 
@@ -1923,7 +1916,7 @@ use (
 )
 ```
 
-### 4. Building and validating the plugin
+**4. Building and validating the plugin**
 
 Now that your *Go workspace* is ready, you can build your plugin as follows:
 
@@ -1949,7 +1942,7 @@ time="Oct 14 13:39:55" level=info msg="--- Go custom plugin init success! ---- "
 
 The log shows that the plugin has correctly loaded into the Gateway and that its `init` function has been successfully invoked.
 
-### 5. Summary
+**5. Summary**
 
 In the preceding steps we have put together an end-to-end build environment for both the Gateway and the plugin. Bear in mind that runtime environments may have additional restrictions beyond Go version and build flags to which the plugin developer must pay attention.
 
@@ -1958,11 +1951,11 @@ Compatibility in general is a big concern when working with Go plugins: as the p
 Continue with [Loading Go Plugins into Tyk](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/plugins/golang/loading-go-plugins/).
 
 
-## Debugging Golang Plugins
+##### Debugging Golang Plugins
 
 Plugins are native Go code compiled to a binary shared object file. The code may depend on `cgo` and require libraries like `libc` provided by the runtime environment. The following are some debugging steps for diagnosing issues arising from using plugins.
 
-### Warnings
+**Warnings**
 
 The [Plugin package - Warnings](https://pkg.go.dev/plugin#hdr-Warnings) section in the Go documentation outlines several requirements which can't be ignored when working with plugins. The most important restriction is the following:
 
@@ -1979,7 +1972,7 @@ Supplying the argument `build_id` to the *Plugin Compiler* ensures the same plug
 
 Continue with [Tyk Plugin Compiler](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler/).
 
-### Using Incorrect Build Flags
+**Using Incorrect Build Flags**
 
 When working with Go plugins, it's easy to miss the restriction that the plugin at the very least must be built with the same Go version, and the same flags (notably `-trimpath`) as the Tyk Gateway on which it is to be used.
 
@@ -2009,7 +2002,7 @@ Strictly speaking:
 
 When something is off, you can check what is different by using the `go version -m` command for the Gateway (`go version -m tyk`) and plugin (`go version -m plugin.so`). Inspecting and comparing the output of `build` tokens usually yields the difference that caused the compatibility issue.
 
-### Plugin Compatibility Issues
+**Plugin Compatibility Issues**
 
 Below are some common situations where dependencies might cause issues:
 
@@ -2041,7 +2034,7 @@ Here’s how to handle each case:
 
 **Recommendation:** For best results, use Go package versions that follow the Go module versioning (metaversion). However, keep in mind that many `Gateway` dependencies use basic `v1` semantic versioning, which doesn’t always enforce strict versioned import paths. 
 
-### List plugin symbols
+**List plugin symbols**
 
 Sometimes it's useful to list symbols from a plugin. For example, we can list the symbols as they are compiled into our testplugin:
 
@@ -2101,7 +2094,7 @@ The plugin compiler is not supported on Ubuntu 16.04 (Xenial Xerus) as it uses g
 {{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
 {{< /note >}}
 
-## Compiler options
+##### Compiler options
 
 Most of the following arguments are applied only to developer flows. These aid development and testing purposes, and support of these varies across releases, due to changes in the Go ecosystem.
 
@@ -2124,7 +2117,7 @@ As the plugins are built with `-trimpath`, to omit local filesystem path details
 - [plugin package: Warnings](https://pkg.go.dev/plugin#hdr-Warnings)
 - [golang#29525 - plugin: cannot open the same plugin with different names](https://github.com/golang/go/issues/29525)
 
-## Output filename
+##### Output filename
 
 Since v4.1.0 the plugin compiler has automatically added the following suffixes to the root filename provided in the `plugin_name` argument:
 
@@ -2136,7 +2129,7 @@ Thus, if `plugin_name` is set to `plugin.so` then given these example values the
 
 This enables you to have one directory with multiple versions of the same plugin targeting different Gateway versions.
 
-### Cross-compiling for different architectures and operating systems
+**Cross-compiling for different architectures and operating systems**
 
 The Tyk Go Plugin Compiler can generate output for different architectures and operating systems from the one in which the compiler is run (cross-compiling). When you do this, the output filename will be suffixed with the target OS and architecture.
 
@@ -2156,7 +2149,7 @@ This command will cross-compile your plugin for a `linux/arm64` architecture. It
 If you are using the plugin compiler on MacOS, the docker run argument `--platform=linux/amd64` is necessary. The plugin compiler is a cross-build environment implemented with `linux/amd64`.
 {{< /note >}}
 
-## Experimental options
+##### Experimental options
 
 The plugin compiler also supports a set of environment variables being passed:
 
@@ -2168,7 +2161,7 @@ These environment options are only available in the latest gateway and plugin co
 They are unsupported and are provided to aid development and testing workflows.
 
 
-### Loading Custom Go Plugins into Tyk
+**Loading Custom Go Plugins into Tyk**
 
 
 For development purposes, we are going to load the plugin from local file storage. For production, you can use [bundles](#loading-a-tyk-golang-plugin-from-a-bundle) to deploy plugins to multiple gateways.
@@ -2220,7 +2213,7 @@ Now your API with its Golang plugin is ready to process traffic:
 
 We see that the upstream target has received the header `"Foo": "Bar"` which was added by our custom middleware implemented as a native Golang plugin in Tyk.
 
-### Updating the plugin
+**Updating the plugin**
 
 Loading an updated version of your plugin requires one of the following actions:
 
@@ -2229,7 +2222,7 @@ Loading an updated version of your plugin requires one of the following actions:
 
 If a plugin is loaded as a bundle and you need to update it you will need to update your API spec with a new `.zip` file name in the `"custom_middleware_bundle"` field. Make sure the new `.zip` file is uploaded and available via the bundle HTTP endpoint before you update your API spec.
 
-### Loading a Tyk Golang plugin from a bundle
+**Loading a Tyk Golang plugin from a bundle**
 
 Currently we have loaded Golang plugins only directly from the file system. However, when you have multiple gateway instances, you need a more dynamic way to load plugins. Tyk offer bundle instrumentation [Plugin Bundles]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}). Using the bundle command creates an archive with your plugin, which you can deploy to the HTTP server (or AWS S3) and then your plugins will be fetched and loaded from that HTTP endpoint.
 
@@ -2287,7 +2280,7 @@ This document provides a working example for providing specific functionality wi
 
 For more resources for writing plugins, please visit our [Plugin Hub]({{< ref "plugins/plugin-hub">}}).
 
-## Using a custom Go plugin as a virtual endpoint
+##### Using a custom Go plugin as a virtual endpoint
 
 It is possible to send a response from the Golang plugin custom middleware. In the case that the HTTP response was sent:
 
@@ -2385,7 +2378,7 @@ Here we see that:
 - The response body has a JSON payload with the current time.
 - The upstream target was not reached. Our Tyk Golang plugin served this request and stopped processing after the response was sent.
 
-## Performing custom authentication with a Golang plugin
+##### Performing custom authentication with a Golang plugin
 
 You can implement your own authentication method, using a Golang plugin and custom `"auth_check"` middleware. Ensure you set the two fields in Post Authentication Hook.
 
@@ -2510,7 +2503,7 @@ Here we see that our custom middleware successfully authenticated the request an
 
 
 
-## Go Templates
+#### Go Templates
 
 Tyk's [request]({{< ref "transform-traffic/request-body" >}}) and [response]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) body transform middleware use the [Go template language](https://golang.org/pkg/text/template/) to parse and modify the provided input.
 
@@ -2518,7 +2511,7 @@ Go templates are also used by Tyk's [webhook event handler]({{< ref "basic-confi
 
 In this section of the documentation, we provide some guidance and a few examples on the use of Go templating with Tyk.
 
-### Data format conversion using helper functions
+##### Data format conversion using helper functions
 Tyk provides two helper functions to assist with data format translation between JSON and XML:
 - `jsonMarshal` performs JSON style character escaping on an XML field and, for complex objects, serialises them to a JSON string ([example]({{< ref "product-stack/tyk-gateway/references/go-templates#xml-to-json-conversion-using-jsonmarshal" >}}))
 - `xmlMarshal` performs the equivalent conversion from JSON to XML ([example]({{< ref "product-stack/tyk-gateway/references/go-templates#json-to-xml-conversion-using-xmlmarshal" >}}))
@@ -2529,7 +2522,7 @@ When creating these functions within your Go templates, please note:
 
 Hence `{{ . | jsonMarshal }}` will pass the entire input to the `jsonMarshal` helper function.
 
-### Using functions within Go templates
+##### Using functions within Go templates
 You can define and use functions in the Go templates that are used for body transforms in Tyk. Functions allow you to abstract common template logic for cleaner code and to aid reusability. Breaking the template into functions improves readability of more complex tenplates.
 
 Here is an example where we define a function called `myFunction` that accepts one parameter:
@@ -2555,13 +2548,13 @@ The output would be:
 
 We have bundled the [Sprig Library (v3)](http://masterminds.github.io/sprig/) which provides over 70 pre-written functions for transformations to assist the creation of powerful Go templates to transform your API requests. 
 
-### Additional resources
+**Additional resources**
 Here's a useful [blogpost](https://blog.gopheracademy.com/advent-2017/using-go-templates/) and [YouTube tutorial](https://www.youtube.com/watch?v=k5wJv4XO7a0) that can help you to learn about using Go templates. 
 
-## Go templating examples
+##### Go templating examples
 Here we provide worked examples for both [JSON]({{< ref "product-stack/tyk-gateway/references/go-templates#example-json-transformation-template" >}}) and [XML]({{< ref "product-stack/tyk-gateway/references/go-templates#example-xml-transformation-template" >}}) formatted inputs. We also explain examples using the [jsonMarshal]({{< ref "product-stack/tyk-gateway/references/go-templates#xml-to-json-conversion-using-jsonmarshal" >}}) and [xmlMarshal]({{< ref "product-stack/tyk-gateway/references/go-templates#json-to-xml-conversion-using-xmlmarshal" >}}) helper functions.
 
-### Example JSON transformation template
+**Example JSON transformation template**
 Imagine you have a published API that accepts the request listed below, but your upstream service requires a few alterations, namely:
 - swapping the values of parameters `value1` and `value2`
 - renaming the `value_list` to `transformed_list`
@@ -2625,7 +2618,7 @@ In this template:
 }
 ```
 
-### Example XML transformation template
+**Example XML transformation template**
 XML cannot be as easily decoded into strict structures as JSON, so the syntax is a little different when working with an XML document. Here we are performing the reverse translation, starting with XML and converting to JSON.
 
 **Input**
@@ -2692,7 +2685,7 @@ In this template:
 </data>
 ```
 
-### XML to JSON conversion using jsonMarshal
+**XML to JSON conversion using jsonMarshal**
 The `jsonMarshal` function converts XML formatted input into JSON, for example:
 
 **Input**
@@ -2712,7 +2705,7 @@ The `jsonMarshal` function converts XML formatted input into JSON, for example:
 
 Note that in this example, Go will step through the entire data structure provided to the template. When used in the [Request]({{< ref "transform-traffic/request-body#data-accessible-to-the-middleware" >}}) or [Response]({{< ref "advanced-configuration/transform-traffic/response-body#data-accessible-to-the-middleware" >}}) Body Transform middleware, this would include Context Variables and Session Metadata if provided to the middleware.
 
-### JSON to XML conversion using xmlMarshal
+**JSON to XML conversion using xmlMarshal**
 The `xmlMarshal` function converts JSON formatted input into XML, for example:
 
 **Input**
@@ -2734,9 +2727,9 @@ Note that in this example, Go will step through the entire data structure provid
 
 
 
-## Go Plugins Upgrade Guide
+#### Go Plugins Upgrade Guide
 
-### "Go Plugin Upgrade Guide"
+##### "Go Plugin Upgrade Guide"
 
 
 This guide shows you how to compile your custom Go plugins for upgrade.
@@ -2749,7 +2742,7 @@ The table below links you to the upgrade steps for the version of Tyk you are up
 | [Path 2](#path-2)    | < 4.1.0         | >= 4.1.0       |
 | [Path 3](#path-3)    | >= 4.1.0        | >= 5.1.0       |
 
-## Path 1 - Current Version < 4.1.0 and Target Version < 4.1.0 {#path-1}
+##### Path 1 - Current Version < 4.1.0 and Target Version < 4.1.0 {#path-1}
  1. Open a terminal/command prompt in the directory of your plugin source file(s)
  2. Run the following commands to initialise your plugin:
 
@@ -2764,7 +2757,7 @@ go mod tidy
 go mod vendor
 ```
 
-## Path 2 - Current Version < 4.1.0 and Target Version >= 4.1.0 {#path-2}
+##### Path 2 - Current Version < 4.1.0 and Target Version >= 4.1.0 {#path-2}
 1. Open a terminal/command prompt in the directory of your plugin source file(s)  
 2. Based on your Target Version run the appropriate commands to initialize your plugin:
 
@@ -2791,7 +2784,7 @@ go mod vendor
     ```
 
 
-## Path 3 - Current Version >= 4.1.0 and Target Version >= 5.1.0 {#path-3}
+##### Path 3 - Current Version >= 4.1.0 and Target Version >= 5.1.0 {#path-3}
 1. Open a terminal/command prompt in the directory of your plugin source file(s)  
 2. Based on your Target Version run the appropriate commands to initialise your plugin:
 
@@ -2810,7 +2803,7 @@ go mod vendor
     go mod tidy
     ```
 
-## Compile the plugins
+##### Compile the plugins
 
 Download the plugin compiler for the target Gateway version you’re upgrading to (e.g. 5.2.5). Docker images for plugin compiler versions are available in the [Tyk Docker Hub](https://hub.docker.com/r/tykio/tyk-plugin-compiler/tags). 
 
@@ -2838,7 +2831,9 @@ docker rmi plugin_compiler_image_name_or_id
 
 
 
-### JavaScript Middleware
+### JavaScript
+
+#### JavaScript Middleware
 
 There are three middleware components that can be scripted with Tyk:
 
@@ -2850,11 +2845,11 @@ There are three middleware components that can be scripted with Tyk:
 
 The JavaScript (JS) [scripting guide]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide" >}}) provides details of how to access dynamic data (such as the key session object) from your JS functions. Combining these resources provides you with a powerful set of tools for shaping and structuring inbound traffic to your API.
 
-### Declared plugin functions
+##### Declared plugin functions
 
 JavaScript functions are available globally in the same namespace. So, if you include two or more JSVM plugins that call the same function, the last declared plugin implementation of the function will be returned.
 
-## Enabling the JavaScript Virtual Machine (JSVM)
+##### Enabling the JavaScript Virtual Machine (JSVM)
 
 The JavaScript Virtual Machine (JSVM) provided in the Gateway is a traditional ECMAScript5 compatible environment.
 
@@ -2862,7 +2857,7 @@ Before you can use JavaScript customization in any component you will need to en
 
 You do this by setting `enable_jsvm` to `true` in your `tyk.conf` [file]({{< ref "tyk-oss-gateway/configuration#enable_jsvm" >}}).
 
-## Installing JavaScript middleware
+##### Installing JavaScript middleware
 
 Installing middleware is different for different Tyk deployments, for example, in Tyk OSS it is possible to directly specify a path to a file in the API Definition, while in Tyk Self-Managed, we recommend using a directory-based loader.
 
@@ -2879,18 +2874,18 @@ Tyk Cloud Classic does not support custom middleware.
 {{< /note >}}
 
 
-### Using JavaScript with Tyk
+#### Using JavaScript with Tyk
 
 
 Tyk's JavaScript Virtual Machine (JSVM) provides a serverless compute function that allows for the execution of custom logic directly within the gateway itself. This can be accessed from [multiple locations]({{< ref "plugins/supported-languages/javascript-middleware" >}}) in the API processing chain and allows significant customization and optimization of your request handling.
 
 In this guide we will cover the features and resources available to you when creating custom functions, highlighting where there are limitations for the different middleware stages.
 
-## Scripting basics
+#### Scripting basics
 
 Here we cover various facets that you need to be aware of when creating custom functions for Tyk.
 
-### Accessing external and dynamic data
+##### Accessing external and dynamic data
 
 JS functions can be given access to external data objects relating to the API request. These allow for the modification of both the request itself and the session:
 
@@ -2904,7 +2899,7 @@ JS functions can be given access to external data objects relating to the API re
 There are other ways of accessing and editing a session object using the [Tyk JavaScript API functions]({{< ref "plugins/supported-languages/javascript-middleware/javascript-api#working-with-the-key-session-object" >}}).
 {{< /note >}}
 
-### Creating a middleware component
+##### Creating a middleware component
 
 Tyk injects a `TykJS` namespace into the JSVM, which can be used to initialise a new middleware component. The JS for each middleware component should be in its own `*.js` file.
 
@@ -2917,11 +2912,11 @@ You create a middleware object by calling the `TykJS.TykMiddleware.NewMiddleware
 - Virtual Endpoints do not have this limitation
 {{< /note >}}
 
-### Returning from the middleware
+##### Returning from the middleware
 
 When returning from the middleware, you provide specific return data depending upon the type of middleware.
 
-#### Returning from Custom JS plugin
+**Returning from Custom JS plugin**
 
 A custom JS plugin can modify fields in the API request and the session metadata, however this is not performed directly within the JSVM so the required updates must be passed out of the JSVM for Tyk to apply the changes. This is a requirement and omitting them can cause the middleware to fail.
 
@@ -2933,7 +2928,7 @@ return sampleMiddleware.ReturnData(request, session.meta_data);
 
 Custom JS plugins sit in the [middleware processing chain]({{< ref "concepts/middleware-execution-order" >}}) and pass the request onto the next middleware before it is proxied to the upstream. If required, however, a custom JS plugin can terminate the request and provide a custom response to the client if you configure the `ReturnOverrides` in the `request` object, as described [here]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#using-returnoverrides" >}}).
 
-#### Returning from Virtual Endpoint
+**Returning from Virtual Endpoint**
 
 Unlike custom JS plugins, Virtual Endpoints always [terminate the request]({{< ref "advanced-configuration/compose-apis/virtual-endpoints#how-virtual-endpoints-work" >}}) so have a different method of returning from the JS function.
 
@@ -2953,13 +2948,13 @@ return TykJsResponse(responseObject, session.meta_data);
 
 You can find some examples of how this works [here]({{< ref "advanced-configuration/compose-apis/demo-virtual-endpoint" >}}).
 
-## JavaScript resources
+#### JavaScript resources
 
 JavaScript (JS) functions have access to a [system API]({{< ref "plugins/supported-languages/javascript-middleware/javascript-api" >}}) and [library of functions]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#underscorejs-library" >}}). They can also be given access to certain Tyk data objects relating to the API request.
 
 The system API provides access to resources outside of the JavaScript Virtual Machine sandbox, the ability to make outbound HTTP requests and access to the key management REST API functions.
 
-### The `request` object
+##### The `request` object
 
 The `request` object provides a set of arrays that describe the API request. These can be manipulated and, when changed, will affect the request as it passes through the middleware pipeline. For [virtual endpoints]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) the request object has a [different structure](#VirtualEndpoint-Request).
 
@@ -3024,7 +3019,7 @@ struct {
 - `Scheme`: contains the URL scheme, e.g. `http`, `https`
 
 
-#### Using `ReturnOverrides`
+**Using `ReturnOverrides`**
 
 If you configure values in `request.ReturnOverrides` then Tyk will terminate the request and provide a response to the client when the function completes. The request will not be proxied to the upstream.
 
@@ -3051,7 +3046,7 @@ testJSVMData.NewProcessRequest(function(request, session, config) {
 });
 ```
 
-#### The virtual endpoint `request` object {#VirtualEndpoint-Request}
+**The virtual endpoint `request` object {#VirtualEndpoint-Request}**
 
 For [virtual endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) functions the structure of a Javascript `request` object is:
 
@@ -3096,11 +3091,11 @@ const httpRequest = {
 ```
 {{< /note >}}
 
-### The `session` object
+##### The `session` object
 
 Tyk uses an internal [session object]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}) to handle the quota, rate limits, access allowances and auth data of a specific key. JS middleware can be granted access to the session object but there is also the option to disable it as deserialising it into the JSVM is computationally expensive and can add latency. Other than the `meta_data` field, the session object itself cannot be directly edited as it is crucial to the correct functioning of Tyk.
 
-#### Limitations
+**Limitations**
 
 - Custom JS plugins at the [pre-]({{< ref "plugins/plugin-types/request-plugins" >}}) stage do not have access to the session object (as it has not been created yet)
 - When scripting for Virtual Endpoints, the `session` data will only be available to the JS function if enabled in the middleware configuration.
@@ -3115,7 +3110,7 @@ For different middleware to be able to transfer data between each other, the ses
 A new JSVM instance is created for *each* API that is managed. Consequently, inter-API communication is not possible via shared methods, since they have different bounds. However, it *is* possible using the session object if a key is shared across APIs.
 {{< /note >}}
 
-### The `config` object
+##### The `config` object
 
 The third Tyk data object that is made available to the script running in the JSVM contains data from the API Definition. This is read-only and cannot be modified by the JS function. The structure of this object is:
 
@@ -3156,7 +3151,7 @@ When working with Tyk Classic APIs, you simply add the attributes in the `config
 }
 ```
 
-### Underscore.js Library
+##### Underscore.js Library
 
 In addition to our Tyk JavaScript API functions, you also have access to all the functions from the [underscore](http://underscorejs.org) library.
 
@@ -3173,7 +3168,7 @@ There are also more specialized goodies, including:
 - creating quick indexes
 - deep equality testing
 
-## Example
+**Example**
 
 In this basic example, we show the creation and initialisation of a middleware object. Note how the three Tyk data objects (`request`, `session`, `config`) are made available to the function and the two objects that are returned from the function (in case the external objects need to be updated).
 
@@ -3194,7 +3189,7 @@ sampleMiddleware.NewProcessRequest(function(request, session, config) {
 ```
 
 
-### JavaScript API
+#### JavaScript API
 
 This system API provides access to resources outside of the JavaScript Virtual Machine sandbox, the ability to make outbound HTTP requests and access to the key management REST API functions.
 
@@ -3248,7 +3243,7 @@ log("Response body: " + usableResponse.Body);
 
 This method does not execute asynchronously, so execution will block until a response is received.
 
-### Working with the key session object
+**Working with the key session object**
 
 To work with the key session object, two functions are provided: `TykGetKeyData` and `TykSetKeyData`:
 
@@ -3273,7 +3268,7 @@ To work with the key session object, two functions are provided: `TykGetKeyData`
 All of these methods are described in functional examples in the Tyk `middleware/` and `event_handlers/` folders.
 
 
-#### Installing Middleware on Tyk Self-Managed
+##### Installing Middleware on Tyk Self-Managed
 
 
 In some cases middleware references can't be directly embedded in API Definitions (for example, when using the Tyk Dashboard in an Self-Managed installation). However, there is an easy way to distribute and enable custom middleware for an API in a Tyk node by adding them as a directory structure.
@@ -3303,14 +3298,14 @@ The filename MUST match the object to be loaded exactly.
 
 If your middleware requires session injection, then append `_with_session` to the filename.
 
-### Enable the JSVM
+##### Enable the JSVM
 
 Before you can use Javascript Middleware you will need to enable the JSVM.
 
 You can do this by setting `enable_jsvm` to `true` in your `tyk.conf` file.
 
 
-#### Installing Middleware on Tyk Hybrid
+##### Installing Middleware on Tyk Hybrid
 
 
 In some cases middleware references can't be directly embedded in API Definitions (for example, when using the dashboard in a Hybrid install). However, there is an easy way to distribute and enable custom middleware for an API on a Tyk node.
@@ -3340,14 +3335,14 @@ The filename MUST match the object to be loaded exactly.
 
 If your middleware requires session injection, then append `_with_session` to the filename.
 
-### Enable the JSVM
+##### Enable the JSVM
 
 Before you can use Javascript Middleware you will need to enable the JSVM
 
 You can do this by setting `enable_jsvm` to `true` in your `tyk.conf` file.
 
 
-#### Installing Middleware on Tyk OSS
+**Installing Middleware on Tyk OSS**
 
 In order to activate middleware when using Tyk OSS or when using a file-based setup, the middleware needs to be registered as part of your API Definition. Registration of middleware components is relatively simple.
 
@@ -3363,7 +3358,7 @@ It is important that your object names are unique.
 This functionality may change in subsequent releases.
 {{< /note >}}
 
-### Enable the JSVM
+**Enable the JSVM**
 
 Before you can use Javascript Middleware you will need to enable the JSVM
 
@@ -3420,18 +3415,20 @@ As you can see, the parameters are all dynamic, so you will need to ensure that 
 #### WAF (OSS) ModSecurity Plugin example
 
 
-### Use Case
+##### Use Case
 
 Traditionally, a Web Application Firewall (WAF) would be the first layer requests would hit, before reaching the API  gateway.  This is not possible if the Gateway has to terminate SSL, for things such as mTLS.
 
 So what do you do if you still want to run your requests through a WAF to automatically scan for malicious action?  We incorporate a WAF as part of the request lifecycle by using Tyk's plugin architecture.
 
-### Prerequisites
+##### Prerequisites
 
 * Already running Tyk -  Community Edition or Pro
 * Docker, to run the WAF
 
-### Disclaimer
+{{< note success >}}
+**Note**  
+Disclaimer
 
 This is NOT a production ready plugin because 
 
@@ -3440,10 +3437,12 @@ This is NOT a production ready plugin because
 * The WAF is only sent the query params for inspection.
 
 For higher performance, the plugin could be written in Golang, and a connection pool would be opened and maintained over SSL
+{{< /note >}}
 
-## Install Steps
 
-### 1. Turn JSVM on your `tyk.conf` at the root level:
+##### Install Steps
+
+**1. Turn JSVM on your `tyk.conf` at the root level:**
 
 Turn on JSVM interpreter to allow Tyk to run JavaScript plugins.
 
@@ -3451,7 +3450,7 @@ Turn on JSVM interpreter to allow Tyk to run JavaScript plugins.
 "enable_jsvm": true
 ```
 
-### 2. Place the JavaScript plugin on Tyk file system
+**2. Place the JavaScript plugin on Tyk file system**
 Copy the JS Plugin as a local .js file to the Gateway's file system.  
 
 From the Gateway root, this will download the plugin called `waf.js` into the `middleware` directory:
@@ -3485,7 +3484,7 @@ root@670039a3e0b8:/opt/tyk-gateway# curl https://raw.githubusercontent.com/TykTe
 
 [waf.js source](https://raw.githubusercontent.com/TykTechnologies/custom-plugins/master/plugins/js-pre-post-waf/waf.js)
 
-### 3. Import API definition into Tyk
+**3. Import API definition into Tyk**
 Copy the following Tyk API definition and import it into your environment.
 
 [API Definition JSON](https://raw.githubusercontent.com/TykTechnologies/custom-plugins/master/plugins/js-pre-post-waf/apidef.json)
@@ -3501,12 +3500,12 @@ Here's the important section which adds the plugin to the request lifecycle for 
       ],
 ```
 
-##### How to Import?
+**How to Import?**
 [Tyk Pro](https://tyk.io/docs/tyk-configuration-reference/import-apis/#import-apis-via-the-dashboard)
 
 [Tyk CE](https://tyk.io/docs/try-out-tyk/tutorials/create-api/)
 
-### 4. Run WAF ModSecurity Using Docker
+**4. Run WAF ModSecurity Using Docker**
 
 First run ModSecurity with the popular [Core RuleSet](https://coreruleset.org/) in Docker
 ```
@@ -3585,16 +3584,16 @@ When using Python plugins, the middleware function names are set globally. So, i
 
 
 
-### How do rich plugins work ?
+#### How do rich plugins work ?
 
 
-### ID Extractor & Auth Plugins
+##### ID Extractor & Auth Plugins
 
 The ID Extractor is a caching mechanism that's used in combination with Tyk Plugins. It can be used specifically with plugins that implement custom authentication mechanisms. The ID Extractor works for all rich plugins: gRPC-based plugins, Python and Lua.
 
 See [ID Extractor]({{< ref "plugins/plugin-types/auth-plugins/id-extractor" >}}) for more details.
 
-### Interoperability
+##### Interoperability
 
 This feature implements an in-process message passing mechanism, based on [Protocol Buffers](https://developers.google.com/protocol-buffers/), any supported languages should provide a function to receive, unmarshal and process this kind of messages.
 
@@ -3627,7 +3626,7 @@ type CoProcessObject struct {
 }
 ```
 
-### Coprocess Dispatcher
+##### Coprocess Dispatcher
 
 `Coprocess.Dispatcher` describes a very simple interface for implementing the dispatcher logic, the required methods are: `Dispatch`, `DispatchEvent` and `Reload`.
 
@@ -3637,7 +3636,7 @@ type CoProcessObject struct {
 
 `Reload` is called when triggering a hot reload, this method could be useful for reloading scripts or modules in the target language.
 
-### Coprocess Dispatcher - Hooks
+##### Coprocess Dispatcher - Hooks
 
 This component is in charge of dispatching your HTTP requests to the custom middlewares. The list, from top to bottom, shows the order of execution. The dispatcher follows the standard middleware chain logic and provides a simple mechanism for "hooking" your custom middleware behavior, the supported hooks are:
 
@@ -3654,7 +3653,7 @@ Response hooks are not available for native Go plugins. Python and gRPC plugins 
 {{< /note >}}
 
 
-### Coprocess Gateway API
+##### Coprocess Gateway API
 
 [`coprocess_api.go`](https://github.com/TykTechnologies/tyk/tree/master/coprocess) provides a bridge between the Gateway API and C. Any function that needs to be exported should have the `export` keyword:
 
@@ -3691,7 +3690,7 @@ def call():
   TykTriggerEvent( event_name, payload )
 ```
 
-### Basic usage
+##### Basic usage
 
 The intended way of using a Coprocess middleware is to specify it as part of an API Definition:
 
@@ -3746,7 +3745,7 @@ The remainder of this document illustrates a class diagram and explins the attri
 
 ---
 
-## Class Diagram
+##### Class Diagram
 
 The class diagram below illustrates the structure of the [Object](#object) message, dispatched by Tyk to a gRPC server that handles custom plugins.
 
@@ -3754,7 +3753,7 @@ The class diagram below illustrates the structure of the [Object](#object) messa
 
 ---
 
-## Object
+##### Object
 
 The `Coprocess.Object` data structure wraps a `Coprocess.MiniRequestObject` and `Coprocess.ResponseObject` It contains additional fields that are useful for users that implement their own request dispatchers, like the middleware hook type and name.
 It also includes the session state object (`SessionState`), which holds information about the current key/user that's used for authentication.
@@ -3771,7 +3770,7 @@ message Object {
 }
 ```
 
-#### Field Descriptions
+**Field Descriptions**
 
 `hook_type`
 Contains the middleware hook type: pre, post, custom auth.
@@ -3796,7 +3795,7 @@ Contains information populated from the upstream HTTP response data, for respons
 
 ---
 
-## MiniRequestObject
+##### MiniRequestObject
 
 The `Coprocess.MiniRequestObject` is the main request data structure used by rich plugins. It's used for middleware calls and contains important fields like headers, parameters, body and URL. A `MiniRequestObject` is part of a `Coprocess.Object`.
 
@@ -3819,7 +3818,7 @@ message MiniRequestObject {
 }
 ```
 
-#### Field Descriptions
+**Field Descriptions**
 
 `headers`
 A read-only field for reading headers injected by previous middleware. Modifying this field won't alter the request headers See `set_headers` and `delete_headers` for this.
@@ -3862,7 +3861,7 @@ Contains the URL scheme, e.g. `http`, `https`.
 
 ---
 
-## ResponseObject
+##### ResponseObject
 
 The `ResponseObject` exists within an [object](#object) for response hooks. The fields are populated with the upstream HTTP response data. All the field contents can be modified.
 
@@ -3885,7 +3884,7 @@ message Header {
 }
 ```
 
-#### Field Descriptions
+**Field Descriptions**
 
 `status_code`
 This field indicates the HTTP status code that was sent by the upstream.
@@ -3906,7 +3905,7 @@ This field is available for Go, Python and Ruby since tyk v5.0.4 and  5.1.1+.
 
 ---
 
-## ReturnOverrides
+##### ReturnOverrides
 
 The `ReturnOverrides` object, when returned as part of a `Coprocess.Object`, overrides the response of a given HTTP request. It also stops the request flow and the HTTP request isn't passed upstream. The fields specified in the `ReturnOverrides` object are used as the HTTP response.
 A sample usage for `ReturnOverrides` is when a rich plugin needs to return a custom error to the user.
@@ -3925,7 +3924,7 @@ message ReturnOverrides {
 }
 ```
 
-#### Field Descriptions
+**Field Descriptions**
 
 `response_code`
 This field overrides the HTTP response code and can be used for error codes (403, 500, etc.) or for overriding the response.
@@ -3944,13 +3943,13 @@ This field serves as an alias for `response_erro`r and holds the HTTP response b
 
 ---
 
-## SessionState {#session-state}
+##### SessionState {#session-state}
 
 A `SessionState` data structure is created for every authenticated request and stored in Redis. It's used to track the activity of a given key in different ways, mainly by the built-in Tyk middleware like the quota middleware or the rate limiter.
 A rich plugin can create a `SessionState` object and store it in the same way built-in authentication mechanisms do. This is what a custom authentication middleware does. This is also part of a `Coprocess.Object`.
 Returning a null session object from a custom authentication middleware is considered a failed authentication and the appropriate HTTP 403 error is returned by the gateway (this is the default behavior) and can be overridden by using `ReturnOverrides`.
 
-#### Field Descriptions
+**Field Descriptions**
 
 `last_check`
 No longer used.
@@ -4042,7 +4041,7 @@ UNIX timestamp that denotes when the key will automatically expire. Any·subsequ
 
 ---
 
-## AccessDefinition {#access-definition}
+##### AccessDefinition {#access-definition}
 
 ```protobuf
 message AccessDefinition {
@@ -4055,7 +4054,7 @@ message AccessDefinition {
 
 Defined as an attribute within a [SessionState](#session-state) instance. Contains the allowed versions and URLs (endpoints) for the API that the session request relates to. Each URL (endpoint) specifies an associated list of allowed methods. See also [AccessSpec](#access-spec).
 
-#### Field Descriptions
+**Field Descriptions**
 
 `api_name`
 The name of the API that the session request relates to.
@@ -4070,7 +4069,7 @@ List of allowed API versions, e.g.  `"versions": [ "Default" ]`.
 
 ---
 
-## AccessSpec {#access-spec}
+##### AccessSpec {#access-spec}
 
 Defines an API's URL (endpoint) and associated list of allowed methods
 
@@ -4081,7 +4080,7 @@ message AccessSpec {
 }
 ```
 
-#### Field Descriptions 
+**Field Descriptions**
 
 `url`
 A URL (endpoint) belonging to the API associated with the request session.
@@ -4091,7 +4090,7 @@ List of allowed methods for the URL (endpoint), e.g. `"methods": [ "GET". "POST"
 
 ---
 
-## BasicAuthData
+##### BasicAuthData
 
 The `BasicAuthData` contains a hashed password and the name of the hashing algorithm used. This is represented by the `basic_auth_data` attribute in [SessionState](#session-state) message.
 
@@ -4102,7 +4101,7 @@ The `BasicAuthData` contains a hashed password and the name of the hashing algor
 }
 ```
 
-#### Field Descriptions
+**Field Descriptions**
 
 `password`
 A hashed password.
@@ -4112,7 +4111,7 @@ Name of the [hashing algorithm]({{< ref "basic-config-and-security/security/key-
 
 ---
 
-## JWTData
+##### JWTData
 
 Added to [sessions](#session-state) where a Tyk key (embedding a shared secret) is used as the public key for signing the JWT. This message contains the shared secret.
 
@@ -4122,14 +4121,14 @@ Added to [sessions](#session-state) where a Tyk key (embedding a shared secret) 
 }
 ```
 
-#### Field Descriptions
+**Field Descriptions**
 
 `secret`
 The shared secret.
 
 ---
 
-## Monitor {#monitor}
+##### Monitor
 Added to a [session](#session-state) when [monitor quota thresholds]({{< ref "basic-config-and-security/report-monitor-trigger-events/monitors" >}}) are defined within the Tyk key. This message contains the quota percentage threshold limits, defined in descending order, that trigger webhook notification.
 
 ```yaml
@@ -4138,7 +4137,7 @@ message Monitor {
 }
 ```
 
-#### Field Descriptions
+**Field Descriptions**
 
 `trigger_limits`
 List of trigger limits defined in descending order. Each limit represents the percentage of the quota that must be reached in order for the webhook notification to be triggered.
@@ -4153,9 +4152,9 @@ List of trigger limits defined in descending order. Each limit represents the pe
 
 </br>
 
-##### Python
+#### Python
 
-### Requirements
+##### Requirements
 
 Since v2.9, Tyk supports any currently stable [Python 3.x version](https://www.python.org/downloads/). The main requirement is to have the Python shared libraries installed. These are available as `libpython3.x` in most Linux distributions.
 
@@ -4163,7 +4162,7 @@ Since v2.9, Tyk supports any currently stable [Python 3.x version](https://www.p
 * [Protobuf](https://pypi.org/project/protobuf/): provides [Protocol Buffers](https://developers.google.com/protocol-buffers/) support 
 * [gRPC](https://pypi.org/project/grpcio/): provides [gRPC](http://www.grpc.io/) support
 
-### Important Note Regarding Performance
+##### Important Note Regarding Performance
 Python plugins are [embedded](https://docs.python.org/3/extending/embedding.html) within the Tyk Gateway process. Tyk Gateway integrates with Python custom plugins via a [cgo](https://golang.org/cmd/cgo) bridge.
 
 `Tyk Gateway` <-> CGO <-> `Python Custom Plugin`
@@ -4177,7 +4176,7 @@ The Tyk Gateway process initialises the Python interpreter using [Py_initialize]
 In the context of custom Python plugins, API calls are queued and the Python interpreter handles requests sequentially, processing them one at a time. Subsequently, this would consume large amounts of memory, and network sockets would remain open and blocked until the API request is processed.
 
 
-### Install the Python development packages
+##### Install the Python development packages
 
 {{< tabs_start >}}
 
@@ -4224,7 +4223,7 @@ docker build --build-arg BASE_IMAGE=tykio/tyk-gateway:v5.3.0 -t tyk-gateway-pyth
 apt install python3 python3-dev python3-pip build-essential
 ```
 
-### Install the Required Python Modules
+##### Install the Required Python Modules
 
 Make sure that "pip" is available in your system, it should be typically available as "pip", "pip3" or "pipX.X" (where X.X represents the Python version):
 
@@ -4239,7 +4238,7 @@ yum install python3-devel python3-setuptools
 python3 -m ensurepip
 ```
 
-### Install the Required Python Modules
+##### Install the Required Python Modules
 
 Make sure that "pip" is now available in your system, it should be typically available as "pip", "pip3" or "pipX.X" (where X.X represents the Python version):
 
@@ -4251,7 +4250,7 @@ pip3 install protobuf grpcio
 {{< tabs_end >}}
 
 
-### Python versions
+##### Python versions
 
 Newer Tyk versions provide more flexibility when using Python plugins, allowing the users to set which Python version to use. By default, Tyk will try to use the latest version available.
 
@@ -4265,7 +4264,7 @@ To use a specific Python version, set the `python_version` flag under `coprocess
 Tyk doesn't support Python 2.x.
 {{< /note >}}
 
-### Troubleshooting
+##### Troubleshooting
 
 To verify that the required Python Protocol Buffers module is available:
 
@@ -4275,7 +4274,7 @@ python3 -c 'from google import protobuf'
 
 No output is expected from this command on successful setups.
 
-### How do I write Python Plugins?
+##### How do I write Python Plugins?
 
 We have created [a demo Python plugin repository](https://github.com/TykTechnologies/tyk-plugin-demo-python).
 
@@ -4283,25 +4282,24 @@ We have created [a demo Python plugin repository](https://github.com/TykTechnolo
 The project implements a simple middleware for header injection, using a Pre hook (see [Tyk custom middleware hooks]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-dispatcher---hooks" >}}). A single Python script contains the code for it, see [middleware.py](https://github.com/TykTechnologies/tyk-plugin-demo-python/blob/master/middleware.py).
 
 
-####  Custom Authentication Plugin Tutorial
+##### Make a Custom Authentication Plugin
 
-## Introduction
 This tutorial will guide you through the creation of a custom authentication plugin, written in Python.
 A custom authentication plugin allows you to implement your own authentication logic and override the default Tyk authentication mechanism. The sample code implements a very simple key check; currently it supports a single, hard-coded key. It could serve as a starting point for your own authentication logic. We have tested this plugin with Ubuntu 14.
 
 The code used in this tutorial is also available in [this GitHub repository](https://github.com/TykTechnologies/tyk-plugin-demo-python).
 
-## Requirements
+**Requirements**
 
 * Tyk API Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here]({{< ref "tyk-self-managed/install" >}}) for more installation options.
 
-### Dependencies
+**Dependencies**
 
 * The Tyk CLI utility, which is bundled with our RPM and DEB packages, and can be installed separately from [https://github.com/TykTechnologies/tyk-cli](https://github.com/TykTechnologies/tyk-cli)
 * In Tyk 2.8 the Tyk CLI is part of the gateway binary, you can find more information by running "tyk help bundle".
 * Python 3.4
 
-## Create the Plugin
+**Create the Plugin**
 The first step is to create a new directory for your plugin file:
 
 ```bash
@@ -4337,7 +4335,7 @@ This file should be named `manifest.json` and needs to contain the following con
 Your bundle should always contain a file named `middleware.py` as this is the entry point file.
 {{< /note >}}
 
-### Contents of middleware.py
+**Contents of middleware.py**
 
 You import decorators from the Tyk module as this gives you the `Hook` decorator, and you import [Tyk Python API helpers]({{< ref "plugins/supported-languages/rich-plugins/python/tyk-python-api-methods" >}})
 
@@ -4363,7 +4361,7 @@ def MyAuthMiddleware(request, session, metadata, spec):
 
 You can modify the `manifest.json` to add as many files as you want. Files that aren't listed in the `manifest.json` file will be ignored when building the plugin bundle.
 
-## Building the Plugin
+**Building the Plugin**
 
 A plugin bundle is a packaged version of the plugin, it may also contain a cryptographic signature of its contents. The `-y` flag tells the Tyk CLI tool to skip the signing process in order to simplify the flow of this tutorial. For more information on the Tyk CLI tool, see [here]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}).
 
@@ -4388,7 +4386,7 @@ $ docker run \
 
 You should now have a `bundle.zip` file in the plugin directory.
 
-## Publishing the Plugin
+**Publishing the Plugin**
 
 To allow Tyk access to the plugin bundle, you need to serve this file using a web server. For this tutorial we'll use the Python built-in HTTP server (check the official docs for additional information). This server listens on port 8000 by default. To start it use:
 
@@ -4401,7 +4399,7 @@ When the server is started our current working directory is used as the web root
 The Tyk Gateway fetches and loads a plugin bundle during startup time and subsequent reloads. For updating plugins using the hot reload feature, you should use different plugin bundle names as you expect them to be used for versioning purposes, e.g. bundle-1, bundle-2, etc.
 If a bundle already exists, Tyk will skip the download process and load the version that's already present.
 
-## Configure Tyk
+**Configure Tyk**
 
 You will need to modify the Tyk global configuration file (`tyk.conf`) to use Python plugins. The following block should be present in this file:
 
@@ -4415,7 +4413,7 @@ You will need to modify the Tyk global configuration file (`tyk.conf`) to use Py
 "public_key_path": "/path/to/my/pubkey"
 ```
 
-### Options
+**Options**
 
 * `enable_coprocess`: This enables the plugin
 * `python_path_prefix`: Sets the path to built-in Tyk modules, this will be part of the Python module lookup path. The value used here is the default one for most installations.
@@ -4423,7 +4421,7 @@ You will need to modify the Tyk global configuration file (`tyk.conf`) to use Py
 * `bundle_base_url`: This is a base URL that will be used to download the bundle. You should replace the `bundle_base_url` with the appropriate URL of the web server that's serving your plugin bundles. For now HTTP and HTTPS are supported but we plan to add more options in the future (like pulling directly from S3 buckets). You use the URL that's exposed by the test HTTP server in the previous step.
 * `public_key_path`: Modify `public_key_path` in case you want to enforce the cryptographic check of the plugin bundle signatures. If the `public_key_path` isn't set, the verification process will be skipped and unsigned plugin bundles will be loaded normally.
 
-## Configure an API Definition
+**Configure an API Definition**
 
 There are two important parameters that you need to add or modify in the API definition.
 The first one is `custom_middleware_bundle` which must match the name of the plugin bundle file. If we keep this with the default name that the Tyk CLI tool uses, it will be `bundle.zip`.
@@ -4437,7 +4435,7 @@ The second parameter is specific to this tutorial, and should be used in combina
 
 `"enable_coprocess_auth"` will instruct the Tyk gateway to authenticate this API using the associated custom authentication function that's implemented by the plugin.
 
-## Configuration via the Tyk Dashboard
+**Configuration via the Tyk Dashboard**
 
 To attach the plugin to an API, From the **Advanced Options** tab in the **API Designer** enter **bundle.zip** in the **Plugin Bundle ID** field.
 
@@ -4448,12 +4446,12 @@ From the **Core Settings** tab in the **API Designer** select **Use Custom Authe
 
 {{< img src="/img/2.10/custom_auth_python.png" alt="Advanced Options" >}}
 
-## Testing the Plugin
+**Testing the Plugin**
 
 Now you can simply make an API call against the API for which we've loaded the Python plugin.
 
 
-### If Running Tyk Gateway from Source
+**If Running Tyk Gateway from Source**
 
 At this point you have your test HTTP server ready to serve the plugin bundle and the configuration with all the required parameters.
 The final step is to start or restart the **Tyk Gateway** (this may vary depending on how you setup Tyk).
@@ -4484,17 +4482,9 @@ This request will trigger a successful authentication. You are using the token t
 curl http://<IP Address>:8080/my-api/my-path -H 'Authorization: 47a0c79c427728b3df4af62b9228c8ae'
 ```
 
-## What's Next?
+##### Add Python Plugin To Your Gateway
 
-In this tutorial you learned how Tyk plugins work. For a production-level setup we suggest the following steps:
-
-* Configure Tyk to use your own key so that you can enforce cryptographic signature checks when loading plugin bundles, and sign your plugin bundles!
-* Configure an appropriate web server and path to serve your plugin bundles.
-
-
-### Tutorial - Add Python Plugin To Your Gateway
-
-## API settings
+**API settings**
 
 To add a Python plugin to your API, you must specify the bundle name using the `custom_middleware_bundle` field:
 
@@ -4535,7 +4525,7 @@ To add a Python plugin to your API, you must specify the bundle name using the `
 }
 ```
 
-## Global settings
+**Global settings**
 
 To enable Python plugins you need to add the following block to `tyk.conf`:
 
@@ -4560,32 +4550,32 @@ To enable Python plugins you need to add the following block to `tyk.conf`:
 `public_key_path`: sets a public key, this is used for verifying signed bundles, you may omit this if unsigned bundles are used. 
 
 
-### Tyk Python API methods
+##### Tyk Python API methods
 
 Python plugins may call these Tyk API methods:
 
-### store_data(key, value, ttl)
+**store_data(key, value, ttl)**
 
 `store_data` sets a Redis `key` with the specified `value` and `ttl`.
 
-### get_data(key)
+**get_data(key)**
 
 `get_data` retrieves a Redis `key`.
 
-### trigger_event(event_name, payload)
+**trigger_event(event_name, payload)**
 
 `trigger_event` triggers an internal Tyk event, the `payload` must be a JSON object.
 
-### log(msg, level)
+**log(msg, level)**
 
 `log` will log a message (`msg`) using the specified `level`.
 
-### log_error(*args)
+**log_error(*args)**
 
 `log_error` is a shortcut for `log`, it uses the error log level.
 
 
-#### Python Performance
+##### Python Performance
 
 These are some benchmarks performed on Python plugins. Python plugins run in a standard Python interpreter, embedded inside Tyk.
 
@@ -4608,9 +4598,20 @@ For supporting additional languages we have decided to integrate gRPC connection
 
 Tyk has built-in support for gRPC backends, enabling you to build rich plugins using any of the gRPC supported languages. See [gRPC by language](http://www.grpc.io/docs/) for further details.
 
+
+##### Key Concepts
+
+1. **Developing a gRPC Server:** Learn how to develop a gRPC server using [Tyk protocol buffers](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto). The gRPC server facilitates the execution of Tyk plugins, which offer custom middleware for various phases of the API request lifecycle. By integrating these plugins, developers can enable Tyk Gateway with enhanced control and flexibility in managing API requests, allowing for fine-grained customization and tailored processing at each stage of the request lifecycle.
+
+2. **Configuring Tyk Gateway:** Set up Tyk Gateway to communicate with your gRPC Server and, optionally, an external secured web server hosting the gRPC plugin bundle for API configurations. Configure Tyk Gateway to fetch the bundle configured for an API from the web server, enabling seamless integration with gRPC plugins. Specify connection settings for streamlined integration.
+
+3. **API Configuration:** Customize API settings within Tyk Gateway to configure gRPC plugin utilization. Define plugin hooks directly within the API Definition or remotely via an external web server for seamless request orchestration. Tyk plugins provide custom middleware for different phases of the API request lifecycle, enhancing control and flexibility.
+
+4. **API Testing:** Test that Tyk Gateway integrates with your gRPC server for the plugins configured for your API. 
+
 ---
 
-## Architectural overview
+##### Architectural overview
 
 An example architecture is illustrated below.
 
@@ -4626,7 +4627,7 @@ Here we can see that Tyk Gateway sends requests to an external Java gRPC server 
 
 ---
 
-## Use cases
+##### Use cases
 
 Deploying an external gRPC server to handle plugins provides numerous technical advantages:
 
@@ -4635,7 +4636,7 @@ Deploying an external gRPC server to handle plugins provides numerous technical 
 
 ---
 
-## Limitations
+##### Limitations
 
 At the time of writing the following features are currently unsupported and unavailable in the serialised request:
 - Client certificiates
@@ -4645,7 +4646,7 @@ At the time of writing the following features are currently unsupported and unav
 
 ---
 
-## Developer Resources
+##### Developer Resources
 
 The [Protocol Buffers](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto ) and [bindings](https://github.com/TykTechnologies/tyk/tree/master/coprocess/bindings) provided by Tyk should be used in order for successful ommunication between Tyk Gateway and your gRPC plugin server. Documentation for the protobuf messages is available in the [Rich Plugins Data Structures]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures" >}}) page.
 
@@ -4657,50 +4658,27 @@ If you wish to generate bindings for another target language you may generate th
 
 ---
 
-## What's next?
-
-See our [getting started]({{< ref "plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin" >}}) guide for an explanation of how to write and configure gRPC plugins.
-
----
-
-
-### Key Concepts
-
-This document serves as a developer's guide for understanding the key concepts and practical steps for writing and configuring gRPC plugins for Tyk Gateway. It provides technical insights and practical guidance to seamlessly integrate Tyk plugins into your infrastructure through gRPC. The goal is to equip developers with the knowledge and tools needed to effectively utilize gRPC for enhancing Tyk Gateway functionalities.
-
-This comprehensive guide covers essential tasks, including:
-
-1. **Developing a gRPC Server:** Learn how to develop a gRPC server using [Tyk protocol buffers](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto). The gRPC server facilitates the execution of Tyk plugins, which offer custom middleware for various phases of the API request lifecycle. By integrating these plugins, developers can enable Tyk Gateway with enhanced control and flexibility in managing API requests, allowing for fine-grained customization and tailored processing at each stage of the request lifecycle.
-
-2. **Configuring Tyk Gateway:** Set up Tyk Gateway to communicate with your gRPC Server and, optionally, an external secured web server hosting the gRPC plugin bundle for API configurations. Configure Tyk Gateway to fetch the bundle configured for an API from the web server, enabling seamless integration with gRPC plugins. Specify connection settings for streamlined integration.
-
-3. **API Configuration:** Customize API settings within Tyk Gateway to configure gRPC plugin utilization. Define plugin hooks directly within the API Definition or remotely via an external web server for seamless request orchestration. Tyk plugins provide custom middleware for different phases of the API request lifecycle, enhancing control and flexibility.
-
-4. **API Testing:** Test that Tyk Gateway integrates with your gRPC server for the plugins configured for your API. 
-
----
-
-## Develop gRPC server
+##### Develop gRPC server
 
 Develop your gRPC server, using your preferred language, to handle requests from Tyk Gateway for each of the required plugin hooks. These hooks allow Tyk Gateway to communicate with your gRPC server to execute custom middleware at various stages of the API request lifecycle. 
 
-### Prerequisites
+**Prerequisites**
 
 The following prerequisites are necessary for developing a gRPC server that integrates with Tyk Gateway.
 
-##### Tyk gRPC Protocol Buffers
+- Tyk gRPC Protocol Buffers
 
 A collection of [Protocol Buffer](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto) messages are available in the Tyk Gateway repository to allow Tyk Gateway to integrate with your gRPC server, requesting execution of plugin code. These messages establish a standard set of data structures that are serialised between Tyk Gateway and your gRPC Server. Developers should consult the [Rich Plugins Data Structures]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures" >}}) page for further details.
 
-##### Protocol Buffer Compiler
+- Protocol Buffer Compiler
 
 The protocol buffer compiler, `protoc`, should be installed to generate the service and data structures in your preferred language(s) from the [Tyk gRPC Protocol Buffer](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto) files. Developers should consult the [installation](https://grpc.io/docs/protoc-installation/) documentation at [grpc.io](https://grpc.io/) for an explanation of how to install `protoc`.
 
-### Generate Bindings
+##### Generate Bindings
 
 Generate the bindings (service and data structures) for your target language using the `protoc` compiler. Tutorials are available at [protobuf.dev](https://protobuf.dev/getting-started/) for your target language.
 
-### Implement service
+##### Implement service
 
 Your gRPC server should implement the *Dispatcher* service to enable Tyk Gateway to integrate with your gRPC server. The Protocol Buffer definition for the *Dispatcher* service is listed below:
 
@@ -4715,7 +4693,7 @@ The *Dispatcher* service contains two RPC methods, *Dispatch* and *DispatchEvent
 
 Your *Dispatch* RPC should handle the request made by Tyk Gateway, implementing custom middleware for the intended plugin hooks. Each plugin hook allows Tyk Gateway to communicate with your gRPC server to execute custom middleware at various stages of the API request lifecycle, such as Pre, PostAuth, Post, Response etc. The Tyk Protocol Buffers define the [HookType](https://github.com/TykTechnologies/tyk/blob/master/coprocess/proto/coprocess_common.proto) enumeration to inspect the type of the intended gRPC plugin associated with the request. This is accessible as an attribute on the *Object* message, e.g. *object_message_instance.hook_type*.
 
-### Developer resources
+##### Developer resources
 
 Consult the [Tyk protocol buffers](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto) for the definition of the service and data structures that enable integration of Tyk gateway with your gRPC server. Tyk provides pre-generated [bindings](https://github.com/TykTechnologies/tyk/tree/master/coprocess/bindings) for C++, Java, Python and Ruby.
 
@@ -4725,11 +4703,11 @@ Tyk Github repositories are also available with examples for [Ruby](https://gith
  
 ---
 
-## Configure Tyk Gateway
+##### Configure Tyk Gateway
 
 Configure Tyk Gateway to issue requests to your gRPC server and optionally, specify the URL of the web server that will serve plugin bundles.
 
-### Configure gRPC server
+**Configure gRPC server**
 
 Modify the root of your `tyk.conf` file to include the *coprocess_options* section, similar to that listed below:
 
@@ -4756,7 +4734,7 @@ MB message size [https://jbrandhorst.com/post/grpc-binary-blob-stream/](https://
 
 Configuration parameters are available for establishing a message size in both directions (send and receive). For most use cases and especially if you're dealing with multiple hooks, where the same request object is dispatched, it is recommended to set both values to the same size.
 
-### Configure Web server (optional)
+**Configure Web server**
 
 Tyk Gateway can be configured to download the gRPC plugin configuration for an API from a web server. For further details related to the concept of bundling plugins please refer to [plugin bundles]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}).
 
@@ -4775,15 +4753,15 @@ The `public_key_path` value is used for verifying signed bundles, you may omit t
 
 ---
 
-## Configure API
+##### Configure gRPC Plugins For Your API Endpoints
 
 Plugin hooks for your APIs in Tyk can be configured either by directly specifying them in a configuration file on the Gateway server or by hosting the configuration externally on a web server. This section explains how to configure gRPC plugins for your API endpoints on the local Gateway or remotely from an external secured web server.
 
-### Local
+- Local
 
 This section provides examples for how to configure gRPC plugin hooks, locally within an API Definition. Examples are provided for Tyk Gateway and Tyk Operator.
 
-#### Tyk Gateway
+**Tyk Gateway**
 
 For configurations directly embedded within the Tyk Gateway, plugin hooks can be defined within your API Definition. An example snippet from a Tyk Classic API Definition is provided below:
 
@@ -4811,7 +4789,7 @@ For example, a Post request plugin hook has been configured with name `MyPostMid
 Ensure the plugin driver is configured as type *grpc*. Tyk will issue a request to your gRPC server for each plugin hook that you have configured.
 {{< /note >}}
 
-#### Tyk Operator
+**Tyk Operator**
 
 The examples below illustrate how to configure plugin hooks for an API Definition within Tyk Operator.
 
@@ -4869,7 +4847,7 @@ spec:
         path: ""
 ```
 
-### Remote
+- Remote
 
 It is possible to configure your API so that it downloads a bundled configuration of your plugins from an external webserver. The bundled plugin configuration is contained within a zip file.
 
@@ -4881,7 +4859,7 @@ Bundling a gRPC plugin requires the following steps:
 - Upload the zip file to an external secured webserver
 - Configure your API to download your plugin bundle
 
-#### Create the manifest file
+**Create the manifest file**
 
 The `manifest.json` file specifies the configuration for your gRPC plugins. An example `manifest.json` is listed below:
 
@@ -4905,7 +4883,7 @@ The `manifest.json` file specifies the configuration for your gRPC plugins. An e
 The source code files, *file_list*, are empty for gRPC plugins. Your gRPC server contains the source code for handling plugins.
 {{< /note >}}
 
-#### Build plugin bundle
+**Build plugin bundle**
 
 A plugin bundle can be built using the Tyk Gateway binary and should only contain the `manifest.json` file:
 
@@ -4917,9 +4895,7 @@ The example above generates a zip file, name `mybundle.zip`. The zip file is sig
 
 The resulting bundle file should then be uploaded to the webserver that hosts your plugin bundles.
 
-#### Configure API
-
-##### Tyk Gateway
+**Tyk Gateway**
 
 To add a gRPC plugin to your API definition, you must specify the bundle file name within the `custom_middleware_bundle` field:
 
@@ -4933,13 +4909,13 @@ To add a gRPC plugin to your API definition, you must specify the bundle file na
 
 The value of the `custom_middleware_bundle` field will be used in combination with the gateway settings to construct a bundle URL. For example, if Tyk Gateway is configured with a webserver base URL of https://my-bundle-server.com/bundles/ then an attempt would be made to download the bundle from https://my-bundle-server.com/bundles/mybundle.zip.
 
-##### Tyk Operator
+**Tyk Operator**
 
  Currently this feature is not yet documented with a Tyk Operator example for configuring an API to use plugin bundles. For further details please reach out and contact us on the [community support forum](https://community.tyk.io).
 
 ---
 
-## Test your API Endpoint
+##### Test your API Endpoint
 
 It is crucial to ensure the security and reliability of your gRPC server. As the developer, it is your responsibility to verify that your gRPC server is secured and thoroughly tested with appropriate test coverage. Consider implementing unit tests, integration tests and other testing methodologies to ensure the robustness of your server's functionality and security measures. This step ensures that the Tyk Gateway properly communicates with your gRPC server and executes the custom logic defined by the plugin hooks.
 
@@ -4953,35 +4929,13 @@ Replace `https://www.your-gateway-server.com:8080/api/path` with the actual endp
 
 ---
 
-## Summary
-
-This guide has explained the key concepts and processes for writing gRPC plugins that integrate with Tyk Gateway. The following explanations have been given:
-
-- Prerequisites for developing a gRPC server for your target language.
-- The *Dispatcher* service interface.
-- How to configure Tyk Gateway to integrate with your gRPC server.
-- How to configure Tyk Gateway with an optional external web server for fetching plugin configuration.
-- How to configure gRPC plugins for your APIs.
-- How to test your API integration with your gRPC server using curl.
-
----
-
-## What's Next?
-
-- Consult the [Protocol Buffer messages]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures" >}}) that Tyk Gateway uses when making a request to a gRPC server.
-- Visit tutorial guides that explain how to implement a [Java]({{< ref "plugins/supported-languages/rich-plugins/grpc/request-transformation-java" >}}), [.NET]({{< ref "plugins/supported-languages/rich-plugins/grpc/custom-auth-dot-net" >}}) and [NodeJS]({{< ref "plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs" >}}) gRPC server.
-- Visit our [plugins hub]({{< ref "plugins/plugin-hub" >}}) to explore further gRPC development examples and resources.
-
----
-
-
-### "Getting Started: Creating A Python gRPC Server"
+##### Create a Python gRPC Server
 
 In the realm of API integration, establishing seamless connections between services is paramount.
 
 Understanding the fundamentals of gRPC server implementation is crucial, especially when integrating with a Gateway solution like Tyk. This guide aims to provide practical insights into this process, starting with the basic principles of how to implement a Python gRPC server that integrates with Tyk Gateway.
 
-## Objectives
+**Objectives**
 
 By the end of this guide, you will be able to implement a gRPC server that will integrate with Tyk Gateway, setting the stage for further exploration in subsequent parts:
 
@@ -4992,7 +4946,7 @@ By the end of this guide, you will be able to implement a gRPC server that will 
 Before implementing our first gRPC server it is first necessary to understand the service interface that defines how Tyk Gateway integrates with a gRPC server.
 
 
-## Tyk Dispatcher Service
+**Tyk Dispatcher Service**
 
 The *Dispatcher* service, defined in the [coprocess_object.proto](https://github.com/TykTechnologies/tyk/blob/master/coprocess/proto/coprocess_object.proto) file, contains the *Dispatch* RPC method, invoked by Tyk Gateway to request remote execution of gRPC plugins. Tyk Gateway dispatches accompanying data relating to the original client request and session. The service definition is listed below:
 
@@ -5008,14 +4962,14 @@ On the server side, we will implement the *Dispatcher* service methods and a gRP
 Before we start developing our gRPC server we need to setup our development environment with the supporting libraries and tools.
 
 
-## Prerequisites
+**Prerequisites**
 
 Firstly, we need to download the [Tyk Protocol Buffers](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto) and install the Python protoc compiler.
 
 We are going to use the *protoc* compiler to generate the supporting classes and data structures to implement the *Dispatcher* service.
 
 
-### Tyk Protocol Buffers
+- Tyk Protocol Buffers
 
 Issue the following command to download and extract the Tyk Protocol Buffers from the Tyk GitHub repository:
 
@@ -5027,7 +4981,7 @@ curl -sL "https://github.com/TykTechnologies/tyk/archive/master.tar.gz " -o tyk.
     rm -r tyk tyk.tar.gz
 ```
 
-### Install Dependencies
+- Install Dependencies
 
 We are going to setup a Python virtual environment and install some supporting dependencies. Assuming that you have Python [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html) already installed, then issue the following commands to setup a Python virtual environment containing the grpcio and grpcio-tools libraries:
 
@@ -5041,12 +4995,12 @@ pip install grpcio grpcio-tools grpcio-reflection
 The [grpcio](https://pypi.org/project/grpcio/) library offers essential functionality to support core gRPC features such as message serialisation and deserialisation. The [grpcio-tools](https://pypi.org/project/grpcio-tools/) library provides the Python *protoc* compiler that we will use to generate the supporting classes and data structures to implement our gRPC server. The [grpcio-reflection](https://pypi.org/project/grpcio-reflection/) library allows clients to query information about the services and methods provided by a gRPC server at runtime. It enables clients to dynamically discover available services, their RPC methods, in addition to the message types and field names associated with those methods.
 
 
-### Install grpcurl
+- Install grpcurl
 
 Follow the [installation instructions](https://github.com/fullstorydev/grpcurl?tab=readme-ov-file#installation) to install grpcurl. We will use grpcurl to send test requests to our gRPC server.
 
 
-### Generate Python Bindings
+- Generate Python Bindings
 
 We are now able to generate the Python classes and data structures to allow us to implement our gRPC server. To accomplish this we will use the Python *protoc* command as listed below:
 
@@ -5082,12 +5036,12 @@ The *context* parameter provides additional information and functionalities rela
 In the next step we will implement a subclass that will handle requests made by Tyk Gateway for remote execution of custom plugins.
 
 
-## Implement Dispatcher Service
+**Implement Dispatcher Service**
 
 We will now develop the *Dispatcher* service, adding implementations of the *Dispatch* and *DispatchEvent* methods, to allow our gRPC server to integrate with Tyk Gateway. Before we continue, create a file, *async_server.py*, within the same folder as the generated Protocol Buffer (.proto) files. 
 
 
-### Dispatch
+- Dispatch
 
 Our implementation of the Dispatch RPC method will deserialize the request payload and output to the console as JSON format. This serves as a useful development and debugging aid, allowing inspection of the request and session state dispatched by Tyk Gateway to our gRPC server.
 
@@ -5141,7 +5095,7 @@ The important takeaways from the source code listing above are:
 An implementation of the *Dispatch* RPC method must return the object payload received from Tyk Gateway. The payload can be modified by the service implementation, for example to add or remove headers and query parameters before the request is sent upstream.
 
 
-### DispatchEvent
+- DispatchEvent
 
 Our implementation of the *DispatchEvent* RPC method will deserialize and output the event payload as JSON. Append the following source code to the *async_server.py* file:
 
@@ -5162,12 +5116,11 @@ The important takeaways from the source code listing above are:
 - An implementation of the *DispatchEvent* RPC method must return an instance of  *coprocess_object_pb2.EventReply*.
 
 
-## Create gRPC Server
+- Create gRPC Server
 
 Finally, we will implement an AsyncIO gRPC server to handle requests from Tyk Gateway to the *Dispatcher* service. We will add functions to start and stop our gRPC server. Finally, we will use *grpcurl* to issue a test payload to our gRPC server to test that it is working.
 
-
-### Develop gRPC Server
+**Develop gRPC Server**
 
 Append the following source code from the listing below to the *async_server.py* file:
 
@@ -5241,7 +5194,7 @@ if __name__ == '__main__':
 ```
 
 
-### Start gRPC Server
+- Start gRPC Server
 
 Issue the following command to start the gRPC server:
 
@@ -5252,12 +5205,12 @@ python3 -m async_server
 A message should be output on the console, displaying the port number and confirming that the gRPC server has started.
 
 
-### Test gRPC Server
+- Test gRPC Server
 
 To test our gRPC server is working, issue test requests to the *Dispatch* and *DispatchEvent* methods, using *grpcurl*.
 
 
-##### Send Dispatch Request
+**Send Dispatch Request**
 
 Use the *grpcurl* command to send a test dispatch request to our gRPC server:
 
@@ -5291,7 +5244,7 @@ grpcurl -plaintext -d '{
 Inspect the console output of your gRPC server. It should echo the payload that you sent in the request.
 
 
-##### Send DispatchEvent Request
+**Send DispatchEvent Request**
 
 Use the grpcurl command to send a test event payload to our gRPC server:
 
@@ -5315,14 +5268,14 @@ grpcurl -plaintext -d '{"payload": "{\"event\": \"test\"}"}' localhost:50051 cop
 At this point we have tested, independently of Tyk Gateway, that our gRPC Server can handle an example request payload for gRPC plugin execution. In the next section we will create a test environment for testing that Tyk Gateway integrates with our gRPC server for API requests.
 
 
-## Configure Test Environment
+**Configure Test Environment**
 
 Now that we have implemented and started a gRPC server, Tyk Gateway needs to be configured to integrate with it. To achieve this we will enable the coprocess feature and configure the URL of the gRPC server.
 
 We will also create an API so that we can test that Tyk Gateway integrates with our gRPC server.
 
 
-### Configure Tyk Gateway
+**Configure Tyk Gateway**
 
 Within the root of the *tyk.conf* file, add the following configuration, replacing host and port with values appropriate for your environment:
 
@@ -5343,7 +5296,7 @@ TYK_GW_COPROCESSOPTIONS_COPROCESSGRPCSERVER=tcp://host:port
 Replace host and port with values appropriate for your environment.
 
 
-### Configure API
+**Configure API**
 
 Before testing our gRPC server we will create and configure an API with 2 plugins:
 
@@ -5355,7 +5308,7 @@ Each plugin will be configured to use the *grpc* plugin driver.
 Tyk Gateway will forward details of an incoming request to the gRPC server, for each of the configured API plugins.
 
 
-##### Tyk Classic API
+**Tyk Classic API**
 
 gRPC plugins can be configured within the *custom_middleware* section of the Tyk Classic ApiDefinition, as shown in the listing below:
 
@@ -5410,7 +5363,7 @@ In the above listing, the plugin driver parameter has been configured with a val
 The *Response* plugin is configured with *require_session* enabled, so that Tyk Gateway will send details for the authenticated key / user with the gRPC request. Note, this is not configured for *Pre Request* plugins that are triggered before authentication in the request lifecycle.
 
 
-##### Tyk OAS API
+**Tyk OAS API**
 
 To quickly get started, a Tyk OAS API schema can be created by importing the infamous [pet store](https://petstore3.swagger.io/api/v3/openapi.json) OAS schema. Then the [findByStatus](https://petstore3.swagger.io/api/v3/pet/findByStatus?status=available) endpoint can be used for testing.
 
@@ -5501,7 +5454,7 @@ The *Response* plugin is configured with *requireSession* enabled, so that Tyk G
 Tyk Gateway will forward details of an incoming request to the gRPC server, for each plugin.
 
 
-## Test API
+- Test API
 
 We have implemented and configured a gRPC server to integrate with Tyk Gateway. Furthermore, we have created an API that has been configured with two gRPC plugins: a *Pre Request* and *Response* plugin.
 
@@ -5520,32 +5473,19 @@ The gRPC server we implemented echoes a JSON representation of the request paylo
 Note that this is a useful feature for learning how to develop gRPC plugins and understanding the structure of the request payload dispatched by Tyk Gateway to the gRPC server. However, in production environments care should be taken to avoid inadvertently exposing sensitive data such as secrets in the session. 
 
 
-## Summary
-
-In this guide, we've delved into the integration of a Python gRPC server with Tyk Gateway.
-
-We have explained how to implement a Python gRPC server and equipped developers with the necessary tools, knowledge and capabilities to effectively utilize Tyk Gateway through gRPC services.
-
-The following essential groundwork has been covered:
-
-- Setting up tools, libraries and service definitions for the integration.
-- Developing a basic gRPC server with functionality to echo the request payload, received from Tyk Gateway, in JSON format.
-- Configuring Tyk Gateway for seamless communication with our gRPC server.
-
-
-### gRPC Performance
+##### gRPC Performance
 
 These are some benchmarks performed on gRPC plugins.
 
 gRPC plugins may use different transports, we've tested TCP and Unix Sockets.
 
-## TCP
+**TCP**
 
 {{< img src="/img/diagrams/tcpResponseTime.png" alt="TCP Response Times" >}}
 
 {{< img src="/img/diagrams/tcpHitRate.png" alt="TCP Hit Rate" >}}
 
-## Unix Socket
+**Unix Socket**
 
 {{< img src="/img/diagrams/unixResponseTime.png" alt="Unix Socket Response Times" >}}
 
@@ -5553,25 +5493,24 @@ gRPC plugins may use different transports, we've tested TCP and Unix Sockets.
 {{< img src="/img/diagrams/unixHitRate.png" alt="Unix Socket Hit Rate" >}}
 
 
-### Create a Request Transformation Plugin with Java
+##### Create a Request Transformation Plugin with Java
 
 This tutorial will guide you through the creation of a gRPC-based Java plugin for Tyk.
 Our plugin will inject a header into the request before it gets proxied upstream. For additional information about gRPC, check the official documentation [here](https://grpc.io/docs/guides/index.html).
 
 The sample code that we'll use implements a request transformation plugin using Java and uses the proper gRPC bindings generated from our Protocol Buffers definition files.
 
-## Requirements
+**Requirements**
 
-- Tyk Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here][1] for more installation options.
-- The Tyk CLI utility, which is bundled with our RPM and DEB packages, and can be installed separately from [https://github.com/TykTechnologies/tyk-cli][2].
+- Tyk Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here](https://tyk.io/docs/get-started/with-tyk-on-premise/installation/) for more installation options.
+- The Tyk CLI utility, which is bundled with our RPM and DEB packages, and can be installed separately from [https://github.com/TykTechnologies/tyk-cli](https://github.com/TykTechnologies/tyk-cli).
 - In Tyk 2.8 the Tyk CLI is part of the gateway binary, you can find more information by running "tyk help bundle".
 - Gradle Build Tool: https://gradle.org/install/.
 - gRPC tools: https://grpc.io/docs/quickstart/csharp.html#generate-grpc-code
 - Java JDK 7 or higher.
 
-## Create the Plugin
 
-### Setting up the Java Project
+**Setting up the Java Project**
 
 We will use the Gradle build tool to generate the initial files for our project:
 
@@ -5641,14 +5580,14 @@ idea {
 }
 ```
 
-### Create the Directory for the Server Class
+**Create the Directory for the Server Class**
 
 ```bash
 cd ~/tyk-plugin
 mkdir -p src/main/java/com/testorg/testplugin
 ```
 
-### Install the gRPC Tools
+**Install the gRPC Tools**
 
 We need to download the Tyk Protocol Buffers definition files, these files contains the data structures used by Tyk. See [Data Structures]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures" >}}) for more information:
 
@@ -5658,7 +5597,7 @@ git clone https://github.com/TykTechnologies/tyk
 mv tyk/coprocess/proto src/main/proto
 ```
 
-### Generate the Bindings
+**Generate the Bindings**
 
 To generate the Protocol Buffers bindings we use the Gradle build task:
 
@@ -5668,7 +5607,7 @@ gradle build
 
 If you need to customize any setting related to the bindings generation step, check the `build.gradle` file.
 
-### Implement Server
+**Implement Server**
 
 We need to implement two classes: one class will contain the request dispatcher logic and the actual middleware implementation. The other one will implement the gRPC server using our own dispatcher.
 
@@ -5761,7 +5700,7 @@ gradle runServer
 The gRPC server will listen on port 5555 (as defined in `Server.java`). In the next steps we'll setup the plugin bundle and modify Tyk to connect to our gRPC server.
 
 
-## Bundle the Plugin
+**Bundle the Plugin**
 
 We need to create a manifest file within the `tyk-plugin` directory. This file contains information about our plugin and how we expect it to interact with the API that will load it. This file should be named `manifest.json` and needs to contain the following:
 
@@ -5796,26 +5735,14 @@ For more information on the Tyk CLI tool, see [here]({{< ref "plugins/how-to-ser
 
 You should now have a `bundle.zip` file in the `tyk-plugin` directory.
 
-## Publish the Plugin
+**Publish the Plugin**
 
 To publish the plugin, copy or upload `bundle.zip` to a local web server like Nginx, or Apache or storage like Amazon S3. For this tutorial we'll assume you have a web server listening on `localhost` and accessible through `http://localhost`.
 
 {{< include "grpc-include" >}}
 
 
-## <a name="next"></a>What's Next?
-
-In this tutorial we learned how Tyk gRPC plugins work. For a production-level setup we suggest the following:
-
-- Configure an appropriate web server and path to serve your plugin bundles.
-
-[1]: https://tyk.io/docs/get-started/with-tyk-on-premise/installation/
-[2]: https://github.com/TykTechnologies/tyk-cli
-[3]: /img/dashboard/system-management/api_settings.png
-[4]: /img/dashboard/system-management/plugin_options.png
-
-
-### Create Custom Authentication Plugin with .NET
+##### Create Custom Authentication Plugin with .NET
 
 This tutorial will guide you through the creation of a custom authentication plugin for Tyk with a gRPC based plugin with .NET and C#. For additional information check the official gRPC [documentation](https://grpc.io/docs/guides/index.html).
 
@@ -5823,17 +5750,16 @@ The sample code that we’ll use implements a very simple authentication layer u
 
 {{< img src="/img/diagrams/diagram_docs_gRPC-plugins_why-use-it-for-plugins@2x.png" alt="Using gRPC for plugins" >}}
 
-## Requirements
+**Requirements**
 
-- Tyk Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here][1] for more installation options.
-- The Tyk CLI utility, which is bundled with our RPM and DEB packages, and can be installed separately from [https://github.com/TykTechnologies/tyk-cli][2]
+- Tyk Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here](https://tyk.io/docs/get-started/with-tyk-on-premise/installation/) for more installation options.
+- The Tyk CLI utility, which is bundled with our RPM and DEB packages, and can be installed separately from [https://github.com/TykTechnologies/tyk-cli](https://github.com/TykTechnologies/tyk-cli)
 - In Tyk 2.8 the Tyk CLI is part of the gateway binary, you can find more information by running "tyk help bundle".
 - .NET Core for your OS: https://www.microsoft.com/net/core
 - gRPC tools: https://grpc.io/docs/quickstart/csharp.html#generate-grpc-code
 
-## Create the Plugin
 
-### Create .NET Project
+**Create .NET Project**
 
 We use the .NET CLI tool to generate the initial files for our project:
 
@@ -5856,7 +5782,7 @@ dotnet add package Google.Protobuf --version 3.4.0
 - The `ThreadPool` package is used by `Grpc`.
 - The `Protobuf` package will be used by our gRPC bindings.
 
-### Install the gRPC Tools
+**Install the gRPC Tools**
 
 We need to install the gRPC tools to generate the bindings. We recommended you follow the official guide here: https://grpc.io/docs/quickstart/csharp.html#generate-grpc-code.
 
@@ -5897,7 +5823,7 @@ cd ~/tyk-plugin
 git clone https://github.com/TykTechnologies/tyk
 ```
 
-### Generate the bindings
+**Generate the bindings**
 
 To generate the bindings, we create an empty directory and run the `protoc` tool using the environment variable that was set before:
 
@@ -5919,7 +5845,7 @@ CoprocessCommon.cs      CoprocessObject.cs      CoprocessReturnOverrides.cs
 CoprocessMiniRequestObject.cs   CoprocessObjectGrpc.cs              CoprocessSessionState.cs
 ```
 
-### Implement Server
+**Implement Server**
 
 Create a file called `Server.cs`.
 
@@ -6054,7 +5980,7 @@ dotnet run
 
 The gRPC server will listen on port 5555 (as defined in `Program.cs`). In the next steps we'll setup the plugin bundle and modify Tyk to connect to our gRPC server.
 
-## Bundle the Plugin
+**Bundle the Plugin**
 
 We need to create a manifest file within the `tyk-plugin` directory. This file contains information about our plugin and how we expect it to interact with the API that will load it. This file should be named `manifest.json` and needs to contain the following:
 
@@ -6096,36 +6022,14 @@ For more information on the Tyk CLI tool, see [here]({{< ref "plugins/how-to-ser
 
 You should now have a `bundle.zip` file in the `tyk-plugin` directory.
 
-## Publish the Plugin
+**Publish the Plugin**
 
 To publish the plugin, copy or upload `bundle.zip` to a local web server like Nginx, or Apache or storage like Amazon S3. For this tutorial we'll assume you have a web server listening on `localhost` and accessible through `http://localhost`.
 
 {{< include "grpc-include" >}}
 
-## What's Next?
 
-In this tutorial we learned how Tyk gRPC plugins work. For a production-level setup we suggest the following:
-
-- Configure an appropriate web server and path to serve your plugin bundles.
-- See the following [GitHub repo](https://github.com/TykTechnologies/tyk-plugin-demo-dotnet) for a gRPC based .NET plugin that incorporates authentication based on Microsoft SQL Server. 
-
-
-
-
-
-
-
-
-
-
-
-[1]: https://tyk.io/docs/get-started/with-tyk-on-premise/installation/
-[2]: https://github.com/TykTechnologies/tyk-cli
-[3]: /img/dashboard/system-management/plugin_options.png
-[4]: /img/dashboard/system-management/plugin_auth_mode.png
-
-
-### Create Custom Authentication Plugin with NodeJS
+##### Create Custom Authentication Plugin with NodeJS
 
 This tutorial will guide you through the creation of a custom authentication plugin for Tyk with a gRPC based plugin written in NodeJS. For additional information about gRPC, check the official documentation [here](https://grpc.io/docs/guides/index.html).
 
@@ -6133,16 +6037,15 @@ The sample code that we'll use implements a very simple authentication layer usi
 
 {{< img src="/img/dashboard/system-management/custom_grpc_authentication.png" alt="gRPC Auth Diagram" >}}
 
-## Requirements
+**Requirements**
 
 - Tyk Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here](https://tyk.io/docs/get-started/with-tyk-on-premise/installation/) for more installation options.
 - The Tyk CLI utility, which is bundled with our RPM and DEB packages, and can be installed separately from [https://github.com/TykTechnologies/tyk-cli](https://github.com/TykTechnologies/tyk-cli)
 - In Tyk 2.8 and upwards the Tyk CLI is part of the gateway binary, you can find more information by running "tyk help bundle".
 - NodeJS v6.x.x [https://nodejs.org/en/download/](https://nodejs.org/en/download/) 
 
-## Create the Plugin
 
-### Create NodeJS Project
+**Create NodeJS Project**
 
 We will use the NPM tool to initialize our project, follow the steps provided by the `init` command:
 
@@ -6159,7 +6062,7 @@ Now we'll add the gRPC package for this project:
 npm install --save grpc
 ```
 
-### Install gRPC Tools
+**Install gRPC Tools**
 
 Typically to use gRPC and Protocol Buffers you need to use a code generator and generate bindings for the target language that you're using. For this tutorial we'll skip this step and use the dynamic loader that's provided by the NodeJS gRPC library. This mechanism allows a program to load Protocol Buffers definitions directly from `.proto` files. See [this section](https://grpc.io/docs/tutorials/basic/node.html#loading-service-descriptors-from-proto-files) in the gRPC documentation for more details.
 
@@ -6170,7 +6073,7 @@ cd ~/tyk-plugin
 git clone https://github.com/TykTechnologies/tyk
 ```
 
-### Implement Server
+**Implement Server**
 
 Now we're ready to implement our gRPC server, create a file called `main.js` in the project's directory
 
@@ -6264,7 +6167,7 @@ node main.js
 The gRPC server will listen on port `5555` (see the `listenAddr` constant). In the next steps we'll setup the plugin bundle and modify Tyk to connect to our gRPC server.
 
 
-## Bundle the Plugin
+**Bundle the Plugin**
 
 We need to create a manifest file within the `tyk-plugin` directory. This file contains information about our plugin and how we expect it to interact with the API that will load it. This file should be named `manifest.json` and needs to contain the following:
 
@@ -6305,37 +6208,14 @@ For more information on the Tyk CLI tool, see [here]({{< ref "plugins/how-to-ser
 
 You should now have a `bundle.zip` file in the `tyk-plugin` directory.
 
-## Publish the Plugin
+**Publish the Plugin**
 
 To publish the plugin, copy or upload `bundle.zip` to a local web server like Nginx, Apache or storage like Amazon S3. For this tutorial we'll assume you have a web server listening on `localhost` and accessible through `http://localhost`.
 
 {{< include "grpc-include" >}}
 
 
-## What's Next?
-
-In this tutorial we learned how Tyk gRPC plugins work. For a production-level setup we suggest the following:
-
-- Configure an appropriate web server and path to serve your plugin bundles.
-
-
-
-
-
-
-
-
-
-
-
-[1]: https://tyk.io/docs/get-started/with-tyk-on-premise/installation/
-[2]: https://github.com/TykTechnologies/tyk-cli
-[3]: /img/dashboard/system-management/plugin_options.png
-[4]: /img/dashboard/system-management/plugin_auth_mode.png
-
-
-
-### "Create Custom Authentication Plugin With Python"
+##### Create Custom Authentication Plugin With Python
 
 In the realm of API security, HMAC-signed authentication serves as a foundational concept. In this developer-focused blog post, we'll use HMAC-signed authentication as the basis for learning how to write gRPC custom authentication plugins with Tyk Gateway. Why learn how to write Custom Authentication Plugins?
 
@@ -6355,7 +6235,7 @@ Before we continue ensure that you have:
 - Read our HMAC signatures documentation for an explanation of HMAC signed authentication  with Tyk Gateway. A brief summary is given in the HMAC Signed Authentication section below. 
 
 
-## HMAC Signed Authentication
+**HMAC Signed Authentication**
 
 Before diving in further, we will give a brief overview of HMAC signed authentication using our custom authentication plugin.
 
@@ -6382,7 +6262,7 @@ From the above example, it should be noted that:
     - **algorithm** is the HMAC algorithm used to sign the signature, *hmac-sha512* or *hmac-sha256*. 
     - **signature** is the HAMC signature calculated with the date string from the *Date* header, signed with a base64 encoded secret value, using the specified HMAC algorithm. The HMAC signature is then encoded as base64.
 
-## Prerequisites
+**Prerequisites**
 
 Firstly, we need to create the following:
 
@@ -6391,7 +6271,7 @@ Firstly, we need to create the following:
 
 This will enable us to issue a request to test that Tyk Gateway integrates with our custom authentication plugin on the gRPC server.
 
-#### Create API
+**Create API**
 
 We will create an API served by Tyk Gateway, that will forward requests upstream to https://httpbin.org/. 
 
@@ -6503,7 +6383,7 @@ A response similar to that given below will be returned by Tyk Gateway:
 }
 ```
 
-#### Create HMAC Key
+**Create HMAC Key**
 
 We will create an key configured to use HMAC signing, with a secret of *secret*. The key will configured to have access to our test API.
 
@@ -6603,7 +6483,7 @@ A response similar to that given below should be returned by Tyk Gateway:
 Make a note of the key ID given in the response, since we will need this to test our API.
 {{< /note >}}
 
-## Implement Plugin
+**Implement Plugin**
 
 Our custom authentication plugin will perform the following tasks:
 
@@ -6616,7 +6496,7 @@ Our custom authentication plugin will perform the following tasks:
 
 Return the request *Object* containing the updated session back to Tyk Gateway. When developing custom authentication plugins it is the responsibility of the developer to update the session state with the token, in addition to setting the appropriate response status code and error message when authentication fails.
 
-### Import Python Modules
+**Import Python Modules**
 
 Ensure that the following Python modules are imported at the top of your *tyk_async_server.py* file:
 
@@ -6640,7 +6520,7 @@ from coprocess_common_pb2 import HookType
 from coprocess_session_state_pb2 import SessionState
 ```
 
-### Add Constants
+**Add Constants**
 
 Add the following constants to the top of the *tyk_async_server.py* file, after the import statements:
 
@@ -6654,7 +6534,7 @@ VALID_TOKEN = "eyJvcmciOiI1ZTlkOTU0NGExZGNkNjAwMDFkMGVkMjAiLCJpZCI6ImdycGNfaG1hY
 
 The values listed above are designed to align with the examples provided in the *Prerequisites* section, particularly those related to HMAC key generation. If you've made adjustments to the HMAC secret or you've modified the key alias referred to in the endpoint path (for instance, *grpc_hmac_key*), you'll need to update these constants accordingly.
 
-### Extract headers
+**Extract headers**
 
 Add the following function to your *tyk_async_server.py* file to extract a dictionary of the key value pairs from the *Authorization* header. We will use a regular expression to extract the key value pairs.
 
@@ -6669,7 +6549,7 @@ def parse_auth_header(auth_header: str) -> dict[str,str]:
     return parsed_data
 ```
 
-### Compute HMAC Signature
+**Compute HMAC Signature**
 
 Add the following function to your *tyk_async_server.py* to compute the HMAC signature.
 
@@ -6704,7 +6584,7 @@ We use the following Python modules in our implementation:
 - hmac Python module to compute the HMAC signature.
 - base64 Python module to encode the result.
 
-### Verify HMAC Signature
+**Verify HMAC Signature**
 
 Add the following function to your *tyk_async_server.py* file to verify the HMAC signature provided by the client:
 
@@ -6732,7 +6612,7 @@ Our function accepts three parameters:
 
 The function calls *generate_hmac_signature* to verify the signatures match. It returns true if the computed and client HMAC signatures match, otherwise false is returned.
 
-### Set Error Response
+**Set Error Response**
 
 Add the following helper function to *tyk_async_server.py* to allow us to set the response status and error message if authentication fails.
 
@@ -6750,7 +6630,7 @@ Our function accepts the following three parameters:
 
 The function modifies the *return_overrides* attribute of the request, updating the response status code and error message. The *return_overrides* attribute is an instance of a [ReturnOverrides]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures#returnoverrides" >}}) message that can be used to override the response of a given HTTP request. When this attribute is modified the request is terminated and is not sent upstream.
 
-### Authenticate
+**Authenticate**
 
 Add the following to your *tyk_async_server.py* file to implement the main custom authentication function. This parses the headers to extract the signature and date from the request, in addition to verifying the HMAC signature and key:
 
@@ -6806,7 +6686,7 @@ Specifically, our function performs the following tasks:
 
 - If HMAC signature verification passed and the key included in the *Authorization* header is valid then we update the *SessionState* instance to indicate that HMAC signature verification is enabled, i.e. *hmac_enabled* is set to true.  We also specify the HMAC secret used for signing in the *hmac_secret* field and include the valid token in the metadata dictionary.
 
-### Integrate Plugin
+**Integrate Plugin**
 
 Update the *Dispatch* method of the *PythonDispatcher* class in your *tyk_async_server.py* file so that our authenticate function is called when the a request is made by Tyk Gateway to execute a custom authentication (*HookType.CustomKeyCheck*) plugin.
 
@@ -6844,7 +6724,7 @@ class PythonDispatcher(coprocess_object_pb2_grpc.DispatcherServicer):
         return object
 ```
 
-## Test Plugin
+**Test Plugin**
 
 Create the following bash script, *hmac.sh*, to issue a test request to an API served by Tyk Gateway. The script computes a HMAC signature and constructs the *Authorization* and *Date* headers for a specified API. The *Authorization* header contains the HMAC signature and key for authentication.
 
@@ -6981,7 +6861,7 @@ Try changing the SECRET and/or KEY constants with invalid values and observe the
 2024-05-13 12:56:37 expected: zT17C2tgDCYBJCgFFN/mknf6XydPaV98a5gMPNUHYxZyYwYedIPIhyDRQsMF9GTVFe8khCB1FhfyhpmzrUR2Lw==
 ```
 
-## Summary
+**Summary**
 
 In this guide, we've explained how to write a Python gRPC custom authentication plugin for Tyk Gateway, using HMAC-signed authentication as a practical example. Through clear instructions and code examples, we've provided developers with insights into the process of creating custom authentication logic tailored to their specific API authentication needs.
 
@@ -6995,9 +6875,9 @@ By mastering the techniques outlined in this guide, developers are better equipp
 
 </br>
 
-### LuaJIT
+#### LuaJIT
 
-### Requirements
+##### Requirements
 
 Tyk uses [LuaJIT](http://luajit.org/). The main requirement is the LuaJIT shared library, you may find this as `libluajit-x` in most distros.
 
@@ -7010,33 +6890,19 @@ The LuaJIT required modules are as follows:
 
 *   [lua-cjson](https://github.com/mpx/lua-cjson): in case you have `luarocks`, run: `$ luarocks install lua-cjson`
 
-### How to write LuaJIT Plugins
+
+##### How to write LuaJIT Plugins
 
 We have a demo plugin hosted in the repo [tyk-plugin-demo-lua](https://github.com/TykTechnologies/tyk-plugin-demo-lua). The project implements a simple middleware for header injection, using a Pre hook (see [Tyk custom middleware hooks]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide" >}})) and [mymiddleware.lua](https://github.com/TykTechnologies/tyk-plugin-demo-lua/blob/master/mymiddleware.lua).
-### Lua Performance
+##### Lua Performance
 Lua support is currently in beta stage. We are planning performance optimizations for future releases.
-### Tyk Lua API Methods
+##### Tyk Lua API Methods
 Tyk Lua API methods aren’t currently supported.
-
-
-#### Requirements
-
-Tyk uses [LuaJIT](http://luajit.org/). The main requirement is the LuaJIT shared library, you may find this as `libluajit-x` in most distros.
-
-For Ubuntu 14.04 you may use:
-
-`$ apt-get install libluajit-5.1-2
-$ apt-get install luarocks`
-
-The LuaJIT required modules are as follows:
-
-*   [lua-cjson](https://github.com/mpx/lua-cjson): in case you have `luarocks`, run: `$ luarocks install lua-cjson`
-*   From v1.3.6 You can also use override response code, headers and body using ReturnOverrides. See the [Extend ReturnOverides](https://github.com/TykTechnologies/tyk/pull/763) sample for details.
 
 
 #### Lua Plugin Tutorial
 
-## Settings in the API Definition
+##### Settings in the API Definition
 
 To add a Lua plugin to your API, you must specify the bundle name using the `custom_middleware_bundle` field:
 
@@ -7077,7 +6943,7 @@ To add a Lua plugin to your API, you must specify the bundle name using the `cus
 }
 ```
 
-## Global settings
+##### Global settings
 
 To enable Lua plugins you need to add the following block to `tyk.conf`:
 
@@ -7098,7 +6964,7 @@ To enable Lua plugins you need to add the following block to `tyk.conf`:
 
 `public_key_path` sets a public key, this is used for verifying signed bundles, you may omit this if unsigned bundles are used.
 
-## Running the Tyk Lua build
+##### Running the Tyk Lua build
 
 To use Tyk with Lua support you will need to use an alternative binary, it is provided in the standard Tyk package but it has a different service name.
 
@@ -7115,11 +6981,291 @@ service tyk-gateway-lua start
 ```
 
 
-## Middleware
+## Transform Traffic With Tyk's Middleware
 
-### Middleware Execution Order
+### Request and Response Middleware
 
-#### Request Middleware Chain
+
+When you configure an API on Tyk, the Gateway will proxy all requests received at the listen path that you have defined through to the upstream (target) URL configured in the API definition. Responses from the upstream are likewise proxied on to the originating client. Requests and responses are processed through a powerful [chain of middleware]({{< ref "concepts/middleware-execution-order" >}}) that perform security and processing functions.
+
+Within that chain are a highly configurable set of optional middleware that can, on a per-endpint basis:
+- apply processing to [API requests](#middleware-applied-to-the-api-request) before they are proxied to the upstream service
+- apply customization to the [API response](#middleware-applied-to-the-api-response) prior to it being proxied back to the client
+
+Tyk also supports a powerful custom plugin feature that enables you to add custom processing at different stages in the processing chains. For more details on custom plugins please see the [dedicated guide]({{< ref "plugins" >}}).
+
+#### Middleware applied to the API Request
+
+The following standard middleware can optionally be applied to API requests on a per-endpoint basis.
+
+##### Allow list
+
+The [Allow List]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}}) middleware is a feature designed to restrict access to only specific API endpoints. It rejects requests to endpoints not specifically "allowed", returning `HTTP 403 Forbidden`. This enhances the security of the API by preventing unauthorized access to endpoints that are not explicitly permitted.
+
+Enabling the allow list will cause the entire API to become blocked other than for endpoints that have this middleware enabled. This is great if you wish to have very strict access rules for your services, limiting access to specific published endpoints.
+
+##### Block list
+
+The [Block List]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware" >}})  middleware is a feature designed to prevent access to specific API endpoints. Tyk Gateway rejects all requests made to endpoints with the block list enabled, returning `HTTP 403 Forbidden`. 
+
+##### Cache
+
+Tyk's [API-level cache]({{< ref "basic-config-and-security/reduce-latency/caching/global-cache" >}}) does not discriminate between endpoints and will usually be configured to cache all safe requests. You can use the granular [Endpoint Cache]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache" >}}) to ensure finer control over which API responses are cached by Tyk.
+
+##### Circuit Breaker
+
+The [Circuit Breaker]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers" >}}) is a protective mechanism that helps to maintain system stability by preventing repeated failures and overloading of services that are erroring. When a network or service failure occurs, the circuit breaker prevents further calls to that service, allowing the affected service time to recover while ensuring that the overall system remains functional.
+
+##### Do Not Track Endpoint
+
+If [traffic logging]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/logging-api-traffic" >}}) is enabled for your Tyk Gateway, then it will create transaction logs for all API requests (and responses) to deployed APIs. You can use the [Do-Not-Track]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-middleware" >}}) middleware to suppress creation of transaction records for specific endpoints.
+
+##### Enforced Timeout
+
+Tyk’s [Enforced Timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) middleware can be used to apply a maximum time that the Gateway will wait for a response before it terminates (or times out) the request. This helps to maintain system stability and prevents unresponsive or long-running tasks from affecting the overall performance of the system.
+
+##### Ignore Authentication
+
+Adding the [Ignore Authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}) middleware means that Tyk Gateway will not perform authentication checks on requests to that endpoint. This plugin can be very useful if you have a specific endpoint (such as a ping) that you don't need to secure.
+
+##### Internal Endpoint
+
+The [Internal Endpoint]({{< ref "product-stack/tyk-gateway/middleware/internal-endpoint-middleware" >}}) middleware instructs Tyk Gateway not to expose the endpoint externally. Tyk Gateway will then ignore external requests to that endpoint while continuing to process internal requests from other APIs; this is often used with the [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}) functionality.
+
+##### Method Transformation
+
+The [Method Transformation]({{< ref "advanced-configuration/transform-traffic/request-method-transform" >}}) middleware allows you to change the HTTP method of a request.
+
+##### Mock Response
+
+A [Mock Response]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}) is a simulated API response that can be returned by the API gateway without actually sending the request to the backend API. Mock responses are an integral feature for API development, enabling developers to emulate API behavior without the need for upstream execution.
+
+##### Request Body Transform
+
+The [Request Body Transform]({{< ref "transform-traffic/request-body" >}}) middleware allows you to perform modification to the body (payload) of the API request to ensure that it meets the requirements of your upstream service.
+
+##### Request Header Transform
+
+The [Request Header Transform]({{< ref "transform-traffic/request-headers" >}}) middleware allows you to modify the header information provided in the request before it leaves the Gateway and is passed to your upstream API.
+
+##### Request Size Limit
+
+Tyk Gateway offers a flexible tiered system of limiting request sizes ranging from globally applied limits across all APIs deployed on the gateway down to specific size limits for individual API endpoints. The [Request Size Limit]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits" >}}) middleware provides the most granular control over request size by enabling you to set different limits for individual endpoints.
+
+##### Request Validation
+
+Tyk’s [Request Validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-middleware" >}}) middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.
+
+When working with Tyk OAS APIs, the request validation covers both headers and body (payload); with the older Tyk Classic API style we can validate only the request body (payload).
+
+##### Track Endpoint
+
+If you do not want to include all endpoints in your [Activity by Endpoint]({{< ref "product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint" >}}) statistics in Tyk Dashboard, you can enable this middleware for the endpoints to be included. 
+
+##### URL Rewrite
+
+[URL Rewriting]({{< ref "transform-traffic/url-rewriting" >}}) in Tyk is a powerful feature that enables the modification of incoming API request paths to match the expected endpoint format of your backend services. This allows you to translate an outbound API interface to the internal structure of your services. It is a key capability used in [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}})
+
+##### Virtual Endpoint
+
+Tyk’s [Virtual Endpoints]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) is a programmable middleware component that allows you to perform complex interactions with your upstream service(s) that cannot be handled by one of the other middleware components.
+
+#### Middleware applied to the API Response
+
+The following transformations can be applied to the response recieved from the upstream to ensure that it contains the correct data and format expected by your clients.
+
+##### Response Body Transform
+
+The [Response Body Transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) middleware allows you to perform modification to the body (payload) of the response received from the upstream service to ensure that it meets the expectations of the client.
+
+##### Response Header Transform
+
+The [Response Header Transform]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) middleware allows you to modify the header information provided in the response before it leaves the Gateway and is passed to the client.
+
+
+### Transformation Use Case: SOAP To REST
+
+
+You can transform an existing SOAP service to a JSON REST service. This can be done from the Tyk Dashboard with no coding involved and should take around 10 minutes to perform the transform.
+
+We also have a video which walks you through the SOAP to REST transform.
+
+{{< youtube jeNXLzpKCaA >}}
+
+#### Prerequisites
+
+An existing SOAP service and the WSDL definition. For this example, we will use:
+
+- Upstream Target - [https://www.dataaccess.com/webservicesserver/numberconversion.wso](https://www.dataaccess.com/webservicesserver/numberconversion.wso)
+- The WSDL definition from - [https://www.dataaccess.com/webservicesserver/numberconversion.wso?WSDL](https://www.dataaccess.com/webservicesserver/numberconversion.wso?WSDL)
+- Postman Client (or other endpoint testing tool)
+
+#### Step 1: Import the WSDL API
+
+1. Select APIs from the System Management menu
+
+{{< img src="/img/2.10/apis_menu.png" alt="APIs Menu" >}}
+
+2. Click Import API
+
+{{< img src="/img/2.10/import_api_button.png" alt="Import API" >}}
+
+3. Select **From WSDL** from the Import an API Definition window
+4. In the **Upstream Target** field, enter `https://www.dataaccess.com/webservicesserver/numberconversion.wso` as listed in the Prerequisites.
+5. Paste the WSDL definition from the link in Prerequisites
+6. Click **Generate API**. You should now have an API named `NumberConversion` in your API list
+
+{{< img src="/img/2.10/numberservice_api.png" alt="NumberService API" >}}
+
+#### Step 2: Add the transforms to an Endpoint
+
+1. From the API list, select Edit from the Actions menu for the `NumberConversion` API
+2. Select the **Endpoint Designer** tab. You should see 2 POST endpoints that were imported. We will apply the transforms to the `NumberToWords` endpoint.
+
+{{< img src="/img/2.10/numberservice_endpoints.png" alt="Endpoints" >}}
+
+3. Expand the `NumberToWords` endpoint. The following plugins should have been added as part of the import process.
+  - URL rewrite
+  - Track endpoint
+
+{{< note success >}}
+**Note**  
+
+To make the URL a little friendlier, we're going to amend the Relative Path to just `/NumberToWords`. Update your API after doing this.
+{{< /note >}}
+4. Add the following plugins from the **Plugins** drop-down list:
+  - Body transform
+  - Modify headers
+
+#### Step 3: Modify the Body Transform Plugin
+
+##### Set up the Request
+
+We use the `{{.FieldName}}` Golang template syntax to access the JSON request. For this template we will use `{{.numberToConvert}}`.
+
+1. Expand the Body transform plugin. From the Request tab, copy the following into the Template section:
+
+```xml
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.dataaccess.com/webservicesserver/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:NumberToDollars>
+         <web:dNum>{{.numberToConvert}}</web:dNum>
+      </web:NumberToDollars>
+   </soapenv:Body>
+</soapenv:Envelope>
+```
+
+2. In the Input field, enter the following:
+
+```json
+{
+    "numberToConvert": 35
+}
+```
+{{< note success >}}
+**Note**  
+
+The '35' integer can be any number you want to convert
+{{< /note >}}
+
+
+1. Click **Test**. You should get the following in the Output field:
+
+```xml
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.dataaccess.com/webservicesserver/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:NumberToDollars>
+         <web:dNum>35</web:dNum>
+      </web:NumberToDollars>
+   </soapenv:Body>
+</soapenv:Envelope>
+```
+##### Set up the Response
+
+Again, for the response, we will be using the `{{.FieldName}}` syntax as the following `{{.Envelope.Body.NumberToDollarsResponse.NumberToDollarsResult}}`
+
+1. For the Input Type, select XML
+
+{{< img src="/img/2.10/body_trans_response_input.png" alt="Response Input Type" >}}
+
+2. In the Template section enter:
+
+```yaml
+{
+    "convertedNumber": "{{.Envelope.Body.NumberToDollarsResponse.NumberToDollarsResult}}"
+}
+```
+3. Enter the following into the input field:
+
+```xml
+<soap12:Envelope xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+  <soap12:Body>
+    <NumberToDollarsResponse xmlns="http://www.dataaccess.com/webservicesserver/">
+      <NumberToDollarsResult>thirty five dollars</NumberToDollarsResult>
+    </NumberToDollarsResponse>
+  </soap12:Body>
+</soap12:Envelope>
+```
+4. Click Test. You should get the following in the Output field:
+
+```json
+{
+    "convertedNumber": "thirty five dollars"
+}
+```
+#### Step 5: Change the Content-Type Header
+
+We now need to change the `content-type` header to allow the SOAP service to receive the payload in XML. We do this by using the **Modify header** plugin
+
+1. Expand the Modify Header plugin
+2. From the **Request** tab enter the following in the **Add this header** section
+  - Header Name: `content-type`
+  - Header Value: `text/xml`
+3. Click Add 
+
+{{< img src="/img/2.10/add_header_type.png" alt="Modify Header Request" >}}
+
+4. From the **Response** tab enter the following in the **Add this header** section
+  - Header Name: `content-type`
+  - Header Value: `application/json`
+
+{{< img src="/img/2.10/modify-header-response.png" alt="Modify Header Response" >}}
+
+1. Click **Add**
+2. Click **Update**
+
+{{< img src="/img/2.10/update_number_conversion.png" alt="Update API" >}}
+
+#### Testing the Endpoint
+
+You now need to test the endpoint. We are going to use Postman.
+
+{{< note success >}}
+**Note**  
+
+We have not set up any Authentication for this API, it has defaulted to `Open (Keyless)`.
+{{< /note >}}
+
+
+1. Copy the URL for your NumberConversion API with the NumberToWords endpoint - `https://tyk-url/numberconversion/NumberToWords/`
+2. Paste it as a POST URL in the Postman URL Request field
+3. Enter the following as a raw Body request
+
+```json
+{
+    "numberToConvert": 35
+}
+```
+Your Postman request should look similar to below (apart from the URL used)
+
+{{< img src="/img/2.10/postman_soap_rest.png" alt="Postman" >}}
+
+
+
+
+### Request Middleware Chain
 
 
 To aid the debugging of middleware transformations, below is a diagram that illustrates the flow of a request.
@@ -7127,17 +7273,9 @@ To aid the debugging of middleware transformations, below is a diagram that illu
 {{< img src="/img/diagrams/middleware-execution-order@3x.png" alt="Middleware execution flow" >}}
 
 
+### Context Variables
 
-### Do-Not-Track middleware
-
-When [transaction logging]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/logging-api-traffic" >}}) is enabled in the Tyk Gateway, a transaction record will be generated for every request made to an API endpoint deployed on the gateway. You can suppress the generation of transaction records for any API by enabling the do-not-track middleware. This provides granular control over request tracking.
-
-
-
-
-## Context Variables
-
-### Request Context Variables
+#### Request Context Variables
 
 Context variables are extracted from the request at the start of the middleware chain. These values can be very useful for later transformation of request data, for example, in converting a form POST request into a JSON PUT request or to capture an IP address as a header.
 
@@ -7148,7 +7286,7 @@ When using Tyk Classic APIs, you must [enable]({{< ref "#enabling-context-variab
 {{< /note >}}
 
 
-## Available context variables
+#### Available context variables
 *   `request_data`: If the inbound request contained any query data or form data, it will be available in this object. For the header injector Tyk will format this data as `key:value1,value2,valueN;key:value1,value2` etc.
 *   `path_parts`: The components of the path, split on `/`. These values should be in the format of a comma delimited list.
 *   `token`: The inbound raw token (if bearer tokens are being used) of this user.
@@ -7161,7 +7299,7 @@ When using Tyk Classic APIs, you must [enable]({{< ref "#enabling-context-variab
 For example, to get the value stored in `test-header`, the syntax would be `$tyk_context.headers_Test_Header`.
 
 
-## Middleware that can use context variables:
+#### Middleware that can use context variables:
 Context variables are exposed in three middleware plugins but are accessed differently depending on the caller as follows:
 
 1.   URL Rewriter - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [URL Rewriting]({{< ref "transform-traffic/url-rewriting" >}}) for more details.
@@ -7177,9 +7315,9 @@ URL Rewriter and Header Transform middleware cannot iterate through list indices
 {{< /note >}}
 
 
-## Example use of context variables
+#### Example use of context variables
 
-#### Examples of the syntax to use with all the available context varibles:
+##### Examples of the syntax to use with all the available context varibles:
 ```
 "x-remote-addr": "$tyk_context.remote_addr",
 "x-token": "$tyk_context.token",
@@ -7195,7 +7333,7 @@ URL Rewriter and Header Transform middleware cannot iterate through list indices
 ```
 {{< img src="/img/dashboard/system-management/context_variables_ui.jpg" alt="Example of the syntax in the UI" >}}
 
-#### The context variable values in the response:
+##### The context variable values in the response:
 ```
 "My-Header": "this-is-my-header",
 "User-Agent": "PostmanRuntime/7.4.0",
@@ -7212,7 +7350,7 @@ URL Rewriter and Header Transform middleware cannot iterate through list indices
 "X-Token": "5bb2c2abfb6add0001d65f699dd51f52658ce2d3944d3d6cb69f07a2"
 ```
 
-## Enabling Context Variables for use with Tyk Classic APIs
+#### Enabling Context Variables for use with Tyk Classic APIs
 1. In the your Tyk Dashboard, select `APIs` from the `System Management` menu 
 2. Open the API you want to add Context Variable to
 3. Click the `Advanced Options` tab and then select the `Enable context variables` option
@@ -7243,23 +7381,26 @@ spec:
 ```
 
 
+### Do-Not-Track middleware
+
+When [transaction logging]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/logging-api-traffic" >}}) is enabled in the Tyk Gateway, a transaction record will be generated for every request made to an API endpoint deployed on the gateway. You can suppress the generation of transaction records for any API by enabling the do-not-track middleware. This provides granular control over request tracking.
 
 
-## When to use the do-not-track middleware
+#### When to use the do-not-track middleware
 
-#### Compliance and privacy
+##### Compliance and privacy
 
 Disabling tracking on endpoints that handle personal or sensitive information is crucial for adhering to privacy laws such as GDPR or HIPAA. This action prevents the storage and logging of sensitive data, ensuring compliance and safeguarding user privacy.
 
-#### Optimizing performance
+##### Optimizing performance
 
 For endpoints experiencing high traffic, disabling tracking can mitigate the impact on the analytics processing pipeline and storage systems. Disabling tracking on endpoints used primarily for health checks or load balancing can prevent the analytics data from being cluttered with information that offers little insight. These optimizations help to maintain system responsiveness and efficiency by reducing unnecessary data load and help to ensure that analytics efforts are concentrated on more meaningful data. 
 
-#### Cost Management
+##### Cost Management
 
 In scenarios where analytics data storage and processing incur significant costs, particularly in cloud-based deployments, disabling tracking for non-essential endpoints can be a cost-effective strategy. This approach allows for focusing resources on capturing valuable data from critical endpoints.
 
-## How the do-not-track middleware works
+#### How the do-not-track middleware works
 
 When transaction logging is enabled, the gateway will automatically generate a transaction record for every request made to deployed APIs. 
 
@@ -7284,7 +7425,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
  -->
 
 
-# Using the Do-Not-Track middleware with Tyk Classic APIs
+#### Using the Do-Not-Track middleware with Tyk Classic APIs
 
 The [Do-Not-Track]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-middleware" >}}) middleware provides the facility to disable generation of transaction records (which are used to track requests) at the API or endpoint level.
 
@@ -7294,7 +7435,7 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "pr
 
 If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 
-## Configuring the middleware in the Tyk Classic API Definition {#tyk-classic}
+##### Configuring the middleware in the Tyk Classic API Definition
 
 You can prevent tracking for all endpoints of an API by configuring the `do_not_track` field in the root of your API definition.
 - `true`: no transaction logs will be generated for requests to the API
@@ -7325,21 +7466,21 @@ For example:
 
 In this example the do-not-track middleware has been configured for requests to the `GET /anything` endpoint. Any such calls will not generate transaction records from the Gateway and so will not appear in the analytics.
 
-## Configuring the middleware in the API Designer
+##### Configuring the middleware in the API Designer
 
 You can use the API Designer in the Tyk Dashboard to configure the per-endpoint Do-Not-Track middleware for your Tyk Classic API by following these steps. Note that the API-level middleware can only be configured from the Raw Definition screen.
 
-#### Step 1: Add an endpoint for the path and select the plugin
+**Step 1: Add an endpoint for the path and select the plugin**
 
 From the **Endpoint Designer** add an endpoint that matches the path for which you do not want to generate records. Select the **Do not track endpoint** plugin.
 
 {{< img src="img/gateway/middleware/classic_do_not_track.png" alt="Select the middleware" >}}
 
-#### Step 2: Save the API
+**Step 2: Save the API**
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
 
-## Configuring the middleware in Tyk Operator {#tyk-operator}
+##### Configuring the middleware in Tyk Operator
 
 The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic).
 
@@ -7406,7 +7547,7 @@ spec:
 In the example above we can see that the `do_not_track_endpoints` list is configured so that requests to `GET /headers` will have tracking disabled.
 
 
-### Using the Do-Not-Track middleware with Tyk OAS APIs
+#### Using the Do-Not-Track middleware with Tyk OAS APIs
 
 
 The [Do-Not-Track]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-middleware" >}}) middleware provides the facility to disable generation of transaction records (which are used to track requests to your APIs). When working with Tyk OAS APIs, you can currently disable tracking only at the endpoint-level.
@@ -7415,7 +7556,7 @@ When working with Tyk OAS APIs the middleware is configured in the [Tyk OAS API 
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-classic" >}}) page.
 
-## Configuring the middleware in the Tyk OAS API Definition
+##### Configuring the middleware in the Tyk OAS API Definition
 
 The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. The `path` can contain wildcards in the form of any string bracketed by curly braces, for example `{user_id}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
@@ -7478,11 +7619,11 @@ In this example the do-not-track middleware has been configured for requests to 
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the do-not-track middleware.
 
-## Configuring the middleware in the API Designer
+##### Configuring the middleware in the API Designer
 
 Adding do-not-track to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
-#### Step 1: Add an endpoint
+**Step 1: Add an endpoint**
 
 From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
 
@@ -7492,39 +7633,39 @@ From the **API Designer** add an endpoint that matches the path and method to wh
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
-#### Step 2: Select the Do Not Track Endpoint middleware
+**Step 2: Select the Do Not Track Endpoint middleware**
 
 Select **ADD MIDDLEWARE** and choose the **Do Not Track Endpoint** middleware from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-do-not-track.png" alt="Adding the Do Not Track middleware" >}}
 
-#### Step 3: Save the API
+**Step 3: Save the API**
 
 Select **SAVE API** to apply the changes to your API.
 
-##### Ignore Authentication middleware
+### Ignore Authentication middleware
 
 The Ignore Authentication middleware instructs Tyk Gateway to skip the authentication step for calls to an endpoint, even if authentication is enabled for the API.
 
-## When to use the ignore authentication middleware
+#### When to use the ignore authentication middleware
 
-#### Health and liveness endpoints
+##### Health and liveness endpoints
 
 This plugin can be very useful if you have an endpoint (such as a ping or health check) that you don’t need to secure.
 
-## How ignore authentication works
+#### How ignore authentication works
 
 When the Ignore Authentication middleware is configured for a specific endpoint, it instructs the gateway to bypass the client authentication process for requests made to that endpoint. If other (non-authentication) middleware are configured for the endpoint, they will still execute on the request.
 
 It is important to exercise caution when using the Ignore Authentication middleware, as it effectively disables Tyk's security features for the ignored paths. Only endpoints that are designed to be public or have independent security mechanisms should be configured to bypass authentication in this way. When combining Ignore Authentication with response transformations be careful not to inadvertently expose sensitive data or rely on authentication or session data that is not present.
 
-### Case sensitivity
+##### Case sensitivity
 
 By default the ignore authentication middleware is case-sensitive. If, for example, you have defined the endpoint `GET /ping` in your API definition then only calls to `GET /ping` will ignore the authentication step: calls to `GET /Ping` or `GET /PING` will require authentication. You can configure the middleware to be case insensitive at the endpoint level.
 
 You can also set case sensitivity for the entire Tyk Gateway in its [configuration file]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) `tyk.conf`. If case insensitivity is configured at the gateway level, this will override the endpoint-level setting.
 
-### Endpoint parsing
+##### Endpoint parsing
 
 When using the ignore authentication middleware, we recommend that you familiarize yourself with Tyk's [URL matching]({{< ref "getting-started/key-concepts/url-matching" >}}) options.
 
@@ -7548,7 +7689,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
  -->
 
 
-# Using the Ignore Authentication middleware with Tyk Classic APIs
+#### Using the Ignore Authentication middleware with Tyk Classic APIs
 
 The [Ignore Authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}) middleware instructs Tyk Gateway to skip the authentication step for calls to an endpoint, even if authentication is enabled for the API.
 
@@ -7558,7 +7699,7 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "pr
 
 If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 
-## Configuring the middleware in the Tyk Classic API Definition {#tyk-classic}
+##### Configuring the middleware in the Tyk Classic API Definition
 
 To enable the middleware you must add a new `ignored` object to the `extended_paths` section of your API definition.
 
@@ -7599,27 +7740,27 @@ For example:
 In this example the ignore authentication middleware has been configured for requests to the `GET /status/200` endpoint. Any such calls will skip the authentication step in the Tyk Gateway's processing chain.
 - the middleware has been configured to be case sensitive, so calls to `GET /Status/200` will not skip authentication
 
-## Configuring the middleware in the API Designer
+##### Configuring the middleware in the API Designer
 
 You can use the API Designer in the Tyk Dashboard to configure the Ignore Authentication middleware for your Tyk Classic API by following these steps.
 
-#### Step 1: Add an endpoint for the path and select the plugin
+**Step 1: Add an endpoint for the path and select the plugin**
 
 From the **Endpoint Designer** add an endpoint that matches the path for which you want to ignore authentication. Select the **Ignore** plugin.
 
 {{< img src="/img/dashboard/endpoint-designer/ignore-authentication.png" alt="Adding the ignore authentication middleware to a Tyk Classic API endpoint" >}}
 
-#### Step 2: Configure the middleware
+**Step 2: Configure the middleware**
 
 Once you have selected the Ignore middleware for the endpoint, the only additional feature that you need to configure is whether to make it case-insensitive by selecting **Ignore Case**.
 
 {{< img src="/img/2.10/ignore.png" alt="Ignore options" >}}
 
-#### Step 3: Save the API
+**Step 3: Save the API**
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
 
-## Configuring the middleware in Tyk Operator {#tyk-operator}
+##### Configuring the middleware in Tyk Operator
 
 The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic). It is possible to configure an enforced timeout using the `ignored` object within the `extended_paths` section of the API Definition.
 
@@ -7665,7 +7806,7 @@ spec:
 ```
 
 
-### Using the Ignore Authentication middleware with Tyk OAS APIs
+#### Using the Ignore Authentication middleware with Tyk OAS APIs
 
 The [Ignore Authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}) middleware instructs Tyk Gateway to skip the authentication step for calls to an endpoint, even if authentication is enabled for the API.
 
@@ -7673,7 +7814,7 @@ When working with Tyk OAS APIs the middleware is configured in the [Tyk OAS API 
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/ignore-tyk-classic" >}}) page.
 
-## Configuring the middleware in the Tyk OAS API Definition
+##### Configuring the middleware in the Tyk OAS API Definition
 
 The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. Endpoint `paths` entries (and the associated `operationId`) can contain wildcards in the form of any string bracketed by curly braces, for example `/status/{code}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
@@ -7765,11 +7906,11 @@ In this example the ignore authentication middleware has been configured for req
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the Ignore Authentication middleware.
 
-## Configuring the middleware in the API Designer
+##### Configuring the middleware in the API Designer
 
 Adding and configuring the Ignore Authentication middleware to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
-#### Step 1: Add an endpoint
+**Step 1: Add an endpoint**
 
 From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
 
@@ -7779,13 +7920,13 @@ From the **API Designer** add an endpoint that matches the path and method to wh
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
-#### Step 2: Select the Ignore Authentication middleware
+**Step 2: Select the Ignore Authentication middleware**
 
 Select **ADD MIDDLEWARE** and choose the **Ignore Authentication** middleware from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-ignore.png" alt="Adding the Ignore Authentication middleware" >}}
 
-##### Step 3: Optionally configure case-insensitivity
+**Step 3: Optionally configure case-insensitivity**
 
 If you want to disable case-sensitivity for the path that you wish to skip authentication, then you must select **EDIT** on the Ignore Authentication icon.
 
@@ -7796,23 +7937,23 @@ This takes you to the middleware configuration screen where you can alter the ca
 
 Select **UPDATE MIDDLEWARE** to apply the change to the middleware configuration.
 
-##### Step 4: Save the API
+**Step 4: Save the API**
 
 Select **SAVE API** to apply the changes to your API.
 
 
-###### Internal Endpoint middleware
+### Internal Endpoint middleware
 
 
 The Internal Endpoint middleware instructs Tyk Gateway to ignore external requests to the endpoint (which is a combination of HTTP method and path). Internal requests from other APIs will be processed.
 
-## When to use the Internal Endpoint middleware
+#### When to use the Internal Endpoint middleware
 
-#### Internal routing decisions
+##### Internal routing decisions
 
 Internal endpoints are frequently used to make complex routing decisions that cannot be handled by the standard routing features. A single externally published endpoint can receive requests and then, based on inspection of the requests, the [URL rewrite]({{< ref "transform-traffic/url-rewriting" >}}) middleware can route them to different internal endpoints and on to the appropriate upstream services.
 
-## How internal endpoints work
+#### How internal endpoints work
 
 When the Internal Endpoint middleware is configured for a specific endpoint, it instructs the Gateway to ignore requests to the endpoint that originate from outside Tyk.
 
@@ -7820,7 +7961,7 @@ An internal endpoint can be targeted from another API deployed on Tyk using the 
 
 For example, if `GET /status/200` is configured to be an Internal Endpoint on the listen path `http://my-tyk-install.org/my-api/` then external calls to this endpoint will be rejected with `HTTP 403 Forbidden`. Other APIs on Tyk will be able to direct traffic to this endpoint by setting their `target_url` to `tyk://my-api/status/200`.
 
-#### Addressing an internal endpoint
+##### Addressing an internal endpoint
 
 An internal endpoint can be addressed using three different identifiers in the format `tyk://{identifier}/{endpoint}`.
 
@@ -7861,7 +8002,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 
 
-# Using the Internal Endpoint middleware with Tyk Classic APIs
+#### Using the Internal Endpoint middleware with Tyk Classic APIs
 
 
 The [Internal Endpoint]({{< ref "product-stack/tyk-gateway/middleware/internal-endpoint-middleware" >}}) middleware instructs Tyk Gateway not to process external requests to the endpoint (which is a combination of HTTP method and path). Internal requests from other APIs will be processed.
@@ -7872,7 +8013,7 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "pr
 
 If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 
-## Configuring the middleware in the Tyk Classic API Definition {#tyk-classic}
+##### Configuring the middleware in the Tyk Classic API Definition
 
 To enable the middleware you must add a new `internal` object to the `extended_paths` section of your API definition.
 
@@ -7897,21 +8038,21 @@ For example:
 
 In this example the internal endpoint middleware has been configured for HTTP `GET` requests to the `/status/200` endpoint. Any requests made to this endpoint that originate externally to Tyk will be rejected with `HTTP 403 Forbidden`. Conversely, the endpoint can be reached internally by another API at `tyk://<listen_path>/status/200`.
 
-## Configuring the middleware in the API Designer
+##### Configuring the middleware in the API Designer
 
 You can use the API Designer in the Tyk Dashboard to configure the internal endpoint middleware for your Tyk Classic API by following these steps.
 
-#### Step 1: Add an endpoint for the path and select the plugin
+**Step 1: Add an endpoint for the path and select the plugin**
 
 From the **Endpoint Designer** add an endpoint that matches the path that you wish to set as internal. Select the **Internal** plugin.
 
 {{< img src="/img/dashboard/endpoint-designer/internal-endpoint.png" alt="Adding the internal endpoint middleware to a Tyk Classic API endpoint" >}}
 
-#### Step 2: Save the API
+**Step 2: Save the API**
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
 
-## Configuring the middleware in Tyk Operator {#tyk-operator}
+##### Configuring the middleware in Tyk Operator
 
 The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic). The middleware can be configured by adding a new `internal` object to the `extended_paths` section of your API definition.
 
@@ -7949,7 +8090,7 @@ spec:
 ```
 
 
-### Using the Internal Endpoint middleware with Tyk OAS APIs
+#### Using the Internal Endpoint middleware with Tyk OAS APIs
 
 
 The [Internal Endpoint]({{< ref "product-stack/tyk-gateway/middleware/internal-endpoint-middleware" >}}) middleware instructs Tyk Gateway not to process external requests to the endpoint (which is a combination of HTTP method and path). Internal requests from other APIs will be processed.
@@ -7958,7 +8099,7 @@ When working with Tyk OAS APIs, the middleware is configured in the [Tyk OAS API
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/internal-endpoint-tyk-classic" >}}) page.
 
-## Configuring the middleware in the Tyk OAS API Definition
+##### Configuring the middleware in the Tyk OAS API Definition
 
 The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. Endpoint `paths` entries (and the associated `operationId`) can contain wildcards in the form of any string bracketed by curly braces, for example `/status/{code}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
@@ -8044,11 +8185,11 @@ Any calls made to `GET /example-internal-endpoint/redirect` will be redirected t
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the internal endpoint middleware.
 
-## Configuring the middleware in the API Designer
+##### Configuring the middleware in the API Designer
 
 Adding the Internal Endpoint middleware to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
-#### Step 1: Add an endpoint
+**Step 1: Add an endpoint**
 
 From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
 
@@ -8058,27 +8199,27 @@ From the **API Designer** add an endpoint that matches the path and method to wh
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
-#### Step 2: Select the Internal Endpoint middleware
+**Step 2: Select the Internal Endpoint middleware**
 
 Select **ADD MIDDLEWARE** and choose the **Internal** middleware from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-internal.png" alt="Adding the Internal Endpoint middleware" >}}
 
-#### Step 3: Save the API
+**Step 3: Save the API**
 
 Select **SAVE API** to apply the changes to your API.
 
 
-##### "Mock Response middleware"
+### Mock Response middleware
 
 
 A mock response is a simulated API response that can be returned by the API gateway without actually sending the request to the backend API service. Mock responses are an integral feature for API development, enabling developers to emulate API behavior without the need for upstream execution.
 
 Tyk's mock response middleware offers this functionality by allowing the configuration of custom responses for designated endpoints. This capability is crucial for facilitating front-end development, conducting thorough testing, and managing unexpected scenarios or failures.
 
-## When is it useful
+#### When is it useful
 
-### Rapid API Prototyping
+##### Rapid API Prototyping
 
 Developers can create predefined static (mock) responses during early API prototyping phases to simulate responses without any backend. This is useful for several reasons:
 
@@ -8086,34 +8227,34 @@ Developers can create predefined static (mock) responses during early API protot
 - **Enable Dependent Development**: Allows development of apps and tooling that depend on the upstream service to progress. For example, the front-end team can build their interface based on the mocked responses.
 - **Support Test-Driven Development (TDD) and Behavior-Driven Development (BDD)**: Supports writing test cases for the API before implementation, enabling design and testing of the API without writing any backend code.
 
-### Legacy System Migration
+##### Legacy System Migration
 
 When migrating from a legacy system to new APIs, mock responses can be used to emulate the old system's outputs during the transitional phases. This provides continuity for client apps relying on the old system while new APIs are built that will eventually replace the legacy hooks.
 
-### Disaster Recovery Testing
+##### Disaster Recovery Testing
 
 The ability for a gateway to return well-formed mocks when backend APIs are unavailable helps test disaster recovery plans. By intentionally taking APIs offline and verifying the mocks' surface instead, developers gain confidence in the gateway's fallback and business continuity capabilities
 
-### Enhanced CI/CD pipeline
+##### Enhanced CI/CD pipeline
 
 Test cases that rely on API interactions can mock those dependencies and provide virtual test data. This removes wait times for real API calls to complete during automated builds. Consumer testing can verify that provider APIs meet expected contracts using mocks in the CI pipeline. This ensures the contract remains intact across code changes before deployment. Front-end/client code can scale release cycles faster than backend APIs by using mocks to simulate planned API behaviors before they are ready.
 
-## How mock responses work
+#### How mock responses work
 
 When the Mock Response middleware is configured for a specific endpoint, it terminates requests to the endpoint and generates an HTTP response that will be returned to the client as if it had come from the upstream service. No request will be passed to the upstream. The mock response to an API request should be designed to emulate how the service would respond to requests. To enable this, the content of the response can be configured to match the API contract for the service: you can set the HTTP status code, body and headers for the response.
 
-## Advanced mock responses with Tyk OAS
+#### Advanced mock responses with Tyk OAS
 
 When working with Tyk OAS APIs, Tyk Gateway can parse the [examples and schema]({{< ref "product-stack/tyk-gateway/middleware/mock-response-openapi" >}}) in the OpenAPI description and use this to automatically generate responses using those examples. Where multiple examples are defined, for example for different response codes, Tyk enables you to [configure special headers]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas#multiple-mock-responses-for-a-single-endpoint" >}}) in the request to select the desired mock response.
 
-## Middleware execution order during request processing
+#### Middleware execution order during request processing
 
-### With **Tyk OAS APIs**
+##### With **Tyk OAS APIs**
 
 - the mock response middleware is executed at the **end** of the request processing chain, immediately prior to the request being proxied to the upstream
 - all other request processing middleware (e.g. authentication, request transforms) will be executed prior to the mock response.
 
-### With **Tyk Classic APIs**
+##### With **Tyk Classic APIs**
 
 - the mock response middleware is executed at the **start** of the request processing chain
 - an endpoint with a mock response will not run any other middleware and will immediately return the mocked response for any request. As such, it is always an unauthenticated (keyless) call.
@@ -8131,7 +8272,7 @@ If you’re using Tyk Classic APIs, then you can find details and examples of ho
  -->
 
 
-# "Mock Responses using OpenAPI Metadata - Key Concepts"
+#### Mock Responses using OpenAPI Metadata
 
 
 The [OpenAPI Specification](https://learn.openapis.org/specification/docs.html#adding-examples) provides metadata that can be used by automatic documentation generators to create comprehensive reference guides for APIs. Most objects in the specification include a `description` field that offers additional human-readable information for documentation. Alongside descriptions, some OpenAPI objects can include sample values in the OpenAPI Document, enhancing the generated documentation by providing representative content that the upstream service might return in responses.
@@ -8150,7 +8291,7 @@ Note:
 Let's see how to use each method:
 
 
-### 1. Using `example` to generate a mock response
+##### 1. Using `example` to generate a mock response
 
 In the following extract from an OpenAPI description, a single `example` has been declared for a request to `GET /get` - the API developer indicates that such a call could return `HTTP 200` and the body value `Response body example` in plain text format.
 
@@ -8176,7 +8317,7 @@ In the following extract from an OpenAPI description, a single `example` has bee
 }
 ```
 
-### 2. Using `examples` to generate a mock response
+##### 2. Using `examples` to generate a mock response
 
 In this extract, the API developer also indicates that a call to `GET /get` could return `HTTP 200` but here provides two example body values `Response body from first-example` and `Response body from second-example`, again in plain text format.
 
@@ -8211,11 +8352,11 @@ In this extract, the API developer also indicates that a call to `GET /get` coul
 
 The `exampleNames` for these two values have been configured as `first-example` and `second-example` and can be used to [invoke the desired response]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas#multiple-mock-responses-for-a-single-endpoint" >}}) from a mocked endpoint.
 
-### 3. Using `schema` to generate a mock response
+##### 3. Using `schema` to generate a mock response
 
 If there is no `example` or `examples` defined for an endpoint, Tyk will try to find a `schema` for the response. If there is a schema, it will be used to generate a mock response. Tyk can extract values from referenced or nested schema objects when creating the mock response.
 
-#### Response headers schema
+**Response headers schema**
 Response headers do not have standalone `example` or `examples` attributes, however, they can have a `schema` - the Mock Response middleware will include these in the mock response if provided in the OpenAPI description.
 
 The schema properties may have an `example` field, in which case they will be used to build a mock response. If there is no `example` value in the schema then default values are used to build a response as follows:
@@ -8285,7 +8426,7 @@ Content-Type: application/json
 Notice that in the mock response above, `firstname` has the value `string` since there was no example for it in the OpenAP document so Tyk used the word `string` as the value for this field.
 
 
-##### Using the Mock Response middleware with Tyk Classic APIs
+#### Using the Mock Response middleware with Tyk Classic APIs
 
 
 The [Mock Response]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}) middleware allows you to configure Tyk to return a response for an API endpoint without requiring an upstream service. This can be useful when creating a new API or making a development API available to an external team.
@@ -8296,7 +8437,7 @@ The middleware is configured in the Tyk Classic API Definition. You can do this 
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas" >}}) page.
 
-## Configuring the middleware in the Tyk Classic API Definition {#tyk-classic}
+##### Configuring the middleware in the Tyk Classic API Definition
 
 If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 
@@ -8357,27 +8498,27 @@ Content-Type: text/plain; charset=utf-8
 This is the mock response body
 ```
 
-## Configuring the middleware in the API Designer
+##### Configuring the middleware in the API Designer
 
 You can use the API Designer in the Tyk Dashboard to configure the Mock Response middleware for your Tyk Classic API by following these steps.
 
-#### Step 1: Add an endpoint for the path and configure a list plugin
+**Step 1: Add an endpoint for the path and configure a list plugin**
 
 For the mock response to be enabled, the endpoint must also be in a list. We recommend adding the path to an allow list by [selecting]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-classic#configuring-the-allow-list-in-the-api-designer" >}}) the **Whitelist** plugin.
 
-#### Step 2: Add the mock response plugin
+**Step 2: Add the mock response plugin**
 
 Now select the **Mock response** plugin.
 
 {{< img src="/img/dashboard/endpoint-designer/mock-response.png" alt="Selecting the mock response middleware for a Tyk Classic API" >}}
 
-#### Step 3: Configure the middleware
+**Step 3: Configure the middleware**
 
 Once you have selected the Mock response middleware for the endpoint, you can configure the HTTP status code, headers and body to be included in the response. Remember to click **ADD**, to add each header to the response.
 
 {{< img src="/img/dashboard/endpoint-designer/mock-response-config.png" alt="Configuring the mock response middleware for a Tyk Classic API" >}}
 
-#### Step 4: Save the API
+**Step 4: Save the API**
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
 
@@ -8387,7 +8528,7 @@ Use the *save* or *create* buttons to save the changes and activate the middlewa
 For the mock response to be enabled, the endpoint must also be in a list. We recommend adding the path to an [allow list]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas" >}}). If this isn't done, then the mock will not be saved when you save your API in the designer.
 {{< /note >}}
 
-## Configuring the middleware in Tyk Operator {#tyk-operator}
+##### Configuring the middleware in Tyk Operator
 
 The process of configuring a mock response is similar to that defined in the [configuring the middleware in Tyk Classic API definition](#tyk-classic) section.
 
@@ -8437,7 +8578,7 @@ spec:
 ```
 
 
-### Configuring and Using Tyk OAS Mock Response middleware
+#### Configuring and Using Tyk OAS Mock Response middleware
 
 This tutorial is for Tyk OAS API definition users. If you're using the legacy Tyk Classic APIs, please refer to the [Tyk Classic Mock Response tutorial]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-classic" >}}).
 
@@ -8449,7 +8590,7 @@ The middleware is defined in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-
 
 To configure or create a Mock Response middleware you have two modes, manual and automatic. Following please find detailed guidance for each mode.
 
-## Manual configuration 
+##### Manual configuration 
 
 You can configure a mock response directly in the API definition, in the middleware object under the Tyk extension section, `x-tyk-api-gateway`. Once added, you need to update or import it to Tyk Dashboard using Tyk Dashboard API or via Tyk Dashboard UI. This is useful when you have already tested your API in dev environments and now you need to deploy it to staging or production in a declarative manner.
 
@@ -8536,7 +8677,7 @@ This is the mock response body
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the mock response middleware.
 
-## Automatic configuration inferred from your OpenAPI Document
+##### Automatic configuration inferred from your OpenAPI Document
 
 Tyk will parse the [examples and schema]({{< ref "product-stack/tyk-gateway/middleware/mock-response-openapi" >}}) in the OpenAPI document and use them to generate mock responses automatically.
 
@@ -8658,7 +8799,7 @@ If multiple `examples` are defined in the OpenAPI description but no default `ex
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the mock response middleware.
 
-## Multiple mock responses for a single endpoint
+##### Multiple mock responses for a single endpoint
 
 When the mock response middleware in your Tyk OAS API is configured to return responses from the OpenAPI description within the API definition, you can invoke a specific response, overriding the defaults configured in the middleware, by providing specific headers in your request.
 
@@ -8775,15 +8916,15 @@ This would return a plain text body and the `X-Status` header set to `false`.
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the mock response middleware.
 
-## Configuring mock response using Tyk Dashboard UI
+##### Configuring mock response using Tyk Dashboard UI
 
 Adding a mock response to your API endpoints is easy when using the API Designer in the Tyk Dashboard UI, simply follow the steps appropriate to the configuration method you wish to use:
 - [manual configuration](#manual-configuration) of the middleware config
 - [automatic configuration](#automatic-configuration) from the OpenAPI description
 
-### Manual configuration
+**Manual configuration**
 
-#### Step 1: Add an endpoint
+**Step 1: Add an endpoint**
 
 From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
 
@@ -8793,13 +8934,13 @@ From the **API Designer** add an endpoint that matches the path and method to wh
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
-#### Step 2: Select the Mock Response middleware
+**Step 2: Select the Mock Response middleware**
 
 Select **ADD MIDDLEWARE** and choose **Mock Response** middleware from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-mock.png" alt="Adding the Mock Response middleware" >}}
 
-#### Step 3: Configure the middleware
+**Step 3: Configure the middleware**
 
 Select **Manually configure mock response**
 
@@ -8816,13 +8957,13 @@ This takes you to the middleware configuration screen where you can:
 
 Select **UPDATE MIDDLEWARE** to apply the change to the middleware configuration.
 
-#### Step 4: Save the API
+**Step 4: Save the API**
 
 Select **SAVE API** to apply the changes to your API.
 
-### Automatic configuration
+**Automatic configuration**
 
-#### Step 1: Import an OpenAPI Document containing sample responses or schema
+**Step 1: Import an OpenAPI Document containing sample responses or schema**
 
 Import your OpenAPI Document (from file, URL or by pasting the JSON into the text editor) configure the **upstream URL** and **listen path**, and select **Auto-generate middleware to deliver mock responses**.
 
@@ -8830,13 +8971,13 @@ Selecting this option will cause Tyk Dashboard to check for sample responses or 
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-mock-auto-options.png" alt="Configuring the OpenAPI document import to create Mock Responses" >}}
 
-#### Step 2: Edit the Mock Response middleware
+**Step 2: Edit the Mock Response middleware**
 
 Select **EDIT** and then the **Mock Response** middleware from the **Endpoints** tab. This will take you to the Edit Middleware screen. Note that *Use mock response from Open API Specification* has been selected.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-manual-step-2.png" alt="Editing the Mock Response middleware" >}}
 
-#### Step 3: Configure the middleware
+**Step 3: Configure the middleware**
 
 Tyk Dashboard will automatically select a valid HTTP response code from the drop-down. When you select a valid `content-type` for which a mock response is configured in the OpenAPI specification, the API Designer will display the associated response.
 
@@ -8853,7 +8994,7 @@ You can create and edit mock responses for multiple HTTP status codes by choosin
 
 Select **UPDATE MIDDLEWARE** to apply the change to the middleware configuration.
 
-#### Step 4: Save the API
+**Step 4: Save the API**
 
 Select **SAVE API** to apply the changes to your API.
 
@@ -8865,8 +9006,7 @@ Modifying the automatically configured Mock Response middleware will update the 
 
 
 
-##### Request Body Transformation
-
+### Request Body Transformation
 
 Tyk enables you to modify the payload of API requests before they are proxied to the upstream. This makes it easy to transform between payload data formats or to expose legacy APIs using newer schema models without having to change any client implementations. This middleware is only applicable to HTTP methods that can support a request body (i.e. PUT, POST or PATCH).
 
@@ -8876,21 +9016,21 @@ This middleware changes only the payload and not the headers. You can, however, 
 
 There is a closely related [Response Body Transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) middleware that provides the same functionality on the response from the upstream, prior to it being returned to the client.
 
-## When to use the Request Body Transformation middleware
+#### When to use the Request Body Transformation middleware
 
-#### Maintaining compatibility with legacy clients
+##### Maintaining compatibility with legacy clients
 
 Sometimes you might have a legacy API and need to migrate the transactions to a new upstream service but do not want to upgrade all the existing clients to the newer upstream API. Using request body transformation, you can convert the incoming legacy XML or JSON request structure into a newer, cleaner JSON format that your upstream services expect.
 
-#### Shaping requests received from different devices
+##### Shaping requests received from different devices
 
 You can detect device types via headers or context variables and transform the request payload to optimize it for that particular device. For example, you might send extra metadata to the upstream for mobile apps.
 
-#### SOAP to REST translation
+##### SOAP to REST translation
 
 A common use of the request body transform middleware is to surface a legacy SOAP service with a REST API. Full details of how to perform this conversion using Tyk are provided [here]({{< ref "advanced-configuration/transform-traffic/soap-rest" >}}).
 
-## How body transformation works
+#### How body transformation works
 
 Tyk's body transform middleware uses the [Go template language](https://golang.org/pkg/text/template/) to parse and modify the provided input. We have bundled the [Sprig Library (v3)](http://masterminds.github.io/sprig/) which provides over 70 pre-written functions for transformations to assist the creation of powerful Go templates to transform your API requests. 
 
@@ -8904,7 +9044,7 @@ We have provided more detail, links to reference material and some examples of t
 Tyk evaluates templates stored in files on startup, so if you make changes to a template you must remember to restart the gateway. 
 {{< /note >}}
 
-### Supported request body formats
+##### Supported request body formats
 
 The body transformation middleware can modify request payloads in the following formats:
 - JSON
@@ -8912,7 +9052,7 @@ The body transformation middleware can modify request payloads in the following 
 
 When working with JSON format data, the middleware will unmarshal the data into a data structure, and then make that data available to the template in dot-notation.
 
-### Data accessible to the middleware
+##### Data accessible to the middleware
 
 The middleware has direct access to the request body and also to dynamic data as follows:
  - [context variables]({{< ref "context-variables" >}}), extracted from the request at the start of the middleware chain, can be injected into the template using the `._tyk_context.KEYNAME` namespace
@@ -8928,7 +9068,7 @@ The request body transform middleware can iterate through list indices in dynami
 As explained in the [documentation](https://pkg.go.dev/text/template), templates are executed by applying them to a data structure. The template receives the decoded JSON or XML of the request body. If session variables or meta data are enabled, additional fields will be provided: `_tyk_context` and `_tyk_meta` respectively.
 {{< /note >}}
 
-### Automatic XML <-> JSON Transformation
+##### Automatic XML <-> JSON Transformation
 
 A very common transformation that is applied in the API Gateway is to convert between XML and JSON formatted body content.
 
@@ -8950,7 +9090,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
  -->
 
 
-# Using the Request Body Transform middleware with Tyk Classic APIs
+#### Using the Request Body Transform middleware with Tyk Classic APIs
 
 
 The [request body transform]({{< ref "transform-traffic/request-body" >}}) middleware provides a way to modify the payload of API requests before they are proxied to the upstream.
@@ -8963,7 +9103,7 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "pr
 
 If you're using Tyk Operator then check out the [Configuring the middleware in Tyk Operator](#tyk-operator) section below.
 
-## Configuring the middleware in the Tyk Classic API Definition {#tyk-classic}
+##### Configuring the middleware in the Tyk Classic API Definition
 
 To enable the middleware you must add a new `transform` object to the `extended_paths` section of your API definition.
 
@@ -9008,33 +9148,33 @@ Tyk will load and evaluate the template file when the Gateway starts up. If you 
 
 {{< /note >}}
 
-## Configuring the middleware in the API Designer
+##### Configuring the middleware in the API Designer
 
 You can use the API Designer in the Tyk Dashboard to configure the request body transform middleware for your Tyk Classic API by following these steps.
 
-#### Step 1: Add an endpoint for the path and select the plugin
+**Step 1: Add an endpoint for the path and select the plugin**
 
 From the **Endpoint Designer** add an endpoint that matches the path for which you want to perform the transformation. Select the **Body Transforms** plugin.
 
 {{< img src="/img/2.10/body_transforms.png" alt="Endpoint designer" >}}
 
-#### Step 2: Configure the middleware
+**Step 2: Configure the middleware**
 
 Ensure that you have selected the `REQUEST` tab, then select your input type, and then add the template you would like to use to the **Template** input box.
 
 {{< img src="/img/dashboard/endpoint-designer/body-transform-request.png" alt="Setting the body request transform" >}}
 
-#### Step 3: Test the Transform
+**Step 3: Test the Transform**
 
 If sample input data is available, you can use the Input box to add it, and then test it using the **Test** button. You will see the effect of the template on the sample input displayed in the Output box.
 
 {{< img src="/img/dashboard/endpoint-designer/body-transform-test.png" alt="Testing the body transform function" >}}
 
-#### Step 4: Save the API
+**Step 4: Save the API**
 
 Use the *save* or *create* buttons to save the changes and activate the Request Body Transform middleware.
 
-## Configuring the middleware in Tyk Operator {#tyk-operator}
+##### Configuring the middleware in Tyk Operator
 
 The process for configuring a request body transform is similar to that defined in section [Configuring the middleware in the Tyk Classic API Definition](#tyk-classic). Tyk Operator allows you to configure a request body transform by adding a `transform` object to the `extended_paths` section of your API definition.
 
@@ -9104,7 +9244,7 @@ spec:
 ```
 
 
-### Using the Request Body Transform middleware with Tyk OAS APIs
+#### Using the Request Body Transform middleware with Tyk OAS APIs
 
 
 The [request body transform]({{< ref "transform-traffic/request-body" >}}) middleware provides a way to modify the payload of API requests before they are proxied to the upstream.
@@ -9113,7 +9253,7 @@ The middleware is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/t
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/request-body-tyk-classic" >}}) page.
 
-## Configuring the middleware in the Tyk OAS API Definition
+##### Configuring the middleware in the Tyk OAS API Definition
 
 The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. Endpoint `paths` entries (and the associated `operationId`) can contain wildcards in the form of any string bracketed by curly braces, for example `/status/{code}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
@@ -9230,11 +9370,11 @@ If using a template in a file (i.e. you configure `path` in the `transformReques
 
 {{< /note >}}
 
-## Configuring the middleware in the API Designer
+##### Configuring the middleware in the API Designer
 
 Adding Request Body Transformation to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
 
-#### Step 1: Add an endpoint
+**Step 1: Add an endpoint**
 
 From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
 
@@ -9244,13 +9384,13 @@ From the **API Designer** add an endpoint that matches the path and method to wh
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
-#### Step 2: Select the Request Body Transform middleware
+**Step 2: Select the Request Body Transform middleware**
 
 Select **ADD MIDDLEWARE** and choose the **Request Body Transform** middleware from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-request-body.png" alt="Adding the Request Body Transform middleware" >}}
 
-#### Step 3: Configure the middleware
+**Step 3: Configure the middleware**
 
 Now you can select the request body format (JSON or XML) and add either a path to the file containing the template, or directly enter the transformation template in the text box.
 
@@ -9260,12 +9400,12 @@ The **Test with data** control will allow you to test your body transformation f
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-body-transform-test.png" alt="Testing the Request Body Transform" >}}
 
-#### Step 4: Save the API
+**Step 4: Save the API**
 
 Select **SAVE API** to apply the changes to your API.
 
 
-##### Request Header Transformation
+### Request Header Transformation
 
 
 Tyk allows you to modify the headers of incoming requests to your API endpoints before they are passed to your upstream service.
@@ -9280,25 +9420,25 @@ This middleware changes only the headers and not the method or payload. You can,
 
 There are related [Response Header Transform]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) middleware (at API-level and endpoint-level) that provide the same functionality on the response from your upstream, prior to it being returned to the client.
 
-## When to use request header transformation
+#### When to use request header transformation
 
-#### Adding Custom Headers
+##### Adding Custom Headers
 
 A common use of this feature is to add custom headers to requests, such as adding a secure header to all upstream requests (to verify that traffic is coming from the gateway), or adding a timestamp for tracking purposes.
 
-#### Modifying Headers for Compatibility
+##### Modifying Headers for Compatibility
 
 You could use the request header transform middleware to modify headers for compatibility with a downstream system, such as changing the Content-Type header from "application/json" to "application/xml" for an API that only accepts XML requests while using the [Request Body Tranform]({{< ref "transform-traffic/request-body" >}}) to transform the payload.
 
-#### Prefixing or Suffixing Headers
+##### Prefixing or Suffixing Headers
 
 Upstream systems or corporate policies might mandate that a prefix or suffix is added to header names, such as adding a "Bearer" prefix to all Authorization headers for easier identification internally, without modifying the externally published API consumed by the client applications.
 
-#### Adding multi-user access to a service
+##### Adding multi-user access to a service
 
 You can add multi-user access to an upstream API that has a single authentication key and you want to add multi-user access to it without modifying it or adding clunky authentication methods to it to support new users.
 
-## How the request header transform works
+#### How the request header transform works
 
 The request header transform can be applied per-API or per-endpoint; each has a separate entry in the API definition so that you can configure both API-level and endpoint-level transforms for a single API.
 
@@ -9310,7 +9450,7 @@ The "add header" functionality will capitalize any header name provided, for exa
 
 In the request middleware chain, the API-level transform is applied before the endpoint-level transform so if both middleware are enabled, the endpoint-level transform will operate on the headers that have been added by the API-level transform (and will not receive those that have been deleted by it).
 
-#### Injecting dynamic data into headers
+##### Injecting dynamic data into headers
 
 You can enrich the request headers by injecting data from context variables or session objects into the headers.
 - [context variables]({{< ref "context-variables" >}}) are extracted from the request at the start of the middleware chain and can be injected into added headers using the `$tyk_context.` namespace
@@ -9330,7 +9470,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
  -->
 
 
-# Using the Request Header Transform with Tyk Classic APIs
+#### Using the Request Header Transform with Tyk Classic APIs
 
 
 Tyk's [request header transform]({{< ref "transform-traffic/request-headers" >}}) middleware enables you to append or delete headers on requests to your API endpoints before they are passed to your upstream service.
@@ -9353,11 +9493,11 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "pr
 
 If you're using Tyk Operator then check out the [configuring the Request Header Transform in Tyk Operator](#tyk-operator) section below.
 
-## Configuring the Request Header Transform in the Tyk Classic API Definition {#tyk-classic}
+##### Configuring the Request Header Transform in the Tyk Classic API Definition
 
 The API-level and endpoint-level request header transforms have a common configuration but are configured in different sections of the API definition.
 
-#### API-level transform {#tyk-classic-api}
+**API-level transform**
 
 To **append** headers to all requests to your API (i.e. for all endpoints) you must add a new `global_headers` object to the `versions` section of your API definition. This contains a list of key:value pairs, being the names and values of the headers to be added to requests.
 
@@ -9391,7 +9531,7 @@ This configuration will add three new headers to each request:
 It will also delete one header (if present) from each request:
 - `Auth_Id`
 
-#### Endpoint-level transform {#tyk-classic-endpoint}
+**Endpoint-level transform**
 
 To configure a transformation of the request header for a specific endpoint you must add a new `transform_headers` object to the `extended_paths` section of your API definition.
 
@@ -9419,7 +9559,7 @@ For example:
 
 In this example the Request Header Transform middleware has been configured for HTTP `GET` requests to the `/status/200` endpoint. Any request received to that endpoint will have the `X-Static` header removed and the `X-Secret` header added, with the value set to `the-secret-key-is-secret`.
 
-#### Combining API-level and Endpoint-level transforms
+**Combining API-level and Endpoint-level transforms**
 
 If the API-level transform in the previous [example]({{< ref "product-stack/tyk-gateway/middleware/request-header-tyk-classic#api-level-transform" >}}) is applied to the same API, then because the API-level transformation is performed first, the `X-Static` header will be added (by the API-level transform) and then removed (by the endpoint-level transform) such that the overall effect of the two transforms for a call to `GET /status/200` would be to add three headers:
 - `X-Request-ID`
@@ -9429,11 +9569,11 @@ If the API-level transform in the previous [example]({{< ref "product-stack/tyk-
 and to remove one:
 - `Auth_Id` 
 
-## Configuring the Request Header Transform in the API Designer
+##### Configuring the Request Header Transform in the API Designer
 
 You can use the API Designer in the Tyk Dashboard to configure the request header transform middleware for your Tyk Classic API by following these steps.
 
-### API-level transform
+**API-level transform**
 
 Configuring the API-level request header transform middleware is very simple when using the Tyk Dashboard.
 
@@ -9443,35 +9583,35 @@ In the Endpoint Designer you should select the **Global Version Settings** and e
 
 Note that you must click **ADD** to add a header to the list (for appending or deletion).
 
-### Endpoint-level transform
+**Endpoint-level transform**
 
-##### Step 1: Add an endpoint for the path and select the Header Transform plugin
+- Step 1: Add an endpoint for the path and select the Header Transform plugin
 
 From the **Endpoint Designer** add an endpoint that matches the path for which you want to perform the transformation. Select the **Modify Headers** plugin.
 
 {{< img src="/img/2.10/modify_headers.png" alt="Endpoint designer" >}}
 
-##### Step 2: Select the "Request" tab
+- Step 2: Select the "Request" tab
 
 This ensures that this will only be applied to inbound requests.
 
 {{< img src="/img/2.10/modify_headers1.png" alt="Request tab" >}}
 
-##### Step 3: Declare the headers to be modified
+- Step 3: Declare the headers to be modified
 
 Select the headers to delete and insert using the provided fields. You need to click **ADD** to ensure they are added to the list.
 
 {{< img src="/img/2.10/modify_headers2.png" alt="Header transforms" >}}
 
-##### Step 4: Save the API
+- Step 4: Save the API
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
 
-## Configuring the Request Header Transform in Tyk Operator {#tyk-operator}
+##### Configuring the Request Header Transform in Tyk Operator
 
 The process for configuring a request header transform is similar to that defined in section [Configuring the Request Header Transform in the Tyk Classic API Definition](#tyk-classic). Tyk Operator allows you to configure a request size limit for [all endpoints of an API](#tyk-operator-api) or for a [specific API endpoint](#tyk-operator-endpoint).
 
-### API-level transform {#tyk-operator-api}
+**API-level transform**
 
 Request headers can be removed and inserted using the following fields within an `ApiDefinition`:
 
@@ -9512,7 +9652,7 @@ spec:
           - hello
 ```
 
-### Endpoint-level transform {#tyk-operator-endpoint}
+**Endpoint-level transform**
 
 The process of configuring a transformation of a request header for a specific endpoint is similar to that defined in section [Endpoint-level transform](#tyk-classic-endpoint). To configure a transformation of the request header for a specific endpoint you must add a new `transform_headers` object to the `extended_paths` section of your API definition.
 
@@ -9601,11 +9741,11 @@ When working with Tyk OAS APIs the transformation is configured in the [Tyk OAS 
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/request-header-tyk-classic" >}}) page.
 
-## Configuring the Request Header Transform in the Tyk OAS API Definition
+##### Configuring the Request Header Transform in the Tyk OAS API Definition
 
 The API-level and endpoint-level request header transforms are configured in different sections of the API definition, though have a common configuration.
 
-### API-level transform
+**API-level transform**
 
 To append headers to, or delete headers from, all requests to your API (i.e. for all endpoints) you must add a new `transformRequestHeaders` object to the `middleware.global` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition.
 
@@ -9686,7 +9826,7 @@ It will also delete one header (if present) from each request:
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the API-level request header transform.
 
-### Endpoint-level transform
+**Endpoint-level transform**
 
 The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. Endpoint `paths` entries (and the associated `operationId`) can contain wildcards in the form of any string bracketed by curly braces, for example `/status/{code}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
@@ -9760,7 +9900,7 @@ In this example the Request Header Transform middleware has been configured for 
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the endpoint-level request header transform.
 
-### Combining API-level and Endpoint-level transforms
+**Combining API-level and Endpoint-level transforms**
 
 If the API-level transform in the previous [example]({{< ref "product-stack/tyk-gateway/middleware/request-header-tyk-oas#api-level-transform" >}}) is applied to the same API, then because the API-level transformation is performed first, the `X-Static` header will be added (by the API-level transform) and then removed (by the endpoint-level transform) such that the overall effect of the two transforms for a call to `GET /status/200` would be to add three headers:
  - `X-Request-ID`
@@ -9770,11 +9910,11 @@ If the API-level transform in the previous [example]({{< ref "product-stack/tyk-
 and to remove one:
  - `Auth_Id` 
 
-## Configuring the Request Header Transform in the API Designer
+##### Configuring the Request Header Transform in the API Designer
 
 Adding and configuring the transforms to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
-### Adding an API-level transform
+**Adding an API-level transform**
 
 From the **API Designer** on the **Settings** tab, after ensuring that you are in *edit* mode, toggle the switch to **Enable Transform request headers** in the **Middleware** section:
 {{< img src="/img/dashboard/api-designer/tyk-oas-request-header-api-level.png" alt="Tyk OAS API Designer showing API-level Request Header Transform" >}}
@@ -9782,9 +9922,9 @@ From the **API Designer** on the **Settings** tab, after ensuring that you are i
 Then select **NEW HEADER** as appropriate to add or remove a header from API requests. You can add or remove multiple headers by selecting **ADD HEADER** to add another to the list:
 {{< img src="/img/dashboard/api-designer/tyk-oas-request-header-api-new-header.png" alt="Configuring the API-level Request Header Transform in Tyk OAS API Designer" >}}
 
-### Adding an endpoint level transform
+**Adding an endpoint level transform**
 
-#### Step 1: Add an endpoint
+- Step 1: Add an endpoint
 
 From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
 
@@ -9794,13 +9934,13 @@ From the **API Designer** add an endpoint that matches the path and method to wh
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
-##### Step 2: Select the Request Header Transform middleware
+- Step 2: Select the Request Header Transform middleware
 
 Select **ADD MIDDLEWARE** and choose the **Request Header Transform** middleware from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-request-header.png" alt="Adding the Request Header Transform middleware" >}}
 
-##### Step 3: Configure header transformation
+- Step 3: Configure header transformation
 
 Select **NEW HEADER** to configure a header to be added to or removed from the request.
 
@@ -9810,14 +9950,14 @@ You can add multiple headers to either list by selecting **NEW HEADER** again.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-request-header-new.png" alt="Adding another header to the transformation" >}}
 
-##### Step 4: Save the API
+- Step 4: Save the API
 
 Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes.
 
 **Error:** Content for /Users/davidrollins/Documents/DevDocs/Tyk/tyk-docs/tyk-docs/content/transform-traffic/request-method-transform.md not found.
 
 
-###### Using the Request Method Transform with Tyk Classic APIs
+#### Using the Request Method Transform with Tyk Classic APIs
 
 Tyk's [request method transform]({{< ref "advanced-configuration/transform-traffic/request-method-transform" >}}) middleware is configured at the endpoint level, where it modifies the HTTP method used in the request to a configured value.
 
@@ -9827,7 +9967,7 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "pr
 
 If you're using Tyk Operator then check out the [configuring a Request Method Transform in Tyk Operator](#tyk-operator) section below.
 
-## Configuring a Request Method Transform in the Tyk Classic API Definition {#tyk-classic}
+##### Configuring a Request Method Transform in the Tyk Classic API Definition
 
 To configure a transformation of the request method you must add a new `method_transforms` object to the `extended_paths` section of your API definition.
 
@@ -9853,29 +9993,29 @@ For example:
 
 In this example the Request Method Transform middleware has been configured for HTTP `GET` requests to the `/status/200` endpoint. Any request received to that endpoint will be modified to `POST /status/200`.
 
-## Configuring a Request Method Transform in the API Designer
+##### Configuring a Request Method Transform in the API Designer
 
 You can use the API Designer in the Tyk Dashboard to configure the request method transform middleware for your Tyk Classic API by following these steps.
 
-### Using the Dashboard
+**Using the Dashboard**
 
-#### Step 1: Add an endpoint for the path and select the Method Transform plugin
+- Step 1: Add an endpoint for the path and select the Method Transform plugin
 
 From the **Endpoint Designer** add an endpoint that matches the path for which you want to perform the transformation. Select the **Method Transform** plugin.
 
 {{< img src="/img/2.10/method_transform.png" alt="Method Transform" >}}
 
-#### Step 2: Configure the transform
+- Step 2: Configure the transform
 
 Then select the HTTP method to which you wish to transform the request.
 
 {{< img src="/img/2.10/method_transform2.png" alt="Method Path" >}}
 
-#### Step 3: Save the API
+- Step 3: Save the API
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
 
-## Configuring a Request Method Transform in Tyk Operator {#tyk-operator}
+##### Configuring a Request Method Transform in Tyk Operator
 
 The process for configuring a request method transform for an endpoint in Tyk Operator is similar to that defined in section [configuring a Request Method Transform in the Tyk Classic API Definition](#tyk-classic).
 
@@ -9918,7 +10058,7 @@ The example API Definition above configures an API to listen on path `/transform
 In this example the Request Method Transform middleware has been configured for `HTTP GET` requests to the `/anything` endpoint. Any request received to that endpoint will be modified to `POST /anything`.
 
 
-### Using the Request Method Transform with Tyk OAS APIs
+#### Using the Request Method Transform with Tyk OAS APIs
 
 Tyk's [request method transform]({{< ref "advanced-configuration/transform-traffic/request-method-transform" >}}) middleware is configured at the endpoint level, where it modifies the HTTP method used in the request to a configured value.
 
@@ -9926,7 +10066,7 @@ When working with Tyk OAS APIs the transformation is configured in the [Tyk OAS 
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/request-method-tyk-classic" >}}) page.
 
-## Configuring the Request Method Transform in the Tyk OAS API Definition
+##### Configuring the Request Method Transform in the Tyk OAS API Definition
 
 The request method transform middleware (`transformRequestMethod`) can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId` (as configured in the `paths` section of your OpenAPI Document). Endpoint `paths` entries (and the associated `operationId`) can contain wildcards in the form of any string bracketed by curly braces, for example `/status/{code}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
@@ -9989,11 +10129,11 @@ In this example the Request Method Transform middleware has been configured for 
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the request method transform.
 
-## Configuring the Request Method Transform in the API Designer
+##### Configuring the Request Method Transform in the API Designer
 
 Adding the transform to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
-#### Step 1: Add an endpoint
+**Step 1: Add an endpoint**
 
 From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
 
@@ -10003,13 +10143,13 @@ From the **API Designer** add an endpoint that matches the path and method to wh
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
-#### Step 2: Select the Method Transform middleware
+**Step 2: Select the Method Transform middleware**
 
 Select **ADD MIDDLEWARE** and choose the **Method Transform** middleware from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-method-transform.png" alt="Adding the Request Method Transform middleware" >}}
 
-#### Step 3: Configure the middleware
+**Step 3: Configure the middleware**
 
 Select the new HTTP method to which requests to this endpoint should be transformed
 
@@ -10017,16 +10157,11 @@ Select the new HTTP method to which requests to this endpoint should be transfor
 
 Select **ADD MIDDLEWARE** to apply the change to the middleware configuration.
 
-#### Step 4: Save the API
+**Step 4: Save the API**
 
 Select **SAVE API** to apply the changes to your API.
 
-
-**Error:** Content for /Users/davidrollins/Documents/DevDocs/Tyk/tyk-docs/tyk-docs/content/transform-traffic/looping.md not found.
-
-
-##### Using the Request Size Limit middleware with Tyk Classic APIs
-
+#### Using the Request Size Limit middleware with Tyk Classic APIs
 
 The [request size limit]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits" >}}) middleware enables you to apply limits to the size of requests made to your HTTP APIs. You might use this feature to protect your Tyk Gateway or upstream services from excessive memory usage or brute force attacks.
 
@@ -10036,14 +10171,14 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "pr
 
 If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 
-## Configuring the middleware in the Tyk Classic API Definition {#tyk-classic}
+##### Configuring the middleware in the Tyk Classic API Definition
 
 There are three different levels of granularity that can be used when configuring a request size limit.
 - [system-wide]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits#applying-a-system-level-size-limit" >}}): affecting all APIs deployed on the gateway
 - [API-level]({{< ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic#tyk-classic-api" >}}): affecting all endpoints for an API
 - [endpoint-level]({{< ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic#tyk-classic-endpoint" >}}): affecting a single API endpoint
 
-### Applying a size limit for a specific API {#tyk-classic-api}
+**Applying a size limit for a specific API**
 
 You can configure a request size limit (in bytes) to an API by configuring the `global_size_limit` within the `version` element of the API Definition, for example:
 ```
@@ -10054,7 +10189,7 @@ A value of zero (default) means that no maximum is set and the API-level size li
 
 This limit is applied for all endpoints within an API. It is evaluated after the Gateway-wide size limit and before any endpoint-specific size limit. If this test fails, the Tyk Gateway will report `HTTP 400 Request is too large`.
 
-### Applying a size limit for a specific endpoint {#tyk-classic-endpoint}
+**Applying a size limit for a specific endpoint**
 
 The most granular control over request sizes is provided by the endpoint-level configuration. This limit will be applied after any Gateway-level or API-level size limits and is given in bytes. If this test fails, the Tyk Gateway will report `HTTP 400 Request is too large`.
 
@@ -10083,23 +10218,23 @@ For example:
 
 In this example the endpoint-level Request Size Limit middleware has been configured for HTTP `POST` requests to the `/anything` endpoint. For any call made to this endpoint, Tyk will check the size of the payload (Request body) and, if it is larger than 100 bytes, will reject the request, returning `HTTP 400 Request is too large`.
 
-## Configuring the middleware in the API Designer
+##### Configuring the middleware in the API Designer
 
 You can use the API Designer in the Tyk Dashboard to configure a request size limit for your Tyk Classic API by following these steps.
 
-#### Step 1: Add an endpoint for the path and select the plugin
+**Step 1: Add an endpoint for the path and select the plugin**
 
 From the **Endpoint Designer** add an endpoint that matches the path for which you want to limit the size of requests. Select the **Request size limit** plugin.
 
 {{< img src="/img/2.10/request_size_limit.png" alt="Select middleware" >}}
 
-#### Step 2: Configure the middleware
+**Step 2: Configure the middleware**
 
 Set the request size limit, in bytes.
     
 {{< img src="/img/2.10/request_size_settings.png" alt="Configure limit" >}}
 
-#### Step 3: Save the API
+**Step 3: Save the API**
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
 
@@ -10109,11 +10244,11 @@ Use the *save* or *create* buttons to save the changes and activate the middlewa
 The Tyk Classic API Designer does not provide an option to configure `global_size_limit`, but you can do this from the Raw Definition editor.
 {{< /note >}}
 
-## Configuring the middleware in Tyk Operator {#tyk-operator}
+##### Configuring the middleware in Tyk Operator
 
 The process for configuring a request size limit is similar to that defined in section [configuring the middleware in the Tyk Classic API Definition](#tyk-classic). Tyk Operator allows you to configure a request size limit for [all endpoints of an API](#tyk-operator-api) or for a [specific API endpoint](#tyk-operator-endpoint).
 
-### Applying a size limit for a specific API {#tyk-operator-api}
+**Applying a size limit for a specific API**
 
 <!-- Need an example -->
 The process for configuring the request size_limits middleware for a specific API is similar to that explained in [applying a size limit for a specific API](#tyk-classic-api).
@@ -10147,7 +10282,7 @@ The example API Definition above configures an API to listen on path `/httpbin-g
 
 In this example the request size limit is set to 5 bytes. If the limit is exceeded then the Tyk Gateway will report `HTTP 400 Request is too large`.
 
-### Applying a size limit for a specific endpoint {#tyk-operator-endpoint}
+**Applying a size limit for a specific endpoint**
 
 The process for configuring the request size_limits middleware for a specific endpoint is similar to that explained in [applying a size limit for a specific endpoint](#tyk-classic-endpoint).
 
@@ -10195,20 +10330,20 @@ The middleware is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/t
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic" >}}) page.
 
-## Configuring the middleware in the Tyk OAS API Definition
+##### Configuring the middleware in the Tyk OAS API Definition
 
 There are three different levels of granularity that can be used when configuring a request size limit.
 - [system-wide]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits#applying-a-system-level-size-limit" >}}): affecting all APIs deployed on the gateway
 - [API-level]({{< ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-oas#applying-a-size-limit-for-a-specific-api" >}}): affecting all endpoints for an API
 - [endpoint-level]({{< ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-oas#applying-a-size-limit-for-a-specific-endpoint" >}}): affecting a single API endpoint
 
-### Applying a size limit for a specific API
+**Applying a size limit for a specific API**
 
 The API-level size limit has not yet been implemented for Tyk OAS APIs.
 
 You can work around this by implementing a combination of endpoint-level size limits and [allow]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) or [block]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-oas#configuring-the-block-list-in-the-api-designer" >}}) lists.
 
-### Applying a size limit for a specific endpoint
+**Applying a size limit for a specific endpoint**
 
 The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. Endpoint `paths` entries (and the associated `operationId`) can contain wildcards in the form of any string bracketed by curly braces, for example `/status/{code}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
@@ -10274,11 +10409,11 @@ In this example the endpoint-level Request Size Limit middleware has been config
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the virtual endpoint middleware.
 
-## Configuring the middleware in the API Designer
+##### Configuring the middleware in the API Designer
 
 Adding the Request Size Limit middleware to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
-#### Step 1: Add an endpoint for the path
+**Step 1: Add an endpoint for the path**
 
 From the **API Designer** add an endpoint that matches the path for you want to limit the size of requests.
 
@@ -10288,27 +10423,109 @@ From the **API Designer** add an endpoint that matches the path for you want to 
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
-#### Step 2: Select the Request Size Limit middleware
+**Step 2: Select the Request Size Limit middleware**
 
 Select **ADD MIDDLEWARE** and choose the **Request Size Limit** middleware from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-request-size-limit.png" alt="Adding the Request Size Limit middleware" >}}
 
-#### Step 3: Configure the middleware
+**Step 3: Configure the middleware**
 
 Now you can set the **size limit** that the middleware should enforce - remember that this is given in bytes.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-request-size-limit-config.png" alt="Setting the size limit that should be enforced" >}}
 
-#### Step 4: Save the API
+**Step 4: Save the API**
 
 Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes to your API.
 
 
-**Error:** Content for /Users/davidrollins/Documents/DevDocs/Tyk/tyk-docs/tyk-docs/content/transform-traffic/response-body.md not found.
+
+### Response Body Transformation
+
+Tyk enables you to modify the payload of API responses received from your upstream services before they are passed on to the client that originated the request. This makes it easy to transform between payload data formats or to expose legacy APIs using newer schema models without having to change any client implementations. This middleware is only applicable to endpoints that return a body with the response.
+
+With the body transform middleware you can modify XML or JSON formatted payloads to ensure that the response contains the information required by your upstream service. You can enrich the response by adding contextual data that is held by Tyk but not included in the original response from the upstream.
+
+This middleware changes only the payload and not the headers. You can, however, combine this with the [Response Header Transform]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) to apply more complex transformation to responses.
+
+There is a closely related [Request Body Transform]({{< ref "transform-traffic/request-body" >}}) middleware that provides the same functionality on the request sent by the client prior to it being proxied to the upstream.
+
+#### When to use the Response Body Transformation middleware
+
+##### Maintaining compatibility with legacy clients
+
+Sometimes you might have a legacy API and need to migrate the transactions to a new upstream service but do not want to upgrade all the existing clients to the newer upstream API. Using response body transformation, you can convert the new format that your upstream services provide into legacy XML or JSON expected by the clients.
+
+##### Shaping responses for different devices
+
+You can detect the client device types via headers or context variables and transform the response payload to optimize it for that particular device. For example, you might optimize the response content for mobile apps.
+
+##### SOAP to REST translation
+
+A common use of the response body transform middleware is when surfacing a legacy SOAP service with a REST API. Full details of how to perform this conversion using Tyk are provided [here]({{< ref "advanced-configuration/transform-traffic/soap-rest" >}}).
+
+#### How body transformation works
+
+Tyk's body transform middleware uses the [Go template language](https://golang.org/pkg/text/template/) to parse and modify the provided input. We have bundled the [Sprig Library (v3)](http://masterminds.github.io/sprig/) which provides over 70 pre-written functions for transformations to assist the creation of powerful Go templates to transform your API responses. 
+
+The Go template can be defined within the API Definition or can be read from a file that is accessible to Tyk, for example alongside your [error templates]({{< ref "advanced-configuration/error-templates" >}}).
+
+We have provided more detail, links to reference material and some examples of the use of Go templating [here]({{< ref "product-stack/tyk-gateway/references/go-templates" >}}).
+
+{{< note success >}}
+**Note**  
+
+Tyk evaluates templates stored in files on startup, so if you make changes to a template you must remember to restart the gateway. 
+{{< /note >}}
+
+##### Supported response body formats
+
+The body transformation middleware can modify response payloads in the following formats:
+- JSON
+- XML
+
+When working with JSON format data, the middleware will unmarshal the data into a data structure, and then make that data available to the template in dot-notation.
+
+##### Data accessible to the middleware
+
+The middleware has direct access to the response body and also to dynamic data as follows:
+- [Context variables]({{< ref "context-variables" >}}), extracted from the request at the start of the middleware chain, can be injected into the template using the `._tyk_context.KEYNAME` namespace
+- [Session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}), from the Tyk Session Object linked to the request, can be injected into the template using the `._tyk_meta.KEYNAME` namespace 
+- Inbound form or query data can be accessed through the `._tyk_context.request_data` namespace where it will be available in as a `key:[]value` map
+- values from [key-value (KV) storage]({{< ref "tyk-configuration-reference/kv-store#transformation-middleware" >}}) can be injected into the template using the notation appropriate to the location of the KV store
+ 
+The response body transform middleware can iterate through list indices in dynamic data so, for example, calling `{{ index ._tyk_context.request_data.variablename 0 }}` in a template will expose the first entry in the `request_data.variablename` key/value array.
+
+{{< note success >}}
+**Note**  
+
+As explained in the [documentation](https://pkg.go.dev/text/template), templates are executed by applying them to a data structure. The template receives the decoded JSON or XML of the response body. If session variables or meta data are enabled, additional fields will be provided: `_tyk_context` and `_tyk_meta` respectively.
+ {{< /note >}}
+
+##### Automatic XML <-> JSON Transformation
+
+A very common transformation that is applied in the API Gateway is to convert between XML and JSON formatted body content.
+
+The Response Body Transform supports two helper functions that you can use in your Go templates to facilitate this:
+- `jsonMarshal` performs JSON style character escaping on an XML field and, for complex objects, serialises them to a JSON string ([example]({{< ref "product-stack/tyk-gateway/references/go-templates#xml-to-json-conversion-using-jsonmarshal" >}}))
+- `xmlMarshal` performs the equivalent conversion from JSON to XML ([example]({{< ref "product-stack/tyk-gateway/references/go-templates#json-to-xml-conversion-using-xmlmarshal" >}}))
+
+<hr>
+
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the response body transformation middleware [here]({{< ref "product-stack/tyk-gateway/middleware/response-body-tyk-oas" >}}).
+
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the response body transformation middleware [here]({{< ref "product-stack/tyk-gateway/middleware/response-body-tyk-classic" >}}).
+
+<!-- proposed "summary box" to be shown graphically on each middleware page
+ ## Response Body Transform middleware summary
+  - The Response Body Transform middleware is an optional stage in Tyk's API Response processing chain, sitting between the [TBC]() and [TBC]() middleware.
+  - The Response Body Transform middleware can be configured at the per-endpoint level within the API Definition and is supported by the API Designer within the Tyk Dashboard. 
+  - Response Body Transform can access both [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}) and [request context variables]({{< ref "context-variables" >}}).
+ -->
 
 
-##### Using the Response Body Transform middleware with Tyk Classic APIs
+#### Using the Response Body Transform middleware with Tyk Classic APIs
 
 
 The [response body transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) middleware provides a way to modify the payload of API responses before they are returned to the client.
@@ -10319,7 +10536,7 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "pr
 
 If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 
-## Configuring the middleware in the Tyk Classic API Definition {#tyk-classic}
+##### Configuring the middleware in the Tyk Classic API Definition
 
 To enable the middleware you must add a new `transform_response` object to the `extended_paths` section of your API definition.
 
@@ -10382,39 +10599,39 @@ If using the Endpoint Designer in the Tyk Dashboard, this would be added automat
 We removed the need to configure the `response_processors` element in Tyk 5.3.0.
 {{< /note >}}
 
-## Configuring the middleware in the API Designer
+##### Configuring the middleware in the API Designer
 
 You can use the API Designer in the Tyk Dashboard to configure the response body transform middleware for your Tyk Classic API by following these steps.
 
-#### Step 1: Add an endpoint for the path and select the plugin
+**Step 1: Add an endpoint for the path and select the plugin**
 
 From the **Endpoint Designer** add an endpoint that matches the path for which you want to perform the transformation. Select the **Body Transforms** plugin.
 
 {{< img src="/img/2.10/body_transforms.png" alt="Endpoint designer" >}}
 
-#### Step 2: Configure the middleware
+**Step 2: Configure the middleware**
 
 Ensure that you have selected the `RESPONSE` tab, then select your input type, and then add the template you would like to use to the **Template** input box.
 
 {{< img src="/img/dashboard/endpoint-designer/body-transform-response.png" alt="Setting the body response transform" >}}
 
-#### Step 3: Test the Transform
+**Step 3: Test the Transform**
 
 If you have sample input data, you can use the Input box to add it, and then test it using the **Test** button. You will see the effect of the template on the sample input in the Output box.
 
 {{< img src="/img/dashboard/endpoint-designer/body-transform-test.png" alt="Testing the body transform function" >}}
 
-#### Step 4: Save the API
+**Step 4: Save the API**
 
 Use the *save* or *create* buttons to save the changes and activate the Response Body Transform middleware.
 
-## Configuring the middleware in Tyk Operator {#tyk-operator}
+##### Configuring the middleware in Tyk Operator
 
 The process of configuring a transformation of a response body for a specific endpoint is similar to that defined in section [configuring the middleware in the Tyk Classic API Definition](#tyk-classic) for the Tyk Classic API definition. To enable the middleware you must add a new `transform_response` object to the `extended_paths` section of your API definition.
 
 In the examples below, the Response Body Transform middleware (`transform_response`) is directed to use the template located in the `template_source`, decoding the xml in the base64 encoded string. The input (pre-transformation) response payload will be `xml` format and there is no session metadata provided for use in the transformation.
 
-### Example
+**Example**
 
 ```yaml {linenos=true, linenostart=1, hl_lines=["45-53"]}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -10476,7 +10693,7 @@ spec:
               delete_headers: []
 ```
 
-### Tyk Gateway < 5.3.0 Example {#gw-lt-5-3-example}
+**Tyk Gateway < 5.3.0 Example**
 
 If using Tyk Gateway < v5.3.0 then a `response_processor` object must be added to the API definition containing a `response_body_transform` item, as highlighted below:
 
@@ -10552,7 +10769,7 @@ The middleware is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/t
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/response-body-tyk-classic" >}}) page.
 
-## Configuring the middleware in the Tyk OAS API Definition
+##### Configuring the middleware in the Tyk OAS API Definition
 
 The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. Endpoint `paths` entries (and the associated `operationId`) can contain wildcards in the form of any string bracketed by curly braces, for example `/status/{code}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
@@ -10672,11 +10889,11 @@ If using a template in a file (i.e. you configure `path` in the `transformRespon
 
 {{< /note >}}
 
-## Configuring the middleware in the API Designer
+##### Configuring the middleware in the API Designer
 
 Adding Response Body Transformation to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
 
-#### Step 1: Add an endpoint
+**Step 1: Add an endpoint**
 
 From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
 
@@ -10686,13 +10903,13 @@ From the **API Designer** add an endpoint that matches the path and method to wh
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
-#### Step 2: Select the Response Body Transform middleware
+**Step 2: Select the Response Body Transform middleware**
 
 Select **ADD MIDDLEWARE** and choose the **Response Body Transform** middleware from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-response-body.png" alt="Adding the Response Body Transform middleware" >}}
 
-#### Step 3: Configure the middleware
+**Step 3: Configure the middleware**
 
 Now you can select the response body format (JSON or XML) and add either a path to the file containing the template, or directly enter the transformation template in the text box.
 
@@ -10702,18 +10919,73 @@ The **Test with data** control will allow you to test your body transformation f
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-body-transform-test.png" alt="Testing the Response Body Transform" >}}
 
-#### Step 4: Save the API
+**Step 4: Save the API**
 
 Select **SAVE API** to apply the changes to your API.
 
 
+### Response Header Transformation
 
+Tyk enables you to modify header information when a response is proxied back to the client. This can be very useful in cases where you have an upstream API that potentially exposes sensitive headers that you need to remove.
 
+There are two options for this:
+- API-level modification that is applied to responses for all requests to the API
+- endpoint-level modification that is applied only to responses for requests to a specific endpoint
 
-**Error:** Content for /Users/davidrollins/Documents/DevDocs/Tyk/tyk-docs/tyk-docs/content/transform-traffic/response-headers.md not found.
+With the header transform middleware you can append or delete any number of headers to ensure that the response contains the information required by your client. You can enrich the response by adding contextual data that is held by Tyk but not included in the original response from the upstream.
 
+This middleware changes only the headers and not the payload. You can, however, combine this with the [Response Body Transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) to apply more complex transformation to responses.
 
-##### Using the Response Header Transform with Tyk Classic APIs
+There are related [Request Header Transform]({{< ref "transform-traffic/request-headers" >}}) middleware (at API-level and endpoint-level) that provide the same functionality on the request from a client, prior to it being proxied to the upstream.
+
+#### When to use response header transformation
+
+##### Customizing responses for specific clients
+
+A frequent use case for response header transformation is when a client requires specific headers for their application to function correctly. For example, a client may require a specific header to indicate the status of a request or to provide additional information about the response.
+
+##### Adding security headers
+
+The response header transform allows you to add security headers to the response to protect against common attacks such as cross-site scripting (XSS) and cross-site request forgery (CSRF). Some security headers may be required for compliance with industry standards and, if not provided by the upstream, can be added by Tyk before forwarding the response to the client.
+
+##### Adding metadata to response headers
+
+Adding metadata to response headers can be useful for tracking and analyzing API usage, as well as for providing additional information to clients. For example, you may want to add a header that indicates the version of the API being used or the time taken to process the request.
+
+##### Modifying response headers for dynamic performance optimization
+
+You can use response header transformation to dynamically optimize the performance of the API. For example, you may want to indicate to the client the maximum number of requests that they can make in a given time period. By doing so through the response headers, you can perform dynamic optimization of the load on the upstream service without triggering the rate limiter and so avoiding errors being sent to the client.
+
+#### How the response header transform works
+
+The response header transform can be applied per-API or per-endpoint; each has a separate entry in the API definition so that you can configure both API-level and endpoint-level transforms for a single API.
+
+The middleware is configured with a list of headers to delete from the response and a list of headers to add to the response. Each header to be added to the response is configured as a key:value pair.
+- the "delete header" functionality is intended to ensure that any header in the delete list is not present once the middleware completes. If a header in the delete list is not present in the upstream response, the middleware will ignore the omission
+- the "add header" functionality will capitalize any header name provided. For example, if you configure the middleware to append `x-request-id` it will be added to the response as `X-Request-Id`
+
+In the response middleware chain, the endpoint-level transform is applied before the API-level transform. Subsequently, if both middleware are enabled, the API-level transform will operate on the headers that have been added by the endpoint-level transform (and will not have access to those that have been deleted by it).
+
+##### Injecting dynamic data into headers
+
+You can enrich the response headers by injecting data from context variables or session objects into the headers.
+- [context variables]({{< ref "context-variables" >}}), extracted from the request at the start of the middleware chain, can be injected into added headers using the `$tyk_context.` namespace
+- [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}), from the Tyk Session Object linked to the request, can be injected into added headers using the `$tyk_meta.` namespace
+- values from [key-value (KV) storage]({{< ref "tyk-configuration-reference/kv-store#transformation-middleware" >}}) can be injected into added headers using the notation appropriate to the location of the KV store
+
+<hr>
+
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the response header transform middleware [here]({{< ref "product-stack/tyk-gateway/middleware/response-header-tyk-oas" >}}).
+
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the response header transform middleware [here]({{< ref "product-stack/tyk-gateway/middleware/response-header-tyk-classic" >}}).
+
+<!-- proposed "summary box" to be shown graphically on each middleware page
+ ## Response Header Transform middleware summary
+  - The Response Header Transform is an optional stage in Tyk's API Response processing chain, sitting between the [TBC]() and [TBC]() middleware.
+  - The Response Header Transform can be configured at the per-endpoint or per-API level within the API Definition and is supported by the API Designer within the Tyk Dashboard. 
+ -->
+
+#### Using the Response Header Transform with Tyk Classic APIs
 
 Tyk's [response header transform]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) middleware enables you to append or delete headers on responses received from the upstream service before sending them to the client.
 
@@ -10735,7 +11007,7 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "pr
 
 If you're using Tyk Operator then check out the [configuring the Response Header Transform in Tyk Operator](#tyk-operator) section below.
 
-## Configuring the Response Header Transform in the Tyk Classic API Definition {#tyk-classic}
+##### Configuring the Response Header Transform in the Tyk Classic API Definition
 
 The API-level and endpoint-level response header transforms have a common configuration but are configured in different sections of the API definition.
 {{< note success >}}
@@ -10756,7 +11028,7 @@ If using the Endpoint Designer in the Tyk Dashboard, this would be added automat
 We removed the need to configure the `response_processors` element in Tyk 5.3.0.
 {{< /note >}}
 
-#### API-level transform {#tyk-classic-api}
+**API-level transform**
 
 To **append** headers to all responses from your API (i.e. for all endpoints) you must add a new `global_response_headers` object to the `versions` section of your API definition. This contains a list of key:value pairs, being the names and values of the headers to be added to responses.
 
@@ -10790,7 +11062,7 @@ This configuration will add three new headers to each response:
 It will also delete one header (if present) from each response:
  - `X-Secret`
 
-#### Endpoint-level transform {#tyk-classic-endpoint}
+**Endpoint-level transform**
 
 To configure response header transformation for a specific endpoint you must add a new `transform_response_headers` object to the `extended_paths` section of your API definition.
 
@@ -10819,7 +11091,7 @@ For example:
 
 In this example the Response Header Transform middleware has been configured for HTTP `GET` requests to the `/status/200` endpoint. Any response received from the upstream service following a request to that endpoint will have the `X-Static` header removed and the `X-Secret` and `X-New` headers added (with values set to `the-secret-key-is-secret` and `another-header`).
 
-#### Combining API-level and Endpoint-level transforms
+**Combining API-level and Endpoint-level transforms**
 
 If the example [API-level]({{< ref "product-stack/tyk-gateway/middleware/response-header-tyk-classic#api-level-transform" >}}) and [endpoint-level]({{< ref "product-stack/tyk-gateway/middleware/response-header-tyk-classic#endpoint-level-transform" >}}) transforms are applied to the same API, then the `X-Secret` header will be added (by the endpoint-level transform first) and then removed (by the API-level transform). Subsequently, the result of the two transforms for a call to `GET /status/200` would be to add four headers:
 - `X-Request-ID`
@@ -10827,7 +11099,7 @@ If the example [API-level]({{< ref "product-stack/tyk-gateway/middleware/respons
 - `X-Static`
 - `X-New`
 
-### Fixing response headers that leak upstream server data
+**Fixing response headers that leak upstream server data**
 
 A middleware called `header_transform` was added in Tyk 2.1 specfically to allow you to ensure that headers such as `Location` and `Link` reflect the outward facade of your API Gateway and also align with the expected response location to be terminated at the gateway, not the hidden upstream proxy.
 
@@ -10858,11 +11130,11 @@ In this example, the `Link` and `Location` headers will be modified from the ser
 
 This feature is rarely used and has not been implemented in the Tyk Dashboard UI, nor in the [Tyk OAS API]({{< ref "product-stack/tyk-gateway/middleware/response-header-tyk-oas" >}}).
 
-## Configuring the Response Header Transform in the API Designer
+##### Configuring the Response Header Transform in the API Designer
 
 You can use the API Designer in the Tyk Dashboard to configure the response header transform middleware for your Tyk Classic API by following these steps.
 
-### API-level transform
+**API-level transform**
 
 Configuring the API-level response header transform middleware is very simple when using the Tyk Dashboard.
 
@@ -10872,35 +11144,35 @@ In the Endpoint Designer you should select the **Global Version Settings** and e
 
 Note that you must click **ADD** to add a header to the list (for appending or deletion).
 
-### Endpoint-level transform
+**Endpoint-level transform**
 
-##### Step 1: Add an endpoint for the path and select the Header Transform plugin
+- Step 1: Add an endpoint for the path and select the Header Transform plugin
 
 From the **Endpoint Designer** add an endpoint that matches the path for which you want to perform the transformation. Select the **Modify Headers** plugin.
 
 {{< img src="/img/dashboard/endpoint-designer/modify-headers-plugin.png" alt="Adding the Modify Headers plugin to an endpoint" >}}
 
-##### Step 2: Select the "Response" tab
+- Step 2: Select the "Response" tab
 
 This ensures that the transform will be applied to responses prior to them being sent to the client.
 
 {{< img src="/img/dashboard/endpoint-designer/response-header-added.png" alt="Selecting the response header transform" >}}
 
-##### Step 3: Declare the headers to be modified
+- Step 3: Declare the headers to be modified
 
 Select the headers to delete and insert using the provided fields. You need to click **ADD** to ensure they are added to the list.
 
 {{< img src="/img/dashboard/endpoint-designer/response-header-details.png" alt="Configuring the response header transform" >}}
 
-##### Step 4: Save the API
+- Step 4: Save the API
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
 
-## Configuring the Response Header Transform in Tyk Operator {#tyk-operator}
+##### Configuring the Response Header Transform in Tyk Operator
 
 The process for configuring a response header transform in Tyk Operator is similar to that defined in section [configuring the Response Header Transform in the Tyk Classic API Definition](#tyk-classic). Tyk Operator allows you to configure a response header transformation for [all endpoints of an API](#tyk-operator-endpoint) or for a [specific API endpoint](#tyk-operator-api).
 
-### API-level transform {#tyk-operator-api}
+**API-level transform**
 
 The process of configuring transformation of response headers for a specific API in Tyk Operator is similar to that defined in section [API-level transform](#tyk-classic-api) for the Tyk Classic API definition. 
 
@@ -10956,13 +11228,13 @@ It will also delete one header (if present) from each response:
 - `X-Secret`
 
 
-### Endpoint-level transform {#tyk-operator-endpoint}
+**Endpoint-level transform**
 
 The process of configuring a transformation of a response header for a specific endpoint in Tyk Operator is similar to that defined in section [endpoint-level transform](#tyk-classic-endpoint) for the Tyk Classic API definition. To configure a transformation of the response headers for a specific endpoint you must add a new `transform_response_headers` object to the `extended_paths` section of your API definition.
 
 In this example the Response Header Transform middleware (`transform_response_headers`) has been configured for HTTP `GET` requests to the `/xml` endpoint. Any response received from the upstream service following a request to that endpoint will have the `Content-Type` header added with a value set to `application/json`.
 
-##### Example
+**Example**
 
 ```yaml {linenos=true, linenostart=1, hl_lines=["54-60"]}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -11024,7 +11296,7 @@ spec:
               delete_headers: []
 ```
 
-##### Tyk Gateway < 5.3.0 Example
+**Tyk Gateway < 5.3.0 Example**
 
 If using Tyk Gateway < v5.3.0 then a `response_processor` object must be added to the API definition containing a `header_injector` item, as highlighted below:
 
@@ -11092,7 +11364,7 @@ spec:
 ```
 
 
-###### Using the Response Header Transform with Tyk OAS APIs
+#### Using the Response Header Transform with Tyk OAS APIs
 
 Tyk's [response header transform]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) middleware enables you to append or delete headers on responses received from the upstream service before sending them to the client.
 
@@ -11110,11 +11382,11 @@ When working with Tyk OAS APIs the transformation is configured in the [Tyk OAS 
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/response-header-tyk-classic" >}}) page.
 
-## Configuring the Response Header Transform in the Tyk OAS API Definition
+##### Configuring the Response Header Transform in the Tyk OAS API Definition
 
 The API-level and endpoint-level response header transforms have a common configuration but are configured in different sections of the API definition.
 
-#### API-level transform
+**API-level transform**
 
 To append headers to, or delete headers from, responses from all endpoints defined for your API you must add a new `transformResponseHeaders` object to the `middleware.global` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition.
 
@@ -11195,7 +11467,7 @@ It will also delete one header (if present) from each response:
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the API-level response header transform.
 
-#### Endpoint-level transform
+**Endpoint-level transform**
 
 The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. Endpoint `paths` entries (and the associated `operationId`) can contain wildcards in the form of any string bracketed by curly braces, for example `/status/{code}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
@@ -11266,7 +11538,7 @@ In this example the Response Header Transform middleware has been configured for
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the endpoint-level response header transform.
 
-#### Combining API-level and Endpoint-level transforms
+**Combining API-level and Endpoint-level transforms**
 
 If the example [API-level]({{< ref "product-stack/tyk-gateway/middleware/response-header-tyk-oas#api-level-transform" >}}) and [endpoint-level]({{< ref "product-stack/tyk-gateway/middleware/response-header-tyk-oas#endpoint-level-transform" >}}) transforms are applied to the same API, then the `X-Secret` header will be added (by the endpoint-level transform first) and then removed (by the API-level transform). Subsequently, the result of the two transforms for a call to `GET /status/200` would be to add four headers:
 - `X-Request-ID`
@@ -11274,11 +11546,11 @@ If the example [API-level]({{< ref "product-stack/tyk-gateway/middleware/respons
 - `X-Static`
 - `X-New`
 
-## Configuring the Response Method Transform in the API Designer
+##### Configuring the Response Method Transform in the API Designer
 
 Adding and configuring the transforms to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
-### Adding an API-level transform
+**Adding an API-level transform**
 
 From the **API Designer** on the **Settings** tab, after ensuring that you are in *edit* mode, toggle the switch to **Enable Transform response headers** in the **Middleware** section:
 {{< img src="/img/dashboard/api-designer/tyk-oas-response-header-api-level.png" alt="Tyk OAS API Designer showing API-level Response Header Transform" >}}
@@ -11286,9 +11558,9 @@ From the **API Designer** on the **Settings** tab, after ensuring that you are i
 Then select **NEW HEADER** as appropriate to add or remove a header from API responses. You can add or remove multiple headers by selecting **ADD HEADER** to add another to the list:
 {{< img src="/img/dashboard/api-designer/tyk-oas-response-header-api-new-header.png" alt="Configuring the API-level Response Header Transform in Tyk OAS API Designer" >}}
 
-### Adding an endpoint level transform
+**Adding an endpoint level transform**
 
-##### Step 1: Add an endpoint
+- Step 1: Add an endpoint
 
 From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-endpoints.png" alt="Tyk OAS API Designer showing no endpoints created" >}}
@@ -11297,28 +11569,25 @@ From the **API Designer** add an endpoint that matches the path and method to wh
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
-##### Step 2: Select the Response Header Transform middleware
+- Step 2: Select the Response Header Transform middleware
 
 Select **ADD MIDDLEWARE** and choose the **Response Header Transform** middleware from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-add-response-header.png" alt="Adding the URL Rewrite middleware" >}}
 
-##### Step 3: Configure header transformation
+- Step 3: Configure header transformation
 
 Select **NEW HEADER** to configure a header to be added to or removed from the response, you can add multiple headers to either list by selecting **NEW HEADER** again.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-response-header.png" alt="Configuring the rewrite rules for Advanced Triggers" >}}
 {{< img src="/img/dashboard/api-designer/tyk-oas-response-header-new.png" alt="Configuring the Response Header Transform" >}}
 
-##### Step 4: Save the API
+- Step 4: Save the API
 
 Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes.
 
 
-###### URL Rewriting
-
-
-## Overview of URL Rewriting
+### URL Rewriting
 
 URL rewriting in Tyk is a powerful feature that enables the modification of incoming API request paths to match the expected endpoint format of your backend services. This process is accomplished by using regular expressions (regexes) to identify and capture specific segments of the request URL, which can then be rearranged or augmented to construct the desired endpoint URL.
 
@@ -11326,25 +11595,25 @@ The flexibility of Tyk's URL rewriting mechanism allows for conditional rewrites
 
 By employing URL rewriting, Tyk facilitates seamless communication between client applications and backend services, ensuring that API requests are efficiently routed and processed. This feature is instrumental in maintaining a clean and organized API architecture, while also providing the adaptability required to handle evolving backend systems.
 
-## When to use URL Rewriting
+#### When to use URL Rewriting
 
-#### Internal Looping
+##### Internal Looping
 
 API requests can be redirected to other endpoints or APIs deployed on Tyk using the URL rewrite functionality. This allows requests to be redirected to internal APIs that are not directly exposed on the Gateway (for example to reduce complexity of the external interface or to perform additional processing or security checks before reaching sensitive upstream APIs). We refer to this practice as [looping]({{< ref "/advanced-configuration/transform-traffic/looping" >}}). By performing the looping internally using the URL rewrite middleware, latency is reduced because the redirection is handled entirely within Tyk with no unnecessary external network calls.
 
-#### Improved Performance Optimization
+##### Improved Performance Optimization
 
 You can use URL rewriting to route traffic intelligently to particular API endpoints, distributing the processing burden evenly across your system and minimizing load on your backend resources. This reduces the chances of overwhelming individual nodes and ensures consistent performance levels throughout the entire infrastructure.
 
-#### Enhanced Scalability
+##### Enhanced Scalability
 
 As your API portfolio scales, you may find yourself dealing with an ever-increasing array of unique URLs. Instead of creating separate endpoints for every permutation, URL rewriting allows you to consolidate those disparate routes into a centralised location. This simplification makes it easier to monitor and manage the overall system, ultimately enhancing its resilience and stability.
 
-#### Better User Experiences
+##### Better User Experiences
 
 With URL rewriting, you can design cleaner, more straightforward navigation structures for your APIs, making it simpler for consumers to locate and interact with the information they require.
 
-## How URL Rewriting works
+#### How URL Rewriting works
 
 Tyk's URL rewrite middleware uses the concepts of [triggers]({{< ref "/product-stack/tyk-gateway/middleware/url-rewrite-middleware#url-rewrite-triggers" >}}) and [rules]({{< ref "/product-stack/tyk-gateway/middleware/url-rewrite-middleware#url-rewrite-rules" >}}). These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk).
 
@@ -11368,7 +11637,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 -->
 
 
-### Using the URL Rewrite middleware with Tyk Classic APIs
+#### Using the URL Rewrite middleware with Tyk Classic APIs
 
 Tyk's [URL rewriter]({{< ref "/transform-traffic/url-rewriting" >}}) uses the concepts of triggers and rules to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk).
 
@@ -11382,7 +11651,7 @@ If you're using the newer Tyk OAS APIs, then check out [this]({{< ref "/product-
 
 If you're using Tyk Operator then check out the [configuring the URL rewriter in Tyk Operator](#tyk-operator) section below.
 
-## Configuring the URL rewriter in the Tyk Classic API Definition {#tyk-classic}
+##### Configuring the URL rewriter in the Tyk Classic API Definition
 
 To configure the URL rewriter you must add a new `url_rewrites` object to the `extended_paths` section of your API definition, for example:
 
@@ -11496,23 +11765,23 @@ The second advanced trigger has this configuration:
 
 So if a request is made to `GET /books/author` with a header `"X-Enable-Beta":"true"` and, within the session metadata, `"beta_enabled":"true"` the second advanced trigger will fire and the URL will be written to `https://beta.library.com/books/author` taking the request to a different upstream host entirely.
 
-## Configuring the URL rewriter in the API Designer
+##### Configuring the URL rewriter in the API Designer
 
 You can use the API Designer in the Tyk Designer to configure the URL rewrite middleware for your Tyk Classic API by following these steps.
 
-#### Step 1: Add an endpoint for the path and select the URL rewrite plugin
+**Step 1: Add an endpoint for the path and select the URL rewrite plugin**
 
 From the **Endpoint Designer** add an endpoint that matches the path you want to rewrite. Select the **URL Rewrite** plugin.
 
 {{< img src="/img/2.10/url_rewrite.png" alt="Endpoint designer" >}}
 
-#### Step 2: Configure the basic trigger
+**Step 2: Configure the basic trigger**
 
 Add the regex capture groups and the new URL to the relevant sections.
 
 {{< img src="/img/2.10/url_rewrite_settings.png" alt="URL rewrite configuration" >}}
 
-#### Step 3: Configure an advanced trigger
+**Step 3: Configure an advanced trigger**
 
 You can optionally configure advanced triggers by using the **Create Advanced Trigger** option from the **URL Rewriter** plugin.
 
@@ -11524,11 +11793,11 @@ When triggers are added, you can edit or remove them inside the **Advanced URL r
 
 {{< img src="/img/2.10/url_rewrite-advanced-edit.png" alt="URL rewrite list trigger" >}}
 
-#### Step 4: Save the API
+**Step 4: Save the API**
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
 
-## Configuring the URL rewriter in Tyk Operator {#tyk-operator}
+##### Configuring the URL rewriter in Tyk Operator
 
 The process for configuring the URL rewriter in Tyk Operator is similar to that explained in [configuring the URL rewriter in the Tyk Classic API Definition](#tyk-classic). To configure the URL rewriter you must add a new `url_rewrites` object to the `extended_paths` section of your API definition.
 
@@ -11625,7 +11894,7 @@ spec:
 For further examples check out the [internal looping]({{< ref "/product-stack/tyk-operator/advanced-configurations/internal-looping" >}}) page.
 
 
-### Using the URL Rewrite middleware with Tyk OAS APIs
+#### Using the URL Rewrite middleware with Tyk OAS APIs
 
 
 Tyk's [URL rewriter]({{< ref "/transform-traffic/url-rewriting" >}}) uses the concepts of triggers and rules to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk).
@@ -11636,13 +11905,13 @@ When working with Tyk OAS APIs the rules and triggers are configured in the [Tyk
 
 If you're using the legacy Tyk Classic APIs, then check out [this]({{< ref "/product-stack/tyk-gateway/middleware/url-rewrite-tyk-classic" >}}) page.
 
-## Configuring the URL rewriter in the Tyk OAS API Definition
+##### Configuring the URL rewriter in the Tyk OAS API Definition
 
 The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. Endpoint `paths` entries (and the associated `operationId`) can contain wildcards in the form of any string bracketed by curly braces, for example `/status/{code}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
 The URl rewrite middleware can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId` (as configured in the `paths` section of your OpenAPI Document).
 
-### Using the basic trigger
+##### Using the basic trigger
 
 For the **basic trigger**, you only need to enable the middleware (set `enabled:true`) and then configure the `pattern` and the `rewriteTo` (target) URL. The design of the Tyk OAS API Definition takes advantage of the `operationID` defined in the OpenAPI Document that declares both the path and method required by the basic trigger.
 
@@ -11761,7 +12030,7 @@ X-Ratelimit-Reset: 0
 ```
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the URL rewrite middleware.
 
-### Using advanced triggers
+##### Using advanced triggers
 
 You can add **advanced triggers** to your URL rewriter configuration by adding the `triggers` element within the `urlRewrite` middleware configuration for the operation.
 
@@ -11892,11 +12161,11 @@ If neither advanced trigger fires, then the basic trigger will redirect the requ
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the URL rewrite middleware.
 
-## Configuring the URL rewriter in the API Designer
+##### Configuring the URL rewriter in the API Designer
 
 Adding and configuring the URL rewrite feature to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
-#### Step 1: Add an endpoint
+**Step 1: Add an endpoint**
 
 From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
 
@@ -11906,51 +12175,50 @@ From the **API Designer** add an endpoint that matches the path and method to wh
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
-#### Step 2: Select the URL Rewrite middleware
+**Step 2: Select the URL Rewrite middleware**
 
 Select **ADD MIDDLEWARE** and choose the **URL Rewrite** middleware from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-add-url-rewrite.png" alt="Adding the URL Rewrite middleware" >}}
 
-#### Step 3: Configure the basic trigger
+**Step 3: Configure the basic trigger**
 
 Add the match pattern and the new URL to configure the basic trigger rule.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-url-rewrite-basic.png" alt="Configuring the rewrite rule for the Basic Trigger" >}}
 
-#### Step 4: Optionally configure advanced triggers
+**Step 4: Optionally configure advanced triggers**
 
 You can optionally apply advanced triggers by selecting **ADD TRIGGER** for each trigger you wish to configure. For each advanced trigger you can add one or more rules, selecting **ADD RULE** to add the second, third, etc.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-url-rewrite-advanced.png" alt="Configuring the rewrite rules for Advanced Triggers" >}}
 
-#### Step 5: Save the API
+**Step 5: Save the API**
 
 Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes.
 
 
-##### Request Validation middleware
-
+### Request Validation middleware
 
 Requests to your upstream services should meet the contract that you have defined for those APIs. Checking the content and format of incoming requests before they are passed to the upstream APIs can avoid unexpected errors and provide additional security to those services. Tyk's request validation middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.
 
 Request validation enables cleaner backend APIs, better standardization across consumers, easier API evolution and reduced failure risk leading to higher end-to-end reliability.
 
-## When to use the Request Validation middleware
+#### When to use the Request Validation middleware
 
-#### Improving security of upstream services
+##### Improving security of upstream services
 
 Validating incoming requests against a defined schema protects services from unintended consequences arising from bad input, such as SQL injection or buffer overflow errors, or other unintended failures caused by missing parameters or invalid data types. Offloading this security check to the API Gateway provides an early line of defense as potentially bad requests are not proxied to your upstream services.
 
-#### Offloading contract enforcement
+##### Offloading contract enforcement
 
 You can ensure that client requests adhere to a defined contract specifying mandatory headers or parameters before sending requests upstream. Performing these validation checks in the API Gateway allows API developers to focus on core domain logic.
 
-#### Supporting data transformation
+##### Supporting data transformation
 
 Validation goes hand-in-hand with request [header]({{< ref "transform-traffic/request-headers" >}}) and [body]({{< ref "transform-traffic/request-body" >}}) transformation by ensuring that a request complies with the expected schema prior to transformation. For example, you could validate that a date parameter is present, then transform it into a different date format as required by your upstream API dynamically on each request.
 
-## How request validation works
+#### How request validation works
 
 The incoming request is compared with a defined schema, which is a structured description of the expected format for requests to the endpoint. This request schema defines the required and optional elements such as headers, path/query parameters, payloads and their data types. It acts as a contract for clients.
 
@@ -11973,7 +12241,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
  -->
  
 
-# Using the Request Validation middleware with Tyk Classic APIs
+#### Using the Request Validation middleware with Tyk Classic APIs
 
 The [request validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-middleware" >}}) middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.
 
@@ -11985,7 +12253,7 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "pr
 
 If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 
-## Configuring the middleware in the Tyk Classic API Definition {#tyk-classic}
+##### Configuring the middleware in the Tyk Classic API Definition
 
 To enable the middleware you must add a new `validate_json` object to the `extended_paths` section of your API definition.
 
@@ -12034,27 +12302,27 @@ The Validate JSON middleware supports JSON Schema `draft-04`. Using another vers
 
 {{< /note >}}
 
-## Configuring the middleware in the API Designer
+##### Configuring the middleware in the API Designer
 
 You can use the API Designer in the Tyk Dashboard to configure the request validation middleware for your Tyk Classic API by following these steps.
 
-#### Step 1: Add an endpoint for the path and select the plugin
+**Step 1: Add an endpoint for the path and select the plugin**
 
 From the **Endpoint Designer** add an endpoint that matches the path for which you want to validate the request payload. Select the **Validate JSON** plugin.
 
 {{< img src="/img/2.10/validate_json.png" alt="validate json plugin" >}}
 
-#### Step 2: Configure the middleware
+**Step 2: Configure the middleware**
 
 Once you have selected the request validation middleware for the endpoint, you can select an error code from the drop-down list (if you don't want to use the default `422 Unprocessable Entity`) and enter your JSON schema in the editor.
 
 {{< img src="/img/dashboard/endpoint-designer/validate-json-schema.png" alt="Adding schema to the Validate JSON middleware" >}}
 
-#### Step 3: Save the API
+**Step 3: Save the API**
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
 
-## Configuring the middleware in Tyk Operator {#tyk-operator}
+##### Configuring the middleware in Tyk Operator
 
 The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic). To configure the request validation middleware you must add a new `validate_json` object to the `extended_paths` section of your API definition, for example:
 
@@ -12108,8 +12376,7 @@ spec:
 
 
 
-### Using the Request Validation middleware with Tyk OAS APIs
-
+#### Using the Request Validation middleware with Tyk OAS APIs
 
 The [request validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-middleware" >}}) middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints. If the incoming request fails validation, the Tyk Gateway will reject the request with an `HTTP 422 Unprocessable Entity` response. Tyk can be [configured](#configuring-the-request-validation-middleware) to return a different HTTP status code if required. 
 
@@ -12117,7 +12384,7 @@ The middleware is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/t
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/validate-request-tyk-classic" >}}) page.
 
-## Request schema in OpenAPI Specification
+##### Request schema in OpenAPI Specification
 
 The OpenAPI Specification supports the definition of a [schema](https://learn.openapis.org/specification/content.html#the-schema-object) to describe and limit the content of any field in an API request or response.
 
@@ -12129,7 +12396,7 @@ As explained in the OpenAPI [documentation](https://learn.openapis.org/specifica
 - parameters (headers, query parameters, path parameters)
 - request body (payload)
 
-### Request parameters
+**Request parameters**
 
 The `parameters` field in the OpenAPI description is an array of [parameter objects](https://swagger.io/docs/specification/describing-parameters/) that each describe one variable element in the request. Each `parameter` has two mandatory fields:
 - `in`: the location of the parameter (`path`, `query`, `header`)
@@ -12139,23 +12406,23 @@ There are also optional `description` and `required` fields.
 
 For each parameter, a schema can be declared that defines the `type` of data that can be stored (e.g. `boolean`, `string`) and any `example` or `default` values. 
 
-#### Operation (endpoint-level) parameters
+**Operation (endpoint-level) parameters**
 
 An operation is a combination of HTTP method and path or, as Tyk calls it, an endpoint - for example `GET /users`. Operation, or endpoint-level parameters can be defined in the OpenAPI description and will apply only to that operation within the API. These can be added or modified within Tyk Dashboard's [API designer](#configuring-the-middleware-in-the-api-designer).
 
-#### Common (path-level) parameters
+**Common (path-level) parameters**
 
 [Common parameters](https://swagger.io/docs/specification/v3_0/describing-parameters/#common-parameters), that apply to all operations within a path, can be defined at the path level within the OpenAPI description. Tyk refers to these as path-level parameters and displays them as read-only fields in the Dashboard's API designer. If you need to add or modify common parameters you must use the *Raw Definition* editor, or edit your OpenAPI document outside Tyk and [update]({{< ref "/getting-started/using-oas-definitions/update-an-oas-api" >}}) the API.
 
-### Request body
+**Request body**
 
 The `requestBody` field in the OpenAPI description is a [Request Body Object](https://swagger.io/docs/specification/describing-request-body/). This has two optional fields (`description` and `required`) plus the `content` section which allows you to define a schema for the expected payload. Different schemas can be declared for different media types that are identified by content-type (e.g. `application/json`, `application/xml` and `text/plain`).
 
-## Configuring the request validation middleware
+##### Configuring the request validation middleware
 
 When working with Tyk OAS APIs, the request validation middleware automatically determines the validation rules based on the API schema. The only configurable option for the middleware is to set the desired HTTP status code that will be returned if a request fails validation. The default response will be `HTTP 422 Unprocessable Entity` unless otherwise configured.
 
-## Enabling the request validation middleware
+##### Enabling the request validation middleware
 
 If the middleware is enabled for an endpoint, then Tyk will automatically validate requests made to that endpoint against the schema defined in the API definition.
 
@@ -12163,7 +12430,7 @@ When you create a Tyk OAS API by importing your OpenAPI description, you can ins
 
 If you are creating your API without import, or if you only want to enable request validation for some endpoints, you can [manually enable](#manually-enabling-the-request-validation-middleware) the middleware in the Tyk OAS API definition.
 
-### Automatically enabling the request validation middleware
+**Automatically enabling the request validation middleware**
 
 The request validation middleware can be enabled for all endpoints that have defined schemas when [importing]({{< ref "getting-started/using-oas-definitions/import-an-oas-api#tutorial-5-create-an-api-that-validates-the-request-payload" >}}) an OpenAPI Document to create a Tyk OAS API.
 - if you are using the `POST /apis/oas/import` endpoint in the [Tyk Dashboard API]({{< ref "tyk-dashboard-api" >}}) or [Tyk Gateway API]({{< ref "tyk-gateway-api" >}}) then you can do this by setting the `validateRequest=true` query parameter
@@ -12173,7 +12440,7 @@ The request validation middleware can be enabled for all endpoints that have def
 
 As noted, the automatic application of request validation during import will apply the middleware to all endpoints declared in your OpenAPI description. If you want to adjust this configuration, for example to remove validation from specific endpoints or to change the HTTP status code returned on error, you can update the Tyk OAS API definition as described [here](#manually-enabling-the-request-validation-middleware).
 
-### Manually enabling the request validation middleware
+**Manually enabling the request validation middleware**
 
 The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. Endpoint `paths` entries (and the associated `operationId`) can contain wildcards in the form of any string bracketed by curly braces, for example `/status/{code}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
@@ -12268,11 +12535,11 @@ In this example the request validation middleware has been configured for reques
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the request validation middleware.
 
-## Configuring the middleware in the API Designer
+**Configuring the middleware in the API Designer**
 
 Adding and configuring Request Validation for your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
-#### Step 1: Add an endpoint
+- Step 1: Add an endpoint
 
 From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
 
@@ -12282,7 +12549,7 @@ From the **API Designer** add an endpoint that matches the path and method to wh
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
-#### Step 2: Select the Validate Request middleware
+- Step 2: Select the Validate Request middleware
 
 Select **ADD MIDDLEWARE** and choose **Validate Request** from the *Add Middleware* screen.
 
@@ -12292,312 +12559,15 @@ The API Designer will show you the request body and request parameters schema de
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-validate-request-added.png" alt="Validate Request middleware schema is automatically populated" >}}
 
-#### Step 3: Configure the middleware
+- Step 3: Configure the middleware
 
 If required, you can select an alternative HTTP status code that will be returned if request validation fails.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-validate-request-config.png" alt="Configuring the Request Validation error response" >}}
 
-#### Step 4: Save the API
+- Step 4: Save the API
 
 Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes.
-
-
-##### Virtual Endpoint examples
-
-
-Here we offer some examples to demonstrate valid use of JavaScript within Virtual Endpoints. You can either copy and paste the JavaScript code into the code editor in the Tyk Dashboard API Designer, or create a file and place it in a subdirectory of the Tyk configuration environment (for example under the `middleware` folder in your Tyk installation).
-
-For instruction on how to configure the Virtual Endpoint middleware for your APIs, please see the appropriate documentation for the format of API that you are using:
-- [Tyk OAS API]({{< ref "product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-oas" >}})
-- [Tyk Classic API]({{< ref "product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-classic" >}})
-
-## Example 1: Accessing Tyk data objects
-
-In this example, we demonstrate how you can access different [external Tyk objects]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#accessing-external-and-dynamic-data" >}}) (API request, session key, API definition).
-
-1. Enable the Virtual Endpoint middleware on an endpoint of your API and paste this JavaScript into the API Designer (or save in a file and reference it from the middleware config):
-
-```javascript
-function myFirstVirtualHandler (request, session, config) {
-  log("Virtual Test running")
-  
-  log("Request Body: " + request.Body)
-  log("Session: " + JSON.stringify(session.allowance))
-  log("Config: " + JSON.stringify(config.APIID))
-  log("param-1: " + request.Params["param1"]) // case sensitive
-  log("auth Header: " + request.Headers["Authorization"]) // case sensitive
-  
-  var responseObject = {
-    Body: "VIRTUAL ENDPOINT EXAMPLE #1",
-    Headers: {
-      "x-test": "virtual-header",
-      "x-test-2": "virtual-header-2"
-    },
-    Code: 200
-  }
-  
-  return TykJsResponse(responseObject, session.meta_data)   
-}
-log("Virtual Test initialised")
-```
-
-2. Make a call to your API endpoint passing a request body, a value in the `Authorization` header and a query parameter `param1`.
-
-3. The virtual endpoint will terminate the request and return this response:
-
-```bash
-HTTP/1.1 200 OK
-Date: Thu, 29 Feb 2024 17:39:00 GMT
-Server: tyk
-X-Test: virtual-header
-X-Test-2: virtual-header-2
-Content-Length: 27
-Content-Type: text/plain; charset=utf-8
- 
-VIRTUAL ENDPOINT EXAMPLE #1
-```
-
-4. The gateway logs will include:
-
-```text
-time="" level=info msg="Virtual Test running" prefix=jsvm type=log-msg
-time="" level=info msg="Request Body: <your-request-body>" prefix=jsvm type=log-msg
-time="" level=info msg="Session: <allowance-from-your-session-key>" prefix=jsvm type=log-msg
-time="" level=info msg="Config: <your-APIID>" prefix=jsvm type=log-msg
-time="" level=info msg="param-1: <your_query_parameter>" prefix=jsvm type=log-msg
-time="" level=info msg="auth Header: <your-auth-header>" prefix=jsvm type=log-msg
-```
-
-## Example 2: Accessing custom attributes in the API Definition
-
-You can add [custom attributes]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#adding-custom-attributes-to-the-api-definition" >}}) to the API definition and access these from within your Virtual Endpoint.
-
-1. Add the following custom attributes to your API definition:
-
-```json
-{
-  "string": "string",
-  "map": {
-    " key": 3
-  },
-  "num": 4
-}
-```
-
-2. Enable the Virtual Endpoint middleware on an endpoint of your API and paste this JavaScript into the API Designer (or save in a file and reference it from the middleware config):
-
-```js
-function mySecondVirtualHandler (request, session, config) {      
-  var responseObject = {
-    Body: "VIRTUAL ENDPOINT EXAMPLE #2",
-    Headers: {
-      "foo-header": "bar",
-      "map-header": JSON.stringify(config.config_data.map),
-      "string-header": config.config_data.string,
-      "num-header": JSON.stringify(config.config_data.num)
-    },
-      Code: 200
-  }
-  return TykJsResponse(responseObject, session.meta_data)
-}
-```
-
-3. Make a call to your API endpoint.
-
-4. The virtual endpoint will terminate the request and return this response:
-
-```bash
-HTTP/1.1 200 OK
-Date: Thu, 29 Feb 2024 17:29:12 GMT
-Foo-Header: bar
-Map-Header: {" key":3}
-Num-Header: 4
-Server: tyk
-String-Header: string
-Content-Length: 26
-Content-Type: text/plain; charset=utf-8
- 
-VIRTUAL ENDPOINT EXAMPLE #2
-```
-
-## Example 3: Advanced example
-
-In this example, every line in the script gives an example of a functionality usage, including:
-
-- how to get form param
-- how to get to a specific key inside a JSON variable
-- the structure of the request object
-- using `TykMakeHttpRequest` to make an HTTP request from within the virtual endpoint, and the json it returns - `.Code` and `.Body`.
-
-```js
-function myVirtualHandlerGetHeaders (request, session, config) {
-  rawlog("Virtual Test running")
-    
-  //Usage examples:
-  log("Request Session: " + JSON.stringify(session))
-  log("API Config:" + JSON.stringify(config))
- 
-  log("Request object: " + JSON.stringify(request))   
-  log("Request Body: " + JSON.stringify(request.Body))
-  log("Request Headers:" + JSON.stringify(request.Headers))
-  log("param-1:" + request.Params["param1"])
-    
-  log("Request header type:" + typeof JSON.stringify(request.Headers))
-  log("Request header:" + JSON.stringify(request.Headers.Location))
-    
-
-  //Make api call to upstream target
-  newRequest = {
-    "Method": "GET",
-    "Body": "",
-    "Headers": {"location":JSON.stringify(request.Headers.Location)},
-    "Domain": "http://httpbin.org",
-    "Resource": "/headers",
-    "FormData": {}
-  };
-  rawlog("--- before get to upstream ---")
-  response = TykMakeHttpRequest(JSON.stringify(newRequest));
-  rawlog("--- After get to upstream ---")
-  log("response type: " + typeof response);
-  log("response: " + response);
-  usableResponse = JSON.parse(response);
-  var bodyObject = JSON.parse(usableResponse.Body);
-    
-  var responseObject = {
-    //Body: "THIS IS A VIRTUAL RESPONSE",
-    Body: "yo yo",
-    Headers: {
-      "test": "virtual",
-      "test-2": "virtual",
-      "location" : bodyObject.headers.Location
-    },
-    Code: usableResponse.Code
-  }
-    
-  rawlog("Virtual Test ended")
-  return TykJsResponse(responseObject, session.meta_data)   
-}
-```
-
-#### Running the Advanced example
-
-You can find a Tyk Classic API definition [here](https://gist.github.com/letzya/5b5edb3f9f59ab8e0c3c614219c40747) that includes the advanced example, with the JS encoded `inline` within the middleware config for the `GET /headers` endpoint.
-
-Create a new Tyk Classic API using that API definition and then run the following command to send a request to the API endpoint:
-
-```bash
-curl http://tyk-gateway:8080/testvirtualendpoint2/headers -H "location: /get" -v
-```
-
-This should return the following:
-
-```bash
-Trying 127.0.0.1...
-TCP_NODELAY set
-Connected to tyk-gateway (127.0.0.1) port 8080 (#0)
-GET /testvirtualendpoint2/headers HTTP/1.1
-Host: tyk-gateway:8080
-User-Agent: curl/7.54.0
-Accept: */*
-location: /get
-
-HTTP/1.1 200 OK
-Date: Fri, 08 Jun 2018 21:53:57 GMT
-**Location: /get**
-Server: tyk
-Test: virtual
-Test-2: virtual
-Content-Length: 5
-Content-Type: text/plain; charset=utf-8
-
-Connection #0 to host tyk-gateway left intact
-yo yo
-```
-
-#### Checking the Tyk Gateway Logs
-
-The `log` and `rawlog` commands in the JS function write to the Tyk Gateway logs. If you check the logs you should see the following:
-
-```text
-[Jun 13 14:45:21] DEBUG jsvm: Running: myVirtualHandlerGetHeaders
-Virtual Test running
-[Jun 13 14:45:21]  INFO jsvm-logmsg: Request Session: {"access_rights":null,"alias":"","allowance":0,"apply_policies":null,"apply_policy_id":"","basic_auth_data":{"hash_type":"","password":""},"certificate":"","data_expires":0,"enable_detail_recording":false,"expires":0,"hmac_enabled":false,"hmac_string":"","id_extractor_deadline":0,"is_inactive":false,"jwt_data":{"secret":""},"last_check":0,"last_updated":"","meta_data":null,"monitor":{"trigger_limits":null},"oauth_client_id":"","oauth_keys":null,"org_id":"","per":0,"quota_max":0,"quota_remaining":0,"quota_renewal_rate":0,"quota_renews":0,"rate":0,"session_lifetime":0,"tags":null} type=log-msg
-[Jun 13 14:45:21]  INFO jsvm-logmsg: API Config:{"APIID":"57d72796c5de45e649f22da390d7df43","OrgID":"5afad3a0de0dc60001ffdd07","config_data":{"bar":{"y":3},"foo":4}} type=log-msg
-[Jun 13 14:45:21]  INFO jsvm-logmsg: Request object: {"Body":"","Headers":{"Accept":["*/*"],"Location":["/get"],"User-Agent":["curl/7.54.0"]},"Params":{"param1":["I-am-param-1"]},"URL":"/testvirtualendpoint2/headers"} type=log-msg
-[Jun 13 14:45:21]  INFO jsvm-logmsg: Request Body: "" type=log-msg
-[Jun 13 14:45:21]  INFO jsvm-logmsg: Request Headers:{"Accept":["*/*"],"Location":["/get"],"User-Agent":["curl/7.54.0"]} type=log-msg
-[Jun 13 14:45:21]  INFO jsvm-logmsg: param-1:I-am-param-1 type=log-msg
-[Jun 13 14:45:21]  INFO jsvm-logmsg: Request header type:[object Object] type=log-msg
-[Jun 13 14:45:21]  INFO jsvm-logmsg: Request header: ["/get"] type=log-msg
-[Jun 13 14:45:21]  INFO jsvm-logmsg: Request location type: object type=log-msg
-[Jun 13 14:45:21]  INFO jsvm-logmsg: Request location type: string type=log-msg
-[Jun 13 14:45:21]  INFO jsvm-logmsg: Request location: /get type=log-msg
---- before get to upstream ---
---- After get to upstream ---
-[Jun 13 14:45:22]  INFO jsvm-logmsg: response type: string type=log-msg
-[Jun 13 14:45:22]  INFO jsvm-logmsg: response: {"Code":200,"Body":"{\"headers\":{\"Accept-Encoding\":\"gzip\",\"Connection\":\"close\",\"Host\":\"httpbin.org\",\"Location\":\"/get\",\"User-Agent\":\"Go-http-client/1.1\"}}\n","Headers":{"Access-Control-Allow-Credentials":["true"],"Access-Control-Allow-Origin":["*"],"Content-Length":["133"],"Content-Type":["application/json"],"Date":["Wed, 13 Jun 2018 13:45:21 GMT"],"Server":["gunicorn/19.8.1"],"Via":["1.1 vegur"]},"code":200,"body":"{\"headers\":{\"Accept-Encoding\":\"gzip\",\"Connection\":\"close\",\"Host\":\"httpbin.org\",\"Location\":\"/get\",\"User-Agent\":\"Go-http-client/1.1\"}}\n","headers":{"Access-Control-Allow-Credentials":["true"],"Access-Control-Allow-Origin":["*"],"Content-Length":["133"],"Content-Type":["application/json"],"Date":["Wed, 13 Jun 2018 13:45:21 GMT"],"Server":["gunicorn/19.8.1"],"Via":["1.1 vegur"]}} type=log-msg
-Virtual Test ended
-[Jun 13 14:45:22] DEBUG JSVM Virtual Endpoint execution took: (ns) 191031553
-```
-
-## Example 4: Aggregating upstream calls using batch processing
-
-One of the most common use cases for virtual endpoints is to provide some form of aggregate data to your users, combining the responses from multiple upstream service calls. This virtual endpoint function will do just that using the batch processing function from the [JavaScript API]({{< ref "plugins/supported-languages/javascript-middleware/javascript-api" >}})
-
-```js
-function batchTest(request, session, config) {
-  // Set up a response object
-  var response = {
-    Body: "",
-    Headers: {
-      "test": "virtual-header-1",
-      "test-2": "virtual-header-2",
-      "content-type": "application/json"
-    },
-    Code: 200
-  }
-    
-  // Batch request
-  var batch = {
-    "requests": [
-      {
-        "method": "GET",
-        "headers": {
-          "x-tyk-test": "1",
-          "x-tyk-version": "1.2",
-          "authorization": "1dbc83b9c431649d7698faa9797e2900f"
-        },
-        "body": "",
-        "relative_url": "http://httpbin.org/get"
-      },
-      {
-        "method": "GET",
-        "headers": {},
-        "body": "",
-        "relative_url": "http://httpbin.org/user-agent"
-      }
-    ],
-    "suppress_parallel_execution": false
-  }
-    
-  log("[Virtual Test] Making Upstream Batch Request")
-  var newBody = TykBatchRequest(JSON.stringify(batch))
-    
-  // We know that the requests return JSON in their body, lets flatten it
-  var asJS = JSON.parse(newBody)
-  for (var i in asJS) {
-    asJS[i].body = JSON.parse(asJS[i].body)
-  }
-    
-  // We need to send a string object back to Tyk to embed in the response
-  response.Body = JSON.stringify(asJS)
-    
-  return TykJsResponse(response, session.meta_data)
-    
-}
-log("Batch Test initialised")                
-```
 
 
 ### Tyk Virtual Endpoints
@@ -12608,21 +12578,21 @@ Virtual endpoint middleware provides a serverless compute function that allows f
 
 The Virtual Endpoint is an extremely powerful feature that is unique to Tyk and provides exceptional flexibility to your APIs.
 
-## When to use virtual endpoints
+#### When to use virtual endpoints
 
-#### Aggregating data from multiple services
+##### Aggregating data from multiple services
 
 From a virtual endpoint, you can make calls out to other internal and upstream APIs. You can then aggregate and process the responses, returning a single response object to the originating client. This allows you to configure a single externally facing API to simplify interaction with multiple internal services, leaving the heavy lifting to Tyk rather than starting up an aggregation service within your stack.
 
-#### Enforcing custom policies
+##### Enforcing custom policies
 
 Tyk provides a very flexible [middleware chain]({{< ref "concepts/middleware-execution-order" >}}) where you can combine functions to implement the access controls you require to protect your upstream services. Of course, not all scenarios can be covered by Tyk's standard middleware functions, but you can use a virtual endpoint to apply whatever custom logic you require to optimize your API experience.
 
-#### Dynamic Routing
+##### Dynamic Routing
 
 With a virtual endpoint you can implement complex dynamic routing of requests made to a single external endpoint on to different upstream services. The flexibility of the virtual endpoint gives access to data within the request (including the key session) and also the ability to make calls to other APIs to make decisions on the routing of the request. It can operate as a super-powered [URL rewrite]({{< ref "transform-traffic/url-rewriting" >}}) middleware.
 
-## How virtual endpoints work
+#### How virtual endpoints work
 
 The virtual endpoint middleware provides a JavaScript engine that runs the custom code that you provide either inline within the API definition or in a source code file accessible to the Gateway. The JavaScript Virtual Machine (JSVM) provided in the middleware is a traditional ECMAScript5 compatible environment which does not offer the more expressive power of something like Node.js.
 
@@ -12634,17 +12604,17 @@ The virtual endpoint terminates the request, so the JavaScript function must pro
 You will need to enable Tyk's JavaScript Virtual Machine by setting `enable_jsvm` to `true` in your `tyk.conf` [file]({{< ref "tyk-oss-gateway/configuration#enable_jsvm" >}}) for your virtual endpoints to work.
 {{< /note >}}
 
-## Scripting virtual endpoint functions
+#### Scripting virtual endpoint functions
 
 The [middleware scripting guide]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide" >}}) provides guidance on writing JS functions for your virtual endpoints, including how to access key session data and custom attributes from the API definition.
 
-#### Function naming
+##### Function naming
 
 The virtual endpoint middleware will invoke a named function within the JS code that you provide (either inline or in a file). Both the filename and function name are configurable per endpoint, but note that function names must be unique across your API portfolio because all plugins run in the same virtual machine. This means that you can share a single function definition across multiple endpoints and APIs but you cannot have two different functions with the same name (this applies across all [JavaScript middleware components]({{< ref "plugins/supported-languages/javascript-middleware" >}})).
 
 Inline mode is mainly used by the dashboard to make code injection easier on multiple node deployments.
 
-## Virtual endpoint library
+#### Virtual endpoint library
 
 We have put together a [library](https://github.com/TykTechnologies/custom-plugins#virtual-endpoints) of JS functions that you could use in your virtual endpoints. We welcome submissions from the Tyk community so if you've created a function that you think would be useful to other users, please open an issue in the Github repository and we can discuss bringing it into the library.
 
@@ -12667,7 +12637,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
  -->
 
 
-# Using the Virtual Endpoint middleware with Tyk Classic APIs
+#### Using the Virtual Endpoint middleware with Tyk Classic APIs
 
 
 The [virtual endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) middleware provides a serverless compute function that allows for the execution of custom logic directly within the gateway itself, without the need to proxy the request to an upstream service. This functionality is particularly useful for a variety of use cases, including request transformation, aggregation of responses from multiple services, or implementing custom authentication mechanisms.
@@ -12678,7 +12648,7 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "pr
 
 If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 
-## Configuring the middleware in the Tyk Classic API Definition {#tyk-classic}
+##### Configuring the middleware in the Tyk Classic API Definition
 
 If you want to use Virtual Endpoints, you must [enable Tyk's JavaScript Virtual Machine]({{< ref "tyk-oss-gateway/configuration#enable_jsvm" >}}) by setting `enable_jsvm` to `true` in your `tyk.conf` file.
 
@@ -12756,17 +12726,17 @@ Content-Length: 99
 
 If we set `proxy_on_error` to `true` and keep the error in the Javascript, the request will be forwarded to the upstream and Tyk will return the response received from that service.
 
-## Configuring the middleware in the API Designer
+##### Configuring the middleware in the API Designer
 
 You can use the API Designer in the Tyk Dashboard to configure a virtual endpoint for your Tyk Classic API by following these steps.
 
-#### Step 1: Add an endpoint for the path and select the plugin
+**Step 1: Add an endpoint for the path and select the plugin**
 
 From the **Endpoint Designer** add an endpoint that matches the path for which you want to trigger the virtual endpoint. Select the **Virtual Endpoint** plugin.
 
 {{< img src="/img/dashboard/endpoint-designer/virtual-endpoint-middleware.png" alt="Selecting the middleware" >}}
 
-#### Step 2: Configure the middleware
+**Step 2: Configure the middleware**
 
 Once you have selected the virtual endpoint middleware for the endpoint, you need to supply:
 
@@ -12779,7 +12749,7 @@ If you select source type `file` you must provide the path to the file:
 If you select `inline` you can enter the JavaScript code in the Code Editor window.
 {{< img src="/img/dashboard/endpoint-designer/virtual-endpoint-inline.png" alt="Configuring inline JS code" >}}
 
-#### Step 3: Save the API
+**Step 3: Save the API**
 
 Use the *save* or *create* buttons to save the changes and activate the Virtual Endpoint middleware.
 
@@ -12789,7 +12759,7 @@ Use the *save* or *create* buttons to save the changes and activate the Virtual 
 The Tyk Classic API Designer does not provide options to configure `use_session` or `proxy_on_error`, but you can do this from the Raw Definition editor.
 {{< /note >}}
 
-## Configuring the middleware in Tyk Operator {#tyk-operator}
+##### Configuring the middleware in Tyk Operator
 
 The process for configuring a virtual endpoint using Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic)
 
@@ -12884,7 +12854,7 @@ Content-Length: 99
 If we set `proxy_on_error` to `true` and keep the error in the Javascript, the request will be forwarded to the upstream and Tyk will return the response received from that service.
 
 
-### Using the Virtual Endpoint middleware with Tyk OAS APIs
+#### Using the Virtual Endpoint middleware with Tyk OAS APIs
 
 The [virtual endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) middleware provides a serverless compute function that allows for the execution of custom logic directly within the gateway itself, without the need to proxy the request to an upstream service. This functionality is particularly useful for a variety of use cases, including request transformation, aggregation of responses from multiple services, or implementing custom authentication mechanisms.
 
@@ -12892,7 +12862,7 @@ The middleware is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/t
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-classic" >}}) page.
 
-## Configuring the middleware in the Tyk OAS API Definition
+##### Configuring the middleware in the Tyk OAS API Definition
 
 The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. Endpoint `paths` entries (and the associated `operationId`) can contain wildcards in the form of any string bracketed by curly braces, for example `/status/{code}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
@@ -13029,11 +12999,11 @@ Virtual Endpoint example
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the virtual endpoint middleware.
 
-## Configuring the middleware in the API Designer
+##### Configuring the middleware in the API Designer
 
 Adding a Virtual Endpoint to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
-#### Step 1: Add an endpoint
+**Step 1: Add an endpoint**
 
 From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
 
@@ -13043,13 +13013,13 @@ From the **API Designer** add an endpoint that matches the path and method to wh
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
-#### Step 2: Select the Virtual Endpoint middleware
+**Step 2: Select the Virtual Endpoint middleware**
 
 Select **ADD MIDDLEWARE** and choose **Virtual Endpoint** from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-virtual-endpoint.png" alt="Adding the Virtual Endpoint middleware" >}}
 
-#### Step 3: Configure the middleware
+**Step 3: Configure the middleware**
 
 Now you can provide either the path to a file containing the JavaScript function to be run by the middleare, or you can directly enter the JavaScript in the code editor.
 
@@ -13059,386 +13029,303 @@ You can also optionally configure the behavior required if the function should r
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-virtual-endpoint-config.png" alt="Configuring the Virtual Endpoint middleware" >}}
 
-#### Step 4: Save the API
+**Step 4: Save the API**
 
 Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes.
 
 
-## Transform Traffic
 
-### Request and response middleware
-
-
-When you configure an API on Tyk, the Gateway will proxy all requests received at the listen path that you have defined through to the upstream (target) URL configured in the API definition. Responses from the upstream are likewise proxied on to the originating client. Requests and responses are processed through a powerful [chain of middleware]({{< ref "concepts/middleware-execution-order" >}}) that perform security and processing functions.
-
-Within that chain are a highly configurable set of optional middleware that can, on a per-endpint basis:
-- apply processing to [API requests](#middleware-applied-to-the-api-request) before they are proxied to the upstream service
-- apply customization to the [API response](#middleware-applied-to-the-api-response) prior to it being proxied back to the client
-
-Tyk also supports a powerful custom plugin feature that enables you to add custom processing at different stages in the processing chains. For more details on custom plugins please see the [dedicated guide]({{< ref "plugins" >}}).
-
-## Middleware applied to the API Request
-
-The following standard middleware can optionally be applied to API requests on a per-endpoint basis.
-
-### Allow list
-
-The [Allow List]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}}) middleware is a feature designed to restrict access to only specific API endpoints. It rejects requests to endpoints not specifically "allowed", returning `HTTP 403 Forbidden`. This enhances the security of the API by preventing unauthorized access to endpoints that are not explicitly permitted.
-
-Enabling the allow list will cause the entire API to become blocked other than for endpoints that have this middleware enabled. This is great if you wish to have very strict access rules for your services, limiting access to specific published endpoints.
-
-### Block list
-
-The [Block List]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware" >}})  middleware is a feature designed to prevent access to specific API endpoints. Tyk Gateway rejects all requests made to endpoints with the block list enabled, returning `HTTP 403 Forbidden`. 
-
-### Cache
-
-Tyk's [API-level cache]({{< ref "basic-config-and-security/reduce-latency/caching/global-cache" >}}) does not discriminate between endpoints and will usually be configured to cache all safe requests. You can use the granular [Endpoint Cache]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache" >}}) to ensure finer control over which API responses are cached by Tyk.
-
-### Circuit Breaker
-
-The [Circuit Breaker]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers" >}}) is a protective mechanism that helps to maintain system stability by preventing repeated failures and overloading of services that are erroring. When a network or service failure occurs, the circuit breaker prevents further calls to that service, allowing the affected service time to recover while ensuring that the overall system remains functional.
-
-### Do Not Track Endpoint
-
-If [traffic logging]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/logging-api-traffic" >}}) is enabled for your Tyk Gateway, then it will create transaction logs for all API requests (and responses) to deployed APIs. You can use the [Do-Not-Track]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-middleware" >}}) middleware to suppress creation of transaction records for specific endpoints.
-
-### Enforced Timeout
-
-Tyk’s [Enforced Timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) middleware can be used to apply a maximum time that the Gateway will wait for a response before it terminates (or times out) the request. This helps to maintain system stability and prevents unresponsive or long-running tasks from affecting the overall performance of the system.
-
-### Ignore Authentication
-
-Adding the [Ignore Authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}) middleware means that Tyk Gateway will not perform authentication checks on requests to that endpoint. This plugin can be very useful if you have a specific endpoint (such as a ping) that you don't need to secure.
-
-### Internal Endpoint
-
-The [Internal Endpoint]({{< ref "product-stack/tyk-gateway/middleware/internal-endpoint-middleware" >}}) middleware instructs Tyk Gateway not to expose the endpoint externally. Tyk Gateway will then ignore external requests to that endpoint while continuing to process internal requests from other APIs; this is often used with the [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}) functionality.
-
-### Method Transformation
-
-The [Method Transformation]({{< ref "advanced-configuration/transform-traffic/request-method-transform" >}}) middleware allows you to change the HTTP method of a request.
-
-### Mock Response
-
-A [Mock Response]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}) is a simulated API response that can be returned by the API gateway without actually sending the request to the backend API. Mock responses are an integral feature for API development, enabling developers to emulate API behavior without the need for upstream execution.
-
-### Request Body Transform
-
-The [Request Body Transform]({{< ref "transform-traffic/request-body" >}}) middleware allows you to perform modification to the body (payload) of the API request to ensure that it meets the requirements of your upstream service.
-
-### Request Header Transform
-
-The [Request Header Transform]({{< ref "transform-traffic/request-headers" >}}) middleware allows you to modify the header information provided in the request before it leaves the Gateway and is passed to your upstream API.
-
-### Request Size Limit
-
-Tyk Gateway offers a flexible tiered system of limiting request sizes ranging from globally applied limits across all APIs deployed on the gateway down to specific size limits for individual API endpoints. The [Request Size Limit]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits" >}}) middleware provides the most granular control over request size by enabling you to set different limits for individual endpoints.
-
-### Request Validation
-
-Tyk’s [Request Validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-middleware" >}}) middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.
-
-When working with Tyk OAS APIs, the request validation covers both headers and body (payload); with the older Tyk Classic API style we can validate only the request body (payload).
-
-### Track Endpoint
-
-If you do not want to include all endpoints in your [Activity by Endpoint]({{< ref "product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint" >}}) statistics in Tyk Dashboard, you can enable this middleware for the endpoints to be included. 
-
-### URL Rewrite
-
-[URL Rewriting]({{< ref "transform-traffic/url-rewriting" >}}) in Tyk is a powerful feature that enables the modification of incoming API request paths to match the expected endpoint format of your backend services. This allows you to translate an outbound API interface to the internal structure of your services. It is a key capability used in [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}})
-
-### Virtual Endpoint
-
-Tyk’s [Virtual Endpoints]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) is a programmable middleware component that allows you to perform complex interactions with your upstream service(s) that cannot be handled by one of the other middleware components.
-
-## Middleware applied to the API Response
-
-The following transformations can be applied to the response recieved from the upstream to ensure that it contains the correct data and format expected by your clients.
-
-### Response Body Transform
-
-The [Response Body Transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) middleware allows you to perform modification to the body (payload) of the response received from the upstream service to ensure that it meets the expectations of the client.
-
-### Response Header Transform
-
-The [Response Header Transform]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) middleware allows you to modify the header information provided in the response before it leaves the Gateway and is passed to the client.
-
-
-#### Tyk Classic API Endpoint Designer
-
-
-Tyk Dashboard's Endpoint Designer provides a graphical environment for the creation and update of your Tyk Classic APIs.
-
-The Endpoint Designer allows to configure all elements of your Tyk Classic API and consists of several tabs, plus a **Raw Definition** view which allows you to directly edit the Tyk Classic API Definition (in JSON format). Note that 
-
-## Core Settings
-
-{{< img src="/img/dashboard/endpoint-designer/classic-endpoint-designer-core.png" alt="The Tyk Classic Endpoint Designer - Core Settings tab" >}}
-
-The **Core Settings** tab provides access to configure basic settings for the API:
-- [Detailed logging]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/detailed-recording#tyk-classic" >}})
-- API Settings including
-   - Listen path
-   - [API Categories]({{< ref "product-stack/tyk-dashboard/advanced-configurations/api-categories" >}})
-- Upstream settings including
-   - Upstream service (target) URL
-   - [Service Discovery]({{< ref "planning-for-production/ensure-high-availability/service-discovery" >}})
-- [API Ownership]({{< ref "product-stack/tyk-dashboard/advanced-configurations/user-management/api-ownership" >}})
-- [API level rate limiting]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting#configuring-the-rate-limiter-at-the-api-level" >}})
-- [Authentication]({{< ref "basic-config-and-security/security/authentication-&-authorization" >}})
-
-## Versions
-
-{{< img src="/img/dashboard/endpoint-designer/classic-endpoint-designer-versions.png" alt="The Tyk Classic Endpoint Designer - Versions tab" >}}
-
-The **Versions** tab allows you to create and manage [API versioning]({{< ref "getting-started/key-concepts/versioning" >}}) for the API.
-
-At the top of the Endpoint Designer, you can see which version you are currently editing. If you have more than one option, selecting it from the drop-down will load its endpoint configuration into the editor.
-
-## Endpoint Designer
-
-{{< img src="/img/dashboard/endpoint-designer/classic-endpoint-designer-endpoint.png" alt="The Tyk Classic Endpoint Designer - Endpoint Designer tab" >}}
-
-The **Endpoint Designer** is where you can define endpoints for your API so that you can enable and configure Tyk middleware to [perform checks and transformations]({{< ref "advanced-configuration/transform-traffic" >}}) on the API traffic.
-
-In some cases, you will want to set global settings that affect all paths that are managed by Tyk. The **Global Version Settings** section will enable you to configure API-level [request]({{< ref "product-stack/tyk-gateway/middleware/request-header-tyk-classic#tyk-classic-api" >}}) and [response]({{< ref "product-stack/tyk-gateway/middleware/response-header-tyk-classic#tyk-classic-api" >}}) header transformation.
-
-## Advanced Options
-
-{{< img src="/img/dashboard/endpoint-designer/classic-endpoint-designer-advanced.png" alt="The Tyk Classic Endpoint Designer - Advanced Options tab" >}}
-
-The **Advanced Options** tab is where you can configure Tyk's other powerful features including:
-- Upstream certificate management
-- [API-level caching]({{< ref "basic-config-and-security/reduce-latency/caching/global-cache#configuring-the-cache-via-the-dashboard" >}}) including a button to invalidate (flush) the cache for the API
-- [CORS]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}})
-- Add custom attributes to the API definition as *config data* that can be accessed by middleware
-- Enable [context variables]({{< ref "context-variables" >}}) so that they are extracted from requests and made available to middleware
-- Manage *segment tags* if you are working with [sharded gateways]({{< ref "advanced-configuration/manage-multiple-environments/with-tyk-multi-cloud" >}})
-- Manage client IP address [allow]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting" >}}) and [block]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting" >}}) lists
-- Attach [webhooks]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) that will be triggered for different events
-
-## Uptime Tests
-
-{{< img src="/img/dashboard/endpoint-designer/classic-endpoint-designer-uptime.png" alt="The Tyk Classic Endpoint Designer - Uptime Tests tab" >}}
-
-In the **Uptime Tests** tab you can configure Tyk's [Uptime Test]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/uptime-tests" >}}) functionality
-
-## Debugging
-
-{{< img src="/img/dashboard/endpoint-designer/classic-endpoint-designer-debugging.png" alt="The Tyk Classic Endpoint Designer - Debugging tab" >}}
-
-The **Debugging** tab allows you to test your endpoints before you publish or update them. You can also use it for testing any middleware plugins you have implemented. Any debugging you create will persist while still in the current API, enabling you to make changes in the rest of the API settings without losing the debugging scenario.
-
-The Debugging tab consists of the following sections:
-
-- Request
-- Response
-- Logs
-
-#### Request
-
-{{< img src="/img/2.10/debugging_request.png" alt="Debugging Request" >}}
-
-In this section, you can enter the following information:
-
-- Method - select the method for your test from the drop-down list
-- Path - your endpoint to test
-- Headers/Body - enter any header information, such as Authorization, etc. Enter any body information. For example, entering user information if creating/updating a user.
-
-Once you have entered all the requested information, click **Run**. Debugging Response and Log information will be displayed:
-
-#### Response
-
-{{< img src="/img/2.10/debugging_results.png" alt="Debugging Response" >}}
-
-The Response section shows the JSON response to your request.
-
-#### Logs
-
-{{< img src="/img/2.10/debugging_logs.png" alt="Debugging Logs" >}}
-
-The debugging level is set to **debug** for the request. This outputs all logging information in the Endpoint Designer. In the Tyk Gateway logs you will see a single request. Any Error messages will be displayed at the bottom of the Logs output.
-
-
-##### "Transformation Use Case: SOAP To REST"
-
-
-## Introduction
-
-You can transform an existing SOAP service to a JSON REST service. This can be done from the Tyk Dashboard with no coding involved and should take around 10 minutes to perform the transform.
-
-We also have a video which walks you through the SOAP to REST transform.
-
-{{< youtube jeNXLzpKCaA >}}
-
-## Prerequisites
-
-An existing SOAP service and the WSDL definition. For this example, we will use:
-
-- Upstream Target - [https://www.dataaccess.com/webservicesserver/numberconversion.wso](https://www.dataaccess.com/webservicesserver/numberconversion.wso)
-- The WSDL definition from - [https://www.dataaccess.com/webservicesserver/numberconversion.wso?WSDL](https://www.dataaccess.com/webservicesserver/numberconversion.wso?WSDL)
-- Postman Client (or other endpoint testing tool)
-
-## Step 1: Import the WSDL API
-
-1. Select APIs from the System Management menu
-
-{{< img src="/img/2.10/apis_menu.png" alt="APIs Menu" >}}
-
-2. Click Import API
-
-{{< img src="/img/2.10/import_api_button.png" alt="Import API" >}}
-
-3. Select **From WSDL** from the Import an API Definition window
-4. In the **Upstream Target** field, enter `https://www.dataaccess.com/webservicesserver/numberconversion.wso` as listed in the Prerequisites.
-5. Paste the WSDL definition from the link in Prerequisites
-6. Click **Generate API**. You should now have an API named `NumberConversion` in your API list
-
-{{< img src="/img/2.10/numberservice_api.png" alt="NumberService API" >}}
-
-## Step 2: Add the transforms to an Endpoint
-
-1. From the API list, select Edit from the Actions menu for the `NumberConversion` API
-2. Select the **Endpoint Designer** tab. You should see 2 POST endpoints that were imported. We will apply the transforms to the `NumberToWords` endpoint.
-
-{{< img src="/img/2.10/numberservice_endpoints.png" alt="Endpoints" >}}
-
-3. Expand the `NumberToWords` endpoint. The following plugins should have been added as part of the import process.
-  - URL rewrite
-  - Track endpoint
-
-{{< note success >}}
-**Note**  
-
-To make the URL a little friendlier, we're going to amend the Relative Path to just `/NumberToWords`. Update your API after doing this.
-{{< /note >}}
-4. Add the following plugins from the **Plugins** drop-down list:
-  - Body transform
-  - Modify headers
-
-## Step 3: Modify the Body Transform Plugin
-
-### Set up the Request
-
-We use the `{{.FieldName}}` Golang template syntax to access the JSON request. For this template we will use `{{.numberToConvert}}`.
-
-1. Expand the Body transform plugin. From the Request tab, copy the following into the Template section:
-
-```xml
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.dataaccess.com/webservicesserver/">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <web:NumberToDollars>
-         <web:dNum>{{.numberToConvert}}</web:dNum>
-      </web:NumberToDollars>
-   </soapenv:Body>
-</soapenv:Envelope>
+#### Virtual Endpoint examples
+
+Here we offer some examples to demonstrate valid use of JavaScript within Virtual Endpoints. You can either copy and paste the JavaScript code into the code editor in the Tyk Dashboard API Designer, or create a file and place it in a subdirectory of the Tyk configuration environment (for example under the `middleware` folder in your Tyk installation).
+
+For instruction on how to configure the Virtual Endpoint middleware for your APIs, please see the appropriate documentation for the format of API that you are using:
+- [Tyk OAS API]({{< ref "product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-oas" >}})
+- [Tyk Classic API]({{< ref "product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-classic" >}})
+
+##### Example 1: Accessing Tyk data objects
+
+In this example, we demonstrate how you can access different [external Tyk objects]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#accessing-external-and-dynamic-data" >}}) (API request, session key, API definition).
+
+1. Enable the Virtual Endpoint middleware on an endpoint of your API and paste this JavaScript into the API Designer (or save in a file and reference it from the middleware config):
+
+```javascript
+function myFirstVirtualHandler (request, session, config) {
+  log("Virtual Test running")
+  
+  log("Request Body: " + request.Body)
+  log("Session: " + JSON.stringify(session.allowance))
+  log("Config: " + JSON.stringify(config.APIID))
+  log("param-1: " + request.Params["param1"]) // case sensitive
+  log("auth Header: " + request.Headers["Authorization"]) // case sensitive
+  
+  var responseObject = {
+    Body: "VIRTUAL ENDPOINT EXAMPLE #1",
+    Headers: {
+      "x-test": "virtual-header",
+      "x-test-2": "virtual-header-2"
+    },
+    Code: 200
+  }
+  
+  return TykJsResponse(responseObject, session.meta_data)   
+}
+log("Virtual Test initialised")
 ```
 
-2. In the Input field, enter the following:
+2. Make a call to your API endpoint passing a request body, a value in the `Authorization` header and a query parameter `param1`.
+
+3. The virtual endpoint will terminate the request and return this response:
+
+```bash
+HTTP/1.1 200 OK
+Date: Thu, 29 Feb 2024 17:39:00 GMT
+Server: tyk
+X-Test: virtual-header
+X-Test-2: virtual-header-2
+Content-Length: 27
+Content-Type: text/plain; charset=utf-8
+ 
+VIRTUAL ENDPOINT EXAMPLE #1
+```
+
+4. The gateway logs will include:
+
+```text
+time="" level=info msg="Virtual Test running" prefix=jsvm type=log-msg
+time="" level=info msg="Request Body: <your-request-body>" prefix=jsvm type=log-msg
+time="" level=info msg="Session: <allowance-from-your-session-key>" prefix=jsvm type=log-msg
+time="" level=info msg="Config: <your-APIID>" prefix=jsvm type=log-msg
+time="" level=info msg="param-1: <your_query_parameter>" prefix=jsvm type=log-msg
+time="" level=info msg="auth Header: <your-auth-header>" prefix=jsvm type=log-msg
+```
+
+##### Example 2: Accessing custom attributes in the API Definition
+
+You can add [custom attributes]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#adding-custom-attributes-to-the-api-definition" >}}) to the API definition and access these from within your Virtual Endpoint.
+
+1. Add the following custom attributes to your API definition:
 
 ```json
 {
-    "numberToConvert": 35
+  "string": "string",
+  "map": {
+    " key": 3
+  },
+  "num": 4
 }
 ```
-{{< note success >}}
-**Note**  
 
-The '35' integer can be any number you want to convert
-{{< /note >}}
+2. Enable the Virtual Endpoint middleware on an endpoint of your API and paste this JavaScript into the API Designer (or save in a file and reference it from the middleware config):
 
-
-1. Click **Test**. You should get the following in the Output field:
-
-```xml
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.dataaccess.com/webservicesserver/">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <web:NumberToDollars>
-         <web:dNum>35</web:dNum>
-      </web:NumberToDollars>
-   </soapenv:Body>
-</soapenv:Envelope>
-```
-### Set up the Response
-
-Again, for the response, we will be using the `{{.FieldName}}` syntax as the following `{{.Envelope.Body.NumberToDollarsResponse.NumberToDollarsResult}}`
-
-1. For the Input Type, select XML
-
-{{< img src="/img/2.10/body_trans_response_input.png" alt="Response Input Type" >}}
-
-2. In the Template section enter:
-
-```yaml
-{
-    "convertedNumber": "{{.Envelope.Body.NumberToDollarsResponse.NumberToDollarsResult}}"
+```js
+function mySecondVirtualHandler (request, session, config) {      
+  var responseObject = {
+    Body: "VIRTUAL ENDPOINT EXAMPLE #2",
+    Headers: {
+      "foo-header": "bar",
+      "map-header": JSON.stringify(config.config_data.map),
+      "string-header": config.config_data.string,
+      "num-header": JSON.stringify(config.config_data.num)
+    },
+      Code: 200
+  }
+  return TykJsResponse(responseObject, session.meta_data)
 }
 ```
-3. Enter the following into the input field:
 
-```xml
-<soap12:Envelope xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
-  <soap12:Body>
-    <NumberToDollarsResponse xmlns="http://www.dataaccess.com/webservicesserver/">
-      <NumberToDollarsResult>thirty five dollars</NumberToDollarsResult>
-    </NumberToDollarsResponse>
-  </soap12:Body>
-</soap12:Envelope>
+3. Make a call to your API endpoint.
+
+4. The virtual endpoint will terminate the request and return this response:
+
+```bash
+HTTP/1.1 200 OK
+Date: Thu, 29 Feb 2024 17:29:12 GMT
+Foo-Header: bar
+Map-Header: {" key":3}
+Num-Header: 4
+Server: tyk
+String-Header: string
+Content-Length: 26
+Content-Type: text/plain; charset=utf-8
+ 
+VIRTUAL ENDPOINT EXAMPLE #2
 ```
-4. Click Test. You should get the following in the Output field:
 
-```json
-{
-    "convertedNumber": "thirty five dollars"
+##### Example 3: Advanced example
+
+In this example, every line in the script gives an example of a functionality usage, including:
+
+- how to get form param
+- how to get to a specific key inside a JSON variable
+- the structure of the request object
+- using `TykMakeHttpRequest` to make an HTTP request from within the virtual endpoint, and the json it returns - `.Code` and `.Body`.
+
+```js
+function myVirtualHandlerGetHeaders (request, session, config) {
+  rawlog("Virtual Test running")
+    
+  //Usage examples:
+  log("Request Session: " + JSON.stringify(session))
+  log("API Config:" + JSON.stringify(config))
+ 
+  log("Request object: " + JSON.stringify(request))   
+  log("Request Body: " + JSON.stringify(request.Body))
+  log("Request Headers:" + JSON.stringify(request.Headers))
+  log("param-1:" + request.Params["param1"])
+    
+  log("Request header type:" + typeof JSON.stringify(request.Headers))
+  log("Request header:" + JSON.stringify(request.Headers.Location))
+    
+
+  //Make api call to upstream target
+  newRequest = {
+    "Method": "GET",
+    "Body": "",
+    "Headers": {"location":JSON.stringify(request.Headers.Location)},
+    "Domain": "http://httpbin.org",
+    "Resource": "/headers",
+    "FormData": {}
+  };
+  rawlog("--- before get to upstream ---")
+  response = TykMakeHttpRequest(JSON.stringify(newRequest));
+  rawlog("--- After get to upstream ---")
+  log("response type: " + typeof response);
+  log("response: " + response);
+  usableResponse = JSON.parse(response);
+  var bodyObject = JSON.parse(usableResponse.Body);
+    
+  var responseObject = {
+    //Body: "THIS IS A VIRTUAL RESPONSE",
+    Body: "yo yo",
+    Headers: {
+      "test": "virtual",
+      "test-2": "virtual",
+      "location" : bodyObject.headers.Location
+    },
+    Code: usableResponse.Code
+  }
+    
+  rawlog("Virtual Test ended")
+  return TykJsResponse(responseObject, session.meta_data)   
 }
 ```
-## Step 5: Change the Content-Type Header
 
-We now need to change the `content-type` header to allow the SOAP service to receive the payload in XML. We do this by using the **Modify header** plugin
+**Running the Advanced example**
 
-1. Expand the Modify Header plugin
-2. From the **Request** tab enter the following in the **Add this header** section
-  - Header Name: `content-type`
-  - Header Value: `text/xml`
-3. Click Add 
+You can find a Tyk Classic API definition [here](https://gist.github.com/letzya/5b5edb3f9f59ab8e0c3c614219c40747) that includes the advanced example, with the JS encoded `inline` within the middleware config for the `GET /headers` endpoint.
 
-{{< img src="/img/2.10/add_header_type.png" alt="Modify Header Request" >}}
+Create a new Tyk Classic API using that API definition and then run the following command to send a request to the API endpoint:
 
-4. From the **Response** tab enter the following in the **Add this header** section
-  - Header Name: `content-type`
-  - Header Value: `application/json`
-
-{{< img src="/img/2.10/modify-header-response.png" alt="Modify Header Response" >}}
-
-1. Click **Add**
-2. Click **Update**
-
-{{< img src="/img/2.10/update_number_conversion.png" alt="Update API" >}}
-
-## Testing the Endpoint
-
-You now need to test the endpoint. We are going to use Postman.
-
-{{< note success >}}
-**Note**  
-
-We have not set up any Authentication for this API, it has defaulted to `Open (Keyless)`.
-{{< /note >}}
-
-
-1. Copy the URL for your NumberConversion API with the NumberToWords endpoint - `https://tyk-url/numberconversion/NumberToWords/`
-2. Paste it as a POST URL in the Postman URL Request field
-3. Enter the following as a raw Body request
-
-```json
-{
-    "numberToConvert": 35
-}
+```bash
+curl http://tyk-gateway:8080/testvirtualendpoint2/headers -H "location: /get" -v
 ```
-Your Postman request should look similar to below (apart from the URL used)
 
-{{< img src="/img/2.10/postman_soap_rest.png" alt="Postman" >}}
+This should return the following:
+
+```bash
+Trying 127.0.0.1...
+TCP_NODELAY set
+Connected to tyk-gateway (127.0.0.1) port 8080 (#0)
+GET /testvirtualendpoint2/headers HTTP/1.1
+Host: tyk-gateway:8080
+User-Agent: curl/7.54.0
+Accept: */*
+location: /get
+
+HTTP/1.1 200 OK
+Date: Fri, 08 Jun 2018 21:53:57 GMT
+**Location: /get**
+Server: tyk
+Test: virtual
+Test-2: virtual
+Content-Length: 5
+Content-Type: text/plain; charset=utf-8
+
+Connection #0 to host tyk-gateway left intact
+yo yo
+```
+
+**Checking the Tyk Gateway Logs**
+
+The `log` and `rawlog` commands in the JS function write to the Tyk Gateway logs. If you check the logs you should see the following:
+
+```text
+[Jun 13 14:45:21] DEBUG jsvm: Running: myVirtualHandlerGetHeaders
+Virtual Test running
+[Jun 13 14:45:21]  INFO jsvm-logmsg: Request Session: {"access_rights":null,"alias":"","allowance":0,"apply_policies":null,"apply_policy_id":"","basic_auth_data":{"hash_type":"","password":""},"certificate":"","data_expires":0,"enable_detail_recording":false,"expires":0,"hmac_enabled":false,"hmac_string":"","id_extractor_deadline":0,"is_inactive":false,"jwt_data":{"secret":""},"last_check":0,"last_updated":"","meta_data":null,"monitor":{"trigger_limits":null},"oauth_client_id":"","oauth_keys":null,"org_id":"","per":0,"quota_max":0,"quota_remaining":0,"quota_renewal_rate":0,"quota_renews":0,"rate":0,"session_lifetime":0,"tags":null} type=log-msg
+[Jun 13 14:45:21]  INFO jsvm-logmsg: API Config:{"APIID":"57d72796c5de45e649f22da390d7df43","OrgID":"5afad3a0de0dc60001ffdd07","config_data":{"bar":{"y":3},"foo":4}} type=log-msg
+[Jun 13 14:45:21]  INFO jsvm-logmsg: Request object: {"Body":"","Headers":{"Accept":["*/*"],"Location":["/get"],"User-Agent":["curl/7.54.0"]},"Params":{"param1":["I-am-param-1"]},"URL":"/testvirtualendpoint2/headers"} type=log-msg
+[Jun 13 14:45:21]  INFO jsvm-logmsg: Request Body: "" type=log-msg
+[Jun 13 14:45:21]  INFO jsvm-logmsg: Request Headers:{"Accept":["*/*"],"Location":["/get"],"User-Agent":["curl/7.54.0"]} type=log-msg
+[Jun 13 14:45:21]  INFO jsvm-logmsg: param-1:I-am-param-1 type=log-msg
+[Jun 13 14:45:21]  INFO jsvm-logmsg: Request header type:[object Object] type=log-msg
+[Jun 13 14:45:21]  INFO jsvm-logmsg: Request header: ["/get"] type=log-msg
+[Jun 13 14:45:21]  INFO jsvm-logmsg: Request location type: object type=log-msg
+[Jun 13 14:45:21]  INFO jsvm-logmsg: Request location type: string type=log-msg
+[Jun 13 14:45:21]  INFO jsvm-logmsg: Request location: /get type=log-msg
+--- before get to upstream ---
+--- After get to upstream ---
+[Jun 13 14:45:22]  INFO jsvm-logmsg: response type: string type=log-msg
+[Jun 13 14:45:22]  INFO jsvm-logmsg: response: {"Code":200,"Body":"{\"headers\":{\"Accept-Encoding\":\"gzip\",\"Connection\":\"close\",\"Host\":\"httpbin.org\",\"Location\":\"/get\",\"User-Agent\":\"Go-http-client/1.1\"}}\n","Headers":{"Access-Control-Allow-Credentials":["true"],"Access-Control-Allow-Origin":["*"],"Content-Length":["133"],"Content-Type":["application/json"],"Date":["Wed, 13 Jun 2018 13:45:21 GMT"],"Server":["gunicorn/19.8.1"],"Via":["1.1 vegur"]},"code":200,"body":"{\"headers\":{\"Accept-Encoding\":\"gzip\",\"Connection\":\"close\",\"Host\":\"httpbin.org\",\"Location\":\"/get\",\"User-Agent\":\"Go-http-client/1.1\"}}\n","headers":{"Access-Control-Allow-Credentials":["true"],"Access-Control-Allow-Origin":["*"],"Content-Length":["133"],"Content-Type":["application/json"],"Date":["Wed, 13 Jun 2018 13:45:21 GMT"],"Server":["gunicorn/19.8.1"],"Via":["1.1 vegur"]}} type=log-msg
+Virtual Test ended
+[Jun 13 14:45:22] DEBUG JSVM Virtual Endpoint execution took: (ns) 191031553
+```
+
+##### Example 4: Aggregating upstream calls using batch processing
+
+One of the most common use cases for virtual endpoints is to provide some form of aggregate data to your users, combining the responses from multiple upstream service calls. This virtual endpoint function will do just that using the batch processing function from the [JavaScript API]({{< ref "plugins/supported-languages/javascript-middleware/javascript-api" >}})
+
+```js
+function batchTest(request, session, config) {
+  // Set up a response object
+  var response = {
+    Body: "",
+    Headers: {
+      "test": "virtual-header-1",
+      "test-2": "virtual-header-2",
+      "content-type": "application/json"
+    },
+    Code: 200
+  }
+    
+  // Batch request
+  var batch = {
+    "requests": [
+      {
+        "method": "GET",
+        "headers": {
+          "x-tyk-test": "1",
+          "x-tyk-version": "1.2",
+          "authorization": "1dbc83b9c431649d7698faa9797e2900f"
+        },
+        "body": "",
+        "relative_url": "http://httpbin.org/get"
+      },
+      {
+        "method": "GET",
+        "headers": {},
+        "body": "",
+        "relative_url": "http://httpbin.org/user-agent"
+      }
+    ],
+    "suppress_parallel_execution": false
+  }
+    
+  log("[Virtual Test] Making Upstream Batch Request")
+  var newBody = TykBatchRequest(JSON.stringify(batch))
+    
+  // We know that the requests return JSON in their body, lets flatten it
+  var asJS = JSON.parse(newBody)
+  for (var i in asJS) {
+    asJS[i].body = JSON.parse(asJS[i].body)
+  }
+    
+  // We need to send a string object back to Tyk to embed in the response
+  response.Body = JSON.stringify(asJS)
+    
+  return TykJsResponse(response, session.meta_data)
+    
+}
+log("Batch Test initialised")                
+```
