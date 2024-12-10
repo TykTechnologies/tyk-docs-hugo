@@ -120,8 +120,7 @@ The file will look like the sample below, the various fields are explained in th
     "certificates": [],
     "min_version": 0,
     "ssl_ciphers": null,
-    "ssl_insecure_skip_verify": false,
-    "prefer_server_ciphers": false
+    "ssl_insecure_skip_verify": false
   },
   "basic-config-and-security/security": {
     "allow_admin_reset_password": false,
