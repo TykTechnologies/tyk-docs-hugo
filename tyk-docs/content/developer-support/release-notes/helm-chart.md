@@ -9,6 +9,7 @@ aliases:
   - /product-stack/tyk-charts/release-notes/version-1.6
   - /product-stack/tyk-charts/release-notes/version-2.0
   - /product-stack/tyk-charts/release-notes/version-2.1
+  - /product-stack/tyk-charts/release-notes/version-2.2
 ---
 
 ****Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))**

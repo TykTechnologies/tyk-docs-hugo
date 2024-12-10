@@ -19,6 +19,7 @@ aliases:
   - /product-stack/tyk-dashboard/release-notes/version-5.4
   - /product-stack/tyk-dashboard/release-notes/version-5.5
   - /product-stack/tyk-dashboard/release-notes/version-5.6
+  - /product-stack/tyk-dashboard/release-notes/version-5.7
 ---
 <!-- Required. oss or licensed. Choose one of the following:
     **Licensed Protected Product**

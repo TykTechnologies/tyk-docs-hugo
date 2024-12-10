@@ -20,6 +20,7 @@ aliases:
   - /product-stack/tyk-gateway/release-notes/version-5.4
   - /product-stack/tyk-gateway/release-notes/version-5.5
   - /product-stack/tyk-gateway/release-notes/version-5.6
+  - /product-stack/tyk-gateway/release-notes/version-5.7
   - /release-notes/version-3.0
   - /release-notes/version-3.1
   - /release-notes/version-3.2

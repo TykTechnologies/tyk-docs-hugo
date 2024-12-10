@@ -7,6 +7,7 @@ aliases:
   - /product-stack/tyk-operator/release-notes/operator-0.17
   - /product-stack/tyk-operator/release-notes/operator-0.18
   - /product-stack/tyk-operator/release-notes/operator-1.0
+  - /product-stack/tyk-operator/release-notes/operator-1.1
   - /product-stack/tyk-operator/release-notes/overview
 ---
 **Licensed Protected Product**
