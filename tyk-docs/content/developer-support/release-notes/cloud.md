@@ -21,7 +21,6 @@ For more details, check out the documentation on setting up OpenTelemetry export
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
-
 There are no breaking changes in this release
 
 ### Downloads
