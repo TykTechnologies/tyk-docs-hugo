@@ -25,7 +25,6 @@ For more details, check out the documentation on setting up OpenTelemetry export
 There are no breaking changes in this release
 
 ### Downloads
-
 - [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
 
 ### Deprecations
