@@ -13,11 +13,11 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "changelog"]
 
 ### Release Highlights
 
-This Tyk Cloud update introduces a groundbreaking feature for enhanced API observability and troubleshooting. With the new native OpenTelemetry (OTel) exporter, Tyk Cloud now allows organizations to seamlessly integrate their deployments with a variety of popular observability systems, as well as any platform supporting the OTel protocol. This feature enables trace export capabilities, providing deep insights into API and plugin performance.
+This Tyk Cloud update introduces a groundbreaking feature for enhanced API observability and troubleshooting. With the new native Telemetry export, Tyk Cloud now allows organizations to seamlessly integrate their deployments with a variety of popular observability platforms, including built-in support for Datadog, Dynatrace, Elastic, and New Relic. For other systems, the custom provider option ensures compatibility with any platform that supports the OpenTelemetry Protocol (OTLP).
 
-This marks the first step in Tyk Cloud’s broader observability journey, empowering users to monitor and troubleshoot their APIs more effectively while leveraging their existing observability tools.
+This feature enables trace export capabilities, providing deep insights into API and plugin performance. It marks the first step in Tyk Cloud’s broader observability journey, empowering users to monitor and troubleshoot their APIs more effectively while leveraging their existing observability tools.
 
-For more details, check out the documentation on setting up OpenTelemetry export.
+For more details, check out the documentation on setting up Telemetry export.
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
