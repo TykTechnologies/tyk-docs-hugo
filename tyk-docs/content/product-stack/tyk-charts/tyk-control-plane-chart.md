@@ -48,7 +48,7 @@ If you want to enable Tyk Developer Portal, please use PostgreSQL. MongoDB is no
 ## Tyk Control Plane Installations
 ### Installing The Chart
 
-To install the chart from Helm repository in namespace `tyk` with the release name `tyk-control-plane`, issue the following commands:
+To install the chart from Helm repository in namespace `tyk` with the release name `tyk-cp`, issue the following commands:
 ```bash
 helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 helm repo update
@@ -68,7 +68,7 @@ By default, the chart would expose MDCB service as ClusterIP. If you would like 
 
 Then just run:
 ```bash
-helm install tyk-control-plane tyk-helm/tyk-control-plane -n tyk --create-namespace -f values.yaml
+helm install tyk-cp tyk-helm/tyk-control-plane -n tyk --create-namespace -f values.yaml
 ```
 
 Follow the installation output to obtain connection details to Tyk MDCB, and use that to configure Tyk Data Planes using [tyk-data-plane]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart">}}) chart.
@@ -76,14 +76,14 @@ Follow the installation output to obtain connection details to Tyk MDCB, and use
 ### Uninstalling The Chart
 
 ```bash
-helm uninstall tyk-control-plane -n tyk
+helm uninstall tyk-cp -n tyk
 ```
 This removes all the Kubernetes components associated with the chart and deletes the release.
 
 ### Upgrading Chart
 
 ```bash
-helm upgrade tyk-control-plane tyk-helm/tyk-control-plane -n tyk -f values.yaml
+helm upgrade tyk-cp tyk-helm/tyk-control-plane -n tyk -f values.yaml
 ```
 
 ## Configuration
