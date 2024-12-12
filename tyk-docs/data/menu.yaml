@@ -3744,6 +3744,14 @@ menu:
           path: /developer-support/release-notes/cloud
           category: Page
           show: True
+        - title: "Archived Releases"
+          path: /developer-support/release-notes/archived
+          category: Page
+          show: True
+        - title: "Special Releases"
+          path: /developer-support/release-notes/special-releases
+          category: Page
+          show: True
       - title: "Upgrading Guide"
         path: /developer-support/upgrading
         category: Page
