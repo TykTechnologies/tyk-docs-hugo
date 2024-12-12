@@ -53,5 +53,5 @@ Tyk Self Managed and Tyk Cloud license holders can reach out on the online
 
 Supporting documentation is also available relating to:
 
-- [Release Notes]({{< ref "release-notes" >}})
+- [Release Notes]({{< ref "developer-support/release-notes/gateway" >}})
 - [Upgrading Tyk]({{< ref "upgrading-tyk" >}})

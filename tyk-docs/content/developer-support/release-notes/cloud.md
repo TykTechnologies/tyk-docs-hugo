@@ -5,36 +5,38 @@ description: "Release notes documenting updates, enhancements, and changes for T
 tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "changelog"]
 ---
 
-## 1.23.0 Release Notes
+## 1.23 Release Notes
 
-### Release Date 14 of November 2024
+### 1.23.0 Release Notes
 
-### Release Highlights
+#### Release Date 14 of November 2024
+
+#### Release Highlights
 
 This Tyk Cloud update introduces features that improve both flexibility in plugin management and user onboarding. Now, [Mserv]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}),  supports **multiple plugin bundles**, allowing greater customization and easier deployment of plugin configurations. Additionally, we added an **embedded product tour** to enhance the deployment experience, offering a guided walkthrough of Tyk Dashboard’s features, ideal for users familiarizing themselves with the platform during onboarding.
 
 For a comprehensive list of improvements and fixes, please check the detailed [changelog]({{< ref "#Changelog-v1.23.0">}}) below.
 
-### Breaking Changes
+#### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 
 There are no breaking changes in this release
 
-### Downloads
+#### Downloads
 
 - [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
 
-### Deprecations
+#### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecations in this release
 
-### Changelog {#Changelog-v1.23.0}
+#### Changelog {#Changelog-v1.23.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 
-#### Added
+##### Added
 <!-- This section should be a bullet point list of new features. Explain:
 - The purpose of the new feature
 - How does the new feature benefit users?
@@ -76,7 +78,7 @@ Each change log item should be expandable. The first line summarises the changel
   
 </ul>
 
-#### Changed
+##### Changed
 <!-- This should be a bullet-point list of updated features. Explain:
 - Why was the update necessary?
 - How does the update benefit users?
@@ -97,7 +99,7 @@ Each change log item should be expandable. The first line summarises the changel
   
 </ul>
 
-#### Fixed
+##### Fixed
 <!-- This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
 - What problem the issue caused
 - How was the issue fixed
@@ -175,7 +177,7 @@ We have enhanced separation between free-trial and paid deployments to improve r
   
 </ul>
 
-#### Security Fixes
+##### Security Fixes
 <!-- This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
 1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
 2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
