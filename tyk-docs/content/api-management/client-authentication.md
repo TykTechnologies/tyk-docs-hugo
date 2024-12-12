@@ -53,6 +53,7 @@ aliases:
   - /security/tls-and-ssl/mutual-tls
   - /security/your-apis/oauth-2-0
   - /api-management/client-authentication.md
+  - /api-management/authentication-authorization
 
 
 
