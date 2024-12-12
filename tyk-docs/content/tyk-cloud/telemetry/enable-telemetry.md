@@ -75,7 +75,7 @@ Each monitoring platform has its own requirements for connection. Let's explore 
 
 {{< img src="/img/cloud/telemetry-newrelic.png" alt="Tyk Cloud Telemetry NewRelic" >}}
 
-#### Elastic Connection
+#### Elastic
 
 - Provider Endpoint: Your Elastic APM server address
 - Secret Token: Your Elastic APM authentication token
@@ -87,7 +87,7 @@ Each monitoring platform has its own requirements for connection. Let's explore 
 
 {{< img src="/img/cloud/telemetry-elastic.png" alt="Tyk Cloud Telemetry Elastic" >}}
 
-#### Custom Connection
+#### Custom
 
 For when you need to connect to a different monitoring system:
 

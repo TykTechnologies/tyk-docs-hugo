@@ -16,8 +16,8 @@ We support Telemetry for `Cloud Data Plane` deployments. You can enable it while
 
 Tyk Cloud integrates with these monitoring platforms:
 
-- Datadog
-- Dynatrace
-- New Relic
-- Elastic
-- Custom
+- [Datadog]({{< ref "tyk-cloud/telemetry/enable-telemetry.md#datadog" >}})
+- [Dynatrace]({{< ref "tyk-cloud/telemetry/enable-telemetry.md#dynatrace" >}})
+- [New Relic]({{< ref "tyk-cloud/telemetry/enable-telemetry.md#new-relic" >}})
+- [Elastic]({{< ref "tyk-cloud/telemetry/enable-telemetry.md#elastic" >}})
+- [Custom]({{< ref "tyk-cloud/telemetry/enable-telemetry.md#custom" >}})
