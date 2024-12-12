@@ -42,7 +42,7 @@ In the context of custom Python plugins, API calls are queued and the Python int
 
 Starting from Tyk Gateway version `v5.3.0`, Python is no longer bundled with the official Tyk Gateway Docker image by default, to address security vulnerabilities in the Python libraries highlighted by [Docker Scout](https://docs.docker.com/scout/).
 <br>
-Whilst Python plugins are still supported by Tyk Gateway, if you want to use them you must extend the image to add support for Python. For further details, please refer to the [release notes]({{< ref "product-stack/tyk-gateway/release-notes/version-5.3.md" >}}) for Tyk Gateway `v5.3.0`.
+Whilst Python plugins are still supported by Tyk Gateway, if you want to use them you must extend the image to add support for Python. For further details, please refer to the [release notes]({{< ref "developer-support/release-notes/gateway" >}}) for Tyk Gateway `v5.3.0`.
 {{< /note >}}
 
 If you wish to use Python plugins using Docker, you can extend the official Tyk Gateway Docker image by adding Python to it. 

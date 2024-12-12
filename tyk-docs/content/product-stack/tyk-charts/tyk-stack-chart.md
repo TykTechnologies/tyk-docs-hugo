@@ -487,7 +487,7 @@ Note: If you are using `global.secrets.useSecretName`, you must configure the op
 This section explains how to configure the `tyk-gateway` section for updating the Gateway version, enabling TLS, enabling autoscaling etc.
 
 #### Update Tyk Gateway Version
-Set version of gateway at `tyk-gateway.gateway.image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/r/tykio/tyk-gateway/tags). Please check [Tyk Release notes]({{<ref "/product-stack/tyk-gateway/release-notes/overview">}}) carefully while upgrading or downgrading.
+Set version of gateway at `tyk-gateway.gateway.image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/r/tykio/tyk-gateway/tags). Please check [Tyk Release notes]({{<ref "/developer-support/release-notes/gateway">}}) carefully while upgrading or downgrading.
 
 #### Enabling TLS
 

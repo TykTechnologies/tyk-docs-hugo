@@ -26,38 +26,46 @@ Our minor releases are supported until our next minor comes out. This would be <
 
 ---
 
-## X.Y.Z Release Notes
+## X.Y Release Notes <!-- This is for a minor version. Example: 5.6, 5.7 -->
+<!-- This section serves as a container for all patch versions within a specific minor version.  
+For example, for a minor version `5.6`, it can include notes for `5.6.0`, `5.6.1`, and so on.  
 
-### Release Date DD Mon YYYY <<update>>
+### Guidelines:  
+- Even if there is only a minor version upgrade without any patches, you **must** follow this format.  
+- If you are adding a patch to an existing minor version, you **do not** need to copy the header for the minor version again. Instead, continue by adding the patch release notes below. -->
 
-### Release Highlights
+### X.Y.Z Release Notes <!-- This is for a patch version-->
+
+#### Release Date DD Mon YYYY <<update>>
+
+#### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release:
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
 -->
 
-### Breaking Changes
+#### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention ALL changes in our application log messages in the changelog section. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
-<!-- #### Changed error log messages
+<!-- ##### Changed error log messages
 Important for users who monitor Tyk components using the application logs (i.e. Tyk Gateway log, Tyk Dashboard log, etc.).
 We try to avoid making changes to our log messages, especially at error and critical levels. However, sometimes it's necessary. Please find the list of changes made to the application log in this release: -->
 
 <!-- The following "|Planned Breaking Changes" section is optional!
 Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates, etc. -->
-<!-- #### Planned Breaking Changes -->
+<!-- ##### Planned Breaking Changes -->
 
-### Dependencies {#dependencies-X.Y.Z}
+#### Dependencies {#dependencies-X.Y.Z}
 <!-- Required. Use this section to announce the following types of dependencies compatible with the release:
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 
 3rd party dependencies and tools -->
 
-#### Compatibility Matrix For Tyk Components
+##### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 An illustrative example is shown below. -->
 <!-- TBP - to be published. Helm chart, MDCB, operator and sync versions are the new versions and as such will be published only a few hours after the main release of 
@@ -73,7 +81,7 @@ the dashboard and gateway. We must clarify this at the time of publishing this R
 |                 |                           | Pump vX - vY            |
 |                 |                           | TIB vX - vY             |
       
-#### 3rd Party Dependencies & Tools
+##### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -89,36 +97,36 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-### Deprecations
+#### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecations in this release.
 
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc. 
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->
-<!-- ##### Future deprecations
+<!-- ###### Future deprecations
 -->
 
-### Upgrade instructions
+#### Upgrade instructions
 <!-- Required. For patches release (Z>0) use this:
 For users currently on vX.Y.Z, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version X.Y.0 and proceed directly to this latest patch release.
 <br/>
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 -->
 
-### Downloads
+#### Downloads
 - <<!-- [docker image to pull](https://hub.docker.com/layers/tykio/tyk-{dashboard|gateway}/vX.Y.Z/images/{sha-image}) --!>>
 - Helm chart - TBP (To Be Published separately after the release) <!-- This is the link to the Helm charts links. Please be mindful that this URL is only available a few hours or day/s after we release the main release, so this link needs to be updated in a separate iteration -->
 <!-- source code tarball for oss projects -->
 
-### Changelog {#Changelog-vX.Y.Z}
+#### Changelog {#Changelog-vX.Y.Z}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 
-#### Added
+##### Added
 <!-- This section should be a bullet point list of new features. Explain:
 
 - The purpose of the new feature
@@ -145,7 +153,7 @@ The actual changelog item text should go here. It should be no more than three o
 </ul>
 
   
-#### Changed
+##### Changed
 <!-- This should be a bullet-point list of updated features. Explain:
 
 - Why was the update necessary?
@@ -171,7 +179,7 @@ The actual changelog item text should go here. It should be no more than three o
 </li>
 </ul>
  
-#### Fixed
+##### Fixed
 <!-- This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
 
 - What problem the issue caused
@@ -197,7 +205,7 @@ The actual changelog item text should go here. It should be no more than three o
 </li>
 </ul>
 
-#### Security Fixes
+##### Security Fixes
 <!-- This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
 1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
 2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
@@ -208,7 +216,7 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
     - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
 -->
 
-#### Community Contributions
+##### Community Contributions
 <!-- This section should thank external contributors and include a linked reference to their GitHub username with a summary of their contribution.
 
 Example
