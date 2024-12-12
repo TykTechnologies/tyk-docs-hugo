@@ -53,8 +53,8 @@ Each monitoring platform has its own requirements for connection. Let's explore 
 
 #### Dynatrace
 
-- Provider Endpoint: Your New Relic HTTP endpoint
-- API Token: Your New Relic license key
+- Provider Endpoint: Your Dynatrace environment URL
+- API Token: Your Dynatrace access token
 - Example configuration:
   ```
   Provider Endpoint: https://<YOUR-ENVIRONMENT-STRING>.live.dynatrace.com/api/v2/otlp
