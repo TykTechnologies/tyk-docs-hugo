@@ -2383,116 +2383,6 @@ menu:
                 path: /error-response-codes
                 category: Page
                 show: True
-          - title: "Release notes"
-            category: Directory
-            show: True
-            menu:
-              - title: "Changelog"
-                category: Page
-                show: False
-              - title: "Overview"
-                path: /product-stack/tyk-gateway/release-notes/overview
-                category: page
-                show: True
-              - title: "Tyk Gateway v5.7"
-                path: /product-stack/tyk-gateway/release-notes/version-5.7
-                category: Page
-                show: True
-              - title: "Tyk Gateway v5.6"
-                path: /product-stack/tyk-gateway/release-notes/version-5.6
-                category: Page
-                show: True
-              - title: "Tyk Gateway v5.5"
-                path: /product-stack/tyk-gateway/release-notes/version-5.5
-                category: Page
-                show: True
-              - title: "Tyk Gateway v5.4"
-                path: /product-stack/tyk-gateway/release-notes/version-5.4
-                category: Page
-                show: True
-              - title: "Tyk Gateway v5.3 LTS"
-                path: /product-stack/tyk-gateway/release-notes/version-5.3
-                category: Page
-                show: True
-              - title: "Tyk Gateway v5.2"
-                path: /product-stack/tyk-gateway/release-notes/version-5.2
-                category: Page
-                show: True
-              - title: "Tyk Gateway v5.1"
-                category: Page
-                path: /product-stack/tyk-gateway/release-notes/version-5.1
-                show: True
-              - title: "Tyk Gateway v5.0"
-                path: /product-stack/tyk-gateway/release-notes/version-5.0
-                category: Page
-                show: True
-              - title: "Tyk Gateway v4.3"
-                path: /product-stack/tyk-gateway/release-notes/version-4.3
-                category: Page
-                show: True
-              - title: "Tyk Gateway v4.2"
-                path: /product-stack/tyk-gateway/release-notes/version-4.2
-                category: Page
-                show: True
-              - title: "Tyk Gateway v4.1"
-                path: /product-stack/tyk-gateway/release-notes/version-4.1
-                category: Page
-                show: True
-              - title: "Tyk Gateway v4.0"
-                path: /product-stack/tyk-gateway/release-notes/version-4.0
-                category: Page
-                show: True
-              - title: "Tyk Gateway v3.2"
-                path: /product-stack/tyk-gateway/release-notes/version-3.2
-                category: Page
-                show: True
-              - title: "Tyk Gateway v3.1"
-                path: /product-stack/tyk-gateway/release-notes/version-3.1
-                category: Page
-                show: True
-              - title: "Tyk Gateway v3.0"
-                path: /product-stack/tyk-gateway/release-notes/version-3.0
-                category: Page
-                show: True
-              - title: "Archived releases"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Tyk Gateway v2.9"
-                    path: /product-stack/tyk-gateway/release-notes/archived-releases/version-2.9
-                    category: Page
-                    show: True
-                  - title: "Tyk Gateway v2.8"
-                    path: /product-stack/tyk-gateway/release-notes/archived-releases/version-2.8
-                    category: Page
-                    show: True
-                  - title: "Tyk Gateway v2.7"
-                    path: /product-stack/tyk-gateway/release-notes/archived-releases/version-2.7
-                    category: Page
-                    show: True
-                  - title: "Tyk Gateway v2.6"
-                    path: /product-stack/tyk-gateway/release-notes/archived-releases/version-2.6
-                    category: Page
-                    show: True
-                  - title: "Tyk Gateway v2.5"
-                    path: /product-stack/tyk-gateway/release-notes/archived-releases/version-2.5
-                    category: Page
-                    show: True
-                  - title: "Tyk Gateway v2.4"
-                    path: /product-stack/tyk-gateway/release-notes/archived-releases/version-2.4
-                    category: Page
-                    show: True
-                  - title: "Upgrading to v2.3 from v2.2"
-                    path: /product-stack/tyk-gateway/release-notes/archived-releases/upgrading-v2-3-v2-2
-                    category: Page
-                    show: True
-              - title: "Release highlights and upgrades"
-                category: Directory
-                show: False
-                menu:
-                  - title: "[version]"
-                    category: Page
-                    show: False
       - title: "Tyk Dashboard"
         category: Directory
         show: True
@@ -2861,109 +2751,6 @@ menu:
                 path: /tyk-stack/dependencies/mongodb/x509-client-auth
                 category: Page
                 show: True
-          - title: "Release notes"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                category: Page
-                path: /product-stack/tyk-dashboard/release-notes/overview
-                show: True
-              - title: "Tyk Dashboard v5.7"
-                path: /product-stack/tyk-dashboard/release-notes/version-5.7
-                category: Page
-                show: True
-              - title: "Tyk Dashboard v5.6"
-                path: /product-stack/tyk-dashboard/release-notes/version-5.6
-                category: Page
-                show: True
-              - title: "Tyk Dashboard v5.5"
-                path: /product-stack/tyk-dashboard/release-notes/version-5.5
-                category: Page
-                show: True
-              - title: "Tyk Dashboard v5.4"
-                category: Page
-                path: /product-stack/tyk-dashboard/release-notes/version-5.4
-                show: True
-              - title: "Tyk Dashboard v5.3 LTS"
-                category: Page
-                path: /product-stack/tyk-dashboard/release-notes/version-5.3
-                show: True
-              - title: "Tyk Dashboard v5.2"
-                category: Page
-                path: /product-stack/tyk-dashboard/release-notes/version-5.2
-                show: True
-              - title: "Tyk Dashboard v5.1"
-                category: Page
-                path: /product-stack/tyk-dashboard/release-notes/version-5.1
-                show: True
-              - title: "Tyk Dashboard v5.0"
-                category: Page
-                path: /product-stack/tyk-dashboard/release-notes/version-5.0
-                show: True
-              - title: "Tyk Dashboard v4.3"
-                category: Page
-                path: /product-stack/tyk-dashboard/release-notes/version-4.3
-                show: True
-              - title: "Tyk Dashboard v4.2"
-                category: Page
-                path: /product-stack/tyk-dashboard/release-notes/version-4.2
-                show: True
-              - title: "Tyk Dashboard v4.1"
-                category: Page
-                path: /product-stack/tyk-dashboard/release-notes/version-4.1
-                show: True
-              - title: "Tyk Dashboard v4.0"
-                category: Page
-                path: /product-stack/tyk-dashboard/release-notes/version-4.0
-                show: True
-              - title: "Tyk Dashboard v3.2"
-                category: Page
-                path: /product-stack/tyk-dashboard/release-notes/version-3.2
-                show: True
-              - title: "Tyk Dashboard v3.1"
-                category: Page
-                path: /product-stack/tyk-dashboard/release-notes/version-3.1
-                show: True
-              - title: "Tyk Dashboard v3.0"
-                category: Page
-                path: /product-stack/tyk-dashboard/release-notes/version-3.0
-                show: True
-              - title: "Changelog"
-                category: Page
-                show: False
-              - title: "Archived releases"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Tyk Dashboard v2.9"
-                    path: "/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.9"
-                    category: Page
-                    show: true
-                  - title: "Tyk Dashboard v2.8"
-                    path: "/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.8"
-                    category: Page
-                    show: true
-                  - title: "Tyk Dashboard v2.7"
-                    path: "/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.7"
-                    category: Page
-                    show: true
-                  - title: "Tyk Dashboard v2.6"
-                    path: "/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.6"
-                    category: Page
-                    show: true
-                  - title: "Tyk Dashboard v2.5"
-                    path: "/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.5"
-                    category: Page
-                    show: true
-                  - title: "Tyk Dashboard v2.4"
-                    path: "/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.4"
-                    category: Page
-                    show: true
-              - title: "Release highlights and upgrades"
-                category: Directory
-                show: False
-                menu:
           - title: "Tyk Classic Developer Portal"
             category: Directory
             show: True
@@ -3144,10 +2931,6 @@ menu:
                     path: /troubleshooting/tyk-dashboard/receive-csrf-error-developer-portal
                     category: Page
                     show: True
-              - title: "Release notes"
-                category: Directory
-                show: False
-                menu:
       - title: "Universal Data Graph (UDG)"
         category: Directory
         show: True
@@ -3217,10 +3000,6 @@ menu:
             show: False
             menu:
           - title: "Troubleshooting"
-            category: Directory
-            show: False
-            menu:
-          - title: "Technical release notes"
             category: Directory
             show: False
             menu:
@@ -3472,78 +3251,6 @@ menu:
                 path: /product-stack/tyk-enterprise-developer-portal/deploy/configuration
                 category: Page
                 show: True
-          - title: "Release notes"
-            category: Directory
-            show: True
-            menu:
-              - title: "Version 1.12.0"
-                path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.12.0
-                category: Page
-                show: True
-              - title: "Version 1.11.0"
-                path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.11.0
-                category: Page
-                show: True
-              - title: "Version 1.10.0"
-                path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.10.0
-                category: Page
-                show: True
-              - title: "Version 1.9.0"
-                path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.9.0
-                category: Page
-                show: True
-              - title: "Version 1.8.5"
-                path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.5
-                category: Page
-                show: True
-              - title: "Version 1.8.4"
-                path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.4
-                category: Page
-                show: True
-              - title: "Version 1.8.3"
-                path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.3
-                category: Page
-                show: True
-              - title: "Version 1.8.2"
-                path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.2
-                category: Page
-                show: True
-              - title: "Version 1.8.1"
-                path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.1
-                category: Page
-                show: True
-              - title: "Version 1.8.0"
-                path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.0
-                category: Page
-                show: True
-              - title: "Version 1.7.0"
-                path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0
-                category: Page
-                show: True
-              - title: "Version 1.6.0"
-                path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.6.0
-                category: Page
-                show: True
-              - title: "Version 1.5.0"
-                path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.5.0
-                category: Page
-                show: True
-              - title: "Version 1.4.0"
-                path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.4.0
-                category: Page
-                show: True
-              - title: "Version 1.3.0"
-                path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.3.0
-                category: Page
-                show: True
-              - title: "Version 1.2.0"
-                path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.2.0
-                category: Page
-                show: True
-              - title: "Version 1.1.0"
-                path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.1.0
-                category: Page
-                show: True
           - title: "API documentation"
             category: Directory
             show: True
@@ -3620,42 +3327,6 @@ menu:
             category: Directory
             show: False
             menu:
-          - title: "Release notes"
-            category: Directory
-            show: True
-            menu:
-              - title: "MDCB v2.7"
-                path: /product-stack/tyk-enterprise-mdcb/release-notes/version-2.7
-                category: Page
-                show: True
-              - title: "MDCB v2.6"
-                path: /product-stack/tyk-enterprise-mdcb/release-notes/version-2.6
-                category: Page
-                show: True
-              - title: "MDCB v2.5"
-                path: /product-stack/tyk-enterprise-mdcb/release-notes/version-2.5
-                category: Page
-                show: True
-              - title: "MDCB v2.4"
-                path: /product-stack/tyk-enterprise-mdcb/release-notes/version-2.4
-                category: Page
-                show: True
-              - title: "MDCB v2.3"
-                path: /release-notes/mdcb-2.3
-                category: Page
-                show: True
-              - title: "MDCB v2.2"
-                path: /release-notes/mdcb-2.2
-                category: Page
-                show: True
-              - title: "MDCB v2.1"
-                path: /release-notes/mdcb-2.1
-                category: Page
-                show: True
-              - title: "MDCB v2.0"
-                path: /release-notes/mdcb-2.0
-                category: Page
-                show: True
       - title: "Tyk Pump (Open Source)"
         category: Directory
         show: True
@@ -3776,45 +3447,10 @@ menu:
                 path: /tyk-stack/tyk-pump/tyk-pump-configuration/graceful-shutdowm
                 category: Page
                 show: True
-          - title: "Release notes"
-            category: Directory
-            show: False
-            menu:
-              - title: "Changelog"
-                category: Page
-                show: False
-              - title: "Old releases"
-                category: Directory
-                show: False
-                menu:
-              - title: "Release highlights and upgrades"
-                category: Directory
-                show: False
-                menu:
           - title: "Supported Backends"
             path: /tyk-stack/tyk-pump/other-data-stores
             category: Page
             show: True
-          - title: "Release notes"
-            category: Directory
-            show: True
-            menu:
-              - title: "Pump v1.11"
-                path: /product-stack/tyk-pump/release-notes/pump-1.11
-                category: Page
-                show: True
-              - title: "Pump v1.10"
-                path: /product-stack/tyk-pump/release-notes/pump-1.10
-                category: Page
-                show: True
-              - title: "Pump v1.9"
-                path: /product-stack/tyk-pump/release-notes/pump-1.9
-                category: Page
-                show: True
-              - title: "Pump v1.8"
-                path: /release-notes/pump-1.8
-                category: Page
-                show: True
       - title: "Tyk Operator"
         category: Directory
         show: True
@@ -3829,34 +3465,6 @@ menu:
                 show: True
               - title: "Custom Plugins"
                 path: /product-stack/tyk-operator/advanced-configurations/custom-plugins
-                category: Page
-                show: True
-          - title: "Release notes"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /product-stack/tyk-operator/release-notes/overview
-                category: Page
-                show: True
-              - title: "Tyk Operator v1.1"
-                path: /product-stack/tyk-operator/release-notes/operator-1.1
-                category: Page
-                show: True
-              - title: "Tyk Operator v1.0"
-                path: /product-stack/tyk-operator/release-notes/operator-1.0
-                category: Page
-                show: True
-              - title: "Tyk Operator v0.18"
-                path: /product-stack/tyk-operator/release-notes/operator-0.18
-                category: Page
-                show: True
-              - title: "Tyk Operator v0.17"
-                path: /product-stack/tyk-operator/release-notes/operator-0.17
-                category: Page
-                show: True
-              - title: "Tyk Operator v0.16"
-                path: /product-stack/tyk-operator/release-notes/operator-0.16
                 category: Page
                 show: True
       - title: "Tyk Streams"
@@ -4017,24 +3625,8 @@ menu:
             show: True
       - title: "Tyk Sync"
         category: Directory
-        show: True
+        show: False
         menu:
-          - title: "Release notes"
-            category: Directory
-            show: True
-            menu:
-              - title: "Tyk Sync v2.0"
-                path: /product-stack/tyk-sync/release-notes/sync-2.0
-                category: Page
-                show: True
-              - title: "Tyk Sync v1.5"
-                path: /product-stack/tyk-sync/release-notes/sync-1.5
-                category: Page
-                show: True
-              - title: "Tyk Sync v1.4"
-                path: /product-stack/tyk-sync/release-notes/sync-1.4
-                category: Page
-                show: True
       - title: "Tyk Identity Broker (Open Source)"
         category: Directory
         show: True
@@ -4071,14 +3663,6 @@ menu:
                 path: /tyk-configuration-reference/tyk-identity-broker-configuration
                 category: Page
                 show: True
-          - title: "Release Notes"
-            category: Directory
-            show: True
-            menu:
-              - title: "Tyk Identity Broker 1.6"
-                path: /product-stack/tyk-identity-broker/release-notes/tib-v1.6
-                category: Page
-                show: True
       - title: "Tyk Helm Charts (Open Source)"
         category: Directory
         show: True
@@ -4103,38 +3687,6 @@ menu:
             path: /product-stack/tyk-charts/tyk-oss-chart
             category: Page
             show: True
-          - title: "Release Notes"
-            category: Directory
-            show: True
-            menu:
-              - title: "Tyk Charts 2.2"
-                path: /product-stack/tyk-charts/release-notes/version-2.2
-                category: Page
-                show: True
-              - title: "Tyk Charts 2.1"
-                path: /product-stack/tyk-charts/release-notes/version-2.1
-                category: Page
-                show: True
-              - title: "Tyk Charts 2.0"
-                path: /product-stack/tyk-charts/release-notes/version-2.0
-                category: Page
-                show: True
-              - title: "Tyk Charts 1.6"
-                path: /product-stack/tyk-charts/release-notes/version-1.6
-                category: Page
-                show: True
-              - title: "Tyk Charts 1.5"
-                path: /product-stack/tyk-charts/release-notes/version-1.5
-                category: Page
-                show: True
-              - title: "Tyk Charts 1.4"
-                path: /product-stack/tyk-charts/release-notes/version-1.4
-                category: Page
-                show: True
-              - title: "Tyk Charts 1.3"
-                path: /product-stack/tyk-charts/release-notes/version-1.3
-                category: Page
-                show: True
   - title: "Developer Support"
     path: /frequently-asked-questions/faq
     category: Label
@@ -4180,26 +3732,6 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Special Releases and Features"
-        category: Directory
-        show: True
-        menu:
-          - title: "Long Term Support Releases"
-            path: /developer-support/special-releases-and-features/long-term-support-releases
-            category: Page
-            show: True
-          - title: "Lab Releases"
-            path: /developer-support/special-releases-and-features/lab-releases
-            category: Page
-            show: True
-          - title: "Early Access Features"
-            path: /developer-support/special-releases-and-features/early-access-features
-            category: Page
-            show: True
-          - title: "FIPS Releases"
-            path: /developer-support/special-releases-and-features/fips-release
-            category: Page
-            show: True
       - title: "Frequently Asked Questions"
         category: Directory
         show: True
@@ -4326,14 +3858,58 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Latest Tyk Releases"
+          path: /developer-support/release-notes/overview
+          category: Page
+          show: True
+        - title: "Gateway"
+          path: /developer-support/release-notes/gateway
+          category: Page
+          show: True
+        - title: "Dashboard"
+          path: /developer-support/release-notes/dashboard
+          category: Page
+          show: True
+        - title: "Pump"
+          path: /developer-support/release-notes/pump
+          category: Page
+          show: True
+        - title: "Sync"
+          path: /developer-support/release-notes/sync
+          category: Page
+          show: True
+        - title: "Multi Data Center Bridge"
+          path: /developer-support/release-notes/mdcb
+          category: Page
+          show: True
+        - title: "Enterprise Developer Portal"
+          path: /developer-support/release-notes/portal
+          category: Page
+          show: True
+        - title: "Tyk Operator"
+          path: /developer-support/release-notes/operator
+          category: Page
+          show: True
+        - title: "Tyk Chart"
+          path: /developer-support/release-notes/helm-chart
+          category: Page
+          show: True
+        - title: "Tyk Identity Broker"
+          path: /developer-support/release-notes/tib
+          category: Page
+          show: True
         - title: "Tyk Cloud"
           path: /developer-support/release-notes/cloud
           category: Page
           show: True
-      - title: "Latest Tyk Releases"
-        path: /developer-support/tyk-release-summary/overview
-        category: Page
-        show: True
+        - title: "Archived Releases"
+          path: /developer-support/release-notes/archived
+          category: Page
+          show: True
+        - title: "Special Releases"
+          path: /developer-support/release-notes/special-releases
+          category: Page
+          show: True
       - title: "Documentation Projects"
         category: Directory
         show: True
