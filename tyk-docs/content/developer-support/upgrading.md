@@ -129,7 +129,7 @@ Tyk is compatible with both rolling and blue-green upgrade strategies.
 
 A rolling upgrade updates servers incrementally rather than simultaneously. This approach helps reduce application downtime and mitigates the risk of unforeseen consequences or errors during software updates.
 
-##### Steps for Rolling Upgrade:
+**Steps for Rolling Upgrade:**
 1. **Redundancy:** Ensure there are at least two instances of each Tyk component that needs upgrading.
 2. **Load Balancer:** Use a load balancer to distribute traffic for the Dashboard and Gateway components, ensuring continuous availability during the upgrade process. Note that the Pump operates with one-way traffic and does not require load balancing.
 3. **Upgrade Process:**
@@ -141,7 +141,7 @@ A rolling upgrade updates servers incrementally rather than simultaneously. This
 
 A blue-green deployment involves two identical production environments, labeled blue and green. At any time, only one environment is live and serving traffic, while the other is inactive. For example, if the blue environment is live, the green environment will be inactive, and vice versa.
 
-##### Steps for Blue-Green Upgrade:
+**Steps for Blue-Green Upgrade:**
 1. **Replication:** Replicate the entire environment into a separate environment.
 2. **Traffic Routing:** Use a load balancer or DNS to route traffic to the green environment (current production) while the blue environment undergoes the upgrade.
 3. **Upgrade Process:**
@@ -152,46 +152,32 @@ A blue-green deployment involves two identical production environments, labeled 
 
 ## Deployment Model
 
-### Tyk Cloud upgrade guide
+### Tyk Cloud Upgrade Guide
 
 #### Tyk Cloud
 
-The following guide explains how to upgrade your Tyk deployment when using *Tyk Cloud*.
+**Preparations**
 
-##### Preparations
 Before proceeding with the upgrade process, ensure that you have thoroughly reviewed and completed the steps outlined in
 the [upgrade guidelines]({{< ref "developer-support/upgrading-tyk/preparations/upgrade-guidelines" >}}).
 Once you have adequately prepared, follow the instructions below to upgrade your Tyk components and plugins in this
 specified order. Adhering to the provided sequence is crucial for a smooth and successful upgrade.
 
----
-
-##### Upgrade Guide Video
-Please refer to our [upgrade guide video](https://tyk-1.wistia.com/medias/t0oamm63ae) below for visual guidance:
-
-<div>
-<iframe src="https://fast.wistia.net/embed/iframe/t0oamm63ae" title="Wistia video player" allowfullscreen frameborder="0" scrolling="no" class="responsive-frame" name="wistia_embed" ></iframe>
-</div>
-
----
-
-##### Step #1: Upgrade Control Plane
+**Step 1. Upgrade Control Plane**
 
 Follow our guide for [upgrading Cloud Control Planes]({{< ref "tyk-cloud/environments-&-deployments/managing-control-planes#upgrade-control-planes" >}}).
 
----
-
-##### Step #2: Upgrade Go Plugins
+**Step 2. Upgrade Go Plugins**
 
 Follow our guide for deploying your [Go plugins on Tyk Cloud]({{< ref "/developer-support/upgrading-tyk/deployment-model/cloud/upgrade-go-plugin" >}}). Subsequently, follow the steps below according to the target upgrade version of the Gateway.
 
-###### Gateway Versions < 4.1.0.
+**Gateway Versions < 4.1.0.**
 
 1. Proceed with [upgrading your Tyk Data Plane (Gateway)](#upgrading-cloud-data-planes)
 2. Update the [custom_middleware_bundle]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file containing your upgrade plugin.
 3. Validate that your plugin is working per your expectations.
 
-###### Gateway Versions >= 4.1.0
+**Gateway Versions >= 4.1.0**
 
 1. Update the [custom_middleware_bundle]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file containing your upgraded plugin.
 
@@ -207,9 +193,16 @@ Follow our guide for deploying your [Go plugins on Tyk Cloud]({{< ref "/develope
 3. Proceed with [upgrading your Tyk Data Plane (Gateway)](#upgrading-cloud-data-planes). Given that you loaded your target version plugin in step 1, this version will be loaded automatically once you upgrade.
 4. Validate that your plugin is working per your expectations, as the Gateway now should have loaded the plugin for the target version automatically.
 
-##### Step #3: Upgrade Cloud Data Plane {#upgrading-cloud-data-planes}
+**Step 3. Upgrade Cloud Data Plane**
 
 Follow our guide for [upgrading Cloud Data Planes]({{< ref "tyk-cloud/environments-&-deployments/managing-gateways#upgrade-cloud-data-planes" >}}).
+
+**Upgrade Guide Video**
+Please refer to our [upgrade guide video](https://tyk-1.wistia.com/medias/t0oamm63ae) below for visual guidance:
+
+<div>
+<iframe src="https://fast.wistia.net/embed/iframe/t0oamm63ae" title="Wistia video player" allowfullscreen frameborder="0" scrolling="no" class="responsive-frame" name="wistia_embed" ></iframe>
+</div>
 
 #### Tyk Hybrid
 
@@ -231,7 +224,7 @@ After following the guidelines for [preparing for upgrade]({{< ref "developer-su
 follow the instructions below to upgrade your self-managed Tyk components and plugins.
 
 
-##### Upgrade order
+**Upgrade Order**
 
 1. Upgrade the control plane on Tyk Cloud
 2. Upgrade your Tyk self-managed data plane. When upgrading your data plane, upgrade the components in the
@@ -240,17 +233,15 @@ following order:
    2. Hybrid Pump (if applicable)
    3. Hybrid Gateway(s)
 
----
-
-##### 1. Upgrade your control plane
+**Step 1. Upgrade your control plane**
 
 See Tyk Guide for how to [upgrade Control Planes]({{< ref "tyk-cloud/environments-&-deployments/managing-control-planes#upgrade-control-planes" >}})
 
-##### 2.1. Upgrade Go plugins
+**Step 2 Upgrade Go plugins**
 
 Follow our guide for [upgrading your Go plugins on Tyk Cloud]({{< ref "/developer-support/upgrading-tyk/deployment-model/cloud/upgrade-go-plugin" >}}). Subsequently, follow the steps below according to the target upgrade version of the Gateway.
 
-##### Gateway Versions < 4.1.0
+**Gateway Versions < 4.1.0**
 
 1. Proceed with upgrading your [Tyk Data Plane Hybrid Gateways](#upgrading-data-plane-hybrid-gateways).
 2. Update the [custom_middleware_bundle]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}})
@@ -258,7 +249,7 @@ field in the API Definitions of all APIs that use your plugin. The field should 
 containing your upgrade plugin.
 3. Validate that your plugin is working per your expectations.
 
-##### Gateway Versions >= 4.1.0
+**Gateway Versions >= 4.1.0**
 
 1. Update the [custom_middleware_bundle]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}})
 field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file
@@ -278,7 +269,7 @@ for your current version still.
 loaded your target version plugin in step 1, this version will be loaded automatically once you upgrade.
 4. Validate that your plugin is working per your expectations.
 
-##### 3. Upgrade your Tyk Data Plane Hybrid Gateway(s){#upgrading-data-plane-hybrid-gateways}
+**Step 3. Upgrade your Tyk Data Plane Hybrid Gateway(s)**
 
 Follow the instructions for component deployment type:
 
@@ -287,9 +278,7 @@ Follow the instructions for component deployment type:
 - [Linux Debian]({{< ref "/developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-deb#upgrade-tyk-packages" >}})
 - [Linux RHEL/CENTOS]({{< ref "/developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-rpm#upgrade-tyk-packages" >}})
 
----
-
-##### Upgrade Guide Video
+**Upgrade Guide Video**
 
 Please refer to our [video](https://tyk-1.wistia.com/medias/4nf9fggatz) for further supporting with upgrading Tyk Self-Managed (RPM).
 
@@ -309,7 +298,7 @@ This guide explains how to deploy your custom Go plugins on Tyk Cloud:
 | [Path 1](#path-1)    | < 4.1.0 | < 4.1.0 |
 | [Path 2](#path-2)    | >= 4.1.0 | >= 4.2.0 |
 
-##### Path 1 - Current Version < 4.1.0 and Target Version < 4.1.0 {#path-1}
+**Path 1 - Current Version < 4.1.0 and Target Version < 4.1.0**
 
 1. [Create a plugin bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) that includes the newly compiled version
 
@@ -344,7 +333,7 @@ This guide explains how to deploy your custom Go plugins on Tyk Cloud:
 2. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
 
 
-##### Path 2 - Current Version >= 4.1.0 and Target Version >= 4.2.0 {#path-2}
+**Path 2 - Current Version >= 4.1.0 and Target Version >= 4.2.0**
 
 1. [Create a plugin bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) that includes both your current version’s plugin along with the newly compiled version
 
@@ -388,9 +377,166 @@ This guide explains how to deploy your custom Go plugins on Tyk Cloud:
 2. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
 
 
-### Tyk Self Managed upgrade guide 
+### Tyk Self Managed Upgrade Guide 
 
-### Open source upgrade guide 
+**Preparations**
+
+Before proceeding with the upgrade process, ensure that you have thoroughly reviewed and completed the steps outlined in
+the [upgrade guidelines]({{< ref "developer-support/upgrading-tyk/preparations/upgrade-guidelines" >}}).
+Once you have adequately prepared, follow the instructions below to upgrade your Tyk components and plugins in this
+specified order. Adhering to the provided sequence is crucial for a smooth and successful upgrade.
+
+**Upgrade Order**
+
+In a production environment where the Dashboard, Gateway, and Pump are installed on separate machines, you should always
+upgrade components in the following sequence:
+
+1. Tyk Dashboard
+2. Tyk Gateway
+3. Tyk Pump
+
+**Upgrade order with Multi Data Center Bridge (MDCB)**
+
+For Enterprise customers, the Tyk control plane contains all the standard components of a Self-Managed installation with
+the addition of the [Multi Data Center Bridge]({{< ref "tyk-multi-data-centre" >}}) (MDCB).
+
+Our recommended sequence for upgrading a self-managed MDCB installation is as follows:
+
+**Stage 1: Upgrade the components of the **Tyk control plane** in this order:**
+
+1. MDCB
+2. Tyk Pump (if applicable)
+3. Tyk Dashboard
+4. Tyk Gateway
+
+**Stage 2: Next, upgrade the components in **Tyk data planes**, in this order:**
+
+1. Go Plugins (if applicable)
+2. Tyk Pump (if applicable)
+3. Tyk Gateway
+
+This sequence of control plane first and data plane second ensures:
+1. Forward compatibility - ensures that we don't have [forward-compatibility](https://en.wikipedia.org/wiki/Forward_compatibility#:~:text=Forward%20compatibility%20for%20the%20older,format%20of%20the%20older%20system.)
+issues of new Gateway using old MDCB.
+2. Connectivity issues - It's extremely fast to see if there are connectivity issues and gateways (in Hybrid mode) will
+continue to function even if disconnected from their control plane.
+
+#### Upgrade guides
+We provide upgrade guides for Linux, Docker, Helm and K8S. To continue the upgrade process, please refer to the relevant
+installation guide under this section.
+
+#### Docker
+
+**Step 1. Upgrade Tyk Dashboard**
+
+Upgrading *Tyk Dashboard* is the same as *Tyk Gateway* just with the name of the docker image of tyk dashboard
+`tykio/tyk-dashboard`. Please check the instruction for Tyk Gateway in the next section.
+
+**Step 2. Upgrade Tyk Gateway and Tyk Pump**
+
+Follow our [Tyk OSS guide]({{< ref "developer-support/upgrading-tyk/go-plugins" >}}) for upgrading Tyk Gateway and Tyk Pump
+
+#### Helm
+
+{{< note success >}}
+**Upgrade instructions for *Tyk Dashboard*, *Tyk Pump* and *MDCB***
+
+The instruction below refer to upgrading *Tyk Gateway*. You can follow the same steps for *Tyk Dashboard*, *Tyk Pump*
+and *MDCB*.
+
+{{< /note >}}
+
+**Upgrade Tyk Gateway**
+
+1. Backup your gateway config file (`tyk.conf` or the name you chose for it), `.env` and `values.yaml`. Even if
+you’re using the environment variables from the `values.yaml` to define your configuration, there still might be a config
+file used and loaded with field values you relay on.
+2. Backup your `.env` and `values.yaml`
+3. Update the image version in your values.yaml
+   <br>
+   For example, in this [values.yaml](https://github.com/TykTechnologies/tyk-charts/blob/83de0a184014cd027ec6294b77d034d6dcaa2a10/components/tyk-gateway/values.yaml#L142)
+   change the version of the tag `tag: v5.3` to the version you want.
+4. Run `Helm upgrade` with your relevant `values.yaml` file/s.
+   <br>
+   Check the [helm upgrade docs](https://helm.sh/docs/helm/helm_upgrade/) for more details on the `upgrade` command.
+
+#### Kubernetes
+
+{{< note success >}}
+**Upgrade instructions for *Tyk Dashboard*, *Tyk Pump* and *MDCB***
+
+The instruction below refer to upgrading *Tyk Gateway*. You can follow the same steps for *Tyk Dashboard*, *Tyk Pump*
+and *MDCB*.
+
+{{< /note >}}
+
+
+**Simple Kubernetes Environment Upgrade**
+
+When upgrading a non-production environment, where it's okay to have a brief downtime and you can simply restart your
+gateways, the upgrade is trivial as with any other image you want to upgrade in Kubernetes:
+
+In a similar way to docker:
+1. Backup your gateway config file (`tyk.conf` or the name you chose for it)
+2. Update the image version in the manifest file.
+3. Apply the file/s using kubectl
+
+```console
+$ kubectl apply -f .
+``` 
+You will see that the deployment has changed.
+
+Now you can check the gateway pod to see the latest events (do `kubectl get pods` to get the pod name):
+    
+```console
+$ kubectl describe pods <gateway pod name>
+```
+You should see that the image was pulled, the container got created and the gateway started running again, similar to the following output:
+
+```bash
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  118s  default-scheduler  Successfully assigned tyk/tyk-gtw-89dc9f554-5487c to docker-desktop
+  Normal  Pulling    117s  kubelet            Pulling image "tykio/tyk-gateway:v5.0"
+  Normal  Pulled     70s   kubelet            Successfully pulled image "tykio/tyk-gateway:v5.0" in 47.245940479s
+  Normal  Created    70s   kubelet            Created container tyk-gtw
+  Normal  Started    70s   kubelet            Started container tyk-gtw
+```
+
+4. Check the log to see that the new version is used and if the gateway is up and running
+```console
+$ kubectl logs service/gateway-svc-tyk-gateway-tyk-headless --tail=100 --follow 
+Defaulted container "gateway-tyk-headless" out of: gateway-tyk-headless, setup-directories (init)
+time="Jul 17 20:58:27" level=info msg="Tyk API Gateway 5.1.0" prefix=main
+...
+```
+5. Check the gateway is healthy
+```console
+$ curl  localhost:8080/hello | jq .
+{
+  "status": "pass",
+  "version": "5.1.0",
+  "description": "Tyk GW",
+  "details": {
+    "redis": {
+      "status": "pass",
+      "componentType": "datastore",
+      "time": "2023-07-17T21:07:27Z"
+    }
+  }
+}
+```
+
+**Upgrade Tyk K8S Demo deployment**
+
+1. In the [Tyk k8s Demo](https://github.com/TykTechnologies/tyk-k8s-demo/blob/main/README.md) repo, change the version in [.env file](https://github.com/TykTechnologies/tyk-k8s-demo/blob/893ce2ac8b13b4de600003cfb1d3d8d1625125c3/.env.example#L2), `GATEWAY_VERSION=v5.1` to the version you want
+2. Restart the deployment
+3. Check the log file
+
+
+
+### Open Source Upgrade Guide 
 
 The following guide explains how to upgrade Tyk Gateway when using Docker. For guides of other installation types check
 the "Self-manged" section, and look for the instruction regarding Tyk Gateway.
@@ -400,17 +546,18 @@ the [pre-upgrade guidelines]({{< ref "developer-support/upgrading-tyk/preparatio
 have adequately prepared, follow the instructions below to upgrade your Tyk components and plugins in this specified
 order. Adhering to the provided sequence is crucial for a smooth and successful upgrade.
 
----
+**Upgrade Order**
 
-#### Upgrade order
 In a production environment, where we recommend installing the Dashboard, Gateway, and Pump on separate machines, you
 should upgrade components in the following sequence:
 
 1. Tyk Gateway
 2. Tyk Pump
 
-#### 1. Upgrade Tyk Gateway
-##### Development Environment Upgrade
+**Steps for Upgrading Tyk Gateway**
+
+**Development Environment Upgrade**
+
 In a development environment where you can simply restart your gateways, follow these steps:
 
 1. Backup your gateway config file (`tyk.conf` or the name you chose for it)
@@ -429,7 +576,8 @@ $ docker run \
 
 For full installation details, check the usual [installation page]({{< ref "tyk-oss/ce-docker" >}}).
 
-###### Docker compose upgrade in a simple environment
+**Docker compose upgrade in a simple environment**
+
 For non-production environments where brief downtime is acceptable, you can upgrade by simply restarting your gateways.
 Follow these steps:
 
@@ -460,7 +608,8 @@ $ curl  localhost:8080/hello | jq .
 }
 ```
 
-##### Production Environment Upgrade
+**Production Environment Upgrade**
+
 1. Backup your Gateway config file
 2. Use Docker's best practices for a [rolling update](https://docs.docker.com/engine/swarm/swarm-tutorial/rolling-update/)
 3. Review and complete the steps outlined in the [pre-upgrade guidelines]({{< ref "developer-support/upgrading-tyk/preparations/upgrade-guidelines" >}}).
@@ -469,12 +618,13 @@ If your script is doing `docker pull`, update the version of the gateway in that
 5. Check the log to see that the new version is used and if the gateway is up and running
 6. Check that the Gateway is healthy using the open */hello* API ( run `curl  localhost:8080/hello | jq .`)
 
-#### 2. Upgrade Tyk Pump
+**Upgrade Tyk Pump**
+
 Docker Instructions for upgrading *Tyk Pump* is the same as the above for *Tyk Gateway* just with
 the name of the docker image of Tyk Pump `tykio/tyk-pump-docker-pub`
 
 
-### Go plugins upgrade guide
+### Go Plugins Upgrade Guide
 
 This guide shows you how to compile your custom Go plugins for upgrade.
 
