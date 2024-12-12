@@ -9,16 +9,19 @@ tags:
     - Basic Auth
 description: Authenticating Tyk Gateway with upstream services
 date: "2024-11-18"
+
 ---
 
-Tyk Gateway sits between your clients and your services, securely routing requests and responses. For each API proxy that you expose on Tyk, you can configure a range of different methods that clients must use to identify (authenticate) themselves to Tyk Gateway. These are described in detail in the [Client Authentication]({{< ref "api-management/authentication-authorization" >}}) section.
+## Introduction
+
+Tyk Gateway sits between your clients and your services, securely routing requests and responses. For each API proxy that you expose on Tyk, you can configure a range of different methods that clients must use to identify (authenticate) themselves to Tyk Gateway. These are described in detail in the [Client Authentication]({{< ref "api-management/client-authentication" >}}) section.
 
 In the same way as you use Client Authentication to securely confirm the identity of the API clients, your upstream services probably need to securely confirm the identity of their client - namely Tyk. This is where Tyk's flexible **Upstream Authentication** capability comes in.
 
 When using Tyk, you can choose from a range of authentication methods for each upstream API:
-- [Mutual TLS]({{< ref "api-management/authentication-authorization#upstream-mtls" >}})
+- [Mutual TLS]({{< ref "api-management/client-authentication#upstream-mtls" >}})
 - [Token-based authentication]({{< ref "#token-based-authentication" >}})
-- [Request signing using HMAC]({{< ref "api-management/authentication-authorization#upstream-hmac-request-signing" >}})
+- [Request signing using HMAC]({{< ref "api-management/client-authentication#upstream-hmac-request-signing" >}})
 - [Basic Authentication](#basic-authentication)
 - [OAuth 2.0](#upstream-oauth-20)
     - [OAuth 2.0 Client Credentials](#oauth-client-credentials)
@@ -48,7 +51,7 @@ Token-based authentication (also referred to as Auth Token) is a method whereby 
 
 The server determines how the key should be provided - typically in a request header, cookie or query parameter.
 
-Tyk supports [Auth Token]({{< ref "api-management/authentication-authorization#use-bearer-tokens" >}}) as a method for authenticating **clients** with the **Gateway** - you can use Tyk Gateway or Dashboard to generate access *keys* for an Auth Token protected API as explained in the [documentation]({{< ref "api-management/authentication-authorization#enable-bearer-tokens-in-your-api-definition-with-the-dashboard" >}}). The client must then provide the *key* in the appropriate parameter for each request.
+Tyk supports [Auth Token]({{< ref "api-management/client-authentication#use-auth-tokens" >}}) as a method for authenticating **clients** with the **Gateway** - you can use Tyk Gateway or Dashboard to generate access *keys* for an Auth Token protected API as explained in the [documentation]({{< ref "api-management/client-authentication#enable-auth-bearer-tokens-in-your-api-definition-with-the-dashboard" >}}). The client must then provide the *key* in the appropriate parameter for each request.
 
 If your **upstream service** is protected using Auth Token then similarly, Tyk will need to provide a token, issued by the upstream, in the request.
 
@@ -77,7 +80,7 @@ An API request made using Basic Authentication will have an `Authorization` head
 
 The `<credentials>` are a base64 encoded concatenation of a client username and password, joined by a single colon `:`.
 
-Tyk supports Basic Authentication as a method for authenticating **clients** with the **Gateway** - you can use Tyk Gateway or Dashboard to create Basic Auth users, as explained in the [documentation]({{< ref "api-management/authentication-authorization#protect-your-api-with-basic-authentication" >}}).
+Tyk supports Basic Authentication as a method for authenticating **clients** with the **Gateway** - you can use Tyk Gateway or Dashboard to create Basic Auth users, as explained in the [documentation]({{< ref "api-management/client-authentication#protect-your-api-with-basic-authentication" >}}).
 
 If your **upstream service** is protected using Basic Authentication then similarly, Tyk will need to provide user credentials, registered with the upstream, in the request.
 
@@ -192,7 +195,7 @@ The Authentication Server (auth server) has the concept of an OAuth Client - thi
 
 The auth server is often managed by a trusted third party Identity Provider (IdP) such as Okta or Auth0.
 
-Tyk supports OAuth 2.0 as a method for authenticating **clients** with the **Gateway** - you can use Tyk's own auth server functionality via the [Tyk OAuth 2.0]({{< ref "api-management/authentication-authorization#set-up-oauth-20-authorization" >}}) auth method or obtain the access token via a third party auth server and use the [JWT Auth]({{< ref "api-management/authentication-authorization#use-json-web-tokens-jwt" >}}) method.
+Tyk supports OAuth 2.0 as a method for authenticating **clients** with the **Gateway** - you can use Tyk's own auth server functionality via the [Tyk OAuth 2.0]({{< ref "api-management/client-authentication#use-tyk-as-an-oauth-20-authorization-server" >}}) auth method or obtain the access token via a third party auth server and use the [JWT Auth]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}) method.
 
 If your **upstream service** is protected using OAuth 2.0 then similarly, Tyk will need to obtain a valid access token to provide in the request to the upstream.
 

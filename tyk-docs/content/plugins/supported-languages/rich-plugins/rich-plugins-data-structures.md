@@ -270,7 +270,7 @@ For further details see [BasicAuthData](#basicauthdata).
 Added to sessions where a Tyk key (embedding a shared secret) is used as the public key for signing the JWT. The JWT token's KID header value references the ID of a Tyk key. See [JWTData](#jwtdata) for an example.
 
 `hmac_enabled`
-When set to `true` this indicates generation of a [HMAC signature]({{< ref "/api-management/authentication-authorization#sign-requests-with-hmac" >}}) using the secret provided in `hmac_secret`. If the generated signature matches the signature provided in the *Authorization* header then authentication of the request has passed.
+When set to `true` this indicates generation of a [HMAC signature]({{< ref "/api-management/client-authentication#sign-requests-with-hmac" >}}) using the secret provided in `hmac_secret`. If the generated signature matches the signature provided in the *Authorization* header then authentication of the request has passed.
 
 `hmac_secret`
 The value of the HMAC shared secret.
@@ -312,7 +312,7 @@ A UNIX timestamp that represents the time the session was last updated. Applicab
 This is a UNIX timestamp that signifies when a cached key or ID will expire. This relates to custom authentication, where authenticated keys can be cached to save repeated requests to the gRPC server. See [id_extractor]({{< ref "plugins/plugin-types/auth-plugins/id-extractor" >}}) and [Auth Plugins]({{< ref "plugins/plugin-types/auth-plugins/auth-plugins" >}}) for additional information.
 
 `session_lifetime`
-UNIX timestamp that denotes when the key will automatically expire. Any·subsequent API request made using the key will be rejected. Overrides the global session lifetime. See [Key Expiry and Deletion]({{< ref "/api-management/authentication-authorization#set-physical-key-expiry-and-deletion" >}}) for more information.
+UNIX timestamp that denotes when the key will automatically expire. Any·subsequent API request made using the key will be rejected. Overrides the global session lifetime. See [Key Expiry and Deletion]({{< ref "/api-management/client-authentication#set-physical-key-expiry-and-deletion" >}}) for more information.
 
 ---
 
