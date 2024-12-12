@@ -3859,7 +3859,7 @@ menu:
         show: True
         menu:
         - title: "Latest Tyk Releases"
-          path: /developer-support/release-notes/latest
+          path: /developer-support/release-notes/overview
           category: Page
           show: True
         - title: "Gateway"
