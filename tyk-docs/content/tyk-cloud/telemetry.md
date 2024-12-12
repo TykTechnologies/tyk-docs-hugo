@@ -13,7 +13,7 @@ This trace data helps you understand request paths, identify bottlenecks, and tr
 
 We support distributed tracing for `Cloud Data Plane` deployments. You can enable it while creating or updating after setting up telemetry. 
 
-This feature is built on top of Tyk Gateway's OpenTelemetry [integration]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview.md" >}}), which provides detailed information about the tracing capabilities and implementation.
+This feature is built on top of [Tyk Gateway OpenTelemetry]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview.md" >}}), which provides detailed information about the tracing capabilities and implementation.
 
 ## Available Telemetry Providers
 
