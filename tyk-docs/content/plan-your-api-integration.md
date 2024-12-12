@@ -44,7 +44,7 @@ With your goals in mind, you’ll now design the API:
 - **Define Endpoints and Methods**: Identify the actions your API should allow (e.g., GET for retrieving data, POST for adding data).
 - **Specify Data Models**: Define the format of data exchanged. For instance, will product data include details like price, description, and availability?
   
-**Security Consideration:** Plan how users will [authenticate]({{< ref "api-management/security-best-practices#authentication" >}}). Will they use [tokens]({{< ref "api-management/authentication-authorization#use-bearer-tokens" >}}) or [OAuth]({{< ref "api-management/authentication-authorization#set-up-oauth-20-authorization" >}}) (for user-specific access)? Tyk offers tools to implement any of these methods effectively.
+**Security Consideration:** Plan how users will [authenticate]({{< ref "api-management/security-best-practices#authentication" >}}). Will they use [tokens]({{< ref "api-management/client-authentication#use-auth-tokens" >}}) or [OAuth]({{< ref "api-management/client-authentication#use-tyk-as-an-oauth-20-authorization-server" >}}) (for user-specific access)? Tyk offers tools to implement any of these methods effectively.
 
 #### **Step 3: Document the API**
 

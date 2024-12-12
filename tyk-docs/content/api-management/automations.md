@@ -291,10 +291,10 @@ To address this challenge, Tyk Operator allows you to directly reference certifi
 
 | Certificate Type | Supported in ApiDefinition | Supported in TykOasApiDefinition | Supported in TykStreamsApiDefinition |
 |------------------|-------------|---------|---------|
-| Client certifates | ✅ [Client mTLS]({{<ref "api-management/authentication-authorization#setup-static-mtls-in-tyk-operator-using-the-tyk-classic-api-definition">}}) | ✅ [Client mTLS]({{<ref "api-management/authentication-authorization#setup-static-mtls-in-tyk-operator-using-tyk-oas-api-definition">}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
+| Client certifates | ✅ [Client mTLS]({{<ref "api-management/client-authentication#setup-static-mtls-in-tyk-operator-using-the-tyk-classic-api-definition">}}) | ✅ [Client mTLS]({{<ref "api-management/client-authentication#setup-static-mtls-in-tyk-operator-using-tyk-oas-api-definition">}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
 | Custom domain certificates | ✅ [TLS and SSL]({{<ref "basic-config-and-security/security/tls-and-ssl#tyk-operator-classic">}}) | ✅ [TLS and SSL]({{<ref "basic-config-and-security/security/tls-and-ssl#tyk-operator-oas">}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
 | Public keys pinning | ✅ [Certificate pinning]({{<ref "security/certificate-pinning#tyk-operator-classic">}}) | ✅ [Certificate pinning]({{<ref "security/certificate-pinning#tyk-operator-oas">}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
-| Upstream mTLS | ✅ [Upstream mTLS via Operator]({{<ref "api-management/authentication-authorization#via-tyk-operator-using-the-tyk-classic-api-definition">}}) | ✅ [Upstream mTLS via Operator]({{<ref "api-management/authentication-authorization#tyk-operator-oas">}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
+| Upstream mTLS | ✅ [Upstream mTLS via Operator]({{<ref "api-management/client-authentication#via-tyk-operator-using-the-tyk-classic-api-definition">}}) | ✅ [Upstream mTLS via Operator]({{<ref "api-management/client-authentication#tyk-operator-oas">}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
 
 
 ### Install and Configure Tyk Operator
@@ -823,7 +823,7 @@ In this example, we added the following sections to configure key authentication
 - `security`: Applies the authentication globally to all endpoints.
 - `x-tyk-api-gateway.server.authentication`: Tyk-specific extension to enable the authentication scheme.
 
-You can configure your API for any Tyk supported authentication method by following [Authentication with Tyk OAS]({{<ref "getting-started/key-concepts/authentication">}}) documentation.
+You can configure your API for any Tyk supported authentication method by following [Authentication with Tyk OAS]({{< ref "getting-started/key-concepts/authentication">}}) documentation.
 
 Save your updated API definition in the same file, `oas-api-definition.json`.
 
@@ -1213,7 +1213,7 @@ Client to Gateway Authentication in Tyk ensures secure communication between cli
 
 ##### Keyless (Open)
 
-This configuration allows [keyless (open)]({{<ref "api-management/authentication-authorization#use-open-keyless-authentication">}}) access to the API without any authentication.
+This configuration allows [keyless (open)]({{< ref "api-management/client-authentication#open-no-authentication">}}) access to the API without any authentication.
 
 ```yaml {hl_lines=["7-7"],linenos=false}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -1233,7 +1233,7 @@ spec:
 
 ##### Auth Token (Bearer Token)
 
-This setup requires a [bearer token]({{<ref "api-management/authentication-authorization#use-bearer-tokens">}}) for access.
+This setup requires a [bearer token]({{< ref "api-management/client-authentication#use-auth-tokens">}}) for access.
 
 In the below example, the authentication token is set by default to the `Authorization` header of the request. You can customize this behavior by configuring the following fields:
 
@@ -1242,7 +1242,7 @@ In the below example, the authentication token is set by default to the `Authori
 - `use_param`: Set to true to allow the token to be passed as a query parameter.
 - `param_name`: Specify the parameter name if use_param is enabled.
 - `use_certificate`: Enable client certificate. This allows you to create dynamic keys based on certificates.
-- `validate_signature`: Enable [signature validation]({{<ref "api-management/authentication-authorization#use-bearer-tokens">}}).
+- `validate_signature`: Enable [signature validation]({{< ref "api-management/client-authentication#auth-token-signature-validation">}}).
 
 ```yaml {hl_lines=["13-35"],linenos=false}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -1284,11 +1284,11 @@ spec:
 
 ##### JWT
 
-This configuration uses [JWT tokens]({{<ref "api-management/authentication-authorization#use-json-web-tokens-jwt">}}) for authentication.
+This configuration uses [JWT tokens]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt">}}) for authentication.
 
 Users can configure JWT authentication by defining the following fields:
 
-- `jwt_signing_method`: Specify the method used to sign the JWT. Refer to [JWT Signing Method]({{<ref "api-management/authentication-authorization#set-up-jwt-signing-method">}}) for supported methods.
+- `jwt_signing_method`: Specify the method used to sign the JWT. Refer to [JWT Signing Method]({{< ref "api-management/client-authentication#set-up-jwt-signing-method">}}) for supported methods.
 - `jwt_source`: Specify the public key used for verifying the JWT.
 - `jwt_identity_base_field`: Define the identity source, typically set to `sub` (subject), which uniquely identifies the user or entity.
 - `jwt_policy_field_name`: Specify the claim within the JWT payload that indicates the policy ID to apply.
@@ -1375,7 +1375,7 @@ curl http://localhost:8080/httpbin-jwt1/get -H 'Authorization: Bearer eyJhbGciOi
 
 ##### Basic Authentication
 
-This configuration uses [Basic Authentication]({{<ref "api-management/authentication-authorization#use-basic-authentication">}}), requiring a username and password for access.
+This configuration uses [Basic Authentication]({{< ref "api-management/client-authentication#use-basic-authentication">}}), requiring a username and password for access.
 
 ```yaml {hl_lines=["13-13"],linenos=false}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -1460,9 +1460,9 @@ spec:
 
 ##### Multiple (Chained) Auth
 
-This setup allows for [multiple authentication]({{<ref "api-management/authentication-authorization#multiple-chained-authentication">}}) methods to be chained together, requiring clients to pass through each specified authentication provider.
+This setup allows for [multiple authentication]({{< ref "api-management/client-authentication#combine-authentication-methods">}}) methods to be chained together, requiring clients to pass through each specified authentication provider.
 
-To enable multiple (chained) auth, you should set `base_identity_provided_by` field to one of the supported chained enums. Consult [Enable Multi (Chained) Authentication in your API Definition]({{<ref "api-management/authentication-authorization#enable-multi-chained-authentication-in-your-api-definition">}}) for the supported auths.
+To enable multiple (chained) auth, you should set `base_identity_provided_by` field to one of the supported chained enums. Consult [Enable Multi (Chained) Authentication in your API Definition]({{< ref "api-management/client-authentication#enable-multi-chained-authentication-in-your-api-definition">}}) for the supported auths.
 
 In this example, we are creating an API definition with basic authentication and mTLS with basic authentication as base identity for `httpbin-multiple-authentications`.
 
