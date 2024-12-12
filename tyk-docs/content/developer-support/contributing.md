@@ -91,7 +91,7 @@ For your records, the following sections highlight the existing *INI tier 1 word
 - [enable_ip_blacklisting]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting#ip-blocklist-middleware" >}})
 - [ports_whitelist]({{< ref "key-concepts/tcp-proxy#allowing-specific-ports" >}})
 
-**Tyk Classic API Definition**
+######  Tyk Classic API Definition {#gw-classic-api-definition}
 
 The [Tyk Gateway OpenAPI Document](https://github.com/TykTechnologies/tyk-docs/blob/master/tyk-docs/assets/others/gateway-swagger.yml) (Tyk Gateway swagger), includes references to the following Tyk Classic API Definition parameters:
 

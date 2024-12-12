@@ -209,7 +209,7 @@ Follow our guide for deploying your [Go plugins on Tyk Cloud]({{< ref "/develope
 3. Proceed with [upgrading your Tyk Data Plane (Gateway)](#upgrading-cloud-data-planes). Given that you loaded your target version plugin in step 1, this version will be loaded automatically once you upgrade.
 4. Validate that your plugin is working per your expectations, as the Gateway now should have loaded the plugin for the target version automatically.
 
-**Step 3. Upgrade Cloud Data Plane**
+###### Step 3. Upgrade Cloud Data Plane {#upgrading-cloud-data-planes}
 
 Follow our guide for [upgrading Cloud Data Planes]({{< ref "tyk-cloud/environments-&-deployments/managing-gateways#upgrade-cloud-data-planes" >}}).
 
@@ -285,7 +285,7 @@ for your current version still.
 loaded your target version plugin in step 1, this version will be loaded automatically once you upgrade.
 4. Validate that your plugin is working per your expectations.
 
-**Step 3. Upgrade your Tyk Data Plane Hybrid Gateway(s)**
+###### Step 3. Upgrade your Tyk Data Plane Hybrid Gateway(s){#upgrading-data-plane-hybrid-gateways}
 
 Follow the instructions for component deployment type:
 
