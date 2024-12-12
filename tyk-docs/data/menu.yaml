@@ -3858,8 +3858,8 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Overview"
-          path: /developer-support/release-notes/overview
+        - title: "Latest Tyk Releases"
+          path: /developer-support/release-notes/latest
           category: Page
           show: True
         - title: "Gateway"
