@@ -6,6 +6,13 @@ tags: ["Analytics", "Distributed Analytics", "Redis", "Redis Shards", "analytics
 tags: ["do_not_track", "Analytics", "RPS", "Requests Per Second", "CPU", "high load", "high traffic"]
 aliases:
     - /frequently-asked-questions/check-current-gateway-version/
+    - /developer-support/frequently-asked-questions/what_is_the_performance_impact_of_analytics
+    - /frequently-asked-questions/how-to-backup-tyk-cloud-deployment
+    - /frequently-asked-questions
+    - /frequently-asked-questions/how-to-backup-tyk
+    - /developer-support/frequently-asked-questions/how-to-reduce-cpu-usage-in-a-redis-cluster
+    - /troubleshooting/tyk-installation/couldnt-unmarshal-config-error
+    - /frequently-asked-questions/datadog-logs-showup-as-errors
 
 weight: 230
 menu:

@@ -11,19 +11,19 @@ menu:
 aliases:
   - /developer-support/backups/backup-apis-and-policies
   - /upgrading-tyk
-  -  /developer-support/upgrading-tyk/preparations/upgrade-guidelines
-  -  /developer-support/upgrading-tyk/preparations/upgrade-strategies
-  -  /developer-support/upgrading-tyk/deployment-model/cloud/upgrade-cloud-saas
-  -  /developer-support/upgrading-tyk/deployment-model/cloud/upgrade-hybrid
-  -  /developer-support/upgrading-tyk/deployment-model/cloud/upgrade-go-plugin
-  -  /developer-support/upgrading-tyk/deployment-model/self-managed/overview
-  -  /developer-support/upgrading-tyk/deployment-model/self-managed/docker
-  -  /developer-support/upgrading-tyk/deployment-model/self-managed/helm
-  -  /developer-support/upgrading-tyk/deployment-model/self-managed/kubernetes
-  -  /developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-deb
-  -  /developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-rpm
-  -  /developer-support/upgrading-tyk/deployment-model/open-source
-  -  /developer-support/upgrading-tyk/go-plugins
+  - /developer-support/upgrading-tyk/preparations/upgrade-guidelines
+  - /developer-support/upgrading-tyk/preparations/upgrade-strategies
+  - /developer-support/upgrading-tyk/deployment-model/cloud/upgrade-cloud-saas
+  - /developer-support/upgrading-tyk/deployment-model/cloud/upgrade-hybrid
+  - /developer-support/upgrading-tyk/deployment-model/cloud/upgrade-go-plugin
+  - /developer-support/upgrading-tyk/deployment-model/self-managed/overview
+  - /developer-support/upgrading-tyk/deployment-model/self-managed/docker
+  - /developer-support/upgrading-tyk/deployment-model/self-managed/helm
+  - /developer-support/upgrading-tyk/deployment-model/self-managed/kubernetes
+  - /developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-deb
+  - /developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-rpm
+  - /developer-support/upgrading-tyk/deployment-model/open-source
+  - /developer-support/upgrading-tyk/go-plugins
 ---
 
 ## Overview
