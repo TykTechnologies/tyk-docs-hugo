@@ -26,7 +26,8 @@ input:
 
 By using a rate limit in this way we can guarantee that our input will only poll our HTTP source at the rate of 500 requests per second.
 
-Some components don't have a `rate_limit` field but we might still wish to throttle them by a rate limit, in which case we can use the [rate_limit processor]({{< ref "/product-stack/tyk-streaming/configuration/processors/rate-limit" >}}) that applies back pressure to a processing pipeline when the limit is reached. For example:
+<!-- TODO: when rate-limit processor supported:
+Some components don't have a `rate_limit` field but we might still wish to throttle them by a rate limit, in which case we can use the rate_limit processor that applies back pressure to a processing pipeline when the limit is reached. For example:
 
 ```yaml
 input:
@@ -45,3 +46,4 @@ rate_limit_resources:
       count: 3
       interval: 20s
 ```
+-->

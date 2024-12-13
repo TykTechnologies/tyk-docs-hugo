@@ -12,18 +12,20 @@ Our minor releases are supported until our next minor comes out. This would be <
 
 ---
 
-## X.Y.Z Release Notes
+## X.Y Release Notes
 
-### Release Date DD Mon YYYY <<update>>
+### X.Y.Z Release Notes
 
-### Release Highlights
+#### Release Date DD Mon YYYY <<update>>
 
-### Breaking Changes
+#### Release Highlights
+
+#### Breaking Changes
 This release has no breaking changes.
 
-### Dependencies {#dependencies-X.Y.Z}
+#### Dependencies {#dependencies-X.Y.Z}
 
-#### Compatibility Matrix For Tyk Components
+##### Compatibility Matrix For Tyk Components
 | Gateway Version | Recommended Compatibility | Backwards Compatibility |
 | --------------- | ------------------------- | ----------------------- |
 | 5.3 LTS         | Helm v2.2 - TBP           | Helm vX - vY            |
@@ -34,7 +36,7 @@ This release has no breaking changes.
 |                 |                           | Pump vX - vY            |
 |                 |                           | TIB vX - vY             |
       
-#### 3rd Party Dependencies & Tools
+##### 3rd Party Dependencies & Tools
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.19, 1.20, 1.21       | 1.19, 1.20, 1.21       | All our binaries| 
@@ -44,21 +46,21 @@ This release has no breaking changes.
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-### Deprecations
+#### Deprecations
 There are no deprecations in this release.
 
-### Upgrade instructions
+#### Upgrade instructions
 For users currently on vX.Y.Z, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version X.Y.0 and proceed directly to this latest patch release.
 <br/>
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
-### Downloads
+#### Downloads
 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-{dashboard|gateway}/vX.Y.Z/images/{sha-image})
 - Helm chart - TBP (To Be Published separately after the release) 
 
-### Changelog {#Changelog-vX.Y.Z}
+#### Changelog {#Changelog-vX.Y.Z}
 
-#### Added
+##### Added
 
 <ul>
 <li>
@@ -78,7 +80,7 @@ The actual changelog item text should go here. It should be no more than three o
 </ul>
 
   
-#### Changed
+##### Changed
 
 <ul>
 <li>
@@ -97,7 +99,7 @@ The actual changelog item text should go here. It should be no more than three o
 </li>
 </ul>
  
-#### Fixed
+##### Fixed
 
 <ul>
 <li>
@@ -116,11 +118,11 @@ The actual changelog item text should go here. It should be no more than three o
 </li>
 </ul>
 
-#### Security Fixes
+##### Security Fixes
 - Fixed the following CVEs:
     - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
 
-#### Community Contributions
+##### Community Contributions
 Special thanks to the following member of the Tyk community for their contribution to this release:
 
 <ul>
