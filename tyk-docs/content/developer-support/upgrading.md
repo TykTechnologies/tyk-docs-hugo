@@ -71,8 +71,8 @@ Use the table below to find the appropriate upgrade guide for your platform:
 |                      | [Docker]({{< ref "developer-support/upgrading-tyk/deployment-model/self-managed/docker" >}}) | Guide for upgrading Docker images |
 |                      | [Helm]({{< ref "developer-support/upgrading-tyk/deployment-model/self-managed/helm" >}}) | Guide for upgrading Helm Charts |
 |                      | [Kubernetes]({{< ref "developer-support/upgrading-tyk/deployment-model/self-managed/kubernetes" >}}) | Guide for upgrading Kubernetes environment |
-| **Tyk MDCB Self Managed** | [MDCB]({{< ref "/developer-support/upgrading-tyk/deployment-model/self-managed/overview#upgrade-mdcb" >}}) | Guide for upgrading Mutli Data Center Bridge (MDCB) |
-| **Tyk Open Source**  | [Tyk Gateway]({{< ref "developer-support/upgrading-tyk/deployment-model/open-source" >}}) | Guide for upgrading Tyk open source environment |
+| **Tyk MDCB Self Managed** | [MDCB]({{< ref "/#tyk-self-managed-upgrade-guide#upgrade-mdcb" >}}) | Guide for upgrading Mutli Data Center Bridge (MDCB) |
+| **Tyk Open Source**  | [Tyk Gateway]({{< ref "#open-source-upgrade-guide" >}}) | Guide for upgrading Tyk open source environment |
 
 ### Supporting Tools
 Tyk offers supporting tools for database migration and backing up APIs and policies.
@@ -110,7 +110,7 @@ Have backups been performed?
 #### Go plugins
 Do you use custom go plugins with your APIs?
 
-  - Go plugin must be [recompiled]({{< ref "/developer-support/upgrading-tyk/go-plugins" >}}) for the new version.
+  - Go plugin must be [recompiled]({{< ref "/#go-plugins-upgrade-guide" >}}) for the new version.
   - Identify all Go plugins in use with all your API definitions.
   - Allow sufficient time for testing and troubleshooting Go plugins after the upgrade.
 
@@ -185,7 +185,7 @@ Follow our guide for [upgrading Cloud Control Planes]({{< ref "tyk-cloud/environ
 
 **Step 2. Upgrade Go Plugins**
 
-Follow our guide for deploying your [Go plugins on Tyk Cloud]({{< ref "/developer-support/upgrading-tyk/deployment-model/cloud/upgrade-go-plugin" >}}). Subsequently, follow the steps below according to the target upgrade version of the Gateway.
+Follow our guide for deploying your [Go plugins on Tyk Cloud]({{< ref "#go-plugin" >}}). Subsequently, follow the steps below according to the target upgrade version of the Gateway.
 
 **Gateway Versions < 4.1.0.**
 
@@ -255,7 +255,7 @@ See Tyk Guide for how to [upgrade Control Planes]({{< ref "tyk-cloud/environment
 
 **Step 2 Upgrade Go plugins**
 
-Follow our guide for [upgrading your Go plugins on Tyk Cloud]({{< ref "/developer-support/upgrading-tyk/deployment-model/cloud/upgrade-go-plugin" >}}). Subsequently, follow the steps below according to the target upgrade version of the Gateway.
+Follow our guide for [upgrading your Go plugins on Tyk Cloud]({{< ref "#go-plugin" >}}). Subsequently, follow the steps below according to the target upgrade version of the Gateway.
 
 **Gateway Versions < 4.1.0**
 
@@ -289,10 +289,10 @@ loaded your target version plugin in step 1, this version will be loaded automat
 
 Follow the instructions for component deployment type:
 
-- [Docker]({{< ref "/developer-support/upgrading-tyk/deployment-model/self-managed/docker" >}})
-- [Helm]({{< ref "/developer-support/upgrading-tyk/deployment-model/self-managed/helm" >}})
-- [Linux Debian]({{< ref "/developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-deb#upgrade-tyk-packages" >}})
-- [Linux RHEL/CENTOS]({{< ref "/developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-rpm#upgrade-tyk-packages" >}})
+- [Docker]({{< ref "#docker" >}})
+- [Helm]({{< ref "#helm" >}})
+- [Linux Debian]({{< ref "#linux---debian#upgrade-tyk-packages" >}})
+- [Linux RHEL/CENTOS]({{< ref "#linux---redhat-centos#upgrade-tyk-packages" >}})
 
 **Upgrade Guide Video**
 
@@ -306,7 +306,7 @@ Please refer to our [video](https://tyk-1.wistia.com/medias/4nf9fggatz) for furt
 
 This guide explains how to deploy your custom Go plugins on Tyk Cloud:
 1. Navigate into the plugins directory that contains your Go module
-2. [Compile your custom Go plugins]({{< ref "/developer-support/upgrading-tyk/go-plugins" >}}).
+2. [Compile your custom Go plugins]({{< ref "/#go-plugins-upgrade-guide" >}}).
 3. Use the table below to follow the deployment process for the version of Tyk you are upgrading to:
 
 | Path | Current Version | Target Version |
@@ -450,7 +450,7 @@ Upgrading *Tyk Dashboard* is the same as *Tyk Gateway* just with the name of the
 
 **Step 2. Upgrade Tyk Gateway and Tyk Pump**
 
-Follow our [Tyk OSS guide]({{< ref "developer-support/upgrading-tyk/go-plugins" >}}) for upgrading Tyk Gateway and Tyk Pump
+Follow our [Tyk OSS guide]({{< ref "#go-plugins-upgrade-guide" >}}) for upgrading Tyk Gateway and Tyk Pump
 
 #### Helm
 
@@ -570,7 +570,7 @@ follow the instructions below to upgrade your Tyk components and plugins.
 
 **Upgrade order:**
 
-Please note that upgrade order is as explained in the upgrade [overview]({{< ref "developer-support/upgrading-tyk/deployment-model/self-managed/overview" >}})
+Please note that upgrade order is as explained in the upgrade [overview]({{< ref "#tyk-self-managed-upgrade-guide" >}})
 
 **Distro versions**
 
@@ -817,7 +817,7 @@ After reviewing guidelines for [preparing for upgrade]({{< ref "#upgrade-guideli
 follow the instructions below to upgrade your Tyk components and plugins.
 
 **Upgrade order:**
-Please note that upgrade order is as explained in the upgrade [overview]({{< ref "developer-support/upgrading-tyk/deployment-model/self-managed/overview" >}})
+Please note that upgrade order is as explained in the upgrade [overview]({{< ref "#tyk-self-managed-upgrade-guide" >}})
 
 **Distro versions**
 
