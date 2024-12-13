@@ -659,7 +659,7 @@ Fixed a bug that prevents Tyk Operator to work with SecurityPolicy in OSS Mode. 
 ## Further Information
 
 ### Upgrading Tyk
-Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance on the upgrade strategy.
+Please refer to the [upgrading Tyk]({{< ref "developer-support/upgrading" >}}) page for further guidance on the upgrade strategy.
 
 <!-- 
 ### API Documentation

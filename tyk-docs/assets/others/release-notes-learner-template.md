@@ -248,7 +248,7 @@ links to API documentation and FAQs. You can copy it from the previous release. 
 ## Further Information
 
 ### Upgrading Tyk
-Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance on the upgrade strategy.
+Please refer to the [upgrading Tyk]({{< ref "developer-support/upgrading" >}}) page for further guidance on the upgrade strategy.
 
 ### API Documentation
 <!-- Required. Update the link to the Gateway "tyk-gateway-api" or dashboard "tyk-dashboard-api" and the Postman collection

@@ -299,7 +299,7 @@ Now you can configure the Dashboard to send transactional emails using your SMTP
 
 #### <a name="upgrade"></a>Upgrading all new Components
 
-For details on upgrading all Tyk versions, see [Upgrading Tyk]({{< ref "upgrading-tyk" >}}).
+For details on upgrading all Tyk versions, see [Upgrading Tyk]({{< ref "developer-support/upgrading" >}}).
 
 ### <a name="new"></a>Don't Have Tyk Yet?
 

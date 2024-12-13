@@ -44,10 +44,10 @@ Our upgrade process adheres to the following standards:
 - **Breaking changes:** Breaking changes are rare and will be explicitly stated in the release notes.
 - **Configuration files:** Upgrades do not overwrite your configuration files. However, it’s good practice to routinely back up these files (using git or another tool) before upgrading, so any customizations are saved.
 - **Migration scripts:** Migration scripts for your APIs, policies, or other assets are generally not required unless specified in the release notes.
-- **Long Term Support:** Refer to our [versioning and long-term support policies]({{< ref "developer-support/special-releases-and-features/long-term-support-releases" >}}) for details on major and minor releases, patches, and support dates.
-- **Preparations:** Review the [preparation guidelines]({{< ref "developer-support/upgrading-tyk/preparations/upgrade-guidelines" >}}) before starting the upgrade.
+- **Long Term Support:** Refer to our [versioning and long-term support policies]({{< ref "developer-support/release-notes/special-releases#long-term-support-releases" >}}) for details on major and minor releases, patches, and support dates.
+- **Preparations:** Review the [preparation guidelines]({{< ref "#upgrade-guidelines" >}}) before starting the upgrade.
 - **Release notes:** Always check the "Upgrade Instructions" section in the relevant release notes.
-- **Backups:** Follow our [comprehensive backup guide]({{< ref "frequently-asked-questions/how-to-backup-tyk" >}}) before starting the upgrade.
+- **Backups:** Follow our [comprehensive backup guide]({{< ref "developer-support/faq#tyk-configuration" >}}) before starting the upgrade.
 - Docker: Upgrading with Docker is straightforward—pull the new images from public repositories. Refer to the following links for our releases:
 
 - **Docker:** Upgrading with Docker is straightforward - pull the new images from public repositories. Refer to the following links for our releases:
@@ -83,7 +83,7 @@ Use our [migration tool]({{< ref "planning-for-production/database-settings/post
 
 ##### Backup APIs Script
 
-Utilize our bash [backup script]({{< ref "developer-support/backups/backup-apis-and-policies" >}}) to export and restore all Tyk API Definitions and Policies.
+Utilize our bash [backup script]({{< ref "developer-support/upgrading#backup-apis-and-policies" >}}) to export and restore all Tyk API Definitions and Policies.
 
 ## Preparations
 
@@ -95,8 +95,8 @@ When considering upgrading your current configuration to a new Tyk release, we r
 
 Which strategy do you intend to use?
 
-  - If following the [Blue-Green upgrade]({{< ref "developer-support/upgrading-tyk/preparations/upgrade-strategies#blue-green-upgrade" >}}) strategy, has the green environment been configured and verified as production-ready?
-  - If pursuing the [Rolling upgrade]({{< ref "developer-support/upgrading-tyk/preparations/upgrade-strategies#rolling-upgrade" >}}) strategy, do all Tyk components have a second instance?
+  - If following the [Blue-Green upgrade]({{< ref "#upgrade-strategies#blue-green-upgrade" >}}) strategy, has the green environment been configured and verified as production-ready?
+  - If pursuing the [Rolling upgrade]({{< ref "#upgrade-strategies#rolling-upgrade" >}}) strategy, do all Tyk components have a second instance?
   - If you'll have downtime, estimate the expected duration of the upgrade process and plan for potential downtime.
 
 #### Backups
@@ -105,7 +105,7 @@ Have backups been performed?
   - Databases: Have databases been properly backed up?
   - configuration files: Have you safely back up these file (using version control system such as *git*)?
   - Testing: Have you tested the backups to verify they can be successfully restored in a separate environment?
-  - Backup guide: Have you checke our [comprehensive guide for backing up Tyk]({{< ref "frequently-asked-questions/how-to-backup-tyk" >}})?
+  - Backup guide: Have you checke our [comprehensive guide for backing up Tyk]({{< ref "developer-support/faq#tyk-configuration" >}})?
 
 #### Go plugins
 Do you use custom go plugins with your APIs?
@@ -175,7 +175,7 @@ A blue-green deployment involves two identical production environments, labeled 
 **Preparations**
 
 Before proceeding with the upgrade process, ensure that you have thoroughly reviewed and completed the steps outlined in
-the [upgrade guidelines]({{< ref "developer-support/upgrading-tyk/preparations/upgrade-guidelines" >}}).
+the [upgrade guidelines]({{< ref "#upgrade-guidelines" >}}).
 Once you have adequately prepared, follow the instructions below to upgrade your Tyk components and plugins in this
 specified order. Adhering to the provided sequence is crucial for a smooth and successful upgrade.
 
@@ -236,7 +236,7 @@ The **self-managed data plane** includes the following components:
 - Redis instance 
 - Tyk Pump (optional)
 
-After following the guidelines for [preparing for upgrade]({{< ref "developer-support/upgrading-tyk/preparations/upgrade-guidelines" >}}),
+After following the guidelines for [preparing for upgrade]({{< ref "#upgrade-guidelines" >}}),
 follow the instructions below to upgrade your self-managed Tyk components and plugins.
 
 
@@ -398,7 +398,7 @@ This guide explains how to deploy your custom Go plugins on Tyk Cloud:
 **Preparations**
 
 Before proceeding with the upgrade process, ensure that you have thoroughly reviewed and completed the steps outlined in
-the [upgrade guidelines]({{< ref "developer-support/upgrading-tyk/preparations/upgrade-guidelines" >}}).
+the [upgrade guidelines]({{< ref "#upgrade-guidelines" >}}).
 Once you have adequately prepared, follow the instructions below to upgrade your Tyk components and plugins in this
 specified order. Adhering to the provided sequence is crucial for a smooth and successful upgrade.
 
@@ -565,7 +565,7 @@ upgrading Tyk Self-Managed (DEB).
 
 **Preparations**
 
-After reviewing guidelines for [preparing for upgrade]({{< ref "developer-support/upgrading-tyk/preparations/upgrade-guidelines" >}}),
+After reviewing guidelines for [preparing for upgrade]({{< ref "#upgrade-guidelines" >}}),
 follow the instructions below to upgrade your Tyk components and plugins.
 
 **Upgrade order:**
@@ -676,7 +676,7 @@ mongorestore --host <hostname> --port <port> --username <username> --password <p
 
 **Steps for Upgrading Tyk Packages**
 
-Before executing the upgrade, ensure that you have consulted and performed all the necessary steps in the [pre upgrade checklist]({{< ref "developer-support/upgrading-tyk/preparations/upgrade-guidelines" >}}).
+Before executing the upgrade, ensure that you have consulted and performed all the necessary steps in the [pre upgrade checklist]({{< ref "#upgrade-guidelines" >}}).
 
 **Step 1. Update Tyk Repositories**
 
@@ -795,7 +795,7 @@ sudo apt-get install tyk-dashboard=<previous version>
 These commands are provided as general guidelines and should be used with caution. It's advisable to consult with your system administrator or seek assistance from a qualified professional before executing any system-level commands
 {{< /note >}}
 
-#### RedHat (CentOS) 
+#### Linux - RedHat (CentOS) 
 
 The following guide explains how to upgrade Tyk Self-Managed running on RHL
 
@@ -813,7 +813,7 @@ upgrading Tyk Self-Managed (RPM).
 
 **Preparations**
 
-After reviewing guidelines for [preparing for upgrade]({{< ref "developer-support/upgrading-tyk/preparations/upgrade-guidelines" >}}),
+After reviewing guidelines for [preparing for upgrade]({{< ref "#upgrade-guidelines" >}}),
 follow the instructions below to upgrade your Tyk components and plugins.
 
 **Upgrade order:**
@@ -921,7 +921,7 @@ mongorestore --host <hostname> --port <port> --username <username> --password <p
 
 ##### Upgrade Tyk Packages
 
-Before executing the upgrade, ensure that you have consulted and performed all the necessary steps in the [pre upgrade checklist]({{< ref "developer-support/upgrading-tyk/preparations/upgrade-guidelines" >}}).
+Before executing the upgrade, ensure that you have consulted and performed all the necessary steps in the [pre upgrade checklist]({{< ref "#upgrade-guidelines" >}}).
 
 **Step 1. Update Tyk Repositories**
 
@@ -1070,7 +1070,7 @@ The following guide explains how to upgrade Tyk Gateway when using Docker. For g
 the "Self-manged" section, and look for the instruction regarding Tyk Gateway.
 
 Before proceeding with the upgrade process, ensure that you have thoroughly reviewed and completed the steps outlined in
-the [pre-upgrade guidelines]({{< ref "developer-support/upgrading-tyk/preparations/upgrade-guidelines" >}}). Once you
+the [pre-upgrade guidelines]({{< ref "#upgrade-guidelines" >}}). Once you
 have adequately prepared, follow the instructions below to upgrade your Tyk components and plugins in this specified
 order. Adhering to the provided sequence is crucial for a smooth and successful upgrade.
 
@@ -1140,7 +1140,7 @@ $ curl  localhost:8080/hello | jq .
 
 1. Backup your Gateway config file
 2. Use Docker's best practices for a [rolling update](https://docs.docker.com/engine/swarm/swarm-tutorial/rolling-update/)
-3. Review and complete the steps outlined in the [pre-upgrade guidelines]({{< ref "developer-support/upgrading-tyk/preparations/upgrade-guidelines" >}}).
+3. Review and complete the steps outlined in the [pre-upgrade guidelines]({{< ref "#upgrade-guidelines" >}}).
 4. Define the version in your setup script (for example in `.env` file). The new image will be pulled once it's executed.
 If your script is doing `docker pull`, update the version of the gateway in that command to the target version.
 5. Check the log to see that the new version is used and if the gateway is up and running
