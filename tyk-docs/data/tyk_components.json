@@ -2,7 +2,7 @@
   "components": [
     {
       "title": "Schedule your guided evaluation",
-      "image": "img/tyk_cloud.svg",
+      "image": "img/home-page-review-icon.svg",
       "steps": "Schedule your guided evaluation",
       "button_text": "Get in touch",
       "path": "https://tyk.io/guided-evaluation/",
@@ -11,7 +11,7 @@
     },
     {
       "title": "Tyk Cloud",
-      "image": "img/tyk_cloud.svg",
+      "image": "img/home_page_free_trial_icon.svg",
       "steps": "Start your 48-hour free trial",
       "button_text": "Start trial",
       "path": "https://tyk.io/sign-up/",
