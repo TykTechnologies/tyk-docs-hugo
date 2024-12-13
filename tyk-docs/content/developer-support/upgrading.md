@@ -95,8 +95,8 @@ When considering upgrading your current configuration to a new Tyk release, we r
 
 Which strategy do you intend to use?
 
-  - If following the [Blue-Green upgrade]({{< ref "#upgrade-strategies#blue-green-upgrade" >}}) strategy, has the green environment been configured and verified as production-ready?
-  - If pursuing the [Rolling upgrade]({{< ref "#upgrade-strategies#rolling-upgrade" >}}) strategy, do all Tyk components have a second instance?
+  - If following the [Blue-Green upgrade]({{< ref "#blue-green-upgrade" >}}) strategy, has the green environment been configured and verified as production-ready?
+  - If pursuing the [Rolling upgrade]({{< ref "#rolling-upgrade" >}}) strategy, do all Tyk components have a second instance?
   - If you'll have downtime, estimate the expected duration of the upgrade process and plan for potential downtime.
 
 #### Backups
@@ -110,7 +110,7 @@ Have backups been performed?
 #### Go plugins
 Do you use custom go plugins with your APIs?
 
-  - Go plugin must be [recompiled]({{< ref "/#go-plugins-upgrade-guide" >}}) for the new version.
+  - Go plugin must be [recompiled]({{< ref "#go-plugins-upgrade-guide" >}}) for the new version.
   - Identify all Go plugins in use with all your API definitions.
   - Allow sufficient time for testing and troubleshooting Go plugins after the upgrade.
 
@@ -291,8 +291,8 @@ Follow the instructions for component deployment type:
 
 - [Docker]({{< ref "#docker" >}})
 - [Helm]({{< ref "#helm" >}})
-- [Linux Debian]({{< ref "#linux---debian#upgrade-tyk-packages" >}})
-- [Linux RHEL/CENTOS]({{< ref "#linux---redhat-centos#upgrade-tyk-packages" >}})
+- [Linux Debian]({{< ref "#linux---debian" >}})
+- [Linux RHEL/CENTOS]({{< ref "#linux---redhat-centos" >}})
 
 **Upgrade Guide Video**
 
@@ -306,7 +306,7 @@ Please refer to our [video](https://tyk-1.wistia.com/medias/4nf9fggatz) for furt
 
 This guide explains how to deploy your custom Go plugins on Tyk Cloud:
 1. Navigate into the plugins directory that contains your Go module
-2. [Compile your custom Go plugins]({{< ref "/#go-plugins-upgrade-guide" >}}).
+2. [Compile your custom Go plugins]({{< ref "#go-plugins-upgrade-guide" >}}).
 3. Use the table below to follow the deployment process for the version of Tyk you are upgrading to:
 
 | Path | Current Version | Target Version |
@@ -411,7 +411,7 @@ upgrade components in the following sequence:
 2. Tyk Gateway
 3. Tyk Pump
 
-**Upgrade order with Multi Data Center Bridge (MDCB)**
+###### Upgrade order with Multi Data Center Bridge (MDCB) {#upgrade-mdcb}
 
 For Enterprise customers, the Tyk control plane contains all the standard components of a Self-Managed installation with
 the addition of the [Multi Data Center Bridge]({{< ref "tyk-multi-data-centre" >}}) (MDCB).
