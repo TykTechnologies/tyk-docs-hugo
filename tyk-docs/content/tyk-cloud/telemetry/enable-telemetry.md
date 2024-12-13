@@ -91,12 +91,12 @@ Each monitoring platform has its own requirements for connection. Let's explore 
 
 For when you need to connect to a different monitoring system:
 
-- Exporter: Choose gRPC (currently the supported protocol)
-- Provider Endpoint: Your monitoring system's URL
+- Exporter: Choose gRPC/HTTP
+- Provider Endpoint: Your monitoring system URL
 - Authorization: Configure how Tyk should authenticate with your system
 - Example custom configuration:
   ```
-  Exporter: gRPC
+  Exporter: gRPC/HTTP
   Provider Endpoint: grpc://your-collector:4317
   Authorization Header Name: Authorization
   Authorization Header Value: Bearer your-token
@@ -109,6 +109,8 @@ For when you need to connect to a different monitoring system:
 
 When creating a new Cloud Data Plane deployment or editing an existing one, you can configure telemetry export settings. These settings are specific to Cloud Data Plane deployments only and allow you to monitor API performance through your chosen telemetry provider.
 
+When you modify any general telemetry settings in Tyk Cloud, these changes don't take immediate effect.
+Your Cloud Data Planes need to be redeployed to activate the new telemetry configuration.
 
 #### Configuration Options
 
