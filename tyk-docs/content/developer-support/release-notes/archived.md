@@ -299,7 +299,7 @@ Now you can configure the Dashboard to send transactional emails using your SMTP
 
 #### <a name="upgrade"></a>Upgrading all new Components
 
-For details on upgrading all Tyk versions, see [Upgrading Tyk]({{< ref "upgrading-tyk" >}}).
+For details on upgrading all Tyk versions, see [Upgrading Tyk]({{< ref "developer-support/upgrading" >}}).
 
 ### <a name="new"></a>Don't Have Tyk Yet?
 
@@ -1178,7 +1178,7 @@ Tyk Identity Broker now fully support LDAP search with complex filters! [Docs]({
 
 Cloud users will be automatically upgraded to the new release.
 
-Hybrid users should follow the upgrade instructions [here]({{< ref "upgrading-tyk#upgrade-guides-toc" >}}).
+Hybrid users should follow the upgrade instructions [here]({{< ref "developer-support/upgrading#tyk-upgrade-guides-for-different-deployment-models" >}}).
 
 Self-Managed users can download the new release packages from their usual repositories.
 
