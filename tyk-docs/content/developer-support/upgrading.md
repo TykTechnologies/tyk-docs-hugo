@@ -66,12 +66,12 @@ Use the table below to find the appropriate upgrade guide for your platform:
 | **Tyk Cloud**        | [Cloud SaaS]({{< ref "#tyk-cloud" >}}) | Guide to Tyk Cloud SaaS |
 |                      | [Hybrid]({{< ref "#tyk-hybrid" >}}) | Guide for Hybrid environments with Gateway Data Plane(s) deployed locally or with a third-party cloud provider |
 |                      | [Go plugin]({{< ref "#go-plugin" >}}) | Guide for upgrading Go plugin on the Tyk Cloud |
-| **Tyk Self Managed** | [RHEL and CentOS]({{< ref #linux---redhat-centos" >}}) | Guide for RPM-based Linux distributions |
-|                      | [Debian and Ubuntu]({{< ref #linux---debian" >}}) | Guide for DEB-based Linux distributions |
+| **Tyk Self Managed** | [RHEL and CentOS]({{< ref "#linux---redhat-centos" >}}) | Guide for RPM-based Linux distributions |
+|                      | [Debian and Ubuntu]({{< ref "#linux---debian" >}}) | Guide for DEB-based Linux distributions |
 |                      | [Docker]({{< ref "#docker" >}}) | Guide for upgrading Docker images |
 |                      | [Helm]({{< ref "#helm" >}}) | Guide for upgrading Helm Charts |
 |                      | [Kubernetes]({{< ref "#kubernetes" >}}) | Guide for upgrading Kubernetes environment |
-| **Tyk MDCB Self Managed** | [MDCB]({{< ref "/#tyk-self-managed-upgrade-guide#upgrade-mdcb" >}}) | Guide for upgrading Mutli Data Center Bridge (MDCB) |
+| **Tyk MDCB Self Managed** | [MDCB]({{< ref "#upgrade-mdcb" >}}) | Guide for upgrading Mutli Data Center Bridge (MDCB) |
 | **Tyk Open Source**  | [Tyk Gateway]({{< ref "#open-source-upgrade-guide" >}}) | Guide for upgrading Tyk open source environment |
 
 ### Supporting Tools
