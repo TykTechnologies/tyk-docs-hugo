@@ -3680,12 +3680,12 @@ menu:
             category: Page
             show: True
   - title: "Developer Support"
-    path: /frequently-asked-questions/faq
+    # path: /frequently-asked-questions/faq
     category: Label
     show: True
     menu:
       - title: "Community Forum"
-        path: /frequently-asked-questions/faq
+        path: /developer-support/community
         category: Page
         show: True
       - title: "Support Channels"

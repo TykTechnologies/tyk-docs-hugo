@@ -9,6 +9,10 @@ menu:
     main:
         parent: "FAQ"
 aliases:
+  - /developer-support/cloud-saas
+  - /developer-support/documentation-projects/inclusive-naming
+  - /developer-support/upgrading-tyk/deployment-model/self-managed/go-plugins
+  - /developer-support/upgrading-tyk/deployment-model/self-managed/mdcb
   - /developer-support/backups/backup-apis-and-policies
   - /upgrading-tyk
   - /developer-support/upgrading-tyk/preparations/upgrade-guidelines
