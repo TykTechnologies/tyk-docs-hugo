@@ -538,4 +538,4 @@ Please refer to the [upgrading Tyk]({{< ref "developer-support/upgrading" >}}) p
 
 ### FAQ
 
-Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
+Please visit our [Developer Support]({{< ref "developer-support/community" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.

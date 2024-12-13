@@ -14,6 +14,7 @@ weight: 21
 aliases:
   - /developer-support/
   - /troubleshooting/
+  - /frequently-asked-questions/faq
 ---
 
 This section provides an overview of the various developer support mechanisms

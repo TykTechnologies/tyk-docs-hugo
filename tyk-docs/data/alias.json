@@ -231,5 +231,6 @@
     "developer-support/documentation-projects/inclusive-naming": "#inclusive-naming-project",
     "developer-support/upgrading-tyk/deployment-model/self-managed/go-plugins": "#go-plugin",
     "developer-support/upgrading-tyk/deployment-model/self-managed/mdcb": "#upgrade-mdcb",
-    "frequently-asked-questions/sla-policies": "#"
+    "frequently-asked-questions/sla-policies": "#",
+    "frequently-asked-questions/faq": "#"
 }
