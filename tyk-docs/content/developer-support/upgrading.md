@@ -63,14 +63,14 @@ Use the table below to find the appropriate upgrade guide for your platform:
 
 | Platform             | Guide            | Description |
 |----------------------| ---------------- | ----------- |
-| **Tyk Cloud**        | [Cloud SaaS]({{< ref "developer-support/upgrading-tyk/deployment-model/cloud/upgrade-cloud-saas" >}}) | Guide to Tyk Cloud SaaS |
-|                      | [Hybrid]({{< ref "developer-support/upgrading-tyk/deployment-model/cloud/upgrade-hybrid" >}}) | Guide for Hybrid environments with Gateway Data Plane(s) deployed locally or with a third-party cloud provider |
-|                      | [Go plugin]({{< ref "developer-support/upgrading-tyk/deployment-model/cloud/upgrade-go-plugin" >}}) | Guide for upgrading Go plugin on the Tyk Cloud |
-| **Tyk Self Managed** | [RHEL and CentOS]({{< ref "developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-rpm" >}}) | Guide for RPM-based Linux distributions |
-|                      | [Debian and Ubuntu]({{< ref "developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-deb" >}}) | Guide for DEB-based Linux distributions |
-|                      | [Docker]({{< ref "developer-support/upgrading-tyk/deployment-model/self-managed/docker" >}}) | Guide for upgrading Docker images |
-|                      | [Helm]({{< ref "developer-support/upgrading-tyk/deployment-model/self-managed/helm" >}}) | Guide for upgrading Helm Charts |
-|                      | [Kubernetes]({{< ref "developer-support/upgrading-tyk/deployment-model/self-managed/kubernetes" >}}) | Guide for upgrading Kubernetes environment |
+| **Tyk Cloud**        | [Cloud SaaS]({{< ref "#tyk-cloud" >}}) | Guide to Tyk Cloud SaaS |
+|                      | [Hybrid]({{< ref "#tyk-hybrid" >}}) | Guide for Hybrid environments with Gateway Data Plane(s) deployed locally or with a third-party cloud provider |
+|                      | [Go plugin]({{< ref "#go-plugin" >}}) | Guide for upgrading Go plugin on the Tyk Cloud |
+| **Tyk Self Managed** | [RHEL and CentOS]({{< ref #linux---redhat-centos" >}}) | Guide for RPM-based Linux distributions |
+|                      | [Debian and Ubuntu]({{< ref #linux---debian" >}}) | Guide for DEB-based Linux distributions |
+|                      | [Docker]({{< ref "#docker" >}}) | Guide for upgrading Docker images |
+|                      | [Helm]({{< ref "#helm" >}}) | Guide for upgrading Helm Charts |
+|                      | [Kubernetes]({{< ref "#kubernetes" >}}) | Guide for upgrading Kubernetes environment |
 | **Tyk MDCB Self Managed** | [MDCB]({{< ref "/#tyk-self-managed-upgrade-guide#upgrade-mdcb" >}}) | Guide for upgrading Mutli Data Center Bridge (MDCB) |
 | **Tyk Open Source**  | [Tyk Gateway]({{< ref "#open-source-upgrade-guide" >}}) | Guide for upgrading Tyk open source environment |
 
@@ -134,7 +134,7 @@ Communicate with stakeholders and users about the upgrade schedule and expected 
 
 #### Next Steps {#next-steps}
 
-Use the [Upgrade Guides ToC]({{< ref "upgrading-tyk#upgrade-guides-toc" >}}) to choose the appropriate upgrade guide for
+Use the [Upgrade Guides ToC]({{< ref "#tyk-upgrade-guides-for-different-deployment-models" >}}) to choose the appropriate upgrade guide for
 your platform.
 
 ### Upgrade Strategies

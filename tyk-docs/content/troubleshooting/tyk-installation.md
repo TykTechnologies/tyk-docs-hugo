@@ -13,7 +13,7 @@ weight: 5
 
 ["Payload signature is invalid" error]({{< ref "troubleshooting/tyk-installation/payload-signature-invalid-error" >}})
 
-["Error initialising system: couldn't unmarshal config: invalid character" error]({{< ref "developer-support/faq/#miscellaneous" >}})
+["Error initialising system: couldn't unmarshal config: invalid character" error]({{< ref "developer-support/faq#miscellaneous" >}})
 
 
 
