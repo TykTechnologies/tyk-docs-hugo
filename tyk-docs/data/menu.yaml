@@ -2279,10 +2279,6 @@ menu:
                 path: /frequently-asked-questions/change-logging-output-location
                 category: Page
                 show: True
-              - title: "How to Check Your Gateway Version"
-                path: /frequently-asked-questions/check-current-gateway-version
-                category: Page
-                show: True
               - title: "How to clear / invalidate API cache"
                 path: /frequently-asked-questions/clear-api-cache
                 category: Page
@@ -3684,170 +3680,20 @@ menu:
             category: Page
             show: True
   - title: "Developer Support"
-    path: /frequently-asked-questions/faq
+    # path: /frequently-asked-questions/faq
     category: Label
     show: True
     menu:
-      - title: "Overview"
-        path: /frequently-asked-questions/faq
+      - title: "Community Forum"
+        path: /developer-support/community
         category: Page
         show: True
-      - title: "Tyk APIs Reference"
-        path: /tyk-apis
+      - title: "Support Channels"
+        path: /developer-support/support
         category: Page
         show: True
-      - title: "SDK"
-        category: Directory
-        show: False
-        menu:
-      - title: "CLI"
-        category: Directory
-        show: False
-        menu:
-      - title: "Environment Variables and Configs"
-        path: /tyk-environment-variables
-        category: Page
-        show: True
-      - title: "Debugging Series"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            path: /debugging-series/debugging-series
-            category: Page
-            show: True
-          - title: "MongoDB Debugging"
-            path: /debugging-series/mongodb-debugging
-            category: Page
-            show: True
-          - title: "Tyk Self-Managed Debugging"
-            path: /developer-support/debugging-series/debugging-selfmanaged
-            category: Page
-            show: True
-      - title: "Performance Benchmarking"
-        category: Directory
-        show: False
-        menu:
-      - title: "Frequently Asked Questions"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            path: /frequently-asked-questions
-            category: Page
-            show: True
-          - title: "How to backup Tyk"
-            path: /frequently-asked-questions/how-to-backup-tyk
-            category: Page
-            show: True
-          - title: "How to backup Tyk Cloud deployment"
-            path: /frequently-asked-questions/how-to-backup-tyk-cloud-deployment
-            category: Page
-            show: True
-          - title: "What is the performance impact of analytics"
-            path: /developer-support/frequently-asked-questions/what_is_the_performance_impact_of_analytics
-            category: Page
-            show: True
-          - title: "How to reduce CPU usage in a Redis Cluster"
-            path: /developer-support/frequently-asked-questions/how-to-reduce-cpu-usage-in-a-redis-cluster
-            category: Page
-            show: True
-          - title: "Support SLA Policies"
-            path: /frequently-asked-questions/sla-policies
-            category: Page
-            show: True
-          - title: "“Error initialising system couldn't unmarshal config“ error"
-            path: /troubleshooting/tyk-installation/couldnt-unmarshal-config-error
-            category: Page
-            show: True
-          - title: "All tyk container logs show up under the error status in Datadog logs"
-            path: /frequently-asked-questions/datadog-logs-showup-as-errors
-            category: Page
-            show: True
-      - title: "Plugin Hub"
-        category: Page
-        show: False
-      - title: "Tyk Upgrade Guides"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            path: /upgrading-tyk
-            category: Page
-            show: True
-          - title: "Preparations"
-            category: Directory
-            show: true
-            menu:
-              - title: "Upgrade guidelines"
-                path: /developer-support/upgrading-tyk/preparations/upgrade-guidelines
-                category: Page
-                show: True
-              - title: "Upgrade strategies"
-                path: /developer-support/upgrading-tyk/preparations/upgrade-strategies
-                category: Page
-                show: True
-          - title: "Deployment model"
-            category: Directory
-            show: True
-            menu:
-              - title: "Tyk Cloud upgrade guide"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Tyk Cloud"
-                    path: /developer-support/upgrading-tyk/deployment-model/cloud/upgrade-cloud-saas
-                    category: Page
-                    show: True
-                  - title: "Tyk hybrid"
-                    path: /developer-support/upgrading-tyk/deployment-model/cloud/upgrade-hybrid
-                    category: Page
-                    show: True
-                  - title: "Go plugin"
-                    path: /developer-support/upgrading-tyk/deployment-model/cloud/upgrade-go-plugin
-                    category: Page
-                    show: True
-              - title: "Tyk Self Managed upgrade guide"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /developer-support/upgrading-tyk/deployment-model/self-managed/overview
-                    category: Page
-                    show: True
-                  - title: "Docker"
-                    path: /developer-support/upgrading-tyk/deployment-model/self-managed/docker
-                    category: Page
-                    show: True
-                  - title: "Helm Charts"
-                    path: /developer-support/upgrading-tyk/deployment-model/self-managed/helm
-                    show: True
-                  - title: "Kubernetes"
-                    path: /developer-support/upgrading-tyk/deployment-model/self-managed/kubernetes
-                    category: Page
-                    show: True
-                  - title: "Linux"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Debian"
-                        path: /developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-deb
-                        category: Page
-                        show: True
-                      - title: "Redhat (Cent OS)"
-                        path: /developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-rpm
-                        category: Page
-                        show: True
-              - title: "Open source upgrade guide"
-                category: Page
-                path: /developer-support/upgrading-tyk/deployment-model/open-source
-                show: True
-              - title: "Go plugins upgrade guide"
-                path: /developer-support/upgrading-tyk/go-plugins
-                category: Page
-                show: True
-      - title: "Backup APIs and Policies"
-        path: /developer-support/backups/backup-apis-and-policies
+      - title: "Contributing"
+        path: /developer-support/contributing
         category: Page
         show: True
       - title: "Release Notes"
@@ -3906,18 +3752,46 @@ menu:
           path: /developer-support/release-notes/special-releases
           category: Page
           show: True
-      - title: "Documentation Projects"
+      - title: "Upgrading Guide"
+        path: /developer-support/upgrading
+        category: Page
+        show: True
+      - title: "Frequently Asked Questions"
+        path: /developer-support/faq
+        category: Page
+        show: True
+      - title: "Tyk APIs Reference"
+        path: /tyk-apis
+        category: Page
+        show: True
+      - title: "SDK"
+        category: Directory
+        show: False
+        menu:
+      - title: "CLI"
+        category: Directory
+        show: False
+        menu:
+      - title: "Environment Variables and Configs"
+        path: /tyk-environment-variables
+        category: Page
+        show: True
+      - title: "Debugging Series"
         category: Directory
         show: True
         menu:
-          - title: "Inclusive Naming Initiative (INI)"
-            path: /developer-support/documentation-projects/inclusive-naming
+          - title: "Overview"
+            path: /debugging-series/debugging-series
             category: Page
             show: True
-      - title: "Contribute to Tyk Docs"
-        path: /contribute
-        category: Page
-        show: True
+          - title: "MongoDB Debugging"
+            path: /debugging-series/mongodb-debugging
+            category: Page
+            show: True
+          - title: "Tyk Self-Managed Debugging"
+            path: /developer-support/debugging-series/debugging-selfmanaged
+            category: Page
+            show: True
       - title: "Deprecated pages"
         category: Directory
         show: False
