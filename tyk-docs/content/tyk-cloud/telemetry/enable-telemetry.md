@@ -145,3 +145,9 @@ Your Cloud Data Planes need to be redeployed to activate the new telemetry confi
 
 2. **Sampling Rate Override**
     - Choose what percentage of API traffic to monitor (default: 10%)
+
+  {{< note success >}}
+  **Note**
+
+  The sampling level can be configured at both the organization level (while setting up the provider) and the `Cloud Data Plane`. The configuration at the Cloud Data Plane will override the organization-level settings.
+  {{< /note >}}
