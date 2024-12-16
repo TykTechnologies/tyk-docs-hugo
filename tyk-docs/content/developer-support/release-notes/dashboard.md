@@ -37,6 +37,132 @@ Our minor releases are supported until our next minor comes out.
 
 ## 5.7 Release Notes
 
+### 5.7.1 Release Notes
+
+#### Release Date xxx
+
+#### Release Highlights
+
+This fix focuses mainly on bug fix.For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.7.1" >}}) below.
+
+#### Breaking Changes
+<!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
+
+There are no breaking changes in this release.
+
+#### Dependencies {#dependencies-5.7.1}
+<!--Required. Use this section to announce the following types of dependencies compatible with the release:
+Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+3rd party dependencies and tools -->
+##### Compatibility Matrix For Tyk Components
+<!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+An illustrative example is shown below. -->
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.7.1 | MDCB v2.7.2     | MDCB v2.5.1 |
+|         | Operator v1.1.0  | Operator v0.17 |
+|         | Sync v2.0.1    | Sync v1.4.3 |
+|         | Helm Chart v2.2  | Helm all versions |
+| | EDP v1.12 | EDP all versions |
+| | Pump v1.11.1 | Pump all versions |
+| | TIB (if using standalone) v1.6.1 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.7.1}
+<!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
+
+Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
+
+An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.22 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+
+#### Deprecations
+<!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
+There are no deprecations in this release.
+<!-- Optional section!
+Used to share and notify users about our plan to deprecate features, configs etc.
+Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->
+<!-- ###### Future deprecations
+-->
+#### Upgrade instructions {#upgrade-5.7.1}
+If you are upgrading to 5.7.1, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.7.1)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.7.1
+    ```
+- Helm charts
+  - [tyk-charts v2.2.0]({{< ref "developer-support/release-notes/helm-chart#220-release-notes" >}})
+
+#### Changelog {#Changelog-v5.7.1}
+
+##### Added
+
+<ul>
+<li>
+<details>
+<summary>Changelog item summary</summary>
+
+Add changelog description
+</details>
+</li>
+<li>
+<details>
+<summary>Another changelog item summary</summary>
+
+Add changelog description
+</details>
+</li>
+</ul>
+
+  
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Changelog item summary</summary>
+
+Add changelog description
+</details>
+</li>
+<li>
+<details>
+<summary>Another changelog item summary</summary>
+
+Add changelog description
+</details>
+</li>
+</ul>
+ 
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Changelog item summary</summary>
+
+Add changelog description
+</details>
+</li>
+<li>
+<details>
+<summary>Another changelog item summary</summary>
+
+Add changelog description
+</details>
+</li>
+</ul>
+
+---
+
 ### 5.7.0 Release Notes
 
 #### Release Date 03 December 2024
