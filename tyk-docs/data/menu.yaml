@@ -364,6 +364,18 @@ menu:
                         path: /tyk-cloud/troubleshooting--support/glossary
                         category: Page
                         show: True
+                  - title: "Telemetry"
+                    category: Directory
+                    show: True
+                    menu:
+                      - title: "Overview"
+                        path: /tyk-cloud/telemetry
+                        category: Page
+                        show: True
+                      - title: "Configuring Telemetry Provider"
+                        path: /tyk-cloud/telemetry/enable-telemetry
+                        category: Page
+                        show: True
       - title: "Self Managed"
         category: Directory
         show: True
