@@ -20,11 +20,15 @@ to understand the underlying architecture, best practices for implementation, an
 
 Tyk Cloud integrates with these monitoring platforms:
 
-- [Datadog]({{< ref "tyk-cloud/telemetry/enable-telemetry.md#datadog" >}})
-- [Dynatrace]({{< ref "tyk-cloud/telemetry/enable-telemetry.md#dynatrace" >}})
-- [New Relic]({{< ref "tyk-cloud/telemetry/enable-telemetry.md#new-relic" >}})
-- [Elastic]({{< ref "tyk-cloud/telemetry/enable-telemetry.md#elastic" >}})
-- [Custom]({{< ref "tyk-cloud/telemetry/enable-telemetry.md#custom" >}})
+
+
+
+
+- [Datadog]({{< ref "tyk-cloud/telemetry/enable-telemetry.md#configuring-datadog-provider" >}})
+- [Dynatrace]({{< ref "tyk-cloud/telemetry/enable-telemetry.md#configuring-dynatrace-provider" >}})
+- [New Relic]({{< ref "tyk-cloud/telemetry/enable-telemetry.md#configuring-new-relic-provider" >}})
+- [Elastic]({{< ref "tyk-cloud/telemetry/enable-telemetry.md#configuring-elastic-provider" >}})
+- [Custom]({{< ref "tyk-cloud/telemetry/enable-telemetry.md#configuring-elastic-provider" >}})
 
 
 {{< note success >}}
