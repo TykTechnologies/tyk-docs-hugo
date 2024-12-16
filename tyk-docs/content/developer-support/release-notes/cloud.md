@@ -17,7 +17,7 @@ This Tyk Cloud update introduces a groundbreaking feature for enhanced API obser
 
 This feature enables trace export capabilities, providing deep insights into API and plugin performance. It marks the first step in Tyk Cloud’s broader observability journey, empowering users to monitor and troubleshoot their APIs more effectively while leveraging their existing observability tools.
 
-For more details, check out the documentation on setting up Telemetry export.
+For more details, check out the [documentation on setting up Telemetry export]({{< ref "" >}}).
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
