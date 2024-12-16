@@ -31,6 +31,6 @@ Tyk Cloud integrates with these monitoring platforms:
 **Note**
 
 Before diving into the configuration details, please note that Telemetry is an add-on feature in Tyk Cloud.
-To enable this capability for your account, please contact our [support team]({{< ref "/frequently-asked-questions/faq" >}}).
+To enable this capability for your account, please contact our [support team](https://support.tyk.io/).
 Our team will help you activate this feature and ensure you have access to all the Telemetry options.
 {{< /note >}}
