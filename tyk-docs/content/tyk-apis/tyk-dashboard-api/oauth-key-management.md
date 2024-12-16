@@ -138,42 +138,6 @@ curl -vX DELETE -H "Authorization: {{API Access Credentials}}" \
 }
 ```
 
-### OAuth2.0 Authorization Token
-
-| **Property** | **Description**                                |
-| ------------ | ---------------------------------------------- |
-| Resource URL | `/api/apis/oauth/{{api_id}}/authorize-client/` |
-| Method       | POST                                           |
-| Type         | Form-Encoded                                   |
-| Body         | Fields (see below)                             |
-
-* `api_id`: Unlike the other requests on this page, this must be the `api_id` value and **NOT** the API's `id` value. 
-* `response_type`: Should be provided by requesting client as part of authorization request, this should be either `code` or `token` depending on the methods you have specified for the API.
-* `client_id`: Should be provided by requesting client as part of authorization request. The Client ID that is making the request.
-* `redirect_uri`: Should be provided by requesting client as part of authorization request. Must match with the record stored with Tyk.
-* `key_rules`: A string representation of a Session Object (form-encoded). *This should be provided by your application in order to apply any quotas or rules to the key.*
-
-Note that in the following example, the `policy_id` isn't included in the request as these are optional. OAuth2.0 Flow also supports callbacks which can be added to the `key_rules` in the payload in requests that don't include the `policy_id`.
-
-
-#### Sample Request
-
-```{.copyWrapper}
-curl -vX POST -H "Authorization: {{API Access Credentials}}" \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d 'response_type=code&client_id={{client_id}}&redirect_uri=http%3A%2F%2Foauth.com%2Fredirect&key_rules=%7B+++++%22allowance%22%3A+999%2C+++++%22rate%22%3A+1000%2C+++++%22per%22%3A+60%2C+++++%22expires%22%3A+0%2C+++++%22quota_max%22%3A+-1%2C+++++%22quota_renews%22%3A+1406121006%2C+++++%22quota_remaining%22%3A+0%2C+++++%22quota_renewal_rate%22%3A+60%2C+++++%22access_rights%22%3A+%7B+++++++++%22528a67c1ac9940964f9a41ae79235fcc%22%3A+%7B+++++++++++++%22api_name%22%3A+%22{{api_name}}%22%2C+++++++++++++%22api_id%22%3A+%{{api_id}}%22%2C+++++++++++++%22versions%22%3A+%5B+++++++++++++++++%22Default%22+++++++++++++%5D+++++++++%7D+++++%7D%2C+++++%22org_id%22%3A+%22{{org_id}}%22+%7D'
-http://{{dashboard-hostname}}/api/apis/oauth/{{api_id}}/authorize-client
-```
-
-#### Sample Response
-
-```
-{
-  "code": "MWY0ZDRkMzktOTYwNi00NDRiLTk2YmQtOWQxOGQ3Mjc5Yzdk",
-  "redirect_to": "http://localhost:3000/oauth-redirect/?code=MWY0ZDRkMzktOTYwNi00NDRiLTk2YmQtOWQxOGQ3Mjc5Yzdk"
-}
-```
-
 ### Retrieve All Current Tokens for Specified OAuth2.0 Client
 
 This endpoint allows you to retrieve a list of all current tokens and their expiry date for a provided API ID and OAuth-client ID in the following format. This endpoint will work only for newly created tokens.
@@ -283,5 +247,43 @@ Body: {
   "Status": "OK",
   "Message": "tokens revoked successfully",
   "Meta": null
+}
+```
+
+### OAuth2.0 Authorization Code
+
+This endpoint is used in the [Authorization Code Grant]({{< ref "api-management/client-authentication#using-the-authorization-code-grant" >}}) flow, generating an authorization code that can be used by the client to request an access token.
+
+| **Property** | **Description**                                |
+| ------------ | ---------------------------------------------- |
+| Resource URL | `/api/apis/oauth/{{api_id}}/authorize-client/` |
+| Method       | POST                                           |
+| Type         | Form-Encoded                                   |
+| Body         | Fields (see below)                             |
+
+* `api_id`: Unlike the other requests on this page, this must be the `api_id` value and **NOT** the API's `id` value. 
+* `response_type`: Should be provided by requesting client as part of authorization request, this should be either `code` or `token` depending on the methods you have specified for the API.
+* `client_id`: Should be provided by requesting client as part of authorization request. The Client ID that is making the request.
+* `redirect_uri`: Should be provided by requesting client as part of authorization request. Must match with the record stored with Tyk.
+* `key_rules`: A string representation of a Session Object (form-encoded). *This should be provided by your application in order to apply any quotas or rules to the key.*
+
+Note that in the following example, the `policy_id` isn't included in the request as these are optional. OAuth2.0 Flow also supports callbacks which can be added to the `key_rules` in the payload in requests that don't include the `policy_id`.
+
+
+#### Sample Request
+
+```{.copyWrapper}
+curl -vX POST -H "Authorization: {{API Access Credentials}}" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d 'response_type=code&client_id={{client_id}}&redirect_uri=http%3A%2F%2Foauth.com%2Fredirect&key_rules=%7B+++++%22allowance%22%3A+999%2C+++++%22rate%22%3A+1000%2C+++++%22per%22%3A+60%2C+++++%22expires%22%3A+0%2C+++++%22quota_max%22%3A+-1%2C+++++%22quota_renews%22%3A+1406121006%2C+++++%22quota_remaining%22%3A+0%2C+++++%22quota_renewal_rate%22%3A+60%2C+++++%22access_rights%22%3A+%7B+++++++++%22528a67c1ac9940964f9a41ae79235fcc%22%3A+%7B+++++++++++++%22api_name%22%3A+%22{{api_name}}%22%2C+++++++++++++%22api_id%22%3A+%{{api_id}}%22%2C+++++++++++++%22versions%22%3A+%5B+++++++++++++++++%22Default%22+++++++++++++%5D+++++++++%7D+++++%7D%2C+++++%22org_id%22%3A+%22{{org_id}}%22+%7D'
+http://{{dashboard-hostname}}/api/apis/oauth/{{api_id}}/authorize-client
+```
+
+#### Sample Response
+
+```
+{
+  "code": "MWY0ZDRkMzktOTYwNi00NDRiLTk2YmQtOWQxOGQ3Mjc5Yzdk",
+  "redirect_to": "http://localhost:3000/oauth-redirect/?code=MWY0ZDRkMzktOTYwNi00NDRiLTk2YmQtOWQxOGQ3Mjc5Yzdk"
 }
 ```

@@ -45,7 +45,7 @@ Where `TYK_ORG` and `TYK_AUTH` are the Tyk Dashboard Organization ID and the Tyk
 {{< note success >}}
 **Note** 
 
-SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please transition to PostgreSQL, MongoDB or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings/postgresql#introduction" >}}), [MongoDB]({{< ref "planning-for-production/database-settings/mongodb" >}}), or one of the listed compatible alternatives.
 {{< /note >}}
 
 You must set the following values in the `values.yaml` or with `--set {field-name}={field-value}` with the helm upgrade command:

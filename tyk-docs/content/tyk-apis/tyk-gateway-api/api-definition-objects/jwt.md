@@ -11,7 +11,7 @@ weight: 7
 
 * `jwt_signing_method`: Either HMAC or RSA - HMAC requires a shared secret while RSA requires a public key to use to verify against. Please see the section on JSON web tokens for more details on how to generate these.
 
-* `jwt_source`: Must either be a base64 encoded valid RSA/HMAC key or a url to a resource serving JWK, this key will then be used to validate inbound JWT and throttle them according to the centralised JWT options and fields set in the configuration. See [Dynamic public key rotation using public JWKs URL]({{< ref "/api-management/authentication-authorization#use-json-web-tokens-jwt" >}}) for more details on JWKs.
+* `jwt_source`: Must either be a base64 encoded valid RSA/HMAC key or a url to a resource serving JWK, this key will then be used to validate inbound JWT and throttle them according to the centralised JWT options and fields set in the configuration. See [Dynamic public key rotation using public JWKs URL]({{< ref "/api-management/client-authentication#use-json-web-tokens-jwt" >}}) for more details on JWKs.
 
 * `jwt_identity_base_field`: Identifies the user or identity to be used in the Claims of the JWT. This will fallback to `sub` if not found. This field forms the basis of a new "virtual" token that gets used after validation. It means policy attributes are carried forward through Tyk for attribution purposes.
     
@@ -34,4 +34,4 @@ You can disable the validation check on 3 claims `IssueAt`, `ExpireAt` and `NotB
   "jwt_disable_not_before_validation": true
 ```
 
-See [JSON Web Tokens](/api-management/authentication-authorization#use-json-web-tokens-jwt) for more details.
+See [JSON Web Tokens](/api-management/client-authentication#use-json-web-tokens-jwt) for more details.

@@ -48,7 +48,7 @@ If you want to enable Tyk Developer Portal, please use PostgreSQL. MongoDB is no
 ## Tyk Control Plane Installations
 ### Installing The Chart
 
-To install the chart from Helm repository in namespace `tyk` with the release name `tyk-control-plane`, issue the following commands:
+To install the chart from Helm repository in namespace `tyk` with the release name `tyk-cp`, issue the following commands:
 ```bash
 helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 helm repo update
@@ -68,7 +68,7 @@ By default, the chart would expose MDCB service as ClusterIP. If you would like 
 
 Then just run:
 ```bash
-helm install tyk-control-plane tyk-helm/tyk-control-plane -n tyk --create-namespace -f values.yaml
+helm install tyk-cp tyk-helm/tyk-control-plane -n tyk --create-namespace -f values.yaml
 ```
 
 Follow the installation output to obtain connection details to Tyk MDCB, and use that to configure Tyk Data Planes using [tyk-data-plane]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart">}}) chart.
@@ -76,14 +76,14 @@ Follow the installation output to obtain connection details to Tyk MDCB, and use
 ### Uninstalling The Chart
 
 ```bash
-helm uninstall tyk-control-plane -n tyk
+helm uninstall tyk-cp -n tyk
 ```
 This removes all the Kubernetes components associated with the chart and deletes the release.
 
 ### Upgrading Chart
 
 ```bash
-helm upgrade tyk-control-plane tyk-helm/tyk-control-plane -n tyk -f values.yaml
+helm upgrade tyk-cp tyk-helm/tyk-control-plane -n tyk -f values.yaml
 ```
 
 ## Configuration
@@ -504,7 +504,7 @@ In Tyk control plane, Tyk Gateway acts as a management gateway that is used for 
 Configure the following details below, inside the `tyk-gateway` section.
 
 #### Update Tyk Gateway Version
-Set version of gateway at `tyk-gateway.gateway.image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/r/tykio/tyk-gateway/tags). Please check [Tyk Release notes]({{<ref "product-stack/tyk-gateway/release-notes/overview">}}) carefully while upgrading or downgrading.
+Set version of gateway at `tyk-gateway.gateway.image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/r/tykio/tyk-gateway/tags). Please check [Tyk Release notes]({{<ref "developer-support/release-notes/gateway">}}) carefully while upgrading or downgrading.
 
 #### Enabling TLS
 
@@ -689,6 +689,25 @@ Optional Steps, if needed:
 - If the `tyk-bootstrap` chart is used to bootstrap the Tyk Dashboard, ensure that bootstrap app can validate certificate of Tyk Dashboard or enable `insecureSkipVerify` in the `tyk-bootstrap` chart.
 - If the Tyk Gateway connects to the Tyk Dashboard, confirm that the Tyk Gateway has appropriate certificates for connecting to the Tyk Dashboard
 
+#### Audit Log Configurations
+
+You can manage audit logging for Tyk Dashboard via `auditLogs`:
+
+- `auditLogs.enabled`: Enables or disables audit logging. It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_ENABLED`. Disabled by default.
+- `auditLogs.type`: Specifies the storage type for audit logs (`db` or `file`). It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_STORETYPE`. Set to `file` by default.
+- `auditLogs.format`: Defines the format of audit log files (`json` or `text`). It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_FORMAT`. Set to `text` by default.
+- `auditLogs.path`: Sets the path to the audit log file. It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_PATH`. Set to "" by default.
+- `auditLogs.enableDetailedRecording`: Enables detailed logging, including HTTP requests (headers only) and full HTTP responses. It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_DETAILEDRECORDING`. Disabled by default.
+
+#### OPA Configurations{#opa-configurations}
+
+You can manage OPA (Open Agent Policy) for Tyk Dashboard via `opa`:
+
+- `opa.enabled`: Enables OPA support. It sets corresponding Dashboard environment `TYK_DB_SECURITY_OPENPOLICY_ENABLED`. Disabled by default.
+- `opa.debug`: Activates OPA debug mode for detailed logging of policy execution. It sets corresponding Dashboard environment `TYK_DB_SECURITY_OPENPOLICY_DEBUG`. Disabled by default.
+- `opa.api`: Enables OPA API mode to manage policies via the Dashboard API. It sets corresponding Dashboard environment `TYK_DB_SECURITY_OPENPOLICY_ENABLEAPI`. Disabled by default.
+- `opa.allowAdminPasswordReset`: Required if OPA is enabled with its default policies. It sets corresponding Dashboard environment `TYK_DB_SECURITY_ALLOWADMINRESETPASSWORD`. Enabled by default.
+
 ### Tyk MDCB Configurations
 
 #### Tyk MDCB License (Required)
@@ -799,7 +818,7 @@ tyk-dev-portal:
 {{< note success >}}
 **Note** 
 
-SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please transition to PostgreSQL, MongoDB or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings/postgresql#introduction" >}}), [MongoDB]({{< ref "planning-for-production/database-settings/mongodb" >}}), or one of the listed compatible alternatives.
 {{< /note >}}
 
 By default, Tyk Developer Portal use `sqlite3` to store portal metadata. If you want to use a different SQL Database, please modify the section below.
