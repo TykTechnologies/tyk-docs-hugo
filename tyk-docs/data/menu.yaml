@@ -372,7 +372,7 @@ menu:
                         path: /tyk-cloud/telemetry
                         category: Page
                         show: True
-                      - title: "Setting Up Your Telemetry Connection"
+                      - title: "Configuring Telemetry Provider"
                         path: /tyk-cloud/telemetry/enable-telemetry
                         category: Page
                         show: True
