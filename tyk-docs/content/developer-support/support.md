@@ -7,6 +7,8 @@ menu:
   main:
     parent: "Frequently Asked Questions"
 weight: 0
+aliases:
+  - /frequently-asked-questions/sla-policies
 ---
 
 The following table outlines our current Tyk Support SLA Policies

@@ -152,7 +152,7 @@ The compatibility matrix table shown above will be part of upcoming [Gateway rel
 
 ### How Do I Upgrade and How Can Tyk Help?
 
-We have step-by-step install guides for various architectures and installation types. Refer to [upgrading tyk]({{< ref "upgrading-tyk" >}}) for further details.
+We have step-by-step install guides for various architectures and installation types. Refer to [upgrading tyk]({{< ref "developer-support/upgrading" >}}) for further details.
 
 And don't forget, our brilliant Customer Success Teams and Account Managers are here to assist you with any issues - pleases refer to your SLA on the specifics of how we can help!
 
