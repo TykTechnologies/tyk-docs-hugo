@@ -1073,6 +1073,7 @@ Fixed the following high priority CVEs identified in the Tyk Dashboard, providin
 
 
 ## 5.3 Release Notes
+
 ### 5.3.9 Release Notes
 
 #### Release Date xxx
