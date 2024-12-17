@@ -2611,12 +2611,12 @@ users - Please refer to the [release notes of Tyk Dashboard 5.3.0]({{<ref "devel
 
 For OSS deployments -
 
-1. Backup Your environment using the [usual guidance]({{<ref "upgrading-tyk">}}) documented with every release (this includes
+1. Backup Your environment using the [usual guidance]({{<ref "developer-support/upgrading">}}) documented with every release (this includes
    backup config file and database).
 2. Backup all your API definitions (Tyk OAS API and Classic Definitions) by saving your API and policy files or by
    exporting them using the `GET /tyk/apis` and `Get /tyk/policies`
 3. Performing the upgrade - follow the instructions in the [upgrade
-   guide]({{<ref "upgrading-tyk">}}) when upgrading Tyk.
+   guide]({{<ref "developer-support/upgrading">}}) when upgrading Tyk.
 
 #### Release Highlights
 
@@ -4376,7 +4376,7 @@ Tyk Gateway 4.3 ([docker images](https://hub.docker.com/r/tykio/tyk-gateway/tags
 
 #### Upgrade process
 
-Follow the [standard upgrade guide]({{< ref "upgrading-tyk" >}}), there are no breaking changes in this release.
+Follow the [standard upgrade guide]({{< ref "developer-support/upgrading" >}}), there are no breaking changes in this release.
 
 If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "planning-for-production/database-settings/postgresql#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
 
@@ -4515,7 +4515,7 @@ Tyk Gateway 4.2
 
 #### Upgrade process
 
-Follow the [standard upgrade guide]({{< ref "/content/upgrading-tyk.md" >}}), there are no breaking changes in this release.
+Follow the [standard upgrade guide]({{< ref "developer-support/upgrading" >}}), there are no breaking changes in this release.
 
 If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "/content/planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
 
@@ -4586,7 +4586,7 @@ Tyk MDCB 2.0.1
 
 #### Upgrade process
 
-Follow the [standard upgrade guide]({{< ref "/content/upgrading-tyk.md" >}}), there are no breaking changes in this release.
+Follow the [standard upgrade guide]({{< ref "developer-support/upgrading" >}}), there are no breaking changes in this release.
 
 If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "/content/planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
  
@@ -4627,7 +4627,7 @@ Tyk Pump 1.5
 
 #### Upgrade process
 
-Follow the [standard upgrade guide]({{< ref "/content/upgrading-tyk.md" >}}), there are no breaking changes in this release.
+Follow the [standard upgrade guide]({{< ref "developer-support/upgrading" >}}), there are no breaking changes in this release.
 
 If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "/content/planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
  
@@ -4831,7 +4831,7 @@ If you are upgrading from version 2.8, pls [read this guide]({{< ref "developer-
 ## Further Information
 
 ### Upgrading Tyk
-Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance on the upgrade strategy.
+Please refer to the [upgrading Tyk]({{< ref "developer-support/upgrading" >}}) page for further guidance on the upgrade strategy.
 
 ### API Documentation
 <!-- Required. Update the link to the Gateway "tyk-gateway-api" or dashboard "tyk-dashboard-api" and the Postman collection
@@ -4847,4 +4847,4 @@ If there were changes in any of Tyk’s API docs:
 
 ### FAQ
 
-Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
+Please visit our [Developer Support]({{< ref "developer-support/community" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.

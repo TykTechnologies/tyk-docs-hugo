@@ -14,6 +14,7 @@ weight: 21
 aliases:
   - /developer-support/
   - /troubleshooting/
+  - /frequently-asked-questions/faq
 ---
 
 This section provides an overview of the various developer support mechanisms
@@ -54,4 +55,4 @@ Tyk Self Managed and Tyk Cloud license holders can reach out on the online
 Supporting documentation is also available relating to:
 
 - [Release Notes]({{< ref "developer-support/release-notes/gateway" >}})
-- [Upgrading Tyk]({{< ref "upgrading-tyk" >}})
+- [Upgrading Tyk]({{< ref "developer-support/upgrading" >}})

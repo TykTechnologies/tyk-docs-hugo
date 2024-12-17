@@ -2131,9 +2131,9 @@ There are no deprecations in this release.
 
 **The following steps are essential to follow before upgrading**
 
-1. For Self Managed deployments - Backup Your environment using the [usual guidance]({{<ref "upgrading-tyk#upgrade-guides-toc">}}) documented with every release (this includes backup config file and database).
+1. For Self Managed deployments - Backup Your environment using the [usual guidance]({{<ref "developer-support/upgrading#tyk-upgrade-guides-for-different-deployment-models">}}) documented with every release (this includes backup config file and database).
 2. For all deployments - Backup all your API definitions (Tyk OAS API and Classic Definitions):
-   - For Tyk Cloud deployments - To perform the backup please use our guide for [exporting APIs and policies]({{<ref "developer-support/backups/backup-apis-and-policies">}}).
+   - For Tyk Cloud deployments - To perform the backup please use our guide for [exporting APIs and policies]({{<ref "developer-support/upgrading#backup-apis-and-policies">}}).
    - For Self-Managed deployments -  To perform the backup please use [Tyk Sync]({{<ref "/api-management/automations#synchronize-tyk-environment-with-github-repository" >}}).
 4. Performing the upgrade - For all deployments, follow the instructions in the [upgrade guide](#upgrading-tyk) when upgrading Tyk.
 
@@ -3038,7 +3038,7 @@ Fixed an issue with *MongoDB* connection strings. To ensure consistent compatibi
 Our Dashboard is using [Golang 1.19](https://tip.golang.org/doc/go1.19) programming language starting with the 5.1 release. This brings improvements to the code base and allows us to benefit from the latest features and security enhancements in Go. Don’t forget that, if you’re using GoPlugins, you'll need to [recompile]({{< ref "plugins/supported-languages/golang#upgrading-your-tyk-gateway" >}}) these to maintain compatibility with the latest Gateway.
 
 ###### Tyk OAS APIs
-To provide a superior experience with OAS APIs, we have made some changes which include various security fixes, improved validation etc. Upgrading to v5.1 from v4.x.x may be irreversible, rollback to v4.x.x could break your OAS API definitions. For this reason, we recommend making a database backup so you can always restore from the backup (of v4.X.X) in case you encounter a problem during the upgrade. Please refer to our guides for detailed information on [upgrading Tyk]({{<ref "upgrading-tyk">}}) and [how to back up tyk]({{<ref "frequently-asked-questions/how-to-backup-tyk">}})
+To provide a superior experience with OAS APIs, we have made some changes which include various security fixes, improved validation etc. Upgrading to v5.1 from v4.x.x may be irreversible, rollback to v4.x.x could break your OAS API definitions. For this reason, we recommend making a database backup so you can always restore from the backup (of v4.X.X) in case you encounter a problem during the upgrade. Please refer to our guides for detailed information on [upgrading Tyk]({{<ref "developer-support/upgrading">}}) and [how to back up tyk]({{<ref "developer-support/faq#tyk-configuration">}})
 
 #### Deprecation
 There are no deprecations in this release.
@@ -3462,7 +3462,7 @@ Tyk Dashboard 4.3 ([docker images](https://hub.docker.com/r/tykio/tyk-dashboard/
 
 #### Upgrade process
 
-Follow the [standard upgrade guide]({{< ref "/content/upgrading-tyk.md" >}}), there are no breaking changes in this release.
+Follow the [standard upgrade guide]({{< ref "developer-support/upgrading" >}}), there are no breaking changes in this release.
 
 If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "/content/planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
 
@@ -3599,7 +3599,7 @@ Tyk Dashboard 4.2
 
 #### Upgrade process
 
-Follow the [standard upgrade guide]({{< ref "/content/upgrading-tyk.md" >}}), there are no breaking changes in this release.
+Follow the [standard upgrade guide]({{< ref "developer-support/upgrading" >}}), there are no breaking changes in this release.
 
 If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "/content/planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
 
@@ -3660,7 +3660,7 @@ Tyk MDCB 2.0.1
 
 #### Upgrade process
 
-Follow the [standard upgrade guide]({{< ref "/content/upgrading-tyk.md" >}}), there are no breaking changes in this release.
+Follow the [standard upgrade guide]({{< ref "developer-support/upgrading" >}}), there are no breaking changes in this release.
 
 If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "/content/planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
  
@@ -3710,7 +3710,7 @@ Tyk Pump 1.5
 
 #### Upgrade process
 
-Follow the [standard upgrade guide]({{< ref "/content/upgrading-tyk.md" >}}), there are no breaking changes in this release.
+Follow the [standard upgrade guide]({{< ref "developer-support/upgrading" >}}), there are no breaking changes in this release.
 
 If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "/content/planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
  
@@ -3951,7 +3951,7 @@ If you are upgrading from version 2.8, pls [read this guide]({{< ref "developer-
 ## Further Information
 
 ### Upgrading Tyk
-Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance on the upgrade strategy.
+Please refer to the [upgrading Tyk]({{< ref "developer-support/upgrading" >}}) page for further guidance on the upgrade strategy.
 
 ### API Documentation
 <!-- Required. Update the link to the Gateway "tyk-gateway-api" or dashboard "tyk-dashboard-api" and the Postman collection
@@ -3967,7 +3967,7 @@ If there were changes in any of Tyk’s API docs:
 
 ### FAQ
 
-Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
+Please visit our [Developer Support]({{< ref "developer-support/community" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
 
 
 
