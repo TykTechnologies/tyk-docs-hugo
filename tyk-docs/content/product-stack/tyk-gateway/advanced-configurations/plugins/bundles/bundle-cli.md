@@ -57,7 +57,7 @@ To create plugin bundles you will need the following:
 
 A suggested directory structure is shown below for Golang, Javascript and Python bundles in the tabs below.
 
-In this case, the `manifest.json` will reference the Python files located in the `bundle-directory`, ensuring the
+In this case, the `manifest.json` will reference the Python files located in the `bundle-directory`, ensure
 Python plugin source files are organized relative to the manifest. The Tyk Gateway will load and execute these Python
 plugins based on the paths defined in the `manifest.json` file.
 
