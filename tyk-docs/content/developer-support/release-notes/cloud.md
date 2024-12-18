@@ -3,7 +3,34 @@ title: Tyk Cloud Release Notes
 date: xx
 description: "Release notes documenting updates, enhancements, and changes for Tyk Cloud"
 tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "changelog"]
+
+
+
 ---
+## 1.24.0 Release Notes
+
+### Release Date 16 of December 2024
+
+### Release Highlights
+
+This Tyk Cloud update introduces a groundbreaking feature for enhanced API observability and troubleshooting. With the new native Telemetry export, Tyk Cloud now allows organizations to seamlessly integrate their deployments with a variety of popular observability platforms, including built-in support for Datadog, Dynatrace, Elastic, and New Relic. For other systems, the custom provider option ensures compatibility with any platform that supports the OpenTelemetry Protocol (OTLP).
+
+This feature enables trace export capabilities, providing deep insights into API and plugin performance. It marks the first step in Tyk Cloud’s broader observability journey, empowering users to monitor and troubleshoot their APIs more effectively while leveraging their existing observability tools.
+
+For more details, check out the [documentation on setting up Telemetry export]({{< ref "tyk-cloud/telemetry/enable-telemetry" >}}).
+
+
+### Breaking Changes
+<!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
+There are no breaking changes in this release
+
+### Downloads
+- [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
+
+### Deprecations
+<!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
+There are no deprecations in this release
+
 
 ## 1.23 Release Notes
 
@@ -196,6 +223,8 @@ Dependencies across all Tyk Cloud components have been updated to address report
   </li>
 </ul>
 
+
+## Further Information
 
 ### FAQ
 Please visit our [Developer Support]({{< ref "developer-support/community" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
