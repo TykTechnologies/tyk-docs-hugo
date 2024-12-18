@@ -140,39 +140,18 @@ Read more about licensing [here]({{< ref "migration-to-tyk#understand-licensing-
 
 
 
-## Quick Start Tyk Self-Managed
+## Getting Started with Tyk Self-Managed
 
-New to *Tyk Self Managed*? Click the button below to kickstart your journey with the basics.
-
-**Important note:** Upon clicking, you will need to sign up. Take advantage of a free guided evaluation of the *Tyk Dashboard & Developer Portal*, and receive your temporary license along with installation instructions during the process. Alternatively, to get started quickly, get a 48 hour trial of Tyk Cloud and get access to all features and capabilities of Tyk without the need to install. 
-
-
-{{< button_left href="https://tyk.io/sign-up#self" color="green" content="Get started" >}}
-
-#### What’s Included in the Quick Start?
-- View an example API secured through the Tyk Gateway, configured with rate limiting.
-- Login to Tyk Dashboard to view API analytics and update the configuration of the API (e.g. with further authentication options).
-- Update rate limits for the example API.
-
-#### Trial Prerequisites
-The recommended way to start your evaluation is via *Docker*. Follow the [instructions](https://docs.docker.com/get-docker/) to install *Docker*.
-
-
-#### Next Step - Proof of Concept (PoC)
-
-You have completed the quick start guide above and wonder what's next, please read below.
-
-##### PoC Guide 
-To find out more, visit our [Tyk Technical PoC Guide](https://tyk.io/customer-engineering/poc/technical-guide/).
+Tyk Self-Managed consists of multiple components, as described above. While the OSS Gateway and Pump are available without a license, the remaining components require one. To experience the full capabilities of our Full Lifecycle API Management solution within your own infrastructure, please obtain a license by contacting our support team.
 
 {{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
 
+If you prefer guided support, we recommend exploring our [Tyk Technical PoC Guide](https://tyk.io/customer-engineering/poc/technical-guide/).
 
-##### Tyk Demo - The Perfect PoC Experience
+Once you have obtained your license, you can proceed with the installation options provided below.
+
+##### **Tyk Demo - The Perfect PoC Experience**
 Head over to our **Tyk Demo** guides in [Kubernetes]({{<ref "getting-started/quick-start/tyk-k8s-demo">}}) or [Docker]({{<ref "getting-started/quick-start/tyk-demo">}}). These guides, with zero to none effort, will spin up the full Tyk infrastructure (Tyk stack) with examples of Tyk's capabilities and integrations out-of-the-box.
-
-
-
 
 ## Installation Options for Tyk Self-Managed
 
@@ -1625,10 +1604,11 @@ When running Tyk Pump in GCP using [Cloud Run](https://cloud.google.com/run/docs
 ### Install Tyk on Red Hat (RHEL / CentOS)
 
 Select the preferred way of installing Tyk by selecting **Shell** or **Ansible** tab for instructions.
+There are 4 components which needs to be installed. Each can be installed via shell or ansible
 
-#### Install Tyk Self Managed Red Hat (RHEL / CentOS)
+#### Install Database
 
-**Through Shell**
+##### Using Shell
 
 **Supported Distributions**
 | Distribution | Version | Supported |
@@ -1696,7 +1676,7 @@ sudo systemctl enable mongod
 sudo systemctl start mongod
 ```
 
-**Install Tyk Self Managed Through Ansible**
+##### Using Ansible
 You can install Tyk on RHEL or CentOS using our YUM repositories. Follow the guides and tutorials in this section to have Tyk up and running in no time.
 
 The order is to install Tyk Dashboard, then Tyk Pump and then Tyk Gateway for a full stack.
@@ -1710,7 +1690,6 @@ The order is to install Tyk Dashboard, then Tyk Pump and then Tyk Gateway for a 
 
 For a production environment, we recommend that the Tyk Gateway, Tyk Dashboard and Tyk Pump are installed on separate machines. If installing multiple Tyk Gateways, you should install each on a separate machine. See [Planning for Production]({{< ref "#planning-for-production" >}}) for more details.
 {{< /note >}}
-
 
 **Supported Distributions**
 | Distribution | Version | Supported |
@@ -1833,9 +1812,9 @@ Read more about MongoDB configuration [here](https://github.com/ansible-collecti
 Read more about PostgreSQL configuration [here](https://github.com/geerlingguy/ansible-role-postgresql).
 
 
-#### Install Dashboard on Red Hat (RHEL) / CentOS
+#### Install Dashboard
 
-**Install Tyk Dashboard Through Shell**
+##### Using Shell
 
 Tyk has its own signed RPMs in a YUM repository hosted by the kind folks at [packagecloud.io](https://packagecloud.io/tyk/tyk-dashboard/install#manual-rpm), which makes it easy, safe and secure to install a trusted distribution of the Tyk Gateway stack.
 
@@ -2041,7 +2020,8 @@ You can now log in to the Tyk Dashboard from `127.0.0.1:3000`, using the usernam
 To set up your [Developer Portal]({{< ref "/content/tyk-developer-portal.md" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalog]({{< ref "/content/getting-started/tutorials/publish-api.md" >}}).
 
 
-**Install Dashboard Through Ansible**
+##### Using Ansible
+
 <br />
 {{< note >}}
 **Requirements**
@@ -2099,9 +2079,9 @@ $ ansible-playbook playbook.yaml -t tyk-dashboard
 
 
 
-#### Install Tyk Pump on Red Hat (RHEL) / CentOS
+#### Install Pump
 
-**Configure Tyk Pump Through Shell**
+##### Using Shell
 
 Tyk has it's own signed RPMs in a YUM repository hosted by the kind folks at [packagecloud.io](https://packagecloud.io), which makes it easy, safe and secure to install a trusted distribution of the Tyk Gateway stack.
 
@@ -2198,7 +2178,8 @@ sudo journalctl -u tyk-pump
 
 
 
-**Install Tyk Pump Through Ansible**
+##### Using Ansible
+
 <br />
 {{< note >}}
 **Requirements**
@@ -2243,9 +2224,9 @@ $ ansible-playbook playbook.yaml -t tyk-pump
 
 
 
-#### Install Tyk Gateway on Red Hat (RHEL) / CentOS
+#### Install Gateway
 
-**Install Tyk Gateway Through Shell**
+##### Using Shell
 
 Tyk has it's own signed RPMs in a YUM repository hosted by the kind folks at [packagecloud.io](https://packagecloud.io/tyk/tyk-dashboard/install#manual-rpm), which makes it easy, safe and secure to install a trusted distribution of the Tyk Gateway stack.
 
@@ -2306,7 +2287,7 @@ When Tyk is finished installing, it will have installed some init scripts, but i
 
 
 
-**Install Tyk Gateway Through Ansible**
+##### Using Ansible
 
 **Requirements**
 
@@ -2366,7 +2347,7 @@ $ ansible-playbook playbook.yaml -t `tyk-gateway-pro` or `tyk-gateway-hybrid`
 | gateway.rpc.rpcKey | | Your organization ID to connect to the MDCB installation |
 | gateway.rpc.apiKey | | This the API key of a user used to authenticate and authorize the Gateway’s access through MDCB. The user should be a standard Dashboard user with minimal privileges so as to reduce any risk if the user is compromised. The suggested security settings are read for Real-time notifications and the remaining options set to deny |
 | gateway.rpc.groupId | | This is the `zone` that this instance inhabits, e.g. the cluster/data-center the Gateway lives in. The group ID must be the same across all the Gateways of a data-center/cluster which are also sharing the same Redis instance. This ID should also be unique per cluster (otherwise another Gateway cluster can pick up your keyspace events and your cluster will get zero updates). |
-#### Configure Tyk Gateway with the Dashboard
+###### Configure Tyk Gateway with the Dashboard
 
 **Prerequisites**
 
@@ -2410,9 +2391,8 @@ Tyk Gateway has full domain support built-in, you can:
 *   If you have set a hostname for the Gateway, then all non-domain-bound APIs will be on this hostname + the `listen_path`.
 
 ### Install Tyk on Debian or Ubuntu
- 
 
-#### Install Tyk through Ansible
+#### Using Ansible
 
 **Requirements**
 
@@ -2537,7 +2517,7 @@ Read more about MongoDB configuration [here](https://github.com/ansible-collecti
 Read more about PostgreSQL configuration [here](https://github.com/geerlingguy/ansible-role-postgresql).
 
 
-##### Install Tyk Through Shell 
+#### Using Shell 
 
 **Requirements**
 
@@ -3692,6 +3672,8 @@ docker-compose -f ./docker-compose.yml -f ./docker-compose.postgres.yml down -v
 
 ### Using Windows
 
+#### Tyk Pro on Windows using Docker Desktop
+
 The Tyk Pro Docker demo is our full [On-Premises](https://tyk.io/api-gateway/on-premise/) Pro solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed Pro on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and MongoDB. This demo is great for proof of concept and demo purposes, but if you want to test performance, you will need to move each component to a separate machine.
 
 {{< warning success >}}
@@ -3884,7 +3866,7 @@ This creates the developer portal URL. For the `Authorization` Header, the Value
 }
 ```
 
-**Using WSL**
+#### Tyk Pro on Windows using WSL
 
 The Tyk Pro Docker demo is our full [Self-Managed]({{< ref "migration-to-tyk#configure-tyk-self-managed" >}}) solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and MongoDB. This demo is great for proof of concept and demo purposes, but if you want to test performance, you will need to move each component to a separate machine.
 
@@ -3991,7 +3973,7 @@ Click **Bootstrap** to save the details.
 
 You can now log in to the Tyk Dashboard from `127.0.0.1:3000`, using the username and password created in the Dashboard Setup screen.
 
-##### Configure your Developer Portal
+**Configure your Developer Portal**
 
 To set up your [Developer Portal]({{< ref "/content/tyk-developer-portal.md" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalog]({{< ref "/content/getting-started/tutorials/publish-api.md" >}}).
 

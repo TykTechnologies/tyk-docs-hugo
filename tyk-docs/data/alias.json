@@ -153,6 +153,7 @@
     "tyk-self-managed/tyk-helm-chart": "migration-to-tyk#quick-start-with-helm-chart",
     "tyk-cloud/teams--users/single-sign-on": "migration-to-tyk#configure-single-sign-on-sso",
     "tyk-cloud/troubleshooting-&-support/migration-to-tyk": "migration-to-tyk#troubleshooting-tyk-cloud",
+    
     "tyk-on-premises/docker/docker-pro-demo": "#docker-compose-setup",
     "tyk-on-premises/docker": "#docker-compose-setup",
     "security/": "#overview",
