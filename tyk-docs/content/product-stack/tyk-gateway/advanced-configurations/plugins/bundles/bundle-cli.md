@@ -57,17 +57,22 @@ To create plugin bundles you will need the following:
 
 A suggested directory structure is shown below for Golang, Javascript and Python bundles in the tabs below.
 
-In this case, the `manifest.json` will reference the Python files located in the plugins subdirectory, ensuring the
+In this case, the `manifest.json` will reference the Python files located in the `bundle-directory`, ensuring the
 Python plugin source files are organized relative to the manifest. The Tyk Gateway will load and execute these Python
 plugins based on the paths defined in the `manifest.json` file.
+
+{{< note success >}}
+**Note**  
+
+Subdirectory are not supported in the `bundle-directory`
+{{< /note >}}
 
 {{< tabs_start >}} {{< tab_start "Golang" >}}
 
 ```bash
 /bundle-directory
 ├── manifest.json               # Manifest file with plugin references
-└── /plugins                    # Subdirectory containing compiled plugin
-    └── plugin.so               # Compiled Golang plugin
+└── plugin.so                   # Compiled Golang plugin
 ```
 
 {{< tab_end >}} {{< tab_start "Javascript" >}}
@@ -75,9 +80,8 @@ plugins based on the paths defined in the `manifest.json` file.
 ```bash
 /bundle-directory
 ├── manifest.json               # Manifest file with plugin references
-└── /plugins                    # Subdirectory containing source files
-    ├── plugin1.js              # First JavaScript plugin source file
-    └── plugin2.js              # Second JavaScript plugin source file
+├── plugin1.js                  # First JavaScript plugin source file
+└── plugin2.js                  # Second JavaScript plugin source file
 ```
 
 {{< tab_end >}}
@@ -87,9 +91,8 @@ plugins based on the paths defined in the `manifest.json` file.
 ```bash
 /bundle-directory
 ├── manifest.json               # Manifest file with plugin references
-└── /plugins                    # Subdirectory containing source files
-    ├── plugin1.py              # First Python plugin source file
-    └── plugin2.py              # Second Python plugin source file
+├── plugin1.py                  # First Python plugin source file
+└── plugin2.py                  # Second Python plugin source file
 ```
 
 {{< tab_end >}}
