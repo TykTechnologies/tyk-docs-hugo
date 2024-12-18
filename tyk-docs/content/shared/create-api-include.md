@@ -9,7 +9,7 @@
 
 In Tyk v4.1 we introduced support for APIs defined according to the [OpenAPI Specification v3.0.3](https://spec.openapis.org/oas/v3.0.3) (OAS).  
 This introduces a standard way to describe the vendor-agnostic elements of an API (the OpenAPI Definition, stored as an OpenAPI Document); we take this and add Tyk-specific configuration options to create the *Tyk OAS API Definition*. You can import your own OpenAPI document and Tyk will use this to generate the Tyk OAS API Definition.  
-For a detailed tutorial on using OAS with Tyk Gateway, check out our guide to [creating a Tyk OAS API Definition]({{< ref "getting-started/using-oas-definitions/create-an-oas-api#tutorial-create-an-oas-api-with-the-tyk-gateway-api" >}}).
+For a detailed tutorial on using OAS with Tyk Gateway, check out our guide to [creating a Tyk OAS API Definition]({{< ref "getting-started/using-oas-definitions/create-an-oas-api#tutorial-1-create-a-tyk-oas-api-using-the-tyk-gateway-api" >}}).
 
 {{< /note >}}
 
@@ -55,12 +55,12 @@ Take a look at the **Authentication** section:
 
 You have the following options:
 
-- **Authentication mode**: This is the method that Tyk should use to authenticate requests to call your API. Tyk supports several different authentication modes - see [Authentication and Authorization]({{< ref "basic-config-and-security/security/authentication-&-authorization" >}}) for more details on securing your API. For this tutorial, you should select `Open (Keyless)`. 
+- **Authentication mode**: This is the method that Tyk should use to authenticate requests to call your API. Tyk supports several different authentication modes - see [Client Authentication]({{< ref "/api-management/client-authentication" >}}) for more details on securing your API. For this tutorial, you should select `Open (Keyless)`. 
 - **Strip Authorization Data**: Select this option to ensure that any security (authentication) tokens provided to authorize requests to your API on Tyk are not leaked to the upstream. You can leave this unchecked for this tutorial.
 - **Auth Key Header Name**: The header parameter that will hold the authentication token (or key) for requests to this API; the default for this is `Authorization`.
 - **Allow query parameter as well as header**: This option allows the authentication token to be set in the query parameter, not just in the Request Header. For this tutorial, leave this unchecked.
 - **Use Cookie Value**: Tyk also supports the use of a cookie value as an alternative authentication token location. For this tutorial, leave this unchecked.
-- **Enable client certificate**: Tyk supports the use of Mutual TLS to authenticate requests to your API; you would use this checkbox to enable this mode. See [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}) for details on implementing this feature. For this tutorial, leave this unchecked.
+- **Enable client certificate**: Tyk supports the use of Mutual TLS to authenticate requests to your API; you would use this checkbox to enable this mode. See [Mutual TLS]({{< ref "/api-management/client-authentication#use-mutual-tls" >}}) for details on implementing this feature. For this tutorial, leave this unchecked.
 
 ### Step 5: Save the API
 

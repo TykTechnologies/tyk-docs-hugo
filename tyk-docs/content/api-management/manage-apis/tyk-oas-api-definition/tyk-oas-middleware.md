@@ -12,7 +12,7 @@ Tyk OAS APIs have access to an increasing range of Tyk middleware that you can c
 {{< note success >}}
 **Note**  
 
-Tyk OAS API support is currently in [Early Access]({{< ref "developer-support/special-releases-and-features/early-access-features" >}}) and some Tyk features are not yet supported. You can see the status of what is and isn't yet supported [here]({{< ref "/getting-started/using-oas-definitions/oas-reference.md" >}}).
+Tyk OAS API support is currently in [Early Access]({{< ref "developer-support/release-notes/special-releases#early-access-features" >}}) and some Tyk features are not yet supported. You can see the status of what is and isn't yet supported [here]({{< ref "/getting-started/using-oas-definitions/oas-reference.md" >}}).
 {{< /note >}}
 
 ### allowList: permit access only to documented endpoints
@@ -254,7 +254,7 @@ Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/t
 
 ### mockResponse: invoke an automatic response from the Gateway without accessing upstream service
 
-The OpenAPI Document that you used in the example [above]({{< ref "#validateRequest-check-that-the-API-request-payload-meets-a-defined-schema" >}}), we also defined a JSON schema that describes the response format for any request that hits the `GET /pet/{petId}` path.
+The OpenAPI Document that you used in the example [above]({{< ref "#validaterequest-check-that-the-api-request-payload-meets-a-defined-schema" >}}), we also defined a JSON schema that describes the response format for any request that hits the `GET /pet/{petId}` path.
 
 Tyk Gateway can "understand" and use this schema to create a mock response for any incoming requests.
 This is achieved by adding the `mockResponse` query parameter to the `PATCH` request, when updating the Tyk OAS API Definition.

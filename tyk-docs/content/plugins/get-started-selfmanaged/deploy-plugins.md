@@ -53,7 +53,7 @@ This command generates a "bundle" from the sample Go plugin in the repo.
 {{< note success >}}
 **Note**  
 
-For added security, please consider signing your [bundles]({{< ref "plugins/how-to-serve-plugins.md#global-parameters" >}}), especially if the connection between the Gateways and the Bundler server traverses the internet.
+For added security, please consider signing your [bundles]({{< ref "plugins/how-to-serve-plugins.md" >}}), especially if the connection between the Gateways and the Bundler server traverses the internet.
 
 {{< /note >}}
 
@@ -93,7 +93,7 @@ This step uploads the Bundle to both GitHub and an AWS S3 bucket.  Obviously, yo
 {{< note success >}}
 **Note**  
 
-For seamless deployments, take a look at multi-version [plugin support]({{< ref "plugins/supported-languages/golang.md#upgrading-tyk" >}}) to enable zero downtime deployments of your Tyk Gateway installs
+For seamless deployments, take a look at multi-version [plugin support]({{< ref "plugins/supported-languages/golang.mdd#upgrading-your-tyk-gateway" >}}) to enable zero downtime deployments of your Tyk Gateway installs
 
 {{< /note >}}
 
