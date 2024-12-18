@@ -1170,6 +1170,13 @@ Fixed the search functionality on the Keys page, enabling the search button to w
 </li>
 <li>
 <details>
+<summary>Keys remain active even after all linked partitioned policies are deleted</summary>
+
+Resolved an issue where keys remained valid even after all associated policies were deleted. The Gateway now applies all available linked policies to a key during request validation and logs warnings if any policies are missing. If all policies are missing, the Gateway will reject the key to ensure no unauthorized access.
+</details>
+</li>
+<li>
+<details>
 <summary>Deprecation of http_server_options.prefer_server_ciphers</summary>
 
 This option has been marked as deprecated due to its obsolescence in upstream dependencies. Users are advised to remove this configuration from their setups as it will no longer have any effect in future releases.
