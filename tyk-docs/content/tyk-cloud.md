@@ -138,6 +138,12 @@ This section walks you through how to start using Tyk Cloud, creating organizati
 * Configuring and deploying your Control Plane and creating your Cloud Data Plane
 * Adding and testing your first API
 
+{{< note success >}}
+**Note**  
+
+`Comprehensive Tyk Cloud Setup` requires access to `Tyk Cloud Console` (management UI). Please note that free trial users do not have access to the `Tyk Cloud Console`. To obtain the required access, contact [support](https://tyk.io/contact/).
+{{< /note >}}
+
 At the end of this process you will have a simple API set up via a Tyk Dashboard and you'll see analytics for this API on the Tyk Activity Dashboard.
 
 Depending on your initial requirements in terms of Environments, Teams and Users, the setup process should take between 15 to 30 minutes.
@@ -1610,20 +1616,20 @@ Watch our video on configuring your Tyk Cloud Developer Portal.
 1. From the Control Plane Dashboard, select **Pages** from the **Portal Management** menu
 2. Click **Add Page**
 
-{{< img src="/img/2.10/portal-home-page-add.png" alt="Add Portal Page" >}}
+{{< img src="/img/getting-started/create-account-portal-pages.png" alt="Add Portal Page" >}}
 
 3. In the Settings, give your page a name and slug. Below we've called it Home
 4. Select **Check to make this page the Home page**
 5. Select **Default Home page template** from the Page type drop-down list
 6. You can leave the Registered Fields sections for now
 
-{{< img src="/img/2.10/portal-home-page-settings.png" alt="Portal Home page settings" >}}
+{{< img src="/img/getting-started/portal-home-page-settings.png" alt="Portal Home page settings" >}}
 
 7. Click **Save**.
 
 You should now be able to access your Portal from **Open Your Portal** from the **Your Developer Portal** menu.
 
-{{< img src="/img/2.10/portal_menu.png" alt="Portal Menu" >}}
+{{< img src="/img/getting-started/portal_menu.png" alt="Portal Menu" >}}
 
 #### Further Portal Configuration
 

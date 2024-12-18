@@ -183,7 +183,7 @@ Install with Docker.
 {{< /badge >}}
 
 {{< badge read="10 mins" href="tyk-oss/ce-kubernetes/" image="/img/k8s.png" alt="Kubernetes Install">}}
-Install with K8s. 
+Install on K8s. 
 {{< /badge >}}
 
 {{< badge read="10 mins" href="tyk-oss/ce-ansible/" image="/img/ansible.png" alt="Ansible install">}}
@@ -204,7 +204,7 @@ Visit our Gateway GitHub Repo.
 
 {{< /grid >}}
 
-### Install Tyk Self-Managed with Kubernetes
+### Install on Kubernetes
 
 The main way to install *Tyk Self-Managed* in a Kubernetes cluster is via Helm charts. 
 We are actively working to add flexibility and more user flows to our chart. Please reach out
@@ -785,7 +785,7 @@ to set the name of this **ConfigMap** (`tyk-tib-profiles-conf` by default).
 For a GitOps workflow used with a **Tyk Self-Managed** installation or setting the Tyk Gateway as a Kubernetes ingress controller, Tyk Operator enables you to manage API definitions, security policies and other Tyk features using Kubernetes manifest files.
 To get started go to [Tyk Operator]({{< ref "/tyk-operator#what-is-tyk-operator" >}}).
 
-### Install via AWS Marketplace
+### Install on AWS Marketplace
 
 
 Tyk offers a flexible and powerful API management solution through **Tyk Cloud** on the [AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-pboluroscnqro). Tyk Cloud is an end-to-end managed API platform where both the control plane and gateways are installed on AWS for a seamless, fully cloud-hosted experience.
@@ -946,7 +946,7 @@ wget https://raw.githubusercontent.com/sedkis/tyk/master/scripts/bootstrap-ssl.s
 9. Done! use the generated user and password to log into The Tyk Dashboard
 
 
-### Install via Ansible
+### Install with Ansible
 
 {{< note >}}
 **Requirements**
@@ -1084,7 +1084,7 @@ Read more about MongoDB configuration [here](https://github.com/ansible-collecti
 Read more about PostgreSQL configuration [here](https://github.com/geerlingguy/ansible-role-postgresql).
 
 
-### Install via Bootstrap
+### Install using Bootstrap CLI
   
 To list the available flags, execute `tyk-analytics bootstrap -h`:
 
@@ -1149,7 +1149,7 @@ From v5.5.0 onwards, these images are based on [distroless](https://github.com/G
 We also have a [Docker Tyk Pro Demo]({{< ref "#docker-compose-setup" >}}), which installs our full Self-Managed solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine.
 
 
-### Install with Heroku
+### Install on Heroku
   
 **Install Tyk API Gateway on Heroku**
 
@@ -1576,7 +1576,7 @@ Once these changes have been made just run `heroku container:push --recursive -a
 Please refer to [Heroku documentation on containers and registry](https://devcenter.heroku.com/articles/container-registry-and-runtime) for more information.
 
 
-### Install with Microsoft Azure
+### Install on Microsoft Azure
   
 [Azure](https://azure.microsoft.com/en-us/overview/what-is-azure/) is Microsoft's cloud services platform. It supports both the running of [Ubuntu Servers](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Canonical.UbuntuServer?tab=Overview), as well as [Docker](https://www.docker.com/docker-azure) and [Docker-Compose](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-compose-quickstart).
 
@@ -2412,7 +2412,7 @@ Tyk Gateway has full domain support built-in, you can:
 ### Install Tyk on Debian or Ubuntu
  
 
-##### Install Tyk through Ansible
+#### Install Tyk through Ansible
 
 **Requirements**
 
