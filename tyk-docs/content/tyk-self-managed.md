@@ -2,6 +2,102 @@
 title: "Install Tyk Self Managed"
 description: "This page serves as a comprehensive guide to migrating workloads to Tyk"
 tags: ["installation", "migration"]
+aliases:
+  - /get-started/with-tyk-on-premise
+  - /get-started/with-tyk-on-premise/installation/on-aws
+  - /get-started/with-tyk-on-premise/installation/on-ubuntu/gateway
+  - /get-started/with-tyk-on-premise/installation/redhat-rhel-centos/dashboard
+  - /getting-started/installation/tyk-on-premises/on-ubuntu
+  - /getting-started/installation/with-tyk-on-premises/bootstrapper-cli
+  - /getting-started/installation/with-tyk-on-premises/debian-ubuntu/analytics-pump
+  - /getting-started/installation/with-tyk-on-premises/debian-ubuntu/dashboard
+  - /getting-started/installation/with-tyk-on-premises/debian-ubuntu/gateway
+  - /getting-started/installation/with-tyk-on-premises/install-tyk-google-cloud
+  - /getting-started/installation/with-tyk-on-premises/install-tyk-microsoft-azure
+  - /getting-started/installation/with-tyk-on-premises/kubernetes
+  - /getting-started/installation/with-tyk-on-premises/kubernetes/k8s-docker-pro-wsl
+  - /getting-started/installation/with-tyk-on-premises/on-ubuntu
+  - /getting-started/installation/with-tyk-on-premises/on-ubuntu/analytics-pump
+  - /getting-started/installation/with-tyk-on-premises/on-ubuntu/dashboard
+  - /getting-started/installation/with-tyk-on-premises/on-ubuntu/gateway
+  - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos
+  - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/analytics-pump
+  - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/dashboard
+  - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/gateway
+  - /getting-started/with-tyk-on-premises/installation/on-aws
+  - /getting-started/with-tyk-on-premises/installation/on-aws/ec2
+  - /getting-started/with-tyk-on-premises/installation/on-heroku
+  - /tyk-on-premises
+  - /tyk-on-premises/aws
+  - /tyk-on-premises/debian-ubuntu
+  - /tyk-on-premises/debian-ubuntu/analytics-pump
+  - /tyk-on-premises/debian-ubuntu/dashboard
+  - /tyk-on-premises/debian-ubuntu/gateway
+  - /tyk-on-premises/getting-started
+  - /tyk-on-premises/google-cloud
+  - /tyk-on-premises/heroku
+  - /tyk-on-premises/kubernetes
+  - /tyk-on-premises/licensing
+  - /tyk-on-premises/microsoft-azure
+  - /tyk-on-premises/on-aws/ec2
+  - /tyk-on-premises/on-ubuntu
+  - /tyk-on-premises/redhat-rhel-centos
+  - /get-started/with-tyk-on-premise/installation/docker
+  - /get-started/with-tyk-on-premise/installation/docker/docker-quickstart
+  - /getting-started/installation/with-tyk-on-premises/docker
+  - /getting-started/installation/with-tyk-on-premises/kubernetes/tyk-kubernetes-ingress-controller
+  - /tyk-on-premises/ansible
+  - /tyk-on-premises/bootstrapper-cli
+  - /tyk-on-premises/docker
+  - /tyk-on-premises/installation/on-aws
+  - /tyk-on-premises/installation/on-heroku
+  - /planning-for-production/database-settings
+  - /planning-for-production/database-settings/postgresql
+  - /planning-for-production/database-settings/sql
+  - /planning-for-production/ensure-high-availability/health-check
+  - /planning-for-production/redis-mongodb
+  - /planning-for-production/redis-mongodb-sizing
+  - /planning-for-production/redis-sizing
+  - /planning-for-production
+  - /planning-for-production/benchmarks
+  - /planning-for-production/database-settings/mongodb
+  - /planning-for-production/database-settings/mongodb-sizing
+  - /planning-for-production/ensure-high-availability
+  - /planning-for-production/ensure-high-availability/circuit-breakers
+  - /planning-for-production/ensure-high-availability/enforced-timeouts
+  - /planning-for-production/ensure-high-availability/load-balancing
+  - /planning-for-production/ensure-high-availability/service-discovery
+  - /planning-for-production/ensure-high-availability/service-discovery/examples
+  - /planning-for-production/ensure-high-availability/uptime-tests
+  - /planning-for-production/monitoring
+  - /planning-for-production/monitoring/tyk-components
+  - /planning-for-production/redis
+  - /tyk-on-prem/installation/redhat-rhel-centos/analytics-pump
+  - /tyk-on-prem/installation/redhat-rhel-centos/dashboard
+  - /tyk-on-prem/installation/redhat-rhel-centos/gateway
+  - /tyk-on-prem/kubernetes-on-windows
+  - /tyk-on-prem/installation/on-aws
+  - /tyk-on-prem/kubernetes-ingress
+  - /deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/consul
+  - /deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/vault
+  - /deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-mongodb
+  - /deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-postgresql
+  - /deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview
+  - /tyk-self-managed/tyk-helm-chart
+  - /product-stack/tyk-gateway/middleware/circuit-breaker-tyk-classic
+  - /product-stack/tyk-gateway/middleware/circuit-breaker-tyk-oas
+  - /product-stack/tyk-gateway/middleware/enforced-timeout-tyk-classic
+  - /product-stack/tyk-gateway/middleware/enforced-timeout-tyk-oas
+  - /ensure-high-availability/circuit-breakers
+  - /ensure-high-availability/load-balancing
+  - /tyk-api-gateway-v-2-0/installation-options-setup/install-tyk-pro-edition-on-red-hat
+  - /tyk-api-gateway-v1-9/setup/install-tyk-on-ubuntu
+  - /analytics-and-reporting/redis-mongodb-sizing
+  - /deploy-tyk-premise-production
+  - /getting-started/licensing
+  - /analyse/redis-mongodb-sizing
+  - /getting-started/licencing
+  - /tyk-stack/tyk-gateway/kv-store
 ---
 
 ## What is Tyk Self-Managed
@@ -4340,48 +4436,13 @@ You can calculate your Redis RAM requirements by entering your known values in t
 {{< redis-calculator >}}
 
 
-#### MongoDB Sizing
+#### MongoDB
 
-The aggregate record size depends on the number of APIs and Keys you have. Each counter size ~50b, and every aggregated value has its own counter. 
-
-So an hourly aggregate record is computed like this: 50 * active_apis + 50 * api_versions + 50 * active_api_keys  + 50 * oauth_keys, etc. 
-
-The average aggregate record size (created hourly) on our cloud is about ~ 40KB (a single record includes all the aggregate stats mentioned above).
-
-So for 1 million requests per day, it will generate 1KB * 1M request stats (1GB) + 24 * 40KB aggregate stats (~1MB).
-
-Per month: 30GB request logs + 30MB aggregate logs
-
-**MongoDB Working Data**
-
-Working data in terms of MongoDB is the data you query most often. The graphs displayed on the Tyk Dashboard, except for the Log browser, use aggregated data. 
-
-So if you rely only on this kind of analytic data, you will not experience issues with working data and memory issues. It is literally hundreds of MBs. 
-
-Even if you use the Log browser, its usage access is usually quite random, and it is unlikely that you check requests for every request. So it can't be called working data. And it is ok to store it on disk, and allow MongoDB to do the disk lookups to fetch the data. 
-
-Note, that in order to do fast queries, even from the disk, MongoDB uses indexes. MongoDB recommends that indexes should fit into memory, and be considered working data, but only the part of the index which is commonly used. For example the last month of data. 
-
-For an aggregate collection, the average index size is 6% from the overall collection. For requests stats it is around 30%. 
-
-
-**MongoDB Sizing Example**
-If you serve 1 million requests per day, and require fast access to the last seven days of request logs (usually way less, and the performance of the log viewer is not a concern), with 3 months of aggregated logs, the memory requirements for MongoDB can be as follows:
-
-Request_logs_index ( 30% * (1GB * 7) ) + aggregated(3month * 30MB) ~= 2.1GB + 90MB = ~ 2.2GB
-
-In addition to storing working data in memory, MongoDB also requires space for some internal data structures. In general multiplying the resulting number by 2x should be enough. In the above example, your MongoDB server should have around 4.4GB of available memory.
-
-**MongoDB Database Storage Calculator**
-You can calculate your MongoDB storage requirements by entering your known values in the middle section of the calculator settings below:
-
-{{< database-calculator >}}
-
-**Supported Versions**
+##### Supported Versions
 
 {{< include "mongodb-versions-include" >}}
 
-**Choose a MongoDB driver**
+##### Choose a MongoDB driver
 
 From Tyk 5.0.2, we added an option to use the official MongoDB Go driver to connect to MongoDB. 
 
@@ -4426,7 +4487,77 @@ In order to integrate with [MongoDB Atlas](https://www.mongodb.com/atlas/databas
 More information on these configuration variables [here]({{< ref "tyk-dashboard/configuration" >}}). 
 
 
-#### Configuring PostgreSQL
+##### MongoDB Sizing Guidelines
+
+The aggregate record size depends on the number of APIs and Keys you have. Each counter size ~50b, and every aggregated value has its own counter. 
+
+So an hourly aggregate record is computed like this: 50 * active_apis + 50 * api_versions + 50 * active_api_keys  + 50 * oauth_keys, etc. 
+
+The average aggregate record size (created hourly) on our cloud is about ~ 40KB (a single record includes all the aggregate stats mentioned above).
+
+So for 1 million requests per day, it will generate 1KB * 1M request stats (1GB) + 24 * 40KB aggregate stats (~1MB).
+
+Per month: 30GB request logs + 30MB aggregate logs
+
+**MongoDB Working Data**
+
+Working data in terms of MongoDB is the data you query most often. The graphs displayed on the Tyk Dashboard, except for the Log browser, use aggregated data. 
+
+So if you rely only on this kind of analytic data, you will not experience issues with working data and memory issues. It is literally hundreds of MBs. 
+
+Even if you use the Log browser, its usage access is usually quite random, and it is unlikely that you check requests for every request. So it can't be called working data. And it is ok to store it on disk, and allow MongoDB to do the disk lookups to fetch the data. 
+
+Note, that in order to do fast queries, even from the disk, MongoDB uses indexes. MongoDB recommends that indexes should fit into memory, and be considered working data, but only the part of the index which is commonly used. For example the last month of data. 
+
+For an aggregate collection, the average index size is 6% from the overall collection. For requests stats it is around 30%. 
+
+
+**MongoDB Sizing Example**
+If you serve 1 million requests per day, and require fast access to the last seven days of request logs (usually way less, and the performance of the log viewer is not a concern), with 3 months of aggregated logs, the memory requirements for MongoDB can be as follows:
+
+Request_logs_index ( 30% * (1GB * 7) ) + aggregated(3month * 30MB) ~= 2.1GB + 90MB = ~ 2.2GB
+
+In addition to storing working data in memory, MongoDB also requires space for some internal data structures. In general multiplying the resulting number by 2x should be enough. In the above example, your MongoDB server should have around 4.4GB of available memory.
+
+**Audit Log storage**
+
+From Tyk Dashboard v5.7+, audit log can be configured to be stored in the database. If you choose to store the audit logs in database, you need to account for additional storage for audit logs in the database setup. The size of this table will depend on the number of operations recorded, with each record averaging 1350 to 1450 bytes.
+
+**Audit Log Considerations**
+
+- **Data Generation**: The total size of the audit log table will depend on the number of API operations, administrative actions, and system events that are being logged.
+- **Daily Estimate**: For example, logging 100,000 operations per day results in 135MB to 145MB of additional data daily.
+- **Storage Growth**: Over time, this can significantly impact your storage requirements, especially in high-traffic environments or systems with comprehensive logging enabled.
+
+**Recommendations for Housekeeping the Audit Log Table**
+
+1. **Implement Data Retention Policies:**
+  Define a clear retention period based on business and regulatory requirements, such as 30, 90, or 180 days. Remove older logs that exceed the retention policy to prevent excessive storage growth.
+
+2. **Archive Older Logs:**
+  For long-term storage or compliance purposes, move older logs to external systems such as a data lake, object storage (e.g., S3), or a data warehouse.
+
+3. **Monitor Growth Trends:**
+  Use monitoring tools to track the size and growth rate of the audit log table. Adjust retention policies or resources proactively based on observed trends.
+
+4. **Plan for Resource Scaling:**
+  Audit log storage can significantly impact overall database size, especially in high-traffic environments. Plan for storage and resource scaling based on daily log growth estimates.
+
+**Example Calculation:**
+
+- Daily Logs: 100,000 operations/day
+- Average Record Size: 1400 bytes
+- Storage Growth: 100,000 × 1400 bytes/day = 140MB/day 
+
+For 90 days: 140MB × 90 = ~12.6GB
+
+**MongoDB Database Storage Calculator**
+You can calculate your MongoDB storage requirements by entering your known values in the middle section of the calculator settings below:
+
+{{< database-calculator >}}
+
+
+#### PostgreSQL
 
 How you configure your PostgreSQL installation depends on whether you are installing Tyk from fresh using PostgreSQL, or are migrating from an existing MongoDB instance.
 
@@ -4434,7 +4565,7 @@ How you configure your PostgreSQL installation depends on whether you are instal
 
 {{< include "sql-versions-include" >}}
 
-**Migrating from an existing MongoDB instance**
+##### Migrating from an existing MongoDB instance
 
 For v4.0 we have provided a migration command that will help you migrate all data from the main storage layer (APIs, Policies, Users, UserGroups, Webhooks, Certificates, Portal Settings, Portal Catalogs, Portal Pages, Portal CSS etc.).
 
@@ -4469,7 +4600,7 @@ You will see output listing the transfer of each database table. For example: `M
 4. You can now remove your `mongo_url` (or `TYK_DB_MONGOURL` environment variable) from your `tyk-analytics.conf`
 5. Restart your Tyk Dashboard
 
-**PostgreSQL sizing**
+##### PostgreSQL Sizing Guidelines
 
 The aggregate record size depends on the number of APIs and Keys you have. Each counter size ~50b, and every aggregated value has its own counter. 
 

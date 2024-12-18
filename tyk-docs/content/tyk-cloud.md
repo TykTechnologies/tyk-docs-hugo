@@ -2,6 +2,95 @@
 title: "Set Up Tyk Cloud"
 description: "This page serves as a comprehensive guide to migrating workloads to Tyk"
 tags: ["installation", "migration"]
+aliases:
+  - /tyk-cloud/telemetry/enable-telemetry
+  - /tyk-cloud/telemetry/
+  - /tyk-cloud
+  - /tyk-cloud/account--billing/plans
+  - /tyk-cloud/account--billing/retirement
+  - /tyk-cloud/account-and-billing/add-payment-method
+  - /tyk-cloud/account-and-billing/our-plans
+  - /tyk-cloud/account-and-billing/retirement
+  - /tyk-cloud/account-and-billing/upgrade-free-trial
+  - /tyk-cloud/account-&-billing/plans
+  - /tyk-cloud/account-billing/add-payment-method
+  - /tyk-cloud/account-billing/managing-billing-admins
+  - /tyk-cloud/account-billing/plans
+  - /tyk-cloud/account-billing/retirement
+  - /tyk-cloud/account-billing/upgrade-free-trial
+  - /tyk-cloud/configuration-options/using-plugins/api-test
+  - /tyk-cloud/configuration-options/using-plugins/python-code-bundle
+  - /tyk-cloud/configuration-options/using-plugins/python-custom-auth
+  - /tyk-cloud/configuration-options/using-plugins/setup-control-plane
+  - /tyk-cloud/configuration-options/using-plugins/uploading-bundle
+  - /tyk-cloud/create-account
+  - /tyk-cloud/create-environment
+  - /tyk-cloud/environments--deployments/hybrid-gateways
+  - /tyk-cloud/environments-&-deployments/hybrid-gateways
+  - /tyk-cloud/environments-&-deployments/managing-apis
+  - /tyk-cloud/environments-&-deployments/managing-control-planes
+  - /tyk-cloud/environments-&-deployments/managing-environments
+  - /tyk-cloud/environments-&-deployments/managing-gateways
+  - /tyk-cloud/environments-&-deployments/monitoring
+  - /tyk-cloud/environments-&-deployments/monitoring-usage
+  - /tyk-cloud/environments-deployments/hybrid-gateways
+  - /tyk-cloud/environments-deployments/managing-apis
+  - /tyk-cloud/environments-deployments/managing-control-planes
+  - /tyk-cloud/environments-deployments/managing-environments
+  - /tyk-cloud/environments-deployments/monitoring
+  - /tyk-cloud/first-api
+  - /tyk-cloud/getting-started-tyk-cloud/create-account
+  - /tyk-cloud/getting-started-tyk-cloud/first-api
+  - /tyk-cloud/getting-started-tyk-cloud/setup-environment
+  - /tyk-cloud/getting-started-tyk-cloud/setup-org
+  - /tyk-cloud/getting-started-tyk-cloud/setup-team
+  - /tyk-cloud/getting-started-tyk-cloud/test-api
+  - /tyk-cloud/getting-started-tyk-cloud/to-conclude
+  - /tyk-cloud/getting-started-tyk-cloud/view-analytics
+  - /tyk-cloud/reference-docs/user-roles
+  - /tyk-cloud/setup-org
+  - /tyk-cloud/setup-team
+  - /tyk-cloud/teams-&-users/managing-teams
+  - /tyk-cloud/teams-&-users/managing-users
+  - /tyk-cloud/teams-&-users/user-roles
+  - /tyk-cloud/teams-users/managing-teams
+  - /tyk-cloud/teams-users/managing-users
+  - /tyk-cloud/teams-users/user-roles
+  - /tyk-cloud/test-api
+  - /tyk-cloud/using-custom-domains
+  - /tyk-cloud/view-analytics
+  - /tyk-cloud/what-we-covered
+  - /tyk-cloud/account-billing
+  - /tyk-cloud/configuration-options
+  - /tyk-cloud/environments-&-deployments
+  - /tyk-cloud/environments-&-deployments/managing-organisations
+  - /tyk-cloud/environments-deployments
+  - /tyk-cloud/environments-deployments/hybrid-gateways-helm
+  - /tyk-cloud/environments-deployments/managing-gateways
+  - /tyk-cloud/environments-deployments/managing-organisations
+  - /tyk-cloud/environments-deployments/monitoring-how-it-works
+  - /tyk-cloud/environments-deployments/monitoring-usage
+  - /tyk-cloud/glossary
+  - /tyk-cloud/securing-your-apis
+  - /tyk-cloud/teams-&-users
+  - /tyk-cloud/teams-users
+  - /tyk-cloud/teams-users/single-sign-on
+  - /tyk-cloud/troubleshooting-&-support
+  - /tyk-cloud/troubleshooting-&-support/faqs
+  - /tyk-cloud/troubleshooting-&-support/glossary
+  - /tyk-cloud/troubleshooting-support
+  - /tyk-cloud/troubleshooting-support/faqs
+  - /tyk-cloud/troubleshooting-support/glossary
+  - /tyk-cloud/troubleshooting-support/tyk-cloud-mdcb-supported-versions
+  - /tyk-cloud/using-plugins
+  - /tyk-cloud/what-is-tyk-cloud
+  - /deployment-and-operations/tyk-cloud-platform/quick-start
+  - /deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways
+  - /frequently-asked-questions/custom-domain-for-portal-cloud-multi-cloud
+  - /get-started/with-tyk-hybrid
+  - /get-started/with-tyk-multi-cloud/tutorials/installation-on-aws
+  - /getting-started/installation/with-tyk-multi-cloud/create-an-account
+  - /getting-started/installation/with-tyk-multi-cloud/installation-on-aws
 ---
 
 ## What is Tyk Cloud
@@ -1430,11 +1519,11 @@ Here's an overview of all of the available plans:
 
 | **Plan**          | **Who's it for?**                                                                   | **About**                                                                                                                                                                                                                                                                                                                                         |
 | ----------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 48 hours free trial <p>[Free Support SLA]({{< ref "frequently-asked-questions/sla-policies" >}})</p> | This is for POC’s and those testing the Tyk platform. | Tyk Cloud has 48 hours free trial. You can always request a longer trial period or talk to support if you need help. |
-| Starter <p>[Standard Support SLA]({{< ref "frequently-asked-questions/sla-policies" >}})</p> | For single teams with low traffic, mostly small businesses that manage few APIs. | This plan includes all of the features of the Tyk Stack. You can have **[custom domains]({{< ref "migration-to-tyk#use-custom-domains" >}})** and **[plugins]({{< ref "migration-to-tyk#using-plugins" >}})**, along with management of upto 5 APIs. Standard support is provided.|
-| Launch <p>[Standard Support SLA]({{< ref "frequently-asked-questions/sla-policies" >}})</p> | For single teams with low traffic, mostly small businesses. | This plan includes all of the features of the Tyk Stack. You can have **[custom domains]({{< ref "migration-to-tyk#use-custom-domains" >}})** and **[plugins]({{< ref "migration-to-tyk#using-plugins" >}})** along with management of unlimited APIs. Standard support is provided. |
-| Grow <p>[Standard Support SLA]({{< ref "frequently-asked-questions/sla-policies" >}})</p> | For single teams with high traffic. | This plan includes all of the features of the Tyk Stack. In this plan, you have **[Hybrid Gateways]({{< ref "migration-to-tyk#deploy-hybrid-gateways" >}})** as an add on, along with standard support. |
-| Scale <p>[Enhanced Support SLA]({{< ref "frequently-asked-questions/sla-policies" >}})</p> | For global organizations with multiple teams, requiring gateway deployments in multiple locations. | This plan includes all of the features of the Tyk Stack. **Enhanced(silver) support** will be provided. |
+| 48 hours free trial <p>[Free Support SLA]({{< ref "developer-support/support" >}})</p> | This is for POC’s and those testing the Tyk platform. | Tyk Cloud has 48 hours free trial. You can always request a longer trial period or talk to support if you need help. |
+| Starter <p>[Standard Support SLA]({{< ref "developer-support/support" >}})</p> | For single teams with low traffic, mostly small businesses that manage few APIs. | This plan includes all of the features of the Tyk Stack. You can have **[custom domains]({{< ref "migration-to-tyk#use-custom-domains" >}})** and **[plugins]({{< ref "migration-to-tyk#using-plugins" >}})**, along with management of upto 5 APIs. Standard support is provided.|
+| Launch <p>[Standard Support SLA]({{< ref "developer-support/support" >}})</p> | For single teams with low traffic, mostly small businesses. | This plan includes all of the features of the Tyk Stack. You can have **[custom domains]({{< ref "migration-to-tyk#use-custom-domains" >}})** and **[plugins]({{< ref "migration-to-tyk#using-plugins" >}})** along with management of unlimited APIs. Standard support is provided. |
+| Grow <p>[Standard Support SLA]({{< ref "developer-support/support" >}})</p> | For single teams with high traffic. | This plan includes all of the features of the Tyk Stack. In this plan, you have **[Hybrid Gateways]({{< ref "migration-to-tyk#deploy-hybrid-gateways" >}})** as an add on, along with standard support. |
+| Scale <p>[Enhanced Support SLA]({{< ref "developer-support/support" >}})</p> | For global organizations with multiple teams, requiring gateway deployments in multiple locations. | This plan includes all of the features of the Tyk Stack. **Enhanced(silver) support** will be provided. |
 
 
 {{< button_left href="https://tyk.io/sign-up/#cloud" color="green" content="Get started with Cloud free trial" >}}
@@ -2266,6 +2355,185 @@ External traffic is subject to billing, while internal traffic is exempt. The mo
 #### Tyk Cloud Storage
 When a client makes a request to a Tyk Gateway deployment, the details of the request and response are captured and [stored in Redis]({{< ref "tyk-dashboard-analytics/" >}}). Tyk Pump processes the records from Redis and forwards them to MongoDB. Finally, Tyk Cloud reads that data from MongoDB and displays its size(bytes) in the _Storage_ section of _Monitoring_. 
 
+
+
+### Tyk Cloud Telemetry
+
+Telemetry in Tyk Cloud enables distributed tracing of your APIs, allowing you to track and analyze how requests flow through your system. 
+This trace data helps you understand request paths, identify bottlenecks, and troubleshoot issues by providing detailed insights into each request's journey through your API infrastructure.
+
+We support distributed tracing for `Cloud Data Plane` deployments. You can enable it while creating or updating after setting up telemetry. 
+
+Since this functionality is powered by Tyk Gateway's OpenTelemetry integration, we recommend reviewing our comprehensive [OpenTelemetry documentation]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview.md" >}})
+to understand the underlying architecture, best practices for implementation, and how to maximize the value of distributed tracing in your API infrastructure. The documentation provides detailed insights into configuration options, sampling strategies.
+
+#### Available Telemetry Providers
+
+Tyk Cloud integrates with these monitoring platforms:
+
+- [Datadog]({{< ref "#configuring-datadog-provider" >}})
+- [Dynatrace]({{< ref "#configuring-dynatrace-provider" >}})
+- [New Relic]({{< ref "#configuring-new-relic-provider" >}})
+- [Elastic]({{< ref "#configuring-elastic-provider" >}})
+- [Custom]({{< ref "#configuring-elastic-provider" >}})
+
+
+{{< note success >}}
+**Note**
+
+Before diving into the configuration details, please note that Telemetry is an add-on feature in Tyk Cloud.
+To enable this capability for your account, please contact our [support team](https://support.tyk.io/).
+Our team will help you activate this feature and ensure you have access to all the Telemetry options.
+{{< /note >}}
+
+#### Enabling Telemetry in Tyk Cloud
+
+Configuring telemetry in Tyk cloud is a two step process. 
+1. Configure a provider/backend at organization level.
+2. Enable/Disable telemetry option while creating/updating a `Cloud Data Plane`.
+
+{{< note success >}}
+**Note**
+
+Before diving into the configuration details, please note that Telemetry is an add-on feature in Tyk Cloud.
+To enable this capability for your account, please contact our [support team](https://support.tyk.io/).
+Our team will help you activate this feature and ensure you have access to all the Telemetry options.
+{{< /note >}}
+
+##### Steps for Configuring Telemetry Provider in Tyk Cloud
+
+**Step 1. Choosing Your Provider**
+
+In the `Tyk Cloud Console`, select `Telemetry` option. You'll see a grid displaying all supported backends/providers. Click on your preferred backend/provider to begin the configuration process.
+
+{{< note success >}}
+**Note**
+
+Only a single provider/backend can be configured at any given time.
+{{< /note >}}
+
+{{< img src="/img/cloud/telemetry-exports.png" alt="Tyk Cloud Telemetry providers" >}}
+
+**Step 2. Configuring Basic Elements**
+
+Every telemetry backend shares these fundamental settings:
+
+1. **Connection Toggle:** This switch activates or deactivates your telemetry export. When enabled, Tyk will start sending monitoring data to your chosen platform.
+
+2. **Sampling Rate:** This setting determines what percentage of your API traffic data gets sent to your monitoring platform. The default is 10%, which means Tyk will send data for one out of every ten API calls.
+
+**Step 3. Configuring Optional Settings**
+
+Beyond the basic settings, you can customize your telemetry with two optional features:
+
+1. **Tags to Add to the Traces :**
+   Add custom labels to your telemetry data to make it easier to analyze. For example:
+   ```
+   environment:production
+   region:europe
+   team:api-gateway
+   ```
+
+2. **Fields to Filter :**
+   Specify which data fields should be excluded from your telemetry. This is useful for ensuring sensitive information doesn't get sent to your monitoring platform.
+
+**Step 4. Configuring Provider-Specific Configuration**
+
+Each monitoring platform has its own requirements for connection. Let's explore what you'll need for each:
+
+###### Configuring Datadog Provider
+
+- **Provider Site:** Enter your Datadog URL (like us5.datadoghq.com)
+- **API Key:** Your Datadog authentication key
+
+  Example: A Datadog setup might look like:
+  ```
+  Provider Site: us5.datadoghq.com
+  API Key: your-datadog-api-key
+  ```
+
+{{< img src="/img/cloud/telemetry-datadog.png" alt="Tyk Cloud Telemetry Datadog" >}}
+
+###### Configuring Dynatrace Provider {#configuring-dynatrace-provider}
+
+- **Provider Endpoint:** Your Dynatrace environment URL
+- **API Token:** Your Dynatrace access token
+
+  Example configuration:
+  ```
+  Provider Endpoint: https://<YOUR-ENVIRONMENT-STRING>.live.dynatrace.com/api/v2/otlp
+  API Token: your-dynatrace-token
+  ```
+
+{{< img src="/img/cloud/telemetry-dynatrace.png" alt="Tyk Cloud Telemetry Dynatrace" >}}
+
+###### Configuring New Relic Provider {#configuring-new-relic-provider}
+
+- **Provider Endpoint:** Your New Relic HTTP endpoint
+- **API Token:** Your New Relic license key
+
+  Example configuration:
+  ```
+  Provider Endpoint: https://security-api.newrelic.com/security/v1
+  API Token: your-newrelic-api-key
+  ```
+
+{{< img src="/img/cloud/telemetry-newrelic.png" alt="Tyk Cloud Telemetry NewRelic" >}}
+
+###### Configuring Elastic Provider {#configuring-elastic-provider}
+
+- **Provider Endpoint:** Your Elastic APM server address
+- **Secret Token:** Your Elastic APM authentication token
+  
+  Example setup:
+  ```
+  Provider Endpoint: https://your-elastic-cluster:8200
+  Secret Token: your-elastic-secret-token
+  ```
+
+{{< img src="/img/cloud/telemetry-elastic.png" alt="Tyk Cloud Telemetry Elastic" >}}
+
+###### Configuring Custom Provider {#configuring-custom-provider}
+
+For when you need to connect to a different monitoring system:
+
+- **Exporter:** Choose gRPC/HTTP
+- **Provider Endpoint:** Your monitoring system URL
+- **Authorization:** Configure how Tyk should authenticate with your system
+
+  Example custom configuration:
+  ```
+  Exporter: gRPC/HTTP
+  Provider Endpoint: grpc://your-collector:4317
+  Authorization Header Name: Authorization
+  Authorization Header Value: Bearer your-token
+  ```
+
+{{< img src="/img/cloud/telemetry-custom.png" alt="Tyk Cloud Telemetry Custom" >}}
+
+
+##### Configure Telemetry Export in Cloud Data Plane Deployments
+
+When creating a new Cloud Data Plane deployment or editing an existing one, you can configure telemetry export settings. These settings are specific to Cloud Data Plane deployments only and allow you to monitor API performance through your chosen telemetry provider.
+
+When you modify any general telemetry settings in Tyk Cloud, these changes don't take immediate effect.
+Your Cloud Data Planes need to be redeployed to activate the new telemetry configuration.
+
+###### Configuration Options
+
+{{< img src="/img/cloud/telemetry-enable.png" alt="Tyk Cloud Telemetry Enable" >}}
+
+1. **Enable Datadog Connection**
+    - Toggle switch to enable/disable Datadog monitoring for this specific Cloud Data Plane deployment
+
+2. **Sampling Rate Override**
+    - Choose what percentage of API traffic to monitor (default: 10%)
+
+  {{< note success >}}
+  **Note**
+
+  The sampling level can be configured at both the organization level (while setting up the provider) and the `Cloud Data Plane`. The configuration at the Cloud Data Plane will override the organization-level settings.
+  {{< /note >}}
 
 ### Track Usage
 

@@ -2,6 +2,24 @@
 title: "Install Tyk Open Source"
 description: "This page serves as a comprehensive guide to migrating workloads to Tyk"
 tags: ["installation", "migration", "open source"]
+aliases:
+  - /tyk-oss/ce-centos
+  - /tyk-oss/ce-debian-ubuntu
+  - /tyk-oss/ce-kubernetes-ingress
+  - /tyk-oss/ce-redhat
+  - /tyk-oss/ce-redhat-rhel-centos
+  - /tyk-oss/ce-ubuntu
+  - /tyk-oss/ce-helm-chart-new
+  - /tyk-oss/ce-ansible
+  - /tyk-oss/ce-docker
+  - /tyk-oss/ce-github
+  - /tyk-oss/ce-helm-chart
+  - /tyk-oss/ce-kubernetes
+  - /tyk-configuration-reference/redis-cluster-sentinel
+  - /tyk-stack/tyk-gateway/configuration/redis-sentinel
+  - /apim/open-source
+  - /tyk-stack/tyk-gateway/configuration/redis-cluster
+  - /apim/open-source/getting-started
 ---
 
 ## What is Tyk Open Source
