@@ -1407,27 +1407,56 @@ If you are upgrading to 5.3.9, please follow the detailed [upgrade instructions]
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
-
-##### Added
-
-<ul>
-<li>
-<details>
-<summary>Add changelog summary</summary>
-
-Another changelog summary
-</details>
-</li>
-</ul>
-
 ##### Fixed
 
 <ul>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Resolved analytics data trimming with custom plugins</summary>
 
-Another changelog summary
+Resolved an issue where analytics data was incorrectly trimmed when a custom response plugin (coprocess) modified the response body to exceed the upstream content length.
+</details>
+</li>
+<li>
+<details>
+<summary>Skip loading API security feature adjustments for Cloud users</summary>
+
+Fixed a bug that prevented management gateways from loading plugin bundles due to a security feature introduced in v5.3.1.
+</details>
+</li>
+<li>
+<details>
+<summary>Debug log accuracy restored for middlewares</summary>
+
+Addressed an issue where shared loggers caused misreported debug logs for middlewares. Loggers are now explicitly copied to ensure accurate and distinct logging.
+</details>
+</li>
+<li>
+<details>
+<summary>Resolved API routing issue with trailing slashes and overlapping listen paths</summary>
+
+Fixed a routing issue that caused incorrect API matching when dealing with APIs that lacked a trailing slash, used custom domains, or had similar listen path patterns. Previously, the router prioritized APIs with longer subdomains and shorter listen paths, leading to incorrect matches when listen paths shared prefixes. This fix ensures accurate API matching, even when subdomains and listen paths overlap.
+</details>
+</li>
+<li>
+<details>
+<summary>SSE streaming reliability enhanced</summary>
+
+Fixed an issue where upstream server-sent events (SSE) were not sent when OpenTelemetry was enabled.Resolved a gateway panic triggered when detailed recording was enabled and upstream sent SSE.
+</details>
+</li>
+<li>
+<details>
+<summary>OAuth 2.0 token issuance now supported in Emergency mode</summary>
+
+OAuth 2.0 tokens can now be issued even when data plane gateways are in emergency mode. This is achieved by saving OAuth clients locally when they are pulled from RPC.
+</details>
+</li>
+<li>
+<details>
+<summary>Request size limit Middleware no longer breaks GET or DELETE requests</summary>
+
+Resolved a problem where the request size limit middleware was incorrectly breaking GET and DELETE requests.
 </details>
 </li>
 </ul>

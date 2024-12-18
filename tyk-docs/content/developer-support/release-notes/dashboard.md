@@ -1117,8 +1117,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
 #### Deprecations
-
-There are no deprecations in this release.
+We have deprecated 'http_server_options.prefer_server_ciphers' in Tyk dashboard due due to its obsolescence in upstream dependencies.Users are advised to remove this configuration from their setups as it will no longer have any effect in future releases.
 
 #### Upgrade Instructions
 If you are upgrading to 5.3.9, please follow the detailed [upgrade instructions](#upgrading-tyk).
@@ -1137,17 +1136,6 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 
-##### Added
-<ul>
-<li>
-<details>
-<summary>Changelog item summary</summary>
-
-Another changelog item summary
-</details>
-</li>
-</ul>
-
 ##### Fixed
 <!-- This section should be a bullet point list of new features. Explain:
 
@@ -1161,9 +1149,30 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Changelog item summary</summary>
+<summary>Duplicate text in hint box for path-based permissions</summary>
 
-Another changelog item summary
+Fixed an issue where the info tooltip for the path-based permissions field contained duplicated text.
+</details>
+</li>
+<li>
+<details>
+<summary>Blank screen on restore zoom in API activity dashboard</summary>
+
+Resolved an issue where restoring zoom on charts in the API Activity Dashboard resulted in a blank display.
+</details>
+</li>
+<li>
+<details>
+<summary>Search icon non-responsive on keys page</summary>
+
+Fixed the search functionality on the Keys page, enabling the search button to work independently of the Enter or Return key.
+</details>
+</li>
+<li>
+<details>
+<summary>Deprecation of http_server_options.prefer_server_ciphers</summary>
+
+This option has been marked as deprecated due to its obsolescence in upstream dependencies. Users are advised to remove this configuration from their setups as it will no longer have any effect in future releases.
 </details>
 </li>
 </ul>
