@@ -1433,6 +1433,13 @@ Addressed an issue where shared loggers caused misreported debug logs for middle
 </li>
 <li>
 <details>
+<summary>Otel E2E Tests Issue After Upgrading to v1.29</summary>
+
+Upgrading the OpenTelemetry SDK to v1.29 caused otelhttp v0.54.0 to break the CI pipelines. As a temporary fix, we reverted to otelhttp v0.49.0 while investigating the root cause of the issue.
+</details>
+</li>
+<li>
+<details>
 <summary>Resolved API routing issue with trailing slashes and overlapping listen paths</summary>
 
 Fixed a routing issue that caused incorrect API matching when dealing with APIs that lacked a trailing slash, used custom domains, or had similar listen path patterns. Previously, the router prioritized APIs with longer subdomains and shorter listen paths, leading to incorrect matches when listen paths shared prefixes. This fix ensures accurate API matching, even when subdomains and listen paths overlap.
