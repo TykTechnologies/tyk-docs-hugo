@@ -1156,9 +1156,10 @@ Resolved a bug where clicking "Restore zooming to initial state" in the API Acti
 </li>
 <li>
 <details>
-<summary>Search icon unresponsive on API Keys page</summary>
+<summary>
+Fixed OAuth Client Creation Issue for Custom Plugin APIs in Multi-Data Plane Deployments</summary>
 
-Fixed the search functionality on the API Keys page, enabling the search button to work independently of the Enter or Return key.
+Fixed a bug that prevented the control plane Gateway from loading APIs that use custom plugin bundles. The control plane Gateway is used to register OAuth clients and generate access tokens so this could result in an API being loaded to the data plane Gateways but clients unable to obtain access tokens. This issue was introduced in v5.3.1 as a side-effect of a change to address a potential security issue where APIs could be loaded without their custom plugins.
 </details>
 </li>
 <li>
@@ -1171,6 +1172,20 @@ Resolved an issue where API access keys remained valid even if all associated po
 <li>
 <details>
 <summary>Deprecation of http_server_options.prefer_server_ciphers</summary>
+
+This option has been marked as deprecated due to its obsolescence in the underlying library functions used by Tyk. Users are advised to remove this configuration from their setups as it no longer has any effect.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Stability for APIs with Malformed Listen Paths</summary>
+
+Fixed an issue where a malformed listen path could cause the Gateway to crash. Now, such listen paths are properly validated, and if validation fails, an error is logged, and the API is skipped—preventing Gateway instability.
+</details>
+</li>
+<li>
+<details>
+<summary>CVE-2020-8911 resolved in Tyk Dashboard</summary>
 
 This option has been marked as deprecated due to its obsolescence in the underlying library functions used by Tyk. Users are advised to remove this configuration from their setups as it no longer has any effect.
 </details>
