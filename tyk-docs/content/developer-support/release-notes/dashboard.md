@@ -1165,7 +1165,7 @@ Resolved an issue where restoring zoom on charts in the API Activity Dashboard r
 <details>
 <summary>Search icon unresponsive on API Keys page</summary>
 
-Fixed the search functionality on the Keys page, enabling the search button to work independently of the Enter or Return key.
+Fixed the search functionality on the API Keys page, enabling the search button to work independently of the Enter or Return key.
 </details>
 </li>
 <li>
