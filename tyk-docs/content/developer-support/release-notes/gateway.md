@@ -1433,6 +1433,13 @@ Addressed an issue where shared loggers caused debug logs to misidentify the mid
 </li>
 <li>
 <details>
+<summary>API Keys remain active after all linked partitioned policies are deleted</summary>
+
+Resolved an issue where API access keys remained valid even if all associated policies were deleted. The Gateway now attempts to apply all linked policies to the key when it is presented with a request. Warning logs are generated if any policies cannot be applied (for example, if they are missing). If no linked policy can be applied, the Gateway will reject the key to ensure no unauthorized access.
+</details>
+</li>
+<li>
+<details>
 <summary>Resolved API routing issue with trailing slashes and overlapping listen paths</summary>
 
 Fixed a routing issue that caused incorrect API matching when dealing with APIs that lacked a trailing slash, used custom domains, or had similar listen path patterns. Previously, the router prioritized APIs with longer subdomains and shorter listen paths, leading to incorrect matches when listen paths shared prefixes. This fix ensures accurate API matching, even when subdomains and listen paths overlap.
