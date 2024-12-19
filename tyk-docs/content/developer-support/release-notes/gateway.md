@@ -1412,7 +1412,7 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 <ul>
 <li>
 <details>
-<summary>Resolved analytics data trimming with custom plugins</summary>
+<summary>Incomplete traffic logs generated if custom response plugin adjusts the payload length</summary>
 
 Resolved an issue where analytics data was incorrectly trimmed when a custom response plugin (coprocess) modified the response body to exceed the upstream content length.
 </details>
