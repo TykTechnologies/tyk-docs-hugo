@@ -13,7 +13,7 @@ Note: `mongo-go` driver has been available since Tyk 5.0.2 and is the default fr
 
 Prior to Tyk 5.0.2, Tyk used the `mgo` driver which supported MongoDB 3.x to 4.4.x, but we no longer test MongoDB versions prior to 5.0 since they are EOL.
 <br>
-We can not guarantee full compatibility with these versions of MongoDB for Tyk and recommend upgrading to a supported MongoDB version. In particular, when using Tyk OAS APIs with [Tyk 5.3.0]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.3.md#TykOAS-v5.3.0" >}}) onwards, the minimum supported version of MongoDB is 5.0.
+We can not guarantee full compatibility with these versions of MongoDB for Tyk and recommend upgrading to a supported MongoDB version. In particular, when using Tyk OAS APIs with [Tyk 5.3.0]({{< ref "developer-support/release-notes/dashboard#TykOAS-v5.3.0" >}}) onwards, the minimum supported version of MongoDB is 5.0.
 {{< /note >}}
 
 You can also use the following as a drop-in replacement for MongoDB:

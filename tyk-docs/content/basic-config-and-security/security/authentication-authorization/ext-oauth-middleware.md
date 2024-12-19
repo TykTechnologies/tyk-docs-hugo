@@ -12,7 +12,7 @@ weight: 7
 {{< note success >}}
 **Note**  
 
-We've deprecated Tyk's dedicated External OAuth middleware in Tyk 5.7.0 to simplify configurations and avoid redundancy. For third-party OAuth integration, please switch to Tyk’s [JSON Web Tokens (JWT)]({{< ref "api-management/authentication-authorization#use-json-web-tokens-jwt" >}}), which offers the same functionality with a more streamlined setup and reduced risk of misconfiguration.
+We've deprecated Tyk's dedicated External OAuth middleware in Tyk 5.7.0 to simplify configurations and avoid redundancy. For third-party OAuth integration, please switch to Tyk’s [JSON Web Tokens (JWT)]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}), which offers the same functionality with a more streamlined setup and reduced risk of misconfiguration.
 {{< /note >}}
 
 
@@ -102,7 +102,7 @@ There could be cases when you don’t need to introspect a JWT access token from
   - a base64 encoded static secret
   - a valid JWK url in plain text
   - a valid JWK url in base64 encoded format
-- `issuedAtValidationSkew` , `notBeforeValidationSkew`, `expiresAtValidationSkew` can be used to [configure clock skew]({{< ref "api-management/authentication-authorization#use-json-web-tokens-jwt" >}}) for json web token validation.
+- `issuedAtValidationSkew` , `notBeforeValidationSkew`, `expiresAtValidationSkew` can be used to [configure clock skew]({{< ref "/api-management/client-authentication#use-json-web-tokens-jwt" >}}) for json web token validation.
 - `identityBaseField` - the identity key name for claims. If empty it will default to `sub`.
 
 ### Example: Tyk OAS API definition with JWT validation enabled
