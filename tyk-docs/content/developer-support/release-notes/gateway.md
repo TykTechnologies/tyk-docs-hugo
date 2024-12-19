@@ -170,6 +170,13 @@ Tyk now supports RSA-PSS signed JWTs (PS256, PS384, PS512), enhancing security w
 Resolved a problem in the request size limit middleware that caused GET and DELETE requests to fail validation.The middleware incorrectly expected a request body (payload) for these methods and blocked them when none was present.
 </details>
 </li>
+<li>
+<details>
+<summary>Resolved Variable Input Handling for Custom Scalars in GraphQL Queries</summary>
+
+Fixed an issue where GraphQL queries using variables for custom scalar types, such as UUID, failed due to incorrect input handling. Previously, the query would return an error when a variable was used but worked when the value was directly embedded in the query. This update ensures that variables for custom scalar types are correctly inferred and processed, enabling seamless query execution.
+</details>
+</li>
 </ul>
 
 ---
