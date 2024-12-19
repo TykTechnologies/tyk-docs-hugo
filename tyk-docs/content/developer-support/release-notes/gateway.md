@@ -150,13 +150,6 @@ OAuth 2.0 access tokens can now be issued even when data plane gateways are disc
 </li>
 <li>
 <details>
-<summary>Fixed an issue where OAuth 2.0 access tokens would not be issued if the data plane was disconnected from the control plane</summary>
-
-OAuth 2.0 access tokens can now be issued even when data plane gateways are disconnected from the control plane. This is achieved by saving OAuth clients locally within the data plane when they are pulled from RPC.
-</details>
-</li>
-<li>
-<details>
 <summary>Tyk Now Supports RSA-PSS Signed JWTs</summary>
 
 Tyk now supports RSA-PSS signed JWTs (PS256, PS384, PS512), enhancing security while maintaining backward compatibility with RS256. No configuration changes are needed—just use RSA public keys, and Tyk will validate both algorithms seamlessly.
