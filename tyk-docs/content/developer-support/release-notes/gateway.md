@@ -1461,7 +1461,7 @@ OAuth 2.0 tokens can now be issued even when data plane gateways are in emergenc
 </li>
 <li>
 <details>
-<summary>Request size limit Middleware no longer breaks GET or DELETE requests</summary>
+<summary>Request size limit middleware would block any request without a payload (for example GET, DELETE)</summary>
 
 Resolved a problem in the request size limit middleware that caused GET and DELETE requests to fail validation.The middleware incorrectly expected a request body (payload) for these methods and blocked them when none was present.
 </details>
