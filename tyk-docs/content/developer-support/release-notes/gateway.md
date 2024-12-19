@@ -1447,9 +1447,9 @@ Fixed an issue where a malformed listen path could cause the Gateway to crash. N
 </li>
 <li>
 <details>
-<summary>SSE streaming reliability enhanced</summary>
+<summary>Fixed Gateway panic and SSE streaming issue with OpenTelemetry</summary>
 
-Fixed an issue where upstream server-sent events (SSE) were not sent when OpenTelemetry was enabled.Resolved a gateway panic triggered when detailed recording was enabled and upstream sent SSE.
+Resolved a bug that prevented upstream server-sent events (SSE) from being sent when OpenTelemetry was enabled, and fixed a gateway panic that occurred when detailed recording was active while SSE was in use. This ensures stable SSE streaming in configurations with OpenTelemetry.
 </details>
 </li>
 <li>
