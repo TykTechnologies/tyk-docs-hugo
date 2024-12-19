@@ -1440,6 +1440,13 @@ Fixed inconsistencies in the routing algorithm that led to incorrect API URL mat
 </li>
 <li>
 <details>
+<summary>Improved Stability for APIs with Malformed Listen Paths</summary>
+
+Fixed an issue where a malformed listen path could cause the Gateway to crash. Now, such listen paths are properly validated, and if validation fails, an error is logged, and the API is skipped—preventing Gateway instability.
+</details>
+</li>
+<li>
+<details>
 <summary>SSE streaming reliability enhanced</summary>
 
 Fixed an issue where upstream server-sent events (SSE) were not sent when OpenTelemetry was enabled.Resolved a gateway panic triggered when detailed recording was enabled and upstream sent SSE.
@@ -1450,6 +1457,13 @@ Fixed an issue where upstream server-sent events (SSE) were not sent when OpenTe
 <summary>Fixed an issue where OAuth 2.0 access tokens would not be issued if the data plane was disconnected from the control plane</summary>
 
 OAuth 2.0 access tokens can now be issued even when data plane gateways are disconnected from the control plane. This is achieved by saving OAuth clients locally within the data plane when they are pulled from RPC.
+</details>
+</li>
+<li>
+<details>
+<summary>Tyk Now Supports RSA-PSS Signed JWTs</summary>
+
+Tyk now supports RSA-PSS signed JWTs (PS256, PS384, PS512), enhancing security while maintaining backward compatibility with RS256. No configuration changes are needed—just use RSA public keys, and Tyk will validate both algorithms seamlessly.
 </details>
 </li>
 <li>
