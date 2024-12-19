@@ -1187,7 +1187,7 @@ Fixed an issue where a malformed listen path could cause the Gateway to crash. N
 <details>
 <summary>CVE-2020-8911 resolved in Tyk Dashboard</summary>
 
-This option has been marked as deprecated due to its obsolescence in the underlying library functions used by Tyk. Users are advised to remove this configuration from their setups as it no longer has any effect.
+Resolved CVE-2020-8911 by updating the Tyk Dashboard's email driver to use AWS SDK v2, addressing a medium-severity security vulnerability identified in version 5.3.8. This update ensures enhanced security for the dashboard while maintaining functionality.
 </details>
 </li>
 </ul>
