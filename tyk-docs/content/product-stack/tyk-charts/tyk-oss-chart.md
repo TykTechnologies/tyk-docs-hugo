@@ -217,6 +217,8 @@ global:
 
 It can be configured via `global.license.operator` as a plain text or Kubernetes secret which includes `OperatorLicense` key in it. Then, this secret must be referenced via `global.secrets.useSecretName`.
 
+Note: If you are using `global.secrets.useSecretName`, you must configure the operator license in the referenced Kubernetes secret. `global.license.operator` will not be used in this case.
+
 ### Create a Kubernetes Secret for Tyk Operator
 
 When `operatorSecret.enabled` is set to `true`, `tyk-oss` chart will create a Kubernetes Secret named `tyk-operator-conf` in the same namespace. It can be used by Tyk Operator to connect to Gateway to manage Tyk API resources.
@@ -236,7 +238,7 @@ operatorSecret:
 Configure below inside `tyk-gateway` section.
 
 #### Update Tyk Gateway Version
-Set version of gateway at `tyk-gateway.gateway.image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/u/tykio). Please check [Tyk Release notes]({{<ref "/release-notes">}}) carefully while upgrading or downgrading.
+Set version of gateway at `tyk-gateway.gateway.image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/u/tykio). Please check [Tyk Release notes]({{<ref "developer-support/release-notes/gateway">}}) carefully while upgrading or downgrading.
 
 #### Enabling TLS
 
@@ -371,6 +373,18 @@ You can configure persistent volume for APIs, Policies, and middlewares using `e
 ```
 
 For further details for configuring Tyk Gateway, consult the [Tyk Gateway Configuration Options]({{<ref "tyk-oss-gateway/configuration">}}) guide.
+
+#### OpenTelemetry
+To enable OpenTelemetry for Gateway set `gateway.opentelemetry.enabled` flag to true. It is disabled by default.
+
+You can also configure connection settings for it's exporter. By default `grpc` exporter is enabled on `localhost:4317` endpoint.
+
+ To enable TLS settings for the exporter, you can set `gateway.opentelemetry.tls.enabled` to true. 
+
+#### Liveness and readiness probes
+Gateway liveness probes can be customised via `gateway.livenessProbe` field. All fields from PodLivenessProbe object can be added here. If set to empty or nil, the default health check on /health will be performed.
+
+Gateway readiness probes can be customised via `gateway.readinessProbe` field. All fields from PodReadinessProbe object can be added here. If set to empty or nil, the default health check on /health will be performed.
 
 ### Pump Configurations
 

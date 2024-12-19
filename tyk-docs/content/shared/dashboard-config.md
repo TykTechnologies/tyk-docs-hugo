@@ -847,6 +847,36 @@ Type: `map[string]string`<br />
 
 This section lists the current languages the Dashboard UI supports
 
+### ui.trial
+Trial section defines the information about the cloud trial period.
+
+### ui.trial.end_date
+ENV: <b>TYK_DB_UI_TRIAL_ENDDATE</b><br />
+Type: `int64`<br />
+
+EndDate contains the timestamp of end date of the trial in unix UTC timestamp.
+
+### ui.trial.hubspot_form
+HubspotForm contains the hubspot form details.
+
+### ui.trial.hubspot_form.region
+ENV: <b>TYK_DB_UI_TRIAL_HUBSPOTFORM_REGION</b><br />
+Type: `string`<br />
+
+The region of the account where the form was created.
+
+### ui.trial.hubspot_form.portal_id
+ENV: <b>TYK_DB_UI_TRIAL_HUBSPOTFORM_PORTALID</b><br />
+Type: `string`<br />
+
+The ID of the HubSpot account that the form was created in.
+
+### ui.trial.hubspot_form.form_id
+ENV: <b>TYK_DB_UI_TRIAL_HUBSPOTFORM_FORMID</b><br />
+Type: `string`<br />
+
+The form's ID, which is used to retrieve the form definition.
+
 ### ui.hide_help
 ENV: <b>TYK_DB_UI_HIDEHELP</b><br />
 Type: `bool`<br />
@@ -864,6 +894,9 @@ ENV: <b>TYK_DB_UI_DONTALLOWLICENSEMANAGEMENT</b><br />
 Type: `bool`<br />
 
 Do not allow license management screen
+
+### ui.labs
+Feature flags for the UI
 
 ### ui.dev
 ENV: <b>TYK_DB_UI_DEV</b><br />
@@ -1049,6 +1082,19 @@ Type: `bool`<br />
 
 Enables detailed records in the audit log. Set to false by default. If set to `true` then audit log records will contain the http-request (without body) and full http-response including the body`
 
+### audit.store_type
+ENV: <b>TYK_DB_AUDIT_STORETYPE</b><br />
+Type: `string`<br />
+
+StoreType defines the method used to store audit logs.
+Possible values are:
+  - "db": Store logs in a database.
+  - "file": Store logs in a file.
+  - "no_op": Disable logging (no operation).
+
+This field allows you to configure how audit logs are persisted.
+The default value is "file".
+
 ### enable_multi_org_users
 ENV: <b>TYK_DB_ENABLEMULTIORGUSERS</b><br />
 Type: `bool`<br />
@@ -1141,4 +1187,16 @@ ENV: <b>TYK_DB_OAS_VALIDATESCHEMADEFAULTS</b><br />
 Type: `bool`<br />
 
 ValidateSchemaDefaults enables validation of values provided in `default` fields against the declared schemas in the OpenAPI Document. Defaults to false.
+
+### streaming
+Holds Tyk Streaming configuration
+
+### labs
+Experimental and beta features configuration settings
+
+### disable_telemetry
+ENV: <b>TYK_DB_DISABLETELEMETRY</b><br />
+Type: `bool`<br />
+
+Enable or disable sending telemetry data such as analytics, API configurations, etc.
 
