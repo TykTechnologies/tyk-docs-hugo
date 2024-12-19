@@ -2118,13 +2118,6 @@ To set up your [Developer Portal]({{< ref "/content/tyk-developer-portal.md" >}}
 
 ##### Using Ansible
 
-<br />
-{{< note >}}
-**Requirements**
-
-[Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) is required to run the following commands. Instructions on how install Tyk Dashboard with shell is in the <b>Shell</b> tab.
-{{< /note >}}
-
 **Getting Started**
 1. clone the [tyk-ansible](https://github.com/TykTechnologies/tyk-ansible) repository
 
@@ -2275,13 +2268,6 @@ sudo journalctl -u tyk-pump
 
 
 ##### Using Ansible
-
-<br />
-{{< note >}}
-**Requirements**
-
-[Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) is required to run the following commands. Instructions on how install Tyk Pump with shell is in the <b>Shell</b> tab.
-{{< /note >}}
 
 **Getting Started**
 1. clone the [tyk-ansible](https://github.com/TykTechnologies/tyk-ansible) repositry
@@ -2488,13 +2474,78 @@ Tyk Gateway has full domain support built-in, you can:
 
 ### Install Tyk on Debian or Ubuntu
 
-#### Using Ansible
+#### Install Database
+
+##### Using Shell
 
 **Requirements**
+
+Before installing the Tyk components in the order below, you need to first install Redis and MongoDB/SQL.
+
+**Getting Started**
+
+{{< tabs_start >}}
+{{< tab_start "MongoDB" >}}
+**Install MongoDB 4.0**
+
+You should follow the [online tutorial for installing MongoDb](https://docs.mongodb.com/v4.0/tutorial/install-mongodb-on-ubuntu/). We will be using version 4.0. As part of the Mongo installation you need to perform the following:
+
+1. Import the public key
+2. Create a list file
+3. Reload the package database
+4. Install the MongoDB packages
+5. Start MongoDB
+6. Check the `mongod` service is running
+
+{{< tab_end >}}
+{{< tab_start "SQL" >}}
+**Install SQL**
+
+You should follow the [online tutorial for installing PostgreSQL](https://www.postgresql.org/download/linux/ubuntu/). We will be using version 13. As part of the PostgreSQL installation you need to perform the following:
+
+1. Create the file repository configuration
+2. Import the repository signing key
+3. Update the package lists
+4. Install the PostgreSQL packages
+5. Start PostgreSQL
+6. Check the `postgresql` service is running
+
+See [SQL configuration]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}}) for details on installing SQL in a production environment.
+{{< tab_end >}}
+{{< tabs_end >}}
+
+**Install Redis**
+
+```console
+$ sudo apt-get install -y redis-server
+```
+
+**Install Tyk Pro on Ubuntu**
+
+Installing Tyk on Ubuntu is very straightforward using our APT repositories, follow the guides and tutorials in this section to have Tyk up and running in no time.
+
+The suggested order would be to install Tyk Dashboard, then Tyk Pump and then Tyk Gateway for a full stack.
+
+- [Dashboard]({{< ref "tyk-on-premises/debian-ubuntu/dashboard" >}})
+- [Pump]({{< ref "tyk-on-premises/debian-ubuntu/analytics-pump" >}})
+- [Gateway]({{< ref "tyk-on-premises/debian-ubuntu/gateway" >}})
+
+{{< note success >}}
+**Note**  
+
+For a production environment, we recommend that the Gateway, Dashboard and Pump are installed on separate machines. If installing multiple Gateways, you should install each on a separate machine. See [Planning for Production]({{< ref "planning-for-production" >}}) For more details.
+{{< /note >}}
+
+
+##### Using Ansible
+
+**Requirements**
+
 
 [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) - required for running the commands below. Use the **Shell** tab for instructions to install Tyk from a shell.
 
 **Getting Started**
+
 1. clone the [tyk-ansible](https://github.com/TykTechnologies/tyk-ansible) repositry
 
 ```console
@@ -2528,6 +2579,7 @@ $ ansible-playbook playbook.yaml -t tyk-pro -t redis -t `mongodb` or `pgsql`
 You can choose to not install Redis, MongoDB or PostgreSQL by removing the `-t redis` or `-t mongodb` or `-t pgsql` However Redis and MongoDB or PostgreSQL are a requirement and need to be installed for the Tyk Pro installation to run.
 
 **Supported Distributions**
+
 | Distribution | Version | Supported |
 | --------- | :---------: | :---------: |
 | Debian | 10 | ✅ |
@@ -2538,6 +2590,7 @@ You can choose to not install Redis, MongoDB or PostgreSQL by removing the `-t r
 | Ubuntu | 16 | ✅ |
 
 **Variables**
+
 - `vars/tyk.yaml`
 
 | Variable | Default | Comments |
@@ -2612,122 +2665,9 @@ Read more about MongoDB configuration [here](https://github.com/ansible-collecti
 
 Read more about PostgreSQL configuration [here](https://github.com/geerlingguy/ansible-role-postgresql).
 
+#### Install Dashboard
 
-#### Using Shell 
-
-**Requirements**
-
-Before installing the Tyk components in the order below, you need to first install Redis and MongoDB/SQL.
-
-**Option 1: Install MongoDB 4.0**
-
-You should follow the [online tutorial for installing MongoDb](https://docs.mongodb.com/v4.0/tutorial/install-mongodb-on-ubuntu/). We will be using version 4.0. As part of the Mongo installation you need to perform the following:
-
-1. Import the public key
-2. Create a list file
-3. Reload the package database
-4. Install the MongoDB packages
-5. Start MongoDB
-6. Check the `mongod` service is running
-
-
-**Option 2: Install SQL**
-
-You should follow the [online tutorial for installing PostgreSQL](https://www.postgresql.org/download/linux/ubuntu/). We will be using version 13. As part of the PostgreSQL installation you need to perform the following:
-
-1. Create the file repository configuration
-2. Import the repository signing key
-3. Update the package lists
-4. Install the PostgreSQL packages
-5. Start PostgreSQL
-6. Check the `postgresql` service is running
-
-See [SQL configuration]({{< ref "migration-to-tyk#configuring-postgresql" >}}) for details on installing SQL in a production environment.
-
-**Install Redis**
-
-```console
-$ sudo apt-get install -y redis-server
-```
-
-##### Install Tyk Pro on Ubuntu
-
-Installing Tyk on Ubuntu is very straightforward using our APT repositories, follow the guides and tutorials in this section to have Tyk up and running in no time.
-
-The suggested order would be to install Tyk Dashboard, then Tyk Pump and then Tyk Gateway for a full stack.
-
-- [Dashboard]({{< ref "#dashboard" >}})
-- [Pump]({{< ref "#pump" >}})
-- [Gateway]({{< ref "#gateway" >}})
-
-{{< note success >}}
-**Note**  
-
-For a production environment, we recommend that the Gateway, Dashboard and Pump are installed on separate machines. If installing multiple Gateways, you should install each on a separate machine. See [Planning for Production]({{< ref "#planning-for-production" >}}) For more details.
-{{< /note >}}
-
-
-##### Install and Configure Tyk Dashboard on Ubuntu
-
-  
-**Install Tyk Dashboard Through Ansible**
-<br />
-{{< note >}}
-**Requirements**
-
-[Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) is required to run the following commands. Instructions on how install Tyk Dashboard with shell is in the <b>Shell</b> tab.
-{{< /note >}}
-
-1. clone the [tyk-ansible](https://github.com/TykTechnologies/tyk-ansible) repositry
-
-```bash
-$ git clone https://github.com/TykTechnologies/tyk-ansible
-```
-
-2. `cd` into the directory
-```.bash
-$ cd tyk-ansible
-```
-
-3. Run initialisation script to initialise environment
-
-```bash
-$ sh scripts/init.sh
-```
-
-4. Modify `hosts.yml` file to update ssh variables to your server(s). You can learn more about the hosts file [here](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html)
-
-5. Run ansible-playbook to install `tyk-dashboard`
-
-```bash
-$ ansible-playbook playbook.yaml -t tyk-dashboard
-```
-
-**Supported Distributions**
-| Distribution | Version | Supported |
-| --------- | :---------: | :---------: |
-| Debian | 10 | ✅ |
-| Debian | 9 | ✅ |
-| Ubuntu | 21 | ✅ |
-| Ubuntu | 20 | ✅ |
-| Ubuntu | 18 | ✅ |
-| Ubuntu | 16 | ✅ |
-
-**Variables**
-- `vars/tyk.yaml`
-
-| Variable | Default | Comments |
-| --------- | :---------: | --------- |
-| secrets.APISecret | `352d20ee67be67f6340b4c0605b044b7` | API secret |
-| secrets.AdminSecret | `12345` | Admin secret |
-| dash.license | | Dashboard license|
-| dash.service.host | | Dashboard server host if different than the hosts url |
-| dash.service.port | `3000` | Dashboard server listening port |
-| dash.service.proto | `http` | Dashboard server protocol |
-| dash.service.tls | `false` | Set to `true` to enable SSL connections |
-
-
-**Install Tyk Dashboard Through Shell**
+##### Using Shell
 
 Tyk has its own APT repositories hosted by the kind folks at [packagecloud.io](https://packagecloud.io/tyk), which makes it easy, safe and secure to install a trusted distribution of the Tyk Gateway stack.
 
@@ -2817,7 +2757,7 @@ gpg:                using RSA key F3781522A858A2C43D3BC997CA041CD1466FA2F8
 gpg: Good signature from "Team Tyk (package signing) <team@tyk.io>" [ultimate]
 ```
 
-##### Configure Tyk Dashboard
+###### **Configure Tyk Dashboard**
 
 **Prerequisites for MongoDB**
 
@@ -2946,30 +2886,14 @@ Click **Bootstrap** to save the details.
 
 You can now log in to the Tyk Dashboard from `127.0.0.1:3000`, using the username and password created in the Dashboard Setup screen.
 
-##### Configure your Developer Portal
+###### **Configure your Developer Portal**
 
 To set up your [Developer Portal]({{< ref "/content/tyk-developer-portal.md" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalog]({{< ref "/content/getting-started/tutorials/publish-api.md" >}}).
 
-
-##### Install and Configure Tyk Pump for Analytics
-
-
-**What is Tyk Pump?**
-
-Tyk Pump is responsible for moving analytics between the API Gateway and the Dashboard database, it can also send data to other sinks such as ElasticSearch, StatsD and InfluxDB.
-
-Tyk has it's own APT repositories hosted by the kind folks at [packagecloud.io](https://packagecloud.io/tyk), which makes it easy, safe and secure to install a trusted distribution of the Tyk Pump application.
-
-
-**Install Tyk Pump Through Ansible**
-<br />
-{{< note >}}
-**Requirements**
-
-[Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) is required to run the following commands. Instructions on how install Tyk Pump with shell is in the <b>Shell</b> tab.
-{{< /note >}}
+##### Using Ansible
 
 **Getting Started**
+
 1. clone the [tyk-ansible](https://github.com/TykTechnologies/tyk-ansible) repositry
 
 ```bash
@@ -2989,13 +2913,14 @@ $ sh scripts/init.sh
 
 4. Modify `hosts.yml` file to update ssh variables to your server(s). You can learn more about the hosts file [here](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html)
 
-5. Run ansible-playbook to install `tyk-pump`
+5. Run ansible-playbook to install `tyk-dashboard`
 
 ```bash
-$ ansible-playbook playbook.yaml -t tyk-pump
+$ ansible-playbook playbook.yaml -t tyk-dashboard
 ```
 
 **Supported Distributions**
+
 | Distribution | Version | Supported |
 | --------- | :---------: | :---------: |
 | Debian | 10 | ✅ |
@@ -3005,8 +2930,23 @@ $ ansible-playbook playbook.yaml -t tyk-pump
 | Ubuntu | 18 | ✅ |
 | Ubuntu | 16 | ✅ |
 
+**Variables**
 
-##### Install Tyk Pump Through Shell
+- `vars/tyk.yaml`
+
+| Variable | Default | Comments |
+| --------- | :---------: | --------- |
+| secrets.APISecret | `352d20ee67be67f6340b4c0605b044b7` | API secret |
+| secrets.AdminSecret | `12345` | Admin secret |
+| dash.license | | Dashboard license|
+| dash.service.host | | Dashboard server host if different than the hosts url |
+| dash.service.port | `3000` | Dashboard server listening port |
+| dash.service.proto | `http` | Dashboard server protocol |
+| dash.service.tls | `false` | Set to `true` to enable SSL connections |
+
+#### Install Pump
+
+##### Using Shell
 
 This tutorial has been tested Ubuntu 16.04 & 18.04 with few if any modifications.
 
@@ -3135,17 +3075,191 @@ You can verify if Tyk Pump is running and working by tailing the log file:
 sudo tail -f /var/log/upstart/tyk-pump.log
 ```
 
+##### Using Ansible
 
-##### Install Tyk Gateway on Ubuntu
+**Install Tyk Pump Through Ansible**
 
-**Install Tyk Gateway Through Ansible**
-<br />
-{{< note >}}
-**Requirements**
+**Getting Started**
+1. clone the [tyk-ansible](https://github.com/TykTechnologies/tyk-ansible) repositry
 
-[Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) is required to run the following commands. Instructions on how install Tyk Gateway with shell is in the <b>Shell</b> tab.
+```bash
+$ git clone https://github.com/TykTechnologies/tyk-ansible
+```
+
+2. `cd` into the directory
+```.bash
+$ cd tyk-ansible
+```
+
+3. Run initialisation script to initialise environment
+
+```bash
+$ sh scripts/init.sh
+```
+
+4. Modify `hosts.yml` file to update ssh variables to your server(s). You can learn more about the hosts file [here](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html)
+
+5. Run ansible-playbook to install `tyk-pump`
+
+```bash
+$ ansible-playbook playbook.yaml -t tyk-pump
+```
+
+**Supported Distributions**
+| Distribution | Version | Supported |
+| --------- | :---------: | :---------: |
+| Debian | 10 | ✅ |
+| Debian | 9 | ✅ |
+| Ubuntu | 21 | ✅ |
+| Ubuntu | 20 | ✅ |
+| Ubuntu | 18 | ✅ |
+| Ubuntu | 16 | ✅ |
+
+#### Install Gateway
+
+##### Using Shell
+
+Tyk has it's own APT repositories hosted by the kind folks at [packagecloud.io][1], which makes it easy, safe and secure to install a trusted distribution of the Tyk Gateway stack.
+
+This tutorial has been tested on Ubuntu 16.04 & 18.04 with few if any modifications.
+
+Please note however, that should you wish to write your own plugins in Python, we currently have a Python version dependency of 3.4. Python-3.4 ships with Ubuntu 14.04, however you may need to explicitly install it on newer Ubuntu Operating System releases.
+
+**Prerequisites**
+
+*   Ensure port `8080` is available. This is used in this guide for Gateway traffic (API traffic to be proxied).
+*   You have MongoDB and Redis installed.
+*   You have installed firstly the Tyk Dashboard, then the Tyk Pump.
+
+**Step 1: Set up our APT Repositories**
+
+First, add our GPG key which signs our binaries:
+
+```bash
+curl -L https://packagecloud.io/tyk/tyk-gateway/gpgkey | sudo apt-key add -
+```
+
+Run update:
+```bash
+sudo apt-get update
+```
+
+Since our repositories are installed via HTTPS, you will need to make sure APT supports this:
+```bash
+sudo apt-get install -y apt-transport-https 
+```
+
+Create a file `/etc/apt/sources.list.d/tyk_tyk-gateway.list` with the following contents:
+```bash
+deb https://packagecloud.io/tyk/tyk-gateway/ubuntu/ bionic main
+deb-src https://packagecloud.io/tyk/tyk-gateway/ubuntu/ bionic main
+```
+{{< note success >}}
+
+**Note**
+
+
+
+`bionic` is the code name for Ubuntu 18.04. Please substitute it with your particular [ubuntu release](https://wiki.ubuntu.com/Releases), e.g. `focal`.
+
 {{< /note >}}
 
+Now you can refresh the list of packages with:
+```bash
+sudo apt-get update
+```
+
+**What we've done here is:**
+
+*   Added the Tyk Gateway repository
+*   Updated our package list
+
+**Step 2: Install the Tyk Gateway**
+
+We're now ready to install the Tyk Gateway. To install it, run:
+
+```bash
+sudo apt-get install -y tyk-gateway
+```
+What we've done here is instructed apt-get to install the Tyk Gateway without prompting, wait for the downloads to complete.
+
+When Tyk has finished installing, it will have installed some init scripts, but will not be running yet. The next step will be to set up the Gateway - thankfully this can be done with three very simple commands, however it does depend on whether you are configuring Tyk Gateway for use with the Dashboard or without (the Community Edition).
+
+**Verify the origin key (optional)**
+
+Debian packages are signed with the repository keys. These keys are verified at the time of fetching the package and is taken care of by the `apt` infrastructure. These keys are controlled by PackageCloud, our repository provider. For an additional guarantee, it is possible to verify that the package was indeed created by Tyk by verifying the `origin` certificate that is attached to the package.
+
+First, you have to fetch Tyk's signing key and import it.
+
+```bash
+wget https://keyserver.tyk.io/tyk.io.deb.signing.key
+gpg --import tyk.io.deb.signing.key
+```
+
+Then, you have to either,
+- sign the key with your ultimately trusted key
+- trust this key ultimately
+
+The downloaded package will be available in `/var/cache/apt/archives`. Assuming you found the file `tyk-gateway-2.9.4_amd64.deb` there, you can verify the origin signature.
+
+```bash
+gpg --verify d.deb
+gpg: Signature made Wed 04 Mar 2020 03:05:00 IST
+gpg:                using RSA key F3781522A858A2C43D3BC997CA041CD1466FA2F8
+gpg: Good signature from "Team Tyk (package signing) <team@tyk.io>" [ultimate]
+```
+
+**Configure Tyk Gateway with Dashboard**
+
+**Prerequisites**
+
+This configuration assumes that you have already installed the Tyk Dashboard, and have decided on the domain names for your Dashboard and your Portal. **They must be different**. For testing purposes, it is easiest to add hosts entries to your (and your servers) `/etc/hosts` file.
+
+**Set up Tyk**
+
+You can set up the core settings for Tyk Gateway with a single setup script, however for more involved deployments, you will want to provide your own configuration file.
+
+{{< note success >}}
+**Note**  
+
+You need to replace `<hostname>` for `--redishost=<hostname>`with your own value to run this script.
+{{< /note >}}
+
+
+```bash
+sudo /opt/tyk-gateway/install/setup.sh --dashboard=1 --listenport=8080 --redishost=<hostname> --redisport=6379
+```
+
+What we've done here is told the setup script that:
+
+*   `--dashboard=1`: We want to use the Dashboard, since Tyk Gateway gets all it's API Definitions from the Dashboard service, as of v2.3 Tyk will auto-detect the location of the dashboard, we only need to specify that we should use this mode.
+*   `--listenport=8080`: Tyk should listen on port 8080 for API traffic.
+*   `--redishost=<hostname>`: Use Redis on your hostname.
+*   `--redisport=6379`: Use the default Redis port.
+
+**Starting Tyk**
+
+The Tyk Gateway can be started now that it is configured. Use this command to start the Tyk Gateway:
+```bash
+sudo service tyk-gateway start
+sudo service tyk-gateway enable
+```
+
+**Pro Tip: Domains with Tyk Gateway**
+
+Tyk Gateway has full domain support built-in, you can:
+
+*   Set Tyk to listen only on a specific domain for all API traffic.
+*   Set an API to listen on a specific domain (e.g. api1.com, api2.com).
+*   Split APIs over a domain using a path (e.g. api.com/api1, api.com/api2, moreapis.com/api1, moreapis.com/api2 etc).
+*   If you have set a hostname for the Gateway, then all non-domain-bound APIs will be on this hostname + the `listen_path`.
+
+[1]: https://packagecloud.io/tyk
+
+
+##### Using Ansible
+
+**Getting Started**
 1. clone the [tyk-ansible](https://github.com/TykTechnologies/tyk-ansible) repositry
 
 ```bash
@@ -3200,145 +3314,6 @@ $ ansible-playbook playbook.yaml -t `tyk-gateway-pro` or `tyk-gateway-hybrid`
 | gateway.rpc.rpcKey | | Your organization ID to connect to the MDCB installation |
 | gateway.rpc.apiKey | | This the API key of a user used to authenticate and authorize the Gateway’s access through MDCB. The user should be a standard Dashboard user with minimal privileges so as to reduce any risk if the user is compromised. The suggested security settings are read for Real-time notifications and the remaining options set to deny |
 | gateway.rpc.groupId | | This is the `zone` that this instance inhabits, e.g. the cluster/data-center the Gateway lives in. The group ID must be the same across all the Gateways of a data-center/cluster which are also sharing the same Redis instance. This ID should also be unique per cluster (otherwise another Gateway cluster can pick up your keyspace events and your cluster will get zero updates). |
-
-
-**Install Tyk Gateway Through Shell**
-
-Tyk has it's own APT repositories hosted by the kind folks at [packagecloud.io](https://packagecloud.io/tyk), which makes it easy, safe and secure to install a trusted distribution of the Tyk Gateway stack.
-
-This tutorial has been tested on Ubuntu 16.04 & 18.04 with few if any modifications.
-
-Please note however, that should you wish to write your own plugins in Python, we currently have a Python version dependency of 3.4. Python-3.4 ships with Ubuntu 14.04, however you may need to explicitly install it on newer Ubuntu Operating System releases.
-
-**Prerequisites**
-
-*   Ensure port `8080` is available. This is used in this guide for Gateway traffic (API traffic to be proxied).
-*   You have MongoDB and Redis installed.
-*   You have installed firstly the Tyk Dashboard, then the Tyk Pump.
-
-**Step 1: Set up our APT Repositories**
-
-First, add our GPG key which signs our binaries:
-
-```bash
-curl -L https://packagecloud.io/tyk/tyk-gateway/gpgkey | sudo apt-key add -
-```
-
-Run update:
-```bash
-sudo apt-get update
-```
-
-Since our repositories are installed via HTTPS, you will need to make sure APT supports this:
-```bash
-sudo apt-get install -y apt-transport-https 
-```
-
-Create a file `/etc/apt/sources.list.d/tyk_tyk-gateway.list` with the following contents:
-```bash
-deb https://packagecloud.io/tyk/tyk-gateway/ubuntu/ bionic main
-deb-src https://packagecloud.io/tyk/tyk-gateway/ubuntu/ bionic main
-```
-{{< note success >}}
-
-**Note**
-
-`bionic` is the code name for Ubuntu 18.04. Please substitute it with your particular [ubuntu release](https://wiki.ubuntu.com/Releases), e.g. `focal`.
-
-{{< /note >}}
-
-Now you can refresh the list of packages with:
-```bash
-sudo apt-get update
-```
-
-**What we've done here is:**
-
-*   Added the Tyk Gateway repository
-*   Updated our package list
-
-**Step 2: Install the Tyk Gateway**
-
-We're now ready to install the Tyk Gateway. To install it, run:
-
-```bash
-sudo apt-get install -y tyk-gateway
-```
-What we've done here is instructed apt-get to install the Tyk Gateway without prompting, wait for the downloads to complete.
-
-When Tyk has finished installing, it will have installed some init scripts, but will not be running yet. The next step will be to set up the Gateway - thankfully this can be done with three very simple commands, however it does depend on whether you are configuring Tyk Gateway for use with the Dashboard or without (the Community Edition).
-
-**Verify the origin key (optional)**
-
-Debian packages are signed with the repository keys. These keys are verified at the time of fetching the package and is taken care of by the `apt` infrastructure. These keys are controlled by PackageCloud, our repository provider. For an additional guarantee, it is possible to verify that the package was indeed created by Tyk by verifying the `origin` certificate that is attached to the package.
-
-First, you have to fetch Tyk's signing key and import it.
-
-```bash
-wget https://keyserver.tyk.io/tyk.io.deb.signing.key
-gpg --import tyk.io.deb.signing.key
-```
-
-Then, you have to either,
-- sign the key with your ultimately trusted key
-- trust this key ultimately
-
-The downloaded package will be available in `/var/cache/apt/archives`. Assuming you found the file `tyk-gateway-2.9.4_amd64.deb` there, you can verify the origin signature.
-
-```bash
-gpg --verify d.deb
-gpg: Signature made Wed 04 Mar 2020 03:05:00 IST
-gpg:                using RSA key F3781522A858A2C43D3BC997CA041CD1466FA2F8
-gpg: Good signature from "Team Tyk (package signing) <team@tyk.io>" [ultimate]
-```
-
-##### Configure Tyk Gateway On The Dashboard
-
-**Prerequisites**
-
-This configuration assumes that you have already installed the Tyk Dashboard, and have decided on the domain names for your Dashboard and your Portal. **They must be different**. For testing purposes, it is easiest to add hosts entries to your (and your servers) `/etc/hosts` file.
-
-**Set up Tyk On The Dashboard**
-
-You can set up the core settings for Tyk Gateway with a single setup script, however for more involved deployments, you will want to provide your own configuration file.
-
-{{< note success >}}
-**Note**  
-
-You need to replace `<hostname>` for `--redishost=<hostname>`with your own value to run this script.
-{{< /note >}}
-
-
-```bash
-sudo /opt/tyk-gateway/install/setup.sh --dashboard=1 --listenport=8080 --redishost=<hostname> --redisport=6379
-```
-
-What we've done here is told the setup script that:
-
-*   `--dashboard=1`: We want to use the Dashboard, since Tyk Gateway gets all it's API Definitions from the Dashboard service, as of v2.3 Tyk will auto-detect the location of the dashboard, we only need to specify that we should use this mode.
-*   `--listenport=8080`: Tyk should listen on port 8080 for API traffic.
-*   `--redishost=<hostname>`: Use Redis on your hostname.
-*   `--redisport=6379`: Use the default Redis port.
-
-**Starting Tyk**
-
-The Tyk Gateway can be started now that it is configured. Use this command to start the Tyk Gateway:
-```bash
-sudo service tyk-gateway start
-sudo service tyk-gateway enable
-```
-
-{{<note success>}}
-Pro Tip: Domains with Tyk Gateway
-
-Tyk Gateway has full domain support built-in, you can:
-
-*   Set Tyk to listen only on a specific domain for all API traffic.
-*   Set an API to listen on a specific domain (e.g. api1.com, api2.com).
-*   Split APIs over a domain using a path (e.g. api.com/api1, api.com/api2, moreapis.com/api1, moreapis.com/api2 etc).
-*   If you have set a hostname for the Gateway, then all non-domain-bound APIs will be on this hostname + the `listen_path`.
-
-{{</note>}}
 
 
 ## Explore Demos and Proof of Concepts
