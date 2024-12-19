@@ -1149,13 +1149,6 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Duplicate text in hint box for path-based permissions</summary>
-
-Fixed an issue where the info tooltip for the path-based permissions field contained duplicated text.
-</details>
-</li>
-<li>
-<details>
 <summary>Blank screen on restore zoom in API activity dashboard</summary>
 
 Resolved an issue where restoring zoom on charts in the API Activity Dashboard resulted in a blank display.
