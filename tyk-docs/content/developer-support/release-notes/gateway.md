@@ -1414,7 +1414,7 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 <details>
 <summary>Incomplete traffic logs generated if custom response plugin adjusts the payload length</summary>
 
-Resolved an issue where analytics data was incorrectly trimmed when a custom response plugin (coprocess) modified the response body to exceed the upstream content length.
+Resolved an issue where the response body could be only partially recorded in the traffic log if a custom response plugin modified the payload. This was due to Tyk using the original, rather than the modified, content-length of the response when identifying the data to include in the traffic log.
 </details>
 </li>
 <li>
