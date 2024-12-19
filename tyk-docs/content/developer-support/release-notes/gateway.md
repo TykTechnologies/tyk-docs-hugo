@@ -1421,7 +1421,7 @@ Resolved an issue where the response body could be only partially recorded in th
 <details>
 <summary>Skip loading API security feature adjustments for Cloud users</summary>
 
-Fixed a bug that prevented management gateways from loading plugin bundles due to a security feature introduced in v5.3.1.
+Fixed a bug that prevented the control plane Gateway from loading APIs that use custom plugin bundles. The control plane Gateway is used to register OAuth clients and generate access tokens so this could result in an API being loaded to the data plane Gateways but clients unable to obtain access tokens. This issue was introduced in v5.3.1 as a side-effect of a change to address a potential security issue where APIs could be loaded without their custom plugins.
 </details>
 </li>
 <li>
