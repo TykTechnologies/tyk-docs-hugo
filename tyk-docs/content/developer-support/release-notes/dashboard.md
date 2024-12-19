@@ -140,13 +140,6 @@ This option has been marked as deprecated due to its obsolescence in the underly
 Fixed an issue where a malformed listen path could cause the Gateway to crash. Now, such listen paths are properly validated, and if validation fails, an error is logged, and the API is skipped—preventing Gateway instability.
 </details>
 </li>
-<li>
-<details>
-<summary>CVE-2020-8911 resolved in Tyk Dashboard</summary>
-
-This option has been marked as deprecated due to its obsolescence in the underlying library functions used by Tyk. Users are advised to remove this configuration from their setups as it no longer has any effect.
-</details>
-</li>
 </ul>
 
 ---
