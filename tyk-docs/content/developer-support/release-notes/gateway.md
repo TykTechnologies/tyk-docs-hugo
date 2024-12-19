@@ -1419,14 +1419,14 @@ Resolved an issue where the response body could be only partially recorded in th
 </li>
 <li>
 <details>
-<summary>Skip loading API security feature adjustments for Cloud users</summary>
+<summary>Fixed OAuth client creation issue for custom plugin APIs in multi-data plane deployments</summary>
 
 Fixed a bug that prevented the control plane Gateway from loading APIs that use custom plugin bundles. The control plane Gateway is used to register OAuth clients and generate access tokens so this could result in an API being loaded to the data plane Gateways but clients unable to obtain access tokens. This issue was introduced in v5.3.1 as a side-effect of a change to address a potential security issue where APIs could be loaded without their custom plugins.
 </details>
 </li>
 <li>
 <details>
-<summary>Accurate Debug Logging Restored for Middleware</summary>
+<summary>Accurate debug logging restored for middleware</summary>
 
 Addressed an issue where shared loggers caused debug logs to misidentify the middleware source, complicating debugging. Log entries now correctly indicate which middleware generated the log, ensuring clearer and more reliable diagnostics
 </details>
