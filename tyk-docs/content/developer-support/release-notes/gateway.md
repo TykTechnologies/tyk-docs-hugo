@@ -1435,7 +1435,7 @@ Addressed an issue where shared loggers caused debug logs to misidentify the mid
 <details>
 <summary>Resolved API routing issue with trailing slashes and overlapping listen paths</summary>
 
-Fixed inconsistencies in the routing algorithm that led to incorrect API URL matching.The issue affected APIs lacking a trailing slash, using custom domains, or having similar listen path patterns. The router previously prioritized longer subdomains and shorter listen paths, causing incorrect matches when listen paths overlapped. This fix ensures accurate URL matching across all scenarios.
+Fixed a routing issue that caused incorrect API matching when dealing with APIs that lacked a trailing slash, used custom domains, or had similar listen path patterns. Previously, the router prioritized APIs with longer subdomains and shorter listen paths, leading to incorrect matches when listen paths shared prefixes. This fix ensures accurate API matching, even when subdomains and listen paths overlap.
 </details>
 </li>
 <li>
