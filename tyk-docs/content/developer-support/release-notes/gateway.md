@@ -1426,16 +1426,9 @@ Fixed a bug that prevented the control plane Gateway from loading APIs that use 
 </li>
 <li>
 <details>
-<summary>Debug log accuracy restored for middlewares</summary>
+<summary>Accurate Debug Logging Restored for Middleware</summary>
 
-Addressed an issue where shared loggers caused misreported debug logs for middlewares. Loggers are now explicitly copied to ensure accurate and distinct logging.
-</details>
-</li>
-<li>
-<details>
-<summary>Otel E2E Tests Issue After Upgrading to v1.29</summary>
-
-Upgrading the OpenTelemetry SDK to v1.29 caused otelhttp v0.54.0 to break the CI pipelines. As a temporary fix, we reverted to otelhttp v0.49.0 while investigating the root cause of the issue.
+Addressed an issue where shared loggers caused debug logs to misidentify the middleware source, complicating debugging. Log entries now correctly indicate which middleware generated the log, ensuring clearer and more reliable diagnostics
 </details>
 </li>
 <li>
