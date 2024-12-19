@@ -1172,7 +1172,7 @@ Fixed the search functionality on the API Keys page, enabling the search button 
 <details>
 <summary>API Keys remain active after all linked partitioned policies are deleted</summary>
 
-Resolved an issue where keys remained valid even after all associated policies were deleted. The Gateway now applies all available linked policies to a key during request validation and logs warnings if any policies are missing. If all policies are missing, the Gateway will reject the key to ensure no unauthorized access.
+Resolved an issue where API access keys remained valid even if all associated policies were deleted. The Gateway now attempts to apply all linked policies to the key when it is presented with a request. Warning logs are generated if any policies cannot be applied (for example, if they are missing). If no linked policy can be applied, the Gateway will reject the key to ensure no unauthorized access.
 </details>
 </li>
 <li>
