@@ -1456,7 +1456,7 @@ Fixed an issue where upstream server-sent events (SSE) were not sent when OpenTe
 <details>
 <summary>OAuth 2.0 token issuance now supported in Emergency mode</summary>
 
-OAuth 2.0 tokens can now be issued even when data plane gateways are in emergency mode. This is achieved by saving OAuth clients locally when they are pulled from RPC.
+OAuth 2.0 access tokens can now be issued even when data plane gateways are disconnected from the control plane. This is achieved by saving OAuth clients locally within the data plane when they are pulled from RPC.
 </details>
 </li>
 <li>
