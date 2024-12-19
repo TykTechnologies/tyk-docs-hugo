@@ -1454,7 +1454,7 @@ Fixed an issue where upstream server-sent events (SSE) were not sent when OpenTe
 </li>
 <li>
 <details>
-<summary>OAuth 2.0 token issuance now supported in Emergency mode</summary>
+<summary>Fixed an issue where OAuth 2.0 access tokens would not be issued if the data plane was disconnected from the control plane</summary>
 
 OAuth 2.0 access tokens can now be issued even when data plane gateways are disconnected from the control plane. This is achieved by saving OAuth clients locally within the data plane when they are pulled from RPC.
 </details>
