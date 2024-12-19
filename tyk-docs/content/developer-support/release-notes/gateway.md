@@ -1447,6 +1447,13 @@ Fixed an issue where a malformed listen path could cause the Gateway to crash. N
 </li>
 <li>
 <details>
+<summary>Resolved Variable Input Handling for Custom Scalars in GraphQL Queries</summary>
+
+Fixed an issue where GraphQL queries using variables for custom scalar types, such as UUID, failed due to incorrect input handling. Previously, the query would return an error when a variable was used but worked when the value was directly embedded in the query. This update ensures that variables for custom scalar types are correctly inferred and processed, enabling seamless query execution.
+</details>
+</li>
+<li>
+<details>
 <summary>Fixed Gateway panic and SSE streaming issue with OpenTelemetry</summary>
 
 Resolved a bug that prevented upstream server-sent events (SSE) from being sent when OpenTelemetry was enabled, and fixed a gateway panic that occurred when detailed recording was active while SSE was in use. This ensures stable SSE streaming in configurations with OpenTelemetry.
