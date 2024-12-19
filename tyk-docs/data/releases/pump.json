@@ -1,8 +1,13 @@
 {
   "home": "tyk-pump",
   "licensed": false,
-  "latest": "1.11.0",
+  "latest": "1.11.1",
   "releaseNotesPath": "product-stack/tyk-pump/release-notes/pump-1.11",
+  "1.11.1": {
+    "date": "4/12/2024",
+    "tag": "https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.11.1",
+    "docker": "https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=1&name=v1.11.1"
+  },
   "1.11.0": {
     "date": "13/08/2024",
     "tag": "https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.11.0",
