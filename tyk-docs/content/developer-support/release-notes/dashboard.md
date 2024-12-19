@@ -1179,7 +1179,7 @@ Resolved an issue where API access keys remained valid even if all associated po
 <details>
 <summary>Deprecation of http_server_options.prefer_server_ciphers</summary>
 
-This option has been marked as deprecated due to its obsolescence in upstream dependencies. Users are advised to remove this configuration from their setups as it will no longer have any effect in future releases.
+This option has been marked as deprecated due to its obsolescence in the underlying library functions used by Tyk. Users are advised to remove this configuration from their setups as it no longer has any effect.
 </details>
 </li>
 </ul>
