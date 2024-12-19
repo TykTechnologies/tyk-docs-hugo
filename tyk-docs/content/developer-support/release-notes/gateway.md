@@ -102,62 +102,72 @@ If you are upgrading to 5.7.1, please follow the detailed [upgrade instructions]
 
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
-#### Changelog {#Changelog-v5.7.1}
-
-
-##### Added
-
-<ul>
-<li>
-<details>
-<summary>Changelog item summary</summary>
-
-Add changelog summary
-</details>
-</li>
-<li>
-<details>
-<summary>Another changelog item summary</summary>
-
-Add changelog summary
-</details>
-</li>
-</ul>
- 
-##### Changed
-
-<ul>
-<li>
-<details>
-<summary>Changelog item summary</summary>
-
-Add changelog summary
-</details>
-</li>
-<li>
-<details>
-<summary>Another changelog item summary</summary>
-
-Add changelog summary
-</details>
-</li>
-</ul>
- 
+#### Changelog {#Changelog-v5.7.1} 
 ##### Fixed
 
 <ul>
 <li>
 <details>
-<summary>Changelog item summary</summary>
+<summary>Incomplete traffic logs generated if custom response plugin adjusts the payload length</summary>
 
-Add changelog summary
+Resolved an issue where the response body could be only partially recorded in the traffic log if a custom response plugin modified the payload. This was due to Tyk using the original, rather than the modified, content-length of the response when identifying the data to include in the traffic log.
 </details>
 </li>
 <li>
 <details>
-<summary>Another changelog item summary</summary>
+<summary>Fixed OAuth client creation issue for custom plugin APIs in multi-data plane deployments</summary>
 
-Add changelog summary
+Fixed a bug that prevented the control plane Gateway from loading APIs that use custom plugin bundles. The control plane Gateway is used to register OAuth clients and generate access tokens so this could result in an API being loaded to the data plane Gateways but clients unable to obtain access tokens. This issue was introduced in v5.3.1 as a side-effect of a change to address a potential security issue where APIs could be loaded without their custom plugins.
+</details>
+</li>
+<li>
+<details>
+<summary>Accurate debug logging restored for middleware</summary>
+
+Addressed an issue where shared loggers caused debug logs to misidentify the middleware source, complicating debugging. Log entries now correctly indicate which middleware generated the log, ensuring clearer and more reliable diagnostics
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Stability for APIs with Malformed Listen Paths</summary>
+
+Fixed an issue where a malformed listen path could cause the Gateway to crash. Now, such listen paths are properly validated, and if validation fails, an error is logged, and the API is skipped—preventing Gateway instability.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Gateway panic and SSE streaming issue with OpenTelemetry</summary>
+
+Resolved a bug that prevented upstream server-sent events (SSE) from being sent when OpenTelemetry was enabled, and fixed a gateway panic that occurred when detailed recording was active while SSE was in use. This ensures stable SSE streaming in configurations with OpenTelemetry.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed an issue where OAuth 2.0 access tokens would not be issued if the data plane was disconnected from the control plane</summary>
+
+OAuth 2.0 access tokens can now be issued even when data plane gateways are disconnected from the control plane. This is achieved by saving OAuth clients locally within the data plane when they are pulled from RPC.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed an issue where OAuth 2.0 access tokens would not be issued if the data plane was disconnected from the control plane</summary>
+
+OAuth 2.0 access tokens can now be issued even when data plane gateways are disconnected from the control plane. This is achieved by saving OAuth clients locally within the data plane when they are pulled from RPC.
+</details>
+</li>
+<li>
+<details>
+<summary>Tyk Now Supports RSA-PSS Signed JWTs</summary>
+
+Tyk now supports RSA-PSS signed JWTs (PS256, PS384, PS512), enhancing security while maintaining backward compatibility with RS256. No configuration changes are needed—just use RSA public keys, and Tyk will validate both algorithms seamlessly.
+</details>
+</li>
+<li>
+<details>
+<summary>Request size limit middleware would block any request without a payload (for example GET, DELETE)</summary>
+
+
+Resolved a problem in the request size limit middleware that caused GET and DELETE requests to fail validation.The middleware incorrectly expected a request body (payload) for these methods and blocked them when none was present.
 </details>
 </li>
 </ul>
