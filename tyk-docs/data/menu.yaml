@@ -49,7 +49,6 @@ menu:
         category: Page
         show: True
       - title: "Install and Configure"
-        path: /migration-to-tyk
         category: Directory
         show: True
         menu:

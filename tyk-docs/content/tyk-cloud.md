@@ -91,6 +91,11 @@ aliases:
   - /get-started/with-tyk-multi-cloud/tutorials/installation-on-aws
   - /getting-started/installation/with-tyk-multi-cloud/create-an-account
   - /getting-started/installation/with-tyk-multi-cloud/installation-on-aws
+  - /using-plugins/python-custom-auth-plugin
+  - /python-custom-auth-plugin/api-middleware-test
+  - /python-custom-auth-plugin/python-code-bundle
+  - /python-custom-auth-plugin/setup-control-plane
+  - /python-custom-auth-plugin/uploading-bundle
 ---
 
 ## What is Tyk Cloud
