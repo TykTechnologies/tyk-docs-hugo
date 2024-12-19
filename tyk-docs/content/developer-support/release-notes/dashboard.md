@@ -46,17 +46,13 @@ Our minor releases are supported until our next minor comes out.
 This fix focuses mainly on bug fix.For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.7.1" >}}) below.
 
 #### Breaking Changes
-<!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 
 There are no breaking changes in this release.
 
 #### Dependencies {#dependencies-5.7.1}
-<!--Required. Use this section to announce the following types of dependencies compatible with the release:
-Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
-3rd party dependencies and tools -->
+
 ##### Compatibility Matrix For Tyk Components
-<!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
-An illustrative example is shown below. -->
+
 | Dashboard Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
 | 5.7.1 | MDCB v2.7.2     | MDCB v2.5.1 |
@@ -68,11 +64,6 @@ An illustrative example is shown below. -->
 | | TIB (if using standalone) v1.6.1 | TIB all versions |
 
 ##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.7.1}
-<!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
-
-Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
-
-An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
@@ -83,13 +74,9 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
 
 #### Deprecations
-<!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
+
 We have deprecated the obsolescent `http_server_options.prefer_server_ciphers` configuration option. This legacy control no longer has any effect on the underlying library and users are advised to remove this setting from their configurations.
-<!-- Optional section!
-Used to share and notify users about our plan to deprecate features, configs etc.
-Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->
-<!-- ###### Future deprecations
--->
+
 #### Upgrade instructions {#upgrade-5.7.1}
 If you are upgrading to 5.7.1, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
@@ -114,30 +101,8 @@ Resolved a bug where clicking "Restore zooming to initial state" in the API Acti
 </li>
 <li>
 <details>
-<summary>
-Fixed OAuth Client Creation Issue for Custom Plugin APIs in Multi-Data Plane Deployments</summary>
-
-Fixed a bug that prevented the control plane Gateway from loading APIs that use custom plugin bundles. The control plane Gateway is used to register OAuth clients and generate access tokens so this could result in an API being loaded to the data plane Gateways but clients unable to obtain access tokens. This issue was introduced in v5.3.1 as a side-effect of a change to address a potential security issue where APIs could be loaded without their custom plugins.
-</details>
-</li>
-<li>
-<details>
-<summary>API Keys remain active after all linked partitioned policies are deleted</summary>
-
-Resolved an issue where API access keys remained valid even if all associated policies were deleted. The Gateway now attempts to apply all linked policies to the key when it is presented with a request. Warning logs are generated if any policies cannot be applied (for example, if they are missing). If no linked policy can be applied, the Gateway will reject the key to ensure no unauthorized access.
-</details>
-</li>
-<li>
-<details>
 <summary>Deprecation of http_server_options.prefer_server_ciphers</summary>
 This option has been marked as deprecated due to its obsolescence in the underlying library functions used by Tyk. Users are advised to remove this configuration from their setups as it no longer has any effect.
-</details>
-</li>
-<li>
-<details>
-<summary>Improved Stability for APIs with Malformed Listen Paths</summary>
-
-Fixed an issue where a malformed listen path could cause the Gateway to crash. Now, such listen paths are properly validated, and if validation fails, an error is logged, and the API is skipped—preventing Gateway instability.
 </details>
 </li>
 </ul>
