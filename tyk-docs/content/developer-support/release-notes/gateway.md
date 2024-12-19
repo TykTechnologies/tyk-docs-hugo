@@ -1339,7 +1339,7 @@ links to API documentation and FAQs. You can copy it from the previous release. 
 
 #### Release Highlights
 
-This release contains a bug fix. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.9">}}) below.
+This release contains bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.9">}}) below.
 
 #### Breaking Changes
 
