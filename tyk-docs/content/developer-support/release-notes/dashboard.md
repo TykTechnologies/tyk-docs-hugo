@@ -1149,9 +1149,9 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Blank screen on restore zoom in API activity dashboard</summary>
+<summary>Fixed Issue with Restore Zooming in API Activity Dashboard</summary>
 
-Resolved an issue where restoring zoom on charts in the API Activity Dashboard resulted in a blank display.
+Resolved a bug where clicking "Restore zooming to initial state" in the API Activity Dashboard would cause the graph to show blank instead of resetting to the initial zoom level. This fix ensures that users can now correctly restore the default zoom state in all charts on the Dashboard.
 </details>
 </li>
 <li>
