@@ -1117,7 +1117,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
 #### Deprecations
-We have deprecated 'http_server_options.prefer_server_ciphers' in Tyk dashboard due due to its obsolescence in upstream dependencies.Users are advised to remove this configuration from their setups as it will no longer have any effect in future releases.
+We have deprecated the obsolescent `http_server_options.prefer_server_ciphers` configuration option. This legacy control no longer has any effect on the underlying library and users are advised to remove this setting from their configurations.
 
 #### Upgrade Instructions
 If you are upgrading to 5.3.9, please follow the detailed [upgrade instructions](#upgrading-tyk).
