@@ -84,7 +84,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 #### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
-There are no deprecations in this release.
+We have deprecated the obsolescent `http_server_options.prefer_server_ciphers` configuration option. This legacy control no longer has any effect on the underlying library and users are advised to remove this setting from their configurations.
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc.
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->
@@ -102,61 +102,49 @@ If you are upgrading to 5.7.1, please follow the detailed [upgrade instructions]
   - [tyk-charts v2.2.0]({{< ref "developer-support/release-notes/helm-chart#220-release-notes" >}})
 
 #### Changelog {#Changelog-v5.7.1}
-
-##### Added
-
-<ul>
-<li>
-<details>
-<summary>Changelog item summary</summary>
-
-Add changelog description
-</details>
-</li>
-<li>
-<details>
-<summary>Another changelog item summary</summary>
-
-Add changelog description
-</details>
-</li>
-</ul>
-
-  
-##### Changed
-
-<ul>
-<li>
-<details>
-<summary>Changelog item summary</summary>
-
-Add changelog description
-</details>
-</li>
-<li>
-<details>
-<summary>Another changelog item summary</summary>
-
-Add changelog description
-</details>
-</li>
-</ul>
- 
 ##### Fixed
 
 <ul>
 <li>
 <details>
-<summary>Changelog item summary</summary>
+<summary>Fixed Issue with Restore Zooming in API Activity Dashboard</summary>
 
-Add changelog description
+Resolved a bug where clicking "Restore zooming to initial state" in the API Activity Dashboard would cause the graph to show blank instead of resetting to the initial zoom level. This fix ensures that users can now correctly restore the default zoom state in all charts on the Dashboard.
 </details>
 </li>
 <li>
 <details>
-<summary>Another changelog item summary</summary>
+<summary>
+Fixed OAuth Client Creation Issue for Custom Plugin APIs in Multi-Data Plane Deployments</summary>
 
-Add changelog description
+Fixed a bug that prevented the control plane Gateway from loading APIs that use custom plugin bundles. The control plane Gateway is used to register OAuth clients and generate access tokens so this could result in an API being loaded to the data plane Gateways but clients unable to obtain access tokens. This issue was introduced in v5.3.1 as a side-effect of a change to address a potential security issue where APIs could be loaded without their custom plugins.
+</details>
+</li>
+<li>
+<details>
+<summary>API Keys remain active after all linked partitioned policies are deleted</summary>
+
+Resolved an issue where API access keys remained valid even if all associated policies were deleted. The Gateway now attempts to apply all linked policies to the key when it is presented with a request. Warning logs are generated if any policies cannot be applied (for example, if they are missing). If no linked policy can be applied, the Gateway will reject the key to ensure no unauthorized access.
+</details>
+</li>
+<li>
+<details>
+<summary>Deprecation of http_server_options.prefer_server_ciphers</summary>
+This option has been marked as deprecated due to its obsolescence in the underlying library functions used by Tyk. Users are advised to remove this configuration from their setups as it no longer has any effect.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Stability for APIs with Malformed Listen Paths</summary>
+
+Fixed an issue where a malformed listen path could cause the Gateway to crash. Now, such listen paths are properly validated, and if validation fails, an error is logged, and the API is skipped—preventing Gateway instability.
+</details>
+</li>
+<li>
+<details>
+<summary>CVE-2020-8911 resolved in Tyk Dashboard</summary>
+
+This option has been marked as deprecated due to its obsolescence in the underlying library functions used by Tyk. Users are advised to remove this configuration from their setups as it no longer has any effect.
 </details>
 </li>
 </ul>
