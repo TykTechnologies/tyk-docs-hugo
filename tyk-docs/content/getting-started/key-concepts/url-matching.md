@@ -54,7 +54,7 @@ Understanding the Gateway's URL path matching behavior is essential in scenarios
 - **API Versioning**: You may want to allow different versions of an API, such as `/v1/users` and `/v2/users`, while still matching certain common paths or endpoints.
 - **Middleware Control**: Middleware often relies on URL path matching to determine when specific behaviors, such as rate limiting or authentication, should be applied.
 - **Security Policies**: URL path matching ensures that security policies, such as allow or block lists, are enforced for the correct paths without mistakenly leaving critical routes unprotected.
-- **Similar paths**: If you deploy multiple APIs with similar paths (e.g. `/project` and `/project-management`) you will want to ensure that the [correct path](#pattern-ordering) is matched to requests.
+- **Similar paths**: If you deploy multiple APIs with similar paths (e.g. `/project` and `/project-management`) you will want to ensure that the [correct path](#path-ordering) is matched to requests.
 
 By fine-tuning these configurations, developers can create robust,
 secure, and maintainable routing rules tailored to their specific use
