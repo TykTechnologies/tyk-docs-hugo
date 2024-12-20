@@ -1347,14 +1347,7 @@ This release has no breaking changes.
 
 #### Dependencies
 
-<!--Required. Use this section to announce the following types of dependencies compatible with the release:
-Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
-3rd party dependencies and tools -->
-
 ##### Compatibility Matrix For Tyk Components
-
-<!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
-An illustrative example is shown below. -->
 
 | Gateway Version | Recommended Releases                                               | Backwards Compatibility |
 | --------------- | ------------------------------------------------------------------ | ----------------------- |
@@ -1368,11 +1361,6 @@ An illustrative example is shown below. -->
 
 ##### 3rd Party Dependencies & Tools
 
-<!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
-
-Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
-
-An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
 
 | Third Party Dependency                                        | Tested Versions       | Compatible Versions   | Comments                                                                                   |
 | ------------------------------------------------------------- | --------------------- | --------------------- | ------------------------------------------------------------------------------------------ |
@@ -1403,10 +1391,6 @@ If you are upgrading to 5.3.9, please follow the detailed [upgrade instructions]
 
 #### Changelog {#Changelog-v5.3.9}
 
-<!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
-Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
-"...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
-"New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 ##### Fixed
 
 <ul>
