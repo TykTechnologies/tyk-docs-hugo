@@ -785,6 +785,10 @@ menu:
         path: /api-management/automations
         category: Page
         show: True
+      - title: "Troubleshooting"
+        path: /api-management/troubleshooting-debugging
+        category: Page
+        show: True
       - title: "Manage APIs"
         category: Directory
         show: True
@@ -2283,10 +2287,6 @@ menu:
                 path: /frequently-asked-questions/add-custom-certificates-to-docker-images
                 category: Page
                 show: True
-              - title: "API definition URL case sensitive"
-                path: /frequently-asked-questions/api-definition-url-case-sensitive
-                category: Page
-                show: True
               - title: "How to change the logging output location"
                 path: /frequently-asked-questions/change-logging-output-location
                 category: Page
@@ -2297,58 +2297,6 @@ menu:
                 show: True
               - title: "How to find the Gateway logging output"
                 path: /frequently-asked-questions/find-gateway-logging-output
-                category: Page
-                show: True
-              - title: "How to import existing keys into Tyk CE"
-                path: /frequently-asked-questions/import-existing-keys-tyk
-                category: Page
-                show: True
-              - title: "Redis persistence using containers"
-                path: /frequently-asked-questions/redis-persistence-using-containers
-                category: Page
-                show: True
-              - title: "499 Errors"
-                path: /troubleshooting/tyk-gateway/499-errors
-                category: Page
-                show: True
-              - title: "502 error in Tyk Gateway"
-                path: /troubleshooting/tyk-gateway/502-error-tyk-gateway
-                category: Page
-                show: True
-              - title: "proxy error: context canceled"
-                path: /troubleshooting/tyk-gateway/context-canceled
-                category: Page
-                show: True
-              - title: "DRL not ready, skipping this notification"
-                path: /troubleshooting/tyk-gateway/drl-not-ready
-                category: Page
-                show: True
-              - title: "“Index out of range“ error in logs"
-                path: /troubleshooting/tyk-gateway/index-range-error-logs
-                category: Page
-                show: True
-              - title: "“Invalid memory address or nil pointer dereference“ error"
-                path: /troubleshooting/tyk-gateway/invalid-memory-address-nil-pointer-dereference-error
-                category: Page
-                show: True
-              - title: "“Key object validation failed“ error when updating a key"
-                path: /troubleshooting/tyk-gateway/key-object-validation-failed-error-updating-key
-                category: Page
-                show: True
-              - title: "“There was a problem proxying the request“"
-                path: /troubleshooting/tyk-gateway/problem-proxying-request
-                category: Page
-                show: True
-              - title: "Tyk Gateway Profiling"
-                path: /troubleshooting/tyk-gateway/profiling
-                category: Page
-                show: True
-              - title: "Support Information"
-                path: /troubleshooting/tyk-gateway/support-information
-                category: Page
-                show: True
-              - title: "Hot restart a Tyk Gateway Process"
-                path: /tyk-configuration-reference/hot-restart-tyk-gateway-process
                 category: Page
                 show: True
               - title: "Error Response Status Codes"
@@ -2669,86 +2617,6 @@ menu:
             menu:
               - title: "Capping analytics data storage"
                 path: /frequently-asked-questions/capping-analytics-data-storage
-                category: Page
-                show: True
-              - title: "Dashboard bootstrap error"
-                path: /frequently-asked-questions/dashboard-bootstrap-error
-                category: Page
-                show: True
-              - title: "How to find the policy ID for a created policy"
-                path: /frequently-asked-questions/find-policy-id-created-policy
-                category: Page
-                show: True
-              - title: "Gateway detected 0 APIs"
-                path: /frequently-asked-questions/gateway-detected-0-apis
-                category: Page
-                show: True
-              - title: "How to Connect to DocumentDB with X.509 client cert"
-                path: /frequently-asked-questions/how-to-connect-to-documentdb
-                category: Page
-                show: True
-              - title: "How to disable an API"
-                path: /frequently-asked-questions/how-to-disable-an-api
-                category: Page
-                show: True
-              - title: "How to Setup CORS"
-                path: /frequently-asked-questions/how-to-setup-cors
-                category: Page
-                show: True
-              - title: "No Key information on the Dashboard"
-                path: /frequently-asked-questions/no-token-information-dashboard
-                category: Page
-                show: True
-              - title: "How to rename or move existing headers in a request"
-                path: /frequently-asked-questions/rename-or-move-existing-headers
-                category: Page
-                show: True
-              - title: "How to run the Dashboard and portal on different ports"
-                path: /frequently-asked-questions/run-dashboard-portal-different-ports
-                category: Page
-                show: True
-              - title: "How to run two Gateways with docker-compose"
-                path: /frequently-asked-questions/two-gateways-with-docker-compose
-                category: Page
-                show: True
-              - title: "“Can't update policy. Please ensure at least one access rights setting is set“"
-                path: /troubleshooting/tyk-dashboard/cant-update-policy-please-ensure-least-one-access-rights-setting-set
-                category: Page
-                show: True
-              - title: "Dashboard not showing any analytics data"
-                path: /troubleshooting/tyk-dashboard/dashboard-not-showing-analytics-data
-                category: Page
-                show: True
-              - title: "Fatal - Dashboard and portal domains cannot be the same"
-                path: /troubleshooting/tyk-dashboard/fatal-dashboard-portal-domains-same
-                category: Page
-                show: True
-              - title: "Internal TIB SSO User unable to log in"
-                path: /troubleshooting/tyk-dashboard/internal-tib
-                category: Page
-                show: True
-              - title: "Key object validation failed, most likely malformed input error"
-                path: /troubleshooting/tyk-dashboard/key-object-validation-failed-most-likely-malformed-input
-                category: Page
-                show: True
-              - title: "Port 5000 Errors in the Browser Console"
-                path: /troubleshooting/tyk-dashboard/port-5000-errors
-                category: Page
-                show: True
-              - title: "“There was a problem updating your CNAME“ error in the Dashboard"
-                path: /troubleshooting/tyk-dashboard/problem-updating-cname-error-dashboard
-                category: Page
-                show: True
-              - title: "“runtime error invalid memory address or nil pointer dereference“"
-                path: /troubleshooting/tyk-dashboard/runtime-error-invalid-memory-address-nil-pointer-dereference
-                category: Page
-                show: True
-              - title: '“ValueError No JSON object could be decoded" when running Dashboard Bootstrap script'
-                path: /troubleshooting/tyk-dashboard/value-error-no-json-object-decoded-running-dashboard-bootstrap-script
-                category: Page
-                show: True
-              - title: "“Payload signature is invalid!“ error"
-                path: /troubleshooting/tyk-installation/payload-signature-invalid-error
                 category: Page
                 show: True
               - title: "MongoDB X.509 Client Authentication"
@@ -3419,38 +3287,6 @@ menu:
                 path: /tyk-stack/tyk-pump/separated-analytics-storage
                 category: Page
                 show: True
-          - title: "Troubleshooting"
-            category: Directory
-            show: True
-            menu:
-              - title: "Capturing detailed logs"
-                path: /tyk-stack/tyk-pump/useful-debug-modes
-                category: Page
-                show: True
-              - title: "“Connection dropped, connecting...“"
-                path: /troubleshooting/tyk-pump/connection-dropped-connecting
-                category: Page
-                show: True
-              - title: "Data Seen in Log Browser but No Reports"
-                path: /troubleshooting/tyk-pump/data-in-log-browser-no-reports
-                category: Page
-                show: True
-              - title: "“No Elasticsearch node available“"
-                path: /troubleshooting/tyk-pump/no-elasticsearch-node-available
-                category: Page
-                show: True
-              - title: "Tyk Pump Panic “stack exceeds 1000000000-byte limit“"
-                path: /troubleshooting/tyk-pump/panic-stack-exceeds-1000000000-byte-limit
-                category: Page
-                show: True
-              - title: "“Pump overloaded“"
-                path: /troubleshooting/tyk-pump/pump-overloaded
-                category: Page
-                show: True
-              - title: "Tyk Pump Graceful Shutdown"
-                path: /tyk-stack/tyk-pump/tyk-pump-configuration/graceful-shutdowm
-                category: Page
-                show: True
           - title: "Supported Backends"
             path: /tyk-stack/tyk-pump/other-data-stores
             category: Page
@@ -3623,10 +3459,6 @@ menu:
             path: /product-stack/tyk-streaming/developer-portal-integration
             category: true
             show: True
-          - title: "Troubleshooting & FAQs"
-            path: /product-stack/tyk-streaming/troubleshooting
-            category: Page
-            show: True
       - title: "Tyk Sync"
         category: Directory
         show: False
@@ -3788,22 +3620,6 @@ menu:
         path: /tyk-environment-variables
         category: Page
         show: True
-      - title: "Debugging Series"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            path: /debugging-series/debugging-series
-            category: Page
-            show: True
-          - title: "MongoDB Debugging"
-            path: /debugging-series/mongodb-debugging
-            category: Page
-            show: True
-          - title: "Tyk Self-Managed Debugging"
-            path: /developer-support/debugging-series/debugging-selfmanaged
-            category: Page
-            show: True
       - title: "Deprecated pages"
         category: Directory
         show: False
