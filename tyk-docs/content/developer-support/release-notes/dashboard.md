@@ -1165,7 +1165,7 @@ This option has been marked as deprecated due to its obsolescence in the underly
 <details>
 <summary>CVE-2020-8911 resolved in Tyk Dashboard</summary>
 
-Resolved CVE-2020-8911 by updating the Tyk Dashboard's email driver to use AWS SDK v2, addressing a medium-severity security vulnerability identified in version 5.3.8. This update ensures enhanced security for the dashboard while maintaining functionality.
+Resolved CVE-2020-8911 by updating the Tyk Dashboard's email driver to use AWS SDK v2, addressing a medium-severity security vulnerability identified in version 5.3.8. This update ensures enhanced security for the Dashboard while maintaining functionality.
 </details>
 </li>
 </ul>
