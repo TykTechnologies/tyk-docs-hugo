@@ -63,10 +63,10 @@ cases.
 
 ## Structure of the API request
 
-When a client makes a request to an API hosted on Tyk Gateway, they provide an HTTP method and *request path*. This *request path* will comprise the host (or domain) name for the Gateway, the API *listen path* and then (optionally) the *endpoint path*.
+When a client makes a request to an API hosted on Tyk Gateway, they provide an HTTP method and *request path*. This *request path* will comprise the host (or *domain*) name for the Gateway, the API *listen path* and then (optionally) the *endpoint path*.
 
 ```
-<protocol>://<host>/<listenPath>/<endpointPath>
+<protocol>://<domain>/<listenPath>/<endpointPath>
 ```
 
 With reference to [RFC 3986](https://www.ietf.org/rfc/rfc3986.txt) the `protocol` is the RFC's `scheme`, `host` is the `authority` and `listenPath/endpointPath` is the `path`.
@@ -102,35 +102,24 @@ If [URL path versioning]({{< ref "product-stack/tyk-gateway/advanced-configurati
 
 The remainder of the *request path* after any version identifier is considered to be the *endpoint path* (which may be simply `/`). When performing a match against endpoints configured in the API definition, Tyk treats the configured patterns as regular expressions, allowing advanced users to perform complex endpoint path matching by use of regexes in their API definitions.
 
-## Pattern ordering
+## Path ordering
 
-Before attempting to match the incoming request to the various APIs (and their endpoints) deployed on Tyk, we will first place all the endpoints in order before comparing the request against each in turn (according to the [matching rules](#pattern-matching) that have been defined). When a match is found between the request and a pattern, no further checks will be perfomed, so it is important to understand how Tyk orders the patterns to ensure there is no accidental routing to the wrong endpoint.
+Before attempting to [match](#pattern-matching) the incoming request to the various APIs deployed on Tyk to determine which route should be taken, Tyk will first place all the APIs in order. The order is important because the routing logic will compare the incoming request against each in turn until it finds a match (or returns `HTTP 404` if no match is found).
 
-Tyk's ordering algorithm takes into account:
-1. full path (including the host and any custom domain)
-2. alphanumeric order
-    - e.g. `/users/abc` before `/users/def`
-3. decreasing count of path fragments in the pattern (most to fewest)
-    - e.g. `/users/password/check` then `/users/password` then `/users`
-4. longest to shortest pattern (including host+listenPath+endpoint)
-    - to avoid matching a request to `/users/password-reset` to `/users/password`
-5. static patterns before dynamic
-    - e.g. `/users/admin/update` before `/users/{userId}/update`
+On receipt of an API request Tyk firstly creates a list of all APIs and then iterates through the list for each of the following steps:
+1. APIs that don't have a custom domain defined are moved to the end of the list
+2. Then among each section (custom domain/no custom domain) it will sort by listen path length (longer paths first)
+- note that (dynamic) path parameters are not resolved at this stage so `/api/{category}/user` will rank higher than `/api/123/user`
+3. Then, for each listen path it will sort the endpoints using these rules:
+- remove path parameters (dynamic segments) in the listen path - for example `/{id}` will be replaced with `/`
+- order by the number of segments (count of `/`) from most to least - e.g. `/api/user/profile` before `/api/user`
+- if two endpoints differ only by parameters, the non-parameterized goes first - e.g. `/api/user` before `/api/{userId}`
+- if two endpoints have the same number of segments, the longer path goes first - e.g. `/api/user-access` before `/api/user`
+- for equal length paths, lexicographical order is applied - e.g. `/api/aba` before `/api/abc`
 
-For example, if Tyk hosted APIs containing the following endpoints they would be ordered as shown, with requests matched against each in turn, starting from the top of the list, until a match was found. If no match is found, Tyk will return `HTTP 404 Not found`.
+Having created the ordered list, Tyk will attempt to match the request against the paths (patterns) in the list, starting from the top and moving down the list.
+If a match is found, no further checks will be perfomed, so it is important to understand how Tyk orders the patterns to ensure there is no accidental routing to the wrong endpoint.
 
-| Pattern         | Description                          |
-|-----------------|--------------------------------------|
-| `https://tyk.my-host.com/test/abc/def` | Three path fragments, static pattern |
-| `https://tyk.my-host.com/status/{operationId}/active` | Three path fragments, dynamic pattern, 28 characters |
-| `https://tyk.my-host.com/status/{userId}/active` | Three path fragments, dynamic pattern, 23 characters |
-| `https://tyk.my-host.com/anything/access` | Two path fragments, static pattern |
-| `https://tyk.my-host.com/anything/{operationId}` | Two path fragments, dynamic pattern |
-| `https://tyk.my-host.com/test/abc` | Two path fragments, static pattern |
-| `https://tyk.my-host.com/test/{id}` | Two path fragments, dynamic pattern |
-| `https://tyk.my-host.com/anything` | One path fragment, static pattern, 9 characters |
-| `https://tyk.my-host.com/test` | One path fragment, static pattern, 5 characters |
-| `https://{customDomain}/test` | One path fragment, dynamic pattern, 5 characters |
 
 ## Pattern matching 
 
