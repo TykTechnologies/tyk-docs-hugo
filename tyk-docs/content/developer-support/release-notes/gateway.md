@@ -150,6 +150,13 @@ Resolved an issue where API access keys remained valid even if all associated po
 </li>
 <li>
 <details>
+<summary>Fixed Payload Issue with Transfer-Encoding: chunked Header</summary>
+
+Resolved an issue where APIs using the Transfer-Encoding: chunked header alongside URL Rewrite or Validate Request middleware would lose the response payload body. The payload now processes correctly, ensuring seamless functionality regardless of header configuration.
+</details>
+</li>
+<li>
+<details>
 <summary>Fixed an issue where OAuth 2.0 access tokens would not be issued if the data plane was disconnected from the control plane</summary>
 
 OAuth 2.0 access tokens can now be issued even when data plane gateways are disconnected from the control plane. This is achieved by saving OAuth clients locally within the data plane when they are pulled from RPC.
