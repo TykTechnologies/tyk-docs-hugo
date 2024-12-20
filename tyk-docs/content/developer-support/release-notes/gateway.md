@@ -1417,6 +1417,13 @@ Addressed an issue where shared loggers caused debug logs to misidentify the mid
 </li>
 <li>
 <details>
+<summary>Fixed Payload Issue with Transfer-Encoding: chunked Header</summary>
+
+Resolved an issue where APIs using the Transfer-Encoding: chunked header alongside URL Rewrite or Validate Request middleware would lose the response payload body. The payload now processes correctly, ensuring seamless functionality regardless of header configuration.
+</details>
+</li>
+<li>
+<details>
 <summary>API Keys remain active after all linked partitioned policies are deleted</summary>
 
 Resolved an issue where API access keys remained valid even if all associated policies were deleted. The Gateway now attempts to apply all linked policies to the key when it is presented with a request. Warning logs are generated if any policies cannot be applied (for example, if they are missing). If no linked policy can be applied, the Gateway will reject the key to ensure no unauthorized access.
