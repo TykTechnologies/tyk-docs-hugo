@@ -2624,6 +2624,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Overview"
+            path: /tyk-multi-data-centre
+            category: Page
+            show: True
           - title: "Getting started"
             category: Directory
             show: True
@@ -2634,6 +2638,14 @@ menu:
                 show: True
               - title: "Minimising latency with MDCB"
                 path: /tyk-multi-data-centre/mdcb-example-minimising-latency
+                category: Page
+                show: True
+              - title: "Setup MDCB Control Plane"
+                path: /tyk-multi-data-centre/setup-controller-data-centre
+                category: Page
+                show: True
+              - title: "Setup MDCB Data Plane"
+                path: /tyk-multi-data-centre/setup-worker-data-centres
                 category: Page
                 show: True
           - title: "Advanced configurations"
