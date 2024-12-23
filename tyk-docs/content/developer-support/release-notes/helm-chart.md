@@ -511,7 +511,7 @@ From this version of Tyk Charts we also set the following configuration option t
 **Action required:**
 
 - Familiarize yourself with URL matching in Tyk [here]({{<ref "getting-started/key-concepts/url-matching">}}).
-- For production setup guidance, see [this guide]({{<ref "planning-for-production#ensure-you-are-matching-only-the-url-paths-that-you-want-to-match">}}).
+- For production setup guidance, see [this guide]({{<ref "tyk-self-managed#ensure-you-are-matching-only-the-url-paths-that-you-want-to-match">}}).
 - Configure the new options via the Helm chart, and test the changes in a non-production environment before upgrading.
 
 ##### 2. Default Tyk Component Versions
@@ -1819,7 +1819,7 @@ To enable it, set `gateway.pdb.enabled` to `true` and configure `gateway.pdb.min
 <details>
 <summary>Gateway: Added Ingress template for gateway control service</summary>
 
-When enabled at `gateway.control.ingress.enabled`, an Ingress resource will be created to allow external access to gateway's [control service]({{<ref "/planning-for-production#change-your-control-port">}}).
+When enabled at `gateway.control.ingress.enabled`, an Ingress resource will be created to allow external access to gateway's [control service]({{<ref "tyk-self-managed#change-your-control-port">}}).
 </details>
 </li>
 

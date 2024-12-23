@@ -247,7 +247,7 @@ There is a [new section]({{< ref "product-stack/tyk-dashboard/advanced-configura
 
 
 > **TLDR**
-> To get benefit or performance improvements ensure that you have `close_connections` set to `false` and set `max_idle_connections_per_host` according to our [production perfomance guide]({{< ref "planning-for-production" >}})
+> To get benefit or performance improvements ensure that you have `close_connections` set to `false` and set `max_idle_connections_per_host` according to our [production perfomance guide]({{< ref "tyk-self-managed#planning-for-production" >}})
 
 We have thoroughly analyzed every part of our Gateway, and the results are astounding, up to 160% improvement, compared to our 2.6 release.
 

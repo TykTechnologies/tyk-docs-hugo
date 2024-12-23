@@ -3005,7 +3005,7 @@ Fixed an issue in the *API Activity* dashboard where users were unable to view r
 <details>
 <summary>Enforced timeout configuration parameter for an API endpoint was not validated</summary>
 
-Fixed an issue where the [Enforced Timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
+Fixed an issue where the [Enforced Timeout]({{< ref "tyk-self-managed#enforced-timeouts" >}}) configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
 </details>
 </li>
 <li>
@@ -3694,7 +3694,7 @@ Until now, Tyk Dashboard has used MongoDB for storing everything from data such 
 
 From version 4.0, Tyk Dashboard and Tyk Pump will support four data storage layers, which can be configured separately, each with a different officially supported database solution (if needed). All data stored in SQL databases will provide the same information in the Dashboard that MongoDB did.
 
-While SQL support for Tyk products does not depend on specific database features, with this release, we will provide official support for [PostgreSQL DB for production purposes]({{< ref "/content/planning-for-production/database-settings.md" >}}), and SQLite for development and PoC environments. Note that SQL support is available for self-managed setups only.
+While SQL support for Tyk products does not depend on specific database features, with this release, we will provide official support for [PostgreSQL DB for production purposes]({{< ref "" >}}), and SQLite for development and PoC environments. Note that SQL support is available for self-managed setups only.
 
 As part of SQL support we are also providing tooling to perform seamless migration of your Dashboard data from Mongo to SQL. However, at the moment migration of analytics data is not supported.
 [MongoDB to SQL migration docs]({{< ref "tyk-self-managed#migrating-from-an-existing-mongodb-instance" >}})
@@ -3881,7 +3881,7 @@ See [updated flow details]({{< ref "tyk-identity-broker" >}})
 
 Want to reference secrets from a KV store in your API definitions? We now have native Vault & Consul integration. You can even pull from a tyk.conf dictionary or environment variable file.
 
-[Read more]({{< ref "tyk-configuration-reference/kv-store" >}})
+[Read more]({{< ref "tyk-self-managed#manage-multi-environment-and-distributed-setups" >}})
 
 
 ##### Co-Process Response Plugins
@@ -3896,7 +3896,7 @@ At the moment the Response hook is supported for [Python and gRPC plugins]({{< r
 Now the standard Health Check API response include information about health of the dashboard, redis and mdcb connections.
 You can configure notifications or load balancer rules, based on new data. For example, you can be notified if your Tyk Gateway can’t connect to the Dashboard (or even if it was working correctly with the last known configuration).
 
-[Read More]({{< ref "planning-for-production/ensure-high-availability/health-check" >}})
+[Read More]({{< ref "tyk-self-managed#set-up-liveness-health-checks" >}})
 
 ##### Enhanced Detailed logging
 Detailed logging is used in a lot of the cases for debugging issues. Now as well as enabling detailed logging globally (which can cause a huge overhead with lots of traffic), you can enable it for a single key, or specific APIs. 
@@ -3915,7 +3915,7 @@ The Tyk Dashboard now allows you to control weighting of the upstreams, when usi
 
 This enables you to perform Canary or A/B tests of their APIs and services. Similarly, if caches require warming, then we can send a low % of traffic to these services, and when confident that they can handle the load, start incrementally sending a higher % of traffic to these services.
 
-[Read More]({{< ref "planning-for-production/ensure-high-availability/load-balancing#configure-load-balancing-and-weighting-via-the-dashboard" >}})
+[Read More]({{< ref "tyk-self-managed#configure-load-balancing-and-weighting-via-the-dashboard" >}})
 
 ##### Ability to shard analytics to different data-sinks
 

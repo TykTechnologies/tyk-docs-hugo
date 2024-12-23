@@ -96,7 +96,7 @@ The backbone of all our products is our open source Gateway. You can install our
 
 {{< grid >}}
 
-{{< badge read="10 mins" href="tyk-oss/ce-docker/" image="/img/docker.png" alt="Docker install">}}
+{{< badge read="10 mins" href="tyk-open-source#install-tyk-gateway-with-docker" image="/img/docker.png" alt="Docker install">}}
 Install with Docker. 
 {{< /badge >}}
 

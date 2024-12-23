@@ -26,7 +26,7 @@ Custom hostname for the Control API
 ENV: <b>TYK_GW_CONTROLAPIPORT</b><br />
 Type: `int`<br />
 
-Set to run your Gateway Control API on a separate port, and protect it behind a firewall if needed. Please make sure you follow this guide when setting the control port https://tyk.io/docs/planning-for-production/#change-your-control-port.
+Set to run your Gateway Control API on a separate port, and protect it behind a firewall if needed. Please make sure you follow this guide when setting the control port https://tyk.io/docs/tyk-self-managed/#change-your-control-port.
 
 ### secret
 ENV: <b>TYK_GW_SECRET</b><br />

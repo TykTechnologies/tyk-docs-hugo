@@ -300,7 +300,7 @@ To address this challenge, Tyk Operator allows you to directly reference certifi
 ### Install and Configure Tyk Operator
 
 We assume you have already installed Tyk. If you don’t have it, check out [Tyk
-Cloud]({{<ref "/deployment-and-operations/tyk-cloud-platform/quick-start">}}) or [Tyk Self
+Cloud]({{<ref "tyk-cloud#quick-start-tyk-cloud">}}) or [Tyk Self
 Managed]({{<ref "/getting-started/installation">}}) page. [Tyk Helm
 Chart]({{<ref "/product-stack/tyk-charts/overview">}}) is the preferred (and easiest) way to install Tyk on Kubernetes.
 

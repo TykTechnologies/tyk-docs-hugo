@@ -392,7 +392,7 @@ In Tyk Gateway release 5.3.0, Tyk OAS APIs gained feature maturity. Tyk Dashboar
 
 It is not possible to rollback to previous versions of Tyk components with Tyk OAS APIs created in 5.3.0.
 
-For further details, please refer to the [release notes]({{< ref "product-stack/tyk-gateway/release-notes/version-5.3.md" >}}) for Tyk Gateway v5.3.0.
+For further details, please refer to the [release notes]({{< ref "developer-support/release-notes/gateway#530-release-notes" >}}) for Tyk Gateway v5.3.0.
 {{< /warning >}}
 
 ##### Steps to add an API in Tyk Cloud
@@ -1233,7 +1233,7 @@ From there you have access to the full scope of Tyk API management functionality
 
 * [Adding APIs]({{< ref "getting-started/create-api" >}}) to Tyk, including REST and GraphQL APIs
 * Applying Quotas and Rate limits via [Security Policies]({{< ref "getting-started/create-security-policy" >}}) and [Keys]({{< ref "getting-started/create-api-key" >}})
-* [Securing]({{< ref "basic-config-and-security/security" >}}) your APIs
+* [Securing]({{< ref "api-management/security-best-practices#securing-apis-with-tyk" >}}) your APIs
 * Viewing granular [Analytics]({{< ref "tyk-dashboard-analytics" >}}) for your Tyk managed APIs
 * [Transform traffic]({{< ref "advanced-configuration/transform-traffic" >}}) with the Tyk API Designer
 * Add integration options such as [SSO]({{< ref "advanced-configuration/integrate/sso" >}}) and [3rd Party IdentityProviders]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers" >}})
@@ -1258,7 +1258,7 @@ Here are the most popular ways to secure your APIs.
 
 **2. Request Signing**
 
-Tyk can [sign the request with HMAC or RSA]({{< ref "product-stack/tyk-gateway/release-notes/archived-releases/version-2.9.md#hmac-request-signing" >}}), before sending it to the API target. This is an implementation of an [RFC Signing HTTP Messages(draft 10)](https://datatracker.ietf.org/doc/html/draft-cavage-http-signatures-10). This RFC was designed to provide authenticity of the digital signature of the client. In our flow, the Tyk Cloud Data Planes, as the client, using a certificate private key, will add a header signature to the request. The API, using a pre-agreed public key (based on a meaningful keyId identifier) will verify the authenticity of the request coming from your Tyk Cloud Data Plane.
+Tyk can [sign the request with HMAC or RSA]({{< ref "developer-support/release-notes/archived#hmac-request-signing#hmac-request-signing" >}}), before sending it to the API target. This is an implementation of an [RFC Signing HTTP Messages(draft 10)](https://datatracker.ietf.org/doc/html/draft-cavage-http-signatures-10). This RFC was designed to provide authenticity of the digital signature of the client. In our flow, the Tyk Cloud Data Planes, as the client, using a certificate private key, will add a header signature to the request. The API, using a pre-agreed public key (based on a meaningful keyId identifier) will verify the authenticity of the request coming from your Tyk Cloud Data Plane.
  A limitation is that the APIs or LB need to implement this signature verification and be able to update the certificates as mentioned in Mutual TLS or Client authorization (above).
 
 **3. IP Whitelisting**

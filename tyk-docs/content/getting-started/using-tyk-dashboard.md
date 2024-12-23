@@ -80,7 +80,7 @@ Otherwise, you can design an API from scratch or a template if you have configur
 * **Activity logs**: Here, you can view all the activity logs from your APIs, giving you details on user activity or error logs. 
 * **Activity by X**: There are several tabs that allow you to view your activity reports per API, Key, Endpoint, Graph, and Errors. We provide these tools for you so that you can quickly visit the analytics you're interested in and gain insights on your APIs. 
 * **Service Uptime**: Here, you can view the service uptime statistics, getting a detailed view of your uptime per version of your API. You can also view the errors associated with your API and if you are hitting your uptime targets.
-* **Uptime Targets**: You can view uptime by target endpoint here, this is particularly useful if you have configured [uptime tests](/planning-for-production/ensure-high-availability/uptime-tests/) to gain visibility into the uptime of your underlying services.
+* **Uptime Targets**: You can view uptime by target endpoint here, this is particularly useful if you have configured [uptime tests](/tyk-self-managed#conduct-uptime-tests) to gain visibility into the uptime of your underlying services.
 
 
 

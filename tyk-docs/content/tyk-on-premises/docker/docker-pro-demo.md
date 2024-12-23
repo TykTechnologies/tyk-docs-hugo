@@ -24,7 +24,7 @@ The *Tyk Pro Docker Demo* is our [Self-Managed]({{< ref "#configure-tyk-self-man
 {{< warning success >}}
 **Warning**
 
-This demo is NOT intended for production use or performance testing, since it uses docker compose and the configuration files are not specifically tuned for performance testing or high loads. Please visit the [Planning for Production]({{<ref "#planning-for-production">}}) page to learn how to configure settings for optimal performance.
+This demo is NOT intended for production use or performance testing, since it uses docker compose and the configuration files are not specifically tuned for performance testing or high loads. Please visit the [Planning for Production]({{<ref "tyk-self-managed#planning-for-production">}}) page to learn how to configure settings for optimal performance.
 
 {{< /warning >}}
 {{< note success >}}

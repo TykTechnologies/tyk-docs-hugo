@@ -253,7 +253,7 @@ Head over to our **Tyk Demo** guides in [Kubernetes]({{<ref "getting-started/qui
 
 {{< grid >}}
 
-{{< badge read="10 mins" href="tyk-oss/ce-docker/" image="/img/docker.png" alt="Docker install">}}
+{{< badge read="10 mins" href="tyk-open-source#install-tyk-gateway-with-docker" image="/img/docker.png" alt="Docker install">}}
 Install with Docker. 
 {{< /badge >}}
 
@@ -858,7 +858,7 @@ to set the name of this **ConfigMap** (`tyk-tib-profiles-conf` by default).
 
 **Tyk Operator and Ingress **
 For a GitOps workflow used with a **Tyk Self-Managed** installation or setting the Tyk Gateway as a Kubernetes ingress controller, Tyk Operator enables you to manage API definitions, security policies and other Tyk features using Kubernetes manifest files.
-To get started go to [Tyk Operator]({{< ref "/tyk-operator#what-is-tyk-operator" >}}).
+To get started go to [Tyk Operator]({{< ref "" >}}).
 
 ### Install on AWS Marketplace
 
@@ -2510,7 +2510,7 @@ You should follow the [online tutorial for installing PostgreSQL](https://www.po
 5. Start PostgreSQL
 6. Check the `postgresql` service is running
 
-See [SQL configuration]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}}) for details on installing SQL in a production environment.
+See [SQL configuration]({{< ref "tyk-self-managed#postgresql" >}}) for details on installing SQL in a production environment.
 {{< tab_end >}}
 {{< tabs_end >}}
 
@@ -2526,14 +2526,14 @@ Installing Tyk on Ubuntu is very straightforward using our APT repositories, fol
 
 The suggested order would be to install Tyk Dashboard, then Tyk Pump and then Tyk Gateway for a full stack.
 
-- [Dashboard]({{< ref "tyk-on-premises/debian-ubuntu/dashboard" >}})
-- [Pump]({{< ref "tyk-on-premises/debian-ubuntu/analytics-pump" >}})
-- [Gateway]({{< ref "tyk-on-premises/debian-ubuntu/gateway" >}})
+- [Dashboard]({{< ref "tyk-self-managed#install-dashboard-1" >}})
+- [Pump]({{< ref "tyk-self-managed#install-pump-1" >}})
+- [Gateway]({{< ref "tyk-self-managed#install-gateway-1" >}})
 
 {{< note success >}}
 **Note**  
 
-For a production environment, we recommend that the Gateway, Dashboard and Pump are installed on separate machines. If installing multiple Gateways, you should install each on a separate machine. See [Planning for Production]({{< ref "planning-for-production" >}}) For more details.
+For a production environment, we recommend that the Gateway, Dashboard and Pump are installed on separate machines. If installing multiple Gateways, you should install each on a separate machine. See [Planning for Production]({{< ref "tyk-self-managed#planning-for-production" >}}) For more details.
 {{< /note >}}
 
 
@@ -3630,7 +3630,7 @@ To complete the instruction above we have a tutorial video of tyk demo that cove
 #### Who is this page for?
 This is the guide we recommend for a easy quick start. The instructions are the ones shared with you when you register to a [free trial]({{< ref "getting-started/quick-start" >}}).
 
-You can also use this guide for your PoC since it spins up a full Tyk Self Managed stack for you using our project *Docker Pro Demo*, however, if you are interested in learning Tyk, there's an option for [Tyk Demo]({{< ref "deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview" >}}) which is a project that spins up full Tyk stack that includes a prepopulate API definitions of all kinds, with various middleware options and can also spin up supporting tools such as Prometheus, Keycloak (IDP) etc.
+You can also use this guide for your PoC since it spins up a full Tyk Self Managed stack for you using our project *Docker Pro Demo*, however, if you are interested in learning Tyk, there's an option for [Tyk Demo]({{< ref "tyk-self-managed#explore-demos-and-proof-of-concepts" >}}) which is a project that spins up full Tyk stack that includes a prepopulate API definitions of all kinds, with various middleware options and can also spin up supporting tools such as Prometheus, Keycloak (IDP) etc.
 
 #### What's included?
 The *Tyk Pro Docker Demo* is our [Self-Managed]({{< ref "tyk-on-premises" >}}) solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and MongoDB. This demo is great for proof of concept and demo purposes, but if you want to test performance, you will need to move each component to a separate machine.
@@ -3638,7 +3638,7 @@ The *Tyk Pro Docker Demo* is our [Self-Managed]({{< ref "tyk-on-premises" >}}) s
 {{< warning success >}}
 **Warning**
 
-This demo is NOT intended for production use or performance testing, since it uses docker compose and the configuration files are not specifically tuned for performance testing or high loads. Please visit the [Planning for Production]({{<ref "planning-for-production" >}}) page to learn how to configure settings for optimal performance.
+This demo is NOT intended for production use or performance testing, since it uses docker compose and the configuration files are not specifically tuned for performance testing or high loads. Please visit the [Planning for Production]({{<ref "tyk-self-managed#planning-for-production" >}}) page to learn how to configure settings for optimal performance.
 
 {{< /warning >}}
 {{< note success >}}
@@ -4181,7 +4181,7 @@ If the latency between Tyk and your Upstream is around 50ms, then a single conne
 
 #### Protect Redis from overgrowing
 
-Please read carefully through this [doc]({{< ref "basic-config-and-security/security/authentication-authorization/physical-key-expiry" >}}) to make an *aware decision* about the expiration of your keys in Redis, after which they will be removed from Redis. If you don't set the lifetime, a zero default means that keys will stay in Redis until you manually delete them, which is no issue if you have a process outside Tyk Gateway to handle it. If you don't - and especially in scenarios that your flow creates many keys or access tokens for every user or even per call - your Redis can quickly get cluttered with obsolete tokens and eventually affect the performance of the Tyk Gateway.
+Please read carefully through this [doc]({{< ref "api-management/client-authentication#set-physical-key-expiry-and-deletion" >}}) to make an *aware decision* about the expiration of your keys in Redis, after which they will be removed from Redis. If you don't set the lifetime, a zero default means that keys will stay in Redis until you manually delete them, which is no issue if you have a process outside Tyk Gateway to handle it. If you don't - and especially in scenarios that your flow creates many keys or access tokens for every user or even per call - your Redis can quickly get cluttered with obsolete tokens and eventually affect the performance of the Tyk Gateway.
 
 #### Analytics Optimizations
 
