@@ -55,7 +55,7 @@ aliases:
     - debugging-series
     - troubleshooting/tyk-cloud
     - troubleshooting/tyk-dashboard
-    - troubleshooting/tyk-dashboard/fatal-dashboard-port...
+    - /troubleshooting/tyk-dashboard/fatal-dashboard-port...
     - troubleshooting/tyk-gateway
     - troubleshooting/tyk-installation
     - troubleshooting/tyk-multi-cloud
