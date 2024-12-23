@@ -25,5 +25,5 @@ uptime_tests: {
 ```
         
     
-See [Uptime Tests]({{< ref "migration-to-tyk#conduct-uptime-tests" >}}) for details on how uptime tests work and how to configure them.
+See [Uptime Tests]({{< ref "#conduct-uptime-tests" >}}) for details on how uptime tests work and how to configure them.
 

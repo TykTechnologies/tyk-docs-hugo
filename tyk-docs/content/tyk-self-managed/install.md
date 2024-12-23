@@ -61,4 +61,4 @@ Install on Microsoft Azure
 
 ### Licensing
 
-Read more about licensing [here]({{< ref "migration-to-tyk#understand-licensing-and-deployment-models" >}}).
+Read more about licensing [here]({{< ref "#understand-licensing-and-deployment-models" >}}).

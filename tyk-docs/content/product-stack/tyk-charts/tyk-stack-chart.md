@@ -31,7 +31,7 @@ To enable or disable each component, change the corresponding enabled flag.
 
 Also, you can set the version of each component through `image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/u/tykio).
 
-For quick start guide, please see [Quick Start with Helm Chart and PostgreSQL]({{<ref "/migration-to-tyk#install-tyk-stack-with-helm-chart-postgresql">}}) or [Quick Start with Helm Chart and MongoDB]({{<ref "/migration-to-tyk#install-tyk-stack-with-helm-chart-mongodb">}}).
+For quick start guide, please see [Quick Start with Helm Chart and PostgreSQL]({{<ref "#install-tyk-stack-with-helm-chart-postgresql">}}) or [Quick Start with Helm Chart and MongoDB]({{<ref "#install-tyk-stack-with-helm-chart-mongodb">}}).
 
 ## Prerequisites
 
@@ -157,7 +157,7 @@ tyk-gateway:
           key: backend-username
 ```
 
-In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{<ref "migration-to-tyk#store-configuration-with-key-value-store">}}).
+In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{<ref "#store-configuration-with-key-value-store">}}).
 
 ### Set Redis Connection Details (Required)
 
@@ -184,7 +184,7 @@ helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n tyk --c
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "migration-to-tyk#redis" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "#redis" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password.

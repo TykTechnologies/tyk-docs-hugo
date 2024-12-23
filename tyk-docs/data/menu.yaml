@@ -2640,14 +2640,7 @@ menu:
                 path: /tyk-multi-data-centre/mdcb-example-minimising-latency
                 category: Page
                 show: True
-              - title: "Setup MDCB Control Plane"
-                path: /tyk-multi-data-centre/setup-controller-data-centre
-                category: Page
-                show: True
-              - title: "Setup MDCB Data Plane"
-                path: /tyk-multi-data-centre/setup-worker-data-centres
-                category: Page
-                show: True
+
           - title: "Advanced configurations"
             category: Directory
             show: True

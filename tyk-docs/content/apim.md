@@ -14,9 +14,9 @@ components.
 Choosing the right one for your organization depends on your specific requirements and preferences.
 </br>Don’t hesitate to contact us for assistance {{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
 
-|                                                                                                                                                                                                                                    | [Open Source]({{< ref "migration-to-tyk#tyk-open-source" >}})  |   [Self-Managed]({{< ref "migration-to-tyk#configure-tyk-self-managed" >}})      |  [Cloud](https://account.cloud-ara.tyk.io/signup)
+|                                                                                                                                                                                                                                    | [Open Source]({{< ref "#tyk-open-source" >}})  |   [Self-Managed]({{< ref "#configure-tyk-self-managed" >}})      |  [Cloud](https://account.cloud-ara.tyk.io/signup)
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|-------------------|---------
-| API Gateway Capabilities <br> <ul><li>Rate Limiting</li><li>Authentication</li> <li>API Versioning</li><li>Granular Access Control</li><li>GraphQL</li>  <li>and [much more]({{< ref "migration-to-tyk#tyk-open-source" >}})</li></ul> | ✅             |✅	              |✅
+| API Gateway Capabilities <br> <ul><li>Rate Limiting</li><li>Authentication</li> <li>API Versioning</li><li>Granular Access Control</li><li>GraphQL</li>  <li>and [much more]({{< ref "#tyk-open-source" >}})</li></ul> | ✅             |✅	              |✅
 | [Version Control]({{< ref "/api-management/automations#synchronize-tyk-environment-with-github-repository" >}}) Integration                                                                                                                                                      | -		      |✅	              |✅
 | [API Analytics Exporter]({{< ref "tyk-pump" >}})                                                                                                                                                                                   | ✅		      |✅	              |✅	 
 | [Tyk Dashboard]({{< ref "tyk-dashboard" >}})                                                                                                                                                                                       | -	          |✅	              |✅	 
@@ -24,7 +24,7 @@ Choosing the right one for your organization depends on your specific requiremen
 | [RBAC and API Teams]({{< ref "tyk-dashboard/rbac" >}})                                                                                                                                                                             | -	          |✅	              |✅	      
 | [Universal Data Graph]({{< ref "universal-data-graph" >}})                                                                                                                                                                         | -	          |✅	              |✅	      
 | [Multi-Tenant]({{< ref "basic-config-and-security/security/dashboard/organisations" >}})                                                                                                                                           | -	          |✅	              |✅	      
-| [Multi-Data Center]({{< ref "migration-to-tyk#setup-mdcb-control-plane" >}})                                                                                                                                                                           | -	          |✅	              |✅	      
+| [Multi-Data Center]({{< ref "#setup-mdcb-control-plane" >}})                                                                                                                                                                           | -	          |✅	              |✅	      
 | [Developer Portal]({{< ref "tyk-developer-portal" >}})                                                                                                                                                                             | -		      |✅	              |✅	 
 | [Developer API Analytics]({{< ref "tyk-dashboard-analytics" >}})                                                                                                                                                                   | -		      |✅	              |✅	   
 | Hybrid Deployments                                                                                                                                                                                                                 | -		      |-	              |✅
@@ -42,7 +42,7 @@ With Tyk Cloud, all of the above closed-source components are available. Get you
 
 ### Open Source (OSS)
 The Tyk Gateway is the backbone of all our solutions and can be deployed for free, forever.
-Visit the [OSS section]({{< ref "migration-to-tyk#tyk-open-source" >}}) for more information on it and other open source components.
+Visit the [OSS section]({{< ref "#tyk-open-source" >}}) for more information on it and other open source components.
 
 Explore the various open and closed source [Tyk components]({{< ref "tyk-stack" >}}) that are part of the Tyk platform
 solutions.

@@ -119,7 +119,7 @@ The full Tyk Self-Managed system consists of:
 
 Tyk Self-Managed is the easiest way to install Tyk Full Lifecycle API Management solution in your infrastructure. There is no calling home, and there are no usage limits. You have full control. 
 
-When selecting a Tyk Self-managed license [(see the pricing page to compare the licenses)](https://tyk.io/price-comparison), you can choose between three deployment models: [Launch]({{< ref "migration-to-tyk#understand-licensing-and-deployment-models" >}}), [Flex]({{< ref "migration-to-tyk#understand-licensing-and-deployment-models" >}}) and [Global Multi-team]({{< ref "migration-to-tyk#understand-licensing-and-deployment-models" >}}). Read below to learn which model fits best for your scenario. 
+When selecting a Tyk Self-managed license [(see the pricing page to compare the licenses)](https://tyk.io/price-comparison), you can choose between three deployment models: [Launch]({{< ref "#understand-licensing-and-deployment-models" >}}), [Flex]({{< ref "#understand-licensing-and-deployment-models" >}}) and [Global Multi-team]({{< ref "#understand-licensing-and-deployment-models" >}}). Read below to learn which model fits best for your scenario. 
 
 Are you still figuring out your requirements for your deployment around performance, resilience, availability, latency, or multi-region deployment? Look at our [API management architectural and deployment patterns 101](https://tyk.io/blog/res-api-management-architectural-and-deployment-patterns-101/) post to learn more. 
 
@@ -231,7 +231,7 @@ Please consult with respective init system documentation for more details on how
 
 #### Licensing
 
-Read more about licensing [here]({{< ref "migration-to-tyk#understand-licensing-and-deployment-models" >}}).
+Read more about licensing [here]({{< ref "#understand-licensing-and-deployment-models" >}}).
 
 
 
@@ -585,7 +585,7 @@ This demo installation was tested with the following tools/versions:
 
 **Installation**
 
-Now you have your prerequisites, follow the instructions from our [Tyk Helm Chart]({{< ref "migration-to-tyk#quick-start-with-helm-chart" >}}) page.
+Now you have your prerequisites, follow the instructions from our [Tyk Helm Chart]({{< ref "#quick-start-with-helm-chart" >}}) page.
 
 #### Use Legacy Helm Chart
 
@@ -613,7 +613,7 @@ The following are required for a Tyk Self-Managed installation:
              You can find instructions for a simple Redis installation bellow.
  - MongoDB or SQL - Should be installed in the cluster or be reachable by the **Tyk Manager** (for SaaS option).
 
-You can find supported MongoDB and SQL versions [here]({{< ref "migration-to-tyk#database-management" >}}).
+You can find supported MongoDB and SQL versions [here]({{< ref "#database-management" >}}).
 
 Installation instructions for Redis and MongoDB/SQL are detailed below.
 
@@ -865,7 +865,7 @@ To get started go to [Tyk Operator]({{< ref "/tyk-operator#what-is-tyk-operator"
 
 Tyk offers a flexible and powerful API management solution through **Tyk Cloud** on the [AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-pboluroscnqro). Tyk Cloud is an end-to-end managed API platform where both the control plane and gateways are installed on AWS for a seamless, fully cloud-hosted experience.
 
-For those who need more deployment flexibility, Tyk Cloud also supports a [Hybrid Gateway]({{< ref "migration-to-tyk#deploy-hybrid-gateways" >}}) option. In this setup, the control plane remains hosted and managed by Tyk on AWS, while the gateways can be deployed on your preferred cloud provider or on-premises environment—allowing you to meet data locality and compliance needs without sacrificing control.
+For those who need more deployment flexibility, Tyk Cloud also supports a [Hybrid Gateway]({{< ref "#deploy-hybrid-gateways" >}}) option. In this setup, the control plane remains hosted and managed by Tyk on AWS, while the gateways can be deployed on your preferred cloud provider or on-premises environment—allowing you to meet data locality and compliance needs without sacrificing control.
 
 **Available AWS Deployment Regions**
 
@@ -1663,7 +1663,7 @@ Azure allows you to install Tyk in the following ways:
 
 **On-Premises**
 
-1. Via our [Ubuntu Setup]({{< ref "migration-to-tyk#install-tyk-gateway-on-ubuntu" >}}) on an installed Ubuntu Server on Azure.
+1. Via our [Ubuntu Setup]({{< ref "#install-tyk-gateway-on-ubuntu" >}}) on an installed Ubuntu Server on Azure.
 2. Via our [Docker Installation]({{< ref "#docker-compose-setup" >}}) using Azure's Docker support.
 
 See our video for installing Tyk on Ubuntu via Azure:
@@ -1685,7 +1685,7 @@ Google Cloud allows you to install Tyk in the following ways:
 
 **On-Premises**
 
-1. Via our [Ubuntu Setup]({{< ref "migration-to-tyk#install-tyk-gateway-on-ubuntu" >}}) on an installed Ubuntu Server within Google Cloud.
+1. Via our [Ubuntu Setup]({{< ref "#install-tyk-gateway-on-ubuntu" >}}) on an installed Ubuntu Server within Google Cloud.
 2. Via our [Docker Installation]({{< ref "#docker-compose-setup" >}}) using Google Cloud's Docker support.
 
 **Tyk Pump on GCP**
@@ -1724,12 +1724,12 @@ Tyk Gateway has a [dependency]({{< ref "#redis" >}}) on Redis. Follow the steps 
 
 **Storage Database**
 
-Tyk Dashboard has a dependency on a storage database that can be [PostgreSQL]({{< ref "/migration-to-tyk#configuring-postgresql" >}}) or [MongoDB]({{< ref "#mongodb-sizing" >}}).
+Tyk Dashboard has a dependency on a storage database that can be [PostgreSQL]({{< ref "/#configuring-postgresql" >}}) or [MongoDB]({{< ref "#mongodb-sizing" >}}).
   
 
 **Option 1: Install PostgreSQL**
 
-Check the PostgreSQL supported [versions]({{< ref "/migration-to-tyk#configuring-postgresql" >}}). Follow the steps provided by [PostgreSQL](https://www.postgresql.org/download/linux/redhat/) to install it.
+Check the PostgreSQL supported [versions]({{< ref "/#configuring-postgresql" >}}). Follow the steps provided by [PostgreSQL](https://www.postgresql.org/download/linux/redhat/) to install it.
 
 Configure PostgreSQL
 
@@ -1919,7 +1919,7 @@ This configuration should also work (with some tweaks) for CentOS.
 **Prerequisites**
 
 *   Ensure port `3000` is open: This is used by the Dashboard to provide the GUI and the Classic Developer Portal.
-*   Follow the steps provided in this link [Getting started on Red Hat (RHEL / CentOS)]({{< ref "migration-to-tyk#install-tyk-gateway-on-red-hat-rhel--centos" >}}) to install and configure Tyk dependencies.
+*   Follow the steps provided in this link [Getting started on Red Hat (RHEL / CentOS)]({{< ref "#install-tyk-gateway-on-red-hat-rhel--centos" >}}) to install and configure Tyk dependencies.
 
 **Step 1: Set up YUM Repositories**
 
@@ -3939,7 +3939,7 @@ This creates the developer portal URL. For the `Authorization` Header, the Value
 
 #### Tyk Pro on Windows using WSL
 
-The Tyk Pro Docker demo is our full [Self-Managed]({{< ref "migration-to-tyk#configure-tyk-self-managed" >}}) solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and MongoDB. This demo is great for proof of concept and demo purposes, but if you want to test performance, you will need to move each component to a separate machine.
+The Tyk Pro Docker demo is our full [Self-Managed]({{< ref "#configure-tyk-self-managed" >}}) solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and MongoDB. This demo is great for proof of concept and demo purposes, but if you want to test performance, you will need to move each component to a separate machine.
 
 {{< warning success >}}
 **Warning**  
@@ -5995,7 +5995,7 @@ There are two parts to external Key-Value storage - the KV store and the Tyk con
 
 Most Key-Value references are only retrieved when the configuration object (Gateway or API) is loaded, as explained above: changes to the externally stored value will not be detected until a subsequent gateway hot-reload.
 
-The exception to this is for specific [transformation middleware]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) where the value will be retrieved for each call to the API, during the processing of the API request or response.
+The exception to this is for specific [transformation middleware]({{< ref "#store-configuration-with-key-value-store" >}}) where the value will be retrieved for each call to the API, during the processing of the API request or response.
 
 {{< note success >}}
 **Note**  
@@ -6010,25 +6010,25 @@ Tyk Gateway supports the following locations for storage of key-value data, prov
 ##### Consul
 
 HashiCorp [Consul](https://www.consul.io) is a service networking solution that is used to connect and configure applications across dynamic, distributed infrastructure. Consul KV is a simple Key-Value store provided as a core feature of Consul that can be used to store and retrieve Tyk Gateway configuration across multiple data centers.
-- to retrieve the value assigned to a `KEY` in Consul you will use `consul://KEY` or `$secret_consul.KEY` notation depending on the [location]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) of the reference
+- to retrieve the value assigned to a `KEY` in Consul you will use `consul://KEY` or `$secret_consul.KEY` notation depending on the [location]({{< ref "#store-configuration-with-key-value-store" >}}) of the reference
 
 ##### Vault
 
 [Vault](https://vaultproject.io) from Hashicorp is a tool for securely accessing secrets. It provides a unified interface to any secret while providing tight access control and recording a detailed audit log. Tyk Gateway can use Vault to manage and retrieve sensitive secrets such as API keys and passwords.
-- to retrieve the value assigned to a `KEY` in Vault you will use `vault://KEY` or `$secret_vault.KEY` notation depending on the [location]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) of the reference
+- to retrieve the value assigned to a `KEY` in Vault you will use `vault://KEY` or `$secret_vault.KEY` notation depending on the [location]({{< ref "#store-configuration-with-key-value-store" >}}) of the reference
 
 **Tyk Gateway config file**
 
 The `secrets` section in the [Tyk Gateway configuration file]({{< ref "tyk-oss-gateway/configuration#secrets" >}}) allows you to store settings that are specific to a single Tyk Gateway instance. This is useful for storing instance-specific configuration to be injected into API middleware or if you prefer using configuration files.
-- to retrieve the value assigned to a `KEY` in the `secrets` config you will use `secrets://KEY` or `$secret_conf.KEY` notation depending on the [location]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) of the reference
+- to retrieve the value assigned to a `KEY` in the `secrets` config you will use `secrets://KEY` or `$secret_conf.KEY` notation depending on the [location]({{< ref "#store-configuration-with-key-value-store" >}}) of the reference
 
 **Environment variables**
 
 Tyk Gateway can access data declared in environment variables. This is a simple and straightforward way to manage secrets, especially in containerised environments like Docker or Kubernetes.
-- if you want to set the local "secrets" section (equivalent to the `secrets` section in the [Gateway config file]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}})) using environment variables, you should use the following notation: `TYK_GW_SECRETS=key:value,key2:value2`
+- if you want to set the local "secrets" section (equivalent to the `secrets` section in the [Gateway config file]({{< ref "#store-configuration-with-key-value-store" >}})) using environment variables, you should use the following notation: `TYK_GW_SECRETS=key:value,key2:value2`
 - if you’re using a different key value secret store not explicitly supported by Tyk but can map it to `TYK_GW_SECRETS`
 then this will allow you to access those KV data
-- to retrieve the value assigned to an environment variable `VAR_NAME` you will use `env://VAR_NAME` or `$secret_env.VAR_NAME` notation depending on the [location]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) of the reference
+- to retrieve the value assigned to an environment variable `VAR_NAME` you will use `env://VAR_NAME` or `$secret_env.VAR_NAME` notation depending on the [location]({{< ref "#store-configuration-with-key-value-store" >}}) of the reference
 
 #### How to access the externally stored data
 
@@ -6071,7 +6071,7 @@ Note that all of these references are read (and replaced with the values read fr
 
 ##### From API Definitions
 
-From Tyk Gateway v5.3.0 onwards, you can store [any string field]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) from the API definition in any of the supported KV storage options; for earlier versions of Tyk Gateway only the [Target URL and Listen Path]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) fields and [certain transformation middleware]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) configurations were supported. 
+From Tyk Gateway v5.3.0 onwards, you can store [any string field]({{< ref "#store-configuration-with-key-value-store" >}}) from the API definition in any of the supported KV storage options; for earlier versions of Tyk Gateway only the [Target URL and Listen Path]({{< ref "#store-configuration-with-key-value-store" >}}) fields and [certain transformation middleware]({{< ref "#store-configuration-with-key-value-store" >}}) configurations were supported. 
 
 **Target URL and Listen Path**
 
@@ -6118,7 +6118,7 @@ To reference the *Value* assigned to a *Key* in one of the KV stores from these 
 - Consul: `$secret_consul.key`
 - Vault: `$secret_vault.key`
 - Tyk config secrets: `$secret_conf.key`
-- Environment variables: `$secret_env.key` or `env://key` (see [here]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}))
+- Environment variables: `$secret_env.key` or `env://key` (see [here]({{< ref "#store-configuration-with-key-value-store" >}}))
 
 This notation is used to avoid ambiguity in the middleware parsing (for example where a KV secret is used in a URL rewrite path).
 
@@ -6194,7 +6194,7 @@ These references are read (and replaced with the values read from the KV locatio
 {{< note success >}}
 **Notes**  
 
-When accessing KV references from the `/tyk-apis` directory on Consul or Vault, you should not provide the `path/to/` the key except for Target URL and Listen Path (as described [above]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}})).
+When accessing KV references from the `/tyk-apis` directory on Consul or Vault, you should not provide the `path/to/` the key except for Target URL and Listen Path (as described [above]({{< ref "#store-configuration-with-key-value-store" >}})).
 {{< /note >}}
 
 For example, if you create a Key-Value pair in the `secrets` section of the `tyk.conf` file with the *Key* `auth_header_name`:
@@ -6283,7 +6283,7 @@ The notation used to refer to a KV pair stored in Consul depends upon the locati
 
 **Tyk Gateway configuration file**
 
-As described [here]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}), from Tyk Gateway's configuration file (`tyk.conf`) you can retrieve values from Consul using the following notation:
+As described [here]({{< ref "#store-configuration-with-key-value-store" >}}), from Tyk Gateway's configuration file (`tyk.conf`) you can retrieve values from Consul using the following notation:
 - `consul://path/to/KEY`
 
 **API definition**
@@ -6291,7 +6291,7 @@ As described [here]({{< ref "migration-to-tyk#store-configuration-with-key-value
 The **Target URL** and **Listen Path** key-value pairs can be stored in any directory in the Consul KV store as they are accessed using a different mechanism than other fields in the API definition. If storing these in a sub-directory, you can retrieve the values from Consul by providing the directory path within Consul KV using the following notation:
 - `consul://path/to/KEY`
 
-For [certain transformation middleware]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) because the secret resolution happens during the request context, a different notation is used to retrieve values from Consul:
+For [certain transformation middleware]({{< ref "#store-configuration-with-key-value-store" >}}) because the secret resolution happens during the request context, a different notation is used to retrieve values from Consul:
 - `$secret_consul.KEY`
 
 From Tyk Gateway v5.3.0 onwards, you can store KV pairs to be used in **any `string` field** in the API definition in the Consul KV store. You can retrieve these values from Consul, noting that you do not provide the directory path (`/tyk-apis`) when accessing data for *these* fields, using the following notation:
@@ -6392,7 +6392,7 @@ The notation used to refer to a key-value pair stored in Vault depends upon the 
 
 **Tyk Gateway configuration file**
 
-As described [here]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}), from Tyk Gateway's configuration file (`tyk.conf`) you can retrieve values from Vault using the following notation:
+As described [here]({{< ref "#store-configuration-with-key-value-store" >}}), from Tyk Gateway's configuration file (`tyk.conf`) you can retrieve values from Vault using the following notation:
 - `vault://path/to/secret.KEY`
 
 **API definition**
@@ -6400,7 +6400,7 @@ As described [here]({{< ref "migration-to-tyk#store-configuration-with-key-value
 The **Target URL** and **Listen Path** key-value pairs can be stored in any directory in the Vault KV store as they are accessed using a different mechanism than other fields in the API definition. If storing these in a sub-directory, you can retrieve the values from Vault by providing the directory path within Consul KV using the following notation:
 - `vault://path/to/secret.KEY`
 
-For [certain transformation middleware]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}}) because the secret resolution happens during the request context, a different notation is used to retrieve values from Vault:
+For [certain transformation middleware]({{< ref "#store-configuration-with-key-value-store" >}}) because the secret resolution happens during the request context, a different notation is used to retrieve values from Vault:
 - `$secret_vault.KEY`
 
 From Tyk Gateway v5.3.0 onwards, you can store KV pairs to be used in **any `string` field** in the API definition in the Vault KV store. You can retrieve these values from Vault, noting that you do not provide the directory path (`/tyk-apis`) when accessing data for *these* fields, using the following notation:
