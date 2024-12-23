@@ -3903,7 +3903,7 @@ Detailed logging is used in a lot of the cases for debugging issues. Now as well
 
 New detailed logging changes are available only to our Self-Managed customers currently.
 
-[Read More]({{< ref "tyk-stack/tyk-pump/useful-debug-modes" >}})
+[Read More]({{< ref "api-management/troubleshooting-debugging#capturing-detailed-logs" >}})
 
 ##### Better Redis failover
 

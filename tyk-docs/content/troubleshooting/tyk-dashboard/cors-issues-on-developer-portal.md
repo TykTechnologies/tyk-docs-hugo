@@ -32,4 +32,4 @@ Make sure that your CORS in the `Advanced Options` of the API is enabled and the
 
  You can learn more about CORS on this pages:
  - [CORS in API Definition]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}})
- - [How to setup CORS]({{< ref "frequently-asked-questions/how-to-setup-cors" >}}) 
+ - [How to setup CORS]({{< ref "api-management/troubleshooting-debugging#how-to-setup-cors" >}}) 
