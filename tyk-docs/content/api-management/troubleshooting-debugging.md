@@ -250,7 +250,7 @@ aliases:
 
     **Profile Information**
 
-    You can provide various profile information for us in [pprof format](https://github.com/google/pprof/). See [Gateway Profiling]({{< ref "troubleshooting/tyk-gateway/profiling" >}}) for more details.
+    You can provide various profile information for us in [pprof format](https://github.com/google/pprof/). See [Gateway Profiling]({{< ref "#tyk-gateway-profiling" >}}) for more details.
 
 8. ##### API definition URL case sensitive
 
