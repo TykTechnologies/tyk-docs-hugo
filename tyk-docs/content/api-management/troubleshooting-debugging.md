@@ -1,6 +1,6 @@
 ---
 title: "Troubleshooting and Debugging"
-date: 2020-06-24
+date: 2024-12-21
 linkTitle: API Management
 tags: ["troubleshooting", "debugging", "Open Source", "Self-Managed", "Tyk Cloud", "API Gateway"]
 description: "Tyk troubleshooting and debugging gateway, streams, pump, dashboard"
