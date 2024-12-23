@@ -8,7 +8,7 @@ menu:
 weight: 2
 ---
 
-You can use the *MongoDB X509 Certificate* flow to authenticate the *Tyk Dashboard*, *Tyk Pump*, and *Tyk MDCB* with your *MongoDB* install.  This is slightly different from [AWS DocumentDB setup instructions]({{< ref "frequently-asked-questions/how-to-connect-to-documentdb" >}}).
+You can use the *MongoDB X509 Certificate* flow to authenticate the *Tyk Dashboard*, *Tyk Pump*, and *Tyk MDCB* with your *MongoDB* install.  This is slightly different from [AWS DocumentDB setup instructions]({{< ref "api-management/troubleshooting-debugging#how-to-connect-to-documentdb-with-x509-client-cert" >}}).
 
 ## Setting Up
 
