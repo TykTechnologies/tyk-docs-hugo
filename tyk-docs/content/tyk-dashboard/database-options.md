@@ -18,7 +18,7 @@ Tyk Dashboard requires a persistent datastore for its operations. By default Mon
 
 ### Configuring MongoDB
 
-Please check [here]({{< ref "#mongodb-sizing" >}}) for MongoDB driver and production configurations.
+Please check [here]({{< ref "tyk-self-managed#mongodb" >}}) for MongoDB driver and production configurations.
 
 ## PostgreSQL Supported Versions and Drop-in Replacement
 

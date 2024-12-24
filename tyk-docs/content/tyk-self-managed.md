@@ -858,14 +858,14 @@ to set the name of this **ConfigMap** (`tyk-tib-profiles-conf` by default).
 
 **Tyk Operator and Ingress **
 For a GitOps workflow used with a **Tyk Self-Managed** installation or setting the Tyk Gateway as a Kubernetes ingress controller, Tyk Operator enables you to manage API definitions, security policies and other Tyk features using Kubernetes manifest files.
-To get started go to [Tyk Operator]({{< ref "" >}}).
+To get started go to [Tyk Operator]({{< ref "api-management/automations#automate-api-management-in-kubernetes-environments" >}}).
 
 ### Install on AWS Marketplace
 
 
 Tyk offers a flexible and powerful API management solution through **Tyk Cloud** on the [AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-pboluroscnqro). Tyk Cloud is an end-to-end managed API platform where both the control plane and gateways are installed on AWS for a seamless, fully cloud-hosted experience.
 
-For those who need more deployment flexibility, Tyk Cloud also supports a [Hybrid Gateway]({{< ref "#deploy-hybrid-gateways" >}}) option. In this setup, the control plane remains hosted and managed by Tyk on AWS, while the gateways can be deployed on your preferred cloud provider or on-premises environment—allowing you to meet data locality and compliance needs without sacrificing control.
+For those who need more deployment flexibility, Tyk Cloud also supports a [Hybrid Gateway]({{< ref "tyk-cloud#deploy-hybrid-gateways" >}}) option. In this setup, the control plane remains hosted and managed by Tyk on AWS, while the gateways can be deployed on your preferred cloud provider or on-premises environment—allowing you to meet data locality and compliance needs without sacrificing control.
 
 **Available AWS Deployment Regions**
 
@@ -1663,7 +1663,7 @@ Azure allows you to install Tyk in the following ways:
 
 **On-Premises**
 
-1. Via our [Ubuntu Setup]({{< ref "#install-tyk-gateway-on-ubuntu" >}}) on an installed Ubuntu Server on Azure.
+1. Via our [Ubuntu Setup]({{< ref "tyk-self-managed#install-gateway-1" >}}) on an installed Ubuntu Server on Azure.
 2. Via our [Docker Installation]({{< ref "#docker-compose-setup" >}}) using Azure's Docker support.
 
 See our video for installing Tyk on Ubuntu via Azure:
@@ -1685,7 +1685,7 @@ Google Cloud allows you to install Tyk in the following ways:
 
 **On-Premises**
 
-1. Via our [Ubuntu Setup]({{< ref "#install-tyk-gateway-on-ubuntu" >}}) on an installed Ubuntu Server within Google Cloud.
+1. Via our [Ubuntu Setup]({{< ref "tyk-self-managed#install-gateway-1" >}}) on an installed Ubuntu Server within Google Cloud.
 2. Via our [Docker Installation]({{< ref "#docker-compose-setup" >}}) using Google Cloud's Docker support.
 
 **Tyk Pump on GCP**
@@ -1724,12 +1724,12 @@ Tyk Gateway has a [dependency]({{< ref "#redis" >}}) on Redis. Follow the steps 
 
 **Storage Database**
 
-Tyk Dashboard has a dependency on a storage database that can be [PostgreSQL]({{< ref "/#configuring-postgresql" >}}) or [MongoDB]({{< ref "#mongodb-sizing" >}}).
+Tyk Dashboard has a dependency on a storage database that can be [PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) or [MongoDB]({{< ref "tyk-self-managed#mongodb-sizing-guidelines" >}}).
   
 
 **Option 1: Install PostgreSQL**
 
-Check the PostgreSQL supported [versions]({{< ref "/#configuring-postgresql" >}}). Follow the steps provided by [PostgreSQL](https://www.postgresql.org/download/linux/redhat/) to install it.
+Check the PostgreSQL supported [versions]({{< ref "tyk-self-managed#postgresql" >}}). Follow the steps provided by [PostgreSQL](https://www.postgresql.org/download/linux/redhat/) to install it.
 
 Configure PostgreSQL
 
@@ -1762,7 +1762,7 @@ sudo -u tyk createdb tyk_analytics
 ```
 **Option 2: Install MongoDB**
 <br>
-Check the MongoDB supported [versions]({{< ref "#mongodb-sizing" >}}). Follow the steps provided by [MongoDB](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-red-hat/) to install it.
+Check the MongoDB supported [versions]({{< ref "tyk-self-managed#mongodb-sizing-guidelines" >}}). Follow the steps provided by [MongoDB](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-red-hat/) to install it.
 
 Optionally initialize the database and enable automatic start:
 ```console
@@ -1777,9 +1777,9 @@ You can install Tyk on RHEL or CentOS using our YUM repositories. Follow the gui
 
 The order is to install Tyk Dashboard, then Tyk Pump and then Tyk Gateway for a full stack.
 
-- [Dashboard]({{< ref "#install-dashboard-on-red-hat-rhel--centos" >}})
-- [Pump]({{< ref "#install-tyk-pump-on-red-hat-rhel--centos" >}})
-- [Gateway]({{< ref "#install-tyk-gateway-on-red-hat-rhel--centos-1" >}})
+- [Dashboard]({{< ref "#install-dashboard" >}})
+- [Pump]({{< ref "#install-pump" >}})
+- [Gateway]({{< ref "#install-gateway" >}})
 
 {{< note success >}}
 **Note**  
@@ -1919,7 +1919,7 @@ This configuration should also work (with some tweaks) for CentOS.
 **Prerequisites**
 
 *   Ensure port `3000` is open: This is used by the Dashboard to provide the GUI and the Classic Developer Portal.
-*   Follow the steps provided in this link [Getting started on Red Hat (RHEL / CentOS)]({{< ref "#install-tyk-gateway-on-red-hat-rhel--centos" >}}) to install and configure Tyk dependencies.
+*   Follow the steps provided in this link [Getting started on Red Hat (RHEL / CentOS)]({{< ref "#install-tyk-on-red-hat-rhel--centos" >}}) to install and configure Tyk dependencies.
 
 **Step 1: Set up YUM Repositories**
 
@@ -2848,7 +2848,7 @@ sudo systemctl enable tyk-dashboard
 
 **Step 3: Install your Tyk Gateway**
 
-Follow the [Gateway installation instructions]({{< ref "#gateway" >}}) to connect to your Dashboard instance before you continue on to step 4.
+Follow the [Gateway installation instructions]({{< ref "#using-shell-7" >}}) to connect to your Dashboard instance before you continue on to step 4.
 
 **Step 4: Bootstrap the Tyk Dashboard with an initial User and Organization**
 
@@ -3939,7 +3939,7 @@ This creates the developer portal URL. For the `Authorization` Header, the Value
 
 #### Tyk Pro on Windows using WSL
 
-The Tyk Pro Docker demo is our full [Self-Managed]({{< ref "#configure-tyk-self-managed" >}}) solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and MongoDB. This demo is great for proof of concept and demo purposes, but if you want to test performance, you will need to move each component to a separate machine.
+The Tyk Pro Docker demo is our full [Self-Managed]({{< ref "#docker-demo" >}}) solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and MongoDB. This demo is great for proof of concept and demo purposes, but if you want to test performance, you will need to move each component to a separate machine.
 
 {{< warning success >}}
 **Warning**  
@@ -4287,8 +4287,8 @@ An API Gateway serves as the single point of entry into your ecosystem, introduc
 
 Visit the following pages to see how to configure the Database for Production:
 * [Redis]({{< ref "#redis" >}})
-* [MongoDB]({{< ref "#mongodb-sizing" >}})
-* [PostgreSQL]({{< ref "#configuring-postgresql" >}})
+* [MongoDB]({{< ref "tyk-self-managed#mongodb-sizing-guidelines" >}})
+* [PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}})
 
 Please consult the [data storage configuration]({{< ref "product-stack/tyk-dashboard/advanced-configurations/data-storage-configuration" >}}) guide for further information relating to how to configure Tyk's data storage across different database engines.
 
@@ -4998,7 +4998,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 ##### Using the Enforced Timeout middleware with Tyk OAS APIs
 
 
-Tyk's [enforced timeout]({{< ref "#enforced-timeouts" >}}) middleware is configured at the endpoint level, where it sets a limit on the response time from the upstream service. If the upstream takes too long to respond to a request, Tyk will terminate the request and return `504 Gateway Timeout` to the client.
+Tyk's [enforced timeout]({{< ref "tyk-self-managed#circuit-breakers" >}}) middleware is configured at the endpoint level, where it sets a limit on the response time from the upstream service. If the upstream takes too long to respond to a request, Tyk will terminate the request and return `504 Gateway Timeout` to the client.
 
 When working with Tyk OAS APIs the enforced timeout is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
@@ -5105,7 +5105,7 @@ Select **SAVE API** to apply the changes to your API.
 ##### Using the Enforced Timeout middleware with Tyk Classic APIs
 
 
-Tyk's [enforced timeout]({{< ref "#enforced-timeouts" >}}) middleware is configured at the endpoint level, where it sets a limit on the response time from the upstream service. If the upstream takes too long to respond to a request, Tyk will terminate the request and return `504 Gateway Timeout` to the client.
+Tyk's [enforced timeout]({{< ref "tyk-self-managed#circuit-breakers" >}}) middleware is configured at the endpoint level, where it sets a limit on the response time from the upstream service. If the upstream takes too long to respond to a request, Tyk will terminate the request and return `504 Gateway Timeout` to the client.
 
 When working with Tyk Classic APIs the enforced timeout is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
@@ -6105,7 +6105,7 @@ From v5.3.0 onward, environment variables can have any `KEY_NAME`, and the full 
 
 {{< /note >}}
 
-**Transformation middleware**
+###### Transformation middleware
 
 Key-value references can be included in the following middleware, with the values retrieved dynamically when the middleware is called (during processing of an API request or response):
 - [request body transform]({{< ref "transform-traffic/request-body" >}})
@@ -6467,7 +6467,7 @@ These other Tyk components won’t see load proportional to your API requests.  
 
 The Tyk Dashboard liveness health check endpoint can be configured [here]({{< ref "tyk-dashboard/configuration#health_check_endpoint_name" >}}). 
 
-The Tyk MDCB liveness health check endpoint can be configured [here]({{< ref "#use-mdcb-for-health-checks" >}}). 
+The Tyk MDCB liveness health check endpoint can be configured [here]({{< ref "tyk-multi-data-centre/setup-controller-data-centre#health-check" >}}). 
 
 Currently, Tyk Dashboard and MDCB liveness endpoints only report whether the service is operational. It is important to note that the service may not yet be ready for use if it is unable to establish a connection with its dependent components (such as Redis and Datastore) or if they are offline.
 
@@ -6482,8 +6482,8 @@ Currently, the receipt of an HTTP 200 OK response merely indicates that the Pump
 Based on the Tyk recommended approach for setting up your databases, our team has built tools that will help engineers better understand and plan their infrastructure around their use case:
 
 * [Redis Sizing](#redis-sizing-guidelines)
-* [PostgreSQL Sizing](#configuring-postgresql)
-* [MongoDB Sizing](#mongodb-sizing)
+* [PostgreSQL Sizing](tyk-self-managed#postgresql)
+* [MongoDB Sizing](tyk-self-managed#mongodb-sizing-guidelines)
 
 
 #### Database Monitoring

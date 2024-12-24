@@ -110,7 +110,7 @@ The format for these advanced trigger context variables is: `$tyk_context.trigge
 
 #### Using data from KV storage in the rewrite path
 
-You can retrieve a value from KV storage by including a reference in the [appropriate notation]({{< ref "#from-api-definitions" >}}) for the KV location where the key-value pair is stored.
+You can retrieve a value from KV storage by including a reference in the [appropriate notation]({{< ref "tyk-self-managed#transformation-middleware" >}}) for the KV location where the key-value pair is stored.
 
 If you use a value retrieved from [Consul]({{< ref "#consul">}}) or [Vault]({{< ref "#vault">}}), this must be the <b>last</b> part in the `rewriteTo` URL.
 

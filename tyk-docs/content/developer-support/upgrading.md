@@ -185,7 +185,7 @@ specified order. Adhering to the provided sequence is crucial for a smooth and s
 
 **Step 1. Upgrade Control Plane**
 
-Follow our guide for [upgrading Cloud Control Planes]({{< ref "tyk-cloud#upgrade-control-planes#upgrade-control-planes" >}}).
+Follow our guide for [upgrading Cloud Control Planes]({{< ref "tyk-cloud#upgrade-control-planes" >}}).
 
 **Step 2. Upgrade Go Plugins**
 
@@ -215,7 +215,7 @@ Follow our guide for deploying your [Go plugins on Tyk Cloud]({{< ref "#go-plugi
 
 ###### Step 3. Upgrade Cloud Data Plane {#upgrading-cloud-data-planes}
 
-Follow our guide for [upgrading Cloud Data Planes]({{< ref "tyk-cloud#managing-cloud-data-plane#upgrade-cloud-data-planes" >}}).
+Follow our guide for [upgrading Cloud Data Planes]({{< ref "tyk-cloud#managing-cloud-data-plane" >}}).
 
 **Upgrade Guide Video**
 Please refer to our [upgrade guide video](https://tyk-1.wistia.com/medias/t0oamm63ae) below for visual guidance:
@@ -255,7 +255,7 @@ following order:
 
 **Step 1. Upgrade your control plane**
 
-See Tyk Guide for how to [upgrade Control Planes]({{< ref "tyk-cloud#upgrade-control-planes#upgrade-control-planes" >}})
+See Tyk Guide for how to [upgrade Control Planes]({{< ref "tyk-cloud#upgrade-control-planes" >}})
 
 **Step 2 Upgrade Go plugins**
 

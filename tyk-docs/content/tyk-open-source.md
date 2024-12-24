@@ -301,7 +301,7 @@ helm install tyk-redis bitnami/redis -n tyk --version 19.0.2
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "#redis" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password.
@@ -646,7 +646,7 @@ The Tyk Gateway can be installed following different installation methods includ
 Before you begin the installation process, make sure you have the following:
 
 *   Ensure port `8080` is open for Gateway traffic (the API traffic to be proxied).
-*   The Tyk Gateway has a [dependency](#redis) on Redis. Follow the steps provided by Red Hat to make the installation of Redis, conducting a [search](https://access.redhat.com/search/?q=redis) for the correct version and distribution.
+*   The Tyk Gateway has a [dependency](tyk-self-managed#redis-1) on Redis. Follow the steps provided by Red Hat to make the installation of Redis, conducting a [search](https://access.redhat.com/search/?q=redis) for the correct version and distribution.
 
 ##### Steps for Installation 
 1. **Create Tyk Gateway Repository Configuration**
