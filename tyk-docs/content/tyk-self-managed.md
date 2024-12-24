@@ -311,7 +311,7 @@ to our teams on support or the cummunity forum if you have questions, requests o
 Get started with one of our quick start guides:
 
 - [Quick Start with PostgreSQL]({{<ref "#install-tyk-stack-with-helm-chart-postgresql">}})
-- [Quick Start with MongoDB]({{<ref "#install-tyk-stack-with-helm-chart-mongodb">}})
+- [Quick Start with MongoDB]({{<ref "tyk-self-managed#install-tyk-stack-with-helm-chart-mongodb">}})
 
 Or go to [Tyk Stack helm chart]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}) for detailed installation instructions and configuration options.
 
@@ -490,7 +490,7 @@ The Bitnami chart also creates a secret `tyk-redis` which stores the connection 
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "#redis" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "#redis-1" >}}).
 {{< /note >}}
 
 **3. Install MongoDB (if you don't have a MongoDB instance)**
@@ -608,7 +608,7 @@ This demo installation was tested with the following tools/versions:
 
 **Installation**
 
-Now you have your prerequisites, follow the instructions from our [Tyk Helm Chart]({{< ref "#quick-start-with-helm-chart" >}}) page.
+Now you have your prerequisites, follow the instructions from our [Tyk Helm Chart]({{< ref "#use-legacy-helm-chart" >}}) page.
 
 #### Use Legacy Helm Chart
 
@@ -689,7 +689,7 @@ helm install tyk-redis bitnami/redis -n tyk --version 19.0.2
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "#redis" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "#redis-1" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password.
@@ -1743,11 +1743,11 @@ There are 4 components which needs to be installed. Each can be installed via sh
 
 **Redis**
 
-Tyk Gateway has a [dependency]({{< ref "#redis" >}}) on Redis. Follow the steps provided by Red Hat to make the installation of Redis, conducting a [search](https://access.redhat.com/search/?q=redis) for the correct version and distribution.
+Tyk Gateway has a [dependency]({{< ref "#redis-1" >}}) on Redis. Follow the steps provided by Red Hat to make the installation of Redis, conducting a [search](https://access.redhat.com/search/?q=redis) for the correct version and distribution.
 
 **Storage Database**
 
-Tyk Dashboard has a dependency on a storage database that can be [PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) or [MongoDB]({{< ref "tyk-self-managed#mongodb-sizing-guidelines" >}}).
+Tyk Dashboard has a dependency on a storage database that can be [PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) or [MongoDB]({{< ref "#mongodb-sizing-guidelines" >}}).
   
 
 **Option 1: Install PostgreSQL**
@@ -1785,7 +1785,7 @@ sudo -u tyk createdb tyk_analytics
 ```
 **Option 2: Install MongoDB**
 <br>
-Check the MongoDB supported [versions]({{< ref "tyk-self-managed#mongodb-sizing-guidelines" >}}). Follow the steps provided by [MongoDB](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-red-hat/) to install it.
+Check the MongoDB supported [versions]({{< ref "#mongodb-sizing-guidelines" >}}). Follow the steps provided by [MongoDB](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-red-hat/) to install it.
 
 Optionally initialize the database and enable automatic start:
 ```console
@@ -4309,8 +4309,8 @@ An API Gateway serves as the single point of entry into your ecosystem, introduc
 ### Database Management
 
 Visit the following pages to see how to configure the Database for Production:
-* [Redis]({{< ref "#redis" >}})
-* [MongoDB]({{< ref "tyk-self-managed#mongodb-sizing-guidelines" >}})
+* [Redis]({{< ref "#redis-1" >}})
+* [MongoDB]({{< ref "#mongodb-sizing-guidelines" >}})
 * [PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}})
 
 Please consult the [data storage configuration]({{< ref "product-stack/tyk-dashboard/advanced-configurations/data-storage-configuration" >}}) guide for further information relating to how to configure Tyk's data storage across different database engines.

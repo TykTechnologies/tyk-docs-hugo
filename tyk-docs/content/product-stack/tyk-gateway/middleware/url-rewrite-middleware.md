@@ -119,4 +119,4 @@ For example, say you have a key named `userName` with value `jo` in my Consul KV
 - if, however, you configure my `rewriteTo` as `/my-api/users/$secret_consul.userName/contract` this will not redirect to `my-api/jo/contract` but instead the KV lookup will fail, as Tyk will check for a key named `userName/contract` in Consul (returning null), so the URL rewrite middleware will redirect to `/my-api/users`
 
 
-This limitation does not apply to KV accessed from the other [supported KV stores]({{< ref "#store-configuration-with-key-value-store" >}}) (environment variable or Gateway `secrets`).
+This limitation does not apply to KV accessed from the other [supported KV stores]({{< ref "tyk-self-managed#store-configuration-with-key-value-store" >}}) (environment variable or Gateway `secrets`).

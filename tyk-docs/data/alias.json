@@ -112,10 +112,9 @@
     "tyk-oss/ce-helm-chart": "#configure-legacy-tyk-headless-helm-chart",
     "tyk-oss/ce-kubernetes": "#install-tyk-gateway-with-kubernetes",
     "tyk-oss/ce-redhat-rhel-centos": "#install-tyk-gateway-on-red-hat-rhel-centos",
-    "tyk-self-managed/tyk-helm-chart": "#quick-start-with-helm-chart",
+    "tyk-self-managed/tyk-helm-chart": "#use-legacy-helm-chart",
     "tyk-stack/tyk-gateway/configuration/redis-cluster": "#configure-redis-cluster",
     "tyk-stack/tyk-gateway/configuration/redis-sentinel": "#configure-redis-sentinel",
-
     "tyk-on-premises/docker/docker-pro-demo": "#docker-compose-setup",
     "debugging-series/debugging-series": "#debugging-series",
     "debugging-series/mongodb-debugging": "#mongodb",

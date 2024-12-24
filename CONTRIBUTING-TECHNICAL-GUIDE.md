@@ -125,7 +125,7 @@ As an added value, you can specify the file path relative to the "content" folde
 Example:
 
 ```
-[Link title]({{< ref "#tyk-open-source" >}})
+[Link title]({{< ref "tyk-open-source" >}})
 ```
 
 ### Images

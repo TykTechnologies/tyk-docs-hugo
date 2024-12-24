@@ -1285,8 +1285,8 @@ No matter which option or combination of options you choose, it is best to keep 
 
 This section covers the following:
 
-- [Managing Teams]({{< ref "#organise-teams" >}})
-- [Managing Users]({{< ref "#add-and-manage-users" >}})
+- [Managing Teams]({{< ref "#managing-teams" >}})
+- [Managing Users]({{< ref "#managing-teams-and-users" >}})
 - Available Tyk Cloud [User Roles]({{< ref "#user-roles-in-tyk-cloud" >}})
 - [Tyk Cloud Single Sign-On (SSO)]({{< ref "#configure-single-sign-on-sso" >}})
 
@@ -1327,7 +1327,7 @@ You need to be a [Organization Admin]({{< ref "#assign-user-roles" >}}) to delet
 3. Click **Delete Team**.
 4. You'll be asked to confirm the deletion. Click **Delete Team** from the dialog box to confirm, or click **Cancel**.
 
-You can now invite users to your new team. See [Managing Users]({{< ref "#add-and-manage-users" >}}) for more details.
+You can now invite users to your new team. See [Managing Users]({{< ref "#managing-teams-and-users" >}}) for more details.
 
 
 #### Managing Users
@@ -2163,7 +2163,7 @@ We are going to configure an Tyk Cloud Control Plane to use a custom authenticat
 
 Here are the requirements:
 
-1. Firstly you will need a local Tyk Gateway installation that allows you to create your Python plugin bundle. We recommend [installing our Self-Managed version on Ubuntu Bionic 18.04]({{< ref "#install-tyk-gateway-on-ubuntu" >}}).
+1. Firstly you will need a local Tyk Gateway installation that allows you to create your Python plugin bundle. We recommend [installing our Self-Managed version on Ubuntu Bionic 18.04]({{< ref "tyk-self-managed#install-tyk-on-debian-or-ubuntu" >}}).
 2. Ensure you have a currently stable [Python 3.x version](https://www.python.org/downloads/) installed 
 3. You need install the build tools `apt-get install -y build-essential`
 4. Install our required modules:
