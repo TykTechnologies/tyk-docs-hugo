@@ -3,6 +3,12 @@ title: "Install Tyk Self Managed"
 description: "This page serves as a comprehensive guide to migrating workloads to Tyk"
 tags: ["installation", "migration"]
 aliases:
+  - /tyk-on-premises/docker/docker-pro-demo
+  - /tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows
+  - /tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl
+  - /getting-started/quick-start/tyk-demo
+  - /getting-started/quick-start/tyk-k8s-demo
+  - /tyk-self-managed/install
   - /get-started/with-tyk-on-premise
   - /get-started/with-tyk-on-premise/installation/on-aws
   - /get-started/with-tyk-on-premise/installation/on-ubuntu/gateway
@@ -253,28 +259,36 @@ Head over to our **Tyk Demo** guides in [Kubernetes]({{<ref "getting-started/qui
 
 {{< grid >}}
 
-{{< badge read="10 mins" href="tyk-open-source#install-tyk-gateway-with-docker" image="/img/docker.png" alt="Docker install">}}
-Install with Docker. 
+{{< badge read="10 mins" href="tyk-self-managed#install-with-docker" image="/img/docker.png" alt="Docker install">}}
+Install with Docker 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-oss/ce-kubernetes/" image="/img/k8s.png" alt="Kubernetes Install">}}
-Install on K8s. 
+{{< badge read="10 mins" href="tyk-self-managed#install-on-kubernetes" image="/img/k8s.png" alt="Kubernetes install">}}
+Install on K8s 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-oss/ce-ansible/" image="/img/ansible.png" alt="Ansible install">}}
-Install with Ansible. 
+{{< badge read="10 mins" href="tyk-self-managed#install-with-ansible" image="/img/ansible.png" alt="Ansible install">}}
+Install with Ansible 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-oss/ce-redhat-rhel-centos/" image="/img/redhat-logo2.png" alt="Redhat / CentOS install">}}
-Install on RHEL / CentOS. 
+{{< badge read="10 mins" href="tyk-self-managed#install-tyk-on-red-hat-rhel--centos" image="/img/redhat-logo2.png" alt="Red Hat install">}}
+Install on Red Hat 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-oss/ce-debian-ubuntu/" image="/img/debian-nd-753.png" alt="Debian / Ubuntu install">}}
-Install on Debian / Ubuntu. 
+{{< badge read="10 mins" href="tyk-self-managed#install-tyk-on-debian-or-ubuntu" image="/img/debian-nd-753.png" alt="Ubuntu install">}}
+Install on Ubuntu 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="https://github.com/TykTechnologies/tyk" image="/img/GitHub-Mark-64px.png" alt="Tyk Gateway GitHub Repo">}}
-Visit our Gateway GitHub Repo. 
+{{< badge read="10 mins" href="tyk-self-managed#install-on-aws-marketplace" image="/img/aws.png" alt="Amazon AWS install">}}
+Install on Amazon AWS 
+{{< /badge >}}
+
+{{< badge read="10 mins" href="tyk-self-managed#install-on-heroku" image="/img/heroku-logo.png" alt="Heroku install">}}
+Install Tyk on Heroku 
+{{< /badge >}}
+
+{{< badge read="10 mins" href="tyk-self-managed#install-on-microsoft-azure" image="/img/azure-2.png" alt="Azure install">}}
+Install on Microsoft Azure 
 {{< /badge >}}
 
 {{< /grid >}}
@@ -856,7 +870,7 @@ to set the name of this **ConfigMap** (`tyk-tib-profiles-conf` by default).
 
 
 
-**Tyk Operator and Ingress **
+**Tyk Operator and Ingress**
 For a GitOps workflow used with a **Tyk Self-Managed** installation or setting the Tyk Gateway as a Kubernetes ingress controller, Tyk Operator enables you to manage API definitions, security policies and other Tyk features using Kubernetes manifest files.
 To get started go to [Tyk Operator]({{< ref "api-management/automations#automate-api-management-in-kubernetes-environments" >}}).
 

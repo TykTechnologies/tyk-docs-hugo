@@ -4,6 +4,7 @@ linkTitle: Automation Tools
 tags: ["Tyk API Management", "Open Source", "Self-Managed", "Tyk Cloud", "API Gateway"]
 title: Automation Tools
 aliases:
+  - /getting-started/key-concepts/gitops-with-tyk
   - /advanced-configuration/manage-multiple-environments/tyk-sync
   - /product-stack/tyk-operator/advanced-configurations/api-categories
   - /product-stack/tyk-operator/advanced-configurations/api-versioning

@@ -1,5 +1,13 @@
 {
+    "tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows": "#tyk-pro-on-windows-using-docker-desktop",
+    "tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl": "#tyk-pro-on-windows-using-wsl",
     "apim/open-source": "#tyk-open-source",
+    "getting-started/quick-start/tyk-demo": "#docker-demo",
+    "getting-started/quick-start/tyk-k8s-demo": "#kubernetes-demo",
+    "tyk-self-managed/install": "#installation-options-for-tyk-self-managed",
+    "tyk-cloud/getting-started": "#comprehensive-tyk-cloud-setup",
+    "getting-started/key-concepts/gitops-with-tyk": "#gitops-with-tyk",
+    "tyk-cloud/initial-portal-config": "#configure-developer-portal-from-dashboard",
     "deployment-and-operations/tyk-cloud-platform/quick-start": "#quick-start-tyk-cloud",
     "deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/consul": "#using-consul-as-a-kv-store",
     "deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/vault": "#using-vault-as-a-kv-store",

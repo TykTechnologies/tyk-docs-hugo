@@ -64,91 +64,10 @@ menu:
             path: /tyk-self-managed
             category: Page
             show: True
-      - title: "Open Source API Gateway"
-        category: Directory
-        show: True
-        menu:
-          - title: "Quick start"
-            path: /deployment-and-operations/tyk-open-source-api-gateway/quick-start
-            category: Page
-            show: True
-          - title: "Other installation options"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /apim/open-source/installation
-                category: Page
-                show: True
-          - title: "Open source operations tooling"
-            category: Page
-            show: False
-      - title: "Tyk Cloud"
-        category: Directory
-        show: True
-        menu:
-          - title: "Deployment lifecycle"
-            category: Directory
-            show: True
-            menu:
-              - title: "Planning phase"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Getting started"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Getting started with Tyk Cloud"
-                        path: /tyk-cloud/getting-started
-                        category: Page
-                        show: True
-                  - title: "Availability of infrastructure"
-                    category: Page
-                    show: False
-                  - title: "Manage subscriptions and add-ons"
-                    category: Page
-                    show: False
-                  - title: "Initial portal configuration"
-                    path: /tyk-cloud/initial-portal-config
-                    category: Page
-                    show: True
       - title: "Self Managed"
         category: Directory
         show: True
         menu:
-          - title: "Quick Start"
-            path: /getting-started/quick-start
-            category: Page
-            show: True
-          - title: "Demos & PoCs"
-            category: Directory
-            show: True
-            menu:
-              - title: "The Complete demo - Kubernetes"
-                path: /getting-started/quick-start/tyk-k8s-demo
-                category: Page
-                show: True
-              - title: "The Complete demo - Docker"
-                path: /getting-started/quick-start/tyk-demo
-                category: Page
-                show: True
-              - title: "Quick start - Docker Compose"
-                path: /tyk-on-premises/docker/docker-pro-demo
-                category: Page
-                show: True
-              - title: "Quick start - Windows"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Docker Compose on Windows"
-                    path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows
-                    category: Page
-                    show: True
-                  - title: "Docker Compose Linux on Windows"
-                    path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl
-                    category: Page
-                    show: True
           - title: "Deployment lifecycle"
             category: Directory
             show: True
@@ -197,40 +116,6 @@ menu:
                     category: Page
                     show: False
                   - title: "Design for multiple data centres"
-                    category: Page
-                    show: False
-              - title: "Installation options"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /tyk-self-managed/install
-                    category: Page
-                    show: True
-              - title: "Operations and BAU"
-                category: Directory
-                show: True
-                menu:
-                  - title: "GitOps with Tyk Operator"
-                    path: /getting-started/key-concepts/gitops-with-tyk
-                    category: Page
-                    show: True
-                  - title: "Monitoring upstream services"
-                    category: Page
-                    show: False
-                  - title: "Scaling up and down depending on usage/performance"
-                    category: Page
-                    show: False
-                  - title: "Manage plug-ins (install, monitor, update, configure)"
-                    category: Page
-                    show: False
-                  - title: "Manage third party integrations (API observability, observability, ...)"
-                    category: Page
-                    show: False
-                  - title: "Maintain Tyk configuration"
-                    category: Page
-                    show: False
-                  - title: "Upgrade Tyk components and their dependencies"
                     category: Page
                     show: False
       - title: "Featured Guides"
@@ -2640,7 +2525,14 @@ menu:
                 path: /tyk-multi-data-centre/mdcb-example-minimising-latency
                 category: Page
                 show: True
-
+              - title: "Setup MDCB Control Plane"
+                path: /tyk-multi-data-centre/setup-controller-data-centre
+                category: Page
+                show: True
+              - title: "Setup MDCB Data Plane"
+                path: /tyk-multi-data-centre/setup-worker-data-centres
+                category: Page
+                show: True
           - title: "Advanced configurations"
             category: Directory
             show: True

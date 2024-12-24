@@ -96,6 +96,7 @@ aliases:
   - /python-custom-auth-plugin/python-code-bundle
   - /python-custom-auth-plugin/setup-control-plane
   - /python-custom-auth-plugin/uploading-bundle
+  - /tyk-cloud/initial-portal-config
 ---
 
 ## What is Tyk Cloud
