@@ -170,11 +170,11 @@ No installation required!
 
 1. **Create Tyk Cloud Account**
 
-To create Tyk Cloud account follow this [guide](getting-started/create-account).
+To create Tyk Cloud account follow this [guide]({{< ref "getting-started/create-account" >}}).
 
 2. **Get started with your first API with Tyk Dashboard**
 
-To create your API using Tyk Dashboard follow this [guide](getting-started/create-account).
+To create your API using Tyk Dashboard follow this [guide]({{< ref "getting-started/configure-first-api" >}}).
 
 ## Tyk Cloud Feature Setups
 
@@ -187,7 +187,7 @@ To create your API using Tyk Dashboard follow this [guide](getting-started/creat
 Implement your own custom logic with Python based plugins
 {{< /badge >}}
 
-{{< badge title="Configuration" href="#use-custom-domains" >}}
+{{< badge title="Configuration" href="tyk-cloud#configure-custom-domains" >}}
 
 **Using custom domains**
 
@@ -489,7 +489,7 @@ We have actually only scratched the surface of what is possible with Tyk Cloud.
 What to go through next:
 
 * Managing your Deployments
-* Adding [Plugins and Middleware]({{< ref "#using-plugins" >}}) to your Control Plane
+* Adding [Plugins and Middleware]({{< ref "#configure-plugins" >}}) to your Control Plane
 
 ## Import Existing APIs
 
@@ -764,14 +764,14 @@ This section covers the administration of the various components of your Tyk Clo
 
 * [Managing Organizations]({{< ref "#set-up-your-organisation" >}})
 * [Managing Environments]({{< ref "#manage-environments-and-deployments" >}})
-* [Managing Control Planes]({{< ref "#control-planes" >}})
-* [Managing Cloud Data Planes]({{< ref "#gateways-configuration" >}})
+* [Managing Control Planes]({{< ref "#managing-control-planes" >}})
+* [Managing Cloud Data Planes]({{< ref "#managing-cloud-data-plane" >}})
 
 It also covers links to how to start [managing your APIs]({{< ref "#manage-apis" >}}) via the Tyk Dashboard, accessible from your Control Plane.
 
 #### Organisations Overview
 
-Your Organization is your "container" for all your Environments, Control Planes and Cloud Data Planes. When you setup your Organization when [creating your account]({{< ref "#step-1-sign-up-for-tyk-cloud" >}}), you assign it to a Home Region where all your data is stored. You cannot change this home region after creating your organization.
+Your Organization is your "container" for all your Environments, Control Planes and Cloud Data Planes. When you setup your Organization when [creating your account]({{< ref "getting-started/create-account" >}}), you assign it to a Home Region where all your data is stored. You cannot change this home region after creating your organization.
 
 **Organization Overview Screen**
 
@@ -883,16 +883,16 @@ The number of Control Planes you can add is dependent on your [plan]({{< ref "#s
 2. Enter a name for the new Control Plane
 3. Select Control Plane from the Type drop-down list
 4. Select the Bundle Channel and Version
-5. (Optional) Enter a [custom domain]({{< ref "#use-custom-domains" >}}) if required
-6. (Optional) Enable [plugins]({{< ref "#using-plugins" >}}) if required
+5. (Optional) Enter a [custom domain]({{< ref "#configure-custom-domains" >}}) if required
+6. (Optional) Enable [plugins]({{< ref "#configure-plugins" >}}) if required
 
 ##### Edit Control Planes
 
 You can edit the following Control Plane settings:
 * Change the Control Plane name
-* Add a [custom domain]({{< ref "#use-custom-domains" >}})
+* Add a [custom domain]({{< ref "#configure-custom-domains" >}})
 * Change the Bundle Channel and Bundle Version
-* Enable [plugins]({{< ref "#using-plugins" >}})
+* Enable [plugins]({{< ref "#configure-plugins" >}})
 
 {{< note success >}}
 **Note**
@@ -954,16 +954,16 @@ The number of Cloud Data Planes you can add is dependent on your [plan]({{< ref 
 2. Enter a name for the new Gateway
 3. Select Cloud Data Plane from the Type drop-down list
 4. Select the Bundle Channel and Version
-5. (Optional) Enter a [custom domain]({{< ref "#use-custom-domains" >}}) if required
-6. (Optional) Enable [plugins]({{< ref "#using-plugins" >}}) if required
+5. (Optional) Enter a [custom domain]({{< ref "#configure-custom-domains" >}}) if required
+6. (Optional) Enable [plugins]({{< ref "#configure-plugins" >}}) if required
 
 ##### Edit Cloud Data Planes
 
 You can edit the following Control Plane settings:
 * Change the Gateway name
-* Add a [custom domain]({{< ref "#use-custom-domains" >}})
+* Add a [custom domain]({{< ref "#configure-custom-domains" >}})
 * Change the Bundle Channel and Bundle Version
-* Enable [plugins]({{< ref "#using-plugins" >}})
+* Enable [plugins]({{< ref "#configure-plugins" >}})
 
 {{< note success >}}
 **Note**
@@ -1004,7 +1004,7 @@ To upgrade an existing Cloud Data Plane:
 
 [Tyk Cloud](https://tyk.io/cloud/) hosts and manages the control planes for you. You can deploy the data planes across multiple locations:
 
-- as [Cloud Gateways]({{< ref "#gateways-configuration" >}}): Deployed and managed in *Tyk Cloud*, in any of our available regions. These are SaaS gateways, so there are no deployment or operational concerns.
+- as [Cloud Gateways]({{< ref "#managing-cloud-data-plane" >}}): Deployed and managed in *Tyk Cloud*, in any of our available regions. These are SaaS gateways, so there are no deployment or operational concerns.
 - as Hybrid Gateways: This is a self-managed data plane, deployed in your infrastructure and managed by yourself. Your infrastructure can be a public or private cloud, or even your own data center.
 
 This page describes the deployment of hybrid data planes and how to connect them to Tyk Cloud, in both Kubernetes and Docker environments.
@@ -1260,7 +1260,7 @@ Here are the most popular ways to secure your APIs.
 
 **2. Request Signing**
 
-Tyk can [sign the request with HMAC or RSA]({{< ref "developer-support/release-notes/archived#hmac-request-signing#hmac-request-signing" >}}), before sending it to the API target. This is an implementation of an [RFC Signing HTTP Messages(draft 10)](https://datatracker.ietf.org/doc/html/draft-cavage-http-signatures-10). This RFC was designed to provide authenticity of the digital signature of the client. In our flow, the Tyk Cloud Data Planes, as the client, using a certificate private key, will add a header signature to the request. The API, using a pre-agreed public key (based on a meaningful keyId identifier) will verify the authenticity of the request coming from your Tyk Cloud Data Plane.
+Tyk can [sign the request with HMAC or RSA]({{< ref "developer-support/release-notes/archived#hmac-request-signing" >}}), before sending it to the API target. This is an implementation of an [RFC Signing HTTP Messages(draft 10)](https://datatracker.ietf.org/doc/html/draft-cavage-http-signatures-10). This RFC was designed to provide authenticity of the digital signature of the client. In our flow, the Tyk Cloud Data Planes, as the client, using a certificate private key, will add a header signature to the request. The API, using a pre-agreed public key (based on a meaningful keyId identifier) will verify the authenticity of the request coming from your Tyk Cloud Data Plane.
  A limitation is that the APIs or LB need to implement this signature verification and be able to update the certificates as mentioned in Mutual TLS or Client authorization (above).
 
 **3. IP Whitelisting**
@@ -1273,7 +1273,7 @@ In order to find your organization’s IP range, please open a support ticket wi
 
 **4. Post plugin with OAuth flow**
 
-The custom plugin approach is mentioned last because it involves writing a bit of code. However, if your appetite allows for it, custom plugins offer the most flexibility of all these solutions.  You can use Tyk’s custom plugins to execute an OAuth flow, for example, between Tyk (as the client) and your authorization server, and inject a Bearer token into the request. The backend service will need to validate the bearer as usual. You can write [custom plugins]({{< ref "#using-plugins" >}}) in a variety of languages.
+The custom plugin approach is mentioned last because it involves writing a bit of code. However, if your appetite allows for it, custom plugins offer the most flexibility of all these solutions.  You can use Tyk’s custom plugins to execute an OAuth flow, for example, between Tyk (as the client) and your authorization server, and inject a Bearer token into the request. The backend service will need to validate the bearer as usual. You can write [custom plugins]({{< ref "#configure-plugins" >}}) in a variety of languages.
 
 **Where to Authenticate?**
 
@@ -1527,8 +1527,8 @@ Here's an overview of all of the available plans:
 | **Plan**          | **Who's it for?**                                                                   | **About**                                                                                                                                                                                                                                                                                                                                         |
 | ----------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 48 hours free trial <p>[Free Support SLA]({{< ref "developer-support/support" >}})</p> | This is for POC’s and those testing the Tyk platform. | Tyk Cloud has 48 hours free trial. You can always request a longer trial period or talk to support if you need help. |
-| Starter <p>[Standard Support SLA]({{< ref "developer-support/support" >}})</p> | For single teams with low traffic, mostly small businesses that manage few APIs. | This plan includes all of the features of the Tyk Stack. You can have **[custom domains]({{< ref "#use-custom-domains" >}})** and **[plugins]({{< ref "#using-plugins" >}})**, along with management of upto 5 APIs. Standard support is provided.|
-| Launch <p>[Standard Support SLA]({{< ref "developer-support/support" >}})</p> | For single teams with low traffic, mostly small businesses. | This plan includes all of the features of the Tyk Stack. You can have **[custom domains]({{< ref "#use-custom-domains" >}})** and **[plugins]({{< ref "#using-plugins" >}})** along with management of unlimited APIs. Standard support is provided. |
+| Starter <p>[Standard Support SLA]({{< ref "developer-support/support" >}})</p> | For single teams with low traffic, mostly small businesses that manage few APIs. | This plan includes all of the features of the Tyk Stack. You can have **[custom domains]({{< ref "#configure-custom-domains" >}})** and **[plugins]({{< ref "#configure-plugins" >}})**, along with management of upto 5 APIs. Standard support is provided.|
+| Launch <p>[Standard Support SLA]({{< ref "developer-support/support" >}})</p> | For single teams with low traffic, mostly small businesses. | This plan includes all of the features of the Tyk Stack. You can have **[custom domains]({{< ref "#configure-custom-domains" >}})** and **[plugins]({{< ref "#configure-plugins" >}})** along with management of unlimited APIs. Standard support is provided. |
 | Grow <p>[Standard Support SLA]({{< ref "developer-support/support" >}})</p> | For single teams with high traffic. | This plan includes all of the features of the Tyk Stack. In this plan, you have **[Hybrid Gateways]({{< ref "#deploy-hybrid-gateways" >}})** as an add on, along with standard support. |
 | Scale <p>[Enhanced Support SLA]({{< ref "developer-support/support" >}})</p> | For global organizations with multiple teams, requiring gateway deployments in multiple locations. | This plan includes all of the features of the Tyk Stack. **Enhanced(silver) support** will be provided. |
 
@@ -1782,7 +1782,7 @@ Tyk Cloud allows you to take advantage of Tyk's plugin architecture that allows 
 For more details, see: 
 * [Python Plugins]({{< ref "plugins/supported-languages/rich-plugins/python/python" >}})
 * [JSVM]({{< ref "plugins/supported-languages/javascript-middleware" >}})
-* [Golang]({{< ref "#using-plugins" >}})
+* [Golang]({{< ref "#configure-plugins" >}})
 
 Next you'll set up an Tyk Cloud Control Plane to use a Python Authentication Plugin.
 
@@ -2230,7 +2230,7 @@ helm install tyk-redis bitnami/redis -n tyk --version 19.0.2
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "#redis" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password.
