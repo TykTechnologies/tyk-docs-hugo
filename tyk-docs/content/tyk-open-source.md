@@ -3,6 +3,8 @@ title: "Install Tyk Open Source"
 description: "This page serves as a comprehensive guide to migrating workloads to Tyk"
 tags: ["installation", "migration", "open source"]
 aliases:
+  - /apim/open-source/installation
+  - /deployment-and-operations/tyk-open-source-api-gateway/quick-start
   - /tyk-oss/ce-centos
   - /tyk-oss/ce-debian-ubuntu
   - /tyk-oss/ce-kubernetes-ingress

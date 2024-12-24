@@ -2,6 +2,7 @@
     "tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows": "#tyk-pro-on-windows-using-docker-desktop",
     "tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl": "#tyk-pro-on-windows-using-wsl",
     "apim/open-source": "#tyk-open-source",
+    "apim/open-source/installation": "#installation-options-for-tyk-gateway",
     "getting-started/quick-start": "#getting-started-with-tyk-self-managed",
     "getting-started/quick-start/tyk-demo": "#docker-demo",
     "getting-started/quick-start/tyk-k8s-demo": "#kubernetes-demo",

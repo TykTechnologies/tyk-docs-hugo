@@ -3,6 +3,14 @@ title: "Install Tyk Self Managed"
 description: "This page serves as a comprehensive guide to migrating workloads to Tyk"
 tags: ["installation", "migration"]
 aliases:
+  - /get-started/with-tyk-on-premise/installation
+  - /getting-started/installation/with-tyk-on-premises
+  - /getting-started/installation/with-tyk-on-premises/docker/docker-pro-demo/docker-pro-demo
+  - /getting-started/installation/with-tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows
+  - /getting-started/installation/with-tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl
+  - /tyk-configuration-reference/kv-store
+  - /tyk-self-managed/istio
+  - /tyk-rest-api/health-checking
   - /tyk-on-premises/docker/docker-pro-demo
   - /tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows
   - /tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl

@@ -39,6 +39,7 @@ aliases:
   - /tyk-cloud/environments-deployments/managing-environments
   - /tyk-cloud/environments-deployments/monitoring
   - /tyk-cloud/first-api
+  - /tyk-cloud/getting-started
   - /tyk-cloud/getting-started-tyk-cloud/create-account
   - /tyk-cloud/getting-started-tyk-cloud/first-api
   - /tyk-cloud/getting-started-tyk-cloud/setup-environment

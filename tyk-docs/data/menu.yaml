@@ -118,6 +118,14 @@ menu:
                   - title: "Design for multiple data centres"
                     category: Page
                     show: False
+              - title: "Deployment phase"
+                category: Directory
+                show: True
+                menu:
+                  - title: "Secure system payloads"
+                    path: /tyk-configuration-reference/securing-system-payloads
+                    category: Page
+                    show: True
       - title: "Featured Guides"
         category: Directory
         show: True
