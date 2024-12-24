@@ -27,7 +27,7 @@ When the connection is established, the portal will import policies as API Produ
 
 ## Prerequisites
 
-- A Tyk Self-Managed [installation]({{< ref "tyk-self-managed/install" >}})
+- A Tyk Self-Managed [installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}})
 - The Enterprise portal installed.
 - A login for the portal admin app.
 

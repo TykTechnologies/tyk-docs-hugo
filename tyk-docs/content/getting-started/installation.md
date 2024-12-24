@@ -33,7 +33,7 @@ There is no calling home and there are no usage limits. You have full control.
 
 <br/>
 
-{{< button_left href="tyk-self-managed/install" color="green" content="Install Self-Managed" >}}
+{{< button_left href="tyk-self-managed#installation-options-for-tyk-self-managed" color="green" content="Install Self-Managed" >}}
 
 ### Tyk Cloud
 

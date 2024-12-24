@@ -8,6 +8,7 @@ aliases:
   - /tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl
   - /getting-started/quick-start/tyk-demo
   - /getting-started/quick-start/tyk-k8s-demo
+  - /getting-started/quick-start
   - /tyk-self-managed/install
   - /get-started/with-tyk-on-premise
   - /get-started/with-tyk-on-premise/installation/on-aws
@@ -253,7 +254,7 @@ If you prefer guided support, we recommend exploring our [Tyk Technical PoC Guid
 Once you have obtained your license, you can proceed with the installation options provided below.
 
 ##### **Tyk Demo - The Perfect PoC Experience**
-Head over to our **Tyk Demo** guides in [Kubernetes]({{<ref "getting-started/quick-start/tyk-k8s-demo">}}) or [Docker]({{<ref "getting-started/quick-start/tyk-demo">}}). These guides, with zero to none effort, will spin up the full Tyk infrastructure (Tyk stack) with examples of Tyk's capabilities and integrations out-of-the-box.
+Head over to our **Tyk Demo** guides in [Kubernetes]({{<ref "tyk-self-managed#kubernetes-demo">}}) or [Docker]({{<ref "tyk-self-managed#docker-demo">}}). These guides, with zero to none effort, will spin up the full Tyk infrastructure (Tyk stack) with examples of Tyk's capabilities and integrations out-of-the-box.
 
 ## Installation Options for Tyk Self-Managed
 
@@ -560,7 +561,7 @@ Installing Tyk on Kubernetes requires a multi-node Tyk license. If you are evalu
 {{< warning success >}}
 **Warning**  
 
-This deployment is NOT designed for production use or performance testing. The Tyk Pro Docker Demo is our full, [Self-Managed]({{< ref "/content/tyk-self-managed/install.md" >}}) solution, which includes our Gateway, Dashboard and analytics processing pipeline. 
+This deployment is NOT designed for production use or performance testing. The Tyk Pro Docker Demo is our full, [Self-Managed]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) solution, which includes our Gateway, Dashboard and analytics processing pipeline. 
 
 This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and either MongoDB or one of our supported [SQL databases]({{< ref "/content/tyk-dashboard/database-options.md" >}}).
 
@@ -3642,12 +3643,12 @@ To complete the instruction above we have a tutorial video of tyk demo that cove
 ### Docker Compose Setup
 
 #### Who is this page for?
-This is the guide we recommend for a easy quick start. The instructions are the ones shared with you when you register to a [free trial]({{< ref "getting-started/quick-start" >}}).
+This is the guide we recommend for a easy quick start. The instructions are the ones shared with you when you register to a [free trial]({{< ref "tyk-self-managed#getting-started-with-tyk-self-managed" >}}).
 
 You can also use this guide for your PoC since it spins up a full Tyk Self Managed stack for you using our project *Docker Pro Demo*, however, if you are interested in learning Tyk, there's an option for [Tyk Demo]({{< ref "tyk-self-managed#explore-demos-and-proof-of-concepts" >}}) which is a project that spins up full Tyk stack that includes a prepopulate API definitions of all kinds, with various middleware options and can also spin up supporting tools such as Prometheus, Keycloak (IDP) etc.
 
 #### What's included?
-The *Tyk Pro Docker Demo* is our [Self-Managed]({{< ref "tyk-on-premises" >}}) solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and MongoDB. This demo is great for proof of concept and demo purposes, but if you want to test performance, you will need to move each component to a separate machine.
+The *Tyk Pro Docker Demo* is our [Self-Managed]({{< ref "tyk-self-managed" >}}) solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and MongoDB. This demo is great for proof of concept and demo purposes, but if you want to test performance, you will need to move each component to a separate machine.
 
 {{< warning success >}}
 **Warning**

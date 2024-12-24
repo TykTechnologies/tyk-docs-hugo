@@ -70,7 +70,7 @@ In this guide, we’ll walk through the primary tools for automating API managem
 Before diving into lifecycle automations with Tyk, ensure you have the following:
 
 - **A Tyk installation** (Self-Managed or Cloud)
-  - If you don't have Tyk installed, follow our [installation guide]({{<ref "tyk-self-managed/install">}})
+  - If you don't have Tyk installed, follow our [installation guide]({{<ref "tyk-self-managed#installation-options-for-tyk-self-managed">}})
   - For Tyk Cloud, sign up [here](https://tyk.io/sign-up/)
   - Tyk Operator license key. Starting from Tyk Operator v1.0, a valid license key is required.
 
@@ -311,7 +311,7 @@ In order for policy ID matching to work correctly, Dashboard must have `allow_ex
 Tyk Operator needs a [user credential]({{< ref "#operator-user" >}}) to connect with
 Tyk Dashboard. The Operator user should have write access to the resources it is going to manage, e.g. APIs, Certificates,
 Policies, and Portal. It is the recommended practice to turn off write access for other users for the above resources. See
-[Using Tyk Operator to enable GitOps with Tyk]({{< ref "getting-started/key-concepts/gitops-with-tyk" >}}) about
+[Using Tyk Operator to enable GitOps with Tyk]({{< ref "api-management/automations" >}}) about
 maintaining a single source of truth for your API configurations.
 
 #### Install cert-manager

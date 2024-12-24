@@ -28,7 +28,7 @@ We will assume that the following components are up and running in your Controll
 * Redis (check [supported versions]({{< ref "tyk-self-managed#redis-1" >}}))
 * Tyk Dashboard
 * Tyk Gateway / Gateways Cluster
-* Working Tyk-Pro [Self-Managed installation]({{< ref "tyk-self-managed/install" >}})
+* Working Tyk-Pro [Self-Managed installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}})
 
 {{< note success >}}
 **Note**  
