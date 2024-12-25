@@ -27,13 +27,13 @@ To enable or disable each component, change the corresponding enabled flag.
 
 Also, you can set the version of each component through `image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/u/tykio).
 
-For a quick start guide, please see [deploy hybrid gateway]({{<ref "#deploy-hybrid-gateways">}}).
+For a quick start guide, please see [deploy hybrid gateway]({{<ref "tyk-cloud#deploy-hybrid-gateways">}}).
 
 ## Prerequisites
 
 - [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
 - [Helm 3+](https://helm.sh/docs/intro/install/)
-- [Redis]({{< ref "#configure-legacy-tyk-headless-helm-chart" >}}) should already be installed or accessible by the gateway.
+- [Redis]({{< ref "tyk-open-source#configure-legacy-tyk-headless-helm-chart" >}}) should already be installed or accessible by the gateway.
 - Connection details to remote control plane. See below for how to obtain them from Tyk Cloud or Tyk Control Plane chart.
 
 ## Obtain Remote Control Plane Connection details from Tyk Cloud
