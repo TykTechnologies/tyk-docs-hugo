@@ -110,4 +110,4 @@ After deployment, Tyk offers robust tools to ensure smooth API operations and ma
 
 Building and managing APIs is a process of continuous improvement. With Tyk, you have a partner that provides the tools to plan, develop, deploy, and maintain APIs with efficiency and security. As you refine your API strategy, you can rely on Tyk’s capabilities to adapt and scale with you, ensuring that your APIs deliver value to users and meet evolving business needs.
 
-To get started in your Tyk journey, [get started on Tyk Cloud]({{< ref "tyk-cloud/getting-started" >}}) and learn about [Tyk components]({{< ref "tyk-components" >}}) to further understand how Tyk supports your specific goals.
+To get started in your Tyk journey, [get started on Tyk Cloud]({{< ref "getting-started/create-account" >}}) and learn about [Tyk components]({{< ref "tyk-components" >}}) to further understand how Tyk supports your specific goals.

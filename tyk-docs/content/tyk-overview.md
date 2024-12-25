@@ -62,5 +62,5 @@ You can learn more about the components that make up Tyk, [here]({{< ref "tyk-co
 
 In summary, Tyk offers a complete API management solution designed for modern, production-grade API operations. With its open-source core, robust security options, high performance, and flexible deployment models, Tyk provides everything an organization needs to manage, scale, and secure their APIs. 
 
-Whether you’re a startup looking to build a simple API or a global enterprise deploying complex, multi-region architectures, Tyk has the tools to support your growth at every stage. If you face problems with scaling your solutions, learn more about how Tyk can support you by [getting started with Tyk Cloud]({{< ref "tyk-cloud/getting-started" >}}).
+Whether you’re a startup looking to build a simple API or a global enterprise deploying complex, multi-region architectures, Tyk has the tools to support your growth at every stage. If you face problems with scaling your solutions, learn more about how Tyk can support you by [getting started with Tyk Cloud]({{< ref "getting-started/create-account" >}}).
 
