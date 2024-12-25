@@ -6505,8 +6505,8 @@ Currently, the receipt of an HTTP 200 OK response merely indicates that the Pump
 Based on the Tyk recommended approach for setting up your databases, our team has built tools that will help engineers better understand and plan their infrastructure around their use case:
 
 * [Redis Sizing](#redis-sizing-guidelines)
-* [PostgreSQL Sizing](tyk-self-managed#postgresql)
-* [MongoDB Sizing](tyk-self-managed#mongodb-sizing-guidelines)
+* [PostgreSQL Sizing](#postgresql-sizing-guidelines)
+* [MongoDB Sizing](#mongodb-sizing-guidelines)
 
 
 #### Database Monitoring

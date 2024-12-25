@@ -14,7 +14,7 @@ It includes the following components:
 
 Furthermore, it has all the required modifications to easily connect to Tyk Cloud or Multi Data Center (MDCB) control plane.
 
-[Supported MDCB versions]({{< ref "#troubleshooting-tyk-cloud" >}})
+[Supported MDCB versions]({{< ref "tyk-cloud#tyk-cloud-mdcb-supported-versions" >}})
 
 By default, this chart installs following components as subcharts on a [Kubernetes](https://kubernetes.io/) cluster using the [Helm](https://helm.sh/) package manager.
 

@@ -12,6 +12,7 @@ aliases:
   - /tyk-cloud/account-and-billing/our-plans
   - /tyk-cloud/account-and-billing/retirement
   - /tyk-cloud/account-and-billing/upgrade-free-trial
+  - /tyk-cloud/troubleshooting-&-support/tyk-cloud-mdcb-supported-versions
   - /tyk-cloud/account-&-billing/plans
   - /tyk-cloud/account-billing/add-payment-method
   - /tyk-cloud/account-billing/managing-billing-admins
@@ -2541,6 +2542,34 @@ Your Cloud Data Planes need to be redeployed to activate the new telemetry confi
 
   The sampling level can be configured at both the organization level (while setting up the provider) and the `Cloud Data Plane`. The configuration at the Cloud Data Plane will override the organization-level settings.
   {{< /note >}}
+
+### Tyk Cloud MDCB Supported versions
+
+This section lists the supported MDCB version for hybrid setup
+
+| Dashboard | Gateway | MDCB   |
+| --------- | ------- | ------ |
+| v5.2.0    | v5.2.0  | v2.4.0 |
+| v5.1.2    | v5.1.2  | v2.3.0 |
+| v5.1.1    | v5.1.1  | v2.3.0 |
+| v5.1.0    | v5.1.0  | v2.3.0 |
+| v5.0.5    | v5.0.5  | v2.2.0 |
+| v5.0.4    | v5.0.4  | v2.2.0 |
+| v5.0.3    | v5.0.3  | v2.2.0 |
+| v5.0.2    | v5.0.2  | v2.2.0 |
+| v5.0.1    | v5.0.1  | v2.1.1 |
+| v5.0.0    | v5.0.0  | v2.1.1 |
+| v4.3.3    | v4.3.3  | v2.1.0 |
+| v4.3.2    | v4.3.2  | v2.0.4 |
+| v4.3.1    | v4.3.1  | v2.0.4 |
+| v4.3.0    | v4.3.0  | v2.0.4 |
+| v4.2.4    | v4.2.4  | v2.0.3 |
+| v4.2.3    | v4.2.3  | v2.0.3 |
+| v4.0.10    | v4.0.10  | v2.0.4 |
+| v4.0.9    | v4.0.9  | v2.0.3 |
+| v4.0.8    | v4.0.8  | v2.0.3 |
+| v3.2.3    | v3.2.3  | v1.8.1 |
+| v3.0.9    | v3.0.9  | v1.7.11 |
 
 ### Track Usage
 
