@@ -1148,7 +1148,7 @@ Fixed the following high priority CVEs identified in the Tyk Dashboard, providin
 
 ### 5.3.9 Release Notes
 
-#### Release Date xxx
+#### Release Date 31 December 2024
 
 #### Release Highlights
 This release contains bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.9">}}) below.
