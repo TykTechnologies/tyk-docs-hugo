@@ -46,7 +46,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### 5.7.1 Release Notes
 
-#### Release Date xxx
+#### Release Date 31 December 2024
 
 #### Release Highlights
 
