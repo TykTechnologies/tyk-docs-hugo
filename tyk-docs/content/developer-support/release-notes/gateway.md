@@ -44,6 +44,150 @@ Our minor releases are supported until our next minor comes out.
 
 ## 5.7 Release Notes
 
+### 5.7.1 Release Notes
+
+#### Release Date xxx
+
+#### Release Highlights
+
+This release focuses mainly on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.7.1">}}) below.
+
+#### Breaking Changes
+<!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
+
+There are no breaking changes in this release.
+
+#### Dependencies {#dependencies-5.7.1}
+
+
+##### Compatibility Matrix For Tyk Components
+<!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+An illustrative example is shown below. -->
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.7.1 | MDCB v2.7.2     | MDCB v2.4.2 |
+|         | Operator v1.1.0  | Operator v0.17 |
+|         | Sync v2.0.1    | Sync v1.4.3 |
+|         | Helm Chart v2.2  | Helm all versions |
+| | EDP v1.12 | EDP all versions |
+| | Pump v1.11.1 | Pump all versions |
+| | TIB (if using standalone) v1.6.1 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.22  |  1.22  | [Go plugins]({{< ref "/plugins/supported-languages/golang" >}}) must be built using Go 1.22 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "/tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+<!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
+There are no deprecations in this release.
+
+
+#### Upgrade instructions {#upgrade-5.7.1}
+If you are upgrading to 5.7.1, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.7.1)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.7.1
+    ``` 
+- Helm charts
+  - [tyk-charts v2.2.0]({{<ref "developer-support/release-notes/helm-chart#220-release-notes" >}})
+
+- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+
+#### Changelog {#Changelog-v5.7.1} 
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Incomplete traffic logs generated if custom response plugin adjusts the payload length</summary>
+
+Resolved an issue where the response body could be only partially recorded in the traffic log if a custom response plugin modified the payload. This was due to Tyk using the original, rather than the modified, content-length of the response when identifying the data to include in the traffic log.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed OAuth client creation issue for custom plugin APIs in multi-data plane deployments</summary>
+
+Fixed a bug that prevented the control plane Gateway from loading APIs that use custom plugin bundles. The control plane Gateway is used to register OAuth clients and generate access tokens so this could result in an API being loaded to the data plane Gateways but clients unable to obtain access tokens. This issue was introduced in v5.3.1 as a side-effect of a change to address a potential security issue where APIs could be loaded without their custom plugins.
+</details>
+</li>
+<li>
+<details>
+<summary>Accurate debug logging restored for middleware</summary>
+
+Addressed an issue where shared loggers caused debug logs to misidentify the middleware source, complicating debugging. Log entries now correctly indicate which middleware generated the log, ensuring clearer and more reliable diagnostics
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Stability for APIs with Malformed Listen Paths</summary>
+
+Fixed an issue where a malformed listen path could cause the Gateway to crash. Now, such listen paths are properly validated, and if validation fails, an error is logged, and the API is skipped—preventing Gateway instability.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Gateway panic and SSE streaming issue with OpenTelemetry</summary>
+
+Resolved a bug that prevented upstream server-sent events (SSE) from being sent when OpenTelemetry was enabled, and fixed a gateway panic that occurred when detailed recording was active while SSE was in use. This ensures stable SSE streaming in configurations with OpenTelemetry.
+</details>
+</li>
+<li>
+<details>
+<summary>API Keys remain active after all linked partitioned policies are deleted</summary>
+
+Resolved an issue where API access keys remained valid even if all associated policies were deleted. The Gateway now attempts to apply all linked policies to the key when it is presented with a request. Warning logs are generated if any policies cannot be applied (for example, if they are missing). If no linked policy can be applied, the Gateway will reject the key to ensure no unauthorized access.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Payload Issue with Transfer-Encoding: chunked Header</summary>
+
+Resolved an issue where APIs using the Transfer-Encoding: chunked header alongside URL Rewrite or Validate Request middleware would lose the response payload body. The payload now processes correctly, ensuring seamless functionality regardless of header configuration.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed an issue where OAuth 2.0 access tokens would not be issued if the data plane was disconnected from the control plane</summary>
+
+OAuth 2.0 access tokens can now be issued even when data plane gateways are disconnected from the control plane. This is achieved by saving OAuth clients locally within the data plane when they are pulled from RPC.
+</details>
+</li>
+<li>
+<details>
+<summary>Tyk Now Supports RSA-PSS Signed JWTs</summary>
+
+Tyk now supports RSA-PSS signed JWTs (PS256, PS384, PS512), enhancing security while maintaining backward compatibility with RS256. No configuration changes are needed—just use RSA public keys, and Tyk will validate both algorithms seamlessly.
+</details>
+</li>
+<li>
+<details>
+<summary>Request size limit middleware would block any request without a payload (for example GET, DELETE)</summary>
+
+
+Resolved a problem in the request size limit middleware that caused GET and DELETE requests to fail validation.The middleware incorrectly expected a request body (payload) for these methods and blocked them when none was present.
+</details>
+</li>
+<li>
+<details>
+<summary>Resolved Variable Input Handling for Custom Scalars in GraphQL Queries</summary>
+
+Fixed an issue where GraphQL queries using variables for custom scalar types, such as UUID, failed due to incorrect input handling. Previously, the query would return an error when a variable was used but worked when the value was directly embedded in the query. This update ensures that variables for custom scalar types are correctly inferred and processed, enabling seamless query execution.
+</details>
+</li>
+</ul>
+
+---
+
 ### 5.7.0 Release Notes
 
 #### Release Date 03 December 2024
