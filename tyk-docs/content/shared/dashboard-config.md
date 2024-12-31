@@ -719,9 +719,11 @@ Disable TLS verifiation
 ENV: <b>TYK_DB_HTTPSERVEROPTIONS_PREFERSERVERCIPHERSUITES</b><br />
 Type: `bool`<br />
 
-A boolean value to control whether the server selects the preferred ciphersuite for the client, or the preferred ciphersuite for the server. If set to true, the server preferences in the order of the elements listed in `ssl_ciphers` is used.
+PreferServerCipherSuites is a legacy field and has no effect.
 
-For more information see [TLS and SSL](https://tyk.io/docs/basic-config-and-security/security/tls-and-ssl/)
+More info: https://github.com/golang/go/issues/45430.
+
+Deprecated: PreferServerCipherSuites is ignored.
 
 ### security
 This section controls login limits for both the Dashboard and the Developer Portal. The path for you audit log is also set here.
@@ -837,6 +839,18 @@ ENV: <b>TYK_DB_SECURITY_PRIVATECERTIFICATEENCODINGSECRET</b><br />
 Type: `string`<br />
 
 When using SAML with embedded identity broker, is required to upload a certificate that is encoded by the gateway to store it safely, TIB needs the private key as well, hence it needs the same encoding secret so the information is decoded successfully. This value should match with the encoding secret set in the gateway config file, if not set then it will use by default tyk_api_config.secret to attempt to decode the certificate.
+
+### security.forbid_admin_view_access_token
+ENV: <b>TYK_DB_SECURITY_FORBIDADMINVIEWACCESSTOKEN</b><br />
+Type: `bool`<br />
+
+ForbidAdminViewAccessToken is a security feature that allows you to prevent the admin user from viewing the access token of a user. The default is false.
+
+### security.forbid_admin_reset_access_token
+ENV: <b>TYK_DB_SECURITY_FORBIDADMINRESETACCESSTOKEN</b><br />
+Type: `bool`<br />
+
+ForbidAdminResetAccessToken is a security feature that allows you to prevent the admin user from resetting the access token of a user. The default is false.
 
 ### ui
 This section controls various settings for the look and feel of the Dashboard UI.
