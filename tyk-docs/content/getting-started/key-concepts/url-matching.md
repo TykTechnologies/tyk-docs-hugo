@@ -102,20 +102,20 @@ If [URL path versioning]({{< ref "product-stack/tyk-gateway/advanced-configurati
 
 The remainder of the *request path* after any version identifier is considered to be the *endpoint path* (which may be simply `/`). When performing a match against endpoints configured in the API definition, Tyk treats the configured patterns as regular expressions, allowing advanced users to perform complex endpoint path matching by use of regexes in their API definitions.
 
-## Path ordering
+## Path Ordering
 
 Before attempting to [match](#pattern-matching) the incoming request to the various APIs deployed on Tyk to determine which route should be taken, Tyk will first place all the APIs in order. The order is important because the routing logic will compare the incoming request against each in turn until it finds a match (or returns `HTTP 404` if no match is found).
 
 On receipt of an API request Tyk firstly creates a list of all APIs and then iterates through the list for each of the following steps:
-1. APIs that don't have a custom domain defined are moved to the end of the list
+1. APIs that don't have a custom domain defined are moved to the end of the list.
 2. Then among each section (custom domain/no custom domain) it will sort by listen path length (longer paths first)
-- note that (dynamic) path parameters are not resolved at this stage so `/api/{category}/user` will rank higher than `/api/123/user`
+    - Note that (dynamic) path parameters are not resolved at this stage so `/api/{category}/user` will rank higher than `/api/123/user`
 3. Then, for each listen path it will sort the endpoints using these rules:
-- remove path parameters (dynamic segments) in the listen path - for example `/{id}` will be replaced with `/`
-- order by the number of segments (count of `/`) from most to least - e.g. `/api/user/profile` before `/api/user`
-- if two endpoints differ only by parameters, the non-parameterized goes first - e.g. `/api/user` before `/api/{userId}`
-- if two endpoints have the same number of segments, the longer path goes first - e.g. `/api/user-access` before `/api/user`
-- for equal length paths, lexicographical order is applied - e.g. `/api/aba` before `/api/abc`
+    - Remove path parameters (dynamic segments) in the listen path - for example `/{id}` will be replaced with `/`
+    - Order by the number of segments (count of `/`) from most to least - e.g. `/api/user/profile` before `/api/user`
+    - If two endpoints differ only by parameters, the non-parameterized goes first - e.g. `/api/user` before `/api/{userId}`
+    - If two endpoints have the same number of segments, the longer path goes first - e.g. `/api/user-access` before `/api/user`
+    - For equal length paths, lexicographical order is applied - e.g. `/api/aba` before `/api/abc`
 
 Having created the ordered list, Tyk will attempt to match the request against the paths (patterns) in the list, starting from the top and moving down the list.
 If a match is found, no further checks will be perfomed, so it is important to understand how Tyk orders the patterns to ensure there is no accidental routing to the wrong endpoint.
