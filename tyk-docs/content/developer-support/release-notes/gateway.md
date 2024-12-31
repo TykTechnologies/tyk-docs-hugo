@@ -1479,7 +1479,7 @@ links to API documentation and FAQs. You can copy it from the previous release. 
 
 ### 5.3.9 Release Notes
 
-#### Release Date xxx
+#### Release Date 31 December 2024
 
 #### Release Highlights
 
