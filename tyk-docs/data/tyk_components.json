@@ -1,32 +1,22 @@
 {
   "components": [
     {
-      "title": "Tyk Self Managed",
-      "image": "img/tyk_self_managed.svg",
-      "steps": "Only 4 steps",
-      "button_text": "Get started",
-      "path": "getting-started/quick-start/",
-      "description":"Easily install our Full Lifecycle API Management solution in your own infrastructure. There is no calling home and there are no usage limits. You have full control.",
-      "includes": "Includes: Tyk API Gateway, Tyk Dashboard, Tyk Portal, Tyk UDG"
-    },{
+      "title": "Schedule your guided evaluation",
+      "image": "img/home-page-review-icon.svg",
+      "steps": "Schedule your guided evaluation",
+      "button_text": "Get in touch",
+      "path": "https://tyk.io/guided-evaluation/",
+      "description": "Looking to evaluate our powerful Hybrid or Self-Managed deployment types?",
+      "includes": "Our Solution Architects will collaborate with you to understand your needs and guide you to success."
+    },
+    {
       "title": "Tyk Cloud",
-      "image": "img/tyk_cloud.svg",
-      "steps": "Only 2 steps",
-      "button_text": "Free trial",
-      "path": "deployment-and-operations/tyk-cloud-platform/quick-start/",
-      "description":"A fully managed service that makes it easy for API teams to create, secure, publish and maintain APIs at any scale, anywhere in the world.",
-      "includes": "Includes: Tyk API Gateway, Tyk Dashboard, Tyk Portal, Tyk UDG"
-    },{
-      "title": "Tyk Open Source",
-      "image": "img/tyk_open_source.svg",
-      "steps": "Only 3 steps",
-      "button_text": "Get started",
-      "path": "deployment-and-operations/tyk-open-source-api-gateway/quick-start/",
-      "description":"The heart of what we do. Anything that is API Gateway-related, lives in the Gateway, or is critical for the Gateway to work is open and freely available.",
-      "includes":"Includes: Tyk OSS Gateway"
+      "image": "img/home_page_free_trial_icon.svg",
+      "steps": "Start your 48-hour free trial",
+      "button_text": "Start trial",
+      "path": "https://tyk.io/sign-up/",
+      "description": "Dive in with a cloud-based trial.",
+      "includes": "Get access to all features and capabilities of Tyk. No installation or credit card needed (and no need to speak with the sales team)."
     }
-
   ]
 }
-
-

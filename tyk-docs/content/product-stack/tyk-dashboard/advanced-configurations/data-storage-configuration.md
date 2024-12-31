@@ -7,7 +7,7 @@ description: "How to configure Tyk data storage layers"
 Tyk stores a variety of data in 4 separate data storage layers. You can configure each layer separately to use one of our supported database platforms. Alternatively a single platform can be used for all layers. The 4 data storage layers are as follows:
 1. **Main**: Stores configurations of: APIs, Policies, Users and User Groups.
 2. **Aggregate Analytics**: Data used to display Dashboard charts and [analytics]({{< ref "tyk-dashboard-analytics" >}}).
-3. **Logs**: When [detailed logging]({{< ref "tyk-stack/tyk-pump/useful-debug-modes#what-is-detailed-request-logging" >}}) is enabled, request and response data is logged to storage. These logs can previewed in the Dashboard [log browser]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}}).
+3. **Logs**: When [detailed logging]({{< ref "api-management/troubleshooting-debugging#capturing-detailed-logs" >}}) is enabled, request and response data is logged to storage. These logs can previewed in the Dashboard [log browser]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}}).
 4. **Uptime**: Uptime test analytics.
 
 Being extensible, Tyk supports storing this data across different databases (MongoDB, MySQL and PostgreSQL etc.). For example, Tyk can be configured to store analytics in PostgreSQL, logs in MongoDB and uptime data in MySQL.

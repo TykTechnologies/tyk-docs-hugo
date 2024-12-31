@@ -29,7 +29,7 @@ Click a request to view its details.
 ### Self-Managed Installations Option
 
 In an Self-Managed installation, if you have request and response logging enabled, then you can also view the request payload and the response if it is available.
-To enable request and response logging, please take a look at [useful debug modes]({{< ref "tyk-stack/tyk-pump/useful-debug-modes" >}}) .
+To enable request and response logging, please take a look at [useful debug modes]({{< ref "api-management/troubleshooting-debugging#capturing-detailed-logs" >}}) .
 
 **A warning on detailed logging:** This mode generates a very large amount of data, and that data exponentially increases the size of your log data set, and may cause problems with delivering analytics in bulk to your MongoDB instances. This mode should only be used to debug your APIs for short periods of time.
 
