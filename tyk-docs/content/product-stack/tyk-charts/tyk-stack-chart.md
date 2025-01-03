@@ -229,6 +229,7 @@ If not, you can use these rather excellent charts provided by Bitnami to install
 **Mongo Installation**
 
 ```bash
+helm repo add bitnami https://charts.bitnami.com/bitnami
 helm install tyk-mongo bitnami/mongodb --set "replicaSet.enabled=true" -n tyk --version 15.1.3
 ```
 
@@ -290,6 +291,7 @@ global:
 
 **PostgresSQL Installation**
 ```bash
+helm repo add bitnami https://charts.bitnami.com/bitnami
 helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics" -n tyk --version 12.12.10
 ```
 

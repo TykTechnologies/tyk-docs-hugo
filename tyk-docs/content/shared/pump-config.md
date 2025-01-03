@@ -5041,7 +5041,7 @@ ENV: <b>TYK_PMP_HEALTHCHECKENDPOINTNAME</b><br />
 Type: `string`<br />
 
 
-The default is "hello".
+The default is "health".
 
 ### health_check_endpoint_port
 ENV: <b>TYK_PMP_HEALTHCHECKENDPOINTPORT</b><br />
