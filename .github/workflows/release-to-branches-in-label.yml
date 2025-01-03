@@ -94,6 +94,9 @@ jobs:
                     issue_number: pullRequestNumber,
                     body: `/release to ${label.name}`
                   });
+                }else{
+                   console.log(`No comment created for label '${label.name}' on PR #${pullRequestNumber} because the user '${userWhoAddedLabel}' is not a member of the organization 'TykTechnologies'.`);
+
                 }
               }else{
                 console.log(`Label '${label.name}' does not match the expected format.`);
