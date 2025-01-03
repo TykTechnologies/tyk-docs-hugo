@@ -1,0 +1,87 @@
+name: On Pull Request Merged to Master
+
+on:
+  pull_request:
+    # Only trigger on pull requests targeting main/master
+    branches:
+      - master
+      - main
+    types:
+      - closed
+
+jobs:
+  run-on-pr-merged:
+    runs-on: ubuntu-latest
+
+    # Only run if the PR was actually merged
+    if: ${{ github.event.pull_request.merged == true }}
+
+    steps:
+      - name: Add a comment to the merged PR (only if labeler is in the org)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // 1. The label format: e.g., "release-1", "release-1.0"
+            const labelRegex = /^release-[0-9]+(\.[0-9]+)?$/;
+            
+            // 2. Get PR info
+            const pullRequestNumber = context.payload.pull_request.number;
+            const labelsOnPR = context.payload.pull_request.labels || [];
+
+            // 3. Get all timeline events to see who labeled the PR
+            const { data: prEvents } = await github.rest.issues.listEvents({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pullRequestNumber
+            });
+
+            // 4. Filter down to "labeled" events
+            const labeledEvents = prEvents.filter(ev => ev.event === 'labeled');
+
+            // 5. Build a map: labelName -> last user who added it
+            //    (We reverse to get the *most recent* labeler, if a label was added multiple times)
+            const labelToLastLabeler = {};
+            for (const event of labeledEvents.reverse()) {
+              const labelName = event.label?.name;
+              const userName = event.actor?.login;
+              if (labelName && userName && !labelToLastLabeler[labelName]) {
+                labelToLastLabeler[labelName] = userName;
+              }
+            }
+
+            // 6. For each label on the PR, check if it matches "release-.."
+            //    If yes, we see who labeled it last and check their membership
+            for (const label of labelsOnPR) {
+              if (labelRegex.test(label.name)) {
+                const userWhoAddedLabel = labelToLastLabeler[label.name];
+
+                // If there's no recorded user (edge case), skip
+                if (!userWhoAddedLabel) continue;
+
+                // 7. Check if the user is in the org
+                let isMember = false;
+                try {
+                  await github.rest.orgs.checkMembershipForUser({
+                    org: 'TykTechnologies',              
+                    username: userWhoAddedLabel
+                  });
+                  // If this call succeeds, they're a member
+                  isMember = true;
+                } catch (error) {
+                  // If 404, user is not a member. Anything else is an unexpected error.
+                  if (error.status !== 404) {
+                    throw error;
+                  }
+                }
+
+                // 8. Comment only if user is in the org
+                if (isMember) {
+                  await github.rest.issues.createComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: pullRequestNumber,
+                    body: `/release to ${label.name}`
+                  });
+                }
+              }
+            }
