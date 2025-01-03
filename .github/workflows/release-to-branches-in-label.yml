@@ -27,7 +27,7 @@ jobs:
             // 2. Get PR info
             const pullRequestNumber = context.payload.pull_request.number;
             const labelsOnPR = context.payload.pull_request.labels || [];
-
+            console.log("Labels on the Pull Request:", labelsOnPR.map(label => label.name));
             // 3. Get all timeline events to see who labeled the PR
             const { data: prEvents } = await github.rest.issues.listEvents({
               owner: context.repo.owner,
@@ -37,7 +37,11 @@ jobs:
 
             // 4. Filter down to "labeled" events
             const labeledEvents = prEvents.filter(ev => ev.event === 'labeled');
-
+            console.log("Labeled Events:",labeledEvents.map(event => ({
+                label: event.label?.name,
+                user: event.actor?.login,
+                timestamp: event.created_at
+            })));
             // 5. Build a map: labelName -> last user who added it
             //    (We reverse to get the *most recent* labeler, if a label was added multiple times)
             const labelToLastLabeler = {};
@@ -56,7 +60,10 @@ jobs:
                 const userWhoAddedLabel = labelToLastLabeler[label.name];
 
                 // If there's no recorded user (edge case), skip
-                if (!userWhoAddedLabel) continue;
+                if (!userWhoAddedLabel) {
+                    console.log(`User not found for label: ${label.name}`);
+                    continue;
+                }
 
                 // 7. Check if the user is in the org
                 let isMember = false;
@@ -67,21 +74,30 @@ jobs:
                   });
                   // If this call succeeds, they're a member
                   isMember = true;
+                  console.log(`User '${userWhoAddedLabel}' is a member of the organization '${'TykTechnologies'}'.`);
                 } catch (error) {
                   // If 404, user is not a member. Anything else is an unexpected error.
-                  if (error.status !== 404) {
+                  if (error.status === 404) {
+                    console.log(`User '${userWhoAddedLabel}' is NOT a member of the organization '${'TykTechnologies'}'.`);
+                  }else {
+                    console.error(`An error occurred while checking membership for user '${userWhoAddedLabel}':`, error);
                     throw error;
                   }
                 }
 
                 // 8. Comment only if user is in the org
                 if (isMember) {
+                  console.log(`Creating comment for label '${label.name}' on PR #${pullRequestNumber} by user '${userWhoAddedLabel}'.`);
                   await github.rest.issues.createComment({
                     owner: context.repo.owner,
                     repo: context.repo.repo,
                     issue_number: pullRequestNumber,
                     body: `/release to ${label.name}`
                   });
-                }
-              }
+                }else{
+                 console.log(`No comment created for label '${label.name}' on PR #${pullRequestNumber} because the user '${userWhoAddedLabel}' is not a member of the organization 'TykTechnologies'.`);
+                 }
+              }else{
+                console.log(`Label '${label.name}' does not match the expected format.`);
+               }
             }
