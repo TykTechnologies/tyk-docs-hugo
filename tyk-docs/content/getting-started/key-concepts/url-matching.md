@@ -218,7 +218,7 @@ For example, the pattern `/user` will match all of the following URLs:
 
 ### Prefix match
 
-When [TYK_GW_HTTPSERVEROPTIONS_ENABLEPATHSUFFIXMATCHING]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_path_prefix_matching" >}}) is enabled, the Gateway switches to prefix matching where it treats the configured pattern as a prefix which will only match against the beginning of the path. For example, a pattern such as `/json` will only match request URLs that begin with `/json`, rather than matching any URL containing `/json`.
+When [TYK_GW_HTTPSERVEROPTIONS_ENABLEPATHPREFIXMATCHING]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_path_prefix_matching" >}}) is enabled, the Gateway switches to prefix matching where it treats the configured pattern as a prefix which will only match against the beginning of the path. For example, a pattern such as `/json` will only match request URLs that begin with `/json`, rather than matching any URL containing `/json`.
 
 The gateway checks the request URL against several variations depending on whether path versioning is enabled:
 
@@ -228,7 +228,7 @@ The gateway checks the request URL against several variations depending on wheth
 
 The logic behind prefix matching is that it prepends the start of string symbol (`^`) if the URL begins with a `/`, to ensure that the URL begins with the specified pattern. For example, `/json` would be evaluated as `^/json`.
 
-For patterns that already start with `^`, the gateway will already perform prefix matching so `TYK_GW_HTTPSERVEROPTIONS_ENABLEPATHSUFFIXMATCHING` will have no impact.
+For patterns that already start with `^`, the gateway will already perform prefix matching so `TYK_GW_HTTPSERVEROPTIONS_ENABLEPATHPREFIXMATCHING` will have no impact.
 
 This option allows for more specific and controlled routing of API requests, potentially reducing unintended matches. Note that you may need to adjust existing route definitions when enabling this option.
 
