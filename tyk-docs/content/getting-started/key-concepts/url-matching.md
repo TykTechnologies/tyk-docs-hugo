@@ -106,7 +106,7 @@ The remainder of the *request path* after any version identifier is considered t
 
 Before attempting to [match](#pattern-matching) the incoming request to the various APIs deployed on Tyk to determine which route should be taken, Tyk will first place all the APIs in order. The order is important because the routing logic will compare the incoming request against each in turn until it finds a match (or returns `HTTP 404` if no match is found).
 
-On receipt of an API request Tyk firstly creates a list of all APIs and then iterates through the list for each of the following steps:
+The APIs loaded on the Gateway are ordered as follows:
 1. APIs that don't have a custom domain defined are moved to the end of the list.
 2. Then among each section (custom domain/no custom domain) it will sort by listen path length (longer paths first)
     - Note that (dynamic) path parameters are not resolved at this stage so `/api/{category}/user` will rank higher than `/api/123/user`
@@ -117,8 +117,7 @@ On receipt of an API request Tyk firstly creates a list of all APIs and then ite
     - If two endpoints have the same number of segments, the longer path goes first - e.g. `/api/user-access` before `/api/user`
     - For equal length paths, lexicographical order is applied - e.g. `/api/aba` before `/api/abc`
 
-Having created the ordered list, Tyk will attempt to match the request against the paths (patterns) in the list, starting from the top and moving down the list.
-If a match is found, no further checks will be perfomed, so it is important to understand how Tyk orders the patterns to ensure there is no accidental routing to the wrong endpoint.
+Having created the ordered list, Tyk will attempt to match the request against the paths (patterns) in the list, starting from the top and moving down the list. If a match is found, no further checks will be perfomed, so it is important to understand how Tyk orders the patterns to ensure there is no accidental routing to the wrong endpoint.
 
 
 ## Pattern matching 
