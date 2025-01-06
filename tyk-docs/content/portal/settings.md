@@ -1,22 +1,73 @@
 ---
-title: "Enable single sign on for admin users and developers"
-date: 2022-02-10
-tags: ["Tyk Developer Portal","Enterprise Portal", "single sign on", "SSO"]
-description: "How to enable single sign on for admin users and developers"
-menu:
-  main:
-    parent: "Manage API Users"
-weight: 4
+title: "Developer Portal Settings"
+date: 2022-12-28
+tags: ["Tyk Developer Portal","Enterprise Portal","Email","Notifications"]
+aliases:
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/setup-email-notifications
+description: ""
 ---
 
 {{< note success >}}
 **Tyk Enterprise Developer Portal**
 
-If you are interested in getting access, contact us at [support@tyk.io](<mailto:support@tyk.io?subject=Tyk Enterprise Portal Beta>)
+If you are interested in getting access contact us at [support@tyk.io](<mailto:support@tyk.io?subject=Tyk Enterprise Portal Beta>)
 
 {{< /note >}}
 
-## Introduction
+## Email Configuration
+
+Configuring the emailing settings is necessary for the portal to send notifications to admin users and API consumers.
+Once the configuration is finished, the portal will send emails upon the following events:
+* Password reset;
+* New access request;
+* Access request approved;
+* Access request rejected;
+* Pending user registration request;
+* Invitation to a user to register in the portal;
+* User account is activated;
+* User account is deactivated;
+* New organization registration request is created;
+* Organization registration request is accepted;
+* Organization registration request is rejected.
+
+
+**Prerequisites**
+
+Before setting up the emailing configuration, you need your email server up and running.
+To complete the email setup, you will need the following information about your SMTP server:
+* Address of your SMTP server;
+* A port on which it accepts connections;
+* Username and password to connect to your SMTP server.
+
+### Portal Admin User Notifications
+
+To start with, you need to configure an email address where the portal will send notifications for admin users: new API Product access requests, new organization registration requests, and so on.
+For that, you need to navigate to the General section in the Setting menu, scroll down to the Portal admin notification address, and specify the admin email address in the Portal admin email field.
+{{< img src="img/dashboard/portal-management/enterprise-portal/admin_email_settings.png" alt="Portal admin notification address settings" >}}
+
+### Outbound Mailing 
+
+#### The default from email
+
+To enable the portal to send notifications to admin users and API Consumers, you need to specify the outbound email address in the Default Email From field.
+No notifications will be sent until the Default Email From field is specified.
+{{< img src="img/dashboard/portal-management/enterprise-portal/default_from_email_settings.png" alt="Default from email settings" >}}
+
+#### Email Subjects
+
+Once the default from email is configured, you can specify subjects for notifications.
+If you don’t, the default subjects will be used for email notifications.
+{{< img src="img/dashboard/portal-management/enterprise-portal/email_subjects_settings.png" alt="Email subject settings" >}}
+
+#### SMTP Server Settings
+
+Once the default from email, the admin notification email, and the subjects for outbound emails are configured, you need to configure settings for the SMTP server.
+To do so, navigate to the SMTP setting section in the Settings/General menu and specify:
+* Your SMTP server host and port;
+* The SMTP username and password if authentication is configured for your SMTP server. 
+{{< img src="img/dashboard/portal-management/enterprise-portal/smtp_settings.png" alt="SMTP settings" >}}
+
+## Configure Developer Portal SSO
 Single sign-on (SSO) enables users to access multiple applications using one set of login credentials,
 reducing the burden of password management and improving security. SSO is relevant for businesses of all sizes,
 streamlining access control and improving user experience. Regardless of your organization's size, implementing SSO can enhance security,
@@ -25,11 +76,11 @@ simplify access to enterprise resources, and strengthen user satisfaction.
 
 In this section, you’ll learn how to enable single sign-on for admin users and developers in the Tyk Enterprise Developer portal with 3rd party identity providers (IDPs).
 
-## Prerequisites
+**Prerequisites**
 - A Tyk Enterprise portal installation
 - [Supported](https://github.com/TykTechnologies/tyk-identity-broker#using-identity-providers) 3rd party identity provider up and running
 
-## Configure Tyk Enterprise Developer portal for SSO
+### Configure Tyk Enterprise Developer portal for SSO
 Configuration on the portal side is quite straightforward. You need to specify the portal SSO API secret that acts as a credential for the APIs that are used by TIB for communication with the portal within Single Sign-On flow.
 You can use any value for the portal SSO API secret, but it should be consistent with [TIB configuration]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso#configure-tyk-identity-broker-to-work-with-tyk-enterprise-developer-portal" >}}).
 
@@ -45,20 +96,20 @@ extraEnvs:
   value: "your-portal-api-secret"
 ```
 
-## Configure Tyk Identity Broker to work with Tyk Enterprise Developer Portal
+### Configure Tyk Identity Broker to work with Tyk Enterprise Developer Portal
 The Tyk Enterprise Developer portal uses the [Tyk Identity Broker](https://tyk.io/docs/tyk-identity-broker/) to work with various Identity Management Systems, such as LDAP,
 Social OAuth (e.g., GPlus, Twitter, GitHub), or Basic Authentication providers. Therefore, to configure Single Sign-On for the portal,
 you need to install and configure Tyk Identity Broker first. Follow these steps to achieve this:
 
-### Install Tyk Identity Broker
+#### Install Tyk Identity Broker
 Please refer to [the TIB installation guide documentation]({{< ref "tyk-identity-broker/getting-started#installing-tib-as-separate-application" >}}) for different installation options:
 - [Docker](https://hub.docker.com/r/tykio/tyk-identity-broker/#the-tibconf-file)
 - [packages](https://packagecloud.io/tyk/tyk-identity-broker/install#bash-deb)
 - [Tyk helm chart]({{< ref "tyk-identity-broker/getting-started#via-helm-chart-for-kubernetes" >}})
 
-### Specify TIB settings to work with the Tyk Enterprise Developer portal
+#### Specify TIB settings to work with the Tyk Enterprise Developer portal
 
-#### Docker or packages
+##### Docker or packages
 
 Create tib.conf file for [the Docker installation](https://hub.docker.com/r/tykio/tyk-identity-broker/#the-tibconf-file) or if you use [packages](https://packagecloud.io/tyk/tyk-identity-broker/install#bash-deb) to deploy TIB:
 ```.json
@@ -98,7 +149,7 @@ Setting reference:
 - **TykAPISettings.DashboardConfig.AdminSecret** is `PortalAPISecret` in the configuration file of the Developer portal.
 
 The full reference for the configuration file is in [the TIB section of the documentation]({{< ref "tyk-configuration-reference/tyk-identity-broker-configuration" >}}).
-#### Helm charts
+##### Helm charts
 If you wish ot deploy TIB in Kubernetes via [Tyk helm chart]({{< ref "tyk-identity-broker/getting-started#via-helm-chart-for-kubernetes" >}}), you need to specify TIB config as extraVars:
 ```.yaml
 extraEnvs:
@@ -132,15 +183,15 @@ extraEnvs:
 
 The full reference for the configuration file is in [the TIB section of the documentation]({{< ref "tyk-configuration-reference/tyk-identity-broker-configuration" >}}).
 
-## Configure Single Sign-On for admin users and developers
+### Configure Single Sign-On for admin users and developers
 
-### What is the Tyk Identity Broker profile
+#### What is the Tyk Identity Broker profile
 The Tyk Identity Broker (TIB) uses [profiles]({{< ref "tyk-stack/tyk-identity-broker/about-profiles" >}}) to define details related to the identity provider such as its type and access credentials, and instructs TIB on how to treat users that try log in with that provider.
 In this guide, you will create two TIB profiles for admins users and developers. This allows you to have different identity providers for admins and developers as well as for internal and external users.
 
 Depending on your installation options for TIB, you need to specify profiles via a json file (for Docker or packages) or via a ConfigMap (for Tyk Helm Chart).
 
-#### profiles.json for Docker or packages installation
+##### profiles.json for Docker or packages installation
 Here is an example of profiles.json file for Docker or packages installation:
 ```.json
 [
@@ -194,7 +245,7 @@ Here is an example of profiles.json file for Docker or packages installation:
 ]
 ```
 
-#### ConfigMap for Tyk Helm chart installation
+##### ConfigMap for Tyk Helm chart installation
 Here is an example of ConfigMap for the Tyk Helm chart installation:
 ```.yaml
 apiVersion: v1
@@ -252,7 +303,7 @@ data:
     }]
 ```
 
-### Configure Single Sign-On for admin users
+#### Configure Single Sign-On for admin users
 The Tyk Enterprise Developer portal has two audiences: developers and admins. This section provides guidance on implementing
 Single Sign-On for admin users. The configuration is rather straightforward, and you need to take these three steps
 to enable Single Sign-On for admin users in your portal instance:
@@ -334,11 +385,11 @@ Here is an example of such page that works with a profile for LDAP identity mana
 ```
 3. Now you should be able to log in to the portal with your identity provider as an admin user
 
-### Configure Single Sign-On for developers
+#### Configure Single Sign-On for developers
 This section relates to configuration and settings required to set up Single Sign-On for developers. Configuration for developers is also straight forward.
 However, for developers there is one additional.
 
-#### User group mapping
+##### User group mapping
 In order to land a developer into the right API Consumer organization, it is necessary to configure the UserGroupMapping
 in the TIB profile that creates a binding between user groups in your IDP and developer teams in the portal.
 
@@ -364,7 +415,7 @@ To determine whether a developer should be allowed to log in and which team they
 {{< img src="/img/dashboard/portal-management/enterprise-portal/user-group-mapping-algorithm.png" alt="User group mapping algorithm" width="1000">}}
 
 
-#### Configure profile to enable Single Sign-On for developers
+##### Configure profile to enable Single Sign-On for developers
 Follow these steps to enable Single Sign-On for developers: 
 1. Create a profile for the Tyk Identity Broker (TIB) to work on your identity provider. Make sure the ActionType is equal to "GenerateOrLoginUserProfile", and OrgID is equal to "0":
 ```.json
