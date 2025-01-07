@@ -1,0 +1,172 @@
+name: Update baseURL and Create Pull Request
+
+on:
+  workflow_dispatch:
+    inputs:
+      next_latest_branch:
+        description: 'The new branch to create from master'
+        required: true
+      should_automerge:
+        description: 'Should automatically merge the PR?'
+        required: false
+        default: 'false'
+jobs:
+  update-config-and-create-pr:
+    runs-on: ubuntu-latest
+    env:
+      AUTOMERGE: ${{ github.event.inputs.automerge }}
+    steps:
+      # Checkout master and update stable updater
+      - name: Checkout master branch
+        uses: actions/checkout@v4
+        with:
+          ref: master
+      - name: Update version file
+        id: update_version
+        run:  |
+          cd scripts
+          CURRENT_BRANCH=$(python3 modify_version_json.py --next_release ${{ github.event.inputs.next_latest_branch }})
+          echo "current_latest_branch=$CURRENT_BRANCH" >> $GITHUB_OUTPUT
+
+      - name: Create Pull Request for version.json update
+        id: version-updater
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.ORG_GH_TOKEN }}
+          branch: update-version-json-${{ github.run_id }}
+          title: "Update version.json "
+          body: "This pull request updates the version.json file"
+          labels: ${{ github.event.inputs.next_latest_branch }}
+          assignees: ${{ github.actor }}
+
+      #install github cli
+      - name: Install GitHub CLI
+        run: |
+          sudo apt-get install gh   
+
+        # enable auto merging of the pull request
+      - name: Enable Pull Request Automerge and approve
+        if: ${{ env.AUTOMERGE == 'true' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.ORG_GH_TOKEN}}
+        run: |
+          gh pr merge ${{ steps.stable-updater.outputs.pull-request-number }}  --merge --auto
+
+      - name: Update stable-updater.yaml
+        run: |
+          sed -i -E "s/release-[0-9]+(\.[0-9]+)?/${{ github.event.inputs.next_latest_branch }}/g" .github/workflows/stable-updater.yaml
+
+      - name: Create Pull Request for stable-updater.yaml update
+        id: stable-updater
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.ORG_GH_TOKEN }}
+          branch: update-stable-updater-${{ github.run_id }}
+          title: "Update stable-updater.yaml to use ${{ github.event.inputs.next_latest_branch }}"
+          body: "This pull request updates the stable-updater.yaml file to use the next_latest_branch ${{ github.event.inputs.next_latest_branch }}."
+          labels: ${{ github.event.inputs.next_latest_branch }}
+          assignees: ${{ github.actor }}
+
+        # enable auto merging of the pull request
+      - name: Enable Pull Request Automerge and approve
+        if: ${{ env.AUTOMERGE == 'true' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.ORG_GH_TOKEN}}
+        run: |
+          gh pr merge ${{ steps.stable-updater.outputs.pull-request-number }}  --merge --auto
+
+      # Checkout the current latest branch
+      - name: Checkout the current latest branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{  steps.update_version.outputs.current_latest_branch }}
+
+      # Configure Git Identity for committing changes
+      - name: Configure Git Identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      # Extract version from the current_latest_branch (e.g., 'release-5.5' -> '5.5')
+      - name: Extract version from branch name
+        id: extract_version
+        run: |
+          VERSION=$(echo "${{ steps.update_version.outputs.current_latest_branch }}" | grep -oP '\d+\.\d+')
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+      - name: Extract version from next branch name
+        id: extract_version_from_next_release
+        run: |
+          NEXT_VERSION=$(echo "${{ github.event.inputs.next_latest_branch }}" | grep -oP '\d+\.\d+')
+          echo "NEXT_VERSION=$NEXT_VERSION" >> $GITHUB_ENV
+
+      # Update baseURL in config.toml with the extracted version
+      - name: Update baseURL in config.toml
+        run: |
+          sed -i "s|baseURL = \"//tyk.io/docs/\"|baseURL = \"//tyk.io/docs/$VERSION/\"|g" tyk-docs/config.toml
+
+      # Create Pull Request using peter-evans action
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.ORG_GH_TOKEN }}
+          branch: update-config-${{  steps.update_version.outputs.current_latest_branch }}-${{ github.run_id }}
+          title: "Update baseURL to //tyk.io/docs/${{ env.VERSION }}/"
+          body: "This pull request updates the baseURL in config.toml to //tyk.io/docs/${{ env.VERSION }}/."
+          labels: ${{ github.event.inputs.next_latest_branch }}
+          assignees: ${{ github.actor }}
+
+        # enable auto merging of the pull request
+      - name: Enable Pull Request Automerge and approve
+        if: ${{ env.AUTOMERGE == 'true' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.ORG_GH_TOKEN}}
+        run: | 
+          gh pr merge ${{ steps.cpr.outputs.pull-request-number }}  --merge --auto
+      #gh pr review ${{ steps.cpr.outputs.pull-request-number }} --approve
+
+      - name: Checkout master branch
+        uses: actions/checkout@v4
+        with:
+          ref: master
+      # Create the new branch from master
+      # Fetch all branches to ensure current_latest_branch is available
+      - name: Fetch all branches
+        run: |
+          git fetch --all
+
+      # Create the new branch from master
+      - name: Create the new branch from master
+        run: |
+          git checkout -b ${{ github.event.inputs.next_latest_branch }}
+
+      # Copy _redirects file from current_latest_branch
+      - name: Copy _redirects file
+        run: |
+          git fetch origin ${{  steps.update_version.outputs.current_latest_branch }}  # Ensure the branch is fetched
+          git checkout origin/${{  steps.update_version.outputs.current_latest_branch }} -- _redirects
+          git add _redirects
+          git commit -m "Copy _redirects from ${{  steps.update_version.outputs.current_latest_branch }}"
+
+          # Extract version from next_latest_branch
+          VERSION=${{ github.event.inputs.next_latest_branch }}
+          VERSION=${VERSION#release-}  # Remove 'release-' prefix
+
+          # Construct the URL
+          URL="https://release-${VERSION//./-}--tyk-docs.netlify.app/docs/:splat"
+          echo "/docs/${VERSION}/* $URL 200!" >> _redirects
+          git add _redirects
+          git commit -m "Add redirect for version $VERSION"
+          #change the config file 
+          sed -i "s|baseURL = \"//tyk.io/docs/nightly/\"|baseURL = \"//tyk.io/docs/\"|g" tyk-docs/config.toml
+          git add tyk-docs/config.toml
+          git commit -m "change the config version"
+
+      # Push the new branch to origin
+      - name: Push the new branch to origin
+        env:
+          GITHUB_TOKEN: ${{ secrets.ORG_GH_TOKEN }}
+        run: |
+          git push origin ${{ github.event.inputs.next_latest_branch }}
+      
+

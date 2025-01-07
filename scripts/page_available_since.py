@@ -1,97 +1,19 @@
 import requests
 import json
 
-versions = [
-    {
-        "path": "/docs/",
-        "name": "5.7 - Latest",
-        "branch": "release-5.7"
-    },
-    {
-        "path": "/docs/5.6/",
-        "name": "5.6",
-        "branch": "release-5.6"
-    },
-    {
-        "path": "/docs/5.5/",
-        "name": "5.5",
-        "branch": "release-5.5"
-    },
-    {
-        "path": "/docs/5.4/",
-        "name": "5.4",
-        "branch": "release-5.4"
-    }, 
-    {
-        "path": "/docs/5.3/",
-        "name": "5.3 - LTS",
-        "branch": "release-5.3"
-    },
-    {
-        "path": "/docs/5.2/",
-        "name": "5.2",
-        "branch": "release-5.2"
-    },
-    {
-        "path": "/docs/5.1/",
-        "name": "5.1",
-        "branch": "release-5.1"
-
-    },
-    {
-        "path": "/docs/5.0/",
-        "name": "5 - LTS",
-        "branch": "release-5"
-    },
-    {
-        "path": "/docs/4.3/",
-        "name": "4.3",
-        "branch": "release-4.3"
-    },
-    {
-        "path": "/docs/4.2/",
-        "name": "4.2",
-        "branch": "release-4.2"
-    },
-    {
-        "path": "/docs/4.1/",
-        "name": "4.1",
-        "branch": "release-4.1"
-    },
-    {
-        "path": "/docs/4.0/",
-        "name": "4 - LTS",
-        "branch": "release-4"
-    },
-    {
-        "path": "/docs/3.2/",
-        "name": "3.2",
-        "branch": "release-3.2"
-    },
-    {
-        "path": "/docs/3.1/",
-        "name": "3.1",
-        "branch": "release-3.1"
-    },
-    {
-        "path": "/docs/3-lts/",
-        "name": "3 - LTS",
-        "branch": "release-3-lts"
-    },
-
-    {
-        "path": "/docs/nightly/",
-        "name": "Nightly",
-        "branch": "master"
-    }
-]
-
 filePath = "../tyk-docs/data/page_available_since.json"
 
 aliases = set()
+versionFilePath = "versions.json"
+
+
+def read_versions_file(file_path):
+    with open(file_path, 'r') as file:
+        return json.load(file)
 
 
 def process_and_write_to_file() -> None:
+    versions = read_versions_file(versionFilePath)
     available = get_and_process_urls()
     for page_url, version_mapping in available.items():
         available[page_url]["all_versions_are_similar_to_path"] = True
@@ -114,6 +36,7 @@ def process_and_write_to_file() -> None:
 
 
 def get_and_process_urls():
+    versions = read_versions_file(versionFilePath)
     available_since = {}
     for version in versions:
         url = "https://tyk.io{version}pagesurl.json".format(version=version["path"])
