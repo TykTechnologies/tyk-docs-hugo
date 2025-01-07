@@ -23,7 +23,7 @@ We recommend that you familiarize yourself with the following official Go docume
 Plugins are currently supported only on Linux, FreeBSD, and macOS, making them unsuitable for applications intended to be portable.
 {{< /note >}}
 
-### Tyk Plugin Compiler
+## Tyk Plugin Compiler
 
 We provide the [Tyk Plugin Compiler](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler/) docker image, which we **strongly recommend** is used to build plugins compatible with the official Gateway releases. That tool provides the cross compilation toolchain, Go version used to build the release, ensures that compatible flags are used when compiling plugins (such as `-trimpath`, `CC`, `CGO_ENABLED`, `GOOS`, `GOARCH`) and also works around known Go issues such as:
 
