@@ -60,7 +60,8 @@ A suggested directory structure is shown below for Golang, Javascript and Python
 {{< note success >}}
 **Note**  
 
-Subdirectory are not supported in the `bundle-directory`
+Sub-directories (folders) are not supported inside the `bundle-directory` location.
+
 {{< /note >}}
 
 {{< tabs_start >}} {{< tab_start "Golang" >}}
