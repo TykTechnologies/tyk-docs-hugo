@@ -95,8 +95,7 @@ Subdirectory are not supported in the `bundle-directory`
 
 {{< tabs_end >}}
 
-The `manifest.json` will reference the files located in the `bundle-directory`, ensure plugin source files are organized relative to the manifest. The Tyk Gateway will load and execute these
-plugins based on the paths defined in the `manifest.json` file.
+The `manifest.json` will reference the files located in the `bundle-directory`, ensure plugin source files are organized relative to the manifest. The Tyk Gateway will load and execute these plugins based on the paths defined in the `manifest.json` file.
 
 Sample `manifest.json` is shown below for Golang, Javascript and Python bundles in the tabs below.
 
