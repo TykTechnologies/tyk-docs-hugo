@@ -50,7 +50,7 @@ For example:
                         "action": "no_action",
                         "code": 200,
                         "headers": {}
-                    }
+                    },
                     "PUT": {
                         "action": "no_action",
                         "code": 200,
