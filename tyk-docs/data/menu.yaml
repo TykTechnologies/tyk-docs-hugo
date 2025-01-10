@@ -789,6 +789,10 @@ menu:
         path: /api-management/troubleshooting-debugging
         category: Page
         show: True
+      - title: "Rate Limiting"
+        path: /api-management/rate-limit
+        category: Page
+        show: True
       - title: "Manage APIs"
         category: Directory
         show: True
@@ -1326,10 +1330,6 @@ menu:
                 path: /getting-started/key-concepts/url-matching
                 category: Page
                 show: True
-              - title: "What is Rate Limiting?"
-                path: /getting-started/key-concepts/rate-limiting
-                category: Page
-                show: True
               - title: "What is a Security Policy?"
                 path: /getting-started/key-concepts/what-is-a-security-policy
                 category: Page
@@ -1362,10 +1362,6 @@ menu:
                 path: /basic-config-and-security/security/gateway
                 category: Page
                 show: False
-              - title: "Overview"
-                path: /basic-config-and-security/control-limit-traffic
-                category: Page
-                show: True
               - title: "Security Policies and Keys"
                 category: Directory
                 show: True
@@ -1404,30 +1400,6 @@ menu:
                 show: True
               - title: "Allowing Client IPs"
                 path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting
-                category: Page
-                show: True
-              - title: "Rate Limits"
-                category: Directory
-                show: True
-                menu:
-                - title: "Overview"
-                  path: /basic-config-and-security/control-limit-traffic/rate-limiting
-                  category: Page
-                  show: True
-                - title: "Tyk OAS configuration"
-                  path: /product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas
-                  category: Page
-                  show: True
-                - title: "Tyk Classic configuration"
-                  path: /product-stack/tyk-gateway/middleware/endpoint-rate-limit-classic
-                  category: Page
-                  show: True
-              - title: "Request Quotas"
-                path: /basic-config-and-security/control-limit-traffic/request-quotas
-                category: Page
-                show: True
-              - title: "Request Throttling"
-                path: /basic-config-and-security/control-limit-traffic/request-throttling
                 category: Page
                 show: True
               - title: "Request Size Limits"
@@ -3439,18 +3411,6 @@ menu:
                     path: /product-stack/tyk-streaming/configuration/common-configuration/processing-pipelines
                     category: Page
                     show: True
-          - title: "Rate Limits"
-            category: Directory
-            show: true
-            menu:
-              - title: "Overview"
-                path: /product-stack/tyk-streaming/configuration/rate-limits/overview
-                category: Page
-                show: True
-              - title: "Local"
-                path: /product-stack/tyk-streaming/configuration/rate-limits/local
-                category: Page
-                show: True
           - title: "Deployment Considerations"
             path: /product-stack/tyk-streaming/deployment-considerations
             category: Page
