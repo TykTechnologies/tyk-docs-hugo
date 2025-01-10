@@ -276,5 +276,8 @@
     "developer-support/upgrading-tyk/deployment-model/self-managed/go-plugins": "#go-plugin",
     "developer-support/upgrading-tyk/deployment-model/self-managed/mdcb": "#upgrade-mdcb",
     "frequently-asked-questions/sla-policies": "#",
-    "frequently-asked-questions/faq": "#"
+    "frequently-asked-questions/faq": "#",
+    "getting-started/key-concepts/oas-versioning": "#tyk-oas-api-versioning-1",
+    "getting-started/key-concepts/versioning": "#tyk-classic-api-versioning-1",
+    "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning": "#"
 }
