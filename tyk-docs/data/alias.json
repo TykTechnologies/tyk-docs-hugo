@@ -276,5 +276,15 @@
     "developer-support/upgrading-tyk/deployment-model/self-managed/go-plugins": "#go-plugin",
     "developer-support/upgrading-tyk/deployment-model/self-managed/mdcb": "#upgrade-mdcb",
     "frequently-asked-questions/sla-policies": "#",
-    "frequently-asked-questions/faq": "#"
+    "frequently-asked-questions/faq": "#",
+    "basic-config-and-security/security/tls-and-ssl": "#",
+    "frequently-asked-questions/add-custom-certificates-to-docker-images": "#how-to-add-custom-certificates-to-trusted-storage-of-docker-images",
+    "security/certificate-pinning": "#certificate-pinning",
+    "tyk-docs/content/basic-config-and-security/control-limit-traffic/key-expiry": "#access-key-expiry",
+    "tyk-docs/content/basic-config-and-security/security/key-hashing": "#access-key-hashing",
+    "tyk-docs/content/basic-config-and-security/security/key-level-security": "#access-key-level-security",
+    "tyk-docs/content/basic-config-and-security/security/security-policies/partitioned-policies": "#partitioned-policies",
+    "tyk-docs/content/basic-config-and-security/security/security-policies/policies-guide": "#policies-guide",
+    "tyk-docs/content/getting-started/key-concepts/what-is-a-security-policy": "#what-is-a-security-policy",
+    "tyk-docs/content/security/security-policies/secure-apis-method-path": "#secure-your-apis-by-method-and-path"
 }
