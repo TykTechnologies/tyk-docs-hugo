@@ -1,6 +1,6 @@
 ---
 title: "Install Tyk Open Source"
-description: "This page serves as a comprehensive guide to migrating workloads to Tyk"
+description: "This page serves as a comprehensive guide to migrating workloads to Tyk Open Source"
 tags: ["installation", "migration", "open source"]
 aliases:
   - /apim/open-source/installation

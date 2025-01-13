@@ -1,7 +1,7 @@
 ---
 title: "Install Tyk Self Managed"
-description: "This page serves as a comprehensive guide to migrating workloads to Tyk"
-tags: ["installation", "migration"]
+description: "This page serves as a comprehensive guide to migrating workloads to Tyk Self Managed"
+tags: ["installation", "migration", "self managed"]
 aliases:
   - /get-started/with-tyk-on-premise/installation
   - /getting-started/installation/with-tyk-on-premises
