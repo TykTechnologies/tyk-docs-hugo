@@ -838,6 +838,18 @@ Type: `string`<br />
 
 When using SAML with embedded identity broker, is required to upload a certificate that is encoded by the gateway to store it safely, TIB needs the private key as well, hence it needs the same encoding secret so the information is decoded successfully. This value should match with the encoding secret set in the gateway config file, if not set then it will use by default tyk_api_config.secret to attempt to decode the certificate.
 
+### security.forbid_admin_view_access_token
+ENV: <b>TYK_DB_SECURITY_FORBIDADMINVIEWACCESSTOKEN</b><br />
+Type: `bool`<br />
+
+ForbidAdminViewAccessToken is a security feature that allows you to prevent the admin user from viewing the access token of a user. The default is false.
+
+### security.forbid_admin_reset_access_token
+ENV: <b>TYK_DB_SECURITY_FORBIDADMINRESETACCESSTOKEN</b><br />
+Type: `bool`<br />
+
+ForbidAdminResetAccessToken is a security feature that allows you to prevent the admin user from resetting the access token of a user. The default is false.
+
 ### ui
 This section controls various settings for the look and feel of the Dashboard UI.
 

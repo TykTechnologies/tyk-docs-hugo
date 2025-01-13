@@ -7,22 +7,10 @@ tags:
     - middleware
     - debugging go plugins
 description: Development flow working with Go Plugins
-date: "2024-10-11"
+date: "2025-01-06"
 ---
 
-We recommend that you familiarize yourself with the following official Go documentation to help you work effectively with Go plugins:
-
-- [The official plugin package documentation - Warnings](https://pkg.go.dev/plugin)
-- [Tutorial: Getting started with multi-module workspaces](https://go.dev/doc/tutorial/workspaces)
-tags:
-    - custom plugin
-    - golang
-    - go plugin
-    - middleware
-    - debugging go plugins
-description: Development flow working with Go Plugins
-date: "2024-10-11"
----
+Go Plugins need to be compiled to native shared object code, which can then be loaded by Tyk Gateway.
 
 We recommend that you familiarize yourself with the following official Go documentation to help you work effectively with Go plugins:
 
@@ -31,17 +19,23 @@ We recommend that you familiarize yourself with the following official Go docume
 
 {{< note success >}}
 **Note**
-**Note**
 
-Plugins are currently supported only on Linux, FreeBSD, and macOS, making them unsuitable for applications intended to be portable.
 Plugins are currently supported only on Linux, FreeBSD, and macOS, making them unsuitable for applications intended to be portable.
 {{< /note >}}
 
-Plugins need to be compiled to native shared object code, which can then be loaded by Tyk Gateway. It's important to understand the need for plugins to be compiled using exactly the same environment and build flags as the Gateway. To simplify this and minimise the risk of compatibility problems, we recommend the use of [Go workspaces](https://go.dev/blog/get-familiar-with-workspaces), to provide a consistent environment.
+## Tyk Plugin Compiler
+
+We provide the [Tyk Plugin Compiler](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler/) docker image, which we **strongly recommend** is used to build plugins compatible with the official Gateway releases. That tool provides the cross compilation toolchain, Go version used to build the release, ensures that compatible flags are used when compiling plugins (such as `-trimpath`, `CC`, `CGO_ENABLED`, `GOOS`, `GOARCH`) and also works around known Go issues such as:
+
+- https://github.com/golang/go/issues/19004
+- https://www.reddit.com/r/golang/comments/qxghjv/plugin_already_loaded_when_a_plugin_is_loaded/
+
 
 ## Setting up your environment
 
-To develop plugins, you'll need:
+It's important to understand the need for plugins to be compiled using exactly the same environment and build flags as the Gateway. To simplify this and minimise the risk of compatibility problems, we recommend the use of [Go workspaces](https://go.dev/blog/get-familiar-with-workspaces), to provide a consistent environment.
+
+To develop plugins without using the Tyk Plugin Compiler, you'll need:
 
 - Go (matching the version used in the Gateway, which you can determine using `go.mod`).
 - Git to check out Tyk Gateway source code.
@@ -169,17 +163,6 @@ Plugins are native Go code compiled to a binary shared object file. The code may
 The [Plugin package - Warnings](https://pkg.go.dev/plugin#hdr-Warnings) section in the Go documentation outlines several requirements which can't be ignored when working with plugins. The most important restriction is the following:
 
 > Runtime crashes are likely to occur unless all parts of the program (the application and all its plugins) are compiled using exactly the same version of the toolchain, the same build tags, and the same values of certain flags and environment variables.
-
-We provide the *Tyk Plugin Compiler* docker image, which we strongly recommend is used to build plugins compatible with the official Gateway releases. This tool provides the cross compilation toolchain, Go version used to build the release, and ensures that compatible flags are used when compiling plugins, like `-trimpath`, `CC`, `CGO_ENABLED`, `GOOS`, `GOARCH`.
-
-The *Plugin Compiler* also works around known Go issues such as:
-
-- https://github.com/golang/go/issues/19004
-- https://www.reddit.com/r/golang/comments/qxghjv/plugin_already_loaded_when_a_plugin_is_loaded/
-
-Supplying the argument `build_id` to the *Plugin Compiler* ensures the same plugin can be rebuilt. The *Plugin Compiler* does this by replacing the plugin `go.mod` module path.
-
-Continue with [Tyk Plugin Compiler](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler/).
 
 ### Using Incorrect Build Flags
 

@@ -2,7 +2,7 @@
 title: "List of endpoints exposed by Tyk Enterprise Developer Portal v1.9.0"
 date: 2024-02-29
 tags: ["Tyk Developer Portal","Enterprise Portal","Endpoints","Firewall","Integration","Portal 1.9.0"]
-description: "Configure webhooks to react on events happening in the portal"
+description: "Internal APIs exposed by Tyk Developer Portal"
 menu:
     main:
         parent: "Configuring firewall"

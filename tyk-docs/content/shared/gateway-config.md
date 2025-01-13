@@ -725,6 +725,9 @@ If set to `true`, distributed rate limiter will be disabled for this node, and i
 If you set `db_app_conf_options.node_is_segmented` to `true` for multiple Gateway nodes, you should ensure that `management_node` is set to `false`.
 This is to ensure visibility for the management node across all APIs.
 {{< /note >}}
+For pro installations, `management_node` is not a valid configuration option.
+Always set `management_node` to `false` in pro environments.
+
 
 ### auth_override
 This is used as part of the RPC / Hybrid back-end configuration in a Tyk Enterprise installation and isn’t used anywhere else.
