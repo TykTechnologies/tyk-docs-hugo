@@ -2,7 +2,7 @@
 aliases:
 - /using-tyk-dashboard
 date: 2020-06-24
-description: How to decide on which Tyk deployment option is best for you
+description: Configure your first API in Tyk Cloud
 linkTitle: Getting Started
 tags:
 - Tyk API Management

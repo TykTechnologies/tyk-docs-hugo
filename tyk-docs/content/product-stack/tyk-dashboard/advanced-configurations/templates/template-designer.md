@@ -1,7 +1,7 @@
 ---
 title: Working with API Templates using the Template Designer
 date: 2024-03-04
-description: "Using API Templates with Tyk"
+description: "Configuring API Templates in Tyk using template designer"
 tags: ["template", "templating", "governance", "API governance", "create", "manage", "Tyk OAS", "Tyk OAS API", "Template Designer"]
 ---
 
