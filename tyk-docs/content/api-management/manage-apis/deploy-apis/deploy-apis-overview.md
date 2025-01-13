@@ -52,6 +52,6 @@ Usage: Recommended for organizations already running Kubernetes and seeking a Ku
 
 Learn more:
 - [Tyk Operator]({{<ref "/api-management/automations#what-is-tyk-operator">}})
-- [Using Tyk Operator to enable GitOps with Tyk]({{<ref "getting-started/key-concepts/gitops-with-tyk">}})
+- [Using Tyk Operator to enable GitOps with Tyk]({{<ref "api-management/automations">}})
 
 With these flexible deployment options, you can easily design, develop, and deploy APIs in Tyk according to your specific requirements and workflow. Choose the option that best aligns with your needs and integrates smoothly into your API development lifecycle.

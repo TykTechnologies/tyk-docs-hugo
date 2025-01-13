@@ -50,7 +50,7 @@ In the response middleware chain, the endpoint-level transform is applied before
 You can enrich the response headers by injecting data from context variables or session objects into the headers.
 - [context variables]({{< ref "context-variables" >}}), extracted from the request at the start of the middleware chain, can be injected into added headers using the `$tyk_context.` namespace
 - [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}), from the Tyk Session Object linked to the request, can be injected into added headers using the `$tyk_meta.` namespace
-- values from [key-value (KV) storage]({{< ref "tyk-configuration-reference/kv-store#transformation-middleware" >}}) can be injected into added headers using the notation appropriate to the location of the KV store
+- values from [key-value (KV) storage]({{< ref "tyk-self-managed#transformation-middleware" >}}) can be injected into added headers using the notation appropriate to the location of the KV store
 
 <hr>
 

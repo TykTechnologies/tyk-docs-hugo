@@ -28,7 +28,7 @@ The concept of an organization does not exist within the Tyk Gateway. Gateways o
 
 Tyk allows each organization to own its own set of Gateways, for example when you want to use different hosting providers you can segregate them in terms of resources, or just for security reasons.
 
-Self-Managed users should use [API tagging]({{< ref "advanced-configuration/manage-multiple-environments/with-tyk-on-premises" >}}) and enforce a tagging standard across all organizations.
+Self-Managed users should use [API tagging]({{< ref "advanced-configuration/manage-multiple-environments/with-tyk-on-premises#api-tagging-with-on-premises" >}}) and enforce a tagging standard across all organizations.
 
 All actions in a Self-Managed installation of Tyk must use a base Organization, and all actions should stem from a User owned by that organization.
 

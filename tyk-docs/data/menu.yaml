@@ -48,378 +48,10 @@ menu:
         path: /apim
         category: Page
         show: True
-      - title: "Open Source API Gateway"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            path: /apim/open-source
-            category: Page
-            show: True
-          - title: "Quick start"
-            path: /deployment-and-operations/tyk-open-source-api-gateway/quick-start
-            category: Page
-            show: True
-          - title: "Other installation options"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /apim/open-source/installation
-                category: Page
-                show: True
-              - title: "Docker"
-                path: /tyk-oss/ce-docker
-                category: Page
-                show: True
-              - title: "Kubernetes"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /tyk-oss/ce-kubernetes
-                    category: Page
-                    show: True
-                  - title: "Quick Start with Tyk OSS Helm Chart"
-                    path: /tyk-oss/ce-helm-chart-new
-                    category: Page
-                    show: True
-                  - title: "Legacy Tyk Headless Helm Chart"
-                    path: /tyk-oss/ce-helm-chart
-                    category: Page
-                    show: True
-              - title: "Ansible"
-                path: /tyk-oss/ce-ansible
-                category: Page
-                show: True
-              - title: "Debian / Ubuntu"
-                path: /tyk-oss/ce-debian-ubuntu
-                category: Page
-                show: True
-              - title: "Red Hat (RHEL / CentOS)"
-                path: /tyk-oss/ce-redhat-rhel-centos
-                category: Page
-                show: True
-              - title: "Configure Redis Cluster"
-                path: /tyk-stack/tyk-gateway/configuration/redis-cluster
-                category: Page
-                show: True
-              - title: "Configure Redis Sentinel"
-                path: /tyk-stack/tyk-gateway/configuration/redis-sentinel
-                category: Page
-                show: True
-              - title: "Via GitHub"
-                path: /tyk-oss/ce-github
-                category: Page
-                show: True
-          - title: "Open source operations tooling"
-            category: Page
-            show: False
-      - title: "Tyk Cloud"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            path: /tyk-cloud
-            category: Page
-            show: True
-          - title: "What Is Tyk Cloud?"
-            path: /tyk-cloud/what-is-tyk-cloud
-            show: True
-          - title: "Free Trial"
-            path: /deployment-and-operations/tyk-cloud-platform/quick-start
-            category: Page
-            show: True
-          - title: "Deployment lifecycle"
-            category: Directory
-            show: True
-            menu:
-              - title: "Planning phase"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Getting started"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Getting started with Tyk Cloud"
-                        path: /tyk-cloud/getting-started
-                        category: Page
-                        show: True
-                      - title: " Task 1 - Create Your Account"
-                        path: /tyk-cloud/getting-started-tyk-cloud/create-account
-                        category: Page
-                        show: True
-                      - title: "Task 2 - Set up Your Organisation"
-                        path: /tyk-cloud/getting-started-tyk-cloud/setup-org
-                        category: Page
-                        show: True
-                      - title: "Task 3 - Set up Your First Team"
-                        path: /tyk-cloud/getting-started-tyk-cloud/setup-team
-                        category: Page
-                        show: True
-                      - title: "Task 4 - Set Up Environment and Configure Deployments"
-                        path: /tyk-cloud/getting-started-tyk-cloud/setup-environment
-                        category: Page
-                        show: True
-                      - title: "Task 5 - Deploy your Cloud Data Plane and add your first API"
-                        path: /tyk-cloud/getting-started-tyk-cloud/first-api
-                        category: Page
-                        show: True
-                      - title: "Task 6 - Test your API"
-                        path: /tyk-cloud/getting-started-tyk-cloud/test-api
-                        category: Page
-                        show: True
-                      - title: "Task 7 - View Analytics"
-                        path: /tyk-cloud/getting-started-tyk-cloud/view-analytics
-                        category: Page
-                        show: True
-                      - title: "What we covered"
-                        path: /tyk-cloud/getting-started-tyk-cloud/to-conclude
-                        category: Page
-                        show: True
-                  - title: "Availability of infrastructure"
-                    category: Page
-                    show: False
-                  - title: "Teams and users"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /tyk-cloud/teams--users
-                        category: Page
-                        show: True
-                      - title: "Managing teams"
-                        path: /tyk-cloud/teams--users/managing-teams
-                        category: Page
-                        show: True
-                      - title: "Managing users"
-                        path: /tyk-cloud/teams--users/managing-users
-                        category: Page
-                        show: True
-                      - title: "Tyk Cloud user roles"
-                        path: /tyk-cloud/teams--users/user-roles
-                        category: Page
-                        show: True
-                      - title: "Tyk Cloud Single Sign-On (SSO)"
-                        path: /tyk-cloud/teams--users/single-sign-on
-                        category: Page
-                        show: True
-                  - title: "Environments and deployments"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /tyk-cloud/environments--deployments
-                        category: Page
-                        show: True
-                      - title: "Managing organisations"
-                        path: /tyk-cloud/environments--deployments/managing-organisations
-                        category: Page
-                        show: True
-                      - title: "Managing environments"
-                        path: /tyk-cloud/environments--deployments/managing-environments
-                        category: Page
-                        show: True
-                      - title: "Managing control planes"
-                        path: /tyk-cloud/environments--deployments/managing-control-planes
-                        category: Page
-                        show: True
-                      - title: "Managing cloud data planes"
-                        path: /tyk-cloud/environments--deployments/managing-gateways
-                        category: Page
-                        show: True
-                      - title: "Managing Your APIs"
-                        path: /tyk-cloud/environments--deployments/managing-apis
-                        category: Page
-                        show: True
-                  - title: "Manage subscriptions and add-ons"
-                    category: Page
-                    show: False
-                  - title: "Initial portal configuration"
-                    path: /tyk-cloud/initial-portal-config
-                    category: Page
-                    show: True
-              - title: "Deployment phase"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Deploy features to the Tyk Cloud"
-                    category: Page
-                    show: False
-                  - title: "Enable configuration and workflows between deployments"
-                    category: Page
-                    show: False
-                  - title: "Deploy hybrid gateways"
-                    path: /tyk-cloud/environments-deployments/hybrid-gateways
-                    category: Page
-                    show: True
-                  - title: "Securing your APIs"
-                    path: /tyk-cloud/securing-your-apis
-                    category: Page
-                    show: True
-                  - title: "Using custom domains"
-                    path: /tyk-cloud/using-custom-domains
-                    category: Page
-                    show: True
-                  - title: "Deploy hybrid gateways using legacy helm chart"
-                    path: /tyk-cloud/environments-deployments/hybrid-gateways-helm
-                    category: Page
-                    show: True
-              - title: "Operations and BAU"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Manage, audit and govern cloud infrastructure"
-                    category: Page
-                    show: False
-                  - title: "Observability of cloud Data"
-                    category: Page
-                    show: False
-                  - title: "Using plugins"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Using Plugins"
-                        path: /tyk-cloud/using-plugins
-                        category: Page
-                        show: True
-                      - title: "Setup your control plane"
-                        path: /tyk-cloud/configuration-options/using-plugins/setup-control-plane
-                        category: Page
-                        show: True
-                      - title: "Uploading your bundle"
-                        path: /tyk-cloud/configuration-options/using-plugins/uploading-bundle
-                        category: Page
-                        show: True
-                      - title: "API middleware test"
-                        path: /tyk-cloud/configuration-options/using-plugins/api-test
-                        category: Page
-                        show: True
-                      - title: "Create a python code bundle"
-                        path: /tyk-cloud/configuration-options/using-plugins/python-code-bundle
-                        category: Page
-                        show: True
-                      - title: "Python custom authentication"
-                        path: /tyk-cloud/configuration-options/using-plugins/python-custom-auth
-                        category: Page
-                        show: True
-                  - title: "Accounts and billing"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /tyk-cloud/account-billing
-                        category: Page
-                        show: True
-                      - title: "Our plans"
-                        path: /tyk-cloud/account-billing/plans
-                        category: Page
-                        show: True
-                      - title: "Payment method"
-                        path: /tyk-cloud/account-billing/add-payment-method
-                        category: Page
-                        show: True
-                      - title: "Upgrade free trial"
-                        path: /tyk-cloud/account-billing/upgrade-free-trial
-                        category: Page
-                        show: True
-                      - title: "Managing billing admins"
-                        path: /tyk-cloud/account-billing/managing-billing-admins
-                        category: Page
-                        show: True
-                      - title: "Retirement"
-                        path: /tyk-cloud/account-billing/retirement
-                        category: Page
-                        show: True
-                  - title: "Monitoring"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "What metrics are monitored?"
-                        path: /tyk-cloud/environments--deployments/monitoring-how-it-works
-                        category: Page
-                        show: True
-                      - title: "Viewing usage"
-                        path: /tyk-cloud/environments--deployments/monitoring-usage
-                        category: Page
-                        show: True
-                  - title: "Troubleshooting and support"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /tyk-cloud/troubleshooting--support
-                        category: Page
-                        show: True
-                      - title: "Tyk Cloud FAQs"
-                        path: /tyk-cloud/troubleshooting--support/faqs
-                        category: Page
-                        show: True
-                      - title: "Tyk Cloud MDCB Supported versions"
-                        path: /tyk-cloud/troubleshooting--support/tyk-cloud-mdcb-supported-versions
-                        category: Page
-                        show: True
-                      - title: "Glossary"
-                        path: /tyk-cloud/troubleshooting--support/glossary
-                        category: Page
-                        show: True
-                  - title: "Telemetry"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /tyk-cloud/telemetry
-                        category: Page
-                        show: True
-                      - title: "Configuring Telemetry Provider"
-                        path: /tyk-cloud/telemetry/enable-telemetry
-                        category: Page
-                        show: True
       - title: "Self Managed"
         category: Directory
         show: True
         menu:
-          - title: "Overview"
-            path: /tyk-on-premises
-            category: Page
-            show: True
-          - title: "Quick Start"
-            path: /getting-started/quick-start
-            category: Page
-            show: True
-          - title: "Demos & PoCs"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview
-                category: Page
-                show: True
-              - title: "The Complete demo - Kubernetes"
-                path: /getting-started/quick-start/tyk-k8s-demo
-                category: Page
-                show: True
-              - title: "The Complete demo - Docker"
-                path: /getting-started/quick-start/tyk-demo
-                category: Page
-                show: True
-              - title: "Quick start - Docker Compose"
-                path: /tyk-on-premises/docker/docker-pro-demo
-                category: Page
-                show: True
-              - title: "Quick start - Windows"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Docker Compose on Windows"
-                    path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows
-                    category: Page
-                    show: True
-                  - title: "Docker Compose Linux on Windows"
-                    path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl
-                    category: Page
-                    show: True
           - title: "Deployment lifecycle"
             category: Directory
             show: True
@@ -428,10 +60,6 @@ menu:
                 category: Directory
                 show: True
                 menu:
-                  - title: "Licensing and deployment models"
-                    path: /tyk-on-premises/licensing
-                    category: Page
-                    show: True
                   - title: "Design for CI/CD"
                     category: Page
                     show: False
@@ -474,291 +102,17 @@ menu:
                   - title: "Design for multiple data centres"
                     category: Page
                     show: False
-              - title: "Installation options"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /tyk-self-managed/install
-                    category: Page
-                    show: True
-                  - title: "Kubernetes"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /tyk-on-premises/kubernetes
-                        category: Page
-                        show: True
-                      - title: "Quick Start with Helm Chart and PostgreSQL"
-                        path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-postgresql
-                        category: Page
-                        show: True
-                      - title: "Quick Start with Helm Chart and MongoDB"
-                        path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-mongodb
-                        category: Page
-                        show: True
-                      - title: "Ingress Controller with Tyk Operator"
-                        path: /tyk-on-prem/kubernetes-ingress
-                        category: Page
-                        show: True
-                      - title: "Windows with Helm chart"
-                        path: /tyk-on-prem/kubernetes-on-windows
-                        category: Page
-                        show: True
-                      - title: "Legacy Self Manage Helm chart"
-                        path: /tyk-self-managed/tyk-helm-chart
-                        category: Page
-                        show: True
-                  - title: "Red Hat (RHEL / CentOS)"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Redis, PostgreSQL or MongoDB"
-                        path: /tyk-on-premises/redhat-rhel-centos
-                        category: Page
-                        show: True
-                      - title: "Dashboard"
-                        path: /tyk-on-prem/installation/redhat-rhel-centos/dashboard
-                        category: Page
-                        show: True
-                      - title: "Pump"
-                        path: /tyk-on-prem/installation/redhat-rhel-centos/analytics-pump
-                        category: Page
-                        show: True
-                      - title: "Gateway"
-                        path: /tyk-on-prem/installation/redhat-rhel-centos/gateway
-                        category: Page
-                        show: True
-                  - title: "Ubuntu / Debian"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Redis and MongoDB"
-                        path: /tyk-on-premises/debian-ubuntu
-                        category: Page
-                        show: True
-                      - title: "Dashboard"
-                        path: /tyk-on-premises/debian-ubuntu/dashboard
-                        category: Page
-                        show: True
-                      - title: "Tyk Pump"
-                        path: /tyk-on-premises/debian-ubuntu/analytics-pump
-                        category: Page
-                        show: True
-                      - title: "Gateway"
-                        path: /tyk-on-premises/debian-ubuntu/gateway
-                        category: Page
-                        show: True
-                  - title: "AWS"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "AWS Marketplace"
-                        path: /tyk-on-premises/installation/on-aws
-                        category: Page
-                        show: True
-                      - title: "EC2 Installation"
-                        path: /tyk-on-premises/on-aws/ec2
-                        category: Page
-                        show: True
-                  - title: "Ansible"
-                    path: /tyk-on-premises/ansible
-                    category: Page
-                    show: True
-                  - title: "Bootstrapper CLI"
-                    path: /tyk-on-premises/bootstrapper-cli
-                    category: Page
-                    show: True
-                  - title: "Docker"
-                    path: /tyk-on-premises/docker
-                    category: Page
-                    show: True
-                  - title: "Heroku"
-                    path: /tyk-on-premises/installation/on-heroku
-                    category: Page
-                    show: True
-                  - title: "Microsoft Azure"
-                    path: /tyk-on-premises/microsoft-azure
-                    category: Page
-                    show: True
-                  - title: "Google Cloud"
-                    path: /tyk-on-premises/google-cloud
-                    category: Page
-                    show: True
               - title: "Deployment phase"
                 category: Directory
                 show: True
                 menu:
-                  - title: "Design for high availability"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Ensure High Availability"
-                        path: /planning-for-production/ensure-high-availability
-                        category: Page
-                        show: True
-                      - title: "Circuit Breakers"
-                        category: Directory
-                        show: True
-                        menu:
-                          - title: "Overview"
-                            path: /planning-for-production/ensure-high-availability/circuit-breakers
-                            category: Page
-                            show: True
-                          - title: "Tyk OAS configuration"
-                            path: /product-stack/tyk-gateway/middleware/circuit-breaker-tyk-oas
-                            category: Page
-                            show: True
-                          - title: "Tyk Classic configuration"
-                            path: /product-stack/tyk-gateway/middleware/circuit-breaker-tyk-classic
-                            category: Page
-                            show: True
-                      - title: "Enforced Timeouts"
-                        category: Directory
-                        show: True
-                        menu:
-                          - title: "Overview"
-                            path: /planning-for-production/ensure-high-availability/enforced-timeouts
-                            category: Page
-                            show: True
-                          - title: "Tyk OAS setting"
-                            path: /product-stack/tyk-gateway/middleware/enforced-timeout-tyk-oas
-                            category: Page
-                            show: True
-                          - title: "Tyk Classic setting"
-                            path: /product-stack/tyk-gateway/middleware/enforced-timeout-tyk-classic
-                            category: Page
-                            show: True
-                      - title: "Liveness health check"
-                        path: /planning-for-production/ensure-high-availability/health-check
-                        category: Page
-                        show: True
-                      - title: "Load Balancing"
-                        path: /planning-for-production/ensure-high-availability/load-balancing
-                        category: Page
-                        show: True
-                      - title: "Service Discovery"
-                        path: /planning-for-production/ensure-high-availability/service-discovery
-                        category: Page
-                        show: True
-                      - title: "Service Discovery Examples"
-                        path: /planning-for-production/ensure-high-availability/service-discovery/examples
-                        category: Page
-                        show: True
-                      - title: "Uptime Tests"
-                        path: /planning-for-production/ensure-high-availability/uptime-tests
-                        category: Page
-                        show: True
-                  - title: "Design for performance"
-                    category: Directory
-                    show: False
-                    menu:
-                  - title: "Deploy Tyk components and their dependencies"
-                    category: Page
-                    show: False
-                  - title: "Database settings"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /planning-for-production/database-settings
-                        category: Page
-                        show: True
-                      - title: "MongoDB Sizing"
-                        path: /planning-for-production/database-settings/mongodb-sizing
-                        category: Page
-                        show: True
-                      - title: "MongoDB"
-                        path: /planning-for-production/database-settings/mongodb
-                        category: Page
-                        show: True
-                      - title: "PostgreSQL"
-                        path: /planning-for-production/database-settings/postgresql
-                        category: Page
-                        show: True
-                      - title: "Redis Sizing"
-                        path: /planning-for-production/redis-sizing
-                        category: Page
-                        show: True
                   - title: "Secure system payloads"
                     path: /tyk-configuration-reference/securing-system-payloads
                     category: Page
                     show: True
-                  - title: "Set-up GitOps"
-                    category: Page
-                    show: False
-                  - title: "Secure deployment options"
-                    category: Page
-                    show: False
-                  - title: "Sending logs to your logging systems"
-                    category: Page
-                    show: False
-                  - title: "Key value configuration storage"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /tyk-configuration-reference/kv-store
-                        category: Page
-                        show: True
-                      - title: "Using Consul"
-                        path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/consul
-                        category: Page
-                        show: True
-                      - title: "Using Vault"
-                        path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/vault
-                        category: Page
-                        show: True
-                  - title: "Planning for Production"
-                    path: /planning-for-production
-                    category: Page
-                    show: True
-                  - title: "Benchmarks"
-                    path: /planning-for-production/benchmarks
-                    category: Page
-                    show: True
-                  - title: "Redis"
-                    path: /planning-for-production/redis
-                    category: Page
-                    show: True
-              - title: "Operations and BAU"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Observability & Monitoring"
-                    path: /planning-for-production/monitoring
-                    category: Page
-                    show: True
-                  - title: "Monitor Tyk Stack"
-                    path: /planning-for-production/monitoring/tyk-components
-                    category: Page
-                    show: True
-                  - title: "GitOps with Tyk Operator"
-                    path: /getting-started/key-concepts/gitops-with-tyk
-                    category: Page
-                    show: True
-                  - title: "Monitoring upstream services"
-                    category: Page
-                    show: False
-                  - title: "Scaling up and down depending on usage/performance"
-                    category: Page
-                    show: False
-                  - title: "Manage plug-ins (install, monitor, update, configure)"
-                    category: Page
-                    show: False
-                  - title: "Manage third party integrations (API observability, observability, ...)"
-                    category: Page
-                    show: False
-                  - title: "Maintain Tyk configuration"
-                    category: Page
-                    show: False
-                  - title: "Upgrade Tyk components and their dependencies"
-                    category: Page
-                    show: False
       - title: "Featured Guides"
         category: Directory
-        show: True
+        show: False
         menu:
           - title: "Guide to Tyk installations"
             path: /getting-started/installation
@@ -773,6 +127,22 @@ menu:
         path: /getting-started
         category: Page
         show: True
+      - title: "Install and Configure"
+        category: Directory
+        show: True
+        menu:
+          - title: "Tyk Cloud"
+            path: /tyk-cloud
+            category: Page
+            show: True
+          - title: "Tyk Open Source"
+            path: /tyk-open-source
+            category: Page
+            show: True
+          - title: "Tyk Self Managed"
+            path: /tyk-self-managed
+            category: Page
+            show: True
       - title: "Authentication and Authorization"
         path: /api-management/client-authentication
         category: Page
@@ -2795,7 +2165,7 @@ menu:
                     path: /troubleshooting/tyk-dashboard/cors-issues-on-developer-portal
                     category: Page
                     show: True
-                  - title: "“Not Found” error in the Developer Portal"
+                  - title: "“Not Found“ error in the Developer Portal"
                     path: /troubleshooting/tyk-dashboard/not-found-error-developer-portal
                     category: Page
                     show: True
@@ -3330,7 +2700,7 @@ menu:
           - title: "Quick Start"
             path: /product-stack/tyk-streaming/getting-started
             category: Page
-            show: false
+            show: False
           - title: "Configuration"
             category: Directory
             show: True
@@ -3406,7 +2776,7 @@ menu:
                   - title: "Overview"
                     path: /product-stack/tyk-streaming/configuration/scanners/overview
                     category: Page
-                    show: true
+                    show: True
                   - title: "CSV"
                     path: /product-stack/tyk-streaming/configuration/scanners/csv
                     category: Page
@@ -3441,7 +2811,7 @@ menu:
                     show: True
           - title: "Rate Limits"
             category: Directory
-            show: true
+            show: True
             menu:
               - title: "Overview"
                 path: /product-stack/tyk-streaming/configuration/rate-limits/overview

@@ -57,7 +57,7 @@ With [Tyk’s developer portal]({{< ref "tyk-developer-portal/tyk-portal-classic
 
 #### **Step 4: Develop and Test the API**
 
-Now you’re ready to build and [test]({{< ref "tyk-cloud/getting-started-tyk-cloud/test-api/#introduction" >}}):
+Now you’re ready to build and test:
 - **Develop the Backend**: Write the code to implement your [API’s endpoints]({{< ref "advanced-configuration/transform-traffic/endpoint-designer" >}}) and integrate with your [database]({{< ref "tyk-dashboard/database-options/" >}}) or service layer.
 - **Functional Testing**: Check each endpoint to ensure it behaves as expected and handles common errors.
 - **Load Testing**: Simulate traffic to see how your API performs under different loads. Tyk offers tools to scale your API seamlessly and track performance metrics.
@@ -73,9 +73,9 @@ Tyk’s platform makes security implementation straightforward, offering feature
 #### **Step 6: Monitor and Maintain the API**
 
 An API isn’t a one-time setup; it needs regular monitoring and updates:
-- **Monitor Performance**: Use [Tyk’s real-time analytics]({{< ref "tyk-pump" >}}) to track metrics like [latency]({{< ref "tyk-stack/tyk-pump/tyk-analytics-record-fields/#latency" >}}), error rates, and [usage]({{< ref "tyk-cloud/environments-&-deployments/monitoring-usage" >}}). This helps identify any bottlenecks or security risks.
+- **Monitor Performance**: Use [Tyk’s real-time analytics]({{< ref "tyk-pump" >}}) to track metrics like [latency]({{< ref "tyk-stack/tyk-pump/tyk-analytics-record-fields/#latency" >}}), error rates, and [usage]({{< ref "tyk-cloud#track-usage" >}}). This helps identify any bottlenecks or security risks.
 - **Version and Update**: As you add new features, use [Tyk’s versioning]({{< ref "api-management/automations#api-versioning" >}}) to avoid breaking existing functionality.
-- **Optimize and Scale**: With Tyk, you can adjust your rate limits, caching, and load balancing to handle higher volumes as needed. Optimizing is especially necessary as you [move your workload into production]({{< ref "planning-for-production/" >}}).
+- **Optimize and Scale**: With Tyk, you can adjust your rate limits, caching, and load balancing to handle higher volumes as needed. Optimizing is especially necessary as you [move your workload into production]({{< ref "tyk-self-managed#planning-for-production" >}}).
 
 ---
 
@@ -101,8 +101,8 @@ In this stage, Tyk streamlines deployment, whether on the cloud, on-premises, or
 
 After deployment, Tyk offers robust tools to ensure smooth API operations and maintenance:
 - **Real-Time Monitoring and Analytics**: [Tyk’s dashboard]({{< ref "tyk-dashboard" >}}) provides insights into API traffic, usage patterns, and error rates, enabling quick response to issues.
-- **Dynamic Policy Management**: Set up and adjust security policies to control access and usage, such as [IP whitelisting]({{< ref "tyk-cloud/securing-your-apis/#3-ip-whitelisting" >}}), [request throttling]({{< ref "basic-config-and-security/control-limit-traffic/request-throttling" >}}), or [rate limiting]({{< ref "getting-started/key-concepts/rate-limiting/" >}}).
-- **Plugin Support for Customization**: Use [Tyk’s plugin system]({{< ref "tyk-cloud/using-plugins/" >}}) to add custom functionality or [middleware]({{< ref "api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware/" >}}), such as [custom authentication]({{< ref "tyk-cloud/configuration-options/using-plugins/python-custom-auth/" >}}) or [data transformations]({{< ref "advanced-configuration/transform-traffic" >}}).
+- **Dynamic Policy Management**: Set up and adjust security policies to control access and usage, such as [IP whitelisting]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting#ip-allowlist-middleware" >}}), [request throttling]({{< ref "basic-config-and-security/control-limit-traffic/request-throttling" >}}), or [rate limiting]({{< ref "getting-started/key-concepts/rate-limiting/" >}}).
+- **Plugin Support for Customization**: Use [Tyk’s plugin system]({{< ref "tyk-cloud#configure-plugins" >}}) to add custom functionality or [middleware]({{< ref "api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware/" >}}), such as [custom authentication]({{< ref "tyk-cloud#add-custom-authentication" >}}) or [data transformations]({{< ref "advanced-configuration/transform-traffic" >}}).
 
 ---
 
@@ -110,4 +110,4 @@ After deployment, Tyk offers robust tools to ensure smooth API operations and ma
 
 Building and managing APIs is a process of continuous improvement. With Tyk, you have a partner that provides the tools to plan, develop, deploy, and maintain APIs with efficiency and security. As you refine your API strategy, you can rely on Tyk’s capabilities to adapt and scale with you, ensuring that your APIs deliver value to users and meet evolving business needs.
 
-To get started in your Tyk journey, [get started on Tyk Cloud]({{< ref "tyk-cloud/getting-started" >}}) and learn about [Tyk components]({{< ref "tyk-components" >}}) to further understand how Tyk supports your specific goals.
+To get started in your Tyk journey, [get started on Tyk Cloud]({{< ref "getting-started/create-account" >}}) and learn about [Tyk components]({{< ref "tyk-components" >}}) to further understand how Tyk supports your specific goals.
