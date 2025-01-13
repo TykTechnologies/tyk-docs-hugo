@@ -29,6 +29,12 @@ There are no breaking changes in this release
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecations in this release
 
+#### Changelog {#Changelog-v1.23.0}
+<!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
+Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
+"...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
+"New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
+
 ##### Fixed
 <!-- This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
 - What problem the issue caused
@@ -71,12 +77,6 @@ There are no breaking changes in this release
 ### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecations in this release
-
-#### Changelog {#Changelog-v1.23.0}
-<!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
-Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
-"...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
-"New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" --
 
 
 ## 1.23 Release Notes
