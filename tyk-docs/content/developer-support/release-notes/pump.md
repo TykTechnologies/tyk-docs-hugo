@@ -56,7 +56,7 @@ For users currently on v1.11.0, we strongly recommend promptly upgrading to the 
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
 #### Downloads
-- [Docker Image v1.11.1](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.11.2)
+- [Docker Image v1.11.2](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.11.2)
   - ```bash
     docker pull tykio/tyk-pump-docker-pub:v1.11.2
     ```
