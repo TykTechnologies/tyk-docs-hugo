@@ -17,7 +17,7 @@ This Tyk Cloud update introduces a groundbreaking feature for enhanced API obser
 
 This feature enables trace export capabilities, providing deep insights into API and plugin performance. It marks the first step in Tyk Cloud’s broader observability journey, empowering users to monitor and troubleshoot their APIs more effectively while leveraging their existing observability tools.
 
-For more details, check out the [documentation on setting up Telemetry export]({{< ref "tyk-cloud/telemetry/enable-telemetry" >}}).
+For more details, check out the [documentation on setting up Telemetry export]({{< ref "tyk-cloud#enabling-telemetry-in-tyk-cloud" >}}).
 
 
 ### Breaking Changes
@@ -40,7 +40,7 @@ There are no deprecations in this release
 
 #### Release Highlights
 
-This Tyk Cloud update introduces features that improve both flexibility in plugin management and user onboarding. Now, [Mserv]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}),  supports **multiple plugin bundles**, allowing greater customization and easier deployment of plugin configurations. Additionally, we added an **embedded product tour** to enhance the deployment experience, offering a guided walkthrough of Tyk Dashboard’s features, ideal for users familiarizing themselves with the platform during onboarding.
+This Tyk Cloud update introduces features that improve both flexibility in plugin management and user onboarding. Now, [Mserv]({{< ref "tyk-cloud#uploading-your-bundle" >}}),  supports **multiple plugin bundles**, allowing greater customization and easier deployment of plugin configurations. Additionally, we added an **embedded product tour** to enhance the deployment experience, offering a guided walkthrough of Tyk Dashboard’s features, ideal for users familiarizing themselves with the platform during onboarding.
 
 For a comprehensive list of improvements and fixes, please check the detailed [changelog]({{< ref "#Changelog-v1.23.0">}}) below.
 

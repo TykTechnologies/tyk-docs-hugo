@@ -58,7 +58,7 @@ If your **upstream service** is protected using Auth Token then similarly, Tyk w
 ### How to use Upstream Token-based Authentication
 Typically Auth Token uses the `Authorization` header to pass the token in the request.
 
-Tyk's [Request Header Transform]({{< ref "transform-traffic/request-headers" >}}) middleware can be configured to add this header to the request prior to it being proxied to the upstream. To enhance security by restricting visibility of the access token, the key/token can be stored in a [key-value store]({{< ref "tyk-configuration-reference/kv-store#transformation-middleware" >}}), with only the reference included in the middleware configuration.
+Tyk's [Request Header Transform]({{< ref "transform-traffic/request-headers" >}}) middleware can be configured to add this header to the request prior to it being proxied to the upstream. To enhance security by restricting visibility of the access token, the key/token can be stored in a [key-value store]({{< ref "tyk-self-managed#from-api-definitions" >}}), with only the reference included in the middleware configuration.
 
 <!-- 
 ## Upstream request signing using HMAC
@@ -86,7 +86,7 @@ If your **upstream service** is protected using Basic Authentication then simila
 
 ### How to use Upstream Basic Authentication
 
-If your upstream service requires that Tyk authenticates using Basic Authentication, you will first need to obtain a valid username and password from the server. To enhance security by restricting visibility of the credentials, these can be stored in a [key-value store]({{< ref "tyk-configuration-reference/kv-store#transformation-middleware" >}}), with only references included in the API definition.
+If your upstream service requires that Tyk authenticates using Basic Authentication, you will first need to obtain a valid username and password from the server. To enhance security by restricting visibility of the credentials, these can be stored in a [key-value store]({{< ref "tyk-self-managed#from-api-definitions" >}}), with only references included in the API definition.
 
 If the incoming request from the client already has credentials in the `Authorization` header, then Tyk will replace those with the basic auth credentials before proxying onwards to the upstream.
 
@@ -215,7 +215,7 @@ The resource owner password credentials grant (also known simply as **Password G
 
 If your upstream service requires that Tyk authenticates via an OAuth auth server, you will first need to obtain credentials for the OAuth Client created in the auth server. You select which grant type to use and provide the required credentials in the API definition.
 
-To enhance security by restricting visibility of the credentials, these can be stored in a [key-value store]({{< ref "tyk-configuration-reference/kv-store#transformation-middleware" >}}), with only references included in the API definition.
+To enhance security by restricting visibility of the credentials, these can be stored in a [key-value store]({{< ref "tyk-self-managed#from-api-definitions" >}}), with only references included in the API definition.
 
 Some auth servers will return *additional metadata* with the access token (for example, the URL of the upstream server that should be addressed using the token if this can vary per client). Tyk can accommodate this using the optional `extraMetadata` field in the API definition. The response from the auth server will be parsed for any fields defined in `extraMetadata`; any matches will be saved to the request context where they can be accessed from other middleware (for our example, the [URL rewrite]({{< ref "transform-traffic/url-rewriting" >}}) middleware could be used to modify the upstream target URL).
 

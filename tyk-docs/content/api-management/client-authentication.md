@@ -995,7 +995,7 @@ This guide will walk you through securing your APIs with JWTs via Keycloak.
 
 #### Running in k8s
 
-If you are looking to POC this functionality in Kubernetes, you can run a fully worked-out example using our tyk-k8s-demo library. You can read more [here]({{< ref "getting-started/quick-start/tyk-k8s-demo" >}}).
+If you are looking to POC this functionality in Kubernetes, you can run a fully worked-out example using our tyk-k8s-demo library. You can read more [here]({{< ref "tyk-self-managed#kubernetes-demo" >}}).
 
 
 ### Create Your JWT API in Tyk
