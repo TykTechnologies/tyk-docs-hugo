@@ -48,22 +48,6 @@ menu:
         path: /apim
         category: Page
         show: True
-      - title: "Install and Configure"
-        category: Directory
-        show: True
-        menu:
-          - title: "Tyk Open Source"
-            path: /tyk-open-source
-            category: Page
-            show: True
-          - title: "Tyk Cloud"
-            path: /tyk-cloud
-            category: Page
-            show: True
-          - title: "Tyk Self Managed"
-            path: /tyk-self-managed
-            category: Page
-            show: True
       - title: "Self Managed"
         category: Directory
         show: True
@@ -128,7 +112,7 @@ menu:
                     show: True
       - title: "Featured Guides"
         category: Directory
-        show: True
+        show: False
         menu:
           - title: "Guide to Tyk installations"
             path: /getting-started/installation
@@ -143,6 +127,22 @@ menu:
         path: /getting-started
         category: Page
         show: True
+      - title: "Install and Configure"
+        category: Directory
+        show: True
+        menu:
+          - title: "Tyk Cloud"
+            path: /tyk-cloud
+            category: Page
+            show: True
+          - title: "Tyk Open Source"
+            path: /tyk-open-source
+            category: Page
+            show: True
+          - title: "Tyk Self Managed"
+            path: /tyk-self-managed
+            category: Page
+            show: True
       - title: "Authentication and Authorization"
         path: /api-management/client-authentication
         category: Page
