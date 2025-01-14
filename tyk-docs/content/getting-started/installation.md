@@ -33,7 +33,7 @@ There is no calling home and there are no usage limits. You have full control.
 
 <br/>
 
-{{< button_left href="tyk-self-managed/install" color="green" content="Install Self-Managed" >}}
+{{< button_left href="tyk-self-managed#installation-options-for-tyk-self-managed" color="green" content="Install Self-Managed" >}}
 
 ### Tyk Cloud
 
@@ -54,7 +54,7 @@ Combine the control of self-managed with the convenience of cloud using our hybr
 
 <br/>
 
-{{< button_left href="tyk-cloud/environments-deployments/hybrid-gateways" color="green" content="Install Tyk Hybrid" >}}
+{{< button_left href="tyk-cloud#deploy-hybrid-gateways" color="green" content="Install Tyk Hybrid" >}}
 
  
 ### Open source Tyk Gateway (OSS)
@@ -65,7 +65,7 @@ Install and manage Tyk yourself with our open-source API Gateway.
 
 <br/>
 
-{{< button_left href="apim/open-source/installation" color="green" content="Install Tyk OSS" >}}
+{{< button_left href="tyk-self-managed#installation-options-for-tyk-self-managed" color="green" content="Install Tyk OSS" >}}
 
 ---
 

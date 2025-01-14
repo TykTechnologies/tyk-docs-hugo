@@ -125,7 +125,7 @@ As an added value, you can specify the file path relative to the "content" folde
 Example:
 
 ```
-[Link title]({{< ref "apim/open-source" >}})
+[Link title]({{< ref "tyk-open-source" >}})
 ```
 
 ### Images
@@ -194,19 +194,19 @@ The badge shortcode can be used in differing ways to populate the 3 grid types. 
 
 {{< grid >}}
 
-{{< badge read="15 mins" href="/docs/tyk-cloud/" image="/docs/img/tyk-cloud.svg" >}}
+{{< badge read="15 mins" href="/docs/migration-to-tyk#begin-with-tyk-cloud" image="/docs/img/tyk-cloud.svg" >}}
 Sign up for our new, next level **SaaS** product.
 {{< /badge >}}
 
-{{< badge read="15 mins" href="/docs/getting-started/with-tyk-on-premises/installation/on-aws/" image="/docs/img/aws.png">}}
+{{< badge read="15 mins" href="/docs/migration-to-tyk#install-via-aws-marketplace" image="/docs/img/aws.png">}}
 Install our **On-Premises** product on AWS.
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/docs/getting-started/installation/with-tyk-on-premises/docker/" image="/docs/img/docker.png">}}
+{{< badge read="10 mins" href="migration-to-tyk#install-with-docker" image="/docs/img/docker.png">}}
 Install our **On-Premises** product with Docker.
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/docs/getting-started/installation/with-tyk-on-premises/kubernetes/" image="/docs/img/k8s.png">}}
+{{< badge read="10 mins" href="/docs/migration-to-tyk#install-with-kubernetes" image="/docs/img/k8s.png">}}
 Install our **On-Premises** product with Kubernetes.
 {{< /badge >}}
 
@@ -248,7 +248,7 @@ The Tyk Pump is our open source analytics purger that moves the data generated b
 The Tyk Developer Portal is a small CMS-like system that enables you to expose a facade of your APIs and then allow third-party developers to register and use your APIs.
 {{< /badge >}}
 
-{{< badge href="/docs/getting-started/tyk-components/mdcb/" image="/docs/img/diagram.png" imageStyle="height:150px" >}}
+{{< badge href="/docs/migration-to-tyk#implement-multi-data-centre-setup/" image="/docs/img/diagram.png" imageStyle="height:150px" >}}
 **MDCB**
 
 The Multi Data Center Bridge allows for centralised management of multiple independent Tyk clusters and the seamless transition of APIs between environments, availability zones and segmented nodes.

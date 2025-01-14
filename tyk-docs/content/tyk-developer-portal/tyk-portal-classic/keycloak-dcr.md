@@ -22,7 +22,7 @@ The developer (or your application) then triggers a call to Tyk, using the token
 ### Requirements
 
 - A [Keycloak](https://www.keycloak.org/) instance.
-- A [Tyk Self Managed installation]({{< ref "tyk-self-managed/install" >}}) (Gateway + Dashboard).
+- A [Tyk Self Managed installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) (Gateway + Dashboard).
 
 ### Getting started with Keycloak
 

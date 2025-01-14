@@ -38,7 +38,7 @@ To specify the portal SSO API secret, add the `PORTAL_API_SECRET` variable to [t
 PORTAL_API_SECRET=your-portal-api-secret
 ```
 
-If you use [the Tyk helm chart]({{< ref "tyk-self-managed/tyk-helm-chart#installing-tyk-enterprise-developer-portal" >}}), it is required to add the `PORTAL_API_SECRET` to extraEnvs:
+If you use [the Tyk helm chart]({{< ref "tyk-self-managed#install-more-tyk-components" >}}), it is required to add the `PORTAL_API_SECRET` to extraEnvs:
 ```.yaml
 extraEnvs:
 - name: PORTAL_API_SECRET

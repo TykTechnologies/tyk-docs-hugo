@@ -50,7 +50,7 @@ After setting your Tyk configuration, all you need to do is to send a token in a
 
 ### gRPC load balancing
 
-Tyk is able to perform load balancing on gRPC traffic using an approach similar to our native [Load Balancing]({{< ref "planning-for-production/ensure-high-availability/load-balancing" >}}) functionality.
+Tyk is able to perform load balancing on gRPC traffic using an approach similar to our native [Load Balancing]({{< ref "tyk-self-managed#load-balancing" >}}) functionality.
 
 For both secure and insecure gRPC scenarios, the steps above serve as a starting point.
 
