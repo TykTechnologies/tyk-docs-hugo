@@ -22,6 +22,72 @@ Our minor releases are supported until our next minor comes out.
 
 ## 1.11 Release Notes
 
+### 1.11.2 Release Notes
+
+#### Release Date 10 January 2024
+
+#### Release Highlights
+
+This patch release focuses on improving the robustness of SQL-Pump in scenarios involving table sharding and analytics data, ensuring smoother operations and better compatibility with PostgreSQL-based environments.
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Dependencies
+
+##### 3rd Party Dependencies & Tools
+
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
+
+| Third Party Dependency                                    | Tested Versions   | Compatible Versions      | Comments                   |
+| --------------------------------------------------------- | ----------------- | ------------------------ | -------------------------- |
+| [MongoDB](https://www.mongodb.com/try/download/community) | 5.x, 6.x, and 7.0 | 4.4.x, 5.x, 6.x, and 7.0 | Used by Tyk Pump and Tyk Dashboard      |
+| [PostgreSQL](https://www.postgresql.org/download/)        | 12.x - 16.x    | 12.x - 16.x              | Used by Tyk Pump and Tyk Dashboard      |
+| [Redis](https://redis.io/download/)                       | 6.x - 7.0         | 6.x - 7.x                | Used by all Tyk components |
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+For users currently on v1.11.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version 1.11.0 and proceed directly to this latest patch release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
+
+#### Downloads
+- [Docker Image v1.11.2](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.11.2)
+  - ```bash
+    docker pull tykio/tyk-pump-docker-pub:v1.11.2
+    ```
+- Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.11.2)
+
+#### Changelog {#Changelog-v1.11.2}
+  
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>SQL-Pump Crashes When `tablesharding=true` and Analytics Are Skipped for Certain APIs</summary>
+
+The issue causing a runtime error when writing analytics data for skipped APIs has been addressed. SQL-Pump now processes these scenarios gracefully, ensuring stability in table-sharded configurations.  
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Indices Not Created in Sharded `tyk_analytics` Tables if Indices with Same Names Exist in Earlier Tables</summary>
+
+Fixed the index creation logic to ensure indices are generated correctly for all sharded tables, regardless of whether indices with the same names exist in earlier tables. This ensures proper query performance and data integrity in environments with table sharding.  
+
+</details>
+</li>
+</ul>
+ 
+---
+
 ### 1.11.1 Release Notes
 
 #### Release Date 04 December 2024
