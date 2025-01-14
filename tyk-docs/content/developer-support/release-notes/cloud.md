@@ -9,23 +9,23 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "changelog"]
 ---
 ## 1.24 Release Notes
 
-### 1.24.2
+### 1.24.2 Release Notes
 
-### Release Date 13 of January 2025
+#### Release Date 13 of January 2025
 
-### Release Highlights
+#### Release Highlights
 
 This Tyk Cloud update resolves an issue related to Telemetry export configurations. Previously, when deploying a Data Plane in a region different from the Control Plane, Telemetry export settings could encounter compatibility issues. With this patch, Telemetry export configuration now works seamlessly across regional deployments, ensuring consistent observability for distributed Tyk Cloud setups.
 
 
-### Breaking Changes
+#### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 There are no breaking changes in this release
 
-### Downloads
+#### Downloads
 - [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
 
-### Deprecations
+#### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecations in this release
 
@@ -54,11 +54,11 @@ Each change log item should be expandable. The first line summarises the changel
   </li>
 </ul>
 
-### 1.24.0
+### 1.24.0 Release Notes
 
-### Release Date 16 of December 2024
+#### Release Date 16 of December 2024
 
-### Release Highlights
+#### Release Highlights
 
 This Tyk Cloud update introduces a groundbreaking feature for enhanced API observability and troubleshooting. With the new native Telemetry export, Tyk Cloud now allows organizations to seamlessly integrate their deployments with a variety of popular observability platforms, including built-in support for Datadog, Dynatrace, Elastic, and New Relic. For other systems, the custom provider option ensures compatibility with any platform that supports the OpenTelemetry Protocol (OTLP).
 
@@ -67,14 +67,14 @@ This feature enables trace export capabilities, providing deep insights into API
 For more details, check out the [documentation on setting up Telemetry export]({{< ref "tyk-cloud#enabling-telemetry-in-tyk-cloud" >}}).
 
 
-### Breaking Changes
+#### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 There are no breaking changes in this release
 
-### Downloads
+#### Downloads
 - [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
 
-### Deprecations
+#### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecations in this release
 
