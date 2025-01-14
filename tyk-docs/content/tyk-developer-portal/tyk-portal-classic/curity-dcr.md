@@ -24,7 +24,7 @@ Use case outline:
 ### Requirements
 
 - An installation of The Curity Identity Server. Follow the [Getting Started Guide](https://curity.io/resources/getting-started/) if an installation is not already available.
-- A [Tyk Self-Managed installation]({{< ref "tyk-self-managed/install" >}}) (Gateway + Dashboard).
+- A [Tyk Self-Managed installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) (Gateway + Dashboard).
 
 ### Enable DCR in The Curity Identity Server
 

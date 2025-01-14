@@ -26,7 +26,7 @@ Custom hostname for the Control API
 ENV: <b>TYK_GW_CONTROLAPIPORT</b><br />
 Type: `int`<br />
 
-Set to run your Gateway Control API on a separate port, and protect it behind a firewall if needed. Please make sure you follow this guide when setting the control port https://tyk.io/docs/planning-for-production/#change-your-control-port.
+Set to run your Gateway Control API on a separate port, and protect it behind a firewall if needed. Please make sure you follow this guide when setting the control port https://tyk.io/docs/tyk-self-managed/#change-your-control-port.
 
 ### secret
 ENV: <b>TYK_GW_SECRET</b><br />
@@ -1980,7 +1980,7 @@ global session lifetime, in seconds.
 ENV: <b>TYK_GW_KV_KV</b><br />
 Type: `struct`<br />
 
-See more details https://tyk.io/docs/tyk-configuration-reference/kv-store/
+See more details https://tyk.io/docs/migration-to-tyk#store-configuration-with-key-value-store/
 
 ### kv.consul.address
 ENV: <b>TYK_GW_KV_CONSUL_ADDRESS</b><br />
@@ -2094,7 +2094,7 @@ Sample Override Message Setting
 ENV: <b>TYK_GW_CLOUD</b><br />
 Type: `bool`<br />
 
-Cloud flag shows the Gateway runs in Tyk-cloud.
+Cloud flag shows the Gateway runs in migration-to-tyk#begin-with-tyk-cloud.
 
 ### jwt_ssl_insecure_skip_verify
 ENV: <b>TYK_GW_JWTSSLINSECURESKIPVERIFY</b><br />

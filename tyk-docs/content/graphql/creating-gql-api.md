@@ -18,7 +18,7 @@ The process is very similar to [HTTP API creation]({{< ref "/getting-started/cre
 
 ## Prerequisites
 
-In order to complete the next steps, you need to have [Tyk Self Managed installed]({{< ref "tyk-self-managed/install" >}}). You can also create a 5-week trial account in Tyk Cloud.
+In order to complete the next steps, you need to have [Tyk Self Managed installed]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}). You can also create a 5-week trial account in Tyk Cloud.
 
 {{< button_left href="https://tyk.io/sign-up/" color="green" content="Try it free" >}}
 

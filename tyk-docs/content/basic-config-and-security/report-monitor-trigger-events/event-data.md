@@ -16,7 +16,7 @@ When Tyk generates an [event]({{< ref "basic-config-and-security/report-monitor-
 {{< note success >}}
 **Note**  
 
-Circuit breaker events provide different metadata, see [Circuit Breakers]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers" >}}) to see what is provided when the `BreakerTripped`, `BreakerReset` or `BreakerTriggered` events are generated.
+Circuit breaker events provide different metadata, see [Circuit Breakers]({{< ref "tyk-self-managed#circuit-breakers" >}}) to see what is provided when the `BreakerTripped`, `BreakerReset` or `BreakerTriggered` events are generated.
 {{< /note >}}
 
 ### Using the metadata

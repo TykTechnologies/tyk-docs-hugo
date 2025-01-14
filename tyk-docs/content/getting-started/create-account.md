@@ -2,7 +2,7 @@
 aliases:
 - /create-account
 date: 2020-06-24
-description: How to decide on which Tyk deployment option is best for you
+description: Create your account on Tyk Cloud
 linkTitle: Getting Started
 tags:
 - Tyk API Management

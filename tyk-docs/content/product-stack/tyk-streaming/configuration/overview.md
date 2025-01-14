@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: Tyk Stream Config Overview
 description: Explains an overview for configuring Tyk Streams
 tags: [ "Tyk Streams", "Stream Configuration", "Tyk Streams Configuration" ]
 aliases:

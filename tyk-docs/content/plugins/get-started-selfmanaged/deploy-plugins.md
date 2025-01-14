@@ -93,7 +93,7 @@ This step uploads the Bundle to both GitHub and an AWS S3 bucket.  Obviously, yo
 {{< note success >}}
 **Note**  
 
-For seamless deployments, take a look at multi-version [plugin support]({{< ref "plugins/supported-languages/golang.mdd#upgrading-your-tyk-gateway" >}}) to enable zero downtime deployments of your Tyk Gateway installs
+For seamless deployments, take a look at multi-version [plugin support]({{< ref "tyk-cloud#configure-plugins" >}}) to enable zero downtime deployments of your Tyk Gateway installs
 
 {{< /note >}}
 
