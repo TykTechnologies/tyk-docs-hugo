@@ -1,0 +1,366 @@
+---
+title: "Managing Classic API Definition"
+date: 2024-12-21
+tags: []
+description: ""
+aliases:
+---
+
+## Create an API
+
+### What does it mean to create an API in Tyk
+
+You have a running service with an API that you want your users to consume; you want to protect and manage access to that API using Tyk Gateway - how do you do that?  
+<br>
+For Tyk Gateway to protect and [reverse proxy](https://en.wikipedia.org/wiki/Reverse_proxy) calls to your upstream service, you need to configure an API on Tyk Gateway. The minimum information that Tyk requires is the **listen path** (which is a path on the Tyk Gateway URL that you want your consumers to call) and your **API URL** (which is the URL of your service to which Tyk should forward requests).  
+<br>
+This information and other configuration values are stored in an object called a *Tyk API Definition*. Once you have created your Tyk API Definition and deployed it in the Gateway, Tyk can start serving your consumers, forwarding their requests to your upstream service's API.
+
+To reach a detailed guide to creating Tyk API Definitions, please choose the tab for the product you are using:
+
+### Tyk Cloud
+
+<br>
+<br>
+Tyk Cloud is a fully managed service that makes it easy for API teams to create, secure, publish and maintain APIs at any scale, anywhere in the world. Tyk Cloud includes everything you need to manage your global API ecosystem: [Tyk Gateways]({{< ref "tyk-oss-gateway" >}}), [Tyk Dashboard]({{< ref "tyk-dashboard" >}}), [Tyk Developer Portal]({{< ref "tyk-developer-portal" >}}) and [Universal Data Graph]({{< ref "universal-data-graph" >}}). 
+<br>  
+
+To embark on your API journey with Tyk Cloud, we recommend going to our [Quick Start guide]({{< ref "/deployment-and-operations/tyk-cloud-platform/quick-start" >}}). This guide will walk you through the process of creating your very first API in Tyk Cloud.
+For an advanced step by step guide we recommend visiting our [Getting Started guide]({{< ref "/tyk-cloud/getting-started" >}}). This will explain advanced configuration steps relating to how to distribute your API across nodes, in addition to adding and testing your API.
+
+### Tyk Self-Managed
+
+<br>
+<br>
+{{< include "create-api-include" >}}
+
+If the command succeeds, you will see:
+```json
+{
+  "action": "added",
+  "key": "xxxxxxxxx",
+  "status": "ok"
+}
+```
+
+**What did we just do?**
+
+We just sent an API definition to the Tyk `/apis` endpoint. See [API definition objects]({{< ref "tyk-gateway-api/api-definition-objects" >}}) for details of all the available objects. These objects encapsulate all of the settings for an API within Tyk.
+
+Want to learn more from one of our team of engineers?
+
+{{< button_left href="https://tyk.io/book-a-demo" color="green" content="Book a demo" >}}
+
+### Tyk Open Source
+
+{{< note success >}}
+**Note: Integration with your OpenAPI documentation**
+
+In Tyk v4.1 we introduced support for APIs defined according to the [OpenAPI Specification v3.0.3](https://spec.openapis.org/oas/v3.0.3) (OAS).  
+This introduces a standard way to describe the vendor-agnostic elements of an API (the OpenAPI Definition, stored as an OpenAPI Document); we take this and add Tyk-specific configuration options to create the *Tyk OAS API Definition*. You can import your own OpenAPI document and Tyk will use this to generate the Tyk OAS API Definition.  
+For a detailed tutorial on using OAS with Tyk Gateway, check out our guide to [creating a Tyk OAS API Definition]({{< ref "getting-started/using-oas-definitions/create-an-oas-api#tutorial-1-create-a-tyk-oas-api-using-the-tyk-gateway-api" >}}).
+
+{{< /note >}}
+
+**Prerequisites**
+
+Before you continue this tutorial, you will need a running [Tyk OSS gateway]({{< ref "tyk-oss-gateway" >}}). Click the button for instructions on how to install Tyk Gateway:
+
+{{< button_left href="https://tyk.io/sign-up/#oss" color="green" content="Install Tyk Gateway" >}}
+
+#### Creating an API on Tyk Gateway
+
+There are two ways to configure Tyk Gateway with an API definition:
+1. [Create an API with the Tyk Gateway API]({{< ref "#tutorial-create-an-api-with-the-tyk-gateway-api" >}}) - Tyk Gateway has its own APIs which provides various services including the registering of Tyk API Definitions on the Gateway.
+2. [Create an API in File-based Mode]({{< ref "#tutorial-create-an-api-in-file-based-mode" >}}) - alternatively you can create a Tyk API Definition in a file and then load it to the Gateway.
+
+
+#### Using Tyk Gateway API
+
+Watch our video to learn how to add an API to Tyk's Open Source Gateway using [Postman](https://www.postman.com/downloads/).
+
+{{< youtube UWM2ZQoGhQA >}}
+
+In order to use the Gateway API to create a Tyk API Definition you will need the API key for your deployment's Gateway API and then issue just one command to create the API and make it live.
+
+1. **Make sure you know your API secret**
+
+    The API key to access your Tyk Gateway API is stored in your `tyk.conf` file; the property is called `secret`. You will need to provide this value in a header called `x-tyk-authorization` when making calls to the Gateway API.
+
+2. **Create an API**
+
+    To create the API, let's send a Tyk API definition to the `/apis` endpoint on your Tyk Gateway. Remember to change the `x-tyk-authorization` value (API key) in the header of your API call and set the domain name and port to target your Tyk Gateway in the `curl` command.
+    ```curl
+    curl -v -H "x-tyk-authorization: {your-secret}" \
+    -s \
+    -H "Content-Type: application/json" \
+    -X POST \
+    -d '{
+        "name": "Hello-World",
+        "slug": "hello-world",
+        "api_id": "Hello-World",
+        "org_id": "1",
+        "use_keyless": true,
+        "auth": {
+        "auth_header_name": "Authorization"
+        },
+        "definition": {
+        "location": "header",
+        "key": "x-api-version"
+        },
+        "version_data": {
+        "not_versioned": true,
+        "versions": {
+            "Default": {
+            "name": "Default",
+            "use_extended_paths": true
+            }
+        }
+        },
+        "proxy": {
+        "listen_path": "/hello-world/",
+        "target_url": "http://echo.tyk-demo.com:8080/",
+        "strip_listen_path": true
+        },
+        "active": true
+    }' http://{your-tyk-host}:{port}/tyk/apis | python -mjson.tool
+    ```
+
+    If the command succeeds, you will see:
+    ```json
+    {
+    "key": "Hello-World",
+    "status": "ok",
+    "action": "added"
+    }
+    ```
+
+{{< note success >}}
+**Note**
+
+All APIs deployed on Tyk Gateway are given a unique `API ID`; if you don't provide one in the Tyk API Definition when creating the API, then an `API ID` will be generated automatically.
+{{< /note >}}
+
+**What did we just do?**
+
+We just registered a new API on your Tyk Gateway by sending a Tyk API definition to your Gateway's `/apis` endpoint.  
+Tyk API definitions encapsulate all of the settings for an API within Tyk Gateway and are discussed in detail in the [API section]({{< ref "/tyk-gateway-api/api-definition-objects" >}}) of this documentation.
+
+**Restart or hot reload**
+
+Once you have created the file, you will need to either restart the Tyk Gateway, or issue a hot reload command, lets do the latter:
+```curl
+curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group | python -mjson.tool
+```
+
+This command will hot-reload your API Gateway(s) and the new API will be loaded, if you take a look at the output of the Gateway (or the logs), you will see that it should have loaded Hello-World API on `/hello-world/`.
+
+#### Create an API in File-based Mode
+
+{{< note success >}}
+**Note**
+
+APIs created without API ID in file based mode are invalid.
+{{< /note >}}
+
+
+To create a file-based API definition is very easy.
+
+Create a file called `api1.json` and place it in the `/apps` folder of your Tyk Gateway installation (usually in `/var/tyk-gateway`), then add the following:
+```json
+{
+  "name": "Test API",
+  "slug": "test-api",
+  "api_id": "1",
+  "org_id": "1",
+  "auth_configs": {
+    "authToken": {
+      "auth_header_name": "Authorization"
+    }
+  },
+  "definition": {
+    "location": "header",
+    "key": "x-api-version"
+  },
+  "version_data": {
+    "not_versioned": true,
+    "versions": {
+      "Default": {
+        "name": "Default",
+        "use_extended_paths": true
+    }
+   }
+  },
+  "proxy": {
+    "listen_path": "/test-api/",
+    "target_url": "http://echo.tyk-demo.com:8080/",
+    "strip_listen_path": true
+  },
+  "active": true
+}
+```
+
+**Restart or hot reload**
+
+Once you have created the file, you will need to either restart the Tyk Gateway, or issue a hot reload command, lets do the latter:
+```curl
+curl -H "x-tyk-authorization: {your-secret}" -s https://{your-tyk-host}:{port}/tyk/reload/group | python -mjson.tool
+```
+
+This command will hot-reload your API Gateway(s) and the new API will be loaded, if you take a look at the output of the Gateway (or the logs), you will see that it should have loaded Test API on `/test-api/`.
+
+Your API is now ready to use via the Gateway.
+
+## Secure an API
+
+A security policy encapsulates several options that can be applied to a key. It acts as a template that can override individual sections of an API key (or identity) in Tyk.
+
+See [What is a Security Policy?]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) for more details.
+
+### Tyk Cloud
+
+<br>
+
+{{< include "create-security-policy-include" >}}
+
+### Tyk Self Manged
+<br>
+
+{{< include "create-security-policy-include" >}}
+
+### Tyk Open Source
+
+#### Create a Policy with the Gateway
+
+Adding a policy to the Tyk Gateway is very easy. Polices are loaded into memory on load and so need to be specified in advanced in a file called `policies.json`. To add a policy, simply create or edit the `/policies/policies.json` file and add the policy object to the object array:
+
+```json
+{
+  "POLICYID": {
+    "access_rights": {
+      "{API-ID}": {
+        "allowed_urls": [],
+        "api_id": "{API-ID}",
+        "api_name": "{API-NAME}",
+        "versions": [
+            "Default"
+        ]
+      }
+    },
+    "active": true,
+    "name": "POLICY NAME",
+    "rate": 1000,
+    "per": 1,
+    "quota_max": 10000,
+    "quota_renewal_rate": 3600,
+    "tags": ["Startup Users"]
+  }
+}
+```
+
+The above creates a new policy with a policy ID that you can define, with the rate limits, and security profile that grants access to the APIs listed in the `access_rights` section.
+
+- `{API-ID}`: The API ID you wish this policy to grant access to, there can be more than one of these entries.
+- `{API-NAME}`: The name of the API that is being granted access to (this is not required, but helps when debugging or auditing).
+- `POLICY NAME`: The name of this security policy.
+
+The important elements:
+
+- `access_rights`: A list of objects representing which APIs that you have configured to grant access to.
+- `rate` and `per`: The number of requests to allow per period.
+- `quota_max`: The maximum number of allowed requests over a quota period.
+- `quota_renewal_rate`: how often the quota resets, in seconds. In this case we have set it to renew every hour.
+
+## Access an API
+
+### Tyk Cloud
+
+{{< include "create-api-key-include" >}}
+
+You will see a 200 response with your new key:
+
+```yaml
+{
+  "api_model": {},
+  "key_id": "59bf9159adbab8abcdefghijac9299a1271641b94fbaf9913e0e048c",
+  "data": {...}
+}
+```
+
+The value returned in the `key_id` parameter of the response is the access key you can now use to access the API that was specified in the `access_rights` section of the call.
+
+### Tyk Self Managed
+
+{{< include "create-api-key-include" >}}
+
+You will see a response with your new key:
+
+```json
+{
+  "action": "create",
+  "key": "c2cb92a78f944e9a46de793fe28e847e",
+  "status": "ok"
+}
+```
+
+The value returned in the `key` parameter of the response is the access key you can now use to access the API that was specified in the `access_rights` section of the call.
+
+### Tyk Open Source
+
+To create an API Key, you will need the API ID that we wish to grant the key access to, then creating the key is an API call to the endpoint.
+
+**Prerequisite**
+
+- You will need your API secret, this is the `secret` property of the `tyk.conf` file.
+
+Once you have this value, you can use them to access the Gateway API, the below `curl` command will generate a key for one of your APIs, remember to replace `{API-SECRET}`, `{API-ID}` and `{API-NAME}` with the real values as well as the `curl` domain name and port to be the correct values for your environment.
+
+```curl
+curl -X POST -H "x-tyk-authorization: {API-SECRET}" \
+  -s \
+  -H "Content-Type: application/json" \
+  -X POST \
+  -d '{
+    "allowance": 1000,
+    "rate": 1000,
+    "per": 1,
+    "expires": -1,
+    "quota_max": -1,
+    "org_id": "1",
+    "quota_renews": 1449051461,
+    "quota_remaining": -1,
+    "quota_renewal_rate": 60,
+    "access_rights": {
+      "{API-ID}": {
+        "api_id": "{API-ID}",
+        "api_name": "{API-NAME}",
+        "versions": ["Default"]
+      }
+    },
+    "meta_data": {}
+  }' http://localhost:8080/tyk/keys/create | python -mjson.tool
+```
+
+The above creates a new key with the rate limits, and security profile that grants access to the APIs listed in the `access_rights` section.
+
+- `{API-ID}`: The API ID you wish this policy to grant access to, there can be more than one of these entries.
+- `{API-NAME}`: The name of the API being granted access to (this is not required, but helps when debugging or auditing).
+
+The important elements:
+
+- `access_rights`: A list of objects representing which APIs you have configured to grant access to.
+- `rate` and `per`: The number of allowed requests per period.
+- `quota_max`: The maximum number of allowed requests over a quota period.
+- `quota_renewal_rate`: how often the quota resets, in seconds. In this case, we have set it to renew every hour.
+
+You will see a response with your new key:
+
+```json
+{
+  "action": "create",
+  "key": "c2cb92a78f944e9a46de793fe28e847e",
+  "status": "ok"
+}
+```
+
+The value returned in the `key` parameter of the response is the access key you can now use to access the API that was specified in the `access_rights` section of the call.
