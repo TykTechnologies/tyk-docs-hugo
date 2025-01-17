@@ -155,6 +155,10 @@ menu:
         path: /api-management/automations
         category: Page
         show: True
+      - title: "User Management"
+        path: /api-management/user-management
+        category: Page
+        show: True
       - title: "Troubleshooting"
         path: /api-management/troubleshooting-debugging
         category: Page
@@ -1723,38 +1727,6 @@ menu:
                 show: True
               - title: "Activity by OAuth Client"
                 path: /tyk-dashboard-analytics/traffic-per-oauth-client
-                category: Page
-                show: True
-          - title: "User management"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /tyk-dashboard/rbac
-                category: Page
-                show: True
-              - title: "User Permissions"
-                path: /basic-config-and-security/security/dashboard/user-roles
-                category: Page
-                show: True
-              - title: "Managing Users"
-                path: /basic-config-and-security/security/dashboard/create-users
-                category: Page
-                show: True
-              - title: "Managing User Groups"
-                path: /basic-config-and-security/security/dashboard/create-user-groups
-                category: Page
-                show: True
-              - title: "Search Users"
-                path: /basic-config-and-security/security/dashboard/search-users
-                category: Page
-                show: True
-              - title: "Password Policy"
-                path: /basic-config-and-security/security/password-policy
-                category: Page
-                show: True
-              - title: "API Ownership"
-                path: /product-stack/tyk-dashboard/advanced-configurations/user-management/api-ownership
                 category: Page
                 show: True
           - title: "API governance"
