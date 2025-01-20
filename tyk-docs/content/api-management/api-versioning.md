@@ -5,6 +5,8 @@ tags: ["API versioning", "version", "Tyk Classic", "Tyk OAS", "API", "versioning
 description: Tyk Tools that help with automating deployment and API Management operations
 keywords: ["API versioning", "version", "Tyk Classic", "Tyk OAS", "API", "versioning"]
 aliases:
+  - /advanced-configuration/integrate
+  - /advanced-configuration/integrate/api-auth-mode
   - /tyk-apis/tyk-gateway-api/api-definition-objects/versioning-endpoint
   - /getting-started/key-concepts/oas-versioning
   - /getting-started/key-concepts/versioning
