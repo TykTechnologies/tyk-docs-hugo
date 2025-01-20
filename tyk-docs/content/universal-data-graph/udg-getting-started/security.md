@@ -20,7 +20,7 @@ Some of the common strategies to mitigate these risks include
 - Query depth limiting
 
 
-For this tutorial we'll mitigate these risks using `Query Depth Limit` but you can also use common strategies like rate limiting and throttling, which you can read more about [here](../../../getting-started/key-concepts/rate-limiting/)
+For this tutorial we'll mitigate these risks using `Query Depth Limit` but you can also use common strategies like rate limiting and throttling, which you can read more about [here](/api-management/rate-limit)
 
 
 ### 1. Set authentication mode
