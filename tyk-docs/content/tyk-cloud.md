@@ -1,7 +1,7 @@
 ---
 title: "Set Up Tyk Cloud"
-description: "This page serves as a comprehensive guide to migrating workloads to Tyk"
-tags: ["installation", "migration"]
+description: "This page serves as a comprehensive guide to migrating workloads to Tyk Cloud"
+tags: ["Tyk Cloud", "Migration"]
 aliases:
   - /tyk-cloud/telemetry/enable-telemetry
   - /tyk-cloud/telemetry/
