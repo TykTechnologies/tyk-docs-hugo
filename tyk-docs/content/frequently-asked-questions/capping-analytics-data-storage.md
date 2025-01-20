@@ -1,6 +1,6 @@
 ---
 date: 2017-03-27T16:13:15+01:00
-title: Capping analytics data storage
+title: How to Cap analytics data storage
 menu:
   main:
     parent: "Frequently Asked Questions"

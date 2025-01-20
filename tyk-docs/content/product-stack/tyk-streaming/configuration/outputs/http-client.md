@@ -1,5 +1,5 @@
 ---
-title: Http Client
+title: Streams Output Http Client
 description: Explains an overview of configuring Http client output
 tags: [ "Tyk Streams", "Stream Outputs", "Outputs", "Http Client", "http_client" ]
 ---

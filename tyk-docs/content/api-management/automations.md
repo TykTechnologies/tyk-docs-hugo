@@ -4,6 +4,7 @@ linkTitle: Automation Tools
 tags: ["Tyk API Management", "Open Source", "Self-Managed", "Tyk Cloud", "API Gateway"]
 title: Automation Tools
 aliases:
+  - /getting-started/key-concepts/gitops-with-tyk
   - /advanced-configuration/manage-multiple-environments/tyk-sync
   - /product-stack/tyk-operator/advanced-configurations/api-categories
   - /product-stack/tyk-operator/advanced-configurations/api-versioning
@@ -69,7 +70,7 @@ In this guide, we’ll walk through the primary tools for automating API managem
 Before diving into lifecycle automations with Tyk, ensure you have the following:
 
 - **A Tyk installation** (Self-Managed or Cloud)
-  - If you don't have Tyk installed, follow our [installation guide]({{<ref "tyk-self-managed/install">}})
+  - If you don't have Tyk installed, follow our [installation guide]({{<ref "tyk-self-managed#installation-options-for-tyk-self-managed">}})
   - For Tyk Cloud, sign up [here](https://tyk.io/sign-up/)
   - Tyk Operator license key. Starting from Tyk Operator v1.0, a valid license key is required.
 
@@ -300,7 +301,7 @@ To address this challenge, Tyk Operator allows you to directly reference certifi
 ### Install and Configure Tyk Operator
 
 We assume you have already installed Tyk. If you don’t have it, check out [Tyk
-Cloud]({{<ref "/deployment-and-operations/tyk-cloud-platform/quick-start">}}) or [Tyk Self
+Cloud]({{<ref "tyk-cloud#quick-start-tyk-cloud">}}) or [Tyk Self
 Managed]({{<ref "/getting-started/installation">}}) page. [Tyk Helm
 Chart]({{<ref "/product-stack/tyk-charts/overview">}}) is the preferred (and easiest) way to install Tyk on Kubernetes.
 
@@ -310,7 +311,7 @@ In order for policy ID matching to work correctly, Dashboard must have `allow_ex
 Tyk Operator needs a [user credential]({{< ref "#operator-user" >}}) to connect with
 Tyk Dashboard. The Operator user should have write access to the resources it is going to manage, e.g. APIs, Certificates,
 Policies, and Portal. It is the recommended practice to turn off write access for other users for the above resources. See
-[Using Tyk Operator to enable GitOps with Tyk]({{< ref "getting-started/key-concepts/gitops-with-tyk" >}}) about
+[Using Tyk Operator to enable GitOps with Tyk]({{< ref "api-management/automations" >}}) about
 maintaining a single source of truth for your API configurations.
 
 #### Install cert-manager
