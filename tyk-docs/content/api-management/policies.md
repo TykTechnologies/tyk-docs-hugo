@@ -1,17 +1,15 @@
 ---
 date: 2017-03-23T16:33:00Z
 title: Security Policy and Access Keys
-tags: ["Policies", "Security"]
+tags: ["Policies", "Security", "Security Policy", "Access Key", "API Key"]
 description: "How to create and use policies and access keys in Tyk"
-menu:
-  main:
-    parent: "Security Policies"
-weight: 1
+keywords: ["Policies", "Security", "Security Policy", "Access Key", "API Key"]
 aliases:
-  - /security/security-policies/policies-guide/
-  - /basic-config-and-security/security/security-policies/partitioned-policies/
-  - /security/security-policies/partitioned-policies/
-  - /basic-config-and-security/security/security-policies/secure-apis-method-path/
+  - /basic-config-and-security/security/security-policies
+  - /security/security-policies/policies-guide
+  - /basic-config-and-security/security/security-policies/partitioned-policies
+  - /security/security-policies/partitioned-policies
+  - /basic-config-and-security/security/security-policies/secure-apis-method-path
   - /basic-config-and-security/security/security-policies/policies-guide
   - /security/security-policies/secure-apis-method-path
   - /basic-config-and-security/security/security-policies/partitioned-policies
