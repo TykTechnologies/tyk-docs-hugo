@@ -82,7 +82,7 @@ To prevent Broken Functional Level Authorization (BFLA), requests to REST API en
 
 Tyk offers several measures to assist with protection from BFLA threats:
 
-- *Establish path-based access rights*: [Policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) are predefined sets of rules which grant access to particular APIs. These can include [path-based permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}), which restrict access to particular paths and methods within an API. Clients can be assigned one or more policies which the Gateway will validate when it receives a request.
+- *Establish path-based access rights*: [Policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}) are predefined sets of rules which grant access to particular APIs. These can include [path-based permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}), which restrict access to particular paths and methods within an API. Clients can be assigned one or more policies which the Gateway will validate when it receives a request.
 - *Access Control*: Tyk has plugins that control access to API endpoints. They are known as [allowlist]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) and [blocklist]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-oas#configuring-the-block-list-in-the-api-designer" >}}) and can be configured via the Endpoint Designer of an API Definition. Both plugins grant and deny access to API paths and methods, but do so in different ways, which makes them mutually exclusive. When the allowlist plugin is used, only the marked paths and methods are allowed, all other paths and methods are blocked. This can be perceived as *deny by default* since it provides the least privileges. The reverse is true for the blocklist plugin, only the paths and methods marked as blocklist are blocked, all other paths and methods are allowed. It is recommended to use the *allowlist* approach, since it is the most restrictive, only allowing marked endpoint paths and paths.
 - *CORS*: This [functionality]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}) allows the Tyk Gateway to limit API access to particular browser-based consumers.
 
@@ -112,7 +112,7 @@ Tyk offers several mechanisms to help protect an API from Security Misconfigurat
 - [Mutual TLS]({{< ref "/api-management/client-authentication#use-mutual-tls" >}}) with both the clients and API to ensure that callers with explicitly allowed client certificates can connect to the endpoints.
 - [Error Templates]({{< ref "advanced-configuration/error-templates" >}}) can be used to return a response body based on status code and content type. This can help minimize the implementation details returned to the client.
 - [CORS functionality]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}) allows the Tyk Gateway to limit API access to particular browser-based consumers.
-- [Policy Path-Based Permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}) and the [allowlist]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) plugin can be used to prevent clients from accessing API endpoints using non-authorized HTTP methods. For example, blocking the use of the DELETE method on an endpoint which should only accept GET requests.
+- [Policy Path-Based Permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}) and the [allowlist]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) plugin can be used to prevent clients from accessing API endpoints using non-authorized HTTP methods. For example, blocking the use of the DELETE method on an endpoint which should only accept GET requests.
 - [Environment variables]({{< ref "tyk-environment-variables" >}}) can help standardize configuration across containerised deployments.
 - For GraphQL APIs:
 - [Schema Introspection]({{< ref "graphql/introspection" >}}) ensures that the Tyk Dashboard automatically uses the schema of the upstream GraphQL API and can keep it synchronised if it changes.
@@ -128,7 +128,7 @@ Tyk offers the following features to support improper inventory management:
 
 - [Versioning]({{< ref "getting-started/key-concepts/versioning" >}}) allows newer versions of APIs to coexist with the older versions, facilitating deprecation and sunsetting.
 - [Sunsetting]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#sunsetting-api-versions" >}}) allows versions to be configured with an Expiry Time, ensuring that a version is not accessible after the expiry date.
-- [Key expiry]({{< ref "basic-config-and-security/control-limit-traffic/key-expiry" >}}) ensures that access to an API is short lived, with a per key configurable Time to Live (TTL) for which a token remains valid before it expires. The implementation of key expiry, with a configurable Time To Live (TTL), mitigates the impact of compromised tokens by narrowing the window of vulnerability. Setting a TTL reduces the time frame during which a compromised token could be exploited, enhancing overall security.
+- [Key expiry]({{< ref "api-management/policies#access-key-expiry" >}}) ensures that access to an API is short lived, with a per key configurable Time to Live (TTL) for which a token remains valid before it expires. The implementation of key expiry, with a configurable Time To Live (TTL), mitigates the impact of compromised tokens by narrowing the window of vulnerability. Setting a TTL reduces the time frame during which a compromised token could be exploited, enhancing overall security.
 - Tyk Developer Portal catalogs APIs and facilitates granting access to them.  Integrated with a CMDB it can help keep documentation updated.
 - [Tyk Analytics]({{< ref "tyk-dashboard-analytics" >}}) can help identify the stagnant APIs and used stale APIs.
 - [Tyk Pump]({{< ref "tyk-pump" >}}) can ship metrics needed for analytics into Tyk Dashboard and other systems.
@@ -196,11 +196,11 @@ For GraphQL APIs, use the gateway to define [GraphQL schemas]({{< ref "graphql-p
 
 ##### Function Level Authorization
 
-Handle with the gateway. Use [security policies]({{< ref "basic-config-and-security/security/security-policies" >}}), [path-based permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}), [allow lists]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) and [block lists]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-oas#configuring-the-block-list-in-the-api-designer" >}}) to manage authorization of hosts and paths.
+Handle with the gateway. Use [security policies]({{< ref "basic-config-and-security/security/security-policies" >}}), [path-based permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}), [allow lists]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) and [block lists]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-oas#configuring-the-block-list-in-the-api-designer" >}}) to manage authorization of hosts and paths.
 
 #### Assign Least Privileges
 
-Design [security policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) that contain the least privileges necessary for users to achieve the workflows supported by the API. By favoring specific, granular access over broad access, this enables user groups and use cases to be addressed directly, as opposed to broad policies that cover multiple use cases and expose functionality unnecessarily.
+Design [security policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}) that contain the least privileges necessary for users to achieve the workflows supported by the API. By favoring specific, granular access over broad access, this enables user groups and use cases to be addressed directly, as opposed to broad policies that cover multiple use cases and expose functionality unnecessarily.
 
 ##### Deny by Default
 
@@ -324,7 +324,7 @@ Use [transport layer security]({{< ref "api-management/certificates" >}}) where 
 **Limit Functionality**
 
 
-Use [security policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) to specify which paths, methods and schemas are accessible, whilst blocking all others.
+Use [security policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}) to specify which paths, methods and schemas are accessible, whilst blocking all others.
 
 **Mitigate Server-Side Request Forgery**
 
@@ -349,7 +349,7 @@ APIs need to be managed and governed just like any other resource, otherwise org
 
 **Restrict Version Availability**: Enforce the expiry of [API versions]({{< ref "getting-started/key-concepts/versioning" >}}) that are planned for deprecation, by setting a sunset date, beyond which they will not be accessible.
 
-**Enforce Key Expiry**: In many situations it’s best to issue API keys that have a short, finite lifetime, especially when serving anonymous, external consumers. Set [expiry dates]({{< ref "basic-config-and-security/control-limit-traffic/key-expiry" >}}) for API keys, or use ephemeral credentials with complementary authentication techniques that support key renewal, such as [OAuth 2.0 refresh tokens]({{< ref "/api-management/client-authentication#using-refresh-tokens" >}}) and [dynamic client registration]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration" >}}). Then, should an API key fall into the wrong hands, there’s a chance that it has already expired.
+**Enforce Key Expiry**: In many situations it’s best to issue API keys that have a short, finite lifetime, especially when serving anonymous, external consumers. Set [expiry dates]({{< ref "api-management/policies#access-key-expiry" >}}) for API keys, or use ephemeral credentials with complementary authentication techniques that support key renewal, such as [OAuth 2.0 refresh tokens]({{< ref "/api-management/client-authentication#using-refresh-tokens" >}}) and [dynamic client registration]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration" >}}). Then, should an API key fall into the wrong hands, there’s a chance that it has already expired.
 
 **Use Standardized Specifications**: Use the [OpenAPI Specification](https://en.wikipedia.org/wiki/OpenAPI_Specification) standard to design APIs. These specification documents act as a source of truth that can generate [API configuration]({{< ref "getting-started/using-oas-definitions/import-an-oas-api" >}}) and [portal documentation]({{< ref "tyk-apis/tyk-portal-api/portal-documentation#create-documentation" >}}).
 
@@ -369,7 +369,7 @@ This section outlines some of the key security concepts that Tyk uses and that y
 **Key Hashing**
 
 
-See [Key Hashing]({{< ref "basic-config-and-security/security/key-hashing" >}}) for details on how Tyk obfuscates keys in Redis.
+See [Key Hashing]({{< ref "api-management/policies#access-key-hashing" >}}) for details on how Tyk obfuscates keys in Redis.
 
 **TLS and SSL**
 
@@ -402,6 +402,6 @@ See [Authentication and Authorization]({{< ref "/api-management/client-authentic
 **Security Policies**
 
 
-A Tyk security policy incorporates several security options that can be applied to an API key. These include [Partioned Policies]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies.md" >}}) and securing by [Method and Path]({{< ref "security/security-policies/secure-apis-method-path" >}}).
+A Tyk security policy incorporates several security options that can be applied to an API key. These include [Partioned Policies]({{< ref "api-management/policies#partitioned-policies" >}}) and securing by [Method and Path]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}).
 
 See [Security Policies]({{< ref "basic-config-and-security/security/security-policies" >}}) for more details.

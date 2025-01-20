@@ -161,6 +161,8 @@ menu:
         show: True
       - title: "Security Policy and Access Keys"
         path: /api-management/policies
+        category: Page
+        show: True
       - title: "Certificates"
         path: /api-management/certificates
         category: Page
@@ -704,10 +706,6 @@ menu:
                 show: True
               - title: "What is Rate Limiting?"
                 path: /getting-started/key-concepts/rate-limiting
-                category: Page
-                show: True
-              - title: "What is a Security Policy?"
-                path: /getting-started/key-concepts/what-is-a-security-policy
                 category: Page
                 show: True
               - title: "What is a Session Object?"

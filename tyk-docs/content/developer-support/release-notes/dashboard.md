@@ -438,7 +438,7 @@ We are thrilled to announce new updates and improvements in Tyk 5.6.0, bringing 
 
 ##### Per endpoint Rate Limiting for clients
 
-Now you can configure rate limits at the [endpoint level per client]({{< ref "getting-started/key-concepts/rate-limiting#key-level-rate-limiting" >}}), using new configuration options in the access key. Use Tyk's powerful [security policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) to create templates to set appropriate rate limits for your different categories of user.
+Now you can configure rate limits at the [endpoint level per client]({{< ref "getting-started/key-concepts/rate-limiting#key-level-rate-limiting" >}}), using new configuration options in the access key. Use Tyk's powerful [security policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}) to create templates to set appropriate rate limits for your different categories of user.
 
 ##### Go upgrade to 1.22
 
@@ -2882,7 +2882,7 @@ Added a new Dashboard configuration option `allow_unsafe_oas`. This permits the 
 <details>
 <summary>Fixed security policy grant permissions issue encountered with MongoDB</summary>
 
-Fixed an issue when using MongoDB and [Tyk Security Policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) where Tyk could incorrectly grant access to an API after that API had been deleted from the associated policy. This was due to the policy cleaning operation that is triggered when an API is deleted from a policy in a MongoDB installation. With this fix, the policy cleaning operation will not remove the final (deleted) API from the policy; Tyk recognizes that the API record is invalid and denies granting access rights to the key.
+Fixed an issue when using MongoDB and [Tyk Security Policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}) where Tyk could incorrectly grant access to an API after that API had been deleted from the associated policy. This was due to the policy cleaning operation that is triggered when an API is deleted from a policy in a MongoDB installation. With this fix, the policy cleaning operation will not remove the final (deleted) API from the policy; Tyk recognizes that the API record is invalid and denies granting access rights to the key.
 </details>
 </li>
 <li>

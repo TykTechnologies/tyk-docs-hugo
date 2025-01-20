@@ -212,7 +212,7 @@ The *client* sends the *client Id* and *client secret* during the authorization 
 
 ### Manage Client Access Policies
  
-The *access tokens* issued to clients by *Tyk Authorization Server* are the same as other [session objects]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}) and can be associated with [access security policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) at the point of creation. These allow the application of quotas, rate limits and access rights in the normal manner.
+The *access tokens* issued to clients by *Tyk Authorization Server* are the same as other [session objects]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}) and can be associated with [access security policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}) at the point of creation. These allow the application of quotas, rate limits and access rights in the normal manner.
 
 Security policies can be assigned to *client apps* and will be applied to all access tokens issued for that *client app*.
 

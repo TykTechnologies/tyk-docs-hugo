@@ -33,7 +33,7 @@ When configuring APIs, precise URL path matching helps developers:
 
 URL path matching is fundamental to the behavior of various Tyk middleware, including:
 
-- [Granular access control]({{< ref "security/security-policies/secure-apis-method-path" >}})
+- [Granular access control]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}})
 - [Allow List]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}})
 - [Block List]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware" >}})
 - [Request and Response transformation]({{< ref "advanced-configuration/transform-traffic" >}})
