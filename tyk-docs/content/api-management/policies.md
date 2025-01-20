@@ -22,6 +22,19 @@ aliases:
 
 ## Introduction
 
+In Tyk, a security policy acts as a template for access control and rate limiting. It can be applied to multiple access keys, OAuth clients, or JWT tokens, allowing you to manage API access at scale.
+
+Access keys, on the other hand, are the tokens that clients use to authenticate and access your APIs. These keys can either have their own individual settings or inherit settings from one or more security policies.
+
+By leveraging security policies and access keys together, you can:
+
+- Standardize access control across multiple users or applications.
+- Easily update access rights for groups of users.
+- Implement tiered access levels (e.g., basic, premium, enterprise).
+- Manage and monitor API usage effectively.
+
+In the following sections, we'll explore how to create and manage security policies and access keys using both the Tyk Dashboard and API.
+
 ## What is a Security Policy
 
 A Tyk security policy incorporates several security options that can be applied to an API key. It acts as a template that can override individual sections of an API key (or identity) in Tyk. For example, if you had 10,000 API keys issued, how would you ensure that all 10,000 users received an upgraded quota or access a new API that you have published?
