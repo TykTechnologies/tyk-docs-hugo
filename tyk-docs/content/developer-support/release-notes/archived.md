@@ -932,7 +932,7 @@ We have updated the Dashboard **Apply Policies** section of the **Add Key** sect
 
 For this release multiple policies are only supported only via the Add Key section and via the API. Support for OIDC, oAuth, and Portal API Catalogs are planned for subsequent releases.
 
-[Docs]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies" >}})
+[Docs]({{< ref "api-management/policies#partitioned-policies" >}})
 
 #### <a name="global-api"></a>Global API Rate Limits
 
@@ -944,7 +944,7 @@ Extended Dashboard API designer Rate Limiting and Quotas section in Core setting
 
 {{< img src="/img/release-notes/rate_limits.png" alt="rate-limits" >}}
 
-[Docs]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies" >}})
+[Docs]({{< ref "api-management/policies#partitioned-policies" >}})
 
 #### Specify custom analytics tags using HTTP headers
 
@@ -983,7 +983,7 @@ More SSO functionality is something that a lot of our customers have been asking
 [Docs]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}})
 
 #### Attaching Multiple Policies to the Keys
-[Docs]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies" >}})
+[Docs]({{< ref "api-management/policies#partitioned-policies" >}})
 
 #### Default User Agent set to Tyk/$VERSION
 If no user agent is specified in a request, it is now set as `Tyk/$VERSION`.
@@ -1068,7 +1068,7 @@ This was very resource consuming and unstable feature. We recommend using load b
 [Docs]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}})
 
 #### Attaching Multiple Policies to the Keys
-[Docs]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies" >}})
+[Docs]({{< ref "api-management/policies#partitioned-policies" >}})
 
 #### Set permissions for users logged via SSO (Tyk Identity Broker)
 Added new option `sso_permission_defaults` in Dashboard config file. 

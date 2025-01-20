@@ -5,7 +5,7 @@
 
 A security policy encapsulates several options that can be applied to a key. It acts as a template that can override individual sections of an API key (or identity) in Tyk.
 
-See [What is a Security Policy?]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}})
+See [What is a Security Policy?]({{< ref "api-management/policies#what-is-a-security-policy" >}})
 
 
 ## Tutorial: Create a security policy with the Dashboard
@@ -78,12 +78,12 @@ The Usage Quota set by a policy will override a quota applied to an individual k
 
 ### Policy Partitioning
 
-In some cases, the all-or-nothing approach of policies, where all the components of access control, quota and rate limit are set together isn’t ideal, and instead you may wish to have only one or two segments of a token managed at a policy level and other segments in another policy or on the key itself. We call this [Policy Partitioning]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies" >}}).
+In some cases, the all-or-nothing approach of policies, where all the components of access control, quota and rate limit are set together isn’t ideal, and instead you may wish to have only one or two segments of a token managed at a policy level and other segments in another policy or on the key itself. We call this [Policy Partitioning]({{< ref "api-management/policies#partitioned-policies" >}}).
 
 
 #### Path Based Permissions
 
-You can also use a security policy to apply restrictions on a particular path and method. Granular path control allows you to define which methods and paths a key is allowed to access on a per API-version basis. See [Secure your APIs by Method and Path]({{< ref "security/security-policies/secure-apis-method-path" >}}) for more details
+You can also use a security policy to apply restrictions on a particular path and method. Granular path control allows you to define which methods and paths a key is allowed to access on a per API-version basis. See [Secure your APIs by Method and Path]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}) for more details
 
 {{< img src="/img/2.10/path_and_method.png" alt="Path and Method" >}}
 
@@ -97,7 +97,7 @@ You use the Configuration section to set the following:
    * Active (the default)
    * Draft
    * Access Denied 
-3. Set a time after which any Keys subscribed to your policy expire. Select a value from the drop-down list. This is a required setting. See [Key Expiry]({{< ref "basic-config-and-security/security/key-level-security#key-expiry" >}}) for more details.
+3. Set a time after which any Keys subscribed to your policy expire. Select a value from the drop-down list. This is a required setting. See [Key Expiry]({{< ref "api-management/policies#key-expiry" >}}) for more details.
 4. Add Tags to your policy. Any tags you add can be used when filtering Analytics Data. Tags are case sensitive.
 5. Add Metadata to your policy. Adding metadata such as User IDs can be used by middleware components. See [Session Metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}) for more details.
 
