@@ -1,9 +1,9 @@
 ---
 title: "Rate Limiting"
 date: 2025-01-10
-tags: ["Rate Limit", "Rate Limiting", "Rate Limit Algorithms", "Distributed Rate Limiter", "Redis Rate Limiter", "Fixed Window", "Spike Arrest", "Rate Limit Scope", "Local", "Local rate Limits", "Request Throttling", "Quotas", "Tyk Classic", "Tyk Classic API", "Tyk OAS", "Tyk OAS API", "Rate Limiting", "Global limits", "Per API limits"]
+tags: ["Rate Limit", "Rate Limiting", "Rate Limit Algorithms", "Distributed Rate Limiter", "Redis Rate Limiter", "Fixed Window", "Spike Arrest", "Rate Limit Scope", "Local", "Local rate Limits", "Request Throttling", "Quotas", "Tyk Classic", "Tyk Classic API", "Tyk OAS", "Tyk OAS API", "Rate Limiting", "Global limits", "Per API limits", "Request Throttling", "Request Quotas"]
 description: Overview of Rate Limiting with the Tyk Gateway
-keywords: ["Rate Limit", "Rate Limiting", "Rate Limit Algorithms", "Distributed Rate Limiter", "Redis Rate Limiter", "Fixed Window", "Spike Arrest", "Rate Limit Scope", "Local", "Local rate Limits", "Request Throttling", "Quotas", "Tyk Classic", "Tyk Classic API", "Tyk OAS", "Tyk OAS API", "Rate Limiting", "Global limits", "Per API limits"]
+keywords: ["Rate Limit", "Rate Limiting", "Rate Limit Algorithms", "Distributed Rate Limiter", "Redis Rate Limiter", "Fixed Window", "Spike Arrest", "Rate Limit Scope", "Local", "Local rate Limits", "Request Throttling", "Quotas", "Tyk Classic", "Tyk Classic API", "Tyk OAS", "Tyk OAS API", "Rate Limiting", "Global limits", "Per API limits", "Request Throttling", "Request Quotas"]
 aliases:
   - /control-limit-traffic/request-quotas
   - /control-limit-traffic/rate-limiting
