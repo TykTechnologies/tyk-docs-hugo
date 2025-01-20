@@ -66,7 +66,7 @@ Now you’re ready to build and test:
 
 Once your API is tested, deploy it for use:
 - **Deploying to Production**: Decide where your API will be hosted (cloud, on-premises, or a hybrid setup). Tyk supports multiple deployment environments, allowing you to easily transition between development, staging, and production.
-- **Implement Security**: Protect your API with [authentication methods]({{< ref "basic-config-and-security" >}}), [rate limiting]({{< ref "getting-started/key-concepts/rate-limiting/#what-is-rate-limiting" >}}), and access controls to prevent unauthorized access and misuse.
+- **Implement Security**: Protect your API with [authentication methods]({{< ref "basic-config-and-security" >}}), [rate limiting]({{< ref "api-management/rate-limit#what-is-rate-limiting" >}}), and access controls to prevent unauthorized access and misuse.
 
 Tyk’s platform makes security implementation straightforward, offering features like OAuth 2.0, rate limiting, and custom policies to secure your API.
 
@@ -101,7 +101,7 @@ In this stage, Tyk streamlines deployment, whether on the cloud, on-premises, or
 
 After deployment, Tyk offers robust tools to ensure smooth API operations and maintenance:
 - **Real-Time Monitoring and Analytics**: [Tyk’s dashboard]({{< ref "tyk-dashboard" >}}) provides insights into API traffic, usage patterns, and error rates, enabling quick response to issues.
-- **Dynamic Policy Management**: Set up and adjust security policies to control access and usage, such as [IP whitelisting]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting#ip-allowlist-middleware" >}}), [request throttling]({{< ref "basic-config-and-security/control-limit-traffic/request-throttling" >}}), or [rate limiting]({{< ref "getting-started/key-concepts/rate-limiting/" >}}).
+- **Dynamic Policy Management**: Set up and adjust security policies to control access and usage, such as [IP whitelisting]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting#ip-allowlist-middleware" >}}), [request throttling]({{< ref "api-management/rate-limit#request-throttling" >}}), or [rate limiting]({{< ref "api-management/rate-limit" >}}).
 - **Plugin Support for Customization**: Use [Tyk’s plugin system]({{< ref "tyk-cloud#configure-plugins" >}}) to add custom functionality or [middleware]({{< ref "api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware/" >}}), such as [custom authentication]({{< ref "tyk-cloud#add-custom-authentication" >}}) or [data transformations]({{< ref "advanced-configuration/transform-traffic" >}}).
 
 ---
