@@ -8,10 +8,10 @@ menu:
     parent: "Security"
 weight: 2
 aliases:
-  - security/tls-and-ssl/lets-encrypt/
-  - security/tls-and-ssl/
+  - security/tls-and-ssl/lets-encrypt
+  - security/tls-and-ssl
   - basic-config-and-security/security/tls-and-ssl
-  - basic-config-and-security/security/certificate-pinning/
+  - basic-config-and-security/security/certificate-pinning
   - security/certificate-pinning
 ---
 
