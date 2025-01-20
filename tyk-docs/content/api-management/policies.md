@@ -5,6 +5,7 @@ tags: ["Policies", "Security", "Security Policy", "Access Key", "API Key"]
 description: "How to create and use policies and access keys in Tyk"
 keywords: ["Policies", "Security", "Security Policy", "Access Key", "API Key"]
 aliases:
+  - /security/security-policies
   - /basic-config-and-security/security/security-policies
   - /security/security-policies/policies-guide
   - /basic-config-and-security/security/security-policies/partitioned-policies
