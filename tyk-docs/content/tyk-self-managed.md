@@ -626,24 +626,26 @@ Tyk Helm chart is the preferred (and easiest) way to install **Tyk Self-Managed*
 The helm chart `tyk-helm/tyk-pro` will install full Tyk platform with **Tyk Manager**, **Tyk Gateways** and **Tyk Pump** into your Kubernetes cluster. You can also choose to enable the installation of **Tyk Operator** (to manage your APIs in a declarative way).
 
 **Prerequisites**
-<br>
-**1. Tyk License**
-If you are evaluating Tyk on Kubernetes, [contact us](https://tyk.io/about/contact/) to obtain a temporary license.
 
-**2. Data stores**
-The following are required for a Tyk Self-Managed installation:
- - Redis   - Should be installed in the cluster or reachable from inside the cluster (for SaaS option).
-             You can find instructions for a simple Redis installation bellow.
- - MongoDB or SQL - Should be installed in the cluster or be reachable by the **Tyk Manager** (for SaaS option).
+1. **Tyk License**
 
-You can find supported MongoDB and SQL versions [here]({{< ref "#database-management" >}}).
+    If you are evaluating Tyk on Kubernetes, [contact us](https://tyk.io/about/contact/) to obtain a temporary license.
 
-Installation instructions for Redis and MongoDB/SQL are detailed below.
+2. **Data stores**
 
-**3. Helm**
-Installed [Helm 3](https://helm.sh/)
-Tyk Helm Chart is using Helm v3 version (i.e. not Helm v2).
+    The following are required for a Tyk Self-Managed installation:
+    - Redis   - Should be installed in the cluster or reachable from inside the cluster (for SaaS option).
+                You can find instructions for a simple Redis installation bellow.
+    - MongoDB or SQL - Should be installed in the cluster or be reachable by the **Tyk Manager** (for SaaS option).
 
+    You can find supported MongoDB and SQL versions [here]({{< ref "#database-management" >}}).
+
+    Installation instructions for Redis and MongoDB/SQL are detailed below.
+
+3. **Helm**
+
+    Installed [Helm 3](https://helm.sh/)
+    Tyk Helm Chart is using Helm v3 version (i.e. not Helm v2).
 
 **Installation**
 
@@ -655,26 +657,30 @@ please use [GitHub Tyk-helm-chart repo](https://github.com/TykTechnologies/tyk-h
 or contact us in [Tyk Community forum](https://community.tyk.io/) or through our sales team.
 
 
-**Add Tyk official Helm repo to your local Helm repository**
-```bash
-helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
-helm repo update
-```
+1. **Add Tyk official Helm repo to your local Helm repository**
 
-**Create namespace for your Tyk deployment**
-```bash
-kubectl create namespace tyk
-```
+    ```bash
+    helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
+    helm repo update
+    ```
 
-**Getting the values.yaml of the chart**
-Before we proceed with installation of the chart you need to set some custom values.
-To see what options are configurable on a chart and save that options to a custom values.yaml file run:
+2. **Create namespace for your Tyk deployment**
 
- ```bash
-helm show values tyk-helm/tyk-pro > values.yaml
-```
+    ```bash
+    kubectl create namespace tyk
+    ```
+
+3. **Getting the values.yaml of the chart**
+
+    Before we proceed with installation of the chart you need to set some custom values.
+    To see what options are configurable on a chart and save that options to a custom values.yaml file run:
+
+    ```bash
+    helm show values tyk-helm/tyk-pro > values.yaml
+    ```
 
 **Installing the data stores**
+
 For Redis, MongoDB or SQL you can use these rather excellent charts provided by Bitnami
 
 {{< tabs_start >}}
@@ -752,6 +758,8 @@ You can update connection details in `values.yaml` file under `postgres`.
 {{< tab_end >}}
 {{< tabs_end >}}
 
+---
+
 **Quick Redis and MongoDB PoC installation**
 {{< warning  success >}}
 **Warning**
@@ -786,6 +794,7 @@ gateway pods is more than the license limit with lower amounts of Licensed nodes
 {{< /note >}}
 
 **Installing Tyk Self managed**
+
 Now we can install the chart using our custom values:
 
 ```bash
@@ -800,10 +809,12 @@ The `--wait` argument is important to successfully complete the bootstrap of you
 {{< /note >}}
 
 **Pump Installation**
+
 By default pump installation is disabled. You can enable it by setting `pump.enabled` to `true` in `values.yaml` file.
 Alternatively, you can use `--set pump.enabled=true` while doing helm install.
 
 **Quick Pump configuration(Supported from tyk helm v0.10.0)**
+
 *1. Mongo Pump*
 
 To configure mongo pump, do following changings in `values.yaml` file:
@@ -817,13 +828,16 @@ To configure postgres pump, do following changings in `values.yaml` file:
 2. Set connection string parameters in `postgres` section.
 
 **Tyk Developer Portal**
+
 You can disable the bootstrapping of the Developer Portal by the `portal.bootstrap: false` in your local `values.yaml` file.
 
 **Using TLS**
+
 You can turn on the TLS option under the gateway section in your local `values.yaml` file which will make your Gateway
 listen on port 443 and load up a dummy certificate. You can set your own default certificate by replacing the file in the `certs/` folder.
 
 **Mounting Files**
+
 To mount files to any of the Tyk stack components, add the following to the mounts array in the section of that component.
 For example:
  ```bash
@@ -833,6 +847,7 @@ For example:
 ```
 
 **Sharding APIs**
+
 Sharding is the ability for you to decide which of your APIs are loaded on which of your Tyk Gateways. This option is
 turned off by default, however, you can turn it on by updating the `gateway.sharding.enabled` option. Once you do that you
 will also need to set the `gateway.sharding.tags` field with the tags that you want that particular Gateway to load. (ex. tags: "external,ingress".)
@@ -844,11 +859,13 @@ Check [Tyk Gateway Sharding]({{< ref "/content/advanced-configuration/manage-mul
 #### Install More Tyk Components
 
 **Installing Tyk Enterprise Developer Portal**
+
 If you are deploying the **Tyk Enterprise Developer Portal**, set the appropriate values under the `enterprisePortal` section in your `values.yaml`. Please visit [Tyk Enterprise Developer Portal installation]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-helm" >}}) for a step by step guide.
 
 >**Note**: Helm chart supports Enterprise Portal v1.2.0+
 
 **Installing Tyk Self-managed Control Plane**
+
 If you are deploying the **Tyk Control plane**, a.k.a **MDCB**, for a **Tyk Multi Data Center Bridge** deployment then you set
 the `mdcb.enabled: true` option in the local `values.yaml` to add of the **MDCB** component to your installation.
 Check [Tyk Control plane]({{< ref "tyk-multi-data-centre" >}}) for more configuration details.
@@ -857,6 +874,7 @@ This setting enables multi-cluster, multi Data-Center API management from a sing
 
 
 **Tyk Identity Broker (TIB)**
+
 The **Tyk Identity Broker** (TIB) is a micro-service portal that provides a bridge between various Identity Management Systems
 such as LDAP, OpenID Connect providers and legacy Basic Authentication providers, to your Tyk installation.
 See [TIB]({{< ref "tyk-identity-broker/getting-started" >}}) for more details.
@@ -880,6 +898,7 @@ to set the name of this **ConfigMap** (`tyk-tib-profiles-conf` by default).
 
 
 **Tyk Operator and Ingress**
+
 For a GitOps workflow used with a **Tyk Self-Managed** installation or setting the Tyk Gateway as a Kubernetes ingress controller, Tyk Operator enables you to manage API definitions, security policies and other Tyk features using Kubernetes manifest files.
 To get started go to [Tyk Operator]({{< ref "api-management/automations#automate-api-management-in-kubernetes-environments" >}}).
 
@@ -1053,37 +1072,40 @@ wget https://raw.githubusercontent.com/sedkis/tyk/master/scripts/bootstrap-ssl.s
 {{< /note >}}
 
 **Getting Started**
+
 1. clone the [tyk-ansible](https://github.com/TykTechnologies/tyk-ansible) repositry
 
-```bash
-$ git clone https://github.com/TykTechnologies/tyk-ansible
-```
+    ```bash
+    $ git clone https://github.com/TykTechnologies/tyk-ansible
+    ```
 
 2. `cd` into the directory
-```.bash
-$ cd tyk-ansible
-```
+
+    ```.bash
+    $ cd tyk-ansible
+    ```
 
 3. Run initialisation script to initialise environment
 
-```bash
-$ sh scripts/init.sh
-```
+    ```bash
+    $ sh scripts/init.sh
+    ```
 
 4. Modify `hosts.yml` file to update ssh variables to your server(s). You can learn more about the hosts file [here](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html)
 
 5. Run ansible-playbook to install the following:
-- Redis
-- MongoDB or PostgreSQL
-- Tyk Dashboard
-- Tyk Gateway
-- Tyk Pump
 
-```bash
-$ ansible-playbook playbook.yaml -t tyk-pro -t redis -t `mongodb` or `pgsql`
-```
+    - Redis
+    - MongoDB or PostgreSQL
+    - Tyk Dashboard
+    - Tyk Gateway
+    - Tyk Pump
 
-You can choose to not install Redis, MongoDB or PostgreSQL by removing the `-t redis` or `-t mongodb` or `-t pgsql` However Redis and MongoDB or PostgreSQL are a requirement and need to be installed for the Tyk Pro installation to run.
+    ```bash
+    $ ansible-playbook playbook.yaml -t tyk-pro -t redis -t `mongodb` or `pgsql`
+    ```
+
+    You can choose to not install Redis, MongoDB or PostgreSQL by removing the `-t redis` or `-t mongodb` or `-t pgsql` However Redis and MongoDB or PostgreSQL are a requirement and need to be installed for the Tyk Pro installation to run.
 
 {{< note success >}}
 **Note**  
@@ -1092,6 +1114,7 @@ For a production environment, we recommend that the Gateway, Dashboard and Pump 
 {{< /note >}}
 
 **Supported Distributions**
+
 | Distribution | Version | Supported |
 | --------- | :---------: | :---------: |
 | Amazon Linux | 2 | ✅ |
@@ -1107,6 +1130,7 @@ For a production environment, we recommend that the Gateway, Dashboard and Pump 
 | Ubuntu | 16 | ✅ |
 
 **Variables**
+
 - `vars/tyk.yaml`
 
 | Variable | Default | Comments |
@@ -1811,6 +1835,7 @@ For a production environment, we recommend that the Tyk Gateway, Tyk Dashboard a
 {{< /note >}}
 
 **Supported Distributions**
+
 | Distribution | Version | Supported |
 | --------- | :---------: | :---------: |
 | CentOS | 7 | ✅ |
@@ -1823,39 +1848,43 @@ For a production environment, we recommend that the Tyk Gateway, Tyk Dashboard a
 [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) - required for running the commands below. 
 
 **Getting Started**
+
 1. clone the [tyk-ansible](https://github.com/TykTechnologies/tyk-ansible) repositry
 
-```console
-$ git clone https://github.com/TykTechnologies/tyk-ansible
-```
+    ```console
+    $ git clone https://github.com/TykTechnologies/tyk-ansible
+    ```
 
 2. `cd` into the directory
-```console
-$ cd tyk-ansible
-```
+
+  ```console
+  $ cd tyk-ansible
+  ```
 
 3. Run initialisation script to initialise environment
 
-```console
-$ sh scripts/init.sh
-```
+    ```console
+    $ sh scripts/init.sh
+    ```
 
 4. Modify `hosts.yml` file to update ssh variables to your server(s). You can learn more about the hosts file [here](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html)
 
 5. Run ansible-playbook to install the following:
-- Redis
-- MongoDB or PostgreSQL
-- Tyk Dashboard
-- Tyk Gateway
-- Tyk Pump
 
-```console
-$ ansible-playbook playbook.yaml -t tyk-pro -t redis -t `mongodb` or `pgsql`
-```
+    - Redis
+    - MongoDB or PostgreSQL
+    - Tyk Dashboard
+    - Tyk Gateway
+    - Tyk Pump
 
-You can choose to not install Redis, MongoDB or PostgreSQL by removing the `-t redis` or `-t mongodb` or `-t pgsql` However Redis and MongoDB or PostgreSQL are a requirement and need to be installed for the Tyk Pro installation to run.
+    ```console
+    $ ansible-playbook playbook.yaml -t tyk-pro -t redis -t `mongodb` or `pgsql`
+    ```
+
+    You can choose to not install Redis, MongoDB or PostgreSQL by removing the `-t redis` or `-t mongodb` or `-t pgsql` However Redis and MongoDB or PostgreSQL are a requirement and need to be installed for the Tyk Pro installation to run.
 
 **Variables**
+
 - `vars/tyk.yaml`
 
 | Variable | Default | Comments |
@@ -1944,69 +1973,71 @@ This configuration should also work (with some tweaks) for CentOS.
 *   Ensure port `3000` is open: This is used by the Dashboard to provide the GUI and the Classic Developer Portal.
 *   Follow the steps provided in this link [Getting started on Red Hat (RHEL / CentOS)]({{< ref "#install-tyk-on-red-hat-rhel--centos" >}}) to install and configure Tyk dependencies.
 
-**Step 1: Set up YUM Repositories**
+1. **Set up YUM Repositories**
 
-First, install two package management utilities `yum-utils` and a file downloading tool `wget`:
-```bash
-sudo yum install yum-utils wget
-```
-Then install Python:
-```bash
-sudo yum install python3
-```
+    First, install two package management utilities `yum-utils` and a file downloading tool `wget`:
+    ```bash
+    sudo yum install yum-utils wget
+    ```
+    Then install Python:
+    ```bash
+    sudo yum install python3
+    ```
 
-**Step 2: Configure and Install the Tyk Dashboard**
+2. **Configure and Install the Tyk Dashboard**
 
-Create a file named `/etc/yum.repos.d/tyk_tyk-dashboard.repo` that contains the repository configuration settings for YUM repositories `tyk_tyk-dashboard` and `tyk_tyk-dashboard-source` used to download packages from the specified URLs, including GPG key verification and SSL settings, on a Linux system.
+    Create a file named `/etc/yum.repos.d/tyk_tyk-dashboard.repo` that contains the repository configuration settings for YUM repositories `tyk_tyk-dashboard` and `tyk_tyk-dashboard-source` used to download packages from the specified URLs, including GPG key verification and SSL settings, on a Linux system.
 
-Make sure to replace `el` and `8` in the config below with your Linux distribution and version:
-```bash
-[tyk_tyk-dashboard]
-name=tyk_tyk-dashboard
-baseurl=https://packagecloud.io/tyk/tyk-dashboard/el/8/$basearch
-repo_gpgcheck=1
-gpgcheck=0
-enabled=1
-gpgkey=https://packagecloud.io/tyk/tyk-dashboard/gpgkey
-sslverify=1
-sslcacert=/etc/pki/tls/certs/ca-bundle.crt
-metadata_expire=300
+    Make sure to replace `el` and `8` in the config below with your Linux distribution and version:
+    ```bash
+    [tyk_tyk-dashboard]
+    name=tyk_tyk-dashboard
+    baseurl=https://packagecloud.io/tyk/tyk-dashboard/el/8/$basearch
+    repo_gpgcheck=1
+    gpgcheck=0
+    enabled=1
+    gpgkey=https://packagecloud.io/tyk/tyk-dashboard/gpgkey
+    sslverify=1
+    sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+    metadata_expire=300
 
-[tyk_tyk-dashboard-source]
-name=tyk_tyk-dashboard-source
-baseurl=https://packagecloud.io/tyk/tyk-dashboard/el/8/SRPMS
-repo_gpgcheck=1
-gpgcheck=0
-enabled=1
-gpgkey=https://packagecloud.io/tyk/tyk-dashboard/gpgkey
-sslverify=1
-sslcacert=/etc/pki/tls/certs/ca-bundle.crt
-metadata_expire=300
-```
+    [tyk_tyk-dashboard-source]
+    name=tyk_tyk-dashboard-source
+    baseurl=https://packagecloud.io/tyk/tyk-dashboard/el/8/SRPMS
+    repo_gpgcheck=1
+    gpgcheck=0
+    enabled=1
+    gpgkey=https://packagecloud.io/tyk/tyk-dashboard/gpgkey
+    sslverify=1
+    sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+    metadata_expire=300
+    ```
 
-We'll need to update the YUM package manager's local cache, enabling only the `tyk_tyk-dashboard` repository while disabling all other repositories `--disablerepo='*' --enablerepo='tyk_tyk-dashboard'`, and confirm all prompts `-y`.
-```bash
-sudo yum -q makecache -y --disablerepo='*' --enablerepo='tyk_tyk-dashboard'
-```
+    We'll need to update the YUM package manager's local cache, enabling only the `tyk_tyk-dashboard` repository while disabling all other repositories `--disablerepo='*' --enablerepo='tyk_tyk-dashboard'`, and confirm all prompts `-y`.
+    ```bash
+    sudo yum -q makecache -y --disablerepo='*' --enablerepo='tyk_tyk-dashboard'
+    ```
 
-Install Tyk dashboard:
-```bash
-sudo yum install -y tyk-dashboard
-```
+    Install Tyk dashboard:
+    ```bash
+    sudo yum install -y tyk-dashboard
+    ```
 
-**Step 3: Confirm Redis and MongoDB or PostgreSQL are running**
-Start Redis since it is always required by the Dashboard.
-```bash
-sudo service redis start
-```
-Then start either MongoDB or PostgreSQL depending on which one you are using.
-```bash
-sudo systemctl start mongod
-```
-```bash
-sudo systemctl start postgresql-13
-```
-**Step 4: Configure Tyk Dashboard**
+3. **Confirm Redis and MongoDB or PostgreSQL are running**
+
+    Start Redis since it is always required by the Dashboard.
+    ```bash
+    sudo service redis start
+    ```
+    Then start either MongoDB or PostgreSQL depending on which one you are using.
+    ```bash
+    sudo systemctl start mongod
+    ```
+    ```bash
+    sudo systemctl start postgresql-13
+    ```
+
+4. **Configure Tyk Dashboard**
 
 We can set the Dashboard up with a similar setup command, the script below will get the Dashboard set up for the local instance.
 Make sure to use the actual DNS hostname or the public IP of your instance as the last parameter.
@@ -2046,22 +2077,23 @@ With these values your are configuring the following:
 *   `--tyk_node_port=8080`: Tell the Dashboard that the Tyk node it should communicate with is on port 8080.
 *   `--portal_root=/portal`: We want the Portal to be shown on /portal of whichever domain we set for the Portal.
 
-**Step 5: Start Tyk Dashboard**
-```bash
-sudo service tyk-dashboard start
-```
-{{< note success >}}
+5. **Start Tyk Dashboard**
+
+    ```bash
+    sudo service tyk-dashboard start
+    ```
+    {{< note success >}}
 **Note**  
 
 To check the logs from the deployment run:
 ```bash
 sudo journalctl -u tyk-dashboard 
 ```
-{{< /note >}}
+    {{< /note >}}
 
-Notice how we haven't actually started the gateway yet, because this is a Dashboard install, we need to enter a license first.
+    Notice how we haven't actually started the gateway yet, because this is a Dashboard install, we need to enter a license first.
 
-{{< note success >}}
+    {{< note success >}}
 **Note**  
 
 When using PostgreSQL you may receive the error: `"failed SASL auth (FATAL: password authentication failed for user...)"`, follow these steps to address the issue:
@@ -2084,64 +2116,64 @@ sudo systemctl restart postgresql-13
 ```
  {{< /note >}}
 
-**Step 6: Enter Dashboard license**
+6. **Enter Dashboard license**
 
-Add your license in `/var/opt/tyk-dashboard/tyk_analytics.conf` in the `license` field.
+    Add your license in `/var/opt/tyk-dashboard/tyk_analytics.conf` in the `license` field.
 
-If all is going well, you will be taken to a Dashboard setup screen - we'll get to that soon.
+    If all is going well, you will be taken to a Dashboard setup screen - we'll get to that soon.
 
-**Step 7: Restart the Dashboard process**
+7. **Restart the Dashboard process**
 
-Because we've just entered a license via the UI, we need to make sure that these changes get picked up, so to make sure things run smoothly, we restart the Dashboard process (you only need to do this once) and (if you have it installed) then start the gateway:
-```bash
-sudo service tyk-dashboard restart 
-```
+    Because we've just entered a license via the UI, we need to make sure that these changes get picked up, so to make sure things run smoothly, we restart the Dashboard process (you only need to do this once) and (if you have it installed) then start the gateway:
+    ```bash
+    sudo service tyk-dashboard restart 
+    ```
 
-**Step 8 - Go to the Tyk Dashboard URL**
+8. **Go to the Tyk Dashboard URL**
 
-Go to the following URL to access to the Tyk Dashboard:
+    Go to the following URL to access to the Tyk Dashboard:
 
-```bash
-127.0.0.1:3000
-```
+    ```bash
+    127.0.0.1:3000
+    ```
 
-You should get to the Tyk Dashboard Setup screen:
+    You should get to the Tyk Dashboard Setup screen:
 
-{{< img src="/img/dashboard/system-management/bootstrap_screen.png" alt="Tyk Dashboard Bootstrap Screen" >}}
+    {{< img src="/img/dashboard/system-management/bootstrap_screen.png" alt="Tyk Dashboard Bootstrap Screen" >}}
 
-**Step 9 - Create your Organization and Default User**
+9. **Create your Organization and Default User**
 
-You need to enter the following:
+    You need to enter the following:
 
-* Your **Organization Name**
-* Your **Organization Slug**
-* Your User **Email Address**
-* Your User **First and Last Name**
-* A **Password** for your User
-* **Re-enter** your user **Password**
+    * Your **Organization Name**
+    * Your **Organization Slug**
+    * Your User **Email Address**
+    * Your User **First and Last Name**
+    * A **Password** for your User
+    * **Re-enter** your user **Password**
 
 
-{{< note success >}}
+    {{< note success >}}
 **Note**  
 
 For a password, we recommend a combination of alphanumeric characters, with both upper and lower case letters.
-{{< /note >}}
+    {{< /note >}}
 
 
-Click **Bootstrap** to save the details.
+    Click **Bootstrap** to save the details.
 
-**Step 10 - Login to the Dashboard**
+10. **Login to the Dashboard**
 
-You can now log in to the Tyk Dashboard from `127.0.0.1:3000`, using the username and password created in the Dashboard Setup screen.
+    You can now log in to the Tyk Dashboard from `127.0.0.1:3000`, using the username and password created in the Dashboard Setup screen.
 
-**Configure your Developer Portal**
+    **Configure your Developer Portal**
 
-To set up your [Developer Portal]({{< ref "/content/tyk-developer-portal.md" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalog]({{< ref "/content/getting-started/tutorials/publish-api.md" >}}).
-
+    To set up your [Developer Portal]({{< ref "/content/tyk-developer-portal.md" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalog]({{< ref "/content/getting-started/tutorials/publish-api.md" >}}).
 
 ##### Using Ansible
 
 **Getting Started**
+
 1. clone the [tyk-ansible](https://github.com/TykTechnologies/tyk-ansible) repository
 
 ```bash
@@ -2168,6 +2200,7 @@ $ ansible-playbook playbook.yaml -t tyk-dashboard
 ```
 
 **Supported Distributions**
+
 | Distribution | Version | Supported |
 | --------- | :---------: | :---------: |
 | Amazon Linux | 2 | ✅ |
@@ -2177,6 +2210,7 @@ $ ansible-playbook playbook.yaml -t tyk-dashboard
 | RHEL | 7 | ✅ |
 
 **Variables**
+
 - `vars/tyk.yaml`
 
 | Variable | Default | Comments |
@@ -2277,6 +2311,7 @@ sudo /opt/tyk-pump/install/setup.sh --redishost=<hostname> --redisport=6379 --po
 
 
 **Step 4: Start Tyk Pump**
+
 ```bash
 sudo service tyk-pump start
 ```
@@ -2293,6 +2328,7 @@ sudo journalctl -u tyk-pump
 ##### Using Ansible
 
 **Getting Started**
+
 1. clone the [tyk-ansible](https://github.com/TykTechnologies/tyk-ansible) repositry
 
 ```bash
@@ -2319,6 +2355,7 @@ $ ansible-playbook playbook.yaml -t tyk-pump
 ```
 
 **Supported Distributions**
+
 | Distribution | Version | Supported |
 | --------- | :---------: | :---------: |
 | Amazon Linux | 2 | ✅ |
@@ -2399,6 +2436,7 @@ When Tyk is finished installing, it will have installed some init scripts, but i
 [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) - required for running the commands below. Use the **Shell** tab for instructions to install Tyk from a shell.
 
 **Getting Started**
+
 1. clone the [tyk-ansible](https://github.com/TykTechnologies/tyk-ansible) repositry
 
 ```bash
@@ -2425,6 +2463,7 @@ $ ansible-playbook playbook.yaml -t `tyk-gateway-pro` or `tyk-gateway-hybrid`
 ```
 
 **Supported Distributions**
+
 | Distribution | Version | Supported |
 | --------- | :---------: | :---------: |
 | Amazon Linux | 2 | ✅ |
@@ -2434,6 +2473,7 @@ $ ansible-playbook playbook.yaml -t `tyk-gateway-pro` or `tyk-gateway-hybrid`
 | RHEL | 7 | ✅ |
 
 **Variables**
+
 - `vars/tyk.yaml`
 
 | Variable | Default | Comments |
@@ -2522,6 +2562,7 @@ You should follow the [online tutorial for installing MongoDb](https://docs.mong
 
 {{< tab_end >}}
 {{< tab_start "SQL" >}}
+
 **Install SQL**
 
 You should follow the [online tutorial for installing PostgreSQL](https://www.postgresql.org/download/linux/ubuntu/). We will be using version 13. As part of the PostgreSQL installation you need to perform the following:
@@ -6428,9 +6469,6 @@ For [certain transformation middleware]({{< ref "#store-configuration-with-key-v
 
 From Tyk Gateway v5.3.0 onwards, you can store KV pairs to be used in **any `string` field** in the API definition in the Vault KV store. You can retrieve these values from Vault, noting that you do not provide the directory path (`/tyk-apis`) when accessing data for *these* fields, using the following notation:
 - `vault://KEY`
-
-### Implement Multi Data Center Setup
-
 
 ## Monitor and Observe Your Setup
 

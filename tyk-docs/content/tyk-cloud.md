@@ -181,7 +181,7 @@ To create your API using Tyk Dashboard follow this [guide]({{< ref "getting-star
 
 {{< grid >}}
 
-{{< badge title="Configuration" href="tyk-cloud/configuration-options/using-plugins/python-custom-auth/" >}}
+{{< badge title="Configuration" href="tyk-cloud#add-custom-authentication" >}}
 
 **Python custom plugins**
 
@@ -195,28 +195,28 @@ Implement your own custom logic with Python based plugins
 Configure custom domain for your Dashboard and Developer Portal
 {{< /badge >}}
 
-{{< badge title="Administration" href="tyk-cloud/environments-deployments/managing-environments" >}}
+{{< badge title="Administration" href="tyk-cloud#managing-environments" >}}
 
 **Manage environments**
 
 Create and manage multiple environments within your Tyk Cloud organization
 {{< /badge >}}
 
-{{< badge title="Administration" href="tyk-cloud/environments-deployments/managing-control-planes" >}}
+{{< badge title="Administration" href="tyk-cloud#managing-control-planes" >}}
 
 **Manage deployments**
 
 Create and manage your Cloud Control Plane and Cloud Data Plane deployments
 {{< /badge >}}
 
-{{< badge title="Administration" href="tyk-cloud/teams-users/" >}}
+{{< badge title="Administration" href="tyk-cloud#managing-teams-and-users" >}}
 
 **Manage teams & users**
 
 Create teams in your organization, define roles and manage user access
 {{< /badge >}}
 
-{{< badge title="Account" href="tyk-cloud/account-billing/" >}}
+{{< badge title="Account" href="tyk-cloud#manage-accounts-and-billing" >}}
 
 **Manage billing**
 
