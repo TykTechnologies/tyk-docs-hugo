@@ -2,7 +2,7 @@
 title: "Servers"
 date: 2022-07-06
 tags: ["API", "OAS", "OpenAPI Specification", "Servers"]
-description: "The low level concepts around OpenAPI Specification support in Tyk"
+description: "How to configure servers section in OpenAPI Specification support in Tyk"
 menu:
   main:
     parent: "OpenAPI Low Level Concepts"

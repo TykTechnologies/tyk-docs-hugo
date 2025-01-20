@@ -127,7 +127,7 @@ The following algorithms are supported:
 
 We worked a lot with our clients to build a way nicer on-boarding experience for Tyk. Instead of using the command line, you can just run the Dashboard, and complete a form which will configure your Dashboard. However, we did not forget about our experienced users too, and now provide a CLI enchanced tool for bootstrapping Tyk via a command line.
 
-See our updated [Getting Started]({{< ref "tyk-self-managed/install" >}}) section and [new CLI documentation]({{< ref "tyk-on-premises" >}}).
+See our updated [Getting Started]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) section and [new CLI documentation]({{< ref "tyk-self-managed" >}}).
 
 ### DNS Caching
 
@@ -247,7 +247,7 @@ There is a [new section]({{< ref "product-stack/tyk-dashboard/advanced-configura
 
 
 > **TLDR**
-> To get benefit or performance improvements ensure that you have `close_connections` set to `false` and set `max_idle_connections_per_host` according to our [production perfomance guide]({{< ref "planning-for-production" >}})
+> To get benefit or performance improvements ensure that you have `close_connections` set to `false` and set `max_idle_connections_per_host` according to our [production perfomance guide]({{< ref "tyk-self-managed#planning-for-production" >}})
 
 We have thoroughly analyzed every part of our Gateway, and the results are astounding, up to 160% improvement, compared to our 2.6 release.
 
@@ -776,7 +776,7 @@ We have added support for specifying allowed  SSL ciphers using the following op
 
 `http_server_options - ssl_ciphers`
 
-[Docs]({{< ref "basic-config-and-security/security/tls-and-ssl" >}})
+[Docs]({{< ref "api-management/certificates" >}})
 
 ### <a name="plugins"></a>Plugins Updates
 
@@ -932,7 +932,7 @@ We have updated the Dashboard **Apply Policies** section of the **Add Key** sect
 
 For this release multiple policies are only supported only via the Add Key section and via the API. Support for OIDC, oAuth, and Portal API Catalogs are planned for subsequent releases.
 
-[Docs]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies" >}})
+[Docs]({{< ref "api-management/policies#partitioned-policies" >}})
 
 #### <a name="global-api"></a>Global API Rate Limits
 
@@ -944,7 +944,7 @@ Extended Dashboard API designer Rate Limiting and Quotas section in Core setting
 
 {{< img src="/img/release-notes/rate_limits.png" alt="rate-limits" >}}
 
-[Docs]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies" >}})
+[Docs]({{< ref "api-management/policies#partitioned-policies" >}})
 
 #### Specify custom analytics tags using HTTP headers
 
@@ -983,7 +983,7 @@ More SSO functionality is something that a lot of our customers have been asking
 [Docs]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}})
 
 #### Attaching Multiple Policies to the Keys
-[Docs]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies" >}})
+[Docs]({{< ref "api-management/policies#partitioned-policies" >}})
 
 #### Default User Agent set to Tyk/$VERSION
 If no user agent is specified in a request, it is now set as `Tyk/$VERSION`.
@@ -1068,7 +1068,7 @@ This was very resource consuming and unstable feature. We recommend using load b
 [Docs]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}})
 
 #### Attaching Multiple Policies to the Keys
-[Docs]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies" >}})
+[Docs]({{< ref "api-management/policies#partitioned-policies" >}})
 
 #### Set permissions for users logged via SSO (Tyk Identity Broker)
 Added new option `sso_permission_defaults` in Dashboard config file. 

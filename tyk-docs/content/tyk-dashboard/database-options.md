@@ -18,7 +18,7 @@ Tyk Dashboard requires a persistent datastore for its operations. By default Mon
 
 ### Configuring MongoDB
 
-Please check [here]({{< ref "planning-for-production/database-settings/mongodb.md" >}}) for MongoDB driver and production configurations.
+Please check [here]({{< ref "tyk-self-managed#mongodb" >}}) for MongoDB driver and production configurations.
 
 ## PostgreSQL Supported Versions and Drop-in Replacement
 
@@ -32,12 +32,12 @@ SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please t
 
 ### Configuring PostgreSQL
 
-Please check [here]({{< ref "planning-for-production/database-settings/postgresql.md" >}}) for production configurations.
+Please check [here]({{< ref "#configuring-postgresql" >}}) for production configurations.
 
 See the following pages for configuring your SQL installation with Tyk:
 
-* [Configuring Tyk Dashboard]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}})
-* [Configuring Tyk Pumps]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}})
+* [Configuring Tyk Dashboard]({{< ref "#configuring-postgresql" >}})
+* [Configuring Tyk Pumps]({{< ref "#configuring-postgresql" >}})
 
 All data stored in SQL platforms will be identical to our existing MongoDB support.
 
@@ -46,7 +46,7 @@ All data stored in SQL platforms will be identical to our existing MongoDB suppo
 {{< note success >}}
 **Note** 
 
-Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings/postgresql#introduction" >}}), [MongoDB]({{< ref "planning-for-production/database-settings/mongodb" >}}), or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
 {{< /note >}}
 
 We recommend the following:

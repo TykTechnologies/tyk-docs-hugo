@@ -7,27 +7,118 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "changelog"]
 
 
 ---
-## 1.24.0 Release Notes
+## 1.24 Release Notes
 
-### Release Date 16 of December 2024
+### 1.24.2 Release Notes
 
-### Release Highlights
+#### Release Date 13 of January 2025
+
+#### Release Highlights
+
+This Tyk Cloud update resolves an issue related to Telemetry export configurations. Previously, when deploying a Data Plane in a region different from the Control Plane, Telemetry export settings could encounter compatibility issues. With this patch, Telemetry export configuration now works seamlessly across regional deployments, ensuring consistent observability for distributed Tyk Cloud setups.
+
+
+#### Breaking Changes
+<!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
+There are no breaking changes in this release
+
+#### Downloads
+- [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
+
+#### Deprecations
+<!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
+There are no deprecations in this release
+
+#### Changelog {#Changelog-v1.23.0}
+<!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
+Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
+"...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
+"New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
+
+##### Fixed
+<!-- This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
+- What problem the issue caused
+- How was the issue fixed
+- Link to (new) documentation created as a result of a fix. For example, a new configuration parameter may have been introduced and documented for the fix
+- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
+
+<ul>
+  <li>
+    <details>
+      <summary>
+        Fixed Telemetry export configuration for cross-region deployments
+      </summary>
+      The Telemetry export configuration now functions as expected when a Data Plane is deployed in a region different from the Control Plane, ensuring compatibility across distributed setups.
+    </details>
+  </li>
+</ul>
+
+### 1.24.1 Release Notes
+
+#### Release Date 16 of December 2024
+
+#### Release Highlights
+
+This Tyk Cloud hotfix addresses a critical issue affecting Control Plane Redis scheduling. In certain scenarios, re-deploying existing CDPs (Control Data Planes) that were created before the 1.24.0 release would fail due to an unintended modification of Redis deployment selectors.
+
+#### Breaking Changes
+<!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
+There are no breaking changes in this release
+
+#### Downloads
+- [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
+
+#### Deprecations
+<!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
+There are no deprecations in this release
+
+#### Changelog {#Changelog-v1.23.0}
+<!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
+Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
+"...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
+"New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
+
+##### Fixed
+<!-- This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
+- What problem the issue caused
+- How was the issue fixed
+- Link to (new) documentation created as a result of a fix. For example, a new configuration parameter may have been introduced and documented for the fix
+- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
+
+<ul>
+  <li>
+    <details>
+      <summary>
+        Fixed Redis scheduling issues in Control Plane deployments
+      </summary>
+      Corrected the Redis deployment selectors to prevent errors during both re-deployments of existing CDPs and deployments of new CDPs.
+    </details>
+  </li>
+</ul>
+
+### 1.24.0 Release Notes
+
+#### Release Date 16 of December 2024
+
+#### Release Highlights
 
 This Tyk Cloud update introduces a groundbreaking feature for enhanced API observability and troubleshooting. With the new native Telemetry export, Tyk Cloud now allows organizations to seamlessly integrate their deployments with a variety of popular observability platforms, including built-in support for Datadog, Dynatrace, Elastic, and New Relic. For other systems, the custom provider option ensures compatibility with any platform that supports the OpenTelemetry Protocol (OTLP).
 
 This feature enables trace export capabilities, providing deep insights into API and plugin performance. It marks the first step in Tyk Cloud’s broader observability journey, empowering users to monitor and troubleshoot their APIs more effectively while leveraging their existing observability tools.
 
-For more details, check out the [documentation on setting up Telemetry export]({{< ref "tyk-cloud/telemetry/enable-telemetry" >}}).
+For more details, check out the [documentation on setting up Telemetry export]({{< ref "tyk-cloud#enabling-telemetry-in-tyk-cloud" >}}).
 
 
-### Breaking Changes
+#### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 There are no breaking changes in this release
 
-### Downloads
+#### Downloads
 - [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
 
-### Deprecations
+#### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecations in this release
 
@@ -40,7 +131,7 @@ There are no deprecations in this release
 
 #### Release Highlights
 
-This Tyk Cloud update introduces features that improve both flexibility in plugin management and user onboarding. Now, [Mserv]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}),  supports **multiple plugin bundles**, allowing greater customization and easier deployment of plugin configurations. Additionally, we added an **embedded product tour** to enhance the deployment experience, offering a guided walkthrough of Tyk Dashboard’s features, ideal for users familiarizing themselves with the platform during onboarding.
+This Tyk Cloud update introduces features that improve both flexibility in plugin management and user onboarding. Now, [Mserv]({{< ref "tyk-cloud#uploading-your-bundle" >}}),  supports **multiple plugin bundles**, allowing greater customization and easier deployment of plugin configurations. Additionally, we added an **embedded product tour** to enhance the deployment experience, offering a guided walkthrough of Tyk Dashboard’s features, ideal for users familiarizing themselves with the platform during onboarding.
 
 For a comprehensive list of improvements and fixes, please check the detailed [changelog]({{< ref "#Changelog-v1.23.0">}}) below.
 

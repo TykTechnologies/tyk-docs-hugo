@@ -15,7 +15,7 @@ For a detailed tutorial on using OAS with Tyk Gateway, check out our guide to [c
 
 ## Prerequisites
 
-In order to complete this tutorial, you need to have [Tyk Self Managed installed]({{< ref "tyk-self-managed/install" >}}).
+In order to complete this tutorial, you need to have [Tyk Self Managed installed]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}).
 
 {{< button_left href="https://tyk.io/sign-up/#self" color="green" content="Try it free" >}}
 
@@ -44,7 +44,7 @@ We will use the Tyk Dashboard to create a very simple API that has no special el
 
 
 - In the **Overview** section, add a **Name** for your API and select the **Type** of API you wish to create. We will use HTTP for this tutorial. 
-- In the **Details** section, add the **Upstream URL**. This is the Target URL that hosts the service to which you want to proxy incoming requests. You can configure Tyk to perform round-robin load balancing between multiple upstream servers (Target URLs) by selecting **Enable round-robin load balancing**; see [Load Balancing]({{< ref "planning-for-production/ensure-high-availability/load-balancing" >}}) for more details. For this tutorial, we will use a single upstream target: [http://httpbin.org](http://httpbin.org).
+- In the **Details** section, add the **Upstream URL**. This is the Target URL that hosts the service to which you want to proxy incoming requests. You can configure Tyk to perform round-robin load balancing between multiple upstream servers (Target URLs) by selecting **Enable round-robin load balancing**; see [Load Balancing]({{< ref "tyk-self-managed#load-balancing" >}}) for more details. For this tutorial, we will use a single upstream target: [http://httpbin.org](http://httpbin.org).
 - Click **Configure API** when you have finished.
 
 ### Step 4: Set up authentication for your API

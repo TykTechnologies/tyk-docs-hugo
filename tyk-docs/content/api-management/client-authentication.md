@@ -212,7 +212,7 @@ The *client* sends the *client Id* and *client secret* during the authorization 
 
 ### Manage Client Access Policies
  
-The *access tokens* issued to clients by *Tyk Authorization Server* are the same as other [session objects]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}) and can be associated with [access security policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) at the point of creation. These allow the application of quotas, rate limits and access rights in the normal manner.
+The *access tokens* issued to clients by *Tyk Authorization Server* are the same as other [session objects]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}) and can be associated with [access security policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}) at the point of creation. These allow the application of quotas, rate limits and access rights in the normal manner.
 
 Security policies can be assigned to *client apps* and will be applied to all access tokens issued for that *client app*.
 
@@ -995,7 +995,7 @@ This guide will walk you through securing your APIs with JWTs via Keycloak.
 
 #### Running in k8s
 
-If you are looking to POC this functionality in Kubernetes, you can run a fully worked-out example using our tyk-k8s-demo library. You can read more [here]({{< ref "getting-started/quick-start/tyk-k8s-demo" >}}).
+If you are looking to POC this functionality in Kubernetes, you can run a fully worked-out example using our tyk-k8s-demo library. You can read more [here]({{< ref "tyk-self-managed#kubernetes-demo" >}}).
 
 
 ### Create Your JWT API in Tyk
@@ -1800,7 +1800,7 @@ You can create self-signed client and server certificates with this command:
 openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
 ```
 
-For the server in `common name` specify a domain, or just pass `-subj "/CN=localhost"` to OpenSSL command. Then follow our [TLS and SSL Guide]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}).
+For the server in `common name` specify a domain, or just pass `-subj "/CN=localhost"` to OpenSSL command. Then follow our [TLS and SSL Guide]({{< ref "api-management/certificates" >}}).
 
 To get certificate SHA256 fingerprint use the following command:
 ```{.copyWrapper}
