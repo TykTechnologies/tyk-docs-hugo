@@ -21,19 +21,19 @@ Secure communication is essential in today's digital landscape. TLS/SSL protocol
 
 In this section, we delve into the following key topics: 
 
-1. **[Enabling TLS in Tyk]({{< ref "#" >}})**: 
+1. **[Enabling TLS in Tyk]({{< ref "#enable-tlsssl-in-tyk" >}})**: 
     Learn how to enable and configure TLS/SSL for Tyk Gateway and Dashboard to secure your communication.
-2. **[TLS Support in Tyk]({{< ref "#" >}})**: 
+2. **[TLS Support in Tyk]({{< ref "#tlsssl-support" >}})**: 
     Understand the supported TLS versions, cipher suites, their configurations, and best practices for secure communication.
-3. **[Configuring Tyk Certificate Storage]({{< ref "#" >}})**: 
+3. **[Configuring Tyk Certificate Storage]({{< ref "#using-tyk-certificate-storage" >}})**: 
     Discover how to manage and store certificates for seamless TLS configuration in Tyk.
-4. **[Advance TLS Configuration]({{< ref "#" >}})**: 
+4. **[Advance TLS Configuration]({{< ref "#additional-tlsssl-configuration" >}})**: 
     Explore advanced TLS settings for enhanced security.
-5. **[Self Signed Certificates]({{< ref "#" >}})**: 
+5. **[Self Signed Certificates]({{< ref "#self-signed-certificates" >}})**: 
     Learn how to configure and use self-signed certificates for secure communication in Tyk.
-6. **[Configuring Internal Proxy Setup]({{< ref "#" >}})**: 
+6. **[Configuring Internal Proxy Setup]({{< ref "#internal-proxy-setup" >}})**: 
     Set up internal proxies with TLS to ensure secure communication within your architecture.
-7. **[Configuring Certificate Pinning]({{< ref "#" >}})**: 
+7. **[Configuring Certificate Pinning]({{< ref "#certificate-pinning" >}})**: 
     Learn how to enable certificate pinning for added security against Man In The Middle (MITM) attacks.
 
 ## Enable TLS/SSL in Tyk
