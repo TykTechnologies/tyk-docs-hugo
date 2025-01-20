@@ -3748,11 +3748,11 @@ spec:
 ```
 
 #### API Versioning
-[API versioning]({{<ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning">}}) are configured differently for [Tyk OAS APIs]({{< ref "#tyk-oas-api" >}}) and [Tyk Classic APIs]({{< ref "#tyk-classic-api" >}}). Please see below for examples.
+[API versioning]({{<ref "api-management/api-versioning">}}) are configured differently for [Tyk OAS APIs]({{< ref "#tyk-oas-api" >}}) and [Tyk Classic APIs]({{< ref "#tyk-classic-api" >}}). Please see below for examples.
 
 ##### Configuring API Version in Tyk OAS API Definition
 
-In the [Tyk OAS API Definition]({{<ref "getting-started/key-concepts/oas-versioning#configuring-api-versioning-in-the-tyk-oas-api-definition">}}), versioning can be configured via `x-tyk-api-gateway.versioning` object of the Base API, where the child API's IDs are specified. In the Kubernetes environment with Tyk Operator, where we reference API resources through its Kubernetes name and namespace, this is not desired. Therefore, we add support for versioning configurations through the field `versioning` in `TykOasApiDefinition` custom resource definition (CRD).
+In the [Tyk OAS API Definition]({{<ref "api-management/api-versioning#configuring-api-versioning-in-the-tyk-oas-api-definition">}}), versioning can be configured via `x-tyk-api-gateway.versioning` object of the Base API, where the child API's IDs are specified. In the Kubernetes environment with Tyk Operator, where we reference API resources through its Kubernetes name and namespace, this is not desired. Therefore, we add support for versioning configurations through the field `versioning` in `TykOasApiDefinition` custom resource definition (CRD).
 
 Here's an example:
 
@@ -3797,7 +3797,7 @@ spec:
 
 In this example, two different versions of an API are defined: `order-api` (v1) and `order-api-v2` (v2).
 
-`versioning` is configured at `order-api` (v1), the Base API, and it has similiar structure as [Tyk OAS API Definition]({{<ref "getting-started/key-concepts/oas-versioning#configuring-api-versioning-in-the-tyk-oas-api-definition">}}):
+`versioning` is configured at `order-api` (v1), the Base API, and it has similiar structure as [Tyk OAS API Definition]({{<ref "api-management/api-versioning#configuring-api-versioning-in-the-tyk-oas-api-definition">}}):
 
 - `versioning`: This object configures API versioning for the `order-api`.
     - `enabled`: Set to true to enable versioning.
@@ -3828,7 +3828,7 @@ As of Tyk Operator v1.1, API versioning is not supported in `TykStreamsApiDefini
 
 ##### Configuring API Version in Tyk Classic API Definition
 
-For Tyk Classic API, versioning can be configured via `ApiDefinition` custom resource definition (CRD). See [Tyk Classic versioning]({{<ref "getting-started/key-concepts/versioning">}}) for a comprehensive example of configuring API versioning for Tyk Classic API with Tyk Operator.
+For Tyk Classic API, versioning can be configured via `ApiDefinition` custom resource definition (CRD). See [Tyk Classic versioning]({{<ref "api-management/api-versioning#tyk-classic-api-versioning-1">}}) for a comprehensive example of configuring API versioning for Tyk Classic API with Tyk Operator.
 
 #### API Ownership
 

@@ -394,6 +394,7 @@
     "developer-support/upgrading-tyk/deployment-model/self-managed/mdcb": "#upgrade-mdcb",
     "frequently-asked-questions/sla-policies": "#",
     "frequently-asked-questions/faq": "#",
+<<<<<<< HEAD
     "basic-config-and-security/control-limit-traffic/rate-limiting": "#rate-limiting-layers",
     "basic-config-and-security/control-limit-traffic/request-quotas": "#request-quotas",
     "basic-config-and-security/control-limit-traffic/request-throttling": "#request-throttling",
@@ -402,6 +403,8 @@
     "product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas": "#tyk-oas-api-definition",
     "product-stack/tyk-streaming/configuration/rate-limits/local": "#local",
     "product-stack/tyk-streaming/configuration/rate-limits/overview": "#rate-limiting-with-tyk-streams",
+=======
+>>>>>>> 2ec3a5991... New IA - API Version (#5882)
     "getting-started/key-concepts/oas-versioning": "#tyk-oas-api-versioning-1",
     "getting-started/key-concepts/versioning": "#tyk-classic-api-versioning-1",
     "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning": "#",

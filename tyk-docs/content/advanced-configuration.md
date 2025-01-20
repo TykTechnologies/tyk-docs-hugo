@@ -10,7 +10,6 @@ weight: 60
 This section covers less common settings, some of which require custom code. Areas include:
 
 * [Transform Traffic]({{< ref "advanced-configuration/transform-traffic" >}}). How to use request and response headers and bodies, URL rewriting, request method transforms, the validation of JSON, JQ transforms and how to use our API Endpoint Designer.
-* [Integration Options]({{< ref "advanced-configuration/integrate" >}}). How you can integrate Tyk with 3rd party providers for plugins, API Authentication, and Single Sign On.
 * [Manage Multiple Environments]({{< ref "advanced-configuration/manage-multiple-environments" >}}). How to configure Tyk Multi-Cloud and Self-Managed installations to work with multiple geographically or physically separate installations.
 * [WebSockets]({{< ref "advanced-configuration/websockets" >}}). How to use WebSockets connections with Tyk.
 * [Log Data]({{< ref "log-data" >}}). How to configure your logs, and 3rd party integration with Sentry, Logstash, Graylog ans Syslog.

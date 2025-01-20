@@ -753,7 +753,7 @@ You can now specify a default API version, and it will be used if a version is n
 
 `spec.version_data.default_version`
 
-[Docs]({{< ref "getting-started/key-concepts/versioning" >}})
+[Docs]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}})
 
 #### Disable URL Encoding
 
@@ -991,7 +991,7 @@ If no user agent is specified in a request, it is now set as `Tyk/$VERSION`.
 #### Include `x-tyk-api-expires` date header for versioned APIs
 If a request is made for an API which has an expiry date, the response will include the `x-tyk-api-expires` header with expiry date. 
 
-[Docs]({{< ref "getting-started/key-concepts/versioning" >}})
+[Docs]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}})
 
 #### Run Admin Control API on a separate port
 Using `control_api_port` option in configuration file, you can run the admin control api on a separate port, and hide it behind firewall if needed.
