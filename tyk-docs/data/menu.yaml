@@ -1625,10 +1625,6 @@ menu:
                 path: /getting-started/key-concepts/gateway-api
                 category: Page
                 show: True
-              - title: "Tyk Gateway Open API Documentation"
-                path: /tyk-gateway-api
-                category: Page
-                show: True
               - title: "Tyk OAS API Definition Object"
                 path: /tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc
                 category: Page
@@ -1639,14 +1635,6 @@ menu:
                 show: True
               - title: "Token Session Object"
                 path: /tyk-apis/tyk-gateway-api/token-session-object-details
-                category: Page
-                show: True
-          - title: "Environment variables"
-            category: Directory
-            show: True
-            menu:
-              - title: "Tyk Gateway configuration options"
-                path: /tyk-oss-gateway/configuration
                 category: Page
                 show: True
           - title: "Troubleshooting"
@@ -1937,10 +1925,6 @@ menu:
                         path: /tyk-apis/tyk-dashboard-api/portal-policies
                         category: Page
                         show: True
-                  - title: "Dashboard API Reference"
-                    path: /tyk-dashboard-api
-                    category: Page
-                    show: True
               - title: "Dashboard Admin API"
                 category: Directory
                 show: True
@@ -1969,18 +1953,6 @@ menu:
                     path: /tyk-apis/tyk-dashboard-admin-api/import
                     category: Page
                     show: True
-                  - title: "Admin API reference"
-                    path: /dashboard-admin-api
-                    category: Page
-                    show: True
-          - title: "Environment variables"
-            category: Directory
-            show: True
-            menu:
-              - title: "Tyk Dashboard Configuration Options"
-                path: /tyk-dashboard/configuration
-                category: Page
-                show: True
           - title: "Troubleshooting"
             category: Directory
             show: True
@@ -2137,10 +2109,6 @@ menu:
                     path: /tyk-apis/tyk-portal-api/portal-keys
                     category: Page
                     show: True
-              - title: "Environment variables"
-                category: Directory
-                show: False
-                menu:
               - title: "Troubleshooting"
                 category: Directory
                 show: True
@@ -2234,10 +2202,6 @@ menu:
                 category: Page
                 show: True
           - title: "API documentation"
-            category: Directory
-            show: False
-            menu:
-          - title: "Environment variables"
             category: Directory
             show: False
             menu:
@@ -2485,30 +2449,6 @@ menu:
                 path: /product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks
                 category: Page
                 show: True
-          - title: "Environment variables"
-            category: Directory
-            show: True
-            menu:
-              - title: "Configure Tyk Enterprise Developer Portal"
-                path: /product-stack/tyk-enterprise-developer-portal/deploy/configuration
-                category: Page
-                show: True
-          - title: "API documentation"
-            category: Directory
-            show: True
-            menu:
-              - title: "OpenAPI document for the admin APIs"
-                path: /product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api
-                category: Page
-                show: True
-              - title: "List of all endpoints"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Version 1.9.0"
-                    path: /product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.9.0-list-of-endpoints
-                    category: Page
-                    show: True
           - title: "Troubleshooting"
             category: Directory
             show: False
@@ -2549,22 +2489,6 @@ menu:
                 path: /product-stack/tyk-enterprise-mdcb/advanced-configurations/synchroniser
                 category: Page
                 show: True
-          - title: "API documentation"
-            category: Directory
-            show: True
-            menu:
-              - title: "MDCB API Reference"
-                path: /tyk-mdcb-api
-                category: Page
-                show: True
-          - title: "Environment variables"
-            category: Directory
-            show: True
-            menu:
-              - title: "MDCB Configuration options"
-                path: /tyk-multi-data-centre/mdcb-configuration-options
-                category: Page
-                show: True
           - title: "Troubleshooting"
             category: Directory
             show: False
@@ -2597,14 +2521,6 @@ menu:
             category: Directory
             show: False
             menu:
-          - title: "Environment variables"
-            category: Directory
-            show: True
-            menu:
-              - title: "Tyk Pump Environment Variables"
-                path: /tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables
-                category: Page
-                show: True
           - title: "Advanced configurations"
             category: Directory
             show: True
@@ -2857,18 +2773,6 @@ menu:
             path: /tyk-stack/tyk-identity-broker/about-profiles
             category: Page
             show: True
-          - title: "API Documentation"
-            path: /tyk-identity-broker/tib-rest-api
-            category: Page
-            show: True
-          - title: "Advanced config"
-            category: Directory
-            show: True
-            menu:
-              - title: "Tyk Identity Broker Configuration Options"
-                path: /tyk-configuration-reference/tyk-identity-broker-configuration
-                category: Page
-                show: True
       - title: "Tyk Helm Charts (Open Source)"
         category: Directory
         show: True
@@ -2906,10 +2810,74 @@ menu:
         path: /developer-support/support
         category: Page
         show: True
-      - title: "Contributing"
-        path: /developer-support/contributing
-        category: Page
+      - title: "Environment Variables and Configs"
+        category: Directory
         show: True
+        menu:
+        - title: "Overview"
+          path: /tyk-environment-variables
+          category: Page
+          show: False
+        - title: "Gateway"
+          path: /tyk-oss-gateway/configuration
+          category: Page
+          show: True
+        - title: "Dashboard"
+          path: /tyk-dashboard/configuration
+          category: Page
+          show: True
+        - title: "Pump"
+          path: /tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables
+          category: Page
+          show: True
+        - title: "Enterprise Developer Portal"
+          path: /product-stack/tyk-enterprise-developer-portal/deploy/configuration
+          category: Page
+          show: True
+        - title: "Multi Data Center Bridge"
+          path: /tyk-multi-data-centre/mdcb-configuration-options
+          category: Page
+          show: True
+        - title: "Tyk Identity Broker"
+          path: /tyk-configuration-reference/tyk-identity-broker-configuration
+          category: Page
+          show: True
+      - title: "API Documentation"
+        category: Directory
+        show: True
+        menu:
+        - title: "Overview"
+          path: /tyk-apis
+          category: Page
+          show: True
+        - title: "Gateway"
+          path: /tyk-gateway-api
+          category: Page
+          show: True
+        - title: "Dashboard"
+          path: /tyk-dashboard-api
+          category: Page
+          show: True
+        - title: "Dashboard Admin"
+          path: /dashboard-admin-api
+          category: Page
+          show: True
+        - title: "Multi Data Center Bridge"
+          path: /tyk-mdcb-api
+          category: Page
+          show: True
+        - title: "Enterprise Developer Portal"
+          path: /product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api
+          category: Page
+          show: True
+        - title: "Enterprise Developer Portal Admin"
+          path: /product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.9.0-list-of-endpoints
+          category: Page
+          show: True
+        - title: "Tyk Identity Broker"
+          path: /tyk-identity-broker/tib-rest-api
+          category: Page
+          show: True
       - title: "Release Notes"
         category: Directory
         show: True
@@ -2966,16 +2934,16 @@ menu:
           path: /developer-support/release-notes/special-releases
           category: Page
           show: True
+      - title: "Contributing"
+        path: /developer-support/contributing
+        category: Page
+        show: True
       - title: "Upgrading Guide"
         path: /developer-support/upgrading
         category: Page
         show: True
       - title: "Frequently Asked Questions"
         path: /developer-support/faq
-        category: Page
-        show: True
-      - title: "Tyk APIs Reference"
-        path: /tyk-apis
         category: Page
         show: True
       - title: "SDK"
@@ -2986,10 +2954,6 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Environment Variables and Configs"
-        path: /tyk-environment-variables
-        category: Page
-        show: True
       - title: "Deprecated pages"
         category: Directory
         show: False
