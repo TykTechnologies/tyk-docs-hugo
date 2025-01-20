@@ -178,4 +178,4 @@ You can then use this policy ID in the `apply_policy_id` field of an API token. 
 
 
 
-For more information on how policies are constructed and a detailed explanation of their properties, please see the [Security Policies]({{< ref "basic-config-and-security/security/security-policies" >}}) section.
+For more information on how policies are constructed and a detailed explanation of their properties, please see the [Security Policies]({{< ref "api-management/policies" >}}) section.

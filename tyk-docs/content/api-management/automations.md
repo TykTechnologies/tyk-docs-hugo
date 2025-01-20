@@ -4630,7 +4630,7 @@ which version of Kubernetes it is tested against.
 
 
 #### Security Policy CRD
-The SecurityPolicy custom resource defines configuration of [Tyk Security Policy object]({{<ref "basic-config-and-security/security/security-policies">}}).
+The SecurityPolicy custom resource defines configuration of [Tyk Security Policy object]({{<ref "api-management/policies">}}).
 
 Here are the supported features:
 

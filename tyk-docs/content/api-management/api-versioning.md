@@ -135,7 +135,7 @@ You can explicitly grant access to specific version(s) of an API by specifying o
 {{< note success >}}
 **Note**  
 
-API tokens (keys) created from a [Security Policy]({{< ref "basic-config-and-security/security/security-policies" >}}) will be granted access to the APIs named in the policy, so whilst we have discussed access keys here, the same rules apply to the policies from which keys might have been created.
+API tokens (keys) created from a [Security Policy]({{< ref "api-management/policies" >}}) will be granted access to the APIs named in the policy, so whilst we have discussed access keys here, the same rules apply to the policies from which keys might have been created.
 {{< /note >}}
 
 <hr>
@@ -174,7 +174,7 @@ The "child" versions do not have any reference back to the "parent" and so can o
 
 The Base API is a working version of the API and is usually the only one configured as an *External API*, so that client requests are handled (and routed) according to the configuration set in the Base API (via the version identifier included in the header, url or query parameter).
 
-Note that any version (including the Base API) can be set as *default* for [access control](#controlling-access-to-tyk-oas-api-versions) and [default fallback]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#default-api-version" >}}).
+Note that any version (including the Base API) can be set as *default* for [access control](#controlling-access-to-tyk-oas-api-versions) and [default fallback]({{< ref "api-management/api-versioning#default-api-version" >}}).
 
 ### Configuring API versioning in the Tyk OAS API Definition
 
@@ -183,13 +183,13 @@ You can configure a Tyk OAS API as a [Base API](#base-and-child-apis) by adding 
 The `versioning` [object]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#versioning" >}}) has the following configuration:
 - `enabled`: enable versioning
 - `name`: an identifier for this version of the API, for example `default` or `v1`
-- `default`: the `name` of the API definition that shall be treated as *default* (for [access control](#controlling-access-to-tyk-oas-api-versions) and [default fallback]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#default-api-version" >}})); if the base API is to be used as the default then you can instead use the value `self` in this field
+- `default`: the `name` of the API definition that shall be treated as *default* (for [access control](#controlling-access-to-tyk-oas-api-versions) and [default fallback]({{< ref "api-management/api-versioning#default-api-version" >}})); if the base API is to be used as the default then you can instead use the value `self` in this field
 - `location`: used to configure where the versioning identifier should be provided: `header`, `url`, `url-param`
 - `key`: the versioning identifier key used if `location` is set to `header` or `url-param`
 - `versions`: a list of key-value pairs storing details of the *child APIs*; for example `[{"id": "08062e93127843ca76add614e766b0e4", "name": "exampleVersion"}]`
-- `fallbackToDefault`: set to `true` for Tyk to [invoke the default version]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#fallback-to-default" >}}) if an invalid version is requested
-- `stripVersioningData`: set to `true` for Tyk to [remove the versioning identifier]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-version-identifier" >}}) prior to creating the upstream (target) URL
-- `urlVersioningPattern`: configure this with a regex that matches the format that you use for the versioning identifier (`name`) if you are using `stripVersioningData` and `fallBackToDefault` with `location=url` [with Tyk 5.5.0 or later]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-url-path-version-and-default-fallback" >}})
+- `fallbackToDefault`: set to `true` for Tyk to [invoke the default version]({{< ref "api-management/api-versioning#fallback-to-default" >}}) if an invalid version is requested
+- `stripVersioningData`: set to `true` for Tyk to [remove the versioning identifier]({{< ref "api-management/api-versioning#stripping-version-identifier" >}}) prior to creating the upstream (target) URL
+- `urlVersioningPattern`: configure this with a regex that matches the format that you use for the versioning identifier (`name`) if you are using `stripVersioningData` and `fallBackToDefault` with `location=url` [with Tyk 5.5.0 or later]({{< ref "api-management/api-versioning#stripping-url-path-version-and-default-fallback" >}})
 
 The `versions` map contains, for each *child API*:
 - `id`: the unique API Id (`id`) assigned to the API (either automatically by Tyk or user-defined during API creation)
@@ -330,9 +330,9 @@ This takes you to the version management screen for the API where you can:
 
 If you select **Edit Settings** you will open a pop-up that allows you to:
 - change the versioning identifier (location and/or key)
-- set the [versioning identifier pattern]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-url-path-version-and-default-fallback" >}}) (optional, if using URL path location)
-- configure [fallback to default behaviour]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#fallback-to-default" >}})
-- configure [version identifier stripping]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-version-identifier" >}})
+- set the [versioning identifier pattern]({{< ref "api-management/api-versioning#stripping-url-path-version-and-default-fallback" >}}) (optional, if using URL path location)
+- configure [fallback to default behaviour]({{< ref "api-management/api-versioning#fallback-to-default" >}})
+- configure [version identifier stripping]({{< ref "api-management/api-versioning#stripping-version-identifier" >}})
 
 In this example, the version identifier location is set to *Header* allowing configuration of the *Key name*:
 
@@ -360,7 +360,7 @@ The configuration for a new version of a Tyk Classic API is contained in the `ve
 
 This has the following configuration:
 - `not_versioned`: set to `false` to treat this as a versioned API
-- `default_version`: this must contain the `name` of the version that shall be treated as `default` (for [access control](#controlling-access-to-tyk-classic-api-versions) and [default fallback]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#default-api-version" >}}))
+- `default_version`: this must contain the `name` of the version that shall be treated as `default` (for [access control](#controlling-access-to-tyk-classic-api-versions) and [default fallback]({{< ref "api-management/api-versioning#default-api-version" >}}))
 - `versions`: a list of objects that describe the versions of the API; there must be at least one (default) version defined for any API (even non-versioned APIs)
 
 To add an API version, you must add a new entry in the `versions` list:
@@ -377,9 +377,9 @@ There is also some API-level configuration for versioning, which is located in t
 The `definition` section has the following fields:
 - `location`: used to configure where the versioning identifier should be provided: `header`, `url`, `url-param`
 - `key`: the versioning identifier key used if `location` is set to `header` or `url-param`
-- `strip_versioning_data`: set this to `true` to [remove the versioning identifier]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-version-identifier" >}}) prior to creating the upstream (target) URL)
-- `fallback_to_default`: set this to `true` to [invoke the default version]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#fallback-to-default" >}}) if an invalid version is requested
-- `url_versioning_pattern`: if you are using `strip_versioning_data` and `fallback_to_default` with `location=url` [with Tyk 5.5.0 or later]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#stripping-url-path-version-and-default-fallback" >}}) you can configure this with a regex that matches the format that you use for the versioning identifier (`versions.name`)
+- `strip_versioning_data`: set this to `true` to [remove the versioning identifier]({{< ref "api-management/api-versioning#stripping-version-identifier" >}}) prior to creating the upstream (target) URL)
+- `fallback_to_default`: set this to `true` to [invoke the default version]({{< ref "api-management/api-versioning#fallback-to-default" >}}) if an invalid version is requested
+- `url_versioning_pattern`: if you are using `strip_versioning_data` and `fallback_to_default` with `location=url` [with Tyk 5.5.0 or later]({{< ref "api-management/api-versioning#stripping-url-path-version-and-default-fallback" >}}) you can configure this with a regex that matches the format that you use for the versioning identifier (`versions.name`)
 
 The following fields in `definition` are either deprecated or otherwise not used for Tyk Classic API versioning and should be left with their default values:
 - `enabled`: defaults to `false`
@@ -540,7 +540,7 @@ The Tyk Classic API Designer does not have support to configure `url_versioning_
 
 4. **set the default version**
 
-    You can choose any of your API versions to act as the [default]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#default-api-version" >}}).
+    You can choose any of your API versions to act as the [default]({{< ref "api-management/api-versioning#default-api-version" >}}).
 
     {{< img src="/img/dashboard/endpoint-designer/tyk-classic-version-set-default.png" alt="Choosing the default version for your API" >}}
 
@@ -548,7 +548,7 @@ The Tyk Classic API Designer does not have support to configure `url_versioning_
 
 ### Configuring an API version
 
-As [explained]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#comparison-between-tyk-oas-and-tyk-classic-api-versioning" >}}) much of the Tyk Classic API definition is shared between the different versions, but some middleware can be configured differently.
+As [explained]({{< ref "api-management/api-versioning#comparison-between-tyk-oas-and-tyk-classic-api-versioning" >}}) much of the Tyk Classic API definition is shared between the different versions, but some middleware can be configured differently.
 
 From the **Endpoint Designer** tab, you can select the version that you wish to configure from the **Edit Version** dropdown.
 
