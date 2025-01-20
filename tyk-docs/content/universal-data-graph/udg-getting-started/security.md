@@ -61,7 +61,7 @@ query getUser {
 
 To avoid these kind of scenarios we will set query depth limit on the keys created to access this API.
 
-Although we can directly create keys by selecting this API but we'll use policy as it will make it easier to update keys for this API in future. You can read more about policies [here](../../../getting-started/key-concepts/what-is-a-security-policy/)
+Although we can directly create keys by selecting this API but we'll use policy as it will make it easier to update keys for this API in future. You can read more about policies [here](/api-management/policies#what-is-a-security-policy)
 
   ##### Create Policy
     - Navigate to policies page

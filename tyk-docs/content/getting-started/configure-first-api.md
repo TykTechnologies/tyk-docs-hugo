@@ -2,7 +2,7 @@
 aliases:
 - /quickstart-configure-first-api
 date: 2020-06-24
-description: How to decide on which Tyk deployment option is best for you
+description: Configure your first API on Tyk Cloud
 linkTitle: Getting Started
 tags:
 - Tyk API Management
