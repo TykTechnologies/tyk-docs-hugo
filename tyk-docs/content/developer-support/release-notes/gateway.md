@@ -4560,7 +4560,7 @@ APIs, to transform API requests and responses, exposing your upstream services i
 internal API governance rules. We’ve enhanced the Request Validation for Tyk OAS APIs to include parameter validation
 (path, query, headers, cookie) as well as the body validation that was introduced in Tyk 4.1.
 
-[Versioning your Tyk OAS APIs]({{< ref "getting-started/key-concepts/oas-versioning" >}}) is easier than ever, with the
+[Versioning your Tyk OAS APIs]({{< ref "api-management/api-versioning#tyk-oas-api-versioning-1" >}}) is easier than ever, with the
 Tyk OSS Gateway now looking after the maintenance of the list of versions associated with the base API for you; we’ve
 also added a new endpoint on the Tyk API that will return details of the versions for a given API.
 
