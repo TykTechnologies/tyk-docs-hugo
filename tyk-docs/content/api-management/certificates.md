@@ -1,6 +1,6 @@
 ---
 date: 2025-01-05T14:36:28Z
-title: TLS and SSL
+title: Certificates - TLS and SSL
 tags: ["TLS", "SSL", "Security", "Certificate", "Pinning"]
 description: "How to enable SSL with the Tyk Gateway and Dashboard"
 menu:
@@ -14,6 +14,27 @@ aliases:
   - basic-config-and-security/security/certificate-pinning/
   - security/certificate-pinning
 ---
+
+## Introduction
+
+Secure communication is essential in today's digital landscape. TLS/SSL protocol and Public Key Infrastructure (PKI) play a crucial role in ensuring encrypted and authenticated connections. This document provides a comprehensive walkthrough on configuring TLS/SSL, managing certificates for the Tyk Gateway and Dashboard.
+
+In this section, we delve into the following key topics: 
+
+1. **[Enabling TLS in Tyk]({{< ref "#" >}})**: 
+    Learn how to enable and configure TLS/SSL for Tyk Gateway and Dashboard to secure your communication.
+2. **[TLS Support in Tyk]({{< ref "#" >}})**: 
+    Understand the supported TLS versions, cipher suites, their configurations, and best practices for secure communication.
+3. **[Configuring Tyk Certificate Storage]({{< ref "#" >}})**: 
+    Discover how to manage and store certificates for seamless TLS configuration in Tyk.
+4. **[Advance TLS Configuration]({{< ref "#" >}})**: 
+    Explore advanced TLS settings for enhanced security.
+5. **[Self Signed Certificates]({{< ref "#" >}})**: 
+    Learn how to configure and use self-signed certificates for secure communication in Tyk.
+6. **[Configuring Internal Proxy Setup]({{< ref "#" >}})**: 
+    Set up internal proxies with TLS to ensure secure communication within your architecture.
+7. **[Configuring Certificate Pinning]({{< ref "#" >}})**: 
+    Learn how to enable certificate pinning for added security against Man In The Middle (MITM) attacks.
 
 ## Enable TLS/SSL in Tyk
 
@@ -85,7 +106,7 @@ $ curl -k https://localhost:3000
 <html response>
 ```
 
-## Additional TLS/SSL Configuration
+## TLS/SSL Configuration Fields
 
 ```{.copyWrapper}
 "http_server_options": {
@@ -111,9 +132,9 @@ The `min_version` setting is optional, you can set it to have Tyk only accept co
 
 The `max_version` allows you to disable specific TLS versions, for example if set to 771, you can disable TLS 1.3. 
 
-TODO:
 Finally, set the [host_config.generate_secure_paths]({{< ref "tyk-dashboard/configuration#host_configgenerate_secure_paths" >}}) flag to `true` in your `tyk_analytics.conf`
 
+## TLS/SSL Support
 
 ### Supported TLS Versions
 
@@ -134,7 +155,7 @@ If you do not configure minimum and maximum TLS versions, then Tyk Gateway will 
  - maximum TLS version: 1.2
 {{< /note >}}
 
-### TLS Cipher Suites
+### Supported TLS Cipher Suites
 
 Each protocol (TLS 1.0, 1.1, 1.2, 1.3) provides cipher suites. With strength of encryption determined by the cipher negotiated between client & server.
 
@@ -199,39 +220,7 @@ SSL-Session:
     Master-Key: 88D36C895808BDF9A5481A8CFD68A0B821CF8E6A6B8C39B40DB22DA82F6E2E791C77A38FDF5DC6D21AAE3D09825E4A2A
 ```
 
-### Using Tyk Certificate Storage
-In Tyk Gateway 2.4 and Tyk Dashboard 1.4 we added [Mutual TLS support](https://tyk.io/docs/security/tls-and-ssl/mutual-tls/) including special Certificate storage, which is used to store all kinds of certificates from public to server certificates with private keys.
-
-{{< note success >}}
-**Note**  
-
-This approach only works with the Tyk Gateway at present. Dashboard support has not been implemented yet.
-{{< /note >}}
-
-In order to add new server certificates:
-
-1. Ensure that both private key and certificates are in PEM format
-2. Concatenate Cert and Key files to single file
-3. Go to "Certificates" section of the Tyk Dashboard, upload certificate, and you will get a unique ID response
-4. Set it to the Tyk Gateway using one of the approaches below:
-
-    * Using your `tyk.conf`:
-
-    ```
-        "http_server_options": {
-            "ssl_certificates": ["<cert-id-1>", "<cert-id-2>"]
-        }
-    ```
-
-    * Using environment variables (handy for Multi-Cloud installation and Docker in general): `TYK_GW_HTTPSERVEROPTIONS_SSLCERTIFICATES=<cert-id>` (if you want to set multiple certificates just separate them using a comma.)
-
-    The Domain in this case will be extracted from standard certificate fields: `Subject.CommonName` or `DNSNames`.
-
-    {{< note success >}}
-**Note**  
-
-`Subject.CommonName` is deprecated and its support will be removed in Tyk V5.
-    {{< /note >}}
+## Additional TLS/SSL Configuration
 
 ### Validate Hostname against Common Name
 
@@ -342,6 +331,41 @@ This example shows how to enable a custom domain (`buraksekili.dev`) with a TLS 
 
 {{< tabs_end >}}
 
+
+## Using Tyk Certificate Storage
+
+In Tyk Gateway 2.4 and Tyk Dashboard 1.4 we added [Mutual TLS support](https://tyk.io/docs/security/tls-and-ssl/mutual-tls/) including special Certificate storage, which is used to store all kinds of certificates from public to server certificates with private keys.
+
+{{< note success >}}
+**Note**  
+
+This approach only works with the Tyk Gateway at present. Dashboard support has not been implemented yet.
+{{< /note >}}
+
+In order to add new server certificates:
+
+1. Ensure that both private key and certificates are in PEM format
+2. Concatenate Cert and Key files to single file
+3. Go to "Certificates" section of the Tyk Dashboard, upload certificate, and you will get a unique ID response
+4. Set it to the Tyk Gateway using one of the approaches below:
+
+    * Using your `tyk.conf`:
+
+    ```
+        "http_server_options": {
+            "ssl_certificates": ["<cert-id-1>", "<cert-id-2>"]
+        }
+    ```
+
+    * Using environment variables (handy for Multi-Cloud installation and Docker in general): `TYK_GW_HTTPSERVEROPTIONS_SSLCERTIFICATES=<cert-id>` (if you want to set multiple certificates just separate them using a comma.)
+
+    The Domain in this case will be extracted from standard certificate fields: `Subject.CommonName` or `DNSNames`.
+
+    {{< note success >}}
+**Note**  
+
+`Subject.CommonName` is deprecated and its support will be removed in Tyk V5.
+    {{< /note >}}
 
 ## Self Signed Certificates
 
