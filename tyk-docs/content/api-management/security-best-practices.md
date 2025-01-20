@@ -47,7 +47,7 @@ Tyk provides the following features and authentication mechanisms:
 - [Single Sign-On]({{< ref "advanced-configuration/integrate/sso" >}}) can be used for a centralized and trusted authentication source. API operators can choose from common authentication methods such as OAuth 2.0, LDAP, and SAML.
 - [Dynamic Client Registration]({{< ref "tyk-developer-portal/tyk-portal-classic/dynamic-client-registration#oauth-20-dynamic-client-registration-protocol-dcr" >}}), enables third-party authorization servers to issue client credentials via the Tyk Developer Portal. This streamlines Identity Management, eliminating the need to manage credentials across multiple systems.
 - Tyk's default authentication setup disallows credentials in URLs, reducing the risk of inadvertent exposure through backend logs.
-- Tyk Gateway can be configured to enforce a [minimum TLS version]({{< ref "basic-config-and-security/security/tls-and-ssl#values-for-tls-versions" >}}), enhancing security by blocking outdated and insecure TLS versions.
+- Tyk Gateway can be configured to enforce a [minimum TLS version]({{< ref "api-management/certificates#supported-tls-versions" >}}), enhancing security by blocking outdated and insecure TLS versions.
 
 ##### 3 - Broken Object Property Level Authorization (BOPLA)
 
@@ -66,11 +66,11 @@ APIs can become overwhelmed if the resources upon which they rely are fully cons
 
 As an APIM product, Tyk Gateway can be configured to use the following out-of-the-box functionality when handling API traffic for legitimate users:
 
-- [Circuit breaker]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers" >}})
+- [Circuit breaker]({{< ref "tyk-self-managed#circuit-breakers" >}})
 - [Payload size limiter]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits" >}})
 - [Rate limiter / throttling]({{< ref "getting-started/key-concepts/rate-limiting" >}})
 - [Caching]({{< ref "basic-config-and-security/reduce-latency/caching" >}})
-- [Enforced timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}})
+- [Enforced timeout]({{< ref "tyk-self-managed#enforced-timeouts" >}})
 - [IP restriction]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting#ip-blocklist-middleware" >}})
 - [GraphQL query complexity limiting]({{< ref "graphql/complexity-limiting" >}})
 
@@ -108,7 +108,7 @@ Tyk offers several mechanisms to help protect an API from Security Misconfigurat
 
 - Use [response header manipulation]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) to remove or modify API sensitive information.
 - Use [response body manipulation]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) to remove or modify parts containing sensitive information.
-- [TLS]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) to ensure that clients use the right service and encrypt traffic.
+- [TLS]({{< ref "api-management/certificates" >}}) to ensure that clients use the right service and encrypt traffic.
 - [Mutual TLS]({{< ref "/api-management/client-authentication#use-mutual-tls" >}}) with both the clients and API to ensure that callers with explicitly allowed client certificates can connect to the endpoints.
 - [Error Templates]({{< ref "advanced-configuration/error-templates" >}}) can be used to return a response body based on status code and content type. This can help minimize the implementation details returned to the client.
 - [CORS functionality]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}) allows the Tyk Gateway to limit API access to particular browser-based consumers.
@@ -117,7 +117,7 @@ Tyk offers several mechanisms to help protect an API from Security Misconfigurat
 - For GraphQL APIs:
 - [Schema Introspection]({{< ref "graphql/introspection" >}}) ensures that the Tyk Dashboard automatically uses the schema of the upstream GraphQL API and can keep it synchronised if it changes.
 - [GraphQL Schema Validation]({{< ref "graphql/validation#schema-validation" >}}) prevents invalid schemas from being saved. This catches errors such as duplicate type names and usage of unknown types.
-- Third-party [Secret Storage]({{< ref "tyk-configuration-reference/kv-store" >}}) to centralise configuration of sensitive data such as passwords. This data can then be dynamically referenced by Tyk configuration files, rather than being hard coded.
+- Third-party [Secret Storage]({{< ref "tyk-self-managed#manage-multi-environment-and-distributed-setups" >}}) to centralise configuration of sensitive data such as passwords. This data can then be dynamically referenced by Tyk configuration files, rather than being hard coded.
 - Users can can write their own [custom plugins]({{< ref "plugins" >}}) in a variety of languages, either directly or through gRPC calls, to implement their requirements.
 
 The Ops team should also take reponsibility for monitoring the APIs for errors and patching accordingly. Regular [Penetration Tests](https://en.wikipedia.org/wiki/Penetration_test) should be scheduled to ensure the security of published services. Tyk, through our Professional Services or Partners, can assist in the process.
@@ -132,7 +132,7 @@ Tyk offers the following features to support improper inventory management:
 - Tyk Developer Portal catalogs APIs and facilitates granting access to them.  Integrated with a CMDB it can help keep documentation updated.
 - [Tyk Analytics]({{< ref "tyk-dashboard-analytics" >}}) can help identify the stagnant APIs and used stale APIs.
 - [Tyk Pump]({{< ref "tyk-pump" >}}) can ship metrics needed for analytics into Tyk Dashboard and other systems.
-- Third-party [Secret Storage]({{< ref "tyk-configuration-reference/kv-store" >}}) can be used to centralise and protect sensitive configuration data such as passwords, rather than exposing them as plain text in Tyk configuration files.
+- Third-party [Secret Storage]({{< ref "tyk-self-managed#manage-multi-environment-and-distributed-setups" >}}) can be used to centralise and protect sensitive configuration data such as passwords, rather than exposing them as plain text in Tyk configuration files.
 
 In addition, it is best practice to consider any definition of done to include corresponding documentation updates.
 
@@ -143,7 +143,7 @@ Attackers may identify and target the third party APIs/services used by an API. 
 It is the responsibility of the API to provide protection against these attacks. However, if the organization uses the Gateway as a forwarding proxy to third party APIs, then the following features could be used:
 
 - [JSON Schema validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-tyk-classic" >}}) to validate that an incoming data payload meets a defined schema. Payloads that do not adhere to the schema are rejected.
-- [TLS]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) to ensure that clients use the right service and encrypt traffic.
+- [TLS]({{< ref "api-management/certificates" >}}) to ensure that clients use the right service and encrypt traffic.
 - [Versioning]({{< ref "getting-started/key-concepts/versioning" >}}) allows newer versions of third party APIs to coexist with the older versions, facilitating deprecation and sunsetting.
 
 
@@ -159,12 +159,12 @@ Choose a suitable authentication approach based on the risk profile of the API. 
 
 **Handle Data Securely**
 
-Don’t undermine the authentication process by leaking sensitive authentication data. Use [transport layer security]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) and hashing to prevent credentials from being intercepted and stolen through insecure transmission and storage. These principles also apply to upstream requests made by the gateway and upstream API to other APIs and services.
+Don’t undermine the authentication process by leaking sensitive authentication data. Use [transport layer security]({{< ref "api-management/certificates" >}}) and hashing to prevent credentials from being intercepted and stolen through insecure transmission and storage. These principles also apply to upstream requests made by the gateway and upstream API to other APIs and services.
 
 **Enforce Good Practices**
 
 
-Establish rules that reduce risk and enhance overall system security. Use [password policies]({{< ref "basic-config-and-security/security/password-policy" >}}) to prevent the use of weak passwords, and [TLS policies]({{< ref "basic-config-and-security/security/tls-and-ssl#values-for-tls-versions" >}}) to prevent the use of older TLS versions that are now deprecated and considered vulnerable.
+Establish rules that reduce risk and enhance overall system security. Use [password policies]({{< ref "basic-config-and-security/security/password-policy" >}}) to prevent the use of weak passwords, and [TLS policies]({{< ref "api-management/certificates#supported-tls-versions" >}}) to prevent the use of older TLS versions that are now deprecated and considered vulnerable.
 
 **Protect Sensitive Endpoints**
 
@@ -303,9 +303,9 @@ This issue can be caused by both legitimate consumers and malicious attackers, b
 
 **Avoid Unnecessary Resource Usage**: Appropriate use of [caching]({{< ref "basic-config-and-security/reduce-latency/caching" >}}) can reduce server resource consumption by simply returning cached responses instead of generating new ones. The extent to which caching can be used depends on the purpose of the endpoint, as it’s generally unsuitable for requests that modify data or responses that frequently change. Caching can be applied to [particular requests]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache" >}}) or enabled for an [entire API]({{< ref "basic-config-and-security/reduce-latency/caching/global-cache" >}}), and can also be [controlled by the upstream API]({{< ref "basic-config-and-security/reduce-latency/caching/upstream-controlled-cache" >}}) or [invalidated programmatically]({{< ref "frequently-asked-questions/clear-api-cache" >}}).
 
-**Limit Complex Long-Running Tasks**: Use [GraphQL complexity limiting]({{< ref "graphql/complexity-limiting" >}}) to prevent convoluted queries from being processed. Alternatively, [timeouts]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) can be used to terminate long-running requests that exceed a given time limit.
+**Limit Complex Long-Running Tasks**: Use [GraphQL complexity limiting]({{< ref "graphql/complexity-limiting" >}}) to prevent convoluted queries from being processed. Alternatively, [timeouts]({{< ref "tyk-self-managed#enforced-timeouts" >}}) can be used to terminate long-running requests that exceed a given time limit.
 
-**Protect Failing Services**: Defend struggling endpoints by using a [circuit breaker]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers" >}}). This feature protects endpoints by detecting error responses, then blocking requests for a short duration to allow them to recover. The same principle can be applied in a wider sense by using [uptime tests]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/uptime-tests" >}}), though this works on a host level instead, by removing failed hosts from the gateway load balancer.
+**Protect Failing Services**: Defend struggling endpoints by using a [circuit breaker]({{< ref "tyk-self-managed#circuit-breakers" >}}). This feature protects endpoints by detecting error responses, then blocking requests for a short duration to allow them to recover. The same principle can be applied in a wider sense by using [uptime tests]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/uptime-tests" >}}), though this works on a host level instead, by removing failed hosts from the gateway load balancer.
 
 **Enforce Network-Level Security**: Problematic clients can be prevented from accessing the API by [blocking their address]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting" >}}). Conversely, for APIs with a known set of clients, [allow lists]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting" >}}) can be used to create a list of allowed addresses, thereby implicitly blocking every other address from the API.
 
@@ -319,7 +319,7 @@ Modern APIs are often backed by large technology stacks composed of numerous com
 **Secure Connections**
 
 
-Use [transport layer security]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) where possible. Most importantly, on inbound connections to the gateway and outbound connection from the gateway to the upstream API and other services. TLS can also be used as a form of authentication, using [Mutual TLS]({{< ref "/api-management/client-authentication#use-mutual-tls" >}}).
+Use [transport layer security]({{< ref "api-management/certificates" >}}) where possible. Most importantly, on inbound connections to the gateway and outbound connection from the gateway to the upstream API and other services. TLS can also be used as a form of authentication, using [Mutual TLS]({{< ref "/api-management/client-authentication#use-mutual-tls" >}}).
 
 **Limit Functionality**
 
@@ -334,7 +334,7 @@ Restrict any URL-based input data to specific schemas, hosts and paths by using 
 **Protect Secrets**
 
 
-Prevent sensitive data, such as usernames, passwords, license keys and other secrets, from being stored as plain text in application configuration files. Use [key value secret storage]({{< ref "tyk-configuration-reference/kv-store" >}}) to dynamically load sensitive data from a secure secret manager.
+Prevent sensitive data, such as usernames, passwords, license keys and other secrets, from being stored as plain text in application configuration files. Use [key value secret storage]({{< ref "tyk-self-managed#manage-multi-environment-and-distributed-setups" >}}) to dynamically load sensitive data from a secure secret manager.
 
 **Sanitise Responses**
 
@@ -374,7 +374,7 @@ See [Key Hashing]({{< ref "basic-config-and-security/security/key-hashing" >}}) 
 **TLS and SSL**
 
 
-Tyk supports TLS connections and Mutual TLS. All TLS connections also support HTTP/2. Tyk also supports Let's Encrypt. See [TLS and SSL]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) for more details.
+Tyk supports TLS connections and Mutual TLS. All TLS connections also support HTTP/2. Tyk also supports Let's Encrypt. See [TLS and SSL]({{< ref "api-management/certificates" >}}) for more details.
 
 **Trusted Certificates**
 
@@ -384,7 +384,7 @@ As part of using Mutual TLS, you can create a list of [trusted certificates]({{<
 **Certificate Pinning**
 
 
-Introduced in Tyk Gateway 2.6.0, [certificate pinning]({{< ref "security/certificate-pinning" >}}) is a feature which allows you to allow only specified public keys used to generate certificates, so you will be protected in case an upstream certificate is compromised.
+Introduced in Tyk Gateway 2.6.0, [certificate pinning]({{< ref "api-management/certificates#certificate-pinning" >}}) is a feature which allows you to allow only specified public keys used to generate certificates, so you will be protected in case an upstream certificate is compromised.
 
 **API Security**
 

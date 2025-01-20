@@ -544,7 +544,7 @@ MDCB 2.4.x supports Tyk API definitions up to Tyk Gateway v5.3.0. Please use MDC
    
 MDCB uses `mongo-go` as the default MongoDB driver from v2.5.0. This provides support for MongoDB 4.4.x, 
 5.0.x, 6.0.x, 7.0.x. If you are using older MongoDB versions e.g. 3.x, please set MongoDB driver to `mgo`. 
-[MongoDB supported versions](https://tyk.io/docs/planning-for-production/database-settings/mongodb/#supported-versions) 
+[MongoDB supported versions](https://tyk.io/docs/tyk-self-managed#supported-versions#supported-versions) 
 page provides details on how to configure MongoDB drivers in Tyk.
  </details>
  </li>

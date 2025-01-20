@@ -24,7 +24,7 @@ In this section, you will learn how to publish the API products and plans to the
 
 ## Prerequisites
 
-- A Tyk Self-Managed [installation]({{< ref "/content/tyk-self-managed/install.md" >}})
+- A Tyk Self-Managed [installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}})
 - Tyk Self-Managed [added as a provider]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/with-tyk-self-managed-as-provider" >}})
 - [Created and imported API Products and Plans from Tyk]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/create-api-product-and-plan" >}})
 

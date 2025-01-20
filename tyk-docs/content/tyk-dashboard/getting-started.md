@@ -8,7 +8,7 @@ menu:
 ---
 
 Head on over to the 
-* [Tyk Self-Managed]({{< ref "tyk-self-managed/install" >}})
-* [Tyk Cloud]({{< ref "tyk-cloud" >}})
+* [Tyk Self-Managed]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}})
+* [Tyk Cloud]({{< ref "tyk-cloud#quick-start-tyk-cloud" >}})
 
 solutions to get started today.
