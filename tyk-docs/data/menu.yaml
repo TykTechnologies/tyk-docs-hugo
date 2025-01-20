@@ -159,6 +159,10 @@ menu:
         path: /api-management/troubleshooting-debugging
         category: Page
         show: True
+      - title: "Security Policy and Access Keys"
+        path: /api-management/policies
+        category: Page
+        show: True
       - title: "Certificates"
         path: /api-management/certificates
         category: Page
@@ -704,10 +708,6 @@ menu:
                 path: /getting-started/key-concepts/rate-limiting
                 category: Page
                 show: True
-              - title: "What is a Security Policy?"
-                path: /getting-started/key-concepts/what-is-a-security-policy
-                category: Page
-                show: True
               - title: "What is a Session Object?"
                 path: /getting-started/key-concepts/what-is-a-session-object
                 category: Page
@@ -740,38 +740,6 @@ menu:
                 path: /basic-config-and-security/control-limit-traffic
                 category: Page
                 show: True
-              - title: "Security Policies and Keys"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /basic-config-and-security/security/security-policies
-                    category: Page
-                    show: True
-                  - title: "Policies Guide"
-                    path: /basic-config-and-security/security/security-policies/policies-guide
-                    category: Page
-                    show: True
-                  - title: "Secure your APIs by Method and Path"
-                    path: /security/security-policies/secure-apis-method-path
-                    category: Page
-                    show: True
-                  - title: "Partitioned Policies"
-                    path: /basic-config-and-security/security/security-policies/partitioned-policies
-                    category: Page
-                    show: True
-                  - title: "Key Level Security"
-                    path: /basic-config-and-security/security/key-level-security
-                    category: Page
-                    show: True
-                  - title: "Key Expiry"
-                    path: /basic-config-and-security/control-limit-traffic/key-expiry
-                    category: Page
-                    show: True
-                  - title: "Key Hashing"
-                    path: /basic-config-and-security/security/key-hashing
-                    category: Page
-                    show: True                    
               - title: "Blocking Client IPs"
                 path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting
                 category: Page

@@ -927,7 +927,7 @@ The example Gateway configuration file `tyk.conf.example` has been updated to se
 <details>
 <summary>Incorrectly configured regex in policy affected Path-Based Permissions authorization</summary>
 
-Fixed an issue when using granular [Path-Based Permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}) in access policies and keys that led to authorization incorrectly being granted to endpoints if an invalid regular expression was configured in the key/policy. Also fixed an issue where path-based parameters were not correctly handled by Path-Based Permissions. Now Tyk's authorization check correctly handles both of these scenarios granting access only to the expected resources.
+Fixed an issue when using granular [Path-Based Permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}) in access policies and keys that led to authorization incorrectly being granted to endpoints if an invalid regular expression was configured in the key/policy. Also fixed an issue where path-based parameters were not correctly handled by Path-Based Permissions. Now Tyk's authorization check correctly handles both of these scenarios granting access only to the expected resources.
 </details>
 </li>
 <li>
@@ -2180,7 +2180,7 @@ The example Gateway configuration file `tyk.conf.example` has been updated to se
 <summary>Incorrectly configured regex in policy affected Path-Based Permissions authorization</summary>
 
 Fixed an issue when using granular [Path-Based
-Permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}) in access policies and keys that led to authorization
+Permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}) in access policies and keys that led to authorization
 incorrectly being granted to endpoints if an invalid regular expression was configured in the key/policy. Also fixed an issue
 where path-based parameters were not correctly handled by Path-Based Permissions. Now Tyk's authorization check correctly
 handles both of these scenarios granting access only to the expected resources.
@@ -3695,7 +3695,7 @@ Fixed an issue where [enforced timeouts]({{< ref "tyk-self-managed#enforced-time
 <details>
 <summary>Incorrect access privileges were granted in security policies</summary>
 
-Fixed an issue when using MongoDB and [Tyk Security Policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) where Tyk could incorrectly grant access to an API after that API had been deleted from the associated policy. This was due to the policy cleaning operation that is triggered when an API is deleted from a policy in a MongoDB installation. With this fix, the policy cleaning operation will not remove the final (deleted) API from the policy; Tyk recognizes that the API record is invalid and denies granting access rights to the key.
+Fixed an issue when using MongoDB and [Tyk Security Policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}) where Tyk could incorrectly grant access to an API after that API had been deleted from the associated policy. This was due to the policy cleaning operation that is triggered when an API is deleted from a policy in a MongoDB installation. With this fix, the policy cleaning operation will not remove the final (deleted) API from the policy; Tyk recognizes that the API record is invalid and denies granting access rights to the key.
 </details>
 </li>
 <li>
@@ -4305,7 +4305,7 @@ change for existing users.**
 <summary>Incorrectly configured regex in policy affected Path-Based Permissions authorization</summary>
 
 Fixed an issue when using granular [Path-Based
-Permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}) in access policies and keys that led to authorization
+Permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}) in access policies and keys that led to authorization
 incorrectly being granted to endpoints if an invalid regular expression was configured in the key/policy. Also fixed an issue
 where path-based parameters were not correctly handled by Path-Based Permissions. Now Tyk's authorization check correctly
 handles both of these scenarios granting access only to the expected resources.

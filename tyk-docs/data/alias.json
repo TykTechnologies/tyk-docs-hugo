@@ -396,5 +396,12 @@
     "frequently-asked-questions/faq": "#",
     "basic-config-and-security/security/tls-and-ssl": "#",
     "frequently-asked-questions/add-custom-certificates-to-docker-images": "#how-to-add-custom-certificates-to-trusted-storage-of-docker-images",
-    "security/certificate-pinning": "#certificate-pinning"
+    "security/certificate-pinning": "#certificate-pinning",
+    "basic-config-and-security/control-limit-traffic/key-expiry": "#access-key-expiry",
+    "basic-config-and-security/security/key-hashing": "#access-key-hashing",
+    "basic-config-and-security/security/key-level-security": "#access-key-level-security",
+    "basic-config-and-security/security/security-policies/partitioned-policies": "#partitioned-policies",
+    "basic-config-and-security/security/security-policies/policies-guide": "#policies-guide",
+    "getting-started/key-concepts/what-is-a-security-policy": "#what-is-a-security-policy",
+    "security/security-policies/secure-apis-method-path": "#secure-your-apis-by-method-and-path"
 }
