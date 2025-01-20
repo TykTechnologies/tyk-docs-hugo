@@ -776,7 +776,7 @@ We have added support for specifying allowed  SSL ciphers using the following op
 
 `http_server_options - ssl_ciphers`
 
-[Docs]({{< ref "basic-config-and-security/security/tls-and-ssl" >}})
+[Docs]({{< ref "api-management/certificates" >}})
 
 ### <a name="plugins"></a>Plugins Updates
 

@@ -231,7 +231,7 @@ Start your Gateway HTTP server on specific server name
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_MINVERSION</b><br />
 Type: `uint16`<br />
 
-Minimum TLS version. Possible values: https://tyk.io/docs/basic-config-and-security/security/tls-and-ssl/#values-for-tls-versions
+Minimum TLS version. Possible values: https://tyk.io/docs/api-management/certificates#supported-tls-versions
 
 ### http_server_options.max_version
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_MAXVERSION</b><br />
@@ -271,7 +271,7 @@ Disable automatic character escaping, allowing to path original URL data to the 
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_CIPHERS</b><br />
 Type: `[]string`<br />
 
-Custom SSL ciphers. See list of ciphers here https://tyk.io/docs/basic-config-and-security/security/tls-and-ssl/#specify-tls-cipher-suites-for-tyk-gateway--tyk-dashboard
+Custom SSL ciphers. See list of ciphers here https://tyk.io/docs/api-management/certificates#supported-tls-cipher-suites
 
 ### http_server_options.max_request_body_size
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_MAXREQUESTBODYSIZE</b><br />

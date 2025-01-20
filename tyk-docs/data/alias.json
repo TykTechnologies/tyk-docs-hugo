@@ -393,5 +393,8 @@
     "developer-support/upgrading-tyk/deployment-model/self-managed/go-plugins": "#go-plugin",
     "developer-support/upgrading-tyk/deployment-model/self-managed/mdcb": "#upgrade-mdcb",
     "frequently-asked-questions/sla-policies": "#",
-    "frequently-asked-questions/faq": "#"
+    "frequently-asked-questions/faq": "#",
+    "basic-config-and-security/security/tls-and-ssl": "#",
+    "frequently-asked-questions/add-custom-certificates-to-docker-images": "#how-to-add-custom-certificates-to-trusted-storage-of-docker-images",
+    "security/certificate-pinning": "#certificate-pinning"
 }
