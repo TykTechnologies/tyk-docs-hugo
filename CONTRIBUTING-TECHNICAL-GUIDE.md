@@ -272,7 +272,7 @@ The Tyk Identity Broker (TIB) is a microservice portal that provides a bridge be
 
 {{< grid >}}
 
-{{< badge title="Security" href="/docs/basic-config-and-security/security/tls-and-ssl/" >}}
+{{< badge title="Security" href="/docs/api-management/certificates/" >}}
 #### TLS & SSL
 
 TLS connections are supported for all Tyk components

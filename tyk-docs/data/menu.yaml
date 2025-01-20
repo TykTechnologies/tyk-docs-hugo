@@ -159,6 +159,10 @@ menu:
         path: /api-management/troubleshooting-debugging
         category: Page
         show: True
+      - title: "Certificates"
+        path: /api-management/certificates
+        category: Page
+        show: True
       - title: "Manage APIs"
         category: Directory
         show: True
@@ -1581,18 +1585,6 @@ menu:
                 path: /plugins/get-started-selfmanaged/deploy-plugins
                 category: Page
                 show: False
-          - title: "TLS and certificate management"
-            category: Directory
-            show: True
-            menu:
-              - title: "TLS and SSL"
-                path: /basic-config-and-security/security/tls-and-ssl
-                category: Page
-                show: True
-              - title: "Certificate Pinning"
-                path: /security/certificate-pinning
-                category: Page
-                show: True
           - title: "Other (non-HTTP) protocols"
             category: Directory
             show: True
@@ -1641,10 +1633,6 @@ menu:
             category: Directory
             show: True
             menu:
-              - title: "Add Custom Certificates to Trusted Storage of Docker Images"
-                path: /frequently-asked-questions/add-custom-certificates-to-docker-images
-                category: Page
-                show: True
               - title: "How to change the logging output location"
                 path: /frequently-asked-questions/change-logging-output-location
                 category: Page
