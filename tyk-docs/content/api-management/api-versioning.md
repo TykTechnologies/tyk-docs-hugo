@@ -292,7 +292,7 @@ Select **Create Version**
 
 2. **Configure the new version**
 
-You'll be taken to the API designer view for the new version - remember that this will be a completely separate Tyk OAS API Definition for the new version. By default, Tyk Dashboard will have given this API the same name as the original, appending the *version name* that you assigned in [step 1](#step-1-create-the-new-version).
+You'll be taken to the API designer view for the new version - remember that this will be a completely separate Tyk OAS API Definition for the new version. By default, Tyk Dashboard will have given this API the same name as the original, appending the *version name* that you assigned in **step 1**.
 
 Tyk will have set the *Access* to *Internal*, so that this version cannot be directly accessed by clients, only via the original (base) API.
 
