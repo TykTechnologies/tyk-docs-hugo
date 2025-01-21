@@ -1,5 +1,5 @@
 ---
-title: broker
+title: Tyk Streams Broker Output
 slug: broker
 type: output
 status: stable
