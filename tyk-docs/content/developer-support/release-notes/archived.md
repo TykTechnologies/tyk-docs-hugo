@@ -977,7 +977,7 @@ More SSO functionality is something that a lot of our customers have been asking
 [Docs]({{< ref "/api-management/client-authentication#use-mutual-tls" >}})
 
 #### Global API rate limits
-[Docs]({{< ref "api-management/rate-limit#rate-limiting-layers" >}})
+[Docs]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}})
 
 #### Specify custom analytics tags using HTTP headers
 [Docs]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}})
@@ -1062,7 +1062,7 @@ This was very resource consuming and unstable feature. We recommend using load b
 [Docs]({{< ref "/api-management/client-authentication#use-mutual-tls" >}})
 
 #### Global API rate limits
-[Docs]({{< ref "api-management/rate-limit#rate-limiting-layers" >}})
+[Docs]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}})
 
 #### Specify custom analytics tags using HTTP headers
 [Docs]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}})

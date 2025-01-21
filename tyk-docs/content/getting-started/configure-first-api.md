@@ -172,6 +172,6 @@ With your API live, monitor its traffic and analyze performance:
 
 ## Next Steps
 
-Congratulations! You've successfully created, secured, and deployed your first API in Tyk Cloud. Next, explore more advanced features such as adding [rate limiting]({{< ref "api-management/rate-limit#introduction" >}}) to protect your API from abuse.
+Congratulations! You've successfully created, secured, and deployed your first API in Tyk Cloud. Next, explore more advanced features such as adding [rate limiting]({{< ref "getting-started/key-concepts/rate-limiting" >}}) to protect your API from abuse.
 
 Explore more features in your [dashboard]({{< ref "getting-started/using-tyk-dashboard" >}}) to optimize and scale your API offerings.
