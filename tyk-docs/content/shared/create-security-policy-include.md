@@ -51,7 +51,7 @@ These settings will be applied to all APIs that the policy is applied to. You ca
 
 #### Rate Limiting
 
-A rate limit is enforced on all keys, set the number of requests per second that a user of a key with this policy is allowed to use. See [Rate Limiting]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}}) for more details.
+A rate limit is enforced on all keys, set the number of requests per second that a user of a key with this policy is allowed to use. See [Rate Limiting]({{< ref "api-management/rate-limit#rate-limiting-layers" >}}) for more details.
 
 {{< note success >}}
 **Note**  
@@ -61,11 +61,11 @@ The Rate Limit set by a policy will override the limits applied to an individual
 
 #### Throttling
 
-When hitting quota or rate limits, you can automatically queue and auto-retry client requests. Throttling can be configured at a key or policy level. See [Request Throttling]({{< ref "basic-config-and-security/control-limit-traffic/request-throttling" >}}) for more details.
+When hitting quota or rate limits, you can automatically queue and auto-retry client requests. Throttling can be configured at a key or policy level. See [Request Throttling]({{< ref "api-management/rate-limit#request-throttling" >}}) for more details.
 
 #### Usage Quotas
 
-Usage quotas limit the number of total requests a user is allowed to have over a longer period of time. So while a rate limit is a rolling window, a quota is an absolute maximum that a user is allowed to have over a week, a day or a month. See [Request Quotas]({{< ref "basic-config-and-security/control-limit-traffic/request-quotas" >}}) for more details.
+Usage quotas limit the number of total requests a user is allowed to have over a longer period of time. So while a rate limit is a rolling window, a quota is an absolute maximum that a user is allowed to have over a week, a day or a month. See [Request Quotas]({{< ref "api-management/rate-limit#request-quotas" >}}) for more details.
 
 Usage quotas can only be a positive number, or -1 (unlimited).
 
