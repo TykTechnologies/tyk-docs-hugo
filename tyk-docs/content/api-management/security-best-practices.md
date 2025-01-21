@@ -196,7 +196,7 @@ For GraphQL APIs, use the gateway to define [GraphQL schemas]({{< ref "graphql-p
 
 ##### Function Level Authorization
 
-Handle with the gateway. Use [security policies]({{< ref "basic-config-and-security/security/security-policies" >}}), [path-based permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}), [allow lists]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) and [block lists]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-oas#configuring-the-block-list-in-the-api-designer" >}}) to manage authorization of hosts and paths.
+Handle with the gateway. Use [security policies]({{< ref "api-management/policies" >}}), [path-based permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}), [allow lists]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) and [block lists]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-oas#configuring-the-block-list-in-the-api-designer" >}}) to manage authorization of hosts and paths.
 
 #### Assign Least Privileges
 
@@ -404,4 +404,4 @@ See [Authentication and Authorization]({{< ref "/api-management/client-authentic
 
 A Tyk security policy incorporates several security options that can be applied to an API key. These include [Partioned Policies]({{< ref "api-management/policies#partitioned-policies" >}}) and securing by [Method and Path]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}).
 
-See [Security Policies]({{< ref "basic-config-and-security/security/security-policies" >}}) for more details.
+See [Security Policies]({{< ref "api-management/policies" >}}) for more details.

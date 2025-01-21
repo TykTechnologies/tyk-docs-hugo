@@ -15,7 +15,7 @@ aliases:
 
 You can protect your upstream services from being flooded with requests by configuring rate limiting in Tyk Gateway. Rate limits in Tyk are configured using two parameters: allow `rate` requests in any `per` time period (given in seconds).
 
-As explained in the [Rate Limiting Concepts]({{< ref "getting-started/key-concepts/rate-limiting" >}}) section, Tyk supports configuration of rate limits at both the API-Level and Key-Level for different use cases.
+As explained in the [Rate Limiting Concepts]({{< ref "api-management/rate-limit" >}}) section, Tyk supports configuration of rate limits at both the API-Level and Key-Level for different use cases.
 
 The API-Level rate limit takes precedence over Key-Level, if both are configured for a given API, since this is intended to protect your upstream service from becoming overloaded. The Key-Level rate limits provide more granular control for managing access by your API clients.
 
@@ -37,7 +37,7 @@ Check out the following video to see this being done.
 
 ## Configuring the rate limiter at the Key-Level
 
-If you want to restrict an API client to a certain rate of requests to your APIs, you can configure a Key-Level rate limit via a [Security Policy]({{< ref "basic-config-and-security/security/security-policies" >}}). The allowance that you configure in the policy will be consumed by any requests made to APIs using a key generated from the policy. Thus, if a policy grants access to three APIs with `rate=15 per=60` then a client using a key generated from that policy will be able to make a total of 15 requests - to any combination of those APIs - in any 60 second period before receiving the `HTTP 429 Too Many Requests` error. 
+If you want to restrict an API client to a certain rate of requests to your APIs, you can configure a Key-Level rate limit via a [Security Policy]({{< ref "api-management/policies" >}}). The allowance that you configure in the policy will be consumed by any requests made to APIs using a key generated from the policy. Thus, if a policy grants access to three APIs with `rate=15 per=60` then a client using a key generated from that policy will be able to make a total of 15 requests - to any combination of those APIs - in any 60 second period before receiving the `HTTP 429 Too Many Requests` error. 
 
 {{< note success >}}
 **Note**  

@@ -127,7 +127,7 @@ You can explicitly grant access to specific version(s) of an API by specifying o
 {{< note success >}}
 **Note**  
 
-API tokens (keys) created from a [Security Policy]({{< ref "basic-config-and-security/security/security-policies" >}}) will be granted access to the APIs named in the policy, so whilst we have discussed access keys here, the same rules apply to the policies from which keys might have been created.
+API tokens (keys) created from a [Security Policy]({{< ref "api-management/policies" >}}) will be granted access to the APIs named in the policy, so whilst we have discussed access keys here, the same rules apply to the policies from which keys might have been created.
 {{< /note >}}
 
 <hr>
