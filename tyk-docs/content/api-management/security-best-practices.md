@@ -68,7 +68,7 @@ As an APIM product, Tyk Gateway can be configured to use the following out-of-th
 
 - [Circuit breaker]({{< ref "tyk-self-managed#circuit-breakers" >}})
 - [Payload size limiter]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits" >}})
-- [Rate limiter / throttling]({{< ref "getting-started/key-concepts/rate-limiting" >}})
+- [Rate limiter / throttling]({{< ref "api-management/rate-limit#introduction" >}})
 - [Caching]({{< ref "basic-config-and-security/reduce-latency/caching" >}})
 - [Enforced timeout]({{< ref "tyk-self-managed#enforced-timeouts" >}})
 - [IP restriction]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting#ip-blocklist-middleware" >}})
@@ -168,7 +168,7 @@ Establish rules that reduce risk and enhance overall system security. Use [passw
 
 **Protect Sensitive Endpoints**
 
-Reduce susceptibility of sensitive endpoints to brute force dictionary or password stuffing attacks. The typical target for this type of attack are endpoints that use credentials, such as login and password recovery. Unfortunately, anonymous access is required for these endpoints, so authentication cannot be used to protect them, so the best approach is to hinder access by using techniques such as [rate limiting]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}}), [captcha](https://en.wikipedia.org/wiki/CAPTCHA) and one-time URLs.
+Reduce susceptibility of sensitive endpoints to brute force dictionary or password stuffing attacks. The typical target for this type of attack are endpoints that use credentials, such as login and password recovery. Unfortunately, anonymous access is required for these endpoints, so authentication cannot be used to protect them, so the best approach is to hinder access by using techniques such as [rate limiting]({{< ref "api-management/rate-limit#rate-limiting-layers" >}}), [captcha](https://en.wikipedia.org/wiki/CAPTCHA) and one-time URLs.
 
 
 ### Authorization 
@@ -196,7 +196,7 @@ For GraphQL APIs, use the gateway to define [GraphQL schemas]({{< ref "graphql-p
 
 ##### Function Level Authorization
 
-Handle with the gateway. Use [security policies]({{< ref "basic-config-and-security/security/security-policies" >}}), [path-based permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}), [allow lists]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) and [block lists]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-oas#configuring-the-block-list-in-the-api-designer" >}}) to manage authorization of hosts and paths.
+Handle with the gateway. Use [security policies]({{< ref "api-management/policies" >}}), [path-based permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}), [allow lists]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) and [block lists]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-oas#configuring-the-block-list-in-the-api-designer" >}}) to manage authorization of hosts and paths.
 
 #### Assign Least Privileges
 
@@ -297,7 +297,7 @@ Excessive resource consumption poses a risk to APIs. As the number of concurrent
 
 This issue can be caused by both legitimate consumers and malicious attackers, but they are different situations that require different solutions. For legitimate consumers, solutions should be focused on controlling API utilization through the gateway, to keep usage within agreed or desired limits. But malicious attackers require a different approach, as denial of service attacks must be blocked as far as possible from the core API infrastructure.
 
-**Restrict Request Flows**: Use [rate limits]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}}) and [quotas]({{< ref "basic-config-and-security/control-limit-traffic/request-quotas" >}}) to prevent excessive API usage. Rate limits are best used for short term control, in the range of seconds. Whereas quotas are more suited to longer terms, in the range of days, weeks or beyond. [Throttling]({{< ref "basic-config-and-security/control-limit-traffic/request-throttling" >}}) can also be used as a type of enhanced rate limiter that queues and retries requests on the clients behalf, rather than immediately rejecting them.
+**Restrict Request Flows**: Use [rate limits]({{< ref "api-management/rate-limit#rate-limiting-layers" >}}) and [quotas]({{< ref "api-management/rate-limit#request-quotas" >}}) to prevent excessive API usage. Rate limits are best used for short term control, in the range of seconds. Whereas quotas are more suited to longer terms, in the range of days, weeks or beyond. [Throttling]({{< ref "api-management/rate-limit#request-throttling" >}}) can also be used as a type of enhanced rate limiter that queues and retries requests on the clients behalf, rather than immediately rejecting them.
 
 **Block Excessively Large Requests**: Place reasonable [limitations on payload sizes]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits" >}}) to prevent oversized requests from reaching upstream servers, thereby avoiding the unnecessary consumption of resources.
 
@@ -404,4 +404,4 @@ See [Authentication and Authorization]({{< ref "/api-management/client-authentic
 
 A Tyk security policy incorporates several security options that can be applied to an API key. These include [Partioned Policies]({{< ref "api-management/policies#partitioned-policies" >}}) and securing by [Method and Path]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}).
 
-See [Security Policies]({{< ref "basic-config-and-security/security/security-policies" >}}) for more details.
+See [Security Policies]({{< ref "api-management/policies" >}}) for more details.
