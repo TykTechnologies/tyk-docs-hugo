@@ -2866,10 +2866,6 @@ menu:
             path: /troubleshooting/tyk-multi-cloud/token-information-doesnt-appear-dashboard-tyk-multi-cloud-users/
             category: Page
             show: True
-          - title: "Gateway API"
-            path: /api-management/oss/gateway-api
-            category: Page
-            show: True
           - title: "Cloud Classic Virtual Endpoints not working"
             path: /frequently-asked-questions/cloud-classic-virtual-endpoints-not-working
             category: Page

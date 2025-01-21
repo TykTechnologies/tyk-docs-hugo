@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Tyk OAS"
+title: "Configure APIs using Tyk OAS"
 date: 2022-07-06
 tags: ["API", "OAS", "OpenAPI Specification", "Tyk OAS"]
 description: "An introduction to Tyk OAS concepts"
