@@ -189,15 +189,6 @@ Please consult with respective init system documentation for more details on how
 
 {{< /note >}}
 
-
-
-#### Licensing
-
-Read more about licensing [here]({{< ref "#understand-licensing-and-deployment-models" >}}).
-
-
-
-
 ## Getting Started with Tyk Self-Managed
 
 Tyk Self-Managed consists of multiple components, as described above. While the OSS Gateway and Pump are available without a license, the remaining components require one. To experience the full capabilities of our Full Lifecycle API Management solution within your own infrastructure, please obtain a license by contacting our support team.
