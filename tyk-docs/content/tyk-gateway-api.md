@@ -10,5 +10,6 @@ type: "swagger-ui"
 swagger: "/others/gateway-swagger.yml"
 aliases:
   - tyk-gateway-oas-api/
-  - tyk-rest-api/ 
+  - tyk-rest-api/
+  - api-management/oss/gateway-api/
 ---

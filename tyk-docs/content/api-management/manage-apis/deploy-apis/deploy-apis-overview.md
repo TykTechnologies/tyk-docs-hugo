@@ -33,7 +33,7 @@ Usage: Suitable for those who require programmatic control over API management, 
 
 Learn more:
 - [Dashboard API]({{<ref "getting-started/key-concepts/dashboard-api">}})
-- [Gateway API]({{<ref "api-management/oss/gateway-api">}})
+- [Gateway API]({{<ref "tyk-gateway-api">}})
 
 ## Tyk Sync
 

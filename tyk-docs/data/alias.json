@@ -100,7 +100,7 @@
     "tyk-on-premises/installation/on-aws": "#install-on-aws-marketplace",
     "tyk-on-premises/installation/on-heroku": "#install-on-heroku",
     "tyk-on-premises/kubernetes": "#install-on-kubernetes",
-    "tyk-on-premises/licensing": "#understand-licensing-and-deployment-models",
+    "tyk-on-premises/licensing": "#tyk-self-managed-licensepricing",
     "tyk-on-premises/microsoft-azure": "#install-on-microsoft-azure",
     "tyk-on-premises/on-aws/ec2": "#install-on-aws-marketplace",
     "tyk-on-premises/redhat-rhel-centos": "#install-database",
