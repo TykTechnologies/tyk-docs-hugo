@@ -728,10 +728,6 @@ menu:
             category: Directory
             show: True
             menu:
-              - title: "Overview"
-                path: /basic-config-and-security
-                category: Page
-                show: False
               - title: "oauth"
                 category: page
                 show: False
