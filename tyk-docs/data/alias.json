@@ -394,8 +394,6 @@
     "developer-support/upgrading-tyk/deployment-model/self-managed/mdcb": "#upgrade-mdcb",
     "frequently-asked-questions/sla-policies": "#",
     "frequently-asked-questions/faq": "#",
-<<<<<<< HEAD
-=======
     "basic-config-and-security/control-limit-traffic/rate-limiting": "#rate-limiting-layers",
     "basic-config-and-security/control-limit-traffic/request-quotas": "#request-quotas",
     "basic-config-and-security/control-limit-traffic/request-throttling": "#request-throttling",
@@ -407,7 +405,6 @@
     "getting-started/key-concepts/oas-versioning": "#tyk-oas-api-versioning-1",
     "getting-started/key-concepts/versioning": "#tyk-classic-api-versioning-1",
     "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning": "#",
->>>>>>> bf144afd2... New IA - Rate Limit Page (#5908)
     "basic-config-and-security/security/tls-and-ssl": "#",
     "frequently-asked-questions/add-custom-certificates-to-docker-images": "#how-to-add-custom-certificates-to-trusted-storage-of-docker-images",
     "security/certificate-pinning": "#certificate-pinning",
