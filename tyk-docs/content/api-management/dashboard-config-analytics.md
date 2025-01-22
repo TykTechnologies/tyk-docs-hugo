@@ -1,5 +1,5 @@
 ---
-title: "Dashboard - API Analytics"
+title: "Dashboard - API Traffic Analytics"
 date: 2025-01-10
 tags: ["Dashboard", "User Management", "RBAC", "Role Based Access Control", "User Groups", "Teams", "Permissions", "API Ownership", "SSO", "Single Sing On", "Multi Tenancy"]
 description: "How to manage users, teams, permissions, rbac in Tyk Dashboard"

@@ -5,6 +5,12 @@ tags: ["Dashboard", "User Management", "RBAC", "Role Based Access Control", "Use
 description: "How to manage users, teams, permissions, rbac in Tyk Dashboard"
 keywords: ["Dashboard", "User Management", "RBAC", "Role Based Access Control", "User Groups", "Teams", "Permissions", "API Ownership", "SSO", "Single Sing On", "Multi Tenancy"]
 aliases:
+  - /product-stack/tyk-dashboard/advanced-configurations/templates/template-overview
+  - /product-stack/tyk-dashboard/advanced-configurations/templates/template-designer
+  - /product-stack/tyk-dashboard/advanced-configurations/templates/template-api
+  - /product-stack/tyk-dashboard/advanced-configurations/api-categories
+  - /advanced-configuration/transform-traffic/endpoint-designer
+  - /transform-traffic/endpoint-designer
 ---
 
 ## Introduction
