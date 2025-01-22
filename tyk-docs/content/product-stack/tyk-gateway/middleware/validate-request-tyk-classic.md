@@ -22,12 +22,14 @@ If you're using Tyk Operator then check out the [configuring the middleware in T
 To enable the middleware you must add a new `validate_json` object to the `extended_paths` section of your API definition.
 
 The `validate_json` object has the following configuration:
+
 - `path`: the endpoint path
 - `method`: the endpoint HTTP method
 - `schema`: the [JSON schema](https://json-schema.org/understanding-json-schema/basics) against which the request body will be compared
 - `error_response_code`: the HTTP status code that will be returned if validation fails (defaults to `422 Unprocessable Entity`)
 
 For example:
+
 ```json  {linenos=true, linenostart=1}
 {
     "extended_paths": {
@@ -60,9 +62,9 @@ In this example the Validate JSON middleware has been configured for requests to
 
 {{< note success >}}
 
-**Note**  
+**Note**
 
-The Validate JSON middleware supports JSON Schema `draft-04`. Using another version will return an `unsupported schema error, unable to validate` error in the Tyk Gateway logs.
+By default the validator will try to detect the draft of a schema by using the $schema keyword and parse it in a strict draft-04, draft-06 or draft-07 mode. If $schema is missing, or the draft version is not explicitely set, a hybrid mode is used which merges together functionality of all drafts into one mode.
 
 {{< /note >}}
 
@@ -137,4 +139,3 @@ spec:
                   - userName
                 type: object
 ```
-
