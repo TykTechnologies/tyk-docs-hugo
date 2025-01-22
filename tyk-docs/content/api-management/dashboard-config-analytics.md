@@ -5,6 +5,24 @@ tags: ["Dashboard", "User Management", "RBAC", "Role Based Access Control", "Use
 description: "How to manage users, teams, permissions, rbac in Tyk Dashboard"
 keywords: ["Dashboard", "User Management", "RBAC", "Role Based Access Control", "User Groups", "Teams", "Permissions", "API Ownership", "SSO", "Single Sing On", "Multi Tenancy"]
 aliases:
+  - /analyse
+  - /tyk-stack/tyk-pump/tyk-dash-analytics
+  - /tyk-dashboard-analytics
+  - /analytics-and-reporting/traffic-overview
+  - /tyk-dashboard-analytics/traffic-overview
+  - /analytics-and-reporting/log-browser
+  - /tyk-stack/tyk-manager/analytics/log-browser
+  - /tyk-dashboard-analytics/traffic-per-api
+  - /analytics-and-reporting/traffic-per-api
+  - /tyk-dashboard-analytics/traffic-per-token
+  - /analytics-and-reporting/traffic-per-token
+  - /product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint
+  - /tyk-stack/tyk-manager/analytics/geographic-distribution
+  - /analytics-and-reporting/geographic-distribution
+  - /analytics-and-reporting/error-overview
+  - /tyk-dashboard-analytics/error-overview
+  - /tyk-dashboard-analytics/traffic-per-oauth-client
+  - /analytics-and-reporting/traffic-per-oauth-client
 ---
 
 ## Introduction

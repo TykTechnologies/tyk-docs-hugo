@@ -1589,46 +1589,6 @@ menu:
             category: Directory
             show: False
             menu:
-          - title: "Traffic analytics"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /tyk-dashboard-analytics
-                category: Page
-                show: True
-              - title: "Traffic Overview"
-                path: /tyk-dashboard-analytics/traffic-overview
-                category: Page
-                show: True
-              - title: "Activity logs"
-                path: /tyk-stack/tyk-manager/analytics/log-browser
-                category: Page
-                show: True
-              - title: "Activity by API"
-                path: /tyk-dashboard-analytics/traffic-per-api
-                category: Page
-                show: True
-              - title: "Activity by Key"
-                path: /tyk-dashboard-analytics/traffic-per-token
-                category: Page
-                show: True
-              - title: "Activity by endpoint"
-                path: /product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint
-                category: Page
-                show: True
-              - title: "Activity by location"
-                path: /tyk-stack/tyk-manager/analytics/geographic-distribution
-                category: Page
-                show: True
-              - title: "Activity by error"
-                path: /tyk-dashboard-analytics/error-overview
-                category: Page
-                show: True
-              - title: "Activity by OAuth Client"
-                path: /tyk-dashboard-analytics/traffic-per-oauth-client
-                category: Page
-                show: True
           - title: "User management"
             category: Directory
             show: True
