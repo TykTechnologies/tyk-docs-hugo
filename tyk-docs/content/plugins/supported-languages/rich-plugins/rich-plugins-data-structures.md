@@ -254,7 +254,7 @@ Indicates the remaining number of requests within the user's quota, which is ind
 The time in seconds during which the quota is valid. So for 1000 requests per hour, this value would be 3600 while `quota_max` and `quota_remaining` would be 1000.
 
 `access_rights`
-Defined as a `map<string, APIDefinition>` instance, that maps the session's API ID to an [AccessDefinition](#access-definition). The AccessDefinition defines the [access rights]({{< ref "security/security-policies/secure-apis-method-path#setting-granular-paths-on-a-per-key-basis" >}}) for the API in terms of allowed: versions and URLs(endpoints). Each URL (endpoint) has a list of allowed methods. For further details consult the tutorials for how to create a [security policy]({{< ref "getting-started/create-security-policy" >}}) for Tyk Cloud, Tyk Self Managed and Tyk OSS platforms.
+Defined as a `map<string, APIDefinition>` instance, that maps the session's API ID to an [AccessDefinition](#access-definition). The AccessDefinition defines the [access rights]({{< ref "api-management/policies#setting-granular-paths-on-a-per-key-basis" >}}) for the API in terms of allowed: versions and URLs(endpoints). Each URL (endpoint) has a list of allowed methods. For further details consult the tutorials for how to create a [security policy]({{< ref "getting-started/create-security-policy" >}}) for Tyk Cloud, Tyk Self Managed and Tyk OSS platforms.
 
 `org_id`
 The organization this user belongs to. This can be used in conjunction with the org_id setting in the API Definition object to have tokens "owned" by organizations.
@@ -284,7 +284,7 @@ The policy ID that is bound to this token.
 {{< note success >}}
 **Note**  
 
-Although `apply_policy_id` is still supported, it is now deprecated. `apply_policies` is now used to list your policy IDs as an array. This supports the **[Multiple Policy]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies#partitioned-policy-functionality" >}})** feature introduced in the  **v2.4 - 1.4** release.
+Although `apply_policy_id` is still supported, it is now deprecated. `apply_policies` is now used to list your policy IDs as an array. This supports the **[Multiple Policy]({{< ref "api-management/policies#partitioned-policy-functionality" >}})** feature introduced in the  **v2.4 - 1.4** release.
 {{< /note >}}
 
 `data_expires`
@@ -382,7 +382,7 @@ The `BasicAuthData` contains a hashed password and the name of the hashing algor
 A hashed password.
 
 `hash`
-Name of the [hashing algorithm]({{< ref "basic-config-and-security/security/key-hashing" >}}) used to hash the password.
+Name of the [hashing algorithm]({{< ref "api-management/policies#access-key-hashing" >}}) used to hash the password.
 
 ---
 

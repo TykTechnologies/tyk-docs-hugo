@@ -21,4 +21,4 @@ Tyk is working to provide a new set of helm charts, and will progressively roll 
 | [tyk-data-plane]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart">}})        | Deploys Tyk data plane including Tyk Gateway and Pump. Data planes are managed by Tyk Dashboard and MDCB in control plane. |
 | [tyk-oss]({{<ref "product-stack/tyk-charts/tyk-oss-chart">}})                      | Deploys Open source Tyk Gateway and Pump |
 
-Learn more about [Tyk Licensing and Deployment models]({{<ref "tyk-self-managed#understand-licensing-and-deployment-models">}}).
+Learn more about [Tyk Licensing and Deployment models]({{<ref "tyk-self-managed#tyk-self-managed-licensepricing">}}).

@@ -62,6 +62,7 @@ aliases:
     - troubleshooting/tyk-pump
     - tyk-rest-api/hot-reload
     - tyk-stack/tyk-pump/tyk-pump-configuration/graceful-shutdowm
+    - frequently-asked-questions/add-custom-certificates-to-docker-images
 ---
 
 ## Gateway
@@ -360,7 +361,7 @@ aliases:
 
     **Cause**
 
-    There can be a couple of reasons for seeing this error about the [Distributed Rate Limiter]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}}):
+    There can be a couple of reasons for seeing this error about the [Distributed Rate Limiter]({{< ref "api-management/rate-limit#rate-limiting-layers" >}}):
 
     1. When you have more than one installation of the Gateway with one configured to use DRL, and others not.
     2. When the Gateway is started and the DRL receives an event before it has finished initialising.
@@ -406,6 +407,27 @@ aliases:
 
     This will fork and load a new process, passing all open handles to the new server and wait to drain the old ones.
 
+14. ##### How to add Custom Certificates to Trusted Storage of Docker Images
+
+    To add your custom Certificate Authority(CA) to your docker containers. You can mount your CA certificate directly into `/etc/ssl/certs` folder.
+
+    Docker: 
+    ```{.copyWrapper}
+    docker run -it tykio/tyk-gateway:latest \
+    -v $(pwd)/myCA.pem:/etc/ssl/certs/myCA.pem
+    ```
+
+    Kubernetes - using Helm Chart and secrets:
+    ```yaml
+    extraVolumes: 
+        - name: self-signed-ca
+        secret:
+            secretName: self-signed-ca-secret
+    extraVolumeMounts: 
+        - name: self-signed-ca
+        mountPath: "/etc/ssl/certs/myCA.pem"
+        subPath: myCA.pem
+    ```
 
 ## Dashboard
 

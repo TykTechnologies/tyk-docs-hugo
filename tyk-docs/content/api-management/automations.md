@@ -161,7 +161,7 @@ The following custom resources can be used to configure APIs and policies at [Ty
 | TykOasApiDefinition| tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk OAS API Definition object]({{<ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc">}})                                 |
 | ApiDefinition      | tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk Classic API Definition object]({{<ref "tyk-gateway-api/api-definition-objects">}})                                 |
 | TykStreamsApiDefinition| tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk Streams]({{<ref "product-stack/tyk-streaming/overview#configuration-as-code">}})                                 |
-| SecurityPolicy     | tyk.tyk.io  | v1alpha1  | Defines configuration of [security policies]({{<ref "getting-started/key-concepts/what-is-a-security-policy">}}). Operator supports linking ApiDefinition custom resources in SecurityPolicy's access list so that API IDs do not need to be hardcoded in the resource manifest.        |
+| SecurityPolicy     | tyk.tyk.io  | v1alpha1  | Defines configuration of [security policies]({{<ref "api-management/policies#what-is-a-security-policy">}}). Operator supports linking ApiDefinition custom resources in SecurityPolicy's access list so that API IDs do not need to be hardcoded in the resource manifest.        |
 | SubGraph           | tyk.tyk.io  | v1alpha1  | Defines a [GraphQL federation subgraph]({{<ref "getting-started/key-concepts/graphql-federation#subgraphs-and-supergraphs">}}).                                           |
 | SuperGraph         | tyk.tyk.io  | v1alpha1  | Defines a [GraphQL federation supergraph]({{<ref "getting-started/key-concepts/graphql-federation#subgraphs-and-supergraphs">}}).                                        |
 | OperatorContext    | tyk.tyk.io  | v1alpha1  | Manages the context in which the Tyk Operator operates, affecting its overall behavior and environment. See [Operator Context]({{< ref "#multi-tenancy-in-tyk" >}}) for details. |
@@ -293,8 +293,8 @@ To address this challenge, Tyk Operator allows you to directly reference certifi
 | Certificate Type | Supported in ApiDefinition | Supported in TykOasApiDefinition | Supported in TykStreamsApiDefinition |
 |------------------|-------------|---------|---------|
 | Client certifates | ✅ [Client mTLS]({{<ref "api-management/client-authentication#setup-static-mtls-in-tyk-operator-using-the-tyk-classic-api-definition">}}) | ✅ [Client mTLS]({{<ref "api-management/client-authentication#setup-static-mtls-in-tyk-operator-using-tyk-oas-api-definition">}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
-| Custom domain certificates | ✅ [TLS and SSL]({{<ref "basic-config-and-security/security/tls-and-ssl#tyk-operator-classic">}}) | ✅ [TLS and SSL]({{<ref "basic-config-and-security/security/tls-and-ssl#tyk-operator-oas">}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
-| Public keys pinning | ✅ [Certificate pinning]({{<ref "security/certificate-pinning#tyk-operator-classic">}}) | ✅ [Certificate pinning]({{<ref "security/certificate-pinning#tyk-operator-oas">}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
+| Custom domain certificates | ✅ [TLS and SSL]({{<ref "api-management/certificates#dynamically-setting-ssl-certificates-for-custom-domains">}}) | ✅ [TLS and SSL]({{<ref "api-management/certificates#dynamically-setting-ssl-certificates-for-custom-domains">}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
+| Public keys pinning | ✅ [Certificate pinning]({{<ref "api-management/certificates#certificate-pinning">}}) | ✅ [Certificate pinning]({{<ref "api-management/certificates#certificate-pinning">}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
 | Upstream mTLS | ✅ [Upstream mTLS via Operator]({{<ref "api-management/client-authentication#via-tyk-operator-using-the-tyk-classic-api-definition">}}) | ✅ [Upstream mTLS via Operator]({{<ref "api-management/client-authentication#tyk-operator-oas">}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
 
 
@@ -2172,7 +2172,7 @@ In this example, we have defined a security policy as described below:
     - **`kind`**: Tyk OAS APIs (`TykOasApiDefinition`), Tyk Streams (`TykStreamsApiDefinition`) and Tyk Classic APIs (`ApiDefinition`) can be referenced here. The API format can be specified by `kind` field. If omitted, `ApiDefinition` is assumed.
     - **`versions`**: Specifies the API versions the policy will cover. If the API is not versioned, include the default version here. The default version of a Classic API is "Default". The default version of an OAS API is "".
 
-In this example, the security policy will apply to an `ApiDefinition` resource named `httpbin` in the `default` namespace, a `TykOasApiDefinition` resource named `petstore` in the `default` namespace, and a `TykStreamsApiDefinition` resource named `http-to-kafka` in the `default` namespace. Note that with Tyk Operator, you do not need to specify API ID as in the raw [Policy definition]({{<ref "basic-config-and-security/security/security-policies/policies-guide">}}). Tyk Operator will automatically retrieve the API ID of referenced API Definition resources for you.
+In this example, the security policy will apply to an `ApiDefinition` resource named `httpbin` in the `default` namespace, a `TykOasApiDefinition` resource named `petstore` in the `default` namespace, and a `TykStreamsApiDefinition` resource named `http-to-kafka` in the `default` namespace. Note that with Tyk Operator, you do not need to specify API ID as in the raw [Policy definition]({{<ref "api-management/policies#policies-guide">}}). Tyk Operator will automatically retrieve the API ID of referenced API Definition resources for you.
 
 **Define Rate Limits, Usage Quota, and Throttling**
 
@@ -2352,7 +2352,7 @@ spec:
 
 **Path based permissions{#path-based-permissions}**
 
-You can secure your APIs by specifying [allowed URLs]({{<ref "security/security-policies/secure-apis-method-path">}}) (methods and paths) for each API within a security policy. This is done using the `allowed_urls` field under `access_rights_array`.
+You can secure your APIs by specifying [allowed URLs]({{<ref "api-management/policies#secure-your-apis-by-method-and-path">}}) (methods and paths) for each API within a security policy. This is done using the `allowed_urls` field under `access_rights_array`.
 
 The following manifest defines a security policy that allows access only to specific URLs and HTTP methods for two APIs: `httpbin`(a Tyk Classic API) and `petstore` (a Tyk OAS API).
 
@@ -2408,7 +2408,7 @@ With this security policy applied:
 
 **Partitioned policies{#partitioned-policies}**
 
-[Partitioned policies]({{<ref "basic-config-and-security/security/security-policies/partitioned-policies">}}) allow you to selectively enforce different segments of a security policy, such as quota, rate limiting, access control lists (ACL), and GraphQL complexity rules. This provides flexibility in applying different security controls as needed.
+[Partitioned policies]({{<ref "api-management/policies#partitioned-policies">}}) allow you to selectively enforce different segments of a security policy, such as quota, rate limiting, access control lists (ACL), and GraphQL complexity rules. This provides flexibility in applying different security controls as needed.
 
 To configure a partitioned policy, set the segments you want to enable in the `partitions` field:
 
@@ -3748,11 +3748,11 @@ spec:
 ```
 
 #### API Versioning
-[API versioning]({{<ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning">}}) are configured differently for [Tyk OAS APIs]({{< ref "#tyk-oas-api" >}}) and [Tyk Classic APIs]({{< ref "#tyk-classic-api" >}}). Please see below for examples.
+[API versioning]({{<ref "api-management/api-versioning">}}) are configured differently for [Tyk OAS APIs]({{< ref "#tyk-oas-api" >}}) and [Tyk Classic APIs]({{< ref "#tyk-classic-api" >}}). Please see below for examples.
 
 ##### Configuring API Version in Tyk OAS API Definition
 
-In the [Tyk OAS API Definition]({{<ref "getting-started/key-concepts/oas-versioning#configuring-api-versioning-in-the-tyk-oas-api-definition">}}), versioning can be configured via `x-tyk-api-gateway.versioning` object of the Base API, where the child API's IDs are specified. In the Kubernetes environment with Tyk Operator, where we reference API resources through its Kubernetes name and namespace, this is not desired. Therefore, we add support for versioning configurations through the field `versioning` in `TykOasApiDefinition` custom resource definition (CRD).
+In the [Tyk OAS API Definition]({{<ref "api-management/api-versioning#configuring-api-versioning-in-the-tyk-oas-api-definition">}}), versioning can be configured via `x-tyk-api-gateway.versioning` object of the Base API, where the child API's IDs are specified. In the Kubernetes environment with Tyk Operator, where we reference API resources through its Kubernetes name and namespace, this is not desired. Therefore, we add support for versioning configurations through the field `versioning` in `TykOasApiDefinition` custom resource definition (CRD).
 
 Here's an example:
 
@@ -3797,7 +3797,7 @@ spec:
 
 In this example, two different versions of an API are defined: `order-api` (v1) and `order-api-v2` (v2).
 
-`versioning` is configured at `order-api` (v1), the Base API, and it has similiar structure as [Tyk OAS API Definition]({{<ref "getting-started/key-concepts/oas-versioning#configuring-api-versioning-in-the-tyk-oas-api-definition">}}):
+`versioning` is configured at `order-api` (v1), the Base API, and it has similiar structure as [Tyk OAS API Definition]({{<ref "api-management/api-versioning#configuring-api-versioning-in-the-tyk-oas-api-definition">}}):
 
 - `versioning`: This object configures API versioning for the `order-api`.
     - `enabled`: Set to true to enable versioning.
@@ -3828,7 +3828,7 @@ As of Tyk Operator v1.1, API versioning is not supported in `TykStreamsApiDefini
 
 ##### Configuring API Version in Tyk Classic API Definition
 
-For Tyk Classic API, versioning can be configured via `ApiDefinition` custom resource definition (CRD). See [Tyk Classic versioning]({{<ref "getting-started/key-concepts/versioning">}}) for a comprehensive example of configuring API versioning for Tyk Classic API with Tyk Operator.
+For Tyk Classic API, versioning can be configured via `ApiDefinition` custom resource definition (CRD). See [Tyk Classic versioning]({{<ref "api-management/api-versioning#tyk-classic-api-versioning-1">}}) for a comprehensive example of configuring API versioning for Tyk Classic API with Tyk Operator.
 
 #### API Ownership
 
@@ -4630,7 +4630,7 @@ which version of Kubernetes it is tested against.
 
 
 #### Security Policy CRD
-The SecurityPolicy custom resource defines configuration of [Tyk Security Policy object]({{<ref "basic-config-and-security/security/security-policies">}}).
+The SecurityPolicy custom resource defines configuration of [Tyk Security Policy object]({{<ref "api-management/policies">}}).
 
 Here are the supported features:
 
