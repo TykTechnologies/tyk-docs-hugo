@@ -64,7 +64,7 @@ In this example the Validate JSON middleware has been configured for requests to
 
 **Note**
 
-By default the validator will try to detect the draft of a schema by using the $schema keyword and parse it in a strict draft-04, draft-06 or draft-07 mode. If $schema is missing, or the draft version is not explicitely set, a hybrid mode is used which merges together functionality of all drafts into one mode.
+By default the validator will try to detect the draft of a schema by using the $schema keyword and parse it in a strict draft-04, draft-06 or draft-07 mode. If $schema is missing, or the draft version is not explicitly set, a hybrid mode is used which merges together functionality of all drafts into one mode.
 
 {{< /note >}}
 
