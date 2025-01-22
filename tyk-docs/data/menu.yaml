@@ -1625,26 +1625,6 @@ menu:
             category: Directory
             show: True
             menu:
-              - title: "API Templates"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /product-stack/tyk-dashboard/advanced-configurations/templates/template-overview
-                    category: Page
-                    show: True
-                  - title: "Using the Template Designer"
-                    path: /product-stack/tyk-dashboard/advanced-configurations/templates/template-designer
-                    category: Page
-                    show: True
-                  - title: "Using the Dashboard API"
-                    path: /product-stack/tyk-dashboard/advanced-configurations/templates/template-api
-                    category: Page
-                    show: True
-              - title: "API Categories"
-                path: /product-stack/tyk-dashboard/advanced-configurations/api-categories
-                category: Page
-                show: True
               - title: "Open Policy Agent (OPA)"
                 category: Directory
                 show: True
@@ -1661,38 +1641,10 @@ menu:
                     path: /product-stack/tyk-dashboard/advanced-configurations/open-policy-agent/opa-permissions-example
                     category: Page
                     show: True
-              - title: "API Endpoint Designer"
-                path: /advanced-configuration/transform-traffic/endpoint-designer
-                category: Page
-                show: True
           - title: "System administration"
             category: Directory
             show: True
             menu:
-              - title: "Dashboard administration"
-                path: /basic-config-and-security/security/dashboard/dashboard-admin-api
-                category: Page
-                show: True
-              - title: "Organizations"
-                path: /basic-config-and-security/security/dashboard/organisations
-                category: Page
-                show: True
-              - title: "Dashboard audit logs"
-                path: /product-stack/tyk-dashboard/advanced-configurations/analytics/audit-log
-                category: Page
-                show: True
-              - title: "Persistent storage"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Supported Databases"
-                    path: /tyk-dashboard/database-options
-                    category: Page
-                    show: True
-                  - title: "Configuring Data Storage"
-                    path: /product-stack/tyk-dashboard/advanced-configurations/data-storage-configuration
-                    category: Page
-                    show: True
               - title: "Integration with 3rd Party Identity Providers"
                 category: Directory
                 show: True

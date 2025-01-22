@@ -1,10 +1,16 @@
 ---
-title: "Dashboard Configuration"
+title: "Dashboard - System Administration"
 date: 2025-01-10
 tags: ["Dashboard", "User Management", "RBAC", "Role Based Access Control", "User Groups", "Teams", "Permissions", "API Ownership", "SSO", "Single Sing On", "Multi Tenancy"]
 description: "How to manage users, teams, permissions, rbac in Tyk Dashboard"
 keywords: ["Dashboard", "User Management", "RBAC", "Role Based Access Control", "User Groups", "Teams", "Permissions", "API Ownership", "SSO", "Single Sing On", "Multi Tenancy"]
 aliases:
+  - /basic-config-and-security/security/dashboard/dashboard-api-security
+  - /basic-config-and-security/security/dashboard/dashboard-admin-api
+  - /basic-config-and-security/security/dashboard/organisations
+  - /product-stack/tyk-dashboard/advanced-configurations/analytics/audit-log
+  - /tyk-dashboard/database-options
+  - /product-stack/tyk-dashboard/advanced-configurations/data-storage-configuration
 ---
 
 ## Introduction
