@@ -4351,7 +4351,7 @@ Redis supports [SSL/TLS encryption](https://redis.io/topics/encryption) from ver
 
 - `storage.use_ssl`: Set this to true to enable TLS encryption for the connection.
 
-- `storage.ssl_secure_skip_verify`: A flag that, when set to true, instructs the application not to verify the Redis server's TLS certificate. This is not recommended for production due to the risk of `man-in-the-middle` attacks.
+- `storage.ssl_insecure_skip_verify`: A flag that, when set to true, instructs the application not to verify the Redis server's TLS certificate. This is not recommended for production due to the risk of `man-in-the-middle` attacks.
 
 From **Tyk 5.3**, additional options are available for more granular control:
 
@@ -4363,11 +4363,11 @@ From **Tyk 5.3**, additional options are available for more granular control:
 
 **Setting up an Insecure TLS Connection**
 - **Enable TLS**: By setting `"use_ssl": true`, you encrypt the connection.
-- **Skip Certificate Verification**: Setting `"ssl_secure_skip_verify": true` bypasses the server's certificate verification, suitable only for non-production environments.
+- **Skip Certificate Verification**: Setting `"ssl_insecure_skip_verify": true` bypasses the server's certificate verification, suitable only for non-production environments.
 
 **Setting up a Secure TLS Connection**
 - Ensure `use_ssl` is set to `true`.
-- Set `ssl_secure_skip_verify` to `false` to enforce certificate verification against the CA specified in `ca_file`.
+- Set `ssl_insecure_skip_verify` to `false` to enforce certificate verification against the CA specified in `ca_file`.
 - Specify the path to the CA file in `ca_file` for server certificate verification.
 - Adjust `min_version` and `max_version` to secure TLS versions, ideally 1.2 and 1.3.
 
@@ -4382,7 +4382,7 @@ From **Tyk 5.3**, additional options are available for more granular control:
   "host": "server1",
   "port": 6379,
   "use_ssl": true,
-  "ssl_secure_skip_verify": false,
+  "ssl_insecure_skip_verify": false,
   "ca_file": "/path/to/ca.crt",
   "cert_file": "/path/to/client.crt",
   "key_file": "/path/to/client.key",
