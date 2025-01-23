@@ -83,7 +83,7 @@ Tyk offers supporting tools for database migration and backing up APIs and polic
 
 ##### Migrating from MongoDB to SQL
 
-Use our [migration tool]({{< ref "planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}) to manage the switch from MongoDB to SQL.
+Use our [migration tool]({{< ref "tyk-self-managed#migrating-from-an-existing-mongodb-instance" >}}) to manage the switch from MongoDB to SQL.
 
 ##### Backup APIs Script
 
@@ -185,7 +185,7 @@ specified order. Adhering to the provided sequence is crucial for a smooth and s
 
 **Step 1. Upgrade Control Plane**
 
-Follow our guide for [upgrading Cloud Control Planes]({{< ref "tyk-cloud/environments-&-deployments/managing-control-planes#upgrade-control-planes" >}}).
+Follow our guide for [upgrading Cloud Control Planes]({{< ref "tyk-cloud#upgrade-control-planes" >}}).
 
 **Step 2. Upgrade Go Plugins**
 
@@ -215,7 +215,7 @@ Follow our guide for deploying your [Go plugins on Tyk Cloud]({{< ref "#go-plugi
 
 ###### Step 3. Upgrade Cloud Data Plane {#upgrading-cloud-data-planes}
 
-Follow our guide for [upgrading Cloud Data Planes]({{< ref "tyk-cloud/environments-&-deployments/managing-gateways#upgrade-cloud-data-planes" >}}).
+Follow our guide for [upgrading Cloud Data Planes]({{< ref "tyk-cloud#managing-cloud-data-plane" >}}).
 
 **Upgrade Guide Video**
 Please refer to our [upgrade guide video](https://tyk-1.wistia.com/medias/t0oamm63ae) below for visual guidance:
@@ -255,7 +255,7 @@ following order:
 
 **Step 1. Upgrade your control plane**
 
-See Tyk Guide for how to [upgrade Control Planes]({{< ref "tyk-cloud/environments-&-deployments/managing-control-planes#upgrade-control-planes" >}})
+See Tyk Guide for how to [upgrade Control Planes]({{< ref "tyk-cloud#upgrade-control-planes" >}})
 
 **Step 2 Upgrade Go plugins**
 
@@ -350,7 +350,7 @@ This guide explains how to deploy your custom Go plugins on Tyk Cloud:
     }
     ```
 
-2. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
+2. [Upload this bundle]({{< ref "tyk-cloud#uploading-your-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
 
 
 **Path 2 - Current Version >= 4.1.0 and Target Version >= 4.2.0**
@@ -394,7 +394,7 @@ This guide explains how to deploy your custom Go plugins on Tyk Cloud:
     then *“_v5.2.0_linux_amd64”* would be appended to the shared object filename that the compiler creates
     - Your bundle zip file should include both the current version and target versions of the plugin.
 
-2. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
+2. [Upload this bundle]({{< ref "tyk-cloud#uploading-your-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
 
 
 ### Tyk Self Managed Upgrade Guide 
@@ -1106,7 +1106,7 @@ $ docker run \
   docker.tyk.io/tyk-gateway/tyk-gateway:v5.3
 ```
 
-For full installation details, check the usual [installation page]({{< ref "tyk-oss/ce-docker" >}}).
+For full installation details, check the usual [installation page]({{< ref "tyk-open-source#install-tyk-gateway-with-docker" >}}).
 
 **Docker compose upgrade in a simple environment**
 

@@ -33,7 +33,7 @@ When configuring APIs, precise URL path matching helps developers:
 
 URL path matching is fundamental to the behavior of various Tyk middleware, including:
 
-- [Granular access control]({{< ref "security/security-policies/secure-apis-method-path" >}})
+- [Granular access control]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}})
 - [Allow List]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}})
 - [Block List]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware" >}})
 - [Request and Response transformation]({{< ref "advanced-configuration/transform-traffic" >}})
@@ -96,7 +96,7 @@ The [strip listen path]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#list
 
 ### Versioning identifier
 
-If [URL path versioning]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#request-url-path" >}}) is in use for an API, Tyk will perform a match of the first fragment after the *listen path* to identify which version of the API should be invoked.
+If [URL path versioning]({{< ref "api-management/api-versioning#request-url-path" >}}) is in use for an API, Tyk will perform a match of the first fragment after the *listen path* to identify which version of the API should be invoked.
 
 ### Endpoint path
 

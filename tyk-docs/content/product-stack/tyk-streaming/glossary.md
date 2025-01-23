@@ -1,6 +1,6 @@
 ---
-title: Glossary
-description: Explains key concepts of streaming
+title: Tyk Streams Glossary
+description: Explains Glossary terms of streaming
 tags: [ "streaming", "events", "event driven architecture", "event driven architectures", "kafka" ]
 ---
 

@@ -19,7 +19,7 @@ The code used in this tutorial is also available in [this GitHub repository](htt
 
 ## Requirements
 
-* Tyk API Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here]({{< ref "tyk-self-managed/install" >}}) for more installation options.
+* Tyk API Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) for more installation options.
 
 ### Dependencies
 

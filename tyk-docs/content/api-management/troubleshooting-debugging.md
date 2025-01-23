@@ -62,6 +62,7 @@ aliases:
     - troubleshooting/tyk-pump
     - tyk-rest-api/hot-reload
     - tyk-stack/tyk-pump/tyk-pump-configuration/graceful-shutdowm
+    - frequently-asked-questions/add-custom-certificates-to-docker-images
 ---
 
 ## Gateway
@@ -119,7 +120,7 @@ aliases:
 
     When it happens on the high load, it can be a lot of different reasons.
     For example your OS is running out of system limits, like number of opened sockets, and to validate it, you need to try your system limits.
-    See this guide https://tyk.io/docs/planning-for-production/#resource-limits.
+    See this guide https://tyk.io/docs/tyk-self-managed#resource-limits
 
     Additionally, it can be CPU bottleneck: you can't process more than your machine  can do.
     And note that it is not only about the actual utilization %, it is also about context switches it has to do. 
@@ -360,7 +361,7 @@ aliases:
 
     **Cause**
 
-    There can be a couple of reasons for seeing this error about the [Distributed Rate Limiter]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}}):
+    There can be a couple of reasons for seeing this error about the [Distributed Rate Limiter]({{< ref "api-management/rate-limit#rate-limiting-layers" >}}):
 
     1. When you have more than one installation of the Gateway with one configured to use DRL, and others not.
     2. When the Gateway is started and the DRL receives an event before it has finished initialising.
@@ -406,6 +407,27 @@ aliases:
 
     This will fork and load a new process, passing all open handles to the new server and wait to drain the old ones.
 
+14. ##### How to add Custom Certificates to Trusted Storage of Docker Images
+
+    To add your custom Certificate Authority(CA) to your docker containers. You can mount your CA certificate directly into `/etc/ssl/certs` folder.
+
+    Docker: 
+    ```{.copyWrapper}
+    docker run -it tykio/tyk-gateway:latest \
+    -v $(pwd)/myCA.pem:/etc/ssl/certs/myCA.pem
+    ```
+
+    Kubernetes - using Helm Chart and secrets:
+    ```yaml
+    extraVolumes: 
+        - name: self-signed-ca
+        secret:
+            secretName: self-signed-ca-secret
+    extraVolumeMounts: 
+        - name: self-signed-ca
+        mountPath: "/etc/ssl/certs/myCA.pem"
+        subPath: myCA.pem
+    ```
 
 ## Dashboard
 
@@ -849,7 +871,7 @@ aliases:
 
 18. ##### How to run two Gateways with docker-compose
 
-    Managing a second Tyk Gateway with our [Tyk Pro Docker Demo]({{< ref "tyk-on-premises/docker/docker-pro-demo" >}}) is a case of mounting the `tyk.conf` file into a new volume and declaring a new Gateway service but exposed on a different port.
+    Managing a second Tyk Gateway with our [Tyk Pro Docker Demo]({{< ref "tyk-self-managed#docker-compose-setup" >}}) is a case of mounting the `tyk.conf` file into a new volume and declaring a new Gateway service but exposed on a different port.
     You will need to make some minor modifications to `docker-compose.yml` and start your services as usual with `docker-compose up`.
 
     {{< note success >}}
@@ -1136,7 +1158,7 @@ Here, we'll outline the following:
 
 3. ##### Mongo version
 
-    Does Tyk support the version of Mongo that you’re using? Read more about that [here]({{< ref "planning-for-production/database-settings/mongodb" >}}).
+    Does Tyk support the version of Mongo that you’re using? Read more about that [here]({{< ref "tyk-self-managed#mongodb" >}}).
 
 4. ##### Capped collections
 
@@ -1146,7 +1168,7 @@ Here, we'll outline the following:
 
     We advise everyone to cap every collection in Mongo, as this prevents collections from growing out of control and bringing your dashboard down by hitting resource limits.
 
-    You can determine each collection's cap size by visiting our [MongoDB sizing calculator]({{< ref "planning-for-production/database-settings/mongodb-sizing" >}}).
+    You can determine each collection's cap size by visiting our [MongoDB sizing calculator]({{< ref "tyk-self-managed#mongodb-sizing-guidelines" >}}).
 
     Here’s more information on how and why you want to [cap your collections](https://www.mongodb.com/docs/manual/core/capped-collections/).
 
@@ -1220,7 +1242,7 @@ This guide should help a user of Tyk Self-Managed in debugging common issues. A 
 
 1. ##### Gateway `/hello` endpoint
 
-    Querying the gateway's `/hello` health endpoint is the quickest way to determine the status of your Tyk instance. You can find more information in our docs about the [Gateway Liveness health check]({{< ref "planning-for-production/ensure-high-availability/health-check" >}}).
+    Querying the gateway's `/hello` health endpoint is the quickest way to determine the status of your Tyk instance. You can find more information in our docs about the [Gateway Liveness health check]({{< ref "tyk-self-managed#set-up-liveness-health-checks" >}}).
 
     This endpoint is important as it allows the user to isolate the problem's origin. At a glance, the `/hello` endpoint reports the Gateways connectivity to Redis, and the control plane components eg. Tyk Dashboard, Tyk Multi-Data Center Bridge (MDCB), and Tyk Cloud. 
 

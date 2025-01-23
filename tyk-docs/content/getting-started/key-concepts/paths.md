@@ -2,7 +2,7 @@
 title: "Paths"
 date: 2022-07-07
 tags: ["API", "OAS", "OpenAPI Specification", "Servers"]
-description: "The low level concepts around OpenAPI Specification support in Tyk"
+description: "How to configure path section in OpenAPI Specification support in Tyk"
 menu:
   main:
     parent: "OpenAPI Low Level Concepts"

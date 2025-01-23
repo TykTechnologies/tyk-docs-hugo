@@ -15,7 +15,7 @@ The following Tyk components, created and maintained by the Tyk Team, are propri
 
 * [Tyk Dashboard]({{< ref "tyk-dashboard" >}})
 * [Tyk Developer Portal]({{< ref "tyk-developer-portal" >}})
-* [Tyk Multi Data Center Bridge]({{< ref "tyk-multi-data-centre" >}})
+* [Tyk Multi Data Center Bridge]({{< ref "tyk-multi-data-centre#managing-geographically-distributed-gateways-to-minimize-latency-and-protect-data-sovereignty" >}})
 * [Universal Data Graph]({{< ref "universal-data-graph" >}})
 * [Tyk Operator]({{< ref "/api-management/automations.md#what-is-tyk-operator" >}})
 * [Tyk Sync]({{< ref "/api-management/automations#synchronize-tyk-environment-with-github-repository" >}})

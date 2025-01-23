@@ -9,7 +9,7 @@ menu:
 weight: 7
 ---
 
-Tyk allows you to create versions of your APIs. When using Tyk OAS APIs versioning works slightly differently from with Tyk Classic APIs, to find out more please take a look at the dedicated [page]({{< ref "/getting-started/key-concepts/oas-versioning" >}}).
+Tyk allows you to create versions of your APIs. When using Tyk OAS APIs versioning works slightly differently from with Tyk Classic APIs, to find out more please take a look at the dedicated [page]({{< ref "api-management/api-versioning#tyk-oas-api-versioning-1" >}}).
 
 If you're ready to dive in, then this tutorial shows you how easy it is to create and manage versions of your Tyk OAS APIs using the open source Tyk Gateway API, Tyk Dashboard API and the Tyk Dashboard GUI.
 
@@ -47,7 +47,7 @@ You will also need to have ‘admin’ or ‘api’ rights if [RBAC]({{< ref "/t
 
 #### Step 1: Create your base API
 
-You need to create a new API that will be the [Base API]({{< ref "/getting-started/key-concepts/oas-versioning" >}}) for the future versions. You do this by sending a Tyk OAS API Definition to the Tyk Gateway API's `apis/oas` endpoint. Note that there is no special command required to create this new API as a Base API - i.e. any Tyk OAS API can be used as a Base API.
+You need to create a new API that will be the [Base API]({{< ref "api-management/api-versioning#tyk-oas-api-versioning-1" >}}) for the future versions. You do this by sending a Tyk OAS API Definition to the Tyk Gateway API's `apis/oas` endpoint. Note that there is no special command required to create this new API as a Base API - i.e. any Tyk OAS API can be used as a Base API.
 
 | Property     | Description            |
 |--------------|------------------------|
