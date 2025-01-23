@@ -156,25 +156,9 @@ menu:
         category: Page
         show: True
       - title: "Dashboard Configuration"
-        category: Directory
+        path: /api-management/dashboard-configuration
+        category: Page
         show: True
-        menu:
-          - title: "Overview"
-            path: /api-management/dashboard-config-overview
-            category: Page
-            show: True
-          - title: "Traffic Analytics"
-            path: /api-management/dashboard-config-analytics
-            category: Page
-            show: True
-          - title: "API Governance"
-            path: /api-management/dashboard-config-governance
-            category: Page
-            show: True
-          - title: "Administration"
-            path: /api-management/dashboard-config-administration
-            category: Page
-            show: True
       - title: "API Versioning"
         path: /api-management/api-versioning
         category: Page
