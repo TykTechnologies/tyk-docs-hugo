@@ -80,21 +80,21 @@ This page introduces general features of dashboard and how to configure them. If
 
 We will delve into the following key topics:
 
-1. **[Exploring the Dasbhoard UI]({{< ref "#" >}})**: A tour of the Dashboard UI.
+1. **[Exploring the Dasbhoard UI]({{< ref "#exploring-the-dashboard-ui" >}})**: A tour of the Dashboard UI.
 
-2. **[Exploring the Dasbhoard API]({{< ref "#" >}})**: Explore the Dashboard APIs, including their classification, authentication methods, and usage examples with Swagger and Postman collections.
+2. **[Exploring the Dasbhoard API]({{< ref "#exploring-the-dashboard-api" >}})**: Explore the Dashboard APIs, including their classification, authentication methods, and usage examples with Swagger and Postman collections.
 
-3. **[API Management using API Endpoint Designer]({{< ref "#" >}})**: A graphical environment for configuring your Tyk APIs.
+3. **[API Management using API Endpoint Designer]({{< ref "#exploring-api-endpoint-designer" >}})**: A graphical environment for configuring your Tyk APIs.
 
-4. **[Monitoring and Traffic Analytics]({{< ref "#" >}})**: Exploration of Tyk's traffic analytics capabilities, including logging mechanisms, error tracking, endpoint analysis, and various activity type measurements.
+4. **[Monitoring and Traffic Analytics]({{< ref "#traffic-analytics" >}})**: Exploration of Tyk's traffic analytics capabilities, including logging mechanisms, error tracking, endpoint analysis, and various activity type measurements.
 
-5. **[API Governance using API Templates and API Categories]({{< ref "#" >}})**
+5. **[API Governance using API Templates and API Categories]({{< ref "#governance-using-api-categories" >}})**
 
-6. **[System Management]({{< ref "#" >}})**: Detailed overview of Tyk's system management capabilities, including Admin API functionalities, organization management and configuting audit logs.
+6. **[System Management]({{< ref "#system-administration" >}})**: Detailed overview of Tyk's system management capabilities, including Admin API functionalities, organization management and configuting audit logs.
   
-7. **[Supported Database]({{< ref "#" >}})**: We will examine Dashboard's storage requirement, compatible database versions and how to configure them.
+7. **[Supported Database]({{< ref "#supported-database" >}})**: We will examine Dashboard's storage requirement, compatible database versions and how to configure them.
 
-7. **[Exploring Data Storage Solution]({{< ref "#" >}})**: We will explore Dashboard's multi-layered storage architecture and understand how to configure each storage tier effectively.
+7. **[Exploring Data Storage Solution]({{< ref "#data-storage-solutions" >}})**: We will explore Dashboard's multi-layered storage architecture and understand how to configure each storage tier effectively.
 
 ## Exploring the Dashboard UI
 
