@@ -1,7 +1,7 @@
 ---
-title: "Dynamic client registration"
+title: "Dynamic Client Registration"
 date: 2022-02-11
-tags: ["Tyk Developer Portal","Enterprise Portal", "Dynamic client registration", "DCR"]
+tags: ["Tyk Developer Portal","Enterprise Portal", "Dynamic client registration", "DCR", "Okta", "Keycloak"]
 description: "How to configure the Dynamic client registration flow with the Enterprise Portal"
 menu:
   main:
@@ -55,16 +55,24 @@ Whilst many providers require initial access tokens, they are optional. Please r
 
 ### Create OAuth2.0 scopes to enforce access control and rate limit
 
-Tyk uses OAuth2.0 scope to enforce access control and rate limit for API Products. Therefore, creating at least two scopes for an API Product and plan is required. The below example demonstrates how to achieve that with Keycloak:
+Tyk uses OAuth2.0 scope to enforce access control and rate limit for API Products. Therefore, creating at least two scopes for an API Product and plan is required. 
 
-**Step 1. Navigate to the Client scopes menu item**
-{{< img src="/img/dashboard/portal-management/enterprise-portal/step-1-navigate-to-the-client-scopes-menu.png" alt="Navigate to the Client scopes menu item" >}}
+The below example demonstrates how to achieve that with Keycloak and Okta in the tabs below.
 
-**Step 2. Create a scope for an API Product**
-{{< img src="/img/dashboard/portal-management/enterprise-portal/step-2-create-a-scope-for-an-api-product.png" alt="Create a scope for an API Product" >}}
+{{< tabs_start >}}
+{{< tab_start "Keycloak" >}}
 
-**Step 3. Create a scope for a plan**
-{{< img src="/img/dashboard/portal-management/enterprise-portal/step-3-create-a-scope-for-a-plan.png" alt="Create a scope for a plan" >}}
+1. **Navigate to the Client scopes menu item**
+
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/step-1-navigate-to-the-client-scopes-menu.png" alt="Navigate to the Client scopes menu item" >}}
+
+2. **Create a scope for an API Product**
+
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/step-2-create-a-scope-for-an-api-product.png" alt="Create a scope for an API Product" >}}
+
+3. **Create a scope for a plan**
+
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/step-3-create-a-scope-for-a-plan.png" alt="Create a scope for a plan" >}}
 
 {{< note success >}}
 **Note**
@@ -74,15 +82,39 @@ When using Keycloak, ensure that you set the type of the scope to be `Optional`.
 
 {{< img src="/img/dashboard/portal-management/enterprise-portal/old-keycloak-version-client-scope.png" alt="Client Scope Assigned Type" >}}
 
+{{< tab_end >}}
+
+{{< tab_start "Okta" >}}
+
+1. **Create an auth server or use the `Default` authorization server**
+
+    Go to Security → API, Edit one of the auth servers and navigate to `Scopes`
+
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/okta-api-page.png" alt="Add or Edit oauth servers in okta" >}}
+
+2. **Create a scope for an API Product**
+
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/okta-product-payment.png" alt="Create a scope for an API Product" >}}
+
+3. **Create a scope for a plan**
+
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/okta-free-plan-scope.png" alt="Create a scope for a plan" >}}
+
+{{< tab_end >}}
+
+{{< tabs_end >}}
+
 ### Create Tyk policies for an API Product and plan
 
 Navigate to the Tyk Dashboard and create two policies: one for a plan and one for an API Product. Both policies should include only the APIs with JWT authentication that you want to bundle as an API Product.
 
-**Step 1.** Create a policy for an API product.
-{{< img src="/img/dashboard/portal-management/enterprise-portal/create-jwt-policy-for-product.png" alt="Create a policy for a product" >}}
+1. **Create a policy for an API product.** 
 
-**Step 2.** Create a policy for a plan.
-{{< img src="/img/dashboard/portal-management/enterprise-portal/create-jwt-policy-for-plan.png" alt="Create a policy for a plan" >}}
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/create-jwt-policy-for-product.png" alt="Create a policy for a product" >}}
+
+2. **Create a policy for a plan.** 
+
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/create-jwt-policy-for-plan.png" alt="Create a policy for a plan" >}}
 
 
 ### Create the No Operation policy and API
@@ -90,57 +122,61 @@ Tyk requires any API that uses the scope to policy mapping to have [a default po
 
 To avoid that, you need to create the No Operation API and policy that won't grant access to the APIs included in the API Product but will satisfy the requirement for a default policy.
 
-**Step 1.** Create the No Operation API.
+1. **Create the No Operation API.** 
 
-Navigate to the `APIs` menu in the Tyk Dashboard:
-{{< img src="/img/dashboard/portal-management/enterprise-portal/navigate-to-the-api-menu-in-the-tyk-dashboard.png" alt="Navigate to the API menu in the Tyk Dashboard" >}}
-
-
-Create a new HTTP API:
-{{< img src="/img/dashboard/portal-management/enterprise-portal/create-noop-api.png" alt="Create the No Operation API" >}}
+    Navigate to the `APIs` menu in the Tyk Dashboard:
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/navigate-to-the-api-menu-in-the-tyk-dashboard.png" alt="Navigate to the API menu in the Tyk Dashboard" >}}
 
 
-Save it:
-{{< img src="/img/dashboard/portal-management/enterprise-portal/save-the-noop-api.png" alt="Save the No Operation API" >}}
+    Create a new HTTP API:
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/create-noop-api.png" alt="Create the No Operation API" >}}
+
+
+    Save it:
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/save-the-noop-api.png" alt="Save the No Operation API" >}}
 
 <br/>
 
-**Step 2.** Create the No Operation policy.
+2. **Create the No Operation policy.** 
 
-Navigate to the `Policies` menu in the Tyk Dashboard:
-{{< img src="/img/dashboard/portal-management/enterprise-portal/navigate-to-the-policies-menu.png" alt="Navigate to the policies menu" >}}
+    Navigate to the `Policies` menu in the Tyk Dashboard:
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/navigate-to-the-policies-menu.png" alt="Navigate to the policies menu" >}}
 
-Create a new policy and select the No Operation API in the `Add API Access Rights` section:
-{{< img src="/img/dashboard/portal-management/enterprise-portal/create-noop-policy.png" alt="Create the No Operation policy" >}}
+    Create a new policy and select the No Operation API in the `Add API Access Rights` section:
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/create-noop-policy.png" alt="Create the No Operation policy" >}}
 
-Configure the No Operation policy and save it:
-{{< img src="/img/dashboard/portal-management/enterprise-portal/save-the-noop-policy.png" alt="Save the No Operation policy" >}}
+    Configure the No Operation policy and save it:
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/save-the-noop-policy.png" alt="Save the No Operation policy" >}}
 
 ### Configure scope to policy mapping
 
 To enforce policies for the API Product and plan, you need to configure the scope to policy mapping for each API included in the API Product.
 To achieve that, perform the following steps for each API included in the API Product.
 
-**Step 1.** Navigate to the API.
-{{< img src="/img/dashboard/portal-management/enterprise-portal/navigate-to-the-api.png" alt="Navigate to the API" >}}
+1. Navigate to the API.
 
-**Step 2.** Select the required JWT signing method. In this example, we use RSA. Leave the `Public key` and `pol` fields blank, they will be filled automatically by the Enterprise portal.
-{{< img src="/img/dashboard/portal-management/enterprise-portal/select-signing-method.png" alt="Select signing method for the API" >}}
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/navigate-to-the-api.png" alt="Navigate to the API" >}}
 
-**Step 3.** Select the No Operation policy as the default policy for this API.
-{{< img src="/img/dashboard/portal-management/enterprise-portal/select-the-default-policy.png" alt="Select the default policy for the API" >}}
+2. Select the required JWT signing method. In this example, we use RSA. Leave the `Public key` and `pol` fields blank, they will be filled automatically by the Enterprise portal.
 
-**Step 4.** Enable scope to policy mapping and specify the value of the JWT claim used to extract scopes in the `Scope name` field (the default value is "scope").
-{{< img src="/img/dashboard/portal-management/enterprise-portal/enable-scope-to-policy-mapping.png" alt="Enable scope to policy mapping" >}}
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/select-signing-method.png" alt="Select signing method for the API" >}}
 
+3. Select the No Operation policy as the default policy for this API.
 
-**Step 5.** Add a scope to policy mapping for the product scope. Type the product scope in the `Claim field` and select the product policy.
-{{< img src="/img/dashboard/portal-management/enterprise-portal/add-a-scope-to-policy-mapping-for-the-product-scope.png" alt="Add scope to policy mapping for the product scope" >}}
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/select-the-default-policy.png" alt="Select the default policy for the API" >}}
 
-**Step 6.** Add a scope to policy mapping for the plan scope. Type the plan scope in the `Claim field` and select the plan policy, then save the API.
-{{< img src="/img/dashboard/portal-management/enterprise-portal/add-a-scope-to-policy-mapping-for-the-plan-scope.png" alt="Add scope to policy mapping for the plan scope" >}}
+4. Enable scope to policy mapping and specify the value of the JWT claim used to extract scopes in the `Scope name` field (the default value is "scope").
+
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/enable-scope-to-policy-mapping.png" alt="Enable scope to policy mapping" >}}
 
 
+5. Add a scope to policy mapping for the product scope. Type the product scope in the `Claim field` and select the product policy.
+
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/add-a-scope-to-policy-mapping-for-the-product-scope.png" alt="Add scope to policy mapping for the product scope" >}}
+
+6. Add a scope to policy mapping for the plan scope. Type the plan scope in the `Claim field` and select the plan policy, then save the API.
+
+    {{< img src="/img/dashboard/portal-management/enterprise-portal/add-a-scope-to-policy-mapping-for-the-plan-scope.png" alt="Add scope to policy mapping for the plan scope" >}}
 
 ## Configure Tyk Enterprise Developer Portal to work with an identity provider
 
@@ -165,14 +201,33 @@ To connect the portal to the IdP, you need to specify the following settings:
 First of all, select your IdP from the `Identity provider` dropdown list. Different IdPs have slightly different approaches to DCR implementation, so the portal will use a driver that is specific to your IdP. If your IdP is not present in the dropdown list, select the `Other` option. In that case, the portal will use the most standard implementation of the DCR driver, which implements the DCR flow as defined in the RFC.
 
 Then you need to specify the connection settings: [the initial access token and the well-known endpoint]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#create-an-initial-access-token" >}}). If your Identity Provider uses certificates that are not trusted, the portal will not work with it by default. To bypass certificate verification, you can select the `SSL secure skip verify` checkbox.
+
+The below example demonstrates how to achieve that with Keycloak and Okta in the tabs below.
+
+{{< tabs_start >}}
+
+{{< tab_start "Keycloak" >}}
+
 {{< img src="/img/dashboard/portal-management/enterprise-portal/specify-connection-setting-to-your-idp.png" alt="Specify connection setting to the IdP" >}}
 
+{{< tab_end >}}
+
+{{< tab_start "Okta" >}}
+
+{{< img src="/img/dashboard/portal-management/enterprise-portal/specify-connection-setting-to-your-idp-okta.png" alt="Specify connection setting to the IdP" >}}
+
+**OIDC URL**: {your-domain.com}/oauth2/default/.well-known/openid-configuration
+
+**Registration Access Token**: To obtain token, Go to Okta Admin Console → Security → API → Tokens → Create New Token
+
+{{< tab_end >}}
+
+{{< tabs_end >}}
 
 #### Create client configurations
 Once the connection settings are specified, you need to create one or multiple types of clients. You might have multiple types of clients that are suitable for different use cases, such as backend integration or web applications.
 
 You need at least one type of client for the DCR flow to work. To add the first client type, scroll down to the `Client Types` section and click on the `Add client type` button.
-{{< img src="/img/dashboard/portal-management/enterprise-portal/add-the-first-client-type.png" alt="Add the first client type" >}}
 
 To configure a client type, you need to specify the following settings:
 * **Client type display name.** This name will be displayed to API consumers when they check out API products. Try to make it descriptive and short, so it's easier for API consumers to understand.
@@ -184,8 +239,25 @@ To configure a client type, you need to specify the following settings:
 
 Please note that your IdP might override some of these settings based on its configuration.
 
-An example of configuration is demonstrated below. After configuring a client type, scroll to the top of the page to save it by clicking on the `SAVE CHANGES` button.
+The below example demonstrates how to achieve that with Keycloak and Okta in the tabs below. After configuring a client type, scroll to the top of the page to save it by clicking on the `SAVE CHANGES` button.
+
+{{< tabs_start >}}
+
+{{< tab_start "Keycloak" >}}
+
 {{< img src="/img/dashboard/portal-management/enterprise-portal/configure-type-of-client.png" alt="Configure a client type" >}}
+
+{{< tab_end >}}
+
+{{< tab_start "Okta" >}}
+
+{{< img src="/img/dashboard/portal-management/enterprise-portal/configure-type-of-client-okta.png" alt="Configure a client type" >}}
+
+**For Okta Client Credentials**: allowed response types MUST be token only
+
+{{< tab_end >}}
+
+{{< tabs_end >}}
 
 ### Configure API Products and plans for the DCR flow
 Once the App registration settings are configured, it is time for the final step: to configure the API Products and plans to work with the DCR flow.
@@ -201,7 +273,22 @@ For achieving this, navigate to the `API Products` menu and select the particula
 After that, specify the scope for this API product. You should have at least one scope that was created in [the Prerequisites for getting started]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#prerequisites-for-getting-started" >}}). If you need to specify more than one scope, you can separate them with spaces.
 
 Finally, select one or multiple types of clients that were created in [the Create client configurations]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#create-client-configurations" >}}) section of this guide to associate them with that product.
+
+{{< tabs_start >}}
+
+{{< tab_start "Keycloak" >}}
+
 {{< img src="/img/dashboard/portal-management/enterprise-portal/configure-api-products-for-the-dcr-flow.png" alt="Configure an API Product to work with the DCR flow" >}}
+
+{{< tab_end >}}
+
+{{< tab_start "Okta" >}}
+
+{{< img src="/img/dashboard/portal-management/enterprise-portal/configure-api-products-for-the-dcr-flow-okta.png" alt="Configure an API Product to work with the DCR flow" >}}
+
+{{< tab_end >}}
+
+{{< tabs_end >}}
 
 
 #### Configure plans for the DCR flow
