@@ -96,7 +96,7 @@ The `TykStreamsApiDefinition` custom resource allows you to manage Tyk Streams A
 
 With `TykOasApiDefinition` support, we expect API references in SecurityPolicy to have `kind` field which can be either `ApiDefinition` or `TykOasApiDefinition`. However, the validation was failing if users were upgrading from v0.18 to v1.0 since the `kind` field is empty in the CR.
 
-Updated CRD rules to add default value for kind field.
+Updated CRD rules to add default value for the `kind` field.
 </details>
 </li>
 </ul>
