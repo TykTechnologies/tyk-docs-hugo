@@ -5,6 +5,7 @@ tags: ["Gateway", "Configuration", "Tyk OAS", "Tyk OAS API Definition", "Tyk OAS
 description: "How to configure Tyk OAS API Definition"
 keywords: ["Gateway", "Configuration", "Tyk OAS", "Tyk OAS API Definition", "Tyk OAS API Definition Object",]
 aliases:
+  - /getting-started/key-concepts/openapi-specification
   - /tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc
   - /getting-started/key-concepts/openapi-specification
   - /getting-started/key-concepts/oas-api-definitions
@@ -786,7 +787,7 @@ A file (usually in JSON or YAML format) containing an OpenAPI Description. There
 
 #### Tyk OAS API definition
 
-An API definition that combines an OpenAPI Description with the Tyk vendor fields (`x-tyk-api-gateway`) that provide the instructions on how Tyk should be configured to resolve calls made to the API that is described in the OAS part. The structure of the Tyk OAS API definition is documented [here]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}).
+An API definition that combines an OpenAPI Description with the Tyk vendor fields (`x-tyk-api-gateway`) that provide the instructions on how Tyk should be configured to resolve calls made to the API that is described in the OAS part. The structure of the Tyk OAS API definition is documented [here]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}}).
 
 #### Tyk Classic API definition
 
