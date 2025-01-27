@@ -1259,7 +1259,7 @@ docker rmi plugin_compiler_image_name_or_id
 ## Backup APIs and Policies 
 
 Backing up Tyk APIs and Policies is crucial for ensuring business continuity and data integrity. It safeguards against accidental data loss, system failures or corruption. This provides the opportunity to rollback to a stable state during upgrades or migrations, allowing you to restore configurations to a previous state to prevent disruptions with your API infrastructure.
-If you are using Self Managed deployment then we recommend that you use [Tyk Sync]({{< ref "/api-management/automations#synchronize-tyk-environment-with-github-repository" >}}) to backup your Tyk APIs and policies. 
+If you are using Self Managed deployment then we recommend that you use [Tyk Sync]({{< ref "api-management/automations/sync" >}}) to backup your Tyk APIs and policies. 
 
 ### Export And Restore APIs and Policies
 

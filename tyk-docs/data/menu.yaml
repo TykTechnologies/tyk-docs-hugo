@@ -151,10 +151,29 @@ menu:
         path: /api-management/upstream-authentication
         category: Page
         show: False
-      - title: "Automations"
-        path: /api-management/automations
+      - title: "Automations Tools"
+        category: Directory
+        show: True
+<<<<<<< HEAD
+=======
+        menu:
+          - title: "Overview"
+            path: /api-management/automations
+            category: Page
+            show: True
+          - title: "API Management in Kubernetes"
+            path: /api-management/automations/operator
+            category: Page
+            show: True
+          - title: "Synchronizing Tyk Configuraiton"
+            path: /api-management/automations/sync
+            category: Page
+            show: True
+      - title: "API Versioning"
+        path: /api-management/api-versioning
         category: Page
         show: True
+>>>>>>> 05e0e147b... Restructure Automations Page (#5921)
       - title: "Troubleshooting"
         path: /api-management/troubleshooting-debugging
         category: Page
