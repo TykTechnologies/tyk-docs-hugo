@@ -7,7 +7,7 @@ tags: ["do-not-track", "endpoint tracking", "analytics", "transaction logging", 
 
 The [Do-Not-Track]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-middleware" >}}) middleware provides the facility to disable generation of transaction records (which are used to track requests to your APIs). When working with Tyk OAS APIs, you can currently disable tracking only at the endpoint-level.
 
-When working with Tyk OAS APIs the middleware is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}) either manually within the `.json` file or from the API Designer in the Tyk Dashboard.
+When working with Tyk OAS APIs the middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}) either manually within the `.json` file or from the API Designer in the Tyk Dashboard.
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-classic" >}}) page.
 

@@ -65,7 +65,7 @@ Because introspection control in Tyk works on Policy and Key level, it means you
 {{< tab_end >}}
 {{< tab_start "Tyk APIs" >}}
 
-First, you need to learn [how to create a security policy with Tyk API]({{< ref "getting-started/create-security-policy" >}}) or [how to create an API Key with Tyk API]({{< ref "/basic-config-and-security/security/key-level-security" >}}).
+First, you need to learn [how to create a security policy with Tyk API]({{< ref "getting-started/create-security-policy" >}}) or [how to create an API Key with Tyk API]({{< ref "/api-management/policies#access-key-level-security" >}}).
 
 Once you learn how to utilize the API to create a security policy or a key, you can use the following snippet: 
 

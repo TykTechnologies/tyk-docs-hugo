@@ -24,7 +24,7 @@ The user journey is as follow:
 ### Requirements
 
 - A Gluu installation, more details [here](https://gluu.org/get-started/).
-- A [Tyk Self Managed installation]({{< ref "tyk-self-managed/install" >}}) (Gateway + Dashboard).
+- A [Tyk Self Managed installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) (Gateway + Dashboard).
 
 ### Getting started with Gluu
 
