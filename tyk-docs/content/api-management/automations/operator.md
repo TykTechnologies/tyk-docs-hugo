@@ -1,56 +1,57 @@
 ---
-title: "Tyk Automations Tools"
+title: "Tyk Operator - API Management in Kubernetes"
 date: 2025-01-10
 tags: ["Tyk API Management", "Tyk Sync", "Tyk Operator", "Github", "Kubernetes", "Automations"]
-description: Tyk Tools that help with automating deployment and API Management operations
+description: Kubernetes native API management using Tyk Operator
 keywords: ["Tyk API Management", "Tyk Sync", "Tyk Operator", "Github", "Kubernetes", "Automations"]
 aliases:
+  - /getting-started/key-concepts/gitops-with-tyk
+  - /product-stack/tyk-operator/advanced-configurations/api-categories
+  - /product-stack/tyk-operator/advanced-configurations/api-versioning
+  - /product-stack/tyk-operator/advanced-configurations/client-authentication
+  - /product-stack/tyk-operator/advanced-configurations/internal-looping
+  - /product-stack/tyk-operator/advanced-configurations/management-of-api
+  - /product-stack/tyk-operator/advanced-configurations/tls-certificate
+  - /product-stack/tyk-operator/getting-started/create-an-api-overview
+  - /product-stack/tyk-operator/getting-started/create-an-oas-api
+  - /product-stack/tyk-operator/getting-started/example-tyk-oas-api
+  - /product-stack/tyk-operator/getting-started/quick-start-graphql
+  - /product-stack/tyk-operator/getting-started/quick-start-http
+  - /product-stack/tyk-operator/getting-started/quick-start-tcp
+  - /product-stack/tyk-operator/getting-started/quick-start-udg
+  - /product-stack/tyk-operator/getting-started/secure-an-api-overview
+  - /product-stack/tyk-operator/getting-started/secure-an-oas-api
+  - /product-stack/tyk-operator/getting-started/security-policy-example
+  - /product-stack/tyk-operator/getting-started/tyk-operator-api-ownership
+  - /product-stack/tyk-operator/getting-started/tyk-operator-multiple-organisations
+  - /product-stack/tyk-operator/key-concepts/custom-resources
+  - /product-stack/tyk-operator/key-concepts/key-concepts
+  - /product-stack/tyk-operator/key-concepts/operator-context
+  - /product-stack/tyk-operator/key-concepts/operator-user
+  - /product-stack/tyk-operator/reference/api-definition
+  - /product-stack/tyk-operator/reference/security-policy
+  - /product-stack/tyk-operator/reference/tyk-oas-api-definition
+  - /product-stack/tyk-operator/reference/version-compatibility
+  - /product-stack/tyk-operator/troubleshooting/tyk-operator-changes-not-applied
+  - /product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting
+  - /product-stack/tyk-operator/tyk-ingress-controller
+  - /tyk-operator
+  - /tyk-stack/tyk-operator/access-an-api
+  - /tyk-stack/tyk-operator/create-an-api
+  - /tyk-stack/tyk-operator/getting-started-tyk-operator
+  - /tyk-stack/tyk-operator/installing-tyk-operator
+  - /tyk-stack/tyk-operator/migration
+  - /tyk-stack/tyk-operator/publish-an-api
+  - /tyk-stack/tyk-operator/secure-an-api
+  - /tyk-stack/tyk-operator/tyk-operator-reconciliation
 ---
 
 ## Introduction
 
-Managing APIs across multiple environments can quickly become complex. Updating and overseeing multiple configurations, security policies, and deployments requires a significant amount of effort without the right tools. Tyk’s suite of automation tools simplifies this process by enabling automated control over API management tasks, helping teams ensure reliability, reduce manual errors, and maintain consistency across deployments.
-
-In this page, we’ll walk through the primary tools for automating API management with Tyk, including:
-
-* **Tyk Operator for Kubernetes**: Automate API deployments within Kubernetes environments.
-* **Tyk Sync**: Sync configurations across environments for consistent API management.
-
-## Prerequisites
-
-Before diving into lifecycle automations with Tyk, ensure you have the following:
-
-- **A Tyk installation** (Self-Managed or Cloud)
-  - If you don't have Tyk installed, follow our [installation guide]({{<ref "tyk-self-managed#installation-options-for-tyk-self-managed">}})
-  - For Tyk Cloud, sign up [here](https://tyk.io/sign-up/)
-  - Tyk Operator license key. Starting from Tyk Operator v1.0, a valid license key is required.
-
-- **Access to a Kubernetes cluster v1.19+** (for Tyk Operator sections)
-  - If you're new to Kubernetes, check out the official [Kubernetes documentation](https://kubernetes.io/docs/setup/)
-
-- **Helm 3+** (for installing Tyk Operator)
-  - If you don't have Helm installed, follow the [official Helm installation guide](https://helm.sh/docs/intro/install/)
-  - Verify your installation by running `helm version` in your terminal
-
-- **Tyk Dashboard v3+ access** (for Tyk Sync setup)
-  - Learn how to set up the Tyk Dashboard [here]({{<ref "tyk-dashboard">}})
-
-- **Basic knowledge of Kubernetes, YAML, and API concepts** (important for Tyk Operator and Tyk Sync)
-  - For Kubernetes, visit the [official tutorials](https://kubernetes.io/docs/tutorials/)
-  - For YAML, check out this [YAML tutorial](https://yaml.org/spec/1.2/spec.html)
-  - For API concepts, review our [API management basics]({{<ref "getting-started/key-concepts">}})
-
-If you're missing any of these prerequisites, please follow the provided links to set up the necessary components before proceeding with the lifecycle automation steps.
-
-## Automation Tools
-
-<<<<<<< HEAD
-## Automate API Management in Kubernetes Environments
-
 Using Tyk Operator within Kubernetes allows you to manage API lifecycles declaratively. This section provides instructions for setting up and configuring the Tyk Operator to automate API creation, updates, and security in Kubernetes clusters, ensuring your APIs align with Kubernetes management practices.
 
 
-### What is Tyk Operator?
+## What is Tyk Operator?
 If you’re using Kubernetes, or if you’re building an API that operates within a Kubernetes environment, the Tyk Operator is a powerful tool for automating the API lifecycle.
 
 Tyk Operator is a native Kubernetes operator, allowing you to define and manage APIs as code. This means you can deploy, update, and secure APIs using the same declarative configuration approach Kubernetes uses for other application components. 
@@ -58,9 +59,9 @@ Tyk Operator is a native Kubernetes operator, allowing you to define and manage 
 {{< img src="/img/operator/tyk-operator.svg" alt="Tyk Operator" width="600" >}}
 
 
-### Key Concepts
+## Key Concepts
 
-#### GitOps With Tyk
+### GitOps With Tyk
 With Tyk Operator, you can configure your APIs using Kubernetes native manifest files. You can use the manifest files in a GitOps workflow as the single source of truth for API deployment.
 
 {{< note success >}}
@@ -69,10 +70,10 @@ With Tyk Operator, you can configure your APIs using Kubernetes native manifest 
 If you use Tyk Operator to manage your APIs, you should set up RBAC such that human users cannot have the "write" permission on the API definition endpoints using Tyk Dashboard. 
 {{< /note >}}
 
-##### What is GitOps?
+#### What is GitOps?
 “GitOps” refers to the operating model of using Git as the “single source of truth” to drive continuous delivery for infrastructure and software through automated CI/CD workflow.
 
-##### Tyk Operator in your GitOps workflow
+#### Tyk Operator in your GitOps workflow
 You can install Argo CD, Flux CD or the GitOps tool of your choice in a cluster, and connect it to the Git repository where you version control your API manifests. The tool can synchronise changes from Git to your cluster. The API manifest updates in cluster would be detected by Tyk Operator, which has a Kubernetes controller to automatically reconcile the API configurations on your Tyk Gateway or Tyk Dashboard. 
 
 **Kubernetes-Native Developer Experience** 
@@ -81,14 +82,14 @@ API Developers enjoy a smoother Continuous Integration process as they can devel
 **Reliability** 
 With declarative API configurations, you have a single source of truth to recover after any system failures, reducing the meantime to recovery from hours to minutes.
 
-##### Single Source of Truth for API Configurations
+#### Single Source of Truth for API Configurations
 Tyk Operator will reconcile any divergence between the Kubernetes desired state and the actual state in [Tyk Gateway]({{<ref "tyk-oss-gateway">}}) or [Tyk Dashboard]({{<ref "tyk-dashboard">}}). Therefore, you should maintain the API definition manifests in Kubernetes as the single source of truth for your system. If you update your API configurations using Tyk Dashboard, those changes would be reverted by Tyk Operator eventually.
 
 To learn more about Gitops with Tyk, refer the following blog posts:
 - [GitOps-enabled API management in Kubernetes](https://tyk.io/blog/gitops-enabled-api-management-in-kubernetes/)
 - [A practical guide using Tyk Operator, ArgoCD, and Kustomize](https://tyk.io/blog/a-practical-guide-using-tyk-operator-argocd-and-kustomize/)
 
-#### Custom Resources in Tyk
+### Custom Resources in Tyk
 
 In Kubernetes, a [Custom Resource (CR)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) is an extension of the Kubernetes API that allows you to introduce custom objects in your cluster. Custom Resources enable you to define and manage custom configurations and settings specific to your applications, making Kubernetes highly extensible. These custom objects are defined using Custom Resource Definitions (CRDs), which specify the schema and structure of the resource.
 
@@ -104,7 +105,7 @@ Tyk Operator manages multiple custom resources to help users create and maintain
 
 These custom resources enable users to leverage Kubernetes' declarative configuration management to define, modify, and version their APIs, seamlessly integrating with other Kubernetes-based workflows and tools.
 
-##### Custom Resources for API and Policy Configuration
+#### Custom Resources for API and Policy Configuration
 
 The following custom resources can be used to configure APIs and policies at [Tyk Gateway]({{<ref "tyk-oss-gateway">}}) or [Tyk Dashboard]({{<ref "tyk-dashboard">}}).
 
@@ -118,7 +119,7 @@ The following custom resources can be used to configure APIs and policies at [Ty
 | SuperGraph         | tyk.tyk.io  | v1alpha1  | Defines a [GraphQL federation supergraph]({{<ref "getting-started/key-concepts/graphql-federation#subgraphs-and-supergraphs">}}).                                        |
 | OperatorContext    | tyk.tyk.io  | v1alpha1  | Manages the context in which the Tyk Operator operates, affecting its overall behavior and environment. See [Operator Context]({{< ref "#multi-tenancy-in-tyk" >}}) for details. |
 
-##### Tyk Classic Developer Portal
+#### Tyk Classic Developer Portal
 
 The following custom resources can be used to configure [Tyk Classic Developer Portal]({{<ref "tyk-developer-portal/tyk-portal-classic">}}).
 
@@ -129,18 +130,18 @@ The following custom resources can be used to configure [Tyk Classic Developer P
 | PortalConfig       | tyk.tyk.io  | v1alpha1  | Configures [Portal Configuration]({{<ref "tyk-apis/tyk-portal-api/portal-configuration">}}). |
 
 
-#### Reconcilation With Tyk Operator 
-##### Controllers & Operators
+### Reconcilation With Tyk Operator 
+#### Controllers & Operators
 In Kubernetes, [controllers](https://kubernetes.io/docs/concepts/architecture/controller/) watch one or more Kubernetes resources, which can be built-in types like *Deployments* or custom resources like *ApiDefinition* - in this case, we refer to Controller as Operator. The purpose of a controller is to match the desired state by using Kubernetes APIs and external APIs.
 
 > A [Kubernetes operator](https://www.redhat.com/en/topics/containers/what-is-a-kubernetes-operator) is an application-specific controller that extends the functionality of the Kubernetes API to create, configure, and manage instances of complex applications on behalf of a Kubernetes user.
 
-##### Desired State vs Observed State
+#### Desired State vs Observed State
 Let’s start with the *Desired State*. It is defined through Kubernetes Manifests, most likely YAML or JSON, to describe what you want your system to be in. Controllers will watch the resources and try to match the actual state (the observed state) with the desired state for Kubernetes Objects. For example, you may want to create a Deployment that is intended to run three replicas. So, you can define this desired state in the manifests, and Controllers will perform necessary operations to make it happen.
 
 How about *Observed State*? Although the details of the observed state may change controller by controller, usually controllers update the status field of Kubernetes objects to store the observed state. For example, in Tyk Operator, we update the status to include *api_id*, so that Tyk Operator can understand that the object was successfully created on Tyk.
 
-##### Reconciliation
+#### Reconciliation
 Reconciliation is a special design paradigm used in Kubernetes controllers. Tyk Operator also uses the same paradigm, which is responsible for keeping our Kubernetes objects in sync with the underlying external APIs - which is Tyk in our case. 
 
 **When would reconciliation happen?**
@@ -164,14 +165,14 @@ Tyk Operator will compare desired state of the Kubernetes object with the observ
 If human operators or any other system delete or modify API Definition from Tyk Gateway or Dashboard, Tyk Operator will restore the desired state back to Tyk during reconciliation. This is called Drift Detection. It can protect your systems from unauthorized or accidental modifications. It is a best practice to limit user access rights on production environment to read-only in order to prevent accidental updates through API Manager directly.
 
 
-#### CRD Versioning
+### CRD Versioning
 
 Tyk follows standard practices for naming and versioning custom resources as outlined by the Kubernetes Custom Resource Definition [versioning guidelines](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/). Although we are currently on the `v1alpha1` version, no breaking changes will be introduced to existing Custom Resources without a version bump. This means that any significant changes or updates that could impact existing resources will result in a new version (e.g., `v1beta1` or `v1`) and Operator will continue supporting all CRD versions for a reasonable time before deprecating an older version. This ensures a smooth transition and compatibility, allowing you to upgrade without disrupting your current configurations and workflows.
 
 For more details on Kubernetes CRD versioning practices, refer to the Kubernetes Custom Resource Definition [Versioning documentation](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/).
 
 
-#### Operator User
+### Operator User
 Tyk Operator is a Kubernetes Controller that manages Tyk Custom Resources (CRs) such as API Definitions and Security Policies. Developers define these resources as [Custom Resource (CRs)]({{< ref "#custom-resources-in-tyk" >}}), and Tyk Operator ensures that the desired state is reconciled with the Tyk Gateway or Dashboard. This involves creating, updating, or deleting API configurations until the target state matches the desired state.
 
 For the Tyk Dashboard, Tyk Operator functions as a system user, bound by Organization and RBAC rules.
@@ -188,7 +189,7 @@ During start up, Tyk Operator looks for these keys from `tyk-operator-conf` secr
 These would be the default credentials Tyk Operator uses to connect to Tyk.
 
 
-#### Multi-tenancy in Tyk
+### Multi-tenancy in Tyk
 
 Tyk Dashboard is multi-tenant capable, which means you can use a single Tyk Dashboard instance to host separate [organizations]({{< ref "basic-config-and-security/security/dashboard/organisations">}}) for each team or department. Each organization is a completely isolated unit with its own:
 
@@ -203,7 +204,7 @@ This structure is ideal for businesses with a complex hierarchy, where distinct 
 
 {{< img src="/img/operator/tyk-organisations.svg" alt="Multi-tenancy in Tyk Dashboard" width="600" >}}
 
-##### Define OperatorContext for Multi-Tenant API Management
+#### Define OperatorContext for Multi-Tenant API Management
 
 The `OperatorContext` in Tyk Operator allows you to create isolated management environments by defining specific access parameters for different teams or departments within a shared Tyk Operator instance. It helps you specify:
 
@@ -214,7 +215,7 @@ The `OperatorContext` in Tyk Operator allows you to create isolated management e
 
 By setting different `OperatorContext` configurations, you can define unique access and management contexts for different teams. These contexts can then be referenced directly in your `ApiDefinition`, `TykOasApiDefinition`, `TykStreamsApiDefinition` or `SecurityPolicy` custom resource definitions (CRDs) using the `contextRef` field, enabling precise control over API configurations.
 
-##### Example Scenarios Using OperatorContext
+#### Example Scenarios Using OperatorContext
 
 1. **No OperatorContext Defined**
    - If no `OperatorContext` is defined, Tyk Operator defaults to using credentials from the `tyk-operator-conf` secret or from environment variables. This means all API management actions are performed under the system’s default user credentials, with no specific contextual isolation.
@@ -229,18 +230,18 @@ Using `OperatorContext` offers flexibility for multi-tenancy, helping organizati
 
 {{< img src="/img/operator/tyk-operator-context.svg" alt="Multi-tenancy in Kubernetes Tyk Operator" width="600" >}}
 
-#### TLS Certificates
+### TLS Certificates
 
 Tyk Operator is designed to offer a seamless Kubernetes-native experience by managing TLS certificates stored within Kubernetes for your API needs. Traditionally, to use a certificate (e.g., as a client certificate, domain certificate, or certificate for accessing an upstream service), you would need to manually upload the certificate to Tyk and then reference it using a 'Certificate ID' in your API definitions. This process can become cumbersome, especially in a Kubernetes environment where certificates are often managed as secrets and may rotate frequently.
 
 To address this challenge, Tyk Operator allows you to directly reference certificates stored as Kubernetes secrets within your custom resource definitions (CRDs). This reduces operational overhead, minimizes the risk of API downtime due to certificate mismatches, and provides a more intuitive experience for API developers.
 
-##### Benefits of Managing Certificates with Tyk Operator
+#### Benefits of Managing Certificates with Tyk Operator
 - **Reduced operational overhead**: Automates the process of updating certificates when they rotate.
 - **Minimized risk of API downtime**: Ensures that APIs continue to function smoothly, even when certificates are updated.
 - **Improved developer experience**: Removes the need for API developers to manage certificate IDs manually.
 
-##### Examples
+#### Examples
 
 | Certificate Type | Supported in ApiDefinition | Supported in TykOasApiDefinition | Supported in TykStreamsApiDefinition |
 |------------------|-------------|---------|---------|
@@ -250,7 +251,7 @@ To address this challenge, Tyk Operator allows you to directly reference certifi
 | Upstream mTLS | ✅ [Upstream mTLS via Operator]({{<ref "api-management/client-authentication#via-tyk-operator-using-the-tyk-classic-api-definition">}}) | ✅ [Upstream mTLS via Operator]({{<ref "api-management/client-authentication#tyk-operator-oas">}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
 
 
-### Install and Configure Tyk Operator
+## Install and Configure Tyk Operator
 
 We assume you have already installed Tyk. If you don’t have it, check out [Tyk
 Cloud]({{<ref "tyk-cloud#quick-start-tyk-cloud">}}) or [Tyk Self
@@ -266,7 +267,7 @@ Policies, and Portal. It is the recommended practice to turn off write access fo
 [Using Tyk Operator to enable GitOps with Tyk]({{< ref "api-management/automations" >}}) about
 maintaining a single source of truth for your API configurations.
 
-#### Install cert-manager
+### Install cert-manager
 
 Tyk Operator uses cert-manager to provision certificates for the webhook server. If you don't have cert-manager
 installed, you can follow this command to install it:
@@ -282,7 +283,7 @@ of cert-manager by checking [supported releases page](https://cert-manager.io/do
 
 Please wait for the cert-manager to become available before continuing with the next step.
 
-#### Option 1: Install Tyk Operator via Tyk's Umbrella Helm Charts
+### Option 1: Install Tyk Operator via Tyk's Umbrella Helm Charts
 
 If you are using [Tyk Stack]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}), [Tyk Control
 Plane]({{<ref "product-stack/tyk-charts/tyk-control-plane-chart">}}), or [Tyk Open
@@ -296,11 +297,11 @@ key via a Kubernetes secret using `global.secrets.useSecretName` field. The secr
 
 Note: If you are using `global.secrets.useSecretName`, you must configure the operator license in the referenced Kubernetes secret. `global.license.operator` will not be used in this case.
 
-#### Option 2: Install Tyk Operator via stand-alone Helm Chart
+### Option 2: Install Tyk Operator via stand-alone Helm Chart
 
 If you prefer to install Tyk Operator separately, follow this section to install Tyk Operator using Helm.
 
-##### Configure Tyk Operator via environment variable or tyk-operator-conf secret
+#### Configure Tyk Operator via environment variable or tyk-operator-conf secret
 
 Tyk Operator configurations can be set using `envVars` field of helm chart. See the table below for a list of expected
 environment variable names and example values.
@@ -410,7 +411,7 @@ APIs. By default, Tyk Operator looks for the value `tyk` in Ingress resources `k
 and will ignore all other ingress classes. If you want to override this default behavior, you may do so by setting
 [WATCH_INGRESS_CLASS]({{< ref "#configure-tyk-operator-via-environment-variable-or-tyk-operator-conf-secret" >}}) through `tyk-operator-conf` or the environment variable.
 
-##### Install Tyk Operator and Custom Resource Definitions (CRDs)
+#### Install Tyk Operator and Custom Resource Definitions (CRDs)
 
 You can install CRDs and Tyk Operator using the stand-alone Helm Chart by running the following command:
 
@@ -459,9 +460,9 @@ in `tyk-operator-system` namespace.
 | serviceMonitor                              | bool   | `false`                                |
 | webhookPort                                 | int    | `9443`                                 |
 
-#### Upgrading Tyk Operator
+### Upgrading Tyk Operator
 
-##### Upgrading from v0.x to v1.0+
+#### Upgrading from v0.x to v1.0+
 
 Starting from Tyk Operator v1.0, a valid license key is required for the Tyk Operator to function. If Tyk Operator is
 upgraded from v0.x versions to one of v1.0+ versions, Tyk Operator needs a valid license key that needs to be provided
@@ -480,7 +481,7 @@ To configure the license key:
 
 After updating the Kubernetes secret with this field, proceed with the standard upgrade process outlined below.
 
-##### Upgrading Tyk Operator and CRDs
+#### Upgrading Tyk Operator and CRDs
 
 You can upgrade Tyk Operator through Helm Chart by running the following command:
 
@@ -502,7 +503,7 @@ the Custom Resource Definitions (CRDs) belong. For example, to install CRDs comp
  {{< /note >}}
 
 
-#### Uninstalling Tyk Operator
+### Uninstalling Tyk Operator
 
 To uninstall Tyk Operator, you need to run the following command:
 
@@ -510,11 +511,11 @@ To uninstall Tyk Operator, you need to run the following command:
 $ helm delete tyk-operator -n tyk-operator-system
 ```
 
-### Set Up OAS API
+## Set Up OAS API
 Setting up OpenAPI Specification (OAS) APIs with Tyk involves preparing an OAS-compliant API definition and configuring it within your Kubernetes cluster using Tyk Operator. This process allows you to streamline API management by storing the OAS definition in a Kubernetes ConfigMap and linking it to Tyk Gateway through a TykOasApiDefinition resource. 
 
-#### Create your OAS API
-##### Prepare the Tyk OAS API Definition
+### Create your OAS API
+#### Prepare the Tyk OAS API Definition
 First, you need to have a complete Tyk OAS API definition file ready. This file will contain all the necessary configuration details for your API in OpenAPI Specification (OAS) format.
 
 Here is an example of what the Tyk OAS API definition might look like. Note that Tyk extension `x-tyk-api-gateway` section should be present.
@@ -561,7 +562,7 @@ You can create and configure your API easily using Tyk Dashboard in a developer 
 4. This will display the raw OAS API definition of your API, which you can then copy and save locally.
 {{< /note >}}
 
-##### Create a ConfigMap for the Tyk OAS API Definition
+#### Create a ConfigMap for the Tyk OAS API Definition
 
 You need to create a [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/#configmap-object) in Kubernetes to store your Tyk OAS API definition. The Tyk Operator will reference this ConfigMap to retrieve the API configuration.
 
@@ -585,7 +586,7 @@ There is inherent size limit to a ConfigMap. The data stored in a ConfigMap cann
 If you prefer to create ConfigMap with a manifest using `kubectl apply` command, you may get an error that the annotation metadata cannot exceed 256KB. It is because by using `kubectl apply`, `kubectl` automatically saves the whole configuration in the annotation [kubectl.kubernetes.io/last-applied-configuration](https://kubernetes.io/docs/reference/labels-annotations-taints/#kubectl-kubernetes-io-last-applied-configuration) for tracking changes. Your OAS API Definition may easily exceed the size limit of annotations (256KB). Therefore, `kubectl create` is used here to get around the problem.
 {{< /note >}}
 
-##### Create a TykOasApiDefinition Custom Resource
+#### Create a TykOasApiDefinition Custom Resource
 
 Now, create a `TykOasApiDefinition` resource to tell the Tyk Operator to use the OAS API definition stored in the ConfigMap.
 
@@ -604,7 +605,7 @@ spec:
       keyName: oas-api-definition.json # Key for retrieving OAS API Definition from the ConfigMap
 ```
 
-##### Apply the TykOasApiDefinition Manifest
+#### Apply the TykOasApiDefinition Manifest
 
 Use `kubectl` to apply the `TykOasApiDefinition` manifest to your cluster:
 
@@ -614,7 +615,7 @@ kubectl apply -f tyk-oas-api-definition.yaml
 
 This command creates a new `TykOasApiDefinition` resource in your cluster. The Tyk Operator will watch for this resource and configures Tyk Gateway or Tyk Dashboard with a new API using the provided OAS API definition.
 
-##### Verify the Tyk OAS API Creation
+#### Verify the Tyk OAS API Creation
 
 To verify that the API has been successfully created, check the status of the TykOasApiDefinition resource:
 
@@ -629,7 +630,7 @@ NAME       DOMAIN   LISTENPATH   PROXY.TARGETURL                  ENABLED   SYNC
 petstore            /petstore/   https://petstore.swagger.io/v2   true      Successful
 ```
 
-##### Test the Tyk OAS API
+#### Test the Tyk OAS API
 After the Tyk OAS API has been successfully created, you can test it by sending a request to the API endpoint defined in your OAS file.
 
 For example, if your API endpoint is `/store/inventory"`, you can use `curl` or any API client to test it:
@@ -640,7 +641,7 @@ curl "TYK_GATEWAY_URL/petstore/store/inventory"
 
 Replace TYK_GATEWAY_URL with a URL of Tyk Gateway.
 
-##### Manage and Update the Tyk OAS API
+#### Manage and Update the Tyk OAS API
 To make any changes to your API configuration, update the OAS file in your ConfigMap and then re-apply the ConfigMap using `kubectl replace`:
 
 ```sh
@@ -655,7 +656,7 @@ The Tyk Operator will automatically detect the change and update the API in the 
 `kubectl replace` without `--save-config` option is used here instead of `kubectl apply` because we do not want to save the OAS API definition in its annotation. If you want to enable `--save-config` option or use `kubectl apply`, the OAS API definition size would be further limited to at most 262144 bytes.
 {{< /note >}}
 
-##### OAS API Example
+#### OAS API Example
 This example shows the minimum resources and fields required to define a Tyk OAS API using Tyk Operator. 
 
 ```yaml{hl_lines=["7-7", "41-44"],linenos=true}
@@ -711,8 +712,8 @@ To apply it, simply save the manifest into a file (e.g., `tyk-oas-api.yaml`) and
 
 
 
-#### Secure your OAS API
-##### Update your Tyk OAS API Definition
+### Secure your OAS API
+#### Update your Tyk OAS API Definition
 
 First, you'll modify your existing Tyk OAS API Definition to include the API key authentication configuration.
 
@@ -780,7 +781,7 @@ You can configure your API for any Tyk supported authentication method by follow
 
 Save your updated API definition in the same file, `oas-api-definition.json`.
 
-##### Update the ConfigMap with the new Tyk OAS API Definition
+#### Update the ConfigMap with the new Tyk OAS API Definition
 
 Update the existing ConfigMap that contains your Tyk OAS API Definition with the following command:
 
@@ -807,7 +808,7 @@ spec:
 
 Any changes in the ConfigMap would be detected by Tyk Operator. Tyk Operator will then automatically reconcile the changes and update the API configuration at Tyk.
 
-##### Verify the changes
+#### Verify the changes
 
 Verify that the `TykOasApiDefinition` has been updated successfully:
 
@@ -826,7 +827,7 @@ status:
 
 The **Successful** status shows that Tyk Operator has reconciled the API with Tyk successfully. The last update time is shown in the `time` field.
 
-##### Test the API Endpoint
+#### Test the API Endpoint
 Now, test your API endpoint to confirm that it requires an API key.
 
 For example, if your API endpoint is `/store/inventory"`, you can use `curl` or any API client to test it:
@@ -839,12 +840,12 @@ Replace TYK_GATEWAY_URL with a URL of Tyk Gateway.
 
 Request should fail with a `401 Unauthorized` response now as an API key is required for access. Your API has been secured by Tyk Gateway.
 
-### Set Up Tyk Classic API
+## Set Up Tyk Classic API
 
-#### Create a Tyk Classic API
+### Create a Tyk Classic API
 First, specify the details of your API using the [ApiDefinition CRD]({{< ref "#apidefinition-crd" >}}), then deploy it to create the corresponding Kubernetes resource. Tyk Operator will take control of the CRD and create the actual API in the Tyk data plane.
 
-##### Create an ApiDefinition resource in YAML format
+#### Create an ApiDefinition resource in YAML format
 Create a file called `httpbin.yaml`, then add the following:
 
 ```yaml
@@ -870,7 +871,7 @@ You can also use other sample files from the following pages:
 - [GraphQL Proxy example]({{< ref "#set-up-manifest-for-graphql" >}})
 - [UDG example]({{< ref "#set-up-manifest-for-udg" >}})
 
-##### Deploy the ApiDefinition resource
+#### Deploy the ApiDefinition resource
 We are going to create an ApiDefinition from the httpbin.yaml file, by running the  following command:
 
 ```console
@@ -923,13 +924,13 @@ $ curl -i localhost:8080/httpbin/get
 }
 ```
 
-##### Understanding the ApiDefinition CRD
+#### Understanding the ApiDefinition CRD
 
 We have an ApiDefinition called `httpbin`, as specified in `spec.name` field, which listens to path `/httpbin` and proxies requests to [http://httpbin.org](http://httpbin.org), as specified under `spec.proxy` field. Now, any requests coming to the `/httpbin` endpoint will be proxied to the target URL that we defined in `spec.proxy.target_url`, which is [http://httpbin.org](http://httpbin.org) in our example.
 
 You can visit the [ApiDefinition CRD]({{< ref "#apidefinition-crd" >}}) page to see all the latest API Definitions fields and features we support.
 
-##### Configure Kubernetes service as an upstream target
+#### Configure Kubernetes service as an upstream target
 
 Tyk Gateway deployed in your Kubernetes cluster can easily access other Kubernetes services as an upstream proxy target.
 In the ApiDefinition manifest, set the `proxy.target_url` as a Kubernetes Service following [DNS for Services and Pods guideline](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/), so that the requests will be proxied to your service.
@@ -1031,8 +1032,8 @@ curl -sS http://localhost:8080/httpbin/headers
 
 As you can see from the response, the host that your request should be proxied to is `httpbin.default.svc:8000`.
 
-#### Secure your Classic API
-##### Update your API to Require a Key
+### Secure your Classic API
+#### Update your API to Require a Key
 
 You might already have realized that our `httpbin` API is keyless. If you check the APIDefinition's specification, the `use_keyless` field is set to `true`.
 Tyk keyless access represents completely open access for your API and causes Tyk to bypass any session-based middleware (middleware that requires access to token-related metadata). Keyless access will enable all requests through.
@@ -1108,7 +1109,7 @@ Tyk Operator supported authentication types are listed in the [API Definition fe
 
 {{< /note >}}
 
-##### Create an API key
+#### Create an API key
 
 You need to generate a key to access the `httpbin` API now. Follow [this guide](https://tyk.io/docs/getting-started/create-api-key/) to see how to create an API key for your installation. 
 
@@ -1161,10 +1162,10 @@ curl -H "Authorization: Bearer {Key ID}" localhost:8080/httpbin/get
 Since you have provided a valid key along with your request, you do not get a `HTTP 401 Unauthorized` response.
 
 
-#### Set Up Tyk Classic API Authentication
+### Set Up Tyk Classic API Authentication
 Client to Gateway Authentication in Tyk ensures secure communication between clients and the Tyk Gateway. Tyk supports various authentication methods to authenticate and authorize clients before they can access your APIs. These methods include API keys, Static Bearer Tokens, JWT, mTLS, Basic Authentication, and more. This document provides example manifests for each authentication method supported by Tyk.
 
-##### Keyless (Open)
+#### Keyless (Open)
 
 This configuration allows [keyless (open)]({{< ref "api-management/client-authentication#open-no-authentication">}}) access to the API without any authentication.
 
@@ -1184,7 +1185,7 @@ spec:
     strip_listen_path: true
 ```
 
-##### Auth Token (Bearer Token)
+#### Auth Token (Bearer Token)
 
 This setup requires a [bearer token]({{< ref "api-management/client-authentication#use-auth-tokens">}}) for access.
 
@@ -1235,7 +1236,7 @@ spec:
         error_code: 0
 ```
 
-##### JWT
+#### JWT
 
 This configuration uses [JWT tokens]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt">}}) for authentication.
 
@@ -1326,7 +1327,7 @@ curl http://localhost:8080/httpbin-jwt1/get -H 'Authorization: Bearer eyJhbGciOi
 }
 ```
 
-##### Basic Authentication
+#### Basic Authentication
 
 This configuration uses [Basic Authentication]({{< ref "api-management/client-authentication#use-basic-authentication">}}), requiring a username and password for access.
 
@@ -1346,7 +1347,7 @@ spec:
   use_basic_auth: true
 ```
 
-##### Custom Plugin Auth (go)
+#### Custom Plugin Auth (go)
 
 This configuration uses a [Golang plugin]({{<ref "plugins/supported-languages/golang">}}) for custom authentication. The following example shows how to create an API definition with a Golang custom plugin for `httpbin-go-auth`.
 
@@ -1376,7 +1377,7 @@ spec:
         path: "/mnt/tyk-gateway/example-go-plugin.so"
 ```
 
-##### Custom Plugin Auth (gRPC)
+#### Custom Plugin Auth (gRPC)
 
 This configuration uses a [gRPC plugin]({{<ref "plugins/supported-languages/golang">}}) for custom authentication. The following example shows how to create an API definition with a gRPC custom plugin for `httpbin-grpc-auth`.
 
@@ -1411,7 +1412,7 @@ spec:
         header_name: Authorization
 ```
 
-##### Multiple (Chained) Auth
+#### Multiple (Chained) Auth
 
 This setup allows for [multiple authentication]({{< ref "api-management/client-authentication#combine-authentication-methods">}}) methods to be chained together, requiring clients to pass through each specified authentication provider.
 
@@ -1443,7 +1444,7 @@ spec:
   use_mutual_tls_auth: true
 ```
 
-##### IP Allowlist
+#### IP Allowlist
 
 To enable [IP Allowlist]({{<ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting">}}), set the following fields:
 
@@ -1471,7 +1472,7 @@ spec:
     strip_listen_path: true
 ```
 
-##### IP Blocklist
+#### IP Blocklist
 
 To enable [IP Blocklist]({{<ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting">}}), set the following fields:
 
@@ -1500,7 +1501,7 @@ spec:
 ```
 
 
-#### Set Up Manifest for GraphQL
+### Set Up Manifest for GraphQL
 In the example below we can see that the configuration is contained within the `graphql` configuration object. A GraphQL schema is specified within the `schema` field and the execution mode is set to `proxyOnly`. The [GraphQL public playground]({{< ref "graphql/graphql-playground#enabling-public-graphql-playground" >}}) is enabled with the path set to `/playground`.
 
 ```yaml {hl_lines=["15-17", "18-92"],linenos=false}
@@ -1601,8 +1602,8 @@ spec:
       path: /playground
 ```
 
-#### Set Up Manifest for HTTP
-##### HTTP Proxy
+### Set Up Manifest for HTTP
+#### HTTP Proxy
 
 This example creates a basic API definition that routes requests to listen path `/httpbin` to target URL `http://httpbin.org`.
 
@@ -1627,7 +1628,7 @@ spec:
     strip_listen_path: true
 ```
 
-##### HTTP Host-based Proxy
+#### HTTP Host-based Proxy
 
 `spec.domain` is the domain to bind this API to. This enforces domain matching for client requests.
 
@@ -1650,7 +1651,7 @@ spec:
     strip_listen_path: true
 ```
 
-##### HTTPS Proxy
+#### HTTPS Proxy
 
 This example creates a API definition that routes requests to a http://httpbin.org via port 8443.
 
@@ -1700,7 +1701,7 @@ spec:
     strip_listen_path: true
 ```
 
-#### Set Up Manifest for TCP
+### Set Up Manifest for TCP
 
 This example creates a API definition that proxies request from TCP port `6380` to `tcp://localhost:6379`.
 
@@ -1718,8 +1719,8 @@ spec:
     target_url: tcp://localhost:6379
 ```
 
-#### Set Up Manifest for UDG
-##### UDG v2 (Tyk 3.2 and above)
+### Set Up Manifest for UDG
+#### UDG v2 (Tyk 3.2 and above)
 
 If you are on Tyk 3.2 and above, you can use the following manifest to create an UDG API. This example configures a Universal Data Graph from a [GraphQL datasource]({{<ref "universal-data-graph/datasources/graphql">}}) and a [REST Datasource]({{<ref "universal-data-graph/datasources/rest">}}).
 
@@ -1806,7 +1807,7 @@ spec:
             headers: {}
 ```
 
-##### UDG v1 (Tyk 3.1 or before)
+#### UDG v1 (Tyk 3.1 or before)
 
 If you are on Tyk 3.1, you can use the following manifest to create an UDG API. This example creates a Universal Data Graph with GraphQL datasource and HTTP JSON datasource.
 
@@ -1873,11 +1874,11 @@ spec:
       path: /playground
 ```
 
-### Set Up Tyk Streams API
+## Set Up Tyk Streams API
 Tyk Streams integrates natively with Tyk OpenAPI Specification (OAS), allowing you to manage APIs as code and automate processes in Kubernetes using Tyk Operator. Setting up Tyk Streams API is similar to configuring a standard Tyk OAS API. You can store the Tyk Streams OAS definition in a Kubernetes ConfigMap and connect it to Tyk Gateway through a `TykStreamsApiDefinition` resource.
 
-#### Create your Tyk Streams API
-##### Prepare the Tyk Streams API Definition
+### Create your Tyk Streams API
+#### Prepare the Tyk Streams API Definition
 To create a Tyk Streams API, start by preparing a complete Tyk Streams API definition in the OpenAPI Specification (OAS) format. This file must include:
 
 - The `x-tyk-api-gateway` extension for Tyk-specific settings.
@@ -1943,7 +1944,7 @@ Here’s an example of a Tyk Streams API definition:
 }
 ```
 
-##### Create a TykStreamsApiDefinition Custom Resource
+#### Create a TykStreamsApiDefinition Custom Resource
 Once your Tyk Streams API definition is ready, use a Kubernetes ConfigMap to store the definition and link it to a `TykStreamsApiDefinition` custom resource.
 
 Example manifest:
@@ -2016,7 +2017,7 @@ data:
     }
 ```
 
-##### Apply the TykStreamsApiDefinition Manifest
+#### Apply the TykStreamsApiDefinition Manifest
 
 Use the `kubectl` command to apply the `TykStreamsApiDefinition` manifest to your Kubernetes cluster:
 
@@ -2026,7 +2027,7 @@ kubectl apply -f tyk-streams-api-definition.yaml
 
 This will create a new `TykStreamsApiDefinition` resource. The Tyk Operator watches this resource and configures the Tyk Gateway or Tyk Dashboard with the new API.
 
-##### Verify the Tyk Streams API Creation
+#### Verify the Tyk Streams API Creation
 
 Check the status of the `TykStreamsApiDefinition` resource to ensure that the API has been successfully created:
 
@@ -2041,17 +2042,17 @@ NAME            DOMAIN   LISTENPATH   ENABLED   SYNCSTATUS
 simple-stream            /streams/    true      Successful
 ```
 
-##### Manage and Update the Tyk Streams API
+#### Manage and Update the Tyk Streams API
 To update your API configuration, modify the linked `ConfigMap`. The Tyk Operator will automatically detect changes and update the API in the Tyk Gateway.
 
-#### Secure your Tyk Streams API
+### Secure your Tyk Streams API
 To secure your Tyk Streams API, configure security fields in the OAS definition just as you would for a standard Tyk OAS API. For more details, refer to the [Secure your OAS API](#secure-your-oas-api) guide.
 
-### Add a Security Policy to your API
+## Add a Security Policy to your API
 To further protect access to your APIs, you will want to add a security policy. 
 Below, we take you through how to define the security policy but you can also find [Security Policy Example]({{< ref "#security-policy-example" >}}) below.
 
-##### Define the Security Policy manifest
+#### Define the Security Policy manifest
 
 To create a security policy, you must define a Kubernetes manifest using the `SecurityPolicy` CRD. The following example illustrates how to configure a default policy for trial users for a Tyk Classic API named `httpbin`, a Tyk OAS API named `petstore`, and a Tyk Streams API named `http-to-kafka`.
 
@@ -2137,14 +2138,14 @@ In this example, the security policy will apply to an `ApiDefinition` resource n
 
 In this example, trial users under this security policy can gain access to the `httpbin` API at a rate limit of maximum 120 times per 60 seconds (`"rate": 120, "per": 60`), with a usage quota of 1000 every hour (`"quota_max": 1000, "quota_renewal_rate": 3600`), without any request throttling (`throttle_interval: -1, throttle_retry_limit: -1`).
 
-##### Apply the Security Policy manifest
+#### Apply the Security Policy manifest
 Once you have defined your security policy manifest, apply it to your Kubernetes cluster using the `kubectl apply` command:
 
 ```bash
 kubectl apply -f trial-policy.yaml
 ```
 
-##### Verify the Security Policy
+#### Verify the Security Policy
 
 After applying the manifest, you can verify that the security policy has been created successfully by running:
 
@@ -2172,8 +2173,8 @@ Events:         <none>
 From the `status` field, you can see that this security policy has been linked to `httpbin`, `petstore`, and `http-to-kafka` APIs.
 
 
-##### Security Policy Example
-###### Key-Level Per-API Rate Limits and Quota
+#### Security Policy Example
+##### Key-Level Per-API Rate Limits and Quota
 
 By configuring per-API limits, you can set specific rate limits, quotas, and throttling rules for each API in the access rights array. When these per-API settings are enabled, the API inherits the global limit settings unless specific limits and quotas are set in the `limit` field for that API.
 
@@ -2397,14 +2398,14 @@ spec:
 - **`complexity`**: Set to true to enforce GraphQL complexity rules (limits the complexity of GraphQL queries to prevent resource exhaustion).
 
 
-### Migrate Existing APIs to Tyk Operator 
+## Migrate Existing APIs to Tyk Operator 
 If you have existing APIs and Policies running on your Tyk platform, and you want to start using Tyk Operator to manage them, you probably would not want to re-create the APIs and Policies on the platform using Operator CRDs. It is because you will lose keys, policies, and analytics linked to the APIs. You can instead link existing APIs and Policies to a CRD by specifying the API ID or Policy ID in the CRD spec. This way, Operator will update the existing API or Policy according to the CRD spec. Any keys, policies and analytics linked to the API will continue to operate the same. This is great for idempotency.
 
-#### Export existing configurations to CRDs
+### Export existing configurations to CRDs
 
 Instead of creating the API and Policy CRDs from scratch, you can try exporting them from Dashboard using a snapshot tool. You can find the detail usage guide [here](https://github.com/TykTechnologies/tyk-operator/blob/master/pkg/snapshot/README.md). This is great if you want to have a quick start. However, this is still a PoC feature so we recommend you to double check the output files before applying them to your cluster.
 
-#### Migration of existing API
+### Migration of existing API
 
 If there are existing APIs that you want to link to a CRD, it's very easy to do so. You need to simply add the `api_id` from your API Definition to the YAML of your `ApiDefinition` type. Then, the Operator will take care of the rest.
 
@@ -2447,7 +2448,7 @@ apidefinition.tyk.tyk.io/my-existing-api created
 The source of truth for the API definition is now the CRD, meaning it will override any differences in your existing API definition.
 {{< /note >}}
 
-#### Migration of existing Policy
+### Migration of existing Policy
 If you have existing pre-Operator policies, you can easily link them to a CRD, which will allow you to modify them through the YAML moving forward.
 Simply set the id field in the SecurityPolicy YAML to the _id field in the existing Policy's JSON. This will allow the Operator to make the link.
 Note that the YAML becomes the source of truth and will overwrite any changes between it and the existing Policy.
@@ -2495,7 +2496,7 @@ securitypolicy.tyk.tyk.io/new-httpbin-policy created
 Now the changes in the YAML were applied to the existing Policy. You can now manage this policy through the CRD moving forward.
 Note, if this resource is unintentionally deleted, the Operator will recreate it with the same `id` field as above, allowing keys to continue to work as before the delete event.
 
-#### Idempotency
+### Idempotency
 
 Because of the ability to declaratively define the `api_id`, this gives us the ability to preserve Keys that are tied to APIs or policies which are tied to APIs.
 Imagine any use case where you have keys tied to policies, and policies tied to APIs.
@@ -2511,7 +2512,7 @@ For example:
 4. This allows keys to continue to work normally as Tyk resources are generated idempotently through the Operator.
 
 
-### Publish Your API to Dev Portal
+## Publish Your API to Dev Portal
 For Tyk Self Managed or Tyk Cloud, you can set up a Developer Portal to expose a facade of your APIs and then allow third-party developers to register and use your APIs.
 You can make use of Tyk Operator CRDs to publish the APIs as part of your CI/CD workflow. If you have followed this Getting Started guide to create the httpbin example API, you can publish it to your Tyk Classic Developer Portal in a few steps.
 
@@ -2521,7 +2522,7 @@ You can make use of Tyk Operator CRDs to publish the APIs as part of your CI/CD 
 Currently Operator only supports publishing Tyk Classic API to the Tyk Classic Portal.
 {{< /note >}}
 
-#### Publish an API with Tyk Operator
+### Publish an API with Tyk Operator
 1. **Creating a security policy**
 
 When you publish an API to the Portal, Tyk actually publishes a way for developers to enroll in a policy, not into the API directly. Therefore, you should first set up a security policy for the developers, before proceeding with the publishing.
@@ -2645,12 +2646,12 @@ GraphQL:
 
 
 
-### Control Kubernetes Ingress Resources
+## Control Kubernetes Ingress Resources
 In Kubernetes, the [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) resource defines routing rules for external HTTP/S traffic to services within a cluster, based on domains or paths. An [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/), like NGINX or HAProxy, interprets these rules and configures the network infrastructure to route traffic, handling SSL termination and load balancing.
 
 The Tyk Operator builds upon the idea of Kubernetes Ingress by allowing you to reuse existing Ingress definitions while adding advanced API management features like authentication, rate limiting, and monitoring. This approach provides seamless ingress traffic management with powerful API gateway capabilities in a unified solution.
 
-#### How Tyk Operator Works as an Ingress Controller
+### How Tyk Operator Works as an Ingress Controller
 When you use Tyk Operator as an Ingress Controller, each "path" defined in your existing Ingress resource is treated as an "API" within Tyk. 
 
 Using this Ingress spec as example:
@@ -2729,13 +2730,13 @@ Here's how it works:
 
 This approach enables you to quickly and easily integrate advanced API management functionalities into your existing Kubernetes environment without needing to change your current configurations significantly.
 
-#### Configuration Examples
+### Configuration Examples
 
 To configure Tyk Operator to handle Ingress resources, specify ingress class as `tyk` in the Ingress resource. You can also optionally create a `ApiDefinition` or `TykOasApiDefinition` resource template that provides default API configurations. This allows Tyk Operator to read the Ingress resource and create API Definition resources based on ingress path and referenced template.
 
 The following sections shows some example of Tyk `ApiDefinition` or `TykOasApiTemplate` template and Ingress specification.
 
-##### HTTP host based and/or path based routing
+#### HTTP host based and/or path based routing
 
 <details>
   <summary>Click to expand</summary>
@@ -2801,7 +2802,7 @@ In this example, 4 APIs will be created by Tyk Operator. It illustrates how diff
 
 </details>
 
-##### HTTPS with cert-manager integration
+#### HTTPS with cert-manager integration
 
 <details>
   <summary>Click to expand</summary>
@@ -2876,7 +2877,7 @@ With this configuration, Tyk Gateway can serve HTTPS requests via port 443, with
 
 </details>
 
-##### ApiDefinition Template
+#### ApiDefinition Template
 
 <details>
   <summary>Click to expand</summary>
@@ -2914,7 +2915,7 @@ To make use of the ApiDefinition template, make sure to add annotations `tyk.io/
 
 </details>
 
-##### TykOasApiDefinition Template
+#### TykOasApiDefinition Template
 
 <details>
   <summary>Click to expand</summary>
@@ -2986,14 +2987,14 @@ To make use of the TykOasApiDefinition template, make sure to add annotations `t
 
 </details>
 
-#### Ingress Class
+### Ingress Class
 
 The value of the `kubernetes.io/ingress.class` annotation identifies the IngressClass that will process Ingress objects.
 
 Tyk Operator by default looks for the value `tyk` and will ignore all other ingress classes. If you wish to override this default behavior,
  you may do so by setting the environment variable `WATCH_INGRESS_CLASS` in the operator manager deployment. [See Installing Tyk Operator]({{< ref "#install-and-configure-tyk-operator" >}}) for further information.
 
-#### API name
+### API name
 
 Tyk Ingress Controller will create APIs in Tyk for each path defined for a specific rule in Ingress resource. Each API created inside Tyk will follow a special naming convention as follows:
 
@@ -3029,7 +3030,7 @@ spec:
            number: 8000
 ```
 
-#### Ingress Path Types
+### Ingress Path Types
 
 Each path in an Ingress must have its own particular path type. Kubernetes offers three types of path types: `ImplementationSpecific`, `Exact`, and `Prefix`. Currently, not all path types are supported. The below table shows the unsupported path types for [Sample HTTP Ingress Resource]({{< ref "#set-up-manifest-for-http" >}}) based on the examples in the [Kubernetes Ingress documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/#examples).
 
@@ -3060,11 +3061,11 @@ The following table shows an example of path matching if the listen-path is set 
 | Prefix                 | /httpbin/ | /httpbin                  | No. Ingress cannot find referenced service.           |  
 | ImplementationSpecific | /httpbin/ | /httpbin                  | No. Ingress cannot find referenced service.           | 
 
-### Multi-Organization Management With Tyk Operator
+## Multi-Organization Management With Tyk Operator
 
 If you want to set up multi-tenant API management with Tyk, follow these steps to define an OperatorContext for connecting and authenticating with a Tyk Dashboard and reference it in your API definitions for specific configurations.
 
-#### Defining OperatorContext
+### Defining OperatorContext
 
 An [OperatorContext]({{< ref "#multi-tenancy-in-tyk" >}}) specifies the parameters for connecting and authenticating with a Tyk Dashboard. Below is an example of how to define an `OperatorContext`:
 
@@ -3110,7 +3111,7 @@ metadata:
   namespace: default
 spec:
   secretRef:
-    name: tyk-operator-conf ## Secret containing keys TYK_AUTH and TYK_ORG
+    name: tyk-operator-conf## Secret containing keys TYK_AUTH and TYK_ORG
     namespace: alpha
   env:
     mode: pro
@@ -3137,7 +3138,7 @@ You can provide the following fields through secret as referenced by `secretRef`
 | TYK_USER_OWNERS (comma separated list) | user_owners |
 | TYK_USER_GROUP_OWNERS (comma separated list) | user_group_owners |
 
-#### Using contextRef in API Definitions
+### Using contextRef in API Definitions
 
 Once an `OperatorContext` is defined, you can reference it in your API Definition objects using `contextRef`. Below is an example:
 
@@ -3163,11 +3164,11 @@ spec:
 
 In this example, the `ApiDefinition` object references the `team-alpha` context, ensuring that the configuration is applied within the `alpha` organization.
 
-### Internal Looping With Tyk Operator
+## Internal Looping With Tyk Operator
 
 The concept of [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}) allows you to use URL Rewriting to redirect your URL to *another API endpoint* or to *another API* in the Gateway. In Tyk, looping is generally targeted using the `tyk://<API_ID>/<path>` scheme, which requires prior knowledge of the `API_ID`. Tyk Operator simplifies the management and transformation of API traffic within Kubernetes environments by abstracting APIs as objects, managing them and dynamically assigning `API_ID`s by its Kubernetes metedata name and namespace.
 
-#### Configuring looping to internal ApiDefinition resources
+### Configuring looping to internal ApiDefinition resources
 
 Looping can be configured within Tyk Operator for [URL Rewrites]({{< ref "#url-rewrites" >}}), [URL Rewrite Triggers]({{< ref "#url-rewrite-triggers" >}}) and [Proxy to internal APIs]({{< ref "#proxy-to-internal-apis" >}}) by configuring the `rewrite_to_internal` in `url_rewrite`, `rewrite_to_internal` in `triggers`, and `proxy.target_internal` fields respectively with these properties:
 
@@ -3181,7 +3182,7 @@ Tyk Operator would dynamically update the API definition by generating internal 
 
 ---
 
-#### URL Rewrites 
+### URL Rewrites 
 
 [URL rewriting]({{< ref "transform-traffic/url-rewriting" >}}) in Tyk enables the alteration of incoming API request paths to align with the expected endpoint format of your backend services.
 
@@ -3213,7 +3214,7 @@ url_rewrites:
 
 Here we can see that the `rewrite_to` field has been generated with the value `tyk://ZGVmYXVsdC9wcm94eS1hcGk/proxy/$1` where `ZGVmYXVsdC9wcm94eS1hcGk` represents the API ID for the `proxy-api` API resource in the `default` namespace. Notice also that path `proxy/$1` is appended to the base URL `tyk://ZGVmYXVsdC9wcm94eS1hcGk` and contains the context variable `$1`. This will be substituted with the value of `{id}` in the `path` configuration parameter.
 
-#### URL Rewrite Triggers 
+### URL Rewrite Triggers 
 
 [Triggers]({{< ref "product-stack/tyk-gateway/middleware/url-rewrite-middleware#url-rewrite-triggers" >}}) are configurations that specify actions based on certain conditions present in HTTP headers, query parameters, path parameters etc.
 
@@ -3258,7 +3259,7 @@ triggers:
 
 Here we can see that the `rewrite_to` field has been generated with the value `tyk://ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs/proxy/$1` where `ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs` represents the API ID for the `proxy-api` API resource in the `default` namespace. Notice also that path `basic/$2` is appended to the base URL `tyk://ZGVmYXVsdC9iYXNpYy1hdXRoLWludGVybmFs` and contains the context variable `$2`. This will be substituted with the remainder of the request path.
 
-#### Proxy to Internal APIs 
+### Proxy to Internal APIs 
 
 Internal looping can also be used for [proxying to internal APIs]({{< ref "advanced-configuration/transform-traffic/looping" >}}).
 
@@ -3296,7 +3297,7 @@ Tyk Operator will automatically generate the target URL to redirect the request 
 
 ---
 
-#### Example
+### Example
 
 Assume a business has legacy customers who authenticate with a service using *Basic Authentication*. The business also wants to support API Keys, enabling both client types to access the same ingress.
 
@@ -3322,7 +3323,7 @@ There are no actual HTTP redirects in this scenario, meaning that there is no pe
 
 {{< /note >}}
 
-##### Entry Point API
+#### Entry Point API
 
 The *Entry Point* API is the first point of entry for a client request. It inspects the header to determine if the incoming client request requires authentication using *Basic Authentication* or *Auth Token*. Consequently, it then redirects the request to the *BasicAuth Internal* or *AuthToken Internal* API depending upon the header included in the client request.
 
@@ -3381,7 +3382,7 @@ spec:
                     path: "token/$2"
 ```
 
-##### BasicAuth Internal API
+#### BasicAuth Internal API
 
 The *BasicAuth Internal* API listens to requests on path `/basic` and forwards them upstream to `http://example.com`.
 
@@ -3427,7 +3428,7 @@ spec:
               delete_headers: []
 ```
 
-##### AuthToken Internal API
+#### AuthToken Internal API
 
 The *AuthToken Internal* API listens to requests on path `/token` and forwards them upstream to `http://example.com`.
 
@@ -3473,7 +3474,7 @@ spec:
               delete_headers: []
 ```
 
-##### Proxy Internal API
+#### Proxy Internal API
 
 The *Proxy Internal* API is keyless and responsible for listening to requests on path `/proxy` and forwarding upstream to `http://httpbin.org`. The listen path is stripped from the request before it is sent upstream.
 
@@ -3496,16 +3497,16 @@ spec:
   use_keyless: true
 ```
 
-### Manage API MetaData
+## Manage API MetaData
 
 
-#### API Name
+### API Name
 
-##### Tyk OAS API and Tyk Streams API
+#### Tyk OAS API and Tyk Streams API
 
 API name can be set through `x-tyk-api-gateway.info.name` field in [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc">}}) object.
 
-##### Tyk Classic API
+#### Tyk Classic API
 
 To set the name of an API in the `ApiDefinition`, use the `spec.name` string field. This name is displayed on the Tyk Dashboard and should concisely describe what the API represents.
 
@@ -3527,17 +3528,17 @@ spec:
     strip_listen_path: true
 ```
 
-#### API Status
+### API Status
 
-##### API Active Status
+#### API Active Status
 
 An active API will be loaded to the Gateway, while an inactive API will not, resulting in a 404 response when called.
 
-##### Tyk OAS API and Tyk Streams API
+#### Tyk OAS API and Tyk Streams API
 
 API active state can be set through `x-tyk-api-gateway.info.state.active` field in [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc">}}) object.
 
-##### Tyk Classic API
+#### Tyk Classic API
 
 The active status of an API can be set by modifying the `spec.active` configuration parameter. When set to `true`, this enables the API so that Tyk will listen for and process requests made to the `listenPath`. 
 
@@ -3557,15 +3558,15 @@ spec:
     strip_listen_path: true
 ```
 
-#### API Accessibility
+### API Accessibility
 
 An API can be configured as internal so that external requests are not processed. 
 
-##### Tyk OAS API and Tyk Streams API
+#### Tyk OAS API and Tyk Streams API
 
 API accessibility can be set through `x-tyk-api-gateway.info.state.internal` field in [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc">}}) object.
 
-##### Tyk Classic API
+#### Tyk Classic API
 
 API accessibility can be set through the `spec.internal` configuration parameter as shown in the example below.
 
@@ -3586,13 +3587,13 @@ spec:
     strip_listen_path: true
 ```
 
-#### API ID
+### API ID
 
-##### Creating a new API
+#### Creating a new API
 
 If you're creating a new API using Tyk Operator, you don't need to specify the ID. The API ID will be generated in a deterministic way.
 
-##### Tyk OAS API and Tyk Streams API
+#### Tyk OAS API and Tyk Streams API
 
 The generated ID is stored in `status.id` field. Run the following command to inspect generated API ID of a Tyk OAS API.
 
@@ -3603,7 +3604,7 @@ ZGVmYXVsdC9wZXRzdG9yZQ
 
 In this example, the generated API ID is `ZGVmYXVsdC9wZXRzdG9yZQ`.
 
-##### Tyk Classic API
+#### Tyk Classic API
 
 The generated ID is stored in `status.api_id` field. Run the following command to inspect generated API ID of a Tyk Classic API.
 
@@ -3614,13 +3615,13 @@ ZGVmYXVsdC90ZXN0
 
 In this example, the generated API ID is `ZGVmYXVsdC90ZXN0`.
 
-#### Updating an existing API
+### Updating an existing API
 
-##### Tyk OAS API and Tyk Streams API
+#### Tyk OAS API and Tyk Streams API
 
 If you already have API configurations created in the Tyk Dashboard and want to start using Tyk Operator to manage these APIs, you can include the existing API ID in the manifest under the `x-tyk-api-gateway.info.id` field in [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc">}}) object.
 
-##### Tyk Classic API
+#### Tyk Classic API
 
 If you already have API configurations created in the Tyk Dashboard and want to start using Tyk Operator to manage these APIs, you can include the existing API ID in the manifest under the `spec.api_id` field. This way, when you apply the manifest, Tyk Operator will not create a new API in the Dashboard. Instead, it will update the original API with the Kubernetes spec.
 
@@ -3647,10 +3648,10 @@ spec:
 In this example, the API with ID `12345` will be updated according to the provided spec instead of creating a new API.
 
 
-#### API Categories
+### API Categories
 [API categories]({{< ref "product-stack/tyk-dashboard/advanced-configurations/api-categories">}}) are configured differently for Tyk OAS APIs and Tyk Classic APIs. Please see below for examples.
 
-##### Tyk OAS API
+#### Tyk OAS API
 
 API categories can be specified through `categories` field in `TykOasApiDefinition` CRD.
 
@@ -3673,11 +3674,11 @@ spec:
       namespace: tyk
 ```
 
-##### Tyk Streams API
+#### Tyk Streams API
 
 As of Tyk Operator v1.1, API categories is not supported in `TykStreamsApiDefinition` CRD.
 
-##### Tyk Classic API
+#### Tyk Classic API
 
 For a Tyk Classic API, you can specify the category name using the `name` field with a `#` qualifier. This will categorize the API in the Tyk Dashboard. See [How API categories work]({{<ref "product-stack/tyk-dashboard/advanced-configurations/api-categories#tyk-classic-apis">}}) to learn about limitations on API names.
 
@@ -3699,10 +3700,10 @@ spec:
     strip_listen_path: true
 ```
 
-#### API Versioning
+### API Versioning
 [API versioning]({{<ref "api-management/api-versioning">}}) are configured differently for [Tyk OAS APIs]({{< ref "#tyk-oas-api" >}}) and [Tyk Classic APIs]({{< ref "#tyk-classic-api" >}}). Please see below for examples.
 
-##### Configuring API Version in Tyk OAS API Definition
+#### Configuring API Version in Tyk OAS API Definition
 
 In the [Tyk OAS API Definition]({{<ref "api-management/api-versioning#configuring-api-versioning-in-the-tyk-oas-api-definition">}}), versioning can be configured via `x-tyk-api-gateway.versioning` object of the Base API, where the child API's IDs are specified. In the Kubernetes environment with Tyk Operator, where we reference API resources through its Kubernetes name and namespace, this is not desired. Therefore, we add support for versioning configurations through the field `versioning` in `TykOasApiDefinition` custom resource definition (CRD).
 
@@ -3774,21 +3775,21 @@ In case if there is original versioning information in the base API Definition, 
 
 Tyk Operator would also protect you from accidentally deleting a version of an API that is being referenced by another API, maintaining your API integrity.
 
-##### Configuring API Version in Tyk Streams API Definition
+#### Configuring API Version in Tyk Streams API Definition
 
 As of Tyk Operator v1.1, API versioning is not supported in `TykStreamsApiDefinition` CRD. This can be configured natively in the Tyk Streams API Definition.
 
-##### Configuring API Version in Tyk Classic API Definition
+#### Configuring API Version in Tyk Classic API Definition
 
 For Tyk Classic API, versioning can be configured via `ApiDefinition` custom resource definition (CRD). See [Tyk Classic versioning]({{<ref "api-management/api-versioning#tyk-classic-api-versioning-1">}}) for a comprehensive example of configuring API versioning for Tyk Classic API with Tyk Operator.
 
-#### API Ownership
+### API Ownership
 
 Please consult the [API Ownership]({{<ref "/product-stack/tyk-dashboard/advanced-configurations/user-management/api-ownership">}}) documentation for the fundamental concepts of API Ownership in Tyk and [Operator Context]({{< ref "#multi-tenancy-in-tyk" >}}) documentation for an overview of the use of OperatorContext to manage resources for different teams effectively.
 
 The guide includes practical examples for managing API ownership via OperatorContext. Key topics include defining user owners and user group owners in OperatorContext for connecting and authenticating with a Tyk Dashboard, and using `contextRef` in `TykOasApiDefinition` or `ApiDefinition` objects to ensure configurations are applied within specific organizations. The provided YAML examples illustrate how to set up these configurations.
 
-##### How API Ownership works in Tyk Operator
+#### How API Ownership works in Tyk Operator
 
 In Tyk Dashboard, API Ownership ensures that only designated 'users' who own an API can modify it. This security model is crucial for maintaining control over API configurations, especially in a multi-tenant environment where multiple teams or departments may have different responsibilities and permissions.
 
@@ -3801,7 +3802,7 @@ To facilitate API ownership and ensure secure operations, Tyk Operator must be a
 
 {{< img src="/img/operator/tyk-api-ownership.svg" alt="Enabling API ownership with OperatorContext" width="600" >}}
 
-##### OperatorContext
+#### OperatorContext
 
 Here's how `OperatorContext` allows Tyk Operator to manage APIs under different ownerships:
 
@@ -3843,7 +3844,7 @@ spec:
     - 1a2b3c4d5e6f
 ```
 
-##### Tyk OAS API and Tyk Streams API
+#### Tyk OAS API and Tyk Streams API
 
 Once an `OperatorContext` is defined, you can reference it in your Tyk OAS or Tyk Streams API Definition objects using `contextRef`. Below is an example with TykOasApiDefinition:
 
@@ -3899,7 +3900,7 @@ spec:
 
 In this example, the `TykOasApiDefinition` object references the `team-alpha` context, ensuring that it is managed under the ownership of the specified users and user groups.
 
-##### Tyk Classic API
+#### Tyk Classic API
 
 Similarly, if you are using Tyk Classic API, you can reference it in your API Definition objects using `contextRef`. Below is an example:
 
@@ -3925,459 +3926,129 @@ spec:
 
 In this example, the `ApiDefinition` object references the `team-alpha` context, ensuring that it is managed under the ownership of the specified users and user groups.
 
-
-
-## Synchronize Tyk Environment With GitHub Repository
-
-Tyk Sync enables you to export and import Tyk configurations directly from Git, keeping environments aligned without manual configuration updates. This section covers the setup and use of Tyk Sync, providing steps to ensure consistent configurations across different environments.
-
-
-### Tyk Sync Features
-Tyk Sync works with *Tyk Dashboard* installation. With Tyk Dashboard, Tyk Sync supports managing API definitions, security policies, and API templates.
-
-| Tyk Sync Feature                                                           | Tyk Dashboard (Licensed) |
-| ---------------------------------------------------------------------------|--------------------------|
-| <h4>Backup objects from Tyk to a directory</h4>If you want to backup your API definitions, policies and templates in Tyk, you can use the `dump` command. It allows you to save the objects in transportable files. You can use this command to backup important API configurations before upgrading Tyk, or to save API configurations from one Dashboard instance and then use `update`, `publish`, or `sync` commands to update the API configurations to another Dashboard instance. | ✅ |
-| <h4>Synchronise objects from Git (or any VCS) to Tyk</h4>To implement GitOps for API management, store your API definitions, policies and templates in Git or any version control system. Use the `sync` command to synchronise those objects to Tyk. During this operation, Tyk Sync will delete any objects in the Dashboard that cannot be found in the VCS, and update those that can be found and create those that are missing. | ✅ |
-| <h4>Update objects</h4>The `update` command will read from VCS or file system and will attempt to identify matching API definitions, policies and templates in the target Dashboard, and update them. Unmatched objects will not be created. | ✅ |
-| <h4>Publish objects</h4>The `publish` command will read from VCS or file system and create API definitions, policies, and templates in target Dashboard. This will not update any existing objects. If it detects a collision, the command will stop. | ✅ |
-| <h4>Show and import Tyk examples</h4>The `examples` command allow you to show and import [Tyk examples](https://github.com/TykTechnologies/tyk-examples). An easy way to load up your Tyk installation with some interesting examples!| ✅ |
-
-**Working with OAS APIs**
-
-Starting with Sync v1.5+ and Dashboard v5.3.2+, Tyk Sync supports both [Tyk OAS APIs]({{<ref "getting-started/key-concepts/high-level-concepts">}}) and [Tyk Classic APIs]({{<ref "getting-started/key-concepts/what-is-an-api-definition#api-definition-types">}}) when working with the Tyk Dashboard, without requiring special flags or configurations.
-
-For Sync versions v1.4.1 to v1.4.3, enabling Tyk Sync for Tyk OAS APIs requires the [allow-unsafe-oas]({{<ref "tyk-dashboard/configuration#allow_unsafe_oas">}}) configuration in the Dashboard, along with the `--allow-unsafe-oas` flag when invoking Tyk Sync. Note that Tyk Sync versions v1.4.1 to 1.4.3 do not support API Category for Tyk OAS APIs.
-
-**Working with Tyk Streams APIs**
-
-Tyk Streams API support was introduced in Tyk Dashboard v5.7.0. Tyk Sync v2.0 and later is compatible with Tyk Streams APIs and manages them similarly to Tyk OAS APIs. With Tyk Sync, you can seamlessly sync, publish, update, and dump Tyk Streams APIs just like OAS APIs.
-
-Note: The Streams API validator is not applied during these operations.
-
-**Working with Open Source Gateway**
-
-From Sync v2.0, compatibility with the Open Source Tyk Gateway has been removed, making Tyk Sync v2.0 compatible exclusively with licensed Tyk Dashboard. As a result, Tyk Sync is no longer usable with the Open Source (OSS) version of the Tyk Gateway.
-
-
-### Set up Tyk Sync
-#### Installation
-Currently the application is available via [Docker](https://hub.docker.com/r/tykio/tyk-sync) and [Packagecloud](https://packagecloud.io/tyk/tyk-sync).
-
-#### Docker
-
-To install Tyk Sync using Docker, follow these steps:
-
-##### Pull the Docker image from the Tyk repository
-
-Make sure to specify the version tag you need. For example, to pull version v1.5.0, use the following command:
-
-```bash
-SYNC_VERSION=v1.5.0
-docker pull tykio/tyk-sync:$SYNC_VERSION
-```
-
-All docker images are available on the [Tyk Sync Docker Hub](https://hub.docker.com/r/tykio/tyk-sync/tags) page.
-
-##### Run Tyk Sync
-
-```bash
-SYNC_VERSION=v1.5.0
-docker run tykio/tyk-sync:$SYNC_VERSION [command] [flag]
-```
-
-If you want to dump your API configurations to the local file system or sync configurations saved locally to Tyk, use Docker [bind mounts](https://docs.docker.com/storage/bind-mounts):
-
-```bash
-docker run -v /path/to/local/directory:/app/data tykio/tyk-sync:$SYNC_VERSION [command] [flag]
-```
-Replace [command] with the specific Tyk Sync command you want to execute.
-
-
-#### Specify target Tyk installation
-
-##### Tyk Dashboard
-For Dashboard users, you can provide the necessary connection details using the `--dashboard` and `--secret` options.
-
-```bash
-tyk-sync --dashboard <DASHBOARD_URL> --secret <SECRET> [command] [flags]
-```
-
-DASHBOARD_URL is the fully qualified dashboard target URL (e.g. `http://localhost:3000`) and SECRET refers to the API access key use to access your Dashboard API. For dashboard users, you can get it from the “Users” page under “Tyk Dashboard API Access Credentials”.
-
-If you prefer not to provide the secret via the command line, you can set the environment variable `TYKGIT_DB_SECRET` instead. This method keeps your secret secure and avoids exposure in command history.
-
-```bash
-export TYKGIT_DB_SECRET=<SECRET>
-tyk-sync --dashboard <DASHBOARD_URL> [command] [flags]
-```
-
-##### Open Source Gateway
-For open source Gateway users, you can provide the necessary connection details using the `--gateway` and `--secret` options.
-
-```bash
-tyk-sync --gateway <GATEWAY_URL> --secret <SECRET> [command] [flags]
-```
-
-GATEWAY_URL is the fully qualified gateway target URL (e.g. `http://localhost:8080`) and SECRET refers to the API secret (`secret` parameter in your tyk.conf file) used to access your Gateway API.
-
-If you prefer not to provide the secret via the command line, you can set the environment variable `TYKGIT_GW_SECRET` instead. This method keeps your secret secure and avoids exposure in command history.
-
-```bash
-export TYKGIT_GW_SECRET=<SECRET>
-tyk-sync --gateway <GATEWAY_URL> [command] [flags]
-```
-
-2. Export configurations from your development environment:
-
-```bash
-tyk-sync dump -d http://localhost:3000 -s <dashboard-secret> -t dev-backup
-```
-
-This command exports all configurations from your development Tyk Dashboard to a local directory named `dev-backup`.
-
-3. Import configurations to your staging environment:
-
-```bash
-tyk-sync publish -d http://staging-dashboard:3000 -s <staging-secret> -p dev-backup
-```
-
-This command imports the configurations from the `dev-backup` directory to your staging Tyk Dashboard.
-
-#### Specify Source API Configurations
-For the `sync`, `update`, and `publish` commands, you need to specify where Tyk Sync can get the source API configurations to update the target Tyk installation. You can store the source files either in a Git repository or the local file system.
-
-##### Working with Git
-For any Tyk Sync command that requires Git repository access, specify the Git repository as the first argument after the command. By default, Tyk Sync reads from the `master` branch. To specify a different branch, use the `--branch` or `-b` flag. If the Git repository requires connection using Secure Shell Protocol (SSH), you can specify SSH keys with `--key` or `-k` flag.
-
-```bash
-tyk-sync [command] https://github.com/your-repo --branch develop
-```
-
-##### Working with the local file system
-To update API configurations from the local file system, use the `--path` or `-p` flag to specify the source directory for your API configuration files.
-
-```bash
-tyk-sync [command] --path /path/to/local/directory
-```
-
-##### Index File Requirement
-A `.tyk.json` index file is required at the root of the source Git repository or the specified path. This `.tyk.json` file lists all the files that should be processed by Tyk Sync.
-
-Example `.tyk.json`:
-```json
-{
-  "type": "apidef",
-  "files": [
-    {
-      "file": "api1/api1.json"
-    },
-    {
-      "file": "api2/api2.json"
-    },
-    {
-      "file": "api3.json"
-    }
-  ],
-  "policies": [
-    {
-      "file": "policy1.json"
-    }
-  ],
-  "assets": [
-    {
-      "file": "template1.json"
-    }
-  ]
-}
-```
-
-
-### Automate API Configuration Management with Tyk Sync
-By integrating GitHub Actions, teams can schedule backups to cloud storage, sync configurations from a Git repository, and update local API definitions directly to the Tyk Dashboard. These workflows ensure configurations are securely maintained, aligned across environments, and easily managed within the API lifecycle.
-
-
-#### Backup API Configurations with Github Actions
-API platform teams can automate configuration backups using GitHub Actions. By setting up a scheduled GitHub Action, API configurations can be periodically exported and stored in cloud storage, like AWS S3. This approach ensures backups remain up-to-date, offering a reliable way to safeguard data and simplify restoration if needed.
-
-
-##### Create a GitHub Action workflow
-
-1. In your repository, create a new file `.github/workflows/tyk-backup.yml`.
-2. Add the following content to the `tyk-backup.yml` file:
-
-```yaml
-name: Tyk Backup
-
-on:
-  schedule:
-    - cron: '0 0 * * *'  # Runs every day at midnight
-
-jobs:
-  backup:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Create Backup Directory
-      run: |
-        BACKUP_DIR="backup/$(date +%Y-%m-%d)"
-        mkdir -p $BACKUP_DIR
-        echo "BACKUP_DIR=$BACKUP_DIR" >> $GITHUB_ENV
-
-    - name: Set Permissions for Backup Directory
-      run: |
-        sudo chown -R 1001:1001 ${{ github.workspace }}/backup
-
-    - name: Dump API Configurations
-      run: |
-        docker run --user 1001:1001 -v ${{ github.workspace }}:/app/data tykio/tyk-sync:${TYK_SYNC_VERSION} dump --target /app/data/${{ env.BACKUP_DIR }} --dashboard ${TYK_DASHBOARD_URL} --secret ${TYK_DASHBOARD_SECRET}
-      env:
-        TYK_SYNC_VERSION: ${{ vars.TYK_SYNC_VERSION }}
-        TYK_DASHBOARD_URL: ${{ secrets.TYK_DASHBOARD_URL }}
-        TYK_DASHBOARD_SECRET: ${{ secrets.TYK_DASHBOARD_SECRET }}
-
-    - name: Upload to S3
-      uses: jakejarvis/s3-sync-action@v0.5.1
-      with:
-        args: --acl private --follow-symlinks --delete
-      env:
-        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: 'us-east-1'  # Change to your region
-        SOURCE_DIR: ${{ env.BACKUP_DIR }}
-```
-
-##### Set up secrets
-
-1. Go to your GitHub repository.
-2. Navigate to Settings > Secrets and variables > Actions.
-3. Add the following variable:
-    - `TYK_SYNC_VERSION`: The version of Tyk Sync you want to use.
-4. Add the following secrets:
-   - `TYK_DASHBOARD_URL`: The URL of your Tyk Dashboard.
-   - `TYK_DASHBOARD_SECRET`: The secret key for your Tyk Dashboard.
-   - `AWS_S3_BUCKET`: The name of your AWS S3 bucket.
-   - `AWS_ACCESS_KEY_ID`: Your AWS access key ID.
-   - `AWS_SECRET_ACCESS_KEY`: Your AWS secret access key.
-
-##### Commit and push changes
-
-Commit the `tyk-backup.yml` file and push it to the main branch of your repository.
-
-##### Verify backups
-
-The GitHub Action will run every day at midnight, dumping API configurations into a backup directory and uploading them to your specified S3 bucket.
-
-
-#### Synchronize API configurations with GitHub Actions
-API platform teams can use GitHub Actions to sync API configurations, policies, and templates from a Git repository to Tyk. Triggered by repository changes, the action generates a .tyk.json file and applies updates with the sync command, keeping the Tyk setup aligned with the repository.
-
-##### Setup GitHub repository
-Organize your repository with the following structure:
-
-- `/apis/` for API definition files.
-- `/policies/` for security policy files.
-- `/assets/` for API template files.
-
-##### Create a GitHub Action workflow
-
-1. In your repository, create a new file `.github/workflows/tyk-sync.yml`.
-2. Add the following content to the `tyk-sync.yml` file:
-
-```yaml
-name: Tyk Sync
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  sync:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Create .tyk.json
-      run: |
-        echo '{' > .tyk.json
-        echo '  "type": "apidef",' >> .tyk.json
-        echo '  "files": [' >> .tyk.json
-        find . -type f -name '*.json' -path './apis/*' -exec echo '    {"file": "{}"},' \; | sed '$ s/,$//' >> .tyk.json
-        echo '  ],' >> .tyk.json
-        echo '  "policies": [' >> .tyk.json
-        find . -type f -name '*.json' -path './policies/*' -exec echo '    {"file": "{}"},' \; | sed '$ s/,$//' >> .tyk.json
-        echo '  ],' >> .tyk.json
-        echo '  "assets": [' >> .tyk.json
-        find . -type f -name '*.json' -path './assets/*' -exec echo '    {"file": "{}"},' \; | sed '$ s/,$//' >> .tyk.json
-        echo '  ]' >> .tyk.json
-        echo '}' >> .tyk.json
-        cat .tyk.json
-
-    - name: Sync with Tyk
-      run: |
-        docker run tykio/tyk-sync:${TYK_SYNC_VERSION} version
-        docker run -v ${{ github.workspace }}:/app/data tykio/tyk-sync:${TYK_SYNC_VERSION} sync --path /app/data --dashboard ${TYK_DASHBOARD_URL} --secret ${TYK_DASHBOARD_SECRET}
-      env:
-        TYK_SYNC_VERSION: ${{ vars.TYK_SYNC_VERSION }}
-        TYK_DASHBOARD_URL: ${{ secrets.TYK_DASHBOARD_URL }}
-        TYK_DASHBOARD_SECRET: ${{ secrets.TYK_DASHBOARD_SECRET }}
-```
-
-##### Set up secrets
-
-1. Go to your GitHub repository.
-2. Navigate to Settings > Secrets and variables > Actions.
-3. Add the following variable:
-    - `TYK_SYNC_VERSION`: The version of Tyk Sync you want to use (e.g., v2.0.0).
-4. Add the following secrets:
-    - `TYK_DASHBOARD_URL`: The URL of your Tyk Dashboard.
-    - `TYK_DASHBOARD_SECRET`: The secret key for your Tyk Dashboard.
-
-##### Commit and push changes
-
-Commit the `tyk-sync.yml` file and push it to the main branch of your repository.
-
-##### Verify synchronisation
-
-Each time there is a change in the repository, the GitHub Action will be triggered. It will create the `.tyk.json` file including all JSON files in the repository and use the `sync` command to update the Tyk installation.
-
-
-#### Update API Definitions locally
-For API developers managing definitions locally, Tyk Sync's publish or update commands can upload local API definitions directly to the Tyk Dashboard, streamlining updates and keeping definitions in sync during development. Follow these steps to update your API definitions locally.
-
-##### Prepare your API Definition
-
-Create your API definition file and save it locally. For example, save it as *api1.json* in a directory structure of your choice.
-
-##### Create a .tyk.json index file
-
-In the root directory of your API definitions, create a `.tyk.json` file to list all API definition files that Tyk Sync should process.
-
-Example `.tyk.json`:
-```json
-{
-  "type": "apidef",
-  "files": [
-    { 
-        "file": "api1.json" 
-    }
-  ]
-}
-```
-
-##### Install Tyk Sync via Docker
-
-If you haven't installed Tyk Sync, you can do so via Docker:
-
-```bash
-docker pull tykio/tyk-sync:v2.0.0
-```
-
-##### Publish API Definitions to Tyk
-
-Use the `publish` command to upload your local API definitions to Tyk. Use Docker bind mounts to access your local files.
-
-```bash
-docker run -v /path/to/your/directory:/app/data tykio/tyk-sync:v2.0.0 publish \
-  --path /app/data \
-  --dashboard [DASHBOARD_URL] \
-  --secret [SECRET]
-```
-
-##### Update API Definitions to Tyk
-
-Similarly, to update existing API definitions, use the update command.
-
-```bash
-docker run -v /path/to/your/directory:/app/data tykio/tyk-sync:v2.0.0 update \
-  --path /app/data \
-  --dashboard [DASHBOARD_URL] \
-  --secret [SECRET]
-```
-
-##### Verify the update
-
-Log in to your Tyk Dashboard to verify that the API definitions have been published or updated successfully.
-
-
-### Tyk Sync Commands
-
-#### Dump Command
-
-| Aspect        | Details                                                                                              |
-|---------------|------------------------------------------------------------------------------------------------------|
-| **Command**   | `tyk-sync dump`                                                                                       |
-| **Usage**     | ```tyk-sync dump -d DASHBOARD_URL [-s SECRET] [-t PATH]```                                                 |
-| **Flags**     | `-d, --dashboard DASHBOARD_URL`: Tyk Dashboard URL (required)<br>                                    `-h, --help`: Help for the dump command<br>                                   `-t, --target PATH`: Target directory for output files (optional)<br>                                    `-s, --secret SECRET`: API secret for Dashboard access (optional)<br>                                    `--apis IDS`: Specific API IDs to dump<br>                                    `--oas-apis IDS`: Specific OAS API IDs to dump<br>                                    `--policies IDS`: Specific policy IDs to dump<br>                                    `--templates IDS`: Specific template IDs to dump |
-| **Example**   | ```tyk-sync dump --dashboard http://tyk-dashboard:3000 --secret your-secret ```|
-| **Example** | ```tyk-sync dump --dashboard http://tyk-dashboard:3000 --secret your-secret --target /path/to/backup --apis c2ltcGxlLWdyYXBoLWRldi90eWthcGktc2NoZW1h,baa5d2b65f1b45385dac3aeb658fa04c ``` |
-
-#### Examples Command
-
-| Aspect        | Details                                                                                              |
-|---------------|------------------------------------------------------------------------------------------------------|
-| **Command**   | `tyk-sync examples`                                                                                   |
-| **Usage**     | ```tyk-sync examples [flags]```<br>```tyk-sync examples [command]```                                           |
-| **Subcommands**| `publish`: Publish a specific example<br> `show`: Show details of a specific example              |
-| **Flags**     | `-h, --help`: Help for examples command                                                             |
-| **Example**   | ```tyk-sync examples ```                                                                         |
-
-#### Examples Show Command
-
-| Aspect        | Details                                                                                              |
-|---------------|------------------------------------------------------------------------------------------------------|
-| **Command**   | ```tyk-sync examples show```                                                                              |
-| **Usage**     | ```tyk-sync examples show [flags]```                                                                      |
-| **Flags**     | `-h, --help`: Help for show command<br> `-l, --location string`: Location of the example           |
-| **Example**   | ```tyk-sync examples show --location="udg/vat-checker" ```                                       |
-
-#### Examples Publish Command
-
-| Aspect        | Details                                                                                              |
-|---------------|------------------------------------------------------------------------------------------------------|
-| **Command**   | ```tyk-sync examples publish```                                                                           |
-| **Usage**     | ```tyk-sync examples publish [flags]```                                                                   |
-| **Flags**     | `-b, --branch string`: Branch to use (default "refs/heads/main")<br> `-d, --dashboard string`: Dashboard target URL<br> `-g, --gateway string`: Gateway target URL<br> `-h, --help`: Help for publish command<br> `-k, --key string`: Key file location for auth<br> `-l, --location string`: Location of the example<br> `-s, --secret string`: API secret<br> `--test`: Use test publisher, output to stdio |
-| **Example**   | ```tyk-sync examples publish -d="http://localhost:3000" -s="b2d420ca5302442b6f20100f76de7d83" -l="udg/vat-checker" ``` |
-
-#### Publish Command
-
-| Aspect        | Details                                                                                              |
-|---------------|------------------------------------------------------------------------------------------------------|
-| **Command**   | ```tyk-sync publish```                                                                                    |
-| **Usage**     | ```tyk-sync publish {-d DASHBOARD_URL \| -g GATEWAY_URL} [-s SECRET] [-b BRANCH] [-k SSHKEY] [-o ORG_ID] REPOSITORY_URL```<br><br>```tyk-sync publish {-d DASHBOARD_URL \| -g GATEWAY_URL} [-s SECRET] [-o ORG_ID] -p PATH``` |
-| **Flags**     |  `-b, --branch BRANCH`: Git branch (default "refs/heads/master")<br> `-d, --dashboard DASHBOARD_URL`: Dashboard URL<br> `-g, --gateway GATEWAY_URL`: Gateway URL<br> `-h, --help`: Help for publish command<br> `-k, --key SSHKEY`: SSH key file location<br> `-p, --path PATH`: Source file directory<br> `-s, --secret SECRET`: API secret<br> `--test`: Use test publisher<br> `--apis IDS`: Specific API IDs to publish<br> `--oas-apis IDS`: Specific OAS API IDs to publish<br> `--policies IDS`: Specific policy IDs to publish<br> `--templates IDS`: Specific template IDs to publish |
-| **Example**   | ```tyk-sync publish -d http://tyk-dashboard:3000 -s your-secret -p /app/data --apis 726e705e6afc432742867e1bd898cb23 ```|
-| **Example** | ```tyk-sync publish -d http://tyk-dashboard:3000 -s your-secret -b develop https://github.com/your-repo/your-apis ``` |
-
-#### Sync Command
-
-| Aspect        | Details                                                                                              |
-|---------------|------------------------------------------------------------------------------------------------------|
-| **Command**   | `tyk-sync sync`                                                                                       |
-| **Usage**     | ```tyk-sync sync {-d DASHBOARD_URL \| -g GATEWAY_URL} [-s SECRET] [-b BRANCH] [-k SSHKEY] [-o ORG_ID] REPOSITORY_URL```<br><br>```tyk-sync sync {-d DASHBOARD_URL \| -g GATEWAY_URL} [-s SECRET] [-o ORG_ID] -p PATH``` |
-| **Flags**     | `-b, --branch BRANCH`: Git branch (default "refs/heads/master")<br> `-d, --dashboard DASHBOARD_URL`: Dashboard URL<br> `-g, --gateway GATEWAY_URL`: Gateway URL<br> `-h, --help`: Help for sync command<br> `-k, --key SSHKEY`: SSH key file location<br> `-o, --org ORG_ID`: Override organization ID<br> `-p, --path PATH`: Source file directory<br> `-s, --secret SECRET`: API secret<br> `--test`: Use test publisher<br> `--apis IDS`: Specific API IDs to sync (to be deprecated)<br> `--policies IDS`: Specific policy IDs to sync (to be deprecated) |
-| **Example**   | ```tyk-sync sync -d http://tyk-dashboard:3000 -s your-secret https://github.com/your-repo/your-apis ```|
-| **Example** | ```tyk-sync sync -d http://tyk-dashboard:3000 -s your-secret -p /path/to/your/apis ``` |
-
-#### Update Command
-
-| Aspect        | Details                                                                                              |
-|---------------|------------------------------------------------------------------------------------------------------|
-| **Command**   | `tyk-sync update`                                                                                     |
-| **Usage**     | ```tyk-sync update {-d DASHBOARD_URL \| -g GATEWAY_URL} [-s SECRET] [-b BRANCH] [-k SSHKEY] [-o ORG_ID] REPOSITORY_URL```<br><br>```tyk-sync update {-d DASHBOARD_URL \| -g GATEWAY_URL} [-s SECRET] [-o ORG_ID] -p PATH``` |
-| **Flags**     | `-b, --branch BRANCH`: Git branch (default "refs/heads/master")<br> `-d, --dashboard DASHBOARD_URL`: Dashboard URL<br> `-g, --gateway GATEWAY_URL`: Gateway URL<br> `-h, --help`: Help for update command<br> `-k, --key SSHKEY`: SSH key file location<br> `-p, --path PATH`: Source file directory<br> `-s, --secret SECRET`: API secret<br> `--test`: Use test publisher<br> `--apis IDS`: Specific API IDs to update<br> `--oas-apis IDS`: Specific OAS API IDs to update<br> `--policies IDS`: Specific policy IDs to update<br> `--templates IDS`: Specific template IDs to update |
-| **Example**   | ```tyk-sync update -d http://tyk-dashboard:3000 -s your-secret -p /app/data --apis 726e705e6afc432742867e1bd898cb23```|
-| **Example** | ```tyk-sync update -d http://tyk-dashboard:3000 -s your-secret -b develop https://github.com/your-repo/your-apis ``` |
-
 ## Troubleshooting and FAQ
+
+### Can I use Tyk Operator with non-Kubernetes Tyk installations?
+
+While Tyk Operator is designed to work within a Kubernetes environment, you can still use it to manage non-Kubernetes Tyk installations. You'll need to:
+
+1. Run Tyk Operator in a Kubernetes cluster.
+2. Configure Tyk Operator to point to your external Tyk installation, e.g. via `tyk-operator-conf`, environment variable, or OperatorContext:
+```yaml
+    TYK_MODE: pro
+    TYK_URL: http://external-tyk-dashboard
+    TYK_AUTH: api-access-key
+    TYK_ORG: org-id
+```
+
+This allows you to manage your external Tyk installation using Kubernetes resources.
+
+
+### Tyk Operator changes not applied
+
+From [Tyk Operator v0.15.0](https://github.com/TykTechnologies/tyk-operator/releases/tag/v0.15.0), we introduce a new status [subresource](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#subresources) in APIDefinition CRD, called _latestTransaction_ which holds information about reconciliation status.
+
+> The [Status subresource](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#status-subresource) in Kubernetes is a specialized endpoint that allows developers and operators to retrieve the real-time status of a specific Kubernetes resource. By querying this subresource, users can efficiently access essential information about a resource's current state, conditions, and other relevant details without fetching the entire resource, simplifying monitoring and aiding in prompt decision-making and issue resolution.
+
+The new status subresource _latestTransaction_ consists of a couple of fields that show the latest result of the reconciliation:
+- `.status.latestTransaction.status`: shows the status of the latest reconciliation, either Successful or Failed;
+- `.status.latestTransaction.time`: shows the time of the latest reconciliation;
+- `.status.latestTransaction.error`: shows the message of an error if observed in the latest transaction.
+
+#### Example: Find out why an APIDefinition resource cannot be deleted
+Consider the scenario when APIDefinition and SecurityPolicy are connected. Usually, APIDefinition cannot be deleted directly since it is protected by SecurityPolicy. The proper approach to remove an APIDefinition is to first remove the reference to the SecurityPolicy (either by deleting the SecurityPolicy CR or updating SecurityPolicy CR’s specification), and then remove the APIDefinition itself. However, if we directly delete this APIDefinition, Tyk Operator won’t delete the APIDefinition unless the link between SecurityPolicy and APIDefinition is removed. It is to protect the referential integrity between your resources.
+
+```console
+$ kubectl delete tykapis httpbin 
+apidefinition.tyk.tyk.io "httpbin" deleted 
+^C%
+```
+
+After deleting APIDefinition, the operation hangs, and we suspect that something is wrong. 
+Users might still look through the logs to comprehend the issue, as they did in the past, but they can now examine their APIDefinition’s status subresource to make their initial, speedy issue diagnosis.
+
+```console
+$ kubectl get tykapis httpbin 
+NAME      DOMAIN   LISTENPATH   PROXY.TARGETURL      ENABLED   STATUS
+httpbin            /httpbin     http://httpbin.org   true      Failed
+```
+As seen in the STATUS column, something went wrong, and the STATUS is Failed. 
+
+To get more information about the APIDefinition resource, we can use `kubectl describe` or `kubectl get`:
+```console
+$ kubectl describe tykapis httpbin 
+Name:         httpbin 
+Namespace:    default 
+API Version:  tyk.tyk.io/v1alpha1 
+Kind:         ApiDefinition 
+Metadata:
+  ... 
+Spec:
+   ...
+Status:
+  api_id:                ZGVmYXVsdC9odHRwYmlu
+  Latest CRD Spec Hash:  9169537376206027578
+  Latest Transaction:
+    Error:               unable to delete api due to security policy dependency=default/httpbin
+    Status:              Failed
+    Time:                2023-07-18T07:26:45Z
+  Latest Tyk Spec Hash:  14558493065514264307
+  linked_by_policies:
+    Name:       httpbin
+    Namespace:  default
+```
+or
+```console
+$ kubectl get tykapis httpbin -o json | jq .status.latestTransaction
+{
+  "error": "unable to delete api due to security policy dependency=default/httpbin",
+  "status": "Failed",
+  "time": "2023-07-18T07:26:45Z"
+}
+```
+Instead of digging into Tyk Operator's logs, we can now diagnose this issue simply by looking at the `.status.latestTransaction` field. As `.status.latestTransaction.error` implies, the error is related to *SecurityPolicy* dependency. 
+
+
+
+
+### Can I use Tyk Operator with multiple Tyk installations?
+
+Yes, you can use Tyk Operator to manage multiple Tyk installations. You'll need to create separate `OperatorContext` resources for each installation:
+
+```yaml
+apiVersion: tyk.tyk.io/v1alpha1
+kind: OperatorContext
+metadata:
+  name: prod-context
+spec:
+  env:
+    TYK_MODE: pro
+    TYK_URL: http://tyk-dashboard-staging
+    TYK_AUTH: prod-secret
+---
+apiVersion: tyk.tyk.io/v1alpha1
+kind: OperatorContext
+metadata:
+  name: staging-context
+spec:
+  env:
+    TYK_MODE: pro
+    TYK_URL: http://tyk-dashboard-staging
+    TYK_AUTH: staging-secret
+```
+
+Then, you can specify which context to use in your API and Policy resources:
+
+```yaml
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: my-api
+spec:
+  name: My API
+  context: prod-context
+  # ... other API configuration
+```
 
 ### What Features Are Supported By Tyk Operator?
 
@@ -4597,181 +4268,5 @@ Here are the supported features:
 | Per-Endpoint limit             | ✅        | v1.0           | [Per Endpoint Limit]({{< ref "#security-policy-example" >}})        |
 
 
-### How are Tyk configurations synchronized to Git?
-
-Tyk Sync allows you to dump configurations to a local directory, which can then be committed to a Git repository. This enables version control and easy synchronization across environments.
-
-For example:
-1. Dump configurations: `tyk-sync dump -d http://dashboard:3000 -s secret -t ./configs`
-2. Commit to Git: 
-   ```
-   cd configs
-   git add .
-   git commit -m "Update Tyk configurations"
-   git push
-   ```
-
-### Can I sync multiple APIs to a single Git repository?
-
-Yes, you can store multiple API definitions, policies, and other Tyk resources in a single Git repository. Tyk Sync and Tyk Operator can work with multiple resources in the same directory.
-
-Your repository structure might look like this:
-```
-tyk-configs/
-├── apis/
-│   ├── api1.yaml
-│   └── api2.yaml
-├── policies/
-│   ├── policy1.yaml
-│   └── policy2.yaml
-└── tyk-operator/
-    └── operator-context.yaml
-```
-
-### Tyk Operator changes not applied
-
-From [Tyk Operator v0.15.0](https://github.com/TykTechnologies/tyk-operator/releases/tag/v0.15.0), we introduce a new status [subresource](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#subresources) in APIDefinition CRD, called _latestTransaction_ which holds information about reconciliation status.
-
-> The [Status subresource](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#status-subresource) in Kubernetes is a specialized endpoint that allows developers and operators to retrieve the real-time status of a specific Kubernetes resource. By querying this subresource, users can efficiently access essential information about a resource's current state, conditions, and other relevant details without fetching the entire resource, simplifying monitoring and aiding in prompt decision-making and issue resolution.
-
-The new status subresource _latestTransaction_ consists of a couple of fields that show the latest result of the reconciliation:
-- `.status.latestTransaction.status`: shows the status of the latest reconciliation, either Successful or Failed;
-- `.status.latestTransaction.time`: shows the time of the latest reconciliation;
-- `.status.latestTransaction.error`: shows the message of an error if observed in the latest transaction.
-
-#### Example: Find out why an APIDefinition resource cannot be deleted
-Consider the scenario when APIDefinition and SecurityPolicy are connected. Usually, APIDefinition cannot be deleted directly since it is protected by SecurityPolicy. The proper approach to remove an APIDefinition is to first remove the reference to the SecurityPolicy (either by deleting the SecurityPolicy CR or updating SecurityPolicy CR’s specification), and then remove the APIDefinition itself. However, if we directly delete this APIDefinition, Tyk Operator won’t delete the APIDefinition unless the link between SecurityPolicy and APIDefinition is removed. It is to protect the referential integrity between your resources.
-
-```console
-$ kubectl delete tykapis httpbin 
-apidefinition.tyk.tyk.io "httpbin" deleted 
-^C%
-```
-
-After deleting APIDefinition, the operation hangs, and we suspect that something is wrong. 
-Users might still look through the logs to comprehend the issue, as they did in the past, but they can now examine their APIDefinition’s status subresource to make their initial, speedy issue diagnosis.
-
-```console
-$ kubectl get tykapis httpbin 
-NAME      DOMAIN   LISTENPATH   PROXY.TARGETURL      ENABLED   STATUS
-httpbin            /httpbin     http://httpbin.org   true      Failed
-```
-As seen in the STATUS column, something went wrong, and the STATUS is Failed. 
-
-To get more information about the APIDefinition resource, we can use `kubectl describe` or `kubectl get`:
-```console
-$ kubectl describe tykapis httpbin 
-Name:         httpbin 
-Namespace:    default 
-API Version:  tyk.tyk.io/v1alpha1 
-Kind:         ApiDefinition 
-Metadata:
-  ... 
-Spec:
-   ...
-Status:
-  api_id:                ZGVmYXVsdC9odHRwYmlu
-  Latest CRD Spec Hash:  9169537376206027578
-  Latest Transaction:
-    Error:               unable to delete api due to security policy dependency=default/httpbin
-    Status:              Failed
-    Time:                2023-07-18T07:26:45Z
-  Latest Tyk Spec Hash:  14558493065514264307
-  linked_by_policies:
-    Name:       httpbin
-    Namespace:  default
-```
-or
-```console
-$ kubectl get tykapis httpbin -o json | jq .status.latestTransaction
-{
-  "error": "unable to delete api due to security policy dependency=default/httpbin",
-  "status": "Failed",
-  "time": "2023-07-18T07:26:45Z"
-}
-```
-Instead of digging into Tyk Operator's logs, we can now diagnose this issue simply by looking at the `.status.latestTransaction` field. As `.status.latestTransaction.error` implies, the error is related to *SecurityPolicy* dependency. 
 
 
-
-
-### Can I use Tyk Operator with multiple Tyk installations?
-
-Yes, you can use Tyk Operator to manage multiple Tyk installations. You'll need to create separate `OperatorContext` resources for each installation:
-
-```yaml
-apiVersion: tyk.tyk.io/v1alpha1
-kind: OperatorContext
-metadata:
-  name: prod-context
-spec:
-  env:
-    TYK_MODE: pro
-    TYK_URL: http://tyk-dashboard-staging
-    TYK_AUTH: prod-secret
----
-apiVersion: tyk.tyk.io/v1alpha1
-kind: OperatorContext
-metadata:
-  name: staging-context
-spec:
-  env:
-    TYK_MODE: pro
-    TYK_URL: http://tyk-dashboard-staging
-    TYK_AUTH: staging-secret
-```
-
-Then, you can specify which context to use in your API and Policy resources:
-
-```yaml
-apiVersion: tyk.tyk.io/v1alpha1
-kind: ApiDefinition
-metadata:
-  name: my-api
-spec:
-  name: My API
-  context: prod-context
-  # ... other API configuration
-```
-
-### How do I roll back changes made with Tyk Sync?
-
-To roll back changes made with Tyk Sync:
-
-1. If you're using Git, check out the previous version of your configurations:
-   ```bash
-   git checkout <previous-commit-hash>
-   ```
-
-2. Use Tyk Sync to publish the previous version:
-   ```bash
-   tyk-sync sync -d http://dashboard:3000 -s <secret> -p ./
-   ```
-
-It's a good practice to maintain separate branches or tags for different environments to make rollbacks easier.
-
-### Can I use Tyk Operator with non-Kubernetes Tyk installations?
-
-While Tyk Operator is designed to work within a Kubernetes environment, you can still use it to manage non-Kubernetes Tyk installations. You'll need to:
-=======
-{{< grid >}}
->>>>>>> 05e0e147b... Restructure Automations Page (#5921)
-
-{{< badge read="10 mins" href="api-management/automations/sync" image="/img/GitHub-Mark-64px.png" alt="Tyk Sync">}}
-Synchronize Tyk Environment With GitHub using Tyk Sync. 
-{{< /badge >}}
-
-{{< badge read="10 mins" href="api-management/automations/operator" image="/img/k8s.png" alt="Tyk Operator">}}
-API Management in Kubernetes using Tyk Operator. 
-{{< /badge >}}
-
-{{< /grid >}}
-
-## Conclusion
-
-With Tyk’s automation tools, you now have a set of options for streamlining API management, from handling deployments within Kubernetes to establishing consistency across multiple environments. By integrating these tools, you can simplify complex API workflows, maintain secure configurations, and save time through reduced manual intervention.
-
-To continue building on what you’ve set up here, explore the following topics:
-
-- **Advanced Tyk API Management**: Leverage more of Tyk’s API capabilities for custom integrations and further automation possibilities. You can learn more about Tyk's custom integrations [here]({{<ref "product-stack/tyk-operator/advanced-configurations/custom-plugins">}})
-- **GraphQL Support**: You can learn more about how to support GraphQL federation via Tyk Operator [here]({{<ref "product-stack/tyk-operator/advanced-configurations/graphql-federation">}})

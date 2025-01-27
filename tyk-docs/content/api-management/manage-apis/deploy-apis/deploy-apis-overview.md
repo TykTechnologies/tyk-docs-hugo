@@ -42,7 +42,7 @@ Tyk Sync enables declarative API management and GitOps. With Tyk Sync, you can m
 Usage: Recommended for organizations looking to implement GitOps in API management and have portable API and Policy configurations.
 
 Learn more:
-- [Tyk Sync]({{<ref "/api-management/automations#synchronize-tyk-environment-with-github-repository">}})
+- [Tyk Sync]({{<ref "api-management/automations/sync">}})
 
 ## Tyk Operator
 
@@ -51,7 +51,7 @@ Building on the capabilities of Tyk Sync and GitOps, Tyk Operator provides a pow
 Usage: Recommended for organizations already running Kubernetes and seeking a Kubernetes-native, automated approach to API deployment and management.
 
 Learn more:
-- [Tyk Operator]({{<ref "/api-management/automations#what-is-tyk-operator">}})
+- [Tyk Operator]({{<ref "api-management/automations/operator#what-is-tyk-operator">}})
 - [Using Tyk Operator to enable GitOps with Tyk]({{<ref "api-management/automations">}})
 
 With these flexible deployment options, you can easily design, develop, and deploy APIs in Tyk according to your specific requirements and workflow. Choose the option that best aligns with your needs and integrates smoothly into your API development lifecycle.
