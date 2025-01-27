@@ -171,12 +171,6 @@ menu:
         path: /api-management/api-versioning
         category: Page
         show: True
-<<<<<<< HEAD
-      - title: "API Versioning"
-        path: /api-management/api-versioning
-        category: Page
-        show: True
-=======
       - title: "Gateway Configuration"
         category: Directory
         show: True
@@ -193,7 +187,6 @@ menu:
             path: /api-management/gateway-config-tyk-classic
             category: Page
             show: True
->>>>>>> c5768a06c... New IA - Gateway Configuration (#5895)
       - title: "Troubleshooting"
         path: /api-management/troubleshooting-debugging
         category: Page
