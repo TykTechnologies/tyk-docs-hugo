@@ -1469,14 +1469,6 @@ menu:
             category: Directory
             show: True
             menu:
-              - title: "Gateway API Overview"
-                path: /getting-started/key-concepts/gateway-api
-                category: Page
-                show: True
-              - title: "Tyk Classic API Definition Object"
-                path: /tyk-gateway-api/api-definition-objects
-                category: Page
-                show: True
               - title: "Token Session Object"
                 path: /tyk-apis/tyk-gateway-api/token-session-object-details
                 category: Page
