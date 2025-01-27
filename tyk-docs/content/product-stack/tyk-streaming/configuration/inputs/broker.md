@@ -1,5 +1,5 @@
 ---
-title: Broker
+title: Tyk Strems Broker Input
 description: Explains input broker
 tags: [ "Tyk Streams", "Inputs", "Broker" ]
 ---

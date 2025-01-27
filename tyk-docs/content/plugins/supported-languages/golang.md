@@ -52,5 +52,4 @@ This diagram shows how every Tyk Gateway will search and load the plugin binary 
 The following supporting resources are provided for developing plugins on Tyk Cloud:
 
 - [Enabling Plugins On The Control Plane](https://tyk.io/docs/tyk-cloud/configuration-options/using-plugins/setup-control-plane/#what-do-i-need-to-do-to-use-plugins)
-- [Uploading Your Plugin Bundle To S3 Bucket](https://tyk.io/docs/tyk-cloud/configuration-options/using-plugins/uploading-bundle/#how-do-i-upload-my-bundle-file-to-my-amazon-s3-bucket)
-
+- [Uploading Your Plugin Bundle To S3 Bucket](https://tyk.io/docs/tyk-cloud#uploading-your-bundle)

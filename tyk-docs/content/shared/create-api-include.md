@@ -15,7 +15,7 @@ For a detailed tutorial on using OAS with Tyk Gateway, check out our guide to [c
 
 **Prerequisites**
 
-In order to complete this tutorial, you need to have [Tyk Self Managed installed]({{< ref "tyk-self-managed/install" >}}).
+In order to complete this tutorial, you need to have [Tyk Self Managed installed]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}).
 
 {{< button_left href="https://tyk.io/sign-up/#self" color="green" content="Try it free" >}}
 

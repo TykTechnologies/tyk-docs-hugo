@@ -535,9 +535,9 @@ performance. For a comprehensive list of changes, please refer to the detailed
 ##### Per endpoint Rate Limiting for clients
 
 Building on the [per-endpoint upstream rate
-limits]({{< ref "getting-started/key-concepts/rate-limiting#api-level-rate-limiting" >}}) introduced in Tyk 5.5.0 we have
+limits]({{< ref "api-management/rate-limit#api-level-rate-limiting" >}}) introduced in Tyk 5.5.0 we have
 now added [per-endpoint client
-rate limits]({{< ref "getting-started/key-concepts/rate-limiting#key-level-rate-limiting" >}}). This new feature allows
+rate limits]({{< ref "api-management/rate-limit#key-level-rate-limiting" >}}). This new feature allows
 for more granular control over client consumption of API resources by associating the rate limit with the access key,
 enabling you to manage and optimize API usage more effectively.
 
@@ -649,9 +649,9 @@ Each change log item should be expandable. The first line summarises the changel
 <summary>Per endpoint client rate limiting </summary>
 
 Building on the [per-endpoint upstream rate
-limits]({{< ref "getting-started/key-concepts/rate-limiting#api-level-rate-limiting" >}}) introduced in Tyk 5.5.0 we have
+limits]({{< ref "api-management/rate-limit#api-level-rate-limiting" >}}) introduced in Tyk 5.5.0 we have
 added [per-endpoint client
-rate limits]({{< ref "getting-started/key-concepts/rate-limiting#key-level-rate-limiting" >}}). This new feature
+rate limits]({{< ref "api-management/rate-limit#key-level-rate-limiting" >}}). This new feature
 provided users with more precise control over API resource consumption by linking rate limits to access keys, allowing
 for better management and optimization of API usage.
 
@@ -927,7 +927,7 @@ The example Gateway configuration file `tyk.conf.example` has been updated to se
 <details>
 <summary>Incorrectly configured regex in policy affected Path-Based Permissions authorization</summary>
 
-Fixed an issue when using granular [Path-Based Permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}) in access policies and keys that led to authorization incorrectly being granted to endpoints if an invalid regular expression was configured in the key/policy. Also fixed an issue where path-based parameters were not correctly handled by Path-Based Permissions. Now Tyk's authorization check correctly handles both of these scenarios granting access only to the expected resources.
+Fixed an issue when using granular [Path-Based Permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}) in access policies and keys that led to authorization incorrectly being granted to endpoints if an invalid regular expression was configured in the key/policy. Also fixed an issue where path-based parameters were not correctly handled by Path-Based Permissions. Now Tyk's authorization check correctly handles both of these scenarios granting access only to the expected resources.
 </details>
 </li>
 <li>
@@ -954,7 +954,7 @@ We are thrilled to introduce Tyk Gateway 5.5, bringing advanced rate-limiting ca
 
 ##### Per Endpoint Rate Limiting
 
-Now configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas" >}}) and [Tyk Classic APIs]({{< ref "product-stack/tyk-gateway/middleware/endpoint-rate-limit-classic" >}}), providing granular protection for upstream services against overloading and abuse.
+Now configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "api-management/rate-limit#tyk-oas-api-definition" >}}) and [Tyk Classic APIs]({{< ref "api-management/rate-limit#tyk-classic-api-definition" >}}), providing granular protection for upstream services against overloading and abuse.
 
 ##### Root CA Support for Client Certificates
 
@@ -1155,7 +1155,7 @@ links to API documentation and FAQs. You can copy it from the previous release. 
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 **Attention: Please read this section carefully**
 
-We have fixed a bug in the way that Tyk calculates the [key-level rate limit]({{< ref "getting-started/key-concepts/rate-limiting#key-level-rate-limiting" >}}) when multiple policies are applied to the same key. This fix alters the logic used to calculate the effective rate limit and so may lead to a different rate limit being applied to keys generated from your existing policies. See the [change log](#fixed) for details of the change.
+We have fixed a bug in the way that Tyk calculates the [key-level rate limit]({{< ref "api-management/rate-limit#key-level-rate-limiting" >}}) when multiple policies are applied to the same key. This fix alters the logic used to calculate the effective rate limit and so may lead to a different rate limit being applied to keys generated from your existing policies. See the [change log](#fixed) for details of the change.
 
 #### Dependencies {#dependencies-5.4.0}
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
@@ -1220,7 +1220,7 @@ We're thrilled to introduce exciting enhancements in Tyk Gateway 5.4, aimed at i
 
 ##### Enhanced Rate Limiting Strategies
 
-We've introducing a [Rate Limit Smoothing]({{< ref "/getting-started/key-concepts/rate-limiting#rate-limit-smoothing" >}}) option for the spike arresting Redis Rate Limiter to give the upstream time to scale in response to increased request rates.
+We've introducing a [Rate Limit Smoothing]({{< ref "/api-management/rate-limit#rate-limit-smoothing" >}}) option for the spike arresting Redis Rate Limiter to give the upstream time to scale in response to increased request rates.
 
 ##### Fixed MDCB Issue Relating To Replication Of Custom Keys To Dataplanes
 
@@ -1236,11 +1236,11 @@ Customers should clear their edge Redis instances of any potentially affected ke
 
 ##### Fixed Window Rate Limiter
 
-Ideal for persistent connections with load-balanced gateways, the [Fixed Window Rate Limiter]({{< ref "/getting-started/key-concepts/rate-limiting#fixed-window-rate-limiter" >}}) algorithm mechanism ensures fair handling of requests by allowing only a predefined number to pass per rate limit window. It uses a simple shared counter in Redis so requests do not need to be evenly balanced across the gateways.
+Ideal for persistent connections with load-balanced gateways, the [Fixed Window Rate Limiter]({{< ref "/api-management/rate-limit#fixed-window-rate-limiter" >}}) algorithm mechanism ensures fair handling of requests by allowing only a predefined number to pass per rate limit window. It uses a simple shared counter in Redis so requests do not need to be evenly balanced across the gateways.
 
 ##### Event handling with Tyk OAS
 
-We’ve added support for you to [register webhooks]({{< ref "/basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) with your Tyk OAS APIs so that you can handle events triggered by the Gateway, including circuit breaker and quota expiry. You can also assign webhooks to be fired when using the new [smoothing rate limiter]({{< ref "/getting-started/key-concepts/rate-limiting#rate-limit-smoothing" >}}) to notify your systems of ongoing traffic spikes.
+We’ve added support for you to [register webhooks]({{< ref "/basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) with your Tyk OAS APIs so that you can handle events triggered by the Gateway, including circuit breaker and quota expiry. You can also assign webhooks to be fired when using the new [smoothing rate limiter]({{< ref "/api-management/rate-limit#rate-limit-smoothing" >}}) to notify your systems of ongoing traffic spikes.
 
 ##### Enhanced Header Handling in GraphQL APIs
 
@@ -1276,14 +1276,14 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Implemented Fixed Window Rate Limiting for load balancers with keep-alives</summary>
 
-Introduced a [Fixed Window Rate Limiting]({{< ref "/getting-started/key-concepts/rate-limiting#fixed-window-rate-limiter" >}}) mechanism to handle rate limiting for load balancers with keep-alives. This algorithm allows the defined number of requests to pass for every rate limit window and blocks any excess requests. It uses a simple shared counter in Redis to count requests. It is suitable for situations where traffic towards Gateways is not balanced fairly. To enable this rate limiter, set `enable_fixed_window_rate_limiter` in the gateway config or set the environment variable `TYK_GW_ENABLEFIXEDWINDOWRATELIMITER=true`.
+Introduced a [Fixed Window Rate Limiting]({{< ref "/api-management/rate-limit#fixed-window-rate-limiter" >}}) mechanism to handle rate limiting for load balancers with keep-alives. This algorithm allows the defined number of requests to pass for every rate limit window and blocks any excess requests. It uses a simple shared counter in Redis to count requests. It is suitable for situations where traffic towards Gateways is not balanced fairly. To enable this rate limiter, set `enable_fixed_window_rate_limiter` in the gateway config or set the environment variable `TYK_GW_ENABLEFIXEDWINDOWRATELIMITER=true`.
 </details>
 </li>
 <li>
 <details>
 <summary>Introduced Rate Limit Smoothing for scaling</summary>
 
-Implemented [Rate Limit Smoothing]({{< ref "/getting-started/key-concepts/rate-limiting#rate-limit-smoothing" >}}) as an extension to the existing Redis Rate Limiter to gradually adjust the rate based on smoothing configuration. Two new Gateway events have been created  (`RateLimitSmoothingUp` and `RateLimitSmoothingDown`) which will be triggered as smoothing occurs. These can be used to assist with auto-scaling of upstream capacity during traffic spikes.
+Implemented [Rate Limit Smoothing]({{< ref "/api-management/rate-limit#rate-limit-smoothing" >}}) as an extension to the existing Redis Rate Limiter to gradually adjust the rate based on smoothing configuration. Two new Gateway events have been created  (`RateLimitSmoothingUp` and `RateLimitSmoothingDown`) which will be triggered as smoothing occurs. These can be used to assist with auto-scaling of upstream capacity during traffic spikes.
 </details>
 </li>
 <li>
@@ -2180,7 +2180,7 @@ The example Gateway configuration file `tyk.conf.example` has been updated to se
 <summary>Incorrectly configured regex in policy affected Path-Based Permissions authorization</summary>
 
 Fixed an issue when using granular [Path-Based
-Permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}) in access policies and keys that led to authorization
+Permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}) in access policies and keys that led to authorization
 incorrectly being granted to endpoints if an invalid regular expression was configured in the key/policy. Also fixed an issue
 where path-based parameters were not correctly handled by Path-Based Permissions. Now Tyk's authorization check correctly
 handles both of these scenarios granting access only to the expected resources.
@@ -2980,7 +2980,7 @@ Tyk is able to store configuration data from the API definition in KV systems, s
 reference these values during configuration of the Tyk Gateway or APIs deployed on the Gateway. Previously this was
 limited to the Target URL and Listen Path but from 5.3.0 you are able to store any `string` type field from your API
 definition, unlocking the ability to store sensitive information in a centralised location. For full details check out
-the [documentation]({{< ref "tyk-configuration-reference/kv-store" >}}) of this powerful feature.
+the [documentation]({{< ref "tyk-self-managed#manage-multi-environment-and-distributed-setups" >}}) of this powerful feature.
 
 ##### Redis v7.x Compatibility
 
@@ -3242,7 +3242,7 @@ removal of the unnecessary `slug` field and simplification of the custom plugin 
 <summary>Optimized Gateway memory usage and reduced network request payload with Redis Rate Limiter</summary>
 
 We have optimized the allocation behavior of our sliding window log rate limiter implementation ([Redis
-Rate Limiter]({{< ref "getting-started/key-concepts/rate-limiting#redis-rate-limiter" >}})). Previously the complete
+Rate Limiter]({{< ref "api-management/rate-limit#redis-rate-limiter" >}})). Previously the complete
 request log would be retrieved from Redis. With this enhancement only the count of the requests in the window is
 retrieved, optimizing the interaction with Redis and decreasing the Gateway memory usage.
 
@@ -3688,14 +3688,14 @@ The following CVEs have been resolved in this release:
 <details>
 <summary>Enforced timeouts were incorrect on a per-request basis</summary>
 
-Fixed an issue where [enforced timeouts]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) values were incorrect on a per-request basis. Since we enforced timeouts only at the transport level and created the transport only once within the value set by [max_conn_time]({{< ref "tyk-oss-gateway/configuration#max_conn_time" >}}), the timeout in effect was not deterministic. Timeouts larger than 0 seconds are now enforced for each request.
+Fixed an issue where [enforced timeouts]({{< ref "tyk-self-managed#enforced-timeouts" >}}) values were incorrect on a per-request basis. Since we enforced timeouts only at the transport level and created the transport only once within the value set by [max_conn_time]({{< ref "tyk-oss-gateway/configuration#max_conn_time" >}}), the timeout in effect was not deterministic. Timeouts larger than 0 seconds are now enforced for each request.
 </details>
 </li>
 <li>
 <details>
 <summary>Incorrect access privileges were granted in security policies</summary>
 
-Fixed an issue when using MongoDB and [Tyk Security Policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) where Tyk could incorrectly grant access to an API after that API had been deleted from the associated policy. This was due to the policy cleaning operation that is triggered when an API is deleted from a policy in a MongoDB installation. With this fix, the policy cleaning operation will not remove the final (deleted) API from the policy; Tyk recognizes that the API record is invalid and denies granting access rights to the key.
+Fixed an issue when using MongoDB and [Tyk Security Policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}) where Tyk could incorrectly grant access to an API after that API had been deleted from the associated policy. This was due to the policy cleaning operation that is triggered when an API is deleted from a policy in a MongoDB installation. With this fix, the policy cleaning operation will not remove the final (deleted) API from the policy; Tyk recognizes that the API record is invalid and denies granting access rights to the key.
 </details>
 </li>
 <li>
@@ -4088,7 +4088,7 @@ Fixed an issue with introspecting GraphQL schemas that previously raised an erro
 <details>
 <summary>Enforced Timeout configuration parameter of an API endpoint was not validated</summary>
 
-Fixed an issue where the [Enforced Timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
+Fixed an issue where the [Enforced Timeout]({{< ref "tyk-self-managed#enforced-timeouts" >}}) configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
 </details>
 </li>
 <li>
@@ -4305,7 +4305,7 @@ change for existing users.**
 <summary>Incorrectly configured regex in policy affected Path-Based Permissions authorization</summary>
 
 Fixed an issue when using granular [Path-Based
-Permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}) in access policies and keys that led to authorization
+Permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}) in access policies and keys that led to authorization
 incorrectly being granted to endpoints if an invalid regular expression was configured in the key/policy. Also fixed an issue
 where path-based parameters were not correctly handled by Path-Based Permissions. Now Tyk's authorization check correctly
 handles both of these scenarios granting access only to the expected resources.
@@ -4560,7 +4560,7 @@ APIs, to transform API requests and responses, exposing your upstream services i
 internal API governance rules. We’ve enhanced the Request Validation for Tyk OAS APIs to include parameter validation
 (path, query, headers, cookie) as well as the body validation that was introduced in Tyk 4.1.
 
-[Versioning your Tyk OAS APIs]({{< ref "getting-started/key-concepts/oas-versioning" >}}) is easier than ever, with the
+[Versioning your Tyk OAS APIs]({{< ref "api-management/api-versioning#tyk-oas-api-versioning-1" >}}) is easier than ever, with the
 Tyk OSS Gateway now looking after the maintenance of the list of versions associated with the base API for you; we’ve
 also added a new endpoint on the Tyk API that will return details of the versions for a given API.
 
@@ -4671,7 +4671,7 @@ Tyk Gateway 4.3 ([docker images](https://hub.docker.com/r/tykio/tyk-gateway/tags
 
 Follow the [standard upgrade guide]({{< ref "developer-support/upgrading" >}}), there are no breaking changes in this release.
 
-If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "planning-for-production/database-settings/postgresql#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
+If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "tyk-self-managed#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
 
 {{< note success >}}
 **Note**  
@@ -4810,7 +4810,7 @@ Tyk Gateway 4.2
 
 Follow the [standard upgrade guide]({{< ref "developer-support/upgrading" >}}), there are no breaking changes in this release.
 
-If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "/content/planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
+If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "tyk-self-managed#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
 
 ## 4.1 Release Notes
 
@@ -4881,7 +4881,7 @@ Tyk MDCB 2.0.1
 
 Follow the [standard upgrade guide]({{< ref "developer-support/upgrading" >}}), there are no breaking changes in this release.
 
-If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "/content/planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
+If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "tyk-self-managed#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
  
 ## 4.0 Release Notes
 
@@ -4922,7 +4922,7 @@ Tyk Pump 1.5
 
 Follow the [standard upgrade guide]({{< ref "developer-support/upgrading" >}}), there are no breaking changes in this release.
 
-If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "/content/planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
+If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "tyk-self-managed#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
  
 ## 3.2 Release Notes
 
@@ -5062,7 +5062,7 @@ Read more about the [GraphQL]({{< ref "graphql" >}}) and [Universal Data Graph](
 
 Want to reference secrets from a KV store in your API definitions? We now have native Vault & Consul integration. You can even pull from a tyk.conf dictionary or environment variable file.
 
-[Read more]({{< ref "tyk-configuration-reference/kv-store" >}})
+[Read more]({{< ref "tyk-self-managed#manage-multi-environment-and-distributed-setups" >}})
 
 ##### Co-Process Response Plugins
 
@@ -5076,7 +5076,7 @@ At the moment the Response hook is supported for [Python and gRPC plugins]({{< r
 Now the standard Health Check API response include information about health of the dashboard, redis and mdcb connections.
 You can configure notifications or load balancer rules, based on new data. For example, you can be notified if your Tyk Gateway can’t connect to the Dashboard (or even if it was working correctly with the last known configuration).
 
-[Read More]({{< ref "planning-for-production/ensure-high-availability/health-check" >}})
+[Read More]({{< ref "tyk-self-managed#set-up-liveness-health-checks" >}})
 
 ##### Enhanced Detailed logging
 Detailed logging is used in a lot of the cases for debugging issues. Now as well as enabling detailed logging globally (which can cause a huge overhead with lots of traffic), you can enable it for a single key, or specific APIs. 

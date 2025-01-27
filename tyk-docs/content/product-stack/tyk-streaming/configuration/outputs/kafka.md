@@ -1,5 +1,5 @@
 ---
-title: Kafka
+title: Tyk Streams Kafka Output
 description: Explains an overview of configuring Kafka output
 tags: [ "Tyk Streams", "Stream Outputs", "Outputs", "Kafka" ]
 ---

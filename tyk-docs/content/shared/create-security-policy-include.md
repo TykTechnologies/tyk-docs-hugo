@@ -3,7 +3,7 @@
 
 A security policy encapsulates several options that can be applied to a key. It acts as a template that can override individual sections of an API key (or identity) in Tyk.
 
-See [What is a Security Policy?]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}})
+See [What is a Security Policy?]({{< ref "api-management/policies#what-is-a-security-policy" >}})
 
 
 #### Create a security policy with the Dashboard
@@ -50,11 +50,11 @@ To create a security policy with the Dashboard, follow these steps:
 
     A rate limit is enforced on all keys, set the number of requests per second that a user of a key with this policy is allowed to use. See [Rate Limiting]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}}) for more details.
 
-    {{< note success >}}
+{{< note success >}}
     **Note**  
 
     The Rate Limit set by a policy will override the limits applied to an individual key.
-    {{< /note >}}
+{{< /note >}}
 
     **Throttling**
 
@@ -66,11 +66,11 @@ To create a security policy with the Dashboard, follow these steps:
 
     Usage quotas can only be a positive number, or -1 (unlimited).
 
-    {{< note success >}}
+{{< note success >}}
     **Note**  
 
     The Usage Quota set by a policy will override a quota applied to an individual key.
-    {{< /note >}}
+{{< /note >}}
 
     **Policy Partitioning**
 
@@ -78,7 +78,7 @@ To create a security policy with the Dashboard, follow these steps:
 
     **Path Based Permissions**
 
-    You can also use a security policy to apply restrictions on a particular path and method. Granular path control allows you to define which methods and paths a key is allowed to access on a per API-version basis. See [Secure your APIs by Method and Path]({{< ref "security/security-policies/secure-apis-method-path" >}}) for more details
+    You can also use a security policy to apply restrictions on a particular path and method. Granular path control allows you to define which methods and paths a key is allowed to access on a per API-version basis. See [Secure your APIs by Method and Path]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}) for more details
 
     {{< img src="/img/2.10/path_and_method.png" alt="Path and Method" >}}
 
@@ -170,4 +170,4 @@ You can then use this policy ID in the `apply_policy_id` field of an API token. 
 `apply_policy_id` is supported, but has now been deprecated. `apply_policies` is now used to list your policy IDs as an array. This supports the **Multiple Policy** feature introduced in the **v2.4/1.4** release.
 {{< /note >}}
 
-For more information on how policies are constructed and a detailed explanation of their properties, please see the [Security Policies]({{< ref "basic-config-and-security/security/security-policies" >}}) section.
+For more information on how policies are constructed and a detailed explanation of their properties, please see the [Security Policies]({{< ref "api-management/policies" >}}) section.
