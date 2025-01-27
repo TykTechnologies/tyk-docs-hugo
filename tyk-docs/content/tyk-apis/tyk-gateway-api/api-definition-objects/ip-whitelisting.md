@@ -26,4 +26,4 @@ For more details on CIDR notation, see [this Wikipedia entry](https://en.wikiped
 
 #### Tyk Operator
 
-Please consult the Tyk Operator supporting documentation for an example of how to [configure an IP allow list]({{< ref "/api-management/automations#ip-allowlist" >}}) with Tyk Operator.
+Please consult the Tyk Operator supporting documentation for an example of how to [configure an IP allow list]({{< ref "api-management/automations/operator#ip-allowlist" >}}) with Tyk Operator.

@@ -74,7 +74,7 @@ Tyk’s platform makes security implementation straightforward, offering feature
 
 An API isn’t a one-time setup; it needs regular monitoring and updates:
 - **Monitor Performance**: Use [Tyk’s real-time analytics]({{< ref "tyk-pump" >}}) to track metrics like [latency]({{< ref "tyk-stack/tyk-pump/tyk-analytics-record-fields/#latency" >}}), error rates, and [usage]({{< ref "tyk-cloud#track-usage" >}}). This helps identify any bottlenecks or security risks.
-- **Version and Update**: As you add new features, use [Tyk’s versioning]({{< ref "api-management/automations#api-versioning" >}}) to avoid breaking existing functionality.
+- **Version and Update**: As you add new features, use [Tyk’s versioning]({{< ref "api-management/automations/operator#api-versioning" >}}) to avoid breaking existing functionality.
 - **Optimize and Scale**: With Tyk, you can adjust your rate limits, caching, and load balancing to handle higher volumes as needed. Optimizing is especially necessary as you [move your workload into production]({{< ref "tyk-self-managed#planning-for-production" >}}).
 
 ---
@@ -93,7 +93,7 @@ Tyk simplifies the early stages of API planning by providing:
 #### **Deployment and Configuration Phase**
 
 In this stage, Tyk streamlines deployment, whether on the cloud, on-premises, or hybrid:
-- **Kubernetes Integration with Tyk Operator**: If your API runs on Kubernetes, [Tyk Operator]({{< ref "api-management/automations#what-is-tyk-operator" >}}) integrates with Kubernetes to help you manage deployments as Kubernetes resources.
+- **Kubernetes Integration with Tyk Operator**: If your API runs on Kubernetes, [Tyk Operator]({{< ref "api-management/automations/operator#what-is-tyk-operator" >}}) integrates with Kubernetes to help you manage deployments as Kubernetes resources.
 - **Custom Domain Setup**: Configure custom domains to make your API URLs user-friendly and secure with SSL/TLS certificates.
 - **Deployment Across Multiple Environments**: [Tyk’s gateways]({{< ref "tyk-oss-gateway" >}}) let you deploy, monitor, and secure multiple APIs from a single platform, so you can [manage environments]({{< ref "advanced-configuration/manage-multiple-environments" >}}) (development, staging, production) with ease.
 

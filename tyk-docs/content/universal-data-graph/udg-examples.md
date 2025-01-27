@@ -12,13 +12,13 @@ aliases:
 It is possible to import various UDG examples from the [official Tyk examples repository](https://github.com/TykTechnologies/tyk-examples).
 
 We offer 3 ways of importing an example into Tyk:
- - Using [tyk-sync]({{< ref "/api-management/automations#synchronize-api-configurations-with-github-actions" >}})
+ - Using [tyk-sync]({{< ref "api-management/automations/sync#synchronize-api-configurations-with-github-actions" >}})
  - Manually import via [Dashboard API Import]({{< ref "getting-started/import-apis" >}})
 - Using Tyk Dashboard to browse and import the examples directly
 
 ## Import via tyk-sync
 
-Please follow the [tyk-sync documentation]({{< ref "/api-management/automations#examples-publish-command" >}}) to learn more about this approach.
+Please follow the [tyk-sync documentation]({{< ref "api-management/automations/sync#examples-publish-command" >}}) to learn more about this approach.
 
 ## Import via Tyk Dashboard API Import
 
