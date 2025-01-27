@@ -5,7 +5,6 @@ tags: ["Gateway", "Configuration", "Tyk OAS", "Tyk OAS API Definition", "Tyk OAS
 description: "How to configure Tyk OAS API Definition"
 keywords: ["Gateway", "Configuration", "Tyk OAS", "Tyk OAS API Definition", "Tyk OAS API Definition Object",]
 aliases:
-  - /getting-started/key-concepts/openapi-specification
   - /tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc
   - /getting-started/key-concepts/openapi-specification
   - /getting-started/key-concepts/oas-api-definitions
@@ -39,7 +38,7 @@ You can also optionally define:
 - [Mock Responses]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}) - Tyk can automatically configure mock response middleware using the configuration included in your OAS document; this allows you to test your APIs without connecting to the upstream services
 - [Request Validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-middleware" >}})  - Tyk can protect your APIs by automatically validating the request parameters and payload against a schema that defines what it *should* look like
 - [Paths]({{< ref "api-management/gateway-config-tyk-oas#paths" >}}) - this is a section within the OAS definition that instructs Tyk which API paths (also referred to as endpoints) should be configured; Tyk uses this information to determine which middleware should be enabled for each
-- [Versioning]({{< ref "getting-started/key-concepts/oas-versioning" >}}) - API versioning, a crucial API gateway capability, allows you to update and improve your APIs without breaking existing clients or services
+- [Versioning]({{< ref "api-management/api-versioning#tyk-oas-api-versioning-1" >}}) - API versioning, a crucial API gateway capability, allows you to update and improve your APIs without breaking existing clients or services
 
 ### Servers
 

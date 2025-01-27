@@ -4712,7 +4712,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 Tyk's [circuit breaker]({{< ref "#circuit-breakers" >}}) middleware is configured at the endpoint level, where it monitors the rate of failure responses (HTTP 500 or higher) received from the upstream service. If that failure rate exceeds the configured threshold, the circuit breaker will trip and Tyk will block further requests to that endpoint (returning `HTTP 503 Service temporarily unavailable`) until the end of a recovery (cooldown) time period.
 
-When working with Tyk OAS APIs the circuit breaker is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
+When working with Tyk OAS APIs the circuit breaker is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "#configuring-the-circuit-breaker-in-the-tyk-classic-api-definition" >}}) page.
 
@@ -5002,7 +5002,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 Tyk's [enforced timeout]({{< ref "tyk-self-managed#circuit-breakers" >}}) middleware is configured at the endpoint level, where it sets a limit on the response time from the upstream service. If the upstream takes too long to respond to a request, Tyk will terminate the request and return `504 Gateway Timeout` to the client.
 
-When working with Tyk OAS APIs the enforced timeout is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
+When working with Tyk OAS APIs the enforced timeout is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "#using-the-enforced-timeout-middleware-with-tyk-classic-apis" >}}) page.
 
@@ -6096,7 +6096,7 @@ For example, if you define an environment variable (*Key*) `UPSTREAM_SERVER_URL`
 }
 ```
 
-When the Gateway starts, Tyk will read the *Value* from the environment variable and use this as the [Target URL]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#upstream" >}}).
+When the Gateway starts, Tyk will read the *Value* from the environment variable and use this as the [Target URL]({{< ref "api-management/gateway-config-tyk-oas#upstream" >}}).
 
 {{< note success >}}
 **Note** 
@@ -6225,7 +6225,7 @@ Then within your API definition you could use the *Value* for the authentication
 }
 ```
 
-When the Gateway starts, Tyk will read the *Value* from the `secrets` section in the Gateway config file and use this to identify the header where Tyk Gateway should look for the [Authentication]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#authentication" >}}) token in requests to your Tyk OAS API.
+When the Gateway starts, Tyk will read the *Value* from the `secrets` section in the Gateway config file and use this to identify the header where Tyk Gateway should look for the [Authentication]({{< ref "api-management/gateway-config-tyk-oas#authentication" >}}) token in requests to your Tyk OAS API.
 
 #### Using Consul as a KV store
 

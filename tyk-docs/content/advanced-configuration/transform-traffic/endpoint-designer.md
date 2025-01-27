@@ -54,7 +54,7 @@ The **Advanced Options** tab is where you can configure Tyk's other powerful fea
 - Add custom attributes to the API definition as *config data* that can be accessed by middleware
 - Enable [context variables]({{< ref "context-variables" >}}) so that they are extracted from requests and made available to middleware
 - Manage *segment tags* if you are working with [sharded gateways]({{< ref "advanced-configuration/manage-multiple-environments/with-tyk-multi-cloud" >}})
-- Manage client IP address [allow]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting" >}}) and [block]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting" >}}) lists
+- Manage client IP address [allow]({{< ref "api-management/gateway-config-tyk-classic#ip-allowlist-middleware" >}}) and [block]({{< ref "api-management/gateway-config-tyk-classic#ip-blocklist-middleware" >}}) lists
 - Attach [webhooks]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) that will be triggered for different events
 
 ## Uptime Tests

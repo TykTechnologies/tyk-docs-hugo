@@ -5,6 +5,8 @@ tags: ["Gateway", "Configuration", "Tyk Classic", "Tyk Classic API Definition", 
 description: "How to configure Tyk Classic API Definition"
 keywords: ["Gateway", "Configuration", "Tyk Classic", "Tyk Classic API Definition", "Tyk Classic API Definition Object",]
 aliases:
+  - /tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting
+  - /tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting
   - /tyk-apis/tyk-gateway-api/api-definition-objects/authentication
   - /tyk-apis/tyk-gateway-api/api-definition-objects/cors
   - /tyk-rest-api/api-definition-objects/custom-analytics

@@ -3610,7 +3610,7 @@ This prints the release version, git commit, Go version used, architecture and o
 <details>
 <summary>Added option to fallback to default API version</summary>
 
-Added new option for Tyk to use the default version of an API if the requested version does not exist. This is referred to as falling back to default and is enabled using a [configuration]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#versioning" >}}) flag in the API definition; for Tyk OAS APIs the flag is `fallbackToDefault`, for Tyk Classic APIs it is `fallback_to_default`.
+Added new option for Tyk to use the default version of an API if the requested version does not exist. This is referred to as falling back to default and is enabled using a [configuration]({{< ref "api-management/gateway-config-tyk-oas#versioning" >}}) flag in the API definition; for Tyk OAS APIs the flag is `fallbackToDefault`, for Tyk Classic APIs it is `fallback_to_default`.
 </details>
 </li>
 <li>
@@ -3912,7 +3912,7 @@ We're thrilled to bring you some exciting enhancements and crucial fixes to impr
 
 ##### Added Body Transform Middleware to Tyk OAS API Definition
 
-With this release, we are adding the much requested *Body Transformations* to *Tyk OAS API Definition*. You can now [configure]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#transformbody" >}}) middleware for both [request]({{< ref "transform-traffic/request-body" >}}) and [response]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) body transformations and - as a Tyk Dashboard user - you’ll be able to do so from within our simple and elegant API Designer tool.
+With this release, we are adding the much requested *Body Transformations* to *Tyk OAS API Definition*. You can now [configure]({{< ref "api-management/gateway-config-tyk-oas#transformbody" >}}) middleware for both [request]({{< ref "transform-traffic/request-body" >}}) and [response]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) body transformations and - as a Tyk Dashboard user - you’ll be able to do so from within our simple and elegant API Designer tool.
 
 ##### Reference Tyk OAS API Definition From Within Your Custom Go Plugins
 
@@ -4046,7 +4046,7 @@ Added support for the websocket protocol, *graphql-transport-ws protocol*, enhan
 <details>
 <summary>Developers using Tyk OAS API Definition can configure body transform middleware for API reponses</summary>
 
-Added support for API Developers using *Tyk OAS API Definition* to [configure]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#transformbody" >}}) a body transform middleware that operates on API responses. This enhancement ensures streamlined and selective loading of the middleware based on configuration, enabling precise response data customization at the per-endpoint level.
+Added support for API Developers using *Tyk OAS API Definition* to [configure]({{< ref "api-management/gateway-config-tyk-oas#transformbody" >}}) a body transform middleware that operates on API responses. This enhancement ensures streamlined and selective loading of the middleware based on configuration, enabling precise response data customization at the per-endpoint level.
 </details>
 </li>
 <li>

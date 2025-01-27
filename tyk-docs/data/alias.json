@@ -434,5 +434,6 @@
     "basic-config-and-security/security/security-policies/partitioned-policies": "#partitioned-policies",
     "basic-config-and-security/security/security-policies/policies-guide": "#policies-guide",
     "getting-started/key-concepts/what-is-a-security-policy": "#what-is-a-security-policy",
-    "security/security-policies/secure-apis-method-path": "#secure-your-apis-by-method-and-path"
+    "security/security-policies/secure-apis-method-path": "#secure-your-apis-by-method-and-path",
+    "getting-started/key-concepts/openapi-specification": "#"
 }
