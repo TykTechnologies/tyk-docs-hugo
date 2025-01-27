@@ -13,7 +13,7 @@ These tutorials will take you through the process of creating a Tyk OAS API from
 
 ### Tutorial 1: Create a Tyk OAS API using the Tyk Gateway API
 
-In this tutorial we show you how to create a minimal Tyk OAS API using the Tyk Gateway API, starting with a [Tyk OAS API Definition]({{< ref "/getting-started/using-oas-definitions/oas-glossary#tyk-oas-api-definition" >}}).
+In this tutorial we show you how to create a minimal Tyk OAS API using the Tyk Gateway API, starting with a [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition" >}}).
 
 <details>
   <summary>
@@ -98,7 +98,7 @@ You can go to the `/apps` folder of your Tyk Gateway installation (by default in
 
 ### Tutorial 2: Create a Tyk OAS API using the Tyk Dashboard API
 
-You can also create APIs using the Tyk Dashboard API, starting with a [Tyk OAS API Definition]({{< ref "/getting-started/using-oas-definitions/oas-glossary#tyk-oas-api-definition" >}}).
+You can also create APIs using the Tyk Dashboard API, starting with a [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition" >}}).
 
 In this tutorial we will also show you how to test and protect your new API by enforcing an authentication requirement when making calls to the API.
 

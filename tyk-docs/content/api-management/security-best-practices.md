@@ -71,7 +71,7 @@ As an APIM product, Tyk Gateway can be configured to use the following out-of-th
 - [Rate limiter / throttling]({{< ref "api-management/rate-limit#introduction" >}})
 - [Caching]({{< ref "basic-config-and-security/reduce-latency/caching" >}})
 - [Enforced timeout]({{< ref "tyk-self-managed#enforced-timeouts" >}})
-- [IP restriction]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting#ip-blocklist-middleware" >}})
+- [IP restriction]({{< ref "api-management/gateway-config-tyk-classic#ip-blocklist-middleware" >}})
 - [GraphQL query complexity limiting]({{< ref "graphql/complexity-limiting" >}})
 
 For Denial of Service (DoS) attacks it is recommended to use specialist 3rd party services to prevent DoS attacks from reaching your infrastructure.

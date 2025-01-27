@@ -48,21 +48,21 @@ To create a security policy with the Dashboard, follow these steps:
 
     **Rate Limiting**
 
-    A rate limit is enforced on all keys, set the number of requests per second that a user of a key with this policy is allowed to use. See [Rate Limiting]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}}) for more details. **Note: The Rate Limit set by a policy will override the limits applied to an individual key.**
+    A rate limit is enforced on all keys, set the number of requests per second that a user of a key with this policy is allowed to use. See [Rate Limiting]({{< ref "api-management/rate-limit#rate-limiting-layers" >}}) for more details. **Note: The Rate Limit set by a policy will override the limits applied to an individual key.**
 
     **Throttling**
 
-    When hitting quota or rate limits, you can automatically queue and auto-retry client requests. Throttling can be configured at a key or policy level. See [Request Throttling]({{< ref "basic-config-and-security/control-limit-traffic/request-throttling" >}}) for more details.
+    When hitting quota or rate limits, you can automatically queue and auto-retry client requests. Throttling can be configured at a key or policy level. See [Request Throttling]({{< ref "api-management/rate-limit#request-throttling" >}}) for more details.
 
     **Usage Quotas**
 
-    Usage quotas limit the number of total requests a user is allowed to have over a longer period of time. So while a rate limit is a rolling window, a quota is an absolute maximum that a user is allowed to have over a week, a day or a month. See [Request Quotas]({{< ref "basic-config-and-security/control-limit-traffic/request-quotas" >}}) for more details.
+    Usage quotas limit the number of total requests a user is allowed to have over a longer period of time. So while a rate limit is a rolling window, a quota is an absolute maximum that a user is allowed to have over a week, a day or a month. See [Request Quotas]({{< ref "api-management/rate-limit#request-quotas" >}}) for more details.
 
     Usage quotas can only be a positive number, or -1 (unlimited). **Note: The Usage Quota set by a policy will override a quota applied to an individual key.**
 
     **Policy Partitioning**
 
-    In some cases, the all-or-nothing approach of policies, where all the components of access control, quota and rate limit are set together isn’t ideal, and instead you may wish to have only one or two segments of a token managed at a policy level and other segments in another policy or on the key itself. We call this [Policy Partitioning]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies" >}}).
+    In some cases, the all-or-nothing approach of policies, where all the components of access control, quota and rate limit are set together isn’t ideal, and instead you may wish to have only one or two segments of a token managed at a policy level and other segments in another policy or on the key itself. We call this [Policy Partitioning]({{< ref "api-management/policies#partitioned-policies" >}}).
 
     ###### Path Based Permissions
 
@@ -79,7 +79,7 @@ To create a security policy with the Dashboard, follow these steps:
         * Active (the default)
         * Draft
         * Access Denied 
-    3. Set a time after which any Keys subscribed to your policy expire. Select a value from the drop-down list. This is a required setting. See [Key Expiry]({{< ref "basic-config-and-security/security/key-level-security#key-expiry" >}}) for more details.
+    3. Set a time after which any Keys subscribed to your policy expire. Select a value from the drop-down list. This is a required setting. See [Key Expiry]({{< ref "api-management/policies#key-expiry" >}}) for more details.
     4. Add Tags to your policy. Any tags you add can be used when filtering Analytics Data. Tags are case sensitive.
     5. Add Metadata to your policy. Adding metadata such as User IDs can be used by middleware components. See [Session Metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}) for more details.
 
