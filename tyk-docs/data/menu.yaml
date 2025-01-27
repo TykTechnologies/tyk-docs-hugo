@@ -167,10 +167,6 @@ menu:
             path: /api-management/automations/sync
             category: Page
             show: True
-      - title: "API Versioning"
-        path: /api-management/api-versioning
-        category: Page
-        show: True
       - title: "Gateway Configuration"
         category: Directory
         show: True
@@ -187,10 +183,6 @@ menu:
             path: /api-management/gateway-config-tyk-classic
             category: Page
             show: True
-      - title: "Troubleshooting"
-        path: /api-management/troubleshooting-debugging
-        category: Page
-        show: True
       - title: "Rate Limiting"
         path: /api-management/rate-limit
         category: Page
@@ -201,6 +193,14 @@ menu:
         show: True
       - title: "Certificates"
         path: /api-management/certificates
+        category: Page
+        show: True
+      - title: "API Versioning"
+        path: /api-management/api-versioning
+        category: Page
+        show: True
+      - title: "User Management"
+        path: /api-management/user-management
         category: Page
         show: True
       - title: "Manage APIs"
@@ -575,6 +575,10 @@ menu:
         category: Page
         show: True
         path: /api-management/security-best-practices
+      - title: "Troubleshooting"
+        path: /api-management/troubleshooting-debugging
+        category: Page
+        show: True
   - title: "Product Stack"
     path: /tyk-stack
     category: Label
@@ -1543,38 +1547,6 @@ menu:
                 show: True
               - title: "Activity by OAuth Client"
                 path: /tyk-dashboard-analytics/traffic-per-oauth-client
-                category: Page
-                show: True
-          - title: "User management"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /tyk-dashboard/rbac
-                category: Page
-                show: True
-              - title: "User Permissions"
-                path: /basic-config-and-security/security/dashboard/user-roles
-                category: Page
-                show: True
-              - title: "Managing Users"
-                path: /basic-config-and-security/security/dashboard/create-users
-                category: Page
-                show: True
-              - title: "Managing User Groups"
-                path: /basic-config-and-security/security/dashboard/create-user-groups
-                category: Page
-                show: True
-              - title: "Search Users"
-                path: /basic-config-and-security/security/dashboard/search-users
-                category: Page
-                show: True
-              - title: "Password Policy"
-                path: /basic-config-and-security/security/password-policy
-                category: Page
-                show: True
-              - title: "API Ownership"
-                path: /product-stack/tyk-dashboard/advanced-configurations/user-management/api-ownership
                 category: Page
                 show: True
           - title: "API governance"

@@ -2800,7 +2800,7 @@ Fixed an issue where the [OPA editor]({{< ref "tyk-dashboard/open-policy-agent#u
 <details>
 <summary>User Search not working unless you enter the full email address</summary>
 
-Fixed an issue where the [User Search]({{< ref "basic-config-and-security/security/dashboard/search-users" >}}) was not working unless the full email address was entered. The fix restores the functionality of showing suggestions for names as they are typed in, improving user experience and search efficiency.
+Fixed an issue where the [User Search]({{< ref "api-management/user-management#search-users" >}}) was not working unless the full email address was entered. The fix restores the functionality of showing suggestions for names as they are typed in, improving user experience and search efficiency.
 </details>
 </li>
 <li>
@@ -3230,7 +3230,7 @@ a user’s access, within the Dashboard Analytics screens, to view only the
 statistics from APIs that they own; we’ve called this “Owned Analytics”. Due to
 the way the analytics data are aggregated (to optimize storage), a user granted
 this role will not have access to the full range of charts. Take a look at the
-documentation for a full description of this new [user role]({{< ref "basic-config-and-security/security/dashboard/user-roles" >}}).
+documentation for a full description of this new [user role]({{< ref "api-management/user-management#user-permissions" >}}).
 
 ##### Import API examples from within the Dashboard
 
