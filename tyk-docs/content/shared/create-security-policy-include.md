@@ -48,13 +48,7 @@ To create a security policy with the Dashboard, follow these steps:
 
     **Rate Limiting**
 
-    A rate limit is enforced on all keys, set the number of requests per second that a user of a key with this policy is allowed to use. See [Rate Limiting]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}}) for more details.
-
-{{< note success >}}
-    **Note**  
-
-    The Rate Limit set by a policy will override the limits applied to an individual key.
-{{< /note >}}
+    A rate limit is enforced on all keys, set the number of requests per second that a user of a key with this policy is allowed to use. See [Rate Limiting]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}}) for more details. **Note: The Rate Limit set by a policy will override the limits applied to an individual key.**
 
     **Throttling**
 
@@ -64,19 +58,13 @@ To create a security policy with the Dashboard, follow these steps:
 
     Usage quotas limit the number of total requests a user is allowed to have over a longer period of time. So while a rate limit is a rolling window, a quota is an absolute maximum that a user is allowed to have over a week, a day or a month. See [Request Quotas]({{< ref "basic-config-and-security/control-limit-traffic/request-quotas" >}}) for more details.
 
-    Usage quotas can only be a positive number, or -1 (unlimited).
-
-{{< note success >}}
-    **Note**  
-
-    The Usage Quota set by a policy will override a quota applied to an individual key.
-{{< /note >}}
+    Usage quotas can only be a positive number, or -1 (unlimited). **Note: The Usage Quota set by a policy will override a quota applied to an individual key.**
 
     **Policy Partitioning**
 
     In some cases, the all-or-nothing approach of policies, where all the components of access control, quota and rate limit are set together isn’t ideal, and instead you may wish to have only one or two segments of a token managed at a policy level and other segments in another policy or on the key itself. We call this [Policy Partitioning]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies" >}}).
 
-    **Path Based Permissions**
+    ###### Path Based Permissions
 
     You can also use a security policy to apply restrictions on a particular path and method. Granular path control allows you to define which methods and paths a key is allowed to access on a per API-version basis. See [Secure your APIs by Method and Path]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}) for more details
 
@@ -88,9 +76,9 @@ To create a security policy with the Dashboard, follow these steps:
 
     1. Give your policy a name. This is a required setting
     2. Set the policy state. You can set your policy to one of the following states:
-      * Active (the default)
-      * Draft
-      * Access Denied 
+        * Active (the default)
+        * Draft
+        * Access Denied 
     3. Set a time after which any Keys subscribed to your policy expire. Select a value from the drop-down list. This is a required setting. See [Key Expiry]({{< ref "basic-config-and-security/security/key-level-security#key-expiry" >}}) for more details.
     4. Add Tags to your policy. Any tags you add can be used when filtering Analytics Data. Tags are case sensitive.
     5. Add Metadata to your policy. Adding metadata such as User IDs can be used by middleware components. See [Session Metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}) for more details.

@@ -23,7 +23,7 @@ The Dashboard UI is ideal for Trial / POC users and anyone looking to experiment
 Usage: Recommended for PoC, learning, or manual testing; not intended for automation.
 
 Learn more:
-* [Tutorial: Create an API with the Dashboard]({{<ref "getting-started/create-api#tutorial-create-an-api-with-the-dashboard">}})
+* [Tutorial: Create an API with the Dashboard]({{<ref "getting-started/create-api#create-an-api-with-the-dashboard">}})
 
 ## Dashboard or Gateway API
 
