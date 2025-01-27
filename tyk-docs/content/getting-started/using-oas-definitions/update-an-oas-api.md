@@ -9,7 +9,7 @@ aliases:
 
 As developers working on API development, it can be necessary for us to regularly update our API definition as, for example, we add endpoints or support new methods. This definition is normally generated either from our codebase or created using API design tools (such as [Swagger Editor]({{< ref "https://editor.swagger.io/" >}}), [Postman]({{< ref "https://www.postman.com/" >}}) and [Stoplight]({{< ref "https://stoplight.io/" >}})).
 
-One of the most powerful features of working with Tyk OAS is that you can make changes to your [Tyk OAS API Definition]({{< ref "/getting-started/using-oas-definitions/oas-glossary#tyk-oas-api-definition" >}}) or [OpenAPI Document]({{< ref "/getting-started/using-oas-definitions/oas-glossary#openapi-document" >}}) outside Tyk and then use this updated description to update the Tyk OAS API. You can simply update the configuration on Tyk without having to make any changes to the Tyk Gateway configuration (`x-tyk-api-gateway`).
+One of the most powerful features of working with Tyk OAS is that you can make changes to your [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition" >}}) or [OpenAPI Document]({{< ref "api-management/gateway-config-tyk-oas#openapi-document" >}}) outside Tyk and then use this updated description to update the Tyk OAS API. You can simply update the configuration on Tyk without having to make any changes to the Tyk Gateway configuration (`x-tyk-api-gateway`).
 
 In this section will walk you through different methods you can use to Update a Tyk OAS API using the Tyk Gateway API, Tyk Dashboard API and Tyk Dashboard GUI.
 

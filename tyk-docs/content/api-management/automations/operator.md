@@ -95,11 +95,11 @@ In Kubernetes, a [Custom Resource (CR)](https://kubernetes.io/docs/concepts/exte
 
 Tyk Operator manages multiple custom resources to help users create and maintain their API configurations:
 
-**TykOasApiDefinition**: Available from Tyk Operator v1.0. It represents a [Tyk OAS API configuration]({{<ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc">}}). Tyk OAS API is based on the OpenAPI specification (OAS) and is the recommended format for standard HTTP APIs. Tyk Operator supports all [Tyk OAS API feature]({{<ref "getting-started/using-oas-definitions/oas-reference">}}) as they become available on the Gateway.
+**TykOasApiDefinition**: Available from Tyk Operator v1.0. It represents a [Tyk OAS API configuration]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object">}}). Tyk OAS API is based on the OpenAPI specification (OAS) and is the recommended format for standard HTTP APIs. Tyk Operator supports all [Tyk OAS API feature]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-feature-status">}}) as they become available on the Gateway.
 
 **ApiDefinition**: Available on all versions of Tyk Operator. It represents a [Tyk Classic API configuration]({{<ref "tyk-gateway-api/api-definition-objects">}}). Tyk Classic API is the traditional format used for defining all APIs in Tyk, and now the recommended format for non-HTTP APIs such as TCP, GraphQL, and Universal Data Graph (UDG). Tyk Operator supports the major features of Tyk Classic API and the feature support details can be tracked [here]({{< ref "#apidefinition-crd" >}}).
 
-**TykStreamsApiDefinition**: Available from Tyk Operator v1.1. It represents an [Async API configuration]({{<ref "product-stack/tyk-streaming/overview#configuration-as-code">}}) which is based on [Tyk OAS API Definition]({{<ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc">}}). Tyk Operator supports all [Tyk Streams]({{<ref "product-stack/tyk-streaming/overview">}}) and [Tyk OAS API feature]({{<ref "getting-started/using-oas-definitions/oas-reference">}}) as they become available on the Gateway.
+**TykStreamsApiDefinition**: Available from Tyk Operator v1.1. It represents an [Async API configuration]({{<ref "product-stack/tyk-streaming/overview#configuration-as-code">}}) which is based on [Tyk OAS API Definition]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object">}}). Tyk Operator supports all [Tyk Streams]({{<ref "product-stack/tyk-streaming/overview">}}) and [Tyk OAS API feature]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-feature-status">}}) as they become available on the Gateway.
 
 **SecurityPolicy**: Available on all versions of Tyk Operator. It represents a [Tyk Security Policy configuration]({{< ref "#security-policy-example" >}}). Security Policies in Tyk provide a way to define and enforce security controls, including authentication, authorization, and rate limiting for APIs managed in Tyk. Tyk Operator supports essential features of Security Policies, allowing users to centrally manage access control and security enforcement for all APIs across clusters.
 
@@ -111,7 +111,7 @@ The following custom resources can be used to configure APIs and policies at [Ty
 
 | Kind               | Group       | Version   | Description                                                                                       |
 |--------------------|-------------|-----------|---------------------------------------------------------------------------------------------------|
-| TykOasApiDefinition| tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk OAS API Definition object]({{<ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc">}})                                 |
+| TykOasApiDefinition| tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk OAS API Definition object]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object">}})                                 |
 | ApiDefinition      | tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk Classic API Definition object]({{<ref "tyk-gateway-api/api-definition-objects">}})                                 |
 | TykStreamsApiDefinition| tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk Streams]({{<ref "product-stack/tyk-streaming/overview#configuration-as-code">}})                                 |
 | SecurityPolicy     | tyk.tyk.io  | v1alpha1  | Defines configuration of [security policies]({{<ref "api-management/policies#what-is-a-security-policy">}}). Operator supports linking ApiDefinition custom resources in SecurityPolicy's access list so that API IDs do not need to be hardcoded in the resource manifest.        |
@@ -777,7 +777,7 @@ In this example, we added the following sections to configure key authentication
 - `security`: Applies the authentication globally to all endpoints.
 - `x-tyk-api-gateway.server.authentication`: Tyk-specific extension to enable the authentication scheme.
 
-You can configure your API for any Tyk supported authentication method by following [Authentication with Tyk OAS]({{< ref "getting-started/key-concepts/authentication">}}) documentation.
+You can configure your API for any Tyk supported authentication method by following [Authentication with Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#authentication-with-tyk-oas">}}) documentation.
 
 Save your updated API definition in the same file, `oas-api-definition.json`.
 
@@ -1446,7 +1446,7 @@ spec:
 
 #### IP Allowlist
 
-To enable [IP Allowlist]({{<ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting">}}), set the following fields:
+To enable [IP Allowlist]({{<ref "api-management/gateway-config-tyk-classic#ip-allowlist-middleware">}}), set the following fields:
 
 * `enable_ip_whitelisting`: Enables IPs allowlist. When set to `true`, only requests coming from the explicit list of IP addresses defined in (`allowed_ips`) are allowed through.
 * `allowed_ips`: A list of strings that defines the IP addresses (in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation) notation) that are allowed access via Tyk.
@@ -1474,7 +1474,7 @@ spec:
 
 #### IP Blocklist
 
-To enable [IP Blocklist]({{<ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting">}}), set the following fields:
+To enable [IP Blocklist]({{<ref "api-management/gateway-config-tyk-classic#ip-blocklist-middleware">}}), set the following fields:
 
 * `enable_ip_blacklisting`: Enables IPs blocklist. If set to `true`, requests coming from the explicit list of IP addresses (blacklisted_ips) are not allowed through.
 * `blacklisted_ips`: A list of strings that defines the IP addresses (in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation) notation) that are blocked access via Tyk. This list is explicit and wildcards are currently not supported. 
@@ -3504,7 +3504,7 @@ spec:
 
 #### Tyk OAS API and Tyk Streams API
 
-API name can be set through `x-tyk-api-gateway.info.name` field in [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc">}}) object.
+API name can be set through `x-tyk-api-gateway.info.name` field in [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object">}}) object.
 
 #### Tyk Classic API
 
@@ -3536,7 +3536,7 @@ An active API will be loaded to the Gateway, while an inactive API will not, res
 
 #### Tyk OAS API and Tyk Streams API
 
-API active state can be set through `x-tyk-api-gateway.info.state.active` field in [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc">}}) object.
+API active state can be set through `x-tyk-api-gateway.info.state.active` field in [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object">}}) object.
 
 #### Tyk Classic API
 
@@ -3564,7 +3564,7 @@ An API can be configured as internal so that external requests are not processed
 
 #### Tyk OAS API and Tyk Streams API
 
-API accessibility can be set through `x-tyk-api-gateway.info.state.internal` field in [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc">}}) object.
+API accessibility can be set through `x-tyk-api-gateway.info.state.internal` field in [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object">}}) object.
 
 #### Tyk Classic API
 
@@ -3619,7 +3619,7 @@ In this example, the generated API ID is `ZGVmYXVsdC90ZXN0`.
 
 #### Tyk OAS API and Tyk Streams API
 
-If you already have API configurations created in the Tyk Dashboard and want to start using Tyk Operator to manage these APIs, you can include the existing API ID in the manifest under the `x-tyk-api-gateway.info.id` field in [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc">}}) object.
+If you already have API configurations created in the Tyk Dashboard and want to start using Tyk Operator to manage these APIs, you can include the existing API ID in the manifest under the `x-tyk-api-gateway.info.id` field in [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object">}}) object.
 
 #### Tyk Classic API
 
@@ -4177,11 +4177,11 @@ For specific API endpoints, Tyk includes features like caching, circuit breaking
 
 
 #### TykOasAPIDefinition CRD
-The TykOasApiDefinition Custom Resource Definition (CRD) manages [Tyk OAS API Definition object]({{<ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc">}}) within a Kubernetes environment. This CRD enables the integration and management of Tyk API definitions using Kubernetes-native tools, simplifying the process of deploying and managing OAS APIs on the Tyk Dashboard.
+The TykOasApiDefinition Custom Resource Definition (CRD) manages [Tyk OAS API Definition object]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object">}}) within a Kubernetes environment. This CRD enables the integration and management of Tyk API definitions using Kubernetes-native tools, simplifying the process of deploying and managing OAS APIs on the Tyk Dashboard.
 
 ##### TykOasApiDefinition Features
 
-`TykOasApiDefinition` can support all [features of the Tyk OAS API]({{<ref "getting-started/using-oas-definitions/oas-reference">}}). You just need to provide the Tyk OAS API definition via a ConfigMap. In addition to managing the CRUD (Create, Read, Update, Delete) of Tyk OAS API resources, the Tyk Operator helps you better manage resources through object linking to Ingress, Security Policies, and certificates stored as Kubernetes secrets. See below for a list of Operator features and examples:
+`TykOasApiDefinition` can support all [features of the Tyk OAS API]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-feature-status">}}). You just need to provide the Tyk OAS API definition via a ConfigMap. In addition to managing the CRUD (Create, Read, Update, Delete) of Tyk OAS API resources, the Tyk Operator helps you better manage resources through object linking to Ingress, Security Policies, and certificates stored as Kubernetes secrets. See below for a list of Operator features and examples:
 
 | Features | Support | Supported From | Comments | Example |
 |----------|---------|-----------------|----------|--------|
@@ -4200,7 +4200,7 @@ The TykStreamsApiDefinition Custom Resource Definition (CRD) manages [Async API 
 
 ##### TykStreamsApiDefinition Features
 
-`TykStreamsApiDefinition` can support all features of [Tyk Streams]({{<ref "product-stack/tyk-streaming/overview">}}) and [Tyk OAS API]({{<ref "getting-started/using-oas-definitions/oas-reference">}}). You just need to provide the Tyk Streams API definition via a ConfigMap. In addition to managing the CRUD (Create, Read, Update, Delete) of Tyk Streams API resources, the Tyk Operator helps you better manage resources through object linking to Security Policies. See below for a list of Operator features and examples:
+`TykStreamsApiDefinition` can support all features of [Tyk Streams]({{<ref "product-stack/tyk-streaming/overview">}}) and [Tyk OAS API]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-feature-status">}}). You just need to provide the Tyk Streams API definition via a ConfigMap. In addition to managing the CRUD (Create, Read, Update, Delete) of Tyk Streams API resources, the Tyk Operator helps you better manage resources through object linking to Security Policies. See below for a list of Operator features and examples:
 
 | Features | Support | Supported From | Comments | Example |
 |----------|---------|-----------------|----------|--------|

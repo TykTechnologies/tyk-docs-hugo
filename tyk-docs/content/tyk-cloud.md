@@ -162,7 +162,7 @@ To try out these capabilities, please get in touch for a [guided evaluation](htt
 Welcome to the [Tyk Cloud Platform]({{< ref "tyk-cloud" >}})!
 This guide will lead you through the following steps:
 1. Signing up with [Tyk Cloud ]({{< ref "tyk-cloud" >}}).
-2. Creating your first [API]({{< ref "getting-started/key-concepts/what-is-an-api-definition" >}}) using the [Tyk Dashboard]({{< ref "tyk-dashboard" >}}).
+2. Creating your first [API]({{< ref "api-management/gateway-config-introduction" >}}) using the [Tyk Dashboard]({{< ref "tyk-dashboard" >}}).
 3. Setting up a [Policy]({{< ref "api-management/policies#what-is-a-security-policy" >}}) and Key to secure your APIs.
 
 No installation required!

@@ -71,7 +71,7 @@ As an APIM product, Tyk Gateway can be configured to use the following out-of-th
 - [Rate limiter / throttling]({{< ref "api-management/rate-limit#introduction" >}})
 - [Caching]({{< ref "basic-config-and-security/reduce-latency/caching" >}})
 - [Enforced timeout]({{< ref "tyk-self-managed#enforced-timeouts" >}})
-- [IP restriction]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting#ip-blocklist-middleware" >}})
+- [IP restriction]({{< ref "api-management/gateway-config-tyk-classic#ip-blocklist-middleware" >}})
 - [GraphQL query complexity limiting]({{< ref "graphql/complexity-limiting" >}})
 
 For Denial of Service (DoS) attacks it is recommended to use specialist 3rd party services to prevent DoS attacks from reaching your infrastructure.
@@ -84,7 +84,7 @@ Tyk offers several measures to assist with protection from BFLA threats:
 
 - *Establish path-based access rights*: [Policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}) are predefined sets of rules which grant access to particular APIs. These can include [path-based permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}), which restrict access to particular paths and methods within an API. Clients can be assigned one or more policies which the Gateway will validate when it receives a request.
 - *Access Control*: Tyk has plugins that control access to API endpoints. They are known as [allowlist]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) and [blocklist]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-oas#configuring-the-block-list-in-the-api-designer" >}}) and can be configured via the Endpoint Designer of an API Definition. Both plugins grant and deny access to API paths and methods, but do so in different ways, which makes them mutually exclusive. When the allowlist plugin is used, only the marked paths and methods are allowed, all other paths and methods are blocked. This can be perceived as *deny by default* since it provides the least privileges. The reverse is true for the blocklist plugin, only the paths and methods marked as blocklist are blocked, all other paths and methods are allowed. It is recommended to use the *allowlist* approach, since it is the most restrictive, only allowing marked endpoint paths and paths.
-- *CORS*: This [functionality]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}) allows the Tyk Gateway to limit API access to particular browser-based consumers.
+- *CORS*: This [functionality]({{< ref "api-management/gateway-config-tyk-classic#cors" >}}) allows the Tyk Gateway to limit API access to particular browser-based consumers.
 
 ##### 6 - Unrestricted Access To Sensitive Business Flows
 
@@ -111,7 +111,7 @@ Tyk offers several mechanisms to help protect an API from Security Misconfigurat
 - [TLS]({{< ref "api-management/certificates" >}}) to ensure that clients use the right service and encrypt traffic.
 - [Mutual TLS]({{< ref "/api-management/client-authentication#use-mutual-tls" >}}) with both the clients and API to ensure that callers with explicitly allowed client certificates can connect to the endpoints.
 - [Error Templates]({{< ref "advanced-configuration/error-templates" >}}) can be used to return a response body based on status code and content type. This can help minimize the implementation details returned to the client.
-- [CORS functionality]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}) allows the Tyk Gateway to limit API access to particular browser-based consumers.
+- [CORS functionality]({{< ref "api-management/gateway-config-tyk-classic#cors" >}}) allows the Tyk Gateway to limit API access to particular browser-based consumers.
 - [Policy Path-Based Permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}) and the [allowlist]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) plugin can be used to prevent clients from accessing API endpoints using non-authorized HTTP methods. For example, blocking the use of the DELETE method on an endpoint which should only accept GET requests.
 - [Environment variables]({{< ref "tyk-environment-variables" >}}) can help standardize configuration across containerised deployments.
 - For GraphQL APIs:
@@ -224,7 +224,7 @@ Perform application performance monitoring by capturing gateway [instrumentation
 
 ##### Manage Cross-Origin Resource Sharing
 
-Use [CORS filtering]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}) to control the resources accessible by browser-based clients. This is a necessity for APIs that expect to be consumed by external websites.
+Use [CORS filtering]({{< ref "api-management/gateway-config-tyk-classic#cors" >}}) to control the resources accessible by browser-based clients. This is a necessity for APIs that expect to be consumed by external websites.
 
 
 ### Managing Authorization Levels
@@ -305,9 +305,9 @@ This issue can be caused by both legitimate consumers and malicious attackers, b
 
 **Limit Complex Long-Running Tasks**: Use [GraphQL complexity limiting]({{< ref "graphql/complexity-limiting" >}}) to prevent convoluted queries from being processed. Alternatively, [timeouts]({{< ref "tyk-self-managed#enforced-timeouts" >}}) can be used to terminate long-running requests that exceed a given time limit.
 
-**Protect Failing Services**: Defend struggling endpoints by using a [circuit breaker]({{< ref "tyk-self-managed#circuit-breakers" >}}). This feature protects endpoints by detecting error responses, then blocking requests for a short duration to allow them to recover. The same principle can be applied in a wider sense by using [uptime tests]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/uptime-tests" >}}), though this works on a host level instead, by removing failed hosts from the gateway load balancer.
+**Protect Failing Services**: Defend struggling endpoints by using a [circuit breaker]({{< ref "tyk-self-managed#circuit-breakers" >}}). This feature protects endpoints by detecting error responses, then blocking requests for a short duration to allow them to recover. The same principle can be applied in a wider sense by using [uptime tests]({{< ref "api-management/gateway-config-tyk-classic#uptime-tests" >}}), though this works on a host level instead, by removing failed hosts from the gateway load balancer.
 
-**Enforce Network-Level Security**: Problematic clients can be prevented from accessing the API by [blocking their address]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting" >}}). Conversely, for APIs with a known set of clients, [allow lists]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting" >}}) can be used to create a list of allowed addresses, thereby implicitly blocking every other address from the API.
+**Enforce Network-Level Security**: Problematic clients can be prevented from accessing the API by [blocking their address]({{< ref "api-management/gateway-config-tyk-classic#ip-blocklist-middleware" >}}). Conversely, for APIs with a known set of clients, [allow lists]({{< ref "api-management/gateway-config-tyk-classic#ip-allowlist-middleware" >}}) can be used to create a list of allowed addresses, thereby implicitly blocking every other address from the API.
 
 **Mitigate DoS Attacks**: Increase the chance of maintaining API availability during a denial of service attack by using [specialist mitigation services](https://www.cloudflare.com). These have the infrastructure capacity needed to handle [large scale distributed attacks](https://www.cloudflare.com/en-gb/learning/ddos/what-is-a-ddos-attack), with the purpose of preventing attacks from reaching the API infrastructure, thereby enabling the API to continue operating normally.
 
