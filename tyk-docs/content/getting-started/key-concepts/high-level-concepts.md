@@ -29,7 +29,7 @@ Moving to Tyk OAS can help you save time, reduce risks of error and streamline y
 
 **The answer is probably: yes!**
 
-The key question is whether there is anything you currently use in your Tyk Classic APIs that isn’t yet supported by our Tyk OAS APIs. Whilst we have reached *feature maturity* for Tyk OAS, some Tyk Gateway features are not yet supported. You can see the status of what is and isn't yet supported [here]({{< ref "getting-started/using-oas-definitions/oas-reference" >}}).
+The key question is whether there is anything you currently use in your Tyk Classic APIs that isn’t yet supported by our Tyk OAS APIs. Whilst we have reached *feature maturity* for Tyk OAS, some Tyk Gateway features are not yet supported. You can see the status of what is and isn't yet supported [here]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-feature-status" >}}).
 
 {{< warning success >}}
 
@@ -69,7 +69,7 @@ To enjoy writing a *Tyk OAS API definition* as if it is [a native programming la
 
 #### Importing your OpenAPI description to Tyk
 
-If you already have a standard [OpenAPI document]({{< ref "getting-started/using-oas-definitions/oas-glossary#openapi-document" >}}) for your API, you can very easily [import it into Tyk]({{< ref "getting-started/using-oas-definitions/import-an-oas-api" >}}) and have it running in seconds. During the import Tyk will generate the required Tyk extension based on the OpenAPI description in the OpenAPI document and optional parameters you set in the import command. It will also try to establish the right place to send requests to and update the ‘public’ part of the API Definition to tell users how to send requests to the API gateway. It is also possible to [automatically configure some Tyk middleware]({{< ref "api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware" >}}) from the OpenAPI description, configuring how Tyk will handle requests to the API. An import takes in an *OpenAPI document* file and turns it into a *Tyk OAS API Definition*.
+If you already have a standard [OpenAPI document]({{< ref "api-management/gateway-config-tyk-oas#openapi-document" >}}) for your API, you can very easily [import it into Tyk]({{< ref "getting-started/using-oas-definitions/import-an-oas-api" >}}) and have it running in seconds. During the import Tyk will generate the required Tyk extension based on the OpenAPI description in the OpenAPI document and optional parameters you set in the import command. It will also try to establish the right place to send requests to and update the ‘public’ part of the API Definition to tell users how to send requests to the API gateway. It is also possible to [automatically configure some Tyk middleware]({{< ref "api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware" >}}) from the OpenAPI description, configuring how Tyk will handle requests to the API. An import takes in an *OpenAPI document* file and turns it into a *Tyk OAS API Definition*.
 
 {{< note success >}}
 **Note**  

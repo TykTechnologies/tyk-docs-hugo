@@ -101,7 +101,7 @@ In this stage, Tyk streamlines deployment, whether on the cloud, on-premises, or
 
 After deployment, Tyk offers robust tools to ensure smooth API operations and maintenance:
 - **Real-Time Monitoring and Analytics**: [Tyk’s dashboard]({{< ref "tyk-dashboard" >}}) provides insights into API traffic, usage patterns, and error rates, enabling quick response to issues.
-- **Dynamic Policy Management**: Set up and adjust security policies to control access and usage, such as [IP whitelisting]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting#ip-allowlist-middleware" >}}), [request throttling]({{< ref "api-management/rate-limit#request-throttling" >}}), or [rate limiting]({{< ref "api-management/rate-limit" >}}).
+- **Dynamic Policy Management**: Set up and adjust security policies to control access and usage, such as [IP whitelisting]({{< ref "api-management/gateway-config-tyk-classic#ip-allowlist-middleware" >}}), [request throttling]({{< ref "api-management/rate-limit#request-throttling" >}}), or [rate limiting]({{< ref "api-management/rate-limit" >}}).
 - **Plugin Support for Customization**: Use [Tyk’s plugin system]({{< ref "tyk-cloud#configure-plugins" >}}) to add custom functionality or [middleware]({{< ref "api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware/" >}}), such as [custom authentication]({{< ref "tyk-cloud#add-custom-authentication" >}}) or [data transformations]({{< ref "advanced-configuration/transform-traffic" >}}).
 
 ---
