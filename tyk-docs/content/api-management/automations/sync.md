@@ -1,5 +1,5 @@
 ---
-title: "Synchronize Tyk Environment With GitHub using Tyk Sync"
+title: "Tyk Sync - Synchronize Tyk Environment With GitHub"
 date: 2025-01-10
 tags: ["Tyk API Management", "Tyk Sync", "Tyk Operator", "Github", "Kubernetes", "Automations"]
 description: How to synchronize Tyk configuration with Github using Tyk Sync

@@ -1,5 +1,5 @@
 ---
-title: "API Management in Kubernetes using Tyk Operator"
+title: "Tyk Operator - API Management in Kubernetes"
 date: 2025-01-10
 tags: ["Tyk API Management", "Tyk Sync", "Tyk Operator", "Github", "Kubernetes", "Automations"]
 description: Kubernetes native API management using Tyk Operator
