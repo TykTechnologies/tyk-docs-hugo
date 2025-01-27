@@ -50,7 +50,7 @@ In some cases, you will want to set global settings that affect all paths that a
 The **Advanced Options** tab is where you can configure Tyk's other powerful features including:
 - Upstream certificate management
 - [API-level caching]({{< ref "basic-config-and-security/reduce-latency/caching/global-cache#configuring-the-cache-via-the-dashboard" >}}) including a button to invalidate (flush) the cache for the API
-- [CORS]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}})
+- [CORS]({{< ref "api-management/gateway-config-tyk-classic#cors" >}})
 - Add custom attributes to the API definition as *config data* that can be accessed by middleware
 - Enable [context variables]({{< ref "context-variables" >}}) so that they are extracted from requests and made available to middleware
 - Manage *segment tags* if you are working with [sharded gateways]({{< ref "advanced-configuration/manage-multiple-environments/with-tyk-multi-cloud" >}})
@@ -61,7 +61,7 @@ The **Advanced Options** tab is where you can configure Tyk's other powerful fea
 
 {{< img src="/img/dashboard/endpoint-designer/classic-endpoint-designer-uptime.png" alt="The Tyk Classic Endpoint Designer - Uptime Tests tab" >}}
 
-In the **Uptime Tests** tab you can configure Tyk's [Uptime Test]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/uptime-tests" >}}) functionality
+In the **Uptime Tests** tab you can configure Tyk's [Uptime Test]({{< ref "api-management/gateway-config-tyk-classic#uptime-tests" >}}) functionality
 
 ## Debugging
 

@@ -29,7 +29,7 @@ Moving to Tyk OAS can help you save time, reduce risks of error and streamline y
 
 **The answer is probably: yes!**
 
-The key question is whether there is anything you currently use in your Tyk Classic APIs that isn’t yet supported by our Tyk OAS APIs. Whilst we have reached *feature maturity* for Tyk OAS, some Tyk Gateway features are not yet supported. You can see the status of what is and isn't yet supported [here]({{< ref "getting-started/using-oas-definitions/oas-reference" >}}).
+The key question is whether there is anything you currently use in your Tyk Classic APIs that isn’t yet supported by our Tyk OAS APIs. Whilst we have reached *feature maturity* for Tyk OAS, some Tyk Gateway features are not yet supported. You can see the status of what is and isn't yet supported [here]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-feature-status" >}}).
 
 {{< warning success >}}
 

@@ -11,7 +11,7 @@ aliases:
   - /tyk-apis/tyk-gateway-api/api-definition-objects/custom-analytics
   - /tyk-apis/tyk-gateway-api/api-definition-objects/events
   - /tyk-apis/tyk-gateway-api/api-definition-objects/graphql
-  - //tyk-apis/tyk-gateway-api/api-definition-objects/jwt
+  - /tyk-apis/tyk-gateway-api/api-definition-objects/jwt
   - /tyk-apis/tyk-gateway-api/api-definition-objects/other-root-objects
   - /tyk-apis/tyk-gateway-api/api-definition-objects/proxy-settings
   - /tyk-apis/tyk-gateway-api/api-definition-objects/rate-limits
