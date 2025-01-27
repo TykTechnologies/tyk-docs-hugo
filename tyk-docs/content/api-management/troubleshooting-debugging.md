@@ -110,7 +110,7 @@ aliases:
     proxy.service_discovery.port_data_path = “ServicePort""
     ```
         
-    See [Tyk Gateway configuration]({{< ref "tyk-oss-gateway/configuration" >}}) and [Tyk Gateway API]({{< ref "tyk-gateway-api/api-definition-objects" >}}) for further information regarding API definition settings.
+    See [Tyk Gateway configuration]({{< ref "tyk-oss-gateway/configuration" >}}) and [Tyk Gateway API]({{< ref "api-management/gateway-config-tyk-classic" >}}) for further information regarding API definition settings.
 
 3. ##### Gateway proxy error "context canceled"
 
@@ -146,7 +146,7 @@ aliases:
 
     Make sure that API definitions are set up correctly. Information on how to do this with the Tyk Gateway API can be found in the following links:
 
-    *   [API Definition Object Details]({{< ref "tyk-gateway-api/api-definition-objects" >}})
+    *   [API Definition Object Details]({{< ref "api-management/gateway-config-tyk-classic" >}})
     *   [API Management]({{< ref "tyk-gateway-api" >}})
 
 5. ##### Users receive this error message when attempting to make API calls to an existing key.

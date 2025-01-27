@@ -178,7 +178,7 @@ You will automatically be logged out of the Dashboard and will have to enter you
 
 ## Manage Tyk Dashboard User Groups
 
-Tyk has a flexible [user permissions]({{< ref "basic-config-and-security/security/dashboard/user-roles" >}}) system that provides Role Based Access Control (RBAC) for your Tyk Dashboard.
+Tyk has a flexible [user permissions]({{< ref "api-management/user-management#user-permissions" >}}) system that provides Role Based Access Control (RBAC) for your Tyk Dashboard.
 
 When you have a large number of users and teams with different access requirements, instead of setting permissions per *user*, you can create a *user group* and configure the permissions for all users in the group. For example, if you only want certain *users* to access the Tyk Logs, you could create a "Logs Users" *user group*, then give those users the *Logs Read* permission and add them to your *Logs Users* group.
 
@@ -335,7 +335,7 @@ User permissions are configured in the user detail view:
 
 The configuration of each property will affect the dashboard navigation, with `denied` sections or screens hidden or disabled. Note that some side-effects can occur if pages that make use of multiple APIs to fetch configuration data cross over e.g. policies and API Definition listings.
 
-Selecting the **Account is Admin** checkbox from the Dashboard gives the user full access (it has the same [effect]({{< ref "basic-config-and-security/security/dashboard/user-roles#admin-users" >}}) as the `IsAdmin` property).
+Selecting the **Account is Admin** checkbox from the Dashboard gives the user full access (it has the same [effect]({{< ref "api-management/user-management#admin-users" >}}) as the `IsAdmin` property).
 
 ### Custom User Permissions
 
@@ -355,7 +355,7 @@ If you have multiple teams, where each team maintains its own APIs and you want 
 {{< note success >}}
 **Note**  
 
-The availability of this feature [depends on your license]({{< ref "tyk-dashboard/rbac" >}}).
+The availability of this feature [depends on your license]({{< ref "api-management/user-management#" >}}).
 {{< /note >}} 
 
 ### When to use API Ownership
@@ -363,7 +363,7 @@ The availability of this feature [depends on your license]({{< ref "tyk-dashboar
 API ownership is a key capability when you have multiple API development teams each working on their own suite of APIs. You can use API Ownership to simplify the experience of those developers when accessing Tyk by reducing the "clutter" of APIs that they are not working with, and also to avoid the risk of users accidentally or maliciously interfering with another team's APIs.
 
 #### Avoiding data leakage between users
-The [user owned analytics]({{< ref "product-stack/tyk-dashboard/advanced-configurations/user-management/api-ownership#owned-analytics" >}}) feature allows you to prevent users from seeing the traffic to (and existence of) APIs for which they are not responsible. This reduces the opportunity for data leakage within your business.
+The [user owned analytics]({{< ref "api-management/user-management#owned-analytics" >}}) feature allows you to prevent users from seeing the traffic to (and existence of) APIs for which they are not responsible. This reduces the opportunity for data leakage within your business.
 
 ### How API Ownership works
 By default, APIs and associated objects (such as policies and Dashboard analytics) are visible to all Tyk Dashboard users.
@@ -381,7 +381,7 @@ You have three teams which have different roles and responsibilities as follows:
 - **TeamB** which must have access to configure API2
 - **TeamAnalytics** which should only have access to view the analytics for both API1 and API2 
 
-To implement this structure, you would create three user groups and assign [permissions]({{< ref "basic-config-and-security/security/dashboard/user-roles" >}}) as indicated:
+To implement this structure, you would create three user groups and assign [permissions]({{< ref "api-management/user-management#user-permissions" >}}) as indicated:
 - **TeamA** requires `"apis": "write"` 
 - **TeamB** requires `"apis": "write"` 
 - **TeamAnalytics** requires `"analytics": "read"` 
@@ -479,7 +479,7 @@ A user that does not belong to an Organization is sometimes referred to as an *u
 ## Single Sign-On integration
 You can integrate your existing identity management server with the Tyk Dashboard, as explained in our detailed [Single Sign-On (SSO) guide]({{< ref "advanced-configuration/integrate/sso" >}}). **This functionality is available with all Tyk licenses except Tyk Classic Cloud.**
 
-By default all users who login via SSO are granted admin permissions. You can change this behavior by setting either default permissions for *[users]({{< ref "basic-config-and-security/security/dashboard/create-users" >}})* or by creating a default *[user group]({{< ref "basic-config-and-security/security/dashboard/create-user-groups" >}})* to which all new users are assigned. With some IDPs you can automatically assign different SSO users to different *user groups* by dynamically mapping the IDP's user groups, for example with [Azure AD]({{< ref "tyk-stack/tyk-manager/sso/dashboard-login-azure-sso#user-group-mapping" >}}).
+By default all users who login via SSO are granted admin permissions. You can change this behavior by setting either default permissions for *[users]({{< ref "api-management/user-management#manage-tyk-dashboard-users" >}})* or by creating a default *[user group]({{< ref "api-management/user-management#manage-tyk-dashboard-user-groups" >}})* to which all new users are assigned. With some IDPs you can automatically assign different SSO users to different *user groups* by dynamically mapping the IDP's user groups, for example with [Azure AD]({{< ref "tyk-stack/tyk-manager/sso/dashboard-login-azure-sso#user-group-mapping" >}}).
 
 If you want to maintain an individual set of permissions for your SSO users, you must first enable SSO user lookup in your Dashboard configuration by setting either of the following to `true`:
  - `"sso_enable_user_lookup"` in `tyk_analytics.conf`

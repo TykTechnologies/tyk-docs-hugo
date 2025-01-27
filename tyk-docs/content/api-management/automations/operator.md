@@ -97,7 +97,7 @@ Tyk Operator manages multiple custom resources to help users create and maintain
 
 **TykOasApiDefinition**: Available from Tyk Operator v1.0. It represents a [Tyk OAS API configuration]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object">}}). Tyk OAS API is based on the OpenAPI specification (OAS) and is the recommended format for standard HTTP APIs. Tyk Operator supports all [Tyk OAS API feature]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-feature-status">}}) as they become available on the Gateway.
 
-**ApiDefinition**: Available on all versions of Tyk Operator. It represents a [Tyk Classic API configuration]({{<ref "tyk-gateway-api/api-definition-objects">}}). Tyk Classic API is the traditional format used for defining all APIs in Tyk, and now the recommended format for non-HTTP APIs such as TCP, GraphQL, and Universal Data Graph (UDG). Tyk Operator supports the major features of Tyk Classic API and the feature support details can be tracked [here]({{< ref "#apidefinition-crd" >}}).
+**ApiDefinition**: Available on all versions of Tyk Operator. It represents a [Tyk Classic API configuration]({{<ref "api-management/gateway-config-tyk-classic">}}). Tyk Classic API is the traditional format used for defining all APIs in Tyk, and now the recommended format for non-HTTP APIs such as TCP, GraphQL, and Universal Data Graph (UDG). Tyk Operator supports the major features of Tyk Classic API and the feature support details can be tracked [here]({{< ref "#apidefinition-crd" >}}).
 
 **TykStreamsApiDefinition**: Available from Tyk Operator v1.1. It represents an [Async API configuration]({{<ref "product-stack/tyk-streaming/overview#configuration-as-code">}}) which is based on [Tyk OAS API Definition]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object">}}). Tyk Operator supports all [Tyk Streams]({{<ref "product-stack/tyk-streaming/overview">}}) and [Tyk OAS API feature]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-feature-status">}}) as they become available on the Gateway.
 
@@ -112,7 +112,7 @@ The following custom resources can be used to configure APIs and policies at [Ty
 | Kind               | Group       | Version   | Description                                                                                       |
 |--------------------|-------------|-----------|---------------------------------------------------------------------------------------------------|
 | TykOasApiDefinition| tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk OAS API Definition object]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object">}})                                 |
-| ApiDefinition      | tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk Classic API Definition object]({{<ref "tyk-gateway-api/api-definition-objects">}})                                 |
+| ApiDefinition      | tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk Classic API Definition object]({{<ref "api-management/gateway-config-tyk-classic">}})                                 |
 | TykStreamsApiDefinition| tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk Streams]({{<ref "product-stack/tyk-streaming/overview#configuration-as-code">}})                                 |
 | SecurityPolicy     | tyk.tyk.io  | v1alpha1  | Defines configuration of [security policies]({{<ref "api-management/policies#what-is-a-security-policy">}}). Operator supports linking ApiDefinition custom resources in SecurityPolicy's access list so that API IDs do not need to be hardcoded in the resource manifest.        |
 | SubGraph           | tyk.tyk.io  | v1alpha1  | Defines a [GraphQL federation subgraph]({{<ref "getting-started/key-concepts/graphql-federation#subgraphs-and-supergraphs">}}).                                           |
@@ -3785,7 +3785,7 @@ For Tyk Classic API, versioning can be configured via `ApiDefinition` custom res
 
 ### API Ownership
 
-Please consult the [API Ownership]({{<ref "/product-stack/tyk-dashboard/advanced-configurations/user-management/api-ownership">}}) documentation for the fundamental concepts of API Ownership in Tyk and [Operator Context]({{< ref "#multi-tenancy-in-tyk" >}}) documentation for an overview of the use of OperatorContext to manage resources for different teams effectively.
+Please consult the [API Ownership]({{<ref "api-management/user-management#api-ownership">}}) documentation for the fundamental concepts of API Ownership in Tyk and [Operator Context]({{< ref "#multi-tenancy-in-tyk" >}}) documentation for an overview of the use of OperatorContext to manage resources for different teams effectively.
 
 The guide includes practical examples for managing API ownership via OperatorContext. Key topics include defining user owners and user group owners in OperatorContext for connecting and authenticating with a Tyk Dashboard, and using `contextRef` in `TykOasApiDefinition` or `ApiDefinition` objects to ensure configurations are applied within specific organizations. The provided YAML examples illustrate how to set up these configurations.
 
@@ -4187,7 +4187,7 @@ The TykOasApiDefinition Custom Resource Definition (CRD) manages [Tyk OAS API De
 |----------|---------|-----------------|----------|--------|
 | API Category | ✅      | v1.0 | - | [Manage API Categories]({{< ref "#api-categories" >}}) |
 | API Version | ✅      | v1.0 | - | [Manage API versioning]({{< ref "#api-versioning" >}}) |
-| API Ownership via OperatorContext | ✅      | v1.0 | - | [API Ownership]({{<ref "product-stack/tyk-dashboard/advanced-configurations/user-management/api-ownership#when-to-use-api-ownership">}}) |
+| API Ownership via OperatorContext | ✅      | v1.0 | - | [API Ownership]({{<ref "api-management/user-management#when-to-use-api-ownership">}}) |
 | Client Certificates | ✅      | v1.0 | - | [Manage TLS certificate]({{< ref "#tls-certificates" >}}) |
 | Custom Domain Certificates | ✅      | v1.0 | - | [Manage TLS certificate]({{< ref "#tls-certificates" >}}) |
 | Public keys pinning | ✅      | v1.0 | - | [Manage TLS certificate]({{< ref "#tls-certificates" >}}) |
@@ -4204,7 +4204,7 @@ The TykStreamsApiDefinition Custom Resource Definition (CRD) manages [Async API 
 
 | Features | Support | Supported From | Comments | Example |
 |----------|---------|-----------------|----------|--------|
-| API Ownership via OperatorContext | ✅      | v1.0 | - | [API Ownership]({{<ref "product-stack/tyk-dashboard/advanced-configurations/user-management/api-ownership#when-to-use-api-ownership">}}) |
+| API Ownership via OperatorContext | ✅      | v1.0 | - | [API Ownership]({{<ref "api-management/user-management#when-to-use-api-ownership">}}) |
 | Link with SecurityPolicy | ✅      | v1.0 | - | [Protect an API]({{< ref "#add-a-security-policy-to-your-api" >}}) |
 
 #### Version Compatability

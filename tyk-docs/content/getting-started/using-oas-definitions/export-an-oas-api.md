@@ -27,7 +27,7 @@ You can also run these steps using the Tyk Dashboard API, noting the differences
 {{< note success >}}
 **Note**  
 
-You will also need to have ‘admin’ or ‘api’ rights if [RBAC]({{< ref "/tyk-dashboard/rbac.md" >}}) is enabled.
+You will also need to have ‘admin’ or ‘api’ rights if [RBAC]({{< ref "api-management/user-management#" >}}) is enabled.
 {{< /note >}}
 
 ### Tutorial 1: Export the Tyk OAS API definition

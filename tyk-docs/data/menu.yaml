@@ -167,14 +167,6 @@ menu:
             path: /api-management/automations/sync
             category: Page
             show: True
-      - title: "API Versioning"
-        path: /api-management/api-versioning
-        category: Page
-        show: True
-      - title: "User Management"
-        path: /api-management/user-management
-        category: Page
-        show: True
       - title: "Gateway Configuration"
         category: Directory
         show: True
@@ -191,10 +183,6 @@ menu:
             path: /api-management/gateway-config-tyk-classic
             category: Page
             show: True
-      - title: "Troubleshooting"
-        path: /api-management/troubleshooting-debugging
-        category: Page
-        show: True
       - title: "Rate Limiting"
         path: /api-management/rate-limit
         category: Page
@@ -205,6 +193,14 @@ menu:
         show: True
       - title: "Certificates"
         path: /api-management/certificates
+        category: Page
+        show: True
+      - title: "API Versioning"
+        path: /api-management/api-versioning
+        category: Page
+        show: True
+      - title: "User Management"
+        path: /api-management/user-management
         category: Page
         show: True
       - title: "Manage APIs"
@@ -579,6 +575,10 @@ menu:
         category: Page
         show: True
         path: /api-management/security-best-practices
+      - title: "Troubleshooting"
+        path: /api-management/troubleshooting-debugging
+        category: Page
+        show: True
   - title: "Product Stack"
     path: /tyk-stack
     category: Label

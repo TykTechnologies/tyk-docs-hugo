@@ -87,7 +87,7 @@ Tyk provides a comprehensive platform to help you through each stage of API deve
 
 Tyk simplifies the early stages of API planning by providing:
 - **Multi-API Support**: Tyk supports REST, GraphQL, and gRPC APIs, so you can choose the best style for your project.
-- **Advanced Security Options**: Easily configure [authentication methods]({{< ref "basic-config-and-security" >}}) and [permissions]({{< ref "basic-config-and-security/security/dashboard/user-roles" >}}) to protect data and control access.
+- **Advanced Security Options**: Easily configure [authentication methods]({{< ref "basic-config-and-security" >}}) and [permissions]({{< ref "api-management/user-management#user-permissions" >}}) to protect data and control access.
 - **Developer Portals**: [Tyk’s developer portals]({{< ref "tyk-developer-portal/tyk-portal-classic" >}}) allow you to publish documentation and manage developer access, making it easier for teams or external partners to use your APIs.
 
 #### **Deployment and Configuration Phase**

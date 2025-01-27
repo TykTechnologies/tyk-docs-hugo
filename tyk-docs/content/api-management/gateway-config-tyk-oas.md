@@ -790,7 +790,7 @@ An API definition that combines an OpenAPI Description with the Tyk vendor field
 
 #### Tyk Classic API definition
 
-An API definition written in Tyk’s proprietary API Specification format. This fully describes how Tyk should be configured to resolve calls made to the API. An example of the structure of the Tyk Classic API definition is provided [here]({{< ref "tyk-gateway-api/api-definition-objects" >}}).
+An API definition written in Tyk’s proprietary API Specification format. This fully describes how Tyk should be configured to resolve calls made to the API. An example of the structure of the Tyk Classic API definition is provided [here]({{< ref "api-management/gateway-config-tyk-classic" >}}).
 
 {{< include "x-tyk-gateway.md" >}}
 
