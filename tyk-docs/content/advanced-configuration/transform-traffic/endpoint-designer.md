@@ -31,7 +31,7 @@ The **Core Settings** tab provides access to configure basic settings for the AP
 
 {{< img src="/img/dashboard/endpoint-designer/classic-endpoint-designer-versions.png" alt="The Tyk Classic Endpoint Designer - Versions tab" >}}
 
-The **Versions** tab allows you to create and manage [API versioning]({{< ref "getting-started/key-concepts/versioning" >}}) for the API.
+The **Versions** tab allows you to create and manage [API versioning]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}}) for the API.
 
 At the top of the Endpoint Designer, you can see which version you are currently editing. If you have more than one option, selecting it from the drop-down will load its endpoint configuration into the editor.
 

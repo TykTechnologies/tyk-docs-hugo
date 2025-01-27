@@ -171,6 +171,10 @@ menu:
         path: /api-management/api-versioning
         category: Page
         show: True
+      - title: "API Versioning"
+        path: /api-management/api-versioning
+        category: Page
+        show: True
       - title: "Troubleshooting"
         path: /api-management/troubleshooting-debugging
         category: Page
@@ -1124,38 +1128,6 @@ menu:
                 path: /advanced-configuration/error-templates
                 category: Page
                 show: True
-          - title: "Version APIs"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning
-                category: Page
-                show: True
-              - title: "Tyk OAS versioning"
-                path: /getting-started/key-concepts/oas-versioning
-                category: Page
-                show: True
-              - title: "Tyk Classic versioning"
-                path: /getting-started/key-concepts/versioning
-                category: Page
-                show: True
-              - title: "Integration options"
-                category: Directory
-                show: False
-                menu:
-                  - title: "Overview"
-                    path: /advanced-configuration/integrate
-                    category: Page
-                    show: False 
-                  - title: "API authentication mode"
-                    category: Directory
-                    show: False
-                    menu:
-                      - title: "API Authentication Mode"
-                        path: /advanced-configuration/integrate/api-auth-mode
-                        category: Page
-                        show: False
           - title: "Observability"
             category: Directory
             show: True

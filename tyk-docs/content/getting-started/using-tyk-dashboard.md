@@ -62,7 +62,7 @@ Otherwise, you can design an API from scratch or a template if you have configur
 {{< img src="/img/getting-started/tabs-api-security.png" alt="API Security Side Bar" >}}
 
 * **Keys**: [Keys](/api-management/policies#access-key-level-security) are central to securing your APIs through Tyk. In this tab, you can handle the permissions, rate and throttling limits, and quotas associated with a given key. 
-* **Policies**: [Policies](/basic-config-and-security/security/security-policies) expand on key level security, allowing you to configure granular control over API access. Using policies, you govern which users or applications can access particular endpoints and what they're allowed to do. 
+* **Policies**: [Policies](/api-management/policies) expand on key level security, allowing you to configure granular control over API access. Using policies, you govern which users or applications can access particular endpoints and what they're allowed to do. 
 * **TLS/SSL Certificates**:  [TLS and SSL](/api-management/certificates) is supported in Tyk. You can upload your certificates via `.pem` file to verify the identity of whoever presents the certificate during a secure connection.
 
 
