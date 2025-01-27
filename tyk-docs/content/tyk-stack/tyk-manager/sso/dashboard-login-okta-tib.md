@@ -15,7 +15,7 @@ This is an end-to-end worked example of how you can use [Okta](https://www.okta.
 ) to log in to your Dashboard.
 This guide assumes the following:
 
-* You already have authorized access to Tyk's Dashboard. If you haven't, [get the authorization key by following this doc]({{< ref "basic-config-and-security/security/dashboard/create-users#creating-a-dashboard-user-using-the-dashboard-api" >}}).
+* You already have authorized access to Tyk's Dashboard. If you haven't, [get the authorization key by following this doc]({{< ref "api-management/user-management#using-dashboard-api" >}}).
 * For simplicity, you are running TIB locally on port 3010
 * You are able to edit TIB's configuration file.
 

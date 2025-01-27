@@ -164,7 +164,7 @@ Don’t undermine the authentication process by leaking sensitive authentication
 **Enforce Good Practices**
 
 
-Establish rules that reduce risk and enhance overall system security. Use [password policies]({{< ref "basic-config-and-security/security/password-policy" >}}) to prevent the use of weak passwords, and [TLS policies]({{< ref "api-management/certificates#supported-tls-versions" >}}) to prevent the use of older TLS versions that are now deprecated and considered vulnerable.
+Establish rules that reduce risk and enhance overall system security. Use [password policies]({{< ref "api-management/user-management#password-policy" >}}) to prevent the use of weak passwords, and [TLS policies]({{< ref "api-management/certificates#supported-tls-versions" >}}) to prevent the use of older TLS versions that are now deprecated and considered vulnerable.
 
 **Protect Sensitive Endpoints**
 
