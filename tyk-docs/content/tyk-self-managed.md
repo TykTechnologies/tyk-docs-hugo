@@ -1,7 +1,7 @@
 ---
 title: "Install Tyk Self Managed"
-description: "This page serves as a comprehensive guide to migrating workloads to Tyk"
-tags: ["installation", "migration"]
+description: "This page serves as a comprehensive guide to migrating workloads to Tyk Self Managed"
+tags: ["installation", "migration", "self managed"]
 aliases:
   - /get-started/with-tyk-on-premise/installation
   - /getting-started/installation/with-tyk-on-premises
@@ -130,62 +130,9 @@ The full Tyk Self-Managed system consists of:
 
 {{< img src="/img/diagrams/diagram_docs_pump-data-flow@2x.png" alt="Tyk Self-Managed Archtecture" >}}
 
-### Understand Licensing and Deployment Models
+### Tyk Self Managed License/Pricing
 
-Tyk Self-Managed is the easiest way to install Tyk Full Lifecycle API Management solution in your infrastructure. There is no calling home, and there are no usage limits. You have full control. 
-
-When selecting a Tyk Self-managed license [(see the pricing page to compare the licenses)](https://tyk.io/price-comparison), you can choose between three deployment models: [Launch]({{< ref "#understand-licensing-and-deployment-models" >}}), [Flex]({{< ref "#understand-licensing-and-deployment-models" >}}) and [Global Multi-team]({{< ref "#understand-licensing-and-deployment-models" >}}). Read below to learn which model fits best for your scenario. 
-
-Are you still figuring out your requirements for your deployment around performance, resilience, availability, latency, or multi-region deployment? Look at our [API management architectural and deployment patterns 101](https://tyk.io/blog/res-api-management-architectural-and-deployment-patterns-101/) post to learn more. 
-
-#### Questions to Ask Yourself to Select your Deployment Model
-
-1. **How many environments do you manage?**
-
-An environment is a single grouping of a control plane and multiple gateways, representing your development lifecycle. For example, staging and production would be 2 environments. 
-
-If you have teams working on two different projects, deployed in different environments, you might have 4 different environments (staging and prod for project number 1, staging and prod for project number 2). Or, you can leverage multi-tenancy with RBAC to onboard multiple teams onto the same environment to be more cost effective. You can read more about that scenario in the blog post [How to manage multiple teams with Tyk Self-Managed](https://tyk.io/blog/easy-api-management-with-tyk-self-managed/).
-
-You get extra developer licenses (a single control plane with 1 connected gateway for local testing on a developer's workstation) for development and testing on local computers. 
-
-2. **How many gateways do you need per environment?**
-
-We recommend a minimum of 2 gateways per environment for redundancy & fail over. Rolling updates or blue green deployment might require additional gateways to ensure high availability during deployments.
-
-You might also need more depending on your average load or to handle seasonal peak traffic. See [Planning for Production]({{< ref "#planning-for-production" >}}) to learn more. 
-
-3. **Are you deploying your software stack in multiple regions or datacenter?**
-
-Do you need support for centrally managing your APIs while deploying edge gateways into multiple regions or datacenter? Do you want to ensure [data sovereignty](https://tyk.io/blog/strategies-for-dealing-with-data-sovereignty-at-scale/) in each of the regions you are deploying your APIs?
-
-#### Launch - perfect to get started
-
-✅ For single teams just getting started
-
-{{< img src="/img/diagrams/tyk-selfmanaged-launch.png" alt="Tyk Self-managed Launch">}}
-
-#### Flex - for multiple teams within a single data center or cloud 
-
-✅ For multiple teams that require high availability and horizontal scaling <br/>
-✅ For Kubernetes-based deployment within one cluster / region 
-
-{{< img src="/img/diagrams/tyk-selfmanaged-flex.png" alt="Tyk Self-managed Flex">}}
-
-#### Global Multi-team - for the largest global enterprises at scale
-
-✅ For managing your APIs centrally while deploying edge gateways in independent clusters / regions <br />
-✅ For the highest availability across data centers <br />
-✅ For Kubernetes-based deployment in multiple cluster / multiple regions <br />
-✅ For larger organizations [with multiple teams]({{< ref "tyk-multi-data-centre.md" >}}) and [data sovereignty](https://tyk.io/blog/strategies-for-dealing-with-data-sovereignty-at-scale/) requirements <br />
-
-The license starts with 3 environments and 2 regions, can be extended to more environments and regions as needed.
-
-{{< img src="/img/diagrams/tyk-selfmanaged-multiteam.png" alt="Tyk Self-managed Global Multi-team">}}
-
-
-#### Don't see what you need?
-
-[Contact us](https://tyk.io/contact/) to discuss custom or enterprise deployments.
+Refer the [pricing page](https://tyk.io/pricing/)
 
 ### Tyk Dependencies and Database Support
 
@@ -241,15 +188,6 @@ The `service` command can usually be used with SysVinit scripts, as well as invo
 Please consult with respective init system documentation for more details on how to use and configure it.
 
 {{< /note >}}
-
-
-
-#### Licensing
-
-Read more about licensing [here]({{< ref "#understand-licensing-and-deployment-models" >}}).
-
-
-
 
 ## Getting Started with Tyk Self-Managed
 
@@ -900,7 +838,7 @@ to set the name of this **ConfigMap** (`tyk-tib-profiles-conf` by default).
 **Tyk Operator and Ingress**
 
 For a GitOps workflow used with a **Tyk Self-Managed** installation or setting the Tyk Gateway as a Kubernetes ingress controller, Tyk Operator enables you to manage API definitions, security policies and other Tyk features using Kubernetes manifest files.
-To get started go to [Tyk Operator]({{< ref "api-management/automations#automate-api-management-in-kubernetes-environments" >}}).
+To get started go to [Tyk Operator]({{< ref "api-management/automations/operator" >}}).
 
 ### Install on AWS Marketplace
 
@@ -4249,7 +4187,7 @@ Please read carefully through this [doc]({{< ref "api-management/client-authenti
 
 #### Analytics Optimizations
 
-If using a [Redis cluster](https://redis.io/docs/management/scaling/) under high load it is recommended that analytics are distributed among the Redis shards. This can be configured by setting the [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) parameter to true. Furthermore, analytics can also be disabled for an API using the [do_not_track]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/other-root-objects" >}}) configuration parameter. Alternatively, tracking for analytics can be disabled for selected endpoints using the [do not track endpoint plugin]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-oas/" >}}).
+If using a [Redis cluster](https://redis.io/docs/management/scaling/) under high load it is recommended that analytics are distributed among the Redis shards. This can be configured by setting the [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) parameter to true. Furthermore, analytics can also be disabled for an API using the [do_not_track]({{< ref "api-management/gateway-config-tyk-classic#other-root-objects" >}}) configuration parameter. Alternatively, tracking for analytics can be disabled for selected endpoints using the [do not track endpoint plugin]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-oas/" >}}).
 
 ##### Protobuf Serialisation
 
@@ -4413,7 +4351,7 @@ Redis supports [SSL/TLS encryption](https://redis.io/topics/encryption) from ver
 
 - `storage.use_ssl`: Set this to true to enable TLS encryption for the connection.
 
-- `storage.ssl_secure_skip_verify`: A flag that, when set to true, instructs the application not to verify the Redis server's TLS certificate. This is not recommended for production due to the risk of `man-in-the-middle` attacks.
+- `storage.ssl_insecure_skip_verify`: A flag that, when set to true, instructs the application not to verify the Redis server's TLS certificate. This is not recommended for production due to the risk of `man-in-the-middle` attacks.
 
 From **Tyk 5.3**, additional options are available for more granular control:
 
@@ -4425,11 +4363,11 @@ From **Tyk 5.3**, additional options are available for more granular control:
 
 **Setting up an Insecure TLS Connection**
 - **Enable TLS**: By setting `"use_ssl": true`, you encrypt the connection.
-- **Skip Certificate Verification**: Setting `"ssl_secure_skip_verify": true` bypasses the server's certificate verification, suitable only for non-production environments.
+- **Skip Certificate Verification**: Setting `"ssl_insecure_skip_verify": true` bypasses the server's certificate verification, suitable only for non-production environments.
 
 **Setting up a Secure TLS Connection**
 - Ensure `use_ssl` is set to `true`.
-- Set `ssl_secure_skip_verify` to `false` to enforce certificate verification against the CA specified in `ca_file`.
+- Set `ssl_insecure_skip_verify` to `false` to enforce certificate verification against the CA specified in `ca_file`.
 - Specify the path to the CA file in `ca_file` for server certificate verification.
 - Adjust `min_version` and `max_version` to secure TLS versions, ideally 1.2 and 1.3.
 
@@ -4444,7 +4382,7 @@ From **Tyk 5.3**, additional options are available for more granular control:
   "host": "server1",
   "port": 6379,
   "use_ssl": true,
-  "ssl_secure_skip_verify": false,
+  "ssl_insecure_skip_verify": false,
   "ca_file": "/path/to/ca.crt",
   "cert_file": "/path/to/client.crt",
   "key_file": "/path/to/client.key",
@@ -4774,7 +4712,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 Tyk's [circuit breaker]({{< ref "#circuit-breakers" >}}) middleware is configured at the endpoint level, where it monitors the rate of failure responses (HTTP 500 or higher) received from the upstream service. If that failure rate exceeds the configured threshold, the circuit breaker will trip and Tyk will block further requests to that endpoint (returning `HTTP 503 Service temporarily unavailable`) until the end of a recovery (cooldown) time period.
 
-When working with Tyk OAS APIs the circuit breaker is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
+When working with Tyk OAS APIs the circuit breaker is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "#configuring-the-circuit-breaker-in-the-tyk-classic-api-definition" >}}) page.
 
@@ -5064,7 +5002,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 Tyk's [enforced timeout]({{< ref "tyk-self-managed#circuit-breakers" >}}) middleware is configured at the endpoint level, where it sets a limit on the response time from the upstream service. If the upstream takes too long to respond to a request, Tyk will terminate the request and return `504 Gateway Timeout` to the client.
 
-When working with Tyk OAS APIs the enforced timeout is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
+When working with Tyk OAS APIs the enforced timeout is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "#using-the-enforced-timeout-middleware-with-tyk-classic-apis" >}}) page.
 
@@ -6158,7 +6096,7 @@ For example, if you define an environment variable (*Key*) `UPSTREAM_SERVER_URL`
 }
 ```
 
-When the Gateway starts, Tyk will read the *Value* from the environment variable and use this as the [Target URL]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#upstream" >}}).
+When the Gateway starts, Tyk will read the *Value* from the environment variable and use this as the [Target URL]({{< ref "api-management/gateway-config-tyk-oas#upstream" >}}).
 
 {{< note success >}}
 **Note** 
@@ -6287,7 +6225,7 @@ Then within your API definition you could use the *Value* for the authentication
 }
 ```
 
-When the Gateway starts, Tyk will read the *Value* from the `secrets` section in the Gateway config file and use this to identify the header where Tyk Gateway should look for the [Authentication]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#authentication" >}}) token in requests to your Tyk OAS API.
+When the Gateway starts, Tyk will read the *Value* from the `secrets` section in the Gateway config file and use this to identify the header where Tyk Gateway should look for the [Authentication]({{< ref "api-management/gateway-config-tyk-oas#authentication" >}}) token in requests to your Tyk OAS API.
 
 #### Using Consul as a KV store
 

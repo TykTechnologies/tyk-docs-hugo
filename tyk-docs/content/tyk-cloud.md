@@ -1,7 +1,7 @@
 ---
 title: "Set Up Tyk Cloud"
-description: "This page serves as a comprehensive guide to migrating workloads to Tyk"
-tags: ["installation", "migration"]
+description: "This page serves as a comprehensive guide to migrating workloads to Tyk Cloud"
+tags: ["Tyk Cloud", "Migration"]
 aliases:
   - /tyk-cloud/telemetry/enable-telemetry
   - /tyk-cloud/telemetry/
@@ -162,8 +162,8 @@ To try out these capabilities, please get in touch for a [guided evaluation](htt
 Welcome to the [Tyk Cloud Platform]({{< ref "tyk-cloud" >}})!
 This guide will lead you through the following steps:
 1. Signing up with [Tyk Cloud ]({{< ref "tyk-cloud" >}}).
-2. Creating your first [API]({{< ref "getting-started/key-concepts/what-is-an-api-definition" >}}) using the [Tyk Dashboard]({{< ref "tyk-dashboard" >}}).
-3. Setting up a [Policy]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) and Key to secure your APIs.
+2. Creating your first [API]({{< ref "api-management/gateway-config-introduction" >}}) using the [Tyk Dashboard]({{< ref "tyk-dashboard" >}}).
+3. Setting up a [Policy]({{< ref "api-management/policies#what-is-a-security-policy" >}}) and Key to secure your APIs.
 
 No installation required!
 
@@ -593,7 +593,7 @@ Tyk supports API mocking using our versioning `use_extended_paths` setup, adding
 ],
 ```
 
-See [Versioning]({{< ref "getting-started/key-concepts/versioning" >}}) for more details.
+See [Versioning]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}}) for more details.
 
 ### Import APIs via the Dashboard API
 

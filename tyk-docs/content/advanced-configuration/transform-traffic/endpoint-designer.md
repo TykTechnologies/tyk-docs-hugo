@@ -24,14 +24,14 @@ The **Core Settings** tab provides access to configure basic settings for the AP
    - Upstream service (target) URL
    - [Service Discovery]({{< ref "tyk-self-managed#service-discovery" >}})
 - [API Ownership]({{< ref "product-stack/tyk-dashboard/advanced-configurations/user-management/api-ownership" >}})
-- [API level rate limiting]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting#configuring-the-rate-limiter-at-the-api-level" >}})
+- [API level rate limiting]({{< ref "api-management/rate-limit#configuring-the-rate-limiter-at-the-api-level" >}})
 - [Authentication]({{< ref "/api-management/client-authentication" >}})
 
 ## Versions
 
 {{< img src="/img/dashboard/endpoint-designer/classic-endpoint-designer-versions.png" alt="The Tyk Classic Endpoint Designer - Versions tab" >}}
 
-The **Versions** tab allows you to create and manage [API versioning]({{< ref "getting-started/key-concepts/versioning" >}}) for the API.
+The **Versions** tab allows you to create and manage [API versioning]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}}) for the API.
 
 At the top of the Endpoint Designer, you can see which version you are currently editing. If you have more than one option, selecting it from the drop-down will load its endpoint configuration into the editor.
 
@@ -50,18 +50,18 @@ In some cases, you will want to set global settings that affect all paths that a
 The **Advanced Options** tab is where you can configure Tyk's other powerful features including:
 - Upstream certificate management
 - [API-level caching]({{< ref "basic-config-and-security/reduce-latency/caching/global-cache#configuring-the-cache-via-the-dashboard" >}}) including a button to invalidate (flush) the cache for the API
-- [CORS]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}})
+- [CORS]({{< ref "api-management/gateway-config-tyk-classic#cors" >}})
 - Add custom attributes to the API definition as *config data* that can be accessed by middleware
 - Enable [context variables]({{< ref "context-variables" >}}) so that they are extracted from requests and made available to middleware
 - Manage *segment tags* if you are working with [sharded gateways]({{< ref "advanced-configuration/manage-multiple-environments/with-tyk-multi-cloud" >}})
-- Manage client IP address [allow]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting" >}}) and [block]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting" >}}) lists
+- Manage client IP address [allow]({{< ref "api-management/gateway-config-tyk-classic#ip-allowlist-middleware" >}}) and [block]({{< ref "api-management/gateway-config-tyk-classic#ip-blocklist-middleware" >}}) lists
 - Attach [webhooks]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) that will be triggered for different events
 
 ## Uptime Tests
 
 {{< img src="/img/dashboard/endpoint-designer/classic-endpoint-designer-uptime.png" alt="The Tyk Classic Endpoint Designer - Uptime Tests tab" >}}
 
-In the **Uptime Tests** tab you can configure Tyk's [Uptime Test]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/uptime-tests" >}}) functionality
+In the **Uptime Tests** tab you can configure Tyk's [Uptime Test]({{< ref "api-management/gateway-config-tyk-classic#uptime-tests" >}}) functionality
 
 ## Debugging
 

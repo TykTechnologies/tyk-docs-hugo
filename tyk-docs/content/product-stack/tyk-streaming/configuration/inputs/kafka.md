@@ -1,5 +1,5 @@
 ---
-title: Kafka
+title: Tyk Streams Kafka Input
 description: Explains an overview of Kafka input
 tags: [ "Tyk Streams", "Stream Inputs", "Inputs", "Kafka" ]
 ---

@@ -62,6 +62,7 @@ aliases:
     - troubleshooting/tyk-pump
     - tyk-rest-api/hot-reload
     - tyk-stack/tyk-pump/tyk-pump-configuration/graceful-shutdowm
+    - frequently-asked-questions/add-custom-certificates-to-docker-images
 ---
 
 ## Gateway
@@ -360,7 +361,7 @@ aliases:
 
     **Cause**
 
-    There can be a couple of reasons for seeing this error about the [Distributed Rate Limiter]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}}):
+    There can be a couple of reasons for seeing this error about the [Distributed Rate Limiter]({{< ref "api-management/rate-limit#rate-limiting-layers" >}}):
 
     1. When you have more than one installation of the Gateway with one configured to use DRL, and others not.
     2. When the Gateway is started and the DRL receives an event before it has finished initialising.
@@ -406,6 +407,27 @@ aliases:
 
     This will fork and load a new process, passing all open handles to the new server and wait to drain the old ones.
 
+14. ##### How to add Custom Certificates to Trusted Storage of Docker Images
+
+    To add your custom Certificate Authority(CA) to your docker containers. You can mount your CA certificate directly into `/etc/ssl/certs` folder.
+
+    Docker: 
+    ```{.copyWrapper}
+    docker run -it tykio/tyk-gateway:latest \
+    -v $(pwd)/myCA.pem:/etc/ssl/certs/myCA.pem
+    ```
+
+    Kubernetes - using Helm Chart and secrets:
+    ```yaml
+    extraVolumes: 
+        - name: self-signed-ca
+        secret:
+            secretName: self-signed-ca-secret
+    extraVolumeMounts: 
+        - name: self-signed-ca
+        mountPath: "/etc/ssl/certs/myCA.pem"
+        subPath: myCA.pem
+    ```
 
 ## Dashboard
 
@@ -797,14 +819,14 @@ aliases:
     **Upstream does not handle CORS**
     If your upstream does not handle CORS, you should let Tyk manage all CORS related headers and responses. In order to do that you should **enable CORS** in Tyk and **NOT ENABLE** Options pass through.
 
-    To learn more, look for `CORS.options_passthrough` [here]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}).
+    To learn more, look for `CORS.options_passthrough` [here]({{< ref "api-management/gateway-config-tyk-classic#cors" >}}).
 
 
     **CORS middleware is allowing headers which I did not allow**
     This may be the case when you enable CORS but don't provide any headers explicitly (basically providing an empty array). In this case the CORS middleware will use some sensible defaults. 
     To allow all headers, you will need to provide `*` (although this is not recommended).
 
-    The same can happen with Allowed Origins and Allowed Methods. Read more about it [here]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}).
+    The same can happen with Allowed Origins and Allowed Methods. Read more about it [here]({{< ref "api-management/gateway-config-tyk-classic#cors" >}}).
 
     **CORS middleware is blocking my authenticated request**
     Please make sure that you did allow the authorization header name (e.g. `Authorization`) or else the request will be blocked by the CORS middleware. If you're having trouble on the developer portal with authenticated requests make sure to also allow the `Content-Type` header.

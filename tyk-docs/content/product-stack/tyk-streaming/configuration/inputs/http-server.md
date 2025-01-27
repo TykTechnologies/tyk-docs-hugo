@@ -1,5 +1,5 @@
 ---
-title: Http Server
+title: Tyk Streams Http Server Input
 description: Explains an overview of configuring Http server input
 tags: [ "Tyk Streams", "Stream Inputs", "Inputs", "Http Server" ]
 ---

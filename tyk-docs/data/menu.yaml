@@ -151,16 +151,60 @@ menu:
         path: /api-management/upstream-authentication
         category: Page
         show: False
-      - title: "Automations"
-        path: /api-management/automations
+      - title: "Automations Tools"
+        category: Directory
+        show: True
+        menu:
+          - title: "Overview"
+            path: /api-management/automations
+            category: Page
+            show: True
+          - title: "API Management in Kubernetes"
+            path: /api-management/automations/operator
+            category: Page
+            show: True
+          - title: "Synchronizing Tyk Configuraiton"
+            path: /api-management/automations/sync
+            category: Page
+            show: True
+      - title: "API Versioning"
+        path: /api-management/api-versioning
         category: Page
         show: True
       - title: "User Management"
         path: /api-management/user-management
         category: Page
         show: True
+      - title: "Gateway Configuration"
+        category: Directory
+        show: True
+        menu:
+          - title: "Introduction"
+            path: /api-management/gateway-config-introduction
+            category: Page
+            show: True
+          - title: "Tyk OAS API"
+            path: /api-management/gateway-config-tyk-oas
+            category: Page
+            show: True
+          - title: "Tyk Classic API"
+            path: /api-management/gateway-config-tyk-classic
+            category: Page
+            show: True
       - title: "Troubleshooting"
         path: /api-management/troubleshooting-debugging
+        category: Page
+        show: True
+      - title: "Rate Limiting"
+        path: /api-management/rate-limit
+        category: Page
+        show: True
+      - title: "Security Policy and Access Keys"
+        path: /api-management/policies
+        category: Page
+        show: True
+      - title: "Certificates"
+        path: /api-management/certificates
         category: Page
         show: True
       - title: "Manage APIs"
@@ -560,82 +604,6 @@ menu:
                 path: /getting-started/key-concepts
                 category: Page
                 show: True
-              - title: "What is an API Definition?"
-                path: /getting-started/key-concepts/what-is-an-api-definition
-                category: Page
-                show: True
-              - title: "Tyk OAS Concepts"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /getting-started/key-concepts/openapi-specification
-                    category: Page
-                    show: True
-                  - title: "Servers"
-                    path: /getting-started/key-concepts/servers
-                    category: Page
-                    show: True
-                  - title: "Authentication"
-                    path: /getting-started/key-concepts/authentication
-                    category: Page
-                    show: True
-                  - title: "Paths"
-                    path: /getting-started/key-concepts/paths
-                    category: Page
-                    show: True
-                  - title: "Tyk OAS Maturity"
-                    path: /getting-started/using-oas-definitions/oas-reference
-                    category: Page
-                    show: True
-                  - title: "OAS Glossary"
-                    path: /getting-started/using-oas-definitions/oas-glossary
-                    category: Page
-                    show: True
-              - title: "Tyk Classic Concepts"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Authentication Type Flags"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/authentication
-                    category: Page
-                    show: True
-                  - title: "CORS"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/cors
-                    category: Page
-                    show: True
-                  - title: "Custom Analytics Tags using HTTP Headers"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/custom-analytics
-                    category: Page
-                    show: True
-                  - title: "Events"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/events
-                    category: Page
-                    show: True
-                  - title: "API Definition GraphQL"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/graphql
-                    category: Page
-                    show: True
-                  - title: "JSON Web Tokens (JWT)"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/jwt
-                    category: Page
-                    show: True
-                  - title: "Other Root Objects"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/other-root-objects
-                    category: Page
-                    show: True
-                  - title: "Proxy Transport Settings"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/proxy-settings
-                    category: Page
-                    show: True
-                  - title: "API Level Rate Limits"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/rate-limits
-                    category: Page
-                    show: True
-                  - title: "Uptime Tests"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/uptime-tests
-                    category: Page
-                    show: True
               - title: "GraphQL"
                 category: Directory
                 show: True
@@ -700,14 +668,6 @@ menu:
                 path: /getting-started/key-concepts/url-matching
                 category: Page
                 show: True
-              - title: "What is Rate Limiting?"
-                path: /getting-started/key-concepts/rate-limiting
-                category: Page
-                show: True
-              - title: "What is a Security Policy?"
-                path: /getting-started/key-concepts/what-is-a-security-policy
-                category: Page
-                show: True
               - title: "What is a Session Object?"
                 path: /getting-started/key-concepts/what-is-a-session-object
                 category: Page
@@ -736,74 +696,6 @@ menu:
                 path: /basic-config-and-security/security/gateway
                 category: Page
                 show: False
-              - title: "Overview"
-                path: /basic-config-and-security/control-limit-traffic
-                category: Page
-                show: True
-              - title: "Security Policies and Keys"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /basic-config-and-security/security/security-policies
-                    category: Page
-                    show: True
-                  - title: "Policies Guide"
-                    path: /basic-config-and-security/security/security-policies/policies-guide
-                    category: Page
-                    show: True
-                  - title: "Secure your APIs by Method and Path"
-                    path: /security/security-policies/secure-apis-method-path
-                    category: Page
-                    show: True
-                  - title: "Partitioned Policies"
-                    path: /basic-config-and-security/security/security-policies/partitioned-policies
-                    category: Page
-                    show: True
-                  - title: "Key Level Security"
-                    path: /basic-config-and-security/security/key-level-security
-                    category: Page
-                    show: True
-                  - title: "Key Expiry"
-                    path: /basic-config-and-security/control-limit-traffic/key-expiry
-                    category: Page
-                    show: True
-                  - title: "Key Hashing"
-                    path: /basic-config-and-security/security/key-hashing
-                    category: Page
-                    show: True                    
-              - title: "Blocking Client IPs"
-                path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting
-                category: Page
-                show: True
-              - title: "Allowing Client IPs"
-                path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting
-                category: Page
-                show: True
-              - title: "Rate Limits"
-                category: Directory
-                show: True
-                menu:
-                - title: "Overview"
-                  path: /basic-config-and-security/control-limit-traffic/rate-limiting
-                  category: Page
-                  show: True
-                - title: "Tyk OAS configuration"
-                  path: /product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas
-                  category: Page
-                  show: True
-                - title: "Tyk Classic configuration"
-                  path: /product-stack/tyk-gateway/middleware/endpoint-rate-limit-classic
-                  category: Page
-                  show: True
-              - title: "Request Quotas"
-                path: /basic-config-and-security/control-limit-traffic/request-quotas
-                category: Page
-                show: True
-              - title: "Request Throttling"
-                path: /basic-config-and-security/control-limit-traffic/request-throttling
-                category: Page
-                show: True
               - title: "Request Size Limits"
                 category: Directory
                 show: True
@@ -1168,38 +1060,6 @@ menu:
                 path: /advanced-configuration/error-templates
                 category: Page
                 show: True
-          - title: "Version APIs"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning
-                category: Page
-                show: True
-              - title: "Tyk OAS versioning"
-                path: /getting-started/key-concepts/oas-versioning
-                category: Page
-                show: True
-              - title: "Tyk Classic versioning"
-                path: /getting-started/key-concepts/versioning
-                category: Page
-                show: True
-              - title: "Integration options"
-                category: Directory
-                show: False
-                menu:
-                  - title: "Overview"
-                    path: /advanced-configuration/integrate
-                    category: Page
-                    show: False 
-                  - title: "API authentication mode"
-                    category: Directory
-                    show: False
-                    menu:
-                      - title: "API Authentication Mode"
-                        path: /advanced-configuration/integrate/api-auth-mode
-                        category: Page
-                        show: False
           - title: "Observability"
             category: Directory
             show: True
@@ -1585,18 +1445,6 @@ menu:
                 path: /plugins/get-started-selfmanaged/deploy-plugins
                 category: Page
                 show: False
-          - title: "TLS and certificate management"
-            category: Directory
-            show: True
-            menu:
-              - title: "TLS and SSL"
-                path: /basic-config-and-security/security/tls-and-ssl
-                category: Page
-                show: True
-              - title: "Certificate Pinning"
-                path: /security/certificate-pinning
-                category: Page
-                show: True
           - title: "Other (non-HTTP) protocols"
             category: Directory
             show: True
@@ -1625,42 +1473,14 @@ menu:
             category: Directory
             show: True
             menu:
-              - title: "Gateway API Overview"
-                path: /getting-started/key-concepts/gateway-api
-                category: Page
-                show: True
-              - title: "Tyk Gateway Open API Documentation"
-                path: /tyk-gateway-api
-                category: Page
-                show: True
-              - title: "Tyk OAS API Definition Object"
-                path: /tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc
-                category: Page
-                show: True
-              - title: "Tyk Classic API Definition Object"
-                path: /tyk-gateway-api/api-definition-objects
-                category: Page
-                show: True
               - title: "Token Session Object"
                 path: /tyk-apis/tyk-gateway-api/token-session-object-details
-                category: Page
-                show: True
-          - title: "Environment variables"
-            category: Directory
-            show: True
-            menu:
-              - title: "Tyk Gateway configuration options"
-                path: /tyk-oss-gateway/configuration
                 category: Page
                 show: True
           - title: "Troubleshooting"
             category: Directory
             show: True
             menu:
-              - title: "Add Custom Certificates to Trusted Storage of Docker Images"
-                path: /frequently-asked-questions/add-custom-certificates-to-docker-images
-                category: Page
-                show: True
               - title: "How to change the logging output location"
                 path: /frequently-asked-questions/change-logging-output-location
                 category: Page
@@ -1909,10 +1729,6 @@ menu:
                         path: /tyk-apis/tyk-dashboard-api/portal-policies
                         category: Page
                         show: True
-                  - title: "Dashboard API Reference"
-                    path: /tyk-dashboard-api
-                    category: Page
-                    show: True
               - title: "Dashboard Admin API"
                 category: Directory
                 show: True
@@ -1941,18 +1757,6 @@ menu:
                     path: /tyk-apis/tyk-dashboard-admin-api/import
                     category: Page
                     show: True
-                  - title: "Admin API reference"
-                    path: /dashboard-admin-api
-                    category: Page
-                    show: True
-          - title: "Environment variables"
-            category: Directory
-            show: True
-            menu:
-              - title: "Tyk Dashboard Configuration Options"
-                path: /tyk-dashboard/configuration
-                category: Page
-                show: True
           - title: "Troubleshooting"
             category: Directory
             show: True
@@ -2109,10 +1913,6 @@ menu:
                     path: /tyk-apis/tyk-portal-api/portal-keys
                     category: Page
                     show: True
-              - title: "Environment variables"
-                category: Directory
-                show: False
-                menu:
               - title: "Troubleshooting"
                 category: Directory
                 show: True
@@ -2206,10 +2006,6 @@ menu:
                 category: Page
                 show: True
           - title: "API documentation"
-            category: Directory
-            show: False
-            menu:
-          - title: "Environment variables"
             category: Directory
             show: False
             menu:
@@ -2457,30 +2253,6 @@ menu:
                 path: /product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks
                 category: Page
                 show: True
-          - title: "Environment variables"
-            category: Directory
-            show: True
-            menu:
-              - title: "Configure Tyk Enterprise Developer Portal"
-                path: /product-stack/tyk-enterprise-developer-portal/deploy/configuration
-                category: Page
-                show: True
-          - title: "API documentation"
-            category: Directory
-            show: True
-            menu:
-              - title: "OpenAPI document for the admin APIs"
-                path: /product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api
-                category: Page
-                show: True
-              - title: "List of all endpoints"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Version 1.9.0"
-                    path: /product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.9.0-list-of-endpoints
-                    category: Page
-                    show: True
           - title: "Troubleshooting"
             category: Directory
             show: False
@@ -2521,22 +2293,6 @@ menu:
                 path: /product-stack/tyk-enterprise-mdcb/advanced-configurations/synchroniser
                 category: Page
                 show: True
-          - title: "API documentation"
-            category: Directory
-            show: True
-            menu:
-              - title: "MDCB API Reference"
-                path: /tyk-mdcb-api
-                category: Page
-                show: True
-          - title: "Environment variables"
-            category: Directory
-            show: True
-            menu:
-              - title: "MDCB Configuration options"
-                path: /tyk-multi-data-centre/mdcb-configuration-options
-                category: Page
-                show: True
           - title: "Troubleshooting"
             category: Directory
             show: False
@@ -2569,14 +2325,6 @@ menu:
             category: Directory
             show: False
             menu:
-          - title: "Environment variables"
-            category: Directory
-            show: True
-            menu:
-              - title: "Tyk Pump Environment Variables"
-                path: /tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables
-                category: Page
-                show: True
           - title: "Advanced configurations"
             category: Directory
             show: True
@@ -2781,18 +2529,6 @@ menu:
                     path: /product-stack/tyk-streaming/configuration/common-configuration/processing-pipelines
                     category: Page
                     show: True
-          - title: "Rate Limits"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /product-stack/tyk-streaming/configuration/rate-limits/overview
-                category: Page
-                show: True
-              - title: "Local"
-                path: /product-stack/tyk-streaming/configuration/rate-limits/local
-                category: Page
-                show: True
           - title: "Deployment Considerations"
             path: /product-stack/tyk-streaming/deployment-considerations
             category: Page
@@ -2829,18 +2565,6 @@ menu:
             path: /tyk-stack/tyk-identity-broker/about-profiles
             category: Page
             show: True
-          - title: "API Documentation"
-            path: /tyk-identity-broker/tib-rest-api
-            category: Page
-            show: True
-          - title: "Advanced config"
-            category: Directory
-            show: True
-            menu:
-              - title: "Tyk Identity Broker Configuration Options"
-                path: /tyk-configuration-reference/tyk-identity-broker-configuration
-                category: Page
-                show: True
       - title: "Tyk Helm Charts (Open Source)"
         category: Directory
         show: True
@@ -2878,10 +2602,74 @@ menu:
         path: /developer-support/support
         category: Page
         show: True
-      - title: "Contributing"
-        path: /developer-support/contributing
-        category: Page
+      - title: "Environment Variables and Configs"
+        category: Directory
         show: True
+        menu:
+        - title: "Overview"
+          path: /tyk-environment-variables
+          category: Page
+          show: False
+        - title: "Gateway"
+          path: /tyk-oss-gateway/configuration
+          category: Page
+          show: True
+        - title: "Dashboard"
+          path: /tyk-dashboard/configuration
+          category: Page
+          show: True
+        - title: "Pump"
+          path: /tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables
+          category: Page
+          show: True
+        - title: "Enterprise Developer Portal"
+          path: /product-stack/tyk-enterprise-developer-portal/deploy/configuration
+          category: Page
+          show: True
+        - title: "Multi Data Center Bridge"
+          path: /tyk-multi-data-centre/mdcb-configuration-options
+          category: Page
+          show: True
+        - title: "Tyk Identity Broker"
+          path: /tyk-configuration-reference/tyk-identity-broker-configuration
+          category: Page
+          show: True
+      - title: "API Documentation"
+        category: Directory
+        show: True
+        menu:
+        - title: "Overview"
+          path: /tyk-apis
+          category: Page
+          show: True
+        - title: "Gateway"
+          path: /tyk-gateway-api
+          category: Page
+          show: True
+        - title: "Dashboard"
+          path: /tyk-dashboard-api
+          category: Page
+          show: True
+        - title: "Dashboard Admin"
+          path: /dashboard-admin-api
+          category: Page
+          show: True
+        - title: "Multi Data Center Bridge"
+          path: /tyk-mdcb-api
+          category: Page
+          show: True
+        - title: "Enterprise Developer Portal"
+          path: /product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api
+          category: Page
+          show: True
+        - title: "Enterprise Developer Portal Admin"
+          path: /product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.9.0-list-of-endpoints
+          category: Page
+          show: True
+        - title: "Tyk Identity Broker"
+          path: /tyk-identity-broker/tib-rest-api
+          category: Page
+          show: True
       - title: "Release Notes"
         category: Directory
         show: True
@@ -2938,16 +2726,16 @@ menu:
           path: /developer-support/release-notes/special-releases
           category: Page
           show: True
+      - title: "Contributing"
+        path: /developer-support/contributing
+        category: Page
+        show: True
       - title: "Upgrading Guide"
         path: /developer-support/upgrading
         category: Page
         show: True
       - title: "Frequently Asked Questions"
         path: /developer-support/faq
-        category: Page
-        show: True
-      - title: "Tyk APIs Reference"
-        path: /tyk-apis
         category: Page
         show: True
       - title: "SDK"
@@ -2958,10 +2746,6 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Environment Variables and Configs"
-        path: /tyk-environment-variables
-        category: Page
-        show: True
       - title: "Deprecated pages"
         category: Directory
         show: False
@@ -2984,10 +2768,6 @@ menu:
             show: True
           - title: "Key information doesn't appear in Dashboard for Tyk Multi-Cloud users"
             path: /troubleshooting/tyk-multi-cloud/token-information-doesnt-appear-dashboard-tyk-multi-cloud-users/
-            category: Page
-            show: True
-          - title: "Gateway API"
-            path: /api-management/oss/gateway-api
             category: Page
             show: True
           - title: "Cloud Classic Virtual Endpoints not working"

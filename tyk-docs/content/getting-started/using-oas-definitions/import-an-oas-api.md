@@ -9,7 +9,7 @@ menu:
 weight: 4
 ---
 
-Tyk supports importing [OpenAPI Documents]({{< ref "/getting-started/using-oas-definitions/oas-glossary#openapi-document" >}}) (in JSON format, OAS version 3.0.x) using the Tyk Gateway API, the Tyk Dashboard API or the [Tyk Dashboard GUI]({{< ref "#tutorial-7-using-the-tyk-dashboard-ui" >}}).
+Tyk supports importing [OpenAPI Documents]({{< ref "api-management/gateway-config-tyk-oas#openapi-document" >}}) (in JSON format, OAS version 3.0.x) using the Tyk Gateway API, the Tyk Dashboard API or the [Tyk Dashboard GUI]({{< ref "#tutorial-7-using-the-tyk-dashboard-ui" >}}).
 
 In the following tutorials, we provide the flows and commands you can use to get Tyk to generate the respective Tyk OAS API definitions from your OpenAPI Documents.
 
@@ -367,9 +367,9 @@ curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/ty
 
 Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/tyk-gateway`) and check the newly created Tyk OAS API Definition.
 
-You’ll see that Tyk has populated the `authentication` section within the `x-tyk-api-gateway` section according to the instructions you provided in the `import` request. The `api_key` security scheme has been enabled (which indicates that the [Authentication Token]({{< ref "/getting-started/key-concepts/authentication#authentication-token" >}}) mechanism has been applied).
+You’ll see that Tyk has populated the `authentication` section within the `x-tyk-api-gateway` section according to the instructions you provided in the `import` request. The `api_key` security scheme has been enabled (which indicates that the [Authentication Token]({{< ref "api-management/gateway-config-tyk-oas#authentication-token" >}}) mechanism has been applied).
 
-For more information on how Tyk extracts data about security defined from the OpenAPI Document and what authentication mechanisms can be configured, see [Authentication with OAS]({{< ref "/content/getting-started/key-concepts/authentication.md" >}}).
+For more information on how Tyk extracts data about security defined from the OpenAPI Document and what authentication mechanisms can be configured, see [Authentication with OAS]({{< ref "api-management/gateway-config-tyk-oas#authentication-with-tyk-oas" >}}).
 
 ```.json
 {
@@ -667,7 +667,7 @@ Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/t
 
 You’ll see that Tyk has populated the `middleware` section within the `x-tyk-api-gateway` section, configuring the `operations` section to enable the `mockResponse` middleware for each endpoint in the `operationId` list in the OpenAPI Document that you provided. The option `fromOASExamples` has been enabled, which means that Tyk will use the schema defined in the `examples` section of the OpenAPI Document to construct the mock response.
 
-For more information on how Tyk builds the `middleware.operations` structure to configure middleware, see [Paths]({{< ref "/getting-started/key-concepts/paths" >}}).
+For more information on how Tyk builds the `middleware.operations` structure to configure middleware, see [Paths]({{< ref "api-management/gateway-config-tyk-oas#paths" >}}).
 
 ```.json
 {
@@ -835,7 +835,7 @@ Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/t
 
 You’ll see that Tyk has populated the `middleware` section within the `x-tyk-api-gateway` section, configuring the `operations` section to enable the `mockResponse` middleware for each endpoint in the `operationId` list in the OpenAPI Document that you provided. The option `fromOASExamples` has been enabled, which means that Tyk will use the schema defined in the `examples` section of the OpenAPI Document to construct the mock response.
 
-For more information on how Tyk builds the `middleware.operations` structure to configure middleware, see [Paths]({{< ref "/content/getting-started/key-concepts/paths.md" >}}).
+For more information on how Tyk builds the `middleware.operations` structure to configure middleware, see [Paths]({{< ref "api-management/gateway-config-tyk-oas#paths" >}}).
 
 For more information on mock responses, see the dedicated [page]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}).
 
@@ -926,8 +926,8 @@ When importing OpenAPI Documents using the Dashboard, Tyk detects the version of
 #### Automatic Configuration options
 
 - **Generate Validate Request Middleware**: You can automatically validate paths that have the `requestBody` and `schema` fields configured. This allows your Tyk Gateway to validate your request payload against the schema provided in your definition. See [Request Validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-middleware" >}}) for more details.
-- **Apply Detected Authentication**: You can automatically apply the authentication specified in the `security` and `securitySchemes` sections of your definition. See [Authentication]({{< ref "/content/getting-started/key-concepts/authentication.md" >}}) for more details.
-- **Allow access only to defined paths**: You can restrict access to the paths documented in your definition. See [Paths]({{< ref "/content/getting-started/key-concepts/paths.md" >}}) for more details.
+- **Apply Detected Authentication**: You can automatically apply the authentication specified in the `security` and `securitySchemes` sections of your definition. See [Authentication]({{< ref "api-management/gateway-config-tyk-oas#authentication-with-tyk-oas" >}}) for more details.
+- **Allow access only to defined paths**: You can restrict access to the paths documented in your definition. See [Paths]({{< ref "api-management/gateway-config-tyk-oas#paths" >}}) for more details.
 
 4. Click **Import API**.
 

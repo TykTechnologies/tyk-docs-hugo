@@ -1,6 +1,6 @@
 ---
 date: 2017-03-24T17:10:33Z
-title: Dynamic Client Registration
+title: Classic Portal - Dynamic Client Registration
 menu:
   main:
     parent: "Tyk Portal Classic"
