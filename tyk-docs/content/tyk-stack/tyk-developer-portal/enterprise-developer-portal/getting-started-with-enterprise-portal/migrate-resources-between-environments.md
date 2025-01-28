@@ -1,10 +1,10 @@
 ---
 title: "Migrate Resources Between Environments"
 date: 2025-01-28
-tags: ["Tyk Developer Portal","Enterprise Portal","API Products"]
+tags: ["Tyk Developer Portal", "Enterprise Portal", "Migration", "Custom IDs"]
 aliases:
-  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/create-api-product-and-plan
-description: "Create API Products and plans to monetize your APIs"
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/migrate-resources-between-environments
+description: "Learn how to migrate resources between Tyk Developer Portal environments"
 menu:
   main:
     parent: "Getting Started With Enterprise Portal"
@@ -13,7 +13,8 @@ weight: 2
 
 {{< note success >}}
 **Tyk Enterprise Developer Portal**
-If you are interested in getting access contact us at [support@tyk.io](<mailto:support@tyk.io?subject=Tyk Enterprise Portal Beta>)
+
+To get access to these features, contact us at [support@tyk.io](mailto:support@tyk.io?subject=Tyk%20Enterprise%20Portal%20Access)
 {{< /note >}}
 
 
@@ -54,7 +55,7 @@ Before you begin, make sure the following are true:
 
 ## Step-by-Step Instructions
 
-### 1. Prepare the Source Environment
+### Prepare the Source Environment
 
 1. Log in to the source Tyk Developer Portal.
 2. Identify the resources you want to migrate (e.g., API products, plans, OAuth providers).
@@ -64,7 +65,7 @@ Before you begin, make sure the following are true:
 4. Verify that there are no duplicate CIDs for the resources.
 
 
-### 2. Dumping Resources
+### Dumping Resources
 
 To migrate resources, you first need to **dump** (or export) them from your source environment. Here's how you can do it:
 
@@ -74,21 +75,21 @@ To migrate resources, you first need to **dump** (or export) them from your sour
 
 The script to export resources is shown below. You just need to run it, and it will handle the fetching, exporting, and saving automatically.
 
----
-
-### 3. Restoring Resources
+### Restoring Resources
 
 After exporting the resources, the next step is to restore them into the target environment. The process for restoring resources involves:
 
-1. **Cleaning up the data**: Before restoring resources, some fields need to be removed to prevent conflicts or issues during the restore process. For example:
-   - For organisations, remove `.ID`, `.CreatedAt`, `.UpdatedAt`, and `.Teams`
-   - For teams, remove `.Users`
+1. **Cleaning up the data**: Before restoring resources, certain metadata and relationship fields should be removed to prevent conflicts during the restore process. This includes:
+   - System-generated timestamps
+   - Internal identifiers
+   - Nested relationship data
+   - Any other environment-specific properties
 
 2. **Use Custom IDs for Restore**: During the restore process, you must use the Custom ID (CID) to ensure the relationships are maintained. The target environment will either update existing resources with matching CIDs or create new ones.
 
 3. **Restore the resources**: Finally, post the data to the target environment using the POST method (instead of PUT, which would update existing resources).
 
-### 4. Sample Script for Organisations and Teams
+### Sample Script for Organisations and Teams
 
 Here's a sample script that shows how to export and restore **organisations** and **teams**. You can modify it to work for other resources as needed.
 
@@ -237,7 +238,7 @@ esac
 ```
 
 
-### 5. Executing the Script
+### Executing the Script
 
 #### Prerequisites
 
