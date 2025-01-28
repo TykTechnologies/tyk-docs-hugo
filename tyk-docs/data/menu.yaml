@@ -489,10 +489,6 @@ menu:
                 path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/customise-menus
                 category: Page
                 show: True
-              - title: "5. Migrate resources between environments"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/migrate-resources-between-environments
-                category: Page
-                show: True
       - title: "Async APIs"
         category: Directory
         show: True
@@ -2095,6 +2091,10 @@ menu:
                 show: True
               - title: "Setup email notifications"
                 path: /product-stack/tyk-enterprise-developer-portal/getting-started/setup-email-notifications
+                category: Page
+                show: True
+              - title: "Migrate resources between environments"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/migrate-resources-between-environments
                 category: Page
                 show: True
           - title: "Manage API consumers"
