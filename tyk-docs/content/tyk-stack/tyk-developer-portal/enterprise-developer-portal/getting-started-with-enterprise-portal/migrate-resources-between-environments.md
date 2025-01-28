@@ -353,8 +353,3 @@ export PORTAL_URL="https://your-target-portal.com"
 export PORTAL_TOKEN="your-token"
 ./portal-migrate.sh restore
 ```
-
-Optional parameters:
-```bash
-export RESOURCE_FILTER="teams"  # Restore specific resources (organisations|teams|all)
-```
