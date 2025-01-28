@@ -257,4 +257,4 @@ spec:
                   "rewrite_to": "https://beta.library.com/books/author"
 ```
 
-For further examples check out the [internal looping]({{< ref "/api-management/automations#internal-looping-with-tyk-operator" >}}) page.
+For further examples check out the [internal looping]({{< ref "api-management/automations/operator#internal-looping-with-tyk-operator" >}}) page.

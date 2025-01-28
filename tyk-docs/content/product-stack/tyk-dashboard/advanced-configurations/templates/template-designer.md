@@ -23,7 +23,7 @@ API Templates can be found in the **API Templates** section of the **API Managem
 {{< note success >}}
 **Note**  
 
-API Templates are exclusive to [Tyk OAS APIs]({{< ref "getting-started/key-concepts/what-is-an-api-definition#api-definition-types" >}}).
+API Templates are exclusive to [Tyk OAS APIs]({{< ref "api-management/gateway-config-introduction#api-definition-types" >}}).
 {{< /note >}}
 
 ## Creating templates
