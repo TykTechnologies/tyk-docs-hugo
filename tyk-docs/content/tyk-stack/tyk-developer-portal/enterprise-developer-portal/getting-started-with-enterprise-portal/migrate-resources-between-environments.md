@@ -320,7 +320,8 @@ restore)
   echo "Usage: $0 {export|restore} --url <portal_url> --token <portal_token> [--resource <organisations|teams|all>]"
   exit 1
   ;;
-esac```
+esac
+```
 
 
 ### Executing the Script
