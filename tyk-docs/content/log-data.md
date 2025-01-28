@@ -77,7 +77,7 @@ You can specify which fields are logged by configuring the `TYK_ACCESSLOGS_TEMPL
 
 To configure, set `TYK_ACCESSLOGS_TEMPLATE` with the desired values in the format: `["value1", "value2", ...]`.
 
-#### Access Logs Performance Considerations
+#### Performance Considerations
 
 Enabling access logs introduces some performance overhead:
 
