@@ -60,13 +60,31 @@ For example:
 
 In this example the Validate JSON middleware has been configured for requests to the `POST /register` endpoint. For any call made to this endpoint, Tyk will compare the request body with the schema and, if it does not match, the request will be rejected with the error code `HTTP 422 Unprocessable Entity`.
 
-{{< note success >}}
+### Understanding JSON Schema Version Handling
 
-**Note**
+The Gateway automatically detects the version of the JSON schema from the `$schema` field in your schema definition. This field specifies the version of the [JSON schema standard](https://json-schema.org/specification-links) to be followed. Supported versions are [draft-04](https://json-schema.org/draft-04/schema), [draft-06](https://json-schema.org/draft-06/schema) and [draft-07](https://json-schema.org/draft-07/schema).
 
-By default the validator will try to detect the draft of a schema by using the $schema keyword and parse it in a strict draft-04, draft-06 or draft-07 mode. If $schema is missing, or the draft version is not explicitly set, a hybrid mode is used which merges together functionality of all drafts into one mode.
+- If the `$schema` field is present, the Gateway strictly follows the rules of the specified version.  
+- If the `$schema` field is missing or the version is not specified, the Gateway uses a hybrid mode that combines features from multiple schema versions. This mode ensures that the validation will still work, but may not enforce the exact rules of a specific version. 
 
-{{< /note >}}
+To ensure consistent and predictable validation, it is recommended to always include the `$schema` field in your schema definition. For example:  
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "firstname": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    }
+  }
+}
+```
+
+By including `$schema`, the validator can operate in strict mode, ensuring that the rules for your chosen schema version are followed exactly.
 
 ## Configuring the middleware in the API Designer
 
