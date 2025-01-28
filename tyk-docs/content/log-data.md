@@ -55,7 +55,7 @@ Sometimes you will want to have more detailed logging for the Tyk Gateway than f
 If unset or left empty, it will default to `info`. 
 
 ### Enabling API Request Access Logs in Tyk Gateway
-As of Tyk Gateway v5.8.0, you can configure the Gateway to log individual API request transactions. To enable this feature, set the Tyk Gateway configuration `TYK_ACCESSLOGS_ENABLED` to `true`.
+As of Tyk Gateway `v5.8.0`, you can configure the Gateway to log individual API request transactions. To enable this feature, set the Tyk Gateway configuration `TYK_ACCESSLOGS_ENABLED` to `true`.
 
 #### Configuring Access Logs Data
 You can specify the type of data to be logged by configuring the `TYK_ACCESSLOGS_TEMPLATE` in the Tyk Gateway configuration. Below are the available values you can include:
