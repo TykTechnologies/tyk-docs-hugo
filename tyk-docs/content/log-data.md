@@ -56,11 +56,11 @@ If unset or left empty, it will default to `info`.
 
 ### Enabling API Request Access Logs in Tyk Gateway
 
-As of Tyk Gateway `v5.8.0`, you can configure the Gateway to log individual API request transactions. To enable this feature, set the Tyk Gateway configuration `TYK_ACCESSLOGS_ENABLED` to `true`.
+As of Tyk Gateway `v5.8.0`, you can configure the Gateway to log individual API request transactions. To enable this feature, set the `TYK_ACCESSLOGS_ENABLED` environment variable to `true`.
 
 #### Configuring output fields
 
-You can specify which fields are logged by configuring the `TYK_ACCESSLOGS_TEMPLATE` in the Tyk Gateway configuration. Below are the available values you can include:
+You can specify which fields are logged by configuring the `TYK_ACCESSLOGS_TEMPLATE` environment variable. Below are the available values you can include:
 
 - `api_key`: Logs the obfuscated or hashed API key.
 - `client_ip`: Logs the IP address of the request.
@@ -75,7 +75,7 @@ You can specify which fields are logged by configuring the `TYK_ACCESSLOGS_TEMPL
 - `user_agent`: Logs the user agent of the request.
 - `status`: Logs the response status code.
 
-To configure, set `TYK_ACCESSLOGS_TEMPLATE` with the desired values in the format: `["value1", "value2", ...]`.
+To configure, set `TYK_ACCESSLOGS_TEMPLATE` environment variable with the desired values in the format: `["value1", "value2", ...]`.
 
 #### Performance Considerations
 
