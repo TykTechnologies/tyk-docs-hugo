@@ -489,6 +489,10 @@ menu:
                 path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/customise-menus
                 category: Page
                 show: True
+              - title: "5. Migrate resources between environments"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/migrate-resources-between-environments
+                category: Page
+                show: True
       - title: "Async APIs"
         category: Directory
         show: True
