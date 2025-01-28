@@ -252,7 +252,16 @@ esac
 To export resources from the source portal:
 
 ```bash
-./portal-migrate.sh export --url <portal_url> --token <portal_token>
+export PORTAL_URL="https://your-source-portal.com"
+export PORTAL_TOKEN="your-token"
+./portal-migrate.sh export
+```
+
+Optional parameters:
+```bash
+export RESOURCE_FILTER="organisations"  # Filter specific resources (organisations|teams|all)
+export PAGE=1                          # Start from specific page
+export PER_PAGE=50                     # Number of items per page
 ```
 
 #### Restoring Resources
@@ -260,5 +269,12 @@ To export resources from the source portal:
 To restore resources to the target portal:
 
 ```bash
-./portal-migrate.sh restore --url <portal_url> --token <portal_token>
+export PORTAL_URL="https://your-target-portal.com"
+export PORTAL_TOKEN="your-token"
+./portal-migrate.sh restore
+```
+
+Optional parameters:
+```bash
+export RESOURCE_FILTER="teams"  # Restore specific resources (organisations|teams|all)
 ```
