@@ -151,18 +151,38 @@ menu:
         path: /api-management/upstream-authentication
         category: Page
         show: False
-      - title: "Automations"
-        path: /api-management/automations
-        category: Page
+      - title: "Automations Tools"
+        category: Directory
         show: True
-      - title: "API Versioning"
-        path: /api-management/api-versioning
-        category: Page
+        menu:
+          - title: "Overview"
+            path: /api-management/automations
+            category: Page
+            show: True
+          - title: "API Management in Kubernetes"
+            path: /api-management/automations/operator
+            category: Page
+            show: True
+          - title: "Synchronizing Tyk Configuraiton"
+            path: /api-management/automations/sync
+            category: Page
+            show: True
+      - title: "Gateway Configuration"
+        category: Directory
         show: True
-      - title: "Troubleshooting"
-        path: /api-management/troubleshooting-debugging
-        category: Page
-        show: True
+        menu:
+          - title: "Introduction"
+            path: /api-management/gateway-config-introduction
+            category: Page
+            show: True
+          - title: "Tyk OAS API"
+            path: /api-management/gateway-config-tyk-oas
+            category: Page
+            show: True
+          - title: "Tyk Classic API"
+            path: /api-management/gateway-config-tyk-classic
+            category: Page
+            show: True
       - title: "Rate Limiting"
         path: /api-management/rate-limit
         category: Page
@@ -173,6 +193,14 @@ menu:
         show: True
       - title: "Certificates"
         path: /api-management/certificates
+        category: Page
+        show: True
+      - title: "API Versioning"
+        path: /api-management/api-versioning
+        category: Page
+        show: True
+      - title: "User Management"
+        path: /api-management/user-management
         category: Page
         show: True
       - title: "Manage APIs"
@@ -547,6 +575,10 @@ menu:
         category: Page
         show: True
         path: /api-management/security-best-practices
+      - title: "Troubleshooting"
+        path: /api-management/troubleshooting-debugging
+        category: Page
+        show: True
   - title: "Product Stack"
     path: /tyk-stack
     category: Label
@@ -572,82 +604,6 @@ menu:
                 path: /getting-started/key-concepts
                 category: Page
                 show: True
-              - title: "What is an API Definition?"
-                path: /getting-started/key-concepts/what-is-an-api-definition
-                category: Page
-                show: True
-              - title: "Tyk OAS Concepts"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /getting-started/key-concepts/openapi-specification
-                    category: Page
-                    show: True
-                  - title: "Servers"
-                    path: /getting-started/key-concepts/servers
-                    category: Page
-                    show: True
-                  - title: "Authentication"
-                    path: /getting-started/key-concepts/authentication
-                    category: Page
-                    show: True
-                  - title: "Paths"
-                    path: /getting-started/key-concepts/paths
-                    category: Page
-                    show: True
-                  - title: "Tyk OAS Maturity"
-                    path: /getting-started/using-oas-definitions/oas-reference
-                    category: Page
-                    show: True
-                  - title: "OAS Glossary"
-                    path: /getting-started/using-oas-definitions/oas-glossary
-                    category: Page
-                    show: True
-              - title: "Tyk Classic Concepts"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Authentication Type Flags"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/authentication
-                    category: Page
-                    show: True
-                  - title: "CORS"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/cors
-                    category: Page
-                    show: True
-                  - title: "Custom Analytics Tags using HTTP Headers"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/custom-analytics
-                    category: Page
-                    show: True
-                  - title: "Events"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/events
-                    category: Page
-                    show: True
-                  - title: "API Definition GraphQL"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/graphql
-                    category: Page
-                    show: True
-                  - title: "JSON Web Tokens (JWT)"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/jwt
-                    category: Page
-                    show: True
-                  - title: "Other Root Objects"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/other-root-objects
-                    category: Page
-                    show: True
-                  - title: "Proxy Transport Settings"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/proxy-settings
-                    category: Page
-                    show: True
-                  - title: "API Level Rate Limits"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/rate-limits
-                    category: Page
-                    show: True
-                  - title: "Uptime Tests"
-                    path: /tyk-apis/tyk-gateway-api/api-definition-objects/uptime-tests
-                    category: Page
-                    show: True
               - title: "GraphQL"
                 category: Directory
                 show: True
@@ -740,14 +696,6 @@ menu:
                 path: /basic-config-and-security/security/gateway
                 category: Page
                 show: False
-              - title: "Blocking Client IPs"
-                path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting
-                category: Page
-                show: True
-              - title: "Allowing Client IPs"
-                path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting
-                category: Page
-                show: True
               - title: "Request Size Limits"
                 category: Directory
                 show: True
@@ -1525,18 +1473,6 @@ menu:
             category: Directory
             show: True
             menu:
-              - title: "Gateway API Overview"
-                path: /getting-started/key-concepts/gateway-api
-                category: Page
-                show: True
-              - title: "Tyk OAS API Definition Object"
-                path: /tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc
-                category: Page
-                show: True
-              - title: "Tyk Classic API Definition Object"
-                path: /tyk-gateway-api/api-definition-objects
-                category: Page
-                show: True
               - title: "Token Session Object"
                 path: /tyk-apis/tyk-gateway-api/token-session-object-details
                 category: Page
@@ -1611,38 +1547,6 @@ menu:
                 show: True
               - title: "Activity by OAuth Client"
                 path: /tyk-dashboard-analytics/traffic-per-oauth-client
-                category: Page
-                show: True
-          - title: "User management"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /tyk-dashboard/rbac
-                category: Page
-                show: True
-              - title: "User Permissions"
-                path: /basic-config-and-security/security/dashboard/user-roles
-                category: Page
-                show: True
-              - title: "Managing Users"
-                path: /basic-config-and-security/security/dashboard/create-users
-                category: Page
-                show: True
-              - title: "Managing User Groups"
-                path: /basic-config-and-security/security/dashboard/create-user-groups
-                category: Page
-                show: True
-              - title: "Search Users"
-                path: /basic-config-and-security/security/dashboard/search-users
-                category: Page
-                show: True
-              - title: "Password Policy"
-                path: /basic-config-and-security/security/password-policy
-                category: Page
-                show: True
-              - title: "API Ownership"
-                path: /product-stack/tyk-dashboard/advanced-configurations/user-management/api-ownership
                 category: Page
                 show: True
           - title: "API governance"

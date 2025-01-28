@@ -12,7 +12,7 @@ API categorization is a governance feature provided within the Tyk Dashboard tha
 As a platform manager looking after a large portfolio of APIs, if I need to make changes to a sub-set of APIs, it's cumbersome having to identify which APIs they are and then to find them one-by-one in the list. If I have assigned categories to my APIs then I can filter quickly and easily to work with that sub-set. What's really powerful is that an API can appear in as many different categories as I like. 
 
 #### Multi-tenant deployment
-Multi-tenant deployments with [role-based access control]({{< ref "tyk-dashboard/rbac" >}}) enabled allows an admin user to give different users or groups access to a sub-set of the entire API portfolio. Categories can be aligned with the API ownership rules that you have deployed to allow filtering the list of APIs for those visible to each separate user group/team.
+Multi-tenant deployments with [role-based access control]({{< ref "api-management/user-management#" >}}) enabled allows an admin user to give different users or groups access to a sub-set of the entire API portfolio. Categories can be aligned with the API ownership rules that you have deployed to allow filtering the list of APIs for those visible to each separate user group/team.
 
 ## How API categories work
 API categories with Tyk are a very simple concept - you can define any string as a category and then tag the relevant APIs with that string.
@@ -46,7 +46,7 @@ The use of the `#` qualifier to identify a category prevents the use of `#` in y
 {{< /note >}}
 
 ## Using API categories
-API categories can be added and removed from APIs within the [API Designer]({{< ref "product-stack/tyk-dashboard/advanced-configurations/api-categories#api-designer" >}}), via the [Tyk Dashboard API]({{< ref "product-stack/tyk-dashboard/advanced-configurations/api-categories#tyk-dashboard-api" >}}), or via [Tyk Operator]({{< ref "/api-management/automations#what-is-tyk-operator" >}}).
+API categories can be added and removed from APIs within the [API Designer]({{< ref "product-stack/tyk-dashboard/advanced-configurations/api-categories#api-designer" >}}), via the [Tyk Dashboard API]({{< ref "product-stack/tyk-dashboard/advanced-configurations/api-categories#tyk-dashboard-api" >}}), or via [Tyk Operator]({{< ref "api-management/automations/operator#what-is-tyk-operator" >}}).
 
 ### API Designer
 The API Designer in the Tyk Dashboard UI provides a simple method for assigning APIs to categories, removing categories and filtering the API list by category.
@@ -95,4 +95,4 @@ These endpoints will return information for categories across all APIs in the sy
 
 ### Tyk Operator
 
-You can manage categories using Tyk Operator custom resources. Please refer to [Tyk Operator]({{<ref "/api-management/automations#api-categories">}}) documentation to see how to manage API categories for Tyk OAS APIs and Tyk Classic APIs.
+You can manage categories using Tyk Operator custom resources. Please refer to [Tyk Operator]({{<ref "api-management/automations/operator#api-categories">}}) documentation to see how to manage API categories for Tyk OAS APIs and Tyk Classic APIs.

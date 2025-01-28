@@ -42,7 +42,7 @@ As explained in the section on [Creating an OAS API]({{< ref "/getting-started/u
 {{< note success >}}
 **Note**
 
-You will also need to have ‘admin’ or ‘api’ rights if [RBAC]({{< ref "/tyk-dashboard/rbac.md" >}}) is enabled.
+You will also need to have ‘admin’ or ‘api’ rights if [RBAC]({{< ref "api-management/user-management#" >}}) is enabled.
 {{< /note >}}
 
 #### Step 1: Create your base API

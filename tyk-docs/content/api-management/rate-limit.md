@@ -521,7 +521,7 @@ regex pattern `/.*` will be limited to 60 requests per second. The order
 of evaluation ensures that the specific `/user/login` endpoint is matched
 and evaluated before the regex pattern.
 
-The per-endpoint rate limit middleware allows you to enforce rate limits on specific endpoints. This middleware is configured in the [Tyk OAS API Definition]({{< ref "/tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}), either via the Tyk Dashboard API or in the API Designer.
+The per-endpoint rate limit middleware allows you to enforce rate limits on specific endpoints. This middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}), either via the Tyk Dashboard API or in the API Designer.
 
 If you’re using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/rate-limit#tyk-classic-api-definition" >}}) page.
 

@@ -392,7 +392,7 @@ You can set `proxy.transport.ssl_insecure_skip_verify` in an API definition to a
 
 ## Internal Proxy Setup
 
-From v2.9.3 you can also specify a custom proxy and set the minimum TLS versions and any SSL ciphers within your API definitions. See [Internal Proxy Setup]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/proxy-settings.md#internal-proxy-setup" >}}) for more details.
+From v2.9.3 you can also specify a custom proxy and set the minimum TLS versions and any SSL ciphers within your API definitions. See [Internal Proxy Setup]({{< ref "api-management/gateway-config-tyk-classic#internal-proxy-setup" >}}) for more details.
 
 ## Certificate Pinning
 

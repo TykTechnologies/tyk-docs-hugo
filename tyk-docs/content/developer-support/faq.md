@@ -26,7 +26,7 @@ This section lists commonly asked questions or frequently encountered issues and
 
 1. **If there's a configuration error or an unwanted change, can I easily revert to a previous API or Policy configuration? What are the options or best practices for effective rollbacks?**
     
-    You can configure [Tyk-Sync]({{< ref "/api-management/automations#synchronize-tyk-environment-with-github-repository" >}}) to synchronise APIs and Policies with any version control system, like GitHub or GitLab and use it to perform roll back. Keys are not synchronised with Tyk Sync.
+    You can configure [Tyk-Sync]({{< ref "api-management/automations/sync" >}}) to synchronise APIs and Policies with any version control system, like GitHub or GitLab and use it to perform roll back. Keys are not synchronised with Tyk Sync.
 
 2. **How to Backup Configuration Files of Tyk Component's ?**
 

@@ -1,7 +1,7 @@
 ---
 ---
 
-## Tutorial: Create an API Key with the Dashboard
+#### Create an API Key with the Dashboard
 
 The Tyk Dashboard is the simplest way to generate a new Key.
 
@@ -10,51 +10,50 @@ We have a video walkthrough for creating an API Key.
 {{< youtube sydrO2qv88Y >}}
 
 
-### Step 1: Select "Keys" from the "System Management" section
+1. **Select "Keys" from the "System Management" section**
 
-{{< img src="/img/2.10/keys_menu.png" alt="Keys menu" >}}
+    {{< img src="/img/2.10/keys_menu.png" alt="Keys menu" >}}
 
-### Step 2: Click CREATE
+2. **Click CREATE**
 
-{{< img src="/img/2.10/add_key.png" alt="Add key" >}}
+    {{< img src="/img/2.10/add_key.png" alt="Add key" >}}
 
-### Step 3: Add a Policy or API to your Key
+3. **Add a Policy or API to your Key**
 
-You have the option to add your new key to either an existing Policy or an existing individual API. For this Tutorial we are going to use an API. 
+    You have the option to add your new key to either an existing Policy or an existing individual API. For this Tutorial we are going to use an API. 
 
+    **Add an API to your Key**
 
-#### Add an API to your Key
+    To select an API, you can either:
 
-To select an API, you can either:
+    * Scroll through your API Name list
+    * Use the Search field
+    * You can also Group by Authentication Type to filter your APIs
+    * You can also Group by Category 
 
-* Scroll through your API Name list
-* Use the Search field
-* You can also Group by Authentication Type to filter your APIs
-* You can also Group by Category 
+    You can leave all other options at their default settings.
 
-You can leave all other options at their default settings.
+4. **Add Configuration Details**
 
-### Step 4: Add Configuration Details
+    You use the Configuration section to set the following:
 
-You use the Configuration section to set the following:
+    1. Enable Detailed Logging. This is disabled by default and isn't required for this tutorial
+    2. Give your Key an Alias. This makes your key easier 
+    3. Set an Expiry time after which the key will expire. Select a value from the drop-down list. This is a required setting. See [Key Expiry]({{< ref "api-management/policies#key-expiry" >}}) for more details.
+    4. Add Tags to your policy. Any tags you add can be used when filtering Analytics Data. Tags are case sensitive.
+    5. Add Metadata to your policy. Adding metadata such as User IDs can be used by middleware components. See [Session Metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}) for more details.
 
-1. Enable Detailed Logging. This is disabled by default and isn't required for this tutorial
-2. Give your Key an Alias. This makes your key easier 
-3. Set an Expiry time after which the key will expire. Select a value from the drop-down list. This is a required setting. See [Key Expiry]({{< ref "api-management/policies#key-expiry" >}}) for more details.
-4. Add Tags to your policy. Any tags you add can be used when filtering Analytics Data. Tags are case sensitive.
-5. Add Metadata to your policy. Adding metadata such as User IDs can be used by middleware components. See [Session Metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}) for more details.
+4. **Click CREATE**
 
-### Step 4: Click CREATE
+    {{< img src="/img/2.10/create_key.png" alt="Create button" >}}
 
-{{< img src="/img/2.10/create_key.png" alt="Create button" >}}
+    A **Key successfully generated** pop-up will be displayed with the key shown. You **must** save this somewhere for future reference as it will not be displayed again. Click **Copy to clipboard** and paste into a text document.
 
-A **Key successfully generated** pop-up will be displayed with the key shown. You **must** save this somewhere for future reference as it will not be displayed again. Click **Copy to clipboard** and paste into a text document.
+    {{< img src="/img/2.10/key_success.png" alt="Key success message location" >}}
 
-{{< img src="/img/2.10/key_success.png" alt="Key success message location" >}}
+    That's it, you've created a key - now you can try and use it.
 
-That's it, you've created a key - now you can try and use it.
-
-## Tutorial: Create an API Key with the API
+#### Create an API Key with the API
 
 To create an API key, you will need the API ID that we wish to grant the key access to. Creating the token is then an API call to the endpoint.
 
@@ -66,9 +65,9 @@ You will also need your own API Key, to get these values:
 4.  Select **APIs** from the **System Management** section.
 5.  From the **Actions** menu for your API, select Copy API ID 
 
-{{< img src="/img/2.10/api_id.png" alt="API ID location" >}}
+    {{< img src="/img/2.10/api_id.png" alt="API ID location" >}}
 
-Once you have these values, you can use them to access the Dashboard API, the below `curl` command will generate a key for one of your APIs:
+    Once you have these values, you can use them to access the Dashboard API, the below `curl` command will generate a key for one of your APIs:
 
 {{< note success >}}
 **Note**
@@ -77,8 +76,6 @@ Once you have these values, you can use them to access the Dashboard API, the be
   2. Replace the API ID (`ad5004d961a147d4649fd3216694ebe2`) with your API ID
   3. It's recommended to validate the JSON using JSON validator to avoid any `malformed input` error
 {{< /note >}}
-  
-
 
 ```{.copyWrapper}
 curl -X POST -H "authorization: 1238b7e0e2ff4c2957321724409ee2eb" \

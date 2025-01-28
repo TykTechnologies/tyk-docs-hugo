@@ -11,7 +11,7 @@ The [Mock Response]({{< ref "product-stack/tyk-gateway/middleware/mock-response-
 
 When working with Tyk OAS APIs, this middleware is executed at the **end** of the request processing chain immediately prior to the upstream proxy stage. Thus, any other request processing middleware - including authentication - will be run before the request reaches the mock response.
 
-The middleware is defined in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}). To create this definition, you can use the Tyk Dashboard API or the API Designer in the Tyk Dashboard UI.
+The middleware is defined in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). To create this definition, you can use the Tyk Dashboard API or the API Designer in the Tyk Dashboard UI.
 
 To configure or create a Mock Response middleware you have two modes, manual and automatic. Following please find detailed guidance for each mode.
 
