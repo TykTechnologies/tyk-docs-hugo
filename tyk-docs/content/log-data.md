@@ -54,6 +54,39 @@ Sometimes you will want to have more detailed logging for the Tyk Gateway than f
 
 If unset or left empty, it will default to `info`. 
 
+### Enabling API Request Access Logs in Tyk Gateway
+As of Tyk Gateway v5.8.0, you can configure the Gateway to log individual API request transactions. To enable this feature, set the Tyk Gateway configuration `TYK_ACCESSLOGS_ENABLED` to `true`.
+
+### Configuring Access Logs Data
+You can specify the type of data to be logged by configuring the `TYK_ACCESSLOGS_TEMPLATE` in the Tyk Gateway configuration. Below are the available values you can include:
+
+- `api_key`: Logs the obfuscated or hashed API key.
+- `client_ip`: Logs the IP address of the request.
+- `host`: Logs the host of the request.
+- `method`: Logs the HTTP method of the request.
+- `path`: Logs the path of the request.
+- `protocol`: Logs the protocol used in the request.
+- `remote_addr`: Logs the remote address of the request.
+- `upstream_address`: Logs the upstream address, including scheme, host, and path.
+- `upstream_latency`: Logs the upstream latency of the request.
+- `latency_total`: Logs the total latency of the request.
+- `user_agent`: Logs the user agent of the request.
+- `status`: Logs the response status code.
+
+To configure, set `TYK_ACCESSLOGS_TEMPLATE` with the desired values in the format: ["value1", "value2", ...].
+
+### Access Logs Performance Considerations
+Enabling access logs introduces some performance overhead:
+
+- **Latency:** Increases consistently by approximately 4%–13%, depending on CPU allocation and configuration.
+- **Memory Usage:** Memory consumption increases by approximately 6%–7%.
+- **Allocations:** The number of memory allocations increases by approximately 5%–6%.
+
+{{< note >}}
+**Note**  
+While the overhead of enabling access logs is noticeable, the impact is relatively modest. These findings suggest the performance trade-off may be acceptable depending on the criticality of logging to your application.
+{{< /note >}}
+
 ### Setting log format (only available for the Gateway)
 
 As of Tyk Gateway `v5.6.0`, you can control log format using the `TYK_LOGFORMAT` environment variable. By default, logs are in `default` format, but setting `TYK_LOGFORMAT` to `json` will output logs in JSON format.
