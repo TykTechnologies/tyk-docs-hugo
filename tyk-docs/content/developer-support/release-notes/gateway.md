@@ -80,7 +80,7 @@ An illustrative example is shown below. -->
 | ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
 | [Go](https://go.dev/dl/)                                     | 1.22  |  1.22  | [Go plugins]({{< ref "/plugins/supported-languages/golang" >}}) must be built using Go 1.22 | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "/tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}}) |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
@@ -238,7 +238,7 @@ An illustrative example is shown below. -->
 | ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
 | [Go](https://go.dev/dl/)                                     | 1.22  |  1.22  | [Go plugins]({{< ref "/plugins/supported-languages/golang" >}}) must be built using Go 1.22 | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "/tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}}) |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
@@ -410,7 +410,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | ------------------------------------------------------------- | --------------- | ------------------- | ------------------------------------------------------------------------------------------- |
 | [Go](https://go.dev/dl/)                                      | 1.22            | 1.22                | [Go plugins]({{< ref "/plugins/supported-languages/golang" >}}) must be built using Go 1.22 |
 | [Redis](https://redis.io/download/)                           | 6.2.x, 7.x      | 6.2.x, 7.x          | Used by Tyk Gateway                                                                         |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x          | v3.0.x              | Supported by [Tyk OAS]({{< ref "/tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})           |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x          | v3.0.x              | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})           |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the
 ongoing support of third-party dependencies they install, as their status may have changed since the release.
@@ -592,7 +592,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | ------------------------------------------------------------- | --------------- | ------------------- | ------------------------------------------------------------------------------------------- |
 | [Go](https://go.dev/dl/)                                      | 1.22            | 1.22                | [Go plugins]({{< ref "/plugins/supported-languages/golang" >}}) must be built using Go 1.22 |
 | [Redis](https://redis.io/download/)                           | 6.2.x, 7.x      | 6.2.x, 7.x          | Used by Tyk Gateway                                                                         |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x          | v3.0.x              | Supported by [Tyk OAS]({{< ref "/tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})           |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x          | v3.0.x              | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})           |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the
 ongoing support of third-party dependencies they install, as their status may have changed since the release.
@@ -817,7 +817,7 @@ There are no breaking changes in this release.
 | ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
 | [Go](https://go.dev/dl/)                                     | 1.21  |  1.21  | [Go plugins]({{< ref "/plugins/supported-languages/golang" >}}) must be built using Go 1.21 | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "/tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}}) |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
@@ -872,7 +872,7 @@ There are no breaking changes in this release.
 | ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
 | [Go](https://go.dev/dl/)                                     | 1.21  |  1.21  | [Go plugins]({{< ref "/plugins/supported-languages/golang" >}}) must be built using Go 1.21 | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "/tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}}) |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
@@ -999,7 +999,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
 | [Go](https://go.dev/dl/)                                     | 1.21  |  1.21  | [Go plugins]({{< ref "/plugins/supported-languages/golang" >}}) must be built using Go 1.21 | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "/tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}}) |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
@@ -1190,7 +1190,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
 | [Go](https://go.dev/dl/)                                     | 1.19 (GQL), 1.21 (GW)  | 1.19 (GQL), 1.21 (GW)  | [Go plugins]({{< ref "/plugins/supported-languages/golang" >}}) must be built using Go 1.21 | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "/tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}}) |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
@@ -1510,7 +1510,7 @@ This release has no breaking changes.
 | ------------------------------------------------------------- | --------------------- | --------------------- | ------------------------------------------------------------------------------------------ |
 | [Go](https://go.dev/dl/)                                      |  1.22 (GW)            |  1.22 (GW)            | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.22 |
 | [Redis](https://redis.io/download/)                           | 6.2.x, 7.x            | 6.2.x, 7.x            | Used by Tyk Gateway                                                                        |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x                | v3.0.x                | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})           |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x                | v3.0.x                | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})           |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the
 ongoing support of third-party dependencies they install, as their status may have changed since the release.
@@ -1671,7 +1671,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | ------------------------------------------------------------- | --------------------- | --------------------- | ------------------------------------------------------------------------------------------ |
 | [Go](https://go.dev/dl/)                                      |  1.22 (GW)            |  1.22 (GW)            | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.22 |
 | [Redis](https://redis.io/download/)                           | 6.2.x, 7.x            | 6.2.x, 7.x            | Used by Tyk Gateway                                                                        |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x                | v3.0.x                | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})           |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x                | v3.0.x                | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})           |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the
 ongoing support of third-party dependencies they install, as their status may have changed since the release.
@@ -1804,7 +1804,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | ------------------------------------------------------------- | --------------- | ------------------- | ------------------------------------------------------------------------------------------ |
 | [Go](https://go.dev/dl/)                                      | 1.22            | 1.22                | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.22 |
 | [Redis](https://redis.io/download/)                           | 6.2.x, 7.x      | 6.2.x, 7.x          | Used by Tyk Gateway                                                                        |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x          | v3.0.x              | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})           |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x          | v3.0.x              | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})           |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the
 ongoing support of third-party dependencies they install, as their status may have changed since the release.
@@ -1926,7 +1926,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | ------------------------------------------------------------- | --------------- | ------------------- | ------------------------------------------------------------------------------------------ |
 | [Go](https://go.dev/dl/)                                      | 1.22            | 1.22                | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.22 |
 | [Redis](https://redis.io/download/)                           | 6.2.x, 7.x      | 6.2.x, 7.x          | Used by Tyk Gateway                                                                        |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x          | v3.0.x              | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})           |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x          | v3.0.x              | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})           |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the
 ongoing support of third-party dependencies they install, as their status may have changed since the release.
@@ -1991,7 +1991,7 @@ attack surface by eliminating unnecessary packages, which bolsters the security 
 <summary>Custom Response Plugins not working for Tyk OAS APIs</summary>
 
 We have resolved an issue where custom [response plugins]({{< ref "plugins/plugin-types/response-plugins" >}}) were not being
-triggered for Tyk OAS APIs. This fix ensures that all [supported]({{< ref "getting-started/using-oas-definitions/oas-reference" >}})
+triggered for Tyk OAS APIs. This fix ensures that all [supported]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-feature-status" >}})
 custom plugins are invoked as expected when using Tyk OAS APIs.
 
 </details>
@@ -2118,7 +2118,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | ------------------------------------------------------------- | --------------------- | --------------------- | ------------------------------------------------------------------------------------------ |
 | [Go](https://go.dev/dl/)                                      | 1.19 (GQL), 1.21 (GW) | 1.19 (GQL), 1.21 (GW) | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.21 |
 | [Redis](https://redis.io/download/)                           | 6.2.x, 7.x            | 6.2.x, 7.x            | Used by Tyk Gateway                                                                        |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x                | v3.0.x                | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})           |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x                | v3.0.x                | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})           |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the
 ongoing support of third-party dependencies they install, as their status may have changed since the release.
@@ -2259,7 +2259,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | ------------------------------------------------------------- | --------------------- | --------------------- | ------------------------------------------------------------------------------------------ |
 | [Go](https://go.dev/dl/)                                      | 1.19 (GQL), 1.21 (GW) | 1.19 (GQL), 1.21 (GW) | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.21 |
 | [Redis](https://redis.io/download/)                           | 6.2.x, 7.x            | 6.2.x, 7.x            | Used by Tyk Gateway                                                                        |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x                | v3.0.x                | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})           |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x                | v3.0.x                | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})           |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the
 ongoing support of third-party dependencies they install, as their status may have changed since the release.
@@ -2345,7 +2345,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | ------------------------------------------------------------- | --------------------- | --------------------- | ------------------------------------------------------------------------------------------ |
 | [Go](https://go.dev/dl/)                                      | 1.19 (GQL), 1.21 (GW) | 1.19 (GQL), 1.21 (GW) | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.21 |
 | [Redis](https://redis.io/download/)                           | 6.2.x, 7.x            | 6.2.x, 7.x            | Used by Tyk Gateway                                                                        |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x                | v3.0.x                | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})           |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x                | v3.0.x                | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})           |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the
 ongoing support of third-party dependencies they install, as their status may have changed since the release.
@@ -2502,7 +2502,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | ------------------------------------------------------------- | --------------------- | --------------------- | ------------------------------------------------------------------------------------------ |
 | [Go](https://go.dev/dl/)                                      | 1.19 (GQL), 1.21 (GW) | 1.19 (GQL), 1.21 (GW) | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.21 |
 | [Redis](https://redis.io/download/)                           | 6.2.x, 7.x            | 6.2.x, 7.x            | Used by Tyk Gateway                                                                        |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x                | v3.0.x                | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})           |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x                | v3.0.x                | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})           |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the
 ongoing support of third-party dependencies they install, as their status may have changed since the release.
@@ -2646,7 +2646,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | ------------------------------------------------------------- | --------------------- | --------------------- | ------------------------------------------------------------------------------------------ |
 | [Go](https://go.dev/dl/)                                      | 1.19 (GQL), 1.21 (GW) | 1.19 (GQL), 1.21 (GW) | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.21 |
 | [Redis](https://redis.io/download/)                           | 6.2.x, 7.x            | 6.2.x, 7.x            | Used by Tyk Gateway                                                                        |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x                | v3.0.x                | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})           |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x                | v3.0.x                | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})           |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the
 ongoing support of third-party dependencies they install, as their status may have changed since the release.
@@ -2811,10 +2811,10 @@ For licensed deployments (Tyk Cloud, Self Managed including MDCB), please refer 
   - Tyk OAS API Definitions prior to v5.3.0 are not [forward compatible](https://tinyurl.com/t3zz88ep) with Tyk Gateway
     v5.3.X.
   - This means that any Tyk OAS APIs created in any previous release (4.1.0-5.2.x) cannot work with the new Tyk Gateway
-    v5.3.X without being migrated to its [latest format]({{<ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc">}}).
+    v5.3.X without being migrated to its [latest format]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object">}}).
 - **After upgrade (the good news)**
   - Tyk OAS API definitions that are part of the file system **are not automatically converted** to the [new
-    format]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}). Subsequently, users will have to manually update their
+    format]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}}). Subsequently, users will have to manually update their
     OAS API Definitions to the new format.
   - If users upgrade to 5.3.0, create new Tyk OAS APIs and then decide to rollback then the upgrade is non-reversible.
     Reverting to your previous version requires restoring from a backup.
@@ -2876,7 +2876,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | ------------------------------------------------------------- | --------------------- | --------------------- | ------------------------------------------------------------------------------------------ |
 | [Go](https://go.dev/dl/)                                      | 1.19 (GQL), 1.21 (GW) | 1.19 (GQL), 1.21 (GW) | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.21 |
 | [Redis](https://redis.io/download/)                           | 6.2.x, 7.x            | 6.2.x, 7.x            | Used by Tyk Gateway                                                                        |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x                | v3.0.x                | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})           |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x                | v3.0.x                | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})           |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the
 ongoing support of third-party dependencies they install, as their status may have changed since the release.
@@ -3610,7 +3610,7 @@ This prints the release version, git commit, Go version used, architecture and o
 <details>
 <summary>Added option to fallback to default API version</summary>
 
-Added new option for Tyk to use the default version of an API if the requested version does not exist. This is referred to as falling back to default and is enabled using a [configuration]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#versioning" >}}) flag in the API definition; for Tyk OAS APIs the flag is `fallbackToDefault`, for Tyk Classic APIs it is `fallback_to_default`.
+Added new option for Tyk to use the default version of an API if the requested version does not exist. This is referred to as falling back to default and is enabled using a [configuration]({{< ref "api-management/gateway-config-tyk-oas#versioning" >}}) flag in the API definition; for Tyk OAS APIs the flag is `fallbackToDefault`, for Tyk Classic APIs it is `fallback_to_default`.
 </details>
 </li>
 <li>
@@ -3912,7 +3912,7 @@ We're thrilled to bring you some exciting enhancements and crucial fixes to impr
 
 ##### Added Body Transform Middleware to Tyk OAS API Definition
 
-With this release, we are adding the much requested *Body Transformations* to *Tyk OAS API Definition*. You can now [configure]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#transformbody" >}}) middleware for both [request]({{< ref "transform-traffic/request-body" >}}) and [response]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) body transformations and - as a Tyk Dashboard user - you’ll be able to do so from within our simple and elegant API Designer tool.
+With this release, we are adding the much requested *Body Transformations* to *Tyk OAS API Definition*. You can now [configure]({{< ref "api-management/gateway-config-tyk-oas#transformbody" >}}) middleware for both [request]({{< ref "transform-traffic/request-body" >}}) and [response]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) body transformations and - as a Tyk Dashboard user - you’ll be able to do so from within our simple and elegant API Designer tool.
 
 ##### Reference Tyk OAS API Definition From Within Your Custom Go Plugins
 
@@ -4046,7 +4046,7 @@ Added support for the websocket protocol, *graphql-transport-ws protocol*, enhan
 <details>
 <summary>Developers using Tyk OAS API Definition can configure body transform middleware for API reponses</summary>
 
-Added support for API Developers using *Tyk OAS API Definition* to [configure]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#transformbody" >}}) a body transform middleware that operates on API responses. This enhancement ensures streamlined and selective loading of the middleware based on configuration, enabling precise response data customization at the per-endpoint level.
+Added support for API Developers using *Tyk OAS API Definition* to [configure]({{< ref "api-management/gateway-config-tyk-oas#transformbody" >}}) a body transform middleware that operates on API responses. This enhancement ensures streamlined and selective loading of the middleware based on configuration, enabling precise response data customization at the per-endpoint level.
 </details>
 </li>
 <li>

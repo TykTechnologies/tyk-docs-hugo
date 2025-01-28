@@ -71,7 +71,7 @@ There are no breaking changes in this release.
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
 
 #### Deprecations
 
@@ -161,7 +161,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
 
 #### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
@@ -404,7 +404,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
 
 #### Deprecations
 
@@ -483,7 +483,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
 
 #### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
@@ -676,7 +676,7 @@ There are no breaking changes in this release.
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
 
 #### Deprecations
 
@@ -734,7 +734,7 @@ There are no breaking changes in this release.
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
 
 #### Deprecations
 
@@ -809,7 +809,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
 
 #### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
@@ -976,7 +976,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
 
 #### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
@@ -1184,7 +1184,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
@@ -1282,7 +1282,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
@@ -1385,7 +1385,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
 
 #### Deprecations
 
@@ -1465,7 +1465,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
 
 #### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.6)
@@ -1639,7 +1639,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
 
 #### Downloads
 
@@ -1710,7 +1710,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
 
 #### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.4)
@@ -1824,7 +1824,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
 
 #### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.3)
@@ -1964,7 +1964,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
 
 
 #### Downloads
@@ -2098,7 +2098,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 11.x - 15.x LTS        | 11.x - 15.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
 
 #### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.1)
@@ -2245,12 +2245,12 @@ This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "developer-s
   - If you are not using Tyk OAS APIs, Tyk will maintain backward compatibility standards.
 - **Not Forward Compatible**
   - Tyk OAS API Definitions prior to v5.3.0 are not [forward compatible](https://tinyurl.com/t3zz88ep) with Tyk Gateway v5.3.X.
-  - This means that any Tyk OAS APIs created in any previous release (4.1.0-5.2.x) cannot work with the new Tyk Dashboard v5.3.X without being migrated to its [latest format]({{<ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc">}}).
+  - This means that any Tyk OAS APIs created in any previous release (4.1.0-5.2.x) cannot work with the new Tyk Dashboard v5.3.X without being migrated to its [latest format]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object">}}).
 - **MDCB deployment and Tyk OAS APIs**
   - Tyk OAS APIs created in Tyk v5.3.0 will not be loaded by the data plane gateways if you are using MDCB v2.4 or older. This means that MDCB users already working with Tyk OAS APIs **must wait for the release of MDCB v2.5** before upgrading Tyk Gateway and Dashboard to v5.3.0. 
   - Tyk Dashboard v5.3.0 managing Tyk OAS APIs requires Tyk Gateway v5.3.0 and MDCB v2.5.X for proper functionality. Older versions of Tyk Gateway may experience compatibility issues with Tyk OAS API definitions from v5.3.0.
 - **After upgrade (the good news)**
-  - If you had a Tyk OAS API prior to v5.3.0 then Tyk Dashboard will automatically update the API definition to [latest format]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}).
+  - If you had a Tyk OAS API prior to v5.3.0 then Tyk Dashboard will automatically update the API definition to [latest format]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}}).
   - This means that you do not have to do anything to make your Tyk OAS APIs compatible with the new 5.3.0 release as Tyk Dashboard will take care of that during start-up.
   - As mentioned above, this upgrade of Tyk OAS API definitions is irreversible.
   
@@ -2291,7 +2291,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 11.x - 15.x LTS        | 11.x - 15.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
@@ -2305,7 +2305,7 @@ There are no deprecations in this release.
 1. For Self Managed deployments - Backup Your environment using the [usual guidance]({{<ref "developer-support/upgrading#tyk-upgrade-guides-for-different-deployment-models">}}) documented with every release (this includes backup config file and database).
 2. For all deployments - Backup all your API definitions (Tyk OAS API and Classic Definitions):
    - For Tyk Cloud deployments - To perform the backup please use our guide for [exporting APIs and policies]({{<ref "developer-support/upgrading#backup-apis-and-policies">}}).
-   - For Self-Managed deployments -  To perform the backup please use [Tyk Sync]({{<ref "/api-management/automations#synchronize-tyk-environment-with-github-repository" >}}).
+   - For Self-Managed deployments -  To perform the backup please use [Tyk Sync]({{<ref "api-management/automations/sync" >}}).
 4. Performing the upgrade - For all deployments, follow the instructions in the [upgrade guide](#upgrading-tyk) when upgrading Tyk.
 
 #### Release Highlights
@@ -2800,7 +2800,7 @@ Fixed an issue where the [OPA editor]({{< ref "tyk-dashboard/open-policy-agent#u
 <details>
 <summary>User Search not working unless you enter the full email address</summary>
 
-Fixed an issue where the [User Search]({{< ref "basic-config-and-security/security/dashboard/search-users" >}}) was not working unless the full email address was entered. The fix restores the functionality of showing suggestions for names as they are typed in, improving user experience and search efficiency.
+Fixed an issue where the [User Search]({{< ref "api-management/user-management#search-users" >}}) was not working unless the full email address was entered. The fix restores the functionality of showing suggestions for names as they are typed in, improving user experience and search efficiency.
 </details>
 </li>
 <li>
@@ -3047,7 +3047,7 @@ We’ve added the ability to [configure]({{< ref "product-stack/tyk-gateway/midd
 
 ##### Added Body Transform Middleware to Tyk OAS API Definition
 
-With this release, we are adding the much requested *Body Transformations* to *Tyk OAS API Definition*. You can now [configure]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#transformbody" >}}) middleware for both [request]({{< ref "transform-traffic/request-body" >}}) and [response]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) *Body Transformations* and - as a *Tyk Dashboard* user - you’ll be able to do so from within our simple and elegant API Designer tool. Visually test and preview *Body Transformations* from within the API Designer.
+With this release, we are adding the much requested *Body Transformations* to *Tyk OAS API Definition*. You can now [configure]({{< ref "api-management/gateway-config-tyk-oas#transformbody" >}}) middleware for both [request]({{< ref "transform-traffic/request-body" >}}) and [response]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) *Body Transformations* and - as a *Tyk Dashboard* user - you’ll be able to do so from within our simple and elegant API Designer tool. Visually test and preview *Body Transformations* from within the API Designer.
 
 ##### Track Usage Of License APIs, Gateways And Distributed Data Planes Over Time
 
@@ -3083,7 +3083,7 @@ Added a new [endpoint]({{< ref "/tyk-dashboard-api" >}}), */system/stats*, to pr
 <details>
 <summary>Configure request and response body transformations</summary>
 
-Added support for API developers to easily [configure]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#transformbody" >}}) both request and response *Body Transformations* for more precise data management when working with *Tyk OAS* APIs. Define input data, craft transformation templates and test them against specific inputs for reliable customization.
+Added support for API developers to easily [configure]({{< ref "api-management/gateway-config-tyk-oas#transformbody" >}}) both request and response *Body Transformations* for more precise data management when working with *Tyk OAS* APIs. Define input data, craft transformation templates and test them against specific inputs for reliable customization.
 </details>
 </li>
 <li>
@@ -3230,12 +3230,12 @@ a user’s access, within the Dashboard Analytics screens, to view only the
 statistics from APIs that they own; we’ve called this “Owned Analytics”. Due to
 the way the analytics data are aggregated (to optimize storage), a user granted
 this role will not have access to the full range of charts. Take a look at the
-documentation for a full description of this new [user role]({{< ref "basic-config-and-security/security/dashboard/user-roles" >}}).
+documentation for a full description of this new [user role]({{< ref "api-management/user-management#user-permissions" >}}).
 
 ##### Import API examples from within the Dashboard
 
 In 5.0 we introduced the possibility to import API examples manually or via
-[_Tyk Sync_]({{< ref "/api-management/automations#synchronize-tyk-environment-with-github-repository" >}}). We have now extended this feature and it is now possible to do this without
+[_Tyk Sync_]({{< ref "api-management/automations/sync" >}}). We have now extended this feature and it is now possible to do this without
 leaving the Dashboard. When having an empty “Data Graphs” section you will be
 presented with 3 icon buttons with one of them offering you to import an Example
 API.
@@ -3282,7 +3282,7 @@ size using [slave_options.rpc_pool_size]({{< ref "tyk-oss-gateway/configuration#
 - Added a way to display UDG examples from the [tyk-examples](https://github.com/TykTechnologies/tyk-examples) repository in the Dashboard UI
 - Added screens in Dashboard New Graph flow, that allows users to choose between creating a graph from scratch or importing one of our example graphs
 - Added a screen to display details of a UDG example API
-- Added a feature to display a full [_Tyk Sync_]({{<ref "/api-management/automations#synchronize-tyk-environment-with-github-repository" >}}) command that will allow a user to import an example UDG into their Dashboard
+- Added a feature to display a full [_Tyk Sync_]({{<ref "api-management/automations/sync" >}}) command that will allow a user to import an example UDG into their Dashboard
 - Added `/examples` endpoint to Dashboard API that returns a list of available API examples that can later be imported into the Dashboard `GET /api/examples`
 - Added `/data-graphs/data-sources/import` endpoint to Dashboard API that transforms an OpenAPI document into UDG config and publishes it in Dashboard `POST /api/data-graphs/data-sources/import`
 - Added query param `apidef=true` to example detail endpoint in Dashboard API to retrieve the API definition of an example
