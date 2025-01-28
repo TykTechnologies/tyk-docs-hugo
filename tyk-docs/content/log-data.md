@@ -75,7 +75,7 @@ You can specify the type of data to be logged by configuring the `TYK_ACCESSLOGS
 - `user_agent`: Logs the user agent of the request.
 - `status`: Logs the response status code.
 
-To configure, set `TYK_ACCESSLOGS_TEMPLATE` with the desired values in the format: ["value1", "value2", ...].
+To configure, set `TYK_ACCESSLOGS_TEMPLATE` with the desired values in the format: `["value1", "value2", ...]`.
 
 #### Access Logs Performance Considerations
 
