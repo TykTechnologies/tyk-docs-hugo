@@ -20,11 +20,17 @@ To get access to these features, contact us at [support@tyk.io](mailto:support@t
 
 ## Introduction
 
-This guide explains how to migrate resources between Tyk Developer Portal environments, including API products, plans, tutorials, and content blocks. Starting with Portal 1.13, we introduced **Custom IDs (CIDs)** - persistent identifiers that remain unchanged across environments and recreations. This is a significant improvement over traditional database IDs, which change when resources are migrated or recreated.
+This guide explains how to migrate resources between Tyk Developer Portal environments, including API products, plans, tutorials, and content blocks. Starting with Portal 1.13, we introduced **Custom IDs (CIDs)** - additional persistent identifiers that work alongside database IDs to provide stable references across environments and recreations. While database IDs remain the primary internal identifiers, CIDs provide a reliable way to track and maintain relationships between resources across different environments.
+
+### The Role of Database IDs and CIDs
+
+Resources in the Tyk Developer Portal use both types of identifiers:
+- **Database IDs**: Primary internal identifiers that are automatically generated and managed by the database
+- **Custom IDs (CIDs)**: Additional stable identifiers that remain consistent across environments
 
 ### The Problem with Database-Generated IDs
 
-Before Portal 1.13, resources were identified solely by database-generated IDs. While this worked for single-environment setups, it caused issues when:
+Before Portal 1.13, resources were identified solely by database-generated IDs. While this worked for single-environment setups, it caused challenges when:
 - Migrating resources between environments
 - Recreating or restoring resources
 - Maintaining relationships between connected resources
@@ -314,8 +320,7 @@ restore)
   echo "Usage: $0 {export|restore} --url <portal_url> --token <portal_token> [--resource <organisations|teams|all>]"
   exit 1
   ;;
-esac
-```
+esac```
 
 
 ### Executing the Script
