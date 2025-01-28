@@ -60,7 +60,7 @@ As of Tyk Gateway `v5.8.0`, you can configure the Gateway to log individual API 
 
 #### Configuring Access Logs Data
 
-You can specify the type of data to be logged by configuring the `TYK_ACCESSLOGS_TEMPLATE` in the Tyk Gateway configuration. Below are the available values you can include:
+You can specify which fields to be logged by configuring the `TYK_ACCESSLOGS_TEMPLATE` in the Tyk Gateway configuration. Below are the available values you can include:
 
 - `api_key`: Logs the obfuscated or hashed API key.
 - `client_ip`: Logs the IP address of the request.
