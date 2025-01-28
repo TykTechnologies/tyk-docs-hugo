@@ -128,13 +128,39 @@ After exporting the resources, the next step is to restore them into the target 
 Here's a sample script that shows how to export and restore **organisations** and **teams**. You can modify it to work for other resources as needed.
 
 ```bash
-#!/bin/bash
+#!/usr/bin/env bash
 
 # A script to export and restore organisations and teams between environments in Tyk Developer Portal.
 
 set -euo pipefail
 
+# Check required commands
+check_requirements() {
+  local required_commands=("curl" "jq")
+  local missing_commands=()
+
+  for cmd in "${required_commands[@]}"; do
+    if ! command -v "$cmd" >/dev/null 2>&1; then
+      missing_commands+=("$cmd")
+    fi
+  done
+
+  if [ ${#missing_commands[@]} -ne 0 ]; then
+    echo "ERROR: Required commands not found: ${missing_commands[*]}"
+    echo "Please install the missing commands and try again."
+    exit 1
+  fi
+}
+
+# Run requirements check
+check_requirements
+
 # Variables from environment or command-line flags
+# PORTAL_URL: The base URL of the Tyk Developer Portal API
+# PORTAL_TOKEN: Authentication token for API access
+# PAGE: Starting page number for pagination (default: 1)
+# PER_PAGE: Number of items per page (default: 50)
+# RESOURCE_FILTER: Type of resources to process (organisations, teams, or all)
 PORTAL_URL=${PORTAL_URL:-}
 PORTAL_TOKEN=${PORTAL_TOKEN:-}
 PAGE=${PAGE:-1}
@@ -150,7 +176,13 @@ fi
 DATA_DIR="data"
 mkdir -p "$DATA_DIR"
 
-# Fetch organisations
+# Fetch organisations function
+# Recursively fetches all organisations using pagination
+# Skips the Default Organisation
+# Removes ID, CreatedAt, UpdatedAt, and Teams fields before saving
+# Arguments:
+#   $1: page number
+#   $2: items per page
 fetch_organisations() {
   local page=$1
   local per_page=$2
@@ -184,7 +216,13 @@ fetch_organisations() {
   fi
 }
 
-# Fetch teams
+# Fetch teams function
+# Recursively fetches all teams using pagination
+# Skips teams ending with "All users"
+# Removes Users field before saving
+# Arguments:
+#   $1: page number
+#   $2: items per page
 fetch_teams() {
   local page=$1
   local per_page=$2
@@ -218,7 +256,10 @@ fetch_teams() {
   fi
 }
 
-# Restore organisations
+# Restore organisations function
+# Reads organisation JSON files from data directory
+# Posts each organisation to the target environment
+# Reports success (HTTP 201) or failure for each operation
 restore_organisations() {
   echo "Restoring organisations..."
   for file in "$DATA_DIR"/organisation_*.json; do
@@ -236,7 +277,10 @@ restore_organisations() {
   done
 }
 
-# Restore teams
+# Restore teams function
+# Reads team JSON files from data directory
+# Posts each team to the target environment
+# Reports success (HTTP 201) or failure for each operation
 restore_teams() {
   echo "Restoring teams..."
   for file in "$DATA_DIR"/team_*.json; do
@@ -255,6 +299,8 @@ restore_teams() {
 }
 
 # Main script logic
+# Handles command line arguments (export or restore)
+# Uses RESOURCE_FILTER to determine which resources to process
 case $1 in
 export)
   [[ "$RESOURCE_FILTER" == "all" || "$RESOURCE_FILTER" == "organisations" ]] && fetch_organisations "$PAGE" "$PER_PAGE"
@@ -294,7 +340,6 @@ export PORTAL_TOKEN="your-token"
 
 Optional parameters:
 ```bash
-export RESOURCE_FILTER="organisations"  # Filter specific resources (organisations|teams|all)
 export PAGE=1                          # Start from specific page
 export PER_PAGE=50                     # Number of items per page
 ```
