@@ -80,13 +80,13 @@ To configure, set `TYK_ACCESSLOGS_TEMPLATE` environment variable with the desire
 ##### Default log example
 
 ```
-time="Jan 29 08:27:09" level=info api_id=b1a41c9a89984ffd7bb7d4e3c6844ded api_key=00000000 api_name=httpbin client_ip="::1" host="localhost:8080" latency_total=62 method=GET org_id=678e6771247d80fd2c435bf3 path=/get prefix=access-log protocol=HTTP/1.1 remote_addr="[::1]:63251" status=200 upstream_address="http://httpbin.org/get" upstream_latency=61 user_agent=PostmanRuntime/7.43.0
+time="Jan 29 08:27:09" level=info api_id=b1a41c9a89984ffd7bb7d4e3c6844ded api_key=00000000 api_name=httpbin client_ip="::1" host="localhost:8080" latency_total=62 method=GET org_id=678e6771247d80fd2c435bf3 path=/get prefix=access-log protocol=HTTP/1.1 remote_addr="[::1]:63251" status=200 upstream_addr="http://httpbin.org/get" upstream_latency=61 user_agent=PostmanRuntime/7.43.0
 ```
 
 ##### Custom template log example
 
 ```
-time="Jan 29 08:27:48" level=info api_id=b1a41c9a89984ffd7bb7d4e3c6844ded api_key=00000000 api_name=httpbin org_id=678e6771247d80fd2c435bf3 prefix=access-log remote_addr="[::1]:63270" upstream_address="http://httpbin.org/get"
+time="Jan 29 08:27:48" level=info api_id=b1a41c9a89984ffd7bb7d4e3c6844ded api_key=00000000 api_name=httpbin org_id=678e6771247d80fd2c435bf3 prefix=access-log remote_addr="[::1]:63270" upstream_addr="http://httpbin.org/get"
 ```
 
 #### Performance Considerations
