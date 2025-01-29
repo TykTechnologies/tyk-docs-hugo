@@ -7,7 +7,7 @@ menu:
 weight: 100 
 ---
 
-The [Tyk Dashboard API]({{< ref "tyk-dashboard-api" >}}) is a superset of the Tyk Gateway API, enabling (almost) all of the core features and adding many more. The Dashboard API is also more granular and supports [Role Based Access Control]({{< ref "tyk-dashboard/rbac" >}}) (RBAC) on both a multi-tenant, and user basis.
+The [Tyk Dashboard API]({{< ref "tyk-dashboard-api" >}}) is a superset of the Tyk Gateway API, enabling (almost) all of the core features and adding many more. The Dashboard API is also more granular and supports [Role Based Access Control]({{< ref "api-management/user-management#" >}}) (RBAC) on both a multi-tenant, and user basis.
 
 Using the Dashboard API it is possible to set Read / Write / ReadWrite / Deny access to sections of the API on a user by user basis, and also segregate User / Key / API Ownership by organization.
 

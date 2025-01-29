@@ -18,7 +18,7 @@ You can view the overview of what the traffic breakdown looks like per country, 
 {{< note success >}}
 **Note**
 
-From Tyk v5.1 (and LTS patches v4.0.14 and v5.0.3) the <b>Geographic Distribution</b> screen will not be visible to a user if they are assigned the [Owned Analytics]({{< ref "basic-config-and-security/security/dashboard/user-roles" >}}) permission.
+From Tyk v5.1 (and LTS patches v4.0.14 and v5.0.3) the <b>Geographic Distribution</b> screen will not be visible to a user if they are assigned the [Owned Analytics]({{< ref "api-management/user-management#user-permissions" >}}) permission.
 {{< /note >}}
 
 ### MaxMind Settings
