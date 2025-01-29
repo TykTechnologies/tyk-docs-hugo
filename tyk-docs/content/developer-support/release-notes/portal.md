@@ -100,6 +100,20 @@ This streamlines the API product lifecycle management process and provides great
 </li>
 <li>
 <details>
+<summary>Documentation-only Products</summary>
+
+Added support for creating documentation-only products in the Enterprise Developer Portal. This feature allows API Providers to:
+
+- Create products that serve purely as documentation repositories
+- Share API documentation without exposing actual API endpoints
+- Preview API documentation before making APIs available
+
+This is particularly useful for scenarios where APIs are in development or when you want to share documentation with a limited audience before making the APIs publicly available.
+
+</details>
+</li>
+<li>
+<details>
 <summary>Custom ID Support for Resources</summary>
 
 EDP Resources now support custom IDs (in addition to auto-increment integer IDs) to facilitate migration and reference between environments. This feature covers:
@@ -142,25 +156,10 @@ Added new APIs for managing SSO profiles, enabling programmatic control over SSO
 These endpoints enable automation of SSO setup and management through CI/CD pipelines. Common use cases include:
 
 - Automated deployment of SSO configurations across environments
-- Bulk updates to SSO settings
 - Integration with identity management systems
 - Automated testing of SSO configurations
 
 This addition complements the embedded Tyk Identity Broker functionality introduced in v1.12.0, providing a complete programmatic interface for SSO management.
-
-</details>
-</li>
-<li>
-<details>
-<summary>Documentation-only Products</summary>
-
-Added support for creating documentation-only products in the Enterprise Developer Portal. This feature allows API Providers to:
-
-- Create products that serve purely as documentation repositories
-- Share API documentation without exposing actual API endpoints
-- Preview API documentation before making APIs available
-
-This is particularly useful for scenarios where APIs are in development or when you want to share documentation with a limited audience before making the APIs publicly available.
 
 </details>
 </li>
