@@ -56,11 +56,11 @@ If unset or left empty, it will default to `info`.
 
 ### Enabling API Request Access Logs in Tyk Gateway
 
-As of Tyk Gateway `v5.8.0`, you can configure the Gateway to log individual API request transactions. To enable this feature, set the `TYK_ACCESSLOGS_ENABLED` environment variable to `true`.
+As of Tyk Gateway `v5.8.0`, you can configure the Gateway to log individual API request transactions. To enable this feature, set the `TYK_GW_ACCESSLOGS_ENABLED` environment variable to `true`.
 
 #### Configuring output fields
 
-You can specify which fields are logged by configuring the `TYK_ACCESSLOGS_TEMPLATE` environment variable. Below are the available values you can include:
+You can specify which fields are logged by configuring the `TYK_GW_ACCESSLOGS_TEMPLATE` environment variable. Below are the available values you can include:
 
 - `api_key`: Obfuscated or hashed API key used in the request.
 - `client_ip`: IP address of the client making the request.
@@ -75,15 +75,49 @@ You can specify which fields are logged by configuring the `TYK_ACCESSLOGS_TEMPL
 - `user_agent`: User agent string from the client.
 - `status`: HTTP response status code.
 
-To configure, set `TYK_ACCESSLOGS_TEMPLATE` environment variable with the desired values in the format: `["value1", "value2", ...]`.
+To configure, set `TYK_GW_ACCESSLOGS_TEMPLATE` environment variable with the desired values in the format: `["value1", "value2", ...]`.
 
 ##### Default log example
+
+Configuration using `tyk.conf`
+
+```json
+"access_logs": {
+  "enabled": true
+}
+```
+
+Configuration using environment variables:
+
+```
+TYK_GW_ACCESSLOGS_ENABLED=true
+```
+
+Output:
 
 ```
 time="Jan 29 08:27:09" level=info api_id=b1a41c9a89984ffd7bb7d4e3c6844ded api_key=00000000 api_name=httpbin client_ip="::1" host="localhost:8080" latency_total=62 method=GET org_id=678e6771247d80fd2c435bf3 path=/get prefix=access-log protocol=HTTP/1.1 remote_addr="[::1]:63251" status=200 upstream_addr="http://httpbin.org/get" upstream_latency=61 user_agent=PostmanRuntime/7.43.0
 ```
 
 ##### Custom template log example
+
+Configuration using `tyk.conf`
+
+```json
+"access_logs": {
+  "enabled": true,
+  "template": ["api_key", "remote_addr", "upstream_addr"]
+}
+```
+
+Configuration using environment variables:
+
+```
+TYK_GW_ACCESSLOGS_ENABLED=true
+TYK_GW_ACCESSLOGS_TEMPLATE=["api_key", "remote_addr", "upstream_addr"]
+```
+
+Output:
 
 ```
 time="Jan 29 08:27:48" level=info api_id=b1a41c9a89984ffd7bb7d4e3c6844ded api_key=00000000 api_name=httpbin org_id=678e6771247d80fd2c435bf3 prefix=access-log remote_addr="[::1]:63270" upstream_addr="http://httpbin.org/get"
