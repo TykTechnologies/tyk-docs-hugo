@@ -62,18 +62,18 @@ As of Tyk Gateway `v5.8.0`, you can configure the Gateway to log individual API 
 
 You can specify which fields are logged by configuring the `TYK_ACCESSLOGS_TEMPLATE` environment variable. Below are the available values you can include:
 
-- `api_key`: Logs the obfuscated or hashed API key.
-- `client_ip`: Logs the IP address of the request.
-- `host`: Logs the host of the request.
-- `method`: Logs the HTTP method of the request.
-- `path`: Logs the path of the request.
-- `protocol`: Logs the protocol used in the request.
-- `remote_addr`: Logs the remote address of the request.
-- `upstream_address`: Logs the upstream address, including scheme, host, and path.
-- `upstream_latency`: Logs the upstream latency of the request.
-- `latency_total`: Logs the total latency of the request.
-- `user_agent`: Logs the user agent of the request.
-- `status`: Logs the response status code.
+- `api_key`: Obfuscated or hashed API key used in the request.
+- `client_ip`: IP address of the client making the request.
+- `host`: Hostname of the request.
+- `method`: HTTP method used in the request (e.g., GET, POST).
+- `path`: URL path of the request.
+- `protocol`: Protocol used in the request (e.g., HTTP/1.1).
+- `remote_addr`: Remote address of the client.
+- `upstream_addr`: Full upstream address including scheme, host, and path.
+- `upstream_latency`: Roundtrip duration between the gateway sending the request to the upstream server and it receiving a response.
+- `latency_total`: Total time taken for the request, including upstream latency and additional processing by the gateway.
+- `user_agent`: User agent string from the client.
+- `status`: HTTP response status code.
 
 To configure, set `TYK_ACCESSLOGS_TEMPLATE` environment variable with the desired values in the format: `["value1", "value2", ...]`.
 
