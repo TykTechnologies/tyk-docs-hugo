@@ -192,17 +192,17 @@ These APIs complement the UI-based product management capabilities, enabling aut
 <ul>
 <li>
 <details>
-<summary>Fixed password update issues in live portal</summary>
+<summary>Password Update issue in live portal</summary>
 
-Resolved an issue where changing a user's password via the live portal did not update the password correctly.
+Fixed an issue where password changes made via the live portal weren't being properly persisted, which caused users to be unable to log in with their new passwords. This has been resolved by implementing proper password update validation and storage mechanisms.
 
 </details>
 </li>
 <li>
 <details>
-<summary>Fixed CSRF Token validation on App edit</summary>
+<summary>App edit CSRF Token Validation</summary>
 
-Resolved an issue that was causing CSRF Token failure when editing applications.
+Fixed an issue where CSRF token validation was failing during application edits, which prevented users from saving changes to their applications. This has been resolved by implementing proper token lifecycle management and validation.
 
 </details>
 </li>
@@ -210,47 +210,47 @@ Resolved an issue that was causing CSRF Token failure when editing applications.
 <details>
 <summary>Fixed MySQL SSO Profile handling</summary>
 
-Addressed issues related to SSO Profiles in MySQL environments.
+Fixed an issue where EDP embedded Tyk Identity Broker profiles weren't being properly handled in MySQL environments, which caused storing SSO profiles failures. This has been resolved by correcting the database query handling for SSO profile data.
 
 </details>
 </li>
 <li>
 <details>
-<summary>Enhanced error message security</summary>
+<summary>Error Message Security</summary>
 
-Modified error messages to prevent exposure of sensitive backend details.
-
-</details>
-</li>
-<li>
-<details>
-<summary>Fixed file upload vulnerability</summary>
-
-Addressed a security vulnerability in file uploads by implementing proper file-type restrictions.
+Fixed an issue where Portal admin UI error responses contained sensitive backend information, which could expose internal system details to potential attackers. This has been resolved by implementing standardized error responses that maintain security while remaining informative.
 
 </details>
 </li>
 <li>
 <details>
-<summary>Fixed custom attribute deletion</summary>
+<summary>File Upload Security</summary>
 
-Resolved an issue where deleting a single custom attribute caused all user custom attributes to be unintentionally removed.
-
-</details>
-</li>
-<li>
-<details>
-<summary>Fixed catalog deletion impact</summary>
-
-Resolved an issue where removing a catalog that was actively in use caused page distortions for developers.
+Fixed an issue where the file upload system lacked proper file-type validation, which could allow potentially malicious files to be uploaded. This has been resolved by implementing strict images and OAS file-type checking and validation.
 
 </details>
 </li>
 <li>
 <details>
-<summary>Fixed theme upload validation</summary>
+<summary>Custom Attribute deletion</summary>
 
-Resolved an issue where uploading a theme.zip containing nested themes corrupted the original theme. Added validation to block nested themes and ensure clean uploads.
+Fixed an issue where deleting a single custom attribute would inadvertently remove all user custom attributes, which caused loss of user profile data. This has been resolved by implementing proper scoping for attribute deletion operations.
+
+</details>
+</li>
+<li>
+<details>
+<summary>Catalog Deletion Impact</summary>
+
+Fixed an issue where removing an active catalog would cause UI rendering problems for developers, which resulted in a poor user experience. This has been resolved by implementing proper cascading deletion of catalog resources.
+
+</details>
+</li>
+<li>
+<details>
+<summary>Theme Upload Validation</summary>
+
+Fixed an issue where uploading themes containing nested theme directories would corrupt the original theme, which caused theme installation failures. This has been resolved by implementing validation to detect and prevent nested theme uploads.
 
 </details>
 </li>
