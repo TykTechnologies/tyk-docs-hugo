@@ -103,6 +103,12 @@ When creating an API Product in the Developer Portal, a partitioned policy that 
 
 7. Save changes.
 
+{{< note >}}
+**Note:**
+If no APIs are selected, you can still add api specifications, and guides creating a documentation only product. Documentation only products are Developer Portal products that do not have any APIs associated with them and thus no policies will be created in the Tyk Self-Managed selected provider. Documentation only products are useful for creating documentation for APIs that are not yet created or published. Specs and guides will be shown in the external portal as a regular product and the selected **Specification Alias** will be used as the reference for each spec.
+{{< img src="img/dashboard/portal-management/enterprise-portal/portal-doc-only-product.png" alt="Add a Documentation only Product" >}}
+{{< /note >}}
+
 ### Create and customize a Plan in the Developer Portal
 
 When creating a Plan in the Developer Portal, a partitioned policy that implements rate limit or quota, or both, but do **NOT** include the ACL will be created in the Tyk Self-Managed selected provider. The following steps explain how to create a Plan in the Developer Portal:
