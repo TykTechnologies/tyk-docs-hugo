@@ -1,7 +1,7 @@
 ---
 title: Tyk Enterprise Developer Portal Release Notes
 description: Release notes documenting updates, enhancements and changes for Tyk Enterprise Developer Portal v1.12.0
-tags: ["Developer Portal", "Release notes", "changelog", "v1.12.0"]
+tags: ["Developer Portal", "Release notes", "changelog", "v1.13.0"]
 menu:
 main:
 parent: "Release Notes"
@@ -11,6 +11,7 @@ aliases:
   - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.10.0
   - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.11.0
   - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.12.0
+  - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.13.0
   - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.2.0
   - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.3.0
   - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.4.0
@@ -132,7 +133,20 @@ These settings can be adjusted in the General Settings section of the portal adm
 
 Added new APIs for managing SSO profiles, enabling programmatic control over SSO configurations. These APIs allow administrators to:
 
-This addition enables automation of SSO setup and management through CI/CD pipelines.
+- Create SSO profiles
+- List all SSO profiles
+- Get details of a specific profile
+- Update existing profiles
+- Delete profiles 
+
+These endpoints enable automation of SSO setup and management through CI/CD pipelines. Common use cases include:
+
+- Automated deployment of SSO configurations across environments
+- Bulk updates to SSO settings
+- Integration with identity management systems
+- Automated testing of SSO configurations
+
+This addition complements the embedded Tyk Identity Broker functionality introduced in v1.12.0, providing a complete programmatic interface for SSO management.
 
 </details>
 </li>
@@ -147,6 +161,30 @@ Added support for creating documentation-only products in the Enterprise Develop
 - Preview API documentation before making APIs available
 
 This is particularly useful for scenarios where APIs are in development or when you want to share documentation with a limited audience before making the APIs publicly available.
+
+</details>
+</li>
+<li>
+<details>
+<summary>Product and Plan Management APIs</summary>
+
+Added new APIs for managing Products and Plans programmatically, enabling automation of the product lifecycle. These APIs include:
+
+Products:
+- Create products 
+- List all products 
+- Get product details 
+- Update products
+- Delete products
+
+Plans:
+- Create plans
+- List all plans 
+- Get plan details
+- Update plans
+- Delete plans
+
+These APIs complement the UI-based product management capabilities, enabling automated workflows and CI/CD integration for product lifecycle management.
 
 </details>
 </li>

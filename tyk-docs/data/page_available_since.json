@@ -6576,6 +6576,10 @@
             "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.9.0-list-of-endpoints/",
             "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.9.0-list-of-endpoints/"
         },
+        "/product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.13.0-list-of-endpoints/": {
+            "/docs/": "/product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.13.0-list-of-endpoints/",
+            "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.13.0-list-of-endpoints/"
+        },
         "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api/": {
             "/docs/": "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api/",
             "/docs/5.6/": "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api/",
