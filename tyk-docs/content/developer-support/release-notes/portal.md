@@ -11,7 +11,6 @@ aliases:
   - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.10.0
   - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.11.0
   - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.12.0
-  - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.13.0
   - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.2.0
   - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.3.0
   - /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.4.0
