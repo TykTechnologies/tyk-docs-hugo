@@ -29,7 +29,7 @@ American spelling “organization” with a 'z'.
 **Warning**
 
 In a production environment, you will need to change the default `admin_Secret` value that is called by the `admin-auth`
-header in your `tyk_analytics.conf` file. This is located in `/opt/tyk-dashboard`.
+header in your `tyk_analytics.conf` file. This is located in `/opt/tyk-dashboard`. Admin users must be created for each organization before they can sign in to their respective organizations. 
 </br>
 {{< /warning >}}
 
