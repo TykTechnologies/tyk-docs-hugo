@@ -44,12 +44,12 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 The v1.13.0 release includes the following new features and improvements:
-- Improved UX for products and plan listing
-- Product creation, edit and removal on the portal
-- Plan creation, edit and removal on the portal
-- EDP Resources now support custom IDs that allows the migration of elements between environments
-- Security: 4 CVEs fixed
-- Bugfixes: 9 bugs fixed
+- Improved UX for Products and Plan listing.
+- Added the ability to create, edit, and remove `Products` from the portal.
+- Added the ability to create, edit, and remove `Plan` from the portal.
+- EDP Resources now support custom IDs that allow the migration of elements between environments.
+- Security: 4 CVEs fixed.
+- Bugfixes: 9 bugs fixed.
 
 For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.13.0) below.
 
@@ -60,9 +60,9 @@ This release has no breaking changes.
 There are no deprecations in this release.
 
 #### Upgrade instructions
-If you are on 1.12.0 or an older version we advise you to upgrade ASAP directly to this release.
+If you are on 1.12.0 or an older version, we advise you to upgrade ASAP to this release.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
+To upgrade the portal's theme, please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
 
 #### Download
 - [Docker image v1.13.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.13.0)
@@ -77,7 +77,7 @@ To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "
 <ul>
 <li>
 <details>
-<summary>Improved UX for products and plan listing</summary>
+<summary>Improved UX for Products and Plan listing</summary>
 
 The portal now provides an enhanced UI for browsing and managing products and plans, making it easier for administrators to organize and maintain their API offerings.
 
@@ -87,14 +87,14 @@ The portal now provides an enhanced UI for browsing and managing products and pl
 <details>
 <summary>Product and Plan Management</summary>
 
-Administrators can now create, edit, and remove products and plans directly from the portal admin UI, eliminating the need to manage these through the Tyk Dashboard. This includes:
+Administrators can now create, edit, and remove `Products` and `Plans` directly from the portal admin UI, eliminating the need to manage these through the Tyk Dashboard. The new features include the following:
 
-- Product creation with full configuration options
-- Plan management with pricing and quota settings
-- Direct editing of existing products and plans
-- Removal of deprecated offerings
+- Product creation with full configuration options.
+- Plan management with pricing and quota settings.
+- Direct editing of existing `Products` and `Plans`.
+- Removal of deprecated offerings.
 
-This streamlines the API product lifecycle management process and provides greater control within the portal itself.
+With the added features, Portal provides greater control over the API lifecycle management process.
 
 </details>
 </li>
@@ -104,9 +104,9 @@ This streamlines the API product lifecycle management process and provides great
 
 Added support for creating documentation-only products in the Enterprise Developer Portal. This feature allows API Providers to:
 
-- Create products that serve purely as documentation repositories
-- Share API documentation without exposing actual API endpoints
-- Preview API documentation before making APIs available
+- Create products that serve purely as documentation repositories.
+- Share API documentation without exposing actual API endpoints.
+- Preview API documentation before making APIs available.
 
 This is particularly useful for scenarios where APIs are in development or when you want to share documentation with a limited audience before making the APIs publicly available.
 
@@ -116,10 +116,10 @@ This is particularly useful for scenarios where APIs are in development or when 
 <details>
 <summary>Custom ID Support for Resources</summary>
 
-EDP Resources now support custom IDs (in addition to auto-increment integer IDs) to facilitate migration and reference between environments. This feature covers:
+EDP Resources now supports custom IDs (in addition to auto-increment integer IDs) to facilitate migration and reference between environments. This feature covers:
 
 - API Resources: Products, plans, tutorials, OAS documents, OAuth providers, and client types
-- Organizational Entities: Organizations, users, groups, and catalogs
+- Organizational Entities: Organizations, Users, Groups, and Catalogs
 - Content/Resources: Pages, content blocks, tags, menus, and menu items
 
 This enhancement makes it easier to maintain consistency across different environments and simplifies the migration process between environments.
@@ -153,7 +153,7 @@ Added new APIs for managing SSO profiles, enabling programmatic control over SSO
 - Update existing profiles
 - Delete profiles 
 
-These endpoints enable automation of SSO setup and management through CI/CD pipelines. Common use cases include:
+These endpoints enable the automation of SSO setup and management through CI/CD pipelines. Use cases include:
 
 - Automated deployment of SSO configurations across environments
 - Integration with identity management systems
