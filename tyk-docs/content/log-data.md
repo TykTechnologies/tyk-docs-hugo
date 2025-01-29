@@ -82,8 +82,10 @@ To configure, set `TYK_GW_ACCESSLOGS_TEMPLATE` environment variable with the des
 Configuration using `tyk.conf`
 
 ```json
-"access_logs": {
-  "enabled": true
+{
+    "access_logs": {
+        "enabled": true
+    }
 }
 ```
 
@@ -104,9 +106,15 @@ time="Jan 29 08:27:09" level=info api_id=b1a41c9a89984ffd7bb7d4e3c6844ded api_ke
 Configuration using `tyk.conf`
 
 ```json
-"access_logs": {
-  "enabled": true,
-  "template": ["api_key", "remote_addr", "upstream_addr"]
+{
+    "access_logs": {
+        "enabled": true,
+        "template": [
+            "api_key",
+            "remote_addr",
+            "upstream_addr"
+        ]
+    }
 }
 ```
 
