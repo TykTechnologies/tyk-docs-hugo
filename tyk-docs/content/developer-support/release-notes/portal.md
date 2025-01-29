@@ -1,6 +1,6 @@
 ---
 title: Tyk Enterprise Developer Portal Release Notes
-description: Release notes documenting updates, enhancements and changes for Tyk Enterprise Developer Portal v1.12.0
+description: Release notes documenting updates, enhancements and changes for Tyk Enterprise Developer Portal v1.13.0
 tags: ["Developer Portal", "Release notes", "changelog", "v1.13.0"]
 menu:
 main:
