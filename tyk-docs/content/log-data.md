@@ -77,6 +77,18 @@ You can specify which fields are logged by configuring the `TYK_ACCESSLOGS_TEMPL
 
 To configure, set `TYK_ACCESSLOGS_TEMPLATE` environment variable with the desired values in the format: `["value1", "value2", ...]`.
 
+##### Default log example
+
+```
+time="Jan 29 08:27:09" level=info api_id=b1a41c9a89984ffd7bb7d4e3c6844ded api_key=00000000 api_name=httpbin client_ip="::1" host="localhost:8080" latency_total=62 method=GET org_id=678e6771247d80fd2c435bf3 path=/get prefix=access-log protocol=HTTP/1.1 remote_addr="[::1]:63251" status=200 upstream_address="http://httpbin.org/get" upstream_latency=61 user_agent=PostmanRuntime/7.43.0
+```
+
+##### Custom template log example
+
+```
+time="Jan 29 08:27:48" level=info api_id=b1a41c9a89984ffd7bb7d4e3c6844ded api_key=00000000 api_name=httpbin org_id=678e6771247d80fd2c435bf3 prefix=access-log remote_addr="[::1]:63270" upstream_address="http://httpbin.org/get"
+```
+
 #### Performance Considerations
 
 Enabling access logs introduces some performance overhead:
@@ -95,14 +107,17 @@ While the overhead of enabling access logs is noticeable, the impact is relative
 As of Tyk Gateway `v5.6.0`, you can control log format using the `TYK_LOGFORMAT` environment variable. By default, logs are in `default` format, but setting `TYK_LOGFORMAT` to `json` will output logs in JSON format.
 
 ##### Default logging format
+
 ```
 time="Sep 05 09:04:12" level=info msg="Tyk API Gateway v5.6.0" prefix=main
 ```
 
 ##### JSON logging format
+
 ```json
 {"level":"info","msg":"Tyk API Gateway v5.6.0","prefix":"main","time":"2024-09-05T09:01:23-04:00"}
 ```
+
 {{< note >}}
 **Note**  
 As a general performance tip, the `json` output format incurs less memory allocation overhead than the default logger. For optimal performance, it's recommended to configure logging in the JSON format.
