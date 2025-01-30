@@ -100,7 +100,7 @@ You can configure the SSO profiles for admins in the Tyk Developer Portal applic
 
 There are two ways of creating SSO profiles:
 1. **[Wizard Form]({{< ref "#using-the-wizard-form" >}})**: Create a profile using the wizard guided form.
-2. **[Raw JSON Editor]({{< ref "#create-a-profile-using-the-json-raw-editor" >}})**: Create a profile using JSON editor where you can specify your tib raw JSON profile.
+2. **[Raw JSON Editor]({{< ref "#using-the-json-raw-editor" >}})**: Create a profile using JSON editor where you can specify your tib raw JSON profile.
 
 #### Using the Wizard Form
 
