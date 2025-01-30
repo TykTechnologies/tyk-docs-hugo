@@ -28,7 +28,7 @@ American spelling “organization” with a 'z'.
 {{< warning success >}}
 **Warning**
 
-In a production environment, you must change the default `admin_Secret` in the`tyk_analytics.conf` file. Admin APIs use this value for authentication, and you should set it in the admin-auth header.
+In a production environment, you must change the default `admin_Secret` in the`tyk_analytics.conf` file. Admin APIs use this value for authentication, and you should set it in the `admin-auth` header while sending the request.
 </br>
 {{< /warning >}}
 
