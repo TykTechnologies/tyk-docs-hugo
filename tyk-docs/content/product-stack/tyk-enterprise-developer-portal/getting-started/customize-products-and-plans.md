@@ -42,7 +42,7 @@ From that page you can also manage [OAuth2.0 settings]({{< ref "/tyk-stack/tyk-d
 {{< note >}}
 **Note**
 
-From version 1.13.0 you can customize the api product in the **Details** tab section of a product.
+From version 1.13.0 you can customize the api product in the `Details` tab section of a product.
 {{< img src="img/dashboard/portal-management/enterprise-portal/portal-product-customize.png" alt="Customize visual appearance of an API Product" >}}
 {{< /note >}}
 

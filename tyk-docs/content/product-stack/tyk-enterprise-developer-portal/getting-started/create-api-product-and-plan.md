@@ -21,15 +21,15 @@ If you are interested in getting access contact us at [support@tyk.io](<mailto:s
 ## Introduction
 There are two ways of creating API Products and Plans in the Developer Portal:
 
-1. [Automatically create an API Product or Plan](#importing-from-tyk) in the Developer Portal by importing it from Tyk when synchronising the provider.
-2. [Manually create an API Product or Plan](#manual-creation-in-the-developer-portal) in the Developer Portal. (Only from version 1.13.0)
+1. [Automatically create an API Product or Plan]({{< ref "#import-api-product-and-plan" >}}) in the Developer Portal by importing it from Tyk when synchronising the provider.
+2. [Manually create an API Product or Plan]({{< ref "#manually-create-api-product-and-plan" >}}) in the Developer Portal. (Only from version 1.13.0)
 
 ### Prerequisites
-- A Tyk Self-Managed [installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}})
-- Tyk Self-Managed [added as a provider]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/with-tyk-self-managed-as-provider" >}})
-- Have APIs [created in your Tyk installation]({{< ref "getting-started/create-api" >}}.
+- A Tyk Self-Managed [installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}).
+- Tyk Self-Managed [added as a provider]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/with-tyk-self-managed-as-provider" >}}).
+- Have APIs [created in your Tyk installation]({{< ref "getting-started/create-api" >}}).
 
-## Importing from Tyk
+## Import API Product and Plan
 
 When integrating with Tyk, the Tyk policies will be imported into the Developer Portal. Depending on the configuration that's been set in the policy section, the policy will either be imported as an API Product or a Plan. For further details check the [portal key concepts]({{< ref "product-stack/tyk-enterprise-developer-portal/getting-started/enterprise-portal-concepts" >}}) document.
 
@@ -75,11 +75,11 @@ To create a Plan for the developer portal, follow the same steps as for creating
 4.  Click **Synchronise** to import the plans into the Developer portal, from the Tyk Portal admin app.
 {{< img src="img/dashboard/portal-management/enterprise-portal/portal-sync-with-dashboard.png" alt="Sync with the Tyk Pro" >}}
 
-## Manual Creation in the Developer Portal
+## Manually Create API Product and Plan
 
 From version 1.13.0, the Developer Portal allows you to create API Products and Plans from the portal dashboard for admins. When manually creating an API Product or Plan, the corresponding policy will be created in the Tyk Self-Managed selected provider.
 
-### Create and customize an API Product in the Developer Portal
+### Create API Product
 
 When creating an API Product in the Developer Portal, a partitioned policy that provides an ACL but not quota/rate limits will be created in the Tyk Self-Managed selected provider. The following steps explain how to create an API Product in the Developer Portal:
 
@@ -105,11 +105,12 @@ When creating an API Product in the Developer Portal, a partitioned policy that 
 
 {{< note >}}
 **Note:**
-If no APIs are selected, you can still add api specifications, and guides creating a documentation only product. Documentation only products are Developer Portal products that do not have any APIs associated with them and thus no policies will be created in the Tyk Self-Managed selected provider. Documentation only products are useful for creating documentation for APIs that are not yet created or published. Specs and guides will be shown in the external portal as a regular product and the selected **Specification Alias** will be used as the reference for each spec.
+
+If no APIs are selected, you can still add api specifications, and guides creating a documentation only product. Documentation only products are Developer Portal products that do not have any APIs associated with them and thus no policies will be created in the Tyk Self-Managed selected provider. Documentation only products are useful for creating documentation for APIs that are not yet created or published. Specs and guides will be shown in the external portal as a regular product and the selected `Specification Alias` will be used as the reference for each spec.
 {{< img src="img/dashboard/portal-management/enterprise-portal/portal-doc-only-product.png" alt="Add a Documentation only Product" >}}
 {{< /note >}}
 
-### Create and customize a Plan in the Developer Portal
+### Create Plan
 
 When creating a Plan in the Developer Portal, a partitioned policy that implements rate limit or quota, or both, but do **NOT** include the ACL will be created in the Tyk Self-Managed selected provider. The following steps explain how to create a Plan in the Developer Portal:
 

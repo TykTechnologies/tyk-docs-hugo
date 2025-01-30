@@ -285,6 +285,7 @@ The below example demonstrates how to achieve that with Keycloak and Okta in the
 Once the App registration settings are configured, it is time for the final step: to configure the API Products and plans to work with the DCR flow.
 
 #### Configure API Products for the DCR flow
+
 To configure API Products to work with the DCR flow, you need to:
 * Enable the DCR flow for the products you want to work with the DCR flow.
 * Associate each product with one or multiple types of clients that were created in the previous step.
@@ -310,25 +311,29 @@ Finally, select one or multiple types of clients that were created in [the Creat
 
 {{< tab_end >}}
 
-{{< tabs_end >}}<br>
+{{< tabs_end >}}
+
+<br>
 
 {{< note >}}
 
 **Note**
 
-From version 1.13.0, you can complete the DCR configuration for a product under the **Dynamic Client Registration** tab in the product's view. Scope to policy mapping for the selected API/s will be automatically configured using the scope defined in the **Scopes** field.
+From version 1.13.0, you can complete the DCR configuration for a product under the `Dynamic Client Registration` tab in the product's view. Scope to policy mapping for the selected API/s will be automatically configured using the scope defined in the `Scopes` field.
 {{< img src="img/dashboard/portal-management/enterprise-portal/portal-product-dcr.png" alt="Add DCR settings" >}}
 {{< /note >}}
 
 #### Configure plans for the DCR flow
+
 The last step is to configure the plans you want to use with the DCR flow. To do this, go to the portal's `Plans` menu section and specify the OAuth2.0 scope to use with each plan. You should have at least one scope that was created in [the Prerequisites for getting started]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#prerequisites-for-getting-started" >}}). If you need to specify more than one scope, you can separate them with spaces.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/configure-plan-for-the-dcr-flow.png" alt="Configure a plan to work with the DCR flow" >}}
 
+<br>
 
 {{< note >}}
 **Note**
 
-From version 1.13.0, you can complete the DCR configuration for a plan under the **Advanced settings (optional)** colapsible section in the plan's view. Scope to policy mapping for the plan will be automatically configured using the scope defined in the **Scopes** field.
+From version 1.13.0, you can complete the DCR configuration for a plan under the `Advanced settings (optional)` colapsible section in the plan's view. Scope to policy mapping for the plan will be automatically configured using the scope defined in the `Scopes` field.
 {{< img src="img/dashboard/portal-management/enterprise-portal/portal-plan-advanced-settings.png" alt="Add Plan Advanced Settings" >}}
 {{< /note >}}
 

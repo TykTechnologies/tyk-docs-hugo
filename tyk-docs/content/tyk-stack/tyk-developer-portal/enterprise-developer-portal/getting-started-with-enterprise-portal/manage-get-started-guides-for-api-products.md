@@ -40,7 +40,7 @@ To start with, create and publish an API Product. Please refer to the [Publish A
 {{< note >}}
 **Note**
 
-If you are using Tyk Developer Portal version 1.13.0 or later, you can add API Documentation under the **"Getting Started" guides** tab of the API Product's view.
+If you are using Tyk Developer Portal version 1.13.0 or later, you can add API Documentation under the `"Getting Started" guides` tab of the API Product's view.
 {{< img src="img/dashboard/portal-management/enterprise-portal/portal-product-guides.png" alt="Add Product Guides" >}}
 {{< /note >}}
 
