@@ -20,7 +20,7 @@ To get access to these features, contact us at [support@tyk.io](mailto:support@t
 
 This guide explains how to migrate Developer Portal resources (API Products, Plans, Tutorials etc.)  between different portal environments. 
 
-This capability was made possible with introduction of [Custom IDs]({{< ref "custom-ids-in-developer-portal" >}}) (more on this later) in v1.13.
+This capability was made possible with introduction of [Custom IDs]({{< ref "#custom-ids-in-developer-portal" >}}) (more on this later) in v1.13.
 
 ## Prerequisites
 
