@@ -52,10 +52,11 @@ Remember to set `"enable_coprocess": true` in your `tyk.conf` when using [rich p
 ### The manifest file {#manifest}
 
 A plugin bundle must include a manifest file (called `manifest.json`). The manifest file contains important information like the configuration block and the list of source code files that will be included as part of the bundle file. If a file isn't specified in the list, it won't be included in the resulting file, even if it's present in the current directory.
+
 A sample manifest file looks like this:
 
-The "name" is the function to be invoked upon a specific plugin hook.  
-The "path" is the name of the file which contains the function. Note that you can not have nested paths or subdirectories in the path specification. 
+- The `name` is the function to be invoked upon a specific plugin hook.  
+- The `path` is the name of the file which contains the function. Note that you can not have nested paths or subdirectories in the path specification. 
 
 ```json
 {
