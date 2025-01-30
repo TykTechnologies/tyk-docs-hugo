@@ -100,7 +100,7 @@ In this guide, we'll walk through the process of migrating selected organisation
 ### Example Scenario
 - **Source**: Environment A at `https://portal-env-a.example.com`
 - **Target**: Environment B at `https://portal-env-b.example.com`
-- **Goal**: Migrate specific organisations and their associated teams
+- **Goal**: Migrate organisations and their associated teams
 
 ### Export Organisations from Environment A
 
