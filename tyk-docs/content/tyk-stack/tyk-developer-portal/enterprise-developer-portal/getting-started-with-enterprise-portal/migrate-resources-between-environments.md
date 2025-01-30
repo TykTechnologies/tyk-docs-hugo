@@ -70,12 +70,6 @@ These resources are now easily transferable between environments, with their rel
 
 When upgrading to Tyk Portal 1.13 from an earlier version, the portal automatically runs a **background process** to assign CIDs to resources created in previous versions. This process also runs every time the portal starts, ensuring any new resources without CIDs are retroactively assigned one, whether after an upgrade or a fresh installation.
 
-<br>
-{{< note >}}
-
-It may take a while for all resources to receive their CIDs after an upgrade. We appreciate your patience during this process.
-{{< /note >}}
-
 Each resource should have a unique CID assigned. If any resources are missing CIDs, wait for the background process to complete or contact support.
 
 You can fetch a specific organisation using either its database ID or CID. For example, to fetch the "foo" organisation:
