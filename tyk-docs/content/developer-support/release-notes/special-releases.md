@@ -155,7 +155,7 @@ The compatibility matrix table shown above will be part of upcoming [Gateway rel
 To ensure a consistent and high-quality user experience, we have updated the way Gateway (GW) versions are displayed and supported in the Cloud console. This aligns with our Long-Term Support (LTS) policy and aims to encourage users to stay current with supported versions while reducing operational overhead for our team.
 
 **Version Availability in the Cloud Console**
-When selecting the "Latest" option, users can only choose the latest feature branch ([Cloud Release Notes](https://tyk.io/docs/developer-support/release-notes/cloud/)).
+When selecting the "Latest" option, users can only choose the latest feature branch ([Gateway Release Notes](https://tyk.io/docs/developer-support/release-notes/gateway/)).
 
 When selecting the "LTS" option, users will be able to choose from the following:
 - Current LTS version (e.g., 5.3.x): Full support provided, with the latest patch marked as `Recommended`.
