@@ -35,17 +35,17 @@ Tyk Enterprise Developer Portal uses the [Tyk Identity Broker (TIB)]({{< ref "ty
 
 From portal version 1.12.0, TIB is embedded in the portal. With this, you have two options to configure SSO in the portal:
 
-1. **[Using Embedded TIB]({{< ref "" >}})**: No need to install it separately.
-2. **[Using External TIB]({{< ref "" >}})**: If you are using a previous version of the portal, you can still use SSO with TIB installed as a separate application.
+1. **[Using Embedded TIB]({{< ref "#configuring-sso-with-embedded-tib" >}})**: No need to install it separately.
+2. **[Using External TIB]({{< ref "#configuring-sso-with-external-tib" >}})**: If you are using a previous version of the portal, you can still use SSO with TIB installed as a separate application.
 
 ## Configuring SSO with Embedded TIB
 
 Configuring SSO with Embedded TIB is a four-step process:
 
-1. **[Enabling Embedded TIB]({{< ref "" >}})**
-2. **[Understanding UserGroup Mapping]({{< ref "" >}})**
-3. **[Creating TIB Profile]({{< ref "" >}})**
-4. **[Testing SSO]({{< ref "" >}})**
+1. **[Enabling Embedded TIB]({{< ref "#enabling-embedded-tib" >}})**
+2. **[Understanding UserGroup Mapping]({{< ref "#understanding-usergroup-mapping" >}})**
+3. **[Creating TIB Profile]({{< ref "#creating-tib-profile" >}})**
+4. **[Testing SSO]({{< ref "#testing-sso" >}})**
 
 ### Enabling Embedded TIB
 
@@ -99,7 +99,7 @@ In the following sections you will learn how to configure the SSO profiles for a
 You can configure the SSO profiles for admins in the Tyk Developer Portal application. Under **Settings** > **SSO Profiles** > **Add new SSO Profile**.
 
 There are two ways of creating SSO profiles:
-1. **[Wizard Form]({{< ref "" >}})**: Create a profile using the wizard guided form.
+1. **[Wizard Form]({{< ref "#using-the-wizard-form" >}})**: Create a profile using the wizard guided form.
 2. **[Raw JSON Editor]({{< ref "#create-a-profile-using-the-json-raw-editor" >}})**: Create a profile using JSON editor where you can specify your tib raw JSON profile.
 
 #### Using the Wizard Form
