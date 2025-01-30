@@ -95,267 +95,112 @@ Before you begin, make sure the following are true:
 
 ## Step-by-Step Instructions
 
-### Prepare the Source Environment
+In this guide, we'll walk through the process of migrating selected organisations and their teams from one environment (Environment A) to another (Environment B). This involves exporting data from the source environment and importing it into the target environment.
 
-1. Log in to the source Tyk Developer Portal.
-2. Identify the resources you want to migrate (e.g., API products, plans, OAuth providers).
-3. Make sure each resource has a **Custom ID (CID)**:
-   - Resources created in Portal 1.13 or later automatically include a CID.
-   - Resources created before 1.13 will have been assigned CIDs during the portal's startup process.
-4. Verify that there are no duplicate CIDs for the resources.
+### Example Scenario
+- **Source**: Environment A at `https://portal-env-a.example.com`
+- **Target**: Environment B at `https://portal-env-b.example.com`
+- **Goal**: Migrate specific organisations and their associated teams
 
+### 1. Export from Environment A
 
-### Dumping Resources
+The export process involves fetching necessary data for each selected resource.
 
-To migrate resources, you first need to **dump** (or export) them from your source environment. Here's how you can do it:
+#### Export Organisations and Teams
 
-1. **Fetch the Resources**: The script will automatically pull resources (like organisations and teams) from the source portal. It does this in pages to handle large numbers of resources without overwhelming the system.
-2. **Export and Save**: The resources will be saved in separate files with the Custom ID (CID) included. This ensures that each resource is uniquely identified and can be easily restored in the target environment.
-3. **Pagination**: Since the portal may have many resources, the script handles the pagination automatically. It will continue to fetch resources from additional pages until everything is exported.
-
-The script to export resources is shown below. You just need to run it, and it will handle the fetching, exporting, and saving automatically.
-
-### Restoring Resources
-
-After exporting the resources, the next step is to restore them into the target environment. The process for restoring resources involves:
-
-1. **Cleaning up the data**: Before restoring resources, certain metadata and relationship fields should be removed to prevent conflicts during the restore process. This includes:
-   - System-generated timestamps
-   - Internal identifiers
-   - Nested relationship data
-   - Any other environment-specific properties
-
-2. **Use Custom IDs for Restore**: During the restore process, you must use the Custom ID (CID) to ensure the relationships are maintained. The target environment will either update existing resources with matching CIDs or create new ones.
-
-3. **Restore the resources**: Finally, post the data to the target environment using the POST method (instead of PUT, which would update existing resources).
-
-### Sample Script for Organisations and Teams
-
-Here's a sample script that shows how to export and restore **organisations** and **teams**. You can modify it to work for other resources as needed.
+The intent of this step is to gather relevant data from Environment A to ensure a complete migration of selected resources. We exclude the "Default Organisation" and any teams named "All users" to avoid unnecessary data transfer. The data is saved into JSON files for structured storage and easy access during the import process.
 
 ```bash
-#!/usr/bin/env bash
+# Fetch organisations from Environment A
+response=$(curl -s -H "Authorization: ${ENV_A_TOKEN}" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  "https://portal-env-a.example.com/organisations?page=1&per_page=50")
 
-# A script to export and restore organisations and teams between environments in Tyk Developer Portal.
+# Process each organisation
+echo "$response" | jq -c '.[] | select(.Name != "Default Organisation") | del(.ID, .CreatedAt, .UpdatedAt, .Teams)' > data/organisations.json
 
-set -euo pipefail
+# Read each organisation and fetch its teams
+while IFS= read -r org; do
+  org_cid=$(echo "$org" | jq -r '.CID')
+  echo "Fetching teams for organisation CID: $org_cid..."
 
-# Check required commands
-check_requirements() {
-  local required_commands=("curl" "jq")
-  local missing_commands=()
-
-  for cmd in "${required_commands[@]}"; do
-    if ! command -v "$cmd" >/dev/null 2>&1; then
-      missing_commands+=("$cmd")
-    fi
-  done
-
-  if [ ${#missing_commands[@]} -ne 0 ]; then
-    echo "ERROR: Required commands not found: ${missing_commands[*]}"
-    echo "Please install the missing commands and try again."
-    exit 1
-  fi
-}
-
-# Run requirements check
-check_requirements
-
-# Variables from environment or command-line flags
-# PORTAL_URL: The base URL of the Tyk Developer Portal API
-# PORTAL_TOKEN: Authentication token for API access
-# PAGE: Starting page number for pagination (default: 1)
-# PER_PAGE: Number of items per page (default: 50)
-# RESOURCE_FILTER: Type of resources to process (organisations, teams, or all)
-PORTAL_URL=${PORTAL_URL:-}
-PORTAL_TOKEN=${PORTAL_TOKEN:-}
-PAGE=${PAGE:-1}
-PER_PAGE=${PER_PAGE:-50}
-RESOURCE_FILTER=${RESOURCE_FILTER:-all}
-
-# Validate required variables
-if [[ -z "$PORTAL_URL" || -z "$PORTAL_TOKEN" ]]; then
-  echo "ERROR: Please set PORTAL_URL and PORTAL_TOKEN environment variables or pass them as flags."
-  exit 1
-fi
-
-DATA_DIR="data"
-mkdir -p "$DATA_DIR"
-
-# Fetch organisations function
-# Recursively fetches all organisations using pagination
-# Skips the Default Organisation
-# Removes ID, CreatedAt, UpdatedAt, and Teams fields before saving
-# Arguments:
-#   $1: page number
-#   $2: items per page
-fetch_organisations() {
-  local page=$1
-  local per_page=$2
-
-  echo "Fetching organisations (page: $page, per page: $per_page)..."
-  local response=$(curl -s -H "Authorization: $PORTAL_TOKEN" \
+  # Fetch teams for the organisation
+  teams_response=$(curl -s -H "Authorization: ${ENV_A_TOKEN}" \
     -H "Content-Type: application/json" \
-    "$PORTAL_URL/organisations?page=$page&per_page=$per_page")
+    -H "Accept: application/json" \
+    "https://portal-env-a.example.com/organisations/$org_cid/teams?page=1&per_page=50")
 
-  if ! echo "$response" | jq -e '.' >/dev/null 2>&1; then
-    echo "ERROR: Failed to fetch organisations. Invalid JSON response."
-    exit 1
-  fi
+  # Process each team
+  echo "$teams_response" | jq -c '.[] | select(.Name | endswith("All users") | not) | del(.Users)' > "data/teams_${org_cid}.json"
+done < data/organisations.json
+```
 
-  echo "$response" | jq -c '.[]' | while read -r organisation; do
-    local name=$(echo "$organisation" | jq -r '.Name')
-    if [[ "$name" == "Default Organisation" ]]; then
-      echo "Skipping Default Organisation"
-      continue
-    fi
+### 2. Import to Environment B
 
-    local org_cid=$(echo "$organisation" | jq -r '.CID')
-    echo "$organisation" | jq 'del(.ID, .CreatedAt, .UpdatedAt, .Teams)' >"$DATA_DIR/organisation_$org_cid.json"
-    echo "Exported organisation: $name (CID: $org_cid)"
-  done
+Now, import the selected organisations and teams into Environment B one by one.
 
-  # Handle pagination
-  local next_page=$((page + 1))
-  if [[ $(echo "$response" | jq -r 'length') -eq $per_page ]]; then
-    fetch_organisations "$next_page" "$per_page"
-  fi
-}
+The purpose of this step is to accurately recreate the organisational structure in Environment B. By reading from the JSON files, we ensure that each organisation and its teams are correctly imported, maintaining the relationships established in Environment A.
 
-# Fetch teams function
-# Recursively fetches all teams using pagination
-# Skips teams ending with "All users"
-# Removes Users field before saving
-# Arguments:
-#   $1: page number
-#   $2: items per page
-fetch_teams() {
-  local page=$1
-  local per_page=$2
+```bash
+# Read each organisation and import it
+while IFS= read -r org; do
+  org_cid=$(echo "$org" | jq -r '.CID')
+  echo "Importing organisation CID: $org_cid..."
 
-  echo "Fetching teams (page: $page, per page: $per_page)..."
-  local response=$(curl -s -H "Authorization: $PORTAL_TOKEN" \
+  # Import the organisation
+  curl -s -o /dev/null -w "%{http_code}" -X POST \
+    -H "Authorization: ${ENV_B_TOKEN}" \
     -H "Content-Type: application/json" \
-    "$PORTAL_URL/teams?page=$page&per_page=$per_page")
+    -H "Accept: application/json" \
+    -d "$org" "https://portal-env-b.example.com/organisations"
+done < data/organisations.json
 
-  if ! echo "$response" | jq -e '.' >/dev/null 2>&1; then
-    echo "ERROR: Failed to fetch teams. Invalid JSON response."
-    exit 1
-  fi
+# Read each team file and import the teams
+for file in data/teams_*.json; do
+  [[ -e "$file" ]] || continue
+  while IFS= read -r team; do
+    org_cid=$(basename "$file" | sed 's/teams_\(.*\)\.json/\1/')
+    team_cid=$(echo "$team" | jq -r '.CID')
+    echo "Importing team CID: $team_cid for organisation CID: $org_cid..."
 
-  echo "$response" | jq -c '.[]' | while read -r team; do
-    local name=$(echo "$team" | jq -r '.Name')
-    if [[ "$name" =~ .*"All users"$ ]]; then
-      echo "Skipping team: $name"
-      continue
-    fi
-
-    local team_cid=$(echo "$team" | jq -r '.CID')
-    echo "$team" | jq 'del(.Users)' >"$DATA_DIR/team_$team_cid.json"
-    echo "Exported team: $name (CID: $team_cid)"
-  done
-
-  # Handle pagination
-  local next_page=$((page + 1))
-  if [[ $(echo "$response" | jq -r 'length') -eq $per_page ]]; then
-    fetch_teams "$next_page" "$per_page"
-  fi
-}
-
-# Restore organisations function
-# Reads organisation JSON files from data directory
-# Posts each organisation to the target environment
-# Reports success (HTTP 201) or failure for each operation
-restore_organisations() {
-  echo "Restoring organisations..."
-  for file in "$DATA_DIR"/organisation_*.json; do
-    [[ -e "$file" ]] || continue
-    echo "Restoring $(basename "$file")..."
-    local response=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
-      -H "Authorization: $PORTAL_TOKEN" \
+    # Import the team
+    curl -s -o /dev/null -w "%{http_code}" -X POST \
+      -H "Authorization: ${ENV_B_TOKEN}" \
       -H "Content-Type: application/json" \
-      -d @"$file" "$PORTAL_URL/organisations")
-    if [[ "$response" -ne 201 ]]; then
-      echo "Failed to restore $(basename "$file") (HTTP $response)"
-    else
-      echo "Restored $(basename "$file")"
-    fi
-  done
-}
-
-# Restore teams function
-# Reads team JSON files from data directory
-# Posts each team to the target environment
-# Reports success (HTTP 201) or failure for each operation
-restore_teams() {
-  echo "Restoring teams..."
-  for file in "$DATA_DIR"/team_*.json; do
-    [[ -e "$file" ]] || continue
-    echo "Restoring $(basename "$file")..."
-    local response=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
-      -H "Authorization: $PORTAL_TOKEN" \
-      -H "Content-Type: application/json" \
-      -d @"$file" "$PORTAL_URL/teams")
-    if [[ "$response" -ne 201 ]]; then
-      echo "Failed to restore $(basename "$file") (HTTP $response)"
-    else
-      echo "Restored $(basename "$file")"
-    fi
-  done
-}
-
-# Main script logic
-# Handles command line arguments (export or restore)
-# Uses RESOURCE_FILTER to determine which resources to process
-case $1 in
-export)
-  [[ "$RESOURCE_FILTER" == "all" || "$RESOURCE_FILTER" == "organisations" ]] && fetch_organisations "$PAGE" "$PER_PAGE"
-  [[ "$RESOURCE_FILTER" == "all" || "$RESOURCE_FILTER" == "teams" ]] && fetch_teams "$PAGE" "$PER_PAGE"
-  ;;
-restore)
-  [[ "$RESOURCE_FILTER" == "all" || "$RESOURCE_FILTER" == "organisations" ]] && restore_organisations
-  [[ "$RESOURCE_FILTER" == "all" || "$RESOURCE_FILTER" == "teams" ]] && restore_teams
-  ;;
-*)
-  echo "Usage: $0 {export|restore} --url <portal_url> --token <portal_token> [--resource <organisations|teams|all>]"
-  exit 1
-  ;;
-esac
+      -H "Accept: application/json" \
+      -d "$team" "https://portal-env-b.example.com/organisations/$org_cid/teams"
+  done < "$file"
+done
 ```
 
+### 3. Verify the Migration
 
-### Executing the Script
+Finally, verify that the selected organisations and teams were imported correctly.
 
-#### Prerequisites
-
-1. Save the script as `portal-migrate.sh`.
-2. Make it executable:
-   ```bash
-   chmod +x portal-migrate.sh
-   ```
-
-#### Exporting Resources
-
-To export resources from the source portal:
+This step ensures that the migration was successful and that all data is present and correct in Environment B. Verification helps identify any discrepancies or issues that need to be addressed.
 
 ```bash
-export PORTAL_URL="https://your-source-portal.com"
-export PORTAL_TOKEN="your-token"
-./portal-migrate.sh export
+# Verify organisations in Environment B
+curl -X GET 'https://portal-env-b.example.com/organisations' \
+  -H "Authorization: ${ENV_B_TOKEN}" \
+  -H 'Accept: application/json'
+
+# Verify teams in Environment B
+for file in data/teams_*.json; do
+  [[ -e "$file" ]] || continue
+  org_cid=$(basename "$file" | sed 's/teams_\(.*\)\.json/\1/')
+  team_cid=$(jq -r '.CID' "$file")
+  curl -X GET "https://portal-env-b.example.com/organisations/$org_cid/teams/$team_cid" \
+    -H "Authorization: ${ENV_B_TOKEN}" \
+    -H 'Accept: application/json'
+done
 ```
 
-Optional parameters:
-```bash
-export PAGE=1                          # Start from specific page
-export PER_PAGE=50                     # Number of items per page
-```
-
-#### Restoring Resources
-
-To restore resources to the target portal:
-
-```bash
-export PORTAL_URL="https://your-target-portal.com"
-export PORTAL_TOKEN="your-token"
-./portal-migrate.sh restore
-```
+{{< note >}}
+Before migrating:
+1. Back up your Environment B data
+2. Test the migration in a staging environment first
+3. Make sure both environments are running version 1.13 or later
+4. Ensure you have admin access to both environments
+{{< /note >}}
