@@ -102,13 +102,11 @@ In this guide, we'll walk through the process of migrating selected organisation
 - **Target**: Environment B at `https://portal-env-b.example.com`
 - **Goal**: Migrate specific organisations and their associated teams
 
-### 1. Export from Environment A
+### 1. Export Organisations from Environment A
 
-The export process involves fetching necessary data for each selected resource.
+To start, you'll want to gather the relevant data from Environment A. This ensures you have everything you need for a smooth migration. We skip the default organisation since it is created automatically by the portal, and dealing with it could lead to conflicts. The data is saved into a JSON file, making it easy to handle during the import process.
 
-#### Export Organisations and Teams
-
-The intent of this step is to gather relevant data from Environment A to ensure a complete migration of selected resources. We exclude the "Default Organisation" and any teams named "All users" to avoid unnecessary data transfer. The data is saved into JSON files for structured storage and easy access during the import process.
+Here's an example of how you can export organisations from Environment A:
 
 ```bash
 # Fetch organisations from Environment A
@@ -119,7 +117,15 @@ response=$(curl -s -H "Authorization: ${ENV_A_TOKEN}" \
 
 # Process each organisation
 echo "$response" | jq -c '.[] | select(.Name != "Default Organisation") | del(.ID, .CreatedAt, .UpdatedAt, .Teams)' > data/organisations.json
+```
 
+### 2. Export Teams from Environment A
+
+After exporting organisations, the next step is to export the teams associated with each organisation. We exclude default teams since these are created automatically by the portal, and dealing with them could lead to conflicts. The data is saved into JSON files for structured storage and easy access during the import process.
+
+Here's an example of how you can export teams from Environment A:
+
+```bash
 # Read each organisation and fetch its teams
 while IFS= read -r org; do
   org_cid=$(echo "$org" | jq -r '.CID')
@@ -136,11 +142,11 @@ while IFS= read -r org; do
 done < data/organisations.json
 ```
 
-### 2. Import to Environment B
+### 3. Import Organisations to Environment B
 
-Now, import the selected organisations and teams into Environment B one by one.
+Now, let's move those organisations into Environment B, one by one. The goal here is to recreate the organisational structure in Environment B accurately. By using the JSON files, you ensure that each organisation is imported correctly, keeping the relationships intact from Environment A.
 
-The purpose of this step is to accurately recreate the organisational structure in Environment B. By reading from the JSON files, we ensure that each organisation and its teams are correctly imported, maintaining the relationships established in Environment A.
+Here's an example of how you can import organisations into Environment B:
 
 ```bash
 # Read each organisation and import it
@@ -155,7 +161,15 @@ while IFS= read -r org; do
     -H "Accept: application/json" \
     -d "$org" "https://portal-env-b.example.com/organisations"
 done < data/organisations.json
+```
 
+### 4. Import Teams to Environment B
+
+After importing organisations, the next step is to import the teams associated with each organisation. This ensures that the organisational structure is accurately recreated in Environment B.
+
+Here's an example of how you can import teams into Environment B:
+
+```bash
 # Read each team file and import the teams
 for file in data/teams_*.json; do
   [[ -e "$file" ]] || continue
@@ -174,11 +188,13 @@ for file in data/teams_*.json; do
 done
 ```
 
-### 3. Verify the Migration
+### 5. Verify the Migration
 
-Finally, verify that the selected organisations and teams were imported correctly.
+Finally, it's important to check that everything was imported correctly.
 
-This step ensures that the migration was successful and that all data is present and correct in Environment B. Verification helps identify any discrepancies or issues that need to be addressed.
+This step is crucial to ensure that the migration was successful and that all data is present and correct in Environment B. Verification helps you catch any discrepancies or issues that might need attention.
+
+Here's an example of how you can verify the migration in Environment B:
 
 ```bash
 # Verify organisations in Environment B
