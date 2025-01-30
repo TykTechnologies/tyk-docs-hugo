@@ -102,7 +102,7 @@ In this guide, we'll walk through the process of migrating selected organisation
 - **Target**: Environment B at `https://portal-env-b.example.com`
 - **Goal**: Migrate specific organisations and their associated teams
 
-### 1. Export Organisations from Environment A
+### Export Organisations from Environment A
 
 To start, you'll want to gather the relevant data from Environment A. This ensures you have everything you need for a smooth migration. We skip the default organisation since it is created automatically by the portal, and dealing with it could lead to conflicts. The data is saved into a JSON file, making it easy to handle during the import process.
 
@@ -119,7 +119,7 @@ response=$(curl -s -H "Authorization: ${ENV_A_TOKEN}" \
 echo "$response" | jq -c '.[] | select(.Name != "Default Organisation") | del(.ID, .CreatedAt, .UpdatedAt, .Teams)' > data/organisations.json
 ```
 
-### 2. Export Teams from Environment A
+### Export Teams from Environment A
 
 After exporting organisations, the next step is to export the teams associated with each organisation. We exclude default teams since these are created automatically by the portal, and dealing with them could lead to conflicts. The data is saved into JSON files for structured storage and easy access during the import process.
 
@@ -142,7 +142,7 @@ while IFS= read -r org; do
 done < data/organisations.json
 ```
 
-### 3. Import Organisations to Environment B
+### Import Organisations to Environment B
 
 Now, let's move those organisations into Environment B, one by one. The goal here is to recreate the organisational structure in Environment B accurately. By using the JSON files, you ensure that each organisation is imported correctly, keeping the relationships intact from Environment A.
 
@@ -163,7 +163,7 @@ while IFS= read -r org; do
 done < data/organisations.json
 ```
 
-### 4. Import Teams to Environment B
+### Import Teams to Environment B
 
 After importing organisations, the next step is to import the teams associated with each organisation. This ensures that the organisational structure is accurately recreated in Environment B.
 
@@ -188,7 +188,7 @@ for file in data/teams_*.json; do
 done
 ```
 
-### 5. Verify the Migration
+### Verify the Migration
 
 Finally, it's important to check that everything was imported correctly.
 
@@ -212,11 +212,3 @@ for file in data/teams_*.json; do
     -H 'Accept: application/json'
 done
 ```
-
-{{< note >}}
-Before migrating:
-1. Back up your Environment B data
-2. Test the migration in a staging environment first
-3. Make sure both environments are running version 1.13 or later
-4. Ensure you have admin access to both environments
-{{< /note >}}
