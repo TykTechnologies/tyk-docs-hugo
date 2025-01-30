@@ -54,17 +54,23 @@ To enable Embedded TIB in the portal, add the `PORTAL_TIB_ENABLED` variable to [
 PORTAL_TIB_ENABLED=true
 ```
 
+{{< note info >}}
+**Note**
+
+The Tyk Enterprise Developer Portal embedded TIB only supports OIDC, LDAP or Social SSO providers.
+{{< /note >}}
+
 ### Understanding UserGroup Mapping
 
 The Tyk Enterprise Developer portal has two audiences:
 
 1. **Developers**:
 
-    Developers created by the SSO flow are portal users who belong to an organization and team/s (if not specified, they are assigned to the default organization and default team) and are assigned the **consumer-admin** role.
+    Developers created by the sso flow are portal users that belong to an organization and team/s, if a user group mapping is not specified, they are assigned to the default organization and default team. Developers created by the sso flow are always assinged the **Consumer Super Admin** role. If part of an organization and a team, this means that the developer is a super admin for that organization. Read more about managing api consumer organizations [here]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations" >}}).
 
 2. **Admins**:
 
-    Admins created by the SSO flow are portal users who do not belong to any organization (OrgID is 0) and are assigned the **provider-admin** role.
+    Admins created by the SSO flow are portal users who do not belong to any organization (OrgID is 0) and are assigned the **Provider Admin** role.
 
 TIB uses **user group mapping** to map the user groups from the identity provider to the portal teams within an organization.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/user-group-mapping.png" alt="User group mapping" width="600">}}
@@ -213,7 +219,7 @@ Here is an example of such a page that works with a profile for the LDAP identit
  </head>
  <body>
  <b> Login to the Developer portal</b>
- <form method="post" action="http://{Tyke Developer Portal host}:{Tyke Developer Portal port}/tib/auth/{profile ID}/ldap">
+ <form method="post" action="http://{Tyk Developer Portal host}:{Tyk Developer Portal port}/tib/auth/{profile ID}/ldap">
  username: <input type="text" name="username"/> <br/>
  password: <input type="text" name="password"/> <br/>
  <button type="submit">Login</button>
@@ -221,11 +227,6 @@ Here is an example of such a page that works with a profile for the LDAP identit
  </body>
 </html>
 ```
-{{< note info >}}
-**Note**
-
-The Tyk Enterprise Developer Portal embedded TIB only supports OIDC, LDAP or Social SSO providers.
-{{< /note >}}
 
 ## Configuring SSO with External TIB
 
