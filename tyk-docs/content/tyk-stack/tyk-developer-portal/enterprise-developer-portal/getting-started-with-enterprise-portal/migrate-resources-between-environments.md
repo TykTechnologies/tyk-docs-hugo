@@ -2,8 +2,6 @@
 title: "Migrate Resources Between Environments"
 date: 2025-01-28
 tags: ["Tyk Developer Portal", "Enterprise Portal", "Migration", "Custom IDs"]
-aliases:
-  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/migrate-resources-between-environments
 description: "Learn how to migrate resources between Tyk Developer Portal environments"
 menu:
   main:
@@ -20,29 +18,44 @@ To get access to these features, contact us at [support@tyk.io](mailto:support@t
 
 ## Introduction
 
-This guide explains how to migrate resources between Tyk Developer Portal environments, including API products, plans, tutorials, and content blocks. Starting with Portal 1.13, we introduced **Custom IDs (CIDs)** - additional persistent identifiers that work alongside database IDs to provide stable references across environments and recreations. While database IDs remain the primary internal identifiers, CIDs provide a reliable way to track and maintain relationships between resources across different environments.
+This guide explains how to migrate Developer Portal resources (API Products, Plans, Tutorials etc.)  between different portal environments. 
+
+This capability was made possible with introduction of [Custom IDs]({{< ref "custom-ids-in-developer-portal" >}}) (more on this later) in v1.13.
+
+## Prerequisites
+
+Before you begin, make sure the following are true:
+
+- Your Tyk Developer Portal version is 1.13 or later.
+- All resources in your source environment have **Custom IDs** (CIDs) assigned. Resources created after version 1.13 automatically include a CID, while resources from earlier versions receive CIDs through the portal's startup process.
+- You have admin access to both the source and target environments.
+
+## Custom IDs in Developer Portal
+
+Starting with Portal 1.13, we introduced **Custom IDs (CIDs)** - additional persistent identifiers that work alongside database IDs to provide stable references across environments and recreations. While database IDs remain the primary internal identifiers, CIDs provide a reliable way to track and maintain relationships between resources across different environments.
 
 ### The Role of Database IDs and CIDs
 
 Resources in the Tyk Developer Portal use both types of identifiers:
-- **Database IDs**: Primary internal identifiers that are automatically generated and managed by the database
-- **Custom IDs (CIDs)**: Additional stable identifiers that remain consistent across environments
+- **Database IDs**: Primary internal identifiers that are automatically generated and managed by the database.
+- **Custom IDs (CIDs)**: Additional stable identifiers that remain consistent across environments.
 
 ### The Problem with Database-Generated IDs
 
 Before Portal 1.13, resources were identified solely by database-generated IDs. While this worked for single-environment setups, it caused challenges when:
-- Migrating resources between environments
-- Recreating or restoring resources
-- Maintaining relationships between connected resources
+- Migrating resources between environments.
+- Recreating or restoring resources.
+- Maintaining relationships between connected resources.
 
 For example, if you recreated an API product that was linked to a plan, the product would receive a new database ID. This would break the connection between the product and plan, requiring manual intervention to fix the relationship.
 
 ### Benefits of Custom IDs (CIDs)
 
 Custom IDs solve these problems by providing:
-- Persistent identification across environments
-- Stable reference points for resource relationships
-- Reliable migration and synchronization capabilities
+
+- Persistent identification across environments.
+- Stable reference points for resource relationships.
+- Reliable migration and synchronization capabilities.
 
 Resources that now support CIDs include:
 
@@ -57,7 +70,9 @@ These resources are now easily transferable between environments, with their rel
 
 When upgrading to Tyk Portal 1.13 from an earlier version, the portal automatically runs a **background process** to assign CIDs to resources created in previous versions. This process also runs every time the portal starts, ensuring any new resources without CIDs are retroactively assigned one, whether after an upgrade or a fresh installation.
 
+<br>
 {{< note >}}
+
 It may take a while for all resources to receive their CIDs after an upgrade. We appreciate your patience during this process.
 {{< /note >}}
 
@@ -65,7 +80,7 @@ Each resource should have a unique CID assigned. If any resources are missing CI
 
 You can fetch a specific organisation using either its database ID or CID. For example, to fetch the "foo" organisation:
 
-Using database ID:
+**Using database ID:**
 ```bash
 curl -X GET 'http://localhost:3001/portal-api/organisations/27' \
   -H "Authorization: ${TOKEN}" \
@@ -73,7 +88,7 @@ curl -X GET 'http://localhost:3001/portal-api/organisations/27' \
   -H 'Accept: application/json'
 ```
 
-Using CID (recommended):
+**Using CID (recommended):**
 ```bash
 curl -X GET 'http://localhost:3001/portal-api/organisations/2sG5umt8rGHMiwjcgaHXxwExt8O' \
   -H "Authorization: ${TOKEN}" \
@@ -82,16 +97,6 @@ curl -X GET 'http://localhost:3001/portal-api/organisations/2sG5umt8rGHMiwjcgaHX
 ```
 
 While both methods work, using CIDs is recommended as they remain consistent across environments.
-
-
-## Prerequisites
-
-Before you begin, make sure the following are true:
-
-- Your Tyk Developer Portal version is 1.13 or later.
-- All resources in your source environment have **Custom IDs** (CIDs) assigned. Resources created after version 1.13 automatically include a CID, while resources from earlier versions receive CIDs through the portal's startup process.
-- You have admin access to both the source and target environments.
-
 
 ## Step-by-Step Instructions
 
