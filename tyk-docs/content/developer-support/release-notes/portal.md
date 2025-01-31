@@ -128,17 +128,11 @@ This enhancement makes it easier to maintain consistency across different enviro
 </li>
 <li>
 <details>
-<summary>Brute-Force Attack Protection</summary>
+<summary>Enhanced Login Controls</summary>
 
-Added robust login attempt controls to mitigate credential-guessing attacks. Administrators can now configure:
+Admins can now configure more enhanced login controls, such as limits, expiration and intervals.
 
-- Username failure limit
-- IP failure limit
-- Login failure expiration
-- Login failure interval
-
-These settings can be adjusted in the General Settings section of the portal admin UI.
-
+These settings can be adjusted in the General Settings section of the portal admin UI to help maintain secure access to the portal.
 </details>
 </li>
 <li>
