@@ -92,6 +92,15 @@ curl -X GET 'http://localhost:3001/portal-api/organisations/2sG5umt8rGHMiwjcgaHX
 
 While both methods work, using CIDs is recommended as they remain consistent across environments.
 
+
+## Prerequisites
+
+Before you begin, make sure the following are true:
+
+- Your Tyk Developer Portal version is 1.13 or later.
+- All resources in your source environment have **Custom IDs** (CIDs) assigned. Resources created after version 1.13 automatically include a CID, while resources from earlier versions receive CIDs through the portal's startup process.
+- You have admin access to both the source and target environments.
+
 ## Step-by-Step Instructions
 
 In this guide, we'll walk through the process of migrating selected organisations and their teams from one environment (Environment A) to another (Environment B). This involves exporting data from the source environment and importing it into the target environment.
@@ -100,6 +109,22 @@ In this guide, we'll walk through the process of migrating selected organisation
 - **Source**: Environment A at `https://portal-env-a.example.com`
 - **Target**: Environment B at `https://portal-env-b.example.com`
 - **Goal**: Migrate organisations and their associated teams
+
+### Setting Up Environment Variables
+
+Before running the migration scripts, you'll need to set up authentication tokens for both environments. You can find these tokens in the Developer Portal UI:
+
+1. Log in to the Developer Portal as an admin
+2. Click on your user profile in the top right corner
+3. Copy **API credential**
+
+```bash
+# For Environment A (source)
+export ENV_A_TOKEN="your-source-environment-token"
+
+# For Environment B (target)
+export ENV_B_TOKEN="your-target-environment-token"
+```
 
 ### Export Organisations from Environment A
 
@@ -189,25 +214,37 @@ done
 
 ### Verify the Migration
 
-Finally, it's important to check that everything was imported correctly.
+After completing the migration, follow these steps to verify that everything was imported correctly:
 
-This step is crucial to ensure that the migration was successful and that all data is present and correct in Environment B. Verification helps you catch any discrepancies or issues that might need attention.
+1. **Compare Organisation Counts**
+   - Check that the number of organisations in Environment B matches what you exported from Environment A
+   - Verify that each organisation's details (name, status, etc.) are correct
 
-Here's an example of how you can verify the migration in Environment B:
+2. **Verify Team Structure**
+   - Ensure all teams were created under their correct organisations
+   - Check that team configurations (permissions, settings) were preserved
+
+3. **Run Verification Commands**
 
 ```bash
-# Verify organisations in Environment B
+# Get a list of all organisations and their details
 curl -X GET 'https://portal-env-b.example.com/organisations' \
   -H "Authorization: ${ENV_B_TOKEN}" \
-  -H 'Accept: application/json'
+  -H 'Accept: application/json' | jq '.'
 
-# Verify teams in Environment B
-for file in data/teams_*.json; do
-  [[ -e "$file" ]] || continue
-  org_cid=$(basename "$file" | sed 's/teams_\(.*\)\.json/\1/')
-  team_cid=$(jq -r '.CID' "$file")
-  curl -X GET "https://portal-env-b.example.com/organisations/$org_cid/teams/$team_cid" \
-    -H "Authorization: ${ENV_B_TOKEN}" \
-    -H 'Accept: application/json'
-done
+# For each organisation, list its teams
+curl -X GET "https://portal-env-b.example.com/organisations/${ORG_CID}/teams" \
+  -H "Authorization: ${ENV_B_TOKEN}" \
+  -H 'Accept: application/json' | jq '.'
 ```
+
+4. **Common Issues to Check**
+   - Ensure no duplicate organisations were created
+   - Verify that CIDs match between environments
+   - Check that team hierarchies are preserved
+   - Confirm that no default teams or organisations were accidentally duplicated
+
+If you find any discrepancies, you may need to:
+- Review the migration logs
+- Re-run the import for specific resources
+- Contact support if you encounter persistent issues
