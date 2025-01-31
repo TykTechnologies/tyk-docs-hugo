@@ -1,11 +1,15 @@
 import { commentOnPullRequest, getPRBody } from './github.js'
+import fs from 'fs';
 
-const genericMessage = "This PR does not pass all the checklist mentioned in description, because of which we are closing the PR. Re-open it when all checklist items are passed"
+const genericMessage = "This PR does not pass some of the required checklist items mentioned in description, because of which we are closing the PR. Re-open it when all checklist items are passed"
 
 import { marked } from 'marked';
 
-const prBody = await getPRBody()
-console.log("Read PR body")
+const filePath = '../../.github/pull_request_template.md';
+const fileContent = fs.readFileSync(filePath, 'utf8');
+
+// const prBody = await getPRBody()
+// console.log("Read PR body")
 
 // Function to check if an item is a checklist
 function isChecklistItem(item) {
@@ -13,7 +17,7 @@ function isChecklistItem(item) {
 }
 
 // Parse the markdown to HTML or AST (Abstract Syntax Tree)
-const lexer = marked.lexer(prBody);
+const lexer = marked.lexer(fileContent);
 
 // Find the checklist items in the parsed output
 const checklistItems = lexer

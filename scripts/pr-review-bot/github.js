@@ -1,7 +1,7 @@
 import { Octokit } from "@octokit/rest";
 
 // Variables
-const owner = "sharadregoti";
+const owner = "TykTechnologies";
 const repo = "tyk-docs";
 // const pull_number = parseInt(process.env.PR_NUMBER); // Convert to integer
 const pull_number =  process.env.PR_NUMBER; // Convert to integer
