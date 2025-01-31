@@ -16,3 +16,7 @@ node_modules
 package-lock.json
 package.json
 changed-files.txt
+
+# Allow specific files
+!scripts/docs-rule-engine/package.json
+!scripts/docs-rule-engine/package-lock.json
