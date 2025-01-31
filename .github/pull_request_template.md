@@ -29,7 +29,11 @@
 - [ ] I have [reviewed the guidelines](https://github.com/TykTechnologies/tyk-docs/blob/master/CONTRIBUTING.md) for contributing to this repository.
 - [ ] I have [read the technical guidelines](https://github.com/TykTechnologies/tyk-docs/blob/master/CONTRIBUTING-TECHNICAL-GUIDE.md) for contributing to this repository.
 - [ ] Make sure you have started *your change* off *our latest `master`*.
-- [ ] I **labeled** the PR
+- [ ] For internal users - Please add a Jira DX PR ticket to the subject!
+- [ ] I have added the appropriate release label to this PR:  
+  - If it is for a future release, label it as **`future-release`** and specify the version (e.g., `future-release, 6.0`).  
+  - If it should be merged into an older version, use the specific version label (e.g., `4.1`, `5.1`).  
+  - If no label is added, it will be assumed that the PR should be merged into the latest current version (e.g., `5.5`) and `master`.
 <!-- Label your PR according to the type of changes that your code introduces. This ensures that we know how/when to publish the PR. These are the options:
 - Fixing typo (please merge to production) - add the label `now`
 - Documenting a new feature (please merge to production) - add the label `now`

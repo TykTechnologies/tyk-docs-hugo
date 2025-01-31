@@ -16,3 +16,7 @@ node_modules
 package-lock.json
 package.json
 changed-files.txt
+
+# Allow specific files
+!scripts/pr-review-bot/package.json
+!scripts/pr-review-bot/package-lock.json
