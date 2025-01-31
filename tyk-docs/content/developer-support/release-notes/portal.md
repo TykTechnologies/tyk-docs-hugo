@@ -61,6 +61,7 @@ There are no deprecations in this release.
 #### Upgrade instructions
 If you are on 1.12.0 or an older version, we advise you to upgrade ASAP to this release.
 
+While upgrading to 1.13.0, Portal will automatically migrate the new Custom IDs to most of the existing resources. For more information, please refer to the [changelog](#Changelog-v1.13.0).
 To upgrade the portal's theme, please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
 
 #### Download
@@ -192,14 +193,6 @@ These APIs complement the UI-based product management capabilities, enabling aut
 <ul>
 <li>
 <details>
-<summary>Password Update issue in live portal</summary>
-
-Fixed an issue where password changes made via the live portal weren't being properly persisted, which caused users to be unable to log in with their new passwords. This has been resolved by implementing proper password update validation and storage mechanisms.
-
-</details>
-</li>
-<li>
-<details>
 <summary>App edit CSRF Token Validation</summary>
 
 Fixed an issue where CSRF token validation was failing during application edits, which prevented users from saving changes to their applications. This has been resolved by implementing proper token lifecycle management and validation.
@@ -211,22 +204,6 @@ Fixed an issue where CSRF token validation was failing during application edits,
 <summary>Fixed MySQL SSO Profile handling</summary>
 
 Fixed an issue where EDP embedded Tyk Identity Broker profiles weren't being properly handled in MySQL environments, which caused storing SSO profiles failures. This has been resolved by correcting the database query handling for SSO profile data.
-
-</details>
-</li>
-<li>
-<details>
-<summary>Error Message Security</summary>
-
-Fixed an issue where Portal admin UI error responses contained sensitive backend information, which could expose internal system details to potential attackers. This has been resolved by implementing standardized error responses that maintain security while remaining informative.
-
-</details>
-</li>
-<li>
-<details>
-<summary>File Upload Security</summary>
-
-Fixed an issue where the file upload system lacked proper file-type validation, which could allow potentially malicious files to be uploaded. This has been resolved by implementing strict images and OAS file-type checking and validation.
 
 </details>
 </li>
