@@ -1,11 +1,13 @@
 ---
-title: "List of endpoints exposed by Tyk Enterprise Developer Portal v1.9.0"
+title: "List of endpoints exposed by Tyk Enterprise Developer Portal v1.13.0"
 date: 2024-02-29
-tags: ["Tyk Developer Portal","Enterprise Portal","Endpoints","Firewall","Integration","Portal 1.9.0"]
+tags: ["Tyk Developer Portal","Enterprise Portal","Endpoints","Firewall","Integration","Portal 1.13.0"]
 description: "Internal APIs exposed by Tyk Developer Portal"
 menu:
     main:
         parent: "Configuring firewall"
+aliases:
+  - /product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.9.0-list-of-endpoints
 weight: 3
 ---
 
@@ -19,11 +21,11 @@ If you are interested in getting access, contact us at [support@tyk.io](<mailto:
 ## Introduction
 
 In highly secure environments, it is often necessary to configure a firewall precisely and to allow only the endpoints exposed for the portal, while banning all other routes.
-For this purpose, we have prepared a list of all endpoints exposed by the Tyk Enterprise Developer Portal v1.9.0.
+For this purpose, we have prepared a list of all endpoints exposed by the Tyk Enterprise Developer Portal v1.13.0.
 
 {{< note success >}}
 
-Please note that this list only refers to v1.9.0 of the portal. The list of endpoints for other version might be different.  
+Please note that this list only refers to v1.13.0 of the portal. The list of endpoints for other version might be different.  
 
 {{< /note >}}
 
@@ -93,7 +95,8 @@ Please note that this list only refers to v1.9.0 of the portal. The list of endp
 | Tags               | /products/{product_id}/tags/{tag_name}                                                 |
 | Client Types       | /products/{product_id}/client_types                                                    |
 | Client Types       | /products/{product_id}/client_types/{client_type_id}                                   |
-
+| SSO Profiles       | /sso_profiles                                                                          |
+| SSO Profiles       | /sso_profiles/{sso_profile_id}                                                         |
 ### Admin dashboard endpoints
 | **Resource**       | **Endpoint**                                                   |
 | ------------------ | -------------------------------------------------------------- |
@@ -181,6 +184,9 @@ Please note that this list only refers to v1.9.0 of the portal. The list of endp
 | Webhooks           | /admin/webhooks/new                                            |
 | Webhooks           | /admin/webhooks/{webhook_id}                                   |
 | Webhooks           | /admin/webhooks/ping                                           |
+| SSO Profiles       | /admin/sso/profiles                                            |
+| SSO Profiles       | /admin/sso/profiles/new                                        |
+| SSO Profiles       | /admin/sso/profiles/{sso_profile_id}                           |
 
 ### Live portal endpoints
 | **Resource**      | **Endpoint**                                                  |
