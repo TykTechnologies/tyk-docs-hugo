@@ -4,7 +4,7 @@ import { Octokit } from "@octokit/rest";
 const owner = "sharadregoti";
 const repo = "tyk-docs";
 // const pull_number = parseInt(process.env.PR_NUMBER); // Convert to integer
-const pull_number =  process.env.PR_NUMBER ||  1; // Convert to integer
+const pull_number =  process.env.PR_NUMBER; // Convert to integer
 const github_token = process.env.GITHUB_TOKEN || ""
 
 // Create a new Octokit instance with your personal access token

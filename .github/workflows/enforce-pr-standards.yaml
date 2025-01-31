@@ -1,4 +1,4 @@
-name: PR Checklist Reviewer
+name: Enforce PR Standards
 
 on:
   pull_request:
