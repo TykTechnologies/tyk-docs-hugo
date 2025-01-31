@@ -5,7 +5,7 @@ const genericMessage = "This PR does not pass some of the required checklist ite
 
 import { marked } from 'marked';
 
-const filePath = '../../.github/pull_request_template.md';
+const filePath = '.github/pull_request_template.md';
 const fileContent = fs.readFileSync(filePath, 'utf8');
 
 // const prBody = await getPRBody()
