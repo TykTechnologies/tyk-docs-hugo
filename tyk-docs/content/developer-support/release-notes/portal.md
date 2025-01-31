@@ -48,7 +48,7 @@ The v1.13.0 release includes the following new features and improvements:
 - Added the ability to create, edit, and remove `Plan` from the portal.
 - EDP Resources now support custom IDs that allow the migration of elements between environments.
 - Security: 4 CVEs fixed.
-- Bugfixes: 9 bugs fixed.
+- Bugfixes: 5 bugs fixed.
 
 For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.13.0) below.
 
