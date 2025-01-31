@@ -1,7 +1,7 @@
 import { commentOnPullRequest, getPRBody } from './github.js'
 import fs from 'fs';
 
-const genericMessage = "This PR does not pass some of the required checklist items mentioned in description, because of which we are closing the PR. Re-open it when all checklist items are passed"
+const genericMessage = "This PR does not meet all the required checklist items mentioned in the description. As a result, we are closing the PR. Please re-open it once all checklist items are completed (ensure they are checked in the description)."
 
 import { marked } from 'marked';
 
