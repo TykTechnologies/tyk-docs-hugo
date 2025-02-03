@@ -23,13 +23,213 @@ streamlining access control and improving user experience. Regardless of your or
 simplify access to enterprise resources, and strengthen user satisfaction.
 
 
-In this section, you’ll learn how to enable single sign-on for admin users and developers in the Tyk Enterprise Developer portal with 3rd party identity providers (IDPs).
+In this section, you'll learn how to enable single sign-on for admin users and developers in the Tyk Enterprise Developer portal with 3rd party identity providers (IDPs).
 
 ## Prerequisites
 - A Tyk Enterprise portal installation
 - [Supported](https://github.com/TykTechnologies/tyk-identity-broker#using-identity-providers) 3rd party identity provider up and running
 
-## Configure Tyk Enterprise Developer portal for SSO
+## Portal SSO Configuration Options
+
+Tyk Enterprise Developer Portal uses the [Tyk Identity Broker (TIB)]({{< ref "tyk-identity-broker" >}}) to integrate Tyk authentication with 3rd party identity providers (IDPs). 
+
+From portal version 1.12.0, TIB is embedded in the portal. With this, you have two options to configure SSO in the portal:
+
+1. **[Using Embedded TIB]({{< ref "#configuring-sso-with-embedded-tib" >}})**: No need to install it separately.
+2. **[Using External TIB]({{< ref "#configuring-sso-with-external-tib" >}})**: If you are using a previous version of the portal, you can still use SSO with TIB installed as a separate application.
+
+## Configuring SSO with Embedded TIB
+
+Configuring SSO with Embedded TIB is a four-step process:
+
+1. **[Enabling Embedded TIB]({{< ref "#enabling-embedded-tib" >}})**
+2. **[Understanding UserGroup Mapping]({{< ref "#understanding-usergroup-mapping" >}})**
+3. **[Creating TIB Profile]({{< ref "#creating-tib-profile" >}})**
+4. **[Testing SSO]({{< ref "#testing-sso" >}})**
+
+### Enabling Embedded TIB
+
+To enable Embedded TIB in the portal, add the `PORTAL_TIB_ENABLED` variable to [the portal .env file]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#sample-env-file" >}}):
+```.ini
+PORTAL_TIB_ENABLED=true
+```
+
+{{< note info >}}
+**Note**
+
+The Tyk Enterprise Developer Portal embedded TIB only supports OIDC, LDAP or Social SSO providers.
+{{< /note >}}
+
+### Understanding UserGroup Mapping
+
+The Tyk Enterprise Developer portal has two audiences:
+
+1. **Developers**:
+
+    Developers created by the sso flow are portal users that belong to an organization and team/s, if a user group mapping is not specified, they are assigned to the default organization and default team. Developers created by the sso flow are always assinged the **Consumer Super Admin** role. If part of an organization and a team, this means that the developer is a super admin for that organization. Read more about managing api consumer organizations [here]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations" >}}).
+
+2. **Admins**:
+
+    Admins created by the SSO flow are portal users who do not belong to any organization (OrgID is 0) and are assigned the **Provider Admin** role.
+
+TIB uses **user group mapping** to map the user groups from the identity provider to the portal teams within an organization.
+{{< img src="/img/dashboard/portal-management/enterprise-portal/user-group-mapping.png" alt="User group mapping" width="600">}}
+
+To define the user group mapping for your developer audience, you need to add the UserGroupMapping object to the corresponding [TIB profile]({{< ref "tyk-stack/tyk-identity-broker/about-profiles" >}}):
+```yaml
+  "UserGroupMapping": {
+    "{IDP groupA ID}": "{portal teamA ID}",
+    "{IDP groupB ID}": "{portal teamB ID}",
+    ...
+ }
+```
+
+#### Default behaviour of UserGroup Mapping
+
+The `UserGroupMapping` object contains keys that refer to group IDs in your IDP, and the corresponding values are team IDs in the portal.
+When the Tyk Identity Broker authorizes a user, it searches for a key that matches the user's group ID in the IDP.
+If TIB can't find a matching group ID, it logs the user in to the team with an ID equal to `DefaultUserGroupID` in the portal (if `DefaultUserGroupID` is defined).
+We recommend always defining `DefaultUserGroupID` and ensuring it refers to a valid team ID in your portal instance. The portal will refuse login attempts if `DefaultUserGroupID` is defined but refers to an invalid team ID.
+
+If no matching group ID is found in the `UserGroupMapping` object and `DefaultUserGroupID` isn't defined, the portal logs in the user to the "Default organization | All users" team with an ID of 1.
+
+#### Login Evaluation Algorithm
+
+To determine whether a developer should be allowed to log in and which team they should be logged into, the portal uses the following algorithm:
+{{< img src="/img/dashboard/portal-management/enterprise-portal/user-group-mapping-algorithm.png" alt="User group mapping algorithm" width="1000">}}
+
+### Creating TIB Profile
+
+In the following sections you will learn how to configure the SSO profiles for admins and developers and map developers to the teams.
+
+You can configure the SSO profiles for admins in the Tyk Developer Portal application. Under **Settings** > **SSO Profiles** > **Add new SSO Profile**.
+
+There are two ways of creating SSO profiles:
+1. **[Wizard Form]({{< ref "#using-the-wizard-form" >}})**: Create a profile using the wizard guided form.
+2. **[Raw JSON Editor]({{< ref "#using-the-json-raw-editor" >}})**: Create a profile using JSON editor where you can specify your tib raw JSON profile.
+
+#### Using the Wizard Form
+
+You can access the wizard form by switching to the **Wizard** view.
+{{< tabs_start >}}
+{{< tab_start "Profile for admins" >}}
+Create a profile for admins:
+1. Complete the **Profile action** step. Here you can choose a name (this name will generate the profile ID), the profile type (select **Profile for admin users**) and the redirect url on failure.
+{{< img src="img/dashboard/portal-management/enterprise-portal/portal-sso-wizard-admin-1.png" alt="SSO Profiles Wizard" >}}
+2. Select a supported **Provider type**.
+{{< img src="img/dashboard/portal-management/enterprise-portal/portal-sso-wizard-provider.png" alt="SSO Profiles Wizard" >}}
+3. Complete the **Profile configuration** step. Here you can specify the access to your idp. And Advanced settings if needed.
+{{< img src="img/dashboard/portal-management/enterprise-portal/portal-sso-wizard-profile-config.png" alt="SSO Profiles Wizard" >}}
+4. Don't add any group mapping since we are creating a profile for admins and will be ignored if added. Click on **Continue** to create the profile.
+{{< img src="img/dashboard/portal-management/enterprise-portal/portal-sso-wizard-admin-4.png" alt="SSO Profiles Wizard" >}}
+{{< tab_end >}}
+{{< tab_start "Profile for developers" >}}
+
+Create a profile for developers:
+
+1. Complete the **Profile action** step. Here, you can choose a name (this name will generate the profile ID), the profile type (select **Profile for developers**), and the redirect URL on failure.
+
+    {{< img src="img/dashboard/portal-management/enterprise-portal/portal-sso-wizard-dev-1.png" alt="SSO Profiles Wizard" >}}
+
+2. Select a supported **Provider type**.
+
+    {{< img src="img/dashboard/portal-management/enterprise-portal/portal-sso-wizard-dev-2.png" alt="SSO Profiles Wizard" >}}
+
+3. Complete the **Profile configuration** step. Here you can specify the access to your idp. And Advanced settings if needed.
+
+    {{< img src="img/dashboard/portal-management/enterprise-portal/portal-sso-wizard-dev-3.png" alt="SSO Profiles Wizard" >}}
+
+4. Add the group mapping for the developers. **Custom user group claim name** must equal the JWT claim name that refers to the user group in your IDP.
+
+    {{< img src="img/dashboard/portal-management/enterprise-portal/portal-sso-wizard-dev-4.png" alt="SSO Profiles Wizard" >}}
+
+5. Click on **Continue** to create the profile.
+{{< tab_end >}}
+{{< tabs_end >}}
+
+#### Using the JSON Raw Editor
+
+The Tyk Identity Broker (TIB) uses [profiles]({{< ref "tyk-stack/tyk-identity-broker/about-profiles" >}}) to define details related to the identity provider such as its type and access credentials, and instructs TIB on how to treat users that try log in with that provider.
+You can access the raw editor by switching to the **Raw editor** view, which displays a JSON editor with an empty TIB profile for guidance.
+{{< img src="img/dashboard/portal-management/enterprise-portal/portal-sso-raw-editor.png" alt="SSO Profiles Raw Editor" >}}
+
+{{< tabs_start >}}
+{{< tab_start "Profile for admins" >}}
+Create a profile for admins. Make sure the ActionType is equal to `GenerateOrLoginUserProfile` and the OrgID is equal to “0.”
+{{< img src="img/dashboard/portal-management/enterprise-portal/portal-sso-raw-editor-admin.png" alt="SSO Profiles Raw Editor" >}}
+
+In the above example, you need to specify the following parameters:
+- `OrgID` must be `"0"` for being accepted as a provider-admin
+- `ActionType` must be equal to `"GenerateOrLoginUserProfile"`
+- Replace the `host` and `port` in the fields `CallbackBaseURL`, `FailureRedirect` and `ReturnURL` with the actual host and port on which your portal instance is running. Also, replace `http` with `https` for the respective fields if you use https for your portal instance
+- Replace the `host` and `port` in the field `DiscoverURL` with the actual host and port on which your IDP instance is running. Also, replace `http` with `https` accordingly
+- In the `"ID"` field, specify an ID of this TIB profile. You can select any value for this field that consists of digits, letters, and special signs, no spaces allowed. It is better to pick a human-readable ID for your profile for better maintainability of the configuration
+
+{{< tab_end >}}
+
+{{< tab_start "Profile for developers" >}}
+Create a developer profile. Ensure the ActionType is equal to “GenerateOrLoginDeveloperProfile,” and if you define a user group mapping, the team/s exist in the portal.
+{{< img src="img/dashboard/portal-management/enterprise-portal/portal-sso-raw-editor-dev.png" alt="SSO Profiles Raw Editor" >}}
+
+In the above example, you need to specify the following parameters:
+- `OrgID` could be anything as its value is ignored;
+- `ActionType` must be equal to `"GenerateOrLoginDeveloperProfile"`
+- Replace the `host` and `port` in the fields `CallbackBaseURL`, `FailureRedirect` and `ReturnURL` with the actual host and port on which your portal instance is running. Also, replace `http` with `https` for the respective fields if you use HTTPS for your portal instance
+- Replace the `host` and `port` in the field `DiscoverURL` with the actual host and port on which your IDP instance is running. Also, replace `http` with `https` accordingly
+- In the `"ID"` field, specify an ID of this TIB profile. You can select any value for this field that consists of digits, letters, and special signs; no spaces are allowed. It is better to pick a human-readable ID for your profile for better maintainability of the configuration
+- `CustomUserGroupField` must be equal to the JWT claim name that refers to the user group in your IDP
+- `UserGroupMapping` is an object that defines the relationship between user groups in the IDP and teams in the portal. If not specified, the optional parameter will cause the portal to rely on the `DefaultUserGroupID` field to determine which team a developer should log in to. Please refer to the [User group mapping section]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso#user-group-mapping" >}} ) for guidance
+- `DefaultUserGroupID` is the default organization that the portal will use to determine which team a developer should be logged in to if it is not able to find a UserGroupMapping for that developer
+{{< tab_end >}}
+{{< note info >}}
+**Nuances of OIDC configuration**
+
+To ensure that the portal can log in a user with your OIDC Identity provider, you may need to either explicitly specify the email scopes in a profile
+configuration or configure your IDP to include the email claim in the JWT. Failure to include the email scope in the JWT
+would result in the portal not having access to the user's email.
+
+As an example, for Okta, you can use the following configuration:
+```json
+"UseProviders": [
+ {
+    "Name": "openid-connect",
+    "Key": "{oAuth2.0 key}",
+    "Secret": "{oAuth2.0 secret}",
+    "Scopes": ["openid", "email"],
+    "DiscoverURL": "{OIDC well-known endpoint}"
+ }
+]
+```
+{{< /note >}}
+Please refer to the [TIB configuration section]({{< ref "advanced-configuration/integrate/sso" >}}) for step-by-step instructions for setting up the UseProviders section.
+
+{{< tabs_end >}}
+
+### Testing SSO
+
+You can access the login URL in your SSO Profile details **Provider configuration** section.
+{{< img src="img/dashboard/portal-management/enterprise-portal/portal-sso-login.png" alt="SSO Profile Details" >}}
+
+Tyk Enterprise Developer Portal doesn't supply a login page for Single Sign-On out of the box, so you might need to create one.
+Here is an example of such a page that works with a profile for the LDAP identity management system:
+```.html
+<html>
+ <head>
+ <title>Tyk Developer portal login</title>
+ </head>
+ <body>
+ <b> Login to the Developer portal</b>
+ <form method="post" action="http://{Tyk Developer Portal host}:{Tyk Developer Portal port}/tib/auth/{profile ID}/ldap">
+ username: <input type="text" name="username"/> <br/>
+ password: <input type="text" name="password"/> <br/>
+ <button type="submit">Login</button>
+ </form>
+ </body>
+</html>
+```
+
+## Configuring SSO with External TIB
+
 Configuration on the portal side is quite straightforward. You need to specify the portal SSO API secret that acts as a credential for the APIs that are used by TIB for communication with the portal within Single Sign-On flow.
 You can use any value for the portal SSO API secret, but it should be consistent with [TIB configuration]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso#configure-tyk-identity-broker-to-work-with-tyk-enterprise-developer-portal" >}}).
 
@@ -45,20 +245,20 @@ extraEnvs:
   value: "your-portal-api-secret"
 ```
 
-## Configure Tyk Identity Broker to work with Tyk Enterprise Developer Portal
-The Tyk Enterprise Developer portal uses the [Tyk Identity Broker](https://tyk.io/docs/tyk-identity-broker/) to work with various Identity Management Systems, such as LDAP,
+### Configure Tyk Identity Broker to work with Tyk Enterprise Developer Portal
+The Tyk Enterprise Developer portal uses the [Tyk Identity Broker]({{< ref "tyk-identity-broker" >}}) to work with various Identity Management Systems, such as LDAP,
 Social OAuth (e.g., GPlus, Twitter, GitHub), or Basic Authentication providers. Therefore, to configure Single Sign-On for the portal,
 you need to install and configure Tyk Identity Broker first. Follow these steps to achieve this:
 
-### Install Tyk Identity Broker
+#### Install Tyk Identity Broker
 Please refer to [the TIB installation guide documentation]({{< ref "tyk-identity-broker/getting-started#installing-tib-as-separate-application" >}}) for different installation options:
 - [Docker](https://hub.docker.com/r/tykio/tyk-identity-broker/#the-tibconf-file)
 - [packages](https://packagecloud.io/tyk/tyk-identity-broker/install#bash-deb)
 - [Tyk helm chart]({{< ref "tyk-identity-broker/getting-started#via-helm-chart-for-kubernetes" >}})
 
-### Specify TIB settings to work with the Tyk Enterprise Developer portal
+#### Specify TIB settings to work with the Tyk Enterprise Developer portal
 
-#### Docker or packages
+##### Docker or packages
 
 Create tib.conf file for [the Docker installation](https://hub.docker.com/r/tykio/tyk-identity-broker/#the-tibconf-file) or if you use [packages](https://packagecloud.io/tyk/tyk-identity-broker/install#bash-deb) to deploy TIB:
 ```.json
@@ -98,7 +298,7 @@ Setting reference:
 - **TykAPISettings.DashboardConfig.AdminSecret** is `PortalAPISecret` in the configuration file of the Developer portal.
 
 The full reference for the configuration file is in [the TIB section of the documentation]({{< ref "tyk-configuration-reference/tyk-identity-broker-configuration" >}}).
-#### Helm charts
+##### Helm charts
 If you wish ot deploy TIB in Kubernetes via [Tyk helm chart]({{< ref "tyk-identity-broker/getting-started#via-helm-chart-for-kubernetes" >}}), you need to specify TIB config as extraVars:
 ```.yaml
 extraEnvs:
@@ -132,15 +332,15 @@ extraEnvs:
 
 The full reference for the configuration file is in [the TIB section of the documentation]({{< ref "tyk-configuration-reference/tyk-identity-broker-configuration" >}}).
 
-## Configure Single Sign-On for admin users and developers
+### Configure Single Sign-On for admin users and developers
 
-### What is the Tyk Identity Broker profile
+#### What is the Tyk Identity Broker profile
 The Tyk Identity Broker (TIB) uses [profiles]({{< ref "tyk-stack/tyk-identity-broker/about-profiles" >}}) to define details related to the identity provider such as its type and access credentials, and instructs TIB on how to treat users that try log in with that provider.
 In this guide, you will create two TIB profiles for admins users and developers. This allows you to have different identity providers for admins and developers as well as for internal and external users.
 
 Depending on your installation options for TIB, you need to specify profiles via a json file (for Docker or packages) or via a ConfigMap (for Tyk Helm Chart).
 
-#### profiles.json for Docker or packages installation
+##### profiles.json for Docker or packages installation
 Here is an example of profiles.json file for Docker or packages installation:
 ```.json
 [
@@ -194,7 +394,7 @@ Here is an example of profiles.json file for Docker or packages installation:
 ]
 ```
 
-#### ConfigMap for Tyk Helm chart installation
+##### ConfigMap for Tyk Helm chart installation
 Here is an example of ConfigMap for the Tyk Helm chart installation:
 ```.yaml
 apiVersion: v1
@@ -252,7 +452,7 @@ data:
     }]
 ```
 
-### Configure Single Sign-On for admin users
+#### Configure Single Sign-On for admin users
 The Tyk Enterprise Developer portal has two audiences: developers and admins. This section provides guidance on implementing
 Single Sign-On for admin users. The configuration is rather straightforward, and you need to take these three steps
 to enable Single Sign-On for admin users in your portal instance:
@@ -334,11 +534,11 @@ Here is an example of such page that works with a profile for LDAP identity mana
 ```
 3. Now you should be able to log in to the portal with your identity provider as an admin user
 
-### Configure Single Sign-On for developers
+#### Configure Single Sign-On for developers
 This section relates to configuration and settings required to set up Single Sign-On for developers. Configuration for developers is also straight forward.
 However, for developers there is one additional.
 
-#### User group mapping
+##### User group mapping
 In order to land a developer into the right API Consumer organization, it is necessary to configure the UserGroupMapping
 in the TIB profile that creates a binding between user groups in your IDP and developer teams in the portal.
 
@@ -364,7 +564,7 @@ To determine whether a developer should be allowed to log in and which team they
 {{< img src="/img/dashboard/portal-management/enterprise-portal/user-group-mapping-algorithm.png" alt="User group mapping algorithm" width="1000">}}
 
 
-#### Configure profile to enable Single Sign-On for developers
+##### Configure profile to enable Single Sign-On for developers
 Follow these steps to enable Single Sign-On for developers: 
 1. Create a profile for the Tyk Identity Broker (TIB) to work on your identity provider. Make sure the ActionType is equal to "GenerateOrLoginUserProfile", and OrgID is equal to "0":
 ```.json
