@@ -336,7 +336,7 @@ Similar to API list response
 {{< note success >}}
 **Note**  
 
-`{id}` can either be the internal or public ID ( see `api_id` in the [sample response](#sample-response-1) )
+`{id}` can either be the internal or public ID ( see `api_id` in the sample response )
 {{< /note >}}
 
 **Sample request**
@@ -3987,7 +3987,7 @@ The use of the `#` qualifier to identify a category prevents the use of `#` in y
 {{< /note >}}
 
 ### Using API categories
-API categories can be added and removed from APIs within the [API Designer]({{< ref "#api-designer" >}}), via the [Tyk Dashboard API]({{< ref "#tyk-dashboard-api" >}}), or via [Tyk Operator]({{< ref "/api-management/automations#what-is-tyk-operator" >}}).
+API categories can be added and removed from APIs within the [API Designer]({{< ref "#api-designer" >}}), via the [Tyk Dashboard API]({{< ref "#tyk-dashboard-api" >}}), or via [Tyk Operator]({{< ref "/api-management/automations/operator#what-is-tyk-operator" >}}).
 
 #### API Designer
 The API Designer in the Tyk Dashboard UI provides a simple method for assigning APIs to categories, removing categories and filtering the API list by category.
@@ -4036,7 +4036,7 @@ These endpoints will return information for categories across all APIs in the sy
 
 #### Tyk Operator
 
-You can manage categories using Tyk Operator custom resources. Please refer to [Tyk Operator]({{<ref "/api-management/automations#api-categories">}}) documentation to see how to manage API categories for Tyk OAS APIs and Tyk Classic APIs.
+You can manage categories using Tyk Operator custom resources. Please refer to [Tyk Operator]({{<ref "/api-management/automations/operator/#api-categories">}}) documentation to see how to manage API categories for Tyk OAS APIs and Tyk Classic APIs.
 
 ## Governance using API Templates
 

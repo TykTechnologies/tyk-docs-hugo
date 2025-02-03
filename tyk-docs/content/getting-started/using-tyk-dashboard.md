@@ -50,7 +50,7 @@ Otherwise, you can design an API from scratch or a template if you have configur
 * **APIs**: The APIs setup allows you to create and access your APIs. If this is your first time setting up an API, we suggest you use an example to learn more or you can go to [Configure your First API](/getting-started/configure-first-api) to learn more.
 {{< img src="/img/getting-started/api-management-apis.png" alt="API Management APIs" >}}
 
-* **API Templates**: API Templates allow you to create APIs with preconfigured settings quickly. You can set these up manually or save them from an API which you've already created. You can learn more about API Templates [here](/api-management/dashboard-configuration#governance-using-api-templates/).
+* **API Templates**: API Templates allow you to create APIs with preconfigured settings quickly. You can set these up manually or save them from an API which you've already created. You can learn more about API Templates [here](/api-management/dashboard-configuration#governance-using-api-templates).
 
 * **Examples**: In Examples, you will find a few sample projects we put together to help you in your journey. We suggest you start with the Tyk OAS APIs and move on to GraphQL and UDG APIs to supplement learning how to setup your API.
 
