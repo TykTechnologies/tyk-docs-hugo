@@ -56,7 +56,8 @@ A session object takes the following form:
     "test": "test-data"
   },
   "tags": ["tag1", "tag2"],
-  "alias": "john@smith.com" 
+  "alias": "john@smith.com",
+  "do_not_track": false
 }
 ```
 
@@ -107,3 +108,5 @@ A session object takes the following form:
 * `tags`: Tags are embedded into analytics data when the request completes. If a policy has tags, those tags will supersede the ones carried by the token (they will be overwritten).
 
 * `alias`: As of v2.1, an Alias offers a way to identify a token in a more human-readable manner, add an Alias to a token in order to have the data transferred into Analytics later on so you can track both hashed and un-hashed tokens to a meaningful identifier that doesn't expose the security of the underlying token.
+
+* `do_not_track`: Do not track the API key. Doesn't store analytics for the specific API key. 
