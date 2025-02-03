@@ -316,7 +316,7 @@ Always keep in mind that empty arrays will fallback to some sensible defaults. I
 
 ## Custom Analytics Tags using HTTP Headers
 
-`tag_headers` is a string array of HTTP headers that can be extracted and transformed into [analytic tags]({{< ref "tyk-dashboard-analytics" >}})(statistics aggregated by tag, per hour).
+`tag_headers` is a string array of HTTP headers that can be extracted and transformed into [analytic tags]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}})(statistics aggregated by tag, per hour).
 
 For example if you include `X-test-header` header in the `tag_headers` array, then, for each incoming request Tyk will add a `x-test-header-<header_value>` tag to the list of tags in the request analytic record.
 

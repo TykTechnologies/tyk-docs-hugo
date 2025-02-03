@@ -138,7 +138,7 @@ Refer the [pricing page](https://tyk.io/pricing/)
 
 #### MongoDB / PostgreSQL
 
-Tyk Dashboard requires a persistent datastore for its operations. By default MongoDB is used. From Tyk v4.0, we also support PostgreSQL. See [Database Options]({{< ref "tyk-dashboard/database-options.md" >}}) for a list of versions and drop-in replacements we support.
+Tyk Dashboard requires a persistent datastore for its operations. By default MongoDB is used. From Tyk v4.0, we also support PostgreSQL. See [Database Options]({{< ref "api-management/dashboard-configuration#supported-database" >}}) for a list of versions and drop-in replacements we support.
 
 #### Redis
 
@@ -333,7 +333,7 @@ kubectl create secret generic postgres-secrets  -n $NAMESPACE --from-literal=pos
 {{< note >}}
 **Note**
 
-Ensure that you are installing PostgreSQL versions that are supported by Tyk. Please consult the list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}) that are compatible with Tyk.
+Ensure that you are installing PostgreSQL versions that are supported by Tyk. Please consult the list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}) that are compatible with Tyk.
 {{< /note >}}
 
 **4. Install Tyk**
@@ -442,7 +442,7 @@ helm upgrade tyk-mongo oci://registry-1.docker.io/bitnamicharts/mongodb -n $NAME
 {{< note success >}}
 **Note**
 
-Please make sure you are installing MongoDB versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}).
+Please make sure you are installing MongoDB versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}).
 {{< /note >}}
 
 {{< note >}}
@@ -463,7 +463,7 @@ kubectl create secret generic mongourl-secrets --from-literal=mongoUrl=$MONGOURL
 {{< note >}}
 **Note**
 
-Ensure that you are installing MongoDB versions that are supported by Tyk. Please consult the list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}) that are compatible with Tyk.
+Ensure that you are installing MongoDB versions that are supported by Tyk. Please consult the list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}) that are compatible with Tyk.
 {{< /note >}}
 
 **4. Install Tyk**
@@ -509,7 +509,7 @@ Installing Tyk on Kubernetes requires a multi-node Tyk license. If you are evalu
 
 This deployment is NOT designed for production use or performance testing. The Tyk Pro Docker Demo is our full, [Self-Managed]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) solution, which includes our Gateway, Dashboard and analytics processing pipeline. 
 
-This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and either MongoDB or one of our supported [SQL databases]({{< ref "/content/tyk-dashboard/database-options.md" >}}).
+This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and either MongoDB or one of our supported [SQL databases]({{< ref "api-management/dashboard-configuration#supported-database" >}}).
 
 This demo is great for proof of concept and demo purposes, but if you want to test performance, you need to move each component to a separate machine.
 {{< /warning >}}
@@ -688,7 +688,7 @@ helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics"
 {{< note success >}}
 **Note**
 
-Please make sure you are installing PostgreSQL versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}).
+Please make sure you are installing PostgreSQL versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password. The DNS name of your Postgres service as set by Bitnami is `tyk-postgres-postgresql.tyk.svc.cluster.local`.
@@ -1565,7 +1565,7 @@ You're ready to follow the guide on [creating and managing your APIs]({{< ref "g
 {{< note success >}}
 **Note**  
 
-To use the [geographic log distribution]({{< ref "tyk-stack/tyk-manager/analytics/geographic-distribution" >}}) feature in the Dashboard please supply the GeoLite2 DB in the `gateway` directory, uncomment the marked line in `Dockerfile.web` and set the `analytics_config.enable_geo_ip` setting (or `TYK_GW_ANALYTICSCONFIG_ENABLEGEOIP` env var) to `true`.
+To use the [geographic log distribution]({{< ref "api-management/dashboard-configuration#activity-by-location" >}}) feature in the Dashboard please supply the GeoLite2 DB in the `gateway` directory, uncomment the marked line in `Dockerfile.web` and set the `analytics_config.enable_geo_ip` setting (or `TYK_GW_ANALYTICSCONFIG_ENABLEGEOIP` env var) to `true`.
 {{< /note >}}
 
 **Heroku Private Spaces**
@@ -4292,7 +4292,7 @@ Visit the following pages to see how to configure the Database for Production:
 * [MongoDB]({{< ref "#mongodb-sizing-guidelines" >}})
 * [PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}})
 
-Please consult the [data storage configuration]({{< ref "product-stack/tyk-dashboard/advanced-configurations/data-storage-configuration" >}}) guide for further information relating to how to configure Tyk's data storage across different database engines.
+Please consult the [data storage configuration]({{< ref "api-management/dashboard-configuration#data-storage-solutions" >}}) guide for further information relating to how to configure Tyk's data storage across different database engines.
 
 
 #### Redis
