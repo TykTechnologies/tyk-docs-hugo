@@ -50,10 +50,10 @@ Please note that this list only refers to v1.13.0 of the portal. The list of end
 | Products           | /products/{product_id}                                                                 |
 | Product Tags       | /products/{product_id}/tags                                                            |
 | Product Tags       | /products/{product_id}/tags/{tag_name}                                                 |
-| Product Client Types       | /products/{product_id}/client_types                                                    |
-| Product Client Types       | /products/{product_id}/client_types/{client_type_id}                                   |
-| Product Logo Image         | /products/{product_id}/logo                                                            |
-| Product Preview Image      | /products/{product_id}/preview                                                         |
+| Product Client Types       | /products/{product_id}/client_types                                            |
+| Product Client Types       | /products/{product_id}/client_types/{client_type_id}                           |
+| Product Logo Image         | /products/{product_id}/logo                                                    |
+| Product Preview Image      | /products/{product_id}/preview                                                 |
 | Product Docs       | /products/{product_id}/docs                                                            |
 | Product Docs       | /products/{product_id}/docs/{doc_id}                                                   |
 | Product Docs       | /products/{product_id}/docs/reorder                                                    |
@@ -106,7 +106,7 @@ Please note that this list only refers to v1.13.0 of the portal. The list of end
 | Webhooks           | /webhooks                                                                              |
 | Webhooks           | /webhooks/{webhook_id}                                                                 |
 | Webhooks           | /webhooks/{webhook_id}/headers                                                         |
-| Webhooks           | /webhooks/{webhook_id}/headers/{header_id}                                            |
+| Webhooks           | /webhooks/{webhook_id}/headers/{header_id}                                             |
 | Posts              | /posts                                                                                 |
 | Posts              | /posts/{post_id}                                                                       |
 | Posts Categories   | /posts/{post_id}/categories                                                            |
@@ -116,7 +116,7 @@ Please note that this list only refers to v1.13.0 of the portal. The list of end
 | Tags               | /tags                                                                                  |
 | Tags               | /tags/{tag_id}                                                                         |
 | SSO Profiles       | /sso_profiles                                                                          |
-| SSO Profiles       | /sso_profiles/{sso_profile_id}                                                             |
+| SSO Profiles       | /sso_profiles/{sso_profile_id}                                                         |
 ### Admin dashboard endpoints
 | **Resource**       | **Endpoint**                                                   |
 | ------------------ | -------------------------------------------------------------- |
@@ -237,7 +237,7 @@ Please note that this list only refers to v1.13.0 of the portal. The list of end
 | Auth              | /tib/auth/{id}/{provider}/callback                            |
 | Posts             | /blog                                                         |
 | Posts             | /blog/category/{category}                                     |
-| Posts             | /blog/{year}/{month}/{day}/{path}                            |
+| Posts             | /blog/{year}/{month}/{day}/{path}                             |
 | Pages             | /about-us                                                     |
 | Pages             | /portal/catalogue-products                                    |
 | Products          | /portal/catalogue-products/{product_name}                     |
@@ -266,13 +266,13 @@ Please note that this list only refers to v1.13.0 of the portal. The list of end
 ### Assets endpoints
 | **Resource** | **Endpoint**                    |
 |--------------| ------------------------------- |
-| Images       | /admin/assets/images/*          |
-| Images       | /assets/images/*                |
-| Fonts        | /admin/assets/fonts/*           |
-| Fonts        | /assets/fonts/*                 |
-| Javascripts  | /admin/assets/javascripts/*     |
-| Javascripts  | /assets/javascripts/*           |
-| Stylesheets  | /admin/assets/stylesheets/*     |
-| Stylesheets  | /assets/stylesheets/*           |
-| Vendors      | /assets/vendor/bootstrap/*      |
-| Vendors      | /assets/vendor/jquery/*         |
+| Images       | /admin/assets/images/\*          |
+| Images       | /assets/images/\*                |
+| Fonts        | /admin/assets/fonts/\*           |
+| Fonts        | /assets/fonts/\*                 |
+| Javascripts  | /admin/assets/javascripts/\*     |
+| Javascripts  | /assets/javascripts/\*           |
+| Stylesheets  | /admin/assets/stylesheets/\*     |
+| Stylesheets  | /assets/stylesheets/\*           |
+| Vendors      | /assets/vendor/bootstrap/\*      |
+| Vendors      | /assets/vendor/jquery/\*         |
