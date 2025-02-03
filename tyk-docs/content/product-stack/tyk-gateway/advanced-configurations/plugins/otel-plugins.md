@@ -31,7 +31,7 @@ Add this field within your [Gateway config file]({{< ref "tyk-oss-gateway/config
 }
 ```
 
-And this field within your [API definition]({{< ref "getting-started/key-concepts/what-is-an-api-definition" >}}):
+And this field within your [API definition]({{< ref "api-management/gateway-config-introduction" >}}):
 
 ```json
 {
