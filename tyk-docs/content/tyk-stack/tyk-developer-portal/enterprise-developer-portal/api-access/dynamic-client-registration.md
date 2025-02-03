@@ -106,6 +106,13 @@ When using Keycloak, ensure that you set the type of the scope to be `Optional`.
 
 ### Create Tyk policies for an API Product and plan
 
+{{< note >}}
+**Note**
+
+You can skip this step if you are using Tyk Developer Portal version 1.13.0 or later.
+Go directly to [Configure Tyk Enterprise Developer Portal to work with an identity provider](#configure-tyk-enterprise-developer-portal-to-work-with-an-identity-provider).
+{{< /note >}}
+
 Navigate to the Tyk Dashboard and create two policies: one for a plan and one for an API Product. Both policies should include only the APIs with JWT authentication that you want to bundle as an API Product.
 
 1. **Create a policy for an API product.** 
@@ -118,6 +125,14 @@ Navigate to the Tyk Dashboard and create two policies: one for a plan and one fo
 
 
 ### Create the No Operation policy and API
+
+{{< note >}}
+**Note**
+
+You can skip this step if you are using Tyk Developer Portal version 1.13.0 or later.
+Go directly to [Configure Tyk Enterprise Developer Portal to work with an identity provider](#configure-tyk-enterprise-developer-portal-to-work-with-an-identity-provider).
+{{< /note >}}
+
 Tyk requires any API that uses the scope to policy mapping to have [a default policy]({{< ref "/api-management/client-authentication#use-json-web-tokens-jwt" >}} ). Access rights and rate limits defined in the default policy take priority over other policies, including policies for the API Product and plan.
 
 To avoid that, you need to create the No Operation API and policy that won't grant access to the APIs included in the API Product but will satisfy the requirement for a default policy.
@@ -150,6 +165,13 @@ To avoid that, you need to create the No Operation API and policy that won't gra
 
 ### Configure scope to policy mapping
 
+{{< note >}}
+**Note**
+
+You can skip this step if you are using Tyk Developer Portal version 1.13.0 or later.
+Go directly to [Configure Tyk Enterprise Developer Portal to work with an identity provider](#configure-tyk-enterprise-developer-portal-to-work-with-an-identity-provider).
+{{< /note >}}
+
 To enforce policies for the API Product and plan, you need to configure the scope to policy mapping for each API included in the API Product.
 To achieve that, perform the following steps for each API included in the API Product.
 
@@ -180,7 +202,7 @@ To achieve that, perform the following steps for each API included in the API Pr
 
 ## Configure Tyk Enterprise Developer Portal to work with an identity provider
 
-Once policies for the plan and product are created, and the scope-to-policy mapping is configured for all APIs that are included in the product, it's time to set up the portal to work with your IdP.
+Set up the portal to work with your IdP.
 
 
 ### Configure the App registration settings
@@ -263,6 +285,7 @@ The below example demonstrates how to achieve that with Keycloak and Okta in the
 Once the App registration settings are configured, it is time for the final step: to configure the API Products and plans to work with the DCR flow.
 
 #### Configure API Products for the DCR flow
+
 To configure API Products to work with the DCR flow, you need to:
 * Enable the DCR flow for the products you want to work with the DCR flow.
 * Associate each product with one or multiple types of clients that were created in the previous step.
@@ -290,10 +313,29 @@ Finally, select one or multiple types of clients that were created in [the Creat
 
 {{< tabs_end >}}
 
+<br>
+
+{{< note >}}
+
+**Note**
+
+From version 1.13.0, you can complete the DCR configuration for a product under the `Dynamic Client Registration` tab in the product's view. Scope to policy mapping for the selected API/s will be automatically configured using the scope defined in the `Scopes` field.
+{{< img src="img/dashboard/portal-management/enterprise-portal/portal-product-dcr.png" alt="Add DCR settings" >}}
+{{< /note >}}
 
 #### Configure plans for the DCR flow
+
 The last step is to configure the plans you want to use with the DCR flow. To do this, go to the portal's `Plans` menu section and specify the OAuth2.0 scope to use with each plan. You should have at least one scope that was created in [the Prerequisites for getting started]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#prerequisites-for-getting-started" >}}). If you need to specify more than one scope, you can separate them with spaces.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/configure-plan-for-the-dcr-flow.png" alt="Configure a plan to work with the DCR flow" >}}
+
+<br>
+
+{{< note >}}
+**Note**
+
+From version 1.13.0, you can complete the DCR configuration for a plan under the `Advanced settings (optional)` colapsible section in the plan's view. Scope to policy mapping for the plan will be automatically configured using the scope defined in the `Scopes` field.
+{{< img src="img/dashboard/portal-management/enterprise-portal/portal-plan-advanced-settings.png" alt="Add Plan Advanced Settings" >}}
+{{< /note >}}
 
 ## Test the DCR flow
 To test the DCR flow, you need to perform the following actions:
@@ -301,6 +343,7 @@ To test the DCR flow, you need to perform the following actions:
 - Approve the access request as an admin.
 - As a developer, copy the access credentials and obtain an access token.
 - As a developer, make an API call to verify the flow's functionality.
+
 
 ### Request access to the API Product
 To request access to the DCR enabled API Product:
