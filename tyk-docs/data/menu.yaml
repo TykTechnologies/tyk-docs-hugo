@@ -2663,7 +2663,7 @@ menu:
           category: Page
           show: True
         - title: "Enterprise Developer Portal Admin"
-          path: /product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.9.0-list-of-endpoints
+          path: /product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.13.0-list-of-endpoints
           category: Page
           show: True
         - title: "Tyk Identity Broker"
