@@ -34,7 +34,7 @@ Built from the ground up to be the fastest API gateway on the planet. It does no
 
 **Analytics logging** - Record detailed usage data on who is using your API's (raw data only)
 
-**CORS** - Enable [CORS](https://tyk.io/docs/tyk-apis/tyk-gateway-api/api-definition-objects/cors/) for certain APIs so users can make browser-based requests
+**CORS** - Enable [CORS](https://tyk.io/docs/api-management/gateway-config-tyk-classic#cors/) for certain APIs so users can make browser-based requests
 
 **Webhooks** - Trigger webhooks against events such as Quota Violations and Authentication failures
 

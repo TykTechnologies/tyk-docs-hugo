@@ -189,7 +189,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 {{< note success >}}
 **Note**  
 
-See [API Definition Objects]({{< ref "tyk-gateway-api/api-definition-objects" >}}) section for an explanation of each field in the request & response.
+See [API Definition Objects]({{< ref "api-management/gateway-config-tyk-classic" >}}) section for an explanation of each field in the request & response.
 {{< /note >}}
 
 #### Get List of APIs
@@ -2982,7 +2982,7 @@ admin-auth: 12345
 
 #### Add user
 
-When you add a new user, they are created without a password being set. After adding a user, you need to use the [Set Password]({{< ref "api-management/dashboard-configuration#set-user-password" >}}) call to set a password using the `user-id` created.
+When you add a new user, they are created without a password being set. After adding a user, you need to use the [Set Password]({{< ref "#set-user-password" >}}) call to set a password using the `user-id` created.
 
 | **Property** | **Description** |
 | ------------ | --------------- |
@@ -3095,7 +3095,7 @@ If you are modifying a user password, you will need to include an access_key in 
 
 ### Single Sign On API
 
-The Dashboard Admin SSO API endpoint allows you to implement custom authentication schemes for the Dashboard and Portal. Our Tyk Identity Broker (TIB) internally also uses this API. See [Single Sign On]({{< ref "api-management/dashboard-configuration#single-sign-on-api-1" >}}) for more details.
+The Dashboard Admin SSO API endpoint allows you to implement custom authentication schemes for the Dashboard and Portal. Our Tyk Identity Broker (TIB) internally also uses this API. See [Single Sign On]({{< ref "#single-sign-on-api-1" >}}) for more details.
 
 #### Generate authentication token
 
@@ -3251,7 +3251,7 @@ admin-auth: 12345
 
 #### Export APIs and Policies
 
-To export APIs and Policies you should use the standard `GET APIS` endpoint and `GET POLICIES` list endpoints. The output from these endpoints can be used by the [Import API]({{< ref "api-management/dashboard-configuration#import-assets-api" >}}).
+To export APIs and Policies you should use the standard `GET APIS` endpoint and `GET POLICIES` list endpoints. The output from these endpoints can be used by the [Import API]({{< ref "#import-assets-api" >}}).
 
 ### Import Assets API
 
@@ -3265,7 +3265,7 @@ To enable this feature, the minimum required versions for the Gateway and Dashbo
 
 #### Import Organization
 
-The [Organization object]({{<ref "api-management/dashboard-configuration#organizations" >}}) is the most fundamental object in a Tyk setup, all other ownership properties hang off the relationship between an Organization and its APIs, Policies and API Tokens.
+The [Organization object]({{<ref "#organizations" >}}) is the most fundamental object in a Tyk setup, all other ownership properties hang off the relationship between an Organization and its APIs, Policies and API Tokens.
 
 | **Property** | **Description**              |
 | ------------ | ---------------------------- |
@@ -3514,19 +3514,19 @@ The **Core Settings** tab provides access to configure basic settings for the AP
 - [Detailed logging]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/detailed-recording#tyk-classic" >}})
 - API Settings including
    - Listen path
-   - [API Categories]({{< ref "api-management/dashboard-configuration#governance-using-api-categories" >}})
+   - [API Categories]({{< ref "#governance-using-api-categories" >}})
 - Upstream settings including
    - Upstream service (target) URL
    - [Service Discovery]({{< ref "tyk-self-managed#service-discovery" >}})
 - [API Ownership]({{< ref "api-management/user-management#api-ownership" >}})
-- [API level rate limiting]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting#configuring-the-rate-limiter-at-the-api-level" >}})
+- [API level rate limiting]({{< ref "api-management/rate-limit#configuring-the-rate-limiter-at-the-api-level" >}})
 - [Authentication]({{< ref "/api-management/client-authentication" >}})
 
 ### Versions
 
 {{< img src="/img/dashboard/endpoint-designer/classic-endpoint-designer-versions.png" alt="The Tyk Classic Endpoint Designer - Versions tab" >}}
 
-The **Versions** tab allows you to create and manage [API versioning]({{< ref "getting-started/key-concepts/versioning" >}}) for the API.
+The **Versions** tab allows you to create and manage [API versioning]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}}) for the API.
 
 At the top of the Endpoint Designer, you can see which version you are currently editing. If you have more than one option, selecting it from the drop-down will load its endpoint configuration into the editor.
 
@@ -3545,18 +3545,18 @@ In some cases, you will want to set global settings that affect all paths that a
 The **Advanced Options** tab is where you can configure Tyk's other powerful features including:
 - Upstream certificate management
 - [API-level caching]({{< ref "basic-config-and-security/reduce-latency/caching/global-cache#configuring-the-cache-via-the-dashboard" >}}) including a button to invalidate (flush) the cache for the API
-- [CORS]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}})
+- [CORS]({{< ref "api-management/gateway-config-tyk-classic#cors" >}})
 - Add custom attributes to the API definition as *config data* that can be accessed by middleware
 - Enable [context variables]({{< ref "context-variables" >}}) so that they are extracted from requests and made available to middleware
 - Manage *segment tags* if you are working with [sharded gateways]({{< ref "advanced-configuration/manage-multiple-environments/with-tyk-multi-cloud" >}})
-- Manage client IP address [allow]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting" >}}) and [block]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting" >}}) lists
+- Manage client IP address [allow]({{< ref "api-management/gateway-config-tyk-classic#ip-allowlist-middleware" >}}) and [block]({{< ref "api-management/gateway-config-tyk-classic#ip-blocklist-middleware" >}}) lists
 - Attach [webhooks]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) that will be triggered for different events
 
 ### Uptime Tests
 
 {{< img src="/img/dashboard/endpoint-designer/classic-endpoint-designer-uptime.png" alt="The Tyk Classic Endpoint Designer - Uptime Tests tab" >}}
 
-In the **Uptime Tests** tab you can configure Tyk's [Uptime Test]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/uptime-tests" >}}) functionality
+In the **Uptime Tests** tab you can configure Tyk's [Uptime Test]({{< ref "api-management/gateway-config-tyk-classic#uptime-tests" >}}) functionality
 
 ### Debugging
 
@@ -3625,20 +3625,20 @@ The transaction records contain information about each request and response, suc
 
 It is also possible to enable [detailed request logging]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/detailed-recording">}}) in the Gateway so that Tyk will log the requests and responses (including payloads) in wire format as base64 encoded data.
 
-These data are displayed in the Log Browser, on the [Activity logs]({{< ref "api-management/dashboard-configuration#activity-logs">}}) screen in the Tyk Dashboard.
+These data are displayed in the Log Browser, on the [Activity logs]({{< ref "#activity-logs" >}}) screen in the Tyk Dashboard.
 
 #### Aggregated analytics
 The [Mongo Aggregate]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config#2-mongo-aggregate-pump">}}) and [SQL Aggregate]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config#2-sql-aggregate-pump">}}) pumps will collate statistics from the analytics records, aggregated by hour, for the following keys:
 
 | Key            |  Analytics aggregated by         | Dashboard screen                                                                              |
 |----------------|----------------------------------|-----------------------------------------------------------------------------------------------|
-| `APIID`        | API                              | [Activity by API]({{< ref "api-management/dashboard-configuration#activity-by-api" >}})                      |
-| `TrackPath`    | API endpoint                     | [Activity by endpoint]({{< ref "api-management/dashboard-configuration#activity-by-endpoint" >}}) |
-| `ResponseCode` | HTTP status code (success/error) | [Activity by errors]({{< ref "api-management/dashboard-configuration#activity-by-error" >}})                    |
+| `APIID`        | API                              | [Activity by API]({{< ref "#activity-by-api" >}})                      |
+| `TrackPath`    | API endpoint                     | [Activity by endpoint]({{< ref "#activity-by-endpoint" >}}) |
+| `ResponseCode` | HTTP status code (success/error) | [Activity by errors]({{< ref "#activity-by-error" >}})                    |
 | `APIVersion`   | API version                      | n/a                                                                                              |
-| `APIKey`       | Client access key/token          | [Activity by Key]({{< ref "api-management/dashboard-configuration#activity-by-key" >}})                    |
-| `OauthID`      | OAuth client (if OAuth used)     | [Traffic per OAuth Client]({{< ref "api-management/dashboard-configuration#activity-by-oauth-client" >}})    |
-| `Geo`          | Geographic location of client    | [Activity by location]({{< ref "api-management/dashboard-configuration#activity-by-location" >}}) |
+| `APIKey`       | Client access key/token          | [Activity by Key]({{< ref "#activity-by-key" >}})                    |
+| `OauthID`      | OAuth client (if OAuth used)     | [Traffic per OAuth Client]({{< ref "#activity-by-oauth-client" >}})    |
+| `Geo`          | Geographic location of client    | [Activity by location]({{< ref "#activity-by-location" >}}) |
 | `Tags`         | Custom session context tags      | n/a                                                                                              |
 
 ## Analyzing API Traffic Activity
@@ -3766,7 +3766,7 @@ Tyk Gateway will set `TrackPath` to `true` in transaction records generated for 
 {{< note success >}}
 **Note**  
 
-The *track endpoint* middleware only affects the inclusion of endpoints in the per-endpoint aggregates, it does not have any impact on other [aggregated data]({{< ref "api-management/dashboard-configuration#aggregated-analytics" >}}) nor the [per-request data]({{< ref "api-management/dashboard-configuration#per-request-raw-analytics" >}}).
+The *track endpoint* middleware only affects the inclusion of endpoints in the per-endpoint aggregates, it does not have any impact on other [aggregated data]({{< ref "#aggregated-analytics" >}}) nor the [per-request data]({{< ref "#per-request-raw-analytics" >}}).
 {{< /note >}}
 
 #### Selecting Tyk OAS APIs endpoints to be tracked
@@ -3987,7 +3987,7 @@ The use of the `#` qualifier to identify a category prevents the use of `#` in y
 {{< /note >}}
 
 ### Using API categories
-API categories can be added and removed from APIs within the [API Designer]({{< ref "api-management/dashboard-configuration#api-designer" >}}), via the [Tyk Dashboard API]({{< ref "api-management/dashboard-configuration#tyk-dashboard-api" >}}), or via [Tyk Operator]({{< ref "/api-management/automations#what-is-tyk-operator" >}}).
+API categories can be added and removed from APIs within the [API Designer]({{< ref "#api-designer" >}}), via the [Tyk Dashboard API]({{< ref "#tyk-dashboard-api" >}}), or via [Tyk Operator]({{< ref "/api-management/automations#what-is-tyk-operator" >}}).
 
 #### API Designer
 The API Designer in the Tyk Dashboard UI provides a simple method for assigning APIs to categories, removing categories and filtering the API list by category.
@@ -4047,7 +4047,7 @@ The default template is a blank API definition; your custom templates will conta
 {{< note success >}}
 **Note**  
 
-API Templates are exclusive to [Tyk OAS APIs]({{< ref "getting-started/key-concepts/what-is-an-api-definition#api-definition-types" >}}) and can be managed via the Tyk Dashboard API or within the Tyk Dashboard UI.
+API Templates are exclusive to [Tyk OAS APIs]({{< ref "api-management/gateway-config-introduction#api-definition-types" >}}) and can be managed via the Tyk Dashboard API or within the Tyk Dashboard UI.
 {{< /note >}}
 
 ### When to use API templates
@@ -4084,22 +4084,22 @@ Where there are clashes between configuration in the OpenAPI description and the
 
 <hr>
 
-If you're using the API Designer in the Tyk Dashboard UI, then you can find details and examples of how to work with API templates [here]({{< ref "api-management/dashboard-configuration#working-with-api-templates-using-the-template-designer" >}}).
+If you're using the API Designer in the Tyk Dashboard UI, then you can find details and examples of how to work with API templates [here]({{< ref "#working-with-api-templates-using-the-template-designer" >}}).
 
-If you're using the Tyk Dashboard API, then you can find details and examples of how to work with API templates [here]({{< ref "api-management/dashboard-configuration#working-with-api-templates-using-the-dashboard-api" >}}).
+If you're using the Tyk Dashboard API, then you can find details and examples of how to work with API templates [here]({{< ref "#working-with-api-templates-using-the-dashboard-api" >}}).
 
 ### Working with API Templates using the Template Designer
 
-[API Templates]({{< ref "api-management/dashboard-configuration#governance-using-api-templates" >}}) are an API governance feature provided to streamline the process of creating Tyk OAS APIs. An API template is an asset managed by Tyk Dashboard that is used as the starting point - a blueprint - from which you can create a new Tyk OAS API definition.
+[API Templates]({{< ref "#governance-using-api-templates" >}}) are an API governance feature provided to streamline the process of creating Tyk OAS APIs. An API template is an asset managed by Tyk Dashboard that is used as the starting point - a blueprint - from which you can create a new Tyk OAS API definition.
 
 The Tyk Dashboard UI provides the following functionality to support working with API templates:
  - Creating templates
-   - [new template]({{< ref "api-management/dashboard-configuration#creating-a-new-api-template" >}})
-   - [from an existing API]({{< ref "api-management/dashboard-configuration#creating-a-template-from-an-existing-api" >}})
+   - [new template]({{< ref "#creating-a-new-api-template" >}})
+   - [from an existing API]({{< ref "#creating-a-template-from-an-existing-api" >}})
  - Using templates
-   - [when creating an API]({{< ref "api-management/dashboard-configuration#using-a-template-when-creating-a-new-api" >}})
-   - [when importing an OpenAPI description or API definition]({{< ref "api-management/dashboard-configuration#using-a-template-when-importing-an-openapi-description-or-api-definition" >}})
- - [Managing templates]({{< ref "api-management/dashboard-configuration#managing-templates" >}})
+   - [when creating an API]({{< ref "#using-a-template-when-creating-a-new-api" >}})
+   - [when importing an OpenAPI description or API definition]({{< ref "#using-a-template-when-importing-an-openapi-description-or-api-definition" >}})
+ - [Managing templates]({{< ref "#managing-templates" >}})
 
 API Templates can be found in the **API Templates** section of the **API Management** menu in the Tyk Dashboard. This screen lists all the templates currently registered with Tyk and displays their names and short descriptions. It also gives access to options to create and manage templates.
 
@@ -4108,7 +4108,7 @@ API Templates can be found in the **API Templates** section of the **API Managem
 {{< note success >}}
 **Note**  
 
-API Templates are exclusive to [Tyk OAS APIs]({{< ref "getting-started/key-concepts/what-is-an-api-definition#api-definition-types" >}}).
+API Templates are exclusive to [Tyk OAS APIs]({{< ref "api-management/gateway-config-introduction#api-definition-types" >}}).
 {{< /note >}}
 
 #### Creating templates
@@ -4129,7 +4129,7 @@ In this example, we have configured just the Name, Description, Gateway Status a
  
 When you have configured all of the API-level and endpoint-level settings you require, select **SAVE TEMPLATE** to create and register the template with Tyk.
 
-Returning to the **API Template** screen you will see your new template has been added to the list and assigned a unique `id` that can be used to access the template from the [Tyk Dashboard API]({{< ref "api-management/dashboard-configuration#structure-of-an-api-template" >}}):
+Returning to the **API Template** screen you will see your new template has been added to the list and assigned a unique `id` that can be used to access the template from the [Tyk Dashboard API]({{< ref "#structure-of-an-api-template" >}}):
 
 {{< img src="/img/dashboard/api-assets/api-templates/template-created.png" alt="Template has been successfully created" >}}
 
@@ -4154,7 +4154,7 @@ In this example, we have configured the Name and Description. The base API inclu
  
 When you have configured all of the API-level and endpoint-level settings you require, select **SAVE TEMPLATE** to create and register the template with Tyk.
 
-Returning to the **API Template** screen you will see your new template has been added to the list and assigned a unique `id` that can be used to access the template from the [Tyk Dashboard API]({{< ref "api-management/dashboard-configuration#structure-of-an-api-template" >}}).
+Returning to the **API Template** screen you will see your new template has been added to the list and assigned a unique `id` that can be used to access the template from the [Tyk Dashboard API]({{< ref "#structure-of-an-api-template" >}}).
 
 {{< img src="/img/dashboard/api-assets/api-templates/second-template-created.png" alt="Template has been successfully created" >}}
 
@@ -4172,7 +4172,7 @@ Or, from the **Created APIs** screen, select **ADD NEW API** as normal and then 
 
 Both of these routes will take you through to the API Designer, where the settings from your API template will be pre-configured.
 
-In this example, we applied "My first template" that we created [here]({{< ref "api-management/dashboard-configuration#creating-a-new-api-template" >}}). You can see that the Gateway Status and Access fields have been configured:
+In this example, we applied "My first template" that we created [here]({{< ref "#creating-a-new-api-template" >}}). You can see that the Gateway Status and Access fields have been configured:
 {{< img src="/img/dashboard/api-assets/api-templates/created-api.png" alt="The API with template applied" >}}
 
 ##### Using a template when importing an OpenAPI description or API definition
@@ -4185,7 +4185,7 @@ From the **Import API** screen, if you select the OpenAPI **type** then you can 
 After pasting the JSON or locating the file, you can select the template you want to use from the **API Template** section:
 {{< img src="/img/dashboard/api-assets/api-templates/import-select-template.png" alt="Select the template you want to use" >}} 
 
-In this example we used this simple OpenAPI description and selected "My second template" that we created [here]({{< ref "api-management/dashboard-configuration#creating-a-template-from-an-existing-api" >}}):
+In this example we used this simple OpenAPI description and selected "My second template" that we created [here]({{< ref "#creating-a-template-from-an-existing-api" >}}):
 ``` json  {linenos=true, linenostart=1}
 {
   "components": {},
@@ -4246,17 +4246,17 @@ You will be asked to confirm the deletion, because this is irrevocable. Once con
 
 ### Working with API Templates using the Dashboard API
 
-[API Templates]({{< ref "api-management/dashboard-configuration#governance-using-api-templates" >}}) are an API governance feature provided to streamline the process of creating Tyk OAS APIs. An API template is an asset managed by Tyk Dashboard that is used as the starting point - a blueprint - from which you can create a new Tyk OAS API definition.
+[API Templates]({{< ref "#governance-using-api-templates" >}}) are an API governance feature provided to streamline the process of creating Tyk OAS APIs. An API template is an asset managed by Tyk Dashboard that is used as the starting point - a blueprint - from which you can create a new Tyk OAS API definition.
 
 The Tyk Dashboard API provides the following functionality to support working with API templates:
- - [registering a template with Tyk Dashboard]({{< ref "api-management/dashboard-configuration#registering-a-template-with-tyk-dashboard" >}})
- - [applying a template when creating an API from an OpenAPI document]({{< ref "api-management/dashboard-configuration#applying-a-template-when-creating-an-api-from-an-openapi-document" >}})
- - [applying a template when creating an API from a Tyk OAS API definition]({{< ref "api-management/dashboard-configuration#applying-a-template-when-creating-an-api-from-a-tyk-oas-api-definition" >}})
+ - [registering a template with Tyk Dashboard]({{< ref "#registering-a-template-with-tyk-dashboard" >}})
+ - [applying a template when creating an API from an OpenAPI document]({{< ref "#applying-a-template-when-creating-an-api-from-an-openapi-document" >}})
+ - [applying a template when creating an API from a Tyk OAS API definition]({{< ref "#applying-a-template-when-creating-an-api-from-a-tyk-oas-api-definition" >}})
 
 {{< note success >}}
 **Note**  
 
-API Templates are exclusive to [Tyk OAS APIs]({{< ref "getting-started/key-concepts/what-is-an-api-definition#api-definition-types" >}}).
+API Templates are exclusive to [Tyk OAS APIs]({{< ref "api-management/gateway-config-introduction#api-definition-types" >}}).
 {{< /note >}}
 
 #### Structure of an API template
@@ -4339,7 +4339,7 @@ When creating an API on Tyk using an OpenAPI document describing your upstream s
 
 If you have a template registered with your Dashboard, you can use this as the starting point for your new API. Tyk will combine the OpenAPI document with the template, automating the configuration of any element in the Tyk OAS API definition as defined in your chosen template.
 
-You'll need to identify the template to be used during the import. You can use either its unique `id` or the database ID that was assigned when the template was [registered with Tyk Dashboard]({{< ref "api-management/dashboard-configuration#registering-a-template-with-tyk-dashboard" >}}). You provide either the `id` or `_id ` in the `templateID` query parameter in the call to `/oapis/oas/import`.
+You'll need to identify the template to be used during the import. You can use either its unique `id` or the database ID that was assigned when the template was [registered with Tyk Dashboard]({{< ref "#registering-a-template-with-tyk-dashboard" >}}). You provide either the `id` or `_id ` in the `templateID` query parameter in the call to `/oapis/oas/import`.
 
 For example:
 ``` bash  {linenos=true, linenostart=1}
@@ -4468,14 +4468,14 @@ The new Tyk OAS API will have this definition, combining the OpenAPI description
   }
 }
 ```
-Note that the `GET /xml` endpoint from the OpenAPI description and the `POST /anything` endpoint from the template (complete with `requestSizeLimit` middleware) have both been defined in the API definition. API-level caching has been enabled, as configured in the template. Tyk has included the `server` entry from the OpenAPI description (which points to the upstream server) and added the API URL on Tyk Gateway ([as explained here]({{< ref "getting-started/key-concepts/servers#import-oas-definition" >}})).
+Note that the `GET /xml` endpoint from the OpenAPI description and the `POST /anything` endpoint from the template (complete with `requestSizeLimit` middleware) have both been defined in the API definition. API-level caching has been enabled, as configured in the template. Tyk has included the `server` entry from the OpenAPI description (which points to the upstream server) and added the API URL on Tyk Gateway ([as explained here]({{< ref "api-management/gateway-config-tyk-oas#import-oas-definition" >}})).
 
 #### Applying a template when creating an API from a Tyk OAS API definition
 When creating an API using a complete Tyk OAS API definition (which includes `x-tyk-api-gateway`), you can use the `/apis/oas` endpoint to import the API defintiion.
 
 If you have a template registered with your Dashboard, you can use this as the starting point for your new API. Tyk will combine the API definition with the template, automating the configuration of any element defined in your chosen template.
 
-You'll need to identify the template to be used during the import. You can use either its unique `id` or the database ID that was assigned when the template was [registered with Tyk Dashboard]({{< ref "api-management/dashboard-configuration#registering-a-template-with-tyk-dashboard" >}}). You provide either the `id` or `_id` in the `templateID` query parameter in the call to `/apis/oas`.
+You'll need to identify the template to be used during the import. You can use either its unique `id` or the database ID that was assigned when the template was [registered with Tyk Dashboard]({{< ref "#registering-a-template-with-tyk-dashboard" >}}). You provide either the `id` or `_id` in the `templateID` query parameter in the call to `/apis/oas`.
 
 For example:
 ``` bash  {linenos=true, linenostart=1}
@@ -4646,11 +4646,11 @@ Note that the `GET /json` endpoint from the OpenAPI description and the `POST /a
 ## System Administration
 
 The Tyk Dashboard Admin API provides the following administrator level functions:
- - Managing [organizations]({{< ref "api-management/dashboard-configuration#organizations" >}}).
- - Creating initial [users]({{< ref "tyk-apis/tyk-dashboard-admin-api/users" >}}) during boot-strapping of the system.
- - Forcing a [URL reload]({{< ref "tyk-apis/tyk-dashboard-api/dashboard-url-reload" >}}).
- - [Exporting]({{< ref "api-management/dashboard-configuration#export-assets-api" >}}) and [importing]({{< ref "api-management/dashboard-configuration#import-assets-api" >}}) Tyk assets (orgs, APIs, policies) for backup or when migrating between environments.
- - Setting up [SSO integration]({{< ref "api-management/dashboard-configuration#single-sign-on-api-1" >}}).
+ - Managing [organizations]({{< ref "#organizations" >}}).
+ - Creating initial [users]({{< ref "api-management/dashboard-configuration#users-api-1" >}}) during boot-strapping of the system.
+ - Forcing a [URL reload]({{< ref "api-management/dashboard-configuration#url-reload-api" >}}).
+ - [Exporting]({{< ref "#export-assets-api" >}}) and [importing]({{< ref "#import-assets-api" >}}) Tyk assets (orgs, APIs, policies) for backup or when migrating between environments.
+ - Setting up [SSO integration]({{< ref "#single-sign-on-api-1" >}}).
 
 ### Organizations
 
@@ -4666,7 +4666,7 @@ An Organization is a completely isolated unit, and has its own:
 
 When bootstrapping your Dashboard, the first thing the bootstrap script does is to create a new default Organization.
 
-Additional organizations can be created and managed using the [Dashboard Admin API]({{< ref "api-management/dashboard-configuration#organizations-api" >}}).
+Additional organizations can be created and managed using the [Dashboard Admin API]({{< ref "#organizations-api" >}}).
 
 #### Tyk Gateway and organizations
 The concept of an organization does not exist within the Tyk Gateway. Gateways only proxy and validate the rules imposed on them by the definitions and keys that are being processed, however at their core there are some security checks within the Gateway that ensure organizational ownership of objects.
@@ -4809,8 +4809,8 @@ We recommend the following:
 
 Tyk stores a variety of data in 4 separate data storage layers. You can configure each layer separately to use one of our supported database platforms. Alternatively a single platform can be used for all layers. The 4 data storage layers are as follows:
 1. **Main**: Stores configurations of: APIs, Policies, Users and User Groups.
-2. **Aggregate Analytics**: Data used to display Dashboard charts and [analytics]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}).
-3. **Logs**: When [detailed logging]({{< ref "api-management/troubleshooting-debugging#capturing-detailed-logs" >}}) is enabled, request and response data is logged to storage. These logs can previewed in the Dashboard [log browser]({{< ref "api-management/dashboard-configuration#activity-logs" >}}).
+2. **Aggregate Analytics**: Data used to display Dashboard charts and [analytics]({{< ref "#traffic-analytics" >}}).
+3. **Logs**: When [detailed logging]({{< ref "api-management/troubleshooting-debugging#capturing-detailed-logs" >}}) is enabled, request and response data is logged to storage. These logs can previewed in the Dashboard [log browser]({{< ref "#activity-logs" >}}).
 4. **Uptime**: Uptime test analytics.
 
 Being extensible, Tyk supports storing this data across different databases (MongoDB, MySQL and PostgreSQL etc.). For example, Tyk can be configured to store analytics in PostgreSQL, logs in MongoDB and uptime data in MySQL.
@@ -4959,7 +4959,7 @@ TYK_PMP_PUMPS_LOGS_META_CONNECTIONSTRING=mysql://db_host_name:3306/tyk_logs_db
 
 #### Write Aggregated Analytics Data
 
-Aggregated analytics corresponds to data that is used for the display of charts and graphs in [dashboard]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}). Tyk Pump can be configured to write aggregated analytics data to SQL based databases or MongoDB.
+Aggregated analytics corresponds to data that is used for the display of charts and graphs in [dashboard]({{< ref "#traffic-analytics" >}}). Tyk Pump can be configured to write aggregated analytics data to SQL based databases or MongoDB.
 
 ##### SQL Database
 

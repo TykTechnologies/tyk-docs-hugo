@@ -222,7 +222,7 @@ when logging in, and can easily switch between organizations via the navigation 
 
 ### Dashboard Audit Log improvements
 
-There is a [new section]({{< ref "product-stack/tyk-dashboard/advanced-configurations/analytics/audit-log" >}}) in the Tyk Dashboard config file where you can specify parameters for the audit log (containing audit records for all requests made to all endpoints under the `/api` route).
+There is a [new section]({{< ref "api-management/dashboard-configuration#dashboard-audit-logs" >}}) in the Tyk Dashboard config file where you can specify parameters for the audit log (containing audit records for all requests made to all endpoints under the `/api` route).
 
 ---
 

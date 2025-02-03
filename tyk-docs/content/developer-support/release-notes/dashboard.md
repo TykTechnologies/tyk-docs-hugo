@@ -4133,7 +4133,7 @@ If there were changes in any of Tyk’s API docs:
 - Has a link to the endpoint documentation being included?
 - Has the benefit of the new/updated endpoint been explained in the release highlights and changelog?
 -->
-- [OpenAPI Document]({{<ref "tyk-dashboard-api/" >}})
+- [OpenAPI Document]({{<ref "tyk-dashboard-api" >}})
 - [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview)
 
 ### FAQ
