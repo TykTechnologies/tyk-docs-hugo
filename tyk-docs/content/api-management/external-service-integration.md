@@ -1126,7 +1126,8 @@ All commands shown are run from inside the Tyk host environment.
 
     Start a new shell session to carry on with the remaining process.
 
-6. **<a id="login-page" href="#create-login-page">Create a login page</a>**
+<a id="login-page"></a>
+6. **Create a login page**
 
     TIB works by having credentials sent to it, so a login page must be made in order to fulfill this requirement. For this example we will create a basic login form hosted by Nginx. We can't just place the login page in our Dashboard directory as the Dashboard is not a standard web server, it only serves the pages which it has been compiled to serve. Any non-compiled page will produce a 404 response.
 
@@ -1428,7 +1429,7 @@ The configuration below will proxy a request to `http://{TARGET-HOSTNAME}:{PORT}
 - Create a new client in your IdP for Tyk Identity Broker
 
 3. **Setup OIDC Profile**
-  - Create a new [TIB profile]({{< ref "#what-are-the-tib-profiles" >}}):
+  - Create a new [TIB profile]({{< ref "#exploring-tib-profiles" >}}):
     - Select Social > OIDC as the provider
     - Enter the client key and client secret from the IdP
     - Copy the callback URL from TIB and add it to the IdP client's allowed redirect URLs
