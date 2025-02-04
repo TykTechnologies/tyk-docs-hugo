@@ -191,7 +191,7 @@ These would be the default credentials Tyk Operator uses to connect to Tyk.
 
 ### Multi-tenancy in Tyk
 
-Tyk Dashboard is multi-tenant capable, which means you can use a single Tyk Dashboard instance to host separate [organizations]({{< ref "basic-config-and-security/security/dashboard/organisations">}}) for each team or department. Each organization is a completely isolated unit with its own:
+Tyk Dashboard is multi-tenant capable, which means you can use a single Tyk Dashboard instance to host separate [organizations]({{< ref "api-management/dashboard-configuration#organizations">}}) for each team or department. Each organization is a completely isolated unit with its own:
 
 - API Definitions
 - API Keys
@@ -3649,7 +3649,7 @@ In this example, the API with ID `12345` will be updated according to the provid
 
 
 ### API Categories
-[API categories]({{< ref "product-stack/tyk-dashboard/advanced-configurations/api-categories">}}) are configured differently for Tyk OAS APIs and Tyk Classic APIs. Please see below for examples.
+[API categories]({{< ref "api-management/dashboard-configuration#governance-using-api-categories">}}) are configured differently for Tyk OAS APIs and Tyk Classic APIs. Please see below for examples.
 
 #### Tyk OAS API
 
@@ -3680,7 +3680,7 @@ As of Tyk Operator v1.1, API categories is not supported in `TykStreamsApiDefini
 
 #### Tyk Classic API
 
-For a Tyk Classic API, you can specify the category name using the `name` field with a `#` qualifier. This will categorize the API in the Tyk Dashboard. See [How API categories work]({{<ref "product-stack/tyk-dashboard/advanced-configurations/api-categories#tyk-classic-apis">}}) to learn about limitations on API names.
+For a Tyk Classic API, you can specify the category name using the `name` field with a `#` qualifier. This will categorize the API in the Tyk Dashboard. See [How API categories work]({{<ref "api-management/dashboard-configuration#tyk-classic-apis">}}) to learn about limitations on API names.
 
 Example
 

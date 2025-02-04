@@ -1,0 +1,32 @@
+name: Docs Rule Engine
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Change to your required version
+
+      - name: Install dependencies
+        run: |
+          cd scripts/docs-rule-engine
+          npm install
+
+      - name: Run script
+        run: |
+          cd scripts/docs-rule-engine
+          node index.js
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub Token for API calls
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_KEY }} # Org key already available

@@ -152,7 +152,7 @@ kubectl create secret generic postgres-secrets  -n $NAMESPACE --from-literal=pos
 {{< note >}}
 **Note**
 
-Ensure that you are installing PostgreSQL versions that are supported by Tyk. Please consult the list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}) that are compatible with Tyk.
+Ensure that you are installing PostgreSQL versions that are supported by Tyk. Please consult the list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}) that are compatible with Tyk.
 {{< /note >}}
 
 #### Step 4 - Install Tyk Control Plane
