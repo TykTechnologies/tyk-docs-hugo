@@ -31,7 +31,7 @@ In this section, you'll learn how to enable single sign-on for admin users and d
 
 ## Portal SSO Configuration Options
 
-Tyk Enterprise Developer Portal uses the [Tyk Identity Broker (TIB)]({{< ref "tyk-identity-broker" >}}) to integrate Tyk authentication with 3rd party identity providers (IDPs). 
+Tyk Enterprise Developer Portal uses the [Tyk Identity Broker (TIB)]({{< ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib" >}}) to integrate Tyk authentication with 3rd party identity providers (IDPs). 
 
 From portal version 1.12.0, TIB is embedded in the portal. With this, you have two options to configure SSO in the portal:
 
@@ -75,7 +75,7 @@ The Tyk Enterprise Developer portal has two audiences:
 TIB uses **user group mapping** to map the user groups from the identity provider to the portal teams within an organization.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/user-group-mapping.png" alt="User group mapping" width="600">}}
 
-To define the user group mapping for your developer audience, you need to add the UserGroupMapping object to the corresponding [TIB profile]({{< ref "tyk-stack/tyk-identity-broker/about-profiles" >}}):
+To define the user group mapping for your developer audience, you need to add the UserGroupMapping object to the corresponding [TIB profile]({{< ref "api-management/external-service-integration#exploring-tib-profiles" >}}):
 ```yaml
   "UserGroupMapping": {
     "{IDP groupA ID}": "{portal teamA ID}",
@@ -149,7 +149,7 @@ Create a profile for developers:
 
 #### Using the JSON Raw Editor
 
-The Tyk Identity Broker (TIB) uses [profiles]({{< ref "tyk-stack/tyk-identity-broker/about-profiles" >}}) to define details related to the identity provider such as its type and access credentials, and instructs TIB on how to treat users that try log in with that provider.
+The Tyk Identity Broker (TIB) uses [profiles]({{< ref "api-management/external-service-integration#exploring-tib-profiles" >}}) to define details related to the identity provider such as its type and access credentials, and instructs TIB on how to treat users that try log in with that provider.
 You can access the raw editor by switching to the **Raw editor** view, which displays a JSON editor with an empty TIB profile for guidance.
 {{< img src="img/dashboard/portal-management/enterprise-portal/portal-sso-raw-editor.png" alt="SSO Profiles Raw Editor" >}}
 
@@ -201,7 +201,7 @@ As an example, for Okta, you can use the following configuration:
 ]
 ```
 {{< /note >}}
-Please refer to the [TIB configuration section]({{< ref "advanced-configuration/integrate/sso" >}}) for step-by-step instructions for setting up the UseProviders section.
+Please refer to the [TIB configuration section]({{< ref "api-management/external-service-integration#single-sign-on-sso" >}}) for step-by-step instructions for setting up the UseProviders section.
 
 {{< tabs_end >}}
 
@@ -246,15 +246,15 @@ extraEnvs:
 ```
 
 ### Configure Tyk Identity Broker to work with Tyk Enterprise Developer Portal
-The Tyk Enterprise Developer portal uses the [Tyk Identity Broker]({{< ref "tyk-identity-broker" >}}) to work with various Identity Management Systems, such as LDAP,
+The Tyk Enterprise Developer portal uses the [Tyk Identity Broker]({{< ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib" >}}) to work with various Identity Management Systems, such as LDAP,
 Social OAuth (e.g., GPlus, Twitter, GitHub), or Basic Authentication providers. Therefore, to configure Single Sign-On for the portal,
 you need to install and configure Tyk Identity Broker first. Follow these steps to achieve this:
 
 #### Install Tyk Identity Broker
-Please refer to [the TIB installation guide documentation]({{< ref "tyk-identity-broker/getting-started#installing-tib-as-separate-application" >}}) for different installation options:
+Please refer to [the TIB installation guide documentation]({{< ref "api-management/external-service-integration#install-standalone-tib" >}}) for different installation options:
 - [Docker](https://hub.docker.com/r/tykio/tyk-identity-broker/#the-tibconf-file)
 - [packages](https://packagecloud.io/tyk/tyk-identity-broker/install#bash-deb)
-- [Tyk helm chart]({{< ref "tyk-identity-broker/getting-started#via-helm-chart-for-kubernetes" >}})
+- [Tyk helm chart]({{< ref "api-management/external-service-integration#install-standalone-tib" >}})
 
 #### Specify TIB settings to work with the Tyk Enterprise Developer portal
 
@@ -299,7 +299,7 @@ Setting reference:
 
 The full reference for the configuration file is in [the TIB section of the documentation]({{< ref "tyk-configuration-reference/tyk-identity-broker-configuration" >}}).
 ##### Helm charts
-If you wish ot deploy TIB in Kubernetes via [Tyk helm chart]({{< ref "tyk-identity-broker/getting-started#via-helm-chart-for-kubernetes" >}}), you need to specify TIB config as extraVars:
+If you wish ot deploy TIB in Kubernetes via [Tyk helm chart]({{< ref "api-management/external-service-integration#install-standalone-tib" >}}), you need to specify TIB config as extraVars:
 ```.yaml
 extraEnvs:
   - name: TYK_IB_HTTPSERVEROPTIONS_CERTFILE
@@ -335,7 +335,7 @@ The full reference for the configuration file is in [the TIB section of the docu
 ### Configure Single Sign-On for admin users and developers
 
 #### What is the Tyk Identity Broker profile
-The Tyk Identity Broker (TIB) uses [profiles]({{< ref "tyk-stack/tyk-identity-broker/about-profiles" >}}) to define details related to the identity provider such as its type and access credentials, and instructs TIB on how to treat users that try log in with that provider.
+The Tyk Identity Broker (TIB) uses [profiles]({{< ref "api-management/external-service-integration#exploring-tib-profiles" >}}) to define details related to the identity provider such as its type and access credentials, and instructs TIB on how to treat users that try log in with that provider.
 In this guide, you will create two TIB profiles for admins users and developers. This allows you to have different identity providers for admins and developers as well as for internal and external users.
 
 Depending on your installation options for TIB, you need to specify profiles via a json file (for Docker or packages) or via a ConfigMap (for Tyk Helm Chart).
@@ -512,7 +512,7 @@ As an example, for Okta, you can use the following configuration:
 
 {{< /note >}}
 
-Please refer to the [TIB configuration section]({{< ref "advanced-configuration/integrate/sso" >}}) for step-by-step instructions for setting up the UseProviders section.
+Please refer to the [TIB configuration section]({{< ref "api-management/external-service-integration#single-sign-on-sso" >}}) for step-by-step instructions for setting up the UseProviders section.
 Any changes to the TIB profile will be effective after restarting your TIB instance.
 
 2. Create a login page for admin users. We don't supply a login page for Single Sign-On out of the box, so you need to create one.

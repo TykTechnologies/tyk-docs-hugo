@@ -189,7 +189,7 @@ In order to know and understand each of the attributes, implications as well as 
 | Field                            | Description                                                                                                                                                                   | Required                                                         |
 |----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
 | IDPMetadataURL      | This is a URL, e.g. `https://login.microsoftonline.com/your-tenant-id/federationmetadata/2007-06/federationmetadata.xml`, that links to [XML metadata](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf) containing information necessary for interaction with SAML-enabled identity or service providers. The document contains example URLs of endpoints, information about supported bindings, identifiers and public keys. Once you create your TIB profile you can find the SP metadata file under *{Dashboard HOST}/auth/{TIB Profile Name}/saml/metadata* | Yes |
-| CertLocation        | An X.509 certificate and the private key for signing your requests to the IDP. The value for `CertLocation` should be the path to a single file with the cert and key concatenated, e.g. `/etc/ssl/certs/example_cert.pem`. When used in an [embedded TIB instance in the dashboard]({{<ref "tyk-identity-broker/getting-started#installation">}}) then the `CertLocation` value can be the *certId* from the certificate manager. For further details please refer to [SSO with SAML]({{< ref "advanced-configuration/integrate/sso#sso-with-saml" >}})                                                                                                           | Yes |
+| CertLocation        | An X.509 certificate and the private key for signing your requests to the IDP. The value for `CertLocation` should be the path to a single file with the cert and key concatenated, e.g. `/etc/ssl/certs/example_cert.pem`. When used in an [embedded TIB instance in the dashboard]({{<ref "api-management/external-service-integration#installing-tyk-identity-broker-tib">}}) then the `CertLocation` value can be the *certId* from the certificate manager. For further details please refer to [SSO with SAML]({{< ref "api-management/external-service-integration#sso-with-saml" >}})                                                                                                           | Yes |
 | SAMLBaseURL         | The host of TIB, e.g. `http://tyk-dashboard:3000/`, that will be used in the metadata document for the Service Provider. This will form part of the metadata URL used as the Entity ID by the IDP. The redirects configured in the IDP must match the expected Host and URI configured in the metadata document made available by Tyk Identity Broker.                                                                 | Yes |
 | ForceAuthentication | Ignore any session held by the IDP and force re-login every request. Defaults to false                                                                                                                                                                                                                                                                                             | No  |
 | SAMLBinding         | Key for looking up the email claim in the SAML assertion form the IDP. Defaults to: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress                                                                                                                                                                                                                             | No  |
@@ -281,7 +281,7 @@ Authentication protocols such as OpenID Connect and SAML enable an application t
 
 ### SSO in Tyk
 
-SSO is sometimes complicated to understand or set up but can be easily accomplished by using the built-in [Tyk Identity Broker (TIB)]({{< ref "tyk-identity-broker" >}}).
+SSO is sometimes complicated to understand or set up but can be easily accomplished by using the built-in [Tyk Identity Broker (TIB)]({{< ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib" >}}).
 
 Using our Tyk-Identity-Broker (TIB), you can do both - use your existing users directory to login to the **Dashboard** or **Developer Portal** and have an SSO. TIB, among other options, supports four methods for login to Tyk's UI:
 
@@ -313,8 +313,8 @@ Our Tyk Identity Broker (TIB) internally also uses these APIs.
 
 The Dashboard exposes two APIs:
 
-- `/admin/sso` - See [Dashboard Admin API SSO]({{< ref "tyk-apis/tyk-dashboard-admin-api/sso" >}}) for more details.
-- `/api/sso` -  See [Dashboard API SSO]({{< ref "tyk-apis/tyk-dashboard-api/sso" >}}) for more details.
+- `/admin/sso` - See [Dashboard Admin API SSO]({{< ref "api-management/dashboard-configuration#single-sign-on-api-1" >}}) for more details.
+- `/api/sso` -  See [Dashboard API SSO]({{< ref "api-management/dashboard-configuration#single-sign-on-api" >}}) for more details.
 
 which allow you to generate a temporary authentication token, valid for 60 seconds. They make same thing you can select one of them and use it.
 However, the admin API requires `admin-auth` header which should be same with `admin-secret` parameter in `tyk_analytics.conf`, the regular API requires `authorization` header which should be same with the user authentication token.  
@@ -506,7 +506,7 @@ This is an end-to-end worked example of how you can use [AzureAD](https://azure.
 ) to log in to your Dashboard.
 This guide assumes the following:
 
-You already have authorized access to Tyk's Dashboard. If you haven't, get the authorization key by following this [guide]({{< ref "basic-config-and-security/security/dashboard/create-users#creating-a-dashboard-user-using-the-dashboard-api">}}).
+You already have authorized access to Tyk's Dashboard. If you haven't, get the authorization key by following this [guide]({{< ref "api-management/user-management#using-dashboard-api">}}).
 
 #### Configuration at Azure
 
@@ -569,7 +569,7 @@ As illustrated in the screen below the following information must be provided:
 - Identity provider role
 - Tyk User Group: This can be created from the User Groups section of the dashboard (reference a link to a page in tyk docs here to show how to create a user group). When creating your User Group, one can also select and adjust the permissions for each group. 
 
-For more information on how to set and change user permissions, head to this [guide]({{< ref "basic-config-and-security/security/dashboard/create-user-groups#step-4-set-user-group-permissions">}})
+For more information on how to set and change user permissions, head to this [guide]({{< ref "api-management/user-management#using-dashboard-ui-1">}})
 
 {{< img src="/img/azureAD/raw-editor.png" alt="Profile Configuration - Raw-editor" >}}
 
@@ -620,7 +620,7 @@ This is an end-to-end worked example of how you can use [Okta](https://www.okta.
 ) to log in to your Dashboard.
 This guide assumes the following:
 
-* You already have authorized access to Tyk's Dashboard. If you haven't, [get the authorization key by following this doc]({{< ref "basic-config-and-security/security/dashboard/create-users#creating-a-dashboard-user-using-the-dashboard-api" >}}).
+* You already have authorized access to Tyk's Dashboard. If you haven't, [get the authorization key by following this doc]({{< ref "api-management/user-management#using-dashboard-api" >}}).
 * For simplicity, you are running TIB locally on port 3010
 * You are able to edit TIB's configuration file.
 
@@ -716,7 +716,7 @@ Once it's working you can also add two more enhancements - SSO and MFA
    You will need to:
 	- set up a web server with a login page and a form for `user` and `password`
 	- Update `tyk_analytics.conf` to redirect logins to that url
-    Explicit details are in [steps 6-7]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/dashboard-login-ldap-tib#6-create-a-login-page" >}})
+    Explicit details are in [steps 6-7]({{< ref "api-management/external-service-integration#create-login-page" >}})
 
 ##### Multi-Factor-Authentication (MFA) Support
    MFA works out-of-the-box in Tyk since luckily Okta supports it. you would need to add it to the configuration of the account holder. Under `Security --> Multifactor --> Factor types` you can choose the types you want. For instance I chose Google Authenticator.
@@ -747,7 +747,7 @@ This will walk you through securing access to your Tyk Dashboard using OpenID Co
 
 * A free account with [Auth0](https://auth0.com/)
 * A Tyk Self-Managed or Cloud installation
-* Our Tyk Identity Broker (TIB). You can use the internal version included with a Tyk Self-Managed installation and Tyk Cloud, or an external version. See [Tyk Identity Broker]({{< ref "/content/tyk-identity-broker.md" >}}) for more details.
+* Our Tyk Identity Broker (TIB). You can use the internal version included with a Tyk Self-Managed installation and Tyk Cloud, or an external version. See [Tyk Identity Broker]({{< ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib" >}}) for more details.
 
 #### Create a new user in Auth0
 
@@ -1060,7 +1060,7 @@ All commands shown are run from inside the Tyk host environment.
     The key attributes for LDAP profile are:
 
     * `ID`: The ID by which we will activate the profile by calling the appropriate TIB endpoint
-    * `OrgId`: The organization id which the profile is connected to - make sure this is the correct id for your organization (see the [Dashboard Admin API documentation]({{< ref "dashboard-admin-api/organisations" >}}) for details on how to retrieve this)
+    * `OrgId`: The organization id which the profile is connected to - make sure this is the correct id for your organization (see the [Dashboard Admin API documentation]({{< ref "api-management/dashboard-configuration#organizations-api" >}}) for details on how to retrieve this)
     * `IdentityHandlerConfig.DashboardCredential`: The Dashboard API Access credential which is used as authorization header
     * `ProviderConfig.FailureRedirect`: The URL which TIB will redirect to if the authentication fails
     * `ProviderConfig.LDAPPort`: The port through which TIB can communicate with your LDAP server
@@ -1122,7 +1122,7 @@ All commands shown are run from inside the Tyk host environment.
 
     Start a new shell session to carry on with the remaining process.
 
-6. **Create a login page**
+6. **<a id="login-page" href="#create-login-page">Create a login page</a>**
 
     TIB works by having credentials sent to it, so a login page must be made in order to fulfill this requirement. For this example we will create a basic login form hosted by Nginx. We can't just place the login page in our Dashboard directory as the Dashboard is not a standard web server, it only serves the pages which it has been compiled to serve. Any non-compiled page will produce a 404 response.
 
@@ -1424,7 +1424,7 @@ The configuration below will proxy a request to `http://{TARGET-HOSTNAME}:{PORT}
 - Create a new client in your IdP for Tyk Identity Broker
 
 3. **Setup OIDC Profile**
-  - Create a new [TIB profile]({{< ref "tyk-stack/tyk-identity-broker/about-profiles#what-are-the-tib-profiles" >}}):
+  - Create a new [TIB profile]({{< ref "api-management/external-service-integration#what-are-the-tib-profiles" >}}):
     - Select Social > OIDC as the provider
     - Enter the client key and client secret from the IdP
     - Copy the callback URL from TIB and add it to the IdP client's allowed redirect URLs

@@ -290,7 +290,7 @@ Learn how to segment and view your API traffic and activity
 Tyk supports GraphQL natively. Proxy to existing service or build it from scratch.
 {{< /badge >}}
 
-{{< badge title="Integration" href="/docs/advanced-configuration/integrate/sso/" >}}
+{{< badge title="Integration" href="/docs/api-management/external-service-integration#single-sign-on-sso" >}}
 #### Single Sign On
 
 Log into the dashboard and portal with your existing IDP.

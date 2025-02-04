@@ -26,4 +26,4 @@ Internally the TIB uses the Dashboard SSO API mentioned above.
 
 Starting from Tyk v3.0 the Tyk Identity Broker has been added as a built-in feature of the Tyk Dashboard. Users will no longer need to set up a separated instance of the service to make it work with Dashboard. However this is not mandatory and users still can set the configs to connect to an external TIB. 
 
-For more information on using TIB internally or configuring it externally, see the documentation for [Tyk Identity Broker (TIB)]({{< ref "tyk-identity-broker" >}}).
+For more information on using TIB internally or configuring it externally, see the documentation for [Tyk Identity Broker (TIB)]({{< ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib" >}}).
