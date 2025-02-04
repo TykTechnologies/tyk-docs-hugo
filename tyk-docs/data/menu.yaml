@@ -167,6 +167,17 @@ menu:
             path: /api-management/automations/sync
             category: Page
             show: True
+      - title: "Dashboard Configuration"
+        path: /api-management/dashboard-configuration
+        category: Page
+        show: True
+      - title: "API Versioning"
+        path: /api-management/api-versioning
+        category: Page
+        show: True
+      - title: "Troubleshooting"
+        path: /api-management/troubleshooting-debugging
+        category: Page
       - title: "Gateway Configuration"
         category: Directory
         show: True
@@ -1501,78 +1512,14 @@ menu:
         category: Directory
         show: True
         menu:
-          - title: "Overview"
-            path: /tyk-dashboard
-            category: Page
-            show: True
           - title: "Advanced configurations"
             category: Directory
             show: False
             menu:
-          - title: "Traffic analytics"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /tyk-dashboard-analytics
-                category: Page
-                show: True
-              - title: "Traffic Overview"
-                path: /tyk-dashboard-analytics/traffic-overview
-                category: Page
-                show: True
-              - title: "Activity logs"
-                path: /tyk-stack/tyk-manager/analytics/log-browser
-                category: Page
-                show: True
-              - title: "Activity by API"
-                path: /tyk-dashboard-analytics/traffic-per-api
-                category: Page
-                show: True
-              - title: "Activity by Key"
-                path: /tyk-dashboard-analytics/traffic-per-token
-                category: Page
-                show: True
-              - title: "Activity by endpoint"
-                path: /product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint
-                category: Page
-                show: True
-              - title: "Activity by location"
-                path: /tyk-stack/tyk-manager/analytics/geographic-distribution
-                category: Page
-                show: True
-              - title: "Activity by error"
-                path: /tyk-dashboard-analytics/error-overview
-                category: Page
-                show: True
-              - title: "Activity by OAuth Client"
-                path: /tyk-dashboard-analytics/traffic-per-oauth-client
-                category: Page
-                show: True
           - title: "API governance"
             category: Directory
             show: True
             menu:
-              - title: "API Templates"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /product-stack/tyk-dashboard/advanced-configurations/templates/template-overview
-                    category: Page
-                    show: True
-                  - title: "Using the Template Designer"
-                    path: /product-stack/tyk-dashboard/advanced-configurations/templates/template-designer
-                    category: Page
-                    show: True
-                  - title: "Using the Dashboard API"
-                    path: /product-stack/tyk-dashboard/advanced-configurations/templates/template-api
-                    category: Page
-                    show: True
-              - title: "API Categories"
-                path: /product-stack/tyk-dashboard/advanced-configurations/api-categories
-                category: Page
-                show: True
               - title: "Open Policy Agent (OPA)"
                 category: Directory
                 show: True
@@ -1589,38 +1536,10 @@ menu:
                     path: /product-stack/tyk-dashboard/advanced-configurations/open-policy-agent/opa-permissions-example
                     category: Page
                     show: True
-              - title: "API Endpoint Designer"
-                path: /advanced-configuration/transform-traffic/endpoint-designer
-                category: Page
-                show: True
           - title: "System administration"
             category: Directory
             show: True
             menu:
-              - title: "Dashboard administration"
-                path: /basic-config-and-security/security/dashboard/dashboard-admin-api
-                category: Page
-                show: True
-              - title: "Organizations"
-                path: /basic-config-and-security/security/dashboard/organisations
-                category: Page
-                show: True
-              - title: "Dashboard audit logs"
-                path: /product-stack/tyk-dashboard/advanced-configurations/analytics/audit-log
-                category: Page
-                show: True
-              - title: "Persistent storage"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Supported Databases"
-                    path: /tyk-dashboard/database-options
-                    category: Page
-                    show: True
-                  - title: "Configuring Data Storage"
-                    path: /product-stack/tyk-dashboard/advanced-configurations/data-storage-configuration
-                    category: Page
-                    show: True
               - title: "Integration with 3rd Party Identity Providers"
                 category: Directory
                 show: True
@@ -1661,62 +1580,6 @@ menu:
                 category: Directory
                 show: True
                 menu:
-                  - title: "Overview"
-                    path: /getting-started/key-concepts/dashboard-api
-                    category: Page
-                    show: True
-                  - title: "Pagination"
-                    path: /tyk-apis/tyk-dashboard-api/pagination
-                    category: Page
-                    show: True
-                  - title: "Manage APIs"
-                    path: /tyk-apis/tyk-dashboard-api/api-definitions
-                    category: Page
-                    show: True
-                  - title: "Data Graph APIs"
-                    path: /tyk-apis/tyk-dashboard-api/data-graphs-api
-                    category: Page
-                    show: True
-                  - title: "Dashboard Analytics"
-                    path: /tyk-apis/tyk-dashboard-api/analytics
-                    category: Page
-                    show: True
-                  - title: "Manage Users"
-                    path: /tyk-dashboard-api/users
-                    category: Page
-                    show: True
-                  - title: "Manage User Groups"
-                    path: /tyk-apis/tyk-dashboard-api/user-groups
-                    category: Page
-                    show: True
-                  - title: "Manage Additional User Permissions"
-                    path: /tyk-dashboard-api/org/permissions
-                    category: Page
-                    show: True
-                  - title: "Manage Access Keys"
-                    path: /tyk-apis/tyk-dashboard-api/api-keys
-                    category: Page
-                    show: True
-                  - title: "Manage Basic Auth"
-                    path: /tyk-apis/tyk-dashboard-api/basic-authentication
-                    category: Page
-                    show: True
-                  - title: "Manage OAuth"
-                    path: /tyk-apis/tyk-dashboard-api/oauth-key-management
-                    category: Page
-                    show: True
-                  - title: "Setup Single Sign On"
-                    path: /tyk-apis/tyk-dashboard-api/sso
-                    category: Page
-                    show: True
-                  - title: "Manage Webhooks"
-                    path: /tyk-apis/tyk-dashboard-api/web-hooks
-                    category: Page
-                    show: True
-                  - title: "Open Policy Agent API"
-                    path: /tyk-dashboard-api/org/opa
-                    category: Page
-                    show: True
                   - title: "Classic Portal"
                     category: Directory
                     show: True
@@ -1729,34 +1592,6 @@ menu:
                         path: /tyk-apis/tyk-dashboard-api/portal-policies
                         category: Page
                         show: True
-              - title: "Dashboard Admin API"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Manage Organisations"
-                    path: /dashboard-admin-api/organisations
-                    category: Page
-                    show: True
-                  - title: "Manage Users"
-                    path: /tyk-apis/tyk-dashboard-admin-api/users
-                    category: Page
-                    show: True
-                  - title: "Setup SSO"
-                    path: /tyk-apis/tyk-dashboard-admin-api/sso
-                    category: Page
-                    show: True
-                  - title: "Dashboard URL Reload"
-                    path: /tyk-apis/tyk-dashboard-api/dashboard-url-reload
-                    category: Page
-                    show: True
-                  - title: "Export Tyk assets"
-                    path: /tyk-apis/tyk-dashboard-admin-api/export
-                    category: Page
-                    show: True
-                  - title: "Import Tyk assets"
-                    path: /tyk-apis/tyk-dashboard-admin-api/import
-                    category: Page
-                    show: True
           - title: "Troubleshooting"
             category: Directory
             show: True

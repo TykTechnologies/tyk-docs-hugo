@@ -1237,7 +1237,7 @@ From there you have access to the full scope of Tyk API management functionality
 * [Adding APIs]({{< ref "getting-started/create-api" >}}) to Tyk, including REST and GraphQL APIs
 * Applying Quotas and Rate limits via [Security Policies]({{< ref "getting-started/create-security-policy" >}}) and [Keys]({{< ref "getting-started/create-api-key" >}})
 * [Securing]({{< ref "api-management/security-best-practices#securing-apis-with-tyk" >}}) your APIs
-* Viewing granular [Analytics]({{< ref "tyk-dashboard-analytics" >}}) for your Tyk managed APIs
+* Viewing granular [Analytics]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}) for your Tyk managed APIs
 * [Transform traffic]({{< ref "advanced-configuration/transform-traffic" >}}) with the Tyk API Designer
 * Add integration options such as [SSO]({{< ref "advanced-configuration/integrate/sso" >}}) and [3rd Party IdentityProviders]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers" >}})
 * [Adding Segment Tags]({{< ref "#faqs" >}})
@@ -2361,7 +2361,7 @@ External traffic is subject to billing, while internal traffic is exempt. The mo
  - Traffic between Control Plane → Portal in the same region
 
 #### Tyk Cloud Storage
-When a client makes a request to a Tyk Gateway deployment, the details of the request and response are captured and [stored in Redis]({{< ref "tyk-dashboard-analytics/" >}}). Tyk Pump processes the records from Redis and forwards them to MongoDB. Finally, Tyk Cloud reads that data from MongoDB and displays its size(bytes) in the _Storage_ section of _Monitoring_. 
+When a client makes a request to a Tyk Gateway deployment, the details of the request and response are captured and [stored in Redis]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}). Tyk Pump processes the records from Redis and forwards them to MongoDB. Finally, Tyk Cloud reads that data from MongoDB and displays its size(bytes) in the _Storage_ section of _Monitoring_. 
 
 
 

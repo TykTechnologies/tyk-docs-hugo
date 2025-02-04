@@ -127,7 +127,7 @@ TIB ships with a default `profiles.json` file which contains many example config
 The key attributes for LDAP profile are:
 
 * `ID`: The ID by which we will activate the profile by calling the appropriate TIB endpoint
-* `OrgId`: The organization id which the profile is connected to - make sure this is the correct id for your organization (see the [Dashboard Admin API documentation]({{< ref "dashboard-admin-api/organisations" >}}) for details on how to retrieve this)
+* `OrgId`: The organization id which the profile is connected to - make sure this is the correct id for your organization (see the [Dashboard Admin API documentation]({{< ref "api-management/dashboard-configuration#organizations-api" >}}) for details on how to retrieve this)
 * `IdentityHandlerConfig.DashboardCredential`: The Dashboard API Access credential which is used as authorization header
 * `ProviderConfig.FailureRedirect`: The URL which TIB will redirect to if the authentication fails
 * `ProviderConfig.LDAPPort`: The port through which TIB can communicate with your LDAP server
