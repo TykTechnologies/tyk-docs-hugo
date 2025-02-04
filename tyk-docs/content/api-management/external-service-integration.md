@@ -10,6 +10,7 @@ aliases:
   - /integrate/3rd-party-identity-providers/dashboard-login-ldap-tib
   - /integrate/3rd-party-identity-providers/openldap
   - /integrate/3rd-party-identity-providers/social/dashboard-login-with-gplus
+  - /integrate/3rd-party-identity-providers
   - /advanced-configuration/integrate/sso/dashboard-login-azure-sso
   - /integrate/sso/dashboard-login-okta-tib
   - /advanced-configuration/integrate/sso/dashboard-login-okta-tib
@@ -22,6 +23,7 @@ aliases:
   - /getting-started/tyk-components/tyk-identity-broker/profiles
   - /advanced-configuration/integrate/sso/dashboard-login-azure-sso
   - /security/security-policies/secure-apis-method-path
+  - /advanced-configuration/integrate/3rd-party-identity-providers
   - /advanced-configuration/integrate/3rd-party-identity-providers/custom
   - /advanced-configuration/integrate/3rd-party-identity-providers/dashboard-login-ldap-tib
   - /advanced-configuration/integrate/3rd-party-identity-providers/ldap
@@ -49,13 +51,13 @@ This page introduces general features of Tyk Identity Broker (TIB) and how to co
 
 We will delve into the following key topics:
 
-1. **[Introduction to Tyk Identity Broker]({{< ref "#" >}})**: Explore key concepts, configuration options, and implementation steps for TIB. You'll learn how to set up profiles for different identity providers, understand the flow of authentication requests, and customize the integration to fit your specific needs.
+1. **[Introduction to Tyk Identity Broker]({{< ref "#what-is-tyk-identity-broker-tib" >}})**: Explore key concepts, configuration options, and implementation steps for TIB. You'll learn how to set up profiles for different identity providers, understand the flow of authentication requests, and customize the integration to fit your specific needs.
 
-2. **[Single Sign On with Tyk]({{< ref "#" >}})**: We will learn how to implement seamless SSO experiences for Tyk Dashboard and Developer Portal.
+2. **[Single Sign On with Tyk]({{< ref "#single-sign-on-sso" >}})**: We will learn how to implement seamless SSO experiences for Tyk Dashboard and Developer Portal.
 
-3. **[SSO with different Protocols and Systems]({{< ref "#" >}})**: We will explore SSO integrations with LDAP, Social OAuth, SAML, and OpenID Connect.
+3. **[SSO with different Protocols and Systems]({{< ref "#sso-in-tyk" >}})**: We will explore SSO integrations with LDAP, Social OAuth, SAML, and OpenID Connect.
 
-4. **[Handling Custom Authentication]({{< ref "#" >}})**: We will learn how to configure TIB for unique authentication scenarios using the Proxy Provider.
+4. **[Handling Custom Authentication]({{< ref "#custom-proxy-identify-provider" >}})**: We will learn how to configure TIB for unique authentication scenarios using the Proxy Provider.
 
 ## What is Tyk Identity Broker (TIB)?
 
@@ -189,7 +191,7 @@ In order to know and understand each of the attributes, implications as well as 
 | Field                            | Description                                                                                                                                                                   | Required                                                         |
 |----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
 | IDPMetadataURL      | This is a URL, e.g. `https://login.microsoftonline.com/your-tenant-id/federationmetadata/2007-06/federationmetadata.xml`, that links to [XML metadata](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf) containing information necessary for interaction with SAML-enabled identity or service providers. The document contains example URLs of endpoints, information about supported bindings, identifiers and public keys. Once you create your TIB profile you can find the SP metadata file under *{Dashboard HOST}/auth/{TIB Profile Name}/saml/metadata* | Yes |
-| CertLocation        | An X.509 certificate and the private key for signing your requests to the IDP. The value for `CertLocation` should be the path to a single file with the cert and key concatenated, e.g. `/etc/ssl/certs/example_cert.pem`. When used in an [embedded TIB instance in the dashboard]({{<ref "api-management/external-service-integration#installing-tyk-identity-broker-tib">}}) then the `CertLocation` value can be the *certId* from the certificate manager. For further details please refer to [SSO with SAML]({{< ref "api-management/external-service-integration#sso-with-saml" >}})                                                                                                           | Yes |
+| CertLocation        | An X.509 certificate and the private key for signing your requests to the IDP. The value for `CertLocation` should be the path to a single file with the cert and key concatenated, e.g. `/etc/ssl/certs/example_cert.pem`. When used in an [embedded TIB instance in the dashboard]({{<ref "#installing-tyk-identity-broker-tib">}}) then the `CertLocation` value can be the *certId* from the certificate manager. For further details please refer to [SSO with SAML]({{< ref "#sso-with-saml" >}})                                                                                                           | Yes |
 | SAMLBaseURL         | The host of TIB, e.g. `http://tyk-dashboard:3000/`, that will be used in the metadata document for the Service Provider. This will form part of the metadata URL used as the Entity ID by the IDP. The redirects configured in the IDP must match the expected Host and URI configured in the metadata document made available by Tyk Identity Broker.                                                                 | Yes |
 | ForceAuthentication | Ignore any session held by the IDP and force re-login every request. Defaults to false                                                                                                                                                                                                                                                                                             | No  |
 | SAMLBinding         | Key for looking up the email claim in the SAML assertion form the IDP. Defaults to: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress                                                                                                                                                                                                                             | No  |
@@ -281,14 +283,14 @@ Authentication protocols such as OpenID Connect and SAML enable an application t
 
 ### SSO in Tyk
 
-SSO is sometimes complicated to understand or set up but can be easily accomplished by using the built-in [Tyk Identity Broker (TIB)]({{< ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib" >}}).
+SSO is sometimes complicated to understand or set up but can be easily accomplished by using the built-in [Tyk Identity Broker (TIB)]({{< ref "#what-is-tyk-identity-broker-tib" >}}).
 
 Using our Tyk-Identity-Broker (TIB), you can do both - use your existing users directory to login to the **Dashboard** or **Developer Portal** and have an SSO. TIB, among other options, supports four methods for login to Tyk's UI:
 
-1. Login with 3rd party social providers
-2. Login with any IdP that supports OIDC
-3. Login with any IdP that supports SAML
-3. Login with LDAP (not using OIDC)
+1. [Login with 3rd party social providers]({{< ref "#sso-with-social-identity-providers" >}})
+2. [Login with any IdP that supports OIDC]({{< ref "#sso-with-openid-connect-oidc" >}})
+3. [Login with any IdP that supports SAML]({{< ref "#sso-with-saml" >}})
+3. [Login with LDAP]({{< ref "#sso-with-ldap" >}})
 
 #### SSO with Open ID Connect or Social Providers
 
@@ -302,7 +304,7 @@ In short, all you need is as follow:
 4. Set the `Callback URL` generated by Tyk on your IDP
 5. Provide your SSO profile in Tyk with the `Discover URL (well known endpoint)`
 6. Visit the Login URL after saving your profile to initialize the login
-7. More Docs for the flow can be found on our [GitHub TIB repo README](https://github.com/TykTechnologies/tyk-identity-broker) and our [3rd Party integration docs]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers" >}})
+7. More Docs for the flow can be found on our [GitHub TIB repo README](https://github.com/TykTechnologies/tyk-identity-broker) and our [3rd Party integration docs]({{< ref "api-management/external-service-integration" >}})
 
 ### Tyk's REST API for SSO
 
@@ -685,7 +687,7 @@ This guide assumes the following:
 ```
 
 7. Start TIB by running the binary (`profiles.json` is in the same CWD)
-   See [Install TIB]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers#tyk-identity-broker-tib-overview" >}}) for detailed instructions on how to install TIB
+   See [Install TIB]({{< ref "api-management/external-service-integration" >}}) for detailed instructions on how to install TIB
 8. Test that it works:
    From the broswer call `http://localhost:3010/auth/{PROFILE-NAME-IN-TIB}/openid-connect`
     - If it's working you'll be redirected to Okta's web page and will be asked to enter your Okta user name and password.
@@ -716,7 +718,7 @@ Once it's working you can also add two more enhancements - SSO and MFA
    You will need to:
 	- set up a web server with a login page and a form for `user` and `password`
 	- Update `tyk_analytics.conf` to redirect logins to that url
-    Explicit details are in [steps 6-7]({{< ref "api-management/external-service-integration#create-login-page" >}})
+    Explicit details are in [steps 6-7]({{< ref "#create-login-page" >}})
 
 ##### Multi-Factor-Authentication (MFA) Support
    MFA works out-of-the-box in Tyk since luckily Okta supports it. you would need to add it to the configuration of the account holder. Under `Security --> Multifactor --> Factor types` you can choose the types you want. For instance I chose Google Authenticator.
@@ -747,7 +749,7 @@ This will walk you through securing access to your Tyk Dashboard using OpenID Co
 
 * A free account with [Auth0](https://auth0.com/)
 * A Tyk Self-Managed or Cloud installation
-* Our Tyk Identity Broker (TIB). You can use the internal version included with a Tyk Self-Managed installation and Tyk Cloud, or an external version. See [Tyk Identity Broker]({{< ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib" >}}) for more details.
+* Our Tyk Identity Broker (TIB). You can use the internal version included with a Tyk Self-Managed installation and Tyk Cloud, or an external version. See [Tyk Identity Broker]({{< ref "#what-is-tyk-identity-broker-tib" >}}) for more details.
 
 #### Create a new user in Auth0
 
@@ -1424,7 +1426,7 @@ The configuration below will proxy a request to `http://{TARGET-HOSTNAME}:{PORT}
 - Create a new client in your IdP for Tyk Identity Broker
 
 3. **Setup OIDC Profile**
-  - Create a new [TIB profile]({{< ref "api-management/external-service-integration#what-are-the-tib-profiles" >}}):
+  - Create a new [TIB profile]({{< ref "#what-are-the-tib-profiles" >}}):
     - Select Social > OIDC as the provider
     - Enter the client key and client secret from the IdP
     - Copy the callback URL from TIB and add it to the IdP client's allowed redirect URLs

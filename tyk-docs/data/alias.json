@@ -501,7 +501,8 @@
     "tyk-identity-broker/getting-started": "#installing-tyk-identity-broker-tib",
     "tyk-stack/tyk-identity-broker/about-profiles": "#exploring-tib-profiles",
     "tyk-stack/tyk-identity-broker/auth-user-for-api-access-github-oauth": "#log-into-an-app-with-github-oauth",
-    "tyk-stack/tyk-manager/sso/dashboard-login-azure-sso": "",
+    "tyk-stack/tyk-manager/sso/dashboard-login-azure-sso": "#oidc-with-azure-ad",
+    "advanced-configuration/integrate/3rd-party-identity-providers": "#",
     "tyk-stack/tyk-manager/sso/dashboard-login-okta-tib": "#oidc-with-okta",
     "tyk-stack/tyk-manager/sso/sso-auth0-tib": "#oidc-with-auth0",
     "getting-started/key-concepts/openapi-specification": "#"
