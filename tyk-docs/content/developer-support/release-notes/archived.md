@@ -964,10 +964,10 @@ We have added a new **Tag headers** section to the Dashboard **API Designer Adva
 
 More SSO functionality is something that a lot of our customers have been asking for. In this release we've significantly improved our support for SSO, and you can now:
 
-* Enable Tyk Identity Broker to apply LDAP filters to user search [Docs]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/ldap" >}})
-* Set permissions for your users, logged via SSO, via `sso_permission_defaults` in Dashboard config file. [Docs]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers" >}})
-* Setup a login page redirect, using `sso_custom_login_url` and `sso_custom_portal_login_url` Dashboard config options to enable users login using a custom SSO login page. [Docs]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers" >}})
-* For those who love to build everything in-house, we have added new API for custom dashboard authentication integrations. [Docs]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/custom" >}})
+* Enable Tyk Identity Broker to apply LDAP filters to user search [Docs]({{< ref "api-management/external-service-integration#advance-ldap-configuration" >}})
+* Set permissions for your users, logged via SSO, via `sso_permission_defaults` in Dashboard config file. [Docs]({{< ref "api-management/external-service-integration" >}})
+* Setup a login page redirect, using `sso_custom_login_url` and `sso_custom_portal_login_url` Dashboard config options to enable users login using a custom SSO login page. [Docs]({{< ref "api-management/external-service-integration" >}})
+* For those who love to build everything in-house, we have added new API for custom dashboard authentication integrations. [Docs]({{< ref "api-management/external-service-integration#custom-proxy-identify-provider" >}})
 
 
 
@@ -1087,17 +1087,17 @@ Example:
   "users": "write"
 },
 ```
-[Docs]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers" >}})
+[Docs]({{< ref "api-management/external-service-integration" >}})
 
 #### Set custom login pages for portal and dashboard
 If you are using 3-rd party authentification like TIB, you maybe want to redirect from standard login pages to your own using following attributes in dashboard config: `sso_custom_login_url`, `sso_custom_portal_login_url`.
 
-[Docs]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers" >}})
+[Docs]({{< ref "api-management/external-service-integration" >}})
 
 #### Added new set of APIs for custom dashboard authentification
 Added new `/admin/sso` endpoint for custom integration. In fact, the same API is used by our own Tyk Identity Broker. 
 
-[Docs]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/custom" >}})
+[Docs]({{< ref "api-management/external-service-integration#custom-proxy-identify-provider" >}})
 
 
 #### Service discovery form improved with most common pre-defined templates
@@ -1170,7 +1170,7 @@ Also fixed bug when Mongo connections became growing though the roof if client w
 
 ### <a name="tib"></a>TIB v0.2
   
-Tyk Identity Broker now fully support LDAP search with complex filters! [Docs]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/ldap" >}})
+Tyk Identity Broker now fully support LDAP search with complex filters! [Docs]({{< ref "api-management/external-service-integration#advance-ldap-configuration" >}})
 
 ### <a name="upgrade"></a>Upgrading all new Components
 

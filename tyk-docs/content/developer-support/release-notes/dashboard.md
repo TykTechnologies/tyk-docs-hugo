@@ -258,7 +258,7 @@ Introduced a form on the Tyk Dashboard that allows users to easily contact Tyk s
 
 We have enhanced security for customers in highly regulated industries by introducing JSON Web Encryption (JWE) support for OIDC single sign-on (SSO). This ensures that tokens used in authentication flows are securely encrypted, providing an additional layer of protection.
 
-[Setup guide for JWE OIDC SSO]({{< ref "tyk-stack/tyk-identity-broker/auth-user-for-api-access-github-oauth" >}})
+[Setup guide for JWE OIDC SSO]({{< ref "api-management/external-service-integration#log-into-an-app-with-github-oauth" >}})
 </details>
 </li>
 <li>
@@ -4045,7 +4045,7 @@ We also have a [blog post](https://tyk.io/the-transformation-of-policies-and-key
 
 Previously you had to run a separate process to setup SSO (single sign on). Now this functionality is built-in to the dashboard and got UI revamp. So now you can just start the dashboard, and via UI, create a SSO flow, without installing 3-rd party components. Including SSO via social logins, OpenID Connect and LDAP (with SAML coming very soon!) including integration with the Dashboards RBAC and your Identity Provider.
 
-See [updated flow details]({{< ref "tyk-identity-broker" >}})
+See [updated flow details]({{< ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib" >}})
 
 
 ##### Using external secret management services
