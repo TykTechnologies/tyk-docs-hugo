@@ -107,7 +107,7 @@ This is your **Tyk Dashboard API Access Credentials**, which can be found on the
 
 {{< img src="/img/2.10/user_credentials.png" alt="API key and RPC key locations" >}}
 
-You can [create a user]({{< ref "tyk-dashboard-api/users#add-user" >}}) with a call to the `POST /api/users` endpoint, for example:
+You can [create a user]({{< ref "api-management/dashboard-configuration#add-user" >}}) with a call to the `POST /api/users` endpoint, for example:
 
 ``` bash
 curl -H "Authorization: {YOUR-TYK-DASHBOARD-API-ACCESS-CREDENTIALS}" \
@@ -237,13 +237,13 @@ For further information, please check our [price comparison](https://tyk.io/pric
 
 ### Using Dashboard API
 
-You can also manage User Groups via our [Dashboard API]({{< ref "tyk-apis/tyk-dashboard-api/user-groups" >}}). The following functions are available:
+You can also manage User Groups via our [Dashboard API]({{< ref "api-management/dashboard-configuration#user-groups-api" >}}). The following functions are available:
 
-* [List all User Groups]({{< ref "tyk-apis/tyk-dashboard-api/user-groups#list-user-groups" >}})
-* [Get a User Group via the User Group ID]({{< ref "tyk-apis/tyk-dashboard-api/user-groups#get-user-group" >}})
-* [Add a User Group]({{< ref "tyk-apis/tyk-dashboard-api/user-groups#add-user-group" >}})
-* [Update a User Group]({{< ref "tyk-apis/tyk-dashboard-api/user-groups#update-user-group" >}})
-* [Delete a User Group]({{< ref "tyk-apis/tyk-dashboard-api/user-groups#delete-user-group" >}})
+* [List all User Groups]({{< ref "api-management/dashboard-configuration#list-user-groups" >}})
+* [Get a User Group via the User Group ID]({{< ref "api-management/dashboard-configuration#get-user-group" >}})
+* [Add a User Group]({{< ref "api-management/dashboard-configuration#add-user-group" >}})
+* [Update a User Group]({{< ref "api-management/dashboard-configuration#update-user-group" >}})
+* [Delete a User Group]({{< ref "api-management/dashboard-configuration#delete-user-group" >}})
 
 ## Search Users
 
@@ -339,7 +339,7 @@ Selecting the **Account is Admin** checkbox from the Dashboard gives the user fu
 
 ### Custom User Permissions
 
-You can create your own custom permissions for use with the [Open Policy Agent (OPA)]({{< ref "tyk-dashboard/open-policy-agent" >}}) using the [Additional Permissions]({{< ref "tyk-dashboard-api/org/permissions" >}}) endpoint in the Tyk Dashboard Admin API. This allows you to add and delete (CRUD) a list of additional (custom) permissions for your Dashboard users. Once created, a custom permission will be added to standard list of user permissions. 
+You can create your own custom permissions for use with the [Open Policy Agent (OPA)]({{< ref "tyk-dashboard/open-policy-agent" >}}) using the [Additional Permissions]({{< ref "api-management/dashboard-configuration#additional-permissions-api" >}}) endpoint in the Tyk Dashboard Admin API. This allows you to add and delete (CRUD) a list of additional (custom) permissions for your Dashboard users. Once created, a custom permission will be added to standard list of user permissions. 
 
 You can also configure these custom permissions in the `security.additional_permissions` [map]({{< ref "tyk-dashboard/configuration#securityadditional_permissions" >}}) in the Tyk Dashboard configuration file. 
 
@@ -401,11 +401,11 @@ API Ownership must be enabled in your Tyk Dashboard configuration, which you can
  - set the `TYK_DB_ENABLEOWNERSHIP` environment variable to `true`
 
 #### Owned Analytics
-Access to Tyk Dashboard's [traffic analytics]({{< ref "tyk-dashboard-analytics" >}}) is controlled via the `analytics` permission in the user or user group access control configuration. The default behavior of this control is to grant or restrict access to all traffic analytics and does not take into account API ownership.
+Access to Tyk Dashboard's [traffic analytics]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}) is controlled via the `analytics` permission in the user or user group access control configuration. The default behavior of this control is to grant or restrict access to all traffic analytics and does not take into account API ownership.
 
 The additional `owned_analytics` permission was added in Tyk Dashboard v5.1 (and LTS patches v4.0.14 and v5.0.3) to provide more granular access to traffic analytics. By configuring this permission, the user (or user group) will gain visibility only of those analytics that can be filtered by API (due to the method Tyk Pump uses to aggregate the analytics records).
 
-Currently, only [API Usage]({{< ref "tyk-dashboard-analytics/traffic-per-api" >}}) and [Error Counts]({{< ref "tyk-dashboard-analytics/error-overview" >}}) are available to users with the `owned_analytics` permission.
+Currently, only [API Usage]({{< ref "api-management/dashboard-configuration#activity-by-api" >}}) and [Error Counts]({{< ref "api-management/dashboard-configuration#activity-by-error" >}}) are available to users with the `owned_analytics` permission.
 
 Note that the `owned_analytics` permission depends upon the `analytics` permission being granted (set to `read`) - without this, the more granular control is ignored and the user will not have visibility of any Tyk Dashboard analytics.
 
@@ -460,7 +460,7 @@ When working with Tyk Classic APIs, you manage owners for an API by modifying th
 
 ## Manage Tyk Dashboard Users in Multiple Organizations
 
-If you have deployed multiple [Tyk Organizations]({{< ref "basic-config-and-security/security/dashboard/organisations" >}}), you may have users that need access to more than one Organization (known as a "multi-org user"). **This functionality requires a specific Tyk license.**
+If you have deployed multiple [Tyk Organizations]({{< ref "api-management/dashboard-configuration#organizations" >}}), you may have users that need access to more than one Organization (known as a "multi-org user"). **This functionality requires a specific Tyk license.**
 
 To support multi-org users, you must first enable the feature in your Dashboard configuration by setting either of the following to `true`:
  - `"enable_multi_org_users"` in `tyk_analytics.conf`
@@ -477,9 +477,9 @@ A user that does not belong to an Organization is sometimes referred to as an *u
 {{< /note >}}
 
 ## Single Sign-On integration
-You can integrate your existing identity management server with the Tyk Dashboard, as explained in our detailed [Single Sign-On (SSO) guide]({{< ref "advanced-configuration/integrate/sso" >}}). **This functionality is available with all Tyk licenses except Tyk Classic Cloud.**
+You can integrate your existing identity management server with the Tyk Dashboard, as explained in our detailed [Single Sign-On (SSO) guide]({{< ref "api-management/external-service-integration#single-sign-on-sso" >}}). **This functionality is available with all Tyk licenses except Tyk Classic Cloud.**
 
-By default all users who login via SSO are granted admin permissions. You can change this behavior by setting either default permissions for *[users]({{< ref "api-management/user-management#manage-tyk-dashboard-users" >}})* or by creating a default *[user group]({{< ref "api-management/user-management#manage-tyk-dashboard-user-groups" >}})* to which all new users are assigned. With some IDPs you can automatically assign different SSO users to different *user groups* by dynamically mapping the IDP's user groups, for example with [Azure AD]({{< ref "tyk-stack/tyk-manager/sso/dashboard-login-azure-sso#user-group-mapping" >}}).
+By default all users who login via SSO are granted admin permissions. You can change this behavior by setting either default permissions for *[users]({{< ref "api-management/user-management#manage-tyk-dashboard-users" >}})* or by creating a default *[user group]({{< ref "api-management/user-management#manage-tyk-dashboard-user-groups" >}})* to which all new users are assigned. With some IDPs you can automatically assign different SSO users to different *user groups* by dynamically mapping the IDP's user groups, for example with [Azure AD]({{< ref "api-management/external-service-integration#user-group-mapping" >}}).
 
 If you want to maintain an individual set of permissions for your SSO users, you must first enable SSO user lookup in your Dashboard configuration by setting either of the following to `true`:
  - `"sso_enable_user_lookup"` in `tyk_analytics.conf`

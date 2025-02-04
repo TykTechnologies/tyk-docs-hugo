@@ -58,7 +58,7 @@ With [Tyk’s developer portal]({{< ref "tyk-developer-portal/tyk-portal-classic
 #### **Step 4: Develop and Test the API**
 
 Now you’re ready to build and test:
-- **Develop the Backend**: Write the code to implement your [API’s endpoints]({{< ref "advanced-configuration/transform-traffic/endpoint-designer" >}}) and integrate with your [database]({{< ref "tyk-dashboard/database-options/" >}}) or service layer.
+- **Develop the Backend**: Write the code to implement your [API’s endpoints]({{< ref "api-management/dashboard-configuration#exploring-api-endpoint-designer" >}}) and integrate with your [database]({{< ref "api-management/dashboard-configuration#supported-database" >}}) or service layer.
 - **Functional Testing**: Check each endpoint to ensure it behaves as expected and handles common errors.
 - **Load Testing**: Simulate traffic to see how your API performs under different loads. Tyk offers tools to scale your API seamlessly and track performance metrics.
 
@@ -95,7 +95,7 @@ Tyk simplifies the early stages of API planning by providing:
 In this stage, Tyk streamlines deployment, whether on the cloud, on-premises, or hybrid:
 - **Kubernetes Integration with Tyk Operator**: If your API runs on Kubernetes, [Tyk Operator]({{< ref "api-management/automations/operator#what-is-tyk-operator" >}}) integrates with Kubernetes to help you manage deployments as Kubernetes resources.
 - **Custom Domain Setup**: Configure custom domains to make your API URLs user-friendly and secure with SSL/TLS certificates.
-- **Deployment Across Multiple Environments**: [Tyk’s gateways]({{< ref "tyk-oss-gateway" >}}) let you deploy, monitor, and secure multiple APIs from a single platform, so you can [manage environments]({{< ref "advanced-configuration/manage-multiple-environments" >}}) (development, staging, production) with ease.
+- **Deployment Across Multiple Environments**: [Tyk’s gateways]({{< ref "tyk-oss-gateway" >}}) let you deploy, monitor, and secure multiple APIs from a single platform, so you can [manage environments]({{< ref "api-management/multiple-environments" >}}) (development, staging, production) with ease.
 
 #### **Operations and Business as Usual (BAU) Phase**
 
