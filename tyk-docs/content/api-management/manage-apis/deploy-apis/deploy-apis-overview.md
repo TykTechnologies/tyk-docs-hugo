@@ -32,7 +32,7 @@ For programmatic control, both Tyk Pro users and Open Source users can leverage 
 Usage: Suitable for those who require programmatic control over API management, APIs, Policies, and other aspects of Tyk.
 
 Learn more:
-- [Dashboard API]({{<ref "getting-started/key-concepts/dashboard-api">}})
+- [Dashboard API]({{<ref "api-management/dashboard-configuration#exploring-the-dashboard-api">}})
 - [Gateway API]({{<ref "tyk-gateway-api">}})
 
 ## Tyk Sync
