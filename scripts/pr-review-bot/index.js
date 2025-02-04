@@ -1,25 +1,17 @@
-import { log } from 'console';
-import { commentOnPullRequest, getPRBody } from './github.js'
 import fs from 'fs';
 import { JSDOM } from "jsdom";
+import { commentOnPullRequest, getPRBody } from './github.js'
 
 const genericMessage = "This PR does not meet all the required checklist items mentioned in the description. As a result, we are closing the PR. Please re-open it once all checklist items are completed (ensure they are checked in the description)."
 
 import { marked } from 'marked';
 
-const filePath = '.github/pull_request_template.md';
-const fileContent = fs.readFileSync(filePath, 'utf8');
-
-// const prBody = await getPRBody()
-// console.log("Read PR body")
-
-// Function to check if an item is a checklist
-function isChecklistItem(item) {
-    return item.raw && (item.raw.includes('[ ]') || item.raw.includes('[x]'));
-}
+// const filePath = '.github/pull_request_template.md';
+// const fileContent = fs.readFileSync(filePath, 'utf8');
+const prBody = await getPRBody()
 
 // Parse the markdown to HTML or AST (Abstract Syntax Tree)
-const lexer = marked.lexer(fileContent);
+const lexer = marked.lexer(prBody);
 
 // Find the checklist items in the parsed output
 const checklistItems = lexer
@@ -36,7 +28,6 @@ let checklistFailedTitles = ""
 
 const lastTwoListItems = checklistItems.slice(-2);
 
-
 // Create message for comment on PR
 for (let index = 0; index < lastTwoListItems.length; index++) {
     const element = lastTwoListItems[index];
@@ -46,6 +37,21 @@ for (let index = 0; index < lastTwoListItems.length; index++) {
 }
 
 const title = "PR Checklist Failed"
+
+if (checklistFailedTitles !== "") {
+    // commentOnPullRequest(title, genericMessage, checklistFailedTitles);
+    logMessage(title, genericMessage, checklistFailedTitles);
+    process.exit(1);
+} else {
+    console.log("Sucess!!");
+}
+
+// Helper Functions
+
+// Function to check if an item is a checklist
+function isChecklistItem(item) {
+    return item.raw && (item.raw.includes('[ ]') || item.raw.includes('[x]'));
+}
 
 function logMessage(title, message, failedItems) {
     try {
@@ -69,13 +75,4 @@ ${failedItems}`;
     } catch (error) {
         console.error("Error creating comment:", error);
     }
-}
-
-if (checklistFailedTitles !== "") {
-    // console.log("Comment on pr & closing it")
-    // commentOnPullRequest(title, genericMessage, checklistFailedTitles);
-    logMessage(title, genericMessage, checklistFailedTitles);
-    process.exit(1);
-} else {
-    console.log("Sucess!!");
 }
