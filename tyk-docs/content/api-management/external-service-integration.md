@@ -1126,7 +1126,8 @@ All commands shown are run from inside the Tyk host environment.
 
     Start a new shell session to carry on with the remaining process.
 
-<a id="login-page"></a>
+<a id="create-login-page"></a>
+
 6. **Create a login page**
 
     TIB works by having credentials sent to it, so a login page must be made in order to fulfill this requirement. For this example we will create a basic login form hosted by Nginx. We can't just place the login page in our Dashboard directory as the Dashboard is not a standard web server, it only serves the pages which it has been compiled to serve. Any non-compiled page will produce a 404 response.
