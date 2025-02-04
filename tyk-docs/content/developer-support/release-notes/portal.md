@@ -62,7 +62,7 @@ There are no deprecations in this release.
 If you are on 1.12.0 or an older version, we advise you to upgrade ASAP to this release.
 
 While upgrading to 1.13.0, Portal will automatically migrate the new Custom IDs to most of the existing resources. For more information, please refer to the [changelog](#Changelog-v1.13.0).
-To upgrade the portal's theme, please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
+To upgrade the portal's theme, please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
 
 #### Download
 - [Docker image v1.13.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.13.0)
@@ -273,7 +273,7 @@ There are no deprecations in this release.
 #### Upgrade instructions
 If you are on 1.11.0 or an older version we advise you to upgrade ASAP directly to this release.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
 
 #### Download
 - [Docker image v1.12.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.12.0)
@@ -500,7 +500,7 @@ For reference, with 2 portal instances, `PORTAL_DATABASE_MAX_OPEN_CONNECTIONS` s
 #### Upgrade instructions
 If you are on 1.10.0 or an older version we advise you to upgrade ASAP directly to this release.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
 
 #### Download
 - [Docker image v1.11.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.11.0)
@@ -597,7 +597,7 @@ The 1.10.0 addresses twenty high-priority bugs and vulnerabilities and introduce
 #### Upgrade instructions
 If you are on 1.9.0 or an older version we advise you to upgrade ASAP directly to this release.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
 
 #### Download
 - [Docker image v1.10.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.10.0)
@@ -655,7 +655,7 @@ There are no deprecations in this release.
 
 #### Release Highlights
 The 1.9.0 release addresses several security vulnerability and bugs and introduces two new capabilities:
-- [Webhooks]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks.md" >}}) for events that happen in the portal.
+- [Webhooks]({{< ref "portal/customization" >}}) for events that happen in the portal.
 - [Admin APIs]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) for OAuth2.0 configuration. 
 
 #### Upgrade instructions
@@ -672,7 +672,7 @@ This release doesn't introduce any changes to the theme, so a theme upgrade is n
 
 #### Changelog
 ##### Added
-- Added [the webhooks]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks.md" >}}) capability that  enable real-time, automated data updates between the portal and 3rd party applications.
+- Added [the webhooks]({{< ref "portal/customization" >}}) capability that  enable real-time, automated data updates between the portal and 3rd party applications.
 - Added [admin APIs]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) for managing OAuth2.0 configuration. 
 
 ##### Fixed
@@ -710,7 +710,7 @@ If you are not on v1.8.4 then there's no urgency in updating.
 #### Upgrade instructions
 If you are on 1.8.4 you should **upgrade ASAP** directly to this release. This release doesn't introduce any changes to the theme, so a theme upgrade is not required.
 
-If you are on 1.8.3 or older version please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) to upgrade the portal's themes.
+If you are on 1.8.3 or older version please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) to upgrade the portal's themes.
 
 #### Download
 - [Docker image v1.8.5](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.8.5)
@@ -740,7 +740,7 @@ There are no deprecations in this release.
 #### Upgrade instructions
 If you are on 1.8.1 or an older version we advise you to upgrade ASAP directly to this release.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
 
 
 #### Release Highlights
@@ -812,7 +812,7 @@ There are no deprecations in this release.
 #### Upgrade instructions
 If you are on 1.8.1 or an older version we advise you to upgrade ASAP directly to this release.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
 
 
 #### Release Highlights
@@ -855,7 +855,7 @@ There are no deprecations in this release.
 #### Upgrade instructions
 If you are on 1.8.1 or an older version we advise you to upgrade ASAP directly to this release.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
 
 
 #### Release Highlights
@@ -902,7 +902,7 @@ There are no deprecations in this release.
 If you are on 1.8.0 or an older version we advise you to upgrade ASAP directly to this release.
 Unlike 1.8.0, 1.8.1 fixes the broken backward compatability for the default visual theme. Therefore, the upgrade path from earlier versions are straightforward. It is enough to just pull the latest version of the portal's container.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
 
 
 #### Release Highlights

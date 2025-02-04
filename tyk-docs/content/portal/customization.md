@@ -2781,19 +2781,19 @@ The configuration process consists of two steps:
 ### Supported Portal Events
 
 The portal fires the following webhook events:
-- [UserRegistered]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#new-user-registered" >}}) when a new user is registered.
-- [UserAccountActivated]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#user-account-activated" >}}) when a user is activated.
-- [UserAccountDeactivated]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#user-account-deactivated" >}}) when a user is deactivated.
-- [PasswordReset]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#password-reset" >}}) when a user tries to reset a password.
-- [ApplicationRegistered]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#new-application-registered" >}}) when a new API consumer application is created.
-- [CredentialRegistered]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#new-credential-is-created" >}}) when a new API credential is created.
-- [AccessRequestCreated]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#new-access-request-created" >}}) when a new API access request is created.
-- [AccessRequestApproved]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#an-access-request-is-approved" >}}) when an API access request is approved.
-- [AccessRequestRejected]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#an-access-request-is-rejected" >}}) when an API access request is rejected.
-- [OrganizationRegistered]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#new-organization-registered" >}}) when an API consumer organization is created.
-- [OrganizationRequestCreated]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#new-organization-registration-request-created" >}}) when a new API consumer organization registration request is created.
-- [OrganizationRequestApproved]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#organization-registration-request-is-approved" >}}) when an API consumer organization registration request is approved.
-- [OrganizationRequestRejected]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#organization-request-is-rejected" >}}) when an API consumer organization registration request is rejected.
+- [UserRegistered]({{< ref "portal/customization#new-user-registered" >}}) when a new user is registered.
+- [UserAccountActivated]({{< ref "portal/customization#user-account-activated" >}}) when a user is activated.
+- [UserAccountDeactivated]({{< ref "portal/customization#user-account-deactivated" >}}) when a user is deactivated.
+- [PasswordReset]({{< ref "portal/customization#password-reset" >}}) when a user tries to reset a password.
+- [ApplicationRegistered]({{< ref "portal/customization#new-application-registered" >}}) when a new API consumer application is created.
+- [CredentialRegistered]({{< ref "portal/customization#new-credential-is-created" >}}) when a new API credential is created.
+- [AccessRequestCreated]({{< ref "portal/customization#new-access-request-created" >}}) when a new API access request is created.
+- [AccessRequestApproved]({{< ref "portal/customization#an-access-request-is-approved" >}}) when an API access request is approved.
+- [AccessRequestRejected]({{< ref "portal/customization#an-access-request-is-rejected" >}}) when an API access request is rejected.
+- [OrganizationRegistered]({{< ref "portal/customization#new-organization-registered" >}}) when an API consumer organization is created.
+- [OrganizationRequestCreated]({{< ref "portal/customization#new-organization-registration-request-created" >}}) when a new API consumer organization registration request is created.
+- [OrganizationRequestApproved]({{< ref "portal/customization#organization-registration-request-is-approved" >}}) when an API consumer organization registration request is approved.
+- [OrganizationRequestRejected]({{< ref "portal/customization#organization-request-is-rejected" >}}) when an API consumer organization registration request is rejected.
 
 The complete list of events and their corresponding payloads is outlined below.
 

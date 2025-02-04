@@ -5,7 +5,7 @@ linkTitle: API Management
 tags: [""]
 description: ""
 aliases:
-    - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration
 ---
 
 {{< note success >}}
@@ -132,6 +132,13 @@ To enable this, Tyk introduced support for custom rate limit keys in [Tyk 5.3.0]
 This capability works with [Tyk 5.3.0]({{< ref "developer-support/release-notes/dashboard#530-release-notes" >}}) or higher.
 
 ### Configuring custom rate limit keys for policies in Tyk Dashboard
+
+{{< note >}}
+**Note**
+
+If you are using Tyk Developer Portal version 1.13.0 or later, you can configure the custom rate limit keys directly from the Developer Portal in the Advanced settings (optional) colapsible section of the Plan's view (by Credentials metadata).
+{{< img src="img/dashboard/portal-management/enterprise-portal/portal-plan-advanced-settings.png" alt="Add Plan Advanced Settings" >}}
+{{< /note >}}
 
 Custom rate limit keys are applied at a policy level. When a custom rate limit key is specified, quota, rate limit and throttling will be calculated against the specified value and not against a credential ID.
 
@@ -595,6 +602,13 @@ This section explains how to add the Get started documentation to API Products.
     To start with, create and publish an API Product. Please refer to the [Publish API Products and Plans]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/publish-api-products-and-plans" >}}) page for further guidance.
 
 2. **Add API Documentation to API Products**
+
+    {{< note >}}
+**Note**
+
+If you are using Tyk Developer Portal version 1.13.0 or later, you can add API Documentation under the `"Getting Started" guides` tab of the API Product's view.
+{{< img src="img/dashboard/portal-management/enterprise-portal/portal-product-guides.png" alt="Add Product Guides" >}}
+    {{< /note >}}
 
     To add API Documentation, select an API Product and navigate to the API Documentation section.
     Click the ‘Add API Documentation’ button to add a new API Documentation page.
