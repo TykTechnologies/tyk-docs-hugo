@@ -2688,7 +2688,7 @@ how you use the product; all functionality remains the same.
 
 <br>
 
-**Example:** The API endpoint `/organisation` as shown throughout this page uses British spelling (with an 's' not 'z').
+**Example:** The API endpoint `/organisations` as shown throughout this page uses British spelling (with an 's' not 'z').
 In all other instances, such as when describing or referring to this object in the documentation, we will use the
 American spelling “organization” with a 'z'.
 
@@ -2697,18 +2697,19 @@ American spelling “organization” with a 'z'.
 {{< warning success >}}
 **Warning**  
 
-In a production environment, you will need to change the default `admin_Secret` value that is called by the `admin-auth`
- header in your `tyk_analytics.conf` file. This is located in `/opt/tyk-dashboard`.
+In a production environment, you must change the default `admin_Secret` in the`tyk_analytics.conf` file. Admin APIs use this value for authentication, and you should set it in the `admin-auth` header while sending the request.
 </br>
 {{< /warning >}}
+
+For the official Tyk Dashboard Admin API Reference, please visit our [API Documentation]({{< ref "dashboard-admin-api/" >}}).
 
 ### Organizations API
 
 #### Retrieve a single Organization
 
 | **Property** | **Description**                 |
-| ------------ | ------------------------------- |
-| Resource URL | `/admin/organisation/{org-id}`  |
+| ------------ |---------------------------------|
+| Resource URL | `/admin/organisations/{org-id}` |
 | Method       | GET                             |
 | Type         | None                            |
 | Body         | Organization Object             |
@@ -2762,13 +2763,13 @@ admin-auth: 12345
 
 #### Retrieve all Organizations
 
-| **Property** | **Description**                 |
-| ------------ | ------------------------------- |
-| Resource URL | `/admin/organisation/'          |
-| Method       | GET                             |
-| Type         | None                            |
-| Body         | Organization Object             |
-| Param        | None                            |
+| **Property** | **Description**         |
+| ------------ |-------------------------|
+| Resource URL | `/admin/organisations/' |
+| Method       | GET                     |
+| Type         | None                    |
+| Body         | Organization Object     |
+| Param        | None                    |
 
 **Sample Request**
 
@@ -2850,8 +2851,8 @@ admin-auth: 12345
 #### Create an Organization
 
 | **Property** | **Description**         |
-| ------------ | ----------------------- |
-| Resource URL | `/admin/organisation/`  |
+| ------------ |-------------------------|
+| Resource URL | `/admin/organisations/` |
 | Method       | POST                    |
 | Type         | None                    |
 | Body         | Organization Object     |
@@ -2884,8 +2885,8 @@ admin-auth: 12345
 #### Update an Organization
 
 | **Property** | **Description**             |
-| ------------ | --------------------------- |
-| Resource URL | `/admin/organisation/{id}`  |
+| ------------ |-----------------------------|
+| Resource URL | `/admin/organisations/{id}` |
 | Method       | PUT                         |
 | Type         | None                        |
 | Body         | Organization Object         |
@@ -2918,8 +2919,8 @@ admin-auth: 12345
 #### Delete an Organization
 
 | **Property** | **Description**             |
-| ------------ | --------------------------- |
-| Resource URL | `/admin/organisation/{id}`  |
+| ------------ |-----------------------------|
+| Resource URL | `/admin/organisations/{id}` |
 | Method       | DELETE                      |
 | Type         | None                        |
 | Body         | None                        |
@@ -2928,7 +2929,7 @@ admin-auth: 12345
 **Sample Request**
 
 ```http
-DELETE /admin/organisation/54b53d3aeba6db5c35000002 HTTP/1.1
+DELETE /admin/organisations/54b53d3aeba6db5c35000002 HTTP/1.1
 Host: localhost:3000
 admin-auth: 12345
 ```
