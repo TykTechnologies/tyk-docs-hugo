@@ -2,7 +2,7 @@ name: Enforce PR Standards
 
 on:
   pull_request:
-    types: [ready_for_review, reopened, opened, edited]
+    types: [opened, synchronize]
 
 jobs:
   check-pr:
