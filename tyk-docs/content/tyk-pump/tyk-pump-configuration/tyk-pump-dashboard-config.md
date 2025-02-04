@@ -9,7 +9,7 @@ aliases:
   - /tyk-configuration-reference/tyk-pump-dashboard-config/
 ---
 
-To enable [Dashboard Analytics]({{<ref "tyk-dashboard-analytics">}}), you would need to configure Tyk Pump to send analytic data to the Dashboard storage MongoDB / SQL.
+To enable [Dashboard Analytics]({{<ref "api-management/dashboard-configuration#traffic-analytics">}}), you would need to configure Tyk Pump to send analytic data to the Dashboard storage MongoDB / SQL.
 
 These are the different pumps that handle different kinds of analytic data.
 
@@ -213,7 +213,7 @@ To enable Uptime Pump, modify gateway configuration [enable_uptime_analytics]({{
 {{< tab_end >}}
 {{< tab_start "SQL" >}}
 
-When using one of our [supported SQL platforms]({{< ref "tyk-dashboard/database-options#introduction" >}}), Tyk offers 3 types of SQL pumps:
+When using one of our [supported SQL platforms]({{< ref "api-management/dashboard-configuration#introduction" >}}), Tyk offers 3 types of SQL pumps:
 
 1. Aggregated Analytics: `sql_aggregate`
 2. Raw Logs Analytics: `sql`

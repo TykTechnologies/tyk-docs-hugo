@@ -122,8 +122,8 @@ Our Tyk Identity Broker (TIB) internally also uses these APIs.
 
 The Dashboard exposes two APIs:
 
-- `/admin/sso` - See [Dashboard Admin API SSO]({{< ref "tyk-apis/tyk-dashboard-admin-api/sso" >}}) for more details.
-- `/api/sso` -  See [Dashboard API SSO]({{< ref "tyk-apis/tyk-dashboard-api/sso" >}}) for more details.
+- `/admin/sso` - See [Dashboard Admin API SSO]({{< ref "api-management/dashboard-configuration#single-sign-on-api-1" >}}) for more details.
+- `/api/sso` -  See [Dashboard API SSO]({{< ref "api-management/dashboard-configuration#single-sign-on-api" >}}) for more details.
 
 which allow you to generate a temporary authentication token, valid for 60 seconds. They make same thing you can select one of them and use it.
 However, the admin API requires `admin-auth` header which should be same with `admin-secret` parameter in `tyk_analytics.conf`, the regular API requires `authorization` header which should be same with the user authentication token.  

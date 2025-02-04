@@ -84,7 +84,7 @@ Tyk Dashboard supports the declaration of webhooks *globally* and *locally*:
 - **Global webhooks** are declared outside the API definition and linked via a *webhook id*; changes to the global webhook definition will be reflected in all APIs that reference that *webhook id*
 - **Local webhooks** are fully defined within the API definition; changes to the local webhook configuration will affect only the API within which it is defined
 
-*Global webhook definitions* are registered with the Dashboard using the [UI](#creating-a-global-webhook-definition-using-tyk-dashboard) or [Dashboard API]({{< ref "tyk-apis/tyk-dashboard-api/web-hooks" >}}) and assigned a unique *webhook id* that can be obtained via the [Dashboard API]({{< ref "tyk-apis/tyk-dashboard-api/web-hooks#list-web-hooks" >}}) or via drop-down selection within the UI.
+*Global webhook definitions* are registered with the Dashboard using the [UI](#creating-a-global-webhook-definition-using-tyk-dashboard) or [Dashboard API]({{< ref "api-management/dashboard-configuration#web-hooks-api" >}}) and assigned a unique *webhook id* that can be obtained via the [Dashboard API]({{< ref "api-management/dashboard-configuration#list-web-hooks" >}}) or via drop-down selection within the UI.
 
 If you assign a global webhook definition to an API to handle an event, then Tyk Dashboard will retrieve the definition and update it in the API definition when the API is loaded (or re-loaded) to the Gateway.
 

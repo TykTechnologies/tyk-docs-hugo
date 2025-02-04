@@ -58,7 +58,7 @@ With [Tyk’s developer portal]({{< ref "tyk-developer-portal/tyk-portal-classic
 #### **Step 4: Develop and Test the API**
 
 Now you’re ready to build and test:
-- **Develop the Backend**: Write the code to implement your [API’s endpoints]({{< ref "advanced-configuration/transform-traffic/endpoint-designer" >}}) and integrate with your [database]({{< ref "tyk-dashboard/database-options/" >}}) or service layer.
+- **Develop the Backend**: Write the code to implement your [API’s endpoints]({{< ref "api-management/dashboard-configuration#exploring-api-endpoint-designer" >}}) and integrate with your [database]({{< ref "api-management/dashboard-configuration#supported-database" >}}) or service layer.
 - **Functional Testing**: Check each endpoint to ensure it behaves as expected and handles common errors.
 - **Load Testing**: Simulate traffic to see how your API performs under different loads. Tyk offers tools to scale your API seamlessly and track performance metrics.
 

@@ -651,7 +651,7 @@ aliases:
 
     **Solution**
 
-    The best way to set the domain is to use the Tyk Dashboard Admin API, to obtain the organization object via a GET request and then update the object using a PUT request with the relevant CNAME added to the body of the request.<sup>[[1]({{<ref "dashboard-admin-api/organisations">}})]</sup> Restarting the process will then set the domain.
+    The best way to set the domain is to use the Tyk Dashboard Admin API, to obtain the organization object via a GET request and then update the object using a PUT request with the relevant CNAME added to the body of the request.<sup>[[1]({{<ref "api-management/dashboard-configuration#organizations-api">}})]</sup> Restarting the process will then set the domain.
 
 8. ##### runtime error invalid memory address or nil pointer dereference
 
@@ -796,7 +796,7 @@ aliases:
 13. ##### How to disable an API
 
     You will need to GET the API from the Dashboard, then set `active` property to `false`, then PUT it back.
-    See [Dashboard API - API Definitions]({{< ref "tyk-apis/tyk-dashboard-api/api-definitions" >}}) for more details on how to GET and PUT an API definition.
+    See [Dashboard API - API Definitions]({{< ref "api-management/dashboard-configuration#manage-apis---api-definition" >}}) for more details on how to GET and PUT an API definition.
 
 14. ##### How to Setup CORS
 
@@ -915,7 +915,7 @@ aliases:
 
 1. ##### Capturing detailed logs
 
-    If you've seen the documentation for Tyk Dashboard's [log browser]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}}), then you'll also be wondering how to set up your Tyk configuration to enable detailed request logging.
+    If you've seen the documentation for Tyk Dashboard's [log browser]({{< ref "api-management/dashboard-configuration#activity-logs" >}}), then you'll also be wondering how to set up your Tyk configuration to enable detailed request logging.
 
     **What is detailed request logging?**
 

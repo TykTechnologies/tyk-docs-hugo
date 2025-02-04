@@ -249,10 +249,10 @@ The Tyk Dashboard API contains several endpoints that are provided to manage *cl
 
 | Action | Endpoint | Reference |
 | --- | --- | --- |
-| Register a new client app | `POST /api/apis/oauth/{{api-id}}` | [link]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#create-a-new-oauth20-client" >}}) |
-| Get a list of registered client apps | `GET /api/apis/oauth/{{api-id}}` | [link]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#list-oauth-clients" >}}) |
-| Get the details of a client app | `GET /api/apis/oauth/{{api-id}}/{{client_id}}` | [link]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#get-an-oauth20-client" >}}) |
-| Delete a client app | `DELETE /api/apis/oauth/{{api-id}}/{{client_id}}` | [link]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#delete-oauth-client" >}}) |
+| Register a new client app | `POST /api/apis/oauth/{{api-id}}` | [link]({{< ref "api-management/dashboard-configuration#create-a-new-oauth20-client" >}}) |
+| Get a list of registered client apps | `GET /api/apis/oauth/{{api-id}}` | [link]({{< ref "api-management/dashboard-configuration#list-oauth-clients" >}}) |
+| Get the details of a client app | `GET /api/apis/oauth/{{api-id}}/{{client_id}}` | [link]({{< ref "api-management/dashboard-configuration#get-an-oauth20-client" >}}) |
+| Delete a client app | `DELETE /api/apis/oauth/{{api-id}}/{{client_id}}` | [link]({{< ref "api-management/dashboard-configuration#delete-oauth-client" >}}) |
 
 
 ### Using the Authorization Code Grant
@@ -281,7 +281,7 @@ When using Tyk as the Authorization Server with the Authorization Code grant, th
 
 Whilst Tyk can provide the *authorization server* functionality, issuing and managing access and authorization tokens, the *identity server* functions (authenticating users (resource owners) and allowing them to authorize client access) must be performed by a separate Identity Provider (IdP).
 
-The identity server will need access to the Tyk Dashboard API to [obtain an Authorization Code]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#oauth20-authorization-code" >}}).
+The identity server will need access to the Tyk Dashboard API to [obtain an Authorization Code]({{< ref "api-management/dashboard-configuration#oauth20-authorization-code" >}}).
 
 #### Authorization Request
 
@@ -309,7 +309,7 @@ If the *client Id* (`my-client-id`) is valid, the response will be `HTTP 307 Tem
 
 #### Authorization Code Request
 
-The *Identity Server* requests an *Authorization Code* from the *Authentication Server*. Tyk's *authorization code* endpoint is hosted in the [Tyk Dashboard API]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#oauth20-authorization-code" >}}), accessible from `POST /api/apis/{api_id}/authorize-client`. The same `redirect_uri` as provided in the original request must be provided alongside the `client_id` as a security feature to verify the client identity.
+The *Identity Server* requests an *Authorization Code* from the *Authentication Server*. Tyk's *authorization code* endpoint is hosted in the [Tyk Dashboard API]({{< ref "api-management/dashboard-configuration#oauth20-authorization-code" >}}), accessible from `POST /api/apis/{api_id}/authorize-client`. The same `redirect_uri` as provided in the original request must be provided alongside the `client_id` as a security feature to verify the client identity.
 
 This endpoint is protected using the Dashboard API secret assigned to the *Identity Server*, which must be provided in the `Authorization` header.
 
@@ -677,9 +677,9 @@ OAuth access tokens have built in expiry, but if you need to [revoke](https://to
 
 Using the **Tyk Dashboard API** you can revoke specific tokens (both access and refresh) or all tokens issued for a specific *client app* as follows:
 
-- [retrieve a list of all tokens for a client app]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#retrieve-all-current-tokens-for-specified-oauth20-client" >}})
-- [revoke a single token]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#revoke-a-single-oauth-client-token" >}})
-- [revoke all tokens for a client app]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#revoke-all-oauth-client-tokens" >}})
+- [retrieve a list of all tokens for a client app]({{< ref "api-management/dashboard-configuration#retrieve-all-current-tokens-for-specified-oauth20-client" >}})
+- [revoke a single token]({{< ref "api-management/dashboard-configuration#revoke-a-single-oauth-client-token" >}})
+- [revoke all tokens for a client app]({{< ref "api-management/dashboard-configuration#revoke-all-oauth-client-tokens" >}})
 
 These endpoints are protected using the Dashboard API secret assigned to the user managing the tokens, which must be provided in the `Authorization` header.
 
@@ -1487,7 +1487,7 @@ curl -X POST -H "Authorization: 907aed9f88514f175f1dccf8a921f741"
  }' http://{your-tyk-dashboard-host}:{port}/api/apis/keys/basic/testuser2 | python -mjson.tool
 ```
 
-[See Basic Authentication via the Dashboard API]({{< ref "tyk-apis/tyk-dashboard-api/basic-authentication" >}})
+[See Basic Authentication via the Dashboard API]({{< ref "api-management/dashboard-configuration#basic-authentication-api" >}})
 
 {{< note success >}}
 **Note**  
