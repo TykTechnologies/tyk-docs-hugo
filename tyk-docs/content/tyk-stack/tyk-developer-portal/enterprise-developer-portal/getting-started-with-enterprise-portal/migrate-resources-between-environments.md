@@ -91,17 +91,16 @@ curl -X GET 'http://localhost:3001/portal-api/organisations/2sG5umt8rGHMiwjcgaHX
 While both methods work, using CIDs is recommended as they remain consistent across environments.
 
 
-## Prerequisites
-
-Before you begin, make sure the following are true:
-
-- Your Tyk Developer Portal version is 1.13 or later.
-- All resources in your source environment have **Custom IDs** (CIDs) assigned. Resources created after version 1.13 automatically include a CID, while resources from earlier versions receive CIDs through the portal's startup process.
-- You have admin access to both the source and target environments.
-
 ## Step-by-Step Instructions
 
 In this guide, we'll walk through the process of migrating selected organisations and their teams from one environment (Environment A) to another (Environment B). This involves exporting data from the source environment and importing it into the target environment.
+
+<br>
+{{< note success >}}
+**Note**
+
+This guide only migrates the `Organization` and `Teams` resources from the developer portal; the same process must be repeated for other resources.
+{{< /note >}}
 
 ### Example Scenario
 - **Source**: Environment A at `https://portal-env-a.example.com`
