@@ -3548,7 +3548,7 @@ The **Advanced Options** tab is where you can configure Tyk's other powerful fea
 - [CORS]({{< ref "api-management/gateway-config-tyk-classic#cors" >}})
 - Add custom attributes to the API definition as *config data* that can be accessed by middleware
 - Enable [context variables]({{< ref "context-variables" >}}) so that they are extracted from requests and made available to middleware
-- Manage *segment tags* if you are working with [sharded gateways]({{< ref "advanced-configuration/manage-multiple-environments/with-tyk-multi-cloud" >}})
+- Manage *segment tags* if you are working with [sharded gateways]({{< ref "api-management/multiple-environments#gateway-sharding" >}})
 - Manage client IP address [allow]({{< ref "api-management/gateway-config-tyk-classic#ip-allowlist-middleware" >}}) and [block]({{< ref "api-management/gateway-config-tyk-classic#ip-blocklist-middleware" >}}) lists
 - Attach [webhooks]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) that will be triggered for different events
 
@@ -4036,7 +4036,7 @@ These endpoints will return information for categories across all APIs in the sy
 
 #### Tyk Operator
 
-You can manage categories using Tyk Operator custom resources. Please refer to [Tyk Operator]({{<ref "/api-management/automations/operator/#api-categories">}}) documentation to see how to manage API categories for Tyk OAS APIs and Tyk Classic APIs.
+You can manage categories using Tyk Operator custom resources. Please refer to [Tyk Operator]({{<ref "/api-management/automations/operator#api-categories">}}) documentation to see how to manage API categories for Tyk OAS APIs and Tyk Classic APIs.
 
 ## Governance using API Templates
 
@@ -4673,7 +4673,7 @@ The concept of an organization does not exist within the Tyk Gateway. Gateways o
 
 Tyk allows each organization to own its own set of Gateways, for example when you want to use different hosting providers you can segregate them in terms of resources, or just for security reasons.
 
-Self-Managed users should use [API tagging]({{< ref "advanced-configuration/manage-multiple-environments/with-tyk-on-premises#api-tagging-with-on-premises" >}}) and enforce a tagging standard across all organizations.
+Self-Managed users should use [API tagging]({{< ref "api-management/multiple-environments#api-tagging-with-on-premises" >}}) and enforce a tagging standard across all organizations.
 
 All actions in a Self-Managed installation of Tyk must use a base Organization, and all actions should stem from a User owned by that organization.
 

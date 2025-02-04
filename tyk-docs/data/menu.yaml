@@ -214,6 +214,10 @@ menu:
         path: /api-management/user-management
         category: Page
         show: True
+      - title: "Manage Environments"
+        path: /api-management/multiple-environments
+        category: Page
+        show: True
       - title: "Manage APIs"
         category: Directory
         show: True
@@ -641,34 +645,6 @@ menu:
                         show: True
                   - title: "Graphql Proxy Only"
                     path: /graphql-proxy-only
-                    category: Page
-                    show: True
-              - title: "How to manage multiple Tyk environments"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Manage Multiple Environments"
-                    path: /advanced-configuration/manage-multiple-environments
-                    category: Page
-                    show: True
-                  - title: "Move APIs Between Environments"
-                    path: /advanced-configuration/manage-multiple-environments/move-apis-between-environments
-                    category: Page
-                    show: True
-                  - title: "Move Keys Between Environments"
-                    path: /advanced-configuration/manage-multiple-environments/move-keys-between-environments
-                    category: Page
-                    show: True
-                  - title: "Move Policies Between Environments"
-                    path: /advanced-configuration/manage-multiple-environments/move-policies-between-environments
-                    category: Page
-                    show: True
-                  - title: "Gateway Sharding"
-                    path: /advanced-configuration/manage-multiple-environments/with-tyk-multi-cloud
-                    category: Page
-                    show: True
-                  - title: "Tyk Self-Managed"
-                    path: /advanced-configuration/manage-multiple-environments/with-tyk-on-premises
                     category: Page
                     show: True
               - title: "Request Middleware Chain"
@@ -2591,10 +2567,6 @@ menu:
             show: True
           - title: "Get started"
             path: /tyk-dashboard/getting-started
-            category: Page
-            show: True
-          - title: "Tyk Cloud Classic"
-            path: /advanced-configuration/manage-multiple-environments/with-tyk-cloud-classic
             category: Page
             show: True
           - title: "Tyk Developer Portal"
