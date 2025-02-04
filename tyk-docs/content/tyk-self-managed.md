@@ -791,7 +791,7 @@ turned off by default, however, you can turn it on by updating the `gateway.shar
 will also need to set the `gateway.sharding.tags` field with the tags that you want that particular Gateway to load. (ex. tags: "external,ingress".)
 You can then add those tags to your APIs in the API Designer, under the **Advanced Options** tab, and
 the **Segment Tags (Node Segmentation)** section in your Tyk Dashboard.
-Check [Tyk Gateway Sharding]({{< ref "/content/advanced-configuration/manage-multiple-environments.md#api-sharding" >}}) for more details.
+Check [Tyk Gateway Sharding]({{< ref "api-management/multiple-environments#what-is-api-sharding-" >}}) for more details.
 
 
 #### Install More Tyk Components

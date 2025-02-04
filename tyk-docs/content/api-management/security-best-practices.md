@@ -355,7 +355,7 @@ APIs need to be managed and governed just like any other resource, otherwise org
 
 **Understand API Usage**: Use [API analytics]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}) to report on usage. This captured data generates useful, actionable insights across a variety of metrics, such as API popularity, performance and trends.
 
-**Control API Distribution**: Use [sharding]({{< ref "advanced-configuration/manage-multiple-environments#api-sharding" >}}) to control availability of APIs across multi-gateway, multi-environment deployments. This ensures that specific APIs are only available through specific gateways, which helps to prevent undesirable situations, such as internal APIs being published to externally accessible gateways, or test API configurations reaching the production environment.
+**Control API Distribution**: Use [sharding]({{< ref "api-management/multiple-environments#what-is-api-sharding-" >}}) to control availability of APIs across multi-gateway, multi-environment deployments. This ensures that specific APIs are only available through specific gateways, which helps to prevent undesirable situations, such as internal APIs being published to externally accessible gateways, or test API configurations reaching the production environment.
 <br>
 
 ## Securing APIs with Tyk

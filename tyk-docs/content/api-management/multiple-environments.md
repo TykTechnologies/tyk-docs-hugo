@@ -69,11 +69,11 @@ It is possible to move APIs between Tyk environments in the following ways:
 
 If the environments are both Self-Managed installations and are sharing a Tyk Dashboard (and optionally an MDCB instance) then you can use API and Gateway tagging to transparently and effortlessly move an API from one environment to another.
 
-See [API Tagging]({{< ref "advanced-configuration/manage-multiple-environments/with-tyk-on-premises#api-tagging-with-on-premises" >}}) for more details.
+See [API Tagging]({{< ref "api-management/multiple-environments#api-tagging-with-on-premises" >}}) for more details.
 
 #### API Sharding
 
-You can also use [API Sharding]({{< ref "advanced-configuration/manage-multiple-environments#api-sharding" >}}) to move APIs in a Shards (and or MDCB) Tyk Self-Managed installation.
+You can also use [API Sharding]({{< ref "api-management/multiple-environments#what-is-api-sharding-" >}}) to move APIs in a Shards (and or MDCB) Tyk Self-Managed installation.
 
 ### In Separate Dashboard Environments
 
@@ -119,7 +119,7 @@ The ID you use in with any Dashboard API integrations will change as the documen
 
 ### Use Tyk-Sync
 
-You can also use our new Tyk-Sync tool which allows you to sync your APIs (and Policies) with a Version Control System (VCS). You can then move your APIs between environments. See [Tyk-Sync]({{< ref "/api-management/automations#synchronize-tyk-environment-with-github-repository" >}}) for more details.
+You can also use our new Tyk-Sync tool which allows you to sync your APIs (and Policies) with a Version Control System (VCS). You can then move your APIs between environments. See [Tyk-Sync]({{< ref "/api-management/automations/sync#synchronize-tyk-environment-with-github-repository" >}}) for more details.
 
 ## Move Keys Between Environments 
 
@@ -131,7 +131,7 @@ However, it is possible to temporarily allow access to existing keys in a new en
 
 In order to use a legacy key in a new environment, simply extract the key from the old environment using the Tyk REST APIs and then create them in the new environment using the custom key creation API.
 
-To create a key with a custom identifier, ie Token, simply use the [Gateway (OSS)]({{< ref "tyk-gateway-api" >}}) or [Dashboard (Pro)]({{< ref "tyk-apis/tyk-dashboard-api/api-keys#create-a-custom-key" >}}) REST APIs to import a custom key.
+To create a key with a custom identifier, ie Token, simply use the [Gateway (OSS)]({{< ref "tyk-gateway-api" >}}) or [Dashboard (Pro)]({{< ref "api-management/dashboard-configuration#create-a-custom-key" >}}) REST APIs to import a custom key.
 
 ## Move Policies Between Environments 
 
@@ -275,7 +275,7 @@ As you can see, under the hood, the policy has been migrated correctly with targ
 
 ### Use Tyk-Sync
 
-You can also use our new Tyk-Sync tool which allows you to sync your Policies (and APIs) with a Version Control System (VCS). You can then move your Policies between environments. See [Tyk-Sync]({{< ref "/api-management/automations#synchronize-tyk-environment-with-github-repository" >}}) for more details.
+You can also use our new Tyk-Sync tool which allows you to sync your Policies (and APIs) with a Version Control System (VCS). You can then move your Policies between environments. See [Tyk-Sync]({{< ref "/api-management/automations/sync#synchronize-tyk-environment-with-github-repository" >}}) for more details.
 
 ## Gateway Sharding
 
@@ -339,7 +339,7 @@ spec:
 ### Gateway & API Sharding
 Tyk Gateway has a very powerful functionality that allows you to selectively choose which APIs are to be loaded on which Gateways.
 
-Imagine the case where you have two sets of APIs, Internal & External.  You want to prevent your Internal APIs from being accessed or visible outside your protected network.  Well, [sharding]({{< ref "advanced-configuration/manage-multiple-environments#api-sharding" >}}) makes it extremely easy to configure your Tyk Gateways from the Dashboard.
+Imagine the case where you have two sets of APIs, Internal & External.  You want to prevent your Internal APIs from being accessed or visible outside your protected network.  Well, [sharding]({{< ref "api-management/multiple-environments#what-is-api-sharding-" >}}) makes it extremely easy to configure your Tyk Gateways from the Dashboard.
 
 **Steps for Configuration:**
 
