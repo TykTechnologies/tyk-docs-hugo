@@ -52,10 +52,11 @@ function logMessage(title, message, failedItems) {
         // Construct the comment message
         const commentMessage = `
 # ${title}
-
+<br>
 ${message}
-
+<br>
 ### Failed Items
+<br>
 ${failedItems}`;
 
         const html = marked.parse(commentMessage);
