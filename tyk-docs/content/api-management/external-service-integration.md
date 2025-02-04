@@ -6,6 +6,8 @@ description: ""
 keywords: ["Tyk Identity Broker", "TIB", "Identity Provider", "Identity Handler", "SSO", "Custom Authentication", "Custom Proxy Provder", "SAML", "OIDC", "OpenID Connect", "Profies", "IDPs", "Social Provider" ,"LDAP"]
 aliases:
   - /integrate/3rd-party-identity-providers
+  - /getting-started/tyk-components/identity-broker
+  - /getting-started/tutorials/auth-user-for-api-access-github-oauth
   - /advanced-configuration/integrate/sso/dashboard-login-ldap-tib
   - /integrate/3rd-party-identity-providers/dashboard-login-ldap-tib
   - /integrate/3rd-party-identity-providers/openldap
