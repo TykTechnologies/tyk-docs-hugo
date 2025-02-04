@@ -27,6 +27,14 @@ To enable this, Tyk introduced support for custom rate limit keys in [Tyk 5.3.0]
 This capability works with [Tyk 5.3.0]({{< ref "developer-support/release-notes/dashboard#530-release-notes" >}}) or higher.
 
 ## Configuring custom rate limit keys for policies in Tyk Dashboard
+
+{{< note >}}
+**Note**
+
+If you are using Tyk Developer Portal version 1.13.0 or later, you can configure the custom rate limit keys directly from the Developer Portal in the Advanced settings (optional) colapsible section of the Plan's view (by Credentials metadata).
+{{< img src="img/dashboard/portal-management/enterprise-portal/portal-plan-advanced-settings.png" alt="Add Plan Advanced Settings" >}}
+{{< /note >}}
+
 Custom rate limit keys are applied at a policy level. When a custom rate limit key is specified, quota, rate limit and throttling will be calculated against the specified value and not against a credential ID.
 
 To specify a custom rate limit key, add to a policy a new metadata field called `rate_limit_pattern`.

@@ -1709,7 +1709,7 @@ Tyk Charts 1.3 adds support for a number of new Tyk features available from Tyk 
 Tyk Charts 1.3 adds support for Graph MongoDB Pump, Graph SQL Pump and Graph SQL Aggregate Pump. see [Graph Pump setup]({{<ref "/tyk-stack/tyk-pump/tyk-pump-configuration/graph-pump">}}) to learn more about the GraphQL-specific metrics available.
 
 ##### Enable Tyk Identity Broker (TIB) in Tyk Dashboard
-Tyk Charts 1.3 adds a field to enable Internal [Tyk Identity Broker (TIB)]({{<ref "tyk-identity-broker">}}) in Tyk Dashboard by field `tyk-dashboard.tib.enabled` to `true`.
+Tyk Charts 1.3 adds a field to enable Internal [Tyk Identity Broker (TIB)]({{<ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib">}}) in Tyk Dashboard by field `tyk-dashboard.tib.enabled` to `true`.
 
 #### Downloads
 - [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v1.3.0.tar.gz)
@@ -1860,7 +1860,7 @@ Users can configure Tyk Gateway initContainer image so that it is possible to lo
 <details>
 <summary>Dashboard: Added option to enable Tyk Identity Broker (TIB) in Tyk Dashboard</summary>
 
-You can enable Internal [Tyk Identity Broker (TIB)]({{<ref "tyk-identity-broker">}}) in Tyk Dashboard by field `tyk-dashboard.tib.enabled` to `true`.
+You can enable Internal [Tyk Identity Broker (TIB)]({{<ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib">}}) in Tyk Dashboard by field `tyk-dashboard.tib.enabled` to `true`.
 </details>
 </li>
 

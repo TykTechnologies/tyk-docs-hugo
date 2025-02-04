@@ -45,7 +45,7 @@ The Tyk Team has created and maintains the following components, which are fully
 
 * [Tyk Gateway]({{< ref "tyk-oss-gateway" >}}) - Fully fledged API Gateway (Start here!) - {{< github_star_button "TykTechnologies" "tyk" "true" >}}
 * [Tyk Pump]({{< ref "tyk-pump" >}}) - Send API analytics data to your chosen backend - {{< github_star_button "TykTechnologies" "tyk-pump" "true" >}}
-* [Tyk Identity Broker]({{< ref "tyk-identity-broker" >}}) - Connect your third-party IdP systems - {{< github_star_button "TykTechnologies" "tyk-identity-broker" "true" >}}
+* [Tyk Identity Broker]({{< ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib" >}}) - Connect your third-party IdP systems - {{< github_star_button "TykTechnologies" "api-management/external-service-integration#what-is-tyk-identity-broker-tib" "true" >}}
 * [Tyk Helm Chart]({{< ref "/product-stack/tyk-charts/overview" >}}) - Deploy Tyk in K8S - {{< github_star_button "TykTechnologies" "tyk-charts" "true" >}}
 
 You can find additional FAQs regarding the MPL license [here](https://www.mozilla.org/en-US/MPL/2.0/FAQ/).

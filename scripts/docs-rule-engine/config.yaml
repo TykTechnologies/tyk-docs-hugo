@@ -1,0 +1,38 @@
+rules:
+- id: 1
+  enable: true
+  title: "Ensure that the internal links are using <ref> system"
+  description: ""
+- id: 2
+  enable: true
+  title: "Don’t add apostrophe in reference text"
+  description: "Apostrophes in reference text does not render properly"
+- id: 3
+  enable: true
+  title: "Use of wrong headers that don’t render in the right side Nav"
+  description: ""
+- id: 4
+  enable: true
+  title: "Ensure all the headings use Pascal Case"
+  description: ""
+- id: 5
+  enable: true
+  title: "Images & YouTube shortcodes should have alt section in it."
+  description: ""
+- id: 6
+  enable: true
+  title: "Release Notes should not have comments in it, always use the condensed version"
+  description: ""
+# Not Implemented
+- id: 7
+  enable: true
+  title: "Release Notes should follow condensed template."
+  description: ""
+- id: 8
+  enable: true
+  title: "Invalid Hugo frontmatter"
+  description: ""
+- id: 9
+  enable: true
+  title: "Don’t use ackronyms or shortcuts in headers"
+  description: ""
