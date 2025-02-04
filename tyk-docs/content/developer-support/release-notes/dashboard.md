@@ -3564,7 +3564,7 @@ Additionally we’ve added Dashboard support for introspection control on policy
 - New UI for custom middleware for Tyk OAS APIs
 - Significantly improved Tyk OAS API versioning user experience
 - It now possible to use PATCH method to modify Tyk OAS APIs via the Dashboard API
-- Now you can turn a Kafka topic into a GraphQL subscription by simply [importing your AsyncAPI definition]({{< ref "tyk-apis/tyk-dashboard-api/data-graphs-api" >}})
+- Now you can turn a Kafka topic into a GraphQL subscription by simply [importing your AsyncAPI definition]({{< ref "api-management/dashboard-configuration#data-graphs-api" >}})
 - Way to control access to introspection on policy and key level
 
 ##### Changed
@@ -4133,7 +4133,7 @@ If there were changes in any of Tyk’s API docs:
 - Has a link to the endpoint documentation being included?
 - Has the benefit of the new/updated endpoint been explained in the release highlights and changelog?
 -->
-- [OpenAPI Document]({{<ref "tyk-dashboard-api/" >}})
+- [OpenAPI Document]({{<ref "tyk-dashboard-api" >}})
 - [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview)
 
 ### FAQ

@@ -15,7 +15,7 @@ info:
 
     This API requires an admin authorisation token that is available for admin
     users of the portal in the profile page.
-  version: v1.12.0
+  version: v1.13.0
 servers:
   - url: http://localhost:3001/portal-api
 tags:
@@ -34,7 +34,7 @@ tags:
   - name: Tutorials for API Products
     description: Tutorials that are defined for the API products
   - name: API documentation for API Products
-    description: OpenAPI specs for APIs included into the API Products
+    description: OpenAPI specs for APIs included into the API Prodcuts
   - name: Plans
     description: >-
       Marketing description and visibility settings of usage plans defined in
@@ -61,6 +61,8 @@ tags:
     description: Webhooks management
   - name: Posts
     description: Posts management
+  - name: SSO Profiles
+    description: SSO Profiles management
 paths:
   /access_requests:
     get:
@@ -1483,9 +1485,8 @@ paths:
         - Pages and content
   /plans:
     get:
-      description: List all plans available in the portal
+      description: List all plans that exist in the portal
       operationId: list-plans
-      parameters: []
       responses:
         "200":
           content:
@@ -1498,53 +1499,123 @@ paths:
       summary: List all plans
       tags:
         - Plans
-  /plans/{plan_id}:
-    get:
-      description: Get a plan
-      operationId: get-plan
-      parameters:
-        - description: UID of a plan
-          in: path
-          name: plan_id
-          required: true
-          schema:
-            type: integer
-            example: 1
+    post:
+      description: Create a new plan
+      operationId: create-plan
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PlanRequest"
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Plan-show"
+                $ref: "#/components/schemas/Plan"
           description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OnlyErrors"
+          description: Validation error
+      security:
+        - AdminAPIToken: []
+      summary: Create a new plan
+      tags:
+        - Plans
+  /plans/{plan_id}:
+    get:
+      description: Get a plan's details
+      operationId: get-plan
+      parameters:
+        - description: ID of the plan
+          in: path
+          name: plan_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Plan"
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OnlyErrors"
+          description: Not found
       security:
         - AdminAPIToken: []
       summary: Get a plan
       tags:
         - Plans
-    put:
-      description: Update a plan including catalogue name, description and OAuth2.0 scope
-      operationId: update-plan
+    delete:
+      description: Delete a plan
+      operationId: delete-plan
       parameters:
-        - description: UID of a plan
+        - description: ID of the plan
           in: path
           name: plan_id
           required: true
           schema:
             type: integer
-            example: 1
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Plan-update"
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Plan-show"
+                $ref: "#/components/schemas/Status"
           description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OnlyErrors"
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Delete a plan
+      tags:
+        - Plans
+    put:
+      description: Update a plan
+      operationId: update-plan
+      parameters:
+        - description: ID of the plan
+          in: path
+          name: plan_id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PlanRequest"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Plan"
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OnlyErrors"
+          description: Not found
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OnlyErrors"
+          description: Validation error
       security:
         - AdminAPIToken: []
       summary: Update a plan
@@ -1565,6 +1636,68 @@ paths:
       security:
         - AdminAPIToken: []
       summary: List all products
+      tags:
+        - Products
+    post:
+      description: Create a new product (regular API product or documentation-only product)
+      operationId: create-product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            examples:
+              regular-product:
+                summary: Regular API Product
+                value:
+                  APIDetails:
+                    - APIID: "3108a5fc970946ef66c1835cf73ba7a5"
+                      Description: "This API provides payment endpoints"
+                      OASUrl: "https://petstore.swagger.io/v2/swagger.json"
+                  Catalogues: [1]
+                  CID: "2r7p8aUnkzby17hCJk8w2XvK3K6"
+                  Content: "<p>Description goes here</p>"
+                  DCREnabled: true
+                  Description: "Description goes here"
+                  DisplayName: "ACME Payment API"
+                  Feature: true
+                  IsDocumentationOnly: false
+                  Name: "payment_api"
+                  ProviderID: 1
+                  Scopes: "payments,clients"
+                  Tags: [1]
+                  Templates: [1]
+              documentation-product:
+                summary: Documentation only Product
+                value:
+                  SpecDetails:
+                    - SpecAlias: "payment_api"
+                      OASUrl: "https://petstore.swagger.io/v2/swagger.json"
+                  Catalogues: [1]
+                  CID: "2r7p8aUnkzby17hCJk8w2XvK3K6"
+                  Content: "<p>Description goes here</p>"
+                  DCREnabled: true
+                  Description: "Description goes here"
+                  DisplayName: "Doc only Product"
+                  Feature: true
+                  IsDocumentationOnly: true
+                  Name: "doc_only"
+                  Tags: [1]
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product-show"
+          description: Created
+        "422":
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OnlyErrors"
+      security:
+        - AdminAPIToken: []
+      summary: Create a new product
       tags:
         - Products
   /products/{product_id}:
@@ -1598,9 +1731,7 @@ paths:
       tags:
         - Products
     put:
-      description: >-
-        Update a product including marketing description, display name, OAuth2.0
-        scope and path
+      description: Update a product (regular API product or documentation-only product)
       operationId: update-product
       parameters:
         - description: UID of an API Product
@@ -1613,8 +1744,43 @@ paths:
       requestBody:
         content:
           application/json:
-            schema:
-              $ref: "#/components/schemas/Product-update"
+            examples:
+              regular-product:
+                summary: Regular API Product Update
+                value:
+                  Name: "payment_api"
+                  ProviderID: 1
+                  IsDocumentationOnly: false
+                  APIDetails:
+                    - APIID: "3108a5fc970946ef66c1835cf73ba7a5"
+                      Description: "This API provides payment endpoints"
+                      OASUrl: "https://petstore.swagger.io/v2/swagger.json"
+                  Catalogues: [1]
+                  CID: "2r7p8aUnkzby17hCJk8w2XvK3K6"
+                  Content: "<p>Description goes here</p>"
+                  DCREnabled: true
+                  Description: "Description goes here"
+                  DisplayName: "ACME Payment API"
+                  Feature: true
+                  Scopes: "payments,clients"
+                  Tags: [1]
+                  Templates: [1]
+              documentation-product:
+                summary: Documentation-only Product Update
+                value:
+                  Name: "doc_only"
+                  IsDocumentationOnly: true
+                  SpecDetails:
+                    - SpecAlias: "payment_api"
+                      OASUrl: "https://petstore.swagger.io/v2/swagger.json"
+                  Catalogues: [1]
+                  CID: "2r7p8aUnkzby17hCJk8w2XvK3K6"
+                  Content: "<p>Description goes here</p>"
+                  DCREnabled: true
+                  Description: "Description goes here"
+                  DisplayName: "Doc only Product"
+                  Feature: true
+                  Tags: [1]
       responses:
         "200":
           content:
@@ -1631,6 +1797,35 @@ paths:
       security:
         - AdminAPIToken: []
       summary: Update a product
+      tags:
+        - Products
+    delete:
+      description: Delete a product
+      operationId: delete-product
+      parameters:
+        - description: UID of an API Product
+          in: path
+          name: product_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OnlyErrors"
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Delete a product
       tags:
         - Products
   /products/{product_id}/api-details:
@@ -1655,6 +1850,71 @@ paths:
       security:
         - AdminAPIToken: []
       summary: List all APIs included in this API Product
+      tags:
+        - API documentation for API Products
+  /products/{product_id}/spec-details:
+    get:
+      description: List all Specification details included in this Documentation Product
+      operationId: list-spec-details
+      parameters:
+        - description: UID of an API Product
+          in: path
+          name: product_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SpecDetail-index"
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List all Specification details included in this Documentation Product
+      tags:
+        - API documentation for API Products
+    post:
+      description: Add a new specification to this Documentation Product
+      operationId: create-spec-details
+      parameters:
+        - description: UID of an API Product
+          in: path
+          name: product_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SpecDetail-create"
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SpecDetail-index-elem"
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OnlyErrors"
+          description: Bad Request
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OnlyErrors"
+          description: Validation Error
+      security:
+        - AdminAPIToken: []
+      summary: Add a new specification to this Documentation Product
       tags:
         - API documentation for API Products
   /products/{product_id}/api-details/{api-id}:
@@ -2297,7 +2557,7 @@ paths:
         - Products
   /products/{product_id}/logo:
     post:
-      description: Upload a logo/preview image for this API Product
+      description: Upload a logo/product page image for this API Product
       operationId: upload-product-logo
       parameters:
         - description: UID of an API Product
@@ -2330,11 +2590,11 @@ paths:
               schema:
                 type: string
           description: Bad Request
-      summary: Upload a logo/preview image for this API Product
+      summary: Upload a logo/product page image for this API Product
       tags:
         - Products
     get:
-      description: Get the logo/preview image for this API Product
+      description: Get the logo/product page image for this API Product
       operationId: get-product-logo
       parameters:
         - description: UID of an API Product
@@ -2359,11 +2619,11 @@ paths:
               schema:
                 type: string
           description: Bad Request
-      summary: Get the logo/preview image for this API Product
+      summary: Get the logo/product page image for this API Product
       tags:
         - Products
     delete:
-      description: Delete the logo/preview image for this API Product
+      description: Delete the logo/product page image for this API Product
       operationId: delete-product-logo
       parameters:
         - description: UID of an API Product
@@ -2386,7 +2646,101 @@ paths:
               schema:
                 type: string
           description: Bad Request
-      summary: Delete the logo/preview image for this API Product
+      summary: Delete the logo/product page image for this API Product
+      tags:
+        - Products
+  /products/{product_id}/preview:
+    post:
+      description: Upload a preview/catalogue page image for this API Product
+      operationId: upload-product-preview
+      parameters:
+        - description: UID of an API Product
+          in: path
+          name: product_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: image file to upload
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+          description: OK
+        "400":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: Bad Request
+      summary: Upload a preview/catalogue page image for this API Product
+      tags:
+        - Products
+    get:
+      description: Get the preview/catalogue page image for this API Product
+      operationId: get-product-preview
+      parameters:
+        - description: UID of an API Product
+          in: path
+          name: product_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+                description: image file
+          description: OK
+        "400":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: Bad Request
+      summary: Get the preview/catalogue page image for this API Product
+      tags:
+        - Products
+    delete:
+      description: Delete the preview/catalogue page image for this API Product
+      operationId: delete-product-preview
+      parameters:
+        - description: UID of an API Product
+          in: path
+          name: product_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+          description: OK
+        "400":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: Bad Request
+      summary: Delete the preview/catalogue page image for this API Product
       tags:
         - Products
   /tags:
@@ -4559,7 +4913,364 @@ paths:
                 $ref: '#/components/schemas/StatusWithMessage'  # Updated to return StatusWithMessage
       security:
         - AdminAPIToken: []
-
+  /sso_profiles:
+    get:
+      description: List all SSO profiles
+      operationId: list-sso-profiles
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SSOProfile-index"
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List all SSO profiles
+      tags:
+        - SSO Profiles
+    post:
+      description: Create a new SSO profile
+      operationId: create-sso-profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SSOProfile-response"
+        required: true
+      responses:
+        "201":
+          description: Created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OnlyErrors"
+          description: Bad request
+      security:
+        - AdminAPIToken: []
+      summary: Create a new SSO profile
+      tags:
+        - SSO Profiles
+  /sso_profiles/{profile_id}:
+    get:
+      description: Get an SSO profile by ID
+      operationId: get-sso-profile
+      parameters:
+        - description: ID of the SSO profile
+          in: path
+          name: profile_id
+          required: true
+          schema:
+            type: string
+            example: ldap_dev
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SSOProfile-response"
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OnlyErrors"
+          description: Profile not found
+      security:
+        - AdminAPIToken: []
+      summary: Get an SSO profile
+      tags:
+        - SSO Profiles
+    put:
+      description: Update an existing SSO profile
+      operationId: update-sso-profile
+      parameters:
+        - description: ID of the SSO profile
+          in: path
+          name: profile_id
+          required: true
+          schema:
+            type: string
+            example: ldap_dev
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SSOProfile-response"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SSOProfile-response"
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OnlyErrors"
+          description: Profile not found
+      security:
+        - AdminAPIToken: []
+      summary: Update an SSO profile
+      tags:
+        - SSO Profiles
+    delete:
+      description: Delete an SSO profile
+      operationId: delete-sso-profile
+      parameters:
+        - description: ID of the SSO profile
+          in: path
+          name: profile_id
+          required: true
+          schema:
+            type: string
+            example: ldap_dev
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OnlyErrors"
+          description: Profile not found
+      security:
+        - AdminAPIToken: []
+      summary: Delete an SSO profile
+      tags:
+        - SSO Profiles
+  /products/{product_id}/spec-details/{spec-id}:
+    get:
+      description: Get description of a Specification
+      operationId: get-spec-details
+      parameters:
+        - description: ID of the Specification
+          in: path
+          name: spec-id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of an API Product
+          in: path
+          name: product_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SpecDetail-index-elem"
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OnlyErrors"
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Get description of a Specification
+      tags:
+        - API documentation for API Products
+    put:
+      description: Update description of a Specification including name, OAS URL and alias
+      operationId: update-spec-details
+      parameters:
+        - description: ID of the Specification
+          in: path
+          name: spec-id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of an API Product
+          in: path
+          name: product_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                SpecAlias:
+                  type: string
+                  example: "payment_api"
+                OASUrl:
+                  type: string
+                  format: uri
+                  example: "https://petstore.swagger.io/v2/swagger.json"
+                Name:
+                  type: string
+                  example: "Payment API Documentation"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SpecDetail-index-elem"
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OnlyErrors"
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Update description of a Specification
+      tags:
+        - API documentation for API Products
+    delete:
+      description: Delete a specification from this Documentation Product
+      operationId: delete-spec-details
+      parameters:
+        - description: ID of the Specification
+          in: path
+          name: spec-id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of an API Product
+          in: path
+          name: product_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OnlyErrors"
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Delete a specification
+      tags:
+        - API documentation for API Products
+  /products/{product_id}/spec-details/{spec-id}/oas:
+    get:
+      description: Download an OAS spec as a file for a specific Specification in a Documentation Product
+      operationId: get-spec-oas
+      parameters:
+        - name: product_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: UID of an API Product
+        - name: spec-id
+          in: path
+          schema:
+            type: integer
+            example: 1
+          required: true
+          description: ID of the Specification
+      responses:
+        "200":
+          content:
+            application/x-yaml:
+              schema:
+                type: string
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                type: string
+                example: no oas specified
+          description: Not found or Bad Request
+      security:
+        - AdminAPIToken: []
+      summary: Download OAS file of a Specification
+      tags:
+        - API documentation for API Products
+    post:
+      description: Upload an OAS file for a Specification inside a Documentation Product
+      operationId: upload-spec-oas
+      parameters:
+        - name: product_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: UID of an API Product
+        - name: spec-id
+          in: path
+          schema:
+            type: integer
+            example: 1
+          required: true
+          description: ID of the Specification
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: oas spec file
+      responses:
+        "200":
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Upload OAS file of a Specification
+      tags:
+        - API documentation for API Products
+    delete:
+      description: Remove OAS file from a Specification
+      operationId: delete-spec-oas
+      parameters:
+        - name: product_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: UID of an API Product
+        - name: spec-id
+          in: path
+          schema:
+            type: integer
+            example: 1
+          required: true
+          description: ID of the Specification
+      responses:
+        "200":
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Delete OAS file of a Specification
+      tags:
+        - API documentation for API Products
 components:
   schemas:
     Product-APIDetail-index:
@@ -5619,42 +6330,135 @@ components:
               description: Timestamp of when this access request was updated the last time
               example: 2023-06-25 13:37
     Plan-index:
-      items:
-        $ref: "#/components/schemas/Plan-index-elem"
-      type: array
-    Plan-index-elem:
+      type: object
       properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/PlanSummary"
+    Plan:
+      allOf:
+        - $ref: "#/components/schemas/PlanRequest"
+        - type: object
+          properties:
+            ID:
+              type: integer
+              description: Unique identifier of the plan
+              example: 1
+            ReferenceID:
+              type: string
+              description: Reference ID of the plan in the provider system
+              example: "6490fd451ba6a6000108864e"
+    PlanRequest:
+      type: object
+      properties:
+        CID:
+          type: string
+          description: Client ID for the plan
+          example: "2r7p8aUnkzby17hCJk8w2XvK3K6"
         AutoApproveAccessRequests:
           type: boolean
-          description: Defines if access requests with this plan are approved automatically
+          description: Whether access requests are automatically approved
           example: true
+        Catalogues:
+          type: array
+          description: List of catalogue IDs this plan belongs to
+          items:
+            type: integer
+          example: [1]
         DisplayName:
           type: string
-          description: Name of this plan that is displayed to API Consumers
-          example: Free plan
+          description: Display name of the plan
+          example: "Free plan"
+        Description:
+          type: string
+          description: Description of the plan
+          example: "Free plan offers only basic functionality"
+        JWTScope:
+          type: string
+          description: JWT scope for the plan
+          example: "free-plan"
+        KeyExpiresIn:
+          type: integer
+          description: Key expiration time in seconds
+          example: 3600
+        MetaData:
+          type: object
+          description: Additional metadata for the plan
+          example:
+            data1: "1"
+            data2: "2"
+          additionalProperties: true
         Name:
           type: string
-          description: Name of this plan how it comes from the API Provider
-          example: Free plan
-        ReferenceID:
-          type: string
-          description: ID of this plan how it comes from the API Provider
-          example: 6490fd451ba6a6000108864e
+          description: Name of the plan
+          example: "free_plan_2"
+        Per:
+          type: number
+          description: Time period for rate limiting in seconds
+          example: 10
+        PlanQuota:
+          type: integer
+          description: Plan quota value
+          example: 2
+        PlanQuotaRenewalRate:
+          type: integer
+          description: Plan quota renewal rate in seconds
+          example: 3600
         Quota:
-          type: string
-          description: >-
-            Quota of API calls available to customers using this plan as it is
-            defined in the API Provider
-          example: unlimited
+          type: integer
+          description: Quota value
+          example: 0
+        QuotaRenewalRate:
+          type: integer
+          description: Quota renewal rate in seconds
+          example: -1
         RateLimit:
-          type: string
-          description: Ratelimit as it is defined in the API Provider
-          example: 1000 calls / 1 minute(s)
+          type: number
+          description: Rate limit for the plan
+          example: 5
+        UnlimitedQuota:
+          type: boolean
+          description: Whether the plan has unlimited quota
+          example: true
+        UnlimitedRateLimit:
+          type: boolean
+          description: Whether the plan has unlimited rate limit
+          example: false
+        ProviderID:
+          type: integer
+          description: ID of the provider
+          example: 1
+      required:
+        - Name
+        - ProviderID
+    PlanSummary:
+      type: object
+      properties:
         ID:
           type: integer
-          description: UID of this plan
+          description: Unique identifier of the plan
           example: 1
-      type: object
+        Name:
+          type: string
+          description: Name of the plan
+          example: "free_plan_2"
+        DisplayName:
+          type: string
+          description: Display name of the plan
+          example: "Free plan"
+        AutoApproveAccessRequests:
+          type: boolean
+          description: Whether access requests are automatically approved
+          example: true
+        RateLimit:
+          type: number
+          description: Rate limit for the plan
+          example: 5
+        Quota:
+          type: integer
+          description: Quota for the plan
+          example: 0
     Plan-show:
       properties:
         AuthType:
@@ -5700,34 +6504,6 @@ components:
           type: integer
           description: UID of this plan
           example: 1
-        JWTScope:
-          type: string
-          description: >-
-            OAuth2.0 scopes that will be assigned to OAuth2.0 clients that use
-            this plan. Should be comma-separated string
-          example: free-plan
-      type: object
-    Plan-update:
-      properties:
-        AutoApproveAccessRequests:
-          type: boolean
-          description: Defines if access requests with this plan are approved automatically
-          example: true
-        Catalogues:
-          items:
-            type: integer
-            example: 1
-            description: UID of a Catalogue
-          type: array
-          description: Catalogues in which this API Product is published
-        DisplayName:
-          type: string
-          description: Name of this plan that is displayed to API Consumers
-          example: Free plan
-        Description:
-          type: string
-          description: Human-readable description of this plan
-          example: Free plan offers only basic functionality
         JWTScope:
           type: string
           description: >-
@@ -5875,6 +6651,7 @@ components:
           type: string
       type: object
     Product-show:
+      type: object
       properties:
         ID:
           type: integer
@@ -5890,12 +6667,16 @@ components:
           description: Authentication type of APIs that are included in this API Product
           example: authToken
         Catalogues:
+          type: array
+          description: Catalogues in which this API Product is listed
           items:
             type: string
             description: Catalogue name
             example: Public Catalogue
-          type: array
-          description: Catalogues in which this API Product is listed
+        CID:
+          type: string
+          description: Client ID for this API Product
+          example: "2r7p8aUnkzby17hCJk8w2XvK3K6"
         Content:
           type: string
           description: >-
@@ -5926,6 +6707,14 @@ components:
             Defines if this product should be featured on the home page of the
             portal
           example: true
+        IsDocumentationOnly:
+          type: boolean
+          default: false
+          description: Must be false for regular API products
+        Logo:
+          type: string
+          description: Path to the logo image for this API Product
+          example: /system/products/2/logo/logo.png
         Name:
           type: string
           description: name of this API Product as it comes from the API Provider
@@ -5937,10 +6726,6 @@ components:
             the catalogue path to form URI to this product:
             /portal/catalogue-products/`Path`
           example: acme-payment-api
-        Logo:
-          type: string
-          description: Path to the logo image for this API Product
-          example: /system/products/2/logo/logo.png
         ReferenceID:
           type: string
           description: UID of this API Product in the API Provider
@@ -5951,6 +6736,12 @@ components:
             OAuth2.0 scopes that will be assigned to OAuth2.0 clients that use
             this API Product. Should be comma-separated string
           example: payments,clients
+        SpecDetails:
+          type: array
+          description: Specification details for documentation-only products
+          items:
+            type: object
+          nullable: true
         Tags:
           items:
             type: string
@@ -5965,7 +6756,6 @@ components:
             example: Web application
           type: array
           description: OAuth2.0 templates that are assigned to this API Product
-      type: object
     Product-update:
       properties:
         APIDetails:
@@ -5989,10 +6779,8 @@ components:
           example: <p>Description goes here</p>
         DCREnabled:
           type: boolean
-          description: >-
-            Defines if Dynamic Client Registration is enabled for this API
-            Product
-          example: true
+          default: false
+          description: Must be false for regular API products
         Description:
           type: string
           description: >-
@@ -6007,10 +6795,8 @@ components:
           example: ACME Payment API
         Feature:
           type: boolean
-          description: >-
-            Defines if this product should be featured on the home page of the
-            portal
-          example: true
+          default: false
+          description: Must be false for regular API products
         Name:
           type: string
           description: name of this API Product as it comes from the API Provider
@@ -7710,6 +8496,288 @@ components:
               type: string
               description: Timestamp of when this webhook was updated the last time
               example: 2023-06-25 13:37
+
+    SSOProfile-index:
+      type: array
+      items:
+        $ref: "#/components/schemas/SSOProfile-index-elem"
+
+    SSOProfile-index-elem:
+      type: object
+      properties:
+        ID:
+          type: string
+          description: Unique identifier/key for the SSO profile
+          example: ldap_dev
+        Name:
+          type: string
+          description: Name of the SSO profile
+          example: Developers@LocalAD
+        ActionType:
+          type: string
+          description: Type of action to perform
+          example: GenerateOrLoginDeveloperProfile
+        LoginURL:
+          type: string
+          description: URL for SSO login
+          example: http://localhost:3001/tib/auth/ldap_dev/ldap
+        RedirectURL:
+          type: string
+          description: Callback URL for SSO authentication
+          example: http://localhost:3001/tib/auth/ldap_dev/ldap/callback
+        SelectedProviderType:
+          type: string
+          description: Type of the selected provider
+          example: ldap
+        UpdatedAt:
+          type: string
+          description: Timestamp of when this profile was last updated
+          pattern: ^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$
+          example: "2024-11-14 12:36"
+        UpdatedBy:
+          type: string
+          description: Email of the user who last updated this profile
+          example: auto_test@tyk.io
+
+    SSOProfile-response:
+      type: object
+      properties:
+        ID:
+          type: string
+          description: Unique identifier/key for the SSO profile
+          example: ldap_dev
+        Name:
+          type: string
+          description: Name of the SSO profile
+          example: Developers@LocalAD
+        OrgID:
+          type: string
+          description: Organization ID
+          example: "1"
+        ActionType:
+          type: string
+          description: Type of action to perform
+          example: GenerateOrLoginDeveloperProfile
+        MatchedPolicyID:
+          type: string
+          description: ID of the matched policy
+        Type:
+          type: string
+          description: Type of SSO profile
+          example: redirect
+        ProviderName:
+          type: string
+          description: Name of the provider
+          example: ADProvider
+        CustomEmailField:
+          type: string
+          description: Custom field for email mapping
+        CustomUserIDField:
+          type: string
+          description: Custom field for user ID mapping
+        ProviderConfig:
+          type: object
+          description: JSON configuration for the provider
+          additionalProperties: true
+        IdentityHandlerConfig:
+          type: object
+          description: JSON configuration for identity handling
+          additionalProperties: true
+        ProviderConstraintsDomain:
+          type: string
+          description: Domain constraints for the provider
+        ProviderConstraintsGroup:
+          type: string
+          description: Group constraints for the provider
+        ReturnURL:
+          type: string
+          description: URL to return to after SSO
+          example: http://localhost:3001/sso
+        DefaultUserGroupID:
+          type: string
+          description: Default group ID for new users
+        CustomUserGroupField:
+          type: string
+          description: Custom field for user group mapping
+          example: cn
+        UserGroupMapping:
+          type: object
+          description: JSON mapping of user groups
+          additionalProperties: true
+          example:
+            TeamA: "9"
+            TeamB: "11"
+        UserGroupSeparator:
+          type: string
+          description: Separator used in user group strings
+        SSOOnlyForRegisteredUsers:
+          type: boolean
+          description: "Whether SSO is restricted to registered users only"
+          default: false
+    Product-create:
+      type: object
+      required:
+        - Name
+        - ProviderID
+        - IsDocumentationOnly
+      properties:
+        APIDetails:
+          type: array
+          items:
+            type: object
+            properties:
+              APIID:
+                type: string
+                example: "3108a5fc970946ef66c1835cf73ba7a5"
+              Description:
+                type: string
+                example: "This API provides payment endpoints"
+              OASUrl:
+                type: string
+                format: uri
+                example: "https://petstore.swagger.io/v2/swagger.json"
+        Catalogues:
+          type: array
+          items:
+            type: integer
+            example: 1
+        CID:
+          type: string
+          example: "2r7p8aUnkzby17hCJk8w2XvK3K6"
+        Content:
+          type: string
+          example: "<p>Description goes here</p>"
+        DCREnabled:
+          type: boolean
+          default: false
+          example: true
+        Description:
+          type: string
+          example: "Description goes here"
+        DisplayName:
+          type: string
+          example: "ACME Payment API"
+        Feature:
+          type: boolean
+          default: false
+          example: true
+        IsDocumentationOnly:
+          type: boolean
+          default: false
+          description: Must be false for regular API products
+        Name:
+          type: string
+          example: "payment_api"
+        ProviderID:
+          type: integer
+          example: 1
+        Scopes:
+          type: string
+          example: "payments,clients"
+        Tags:
+          type: array
+          items:
+            type: integer
+            example: 1
+        Templates:
+          type: array
+          items:
+            type: integer
+            example: 1
+    DocumentationProduct-create:
+      type: object
+      required:
+        - Name
+        - IsDocumentationOnly
+      properties:
+        SpecDetails:
+          type: array
+          items:
+            type: object
+            required:
+              - SpecAlias
+            properties:
+              SpecAlias:
+                type: string
+                example: "payment_api"
+              OASUrl:
+                type: string
+                format: uri
+                example: "https://petstore.swagger.io/v2/swagger.json"
+        Catalogues:
+          type: array
+          items:
+            type: integer
+            example: 1
+        CID:
+          type: string
+          example: "2r7p8aUnkzby17hCJk8w2XvK3K6"
+        Content:
+          type: string
+          example: "<p>Description goes here</p>"
+        DCREnabled:
+          type: boolean
+          default: false
+          example: true
+        Description:
+          type: string
+          example: "Description goes here"
+        DisplayName:
+          type: string
+          example: "Doc only Product"
+        Feature:
+          type: boolean
+          default: false
+          example: true
+        IsDocumentationOnly:
+          type: boolean
+          default: true
+          description: Must be true for documentation only products
+        Name:
+          type: string
+          example: "doc_only"
+        Tags:
+          type: array
+          items:
+            type: integer
+            example: 1
+    SpecDetail-index:
+      items:
+        $ref: "#/components/schemas/SpecDetail-index-elem"
+      type: array
+    SpecDetail-index-elem:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/SpecDetail-create"
+        - type: object
+          properties:
+            ID:
+              type: integer
+              description: Unique identifier of the Specification
+              example: 1
+
+    SpecDetail-create:
+      type: object
+      required:
+        - SpecAlias
+      properties:
+        CID:
+          type: string
+          description: Client ID associated with this Specification
+          example: "2r7p8aUnkzby17hCJk8w2XvK3K6"
+        SpecAlias:
+          type: string
+          description: Alias/identifier for this Specification
+          example: "payment_api"
+        OASUrl:
+          type: string
+          description: URL of OpenAPI Specification. The document must be a valid OAS document
+          example: "https://petstore.swagger.io/v2/swagger.json"
+        Name:
+          type: string
+          description: Name of the Specification
+          example: "Payment API Documentation"
+
   securitySchemes:
     AdminAPIToken:
       type: apiKey

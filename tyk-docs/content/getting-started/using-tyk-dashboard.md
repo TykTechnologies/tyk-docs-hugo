@@ -50,7 +50,7 @@ Otherwise, you can design an API from scratch or a template if you have configur
 * **APIs**: The APIs setup allows you to create and access your APIs. If this is your first time setting up an API, we suggest you use an example to learn more or you can go to [Configure your First API](/getting-started/configure-first-api) to learn more.
 {{< img src="/img/getting-started/api-management-apis.png" alt="API Management APIs" >}}
 
-* **API Templates**: API Templates allow you to create APIs with preconfigured settings quickly. You can set these up manually or save them from an API which you've already created. You can learn more about API Templates [here](/product-stack/tyk-dashboard/advanced-configurations/templates/template-overview/).
+* **API Templates**: API Templates allow you to create APIs with preconfigured settings quickly. You can set these up manually or save them from an API which you've already created. You can learn more about API Templates [here](/api-management/dashboard-configuration#governance-using-api-templates).
 
 * **Examples**: In Examples, you will find a few sample projects we put together to help you in your journey. We suggest you start with the Tyk OAS APIs and move on to GraphQL and UDG APIs to supplement learning how to setup your API.
 
@@ -70,7 +70,7 @@ Otherwise, you can design an API from scratch or a template if you have configur
 {{< img src="/img/getting-started/tabs-user-management.png" alt="User Management Side Bar" >}}
 
 * **Users**: Here, you can add, revoke, delete, or edit the details of users that need admin access to your Tyk dashboard. 'Revoking' a user will suspend their access without deleting their account. You can learn more about users [here](/tyk-dashboard-api/users).
-* **User Groups**: Similar as a **policy** is to a **key**, a **user group** is to a **user**. By defining user groups, you aggregate the permissions and access controls for multiple users. When you setup a user with a user group, they inherit the user groups' permissions. You can learn more about user groups [here](/tyk-apis/tyk-dashboard-api/user-groups).
+* **User Groups**: Similar as a **policy** is to a **key**, a **user group** is to a **user**. By defining user groups, you aggregate the permissions and access controls for multiple users. When you setup a user with a user group, they inherit the user groups' permissions. You can learn more about user groups [here](/api-management/dashboard-configuration#user-groups-api).
 * **User Settings**: In User Settings, you can setup [TIB profiles](/tyk-stack/tyk-identity-broker/about-profiles/). This allows your users to access Tyk-managed APIs using their existing credentials.
 
 #### Monitoring
