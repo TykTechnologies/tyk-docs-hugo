@@ -145,7 +145,7 @@ Tyk Sync ensures that API configurations are consistent and reliable across envi
 
 ### Tyk Identity Broker
 
-The **[Tyk Identity Broker]({{< ref "tyk-identity-broker" >}})** simplifies authentication by connecting APIs with external identity providers (IDPs), supporting single sign-on (SSO) capabilities:
+The **[Tyk Identity Broker]({{< ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib" >}})** simplifies authentication by connecting APIs with external identity providers (IDPs), supporting single sign-on (SSO) capabilities:
 
 - **Authentication Integration**: Works with IDPs like Google, Microsoft, and LDAP.
 - **Secure Access Control**: Manages API access for verified users.

@@ -115,7 +115,7 @@ Each change log item should be expandable. The first line summarises the changel
 
 This release adds support for JSON Web Encryption (JWE) in OIDC Single Sign-On (SSO) with TIB, providing enhanced security for token handling in authentication flows. This feature enables processing and validation of JWE tokens, with configuration options for setting the private key required for decryption.
 
-For more details, refer to the [OIDC SSO with JWE]({{<ref "/tyk-stack/tyk-identity-broker/about-profiles#social-profile-fields">}}) documentation.
+For more details, refer to the [OIDC SSO with JWE]({{<ref "/api-management/external-service-integration#social-profile-fields">}}) documentation.
 </details>
 </li>
 
