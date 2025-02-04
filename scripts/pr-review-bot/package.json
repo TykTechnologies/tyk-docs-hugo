@@ -12,6 +12,7 @@
   "description": "",
   "dependencies": {
     "@octokit/rest": "^21.0.2",
+    "jsdom": "^26.0.0",
     "marked": "^14.1.2"
   }
 }

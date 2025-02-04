@@ -1,5 +1,7 @@
+import { log } from 'console';
 import { commentOnPullRequest, getPRBody } from './github.js'
 import fs from 'fs';
+import { JSDOM } from "jsdom";
 
 const genericMessage = "This PR does not meet all the required checklist items mentioned in the description. As a result, we are closing the PR. Please re-open it once all checklist items are completed (ensure they are checked in the description)."
 
@@ -45,7 +47,34 @@ for (let index = 0; index < lastTwoListItems.length; index++) {
 
 const title = "PR Checklist Failed"
 
+function logMessage(title, message, failedItems) {
+    try {
+        // Construct the comment message
+        const commentMessage = `
+# ${title}
+
+@${author} ${message}
+
+### Failed Items
+${failedItems}`;
+
+        const html = marked.parse(commentMessage);
+        // Extract plain text from HTML using JSDOM
+        const dom = new JSDOM(html);
+        const plainText = dom.window.document.body.textContent;
+
+        console.log(plainText);
+
+    } catch (error) {
+        console.error("Error creating comment:", error);
+    }
+}
+
 if (checklistFailedTitles !== "") {
-    console.log("Comment on pr & closing it")
-    commentOnPullRequest(title, genericMessage, checklistFailedTitles);
+    // console.log("Comment on pr & closing it")
+    // commentOnPullRequest(title, genericMessage, checklistFailedTitles);
+    logMessage(title, genericMessage, checklistFailedTitles);
+    process.exit(1);
+} else {
+    console.log("Sucess!!");
 }
