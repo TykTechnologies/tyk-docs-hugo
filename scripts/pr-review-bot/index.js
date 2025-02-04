@@ -53,7 +53,7 @@ function logMessage(title, message, failedItems) {
         const commentMessage = `
 # ${title}
 
-@${author} ${message}
+${message}
 
 ### Failed Items
 ${failedItems}`;
