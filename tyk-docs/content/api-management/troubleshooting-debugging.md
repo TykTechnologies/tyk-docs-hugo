@@ -110,7 +110,7 @@ aliases:
     proxy.service_discovery.port_data_path = “ServicePort""
     ```
         
-    See [Tyk Gateway configuration]({{< ref "tyk-oss-gateway/configuration" >}}) and [Tyk Gateway API]({{< ref "tyk-gateway-api/api-definition-objects" >}}) for further information regarding API definition settings.
+    See [Tyk Gateway configuration]({{< ref "tyk-oss-gateway/configuration" >}}) and [Tyk Gateway API]({{< ref "api-management/gateway-config-tyk-classic" >}}) for further information regarding API definition settings.
 
 3. ##### Gateway proxy error "context canceled"
 
@@ -146,7 +146,7 @@ aliases:
 
     Make sure that API definitions are set up correctly. Information on how to do this with the Tyk Gateway API can be found in the following links:
 
-    *   [API Definition Object Details]({{< ref "tyk-gateway-api/api-definition-objects" >}})
+    *   [API Definition Object Details]({{< ref "api-management/gateway-config-tyk-classic" >}})
     *   [API Management]({{< ref "tyk-gateway-api" >}})
 
 5. ##### Users receive this error message when attempting to make API calls to an existing key.
@@ -651,7 +651,7 @@ aliases:
 
     **Solution**
 
-    The best way to set the domain is to use the Tyk Dashboard Admin API, to obtain the organization object via a GET request and then update the object using a PUT request with the relevant CNAME added to the body of the request.<sup>[[1]({{<ref "dashboard-admin-api/organisations">}})]</sup> Restarting the process will then set the domain.
+    The best way to set the domain is to use the Tyk Dashboard Admin API, to obtain the organization object via a GET request and then update the object using a PUT request with the relevant CNAME added to the body of the request.<sup>[[1]({{<ref "api-management/dashboard-configuration#organizations-api">}})]</sup> Restarting the process will then set the domain.
 
 8. ##### runtime error invalid memory address or nil pointer dereference
 
@@ -796,7 +796,7 @@ aliases:
 13. ##### How to disable an API
 
     You will need to GET the API from the Dashboard, then set `active` property to `false`, then PUT it back.
-    See [Dashboard API - API Definitions]({{< ref "tyk-apis/tyk-dashboard-api/api-definitions" >}}) for more details on how to GET and PUT an API definition.
+    See [Dashboard API - API Definitions]({{< ref "api-management/dashboard-configuration#manage-apis---api-definition" >}}) for more details on how to GET and PUT an API definition.
 
 14. ##### How to Setup CORS
 
@@ -819,14 +819,14 @@ aliases:
     **Upstream does not handle CORS**
     If your upstream does not handle CORS, you should let Tyk manage all CORS related headers and responses. In order to do that you should **enable CORS** in Tyk and **NOT ENABLE** Options pass through.
 
-    To learn more, look for `CORS.options_passthrough` [here]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}).
+    To learn more, look for `CORS.options_passthrough` [here]({{< ref "api-management/gateway-config-tyk-classic#cors" >}}).
 
 
     **CORS middleware is allowing headers which I did not allow**
     This may be the case when you enable CORS but don't provide any headers explicitly (basically providing an empty array). In this case the CORS middleware will use some sensible defaults. 
     To allow all headers, you will need to provide `*` (although this is not recommended).
 
-    The same can happen with Allowed Origins and Allowed Methods. Read more about it [here]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}).
+    The same can happen with Allowed Origins and Allowed Methods. Read more about it [here]({{< ref "api-management/gateway-config-tyk-classic#cors" >}}).
 
     **CORS middleware is blocking my authenticated request**
     Please make sure that you did allow the authorization header name (e.g. `Authorization`) or else the request will be blocked by the CORS middleware. If you're having trouble on the developer portal with authenticated requests make sure to also allow the `Content-Type` header.
@@ -915,7 +915,7 @@ aliases:
 
 1. ##### Capturing detailed logs
 
-    If you've seen the documentation for Tyk Dashboard's [log browser]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}}), then you'll also be wondering how to set up your Tyk configuration to enable detailed request logging.
+    If you've seen the documentation for Tyk Dashboard's [log browser]({{< ref "api-management/dashboard-configuration#activity-logs" >}}), then you'll also be wondering how to set up your Tyk configuration to enable detailed request logging.
 
     **What is detailed request logging?**
 

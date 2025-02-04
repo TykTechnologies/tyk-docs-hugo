@@ -9,7 +9,7 @@ aliases:
 
 [Webhooks]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) are event handlers that can be registered against API Events. The webhook will be triggered when the corresponding event is fired and will send a customizable fixed payload to any open endpoint.
 
-Webhooks are configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
+Webhooks are configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/event-webhook-tyk-classic" >}}) page.
 
@@ -99,7 +99,7 @@ When using a *global webhook*, the event handler element in the `eventHandlers` 
 - `trigger`: the API event that will trigger the webhook
 - `type`: the type of event handler, in this case should be set to `webhook`
 - `cooldownPeriod`: the [webhook cooldown]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks#webhook-cooldown" >}}) for duplicate events (in duration format, e.g. 10s, 1m30s); use this to prevent flooding of the target endpoint when multiple events are fired in quick succession
-- `id`: the *webhook id* assigned by Tyk to the global webhook when it was created (this can be determined using the [list webhooks]({{< ref "tyk-apis/tyk-dashboard-api/web-hooks#list-web-hooks" >}}) endpoint in the Tyk Dashboard API)
+- `id`: the *webhook id* assigned by Tyk to the global webhook when it was created (this can be determined using the [list webhooks]({{< ref "api-management/dashboard-configuration#list-web-hooks" >}}) endpoint in the Tyk Dashboard API)
 
 For example:
 
@@ -150,7 +150,7 @@ In this example a local webhook has been registered to trigger when the `Ratelim
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the global webhook feature.
 
-Note, however, that to test this you will need to create a *global webhook* in your Tyk Dashboard and replace the value in `id` with the *webhook id* that Tyk Dashboard has allocated to your webhook. You can find this by querying the [list webhooks]({{< ref "tyk-apis/tyk-dashboard-api/web-hooks#list-web-hooks" >}}) endpoint in the Tyk Dashboard API.
+Note, however, that to test this you will need to create a *global webhook* in your Tyk Dashboard and replace the value in `id` with the *webhook id* that Tyk Dashboard has allocated to your webhook. You can find this by querying the [list webhooks]({{< ref "api-management/dashboard-configuration#list-web-hooks" >}}) endpoint in the Tyk Dashboard API.
 <br>
 <br>
 {{< note success >}}

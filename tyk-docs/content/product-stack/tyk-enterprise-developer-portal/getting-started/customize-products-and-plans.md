@@ -28,9 +28,9 @@ To customize the visual appearance of API Products:
 1. Navigate to the **API Products** menu, select the product that you want to customize (the Payment API in example below). In this menu you can customize the following aspects of API Products:
 - **Catalog display name**: This is the name that will be displayed in the external catalog.
 - **Featured API Product**: Tick this option for the API Product to appear on the home page under the **Featured products** section.
-- **Description**: A short description about what this API Product is. It is displayed in the catalog and on the API Product page.
-- **Content**: A long text description that appears on the API Product overview page, the rich text editor enables you to add more information about the API Product e.g. use cases, features, etc.
-- **Image**: An API Product logo that is displayed on the catalog and on the API Product pages.
+- **Description/Description in the catalogue page**: A short description about what this API Product is. It is displayed in the catalog and on the API Product page.
+- **Content/Description in the product details page**: A long text description that appears on the API Product overview page, the rich text editor enables you to add more information about the API Product e.g. use cases, features, etc.
+- **Image**: An API Product logo that is displayed on the catalog and on the API Product pages. From version 1.13.0 you can also upload a preview image for the calalogue page.
 - **Tags**: The tags are used to match the API Product with the related blog posts that have the same tags in common.
  
 From that page you can also manage [OAuth2.0 settings]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration.md" >}}) and add [Get started guides]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products" >}}) to your API Products, which is covered in the relevant sections.
@@ -39,13 +39,25 @@ From that page you can also manage [OAuth2.0 settings]({{< ref "/tyk-stack/tyk-d
 2. Save changes by clicking on the **Save** button. You should now be able to preview how the API Product will be displayed in the catalog:
 {{< img src="img/dashboard/portal-management/enterprise-portal/product-live-portal.png" alt="View the API Product in the catalogue" >}}
 
+{{< note >}}
+**Note**
+
+From version 1.13.0 you can customize the api product in the `Details` tab section of a product.
+{{< img src="img/dashboard/portal-management/enterprise-portal/portal-product-customize.png" alt="Customize visual appearance of an API Product" >}}
+{{< /note >}}
+
 Customize plans
 1. To customize visual appearance of plans, open the **Plans** menu and select the plan you want to customize. You can customize the following settings:
 - **Catalog display name**: The name of the catalog that will be displayed in the API Product page.
 - **Scope**: Scope for the [OAuth2.0 settings]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration.md" >}}). Please refer to the [OAuth2.0 documentation]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration" >}}) for further guidance.
-- **Catalogs**: The catalogs in which this plan is available. Catalogs and organization are [covered]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/create-orgs-and-catalogs" >}}) later within this getting started guide.
 - **Auto-approve settings for access requests**: Determines if access requests for this plan should be approved automatically.
 - **Access request frequency**: Defines how often developers can request access to a specific plan. This way the admins can prevent developers from creating too many keys and abusing their automatically approved plans.
+
+{{< note >}}
+**Note**  
+Scope and Access request frequency settings are located under Plan's view Advanced settings from version 1.13.0.
+{{< img src="img/dashboard/portal-management/enterprise-portal/portal-plan-advanced-settings.png" alt="Add Plan Advanced Settings" >}}
+{{< /note >}}
 
 {{< img src="img/dashboard/portal-management/enterprise-portal/customize-plan.png" alt="Customize visual appearance of a plan" >}}
 

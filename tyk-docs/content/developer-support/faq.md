@@ -26,7 +26,7 @@ This section lists commonly asked questions or frequently encountered issues and
 
 1. **If there's a configuration error or an unwanted change, can I easily revert to a previous API or Policy configuration? What are the options or best practices for effective rollbacks?**
     
-    You can configure [Tyk-Sync]({{< ref "/api-management/automations#synchronize-tyk-environment-with-github-repository" >}}) to synchronise APIs and Policies with any version control system, like GitHub or GitLab and use it to perform roll back. Keys are not synchronised with Tyk Sync.
+    You can configure [Tyk-Sync]({{< ref "api-management/automations/sync" >}}) to synchronise APIs and Policies with any version control system, like GitHub or GitLab and use it to perform roll back. Keys are not synchronised with Tyk Sync.
 
 2. **How to Backup Configuration Files of Tyk Component's ?**
 
@@ -153,9 +153,9 @@ This section lists commonly asked questions or frequently encountered issues and
 
     Tyk Gateway generates transaction records for each API request and response, containing [analytics data]({{< ref "tyk-stack/tyk-pump/tyk-analytics-record-fields" >}}) relating to: the originating host (where the request is coming from), which Tyk API version was used, the HTTP method requested and request path etc.
 
-    The transaction records are transmitted to Redis and subsequently transferred to a persistent [data store]({{< ref "tyk-stack/tyk-pump/other-data-stores" >}}) of your choice via Tyk Pump. Furthermore, Tyk Pump can also be configured to [aggregate]({{< ref "tyk-dashboard-analytics#aggregated-analytics" >}}) the transaction records (using different data keys - API ID, access key, endpoint, response status code, location) and write to a persistent data store. Tyk Dashboard uses this data for:
-    - [Aggregated analytics]({{< ref "tyk-dashboard-analytics" >}}) - Displaying analytics based on the aggregated data.
-    - [Log Browser]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}}) to display raw transaction records.
+    The transaction records are transmitted to Redis and subsequently transferred to a persistent [data store]({{< ref "tyk-stack/tyk-pump/other-data-stores" >}}) of your choice via Tyk Pump. Furthermore, Tyk Pump can also be configured to [aggregate]({{< ref "api-management/dashboard-configuration#aggregated-analytics" >}}) the transaction records (using different data keys - API ID, access key, endpoint, response status code, location) and write to a persistent data store. Tyk Dashboard uses this data for:
+    - [Aggregated analytics]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}) - Displaying analytics based on the aggregated data.
+    - [Log Browser]({{< ref "api-management/dashboard-configuration#activity-logs" >}}) to display raw transaction records.
 
     **How Do Analytics Impact Performance?**
 
@@ -191,7 +191,7 @@ This section lists commonly asked questions or frequently encountered issues and
     - **Per API**: Tyk Gateway will not create records for requests/responses for any endpoints of an API.
     - **Per Endpoint**: Tyk Gateway will not create records for requests/responses for specific endpoints.
 
-    When set, this prevents Tyk Gateway from generating the transaction records. Without transaction records, Tyk Pump will not transfer analytics to the chosen persistent data store. It's worth noting that the [track middleware]({{< ref "product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint" >}}) exclusively influences the generation of *endpoint popularity* aggregated data by Tyk Pump.
+    When set, this prevents Tyk Gateway from generating the transaction records. Without transaction records, Tyk Pump will not transfer analytics to the chosen persistent data store. It's worth noting that the [track middleware]({{< ref "api-management/dashboard-configuration#activity-by-endpoint" >}}) exclusively influences the generation of *endpoint popularity* aggregated data by Tyk Pump.
 
     **Conclusion**
 

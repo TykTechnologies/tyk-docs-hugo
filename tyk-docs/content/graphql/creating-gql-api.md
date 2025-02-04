@@ -74,7 +74,7 @@ Your GQL API is now secured and ready to use.
 
 ## Prerequisites
 
-It is possible to create GQL APIs using [Tyk Dashboard APIs]({{< ref "/tyk-apis/tyk-dashboard-api/api-definitions">}}). To make things easier you can use our [Postman collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview).
+It is possible to create GQL APIs using [Tyk Dashboard APIs]({{< ref "api-management/dashboard-configuration#manage-apis---api-definition">}}). To make things easier you can use our [Postman collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview).
 
 You will need an API key for your organization and one command to create a GQL API and make it live.
 ### Obtain your Tyk Dashboard API Access Credentials key & Dashboard URL

@@ -9,7 +9,7 @@ menu:
 weight: 5
 ---
 
-Tyk Gateway API and Tyk Dashboard API both support exporting the entire [Tyk OAS API Definition]({{< ref "/getting-started/using-oas-definitions/oas-glossary#tyk-oas-api-definition" >}}) or just the [OpenAPI Document]({{< ref "/getting-started/using-oas-definitions/oas-glossary#openapi-document" >}}) part so that you can manage or work on them outside Tyk.
+Tyk Gateway API and Tyk Dashboard API both support exporting the entire [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition" >}}) or just the [OpenAPI Document]({{< ref "api-management/gateway-config-tyk-oas#openapi-document" >}}) part so that you can manage or work on them outside Tyk.
 
 #### Differences between using the Tyk Dashboard API and Tyk Gateway API
 
@@ -27,7 +27,7 @@ You can also run these steps using the Tyk Dashboard API, noting the differences
 {{< note success >}}
 **Note**  
 
-You will also need to have ‘admin’ or ‘api’ rights if [RBAC]({{< ref "/tyk-dashboard/rbac.md" >}}) is enabled.
+You will also need to have ‘admin’ or ‘api’ rights if [RBAC]({{< ref "api-management/user-management#" >}}) is enabled.
 {{< /note >}}
 
 ### Tutorial 1: Export the Tyk OAS API definition

@@ -109,7 +109,7 @@ With Tyk Pump, you can leverage powerful insights into API usage, helping teams 
 
 ### Tyk Operator
 
-The **[Tyk Operator]({{< ref "api-management/automations#what-is-tyk-operator" >}})** is a Kubernetes-native API management solution, allowing teams to deploy and manage APIs as Kubernetes resources:
+The **[Tyk Operator]({{< ref "api-management/automations/operator#what-is-tyk-operator" >}})** is a Kubernetes-native API management solution, allowing teams to deploy and manage APIs as Kubernetes resources:
 
 - **Kubernetes Integration**: Simplifies API management within Kubernetes environments.
 - **Declarative Configuration**: Supports automated, scalable, and resilient API deployments.
@@ -133,7 +133,7 @@ Tyk Streams is ideal for use cases like financial services, IoT, and live applic
 
 ### Tyk Sync
 
-**[Tyk Sync]({{< ref "api-management/automations#synchronize-tyk-environment-with-github-repository" >}})** facilitates configuration synchronization, helping teams manage API configurations across different environments:
+**[Tyk Sync]({{< ref "api-management/automations/sync" >}})** facilitates configuration synchronization, helping teams manage API configurations across different environments:
 
 - **Configuration Consistency**: Synchronizes API settings across development, staging, and production.
 - **DevOps Compatibility**: Integrates with CI/CD pipelines for seamless deployment.
@@ -209,7 +209,7 @@ Now that you’ve been introduced to the Tyk suite, you have a strong foundation
 4. **[Implement Multi-Region Deployments with MDCB]({{< ref "tyk-multi-data-centre" >}})**  
    If your infrastructure requires high availability and global reach, explore Tyk’s Multi Data Centre Bridge to deploy and manage APIs across different regions.
 
-5. **[Use Tyk Sync for Consistent Configuration Management]({{< ref "api-management/automations#synchronize-tyk-environment-with-github-repository" >}})**  
+5. **[Use Tyk Sync for Consistent Configuration Management]({{< ref "api-management/automations/sync" >}})**  
    For development teams working across environments, Tyk Sync offers a way to manage API configurations consistently, supporting CI/CD workflows and minimizing deployment errors.
 
 6. **[Explore Tyk Developer Portal for Enhanced Developer Experience]({{< ref "tyk-developer-portal" >}})**  

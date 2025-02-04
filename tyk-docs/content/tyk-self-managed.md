@@ -138,7 +138,7 @@ Refer the [pricing page](https://tyk.io/pricing/)
 
 #### MongoDB / PostgreSQL
 
-Tyk Dashboard requires a persistent datastore for its operations. By default MongoDB is used. From Tyk v4.0, we also support PostgreSQL. See [Database Options]({{< ref "tyk-dashboard/database-options.md" >}}) for a list of versions and drop-in replacements we support.
+Tyk Dashboard requires a persistent datastore for its operations. By default MongoDB is used. From Tyk v4.0, we also support PostgreSQL. See [Database Options]({{< ref "api-management/dashboard-configuration#supported-database" >}}) for a list of versions and drop-in replacements we support.
 
 #### Redis
 
@@ -333,7 +333,7 @@ kubectl create secret generic postgres-secrets  -n $NAMESPACE --from-literal=pos
 {{< note >}}
 **Note**
 
-Ensure that you are installing PostgreSQL versions that are supported by Tyk. Please consult the list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}) that are compatible with Tyk.
+Ensure that you are installing PostgreSQL versions that are supported by Tyk. Please consult the list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}) that are compatible with Tyk.
 {{< /note >}}
 
 **4. Install Tyk**
@@ -442,7 +442,7 @@ helm upgrade tyk-mongo oci://registry-1.docker.io/bitnamicharts/mongodb -n $NAME
 {{< note success >}}
 **Note**
 
-Please make sure you are installing MongoDB versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}).
+Please make sure you are installing MongoDB versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}).
 {{< /note >}}
 
 {{< note >}}
@@ -463,7 +463,7 @@ kubectl create secret generic mongourl-secrets --from-literal=mongoUrl=$MONGOURL
 {{< note >}}
 **Note**
 
-Ensure that you are installing MongoDB versions that are supported by Tyk. Please consult the list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}) that are compatible with Tyk.
+Ensure that you are installing MongoDB versions that are supported by Tyk. Please consult the list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}) that are compatible with Tyk.
 {{< /note >}}
 
 **4. Install Tyk**
@@ -509,7 +509,7 @@ Installing Tyk on Kubernetes requires a multi-node Tyk license. If you are evalu
 
 This deployment is NOT designed for production use or performance testing. The Tyk Pro Docker Demo is our full, [Self-Managed]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) solution, which includes our Gateway, Dashboard and analytics processing pipeline. 
 
-This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and either MongoDB or one of our supported [SQL databases]({{< ref "/content/tyk-dashboard/database-options.md" >}}).
+This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and either MongoDB or one of our supported [SQL databases]({{< ref "api-management/dashboard-configuration#supported-database" >}}).
 
 This demo is great for proof of concept and demo purposes, but if you want to test performance, you need to move each component to a separate machine.
 {{< /warning >}}
@@ -688,7 +688,7 @@ helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics"
 {{< note success >}}
 **Note**
 
-Please make sure you are installing PostgreSQL versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}).
+Please make sure you are installing PostgreSQL versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password. The DNS name of your Postgres service as set by Bitnami is `tyk-postgres-postgresql.tyk.svc.cluster.local`.
@@ -791,7 +791,7 @@ turned off by default, however, you can turn it on by updating the `gateway.shar
 will also need to set the `gateway.sharding.tags` field with the tags that you want that particular Gateway to load. (ex. tags: "external,ingress".)
 You can then add those tags to your APIs in the API Designer, under the **Advanced Options** tab, and
 the **Segment Tags (Node Segmentation)** section in your Tyk Dashboard.
-Check [Tyk Gateway Sharding]({{< ref "/content/advanced-configuration/manage-multiple-environments.md#api-sharding" >}}) for more details.
+Check [Tyk Gateway Sharding]({{< ref "api-management/multiple-environments#what-is-api-sharding-" >}}) for more details.
 
 
 #### Install More Tyk Components
@@ -838,7 +838,7 @@ to set the name of this **ConfigMap** (`tyk-tib-profiles-conf` by default).
 **Tyk Operator and Ingress**
 
 For a GitOps workflow used with a **Tyk Self-Managed** installation or setting the Tyk Gateway as a Kubernetes ingress controller, Tyk Operator enables you to manage API definitions, security policies and other Tyk features using Kubernetes manifest files.
-To get started go to [Tyk Operator]({{< ref "api-management/automations#automate-api-management-in-kubernetes-environments" >}}).
+To get started go to [Tyk Operator]({{< ref "api-management/automations/operator" >}}).
 
 ### Install on AWS Marketplace
 
@@ -1565,7 +1565,7 @@ You're ready to follow the guide on [creating and managing your APIs]({{< ref "g
 {{< note success >}}
 **Note**  
 
-To use the [geographic log distribution]({{< ref "tyk-stack/tyk-manager/analytics/geographic-distribution" >}}) feature in the Dashboard please supply the GeoLite2 DB in the `gateway` directory, uncomment the marked line in `Dockerfile.web` and set the `analytics_config.enable_geo_ip` setting (or `TYK_GW_ANALYTICSCONFIG_ENABLEGEOIP` env var) to `true`.
+To use the [geographic log distribution]({{< ref "api-management/dashboard-configuration#activity-by-location" >}}) feature in the Dashboard please supply the GeoLite2 DB in the `gateway` directory, uncomment the marked line in `Dockerfile.web` and set the `analytics_config.enable_geo_ip` setting (or `TYK_GW_ANALYTICSCONFIG_ENABLEGEOIP` env var) to `true`.
 {{< /note >}}
 
 **Heroku Private Spaces**
@@ -4187,7 +4187,7 @@ Please read carefully through this [doc]({{< ref "api-management/client-authenti
 
 #### Analytics Optimizations
 
-If using a [Redis cluster](https://redis.io/docs/management/scaling/) under high load it is recommended that analytics are distributed among the Redis shards. This can be configured by setting the [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) parameter to true. Furthermore, analytics can also be disabled for an API using the [do_not_track]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/other-root-objects" >}}) configuration parameter. Alternatively, tracking for analytics can be disabled for selected endpoints using the [do not track endpoint plugin]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-oas/" >}}).
+If using a [Redis cluster](https://redis.io/docs/management/scaling/) under high load it is recommended that analytics are distributed among the Redis shards. This can be configured by setting the [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) parameter to true. Furthermore, analytics can also be disabled for an API using the [do_not_track]({{< ref "api-management/gateway-config-tyk-classic#other-root-objects" >}}) configuration parameter. Alternatively, tracking for analytics can be disabled for selected endpoints using the [do not track endpoint plugin]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-oas/" >}}).
 
 ##### Protobuf Serialisation
 
@@ -4292,7 +4292,7 @@ Visit the following pages to see how to configure the Database for Production:
 * [MongoDB]({{< ref "#mongodb-sizing-guidelines" >}})
 * [PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}})
 
-Please consult the [data storage configuration]({{< ref "product-stack/tyk-dashboard/advanced-configurations/data-storage-configuration" >}}) guide for further information relating to how to configure Tyk's data storage across different database engines.
+Please consult the [data storage configuration]({{< ref "api-management/dashboard-configuration#data-storage-solutions" >}}) guide for further information relating to how to configure Tyk's data storage across different database engines.
 
 
 #### Redis
@@ -4351,7 +4351,7 @@ Redis supports [SSL/TLS encryption](https://redis.io/topics/encryption) from ver
 
 - `storage.use_ssl`: Set this to true to enable TLS encryption for the connection.
 
-- `storage.ssl_secure_skip_verify`: A flag that, when set to true, instructs the application not to verify the Redis server's TLS certificate. This is not recommended for production due to the risk of `man-in-the-middle` attacks.
+- `storage.ssl_insecure_skip_verify`: A flag that, when set to true, instructs the application not to verify the Redis server's TLS certificate. This is not recommended for production due to the risk of `man-in-the-middle` attacks.
 
 From **Tyk 5.3**, additional options are available for more granular control:
 
@@ -4363,11 +4363,11 @@ From **Tyk 5.3**, additional options are available for more granular control:
 
 **Setting up an Insecure TLS Connection**
 - **Enable TLS**: By setting `"use_ssl": true`, you encrypt the connection.
-- **Skip Certificate Verification**: Setting `"ssl_secure_skip_verify": true` bypasses the server's certificate verification, suitable only for non-production environments.
+- **Skip Certificate Verification**: Setting `"ssl_insecure_skip_verify": true` bypasses the server's certificate verification, suitable only for non-production environments.
 
 **Setting up a Secure TLS Connection**
 - Ensure `use_ssl` is set to `true`.
-- Set `ssl_secure_skip_verify` to `false` to enforce certificate verification against the CA specified in `ca_file`.
+- Set `ssl_insecure_skip_verify` to `false` to enforce certificate verification against the CA specified in `ca_file`.
 - Specify the path to the CA file in `ca_file` for server certificate verification.
 - Adjust `min_version` and `max_version` to secure TLS versions, ideally 1.2 and 1.3.
 
@@ -4382,7 +4382,7 @@ From **Tyk 5.3**, additional options are available for more granular control:
   "host": "server1",
   "port": 6379,
   "use_ssl": true,
-  "ssl_secure_skip_verify": false,
+  "ssl_insecure_skip_verify": false,
   "ca_file": "/path/to/ca.crt",
   "cert_file": "/path/to/client.crt",
   "key_file": "/path/to/client.key",
@@ -4712,7 +4712,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 Tyk's [circuit breaker]({{< ref "#circuit-breakers" >}}) middleware is configured at the endpoint level, where it monitors the rate of failure responses (HTTP 500 or higher) received from the upstream service. If that failure rate exceeds the configured threshold, the circuit breaker will trip and Tyk will block further requests to that endpoint (returning `HTTP 503 Service temporarily unavailable`) until the end of a recovery (cooldown) time period.
 
-When working with Tyk OAS APIs the circuit breaker is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
+When working with Tyk OAS APIs the circuit breaker is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "#configuring-the-circuit-breaker-in-the-tyk-classic-api-definition" >}}) page.
 
@@ -5002,7 +5002,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 Tyk's [enforced timeout]({{< ref "tyk-self-managed#circuit-breakers" >}}) middleware is configured at the endpoint level, where it sets a limit on the response time from the upstream service. If the upstream takes too long to respond to a request, Tyk will terminate the request and return `504 Gateway Timeout` to the client.
 
-When working with Tyk OAS APIs the enforced timeout is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
+When working with Tyk OAS APIs the enforced timeout is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "#using-the-enforced-timeout-middleware-with-tyk-classic-apis" >}}) page.
 
@@ -6096,7 +6096,7 @@ For example, if you define an environment variable (*Key*) `UPSTREAM_SERVER_URL`
 }
 ```
 
-When the Gateway starts, Tyk will read the *Value* from the environment variable and use this as the [Target URL]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#upstream" >}}).
+When the Gateway starts, Tyk will read the *Value* from the environment variable and use this as the [Target URL]({{< ref "api-management/gateway-config-tyk-oas#upstream" >}}).
 
 {{< note success >}}
 **Note** 
@@ -6225,7 +6225,7 @@ Then within your API definition you could use the *Value* for the authentication
 }
 ```
 
-When the Gateway starts, Tyk will read the *Value* from the `secrets` section in the Gateway config file and use this to identify the header where Tyk Gateway should look for the [Authentication]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#authentication" >}}) token in requests to your Tyk OAS API.
+When the Gateway starts, Tyk will read the *Value* from the `secrets` section in the Gateway config file and use this to identify the header where Tyk Gateway should look for the [Authentication]({{< ref "api-management/gateway-config-tyk-oas#authentication" >}}) token in requests to your Tyk OAS API.
 
 #### Using Consul as a KV store
 

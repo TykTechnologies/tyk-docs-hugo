@@ -37,7 +37,7 @@ Also, you can set the version of each component through `image.tag`. You could f
 - [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
 - [Helm 3+](https://helm.sh/docs/intro/install/)
 - [Redis]({{< ref "tyk-open-source#configure-legacy-tyk-headless-helm-chart" >}}) should already be installed or accessible by the gateway and dashboard.
-- [MongoDB](https://www.mongodb.com) or [PostgreSQL](https://www.postgresql.org) should already be installed or accessible by dashboard. Please consult the list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}) that are compatible with Tyk.
+- [MongoDB](https://www.mongodb.com) or [PostgreSQL](https://www.postgresql.org) should already be installed or accessible by dashboard. Please consult the list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}) that are compatible with Tyk.
 
 {{< note success >}}
 **Note**
@@ -244,7 +244,7 @@ Bitnami MongoDB image is not supported on darwin/arm64 architecture.
 {{< note success >}}
 **Note**
 
-Please make sure you are installing MongoDB versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}).
+Please make sure you are installing MongoDB versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}).
 {{< /note >}}
 
 {{< note success >}}
@@ -299,7 +299,7 @@ Follow the notes from the installation output to get connection details.
 {{< note success >}}
 **Note**
 
-Please make sure you are installing PostgreSQL versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}).
+Please make sure you are installing PostgreSQL versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}).
 {{< /note >}}
 
 ```yaml
@@ -909,7 +909,7 @@ tyk-dev-portal:
 ### Tyk Operator Configurations
 
 Tyk Operator is a licensed component that requires a valid key for operation. 
-Please refer to the [Tyk Operator Installation Guide]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}})
+Please refer to the [Tyk Operator Installation Guide]({{<ref "api-management/automations/operator#install-and-configure-tyk-operator">}})
 for detailed information on the installation and upgrade processes. 
 
 Prior to installing Tyk Operator, ensure that a valid license key is provided by setting `global.license.operator` field in values.yaml file. You can set license key via a Kubernetes secret using `global.secrets.useSecretName` field. The secret should contain a key called `OperatorLicense`.
@@ -920,4 +920,4 @@ to `true`.
 All other configurations related to Tyk Operator are available under `tyk-operator` section of `values.yaml` file.
 
 > Tyk Operator needs a cert-manager to be installed. Ensure that cert-manager is installed as described in the
-> official documentation: [Installing Tyk Operator]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}}).
+> official documentation: [Installing Tyk Operator]({{<ref "api-management/automations/operator#install-and-configure-tyk-operator">}}).
