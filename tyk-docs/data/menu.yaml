@@ -56,52 +56,6 @@ menu:
             category: Directory
             show: True
             menu:
-              - title: "Planning phase"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Design for CI/CD"
-                    category: Page
-                    show: False
-                  - title: "Single Sign On (SSO)"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /advanced-configuration/integrate/sso
-                        category: Page
-                        show: True
-                      - title: "Login into the Dashboard using Azure AD - Guide"
-                        path: /tyk-stack/tyk-manager/sso/dashboard-login-azure-sso
-                        category: Page
-                        show: True
-                      - title: "Login into the Dashboard using Okta - Guide"
-                        path: /tyk-stack/tyk-manager/sso/dashboard-login-okta-tib
-                        category: Page
-                        show: True
-                      - title: "Login into the Dashboard using Auth0 - Guide"
-                        path: /tyk-stack/tyk-manager/sso/sso-auth0-tib
-                        category: Page
-                        show: True
-                      - title: "Login into the Dashboard using Keycloak - Guide"
-                        path: /product-stack/tyk-dashboard/advanced-configurations/sso/dashboard-login-keycloak-sso
-                        category: Page
-                        show: True
-                  - title: "Enterprise developer portal"
-                    category: Page
-                    show: False
-                  - title: "Multi-tenancy with orgs, teams and users"
-                    category: Page
-                    show: False
-                  - title: "Design for compliance (security, data privacy, data residency)"
-                    category: Page
-                    show: False
-                  - title: "Design for disaster recovery"
-                    category: Page
-                    show: False
-                  - title: "Design for multiple data centres"
-                    category: Page
-                    show: False
               - title: "Deployment phase"
                 category: Directory
                 show: True
@@ -169,6 +123,10 @@ menu:
             show: True
       - title: "Dashboard Configuration"
         path: /api-management/dashboard-configuration
+        category: Page
+        show: True
+      - title: "Identity Management"
+        path: /api-management/external-service-integration
         category: Page
         show: True
       - title: "API Versioning"
@@ -1512,42 +1470,6 @@ menu:
                     path: /product-stack/tyk-dashboard/advanced-configurations/open-policy-agent/opa-permissions-example
                     category: Page
                     show: True
-          - title: "System administration"
-            category: Directory
-            show: True
-            menu:
-              - title: "Integration with 3rd Party Identity Providers"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /advanced-configuration/integrate/3rd-party-identity-providers
-                    category: Page
-                    show: True
-                  - title: "Custom"
-                    path: /advanced-configuration/integrate/3rd-party-identity-providers/custom
-                    category: Page
-                    show: True
-                  - title: "Login into the Dashboard using LDAP - Guide"
-                    path: /advanced-configuration/integrate/3rd-party-identity-providers/dashboard-login-ldap-tib
-                    category: Page
-                    show: True
-                  - title: "LDAP"
-                    path: /advanced-configuration/integrate/3rd-party-identity-providers/ldap
-                    category: Page
-                    show: True
-                  - title: "Social Provider"
-                    path: /advanced-configuration/integrate/3rd-party-identity-providers/social
-                    category: Page
-                    show: True
-                  - title: "Log into an APP with Google"
-                    path: /advanced-configuration/integrate/3rd-party-identity-providers/social/app-login-with-gplus
-                    category: Page
-                    show: True
-                  - title: "Log into Dashboard with Google"
-                    path: /advanced-configuration/integrate/3rd-party-identity-providers/social/dashboard-login-with-gplus
-                    category: Page
-                    show: True
           - title: "API documentation"
             category: Directory
             show: True
@@ -2352,30 +2274,6 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Tyk Identity Broker (Open Source)"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            path: /tyk-identity-broker
-            category: Page
-            show: True
-          - title: "Getting started"
-            category: Directory
-            show: True
-            menu:
-              - title: "Getting started with TIB"
-                path: /tyk-identity-broker/getting-started
-                category: Page
-                show: True
-              - title: "Practical TIB Integration Examples"
-                path: /tyk-stack/tyk-identity-broker/auth-user-for-api-access-github-oauth
-                category: Page
-                show: True
-          - title: "TIB Profiles"
-            path: /tyk-stack/tyk-identity-broker/about-profiles
-            category: Page
-            show: True
       - title: "Tyk Helm Charts (Open Source)"
         category: Directory
         show: True

@@ -71,7 +71,7 @@ Otherwise, you can design an API from scratch or a template if you have configur
 
 * **Users**: Here, you can add, revoke, delete, or edit the details of users that need admin access to your Tyk dashboard. 'Revoking' a user will suspend their access without deleting their account. You can learn more about users [here](/tyk-dashboard-api/users).
 * **User Groups**: Similar as a **policy** is to a **key**, a **user group** is to a **user**. By defining user groups, you aggregate the permissions and access controls for multiple users. When you setup a user with a user group, they inherit the user groups' permissions. You can learn more about user groups [here](/api-management/dashboard-configuration#user-groups-api).
-* **User Settings**: In User Settings, you can setup [TIB profiles](/tyk-stack/tyk-identity-broker/about-profiles/). This allows your users to access Tyk-managed APIs using their existing credentials.
+* **User Settings**: In User Settings, you can setup [TIB profiles](/api-management/external-service-integration#exploring-tib-profiles). This allows your users to access Tyk-managed APIs using their existing credentials.
 
 #### Monitoring
 {{< img src="/img/getting-started/tabs-monitoring.png" alt="Monitoring Side Bar" >}}
