@@ -5,7 +5,7 @@ description: "Explains how to configure Open Policy Agent (OPA) rules with addit
 tags: [ "Open Policy Agent", "OPA", "additional permissions", "Open Policy Agent permissons", "example", "worked example" ]
 ---
 
-This is an end-to-end worked example showing how to configure Open Policy Agent rules with some [additional permissions]({{< ref "tyk-dashboard-api/org/permissions" >}}).
+This is an end-to-end worked example showing how to configure Open Policy Agent rules with some [additional permissions]({{< ref "api-management/dashboard-configuration#additional-permissions-api" >}}).
 
 ## Use Case
 
@@ -23,7 +23,7 @@ The high level steps to realize this use case are as follows:
 
 ## Create additional permissions
 
-To include the `API Editor` role with additional permissions, send a PUT Request to the [Dashboard Additional Permissions API endpoint]({{< ref "tyk-dashboard-api/org/permissions.md" >}}) `/api/org/permissions`
+To include the `API Editor` role with additional permissions, send a PUT Request to the [Dashboard Additional Permissions API endpoint]({{< ref "api-management/dashboard-configuration#additional-permissions-api" >}}) `/api/org/permissions`
 
 #### Sample Request
 
