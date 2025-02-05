@@ -175,17 +175,7 @@ Users running deployments on a supported but non-latest version within a branch 
 
 This ensures users benefit from the latest security patches and improvements within the supported branch.
 
-**Auto-Upgrade Functionality**
-To simplify version management and keep deployments up-to-date with the latest security patches and improvements, we are introducing an Auto-Upgrade feature for Cloud users.
-
-Users can now enable Auto-Upgrade for their deployments, allowing them to be automatically upgraded based on the selected version channel:
-- Latest: Deployments will always upgrade to the newest available feature version
-- LTS: Deployments will be upgraded to the latest patch version within the LTS branch.
-
-Once enabled, the auto-upgrade will run on a scheduled basis, which users can configure by selecting a preferred day and time for upgrades. This ensures greater flexibility and control over when updates occur.
-
 ---
-
 
 ### How Do I Upgrade and How Can Tyk Help?
 
