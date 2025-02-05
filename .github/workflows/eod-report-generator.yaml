@@ -1,0 +1,37 @@
+name: EOD Report Generator
+
+on:
+  workflow_dispatch:
+    inputs:
+      MAIN_REVIEWER:
+        description: "The main reviewer for the PR"
+        required: true
+      PR_SCAN_DATE:
+        description: "The date when the PR was scanned"
+        required: true
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Change to your required version
+
+      - name: Install dependencies
+        run: |
+          cd scripts/eod-report-generator
+          npm install
+
+      - name: Run script
+        run: |
+          cd scripts/eod-report-generator
+          node index.js
+        env:
+          MAIN_REVIEWER: ${{ inputs.MAIN_REVIEWER }}
+          PR_SCAN_DATE: ${{ inputs.PR_SCAN_DATE }}
