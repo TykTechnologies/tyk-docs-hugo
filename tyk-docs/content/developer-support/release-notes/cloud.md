@@ -11,8 +11,9 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "changelog"]
 ### Release Date 10 of February 2025
 
 ### Release Highlights
-
-
+This Tyk Cloud update brings a major enhancement to Gateway version management, ensuring a more streamlined, secure, and user-friendly experience. With the new UI versioning updates, users now have clearer visibility into supported versions, direct upgrade recommendations, and the ability to automate version upgrades for effortless maintenance.
+These changes empower teams to stay on supported, secure, and high-performing versions.
+For more details, check out the [documentation on Gateway versioning and auto-upgrades](https://tyk.io/docs/developer-support/release-notes/special-releases/)
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
@@ -39,13 +40,35 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 - For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
 Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
 
-##### Changed
-<!-- This should be a bullet-point list of updated features. Explain:
-- Why was the update necessary?
-- How does the update benefit users?
-- Link to documentation of the updated feature
-- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
-Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
+<ul>
+  <li>
+    <details>
+      <summary>
+        Custom Domains for API Manager Dashboard
+      </summary>
+      Tyk Cloud now supports custom domains for the API Manager Dashboard, allowing organizations to align their domain with their branding and provide a seamless experience for internal and external stakeholders.
+    </details>
+  </li>  
+
+  <li>
+    <details>
+      <summary>
+        Clearer LTS Version Support & Recommendations
+      </summary>
+      Tyk Cloud now provides improved visibility into supported LTS versions. Every patch version within the current LTS branch is now labeled as "Supported", while the latest patch is marked as "Recommended". This update eliminates confusion around deprecated versions and prevents unexpected "unsupported" status changes, allowing for smoother upgrade planning and system stability.
+    </details>
+  </li>  
+
+<li>
+    <details>
+      <summary>
+        Auto-Upgrade for Gateway Versions
+      </summary>
+      Tyk Cloud now offers an Auto-Upgrade feature, allowing users to automatically upgrade their deployments based on their selected version channel (Latest or LTS). This feature enables seamless version management by providing a toggle option within the version settings, along with scheduling controls for selecting the preferred upgrade day and time.
+    </details>
+  </li>
+  
+</ul>
 
 ##### Fixed
 <!-- This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
@@ -55,14 +78,17 @@ Each change log item should be expandable. The first line summarises the changel
 - For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
 Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
 
-##### Security Fixes
-<!-- This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
-1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
-2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
-For agreed CVE security fixes, provide a link to the corresponding entry on the NIST website. For example:
-- Fixed the following CVEs:
-    - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
--->
+<ul>
+  <li>
+    <details>
+      <summary>
+        Incorrect "Delete User" Button for Team Admins
+      </summary>
+      Team admins will no longer see the "Delete User" button when viewing the profiles of other team admins. Previously, this button was incorrectly displayed, leading to an error when clicked. This fix ensures the UI reflects the correct permissions and prevents confusion for administrators managing team members.
+    </details>
+  </li>  
+  
+</ul>
 
 ## Further Information
 
