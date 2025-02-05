@@ -14,7 +14,7 @@ It includes the following components:
 
 Furthermore, it has all the required modifications to easily connect to Tyk Cloud or Multi Data Center (MDCB) control plane.
 
-[Supported MDCB versions]({{< ref "tyk-cloud/troubleshooting-&-support/tyk-cloud-mdcb-supported-versions.md" >}})
+[Supported MDCB versions]({{< ref "tyk-cloud#tyk-cloud-mdcb-supported-versions" >}})
 
 By default, this chart installs following components as subcharts on a [Kubernetes](https://kubernetes.io/) cluster using the [Helm](https://helm.sh/) package manager.
 
@@ -27,13 +27,13 @@ To enable or disable each component, change the corresponding enabled flag.
 
 Also, you can set the version of each component through `image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/u/tykio).
 
-For a quick start guide, please see [deploy hybrid gateway]({{<ref "tyk-cloud/environments-deployments/hybrid-gateways">}}).
+For a quick start guide, please see [deploy hybrid gateway]({{<ref "tyk-cloud#deploy-hybrid-gateways">}}).
 
 ## Prerequisites
 
 - [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
 - [Helm 3+](https://helm.sh/docs/intro/install/)
-- [Redis]({{< ref "tyk-oss/ce-helm-chart#recommended-via-bitnami-chart" >}}) should already be installed or accessible by the gateway.
+- [Redis]({{< ref "tyk-open-source#configure-legacy-tyk-headless-helm-chart" >}}) should already be installed or accessible by the gateway.
 - Connection details to remote control plane. See below for how to obtain them from Tyk Cloud or Tyk Control Plane chart.
 
 ## Obtain Remote Control Plane Connection details from Tyk Cloud
@@ -185,7 +185,7 @@ tyk-gateway:
           key: backend-username
 ```
 
-In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{<ref "tyk-configuration-reference/kv-store#how-to-access-the-externally-stored-data">}}).
+In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{<ref "tyk-self-managed#store-configuration-with-key-value-store">}}).
 
 ### Set Redis Connection Details (Required)
 
@@ -212,7 +212,7 @@ helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n tyk --c
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "planning-for-production/redis" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password.
@@ -331,7 +331,7 @@ global:
 Configure below inside `tyk-gateway` section.
 
 #### Update Tyk Gateway Version
-Set version of gateway at `tyk-gateway.gateway.image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/r/tykio/tyk-gateway/tags). Please check [Tyk Release notes]({{<ref "product-stack/tyk-gateway/release-notes/overview">}}) carefully while upgrading or downgrading.
+Set version of gateway at `tyk-gateway.gateway.image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/r/tykio/tyk-gateway/tags). Please check [Tyk Release notes]({{<ref "developer-support/release-notes/gateway">}}) carefully while upgrading or downgrading.
 
 #### Enabling TLS
 
@@ -442,6 +442,18 @@ Configure the gateways to load APIs with specific tags only by enabling `tyk-gat
       enabled: true
       tags: "edge,dc1,product"
 ```
+
+#### OpenTelemetry
+To enable OpenTelemetry for Gateway set `gateway.opentelemetry.enabled` flag to true. It is disabled by default.
+
+You can also configure connection settings for it's exporter. By default `grpc` exporter is enabled on `localhost:4317` endpoint.
+
+ To enable TLS settings for the exporter, you can set `gateway.opentelemetry.tls.enabled` to true. 
+
+#### Liveness and readiness probes
+Gateway liveness probes can be customised via `gateway.livenessProbe` field. All fields from PodLivenessProbe object can be added here. If set to empty or nil, the default health check on /health will be performed.
+
+Gateway readiness probes can be customised via `gateway.readinessProbe` field. All fields from PodReadinessProbe object can be added here. If set to empty or nil, the default health check on /health will be performed.
 
 For further details for configuring Tyk Gateway, please consult the [Tyk Gateway Configuration Options]({{<ref "tyk-oss-gateway/configuration">}}) guide.
 

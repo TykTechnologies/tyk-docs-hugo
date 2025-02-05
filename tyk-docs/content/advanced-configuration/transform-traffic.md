@@ -34,7 +34,7 @@ Tyk's [API-level cache]({{< ref "basic-config-and-security/reduce-latency/cachin
 
 ### Circuit Breaker
 
-The [Circuit Breaker]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers" >}}) is a protective mechanism that helps to maintain system stability by preventing repeated failures and overloading of services that are erroring. When a network or service failure occurs, the circuit breaker prevents further calls to that service, allowing the affected service time to recover while ensuring that the overall system remains functional.
+The [Circuit Breaker]({{< ref "tyk-self-managed#circuit-breakers" >}}) is a protective mechanism that helps to maintain system stability by preventing repeated failures and overloading of services that are erroring. When a network or service failure occurs, the circuit breaker prevents further calls to that service, allowing the affected service time to recover while ensuring that the overall system remains functional.
 
 ### Do Not Track Endpoint
 
@@ -42,7 +42,7 @@ If [traffic logging]({{< ref "product-stack/tyk-gateway/basic-config-and-securit
 
 ### Enforced Timeout
 
-Tyk’s [Enforced Timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) middleware can be used to apply a maximum time that the Gateway will wait for a response before it terminates (or times out) the request. This helps to maintain system stability and prevents unresponsive or long-running tasks from affecting the overall performance of the system.
+Tyk’s [Enforced Timeout]({{< ref "tyk-self-managed#circuit-breakers" >}}) middleware can be used to apply a maximum time that the Gateway will wait for a response before it terminates (or times out) the request. This helps to maintain system stability and prevents unresponsive or long-running tasks from affecting the overall performance of the system.
 
 ### Ignore Authentication
 
@@ -80,7 +80,7 @@ When working with Tyk OAS APIs, the request validation covers both headers and b
 
 ### Track Endpoint
 
-If you do not want to include all endpoints in your [Activity by Endpoint]({{< ref "product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint" >}}) statistics in Tyk Dashboard, you can enable this middleware for the endpoints to be included. 
+If you do not want to include all endpoints in your [Activity by Endpoint]({{< ref "api-management/dashboard-configuration#activity-by-endpoint" >}}) statistics in Tyk Dashboard, you can enable this middleware for the endpoints to be included. 
 
 ### URL Rewrite
 

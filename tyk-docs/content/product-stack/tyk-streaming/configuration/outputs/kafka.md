@@ -1,5 +1,5 @@
 ---
-title: Kafka
+title: Tyk Streams Kafka Output
 description: Explains an overview of configuring Kafka output
 tags: [ "Tyk Streams", "Stream Outputs", "Outputs", "Kafka" ]
 ---
@@ -103,8 +103,6 @@ You must also ensure that failed batches are never rerouted back to the same out
 However, this also means that manual intervention will eventually be required in cases where the batch cannot be sent due to configuration problems such as an incorrect `max_msg_bytes` estimate. A less strict but automated alternative would be to route failed batches to a dead letter queue using a `fallback` broker, but this would allow subsequent batches to be delivered in the meantime whilst those failed batches are dealt with.
 
 ### Troubleshooting
-
-If you're seeing issues writing to or reading from Kafka with this component then it's worth trying out the newer [kafka_franz output]({{< ref "/product-stack/tyk-streaming/configuration/outputs/kafka-franz" >}}).
 
 - I'm seeing logs that report `Failed to connect to kafka: kafka: client has run out of available brokers to talk to (Is your cluster reachable?)`, but the brokers are definitely reachable.
 
@@ -357,7 +355,9 @@ Default: `""`
 ### topic
 
 The topic to publish messages to.
-This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
+<!-- TODO: when interpolation supported
+This field supports interpolation functions.
+-->
 
 
 Type: `string`  
@@ -396,7 +396,9 @@ Default: `""`
 ### key
 
 The key to publish messages with.
-This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
+<!-- TODO: when interpolation supported
+This field supports interpolation functions.
+-->
 
 
 Type: `string`  
@@ -414,7 +416,9 @@ Options: `fnv1a_hash`, `murmur2_hash`, `random`, `round_robin`, `manual`.
 ### partition
 
 The manually-specified partition to publish messages to, relevant only when the field `partitioner` is set to `manual`. Must be able to parse as a 32-bit integer.
-This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
+<!-- TODO: when interpolation supported
+This field supports interpolation functions.
+-->
 
 
 Type: `string`  
@@ -490,9 +494,10 @@ Provide a list of explicit metadata key prefixes to be excluded when adding meta
 Type: `array`  
 Default: `[]`  
 
+<!-- TODO: when bloblang is supported
 ### inject_tracing_map
 
-A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mapping used to inject an object containing tracing propagation information into outbound messages. The specification of the injected fields will match the format used by the service wide tracer.
+A Bloblang mapping used to inject an object containing tracing propagation information into outbound messages. The specification of the injected fields will match the format used by the service wide tracer.
 
 
 Type: `string`  
@@ -505,6 +510,7 @@ inject_tracing_map: meta = @.merge(this)
 
 inject_tracing_map: root.meta.span = this
 ```
+-->
 
 ### max_in_flight
 
@@ -613,9 +619,10 @@ period: 1m
 period: 500ms
 ```
 
+<!-- TODO: when bloblang is supported
 ### batching.check
 
-A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) query that should return a boolean value indicating whether a message should end a batch.
+A Bloblang query that should return a boolean value indicating whether a message should end a batch.
 
 
 Type: `string`  
@@ -626,6 +633,7 @@ Default: `""`
 
 check: this.type == "end_of_transaction"
 ```
+-->
 
 ### batching.processors
 

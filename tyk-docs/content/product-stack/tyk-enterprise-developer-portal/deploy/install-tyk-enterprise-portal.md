@@ -38,7 +38,7 @@ Optionally, there could be three additional components:
 - **3rd party identity provider.** To [enable oAuth2.0 for your API Products]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration.md" >}}), you'll need to utilize an OpenID-compliant third-party identity provider.
 It's essential to note that the [Tyk Stack]({{< ref "/content/tyk-stack.md" >}}) doesn't include third-party identity providers, so you should refer to your Identity Provider's documentation for instructions on configuring and deploying it.
 This component is optional and required only for enabling oAuth2.0
-- **[Tyk Identity Broker]({{< ref "/content/tyk-identity-broker/getting-started.md" >}})**. You only need this component if you want to configure Single Sign-On for the Tyk Enterprise Developer Portal.
+- **[Tyk Identity Broker]({{< ref "api-management/external-service-integration" >}})**. You only need this component if you want to configure Single Sign-On for the Tyk Enterprise Developer Portal.
 For more guidance on this topic, please consult [the Single Sign-On section]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso.md" >}}) of the documentation
 - **Email server**. The portal is capable of sending notifications to both admin users and developers when specific events happen within the portal.
 To enable this feature, you need to specify a connection configuration to an email server or service, and configure other email settings.
@@ -72,8 +72,8 @@ In terms of admin functionality, the only limitation will be the inability to ap
 {{< note success >}}
 **Note** 
 
-SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please transition to PostgreSQL, MongoDB or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
 {{< /note >}}
 
-Yes, since 1.4.0 version of the Enterprise Developer Portal, it supports SQL databases (MariaDB, SQLite, MySQL, and PostgreSQL) for storing the portal's CMS assets.
+The Enterprise Developer Portal supports SQL databases (MariaDB, MySQL, and PostgreSQL) for storing the portal's CMS assets.
 During the bootstrap process, the portal will create the appropriate tables in the main database. The only thing required to enable SQL storage for the portal's assets is to specify the `db` [storage type]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage" >}}) either via a config file or an environment variable.

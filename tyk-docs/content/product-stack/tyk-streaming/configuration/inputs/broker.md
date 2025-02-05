@@ -1,5 +1,5 @@
 ---
-title: Broker
+title: Tyk Strems Broker Input
 description: Explains input broker
 tags: [ "Tyk Streams", "Inputs", "Broker" ]
 ---
@@ -154,9 +154,10 @@ period: 1m
 period: 500ms
 ```
 
+<!-- TODO: when bloblang is supported
 ### batching.check
 
-A [Bloblang query]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) that should return a boolean value indicating whether a message should end a batch.
+A Bloblang query that should return a boolean value indicating whether a message should end a batch.
 
 
 Type: `string`  
@@ -167,6 +168,7 @@ Default: `""`
 
 check: this.type == "end_of_transaction"
 ```
+-->
 
 ### batching.processors
 

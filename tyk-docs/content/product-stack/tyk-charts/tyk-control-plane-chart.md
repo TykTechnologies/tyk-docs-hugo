@@ -36,8 +36,8 @@ Also, you can set the version of each component through `image.tag`. You could f
 
 - [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
 - [Helm 3+](https://helm.sh/docs/intro/install/)
-- [Redis]({{< ref "tyk-oss/ce-helm-chart#recommended-via-bitnami-chart" >}}) should already be installed or accessible by the gateway and dashboard.
-- [MongoDB](https://www.mongodb.com) or [PostgreSQL](https://www.postgresql.org) should already be installed or accessible by dashboard. Please consult the list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}) that are compatible with Tyk.
+- [Redis]({{< ref "tyk-open-source#configure-legacy-tyk-headless-helm-chart" >}}) should already be installed or accessible by the gateway and dashboard.
+- [MongoDB](https://www.mongodb.com) or [PostgreSQL](https://www.postgresql.org) should already be installed or accessible by dashboard. Please consult the list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}) that are compatible with Tyk.
 
 {{< note success >}}
 **Note**
@@ -48,7 +48,7 @@ If you want to enable Tyk Developer Portal, please use PostgreSQL. MongoDB is no
 ## Tyk Control Plane Installations
 ### Installing The Chart
 
-To install the chart from Helm repository in namespace `tyk` with the release name `tyk-control-plane`, issue the following commands:
+To install the chart from Helm repository in namespace `tyk` with the release name `tyk-cp`, issue the following commands:
 ```bash
 helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 helm repo update
@@ -68,7 +68,7 @@ By default, the chart would expose MDCB service as ClusterIP. If you would like 
 
 Then just run:
 ```bash
-helm install tyk-control-plane tyk-helm/tyk-control-plane -n tyk --create-namespace -f values.yaml
+helm install tyk-cp tyk-helm/tyk-control-plane -n tyk --create-namespace -f values.yaml
 ```
 
 Follow the installation output to obtain connection details to Tyk MDCB, and use that to configure Tyk Data Planes using [tyk-data-plane]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart">}}) chart.
@@ -76,14 +76,14 @@ Follow the installation output to obtain connection details to Tyk MDCB, and use
 ### Uninstalling The Chart
 
 ```bash
-helm uninstall tyk-control-plane -n tyk
+helm uninstall tyk-cp -n tyk
 ```
 This removes all the Kubernetes components associated with the chart and deletes the release.
 
 ### Upgrading Chart
 
 ```bash
-helm upgrade tyk-control-plane tyk-helm/tyk-control-plane -n tyk -f values.yaml
+helm upgrade tyk-cp tyk-helm/tyk-control-plane -n tyk -f values.yaml
 ```
 
 ## Configuration
@@ -101,7 +101,15 @@ To configure Tyk components, users can utilize both config files and [environmen
 
 ### Bootstrapping
 
-By default, the chart executes a bootstrapping job immediately after installation. This process ensures the presence of a valid dashboard license and initializes key components such as tyk-dashboard, tyk-portal, and tyk-operator, enabling them for immediate use.
+By default, the chart executes a [bootstrapping job](https://github.com/TykTechnologies/tyk-k8s-bootstrap) immediately after installation. This process ensures the presence of a valid dashboard license and initializes key components such as tyk-dashboard, tyk-portal, and tyk-operator, enabling them for immediate use.
+
+The bootstrapping job uses three distinct applications acting as Helm chart hooks:
+
+| **Bootstrapping Component** | **Description** |
+|-----------------------------|-----------------|
+| `bootstrap-pre-install`     | - Runs as a pre-install hook. <br> - Validates the Tyk Dashboard license key to ensure proper installation prerequisites. |
+| `bootstrap-post-install`    | - Executes post-installation. <br> - Sets up an organization and admin user in the Tyk Dashboard. <br> - Creates Kubernetes secrets required by Tyk Operator and Tyk Enterprise Portal. <br> **Note**: If an existing organization and admin user are found in the database, the bootstrapping job will not set up a new organization and user. The Kubernetes secrets will not contain the expected Org ID or API key. Please update the Secret with existing credentials in this case. |
+| `bootstrap-pre-delete`      | - Functions as a pre-delete hook. <br> - Cleans up resources, ensuring no residual configurations remain post-uninstallation. |
 
 Key Notes on Bootstrapping:
 
@@ -150,7 +158,7 @@ tyk-gateway:
           key: backend-username
 ```
 
-In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{<ref "tyk-configuration-reference/kv-store#how-to-access-the-externally-stored-data">}}).
+In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{<ref "tyk-self-managed#store-configuration-with-key-value-store">}}).
 
 ### Set Redis Connection Details (Required)
 
@@ -177,7 +185,7 @@ helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n tyk --c
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "planning-for-production/redis" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password.
@@ -236,7 +244,7 @@ Bitnami MongoDB image is not supported on darwin/arm64 architecture.
 {{< note success >}}
 **Note**
 
-Please make sure you are installing MongoDB versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}).
+Please make sure you are installing MongoDB versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}).
 {{< /note >}}
 
 {{< note success >}}
@@ -291,7 +299,7 @@ Follow the notes from the installation output to get connection details.
 {{< note success >}}
 **Note**
 
-Please make sure you are installing PostgreSQL versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}).
+Please make sure you are installing PostgreSQL versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}).
 {{< /note >}}
 
 ```yaml
@@ -496,7 +504,7 @@ In Tyk control plane, Tyk Gateway acts as a management gateway that is used for 
 Configure the following details below, inside the `tyk-gateway` section.
 
 #### Update Tyk Gateway Version
-Set version of gateway at `tyk-gateway.gateway.image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/r/tykio/tyk-gateway/tags). Please check [Tyk Release notes]({{<ref "product-stack/tyk-gateway/release-notes/overview">}}) carefully while upgrading or downgrading.
+Set version of gateway at `tyk-gateway.gateway.image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/r/tykio/tyk-gateway/tags). Please check [Tyk Release notes]({{<ref "developer-support/release-notes/gateway">}}) carefully while upgrading or downgrading.
 
 #### Enabling TLS
 
@@ -681,6 +689,25 @@ Optional Steps, if needed:
 - If the `tyk-bootstrap` chart is used to bootstrap the Tyk Dashboard, ensure that bootstrap app can validate certificate of Tyk Dashboard or enable `insecureSkipVerify` in the `tyk-bootstrap` chart.
 - If the Tyk Gateway connects to the Tyk Dashboard, confirm that the Tyk Gateway has appropriate certificates for connecting to the Tyk Dashboard
 
+#### Audit Log Configurations
+
+You can manage audit logging for Tyk Dashboard via `auditLogs`:
+
+- `auditLogs.enabled`: Enables or disables audit logging. It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_ENABLED`. Disabled by default.
+- `auditLogs.type`: Specifies the storage type for audit logs (`db` or `file`). It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_STORETYPE`. Set to `file` by default.
+- `auditLogs.format`: Defines the format of audit log files (`json` or `text`). It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_FORMAT`. Set to `text` by default.
+- `auditLogs.path`: Sets the path to the audit log file. It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_PATH`. Set to "" by default.
+- `auditLogs.enableDetailedRecording`: Enables detailed logging, including HTTP requests (headers only) and full HTTP responses. It sets corresponding Dashboard environment variable `TYK_DB_AUDIT_DETAILEDRECORDING`. Disabled by default.
+
+#### OPA Configurations{#opa-configurations}
+
+You can manage OPA (Open Agent Policy) for Tyk Dashboard via `opa`:
+
+- `opa.enabled`: Enables OPA support. It sets corresponding Dashboard environment `TYK_DB_SECURITY_OPENPOLICY_ENABLED`. Disabled by default.
+- `opa.debug`: Activates OPA debug mode for detailed logging of policy execution. It sets corresponding Dashboard environment `TYK_DB_SECURITY_OPENPOLICY_DEBUG`. Disabled by default.
+- `opa.api`: Enables OPA API mode to manage policies via the Dashboard API. It sets corresponding Dashboard environment `TYK_DB_SECURITY_OPENPOLICY_ENABLEAPI`. Disabled by default.
+- `opa.allowAdminPasswordReset`: Required if OPA is enabled with its default policies. It sets corresponding Dashboard environment `TYK_DB_SECURITY_ALLOWADMINRESETPASSWORD`. Enabled by default.
+
 ### Tyk MDCB Configurations
 
 #### Tyk MDCB License (Required)
@@ -756,7 +783,7 @@ tyk-mdcb:
 
 ### Tyk Bootstrap Configurations
 
-To enable bootstrapping, set `global.components.bootstrap` to `true`. It would run [tyk-k8s-bootstrap](https://github.com/TykTechnologies/tyk-k8s-bootstrap) to bootstrap `tyk-control-plane` and to create Kubernetes secrets that can be utilized in Tyk Operator and Tyk Developer Portal.
+To enable [bootstrapping](#bootstrapping), set `global.components.bootstrap` to `true`. It would run [tyk-k8s-bootstrap](https://github.com/TykTechnologies/tyk-k8s-bootstrap) to bootstrap `tyk-control-plane` and to create Kubernetes secrets that can be utilized in Tyk Operator and Tyk Developer Portal.
 
 {{< note success >}}
 **Note**
@@ -791,7 +818,7 @@ tyk-dev-portal:
 {{< note success >}}
 **Note** 
 
-SQLite support will be deprecated from Tyk 5.7.0. To avoid disrupution, please transition to PostgreSQL, MongoDB or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
 {{< /note >}}
 
 By default, Tyk Developer Portal use `sqlite3` to store portal metadata. If you want to use a different SQL Database, please modify the section below.
@@ -882,7 +909,7 @@ tyk-dev-portal:
 ### Tyk Operator Configurations
 
 Tyk Operator is a licensed component that requires a valid key for operation. 
-Please refer to the [Tyk Operator Installation Guide]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}})
+Please refer to the [Tyk Operator Installation Guide]({{<ref "api-management/automations/operator#install-and-configure-tyk-operator">}})
 for detailed information on the installation and upgrade processes. 
 
 Prior to installing Tyk Operator, ensure that a valid license key is provided by setting `global.license.operator` field in values.yaml file. You can set license key via a Kubernetes secret using `global.secrets.useSecretName` field. The secret should contain a key called `OperatorLicense`.
@@ -893,4 +920,4 @@ to `true`.
 All other configurations related to Tyk Operator are available under `tyk-operator` section of `values.yaml` file.
 
 > Tyk Operator needs a cert-manager to be installed. Ensure that cert-manager is installed as described in the
-> official documentation: [Installing Tyk Operator]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}}).
+> official documentation: [Installing Tyk Operator]({{<ref "api-management/automations/operator#install-and-configure-tyk-operator">}}).

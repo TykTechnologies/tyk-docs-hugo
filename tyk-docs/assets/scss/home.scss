@@ -69,10 +69,12 @@ a {
 }
 
 .banner {
-  background-image: url('../img/leaf_background.svg');
+  // background-image: url('../img/leaf_background.svg');
   background-size: auto;
   background-repeat: no-repeat;
   background-position: right;
+  margin-left: 24px;
+  margin-right: 24px;
 
 }
 
@@ -87,7 +89,7 @@ a {
 }
 
 .explore-section {
-  background-image: url('../img/gradiet_explore.svg');
+  // background-image: url('../img/gradiet_explore.svg');
   background-size: auto;
   background-repeat: no-repeat;
   background-attachment: scroll;

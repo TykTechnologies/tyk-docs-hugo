@@ -20,7 +20,7 @@ The Tyk Dashboard has a separate configuration file, it is small and comes packa
 
 The Dashboard configuration file can be found in the `tyk-dashboard` folder and by default is called `tyk_analytics.conf`, though it can be renamed and specified using the `--conf` flag.
 
-Please consult the [data storage configuration]({{< ref "product-stack/tyk-dashboard/advanced-configurations/data-storage-configuration" >}}) guide for further information relating to how to configure Tyk's data storage across different database engines.
+Please consult the [data storage configuration]({{< ref "api-management/dashboard-configuration#data-storage-solutions" >}}) guide for further information relating to how to configure Tyk's data storage across different database engines.
 
 ### Environment Variables
 
@@ -120,8 +120,7 @@ The file will look like the sample below, the various fields are explained in th
     "certificates": [],
     "min_version": 0,
     "ssl_ciphers": null,
-    "ssl_insecure_skip_verify": false,
-    "prefer_server_ciphers": false
+    "ssl_insecure_skip_verify": false
   },
   "basic-config-and-security/security": {
     "allow_admin_reset_password": false,

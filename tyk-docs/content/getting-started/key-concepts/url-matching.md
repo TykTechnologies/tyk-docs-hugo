@@ -33,7 +33,7 @@ When configuring APIs, precise URL path matching helps developers:
 
 URL path matching is fundamental to the behavior of various Tyk middleware, including:
 
-- [Granular access control]({{< ref "security/security-policies/secure-apis-method-path" >}})
+- [Granular access control]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}})
 - [Allow List]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}})
 - [Block List]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware" >}})
 - [Request and Response transformation]({{< ref "advanced-configuration/transform-traffic" >}})
@@ -54,6 +54,7 @@ Understanding the Gateway's URL path matching behavior is essential in scenarios
 - **API Versioning**: You may want to allow different versions of an API, such as `/v1/users` and `/v2/users`, while still matching certain common paths or endpoints.
 - **Middleware Control**: Middleware often relies on URL path matching to determine when specific behaviors, such as rate limiting or authentication, should be applied.
 - **Security Policies**: URL path matching ensures that security policies, such as allow or block lists, are enforced for the correct paths without mistakenly leaving critical routes unprotected.
+- **Similar paths**: If you deploy multiple APIs with similar paths (e.g. `/project` and `/project-management`) you will want to ensure that the [correct path](#path-ordering) is matched to requests.
 
 By fine-tuning these configurations, developers can create robust,
 secure, and maintainable routing rules tailored to their specific use
@@ -62,7 +63,13 @@ cases.
 
 ## Structure of the API request
 
-When a client makes a request to an API hosted on Tyk Gateway, they provide an HTTP method and *request path*. This *request path* will comprise the host (or domain) name for the Gateway, the API *listen path* and then (optionally) the *endpoint path*.
+When a client makes a request to an API hosted on Tyk Gateway, they provide an HTTP method and *request path*. This *request path* will comprise the host (or *domain*) name for the Gateway, the API *listen path* and then (optionally) the *endpoint path*.
+
+```
+<protocol>://<domain>/<listenPath>/<endpointPath>
+```
+
+With reference to [RFC 3986](https://www.ietf.org/rfc/rfc3986.txt) the `protocol` is the RFC's `scheme`, `host` is the `authority` and `listenPath/endpointPath` is the `path`.
 
 The *listen path* is a mandatory field defined in the API definition loaded onto the Gateway. Tyk will compare the incoming *request path* (after stripping off the host name) against all registered *listen paths* to identify the API definition (and hence Gateway configuration) that should be used to handle the request. If no match is found, then Tyk will reject the request with `HTTP 404 Not Found`.
 
@@ -84,16 +91,33 @@ Tyk is acting as a secure proxy between the client and upstream service, so when
 <br>
 Thus a request to `<gateway-address>/<listen-path>/<version-identifier>/<endpoint-path>` will be proxied to `<target-url>/<listen-path>/<version-identifier>/<endpoint-path>`.
 <br>
-The [strip listen path]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#listenpath" >}}) option in the API definition is provided to remove the *listen path* from the upstream request; this allows differentiation between the publicly exposed API and private upstream API, for example to provide a cleaner, user-friendly facade to a legacy upstream service.
+The [strip listen path]({{< ref "api-management/gateway-config-tyk-oas#listenpath" >}}) option in the API definition is provided to remove the *listen path* from the upstream request; this allows differentiation between the publicly exposed API and private upstream API, for example to provide a cleaner, user-friendly facade to a legacy upstream service.
 {{< /note >}}
 
 ### Versioning identifier
 
-If [URL path versioning]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#request-url-path" >}}) is in use for an API, Tyk will perform a match of the first fragment after the *listen path* to identify which version of the API should be invoked.
+If [URL path versioning]({{< ref "api-management/api-versioning#request-url-path" >}}) is in use for an API, Tyk will perform a match of the first fragment after the *listen path* to identify which version of the API should be invoked.
 
 ### Endpoint path
 
 The remainder of the *request path* after any version identifier is considered to be the *endpoint path* (which may be simply `/`). When performing a match against endpoints configured in the API definition, Tyk treats the configured patterns as regular expressions, allowing advanced users to perform complex endpoint path matching by use of regexes in their API definitions.
+
+## Path Ordering
+
+Before attempting to [match](#pattern-matching) the incoming request to the various APIs deployed on Tyk to determine which route should be taken, Tyk will first place all the APIs in order. The order is important because the routing logic will compare the incoming request against each in turn until it finds a match (or returns `HTTP 404` if no match is found).
+
+The APIs loaded on the Gateway are ordered as follows:
+1. APIs that don't have a custom domain defined are moved to the end of the list.
+2. Then among each section (custom domain/no custom domain) it will sort by listen path length (longer paths first)
+    - Note that (dynamic) path parameters are not resolved at this stage so `/api/{category}/user` will rank higher than `/api/123/user`
+3. Then, for each listen path it will sort the endpoints using these rules:
+    - Remove path parameters (dynamic segments) in the listen path - for example `/{id}` will be replaced with `/`
+    - Order by the number of segments (count of `/`) from most to least - e.g. `/api/user/profile` before `/api/user`
+    - If two endpoints differ only by parameters, the non-parameterized goes first - e.g. `/api/user` before `/api/{userId}`
+    - If two endpoints have the same number of segments, the longer path goes first - e.g. `/api/user-access` before `/api/user`
+    - For equal length paths, lexicographical order is applied - e.g. `/api/aba` before `/api/abc`
+
+Having created the ordered list, Tyk will attempt to match the request against the paths (patterns) in the list, starting from the top and moving down the list. If a match is found, no further checks will be perfomed, so it is important to understand how Tyk orders the patterns to ensure there is no accidental routing to the wrong endpoint.
 
 
 ## Pattern matching 
@@ -194,7 +218,7 @@ For example, the pattern `/user` will match all of the following URLs:
 
 ### Prefix match
 
-When [TYK_GW_HTTPSERVEROPTIONS_ENABLEPATHSUFFIXMATCHING]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_path_prefix_matching" >}}) is enabled, the Gateway switches to prefix matching where it treats the configured pattern as a prefix which will only match against the beginning of the path. For example, a pattern such as `/json` will only match request URLs that begin with `/json`, rather than matching any URL containing `/json`.
+When [TYK_GW_HTTPSERVEROPTIONS_ENABLEPATHPREFIXMATCHING]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_path_prefix_matching" >}}) is enabled, the Gateway switches to prefix matching where it treats the configured pattern as a prefix which will only match against the beginning of the path. For example, a pattern such as `/json` will only match request URLs that begin with `/json`, rather than matching any URL containing `/json`.
 
 The gateway checks the request URL against several variations depending on whether path versioning is enabled:
 
@@ -204,7 +228,7 @@ The gateway checks the request URL against several variations depending on wheth
 
 The logic behind prefix matching is that it prepends the start of string symbol (`^`) if the URL begins with a `/`, to ensure that the URL begins with the specified pattern. For example, `/json` would be evaluated as `^/json`.
 
-For patterns that already start with `^`, the gateway will already perform prefix matching so `TYK_GW_HTTPSERVEROPTIONS_ENABLEPATHSUFFIXMATCHING` will have no impact.
+For patterns that already start with `^`, the gateway will already perform prefix matching so `TYK_GW_HTTPSERVEROPTIONS_ENABLEPATHPREFIXMATCHING` will have no impact.
 
 This option allows for more specific and controlled routing of API requests, potentially reducing unintended matches. Note that you may need to adjust existing route definitions when enabling this option.
 

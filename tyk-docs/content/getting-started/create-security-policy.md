@@ -16,7 +16,7 @@ aliases:
 
 A security policy encapsulates several options that can be applied to a key. It acts as a template that can override individual sections of an API key (or identity) in Tyk.
 
-See [What is a Security Policy?]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) for more details.
+See [What is a Security Policy?]({{< ref "api-management/policies#what-is-a-security-policy" >}}) for more details.
 
 {{< tabs_start >}}
 {{< tab_start "Cloud" >}}
@@ -32,7 +32,7 @@ See [What is a Security Policy?]({{< ref "getting-started/key-concepts/what-is-a
 {{< tab_end >}}
 {{< tab_start "Open Source" >}}
 
-## Tutorial: Create a Policy with the Gateway
+#### Create a Policy with the Gateway
 
 Adding a policy to the Tyk Gateway is very easy. Polices are loaded into memory on load and so need to be specified in advanced in a file called `policies.json`. To add a policy, simply create or edit the `/policies/policies.json` file and add the policy object to the object array:
 

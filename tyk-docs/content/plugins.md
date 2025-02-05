@@ -9,7 +9,7 @@ aliases:
 
 Plugins can be used to customize and enhance the capabilities of your APIs through integration with external services and databases to perform operations such as data transformation, custom authentication, logging and monitoring etc.
 
-When Tyk receives an API request, it works through a [chain]({{< ref "middleware-execution-order" >}}) of processing *middleware* that is configured using the API definition. There are a large number of built-in middleware in the processing chain that are dedicated to performing [client authentication]({{< ref "/api-management/authentication-authorization" >}}), [request transformation]({{< ref "advanced-configuration/transform-traffic" >}}), [caching]({{< ref "basic-config-and-security/reduce-latency/caching" >}}) and many other processes before proxying the request to the upstream.
+When Tyk receives an API request, it works through a [chain]({{< ref "middleware-execution-order" >}}) of processing *middleware* that is configured using the API definition. There are a large number of built-in middleware in the processing chain that are dedicated to performing [client authentication]({{< ref "/api-management/client-authentication" >}}), [request transformation]({{< ref "advanced-configuration/transform-traffic" >}}), [caching]({{< ref "basic-config-and-security/reduce-latency/caching" >}}) and many other processes before proxying the request to the upstream.
 
 Tyk's custom plugin facility provides a powerful and flexible way to extend the middleware chain. It allows API developers to write custom middleware, in various programming languages, that can perform additional processing of requests and responses.
 
@@ -33,7 +33,7 @@ Custom plugins are usually referred to by the location where they can be *hooked
 
 A variety of languages are supported for plugin development:
 
-- [Go]({{< ref "/plugins/supported-languages/golang" >}}) plugins are classed as *native* plugins, since they are implemented in the same language as Tyk Gateway.  
+- [Go]({{< ref "tyk-cloud#configure-plugins" >}}) plugins are classed as *native* plugins, since they are implemented in the same language as Tyk Gateway.  
 - [gRPC]({{< ref "/plugins/supported-languages/rich-plugins/grpc" >}}) plugins are executed remotely on a gRPC server. Tyk Gateway supports plugin development for any gRPC supported language.
 - [Javascript JVSM]({{< ref "/plugins/supported-languages/javascript-middleware" >}}) plugins are executed within a JavaScript Virtual Machine (JSVM) that is ECMAScript5 compatible.
 - [Python]({{< ref "/plugins/supported-languages/rich-plugins/python/python" >}}) plugins are embedded within the same process as Tyk Gateway.

@@ -22,7 +22,7 @@ The developer (or your application) then triggers a call to Tyk, using the token
 ### Requirements
 
 - A [Keycloak](https://www.keycloak.org/) instance.
-- A [Tyk Self Managed installation]({{< ref "tyk-self-managed/install" >}}) (Gateway + Dashboard).
+- A [Tyk Self Managed installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) (Gateway + Dashboard).
 
 ### Getting started with Keycloak
 
@@ -109,7 +109,7 @@ Tyk lets you set global portal settings that apply to **all portal-listed APIs**
 
 **Providers:** Different providers might implement the standard in slightly different ways, Tyk provides a specific driver for each one. For IDPs that aren’t on the list use the **Other** option.
 
-**Grant Types:** The [OAuth 2.0 grant types]({{< ref "/api-management/authentication-authorization#set-up-oauth-20-authorization" >}}) that will be used by the client, see the [specification](https://openid.net/specs/openid-connect-registration-1_0.html#rfc.section.2) for more details.
+**Grant Types:** The [OAuth 2.0 grant types]({{< ref "/api-management/client-authentication#use-tyk-as-an-oauth-20-authorization-server" >}}) that will be used by the client, see the [specification](https://openid.net/specs/openid-connect-registration-1_0.html#rfc.section.2) for more details.
 
 **Token Endpoint Auth Method:** defines the way the client will authenticate against the token endpoint.
 

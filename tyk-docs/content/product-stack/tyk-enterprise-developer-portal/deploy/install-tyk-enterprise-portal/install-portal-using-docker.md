@@ -95,7 +95,7 @@ Once you have completed this step, you are ready to launch the portal applicatio
 
 #### Pull and launch the portal container
 To pull and launch the portal using Docker, use the command provided below.
-Ensure that you replace `<tag>` with the specific version of the portal you intend to launch before executing the command, e.g. `tykio/portal:v1.7` for the portal v1.7. You can browse all available versions on [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) and in the [release notes section]({{< ref "product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0.md" >}}).
+Ensure that you replace `<tag>` with the specific version of the portal you intend to launch before executing the command, e.g. `tykio/portal:v1.7` for the portal v1.7. You can browse all available versions on [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) and in the [release notes section]({{< ref "developer-support/release-notes/portal#170-release-notes" >}}).
 ```console
 docker run -d \
     -p 3001:3001 \
@@ -191,7 +191,7 @@ Once you have completed this step, you are ready to launch the portal applicatio
 #### Pull and launch the portal container
 To pull and launch the portal using Docker, use the command provided below.
 Ensure that you replace `<tag>` with the specific version of the portal you intend to launch before executing the command, e.g. `tykio/portal:v1.7` for the portal v1.7.
-You can browse all available versions on [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) and in the [release notes]({{< ref "product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0.md" >}}) section.
+You can browse all available versions on [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) and in the [release notes]({{< ref "developer-support/release-notes/portal#170-release-notes" >}}) section.
 ```console
 docker run -d \
     -p 3001:3001 \
@@ -225,6 +225,13 @@ docker volume rm tyk-portal-mysql-data
 SQLite is useful for quick deployment and testing, however we don't recommend using it in production.
 {{< /warning >}}
 
+{{< note success >}}
+**Note** 
+
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
+{{< /note >}}
+
+
 ### Prepare an environment variables file and data volumes
 #### Create a volume for the portal's database
 To start with, you need to create a single volume for sqlite:
@@ -255,7 +262,7 @@ Once you have completed this step, you are ready to launch the portal applicatio
 #### Pull and launch the portal container
 To pull and launch the portal using Docker, use the command provided below.
 Ensure that you replace `<tag>` with the specific version of the portal you intend to launch before executing the command, e.g. `tykio/portal:v1.7` for the portal v1.7.
-You can browse all available versions on [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) and in the [release notes]({{< ref "product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0.md" >}}) section.
+You can browse all available versions on [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) and in the [release notes]({{< ref "developer-support/release-notes/portal#170-release-notes" >}}) section.
 ```console
 docker run -d \
     -p 3001:3001 \

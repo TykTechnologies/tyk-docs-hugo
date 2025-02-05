@@ -355,7 +355,7 @@ The hostname for the Redis collection and can be an IP address.
 ENV: <b>TYK_DB_REDISADDRS</b><br />
 Type: `[]string`<br />
 
-Used for configuring Redis clusters. See [Redis Cluster and Tyk Dashboard](https://tyk.io/docs/tyk-stack/tyk-gateway/configuration/redis-cluster/) for more info. Example:
+Used for configuring Redis clusters. See [Redis Cluster and Tyk Dashboard](https://tyk.io/docs/migration-to-tyk#configure-redis-cluster/) for more info. Example:
 ```
    "addrs": [
      "server1:6379",
@@ -701,7 +701,7 @@ SSL certificates used by your Gateway server. A list of certificate path to file
 ENV: <b>TYK_DB_HTTPSERVEROPTIONS_MINVERSION</b><br />
 Type: `uint16`<br />
 
-Minimum TLS version. See [TLS and SSL](https://tyk.io/docs/basic-config-and-security/security/tls-and-ssl/).
+Minimum TLS version. See [TLS and SSL](https://tyk.io/docs/api-management/certificates/).
 
 ### http_server_options.ssl_ciphers
 ENV: <b>TYK_DB_HTTPSERVEROPTIONS_CIPHERSUITES</b><br />
@@ -721,7 +721,7 @@ Type: `bool`<br />
 
 A boolean value to control whether the server selects the preferred ciphersuite for the client, or the preferred ciphersuite for the server. If set to true, the server preferences in the order of the elements listed in `ssl_ciphers` is used.
 
-For more information see [TLS and SSL](https://tyk.io/docs/basic-config-and-security/security/tls-and-ssl/)
+For more information see [TLS and SSL](https://tyk.io/docs/api-management/certificates/)
 
 ### security
 This section controls login limits for both the Dashboard and the Developer Portal. The path for you audit log is also set here.
@@ -838,6 +838,18 @@ Type: `string`<br />
 
 When using SAML with embedded identity broker, is required to upload a certificate that is encoded by the gateway to store it safely, TIB needs the private key as well, hence it needs the same encoding secret so the information is decoded successfully. This value should match with the encoding secret set in the gateway config file, if not set then it will use by default tyk_api_config.secret to attempt to decode the certificate.
 
+### security.forbid_admin_view_access_token
+ENV: <b>TYK_DB_SECURITY_FORBIDADMINVIEWACCESSTOKEN</b><br />
+Type: `bool`<br />
+
+ForbidAdminViewAccessToken is a security feature that allows you to prevent the admin user from viewing the access token of a user. The default is false.
+
+### security.forbid_admin_reset_access_token
+ENV: <b>TYK_DB_SECURITY_FORBIDADMINRESETACCESSTOKEN</b><br />
+Type: `bool`<br />
+
+ForbidAdminResetAccessToken is a security feature that allows you to prevent the admin user from resetting the access token of a user. The default is false.
+
 ### ui
 This section controls various settings for the look and feel of the Dashboard UI.
 
@@ -846,6 +858,36 @@ ENV: <b>TYK_DB_UI_LANGUAGES</b><br />
 Type: `map[string]string`<br />
 
 This section lists the current languages the Dashboard UI supports
+
+### ui.trial
+Trial section defines the information about the cloud trial period.
+
+### ui.trial.end_date
+ENV: <b>TYK_DB_UI_TRIAL_ENDDATE</b><br />
+Type: `int64`<br />
+
+EndDate contains the timestamp of end date of the trial in unix UTC timestamp.
+
+### ui.trial.hubspot_form
+HubspotForm contains the hubspot form details.
+
+### ui.trial.hubspot_form.region
+ENV: <b>TYK_DB_UI_TRIAL_HUBSPOTFORM_REGION</b><br />
+Type: `string`<br />
+
+The region of the account where the form was created.
+
+### ui.trial.hubspot_form.portal_id
+ENV: <b>TYK_DB_UI_TRIAL_HUBSPOTFORM_PORTALID</b><br />
+Type: `string`<br />
+
+The ID of the HubSpot account that the form was created in.
+
+### ui.trial.hubspot_form.form_id
+ENV: <b>TYK_DB_UI_TRIAL_HUBSPOTFORM_FORMID</b><br />
+Type: `string`<br />
+
+The form's ID, which is used to retrieve the form definition.
 
 ### ui.hide_help
 ENV: <b>TYK_DB_UI_HIDEHELP</b><br />
@@ -864,6 +906,9 @@ ENV: <b>TYK_DB_UI_DONTALLOWLICENSEMANAGEMENT</b><br />
 Type: `bool`<br />
 
 Do not allow license management screen
+
+### ui.labs
+Feature flags for the UI
 
 ### ui.dev
 ENV: <b>TYK_DB_UI_DEV</b><br />
@@ -1049,6 +1094,19 @@ Type: `bool`<br />
 
 Enables detailed records in the audit log. Set to false by default. If set to `true` then audit log records will contain the http-request (without body) and full http-response including the body`
 
+### audit.store_type
+ENV: <b>TYK_DB_AUDIT_STORETYPE</b><br />
+Type: `string`<br />
+
+StoreType defines the method used to store audit logs.
+Possible values are:
+  - "db": Store logs in a database.
+  - "file": Store logs in a file.
+  - "no_op": Disable logging (no operation).
+
+This field allows you to configure how audit logs are persisted.
+The default value is "file".
+
 ### enable_multi_org_users
 ENV: <b>TYK_DB_ENABLEMULTIORGUSERS</b><br />
 Type: `bool`<br />
@@ -1141,4 +1199,16 @@ ENV: <b>TYK_DB_OAS_VALIDATESCHEMADEFAULTS</b><br />
 Type: `bool`<br />
 
 ValidateSchemaDefaults enables validation of values provided in `default` fields against the declared schemas in the OpenAPI Document. Defaults to false.
+
+### streaming
+Holds Tyk Streaming configuration
+
+### labs
+Experimental and beta features configuration settings
+
+### disable_telemetry
+ENV: <b>TYK_DB_DISABLETELEMETRY</b><br />
+Type: `bool`<br />
+
+Enable or disable sending telemetry data such as analytics, API configurations, etc.
 
