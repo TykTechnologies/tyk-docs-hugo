@@ -164,16 +164,25 @@ When selecting the "LTS" option, users will be able to choose from the following
 Older versions (e.g., 5.2.x and below) are marked as "Unsupported" and will be greyed out. 
 
 **Implications for Unsupported Versions**
-Users with deployments on unsupported versions (e.g., 5.2.5) will see a notice informing them that their version is "Unsupported."
+Users with deployments on unsupported versions (e.g., 5.2.x) will see a notice informing them that their version is "Unsupported".
 
 Unsupported versions are not eligible for bug fixes or feature updates. Users encountering issues will be advised to upgrade to a supported version.
 
 While Tyk Cloud deployments may remain on unsupported versions without a specific upgrade timeline, we may automatically upgrade such deployments in case internal reasons (e.g., infrastructure dependencies, security, or performance risks) require such an action. In this case, Tyk will communicate a timeline for upgrading in advance.
 
 **Upgrade Recommendations**
-Users running deployments on a supported but non-latest version within a branch (e.g., 5.3.2 in the current LTS branch) will see a notice encouraging an upgrade to the "Recommended" version (e.g., 5.3.4).
+Users running deployments on a supported but non-latest version within a branch (e.g., 5.3.2) will see a notice encouraging an upgrade to the "Recommended" version (e.g., 5.3.4).
 
 This ensures users benefit from the latest security patches and improvements within the supported branch.
+
+**Auto-Upgrade Functionality**
+To simplify version management and keep deployments up-to-date with the latest security patches and improvements, we are introducing an Auto-Upgrade feature for Cloud users.
+
+Users can now enable Auto-Upgrade for their deployments, allowing them to be automatically upgraded based on the selected version channel:
+- Latest: Deployments will always upgrade to the newest available feature version
+- LTS: Deployments will be upgraded to the latest patch version within the LTS branch.
+
+Once enabled, the auto-upgrade will run on a scheduled basis, which users can configure by selecting a preferred day and time for upgrades. This ensures greater flexibility and control over when updates occur.
 
 ---
 
