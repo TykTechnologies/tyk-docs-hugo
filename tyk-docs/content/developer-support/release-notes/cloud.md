@@ -58,15 +58,6 @@ Each change log item should be expandable. The first line summarises the changel
       Tyk Cloud now provides improved visibility into supported LTS versions. Every patch version within the current LTS branch is now labeled as "Supported", while the latest patch is marked as "Recommended". This update eliminates confusion around deprecated versions and prevents unexpected "unsupported" status changes, allowing for smoother upgrade planning and system stability.
     </details>
   </li>  
-
-<li>
-    <details>
-      <summary>
-        Auto-Upgrade for Gateway Versions
-      </summary>
-      Tyk Cloud now offers an Auto-Upgrade feature, allowing users to automatically upgrade their deployments based on their selected version channel (Latest or LTS). This feature enables seamless version management by providing a toggle option within the version settings, along with scheduling controls for selecting the preferred upgrade day and time.
-    </details>
-  </li>
   
 </ul>
 
