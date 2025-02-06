@@ -114,6 +114,9 @@ async function analyzePR(owner, repo, pr, ignoreBuger) {
         // console.log(JSON.stringify(eod_report_result, null, 2));
         // return
         const merged = categorizeBulletPoints(eod_report_result, true);
+        if (merged === "") {
+            merged = "No new pages published."
+        }
         // console.log(merged);
 
         console.log("============ Final Print ============")
