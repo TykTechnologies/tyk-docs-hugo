@@ -89,6 +89,37 @@ Otherwise, you can design an API from scratch or a template if you have configur
 
 * **OPA Rules**: You can use this tab to edit your [OPA Rules](/tyk-dashboard/open-policy-agent/)- you can use these custom rules to control the behavior of all of your dashboard APIs. For example, you can restrict regular users to GET requests only, while allowing POST requests for admin roles. 
 
+* **Nodes & Licenses**: This page is available only for `Tyk Self Managed` installation and provides an overview of the licensing details and usage metrics for the Tyk API Gateway.
+
+    {{< img src="/img/getting-started/tabs-system-management-license.png" alt="System Management Side Bar" >}}
+
+    1. **License Information**:
+
+        - **Active Gateways**: Shows the number of available active gateways. An active gateway refers to a Tyk Gateway instance currently running and actively processing API requests. This gateway can be part of a [Control Plane]({{< ref "tyk-multi-data-centre/mdcb-components#control-plane" >}}) or [Data Plane]({{< ref "tyk-multi-data-centre/mdcb-components#data-plane" >}}).
+        - **Total Gateways Available**: Total number of Gateways available per the license.
+        - **Remaining Gateways**: Unused license slots.
+        - **License Expiry**: Represents the expiry date of the license.
+
+    2. **Active Gateways**:
+
+        - Lists the currently active gateways along with their hostnames.
+        - Includes a status indicator (green dot) to signify active connections.
+
+    3. **License Usage**:
+    
+        - TODO:
+
+    3. **Data Plane License Usage**:
+    
+        - TODO:
+
+    4. **Gateway License Usage**:
+
+        - TODO:
+
+    5. **Total API Traffic**:
+
+        - Provides a visual representation of **Total API Traffic** over a period of a month or a day.
 
 #### Classic Portal
 {{< img src="/img/getting-started/tabs-classic-portal.png" alt="Classic Portal Side Bar" >}}
