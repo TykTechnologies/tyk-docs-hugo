@@ -29,4 +29,4 @@ jobs:
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub Token for API calls
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_KEY }} # Org key already available
+          ANTHROPIC_KEY: ${{ secrets.ANTHROPIC_KEY }} # Org key already available

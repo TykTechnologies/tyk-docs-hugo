@@ -36,3 +36,5 @@ jobs:
         env:
           MAIN_REVIEWER: ${{ inputs.MAIN_REVIEWER }}
           PR_SCAN_DATE: ${{ inputs.PR_SCAN_DATE }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub Token for API calls
+          ANTHROPIC_KEY: ${{ secrets.ANTHROPIC_KEY }} # Org key already available
