@@ -79,7 +79,9 @@ async function analyzePR(owner, repo, pr, ignoreBuger) {
     const owner = "TykTechnologies";
     const repo = "tyk-docs";
 
-    const date = "" || process.env.PR_SCAN_DATE
+    const date = process.env.PR_SCAN_DATE || new Date().toISOString();
+    console.log("Report Date:", date); // Example output: "2025-02-04T15:30:00Z"
+
 
     try {
         // ###############################

@@ -4,10 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       MAIN_REVIEWER:
-        description: "The main reviewer for the PR"
+        description: "The GitHub user ID of the primary reviewer whose approval is required for the PR."
         required: true
+        default: "sharadregoti"
       PR_SCAN_DATE:
-        description: "The date when the PR was scanned"
+        description: "The date when the report was generated. Defaults to the current date (e.g., 2025-02-04)."
         required: true
 
 jobs:
