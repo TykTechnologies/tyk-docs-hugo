@@ -14,7 +14,7 @@ Tyk will try to output structured logs, and so will include context data around 
 
 If configured, then a [logging event handler]({{< ref "product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/log-handlers" >}}) will also report **API events** to the configured log output.
 
-When contacting support, you may be asked to change the logging level as part of the support handling process. See [Support Information]({{< ref "troubleshooting/tyk-gateway/support-information" >}}) for more details.
+When contacting support, you may be asked to change the logging level as part of the support handling process. See [Support Information]({{< ref "api-management/troubleshooting-debugging#support-information" >}}) for more details.
 
 ## Configuring Tyk logs
 

@@ -18,7 +18,7 @@ The process is very similar to [HTTP API creation]({{< ref "/getting-started/cre
 
 ## Prerequisites
 
-In order to complete the next steps, you need to have [Tyk Self Managed installed]({{< ref "tyk-self-managed/install" >}}). You can also create a 5-week trial account in Tyk Cloud.
+In order to complete the next steps, you need to have [Tyk Self Managed installed]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}). You can also create a 5-week trial account in Tyk Cloud.
 
 {{< button_left href="https://tyk.io/sign-up/" color="green" content="Try it free" >}}
 
@@ -48,12 +48,12 @@ From the **Authentication** section:
 
 You have the following options:
 
-- **Authentication mode**: This is the security method to use with your API. First, you can set it to `Open(Keyless)`, but that option is not advised for production APIs. See [Authentication and Authorization]({{< ref "/api-management/authentication-authorization" >}}) for more details on securing your API.
+- **Authentication mode**: This is the security method to use with your API. First, you can set it to `Open(Keyless)`, but that option is not advised for production APIs. See [Client Authentication]({{< ref "/api-management/client-authentication" >}}) for more details on securing your API.
 - **Strip Authorization Data**: Select this option to strip any authorization data from your API requests.
 - **Auth Key Header Name**: The header name that will hold the token on inbound requests. The default for this is `Authorization`.
 - **Allow Query Parameter As Well As Header**: Set this option to enable checking the query parameter as well as the header for an auth token. **This is a setting that might be important if your GQL includes subscription operations**.
 - **Use Cookie Value**: It is possible to use a cookie value as well as the other two token locations. 
-- **Enable client certificate**: Select this to use Mutual TLS. See [Mutual TLS]({{< ref "/api-management/authentication-authorization#enable-mutual-tls" >}}) for details on implementing mutual TLS.
+- **Enable client certificate**: Select this to use Mutual TLS. See [Mutual TLS]({{< ref "/api-management/client-authentication#use-mutual-tls" >}}) for details on implementing mutual TLS.
 
 ### Step 5: Save the API
 
@@ -74,7 +74,7 @@ Your GQL API is now secured and ready to use.
 
 ## Prerequisites
 
-It is possible to create GQL APIs using [Tyk Dashboard APIs]({{< ref "/tyk-apis/tyk-dashboard-api/api-definitions">}}). To make things easier you can use our [Postman collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview).
+It is possible to create GQL APIs using [Tyk Dashboard APIs]({{< ref "api-management/dashboard-configuration#manage-apis---api-definition">}}). To make things easier you can use our [Postman collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview).
 
 You will need an API key for your organization and one command to create a GQL API and make it live.
 ### Obtain your Tyk Dashboard API Access Credentials key & Dashboard URL

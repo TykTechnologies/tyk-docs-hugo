@@ -57,17 +57,19 @@ To create plugin bundles you will need the following:
 
 A suggested directory structure is shown below for Golang, Javascript and Python bundles in the tabs below.
 
-In this case, the `manifest.json` will reference the Python files located in the plugins subdirectory, ensuring the
-Python plugin source files are organized relative to the manifest. The Tyk Gateway will load and execute these Python
-plugins based on the paths defined in the `manifest.json` file.
+{{< note success >}}
+**Note**  
+
+Sub-directories (folders) are not supported inside the `bundle-directory` location.
+
+{{< /note >}}
 
 {{< tabs_start >}} {{< tab_start "Golang" >}}
 
 ```bash
 /bundle-directory
 ├── manifest.json               # Manifest file with plugin references
-└── /plugins                    # Subdirectory containing compiled plugin
-    └── plugin.so               # Compiled Golang plugin
+└── plugin.so                   # Compiled Golang plugin
 ```
 
 {{< tab_end >}} {{< tab_start "Javascript" >}}
@@ -75,9 +77,8 @@ plugins based on the paths defined in the `manifest.json` file.
 ```bash
 /bundle-directory
 ├── manifest.json               # Manifest file with plugin references
-└── /plugins                    # Subdirectory containing source files
-    ├── plugin1.js              # First JavaScript plugin source file
-    └── plugin2.js              # Second JavaScript plugin source file
+├── plugin1.js                  # First JavaScript plugin source file
+└── plugin2.js                  # Second JavaScript plugin source file
 ```
 
 {{< tab_end >}}
@@ -87,9 +88,102 @@ plugins based on the paths defined in the `manifest.json` file.
 ```bash
 /bundle-directory
 ├── manifest.json               # Manifest file with plugin references
-└── /plugins                    # Subdirectory containing source files
-    ├── plugin1.py              # First Python plugin source file
-    └── plugin2.py              # Second Python plugin source file
+├── plugin1.py                  # First Python plugin source file
+└── plugin2.py                  # Second Python plugin source file
+```
+
+{{< tab_end >}}
+
+{{< tabs_end >}}
+
+The `manifest.json` will reference the files located in the `bundle-directory`, ensure plugin source files are organized relative to the manifest. The Tyk Gateway will load and execute these plugins based on the paths defined in the `manifest.json` file.
+
+Sample `manifest.json` is shown below for Golang, Javascript and Python bundles in the tabs below.
+
+{{< tabs_start >}} {{< tab_start "Golang" >}}
+
+```json
+{
+  "file_list": [
+    "plugin.so"
+  ],
+  "custom_middleware": {
+    "pre": [
+      {
+        "name": "PreMiddleware",
+        "path": "./plugin.so"
+      }
+    ],
+    "post": [
+      {
+        "name": "PostMiddleware",
+        "path": "./plugin.so"
+      }
+    ],
+    "driver": "goplugin"
+  },
+  "checksum": "",
+  "signature": ""
+}
+
+```
+
+{{< tab_end >}} {{< tab_start "Javascript" >}}
+
+```json
+{
+  "file_list": [
+    "plugin1.js",
+    "plugin2.js"
+  ],
+  "custom_middleware": {
+    "pre": [
+      {
+        "name": "PreMiddleware",
+        "path": "./plugin1.js"
+      }
+    ],
+    "post": [
+      {
+        "name": "PostMiddleware",
+        "path": "./plugin2.js"
+      }
+    ],
+    "driver": "otto"
+  },
+  "checksum": "",
+  "signature": ""
+}
+```
+
+{{< tab_end >}}
+
+{{< tab_start "Python" >}}
+
+```json
+{
+  "file_list": [
+    "plugin1.py",
+    "plugin2.py"
+  ],
+  "custom_middleware": {
+    "pre": [
+      {
+        "name": "PreMiddleware",
+        "path": "./plugin1.py"
+      }
+    ],
+    "post": [
+      {
+        "name": "PostMiddleware",
+        "path": "./plugin2.py"
+      }
+    ],
+    "driver": "python"
+  },
+  "checksum": "",
+  "signature": ""
+}
 ```
 
 {{< tab_end >}}

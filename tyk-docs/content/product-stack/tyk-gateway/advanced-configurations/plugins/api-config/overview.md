@@ -1,6 +1,6 @@
 ---
 date: 2024-08-28
-title: Overview
+title: Custom Plugins API Overview
 description: "This section explains an overview for how to configure plugins for APIs"
 tags: [ "plugins" ]
 ---
