@@ -55,6 +55,9 @@ A plugin bundle must include a manifest file (called `manifest.json`). The manif
 
 A sample manifest file looks like this:
 
+- The `name` is the function to be invoked upon a specific plugin hook.  
+- The `path` is the name of the file which contains the function. Note that you can not have nested paths or subdirectories in the path specification. 
+
 ```json
 {
   "file_list": [
@@ -64,12 +67,14 @@ A sample manifest file looks like this:
   "custom_middleware": {
     "pre": [
       {
-        "name": "PreMiddleware"
+        "name": "PreMiddleware",
+        "path": "middleware.py"
       }
     ],
     "post": [
       {
-        "name": "PostMiddleware"
+        "name": "PostMiddleware",
+        "path": "middleware.py"
       }
     ],
     "driver": "python"
