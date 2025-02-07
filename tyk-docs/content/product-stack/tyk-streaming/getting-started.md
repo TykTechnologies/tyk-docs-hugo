@@ -8,16 +8,6 @@ In this guide, you'll learn how to set up Tyk Streams and configure your first a
 guide, you will have a fully functional API that allows you to subscribe to a WebSocket and see the messages you post to
 Tyk (REST) in real-time.
 
-## Your feedback
-Before you start we have a small request -
-</br>
-Tyk Streams is currently in the
-[Lab Release]({{< ref "developer-support/release-notes/special-releases#lab-releases">}}) phase. Your feedback is crucial
-in helping us improve and shape this capability while it’s still in the making. We'd love your input on your experience
-using Tyk Streams, the documentation, learning about your use case, areas for improvement and any other relevant
-information you can share with us.
-{{< button_left href="https://survey.hsforms.com/1lb_eMrtRR5W3WoEEuACQ2Q3ifmg" color="green" content="Feedback" >}}
-
 ---
 
 Let's get started and unlock the power of Tyk for your asynchronous API needs!
@@ -166,15 +156,20 @@ docker compose logs tyk-gateway -f
 
 </br>
 {{< note success>}}
-**You did it!!!**
+**You did it!**
 
-**You have successfully set up Tyk Streams and created your first async API!**
+**You have successfully set up Tyk Streams and created your first async API**
 {{< /note >}}
 
-## Next Steps
-
-- Thanks for getting started with Tyk Streams! Please take a moment to share your thoughts and experiences with us
+## Your feedback
+Now that you have completed the Quick Start, we'd love your feedback -
+</br>
+We are always looking to improve our product offerings. We'd love your input on your experience
+using Tyk Streams, the documentation, learning about your use case, areas for improvement and any other relevant
+information you can share with us.
 {{< button_left href="https://survey.hsforms.com/1lb_eMrtRR5W3WoEEuACQ2Q3ifmg" color="green" content="Feedback" >}}
+
+## Next Steps
 
 - You can now start exploring [Tyk Stream capabilities]({{< ref "api-management/async-apis/use-cases" >}}) and
 [use cases]({{< ref "api-management/async-apis/advanced-use-cases" >}})
