@@ -119,7 +119,7 @@ Otherwise, you can design an API from scratch or a template if you have configur
 
     5. **Total API Traffic**:
 
-        - Provides a visual representation of **Total API Traffic** over a period of a month or a day.
+        - Provides a visual representation of **Total API Traffic** across all Gateways in the installation. This can be viewed over the past month or day.
 
 #### Classic Portal
 {{< img src="/img/getting-started/tabs-classic-portal.png" alt="Classic Portal Side Bar" >}}
