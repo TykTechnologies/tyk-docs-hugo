@@ -37,19 +37,3 @@ export async function formatName(prName) {
     return msg.content[0].text;
 }
 
-const name = `[DX-1798] Driver in the wrong position in manifest.json - go bundle example`
-
-const msg = await anthropic.messages.create({
-    model: "claude-3-5-sonnet-20241022",
-    max_tokens: 1024,
-    messages: [{ role: "user", content: `
-Hello, Claude. 
-
-Remove the Jira ticket reference from the below string. Don't include any explanation text. The output will be read by a machine.
-
-${name}
-` }],
-});
-console.log(msg.content[0].text);
-
-
