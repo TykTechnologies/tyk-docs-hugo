@@ -95,7 +95,7 @@ Otherwise, you can design an API from scratch or a template if you have configur
 
     1. **License Information**:
 
-        - **Active Gateways**: Shows the number of available active gateways. An active gateway refers to a Tyk Gateway instance currently running and actively processing API requests. This gateway can be part of a [Control Plane]({{< ref "tyk-multi-data-centre/mdcb-components#control-plane" >}}) or [Data Plane]({{< ref "tyk-multi-data-centre/mdcb-components#data-plane" >}}).
+        - **Active Gateways**: Shows the number of available active gateways. An active gateway refers to a Tyk Gateway instance currently running and actively processing API requests.
         - **Total Gateways Available**: Total number of Gateways available per the license.
         - **Remaining Gateways**: Unused license slots.
         - **License Expiry**: Indicates the remaining time until the license expires (e.g., 'in 8 days').
