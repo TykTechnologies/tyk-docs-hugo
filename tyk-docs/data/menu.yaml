@@ -773,6 +773,30 @@ menu:
         path: /api-management/custom-plugins-middleware
         category: Page
         show: True
+      - title: "Custom Plugins"
+        category: Directory
+        show: True
+        menu:
+          - title: "Overview"
+            path: /api-management/plugins/overview
+            category: Page
+            show: True
+          - title: "Plugin Types"
+            path: /api-management/plugins/plugin-types
+            category: Page
+            show: True
+          - title: "Golang Plugins"
+            path: /api-management/plugins/golang
+            category: Page
+            show: True
+          - title: "Javscript Plugins"
+            path: /api-management/plugins/javascript
+            category: Page
+            show: True
+          - title: "Rich Plugins"
+            path: /api-management/plugins/rich-plugins
+            category: Page
+            show: True
       - title: "Manage APIs"
         category: Directory
         show: True
