@@ -93,9 +93,7 @@ manage and monetize real-time event streams and asynchronous APIs.
 
 ## Getting started
 
-Our first release of Tyk Streams is now available, and we'd love for you to try it out. Click the button to sign up and take it for a spin:
-
-{{< button_left href="https://survey.hsforms.com/1ItPCBg-_Tre8WFJZL4pp6Q3ifmg" color="green" content="Get started with Tyk Streams" >}}
+Our first release of Tyk Streams is now available, please reach out to your account manager to get all the details to try it out. 
 
 ---
 ## Overview
@@ -114,7 +112,7 @@ expect from their API management solution.
 
 ---
 
-## How Tyk Streams Enables Async API Support?
+## How Tyk Streams Enables Async API Support
 
 Tyk Streams seamlessly integrates with the Tyk API Gateway, allowing you to manage asynchronous APIs and event streams
 alongside your existing synchronous APIs. It provides a range of capabilities to support async API management, including:
