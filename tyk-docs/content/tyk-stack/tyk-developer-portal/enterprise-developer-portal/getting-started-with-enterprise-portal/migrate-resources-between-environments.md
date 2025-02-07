@@ -125,7 +125,7 @@ export ENV_B_TOKEN="your-target-environment-token"
 
 ### Export Organisations from Environment A
 
-To start, you'll want to gather the relevant data from Environment A. This ensures you have everything you need for a smooth migration. We skip the default organisation since it is created automatically by the portal, and dealing with it could lead to conflicts. The data is saved into a JSON file, making it easy to handle during the import process.
+To start, you'll want to gather the relevant data from Environment A. This ensures you have everything you need for a smooth migration. The data is saved into a JSON file, making it easy to handle during the import process.
 
 Here's an example of how you can export organisations from Environment A:
 
