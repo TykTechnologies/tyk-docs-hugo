@@ -61,6 +61,29 @@ Each change log item should be expandable. The first line summarises the changel
   
 </ul>
 
+##### Changed
+<!-- This should be a bullet-point list of updated features. Explain:
+- Why was the update necessary?
+- How does the update benefit users?
+- Link to documentation of the updated feature
+- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
+
+<ul>
+  <li>
+    <details>
+      <summary>
+        Improved Organization Overview with Task & Environment Views
+      </summary>
+      The Overview page in Tyk Cloud has been redesigned to provide a more streamlined and actionable summary of an organization’s key elements. Users can now toggle between two views:
+      - Task View: Groups control planes and developer portals by high-level jobs to be done, such as managing APIs or publishing products.
+      - Environment View: Displays control planes and developer portals grouped by environment, making it easier to navigate large setups.
+      Additionally, existing organization statistics have been moved to a new System Usage page under Deployments.
+    </details>
+  </li>
+  
+</ul>
+
 ##### Fixed
 <!-- This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
 - What problem the issue caused
