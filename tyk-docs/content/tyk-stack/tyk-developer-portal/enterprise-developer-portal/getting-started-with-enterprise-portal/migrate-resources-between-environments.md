@@ -297,4 +297,3 @@ fi
 If you find any discrepancies, you may need to:
 - Review the migration logs
 - Re-run the import for specific resources
-- Contact support if you encounter persistent issues
