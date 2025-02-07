@@ -89,7 +89,7 @@ Otherwise, you can design an API from scratch or a template if you have configur
 
 * **OPA Rules**: You can use this tab to edit your [OPA Rules](/tyk-dashboard/open-policy-agent/)- you can use these custom rules to control the behavior of all of your dashboard APIs. For example, you can restrict regular users to GET requests only, while allowing POST requests for admin roles. 
 
-* **Nodes & Licenses**: This page is available only for `Tyk Self Managed` installation and provides an overview of the licensing details and usage metrics for the Tyk API Gateway.
+* **Nodes & Licenses**: This page provides an overview of the Tyk installation, including license usage metrics and Gateway status. This is available only for `Tyk Self Managed` installations.
 
     {{< img src="/img/getting-started/tabs-system-management-license.png" alt="System Management Side Bar" >}}
 
