@@ -221,25 +221,78 @@ After completing the migration, follow these steps to verify that everything was
    - Ensure all teams were created under their correct organisations
    - Check that team configurations (permissions, settings) were preserved
 
-3. **Run Verification Commands**
+Example of verification script:
 
 ```bash
-# Get a list of all organisations and their details
-curl -X GET 'https://portal-env-b.example.com/organisations' \
-  -H "Authorization: ${ENV_B_TOKEN}" \
-  -H 'Accept: application/json' | jq '.'
+#!/bin/bash
 
-# For each organisation, list its teams
-curl -X GET "https://portal-env-b.example.com/organisations/${ORG_CID}/teams" \
-  -H "Authorization: ${ENV_B_TOKEN}" \
-  -H 'Accept: application/json' | jq '.'
+# Track total number of mismatches found
+errors=0
+echo "Starting verification..."
+
+# === Organisation Verification ===
+echo "Checking organisations..."
+
+# Get organisations from source data file
+# Format: "CID Name" for each organisation, sorted for comparison
+source_orgs=$(jq -r '.[] | .CID + " " + .Name' data/organisations.json | sort)
+
+# Get organisations from target environment via API
+# Exclude default organisation and format same as source
+target_orgs=$(curl -s -H "Authorization: ${ENV_B_TOKEN}" \
+  -H "Accept: application/json" \
+  "https://portal-env-b.example.com/organisations" | \
+  jq -r '.[] | select(.Name != "Default Organisation") | .CID + " " + .Name' | sort)
+
+# Compare organisation lists
+# diff will show: < for missing in target, > for extra in target
+if [ "$source_orgs" != "$target_orgs" ]; then
+    echo "❌ Organisation mismatch!"
+    diff <(echo "$source_orgs") <(echo "$target_orgs") || true
+    ((errors++))
+else
+    echo "✅ Organisations match"
+fi
+
+# === Team Verification ===
+echo -e "\nChecking teams..."
+
+# Iterate through each organisation to check its teams
+while IFS= read -r org; do
+    # Split organisation line into CID and Name
+    org_cid=$(echo "$org" | cut -d' ' -f1)
+    org_name=$(echo "$org" | cut -d' ' -f2-)
+    
+    # Get teams from source data file for this organisation
+    source_teams=$(jq -r '.[] | .Name' "data/teams_${org_cid}.json" | sort)
+
+    # Get teams from target environment for this organisation
+    # Exclude auto-generated "All users" teams
+    target_teams=$(curl -s -H "Authorization: ${ENV_B_TOKEN}" \
+      -H "Accept: application/json" \
+      "https://portal-env-b.example.com/organisations/$org_cid/teams" | \
+      jq -r '.[] | select(.Name | endswith("All users") | not) | .Name' | sort)
+
+    # Compare team lists for this organisation
+    if [ "$source_teams" != "$target_teams" ]; then
+        echo "❌ Team mismatch in '$org_name'"
+        diff <(echo "$source_teams") <(echo "$target_teams") || true
+        ((errors++))
+    else
+        echo "✅ Teams match in '$org_name'"
+    fi
+done <<< "$source_orgs"
+
+# === Final Status ===
+# Exit with appropriate code: 0 for success, 1 for any errors
+if [ $errors -eq 0 ]; then
+    echo -e "\n✅ SUCCESS: Migration verified"
+    exit 0
+else
+    echo -e "\n❌ FAILURE: Found $errors error(s)"
+    exit 1
+fi
 ```
-
-4. **Common Issues to Check**
-   - Ensure no duplicate organisations were created
-   - Verify that CIDs match between environments
-   - Check that team hierarchies are preserved
-   - Confirm that no default teams or organisations were accidentally duplicated
 
 If you find any discrepancies, you may need to:
 - Review the migration logs
