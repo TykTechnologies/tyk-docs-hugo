@@ -2460,7 +2460,7 @@ The following algorithms are supported:
 #### Go Plugins
 
 Go Plugin Authentication allows you to implement custom authentication logic using the Go programming language. This method is useful for scenarios where you need to implement specialized authentication mechanisms that are not natively supported by Tyk.
-To learn more about using Tyk Golang Plugins, go [here](/plugins/supported-languages/golang#supported-plugin-types)
+To learn more about using Tyk Golang Plugins, go [here]({{< ref "api-management/plugins/golang" >}})
 
 #### Use Python CoProcess and JSVM Plugin Authentication
 
