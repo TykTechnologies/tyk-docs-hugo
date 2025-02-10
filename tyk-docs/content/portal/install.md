@@ -6,15 +6,23 @@ tags: ["Tyk Enterprise Developer Portal", "Install Tyk Enterprise Developer Port
 tags: ["Bootstrap Tyk Enterprise Developer Portal", "Tyk Enterprise Developer Portal"]
 description: "Installation guide for the Tyk Enterprise Developer Portal"
 aliases:
-  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal
-  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal
-  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/bootstrapping-portal
-  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-mysql
-  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-postgresql
-  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-sqlite
-  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-using-helm
-  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration
-  - product-stack/tyk-enterprise-developer-portal/deploy/configuration
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal
+  - //tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal
+  - //tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/bootstrapping-portal
+  - //tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-mysql
+  - //tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-postgresql
+  - //tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-sqlite
+  - //tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-using-helm
+  - //tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration
+  - /product-stack/tyk-enterprise-developer-portal/deploy/configuration
+  - /product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal
+  - /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal
+  - /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker
+  - /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose
+  - /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-helm
+  - /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-new-helm
+  - /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-rpm
+  - /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/overview
 ---
 
 {{< note success >}}

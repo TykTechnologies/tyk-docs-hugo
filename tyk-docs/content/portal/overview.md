@@ -5,12 +5,18 @@ tags: ["Developer Portal","Tyk"]
 description: "Tyk Developer Portal is the most flexible and simplest way for API providers to publish, monetize and drive the adoption of APIs"
 aliases:
   - /product-stack/tyk-enterprise-developer-portal/getting-started/getting-started-with-enterprise-portal
+  - /product-stack/tyk-enterprise-developer-portal/getting-started/enterprise-portal-concepts
+  - /product-stack/tyk-enterprise-developer-portal/getting-started/getting-started-with-enterprise-portal
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/with-tyk-self-managed-as-provider
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/create-api-product-and-plan
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/publish-api-products-and-plans
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/customise-menus
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/developer-workflow
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow
+  - /tyk-developer-portal/tyk-enterprise-developer-portal
+  - /product-stack/tyk-enterprise-developer-portal/getting-started/with-tyk-self-managed-as-provider
+  - /product-stack/tyk-enterprise-developer-portal/getting-started/create-orgs-and-catalogs
+  - /product-stack/tyk-enterprise-developer-portal/getting-started/create-api-product-and-plan
 ---
 
 {{< note success >}}

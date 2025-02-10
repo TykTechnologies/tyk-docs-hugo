@@ -14,6 +14,7 @@ aliases:
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/approve-self-registering-requests
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/invite-codes
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-users
+  - /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal
 ---
 
 {{< note success >}}
