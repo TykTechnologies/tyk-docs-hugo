@@ -69,12 +69,12 @@ From the above illustration it can be seen that:
 
 Tyk supports four types of plugins:
 
-1. **[Request Plugin]({{< ref "" >}})**
-2. **[Authentication Plugin]({{< ref "" >}})**
-3. **[Response Plugin]({{< ref "" >}})**
-4. **[Analytics Plugin]({{< ref "" >}})**
+1. **[Request Plugin]({{< ref "api-management/plugins/plugin-types#request-plugins" >}})**
+2. **[Authentication Plugin]({{< ref "api-management/plugins/plugin-types#authentication-plugins" >}})**
+3. **[Response Plugin]({{< ref "api-management/plugins/plugin-types#response-plugins" >}})**
+4. **[Analytics Plugin]({{< ref "api-management/plugins/plugin-types#analytics-plugins" >}})**
 
-To know more about plugin types and it's advanced configuration, refer the following [docs]({{< ref "" >}}).
+To know more about plugin types and it's advanced configuration, refer the following [docs]({{< ref "api-management/plugins/plugin-types" >}}).
 
 ## Getting Started
 

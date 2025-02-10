@@ -118,13 +118,13 @@ The Dashboard exposes two APIs:
     
     To know more about Dashboard APIs, refer the following documents:
     - [Postman / Swagger / Open API specification]({{< ref "tyk-dashboard-api" >}})
-    - [Dashboard API Usage Examples]({{< ref "" >}})
+    - [Dashboard API Usage Examples]({{< ref "#dashboard-api-resources-and-usage" >}})
 
  - **Dashboard Admin API**: Is used for system-level administration and initial setup tasks like managing organizations, initial user creation, backups/migrations and SSO setup. 
 
     To know more about Dashboard Admin APIs, refer the following documents:
     - [Postman / Swagger / Open API specification]({{< ref "dashboard-admin-api" >}})
-    - [Dashboard Admin API Usage Examples]({{< ref "" >}})
+    - [Dashboard Admin API Usage Examples]({{< ref "#dashboard-admin-api-resources-and-usage" >}})
 
 ### Authenticating with Dashboard APIs
 

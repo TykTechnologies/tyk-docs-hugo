@@ -137,7 +137,7 @@ supported by Tyk Operator.
 ## Example: Configure Custom Plugins (JavaScript) With Tyk Operator
 
 In this example we will create a JavaScript plugin that will inject a request header _Hello_ with a value of _World_.
-This will be configured as a pre request [hook]({{< ref "" >}}).
+This will be configured as a pre request hook.
 
 ### 1. Implement Plugin
 

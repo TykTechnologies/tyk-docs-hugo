@@ -51,10 +51,10 @@ There are two different options for the <b>Post</b> Plugin that is executed at t
 
 Tyk supports four types of plugins:
 
-1. **[Request Plugin]({{< ref "" >}})**
-2. **[Authentication Plugin]({{< ref "" >}})**
-3. **[Response Plugin]({{< ref "" >}})**
-4. **[Analytics Plugin]({{< ref "" >}})**
+1. **[Request Plugin]({{< ref "#request-plugins" >}})**
+2. **[Authentication Plugin]({{< ref "#authentication-plugins" >}})**
+3. **[Response Plugin]({{< ref "#response-plugins" >}})**
+4. **[Analytics Plugin]({{< ref "#analytics-plugins" >}})**
 
 ## Request Plugins
 
@@ -330,9 +330,8 @@ spec:
 
 There are two advance configuratin with plugin types:
 
-1. **[Per Endpoint Custom Plugin]({{< ref "" >}})**
-2. **[Plugin Caching Mechanism for Authentication Plugin]({{< ref "" >}})**
-
+1. **[Per Endpoint Custom Plugin]({{< ref "#per-endpoint-custom-plugins" >}})**
+2. **[Plugin Caching Mechanism for Authentication Plugin]({{< ref "#plugin-caching-mechanism" >}})**
 
 ## Per-Endpoint Custom Plugins
 
