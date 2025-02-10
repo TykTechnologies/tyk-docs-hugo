@@ -5,6 +5,16 @@ linkTitle: API Management
 tags: ["portal", "customization",]
 description: "Customization options for enterprise developer portal"
 aliases:
+  - product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks/
+  - product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model/
+  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/quick-customisation/
+  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation/
+  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/templates/
+  - product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades/
+  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content/
+  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation/
+  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts/
+  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/create-new-page-template/
 ---
 
 {{< note success >}}

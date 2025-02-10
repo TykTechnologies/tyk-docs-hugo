@@ -4,7 +4,16 @@ date: 2022-02-10
 linkTitle: API Management
 tags: [""]
 description: ""
-
+aliases:
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumers
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations
+  - /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/reset-password
+  - /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product
+  - /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/register-portal
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/add-organisations
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/approve-self-registering-requests
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/invite-codes
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-users
 ---
 
 {{< note success >}}

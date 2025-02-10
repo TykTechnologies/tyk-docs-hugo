@@ -4,6 +4,8 @@ date: 2022-12-28
 tags: ["Tyk Developer Portal","Enterprise Portal","Email","Notifications"]
 aliases:
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/setup-email-notifications
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso
+
 description: ""
 ---
 
