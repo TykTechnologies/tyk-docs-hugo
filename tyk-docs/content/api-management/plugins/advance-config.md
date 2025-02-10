@@ -5,7 +5,7 @@ tags: []
 description: ""
 keywords: []
 aliases:
-  - /plugins/get-started-selfmanaged/deploy-
+  - /plugins/get-started-selfmanaged/deploy-plugins
   - /product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins
 ---
 
