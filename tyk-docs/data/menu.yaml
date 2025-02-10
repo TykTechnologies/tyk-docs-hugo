@@ -105,37 +105,22 @@ menu:
         path: /api-management/upstream-authentication
         category: Page
         show: False
-      - title: "Automations Tools"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            path: /api-management/automations
-            category: Page
-            show: True
-          - title: "API Management in Kubernetes"
-            path: /api-management/automations/operator
-            category: Page
-            show: True
-          - title: "Synchronizing Tyk Configuraiton"
-            path: /api-management/automations/sync
-            category: Page
-            show: True
-      - title: "Dashboard Configuration"
-        path: /api-management/dashboard-configuration
+      - title: "Rate Limiting"
+        path: /api-management/rate-limit
         category: Page
         show: True
-      - title: "Identity Management"
-        path: /api-management/external-service-integration
+      - title: "Security Policy and Access Keys"
+        path: /api-management/policies
         category: Page
         show: True
-      - title: "API Versioning"
-        path: /api-management/api-versioning
+      - title: "Certificates"
+        path: /api-management/certificates
         category: Page
         show: True
-      - title: "Troubleshooting"
-        path: /api-management/troubleshooting-debugging
+      - title: "Security Best Practices"
         category: Page
+        show: True
+        path: /api-management/security-best-practices
       - title: "Gateway Configuration"
         category: Directory
         show: True
@@ -152,28 +137,12 @@ menu:
             path: /api-management/gateway-config-tyk-classic
             category: Page
             show: True
-      - title: "Rate Limiting"
-        path: /api-management/rate-limit
-        category: Page
-        show: True
-      - title: "Security Policy and Access Keys"
-        path: /api-management/policies
-        category: Page
-        show: True
-      - title: "Certificates"
-        path: /api-management/certificates
-        category: Page
-        show: True
       - title: "API Versioning"
         path: /api-management/api-versioning
         category: Page
         show: True
-      - title: "User Management"
-        path: /api-management/user-management
-        category: Page
-        show: True
-      - title: "Manage Environments"
-        path: /api-management/multiple-environments
+      - title: "Identity Management"
+        path: /api-management/external-service-integration
         category: Page
         show: True
       - title: "Custom Plugins"
@@ -204,6 +173,38 @@ menu:
             path: /api-management/plugins/advance-config
             category: Page
             show: True
+      - title: "User Management"
+        path: /api-management/user-management
+        category: Page
+        show: True
+      - title: "Automations Tools"
+        category: Directory
+        show: True
+        menu:
+          - title: "Overview"
+            path: /api-management/automations
+            category: Page
+            show: True
+          - title: "API Management in Kubernetes"
+            path: /api-management/automations/operator
+            category: Page
+            show: True
+          - title: "Synchronizing Tyk Configuraiton"
+            path: /api-management/automations/sync
+            category: Page
+            show: True
+      - title: "Dashboard Configuration"
+        path: /api-management/dashboard-configuration
+        category: Page
+        show: True
+      - title: "Manage Environments"
+        path: /api-management/multiple-environments
+        category: Page
+        show: True
+      - title: "Troubleshooting"
+        path: /api-management/troubleshooting-debugging
+        category: Page
+        show: True
       - title: "Manage APIs"
         category: Directory
         show: True
@@ -572,14 +573,6 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Security Best Practices"
-        category: Page
-        show: True
-        path: /api-management/security-best-practices
-      - title: "Troubleshooting"
-        path: /api-management/troubleshooting-debugging
-        category: Page
-        show: True
   - title: "Product Stack"
     path: /tyk-stack
     category: Label

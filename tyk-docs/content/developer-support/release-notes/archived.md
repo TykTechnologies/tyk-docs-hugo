@@ -87,7 +87,7 @@ func AddFooBarHeader(rw http.ResponseWriter, r *http.Request) {
 }
 ```
 
-See our [Golang plugin documentation]({{< ref "plugins/supported-languages/golang" >}}) for more details.
+See our [Golang plugin documentation]({{< ref "api-management/plugins/golang#" >}}) for more details.
 
 ### Distributed tracing
 
@@ -784,8 +784,8 @@ We have added support for specifying allowed  SSL ciphers using the following op
 * The JSVM `spec` object now has access to `APIID` and `OriginID` to reflect similar functionality of Coprocess plugins.
 * Plugins now have access to Host HTTP Header.
 
-[JSVM Docs]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide" >}})
-[Plugin Data Structure Docs]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures" >}})
+[JSVM Docs]({{< ref "api-management/plugins/javascript#using-javascript-with-tyk" >}})
+[Plugin Data Structure Docs]({{< ref "api-management/plugins/rich-plugins#rich-plugins-data-structures" >}})
 
 
 ### <a name="dashboard"></a>Tyk Dashboard v1.5.0

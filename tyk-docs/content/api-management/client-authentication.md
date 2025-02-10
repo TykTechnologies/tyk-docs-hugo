@@ -2466,8 +2466,8 @@ To learn more about using Tyk Golang Plugins, go [here](/plugins/supported-langu
 
 Tyk allows for custom authentication logic using Python and JavaScript Virtual Machine (JSVM) plugins. This method is useful for implementing unique authentication mechanisms that are tailored to your specific requirements.
 
-* See [Custom Authentication with a Python plugin]({{< ref "plugins/supported-languages/rich-plugins/python/custom-auth-python-tutorial" >}}) for a detailed example of a custom Python plugin.
-* See [JavaScript Middleware]({{< ref "plugins/supported-languages/javascript-middleware" >}}) for more details on using JavaScript Middleware. 
+* See [Custom Authentication with a Python plugin]({{< ref "api-management/plugins/rich-plugins#custom-authentication-plugin-tutorial" >}}) for a detailed example of a custom Python plugin.
+* See [JavaScript Middleware]({{< ref "api-management/plugins/javascript#" >}}) for more details on using JavaScript Middleware. 
 
 ### Open (No Authentication)
 

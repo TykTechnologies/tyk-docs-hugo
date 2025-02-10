@@ -38,7 +38,7 @@ There are three middleware components that can be scripted with Tyk:
 
 3. **Virtual endpoints**: These are powerful programmable middleware invoked towards the end of the request processing chain. Unlike the custom JavaScript plugins, the virtual endpoint terminates the request. These are documented [here]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}).
 
-The JavaScript (JS) [scripting guide]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide" >}}) provides details of how to access dynamic data (such as the key session object) from your JS functions. Combining these resources provides you with a powerful set of tools for shaping and structuring inbound traffic to your API.
+The JavaScript (JS) [scripting guide]({{< ref "api-management/plugins/javascript#using-javascript-with-tyk" >}}) provides details of how to access dynamic data (such as the key session object) from your JS functions. Combining these resources provides you with a powerful set of tools for shaping and structuring inbound traffic to your API.
 
 ### Declared plugin functions
 
@@ -58,9 +58,9 @@ Installing middleware is different for different Tyk deployments, for example, i
 
 We've provided the following guides:
 
-- [Tyk OSS]({{< ref "plugins/supported-languages/javascript-middleware/install-middleware/tyk-ce" >}})
-- [Tyk Self-Managed]({{< ref "plugins/supported-languages/javascript-middleware/install-middleware/tyk-pro" >}})
-- [Tyk Hybrid]({{< ref "plugins/supported-languages/javascript-middleware/install-middleware/tyk-hybrid" >}})
+- [Tyk OSS]({{< ref "api-management/plugins/javascript#installing-middleware-on-tyk-oss" >}})
+- [Tyk Self-Managed]({{< ref "api-management/plugins/javascript#installing-middleware-on-tyk-self-managed" >}})
+- [Tyk Hybrid]({{< ref "api-management/plugins/javascript#installing-middleware-on-tyk-hybrid" >}})
 
 {{< note success >}}
 **Note**
@@ -69,7 +69,7 @@ Tyk Cloud Classic does not support custom middleware.
 {{< /note >}}
 ## Using JavaScript with Tyk
 
-Tyk's JavaScript Virtual Machine (JSVM) provides a serverless compute function that allows for the execution of custom logic directly within the gateway itself. This can be accessed from [multiple locations]({{< ref "plugins/supported-languages/javascript-middleware" >}}) in the API processing chain and allows significant customization and optimization of your request handling.
+Tyk's JavaScript Virtual Machine (JSVM) provides a serverless compute function that allows for the execution of custom logic directly within the gateway itself. This can be accessed from [multiple locations]({{< ref "api-management/plugins/javascript#" >}}) in the API processing chain and allows significant customization and optimization of your request handling.
 
 In this guide we will cover the features and resources available to you when creating custom functions, highlighting where there are limitations for the different middleware stages.
 
@@ -81,21 +81,21 @@ Here we cover various facets that you need to be aware of when creating custom f
 
 JS functions can be given access to external data objects relating to the API request. These allow for the modification of both the request itself and the session:
 
-- `request`: an [object]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#the-request-object" >}}) describing the API request that invoked the middleware
-- `session`: the key session [object]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#the-session-object" >}}) provided by the client when making the API request
-- `config`: an [object]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#the-config-object" >}}) containing fields from the API definition
+- `request`: an [object]({{< ref "api-management/plugins/javascript#the-request-object" >}}) describing the API request that invoked the middleware
+- `session`: the key session [object]({{< ref "api-management/plugins/javascript#the-session-object" >}}) provided by the client when making the API request
+- `config`: an [object]({{< ref "api-management/plugins/javascript#the-config-object" >}}) containing fields from the API definition
 
 {{< note success >}}
 **Note**
 
-There are other ways of accessing and editing a session object using the [Tyk JavaScript API functions]({{< ref "plugins/supported-languages/javascript-middleware/javascript-api#working-with-the-key-session-object" >}}).
+There are other ways of accessing and editing a session object using the [Tyk JavaScript API functions]({{< ref "api-management/plugins/javascript#working-with-the-key-session-object" >}}).
 {{< /note >}}
 
 #### Creating a middleware component
 
 Tyk injects a `TykJS` namespace into the JSVM, which can be used to initialise a new middleware component. The JS for each middleware component should be in its own `*.js` file.
 
-You create a middleware object by calling the `TykJS.TykMiddleware.NewMiddleware({})` constructor with an empty object and then initialising it with your function using the `NewProcessRequest()` closure syntax. This is where you expose the [external data objects]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#accessing-external-and-dynamic-data" >}}) to your custom function.
+You create a middleware object by calling the `TykJS.TykMiddleware.NewMiddleware({})` constructor with an empty object and then initialising it with your function using the `NewProcessRequest()` closure syntax. This is where you expose the [external data objects]({{< ref "api-management/plugins/javascript#accessing-external-and-dynamic-data" >}}) to your custom function.
 
 {{< note success >}}
 **Note**
@@ -118,7 +118,7 @@ The JS function must provide the `request` and `session.meta_data` objects in th
 return sampleMiddleware.ReturnData(request, session.meta_data);
 ```
 
-Custom JS plugins sit in the [middleware processing chain]({{< ref "concepts/middleware-execution-order" >}}) and pass the request onto the next middleware before it is proxied to the upstream. If required, however, a custom JS plugin can terminate the request and provide a custom response to the client if you configure the `ReturnOverrides` in the `request` object, as described [here]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#using-returnoverrides" >}}).
+Custom JS plugins sit in the [middleware processing chain]({{< ref "concepts/middleware-execution-order" >}}) and pass the request onto the next middleware before it is proxied to the upstream. If required, however, a custom JS plugin can terminate the request and provide a custom response to the client if you configure the `ReturnOverrides` in the `request` object, as described [here]({{< ref "api-management/plugins/javascript#using-returnoverrides" >}}).
 
 ##### Returning from Virtual Endpoint
 
@@ -142,7 +142,7 @@ You can find some examples of how this works [here]({{< ref "advanced-configurat
 
 ### JavaScript resources
 
-JavaScript (JS) functions have access to a [system API]({{< ref "plugins/supported-languages/javascript-middleware/javascript-api" >}}) and [library of functions]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#underscorejs-library" >}}). They can also be given access to certain Tyk data objects relating to the API request.
+JavaScript (JS) functions have access to a [system API]({{< ref "api-management/plugins/javascript#javascript-api" >}}) and [library of functions]({{< ref "api-management/plugins/javascript#underscorejs-library" >}}). They can also be given access to certain Tyk data objects relating to the API request.
 
 The system API provides access to resources outside of the JavaScript Virtual Machine sandbox, the ability to make outbound HTTP requests and access to the key management REST API functions.
 
@@ -289,7 +289,7 @@ Tyk uses an internal [session object]({{< ref "getting-started/key-concepts/what
 
 ##### Limitations
 
-- Custom JS plugins at the [pre-]({{< ref "plugins/plugin-types/request-plugins" >}}) stage do not have access to the session object (as it has not been created yet)
+- Custom JS plugins at the [pre-]({{< ref "api-management/plugins/plugin-types#request-plugins" >}}) stage do not have access to the session object (as it has not been created yet)
 - When scripting for Virtual Endpoints, the `session` data will only be available to the JS function if enabled in the middleware configuration.
 
 ##### Sharing data between middleware using the `session` object

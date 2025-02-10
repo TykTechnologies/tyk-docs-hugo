@@ -77,9 +77,9 @@ aliases:
 
 Rich plugins make it possible to write powerful middleware for Tyk. Tyk supports: 
 
-*   [Python]({{< ref "plugins/supported-languages/rich-plugins/python/python" >}})
-*   [gRPC]({{< ref "plugins/supported-languages/rich-plugins/grpc" >}})
-*   [Lua]({{< ref "plugins/supported-languages/rich-plugins/luajit" >}})
+*   [Python]({{< ref "api-management/plugins/rich-plugins#overview" >}})
+*   [gRPC]({{< ref "api-management/plugins/rich-plugins#overview-1" >}})
+*   [Lua]({{< ref "api-management/plugins/rich-plugins#using-lua" >}})
 
 gRPC provides the ability to write plugins using many languages including C++, Java, Ruby and C#.
 
@@ -99,7 +99,7 @@ When using Python plugins, the middleware function names are set globally. So, i
 
 The ID Extractor is a caching mechanism that's used in combination with Tyk Plugins. It can be used specifically with plugins that implement custom authentication mechanisms. The ID Extractor works for all rich plugins: gRPC-based plugins, Python and Lua.
 
-See [ID Extractor]({{< ref "plugins/plugin-types/auth-plugins/id-extractor" >}}) for more details.
+See [ID Extractor]({{< ref "api-management/plugins/plugin-types#plugin-caching-mechanism" >}}) for more details.
 
 ### Interoperability
 
@@ -540,7 +540,7 @@ As of v2.1, an Alias offers a way to identify a token in a more human-readable m
 A UNIX timestamp that represents the time the session was last updated. Applicable to *Post*, *PostAuth* and *Response* plugins. When developing *CustomAuth* plugins developers should add this to the SessionState instance.
 
 `id_extractor_deadline`
-This is a UNIX timestamp that signifies when a cached key or ID will expire. This relates to custom authentication, where authenticated keys can be cached to save repeated requests to the gRPC server. See [id_extractor]({{< ref "plugins/plugin-types/auth-plugins/id-extractor" >}}) and [Auth Plugins]({{< ref "plugins/plugin-types/auth-plugins/auth-plugins" >}}) for additional information.
+This is a UNIX timestamp that signifies when a cached key or ID will expire. This relates to custom authentication, where authenticated keys can be cached to save repeated requests to the gRPC server. See [id_extractor]({{< ref "api-management/plugins/plugin-types#plugin-caching-mechanism" >}}) and [Auth Plugins]({{< ref "api-management/plugins/plugin-types#authentication-plugins" >}}) for additional information.
 
 `session_lifetime`
 UNIX timestamp that denotes when the key will automatically expire. Any·subsequent API request made using the key will be rejected. Overrides the global session lifetime. See [Key Expiry and Deletion]({{< ref "/api-management/client-authentication#set-physical-key-expiry-and-deletion" >}}) for more information.
@@ -678,7 +678,7 @@ Python plugins are [embedded](https://docs.python.org/3/extending/embedding.html
 
 `Tyk Gateway` <-> CGO <-> `Python Custom Plugin`
 
-In order to integrate with Python custom plugins, the *libpython3.x.so* shared object library is used to embed a Python interpreter directly in the Tyk Gateway. Further details can be found [here]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-gateway-api" >}})
+In order to integrate with Python custom plugins, the *libpython3.x.so* shared object library is used to embed a Python interpreter directly in the Tyk Gateway. Further details can be found [here]({{< ref "api-management/plugins/rich-plugins#coprocess-gateway-api" >}})
 
 This allows combining the strengths of both Python and Go in a single application. However, it's essential to be aware of the potential complexities and performance implications of mixing languages, as well as the need for careful memory management when working with Python objects from Go.
 
@@ -794,7 +794,7 @@ No output is expected from this command on successful setups.
 
 We have created [a demo Python plugin repository](https://github.com/TykTechnologies/tyk-plugin-demo-python).
 
-The project implements a simple middleware for header injection, using a Pre hook (see [Tyk custom middleware hooks]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-dispatcher---hooks" >}}). A single Python script contains the code for it, see [middleware.py](https://github.com/TykTechnologies/tyk-plugin-demo-python/blob/master/middleware.py).
+The project implements a simple middleware for header injection, using a Pre hook (see [Tyk custom middleware hooks]({{< ref "api-management/plugins/rich-plugins#coprocess-dispatcher---hooks" >}}). A single Python script contains the code for it, see [middleware.py](https://github.com/TykTechnologies/tyk-plugin-demo-python/blob/master/middleware.py).
 
 
 ### Custom Authentication Plugin Tutorial
@@ -841,7 +841,7 @@ This file should be named `manifest.json` and needs to contain the following con
 ```
 
 * The `file_list` block contains the list of files to be included in the bundle, the CLI tool expects to find these files in the current working directory.
-* The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. You use the `auth_check` for this tutorial. For other hooks see [here]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-dispatcher---hooks" >}}).
+* The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. You use the `auth_check` for this tutorial. For other hooks see [here]({{< ref "api-management/plugins/rich-plugins#coprocess-dispatcher---hooks" >}}).
 * The `name` field references the name of the function that you implement in your plugin code: `MyAuthMiddleware`.
 * You add an additional file called `middleware.py`, this will contain the main implementation of our middleware.
 
@@ -853,7 +853,7 @@ Your bundle should always contain a file named `middleware.py` as this is the en
 
 ##### Contents of middleware.py
 
-You import decorators from the Tyk module as this gives you the `Hook` decorator, and you import [Tyk Python API helpers]({{< ref "plugins/supported-languages/rich-plugins/python/tyk-python-api-methods" >}})
+You import decorators from the Tyk module as this gives you the `Hook` decorator, and you import [Tyk Python API helpers]({{< ref "api-management/plugins/rich-plugins#tyk-python-api-methods" >}})
 
 You implement a middleware function and register it as a hook, the input includes the request object, the session object, the API meta data and its specification:
 
@@ -879,7 +879,7 @@ You can modify the `manifest.json` to add as many files as you want. Files that 
 
 #### Building the Plugin
 
-A plugin bundle is a packaged version of the plugin, it may also contain a cryptographic signature of its contents. The `-y` flag tells the Tyk CLI tool to skip the signing process in order to simplify the flow of this tutorial. For more information on the Tyk CLI tool, see [here]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}).
+A plugin bundle is a packaged version of the plugin, it may also contain a cryptographic signature of its contents. The `-y` flag tells the Tyk CLI tool to skip the signing process in order to simplify the flow of this tutorial. For more information on the Tyk CLI tool, see [here]({{< ref "api-management/plugins/overview#plugin-bundles" >}}).
 
 You will use the Dockerised version of the Tyk CLI tool to bundle our package.
 
@@ -1160,7 +1160,7 @@ At the time of writing the following features are currently unsupported and unav
 
 #### Developer Resources
 
-The [Protocol Buffers](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto ) and [bindings](https://github.com/TykTechnologies/tyk/tree/master/coprocess/bindings) provided by Tyk should be used in order for successful ommunication between Tyk Gateway and your gRPC plugin server. Documentation for the protobuf messages is available in the [Rich Plugins Data Structures]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures" >}}) page.
+The [Protocol Buffers](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto ) and [bindings](https://github.com/TykTechnologies/tyk/tree/master/coprocess/bindings) provided by Tyk should be used in order for successful ommunication between Tyk Gateway and your gRPC plugin server. Documentation for the protobuf messages is available in the [Rich Plugins Data Structures]({{< ref "api-management/plugins/rich-plugins#rich-plugins-data-structures" >}}) page.
 
 You can generate supporting HTML documentation using the *docs* task in the [Taskfile](https://github.com/TykTechnologies/tyk/blob/master/coprocess/proto/Taskfile.yml) file of the [Tyk repository](https://github.com/TykTechnologies/tyk). This documentation explains the protobuf messages and services that allow gRPC plugins to handle a request made to the Gateway. Please refer to the README file within the proto folder of the tyk repository for further details.
 
@@ -1172,7 +1172,7 @@ If you wish to generate bindings for another target language you may generate th
 
 #### What's next?
 
-See our [getting started]({{< ref "plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin" >}}) guide for an explanation of how to write and configure gRPC plugins.
+See our [getting started]({{< ref "api-management/plugins/rich-plugins#key-concepts" >}}) guide for an explanation of how to write and configure gRPC plugins.
 
 ---
 
@@ -1202,7 +1202,7 @@ The following prerequisites are necessary for developing a gRPC server that inte
 
 ####### Tyk gRPC Protocol Buffers
 
-A collection of [Protocol Buffer](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto) messages are available in the Tyk Gateway repository to allow Tyk Gateway to integrate with your gRPC server, requesting execution of plugin code. These messages establish a standard set of data structures that are serialised between Tyk Gateway and your gRPC Server. Developers should consult the [Rich Plugins Data Structures]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures" >}}) page for further details.
+A collection of [Protocol Buffer](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto) messages are available in the Tyk Gateway repository to allow Tyk Gateway to integrate with your gRPC server, requesting execution of plugin code. These messages establish a standard set of data structures that are serialised between Tyk Gateway and your gRPC Server. Developers should consult the [Rich Plugins Data Structures]({{< ref "api-management/plugins/rich-plugins#rich-plugins-data-structures" >}}) page for further details.
 
 ####### Protocol Buffer Compiler
 
@@ -1231,7 +1231,7 @@ Your *Dispatch* RPC should handle the request made by Tyk Gateway, implementing 
 
 Consult the [Tyk protocol buffers](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto) for the definition of the service and data structures that enable integration of Tyk gateway with your gRPC server. Tyk provides pre-generated [bindings](https://github.com/TykTechnologies/tyk/tree/master/coprocess/bindings) for C++, Java, Python and Ruby.
 
-Example tutorials are available that explain how to generate the protobuf bindings and implement a server for [Java]({{< ref "plugins/supported-languages/rich-plugins/grpc/request-transformation-java" >}}), [.NET]({{< ref "plugins/supported-languages/rich-plugins/grpc/custom-auth-dot-net" >}}) and [NodeJS]({{< ref "plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs" >}}).
+Example tutorials are available that explain how to generate the protobuf bindings and implement a server for [Java]({{< ref "api-management/plugins/rich-plugins#create-a-request-transformation-plugin-with-java" >}}), [.NET]({{< ref "api-management/plugins/rich-plugins#create-custom-authentication-plugin-with-net" >}}) and [NodeJS]({{< ref "api-management/plugins/rich-plugins#create-custom-authentication-plugin-with-net" >}}).
 
 Tyk Github repositories are also available with examples for [Ruby](https://github.com/TykTechnologies/tyk-plugin-demo-ruby) and [C#/.NET](https://github.com/TykTechnologies/tyk-plugin-demo-dotnet)
  
@@ -1270,7 +1270,7 @@ Configuration parameters are available for establishing a message size in both d
 
 ##### Configure Web server (optional)
 
-Tyk Gateway can be configured to download the gRPC plugin configuration for an API from a web server. For further details related to the concept of bundling plugins please refer to [plugin bundles]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}).
+Tyk Gateway can be configured to download the gRPC plugin configuration for an API from a web server. For further details related to the concept of bundling plugins please refer to [plugin bundles]({{< ref "api-management/plugins/overview#plugin-bundles" >}}).
 
 ```yaml
 "enable_bundle_downloader": true,
@@ -1314,7 +1314,7 @@ For configurations directly embedded within the Tyk Gateway, plugin hooks can be
 }
 ```
 
-For example, a Post request plugin hook has been configured with name `MyPostMiddleware`. Before the request is sent upstream Tyk Gateway will serialize the request into a [Object protobuf message]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures#object" >}}) with the `hook_name` property set to `MyPostMiddleware` and the `hook_type` property set to `Post`. This message will then then be dispatched to the gRPC server for processing before the request is sent upstream.
+For example, a Post request plugin hook has been configured with name `MyPostMiddleware`. Before the request is sent upstream Tyk Gateway will serialize the request into a [Object protobuf message]({{< ref "api-management/plugins/rich-plugins#object" >}}) with the `hook_name` property set to `MyPostMiddleware` and the `hook_type` property set to `Post`. This message will then then be dispatched to the gRPC server for processing before the request is sent upstream.
 
 </br>
 {{< note success >}}
@@ -1331,7 +1331,7 @@ Setting the `driver` configuring parameter to `gRPC` instructs Tyk Gateway to is
 
 **Pre plugin hook example**
 
-In this example we can see that a `custom_middleware` configuration block has been used to configure a gRPC Pre request plugin hook with name `HelloFromPre`. Before any middleware is executed Tyk Gateway will serialize the request into a [Object protobuf message]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures#object" >}}) with the `hook_name` property set to `HelloFromPre` and the `hook_type` property set to `Pre`. This message will then then be dispatched to the gRPC server.
+In this example we can see that a `custom_middleware` configuration block has been used to configure a gRPC Pre request plugin hook with name `HelloFromPre`. Before any middleware is executed Tyk Gateway will serialize the request into a [Object protobuf message]({{< ref "api-management/plugins/rich-plugins#object" >}}) with the `hook_name` property set to `HelloFromPre` and the `hook_type` property set to `Pre`. This message will then then be dispatched to the gRPC server.
 
 ```yaml {linenos=table,hl_lines=["14-18"],linenostart=1}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -1358,7 +1358,7 @@ spec:
 
 In the example we can see that a `custom_middleware` configuration block has been used to configure a gRPC Post plugin with name `HelloFromPost`. 
 
-Before the request is sent upstream Tyk Gateway will serialize the request and session details into a [Object protobuf message]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures#object" >}}) with the `hook_name` property set to `HelloFromPost` and the `hook_type` property set to `Post`. This message will then then be dispatched to the gRPC server for processing before the request is sent upstream.
+Before the request is sent upstream Tyk Gateway will serialize the request and session details into a [Object protobuf message]({{< ref "api-management/plugins/rich-plugins#object" >}}) with the `hook_name` property set to `HelloFromPost` and the `hook_type` property set to `Post`. This message will then then be dispatched to the gRPC server for processing before the request is sent upstream.
 
 ```yaml {linenos=table,hl_lines=["14-18"],linenostart=1}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -1385,7 +1385,7 @@ spec:
 
 It is possible to configure your API so that it downloads a bundled configuration of your plugins from an external webserver. The bundled plugin configuration is contained within a zip file.
 
-A gRPC plugin bundle is similar to the [standard bundling mechanism]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}). The standard bundling mechanism zips the configuration and plugin source code, which will be executed by Tyk. Conversely, a gRPC plugin bundle contains only the configuration (`manifest.json`), with plugin code execution being handled independently by the gRPC server.
+A gRPC plugin bundle is similar to the [standard bundling mechanism]({{< ref "api-management/plugins/overview#plugin-bundles" >}}). The standard bundling mechanism zips the configuration and plugin source code, which will be executed by Tyk. Conversely, a gRPC plugin bundle contains only the configuration (`manifest.json`), with plugin code execution being handled independently by the gRPC server.
 
 Bundling a gRPC plugin requires the following steps:
 - Create a `manifest.json` that contains the configuration of your plugins
@@ -1480,9 +1480,9 @@ This guide has explained the key concepts and processes for writing gRPC plugins
 
 #### What's Next?
 
-- Consult the [Protocol Buffer messages]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures" >}}) that Tyk Gateway uses when making a request to a gRPC server.
-- Visit tutorial guides that explain how to implement a [Java]({{< ref "plugins/supported-languages/rich-plugins/grpc/request-transformation-java" >}}), [.NET]({{< ref "plugins/supported-languages/rich-plugins/grpc/custom-auth-dot-net" >}}) and [NodeJS]({{< ref "plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs" >}}) gRPC server.
-- Visit our [plugins hub]({{< ref "plugins/plugin-hub" >}}) to explore further gRPC development examples and resources.
+- Consult the [Protocol Buffer messages]({{< ref "api-management/plugins/rich-plugins#rich-plugins-data-structures" >}}) that Tyk Gateway uses when making a request to a gRPC server.
+- Visit tutorial guides that explain how to implement a [Java]({{< ref "api-management/plugins/rich-plugins#create-a-request-transformation-plugin-with-java" >}}), [.NET]({{< ref "api-management/plugins/rich-plugins#create-custom-authentication-plugin-with-net" >}}) and [NodeJS]({{< ref "api-management/plugins/rich-plugins#create-custom-authentication-plugin-with-net" >}}) gRPC server.
+- Visit our [plugins hub]({{< ref "api-management/plugins/overview#plugins-hub" >}}) to explore further gRPC development examples and resources.
 
 ---
 
@@ -1986,7 +1986,7 @@ The resulting Tyk OAS API Definition contains the OAS JSON schema with an *x-tyk
       ]
     },
     "prePlugin": {
-      "plugins": [
+      "api-management/plugins/overview#": [
         {
           "enabled": true,
           "functionName": "MyPreRequestPlugin",
@@ -1995,7 +1995,7 @@ The resulting Tyk OAS API Definition contains the OAS JSON schema with an *x-tyk
       ]
     },
     "responsePlugin": {
-      "plugins": [
+      "api-management/plugins/overview#": [
         {
           "enabled": true,
           "functionName": "MyResponsePlugin",
@@ -2144,7 +2144,7 @@ mkdir -p src/main/java/com/testorg/testplugin
 
 ##### Install the gRPC Tools
 
-We need to download the Tyk Protocol Buffers definition files, these files contains the data structures used by Tyk. See [Data Structures]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures" >}}) for more information:
+We need to download the Tyk Protocol Buffers definition files, these files contains the data structures used by Tyk. See [Data Structures]({{< ref "api-management/plugins/rich-plugins#rich-plugins-data-structures" >}}) for more information:
 
 ```bash
 cd ~/tyk-plugin
@@ -2270,7 +2270,7 @@ We need to create a manifest file within the `tyk-plugin` directory. This file c
 }
 ```
 
-- The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `pre` hook for this tutorial. For other hooks see [here]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-dispatcher---hooks" >}}).
+- The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `pre` hook for this tutorial. For other hooks see [here]({{< ref "api-management/plugins/rich-plugins#coprocess-dispatcher---hooks" >}}).
 - The `name` field references the name of the function that we implemented in our plugin code - `MyPreMiddleware`. This will be handled by our dispatcher gRPC method in `PluginServer.java`.
 
 To bundle our plugin run the following command in the `tyk-plugin` directory. Check your tyk-cli install path first:
@@ -2286,7 +2286,7 @@ For Tyk 2.8 use:
 
 A plugin bundle is a packaged version of the plugin. It may also contain a cryptographic signature of its contents. The `-y` flag tells the Tyk CLI tool to skip the signing process in order to simplify the flow of this tutorial. 
 
-For more information on the Tyk CLI tool, see [here]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}).
+For more information on the Tyk CLI tool, see [here]({{< ref "api-management/plugins/overview#plugin-bundles" >}}).
 
 You should now have a `bundle.zip` file in the `tyk-plugin` directory.
 
@@ -2382,7 +2382,7 @@ The `GRPC_TOOLS` environment variable will point to the appropriate GrpcTools pa
 export GRPC_PROTOC=$GRPC_TOOLS/protoc
 ```
 
-Now that we can safely run `protoc`, we can download the Tyk Protocol Buffers definition files. These files contain the data structures used by Tyk. See [Data Structures]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures" >}}) for more information:
+Now that we can safely run `protoc`, we can download the Tyk Protocol Buffers definition files. These files contain the data structures used by Tyk. See [Data Structures]({{< ref "api-management/plugins/rich-plugins#rich-plugins-data-structures" >}}) for more information:
 
 ```bash
 cd ~/tyk-plugin
@@ -2564,7 +2564,7 @@ We need to create a manifest file within the `tyk-plugin` directory. This file c
 }
 ```
 
-- The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `auth_check` hook for this tutorial. For other hooks see [here]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-dispatcher---hooks" >}}).
+- The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `auth_check` hook for this tutorial. For other hooks see [here]({{< ref "api-management/plugins/rich-plugins#coprocess-dispatcher---hooks" >}}).
 - The `name` field references the name of the function that we implement in our plugin code - `MyAuthMiddleware`. This will be handled by our dispatcher gRPC method (implemented in `Server.cs`).
 - The `path` field is the path to the middleware component.
 - The `raw_body_only` field 
@@ -2584,7 +2584,7 @@ From Tyk v2.8 upwards you can use:
 
 A plugin bundle is a packaged version of the plugin. It may also contain a cryptographic signature of its contents. The `-y` flag tells the Tyk CLI tool to skip the signing process in order to simplify the flow of this tutorial. 
 
-For more information on the Tyk CLI tool, see [here]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}).
+For more information on the Tyk CLI tool, see [here]({{< ref "api-management/plugins/overview#plugin-bundles" >}}).
 
 You should now have a `bundle.zip` file in the `tyk-plugin` directory.
 
@@ -2763,7 +2763,7 @@ We need to create a manifest file within the `tyk-plugin` directory. This file c
 }
 ```
 
-- The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `auth_check` hook for this tutorial. For other hooks see [here]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-dispatcher---hooks" >}}).
+- The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `auth_check` hook for this tutorial. For other hooks see [here]({{< ref "api-management/plugins/rich-plugins#coprocess-dispatcher---hooks" >}}).
 - The `name` field references the name of the function that we implement in our plugin code - `MyAuthMiddleware`. The implemented dispatcher uses a switch statement to handle this hook, and calls the `authMiddleware` function in `main.js`.
 - The `path` field is the path to the middleware component.
 - The `raw_body_only` field 
@@ -2782,7 +2782,7 @@ For Tyk 2.8 use:
 
 A plugin bundle is a packaged version of the plugin. It may also contain a cryptographic signature of its contents. The `-y` flag tells the Tyk CLI tool to skip the signing process in order to simplify the flow of this tutorial. 
 
-For more information on the Tyk CLI tool, see [here]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}).
+For more information on the Tyk CLI tool, see [here]({{< ref "api-management/plugins/overview#plugin-bundles" >}}).
 
 You should now have a `bundle.zip` file in the `tyk-plugin` directory.
 
@@ -2812,7 +2812,7 @@ In the realm of API security, HMAC-signed authentication serves as a foundationa
 - **Practical experience**: Gain hands-on experience in implementing custom authentication logic tailored to specific use cases, starting with HMAC-signed authentication.
 - **Enhanced control**: Exercise greater control over authentication flows and response handling, empowering developers to implement advanced authentication mechanisms beyond built-in features.
 
-While Tyk Gateway offers built-in support for HMAC-signed authentication, this tutorial serves as a practical guide for developers looking to extend Tyk's capabilities through custom authentication plugins. It extends the gRPC server that we developed in our [getting started guide]({{< ref "getting-started-python" >}}).
+While Tyk Gateway offers built-in support for HMAC-signed authentication, this tutorial serves as a practical guide for developers looking to extend Tyk's capabilities through custom authentication plugins. It extends the gRPC server that we developed in our [getting started guide]({{< ref "api-management/plugins/rich-plugins#using-python" >}}).
 
 We will develop a basic gRPC server that implements the Tyk Dispatcher service with a custom authentication plugin to handle authentication keys, signed using the HMAC SHA512 algorithm. Subsequently, you will be able to make a request to your API with a HMAC signed authentication key in the *Authorization* header. Tyk Gateway will intercept the request and forward it to your Python gRPC server for HMAC signature and token verification.
 
@@ -3213,11 +3213,11 @@ def set_response_error(object: coprocess_object_pb2.Object, code: int, message: 
 
 Our function accepts the following three parameters:
 
-- **object** is an instance of the [Object]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures#object" >}}) message representing the payload sent by Tyk Gateway to the *Dispatcher* service in our gRPC server. For further details of the payload structure dispatched by Tyk Gateway to a gRPC server please consult our gRPC documentation.
+- **object** is an instance of the [Object]({{< ref "api-management/plugins/rich-plugins#object" >}}) message representing the payload sent by Tyk Gateway to the *Dispatcher* service in our gRPC server. For further details of the payload structure dispatched by Tyk Gateway to a gRPC server please consult our gRPC documentation.
 - **code** is the HTTP status code to return in the response.
 - **message** is the response message.
 
-The function modifies the *return_overrides* attribute of the request, updating the response status code and error message. The *return_overrides* attribute is an instance of a [ReturnOverrides]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures#returnoverrides" >}}) message that can be used to override the response of a given HTTP request. When this attribute is modified the request is terminated and is not sent upstream.
+The function modifies the *return_overrides* attribute of the request, updating the response status code and error message. The *return_overrides* attribute is an instance of a [ReturnOverrides]({{< ref "api-management/plugins/rich-plugins#returnoverrides" >}}) message that can be used to override the response of a given HTTP request. When this attribute is modified the request is terminated and is not sent upstream.
 
 ##### Authenticate
 
@@ -3501,7 +3501,7 @@ The LuaJIT required modules are as follows:
 
 #### How to write LuaJIT Plugins
 
-We have a demo plugin hosted in the repo [tyk-plugin-demo-lua](https://github.com/TykTechnologies/tyk-plugin-demo-lua). The project implements a simple middleware for header injection, using a Pre hook (see [Tyk custom middleware hooks]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide" >}})) and [mymiddleware.lua](https://github.com/TykTechnologies/tyk-plugin-demo-lua/blob/master/mymiddleware.lua).
+We have a demo plugin hosted in the repo [tyk-plugin-demo-lua](https://github.com/TykTechnologies/tyk-plugin-demo-lua). The project implements a simple middleware for header injection, using a Pre hook (see [Tyk custom middleware hooks]({{< ref "api-management/plugins/javascript#using-javascript-with-tyk" >}})) and [mymiddleware.lua](https://github.com/TykTechnologies/tyk-plugin-demo-lua/blob/master/mymiddleware.lua).
 #### Lua Performance
 Lua support is currently in beta stage. We are planning performance optimizations for future releases.
 #### Tyk Lua API Methods

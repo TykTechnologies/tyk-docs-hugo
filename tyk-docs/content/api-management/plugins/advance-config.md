@@ -19,7 +19,7 @@ With custom plugins, this is no different.
 
 To illustrate this, we can look at the GitHub Actions of the [example repo][0].
 
-We see that upon every pull request, a section of steps are taken to "Build, [Bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}), Release Go Plugin".
+We see that upon every pull request, a section of steps are taken to "Build, [Bundle]({{< ref "api-management/plugins/overview#plugin-bundles" >}}), Release Go Plugin".
 
 Let's break down the [workflow file][1]:
 
@@ -43,7 +43,7 @@ We can look at the [Makefile][2] to further break down the last `go-build` comma
 
 ### Bundle The Plugin
 
-The next step of the workflow is to "[bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}})" the plugin.
+The next step of the workflow is to "[bundle]({{< ref "api-management/plugins/overview#plugin-bundles" >}})" the plugin.
 
 ```
 - name: Bundle Go Plugin
@@ -55,7 +55,7 @@ This command generates a "bundle" from the sample Go plugin in the repo.
 {{< note success >}}
 **Note**  
 
-For added security, please consider signing your [bundles]({{< ref "plugins/how-to-serve-plugins.md" >}}), especially if the connection between the Gateways and the Bundler server traverses the internet.
+For added security, please consider signing your [bundles]({{< ref "api-management/plugins/overview#plugin-deployment-types" >}}), especially if the connection between the Gateways and the Bundler server traverses the internet.
 
 {{< /note >}}
 

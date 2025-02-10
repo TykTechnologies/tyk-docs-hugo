@@ -2701,7 +2701,7 @@ In a production environment, you must change the default `admin_Secret` in the`t
 </br>
 {{< /warning >}}
 
-For the official Tyk Dashboard Admin API Reference, please visit our [API Documentation]({{< ref "dashboard-admin-api/" >}}).
+For the official Tyk Dashboard Admin API Reference, please visit our [API Documentation]({{< ref "dashboard-admin-api" >}}).
 
 ### Organizations API
 

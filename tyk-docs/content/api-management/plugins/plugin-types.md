@@ -44,7 +44,7 @@ This table includes all the plugin types with the relevant hooks, their place in
 {{< note success >}}
 **Note**  
 
-There are two different options for the <b>Post</b> Plugin that is executed at the end of the request processing chain. The API-level Post Plugin is applied to all requests, whilst the [endpoint-level]({{< ref "product-stack/tyk-gateway/middleware/endpoint-plugin" >}}) custom Golang plugin is only applied to requests made to specific endpoints. If both are configured, the endpoint-level plugin will be executed first.
+There are two different options for the <b>Post</b> Plugin that is executed at the end of the request processing chain. The API-level Post Plugin is applied to all requests, whilst the [endpoint-level]({{< ref "api-management/plugins/plugin-types#per-endpoint-custom-plugins" >}}) custom Golang plugin is only applied to requests made to specific endpoints. If both are configured, the endpoint-level plugin will be executed first.
 {{< /note >}}
 
 ## Plugin Types
@@ -58,7 +58,7 @@ Tyk supports four types of plugins:
 
 ## Request Plugins
 
-There are 4 different phases in the [request lifecycle]({{< ref "concepts/middleware-execution-order" >}}) you can inject custom plugins, including [Authentication plugins]({{< ref "plugins/plugin-types/auth-plugins/auth-plugins" >}}).  There are performance advantages to picking the correct phase, and of course that depends on your use case and what functionality you need.
+There are 4 different phases in the [request lifecycle]({{< ref "concepts/middleware-execution-order" >}}) you can inject custom plugins, including [Authentication plugins]({{< ref "api-management/plugins/plugin-types#authentication-plugins" >}}).  There are performance advantages to picking the correct phase, and of course that depends on your use case and what functionality you need.
 
 ### Hook Capabilities
 | Functionality           |   Pre    |  Auth       | Post-Auth |    Post   |
@@ -79,7 +79,7 @@ There are 4 different phases in the [request lifecycle]({{< ref "concepts/middle
 ### Return Overrides / ReturnOverrides  
 You can have your plugin finish the request lifecycle and return a response with custom  payload & headers to the requestor.
 
-[Read more here]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures#returnoverrides" >}})
+[Read more here]({{< ref "api-management/plugins/rich-plugins#returnoverrides" >}})
 
 ##### Python Example
 
@@ -126,7 +126,7 @@ Tyk will try to be clever about what to cache, but we need to help it. There are
 
 The ID Extractor is a caching mechanism that's used in combination with Tyk Plugins. It can be used specifically with plugins that implement custom authentication mechanisms. The ID Extractor works for all rich plugins: gRPC-based plugins, Python and Lua.
 
-See [ID Extractor]({{< ref "plugins/plugin-types/auth-plugins/id-extractor" >}}) for more details.
+See [ID Extractor]({{< ref "api-management/plugins/plugin-types#plugin-caching-mechanism" >}}) for more details.
 
 #### Token Metadata
 
@@ -163,7 +163,7 @@ The following languages are supported for custom authentication plugins:
 - All Rich Plugins (gRPC, Python, Lua)
 - GoLang
 
-See the [supported languages]({{< ref "plugins/supported-languages" >}}) section for custom authentication plugin examples in a language of your choosing. There's also a [blog that walks you through setting up gRPC custom auth in Java](https://tyk.io/how-to-setup-custom-authentication-middleware-using-grpc-and-java/).
+See the [supported languages]({{< ref "api-management/plugins/overview#supported-languages" >}}) section for custom authentication plugin examples in a language of your choosing. There's also a [blog that walks you through setting up gRPC custom auth in Java](https://tyk.io/how-to-setup-custom-authentication-middleware-using-grpc-and-java/).
 
 ### Tyk Operator
 
@@ -252,11 +252,11 @@ Please note, while the `headers` field will continue to be available and maintai
 
 ### Go response plugins
 
-[Go response plugins]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/writing-go-plugins#creating-a-custom-response-plugin" >}}) have been available since Tyk v3.2.
+[Go response plugins]({{< ref "api-management/plugins/golang#creating-a-custom-response-plugin" >}}) have been available since Tyk v3.2.
 
 ### Supported Response Plugin Languages
 
-See [Supported Plugins]({{< ref "plugins/supported-languages" >}}) for details on which languages the response plugin is supported in.
+See [Supported Plugins]({{< ref "api-management/plugins/overview#supported-languages" >}}) for details on which languages the response plugin is supported in.
 
 ## Analytics Plugins
 
@@ -338,7 +338,7 @@ There are two advance configuratin with plugin types:
 
 Tyk's custom plugin architecture allows you to deploy custom logic that will be invoked at certain points in the [middleware chain]({{< ref "concepts/middleware-execution-order" >}}) as Tyk processes requests to your APIs.
 
-At the API-level, there are several points in the processing flow where custom plugins can be "hooked", as explained [here]({{< ref "plugins/plugin-types/plugintypes" >}}). Each of these will be invoked for calls to any endpoint on an API. If you want to perform custom logic only for specific endpoints, you must include selective processing logic within the plugin.
+At the API-level, there are several points in the processing flow where custom plugins can be "hooked", as explained [here]({{< ref "api-management/plugins/plugin-types#plugin-types" >}}). Each of these will be invoked for calls to any endpoint on an API. If you want to perform custom logic only for specific endpoints, you must include selective processing logic within the plugin.
 
 At the endpoint-level, Tyk provides the facility to attach a custom Golang plugin at the end of the request processing chain (immediately before the API-level post-plugin is executed).
 
@@ -360,9 +360,9 @@ With a custom plugin you can implement complex dynamic routing of requests made 
 
 Tyk Gateway is written using Golang. This has a flexible plugin architecture which allows for custom code to be compiled separately from the gateway and then invoked natively by the gateway. When registering a custom Go plugin in the API definition, you must provide the location of the compiled plugin and also the name of the function to be invoked within that package. 
 
-Go plugins must therefore be [compiled]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler" >}}) and [loaded]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/loading-go-plugins" >}}) into the Gateway in order that the function named in the plugin configuration in the API definition can be located and executed at the appropriate stage in the request middleware processing chain.
+Go plugins must therefore be [compiled]({{< ref "api-management/plugins/golang#plugin-compiler" >}}) and [loaded]({{< ref "api-management/plugins/golang#loading-custom-go-plugins-into-tyk" >}}) into the Gateway in order that the function named in the plugin configuration in the API definition can be located and executed at the appropriate stage in the request middleware processing chain.
 
-The custom code within the plugin has access to contextual data such as the session object and API definition. If required, it can [terminate the request]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/writing-go-plugins#terminating-the-request" >}}) and hence can provide a [Virtual Endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) style capability using the Go language, rather than JavaScript (as supported by the virtual endpoint middleware). This can then act as a high-performance replacement for the JavaScript virtual endpoints or for cases when you want to make use of external libraries.
+The custom code within the plugin has access to contextual data such as the session object and API definition. If required, it can [terminate the request]({{< ref "api-management/plugins/golang#terminating-the-request" >}}) and hence can provide a [Virtual Endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) style capability using the Go language, rather than JavaScript (as supported by the virtual endpoint middleware). This can then act as a high-performance replacement for the JavaScript virtual endpoints or for cases when you want to make use of external libraries.
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  ## Ignore Authentication middleware summary
@@ -372,14 +372,14 @@ The custom code within the plugin has access to contextual data such as the sess
 
 ### Using the Per-Endpoint Plugin with Tyk OAS APIs
 
-The [per-endpoint custom plugin]({{< ref "product-stack/tyk-gateway/middleware/endpoint-plugin" >}}) provides the facility to attach a custom Go plugin at the end of the request processing chain.
+The [per-endpoint custom plugin]({{< ref "api-management/plugins/plugin-types#per-endpoint-custom-plugins" >}}) provides the facility to attach a custom Go plugin at the end of the request processing chain.
 This plugin allows you to add custom logic to the processing flow for the specific endpoint without adding to the processing complexity of other endpoints.
-It can [terminate the request]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/writing-go-plugins#terminating-the-request" >}}) if required,
+It can [terminate the request]({{< ref "api-management/plugins/golang#terminating-the-request" >}}) if required,
 and provides a [Virtual Endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) style capability using the Go language, rather than JavaScript (as supported by the virtual endpoint middleware).
 
 The middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/endpoint-plugin-tyk-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/plugins/plugin-types#using-the-per-endpoint-plugin-with-tyk-classic-apis" >}}) page.
 
 #### Using Tyk OAS API Definition
 
@@ -492,14 +492,14 @@ You are only able to add one custom plugin to each endpoint when using the API D
 
 ### Using the Per-Endpoint Plugin with Tyk Classic APIs
 
-The [per-endpoint custom plugin]({{< ref "product-stack/tyk-gateway/middleware/endpoint-plugin" >}}) provides the facility to attach a custom Golang plugin at the end of the request processing chain.
+The [per-endpoint custom plugin]({{< ref "api-management/plugins/plugin-types#per-endpoint-custom-plugins" >}}) provides the facility to attach a custom Golang plugin at the end of the request processing chain.
 This plugin allows you to add custom logic to the processing flow for the specific endpoint without adding to the processing complexity of other endpoints.
-It can [terminate the request]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/writing-go-plugins#terminating-the-request" >}}), if required,
+It can [terminate the request]({{< ref "api-management/plugins/golang#terminating-the-request" >}}), if required,
 and hence can provide a [Virtual Endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) style capability using the Go language, rather than JavaScript (as supported by the virtual endpoint middleware).
 
 This middleware is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/endpoint-plugin-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/plugins/plugin-types#using-the-per-endpoint-plugin-with-tyk-oas-apis" >}}) page.
 
 #### Using Tyk Classic API Definition
 
@@ -578,7 +578,7 @@ The main idea of the ID extractor is to reduce the number of calls made to your 
 When enabled, the ID extractor runs right before the authentication step, allowing it to take control of the flow and decide whether to call your authentication mechanism or not.
 
 If my ID is cached by this mechanism and my plugin isn't longer called, how do I expire it?
-When you implement your own authentication mechanism using plugins, you initialise the session object from your own code. The session object has a field that's used to configure the lifetime of a cached ID, this field is called `id_extractor_deadline`. See [Plugin Data Structures]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures" >}}) for more details. 
+When you implement your own authentication mechanism using plugins, you initialise the session object from your own code. The session object has a field that's used to configure the lifetime of a cached ID, this field is called `id_extractor_deadline`. See [Plugin Data Structures]({{< ref "api-management/plugins/rich-plugins#rich-plugins-data-structures" >}}) for more details. 
 The value of this field should be a UNIX timestamp on which the cached ID will expire, like `1507268142958`. It's an integer.
 
 For example, this snippet is used in a NodeJS plugin, inside a custom authentication function:
