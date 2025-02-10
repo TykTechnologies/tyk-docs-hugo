@@ -194,12 +194,12 @@ Follow our guide for deploying your [Go plugins on Tyk Cloud]({{< ref "#go-plugi
 **Gateway Versions < 4.1.0.**
 
 1. Proceed with [upgrading your Tyk Data Plane (Gateway)](#upgrading-cloud-data-planes)
-2. Update the [custom_middleware_bundle]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file containing your upgrade plugin.
+2. Update the [custom_middleware_bundle]({{< ref "api-management/plugins/overview#plugin-bundles" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file containing your upgrade plugin.
 3. Validate that your plugin is working per your expectations.
 
 **Gateway Versions >= 4.1.0**
 
-1. Update the [custom_middleware_bundle]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file containing your upgraded plugin.
+1. Update the [custom_middleware_bundle]({{< ref "api-management/plugins/overview#plugin-bundles" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file containing your upgraded plugin.
 
 2. Validate that your plugin is working per your expectations as at this stage, your Gateway will be running the plugin for your current version still.
 
@@ -264,14 +264,14 @@ Follow our guide for [upgrading your Go plugins on Tyk Cloud]({{< ref "#go-plugi
 **Gateway Versions < 4.1.0**
 
 1. Proceed with upgrading your [Tyk Data Plane Hybrid Gateways](#upgrading-data-plane-hybrid-gateways).
-2. Update the [custom_middleware_bundle]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}})
+2. Update the [custom_middleware_bundle]({{< ref "api-management/plugins/overview#plugin-bundles" >}})
 field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file
 containing your upgrade plugin.
 3. Validate that your plugin is working per your expectations.
 
 **Gateway Versions >= 4.1.0**
 
-1. Update the [custom_middleware_bundle]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}})
+1. Update the [custom_middleware_bundle]({{< ref "api-management/plugins/overview#plugin-bundles" >}})
 field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file
 containing your upgraded plugin.
 2. Validate that your plugin is working per your expectations as at this stage, your Gateway will be running the plugin
@@ -320,7 +320,7 @@ This guide explains how to deploy your custom Go plugins on Tyk Cloud:
 
 **Path 1 - Current Version < 4.1.0 and Target Version < 4.1.0**
 
-1. [Create a plugin bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) that includes the newly compiled version
+1. [Create a plugin bundle]({{< ref "api-management/plugins/overview#plugin-bundles" >}}) that includes the newly compiled version
 
     {{< img src="img/developer-support/path1-step5-bundle-contents.png" alt="Bundle ZIP example" width="800">}}
 
@@ -355,7 +355,7 @@ This guide explains how to deploy your custom Go plugins on Tyk Cloud:
 
 **Path 2 - Current Version >= 4.1.0 and Target Version >= 4.2.0**
 
-1. [Create a plugin bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) that includes both your current version’s plugin along with the newly compiled version
+1. [Create a plugin bundle]({{< ref "api-management/plugins/overview#plugin-bundles" >}}) that includes both your current version’s plugin along with the newly compiled version
 
     {{< img src="img/developer-support/path2-step5-bundle-contents.png" alt="Bundle ZIP example" width="800">}}
     
