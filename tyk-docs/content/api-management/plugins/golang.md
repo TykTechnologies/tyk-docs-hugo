@@ -5,6 +5,15 @@ tags: []
 description: "How to manage users, teams, permissions, rbac in Tyk Dashboard"
 keywords: []
 aliases:
+  - /plugins/supported-languages/golang
+  - /product-stack/tyk-gateway/advanced-configurations/plugins/golang/writing-go-plugins
+  - /product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-development-flow
+  - /product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler
+  - /product-stack/tyk-gateway/advanced-configurations/plugins/golang/loading-go-plugins
+  - /product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-examples
+  - /plugins/golang-plugins/golang-plugins
+  - /customise-tyk/plugins/golang-plugins/golang-plugins
+  - /plugins/supported-languages/golang
 ---
 
 ## Introduction
@@ -35,15 +44,6 @@ All of Tyk's [custom middleware hooks]({{< ref "plugins/plugin-types/plugintypes
 
 The `use_keyless` and `use_go_plugin_auth` fields are populated automatically with the correct values if you add a plugin to the **Auth** or **Post-Auth** hooks when using the Tyk Dashboard.
 {{< /note >}}
-
-## Upgrading your Tyk Gateway
-
-When upgrading your Tyk Gateway deployment, you need to re-compile your plugin with the new version. At the moment of loading a plugin, the Gateway will try to find a plugin with the name provided in the API definition. If none is found then it will fall back to search the plugin file with the name: `{plugin-name}_{Gw-version}_{OS}_{arch}.so`.
-
-Since Tyk v4.1.0, the compiler [automatically]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler#output-filename" >}}) creates plugin files following this convention so when you upgrade, say from Tyk v5.2.5 to v5.3.0 you only need to have the plugins compiled for v5.3.0 before performing the upgrade.
-
-This diagram shows how every Tyk Gateway will search and load the plugin binary that it is compatible with.
-{{< img src="/img/plugins/go-plugin-different-tyk-versions.png" alt="APIs Menu" >}}
 
 ## Using custom Go plugins with Tyk Cloud
 
@@ -1008,3 +1008,12 @@ Authentication successful with the right API key:
 ```
 
 Here we see that our custom middleware successfully authenticated the request and we received a reply from the upstream target.
+
+## Upgrading your Tyk Gateway
+
+When upgrading your Tyk Gateway deployment, you need to re-compile your plugin with the new version. At the moment of loading a plugin, the Gateway will try to find a plugin with the name provided in the API definition. If none is found then it will fall back to search the plugin file with the name: `{plugin-name}_{Gw-version}_{OS}_{arch}.so`.
+
+Since Tyk v4.1.0, the compiler [automatically]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler#output-filename" >}}) creates plugin files following this convention so when you upgrade, say from Tyk v5.2.5 to v5.3.0 you only need to have the plugins compiled for v5.3.0 before performing the upgrade.
+
+This diagram shows how every Tyk Gateway will search and load the plugin binary that it is compatible with.
+{{< img src="/img/plugins/go-plugin-different-tyk-versions.png" alt="APIs Menu" >}}

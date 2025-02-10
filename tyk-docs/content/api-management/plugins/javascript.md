@@ -5,6 +5,27 @@ tags: []
 description: "How to manage users, teams, permissions, rbac in Tyk Dashboard"
 keywords: []
 aliases:
+  - /plugins/supported-languages/javascript-middleware
+  - /plugins/supported-languages/javascript-middleware/middleware-scripting-guide
+  - /plugins/supported-languages/javascript-middleware/javascript-api
+  - /plugins/supported-languages/javascript-middleware/install-middleware/tyk-pro
+  - /plugins/supported-languages/javascript-middleware/install-middleware/tyk-hybrid
+  - /plugins/supported-languages/javascript-middleware/install-middleware/tyk-ce
+  - /plugins/supported-languages/javascript-middleware/waf-js-plugin
+  - /customise-tyk/plugins/javascript-middleware/
+  - /customise-tyk/plugins/javascript-middleware/middleware-execution-order/
+  - /plugins/javascript-middleware
+  - /plugins/supported-languages/javascript-middleware/
+  - /plugins/supported-languages/javascript-middleware/
+  - /plugins/supported-languages/javascript-middleware/install-middleware/install-middleware
+  - /plugins/javascript-middleware/install-middleware
+  - /tyk-api-gateway-v1-9/javascript-plugins/middleware-scripting/
+  - /plugins/javascript-middleware/middleware-scripting-guide
+  - /customise-tyk/plugins/javascript-middleware/javascript-api/
+  - /plugins/javascript-middleware/javascript-api
+  - /plugins/javascript-middleware/install-middleware/tyk-pro
+  - /plugins/javascript-middleware/install-middleware/tyk-hybrid
+  - /plugins/javascript-middleware/install-middleware/tyk-ce
 ---
 
 ## Introduction

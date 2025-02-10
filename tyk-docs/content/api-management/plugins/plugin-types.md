@@ -5,6 +5,22 @@ tags: ["Dashboard", "User Management", "RBAC", "Role Based Access Control", "Use
 description: "How to manage users, teams, permissions, rbac in Tyk Dashboard"
 keywords: ["Dashboard", "User Management", "RBAC", "Role Based Access Control", "User Groups", "Teams", "Permissions", "API Ownership", "SSO", "Single Sing On", "Multi Tenancy"]
 aliases:
+  - /plugins/plugin-types/plugintypes
+  - /plugins/plugin-types/request-plugins
+  - /plugins/plugin-types/auth-plugins/auth-plugins
+  - /plugins/plugin-types/auth-plugins/id-extractor
+  - /plugins/plugin-types/response-plugins
+  - /plugins/plugin-types/analytics-plugins
+  - /product-stack/tyk-gateway/middleware/endpoint-plugin
+  - /product-stack/tyk-gateway/middleware/endpoint-plugin-tyk-oas
+  - /product-stack/tyk-gateway/middleware/endpoint-plugin-tyk-classic
+  - /plugins/request-plugins
+  - /plugins/auth-plugins
+  - /customise-tyk/plugins/rich-plugins/id-extractor
+  - /plugins/rich-plugins/id-extractor
+  - /plugins/auth-plugins/id-extractor
+  - /plugins/response-plugins
+  - /plugins/analytics-plugins
 ---
 
 ## Introduction

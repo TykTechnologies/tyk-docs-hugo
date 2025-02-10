@@ -5,6 +5,72 @@ tags: []
 description: "How to manage users, teams, permissions, rbac in Tyk Dashboard"
 keywords: []
 aliases:
+  - /plugins/supported-languages/rich-plugins
+  - /plugins/supported-languages/rich-plugins/rich-plugins-work
+  - /plugins/supported-languages/rich-plugins/rich-plugins-data-structures
+  - /plugins/supported-languages/rich-plugins/python/python
+  - /plugins/supported-languages/rich-plugins/python/custom-auth-python-tutorial
+  - /plugins/supported-languages/rich-plugins/python/tutorial-add-demo-plugin-api
+  - /plugins/supported-languages/rich-plugins/python/tyk-python-api-methods
+  - /plugins/supported-languages/rich-plugins/python/performance
+  - /plugins/supported-languages/rich-plugins/grpc
+  - /plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin
+  - /plugins/supported-languages/rich-plugins/grpc/getting-started-python
+  - /plugins/supported-languages/rich-plugins/grpc/request-transformation-java
+  - /plugins/supported-languages/rich-plugins/grpc/custom-auth-dot-net
+  - /plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs
+  - /plugins/supported-languages/rich-plugins/grpc/custom-auth-python
+  - /plugins/supported-languages/rich-plugins/grpc/performance
+  - /plugins/supported-languages/rich-plugins/luajit
+  - /plugins/supported-languages/rich-plugins/luajit/requirements
+  - /plugins/supported-languages/rich-plugins/luajit/tutorial-add-demo-plugin-api
+  - /plugins/rich-plugins
+  - /plugins/supported-languages/rich-plugins
+  - /plugins/rich-plugins/rich-plugins-work
+  - /plugins/rich-plugins/rich-plugins-data-structures
+  - /customise-tyk/plugins/rich-plugins/rich-plugins-work
+  - /customise-tyk/plugins/rich-plugins/python
+  - /plugins/rich-plugins/python
+  - /customise-tyk/plugins/rich-plugins/python/custom-auth-python-tutorial
+  - /plugins/supported-languages/rich-plugins/python/custom-auth-python-tutorial
+  - /plugins/rich-plugins/python/custom-auth-python-tutorial
+  - /plugins/supported-languages/rich-plugins/python/tutorial-add-demo-plugin-api
+  - /plugins/rich-plugins/python/tutorial-add-demo-plugin-api
+  - /customise-tyk/plugins/rich-plugins/python/tutorial-add-demo-plugin-api
+  - /plugins/supported-languages/rich-plugins/python/tyk-python-api-methods
+  - /plugins/rich-plugins/python/tyk-python-api-methods
+  - /plugins/supported-languages/rich-plugins/python/performance
+  - /plugins/rich-plugins/python/performance
+  - /plugins/supported-languages/rich-plugins/luajittutorial-add-demo-plugin-api
+  - /plugins/rich-plugins/luajit/tutorial-add-demo-plugin-api
+  - /plugins/supported-languages/rich-plugins/luajitrequirements
+  - /plugins/rich-plugins/luajit/requirements
+  - /plugins/supported-languages/rich-plugins/luajit
+  - /plugins/rich-plugins/luajit
+  - /plugins/supported-languages/rich-plugins/luajit
+  - /plugins/supported-languages/rich-plugins/luajit/requirements
+  - /plugins/supported-languages/rich-plugins/luajit/tutorial-add-demo-plugin-api
+  - /plugins/supported-languages/rich-plugins/grpc
+  - /plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin
+  - /plugins/supported-languages/rich-plugins/grpc/getting-started-python
+  - /plugins/supported-languages/rich-plugins/grpc/request-transformation-java
+  - /plugins/supported-languages/rich-plugins/grpc/custom-auth-dot-net
+  - /plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs
+  - /plugins/supported-languages/rich-plugins/grpc/custom-auth-python
+  - /plugins/supported-languages/rich-plugins/grpc/performance
+  - /plugins/rich-plugins/grpc/performance
+  - /plugins/rich-plugins/grpc/custom-auth-nodejs
+  - /customise-tyk/plugins/rich-plugins/grpc/custom-auth-dot-net/
+  - /plugins/rich-plugins/grpc/custom-auth-dot-net
+  - /plugins/rich-plugins/grpc/request-transformation-java
+  - /plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin
+  - /plugins/rich-plugins/grpc/write-grpc-plugin
+  - /plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api
+  - /plugins/rich-plugins/grpc/tutorial-add-grpc-plugin-api
+  - /customise-tyk/plugins/rich-plugins/grpc/
+  - /customise-tyk/plugins/rich-plugins/grpc/
+  - /plugins/rich-plugins/grpc
+  - /plugins/rich-plugins/grpc/grpc-plugins-tyk
 ---
 
 ## Introduction
@@ -3440,20 +3506,6 @@ We have a demo plugin hosted in the repo [tyk-plugin-demo-lua](https://github.co
 Lua support is currently in beta stage. We are planning performance optimizations for future releases.
 #### Tyk Lua API Methods
 Tyk Lua API methods aren’t currently supported.
-
-### Requirements
-
-Tyk uses [LuaJIT](http://luajit.org/). The main requirement is the LuaJIT shared library, you may find this as `libluajit-x` in most distros.
-
-For Ubuntu 14.04 you may use:
-
-`$ apt-get install libluajit-5.1-2
-$ apt-get install luarocks`
-
-The LuaJIT required modules are as follows:
-
-*   [lua-cjson](https://github.com/mpx/lua-cjson): in case you have `luarocks`, run: `$ luarocks install lua-cjson`
-*   From v1.3.6 You can also use override response code, headers and body using ReturnOverrides. See the [Extend ReturnOverides](https://github.com/TykTechnologies/tyk/pull/763) sample for details.
 
 ### Lua Plugin Tutorial
 
