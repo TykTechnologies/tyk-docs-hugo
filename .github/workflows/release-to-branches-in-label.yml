@@ -20,6 +20,7 @@ jobs:
       - name: Add a comment to the merged PR (only if labeler is in the org)
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.TYK_SCRIPTS_TOKEN }}
           script: |
             // 1. The label format: e.g., "release-1", "release-1.0"
             const labelRegex = /^release-[0-9]+(\.[0-9]+)?$/;

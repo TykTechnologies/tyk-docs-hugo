@@ -32,7 +32,7 @@ See [What is a Security Policy?]({{< ref "api-management/policies#what-is-a-secu
 {{< tab_end >}}
 {{< tab_start "Open Source" >}}
 
-## Tutorial: Create a Policy with the Gateway
+#### Create a Policy with the Gateway
 
 Adding a policy to the Tyk Gateway is very easy. Polices are loaded into memory on load and so need to be specified in advanced in a file called `policies.json`. To add a policy, simply create or edit the `/policies/policies.json` file and add the policy object to the object array:
 

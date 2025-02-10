@@ -1,0 +1,25 @@
+{
+  "name": "docs-rule-engine",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "@octokit/rest": "21.0.2",
+    "case": "^1.6.3",
+    "change-case": "^5.4.4",
+    "gray-matter": "^4.0.3",
+    "js-yaml": "^4.1.0",
+    "markdown-link-extractor": "^4.0.2",
+    "marked": "^14.1.2",
+    "openai": "^4.72.0",
+    "sharp": "0.32.6"
+  }
+}

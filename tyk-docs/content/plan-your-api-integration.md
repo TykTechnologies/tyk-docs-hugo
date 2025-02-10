@@ -58,7 +58,7 @@ With [Tyk’s developer portal]({{< ref "tyk-developer-portal/tyk-portal-classic
 #### **Step 4: Develop and Test the API**
 
 Now you’re ready to build and test:
-- **Develop the Backend**: Write the code to implement your [API’s endpoints]({{< ref "advanced-configuration/transform-traffic/endpoint-designer" >}}) and integrate with your [database]({{< ref "tyk-dashboard/database-options/" >}}) or service layer.
+- **Develop the Backend**: Write the code to implement your [API’s endpoints]({{< ref "api-management/dashboard-configuration#exploring-api-endpoint-designer" >}}) and integrate with your [database]({{< ref "api-management/dashboard-configuration#supported-database" >}}) or service layer.
 - **Functional Testing**: Check each endpoint to ensure it behaves as expected and handles common errors.
 - **Load Testing**: Simulate traffic to see how your API performs under different loads. Tyk offers tools to scale your API seamlessly and track performance metrics.
 
@@ -74,7 +74,7 @@ Tyk’s platform makes security implementation straightforward, offering feature
 
 An API isn’t a one-time setup; it needs regular monitoring and updates:
 - **Monitor Performance**: Use [Tyk’s real-time analytics]({{< ref "tyk-pump" >}}) to track metrics like [latency]({{< ref "tyk-stack/tyk-pump/tyk-analytics-record-fields/#latency" >}}), error rates, and [usage]({{< ref "tyk-cloud#track-usage" >}}). This helps identify any bottlenecks or security risks.
-- **Version and Update**: As you add new features, use [Tyk’s versioning]({{< ref "api-management/automations#api-versioning" >}}) to avoid breaking existing functionality.
+- **Version and Update**: As you add new features, use [Tyk’s versioning]({{< ref "api-management/automations/operator#api-versioning" >}}) to avoid breaking existing functionality.
 - **Optimize and Scale**: With Tyk, you can adjust your rate limits, caching, and load balancing to handle higher volumes as needed. Optimizing is especially necessary as you [move your workload into production]({{< ref "tyk-self-managed#planning-for-production" >}}).
 
 ---
@@ -87,21 +87,21 @@ Tyk provides a comprehensive platform to help you through each stage of API deve
 
 Tyk simplifies the early stages of API planning by providing:
 - **Multi-API Support**: Tyk supports REST, GraphQL, and gRPC APIs, so you can choose the best style for your project.
-- **Advanced Security Options**: Easily configure [authentication methods]({{< ref "basic-config-and-security" >}}) and [permissions]({{< ref "basic-config-and-security/security/dashboard/user-roles" >}}) to protect data and control access.
+- **Advanced Security Options**: Easily configure [authentication methods]({{< ref "basic-config-and-security" >}}) and [permissions]({{< ref "api-management/user-management#user-permissions" >}}) to protect data and control access.
 - **Developer Portals**: [Tyk’s developer portals]({{< ref "tyk-developer-portal/tyk-portal-classic" >}}) allow you to publish documentation and manage developer access, making it easier for teams or external partners to use your APIs.
 
 #### **Deployment and Configuration Phase**
 
 In this stage, Tyk streamlines deployment, whether on the cloud, on-premises, or hybrid:
-- **Kubernetes Integration with Tyk Operator**: If your API runs on Kubernetes, [Tyk Operator]({{< ref "api-management/automations#what-is-tyk-operator" >}}) integrates with Kubernetes to help you manage deployments as Kubernetes resources.
+- **Kubernetes Integration with Tyk Operator**: If your API runs on Kubernetes, [Tyk Operator]({{< ref "api-management/automations/operator#what-is-tyk-operator" >}}) integrates with Kubernetes to help you manage deployments as Kubernetes resources.
 - **Custom Domain Setup**: Configure custom domains to make your API URLs user-friendly and secure with SSL/TLS certificates.
-- **Deployment Across Multiple Environments**: [Tyk’s gateways]({{< ref "tyk-oss-gateway" >}}) let you deploy, monitor, and secure multiple APIs from a single platform, so you can [manage environments]({{< ref "advanced-configuration/manage-multiple-environments" >}}) (development, staging, production) with ease.
+- **Deployment Across Multiple Environments**: [Tyk’s gateways]({{< ref "tyk-oss-gateway" >}}) let you deploy, monitor, and secure multiple APIs from a single platform, so you can [manage environments]({{< ref "api-management/multiple-environments" >}}) (development, staging, production) with ease.
 
 #### **Operations and Business as Usual (BAU) Phase**
 
 After deployment, Tyk offers robust tools to ensure smooth API operations and maintenance:
 - **Real-Time Monitoring and Analytics**: [Tyk’s dashboard]({{< ref "tyk-dashboard" >}}) provides insights into API traffic, usage patterns, and error rates, enabling quick response to issues.
-- **Dynamic Policy Management**: Set up and adjust security policies to control access and usage, such as [IP whitelisting]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting#ip-allowlist-middleware" >}}), [request throttling]({{< ref "api-management/rate-limit#request-throttling" >}}), or [rate limiting]({{< ref "api-management/rate-limit" >}}).
+- **Dynamic Policy Management**: Set up and adjust security policies to control access and usage, such as [IP whitelisting]({{< ref "api-management/gateway-config-tyk-classic#ip-allowlist-middleware" >}}), [request throttling]({{< ref "api-management/rate-limit#request-throttling" >}}), or [rate limiting]({{< ref "api-management/rate-limit" >}}).
 - **Plugin Support for Customization**: Use [Tyk’s plugin system]({{< ref "tyk-cloud#configure-plugins" >}}) to add custom functionality or [middleware]({{< ref "api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware/" >}}), such as [custom authentication]({{< ref "tyk-cloud#add-custom-authentication" >}}) or [data transformations]({{< ref "advanced-configuration/transform-traffic" >}}).
 
 ---

@@ -424,7 +424,7 @@ Bitnami MongoDB image is not supported on darwin/arm64 architecture.
 {{< note success >}}
 **Note**
 
-Please make sure you are installing MongoDB versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}).
+Please make sure you are installing MongoDB versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}).
 {{< /note >}}
 
 Follow notes from the installation output to get connection details and update them in the `values.yaml` file.
@@ -469,7 +469,7 @@ helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics"
 {{< note success >}}
 **Note**
 
-Please make sure you are installing PostgreSQL versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}).
+Please make sure you are installing PostgreSQL versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and update them in `values.yaml` file.
@@ -510,7 +510,7 @@ To setup other backends for pump, refer to this [document](https://github.com/Ty
 ### Tyk Operator Configurations
 
 Tyk Operator is a licensed component that requires a valid key for operation. 
-Please refer to the [Tyk Operator Installation Guide]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}})
+Please refer to the [Tyk Operator Installation Guide]({{<ref "api-management/automations/operator#install-and-configure-tyk-operator">}})
 for detailed information on the installation and upgrade processes. 
 
 Prior to installing Tyk Operator, ensure that a valid license key is provided by setting `global.license.operator` field in values.yaml file. You can set license key via a Kubernetes secret using `global.secrets.useSecretName` field. The secret should contain a key called `OperatorLicense`.
@@ -519,4 +519,4 @@ In order to enable installing Tyk Operator along-side Tyk OSS installation, plea
 
 All other configurations related to Tyk Operator are available under `tyk-operator` section of `values.yaml` file.
 
-> Tyk Operator needs a cert-manager to be installed. Ensure that cert-manager is installed as described in the official documentation: [Installing Tyk Operator]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}}).
+> Tyk Operator needs a cert-manager to be installed. Ensure that cert-manager is installed as described in the official documentation: [Installing Tyk Operator]({{<ref "api-management/automations/operator#install-and-configure-tyk-operator">}}).

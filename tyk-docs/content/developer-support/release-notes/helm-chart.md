@@ -313,7 +313,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog](#C
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
-However, if you are upgrading to [Tyk Operator v1.0]({{<ref "developer-support/release-notes/operator#100-release-notes">}}) using the Helm Chart, please read the [license requirement]({{<ref "developer-support/release-notes/operator#breaking-changesv1.0.0">}}) and Tyk Operator [installation and upgrade instructions]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}}) carefully.
+However, if you are upgrading to [Tyk Operator v1.0]({{<ref "developer-support/release-notes/operator#100-release-notes">}}) using the Helm Chart, please read the [license requirement]({{<ref "developer-support/release-notes/operator#breaking-changesv1.0.0">}}) and Tyk Operator [installation and upgrade instructions]({{<ref "api-management/automations/operator#install-and-configure-tyk-operator">}}) carefully.
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
@@ -1207,7 +1207,7 @@ mdcb:
 
 `global.components.operator` added to determine whether the Tyk Operator component should be installed.
 
-This feature adds a dependency on the Tyk Operator to the umbrella charts, facilitating the installation of the Tyk Operator component. Users can now easily install the Tyk Operator component by setting the `global.components.operator` parameter. Note that the Tyk Operator requires `cert-manager` to be installed beforehand. It also expects secret `tyk-operator-conf` is present in the installation namespace. You can enable bootstrapping at `global.components.bootstrap` if you are working on a new installation to have this secret created for you. Refer to the Tyk Operator [installation guide]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}}) for detailed information on pre-requisites.
+This feature adds a dependency on the Tyk Operator to the umbrella charts, facilitating the installation of the Tyk Operator component. Users can now easily install the Tyk Operator component by setting the `global.components.operator` parameter. Note that the Tyk Operator requires `cert-manager` to be installed beforehand. It also expects secret `tyk-operator-conf` is present in the installation namespace. You can enable bootstrapping at `global.components.bootstrap` if you are working on a new installation to have this secret created for you. Refer to the Tyk Operator [installation guide]({{<ref "api-management/automations/operator#install-and-configure-tyk-operator">}}) for detailed information on pre-requisites.
 
 ```yaml
 global:
@@ -1447,7 +1447,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>OSS: Simplify Tyk Operator setup with Kubernetes Secret creation</summary>
 
-When you set `operatorSecret.enabled` to `true` in the `tyk-oss` chart, a Kubernetes Secret named `tyk-operator-conf` will be automatically created in the same namespace. This secret is essential for connecting Tyk Operator to the Gateway, enabling seamless management of Tyk API resources. To learn more about setting up Tyk Operator, check out [Tyk Operator installation]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}}).
+When you set `operatorSecret.enabled` to `true` in the `tyk-oss` chart, a Kubernetes Secret named `tyk-operator-conf` will be automatically created in the same namespace. This secret is essential for connecting Tyk Operator to the Gateway, enabling seamless management of Tyk API resources. To learn more about setting up Tyk Operator, check out [Tyk Operator installation]({{<ref "api-management/automations/operator#install-and-configure-tyk-operator">}}).
 </details>
 </li>
 
@@ -1709,7 +1709,7 @@ Tyk Charts 1.3 adds support for a number of new Tyk features available from Tyk 
 Tyk Charts 1.3 adds support for Graph MongoDB Pump, Graph SQL Pump and Graph SQL Aggregate Pump. see [Graph Pump setup]({{<ref "/tyk-stack/tyk-pump/tyk-pump-configuration/graph-pump">}}) to learn more about the GraphQL-specific metrics available.
 
 ##### Enable Tyk Identity Broker (TIB) in Tyk Dashboard
-Tyk Charts 1.3 adds a field to enable Internal [Tyk Identity Broker (TIB)]({{<ref "tyk-identity-broker">}}) in Tyk Dashboard by field `tyk-dashboard.tib.enabled` to `true`.
+Tyk Charts 1.3 adds a field to enable Internal [Tyk Identity Broker (TIB)]({{<ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib">}}) in Tyk Dashboard by field `tyk-dashboard.tib.enabled` to `true`.
 
 #### Downloads
 - [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v1.3.0.tar.gz)
@@ -1860,7 +1860,7 @@ Users can configure Tyk Gateway initContainer image so that it is possible to lo
 <details>
 <summary>Dashboard: Added option to enable Tyk Identity Broker (TIB) in Tyk Dashboard</summary>
 
-You can enable Internal [Tyk Identity Broker (TIB)]({{<ref "tyk-identity-broker">}}) in Tyk Dashboard by field `tyk-dashboard.tib.enabled` to `true`.
+You can enable Internal [Tyk Identity Broker (TIB)]({{<ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib">}}) in Tyk Dashboard by field `tyk-dashboard.tib.enabled` to `true`.
 </details>
 </li>
 

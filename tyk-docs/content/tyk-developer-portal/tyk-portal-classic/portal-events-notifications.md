@@ -33,7 +33,7 @@ The templates are available as text based or HTML. See the standard included one
 
 The Dashboard and Portal also support a certain level of events that you can use to notify your system of various things that have happened in the Portal.
 
-To configure them, add an `event_options` section to an Organization when you are creating them. See [Creating an Organization via the Dashboard Admin API]({{< ref "dashboard-admin-api/organisations#create-an-organization" >}}) for more details.
+To configure them, add an `event_options` section to an Organization when you are creating them. See [Creating an Organization via the Dashboard Admin API]({{< ref "api-management/dashboard-configuration#create-an-organization" >}}) for more details.
 
 Within this object, you can then register webhooks or/and an email address to notify when an event occurs:
 

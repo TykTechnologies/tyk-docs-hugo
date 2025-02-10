@@ -162,7 +162,7 @@ To try out these capabilities, please get in touch for a [guided evaluation](htt
 Welcome to the [Tyk Cloud Platform]({{< ref "tyk-cloud" >}})!
 This guide will lead you through the following steps:
 1. Signing up with [Tyk Cloud ]({{< ref "tyk-cloud" >}}).
-2. Creating your first [API]({{< ref "getting-started/key-concepts/what-is-an-api-definition" >}}) using the [Tyk Dashboard]({{< ref "tyk-dashboard" >}}).
+2. Creating your first [API]({{< ref "api-management/gateway-config-introduction" >}}) using the [Tyk Dashboard]({{< ref "tyk-dashboard" >}}).
 3. Setting up a [Policy]({{< ref "api-management/policies#what-is-a-security-policy" >}}) and Key to secure your APIs.
 
 No installation required!
@@ -1237,9 +1237,9 @@ From there you have access to the full scope of Tyk API management functionality
 * [Adding APIs]({{< ref "getting-started/create-api" >}}) to Tyk, including REST and GraphQL APIs
 * Applying Quotas and Rate limits via [Security Policies]({{< ref "getting-started/create-security-policy" >}}) and [Keys]({{< ref "getting-started/create-api-key" >}})
 * [Securing]({{< ref "api-management/security-best-practices#securing-apis-with-tyk" >}}) your APIs
-* Viewing granular [Analytics]({{< ref "tyk-dashboard-analytics" >}}) for your Tyk managed APIs
+* Viewing granular [Analytics]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}) for your Tyk managed APIs
 * [Transform traffic]({{< ref "advanced-configuration/transform-traffic" >}}) with the Tyk API Designer
-* Add integration options such as [SSO]({{< ref "advanced-configuration/integrate/sso" >}}) and [3rd Party IdentityProviders]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers" >}})
+* Add integration options such as [SSO]({{< ref "api-management/external-service-integration#single-sign-on-sso" >}}) and [3rd Party IdentityProviders]({{< ref "api-management/external-service-integration" >}})
 * [Adding Segment Tags]({{< ref "#faqs" >}})
 
 
@@ -1343,7 +1343,7 @@ The following [user roles]({{< ref "#user-roles-in-tyk-cloud" >}}) can perform e
 
 Organization Admins, Team Admins and Team Members are responsible for managing the Tyk Cloud organization hierarchy and deploying/managing stacks, as well as having access to the Tyk Dashboard to manage APIs. Users of Tyk Cloud are usually DevOps, Architects and sometimes Engineers or Managers.
 
-You can also [add users to the Tyk Dashboard]({{< ref "basic-config-and-security/security/dashboard/create-users" >}}) itself instead of inviting them as Tyk Cloud users. These users would likely be your API Developers and Engineers who manage the APIs. 
+You can also [add users to the Tyk Dashboard]({{< ref "api-management/user-management#manage-tyk-dashboard-users" >}}) itself instead of inviting them as Tyk Cloud users. These users would likely be your API Developers and Engineers who manage the APIs. 
 {{< /note >}}
 
 ##### Invite a new user to your team
@@ -1384,7 +1384,7 @@ We have the following user roles defined in Tyk Cloud for your team members
 
 Billing Admins are responsible for the billing management of the Tyk Cloud account. Organization Admins, Team Admins and Team Members are responsible for managing the Tyk Cloud organization hierarchy and deploying/managing stacks, as well as having access to the Tyk Dashboard to manage APIs. Users of Tyk Cloud are usually DevOps, Architects and sometimes Engineers or Managers.
 
-You can [add users to the Tyk Dashboard]({{< ref "basic-config-and-security/security/dashboard/create-users" >}}) itself instead of inviting them as Tyk Cloud users. These users would likely be your API Developers and Engineers who manage the APIs.   
+You can [add users to the Tyk Dashboard]({{< ref "api-management/user-management#manage-tyk-dashboard-users" >}}) itself instead of inviting them as Tyk Cloud users. These users would likely be your API Developers and Engineers who manage the APIs.   
 
 ##### Use Case Matrix
 
@@ -2361,7 +2361,7 @@ External traffic is subject to billing, while internal traffic is exempt. The mo
  - Traffic between Control Plane → Portal in the same region
 
 #### Tyk Cloud Storage
-When a client makes a request to a Tyk Gateway deployment, the details of the request and response are captured and [stored in Redis]({{< ref "tyk-dashboard-analytics/" >}}). Tyk Pump processes the records from Redis and forwards them to MongoDB. Finally, Tyk Cloud reads that data from MongoDB and displays its size(bytes) in the _Storage_ section of _Monitoring_. 
+When a client makes a request to a Tyk Gateway deployment, the details of the request and response are captured and [stored in Redis]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}). Tyk Pump processes the records from Redis and forwards them to MongoDB. Finally, Tyk Cloud reads that data from MongoDB and displays its size(bytes) in the _Storage_ section of _Monitoring_. 
 
 
 
