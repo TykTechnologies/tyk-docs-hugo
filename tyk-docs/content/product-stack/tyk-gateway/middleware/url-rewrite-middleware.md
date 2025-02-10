@@ -110,13 +110,13 @@ The format for these advanced trigger context variables is: `$tyk_context.trigge
 
 #### Using data from KV storage in the rewrite path
 
-You can retrieve a value from KV storage by including a reference in the [appropriate notation]({{< ref "tyk-configuration-reference/kv-store#transformation-middleware" >}}) for the KV location where the key-value pair is stored.
+You can retrieve a value from KV storage by including a reference in the [appropriate notation]({{< ref "tyk-self-managed#transformation-middleware" >}}) for the KV location where the key-value pair is stored.
 
-If you use a value retrieved from [Consul]({{< ref "deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/consul">}}) or [Vault]({{< ref "deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/vault">}}), this must be the <b>last</b> part in the `rewriteTo` URL.
+If you use a value retrieved from [Consul]({{< ref "tyk-self-managed#consul">}}) or [Vault]({{< ref "tyk-self-managed#vault">}}), this must be the <b>last</b> part in the `rewriteTo` URL.
 
 For example, say you have a key named `userName` with value `jo` in my Consul KV store:
 - if you configure `rewriteTo` as `/my-api/users/$secret_consul.userName` this will redirect calls to `/my-api/users/jo`
 - if, however, you configure my `rewriteTo` as `/my-api/users/$secret_consul.userName/contract` this will not redirect to `my-api/jo/contract` but instead the KV lookup will fail, as Tyk will check for a key named `userName/contract` in Consul (returning null), so the URL rewrite middleware will redirect to `/my-api/users`
 
 
-This limitation does not apply to KV accessed from the other [supported KV stores]({{< ref "tyk-configuration-reference/kv-store#supported-storage-options" >}}) (environment variable or Gateway `secrets`).
+This limitation does not apply to KV accessed from the other [supported KV stores]({{< ref "tyk-self-managed#store-configuration-with-key-value-store" >}}) (environment variable or Gateway `secrets`).

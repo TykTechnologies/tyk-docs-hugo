@@ -62,6 +62,7 @@ aliases:
     - troubleshooting/tyk-pump
     - tyk-rest-api/hot-reload
     - tyk-stack/tyk-pump/tyk-pump-configuration/graceful-shutdowm
+    - frequently-asked-questions/add-custom-certificates-to-docker-images
 ---
 
 ## Gateway
@@ -109,7 +110,7 @@ aliases:
     proxy.service_discovery.port_data_path = “ServicePort""
     ```
         
-    See [Tyk Gateway configuration]({{< ref "tyk-oss-gateway/configuration" >}}) and [Tyk Gateway API]({{< ref "tyk-gateway-api/api-definition-objects" >}}) for further information regarding API definition settings.
+    See [Tyk Gateway configuration]({{< ref "tyk-oss-gateway/configuration" >}}) and [Tyk Gateway API]({{< ref "api-management/gateway-config-tyk-classic" >}}) for further information regarding API definition settings.
 
 3. ##### Gateway proxy error "context canceled"
 
@@ -119,7 +120,7 @@ aliases:
 
     When it happens on the high load, it can be a lot of different reasons.
     For example your OS is running out of system limits, like number of opened sockets, and to validate it, you need to try your system limits.
-    See this guide https://tyk.io/docs/planning-for-production/#resource-limits.
+    See this guide https://tyk.io/docs/tyk-self-managed#resource-limits
 
     Additionally, it can be CPU bottleneck: you can't process more than your machine  can do.
     And note that it is not only about the actual utilization %, it is also about context switches it has to do. 
@@ -145,7 +146,7 @@ aliases:
 
     Make sure that API definitions are set up correctly. Information on how to do this with the Tyk Gateway API can be found in the following links:
 
-    *   [API Definition Object Details]({{< ref "tyk-gateway-api/api-definition-objects" >}})
+    *   [API Definition Object Details]({{< ref "api-management/gateway-config-tyk-classic" >}})
     *   [API Management]({{< ref "tyk-gateway-api" >}})
 
 5. ##### Users receive this error message when attempting to make API calls to an existing key.
@@ -360,7 +361,7 @@ aliases:
 
     **Cause**
 
-    There can be a couple of reasons for seeing this error about the [Distributed Rate Limiter]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}}):
+    There can be a couple of reasons for seeing this error about the [Distributed Rate Limiter]({{< ref "api-management/rate-limit#rate-limiting-layers" >}}):
 
     1. When you have more than one installation of the Gateway with one configured to use DRL, and others not.
     2. When the Gateway is started and the DRL receives an event before it has finished initialising.
@@ -406,6 +407,27 @@ aliases:
 
     This will fork and load a new process, passing all open handles to the new server and wait to drain the old ones.
 
+14. ##### How to add Custom Certificates to Trusted Storage of Docker Images
+
+    To add your custom Certificate Authority(CA) to your docker containers. You can mount your CA certificate directly into `/etc/ssl/certs` folder.
+
+    Docker: 
+    ```{.copyWrapper}
+    docker run -it tykio/tyk-gateway:latest \
+    -v $(pwd)/myCA.pem:/etc/ssl/certs/myCA.pem
+    ```
+
+    Kubernetes - using Helm Chart and secrets:
+    ```yaml
+    extraVolumes: 
+        - name: self-signed-ca
+        secret:
+            secretName: self-signed-ca-secret
+    extraVolumeMounts: 
+        - name: self-signed-ca
+        mountPath: "/etc/ssl/certs/myCA.pem"
+        subPath: myCA.pem
+    ```
 
 ## Dashboard
 
@@ -629,7 +651,7 @@ aliases:
 
     **Solution**
 
-    The best way to set the domain is to use the Tyk Dashboard Admin API, to obtain the organization object via a GET request and then update the object using a PUT request with the relevant CNAME added to the body of the request.<sup>[[1]({{<ref "dashboard-admin-api/organisations">}})]</sup> Restarting the process will then set the domain.
+    The best way to set the domain is to use the Tyk Dashboard Admin API, to obtain the organization object via a GET request and then update the object using a PUT request with the relevant CNAME added to the body of the request.<sup>[[1]({{<ref "api-management/dashboard-configuration#organizations-api">}})]</sup> Restarting the process will then set the domain.
 
 8. ##### runtime error invalid memory address or nil pointer dereference
 
@@ -774,7 +796,7 @@ aliases:
 13. ##### How to disable an API
 
     You will need to GET the API from the Dashboard, then set `active` property to `false`, then PUT it back.
-    See [Dashboard API - API Definitions]({{< ref "tyk-apis/tyk-dashboard-api/api-definitions" >}}) for more details on how to GET and PUT an API definition.
+    See [Dashboard API - API Definitions]({{< ref "api-management/dashboard-configuration#manage-apis---api-definition" >}}) for more details on how to GET and PUT an API definition.
 
 14. ##### How to Setup CORS
 
@@ -797,14 +819,14 @@ aliases:
     **Upstream does not handle CORS**
     If your upstream does not handle CORS, you should let Tyk manage all CORS related headers and responses. In order to do that you should **enable CORS** in Tyk and **NOT ENABLE** Options pass through.
 
-    To learn more, look for `CORS.options_passthrough` [here]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}).
+    To learn more, look for `CORS.options_passthrough` [here]({{< ref "api-management/gateway-config-tyk-classic#cors" >}}).
 
 
     **CORS middleware is allowing headers which I did not allow**
     This may be the case when you enable CORS but don't provide any headers explicitly (basically providing an empty array). In this case the CORS middleware will use some sensible defaults. 
     To allow all headers, you will need to provide `*` (although this is not recommended).
 
-    The same can happen with Allowed Origins and Allowed Methods. Read more about it [here]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}).
+    The same can happen with Allowed Origins and Allowed Methods. Read more about it [here]({{< ref "api-management/gateway-config-tyk-classic#cors" >}}).
 
     **CORS middleware is blocking my authenticated request**
     Please make sure that you did allow the authorization header name (e.g. `Authorization`) or else the request will be blocked by the CORS middleware. If you're having trouble on the developer portal with authenticated requests make sure to also allow the `Content-Type` header.
@@ -849,7 +871,7 @@ aliases:
 
 18. ##### How to run two Gateways with docker-compose
 
-    Managing a second Tyk Gateway with our [Tyk Pro Docker Demo]({{< ref "tyk-on-premises/docker/docker-pro-demo" >}}) is a case of mounting the `tyk.conf` file into a new volume and declaring a new Gateway service but exposed on a different port.
+    Managing a second Tyk Gateway with our [Tyk Pro Docker Demo]({{< ref "tyk-self-managed#docker-compose-setup" >}}) is a case of mounting the `tyk.conf` file into a new volume and declaring a new Gateway service but exposed on a different port.
     You will need to make some minor modifications to `docker-compose.yml` and start your services as usual with `docker-compose up`.
 
     {{< note success >}}
@@ -893,7 +915,7 @@ aliases:
 
 1. ##### Capturing detailed logs
 
-    If you've seen the documentation for Tyk Dashboard's [log browser]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}}), then you'll also be wondering how to set up your Tyk configuration to enable detailed request logging.
+    If you've seen the documentation for Tyk Dashboard's [log browser]({{< ref "api-management/dashboard-configuration#activity-logs" >}}), then you'll also be wondering how to set up your Tyk configuration to enable detailed request logging.
 
     **What is detailed request logging?**
 
@@ -1136,7 +1158,7 @@ Here, we'll outline the following:
 
 3. ##### Mongo version
 
-    Does Tyk support the version of Mongo that you’re using? Read more about that [here]({{< ref "planning-for-production/database-settings/mongodb" >}}).
+    Does Tyk support the version of Mongo that you’re using? Read more about that [here]({{< ref "tyk-self-managed#mongodb" >}}).
 
 4. ##### Capped collections
 
@@ -1146,7 +1168,7 @@ Here, we'll outline the following:
 
     We advise everyone to cap every collection in Mongo, as this prevents collections from growing out of control and bringing your dashboard down by hitting resource limits.
 
-    You can determine each collection's cap size by visiting our [MongoDB sizing calculator]({{< ref "planning-for-production/database-settings/mongodb-sizing" >}}).
+    You can determine each collection's cap size by visiting our [MongoDB sizing calculator]({{< ref "tyk-self-managed#mongodb-sizing-guidelines" >}}).
 
     Here’s more information on how and why you want to [cap your collections](https://www.mongodb.com/docs/manual/core/capped-collections/).
 
@@ -1220,7 +1242,7 @@ This guide should help a user of Tyk Self-Managed in debugging common issues. A 
 
 1. ##### Gateway `/hello` endpoint
 
-    Querying the gateway's `/hello` health endpoint is the quickest way to determine the status of your Tyk instance. You can find more information in our docs about the [Gateway Liveness health check]({{< ref "planning-for-production/ensure-high-availability/health-check" >}}).
+    Querying the gateway's `/hello` health endpoint is the quickest way to determine the status of your Tyk instance. You can find more information in our docs about the [Gateway Liveness health check]({{< ref "tyk-self-managed#set-up-liveness-health-checks" >}}).
 
     This endpoint is important as it allows the user to isolate the problem's origin. At a glance, the `/hello` endpoint reports the Gateways connectivity to Redis, and the control plane components eg. Tyk Dashboard, Tyk Multi-Data Center Bridge (MDCB), and Tyk Cloud. 
 

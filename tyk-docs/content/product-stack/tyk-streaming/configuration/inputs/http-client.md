@@ -1,5 +1,5 @@
 ---
-title: Http Client
+title: Streams Input Http Client
 description: Explains an overview of configuring Http client input
 tags: [ "Tyk Streams", "Stream Inputs", "Inputs", "Http Client", "http_client" ]
 ---
@@ -620,7 +620,7 @@ include_patterns:
 
 ### rate_limit
 
-An optional [rate limit]({{< ref "/product-stack/tyk-streaming/configuration/rate-limits/overview" >}}) to throttle requests by.
+An optional [rate limit]({{< ref "api-management/rate-limit#rate-limiting-with-tyk-streams" >}}) to throttle requests by.
 
 
 Type: `string`  

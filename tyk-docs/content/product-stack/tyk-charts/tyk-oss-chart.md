@@ -24,13 +24,13 @@ To enable or disable each component, change the corresponding enabled flag.
 
 Also, you can set the version of each component through `image.tag`. You could find the list of version tags available from [Docker hub](https://hub.docker.com/u/tykio).
 
-For quick start guide, please see [Quick Start with Tyk OSS Helm Chart]({{<ref "/tyk-oss/ce-helm-chart-new">}}).
+For quick start guide, please see [Quick Start with Tyk OSS Helm Chart]({{<ref "tyk-open-source#quick-start-with-helm-chart">}}).
 
 ## Prerequisites
 
 * [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
 * [Helm 3+](https://helm.sh/docs/intro/install/)
-* [Redis](https://tyk.io/docs/tyk-oss/ce-helm-chart/#recommended-via-bitnami-chart) should already be installed or accessible by the gateway. 
+* [Redis](https://tyk.io/docs/migration-to-tyk#configure-legacy-tyk-headless-helm-chart) should already be installed or accessible by the gateway. 
 
 ## Tyk OSS Installations
 ### Installing the Chart
@@ -116,7 +116,7 @@ tyk-gateway:
           key: backend-username
 ```
 
-In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{<ref "tyk-configuration-reference/kv-store#how-to-access-the-externally-stored-data">}}).
+In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{<ref "tyk-self-managed#store-configuration-with-key-value-store">}}).
 
 ### Set Redis Connection Details (Required)
 
@@ -143,7 +143,7 @@ helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n tyk --c
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "planning-for-production/redis" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password.
@@ -424,12 +424,12 @@ Bitnami MongoDB image is not supported on darwin/arm64 architecture.
 {{< note success >}}
 **Note**
 
-Please make sure you are installing MongoDB versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}).
+Please make sure you are installing MongoDB versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}).
 {{< /note >}}
 
 Follow notes from the installation output to get connection details and update them in the `values.yaml` file.
 
-NOTE:  Please make sure you are installing a mongo helm chart that matches a supported [version](https://tyk.io/docs/planning-for-production/database-settings/).
+NOTE:  Please make sure you are installing a mongo helm chart that matches a supported [version](https://tyk.io/docs/migration-to-tyk#database-management/).
 
 *Important Note regarding MongoDB:* This helm chart enables the PodDisruptionBudget for MongoDB with an arbiter replica-count of 1. If you intend to perform system maintenance on the node where the MongoDB pod is running and this maintenance requires for the node to be drained, this action will be prevented due the replica count being 1. Increase the replica count in the helm chart deployment to a minimum of 2 to remedy this issue.
 
@@ -469,7 +469,7 @@ helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics"
 {{< note success >}}
 **Note**
 
-Please make sure you are installing PostgreSQL versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}).
+Please make sure you are installing PostgreSQL versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and update them in `values.yaml` file.
@@ -510,7 +510,7 @@ To setup other backends for pump, refer to this [document](https://github.com/Ty
 ### Tyk Operator Configurations
 
 Tyk Operator is a licensed component that requires a valid key for operation. 
-Please refer to the [Tyk Operator Installation Guide]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}})
+Please refer to the [Tyk Operator Installation Guide]({{<ref "api-management/automations/operator#install-and-configure-tyk-operator">}})
 for detailed information on the installation and upgrade processes. 
 
 Prior to installing Tyk Operator, ensure that a valid license key is provided by setting `global.license.operator` field in values.yaml file. You can set license key via a Kubernetes secret using `global.secrets.useSecretName` field. The secret should contain a key called `OperatorLicense`.
@@ -519,4 +519,4 @@ In order to enable installing Tyk Operator along-side Tyk OSS installation, plea
 
 All other configurations related to Tyk Operator are available under `tyk-operator` section of `values.yaml` file.
 
-> Tyk Operator needs a cert-manager to be installed. Ensure that cert-manager is installed as described in the official documentation: [Installing Tyk Operator]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}}).
+> Tyk Operator needs a cert-manager to be installed. Ensure that cert-manager is installed as described in the official documentation: [Installing Tyk Operator]({{<ref "api-management/automations/operator#install-and-configure-tyk-operator">}}).

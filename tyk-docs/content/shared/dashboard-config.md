@@ -355,7 +355,7 @@ The hostname for the Redis collection and can be an IP address.
 ENV: <b>TYK_DB_REDISADDRS</b><br />
 Type: `[]string`<br />
 
-Used for configuring Redis clusters. See [Redis Cluster and Tyk Dashboard](https://tyk.io/docs/tyk-stack/tyk-gateway/configuration/redis-cluster/) for more info. Example:
+Used for configuring Redis clusters. See [Redis Cluster and Tyk Dashboard](https://tyk.io/docs/migration-to-tyk#configure-redis-cluster/) for more info. Example:
 ```
    "addrs": [
      "server1:6379",
@@ -701,7 +701,7 @@ SSL certificates used by your Gateway server. A list of certificate path to file
 ENV: <b>TYK_DB_HTTPSERVEROPTIONS_MINVERSION</b><br />
 Type: `uint16`<br />
 
-Minimum TLS version. See [TLS and SSL](https://tyk.io/docs/basic-config-and-security/security/tls-and-ssl/).
+Minimum TLS version. See [TLS and SSL](https://tyk.io/docs/api-management/certificates/).
 
 ### http_server_options.ssl_ciphers
 ENV: <b>TYK_DB_HTTPSERVEROPTIONS_CIPHERSUITES</b><br />
@@ -721,7 +721,7 @@ Type: `bool`<br />
 
 A boolean value to control whether the server selects the preferred ciphersuite for the client, or the preferred ciphersuite for the server. If set to true, the server preferences in the order of the elements listed in `ssl_ciphers` is used.
 
-For more information see [TLS and SSL](https://tyk.io/docs/basic-config-and-security/security/tls-and-ssl/)
+For more information see [TLS and SSL](https://tyk.io/docs/api-management/certificates/)
 
 ### security
 This section controls login limits for both the Dashboard and the Developer Portal. The path for you audit log is also set here.

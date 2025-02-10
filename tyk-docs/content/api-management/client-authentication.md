@@ -212,7 +212,7 @@ The *client* sends the *client Id* and *client secret* during the authorization 
 
 ### Manage Client Access Policies
  
-The *access tokens* issued to clients by *Tyk Authorization Server* are the same as other [session objects]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}) and can be associated with [access security policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) at the point of creation. These allow the application of quotas, rate limits and access rights in the normal manner.
+The *access tokens* issued to clients by *Tyk Authorization Server* are the same as other [session objects]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}) and can be associated with [access security policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}) at the point of creation. These allow the application of quotas, rate limits and access rights in the normal manner.
 
 Security policies can be assigned to *client apps* and will be applied to all access tokens issued for that *client app*.
 
@@ -249,10 +249,10 @@ The Tyk Dashboard API contains several endpoints that are provided to manage *cl
 
 | Action | Endpoint | Reference |
 | --- | --- | --- |
-| Register a new client app | `POST /api/apis/oauth/{{api-id}}` | [link]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#create-a-new-oauth20-client" >}}) |
-| Get a list of registered client apps | `GET /api/apis/oauth/{{api-id}}` | [link]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#list-oauth-clients" >}}) |
-| Get the details of a client app | `GET /api/apis/oauth/{{api-id}}/{{client_id}}` | [link]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#get-an-oauth20-client" >}}) |
-| Delete a client app | `DELETE /api/apis/oauth/{{api-id}}/{{client_id}}` | [link]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#delete-oauth-client" >}}) |
+| Register a new client app | `POST /api/apis/oauth/{{api-id}}` | [link]({{< ref "api-management/dashboard-configuration#create-a-new-oauth20-client" >}}) |
+| Get a list of registered client apps | `GET /api/apis/oauth/{{api-id}}` | [link]({{< ref "api-management/dashboard-configuration#list-oauth-clients" >}}) |
+| Get the details of a client app | `GET /api/apis/oauth/{{api-id}}/{{client_id}}` | [link]({{< ref "api-management/dashboard-configuration#get-an-oauth20-client" >}}) |
+| Delete a client app | `DELETE /api/apis/oauth/{{api-id}}/{{client_id}}` | [link]({{< ref "api-management/dashboard-configuration#delete-oauth-client" >}}) |
 
 
 ### Using the Authorization Code Grant
@@ -281,7 +281,7 @@ When using Tyk as the Authorization Server with the Authorization Code grant, th
 
 Whilst Tyk can provide the *authorization server* functionality, issuing and managing access and authorization tokens, the *identity server* functions (authenticating users (resource owners) and allowing them to authorize client access) must be performed by a separate Identity Provider (IdP).
 
-The identity server will need access to the Tyk Dashboard API to [obtain an Authorization Code]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#oauth20-authorization-code" >}}).
+The identity server will need access to the Tyk Dashboard API to [obtain an Authorization Code]({{< ref "api-management/dashboard-configuration#oauth20-authorization-code" >}}).
 
 #### Authorization Request
 
@@ -309,7 +309,7 @@ If the *client Id* (`my-client-id`) is valid, the response will be `HTTP 307 Tem
 
 #### Authorization Code Request
 
-The *Identity Server* requests an *Authorization Code* from the *Authentication Server*. Tyk's *authorization code* endpoint is hosted in the [Tyk Dashboard API]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#oauth20-authorization-code" >}}), accessible from `POST /api/apis/{api_id}/authorize-client`. The same `redirect_uri` as provided in the original request must be provided alongside the `client_id` as a security feature to verify the client identity.
+The *Identity Server* requests an *Authorization Code* from the *Authentication Server*. Tyk's *authorization code* endpoint is hosted in the [Tyk Dashboard API]({{< ref "api-management/dashboard-configuration#oauth20-authorization-code" >}}), accessible from `POST /api/apis/{api_id}/authorize-client`. The same `redirect_uri` as provided in the original request must be provided alongside the `client_id` as a security feature to verify the client identity.
 
 This endpoint is protected using the Dashboard API secret assigned to the *Identity Server*, which must be provided in the `Authorization` header.
 
@@ -677,9 +677,9 @@ OAuth access tokens have built in expiry, but if you need to [revoke](https://to
 
 Using the **Tyk Dashboard API** you can revoke specific tokens (both access and refresh) or all tokens issued for a specific *client app* as follows:
 
-- [retrieve a list of all tokens for a client app]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#retrieve-all-current-tokens-for-specified-oauth20-client" >}})
-- [revoke a single token]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#revoke-a-single-oauth-client-token" >}})
-- [revoke all tokens for a client app]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#revoke-all-oauth-client-tokens" >}})
+- [retrieve a list of all tokens for a client app]({{< ref "api-management/dashboard-configuration#retrieve-all-current-tokens-for-specified-oauth20-client" >}})
+- [revoke a single token]({{< ref "api-management/dashboard-configuration#revoke-a-single-oauth-client-token" >}})
+- [revoke all tokens for a client app]({{< ref "api-management/dashboard-configuration#revoke-all-oauth-client-tokens" >}})
 
 These endpoints are protected using the Dashboard API secret assigned to the user managing the tokens, which must be provided in the `Authorization` header.
 
@@ -995,7 +995,7 @@ This guide will walk you through securing your APIs with JWTs via Keycloak.
 
 #### Running in k8s
 
-If you are looking to POC this functionality in Kubernetes, you can run a fully worked-out example using our tyk-k8s-demo library. You can read more [here]({{< ref "getting-started/quick-start/tyk-k8s-demo" >}}).
+If you are looking to POC this functionality in Kubernetes, you can run a fully worked-out example using our tyk-k8s-demo library. You can read more [here]({{< ref "tyk-self-managed#kubernetes-demo" >}}).
 
 
 ### Create Your JWT API in Tyk
@@ -1487,7 +1487,7 @@ curl -X POST -H "Authorization: 907aed9f88514f175f1dccf8a921f741"
  }' http://{your-tyk-dashboard-host}:{port}/api/apis/keys/basic/testuser2 | python -mjson.tool
 ```
 
-[See Basic Authentication via the Dashboard API]({{< ref "tyk-apis/tyk-dashboard-api/basic-authentication" >}})
+[See Basic Authentication via the Dashboard API]({{< ref "api-management/dashboard-configuration#basic-authentication-api" >}})
 
 {{< note success >}}
 **Note**  
@@ -1800,7 +1800,7 @@ You can create self-signed client and server certificates with this command:
 openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
 ```
 
-For the server in `common name` specify a domain, or just pass `-subj "/CN=localhost"` to OpenSSL command. Then follow our [TLS and SSL Guide]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}).
+For the server in `common name` specify a domain, or just pass `-subj "/CN=localhost"` to OpenSSL command. Then follow our [TLS and SSL Guide]({{< ref "api-management/certificates" >}}).
 
 To get certificate SHA256 fingerprint use the following command:
 ```{.copyWrapper}
@@ -2421,7 +2421,7 @@ When creating a user session object, the settings should be modified to reflect 
 }
 ```
 
-Creating HMAC keys is the same as creating regular access tokens - by using the [Tyk Gateway API]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/authentication" >}}). Setting the `hmac_enabled` flag to `true`, Tyk will generate a secret key for the key owner (which should not be modified), but will be returned by the API so you can store and report it to your end-user.
+Creating HMAC keys is the same as creating regular access tokens - by using the [Tyk Gateway API]({{< ref "api-management/gateway-config-tyk-classic#authentication-type-flags" >}}). Setting the `hmac_enabled` flag to `true`, Tyk will generate a secret key for the key owner (which should not be modified), but will be returned by the API so you can store and report it to your end-user.
 
 
 #### Upstream HMAC request signing
@@ -2911,6 +2911,6 @@ If you want the key to be deleted when it expires (i.e. to use the expiry config
 
 Securing your APIs is a foundational step toward managing data integrity and access control effectively. Now that you've configured authentication and authorization, the next steps in your API journey with Tyk should involve:
 
-Defining Access Policies: Use Tyk’s policies to refine API access controls, rate limits, and quotas. This lets you align your security model with business needs and enhance user experience through granular permissions. You can learn more about policies [here](/basic-config-and-security/security/security-policies/).
+Defining Access Policies: Use Tyk’s policies to refine API access controls, rate limits, and quotas. This lets you align your security model with business needs and enhance user experience through granular permissions. You can learn more about policies [here](/api-management/policies/).
 
 Exploring API Analytics: Leverage Tyk’s analytics to monitor access patterns, track usage, and gain insights into potential security risks or high-demand endpoints. Understanding usage data can help in optimizing API performance and enhancing security measures. You can learn more about analytics [here](/tyk-dashboard-analytics/).

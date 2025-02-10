@@ -5,11 +5,11 @@ description: "Explains how to configure Open Policy Agent (OPA) rules with addit
 tags: [ "Open Policy Agent", "OPA", "additional permissions", "Open Policy Agent permissons", "example", "worked example" ]
 ---
 
-This is an end-to-end worked example showing how to configure Open Policy Agent rules with some [additional permissions]({{< ref "tyk-dashboard-api/org/permissions" >}}).
+This is an end-to-end worked example showing how to configure Open Policy Agent rules with some [additional permissions]({{< ref "api-management/dashboard-configuration#additional-permissions-api" >}}).
 
 ## Use Case
 
-Tyk's [RBAC]({{< ref "tyk-dashboard/rbac.md" >}}) includes out of the box permissions to Write, Read, and Deny access to API Definitions, but what if we want to distinguish between those users who can create APIs and those users who can edit or update APIs? Essentially, we want to extend Tyk's out of the box RBAC to include more fine grained permissions that prevent an `API Editor` role from creating new APIs, but allow them to edit or update existing APIs.
+Tyk's [RBAC]({{< ref "api-management/user-management" >}}) includes out of the box permissions to Write, Read, and Deny access to API Definitions, but what if we want to distinguish between those users who can create APIs and those users who can edit or update APIs? Essentially, we want to extend Tyk's out of the box RBAC to include more fine grained permissions that prevent an `API Editor` role from creating new APIs, but allow them to edit or update existing APIs.
 
 ## High Level Steps
 
@@ -23,7 +23,7 @@ The high level steps to realize this use case are as follows:
 
 ## Create additional permissions
 
-To include the `API Editor` role with additional permissions, send a PUT Request to the [Dashboard Additional Permissions API endpoint]({{< ref "tyk-dashboard-api/org/permissions.md" >}}) `/api/org/permissions`
+To include the `API Editor` role with additional permissions, send a PUT Request to the [Dashboard Additional Permissions API endpoint]({{< ref "api-management/dashboard-configuration#additional-permissions-api" >}}) `/api/org/permissions`
 
 #### Sample Request
 

@@ -1,5 +1,5 @@
 ---
-title: Http Server
+title: Tyk Streams Http Server Output
 description: Explains an overview of configuring Http server output
 tags: [ "Tyk Streams", "Stream Outputs", "Outputs", "Http Server" ]
 ---

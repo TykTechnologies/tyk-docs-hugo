@@ -127,7 +127,7 @@ The following algorithms are supported:
 
 We worked a lot with our clients to build a way nicer on-boarding experience for Tyk. Instead of using the command line, you can just run the Dashboard, and complete a form which will configure your Dashboard. However, we did not forget about our experienced users too, and now provide a CLI enchanced tool for bootstrapping Tyk via a command line.
 
-See our updated [Getting Started]({{< ref "tyk-self-managed/install" >}}) section and [new CLI documentation]({{< ref "tyk-on-premises" >}}).
+See our updated [Getting Started]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) section and [new CLI documentation]({{< ref "tyk-self-managed" >}}).
 
 ### DNS Caching
 
@@ -159,7 +159,7 @@ Before SSO was possible only for Tyk On-Premise, since it required access to low
 
 > **NOTE**: This feature is available by request. Please contact our sales team for details.
 
-See our [Dashboard SSO documentation]({{< ref "tyk-apis/tyk-dashboard-api/sso" >}}) for more details.
+See our [Dashboard SSO documentation]({{< ref "api-management/dashboard-configuration#single-sign-on-api" >}}) for more details.
 
 ### Importing WSDL APIs
 
@@ -191,7 +191,7 @@ We have added a new `Debugging` tab in the API designer which provides a "Postma
 
 You can even debug your virtual endpoints by dynamically modifying the code, sending the request via `Debugger` and watching the virtual endpoint plugin logs.
 
-See [Debugging Tab]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#debugging" >}}) for more information.
+See [Debugging Tab]({{< ref "api-management/dashboard-configuration#debugging" >}}) for more information.
 
 ---
 
@@ -222,7 +222,7 @@ when logging in, and can easily switch between organizations via the navigation 
 
 ### Dashboard Audit Log improvements
 
-There is a [new section]({{< ref "product-stack/tyk-dashboard/advanced-configurations/analytics/audit-log" >}}) in the Tyk Dashboard config file where you can specify parameters for the audit log (containing audit records for all requests made to all endpoints under the `/api` route).
+There is a [new section]({{< ref "api-management/dashboard-configuration#dashboard-audit-logs" >}}) in the Tyk Dashboard config file where you can specify parameters for the audit log (containing audit records for all requests made to all endpoints under the `/api` route).
 
 ---
 
@@ -247,7 +247,7 @@ There is a [new section]({{< ref "product-stack/tyk-dashboard/advanced-configura
 
 
 > **TLDR**
-> To get benefit or performance improvements ensure that you have `close_connections` set to `false` and set `max_idle_connections_per_host` according to our [production perfomance guide]({{< ref "planning-for-production" >}})
+> To get benefit or performance improvements ensure that you have `close_connections` set to `false` and set `max_idle_connections_per_host` according to our [production perfomance guide]({{< ref "tyk-self-managed#planning-for-production" >}})
 
 We have thoroughly analyzed every part of our Gateway, and the results are astounding, up to 160% improvement, compared to our 2.6 release.
 
@@ -286,13 +286,13 @@ Changing hashing algorithm is entirely backward compatible. All your existing ke
 
 #### User Groups
 
-Instead of setting permissions per user, you can now [create a user group]({{< ref "basic-config-and-security/security/dashboard/create-user-groups" >}}), and assign it to multiple users. It works for Single Sign-On too, just specify group ID during [SSO API]({{< ref "tyk-apis/tyk-dashboard-admin-api/sso" >}}) flow.
+Instead of setting permissions per user, you can now [create a user group]({{< ref "api-management/user-management#manage-tyk-dashboard-user-groups" >}}), and assign it to multiple users. It works for Single Sign-On too, just specify group ID during [SSO API]({{< ref "api-management/dashboard-configuration#single-sign-on-api-1" >}}) flow.
 
 This feature is available to all our Cloud and Hybrid users. For Self-Managed installations, this feature is available for customers with an "Unlimited" license.
 
 To manage user groups, ensure that you have either admin or “user groups” permission for your user, which can be enabled by your admin.
 
-From an API standpoint, user groups can be managed by [new Dashboard API]({{< ref "tyk-apis/tyk-dashboard-api/user-groups" >}}). The User object now has a new `group_id` field, and if it is specified, all permissions will be inherited from the specified group. [SSO API]({{< ref "tyk-apis/tyk-dashboard-admin-api/sso" >}}) has been updated to include `group_id` field as well.
+From an API standpoint, user groups can be managed by [new Dashboard API]({{< ref "api-management/dashboard-configuration#user-groups-api" >}}). The User object now has a new `group_id` field, and if it is specified, all permissions will be inherited from the specified group. [SSO API]({{< ref "api-management/dashboard-configuration#single-sign-on-api-1" >}}) has been updated to include `group_id` field as well.
 
 #### Added SMTP support
 Now you can configure the Dashboard to send transactional emails using your SMTP provider. See [Outbound Email Configuration]({{< ref "configure/outbound-email-configuration" >}}) for details.
@@ -753,7 +753,7 @@ You can now specify a default API version, and it will be used if a version is n
 
 `spec.version_data.default_version`
 
-[Docs]({{< ref "getting-started/key-concepts/versioning" >}})
+[Docs]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}})
 
 #### Disable URL Encoding
 
@@ -776,7 +776,7 @@ We have added support for specifying allowed  SSL ciphers using the following op
 
 `http_server_options - ssl_ciphers`
 
-[Docs]({{< ref "basic-config-and-security/security/tls-and-ssl" >}})
+[Docs]({{< ref "api-management/certificates" >}})
 
 ### <a name="plugins"></a>Plugins Updates
 
@@ -803,7 +803,7 @@ With this release we have refreshed the entire Dashboard UI with a new look-and-
 
 We have added API and Policy search functionality, which should help those with long lists.
 
-* [API Docs]({{< ref "tyk-apis/tyk-dashboard-api/api-definitions" >}})
+* [API Docs]({{< ref "api-management/dashboard-configuration#manage-apis---api-definition" >}})
 * [Policy Docs]({{< ref "tyk-apis/tyk-dashboard-api/portal-policies" >}})
 
 #### A New, Interactive Getting Started Walkthrough
@@ -932,7 +932,7 @@ We have updated the Dashboard **Apply Policies** section of the **Add Key** sect
 
 For this release multiple policies are only supported only via the Add Key section and via the API. Support for OIDC, oAuth, and Portal API Catalogs are planned for subsequent releases.
 
-[Docs]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies" >}})
+[Docs]({{< ref "api-management/policies#partitioned-policies" >}})
 
 #### <a name="global-api"></a>Global API Rate Limits
 
@@ -944,7 +944,7 @@ Extended Dashboard API designer Rate Limiting and Quotas section in Core setting
 
 {{< img src="/img/release-notes/rate_limits.png" alt="rate-limits" >}}
 
-[Docs]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies" >}})
+[Docs]({{< ref "api-management/policies#partitioned-policies" >}})
 
 #### Specify custom analytics tags using HTTP headers
 
@@ -958,16 +958,16 @@ We have added a new **Tag headers** section to the Dashboard **API Designer Adva
 
 {{< img src="/img/release-notes/tag_headers.png" alt="tag_headers" >}}
 
-[Docs]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}})
+[Docs]({{< ref "api-management/dashboard-configuration#activity-logs" >}})
 
 #### <a name="sso"></a>Single-Sign-On (SSO) improvements
 
 More SSO functionality is something that a lot of our customers have been asking for. In this release we've significantly improved our support for SSO, and you can now:
 
-* Enable Tyk Identity Broker to apply LDAP filters to user search [Docs]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/ldap" >}})
-* Set permissions for your users, logged via SSO, via `sso_permission_defaults` in Dashboard config file. [Docs]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers" >}})
-* Setup a login page redirect, using `sso_custom_login_url` and `sso_custom_portal_login_url` Dashboard config options to enable users login using a custom SSO login page. [Docs]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers" >}})
-* For those who love to build everything in-house, we have added new API for custom dashboard authentication integrations. [Docs]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/custom" >}})
+* Enable Tyk Identity Broker to apply LDAP filters to user search [Docs]({{< ref "api-management/external-service-integration#advance-ldap-configuration" >}})
+* Set permissions for your users, logged via SSO, via `sso_permission_defaults` in Dashboard config file. [Docs]({{< ref "api-management/external-service-integration" >}})
+* Setup a login page redirect, using `sso_custom_login_url` and `sso_custom_portal_login_url` Dashboard config options to enable users login using a custom SSO login page. [Docs]({{< ref "api-management/external-service-integration" >}})
+* For those who love to build everything in-house, we have added new API for custom dashboard authentication integrations. [Docs]({{< ref "api-management/external-service-integration#custom-proxy-identify-provider" >}})
 
 
 
@@ -977,13 +977,13 @@ More SSO functionality is something that a lot of our customers have been asking
 [Docs]({{< ref "/api-management/client-authentication#use-mutual-tls" >}})
 
 #### Global API rate limits
-[Docs]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}})
+[Docs]({{< ref "api-management/rate-limit#rate-limiting-layers" >}})
 
 #### Specify custom analytics tags using HTTP headers
-[Docs]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}})
+[Docs]({{< ref "api-management/dashboard-configuration#activity-logs" >}})
 
 #### Attaching Multiple Policies to the Keys
-[Docs]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies" >}})
+[Docs]({{< ref "api-management/policies#partitioned-policies" >}})
 
 #### Default User Agent set to Tyk/$VERSION
 If no user agent is specified in a request, it is now set as `Tyk/$VERSION`.
@@ -991,7 +991,7 @@ If no user agent is specified in a request, it is now set as `Tyk/$VERSION`.
 #### Include `x-tyk-api-expires` date header for versioned APIs
 If a request is made for an API which has an expiry date, the response will include the `x-tyk-api-expires` header with expiry date. 
 
-[Docs]({{< ref "getting-started/key-concepts/versioning" >}})
+[Docs]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}})
 
 #### Run Admin Control API on a separate port
 Using `control_api_port` option in configuration file, you can run the admin control api on a separate port, and hide it behind firewall if needed.
@@ -1062,13 +1062,13 @@ This was very resource consuming and unstable feature. We recommend using load b
 [Docs]({{< ref "/api-management/client-authentication#use-mutual-tls" >}})
 
 #### Global API rate limits
-[Docs]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}})
+[Docs]({{< ref "api-management/rate-limit#rate-limiting-layers" >}})
 
 #### Specify custom analytics tags using HTTP headers
-[Docs]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}})
+[Docs]({{< ref "api-management/dashboard-configuration#activity-logs" >}})
 
 #### Attaching Multiple Policies to the Keys
-[Docs]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies" >}})
+[Docs]({{< ref "api-management/policies#partitioned-policies" >}})
 
 #### Set permissions for users logged via SSO (Tyk Identity Broker)
 Added new option `sso_permission_defaults` in Dashboard config file. 
@@ -1087,17 +1087,17 @@ Example:
   "users": "write"
 },
 ```
-[Docs]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers" >}})
+[Docs]({{< ref "api-management/external-service-integration" >}})
 
 #### Set custom login pages for portal and dashboard
 If you are using 3-rd party authentification like TIB, you maybe want to redirect from standard login pages to your own using following attributes in dashboard config: `sso_custom_login_url`, `sso_custom_portal_login_url`.
 
-[Docs]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers" >}})
+[Docs]({{< ref "api-management/external-service-integration" >}})
 
 #### Added new set of APIs for custom dashboard authentification
 Added new `/admin/sso` endpoint for custom integration. In fact, the same API is used by our own Tyk Identity Broker. 
 
-[Docs]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/custom" >}})
+[Docs]({{< ref "api-management/external-service-integration#custom-proxy-identify-provider" >}})
 
 
 #### Service discovery form improved with most common pre-defined templates
@@ -1170,7 +1170,7 @@ Also fixed bug when Mongo connections became growing though the roof if client w
 
 ### <a name="tib"></a>TIB v0.2
   
-Tyk Identity Broker now fully support LDAP search with complex filters! [Docs]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/ldap" >}})
+Tyk Identity Broker now fully support LDAP search with complex filters! [Docs]({{< ref "api-management/external-service-integration#advance-ldap-configuration" >}})
 
 ### <a name="upgrade"></a>Upgrading all new Components
 
