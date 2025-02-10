@@ -1349,9 +1349,9 @@ spec:
 
 #### Custom Plugin Auth (go)
 
-This configuration uses a [Golang plugin]({{<ref "plugins/supported-languages/golang">}}) for custom authentication. The following example shows how to create an API definition with a Golang custom plugin for `httpbin-go-auth`.
+This configuration uses a [Golang plugin]({{<ref "api-management/plugins/golang#">}}) for custom authentication. The following example shows how to create an API definition with a Golang custom plugin for `httpbin-go-auth`.
 
-For an example of Golang authentication middleware, see [Performing custom authentication with a Golang plugin]({{<ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-examples#performing-custom-authentication-with-a-golang-plugin">}}).
+For an example of Golang authentication middleware, see [Performing custom authentication with a Golang plugin]({{<ref "api-management/plugins/golang#performing-custom-authentication-with-a-golang-plugin">}}).
 
 ```yaml {hl_lines=["7-7", "14-21"],linenos=false}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -1379,7 +1379,7 @@ spec:
 
 #### Custom Plugin Auth (gRPC)
 
-This configuration uses a [gRPC plugin]({{<ref "plugins/supported-languages/golang">}}) for custom authentication. The following example shows how to create an API definition with a gRPC custom plugin for `httpbin-grpc-auth`.
+This configuration uses a [gRPC plugin]({{<ref "api-management/plugins/golang#">}}) for custom authentication. The following example shows how to create an API definition with a gRPC custom plugin for `httpbin-grpc-auth`.
 
 For a detailed walkthrough on setting up Tyk with gRPC authentication plugins, refer to [Extending Tyk with gRPC Authentication Plugins](https://tyk.io/blog/how-to-setup-custom-authentication-middleware-using-grpc-and-java/).
 

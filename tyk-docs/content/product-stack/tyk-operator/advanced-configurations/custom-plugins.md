@@ -15,11 +15,11 @@ Classic API to use custom plugins.
 ## Overview
 
 Using Tyk Classic APIs, developers can implement API-level custom plugins that can be optionally setup to execute for
-each of the following [hooks]({{< ref "plugins/plugin-types/plugintypes#plugin-and-hook-types" >}}) in the API request
-lifecycle: [Pre (Request)]({{< ref "plugins/plugin-types/request-plugins" >}}), [Authentication]({{< ref "plugins/plugin-types/auth-plugins/auth-plugins" >}}),
-[Post (Request)]({{< ref "plugins/plugin-types/request-plugins" >}}), [Post
-Authentication]({{< ref "plugins/plugin-types/request-plugins" >}}), [Response]({{< ref "plugins/plugin-types/response-plugins" >}})
-and [Analytics]({{< ref "plugins/plugin-types/analytics-plugins" >}}). Subsequently, users can execute, or “hook”, their
+each of the following [hooks]({{< ref "api-management/plugins/plugin-types#plugin-and-hook-types" >}}) in the API request
+lifecycle: [Pre (Request)]({{< ref "api-management/plugins/plugin-types#request-plugins" >}}), [Authentication]({{< ref "api-management/plugins/plugin-types#authentication-plugins" >}}),
+[Post (Request)]({{< ref "api-management/plugins/plugin-types#request-plugins" >}}), [Post
+Authentication]({{< ref "api-management/plugins/plugin-types#request-plugins" >}}), [Response]({{< ref "api-management/plugins/plugin-types#response-plugins" >}})
+and [Analytics]({{< ref "api-management/plugins/plugin-types#analytics-plugins" >}}). Subsequently, users can execute, or “hook”, their
 plugin into these phases of the API request lifecycle based on their specific use case.
 
 This document explains how to configure the following plugin types with different drivers (plugin languages):
@@ -30,7 +30,7 @@ This document explains how to configure the following plugin types with differen
 - Post (Request)
 - Response
 
-Please refer to [Analytics Plugins]({{< ref "plugins/plugin-types/analytics-plugins" >}}) to learn how to configure Analytics
+Please refer to [Analytics Plugins]({{< ref "api-management/plugins/plugin-types#analytics-plugins" >}}) to learn how to configure Analytics
 plugins using Tyk Operator.
 
 ---
@@ -115,7 +115,7 @@ complex processing workflows. For example, you might develop one plugin for logg
 request in the pre request phase.
 
 The `driver` configuration parameter describes the plugin implementation language. Please refer to the [supported
-languages]({{< ref "/plugins/supported-languages#plugin-driver-names" >}}) section for list of supported plugin driver names.
+languages]({{< ref "api-management/plugins/overview#plugin-driver-names" >}}) section for list of supported plugin driver names.
 
 Each plugin can have additional settings, such as:
 
@@ -129,7 +129,7 @@ Each plugin can have additional settings, such as:
 
 At the endpoint-level, Tyk provides the facility to attach a custom Golang plugin at the end of the request processing
 chain (immediately before the API-level post-plugin is executed). Please note that
-[per-endpoint]({{< ref "product-stack/tyk-gateway/middleware/endpoint-plugin" >}}) level plugins are not currently
+[per-endpoint]({{< ref "api-management/plugins/plugin-types#per-endpoint-custom-plugins" >}}) level plugins are not currently
 supported by Tyk Operator.
 
 ---
@@ -190,7 +190,7 @@ spec:
 At lines 14-18 we can see the _custom_middleware_ section contains the configuration for our plugin:
 
 - The `driver` configuration parameter is set to `otto` at line 15, since our plugin is a Javascript plugin. For other
-  valid values please refer to the [plugins driver page]({{< ref "plugins/supported-languages#plugin-driver-names" >}}).
+  valid values please refer to the [plugins driver page]({{< ref "api-management/plugins/overview#plugin-driver-names" >}}).
 - A plugin hook configuration block is specified at line 16, containing the `name` and `path` for our plugin. The plugin
   configuration block identifies the "hook" or phase in the API request lifecycle when Tyk Gateway will execute the
   plugin. In the example above the configuration block is for a `pre` request plugin that will be executed before any
@@ -242,5 +242,5 @@ request lifecycle]({{< ref "concepts/middleware-execution-order" >}}).
 For a detailed guide, check out our blog post
 [How to Deploy Python Plugins in Tyk Running on Kubernetes](https://tyk.io/blog/how-to-deploy-python-plugins-in-tyk-running-on-kubernetes/),
 which walks you through all the steps required to create Python [plugin
-bundles]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}), load them into the Tyk Gateway, and configure an API
+bundles]({{< ref "api-management/plugins/overview#plugin-bundles" >}}), load them into the Tyk Gateway, and configure an API
 Definition to use them with the Tyk Operator.

@@ -129,7 +129,7 @@ As part of the release of the new Gateway LTS version we will commit to showing 
 1. **Recommended releases** - To ensure you get the most out of the latest Tyk experience, we'll provide information on which versions of different components across the entire stack you need.
 2. **Backwards Compatibility** - We'll provide information on what components and versions remain backward compatible with the new Tyk Dashboard and Tyk Gateway versions.
 
-Our next LTS version will be announced in April 2024.
+Our next LTS version will be announced in April 2025.
 
 <!-- COMMENTED OUT UNTIL LTS ANNOUNCED
 
@@ -149,6 +149,33 @@ The compatibility matrix table shown above will be part of upcoming [Gateway rel
 -->
 
 --- 
+
+### Available Gateway Versions on Cloud
+
+To ensure a consistent and high-quality user experience, we have updated the way Gateway (GW) versions are displayed and supported in the Cloud console. This aligns with our Long-Term Support (LTS) policy and aims to encourage users to stay current with supported versions while reducing operational overhead for our team.
+
+**Version Availability in the Cloud Console**
+When selecting the "Latest" option, users can only choose the latest feature branch ([Gateway Release Notes](https://tyk.io/docs/developer-support/release-notes/gateway/)).
+
+When selecting the "LTS" option, users will be able to choose from the following:
+- Current LTS version (e.g., 5.3.x): Full support provided, with the latest patch marked as `Recommended`.
+- Extended Support (e.g., 5.0.x): Maintenance support only.
+
+Older versions (e.g., 5.2.x and below) are marked as "Unsupported" and will be greyed out. 
+
+**Implications for Unsupported Versions**
+Users with deployments on unsupported versions (e.g., 5.2.x) will see a notice informing them that their version is "Unsupported".
+
+Unsupported versions are not eligible for bug fixes or feature updates. Users encountering issues will be advised to upgrade to a supported version.
+
+While Tyk Cloud deployments may remain on unsupported versions without a specific upgrade timeline, we may automatically upgrade such deployments in case internal reasons (e.g., infrastructure dependencies, security, or performance risks) require such an action. In this case, Tyk will communicate a timeline for upgrading in advance.
+
+**Upgrade Recommendations**
+Users running deployments on a supported but non-latest version within a branch (e.g., 5.3.2) will see a notice encouraging an upgrade to the "Recommended" version (e.g., 5.3.4).
+
+This ensures users benefit from the latest security patches and improvements within the supported branch.
+
+---
 
 ### How Do I Upgrade and How Can Tyk Help?
 
