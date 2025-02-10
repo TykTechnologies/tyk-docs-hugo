@@ -1781,8 +1781,8 @@ This section explains that you can use plugins with Tyk Cloud and links to detai
 Tyk Cloud allows you to take advantage of Tyk's plugin architecture that allows you to write powerful middleware. For this version of Tyk Cloud, we support the use of Python, JavaScript Middleware and Golang based plugins.
 
 For more details, see: 
-* [Python Plugins]({{< ref "plugins/supported-languages/rich-plugins/python/python" >}})
-* [JSVM]({{< ref "plugins/supported-languages/javascript-middleware" >}})
+* [Python Plugins]({{< ref "api-management/plugins/rich-plugins#overview" >}})
+* [JSVM]({{< ref "api-management/plugins/javascript#" >}})
 * [Golang]({{< ref "#configure-plugins" >}})
 
 Next you'll set up an Tyk Cloud Control Plane to use a Python Authentication Plugin.
@@ -2090,14 +2090,14 @@ The manifest file contains information about your plugin file structure and how 
 
 | File              | Description                                                                                                                                                                                                                                                                                       |
 |-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| custom_middleware | contains the middleware settings like the plugin driver you want to use (driver) and the hooks that your plugin will expose. We use the   **auth_check** for this tutorial. For other hooks see [here]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-dispatcher---hooks" >}}). |
+| custom_middleware | contains the middleware settings like the plugin driver you want to use (driver) and the hooks that your plugin will expose. We use the   **auth_check** for this tutorial. For other hooks see [here]({{< ref "api-management/plugins/rich-plugins#coprocess-dispatcher---hooks" >}}). |
 | file_list         | contains the list of files to be included in the bundle. The CLI tool expects to find these files in the current working directory.                                                                                                                                                               |
 | name              | references the name of the function that you implement in your plugin code: **MyAuthMiddleware**                                                                                                                                                                                                  |
 | middleware.py     | an additional file that contains the main implementation of our middleware.                                                                                                                                                                                                                       |
 
 **Step 3: Creating the middleware.py file**
 
-* You import decorators from the Tyk module that gives us the Hook decorator, and we import [Tyk Python API helpers]({{< ref "plugins/supported-languages/rich-plugins/python/tyk-python-api-methods" >}})
+* You import decorators from the Tyk module that gives us the Hook decorator, and we import [Tyk Python API helpers]({{< ref "api-management/plugins/rich-plugins#tyk-python-api-methods" >}})
 
 * You implement a middleware function and register it as a hook. The input includes the request object, the session object, the API meta data and its specification. The hook checks the authorization header for a specified value. In this tutorial we have called it `Authorization`.
 
@@ -2147,7 +2147,7 @@ docker run \
   -c '/opt/tyk-gateway/tyk bundle build -y'
 ```
 
-* A plugin bundle is a packaged version of the plugin, it may also contain a cryptographic signature of its contents. The -y flag tells the Tyk CLI tool to skip the signing process in order to simplify this tutorial. For more information on the Tyk CLI tool, see [here]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#how-plugin-bundles-work" >}}).
+* A plugin bundle is a packaged version of the plugin, it may also contain a cryptographic signature of its contents. The -y flag tells the Tyk CLI tool to skip the signing process in order to simplify this tutorial. For more information on the Tyk CLI tool, see [here]({{< ref "api-management/plugins/overview#how-plugin-bundles-work" >}}).
 * You should now have a `bundle.zip` file in the plugin working directory.
 * Next you will configure [uploading your plugin bundle file]({{< ref "#uploading-your-bundle" >}}) to your Amazon S3 bucket.
 

@@ -438,7 +438,7 @@ Disabling the rate limiter at the API-Level does not disable rate limiting at th
 
 #### Can I set rate limits by IP address?
 
-Not yet, though IP-based rate limiting is possible using custom pre-processor middleware JavaScript that generates tokens based on IP addresses. See our [Middleware Scripting Guide]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide" >}}) for more details.
+Not yet, though IP-based rate limiting is possible using custom pre-processor middleware JavaScript that generates tokens based on IP addresses. See our [Middleware Scripting Guide]({{< ref "api-management/plugins/javascript#using-javascript-with-tyk" >}}) for more details.
 
 ## Rate Limiting by API
 

@@ -1605,7 +1605,7 @@ Apps in private spaces don't enable SSL/TLS by default. It needs to be configure
 
 **Gateway Plugins**
 
-In order to enable [rich plugins]({{< ref "plugins/supported-languages/rich-plugins" >}}) for the Gateway, please set the following Heroku config option to either `python` or `lua` depending on the type of plugins used:
+In order to enable [rich plugins]({{< ref "api-management/plugins/rich-plugins#" >}}) for the Gateway, please set the following Heroku config option to either `python` or `lua` depending on the type of plugins used:
 ```{.copyWrapper}
 heroku config:set TYK_PLUGINS="python" -a infinite-plains-14949
 ```

@@ -118,7 +118,7 @@ Tyk offers several mechanisms to help protect an API from Security Misconfigurat
 - [Schema Introspection]({{< ref "graphql/introspection" >}}) ensures that the Tyk Dashboard automatically uses the schema of the upstream GraphQL API and can keep it synchronised if it changes.
 - [GraphQL Schema Validation]({{< ref "graphql/validation#schema-validation" >}}) prevents invalid schemas from being saved. This catches errors such as duplicate type names and usage of unknown types.
 - Third-party [Secret Storage]({{< ref "tyk-self-managed#manage-multi-environment-and-distributed-setups" >}}) to centralise configuration of sensitive data such as passwords. This data can then be dynamically referenced by Tyk configuration files, rather than being hard coded.
-- Users can can write their own [custom plugins]({{< ref "plugins" >}}) in a variety of languages, either directly or through gRPC calls, to implement their requirements.
+- Users can can write their own [custom plugins]({{< ref "api-management/plugins/overview#" >}}) in a variety of languages, either directly or through gRPC calls, to implement their requirements.
 
 The Ops team should also take reponsibility for monitoring the APIs for errors and patching accordingly. Regular [Penetration Tests](https://en.wikipedia.org/wiki/Penetration_test) should be scheduled to ensure the security of published services. Tyk, through our Professional Services or Partners, can assist in the process.
 
