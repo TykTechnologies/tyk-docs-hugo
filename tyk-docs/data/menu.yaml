@@ -1610,10 +1610,6 @@ menu:
             path: /product-stack/tyk-streaming/streams-configuration-using-ui
             category: Page
             show: True
-          - title: "Quick Start"
-            path: /product-stack/tyk-streaming/getting-started
-            category: Page
-            show: False
           - title: "Configuration"
             category: Directory
             show: True
