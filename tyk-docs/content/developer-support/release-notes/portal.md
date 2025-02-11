@@ -777,14 +777,14 @@ The 1.8.4 release addresses ten high-priority bugs and vulnerabilities, and intr
 | /auth/password/login         | Developer portal login |
 | /auth/password/new           | Password reset         |
 - Changed the credential provisioning flow to automatically include DeveloperID, OrganizationID, ApplicationID, and TeamIDs in [the credential metadata]({{< ref "portal/customization#default-attributes" >}}).
-- Added warning regarding potential PII exposure to the [custom attributes menu]({{< ref "portal/customization#default-attributes" >}}).
+- Added warning regarding potential PII exposure to the [custom attributes menu]({{< ref "portal/customization#default-attributes-of-user-model" >}}).
 - Changed the behavior of the portal for 404 errors. Now whenever a user requests non-existing page both private (e.i. requiring sign-in to access) or public, the portal now always renders the `not_found.tmpl` template.
 - Changed the behavior of the `Secure` cookie attribute that is set by [PORTAL_SESSION_SECURE]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_session_secure" >}}) so that the `Secure` attribute is always add to the `Set-Cookie` header whenever `PORTAL_SESSION_SECURE` is set to `true` or when TLS is enabled.
 - Changed the behavior of removing a developer profile within the developers UI in the admin app. Now, when an admin tries to remove a developer profile and some of their credentials have been removed from the credentials provider, or if the provider itself is down or unreachable, the portal asks the admin if they still want to remove the developer profile by displaying a modal window.
 - Extended the `DELETE /users/:id` API endpoint by adding the [?force]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) query parameter to force removal of a user even if some of their credentials have been removed from the credentials provider, or if the provider itself is down or unreachable.
 - Extended the `GET /pages/:id/content-blocks/:id:` API endpoint by adding additional fields in the response body: `Content`, `MarkdownContent`, `MarkdownEnabled`, `Name`, and `PageID`.
-- Extended [filesize limit]({{< ref "portal/customization#part-1-create-a-new-theme" >}}) for individual files in themes to 5 MB.
-- Made the organization invite email's subject configurable via [the emails settings section]({{< ref "portal/customization#list-of-email-notifications" >}}).
+- Extended [filesize limit]({{< ref "portal/customization#create-a-theme" >}}) for individual files in themes to 5 MB.
+- Made the organization invite email's subject configurable via [the emails settings section]({{< ref "portal/customization#supported-email-notifications" >}}).
 
 ##### Fixed
 - Fixed the bug where it was impossible to create an ordered list in the rich text editor in the admin app due to CSS issues.
@@ -1088,7 +1088,7 @@ Now when the [PORTAL_DCR_LOG_ENABLED]({{< ref "product-stack/tyk-enterprise-deve
 ##### Fixed
 - Fixed the bug where the database credentials were printed in the logs when bootstrapping the portal.
 - Fixed the bug where the session cookie was disclosing the username and role.
-- Fixed the bug where the [Forgot Password page]({{< ref "portal/api-consumer#introduction" >}}) did not reflect the current theme.
+- Fixed the bug where the [Forgot Password page]({{< ref "portal/api-consumer#reset-password" >}}) did not reflect the current theme.
 - Fixed the bug where the DCR flow failed to create a client with policies managed by Tyk Operator.
 - Fixed the bug where an admin user couldn't upload a new theme file in Kubernetes environment.
 - Fixed the bug where the portal application went down after running for several hours in Kubernetes environment.
@@ -1504,7 +1504,7 @@ API Providers can add [Get started guides]({{<ref "portal/api-provider#documenta
 - API Providers can use HTML or Markdown editors for authoring content for API Consumers such as the Get started guides and blog posts.
 
 ##### Tags for API Products and blog posts
-API Providers can select which blogs posts to display on an API Product page using [the tags feature]({{<ref "portal/api-provider#step-4-add-tags-to-blogs-and-api-products">}}). To achieve that, an API Provider can specify tags for both API Products and blog posts. Blog posts that match tags with an API Product are displayed in the 'Related blog content' section in the API Product page. This offers API Providers greater control over what blog posts to display on their API Product page.
+API Providers can select which blogs posts to display on an API Product page using [the tags feature]({{<ref "portal/api-provider#documentation-for-your-api-products">}}). To achieve that, an API Provider can specify tags for both API Products and blog posts. Blog posts that match tags with an API Product are displayed in the 'Related blog content' section in the API Product page. This offers API Providers greater control over what blog posts to display on their API Product page.
 
 ##### S3 support
 We added [S3 support]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage">}}) for the portal assets storage (themes, images, OAS files). This update enhances the extensibility of our platform, allowing you to choose different storage solutions to better align with your specific needs.
@@ -1518,7 +1518,7 @@ We added [S3 support]({{<ref "product-stack/tyk-enterprise-developer-portal/depl
 - Added the [organization management capability]({{<ref "portal/api-consumer#manage-api-consumer-organizations">}}) for API Consumers to safely share API access credentials between team members.
 - Added the [Get started guides]({{<ref "portal/api-provider#documentation-for-your-api-products">}}) for API Products so that admins can explain to their consumers how use their API Products.
 - Added support for [S3 storage]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage">}}) for the portal's assets storage. Now our customers can use `s3` storage in addition to the filesystem which is especially important in Kubernetes environments.
-- Added [tags]({{<ref "portal/api-provider#step-4-add-tags-to-blogs-and-api-products">}}) for API Products and blog posts so that API Providers have greater control over which blog posts to display on their API Product page.
+- Added [tags]({{<ref "portal/api-provider#documentation-for-your-api-products">}}) for API Products and blog posts so that API Providers have greater control over which blog posts to display on their API Product page.
 
 
 ##### Fixed

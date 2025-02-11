@@ -18,6 +18,8 @@ aliases:
   - /product-stack/tyk-enterprise-developer-portal/getting-started/with-tyk-self-managed-as-provider
   - /product-stack/tyk-enterprise-developer-portal/getting-started/create-orgs-and-catalogs
   - /product-stack/tyk-enterprise-developer-portal/getting-started/create-api-product-and-plan
+  - /yk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/getting-started-with-enterprise-portal
 ---
 
 {{< note success >}}
@@ -124,7 +126,7 @@ To get started with the Enterprise Developer portal, you need to accomplish four
 1. [Connect to a provider (Tyk Self Managed)]({{< ref "portal/overview#connect-to-a-provider" >}})
 2. [Create and import API Products and Plans in your Tyk Self Managed Instance]({{< ref "portal/overview#create-api-products-and-plans" >}})
 3. [Create catalogs and developer audiences]({{< ref "portal/overview#organization-and-catalog" >}})
-4. [Publish API Products and Plans to the Developer portal so that API consumers can access them]({{< ref "portal/customization#optional-customize-visual-appearance-of-api-products-and-plans" >}})
+4. [Publish API Products and Plans to the Developer portal so that API consumers can access them]({{< ref "portal/overview#optional-customize-visual-appearance-of-api-products-and-plans" >}})
 
 After the last step, you can start serving APIs to your developer audience.
 
@@ -240,7 +242,7 @@ When creating an API Product in the Developer Portal, a partitioned policy that 
 1. From the Tyk Portal admin app, go to **API Products** and click **Add new API Product**.
 {{< img src="img/dashboard/portal-management/enterprise-portal/portal-add-api-product.png" alt="Add an API Product" >}}
 
-2. Select a unique name for the API Product and complete the [product details for customization]({{< ref "portal/customization#optional-customize-visual-appearance-of-api-products-and-plans" >}}) in the **Details** tab. The product name will be the name assigned to the created policy in the Tyk Self-Managed selected provider
+2. Select a unique name for the API Product and complete the [product details for customization]({{< ref "portal/overview#optional-customize-visual-appearance-of-api-products-and-plans" >}}) in the **Details** tab. The product name will be the name assigned to the created policy in the Tyk Self-Managed selected provider
 {{< img src="img/dashboard/portal-management/enterprise-portal/portal-product-details.png" alt="Add an API Product" >}}
 
 3. Select **Provider**, **Authentication**, and **APIS** in the **API's** tab.

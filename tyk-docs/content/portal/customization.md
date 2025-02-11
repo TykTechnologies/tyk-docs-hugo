@@ -303,9 +303,9 @@ Once you have merged your local changes with the latest changes from the `portal
     zip -r9 default.zip 
     ```
 
-2. Upload the theme package that is created in the previous step to the portal. You can use the portal's [Admin dashboard]({{< ref "portal/customization#part-1-create-a-new-theme" >}}) or the [admin API]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) to do it.
+2. Upload the theme package that is created in the previous step to the portal. You can use the portal's [Admin dashboard]({{< ref "portal/customization#create-a-theme" >}}) or the [admin API]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) to do it.
 ![image](https://github.com/TykTechnologies/tyk-docs/assets/14009/f0e547b2-b521-4c3e-97ce-fd3a2a3b170b)
-3. Finally, you need to [activate]({{< ref "portal/customization#part-3-activate-a-theme" >}}) the theme so that it will be applied to the portal.
+3. Finally, you need to [activate]({{< ref "portal/customization#activate-a-theme" >}}) the theme so that it will be applied to the portal.
 
 ## Configure Templates
 
@@ -3025,7 +3025,7 @@ Sample payload:
 
 #### New Organization Registered
 
-This event is fired whenever a new consumer organization is created via the admin APIs, the live portal ([the become an organization flow]({{< ref "portal/api-consumer#step-1-request-org-registration" >}})) or the admin UI.
+This event is fired whenever a new consumer organization is created via the admin APIs, the live portal ([the become an organization flow]({{< ref "portal/api-consumer#self-registration" >}})) or the admin UI.
 
 Sample payload:
 ```json
@@ -3042,7 +3042,7 @@ Sample payload:
 
 #### New Organization Registration Request Created
 
-This event is fired whenever a new organization request is created via the live portal ([the become an organization flow]({{< ref "portal/api-consumer#step-1-request-org-registration" >}})) or the admin UI.
+This event is fired whenever a new organization request is created via the live portal ([the become an organization flow]({{< ref "portal/api-consumer#self-registration" >}})) or the admin UI.
 
 Sample payload:
 ```json

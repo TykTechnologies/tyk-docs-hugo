@@ -185,7 +185,7 @@ To achieve this, the portal, by default, populates the following attributes in t
 - **DeveloperID**: The ID of the developer who created the credential.
 - **OrganizationID**: The ID of the organization to which the developer belongs.
 
-Additionally, it's possible to attach [custom attribute values]({{< ref "portal/customization#add-attributes-to-the-user-model" >}}) defined in a developer profile as metadata fields to credentials.
+Additionally, it's possible to attach [custom attribute values]({{< ref "portal/customization#add-custom-attributes-to-the-user-model" >}}) defined in a developer profile as metadata fields to credentials.
 
 When a credential is provisioned by the portal, all the fields described above are added as metadata values to the credential, making them valid options for configuring the rate limit key:
 
@@ -479,7 +479,7 @@ To configure API Products to work with the DCR flow, you need to:
 
 For achieving this, navigate to the `API Products` menu and select the particular API product you want to use for the DCR flow. Next, go to the ‘App registration configs’ section and enable the ‘Enable dynamic client registration’ checkbox.
 
-After that, specify the scope for this API product. You should have at least one scope that was created in [the Prerequisites for getting started]({{< ref "portal/api-provider#prerequisites-for-getting-started" >}}). If you need to specify more than one scope, you can separate them with spaces.
+After that, specify the scope for this API product. You should have at least one scope that was created in [the Prerequisites for getting started]({{< ref "portal/api-provider#prerequisites" >}}). If you need to specify more than one scope, you can separate them with spaces.
 
 Finally, select one or multiple types of clients that were created in [the Create client configurations]({{< ref "portal/api-provider#create-client-configurations" >}}) section of this guide to associate them with that product.
 
@@ -511,7 +511,7 @@ From version 1.13.0, you can complete the DCR configuration for a product under 
 
 ##### Configure plans for the DCR flow
 
-The last step is to configure the plans you want to use with the DCR flow. To do this, go to the portal's `Plans` menu section and specify the OAuth2.0 scope to use with each plan. You should have at least one scope that was created in [the Prerequisites for getting started]({{< ref "portal/api-provider#prerequisites-for-getting-started" >}}). If you need to specify more than one scope, you can separate them with spaces.
+The last step is to configure the plans you want to use with the DCR flow. To do this, go to the portal's `Plans` menu section and specify the OAuth2.0 scope to use with each plan. You should have at least one scope that was created in [the Prerequisites for getting started]({{< ref "portal/api-provider#prerequisites" >}}). If you need to specify more than one scope, you can separate them with spaces.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/configure-plan-for-the-dcr-flow.png" alt="Configure a plan to work with the DCR flow" >}}
 
 <br>
