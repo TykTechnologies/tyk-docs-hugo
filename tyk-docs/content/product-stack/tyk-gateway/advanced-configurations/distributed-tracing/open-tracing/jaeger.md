@@ -8,7 +8,7 @@ aliases:
 
 {{< note success >}}
 **Note**  
-[Tyk Gateway 5.2]({{< ref "developer-support/release-notes/gateway.md" >}}) now includes OpenTelemetry Tracing. We recommend migrating to OpenTelemetry for better trace insights and more comprehensive support. This change will offer you significant advantages in managing your distributed tracing needs.
+[Tyk Gateway 5.2]({{< ref "developer-support/release-notes/gateway" >}}) now includes OpenTelemetry Tracing. We recommend migrating to OpenTelemetry for better trace insights and more comprehensive support. This change will offer you significant advantages in managing your distributed tracing needs.
 
 Subsequently, we recommend following this guide [Exporting OpenTelemetry Distributed Traces to Jaeger]({{< ref "otel_jaeger" >}}). 
 {{< /note >}}

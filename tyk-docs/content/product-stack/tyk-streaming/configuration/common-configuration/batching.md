@@ -26,7 +26,7 @@ output:
       period: 100ms
 ```
 
-However, a small number of inputs such as [kafka]({{< ref "/product-stack/tyk-streaming/configuration/inputs/kafka" >}}) must be consumed sequentially (in this case by partition) and therefore benefit from specifying your batch policy at the input level instead:
+However, a small number of inputs such as [kafka]({{< ref "product-stack/tyk-streaming/configuration/inputs/kafka" >}}) must be consumed sequentially (in this case by partition) and therefore benefit from specifying your batch policy at the input level instead:
 
 ```yaml
 input:
@@ -45,7 +45,7 @@ output:
 
 Inputs that behave this way are documented as such and have a `batching` configuration block.
 
-Sometimes you may prefer to create your batches before processing, in which case if your input doesn't already support [a batch policy](#batch-policy) you can instead use a [broker]({{< ref "/product-stack/tyk-streaming/configuration/inputs/broker" >}}), which also allows you to combine inputs with a single batch policy:
+Sometimes you may prefer to create your batches before processing, in which case if your input doesn't already support [a batch policy](#batch-policy) you can instead use a [broker]({{< ref "product-stack/tyk-streaming/configuration/inputs/broker" >}}), which also allows you to combine inputs with a single batch policy:
 
 ```yaml
 input:
@@ -58,7 +58,7 @@ input:
       period: 500ms
 ```
 
-This also works the same with [output brokers]({{< ref "/product-stack/tyk-streaming/configuration/outputs/broker" >}}).
+This also works the same with [output brokers]({{< ref "product-stack/tyk-streaming/configuration/outputs/broker" >}}).
 
 ## Compatibility
 

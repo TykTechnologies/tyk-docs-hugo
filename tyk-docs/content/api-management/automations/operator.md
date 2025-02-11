@@ -255,8 +255,8 @@ To address this challenge, Tyk Operator allows you to directly reference certifi
 
 We assume you have already installed Tyk. If you don’t have it, check out [Tyk
 Cloud]({{<ref "tyk-cloud#quick-start-tyk-cloud">}}) or [Tyk Self
-Managed]({{<ref "/getting-started/installation">}}) page. [Tyk Helm
-Chart]({{<ref "/product-stack/tyk-charts/overview">}}) is the preferred (and easiest) way to install Tyk on Kubernetes.
+Managed]({{<ref "getting-started/installation">}}) page. [Tyk Helm
+Chart]({{<ref "product-stack/tyk-charts/overview">}}) is the preferred (and easiest) way to install Tyk on Kubernetes.
 
 In order for policy ID matching to work correctly, Dashboard must have `allow_explicit_policy_id` and
 `enable_duplicate_slugs` set to `true` and Gateway must have `policies.allow_explicit_policy_id` set to `true`.

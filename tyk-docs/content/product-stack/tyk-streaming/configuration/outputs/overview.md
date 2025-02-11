@@ -4,7 +4,7 @@ description: Explains an overview of outputs
 tags: [ "Tyk Streams", "Stream Outputs", "Outputs" ]
 ---
 
-An output is a sink where we wish to send our consumed data after applying an optional array of [processors]({{< ref "/product-stack/tyk-streaming/configuration/processors/overview" >}}). Only one output is configured at the root of a Tyk Streams config. However, the output can be a [broker]({{< ref "/product-stack/tyk-streaming/configuration/outputs/broker" >}}) which combines multiple outputs under a chosen brokering pattern.
+An output is a sink where we wish to send our consumed data after applying an optional array of [processors]({{< ref "product-stack/tyk-streaming/configuration/processors/overview" >}}). Only one output is configured at the root of a Tyk Streams config. However, the output can be a [broker]({{< ref "product-stack/tyk-streaming/configuration/outputs/broker" >}}) which combines multiple outputs under a chosen brokering pattern.
 
 An output config section looks like this:
 

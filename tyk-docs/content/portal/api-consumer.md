@@ -46,7 +46,7 @@ External developers are referred to as API Consumers. In the Tyk Developer porta
 
 When installing the Tyk Portal, by default the API Consumers section will already have a default organization with a default team added. This means, if your specific use case doesn't require multiple organizations and teams, you can get started straight away and invite a new external user to the developer portal, adding them to the default organization and default team.
 
-If your use case requires adding a new organization, see [step by step guide]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations.md" >}}). When an organization is created, a default team tied to that organization is automatically generated too. Teams and organizations can have different visibility when it comes to API Products and plans. This can be managed within the [catalog section]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-catalogues.md" >}}).
+If your use case requires adding a new organization, see [step by step guide]({{< ref "portal/api-consumer#manage-api-consumer-organizations" >}}). When an organization is created, a default team tied to that organization is automatically generated too. Teams and organizations can have different visibility when it comes to API Products and plans. This can be managed within the [catalog section]({{< ref "portal/api-provider#create-a-new-catalog" >}}).
 
 ## Manage API Consumer Individual Users
 
@@ -103,7 +103,7 @@ To use the self sign up flow, you’ll need to:
 6. To generate the invite email, click **More Options** in the Overview section and then **Send invite**.
 
     The user will receive an email with a link to the registration form. This option is only available if you didn't set the password before.
-    To customize the invite email, please refer to the [Email customization section]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization.md" >}}) for guidance.
+    To customize the invite email, please refer to the [Email customization section]({{< ref "portal/customization#configure-email-notifications" >}}) for guidance.
 
     {{< img src="/img/dashboard/portal-management/enterprise-portal/users-send-invite.png" alt="Users Send invite dialog" >}}
 
@@ -188,7 +188,7 @@ So, simply put, there are two main challenges that the new API Consumer organiza
 Before starting, you need to set up an email server because it’s used to send invitations to API Consumer team members.
 Please refer to the email notifications documentation to set up the email server.
 
-Please refer to the [email notification section]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/setup-email-notifications" >}}) for further instructions for setting up the email server.
+Please refer to the [email notification section]({{< ref "portal/settings#email-configuration" >}}) for further instructions for setting up the email server.
 
 ### Admin Settings and Governance
 
@@ -238,7 +238,7 @@ To enable API Consumer organization registration, navigate to the Settings/Gener
     <br/><br/>Notification when organization request is rejected:
     {{< img src="/img/dashboard/portal-management/enterprise-portal/org_request_rejected_email.png" alt="Organization registration request is rejected" >}}
 
-    <br/><br/>Both emails are customizable. Refer to [the email customization documentation]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization.md" >}}) for further information on the email customization.
+    <br/><br/>Both emails are customizable. Refer to [the email customization documentation]({{< ref "portal/customization#configure-email-notifications" >}}) for further information on the email customization.
 
 3. **Invite or remove teammates**
 

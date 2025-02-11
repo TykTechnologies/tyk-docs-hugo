@@ -798,7 +798,7 @@ Check [Tyk Gateway Sharding]({{< ref "api-management/multiple-environments#what-
 
 **Installing Tyk Enterprise Developer Portal**
 
-If you are deploying the **Tyk Enterprise Developer Portal**, set the appropriate values under the `enterprisePortal` section in your `values.yaml`. Please visit [Tyk Enterprise Developer Portal installation]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-helm" >}}) for a step by step guide.
+If you are deploying the **Tyk Enterprise Developer Portal**, set the appropriate values under the `enterprisePortal` section in your `values.yaml`. Please visit [Tyk Enterprise Developer Portal installation]({{< ref "portal/install#using-legacy-helm-chart" >}}) for a step by step guide.
 
 >**Note**: Helm chart supports Enterprise Portal v1.2.0+
 
@@ -2106,7 +2106,7 @@ For a password, we recommend a combination of alphanumeric characters, with both
 
     **Configure your Developer Portal**
 
-    To set up your [Developer Portal]({{< ref "/content/tyk-developer-portal.md" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalog]({{< ref "/content/getting-started/tutorials/publish-api.md" >}}).
+    To set up your [Developer Portal]({{< ref "tyk-developer-portal" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalog]({{< ref "getting-started/tutorials/publish-api" >}}).
 
 ##### Using Ansible
 
@@ -2890,7 +2890,7 @@ You can now log in to the Tyk Dashboard from `127.0.0.1:3000`, using the usernam
 
 ###### **Configure your Developer Portal**
 
-To set up your [Developer Portal]({{< ref "/content/tyk-developer-portal.md" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalog]({{< ref "/content/getting-started/tutorials/publish-api.md" >}}).
+To set up your [Developer Portal]({{< ref "tyk-developer-portal" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalog]({{< ref "getting-started/tutorials/publish-api" >}}).
 
 ##### Using Ansible
 
@@ -3646,7 +3646,7 @@ This demo is NOT intended for production use or performance testing, since it us
 {{< note success >}}
 **Note**  
 
-The Tyk Pro Docker demo does not provide access to the [Developer Portal]({{< ref "tyk-developer-portal/tyk-enterprise-developer-portal" >}}).
+The Tyk Pro Docker demo does not provide access to the [Developer Portal]({{< ref "portal/overview#" >}}).
 {{< /note >}}
 
 #### Prerequisites
@@ -4048,7 +4048,7 @@ You can now log in to the Tyk Dashboard from `127.0.0.1:3000`, using the usernam
 
 **Configure your Developer Portal**
 
-To set up your [Developer Portal]({{< ref "/content/tyk-developer-portal.md" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalog]({{< ref "/content/getting-started/tutorials/publish-api.md" >}}).
+To set up your [Developer Portal]({{< ref "tyk-developer-portal" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalog]({{< ref "getting-started/tutorials/publish-api" >}}).
 
 ## Planning for Production
 
@@ -4692,7 +4692,7 @@ For the generic `BreakerTriggered` event, the state change will be indicated in 
 
 **API-level circuit breaker**
 
-Tyk does not have an API-level circuit breaker that can be applied across all endpoints. If you are using the Tyk Dashboard, however, then you are able to use an [Open Policy Agent]({{< ref "tyk-dashboard/open-policy-agent.md" >}}) to append a circuit breaker to every API/Service using the regex `.*` path.
+Tyk does not have an API-level circuit breaker that can be applied across all endpoints. If you are using the Tyk Dashboard, however, then you are able to use an [Open Policy Agent]({{< ref "tyk-dashboard/open-policy-agent" >}}) to append a circuit breaker to every API/Service using the regex `.*` path.
 
 <hr>
 

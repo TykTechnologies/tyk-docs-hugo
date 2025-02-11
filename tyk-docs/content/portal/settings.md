@@ -119,7 +119,7 @@ The Tyk Enterprise Developer portal has two audiences:
 
 1. **Developers**:
 
-    Developers created by the sso flow are portal users that belong to an organization and team/s, if a user group mapping is not specified, they are assigned to the default organization and default team. Developers created by the sso flow are always assinged the **Consumer Super Admin** role. If part of an organization and a team, this means that the developer is a super admin for that organization. Read more about managing api consumer organizations [here]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations" >}}).
+    Developers created by the sso flow are portal users that belong to an organization and team/s, if a user group mapping is not specified, they are assigned to the default organization and default team. Developers created by the sso flow are always assinged the **Consumer Super Admin** role. If part of an organization and a team, this means that the developer is a super admin for that organization. Read more about managing api consumer organizations [here]({{< ref "portal/api-consumer#manage-api-consumer-organizations" >}}).
 
 2. **Admins**:
 
@@ -231,7 +231,7 @@ In the above example, you need to specify the following parameters:
 - Replace the `host` and `port` in the field `DiscoverURL` with the actual host and port on which your IDP instance is running. Also, replace `http` with `https` accordingly
 - In the `"ID"` field, specify an ID of this TIB profile. You can select any value for this field that consists of digits, letters, and special signs; no spaces are allowed. It is better to pick a human-readable ID for your profile for better maintainability of the configuration
 - `CustomUserGroupField` must be equal to the JWT claim name that refers to the user group in your IDP
-- `UserGroupMapping` is an object that defines the relationship between user groups in the IDP and teams in the portal. If not specified, the optional parameter will cause the portal to rely on the `DefaultUserGroupID` field to determine which team a developer should log in to. Please refer to the [User group mapping section]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso#user-group-mapping" >}} ) for guidance
+- `UserGroupMapping` is an object that defines the relationship between user groups in the IDP and teams in the portal. If not specified, the optional parameter will cause the portal to rely on the `DefaultUserGroupID` field to determine which team a developer should log in to. Please refer to the [User group mapping section]({{< ref "portal/settings#user-group-mapping" >}} ) for guidance
 - `DefaultUserGroupID` is the default organization that the portal will use to determine which team a developer should be logged in to if it is not able to find a UserGroupMapping for that developer
 {{< tab_end >}}
 {{< note info >}}
@@ -283,7 +283,7 @@ Here is an example of such a page that works with a profile for the LDAP identit
 
 
 Configuration on the portal side is quite straightforward. You need to specify the portal SSO API secret that acts as a credential for the APIs that are used by TIB for communication with the portal within Single Sign-On flow.
-You can use any value for the portal SSO API secret, but it should be consistent with [TIB configuration]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso#configure-tyk-identity-broker-to-work-with-tyk-enterprise-developer-portal" >}}).
+You can use any value for the portal SSO API secret, but it should be consistent with [TIB configuration]({{< ref "portal/settings#configure-tyk-identity-broker-to-work-with-tyk-enterprise-developer-portal" >}}).
 
 To specify the portal SSO API secret, add the `PORTAL_API_SECRET` variable to [the portal .env file]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#sample-env-file" >}}):
 ```.ini
@@ -659,7 +659,7 @@ In the above example, you need to specify the following parameters:
 - Replace `{TIB host}` and `{TIB port}` with the actual host and port on which your TIB instance is running. Also, replace `http` with `https` for the respective fields if you use https for your TIB instance
 - In the `"ID"` field, specify an ID of this TIB profile. You can select any value for this field that consists of digits, letters, and special signs, no spaces allowed. It is better to pick a human-readable ID for your profile for better maintainability of the configuration
 - `CustomUserGroupField` must be equal to the JWT claim name that refers to the user group in your IDP
-- `UserGroupMapping` an object that defines relationship between user groups in the IDP and teams in the portal. The optional parameter, if not specified, will cause the portal to rely on the `DefaultUserGroupID` field to determine which team a developer should log in to. Please refer to the [User group mapping section]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso#user-group-mapping" >}} ) for guidance
+- `UserGroupMapping` an object that defines relationship between user groups in the IDP and teams in the portal. The optional parameter, if not specified, will cause the portal to rely on the `DefaultUserGroupID` field to determine which team a developer should log in to. Please refer to the [User group mapping section]({{< ref "portal/settings#user-group-mapping" >}} ) for guidance
 - `DefaultUserGroupID` is the default organization that the portal will use to determine which team a developer should be logged in to if it is not able to find a UserGroupMapping for that developer
 
 {{< note info >}}

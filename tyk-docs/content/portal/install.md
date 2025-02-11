@@ -48,24 +48,24 @@ The portal deployment comprises of three main components:
 - The asset storage, which stores CMS assets such as images, themes, and OpenAPI specification files. The assets could reside in the portal's main database or separately in an S3 bucket or filesystem volume.
 
 Optionally, there could be three additional components:
-- **3rd party identity provider.** To [enable oAuth2.0 for your API Products]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration.md" >}}), you'll need to utilize an OpenID-compliant third-party identity provider.
-It's essential to note that the [Tyk Stack]({{< ref "/content/tyk-stack.md" >}}) doesn't include third-party identity providers, so you should refer to your Identity Provider's documentation for instructions on configuring and deploying it.
+- **3rd party identity provider.** To [enable oAuth2.0 for your API Products]({{< ref "portal/api-provider#dynamic-client-registration" >}}), you'll need to utilize an OpenID-compliant third-party identity provider.
+It's essential to note that the [Tyk Stack]({{< ref "tyk-stack" >}}) doesn't include third-party identity providers, so you should refer to your Identity Provider's documentation for instructions on configuring and deploying it.
 This component is optional and required only for enabling oAuth2.0
 - **[Tyk Identity Broker]({{< ref "api-management/external-service-integration" >}})**. You only need this component if you want to configure Single Sign-On for the Tyk Enterprise Developer Portal.
-For more guidance on this topic, please consult [the Single Sign-On section]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso.md" >}}) of the documentation
+For more guidance on this topic, please consult [the Single Sign-On section]({{< ref "portal/settings#configure-developer-portal-sso" >}}) of the documentation
 - **Email server**. The portal is capable of sending notifications to both admin users and developers when specific events happen within the portal.
 To enable this feature, you need to specify a connection configuration to an email server or service, and configure other email settings.
 You can choose to use a server that is installed on your premises or an SMTP-compatible SaaS product.
-For step-by-step instructions, please refer to [the Email Settings section]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization.md" >}})
+For step-by-step instructions, please refer to [the Email Settings section]({{< ref "portal/customization#configure-email-notifications" >}})
 
 ## Portal Installation Process
 
 The portal installation process comprises two steps:
 1. **Install the portal application.** To install the portal and launch it in the bootstrap mode, you need to configure your portal instance by specifying settings such as TLS, log level, and database connection.
-For further guidance on launching the portal, please refer to one of the installation options: [Docker container]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker" >}}), [Docker Compose]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose" >}}), [Helm chart]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-helm" >}}), or [RPM package]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-rpm" >}}).
+For further guidance on launching the portal, please refer to one of the installation options: [Docker container]({{< ref "portal/install#docker" >}}), [Docker Compose]({{< ref "portal/install#docker-compose" >}}), [Helm chart]({{< ref "portal/install#using-legacy-helm-chart" >}}), or [RPM package]({{< ref "portal/install#red-hat-rhel--centos" >}}).
 2. **[Bootstrap the portal]({{< ref "#bootstrapping-enterprise-developer-portal" >}})** After you've launched the portal, it will wait for you to provide credentials for the super admin user before it starts accepting traffic.
 Once you've created the super admin user, the portal will complete its installation process by creating the necessary database structure and initialising the required assets for its operations. You can [bootstrap]({{< ref "#bootstrapping-enterprise-developer-portal" >}}) the portal either through the UI or using the bootstrap API.
-Please refer to [the Bootstrapping section]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal" >}}) for implementing this step.
+Please refer to [the Bootstrapping section]({{< ref "portal/install#bootstrapping-enterprise-developer-portal" >}}) for implementing this step.
 
 ## Installation Options for Enterprise Developer Portal
 
@@ -73,19 +73,19 @@ The Tyk Enterprise Developer Portal supports multiple installation flavors. Chec
 
 {{< grid >}}
 
-{{< badge read="10 mins" href="product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker" image="/img/docker.png" alt="Docker install">}}
+{{< badge read="10 mins" href="portal/install#docker" image="/img/docker.png" alt="Docker install">}}
 Install with Docker
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose" image="/img/docker.png" alt="Docker-compose install">}}
+{{< badge read="10 mins" href="portal/install#docker-compose" image="/img/docker.png" alt="Docker-compose install">}}
 Install with Docker Compose
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-new-helm" image="/img/k8s.png" alt="Kubernetes install">}}
+{{< badge read="10 mins" href="portal/install#using-new-helm-chart" image="/img/k8s.png" alt="Kubernetes install">}}
 Install on Kubernetes
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-rpm" image="/img/redhat-logo2.png" alt="Red Hat install">}}
+{{< badge read="10 mins" href="portal/install#red-hat-rhel--centos" image="/img/redhat-logo2.png" alt="Red Hat install">}}
 Install on Red Hat
 {{< /badge >}}
 
@@ -258,7 +258,7 @@ To successfully install the Tyk Enterprise Developer Portal with Docker, you sho
     Creating an environment variables file to specify settings for the portal is the next step.
     This is optional, as you can alternatively specify all the variables using the -e option when starting your deployment.
 
-    Here is an example of a sample environment file. For a comprehensive reference of environment variables, please refer to the [configuration]({{< ref "/content/product-stack/tyk-enterprise-developer-portal/deploy/configuration.md" >}}) section in the Tyk Enterprise Developer Portal documentation.
+    Here is an example of a sample environment file. For a comprehensive reference of environment variables, please refer to the [configuration]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration" >}}) section in the Tyk Enterprise Developer Portal documentation.
     ```ini
     MYSQL_ROOT_PASSWORD=sup3rsecr3t
     MYSQL_DATABASE=portal
@@ -318,7 +318,7 @@ SQLite is useful for quick deployment and testing, however we don't recommend us
 {{< note success >}}
 **Note** 
 
-Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings/postgresql#introduction" >}}), [MongoDB]({{< ref "planning-for-production/database-settings/mongodb" >}}), or one of the listed compatible alternatives.
+Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
 {{< /note >}}
 
 1. **Create a volume for the portal's database**
@@ -706,7 +706,7 @@ To install the portal using helm charts, you need to take the following steps:
     | `database.dialect` | Portal database dialect, e.g. *mysql*, *postgres* and *sqlite3* |
     | `database.connectionString`| Connection string to the Portal's database, e.g. for the *mysql* dialect: `admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true` |
 
-    In addition to `values.yaml`, you can also define the environment variables described in the [configuration section]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration.md" >}}) to further customize your portal deployment. These environment variables can also be listed as a name value list under the `extraEnvs` section of the helm chart.
+    In addition to `values.yaml`, you can also define the environment variables described in the [configuration section]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration" >}}) to further customize your portal deployment. These environment variables can also be listed as a name value list under the `extraEnvs` section of the helm chart.
 
 3. **Launch the portal using the helm chart**
 
@@ -726,7 +726,7 @@ Please refer to this [guide]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}
 {{< warning success >}}
 **Note**
 
-It is recommended to use new helm charts instead of legacy charts. Guide for new charts can be found [here]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-new-helm.md">}})
+It is recommended to use new helm charts instead of legacy charts. Guide for new charts can be found [here]({{<ref "portal/install#using-new-helm-chart">}})
 
 {{< /warning >}}
 
@@ -757,7 +757,7 @@ This guide provides a clear and concise, step-by-step recipe for installing the 
     {{< note success >}}
     **Note** 
 
-    Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings/postgresql#introduction" >}}), [MongoDB]({{< ref "planning-for-production/database-settings/mongodb" >}}), or one of the listed compatible alternatives.
+    Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
     {{< /note >}}
 
     You must set the following values in the `values.yaml` or with `--set {field-name}={field-value}` with the helm upgrade command:
@@ -770,7 +770,7 @@ This guide provides a clear and concise, step-by-step recipe for installing the 
     | `enterprisePortal.storage.type`| Portal database dialect, e.g *mysql*, *postgres* or *sqlite3* |
     | `enterprisePortal.storage.connectionString` | Connection string to the Portal's database, e.g for the mysql dialect: `admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true` |
 
-    In addition to values.yaml, you can also define the environment variables described in the [configuration section]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration.md" >}}) to further customize your portal deployment. These environment variables can also be listed as a name value list under the `extraEnvs` section of the helm chart.
+    In addition to values.yaml, you can also define the environment variables described in the [configuration section]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration" >}}) to further customize your portal deployment. These environment variables can also be listed as a name value list under the `extraEnvs` section of the helm chart.
 
 3. **Launch the portal using the helm chart**
 
@@ -833,7 +833,7 @@ To successfully install the Tyk Enterprise Developer Portal using RPM, your envi
     {{< note success >}}
     **Note** 
 
-    Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"planning-for-production/database-settings/postgresql#introduction" >}}), [MongoDB]({{< ref "planning-for-production/database-settings/mongodb" >}}), or one of the listed compatible alternatives.
+    Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
     {{< /note >}}
 
     Before starting the portal service, you need to configure the portal. Once the rpm package has been installed, the portal configuration file will be located in `/opt/portal/portal.conf`.
@@ -978,7 +978,7 @@ Now you have a fully functional portal.
 
 <br/>
 
-You can continue configuring and customizing it either via the UI or the portal admin API. Please refer to [the Tyk Enterprise Developer Portal Concepts section]({{< ref "product-stack/tyk-enterprise-developer-portal/getting-started/enterprise-portal-concepts" >}}) for further guidance.
+You can continue configuring and customizing it either via the UI or the portal admin API. Please refer to [the Tyk Enterprise Developer Portal Concepts section]({{< ref "portal/overview#developer-portal-concepts" >}}) for further guidance.
 
 ## Environment Variable Reference
 

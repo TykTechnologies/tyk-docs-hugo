@@ -4,7 +4,7 @@ description: Explains an overview of inputs
 tags: [ "Tyk Streams", "Stream Inputs", "Inputs" ]
 ---
 
-An input is a source of data piped through an array of optional [processors]({{< ref "/product-stack/tyk-streaming/configuration/processors/overview" >}}):
+An input is a source of data piped through an array of optional [processors]({{< ref "product-stack/tyk-streaming/configuration/processors/overview" >}}):
 
 ```yaml
 input:
@@ -23,7 +23,7 @@ input:
 
 ## Brokering
 
-Only one input is configured at the root of a Tyk Streams config. However, the root input can be a [broker]({{< ref "/product-stack/tyk-streaming/configuration/inputs/broker" >}}) which combines multiple inputs and merges the streams:
+Only one input is configured at the root of a Tyk Streams config. However, the root input can be a [broker]({{< ref "product-stack/tyk-streaming/configuration/inputs/broker" >}}) which combines multiple inputs and merges the streams:
 
 ```yaml
 input:

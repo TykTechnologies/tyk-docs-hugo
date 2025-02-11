@@ -303,9 +303,9 @@ Once you have merged your local changes with the latest changes from the `portal
     zip -r9 default.zip 
     ```
 
-2. Upload the theme package that is created in the previous step to the portal. You can use the portal's [Admin dashboard]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts#part-1-create-a-new-theme" >}}) or the [admin API]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) to do it.
+2. Upload the theme package that is created in the previous step to the portal. You can use the portal's [Admin dashboard]({{< ref "portal/customization#part-1-create-a-new-theme" >}}) or the [admin API]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) to do it.
 ![image](https://github.com/TykTechnologies/tyk-docs/assets/14009/f0e547b2-b521-4c3e-97ce-fd3a2a3b170b)
-3. Finally, you need to [activate]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts#part-3-activate-a-theme" >}}) the theme so that it will be applied to the portal.
+3. Finally, you need to [activate]({{< ref "portal/customization#part-3-activate-a-theme" >}}) the theme so that it will be applied to the portal.
 
 ## Configure Templates
 
@@ -328,7 +328,7 @@ HTML. There are also a number of global helper functions available to transform 
 The Tyk Enterprise Developer Portal uses several types of templates to render different parts of the portal:
 - Public Pages Templates: Render the portal's publicly accessible pages (such as Home, About Us, and Blog pages),
 forming the foundation of your portal's public-facing content. These can be customized through the Pages
-[section]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content" >}})
+[section]({{< ref "portal/customization#edit-page-content" >}})
 of the admin dashboard.
 - Private Pages Templates: Responsible for rendering the portal's authenticated user pages, like Profile settings and
 My Apps.
@@ -1642,7 +1642,7 @@ Returns an application name given a credential ID.
 
 ##### GetMenus
 
-Returns a map of all [menus]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation" >}}).
+Returns a map of all [menus]({{< ref "portal/customization#configure-menus" >}}).
 
 ###### Example Usage
 ```html
@@ -1824,7 +1824,7 @@ to its purpose.
 It's important to note that while email templates can include template data or specific template functions, they do not
 have access to the global helper functions available in other portal templates.
 
-Please refer to [email workflow]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization" >}})
+Please refer to [email workflow]({{< ref "portal/customization#configure-email-notifications" >}})
 for additional detail on email notifications sent by the portal.
 
 
@@ -2202,7 +2202,7 @@ Accessible via `{{ .user }}`
 
 ## Configure Pages
 
-We suggest you read the [portal concepts]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/enterprise-portal-concepts" >}}) first. If you've already done that, we will show you an example on how to:
+We suggest you read the [portal concepts]({{< ref "portal/overview#developer-portal-concepts" >}}) first. If you've already done that, we will show you an example on how to:
 
 - create a new layout.
 - create a new template from the file system.
@@ -2362,7 +2362,7 @@ The Developer portal has two types of menus:
 1. The main navigation at the top (in the header)
 2. The footer at the bottom.
 
-Both of them are defined as [partials]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts" >}}) in the portal directory in `/themes/default/partials/`.
+Both of them are defined as [partials]({{< ref "portal/customization#file-structure-of-a-theme" >}}) in the portal directory in `/themes/default/partials/`.
 
 ### Top Navigation Menu
 
@@ -2375,7 +2375,7 @@ Each menu item may:
 - show a dropdown list with possible navigational options:
   {{< img src="img/dashboard/portal-management/enterprise-portal/dropdown-menu-item.png" alt="Dropdown menu item" >}}
 
-Admin users can create additional navigational menus and render them on any page of the live portal. This customization requires changes to a theme and is covered in the [Full customization section]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation.md" >}}).
+Admin users can create additional navigational menus and render them on any page of the live portal. This customization requires changes to a theme and is covered in the [Full customization section]({{< ref "portal/customization#configure-menus" >}}).
 
 #### Manage Menu Items
 
@@ -2384,7 +2384,7 @@ The management of the menu items is done from the **Menus** section of the Devel
 1. Open the admin dashboard. Navigate to the **Menus** section.
    {{< img src="img/dashboard/portal-management/enterprise-portal/navigation-to-menus-section.png" alt="Navigate to the Menus section" >}}
 
-2. Select a menu that you want to modify. By default, the Developer portal has only one **Primary** menu. If you want to add more menus and render them on the live portal, please refer to [Full customization section]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation.md" >}}).
+2. Select a menu that you want to modify. By default, the Developer portal has only one **Primary** menu. If you want to add more menus and render them on the live portal, please refer to [Full customization section]({{< ref "portal/customization#configure-menus" >}}).
    {{< img src="img/dashboard/portal-management/enterprise-portal/select-a-menu.png" alt="Select a menu" >}}
 
 3. Click on a **menu item** to modify it. You can change the following items:
@@ -2477,7 +2477,7 @@ In this section we will explain how to apply your branding (styling - CSS) on th
 
 **Prerequisites**
 
-- A Tyk Self-Managed [installation]({{< ref "/content/tyk-self-managed/install.md" >}})
+- A Tyk Self-Managed [installation]({{< ref "tyk-self-managed/install" >}})
 - A login for the portal admin app
 - Access to your Tyk portal file system
 
@@ -2576,7 +2576,7 @@ To start customizing the user sign-up form, navigate to the **Custom attributes*
 
 ### Add a new attribute to the user model
 To add a new attribute to the user model, click on the **Add Custom attribute** button and then fill in properties of the new attribute:
-- **Attribute ID**: A string that consists of letters (a-zA-Z), numbers (0-9), dashes, and underscores. This is used to reference the attribute in the [Admin APIs]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) screen.
+- **Attribute ID**: A string that consists of letters (a-zA-Z), numbers (0-9), dashes, and underscores. This is used to reference the attribute in the [Admin APIs]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) screen.
 - **Attribute Label**: The attribute's name that is displayed in the UI.
 - **Description**: Explains the intended usage of this attribute. It is also displayed in the UI.
 - **Type of attribute**: The type of data that can be stored in this attribute. You cannot change the value of this field once the attribute is created. The following data types are acceptable:
@@ -2635,7 +2635,7 @@ The Tyk Enterprise Developer Portal sends notifications for the following events
 
 ### Behavior of Welcome and Activation Emails
 
-When creating a user account from the admin UI or via [the admin APIs]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api">}}), an admin user can create the user account as active or inactive.
+When creating a user account from the admin UI or via [the admin APIs]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api">}}), an admin user can create the user account as active or inactive.
 The behavior of activation emails varies depending on whether the user account is activated upon creation:
 - If the user account is created as inactive, the portal will send the welcome email. Then, upon activation of the user account, it will send the activation email.
 - If the user account is created as active, the portal will only send the welcome email and will suppress the activation email.
@@ -2703,7 +2703,7 @@ To customize the User model, navigate to the **Custom attributes** menu and then
 {{< img src="img/dashboard/portal-management/enterprise-portal/navigate-to-user-attributes.png" alt="Navigate to the User's attributes" >}}
 
 To add a new attribute to the user model, click on the **Add Custom attribute** button and then fill in properties of the new attribute:
-- **Attribute ID**: A string that consists of letters (a-zA-Z), numbers (0-9), dashes, and underscores. This is used to reference the attribute in the [Admin APIs]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) screen.
+- **Attribute ID**: A string that consists of letters (a-zA-Z), numbers (0-9), dashes, and underscores. This is used to reference the attribute in the [Admin APIs]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) screen.
 - **Attribute Label**: The attribute's name that is displayed in the UI.
 - **Description**: Explains the intended usage of this attribute. It is also displayed in the UI.
 - **Type of attribute**: The type of data that can be stored in this attribute. You cannot change the value of this field once the attribute is created. The following data types are acceptable:
@@ -3025,7 +3025,7 @@ Sample payload:
 
 #### New Organization Registered
 
-This event is fired whenever a new consumer organization is created via the admin APIs, the live portal ([the become an organization flow]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations#step-1-request-org-registration" >}})) or the admin UI.
+This event is fired whenever a new consumer organization is created via the admin APIs, the live portal ([the become an organization flow]({{< ref "portal/api-consumer#step-1-request-org-registration" >}})) or the admin UI.
 
 Sample payload:
 ```json
@@ -3042,7 +3042,7 @@ Sample payload:
 
 #### New Organization Registration Request Created
 
-This event is fired whenever a new organization request is created via the live portal ([the become an organization flow]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations#step-1-request-org-registration" >}})) or the admin UI.
+This event is fired whenever a new organization request is created via the live portal ([the become an organization flow]({{< ref "portal/api-consumer#step-1-request-org-registration" >}})) or the admin UI.
 
 Sample payload:
 ```json
