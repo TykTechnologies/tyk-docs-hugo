@@ -121,7 +121,7 @@ If you run a request to your proxy, you should get a response similar to this:
 
 ### Dynamic variables
 
-We have seen support for passing static variable values via the API definition, but there will be cases where we want to extract variables from the request header or URL. More information about available request context variables in Tyk can be found [here]({{(< ref "/context-variables">)}})
+We have seen support for passing static variable values via the API definition, but there will be cases where we want to extract variables from the request header or URL. More information about available request context variables in Tyk can be found [here]({{(< ref "context-variables">)}})
 
 Below is an examples of using an incoming `code` header value as a variable in `persist_graphql` middleware configuration:
 

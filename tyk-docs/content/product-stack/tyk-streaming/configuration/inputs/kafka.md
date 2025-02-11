@@ -525,7 +525,7 @@ Default: `false`
 
 ### batching
 
-Allows you to configure a [batching policy]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/batching#batch-policy" >}}).
+Allows you to configure a [batching policy]({{< ref "product-stack/tyk-streaming/configuration/common-configuration/batching#batch-policy" >}}).
 
 Type: `object`  
 

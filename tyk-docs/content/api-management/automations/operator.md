@@ -191,7 +191,7 @@ These would be the default credentials Tyk Operator uses to connect to Tyk.
 
 ### Multi-tenancy in Tyk
 
-Tyk Dashboard is multi-tenant capable, which means you can use a single Tyk Dashboard instance to host separate [organizations]({{< ref "basic-config-and-security/security/dashboard/organisations">}}) for each team or department. Each organization is a completely isolated unit with its own:
+Tyk Dashboard is multi-tenant capable, which means you can use a single Tyk Dashboard instance to host separate [organizations]({{< ref "api-management/dashboard-configuration#organizations">}}) for each team or department. Each organization is a completely isolated unit with its own:
 
 - API Definitions
 - API Keys
@@ -255,8 +255,8 @@ To address this challenge, Tyk Operator allows you to directly reference certifi
 
 We assume you have already installed Tyk. If you don’t have it, check out [Tyk
 Cloud]({{<ref "tyk-cloud#quick-start-tyk-cloud">}}) or [Tyk Self
-Managed]({{<ref "/getting-started/installation">}}) page. [Tyk Helm
-Chart]({{<ref "/product-stack/tyk-charts/overview">}}) is the preferred (and easiest) way to install Tyk on Kubernetes.
+Managed]({{<ref "getting-started/installation">}}) page. [Tyk Helm
+Chart]({{<ref "product-stack/tyk-charts/overview">}}) is the preferred (and easiest) way to install Tyk on Kubernetes.
 
 In order for policy ID matching to work correctly, Dashboard must have `allow_explicit_policy_id` and
 `enable_duplicate_slugs` set to `true` and Gateway must have `policies.allow_explicit_policy_id` set to `true`.
@@ -1349,9 +1349,9 @@ spec:
 
 #### Custom Plugin Auth (go)
 
-This configuration uses a [Golang plugin]({{<ref "plugins/supported-languages/golang">}}) for custom authentication. The following example shows how to create an API definition with a Golang custom plugin for `httpbin-go-auth`.
+This configuration uses a [Golang plugin]({{<ref "api-management/plugins/golang#">}}) for custom authentication. The following example shows how to create an API definition with a Golang custom plugin for `httpbin-go-auth`.
 
-For an example of Golang authentication middleware, see [Performing custom authentication with a Golang plugin]({{<ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-examples#performing-custom-authentication-with-a-golang-plugin">}}).
+For an example of Golang authentication middleware, see [Performing custom authentication with a Golang plugin]({{<ref "api-management/plugins/golang#performing-custom-authentication-with-a-golang-plugin">}}).
 
 ```yaml {hl_lines=["7-7", "14-21"],linenos=false}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -1379,7 +1379,7 @@ spec:
 
 #### Custom Plugin Auth (gRPC)
 
-This configuration uses a [gRPC plugin]({{<ref "plugins/supported-languages/golang">}}) for custom authentication. The following example shows how to create an API definition with a gRPC custom plugin for `httpbin-grpc-auth`.
+This configuration uses a [gRPC plugin]({{<ref "api-management/plugins/golang#">}}) for custom authentication. The following example shows how to create an API definition with a gRPC custom plugin for `httpbin-grpc-auth`.
 
 For a detailed walkthrough on setting up Tyk with gRPC authentication plugins, refer to [Extending Tyk with gRPC Authentication Plugins](https://tyk.io/blog/how-to-setup-custom-authentication-middleware-using-grpc-and-java/).
 
@@ -3649,7 +3649,7 @@ In this example, the API with ID `12345` will be updated according to the provid
 
 
 ### API Categories
-[API categories]({{< ref "product-stack/tyk-dashboard/advanced-configurations/api-categories">}}) are configured differently for Tyk OAS APIs and Tyk Classic APIs. Please see below for examples.
+[API categories]({{< ref "api-management/dashboard-configuration#governance-using-api-categories">}}) are configured differently for Tyk OAS APIs and Tyk Classic APIs. Please see below for examples.
 
 #### Tyk OAS API
 
@@ -3680,7 +3680,7 @@ As of Tyk Operator v1.1, API categories is not supported in `TykStreamsApiDefini
 
 #### Tyk Classic API
 
-For a Tyk Classic API, you can specify the category name using the `name` field with a `#` qualifier. This will categorize the API in the Tyk Dashboard. See [How API categories work]({{<ref "product-stack/tyk-dashboard/advanced-configurations/api-categories#tyk-classic-apis">}}) to learn about limitations on API names.
+For a Tyk Classic API, you can specify the category name using the `name` field with a `#` qualifier. This will categorize the API in the Tyk Dashboard. See [How API categories work]({{<ref "api-management/dashboard-configuration#tyk-classic-apis">}}) to learn about limitations on API names.
 
 Example
 

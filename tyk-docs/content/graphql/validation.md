@@ -36,7 +36,7 @@ The schema validation will prevent you from saving or updating an API with a bro
  - No duplicated enum values
  - No usage of unknown types
 
-When using the [Dashboard API]({{< ref "/tyk-apis/tyk-dashboard-api/api-definitions.md">}}) the response for a broken schema will be a *400 Bad Request* with a body containing the validation errors. For example:
+When using the [Dashboard API]({{< ref "api-management/dashboard-configuration#manage-apis---api-definition">}}) the response for a broken schema will be a *400 Bad Request* with a body containing the validation errors. For example:
 
 ```json
 {

@@ -100,6 +100,42 @@ This section lists commonly asked questions or frequently encountered issues and
     - For *Amazon RDS* users, check their [backup and restore documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_CommonTasks.BackupRestore.html). To further enhance your PostgreSQL backup process, you can explore services like [AWS RDS Automated Backups](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html) if you're hosting your database on AWS. 
     - For *CosmosDB* users check their [online backup and on-demand data restore documentation](https://learn.microsoft.com/en-us/azure/cosmos-db/postgresql/concepts-backup) 
 
+## Enterprise Developer Portal
+
+1. **What happens if the Portal goes down ?**
+
+    In the event of the portal application being down, the other components of the Tyk Stack will remain unaffected.
+    This means your APIs will still be operational, and analytics will continue to be recorded.
+    Developers will also be able to use their credentials for both oAuth2.0 and API Keys APIs.
+
+    However, since the portal application is down, developers won't be able to access their credentials or the analytical dashboard, request access to new API Products, or revoke or rotate their access credentials.
+    Additionally, admin users won't be able to use the portal, whether through its UI or APIs.
+    This means you won't be able to create, change, or remove any item managed by the portal, such as developers, organizations, content pages, API Products, plans, and more.
+
+    Despite this, you still have some control over access credentials.
+    If you need to rotate or remove access credentials, you can do so directly in the Tyk Dashboard or in your identity provider.
+
+2. **What happens if the Dashboard goes down ?**
+
+    If the Tyk Dashboard goes down, developers will still be able to access their access credentials, but they won't be able to rotate or remove their existing credentials, or request access to API Products.
+    Additionally, the API Analytics dashboard will be compromised.
+
+    However, API traffic will remain unaffected, meaning that your APIs will continue to be operational, and analytics will continue to be recorded.
+
+    In terms of admin functionality, the only limitation will be the inability to approve or reject access requests or revoke or rotate access credentials.
+
+
+3. **Does the portal support SQL databases for storing the portal's CMS assets ?**
+
+    {{< note success >}}
+    **Note** 
+
+    Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
+    {{< /note >}}
+
+    The Enterprise Developer Portal supports SQL databases (MariaDB, MySQL, and PostgreSQL) for storing the portal's CMS assets.
+    During the bootstrap process, the portal will create the appropriate tables in the main database. The only thing required to enable SQL storage for the portal's assets is to specify the `db` [storage type]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage" >}}) either via a config file or an environment variable.
+
 ## Tyk Gateway
 
 1. **How to Check Your Gateway Version ?**
@@ -153,9 +189,9 @@ This section lists commonly asked questions or frequently encountered issues and
 
     Tyk Gateway generates transaction records for each API request and response, containing [analytics data]({{< ref "tyk-stack/tyk-pump/tyk-analytics-record-fields" >}}) relating to: the originating host (where the request is coming from), which Tyk API version was used, the HTTP method requested and request path etc.
 
-    The transaction records are transmitted to Redis and subsequently transferred to a persistent [data store]({{< ref "tyk-stack/tyk-pump/other-data-stores" >}}) of your choice via Tyk Pump. Furthermore, Tyk Pump can also be configured to [aggregate]({{< ref "tyk-dashboard-analytics#aggregated-analytics" >}}) the transaction records (using different data keys - API ID, access key, endpoint, response status code, location) and write to a persistent data store. Tyk Dashboard uses this data for:
-    - [Aggregated analytics]({{< ref "tyk-dashboard-analytics" >}}) - Displaying analytics based on the aggregated data.
-    - [Log Browser]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}}) to display raw transaction records.
+    The transaction records are transmitted to Redis and subsequently transferred to a persistent [data store]({{< ref "tyk-stack/tyk-pump/other-data-stores" >}}) of your choice via Tyk Pump. Furthermore, Tyk Pump can also be configured to [aggregate]({{< ref "api-management/dashboard-configuration#aggregated-analytics" >}}) the transaction records (using different data keys - API ID, access key, endpoint, response status code, location) and write to a persistent data store. Tyk Dashboard uses this data for:
+    - [Aggregated analytics]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}) - Displaying analytics based on the aggregated data.
+    - [Log Browser]({{< ref "api-management/dashboard-configuration#activity-logs" >}}) to display raw transaction records.
 
     **How Do Analytics Impact Performance?**
 
@@ -191,7 +227,7 @@ This section lists commonly asked questions or frequently encountered issues and
     - **Per API**: Tyk Gateway will not create records for requests/responses for any endpoints of an API.
     - **Per Endpoint**: Tyk Gateway will not create records for requests/responses for specific endpoints.
 
-    When set, this prevents Tyk Gateway from generating the transaction records. Without transaction records, Tyk Pump will not transfer analytics to the chosen persistent data store. It's worth noting that the [track middleware]({{< ref "product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint" >}}) exclusively influences the generation of *endpoint popularity* aggregated data by Tyk Pump.
+    When set, this prevents Tyk Gateway from generating the transaction records. Without transaction records, Tyk Pump will not transfer analytics to the chosen persistent data store. It's worth noting that the [track middleware]({{< ref "api-management/dashboard-configuration#activity-by-endpoint" >}}) exclusively influences the generation of *endpoint popularity* aggregated data by Tyk Pump.
 
     **Conclusion**
 

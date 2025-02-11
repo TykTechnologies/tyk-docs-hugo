@@ -155,7 +155,7 @@ Paid plans and Enterprise trials allow users to select one of 6 AWS locations as
 **Note**
 
 The Tyk Cloud trial is limited to 48 hours. After this period, your data will be deleted.
-The Tyk Cloud trial does not include access to [Hybrid deployments]({{< ref "#deploy-hybrid-gateways" >}}) or the [Developer Portal]({{< ref "tyk-developer-portal/tyk-enterprise-developer-portal" >}}).
+The Tyk Cloud trial does not include access to [Hybrid deployments]({{< ref "#deploy-hybrid-gateways" >}}) or the [Developer Portal]({{< ref "portal/overview#" >}}).
 To try out these capabilities, please get in touch for a [guided evaluation](https://tyk.io/guided-evaluation/) with our team.
 {{< /note >}}
 
@@ -1158,7 +1158,7 @@ Content-Length: 59
 * [Helm 3+](https://helm.sh/docs/intro/install/)
 * Connection details to remote control plane from the above [section](#deploy-hybrid-gateways).
 
-The following quick start guide explains how to use the [Tyk Data Plane Helm chart]({{<ref "/product-stack/tyk-charts/tyk-data-plane-chart">}}) to configure Tyk Gateway that includes:
+The following quick start guide explains how to use the [Tyk Data Plane Helm chart]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart">}}) to configure Tyk Gateway that includes:
 - Redis for key storage
 - Tyk Pump to send analytics to Tyk Cloud and Prometheus
 
@@ -1237,9 +1237,9 @@ From there you have access to the full scope of Tyk API management functionality
 * [Adding APIs]({{< ref "getting-started/create-api" >}}) to Tyk, including REST and GraphQL APIs
 * Applying Quotas and Rate limits via [Security Policies]({{< ref "getting-started/create-security-policy" >}}) and [Keys]({{< ref "getting-started/create-api-key" >}})
 * [Securing]({{< ref "api-management/security-best-practices#securing-apis-with-tyk" >}}) your APIs
-* Viewing granular [Analytics]({{< ref "tyk-dashboard-analytics" >}}) for your Tyk managed APIs
+* Viewing granular [Analytics]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}) for your Tyk managed APIs
 * [Transform traffic]({{< ref "advanced-configuration/transform-traffic" >}}) with the Tyk API Designer
-* Add integration options such as [SSO]({{< ref "advanced-configuration/integrate/sso" >}}) and [3rd Party IdentityProviders]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers" >}})
+* Add integration options such as [SSO]({{< ref "api-management/external-service-integration#single-sign-on-sso" >}}) and [3rd Party IdentityProviders]({{< ref "api-management/external-service-integration" >}})
 * [Adding Segment Tags]({{< ref "#faqs" >}})
 
 
@@ -1781,8 +1781,8 @@ This section explains that you can use plugins with Tyk Cloud and links to detai
 Tyk Cloud allows you to take advantage of Tyk's plugin architecture that allows you to write powerful middleware. For this version of Tyk Cloud, we support the use of Python, JavaScript Middleware and Golang based plugins.
 
 For more details, see: 
-* [Python Plugins]({{< ref "plugins/supported-languages/rich-plugins/python/python" >}})
-* [JSVM]({{< ref "plugins/supported-languages/javascript-middleware" >}})
+* [Python Plugins]({{< ref "api-management/plugins/rich-plugins#overview" >}})
+* [JSVM]({{< ref "api-management/plugins/javascript#" >}})
 * [Golang]({{< ref "#configure-plugins" >}})
 
 Next you'll set up an Tyk Cloud Control Plane to use a Python Authentication Plugin.
@@ -2090,14 +2090,14 @@ The manifest file contains information about your plugin file structure and how 
 
 | File              | Description                                                                                                                                                                                                                                                                                       |
 |-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| custom_middleware | contains the middleware settings like the plugin driver you want to use (driver) and the hooks that your plugin will expose. We use the   **auth_check** for this tutorial. For other hooks see [here]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-dispatcher---hooks" >}}). |
+| custom_middleware | contains the middleware settings like the plugin driver you want to use (driver) and the hooks that your plugin will expose. We use the   **auth_check** for this tutorial. For other hooks see [here]({{< ref "api-management/plugins/rich-plugins#coprocess-dispatcher---hooks" >}}). |
 | file_list         | contains the list of files to be included in the bundle. The CLI tool expects to find these files in the current working directory.                                                                                                                                                               |
 | name              | references the name of the function that you implement in your plugin code: **MyAuthMiddleware**                                                                                                                                                                                                  |
 | middleware.py     | an additional file that contains the main implementation of our middleware.                                                                                                                                                                                                                       |
 
 **Step 3: Creating the middleware.py file**
 
-* You import decorators from the Tyk module that gives us the Hook decorator, and we import [Tyk Python API helpers]({{< ref "plugins/supported-languages/rich-plugins/python/tyk-python-api-methods" >}})
+* You import decorators from the Tyk module that gives us the Hook decorator, and we import [Tyk Python API helpers]({{< ref "api-management/plugins/rich-plugins#tyk-python-api-methods" >}})
 
 * You implement a middleware function and register it as a hook. The input includes the request object, the session object, the API meta data and its specification. The hook checks the authorization header for a specified value. In this tutorial we have called it `Authorization`.
 
@@ -2147,7 +2147,7 @@ docker run \
   -c '/opt/tyk-gateway/tyk bundle build -y'
 ```
 
-* A plugin bundle is a packaged version of the plugin, it may also contain a cryptographic signature of its contents. The -y flag tells the Tyk CLI tool to skip the signing process in order to simplify this tutorial. For more information on the Tyk CLI tool, see [here]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#how-plugin-bundles-work" >}}).
+* A plugin bundle is a packaged version of the plugin, it may also contain a cryptographic signature of its contents. The -y flag tells the Tyk CLI tool to skip the signing process in order to simplify this tutorial. For more information on the Tyk CLI tool, see [here]({{< ref "api-management/plugins/overview#how-plugin-bundles-work" >}}).
 * You should now have a `bundle.zip` file in the plugin working directory.
 * Next you will configure [uploading your plugin bundle file]({{< ref "#uploading-your-bundle" >}}) to your Amazon S3 bucket.
 
@@ -2182,7 +2182,7 @@ pip3 install protobuf grpcio
 
 `tyk-hybrid` chart is deprecated. Please use our [Tyk Data Plane helm chart]({{<ref "#deploy-hybrid-gateways" >}}) instead. 
 
-We recommend that all users to migrate to the `tyk-data-plane` Chart. Please review the [Configuration]({{<ref "/product-stack/tyk-charts/tyk-data-plane-chart#configuration">}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
+We recommend that all users to migrate to the `tyk-data-plane` Chart. Please review the [Configuration]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart#configuration">}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
 {{< /warning >}}
 
 1. **Add the Tyk official Helm repo `tyk-helm` to your local Helm repository**
@@ -2361,7 +2361,7 @@ External traffic is subject to billing, while internal traffic is exempt. The mo
  - Traffic between Control Plane → Portal in the same region
 
 #### Tyk Cloud Storage
-When a client makes a request to a Tyk Gateway deployment, the details of the request and response are captured and [stored in Redis]({{< ref "tyk-dashboard-analytics/" >}}). Tyk Pump processes the records from Redis and forwards them to MongoDB. Finally, Tyk Cloud reads that data from MongoDB and displays its size(bytes) in the _Storage_ section of _Monitoring_. 
+When a client makes a request to a Tyk Gateway deployment, the details of the request and response are captured and [stored in Redis]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}). Tyk Pump processes the records from Redis and forwards them to MongoDB. Finally, Tyk Cloud reads that data from MongoDB and displays its size(bytes) in the _Storage_ section of _Monitoring_. 
 
 
 
@@ -2372,7 +2372,7 @@ This trace data helps you understand request paths, identify bottlenecks, and tr
 
 We support distributed tracing for `Cloud Data Plane` deployments. You can enable it while creating or updating after setting up telemetry. 
 
-Since this functionality is powered by Tyk Gateway's OpenTelemetry integration, we recommend reviewing our comprehensive [OpenTelemetry documentation]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview.md" >}})
+Since this functionality is powered by Tyk Gateway's OpenTelemetry integration, we recommend reviewing our comprehensive [OpenTelemetry documentation]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview" >}})
 to understand the underlying architecture, best practices for implementation, and how to maximize the value of distributed tracing in your API infrastructure. The documentation provides detailed insights into configuration options, sampling strategies.
 
 #### Available Telemetry Providers
