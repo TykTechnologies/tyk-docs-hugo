@@ -1205,9 +1205,9 @@ If you are upgrading to 5.3.10, please follow the detailed [upgrade instructions
 <ul>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Upgrade to Go 1.23</summary>
 
-Add changelog description 
+Tyk Dashboard now runs on Go 1.23, bringing security and performance improvements. Key changes include unbuffered Timer/Ticker channels, removal of 3DES cipher suites, and updates to X509KeyPair handling. Users may need to adjust their setup for compatibility. 
 </details>
 </li>
 </ul>
