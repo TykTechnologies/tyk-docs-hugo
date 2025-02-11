@@ -1782,7 +1782,7 @@ menu:
         path: /portal/customization
         category: Page
         show: True
-      - title: "Settings"
+      - title: "Advance Configuration"
         path: /portal/settings
         category: Page
         show: True
