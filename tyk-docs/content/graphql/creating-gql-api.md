@@ -11,7 +11,7 @@ GraphQL API can be created in Tyk using:
 * Tyk Dashboard API
 * Tyk Gateway API - for OSS users
 
-The process is very similar to [HTTP API creation]({{< ref "/getting-started/create-api" >}}) with a few additional steps to cover GraphQL specific functionalities.
+The process is very similar to [HTTP API creation]({{< ref "getting-started/create-api" >}}) with a few additional steps to cover GraphQL specific functionalities.
 
 {{< tabs_start >}}
 {{< tab_start "Via Tyk Dahsboard UI" >}}
@@ -48,12 +48,12 @@ From the **Authentication** section:
 
 You have the following options:
 
-- **Authentication mode**: This is the security method to use with your API. First, you can set it to `Open(Keyless)`, but that option is not advised for production APIs. See [Client Authentication]({{< ref "/api-management/client-authentication" >}}) for more details on securing your API.
+- **Authentication mode**: This is the security method to use with your API. First, you can set it to `Open(Keyless)`, but that option is not advised for production APIs. See [Client Authentication]({{< ref "api-management/client-authentication" >}}) for more details on securing your API.
 - **Strip Authorization Data**: Select this option to strip any authorization data from your API requests.
 - **Auth Key Header Name**: The header name that will hold the token on inbound requests. The default for this is `Authorization`.
 - **Allow Query Parameter As Well As Header**: Set this option to enable checking the query parameter as well as the header for an auth token. **This is a setting that might be important if your GQL includes subscription operations**.
 - **Use Cookie Value**: It is possible to use a cookie value as well as the other two token locations. 
-- **Enable client certificate**: Select this to use Mutual TLS. See [Mutual TLS]({{< ref "/api-management/client-authentication#use-mutual-tls" >}}) for details on implementing mutual TLS.
+- **Enable client certificate**: Select this to use Mutual TLS. See [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) for details on implementing mutual TLS.
 
 ### Step 5: Save the API
 
@@ -262,7 +262,7 @@ We just sent an API definition to the Tyk `/apis` endpoint. API definitions are 
 
 Notice that  when creating a GQL API you need to include your GQL service schema in the API definition. Tyk Gateway doesn't have the capacity to introspect your GQL service on its own.
 
-Including the correct schema allows Tyk Gateway to validate incoming requests against it. More on validation can be found [here]({{< ref "/graphql/validation">}})
+Including the correct schema allows Tyk Gateway to validate incoming requests against it. More on validation can be found [here]({{< ref "graphql/validation">}})
 
 {{< /note >}}
 
@@ -280,7 +280,7 @@ Your GQL API is now ready to use. We recommend that you secure any GQL API that 
 {{< tabs_end >}}
 
 Check the following docs for more on GraphQL-specific security options:
-* [Field based permissions]({{< ref "/graphql/field-based-permissions">}})
-* [Complexity limiting]({{< ref "/graphql/complexity-limiting">}})
-* [Introspection]({{< ref "/graphql/introspection">}})
+* [Field based permissions]({{< ref "graphql/field-based-permissions">}})
+* [Complexity limiting]({{< ref "graphql/complexity-limiting">}})
+* [Introspection]({{< ref "graphql/introspection">}})
 

@@ -214,4 +214,4 @@ The file will look like the sample below, the various fields are explained in th
 }
 ```
 
-{{< include "dashboard-config.md" >}}
+{{< include "dashboard-config" >}}

@@ -39,7 +39,7 @@ An operation is a combination of HTTP method and path or, as Tyk calls it, an en
 
 #### Common (path-level) parameters
 
-[Common parameters](https://swagger.io/docs/specification/v3_0/describing-parameters/#common-parameters), that apply to all operations within a path, can be defined at the path level within the OpenAPI description. Tyk refers to these as path-level parameters and displays them as read-only fields in the Dashboard's API designer. If you need to add or modify common parameters you must use the *Raw Definition* editor, or edit your OpenAPI document outside Tyk and [update]({{< ref "/getting-started/using-oas-definitions/update-an-oas-api" >}}) the API.
+[Common parameters](https://swagger.io/docs/specification/v3_0/describing-parameters/#common-parameters), that apply to all operations within a path, can be defined at the path level within the OpenAPI description. Tyk refers to these as path-level parameters and displays them as read-only fields in the Dashboard's API designer. If you need to add or modify common parameters you must use the *Raw Definition* editor, or edit your OpenAPI document outside Tyk and [update]({{< ref "getting-started/using-oas-definitions/update-an-oas-api" >}}) the API.
 
 ### Request body
 

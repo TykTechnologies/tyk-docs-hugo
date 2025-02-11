@@ -72,7 +72,7 @@ If the number of copies is greater than zero the list will be copied that number
 
 ### Batching
 
-It's possible to configure a [batch policy]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/batching#batch-policy" >}}) with a broker using the `batching` fields. When doing this the feeds from all child inputs are combined. Some inputs do not support broker based batching and specify this in their documentation.
+It's possible to configure a [batch policy]({{< ref "product-stack/tyk-streaming/configuration/common-configuration/batching#batch-policy" >}}) with a broker using the `batching` fields. When doing this the feeds from all child inputs are combined. Some inputs do not support broker based batching and specify this in their documentation.
 
 ### Processors
 
@@ -97,7 +97,7 @@ Type: `array`
 
 ### batching
 
-Allows you to configure a [batching policy]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/batching#batch-policy" >}}).
+Allows you to configure a [batching policy]({{< ref "product-stack/tyk-streaming/configuration/common-configuration/batching#batch-policy" >}}).
 
 
 Type: `object`  

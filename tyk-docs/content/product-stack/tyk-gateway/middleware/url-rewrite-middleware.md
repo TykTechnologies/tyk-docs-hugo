@@ -5,7 +5,7 @@ description: "Detail of the URL Rewrite middleware"
 tags: ["URL rewrite", "middleware", "per-endpoint", "rewrite trigger", "rewrite rule"]
 ---
 
-Tyk's [URL rewrite]({{< ref "/transform-traffic/url-rewriting" >}}) middleware uses the concepts of [triggers](#url-rewrite-triggers) and [rules](#url-rewrite-rules) to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk Gateway through [looping]({{< ref "/advanced-configuration/transform-traffic/looping" >}})).
+Tyk's [URL rewrite]({{< ref "transform-traffic/url-rewriting" >}}) middleware uses the concepts of [triggers](#url-rewrite-triggers) and [rules](#url-rewrite-rules) to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk Gateway through [looping]({{< ref "advanced-configuration/transform-traffic/looping" >}})).
 
 ## URL rewrite rules
 
@@ -38,8 +38,8 @@ When using the request path location, you can use wildcards in the key name (whi
 The pattern takes the form of a regular expression (regex) against which the key value will be compared.
 
 This pattern can be a static regex or can contain dynamic variables:
-- [context variables]({{< ref "/context-variables" >}}), extracted from the request at the start of the middleware chain, can be injected into the pattern regex using the `$tyk_context.` namespace
-- [session metadata]({{< ref "/getting-started/key-concepts/session-meta-data" >}}), from the Tyk Session Object linked to the request, can be injected into the pattern regex using the `$tyk_meta.METADATA_KEY` namespace 
+- [context variables]({{< ref "context-variables" >}}), extracted from the request at the start of the middleware chain, can be injected into the pattern regex using the `$tyk_context.` namespace
+- [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}), from the Tyk Session Object linked to the request, can be injected into the pattern regex using the `$tyk_meta.METADATA_KEY` namespace 
 
 Percent-encoded (URL-encoded) characters can be used in the pattern regex when the key is the request path or path parameter
 - if the middleware is called with percent-encoded characters in the key, matching will first be attempted using the raw URL as provided

@@ -13,7 +13,7 @@ A GraphQL server can provide information about its schema. This functionality is
 
 If **introspection** is a completely new concept for you, browse through the official [GraphQL Specification](https://spec.graphql.org/October2021/#sec-Introspection) published by the GrapQL Foundation to find out more.
 
-When [creating a GraphQL proxy]({{< ref "/graphql/creating-gql-api">}}) in Tyk Dashboard an introspection query is used to fetch the schema from the GraphQL upstream and display it in the schema tab.
+When [creating a GraphQL proxy]({{< ref "graphql/creating-gql-api">}}) in Tyk Dashboard an introspection query is used to fetch the schema from the GraphQL upstream and display it in the schema tab.
 
 {{< note success >}}
 **Note**  
@@ -31,7 +31,7 @@ In the *Create new API* screen you have to tick the **Upstream Protected** optio
 
  - From the **Upstream protected by** section choose the right option for your case: Headers or Certificate.
  - Choosing **Headers** will allow you to add multiple key/value pairs in *Introsopection headers* section. 
- - You can also **Persist headers for future use** by ticking that option. This will save information you provided in case in the future your schema changes and you need to sync it again. To understand better where this information will be saved, go to [GQL Headers]({{< ref "/graphql/gql-headers">}}). To read more about schema syncing go [here]({{< ref "/graphql/syncing-schema">}}).
+ - You can also **Persist headers for future use** by ticking that option. This will save information you provided in case in the future your schema changes and you need to sync it again. To understand better where this information will be saved, go to [GQL Headers]({{< ref "graphql/gql-headers">}}). To read more about schema syncing go [here]({{< ref "graphql/syncing-schema">}}).
 - Choosing **Certificate** will allow you to provide *Domain* details and either *Select certificate* or *Enter certificate ID*.
 
 ## Turning off introspection
@@ -65,7 +65,7 @@ Because introspection control in Tyk works on Policy and Key level, it means you
 {{< tab_end >}}
 {{< tab_start "Tyk APIs" >}}
 
-First, you need to learn [how to create a security policy with Tyk API]({{< ref "getting-started/create-security-policy" >}}) or [how to create an API Key with Tyk API]({{< ref "/api-management/policies#access-key-level-security" >}}).
+First, you need to learn [how to create a security policy with Tyk API]({{< ref "getting-started/create-security-policy" >}}) or [how to create an API Key with Tyk API]({{< ref "api-management/policies#access-key-level-security" >}}).
 
 Once you learn how to utilize the API to create a security policy or a key, you can use the following snippet: 
 

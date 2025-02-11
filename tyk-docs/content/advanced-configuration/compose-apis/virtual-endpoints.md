@@ -47,11 +47,11 @@ You will need to enable Tyk's JavaScript Virtual Machine by setting `enable_jsvm
 
 ## Scripting virtual endpoint functions
 
-The [middleware scripting guide]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide" >}}) provides guidance on writing JS functions for your virtual endpoints, including how to access key session data and custom attributes from the API definition.
+The [middleware scripting guide]({{< ref "api-management/plugins/javascript#using-javascript-with-tyk" >}}) provides guidance on writing JS functions for your virtual endpoints, including how to access key session data and custom attributes from the API definition.
 
 #### Function naming
 
-The virtual endpoint middleware will invoke a named function within the JS code that you provide (either inline or in a file). Both the filename and function name are configurable per endpoint, but note that function names must be unique across your API portfolio because all plugins run in the same virtual machine. This means that you can share a single function definition across multiple endpoints and APIs but you cannot have two different functions with the same name (this applies across all [JavaScript middleware components]({{< ref "plugins/supported-languages/javascript-middleware" >}})).
+The virtual endpoint middleware will invoke a named function within the JS code that you provide (either inline or in a file). Both the filename and function name are configurable per endpoint, but note that function names must be unique across your API portfolio because all plugins run in the same virtual machine. This means that you can share a single function definition across multiple endpoints and APIs but you cannot have two different functions with the same name (this applies across all [JavaScript middleware components]({{< ref "api-management/plugins/javascript#" >}})).
 
 Inline mode is mainly used by the dashboard to make code injection easier on multiple node deployments.
 
