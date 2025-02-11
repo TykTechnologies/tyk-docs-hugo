@@ -6,13 +6,13 @@ tags: ["Developer Portal", "Tyk", "Managing Access", "Catalogs", "Rate Limit", "
 keywords: ["Developer Portal", "Tyk", "Managing Access", "Catalogs", "Rate Limit", "Dynamic Client Registration", "Documenting APIs"]
 description: "How to configure API Providers in Tyk developer portal"
 aliases:
-  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration
-  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-catalogues
-  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/api-access
-  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/approve-requests
-  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/manage-apps-credentials
-  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/configuring-custom-rate-limit-keys
-  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-catalogues
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/api-access
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/approve-requests
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/manage-apps-credentials
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/configuring-custom-rate-limit-keys
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
 ---
 
 {{< note success >}}

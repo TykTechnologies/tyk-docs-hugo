@@ -6,8 +6,7 @@ aliases:
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/setup-email-notifications
   - /product-stack/tyk-enterprise-developer-portal/getting-started/setup-email-notifications
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso
-
-description: ""
+description: "How to configure developer portal settings"
 ---
 
 {{< note success >}}
