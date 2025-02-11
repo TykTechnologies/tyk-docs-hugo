@@ -18,7 +18,7 @@ aliases:
   - /product-stack/tyk-enterprise-developer-portal/getting-started/with-tyk-self-managed-as-provider
   - /product-stack/tyk-enterprise-developer-portal/getting-started/create-orgs-and-catalogs
   - /product-stack/tyk-enterprise-developer-portal/getting-started/create-api-product-and-plan
-  - /yk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/getting-started-with-enterprise-portal
 ---
 

@@ -776,7 +776,7 @@ The 1.8.4 release addresses ten high-priority bugs and vulnerabilities, and intr
 | /portal/private/profile      | Profile                |
 | /auth/password/login         | Developer portal login |
 | /auth/password/new           | Password reset         |
-- Changed the credential provisioning flow to automatically include DeveloperID, OrganizationID, ApplicationID, and TeamIDs in [the credential metadata]({{< ref "portal/customization#default-attributes" >}}).
+- Changed the credential provisioning flow to automatically include DeveloperID, OrganizationID, ApplicationID, and TeamIDs in [the credential metadata]({{< ref "portal/customization#default-attributes-of-user-model" >}}).
 - Added warning regarding potential PII exposure to the [custom attributes menu]({{< ref "portal/customization#default-attributes-of-user-model" >}}).
 - Changed the behavior of the portal for 404 errors. Now whenever a user requests non-existing page both private (e.i. requiring sign-in to access) or public, the portal now always renders the `not_found.tmpl` template.
 - Changed the behavior of the `Secure` cookie attribute that is set by [PORTAL_SESSION_SECURE]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_session_secure" >}}) so that the `Secure` attribute is always add to the `Set-Cookie` header whenever `PORTAL_SESSION_SECURE` is set to `true` or when TLS is enabled.
