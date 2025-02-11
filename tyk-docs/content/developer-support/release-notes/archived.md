@@ -66,7 +66,7 @@ Other changes:
 
 Now you can set granular permissions on per user basis, by injecting permissions to the "scope" claim of a JSON Web Token. To make it work you need to provide mapping between the scope and policy ID, and thanks to enchanced policy merging capabilities mentioned above, Tyk will read the scope value from the JWT and will generate dynamic access rules. Your JWT scopes can look like `"users:read companies:write"` or similar, it is up to your imagination. OpenID supports it as well, but at the moment only if your OIDC provider can generate ID tokens in JWT format (which is very common this days).
 
-See our [JWT Scope docs]({{< ref "/api-management/client-authentication#use-json-web-tokens-jwt" >}}) for more details.
+See our [JWT Scope docs]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}) for more details.
 
 ### Go plugins
 
@@ -912,7 +912,7 @@ Here are the packages and their versions we are releasing today: Tyk Gateway v2.
 
 #### Mutual TLS
 
-A major feature of this release is the implementation of Mutual TLS. Now you can protect your APIs by allow listing certificates, idenitfy users based on them, and increase security between Tyk and upstream API. For details, see [Mutual TLS]({{< ref "/api-management/client-authentication#use-mutual-tls" >}}).
+A major feature of this release is the implementation of Mutual TLS. Now you can protect your APIs by allow listing certificates, idenitfy users based on them, and increase security between Tyk and upstream API. For details, see [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}).
 
 
 #### Extended use of Multiple Policies
@@ -974,7 +974,7 @@ More SSO functionality is something that a lot of our customers have been asking
 ### <a name="gateway"></a>Tyk Gateway v2.4.0
 
 #### Mutual TLS support
-[Docs]({{< ref "/api-management/client-authentication#use-mutual-tls" >}})
+[Docs]({{< ref "api-management/client-authentication#use-mutual-tls" >}})
 
 #### Global API rate limits
 [Docs]({{< ref "api-management/rate-limit#rate-limiting-layers" >}})
@@ -1059,7 +1059,7 @@ This was very resource consuming and unstable feature. We recommend using load b
 ### <a name="dashboard"></a>Tyk Dashboard v1.4.0
 
 #### Mutual TLS support
-[Docs]({{< ref "/api-management/client-authentication#use-mutual-tls" >}})
+[Docs]({{< ref "api-management/client-authentication#use-mutual-tls" >}})
 
 #### Global API rate limits
 [Docs]({{< ref "api-management/rate-limit#rate-limiting-layers" >}})
@@ -1163,7 +1163,7 @@ This is a  UI only fix, it is still allowable via the API (which is OK).
 See https://tyk.io/docs/configure/tyk-pump-configuration/ for a sample pump.conf file.
 
 ### <a name="mdcb"></a> MDCB v1.4.0
-Added support for Mutual TLS, mentioned by Gateway and Dashboard above. See [Docs]({{< ref "/api-management/client-authentication#use-mutual-tls" >}})
+Added support for Mutual TLS, mentioned by Gateway and Dashboard above. See [Docs]({{< ref "api-management/client-authentication#use-mutual-tls" >}})
   
 Also fixed bug when Mongo connections became growing though the roof if client with wrong credentials tries to connect.
 

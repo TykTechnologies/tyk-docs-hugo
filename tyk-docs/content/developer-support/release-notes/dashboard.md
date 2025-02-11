@@ -828,7 +828,7 @@ If you are upgrading to 5.5.0, please follow the detailed [upgrade instructions]
   docker pull tykio/tyk-dashboard:v5.5.0
   ```
 - Helm charts
-  - [tyk-charts v1.6]({{< ref "/developer-support/release-notes/helm-chart#160-release-notes" >}})
+  - [tyk-charts v1.6]({{< ref "developer-support/release-notes/helm-chart#160-release-notes" >}})
 
 #### Changelog {#Changelog-v5.5.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
@@ -1008,7 +1008,7 @@ Introduced a features object in API definitions for GQL APIs, including the `use
   docker pull tykio/tyk-dashboard:v5.4.0
   ```
 - Helm charts
-  - [tyk-charts v1.5]({{< ref "/developer-support/release-notes/helm-chart#150-release-notes" >}})
+  - [tyk-charts v1.5]({{< ref "developer-support/release-notes/helm-chart#150-release-notes" >}})
 
 #### Changelog {#Changelog-v5.4.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
@@ -1288,7 +1288,7 @@ Given the time difference between your upgrade and the release of this version, 
 
 #### Deprecations
 
-This is an advanced notice that the dedicated External OAuth, OpenID Connect (OIDC) authentication options, and SQLite support will be deprecated starting in version 5.7.0. We recommend that users of the [External OAuth]({{< ref "/api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}}) and [OpenID Connect]({{< ref "/api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}) methods migrate to Tyk's dedicated [JWT Auth]({{< ref "/api-management/client-authentication#use-json-web-tokens-jwt" >}}) method. Please review your API configurations, as the Gateway logs will provide notifications for any APIs utilizing these methods.
+This is an advanced notice that the dedicated External OAuth, OpenID Connect (OIDC) authentication options, and SQLite support will be deprecated starting in version 5.7.0. We recommend that users of the [External OAuth]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}}) and [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}) methods migrate to Tyk's dedicated [JWT Auth]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}) method. Please review your API configurations, as the Gateway logs will provide notifications for any APIs utilizing these methods.
 
 #### Upgrade Instructions
 If you are upgrading to 5.3.8, please follow the detailed [upgrade instructions](#upgrading-tyk).
@@ -1314,7 +1314,7 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 <details>
 <summary>Advanced notice of deprecation of dedicated External OAuth and OpenID Connect auth options</summary>
 
-The UI now displays a deprecation notice for the dedicated [External OAuth]({{< ref "/api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}}) and [OpenID Connect (OIDC)]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}) authentication mechanisms. This provides advanced notification that these authentication options will be deprecated in version 5.7.0. Users are advised to migrate to the [JWT Auth]({{< ref "/api-management/client-authentication#use-json-web-tokens-jwt" >}}) method, which supports integration with both OAuth and OIDC providers, in preparation for future upgrade.
+The UI now displays a deprecation notice for the dedicated [External OAuth]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}}) and [OpenID Connect (OIDC)]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}) authentication mechanisms. This provides advanced notification that these authentication options will be deprecated in version 5.7.0. Users are advised to migrate to the [JWT Auth]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}) method, which supports integration with both OAuth and OIDC providers, in preparation for future upgrade.
 </details>
 </li>
 </ul>
@@ -2662,7 +2662,7 @@ There are no deprecations in this release.
 If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
 #### Release Highlights
-Dashboard 5.2.5 was version bumped only, to align with Gateway 5.2.5. Subsequently, no changes were encountered in release 5.2.5. Gateway 5.2.5 was a critical patch release. For further information please see the release notes for Gateway [v5.2.5]({{< ref "developer-support/release-notes/gateway.md" >}}) 
+Dashboard 5.2.5 was version bumped only, to align with Gateway 5.2.5. Subsequently, no changes were encountered in release 5.2.5. Gateway 5.2.5 was a critical patch release. For further information please see the release notes for Gateway [v5.2.5]({{< ref "developer-support/release-notes/gateway" >}}) 
 
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.5/images/sha256-c09cb03dd491e18bb84a0d9d4e71177eb1396cd5debef694f1c86962dbee10c6?context=explore)
@@ -2821,7 +2821,7 @@ Fixed an issue in the Tyk Classic API Designer where if you changed the protocol
 <details>
 <summary>Unable to configure external OAuth flow using Raw API editor</summary>
 
-Fixed an issue in the Classic API Designer where the 'use_standard_auth' value was constantly reverting to 'true' when editing an API with an [external OAuth flow]({{< ref "/api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}}). This fix ensures the 'use_standard_auth' value remains consistent, enabling the use of external OAuth via the Raw API editor.
+Fixed an issue in the Classic API Designer where the 'use_standard_auth' value was constantly reverting to 'true' when editing an API with an [external OAuth flow]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}}). This fix ensures the 'use_standard_auth' value remains consistent, enabling the use of external OAuth via the Raw API editor.
 </details>
 </li>
 <li>
@@ -3068,7 +3068,7 @@ The following is a list of API changes in this release. Please visit our [Postma
 <details>
 <summary>Added <em>/system/stats</em> endpoint to provide statistics for total and active APIs deployed</summary>
 
-Added a new [endpoint]({{< ref "/tyk-dashboard-api" >}}), */system/stats*, to provide insight and operational statistics on total and active APIs deployed. The endpoint's flexible date filtering options, equip users to obtain comprehensive insights into usage trends.
+Added a new [endpoint]({{< ref "tyk-dashboard-api" >}}), */system/stats*, to provide insight and operational statistics on total and active APIs deployed. The endpoint's flexible date filtering options, equip users to obtain comprehensive insights into usage trends.
 </details>
 </li>
 </ul>
@@ -3097,7 +3097,7 @@ Adding a new [data source]({{< ref "universal-data-graph/udg-getting-started/con
 <details>
 <summary>Added <em>/system/stats</em> endpoint to provide statistics for total and active APIs deployed</summary>
 
-Added a new [endpoint]({{< ref "/tyk-dashboard-api" >}}), */system/stats*, to provide insight and operational statistics on total and active APIs deployed. The endpoint's flexible date filtering options, equip users to obtain comprehensive insights into usage trends.
+Added a new [endpoint]({{< ref "tyk-dashboard-api" >}}), */system/stats*, to provide insight and operational statistics on total and active APIs deployed. The endpoint's flexible date filtering options, equip users to obtain comprehensive insights into usage trends.
 </details>
 </li>
 </ul>
@@ -3115,7 +3115,7 @@ Improved the flow when creating an API within the *API Designer* so that you rem
 <details>
 <summary>Saving a UDG data source is simpler and quicker</summary>
 
-Updated the [screen]({{< ref "/universal-data-graph/udg-getting-started/connect-datasource" >}}) for configuring and saving *UDG* data sources. The *Save* button has been replaced with *Save & Update API* button and users no longer need to click *Update* at the top of the screen to persist changes. Saving a *UDG* data source is now simpler and quicker.
+Updated the [screen]({{< ref "universal-data-graph/udg-getting-started/connect-datasource" >}}) for configuring and saving *UDG* data sources. The *Save* button has been replaced with *Save & Update API* button and users no longer need to click *Update* at the top of the screen to persist changes. Saving a *UDG* data source is now simpler and quicker.
 </details>
 </li>
 <li>
@@ -3595,7 +3595,7 @@ Importing OpenAPI v3 documents in order to generate Tyk OAS API definition is no
 - authentication mechanism
 - validation request rules and limit access only to the defined paths.
 
-[Importing OAS v3 via the Dashboard]({{< ref "/content/getting-started/using-oas-definitions/import-an-oas-api.md#tutorial-7-using-the-tyk-dashboard-ui" >}})
+[Importing OAS v3 via the Dashboard]({{< ref "getting-started/using-oas-definitions/import-an-oas-api.md#tutorial-7-using-the-tyk-dashboard-ui" >}})
 
 ##### Updated the Tyk Dashboard version of Golang, to 1.16.
 
@@ -3846,9 +3846,9 @@ As we know, ease-of-use is an important factor when adopting GraphQL. Modern ent
 
 To remedy this, Tyk 4.0 offers GraphQL federation that allows the division of GraphQL implementation across multiple backend services, while still exposing them all as a single graph for the consumers. Subgraphs represent backend services and define a distinct GraphQL schema. A subgraph can be queried directly, as a separate service or federated in the Tyk Gateway into a larger schema of a supergraph – a composition of several subgraphs that allows execution of a query across multiple services in the backend.
 
-[Federation docs]({{< ref "/content/getting-started/key-concepts/graphql-federation.md" >}})
+[Federation docs]({{< ref "getting-started/key-concepts/graphql-federation" >}})
 
-[Subgraphs and Supergraphs docs]({{< ref "/content/getting-started/key-concepts/graphql-federation.md#subgraphs-and-supergraphs" >}})
+[Subgraphs and Supergraphs docs]({{< ref "getting-started/key-concepts/graphql-federation.md#subgraphs-and-supergraphs" >}})
 
 ##### GraphQL subscriptions
 
@@ -3856,7 +3856,7 @@ Subscriptions are a way to push data from the server to the clients that choose 
 
 With release 4.0, users can federate GraphQL APIs that support subscriptions. Federating subscriptions means that events pushed to consumers can be enriched with information from other federated graphs.
 
-[Subscriptions docs]({{< ref "/content/getting-started/key-concepts/graphql-subscriptions.md" >}})
+[Subscriptions docs]({{< ref "getting-started/key-concepts/graphql-subscriptions" >}})
 
 ##### SQL database support
 The other major capability in Tyk 4.0 is that the Tyk Dashboard can store its data in a SQL  relational database. 
@@ -3895,7 +3895,7 @@ If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref
 DCR is a protocol of the Internet Engineering Task Force put in place to set standards in the dynamic registration of clients with authorization servers. This feature is a way for you to integrate your Tyk Developer Portal with an external identity provider such as Keycloak, Gluu, Auth0 or Okta. 
 The portal developer won't notice a difference. However, when they create the app via Tyk Developer portal, Tyk will dynamically register that client on your authorization server. This means that it is the Authorization Server that will issue the Client ID and Client Secret for the app.
 
-Check our DCR docs [here]({{< ref "/tyk-developer-portal/tyk-portal-classic/dynamic-client-registration" >}})
+Check our DCR docs [here]({{< ref "tyk-developer-portal/tyk-portal-classic/dynamic-client-registration" >}})
 
 We also took this opportunity to give a refresh to the portal settings UI so let us know if you like it! 
 
@@ -3916,7 +3916,7 @@ If you’re using GraphQL upstream services with UDG, you’re now able to forwa
 
 ##### Extendable Tyk Dashboard permissions system
 
-The Tyk Dashboard permission system can now be extended by writing custom rules using an Open Policy Agent (OPA). The rule engine works on top of the Tyk Dashboard API, which means you can control not only access rules, but also the behavior of all Dashboard APIs (except your public developer portal). You can find more details about OPA [here]({{< ref "/content/tyk-dashboard/open-policy-agent.md" >}}).
+The Tyk Dashboard permission system can now be extended by writing custom rules using an Open Policy Agent (OPA). The rule engine works on top of the Tyk Dashboard API, which means you can control not only access rules, but also the behavior of all Dashboard APIs (except your public developer portal). You can find more details about OPA [here]({{< ref "tyk-dashboard/open-policy-agent" >}}).
 
 In addition, you can now create your own custom permissions using the Additional Permissions API or by updating `security.additional_permissions` map in the Tyk Dashboard config, and writing Opa rule containing logic for the new permission.
 

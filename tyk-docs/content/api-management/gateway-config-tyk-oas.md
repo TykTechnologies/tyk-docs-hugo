@@ -305,7 +305,7 @@ The basic idea here is that you can create a key based on a provided certificate
 
 #### Basic Authentication
 
-Having the `http` type as the `securityScheme` defined in OAS API Definition, with the schema field set to basic, means that the *Tyk Gateway* uses basic authentication as the protection mechanism. It expects an access key in the same way as any other access method. For more information see the [Basic Authentication documentation]({{< ref "/api-management/client-authentication#use-basic-authentication" >}}).
+Having the `http` type as the `securityScheme` defined in OAS API Definition, with the schema field set to basic, means that the *Tyk Gateway* uses basic authentication as the protection mechanism. It expects an access key in the same way as any other access method. For more information see the [Basic Authentication documentation]({{< ref "api-management/client-authentication#use-basic-authentication" >}}).
 
 Example:
 
@@ -378,7 +378,7 @@ securitySchemes: {
 
 All you need to do in the Tyk configuration is to enable the authentication and specify the header details.
 
-For more configuration options check the [JWT documentation]({{< ref "/api-management/client-authentication#use-json-web-tokens-jwt" >}}).
+For more configuration options check the [JWT documentation]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}).
 
 #### OAuth
 
@@ -435,7 +435,7 @@ Example:
 }
 ```
 
-All you need to do in the Tyk configuration is to enable OAuth and specify the header details. See [OAuth documentation]({{< ref "/api-management/client-authentication#use-tyk-as-an-oauth-20-authorization-server" >}}) for more details.
+All you need to do in the Tyk configuration is to enable OAuth and specify the header details. See [OAuth documentation]({{< ref "api-management/client-authentication#use-tyk-as-an-oauth-20-authorization-server" >}}) for more details.
 
 #### Multiple Authentication mechanisms
 
@@ -502,7 +502,7 @@ For the above OAS configuration, Tyk looks at only the first `security` object:
   }
 }
 ```
-Please observe the presence of the `baseIdentityProvider` field, as this is required when enabling multiple authentication mechanisms at the same time. See [Multiple Auth documentation]({{< ref "/api-management/client-authentication#combine-authentication-methods" >}}) for more details.
+Please observe the presence of the `baseIdentityProvider` field, as this is required when enabling multiple authentication mechanisms at the same time. See [Multiple Auth documentation]({{< ref "api-management/client-authentication#combine-authentication-methods" >}}) for more details.
 
 #### Other Authentication mechanisms
 
@@ -512,7 +512,7 @@ For now, the only authentication mechanisms enabled with OAS API Definition conf
 - JSON Web Token (JWT)
 - Tyk as OAuth authorization server
 
-To find out about the other client authentication methods supported by Tyk, see [Client Authentication]({{< ref "/api-management/client-authentication" >}}).
+To find out about the other client authentication methods supported by Tyk, see [Client Authentication]({{< ref "api-management/client-authentication" >}}).
 
 #### Automatically protecting OAS API Definition APIs
 
@@ -792,5 +792,5 @@ An API definition that combines an OpenAPI Description with the Tyk vendor field
 
 An API definition written in Tyk’s proprietary API Specification format. This fully describes how Tyk should be configured to resolve calls made to the API. An example of the structure of the Tyk Classic API definition is provided [here]({{< ref "api-management/gateway-config-tyk-classic" >}}).
 
-{{< include "x-tyk-gateway.md" >}}
+{{< include "x-tyk-gateway" >}}
 

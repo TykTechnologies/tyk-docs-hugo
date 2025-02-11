@@ -49,7 +49,7 @@ Tyk-Pump is both extensible, and flexible- meaning it is possible to configure T
 
 ### Other Supported Backend Services
 
-We list our [supported backends here]({{< ref "tyk-stack/tyk-pump/other-data-stores.md" >}}).
+We list our [supported backends here]({{< ref "tyk-stack/tyk-pump/other-data-stores" >}}).
 
 ### Configuring your Tyk Pump
 

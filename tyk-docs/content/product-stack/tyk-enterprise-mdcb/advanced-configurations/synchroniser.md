@@ -23,7 +23,7 @@ Changes to keys, certificates and OAuth clients are still synchronised to the wo
 
 **Without Synchroniser**
 
-If [Synchroniser]({{< ref "/tyk-multi-data-centre/mdcb-configuration-options#sync_worker_configenabled" >}}) is disabled, the resources were pulled by the worker Gateways on-demand and not in advance. It means that first it checks if the resource lives in the local Redis and if it doesn’t exist then it tries to pull it from the control plane to store it locally.
+If [Synchroniser]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#sync_worker_configenabled" >}}) is disabled, the resources were pulled by the worker Gateways on-demand and not in advance. It means that first it checks if the resource lives in the local Redis and if it doesn’t exist then it tries to pull it from the control plane to store it locally.
 
 Every time that a key is updated or removed the control plane emits a signal to all the cluster gateways to update the key accordingly.
 
@@ -34,7 +34,7 @@ This introduces a single point of failure. When the MDCB or controller Gateway i
 
 **With Synchroniser**
 
-If [Synchroniser]({{< ref "/tyk-multi-data-centre/mdcb-configuration-options#sync_worker_configenabled" >}}) is enabled, API keys, certificates and OAuth clients are synchronised and stored in the local redis server in advance. When one of those resources is created, modified or deleted, a signal will be emitted which allows the worker Gateways to respond accordingly. The transmitted information includes type of resource, action (create, update, delete), if hashed (in the case of keys), and resource ID so the changes are applied in the worker Gateways accordingly.
+If [Synchroniser]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#sync_worker_configenabled" >}}) is enabled, API keys, certificates and OAuth clients are synchronised and stored in the local redis server in advance. When one of those resources is created, modified or deleted, a signal will be emitted which allows the worker Gateways to respond accordingly. The transmitted information includes type of resource, action (create, update, delete), if hashed (in the case of keys), and resource ID so the changes are applied in the worker Gateways accordingly.
 
 Considerations: 
 - Size of local Redis storage: If there are a lot of keys / resources to be synchronised this will increase the size of local Redis storage. The data stored in Redis, including keys, OAuth clients, and certificates, is passed to the Redis instance of each data plane. This is a characteristic of the synchronisation mechanism and occurs regardless of whether these elements are being actively used on a given data plane. Keep in mind that even if certain resources are not being utilized in a specific data plane, they are still stored and maintained in sync by the Multi Data Center Bridge (MDCB). Therefore, if your system has a large volume of keys, OAuth clients, and certificates, this could increase the storage requirements and network traffic between your data planes. It's essential to consider these factors when designing and scaling your system.
@@ -55,7 +55,7 @@ First, configure the worker Gateway to enable synchroniser:
 
 `"slave_options":{ "synchroniser_enabled":true }`
 
-Please see [Gateway configuration options]({{< ref "/tyk-oss-gateway/configuration#slave_optionssynchroniser_enabled" >}}) for reference.
+Please see [Gateway configuration options]({{< ref "tyk-oss-gateway/configuration#slave_optionssynchroniser_enabled" >}}) for reference.
 
 To configure how often the worker Gateways read signals from MDCB control plane:
 
@@ -63,14 +63,14 @@ To configure how often the worker Gateways read signals from MDCB control plane:
 
 It configures the interval (in seconds) that the worker Gateway will take to check if there are any changes. If this value is not set then it will default to 10 seconds.
 
-Please see [Gateway configuration options]({{< ref "/tyk-oss-gateway/configuration#slave_optionskey_space_sync_interval" >}}) for reference.
+Please see [Gateway configuration options]({{< ref "tyk-oss-gateway/configuration#slave_optionskey_space_sync_interval" >}}) for reference.
 
 If you are running a cluster of Gateways, you must have a _GroupID_ configured for synchronisation to work properly and propagate keys.
 
 `"slave_options":{ "group_id": "FOOBAR" }`
 
 
-Please see [Gateway configuration options]({{< ref "/tyk-oss-gateway/configuration#slave_optionsgroup_id" >}}) for reference
+Please see [Gateway configuration options]({{< ref "tyk-oss-gateway/configuration#slave_optionsgroup_id" >}}) for reference
 
 **2. Control Plane configuration**
 
@@ -80,7 +80,7 @@ Secondly, configure the control plane. The most simple configuration to enable t
 
 `"sync_worker_config":{ "enabled":true }`
 
-Please see [MDCB configuration options]({{< ref "/tyk-multi-data-centre/mdcb-configuration-options#sync_worker_config" >}}) for reference.
+Please see [MDCB configuration options]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#sync_worker_config" >}}) for reference.
 
 If API keys were used and hash key is disabled, please also set these additional configurations for the following components:
 
@@ -126,4 +126,4 @@ A: You could check the MDCB log message to know about when synchronisation start
 
 **Q: Can I trigger a re-synchronisation?**
 
-A: Synchronisation will be triggered once the Time To Live (TTL) of a worker Gateway has expired. The default expiry duration is 3 minutes. The Time To Live (TTL) value can be set via [sync_worker_config.group_key_ttl]({{< ref "/tyk-multi-data-centre/mdcb-configuration-options#sync_worker_configgroup_key_ttl" >}})
+A: Synchronisation will be triggered once the Time To Live (TTL) of a worker Gateway has expired. The default expiry duration is 3 minutes. The Time To Live (TTL) value can be set via [sync_worker_config.group_key_ttl]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#sync_worker_configgroup_key_ttl" >}})
