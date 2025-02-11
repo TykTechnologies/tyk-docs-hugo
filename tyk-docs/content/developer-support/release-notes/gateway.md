@@ -1544,6 +1544,13 @@ If you are upgrading to 5.3.10, please follow the detailed [upgrade instructions
 Tyk Gateway now runs on Go 1.23, bringing security and performance improvements. Key changes include unbuffered Timer/Ticker channels, removal of 3DES cipher suites, and updates to X509KeyPair handling. Users may need to adjust their setup for compatibility.
 </details>
 </li>
+<li>
+<details>
+<summary>API Authentication Issue Resolved During URL Rewrite, Improving User Access Control</summary>
+
+This fix ensures that when API A redirects to API B using the tyk:// scheme, API B will now correctly authenticate using its own credentials, improving access control and preventing access denials. Users can now rely on the expected authentication flow without workarounds, providing a smoother experience when integrating APIs.
+</details>
+</li>
 </ul>
 
 ### 5.3.9 Release Notes
