@@ -613,5 +613,7 @@
     "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumers": "#manage-api-consumers",
     "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-users": "#invite-a-new-user",
     "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-catalogues": "#create-a-new-catalog",
-    "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/managing-access": "#"
+    "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/managing-access": "#",
+    "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso": "#configure-developer-portal-sso",
+    "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration": "#dynamic-client-registration"
 }
