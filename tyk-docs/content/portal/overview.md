@@ -141,7 +141,7 @@ When the connection is established, the portal will import policies as API Produ
 
 **Prerequisites**
 
-- A Tyk Self-Managed [installation]({{< ref "tyk-self-managed/install" >}})
+- A Tyk Self-Managed [installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}})
 - The Enterprise portal installed.
 - A login for the portal admin app.
 
@@ -159,7 +159,7 @@ When the connection is established, the portal will import policies as API Produ
 | Gateway URL              | The gateway URL refers to the URL that the portal developers will use for requesting queries and accessing credentials.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 | Secret                   | The Secret can be fetched from the Tyk Self-Managed / Tyk analytics dashboard. The procedure is as follows:  Go to the Tyk Dashboard. Navigate to *Users*. Select a user with the permissions you want to bring on to the portal. You can find the secret under *API Access Credentials. (Optional)*. You can find the organization id listed under *Organization ID* if your use case requires this. Please note that the Portal will share the same permissions that the user selected to provide the secret.                                                                                                                                                                     
 | Organization ID          | The org id is required in order to connect to your installation as a provider. It can be found in the user profile within the Tyk Dashboard.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| Policy tags              | This is an optional field that can be used to define which policies from Tyk will be imported to the portal. If a tag is defined here, it needs to also be defined in the Policy section in the [Tyk Dashboard]({{< ref "portal/overview#create-and-import-an-api-product-from-tyk" >}}). If this field is left empty in both this provider section and in the policies within Tyk, then all policies will be imported from the Tyk instance. How to include the label in the policy section inside Tyk, is explained in [Publish API Products and plans]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/publish-api-products-and-plans" >}}) for the public-facing portal. |
+| Policy tags              | This is an optional field that can be used to define which policies from Tyk will be imported to the portal. If a tag is defined here, it needs to also be defined in the Policy section in the [Tyk Dashboard]({{< ref "portal/overview#create-and-import-an-api-product-from-tyk" >}}). If this field is left empty in both this provider section and in the policies within Tyk, then all policies will be imported from the Tyk instance. How to include the label in the policy section inside Tyk, is explained in [Publish API Products and plans]({{< ref "portal/overview#publish-an-api-product" >}}) for the public-facing portal. |
 
 4. Save your changes
 
@@ -180,7 +180,7 @@ There are two ways of creating API Products and Plans in the Developer Portal:
 
 **Prerequisites**
 
-- A Tyk Self-Managed [installation]({{< ref "tyk-self-managed/install" >}})
+- A Tyk Self-Managed [installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}})
 - Tyk Self-Managed [added as a provider]({{< ref "portal/overview#connect-to-a-provider" >}})
 - Have APIs [created in your Tyk installation]({{< ref "getting-started/create-api" >}}).
 
@@ -291,7 +291,7 @@ In this section, you will learn how to publish the API products and plans to the
 
 **Prerequisites**
 
-- A Tyk Self-Managed [installation]({{< ref "tyk-self-managed/install" >}})
+- A Tyk Self-Managed [installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}})
 - Tyk Self-Managed [added as a provider]({{< ref "portal/overview#connect-to-a-provider" >}})
 - [Created and imported API Products and Plans from Tyk]({{< ref "portal/overview#create-api-products-and-plans" >}})
 
