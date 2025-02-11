@@ -1610,7 +1610,7 @@ links to API documentation and FAQs. You can copy it from the previous release. 
 
 #### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
-For MongoDB users: Tyk Charts 1.3.0 uses `mongo-go` as the default driver to connect to MongoDB. `mongo-go` driver is compatible with MongoDB 4.4.x and above. For MongoDB versions prior to 4.4, please set `global.mongo.driver` to `mgo`. We recommend reading [Choose a MongoDB driver]({{<ref "/tyk-self-managed#choose-a-mongodb-driver">}}) when you need to change driver setting.
+For MongoDB users: Tyk Charts 1.3.0 uses `mongo-go` as the default driver to connect to MongoDB. `mongo-go` driver is compatible with MongoDB 4.4.x and above. For MongoDB versions prior to 4.4, please set `global.mongo.driver` to `mgo`. We recommend reading [Choose a MongoDB driver]({{<ref "tyk-self-managed#choose-a-mongodb-driver">}}) when you need to change driver setting.
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
@@ -1706,7 +1706,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 Tyk Charts 1.3 adds support for a number of new Tyk features available from Tyk 5.3.0. These include: Support use of SSL certificates when connecting to Redis, Configurations for OAS Validate examples and OAS Validate Schema defaults.
 
 ##### Graph Pump
-Tyk Charts 1.3 adds support for Graph MongoDB Pump, Graph SQL Pump and Graph SQL Aggregate Pump. see [Graph Pump setup]({{<ref "/tyk-stack/tyk-pump/tyk-pump-configuration/graph-pump">}}) to learn more about the GraphQL-specific metrics available.
+Tyk Charts 1.3 adds support for Graph MongoDB Pump, Graph SQL Pump and Graph SQL Aggregate Pump. see [Graph Pump setup]({{<ref "tyk-stack/tyk-pump/tyk-pump-configuration/graph-pump">}}) to learn more about the GraphQL-specific metrics available.
 
 ##### Enable Tyk Identity Broker (TIB) in Tyk Dashboard
 Tyk Charts 1.3 adds a field to enable Internal [Tyk Identity Broker (TIB)]({{<ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib">}}) in Tyk Dashboard by field `tyk-dashboard.tib.enabled` to `true`.

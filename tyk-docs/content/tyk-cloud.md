@@ -155,7 +155,7 @@ Paid plans and Enterprise trials allow users to select one of 6 AWS locations as
 **Note**
 
 The Tyk Cloud trial is limited to 48 hours. After this period, your data will be deleted.
-The Tyk Cloud trial does not include access to [Hybrid deployments]({{< ref "#deploy-hybrid-gateways" >}}) or the [Developer Portal]({{< ref "tyk-developer-portal/tyk-enterprise-developer-portal" >}}).
+The Tyk Cloud trial does not include access to [Hybrid deployments]({{< ref "#deploy-hybrid-gateways" >}}) or the [Developer Portal]({{< ref "portal/overview#" >}}).
 To try out these capabilities, please get in touch for a [guided evaluation](https://tyk.io/guided-evaluation/) with our team.
 {{< /note >}}
 
@@ -1158,7 +1158,7 @@ Content-Length: 59
 * [Helm 3+](https://helm.sh/docs/intro/install/)
 * Connection details to remote control plane from the above [section](#deploy-hybrid-gateways).
 
-The following quick start guide explains how to use the [Tyk Data Plane Helm chart]({{<ref "/product-stack/tyk-charts/tyk-data-plane-chart">}}) to configure Tyk Gateway that includes:
+The following quick start guide explains how to use the [Tyk Data Plane Helm chart]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart">}}) to configure Tyk Gateway that includes:
 - Redis for key storage
 - Tyk Pump to send analytics to Tyk Cloud and Prometheus
 
@@ -2182,7 +2182,7 @@ pip3 install protobuf grpcio
 
 `tyk-hybrid` chart is deprecated. Please use our [Tyk Data Plane helm chart]({{<ref "#deploy-hybrid-gateways" >}}) instead. 
 
-We recommend that all users to migrate to the `tyk-data-plane` Chart. Please review the [Configuration]({{<ref "/product-stack/tyk-charts/tyk-data-plane-chart#configuration">}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
+We recommend that all users to migrate to the `tyk-data-plane` Chart. Please review the [Configuration]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart#configuration">}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
 {{< /warning >}}
 
 1. **Add the Tyk official Helm repo `tyk-helm` to your local Helm repository**
@@ -2372,7 +2372,7 @@ This trace data helps you understand request paths, identify bottlenecks, and tr
 
 We support distributed tracing for `Cloud Data Plane` deployments. You can enable it while creating or updating after setting up telemetry. 
 
-Since this functionality is powered by Tyk Gateway's OpenTelemetry integration, we recommend reviewing our comprehensive [OpenTelemetry documentation]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview.md" >}})
+Since this functionality is powered by Tyk Gateway's OpenTelemetry integration, we recommend reviewing our comprehensive [OpenTelemetry documentation]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview" >}})
 to understand the underlying architecture, best practices for implementation, and how to maximize the value of distributed tracing in your API infrastructure. The documentation provides detailed insights into configuration options, sampling strategies.
 
 #### Available Telemetry Providers

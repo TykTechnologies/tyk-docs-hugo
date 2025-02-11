@@ -28,7 +28,7 @@ The [Tyk Data Plane]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart">}}) 
 * [Helm 3+](https://helm.sh/docs/intro/install/)
 * Connection details to remote control plane from the tyk-control-plane installation output.
 
-The following quick start guide explains how to use the [Tyk Data Plane Helm chart]({{<ref "/product-stack/tyk-charts/tyk-data-plane-chart">}}) to configure Tyk Gateway that includes:
+The following quick start guide explains how to use the [Tyk Data Plane Helm chart]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart">}}) to configure Tyk Gateway that includes:
 - Redis for key storage
 - Tyk Pump to send analytics to Tyk Control Plane and Prometheus
 

@@ -46,7 +46,7 @@ The Tyk Team has created and maintains the following components, which are fully
 * [Tyk Gateway]({{< ref "tyk-oss-gateway" >}}) - Fully fledged API Gateway (Start here!) - {{< github_star_button "TykTechnologies" "tyk" "true" >}}
 * [Tyk Pump]({{< ref "tyk-pump" >}}) - Send API analytics data to your chosen backend - {{< github_star_button "TykTechnologies" "tyk-pump" "true" >}}
 * [Tyk Identity Broker]({{< ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib" >}}) - Connect your third-party IdP systems - {{< github_star_button "TykTechnologies" "api-management/external-service-integration#what-is-tyk-identity-broker-tib" "true" >}}
-* [Tyk Helm Chart]({{< ref "/product-stack/tyk-charts/overview" >}}) - Deploy Tyk in K8S - {{< github_star_button "TykTechnologies" "tyk-charts" "true" >}}
+* [Tyk Helm Chart]({{< ref "product-stack/tyk-charts/overview" >}}) - Deploy Tyk in K8S - {{< github_star_button "TykTechnologies" "tyk-charts" "true" >}}
 
 You can find additional FAQs regarding the MPL license [here](https://www.mozilla.org/en-US/MPL/2.0/FAQ/).
 
@@ -134,7 +134,7 @@ The quickest way to get started is using docker-compose. Visit our [Dockerhub](h
 The following are required for a Tyk OSS installation:
  - Redis   - Required for all Tyk installations.
              Simple Redis installation instructions are included below.
- - MongoDB - Required only if you chose to use the Tyk Pump with your Tyk OSS installation. Same goes with any [other pump data stores]({{< ref "tyk-stack/tyk-pump/other-data-stores.md" >}}) you choose to use.
+ - MongoDB - Required only if you chose to use the Tyk Pump with your Tyk OSS installation. Same goes with any [other pump data stores]({{< ref "tyk-stack/tyk-pump/other-data-stores" >}}) you choose to use.
 
 #### Steps for Installation
 
@@ -227,9 +227,9 @@ helm upgrade tyk-oss tyk-helm/tyk-oss -n $NAMESPACE --create-namespace \
 
 Now Tyk Gateway should be accessible through service `gateway-svc-tyk-oss-tyk-gateway` at port `8080`. 
 
-You are now ready to [create an API]({{<ref "/getting-started/create-api">}}).
+You are now ready to [create an API]({{<ref "getting-started/create-api">}}).
 
-For the complete installation guide and configuration options, please see [Tyk OSS Helm Chart]({{<ref "/product-stack/tyk-charts/tyk-oss-chart">}}).
+For the complete installation guide and configuration options, please see [Tyk OSS Helm Chart]({{<ref "product-stack/tyk-charts/tyk-oss-chart">}}).
 
 #### Configure Legacy Tyk Headless Helm Chart
 {{< warning success >}}

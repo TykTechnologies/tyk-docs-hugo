@@ -112,7 +112,7 @@ Unfortunately this error message will appear for a wide range of connection prob
 
 This output benefits from sending multiple messages in flight in parallel for improved performance. You can tune the max number of in flight messages (or message batches) with the field `max_in_flight`.
 
-This output benefits from sending messages as a [batch]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/batching" >}}) for improved performance. Batches can be formed at both the input and output level. 
+This output benefits from sending messages as a [batch]({{< ref "product-stack/tyk-streaming/configuration/common-configuration/batching" >}}) for improved performance. Batches can be formed at both the input and output level. 
 
 ## Fields
 
@@ -562,7 +562,7 @@ Default: `false`
 
 ### batching
 
-Allows you to configure a [batching policy]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/batching#batch-policy" >}}).
+Allows you to configure a [batching policy]({{< ref "product-stack/tyk-streaming/configuration/common-configuration/batching#batch-policy" >}}).
 
 
 Type: `object`  

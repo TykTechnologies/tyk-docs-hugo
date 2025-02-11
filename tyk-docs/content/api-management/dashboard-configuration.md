@@ -118,19 +118,19 @@ The Dashboard exposes two APIs:
     
     To know more about Dashboard APIs, refer the following documents:
     - [Postman / Swagger / Open API specification]({{< ref "tyk-dashboard-api" >}})
-    - [Dashboard API Usage Examples]({{< ref "" >}})
+    - [Dashboard API Usage Examples]({{< ref "#dashboard-api-resources-and-usage" >}})
 
  - **Dashboard Admin API**: Is used for system-level administration and initial setup tasks like managing organizations, initial user creation, backups/migrations and SSO setup. 
 
     To know more about Dashboard Admin APIs, refer the following documents:
     - [Postman / Swagger / Open API specification]({{< ref "dashboard-admin-api" >}})
-    - [Dashboard Admin API Usage Examples]({{< ref "" >}})
+    - [Dashboard Admin API Usage Examples]({{< ref "#dashboard-admin-api-resources-and-usage" >}})
 
 ### Authenticating with Dashboard APIs
 
 **Dashboard API**
 
-The [Tyk Dashboard API]({{< ref "tyk-dashboard-api.md" >}}) is secured using an `Authorization` header that must be added to each request that is made. The **Tyk Dashboard API Access Credentials** `Authorization` key can be found within the Dashboard UI at the bottom of the **Edit User** section for a user.
+The [Tyk Dashboard API]({{< ref "tyk-dashboard-api" >}}) is secured using an `Authorization` header that must be added to each request that is made. The **Tyk Dashboard API Access Credentials** `Authorization` key can be found within the Dashboard UI at the bottom of the **Edit User** section for a user.
 
 **Dashboard Admin API**
 
@@ -3521,7 +3521,7 @@ The **Core Settings** tab provides access to configure basic settings for the AP
    - [Service Discovery]({{< ref "tyk-self-managed#service-discovery" >}})
 - [API Ownership]({{< ref "api-management/user-management#api-ownership" >}})
 - [API level rate limiting]({{< ref "api-management/rate-limit#configuring-the-rate-limiter-at-the-api-level" >}})
-- [Authentication]({{< ref "/api-management/client-authentication" >}})
+- [Authentication]({{< ref "api-management/client-authentication" >}})
 
 ### Versions
 
@@ -3988,7 +3988,7 @@ The use of the `#` qualifier to identify a category prevents the use of `#` in y
 {{< /note >}}
 
 ### Using API categories
-API categories can be added and removed from APIs within the [API Designer]({{< ref "#api-designer" >}}), via the [Tyk Dashboard API]({{< ref "#tyk-dashboard-api" >}}), or via [Tyk Operator]({{< ref "/api-management/automations/operator#what-is-tyk-operator" >}}).
+API categories can be added and removed from APIs within the [API Designer]({{< ref "#api-designer" >}}), via the [Tyk Dashboard API]({{< ref "#tyk-dashboard-api" >}}), or via [Tyk Operator]({{< ref "api-management/automations/operator#what-is-tyk-operator" >}}).
 
 #### API Designer
 The API Designer in the Tyk Dashboard UI provides a simple method for assigning APIs to categories, removing categories and filtering the API list by category.
@@ -4037,7 +4037,7 @@ These endpoints will return information for categories across all APIs in the sy
 
 #### Tyk Operator
 
-You can manage categories using Tyk Operator custom resources. Please refer to [Tyk Operator]({{<ref "/api-management/automations/operator#api-categories">}}) documentation to see how to manage API categories for Tyk OAS APIs and Tyk Classic APIs.
+You can manage categories using Tyk Operator custom resources. Please refer to [Tyk Operator]({{<ref "api-management/automations/operator#api-categories">}}) documentation to see how to manage API categories for Tyk OAS APIs and Tyk Classic APIs.
 
 ## Governance using API Templates
 

@@ -23,7 +23,7 @@ We ceated a defaulkt Tyk dashboard canvat to give our users an easier starting p
 ## Prerequisites
 
 - A working Datadog agent installed on your Environment. See the [Datadog Tyk integration docs](https://docs.datadoghq.com/integrations/tyk/) for more information.
-- Either a [Tyk Pro install]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) or [Tyk OSS Gateway install]({{< ref "tyk-open-source#installation-options-for-tyk-gateway" >}}) along with a [Tyk Pump]({{< ref "tyk-pump.md" >}}) install.
+- Either a [Tyk Pro install]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) or [Tyk OSS Gateway install]({{< ref "tyk-open-source#installation-options-for-tyk-gateway" >}}) along with a [Tyk Pump]({{< ref "tyk-pump" >}}) install.
 
 ## How it works
 

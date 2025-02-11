@@ -958,7 +958,7 @@ Now configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "api-
 
 ##### Root CA Support for Client Certificates
 
-Simplify certificate management with support for root Certificate Authority (CA) certificates, enabling clients to authenticate using certificates signed by the [configured root CA]({{< ref "/api-management/client-authentication#faq" >}}).
+Simplify certificate management with support for root Certificate Authority (CA) certificates, enabling clients to authenticate using certificates signed by the [configured root CA]({{< ref "api-management/client-authentication#faq" >}}).
 
 ##### Optimised AST Document Handling
 
@@ -1022,7 +1022,7 @@ If you are upgrading to 5.5.0, please follow the detailed [upgrade instructions]
     docker pull tykio/tyk-gateway:v5.5.0
     ``` 
 - Helm charts
-  - [tyk-charts v1.6]({{< ref "/developer-support/release-notes/helm-chart#160-release-notes" >}})
+  - [tyk-charts v1.6]({{< ref "developer-support/release-notes/helm-chart#160-release-notes" >}})
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 #### Changelog {#Changelog-v5.5.0}
@@ -1220,7 +1220,7 @@ We're thrilled to introduce exciting enhancements in Tyk Gateway 5.4, aimed at i
 
 ##### Enhanced Rate Limiting Strategies
 
-We've introducing a [Rate Limit Smoothing]({{< ref "/api-management/rate-limit#rate-limit-smoothing" >}}) option for the spike arresting Redis Rate Limiter to give the upstream time to scale in response to increased request rates.
+We've introducing a [Rate Limit Smoothing]({{< ref "api-management/rate-limit#rate-limit-smoothing" >}}) option for the spike arresting Redis Rate Limiter to give the upstream time to scale in response to increased request rates.
 
 ##### Fixed MDCB Issue Relating To Replication Of Custom Keys To Dataplanes
 
@@ -1236,11 +1236,11 @@ Customers should clear their edge Redis instances of any potentially affected ke
 
 ##### Fixed Window Rate Limiter
 
-Ideal for persistent connections with load-balanced gateways, the [Fixed Window Rate Limiter]({{< ref "/api-management/rate-limit#fixed-window-rate-limiter" >}}) algorithm mechanism ensures fair handling of requests by allowing only a predefined number to pass per rate limit window. It uses a simple shared counter in Redis so requests do not need to be evenly balanced across the gateways.
+Ideal for persistent connections with load-balanced gateways, the [Fixed Window Rate Limiter]({{< ref "api-management/rate-limit#fixed-window-rate-limiter" >}}) algorithm mechanism ensures fair handling of requests by allowing only a predefined number to pass per rate limit window. It uses a simple shared counter in Redis so requests do not need to be evenly balanced across the gateways.
 
 ##### Event handling with Tyk OAS
 
-We’ve added support for you to [register webhooks]({{< ref "/basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) with your Tyk OAS APIs so that you can handle events triggered by the Gateway, including circuit breaker and quota expiry. You can also assign webhooks to be fired when using the new [smoothing rate limiter]({{< ref "/api-management/rate-limit#rate-limit-smoothing" >}}) to notify your systems of ongoing traffic spikes.
+We’ve added support for you to [register webhooks]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) with your Tyk OAS APIs so that you can handle events triggered by the Gateway, including circuit breaker and quota expiry. You can also assign webhooks to be fired when using the new [smoothing rate limiter]({{< ref "api-management/rate-limit#rate-limit-smoothing" >}}) to notify your systems of ongoing traffic spikes.
 
 ##### Enhanced Header Handling in GraphQL APIs
 
@@ -1252,7 +1252,7 @@ Introduced a features object in API definitions for GQL APIs, including the `use
     docker pull tykio/tyk-gateway:v5.4.0
     ``` 
 - Helm charts
-  - [tyk-charts v1.5]({{< ref "/developer-support/release-notes/helm-chart#150-release-notes" >}})
+  - [tyk-charts v1.5]({{< ref "developer-support/release-notes/helm-chart#150-release-notes" >}})
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 #### Changelog {#Changelog-v5.4.0}
@@ -1276,14 +1276,14 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Implemented Fixed Window Rate Limiting for load balancers with keep-alives</summary>
 
-Introduced a [Fixed Window Rate Limiting]({{< ref "/api-management/rate-limit#fixed-window-rate-limiter" >}}) mechanism to handle rate limiting for load balancers with keep-alives. This algorithm allows the defined number of requests to pass for every rate limit window and blocks any excess requests. It uses a simple shared counter in Redis to count requests. It is suitable for situations where traffic towards Gateways is not balanced fairly. To enable this rate limiter, set `enable_fixed_window_rate_limiter` in the gateway config or set the environment variable `TYK_GW_ENABLEFIXEDWINDOWRATELIMITER=true`.
+Introduced a [Fixed Window Rate Limiting]({{< ref "api-management/rate-limit#fixed-window-rate-limiter" >}}) mechanism to handle rate limiting for load balancers with keep-alives. This algorithm allows the defined number of requests to pass for every rate limit window and blocks any excess requests. It uses a simple shared counter in Redis to count requests. It is suitable for situations where traffic towards Gateways is not balanced fairly. To enable this rate limiter, set `enable_fixed_window_rate_limiter` in the gateway config or set the environment variable `TYK_GW_ENABLEFIXEDWINDOWRATELIMITER=true`.
 </details>
 </li>
 <li>
 <details>
 <summary>Introduced Rate Limit Smoothing for scaling</summary>
 
-Implemented [Rate Limit Smoothing]({{< ref "/api-management/rate-limit#rate-limit-smoothing" >}}) as an extension to the existing Redis Rate Limiter to gradually adjust the rate based on smoothing configuration. Two new Gateway events have been created  (`RateLimitSmoothingUp` and `RateLimitSmoothingDown`) which will be triggered as smoothing occurs. These can be used to assist with auto-scaling of upstream capacity during traffic spikes.
+Implemented [Rate Limit Smoothing]({{< ref "api-management/rate-limit#rate-limit-smoothing" >}}) as an extension to the existing Redis Rate Limiter to gradually adjust the rate based on smoothing configuration. Two new Gateway events have been created  (`RateLimitSmoothingUp` and `RateLimitSmoothingDown`) which will be triggered as smoothing occurs. These can be used to assist with auto-scaling of upstream capacity during traffic spikes.
 </details>
 </li>
 <li>
@@ -1678,7 +1678,7 @@ ongoing support of third-party dependencies they install, as their status may ha
 
 #### Deprecations
 
-This is an advanced notice that the dedicated External OAuth, OpenID Connect (OIDC) authentication options, and SQLite support will be deprecated starting in version 5.7.0. We recommend that users of the [External OAuth]({{< ref "/api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}}) and [OpenID Connect]({{< ref "/api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}) methods migrate to Tyk's dedicated [JWT Auth]({{< ref "/api-management/client-authentication#use-json-web-tokens-jwt" >}}) method. Please review your API configurations, as the Gateway logs will provide notifications for any APIs utilizing these methods.
+This is an advanced notice that the dedicated External OAuth, OpenID Connect (OIDC) authentication options, and SQLite support will be deprecated starting in version 5.7.0. We recommend that users of the [External OAuth]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}}) and [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}) methods migrate to Tyk's dedicated [JWT Auth]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}) method. Please review your API configurations, as the Gateway logs will provide notifications for any APIs utilizing these methods.
 
 
 #### Upgrade Instructions
@@ -3187,7 +3187,7 @@ that code ranges defined as 1XX, 2XX, etc will be correctly converted by the too
 <summary>Added support for custom rate limit keys</summary>
 
 We have added the capability for users to define a [custom rate limit
-key]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/configuring-custom-rate-limit-keys" >}})
+key]({{< ref "portal/api-provider#configure-rate-limits" >}})
 within session metadata. This increases flexibility with rate limiting, as the rate limit can be assigned to different entities
 identifiable from the session metadata (such as a client app or organization) and is particularly useful for users of Tyk's
 Enterprise Developer Portal.
@@ -3716,7 +3716,7 @@ Fixed a potential race condition where the *DRL Manager* was not properly protec
 <details>
 <summary>Performance issue encountered when Tyk Gateway retrieves a key via MDCB for a JWT API</summary>
 
-Fixed a performance issue encountered when Tyk Gateway retrieves a key via MDCB for a JWT API. The token is now validated against [JWKS or the public key]({{< ref "/api-management/client-authentication#use-json-web-tokens-jwt" >}}) in the API Definition.
+Fixed a performance issue encountered when Tyk Gateway retrieves a key via MDCB for a JWT API. The token is now validated against [JWKS or the public key]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}) in the API Definition.
 </details>
 </li>
 <li>
@@ -3928,7 +3928,7 @@ With this release we are adding a concept of [header management]({{< ref "univer
 
 ##### Added Further Support For GraphQL WebSocket Protocols
 
-Support for [WebSocket]({{< ref "/graphql/graphql-websockets" >}}) protocols between client and the *Gateway* has also been expanded. Instead of only supporting the *graphql-ws protocol*, which is becoming deprecated, we now also support [graphql-transport-ws](https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md) by setting the *Sec-WebSocket-Protocol* header to *graphql-transport-ws*.
+Support for [WebSocket]({{< ref "graphql/graphql-websockets" >}}) protocols between client and the *Gateway* has also been expanded. Instead of only supporting the *graphql-ws protocol*, which is becoming deprecated, we now also support [graphql-transport-ws](https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md) by setting the *Sec-WebSocket-Protocol* header to *graphql-transport-ws*.
 
 ##### Added OpenTelemetry Tracing
 
@@ -3997,7 +3997,7 @@ Added a new feature that allows clients to retrieve the trace ID from response h
 <details>
 <summary>Allow detailed tracing to be enabled/disabled at API level</summary>
 
-Added configuration parameter to enable/disable [detail_tracing]({{< ref "/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview#step-2-enable-detailed-tracing-at-api-level-optional" >}}) for *Tyk Classic API*.
+Added configuration parameter to enable/disable [detail_tracing]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview#step-2-enable-detailed-tracing-at-api-level-optional" >}}) for *Tyk Classic API*.
 </details>
 </li>
 <li>
@@ -4018,14 +4018,14 @@ Added a new [timeout option]({{< ref "product-stack/tyk-gateway/middleware/endpo
 <details>
 <summary>Enable request context variables in UDG global or data source headers</summary>
 
-Added support for using [request context variables]({{< ref "context-variables#available-context-variables" >}}) in *UDG* global or data source headers. This feature enables much more advanced [header management]({{< ref "/universal-data-graph/concepts/header_management" >}}) for UDG and allows users to extract header information from an incoming request and pass it to upstream data sources.
+Added support for using [request context variables]({{< ref "context-variables#available-context-variables" >}}) in *UDG* global or data source headers. This feature enables much more advanced [header management]({{< ref "universal-data-graph/concepts/header_management" >}}) for UDG and allows users to extract header information from an incoming request and pass it to upstream data sources.
 </details>
 </li>
 <li>
 <details>
 <summary>Add support for configuration of global headers for any UDG</summary>
 
-Added support for configuration of [global headers]({{< ref "/universal-data-graph/concepts/header_management" >}}) for any *UDG*. These headers will be forwarded to all data sources by default, enhancing control over data flow.
+Added support for configuration of [global headers]({{< ref "universal-data-graph/concepts/header_management" >}}) for any *UDG*. These headers will be forwarded to all data sources by default, enhancing control over data flow.
 </details>
 </li>
 <li>
@@ -4039,7 +4039,7 @@ Added the ability for Custom GoPlugin developers using *Tyk OAS APIs* to access 
 <details>
 <summary>Add support for graphql-transport-ws websocket protocol</summary>
 
-Added support for the websocket protocol, *graphql-transport-ws protocol*, enhancing communication between the client and *Gateway*. Users [connecting]({{< ref "/graphql/graphql-websockets" >}}) with the header *Sec-WebSocket-Protocol* set to *graphql-transport-ws* can now utilize messages from this [protocol](https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md) for more versatile interaction.
+Added support for the websocket protocol, *graphql-transport-ws protocol*, enhancing communication between the client and *Gateway*. Users [connecting]({{< ref "graphql/graphql-websockets" >}}) with the header *Sec-WebSocket-Protocol* set to *graphql-transport-ws* can now utilize messages from this [protocol](https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md) for more versatile interaction.
 </details>
 </li>
 <li>
@@ -4614,7 +4614,7 @@ Does your Tyk OAS API Definition define examples or a schema for your path respo
 
 If you’re using a 3rd party IDP to generate tokens for your OAuth applications, Tyk can now validate the generated tokens by either performing JWT validation or by communicating with the authorization server and executing token introspection. 
 
-This can be achieved by configuring the new External OAuth authentication mechanism. Find out more here [External OAuth Integration]({{< ref "/api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}})
+This can be achieved by configuring the new External OAuth authentication mechanism. Find out more here [External OAuth Integration]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}})
 
 ##### Updated the Tyk Gateway version of Golang, to 1.16.
 
@@ -4895,9 +4895,9 @@ As we know, ease-of-use is an important factor when adopting GraphQL. Modern ent
 
 To remedy this, Tyk 4.0 offers GraphQL federation that allows the division of GraphQL implementation across multiple backend services, while still exposing them all as a single graph for the consumers. Subgraphs represent backend services and define a distinct GraphQL schema. A subgraph can be queried directly, as a separate service or federated in the Tyk Gateway into a larger schema of a supergraph – a composition of several subgraphs that allows execution of a query across multiple services in the backend.
 
-[Federation docs]({{< ref "/content/getting-started/key-concepts/graphql-federation.md" >}})
+[Federation docs]({{< ref "getting-started/key-concepts/graphql-federation" >}})
 
-[Subgraphs and Supergraphs docs]({{< ref "/content/getting-started/key-concepts/graphql-federation.md#subgraphs-and-supergraphs" >}})
+[Subgraphs and Supergraphs docs]({{< ref "getting-started/key-concepts/graphql-federation.md#subgraphs-and-supergraphs" >}})
 
 ##### GraphQL subscriptions
 
@@ -4905,7 +4905,7 @@ Subscriptions are a way to push data from the server to the clients that choose 
 
 With release 4.0, users can federate GraphQL APIs that support subscriptions. Federating subscriptions means that events pushed to consumers can be enriched with information from other federated graphs.
 
-[Subscriptions docs]({{< ref "/content/getting-started/key-concepts/graphql-subscriptions.md" >}})
+[Subscriptions docs]({{< ref "getting-started/key-concepts/graphql-subscriptions" >}})
 
 #### Changelog
 

@@ -100,6 +100,42 @@ This section lists commonly asked questions or frequently encountered issues and
     - For *Amazon RDS* users, check their [backup and restore documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_CommonTasks.BackupRestore.html). To further enhance your PostgreSQL backup process, you can explore services like [AWS RDS Automated Backups](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html) if you're hosting your database on AWS. 
     - For *CosmosDB* users check their [online backup and on-demand data restore documentation](https://learn.microsoft.com/en-us/azure/cosmos-db/postgresql/concepts-backup) 
 
+## Enterprise Developer Portal
+
+1. **What happens if the Portal goes down ?**
+
+    In the event of the portal application being down, the other components of the Tyk Stack will remain unaffected.
+    This means your APIs will still be operational, and analytics will continue to be recorded.
+    Developers will also be able to use their credentials for both oAuth2.0 and API Keys APIs.
+
+    However, since the portal application is down, developers won't be able to access their credentials or the analytical dashboard, request access to new API Products, or revoke or rotate their access credentials.
+    Additionally, admin users won't be able to use the portal, whether through its UI or APIs.
+    This means you won't be able to create, change, or remove any item managed by the portal, such as developers, organizations, content pages, API Products, plans, and more.
+
+    Despite this, you still have some control over access credentials.
+    If you need to rotate or remove access credentials, you can do so directly in the Tyk Dashboard or in your identity provider.
+
+2. **What happens if the Dashboard goes down ?**
+
+    If the Tyk Dashboard goes down, developers will still be able to access their access credentials, but they won't be able to rotate or remove their existing credentials, or request access to API Products.
+    Additionally, the API Analytics dashboard will be compromised.
+
+    However, API traffic will remain unaffected, meaning that your APIs will continue to be operational, and analytics will continue to be recorded.
+
+    In terms of admin functionality, the only limitation will be the inability to approve or reject access requests or revoke or rotate access credentials.
+
+
+3. **Does the portal support SQL databases for storing the portal's CMS assets ?**
+
+    {{< note success >}}
+    **Note** 
+
+    Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
+    {{< /note >}}
+
+    The Enterprise Developer Portal supports SQL databases (MariaDB, MySQL, and PostgreSQL) for storing the portal's CMS assets.
+    During the bootstrap process, the portal will create the appropriate tables in the main database. The only thing required to enable SQL storage for the portal's assets is to specify the `db` [storage type]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage" >}}) either via a config file or an environment variable.
+
 ## Tyk Gateway
 
 1. **How to Check Your Gateway Version ?**

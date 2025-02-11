@@ -16,4 +16,4 @@ To understand how the environment variables notation works, see [Environment Var
 
 All the Pump environment variables have the prefix `TYK_PMP_`. The environment variables will take precedence over the values in the configuration file.
 
-{{< include "pump-config.md" >}}
+{{< include "pump-config" >}}

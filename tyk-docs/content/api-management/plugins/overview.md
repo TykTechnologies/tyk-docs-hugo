@@ -34,13 +34,13 @@ aliases:
 
 Plugins can be used to customize and enhance the capabilities of your APIs through integration with external services and databases to perform operations such as data transformation, custom authentication, logging and monitoring etc.
 
-When Tyk receives an API request, it works through a [chain]({{< ref "middleware-execution-order" >}}) of processing *middleware* that is configured using the API definition. There are a large number of built-in middleware in the processing chain that are dedicated to performing [client authentication]({{< ref "/api-management/client-authentication" >}}), [request transformation]({{< ref "advanced-configuration/transform-traffic" >}}), [caching]({{< ref "basic-config-and-security/reduce-latency/caching" >}}) and many other processes before proxying the request to the upstream.
+When Tyk receives an API request, it works through a [chain]({{< ref "middleware-execution-order" >}}) of processing *middleware* that is configured using the API definition. There are a large number of built-in middleware in the processing chain that are dedicated to performing [client authentication]({{< ref "api-management/client-authentication" >}}), [request transformation]({{< ref "advanced-configuration/transform-traffic" >}}), [caching]({{< ref "basic-config-and-security/reduce-latency/caching" >}}) and many other processes before proxying the request to the upstream.
 
 Tyk's custom plugin facility provides a powerful and flexible way to extend the middleware chain. It allows API developers to write custom middleware, in various programming languages, that can perform additional processing of requests and responses.
 
 For example, a custom authentication scheme can be implemented and executed on API requests, custom plugins can be used to provide integration with external services and databases, or additional processing can be performed on the response returned from the upstream.
 
-There are several different stages of the [API request lifecycle]({{< ref "/concepts/middleware-execution-order" >}}) where custom plugins can be attached (or *hooked*) into the middleware chain allowing significant customization to meet your specific requirements.
+There are several different stages of the [API request lifecycle]({{< ref "concepts/middleware-execution-order" >}}) where custom plugins can be attached (or *hooked*) into the middleware chain allowing significant customization to meet your specific requirements.
 
 Custom plugins are usually referred to by the location where they can be *hooked* into the middleware processing chain as follows:
 
@@ -69,12 +69,12 @@ From the above illustration it can be seen that:
 
 Tyk supports four types of plugins:
 
-1. **[Request Plugin]({{< ref "" >}})**
-2. **[Authentication Plugin]({{< ref "" >}})**
-3. **[Response Plugin]({{< ref "" >}})**
-4. **[Analytics Plugin]({{< ref "" >}})**
+1. **[Request Plugin]({{< ref "api-management/plugins/plugin-types#request-plugins" >}})**
+2. **[Authentication Plugin]({{< ref "api-management/plugins/plugin-types#authentication-plugins" >}})**
+3. **[Response Plugin]({{< ref "api-management/plugins/plugin-types#response-plugins" >}})**
+4. **[Analytics Plugin]({{< ref "api-management/plugins/plugin-types#analytics-plugins" >}})**
 
-To know more about plugin types and it's advanced configuration, refer the following [docs]({{< ref "" >}}).
+To know more about plugin types and it's advanced configuration, refer the following [docs]({{< ref "api-management/plugins/plugin-types" >}}).
 
 ## Getting Started
 
