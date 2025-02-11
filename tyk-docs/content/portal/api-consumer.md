@@ -2,8 +2,9 @@
 title: "Developers / API Consumers"
 date: 2022-02-10
 linkTitle: API Management
-tags: [""]
-description: ""
+tags: ["Developer Portal", "Tyk", "API Consumer", "Developer", "Organization", "Invite Codes", "Consumer Registration"]
+keywords: ["Developer Portal", "Tyk", "API Consumer", "Developer", "Organization", "Invite Codes", "Consumer Registration"]
+description: "How to configure API Consumers in Tyk developer portal"
 aliases:
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumers
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations
@@ -15,6 +16,7 @@ aliases:
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/invite-codes
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-users
   - /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/managing-access
 ---
 
 {{< note success >}}

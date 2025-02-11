@@ -1,12 +1,12 @@
 ---
 title: "API Providers"
-date: 2022-02-10
+date: 2025-02-10
 linkTitle: API Management
-tags: [""]
-description: ""
+tags: ["Developer Portal", "Tyk", "Managing Access", "Catalogs", "Rate Limit", "Dynamic Client Registration", "Documenting APIs"]
+keywords: ["Developer Portal", "Tyk", "Managing Access", "Catalogs", "Rate Limit", "Dynamic Client Registration", "Documenting APIs"]
+description: "How to configure API Providers in Tyk developer portal"
 aliases:
   - tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration
-  - tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/managing-access
   - tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-catalogues
   - tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/api-access
   - tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/approve-requests
@@ -683,22 +683,4 @@ If you are using Tyk Developer Portal version 1.13.0 or later, you can add API D
 
     The blog posts that match tags with an API Product will be displayed in the ‘Related blog content’ section of the respective API Product page.
     {{< img src="img/dashboard/portal-management/enterprise-portal/related-blog-content.png" alt="Related blog content" width="800" height="925">}}
-
----
----
-
----
-
-{{< note success >}}
-**Tyk Enterprise Developer Portal**
-
-If you are interested in getting access contact us at [support@tyk.io](<mailto:support@tyk.io?subject=Tyk Enterprise Portal Beta>)
-
-{{< /note >}}
-
-The Tyk Enterprise Developer Portal has powerful capability of management of API consumer access as single users, teams or organizations. It is possible to create catalogs of API Products with different visibility levels for different teams and organizations.
-
-The following diagram demonstrates a sample set-up.
-
-{{< img src="/img/dashboard/portal-management/enterprise-portal/portal-catalogue-sample-set-up.png" alt="Sample API access control setup" >}}
 

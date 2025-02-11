@@ -1771,11 +1771,11 @@ menu:
         category: Page
         show: True
       - title: "API Consumer"
-        path: /portal/developers
+        path: /portal/api-consumer
         category: Page
         show: True
       - title: "API Provider"
-        path: /portal/api-access
+        path: /portal/api-provider
         category: Page
         show: True
       - title: "Customization"

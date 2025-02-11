@@ -1,9 +1,9 @@
 ---
 title: "Install and Configure Tyk Enterprise Developer Portal"
-date: 2022-02-08
+date: 2025-02-10
 linkTitle: API Management
-tags: ["Tyk Enterprise Developer Portal", "Install Tyk Enterprise Developer Portal", "Bootstrap Tyk Enterprise Developer Portal"]
-tags: ["Bootstrap Tyk Enterprise Developer Portal", "Tyk Enterprise Developer Portal"]
+tags: ["Developer Portal", "Tyk", "Install Tyk Enterprise Developer Portal", "Bootstrap Tyk Enterprise Developer Portal"]
+keywords: ["Developer Portal", "Tyk", "Install Tyk Enterprise Developer Portal", "Bootstrap Tyk Enterprise Developer Portal"]
 description: "Installation guide for the Tyk Enterprise Developer Portal"
 aliases:
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal
@@ -982,6 +982,11 @@ You can continue configuring and customizing it either via the UI or the portal 
 
 ## Environment Variable Reference
 
-TODO: Add this, TODO: Add API details
+For global configurations of the Developer Portal deployment refer this [config file]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration" >}}).
 
 ## API Documentation
+
+The Dashboard exposes two APIs:
+
+1. [Enterprise Developer Portal API]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}})
+2. [Enterprise Developer Portal Admin API]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.13.0-list-of-endpoints" >}})

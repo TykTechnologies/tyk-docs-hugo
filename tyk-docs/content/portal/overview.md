@@ -1,8 +1,9 @@
 ---
 title: "Tyk Enterprise Developer Portal"
-date: 2022-02-07
-tags: ["Developer Portal","Tyk"]
-description: "Tyk Developer Portal is the most flexible and simplest way for API providers to publish, monetize and drive the adoption of APIs"
+date: 2025-02-10
+tags: ["Developer Portal", "Tyk", "Portal Mangement Workflow", "Getting Started with Portal"]
+keywords: ["Developer Portal", "Tyk", "Portal Mangement Workflow", "Getting Started with Portal"]
+description: "Getting started with Tyk developer portal"
 aliases:
   - /product-stack/tyk-enterprise-developer-portal/getting-started/getting-started-with-enterprise-portal
   - /product-stack/tyk-enterprise-developer-portal/getting-started/enterprise-portal-concepts
@@ -99,7 +100,6 @@ Here’s an example of how you could set up catalogs for the users above:
 
 The internal users of the admin app.
 
-TODO: This section is not required.
 ### Developer Portal
 
 When referring to the Developer Portal, we’re referring to the portal website in which external developers (what we refer to as API-consumers) can browse, view and request access to APIs.

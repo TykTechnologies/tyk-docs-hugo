@@ -1,8 +1,9 @@
 ---
 title: "Developer Portal Customization"
-date: 2024-12-24
+date: 2025-02-10
 linkTitle: API Management
-tags: ["portal", "customization",]
+tags: ["Developer Portal", "Tyk", "Customization", "Webhook", "Email", "Themes", "Templates", "Pages", "Menus", "Branding", "User Model"]
+keywords: ["Developer Portal", "Tyk", "Customization", "Webhook", "Email", "Themes", "Templates", "Pages", "Menus", "Branding", "User Model"]
 description: "Customization options for enterprise developer portal"
 aliases:
   - /product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks
@@ -2479,7 +2480,6 @@ In this section we will explain how to apply your branding (styling - CSS) on th
 - A Tyk Self-Managed [installation]({{< ref "/content/tyk-self-managed/install.md" >}})
 - A login for the portal admin app
 - Access to your Tyk portal file system
-TODO: Need to explain how to actually access this file system. As this is a private repo.
 
 ### Changing Portal Logo
 
@@ -2685,10 +2685,6 @@ You need to upload the theme to the portal and activate it to make the changes t
    {{< img src="/img/dashboard/portal-management/enterprise-portal/activate-theme.png" alt="Activate a theme" >}}
 
 ## Configure User Model
-
-TODO: Fix the below definition.
-What is credential metadata?
-What are the different models availalbe?
 
 A **Model** in developer portal represents an physical entity. Currenlty, we only have the User model, which represent a user who will be consuming the API by signing up.
 
