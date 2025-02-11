@@ -24,7 +24,7 @@ You can also run these steps using the Tyk Dashboard API, noting the differences
 | Tyk Gateway API       | 8080     | `tyk/apis/oas`  | `x-tyk-authorization` | `secret` value set in `tyk.conf` |
 | Tyk Dashboard API     | 3000     | `api/apis/oas`  | `Authorization`       | From Dashboard User Profile      |
 
-As explained in the section on [Creating an OAS API]({{< ref "/getting-started/using-oas-definitions/create-an-oas-api" >}}) remember that when using the Tyk Dashboard API you only need to issue one command to create the API and load it onto the Gateway; when using the Tyk Gateway API you must remember to restart or hot reload the Gateway after creating the API.
+As explained in the section on [Creating an OAS API]({{< ref "getting-started/using-oas-definitions/create-an-oas-api" >}}) remember that when using the Tyk Dashboard API you only need to issue one command to create the API and load it onto the Gateway; when using the Tyk Gateway API you must remember to restart or hot reload the Gateway after creating the API.
 
 * When using the Tyk Dashboard API, you can find your credentials key from your **User Profile > Edit Profile > Tyk Dashboard API Access Credentials**
 
@@ -895,7 +895,7 @@ Tyk supports the following options when importing an API:
 - From an existing Tyk API definition (Classic or OAS)
 - From a SOAP WSDL definition
 
-The process for importing from an existing Tyk API definition or SOAP WSDL definition is explained [here]({{< ref "/getting-started/import-apis#import-apis-via-the-dashboard-api" >}}). The import function will now accept an existing Tyk OAS API definition, the process is the same as for a Tyk Classic API definition.
+The process for importing from an existing Tyk API definition or SOAP WSDL definition is explained [here]({{< ref "getting-started/import-apis#import-apis-via-the-dashboard-api" >}}). The import function will now accept an existing Tyk OAS API definition, the process is the same as for a Tyk Classic API definition.
 
 #### Importing an OpenAPI Document
 

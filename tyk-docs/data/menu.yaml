@@ -105,6 +105,78 @@ menu:
         path: /api-management/upstream-authentication
         category: Page
         show: False
+      - title: "Rate Limiting"
+        path: /api-management/rate-limit
+        category: Page
+        show: True
+      - title: "Security Policy and Access Keys"
+        path: /api-management/policies
+        category: Page
+        show: True
+      - title: "Certificates"
+        path: /api-management/certificates
+        category: Page
+        show: True
+      - title: "Security Best Practices"
+        category: Page
+        show: True
+        path: /api-management/security-best-practices
+      - title: "Gateway Configuration"
+        category: Directory
+        show: True
+        menu:
+          - title: "Introduction"
+            path: /api-management/gateway-config-introduction
+            category: Page
+            show: True
+          - title: "Tyk OAS API"
+            path: /api-management/gateway-config-tyk-oas
+            category: Page
+            show: True
+          - title: "Tyk Classic API"
+            path: /api-management/gateway-config-tyk-classic
+            category: Page
+            show: True
+      - title: "API Versioning"
+        path: /api-management/api-versioning
+        category: Page
+        show: True
+      - title: "Identity Management"
+        path: /api-management/external-service-integration
+        category: Page
+        show: True
+      - title: "Custom Plugins"
+        category: Directory
+        show: True
+        menu:
+          - title: "Overview"
+            path: /api-management/plugins/overview
+            category: Page
+            show: True
+          - title: "Plugin Types"
+            path: /api-management/plugins/plugin-types
+            category: Page
+            show: True
+          - title: "Golang Plugins"
+            path: /api-management/plugins/golang
+            category: Page
+            show: True
+          - title: "Javscript Plugins"
+            path: /api-management/plugins/javascript
+            category: Page
+            show: True
+          - title: "Rich Plugins"
+            path: /api-management/plugins/rich-plugins
+            category: Page
+            show: True
+          - title: "Advance Configuration"
+            path: /api-management/plugins/advance-config
+            category: Page
+            show: True
+      - title: "User Management"
+        path: /api-management/user-management
+        category: Page
+        show: True
       - title: "Automations Tools"
         category: Directory
         show: True
@@ -125,55 +197,12 @@ menu:
         path: /api-management/dashboard-configuration
         category: Page
         show: True
-      - title: "Identity Management"
-        path: /api-management/external-service-integration
-        category: Page
-        show: True
-      - title: "API Versioning"
-        path: /api-management/api-versioning
+      - title: "Manage Environments"
+        path: /api-management/multiple-environments
         category: Page
         show: True
       - title: "Troubleshooting"
         path: /api-management/troubleshooting-debugging
-        category: Page
-      - title: "Gateway Configuration"
-        category: Directory
-        show: True
-        menu:
-          - title: "Introduction"
-            path: /api-management/gateway-config-introduction
-            category: Page
-            show: True
-          - title: "Tyk OAS API"
-            path: /api-management/gateway-config-tyk-oas
-            category: Page
-            show: True
-          - title: "Tyk Classic API"
-            path: /api-management/gateway-config-tyk-classic
-            category: Page
-            show: True
-      - title: "Rate Limiting"
-        path: /api-management/rate-limit
-        category: Page
-        show: True
-      - title: "Security Policy and Access Keys"
-        path: /api-management/policies
-        category: Page
-        show: True
-      - title: "Certificates"
-        path: /api-management/certificates
-        category: Page
-        show: True
-      - title: "API Versioning"
-        path: /api-management/api-versioning
-        category: Page
-        show: True
-      - title: "User Management"
-        path: /api-management/user-management
-        category: Page
-        show: True
-      - title: "Manage Environments"
-        path: /api-management/multiple-environments
         category: Page
         show: True
       - title: "Manage APIs"
@@ -430,38 +459,6 @@ menu:
               - title: "Version data graphs"
                 category: Page
                 show: False
-      - title: "Publish APIs"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            category: Directory
-            show: False
-            menu:
-          - title: "Getting started"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /product-stack/tyk-enterprise-developer-portal/getting-started/getting-started-with-enterprise-portal
-                category: Page
-                show: True
-              - title: "1. Connect to a provider (Tyk Self-Managed)"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/with-tyk-self-managed-as-provider
-                category: Page
-                show: True
-              - title: "2. Create API Product and Plans"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/create-api-product-and-plan
-                category: Page
-                show: True
-              - title: "3. Publish API Products and Plans"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/publish-api-products-and-plans
-                category: Page
-                show: True
-              - title: "4. Customise the menu of live portal"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/customise-menus
-                category: Page
-                show: True
       - title: "Async APIs"
         category: Directory
         show: True
@@ -544,14 +541,6 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Security Best Practices"
-        category: Page
-        show: True
-        path: /api-management/security-best-practices
-      - title: "Troubleshooting"
-        path: /api-management/troubleshooting-debugging
-        category: Page
-        show: True
   - title: "Product Stack"
     path: /tyk-stack
     category: Label
@@ -1105,291 +1094,6 @@ menu:
                     path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/zipkin
                     category: Page
                     show: True
-          - title: "Custom plugins"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /plugins
-                category: Page
-                show: True
-              - title: "Quickstarts"
-                category: Directory
-                show: true
-                menu:
-                  - title: "Go"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /plugins/tutorials/quick-starts/go/quickstart
-                        category: Page
-                        show: True
-                      - title: "Dashboard"
-                        path: /plugins/tutorials/quick-starts/go/dashboard
-                        category: Page
-                        show: True
-                      - title: "Open source"
-                        path: /plugins/tutorials/quick-starts/go/open-source
-                        category: Page
-                        show: True
-              - title: "Plugins Hub"
-                path: /plugins/plugin-hub
-                catgory: Page
-                show: True
-              - title: "API Configuration"
-                category: Directory
-                show: true
-                menu:
-                  - title: "Overview"
-                    path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/overview
-                    category: Page
-                    show: True
-                  - title: "Tyk OAS configuration"
-                    path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/oas
-                    category: Page
-                    show: True
-                  - title: "Tyk Classic configuration"
-                    path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/classic
-                    category: Page
-                    show: True
-              - title: "Plugin Types"
-                path: /plugins/plugin-types/plugintypes
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /plugins/plugin-types/plugintypes
-                    category: Page
-                    show: True
-                  - title: "Request Plugins"
-                    path: /plugins/plugin-types/request-plugins
-                    category: Page
-                    show: True
-                  - title: "Authentication Plugins"
-                    path: /plugins/plugin-types/auth-plugins/auth-plugins
-                    category: Page
-                    show: True
-                  - title: "Authentication Plugin Caching"
-                    path: /plugins/plugin-types/auth-plugins/id-extractor
-                    category: Page
-                    show: True
-                  - title: "Response Plugins"
-                    path: /plugins/plugin-types/response-plugins
-                    category: Page
-                    show: True
-                  - title: "Analytics Plugins"
-                    path: /plugins/plugin-types/analytics-plugins/
-                    category: Page
-                    show: True
-                  - title: "Per-endpoint Plugins"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /product-stack/tyk-gateway/middleware/endpoint-plugin
-                        category: Page
-                        show: True
-                      - title: "Tyk OAS configuration"
-                        path: /product-stack/tyk-gateway/middleware/endpoint-plugin-tyk-oas
-                        category: Page
-                        show: True
-                      - title: "Tyk Classic configuration"
-                        path: /product-stack/tyk-gateway/middleware/endpoint-plugin-tyk-classic
-                        category: Page
-                        show: True
-              - title: "Plugin bundles"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Serving Plugins to Tyk Gateway"
-                    path: /plugins/how-to-serve-plugins
-                    category: Page
-                    show: False
-                  - title: "Overview"
-                    path: /plugins/how-to-serve-plugins/plugin-bundles
-                    category: Page
-                    show: True
-                  - title: "Tyk OAS configuration"
-                    path: /product-stack/tyk-gateway/advanced-configurations/plugins/bundles/oas
-                    category: Page
-                    show: True
-                  - title: "Tyk Classic configuration"
-                    path: /product-stack/tyk-gateway/advanced-configurations/plugins/bundles/classic
-                    category: Page
-                    show: True
-                  - title: "Bundle CLI tool"
-                    path: /product-stack/tyk-gateway/advanced-configurations/plugins/bundles/bundle-cli
-                    category: Page
-                    show: True
-              - title: "Supported Languages"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /plugins/supported-languages
-                    category: Page
-                    show: True
-                  - title: "Golang"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /plugins/supported-languages/golang
-                        category: Page
-                        show: True
-                      - title: "Writing Go Plugins"
-                        path: /product-stack/tyk-gateway/advanced-configurations/plugins/golang/writing-go-plugins
-                        category: Page
-                        show: True
-                      - title: "Go Plugin Development Flow"
-                        path: /product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-development-flow
-                        category: Page
-                        show: True
-                      - title: "Go Plugin Compiler"
-                        path: /product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler
-                        category: Page
-                        show: True
-                      - title: "Loading Go Plugins"
-                        path: /product-stack/tyk-gateway/advanced-configurations/plugins/golang/loading-go-plugins
-                        category: Page
-                        show: True
-                      - title: "Go Plugin Examples"
-                        path: /product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-examples
-                        category: Page
-                        show: True
-                      - title: "OpenTelemetry Instrumentation"
-                        path: /product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins
-                        category: Page
-                        show: True
-                  - title: "Javascript"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /plugins/supported-languages/javascript-middleware
-                        category: Page
-                        show: True
-                      - title: "JS Scripting Guide"
-                        path: /plugins/supported-languages/javascript-middleware/middleware-scripting-guide
-                        category: Page
-                        show: True
-                      - title: "JavaScript API"
-                        path: /plugins/supported-languages/javascript-middleware/javascript-api
-                        category: Page
-                        show: True
-                      - title: "Using JS plugins with Tyk Self-Managed"
-                        path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-pro
-                        category: Page
-                        show: True
-                      - title: "Using JS plugins with Tyk Hybrid"
-                        path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-hybrid
-                        category: Page
-                        show: True
-                      - title: "Using JS plugins with Tyk OSS"
-                        path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-ce
-                        category: Page
-                        show: True
-                      - title: "WAF (OSS) ModSecurity Plugin example"
-                        path: /plugins/supported-languages/javascript-middleware/waf-js-plugin
-                        category: Page
-                        show: True
-                  - title: "Rich Plugins"
-                    path: /plugins/supported-languages/rich-plugins
-                    category: Page
-                    show: True
-                  - title: "Rich Plugins - How do They work?"
-                    path: /plugins/supported-languages/rich-plugins/rich-plugins-work
-                    category: Page
-                    show: True
-                  - title: "Rich Plugins - Data Structures"
-                    path: /plugins/supported-languages/rich-plugins/rich-plugins-data-structures
-                    category: Page
-                    show: True
-                  - title: "Rich Plugin - Python"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /plugins/supported-languages/rich-plugins/python/python
-                        category: Page
-                        show: True
-                      - title: "Tutorial- Custom Authentication Plugin"
-                        path: /plugins/supported-languages/rich-plugins/python/custom-auth-python-tutorial
-                        category: Page
-                        show: True
-                      - title: "Tutorial - Add Python Plugin To Your Gateway"
-                        path: /plugins/supported-languages/rich-plugins/python/tutorial-add-demo-plugin-api
-                        category: Page
-                        show: True
-                      - title: "Tyk Python API methods"
-                        path: /plugins/supported-languages/rich-plugins/python/tyk-python-api-methods
-                        category: Page
-                        show: True
-                      - title: "Performance"
-                        path: /plugins/supported-languages/rich-plugins/python/performance
-                        category: Page
-                        show: True
-                  - title: "Rich Plugin - gRPC"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /plugins/supported-languages/rich-plugins/grpc
-                        category: Page
-                        show: True
-                      - title: "Key Concepts"
-                        path: /plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin
-                        category: Page
-                        show: True
-                      - title: "Getting Started"
-                        path: /plugins/supported-languages/rich-plugins/grpc/getting-started-python
-                        category: Page
-                        show: True
-                      - title: "Tutorials"
-                        category: Directory
-                        show: true
-                        menu:
-                          - title: "Create Java Request Transformation Plugin"
-                            path: /plugins/supported-languages/rich-plugins/grpc/request-transformation-java
-                            category: Page
-                            show: True
-                          - title: "Create .NET Custom Authentication Plugin"
-                            path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-dot-net
-                            category: Page
-                            show: True
-                          - title: "Create NodeJS Custom Authentication Plugin"
-                            path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs
-                            category: Page
-                            show: True
-                          - title: "Create Python Custom Authentication Plugin"
-                            path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-python
-                            category: Page
-                            show: True
-                      - title: "Performance"
-                        path: /plugins/supported-languages/rich-plugins/grpc/performance
-                        category: Page
-                        show: True
-                  - title: "Rich Plugin - Lua"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "LuaJIT"
-                        path: /plugins/supported-languages/rich-plugins/luajit
-                        category: Page
-                        show: True
-                      - title: "Requirements"
-                        path: /plugins/supported-languages/rich-plugins/luajit/requirements
-                        category: Page
-                        show: True
-                      - title: "Lua Plugin Tutorial"
-                        path: /plugins/supported-languages/rich-plugins/luajit/tutorial-add-demo-plugin-api
-                        category: Page
-                        show: True
-              - title: "CICD Plugin Build"
-                path: /plugins/get-started-selfmanaged/deploy-plugins
-                category: Page
-                show: False
           - title: "Other (non-HTTP) protocols"
             category: Directory
             show: True
@@ -1746,250 +1450,6 @@ menu:
             category: Directory
             show: False
             menu:
-      - title: "Tyk Enterprise Developer Portal"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            path: /tyk-developer-portal/tyk-enterprise-developer-portal
-            category: Page
-            show: True
-          - title: "Deploy"
-            category: Directory
-            show: True
-            menu:
-              - title: "Install Tyk Enterprise Developer Portal"
-                path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal
-                category: Page
-                show: True
-              - title: "Installation options"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/overview
-                    category: Page
-                    show: True
-                  - title: "Docker"
-                    path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker
-                    category: Page
-                    show: True
-                  - title: "Docker Compose"
-                    path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose
-                    category: Page
-                    show: True
-                  - title: "New helm chart"
-                    path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-new-helm
-                    category: Page
-                    show: True
-                  - title: "Legacy helm chart"
-                    path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-helm
-                    category: Page
-                    show: True
-                  - title: "Red Hat (RHEL / CentOS)"
-                    path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-rpm
-                    category: Page
-                    show: True
-              - title: "Bootstrap Tyk Enterprise Developer Portal"
-                path: /product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal
-                category: Page
-                show: True
-          - title: "Get started"
-            category: Directory
-            show: True
-            menu:
-              - title: "Tyk Enterprise Portal Concepts"
-                path: /product-stack/tyk-enterprise-developer-portal/getting-started/enterprise-portal-concepts
-                category: Page
-                show: True
-              - title: "Connect to Tyk Dashboard"
-                path: /product-stack/tyk-enterprise-developer-portal/getting-started/with-tyk-self-managed-as-provider
-                category: Page
-                show: True
-              - title: "Create API Products and plans"
-                path: /product-stack/tyk-enterprise-developer-portal/getting-started/create-api-product-and-plan
-                category: Page
-                show: True
-              - title: "Customize API Products' and plans' appearance"
-                path: /product-stack/tyk-enterprise-developer-portal/getting-started/customize-products-and-plans
-                category: Page
-                show: True
-              - title: "Create API consumer organisation and catalog"
-                path: /product-stack/tyk-enterprise-developer-portal/getting-started/create-orgs-and-catalogs
-                category: Page
-                show: True
-              - title: "Customize the sign-up form"
-                path: /product-stack/tyk-enterprise-developer-portal/getting-started/customize-sign-up-form
-                category: Page
-                show: True
-              - title: "Setup email notifications"
-                path: /product-stack/tyk-enterprise-developer-portal/getting-started/setup-email-notifications
-                category: Page
-                show: True
-          - title: "Manage API consumers"
-            category: Directory
-            show: True
-            menu:
-              - title: "Add Organisations"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/add-organisations
-                category: Page
-                show: True
-              - title: "Approve Self Registering Requests"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/approve-self-registering-requests
-                category: Page
-                show: True
-              - title: "Enable single sign on for admin users and developers"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso
-                category: Page
-                show: True
-              - title: "Invite Codes"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/invite-codes
-                category: Page
-                show: True
-              - title: "Manage API Consumer organisations"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations
-                category: Page
-                show: True
-              - title: "Manage API Consumers"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumers
-                category: Page
-                show: True
-              - title: "Manage API Users"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-users
-                category: Page
-                show: True
-              - title: "Manage Catalogues"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-catalogues
-                category: Page
-                show: True
-              - title: "Managing Access"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/managing-access
-                category: Page
-                show: True
-              - title: "Developer API Consumer Portal"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal
-                    category: Page
-                    show: True
-                  - title: "Register for a Portal"
-                    path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/register-portal
-                    category: Page
-                    show: True
-                  - title: "Reset Password"
-                    path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/reset-password
-                    category: Page
-                    show: True
-                  - title: "Access an API Product"
-                    path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product
-                    category: Page
-                    show: True
-          - title: "Manage API access"
-            category: Directory
-            show: True
-            menu:
-              - title: "API Access"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/api-access
-                category: Page
-                show: True
-              - title: "Approve or reject provisioning requests"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/approve-requests
-                category: Page
-                show: True
-              - title: "Manage Apps and Credentials"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/manage-apps-credentials
-                category: Page
-                show: True
-              - title: "Dynamic client registration"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration
-                category: Page
-                show: True
-              - title: "Configure rate limit keys"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/configuring-custom-rate-limit-keys
-                category: Page
-                show: True
-              - title: "Create Get started guides for your API Products"
-                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
-                category: Page
-                show: True
-          - title: "Customise the portal"
-            category: Directory
-            show: True
-            menu:
-              - title: "Customising UI appearance"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Quick Customisation"
-                    path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/quick-customisation
-                    category: Page
-                    show: True
-                  - title: "Complete customisation"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation
-                        category: Page
-                        show: True
-                      - title: "Developer Workflow"
-                        category: Directory
-                        show: True
-                        menu:
-                          - title: "Overview"
-                            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/developer-workflow
-                            category: Page
-                            show: True
-                          - title: "File Structure and Concepts"
-                            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts
-                            category: Page
-                            show: True
-                          - title: "Create a New Page Template"
-                            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/create-new-page-template
-                            category: Page
-                            show: True
-                      - title: "Email Workflow"
-                        path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization
-                        category: Page
-                        show: True
-                      - title: "Content Manager Workflow"
-                        category: Directory
-                        show: True
-                        menu:
-                          - title: "Overview"
-                            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow
-                            category: Page
-                            show: True
-                          - title: "Edit Manage Page Content"
-                            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content
-                            category: Page
-                            show: True
-                          - title: "Menus Customisation"
-                            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation
-                            category: Page
-                            show: True
-                      - title: "Upgrade the portal theme"
-                        path: /product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades
-                        category: Page
-                        show: True
-                      - title: "Templates"
-                        path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/templates
-                        category: Page
-                        show: True
-              - title: "Customize data models"
-                path: /product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model
-                category: Page
-                show: True
-              - title: "Configure webhooks"
-                path: /product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks
-                category: Page
-                show: True
-          - title: "Troubleshooting"
-            category: Directory
-            show: False
-            menu:
       - title: "Tyk Multi Data Centre Bridge"
         category: Directory
         show: True
@@ -2298,8 +1758,35 @@ menu:
             path: /product-stack/tyk-charts/tyk-oss-chart
             category: Page
             show: True
+  - title: "Portal"
+    category: Label
+    show: True
+    menu:
+      - title: "Overview"
+        path: /portal/overview
+        category: Page
+        show: True
+      - title: "Install and Configure"
+        path: /portal/install
+        category: Page
+        show: True
+      - title: "API Consumer"
+        path: /portal/api-consumer
+        category: Page
+        show: True
+      - title: "API Provider"
+        path: /portal/api-provider
+        category: Page
+        show: True
+      - title: "Customization"
+        path: /portal/customization
+        category: Page
+        show: True
+      - title: "Advance Configuration"
+        path: /portal/settings
+        category: Page
+        show: True
   - title: "Developer Support"
-    # path: /frequently-asked-questions/faq
     category: Label
     show: True
     menu:

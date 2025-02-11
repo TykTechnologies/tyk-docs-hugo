@@ -18,9 +18,9 @@ This means support for the following operations:
 
 ## What can you do with GraphQL and Tyk?
 
-You can securely expose existing GraphQL APIs using our [GraphQL core functionality]({{< ref "/content/graphql/creating-gql-api.md" >}}).
+You can securely expose existing GraphQL APIs using our [GraphQL core functionality]({{< ref "graphql/creating-gql-api" >}}).
 
-In addition to this, you can also use Tyk's integrated GraphQL engine to build a [Universal Data Graph]({{< ref "/content/universal-data-graph.md" >}}). The Universal Data Graph (UDG) lets you expose existing services as one single combined GraphQL API.
+In addition to this, you can also use Tyk's integrated GraphQL engine to build a [Universal Data Graph]({{< ref "universal-data-graph" >}}). The Universal Data Graph (UDG) lets you expose existing services as one single combined GraphQL API.
 
 See our video on getting started with GraphQL.
 

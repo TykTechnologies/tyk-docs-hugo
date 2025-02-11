@@ -33,7 +33,7 @@ This is a useful stack where you can get Prometheus, the Prometheus Operator, an
 
 If you have Prometheus Operator enabled on the cluster, it would look for “PodMonitor” or “ServiceMonitor” resources and scrap from specified port. The only thing you would need to modify here is the helm release name for Prometheus Operator.
 
-Also you can customize Prometheus Custom Metrics based on your analytics needs. We are using `tyk_http_requests_total` and `tyk_http_latency` described [here]({{<ref "/tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus">}}) for illustration:
+Also you can customize Prometheus Custom Metrics based on your analytics needs. We are using `tyk_http_requests_total` and `tyk_http_latency` described [here]({{<ref "tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus">}}) for illustration:
 
 ```bash
 NAMESPACE=tyk-oss
@@ -83,7 +83,7 @@ On Prometheus Dashboard, you can see the Pump is listed as one of the target and
 
 {{< img src="/img/diagrams/pump-prometheus-1.png" alt="pump-prometheus" >}}
 
-You can check our [Guide on Monitoring API with Prometheus]({{<ref "/tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus#useful-queries">}}) for a list of useful queries you can setup and use.
+You can check our [Guide on Monitoring API with Prometheus]({{<ref "tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus#useful-queries">}}) for a list of useful queries you can setup and use.
 
 e.g. The custom metrics tyk_http_requests_total can be retrieved:
 
