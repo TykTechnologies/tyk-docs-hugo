@@ -330,6 +330,7 @@ securitySchemes: {
         "petstore_auth": {
           "enabled": true,
           "header": {
+            "enabled": true,
             "name": "Authorization"
           }
         }
@@ -367,6 +368,7 @@ securitySchemes: {
         "petstore_auth": {
           "enabled": true,
           "header": {
+            "enabled": true,
             "name": "Authorization"
           }
         }
@@ -417,6 +419,7 @@ Example:
             "petstore_auth": {
               "enabled": true,
               "header": {
+                "enabled": true,
                 "name": "Authorization"
               },
               "allowedAccessTypes": [
@@ -504,17 +507,7 @@ For the above OAS configuration, Tyk looks at only the first `security` object:
 ```
 Please observe the presence of the `baseIdentityProvider` field, as this is required when enabling multiple authentication mechanisms at the same time. See [Multiple Auth documentation]({{< ref "api-management/client-authentication#combine-authentication-methods" >}}) for more details.
 
-#### Other Authentication mechanisms
-
-For now, the only authentication mechanisms enabled with OAS API Definition configuration are: 
-- Authentication Token
-- Basic Authentication
-- JSON Web Token (JWT)
-- Tyk as OAuth authorization server
-
-To find out about the other client authentication methods supported by Tyk, see [Client Authentication]({{< ref "api-management/client-authentication" >}}).
-
-#### Automatically protecting OAS API Definition APIs
+#### Automatically protecting Tyk OAS APIs
 
 All the Authentication mechanisms documented above can be automatically configured by Tyk at the time of import if the request is followed by the `authentication=true` query parameter. (Import task link)
 
