@@ -438,3 +438,8 @@ Upstream Authentication is configured from the **Settings** tab of the Tyk OAS A
 Select **OAuth** from the choice in the **Authentication Method** drop-down, then you can provide the header name, authorization server token URL and select **Resource Owner Password Credentials** to reveal the configuration for the credentials to be passed to the auth server.
 
 {{< img src="/img/dashboard/api-designer/upstream-oauth-password-grant.png" alt="Tyk OAS API Designer showing Upstream OAuth password grant configuration options" >}}
+
+
+### Note:
+
+Any error encountered in the communication with the OAuth server will generate an `UpstreamOAuthError` event. This event can be used to trigger a webhook to alert the system administrator of the issue.
