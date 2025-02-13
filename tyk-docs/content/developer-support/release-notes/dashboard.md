@@ -1217,10 +1217,10 @@ Tyk Dashboard now runs on Go 1.23, bringing security and performance improvement
 <ul>
 <li>
 <details>
-<summary>High Priority CVEs Fixed</summary>
+<summary>Critical Priority CVEs Fixed</summary>
 
 Fixed the following high-priority CVE identified in the Dashboard UI, providing increased protection and improved security:
-    - [CVE-2025-21615]([https://nvd.nist.gov/vuln/detail/CVE-2025-21615])
+    - [CVE-2025-21613]([https://nvd.nist.gov/vuln/detail/CVE-2025-21613])
 </details>
 </li>
 </ul>
