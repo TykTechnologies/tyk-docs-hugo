@@ -442,4 +442,4 @@ Select **OAuth** from the choice in the **Authentication Method** drop-down, the
 
 ### Note:
 
-Any error encountered in the communication with the OAuth server will generate an `UpstreamOAuthError` event. This event can be used to trigger a webhook to alert the system administrator of the issue.
+Any error encountered in the communication with the OAuth server will generate an `UpstreamOAuthError` event. This event can be used to trigger an event handler, for example you could use a [webhook]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) to alert the system administrator of the issue.
