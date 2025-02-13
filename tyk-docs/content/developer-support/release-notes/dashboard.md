@@ -1220,7 +1220,7 @@ Tyk Dashboard now runs on Golang 1.23, bringing security and performance improve
 <details>
 <summary>Critical Priority CVEs Fixed</summary>
 
-Fixed the following high-priority CVE identified in the Dashboard UI, providing increased protection and improved security:
+Fixed the following critical priority CVE identified in the Dashboard UI, providing increased protection and improved security:
     - [CVE-2025-21613](https://nvd.nist.gov/vuln/detail/CVE-2025-21613)
 </details>
 </li>
