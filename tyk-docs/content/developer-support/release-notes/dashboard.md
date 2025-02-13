@@ -39,11 +39,11 @@ Our minor releases are supported until our next minor comes out.
 
 ### 5.7.2 Release Notes
 
-#### Release Date xxx
+#### Release Date 14 February 2025
 
 #### Release Highlights
 
-This release focuses mainly on a security fix. 
+This release focuses mainly on a security fix. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.7.2" >}}) below.
 
 #### Breaking Changes
 
@@ -97,19 +97,11 @@ No changes have been implemented in this release.
 <ul>
 <li>
 <details>
-<summary>Critical Priority CVE Fixed</summary>
+<summary>High priority CVEs fixed</summary>
 
-- Fixed the following critical-priority CVE identified in the Dashboard UI, providing increased protection and improved security:
-    - [CVE-2025-21613]([https://nvd.nist.gov/vuln/detail/CVE-2025-21613])
-</details>
-</li>
-<li>
-<details>
-<summary>High Priority CVE Fixed</summary>
-
-- Fixed the following CVE:
-    - [CVE-2025-21614]([https://nvd.nist.gov/vuln/detail/CVE-2025-21614])
-
+Fixed the following high priority CVEs identified in the Tyk Dashboard, providing increased protection against security vulnerabilities:
+- [CVE-2025-21613](https://nvd.nist.gov/vuln/detail/CVE-2025-21613)
+- [CVE-2025-21614](https://nvd.nist.gov/vuln/detail/CVE-2025-21614)
 </details>
 </li>
 </ul>
