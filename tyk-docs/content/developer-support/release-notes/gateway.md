@@ -1479,11 +1479,11 @@ links to API documentation and FAQs. You can copy it from the previous release. 
 
 ### 5.3.10 Release Notes
 
-#### Release Date xxx
+#### Release Date 14 February 2025
 
 #### Release Highlights
 
-This release contains bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.10">}}) below.
+In this release, we upgraded the Golang version to `v1.23` for security enhancement and fixed an API authentication issue with redirects. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.10">}}) below.
 
 #### Breaking Changes
 
@@ -1539,14 +1539,14 @@ If you are upgrading to 5.3.10, please follow the detailed [upgrade instructions
 <ul>
 <li>
 <details>
-<summary>Upgrade to Go 1.23</summary>
+<summary>Upgraded to Golang 1.23</summary>
 
-Tyk Gateway now runs on Go 1.23, bringing security and performance improvements. Key changes include unbuffered Timer/Ticker channels, removal of 3DES cipher suites, and updates to X509KeyPair handling. Users may need to adjust their setup for compatibility.
+Tyk Gateway now runs on Golang 1.23, bringing security and performance improvements. Key changes include unbuffered Timer/Ticker channels, removal of 3DES cipher suites, and updates to X509KeyPair handling. Users may need to adjust their setup for compatibility.
 </details>
 </li>
 <li>
 <details>
-<summary>API Authentication Issue Resolved During URL Rewrite, Improving User Access Control</summary>
+<summary>Resolved API authentication issue while handling redirects using "tyk://" Scheme</summary>
 
 This fix ensures that when API A redirects to API B using the tyk:// scheme, API B will now correctly authenticate using its own credentials, improving access control and preventing access denials. Users can now rely on the expected authentication flow without workarounds, providing a smoother experience when integrating APIs.
 </details>
