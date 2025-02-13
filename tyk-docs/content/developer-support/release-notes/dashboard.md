@@ -1212,6 +1212,21 @@ Tyk Dashboard now runs on Go 1.23, bringing security and performance improvement
 </li>
 </ul>
 
+##### Security Fixes
+
+<ul>
+<li>
+<details>
+<summary>High Priority CVEs Fixed</summary>
+
+Fixed the following high-priority CVE identified in the Dashboard UI, providing increased protection and improved security:
+    - [CVE-2025-21615]([https://nvd.nist.gov/vuln/detail/CVE-2025-21615])
+</details>
+</li>
+</ul>
+
+---
+
 ### 5.3.9 Release Notes
 
 #### Release Date 31 December 2024
