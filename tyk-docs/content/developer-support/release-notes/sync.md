@@ -19,15 +19,15 @@ Our minor releases are supported until our next minor comes out.
 
 ## 2.0 Release Notes
 
-### 2.0.3 Release Notes
+### 2.0.4 Release Notes
 
 #### Release Date 07 February 2025
 
 #### Release Highlights
 
-Tyk Sync 2.0.3 has been updated to fix a critical security vulnerability.
+Tyk Sync 2.0.4 has been updated to fix a critical security vulnerability.
 
-Please refer to the [changelog]({{< ref "#Changelog-v2.0.3">}}) below for detailed explanation.
+Please refer to the [changelog]({{< ref "#Changelog-v2.0.4">}}) below for detailed explanation.
 
 #### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
@@ -42,12 +42,12 @@ For users currently on v2.0.0, we strongly recommend promptly upgrading to the l
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
 #### Downloads
-- [Docker image v2.0.3](https://hub.docker.com/r/tykio/tyk-sync/tags?page=&page_size=&ordering=-name&name=v2.0.3)
+- [Docker image v2.0.4](https://hub.docker.com/r/tykio/tyk-sync/tags?page=&page_size=&ordering=-name&name=v2.0.4)
   - ```bash
-    docker pull tykio/tyk-sync:v2.0.3
+    docker pull tykio/tyk-sync:v2.0.4
     ```
 
-#### Changelog {#Changelog-v2.0.3}
+#### Changelog {#Changelog-v2.0.4}
 
 ##### Fixed
 
