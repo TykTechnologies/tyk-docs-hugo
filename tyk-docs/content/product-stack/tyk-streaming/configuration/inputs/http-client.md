@@ -731,7 +731,7 @@ Default: `true`
 
 ### stream.scanner
 
-The [scanner]({{< ref "/product-stack/tyk-streaming/configuration/scanners/overview" >}}) by which the stream of bytes consumed will be broken out into individual messages. Scanners are useful for processing large sources of data without holding the entirety of it within memory. For example, the `csv` scanner allows you to process individual CSV rows without loading the entire CSV file in memory at once.
+The [scanner]({{< ref "product-stack/tyk-streaming/configuration/scanners/overview" >}}) by which the stream of bytes consumed will be broken out into individual messages. Scanners are useful for processing large sources of data without holding the entirety of it within memory. For example, the `csv` scanner allows you to process individual CSV rows without loading the entire CSV file in memory at once.
 
 
 Type: `scanner`  

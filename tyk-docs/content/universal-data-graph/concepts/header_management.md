@@ -31,7 +31,7 @@ Global headers can be configured via Tyk API Definition. The correct place to do
 }
 ```
 
-Global headers now have access to all [request context variables]({{< ref "/content/context-variables.md" >}}).
+Global headers now have access to all [request context variables]({{< ref "context-variables" >}}).
 
 By default, any header that is configured as a global header, will be forwarded to all data sources of the UDG.
 
@@ -56,7 +56,7 @@ Data source headers can be configured via Tyk API Definition and via Tyk Dashboa
 }
 ```
 
-Data source headers now have access to all [request context variables]({{< ref "/content/context-variables.md" >}}).
+Data source headers now have access to all [request context variables]({{< ref "context-variables" >}}).
 
 ### Headers priority order
 

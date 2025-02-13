@@ -71,7 +71,7 @@ Install and manage Tyk yourself with our open-source API Gateway.
 
 ## Not Sure Which to Choose?
 
-Visit our [Comparison Page]({{< ref "/apim" >}}) to understand the different installation types and their benefits.
+Visit our [Comparison Page]({{< ref "apim" >}}) to understand the different installation types and their benefits.
 
 Also, feel free to:
 

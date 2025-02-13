@@ -337,7 +337,7 @@ tyk-gateway:
 
 *Control Port*
 
-Set `tyk-gateway.gateway.control.enabled` to true will allow you to run the [Gateway API]({{<ref "/tyk-gateway-api">}}) on a separate port and protect it behind a firewall if needed.
+Set `tyk-gateway.gateway.control.enabled` to true will allow you to run the [Gateway API]({{<ref "tyk-gateway-api">}}) on a separate port and protect it behind a firewall if needed.
 
 #### Mounting APIs, Policies, and Middlewares
 

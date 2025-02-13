@@ -12,7 +12,7 @@ Within that chain are a highly configurable set of optional middleware that can,
 - apply processing to [API requests](#middleware-applied-to-the-api-request) before they are proxied to the upstream service
 - apply customization to the [API response](#middleware-applied-to-the-api-response) prior to it being proxied back to the client
 
-Tyk also supports a powerful custom plugin feature that enables you to add custom processing at different stages in the processing chains. For more details on custom plugins please see the [dedicated guide]({{< ref "plugins" >}}).
+Tyk also supports a powerful custom plugin feature that enables you to add custom processing at different stages in the processing chains. For more details on custom plugins please see the [dedicated guide]({{< ref "api-management/plugins/overview#" >}}).
 
 ## Middleware applied to the API Request
 

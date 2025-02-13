@@ -97,7 +97,7 @@ If the upstream subscription GraphQL API is protected please enable the authenti
 
 {{< /note >}}
 
-There is no need to enable subscriptions separately. They are supported alongside GraphQL as a standard. The only requirement for subscriptions to work is to [enable WebSockets]({{< ref "graphql/graphql-websockets.md" >}}) in your Tyk Gateway configuration file.
+There is no need to enable subscriptions separately. They are supported alongside GraphQL as a standard. The only requirement for subscriptions to work is to [enable WebSockets]({{< ref "graphql/graphql-websockets" >}}) in your Tyk Gateway configuration file.
 
 Here's a general sequence diagram showing how subscriptions in Tyk work exactly:
 

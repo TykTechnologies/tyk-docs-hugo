@@ -307,4 +307,4 @@ If you prefer to introspect GraphQL all at once, you can do that by sending this
   
 ```
 
-Tyk also allows you to block introspection queries for security reasons if you wish to do so. More information on how to do that is provided [here]({{< ref "/graphql/introspection#turning-off-introspection">}}).
+Tyk also allows you to block introspection queries for security reasons if you wish to do so. More information on how to do that is provided [here]({{< ref "graphql/introspection#turning-off-introspection">}}).

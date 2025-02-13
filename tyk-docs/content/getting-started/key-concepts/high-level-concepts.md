@@ -85,7 +85,7 @@ We provide a flexible way for you to [export a Tyk OAS API definition]({{< ref "
 
 Your OpenAPI description is a living document that describes your upstream service. When this is updated (for example, due to the addition of a new endpoint) instead of having to create a new Tyk OAS API to expose this, you can easily [update the OpenAPI]({{< ref "getting-started/using-oas-definitions/update-an-oas-api" >}}) part of your Tyk OAS API with the new OpenAPI document.
 
-When you need to make breaking changes as your services and APIs evolve, it's easy to [use versioning with Tyk OAS APIs]({{< ref "/getting-started/using-oas-definitions/versioning-an-oas-api" >}}).
+When you need to make breaking changes as your services and APIs evolve, it's easy to [use versioning with Tyk OAS APIs]({{< ref "getting-started/using-oas-definitions/versioning-an-oas-api" >}}).
 
 ## Community Feedback
  
