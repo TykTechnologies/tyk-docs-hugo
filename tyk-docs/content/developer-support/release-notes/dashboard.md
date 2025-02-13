@@ -43,7 +43,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-This release focuses mainly on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.7.2" >}}) below.
+This release focuses mainly on a security fix. 
 
 #### Breaking Changes
 
@@ -89,14 +89,18 @@ If you are upgrading to 5.7.2, please follow the detailed [upgrade instructions]
   - [tyk-charts v2.2.0]({{< ref "developer-support/release-notes/helm-chart#220-release-notes" >}})
 
 #### Changelog {#Changelog-v5.7.2}
-##### Fixed
+
+No changes have been implemented in this release.
+
+##### Security Fixes
 
 <ul>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>High Priority CVEs Fixed</summary>
 
-Add changelog description 
+Fixed the following high-priority CVE identified in the Dashboard UI, providing increased protection and improved security:
+    - [CVE-2025-21615]([https://nvd.nist.gov/vuln/detail/CVE-2025-21615])
 </details>
 </li>
 </ul>

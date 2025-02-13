@@ -50,7 +50,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-This release focuses mainly on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.7.2">}}) below.
+Gateway 5.7.2 was version bumped only, to align with Dashboard 5.7.2. Subsequently, no changes were encountered in release 5.7.2. For further information please see the release notes for Dashboard v5.7.2
 
 #### Breaking Changes
 There are no breaking changes in this release.
@@ -98,17 +98,8 @@ If you are upgrading to 5.7.2, please follow the detailed [upgrade instructions]
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 #### Changelog {#Changelog-v5.7.2} 
-##### Fixed
 
-<ul>
-<li>
-<details>
-<summary>Add changelog summary</summary>
-
-Add changelog description
-</details>
-</li>
-</ul>
+Since this release was version bumped only to align with Dashboard v5.7.2, no changes were encountered in this release.
 
 ---
 
@@ -1544,6 +1535,75 @@ Repeat the release notes section above for every patch here
 links to API documentation and FAQs. You can copy it from the previous release. -->
 
 ## 5.3 Release Notes
+
+### 5.3.10 Release Notes
+
+#### Release Date xxx
+
+#### Release Highlights
+
+This release contains bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.10">}}) below.
+
+#### Breaking Changes
+
+This release has no breaking changes.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases                                               | Backwards Compatibility |
+| --------------- | ------------------------------------------------------------------ | ----------------------- |
+| 5.3.10           | MDCB v2.5.1                                                        | MDCB v2.5.1             |
+|                 | Operator v0.17                                                     | Operator v0.16          |
+|                 | Sync v1.4.3                                                        | Sync v1.4.3             |
+|                 | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v2.0.0 | Helm all versions       |
+|                 | EDP v1.8.3                                                         | EDP all versions        |
+|                 | Pump v1.9.0                                                        | Pump all versions       |
+|                 | TIB (if using standalone) v1.5.1                                   | TIB all versions        |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                        | Tested Versions       | Compatible Versions   | Comments                                                                                   |
+| ------------------------------------------------------------- | --------------------- | --------------------- | ------------------------------------------------------------------------------------------ |
+| [Go](https://go.dev/dl/)                                      |  1.22 (GW)            |  1.22 (GW)            | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.22 |
+| [Redis](https://redis.io/download/)                           | 6.2.x, 7.x            | 6.2.x, 7.x            | Used by Tyk Gateway                                                                        |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x                | v3.0.x                | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})           |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the
+ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release 
+
+#### Upgrade Instructions
+
+If you are upgrading to 5.3.10, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.3.10)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.3.10
+    ```
+- Helm charts
+  - [tyk-charts v2.0.0]({{<ref "developer-support/release-notes/helm-chart#200-release-notes">}})
+- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+
+#### Changelog {#Changelog-v5.3.10}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Add changelog summary</summary>
+
+Add changelog description 
+</details>
+</li>
+</ul>
 
 ### 5.3.9 Release Notes
 
