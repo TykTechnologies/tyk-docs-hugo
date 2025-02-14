@@ -95,7 +95,7 @@ In case you want to add GraphQL data source at a lower level of your schema - ty
 2. From the right-hand side menu choose **GraphQL | Tyk** or **External GraphQL** depending on wheather your data source was previously created in Tyk or if it's an external service.
 Provide a data source name and URL.
 
-Above steps are explained in detail in our [Getting started pages]({{< ref "universal-data-graph/udg-getting-started/connect-datasource.md" >}}).
+Above steps are explained in detail in our [Getting started pages]({{< ref "universal-data-graph/udg-getting-started/connect-datasource" >}}).
 
 
 4. Tick the box next to `Add GraphQL operation` to see additional configuration fields. This will allow you to provide a query that will execute against the data source.

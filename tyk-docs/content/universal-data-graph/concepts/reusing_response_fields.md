@@ -75,7 +75,7 @@ https://people-api.dev/people
 
 The `Query.person` field needs to use its `id` argument to call the correct API endpoint.
 
-See [Concept: Arguments]({{< ref "/content/universal-data-graph/concepts/arguments.md" >}}) to learn more about it.
+See [Concept: Arguments]({{< ref "universal-data-graph/concepts/arguments" >}}) to learn more about it.
  ```
  https://people-api.dev/people/{{.arguments.id}}
  ```

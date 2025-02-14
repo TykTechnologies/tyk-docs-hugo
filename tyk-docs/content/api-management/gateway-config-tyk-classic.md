@@ -421,7 +421,7 @@ In this example we can see that the `Host` and `User-Agent` headers exist within
 
 * `jwt_signing_method`: Either HMAC or RSA - HMAC requires a shared secret while RSA requires a public key to use to verify against. Please see the section on JSON web tokens for more details on how to generate these.
 
-* `jwt_source`: Must either be a base64 encoded valid RSA/HMAC key or a url to a resource serving JWK, this key will then be used to validate inbound JWT and throttle them according to the centralised JWT options and fields set in the configuration. See [Dynamic public key rotation using public JWKs URL]({{< ref "/api-management/client-authentication#use-json-web-tokens-jwt" >}}) for more details on JWKs.
+* `jwt_source`: Must either be a base64 encoded valid RSA/HMAC key or a url to a resource serving JWK, this key will then be used to validate inbound JWT and throttle them according to the centralised JWT options and fields set in the configuration. See [Dynamic public key rotation using public JWKs URL]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}) for more details on JWKs.
 
 * `jwt_identity_base_field`: Identifies the user or identity to be used in the Claims of the JWT. This will fallback to `sub` if not found. This field forms the basis of a new "virtual" token that gets used after validation. It means policy attributes are carried forward through Tyk for attribution purposes.
     
@@ -641,7 +641,7 @@ For more details on CIDR notation, see [this Wikipedia entry](https://en.wikiped
 
 ### Tyk Operator
 
-Please consult the Tyk Operator supporting documentation for an example of how to [configure an IP allow list]({{< ref "/api-management/automations/operator#ip-allowlist" >}}) with Tyk Operator.
+Please consult the Tyk Operator supporting documentation for an example of how to [configure an IP allow list]({{< ref "api-management/automations/operator#ip-allowlist" >}}) with Tyk Operator.
 
 ## IP Blocklist (Middleware)
 
@@ -662,4 +662,4 @@ For more details on CIDR notation, see [this Wikipedia entry](https://en.wikiped
 
 ### Tyk Operator
 
-Please consult the Tyk Operator supporting documentation for an example of how to [configure an IP block list]({{< ref "/api-management/automations/operator#ip-blocklist" >}}) with Tyk Operator.
+Please consult the Tyk Operator supporting documentation for an example of how to [configure an IP block list]({{< ref "api-management/automations/operator#ip-blocklist" >}}) with Tyk Operator.

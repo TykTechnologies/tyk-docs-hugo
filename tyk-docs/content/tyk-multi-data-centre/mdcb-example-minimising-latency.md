@@ -127,5 +127,5 @@ We’ve provided a simple script to tear down the demo as follows:
 ---
 
 Next Steps
- - [MDCB reference guide]({{< ref "/tyk-multi-data-centre/mdcb-configuration-options.md" >}})
- - [MDCB Troubleshooting and FAQ]({{< ref "/developer-support/community" >}})
+ - [MDCB reference guide]({{< ref "tyk-multi-data-centre/mdcb-configuration-options" >}})
+ - [MDCB Troubleshooting and FAQ]({{< ref "developer-support/community" >}})

@@ -5,7 +5,7 @@ tags: ["Caching", "Cache", "Endpoint Cache", "selective caching", "middleware", 
 description: "Detail of the Endpoint Caching middleware"
 ---
 
-On this page we describe how to configure Tyk's API response cache per endpoint within an API. This gives granular control over which paths are cached and allows you to vary cache configuration across API versions. For details on the API level (Global) cache you should refer to the [global-cache]({{< ref "/basic-config-and-security/reduce-latency/caching/global-cache">}}) configuration page.
+On this page we describe how to configure Tyk's API response cache per endpoint within an API. This gives granular control over which paths are cached and allows you to vary cache configuration across API versions. For details on the API level (Global) cache you should refer to the [global-cache]({{< ref "basic-config-and-security/reduce-latency/caching/global-cache">}}) configuration page.
 
 When you use the API-level cache, Tyk will maintain a cache entry for each combination of request method, request path (endpoint) and API key (if authentication is enabled) for an API. The Endpoint Caching middleware gives you granular control over which paths are cached and allows you to vary cache configuration across API versions.
 
@@ -28,7 +28,7 @@ For each endpoint in your API with endpoint caching middleware enabled, you can 
 {{< note success >}}
 **Note** 
 
-It's important to note that the [cache all safe requests]({{< ref "/basic-config-and-security/reduce-latency/caching#global-cache-safe-requests">}}) feature of the API-level cache will overrule the per-endpoint configuration so you must ensure that both are not enabled for the same API.
+It's important to note that the [cache all safe requests]({{< ref "basic-config-and-security/reduce-latency/caching#global-cache-safe-requests">}}) feature of the API-level cache will overrule the per-endpoint configuration so you must ensure that both are not enabled for the same API.
 {{< /note >}}
 
 #### Request-selective cache control

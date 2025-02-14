@@ -15,6 +15,8 @@ aliases:
   - /apim-best-practice/api-security-best-practice/governance
   - /basic-config-and-security/security
   - /basic-config-and-security/security/owasp-top-ten
+  - /tyk-configuration-reference/securing-system-payloads
+  - /tyk-configuration-reference/tyk-gateway-configuration-options/securing-system-payloads
 ---
 
 ## Overview
@@ -42,8 +44,8 @@ It is the responsibility of the API to handle this form of attack since it can a
 Authentication is a vital aspect of API security. Failure to do so, as noted by OWASP, leads to *Broken Authentication* posing a significant risk to both API providers and data.
 
 Tyk provides the following features and authentication mechanisms:
--  Prioritize secure methods, like [mutual TLS]({{< ref "/api-management/client-authentication#use-mutual-tls" >}}), over [basic authentication]({{< ref "/api-management/client-authentication#use-basic-authentication" >}}) wherever feasible.
-- API owners can integrate external Identity Providers (IdPs) supporting methods like [OpenID Connect]({{< ref "/api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}), [OAuth 2.0]({{< ref "/api-management/client-authentication#using-the-authorization-code-grant" >}}) or [JSON Web Tokens]({{< ref "/api-management/client-authentication#use-json-web-tokens-jwt" >}}).
+-  Prioritize secure methods, like [mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}), over [basic authentication]({{< ref "api-management/client-authentication#use-basic-authentication" >}}) wherever feasible.
+- API owners can integrate external Identity Providers (IdPs) supporting methods like [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}), [OAuth 2.0]({{< ref "api-management/client-authentication#using-the-authorization-code-grant" >}}) or [JSON Web Tokens]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}).
 - [Single Sign-On]({{< ref "api-management/external-service-integration#single-sign-on-sso" >}}) can be used for a centralized and trusted authentication source. API operators can choose from common authentication methods such as OAuth 2.0, LDAP, and SAML.
 - [Dynamic Client Registration]({{< ref "tyk-developer-portal/tyk-portal-classic/dynamic-client-registration#oauth-20-dynamic-client-registration-protocol-dcr" >}}), enables third-party authorization servers to issue client credentials via the Tyk Developer Portal. This streamlines Identity Management, eliminating the need to manage credentials across multiple systems.
 - Tyk's default authentication setup disallows credentials in URLs, reducing the risk of inadvertent exposure through backend logs.
@@ -109,7 +111,7 @@ Tyk offers several mechanisms to help protect an API from Security Misconfigurat
 - Use [response header manipulation]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) to remove or modify API sensitive information.
 - Use [response body manipulation]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) to remove or modify parts containing sensitive information.
 - [TLS]({{< ref "api-management/certificates" >}}) to ensure that clients use the right service and encrypt traffic.
-- [Mutual TLS]({{< ref "/api-management/client-authentication#use-mutual-tls" >}}) with both the clients and API to ensure that callers with explicitly allowed client certificates can connect to the endpoints.
+- [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) with both the clients and API to ensure that callers with explicitly allowed client certificates can connect to the endpoints.
 - [Error Templates]({{< ref "advanced-configuration/error-templates" >}}) can be used to return a response body based on status code and content type. This can help minimize the implementation details returned to the client.
 - [CORS functionality]({{< ref "api-management/gateway-config-tyk-classic#cors" >}}) allows the Tyk Gateway to limit API access to particular browser-based consumers.
 - [Policy Path-Based Permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}) and the [allowlist]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) plugin can be used to prevent clients from accessing API endpoints using non-authorized HTTP methods. For example, blocking the use of the DELETE method on an endpoint which should only accept GET requests.
@@ -118,7 +120,7 @@ Tyk offers several mechanisms to help protect an API from Security Misconfigurat
 - [Schema Introspection]({{< ref "graphql/introspection" >}}) ensures that the Tyk Dashboard automatically uses the schema of the upstream GraphQL API and can keep it synchronised if it changes.
 - [GraphQL Schema Validation]({{< ref "graphql/validation#schema-validation" >}}) prevents invalid schemas from being saved. This catches errors such as duplicate type names and usage of unknown types.
 - Third-party [Secret Storage]({{< ref "tyk-self-managed#manage-multi-environment-and-distributed-setups" >}}) to centralise configuration of sensitive data such as passwords. This data can then be dynamically referenced by Tyk configuration files, rather than being hard coded.
-- Users can can write their own [custom plugins]({{< ref "plugins" >}}) in a variety of languages, either directly or through gRPC calls, to implement their requirements.
+- Users can can write their own [custom plugins]({{< ref "api-management/plugins/overview#" >}}) in a variety of languages, either directly or through gRPC calls, to implement their requirements.
 
 The Ops team should also take reponsibility for monitoring the APIs for errors and patching accordingly. Regular [Penetration Tests](https://en.wikipedia.org/wiki/Penetration_test) should be scheduled to ensure the security of published services. Tyk, through our Professional Services or Partners, can assist in the process.
 
@@ -155,7 +157,7 @@ Authentication is the process of identifying API clients. It’s a broad topic, 
 
 **Implement Appropriate Authentication**
 
-Choose a suitable authentication approach based on the risk profile of the API. Is it publicly accessible or internal? Does it require user interaction or is it machine to machine? How sensitive is the data and functionality provided by the API? Simplistic approaches, such as [Bearer Tokens]({{< ref "/api-management/client-authentication#use-auth-tokens" >}}), can work for low risk, basic APIs, but for higher risk or more sophisticated APIs, it may be more appropriate to use a standards-based approach such as [OAuth 2.0]({{< ref "/api-management/client-authentication#use-tyk-as-an-oauth-20-authorization-server" >}}) or [OpenID Connect]({{< ref "/api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}). Furthermore, using an [external identity provider]({{< ref "/api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}}) can deliver additional benefits, such as [single sign-on]({{< ref "api-management/external-service-integration#single-sign-on-sso" >}}), as well as multi-factor authentication approaches such as [biometric verification](https://www.okta.com/identity-101/biometrics-secure-authentication).
+Choose a suitable authentication approach based on the risk profile of the API. Is it publicly accessible or internal? Does it require user interaction or is it machine to machine? How sensitive is the data and functionality provided by the API? Simplistic approaches, such as [Bearer Tokens]({{< ref "api-management/client-authentication#use-auth-tokens" >}}), can work for low risk, basic APIs, but for higher risk or more sophisticated APIs, it may be more appropriate to use a standards-based approach such as [OAuth 2.0]({{< ref "api-management/client-authentication#use-tyk-as-an-oauth-20-authorization-server" >}}) or [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}). Furthermore, using an [external identity provider]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}}) can deliver additional benefits, such as [single sign-on]({{< ref "api-management/external-service-integration#single-sign-on-sso" >}}), as well as multi-factor authentication approaches such as [biometric verification](https://www.okta.com/identity-101/biometrics-secure-authentication).
 
 **Handle Data Securely**
 
@@ -319,7 +321,7 @@ Modern APIs are often backed by large technology stacks composed of numerous com
 **Secure Connections**
 
 
-Use [transport layer security]({{< ref "api-management/certificates" >}}) where possible. Most importantly, on inbound connections to the gateway and outbound connection from the gateway to the upstream API and other services. TLS can also be used as a form of authentication, using [Mutual TLS]({{< ref "/api-management/client-authentication#use-mutual-tls" >}}).
+Use [transport layer security]({{< ref "api-management/certificates" >}}) where possible. Most importantly, on inbound connections to the gateway and outbound connection from the gateway to the upstream API and other services. TLS can also be used as a form of authentication, using [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}).
 
 **Limit Functionality**
 
@@ -341,6 +343,29 @@ Prevent sensitive data, such as usernames, passwords, license keys and other sec
 
 Modify or remove sensitive data from responses by using [transforms]({{< ref "advanced-configuration/transform-traffic" >}}) to alter the [response headers]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) and [body]({{< ref "advanced-configuration/transform-traffic/response-body" >}}).
 
+<a id="sign-payloads"></a>
+
+**Sign payloads between the Dashboard and Gateway**
+
+
+Using payload signatures for the communication between Tyk Gateway and Tyk Dashboard is strongly recommended as an additional security measure, particularly in production environments.
+
+Enable payload signatures in the Gateway configuration (`tyk.conf` or environment variable) by setting `allow_insecure_configs` to `false` and then provide the public key (certificate) to the Gateway in the `public_key_path`.
+
+You'll need to provide the private key to the Dashboard using the `private_key_path` option in the appropriate configuration (`tyk_analytics.conf` or environment variable). This will allow your Dashboard to sign all of its payloads using the private key.
+
+You can easily create a public / private keypair with:
+
+```{.copyWrapper}
+# private key
+openssl genrsa -out privkey.pem 2048
+
+# public key
+openssl rsa -in privkey.pem -pubout -out pubkey.pem
+```
+
+Make sure to keep your private key safe!
+
 <br>
 
 ## Governing APIs Effectively
@@ -349,7 +374,7 @@ APIs need to be managed and governed just like any other resource, otherwise org
 
 **Restrict Version Availability**: Enforce the expiry of [API versions]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}}) that are planned for deprecation, by setting a sunset date, beyond which they will not be accessible.
 
-**Enforce Key Expiry**: In many situations it’s best to issue API keys that have a short, finite lifetime, especially when serving anonymous, external consumers. Set [expiry dates]({{< ref "api-management/policies#access-key-expiry" >}}) for API keys, or use ephemeral credentials with complementary authentication techniques that support key renewal, such as [OAuth 2.0 refresh tokens]({{< ref "/api-management/client-authentication#using-refresh-tokens" >}}) and [dynamic client registration]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration" >}}). Then, should an API key fall into the wrong hands, there’s a chance that it has already expired.
+**Enforce Key Expiry**: In many situations it’s best to issue API keys that have a short, finite lifetime, especially when serving anonymous, external consumers. Set [expiry dates]({{< ref "api-management/policies#access-key-expiry" >}}) for API keys, or use ephemeral credentials with complementary authentication techniques that support key renewal, such as [OAuth 2.0 refresh tokens]({{< ref "api-management/client-authentication#using-refresh-tokens" >}}) and [dynamic client registration]({{< ref "portal/api-provider#dynamic-client-registration" >}}). Then, should an API key fall into the wrong hands, there’s a chance that it has already expired.
 
 **Use Standardized Specifications**: Use the [OpenAPI Specification](https://en.wikipedia.org/wiki/OpenAPI_Specification) standard to design APIs. These specification documents act as a source of truth that can generate [API configuration]({{< ref "getting-started/using-oas-definitions/import-an-oas-api" >}}) and [portal documentation]({{< ref "tyk-apis/tyk-portal-api/portal-documentation#create-documentation" >}}).
 
@@ -379,7 +404,7 @@ Tyk supports TLS connections and Mutual TLS. All TLS connections also support HT
 **Trusted Certificates**
 
 
-As part of using Mutual TLS, you can create a list of [trusted certificates]({{< ref "/api-management/client-authentication#how-does-mutual-tls-work" >}}).
+As part of using Mutual TLS, you can create a list of [trusted certificates]({{< ref "api-management/client-authentication#how-does-mutual-tls-work" >}}).
 
 **Certificate Pinning**
 
@@ -397,7 +422,7 @@ Tyk supports various ways to secure your APIs, including:
 * OAuth 2.0
 * OpenID Connect
 
-See [Authentication and Authorization]({{< ref "/api-management/client-authentication" >}}) for more details.
+See [Authentication and Authorization]({{< ref "api-management/client-authentication" >}}) for more details.
 
 **Security Policies**
 

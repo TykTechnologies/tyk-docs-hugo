@@ -143,7 +143,7 @@ Debugging a GraphQL API might require additional headers to be passed to the req
 
 {{< img src="/img/dashboard/udg/getting-started/headers.png" alt="Headers" >}}
 
-You can also [forward headers]({{< ref "graphql/gql-headers.md" >}}) from your client request to the upstream data sources.
+You can also [forward headers]({{< ref "graphql/gql-headers" >}}) from your client request to the upstream data sources.
 
 
 ### Logs

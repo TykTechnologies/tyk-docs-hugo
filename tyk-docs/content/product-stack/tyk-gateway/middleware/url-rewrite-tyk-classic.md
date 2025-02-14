@@ -5,15 +5,15 @@ description: "Using the URL Rewrite middleware with Tyk Classic APIs"
 tags: ["URL rewrite", "middleware", "per-endpoint", "Tyk Classic"]
 ---
 
-Tyk's [URL rewriter]({{< ref "/transform-traffic/url-rewriting" >}}) uses the concepts of triggers and rules to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk).
+Tyk's [URL rewriter]({{< ref "transform-traffic/url-rewriting" >}}) uses the concepts of triggers and rules to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk).
 
-URL rewrite triggers and rules are explained in detail [here]({{< ref "/product-stack/tyk-gateway/middleware/url-rewrite-middleware" >}}).
+URL rewrite triggers and rules are explained in detail [here]({{< ref "product-stack/tyk-gateway/middleware/url-rewrite-middleware" >}}).
 
 When working with Tyk Classic APIs the rules and triggers are configured in the Tyk Classic API Definition; this can be done manually within the `.json` file or from the API Designer in the Tyk Dashboard.
 
 If you want to use dynamic data from context variables, you must [enable]({{< ref "context-variables#enabling-context-variables-for-use-with-tyk-classic-apis" >}}) context variables for the API to be able to access them from the request header transform middleware.
 
-If you're using the newer Tyk OAS APIs, then check out [this]({{< ref "/product-stack/tyk-gateway/middleware/url-rewrite-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out [this]({{< ref "product-stack/tyk-gateway/middleware/url-rewrite-tyk-oas" >}}) page.
 
 If you're using Tyk Operator then check out the [configuring the URL rewriter in Tyk Operator](#tyk-operator) section below.
 
