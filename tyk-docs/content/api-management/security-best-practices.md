@@ -15,6 +15,7 @@ aliases:
   - /apim-best-practice/api-security-best-practice/governance
   - /basic-config-and-security/security
   - /basic-config-and-security/security/owasp-top-ten
+  - /tyk-configuration-reference/securing-system-payloads
 ---
 
 ## Overview
