@@ -16,6 +16,7 @@ aliases:
   - /basic-config-and-security/security
   - /basic-config-and-security/security/owasp-top-ten
   - /tyk-configuration-reference/securing-system-payloads
+  - /tyk-configuration-reference/tyk-gateway-configuration-options/securing-system-payloads
 ---
 
 ## Overview
@@ -341,6 +342,8 @@ Prevent sensitive data, such as usernames, passwords, license keys and other sec
 
 
 Modify or remove sensitive data from responses by using [transforms]({{< ref "advanced-configuration/transform-traffic" >}}) to alter the [response headers]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) and [body]({{< ref "advanced-configuration/transform-traffic/response-body" >}}).
+
+<a id="sign-payloads"></a>
 
 **Sign payloads between the Dashboard and Gateway**
 
