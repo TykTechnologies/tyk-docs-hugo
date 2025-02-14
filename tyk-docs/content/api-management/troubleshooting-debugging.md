@@ -909,7 +909,7 @@ aliases:
 
     **Solution**
 
-    See [System Payloads]({{< ref "tyk-configuration-reference/securing-system-payloads" >}}) for more details.
+    See [System Payloads]({{< ref "api-management/security-best-practices#sign-payloads" >}}) for more details.
 
 ## Pump
 
