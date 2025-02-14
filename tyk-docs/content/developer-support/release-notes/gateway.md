@@ -63,7 +63,7 @@ There are no breaking changes in this release.
 |----    |---- |---- |
 | 5.7.2 | MDCB v2.7.2     | MDCB v2.4.2 |
 |         | Operator v1.1.0  | Operator v0.17 |
-|         | Sync v2.0.1    | Sync v1.4.3 |
+|         | Sync v2.0.2    | Sync v1.4.3 |
 |         | Helm Chart v2.2  | Helm all versions |
 | | EDP v1.12 | EDP all versions |
 | | Pump v1.11.1 | Pump all versions |
@@ -74,7 +74,7 @@ There are no breaking changes in this release.
 
 | Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
 | ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
-| [Go](https://go.dev/dl/)                                     | 1.22  |  1.22  | [Go plugins]({{< ref "/plugins/supported-languages/golang" >}}) must be built using Go 1.22 | 
+| [Go](https://go.dev/dl/)                                     | 1.23  |  1.23  | [Go plugins]({{< ref "/plugins/supported-languages/golang" >}}) must be built using Go 1.23 | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}}) |
 
