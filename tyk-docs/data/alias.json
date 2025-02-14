@@ -615,5 +615,6 @@
     "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-catalogues": "#create-a-new-catalog",
     "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/managing-access": "#",
     "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso": "#configure-developer-portal-sso",
-    "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration": "#dynamic-client-registration"
+    "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration": "#dynamic-client-registration",
+    "tyk-configuration-reference/securing-system-payloads": "#sign-payloads"
 }

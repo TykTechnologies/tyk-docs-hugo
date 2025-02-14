@@ -18,6 +18,10 @@ menu:
         path: /tyk-components
         category: Page
         show: True
+      - title: "Deployment Options"
+        path: /apim
+        category: Page
+        show: True
       - title: "Plan Your API Integration"
         path: /plan-your-api-integration
         category: Page
@@ -42,28 +46,8 @@ menu:
   - title: "Deployment and Operations"
     path: /apim
     category: Label
-    show: True
+    show: False
     menu:
-      - title: "Overview"
-        path: /apim
-        category: Page
-        show: True
-      - title: "Self Managed"
-        category: Directory
-        show: True
-        menu:
-          - title: "Deployment lifecycle"
-            category: Directory
-            show: True
-            menu:
-              - title: "Deployment phase"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Secure system payloads"
-                    path: /tyk-configuration-reference/securing-system-payloads
-                    category: Page
-                    show: True
       - title: "Featured Guides"
         category: Directory
         show: False
