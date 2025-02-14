@@ -1229,7 +1229,7 @@ Fixed the following critical priority CVE identified in the Dashboard UI, provid
 <summary>High Priority CVE Fixed</summary>
 
 - Fixed the following CVE:
-    - [CVE-2025-21614]([https://nvd.nist.gov/vuln/detail/CVE-2025-21614])
+    - [CVE-2025-21614](https://nvd.nist.gov/vuln/detail/CVE-2025-21614)
 
 </details>
 </li>
