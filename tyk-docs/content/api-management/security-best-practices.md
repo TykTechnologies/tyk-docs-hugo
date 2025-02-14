@@ -15,6 +15,8 @@ aliases:
   - /apim-best-practice/api-security-best-practice/governance
   - /basic-config-and-security/security
   - /basic-config-and-security/security/owasp-top-ten
+  - /tyk-configuration-reference/securing-system-payloads
+  - /tyk-configuration-reference/tyk-gateway-configuration-options/securing-system-payloads
 ---
 
 ## Overview
@@ -340,6 +342,29 @@ Prevent sensitive data, such as usernames, passwords, license keys and other sec
 
 
 Modify or remove sensitive data from responses by using [transforms]({{< ref "advanced-configuration/transform-traffic" >}}) to alter the [response headers]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) and [body]({{< ref "advanced-configuration/transform-traffic/response-body" >}}).
+
+<a id="sign-payloads"></a>
+
+**Sign payloads between the Dashboard and Gateway**
+
+
+Using payload signatures for the communication between Tyk Gateway and Tyk Dashboard is strongly recommended as an additional security measure, particularly in production environments.
+
+Enable payload signatures in the Gateway configuration (`tyk.conf` or environment variable) by setting `allow_insecure_configs` to `false` and then provide the public key (certificate) to the Gateway in the `public_key_path`.
+
+You'll need to provide the private key to the Dashboard using the `private_key_path` option in the appropriate configuration (`tyk_analytics.conf` or environment variable). This will allow your Dashboard to sign all of its payloads using the private key.
+
+You can easily create a public / private keypair with:
+
+```{.copyWrapper}
+# private key
+openssl genrsa -out privkey.pem 2048
+
+# public key
+openssl rsa -in privkey.pem -pubout -out pubkey.pem
+```
+
+Make sure to keep your private key safe!
 
 <br>
 
