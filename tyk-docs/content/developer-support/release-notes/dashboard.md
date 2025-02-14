@@ -100,7 +100,7 @@ No changes have been implemented in this release.
 <summary>Critical Priority CVE Fixed</summary>
 
 - Fixed the following critical-priority CVE identified in the Dashboard UI, providing increased protection and improved security:
-    - [CVE-2025-21613]([https://nvd.nist.gov/vuln/detail/CVE-2025-21613])
+    - [CVE-2025-21613](https://nvd.nist.gov/vuln/detail/CVE-2025-21613)
 </details>
 </li>
 <li>
@@ -108,7 +108,7 @@ No changes have been implemented in this release.
 <summary>High Priority CVE Fixed</summary>
 
 - Fixed the following CVE:
-    - [CVE-2025-21614]([https://nvd.nist.gov/vuln/detail/CVE-2025-21614])
+    - [CVE-2025-21614](https://nvd.nist.gov/vuln/detail/CVE-2025-21614)
 </details>
 </li>
 </ul>
