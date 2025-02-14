@@ -95,7 +95,10 @@ Otherwise, you can design an API from scratch or a template if you have configur
 
     1. **License Information**:
 
-        - **Active Gateways**: Shows the number of available active gateways. An active gateway refers to a Tyk Gateway instance currently running and actively processing API requests.
+        - **Active Gateways**: Shows the number of available active gateways. An active gateway refers to a Tyk Gateway instance currently connected to a [Control Plane]({{< ref "tyk-multi-data-centre/mdcb-components#control-plane" >}}) and actively processing API requests. 
+            
+            **Note:** It doesn't count the edges.
+        
         - **Total Gateways Available**: Total number of Gateways available per the license.
         - **Remaining Gateways**: Unused license slots.
         - **License Expiry**: Indicates the remaining time until the license expires (e.g., 'in 8 days').
@@ -107,15 +110,15 @@ Otherwise, you can design an API from scratch or a template if you have configur
 
     3. **License Usage**:
     
-        - TODO:
+        - It provides a visual representation of the number of **APIs** loaded in the gateway and displays the minimum, maximum, and average.
 
     3. **Data Plane License Usage**:
     
-        - TODO:
+        - It visually represents the maximum, minimum, and average number of [Data Planes]({{< ref "tyk-multi-data-centre/mdcb-components#data-plane" >}}) per day. The x-axis is the dates, while the Y axis is the number of data planes connected; for example, if we execute one cluster with groupID "A" and another with groupID "B," we will get two as max, without caring how many gateways running inside each cluster.
 
     4. **Gateway License Usage**:
 
-        - TODO:
+        - Provides a visual representation of the max, min, and average number of total gateways (not only edges).
 
     5. **Total API Traffic**:
 
