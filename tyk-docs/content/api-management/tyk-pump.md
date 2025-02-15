@@ -1611,17 +1611,17 @@ We'll show you how to setup Tyk Pump for Prometheus Service Discovery.
     --set tyk-pump.pump.prometheusPump.prometheusOperator.podMonitorSelector.release=$PromOperator_Release
     ```
 
-{{< note success >}}
-    **Note**
+    {{< note success >}}
+**Note**
 
-    Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}).
-{{< /note >}}
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}).
+    {{< /note >}}
 
-{{< note success >}}
-    **Note**
+    {{< note success >}}
+**Note**
 
-    For Custom Metrics, commas are escaped to be used in helm --set command. You can remove the backslashes in front of the commas if you are to set it in values.yaml. We have included an example in the default values.yaml comments section.
-{{< /note >}}
+For Custom Metrics, commas are escaped to be used in helm --set command. You can remove the backslashes in front of the commas if you are to set it in values.yaml. We have included an example in the default values.yaml comments section.
+    {{< /note >}}
 
 3. **Verification**
 
@@ -1694,11 +1694,11 @@ We'll show you how to setup Tyk Pump for Prometheus Service Discovery.
     --set-string tyk-pump.pump.podAnnotations."prometheus\.io/path"=/metrics
     ```
 
-{{< note success >}}
-    **Note**
+    {{< note success >}}
+**Note**
 
-    Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}).
-{{< /note >}}
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-self-managed#redis-1" >}}).
+    {{< /note >}}
 
 3. **Verification**
 

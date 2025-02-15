@@ -185,6 +185,22 @@ menu:
         path: /api-management/data-graph
         category: Page
         show: True
+      - title: "API Observability"
+        category: Directory
+        show: True
+        menu:
+          - title: "Metrics and Logs"
+            path: /api-management/logs-metrics
+            category: Page
+            show: True
+          - title: "Analytics Shipper"
+            path: /api-management/tyk-pump
+            category: Page
+            show: True
+          - title: "Performance Monitoring"
+            path: /api-management/performance-monitoring
+            category: Page
+            show: True
       - title: "Automations Tools"
         category: Directory
         show: True

@@ -140,6 +140,9 @@ Tyk Gateway has been instrumented for NewRelic metrics since v2.5. Simply add th
 
 ## Logging
 
+Tyk Gateway emits different types of logs for various operational aspects. **System logs** capture internal gateway events and are output to stderr and stdout, typically used for monitoring and debugging. **API traffic logs**, also known as transaction analytics, record details of every request and response handled by the gateway and are stored in Redis before being processed by Tyk Pump for persistence. While system logs focus on the gateway's internal operations and errors, API traffic logs provide insights into API usage, security events, and performance trends. Logging verbosity and format can be customized to suit different operational needs.
+
+
 ## System Logs
 
 Tyk will log **system events** to `stderr` and `stdout`.
@@ -582,7 +585,7 @@ Choose between HTTP and gRPC for the backend connection by configuring the `expo
 
 For more in-depth information on the configuration options available, please refer to our [OpenTelemetry Configuration Details Page]({{< ref "tyk-oss-gateway/configuration#opentelemetry" >}}).
 
-## OpenTelemetry Tracing Backends
+## OpenTelemetry Backends for Tracing
 
 ### Datadog
 
