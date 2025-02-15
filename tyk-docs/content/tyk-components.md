@@ -121,7 +121,7 @@ For teams operating within Kubernetes, Tyk Operator integrates seamlessly, provi
 
 ### Tyk Streams
 
-**[Tyk Streams]({{< ref "product-stack/tyk-streaming/overview" >}})** is Tyk’s real-time data streaming tool for APIs, enabling applications to receive data as events happen:
+**[Tyk Streams]({{< ref "api-management/event-driven-apis#" >}})** is Tyk’s real-time data streaming tool for APIs, enabling applications to receive data as events happen:
 
 - **Real-Time Data**: Pushes live data to clients in real time.
 - **Event-Driven Architecture**: Triggers immediate responses to data changes.

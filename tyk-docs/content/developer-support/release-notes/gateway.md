@@ -1240,7 +1240,7 @@ Ideal for persistent connections with load-balanced gateways, the [Fixed Window 
 
 ##### Event handling with Tyk OAS
 
-We’ve added support for you to [register webhooks]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) with your Tyk OAS APIs so that you can handle events triggered by the Gateway, including circuit breaker and quota expiry. You can also assign webhooks to be fired when using the new [smoothing rate limiter]({{< ref "api-management/rate-limit#rate-limit-smoothing" >}}) to notify your systems of ongoing traffic spikes.
+We’ve added support for you to [register webhooks]({{< ref "api-management/gateway-events#event-handling-with-webhooks" >}}) with your Tyk OAS APIs so that you can handle events triggered by the Gateway, including circuit breaker and quota expiry. You can also assign webhooks to be fired when using the new [smoothing rate limiter]({{< ref "api-management/rate-limit#rate-limit-smoothing" >}}) to notify your systems of ongoing traffic spikes.
 
 ##### Enhanced Header Handling in GraphQL APIs
 

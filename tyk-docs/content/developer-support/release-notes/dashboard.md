@@ -996,7 +996,7 @@ We're thrilled to introduce exciting enhancements in Tyk Dashboard 5.4, aimed at
 
 #### Event handling for Tyk OAS APIs
 
-We’ve added support for you to register webhooks with your Tyk OAS APIs so that you can handle events triggered by the Gateway, including circuit breaker and quota expiry. You can also assign webhooks to be fired when using the new smoothing rate limiter to notify your systems of ongoing traffic spikes. For more details see the [documentation]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}).
+We’ve added support for you to register webhooks with your Tyk OAS APIs so that you can handle events triggered by the Gateway, including circuit breaker and quota expiry. You can also assign webhooks to be fired when using the new smoothing rate limiter to notify your systems of ongoing traffic spikes. For more details see the [documentation]({{< ref "api-management/gateway-events#event-handling-with-webhooks" >}}).
 
 #### Enhanced Header Handling in GraphQL APIs
 
