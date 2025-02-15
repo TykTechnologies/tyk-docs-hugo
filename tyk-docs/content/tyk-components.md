@@ -169,7 +169,7 @@ Tyk Helm Charts are particularly useful for teams deploying Tyk in Kubernetes, s
 
 ### Universal Data Graph (UDG)
 
-The **[Universal Data Graph (UDG)]({{< ref "universal-data-graph" >}})** provides a single API endpoint for accessing data from multiple sources using GraphQL, offering:
+The **[Universal Data Graph (UDG)]({{< ref "api-management/data-graph#overview" >}})** provides a single API endpoint for accessing data from multiple sources using GraphQL, offering:
 
 - **Data Aggregation**: Combines data from disparate sources into a unified API.
 - **Customizable Data Access**: Clients can query only the data they need.

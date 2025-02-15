@@ -52,7 +52,7 @@ Tyk offers a comprehensive suite of components designed to address every aspect 
 - **[Tyk Sync]({{< ref "api-management/automations/sync" >}})**: Synchronizes API configurations across environments, supporting DevOps practices and CI/CD workflows.
 - **[Tyk Identity Broker]({{< ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib" >}})**: Integrates with external identity providers for single sign-on (SSO) and centralized identity management.
 - **[Tyk Helm Charts]({{< ref "product-stack/tyk-charts/overview" >}})**: Simplifies the deployment of Tyk components within Kubernetes environments.
-- **[Universal Data Graph]({{< ref "universal-data-graph" >}})**: Provides a single GraphQL endpoint that aggregates data from multiple sources, simplifying access to complex data.
+- **[Universal Data Graph]({{< ref "api-management/data-graph#overview" >}})**: Provides a single GraphQL endpoint that aggregates data from multiple sources, simplifying access to complex data.
 
 Each component plays a specific role in managing the API lifecycle, from initial deployment and configuration to real-time data streaming and developer access. Together, they create a cohesive API management ecosystem that can handle the unique challenges of production environments.
 
