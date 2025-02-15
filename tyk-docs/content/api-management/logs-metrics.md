@@ -433,7 +433,11 @@ Detailed recording can be configured at the system level, affecting all APIs dep
 ```
 
 
-### Do Not Track (Add Link)
+### Do Not Track
+
+When transaction logging is enabled in the Tyk Gateway, a transaction record will be generated for every request made to an API endpoint deployed on the gateway. You can suppress the generation of transaction records for any API by enabling the do-not-track middleware. This provides granular control over request tracking.
+
+Refer this [docs]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-middleware" >}}) for more information.
 
 ## OpenTelemetry
 
