@@ -59,7 +59,7 @@ From a REST API perspespective, it is the responsibility of the API to ensure th
 - [Body transformation plugins]({{< ref "advanced-configuration/transform-traffic/request-method-transform" >}}) can be used to remove sensitive data from the response if the API is unable to do so itself.
 - [JSON Schema validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-tyk-classic" >}}) to validate that an incoming data payload meets a defined schema. Payloads that do not adhere to the schema are rejected.
 
-For GraphQL APIs, the gateway can be used to define the GraphQL schemas, limiting which properties of an object are queryable. Furthermore, access can be controlled to specific properties by configuring [field-based permissions]({{< ref "graphql/field-based-permissions" >}}). Subsequently, the visiblity of a schema's properties can be controlled for different consumers of the GraphQL API.
+For GraphQL APIs, the gateway can be used to define the GraphQL schemas, limiting which properties of an object are queryable. Furthermore, access can be controlled to specific properties by configuring [field-based permissions]({{< ref "api-management/graphql#field-based-permissions" >}}). Subsequently, the visiblity of a schema's properties can be controlled for different consumers of the GraphQL API.
 
 
 ##### 4 - Unrestricted Resource Consumption
@@ -74,7 +74,7 @@ As an APIM product, Tyk Gateway can be configured to use the following out-of-th
 - [Caching]({{< ref "basic-config-and-security/reduce-latency/caching" >}})
 - [Enforced timeout]({{< ref "tyk-self-managed#enforced-timeouts" >}})
 - [IP restriction]({{< ref "api-management/gateway-config-tyk-classic#ip-blocklist-middleware" >}})
-- [GraphQL query complexity limiting]({{< ref "graphql/complexity-limiting" >}})
+- [GraphQL query complexity limiting]({{< ref "api-management/graphql#complexity-limiting-1" >}})
 
 For Denial of Service (DoS) attacks it is recommended to use specialist 3rd party services to prevent DoS attacks from reaching your infrastructure.
 
@@ -117,8 +117,8 @@ Tyk offers several mechanisms to help protect an API from Security Misconfigurat
 - [Policy Path-Based Permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}) and the [allowlist]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) plugin can be used to prevent clients from accessing API endpoints using non-authorized HTTP methods. For example, blocking the use of the DELETE method on an endpoint which should only accept GET requests.
 - [Environment variables]({{< ref "tyk-environment-variables" >}}) can help standardize configuration across containerised deployments.
 - For GraphQL APIs:
-- [Schema Introspection]({{< ref "graphql/introspection" >}}) ensures that the Tyk Dashboard automatically uses the schema of the upstream GraphQL API and can keep it synchronised if it changes.
-- [GraphQL Schema Validation]({{< ref "graphql/validation#schema-validation" >}}) prevents invalid schemas from being saved. This catches errors such as duplicate type names and usage of unknown types.
+- [Schema Introspection]({{< ref "api-management/graphql#introspection" >}}) ensures that the Tyk Dashboard automatically uses the schema of the upstream GraphQL API and can keep it synchronised if it changes.
+- [GraphQL Schema Validation]({{< ref "api-management/graphql#schema-validation" >}}) prevents invalid schemas from being saved. This catches errors such as duplicate type names and usage of unknown types.
 - Third-party [Secret Storage]({{< ref "tyk-self-managed#manage-multi-environment-and-distributed-setups" >}}) to centralise configuration of sensitive data such as passwords. This data can then be dynamically referenced by Tyk configuration files, rather than being hard coded.
 - Users can can write their own [custom plugins]({{< ref "api-management/plugins/overview#" >}}) in a variety of languages, either directly or through gRPC calls, to implement their requirements.
 
@@ -194,7 +194,7 @@ Handle with both the API and the gateway. The approach depends on the type of AP
 
 For REST APIs, it’s the API that’s primarily responsible for returning the correct data. To complement this, the gateway can use [body transforms]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) to remove sensitive data from responses if the API is unable to do so itself. The gateway can also enforce object property-level restrictions using [JSON validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-tyk-classic" >}}), for scenarios where the client is sending data to the API.
 
-For GraphQL APIs, use the gateway to define [GraphQL schemas]({{< ref "graphql-proxy-only#managing-gql-schema" >}}) to limit which properties are queryable, then optionally use [field-based permissions]({{< ref "graphql-proxy-only#field-based-permission" >}}) to also specify access rights to those properties. 
+For GraphQL APIs, use the gateway to define [GraphQL schemas]({{< ref "api-management/graphql#managing-gql-schema" >}}) to limit which properties are queryable, then optionally use [field-based permissions]({{< ref "api-management/graphql#field-based-permission" >}}) to also specify access rights to those properties. 
 
 ##### Function Level Authorization
 
@@ -212,9 +212,9 @@ Favor use of [allow lists]({{< ref "product-stack/tyk-gateway/middleware/allow-l
 
 Protect APIs from erroneous or malicious data by validating all input before it’s processed by the API. Bad data, whether malicious or not, can cause many problems for APIs, from basic errors and bad user experience, to data leaks and downtime. The standard mitigation approach is to validate all user input, for which there are various solutions depending on the type of API:
 
-For REST APIs, use [schema validation]({{< ref "graphql/validation#schema-validation" >}}) to control acceptable input data values.
+For REST APIs, use [schema validation]({{< ref "api-management/graphql#schema-validation" >}}) to control acceptable input data values.
 
-For GraphQL APIs, use [GraphQL schema]({{< ref "graphql-proxy-only#managing-gql-schema" >}}) definitions to limit what data can be queried and mutated. Additionally, [complexity limiting]({{< ref "graphql/complexity-limiting" >}}) can be used to block resource-intensive queries.
+For GraphQL APIs, use [GraphQL schema]({{< ref "api-management/graphql#managing-gql-schema" >}}) definitions to limit what data can be queried and mutated. Additionally, [complexity limiting]({{< ref "api-management/graphql#complexity-limiting-1" >}}) can be used to block resource-intensive queries.
 
 #### Track Anomalies
 
@@ -305,7 +305,7 @@ This issue can be caused by both legitimate consumers and malicious attackers, b
 
 **Avoid Unnecessary Resource Usage**: Appropriate use of [caching]({{< ref "basic-config-and-security/reduce-latency/caching" >}}) can reduce server resource consumption by simply returning cached responses instead of generating new ones. The extent to which caching can be used depends on the purpose of the endpoint, as it’s generally unsuitable for requests that modify data or responses that frequently change. Caching can be applied to [particular requests]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache" >}}) or enabled for an [entire API]({{< ref "basic-config-and-security/reduce-latency/caching/global-cache" >}}), and can also be [controlled by the upstream API]({{< ref "basic-config-and-security/reduce-latency/caching/upstream-controlled-cache" >}}) or [invalidated programmatically]({{< ref "frequently-asked-questions/clear-api-cache" >}}).
 
-**Limit Complex Long-Running Tasks**: Use [GraphQL complexity limiting]({{< ref "graphql/complexity-limiting" >}}) to prevent convoluted queries from being processed. Alternatively, [timeouts]({{< ref "tyk-self-managed#enforced-timeouts" >}}) can be used to terminate long-running requests that exceed a given time limit.
+**Limit Complex Long-Running Tasks**: Use [GraphQL complexity limiting]({{< ref "api-management/graphql#complexity-limiting-1" >}}) to prevent convoluted queries from being processed. Alternatively, [timeouts]({{< ref "tyk-self-managed#enforced-timeouts" >}}) can be used to terminate long-running requests that exceed a given time limit.
 
 **Protect Failing Services**: Defend struggling endpoints by using a [circuit breaker]({{< ref "tyk-self-managed#circuit-breakers" >}}). This feature protects endpoints by detecting error responses, then blocking requests for a short duration to allow them to recover. The same principle can be applied in a wider sense by using [uptime tests]({{< ref "api-management/gateway-config-tyk-classic#uptime-tests" >}}), though this works on a host level instead, by removing failed hosts from the gateway load balancer.
 
@@ -331,7 +331,7 @@ Use [security policies]({{< ref "api-management/policies#what-is-a-security-poli
 **Mitigate Server-Side Request Forgery**
 
 
-Restrict any URL-based input data to specific schemas, hosts and paths by using [schema validation]({{< ref "graphql/validation#schema-validation" >}}). When data is fetched server-side, it should be validated and not returned to the client in raw format.
+Restrict any URL-based input data to specific schemas, hosts and paths by using [schema validation]({{< ref "api-management/graphql#schema-validation" >}}). When data is fetched server-side, it should be validated and not returned to the client in raw format.
 
 **Protect Secrets**
 

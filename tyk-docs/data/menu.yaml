@@ -161,6 +161,14 @@ menu:
         path: /api-management/user-management
         category: Page
         show: True
+      - title: "GraphQL"
+        path: /api-management/graphql
+        category: Page
+        show: True
+      - title: "Universal Data Graph"
+        path: /api-management/data-graph
+        category: Page
+        show: True
       - title: "Automations Tools"
         category: Directory
         show: True
@@ -301,66 +309,6 @@ menu:
                 path: /getting-started/using-oas-definitions/export-an-oas-api
                 category: Page
                 show: True
-          - title: "GraphQL APIs"
-            category: Directory
-            show: True
-            menu:
-              - title: "Create a GraphQL API"
-                path: /graphql/creating-gql-api
-                category: Page
-                show: True
-              - title: "Introspection"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /graphql/introspection
-                    category: Page
-                    show: True
-                  - title: "Introspection queries"
-                    path: /graphql/introspection/introspection-queries
-                    category: Page
-                    show: True
-              - title: "Validation"
-                path: /graphql/validation
-                category: Page
-                show: True
-              - title: "Syncing GQL Schema"
-                path: /graphql/syncing-schema
-                category: Page
-                show: True
-              - title: "GraphQL APIs headers"
-                path: /graphql/gql-headers
-                category: Page
-                show: True
-              - title: "Persisting GraphQL queries"
-                path: /graphql/persisted-queries
-                category: Page
-                show: True
-              - title: "Complexity Limiting"
-                path: /graphql/complexity-limiting
-                category: Page
-                show: True
-              - title: "Field Based Permissions"
-                path: /graphql/field-based-permissions
-                category: Page
-                show: True
-              - title: "GraphQL WebSockets"
-                path: /graphql/graphql-websockets
-                category: Page
-                show: True
-              - title: "GraphQL Subscriptions"
-                path: /getting-started/key-concepts/graphql-subscriptions
-                category: Page
-                show: True
-              - title: "Migrating to 3.2"
-                path: /graphql/migration-guide
-                category: Page
-                show: True
-              - title: "GraphQL playground"
-                path: /graphql/graphql-playground
-                category: Page
-                show: True
           - title: "Deploy APIs"
             category: Page
             show: True
@@ -369,80 +317,6 @@ menu:
             category: Page
             show: True
             path: /api-management/manage-apis/api-operations/api-observability
-      - title: "Manage Data Graphs"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            category: Directory
-            show: False
-            menu:
-          - title: "Getting started"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /universal-data-graph/getting-started-with-udg
-                category: Page
-                show: True
-              - title: "1. Creating schema"
-                path: /universal-data-graph/udg-getting-started/creating-schema
-                category: Page
-                show: True
-              - title: "2. Connect Datasource"
-                path: /universal-data-graph/udg-getting-started/connect-datasource
-                category: Page
-                show: True
-              - title: "3. Mutations"
-                path: /universal-data-graph/udg-getting-started/mutations
-                category: Page
-                show: True
-              - title: "4. Security"
-                path: /universal-data-graph/udg-getting-started/security
-                category: Page
-                show: True
-              - title: "5. Field Based Permissions"
-                path: /universal-data-graph/udg-getting-started/field-based-permission
-                category: Page
-                show: True
-              - title: "6. Header Forwarding"
-                path: /universal-data-graph/udg-getting-started/header-forwarding
-                category: Page
-                show: True
-              - title: "UDG Examples"
-                path: /universal-data-graph/udg-examples
-                category: Page
-                show: True
-          - title: "Design Data Graphs"
-            category: Directory
-            show: False
-            menu:
-              - title: "Design data graph schema APIs"
-                category: Page
-                show: False
-              - title: "Connect data sources"
-                category: Page
-                show: False
-              - title: "Define access to data graph APIs"
-                category: Page
-                show: False
-          - title: "Deploy Data Graphs"
-            category: Directory
-            show: False
-            menu:
-              - title: "Test data graphs"
-                category: Page
-                show: False
-              - title: "Persisted queries"
-                category: Page
-                show: False
-          - title: "Data Graph operations"
-            category: Directory
-            show: False
-            menu:
-              - title: "Version data graphs"
-                category: Page
-                show: False
       - title: "Async APIs"
         category: Directory
         show: True
@@ -550,34 +424,6 @@ menu:
                 path: /getting-started/key-concepts
                 category: Page
                 show: True
-              - title: "GraphQL"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /graphql
-                    category: Page
-                    show: True
-                  - title: "Federation"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "GraphQL Federation Overview"
-                        path: /getting-started/key-concepts/graphql-federation
-                        category: Page
-                        show: True
-                      - title: "GraphQL Entities"
-                        path: /getting-started/key-concepts/graphql-entities
-                        category: Page
-                        show: True
-                      - title: "GraphQL Extension Orphans"
-                        path: /getting-started/key-concepts/graphql-subgraphs
-                        category: Page
-                        show: True
-                  - title: "Graphql Proxy Only"
-                    path: /graphql-proxy-only
-                    category: Page
-                    show: True
               - title: "Request Middleware Chain"
                 path: /concepts/middleware-execution-order
                 category: Page
@@ -1366,74 +1212,6 @@ menu:
                     path: /troubleshooting/tyk-dashboard/receive-csrf-error-developer-portal
                     category: Page
                     show: True
-      - title: "Universal Data Graph (UDG)"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            path: /universal-data-graph
-            category: Page
-            show: True
-          - title: "Key concepts"
-            category: Directory
-            show: True
-            menu:
-              - title: "Concepts - Universal Data Graph"
-                path: /universal-data-graph/udg-concepts
-                category: Page
-                show: True
-              - title: "Concepts - Data sources"
-                path: /tyk-stack/universal-data-graph/concepts/datasources
-                category: Page
-                show: True
-              - title: "Concepts - Arguments"
-                path: /universal-data-graph/concepts/arguments
-                category: Page
-                show: True
-              - title: "Concepts - Field Mappings"
-                path: /universal-data-graph/concepts/field_mappings
-                category: Page
-                show: True
-              - title: "Concepts - Reusing response fields"
-                path: /universal-data-graph/concepts/reusing_response_fields
-                category: Page
-                show: True
-              - title: "Concepts - Header management"
-                path: /universal-data-graph/concepts/header_management
-                category: Page
-                show: True
-          - title: "Connect Data Sources"
-            category: Directory
-            show: True
-            menu:
-              - title: "UDG Datasources"
-                path: /universal-data-graph/concepts/datasources
-                category: Page
-                show: True
-              - title: "GraphQL Datasource"
-                path: /universal-data-graph/datasources/graphql
-                category: Page
-                show: True
-              - title: "Kafka Datasource"
-                path: /universal-data-graph/datasources/kafka
-                category: Page
-                show: True
-              - title: "REST Datasource"
-                path: /universal-data-graph/datasources/rest
-                category: Page
-                show: True
-              - title: "Tyk Datasource"
-                path: /universal-data-graph/datasources/tyk
-                category: Page
-                show: True
-          - title: "API documentation"
-            category: Directory
-            show: False
-            menu:
-          - title: "Troubleshooting"
-            category: Directory
-            show: False
-            menu:
       - title: "Tyk Multi Data Centre Bridge"
         category: Directory
         show: True
