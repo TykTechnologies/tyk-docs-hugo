@@ -6,34 +6,34 @@ description: "How to configure Tyk Pump"
 keywords: ["Pump", "CSV", "Datadog", "Elasticsearch", "Logzio", "Moesif", "Splunk", "Prometheus", "Analytics Storage", "Monitoring", "Observability"]
 aliases:
   - /tyk-pump
-  - /concepts/tyk-components/pump/
+  - /concepts/tyk-components/pump
   - /analytics-and-reporting
-  - /getting-started/tyk-components/pump/
-  - /tyk-configuration-reference/tyk-pump-configuration/tyk-pump-configuration/
+  - /getting-started/tyk-components/pump
+  - /tyk-configuration-reference/tyk-pump-configuration/tyk-pump-configuration
   - /tyk-pump/configuration
   - /tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config
-  - /tyk-stack/tyk-pump/tyk-pump-configuration/graph-pump/
+  - /tyk-stack/tyk-pump/tyk-pump-configuration/graph-pump
   - /product-stack/tyk-pump/advanced-configurations/configure-data-sinks/csv
   - /tyk-configuration-reference/tyk-pump-configuration/datadog
   - /product-stack/tyk-pump/advanced-configurations/configure-data-sinks/elasticsearch
   - /product-stack/tyk-pump/advanced-configurations/configure-data-sinks/logzio
   - /tyk-configuration-reference/tyk-pump-configuration/moesif
   - /tyk-configuration-reference/tyk-pump-configuration/splunk
-  - /tyk-stack/tyk-pump/tyk-analytics-record-fields/
+  - /tyk-stack/tyk-pump/tyk-analytics-record-fields
   - /tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus
   - /product-stack/tyk-pump/advanced-configurations/setup-prometheus-pump
   - /tyk-stack/tyk-manager/analytics/capping-analytics-data-storage
   - /tyk-stack/tyk-pump/separated-analytics-storage
   - /tyk-stack/tyk-pump/other-data-stores
-  - /analyse/other-data-stores/
-  - /analytics-and-reporting/other-data-stores/
-  - /tyk-configuration-reference/tyk-pump-configuration/
-  - /configure/tyk-pump-configuration/
-  - /tyk-configuration-reference/tyk-pump-dashboard-config/
-  - /tyk-configuration-reference/tyk-pump-configuration/graphpump/
-  - /tyk-stack/tyk-pump/tyk-pump-configuration/graph_mongo_pump
-  - /analytics-and-reporting/capping-analytics-data-storage/
-  - /analytics-and-reporting/separated-analytics-storage/
+  - /analyse/other-data-stores
+  - /analytics-and-reporting/other-data-stores
+  - /tyk-configuration-reference/tyk-pump-configuration
+  - /configure/tyk-pump-configuration
+  - /tyk-configuration-reference/tyk-pump-dashboard-config
+  - /tyk-configuration-reference/tyk-pump-configuration/graphpump
+  - /tyk-stack/tyk-pump/tyk-pump-configuration/graph_mongo_pum
+  - /analytics-and-reporting/capping-analytics-data-storage
+  - /analytics-and-reporting/separated-analytics-storage
 ---
 
 ## Introduction

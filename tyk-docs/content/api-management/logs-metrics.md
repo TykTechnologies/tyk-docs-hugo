@@ -25,10 +25,10 @@ aliases:
   - /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/newrelic
   - /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/zipkin
   - /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/distributed-tracing-overview
-  - /report-monitor-trigger-events/instrumentation/
-  - "/advanced-configuration/log-data"
+  - /report-monitor-trigger-events/instrumentation
+  - /advanced-configuration/log-data
   - /advanced-configuration/opentracing
-  - advanced-configuration/distributed-tracing/jaeger
+  - /advanced-configuration/distributed-tracing/jaeger
   - /advanced-configuration/distributed-tracing/newrelic
   - /advanced-configuration/distributed-tracing/zipkin
 
