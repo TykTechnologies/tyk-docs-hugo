@@ -115,8 +115,8 @@ The following custom resources can be used to configure APIs and policies at [Ty
 | ApiDefinition      | tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk Classic API Definition object]({{<ref "api-management/gateway-config-tyk-classic">}})                                 |
 | TykStreamsApiDefinition| tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk Streams]({{<ref "product-stack/tyk-streaming/overview#configuration-as-code">}})                                 |
 | SecurityPolicy     | tyk.tyk.io  | v1alpha1  | Defines configuration of [security policies]({{<ref "api-management/policies#what-is-a-security-policy">}}). Operator supports linking ApiDefinition custom resources in SecurityPolicy's access list so that API IDs do not need to be hardcoded in the resource manifest.        |
-| SubGraph           | tyk.tyk.io  | v1alpha1  | Defines a [GraphQL federation subgraph]({{<ref "getting-started/key-concepts/graphql-federation#subgraphs-and-supergraphs">}}).                                           |
-| SuperGraph         | tyk.tyk.io  | v1alpha1  | Defines a [GraphQL federation supergraph]({{<ref "getting-started/key-concepts/graphql-federation#subgraphs-and-supergraphs">}}).                                        |
+| SubGraph           | tyk.tyk.io  | v1alpha1  | Defines a [GraphQL federation subgraph]({{<ref "api-management/graphql#subgraphs-and-supergraphs">}}).                                           |
+| SuperGraph         | tyk.tyk.io  | v1alpha1  | Defines a [GraphQL federation supergraph]({{<ref "api-management/graphql#subgraphs-and-supergraphs">}}).                                        |
 | OperatorContext    | tyk.tyk.io  | v1alpha1  | Manages the context in which the Tyk Operator operates, affecting its overall behavior and environment. See [Operator Context]({{< ref "#multi-tenancy-in-tyk" >}}) for details. |
 
 #### Tyk Classic Developer Portal
@@ -1502,7 +1502,7 @@ spec:
 
 
 ### Set Up Manifest for GraphQL
-In the example below we can see that the configuration is contained within the `graphql` configuration object. A GraphQL schema is specified within the `schema` field and the execution mode is set to `proxyOnly`. The [GraphQL public playground]({{< ref "graphql/graphql-playground#enabling-public-graphql-playground" >}}) is enabled with the path set to `/playground`.
+In the example below we can see that the configuration is contained within the `graphql` configuration object. A GraphQL schema is specified within the `schema` field and the execution mode is set to `proxyOnly`. The [GraphQL public playground]({{< ref "api-management/graphql#enabling-public-graphql-playground" >}}) is enabled with the path set to `/playground`.
 
 ```yaml {hl_lines=["15-17", "18-92"],linenos=false}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -1722,7 +1722,7 @@ spec:
 ### Set Up Manifest for UDG
 #### UDG v2 (Tyk 3.2 and above)
 
-If you are on Tyk 3.2 and above, you can use the following manifest to create an UDG API. This example configures a Universal Data Graph from a [GraphQL datasource]({{<ref "universal-data-graph/datasources/graphql">}}) and a [REST Datasource]({{<ref "universal-data-graph/datasources/rest">}}).
+If you are on Tyk 3.2 and above, you can use the following manifest to create an UDG API. This example configures a Universal Data Graph from a [GraphQL datasource]({{<ref "api-management/data-graph#graphql">}}) and a [REST Datasource]({{<ref "api-management/data-graph#rest">}}).
 
 ```yaml {hl_lines=["20-39", "46-80"],linenos=false}
 apiVersion: tyk.tyk.io/v1alpha1
