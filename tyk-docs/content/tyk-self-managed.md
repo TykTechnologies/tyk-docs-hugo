@@ -4680,7 +4680,7 @@ Circuit breakers operate on a single Tyk Gateway, they do not centralise or pool
 
 **Circuit breaker events**
 
-The circuit breaker automatically controls the flow of requests to the upstream services quickly and efficiently, but it is equally important to alert you to the fact that there is an issue and to confirm when traffic will recommence once the issue is resolved. Tyk's [Event]({{< ref "basic-config-and-security/report-monitor-trigger-events" >}}) system provides the method by which the circuit breaker can alert you to these occurrences.
+The circuit breaker automatically controls the flow of requests to the upstream services quickly and efficiently, but it is equally important to alert you to the fact that there is an issue and to confirm when traffic will recommence once the issue is resolved. Tyk's [Event]({{< ref "api-management/gateway-events#event-categories" >}}) system provides the method by which the circuit breaker can alert you to these occurrences.
 
 - When the circuit breaker trips (from closed to open), Tyk will generate a `BreakerTripped` event
 - When the breaker resets (from open to closed), whether at the end of the cooldown period or if connection is restored while in _half-open_ mode, Tyk will generate a `BreakerReset` event
@@ -4895,7 +4895,7 @@ Use the *save* or *create* buttons to save the changes and activate the middlewa
 
 **Step 4: Optionally configure webhooks to respond to the circuit breaker events**
 
-The Dashboard supports the separate `BreakerTripped` and `BreakerReset` events, but not the combined `BreakerTriggered` [event type]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}). You should use **API Designer > Advanced Options** to add a Webhook plugin to your endpoint for each event.
+The Dashboard supports the separate `BreakerTripped` and `BreakerReset` events, but not the combined `BreakerTriggered` [event type]({{< ref "api-management/gateway-events#event-types" >}}). You should use **API Designer > Advanced Options** to add a Webhook plugin to your endpoint for each event.
 
 {{< img src="/img/dashboard/system-management/webhook-breaker.png" alt="Webhook events" >}}
 

@@ -161,6 +161,22 @@ menu:
         path: /api-management/user-management
         category: Page
         show: True
+      - title: "Event Driven APIs"
+        category: Directory
+        show: True
+        menu:
+        - title: "Event Driven APIs"
+          path: /api-management/event-driven-apis
+          category: Page
+          show: True
+        - title: "Tyk Streams Configuration"
+          path: /api-management/stream-config
+          category: Page
+          show: True
+        - title: "Gateway Events"
+          path: /api-management/gateway-events
+          category: Page
+          show: True
       - title: "GraphQL"
         path: /api-management/graphql
         category: Page
@@ -776,54 +792,6 @@ menu:
                 path: /context-variables
                 category: Page
                 show: True
-          - title: "Handle gateway events"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /basic-config-and-security/report-monitor-trigger-events
-                category: Page
-                show: True
-              - title: "Event types"
-                path: /basic-config-and-security/report-monitor-trigger-events/event-types
-                category: Page
-                show: True
-              - title: "Event metadata"
-                path: /basic-config-and-security/report-monitor-trigger-events/event-data
-                category: Page
-                show: True
-              - title: "Event handling with webhooks"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /basic-config-and-security/report-monitor-trigger-events/webhooks
-                    category: Page
-                    show: True
-                  - title: "Tyk OAS configuration"
-                    path: /product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/event-webhook-tyk-oas
-                    category: Page
-                    show: True
-                  - title: "Tyk Classic configuration"
-                    path: /product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/event-webhook-tyk-classic
-                    category: Page
-                    show: True
-              - title: "Logging events"
-                path: /product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/log-handlers
-                category: Page
-                show: True
-              - title: "Custom event handlers"
-                path: /basic-config-and-security/report-monitor-trigger-events/custom-handlers-javascript
-                category: Page
-                show: True
-              - title: "Advanced quota monitoring"
-                path: /basic-config-and-security/report-monitor-trigger-events/monitors
-                category: Page
-                show: True
-              - title: "Custom error templates"
-                path: /advanced-configuration/error-templates
-                category: Page
-                show: True
           - title: "Observability"
             category: Directory
             show: True
@@ -1352,142 +1320,6 @@ menu:
                 path: /product-stack/tyk-operator/advanced-configurations/custom-plugins
                 category: Page
                 show: True
-      - title: "Tyk Streams"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            path: /product-stack/tyk-streaming/overview
-            category: Page
-            show: True
-          - title: "Glossary"
-            path: /product-stack/tyk-streaming/glossary
-            category: Page
-            show: True
-          - title: "Key Concepts"
-            path: /product-stack/tyk-streaming/key-concepts
-            category: Page
-            show: True
-          - title: "Configure Streams API using dashboard"
-            path: /product-stack/tyk-streaming/streams-configuration-using-ui
-            category: Page
-            show: True
-          - title: "Configuration"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /product-stack/tyk-streaming/configuration/overview
-                category: Page
-                show: True
-              - title: "Inputs"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /product-stack/tyk-streaming/configuration/inputs/overview
-                    category: Page
-                    show: True
-                  - title: "Broker"
-                    path: /product-stack/tyk-streaming/configuration/inputs/broker
-                    category: Page
-                    show: True
-                  - title: "Http Client"
-                    path: /product-stack/tyk-streaming/configuration/inputs/http-client
-                    category: Page
-                    show: True
-                  - title: "Http Server"
-                    path: /product-stack/tyk-streaming/configuration/inputs/http-server
-                    category: Page
-                    show: True
-                  - title: "Kafka"
-                    path: /product-stack/tyk-streaming/configuration/inputs/kafka
-                    category: Page
-                    show: True
-              - title: "Outputs"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /product-stack/tyk-streaming/configuration/outputs/overview
-                    category: Page
-                    show: True
-                  - title: "Broker"
-                    path: /product-stack/tyk-streaming/configuration/outputs/broker
-                    category: Page
-                    show: True
-                  - title: "Http Client"
-                    path: /product-stack/tyk-streaming/configuration/outputs/http-client
-                    category: Page
-                    show: True
-                  - title: "Http Server"
-                    path: /product-stack/tyk-streaming/configuration/outputs/http-server
-                    category: Page
-                    show: True
-                  - title: "Kafka"
-                    path: /product-stack/tyk-streaming/configuration/outputs/kafka
-                    category: Page
-                    show: True
-              - title: "Processors"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /product-stack/tyk-streaming/configuration/processors/overview
-                    category: Page
-                    show: True
-                  - title: "Avro"
-                    path: /product-stack/tyk-streaming/configuration/processors/avro
-                    category: Page
-                    show: True
-              - title: "Scanners"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /product-stack/tyk-streaming/configuration/scanners/overview
-                    category: Page
-                    show: True
-                  - title: "CSV"
-                    path: /product-stack/tyk-streaming/configuration/scanners/csv
-                    category: Page
-                    show: True
-                  - title: "Line"
-                    path: /product-stack/tyk-streaming/configuration/scanners/lines
-                    category: Page
-                    show: True
-                  - title: "Regular Expression Matching"
-                    path: /product-stack/tyk-streaming/configuration/scanners/re-match
-                    category: Page
-                    show: True
-                  - title: "Switch"
-                    path: /product-stack/tyk-streaming/configuration/scanners/switch
-                    category: Page
-                    show: True
-              - title: "Common Configurations"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Batching"
-                    path: /product-stack/tyk-streaming/configuration/common-configuration/batching
-                    category: Page
-                    show: True
-                  - title: "Field Paths"
-                    path: /product-stack/tyk-streaming/configuration/common-configuration/field-paths
-                    category: Page
-                    show: True
-                  - title: "Processing Pipelines"
-                    path: /product-stack/tyk-streaming/configuration/common-configuration/processing-pipelines
-                    category: Page
-                    show: True
-          - title: "Deployment Considerations"
-            path: /product-stack/tyk-streaming/deployment-considerations
-            category: Page
-            show: True
-          - title: "Developer Portal Integration"
-            path: /product-stack/tyk-streaming/developer-portal-integration
-            category: true
-            show: True
       - title: "Tyk Sync"
         category: Directory
         show: False

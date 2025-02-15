@@ -3551,7 +3551,7 @@ The **Advanced Options** tab is where you can configure Tyk's other powerful fea
 - Enable [context variables]({{< ref "context-variables" >}}) so that they are extracted from requests and made available to middleware
 - Manage *segment tags* if you are working with [sharded gateways]({{< ref "api-management/multiple-environments#gateway-sharding" >}})
 - Manage client IP address [allow]({{< ref "api-management/gateway-config-tyk-classic#ip-allowlist-middleware" >}}) and [block]({{< ref "api-management/gateway-config-tyk-classic#ip-blocklist-middleware" >}}) lists
-- Attach [webhooks]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) that will be triggered for different events
+- Attach [webhooks]({{< ref "api-management/gateway-events#event-handling-with-webhooks" >}}) that will be triggered for different events
 
 ### Uptime Tests
 
