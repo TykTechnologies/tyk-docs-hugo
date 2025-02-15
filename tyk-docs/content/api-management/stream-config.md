@@ -171,7 +171,7 @@ This overview provides a foundational understanding of how to configure Tyk Stre
 
 ### Overview
 
-An input is a source of data piped through an array of optional [processors]({{< ref "product-stack/tyk-streaming/configuration/processors/overview" >}}):
+An input is a source of data piped through an array of optional [processors]({{< ref "api-management/stream-config#overview-3" >}}):
 
 ```yaml
 input:
@@ -190,7 +190,7 @@ input:
 
 #### Brokering
 
-Only one input is configured at the root of a Tyk Streams config. However, the root input can be a [broker]({{< ref "product-stack/tyk-streaming/configuration/inputs/broker" >}}) which combines multiple inputs and merges the streams:
+Only one input is configured at the root of a Tyk Streams config. However, the root input can be a [broker]({{< ref "api-management/stream-config#broker" >}}) which combines multiple inputs and merges the streams:
 
 ```yaml
 input:
@@ -290,7 +290,7 @@ If the number of copies is greater than zero the list will be copied that number
 
 ##### Batching
 
-It's possible to configure a [batch policy]({{< ref "product-stack/tyk-streaming/configuration/common-configuration/batching#batch-policy" >}}) with a broker using the `batching` fields. When doing this the feeds from all child inputs are combined. Some inputs do not support broker based batching and specify this in their documentation.
+It's possible to configure a [batch policy]({{< ref "api-management/stream-config#batch-policy" >}}) with a broker using the `batching` fields. When doing this the feeds from all child inputs are combined. Some inputs do not support broker based batching and specify this in their documentation.
 
 ##### Processors
 
@@ -315,7 +315,7 @@ Type: `array`
 
 ##### batching
 
-Allows you to configure a [batching policy]({{< ref "product-stack/tyk-streaming/configuration/common-configuration/batching#batch-policy" >}}).
+Allows you to configure a [batching policy]({{< ref "api-management/stream-config#batch-policy" >}}).
 
 
 Type: `object`  
@@ -1140,7 +1140,7 @@ Default: `true`
 
 ##### stream.scanner
 
-The [scanner]({{< ref "product-stack/tyk-streaming/configuration/scanners/overview" >}}) by which the stream of bytes consumed will be broken out into individual messages. Scanners are useful for processing large sources of data without holding the entirety of it within memory. For example, the `csv` scanner allows you to process individual CSV rows without loading the entire CSV file in memory at once.
+The [scanner]({{< ref "api-management/stream-config#overview-4" >}}) by which the stream of bytes consumed will be broken out into individual messages. Scanners are useful for processing large sources of data without holding the entirety of it within memory. For example, the `csv` scanner allows you to process individual CSV rows without loading the entire CSV file in memory at once.
 
 
 Type: `scanner`  
@@ -2046,7 +2046,7 @@ Default: `false`
 
 ##### batching
 
-Allows you to configure a [batching policy]({{< ref "product-stack/tyk-streaming/configuration/common-configuration/batching#batch-policy" >}}).
+Allows you to configure a [batching policy]({{< ref "api-management/stream-config#batch-policy" >}}).
 
 Type: `object`  
 
@@ -2144,7 +2144,7 @@ processors:
 
 ### Overview
 
-An output is a sink where we wish to send our consumed data after applying an optional array of [processors]({{< ref "product-stack/tyk-streaming/configuration/processors/overview" >}}). Only one output is configured at the root of a Tyk Streams config. However, the output can be a [broker]({{< ref "product-stack/tyk-streaming/configuration/outputs/broker" >}}) which combines multiple outputs under a chosen brokering pattern.
+An output is a sink where we wish to send our consumed data after applying an optional array of [processors]({{< ref "api-management/stream-config#overview-3" >}}). Only one output is configured at the root of a Tyk Streams config. However, the output can be a [broker]({{< ref "api-management/stream-config#broker-1" >}}) which combines multiple outputs under a chosen brokering pattern.
 
 An output config section looks like this:
 
@@ -2258,7 +2258,7 @@ Type: `array`
 
 ##### batching
 
-Allows you to configure a [batching policy]({{< ref "product-stack/tyk-streaming/configuration/common-configuration/batching#batch-policy" >}}).
+Allows you to configure a [batching policy]({{< ref "api-management/stream-config#batch-policy" >}}).
 
 
 Type: `object`  
@@ -2496,7 +2496,7 @@ It's possible to propagate the response from each HTTP request back to the input
 
 This output benefits from sending multiple messages in flight in parallel for improved performance. You can tune the max number of in flight messages (or message batches) with the field `max_in_flight`.
 
-This output benefits from sending messages as a [batch]({{< ref "product-stack/tyk-streaming/configuration/common-configuration/batching" >}}) for improved performance. Batches can be formed at both the input and output level.
+This output benefits from sending messages as a [batch]({{< ref "api-management/stream-config#batching-6" >}}) for improved performance. Batches can be formed at both the input and output level.
 
 #### Fields
 
@@ -3064,7 +3064,7 @@ Default: `64`
 
 ##### batching
 
-Allows you to configure a [batching policy]({{< ref "product-stack/tyk-streaming/configuration/common-configuration/batching" >}}).
+Allows you to configure a [batching policy]({{< ref "api-management/stream-config#batching-6" >}}).
 
 
 Type: `object`  
@@ -3481,7 +3481,7 @@ Unfortunately this error message will appear for a wide range of connection prob
 
 This output benefits from sending multiple messages in flight in parallel for improved performance. You can tune the max number of in flight messages (or message batches) with the field `max_in_flight`.
 
-This output benefits from sending messages as a [batch]({{< ref "product-stack/tyk-streaming/configuration/common-configuration/batching" >}}) for improved performance. Batches can be formed at both the input and output level. 
+This output benefits from sending messages as a [batch]({{< ref "api-management/stream-config#batching-6" >}}) for improved performance. Batches can be formed at both the input and output level. 
 
 #### Fields
 
@@ -3931,7 +3931,7 @@ Default: `false`
 
 ##### batching
 
-Allows you to configure a [batching policy]({{< ref "product-stack/tyk-streaming/configuration/common-configuration/batching#batch-policy" >}}).
+Allows you to configure a [batching policy]({{< ref "api-management/stream-config#batch-policy" >}}).
 
 
 Type: `object`  
@@ -4110,7 +4110,7 @@ pipeline:
         encoding: textual
 ```
 
-The `threads` field in the pipeline section determines how many parallel processing threads are created. You can read more about parallel processing in the [pipeline guide]({{< ref "product-stack/tyk-streaming/configuration/common-configuration/processing-pipelines" >}}).
+The `threads` field in the pipeline section determines how many parallel processing threads are created. You can read more about parallel processing in the [pipeline guide]({{< ref "api-management/stream-config#processing-pipelines" >}}).
 
 #### Labels
 
@@ -4210,7 +4210,7 @@ For most Tyk Streams inputs the data consumed comes pre-partitioned into discret
 
 For such inputs it's necessary to define a mechanism by which the stream of source bytes can be chopped into smaller logical messages, processed and outputted as a continuous process whilst the stream is being read, as this dramatically reduces the memory usage of Tyk Streams as a whole and results in a more fluid flow of data.
 
-The way in which we define this chopping mechanism is through scanners, configured as a field on each input that requires one. For example, if we wished to consume files line-by-line, which each individual line being processed as a discrete message, we could use the [lines scanner]({{< ref "product-stack/tyk-streaming/configuration/scanners/lines" >}}) a file input:
+The way in which we define this chopping mechanism is through scanners, configured as a field on each input that requires one. For example, if we wished to consume files line-by-line, which each individual line being processed as a discrete message, we could use the [lines scanner]({{< ref "api-management/stream-config#lines" >}}) a file input:
 
 #### Common
 
@@ -4444,7 +4444,7 @@ output:
       period: 100ms
 ```
 
-However, a small number of inputs such as [kafka]({{< ref "product-stack/tyk-streaming/configuration/inputs/kafka" >}}) must be consumed sequentially (in this case by partition) and therefore benefit from specifying your batch policy at the input level instead:
+However, a small number of inputs such as [kafka]({{< ref "api-management/stream-config#kafka" >}}) must be consumed sequentially (in this case by partition) and therefore benefit from specifying your batch policy at the input level instead:
 
 ```yaml
 input:
@@ -4463,7 +4463,7 @@ output:
 
 Inputs that behave this way are documented as such and have a `batching` configuration block.
 
-Sometimes you may prefer to create your batches before processing, in which case if your input doesn't already support [a batch policy](#batch-policy) you can instead use a [broker]({{< ref "product-stack/tyk-streaming/configuration/inputs/broker" >}}), which also allows you to combine inputs with a single batch policy:
+Sometimes you may prefer to create your batches before processing, in which case if your input doesn't already support [a batch policy](#batch-policy) you can instead use a [broker]({{< ref "api-management/stream-config#broker" >}}), which also allows you to combine inputs with a single batch policy:
 
 ```yaml
 input:
@@ -4476,7 +4476,7 @@ input:
       period: 500ms
 ```
 
-This also works the same with [output brokers]({{< ref "product-stack/tyk-streaming/configuration/outputs/broker" >}}).
+This also works the same with [output brokers]({{< ref "api-management/stream-config#broker-1" >}}).
 
 #### Compatibility
 

@@ -34,17 +34,17 @@ There are four different categories of events that can be fired by Tyk:
 
 ### API events
 
-Tyk can generate (or *fire*) a variety of built-in API events due to activity triggered by an API request, such as exceeded rate limits, depleted quotas or attempts to access using expired keys. The full list of standard API events is available [here]({{< ref "basic-config-and-security/report-monitor-trigger-events#api-events" >}}).
+Tyk can generate (or *fire*) a variety of built-in API events due to activity triggered by an API request, such as exceeded rate limits, depleted quotas or attempts to access using expired keys. The full list of standard API events is available [here]({{< ref "api-management/gateway-events#api-events" >}}).
 
 ### Token lifecycle events
 
-Alongside the events that are fired in response to API requests, Tyk will also mark the creation, update or deletion of access tokens (keys) with dedicated events as indicated [here]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types#token-lifecycle-events" >}}).
+Alongside the events that are fired in response to API requests, Tyk will also mark the creation, update or deletion of access tokens (keys) with dedicated events as indicated [here]({{< ref "api-management/gateway-events#token-lifecycle-events" >}}).
 
 ### Advanced quota usage events
 
-Tyk will generate [standard quota events]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types#standard-quota-events" >}}) when a client quota has been consumed, but what if you want to have more granular notification of quota usage as your clients are approaching their quota limit?
+Tyk will generate [standard quota events]({{< ref "api-management/gateway-events#standard-quota-events" >}}) when a client quota has been consumed, but what if you want to have more granular notification of quota usage as your clients are approaching their quota limit?
 
-For this, Tyk provides [advanced quota monitoring]({{< ref "basic-config-and-security/report-monitor-trigger-events/monitors" >}}) that can be configured to trigger a dedicated event handler when the API usage exceeds different thresholds approaching the quota limit.
+For this, Tyk provides [advanced quota monitoring]({{< ref "api-management/gateway-events#monitoring-quota-consumption" >}}) that can be configured to trigger a dedicated event handler when the API usage exceeds different thresholds approaching the quota limit.
 
 ### Custom events
 
@@ -52,22 +52,22 @@ The event subsystem has been designed to be easily extensible, so the community 
 
 ## Handling events with Tyk
 
-Tyk has a simple event handling system where *event handlers* are assigned (or registered) to the different [events]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}) that Tyk can generate. These handlers are assigned per-API so when an event is generated for an API and there is an *event handler* registered for that *event*, the handler will be triggered.
+Tyk has a simple event handling system where *event handlers* are assigned (or registered) to the different [events]({{< ref "api-management/gateway-events#event-types" >}}) that Tyk can generate. These handlers are assigned per-API so when an event is generated for an API and there is an *event handler* registered for that *event*, the handler will be triggered.
 
 Three different categories of *event handler* can be registered for each event:
-- a [webhook]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) that will call out to an external endpoint
-- an [event log]({{< ref "product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/log-handlers" >}}) that will write to the configured [log output]({{< ref "log-data" >}})
-- your own [custom event handler]({{< ref "basic-config-and-security/report-monitor-trigger-events/custom-handlers-javascript" >}}) that will run in a JavaScript virtual machine on the Tyk server
+- a [webhook]({{< ref "api-management/gateway-events#event-handling-with-webhooks" >}}) that will call out to an external endpoint
+- an [event log]({{< ref "api-management/gateway-events#logging-api-events-1" >}}) that will write to the configured [log output]({{< ref "log-data" >}})
+- your own [custom event handler]({{< ref "api-management/gateway-events#custom-api-event-handlers" >}}) that will run in a JavaScript virtual machine on the Tyk server
 
 {{< note success >}}
 **Note**  
 
-Remember that <b>quota usage monitoring</b> has a [dedicated mechanism]({{< ref "basic-config-and-security/report-monitor-trigger-events/monitors" >}}) for handling these special events.
+Remember that <b>quota usage monitoring</b> has a [dedicated mechanism]({{< ref "api-management/gateway-events#monitoring-quota-consumption" >}}) for handling these special events.
 {{< /note >}}
 
 ### Event metadata
 
-When an API event is fired, if there is an *event handler* registered for that combination of API and event then the handler will be provided with a rich set of [metadata]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-data" >}}) that can be used by the external system (webhook) or custom (JavaScript) code to determine the action to be taken.
+When an API event is fired, if there is an *event handler* registered for that combination of API and event then the handler will be provided with a rich set of [metadata]({{< ref "api-management/gateway-events#event-metadata-1" >}}) that can be used by the external system (webhook) or custom (JavaScript) code to determine the action to be taken.
 
 ## Event Types
 
@@ -113,7 +113,7 @@ The built-in events that Tyk Gateway will generate are:
 
 ## Event Metadata
 
-When Tyk generates an [event]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}) it will compile the following metadata that is passed to the event handler:
+When Tyk generates an [event]({{< ref "api-management/gateway-events#event-types" >}}) it will compile the following metadata that is passed to the event handler:
 
 - `Message` (string): a human readable message from Tyk Gateway that adds detail about the event
 - `Path` (string): the path of the API endpoint request that led to the event being fired
@@ -129,7 +129,7 @@ Circuit breaker events provide different metadata, see [Circuit Breakers]({{< re
 
 ### Using the metadata
 
-The metadata are exposed so that they can be used by the event handler (webhook or custom) using Go templating. For details of how each type of event handler can access these data, please see the appropriate section for [webhook]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks#webhook-payload" >}}) or [custom]({{< ref "basic-config-and-security/report-monitor-trigger-events/custom-handlers-javascript#the-event-object" >}}) event handlers.
+The metadata are exposed so that they can be used by the event handler (webhook or custom) using Go templating. For details of how each type of event handler can access these data, please see the appropriate section for [webhook]({{< ref "api-management/gateway-events#webhook-payload" >}}) or [custom]({{< ref "api-management/gateway-events#the-event-object" >}}) event handlers.
 
 ### Raw Request Data
 
@@ -218,7 +218,7 @@ When an API circuit breaker triggers due to an unresponsive upstream service, th
 
 With Tyk Gateway, the webhook event handler is a process that runs asynchronously in response to an API event being fired. It will issue an HTTP request to any open endpoint and is fully configurable within the API definition.
 
-The HTTP method, body, header values, and target URL can all be configured in the API definition. The [request body](#webhook-payload) is generated using a Tyk template file that has access to the [event metadata]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-data" >}}).
+The HTTP method, body, header values, and target URL can all be configured in the API definition. The [request body](#webhook-payload) is generated using a Tyk template file that has access to the [event metadata]({{< ref "api-management/gateway-events#event-metadata-1" >}}).
 
 The webhook event handler runs in its own process and so does not block the operation of the Gateway.
 
@@ -232,9 +232,9 @@ When your webhook event handler is triggered, it will send an HTTP request to th
 
 If no template is provided in the webhook event handler configuration in the API definition, Tyk Gateway will look for the default file `templates/default_webhook.json`. Any text file accessible to the Gateway can be used to store the Go template to be used by the event handler when constructing the payload.
 
-The event handler has access to the [event metadata]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-data" >}}) and this can be accessed by the template using the `{{.Meta.XXX}}` namespace.
+The event handler has access to the [event metadata]({{< ref "api-management/gateway-events#event-metadata-1" >}}) and this can be accessed by the template using the `{{.Meta.XXX}}` namespace.
 
-The [event type]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}) that triggered the event handler can be accessed as `{{.Type}}`.
+The [event type]({{< ref "api-management/gateway-events#event-types" >}}) that triggered the event handler can be accessed as `{{.Type}}`.
 
 For most event types, the default webhook template has this form:
 
@@ -301,17 +301,17 @@ To create a global webhook definition from the Dashboard UI you should follow th
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure webhook event handlers [here]({{< ref "product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/event-webhook-tyk-oas" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure webhook event handlers [here]({{< ref "api-management/gateway-events#webhook-event-handlers-with-tyk-oas-apis" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure webhook event handlers [here]({{< ref "product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/event-webhook-tyk-classic" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure webhook event handlers [here]({{< ref "api-management/gateway-events#webhook-event-handlers-with-tyk-classic-apis" >}}).
 
 ### Webhook event handlers with Tyk OAS APIs
 
-[Webhooks]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) are event handlers that can be registered against API Events. The webhook will be triggered when the corresponding event is fired and will send a customizable fixed payload to any open endpoint.
+[Webhooks]({{< ref "api-management/gateway-events#event-handling-with-webhooks" >}}) are event handlers that can be registered against API Events. The webhook will be triggered when the corresponding event is fired and will send a customizable fixed payload to any open endpoint.
 
 Webhooks are configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/event-webhook-tyk-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/gateway-events#webhook-event-handlers-with-tyk-classic-apis" >}}) page.
 
 #### Set up a webhook event handler in the Tyk OAS API Definition
 
@@ -325,11 +325,11 @@ When using a local webhook, the event handler element in the `eventHandlers` obj
 - `enabled`: enable the event handler
 - `trigger`: the API event that will trigger the webhook
 - `type`: the type of event handler, in this case should be set to `webhook`
-- `cooldownPeriod`: the [webhook cooldown]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks#webhook-cooldown" >}}) for duplicate events (in duration format, e.g. 10s, 1m30s); use this to prevent flooding of the target endpoint when multiple events are fired in quick succession
+- `cooldownPeriod`: the [webhook cooldown]({{< ref "api-management/gateway-events#webhook-cooldown" >}}) for duplicate events (in duration format, e.g. 10s, 1m30s); use this to prevent flooding of the target endpoint when multiple events are fired in quick succession
 - `name`: a human readable name for the webhook, which will be displayed in Tyk Dashboard
 - `url`: this is an **absolute URL** to which the request will be sent
 - `method`: this can be any of `GET`, `PUT`, `POST`, `PATCH` or `DELETE` and will be the HTTP method used to send the request; methods that do not support an encoded request body will not have the event metadata provided with the request; we advise using `POST` where possible
-- `bodyTemplate`: this is the path to the [webhook template]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks#webhook-payload" >}}) that will be used to construct the request body
+- `bodyTemplate`: this is the path to the [webhook template]({{< ref "api-management/gateway-events#webhook-payload" >}}) that will be used to construct the request body
 - `headers`: a map of custom headers to be provided with the request
 
 For example:
@@ -398,7 +398,7 @@ When using a *global webhook*, the event handler element in the `eventHandlers` 
 - `enabled`: enable the event handler
 - `trigger`: the API event that will trigger the webhook
 - `type`: the type of event handler, in this case should be set to `webhook`
-- `cooldownPeriod`: the [webhook cooldown]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks#webhook-cooldown" >}}) for duplicate events (in duration format, e.g. 10s, 1m30s); use this to prevent flooding of the target endpoint when multiple events are fired in quick succession
+- `cooldownPeriod`: the [webhook cooldown]({{< ref "api-management/gateway-events#webhook-cooldown" >}}) for duplicate events (in duration format, e.g. 10s, 1m30s); use this to prevent flooding of the target endpoint when multiple events are fired in quick succession
 - `id`: the *webhook id* assigned by Tyk to the global webhook when it was created (this can be determined using the [list webhooks]({{< ref "api-management/dashboard-configuration#list-web-hooks" >}}) endpoint in the Tyk Dashboard API)
 
 For example:
@@ -467,7 +467,7 @@ If the global webhook is subsequently deleted from the Tyk Dashboard, the webhoo
 
 It is very simple to register webhooks to be triggered in response to specific API events when using Tyk OAS APIs with the Tyk Dashboard. The API Designer in the Dashboard allows you to define *local webhooks* and to register *global webhooks* to handle events. 
 
-If you want to use a *global webhook* then you'll need to declare it first, following [these instructions]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks#creating-a-global-webhook-definition-using-tyk-dashboard" >}}).
+If you want to use a *global webhook* then you'll need to declare it first, following [these instructions]({{< ref "api-management/gateway-events#creating-a-global-webhook-definition-using-tyk-dashboard" >}}).
 
 1. **Add event handler**
 
@@ -509,7 +509,7 @@ If you want to use a *global webhook* then you'll need to declare it first, foll
 
 ### Webhook event handlers with Tyk Classic APIs
 
-[Webhooks]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) are event handlers that can
+[Webhooks]({{< ref "api-management/gateway-events#event-handling-with-webhooks" >}}) are event handlers that can
 be registered against API Events. The webhook will be triggered when the corresponding event is fired and will send a
 customisable fixed payload to any open endpoint.
 
@@ -517,13 +517,13 @@ Webhooks are configured in the Tyk Classic API Definition. You can do this via t
 Designer.
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk
-OAS]({{< ref "product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/event-webhook-tyk-oas" >}})
+OAS]({{< ref "api-management/gateway-events#webhook-event-handlers-with-tyk-oas-apis" >}})
 page.
 
 #### Set up a webhook event handler in the Tyk Classic API Definition
 
 To add a webhook event handler you must add a new event handler object within the `event_handlers.events` section of the
-API definition for the appropriate [API event]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}).
+API definition for the appropriate [API event]({{< ref "api-management/gateway-events#event-types" >}}).
 
 The event handler object has the following configuration:
 
@@ -537,11 +537,11 @@ The `handler_meta` object has the following configuration:
   request; we advise using `POST` where possible
 - `target_path`: this is an **absolute URL** to which the request will be sent
 - `template_path`: this is the path to the [webhook
-  template]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks#webhook-payload" >}}) that will be
+  template]({{< ref "api-management/gateway-events#webhook-payload" >}}) that will be
   used to construct the request body
 - `header_map`: a map of custom headers to be provided with the request
 - `event_timeout`: the [webhook
-  cooldown]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks#webhook-cooldown" >}}) for duplicate
+  cooldown]({{< ref "api-management/gateway-events#webhook-cooldown" >}}) for duplicate
   events (in seconds); use this to prevent flooding of the target endpoint when multiple events are fired in quick succession
 
 For example:
@@ -578,7 +578,7 @@ webhook template located at `templates/default_webhook.json`.
 
 This manually configured webhook event handler is private to the API within which it has been defined, it is not a
 [global
-webhook]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks#using-webhooks-with-tyk-dashboard" >}}).
+webhook]({{< ref "api-management/gateway-events#using-webhooks-with-tyk-dashboard" >}}).
 {{< /note >}}
 
 #### Set up a webhook event handler in the Tyk Dashboard
@@ -596,7 +596,7 @@ the Gateway.
 
     Before you can configure a webhook event handler for your API, you must first create a global webhook from the
     **Webhooks** screen in the **API Management** menu, as described
-    [here]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks#creating-a-global-webhook-definition-using-tyk-dashboard" >}}).
+    [here]({{< ref "api-management/gateway-events#creating-a-global-webhook-definition-using-tyk-dashboard" >}}).
 
 2. **Register the webhook with the event**
 
@@ -620,7 +620,7 @@ the Gateway.
 
 Tyk Operator supports event handler integration for Tyk Classic API Definition. Configuring the `event_handlers` field
 in ApiDefinition Custom Resource Definition (CRD) enables webhooks to be triggered by [specific
-API events]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}).
+API events]({{< ref "api-management/gateway-events#event-types" >}}).
 
 The process for configuring webhook event handlers using Tyk Operator is similar to that explained in
 [Set up a webhook event handler in the Tyk Classic API Definition](#set-up-a-webhook-event-handler-in-the-tyk-classic-api-definition).
@@ -745,7 +745,7 @@ sampleHandler.NewHandler(function(event, context) {
 
 #### The `event` object
 
-This contains the [event metadata]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-data" >}}) in the following structure:
+This contains the [event metadata]({{< ref "api-management/gateway-events#event-metadata-1" >}}) in the following structure:
 
 ```json
 {
@@ -817,7 +817,7 @@ The JavaScript files are loaded on API reload into the global JSVM. If a hot-rel
 
 Tyk provides the ability to actively monitor both user and organization quotas, using a dedicated webhook to notify your stakeholders, your system stack or the requesting API client when certain thresholds have been reached for a token.
 
-Unlike API event [webhooks]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) the quota monitor is configured at the Gateway level.
+Unlike API event [webhooks]({{< ref "api-management/gateway-events#event-handling-with-webhooks" >}}) the quota monitor is configured at the Gateway level.
 
 <br>
 {{< note success >}}
@@ -832,7 +832,7 @@ To enable advanced quota monitoring you will need to add a new `monitor` section
 
 This has the following fields:
 - `enable_trigger_monitors`: set to `true` to have the monitors start to measure quota thresholds
-- `configuration`: a [webhook configuration]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) object
+- `configuration`: a [webhook configuration]({{< ref "api-management/gateway-events#event-handling-with-webhooks" >}}) object
 - `global_trigger_limit`: this is a percentage of the quota that the key must consume for the webhook to be fired
 - `monitor_user_keys`: set to `true` to monitor individual tokens (this may result in a large number of triggers as it scales with the number of user tokens that are issued)
 - `monitor_org_keys`: set to `true` to monitor organization quotas

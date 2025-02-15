@@ -17,7 +17,7 @@ Monitors are disabled by default in Tyk Cloud. Portal events are enabled and can
 
 ### How to Enable Monitors
 
-See [Monitors]({{< ref "basic-config-and-security/report-monitor-trigger-events/monitors" >}}) for details of how to configure quota consumption monitors.
+See [Monitors]({{< ref "api-management/gateway-events#monitoring-quota-consumption" >}}) for details of how to configure quota consumption monitors.
 
 ### Portal Events
 

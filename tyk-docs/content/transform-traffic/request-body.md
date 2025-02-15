@@ -33,7 +33,7 @@ A common use of the request body transform middleware is to surface a legacy SOA
 
 Tyk's body transform middleware uses the [Go template language](https://golang.org/pkg/text/template/) to parse and modify the provided input. We have bundled the [Sprig Library (v3)](http://masterminds.github.io/sprig/) which provides over 70 pre-written functions for transformations to assist the creation of powerful Go templates to transform your API requests. 
 
-The Go template can be defined within the API Definition or can be read from a file that is accessible to Tyk, for example alongside your [error templates]({{< ref "advanced-configuration/error-templates" >}}).
+The Go template can be defined within the API Definition or can be read from a file that is accessible to Tyk, for example alongside your [error templates]({{< ref "api-management/gateway-events#error-templates" >}}).
 
 We have provided more detail, links to reference material and some examples of the use of Go templating [here]({{< ref "product-stack/tyk-gateway/references/go-templates" >}}).
 
