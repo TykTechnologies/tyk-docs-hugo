@@ -45,15 +45,24 @@ Please note that this list only refers to v1.13.0 of the portal. The list of end
 | Organizations      | /organisations                                                                         |
 | Organizations      | /organisations/{organisation_id}                                                       |
 | Teams              | /organisations/{organisation_id}/teams                                                 |
-| Teams              | /organisations/{organisation_id}/teams                                                 |
+| Teams              | /organisations/{organisation_id}/teams/{team_id}                                       |
 | Products           | /products                                                                              |
 | Products           | /products/{product_id}                                                                 |
+| Product Tags       | /products/{product_id}/tags                                                            |
+| Product Tags       | /products/{product_id}/tags/{tag_name}                                                 |
+| Product Client Types       | /products/{product_id}/client_types                                            |
+| Product Client Types       | /products/{product_id}/client_types/{client_type_id}                           |
+| Product Logo Image         | /products/{product_id}/logo                                                    |
+| Product Preview Image      | /products/{product_id}/preview                                                 |
 | Product Docs       | /products/{product_id}/docs                                                            |
 | Product Docs       | /products/{product_id}/docs/{doc_id}                                                   |
 | Product Docs       | /products/{product_id}/docs/reorder                                                    |
 | API Doc            | /products/{product_id}/api-details                                                     |
 | API Doc            | /products/{product_id}/api-details/{api-id}                                            |
 | API Doc            | /products/{product_id}/api-details/{api_id}/oas                                        |
+| Product Spec       | /products/{product_id}/spec-details                                                    |
+| Product Spec       | /products/{product_id}/spec-details/{spec-id}                                          |
+| Product Spec       | /products/{product_id}/spec-details/{spec-id}/oas                                      |
 | Plans              | /plans                                                                                 |
 | Plans              | /plans/{plan_id}                                                                       |
 | Catalogues         | /catalogues                                                                            |
@@ -68,9 +77,12 @@ Please note that this list only refers to v1.13.0 of the portal. The list of end
 | Applications       | /apps/{app_id}                                                                         |
 | Applications       | /apps/{app_id}/access-requests                                                         |
 | Applications       | /apps/{app_id}/access-requests/{access-request_id}                                     |
-| Applications       | /apps/{app_id}/provision                                                               |
 | Credentials        | /apps/{app_id}/access-requests/{access-request_id}/credentials                         |
 | Credentials        | /apps/{app_id}/access-requests/{access-request_id}/credentials/{credential_id}         |
+| Credentials        | /apps/{app_id}/access-requests/{access-request_id}/credentials/{credential_id}/rotate  |
+| Applications       | /apps/{app_id}/provision                                                               |
+| Custom Credentials | /apps/{app_id}/custom_credentials                                                      |
+| Custom Credentials | /apps/{app_id}/custom_credentials/{credential_id}                                      |
 | Config             | /configs                                                                               |
 | Pages              | /pages                                                                                 |
 | Pages              | /pages/{page_id}                                                                       |
@@ -91,10 +103,18 @@ Please note that this list only refers to v1.13.0 of the portal. The list of end
 | OAuth2.0 Providers | /oauth-providers/{provider_id}                                                         |
 | OAuth2.0 Providers | /oauth-providers/{provider_id}/client-types                                            |
 | OAuth2.0 Providers | /oauth-providers/{provider_id}/client-types/{client_type_id}                           |
-| Tags               | /products/{product_id}/tags                                                            |
-| Tags               | /products/{product_id}/tags/{tag_name}                                                 |
-| Client Types       | /products/{product_id}/client_types                                                    |
-| Client Types       | /products/{product_id}/client_types/{client_type_id}                                   |
+| Webhooks           | /webhooks                                                                              |
+| Webhooks           | /webhooks/{webhook_id}                                                                 |
+| Webhooks           | /webhooks/{webhook_id}/headers                                                         |
+| Webhooks           | /webhooks/{webhook_id}/headers/{header_id}                                             |
+| Posts              | /posts                                                                                 |
+| Posts              | /posts/{post_id}                                                                       |
+| Posts Categories   | /posts/{post_id}/categories                                                            |
+| Posts Categories   | /posts/{post_id}/categories/{category_id}                                              |
+| Posts Tags         | /posts/{post_id}/tags                                                                  |
+| Posts Tags         | /posts/{post_id}/tags/{tag_id}                                                         |
+| Tags               | /tags                                                                                  |
+| Tags               | /tags/{tag_id}                                                                         |
 | SSO Profiles       | /sso_profiles                                                                          |
 | SSO Profiles       | /sso_profiles/{sso_profile_id}                                                         |
 ### Admin dashboard endpoints
@@ -109,10 +129,14 @@ Please note that this list only refers to v1.13.0 of the portal. The list of end
 | Providers          | /admin/providers/{provider_id}                                 |
 | Providers          | /admin/providers/{provider_id}/synchronize                     |
 | Products           | /admin/api_products                                            |
+| Products           | /admin/api_products/new                                        |
+| Products           | /admin/api_products/filter                                     |
+| Products           | /admin/api_products/apis                                       |
 | Products           | /admin/api_products/{api_product_id}                           |
 | Products           | /admin/api_products/{api_product_id}/posts/{post_id}/move_up   |
 | Products           | /admin/api_products/{api_product_id}/posts/{post_id}/move_down |
 | Plans              | /admin/plans                                                   |
+| Plans              | /admin/plans/new                                               |
 | Plans              | /admin/plans/{plan_id}                                         |
 | Catalogues         | /admin/catalogues                                              |
 | Catalogues         | /admin/catalogues/new                                          |
@@ -123,13 +147,16 @@ Please note that this list only refers to v1.13.0 of the portal. The list of end
 | OAuth2.0 Providers | /admin/oauth2-0-providers/new                                  |
 | OAuth2.0 Providers | /admin/oauth2-0-providers/{oauth2.0-provider_id}               |
 | OAuth2.0 Providers | /admin/oauth2-0-providers/ping                                 |
+| OAuth2.0 Providers | /admin/dcr_config_templates/filter                             |
 | Apps               | /admin/apps                                                    |
+| Apps               | /admin/apps/new                                                |
 | Apps               | /admin/apps/{app_id}                                           |
 | Access Requests    | /admin/access_requests                                         |
 | Access Requests    | /admin/access_requests/{access_request_id}                     |
 | Access Requests    | /admin/access_requests/{access_request_id}/approve             |
 | Access Requests    | /admin/access_requests/{access_request_id}/reject              |
-| Users              | /admin/users, admin/admin_users                                |
+| Users              | /admin/users                                                   |
+| Users              | admin/admin_users                                              |
 | Users              | /admin/users/new                                               |
 | Users              | /admin/admin_users/new                                         |
 | Users              | /admin/users/{user_id}                                         |
@@ -145,6 +172,7 @@ Please note that this list only refers to v1.13.0 of the portal. The list of end
 | Organizations      | /admin/organisations/org:{organisation_id}                     |
 | Teams              | /admin/teams                                                   |
 | Teams              | /admin/teams/new                                               |
+| Teams              | /admin/teams/filter                                            |
 | Teams              | /admin/teams/{team_id}                                         |
 | Invite Codes       | /admin/invite_codes                                            |
 | Invite Codes       | /admin/invite_codes/new                                        |
@@ -153,7 +181,6 @@ Please note that this list only refers to v1.13.0 of the portal. The list of end
 | Themes             | /admin/themes/new                                              |
 | Themes             | /admin/themes/{theme_name}                                     |
 | Themes             | /admin/themes/{theme_name}/activate                            |
-| Themes             | /admin/themes/{theme_name}/                                    |
 | Themes             | /files/download                                                |
 | Pages              | /admin/pages                                                   |
 | Pages              | /admin/pages/new                                               |
@@ -180,13 +207,16 @@ Please note that this list only refers to v1.13.0 of the portal. The list of end
 | Tags               | /admin/tags/{tag_id}                                           |
 | Settings           | /admin/general                                                 |
 | About              | /admin/about                                                   |
+| About              | /admin/about/clear-cache                                       |
 | Webhooks           | /admin/webhooks                                                |
 | Webhooks           | /admin/webhooks/new                                            |
 | Webhooks           | /admin/webhooks/{webhook_id}                                   |
 | Webhooks           | /admin/webhooks/ping                                           |
-| SSO Profiles       | /admin/sso/profiles                                            |
-| SSO Profiles       | /admin/sso/profiles/new                                        |
-| SSO Profiles       | /admin/sso/profiles/{sso_profile_id}                           |
+| SSO Profiles       | /admin/sso_profiles                                            |
+| SSO Profiles       | /admin/sso_profiles/new                                        |
+| SSO Profiles       | /admin/sso_profiles/{sso_profile_id}                           |
+| SSO Profiles       | /admin/sso_profiles/raw-editor                                 |
+| SSO Profiles       | /admin/sso_profiles/{sso_profile_id}/raw-editor                |
 
 ### Live portal endpoints
 | **Resource**      | **Endpoint**                                                  |
@@ -203,6 +233,8 @@ Please note that this list only refers to v1.13.0 of the portal. The list of end
 | Auth              | /api/portal/developers/ssokey/{id}                            |
 | Auth              | /api/portal/developers/{id}                                   |
 | Auth              | /sso                                                          |
+| Auth              | /tib/auth/{id}/{provider}                                     |
+| Auth              | /tib/auth/{id}/{provider}/callback                            |
 | Posts             | /blog                                                         |
 | Posts             | /blog/category/{category}                                     |
 | Posts             | /blog/{year}/{month}/{day}/{path}                             |
@@ -232,10 +264,15 @@ Please note that this list only refers to v1.13.0 of the portal. The list of end
 | Analytics         | /portal/private/analytics/api/chart/latency                   |
 
 ### Assets endpoints
-| **Resource** | **Endpoint**                |
-|--------------| --------------------------- |
-| Images       | /assets/images/\*           |
-| Javascripts  | /assets/javascripts/\*      |
-| Stylesheets  | /assets/stylesheets/\*      |
-| Vendors      | /assets/vendor/bootstrap/\* |
-| Vendors      | /assets/vendor/jquery/\*    |
+| **Resource** | **Endpoint**                    |
+|--------------| ------------------------------- |
+| Images       | /admin/assets/images/\*          |
+| Images       | /assets/images/\*                |
+| Fonts        | /admin/assets/fonts/\*           |
+| Fonts        | /assets/fonts/\*                 |
+| Javascripts  | /admin/assets/javascripts/\*     |
+| Javascripts  | /assets/javascripts/\*           |
+| Stylesheets  | /admin/assets/stylesheets/\*     |
+| Stylesheets  | /assets/stylesheets/\*           |
+| Vendors      | /assets/vendor/bootstrap/\*      |
+| Vendors      | /assets/vendor/jquery/\*         |

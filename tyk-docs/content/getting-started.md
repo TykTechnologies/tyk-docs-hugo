@@ -22,7 +22,7 @@ Not sure what you need? Visit our [APIM comparison]({{< ref "apim" >}}) page to 
 
 The following tutorials will show you how to get up and running with Tyk depending on your installation type.
 
-### [Create an API]({{< ref "/getting-started/create-api" >}})
+### [Create an API]({{< ref "getting-started/create-api" >}})
 
 How to add a basic API to Tyk
 

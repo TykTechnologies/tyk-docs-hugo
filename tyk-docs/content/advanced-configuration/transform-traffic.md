@@ -12,7 +12,7 @@ Within that chain are a highly configurable set of optional middleware that can,
 - apply processing to [API requests](#middleware-applied-to-the-api-request) before they are proxied to the upstream service
 - apply customization to the [API response](#middleware-applied-to-the-api-response) prior to it being proxied back to the client
 
-Tyk also supports a powerful custom plugin feature that enables you to add custom processing at different stages in the processing chains. For more details on custom plugins please see the [dedicated guide]({{< ref "plugins" >}}).
+Tyk also supports a powerful custom plugin feature that enables you to add custom processing at different stages in the processing chains. For more details on custom plugins please see the [dedicated guide]({{< ref "api-management/plugins/overview#" >}}).
 
 ## Middleware applied to the API Request
 
@@ -80,7 +80,7 @@ When working with Tyk OAS APIs, the request validation covers both headers and b
 
 ### Track Endpoint
 
-If you do not want to include all endpoints in your [Activity by Endpoint]({{< ref "product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint" >}}) statistics in Tyk Dashboard, you can enable this middleware for the endpoints to be included. 
+If you do not want to include all endpoints in your [Activity by Endpoint]({{< ref "api-management/dashboard-configuration#activity-by-endpoint" >}}) statistics in Tyk Dashboard, you can enable this middleware for the endpoints to be included. 
 
 ### URL Rewrite
 

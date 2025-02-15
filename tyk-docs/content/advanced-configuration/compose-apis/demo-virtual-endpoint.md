@@ -22,7 +22,7 @@ For instruction on how to configure the Virtual Endpoint middleware for your API
 
 ## Example 1: Accessing Tyk data objects
 
-In this example, we demonstrate how you can access different [external Tyk objects]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#accessing-external-and-dynamic-data" >}}) (API request, session key, API definition).
+In this example, we demonstrate how you can access different [external Tyk objects]({{< ref "api-management/plugins/javascript#accessing-external-and-dynamic-data" >}}) (API request, session key, API definition).
 
 1. Enable the Virtual Endpoint middleware on an endpoint of your API and paste this JavaScript into the API Designer (or save in a file and reference it from the middleware config):
 
@@ -79,7 +79,7 @@ time="" level=info msg="auth Header: <your-auth-header>" prefix=jsvm type=log-ms
 
 ## Example 2: Accessing custom attributes in the API Definition
 
-You can add [custom attributes]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#adding-custom-attributes-to-the-api-definition" >}}) to the API definition and access these from within your Virtual Endpoint.
+You can add [custom attributes]({{< ref "api-management/plugins/javascript#adding-custom-attributes-to-the-api-definition" >}}) to the API definition and access these from within your Virtual Endpoint.
 
 1. Add the following custom attributes to your API definition:
 
@@ -251,7 +251,7 @@ Virtual Test ended
 
 ## Example 4: Aggregating upstream calls using batch processing
 
-One of the most common use cases for virtual endpoints is to provide some form of aggregate data to your users, combining the responses from multiple upstream service calls. This virtual endpoint function will do just that using the batch processing function from the [JavaScript API]({{< ref "plugins/supported-languages/javascript-middleware/javascript-api" >}})
+One of the most common use cases for virtual endpoints is to provide some form of aggregate data to your users, combining the responses from multiple upstream service calls. This virtual endpoint function will do just that using the batch processing function from the [JavaScript API]({{< ref "api-management/plugins/javascript#javascript-api" >}})
 
 ```js
 function batchTest(request, session, config) {
