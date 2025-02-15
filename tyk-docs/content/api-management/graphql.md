@@ -81,311 +81,6 @@ Our team has also published some blog posts that go deeper into GraphQL discussi
 * [Who is Tyk GraphQL functionality for](https://tyk.io/blog/using-tyks-new-graphql-functionality-whos-it-for-and-what-does-it-do/)
 * [GraphQL: Performance is no longer a trade-off](https://tyk.io/blog/graphql-performance-is-no-longer-a-trade-off/)
 
-## GraphQL Federation
-
-### Overview
-
-#### Federation Version Support
-
-Tyk supports Federation v1
-
-#### What is federation?
-
-Ease-of-use is an important factor when adopting GraphQL either as a provider or a consumer. Modern enterprises have dozens of backend services and need a way to provide a unified interface for querying them. Building a single, monolithic GraphQL service is not the best option. It leads to a lot of dependencies, over-complication and is hard to maintain.
-
-To remedy this, Tyk, with release 4.0 offers GraphQL federation that allows you to divide GQL implementation across multiple back-end services, while still exposing them all as a single graph for the consumers.
-
-{{< img src="/img/dashboard/graphql/diagram_graphql-federation-B.png" alt="GraphQL federation flowchart" >}}
-
-#### Subgraphs and supergraphs
-
-**Subgraph** is a representation of a back-end service and defines a distinct GraphQL schema. It can be queried directly as a separate service or it can be federated into a larger schema of a supergraph.
-
-**Supergraph** is a composition of several subgraphs that allows the execution of a query across multiple services in the backend.
-
-#### Subgraphs examples
-
-**Users**
-```graphql
-extend type Query {
-  me: User
-}
-
-type User @key(fields: "id") {
-  id: ID!
-  username: String!
-}
-```
-
-**Products**
-
-```graphql
-extend type Query {
-  topProducts(first: Int = 5): [Product]
-}
-
-extend type Subscription {
-  updatedPrice: Product!
-  updateProductPrice(upc: String!): Product!
-  stock: [Product!]
-}
-
-type Product @key(fields: "upc") {
-  upc: String!
-  name: String!
-  price: Int!
-  inStock: Int!
-}
-```
-
-**Reviews**
-
-```graphql
-type Review {
-  body: String!
-  author: User! @provides(fields: "username")
-  product: Product!
-}
-
-extend type User @key(fields: "id") {
-  id: ID! @external
-  username: String! @external
-  reviews: [Review]
-}
-
-extend type Product @key(fields: "upc") {
-  upc: String! @external
-  reviews: [Review]
-}
-```
-
-#### Subgraph conventions
-
-- A subgraph can reference a type that is defined by a different subgraph. For example, the Review type defined in the last subgraph includes an `author` field with type `User`, which is defined in a different subgraph.
-
-- A subgraph can extend a type defined in another subgraph. For example, the Reviews subgraph extends the Product type by adding a `reviews` field to it.
-
-- A subgraph has to add a `@key` directive to an object’s type definition so that other subgraphs can reference or extend that type. The `@key` directive makes an object type an entity.
-#### Supergraph schema
-
-After creating all the above subgraphs in Tyk, they can be federated in your Tyk Gateway into a single supergraph. The schema of that supergraph will look like this:
-
-```graphql
-type Query {
-  topProducts(first: Int = 5): [Product]
-  me: User
-}
-
-type Subscription {
-  updatedPrice: Product!
-  updateProductPrice(upc: String!): Product!
-  stock: [Product!]
-}
-
-type Review {
-  body: String!
-  author: User!
-  product: Product!
-}
-
-type Product {
-  upc: String!
-  name: String!
-  price: Int!
-  inStock: Int!
-  reviews: [Review]
-}
-
-type User {
-  id: ID!
-  username: String!
-  reviews: [Review]
-}
-```
-
-#### Creating a subgraph via the Dasboard UI
-
-1. Log in to the Dashboard and go to APIs > Add New API > Federation > Subgraph.
-{{< img src="/img/dashboard/graphql/add-subgraph-api.png" alt="Add federation subgraph" >}}
-
-2. Choose a name for the subgraph and provide an upstream URL.
-
-{{< note success >}}
-Note
-
-In case your upstream URL is protected, select **Upstream Protected** and provide authorization details (either Header or Certificate information).
-
-{{< /note >}}
-
-{{< img src="/img/dashboard/graphql/subgraph-upstream-url.png" alt="Add upstream URL" >}}
-
-3. Go to Configure API and configure your subgraph just as you would any other API in Tyk.
-
-{{< note success >}}
-Note
-
-In v4.0 subgraphs will be set to **Internal** by default.
-
-{{< /note >}}
-
-4. Once you have configured all the options click Save. The subgraph is now visible in the list of APIs.
-{{< img src="/img/dashboard/graphql/subgraph-api-listing.png" alt="Subgraph API listing" >}}
-
-#### Creating a supergraph via the Dasboard UI
-1. Log in to the Dashboard and go to APIs > Add New API > Federation > Supergraph.
-{{< img src="/img/dashboard/graphql/add-supergraph-api.png" alt="Add supergraph API" >}}
-
-2. In the Details section select all the subgraphs that will be included in your supergraph.
-{{< img src="/img/dashboard/graphql/select-subgraphs.png" alt="Select subgraphs" >}}
-
-3. Go to Configure API and configure your supergraph just as you would any other API in Tyk.
-4. Once you configure all the options click Save. The supergraph is now available in your list of APIs.
-{{< img src="/img/dashboard/graphql/supergraph-api-listing.png" alt="Supergraph API listing" >}}
-
-#### Defining Headers
-In v4.0 you can define global (Supergraph) headers. Global headers are forwarded to all subgraphs that apply to the specific upstream request.
-
-##### Setting a Global Header
-
-1. After creating your supergraph, open the API in your Dashboard.
-2. From the Subgraphs tab click Global Headers.
-{{< img src="/img/dashboard/graphql/global-header1.png" alt="Global Header setup for a supergraph" >}}
-
-3. Enter your header name and value. You can add more headers by clicking Add Headers.
-{{< img src="/img/dashboard/graphql/global-header2.png" alt="Add further Global headers in a supergraph" >}}
-
-4. Click **Update** to save the header.
-5. On the pop-up that is displayed, click Update API.
-6. If you want to delete a global header, click the appropriate bin icon for it.
-7. You can update your headers by repeating steps 2-5.
-
-### Entities
-
-#### Defining the base entity
-
-- Must be defined with the @key directive.
-- The "fields" argument of the @key directive must reference a valid field that can uniquely identify the entity.
-- Multiple primary keys are possible.
-
-An example is provided below:
-
-**Subgraph 1 (base entity)**
-
-```graphql
-type MyEntity @key(fields: "id") @key(fields: "name") {
-  id: ID!
-  name: String!
-}
-```
-
-#### Extending entities
-
-Entities cannot be shared types (be defined in more than one single subgraph; see **Entity stubs** below).
-
-The base entity remains unaware of fields added through extension; only the extension itself is aware of them.
-
-Attempting to extend a non-entity with an extension that includes the @key directive or attempting to extend a base entity with an extension that does not include the @key directive will both result in errors.
-
-The primary key reference should be listed as a field with the @external directive.
-
-Below is an example extension for **MyEntity** (which was defined above in **Subgraph 1**):
-
-**Subgraph 2 (extension):**
-
-```graphql
-extend type MyEntity @key(fields: "id") {
-  id: ID! @external
-  newField: String!
-}
-```
-
-#### Entity stubs
-If one subgraph references a base entity (an entity defined in another subgraph) without adding new fields, that reference must be declared as a stub. In **federation v1**, stubs appear similar to extensions but do not add any new fields.
-
-An entity stub contains the minimal amount of information necessary to identify the entity (referencing exactly one of the primary keys from the base entity regardless of whether there are multiple primary keys on the base entity).
-
-The identifying primary key should feature the @external directive.
-
-For example, a stub of **MyEntity** (which was defined above in **Subgraph 1**):
-
-**Subgraph 3 (stub):**
-
-```graphql
-extend type MyEntity @key(fields: "id") {
-  id: ID! @external
-}
-```
-
-##### What is a shared type?
-Types that are identical by name and structure and feature in more than one subgraph are shared types.
-
-##### Can I extend a shared type?
-Subgraphs are normalized before federation. This means you can extend a type if the resolution of the extension after normalization is exactly identical to the resolution of the type after normalization in other subgraphs.
-
-Unless the resolution of the extension in a single subgraph is exactly identical to all other subgraphs, extension is not possible.
-
-Here is a valid example where both subgraphs resolve to identical enums after normalization:
-
-**Subgraph 1:**
-
-```graphql
-enum Example {
-  A,
-  B
-}
-
-extend enum Example {
-  C  
-}
-```
-
-**Subgraph 2:**
-
-```graphql
-enum Example {
-  A,
-  B,
-  C
-}
-```
-
-Here, the enum named Example in **Subgraph 1** resolves to be identical to the enum named Example in **Subgraph 2**.
-
-However, if we were to include **Subgraph 3**, which does not feature the “C” value, the enum is no longer identical in all 3 subgraphs. Consequently, federation would fail.
-
-**Subgraph 3:**
-
-```graphql
-enum Example {
-  A,
-  B
-}
-```
-
-
-
-### Extension Orphans
-
-#### What is an extension orphan?
-
-An extension orphan is an unresolved extension of a type after federation has completed. This will cause federation to fail and produce an error.
-
-#### How could an extension orphan occur?
-
-You may extend a type within a subgraph where the base type (the original definition of that type) is in another subgraph. This means that it is only after the creation of the supergraph that it can be determined whether the extension was valid. If the extension was invalid or was otherwise unresolved, an “extension orphan” would remain in the supergraph.
-
-For example, the type named Person does not need to be defined in **Subgraph 1**, but it must be defined in exactly one subgraph (see **Shared Types**: extension of shared types is not possible, so extending a type that is defined in multiple subgraphs will produce an error).
-
-**Subgraph 1**
-
-```graphql
-extend type Person {
-  name: String!
-}
-```
-
-If the type named Person were not defined in exactly one subgraph, federation will fail and produce an error.
-
 ## Create a GraphQL API
 
 GraphQL API can be created in Tyk using:
@@ -666,7 +361,6 @@ In order to use the Gateway API you will need an API key for your Gateway and on
     * [Field based permissions]({{< ref "api-management/graphql#field-based-permissions">}})
     * [Complexity limiting]({{< ref "api-management/graphql#complexity-limiting-1">}})
     * [Introspection]({{< ref "api-management/graphql#introspection">}})
-
 
 ## Graphql Proxy Only
 
@@ -1229,24 +923,6 @@ When using the [Dashboard API]({{< ref "api-management/dashboard-configuration#m
 }
 ```
 
-## Syncing GQL Schema
-
-A GraphQL Proxy API keeps an own copy of the upstream GraphQL schema. This also means that when the upstream GraphQL schema changes, those changes need to be transfered to the proxy schema.
-
-For that Tyk Dashboard always saves the timestamp of the last schema change when updating a GraphQL API. This information can be used to determine if the schema is out-dated and needs to be synced with upstream again. It can be found above the schema editor.
-
-For syncing the schema just press the resync button.
-
-{{< note success >}}
-**Note**  
-
-Syncing schemas is only available for proxy-only GraphQL APIs and **not** for UDG.
-{{< /note >}}
-
-{{< img src="/img/dashboard/graphql/schema_sync.png" alt="Sync Schema Button" >}}
-
-If your upstream is protected then you need to make sure you provide Tyk with the authorization details to execute introspection query correctly. You can add those detail while [creating GQL API]({{< ref "api-management/graphql#introspection-for-protected-upstreams">}}) or using [Introspection headers]({{< ref "api-management/graphql#introspection-headers">}}) later on.
-
 ## GraphQL APIs headers
 
 Users can set up two kinds of headers when configuring GraphQL APIs:
@@ -1304,6 +980,26 @@ Any header key/value pair defined in **Request headers** will only be used to in
       }
 }
 ```
+
+## Syncing GQL Schema
+
+A GraphQL Proxy API keeps an own copy of the upstream GraphQL schema. This also means that when the upstream GraphQL schema changes, those changes need to be transfered to the proxy schema.
+
+For that Tyk Dashboard always saves the timestamp of the last schema change when updating a GraphQL API. This information can be used to determine if the schema is out-dated and needs to be synced with upstream again. It can be found above the schema editor.
+
+For syncing the schema just press the resync button.
+
+{{< note success >}}
+**Note**  
+
+Syncing schemas is only available for proxy-only GraphQL APIs and **not** for UDG.
+{{< /note >}}
+
+{{< img src="/img/dashboard/graphql/schema_sync.png" alt="Sync Schema Button" >}}
+
+If your upstream is protected then you need to make sure you provide Tyk with the authorization details to execute introspection query correctly. You can add those detail while [creating GQL API]({{< ref "api-management/graphql#introspection-for-protected-upstreams">}}) or using [Introspection headers]({{< ref "api-management/graphql#introspection-headers">}}) later on.
+
+
 
 ## Persisting GraphQL queries
 
@@ -1854,6 +1550,313 @@ Note that the `Query` type is unchecked, which indicates that all fields in `Que
 
 {{< img src="/img/dashboard/system-management/field-based-permissions-allowlist.png" alt="field-based-permissions" >}}
 
+## GraphQL Federation
+
+### Overview
+
+#### Federation Version Support
+
+Tyk supports Federation v1
+
+#### What is federation?
+
+Ease-of-use is an important factor when adopting GraphQL either as a provider or a consumer. Modern enterprises have dozens of backend services and need a way to provide a unified interface for querying them. Building a single, monolithic GraphQL service is not the best option. It leads to a lot of dependencies, over-complication and is hard to maintain.
+
+To remedy this, Tyk, with release 4.0 offers GraphQL federation that allows you to divide GQL implementation across multiple back-end services, while still exposing them all as a single graph for the consumers.
+
+{{< img src="/img/dashboard/graphql/diagram_graphql-federation-B.png" alt="GraphQL federation flowchart" >}}
+
+#### Subgraphs and supergraphs
+
+**Subgraph** is a representation of a back-end service and defines a distinct GraphQL schema. It can be queried directly as a separate service or it can be federated into a larger schema of a supergraph.
+
+**Supergraph** is a composition of several subgraphs that allows the execution of a query across multiple services in the backend.
+
+#### Subgraphs examples
+
+**Users**
+```graphql
+extend type Query {
+  me: User
+}
+
+type User @key(fields: "id") {
+  id: ID!
+  username: String!
+}
+```
+
+**Products**
+
+```graphql
+extend type Query {
+  topProducts(first: Int = 5): [Product]
+}
+
+extend type Subscription {
+  updatedPrice: Product!
+  updateProductPrice(upc: String!): Product!
+  stock: [Product!]
+}
+
+type Product @key(fields: "upc") {
+  upc: String!
+  name: String!
+  price: Int!
+  inStock: Int!
+}
+```
+
+**Reviews**
+
+```graphql
+type Review {
+  body: String!
+  author: User! @provides(fields: "username")
+  product: Product!
+}
+
+extend type User @key(fields: "id") {
+  id: ID! @external
+  username: String! @external
+  reviews: [Review]
+}
+
+extend type Product @key(fields: "upc") {
+  upc: String! @external
+  reviews: [Review]
+}
+```
+
+#### Subgraph conventions
+
+- A subgraph can reference a type that is defined by a different subgraph. For example, the Review type defined in the last subgraph includes an `author` field with type `User`, which is defined in a different subgraph.
+
+- A subgraph can extend a type defined in another subgraph. For example, the Reviews subgraph extends the Product type by adding a `reviews` field to it.
+
+- A subgraph has to add a `@key` directive to an object’s type definition so that other subgraphs can reference or extend that type. The `@key` directive makes an object type an entity.
+#### Supergraph schema
+
+After creating all the above subgraphs in Tyk, they can be federated in your Tyk Gateway into a single supergraph. The schema of that supergraph will look like this:
+
+```graphql
+type Query {
+  topProducts(first: Int = 5): [Product]
+  me: User
+}
+
+type Subscription {
+  updatedPrice: Product!
+  updateProductPrice(upc: String!): Product!
+  stock: [Product!]
+}
+
+type Review {
+  body: String!
+  author: User!
+  product: Product!
+}
+
+type Product {
+  upc: String!
+  name: String!
+  price: Int!
+  inStock: Int!
+  reviews: [Review]
+}
+
+type User {
+  id: ID!
+  username: String!
+  reviews: [Review]
+}
+```
+
+#### Creating a subgraph via the Dasboard UI
+
+1. Log in to the Dashboard and go to APIs > Add New API > Federation > Subgraph.
+{{< img src="/img/dashboard/graphql/add-subgraph-api.png" alt="Add federation subgraph" >}}
+
+2. Choose a name for the subgraph and provide an upstream URL.
+
+{{< note success >}}
+Note
+
+In case your upstream URL is protected, select **Upstream Protected** and provide authorization details (either Header or Certificate information).
+
+{{< /note >}}
+
+{{< img src="/img/dashboard/graphql/subgraph-upstream-url.png" alt="Add upstream URL" >}}
+
+3. Go to Configure API and configure your subgraph just as you would any other API in Tyk.
+
+{{< note success >}}
+Note
+
+In v4.0 subgraphs will be set to **Internal** by default.
+
+{{< /note >}}
+
+4. Once you have configured all the options click Save. The subgraph is now visible in the list of APIs.
+{{< img src="/img/dashboard/graphql/subgraph-api-listing.png" alt="Subgraph API listing" >}}
+
+#### Creating a supergraph via the Dasboard UI
+1. Log in to the Dashboard and go to APIs > Add New API > Federation > Supergraph.
+{{< img src="/img/dashboard/graphql/add-supergraph-api.png" alt="Add supergraph API" >}}
+
+2. In the Details section select all the subgraphs that will be included in your supergraph.
+{{< img src="/img/dashboard/graphql/select-subgraphs.png" alt="Select subgraphs" >}}
+
+3. Go to Configure API and configure your supergraph just as you would any other API in Tyk.
+4. Once you configure all the options click Save. The supergraph is now available in your list of APIs.
+{{< img src="/img/dashboard/graphql/supergraph-api-listing.png" alt="Supergraph API listing" >}}
+
+#### Defining Headers
+In v4.0 you can define global (Supergraph) headers. Global headers are forwarded to all subgraphs that apply to the specific upstream request.
+
+##### Setting a Global Header
+
+1. After creating your supergraph, open the API in your Dashboard.
+2. From the Subgraphs tab click Global Headers.
+{{< img src="/img/dashboard/graphql/global-header1.png" alt="Global Header setup for a supergraph" >}}
+
+3. Enter your header name and value. You can add more headers by clicking Add Headers.
+{{< img src="/img/dashboard/graphql/global-header2.png" alt="Add further Global headers in a supergraph" >}}
+
+4. Click **Update** to save the header.
+5. On the pop-up that is displayed, click Update API.
+6. If you want to delete a global header, click the appropriate bin icon for it.
+7. You can update your headers by repeating steps 2-5.
+
+### Entities
+
+#### Defining the base entity
+
+- Must be defined with the @key directive.
+- The "fields" argument of the @key directive must reference a valid field that can uniquely identify the entity.
+- Multiple primary keys are possible.
+
+An example is provided below:
+
+**Subgraph 1 (base entity)**
+
+```graphql
+type MyEntity @key(fields: "id") @key(fields: "name") {
+  id: ID!
+  name: String!
+}
+```
+
+#### Extending entities
+
+Entities cannot be shared types (be defined in more than one single subgraph; see **Entity stubs** below).
+
+The base entity remains unaware of fields added through extension; only the extension itself is aware of them.
+
+Attempting to extend a non-entity with an extension that includes the @key directive or attempting to extend a base entity with an extension that does not include the @key directive will both result in errors.
+
+The primary key reference should be listed as a field with the @external directive.
+
+Below is an example extension for **MyEntity** (which was defined above in **Subgraph 1**):
+
+**Subgraph 2 (extension):**
+
+```graphql
+extend type MyEntity @key(fields: "id") {
+  id: ID! @external
+  newField: String!
+}
+```
+
+#### Entity stubs
+If one subgraph references a base entity (an entity defined in another subgraph) without adding new fields, that reference must be declared as a stub. In **federation v1**, stubs appear similar to extensions but do not add any new fields.
+
+An entity stub contains the minimal amount of information necessary to identify the entity (referencing exactly one of the primary keys from the base entity regardless of whether there are multiple primary keys on the base entity).
+
+The identifying primary key should feature the @external directive.
+
+For example, a stub of **MyEntity** (which was defined above in **Subgraph 1**):
+
+**Subgraph 3 (stub):**
+
+```graphql
+extend type MyEntity @key(fields: "id") {
+  id: ID! @external
+}
+```
+
+##### What is a shared type?
+Types that are identical by name and structure and feature in more than one subgraph are shared types.
+
+##### Can I extend a shared type?
+Subgraphs are normalized before federation. This means you can extend a type if the resolution of the extension after normalization is exactly identical to the resolution of the type after normalization in other subgraphs.
+
+Unless the resolution of the extension in a single subgraph is exactly identical to all other subgraphs, extension is not possible.
+
+Here is a valid example where both subgraphs resolve to identical enums after normalization:
+
+**Subgraph 1:**
+
+```graphql
+enum Example {
+  A,
+  B
+}
+
+extend enum Example {
+  C  
+}
+```
+
+**Subgraph 2:**
+
+```graphql
+enum Example {
+  A,
+  B,
+  C
+}
+```
+
+Here, the enum named Example in **Subgraph 1** resolves to be identical to the enum named Example in **Subgraph 2**.
+
+However, if we were to include **Subgraph 3**, which does not feature the “C” value, the enum is no longer identical in all 3 subgraphs. Consequently, federation would fail.
+
+**Subgraph 3:**
+
+```graphql
+enum Example {
+  A,
+  B
+}
+```
+
+
+
+### Extension Orphans
+
+#### What is an extension orphan?
+
+An extension orphan is an unresolved extension of a type after federation has completed. This will cause federation to fail and produce an error.
+
+#### How could an extension orphan occur?
+
+You may extend a type within a subgraph where the base type (the original definition of that type) is in another subgraph. This means that it is only after the creation of the supergraph that it can be determined whether the extension was valid. If the extension was invalid or was otherwise unresolved, an “extension orphan” would remain in the supergraph.
+
+For example, the type named Person does not need to be defined in **Subgraph 1**, but it must be defined in exactly one subgraph (see **Shared Types**: extension of shared types is not possible, so extending a type that is defined in multiple subgraphs will produce an error).
+
+**Subgraph 1**
+
+```graphql
+extend type Person {
+  name: String!
+}
+```
+
+If the type named Person were not defined in exactly one subgraph, federation will fail and produce an error.
+
+
+
 ## GraphQL WebSockets
 
 Tyk supports GraphQL via WebSockets using the protocols _graphql-transport-ws_ or _graphql-ws_ between client and Tyk Gateway.
@@ -2074,6 +2077,188 @@ There is no need to enable subscriptions separately. They are supported alongsid
 Here's a general sequence diagram showing how subscriptions in Tyk work exactly:
 
 {{< img src="img/dashboard/graphql/tyk-subscriptions-workflow.png" alt="Tyk Subscriptions workflow" >}}
+
+## GraphQL playground
+
+When you are creating or editing your GraphQL API, any change you make can be tested using Tyk Dashboard built-in GraphiQL Playground.
+
+{{< img src="/img/dashboard/graphql/gql-playground-new.png" alt="Playground" >}}
+
+At the top of the Playground itself, you can switch between Dark and Light theme using the `Set theme` dropdown.
+
+There's also a built in `Explorer` to help with query building and a `Prettify` button that helps to make the typed out operation easier to read.
+
+The GraphiQL try-out playground comes with a series of features by default, which can be very useful while configuring the API:
+  1.  Syntax highlighting.
+  2.  Intelligent type ahead of fields, arguments, types, and more.
+  3.  Real-time error highlighting and reporting for queries and variables.
+  4.  Automatic query and variables completion.
+  5.  Automatically adds required fields to queries.
+  6.  Documentation explorer, search, with markdown support.
+  7.  Query History using local storage
+  8.  Run and inspect query results using any promise that resolves JSON results. 9.  HTTPS or WSS not required.
+  10. Supports full GraphQL Language Specification: Queries, Mutations, Subscriptions, Fragments, Unions, directives, multiple operations per query, etc
+
+### GraphQL Playgrounds in Tyk
+
+Tyk offers you two types of Playgrounds, depending on who should be authorized to use them.
+
+* **Playground** tab in `API Designer`, that's only accessible via Tyk Dashboard and is always enabled. You need to log into the Tyk Dashboard to be able to use it.
+* **Public Playground** that you can enable for any GraphQL API and that is accessible for any consumer interacting with your GQL API. This playground will follow all security rules you set for your GQL API - authentication, authorization, etc.
+
+#### Enabling Public GraphQL Playground
+
+{{< tabs_start >}}
+{{< tab_start "Tyk Dashboard" >}}
+
+To enable a Public GraphQL Playground for one of your GQL APIs follow these few simple steps:
+
+1. Navigate to `Core Settings` tab in `API designer`
+2. Change the setting in `Enable API Playground` section.
+3. Provide `Playground path`. By default, this path is set to `/playground` but you can change it.
+
+{{< img src="/img/dashboard/graphql/enable-playground.png" alt="Headers" >}}
+
+Your `Public Playground` will be available at `http://{API-URL}/playground`.
+
+{{< tab_end >}}
+{{< tab_start "Tyk API definition" >}}
+
+To enable Public GraphQL Playground using just Tyk API definition, you need to set the following:
+
+```bash
+...
+"graphql": {
+    "playground": {
+      "enabled": true,
+      "path": "/playground"
+    }
+  }
+...
+```
+
+You can choose yourself the `path` name.
+
+Your `Public Playground` will be available at `http://{API-URL}/playground`.
+
+{{< tab_end >}}
+{{< tabs_end >}}
+
+#### Query variables
+
+You can pass query variables in two different ways, both are fully supported in Tyk Dashboard.
+
+##### Using inline arguments in GraphiQL Playground
+
+A query or mutation string in this case, would be written like in the example below and there would be no other requirements for executing an operation like this:
+
+```graphql
+mutation createUser {
+  createUser(input: {
+      username: "test", 
+      email: "test@test.cz", 
+      phone: "479332973", 
+      firstName: "David", 
+      lastName: "Test"
+      }) {
+    user {
+        id
+        username
+        email
+        phone
+        firstName
+        lastName
+    }
+  }
+}
+```
+
+##### Using query variables in GraphiQL Playground
+
+For complex sets of variables, you might want to split the above example into two parts: GQL operation and variables. 
+
+The operation itself would change to:
+
+```graphql
+mutation createUser($input: CreateUserInput!) {
+  createUser(input: $input) {
+    user {
+      id
+      username
+      email
+      phone
+      firstName
+      lastName
+    }
+  }
+}
+```
+
+The values for variables would need be provided in the `Query variables` section of the Playground like this:
+
+```graphql
+{
+  "input": {
+    "username": "test",
+    "email": "test@test.cz",
+    "phone": "479332973",
+    "firstName": "David",
+    "lastName": "Test"
+  }
+}
+```
+
+#### Headers
+
+Debugging a GraphQL API might require additional headers to be passed to the requests while playing with the GraphiQL interface (i.e. `Authorization` header in case of Authentication Token protection over the API). This can be done using the dedicated headers tab in the Graphiql IDE.
+
+{{< img src="/img/dashboard/udg/getting-started/headers.png" alt="Headers" >}}
+
+You can also [forward headers]({{< ref "api-management/graphql#graphql-apis-headers" >}}) from your client request to the upstream data sources.
+
+
+#### Logs
+
+{{< note >}}
+**Note**  
+GraphQL request logs described below are **only available in Tyk Dashboard**.
+{{< /note >}}
+
+Besides the results displayed in the GraphiQL playground, Tyk also provides you with a full list of logs of the triggered request, which can help a lot when debugging the API functionality.
+
+{{< img src="/img/dashboard/udg/getting-started/logs.png" alt="Logs" >}}
+  
+The Request Logs can be seen under the playground itself. When no logs are present, there will be no option to expand the logs, and the filter buttons (top right) will be disabled:
+
+{{< img src="/img/dashboard/udg/getting-started/logs_bar.png" alt="Logs Bar" >}}
+
+After creating and sending a query, the logs will automatically expand, and the filter buttons will display the number of logs for its respective level (category).
+
+{{< img src="/img/dashboard/udg/getting-started/logs_table.png" alt="Logs table" >}}
+
+##### Contents of the logs
+
+There are four levels (categories) of logs: `Info`, `Debug`, `Warning`, and `Error`, and each log belongs to one of these levels. 
+
+The first column of the table displays the color-coded `“level”` property of the log. A log should never be absent of a level. The second column displays the log `“msg”` (message) property, if any. The third column displays the `“mw” `(middleware) property, if any.
+
+##### Expansion/collapse of Request Logs
+
+The Request Logs can be expanded or collapsed, using the chevron on the left side to toggle these states.
+
+##### Filter buttons and states
+
+Filter buttons have two states: active and inactive; the default of which is active. A solid background color of the button indicates that a filter is active. 
+
+In the below picture, the `info` and `error` filters buttons are both active. If there are no logs for a particular level of log, the button will appear as a gray and disabled, as shown by the `Warning` filter button.
+
+{{< img src="/img/dashboard/udg/getting-started/logs_navigation.png" alt="Logs navigation" >}}
+
+Here's an example where there is at least one log, but all the filter buttons are in the inactive state. If the cursor (not shown) hovers over an inactive filter button, the button background will change to solid, and the tooltip will display `“Show”`. 
+
+If all filter buttons are inactive, a message asking whether the user would like to reset all filters will display. Clicking this text will activate all available filters.
+
+{{< img src="/img/dashboard/udg/getting-started/logs_empty.png" alt="Logs empty" >}}
 
 ## Migrating to 3.2
 
@@ -2312,184 +2497,3 @@ Old API definitions will continue to work for the Tyk Gateway
 }
 ```
 
-## GraphQL playground
-
-When you are creating or editing your GraphQL API, any change you make can be tested using Tyk Dashboard built-in GraphiQL Playground.
-
-{{< img src="/img/dashboard/graphql/gql-playground-new.png" alt="Playground" >}}
-
-At the top of the Playground itself, you can switch between Dark and Light theme using the `Set theme` dropdown.
-
-There's also a built in `Explorer` to help with query building and a `Prettify` button that helps to make the typed out operation easier to read.
-
-The GraphiQL try-out playground comes with a series of features by default, which can be very useful while configuring the API:
-  1.  Syntax highlighting.
-  2.  Intelligent type ahead of fields, arguments, types, and more.
-  3.  Real-time error highlighting and reporting for queries and variables.
-  4.  Automatic query and variables completion.
-  5.  Automatically adds required fields to queries.
-  6.  Documentation explorer, search, with markdown support.
-  7.  Query History using local storage
-  8.  Run and inspect query results using any promise that resolves JSON results. 9.  HTTPS or WSS not required.
-  10. Supports full GraphQL Language Specification: Queries, Mutations, Subscriptions, Fragments, Unions, directives, multiple operations per query, etc
-
-### GraphQL Playgrounds in Tyk
-
-Tyk offers you two types of Playgrounds, depending on who should be authorized to use them.
-
-* **Playground** tab in `API Designer`, that's only accessible via Tyk Dashboard and is always enabled. You need to log into the Tyk Dashboard to be able to use it.
-* **Public Playground** that you can enable for any GraphQL API and that is accessible for any consumer interacting with your GQL API. This playground will follow all security rules you set for your GQL API - authentication, authorization, etc.
-
-#### Enabling Public GraphQL Playground
-
-{{< tabs_start >}}
-{{< tab_start "Tyk Dashboard" >}}
-
-To enable a Public GraphQL Playground for one of your GQL APIs follow these few simple steps:
-
-1. Navigate to `Core Settings` tab in `API designer`
-2. Change the setting in `Enable API Playground` section.
-3. Provide `Playground path`. By default, this path is set to `/playground` but you can change it.
-
-{{< img src="/img/dashboard/graphql/enable-playground.png" alt="Headers" >}}
-
-Your `Public Playground` will be available at `http://{API-URL}/playground`.
-
-{{< tab_end >}}
-{{< tab_start "Tyk API definition" >}}
-
-To enable Public GraphQL Playground using just Tyk API definition, you need to set the following:
-
-```bash
-...
-"graphql": {
-    "playground": {
-      "enabled": true,
-      "path": "/playground"
-    }
-  }
-...
-```
-
-You can choose yourself the `path` name.
-
-Your `Public Playground` will be available at `http://{API-URL}/playground`.
-
-{{< tab_end >}}
-{{< tabs_end >}}
-
-#### Query variables
-
-You can pass query variables in two different ways, both are fully supported in Tyk Dashboard.
-
-##### Using inline arguments in GraphiQL Playground
-
-A query or mutation string in this case, would be written like in the example below and there would be no other requirements for executing an operation like this:
-
-```graphql
-mutation createUser {
-  createUser(input: {
-      username: "test", 
-      email: "test@test.cz", 
-      phone: "479332973", 
-      firstName: "David", 
-      lastName: "Test"
-      }) {
-    user {
-        id
-        username
-        email
-        phone
-        firstName
-        lastName
-    }
-  }
-}
-```
-
-##### Using query variables in GraphiQL Playground
-
-For complex sets of variables, you might want to split the above example into two parts: GQL operation and variables. 
-
-The operation itself would change to:
-
-```graphql
-mutation createUser($input: CreateUserInput!) {
-  createUser(input: $input) {
-    user {
-      id
-      username
-      email
-      phone
-      firstName
-      lastName
-    }
-  }
-}
-```
-
-The values for variables would need be provided in the `Query variables` section of the Playground like this:
-
-```graphql
-{
-  "input": {
-    "username": "test",
-    "email": "test@test.cz",
-    "phone": "479332973",
-    "firstName": "David",
-    "lastName": "Test"
-  }
-}
-```
-
-#### Headers
-
-Debugging a GraphQL API might require additional headers to be passed to the requests while playing with the GraphiQL interface (i.e. `Authorization` header in case of Authentication Token protection over the API). This can be done using the dedicated headers tab in the Graphiql IDE.
-
-{{< img src="/img/dashboard/udg/getting-started/headers.png" alt="Headers" >}}
-
-You can also [forward headers]({{< ref "api-management/graphql#graphql-apis-headers" >}}) from your client request to the upstream data sources.
-
-
-#### Logs
-
-{{< note >}}
-**Note**  
-GraphQL request logs described below are **only available in Tyk Dashboard**.
-{{< /note >}}
-
-Besides the results displayed in the GraphiQL playground, Tyk also provides you with a full list of logs of the triggered request, which can help a lot when debugging the API functionality.
-
-{{< img src="/img/dashboard/udg/getting-started/logs.png" alt="Logs" >}}
-  
-The Request Logs can be seen under the playground itself. When no logs are present, there will be no option to expand the logs, and the filter buttons (top right) will be disabled:
-
-{{< img src="/img/dashboard/udg/getting-started/logs_bar.png" alt="Logs Bar" >}}
-
-After creating and sending a query, the logs will automatically expand, and the filter buttons will display the number of logs for its respective level (category).
-
-{{< img src="/img/dashboard/udg/getting-started/logs_table.png" alt="Logs table" >}}
-
-##### Contents of the logs
-
-There are four levels (categories) of logs: `Info`, `Debug`, `Warning`, and `Error`, and each log belongs to one of these levels. 
-
-The first column of the table displays the color-coded `“level”` property of the log. A log should never be absent of a level. The second column displays the log `“msg”` (message) property, if any. The third column displays the `“mw” `(middleware) property, if any.
-
-##### Expansion/collapse of Request Logs
-
-The Request Logs can be expanded or collapsed, using the chevron on the left side to toggle these states.
-
-##### Filter buttons and states
-
-Filter buttons have two states: active and inactive; the default of which is active. A solid background color of the button indicates that a filter is active. 
-
-In the below picture, the `info` and `error` filters buttons are both active. If there are no logs for a particular level of log, the button will appear as a gray and disabled, as shown by the `Warning` filter button.
-
-{{< img src="/img/dashboard/udg/getting-started/logs_navigation.png" alt="Logs navigation" >}}
-
-Here's an example where there is at least one log, but all the filter buttons are in the inactive state. If the cursor (not shown) hovers over an inactive filter button, the button background will change to solid, and the tooltip will display `“Show”`. 
-
-If all filter buttons are inactive, a message asking whether the user would like to reset all filters will display. Clicking this text will activate all available filters.
-
-{{< img src="/img/dashboard/udg/getting-started/logs_empty.png" alt="Logs empty" >}}
