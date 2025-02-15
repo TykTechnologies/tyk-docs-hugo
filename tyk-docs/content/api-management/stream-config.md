@@ -1,5 +1,5 @@
 ---
-title: "Stream Configuration"
+title: "Tyk Streams Configuration"
 date: 2025-02-10
 tags: ["Broker", "Input", "Output", "HTTP Client", "HTTP Server", "Processors", "Scanners", "CSV", "Lines", "Regular Expression", "Switch", "Avro", "Kafka"]
 description: "How to configure Tyk Streams"

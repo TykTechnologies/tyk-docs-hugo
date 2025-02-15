@@ -169,7 +169,7 @@ menu:
           path: /api-management/event-driven-apis
           category: Page
           show: True
-        - title: "Tyk Stream Configuration"
+        - title: "Tyk Streams Configuration"
           path: /api-management/stream-config
           category: Page
           show: True
