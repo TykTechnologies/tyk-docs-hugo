@@ -56,7 +56,7 @@ Tyk has a simple event handling system where *event handlers* are assigned (or r
 
 Three different categories of *event handler* can be registered for each event:
 - a [webhook]({{< ref "api-management/gateway-events#event-handling-with-webhooks" >}}) that will call out to an external endpoint
-- an [event log]({{< ref "api-management/gateway-events#logging-api-events-1" >}}) that will write to the configured [log output]({{< ref "log-data" >}})
+- an [event log]({{< ref "api-management/gateway-events#logging-api-events-1" >}}) that will write to the configured [log output]({{< ref "api-management/logs-metrics#system-logs" >}})
 - your own [custom event handler]({{< ref "api-management/gateway-events#custom-api-event-handlers" >}}) that will run in a JavaScript virtual machine on the Tyk server
 
 {{< note success >}}
@@ -139,7 +139,7 @@ The `OriginatingRequest` metadata is a Base64-encoded wire-protocol representati
 
 Tyk’s built-in logging event handler is designed primarily for debugging purposes and will store details of an API event to the configured logger output.
 
-The Tyk platform can be configured to log at various verbosity levels (info, debug, warn, error) and can be integrated with third-party log aggregation tools like Sentry, Logstash, Graylog, and Syslog. For full details on configuring the Tyk logger, see [this section]({{< ref "log-data" >}}).
+The Tyk platform can be configured to log at various verbosity levels (info, debug, warn, error) and can be integrated with third-party log aggregation tools like Sentry, Logstash, Graylog, and Syslog. For full details on configuring the Tyk logger, see [this section]({{< ref "api-management/logs-metrics#system-logs" >}}).
 
 <br>
 {{< note success >}}
@@ -659,7 +659,7 @@ spec:
 
 Tyk’s built-in logging event handler is designed primarily for debugging purposes and will store details of an API event to the configured logger output.
 
-The Tyk platform can be configured to log at various verbosity levels (info, debug, warn, error) and can be integrated with third-party log aggregation tools like Sentry, Logstash, Graylog, and Syslog. For full details on configuring the Tyk logger, see [this section]({{< ref "log-data" >}}).
+The Tyk platform can be configured to log at various verbosity levels (info, debug, warn, error) and can be integrated with third-party log aggregation tools like Sentry, Logstash, Graylog, and Syslog. For full details on configuring the Tyk logger, see [this section]({{< ref "api-management/logs-metrics#system-logs" >}}).
 
 <br>
 {{< note success >}}

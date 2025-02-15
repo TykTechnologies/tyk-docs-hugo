@@ -24,7 +24,7 @@ Distributed traces provide a detailed, end-to-end view of a single API request o
 
 From v5.2+, Tyk supports OpenTelemetry standard for tracing. You can configure Tyk to work with an [OpenTelemetry collector](https://opentelemetry.io/docs/collector/) or integrate it with any [observability vendor supporting OpenTelemetry](https://opentelemetry.io/ecosystem/vendors/) to capture traces of API requests as they flow through Tyk API Gateway and any upstream services.
 
-Explore our guides for [Datadog]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_datadog" >}}), [Dynatrace]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_dynatrace" >}}), [Jaeger]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger" >}}) and [New Relic]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_new_relic" >}}) for further info on how to integrate with 3rd party observability vendors.
+Explore our guides for [Datadog]({{< ref "api-management/logs-metrics#datadog" >}}), [Dynatrace]({{< ref "api-management/logs-metrics#dynatrace" >}}), [Jaeger]({{< ref "api-management/logs-metrics#using-docker" >}}) and [New Relic]({{< ref "api-management/logs-metrics#new-relic" >}}) for further info on how to integrate with 3rd party observability vendors.
 
 Tyk also supports OpenTracing (now deprecated), but we recommend users to start migrating to OpenTelemetry for a comprehensive, vendor-neutral technology with wide industry support.
 
@@ -43,7 +43,7 @@ Metrics provide aggregated, quantitative data about the performance and behavior
 
 Tyk offers built-in metrics and analytics in [Tyk Dashboard]({{<ref "api-management/dashboard-configuration#traffic-analytics">}}) through Tyk API Gateway and Tyk Pump. These metrics provide insights into API usage, traffic patterns and response times. The built-in metrics allow you to track overall API traffic, detailed API analytics including: request count, response time distribution and error rates. Furthermore, API usage can be tracked on a per-key basis.
 
-You can also use Tyk Pump to export those metrics to [different back-ends]({{<ref "tyk-stack/tyk-pump/other-data-stores.md">}}). Here is an example of using Tyk Pump to send [API analytics metrics to Prometheus and Grafana](https://tyk.io/blog/service-level-objectives-for-your-apis-with-tyk-prometheus-and-grafana/). From v5.2+, you can also leverage the OpenTelemetry spans exported from Tyk Gateway to calculate and export [span metrics](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/connector/spanmetricsconnector/README.md) from the OpenTelemetry collector.
+You can also use Tyk Pump to export those metrics to [different back-ends]({{<ref "api-management/tyk-pump#external-data-stores">}}). Here is an example of using Tyk Pump to send [API analytics metrics to Prometheus and Grafana](https://tyk.io/blog/service-level-objectives-for-your-apis-with-tyk-prometheus-and-grafana/). From v5.2+, you can also leverage the OpenTelemetry spans exported from Tyk Gateway to calculate and export [span metrics](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/connector/spanmetricsconnector/README.md) from the OpenTelemetry collector.
 
 ## Logs
 

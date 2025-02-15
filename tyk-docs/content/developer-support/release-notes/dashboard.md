@@ -4096,7 +4096,7 @@ It also becomes possible to put a {{<fn>}}blocklist{{</fn>}} in-place, meaning t
 
 This change requires updating to new Tyk Pump 1.0
 
-[Read More]({{< ref "tyk-pump/configuration" >}})
+[Read More]({{< ref "api-management/tyk-pump#tyk-pump-configuration" >}})
 
 ##### 404 Error logging - unmatched paths
 

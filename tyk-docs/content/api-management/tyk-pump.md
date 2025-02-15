@@ -67,7 +67,7 @@ Here's the architecture depending on your deployment model:
 {{< tab_end >}}
 {{< tabs_end >}}
 
-Tyk-Pump is both extensible, and flexible- meaning it is possible to configure Tyk-Pump to send data to multiple different backends at the same time as depicted by Pump Backends (i) and (ii), MongoDB and Elasticsearch respectively in Figure 1. Tyk-Pump is scalable, both horizontally and vertically, as indicated by Instances "1", "2", and "n". Additionally, it is possible to apply filters that dictate WHAT analytics go WHERE, please see the [docs on sharded analytics configuration here]({{< ref "tyk-pump/configuration.md#configuring-the-sharded-analytics" >}}).
+Tyk-Pump is both extensible, and flexible- meaning it is possible to configure Tyk-Pump to send data to multiple different backends at the same time as depicted by Pump Backends (i) and (ii), MongoDB and Elasticsearch respectively in Figure 1. Tyk-Pump is scalable, both horizontally and vertically, as indicated by Instances "1", "2", and "n". Additionally, it is possible to apply filters that dictate WHAT analytics go WHERE, please see the [docs on sharded analytics configuration here]({{< ref "api-management/tyk-pump#tyk-pump-configuration#configuring-the-sharded-analytics" >}}).
 
 | {{< img src="/img/diagrams/diagram_docs_pump-configuration-multi-backend.png" alt="Configuration and Scaling of Tyk Pump" >}}  |
 |--|
@@ -75,11 +75,11 @@ Tyk-Pump is both extensible, and flexible- meaning it is possible to configure T
 
 ### Other Supported Backend Services
 
-We list our [supported backends here]({{< ref "tyk-stack/tyk-pump/other-data-stores.md" >}}).
+We list our [supported backends here]({{< ref "api-management/tyk-pump#external-data-stores" >}}).
 
 ### Configuring your Tyk Pump
 
-See [Tyk Pump Configuration]({{< ref "tyk-pump/configuration" >}}) for more details on setting up your Tyk Pump.
+See [Tyk Pump Configuration]({{< ref "api-management/tyk-pump#tyk-pump-configuration" >}}) for more details on setting up your Tyk Pump.
 
 Tyk Pump can be horizontally scaled without causing duplicate data, please see the following Table for the supported permutations of Tyk Pump scaling. 
 
@@ -100,7 +100,7 @@ The Tyk Pump is our Open Source analytics purger that moves the data generated b
 
 ##### MongoDB
 
-The Tyk Dashboard uses the `mongo-pump-aggregate` collection to display analytics. This is different than the standard `mongo` pump plugin that will store individual analytic items into MongoDB. The aggregate functionality was built to be fast, as querying raw analytics is expensive in large data sets. See [Pump Dashboard Config]({{< ref "/content/tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config.md" >}}) for more details.
+The Tyk Dashboard uses the `mongo-pump-aggregate` collection to display analytics. This is different than the standard `mongo` pump plugin that will store individual analytic items into MongoDB. The aggregate functionality was built to be fast, as querying raw analytics is expensive in large data sets. See [Pump Dashboard Config]({{< ref "api-management/tyk-pump#setup-dashboard-analytics" >}}) for more details.
 
 ##### SQL
 
@@ -168,7 +168,7 @@ The pump needed for storing logs data in the database, is very similar to other 
 
 #### Capping analytics data
 
-Tyk Gateways can generate a lot of analytics data. Be sure to read about [capping your Dashboard analytics]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage" >}})
+Tyk Gateways can generate a lot of analytics data. Be sure to read about [capping your Dashboard analytics]({{< ref "api-management/tyk-pump#tyk-pump-capping-analytics-data-storage" >}})
 
 #### Omitting the configuration file
 
@@ -231,7 +231,7 @@ With this configuration, all the analytics records related to `org1` or `org2` w
 
 ### Setup Dashboard Analytics
 
-To enable [Dashboard Analytics]({{<ref "tyk-dashboard-analytics">}}), you would need to configure Tyk Pump to send analytic data to the Dashboard storage MongoDB / SQL.
+To enable [Dashboard Analytics]({{<ref "api-management/dashboard-configuration#traffic-analytics">}}), you would need to configure Tyk Pump to send analytic data to the Dashboard storage MongoDB / SQL.
 
 These are the different pumps that handle different kinds of analytic data.
 
@@ -266,7 +266,7 @@ See below details about these pumps, their configs, matching collections and rel
 ```
 
 ###### Capping
-This collection [should be capped]({{< ref "tyk-pump/configuration#capping-analytics-data" >}}) due to the number of individual documents. This is especially important if the `detailed_recording` in the Gateway is turned on which means that the Gateway records the full payload of the request and response. 
+This collection [should be capped]({{< ref "api-management/tyk-pump#capping-analytics-data" >}}) due to the number of individual documents. This is especially important if the `detailed_recording` in the Gateway is turned on which means that the Gateway records the full payload of the request and response. 
 
 ###### Omitting Indexes
 From Pump 1.6+, the Mongo Pumps indexes default behavior is changed and the new configuration option `omit_index_creation` is available. This option is applicable to the following Pumps: `Mongo Pump`,`Mongo Aggregate Pump` and `Mongo Selective Pump`.
@@ -379,7 +379,7 @@ Similar to the regular `mongo` pump, Each request will be stored as a single doc
 
 ###### Pump Config
 
-This collection [should be capped]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage" >}}) due to the number of individual documents.
+This collection [should be capped]({{< ref "api-management/tyk-pump#tyk-pump-capping-analytics-data-storage" >}}) due to the number of individual documents.
 ```yaml
 {
   ...
@@ -397,7 +397,7 @@ This collection [should be capped]({{< ref "tyk-stack/tyk-manager/analytics/capp
 
 ###### Capping
 
-This collection [should be capped]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage" >}}) due to the number of individual documents.
+This collection [should be capped]({{< ref "api-management/tyk-pump#tyk-pump-capping-analytics-data-storage" >}}) due to the number of individual documents.
 
 ###### Dashboard Setting
 
@@ -433,7 +433,7 @@ To enable Uptime Pump, modify gateway configuration [enable_uptime_analytics]({{
 
 #### SQL
 
-When using one of our [supported SQL platforms]({{< ref "tyk-dashboard/database-options#introduction" >}}), Tyk offers 3 types of SQL pumps:
+When using one of our [supported SQL platforms]({{< ref "api-management/dashboard-configuration#supported-database" >}}), Tyk offers 3 types of SQL pumps:
 
 1. Aggregated Analytics: `sql_aggregate`
 2. Raw Logs Analytics: `sql`
@@ -784,18 +784,18 @@ The `sql-graph-aggregate` can be configured similar to the Graph SQL pump:
 The Tyk Pump component takes all of the analytics in Tyk and moves the data from the Gateway into your Dashboard. It is possible to set it up to send the analytics data it finds to other data stores. Currently we support the following:
 
 - MongoDB or SQL (Used by the Tyk Dashboard)
-- [CSV]({{< ref "product-stack/tyk-pump/advanced-configurations/configure-data-sinks/csv" >}})
-- [Elasticsearch (2.0 - 7.x)]({{< ref "product-stack/tyk-pump/advanced-configurations/configure-data-sinks/elasticsearch" >}})
+- [CSV]({{< ref "api-management/tyk-pump#csv" >}})
+- [Elasticsearch (2.0 - 7.x)]({{< ref "api-management/tyk-pump#elasticsearch" >}})
 - Graylog
 - Resurface.io
 - InfluxDB
-- [Moesif]({{< ref "tyk-configuration-reference/tyk-pump-configuration/moesif" >}})
-- [Splunk]({{< ref "tyk-configuration-reference/tyk-pump-configuration/splunk" >}})
+- [Moesif]({{< ref "api-management/tyk-pump#moesif" >}})
+- [Splunk]({{< ref "api-management/tyk-pump#splunk" >}})
 - StatsD
 - DogStatsD
 - Hybrid (Tyk RPC)
-- [Prometheus]({{< ref "tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus" >}})
-- [Logz.io]({{< ref "product-stack/tyk-pump/advanced-configurations/configure-data-sinks/logzio" >}})
+- [Prometheus]({{< ref "api-management/tyk-pump#monitor-your-apis-with-prometheus" >}})
+- [Logz.io]({{< ref "api-management/tyk-pump#logzio" >}})
 - Kafka
 - Syslog (FluentD)
 
@@ -1587,7 +1587,7 @@ We'll show you how to setup Tyk Pump for Prometheus Service Discovery.
 
     If you have Prometheus Operator enabled on the cluster, it would look for “PodMonitor” or “ServiceMonitor” resources and scrap from specified port. The only thing you would need to modify here is the helm release name for Prometheus Operator.
 
-    Also you can customize Prometheus Custom Metrics based on your analytics needs. We are using `tyk_http_requests_total` and `tyk_http_latency` described [here]({{<ref "/tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus">}}) for illustration:
+    Also you can customize Prometheus Custom Metrics based on your analytics needs. We are using `tyk_http_requests_total` and `tyk_http_latency` described [here]({{<ref "api-management/tyk-pump#monitor-your-apis-with-prometheus">}}) for illustration:
 
     ```bash
     NAMESPACE=tyk-oss
@@ -1637,7 +1637,7 @@ For Custom Metrics, commas are escaped to be used in helm --set command. You can
 
     {{< img src="/img/diagrams/pump-prometheus-1.png" alt="pump-prometheus" >}}
 
-    You can check our [Guide on Monitoring API with Prometheus]({{<ref "/tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus#useful-queries">}}) for a list of useful queries you can setup and use.
+    You can check our [Guide on Monitoring API with Prometheus]({{<ref "api-management/tyk-pump#useful-queries">}}) for a list of useful queries you can setup and use.
 
     e.g. The custom metrics tyk_http_requests_total can be retrieved:
 

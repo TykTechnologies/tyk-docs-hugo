@@ -38,7 +38,7 @@ The [Circuit Breaker]({{< ref "tyk-self-managed#circuit-breakers" >}}) is a prot
 
 ### Do Not Track Endpoint
 
-If [traffic logging]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/logging-api-traffic" >}}) is enabled for your Tyk Gateway, then it will create transaction logs for all API requests (and responses) to deployed APIs. You can use the [Do-Not-Track]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-middleware" >}}) middleware to suppress creation of transaction records for specific endpoints.
+If [traffic logging]({{< ref "api-management/logs-metrics#logging-api-traffic" >}}) is enabled for your Tyk Gateway, then it will create transaction logs for all API requests (and responses) to deployed APIs. You can use the [Do-Not-Track]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-middleware" >}}) middleware to suppress creation of transaction records for specific endpoints.
 
 ### Enforced Timeout
 

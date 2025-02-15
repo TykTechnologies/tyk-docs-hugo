@@ -55,7 +55,7 @@ Distributed traces provide a detailed, end-to-end view of a single API request o
 
 From v5.2+, Tyk supports OpenTelemetry standard for tracing. You can configure Tyk to work with an [OpenTelemetry collector](https://opentelemetry.io/docs/collector/) or integrate it with any [observability vendor supporting OpenTelemetry](https://opentelemetry.io/ecosystem/vendors/) to capture traces of API requests as they flow through Tyk API Gateway and any upstream services.
 
-Explore our guides for [Datadog]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_datadog" >}}), [Dynatrace]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_dynatrace" >}}), [Jaeger]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger" >}}) and [New Relic]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_new_relic" >}}) for further info on how to integrate with 3rd party observability vendors.
+Explore our guides for [Datadog]({{< ref "api-management/logs-metrics#datadog" >}}), [Dynatrace]({{< ref "api-management/logs-metrics#dynatrace" >}}), [Jaeger]({{< ref "api-management/logs-metrics#using-docker" >}}) and [New Relic]({{< ref "api-management/logs-metrics#new-relic" >}}) for further info on how to integrate with 3rd party observability vendors.
 
 Tyk also supports OpenTracing (now deprecated), but we recommend users to start migrating to OpenTelemetry for a comprehensive, vendor-neutral technology with wide industry support.
 
@@ -72,9 +72,9 @@ Metrics provide aggregated, quantitative data about the performance and behavior
 - **Trend Analysis:** Analyze metric trends over time to identify long-term performance patterns, plan for scaling and detect anomalies.
     
 
-Tyk offers built-in metrics and analytics in [Tyk Dashboard]({{<ref "tyk-dashboard-analytics.md">}}) through Tyk API Gateway and Tyk Pump. These metrics provide insights into API usage, traffic patterns and response times. The built-in metrics allow you to track overall API traffic, detailed API analytics including: request count, response time distribution and error rates. Furthermore, API usage can be tracked on a per-key basis.
+Tyk offers built-in metrics and analytics in [Tyk Dashboard]({{<ref "api-management/dashboard-configuration#traffic-analytics">}}) through Tyk API Gateway and Tyk Pump. These metrics provide insights into API usage, traffic patterns and response times. The built-in metrics allow you to track overall API traffic, detailed API analytics including: request count, response time distribution and error rates. Furthermore, API usage can be tracked on a per-key basis.
 
-You can also use Tyk Pump to export those metrics to [different back-ends]({{<ref "tyk-stack/tyk-pump/other-data-stores.md">}}). Here is an example of using Tyk Pump to send [API analytics metrics to Prometheus and Grafana](https://tyk.io/blog/service-level-objectives-for-your-apis-with-tyk-prometheus-and-grafana/). From v5.2+, you can also leverage the OpenTelemetry spans exported from Tyk Gateway to calculate and export [span metrics](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/connector/spanmetricsconnector/README.md) from the OpenTelemetry collector.
+You can also use Tyk Pump to export those metrics to [different back-ends]({{<ref "api-management/tyk-pump#external-data-stores">}}). Here is an example of using Tyk Pump to send [API analytics metrics to Prometheus and Grafana](https://tyk.io/blog/service-level-objectives-for-your-apis-with-tyk-prometheus-and-grafana/). From v5.2+, you can also leverage the OpenTelemetry spans exported from Tyk Gateway to calculate and export [span metrics](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/connector/spanmetricsconnector/README.md) from the OpenTelemetry collector.
 
 ### Logs
 
@@ -89,7 +89,7 @@ Logs provide detailed records of events and activities within the API and its as
 - **Audit Trail:** Maintain an audit trail of important actions and changes to the API, including configuration changes, access control changes and data updates.
     
 
-Tyk allows you to capture and analyze logs related to API requests and responses in the [Log Browser]({{<ref "tyk-stack/tyk-manager/analytics/log-browser">}}) . You can optionally enable detailed recording for the requests per API level or per Key level to store inbound request and outbound response data. You can [enable debug modes]({{<ref "api-management/troubleshooting-debugging#capturing-detailed-logs">}}) for selected APIs and send the detail logs to one or more Pump backend instances.
+Tyk allows you to capture and analyze logs related to API requests and responses in the [Log Browser]({{<ref "api-management/dashboard-configuration#activity-logs">}}) . You can optionally enable detailed recording for the requests per API level or per Key level to store inbound request and outbound response data. You can [enable debug modes]({{<ref "api-management/troubleshooting-debugging#capturing-detailed-logs">}}) for selected APIs and send the detail logs to one or more Pump backend instances.
 
 To achieve comprehensive API observability, it is essential to integrate traces, metrics and logs into the observability tools that the team in charge of the APIs are already using. Those tools should allow users to query and visualize data, set up alerts and provide an intuitive interface for monitoring and troubleshooting API issues effectively. See also our 7 observability anti-pattern to avoid when working with APIs: [Bad API observability](https://tyk.io/blog/bad-api-observability/).
 
@@ -151,7 +151,7 @@ In a typical installation, these will be handled or redirected by the service ma
 
 Tyk will try to output structured logs, and so will include context data around request errors where possible.
 
-If configured, then a [logging event handler]({{< ref "product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/log-handlers" >}}) will also report **API events** to the configured log output.
+If configured, then a [logging event handler]({{< ref "api-management/gateway-events#logging-api-events-1" >}}) will also report **API events** to the configured log output.
 
 When contacting support, you may be asked to change the logging level as part of the support handling process. See [Support Information]({{< ref "api-management/troubleshooting-debugging#support-information" >}}) for more details.
 
@@ -166,8 +166,8 @@ There are four levels of verbosity of logging that Tyk can generate:
 - `error` is the most minimal level of logging, reporting only errors
 
 You can set the logging verbosity in two ways:
-1. Via an Environment Variable to affect [all Tyk components]({{< ref "log-data#setting-log-verbosity-for-all-tyk-components" >}})
-2. Just for the [Gateway]({{< ref "log-data#setting-log-verbosity-for-the-gateway-only" >}}) via your `tyk.conf` config file 
+1. Via an Environment Variable to affect [all Tyk components]({{< ref "api-management/logs-metrics#setting-log-verbosity-for-all-tyk-components" >}})
+2. Just for the [Gateway]({{< ref "api-management/logs-metrics#setting-log-verbosity-for-the-gateway-only" >}}) via your `tyk.conf` config file 
 
 {{< warning success >}}
 **Warning**  
@@ -216,10 +216,10 @@ As a general performance tip, the `json` output format incurs less memory alloca
 Tyk can be configured to send log data from multiple Tyk processes to a 3rd party server for aggregation and analysis.
 
 The following servers are supported:
-- [Sentry](#aggregated-logs-with-sentry)
-- [Logstash](#aggregated-logs-with-logstash)
-- [Graylog](#aggregated-logs-with-graylog)
-- [Syslog](#aggregated-logs-with-syslog)
+- [Sentry](#sentry)
+- [Logstash](#logstash)
+- [Graylog](#graylog)
+- [Syslog](#syslog)
 
 #### Sentry
 
@@ -280,9 +280,9 @@ Tyk Gateway can be configured to generate a record of every request made to APIs
 ### How API Traffic Logging Works
 Traffic analytics logging is enabled in the Gateway configuration using the `enable_analytics` [option]({{< ref "tyk-oss-gateway/configuration#enable_analytics">}}) (or using the equivalent environment variable `TYK_GW_ENABLEANALYTICS`).
 
-The transaction records generated by the Gateway are stored in Redis, from which Tyk Pump can be configured to transfer them to the desired persistent storage. When using Tyk Dashboard, the [Aggregate Pump]({{< ref "tyk-pump/configuration#tyk-dashboard">}}) can be used to collate aggregated data that is presented in the [analytics]({{< ref "tyk-dashboard-analytics">}}) screens of the Tyk Dashboard.
+The transaction records generated by the Gateway are stored in Redis, from which Tyk Pump can be configured to transfer them to the desired persistent storage. When using Tyk Dashboard, the [Aggregate Pump]({{< ref "api-management/tyk-pump#tyk-dashboard">}}) can be used to collate aggregated data that is presented in the [analytics]({{< ref "api-management/dashboard-configuration#traffic-analytics">}}) screens of the Tyk Dashboard.
 
-The Gateway will not, by default, include the request and response payloads in the transaction records. This minimizes the size of the records and also avoids logging any sensitive content. The [detailed recording]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/detailed-recording" >}}) option is provided if you need to capture the payloads in the records.
+The Gateway will not, by default, include the request and response payloads in the transaction records. This minimizes the size of the records and also avoids logging any sensitive content. The [detailed recording]({{< ref "api-management/logs-metrics#enable-detailed-recording" >}}) option is provided if you need to capture the payloads in the records.
 
 You can suppress the generation of transaction records for any endpoint by enabling the [do-not-track middleware]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-middleware" >}}) for that endpoint. This provides granular control over request tracking.
 
@@ -292,14 +292,14 @@ You can find details of all the options available to you when configuring analyt
 
 ### Enable Detailed Recording
 
-When [traffic analytics]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/logging-api-traffic" >}}) are enabled the Gateway will not, by default, include the request and response payloads in these transaction records. This minimizes the size of the records and also avoids logging any sensitive content.
+When [traffic analytics]({{< ref "api-management/logs-metrics#logging-api-traffic" >}}) are enabled the Gateway will not, by default, include the request and response payloads in these transaction records. This minimizes the size of the records and also avoids logging any sensitive content.
 
 You can, however, configure Tyk to capture the payloads in the transaction records if required. This can be particularly useful during development and testing phases or when debugging an issue with an API.
 
 This is referred to as detailed recording and can be enabled at different levels of granularity. The order of precedence is:
-1. [API level]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/detailed-recording#configuration-at-the-api-level" >}})
-2. [Key level]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/detailed-recording#configuration-at-the-key-level" >}})
-3. [Gateway level]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/detailed-recording#configuration-at-the-gateway-level" >}})
+1. [API level]({{< ref "api-management/logs-metrics#configuration-at-the-api-level" >}})
+2. [Key level]({{< ref "api-management/logs-metrics#configuration-at-the-key-level" >}})
+3. [Gateway level]({{< ref "api-management/logs-metrics#configuration-at-the-gateway-level" >}})
 
 Consequently, Tyk will first check whether the API definition has detailed recording enabled to determine whether to log the request and response bodies. If it does not, then it will check the key being used in the request and finally it will check the Gateway configuration.
 
@@ -441,7 +441,7 @@ Starting from Tyk Gateway version 5.2, you can leverage the power of OpenTelemet
 
 This documentation will guide you through the process of enabling and configuring OpenTelemetry in Tyk Gateway. You'll also learn how to customize trace detail levels to meet your monitoring requirements.
 
-For further guidance on configuring your observability back-end, explore our guides for [Datadog]({{< ref "otel_datadog" >}}), [Dynatrace]({{< ref "otel_dynatrace" >}}), [Jaeger]({{< ref "otel_jaeger" >}}) and [New Relic]({{< ref "otel_new_relic" >}}).
+For further guidance on configuring your observability back-end, explore our guides for [Datadog]({{< ref "#datadog" >}}), [Dynatrace]({{< ref "#dynatrace" >}}), [Jaeger]({{< ref "#jaeger" >}}) and [New Relic]({{< ref "#new-relic" >}}).
 
 ### Enabling OpenTelemetry
 
@@ -911,7 +911,7 @@ Credit: Elasticsearch, [OpenTelemetry on Elastic](https://www.elastic.co/blog/op
 
     Make sure to replace {{Add your endpoint here}} with the appropriate endpoint from your OpenTelemetry collector.
 
-    After enabling OpenTelemetry at the Gateway level, you can activate [detailed tracing]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview" >}}) for specific APIs by editing their respective API definitions. Set the `detailed_tracing` option to either true or false. By default, this setting is false.
+    After enabling OpenTelemetry at the Gateway level, you can activate [detailed tracing]({{< ref "api-management/logs-metrics#opentelemetry" >}}) for specific APIs by editing their respective API definitions. Set the `detailed_tracing` option to either true or false. By default, this setting is false.
 
 2. **Configure the OpenTelemetry Collector to Export to Elasticsearch**
 
@@ -1127,7 +1127,7 @@ You have successfully integrated New Relic with Tyk Gateway via the OpenTelemetr
 
 This quick start guide offers a detailed, step-by-step walkthrough for configuring Tyk API Gateway (OSS, self-managed or hybrid gateway connected to Tyk Cloud) with OpenTelemetry and [Jaeger](https://www.jaegertracing.io/) to significantly improve API observability. We will cover the installation of essential components, their configuration, and the process of ensuring seamless integration.
 
-For Kubernetes instructions, please refer to [How to integrate with Jaeger on Kubernetes]({{< ref "otel_jaeger_k8s" >}}).
+For Kubernetes instructions, please refer to [How to integrate with Jaeger on Kubernetes]({{< ref "#using-kubernetes" >}}).
 
 ##### Prerequisites
 
@@ -1253,7 +1253,7 @@ Ensure the following prerequisites are met before proceeding:
 
 This quick start guide offers a detailed, step-by-step walkthrough for configuring Tyk Gateway OSS with OpenTelemetry and [Jaeger](https://www.jaegertracing.io/) on Kubernetes to significantly improve API observability. We will cover the installation of essential components, their configuration, and the process of ensuring seamless integration.
 
-For Docker instructions, please refer to [How to integrate with Jaeger on Docker]({{< ref "otel_jaeger" >}}).
+For Docker instructions, please refer to [How to integrate with Jaeger on Docker]({{< ref "#using-docker" >}}).
 
 
 ##### Prerequisites
@@ -1407,13 +1407,13 @@ Please make sure you are installing Redis versions that are supported by Tyk. Pl
 {{< warning success >}}
 **Deprecation**
 
-OpenTracing is now deprecated. We have introduced support of [OpenTelemetry]({{<ref "/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview.md">}}) in v5.2. We recommend users to migrate to OpenTelemetry for better supports of your tracing needs.
+OpenTracing is now deprecated. We have introduced support of [OpenTelemetry]({{<ref "api-management/logs-metrics#opentelemetry">}}) in v5.2. We recommend users to migrate to OpenTelemetry for better supports of your tracing needs.
 {{< /warning >}}
 
 ### Supported observability tools
-- [Jaeger]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/jaeger" >}})
-- [Zipkin]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/zipkin" >}})
-- [New Relic]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/newrelic" >}})
+- [Jaeger]({{< ref "api-management/logs-metrics#jaeger-1" >}})
+- [Zipkin]({{< ref "api-management/logs-metrics#zipkin" >}})
+- [New Relic]({{< ref "api-management/logs-metrics#new-relic-1" >}})
 
 ### Enabling OpenTracing
 To enable OpenTracing, add the following tracing configuration to your Gateway `tyk.conf` file.
@@ -1441,7 +1441,7 @@ Tyk will automatically propagate tracing headers to APIs  when tracing is enable
 **Note**  
 [Tyk Gateway 5.2]({{< ref "developer-support/release-notes/gateway.md" >}}) now includes OpenTelemetry Tracing. We recommend migrating to OpenTelemetry for better trace insights and more comprehensive support. This change will offer you significant advantages in managing your distributed tracing needs.
 
-Subsequently, we recommend following this guide [Exporting OpenTelemetry Distributed Traces to Jaeger]({{< ref "otel_jaeger" >}}). 
+Subsequently, we recommend following this guide [Exporting OpenTelemetry Distributed Traces to Jaeger]({{< ref "#using-docker" >}}). 
 {{< /note >}}
 
 Tyk uses [OpenTracing](https://opentracing.io/) with the [Jaeger client libraries](https://www.jaegertracing.io/docs/1.11/client-libraries/) to send Tyk Gateway traces to Jaeger.
@@ -1506,7 +1506,7 @@ Support for [OpenTelemetry](https://opentelemetry.io/) is on the near-term roadm
 {{< note success >}}
 **Deprecation**
 
-OpenTracing is now deprecated. We have introduced support of [OpenTelemetry]({{ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview"}}) in v5.2. We recommend users to migrate to OpenTelemetry for better supports of your tracing needs.
+OpenTracing is now deprecated. We have introduced support of [OpenTelemetry]({{ref "api-management/logs-metrics#opentelemetry"}}) in v5.2. We recommend users to migrate to OpenTelemetry for better supports of your tracing needs.
 {{< /note >}}
 
 **Configuring New Relic**

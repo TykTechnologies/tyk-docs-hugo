@@ -12,13 +12,13 @@ aliases:
 
 ## What is the performance impact of analytics
 
-Tyk Gateway allows analytics to be recorded and stored in a persistent data store (MongoDB/SQL) for all APIs by default, via [Tyk Pump]({{< ref "tyk-stack/tyk-pump/tyk-analytics-record-fields" >}}).
+Tyk Gateway allows analytics to be recorded and stored in a persistent data store (MongoDB/SQL) for all APIs by default, via [Tyk Pump]({{< ref "api-management/tyk-pump#tyk-analytics-record-fields" >}}).
 
-Tyk Gateway generates transaction records for each API request and response, containing [analytics data]({{< ref "tyk-stack/tyk-pump/tyk-analytics-record-fields" >}}) relating to: the originating host (where the request is coming from), which Tyk API version was used, the HTTP method requested and request path etc.
+Tyk Gateway generates transaction records for each API request and response, containing [analytics data]({{< ref "api-management/tyk-pump#tyk-analytics-record-fields" >}}) relating to: the originating host (where the request is coming from), which Tyk API version was used, the HTTP method requested and request path etc.
 
-The transaction records are transmitted to Redis and subsequently transferred to a persistent [data store]({{< ref "tyk-stack/tyk-pump/other-data-stores" >}}) of your choice via Tyk Pump. Furthermore, Tyk Pump can also be configured to [aggregate]({{< ref "tyk-dashboard-analytics#aggregated-analytics" >}}) the transaction records (using different data keys - API ID, access key, endpoint, response status code, location) and write to a persistent data store. Tyk Dashboard uses this data for:
-- [Aggregated analytics]({{< ref "tyk-dashboard-analytics" >}}) - Displaying analytics based on the aggregated data.
-- [Log Browser]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}}) to display raw transaction records.
+The transaction records are transmitted to Redis and subsequently transferred to a persistent [data store]({{< ref "api-management/tyk-pump#external-data-stores" >}}) of your choice via Tyk Pump. Furthermore, Tyk Pump can also be configured to [aggregate]({{< ref "api-management/dashboard-configuration#aggregated-analytics" >}}) the transaction records (using different data keys - API ID, access key, endpoint, response status code, location) and write to a persistent data store. Tyk Dashboard uses this data for:
+- [Aggregated analytics]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}) - Displaying analytics based on the aggregated data.
+- [Log Browser]({{< ref "api-management/dashboard-configuration#activity-logs" >}}) to display raw transaction records.
 
 ### How Do Analytics Impact Performance?
 
@@ -54,7 +54,7 @@ Users can selectively prevent the generation of analytics for
 - **Per API**: Tyk Gateway will not create records for requests/responses for any endpoints of an API.
 - **Per Endpoint**: Tyk Gateway will not create records for requests/responses for specific endpoints.
 
-When set, this prevents Tyk Gateway from generating the transaction records. Without transaction records, Tyk Pump will not transfer analytics to the chosen persistent data store. It's worth noting that the [track middleware]({{< ref "product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint" >}}) exclusively influences the generation of *endpoint popularity* aggregated data by Tyk Pump.
+When set, this prevents Tyk Gateway from generating the transaction records. Without transaction records, Tyk Pump will not transfer analytics to the chosen persistent data store. It's worth noting that the [track middleware]({{< ref "api-management/dashboard-configuration#activity-by-endpoint" >}}) exclusively influences the generation of *endpoint popularity* aggregated data by Tyk Pump.
 
 ### Conclusion
 
@@ -109,7 +109,7 @@ Follow these steps:
 
     1. **Optimize Analytics Configuration**: In the Tyk Gateway configuration (tyk.conf), set [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) to true. This option allows Tyk to distribute analytics data across Redis nodes, using multiple keys for the analytics. There's a corresponding option for Self Managed MDCB, also named [enable_multiple_analytics_keys]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#enable_multiple_analytics_keys" >}}). Useful only if the gateways in the data plane are configured to send analytics to MDCB.
     2. **Optimize Connection Pool Settings**: Adjust the [optimization_max_idle]({{< ref "tyk-oss-gateway/configuration#storageoptimisation_max_idle" >}}) and [optimization_max_active]({{< ref "tyk-oss-gateway/configuration#storageoptimisation_max_active" >}}) settings in the configuration files to ensure that the connection pool can handle the analytics workload without overloading any Redis shard.
-    3. **Use a Separate Analytics Store**: For high analytics traffic, you can opt to use a dedicated *Redis Cluster* for analytics by setting [enable_separate_analytics_store]({{< ref "tyk-oss-gateway/configuration#enable_separate_analytics_store" >}}) to true in the Tyk Gateway configuration file (*tyk.conf*) and specifying the separate Redis cluster configuration in the `analytics_storage` section. Please consult the [separated analytics storage]({{< ref "tyk-stack/tyk-pump/separated-analytics-storage" >}}) guide for an example with *Tyk Pump* that can equally be applied to *Tyk Gateway*.
+    3. **Use a Separate Analytics Store**: For high analytics traffic, you can opt to use a dedicated *Redis Cluster* for analytics by setting [enable_separate_analytics_store]({{< ref "tyk-oss-gateway/configuration#enable_separate_analytics_store" >}}) to true in the Tyk Gateway configuration file (*tyk.conf*) and specifying the separate Redis cluster configuration in the `analytics_storage` section. Please consult the [separated analytics storage]({{< ref "api-management/tyk-pump#separated-analytics-storage" >}}) guide for an example with *Tyk Pump* that can equally be applied to *Tyk Gateway*.
     4. **Review and Test**: After implementing these changes, thoroughly review your configurations and conduct load testing to verify that the analytics traffic is now evenly distributed across all Redis shards.
 
     By following these steps you can enhance the distribution of analytics traffic across the Redis shards. This should lead to improved scalability and performance of your Tyk deployment.
