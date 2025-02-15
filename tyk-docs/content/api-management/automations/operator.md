@@ -99,7 +99,7 @@ Tyk Operator manages multiple custom resources to help users create and maintain
 
 **ApiDefinition**: Available on all versions of Tyk Operator. It represents a [Tyk Classic API configuration]({{<ref "api-management/gateway-config-tyk-classic">}}). Tyk Classic API is the traditional format used for defining all APIs in Tyk, and now the recommended format for non-HTTP APIs such as TCP, GraphQL, and Universal Data Graph (UDG). Tyk Operator supports the major features of Tyk Classic API and the feature support details can be tracked [here]({{< ref "#apidefinition-crd" >}}).
 
-**TykStreamsApiDefinition**: Available from Tyk Operator v1.1. It represents an [Async API configuration]({{<ref "api-management/event-driven-apis#configuration-as-code">}}) which is based on [Tyk OAS API Definition]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object">}}). Tyk Operator supports all [Tyk Streams]({{<ref "api-management/event-driven-apis#tyk-streams">}}) and [Tyk OAS API feature]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-feature-status">}}) as they become available on the Gateway.
+**TykStreamsApiDefinition**: Available from Tyk Operator v1.1. It represents an [Async API configuration]({{<ref "api-management/event-driven-apis#configuration-as-code">}}) which is based on [Tyk OAS API Definition]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object">}}). Tyk Operator supports all [Tyk Streams]({{<ref "api-management/event-driven-apis#">}}) and [Tyk OAS API feature]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-feature-status">}}) as they become available on the Gateway.
 
 **SecurityPolicy**: Available on all versions of Tyk Operator. It represents a [Tyk Security Policy configuration]({{< ref "#security-policy-example" >}}). Security Policies in Tyk provide a way to define and enforce security controls, including authentication, authorization, and rate limiting for APIs managed in Tyk. Tyk Operator supports essential features of Security Policies, allowing users to centrally manage access control and security enforcement for all APIs across clusters.
 
@@ -4200,7 +4200,7 @@ The TykStreamsApiDefinition Custom Resource Definition (CRD) manages [Async API 
 
 ##### TykStreamsApiDefinition Features
 
-`TykStreamsApiDefinition` can support all features of [Tyk Streams]({{<ref "api-management/event-driven-apis#tyk-streams">}}) and [Tyk OAS API]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-feature-status">}}). You just need to provide the Tyk Streams API definition via a ConfigMap. In addition to managing the CRUD (Create, Read, Update, Delete) of Tyk Streams API resources, the Tyk Operator helps you better manage resources through object linking to Security Policies. See below for a list of Operator features and examples:
+`TykStreamsApiDefinition` can support all features of [Tyk Streams]({{<ref "api-management/event-driven-apis#">}}) and [Tyk OAS API]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-feature-status">}}). You just need to provide the Tyk Streams API definition via a ConfigMap. In addition to managing the CRUD (Create, Read, Update, Delete) of Tyk Streams API resources, the Tyk Operator helps you better manage resources through object linking to Security Policies. See below for a list of Operator features and examples:
 
 | Features | Support | Supported From | Comments | Example |
 |----------|---------|-----------------|----------|--------|

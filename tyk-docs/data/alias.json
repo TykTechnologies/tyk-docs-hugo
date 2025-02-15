@@ -651,7 +651,7 @@
     "product-stack/tyk-streaming/developer-portal-integration": "#developer-portal-integration",
     "product-stack/tyk-streaming/glossary": "#glossary",
     "product-stack/tyk-streaming/key-concepts": "#key-concepts",
-    "product-stack/tyk-streaming/overview": "#tyk-streams",
+    "product-stack/tyk-streaming/overview": "#",
     "product-stack/tyk-streaming/streams-configuration-using-ui": "#configure-streams-api-using-dashboard",
     "tyk-configuration-reference/securing-system-payloads": "#sign-payloads",
     "getting-started/key-concepts/graphql-entities": "#entities",
