@@ -36,8 +36,7 @@ aliases:
   - /universal-data-graph/udg-getting-started/mutations
   - /universal-data-graph/udg-getting-started/connect-datasource
   - /universal-data-graph/udg-getting-started/creating-schema
-universal-data-graph/getting-started-with-udg
-
+  - /universal-data-graph/getting-started-with-udg
 ---
 
 ## Overview
