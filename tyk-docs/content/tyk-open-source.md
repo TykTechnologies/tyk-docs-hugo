@@ -134,7 +134,7 @@ The quickest way to get started is using docker-compose. Visit our [Dockerhub](h
 The following are required for a Tyk OSS installation:
  - Redis   - Required for all Tyk installations.
              Simple Redis installation instructions are included below.
- - MongoDB - Required only if you chose to use the Tyk Pump with your Tyk OSS installation. Same goes with any [other pump data stores]({{< ref "tyk-stack/tyk-pump/other-data-stores" >}}) you choose to use.
+ - MongoDB - Required only if you chose to use the Tyk Pump with your Tyk OSS installation. Same goes with any [other pump data stores]({{< ref "api-management/tyk-pump#external-data-stores" >}}) you choose to use.
 
 #### Steps for Installation
 
@@ -249,7 +249,7 @@ The following are required for a Tyk OSS installation:
 1. Redis   - required for all the Tyk installations and must be installed in the cluster or reachable from inside K8s.
              You can find instructions for a simple Redis installation bellow.
 2. MongoDB/SQL - Required only if you chose to use the MongoDB/SQL Tyk pump with your Tyk OSS installation. Same goes with any
-             [other pump]({{< ref "tyk-stack/tyk-pump/other-data-stores" >}}) you choose to use.
+             [other pump]({{< ref "api-management/tyk-pump#external-data-stores" >}}) you choose to use.
 3. Helm - Tyk Helm supports the Helm 3+ version.
 
 ##### Steps for Installation

@@ -185,6 +185,22 @@ menu:
         path: /api-management/data-graph
         category: Page
         show: True
+      - title: "API Observability"
+        category: Directory
+        show: True
+        menu:
+          - title: "Metrics and Logs"
+            path: /api-management/logs-metrics
+            category: Page
+            show: True
+          - title: "Analytics Shipper"
+            path: /api-management/tyk-pump
+            category: Page
+            show: True
+          - title: "Performance Monitoring"
+            path: /api-management/performance-monitoring
+            category: Page
+            show: True
       - title: "Automations Tools"
         category: Directory
         show: True
@@ -796,22 +812,10 @@ menu:
             category: Directory
             show: True
             menu:
-              - title: "Overview"
-                path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/observability
-                category: Page
-                show: True
               - title: "Log traffic"
                 category: Directory
                 show: True
                 menu:
-                  - title: "Overview"
-                    path: /product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/logging-api-traffic
-                    category: Page
-                    show: True
-                  - title: "Detailed recording"
-                    path: /product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/detailed-recording
-                    category: Page
-                    show: True
                   - title: "Do Not Track"
                     category: Directory
                     show: True
@@ -828,70 +832,6 @@ menu:
                         path: /product-stack/tyk-gateway/middleware/do-not-track-tyk-classic
                         category: Page
                         show: True
-              - title: "System metrics"
-                path: /basic-config-and-security/report-monitor-trigger-events/instrumentation
-                category: Page
-                show: True
-              - title: "System logs"
-                path: /log-data
-                category: Page
-                show: True
-              - title: "OpenTelemetry"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview
-                    category: Page
-                    show: true
-                  - title: "Datadog"
-                    path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_datadog
-                    category: Page
-                    show: true
-                  - title: "Dynatrace"
-                    path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_dynatrace
-                    category: Page
-                    show: true
-                  - title: "Elasticsearch"
-                    path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_elastic
-                    category: Page
-                    show: true
-                  - title: "Jaeger"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Docker"
-                        path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger
-                        category: Page
-                        show: true
-                      - title: "Kubernetes"
-                        path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger_k8s
-                        category: Page
-                        show: true
-                  - title: "New Relic"
-                    path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_new_relic
-                    category: Page
-                    show: true
-              - title: "OpenTracing"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/open-tracing-overview
-                    category: Page
-                    show: True
-                  - title: "Jaeger"
-                    path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/jaeger
-                    category: Page
-                    show: True
-                  - title: "New Relic"
-                    path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/newrelic
-                    category: Page
-                    show: True
-                  - title: "Zipkin"
-                    path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/zipkin
-                    category: Page
-                    show: True
           - title: "Other (non-HTTP) protocols"
             category: Directory
             show: True
@@ -1220,90 +1160,6 @@ menu:
             category: Directory
             show: False
             menu:
-      - title: "Tyk Pump (Open Source)"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            path: /tyk-pump
-            category: Page
-            show: True
-          - title: "Getting started"
-            category: Directory
-            show: True
-            menu:
-              - title: "Tyk Pump Configuration"
-                path: /tyk-pump/configuration
-                category: Page
-                show: True
-              - title: "Setup Dashboard Analytics"
-                path: /tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config
-                category: Page
-                show: True
-              - title: "Graph Pump setup"
-                path: /tyk-stack/tyk-pump/tyk-pump-configuration/graph-pump/
-                category: Page
-                show: True
-          - title: "API documentation"
-            category: Directory
-            show: False
-            menu:
-          - title: "Advanced configurations"
-            category: Directory
-            show: True
-            menu:
-              - title: "Configure data sinks"
-                category: Directory
-                show: True
-                menu:
-                  - title: "CSV Setup"
-                    path: /product-stack/tyk-pump/advanced-configurations/configure-data-sinks/csv
-                    category: Page
-                    show: True
-                  - title: "Datadog Setup"
-                    path: /tyk-configuration-reference/tyk-pump-configuration/datadog
-                    category: Page
-                    show: True
-                  - title: "Elasticsearch Setup"
-                    path: /product-stack/tyk-pump/advanced-configurations/configure-data-sinks/elasticsearch
-                    category: Page
-                    show: True
-                  - title: "Logz.io Setup"
-                    path: /product-stack/tyk-pump/advanced-configurations/configure-data-sinks/logzio
-                    category: Page
-                    show: True
-                  - title: "Moesif Setup"
-                    path: /tyk-configuration-reference/tyk-pump-configuration/moesif
-                    category: Page
-                    show: True
-                  - title: "Splunk Setup"
-                    path: /tyk-configuration-reference/tyk-pump-configuration/splunk
-                    category: Page
-                    show: True
-                  - title: "Tyk Analytics Record Fields"
-                    path: /tyk-stack/tyk-pump/tyk-analytics-record-fields/
-                    category: Page
-                    show: True
-              - title: "Monitor your APIs with Prometheus"
-                path: /tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus
-                category: Page
-                show: True
-              - title: "Setup Prometheus Pump"
-                path: /product-stack/tyk-pump/advanced-configurations/setup-prometheus-pump
-                category: Page
-                show: True
-              - title: "Capping Analytics Data Storage"
-                path: /tyk-stack/tyk-manager/analytics/capping-analytics-data-storage
-                category: Page
-                show: True
-              - title: "Separated Analytics Storage"
-                path: /tyk-stack/tyk-pump/separated-analytics-storage
-                category: Page
-                show: True
-          - title: "Supported Backends"
-            path: /tyk-stack/tyk-pump/other-data-stores
-            category: Page
-            show: True
       - title: "Tyk Operator"
         category: Directory
         show: True

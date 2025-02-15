@@ -4148,7 +4148,7 @@ To keep real-time health-check data and make it available to the Health-check AP
 
 #### Selecting the appropriate log level
 
-Tyk provides multiple [log levels]({{< ref "log-data" >}}): error, warn, info, debug. Setting higher log levels consumes more computing resources and would have an impact on the Tyk component. Tyk installations default to log level info unless modified by config files or environment variables.
+Tyk provides multiple [log levels]({{< ref "api-management/logs-metrics#system-logs" >}}): error, warn, info, debug. Setting higher log levels consumes more computing resources and would have an impact on the Tyk component. Tyk installations default to log level info unless modified by config files or environment variables.
 
 It is recommended to set to debug only for the duration of troubleshooting as it adds heavier resource overheads. In high performance use cases for Tyk Gateway, consider setting a log level lower than info to improve overall throughput.
 
@@ -4392,7 +4392,7 @@ From **Tyk 5.3**, additional options are available for more granular control:
 ```
 
 **Capping Analytics**
-Tyk Gateways can generate a lot of analytics data. Be sure to read about [capping your Dashboard analytics]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage" >}})
+Tyk Gateways can generate a lot of analytics data. Be sure to read about [capping your Dashboard analytics]({{< ref "api-management/tyk-pump#tyk-pump-capping-analytics-data-storage" >}})
 
 
 ##### Redis Sizing Guidelines
@@ -4452,7 +4452,7 @@ The network topology we like to use is:
 {{< note success >}} 
 **Note** 
 
-If you are using [DocumentDB](https://aws.amazon.com/documentdb/), [capped collections]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage" >}}) are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details. 
+If you are using [DocumentDB](https://aws.amazon.com/documentdb/), [capped collections]({{< ref "api-management/tyk-pump#tyk-pump-capping-analytics-data-storage" >}}) are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details. 
 {{< /note >}} 
 
 **Special notes for MongoDB Atlas**
