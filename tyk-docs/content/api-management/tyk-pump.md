@@ -34,7 +34,8 @@ aliases:
   - /tyk-stack/tyk-pump/tyk-pump-configuration/graph_mongo_pum
   - /analytics-and-reporting/capping-analytics-data-storage
   - /analytics-and-reporting/separated-analytics-storage
-  - /analytics-and-reporting/tyk-analytics-fields tyk-stack/tyk-pump/tyk-pump-configuration/graph_mongo_pump
+  - /analytics-and-reporting/tyk-analytics-fields
+  - /tyk-stack/tyk-pump/tyk-pump-configuration/graph_mongo_pump
 ---
 
 ## Introduction
