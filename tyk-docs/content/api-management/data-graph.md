@@ -64,9 +64,9 @@ To start creating your first Universal Data Graph in Tyk Dashboard, go to "Data 
 {{< /note >}}
 
 Make sure to check some of the resources to help you start:
-- [How to create UDG schema]({{< ref "universal-data-graph/udg-getting-started/creating-schema" >}})
-- [How to connect data sources]({{< ref "universal-data-graph/udg-getting-started/connect-datasource" >}})
-- [How to secure the data graph]({{< ref "universal-data-graph/udg-getting-started/security" >}})
+- [How to create UDG schema]({{< ref "api-management/data-graph#creating-schema" >}})
+- [How to connect data sources]({{< ref "api-management/data-graph#connect-datasource" >}})
+- [How to secure the data graph]({{< ref "api-management/data-graph#security" >}})
 
 ## Key Concepts
 
@@ -101,7 +101,7 @@ External DataSources are those APIs that you're not (yet) managing through tyk.
 For simplicity reasons you can also add these to your data graph without previously adding them as a dedicated API to tyk.
 If you later decide you want to add additional middlewares to one of them you can always make the transition from external to internal API.
 
-Head over to the [connect data source]({{<ref "universal-data-graph/concepts/datasources" >}}) section to learn about the supported data sources and how to connect them to Tyk.
+Head over to the [connect data source]({{<ref "api-management/data-graph#udg" >}}) section to learn about the supported data sources and how to connect them to Tyk.
 
 ### Arguments
 
@@ -229,8 +229,8 @@ If you're working with raw Tyk API definition the field mapping settings look li
 Notice that even though in Tyk Dashboard the nested path has a syntax with ( . ), in Tyk API definition it becomes an array of strings.
 
 There's more UDG concepts that would be good to understand when using it for the first time:
-* [UDG Arguments]({{< ref "universal-data-graph/concepts/arguments" >}})
-* [UDG Datasources]({{< ref "universal-data-graph/concepts/datasources" >}})
+* [UDG Arguments]({{< ref "api-management/data-graph#arguments" >}})
+* [UDG Datasources]({{< ref "api-management/data-graph#udg" >}})
 
 ### Reusing response fields
 
@@ -300,7 +300,7 @@ https://people-api.dev/people
 
 The `Query.person` field needs to use its `id` argument to call the correct API endpoint.
 
-See [Concept: Arguments]({{< ref "universal-data-graph/concepts/arguments" >}}) to learn more about it.
+See [Concept: Arguments]({{< ref "api-management/data-graph#arguments" >}}) to learn more about it.
  ```
  https://people-api.dev/people/{{.arguments.id}}
  ```
@@ -569,7 +569,7 @@ In case you want to add GraphQL data source at a lower level of your schema - ty
 2. From the right-hand side menu choose **GraphQL | Tyk** or **External GraphQL** depending on wheather your data source was previously created in Tyk or if it's an external service.
 Provide a data source name and URL.
 
-Above steps are explained in detail in our [Getting started pages]({{< ref "universal-data-graph/udg-getting-started/connect-datasource" >}}).
+Above steps are explained in detail in our [Getting started pages]({{< ref "api-management/data-graph#connect-datasource" >}}).
 
 
 4. Tick the box next to `Add GraphQL operation` to see additional configuration fields. This will allow you to provide a query that will execute against the data source.

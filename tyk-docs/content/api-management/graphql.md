@@ -52,9 +52,9 @@ This means support for the following operations:
 
 ### What can you do with GraphQL and Tyk?
 
-You can securely expose existing GraphQL APIs using our [GraphQL core functionality]({{< ref "graphql/creating-gql-api" >}}).
+You can securely expose existing GraphQL APIs using our [GraphQL core functionality]({{< ref "api-management/graphql#create-a-graphql-api" >}}).
 
-In addition to this, you can also use Tyk's integrated GraphQL engine to build a [Universal Data Graph]({{< ref "universal-data-graph" >}}). The Universal Data Graph (UDG) lets you expose existing services as one single combined GraphQL API.
+In addition to this, you can also use Tyk's integrated GraphQL engine to build a [Universal Data Graph]({{< ref "api-management/data-graph#overview" >}}). The Universal Data Graph (UDG) lets you expose existing services as one single combined GraphQL API.
 
 See our video on getting started with GraphQL.
 
@@ -419,7 +419,7 @@ In order to complete the next steps, you need to have [Tyk Self Managed installe
 
     - From the **Overview** section, add your **API Name** and your API **Type** (In this case it's GraphQL). 
     - From the **Details** section, add your **Target URL**. This will set the upstream origin that hosts the service you want to proxy to. As an example, you can use [https://countries.trevorblades.com/](https://countries.trevorblades.com/).
-    - In case your upstream GQL service is protected, tick the box next to **Upstream Protected** and provide authorization details, so that Tyk can introspect the GraphQL service. You can provide authorization details as a set of headers or a certificate. [Introspection]({{< ref "graphql/introspection" >}}) of your upstream service is important for Tyk to correctly work with your GraphQL.
+    - In case your upstream GQL service is protected, tick the box next to **Upstream Protected** and provide authorization details, so that Tyk can introspect the GraphQL service. You can provide authorization details as a set of headers or a certificate. [Introspection]({{< ref "api-management/graphql#introspection" >}}) of your upstream service is important for Tyk to correctly work with your GraphQL.
     - If you would like to persist authorization information for future use you can tick the **Persist headers for future use** box. That way, if the upstream GQL schema changes in the future, you will be able to update it easily in Tyk.
     - Click **Configure API** when you have finished
 
@@ -647,7 +647,7 @@ In order to use the Gateway API you will need an API key for your Gateway and on
 
     Notice that  when creating a GQL API you need to include your GQL service schema in the API definition. Tyk Gateway doesn't have the capacity to introspect your GQL service on its own.
 
-    Including the correct schema allows Tyk Gateway to validate incoming requests against it. More on validation can be found [here]({{< ref "graphql/validation">}})
+    Including the correct schema allows Tyk Gateway to validate incoming requests against it. More on validation can be found [here]({{< ref "api-management/graphql#validation">}})
 
     {{< /note >}}
 
@@ -663,9 +663,9 @@ In order to use the Gateway API you will need an API key for your Gateway and on
     Your GQL API is now ready to use. We recommend that you secure any GQL API that you want to publish.
 
     Check the following docs for more on GraphQL-specific security options:
-    * [Field based permissions]({{< ref "graphql/field-based-permissions">}})
-    * [Complexity limiting]({{< ref "graphql/complexity-limiting">}})
-    * [Introspection]({{< ref "graphql/introspection">}})
+    * [Field based permissions]({{< ref "api-management/graphql#field-based-permissions">}})
+    * [Complexity limiting]({{< ref "api-management/graphql#complexity-limiting-1">}})
+    * [Introspection]({{< ref "api-management/graphql#introspection">}})
 
 
 ## Graphql Proxy Only
@@ -798,7 +798,7 @@ A GraphQL server can provide information about its schema. This functionality is
 
 If **introspection** is a completely new concept for you, browse through the official [GraphQL Specification](https://spec.graphql.org/October2021/#sec-Introspection) published by the GrapQL Foundation to find out more.
 
-When [creating a GraphQL proxy]({{< ref "graphql/creating-gql-api">}}) in Tyk Dashboard an introspection query is used to fetch the schema from the GraphQL upstream and display it in the schema tab.
+When [creating a GraphQL proxy]({{< ref "api-management/graphql#create-a-graphql-api">}}) in Tyk Dashboard an introspection query is used to fetch the schema from the GraphQL upstream and display it in the schema tab.
 
 {{< note success >}}
 **Note**  
@@ -816,7 +816,7 @@ In the *Create new API* screen you have to tick the **Upstream Protected** optio
 
  - From the **Upstream protected by** section choose the right option for your case: Headers or Certificate.
  - Choosing **Headers** will allow you to add multiple key/value pairs in *Introsopection headers* section. 
- - You can also **Persist headers for future use** by ticking that option. This will save information you provided in case in the future your schema changes and you need to sync it again. To understand better where this information will be saved, go to [GQL Headers]({{< ref "graphql/gql-headers">}}). To read more about schema syncing go [here]({{< ref "graphql/syncing-schema">}}).
+ - You can also **Persist headers for future use** by ticking that option. This will save information you provided in case in the future your schema changes and you need to sync it again. To understand better where this information will be saved, go to [GQL Headers]({{< ref "api-management/graphql#graphql-apis-headers">}}). To read more about schema syncing go [here]({{< ref "api-management/graphql#syncing-gql-schema">}}).
 - Choosing **Certificate** will allow you to provide *Domain* details and either *Select certificate* or *Enter certificate ID*.
 
 #### Turning off introspection
@@ -881,7 +881,7 @@ With this configuration, we set `true` to `disable_introspection` field. When yo
 
 
 
-Introspection also works for the **[Universal Data Graph]({{< ref "universal-data-graph" >}})**.
+Introspection also works for the **[Universal Data Graph]({{< ref "api-management/data-graph#overview" >}})**.
 
 ### Introspection Queries
 
@@ -1185,7 +1185,7 @@ If you prefer to introspect GraphQL all at once, you can do that by sending this
   
 ```
 
-Tyk also allows you to block introspection queries for security reasons if you wish to do so. More information on how to do that is provided [here]({{< ref "graphql/introspection#turning-off-introspection">}}).
+Tyk also allows you to block introspection queries for security reasons if you wish to do so. More information on how to do that is provided [here]({{< ref "api-management/graphql#turning-off-introspection">}}).
 
 ## Validation
 
@@ -1245,7 +1245,7 @@ Syncing schemas is only available for proxy-only GraphQL APIs and **not** for UD
 
 {{< img src="/img/dashboard/graphql/schema_sync.png" alt="Sync Schema Button" >}}
 
-If your upstream is protected then you need to make sure you provide Tyk with the authorization details to execute introspection query correctly. You can add those detail while [creating GQL API]({{< ref "graphql/introspection#introspection-for-protected-upstreams">}}) or using [Introspection headers]({{< ref "graphql/gql-headers#introspection-headers">}}) later on.
+If your upstream is protected then you need to make sure you provide Tyk with the authorization details to execute introspection query correctly. You can add those detail while [creating GQL API]({{< ref "api-management/graphql#introspection-for-protected-upstreams">}}) or using [Introspection headers]({{< ref "api-management/graphql#introspection-headers">}}) later on.
 
 ## GraphQL APIs headers
 
@@ -1976,7 +1976,7 @@ For Subscriptions, the Tyk Gateway will respond with a stream of `data` messages
 
 ### Upstream connections
 
-For setting up upstream connections (between Tyk Gateway and Upstream) please refer to the [GraphQL Subscriptions Key Concept]({{< ref "getting-started/key-concepts/graphql-subscriptions" >}}).
+For setting up upstream connections (between Tyk Gateway and Upstream) please refer to the [GraphQL Subscriptions Key Concept]({{< ref "api-management/graphql#graphql-subscriptions" >}}).
 
 
 ## GraphQL Subscriptions
@@ -2069,7 +2069,7 @@ If the upstream subscription GraphQL API is protected please enable the authenti
 
 {{< /note >}}
 
-There is no need to enable subscriptions separately. They are supported alongside GraphQL as a standard. The only requirement for subscriptions to work is to [enable WebSockets]({{< ref "graphql/graphql-websockets" >}}) in your Tyk Gateway configuration file.
+There is no need to enable subscriptions separately. They are supported alongside GraphQL as a standard. The only requirement for subscriptions to work is to [enable WebSockets]({{< ref "api-management/graphql#graphql-websockets" >}}) in your Tyk Gateway configuration file.
 
 Here's a general sequence diagram showing how subscriptions in Tyk work exactly:
 
@@ -2448,7 +2448,7 @@ Debugging a GraphQL API might require additional headers to be passed to the req
 
 {{< img src="/img/dashboard/udg/getting-started/headers.png" alt="Headers" >}}
 
-You can also [forward headers]({{< ref "graphql/gql-headers" >}}) from your client request to the upstream data sources.
+You can also [forward headers]({{< ref "api-management/graphql#graphql-apis-headers" >}}) from your client request to the upstream data sources.
 
 
 #### Logs

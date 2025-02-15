@@ -11,7 +11,7 @@ aliases:
   - /tyk-developer-portal/graphql
 ---
 
-As of Tyk v3.0.0, you can now publish GraphQL APIs, including [Universal Data Graph]({{< ref "universal-data-graph" >}}) APIs(UDG) to the Tyk Developer Portal.
+As of Tyk v3.0.0, you can now publish GraphQL APIs, including [Universal Data Graph]({{< ref "api-management/data-graph#overview" >}}) APIs(UDG) to the Tyk Developer Portal.
 
 When you do that, your API consumers can navigate through a GraphQL Playground, with an IDE complete with Intellisense.
 
