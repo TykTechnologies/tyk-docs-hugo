@@ -921,7 +921,7 @@ aliases:
 
     When [detailed request logging]({{< ref "api-management/logs-metrics#enable-detailed-recording" >}}) is enabled, Tyk will record the request and response in wire-format in the analytics database. This can be very useful when trying to debug API requests to see what went wrong for a user or client.
 
-    This mode is configured in the gateway and can be enabled at the [system]({{< ref "api-management/logs-metrics#configuration-at-the-gateway-level" >}}), [API]({{< ref "api-management/logs-metrics#configuration-at-the-api-level" >}}) or [access key]({{< ref "api-management/logs-metrics#configuration-at-the-key-level" >}}) level.
+    This mode is configured in the gateway and can be enabled at the [system]({{< ref "api-management/logs-metrics#configure-at-gateway-level" >}}), [API]({{< ref "api-management/logs-metrics#configure-at-api-level" >}}) or [access key]({{< ref "api-management/logs-metrics#configure-at-key-level" >}}) level.
 
     You will also need your Tyk Pump configured to move data into your preferred data store.
 

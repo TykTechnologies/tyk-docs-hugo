@@ -3629,7 +3629,7 @@ It is also possible to enable [detailed request logging]({{< ref "api-management
 These data are displayed in the Log Browser, on the [Activity logs]({{< ref "#activity-logs" >}}) screen in the Tyk Dashboard.
 
 #### Aggregated analytics
-The [Mongo Aggregate]({{< ref "api-management/tyk-pump#2-mongo-aggregate-pump">}}) and [SQL Aggregate]({{< ref "api-management/tyk-pump#2-sql-aggregate-pump">}}) pumps will collate statistics from the analytics records, aggregated by hour, for the following keys:
+The [Mongo Aggregate]({{< ref "api-management/tyk-pump#mongodb">}}) and [SQL Aggregate]({{< ref "api-management/tyk-pump#sql">}}) pumps will collate statistics from the analytics records, aggregated by hour, for the following keys:
 
 | Key            |  Analytics aggregated by         | Dashboard screen                                                                              |
 |----------------|----------------------------------|-----------------------------------------------------------------------------------------------|
@@ -4865,7 +4865,7 @@ Please refer to the [storage configuration]({{< ref "tyk-dashboard/configuration
 
 ### Configure Pump to Write to Data Storage Layers?
 
-Please consult the Pump configuration [guide]({{< ref "api-management/tyk-pump#3-sql-uptime-pump" >}}) for an explanation of how to configure Tyk Pump to write to different storage layers.
+Please consult the Pump configuration [guide]({{< ref "api-management/tyk-pump#sql-uptime-pump" >}}) for an explanation of how to configure Tyk Pump to write to different storage layers.
 
 The remainder of this section explains the *environment variables* that can be used to configure Tyk Pump to write to the following data storage layers:
 - Uptime

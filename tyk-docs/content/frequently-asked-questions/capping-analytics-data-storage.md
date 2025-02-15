@@ -11,9 +11,9 @@ weight: 0
 
 What methods are available to enable me to manage my MongoDB analytics storage?
 
-[Time Based Caps]({{< ref "api-management/tyk-pump#tyk-pump-capping-analytics-data-storage#time-based-cap-in-single-tenant-environments" >}})
+[Time Based Caps]({{< ref "api-management/tyk-pump#time-based-cap-in-single-tenant-environments" >}})
 
-[Size Based Caps]({{< ref "api-management/tyk-pump#tyk-pump-capping-analytics-data-storage#size-based-cap" >}})
+[Size Based Caps]({{< ref "api-management/tyk-pump#size-based-cap" >}})
 
 {{< note success >}}
 **Note**  

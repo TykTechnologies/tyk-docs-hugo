@@ -297,9 +297,9 @@ When [traffic analytics]({{< ref "api-management/logs-metrics#logging-api-traffi
 You can, however, configure Tyk to capture the payloads in the transaction records if required. This can be particularly useful during development and testing phases or when debugging an issue with an API.
 
 This is referred to as detailed recording and can be enabled at different levels of granularity. The order of precedence is:
-1. [API level]({{< ref "api-management/logs-metrics#configuration-at-the-api-level" >}})
-2. [Key level]({{< ref "api-management/logs-metrics#configuration-at-the-key-level" >}})
-3. [Gateway level]({{< ref "api-management/logs-metrics#configuration-at-the-gateway-level" >}})
+1. [API level]({{< ref "api-management/logs-metrics#configure-at-api-level" >}})
+2. [Key level]({{< ref "api-management/logs-metrics#configure-at-key-level" >}})
+3. [Gateway level]({{< ref "api-management/logs-metrics#configure-at-gateway-level" >}})
 
 Consequently, Tyk will first check whether the API definition has detailed recording enabled to determine whether to log the request and response bodies. If it does not, then it will check the key being used in the request and finally it will check the Gateway configuration.
 
@@ -460,6 +460,8 @@ For further guidance on configuring your observability back-end, explore our gui
     ```
 
     By default, OpenTelemetry spans are exported using the `gRPC` protocol to `localhost:4317`. For more configuration options and default values, refer to the [OpenTelemetry configuration details]({{< ref "tyk-oss-gateway/configuration#opentelemetry" >}}). 
+
+<a id="enable-detailed-tracing-at-api-level-optional"></a>
 
 2. **Enable Detailed Tracing at API Level (Optional)**
 

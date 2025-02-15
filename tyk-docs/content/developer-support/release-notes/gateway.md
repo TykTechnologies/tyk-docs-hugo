@@ -3702,7 +3702,7 @@ Fixed an issue when using MongoDB and [Tyk Security Policies]({{< ref "api-manag
 <details>
 <summary>Logstash formatter timestamp was not in RFC3339 Nano format</summary>
 
-The [Logstash]({{< ref "api-management/logs-metrics#aggregated-logs-with-logstash" >}}) formatter timestamp is now in [RFC3339Nano](https://www.rfc-editor.org/rfc/rfc3339) format.
+The [Logstash]({{< ref "api-management/logs-metrics#logstash" >}}) formatter timestamp is now in [RFC3339Nano](https://www.rfc-editor.org/rfc/rfc3339) format.
 </details>
 </li>
 <li>
@@ -3997,7 +3997,7 @@ Added a new feature that allows clients to retrieve the trace ID from response h
 <details>
 <summary>Allow detailed tracing to be enabled/disabled at API level</summary>
 
-Added configuration parameter to enable/disable [detail_tracing]({{< ref "api-management/logs-metrics#step-2-enable-detailed-tracing-at-api-level-optional" >}}) for *Tyk Classic API*.
+Added configuration parameter to enable/disable [detail_tracing]({{< ref "api-management/logs-metricsenable-detailed-tracing-at-api-level-optional" >}}) for *Tyk Classic API*.
 </details>
 </li>
 <li>
