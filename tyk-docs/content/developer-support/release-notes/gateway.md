@@ -3702,7 +3702,7 @@ Fixed an issue when using MongoDB and [Tyk Security Policies]({{< ref "api-manag
 <details>
 <summary>Logstash formatter timestamp was not in RFC3339 Nano format</summary>
 
-The [Logstash]({{< ref "log-data#aggregated-logs-with-logstash" >}}) formatter timestamp is now in [RFC3339Nano](https://www.rfc-editor.org/rfc/rfc3339) format.
+The [Logstash]({{< ref "api-management/logs-metrics#logstash" >}}) formatter timestamp is now in [RFC3339Nano](https://www.rfc-editor.org/rfc/rfc3339) format.
 </details>
 </li>
 <li>
@@ -3932,13 +3932,13 @@ Support for [WebSocket]({{< ref "api-management/graphql#graphql-websockets" >}})
 
 ##### Added OpenTelemetry Tracing
 
-In this version, we're introducing the support for *OpenTelemetry Tracing*, the new [open standard](https://opentelemetry.io/) for exposing observability data. This addition gives you improved visibility into how API requests are processed, with no additional license required. It is designed to help you with monitoring and troubleshooting APIs, identify bottlenecks, latency issues and errors in your API calls. For detailed information and guidance, you can check out our [OpenTelemetry Tracing]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview" >}}) resource.
+In this version, we're introducing the support for *OpenTelemetry Tracing*, the new [open standard](https://opentelemetry.io/) for exposing observability data. This addition gives you improved visibility into how API requests are processed, with no additional license required. It is designed to help you with monitoring and troubleshooting APIs, identify bottlenecks, latency issues and errors in your API calls. For detailed information and guidance, you can check out our [OpenTelemetry Tracing]({{< ref "api-management/logs-metrics#opentelemetry" >}}) resource.
 
 *OpenTelemetry* makes it possible to isolate faults within the request lifetime through inspecting API and Gateway meta-data. Additionally, performance bottlenecks can be identified within the request lifetime. API owners and developers can use this feature to understand how their APIs are being used or processed within the Gateway.
 
 *OpenTelemetry* functionality is also available in [Go Plugins]({{< ref "api-management/plugins/advance-config#instrumenting-plugins-with-opentelemetry" >}}). Developers can write code to add the ability to preview *OpenTelemetry* trace attributes, error status codes etc., for their Go Plugins.
 
-We offer support for integrating *OpenTelemetry* traces with supported open source tools such [Jaeger]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger" >}}), [Dynatrace]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_dynatrace" >}}) or [New Relic]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_new_relic" >}}). This allows API owners and developers to gain troubleshooting and performance insights from error logs, response times etc.
+We offer support for integrating *OpenTelemetry* traces with supported open source tools such [Jaeger]({{< ref "api-management/logs-metrics#using-docker" >}}), [Dynatrace]({{< ref "api-management/logs-metrics#dynatrace" >}}) or [New Relic]({{< ref "api-management/logs-metrics#new-relic" >}}). This allows API owners and developers to gain troubleshooting and performance insights from error logs, response times etc.
 You can also find a direct link to our docs in the official [OpenTelemetry Integration page](https://opentelemetry.io/ecosystem/integrations/)
 
 {{< warning success >}}
@@ -3997,7 +3997,7 @@ Added a new feature that allows clients to retrieve the trace ID from response h
 <details>
 <summary>Allow detailed tracing to be enabled/disabled at API level</summary>
 
-Added configuration parameter to enable/disable [detail_tracing]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview#step-2-enable-detailed-tracing-at-api-level-optional" >}}) for *Tyk Classic API*.
+Added configuration parameter to enable/disable [detail_tracing]({{< ref "api-management/logs-metricsenable-detailed-tracing-at-api-level-optional" >}}) for *Tyk Classic API*.
 </details>
 </li>
 <li>
@@ -5097,7 +5097,7 @@ It also becomes possible to put a {{<fn>}}blocklist{{</fn>}} in-place, meaning t
 
 This change requires updating to new Tyk Pump 1.0
 
-[Read More]({{< ref "tyk-pump/configuration" >}})
+[Read More]({{< ref "api-management/tyk-pump#tyk-pump-configuration" >}})
 
 ##### 404 Error logging - unmatched paths
 
