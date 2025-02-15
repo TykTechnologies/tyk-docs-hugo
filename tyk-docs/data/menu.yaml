@@ -162,17 +162,21 @@ menu:
         category: Page
         show: True
       - title: "Event Driven APIs"
-        path: /api-management/event-driven-apis
-        category: Page
+        category: Directory
         show: True
-      - title: "Handling Gateway Events"
-        path: /api-management/gateway-events
-        category: Page
-        show: True
-      - title: "Streams Configuration"
-        path: /api-management/stream-config
-        category: Page
-        show: True
+        menu:
+        - title: "Event Driven APIs"
+          path: /api-management/event-driven-apis
+          category: Page
+          show: True
+        - title: "Tyk Stream Configuration"
+          path: /api-management/stream-config
+          category: Page
+          show: True
+        - title: "Gateway Events"
+          path: /api-management/gateway-events
+          category: Page
+          show: True
       - title: "Automations Tools"
         category: Directory
         show: True

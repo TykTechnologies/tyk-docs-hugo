@@ -1,9 +1,9 @@
 ---
 title: "Stream Configuration"
 date: 2025-02-10
-tags: []
-description: ""
-keywords: []
+tags: ["Broker", "Input", "Output", "HTTP Client", "HTTP Server", "Processors", "Scanners", "CSV", "Lines", "Regular Expression", "Switch", "Avro", "Kafka"]
+description: "How to configure Tyk Streams"
+keywords: ["Broker", "Input", "Output", "HTTP Client", "HTTP Server", "Processors", "Scanners", "CSV", "Lines", "Regular Expression", "Switch", "Avro", "Kafka"]
 aliases:
   - /product-stack/tyk-streaming/configuration/overview
   - /product-stack/tyk-streaming/configuration/inputs/overview

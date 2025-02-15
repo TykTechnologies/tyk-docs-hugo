@@ -1,9 +1,9 @@
 ---
 title: "Gateway Events"
 date: 2025-02-10
-tags: []
-description: ""
-keywords: []
+tags: ["Gateway", "Events", "Async APIs", "Asynchronus APIs", "Error Templates", "Event Types", "Event Webhooks", "Event Metadata"]
+description: "Introduction to Gateway Events"
+keywords: ["Gateway", "Events", "Async APIs", "Asynchronus APIs", "Error Templates", "Event Types", "Event Webhooks", "Event Metadata"]
 aliases:
   - /basic-config-and-security/report-monitor-trigger-events
   - /basic-config-and-security/report-monitor-trigger-events/event-types
@@ -15,10 +15,9 @@ aliases:
   - /basic-config-and-security/report-monitor-trigger-events/custom-handlers-javascript
   - /basic-config-and-security/report-monitor-trigger-events/monitors
   - /advanced-configuration/error-templates
-  - /report-monitor-trigger-events/
-  - /report-monitor-trigger-events/webhooks/
-  - /tyk-api-gateway-v-3-0/api-management/events/ 
-
+  - /report-monitor-trigger-events
+  - /report-monitor-trigger-events/webhooks
+  - /tyk-api-gateway-v-3-0/api-management/events
 ---
 
 Tyk Gateway will generate asynchronous events when certain conditions are met, for example a rate limit being exceeded, an expired key attempting to access an API, or a circuit breaker triggering due to a slow or unresponsive upstream.
