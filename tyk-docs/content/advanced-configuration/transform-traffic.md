@@ -30,7 +30,7 @@ The [Block List]({{< ref "product-stack/tyk-gateway/middleware/block-list-middle
 
 ### Cache
 
-Tyk's [API-level cache]({{< ref "basic-config-and-security/reduce-latency/caching/global-cache" >}}) does not discriminate between endpoints and will usually be configured to cache all safe requests. You can use the granular [Endpoint Cache]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache" >}}) to ensure finer control over which API responses are cached by Tyk.
+Tyk's [API-level cache]({{< ref "api-management/gateway-optimizations#basic-caching" >}}) does not discriminate between endpoints and will usually be configured to cache all safe requests. You can use the granular [Endpoint Cache]({{< ref "api-management/gateway-optimizations#endpoint-caching" >}}) to ensure finer control over which API responses are cached by Tyk.
 
 ### Circuit Breaker
 
