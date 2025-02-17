@@ -14,7 +14,7 @@ aliases:
 
 ## Overview
 
-Tyk concerns itself primariy with the HTTP/HTTPS protocol when it comes to handling and modeling traffic. However, given the recent popularity of Websocket-based APIs, Tyk also supports transparent WebSocket proxying, both TLS and non-TLS.
+Tyk primarily focuses on the HTTP/HTTPS protocol for handling and modeling traffic. However, with the growing popularity of WebSocket- and gRPC-based APIs, Tyk also supports transparent proxying for both TLS and non-TLS connections.
 
 ## gRPC Proxy
 
