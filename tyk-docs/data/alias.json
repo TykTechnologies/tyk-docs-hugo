@@ -723,5 +723,14 @@
     "universal-data-graph/udg-getting-started/field-based-permission": "#field-based-permissions",
     "universal-data-graph/udg-getting-started/header-forwarding": "#header-forwarding",
     "universal-data-graph/udg-getting-started/mutations": "#mutations",
-    "universal-data-graph/udg-getting-started/security": "#security"
+    "universal-data-graph/udg-getting-started/security": "#security",
+    "basic-config-and-security/reduce-latency": "#",
+    "basic-config-and-security/reduce-latency/caching": "#",
+    "basic-config-and-security/reduce-latency/caching/advanced-cache": "#endpoint-caching",
+    "basic-config-and-security/reduce-latency/caching/global-cache": "#basic-caching",
+    "basic-config-and-security/reduce-latency/caching/invalidate-cache": "#invalidating-the-cache",
+    "basic-config-and-security/reduce-latency/caching/optimise-cache": "#optimizing-the-cache-storage",
+    "basic-config-and-security/reduce-latency/caching/upstream-controlled-cache": "#upstream-cache-control-1",
+    "product-stack/tyk-gateway/middleware/endpoint-cache-tyk-classic": "#using-classic-api",
+    "product-stack/tyk-gateway/middleware/endpoint-cache-tyk-oas": "#using-tyk-oas-api"
 }
