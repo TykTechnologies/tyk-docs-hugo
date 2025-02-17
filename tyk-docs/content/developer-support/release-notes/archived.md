@@ -39,7 +39,7 @@ Tyk now can be used as a reverse proxy for your TCP services. It means that you 
 
 The main benefit of using Tyk as your TCP proxy is that functionality you used to managed your APIs now can be used for your TCP services as well. Features like load balancing, service discovery, Mutual TLS (both authorization and communication with upstream), certificate pinning: all work exactly the same way as for your HTTP APIs.
 
-See our [TCP Proxy Docs]({{< ref "key-concepts/tcp-proxy" >}}) for more details.
+See our [TCP Proxy Docs]({{< ref "api-management/non-http-protocols#tcp-proxy" >}}) for more details.
 
 ### APIs as Products
 
