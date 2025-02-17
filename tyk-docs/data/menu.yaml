@@ -205,6 +205,10 @@ menu:
             path: /api-management/performance-monitoring
             category: Page
             show: True
+      - title: "Non HTTP Protocols"
+        path: /api-management/non-http-protocols
+        category: Page
+        show: True
       - title: "Automations Tools"
         category: Directory
         show: True
@@ -788,30 +792,6 @@ menu:
                         path: /product-stack/tyk-gateway/middleware/do-not-track-tyk-classic
                         category: Page
                         show: True
-          - title: "Other (non-HTTP) protocols"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /advanced-configuration/other-protocols
-                category: Page
-                show: True
-              - title: "gRPC Proxy"
-                path: /key-concepts/grpc-proxy
-                category: Page
-                show: True
-              - title: "TCP Proxy"
-                path: /key-concepts/tcp-proxy
-                category: Page
-                show: True
-              - title: "SSE Proxy"
-                path: /advanced-configuration/sse-proxy
-                category: Page
-                show: True
-              - title: "WebSocket Proxy"
-                path: /advanced-configuration/websockets
-                category: Page
-                show: True
           - title: "API documentation"
             category: Directory
             show: True
