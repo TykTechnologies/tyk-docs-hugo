@@ -185,6 +185,10 @@ menu:
         path: /api-management/data-graph
         category: Page
         show: True
+      - title: "Gateway Optimizations"
+        path: /api-management/gateway-optimizations
+        category: Page
+        show: True
       - title: "API Observability"
         category: Directory
         show: True
@@ -508,54 +512,6 @@ menu:
                     path: /product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic
                     category: Page
                     show: True
-              - title: "Reduce latency"
-                category: Directory
-                show: False
-                menu:
-                  - title: "Overview"
-                    path: /basic-config-and-security/reduce-latency
-                    category: Page
-                    show: False
-          - title: "Cache responses"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /basic-config-and-security/reduce-latency/caching
-                category: Page
-                show: True
-              - title: "Basic (Global) Caching"
-                path: /basic-config-and-security/reduce-latency/caching/global-cache/
-                category: Page
-                show: True
-              - title: "Endpoint Caching"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /basic-config-and-security/reduce-latency/caching/advanced-cache/
-                    category: Page
-                    show: True
-                  - title: "Tyk OAS configuration"
-                    path: /product-stack/tyk-gateway/middleware/endpoint-cache-tyk-oas
-                    category: Page
-                    show: True
-                  - title: "Tyk Classic configuration"
-                    path: /product-stack/tyk-gateway/middleware/endpoint-cache-tyk-classic
-                    category: Page
-                    show: True
-              - title: "Upstream Cache Control"
-                path: /basic-config-and-security/reduce-latency/caching/upstream-controlled-cache/
-                category: Page
-                show: True
-              - title: "Invalidating the Cache"
-                path: /basic-config-and-security/reduce-latency/caching/invalidate-cache/
-                category: Page
-                show: True
-              - title: "Optimizing the Cache Storage"
-                path: /basic-config-and-security/reduce-latency/caching/optimise-cache/
-                category: Page
-                show: True
           - title: "Advanced configurations"
             category: Directory
             show: False
