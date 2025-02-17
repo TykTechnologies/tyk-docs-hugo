@@ -12,7 +12,7 @@ Within that chain are a highly configurable set of optional middleware that can,
 - apply processing to [API requests](#middleware-applied-to-the-api-request) before they are proxied to the upstream service
 - apply customization to the [API response](#middleware-applied-to-the-api-response) prior to it being proxied back to the client
 
-Tyk also supports a powerful custom plugin feature that enables you to add custom processing at different stages in the processing chains. For more details on custom plugins please see the [dedicated guide]({{< ref "plugins" >}}).
+Tyk also supports a powerful custom plugin feature that enables you to add custom processing at different stages in the processing chains. For more details on custom plugins please see the [dedicated guide]({{< ref "api-management/plugins/overview#" >}}).
 
 ## Middleware applied to the API Request
 
@@ -30,7 +30,7 @@ The [Block List]({{< ref "product-stack/tyk-gateway/middleware/block-list-middle
 
 ### Cache
 
-Tyk's [API-level cache]({{< ref "basic-config-and-security/reduce-latency/caching/global-cache" >}}) does not discriminate between endpoints and will usually be configured to cache all safe requests. You can use the granular [Endpoint Cache]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache" >}}) to ensure finer control over which API responses are cached by Tyk.
+Tyk's [API-level cache]({{< ref "api-management/gateway-optimizations#basic-caching" >}}) does not discriminate between endpoints and will usually be configured to cache all safe requests. You can use the granular [Endpoint Cache]({{< ref "api-management/gateway-optimizations#endpoint-caching" >}}) to ensure finer control over which API responses are cached by Tyk.
 
 ### Circuit Breaker
 
@@ -38,7 +38,7 @@ The [Circuit Breaker]({{< ref "tyk-self-managed#circuit-breakers" >}}) is a prot
 
 ### Do Not Track Endpoint
 
-If [traffic logging]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/logging-api-traffic" >}}) is enabled for your Tyk Gateway, then it will create transaction logs for all API requests (and responses) to deployed APIs. You can use the [Do-Not-Track]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-middleware" >}}) middleware to suppress creation of transaction records for specific endpoints.
+If [traffic logging]({{< ref "api-management/logs-metrics#logging-api-traffic" >}}) is enabled for your Tyk Gateway, then it will create transaction logs for all API requests (and responses) to deployed APIs. You can use the [Do-Not-Track]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-middleware" >}}) middleware to suppress creation of transaction records for specific endpoints.
 
 ### Enforced Timeout
 
@@ -80,7 +80,7 @@ When working with Tyk OAS APIs, the request validation covers both headers and b
 
 ### Track Endpoint
 
-If you do not want to include all endpoints in your [Activity by Endpoint]({{< ref "product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint" >}}) statistics in Tyk Dashboard, you can enable this middleware for the endpoints to be included. 
+If you do not want to include all endpoints in your [Activity by Endpoint]({{< ref "api-management/dashboard-configuration#activity-by-endpoint" >}}) statistics in Tyk Dashboard, you can enable this middleware for the endpoints to be included. 
 
 ### URL Rewrite
 

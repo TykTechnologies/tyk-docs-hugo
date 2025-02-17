@@ -1,6 +1,6 @@
 ---
 title: "Install Tyk Open Source"
-description: "This page serves as a comprehensive guide to migrating workloads to Tyk"
+description: "This page serves as a comprehensive guide to migrating workloads to Tyk Open Source"
 tags: ["installation", "migration", "open source"]
 aliases:
   - /apim/open-source/installation
@@ -45,8 +45,8 @@ The Tyk Team has created and maintains the following components, which are fully
 
 * [Tyk Gateway]({{< ref "tyk-oss-gateway" >}}) - Fully fledged API Gateway (Start here!) - {{< github_star_button "TykTechnologies" "tyk" "true" >}}
 * [Tyk Pump]({{< ref "tyk-pump" >}}) - Send API analytics data to your chosen backend - {{< github_star_button "TykTechnologies" "tyk-pump" "true" >}}
-* [Tyk Identity Broker]({{< ref "tyk-identity-broker" >}}) - Connect your third-party IdP systems - {{< github_star_button "TykTechnologies" "tyk-identity-broker" "true" >}}
-* [Tyk Helm Chart]({{< ref "/product-stack/tyk-charts/overview" >}}) - Deploy Tyk in K8S - {{< github_star_button "TykTechnologies" "tyk-charts" "true" >}}
+* [Tyk Identity Broker]({{< ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib" >}}) - Connect your third-party IdP systems - {{< github_star_button "TykTechnologies" "api-management/external-service-integration#what-is-tyk-identity-broker-tib" "true" >}}
+* [Tyk Helm Chart]({{< ref "product-stack/tyk-charts/overview" >}}) - Deploy Tyk in K8S - {{< github_star_button "TykTechnologies" "tyk-charts" "true" >}}
 
 You can find additional FAQs regarding the MPL license [here](https://www.mozilla.org/en-US/MPL/2.0/FAQ/).
 
@@ -134,7 +134,7 @@ The quickest way to get started is using docker-compose. Visit our [Dockerhub](h
 The following are required for a Tyk OSS installation:
  - Redis   - Required for all Tyk installations.
              Simple Redis installation instructions are included below.
- - MongoDB - Required only if you chose to use the Tyk Pump with your Tyk OSS installation. Same goes with any [other pump data stores]({{< ref "tyk-stack/tyk-pump/other-data-stores.md" >}}) you choose to use.
+ - MongoDB - Required only if you chose to use the Tyk Pump with your Tyk OSS installation. Same goes with any [other pump data stores]({{< ref "api-management/tyk-pump#external-data-stores" >}}) you choose to use.
 
 #### Steps for Installation
 
@@ -227,9 +227,9 @@ helm upgrade tyk-oss tyk-helm/tyk-oss -n $NAMESPACE --create-namespace \
 
 Now Tyk Gateway should be accessible through service `gateway-svc-tyk-oss-tyk-gateway` at port `8080`. 
 
-You are now ready to [create an API]({{<ref "/getting-started/create-api">}}).
+You are now ready to [create an API]({{<ref "getting-started/create-api">}}).
 
-For the complete installation guide and configuration options, please see [Tyk OSS Helm Chart]({{<ref "/product-stack/tyk-charts/tyk-oss-chart">}}).
+For the complete installation guide and configuration options, please see [Tyk OSS Helm Chart]({{<ref "product-stack/tyk-charts/tyk-oss-chart">}}).
 
 #### Configure Legacy Tyk Headless Helm Chart
 {{< warning success >}}
@@ -249,7 +249,7 @@ The following are required for a Tyk OSS installation:
 1. Redis   - required for all the Tyk installations and must be installed in the cluster or reachable from inside K8s.
              You can find instructions for a simple Redis installation bellow.
 2. MongoDB/SQL - Required only if you chose to use the MongoDB/SQL Tyk pump with your Tyk OSS installation. Same goes with any
-             [other pump]({{< ref "tyk-stack/tyk-pump/other-data-stores" >}}) you choose to use.
+             [other pump]({{< ref "api-management/tyk-pump#external-data-stores" >}}) you choose to use.
 3. Helm - Tyk Helm supports the Helm 3+ version.
 
 ##### Steps for Installation
@@ -956,7 +956,7 @@ Redis supports [SSL/TLS encryption](https://redis.io/topics/encryption) from ver
 
 - `storage.use_ssl`: Set this to true to enable TLS encryption for the connection.
 
-- `storage.ssl_secure_skip_verify`: A flag that, when set to true, instructs the application not to verify the Redis server's TLS certificate. This is not recommended for production due to the risk of `man-in-the-middle` attacks.
+- `storage.ssl_insecure_skip_verify`: A flag that, when set to true, instructs the application not to verify the Redis server's TLS certificate. This is not recommended for production due to the risk of `man-in-the-middle` attacks.
 
 From **Tyk 5.3**, additional options are available for more granular control:
 
@@ -968,11 +968,11 @@ From **Tyk 5.3**, additional options are available for more granular control:
 
 **Setting up an Insecure TLS Connection**
 - **Enable TLS**: By setting `"use_ssl": true`, you encrypt the connection.
-- **Skip Certificate Verification**: Setting `"ssl_secure_skip_verify": true` bypasses the server's certificate verification, suitable only for non-production environments.
+- **Skip Certificate Verification**: Setting `"ssl_insecure_skip_verify": true` bypasses the server's certificate verification, suitable only for non-production environments.
 
 **Setting up a Secure TLS Connection**
 - Ensure `use_ssl` is set to `true`.
-- Set `ssl_secure_skip_verify` to `false` to enforce certificate verification against the CA specified in `ca_file`.
+- Set `ssl_insecure_skip_verify` to `false` to enforce certificate verification against the CA specified in `ca_file`.
 - Specify the path to the CA file in `ca_file` for server certificate verification.
 - Adjust `min_version` and `max_version` to secure TLS versions, ideally 1.2 and 1.3.
 
@@ -990,7 +990,7 @@ From **Tyk 5.3**, additional options are available for more granular control:
     "server3:6381"
   ],
   "use_ssl": true,
-  "ssl_secure_skip_verify": false,
+  "ssl_insecure_skip_verify": false,
   "ca_file": "/path/to/ca.crt",
   "cert_file": "/path/to/client.crt",
   "key_file": "/path/to/client.key",
@@ -1100,7 +1100,7 @@ Redis supports [SSL/TLS encryption](https://redis.io/topics/encryption) from ver
 
 - `storage.use_ssl`: Set this to true to enable TLS encryption for the connection.
 
-- `storage.ssl_secure_skip_verify`: A flag that, when set to true, instructs the application not to verify the Redis server's TLS certificate. This is not recommended for production due to the risk of `man-in-the-middle` attacks.
+- `storage.ssl_insecure_skip_verify`: A flag that, when set to true, instructs the application not to verify the Redis server's TLS certificate. This is not recommended for production due to the risk of `man-in-the-middle` attacks.
 
 From **Tyk 5.3**, additional options are available for more granular control:
 
@@ -1112,11 +1112,11 @@ From **Tyk 5.3**, additional options are available for more granular control:
 
 **Setting up an Insecure TLS Connection**
 - **Enable TLS**: By setting `"use_ssl": true`, you encrypt the connection.
-- **Skip Certificate Verification**: Setting `"ssl_secure_skip_verify": true` bypasses the server's certificate verification, suitable only for non-production environments.
+- **Skip Certificate Verification**: Setting `"ssl_insecure_skip_verify": true` bypasses the server's certificate verification, suitable only for non-production environments.
 
 **Setting up a Secure TLS Connection**
 - Ensure `use_ssl` is set to `true`.
-- Set `ssl_secure_skip_verify` to `false` to enforce certificate verification against the CA specified in `ca_file`.
+- Set `ssl_insecure_skip_verify` to `false` to enforce certificate verification against the CA specified in `ca_file`.
 - Specify the path to the CA file in `ca_file` for server certificate verification.
 - Adjust `min_version` and `max_version` to secure TLS versions, ideally 1.2 and 1.3.
 
@@ -1134,7 +1134,7 @@ From **Tyk 5.3**, additional options are available for more granular control:
     "server3:6381"
   ],
   "use_ssl": true,
-  "ssl_secure_skip_verify": false,
+  "ssl_insecure_skip_verify": false,
   "ca_file": "/path/to/ca.crt",
   "cert_file": "/path/to/client.crt",
   "key_file": "/path/to/client.key",

@@ -50,7 +50,7 @@ Otherwise, you can design an API from scratch or a template if you have configur
 * **APIs**: The APIs setup allows you to create and access your APIs. If this is your first time setting up an API, we suggest you use an example to learn more or you can go to [Configure your First API](/getting-started/configure-first-api) to learn more.
 {{< img src="/img/getting-started/api-management-apis.png" alt="API Management APIs" >}}
 
-* **API Templates**: API Templates allow you to create APIs with preconfigured settings quickly. You can set these up manually or save them from an API which you've already created. You can learn more about API Templates [here](/product-stack/tyk-dashboard/advanced-configurations/templates/template-overview/).
+* **API Templates**: API Templates allow you to create APIs with preconfigured settings quickly. You can set these up manually or save them from an API which you've already created. You can learn more about API Templates [here](/api-management/dashboard-configuration#governance-using-api-templates).
 
 * **Examples**: In Examples, you will find a few sample projects we put together to help you in your journey. We suggest you start with the Tyk OAS APIs and move on to GraphQL and UDG APIs to supplement learning how to setup your API.
 
@@ -61,17 +61,17 @@ Otherwise, you can design an API from scratch or a template if you have configur
 #### API Security
 {{< img src="/img/getting-started/tabs-api-security.png" alt="API Security Side Bar" >}}
 
-* **Keys**: [Keys](/basic-config-and-security/security/key-level-security) are central to securing your APIs through Tyk. In this tab, you can handle the permissions, rate and throttling limits, and quotas associated with a given key. 
-* **Policies**: [Policies](/basic-config-and-security/security/security-policies) expand on key level security, allowing you to configure granular control over API access. Using policies, you govern which users or applications can access particular endpoints and what they're allowed to do. 
-* **TLS/SSL Certificates**:  [TLS and SSL](/basic-config-and-security/security/tls-and-ssl) is supported in Tyk. You can upload your certificates via `.pem` file to verify the identity of whoever presents the certificate during a secure connection.
+* **Keys**: [Keys](/api-management/policies#access-key-level-security) are central to securing your APIs through Tyk. In this tab, you can handle the permissions, rate and throttling limits, and quotas associated with a given key. 
+* **Policies**: [Policies](/api-management/policies) expand on key level security, allowing you to configure granular control over API access. Using policies, you govern which users or applications can access particular endpoints and what they're allowed to do. 
+* **TLS/SSL Certificates**:  [TLS and SSL](/api-management/certificates) is supported in Tyk. You can upload your certificates via `.pem` file to verify the identity of whoever presents the certificate during a secure connection.
 
 
 #### User Management
 {{< img src="/img/getting-started/tabs-user-management.png" alt="User Management Side Bar" >}}
 
 * **Users**: Here, you can add, revoke, delete, or edit the details of users that need admin access to your Tyk dashboard. 'Revoking' a user will suspend their access without deleting their account. You can learn more about users [here](/tyk-dashboard-api/users).
-* **User Groups**: Similar as a **policy** is to a **key**, a **user group** is to a **user**. By defining user groups, you aggregate the permissions and access controls for multiple users. When you setup a user with a user group, they inherit the user groups' permissions. You can learn more about user groups [here](/tyk-apis/tyk-dashboard-api/user-groups).
-* **User Settings**: In User Settings, you can setup [TIB profiles](/tyk-stack/tyk-identity-broker/about-profiles/). This allows your users to access Tyk-managed APIs using their existing credentials.
+* **User Groups**: Similar as a **policy** is to a **key**, a **user group** is to a **user**. By defining user groups, you aggregate the permissions and access controls for multiple users. When you setup a user with a user group, they inherit the user groups' permissions. You can learn more about user groups [here](/api-management/dashboard-configuration#user-groups-api).
+* **User Settings**: In User Settings, you can setup [TIB profiles](/api-management/external-service-integration#exploring-tib-profiles). This allows your users to access Tyk-managed APIs using their existing credentials.
 
 #### Monitoring
 {{< img src="/img/getting-started/tabs-monitoring.png" alt="Monitoring Side Bar" >}}

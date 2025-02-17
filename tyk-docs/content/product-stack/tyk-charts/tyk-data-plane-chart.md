@@ -317,7 +317,7 @@ global:
 
 ### Tyk MDCB Synchroniser (Optional)
 
-If control plane MDCB has enabled [Synchroniser feature]({{<ref "/product-stack/tyk-enterprise-mdcb/advanced-configurations/synchroniser">}}), the following fields should be set accordingly:
+If control plane MDCB has enabled [Synchroniser feature]({{<ref "product-stack/tyk-enterprise-mdcb/advanced-configurations/synchroniser">}}), the following fields should be set accordingly:
 
 ```yaml
 global:

@@ -1,7 +1,7 @@
 ---
 ---
 
-## Configure Tyk
+**Configure Tyk**
 
 You will need to modify the Tyk global configuration file `tyk.conf` to use gRPC plugins. The following block should be present in this file:
 
@@ -16,7 +16,7 @@ You will need to modify the Tyk global configuration file `tyk.conf` to use gRPC
 ```
 
 
-### tyk.conf Options
+**tyk.conf Options**
 
 * `enable_coprocess`: This enables the plugin.
 * `coprocess_grpc_server`: This is the URL of our gRPC server.
@@ -25,7 +25,7 @@ You will need to modify the Tyk global configuration file `tyk.conf` to use gRPC
 * `public_key_path`: Modify `public_key_path` in case you want to enforce the cryptographic check of the plugin bundle signatures. If the `public_key_path` isn't set, the verification process will be skipped and unsigned plugin bundles will be loaded normally.
 
 
-### Configure an API Definition
+**Configure an API Definition**
 
 There are two important parameters that we need to add or modify in the API definition.
 The first one is `custom_middleware_bundle` which must match the name of the plugin bundle file. If we keep this with the default name that the Tyk CLI tool uses, it will be `bundle.zip`:
@@ -48,7 +48,7 @@ The second parameter is specific to this tutorial, and should be used in combina
 
 `enable_coprocess_auth` will instruct the Tyk gateway to authenticate this API using the associated custom authentication function that's implemented by our plugin.
 
-### Configuration via the Tyk Dashboard
+**Configuration via the Tyk Dashboard**
 
 To attach the plugin to an API, from the **Advanced Options** tab in the **API Designer** enter `bundle.zip` in the **Plugin Bundle ID** field.
 
@@ -59,7 +59,7 @@ From the **Core Settings** tab in the **API Designer** select **Use Custom Authe
 
 {{< img src="/img/2.10/custom_auth_python.png" alt="Advanced Options" >}}
 
-## Testing the Plugin
+**Testing the Plugin**
 
 
 At this point we have our test HTTP server ready to serve the plugin bundle and the configuration with all the required parameters.

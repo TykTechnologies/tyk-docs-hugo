@@ -272,7 +272,7 @@ The Tyk Identity Broker (TIB) is a microservice portal that provides a bridge be
 
 {{< grid >}}
 
-{{< badge title="Security" href="/docs/basic-config-and-security/security/tls-and-ssl/" >}}
+{{< badge title="Security" href="/docs/api-management/certificates/" >}}
 #### TLS & SSL
 
 TLS connections are supported for all Tyk components
@@ -290,7 +290,7 @@ Learn how to segment and view your API traffic and activity
 Tyk supports GraphQL natively. Proxy to existing service or build it from scratch.
 {{< /badge >}}
 
-{{< badge title="Integration" href="/docs/advanced-configuration/integrate/sso/" >}}
+{{< badge title="Integration" href="/docs/api-management/external-service-integration#single-sign-on-sso" >}}
 #### Single Sign On
 
 Log into the dashboard and portal with your existing IDP.
