@@ -732,5 +732,10 @@
     "basic-config-and-security/reduce-latency/caching/optimise-cache": "#optimizing-the-cache-storage",
     "basic-config-and-security/reduce-latency/caching/upstream-controlled-cache": "#upstream-cache-control-1",
     "product-stack/tyk-gateway/middleware/endpoint-cache-tyk-classic": "#using-classic-api",
-    "product-stack/tyk-gateway/middleware/endpoint-cache-tyk-oas": "#using-tyk-oas-api"
+    "product-stack/tyk-gateway/middleware/endpoint-cache-tyk-oas": "#using-tyk-oas-api",
+    "advanced-configuration/other-protocols": "#",
+    "key-concepts/grpc-proxy": "#grpc-proxy",
+    "key-concepts/tcp-proxy": "#tcp-proxy",
+    "advanced-configuration/websockets": "#websockets",
+    "advanced-configuration/sse-proxy": "#websockets"
 }

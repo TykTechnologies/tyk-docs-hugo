@@ -1,18 +1,24 @@
 ---
 title: "Non HTTP Protocol"
 date: 2024-12-21
-tags: []
-description: ""
+tags: ["gRPC", "TCP", "SSE", "Websocket", "Non HTTP Protocol"]
+description: "How to configure Non HTTP Protocols"
+keywords: ["gRPC", "TCP", "SSE", "Websocket", "Non HTTP Protocol"]
 aliases:
+  - /advanced-configuration/other-protocols
+  - /key-concepts/grpc-proxy
+  - /key-concepts/tcp-proxy
+  - /advanced-configuration/websockets
+  - /advanced-configuration/sse-proxy
 ---
 
-## Configuring non-HTTP Protocols
+## Overview
 
 Tyk concerns itself primariy with the HTTP/HTTPS protocol when it comes to handling and modeling traffic. However, given the recent popularity of Websocket-based APIs, Tyk also supports transparent WebSocket proxying, both TLS and non-TLS.
 
-### gRPC Proxy
+## gRPC Proxy
 
-#### Using Tyk as a gRPC Proxy
+### Using Tyk as a gRPC Proxy
 
 Tyk supports gRPC passthrough proxying when using HTTP/2 as a transport (the most common way to deploy gRPC services).
 
@@ -29,33 +35,33 @@ You can also perform [gRPC load balancing](#grpc-load-balancing).
 - The `listen path` of the Api should be the same as the gRPC service name, so tyk can route it correctly.
 - Ensure that `strip_listen_path` is set to false in your API, so the route of the gRPC service method is build correctly following the standard: `{service_name}/{service_method}`.
 
-##### Secure gRPC Proxy
+#### Secure gRPC Proxy
 Tyk Supports secure gRPC proxy connections, in order to do so you only need to attach a certificate to the API that you want to expose just as you do for regular APIs, after that you can consume the service via HTTPS.
 
-##### Insecure gRPC Proxy (H2C)
+#### Insecure gRPC Proxy (H2C)
 For scenarios where you want to connect two services calling each other or just need an insecure connection you can use h2c (that is the non-TLS version of HTTP/2). Tyk supports h2c, this can be enabled at api level by setting `h2c` as protocol in the address of the gRPC server (`target_url`) e.g: `h2c://my-grpc-server.com`.
 
-##### gRPC streaming
+#### gRPC streaming
 Tyk supports all kinds of gRPC streaming (client streaming, server streaming and bidirectional streaming). It requires you to set a low value for `flush_interval`, this is required in order to forward data to the downstream target as soon as the upstream target replies. A high flush interval will delay this communication. We recommend the lowest possible value: 1 (1 millisecond). You set this value in your `tyk.conf` file in the `http_server_options.flush_interval` option.
 
-#### Mutual Authentication
+### Mutual Authentication
 Tyk supports Mutual Authentication in gRPC. See [Mutual TLS]({{< ref "/api-management/client-authentication#use-mutual-tls" >}}) to configure Mutual Authentication in Tyk. 
 
-#### Basic Authentication
+### Basic Authentication
 Tyk supports Basic Authentication in gRPC. See [Basic Authentication]({{< ref "/api-management/client-authentication#use-basic-authentication" >}}) to configure Basic Authentication in Tyk. 
 
 After setting your Tyk configuration, all you need to do is to send credentials with the correct base64 format in an `Authorization` header from your gRPC client. 
 
 `Basic base64Encode(username:password)`
 
-#### Token Based Authentication
+### Token Based Authentication
 Tyk supports Token Based Authentication in gRPC. See [Bearer Tokens]({{< ref "/api-management/client-authentication#use-auth-tokens" >}}) to configure Token Based Authentication in Tyk. 
 
 After setting your Tyk configuration, all you need to do is to send a token in an `Authorization` header from your gRPC client.
 
-#### gRPC load balancing
+### gRPC load balancing
 
-Tyk is able to perform load balancing on gRPC traffic using an approach similar to our native [Load Balancing]({{< ref "planning-for-production/ensure-high-availability/load-balancing" >}}) functionality.
+Tyk is able to perform load balancing on gRPC traffic using an approach similar to our native [Load Balancing]({{< ref "tyk-self-managed#load-balancing" >}}) functionality.
 
 For both secure and insecure gRPC scenarios, the steps above serve as a starting point.
 
@@ -70,7 +76,7 @@ For configuring multiple upstream targets in a secure gRPC scenario, follow thes
 
 Use the same approach but use the H2C scheme instead: `h2c://grpc.test.example.com:10000`, `h2c://grpc.test.example.com:10001`, etc. 
 
-#### Example of gRPC proxy using H2C
+### Example of gRPC proxy using H2C
 This is the simplest way to have a working gRPC proxy setup. You will need:
 
 * A gRPC server. For this example you can use [this server](https://github.com/grpc/grpc-go/tree/master/examples/helloworld)
@@ -88,7 +94,7 @@ This is the simplest way to have a working gRPC proxy setup. You will need:
     * Hit save, and once the Gateway finishes reloading you can test the solution
 * From the command line you can consume the service via the Tyk Gateway. To test it, enter `grpcurl -plaintext -proto helloworld.proto -d '{"name": "joe"}' tyk-gateway:8080 helloworld.Greeter/SayHello` and you should get as a response: `{"message": "Hello joe"}` which means that everything is working as it should.
 
-#### Example of gRPC proxy using HTTPS
+### Example of gRPC proxy using HTTPS
 
 **Prerequisites:**
 
@@ -110,7 +116,7 @@ This is the simplest way to have a working gRPC proxy setup. You will need:
     * Click Save
 3. At this point you're ready to test the solution, so, from the command line type: `grpcurl -proto route_guide.proto -d '{"latitude": 1, "longitude":2}' tyk:8080 routeguide.RouteGuide/GetFeature` and you should get a successful response. Note that you are not sending the flag `-plaintext` as the desire is to connect via HTTPS.
 
-#### Example of bidirectional data streaming using a gRPC service exposed via HTTPS but communicating Tyk to service via H2C
+### Example of bidirectional data streaming using a gRPC service exposed via HTTPS but communicating Tyk to service via H2C
 
 In this example you will expose a gRPC service via HTTPS using Tyk, but Tyk will consume the upstream via h2c. This situation is very common when using Kubernetes, where the internet traffic going through Tyk are TLS encrypted, but traffic in the inner cluster are in plain HTTP (h2c).
 
@@ -136,13 +142,13 @@ In this example you will expose a gRPC service via HTTPS using Tyk, but Tyk will
 
 Currently load balancing is not supported for gRPC.
 
-### TCP Proxy
+## TCP Proxy
 
-#### Using Tyk as a TCP Proxy
+### Using Tyk as a TCP Proxy
 
 Tyk can be used as a reverse proxy for your TCP services. It means that you can put Tyk not only on top of your APIs but on top of **any** network application, like databases, services using custom protocols etc.
 
-##### Set via your API
+#### Set via your API
 
 To enable TCP proxying, set the `protocol` field either to `tcp` or `tls`. In the case of TLS, you can also specify a `certificate` field with a certificate ID or path to it.
 
@@ -161,7 +167,7 @@ The simplest TCP API definition looks like this:
 }
 ```
 
-##### Set via your Dashboard
+#### Set via your Dashboard
 
 From the **API Designer > Core Settings** tab, select the appropriate protocol from the Protocol field drop-down list.
 
@@ -177,7 +183,7 @@ If Tyk sits behind another proxy, which has  the PROXY protocol enabled, you can
 
 As for features such as load balancing, service discovery, Mutual TLS (both authorization and communication with upstream), certificate pinning, etc. All work exactly the same way as for your HTTP APIs. 
 
-#### Allowing specific ports
+### Allowing specific ports
 
 By default, you will not be able to run a service on a custom port, until you allow the required ports. 
 Since TCP services can be configured via the Dashboard, you should be careful who can create such services, and which ports they can use. Below is an example of allowing ports in `tyk.conf`:
@@ -210,7 +216,7 @@ As you can see, you can use either `ranges` or `ports` directives (or combine th
 You can also disable this behavior and allow any TCP port by setting `disable_ports_whitelist` to `true`.
 
 
-#### Health checks
+### Health checks
 
 TCP health checks are configured the same way as HTTP ones.
 The main difference is that instead of specifying HTTP requests, you should specify a list of commands, which send data or expect some data in response. 
@@ -230,7 +236,7 @@ A simple health check which verifies only connectivity (e.g. if a port is open),
 }
 ```
 
-##### Complex example
+#### Complex example
 
 Here is quite a complex example of using health checks, which shows a Redis Sentinel setup. In this configuration, we put a TCP proxy, e.g. Tyk, on top of two or more Redis nodes, and the role of the proxy will always direct the user to Redis master. To do that we will need to perform health checks against each Redis node, to detect if it is a master or not. In other words, Redis clients who communicate with Redis through the proxy will be always directed to the master, even in case of failover.
 
@@ -280,23 +286,23 @@ At the moment Tyk supports only 2 commands:
 
 [1]: /img/dashboard/system-management/api-protocol.png
 
-### SSE Proxy
+## SSE Proxy
 
 [Server-Sent Events](https://en.wikipedia.org/wiki/Server-sent_events) (SSE) is a server push technology enabling a subscribed client to receive automatic updates from a server via a long running HTTP connection. 
 Unlike WebSockets, SSE is a one-way communication of server to clients (WebSockets is a bidirectional communication between server and client). 
 As such, if you only need clients to receive data from a server, and don't require them sending messagess back, SSE could be a simpler way to make that happen. An online stock quotes, or notifications and feeds are good examples for applications that use SSE.
 
-#### Using Tyk as a server-sent events (SSE) Proxy
+### Using Tyk as a server-sent events (SSE) Proxy
 
 Tyk Gateway supports SSE proxying over HTTP, and can sit in the middle between the client and the SSE server and support the server sending updates to the client.
 
-##### Setup
+#### Setup
 - Enable SSE support on the Gateway: Set `http_server_options.enable_websockets` to `true` in your Tyk Gateway config file.
 - To maintain an open connection between the API consumer and the Tyk Gateway, set `http_server_options.read_timeout` and `http_server_options.write_timeout` to appropriately high values (in milliseconds). For example, you could try setting both to `2000`, but this is for you to determine in your environment.
 - Set `http_server_options.flush_interval` to an appropriate value, e.g. `1`, to force Tyk to stream the response to the client every `n` seconds.
 
 
-##### Example using Tyk as an SSE proxy
+#### Example using Tyk as an SSE proxy
 For this we will need:
 
 * An SSE server.  For this example we will use [Golang HTML 5 SSE example](https://github.com/kljensen/golang-html5-sse-example)
@@ -325,7 +331,7 @@ Message: 21 - the time is 2013-03-08 21:08:06.262034 -0500 EST
 Message: 22 - the time is 2013-03-08 21:08:11.262608 -0500 EST
 ```
 
-### WebSockets
+## WebSockets
 
 As from Tyk gateway v2.2, Tyk supports transparent WebSocket connection upgrades. To enable this feature, set the `enable_websockets` value to `true` in your `tyk.conf` file.
 
@@ -339,7 +345,7 @@ Tyk needs to decrypt the inbound and re-encrypt the outbound for the copy operat
 https://target:443/
 ```
 
-#### WebSocket Example
+### WebSocket Example
 
 We are going to set up Tyk with a WebSocket proxy using our [Tyk Pro Docker Demo](https://github.com/TykTechnologies/tyk-pro-docker-demo) installation.
 

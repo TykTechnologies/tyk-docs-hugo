@@ -5529,7 +5529,7 @@ spec:
 
 ##### gRPC load balancing
 
-You can also perform [gRPC Load balancing]({{< ref "key-concepts/grpc-proxy#grpc-load-balancing" >}}).
+You can also perform [gRPC Load balancing]({{< ref "api-management/non-http-protocols#grpc-load-balancing" >}}).
 
 
 #### Service Discovery
