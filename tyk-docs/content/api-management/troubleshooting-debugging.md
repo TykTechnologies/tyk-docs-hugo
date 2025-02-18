@@ -772,7 +772,7 @@ aliases:
 
     Additionally DocumentDB can't be exposed to the local machine outside of the Amazon Virtual Private Cloud (VPC), which means that even if verification is turned on, it will always fail since if we use a SSH tunnel or a similar method, the domain will differ from the original. Also, it can have [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) enabled.
 
-    So, in order to support it, we provide the following variables for both our [Tyk Analytics Dashboard]({{< ref "tyk-dashboard/configuration" >}}) and [Tyk Pump]({{< ref "tyk-pump/configuration" >}}):
+    So, in order to support it, we provide the following variables for both our [Tyk Analytics Dashboard]({{< ref "tyk-dashboard/configuration" >}}) and [Tyk Pump]({{< ref "api-management/tyk-pump#tyk-pump-configuration" >}}):
 
     * `mongo_ssl_ca_file` - path to the PEM file with trusted root certificates
     * `mongo_ssl_pem_keyfile` - path to the PEM file which contains both client certificate and private key. This is required for Mutual TLS.
@@ -791,7 +791,7 @@ aliases:
 
     **Capped Collections**
 
-    If you are using DocumentDB, [capped collections]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage" >}}) are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details.
+    If you are using DocumentDB, [capped collections]({{< ref "api-management/tyk-pump#tyk-pump-capping-analytics-data-storage" >}}) are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details.
 
 13. ##### How to disable an API
 
@@ -919,9 +919,9 @@ aliases:
 
     **What is detailed request logging?**
 
-    When [detailed request logging]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/detailed-recording" >}}) is enabled, Tyk will record the request and response in wire-format in the analytics database. This can be very useful when trying to debug API requests to see what went wrong for a user or client.
+    When [detailed request logging]({{< ref "api-management/logs-metrics#enable-detailed-recording" >}}) is enabled, Tyk will record the request and response in wire-format in the analytics database. This can be very useful when trying to debug API requests to see what went wrong for a user or client.
 
-    This mode is configured in the gateway and can be enabled at the [system]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/detailed-recording#configuration-at-the-gateway-level" >}}), [API]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/detailed-recording#configuration-at-the-api-level" >}}) or [access key]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/detailed-recording#configuration-at-the-key-level" >}}) level.
+    This mode is configured in the gateway and can be enabled at the [system]({{< ref "api-management/logs-metrics#configure-at-gateway-level" >}}), [API]({{< ref "api-management/logs-metrics#configure-at-api-level" >}}) or [access key]({{< ref "api-management/logs-metrics#configure-at-key-level" >}}) level.
 
     You will also need your Tyk Pump configured to move data into your preferred data store.
 
@@ -987,7 +987,7 @@ aliases:
 
     If your Pump is configured to use `mongo_selective_pump` (e.g. store data in a collection per organization), ensure that the [Dashboard configuration setting]({{< ref "tyk-dashboard/configuration" >}}) `use_sharded_analytics` is set to `true`. 
 
-    The same applies in the reverse direction. If you are using `mongo-pump-aggregate` in your [pump configuration]({{< ref "tyk-pump/configuration" >}}), set `use_sharded_analytics` to false.
+    The same applies in the reverse direction. If you are using `mongo-pump-aggregate` in your [pump configuration]({{< ref "api-management/tyk-pump#tyk-pump-configuration" >}}), set `use_sharded_analytics` to false.
 
     This is because you've enabled `use_sharded_analytics` as per above and you're using the `mongo-pump-aggregate`, but you now also have to add a `mongo-pump-selective` in order to save individual requests to Mongo, which the Dashboard can read into the Log Browser.
 
@@ -1360,7 +1360,7 @@ As shown above, the `debug` log level mode provides more information which will 
         value: debug
     ```
 
-    You can find the full [log levels]({{< ref "log-data" >}}) in our documentation.
+    You can find the full [log levels]({{< ref "api-management/logs-metrics#system-logs" >}}) in our documentation.
 
 #### Versions
 

@@ -4148,7 +4148,7 @@ To keep real-time health-check data and make it available to the Health-check AP
 
 #### Selecting the appropriate log level
 
-Tyk provides multiple [log levels]({{< ref "log-data" >}}): error, warn, info, debug. Setting higher log levels consumes more computing resources and would have an impact on the Tyk component. Tyk installations default to log level info unless modified by config files or environment variables.
+Tyk provides multiple [log levels]({{< ref "api-management/logs-metrics#system-logs" >}}): error, warn, info, debug. Setting higher log levels consumes more computing resources and would have an impact on the Tyk component. Tyk installations default to log level info unless modified by config files or environment variables.
 
 It is recommended to set to debug only for the duration of troubleshooting as it adds heavier resource overheads. In high performance use cases for Tyk Gateway, consider setting a log level lower than info to improve overall throughput.
 
@@ -4392,7 +4392,7 @@ From **Tyk 5.3**, additional options are available for more granular control:
 ```
 
 **Capping Analytics**
-Tyk Gateways can generate a lot of analytics data. Be sure to read about [capping your Dashboard analytics]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage" >}})
+Tyk Gateways can generate a lot of analytics data. Be sure to read about [capping your Dashboard analytics]({{< ref "api-management/tyk-pump#tyk-pump-capping-analytics-data-storage" >}})
 
 
 ##### Redis Sizing Guidelines
@@ -4452,7 +4452,7 @@ The network topology we like to use is:
 {{< note success >}} 
 **Note** 
 
-If you are using [DocumentDB](https://aws.amazon.com/documentdb/), [capped collections]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage" >}}) are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details. 
+If you are using [DocumentDB](https://aws.amazon.com/documentdb/), [capped collections]({{< ref "api-management/tyk-pump#tyk-pump-capping-analytics-data-storage" >}}) are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details. 
 {{< /note >}} 
 
 **Special notes for MongoDB Atlas**
@@ -4680,7 +4680,7 @@ Circuit breakers operate on a single Tyk Gateway, they do not centralise or pool
 
 **Circuit breaker events**
 
-The circuit breaker automatically controls the flow of requests to the upstream services quickly and efficiently, but it is equally important to alert you to the fact that there is an issue and to confirm when traffic will recommence once the issue is resolved. Tyk's [Event]({{< ref "basic-config-and-security/report-monitor-trigger-events" >}}) system provides the method by which the circuit breaker can alert you to these occurrences.
+The circuit breaker automatically controls the flow of requests to the upstream services quickly and efficiently, but it is equally important to alert you to the fact that there is an issue and to confirm when traffic will recommence once the issue is resolved. Tyk's [Event]({{< ref "api-management/gateway-events#event-categories" >}}) system provides the method by which the circuit breaker can alert you to these occurrences.
 
 - When the circuit breaker trips (from closed to open), Tyk will generate a `BreakerTripped` event
 - When the breaker resets (from open to closed), whether at the end of the cooldown period or if connection is restored while in _half-open_ mode, Tyk will generate a `BreakerReset` event
@@ -4895,7 +4895,7 @@ Use the *save* or *create* buttons to save the changes and activate the middlewa
 
 **Step 4: Optionally configure webhooks to respond to the circuit breaker events**
 
-The Dashboard supports the separate `BreakerTripped` and `BreakerReset` events, but not the combined `BreakerTriggered` [event type]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}). You should use **API Designer > Advanced Options** to add a Webhook plugin to your endpoint for each event.
+The Dashboard supports the separate `BreakerTripped` and `BreakerReset` events, but not the combined `BreakerTriggered` [event type]({{< ref "api-management/gateway-events#event-types" >}}). You should use **API Designer > Advanced Options** to add a Webhook plugin to your endpoint for each event.
 
 {{< img src="/img/dashboard/system-management/webhook-breaker.png" alt="Webhook events" >}}
 
@@ -5529,7 +5529,7 @@ spec:
 
 ##### gRPC load balancing
 
-You can also perform [gRPC Load balancing]({{< ref "key-concepts/grpc-proxy#grpc-load-balancing" >}}).
+You can also perform [gRPC Load balancing]({{< ref "api-management/non-http-protocols#grpc-load-balancing" >}}).
 
 
 #### Service Discovery
