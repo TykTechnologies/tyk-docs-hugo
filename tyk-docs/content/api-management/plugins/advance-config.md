@@ -155,7 +155,7 @@ And this field within your [API definition]({{< ref "api-management/gateway-conf
 }
 ```
 
-You can find more information about enabling OpenTelemetry [here]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview" >}}).
+You can find more information about enabling OpenTelemetry [here]({{< ref "api-management/logs-metrics#opentelemetry" >}}).
 
 {{< note success >}}
 **Note**

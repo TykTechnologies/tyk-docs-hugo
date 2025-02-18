@@ -73,7 +73,7 @@ Tyk’s platform makes security implementation straightforward, offering feature
 #### **Step 6: Monitor and Maintain the API**
 
 An API isn’t a one-time setup; it needs regular monitoring and updates:
-- **Monitor Performance**: Use [Tyk’s real-time analytics]({{< ref "tyk-pump" >}}) to track metrics like [latency]({{< ref "tyk-stack/tyk-pump/tyk-analytics-record-fields/#latency" >}}), error rates, and [usage]({{< ref "tyk-cloud#track-usage" >}}). This helps identify any bottlenecks or security risks.
+- **Monitor Performance**: Use [Tyk’s real-time analytics]({{< ref "tyk-pump" >}}) to track metrics like [latency]({{< ref "api-management/tyk-pump#latency" >}}), error rates, and [usage]({{< ref "tyk-cloud#track-usage" >}}). This helps identify any bottlenecks or security risks.
 - **Version and Update**: As you add new features, use [Tyk’s versioning]({{< ref "api-management/automations/operator#api-versioning" >}}) to avoid breaking existing functionality.
 - **Optimize and Scale**: With Tyk, you can adjust your rate limits, caching, and load balancing to handle higher volumes as needed. Optimizing is especially necessary as you [move your workload into production]({{< ref "tyk-self-managed#planning-for-production" >}}).
 
