@@ -1539,6 +1539,14 @@ If you are upgrading to 5.3.10, please follow the detailed [upgrade instructions
 <ul>
 <li>
 <details>
+<summary>Resolved gateway not entering "emergency" mode</summary>
+
+Fixed an issue where the gateway stopped processing traffic when restarted while MDCB was unavailable. Instead of entering "emergency" mode and loading APIs and policies from the Redis backup, the gateway remained unresponsive, continuously attempting to reconnect.
+With this fix, the gateway detects connection failure and enters `emergency` mode, ensuring traffic processing resumes even when MDCB is down.
+</details>
+</li>
+<li>
+<details>
 <summary>Upgraded to Golang 1.23</summary>
 
 Tyk Gateway now runs on Golang 1.23, bringing security and performance improvements. Key changes include unbuffered Timer/Ticker channels, removal of 3DES cipher suites, and updates to X509KeyPair handling. Users may need to adjust their setup for compatibility.
