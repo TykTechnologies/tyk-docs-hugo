@@ -1071,7 +1071,7 @@ These commands are provided as general guidelines and should be used with cautio
 ### Open Source Upgrade Guide 
 
 The following guide explains how to upgrade Tyk Gateway when using Docker. For guides of other installation types check
-the "Self-manged" section, and look for the instruction regarding Tyk Gateway.
+the [self managed]({{< ref "#tyk-self-managed-upgrade-guide" >}}) section, and look for the instruction regarding Tyk Gateway.
 
 Before proceeding with the upgrade process, ensure that you have thoroughly reviewed and completed the steps outlined in
 the [pre-upgrade guidelines]({{< ref "#upgrade-guidelines" >}}). Once you
