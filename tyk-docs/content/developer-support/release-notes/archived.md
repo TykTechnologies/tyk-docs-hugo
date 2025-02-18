@@ -39,7 +39,7 @@ Tyk now can be used as a reverse proxy for your TCP services. It means that you 
 
 The main benefit of using Tyk as your TCP proxy is that functionality you used to managed your APIs now can be used for your TCP services as well. Features like load balancing, service discovery, Mutual TLS (both authorization and communication with upstream), certificate pinning: all work exactly the same way as for your HTTP APIs.
 
-See our [TCP Proxy Docs]({{< ref "key-concepts/tcp-proxy" >}}) for more details.
+See our [TCP Proxy Docs]({{< ref "api-management/non-http-protocols#tcp-proxy" >}}) for more details.
 
 ### APIs as Products
 
@@ -94,7 +94,7 @@ See our [Golang plugin documentation]({{< ref "api-management/plugins/golang#" >
 We have listened to you, and tracing is recently one of your most common requests. Distributed tracing takes your monitoring and profiling experience to the next level, since you can see the whole request flow, even if it has complex route though multiple services. And inside this flow, you can go deep down into the details like individual middleware execution performance.
 At the moment we are offering [OpenTracing](https://opentracing.io/) support, with [Zipkin](https://zipkin.io/) and [Jaeger](https://www.jaegertracing.io/) as supported tracers.
 
-See our [Distributed Tracing documentation]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview" >}}) for more details.
+See our [Distributed Tracing documentation]({{< ref "api-management/logs-metrics#opentelemetry" >}}) for more details.
 
 ### HMAC request signing
 
@@ -745,7 +745,7 @@ We have added support for New Relic Instrumentation using:
 
 `"newrelic": {"app_name": "<app-id>", "license_key": "<key>"}`
 
-[Docs]({{< ref "basic-config-and-security/report-monitor-trigger-events/instrumentation" >}})
+[Docs]({{< ref "api-management/logs-metrics#statsd-instrumentation" >}})
 
 #### Default API Versioning
 

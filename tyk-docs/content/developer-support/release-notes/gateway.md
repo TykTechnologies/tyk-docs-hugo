@@ -1299,7 +1299,7 @@ Ideal for persistent connections with load-balanced gateways, the [Fixed Window 
 
 ##### Event handling with Tyk OAS
 
-We’ve added support for you to [register webhooks]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) with your Tyk OAS APIs so that you can handle events triggered by the Gateway, including circuit breaker and quota expiry. You can also assign webhooks to be fired when using the new [smoothing rate limiter]({{< ref "api-management/rate-limit#rate-limit-smoothing" >}}) to notify your systems of ongoing traffic spikes.
+We’ve added support for you to [register webhooks]({{< ref "api-management/gateway-events#event-handling-with-webhooks" >}}) with your Tyk OAS APIs so that you can handle events triggered by the Gateway, including circuit breaker and quota expiry. You can also assign webhooks to be fired when using the new [smoothing rate limiter]({{< ref "api-management/rate-limit#rate-limit-smoothing" >}}) to notify your systems of ongoing traffic spikes.
 
 ##### Enhanced Header Handling in GraphQL APIs
 
@@ -3830,7 +3830,7 @@ Fixed an issue when using MongoDB and [Tyk Security Policies]({{< ref "api-manag
 <details>
 <summary>Logstash formatter timestamp was not in RFC3339 Nano format</summary>
 
-The [Logstash]({{< ref "log-data#aggregated-logs-with-logstash" >}}) formatter timestamp is now in [RFC3339Nano](https://www.rfc-editor.org/rfc/rfc3339) format.
+The [Logstash]({{< ref "api-management/logs-metrics#logstash" >}}) formatter timestamp is now in [RFC3339Nano](https://www.rfc-editor.org/rfc/rfc3339) format.
 </details>
 </li>
 <li>
@@ -3979,7 +3979,7 @@ Fixed a potential performance issue related to high rates of *Tyk Gateway* reloa
 <details>
 <summary>Headers for GraphQL headers were not properly forwarded upstream for GQL/UDG subscriptions</summary>
 
-Fixed an issue with GraphQL APIs, where [headers]({{< ref "graphql/gql-headers" >}}) were not properly forwarded upstream for [GQL/UDG subscriptions]({{< ref "getting-started/key-concepts/graphql-subscriptions" >}}).
+Fixed an issue with GraphQL APIs, where [headers]({{< ref "api-management/graphql#graphql-apis-headers" >}}) were not properly forwarded upstream for [GQL/UDG subscriptions]({{< ref "api-management/graphql#graphql-subscriptions" >}}).
 </details>
 </li>
 <li>
@@ -4000,7 +4000,7 @@ Removed the extra chunked transfer encoding that was added unnecessarily to `raw
 <details>
 <summary>Reponse body transformation not execute when Persist GraphQL middleware used</summary>
 
-Resolved a bug with HTTP GraphQL APIs where, when the [Persist GraphQL middleware]({{< ref "graphql/persisted-queries" >}}) was used in combination with [Response Body Transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}), the response's body transformation was not being executed.
+Resolved a bug with HTTP GraphQL APIs where, when the [Persist GraphQL middleware]({{< ref "api-management/graphql#persisting-graphql-queries" >}}) was used in combination with [Response Body Transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}), the response's body transformation was not being executed.
 {{< img src="img/bugs/bug-persistent-gql.png" width="400" alt="Bug in persistent gql and response body transform" title="The setup of graphQL middlewares">}}
 </details>
 </li>
@@ -4048,25 +4048,25 @@ Reference the *Tyk OAS API definition* from within your custom *Go Plugins*, bri
 
 ##### Configure Caching For Each API Endpoint
 
-We’ve added the ability to [configure]({{< ref "product-stack/tyk-gateway/middleware/endpoint-cache-tyk-oas#configuring-the-middleware-in-the-tyk-oas-api-definition" >}}) per-endpoint timeouts for Tyk’s response cache, giving you increased flexibility to tailor your APIs to your upstream services.
+We’ve added the ability to [configure]({{< ref "api-management/gateway-optimizations#configuring-the-middleware-in-the-tyk-oas-api-definition" >}}) per-endpoint timeouts for Tyk’s response cache, giving you increased flexibility to tailor your APIs to your upstream services.
 
 ##### Added Header Management in Universal Data Graph
 
-With this release we are adding a concept of [header management]({{< ref "universal-data-graph/concepts/header_management" >}}) in *Universal Data Graph*. With multiple upstream data sources, data graphs need to be sending the right headers upstream, so that our users can effectively track the usage and be able to enforce security rules at each stage. All *Universal Data Graph* headers now have access to *request context* variables like *JWT claims*, *IP address* of the connecting client or *request ID*. This provides extensive configurability of customizable information that can be sent upstream.
+With this release we are adding a concept of [header management]({{< ref "api-management/data-graph#header-management" >}}) in *Universal Data Graph*. With multiple upstream data sources, data graphs need to be sending the right headers upstream, so that our users can effectively track the usage and be able to enforce security rules at each stage. All *Universal Data Graph* headers now have access to *request context* variables like *JWT claims*, *IP address* of the connecting client or *request ID*. This provides extensive configurability of customizable information that can be sent upstream.
 
 ##### Added Further Support For GraphQL WebSocket Protocols
 
-Support for [WebSocket]({{< ref "graphql/graphql-websockets" >}}) protocols between client and the *Gateway* has also been expanded. Instead of only supporting the *graphql-ws protocol*, which is becoming deprecated, we now also support [graphql-transport-ws](https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md) by setting the *Sec-WebSocket-Protocol* header to *graphql-transport-ws*.
+Support for [WebSocket]({{< ref "api-management/graphql#graphql-websockets" >}}) protocols between client and the *Gateway* has also been expanded. Instead of only supporting the *graphql-ws protocol*, which is becoming deprecated, we now also support [graphql-transport-ws](https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md) by setting the *Sec-WebSocket-Protocol* header to *graphql-transport-ws*.
 
 ##### Added OpenTelemetry Tracing
 
-In this version, we're introducing the support for *OpenTelemetry Tracing*, the new [open standard](https://opentelemetry.io/) for exposing observability data. This addition gives you improved visibility into how API requests are processed, with no additional license required. It is designed to help you with monitoring and troubleshooting APIs, identify bottlenecks, latency issues and errors in your API calls. For detailed information and guidance, you can check out our [OpenTelemetry Tracing]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview" >}}) resource.
+In this version, we're introducing the support for *OpenTelemetry Tracing*, the new [open standard](https://opentelemetry.io/) for exposing observability data. This addition gives you improved visibility into how API requests are processed, with no additional license required. It is designed to help you with monitoring and troubleshooting APIs, identify bottlenecks, latency issues and errors in your API calls. For detailed information and guidance, you can check out our [OpenTelemetry Tracing]({{< ref "api-management/logs-metrics#opentelemetry" >}}) resource.
 
 *OpenTelemetry* makes it possible to isolate faults within the request lifetime through inspecting API and Gateway meta-data. Additionally, performance bottlenecks can be identified within the request lifetime. API owners and developers can use this feature to understand how their APIs are being used or processed within the Gateway.
 
 *OpenTelemetry* functionality is also available in [Go Plugins]({{< ref "api-management/plugins/advance-config#instrumenting-plugins-with-opentelemetry" >}}). Developers can write code to add the ability to preview *OpenTelemetry* trace attributes, error status codes etc., for their Go Plugins.
 
-We offer support for integrating *OpenTelemetry* traces with supported open source tools such [Jaeger]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger" >}}), [Dynatrace]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_dynatrace" >}}) or [New Relic]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_new_relic" >}}). This allows API owners and developers to gain troubleshooting and performance insights from error logs, response times etc.
+We offer support for integrating *OpenTelemetry* traces with supported open source tools such [Jaeger]({{< ref "api-management/logs-metrics#using-docker" >}}), [Dynatrace]({{< ref "api-management/logs-metrics#dynatrace" >}}) or [New Relic]({{< ref "api-management/logs-metrics#new-relic" >}}). This allows API owners and developers to gain troubleshooting and performance insights from error logs, response times etc.
 You can also find a direct link to our docs in the official [OpenTelemetry Integration page](https://opentelemetry.io/ecosystem/integrations/)
 
 {{< warning success >}}
@@ -4125,7 +4125,7 @@ Added a new feature that allows clients to retrieve the trace ID from response h
 <details>
 <summary>Allow detailed tracing to be enabled/disabled at API level</summary>
 
-Added configuration parameter to enable/disable [detail_tracing]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview#step-2-enable-detailed-tracing-at-api-level-optional" >}}) for *Tyk Classic API*.
+Added configuration parameter to enable/disable [detail_tracing]({{< ref "api-management/logs-metrics#enable-detailed-tracing-at-api-level-optional" >}}) for *Tyk Classic API*.
 </details>
 </li>
 <li>
@@ -4139,21 +4139,21 @@ Added *OpenTelemetry* support for GraphQL. This is activated by setting [opentel
 <details>
 <summary>Add support to configure granual control over cache timeout at the endpoint level</summary>
 
-Added a new [timeout option]({{< ref "product-stack/tyk-gateway/middleware/endpoint-cache-tyk-oas#configuring-the-middleware-in-the-tyk-oas-api-definition" >}}), offering granular control over cache timeout at the endpoint level.
+Added a new [timeout option]({{< ref "api-management/gateway-optimizations#configuring-the-middleware-in-the-tyk-oas-api-definition" >}}), offering granular control over cache timeout at the endpoint level.
 </details>
 </li>
 <li>
 <details>
 <summary>Enable request context variables in UDG global or data source headers</summary>
 
-Added support for using [request context variables]({{< ref "context-variables#available-context-variables" >}}) in *UDG* global or data source headers. This feature enables much more advanced [header management]({{< ref "universal-data-graph/concepts/header_management" >}}) for UDG and allows users to extract header information from an incoming request and pass it to upstream data sources.
+Added support for using [request context variables]({{< ref "context-variables#available-context-variables" >}}) in *UDG* global or data source headers. This feature enables much more advanced [header management]({{< ref "api-management/data-graph#header-management" >}}) for UDG and allows users to extract header information from an incoming request and pass it to upstream data sources.
 </details>
 </li>
 <li>
 <details>
 <summary>Add support for configuration of global headers for any UDG</summary>
 
-Added support for configuration of [global headers]({{< ref "universal-data-graph/concepts/header_management" >}}) for any *UDG*. These headers will be forwarded to all data sources by default, enhancing control over data flow.
+Added support for configuration of [global headers]({{< ref "api-management/data-graph#header-management" >}}) for any *UDG*. These headers will be forwarded to all data sources by default, enhancing control over data flow.
 </details>
 </li>
 <li>
@@ -4167,7 +4167,7 @@ Added the ability for Custom GoPlugin developers using *Tyk OAS APIs* to access 
 <details>
 <summary>Add support for graphql-transport-ws websocket protocol</summary>
 
-Added support for the websocket protocol, *graphql-transport-ws protocol*, enhancing communication between the client and *Gateway*. Users [connecting]({{< ref "graphql/graphql-websockets" >}}) with the header *Sec-WebSocket-Protocol* set to *graphql-transport-ws* can now utilize messages from this [protocol](https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md) for more versatile interaction.
+Added support for the websocket protocol, *graphql-transport-ws protocol*, enhancing communication between the client and *Gateway*. Users [connecting]({{< ref "api-management/graphql#graphql-websockets" >}}) with the header *Sec-WebSocket-Protocol* set to *graphql-transport-ws* can now utilize messages from this [protocol](https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md) for more versatile interaction.
 </details>
 </li>
 <li>
@@ -4757,7 +4757,7 @@ Note that if the CommonName is an invalid host name, it's always ignored, regard
 4.3 adds two important features that improve security settings for GraphQL APIs in Tyk.
 
 1. Ability to turn on/off introspection - this feature allows much more control over what consumers are able to do when interacting with a GraphQL API. In cases where introspection is not desirable, API managers can now disallow it. The setting is done on API key level, which means API providers will have very granular control over who can and who cannot introspect the API.
-2. Support for allow list in field-based permissions - so far Tyk was offering field-based permissions as a “block list” only. That meant that any new field/query added to a graph was by default accessible for all consumers until API manager explicitly blocked it on key/policy level. Adding support for “allow list” gives APi managers much more control over changing schemas and reduces the risk of unintentionally exposing part of the graph that are not ready for usage. See [Introspection]({{< ref "graphql/introspection" >}}) for more details.
+2. Support for allow list in field-based permissions - so far Tyk was offering field-based permissions as a “block list” only. That meant that any new field/query added to a graph was by default accessible for all consumers until API manager explicitly blocked it on key/policy level. Adding support for “allow list” gives APi managers much more control over changing schemas and reduces the risk of unintentionally exposing part of the graph that are not ready for usage. See [Introspection]({{< ref "api-management/graphql#introspection" >}}) for more details.
 
 
 #### Changelog
@@ -5023,9 +5023,9 @@ As we know, ease-of-use is an important factor when adopting GraphQL. Modern ent
 
 To remedy this, Tyk 4.0 offers GraphQL federation that allows the division of GraphQL implementation across multiple backend services, while still exposing them all as a single graph for the consumers. Subgraphs represent backend services and define a distinct GraphQL schema. A subgraph can be queried directly, as a separate service or federated in the Tyk Gateway into a larger schema of a supergraph – a composition of several subgraphs that allows execution of a query across multiple services in the backend.
 
-[Federation docs]({{< ref "getting-started/key-concepts/graphql-federation" >}})
+[Federation docs]({{< ref "api-management/graphql#overview-1" >}})
 
-[Subgraphs and Supergraphs docs]({{< ref "getting-started/key-concepts/graphql-federation.md#subgraphs-and-supergraphs" >}})
+[Subgraphs and Supergraphs docs]({{< ref "api-management/graphql#subgraphs-and-supergraphs" >}})
 
 ##### GraphQL subscriptions
 
@@ -5033,7 +5033,7 @@ Subscriptions are a way to push data from the server to the clients that choose 
 
 With release 4.0, users can federate GraphQL APIs that support subscriptions. Federating subscriptions means that events pushed to consumers can be enriched with information from other federated graphs.
 
-[Subscriptions docs]({{< ref "getting-started/key-concepts/graphql-subscriptions" >}})
+[Subscriptions docs]({{< ref "api-management/graphql#graphql-subscriptions" >}})
 
 #### Changelog
 
@@ -5060,11 +5060,11 @@ If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref
 
 ##### GraphQL and UDG improvements
 
-We've updated the GraphQL functionality of our [Universal Data Graph]({{< ref "universal-data-graph" >}}). You’re now able to deeply nest GraphQL & REST APIs and stitch them together in any possible way.
+We've updated the GraphQL functionality of our [Universal Data Graph]({{< ref "api-management/data-graph#overview" >}}). You’re now able to deeply nest GraphQL & REST APIs and stitch them together in any possible way.
 
 Queries are now possible via WebSockets and Subscriptions are coming in the next Release (3.3.0).
 
-You're also able to configure [upstream Headers dynamically]({{< ref "universal-data-graph/udg-getting-started/header-forwarding" >}}), that is, you’re able to inject Headers from the client request into UDG upstream requests. For example, it can be used to acccess protected upstreams. 
+You're also able to configure [upstream Headers dynamically]({{< ref "api-management/data-graph#header-forwarding" >}}), that is, you’re able to inject Headers from the client request into UDG upstream requests. For example, it can be used to acccess protected upstreams. 
 
 We've added an easy to use URL-Builder to make it easier for you to inject object fields into REST API URLs when stitching REST APIs within UDG.
 
@@ -5184,7 +5184,7 @@ All this without even have to build your own GraphQL server. If you have existin
 
 With the Universal Data Graph Tyk becomes your central integration point for all your internal as well as external APIs. In addition to this, the UDG benefits from all existing solutions that already come with your Tyk installation. That is, your Data Graph will be secure from the start and there’s a large array of out of the box middlewares you can build on to power your Graph.
 
-Read more about the [GraphQL]({{< ref "graphql" >}}) and [Universal Data Graph]({{< ref "universal-data-graph" >}})
+Read more about the [GraphQL]({{< ref "api-management/graphql" >}}) and [Universal Data Graph]({{< ref "api-management/data-graph#overview" >}})
 
 ##### Using external secret management services
 
@@ -5225,7 +5225,7 @@ It also becomes possible to put a {{<fn>}}blocklist{{</fn>}} in-place, meaning t
 
 This change requires updating to new Tyk Pump 1.0
 
-[Read More]({{< ref "tyk-pump/configuration" >}})
+[Read More]({{< ref "api-management/tyk-pump#tyk-pump-configuration" >}})
 
 ##### 404 Error logging - unmatched paths
 

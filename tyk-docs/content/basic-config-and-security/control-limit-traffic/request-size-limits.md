@@ -39,7 +39,7 @@ All size limits are stated in bytes and are applied only to the request _body_ (
 {{< note success >}}
 **Note**
 
-The system level request size limit is the only size limit applied to [TCP]({{< ref "key-concepts/tcp-proxy" >}}) and [Websocket]({{< ref "advanced-configuration/websockets" >}}) connections.
+The system level request size limit is the only size limit applied to [TCP]({{< ref "api-management/non-http-protocols#tcp-proxy" >}}) and [Websocket]({{< ref "api-management/non-http-protocols#websockets" >}}) connections.
 {{< /note >}}
 
 <hr>

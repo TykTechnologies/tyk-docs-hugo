@@ -1706,7 +1706,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 Tyk Charts 1.3 adds support for a number of new Tyk features available from Tyk 5.3.0. These include: Support use of SSL certificates when connecting to Redis, Configurations for OAS Validate examples and OAS Validate Schema defaults.
 
 ##### Graph Pump
-Tyk Charts 1.3 adds support for Graph MongoDB Pump, Graph SQL Pump and Graph SQL Aggregate Pump. see [Graph Pump setup]({{<ref "tyk-stack/tyk-pump/tyk-pump-configuration/graph-pump">}}) to learn more about the GraphQL-specific metrics available.
+Tyk Charts 1.3 adds support for Graph MongoDB Pump, Graph SQL Pump and Graph SQL Aggregate Pump. see [Graph Pump setup]({{<ref "api-management/tyk-pump#graph-pump-setup">}}) to learn more about the GraphQL-specific metrics available.
 
 ##### Enable Tyk Identity Broker (TIB) in Tyk Dashboard
 Tyk Charts 1.3 adds a field to enable Internal [Tyk Identity Broker (TIB)]({{<ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib">}}) in Tyk Dashboard by field `tyk-dashboard.tib.enabled` to `true`.
@@ -1884,7 +1884,7 @@ Users can configure Tyk Dashboard service port name. Default is `http`.
 <details>
 <summary>Pump: Added Graph pump support</summary>
 
-[Graph Pumps]({{<ref "tyk-stack/tyk-pump/tyk-pump-configuration/graph-pump">}}) will be added when the user adds `mongo` or `postgres` to `pump.backend`. When `mongo` is added to `pump.backend` the Graph MongoDB Pump will be enabled. When `postgres` is added to `pump.backend` the Graph SQL Pump and Graph SQL Aggregate Pump will be enabled.
+[Graph Pumps]({{<ref "api-management/tyk-pump#graph-pump-setup">}}) will be added when the user adds `mongo` or `postgres` to `pump.backend`. When `mongo` is added to `pump.backend` the Graph MongoDB Pump will be enabled. When `postgres` is added to `pump.backend` the Graph SQL Pump and Graph SQL Aggregate Pump will be enabled.
 </details>
 </li>
 
