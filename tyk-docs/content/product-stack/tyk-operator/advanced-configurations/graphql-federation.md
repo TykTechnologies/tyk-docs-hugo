@@ -5,7 +5,7 @@ tags: ["Tyk Operator", "GraphQL Federation", "Kubernetes"]
 description: ""
 ---
 
-Tyk, with release *v4.0* offers [GraphQL federation]({{<ref "getting-started/key-concepts/graphql-federation#federation-version-support">}}) that allows you to divide GraphQL implementation across multiple back-end
+Tyk, with release *v4.0* offers [GraphQL federation]({{<ref "api-management/graphql#federation-version-support">}}) that allows you to divide GraphQL implementation across multiple back-end
 services, while still exposing them all as a single graph for the consumers.
 
 Tyk Operator supports GraphQL Federation subgraph and supergraph with following Custom Resources.
