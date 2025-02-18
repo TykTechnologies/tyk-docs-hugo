@@ -97,7 +97,7 @@ Otherwise, you can design an API from scratch or a template if you have configur
 
         - **Active Gateways**: Shows the number of available active gateways. An active gateway refers to a Tyk Gateway instance currently connected to a [Control Plane]({{< ref "tyk-multi-data-centre/mdcb-components#control-plane" >}}) and actively processing API requests. 
             
-            **Note:** It doesn't count the edges.
+            **Note:** It doesn't count the [Data Plane]({{< ref "tyk-multi-data-centre/mdcb-components#data-plane" >}}).
         
         - **Total Gateways Available**: Total number of Gateways available per the license.
         - **Remaining Gateways**: Unused license slots.
@@ -118,7 +118,7 @@ Otherwise, you can design an API from scratch or a template if you have configur
 
     4. **Gateway License Usage**:
 
-        - Provides a visual representation of the max, min, and average number of total gateways (not only edges).
+        - This provides a visual representation of the maximum, minimum, and average number of total gateways (all deployed gateways, whether they are part of a data plane or control plane).
 
     5. **Total API Traffic**:
 
