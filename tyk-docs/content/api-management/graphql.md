@@ -1,9 +1,9 @@
 ---
 title: "GraphQL"
 date: 2025-02-10
-tags: ["Graphql", "Federation", "Entities", "Grapqhl Proxy", "Validation", "Schema", "Complexcity Limiting", "Persisted Queries", "Migration Guide", "Graphql Playground", "GQL Headers"]
+tags: ["Graphql", "Federation", "Entities", "Grapqhl Proxy", "Validation", "Schema", "Complexity Limiting", "Persisted Queries", "Migration Guide", "Graphql Playground", "GQL Headers"]
 description: "How to configure GraphQL"
-keywords: ["Graphql", "Federation", "Entities", "Grapqhl Proxy", "Validation", "Schema", "Complexcity Limiting", "Persisted Queries", "Migration Guide", "Graphql Playground", "GQL Headers"]
+keywords: ["Graphql", "Federation", "Entities", "Grapqhl Proxy", "Validation", "Schema", "Complexity Limiting", "Persisted Queries", "Migration Guide", "Graphql Playground", "GQL Headers"]
 aliases:
   - /graphql
   - /getting-started/key-concepts/graphql-federation
@@ -41,14 +41,13 @@ aliases:
 
 ## Overview
 
-Tyk supports GraphQL **natively**. This means Tyk doesn't have to use any external service or process for any GraphQL middleware.
+Tyk has **native** GraphQL support, so it doesn’t require any external services or middleware.
+It fully complies with the latest GraphQL specifications, as outlined on the [GraphQL Foundation webpage](https://spec.graphql.org/), including:
 
-Tyk always supports all capabilities described in the latest release of GraphQL specification listed on [GraphQL Foundation webpage](https://spec.graphql.org/)
+- **[Queries](https://spec.graphql.org/October2021/#sec-Query)** – Fetching data  
+- **[Mutations](https://spec.graphql.org/October2021/#sec-Mutations)** – Modifying data  
+- **[Subscriptions](https://spec.graphql.org/October2021/#sec-Subscription)** – Real-time updates  
 
-This means support for the following operations:
-* queries
-* mutations
-* subscriptions
 
 ### What can you do with GraphQL and Tyk?
 
@@ -72,9 +71,9 @@ Since this is the documentation section, we won't get into a debate about GraphQ
 * **Reduced network traffic** One of the biggest benefits of GraphQL is that it allows clients to specify exactly what data they need. This means that you can avoid sending unnecessary data over the network, which can help reduce the amount of traffic and improve the performance of your application.
 * **Flexibility** GraphQL is very flexible and can be used with many different programming languages and frameworks. It can also be used to retrieve data from multiple sources, such as databases, APIs, and even third-party services.
 * **Simplified data fetching** With GraphQL, you can fetch all the data you need with a single request. This is because GraphQL allows you to specify exactly what data you need and how it should be structured, which can simplify the process of fetching data and reduce the amount of code you need to write.
-* **Easy maintenance** Because GraphQL allows you to define a schema for your data, it can be easier to maintain and evolve your API over time. This is because changes to the schema can be made without breaking existing clients, as long as the changes are backwards compatible.
+* **Easy maintenance** Because GraphQL allows you to define a schema for your data, it can be easier to maintain and evolve your API over time. This is because changes to the schema can be made without breaking existing clients, as long as the changes are backward compatible.
 * **Strong typing** GraphQL has a strong type system that allows you to define the shape of your data and ensure that the data you receive is of the correct type. This can help catch errors early on and make your code more reliable.
-* **Better developer experience for certain use cases** Examples of those use cases mostly mentioned by developers are: APIs with multiple consumers that have very different requirements, public APIs with large group of unknown users (like Shopify of Github), rapidly evolving APIs, backends for mobile applications, aggregating data from multiple microservices and development of data-driven products.
+* **Better developer experience for certain use cases** Examples of those use cases mostly mentioned by developers are: APIs with multiple consumers that have very different requirements, public APIs with large groups of unknown users (like Shopify of Github), rapidly evolving APIs, backends for mobile applications, aggregating data from multiple microservices and development of data-driven products.
 
 Our team has also published some blog posts that go deeper into GraphQL discussions. You can check some of them here:
 * [How Airbnb, Shopify, GitHub and more are winning with GraphQL](https://tyk.io/blog/how-airbnb-shopify-github-and-more-are-winning-with-graphql-and-why-you-may-need-it-too/)
@@ -88,9 +87,9 @@ GraphQL API can be created in Tyk using:
 * Tyk Dashboard API
 * Tyk Gateway API - for OSS users
 
-The process is very similar to [HTTP API creation]({{< ref "getting-started/create-api" >}}) with a few additional steps to cover GraphQL specific functionalities.
+The process is very similar to [HTTP API creation]({{< ref "getting-started/create-api" >}}) with a few additional steps to cover GraphQL-specific functionalities.
 
-### Via Tyk Dahsboard UI
+### Via Tyk Dashboard UI
 
 #### Prerequisites
 
@@ -916,7 +915,7 @@ When using the [Dashboard API]({{< ref "api-management/dashboard-configuration#m
 {
   "Status": "Error",
   "Message": "Invalid GraphQL schema",
-  "Meta":null,
+  "Meta": null,
   "Errors": [
     "field 'Query.foo' can only be defined once"
   ]
@@ -930,13 +929,13 @@ Users can set up two kinds of headers when configuring GraphQL APIs:
 - Introspection headers
 - Request headers
 
-Both types of headers can be set in Advanced Options tab in Tyk Dashboard.
+Both types of headers can be set in the Advanced Options tab in Tyk Dashboard.
 
 ### Introspection headers
 
-Tyk Dashboard can introspect any upstream GraphQL API and download a copy of the GQL schema. That schema will be displayed in Schema tab.
+Tyk Dashboard can introspect any upstream GraphQL API and download a copy of the GQL schema. That schema will be displayed in the Schema tab.
 
-For protected upstreams, where authorization is required for introspection, Tyk allows to persist authorization headers in the GQL API configuration using **Introspection headers**.
+For protected upstreams that require authorization for introspection, Tyk allows you to persist authorization headers within the GraphQL API configuration using **Introspection headers**.
 
 {{< img src="/img/dashboard/graphql/introspection-headers.png" alt="Introspection headers" >}}
 
@@ -944,7 +943,7 @@ Any header key/value pair defined in **Introspection headers** will only be used
 
 **Introspection headers** can also be configured in the raw API definition:
 
-```bash
+```json
 ...
 "graphql": {
       "execution_mode": "proxyOnly",
@@ -958,7 +957,7 @@ Any header key/value pair defined in **Introspection headers** will only be used
 
 ### Request headers
 
-It is possible to enrich any GQL request proxied through Tyk Gateway with additional information in the headers. For that purpose users should configure **Request headers** in Tyk Dashboard.
+You can enrich any GraphQL request proxied through Tyk Gateway with additional information in the headers by configuring **Request headers** in the Tyk Dashboard.
 
 {{< img src="/img/dashboard/graphql/headers-gql-request.png" alt="Request headers" >}}
 
@@ -983,11 +982,12 @@ Any header key/value pair defined in **Request headers** will only be used to in
 
 ## Syncing GQL Schema
 
-A GraphQL Proxy API keeps an own copy of the upstream GraphQL schema. This also means that when the upstream GraphQL schema changes, those changes need to be transfered to the proxy schema.
+A GraphQL Proxy API maintains a copy of the upstream GraphQL schema. When the upstream schema changes, these updates need to be reflected in the proxy schema.
 
-For that Tyk Dashboard always saves the timestamp of the last schema change when updating a GraphQL API. This information can be used to determine if the schema is out-dated and needs to be synced with upstream again. It can be found above the schema editor.
+To manage this, Tyk Dashboard stores the timestamp of the last schema change each time a GraphQL API is updated. This timestamp helps identify whether the schema is outdated and needs to be synced with the upstream version. You can find this information above the schema editor.
 
-For syncing the schema just press the resync button.
+To sync the schema, click the **Resync** button.
+
 
 {{< note success >}}
 **Note**  
@@ -997,7 +997,7 @@ Syncing schemas is only available for proxy-only GraphQL APIs and **not** for UD
 
 {{< img src="/img/dashboard/graphql/schema_sync.png" alt="Sync Schema Button" >}}
 
-If your upstream is protected then you need to make sure you provide Tyk with the authorization details to execute introspection query correctly. You can add those detail while [creating GQL API]({{< ref "api-management/graphql#introspection-for-protected-upstreams">}}) or using [Introspection headers]({{< ref "api-management/graphql#introspection-headers">}}) later on.
+If your upstream is protected then you need to make sure you provide Tyk with the authorization details to execute the introspection query correctly. You can add those detail while [creating GQL API]({{< ref "api-management/graphql#introspection-for-protected-upstreams">}}) or using [Introspection headers]({{< ref "api-management/graphql#introspection-headers">}}) later on.
 
 
 
@@ -1007,7 +1007,7 @@ Tyk Gateway `4.3.0` release includes a way to expose GraphQL queries as REST end
 
 ### How to persist GraphQL query
 
-The ability to expose a GraphQL query as a REST endpoint can be enabled by adding the `persist_graphql` section of the `extended_paths` on a HTTP type in any API version you intend to be used to serve as the GraphQL query to REST endpoint proxy.
+The ability to expose a GraphQL query as a REST endpoint can be enabled by adding the `persist_graphql` section of the `extended_paths` on an HTTP type in any API version you intend to use to serve as the GraphQL query to REST endpoint proxy.
 
 Here is a sample REST API proxy for the HTTP type API:
 
@@ -1201,7 +1201,7 @@ query {
         countries {
           continent {
             countries {
-              contient {
+              continent {
                 countries {
                   name
                 }
@@ -1337,31 +1337,31 @@ If you have more than one query in your schema and you want to set different dep
 ```yaml
 {
   ...
-  "access_rights_array":[
+  "access_rights_array": [
     {
-        "api_name":"trevorblades",
-        "api_id":"68496692ef5a4cb35a2eac907ec1c1d5",
-        "versions":[
+        "api_name": "trevorblades",
+        "api_id": "68496692ef5a4cb35a2eac907ec1c1d5",
+        "versions": [
           "Default"
         ],
-        "allowed_urls":[],
-        "restricted_types":[],
-        "allowed_types":[],
-        "disable_introspection":false,
-        "limit":null,
-        "field_access_rights":[
+        "allowed_urls": [],
+        "restricted_types": [],
+        "allowed_types": [],
+        "disable_introspection": false,
+        "limit": null,
+        "field_access_rights": [
           {
-              "type_name":"Query",
-              "field_name":"continents",
-              "limits":{
-                "max_query_depth":3
+              "type_name": "Query",
+              "field_name": "continents",
+              "limits": {
+                "max_query_depth": 3
               }
           },
           {
-              "type_name":"Query",
-              "field_name":"countries",
-              "limits":{
-                "max_query_depth":5
+              "type_name": "Query",
+              "field_name": "countries",
+              "limits": {
+                "max_query_depth": 5
               }
           }
         ],
@@ -1381,7 +1381,7 @@ Setting the depth limit to `-1` in any of the above examples will allow *Unlimit
 
 You may want to allow different consumers access to your GraphQL API without exposing all data to them. So for example this could be a schema for a GraphQL API:
 
-```
+```graphql
 type Query {
   accounts: [Account!]
 }
@@ -1399,7 +1399,7 @@ Field access can be restricted by setting up *field based permissions* in a poli
 
 When a field is restricted and used in a GraphQL operation, the consumer will receive an error response (*400 Bad Request*):
 
-```
+```yaml
 {
     "errors": [
         {
@@ -1415,7 +1415,7 @@ First, you need to learn [how to create a security policy with the API]({{< ref 
 
 Once you learn how to utilize the API to create a security policy or key, you can use the following snippet:
 
-```
+```yaml
 {
     "access_rights": {
         "{API-ID}": {
@@ -1437,7 +1437,7 @@ Once you learn how to utilize the API to create a security policy or key, you ca
 ```
 With this configuration, a consumer can only access the field called the `owner`. When any other fields are used in a GraphQL operation, the consumer will receive an error response *(400 Bad Request)*: 
 
-```
+```yaml
 {
     "errors": [
         {
@@ -1452,7 +1452,7 @@ It's important to note that once you set a list of allowed types, Tyk will use t
 
 You can allow or restrict all fields of a type by using an asterisk (*) operator. Any new fields of that type will be allowed or blocked by default. For example: 
 
-```
+```yaml
 {
     "access_rights": {
         "{API-ID}": {
@@ -1474,7 +1474,7 @@ You can allow or restrict all fields of a type by using an asterisk (*) operator
 ```
 With this configuration, the consumers are allowed to access all current and future fields of the `Query` and `Account` types. Please note that the asterisk operator does not work recursively. For example, in the example below, the asterisk operator only allows access to fields of the `Query` type. Fields of the `Account` type remain restricted.
 
-```
+```yaml
 {
     "access_rights": {
         "{API-ID}": {
@@ -1492,7 +1492,7 @@ With this configuration, the consumers are allowed to access all current and fut
 ```
 The asterisk operator also works for the list of restricted types:  
 
-```
+```yaml
 {
     "access_rights": {
         "{API-ID}": {
