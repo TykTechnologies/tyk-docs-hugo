@@ -125,8 +125,8 @@ TLS is configured in the `http_server_options` section of your Gateway and Dashb
 },
 ```
 
-- `min_version` and `max_version` are optional and allow you to configure the [versions of TLS]({{< ref "supported-tls-versions" >}}) from which Tyk will accept connections
-- `ssl_ciphers` allows you to select the [cipher suite]({{< ref "supported-tls-cipher-suites" >}}) that will be used to negotiate connections
+- `min_version` and `max_version` are optional and allow you to configure the [versions of TLS]({{< ref "#supported-tls-versions" >}}) from which Tyk will accept connections
+- `ssl_ciphers` allows you to select the [cipher suite]({{< ref "#supported-tls-cipher-suites" >}}) that will be used to negotiate connections
 - you can enter multiple certificates to be used in the encryption that will be applied for different domain names, this enables you to have multiple TLS certs for your Gateways or Dashboard domains if they are providing access to different domains via the same IP
 
 ### Supported TLS Versions
