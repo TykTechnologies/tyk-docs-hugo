@@ -92,6 +92,18 @@ If you are upgrading to 5.7.2, please follow the detailed [upgrade instructions]
 
 No changes have been implemented in this release.
 
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Adding a TLS/SSL certificate caused the page to go blank</summary>
+
+Fixed an issue where attempting to add a certificate on the TLS/SSL Certificates page caused the page to go blank with an error. This has been resolved by ensuring the file input is handled correctly.
+</details>
+</li>
+</ul>
+
 ##### Security Fixes
 
 <ul>
