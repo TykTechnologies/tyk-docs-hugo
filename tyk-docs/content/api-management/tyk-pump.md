@@ -1,5 +1,5 @@
 ---
-title: "Tyk Pump - Ship Analytics Data to Persistent Datastore"
+title: "Tyk Pump - Export Metrics to Persistent Datastore"
 date: 2025-02-10
 tags: ["Pump", "CSV", "Datadog", "Elasticsearch", "Logzio", "Moesif", "Splunk", "Prometheus", "Analytics Storage", "Monitoring", "Observability"]
 description: "How to configure Tyk Pump"
