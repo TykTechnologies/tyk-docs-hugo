@@ -1538,11 +1538,11 @@ links to API documentation and FAQs. You can copy it from the previous release. 
 
 ### 5.3.10 Release Notes
 
-#### Release Date xxx
+#### Release Date 14 February 2025
 
 #### Release Highlights
 
-This release contains bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.10">}}) below.
+In this release, we upgraded the Golang version to `v1.23` for security enhancement and fixed an API authentication issue with redirects. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.10">}}) below.
 
 #### Breaking Changes
 
@@ -1566,7 +1566,7 @@ This release has no breaking changes.
 
 | Third Party Dependency                                        | Tested Versions       | Compatible Versions   | Comments                                                                                   |
 | ------------------------------------------------------------- | --------------------- | --------------------- | ------------------------------------------------------------------------------------------ |
-| [Go](https://go.dev/dl/)                                      |  1.22 (GW)            |  1.22 (GW)            | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.22 |
+| [Go](https://go.dev/dl/)                                      |  1.23 (GW)            |  1.23 (GW)            | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.23 |
 | [Redis](https://redis.io/download/)                           | 6.2.x, 7.x            | 6.2.x, 7.x            | Used by Tyk Gateway                                                                        |
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x                | v3.0.x                | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})           |
 
@@ -1598,9 +1598,24 @@ If you are upgrading to 5.3.10, please follow the detailed [upgrade instructions
 <ul>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Resolved gateway not entering "emergency" mode</summary>
 
-Add changelog description 
+Fixed an issue where the gateway stopped processing traffic when restarted while MDCB was unavailable. Instead of entering "emergency" mode and loading APIs and policies from the Redis backup, the gateway remained unresponsive, continuously attempting to reconnect.
+With this fix, the gateway detects connection failure and enters `emergency` mode, ensuring traffic processing resumes even when MDCB is down.
+</details>
+</li>
+<li>
+<details>
+<summary>Upgraded to Golang 1.23</summary>
+
+Tyk Gateway now runs on Golang 1.23, bringing security and performance improvements. Key changes include unbuffered Timer/Ticker channels, removal of 3DES cipher suites, and updates to X509KeyPair handling. Users may need to adjust their setup for compatibility.
+</details>
+</li>
+<li>
+<details>
+<summary>Resolved API authentication issue while handling redirects using "tyk://" Scheme</summary>
+
+This fix ensures that when API A redirects to API B using the tyk:// scheme, API B will now correctly authenticate using its own credentials, improving access control and preventing access denials. Users can now rely on the expected authentication flow without workarounds, providing a smoother experience when integrating APIs.
 </details>
 </li>
 </ul>
