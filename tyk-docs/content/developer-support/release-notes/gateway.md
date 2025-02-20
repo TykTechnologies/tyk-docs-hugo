@@ -46,7 +46,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### 5.7.2 Release Notes
 
-#### Release Date 14 February 2025
+#### Release Date 19 February 2025
 
 #### Release Highlights
 
@@ -1538,7 +1538,7 @@ links to API documentation and FAQs. You can copy it from the previous release. 
 
 ### 5.3.10 Release Notes
 
-#### Release Date 14 February 2025
+#### Release Date 19 February 2025
 
 #### Release Highlights
 

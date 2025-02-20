@@ -39,7 +39,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### 5.7.2 Release Notes
 
-#### Release Date 14 February 2025
+#### Release Date 19 February 2025
 
 #### Release Highlights
 
@@ -1238,7 +1238,7 @@ Fixed the following high priority CVEs identified in the Tyk Dashboard, providin
 
 ### 5.3.10 Release Notes
 
-#### Release Date 14 February 2025
+#### Release Date 19 February 2025
 
 #### Release Highlights
 
