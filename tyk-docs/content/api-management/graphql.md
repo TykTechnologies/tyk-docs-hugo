@@ -367,7 +367,7 @@ In order to use the Gateway API you will need an API key for your Gateway and on
 
 GraphQL Proxy Only is a GraphQL API with a single data source and a read-only schema. The schema is automatically loaded from the GraphQL upstream, which must support introspection queries.
 Like other APIs, the GraphQL API supports policies, but with more advanced settings.
-For an intro to GraphQL in Tyk, go to the [overview section]({{< ref “graphql”>}}).
+For an intro to GraphQL in Tyk, go to the [overview section]({{< ref "graphql">}}).
 
 ### Creating a GraphQL API via the Dashboard UI
 
