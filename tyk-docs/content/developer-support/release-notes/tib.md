@@ -23,6 +23,8 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
+This release introduces important enhancements to TIB, improving group-based permission mapping, adding support for proxy settings from environment variables, and allowing dynamic state values in the OAuth2 flow. These updates enhance security, flexibility, and integration capabilities for various enterprise environments.
+
 #### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
@@ -89,6 +91,43 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
+
+##### Added
+<!-- This section should be a bullet point list of new features. Explain:
+
+- The purpose of the new feature
+- How does the new feature benefit users?
+- Link to documentation of the new feature
+- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+
+Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
+<ul>
+<li>
+<details>
+<summary>Support for Proxy Settings Loaded from Environment Variables</summary>
+
+TIB now respects HTTP_PROXY, HTTPS_PROXY, and NO_PROXY environment variables when making outbound connections. This change ensures compatibility with air-gapped Kubernetes environments where external services can only be accessed via an HTTP proxy.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Dynamic State Query Support in OAuth2 Flow</summary>
+
+The OAuth2 "state" field can now be dynamically set via the URL or form-encoded body. This improvement allows integration with external APIs that require custom state values, ensuring compliance with various regulatory and enterprise authentication requirements.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Improved Group Permission Mapping for Users with Multiple LDAP Groups</summary>
+
+Previously, TIB assigned a user to the last matched LDAP group when multiple groups were mapped. Now, permissions are merged intelligently, ensuring users receive the most comprehensive set of permissions. This improves access control, particularly for enterprise environments with complex LDAP structures.
+</details>
+</li>
+
+</ul>
 
 ---
 
