@@ -585,9 +585,9 @@ To enable Pump, set `global.components.pump` to true and configure the following
 **Note**
 
 For additional information on Tyk Pump configurations, refer to the 
-[Setup Dashboard Analytics]({{<ref "tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config">}}) documentation.
+[Setup Dashboard Analytics]({{<ref "api-management/tyk-pump#setup-dashboard-analytics">}}) documentation.
 
-To explore the list of supported backends for Tyk Pump, please visit [Pump Backends]({{<ref "tyk-stack/tyk-pump/other-data-stores">}}).
+To explore the list of supported backends for Tyk Pump, please visit [Pump Backends]({{<ref "api-management/tyk-pump#external-data-stores">}}).
 {{< /note >}}
 
 #### Prometheus Pump
