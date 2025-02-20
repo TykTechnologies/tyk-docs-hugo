@@ -25,6 +25,7 @@ Our minor releases are supported until our next minor comes out.
 #### Release Date xxxx
 
 #### Release Highlights
+This release improves the security of the Tyk Prometheus Pump by introducing an option to obfuscate API keys in the /metrics endpoint. This enhancement prevents sensitive data from being exposed and aligns with best security practices.
 
 #### Breaking Changes
 This release has no breaking changes.
@@ -59,9 +60,22 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
 - Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.12.0)
 
 #### Changelog {#Changelog-v1.12.0}
-  
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Prometheus Pump API Key Obfuscation</summary>
+
+Previously, API keys were exposed in the /metrics endpoint, posing a potential security risk. With this update, API keys can now be obfuscated, preventing unintended exposure while maintaining full monitoring capabilities.
+
+</details>
+</li>
+</ul>
 
 ---
+
 ## 1.11 Release Notes
 
 ### 1.11.2 Release Notes
