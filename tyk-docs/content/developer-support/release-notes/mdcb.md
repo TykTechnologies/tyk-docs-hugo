@@ -32,6 +32,8 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
+This release introduces Seamless API Key Rotation for MDCB Data Planes, eliminating the need for gateway restarts when rotating API keys. This enhancement improves security and operational efficiency by ensuring uninterrupted communication between MDCB and data planes while allowing smooth key updates.
+
 #### Breaking Changes
 This release has no breaking changes.
 
@@ -50,7 +52,7 @@ Given the time difference between your upgrade and the release of this version, 
 There are no deprecations in this release.
 
 #### Upgrade instructions
-For users currently on v2.7.2, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower minor), it is advisable to bypass version 2.8.0 and proceed directly to this latest patch release.
+For users currently on v2.8.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower minor), it is advisable to bypass version 2.8.0 and proceed directly to this latest patch release.
 <br/>
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
@@ -59,7 +61,17 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
   - ```bash
     docker pull tykio/tyk-mdcb-docker:v2.8.0
     ```
-#### Changelog {#Changelog-v2.7.2}
+#### Changelog {#Changelog-v2.8.0}
+
+##### Added
+<ul>
+   <li>
+ <details>
+ <summary>Seamless API Key Rotation for MDCB Data Planes </summary>
+MDCB now supports a seamless key rotation mechanism, allowing data planes to update their authentication keys without requiring service restarts. When a new API key is issued, MDCB maintains both the old and new keys temporarily, ensuring uninterrupted connectivity while notifying data planes to update their credentials. Persistent key tracking ensures that even if MDCB or a data plane goes down during the rotation process, communication can be restored without manual intervention.
+    </details>
+  </li>
+</ul>
 
 ---
 ## 2.7 Release Notes
