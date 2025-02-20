@@ -121,9 +121,9 @@ The OAuth2 "state" field can now be dynamically set via the URL or form-encoded 
 
 <li>
 <details>
-<summary>Improved Group Permission Mapping for Users with Multiple LDAP Groups</summary>
+<summary>Improved Multi-Group Permission Mapping for Identity Providers</summary>
 
-Previously, TIB assigned a user to the last matched LDAP group when multiple groups were mapped. Now, permissions are merged intelligently, ensuring users receive the most comprehensive set of permissions. This improves access control, particularly for enterprise environments with complex LDAP structures.
+Previously, TIB assigned a user to the last matched group when multiple groups were mapped, regardless of the identity provider (SAML, LDAP, OAuth, OIDC, etc.). The new functionality introduces support for multi-group mapping, allowing permissions to be intelligently merged. This update is backward compatible and ensures that multi-group rights (combined permissions) are only applied if the user does not have a groupId assigned via the Dashboard.
 </details>
 </li>
 
