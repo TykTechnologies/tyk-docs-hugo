@@ -1,9 +1,9 @@
 ---
 title: "GraphQL"
 date: 2025-02-10
-tags: ["Graphql", "Federation", "Entities", "Grapqhl Proxy", "Validation", "Schema", "Complexity Limiting", "Persisted Queries", "Migration Guide", "Graphql Playground", "GQL Headers"]
+tags: ["GraphQL", "Federation", "Entities", "Grapqhl Proxy", "Validation", "Schema", "Complexity Limiting", "Persisted Queries", "Migration Guide", "GraphQL Playground", "GQL Headers"]
 description: "How to configure GraphQL"
-keywords: ["Graphql", "Federation", "Entities", "Grapqhl Proxy", "Validation", "Schema", "Complexity Limiting", "Persisted Queries", "Migration Guide", "Graphql Playground", "GQL Headers"]
+keywords: ["GraphQL", "Federation", "Entities", "Grapqhl Proxy", "Validation", "Schema", "Complexity Limiting", "Persisted Queries", "Migration Guide", "GraphQL Playground", "GQL Headers"]
 aliases:
   - /graphql
   - /getting-started/key-concepts/graphql-federation
@@ -354,21 +354,20 @@ In order to use the Gateway API you will need an API key for your Gateway and on
 
     This command will hot-reload your API Gateway(s) and the new GQL API will be loaded, if you take a look at the output of the Gateway (or the logs), you will see that it should have loaded [Trevorblades API](https://countries.trevorblades.com/) on `/trevorblades/`.
 
-    Your GQL API is now ready to use. We recommend that you secure any GQL API that you want to publish.
+    Your GraphQL API is now ready to use. We recommend securing any GraphQL API before publishing it.
 
     Check the following docs for more on GraphQL-specific security options:
     * [Field based permissions]({{< ref "api-management/graphql#field-based-permissions">}})
     * [Complexity limiting]({{< ref "api-management/graphql#complexity-limiting-1">}})
     * [Introspection]({{< ref "api-management/graphql#introspection">}})
 
-## Graphql Proxy Only
+## GraphQL Proxy Only
 
 ### What is GraphQL Proxy Only
 
-GraphQL Proxy Only is just a GraphQL API with a single datasource and read-only schema.
-Schema will be loaded automatically from GraphQL upstream supporting introspection queries.
-GraphQL API, like other APIs, support policies but with more advanced settings.
-If you want a more detailed explanation about GraphQL in Tyk, checkout [this section](https://tyk.io/docs/graphql/)
+GraphQL Proxy Only is a GraphQL API with a single data source and a read-only schema. The schema is automatically loaded from the GraphQL upstream, which must support introspection queries.
+Like other APIs, the GraphQL API supports policies, but with more advanced settings.
+For an intro to GraphQL in Tyk, go to the [overview section]({{< ref “graphql”>}}).
 
 ### Creating a GraphQL API via the Dashboard UI
 
@@ -386,7 +385,7 @@ In case your upstream URL is protected, select **Upstream Protected** and provid
 
 {{< /note >}}
 
-3. In this case, the upstream is protected with Basic Authentication, so we add Authorization header.
+3. In this case, the upstream is protected with Basic Authentication, so we add an Authorization header.
 
 {{< note success >}}
 
@@ -399,7 +398,7 @@ In case your upstream URL is protected, select **Upstream Protected** and provid
 {{< img src="/img/dashboard/graphql/gql_upstream_header.png" alt="Adding Auth Header for GraphQL Proxy Only API" >}}
 
 
-4. Once done, click **Configure API** and the Dashboard API designer will show up.
+4. Once done, click **Configure API**, and the Dashboard API designer will show up.
 
 5. Configure your API and click **save**, Your API will now be saved.
 
@@ -417,14 +416,14 @@ You need to click **Update** on the top right button, to update your API.
 
 **Note**
 
-If you upstream is protected, you will need to provide Authorization Header. in the Dashboard go to your API > Advanced Options > Upstream Auth headers
+If you upstream is protected, you will need to provide an Authorization Header. In the Dashboard go to your API > Advanced Options > Upstream Auth headers
 and fill in your credentials
 
 {{< /note >}}
 
-### Policies, Keys and Developer Portal
+### Policies, Keys, and Developer Portal
 
-#### Field based permission
+#### Field-based permission
 
 You may want to allow different consumers access to your GraphQL API without exposing all data to them. So for example this could be a schema for a GraphQL API:
 ```graphql
@@ -439,7 +438,7 @@ type Account {
 }
 ```
 
-and you don't want some associate with a certain key to access `balance` field on type `Account`, the gateway will respond with:
+and you don't want some associate with a certain key to access the `balance` field on type `Account`, the gateway will respond with:
 ```json
 {
     "errors": [
@@ -449,8 +448,8 @@ and you don't want some associate with a certain key to access `balance` field o
     ]
 }
 ```
+Check the [Setup field-based permission](https://tyk.io/docs/graphql/field-based-permissions/#setup-field-based-permissions-in-dashboard) section, to learn how to configure them.
 
-Checkout [this link](https://tyk.io/docs/graphql/field-based-permissions/#setup-field-based-permissions-in-dashboard), to find more on how you can configure field based permission.
 
 #### Complexity Limiting
 
@@ -473,10 +472,10 @@ The complexity of a GraphQL query is about its depth. checkout this query:
 }
 ```
 
-The above query has a depth of seven, since the nested queries are seven.
+The above query has a depth of seven since the nested queries are seven.
 
-Tyk offer solution to limit the depth of a query.
-Checkout [this link](https://tyk.io/docs/graphql/complexity-limiting/#enable-from-the-dashboard) on how to set query depth.
+Tyk offers a solution to limit the depth of a query.
+Check out [this link](https://tyk.io/docs/graphql/complexity-limiting/#enable-from-the-dashboard) on how to set query depth.
 
 #### Developer Portal
 
