@@ -337,12 +337,11 @@ In order to use the Gateway API you will need an API key for your Gateway and on
     We just sent an API definition to the Tyk `/apis` endpoint. API definitions are discussed in detail in the API section of this documentation. These objects encapsulate all of the settings for an API within Tyk Gateway.
 
     {{< note success >}}
-    **Note**
+**Note**
 
-    Notice that  when creating a GQL API you need to include your GQL service schema in the API definition. Tyk Gateway doesn't have the capacity to introspect your GQL service on its own.
+Notice that  when creating a GQL API you need to include your GQL service schema in the API definition. Tyk Gateway doesn't have the capacity to introspect your GQL service on its own.
 
-    Including the correct schema allows Tyk Gateway to validate incoming requests against it. More on validation can be found [here]({{< ref "api-management/graphql#validation">}})
-
+Including the correct schema allows Tyk Gateway to validate incoming requests against it. More on validation can be found [here]({{< ref "api-management/graphql#validation">}})
     {{< /note >}}
 
     **Restart or hot reload**
