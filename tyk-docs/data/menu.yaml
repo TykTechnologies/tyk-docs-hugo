@@ -504,22 +504,6 @@ menu:
                 path: /basic-config-and-security/security/gateway
                 category: Page
                 show: False
-              - title: "Request Size Limits"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Overview"
-                    path: /basic-config-and-security/control-limit-traffic/request-size-limits
-                    category: Page
-                    show: True
-                  - title: "Tyk OAS configuration"
-                    path: /product-stack/tyk-gateway/middleware/request-size-limit-tyk-oas
-                    category: Page
-                    show: True
-                  - title: "Tyk Classic configuration"
-                    path: /product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic
-                    category: Page
-                    show: True
           - title: "Advanced configurations"
             category: Directory
             show: False
@@ -528,30 +512,6 @@ menu:
                 path: /advanced-configuration
                 category: Page
                 show: False
-          - title: "Observability"
-            category: Directory
-            show: True
-            menu:
-              - title: "Log traffic"
-                category: Directory
-                show: True
-                menu:
-                  - title: "Do Not Track"
-                    category: Directory
-                    show: True
-                    menu:
-                      - title: "Overview"
-                        path: /product-stack/tyk-gateway/middleware/do-not-track-middleware
-                        category: Page
-                        show: True
-                      - title: "Tyk OAS configuration"
-                        path: /product-stack/tyk-gateway/middleware/do-not-track-tyk-oas
-                        category: Page
-                        show: True
-                      - title: "Tyk Classic configuration"
-                        path: /product-stack/tyk-gateway/middleware/do-not-track-tyk-classic
-                        category: Page
-                        show: True
           - title: "API documentation"
             category: Directory
             show: True

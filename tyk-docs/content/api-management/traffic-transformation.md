@@ -52,6 +52,12 @@ aliases:
   - /product-stack/tyk-gateway/references/go-templates
   - /advanced-configuration/transform-traffic/jq-transformations
   - /context-variables
+  - /basic-config-and-security/control-limit-traffic/request-size-limits
+  - /product-stack/tyk-gateway/middleware/request-size-limit-tyk-oas
+  - /product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic
+  - /product-stack/tyk-gateway/middleware/do-not-track-middleware
+  - /product-stack/tyk-gateway/middleware/do-not-track-tyk-oas
+  - /product-stack/tyk-gateway/middleware/do-not-track-tyk-classic
 
   - /concepts/context-variables
   - /getting-started/key-concepts/context-variables
@@ -66,6 +72,9 @@ aliases:
   - /advanced-configuration/transform-traffic/request-body
   - /transform-traffic/endpoint-designer
 ---
+overview
+using-tyk-oas
+using-classic
 
 ## Overview
 
@@ -167,7 +176,7 @@ The [Response Header Transform]({{< ref "advanced-configuration/transform-traffi
 
 ## Allow List
 
-### Overview
+### Overview {#allow-list-overview}
 
 The Allow List middleware is a feature designed to restrict access to only specific API endpoints. It rejects requests to endpoints not specifically "allowed", returning `HTTP 403 Forbidden`. This enhances the security of the API by preventing unauthorized access to endpoints that are not explicitly permitted.
 
@@ -222,7 +231,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
  -->
 
 
-### Using Tyk OAS
+### Using Tyk OAS {#allow-list-using-tyk-oas}
 
 The [allow list]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}}) is a feature designed to restrict access to only specific API endpoints. It rejects requests to endpoints not specifically "allowed", returning `HTTP 403 Forbidden`. This enhances the security of the API by preventing unauthorized access to endpoints that are not explicitly permitted.
 
@@ -349,7 +358,7 @@ Adding the allow list to your API endpoints is easy is easy when using the API D
 
     Select **SAVE API** to apply the changes to your API.
 
-### Using Classic
+### Using Classic {#allow-list-using-classic}
 
 The [allow list]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}}) is a feature designed to restrict access to only specific API endpoints. It rejects requests to endpoints not specifically "allowed", returning `HTTP 403 Forbidden`. This enhances the security of the API by preventing unauthorized access to endpoints that are not explicitly permitted.
 
@@ -485,7 +494,7 @@ In this example the allow list middleware has been configured for `HTTP GET` req
 
 ## Block List
 
-### Overview
+### Overview {#block-list-overview}
 
 The Block List middleware is a feature designed to block access to specific API endpoints. Tyk Gateway rejects all requests made to endpoints with the block list enabled, returning `HTTP 403 Forbidden`.
 
@@ -530,7 +539,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
   - The Block List can be configured at the per-endpoint level within the API Definition and is supported by the API Designer within the Tyk Dashboard. 
  -->
 
-### Using Tyk OAS
+### Using Tyk OAS {#block-list-using-tyk-oas}
 
 The [block list]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware" >}}) is a feature designed to block access to specific API endpoints. Tyk Gateway rejects all requests made to endpoints with the block list enabled, returning `HTTP 403 Forbidden`. 
 
@@ -654,7 +663,7 @@ Adding the block list to your API endpoints is easy is easy when using the API D
 
     Select **SAVE API** to apply the changes to your API.
 
-### Using Classic
+### Using Classic {#block-list-using-classic}
 
 The [block list]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware" >}}) is a feature designed to block access to specific API endpoints. Tyk Gateway rejects all requests made to endpoints with the block list enabled, returning `HTTP 403 Forbidden`. 
 
@@ -790,9 +799,270 @@ Note also that the endpoint path has not been terminated with `$`. Requests to, 
 
 
 
+## Do Not Track
+
+### Overview {#do-not-track-overview}
+
+When [transaction logging]({{< ref "api-management/logs-metrics#logging-api-traffic" >}}) is enabled in the Tyk Gateway, a transaction record will be generated for every request made to an API endpoint deployed on the gateway. You can suppress the generation of transaction records for any API by enabling the do-not-track middleware. This provides granular control over request tracking.
+
+#### Use Cases
+
+##### Compliance and privacy
+
+Disabling tracking on endpoints that handle personal or sensitive information is crucial for adhering to privacy laws such as GDPR or HIPAA. This action prevents the storage and logging of sensitive data, ensuring compliance and safeguarding user privacy.
+
+##### Optimizing performance
+
+For endpoints experiencing high traffic, disabling tracking can mitigate the impact on the analytics processing pipeline and storage systems. Disabling tracking on endpoints used primarily for health checks or load balancing can prevent the analytics data from being cluttered with information that offers little insight. These optimizations help to maintain system responsiveness and efficiency by reducing unnecessary data load and help to ensure that analytics efforts are concentrated on more meaningful data. 
+
+##### Cost Management
+
+In scenarios where analytics data storage and processing incur significant costs, particularly in cloud-based deployments, disabling tracking for non-essential endpoints can be a cost-effective strategy. This approach allows for focusing resources on capturing valuable data from critical endpoints.
+
+#### Working
+
+When transaction logging is enabled, the gateway will automatically generate a transaction record for every request made to deployed APIs. 
+
+You can enable the do-not-track middleware on whichever endpoints for which you do not want to generate logs. This will instruct the Gateway not to generate any transaction records for those endpoints or APIs. As no record of these transactions will be generated by the Gateway, there will be nothing created in Redis and hence nothing for the pumps to transfer to the persistent storage and these endpoints will not show traffic in the Dashboard's analytics screens.
+
+{{< note success >}}
+**Note**  
+
+When working with Tyk Classic APIs, you can disable tracking at the API or endpoint-level. When working with Tyk OAS APIs, you can currently disable tracking only at the more granular endpoint-level.
+{{< /note >}}
+
+<hr>
+
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the do-not-track middleware [here]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-oas" >}}).
+
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the do-not-track middleware [here]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-classic" >}}).
+
+<!-- proposed "summary box" to be shown graphically on each middleware page
+ ## Do-Not-Track middleware summary
+  - The Do-Not-Track middleware is an optional stage in Tyk's API Request processing chain sitting between the [TBC]() and [TBC]() middleware.
+  - The Do-Not-Track middleware can be configured at the per-endpoint level within the API Definition and is supported by the API Designer within the Tyk Dashboard. 
+ -->
+
+
+### Using Tyk OAS {#do-not-track-using-tyk-oas}
+
+The [Do-Not-Track]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-middleware" >}}) middleware provides the facility to disable generation of transaction records (which are used to track requests to your APIs). When working with Tyk OAS APIs, you can currently disable tracking only at the endpoint-level.
+
+When working with Tyk OAS APIs the middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}) either manually within the `.json` file or from the API Designer in the Tyk Dashboard.
+
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-classic" >}}) page.
+
+#### API Definition
+
+The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. The `path` can contain wildcards in the form of any string bracketed by curly braces, for example `{user_id}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
+
+The do-not-track middleware (`doNotTrackEndpoint`) can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId` (as configured in the `paths` section of your OpenAPI Document).
+
+The `doNotTrackEndpoint` object has the following configuration:
+- `enabled`: enable the middleware for the endpoint
+
+For example:
+```json {hl_lines=["39-41"],linenos=true, linenostart=1}
+{
+    "components": {},
+    "info": {
+        "title": "example-do-not-track",
+        "version": "1.0.0"
+    },
+    "openapi": "3.0.3",
+    "paths": {
+        "/anything": {
+            "get": {
+                "operationId": "anythingget",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        }
+    },
+    "x-tyk-api-gateway": {
+        "info": {
+            "name": "example-do-not-track",
+            "state": {
+                "active": true
+            }
+        },
+        "upstream": {
+            "url": "http://httpbin.org/"
+        },
+        "server": {
+            "listenPath": {
+                "value": "/example-do-not-track/",
+                "strip": true
+            }
+        },
+        "middleware": {
+            "operations": {
+                "anythingget": {
+                    "doNotTrackEndpoint": {
+                        "enabled": true
+                    }               
+                }
+            }
+        }
+    }
+}
+```
+
+In this example the do-not-track middleware has been configured for requests to the `GET /anything` endpoint. Any such calls will not generate transaction records from the Gateway and so will not appear in the analytics.
+
+The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the do-not-track middleware.
+
+#### API Designer
+
+Adding do-not-track to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
+
+1. **Add an endpoint**
+
+    From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
+
+    {{< img src="/img/dashboard/api-designer/tyk-oas-no-endpoints.png" alt="Tyk OAS API Designer showing no endpoints created" >}}
+
+    {{< img src="/img/dashboard/api-designer/tyk-oas-add-endpoint.png" alt="Adding an endpoint to an API using the Tyk OAS API Designer" >}}
+
+    {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
+
+2. **Select the Do Not Track Endpoint middleware**
+
+    Select **ADD MIDDLEWARE** and choose the **Do Not Track Endpoint** middleware from the *Add Middleware* screen.
+
+    {{< img src="/img/dashboard/api-designer/tyk-oas-do-not-track.png" alt="Adding the Do Not Track middleware" >}}
+
+3. **Save the API**
+
+    Select **SAVE API** to apply the changes to your API.
+
+### Using Classic {#do-not-track-using-classic}
+
+The [Do-Not-Track]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-middleware" >}}) middleware provides the facility to disable generation of transaction records (which are used to track requests) at the API or endpoint level.
+
+When working with Tyk Classic APIs the middleware is configured in the Tyk Classic API Definition either manually within the `.json` file or from the API Designer in the Tyk Dashboard.
+
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-oas" >}}) page.
+
+If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
+
+#### API Definition
+
+You can prevent tracking for all endpoints of an API by configuring the `do_not_track` field in the root of your API definition.
+- `true`: no transaction logs will be generated for requests to the API
+- `false`: transaction logs will be generated for requests to the API
+ 
+If you want to be more granular and disable tracking only for selected endpoints, then you must add a new `do_not_track_endpoints` object to the `extended_paths` section of your API definition.
+
+The `do_not_track_endpoints` object has the following configuration:
+- `path`: the endpoint path
+- `method`: the endpoint HTTP method
+
+The `path` can contain wildcards in the form of any string bracketed by curly braces, for example `{user_id}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
+
+For example:
+```json  {linenos=true, linenostart=1}
+{
+    "extended_paths": {
+        "do_not_track_endpoints": [
+            {
+                "disabled": false,
+                "path": "/anything",
+                "method": "GET"
+            }
+        ]
+    }
+}
+```
+
+In this example the do-not-track middleware has been configured for requests to the `GET /anything` endpoint. Any such calls will not generate transaction records from the Gateway and so will not appear in the analytics.
+
+#### API Designer
+
+You can use the API Designer in the Tyk Dashboard to configure the per-endpoint Do-Not-Track middleware for your Tyk Classic API by following these steps. Note that the API-level middleware can only be configured from the Raw Definition screen.
+
+1. **Add an endpoint for the path and select the plugin**
+
+    From the **Endpoint Designer** add an endpoint that matches the path for which you do not want to generate records. Select the **Do not track endpoint** plugin.
+
+    {{< img src="img/gateway/middleware/classic_do_not_track.png" alt="Select the middleware" >}}
+
+2. **Save the API**
+
+    Use the *save* or *create* buttons to save the changes and activate the middleware.
+
+#### Tyk Operator
+
+The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic).
+
+It is possible to prevent tracking for all endpoints of an API by configuring the `do_not_track` field in the root of your API definition as follows:
+
+- `true`: no transaction logs will be generated for requests to the API
+- `false`: transaction logs will be generated for requests to the API
+
+```yaml {linenos=true, linenostart=1, hl_lines=["10"]}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-do-not-track
+spec:
+  name: httpbin-do-not-track 
+  use_keyless: true
+  protocol: http
+  active: true
+  do_not_track: true
+  proxy:
+    target_url: http://example.com
+    listen_path: /example
+    strip_listen_path: true
+```
+
+If you want to disable tracking only for selected endpoints, then the process is similar to that defined in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic), i.e. you must add a new `do_not_track_endpoints` list to the extended_paths section of your API definition.
+This should contain a list of objects representing each endpoint `path` and `method` that should have tracking disabled:
+
+```yaml {linenos=true, linenostart=1, hl_lines=["31-33"]}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-endpoint-tracking
+spec:
+  name: httpbin - Endpoint Track
+  use_keyless: true
+  protocol: http
+  active: true
+  do_not_track: false
+  proxy:
+    target_url: http://httpbin.org/
+    listen_path: /httpbin
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        paths:
+          black_list: []
+          ignored: []
+          white_list: []
+        extended_paths:
+          track_endpoints:
+            - method: GET
+              path: "/get"
+          do_not_track_endpoints:
+            - method: GET
+              path: "/headers"
+```
+
+In the example above we can see that the `do_not_track_endpoints` list is configured so that requests to `GET /headers` will have tracking disabled.
+
 ## Ignore Authentication
 
-### Overview
+### Overview {#ignore-authentication-overview}
 
 The Ignore Authentication middleware instructs Tyk Gateway to skip the authentication step for calls to an endpoint, even if authentication is enabled for the API.
 
@@ -838,7 +1108,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
  -->
 
 
-### Using Tyk OAS
+### Using Tyk OAS {#ignore-authentication-using-tyk-oas}
 
 The [Ignore Authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}) middleware instructs Tyk Gateway to skip the authentication step for calls to an endpoint, even if authentication is enabled for the API.
 
@@ -973,7 +1243,7 @@ Adding and configuring the Ignore Authentication middleware to your API endpoint
 
     Select **SAVE API** to apply the changes to your API.
 
-### Using Classic
+### Using Classic {#ignore-authentication-using-classic}
 
 The [Ignore Authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}) middleware instructs Tyk Gateway to skip the authentication step for calls to an endpoint, even if authentication is enabled for the API.
 
@@ -1092,7 +1362,7 @@ spec:
 
 ## Internal Endpoint
 
-### Overview
+### Overview {#internal-endpoint-overview}
 
 The Internal Endpoint middleware instructs Tyk Gateway to ignore external requests to the endpoint (which is a combination of HTTP method and path). Internal requests from other APIs will be processed.
 
@@ -1151,7 +1421,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 
 
-### Using Tyk OAS
+### Using Tyk OAS {#internal-endpoint-using-tyk-oas}
 
 The [Internal Endpoint]({{< ref "product-stack/tyk-gateway/middleware/internal-endpoint-middleware" >}}) middleware instructs Tyk Gateway not to process external requests to the endpoint (which is a combination of HTTP method and path). Internal requests from other APIs will be processed.
 
@@ -1269,7 +1539,7 @@ Adding the Internal Endpoint middleware to your API endpoints is easy when using
 
     Select **SAVE API** to apply the changes to your API.
 
-### Using Classic
+### Using Classic {#internal-endpoint-using-classic}
 
 The [Internal Endpoint]({{< ref "product-stack/tyk-gateway/middleware/internal-endpoint-middleware" >}}) middleware instructs Tyk Gateway not to process external requests to the endpoint (which is a combination of HTTP method and path). Internal requests from other APIs will be processed.
 
@@ -1359,7 +1629,7 @@ spec:
 
 ## Request Method 
 
-### Overview
+### Overview {#request-method-overview}
 
 Tyk's Request Method Transform middleware allows you to modify the HTTP method of incoming requests to an API endpoint prior to the request being proxied to the upstream service. You might use this to map `POST` requests from clients to upstream services that support only `PUT` and `DELETE` operations, providing a modern interface to your users. It is a simple middleware that changes only the method and not the payload or headers. You can, however, combine this with the [Request Header Transform]({{< ref "transform-traffic/request-headers" >}}) and [Request Body Tranform]({{< ref "transform-traffic/request-body" >}}) to apply more complex transformation to requests.
 
@@ -1397,7 +1667,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
   - The Request Method Transform is configured at the per-endpoint level within the API Definition and is supported by the API Designer within the Tyk Dashboard. 
  -->
 
-### Using Tyk OAS
+### Using Tyk OAS {#request-method-using-tyk-oas}
 
 Tyk's [request method transform]({{< ref "advanced-configuration/transform-traffic/request-method-transform" >}}) middleware is configured at the endpoint level, where it modifies the HTTP method used in the request to a configured value.
 
@@ -1500,7 +1770,7 @@ Adding the transform to your API endpoints is easy when using the API Designer i
 
     Select **SAVE API** to apply the changes to your API.
 
-### Using Classic
+### Using Classic {#request-method-using-classic}
 
 Tyk's [request method transform]({{< ref "advanced-configuration/transform-traffic/request-method-transform" >}}) middleware is configured at the endpoint level, where it modifies the HTTP method used in the request to a configured value.
 
@@ -1600,7 +1870,7 @@ In this example the Request Method Transform middleware has been configured for 
 
 ## Request Body 
 
-### Overview
+### Overview {#request-body-overview}
 
 Tyk enables you to modify the payload of API requests before they are proxied to the upstream. This makes it easy to transform between payload data formats or to expose legacy APIs using newer schema models without having to change any client implementations. This middleware is only applicable to HTTP methods that can support a request body (i.e. PUT, POST or PATCH).
 
@@ -1683,7 +1953,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
   - Request Body Transform can access both [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}) and [request context variables]({{< ref "context-variables" >}}).
  -->
 
-### Using Tyk OAS
+### Using Tyk OAS {#request-body-using-tyk-oas}
 
 The [request body transform]({{< ref "transform-traffic/request-body" >}}) middleware provides a way to modify the payload of API requests before they are proxied to the upstream.
 
@@ -1842,7 +2112,7 @@ Adding Request Body Transformation to your API endpoints is easy when using the 
 
     Select **SAVE API** to apply the changes to your API.
 
-### Using Classic
+### Using Classic {#request-body-using-classic}
 
 The [request body transform]({{< ref "transform-traffic/request-body" >}}) middleware provides a way to modify the payload of API requests before they are proxied to the upstream.
 
@@ -1996,7 +2266,7 @@ spec:
 
 ## Request Headers 
 
-### Overview
+### Overview {#request-headers-overview}
 
 Tyk allows you to modify the headers of incoming requests to your API endpoints before they are passed to your upstream service.
 
@@ -2059,7 +2329,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
   - The Request Header Transform can be configured at the per-endpoint or per-API level within the API Definition and is supported by the API Designer within the Tyk Dashboard. 
  -->
 
-### Using Tyk OAS
+### Using Tyk OAS {#request-headers-using-tyk-oas}
 
 Tyk's [request header transform]({{< ref "transform-traffic/request-headers" >}}) middleware enables you to append or delete headers on requests to your API endpoints before they are passed to your upstream service.
 
@@ -2077,7 +2347,7 @@ When working with Tyk OAS APIs the transformation is configured in the [Tyk OAS 
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/request-header-tyk-classic" >}}) page.
 
-### CAPI Definition
+#### API Definition
 
 The API-level and endpoint-level request header transforms are configured in different sections of the API definition, though have a common configuration.
 
@@ -2246,7 +2516,7 @@ If the API-level transform in the previous [example]({{< ref "product-stack/tyk-
 and to remove one:
  - `Auth_Id` 
 
-### CAPI Designer
+#### API Designer
 
 Adding and configuring the transforms to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
@@ -2290,7 +2560,7 @@ Then select **NEW HEADER** as appropriate to add or remove a header from API req
 
     Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes.
 
-### Using Classic
+### Using Classic {#request-headers-using-classic}
 
 Tyk's [request header transform]({{< ref "transform-traffic/request-headers" >}}) middleware enables you to append or delete headers on requests to your API endpoints before they are passed to your upstream service.
 
@@ -2540,10 +2810,356 @@ spec:
               delete_headers: []
 ```
 
+## Request Size Limits
+
+### Overview {#request-size-limits-overview}
+
+With Tyk, you can apply limits to the size of requests made to your HTTP APIs. You might use this feature to protect your Tyk Gateway or upstream services from excessive memory usage or brute force attacks.
+
+Tyk Gateway offers a flexible tiered system of limiting request sizes ranging from globally applied limits across all APIs deployed on the gateway down to specific size limits for individual API endpoints.
+
+#### Use Case
+
+##### Protecting the entire Tyk Gateway from DDoS attacks
+You can configure a system-wide request size limit that protects all APIs managed by the Tyk Gateway from being overwhelmed by excessively large requests, which could be part of a DDoS attack, ensuring the stability and availability of the gateway.
+
+##### Limiting request sizes for a lightweight microservice
+You might expose an API for a microservice that is designed to handle lightweight, fast transactions and is not equipped to process large payloads. You can set an API-level size limit that ensures the microservice behind this API is not forced to handle requests larger than it is designed for, maintaining its performance and efficiency.
+
+##### Controlling the size of GraphQL queries
+A GraphQL API endpoint might be susceptible to complex queries that can lead to performance issues. By setting a request size limit for the GraphQL endpoint, you ensure that overly complex queries are blocked, protecting the backend services from potential abuse and ensuring a smooth operation.
+
+##### Restricting upload size on a file upload endpoint
+An API endpoint is designed to accept file uploads, but to prevent abuse, you want to limit the size of uploads to 1MB. To enforce this, you can enable the Request Size Limit middleware for this endpoint, configuring a size limit of 1MB. This prevents users from uploading excessively large files, protecting your storage and bandwidth resources.
+
+#### Working
+
+Tyk compares each incoming API request with the configured maximum size for each level of granularity in order of precedence and will reject any request that exceeds the size you have set at any level of granularity, returning an HTTP 4xx error as detailed below.
+
+All size limits are stated in bytes and are applied only to the request _body_ (or payload), excluding the headers.
+
+| Precedence | Granularity      | Error returned on failure      |
+|------------|------------------|--------------------------------|
+| 1st        | System (gateway) | `413 Request Entity Too Large` |
+| 2nd        | API              | `400 Request is too large`     |
+| 3rd        | Endpoint         | `400 Request is too large`     |
+
+{{< note success >}}
+**Note**
+
+The system level request size limit is the only size limit applied to [TCP]({{< ref "api-management/non-http-protocols#tcp-proxy" >}}) and [Websocket]({{< ref "api-management/non-http-protocols#websockets" >}}) connections.
+{{< /note >}}
+
+<hr>
+
+##### Applying a system level size limit
+You can configure a request size limit (in bytes) that will be applied to all APIs on your Tyk Gateway by adding `max_request_body_size` to the `http_server_options` [element]({{< ref "tyk-oss-gateway/configuration#http_server_optionsmax_request_body_size" >}}) of your `tyk.conf` Gateway configuration. For example:
+```yaml
+"max_request_body_size": 5000
+```
+A value of zero (default) means that no maximum is set and the system-wide size limit check will not be performed.
+
+This limit will be evaluated before API-level or endpoint-level configurations. If this test fails, the Tyk Gateway will return an error `HTTP 413 Request Entity Too Large`.
+
+{{< note success >}}
+**Note**  
+
+Tyk Cloud Classic enforces a strict request size limit of 1MB on all inbound requests via our cloud architecture. This limit does not apply to Tyk Cloud users.
+{{< /note >}}
+
+<hr>
+
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure an API or endpoint-level request size limit [here]({{< ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-oas" >}}).
+
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure an API or endpoint-level request size limit [here]({{< ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic" >}}).
+
+<!-- proposed "summary box" to be shown graphically on each middleware page
+ ## Request Size Limit middleware summary
+  - The Request Size Limit middleware is an optional stage in Tyk's API Request processing chain, sitting between the [TBC]() and [TBC]() middleware.
+  - The Request Size Limit middleware can be configured at the system level within the Gateway config, or per-API or per-endpoint level within the API Definition and is supported by the API Designer within the Tyk Dashboard. 
+ -->
+
+
+### Using Tyk OAS {#request-size-limits-using-tyk-oas}
+
+The [request size limit]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits" >}}) middleware enables you to apply limits to the size of requests made to your HTTP APIs. You might use this feature to protect your Tyk Gateway or upstream services from excessive memory usage or brute force attacks.
+
+The middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
+
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic" >}}) page.
+
+#### API Definition
+
+There are three different levels of granularity that can be used when configuring a request size limit.
+- [system-wide]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits#applying-a-system-level-size-limit" >}}): affecting all APIs deployed on the gateway
+- [API-level]({{< ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-oas#applying-a-size-limit-for-a-specific-api" >}}): affecting all endpoints for an API
+- [endpoint-level]({{< ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-oas#applying-a-size-limit-for-a-specific-endpoint" >}}): affecting a single API endpoint
+
+##### Applying a size limit for a specific API
+
+The API-level size limit has not yet been implemented for Tyk OAS APIs.
+
+You can work around this by implementing a combination of endpoint-level size limits and [allow]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) or [block]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-oas#configuring-the-block-list-in-the-api-designer" >}}) lists.
+
+##### Applying a size limit for a specific endpoint
+
+The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. Endpoint `paths` entries (and the associated `operationId`) can contain wildcards in the form of any string bracketed by curly braces, for example `/status/{code}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
+
+The virtual endpoint middleware (`requestSizeLimit`) can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId` (as configured in the `paths` section of your OpenAPI Document).
+
+The `requestSizeLimit` object has the following configuration:
+- `enabled`: enable the middleware for the endpoint
+- `value`: the maximum size permitted for a request to the endpoint (in bytes) 
+
+For example:
+```json {hl_lines=["39-44"],linenos=true, linenostart=1}
+{
+    "components": {},
+    "info": {
+        "title": "example-request-size-limit",
+        "version": "1.0.0"
+    },
+    "openapi": "3.0.3",
+    "paths": {
+        "/anything": {
+            "post": {
+                "operationId": "anythingpost",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        }
+    },
+    "x-tyk-api-gateway": {
+        "info": {
+            "name": "example-request-size-limit",
+            "state": {
+                "active": true,
+                "internal": false
+            }
+        },
+        "upstream": {
+            "url": "http://httpbin.org/"
+        },          
+        "server": {
+            "listenPath": {
+                "value": "/example-request-size-limit/",                
+                "strip": true
+            }
+        },      
+        "middleware": {
+            "operations": {
+                "anythingpost": {
+                    "requestSizeLimit": {
+                        "enabled": true,
+                        "value": 100
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+In this example the endpoint-level Request Size Limit middleware has been configured for HTTP `POST` requests to the `/anything` endpoint. For any call made to this endpoint, Tyk will check the size of the payload (Request body) and, if it is larger than 100 bytes, will reject the request, returning `HTTP 400 Request is too large`.
+
+The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the virtual endpoint middleware.
+
+#### API Designer
+
+Adding the Request Size Limit middleware to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
+
+1. **Add an endpoint for the path**
+
+    From the **API Designer** add an endpoint that matches the path for you want to limit the size of requests.
+
+    {{< img src="/img/dashboard/api-designer/tyk-oas-no-endpoints.png" alt="Tyk OAS API Designer showing no endpoints created" >}}
+
+    {{< img src="/img/dashboard/api-designer/tyk-oas-add-endpoint.png" alt="Adding an endpoint to an API using the Tyk OAS API Designer" >}}
+
+    {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
+
+2. **Select the Request Size Limit middleware**
+
+    Select **ADD MIDDLEWARE** and choose the **Request Size Limit** middleware from the *Add Middleware* screen.
+
+    {{< img src="/img/dashboard/api-designer/tyk-oas-request-size-limit.png" alt="Adding the Request Size Limit middleware" >}}
+
+3. **Configure the middleware**
+
+    Now you can set the **size limit** that the middleware should enforce - remember that this is given in bytes.
+
+    {{< img src="/img/dashboard/api-designer/tyk-oas-request-size-limit-config.png" alt="Setting the size limit that should be enforced" >}}
+
+4. **Save the API**
+
+    Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes to your API.
+
+### Using Classic {#request-size-limits-using-classic}
+
+The [request size limit]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits" >}}) middleware enables you to apply limits to the size of requests made to your HTTP APIs. You might use this feature to protect your Tyk Gateway or upstream services from excessive memory usage or brute force attacks.
+
+This middleware is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
+
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-oas" >}}) page.
+
+If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
+
+#### API Definition
+
+There are three different levels of granularity that can be used when configuring a request size limit.
+- [system-wide]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits#applying-a-system-level-size-limit" >}}): affecting all APIs deployed on the gateway
+- [API-level]({{< ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic#tyk-classic-api" >}}): affecting all endpoints for an API
+- [endpoint-level]({{< ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic#tyk-classic-endpoint" >}}): affecting a single API endpoint
+
+##### Applying a size limit for a specific API {#tyk-classic-api}
+
+You can configure a request size limit (in bytes) to an API by configuring the `global_size_limit` within the `version` element of the API Definition, for example:
+```
+"global_size_limit": 2500 
+```
+
+A value of zero (default) means that no maximum is set and the API-level size limit check will not be performed.
+
+This limit is applied for all endpoints within an API. It is evaluated after the Gateway-wide size limit and before any endpoint-specific size limit. If this test fails, the Tyk Gateway will report `HTTP 400 Request is too large`.
+
+##### Applying a size limit for a specific endpoint {#tyk-classic-endpoint}
+
+The most granular control over request sizes is provided by the endpoint-level configuration. This limit will be applied after any Gateway-level or API-level size limits and is given in bytes. If this test fails, the Tyk Gateway will report `HTTP 400 Request is too large`.
+
+To enable the middleware you must add a new `size_limits` object to the `extended_paths` section of your API definition.
+
+The `size_limits` object has the following configuration:
+- `path`: the endpoint path
+- `method`: the endpoint HTTP method
+- `size_limit`: the maximum size permitted for a request to the endpoint (in bytes)
+
+For example:
+```.json  {linenos=true, linenostart=1}
+{
+    "extended_paths": {
+        "size_limits": [
+            {
+                "disabled": false,
+                "path": "/anything",
+                "method": "POST",
+                "size_limit": 100
+            }
+        ]
+    }
+}
+```
+
+In this example the endpoint-level Request Size Limit middleware has been configured for HTTP `POST` requests to the `/anything` endpoint. For any call made to this endpoint, Tyk will check the size of the payload (Request body) and, if it is larger than 100 bytes, will reject the request, returning `HTTP 400 Request is too large`.
+
+#### API Designer
+
+You can use the API Designer in the Tyk Dashboard to configure a request size limit for your Tyk Classic API by following these steps.
+
+1. **Add an endpoint for the path and select the plugin**
+
+    From the **Endpoint Designer** add an endpoint that matches the path for which you want to limit the size of requests. Select the **Request size limit** plugin.
+
+    {{< img src="/img/2.10/request_size_limit.png" alt="Select middleware" >}}
+
+2. **Configure the middleware**
+
+    Set the request size limit, in bytes.
+        
+    {{< img src="/img/2.10/request_size_settings.png" alt="Configure limit" >}}
+
+3. **Save the API**
+
+    Use the *save* or *create* buttons to save the changes and activate the middleware.
+
+    {{< note success >}}
+**Note**  
+
+The Tyk Classic API Designer does not provide an option to configure `global_size_limit`, but you can do this from the Raw Definition editor.
+    {{< /note >}}
+
+#### Tyk Operator
+
+The process for configuring a request size limit is similar to that defined in section [configuring the middleware in the Tyk Classic API Definition](#tyk-classic). Tyk Operator allows you to configure a request size limit for [all endpoints of an API](#tyk-operator-api) or for a [specific API endpoint](#tyk-operator-endpoint).
+
+##### Applying a size limit for a specific API {#tyk-operator-api}
+
+<!-- Need an example -->
+The process for configuring the request size_limits middleware for a specific API is similar to that explained in [applying a size limit for a specific API](#tyk-classic-api).
+
+You can configure a request size limit (in bytes) for all endpoints within an API by configuring the `global_size_limit` within the `version` element of the API Definition, for example:
+
+```yaml {linenos=true, linenostart=1, hl_lines=["19"]}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-global-limit
+spec:
+  name: httpbin-global-limit
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-global-limit
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        global_size_limit: 5
+        name: Default
+```
+
+The example API Definition above configures an API to listen on path `/httpbin-global-limit` and forwards requests upstream to http://httpbin.org.
+
+In this example the request size limit is set to 5 bytes. If the limit is exceeded then the Tyk Gateway will report `HTTP 400 Request is too large`.
+
+##### Applying a size limit for a specific endpoint {#tyk-operator-endpoint}
+
+The process for configuring the request size_limits middleware for a specific endpoint is similar to that explained in [applying a size limit for a specific endpoint](#tyk-classic-endpoint).
+
+To configure the request size_limits middleware you must add a new `size_limits` object to the `extended_paths` section of your API definition, for example:
+
+```yaml {linenos=true, linenostart=1, hl_lines=["22-25"]}
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin-limit
+spec:
+  name: httpbin-limit
+  use_keyless: true
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin-limit
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+        use_extended_paths: true
+        extended_paths:
+          size_limits:
+            - method: POST
+              path: /post
+              size_limit: 5
+```
+
+The example API Definition above configures an API to listen on path `/httpbin-limit` and forwards requests upstream to http://httpbin.org.
+
+In this example the endpoint-level Request Size Limit middleware has been configured for `HTTP POST` requests to the `/post` endpoint. For any call made to this endpoint, Tyk will check the size of the payload (Request body) and, if it is larger than 5 bytes, will reject the request, returning `HTTP 400 Request is too large`.
+
 
 ## Response Body
 
-### Overview
+### Overview {#response-body-overview}
 
 Tyk enables you to modify the payload of API responses received from your upstream services before they are passed on to the client that originated the request. This makes it easy to transform between payload data formats or to expose legacy APIs using newer schema models without having to change any client implementations. This middleware is only applicable to endpoints that return a body with the response.
 
@@ -2627,7 +3243,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
  -->
 
 
-### Using Tyk OAS
+### Using Tyk OAS {#response-body-using-tyk-oas}
 
 The [response body transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) middleware provides a way to modify the payload of API responses before they are returned to the client.
 
@@ -2789,7 +3405,7 @@ Adding Response Body Transformation to your API endpoints is easy when using the
 
     Select **SAVE API** to apply the changes to your API.
 
-### Using Classic
+### Using Classic {#response-body-using-classic}
 
 The [response body transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) middleware provides a way to modify the payload of API responses before they are returned to the client.
 
@@ -3025,7 +3641,7 @@ spec:
 
 ## Response Headers
 
-### Overview
+### Overview {#response-headers-overview}
 
 Tyk enables you to modify header information when a response is proxied back to the client. This can be very useful in cases where you have an upstream API that potentially exposes sensitive headers that you need to remove.
 
@@ -3086,7 +3702,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
   - The Response Header Transform can be configured at the per-endpoint or per-API level within the API Definition and is supported by the API Designer within the Tyk Dashboard. 
  -->
 
-### Using Tyk OAS
+### Using Tyk OAS {#response-headers-using-tyk-oas}
 
 Tyk's [response header transform]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) middleware enables you to append or delete headers on responses received from the upstream service before sending them to the client.
 
@@ -3308,7 +3924,7 @@ Then select **NEW HEADER** as appropriate to add or remove a header from API res
 
     Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes.
 
-### Using Classic
+### Using Classic {#response-headers-using-classic}
 
 Tyk's [response header transform]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) middleware enables you to append or delete headers on responses received from the upstream service before sending them to the client.
 
@@ -3689,7 +4305,7 @@ spec:
 
 ## Request Validation
 
-### Overview
+### Overview {#request-validation-overview}
 
 Requests to your upstream services should meet the contract that you have defined for those APIs. Checking the content and format of incoming requests before they are passed to the upstream APIs can avoid unexpected errors and provide additional security to those services. Tyk's request validation middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.
 
@@ -3732,7 +4348,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
  -->
  
 
-### Using Tyk OAS
+### Using Tyk OAS {#request-validation-using-tyk-oas}
 
 The [request validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-middleware" >}}) middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints. If the incoming request fails validation, the Tyk Gateway will reject the request with an `HTTP 422 Unprocessable Entity` response. Tyk can be [configured](#configuring-the-request-validation-middleware) to return a different HTTP status code if required. 
 
@@ -3926,7 +4542,7 @@ Adding and configuring Request Validation for your API endpoints is easy when us
     Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes.
 
 
-### Using Classic
+### Using Classic {#request-validation-using-classic}
 
 The [request validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-middleware" >}}) middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.
 
@@ -4061,7 +4677,7 @@ spec:
 
 ## Mock Response
 
-### Overview
+### Overview {#mock-response-overview}
 
 A mock response is a simulated API response that can be returned by the API gateway without actually sending the request to the backend API service. Mock responses are an integral feature for API development, enabling developers to emulate API behavior without the need for upstream execution.
 
@@ -4276,7 +4892,7 @@ Content-Type: application/json
 Notice that in the mock response above, `firstname` has the value `string` since there was no example for it in the OpenAP document so Tyk used the word `string` as the value for this field.
 
 
-### Using Tyk OAS
+### Using Tyk OAS {#mock-response-using-tyk-oas}
 
 This tutorial is for Tyk OAS API definition users. If you're using the legacy Tyk Classic APIs, please refer to the [Tyk Classic Mock Response tutorial]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-classic" >}}).
 
@@ -4702,7 +5318,7 @@ Adding a mock response to your API endpoints is easy when using the API Designer
 Modifying the automatically configured Mock Response middleware will update the OpenAPI description part of your Tyk OAS API definition, as the detail of the mock response is not set in the `x-tyk-api-gateway` extension but is automatically generated in response to the particular request received to the endpoint.
 {{< /note >}}
 
-### Using Classic
+### Using Classic {#mock-response-using-classic}
 
 The [Mock Response]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}) middleware allows you to configure Tyk to return a response for an API endpoint without requiring an upstream service. This can be useful when creating a new API or making a development API available to an external team.
 
@@ -4855,7 +5471,7 @@ spec:
 
 ## URL Rewriting
 
-### Overview
+### Overview {#url-rewriting-overview}
 
 URL rewriting in Tyk is a powerful feature that enables the modification of incoming API request paths to match the expected endpoint format of your backend services. This process is accomplished by using regular expressions (regexes) to identify and capture specific segments of the request URL, which can then be rearranged or augmented to construct the desired endpoint URL.
 
@@ -5024,7 +5640,7 @@ For example, say you have a key named `userName` with value `jo` in my Consul KV
 This limitation does not apply to KV accessed from the other [supported KV stores]({{< ref "tyk-self-managed#store-configuration-with-key-value-store" >}}) (environment variable or Gateway `secrets`).
 
 
-### Using Tyk OAS
+### Using Tyk OAS {#url-rewriting-using-tyk-oas}
 
 Tyk's [URL rewriter]({{< ref "transform-traffic/url-rewriting" >}}) uses the concepts of triggers and rules to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk).
 
@@ -5326,7 +5942,7 @@ Adding and configuring the URL rewrite feature to your API endpoints is easy whe
 
     Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes.
 
-### Using Classic
+### Using Classic {#url-rewriting-using-classic}
 
 Tyk's [URL rewriter]({{< ref "transform-traffic/url-rewriting" >}}) uses the concepts of triggers and rules to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk).
 
@@ -5585,7 +6201,7 @@ For further examples check out the [internal looping]({{< ref "api-management/au
 
 ## Virtual Endpoints
 
-### Overview
+### Overview {#virtual-endpoints-overview}
 
 Tyk's Virtual Endpoint is a programmable middleware component that is invoked towards the end of the request processing chain. It can be enabled at the per-endpoint level and can perform complex interactions with your upstream service(s) that cannot be handled by one of the other middleware components.
 
@@ -5652,7 +6268,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
  -->
 
 
-### Using Tyk OAS
+### Using Tyk OAS {#virtual-endpoints-using-tyk-oas}
 
 The [virtual endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) middleware provides a serverless compute function that allows for the execution of custom logic directly within the gateway itself, without the need to proxy the request to an upstream service. This functionality is particularly useful for a variety of use cases, including request transformation, aggregation of responses from multiple services, or implementing custom authentication mechanisms.
 
@@ -5831,7 +6447,7 @@ Adding a Virtual Endpoint to your API endpoints is easy when using the API Desig
 
     Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes.
 
-### Using Classic
+### Using Classic {#virtual-endpoints-using-classic}
 
 The [virtual endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) middleware provides a serverless compute function that allows for the execution of custom logic directly within the gateway itself, without the need to proxy the request to an upstream service. This functionality is particularly useful for a variety of use cases, including request transformation, aggregation of responses from multiple services, or implementing custom authentication mechanisms.
 
