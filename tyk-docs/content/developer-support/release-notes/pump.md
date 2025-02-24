@@ -72,6 +72,15 @@ Previously, API keys were exposed in the /metrics endpoint, posing a potential s
 
 </details>
 </li>
+
+<li>
+<details>
+<summary>Support for PostgreSQL 1.17</summary>
+
+Pump now supports PostgreSQL 1.17, ensuring compatibility with the latest database version.
+
+</details>
+</li>
 </ul>
 
 ---
