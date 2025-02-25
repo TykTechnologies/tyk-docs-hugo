@@ -4015,7 +4015,7 @@ Removed the extra chunked transfer encoding that was added unnecessarily to `raw
 <details>
 <summary>Reponse body transformation not execute when Persist GraphQL middleware used</summary>
 
-Resolved a bug with HTTP GraphQL APIs where, when the [Persist GraphQL middleware]({{< ref "api-management/graphql#persisting-graphql-queries" >}}) was used in combination with [Response Body Transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}), the response's body transformation was not being executed.
+Resolved a bug with HTTP GraphQL APIs where, when the [Persist GraphQL middleware]({{< ref "api-management/graphql#persisting-graphql-queries" >}}) was used in combination with [Response Body Transform]({{< ref "api-management/traffic-transformation#response-body-overview" >}}), the response's body transformation was not being executed.
 {{< img src="img/bugs/bug-persistent-gql.png" width="400" alt="Bug in persistent gql and response body transform" title="The setup of graphQL middlewares">}}
 </details>
 </li>
@@ -4055,7 +4055,7 @@ We're thrilled to bring you some exciting enhancements and crucial fixes to impr
 
 ##### Added Body Transform Middleware to Tyk OAS API Definition
 
-With this release, we are adding the much requested *Body Transformations* to *Tyk OAS API Definition*. You can now [configure]({{< ref "api-management/gateway-config-tyk-oas#transformbody" >}}) middleware for both [request]({{< ref "transform-traffic/request-body" >}}) and [response]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) body transformations and - as a Tyk Dashboard user - you’ll be able to do so from within our simple and elegant API Designer tool.
+With this release, we are adding the much requested *Body Transformations* to *Tyk OAS API Definition*. You can now [configure]({{< ref "api-management/gateway-config-tyk-oas#transformbody" >}}) middleware for both [request]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) and [response]({{< ref "api-management/traffic-transformation#response-body-overview" >}}) body transformations and - as a Tyk Dashboard user - you’ll be able to do so from within our simple and elegant API Designer tool.
 
 ##### Reference Tyk OAS API Definition From Within Your Custom Go Plugins
 
@@ -4161,7 +4161,7 @@ Added a new [timeout option]({{< ref "api-management/gateway-optimizations#confi
 <details>
 <summary>Enable request context variables in UDG global or data source headers</summary>
 
-Added support for using [request context variables]({{< ref "context-variables#available-context-variables" >}}) in *UDG* global or data source headers. This feature enables much more advanced [header management]({{< ref "api-management/data-graph#header-management" >}}) for UDG and allows users to extract header information from an incoming request and pass it to upstream data sources.
+Added support for using [request context variables]({{< ref "api-management/traffic-transformation#available-context-variables" >}}) in *UDG* global or data source headers. This feature enables much more advanced [header management]({{< ref "api-management/data-graph#header-management" >}}) for UDG and allows users to extract header information from an incoming request and pass it to upstream data sources.
 </details>
 </li>
 <li>
@@ -4285,7 +4285,7 @@ requests that might affect your Tyk Gateways or upstream services. Of course,
 being Tyk, we also provide the flexibility to configure API-level and
 per-endpoint size limits so you can be as granular as you need to protect and
 optimize your services. Check out our improved documentation for full
-description of how to use these powerful [features]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits" >}}).
+description of how to use these powerful [features]({{< ref "api-management/traffic-transformation#request-size-limits-overview" >}}).
 
 #### Changed default RPC pool size for MDCB deployments
 
@@ -4708,7 +4708,7 @@ Tyk OSS Gateway now looking after the maintenance of the list of versions associ
 also added a new endpoint on the Tyk API that will return details of the versions for a given API.
 
 We’ve improved support for [OAS
-Mock Responses]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}), with the Tyk OAS API
+Mock Responses]({{< ref "api-management/traffic-transformation#mock-response-overview" >}}), with the Tyk OAS API
 definition now allowing you to register multiple Mock Responses in a single API, providing you with increased testing
 flexibility.
 
@@ -4751,7 +4751,7 @@ for your PRs that further improve the quality of Tyk OSS Gateway!
 
 ##### Mock Responses with Tyk OAS API Definitions
 
-Does your Tyk OAS API Definition define examples or a schema for your path responses? If so, starting with Tyk v4.3, Tyk can use those configurations to mock your API responses, enabling your teams to integrate easily without being immediately dependent on each other. Check it out! [Mock Responses Documentation]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}})
+Does your Tyk OAS API Definition define examples or a schema for your path responses? If so, starting with Tyk v4.3, Tyk can use those configurations to mock your API responses, enabling your teams to integrate easily without being immediately dependent on each other. Check it out! [Mock Responses Documentation]({{< ref "api-management/traffic-transformation#mock-response-overview" >}})
 
 ##### External OAuth - 3rd party OAuth IDP integration
 
