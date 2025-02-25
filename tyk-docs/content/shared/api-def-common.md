@@ -27,9 +27,9 @@ Your Tyk Gateway can listen on multiple domains/subdomains through the use of re
 
 * `do_not_track`: Set this value to true to have traffic for this API completely ignored.
 
-* `enable_context_vars`: Context variables are extracted from the request at the start of the middleware chain, and must be explicitly enabled in order for them to be made available to your transforms. These values can be very useful for later transformation of request data, for example, in converting a Form-based POST into a JSON-based PUT or to capture an IP address as a header. See [Context Variables]({{< ref "context-variables" >}}) for more details.
+* `enable_context_vars`: Context variables are extracted from the request at the start of the middleware chain, and must be explicitly enabled in order for them to be made available to your transforms. These values can be very useful for later transformation of request data, for example, in converting a Form-based POST into a JSON-based PUT or to capture an IP address as a header. See [Context Variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}) for more details.
 
-* `config_data`: You can use the config_data field in your API definition to pass custom attributes to middleware via a virtual endpoint. See [Virtual Endpoints]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) for more details.
+* `config_data`: You can use the config_data field in your API definition to pass custom attributes to middleware via a virtual endpoint. See [Virtual Endpoints]({{< ref "api-management/traffic-transformation#virtual-endpoints-overview" >}}) for more details.
 
 * `tag_headers`: This specifies a string array of HTTP headers values which turned into tags. For example, if you include the `X-Request-ID` header to `tag_headers`, for each incoming request it will include an `x-request-id-<header_value>` tag to request an analytic record. This functionality can be useful if you need analytics for request headers without the body content (Enabling detailed logging is another option, but it records the full request and response objects and consumes a lot more space). Check the page [custom Analytics Tags using HTTP Headers]({{< ref "api-management/gateway-config-tyk-classic#custom-analytics-tags-using-http-headers" >}}) for more important information.
 
@@ -39,4 +39,4 @@ Your Tyk Gateway can listen on multiple domains/subdomains through the use of re
   * `getUser`
   * `GetUser`
 
-If set to true, this will override ignoring the case for a particular endpoint with the [Ignore]({{< ref "product-stack/tyk-gateway/middleware/ignore-tyk-oas#configuring-the-middleware-in-the-api-designer" >}}) and [Allowlist]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-api-designer" >}}) plugins. This setting can be overriden at a "global" Tyk level by setting `ignore_endpoint_case` to `true` in your `tyk.conf` file. See [ignore_endpoint_case]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) for details.
+If set to true, this will override ignoring the case for a particular endpoint with the [Ignore]({{< ref "api-management/traffic-transformation#api-designer-7" >}}) and [Allowlist]({{< ref "api-management/traffic-transformation#api-definition-1" >}}) plugins. This setting can be overriden at a "global" Tyk level by setting `ignore_endpoint_case` to `true` in your `tyk.conf` file. See [ignore_endpoint_case]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) for details.

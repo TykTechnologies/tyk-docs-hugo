@@ -837,7 +837,7 @@ You’ll see that Tyk has populated the `middleware` section within the `x-tyk-a
 
 For more information on how Tyk builds the `middleware.operations` structure to configure middleware, see [Paths]({{< ref "api-management/gateway-config-tyk-oas#paths" >}}).
 
-For more information on mock responses, see the dedicated [page]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}).
+For more information on mock responses, see the dedicated [page]({{< ref "api-management/traffic-transformation#mock-response-overview" >}}).
 
 ```.json
 {
@@ -925,7 +925,7 @@ When importing OpenAPI Documents using the Dashboard, Tyk detects the version of
 
 #### Automatic Configuration options
 
-- **Generate Validate Request Middleware**: You can automatically validate paths that have the `requestBody` and `schema` fields configured. This allows your Tyk Gateway to validate your request payload against the schema provided in your definition. See [Request Validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-middleware" >}}) for more details.
+- **Generate Validate Request Middleware**: You can automatically validate paths that have the `requestBody` and `schema` fields configured. This allows your Tyk Gateway to validate your request payload against the schema provided in your definition. See [Request Validation]({{< ref "api-management/traffic-transformation#request-validation-overview" >}}) for more details.
 - **Apply Detected Authentication**: You can automatically apply the authentication specified in the `security` and `securitySchemes` sections of your definition. See [Authentication]({{< ref "api-management/gateway-config-tyk-oas#authentication-with-tyk-oas" >}}) for more details.
 - **Allow access only to defined paths**: You can restrict access to the paths documented in your definition. See [Paths]({{< ref "api-management/gateway-config-tyk-oas#paths" >}}) for more details.
 
