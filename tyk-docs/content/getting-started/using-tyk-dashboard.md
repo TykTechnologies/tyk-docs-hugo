@@ -89,6 +89,40 @@ Otherwise, you can design an API from scratch or a template if you have configur
 
 * **OPA Rules**: You can use this tab to edit your [OPA Rules](/tyk-dashboard/open-policy-agent/)- you can use these custom rules to control the behavior of all of your dashboard APIs. For example, you can restrict regular users to GET requests only, while allowing POST requests for admin roles. 
 
+* **Nodes & Licenses**: This page provides an overview of the Tyk installation, including license usage metrics and Gateway status. This is available only for `Tyk Self Managed` installations.
+
+    {{< img src="/img/getting-started/tabs-system-management-license.png" alt="System Management Side Bar" >}}
+
+    1. **License Information**:
+
+        - **Active Gateways**: Shows the number of available active gateways. An active gateway refers to a Tyk Gateway instance currently connected to a [Control Plane]({{< ref "tyk-multi-data-centre/mdcb-components#control-plane" >}}) and actively processing API requests. 
+            
+            **Note:** It doesn't count the [Data Plane]({{< ref "tyk-multi-data-centre/mdcb-components#data-plane" >}}).
+        
+        - **Total Gateways Available**: Total number of Gateways available per the license.
+        - **Remaining Gateways**: Unused license slots.
+        - **License Expiry**: Indicates the remaining time until the license expires (e.g., 'in 8 days').
+
+    2. **Active Gateways**:
+
+        - Lists the currently active gateways along with their hostnames.
+        - Includes a status indicator (green dot) to signify active connections.
+
+    3. **License Usage**:
+    
+        - It provides a visual representation of the number of **APIs** loaded in the gateway and displays the minimum, maximum, and average.
+
+    3. **Data Plane License Usage**:
+    
+        - It visually represents the maximum, minimum, and average number of [Data Planes]({{< ref "tyk-multi-data-centre/mdcb-components#data-plane" >}}) per day. The x-axis is the dates, while the Y axis is the number of data planes connected; for example, if we execute one cluster with groupID "A" and another with groupID "B," we will get two as max, without caring how many gateways running inside each cluster.
+
+    4. **Gateway License Usage**:
+
+        - This provides a visual representation of the maximum, minimum, and average number of total gateways (all deployed gateways, whether they are part of a data plane or control plane).
+
+    5. **Total API Traffic**:
+
+        - Provides a visual representation of **Total API Traffic** across all Gateways in the installation. This can be viewed over the past month or day.
 
 #### Classic Portal
 {{< img src="/img/getting-started/tabs-classic-portal.png" alt="Classic Portal Side Bar" >}}
