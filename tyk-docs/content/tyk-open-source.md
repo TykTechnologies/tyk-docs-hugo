@@ -26,11 +26,11 @@ aliases:
 
 ## What is Tyk Open Source
 
-Open source is at the heart of what we do. Anything that is API Gateway-related, lives in the Gateway, or is critical for the Gateway to work is open and freely available via our [Github](https://github.com/TykTechnologies/tyk).
+Open source is at the heart of what we do. Anything that is API Gateway-related lives in the Gateway, or is critical for the Gateway to work is open and freely available via our [Github](https://github.com/TykTechnologies/tyk).
 
 The Tyk Gateway is fully open-source.  It's all the same Gateway that's used by you (the community!), by our enterprise products, as well as our SaaS.
 
-Our commitment to open source also delivers a host of benefits for our users: signup for free with Tyk, receive securely packaged open source packages, getting started guides, access to our community and all of the latest open source information.
+Our commitment to open source also delivers a host of benefits for our users: sign up for free with Tyk, receive securely packaged open source packages, get started guides, access to our community and all of the latest open source information.
 
 {{< note success >}}
 **Note**
@@ -51,7 +51,7 @@ The Tyk Team has created and maintains the following components, which are fully
 You can find additional FAQs regarding the MPL license [here](https://www.mozilla.org/en-US/MPL/2.0/FAQ/).
 
 ## Quick Start Tyk Gateway
-New to Tyk Gateway? In this page you'll get started with the basics - install Tyk and test it live in less than 2 minutes.
+New to Tyk Gateway? On this page you'll get started with the basics - install Tyk and test it live in less than 2 minutes.
 
 We recommend [Tyk Gateway docker compose](https://github.com/TykTechnologies/tyk-gateway-docker) as the quickest way to get started. If you want to deploy it in a specific platform check our [installation options]({{< ref "#installation-options-for-tyk-gateway" >}}) page.
 
@@ -187,14 +187,14 @@ Output should be similar to that shown below:
 
 The main way to install the Open Source *Tyk Gateway* in a Kubernetes cluster is via Helm charts. 
 We are actively working to add flexibility and more user flows to our chart. Please reach out
-to our teams on support or the cummunity forum if you have questions, requests or suggestions for improvements.
+to our teams on support or the community forum if you have questions, requests or suggestions for improvements.
 
 Get started with our [Quick Start guide]({{<ref "#quick-start-with-helm-chart">}}) or go to [Tyk Open Source helm chart]({{<ref "product-stack/tyk-charts/tyk-oss-chart">}}) for detailed installation instructions and configuration options.
 
 #### Quick Start with Helm Chart
 
-At the end of this quickstart Tyk Gateway should be accessible through service `gateway-svc-tyk-oss-tyk-gateway` at port `8080`. 
-The following guides provide instructions to install Redis and Tyk Open Source with default configurations. It is intended for quick start only. For production, you should install and configure Redis separately. 
+At the end of this quick start, Tyk Gateway should be accessible through the service `gateway-svc-tyk-oss-tyk-gateway` at port `8080`. 
+The following guides provide instructions to install Redis and Tyk Open Source with default configurations. It is intended for a quick start only. For production, you should install and configure Redis separately. 
 
 ##### Prerequisites
 
@@ -247,8 +247,8 @@ It will install Tyk gateway in your Kubernetes cluster where you can add and man
 
 The following are required for a Tyk OSS installation:
 1. Redis   - required for all the Tyk installations and must be installed in the cluster or reachable from inside K8s.
-             You can find instructions for a simple Redis installation bellow.
-2. MongoDB/SQL - Required only if you chose to use the MongoDB/SQL Tyk pump with your Tyk OSS installation. Same goes with any
+             You can find instructions for a simple Redis installation below.
+2. MongoDB/SQL - Required only if you choose to use the MongoDB/SQL Tyk pump with your Tyk OSS installation. The same goes for any
              [other pump]({{< ref "api-management/tyk-pump#external-data-stores" >}}) you choose to use.
 3. Helm - Tyk Helm supports the Helm 3+ version.
 
@@ -257,11 +257,11 @@ The following are required for a Tyk OSS installation:
 As well as our official OSS Helm repo, you can also find it in [ArtifactHub](https://artifacthub.io/packages/helm/tyk-helm/tyk-headless).
 <div class="artifacthub-widget" data-url="https://artifacthub.io/packages/helm/tyk-helm/tyk-headless" data-theme="light"
 data-header="true" data-responsive="true"><blockquote><p lang="{{ .Site.LanguageCode }}" dir="ltr">
-<b>tyk-headless</b>: This chart deploys the open source Tyk Gateway. Tyk Gateway is a fully open source Enterprise API Gateway, supporting REST, GraphQL, TCP and gRPC protocols. Tyk Gateway is provided ‘Batteries-included’, with no feature lockout. It enables organizations and businesses around the world to protect, secure, and process APIs and well as review and audit the consumed apis.
+<b>tyk-headless</b>: This chart deploys the open-source Tyk Gateway. Tyk Gateway is a fully open-source Enterprise API Gateway, supporting REST, GraphQL, TCP, and gRPC protocols. Tyk Gateway is provided ‘Batteries-included’, with no feature lockout. It enables organizations and businesses around the world to protect, secure, and process APIs as well as review and audit the consumed APIs.
 </p>&mdash; Open in <a href="https://artifacthub.io/packages/helm/tyk-helm/tyk-headless">Artifact Hub</a></blockquote>
 </div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
 
-If you are interested in contributing to our charts, suggesting changes, creating PRs or any other way,
+If you are interested in contributing to our charts, suggesting changes, creating PRs, or any other way,
 please use [GitHub Tyk-helm-chart repo](https://github.com/TykTechnologies/tyk-helm-chart/tree/master/tyk-headless)
 
 1. **Add Tyk official Helm repo**
@@ -271,7 +271,7 @@ helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 helm repo update
 ```
 
-2. **Create namespace for Tyk deployment**
+2. **Create a namespace for Tyk deployment**
 
 ```bash
 kubectl create namespace tyk
@@ -280,7 +280,7 @@ kubectl create namespace tyk
 3. **Getting values.yaml**
 
 Before we proceed with installation of the chart you may need to set some custom values.
-To see what options are configurable on a chart and save those options to a custom values.yaml file run:
+To see what options are configurable on a chart and save those options to a custom `values.yaml` file run:
 
 ```bash
 helm show values tyk-helm/tyk-headless > values.yaml
