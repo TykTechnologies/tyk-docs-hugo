@@ -687,7 +687,7 @@
     "product-stack/tyk-streaming/streams-configuration-using-ui": "#configure-streams-api-using-dashboard",
     "tyk-configuration-reference/securing-system-payloads": "#sign-payloads",
     "getting-started/key-concepts/graphql-entities": "#entities",
-    "getting-started/key-concepts/graphql-federation": "#overview-1",
+    "getting-started/key-concepts/graphql-federation": "#overview-2",
     "getting-started/key-concepts/graphql-subgraphs": "#extension-orphans",
     "getting-started/key-concepts/graphql-subscriptions": "#graphql-subscriptions",
     "graphql-proxy-only": "#graphql-proxy-only",
