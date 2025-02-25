@@ -376,7 +376,7 @@ If no per-endpoint rate limit is defined, the endpoint will inherit the key-leve
 {{< note success >}}
 **Note**  
 The following assumptions are made:
- - The [ignore authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}) middleware should not be enabled for the relevant endpoints.
+ - The [ignore authentication]({{< ref "api-management/traffic-transformation#ignore-authentication-overview" >}}) middleware should not be enabled for the relevant endpoints.
  - If [path-based permissions]({{< ref "getting-started/create-security-policy#path-based-permissions" >}}) are configured, they must grant access to these endpoints for keys generated from the policies.
 {{< /note >}}
 

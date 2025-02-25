@@ -228,7 +228,7 @@ It is very likely that an `AuthFailure` event will fire on the same endpoint mor
 
 ##### Webhook payload
 
-When your webhook event handler is triggered, it will send an HTTP request to the configured target. For HTTP methods that support a request body, for example `POST`, the event handler will process a [Go template]({{< ref "product-stack/tyk-gateway/references/go-templates" >}}) to produce the payload.
+When your webhook event handler is triggered, it will send an HTTP request to the configured target. For HTTP methods that support a request body, for example `POST`, the event handler will process a [Go template]({{< ref "api-management/traffic-transformation#go-templates" >}}) to produce the payload.
 
 If no template is provided in the webhook event handler configuration in the API definition, Tyk Gateway will look for the default file `templates/default_webhook.json`. Any text file accessible to the Gateway can be used to store the Go template to be used by the event handler when constructing the payload.
 
