@@ -56,7 +56,7 @@ MDCB API
 *Monitor & diagnose Tyk data planes*
 {{< /badge >}}
 
-{{< badge href="tyk-portal-api" title="OpenAPI" titleStyle="justify-content: center">}}
+{{< badge href="product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" title="OpenAPI" titleStyle="justify-content: center">}}
 Enterprise Portal API
 </br>
 </br>
