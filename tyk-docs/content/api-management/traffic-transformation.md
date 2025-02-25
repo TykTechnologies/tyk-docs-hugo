@@ -60,6 +60,7 @@ aliases:
   - /product-stack/tyk-gateway/middleware/do-not-track-tyk-classic
 
   - /concepts/context-variables
+  - /advanced-configuration/compose-apis/sample-batch-funtion
   - /getting-started/key-concepts/context-variables
   - /compose-apis/virtual-endpoints
   - /advanced-configuration/compose-apis
