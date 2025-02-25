@@ -116,7 +116,7 @@ Tyk’s [Enforced Timeout]({{< ref "tyk-self-managed#circuit-breakers" >}}) midd
 
 #### Ignore Authentication
 
-Adding the [Ignore Authentication]({{< ref "api-management/traffic-transformation#ignore-overview" >}}) middleware means that Tyk Gateway will not perform authentication checks on requests to that endpoint. This plugin can be very useful if you have a specific endpoint (such as a ping) that you don't need to secure.
+Adding the [Ignore Authentication]({{< ref "api-management/traffic-transformation#ignore-authentication-overview" >}}) middleware means that Tyk Gateway will not perform authentication checks on requests to that endpoint. This plugin can be very useful if you have a specific endpoint (such as a ping) that you don't need to secure.
 
 #### Internal Endpoint
 
@@ -136,15 +136,15 @@ The [Request Body Transform]({{< ref "api-management/traffic-transformation#requ
 
 #### Request Header Transform
 
-The [Request Header Transform]({{< ref "api-management/traffic-transformation#request-header-overview" >}}) middleware allows you to modify the header information provided in the request before it leaves the Gateway and is passed to your upstream API.
+The [Request Header Transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) middleware allows you to modify the header information provided in the request before it leaves the Gateway and is passed to your upstream API.
 
 #### Request Size Limit
 
-Tyk Gateway offers a flexible tiered system of limiting request sizes ranging from globally applied limits across all APIs deployed on the gateway down to specific size limits for individual API endpoints. The [Request Size Limit]({{< ref "api-management/traffic-transformation#request-size-limit-overview" >}}) middleware provides the most granular control over request size by enabling you to set different limits for individual endpoints.
+Tyk Gateway offers a flexible tiered system of limiting request sizes ranging from globally applied limits across all APIs deployed on the gateway down to specific size limits for individual API endpoints. The [Request Size Limit]({{< ref "api-management/traffic-transformation#request-size-limits-overview" >}}) middleware provides the most granular control over request size by enabling you to set different limits for individual endpoints.
 
 #### Request Validation
 
-Tyk’s [Request Validation]({{< ref "api-management/traffic-transformation#validate-request-overview" >}}) middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.
+Tyk’s [Request Validation]({{< ref "api-management/traffic-transformation#request-validation-overview" >}}) middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.
 
 When working with Tyk OAS APIs, the request validation covers both headers and body (payload); with the older Tyk Classic API style we can validate only the request body (payload).
 
@@ -158,7 +158,7 @@ If you do not want to include all endpoints in your [Activity by Endpoint]({{< r
 
 #### Virtual Endpoint
 
-Tyk’s [Virtual Endpoints]({{< ref "api-management/traffic-transformation#virtual-endpoint-overview" >}}) is a programmable middleware component that allows you to perform complex interactions with your upstream service(s) that cannot be handled by one of the other middleware components.
+Tyk’s [Virtual Endpoints]({{< ref "api-management/traffic-transformation#virtual-endpoints-overview" >}}) is a programmable middleware component that allows you to perform complex interactions with your upstream service(s) that cannot be handled by one of the other middleware components.
 
 ### Middleware applied to the API Response
 
@@ -170,7 +170,7 @@ The [Response Body Transform]({{< ref "api-management/traffic-transformation#res
 
 #### Response Header Transform
 
-The [Response Header Transform]({{< ref "api-management/traffic-transformation#response-header-overview" >}}) middleware allows you to modify the header information provided in the response before it leaves the Gateway and is passed to the client.
+The [Response Header Transform]({{< ref "api-management/traffic-transformation#response-headers-overview" >}}) middleware allows you to modify the header information provided in the response before it leaves the Gateway and is passed to the client.
 
 ## Allow List
 
@@ -1095,9 +1095,9 @@ Tyk recommends that you use [exact]({{< ref "getting-started/key-concepts/url-ma
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the ignore authentication middleware [here]({{< ref "api-management/traffic-transformation#ignore-using-tyk-oas" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the ignore authentication middleware [here]({{< ref "api-management/traffic-transformation#ignore-authentication-using-tyk-oas" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the ignore authentication middleware [here]({{< ref "api-management/traffic-transformation#ignore-using-classic" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the ignore authentication middleware [here]({{< ref "api-management/traffic-transformation#ignore-authentication-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  ## Ignore Authentication middleware summary
@@ -1108,11 +1108,11 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 ### Using Tyk OAS {#ignore-authentication-using-tyk-oas}
 
-The [Ignore Authentication]({{< ref "api-management/traffic-transformation#ignore-overview" >}}) middleware instructs Tyk Gateway to skip the authentication step for calls to an endpoint, even if authentication is enabled for the API.
+The [Ignore Authentication]({{< ref "api-management/traffic-transformation#ignore-authentication-overview" >}}) middleware instructs Tyk Gateway to skip the authentication step for calls to an endpoint, even if authentication is enabled for the API.
 
 When working with Tyk OAS APIs the middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#ignore-using-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#ignore-authentication-using-classic" >}}) page.
 
 #### API Definition
 
@@ -1243,11 +1243,11 @@ Adding and configuring the Ignore Authentication middleware to your API endpoint
 
 ### Using Classic {#ignore-authentication-using-classic}
 
-The [Ignore Authentication]({{< ref "api-management/traffic-transformation#ignore-overview" >}}) middleware instructs Tyk Gateway to skip the authentication step for calls to an endpoint, even if authentication is enabled for the API.
+The [Ignore Authentication]({{< ref "api-management/traffic-transformation#ignore-authentication-overview" >}}) middleware instructs Tyk Gateway to skip the authentication step for calls to an endpoint, even if authentication is enabled for the API.
 
 When working with Tyk Classic APIs the middleware is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#ignore-using-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#ignore-authentication-using-tyk-oas" >}}) page.
 
 If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 
@@ -1629,7 +1629,7 @@ spec:
 
 ### Overview {#request-method-overview}
 
-Tyk's Request Method Transform middleware allows you to modify the HTTP method of incoming requests to an API endpoint prior to the request being proxied to the upstream service. You might use this to map `POST` requests from clients to upstream services that support only `PUT` and `DELETE` operations, providing a modern interface to your users. It is a simple middleware that changes only the method and not the payload or headers. You can, however, combine this with the [Request Header Transform]({{< ref "api-management/traffic-transformation#request-header-overview" >}}) and [Request Body Tranform]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) to apply more complex transformation to requests.
+Tyk's Request Method Transform middleware allows you to modify the HTTP method of incoming requests to an API endpoint prior to the request being proxied to the upstream service. You might use this to map `POST` requests from clients to upstream services that support only `PUT` and `DELETE` operations, providing a modern interface to your users. It is a simple middleware that changes only the method and not the payload or headers. You can, however, combine this with the [Request Header Transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) and [Request Body Tranform]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) to apply more complex transformation to requests.
 
 #### Use Cases
 
@@ -1874,7 +1874,7 @@ Tyk enables you to modify the payload of API requests before they are proxied to
 
 With the body transform middleware you can modify XML or JSON formatted payloads to ensure that the response contains the information required by your upstream service. You can enrich the request by adding contextual data that is held by Tyk but not included in the original request from the client.
 
-This middleware changes only the payload and not the headers. You can, however, combine this with the [Request Header Transform]({{< ref "api-management/traffic-transformation#request-header-overview" >}}) middleware to apply more complex transformation to requests.
+This middleware changes only the payload and not the headers. You can, however, combine this with the [Request Header Transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) middleware to apply more complex transformation to requests.
 
 There is a closely related [Response Body Transform]({{< ref "api-management/traffic-transformation#response-body-overview" >}}) middleware that provides the same functionality on the response from the upstream, prior to it being returned to the client.
 
@@ -2276,7 +2276,7 @@ With the header transform middleware you can append or delete any number of head
 
 This middleware changes only the headers and not the method or payload. You can, however, combine this with the [Request Method Transform]({{< ref "api-management/traffic-transformation#request-method-overview" >}}) and [Request Body Tranform]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) to apply more complex transformation to requests.
 
-There are related [Response Header Transform]({{< ref "api-management/traffic-transformation#response-header-overview" >}}) middleware (at API-level and endpoint-level) that provide the same functionality on the response from your upstream, prior to it being returned to the client.
+There are related [Response Header Transform]({{< ref "api-management/traffic-transformation#response-headers-overview" >}}) middleware (at API-level and endpoint-level) that provide the same functionality on the response from your upstream, prior to it being returned to the client.
 
 #### Use Cases
 
@@ -2317,9 +2317,9 @@ You can enrich the request headers by injecting data from context variables or s
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the request header transform middleware [here]({{< ref "api-management/traffic-transformation#request-header-using-tyk-oas" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the request header transform middleware [here]({{< ref "api-management/traffic-transformation#request-headers-using-tyk-oas" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the request header transform middleware [here]({{< ref "api-management/traffic-transformation#request-header-using-classic" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the request header transform middleware [here]({{< ref "api-management/traffic-transformation#request-headers-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  ## Request Header Transform middleware summary
@@ -2329,7 +2329,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 ### Using Tyk OAS {#request-headers-using-tyk-oas}
 
-Tyk's [request header transform]({{< ref "api-management/traffic-transformation#request-header-overview" >}}) middleware enables you to append or delete headers on requests to your API endpoints before they are passed to your upstream service.
+Tyk's [request header transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) middleware enables you to append or delete headers on requests to your API endpoints before they are passed to your upstream service.
 
 There are two options for this:
 - API-level modification that is applied to all requests to the API
@@ -2343,7 +2343,7 @@ If both API-level and endpoint-level middleware are configured, the API-level tr
 
 When working with Tyk OAS APIs the transformation is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#request-header-using-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#request-headers-using-classic" >}}) page.
 
 #### API Definition
 
@@ -2560,7 +2560,7 @@ Then select **NEW HEADER** as appropriate to add or remove a header from API req
 
 ### Using Classic {#request-headers-using-classic}
 
-Tyk's [request header transform]({{< ref "api-management/traffic-transformation#request-header-overview" >}}) middleware enables you to append or delete headers on requests to your API endpoints before they are passed to your upstream service.
+Tyk's [request header transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) middleware enables you to append or delete headers on requests to your API endpoints before they are passed to your upstream service.
 
 There are two options for this:
 - API-level modification that is applied to all requests to the API
@@ -2576,7 +2576,7 @@ When working with Tyk Classic APIs the transformation is configured in the Tyk C
 
 If you want to use dynamic data from context variables, you must [enable]({{< ref "api-management/traffic-transformation#enabling-context-variables-for-use-with-tyk-classic-apis" >}}) context variables for the API to be able to access them from the request header transform middleware.
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#request-header-using-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#request-headers-using-tyk-oas" >}}) page.
 
 If you're using Tyk Operator then check out the [configuring the Request Header Transform in Tyk Operator](#tyk-operator) section below.
 
@@ -2867,9 +2867,9 @@ Tyk Cloud Classic enforces a strict request size limit of 1MB on all inbound req
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure an API or endpoint-level request size limit [here]({{< ref "api-management/traffic-transformation#request-size-limit-using-tyk-oas" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure an API or endpoint-level request size limit [here]({{< ref "api-management/traffic-transformation#request-size-limits-using-tyk-oas" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure an API or endpoint-level request size limit [here]({{< ref "api-management/traffic-transformation#request-size-limit-using-classic" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure an API or endpoint-level request size limit [here]({{< ref "api-management/traffic-transformation#request-size-limits-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  ## Request Size Limit middleware summary
@@ -2880,11 +2880,11 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 ### Using Tyk OAS {#request-size-limits-using-tyk-oas}
 
-The [request size limit]({{< ref "api-management/traffic-transformation#request-size-limit-overview" >}}) middleware enables you to apply limits to the size of requests made to your HTTP APIs. You might use this feature to protect your Tyk Gateway or upstream services from excessive memory usage or brute force attacks.
+The [request size limit]({{< ref "api-management/traffic-transformation#request-size-limits-overview" >}}) middleware enables you to apply limits to the size of requests made to your HTTP APIs. You might use this feature to protect your Tyk Gateway or upstream services from excessive memory usage or brute force attacks.
 
 The middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#request-size-limit-using-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#request-size-limits-using-classic" >}}) page.
 
 #### API Definition
 
@@ -2997,11 +2997,11 @@ Adding the Request Size Limit middleware to your API endpoints is easy when usin
 
 ### Using Classic {#request-size-limits-using-classic}
 
-The [request size limit]({{< ref "api-management/traffic-transformation#request-size-limit-overview" >}}) middleware enables you to apply limits to the size of requests made to your HTTP APIs. You might use this feature to protect your Tyk Gateway or upstream services from excessive memory usage or brute force attacks.
+The [request size limit]({{< ref "api-management/traffic-transformation#request-size-limits-overview" >}}) middleware enables you to apply limits to the size of requests made to your HTTP APIs. You might use this feature to protect your Tyk Gateway or upstream services from excessive memory usage or brute force attacks.
 
 This middleware is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#request-size-limit-using-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#request-size-limits-using-tyk-oas" >}}) page.
 
 If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 
@@ -3163,7 +3163,7 @@ Tyk enables you to modify the payload of API responses received from your upstre
 
 With the body transform middleware you can modify XML or JSON formatted payloads to ensure that the response contains the information required by your upstream service. You can enrich the response by adding contextual data that is held by Tyk but not included in the original response from the upstream.
 
-This middleware changes only the payload and not the headers. You can, however, combine this with the [Response Header Transform]({{< ref "api-management/traffic-transformation#response-header-overview" >}}) to apply more complex transformation to responses.
+This middleware changes only the payload and not the headers. You can, however, combine this with the [Response Header Transform]({{< ref "api-management/traffic-transformation#response-headers-overview" >}}) to apply more complex transformation to responses.
 
 There is a closely related [Request Body Transform]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) middleware that provides the same functionality on the request sent by the client prior to it being proxied to the upstream.
 
@@ -3651,7 +3651,7 @@ With the header transform middleware you can append or delete any number of head
 
 This middleware changes only the headers and not the payload. You can, however, combine this with the [Response Body Transform]({{< ref "api-management/traffic-transformation#response-body-overview" >}}) to apply more complex transformation to responses.
 
-There are related [Request Header Transform]({{< ref "api-management/traffic-transformation#request-header-overview" >}}) middleware (at API-level and endpoint-level) that provide the same functionality on the request from a client, prior to it being proxied to the upstream.
+There are related [Request Header Transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) middleware (at API-level and endpoint-level) that provide the same functionality on the request from a client, prior to it being proxied to the upstream.
 
 #### Use Cases
 
@@ -3690,9 +3690,9 @@ You can enrich the response headers by injecting data from context variables or 
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the response header transform middleware [here]({{< ref "api-management/traffic-transformation#response-header-using-tyk-oas" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the response header transform middleware [here]({{< ref "api-management/traffic-transformation#response-headers-using-tyk-oas" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the response header transform middleware [here]({{< ref "api-management/traffic-transformation#response-header-using-classic" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the response header transform middleware [here]({{< ref "api-management/traffic-transformation#response-headers-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  ## Response Header Transform middleware summary
@@ -3702,7 +3702,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 ### Using Tyk OAS {#response-headers-using-tyk-oas}
 
-Tyk's [response header transform]({{< ref "api-management/traffic-transformation#response-header-overview" >}}) middleware enables you to append or delete headers on responses received from the upstream service before sending them to the client.
+Tyk's [response header transform]({{< ref "api-management/traffic-transformation#response-headers-overview" >}}) middleware enables you to append or delete headers on responses received from the upstream service before sending them to the client.
 
 There are two options for this:
 - API-level modification that is applied to all responses for the API
@@ -3716,7 +3716,7 @@ If both API-level and endpoint-level middleware are configured, the endpoint-lev
 
 When working with Tyk OAS APIs the transformation is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#response-header-using-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#response-headers-using-classic" >}}) page.
 
 #### API Definition
 
@@ -3924,7 +3924,7 @@ Then select **NEW HEADER** as appropriate to add or remove a header from API res
 
 ### Using Classic {#response-headers-using-classic}
 
-Tyk's [response header transform]({{< ref "api-management/traffic-transformation#response-header-overview" >}}) middleware enables you to append or delete headers on responses received from the upstream service before sending them to the client.
+Tyk's [response header transform]({{< ref "api-management/traffic-transformation#response-headers-overview" >}}) middleware enables you to append or delete headers on responses received from the upstream service before sending them to the client.
 
 There are two options for this:
 - API-level modification that is applied to all responses for the API
@@ -3940,7 +3940,7 @@ When working with Tyk Classic APIs the transformation is configured in the Tyk C
 
 If you want to use dynamic data from context variables, you must [enable]({{< ref "api-management/traffic-transformation#enabling-context-variables-for-use-with-tyk-classic-apis" >}}) context variables for the API to be able to access them from the response header transform middleware.
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#response-header-using-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#response-headers-using-tyk-oas" >}}) page.
 
 If you're using Tyk Operator then check out the [configuring the Response Header Transform in Tyk Operator](#tyk-operator) section below.
 
@@ -4065,7 +4065,7 @@ For example:
 
 In this example, the `Link` and `Location` headers will be modified from the server-generated response, with the protocol, domain and port of the value set in `target_host`.
 
-This feature is rarely used and has not been implemented in the Tyk Dashboard UI, nor in the [Tyk OAS API]({{< ref "api-management/traffic-transformation#response-header-using-tyk-oas" >}}).
+This feature is rarely used and has not been implemented in the Tyk Dashboard UI, nor in the [Tyk OAS API]({{< ref "api-management/traffic-transformation#response-headers-using-tyk-oas" >}}).
 
 #### API Designer
 
@@ -4321,7 +4321,7 @@ You can ensure that client requests adhere to a defined contract specifying mand
 
 ##### Supporting data transformation
 
-Validation goes hand-in-hand with request [header]({{< ref "api-management/traffic-transformation#request-header-overview" >}}) and [body]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) transformation by ensuring that a request complies with the expected schema prior to transformation. For example, you could validate that a date parameter is present, then transform it into a different date format as required by your upstream API dynamically on each request.
+Validation goes hand-in-hand with request [header]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) and [body]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) transformation by ensuring that a request complies with the expected schema prior to transformation. For example, you could validate that a date parameter is present, then transform it into a different date format as required by your upstream API dynamically on each request.
 
 #### Working
 
@@ -4329,15 +4329,15 @@ The incoming request is compared with a defined schema, which is a structured de
 
 If the incoming request does not match the schema, it will be rejected with an `HTTP 422 Unprocessable Entity` error. This error code can be customized if required.
 
-When using [Tyk OAS APIs]({{< ref "api-management/traffic-transformation#validate-request-using-tyk-oas" >}}), request validation is performed by the `Validate Request` middleware which can be enabled per-endpoint. The schema against which requests are compared is defined in the OpenAPI description of the endpoint. All elements of the request can have a `schema` defined in the OpenAPI description so requests to Tyk OAS APIs can be validated for headers, path/query parameters and body (payload).
+When using [Tyk OAS APIs]({{< ref "api-management/traffic-transformation#request-validation-using-tyk-oas" >}}), request validation is performed by the `Validate Request` middleware which can be enabled per-endpoint. The schema against which requests are compared is defined in the OpenAPI description of the endpoint. All elements of the request can have a `schema` defined in the OpenAPI description so requests to Tyk OAS APIs can be validated for headers, path/query parameters and body (payload).
 
-When using the legacy [Tyk Classic APIs]({{< ref "api-management/traffic-transformation#validate-request-using-classic" >}}), request validation is performed by the `Validate JSON` middleware which can be enabled per-endpoint. The schema against which requests are compared is defined in the middleware configuration and is limited to the request body (payload). Request headers and path/query parameters cannot be validated when using Tyk Classic APIs.
+When using the legacy [Tyk Classic APIs]({{< ref "api-management/traffic-transformation#request-validation-using-classic" >}}), request validation is performed by the `Validate JSON` middleware which can be enabled per-endpoint. The schema against which requests are compared is defined in the middleware configuration and is limited to the request body (payload). Request headers and path/query parameters cannot be validated when using Tyk Classic APIs.
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the request validation middleware [here]({{< ref "api-management/traffic-transformation#validate-request-using-tyk-oas" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the request validation middleware [here]({{< ref "api-management/traffic-transformation#request-validation-using-tyk-oas" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the request validation middleware [here]({{< ref "api-management/traffic-transformation#validate-request-using-classic" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the request validation middleware [here]({{< ref "api-management/traffic-transformation#request-validation-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  ## Validate Request middleware summary
@@ -4348,11 +4348,11 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 ### Using Tyk OAS {#request-validation-using-tyk-oas}
 
-The [request validation]({{< ref "api-management/traffic-transformation#validate-request-overview" >}}) middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints. If the incoming request fails validation, the Tyk Gateway will reject the request with an `HTTP 422 Unprocessable Entity` response. Tyk can be [configured](#configuring-the-request-validation-middleware) to return a different HTTP status code if required. 
+The [request validation]({{< ref "api-management/traffic-transformation#request-validation-overview" >}}) middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints. If the incoming request fails validation, the Tyk Gateway will reject the request with an `HTTP 422 Unprocessable Entity` response. Tyk can be [configured](#configuring-the-request-validation-middleware) to return a different HTTP status code if required. 
 
 The middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#validate-request-using-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#request-validation-using-classic" >}}) page.
 
 #### Request schema in OpenAPI Specification
 
@@ -4542,13 +4542,13 @@ Adding and configuring Request Validation for your API endpoints is easy when us
 
 ### Using Classic {#request-validation-using-classic}
 
-The [request validation]({{< ref "api-management/traffic-transformation#validate-request-overview" >}}) middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.
+The [request validation]({{< ref "api-management/traffic-transformation#request-validation-overview" >}}) middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.
 
 When working with legacy Tyk Classic APIs, request validation is performed by the `Validate JSON` middleware which can be enabled per-endpoint. The schema against which requests are compared is defined in the middleware configuration and is limited to the request body (payload). Request headers and path/query parameters cannot be validated when using Tyk Classic APIs.
 
 This middleware is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#validate-request-using-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#request-validation-using-tyk-oas" >}}) page.
 
 If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 
@@ -5330,7 +5330,7 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "ap
 
 If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 
-To enable mock response, you must first add the endpoint to a list - one of [allow list]({{< ref "api-management/traffic-transformation#allow-list-overview" >}}), [block list]({{< ref "api-management/traffic-transformation#block-list-overview" >}}) or [ignore authentication]({{< ref "api-management/traffic-transformation#ignore-overview" >}}). This will add a new object to the `extended_paths` section of your API definition - `white_list`, `black_list` or `ignored`. The mock response can then be configured within the `method_actions` element within the new object.
+To enable mock response, you must first add the endpoint to a list - one of [allow list]({{< ref "api-management/traffic-transformation#allow-list-overview" >}}), [block list]({{< ref "api-management/traffic-transformation#block-list-overview" >}}) or [ignore authentication]({{< ref "api-management/traffic-transformation#ignore-authentication-overview" >}}). This will add a new object to the `extended_paths` section of your API definition - `white_list`, `black_list` or `ignored`. The mock response can then be configured within the `method_actions` element within the new object.
 
 The `white_list`, `black_list` and `ignored` objects all have the same structure and configuration as follows:
 
@@ -5503,16 +5503,16 @@ A rule is a simple pattern match - you identify the location of a `key` and defi
 
 A trigger combines one or more rules with a target (or `rewriteTo`) URL. If the logical combination of the rules results in a pass outcome, then the trigger is considered to have been fired and the target URL for the request will be rewritten.
 
-More detail on URL Rewrite triggers and rules can be found [here]({{< ref "api-management/traffic-transformation#url-rewrite-overview" >}}).
+More detail on URL Rewrite triggers and rules can be found [here]({{< ref "api-management/traffic-transformation#url-rewriting-overview" >}}).
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the URL rewrite middleware [here]({{< ref "api-management/traffic-transformation#url-rewrite-using-tyk-oas" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the URL rewrite middleware [here]({{< ref "api-management/traffic-transformation#url-rewriting-using-tyk-oas" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the URL rewrite middleware [here]({{< ref "api-management/traffic-transformation#url-rewrite-using-classic" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the URL rewrite middleware [here]({{< ref "api-management/traffic-transformation#url-rewriting-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
 
 ## URL Rewrite middleware summary
- - The URL Rewrite middleware is an optional stage in Tyk's API Request processing chain, sitting between the [Request Header Transform]({{< ref "api-management/traffic-transformation#request-header-overview" >}}) and [Response Caching]({{< ref "api-management/gateway-optimizations#" >}}) middleware.
+ - The URL Rewrite middleware is an optional stage in Tyk's API Request processing chain, sitting between the [Request Header Transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) and [Response Caching]({{< ref "api-management/gateway-optimizations#" >}}) middleware.
  - URL Rewrite is configured at the per-endpoint level within the API Definition and is supported by the API Designer within the Tyk Dashboard.
  - URL Rewrite can access both [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}) and [request context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}).
  
@@ -5642,11 +5642,11 @@ This limitation does not apply to KV accessed from the other [supported KV store
 
 Tyk's [URL rewriter]({{< ref "api-management/traffic-transformation#url-rewrite-middleware" >}}) uses the concepts of triggers and rules to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk).
 
-URL rewrite triggers and rules are explained in detail [here]({{< ref "api-management/traffic-transformation#url-rewrite-overview" >}}).
+URL rewrite triggers and rules are explained in detail [here]({{< ref "api-management/traffic-transformation#url-rewriting-overview" >}}).
 
 When working with Tyk OAS APIs the rules and triggers are configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}); this can be done manually within the `.json` file or from the API Designer in the Tyk Dashboard.
 
-If you're using the legacy Tyk Classic APIs, then check out [this]({{< ref "api-management/traffic-transformation#url-rewrite-using-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out [this]({{< ref "api-management/traffic-transformation#url-rewriting-using-classic" >}}) page.
 
 #### API Definition
 
@@ -5944,13 +5944,13 @@ Adding and configuring the URL rewrite feature to your API endpoints is easy whe
 
 Tyk's [URL rewriter]({{< ref "api-management/traffic-transformation#url-rewrite-middleware" >}}) uses the concepts of triggers and rules to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk).
 
-URL rewrite triggers and rules are explained in detail [here]({{< ref "api-management/traffic-transformation#url-rewrite-overview" >}}).
+URL rewrite triggers and rules are explained in detail [here]({{< ref "api-management/traffic-transformation#url-rewriting-overview" >}}).
 
 When working with Tyk Classic APIs the rules and triggers are configured in the Tyk Classic API Definition; this can be done manually within the `.json` file or from the API Designer in the Tyk Dashboard.
 
 If you want to use dynamic data from context variables, you must [enable]({{< ref "api-management/traffic-transformation#enabling-context-variables-for-use-with-tyk-classic-apis" >}}) context variables for the API to be able to access them from the request header transform middleware.
 
-If you're using the newer Tyk OAS APIs, then check out [this]({{< ref "api-management/traffic-transformation#url-rewrite-using-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out [this]({{< ref "api-management/traffic-transformation#url-rewriting-using-tyk-oas" >}}) page.
 
 If you're using Tyk Operator then check out the [configuring the URL rewriter in Tyk Operator](#tyk-operator) section below.
 
@@ -6255,9 +6255,9 @@ Virtual endpoints are not available in Tyk Cloud Classic.
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the virtual endpoint middleware [here]({{< ref "api-management/traffic-transformation#virtual-endpoint-using-tyk-oas" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the virtual endpoint middleware [here]({{< ref "api-management/traffic-transformation#virtual-endpoints-using-tyk-oas" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the virtual endpoint middleware [here]({{< ref "api-management/traffic-transformation#virtual-endpoint-using-classic" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the virtual endpoint middleware [here]({{< ref "api-management/traffic-transformation#virtual-endpoints-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  ## Virtual Endpoint middleware summary
@@ -6268,11 +6268,11 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 ### Using Tyk OAS {#virtual-endpoints-using-tyk-oas}
 
-The [virtual endpoint]({{< ref "api-management/traffic-transformation#virtual-endpoint-overview" >}}) middleware provides a serverless compute function that allows for the execution of custom logic directly within the gateway itself, without the need to proxy the request to an upstream service. This functionality is particularly useful for a variety of use cases, including request transformation, aggregation of responses from multiple services, or implementing custom authentication mechanisms.
+The [virtual endpoint]({{< ref "api-management/traffic-transformation#virtual-endpoints-overview" >}}) middleware provides a serverless compute function that allows for the execution of custom logic directly within the gateway itself, without the need to proxy the request to an upstream service. This functionality is particularly useful for a variety of use cases, including request transformation, aggregation of responses from multiple services, or implementing custom authentication mechanisms.
 
 The middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#virtual-endpoint-using-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/traffic-transformation#virtual-endpoints-using-classic" >}}) page.
 
 #### API Definition
 
@@ -6447,11 +6447,11 @@ Adding a Virtual Endpoint to your API endpoints is easy when using the API Desig
 
 ### Using Classic {#virtual-endpoints-using-classic}
 
-The [virtual endpoint]({{< ref "api-management/traffic-transformation#virtual-endpoint-overview" >}}) middleware provides a serverless compute function that allows for the execution of custom logic directly within the gateway itself, without the need to proxy the request to an upstream service. This functionality is particularly useful for a variety of use cases, including request transformation, aggregation of responses from multiple services, or implementing custom authentication mechanisms.
+The [virtual endpoint]({{< ref "api-management/traffic-transformation#virtual-endpoints-overview" >}}) middleware provides a serverless compute function that allows for the execution of custom logic directly within the gateway itself, without the need to proxy the request to an upstream service. This functionality is particularly useful for a variety of use cases, including request transformation, aggregation of responses from multiple services, or implementing custom authentication mechanisms.
 
 This middleware is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#virtual-endpoint-using-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#virtual-endpoints-using-tyk-oas" >}}) page.
 
 If you're using Tyk Operator then check out the [configuring the middleware in Tyk Operator](#tyk-operator) section below.
 
@@ -7447,7 +7447,7 @@ For example, to get the value stored in `test-header`, the syntax would be `$tyk
 Context variables are exposed in three middleware plugins but are accessed differently depending on the caller as follows:
 
 1.   URL Rewriter - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [URL Rewriting]({{< ref "api-management/traffic-transformation#url-rewrite-middleware" >}}) for more details.
-2.   Modify Headers - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [Request Headers]({{< ref "api-management/traffic-transformation#request-header-overview" >}}) for more details.
+2.   Modify Headers - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [Request Headers]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) for more details.
 3.   Body Transforms - Syntax is `{{ ._tyk_context.CONTEXTVARIABLES }}`. See [Body Transforms]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) for more details.
 
 {{< note success >}}

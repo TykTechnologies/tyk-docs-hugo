@@ -57,7 +57,7 @@ REST APIs provide endpoints that return all properties of an object in the repon
 
 From a REST API perspespective, it is the responsibility of the API to ensure that the correct data is retrieved. The Gateway can provide additional security measures as follows:
 - [Body transformation plugins]({{< ref "api-management/traffic-transformation#request-method-overview" >}}) can be used to remove sensitive data from the response if the API is unable to do so itself.
-- [JSON Schema validation]({{< ref "api-management/traffic-transformation#validate-request-using-classic" >}}) to validate that an incoming data payload meets a defined schema. Payloads that do not adhere to the schema are rejected.
+- [JSON Schema validation]({{< ref "api-management/traffic-transformation#request-validation-using-classic" >}}) to validate that an incoming data payload meets a defined schema. Payloads that do not adhere to the schema are rejected.
 
 For GraphQL APIs, the gateway can be used to define the GraphQL schemas, limiting which properties of an object are queryable. Furthermore, access can be controlled to specific properties by configuring [field-based permissions]({{< ref "api-management/graphql#field-based-permissions" >}}). Subsequently, the visiblity of a schema's properties can be controlled for different consumers of the GraphQL API.
 
@@ -69,7 +69,7 @@ APIs can become overwhelmed if the resources upon which they rely are fully cons
 As an APIM product, Tyk Gateway can be configured to use the following out-of-the-box functionality when handling API traffic for legitimate users:
 
 - [Circuit breaker]({{< ref "tyk-self-managed#circuit-breakers" >}})
-- [Payload size limiter]({{< ref "api-management/traffic-transformation#request-size-limit-overview" >}})
+- [Payload size limiter]({{< ref "api-management/traffic-transformation#request-size-limits-overview" >}})
 - [Rate limiter / throttling]({{< ref "api-management/rate-limit#introduction" >}})
 - [Caching]({{< ref "api-management/gateway-optimizations#" >}})
 - [Enforced timeout]({{< ref "tyk-self-managed#enforced-timeouts" >}})
@@ -102,13 +102,13 @@ Furthermore, the APIM can validate authentication and authorization by scope to 
 
 Server Side Request Forgery (SSRF) is a security vulnerability in web applications where an attacker can manipulate a server to make unauthorized requests to internal or external resources, potentially leading to data leaks or remote code execution. This can allow an attacker to probe or attack other parts of the application's infrastructure, potentially compromising sensitive information and systems.
 
-This is application specific and is largely the responsibility of the API. However, Tyk Gateway can assist with this form of attack through [JSON schema validation]({{< ref "api-management/traffic-transformation#validate-request-using-classic" >}}) for incoming payloads. For example, a schema could contain a regular expression to reject localhost URLs. These URLs could be used by an attacker to perform port scanning for example.
+This is application specific and is largely the responsibility of the API. However, Tyk Gateway can assist with this form of attack through [JSON schema validation]({{< ref "api-management/traffic-transformation#request-validation-using-classic" >}}) for incoming payloads. For example, a schema could contain a regular expression to reject localhost URLs. These URLs could be used by an attacker to perform port scanning for example.
 
 ##### 8 - Security Misconfiguration
 
 Tyk offers several mechanisms to help protect an API from Security Misconfiguration exploits:
 
-- Use [response header manipulation]({{< ref "api-management/traffic-transformation#response-header-overview" >}}) to remove or modify API sensitive information.
+- Use [response header manipulation]({{< ref "api-management/traffic-transformation#response-headers-overview" >}}) to remove or modify API sensitive information.
 - Use [response body manipulation]({{< ref "api-management/traffic-transformation#response-body-overview" >}}) to remove or modify parts containing sensitive information.
 - [TLS]({{< ref "api-management/certificates" >}}) to ensure that clients use the right service and encrypt traffic.
 - [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) with both the clients and API to ensure that callers with explicitly allowed client certificates can connect to the endpoints.
@@ -144,7 +144,7 @@ Attackers may identify and target the third party APIs/services used by an API. 
 
 It is the responsibility of the API to provide protection against these attacks. However, if the organization uses the Gateway as a forwarding proxy to third party APIs, then the following features could be used:
 
-- [JSON Schema validation]({{< ref "api-management/traffic-transformation#validate-request-using-classic" >}}) to validate that an incoming data payload meets a defined schema. Payloads that do not adhere to the schema are rejected.
+- [JSON Schema validation]({{< ref "api-management/traffic-transformation#request-validation-using-classic" >}}) to validate that an incoming data payload meets a defined schema. Payloads that do not adhere to the schema are rejected.
 - [Versioning]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}}) allows newer versions of third party APIs to coexist with the older versions, facilitating deprecation and sunsetting.
 - [TLS]({{< ref "api-management/certificates" >}}) to ensure that clients use the right service and encrypt traffic.
 
@@ -192,7 +192,7 @@ Handle with the API. It can access and understand the data needed to make author
 
 Handle with both the API and the gateway. The approach depends on the type of API:
 
-For REST APIs, it’s the API that’s primarily responsible for returning the correct data. To complement this, the gateway can use [body transforms]({{< ref "api-management/traffic-transformation#response-body-overview" >}}) to remove sensitive data from responses if the API is unable to do so itself. The gateway can also enforce object property-level restrictions using [JSON validation]({{< ref "api-management/traffic-transformation#validate-request-using-classic" >}}), for scenarios where the client is sending data to the API.
+For REST APIs, it’s the API that’s primarily responsible for returning the correct data. To complement this, the gateway can use [body transforms]({{< ref "api-management/traffic-transformation#response-body-overview" >}}) to remove sensitive data from responses if the API is unable to do so itself. The gateway can also enforce object property-level restrictions using [JSON validation]({{< ref "api-management/traffic-transformation#request-validation-using-classic" >}}), for scenarios where the client is sending data to the API.
 
 For GraphQL APIs, use the gateway to define [GraphQL schemas]({{< ref "api-management/graphql#managing-gql-schema" >}}) to limit which properties are queryable, then optionally use [field-based permissions]({{< ref "api-management/graphql#field-based-permission" >}}) to also specify access rights to those properties. 
 
@@ -301,7 +301,7 @@ This issue can be caused by both legitimate consumers and malicious attackers, b
 
 **Restrict Request Flows**: Use [rate limits]({{< ref "api-management/rate-limit#rate-limiting-layers" >}}) and [quotas]({{< ref "api-management/rate-limit#request-quotas" >}}) to prevent excessive API usage. Rate limits are best used for short term control, in the range of seconds. Whereas quotas are more suited to longer terms, in the range of days, weeks or beyond. [Throttling]({{< ref "api-management/rate-limit#request-throttling" >}}) can also be used as a type of enhanced rate limiter that queues and retries requests on the clients behalf, rather than immediately rejecting them.
 
-**Block Excessively Large Requests**: Place reasonable [limitations on payload sizes]({{< ref "api-management/traffic-transformation#request-size-limit-overview" >}}) to prevent oversized requests from reaching upstream servers, thereby avoiding the unnecessary consumption of resources.
+**Block Excessively Large Requests**: Place reasonable [limitations on payload sizes]({{< ref "api-management/traffic-transformation#request-size-limits-overview" >}}) to prevent oversized requests from reaching upstream servers, thereby avoiding the unnecessary consumption of resources.
 
 **Avoid Unnecessary Resource Usage**: Appropriate use of [caching]({{< ref "api-management/gateway-optimizations#" >}}) can reduce server resource consumption by simply returning cached responses instead of generating new ones. The extent to which caching can be used depends on the purpose of the endpoint, as it’s generally unsuitable for requests that modify data or responses that frequently change. Caching can be applied to [particular requests]({{< ref "api-management/gateway-optimizations#endpoint-caching" >}}) or enabled for an [entire API]({{< ref "api-management/gateway-optimizations#basic-caching" >}}), and can also be [controlled by the upstream API]({{< ref "api-management/gateway-optimizations#upstream-cache-control-1" >}}) or [invalidated programmatically]({{< ref "frequently-asked-questions/clear-api-cache" >}}).
 
@@ -341,7 +341,7 @@ Prevent sensitive data, such as usernames, passwords, license keys and other sec
 **Sanitise Responses**
 
 
-Modify or remove sensitive data from responses by using [transforms]({{< ref "api-management/traffic-transformation#" >}}) to alter the [response headers]({{< ref "api-management/traffic-transformation#response-header-overview" >}}) and [body]({{< ref "api-management/traffic-transformation#response-body-overview" >}}).
+Modify or remove sensitive data from responses by using [transforms]({{< ref "api-management/traffic-transformation#" >}}) to alter the [response headers]({{< ref "api-management/traffic-transformation#response-headers-overview" >}}) and [body]({{< ref "api-management/traffic-transformation#response-body-overview" >}}).
 
 <a id="sign-payloads"></a>
 

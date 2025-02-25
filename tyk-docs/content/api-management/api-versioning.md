@@ -368,7 +368,7 @@ This has the following configuration:
 To add an API version, you must add a new entry in the `versions` list:
 - `name`: an identifier for this version of the API, for example `default` or `v1`
 - `expires`: an optional expiry date for the API after which Tyk will reject any access request; accepted format is `2006-01-02 15:04`
-- `paths`: location for configuration of endpoint [ignore]({{< ref "api-management/traffic-transformation#ignore-overview" >}}), [allow]({{< ref "api-management/traffic-transformation#allow-list-overview" >}}) and [block]({{< ref "api-management/traffic-transformation#block-list-overview" >}}) lists
+- `paths`: location for configuration of endpoint [ignore]({{< ref "api-management/traffic-transformation#ignore-authentication-overview" >}}), [allow]({{< ref "api-management/traffic-transformation#allow-list-overview" >}}) and [block]({{< ref "api-management/traffic-transformation#block-list-overview" >}}) lists
 - `use_extended_paths`: set to `true` to enable the `extended_paths` config
 - `extended_paths`: location for configuration of additional [endpoint-level middleware]({{< ref "api-management/traffic-transformation#" >}})
 - `global_*`: configuration of [API-level middleware]({{< ref "api-management/traffic-transformation#" >}}). The wildcard can be replaced by any of the API-level settings e.g. `global_size_limit`

@@ -36,7 +36,7 @@ There are three middleware components that can be scripted with Tyk:
 
 2. **Dynamic event handlers**: These components fire on certain API events (see the event handlers section), these are fired Async and do not have a cooldown timer. These are documented [here]({{< ref "api-management/gateway-events#set-up-a-webhook-event-handler-in-the-tyk-oas-api-definition" >}}).
 
-3. **Virtual endpoints**: These are powerful programmable middleware invoked towards the end of the request processing chain. Unlike the custom JavaScript plugins, the virtual endpoint terminates the request. These are documented [here]({{< ref "api-management/traffic-transformation#virtual-endpoint-overview" >}}).
+3. **Virtual endpoints**: These are powerful programmable middleware invoked towards the end of the request processing chain. Unlike the custom JavaScript plugins, the virtual endpoint terminates the request. These are documented [here]({{< ref "api-management/traffic-transformation#virtual-endpoints-overview" >}}).
 
 The JavaScript (JS) [scripting guide]({{< ref "api-management/plugins/javascript#using-javascript-with-tyk" >}}) provides details of how to access dynamic data (such as the key session object) from your JS functions. Combining these resources provides you with a powerful set of tools for shaping and structuring inbound traffic to your API.
 
@@ -148,7 +148,7 @@ The system API provides access to resources outside of the JavaScript Virtual Ma
 
 #### The `request` object
 
-The `request` object provides a set of arrays that describe the API request. These can be manipulated and, when changed, will affect the request as it passes through the middleware pipeline. For [virtual endpoints]({{< ref "api-management/traffic-transformation#virtual-endpoint-overview" >}}) the request object has a [different structure](#VirtualEndpoint-Request).
+The `request` object provides a set of arrays that describe the API request. These can be manipulated and, when changed, will affect the request as it passes through the middleware pipeline. For [virtual endpoints]({{< ref "api-management/traffic-transformation#virtual-endpoints-overview" >}}) the request object has a [different structure](#VirtualEndpoint-Request).
 
 The structure of the `request` object is:
 
@@ -240,7 +240,7 @@ testJSVMData.NewProcessRequest(function(request, session, config) {
 
 ##### The virtual endpoint `request` object {#VirtualEndpoint-Request}
 
-For [virtual endpoint]({{< ref "api-management/traffic-transformation#virtual-endpoint-overview" >}}) functions the structure of a Javascript `request` object is:
+For [virtual endpoint]({{< ref "api-management/traffic-transformation#virtual-endpoints-overview" >}}) functions the structure of a Javascript `request` object is:
 
 ```typescript
 class VirtualEndpointRequest {

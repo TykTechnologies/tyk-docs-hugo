@@ -6111,10 +6111,10 @@ From v5.3.0 onward, environment variables can have any `KEY_NAME`, and the full 
 
 Key-value references can be included in the following middleware, with the values retrieved dynamically when the middleware is called (during processing of an API request or response):
 - [request body transform]({{< ref "api-management/traffic-transformation#request-body-overview" >}})
-- [request header transform]({{< ref "api-management/traffic-transformation#request-header-overview" >}})
+- [request header transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}})
 - [URL rewrite]({{< ref "api-management/traffic-transformation#url-rewrite-middleware" >}})
 - [response body transform]({{< ref "api-management/traffic-transformation#response-body-overview" >}})
-- [response header transform]({{< ref "api-management/traffic-transformation#response-header-overview" >}})
+- [response header transform]({{< ref "api-management/traffic-transformation#response-headers-overview" >}})
 
 To reference the *Value* assigned to a *Key* in one of the KV stores from these middleware use the following notation:
 - Consul: `$secret_consul.key`

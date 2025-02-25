@@ -58,7 +58,7 @@ If your **upstream service** is protected using Auth Token then similarly, Tyk w
 ### How to use Upstream Token-based Authentication
 Typically Auth Token uses the `Authorization` header to pass the token in the request.
 
-Tyk's [Request Header Transform]({{< ref "api-management/traffic-transformation#request-header-overview" >}}) middleware can be configured to add this header to the request prior to it being proxied to the upstream. To enhance security by restricting visibility of the access token, the key/token can be stored in a [key-value store]({{< ref "tyk-self-managed#from-api-definitions" >}}), with only the reference included in the middleware configuration.
+Tyk's [Request Header Transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) middleware can be configured to add this header to the request prior to it being proxied to the upstream. To enhance security by restricting visibility of the access token, the key/token can be stored in a [key-value store]({{< ref "tyk-self-managed#from-api-definitions" >}}), with only the reference included in the middleware configuration.
 
 <!-- 
 ## Upstream request signing using HMAC
@@ -92,7 +92,7 @@ If the incoming request from the client already has credentials in the `Authoriz
 
 Sometimes a non-standard upstream server might require the authentication credentials to be provided in a different header (i.e. not `Authorization`). With Tyk, you can easily configure a custom header to be used for the credentials if required.
 
-Upstream Basic Authentication is only supported by Tyk OAS APIs. If you are using Tyk Classic APIs, you could create the client credential offline and add the `Authorization` header using the [Request Header Transform]({{< ref "api-management/traffic-transformation#request-header-overview" >}}) middleware.
+Upstream Basic Authentication is only supported by Tyk OAS APIs. If you are using Tyk Classic APIs, you could create the client credential offline and add the `Authorization` header using the [Request Header Transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) middleware.
 
 #### Configuring Upstream Basic Auth in the Tyk OAS API definition
 
