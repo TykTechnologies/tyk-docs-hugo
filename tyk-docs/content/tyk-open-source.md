@@ -286,24 +286,22 @@ To see what options are configurable on a chart and save those options to a cust
 helm show values tyk-helm/tyk-headless > values.yaml
 ```
 
-Some of the necessary configration parameters will be explained in the next steps.
+Some of the necessary configuration parameters will be explained in the next steps.
 
 4. **Installing Redis**
 
-* Recommended: via *Bitnami* chart
-
-For Redis you can use these rather excellent chart provided by Bitnami.
+* Recommended: via *Bitnami* chart - For Redis, you can use these rather excellent chart provided by Bitnami.
 Copy the following commands to add it: 
 
-```bash
-helm repo add bitnami https://charts.bitnami.com/bitnami
-helm install tyk-redis bitnami/redis -n tyk --version 19.0.2
-```
+  ```bash
+  helm repo add bitnami https://charts.bitnami.com/bitnami
+  helm install tyk-redis bitnami/redis -n tyk --version 19.0.2
+  ```
 
 {{< note success >}}
 **Note**
 
-Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "#supported-versions" >}}).
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get a list of [supported versions]({{< ref "#supported-versions" >}}).
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password.
@@ -319,17 +317,17 @@ Follow the notes from the installation output to get connection details and pass
 
 The DNS name of your Redis as set by Bitnami is `tyk-redis-master.tyk.svc.cluster.local:6379`
 You can update them in your local `values.yaml` file under `redis.addrs` and `redis.pass`
-Alternatively, you can use `--set` flag to set it in Tyk installation. For example  `--set redis.pass=$REDIS_PASSWORD`
+Alternatively, you can use `--set` flag to set it in the Tyk installation. For example  `--set redis.pass=$REDIS_PASSWORD`
 
-**Evaluation only: via *simple-redis* chart**
+**For evaluation only: Use *simple-redis* chart**
 
 {{< warning  success >}}
 **Warning**
 
 Another option for Redis, to get started quickly, is to use our *simple-redis* chart.
 Please note that these provided charts must never be used in production or for anything
-but a quick start evaluation only. Use Bitnami redis or Official Redis Helm chart in any other case.
-We provide this chart, so you can quickly deploy *Tyk gateway*, but it is not meant for long term storage of data.
+but a quick start evaluation only. Use Bitnami Redis or Official Redis Helm chart in any other case.
+We provide this chart, so you can quickly deploy *Tyk gateway*, but it is not meant for long-term storage of data.
 
 {{< /warning >}}
 
@@ -343,30 +341,30 @@ helm install redis tyk-helm/simple-redis -n tyk
 helm install tyk-ce tyk-helm/tyk-headless -f values.yaml -n tyk
  ```
 
-Please note that by default, Gateway runs as `Deployment` with `ReplicaCount` is 1. You should not update this part because multiple instances of OSS gateways won't sync the API Definition.
+Please note that by default, Gateway runs as `Deployment` with `ReplicaCount` as 1. You should not update this part because multiple instances of OSS gateways won't sync the API Definition.
 
 ##### Installation Video
 
 See our short video on how to install the Tyk Open Source Gateway.
-Please note that this video shows the use of GH repo, since it recorded before the official repo was available, However,
+Please note that this video shows the use of the Github repository since it was recorded before the official repo was available, However,
 it's very similar to the above commands.
 
 {{< youtube mkyl38sBAF0 >}}
 
 ##### Pump Installation
 By default pump installation is disabled. You can enable it by setting `pump.enabled` to `true` in `values.yaml` file.
-Alternatively, you can use `--set pump.enabled=true` while doing helm install.
+Alternatively, you can use `--set pump.enabled=true` while doing Helm install.
 
 **Quick Pump configuration(Supported from tyk helm v0.10.0)**
 *1. Mongo Pump*
 
-To configure mongo pump, do following changings in `values.yaml` file:
+To configure the Mongo pump, make the following changes in `values.yaml` file:
 1. Set `backend` to `mongo`.
 2. Set connection string in `mongo.mongoURL`.
 
 *2. Postgres Pump*
 
-To configure postgres pump, do following changings in `values.yaml` file:
+To configure the Postgres pump, make the following changes in `values.yaml` file:
 1. Set `backend` to `postgres`.
 2. Set connection string parameters in `postgres` section.
 
@@ -408,13 +406,13 @@ $ git clone https://github.com/TykTechnologies/tyk-ansible
 $ cd tyk-ansible
 ```
 
-3. Run initialisation script to initialise environment
+3. Run the init script to initialize the environment
 
 ```bash
 $ sh scripts/init.sh
 ```
 
-4. Modify `hosts.yml` file to update ssh variables to your server(s). You can learn more about the hosts file [here](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html)
+4. Modify the `hosts.yml` file to update SSH variables to your server(s). For more information about the host file, visit the [Ansible inventory documentation] (https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html)
 
 5. Run ansible-playbook to install `tyk-ce`
 
@@ -422,7 +420,7 @@ $ sh scripts/init.sh
 $ ansible-playbook playbook.yaml -t tyk-ce -t redis
 ```
 
-You can choose to not install Redis by removing the `-t redis`. However Redis is a requirment and needs to be installed for the gateway to run.
+You can choose to not install Redis by removing the `-t redis`. However, Redis is a requirement and needs to be installed for the gateway to run.
 
 #### Supported Distributions
 | Distribution | Version | Supported |
@@ -446,13 +444,13 @@ You can choose to not install Redis by removing the `-t redis`. However Redis is
 | --------- | :---------: | --------- |
 | secrets.APISecret | `352d20ee67be67f6340b4c0605b044b7` | API secret |
 | secrets.AdminSecret | `12345` | Admin secret |
-| redis.host |  | Redis server host if different than the hosts url |
+| redis.host |  | Redis server host if different than the host url |
 | redis.port | `6379` | Redis server listening port |
 | redis.pass |  | Redis server password |
-| redis.enableCluster | `false` | Enable if redis is running in cluster mode |
+| redis.enableCluster | `false` | Enable if Redis is running in cluster mode |
 | redis.storage.database | `0` | Redis server database |
-| redis.tls | `false` | Enable if redis connection is secured with SSL |
-| gateway.service.host | | Gateway server host if different than the hosts url |
+| redis.tls | `false` | Enable if Redis connection is secured with SSL |
+| gateway.service.host | | Gateway server host if different than the host url |
 | gateway.service.port | `8080` | Gateway server listening port |
 | gateway.service.proto | `http` | Gateway server protocol |
 | gateway.service.tls | `false` | Set to `true` to enable SSL connections |
@@ -473,7 +471,7 @@ The Tyk Gateway can be installed following different installation methods includ
 
 #### Install Tyk Gateway On Ubuntu Through Shell
 
-##### Supported Distributions
+##### 
 
 | Distribution | Version | Supported |
 | --------- | :---------: | :---------: |
@@ -530,7 +528,7 @@ You need to replace `<hostname>` for `--redishost=<hostname>` with your own valu
 $ sudo /opt/tyk-gateway/install/setup.sh --listenport=8080 --redishost=<hostname> --redisport=6379 --domain=""
 ```
 
-What you've done here is told the setup script that:
+What you've done here is tell the setup script that:
 
 *   `--listenport=8080`: Listen on port `8080` for API traffic.
 *   `--redishost=<hostname>`: The hostname for Redis.
