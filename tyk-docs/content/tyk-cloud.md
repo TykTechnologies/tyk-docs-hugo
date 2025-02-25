@@ -2410,49 +2410,51 @@ Our team will help you activate this feature and ensure you have access to all t
 
 ##### Steps for Configuring Telemetry Provider in Tyk Cloud
 
-**Step 1. Choosing Your Provider**
+1. **Choosing Your Provider**
 
-In the `Tyk Cloud Console`, select `Telemetry` option. You'll see a grid displaying all supported backends/providers. Click on your preferred backend/provider to begin the configuration process.
+    In the `Tyk Cloud Console`, select `Telemetry` option. You'll see a grid displaying all supported backends/providers. Click on your preferred backend/provider to begin the configuration process.
 
-{{< note success >}}
+    {{< note success >}}
 **Note**
 
 Only a single provider/backend can be configured at any given time.
-{{< /note >}}
+    {{< /note >}}
 
-{{< img src="/img/cloud/telemetry-exports.png" alt="Tyk Cloud Telemetry providers" >}}
+    {{< img src="/img/cloud/telemetry-exports.png" alt="Tyk Cloud Telemetry providers" >}}
 
-**Step 2. Configuring Basic Elements**
+2. **Configuring Basic Elements**
 
-Every telemetry backend shares these fundamental settings:
+    Every telemetry backend shares these fundamental settings:
 
-1. **Connection Toggle:** This switch activates or deactivates your telemetry export. When enabled, Tyk will start sending monitoring data to your chosen platform.
+    1. **Connection Toggle:** This switch activates or deactivates your telemetry export. When enabled, Tyk will start sending monitoring data to your chosen platform.
 
-2. **Sampling Rate:** This setting determines what percentage of your API traffic data gets sent to your monitoring platform. The default is 10%, which means Tyk will send data for one out of every ten API calls.
+    2. **Sampling Rate:** This setting determines what percentage of your API traffic data gets sent to your monitoring platform. The default is 10%, which means Tyk will send data for one out of every ten API calls.
 
-**Step 3. Configuring Optional Settings**
+3. **Configuring Optional Settings**
 
-Beyond the basic settings, you can customize your telemetry with two optional features:
+    Beyond the basic settings, you can customize your telemetry with two optional features:
 
-1. **Tags to Add to the Traces :**
-   Add custom labels to your telemetry data to make it easier to analyze. For example:
-   ```
-   environment:production
-   region:europe
-   team:api-gateway
-   ```
+    1. **Tags to Add to the Traces :**
 
-2. **Fields to Filter :**
-   Specify which data fields should be excluded from your telemetry. This is useful for ensuring sensitive information doesn't get sent to your monitoring platform.
+        Add custom labels to your telemetry data to make it easier to analyze. For example:
+        ```
+        environment:production
+        region:europe
+        team:api-gateway
+        ```
 
-**Step 4. Configuring Provider-Specific Configuration**
+    2. **Fields to Filter :**
 
-Each monitoring platform has its own requirements for connection. Let's explore what you'll need for each:
+        Specify which data fields should be excluded from your telemetry. This is useful for ensuring sensitive information doesn't get sent to your monitoring platform.
+
+4. **Configuring Provider-Specific Configuration**
+
+    Each monitoring platform has its own requirements for connection. Let's explore what you'll need for each:
 
 ###### Configuring Datadog Provider
 
-- **Provider Site:** Enter your Datadog URL (like us5.datadoghq.com)
-- **API Key:** Your Datadog authentication key
+- **Provider Site:** Enter your Datadog URL (like us5.datadoghq.com). To obtain your URL, refer to the following [docs](https://docs.datadoghq.com/getting_started/site/#access-the-datadog-site).
+- **API Key:** Enter your Datadog API key. To obtain your API Key, refer to the following [docs](https://docs.datadoghq.com/account_management/api-app-keys/#add-an-api-key-or-client-token).
 
   Example: A Datadog setup might look like:
   ```
@@ -2462,10 +2464,12 @@ Each monitoring platform has its own requirements for connection. Let's explore 
 
 {{< img src="/img/cloud/telemetry-datadog.png" alt="Tyk Cloud Telemetry Datadog" >}}
 
+<br>
+
 ###### Configuring Dynatrace Provider {#configuring-dynatrace-provider}
 
-- **Provider Endpoint:** Your Dynatrace environment URL
-- **API Token:** Your Dynatrace access token
+- **Provider Endpoint:** Enter Your Dynatrace environment URL. To obtain your URL, refer to the following [docs](https://docs.dynatrace.com/docs/discover-dynatrace/get-started/monitoring-environment#environment-id).
+- **API Token:** Enter your Dynatrace access token. To obtain your Access Token, refer to the following [docs](https://docs.dynatrace.com/docs/manage/identity-access-management/access-tokens-and-oauth-clients/access-tokens#create-api-token).
 
   Example configuration:
   ```
@@ -2475,10 +2479,12 @@ Each monitoring platform has its own requirements for connection. Let's explore 
 
 {{< img src="/img/cloud/telemetry-dynatrace.png" alt="Tyk Cloud Telemetry Dynatrace" >}}
 
+<br>
+
 ###### Configuring New Relic Provider {#configuring-new-relic-provider}
 
-- **Provider Endpoint:** Your New Relic HTTP endpoint
-- **API Token:** Your New Relic license key
+- **Provider Endpoint:** Your New Relic HTTP endpoint. To obtain your endpoint, refer to the following [docs](https://docs.newrelic.com/docs/opentelemetry/best-practices/opentelemetry-otlp/#configure-endpoint-port-protocol).
+- **API Token:** Your New Relic license key. To obtain your license key, refer to the following [docs](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/).
 
   Example configuration:
   ```
@@ -2488,10 +2494,12 @@ Each monitoring platform has its own requirements for connection. Let's explore 
 
 {{< img src="/img/cloud/telemetry-newrelic.png" alt="Tyk Cloud Telemetry NewRelic" >}}
 
+<br>
+
 ###### Configuring Elastic Provider {#configuring-elastic-provider}
 
-- **Provider Endpoint:** Your Elastic APM server address
-- **Secret Token:** Your Elastic APM authentication token
+- **Provider Endpoint:** Your Elastic APM server address.
+- **Secret Token:** Your Elastic APM authentication token. To obtain your token, refer to the following [docs](https://www.elastic.co/guide/en/observability/current/apm-secret-token.html#apm-create-secret-token).
   
   Example setup:
   ```
@@ -2500,6 +2508,8 @@ Each monitoring platform has its own requirements for connection. Let's explore 
   ```
 
 {{< img src="/img/cloud/telemetry-elastic.png" alt="Tyk Cloud Telemetry Elastic" >}}
+
+<br>
 
 ###### Configuring Custom Provider {#configuring-custom-provider}
 
@@ -2519,6 +2529,7 @@ For when you need to connect to a different monitoring system:
 
 {{< img src="/img/cloud/telemetry-custom.png" alt="Tyk Cloud Telemetry Custom" >}}
 
+<br>
 
 ##### Configure Telemetry Export in Cloud Data Plane Deployments
 
@@ -2527,7 +2538,9 @@ When creating a new Cloud Data Plane deployment or editing an existing one, you 
 When you modify any general telemetry settings in Tyk Cloud, these changes don't take immediate effect.
 Your Cloud Data Planes need to be redeployed to activate the new telemetry configuration.
 
-###### Configuration Options
+<br>
+
+###### Configuration Options {#configuration-options}
 
 {{< img src="/img/cloud/telemetry-enable.png" alt="Tyk Cloud Telemetry Enable" >}}
 
@@ -2542,6 +2555,17 @@ Your Cloud Data Planes need to be redeployed to activate the new telemetry confi
 
   The sampling level can be configured at both the organization level (while setting up the provider) and the `Cloud Data Plane`. The configuration at the Cloud Data Plane will override the organization-level settings.
   {{< /note >}}
+
+2. **Verifying Cloud Data Plane Configuration**
+    
+    As shown in the below image, you should observe `Telemetry Export` to be enabled:
+
+    {{< img src="/img/cloud/tyk-cloud-data-plane-enable-telemetry.png" alt="Tyk Cloud Data Plane Telemetry Enabled" >}}
+
+
+##### Verifying the Setup
+
+
 
 ### Tyk Cloud MDCB Supported versions
 
