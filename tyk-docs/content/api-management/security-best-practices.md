@@ -85,7 +85,7 @@ To prevent Broken Functional Level Authorization (BFLA), requests to REST API en
 Tyk offers several measures to assist with protection from BFLA threats:
 
 - *Establish path-based access rights*: [Policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}) are predefined sets of rules which grant access to particular APIs. These can include [path-based permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}), which restrict access to particular paths and methods within an API. Clients can be assigned one or more policies which the Gateway will validate when it receives a request.
-- *Access Control*: Tyk has plugins that control access to API endpoints. They are known as [allowlist]({{< ref "api-management/traffic-transformation#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) and [blocklist]({{< ref "api-management/traffic-transformation#configuring-the-block-list-in-the-api-designer" >}}) and can be configured via the Endpoint Designer of an API Definition. Both plugins grant and deny access to API paths and methods, but do so in different ways, which makes them mutually exclusive. When the allowlist plugin is used, only the marked paths and methods are allowed, all other paths and methods are blocked. This can be perceived as *deny by default* since it provides the least privileges. The reverse is true for the blocklist plugin, only the paths and methods marked as blocklist are blocked, all other paths and methods are allowed. It is recommended to use the *allowlist* approach, since it is the most restrictive, only allowing marked endpoint paths and paths.
+- *Access Control*: Tyk has plugins that control access to API endpoints. They are known as [allowlist]({{< ref "api-management/traffic-transformation#api-definition" >}}) and [blocklist]({{< ref "api-management/traffic-transformation#api-designer-3" >}}) and can be configured via the Endpoint Designer of an API Definition. Both plugins grant and deny access to API paths and methods, but do so in different ways, which makes them mutually exclusive. When the allowlist plugin is used, only the marked paths and methods are allowed, all other paths and methods are blocked. This can be perceived as *deny by default* since it provides the least privileges. The reverse is true for the blocklist plugin, only the paths and methods marked as blocklist are blocked, all other paths and methods are allowed. It is recommended to use the *allowlist* approach, since it is the most restrictive, only allowing marked endpoint paths and paths.
 - *CORS*: This [functionality]({{< ref "api-management/gateway-config-tyk-classic#cors" >}}) allows the Tyk Gateway to limit API access to particular browser-based consumers.
 
 ##### 6 - Unrestricted Access To Sensitive Business Flows
@@ -114,7 +114,7 @@ Tyk offers several mechanisms to help protect an API from Security Misconfigurat
 - [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) with both the clients and API to ensure that callers with explicitly allowed client certificates can connect to the endpoints.
 - [Error Templates]({{< ref "api-management/gateway-events#error-templates" >}}) can be used to return a response body based on status code and content type. This can help minimize the implementation details returned to the client.
 - [CORS functionality]({{< ref "api-management/gateway-config-tyk-classic#cors" >}}) allows the Tyk Gateway to limit API access to particular browser-based consumers.
-- [Policy Path-Based Permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}) and the [allowlist]({{< ref "api-management/traffic-transformation#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) plugin can be used to prevent clients from accessing API endpoints using non-authorized HTTP methods. For example, blocking the use of the DELETE method on an endpoint which should only accept GET requests.
+- [Policy Path-Based Permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}) and the [allowlist]({{< ref "api-management/traffic-transformation#api-definition" >}}) plugin can be used to prevent clients from accessing API endpoints using non-authorized HTTP methods. For example, blocking the use of the DELETE method on an endpoint which should only accept GET requests.
 - [Environment variables]({{< ref "tyk-environment-variables" >}}) can help standardize configuration across containerised deployments.
 - For GraphQL APIs:
 - [Schema Introspection]({{< ref "api-management/graphql#introspection" >}}) ensures that the Tyk Dashboard automatically uses the schema of the upstream GraphQL API and can keep it synchronised if it changes.
@@ -198,7 +198,7 @@ For GraphQL APIs, use the gateway to define [GraphQL schemas]({{< ref "api-manag
 
 ##### Function Level Authorization
 
-Handle with the gateway. Use [security policies]({{< ref "api-management/policies" >}}), [path-based permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}), [allow lists]({{< ref "api-management/traffic-transformation#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) and [block lists]({{< ref "api-management/traffic-transformation#configuring-the-block-list-in-the-api-designer" >}}) to manage authorization of hosts and paths.
+Handle with the gateway. Use [security policies]({{< ref "api-management/policies" >}}), [path-based permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}), [allow lists]({{< ref "api-management/traffic-transformation#api-definition" >}}) and [block lists]({{< ref "api-management/traffic-transformation#api-designer-3" >}}) to manage authorization of hosts and paths.
 
 #### Assign Least Privileges
 
@@ -206,7 +206,7 @@ Design [security policies]({{< ref "api-management/policies#what-is-a-security-p
 
 ##### Deny by Default
 
-Favor use of [allow lists]({{< ref "api-management/traffic-transformation#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) to explicitly allow endpoints access, rather than [block lists]({{< ref "api-management/traffic-transformation#configuring-the-block-list-in-the-api-designer" >}}) to explicitly deny. This approach prevents new API endpoints from being accessible by default, as the presence of other, allowed endpoints means that access to them is implicitly denied.
+Favor use of [allow lists]({{< ref "api-management/traffic-transformation#api-definition" >}}) to explicitly allow endpoints access, rather than [block lists]({{< ref "api-management/traffic-transformation#api-designer-3" >}}) to explicitly deny. This approach prevents new API endpoints from being accessible by default, as the presence of other, allowed endpoints means that access to them is implicitly denied.
 
 ##### Validate and Control All User Input
 

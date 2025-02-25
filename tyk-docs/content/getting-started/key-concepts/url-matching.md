@@ -41,7 +41,7 @@ URL path matching is fundamental to the behavior of various Tyk middleware, incl
 {{< note success >}}
 **Note**  
 
-The [URL Rewriting]({{< ref "api-management/traffic-transformation#how-url-rewriting-works" >}}) middleware's
+The [URL Rewriting]({{< ref "api-management/traffic-transformation#working-13" >}}) middleware's
 rule check implements regular expression matching only: it does not apply URL path matching logic and is not
 affected by the configurations described in this section
 {{< /note >}}

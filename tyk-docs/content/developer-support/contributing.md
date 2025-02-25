@@ -110,7 +110,7 @@ The [Tyk Dashboard OpenAPI Document](https://github.com/TykTechnologies/tyk-docs
 
 **Dashboard UI**
 
-The Tyk Classic APIs *Endpoint Designer* shows configuration of [blacklist]({{< ref "api-management/traffic-transformation#configuring-the-block-list-in-the-api-designer" >}}) and [whitelist]({{< ref "api-management/traffic-transformation#configuring-the-allow-list-in-the-api-designer" >}}) middleware plugins.
+The Tyk Classic APIs *Endpoint Designer* shows configuration of [blacklist]({{< ref "api-management/traffic-transformation#api-designer-3" >}}) and [whitelist]({{< ref "api-management/traffic-transformation#api-definition-1" >}}) middleware plugins.
     
 ##### Tyk MDCB
 

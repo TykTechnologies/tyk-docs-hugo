@@ -39,4 +39,4 @@ Your Tyk Gateway can listen on multiple domains/subdomains through the use of re
   * `getUser`
   * `GetUser`
 
-If set to true, this will override ignoring the case for a particular endpoint with the [Ignore]({{< ref "api-management/traffic-transformation#configuring-the-middleware-in-the-api-designer" >}}) and [Allowlist]({{< ref "api-management/traffic-transformation#configuring-the-allow-list-in-the-api-designer" >}}) plugins. This setting can be overriden at a "global" Tyk level by setting `ignore_endpoint_case` to `true` in your `tyk.conf` file. See [ignore_endpoint_case]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) for details.
+If set to true, this will override ignoring the case for a particular endpoint with the [Ignore]({{< ref "api-management/traffic-transformation#api-designer-7" >}}) and [Allowlist]({{< ref "api-management/traffic-transformation#api-definition-1" >}}) plugins. This setting can be overriden at a "global" Tyk level by setting `ignore_endpoint_case` to `true` in your `tyk.conf` file. See [ignore_endpoint_case]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) for details.

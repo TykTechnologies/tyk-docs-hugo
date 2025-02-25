@@ -364,7 +364,7 @@ When working with Tyk Classic APIs the middleware is configured in the Tyk Class
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/traffic-transformation#allow-list-using-tyk-oas" >}}) page.
 
-#### Configuring the allow list in the Tyk Classic API Definition
+#### API Definition
 
 To enable and configure the allow list you must add a new `white_list` object to the `extended_paths` section of your API definition.
 
@@ -2897,7 +2897,7 @@ There are three different levels of granularity that can be used when configurin
 
 The API-level size limit has not yet been implemented for Tyk OAS APIs.
 
-You can work around this by implementing a combination of endpoint-level size limits and [allow]({{< ref "api-management/traffic-transformation#configuring-the-allow-list-in-the-tyk-oas-api-definition" >}}) or [block]({{< ref "api-management/traffic-transformation#configuring-the-block-list-in-the-api-designer" >}}) lists.
+You can work around this by implementing a combination of endpoint-level size limits and [allow]({{< ref "api-management/traffic-transformation#api-definition" >}}) or [block]({{< ref "api-management/traffic-transformation#api-designer-3" >}}) lists.
 
 ##### Applying a size limit for a specific endpoint
 
@@ -4378,7 +4378,7 @@ For each parameter, a schema can be declared that defines the `type` of data tha
 
 ###### Operation (endpoint-level) parameters
 
-An operation is a combination of HTTP method and path or, as Tyk calls it, an endpoint - for example `GET /users`. Operation, or endpoint-level parameters can be defined in the OpenAPI description and will apply only to that operation within the API. These can be added or modified within Tyk Dashboard's [API designer](#configuring-the-middleware-in-the-api-designer).
+An operation is a combination of HTTP method and path or, as Tyk calls it, an endpoint - for example `GET /users`. Operation, or endpoint-level parameters can be defined in the OpenAPI description and will apply only to that operation within the API. These can be added or modified within Tyk Dashboard's [API designer](#api-designer-22).
 
 ###### Common (path-level) parameters
 
@@ -4744,9 +4744,9 @@ The [OpenAPI Specification](https://learn.openapis.org/specification/docs.html#a
 Tyk leverages examples from your API documentation (in OpenAPI Spec format) to generate mock responses for the API exposed via the gateway. Based on this data, Tyk adds a new middleware named "Mock Response" and returns various mock responses according to your spec. Refer to the [Mock configuration guide]({{< ref "api-management/traffic-transformation#automatic-configuration-inferred-from-your-openapi-document" >}}) to learn how to do this.
 
 The specification provides three methods for Tyk to deduce the mock response: `example`, `examples` and `schema`. 
-1. `example`: A sample value that could be returned in a specific field in a response (see [below](#1-using-example-to-generate-a-mock-response))
-2. `examples`: A map pairing an example name with an Example Object (see [below](#2-using-examples-to-generate-a-mock-response))
-3. `schema`: JSON schema for the expected response body (see [below](#3-using-schema-to-generate-a-mock-response)
+1. `example`: A sample value that could be returned in a specific field in a response (see [below](#using-example-to-generate-a-mock-response))
+2. `examples`: A map pairing an example name with an Example Object (see [below](#using-examples-to-generate-a-mock-response))
+3. `schema`: JSON schema for the expected response body (see [below](#using-schema-to-generate-a-mock-response)
 
 Note: 
 - `example` and `examples` are mutually exclusive within the OpenAPI Document for a field in the `responses` object: the developer cannot provide both for the same object.
@@ -5393,7 +5393,7 @@ You can use the API Designer in the Tyk Dashboard to configure the Mock Response
 
 1. **Add an endpoint for the path and configure a list plugin**
 
-    For the mock response to be enabled, the endpoint must also be in a list. We recommend adding the path to an allow list by [selecting]({{< ref "api-management/traffic-transformation#configuring-the-allow-list-in-the-api-designer" >}}) the **Whitelist** plugin.
+    For the mock response to be enabled, the endpoint must also be in a list. We recommend adding the path to an allow list by [selecting]({{< ref "api-management/traffic-transformation#api-definition-1" >}}) the **Whitelist** plugin.
 
 2. **Add the mock response plugin**
 
