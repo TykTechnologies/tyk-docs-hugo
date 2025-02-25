@@ -17,8 +17,8 @@ aliases:
 Here we offer some examples to demonstrate valid use of JavaScript within Virtual Endpoints. You can either copy and paste the JavaScript code into the code editor in the Tyk Dashboard API Designer, or create a file and place it in a subdirectory of the Tyk configuration environment (for example under the `middleware` folder in your Tyk installation).
 
 For instruction on how to configure the Virtual Endpoint middleware for your APIs, please see the appropriate documentation for the format of API that you are using:
-- [Tyk OAS API]({{< ref "product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-oas" >}})
-- [Tyk Classic API]({{< ref "product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-classic" >}})
+- [Tyk OAS API]({{< ref "api-management/traffic-transformation#virtual-endpoint-using-tyk-oas" >}})
+- [Tyk Classic API]({{< ref "api-management/traffic-transformation#virtual-endpoint-using-classic" >}})
 
 ## Example 1: Accessing Tyk data objects
 
