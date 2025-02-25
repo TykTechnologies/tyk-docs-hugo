@@ -746,7 +746,7 @@ You can use the API Designer in the Tyk Dashboard to configure the block list mi
 
 #### Tyk Operator
 
-Similar to the configuration of a [Tyk Classic API Definition](#tyk-classic) you must add a new `black_list` object to the `extended_paths` section of your API definition. Furthermore, the `use_extended_paths` configuration parameter should be set to `true`.
+Similar to the configuration of a Tyk Classic API Definition you must add a new `black_list` object to the `extended_paths` section of your API definition. Furthermore, the `use_extended_paths` configuration parameter should be set to `true`.
 
 {{< note success >}}
 **Note**
@@ -994,7 +994,7 @@ You can use the API Designer in the Tyk Dashboard to configure the per-endpoint 
 
 #### Tyk Operator
 
-The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic).
+The process for configuring the middleware in Tyk Operator is similar to that explained in configuring the middleware in the Tyk Classic API Definition.
 
 It is possible to prevent tracking for all endpoints of an API by configuring the `do_not_track` field in the root of your API definition as follows:
 
@@ -1018,7 +1018,7 @@ spec:
     strip_listen_path: true
 ```
 
-If you want to disable tracking only for selected endpoints, then the process is similar to that defined in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic), i.e. you must add a new `do_not_track_endpoints` list to the extended_paths section of your API definition.
+If you want to disable tracking only for selected endpoints, then the process is similar to that defined in configuring the middleware in the Tyk Classic API Definition, i.e. you must add a new `do_not_track_endpoints` list to the extended_paths section of your API definition.
 This should contain a list of objects representing each endpoint `path` and `method` that should have tracking disabled:
 
 ```yaml {linenos=true, linenostart=1, hl_lines=["31-33"]}
@@ -1314,7 +1314,7 @@ You can use the API Designer in the Tyk Dashboard to configure the Ignore Authen
 
 #### Tyk Operator
 
-The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic). It is possible to configure an enforced timeout using the `ignored` object within the `extended_paths` section of the API Definition.
+The process for configuring the middleware in Tyk Operator is similar to that explained in configuring the middleware in the Tyk Classic API Definition. It is possible to configure an enforced timeout using the `ignored` object within the `extended_paths` section of the API Definition.
 
 In the example below the ignore authentication middleware has been configured for requests to the `GET /get` endpoint. Any such calls will skip the authentication step in the Tyk Gateway's processing chain.
 - the middleware has been configured to be case insensitive, so calls to `GET /Get` will also skip authentication
@@ -1588,7 +1588,7 @@ You can use the API Designer in the Tyk Dashboard to configure the internal endp
 
 #### Tyk Operator
 
-The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic). The middleware can be configured by adding a new `internal` object to the `extended_paths` section of your API definition.
+The process for configuring the middleware in Tyk Operator is similar to that explained in configuring the middleware in the Tyk Classic API Definition. The middleware can be configured by adding a new `internal` object to the `extended_paths` section of your API definition.
 
 In the example below the internal endpoint middleware has been configured for HTTP `GET` requests to the `/status/200` endpoint. Any requests made to this endpoint that originate externally to Tyk will be rejected with `HTTP 403 Forbidden`. Conversely, the endpoint can be reached internally by another API at `tyk://<listen_path>/status/200`.
 
@@ -1826,7 +1826,7 @@ You can use the API Designer in the Tyk Dashboard to configure the request metho
 
 #### Tyk Operator
 
-The process for configuring a request method transform for an endpoint in Tyk Operator is similar to that defined in section [configuring a Request Method Transform in the Tyk Classic API Definition](#tyk-classic).
+The process for configuring a request method transform for an endpoint in Tyk Operator is similar to that defined in section configuring a Request Method Transform in the Tyk Classic API Definition.
 
 To configure a transformation of the request method you must add a new `method_transforms` object to the `extended_paths` section of your API definition:
 
@@ -2195,7 +2195,7 @@ Use the *save* or *create* buttons to save the changes and activate the Request 
 
 #### Tyk Operator
 
-The process for configuring a request body transform is similar to that defined in section [Configuring the middleware in the Tyk Classic API Definition](#tyk-classic). Tyk Operator allows you to configure a request body transform by adding a `transform` object to the `extended_paths` section of your API definition.
+The process for configuring a request body transform is similar to that defined in section configuring the middleware in the Tyk Classic API Definition. Tyk Operator allows you to configure a request body transform by adding a `transform` object to the `extended_paths` section of your API definition.
 
 In the example below the Request Body middleware (`transform`) has been configured for `HTTP POST` requests to the `/anything` endpoint. The Request Body Transform middleware is directed to use the template located in the blob included in the `template_source` field. The input (pre-transformation) request payload will be json format and session metadata will be available for use in the transformation.
 
@@ -2696,7 +2696,7 @@ Note that you must click **ADD** to add a header to the list (for appending or d
 
 #### Tyk Operator
 
-The process for configuring a request header transform is similar to that defined in section [Configuring the Request Header Transform in the Tyk Classic API Definition](#tyk-classic). Tyk Operator allows you to configure a request size limit for [all endpoints of an API](#tyk-operator-api) or for a [specific API endpoint](#tyk-operator-endpoint).
+The process for configuring a request header transform is similar to that defined in section Configuring the Request Header Transform in the Tyk Classic API Definition. Tyk Operator allows you to configure a request size limit for [all endpoints of an API](#tyk-operator-api) or for a [specific API endpoint](#tyk-operator-endpoint).
 
 ##### API-level transform {#tyk-operator-api}
 
@@ -3080,7 +3080,7 @@ The Tyk Classic API Designer does not provide an option to configure `global_siz
 
 #### Tyk Operator
 
-The process for configuring a request size limit is similar to that defined in section [configuring the middleware in the Tyk Classic API Definition](#tyk-classic). Tyk Operator allows you to configure a request size limit for [all endpoints of an API](#tyk-operator-api) or for a [specific API endpoint](#tyk-operator-endpoint).
+The process for configuring a request size limit is similar to that defined in section configuring the middleware in the Tyk Classic API Definition. Tyk Operator allows you to configure a request size limit for [all endpoints of an API](#tyk-operator-api) or for a [specific API endpoint](#tyk-operator-endpoint).
 
 ##### Applying a size limit for a specific API {#tyk-operator-api}
 
@@ -3504,7 +3504,7 @@ You can use the API Designer in the Tyk Dashboard to configure the response body
 
 #### Tyk Operator
 
-The process of configuring a transformation of a response body for a specific endpoint is similar to that defined in section [configuring the middleware in the Tyk Classic API Definition](#tyk-classic) for the Tyk Classic API definition. To enable the middleware you must add a new `transform_response` object to the `extended_paths` section of your API definition.
+The process of configuring a transformation of a response body for a specific endpoint is similar to that defined in section configuring the middleware in the Tyk Classic API Definition for the Tyk Classic API definition. To enable the middleware you must add a new `transform_response` object to the `extended_paths` section of your API definition.
 
 In the examples below, the Response Body Transform middleware (`transform_response`) is directed to use the template located in the `template_source`, decoding the xml in the base64 encoded string. The input (pre-transformation) response payload will be `xml` format and there is no session metadata provided for use in the transformation.
 
@@ -4107,7 +4107,7 @@ Note that you must click **ADD** to add a header to the list (for appending or d
 
 #### Tyk Operator
 
-The process for configuring a response header transform in Tyk Operator is similar to that defined in section [configuring the Response Header Transform in the Tyk Classic API Definition](#tyk-classic). Tyk Operator allows you to configure a response header transformation for [all endpoints of an API](#tyk-operator-endpoint) or for a [specific API endpoint](#tyk-operator-api).
+The process for configuring a response header transform in Tyk Operator is similar to that defined in section configuring the Response Header Transform in the Tyk Classic API Definition. Tyk Operator allows you to configure a response header transformation for [all endpoints of an API](#tyk-operator-endpoint) or for a [specific API endpoint](#tyk-operator-api).
 
 ##### API-level transform {#tyk-operator-api}
 
@@ -4623,7 +4623,7 @@ You can use the API Designer in the Tyk Dashboard to configure the request valid
 
 #### Tyk Operator
 
-The process for configuring the middleware in Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic). To configure the request validation middleware you must add a new `validate_json` object to the `extended_paths` section of your API definition, for example:
+The process for configuring the middleware in Tyk Operator is similar to that explained in configuring the middleware in the Tyk Classic API Definition. To configure the request validation middleware you must add a new `validate_json` object to the `extended_paths` section of your API definition, for example:
 
 The example API Definition below configures an API to listen on path `/httpbin` and forwards requests upstream to http://httpbin.org.
 
@@ -5419,7 +5419,7 @@ For the mock response to be enabled, the endpoint must also be in a list. We rec
 
 #### Tyk Operator
 
-The process of configuring a mock response is similar to that defined in the [configuring the middleware in Tyk Classic API definition](#tyk-classic) section.
+The process of configuring a mock response is similar to that defined in the configuring the middleware in Tyk Classic API definition section.
 
 To configure a mock response, you must first add a mock response configuration object to the `extended_paths` section, e.g. one of allow list (`white_list`), block list (`black_list`) or ignore authentication (`ignore`). The mock response configuration object has the following properties:
 
@@ -6102,9 +6102,9 @@ You can use the API Designer in the Tyk Designer to configure the URL rewrite mi
 
 #### Tyk Operator
 
-The process for configuring the URL rewriter in Tyk Operator is similar to that explained in [configuring the URL rewriter in the Tyk Classic API Definition](#tyk-classic). To configure the URL rewriter you must add a new `url_rewrites` object to the `extended_paths` section of your API definition.
+The process for configuring the URL rewriter in Tyk Operator is similar to that explained in configuring the URL rewriter in the Tyk Classic API Definition. To configure the URL rewriter you must add a new `url_rewrites` object to the `extended_paths` section of your API definition.
 
-The example API Definition provides the corresponding custom resource configuration for the [Tyk Classic API Definition example](#tyk-classic), configuring an API to listen on path `/url-rewrite` and forward requests upstream to http://httpbin.org. The URL rewrites middleware would match the path for a request to the `GET /anything/books/author` endpoint against the pure regex `/anything/(\w+)/(\w+)`. The request (target) URL will then be rewritten to `/anything/library/service?value1=$1&value2=$2`.
+The example API Definition provides the corresponding custom resource configuration for the Tyk Classic API Definition example, configuring an API to listen on path `/url-rewrite` and forward requests upstream to http://httpbin.org. The URL rewrites middleware would match the path for a request to the `GET /anything/books/author` endpoint against the pure regex `/anything/(\w+)/(\w+)`. The request (target) URL will then be rewritten to `/anything/library/service?value1=$1&value2=$2`.
 
 ```yaml {linenos=true, linenostart=1, hl_lines=["26-31"]}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -6140,7 +6140,7 @@ spec:
               triggers: []
 ```
 
-URL Rewrite Triggers can be specified in a similar way. The Tyk Operator example below is the equivalent for the advanced triggers example included in the [configuring the URL rewriter in the Tyk Classic API Definition](#tyk-classic) section above.
+URL Rewrite Triggers can be specified in a similar way. The Tyk Operator example below is the equivalent for the advanced triggers example included in the configuring the URL rewriter in the Tyk Classic API Definition section above.
 
 ```yaml {linenos=true, linenostart=1, hl_lines=["26-49"]}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -6568,7 +6568,7 @@ The Tyk Classic API Designer does not provide options to configure `use_session`
 
 #### Tyk Operator
 
-The process for configuring a virtual endpoint using Tyk Operator is similar to that explained in [configuring the middleware in the Tyk Classic API Definition](#tyk-classic)
+The process for configuring a virtual endpoint using Tyk Operator is similar to that explained in configuring the middleware in the Tyk Classic API Definition
 
 The example API Definition below configures an API to listen on path `/httpbin` and forwards requests upstream to `http://httpbin.org`. The Virtual Endpoint middleware has been configured for requests to the `GET /virtual` endpoint. For any call made to this endpoint, Tyk will invoke the function `myVirtualHandler` that is base64 encoded in the `function_source_uri` field. This virtual endpoint does not require access to the session data and will not proxy the request on to the upstream if there is an error when processing the `myVirtualHandler` function.
 
