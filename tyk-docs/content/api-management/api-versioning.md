@@ -125,7 +125,7 @@ API sunsetting is the process of phasing out or retiring an older version of an 
 
 When sunsetting API versions, you may have endpoints that become deprecated between versions. It can be more user friendly to retain those endpoints but return a helpful error, instead of just returning `HTTP 404 not found`.
 
-This is easy to do with Tyk. You can include the deprecated endpoint in the new version of the API and configure the [mock response]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}) middleware to provide your clients with relevant information and instruction. Alternatively, you could return a 302 header and redirect the user to the new endpoint.
+This is easy to do with Tyk. You can include the deprecated endpoint in the new version of the API and configure the [mock response]({{< ref "api-management/traffic-transformation#mock-response-overview" >}}) middleware to provide your clients with relevant information and instruction. Alternatively, you could return a 302 header and redirect the user to the new endpoint.
 
 ## Authorizing access to versioned APIs
 
@@ -368,10 +368,10 @@ This has the following configuration:
 To add an API version, you must add a new entry in the `versions` list:
 - `name`: an identifier for this version of the API, for example `default` or `v1`
 - `expires`: an optional expiry date for the API after which Tyk will reject any access request; accepted format is `2006-01-02 15:04`
-- `paths`: location for configuration of endpoint [ignore]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}), [allow]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}}) and [block]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware" >}}) lists
+- `paths`: location for configuration of endpoint [ignore]({{< ref "api-management/traffic-transformation#ignore-authentication-overview" >}}), [allow]({{< ref "api-management/traffic-transformation#allow-list-overview" >}}) and [block]({{< ref "api-management/traffic-transformation#block-list-overview" >}}) lists
 - `use_extended_paths`: set to `true` to enable the `extended_paths` config
-- `extended_paths`: location for configuration of additional [endpoint-level middleware]({{< ref "advanced-configuration/transform-traffic" >}})
-- `global_*`: configuration of [API-level middleware]({{< ref "advanced-configuration/transform-traffic" >}}). The wildcard can be replaced by any of the API-level settings e.g. `global_size_limit`
+- `extended_paths`: location for configuration of additional [endpoint-level middleware]({{< ref "api-management/traffic-transformation#" >}})
+- `global_*`: configuration of [API-level middleware]({{< ref "api-management/traffic-transformation#" >}}). The wildcard can be replaced by any of the API-level settings e.g. `global_size_limit`
 - `override_target`: alternative upstream (target) URL that should be used for this version, overriding the `target_url` configured in the `proxy` [section]({{< ref "api-management/gateway-config-tyk-classic#proxytarget_url" >}}) of the API definition; this can be used to redirect to a different hostname or domain if required
 
 There is also some API-level configuration for versioning, which is located in the `definition` section of the Tyk Classic API definition:

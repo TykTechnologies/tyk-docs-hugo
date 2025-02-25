@@ -50,7 +50,7 @@ We can see that **19,253.75** RPS was recorded for the *untracked* API; with **1
 Tyk is configurable, allowing fine grained control over which information should be recorded and which can be skipped, thus reducing CPU cycles, traffic and storage.
 
 Users can selectively prevent the generation of analytics for
-[do_not_track]({{<ref "product-stack/tyk-gateway/middleware/do-not-track-middleware">}}) middleware:
+[do_not_track]({{<ref "api-management/traffic-transformation#do-not-track-overview">}}) middleware:
 - **Per API**: Tyk Gateway will not create records for requests/responses for any endpoints of an API.
 - **Per Endpoint**: Tyk Gateway will not create records for requests/responses for specific endpoints.
 
@@ -58,7 +58,7 @@ When set, this prevents Tyk Gateway from generating the transaction records. Wit
 
 ### Conclusion
 
-[Disabling]({{<ref "product-stack/tyk-gateway/middleware/do-not-track-middleware">}})  the creation of analytics (either per API or for specific endpoints) helps to reduce CPU cycles and network requests for systems that exhibit high load and traffic, e.g. social media platforms, streaming, financial services and trading platforms.
+[Disabling]({{<ref "api-management/traffic-transformation#do-not-track-overview">}})  the creation of analytics (either per API or for specific endpoints) helps to reduce CPU cycles and network requests for systems that exhibit high load and traffic, e.g. social media platforms, streaming, financial services and trading platforms.
 
 Application decisions need to be made concerning which endpoints are non critical and can thus have analytics disabled. Furthermore, benchmarking and testing will be required to evaluate the actual benefits for the application specific use case.
 

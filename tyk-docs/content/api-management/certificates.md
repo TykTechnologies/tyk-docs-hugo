@@ -38,21 +38,15 @@ In this section, we delve into the following key topics:
 
 ## Enable TLS/SSL in Tyk
 
-TLS/SSL protocol is supported by all Tyk components. You can enable SSL in Tyk Gateway and Dashboard by modifying the `tyk.conf` and `tyk_analytics.conf` files.
+TLS protocol is supported by all Tyk components. You can enable TLS in Tyk Gateway and Dashboard by modifying the `tyk.conf` and `tyk_analytics.conf` files.
 
-For self signed certificates additional consideration has to be taken place, [refer the below section]({{< ref "#self-signed-certificates" >}}).
+For self signed certificates additional consideration has to be taken place, [refer to the section below]({{< ref "#self-signed-certificates" >}}).
 
 <br>
 
-{{< note success >}} 
-**Note**
-
-It is important to consider that TLS 1.3 doesn't support [cipher](https://en.wikipedia.org/wiki/Cipher_suite) selection. This isn't a Tyk decision, though.
-{{< /note >}}
-
 ### Gateway
 
-The below **tyk.conf** is the minimum to enable TLS/SSL.
+You'll need to add the following to your **tyk.conf** as the minimum to enable TLS for the Gateway:
 
 ```json
 "http_server_options": {
@@ -69,7 +63,7 @@ The below **tyk.conf** is the minimum to enable TLS/SSL.
 
 ### Dashboard
 
-**tyk_analytics.conf**
+You'll need to add the following to your **tyk_analytics.conf** as the minimum to enable TLS for the Dashboard:
 
 ```json
 "http_server_options": {
@@ -83,6 +77,8 @@ The below **tyk.conf** is the minimum to enable TLS/SSL.
   ]
 }
 ```
+
+Set the [host_config.generate_secure_paths]({{< ref "tyk-dashboard/configuration#host_configgenerate_secure_paths" >}}) flag to `true` so that your Dashboard URL starts with HTTPS.
 
 If you are using self-signed certs or are in a test environment, [you can tell Tyk to ignore validation on certs Mutual TLS support]({{< ref "#self-signed-certificates" >}})
 
@@ -106,7 +102,11 @@ $ curl -k https://localhost:3000
 <html response>
 ```
 
+## TLS/SSL Support
+
 ## TLS/SSL Configuration Fields
+
+TLS is configured in the `http_server_options` section of your Gateway and Dashboard configuration files. This has the following structure, common to both components:
 
 ```{.copyWrapper}
 "http_server_options": {
@@ -125,50 +125,38 @@ $ curl -k https://localhost:3000
 },
 ```
 
-
-You can enter multiple certificates, that link to multiple domain names, this enables you to have multiple SSL certs for your Gateways or Dashboard domains if they are providing access to different domains via the same IP.
-
-The `min_version` setting is optional, you can set it to have Tyk only accept connections from TLS V1.0, 1.1, 1.2 or 1.3 respectively.
-
-The `max_version` allows you to disable specific TLS versions, for example if set to 771, you can disable TLS 1.3. 
-
-Finally, set the [host_config.generate_secure_paths]({{< ref "tyk-dashboard/configuration#host_configgenerate_secure_paths" >}}) flag to `true` in your `tyk_analytics.conf`
-
-## TLS/SSL Support
+- `min_version` and `max_version` are optional and allow you to configure the [versions of TLS]({{< ref "#supported-tls-versions" >}}) from which Tyk will accept connections
+- `ssl_ciphers` allows you to select the [cipher suite]({{< ref "#supported-tls-cipher-suites" >}}) that will be used to negotiate connections
+- you can enter multiple certificates to be used in the encryption that will be applied for different domain names, this enables you to have multiple TLS certs for your Gateways or Dashboard domains if they are providing access to different domains via the same IP
 
 ### Supported TLS Versions
 
-You need to use the following values for setting the TLS `min_version` and `max_version`. The numbers associated with the TLS versions (e.g., 769 for TLS 1.0, 770 for TLS 1.1, etc.) represent protocol version numbers used in the TLS protocol specification. These are standardized numerical values assigned by the Internet Engineering Task Force (IETF) to identify each TLS version during communication.
+You need to use the following values for setting the TLS `min_version` and `max_version`. The numbers associated with the TLS versions represent protocol version numbers used in the TLS protocol specification. These are standardized numerical values assigned by the Internet Engineering Task Force (IETF) to identify each TLS version during communication.
 
-| TLS Version   | Value to Use   |
-|---------------|----------------|
-|      1.0      |      769       |
-|      1.1      |      770       |
-|      1.2      |      771       |
-|      1.3      |      772       |
+| TLS Version           | Value to Use   |
+|-----------------------|----------------|
+|      1.0 (see note)   |      769       |
+|      1.1 (see note)   |      770       |
+|      1.2              |      771       |
+|      1.3              |      772       |
+
+If you do not configure minimum and maximum TLS versions, then Tyk Gateway will default to:
+ - minimum TLS version: 1.2
+ - maximum TLS version: 1.3
 
 {{< note success >}}
 **Note**  
 
-If you do not configure minimum and maximum TLS versions, then Tyk Gateway will default to:
- - minimum TLS version: 1.0
- - maximum TLS version: 1.2
+Tyk uses Golang libraries to provide TLS functionality, so the range of TLS versions supported by the Gateway is dependent upon the underlying library. Support for TLS 1.0 and 1.1 was removed in Go 1.22 (which was adopted in Tyk 5.3.6/5.6.0), so these are no longer supported by Tyk.
 {{< /note >}}
 
 ### Supported TLS Cipher Suites
 
-Each protocol (TLS 1.0, 1.1, 1.2, 1.3) provides cipher suites. With strength of encryption determined by the cipher negotiated between client & server.
-
-You can optionally add the additional `http_server_options` config option `ssl_ciphers` in `tyk.conf` and `tyk-analytics.conf` which takes an array of strings as its value. 
-
-
-{{< note info >}}
-**Note**  
+The strength of encryption is determined by the cipher that is negotiated between client & server; each version of the TLS protocol provides a suite of available ciphers. 
 
 TLS 1.3 protocol does not allow the setting of custom ciphers, and is designed to automatically pick the most secure cipher.
-{{< /note >}}
 
-Each string must be one of the allowed cipher suites as defined at https://golang.org/pkg/crypto/tls/#pkg-constants
+When using earlier TLS protocols, you can deliberately choose the ciphers to be used using the `http_server_options` config option `ssl_ciphers` in `tyk.conf` and `tyk-analytics.conf`. This takes an array of strings as its value. Each string must be one of the allowed cipher suites as defined at https://golang.org/pkg/crypto/tls/#pkg-constants
 
 For example:
 
