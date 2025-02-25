@@ -490,7 +490,7 @@ menu:
                 show: True
           - title: "API access control"
             category: Directory
-            show: True
+            show: False
             menu:
               - title: "Overview"
                 path: /basic-config-and-security
