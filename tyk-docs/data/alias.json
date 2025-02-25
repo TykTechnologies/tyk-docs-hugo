@@ -780,7 +780,7 @@
     "advanced-configuration/compose-apis/virtual-endpoints": "#virtual-endpoint-overview",
     "product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-oas": "#virtual-endpoint-using-tyk-oas",
     "product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-classic": "#virtual-endpoint-using-classic",
-    "advanced-configuration/compose-apis/demo-virtual-endpoint": "#virtual-endpoints",
+    "advanced-configuration/compose-apis/demo-virtual-endpoint": "#examples",
     "advanced-configuration/transform-traffic/soap-rest": "#transformation-use-case-soap-to-rest",
     "product-stack/tyk-gateway/references/go-templates": "#go-templates",
     "advanced-configuration/transform-traffic/jq-transformations": "#jq-transforms",
