@@ -62,7 +62,11 @@ In this example the Validate JSON middleware has been configured for requests to
 
 ### Understanding JSON Schema Version Handling
 
-The Gateway automatically detects the version of the JSON schema from the `$schema` field in your schema definition. This field specifies the version of the [JSON schema standard](https://json-schema.org/specification-links) to be followed. Supported versions are [draft-04](https://json-schema.org/draft-04/schema), [draft-06](https://json-schema.org/draft-06/schema) and [draft-07](https://json-schema.org/draft-07/schema).
+The Gateway automatically detects the version of the JSON schema from the `$schema` field in your schema definition. This field specifies the version of the [JSON schema standard](https://json-schema.org/specification-links) to be followed.
+
+From Tyk 5.8 onwards, supported versions are [draft-04](https://json-schema.org/draft-04/schema), [draft-06](https://json-schema.org/draft-06/schema) and [draft-07](https://json-schema.org/draft-07/schema).
+
+In previous versions of Tyk, only [draft-04](https://json-schema.org/draft-04/schema) is supported. Please be careful if downgrading from Tyk 5.8 to an earlier version that your JSON is valid as you might experience unexpected behaviour if using features from newer drafts of the JSON schema.
 
 - If the `$schema` field is present, the Gateway strictly follows the rules of the specified version.  
 - If the `$schema` field is missing or the version is not specified, the Gateway uses a hybrid mode that combines features from multiple schema versions. This mode ensures that the validation will still work, but may not enforce the exact rules of a specific version. 
@@ -85,6 +89,10 @@ To ensure consistent and predictable validation, it is recommended to always inc
 ```
 
 By including `$schema`, the validator can operate in strict mode, ensuring that the rules for your chosen schema version are followed exactly.
+
+#### Converting to Tyk OAS
+
+When converting an API that uses the request validation middleware from Tyk Classic to Tyk OAS, be aware that the request validation middleware for Tyk OAS does not require the `$schema` field and supports only features supported by [OAS 3.0.x]({{< ref "https://swagger.io/docs/specification/v3_0/data-models/keywords" >}}). Tyk does not guarantee clean migration of your custom JSON code.
 
 ## Configuring the middleware in the API Designer
 
