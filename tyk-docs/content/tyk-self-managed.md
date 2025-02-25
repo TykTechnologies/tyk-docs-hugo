@@ -4187,7 +4187,7 @@ Please read carefully through this [doc]({{< ref "api-management/client-authenti
 
 #### Analytics Optimizations
 
-If using a [Redis cluster](https://redis.io/docs/management/scaling/) under high load it is recommended that analytics are distributed among the Redis shards. This can be configured by setting the [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) parameter to true. Furthermore, analytics can also be disabled for an API using the [do_not_track]({{< ref "api-management/gateway-config-tyk-classic#other-root-objects" >}}) configuration parameter. Alternatively, tracking for analytics can be disabled for selected endpoints using the [do not track endpoint plugin]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-oas/" >}}).
+If using a [Redis cluster](https://redis.io/docs/management/scaling/) under high load it is recommended that analytics are distributed among the Redis shards. This can be configured by setting the [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) parameter to true. Furthermore, analytics can also be disabled for an API using the [do_not_track]({{< ref "api-management/gateway-config-tyk-classic#other-root-objects" >}}) configuration parameter. Alternatively, tracking for analytics can be disabled for selected endpoints using the [do not track endpoint plugin]({{< ref "api-management/traffic-transformation#do-not-track-using-tyk-oas" >}}).
 
 ##### Protobuf Serialisation
 
@@ -5984,7 +5984,7 @@ Securely store sensitive information like API keys, passwords, and certificates 
 
 ##### Support per-machine variables
 
-Storing local settings within the Tyk Gateway's configuration file allows you to have per instance variables, such as a machine ID, and inject these into API requests and responses using [transformation middleware]({{< ref "advanced-configuration/transform-traffic" >}}).
+Storing local settings within the Tyk Gateway's configuration file allows you to have per instance variables, such as a machine ID, and inject these into API requests and responses using [transformation middleware]({{< ref "api-management/traffic-transformation#" >}}).
 
 #### How external Key-Value storage works
 
@@ -6110,11 +6110,11 @@ From v5.3.0 onward, environment variables can have any `KEY_NAME`, and the full 
 ###### Transformation middleware
 
 Key-value references can be included in the following middleware, with the values retrieved dynamically when the middleware is called (during processing of an API request or response):
-- [request body transform]({{< ref "transform-traffic/request-body" >}})
-- [request header transform]({{< ref "transform-traffic/request-headers" >}})
-- [URL rewrite]({{< ref "transform-traffic/url-rewriting" >}})
-- [response body transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}})
-- [response header transform]({{< ref "advanced-configuration/transform-traffic/response-headers" >}})
+- [request body transform]({{< ref "api-management/traffic-transformation#request-body-overview" >}})
+- [request header transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}})
+- [URL rewrite]({{< ref "api-management/traffic-transformation#url-rewrite-middleware" >}})
+- [response body transform]({{< ref "api-management/traffic-transformation#response-body-overview" >}})
+- [response header transform]({{< ref "api-management/traffic-transformation#response-headers-overview" >}})
 
 To reference the *Value* assigned to a *Key* in one of the KV stores from these middleware use the following notation:
 - Consul: `$secret_consul.key`

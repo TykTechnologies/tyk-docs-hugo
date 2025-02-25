@@ -3535,9 +3535,9 @@ At the top of the Endpoint Designer, you can see which version you are currently
 
 {{< img src="/img/dashboard/endpoint-designer/classic-endpoint-designer-endpoint.png" alt="The Tyk Classic Endpoint Designer - Endpoint Designer tab" >}}
 
-The **Endpoint Designer** is where you can define endpoints for your API so that you can enable and configure Tyk middleware to [perform checks and transformations]({{< ref "advanced-configuration/transform-traffic" >}}) on the API traffic.
+The **Endpoint Designer** is where you can define endpoints for your API so that you can enable and configure Tyk middleware to [perform checks and transformations]({{< ref "api-management/traffic-transformation#" >}}) on the API traffic.
 
-In some cases, you will want to set global settings that affect all paths that are managed by Tyk. The **Global Version Settings** section will enable you to configure API-level [request]({{< ref "product-stack/tyk-gateway/middleware/request-header-tyk-classic#tyk-classic-api" >}}) and [response]({{< ref "product-stack/tyk-gateway/middleware/response-header-tyk-classic#tyk-classic-api" >}}) header transformation.
+In some cases, you will want to set global settings that affect all paths that are managed by Tyk. The **Global Version Settings** section will enable you to configure API-level [request]({{< ref "api-management/traffic-transformation#tyk-classic-api" >}}) and [response]({{< ref "api-management/traffic-transformation#tyk-classic-api" >}}) header transformation.
 
 ### Advanced Options
 
@@ -3548,7 +3548,7 @@ The **Advanced Options** tab is where you can configure Tyk's other powerful fea
 - [API-level caching]({{< ref "api-management/gateway-optimizations#configuring-the-cache-via-the-dashboard" >}}) including a button to invalidate (flush) the cache for the API
 - [CORS]({{< ref "api-management/gateway-config-tyk-classic#cors" >}})
 - Add custom attributes to the API definition as *config data* that can be accessed by middleware
-- Enable [context variables]({{< ref "context-variables" >}}) so that they are extracted from requests and made available to middleware
+- Enable [context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}) so that they are extracted from requests and made available to middleware
 - Manage *segment tags* if you are working with [sharded gateways]({{< ref "api-management/multiple-environments#gateway-sharding" >}})
 - Manage client IP address [allow]({{< ref "api-management/gateway-config-tyk-classic#ip-allowlist-middleware" >}}) and [block]({{< ref "api-management/gateway-config-tyk-classic#ip-blocklist-middleware" >}}) lists
 - Attach [webhooks]({{< ref "api-management/gateway-events#event-handling-with-webhooks" >}}) that will be triggered for different events

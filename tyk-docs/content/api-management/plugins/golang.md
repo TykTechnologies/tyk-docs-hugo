@@ -501,7 +501,7 @@ Here is an [example](https://github.com/TykTechnologies/custom-plugin-examples/b
 
 ### Terminating the request
 
-You can terminate the request within your custom Go plugin and provide an HTTP response to the originating client, such that the plugin behaves similarly to a [virtual endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}).
+You can terminate the request within your custom Go plugin and provide an HTTP response to the originating client, such that the plugin behaves similarly to a [virtual endpoint]({{< ref "api-management/traffic-transformation#virtual-endpoints-overview" >}}).
 
 - the HTTP request processing is stopped and other middleware in the chain won't be used
 - the HTTP request round-trip to the upstream target won't happen

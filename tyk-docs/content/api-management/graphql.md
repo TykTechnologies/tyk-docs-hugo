@@ -959,7 +959,7 @@ You can enrich any GraphQL request proxied through Tyk Gateway with additional i
 
 {{< img src="/img/dashboard/graphql/headers-gql-request.png" alt="Request headers" >}}
 
-**Request headers** values can be defined as context variables. To know how to refer to request context variables check [this page]({{< ref "context-variables">}}).
+**Request headers** values can be defined as context variables. To know how to refer to request context variables check [this page]({{< ref "api-management/traffic-transformation#request-context-variables">}}).
 
 Any header key/value pair defined in **Request headers** will only be used to inject headers into requests proxied through the Gateway. It will not be used to introspect the upstream schema from Tyk Dashboard.
 
@@ -1111,7 +1111,7 @@ If you run a request to your proxy, you should get a response similar to this:
 
 #### Dynamic variables
 
-We have seen support for passing static variable values via the API definition, but there will be cases where we want to extract variables from the request header or URL. More information about available request context variables in Tyk can be found [here]({{(< ref "context-variables">)}})
+We have seen support for passing static variable values via the API definition, but there will be cases where we want to extract variables from the request header or URL. More information about available request context variables in Tyk can be found [here]({{(< ref "api-management/traffic-transformation#request-context-variables">)}})
 
 Below is an examples of using an incoming `code` header value as a variable in `persist_graphql` middleware configuration:
 
