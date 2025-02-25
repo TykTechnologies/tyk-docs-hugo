@@ -197,7 +197,7 @@ menu:
             path: /api-management/logs-metrics
             category: Page
             show: True
-          - title: "Analytics Shipper"
+          - title: "Metrics Exporter"
             path: /api-management/tyk-pump
             category: Page
             show: True
