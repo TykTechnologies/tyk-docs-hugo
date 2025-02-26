@@ -28,7 +28,7 @@ Our minor releases are supported until our next minor comes out.
 This release improves the security of the Tyk Prometheus Pump by introducing an option to obfuscate API keys in the /metrics endpoint. This enhancement prevents sensitive data from being exposed and aligns with best security practices.
 
 #### Breaking Changes
-This release has no breaking changes.
+This release removes support for SQLite in Pump, aligning with the broader removal of SQLite from the Tyk Dashboard. This change improves compatibility with enterprise environments and addresses implementation issues related to SQLite.
 
 #### Dependencies
 
@@ -81,6 +81,16 @@ Pump now supports PostgreSQL 1.17, ensuring compatibility with the latest databa
 
 </details>
 </li>
+
+<li>
+<details>
+<summary>Removal of SQLite Support in Pump</summary>
+
+SQLite support has been fully removed from Pump.
+
+</details>
+</li>
+
 </ul>
 
 ---
