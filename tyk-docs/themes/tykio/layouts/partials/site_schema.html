@@ -19,6 +19,13 @@
         "name": "Tyk"
     },
     "url": "{{ .Permalink }}",
+    "keywords": [
+      {{ if isset .Params "tags" }}
+        {{ range $index, $tag := .Params.tags }}
+          "{{ $tag }}"{{ if ne $index (sub (len .Params.tags) 1) }},{{ end }}
+        {{ end }}
+      {{ end }}
+    ]
     "keywords": [{{ if isset .Params "tags" }}{{ range $index, $tag := .Params.tags }}"{{ $tag }}"{{ if ne $index (sub (len $.Params.tags) 1) }},{{ end }}{{ end }}],
     "datePublished": "{{ .Date.Format "2025-02-26" }}",
     "dateModified": "{{ .Lastmod.Format "2006-02-26" }}"
