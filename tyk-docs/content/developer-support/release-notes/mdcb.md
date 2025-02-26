@@ -35,7 +35,7 @@ Our minor releases are supported until our next minor comes out.
 This release introduces Seamless API Key Rotation for MDCB Data Planes, eliminating the need for gateway restarts when rotating API keys. This enhancement improves security and operational efficiency by ensuring uninterrupted communication between MDCB and data planes while allowing smooth key updates.
 
 #### Breaking Changes
-This release has no breaking changes.
+This release removes support for SQLite in MDCB, aligning with the broader removal of SQLite from the Tyk Dashboard. This change improves compatibility with enterprise environments and addresses implementation issues related to SQLite.
 
 #### Dependencies {#dependencies-X.Y.Z}
 
@@ -83,6 +83,15 @@ MDCB now supports a seamless key rotation mechanism, allowing data planes to upd
 MDCB now supports PostgreSQL 1.17, ensuring compatibility with the latest database version.
  </details>
  </li>
+
+ <li>
+ <details>
+ <summary>Removal of SQLite Support in MDCB</summary>
+
+SQLite support has been fully removed from MDCB.
+ </details>
+ </li>
+ 
  </ul>
 
 ---
