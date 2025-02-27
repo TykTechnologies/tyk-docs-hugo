@@ -790,5 +790,9 @@
     "product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic": "#request-size-limits-using-classic",
     "product-stack/tyk-gateway/middleware/do-not-track-middleware": "#do-not-track-overview",
     "product-stack/tyk-gateway/middleware/do-not-track-tyk-oas": "#do-not-track-using-tyk-oas",
-    "product-stack/tyk-gateway/middleware/do-not-track-tyk-classic": "#do-not-track-using-classic"
+    "product-stack/tyk-gateway/middleware/do-not-track-tyk-classic": "#do-not-track-using-classic",
+    "product-stack/tyk-operator/advanced-configurations/graphql-federation": "#graphql-federation-with-tyk-operator",
+    "product-stack/tyk-operator/advanced-configurations/custom-plugins": "#custom-plugins-with-tyk-operator",
+    "api-management/async-apis/advanced-use-cases": "#use-cases",
+    "api-management/async-apis/use-cases": "#use-cases"
 }
