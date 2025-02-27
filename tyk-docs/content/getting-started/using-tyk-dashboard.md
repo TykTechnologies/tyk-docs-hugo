@@ -95,9 +95,9 @@ Otherwise, you can design an API from scratch or a template if you have configur
 
     1. **License Information**:
 
-        - **Active Gateways**: Shows the number of available active gateways. An active gateway refers to a Tyk Gateway instance currently connected to a [Control Plane]({{< ref "tyk-multi-data-centre/mdcb-components#control-plane" >}}) and actively processing API requests. 
+        - **Active Gateways**: Shows the number of available active gateways. An active gateway refers to a Tyk Gateway instance currently connected to a [Control Plane]({{< ref "api-management/mdcb#control-plane" >}}) and actively processing API requests. 
             
-            **Note:** It doesn't count the [Data Plane]({{< ref "tyk-multi-data-centre/mdcb-components#data-plane" >}}).
+            **Note:** It doesn't count the [Data Plane]({{< ref "api-management/mdcb#data-plane" >}}).
         
         - **Total Gateways Available**: Total number of Gateways available per the license.
         - **Remaining Gateways**: Unused license slots.
@@ -114,7 +114,7 @@ Otherwise, you can design an API from scratch or a template if you have configur
 
     3. **Data Plane License Usage**:
     
-        - It visually represents the maximum, minimum, and average number of [Data Planes]({{< ref "tyk-multi-data-centre/mdcb-components#data-plane" >}}) per day. The x-axis is the dates, while the Y axis is the number of data planes connected; for example, if we execute one cluster with groupID "A" and another with groupID "B," we will get two as max, without caring how many gateways running inside each cluster.
+        - It visually represents the maximum, minimum, and average number of [Data Planes]({{< ref "api-management/mdcb#data-plane" >}}) per day. The x-axis is the dates, while the Y axis is the number of data planes connected; for example, if we execute one cluster with groupID "A" and another with groupID "B," we will get two as max, without caring how many gateways running inside each cluster.
 
     4. **Gateway License Usage**:
 
