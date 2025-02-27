@@ -20,7 +20,7 @@
     },
     "url": "{{ .Permalink }}",
     "keywords": [{{ if isset .Params "tags" }}{{ range $index, $tag := .Params.tags }}"{{ $tag }}"{{ if ne $index (sub (len $.Params.tags) 1) }},{{ end }}{{ end }}{{ end }}],
-    "datePublished": "{{ .Date.Format "2025-02-27" }}",
-    "dateModified": "{{ .Lastmod.Format "2025-02-27" }}"
+    "datePublished": "{{ .Date.Format "2006-01-02" }}",
+    "dateModified": "{{ .Lastmod.Format "2006-01-02" }}"
 }
 </script>
