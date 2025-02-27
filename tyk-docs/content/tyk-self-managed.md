@@ -4692,7 +4692,7 @@ For the generic `BreakerTriggered` event, the state change will be indicated in 
 
 **API-level circuit breaker**
 
-Tyk does not have an API-level circuit breaker that can be applied across all endpoints. If you are using the Tyk Dashboard, however, then you are able to use an [Open Policy Agent]({{< ref "tyk-dashboard/open-policy-agent" >}}) to append a circuit breaker to every API/Service using the regex `.*` path.
+Tyk does not have an API-level circuit breaker that can be applied across all endpoints. If you are using the Tyk Dashboard, however, then you are able to use an [Open Policy Agent]({{< ref "api-management/dashboard-configuration#extend-permissions-using-open-policy-agent-opa" >}}) to append a circuit breaker to every API/Service using the regex `.*` path.
 
 <hr>
 

@@ -794,5 +794,10 @@
     "product-stack/tyk-operator/advanced-configurations/graphql-federation": "#graphql-federation-with-tyk-operator",
     "product-stack/tyk-operator/advanced-configurations/custom-plugins": "#custom-plugins-with-tyk-operator",
     "api-management/async-apis/advanced-use-cases": "#use-cases",
-    "api-management/async-apis/use-cases": "#use-cases"
+    "api-management/async-apis/use-cases": "#use-cases",
+    "frequently-asked-questions/capping-analytics-data-storage": "#how-to-cap-analytics-data-storage",
+    "product-stack/tyk-dashboard/advanced-configurations/open-policy-agent/opa-permissions-example": "#configuring-open-policy-agent-rules",
+    "tyk-dashboard/opa-rules": "#dashboard-opa-rules",
+    "tyk-dashboard/open-policy-agent": "#extend-permissions-using-open-policy-agent-opa",
+    "tyk-stack/dependencies/mongodb/x509-client-auth": "#mongodb-x509-client-authentication"
 }
