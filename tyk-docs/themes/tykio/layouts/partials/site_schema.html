@@ -6,16 +6,21 @@
       "@type": "WebPage",
       "@id": "{{ .Site.BaseURL }}"
     },
-    "name" : "{{ .Title }}",
-    "headline" : "{{ .Title }}",
-    "description" : "{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}",
-    "inLanguage" : "en-US",
-    "author" : "tyk ",
-    "copyrightHolder" : "Tyk",
-    "url" : "{{ .Permalink }}",
-    "keywords" : [{{ if isset .Params "tags" }}{{ range $index, $tag := .Params.tags }}"{{ $tag }}"{{ if ne $index (sub (len $.Params.tags) 1) }},{{ end }}{{ end }}{{ end }}],
-    "datePublished": "{{ .Date.Format "2025-02-26" }}",
-    "dateModified": "{{ .Lastmod.Format "2006-02-26" }}"
-
-  }
+    "name": "{{ .Title }}",
+    "headline": "{{ .Title }}",
+    "description": "{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}",
+    "inLanguage": "en-US",
+    "author": {
+        "@type": "Organization",
+        "name": "Tyk"
+    },
+    "copyrightHolder": {
+        "@type": "Organization",
+        "name": "Tyk"
+    },
+    "url": "{{ .Permalink }}",
+    "keywords": [{{ if isset .Params "tags" }}{{ range $index, $tag := .Params.tags }}"{{ $tag }}"{{ if ne $index (sub (len $.Params.tags) 1) }},{{ end }}{{ end }}{{ end }}],
+    "datePublished": "{{ .Date.Format "2025-02-27" }}",
+    "dateModified": "{{ .Lastmod.Format "2025-02-27" }}"
+}
 </script>
