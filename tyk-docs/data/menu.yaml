@@ -213,6 +213,10 @@ menu:
         path: /api-management/traffic-transformation
         category: Page
         show: True
+      - title: "Manage Distributed Gateways"
+        path: /api-management/mdcb
+        category: Page
+        show: True
       - title: "Automations Tools"
         category: Directory
         show: True
@@ -654,46 +658,6 @@ menu:
                 path: /error-response-codes
                 category: Page
                 show: True
-      - title: "Tyk Multi Data Centre Bridge"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            path: /tyk-multi-data-centre
-            category: Page
-            show: True
-          - title: "Getting started"
-            category: Directory
-            show: True
-            menu:
-              - title: "MDCB Components"
-                path: /tyk-multi-data-centre/mdcb-components
-                category: Page
-                show: True
-              - title: "Minimising latency with MDCB"
-                path: /tyk-multi-data-centre/mdcb-example-minimising-latency
-                category: Page
-                show: True
-              - title: "Setup MDCB Control Plane"
-                path: /tyk-multi-data-centre/setup-controller-data-centre
-                category: Page
-                show: True
-              - title: "Setup MDCB Data Plane"
-                path: /tyk-multi-data-centre/setup-worker-data-centres
-                category: Page
-                show: True
-          - title: "Advanced configurations"
-            category: Directory
-            show: True
-            menu:
-              - title: "Synchroniser feature with MDCB"
-                path: /product-stack/tyk-enterprise-mdcb/advanced-configurations/synchroniser
-                category: Page
-                show: True
-          - title: "Troubleshooting"
-            category: Directory
-            show: False
-            menu:
       - title: "Tyk Sync"
         category: Directory
         show: False

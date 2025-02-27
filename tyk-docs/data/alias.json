@@ -799,5 +799,11 @@
     "product-stack/tyk-dashboard/advanced-configurations/open-policy-agent/opa-permissions-example": "#configuring-open-policy-agent-rules",
     "tyk-dashboard/opa-rules": "#dashboard-opa-rules",
     "tyk-dashboard/open-policy-agent": "#extend-permissions-using-open-policy-agent-opa",
-    "tyk-stack/dependencies/mongodb/x509-client-auth": "#mongodb-x509-client-authentication"
+    "tyk-stack/dependencies/mongodb/x509-client-auth": "#mongodb-x509-client-authentication",
+    "tyk-multi-data-centre": "#",
+    "tyk-multi-data-centre/mdcb-components": "#mdcb-components",
+    "tyk-multi-data-centre/mdcb-example-minimising-latency": "#minimizing-latency-with-mdcb",
+    "tyk-multi-data-centre/setup-controller-data-centre": "#setup-mdcb-control-plane",
+    "tyk-multi-data-centre/setup-worker-data-centres": "#setup-mdcb-data-plane",
+    "product-stack/tyk-enterprise-mdcb/advanced-configurations/synchroniser": "#synchroniser-feature-with-mdcb"
 }
