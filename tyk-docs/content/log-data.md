@@ -122,7 +122,7 @@ Configuration using environment variables:
 
 ```
 TYK_GW_ACCESSLOGS_ENABLED=true
-TYK_GW_ACCESSLOGS_TEMPLATE=["api_key", "remote_addr", "upstream_addr"]
+TYK_GW_ACCESSLOGS_TEMPLATE="api_key,remote_addr,upstream_addr"
 ```
 
 Output:
