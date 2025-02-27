@@ -3811,7 +3811,7 @@ This will be configured as a pre request hook.
     - A plugin hook configuration block is specified at line 16, containing the `name` and `path` for our plugin. The plugin
       configuration block identifies the "hook" or phase in the API request lifecycle when Tyk Gateway will execute the
       plugin. In the example above the configuration block is for a `pre` request plugin that will be executed before any
-      middleware. Valid values are the same as the [Tyk Classic API Definition]({{< ref "#tyk-classic" >}}) equivalent, i.e.
+      middleware. Valid values are the same as the [Tyk Classic API Definition]({{< ref "#how-it-works" >}}) equivalent, i.e.
       `pre`, `auth_check`, `post`, `post-auth` and `response`. We can see that the following fields are set within the `pre`
       plugin hook configuration object:
 
