@@ -202,13 +202,13 @@ If you want this Data Plane deployment to be resilient, available, and independe
 
 ## Setup MDCB Control Plane
 
-The [Tyk control plane]({{< ref "api-management/mdcb#mdcb-components#control-plane" >}}) contains all the
+The [Tyk control plane]({{< ref "api-management/mdcb#control-plane" >}}) contains all the
 standard components of a standard Tyk Self-Managed installation with the addition of the Multi Data Center Bridge (MDCB).
 
 ### Installing MDCB Component On Linux
 The MDCB component must be able to connect to Redis and MongoDB/PostgreSQL directly from within the Control Plane deployment. It does not require access to the Tyk Gateway(s) or Dashboard application.
 
-The MDCB component will however, by default, expose an RPC service on port 9091, to which the [Tyk Data Plane]({{< ref "api-management/mdcb#mdcb-components#data-plane" >}}) data centers, i.e. the worker gateway(s) that serves API traffic, will need connectivity.
+The MDCB component will however, by default, expose an RPC service on port 9091, to which the [Tyk Data Plane]({{< ref "api-management/mdcb#data-plane" >}}) data centers, i.e. the worker gateway(s) that serves API traffic, will need connectivity.
 
 #### Prerequisites
 We will assume that your account manager has provided you with a valid MDCB and Dashboard License and the command to enable you to download the MDCB package.
@@ -771,7 +771,7 @@ Once this is complete, you can restart the Tyk Gateway in the Data Plane, and it
 
 ### Overview
 
-As described [previously]({{< ref "tyk-multi-data-centre#managing-geographically-distributed-gateways-to-minimize-latency-and-protect-data-sovereignty" >}}), Acme Global Bank has operations and customers in both the EU and USA.
+As described [previously]({{< ref "api-management/mdcb#managing-geographically-distributed-gateways-to-minimize-latency-and-protect-data-sovereignty" >}}), Acme Global Bank has operations and customers in both the EU and USA.
 
 To decrease the latency in response from their systems and to ensure that data remains in the same legal jurisdiction as the customers (data residency), they have deployed backend (or, from the perspective of the API gateway, “upstream”) services in two data centers: one in the US, the other in the EU.
 
