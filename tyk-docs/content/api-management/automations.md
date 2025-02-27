@@ -59,8 +59,3 @@ API Management in Kubernetes using Tyk Operator.
 ## Conclusion
 
 With Tyk’s automation tools, you now have a set of options for streamlining API management, from handling deployments within Kubernetes to establishing consistency across multiple environments. By integrating these tools, you can simplify complex API workflows, maintain secure configurations, and save time through reduced manual intervention.
-
-To continue building on what you’ve set up here, explore the following topics:
-
-- **Advanced Tyk API Management**: Leverage more of Tyk’s API capabilities for custom integrations and further automation possibilities. You can learn more about Tyk's custom integrations [here]({{<ref "product-stack/tyk-operator/advanced-configurations/custom-plugins">}})
-- **GraphQL Support**: You can learn more about how to support GraphQL federation via Tyk Operator [here]({{<ref "product-stack/tyk-operator/advanced-configurations/graphql-federation">}})

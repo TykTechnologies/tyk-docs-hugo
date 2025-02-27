@@ -138,7 +138,7 @@ You must provide the `responseObject` together with the `session.meta_data` as p
 return TykJsResponse(responseObject, session.meta_data);
 ```
 
-You can find some examples of how this works [here]({{< ref "advanced-configuration/compose-apis/demo-virtual-endpoint" >}}).
+You can find some examples of how this works [here]({{< ref "api-management/traffic-transformation#examples" >}}).
 
 ### JavaScript resources
 
