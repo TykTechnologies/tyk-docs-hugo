@@ -4,7 +4,7 @@
     "@type": "WebPage",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "{{ .Site.BaseURL }}"
+        "@id": {{ .Site.BaseURL | printf "%s" }}
     },
     "name": "{{ .Title }}",
     "headline": "{{ .Title }}",
@@ -18,7 +18,7 @@
         "@type": "Organization",
         "name": "Tyk"
     },
-    "url": "{{ .Permalink }}",
+    "url": {{ .Permalink | printf "%s" }},
     "keywords": [{{ if isset .Params "tags" }}{{ range $index, $tag := .Params.tags }}"{{ $tag }}"{{ if ne $index (sub (len $.Params.tags) 1) }},{{ end }}{{ end }}{{ end }}],
     "datePublished": "{{ .Date.Format "2006-01-02" }}",
     "dateModified": "{{ .Lastmod.Format "2006-01-02" }}"
