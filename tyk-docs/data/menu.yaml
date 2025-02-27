@@ -361,88 +361,10 @@ menu:
             category: Page
             show: True
             path: /api-management/manage-apis/api-operations/api-observability
-      - title: "Async APIs"
-        category: Directory
-        show: True
-        menu:
-          - title: "Capabilities"
-            category: Page
-            path: /api-management/async-apis/use-cases
-            show: True
-          - title: "Advanced Use Cases"
-            category: Page
-            path: /api-management/async-apis/advanced-use-cases
-            show: True
       - title: "AI Management"
-        category: Directory
+        category: Page
+        path: /api-management/ai-management/overview
         show: True
-        menu:
-          - title: "Overview"
-            category: Page
-            path: /api-management/ai-management/overview
-            show: True
-          - title: "Publish Ops"
-            category: Directory
-            show: False
-            menu:
-              - title: "Import APIs to the developer portal"
-                category: Page
-                show: False
-              - title: "Create API products"
-                category: Page
-                show: False
-              - title: "Create API product plans"
-                category: Page
-                show: False
-              - title: "Document API products"
-                category: Page
-                show: False
-          - title: "Portal customization"
-            category: Directory
-            show: False
-            menu:
-              - title: "Portal themes"
-                category: Page
-                show: False
-              - title: "Portal navigation"
-                category: Page
-                show: False
-              - title: "Portal content"
-                category: Page
-                show: False
-              - title: "SSO"
-                category: Page
-                show: False
-          - title: "API Product access"
-            category: Directory
-            show: False
-            menu:
-              - title: "Give access to API products"
-                category: Page
-                show: False
-              - title: "Manage developers and developer audiences"
-                category: Page
-                show: False
-              - title: "Self service consumer debugging"
-                category: Page
-                show: False
-          - title: "API Product management"
-            category: Directory
-            show: False
-            menu:
-              - title: "Business value reporting"
-                category: Page
-                show: False
-              - title: "API monetization"
-                category: Page
-                show: False
-              - title: "Troubleshooting API products"
-                category: Page
-                show: False
-      - title: "Featured Guides"
-        category: Directory
-        show: False
-        menu:
   - title: "Product Stack"
     path: /tyk-stack
     category: Label
@@ -816,22 +738,6 @@ menu:
             category: Directory
             show: False
             menu:
-      - title: "Tyk Operator"
-        category: Directory
-        show: True
-        menu:
-          - title: "Advanced configurations"
-            category: Directory
-            show: True
-            menu:
-              - title: "GraphQL Federation"
-                path: /product-stack/tyk-operator/advanced-configurations/graphql-federation
-                category: Page
-                show: True
-              - title: "Custom Plugins"
-                path: /product-stack/tyk-operator/advanced-configurations/custom-plugins
-                category: Page
-                show: True
       - title: "Tyk Sync"
         category: Directory
         show: False
