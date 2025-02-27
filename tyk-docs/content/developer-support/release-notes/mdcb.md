@@ -173,7 +173,7 @@ There are no deprecations in this release, however with the introduction of new 
 
 ##### Recommendations for users:
 
-- Migrate to new [health check]({{< ref "tyk-multi-data-centre/setup-controller-data-centre#health-check" >}}) endpoints in order to get more detailed information. For Kubernetes users, use Helm Charts v1.6 to upgrade MDCB to set liveness and readiness probes of MDCB deployment to the new health check endpoints.
+- Migrate to new [health check]({{< ref "api-management/mdcb#health-check" >}}) endpoints in order to get more detailed information. For Kubernetes users, use Helm Charts v1.6 to upgrade MDCB to set liveness and readiness probes of MDCB deployment to the new health check endpoints.
 
 #### Upgrade instructions
 If you are using a 2.6.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.6.0 and upgrade directly to this release.
@@ -181,7 +181,7 @@ If you are using a 2.6.x version, we advise you to upgrade ASAP to this latest r
 #### Release Highlights
 
 ##### New Health check probes
-Two new [health check]({{< ref "tyk-multi-data-centre/setup-controller-data-centre#health-check" >}}) endpoints have been added to improve monitoring and diagnostics:
+Two new [health check]({{< ref "api-management/mdcb#health-check" >}}) endpoints have been added to improve monitoring and diagnostics:
 
 1. `/liveness`: This endpoint provides a quick check to determine if the MDCB application is alive and running.
 2. `/readiness`: This endpoint offers a detailed status of components and dependencies required for MDCB to serve traffic. It includes status checks for:
@@ -192,7 +192,7 @@ Two new [health check]({{< ref "tyk-multi-data-centre/setup-controller-data-cent
 These new endpoints allow for more granular monitoring of MDCB's operational status, enabling quicker identification and resolution of potential issues.
 
 ##### New Configuration Access Endpoint
-Two new `/config` and `/env` [endpoints]({{< ref "tyk-multi-data-centre/setup-controller-data-centre#check-mdcb-configurations" >}}) have been implemented, allowing developers to access the current configuration state of the MDCB instance in real-time. This feature provides:
+Two new `/config` and `/env` [endpoints]({{< ref "api-management/mdcb#check-mdcb-configurations" >}}) have been implemented, allowing developers to access the current configuration state of the MDCB instance in real-time. This feature provides:
 
 - Secure access to configuration data
 - Automatic redaction of sensitive information
