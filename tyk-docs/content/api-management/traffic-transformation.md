@@ -4402,7 +4402,7 @@ If you are creating your API without import, or if you only want to enable reque
 
 ##### Automatically enabling the request validation middleware
 
-The request validation middleware can be enabled for all endpoints that have defined schemas when [importing]({{< ref "api-management/gateway-config-managing-oas#tutorial-5-create-an-api-that-validates-the-request-payload" >}}) an OpenAPI Document to create a Tyk OAS API.
+The request validation middleware can be enabled for all endpoints that have defined schemas when [importing]({{< ref "api-management/gateway-config-managing-oas#create-an-api-that-validates-the-request-payload" >}}) an OpenAPI Document to create a Tyk OAS API.
 - if you are using the `POST /apis/oas/import` endpoint in the [Tyk Dashboard API]({{< ref "tyk-dashboard-api" >}}) or [Tyk Gateway API]({{< ref "tyk-gateway-api" >}}) then you can do this by setting the `validateRequest=true` query parameter
 - if you are using the API Designer, select the **Auto-generate middleware to validate requests** option on the **Import API** screen
 

@@ -14,7 +14,7 @@ For Open Source users, the File-based Configurations option offers a quick way t
 Usage: Recommended for testing gateway and API configurations in an Open Source environment.
 
 Learn more:
-* [Tutorial: Create an API in File-based Mode]({{<ref "api-management/gateway-config-managing-classic#tutorial-create-an-api-in-file-based-mode">}})
+* [Tutorial: Create an API in File-based Mode]({{<ref "api-management/gateway-config-managing-classic#create-an-api-in-file-based-mode">}})
 
 ## Dashboard UI
 

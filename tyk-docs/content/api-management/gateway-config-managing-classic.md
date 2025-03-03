@@ -81,7 +81,7 @@ Want to learn more from one of our team of engineers?
 
 In Tyk v4.1 we introduced support for APIs defined according to the [OpenAPI Specification v3.0.3](https://spec.openapis.org/oas/v3.0.3) (OAS).  
 This introduces a standard way to describe the vendor-agnostic elements of an API (the OpenAPI Definition, stored as an OpenAPI Document); we take this and add Tyk-specific configuration options to create the *Tyk OAS API Definition*. You can import your own OpenAPI document and Tyk will use this to generate the Tyk OAS API Definition.  
-For a detailed tutorial on using OAS with Tyk Gateway, check out our guide to [creating a Tyk OAS API Definition]({{< ref "api-management/gateway-config-managing-oas#tutorial-1-create-a-tyk-oas-api-using-the-tyk-gateway-api" >}}).
+For a detailed tutorial on using OAS with Tyk Gateway, check out our guide to [creating a Tyk OAS API Definition]({{< ref "api-management/gateway-config-managing-oas#using-the-tyk-dashboard-api" >}}).
 
 {{< /note >}}
 
@@ -94,8 +94,8 @@ Before you continue this tutorial, you will need a running [Tyk OSS gateway]({{<
 #### Creating an API on Tyk Gateway
 
 There are two ways to configure Tyk Gateway with an API definition:
-1. [Create an API with the Tyk Gateway API]({{< ref "#tutorial-create-an-api-with-the-tyk-gateway-api" >}}) - Tyk Gateway has its own APIs which provides various services including the registering of Tyk API Definitions on the Gateway.
-2. [Create an API in File-based Mode]({{< ref "#tutorial-create-an-api-in-file-based-mode" >}}) - alternatively you can create a Tyk API Definition in a file and then load it to the Gateway.
+1. [Create an API with the Tyk Gateway API]({{< ref "#using-tyk-gateway-api" >}}) - Tyk Gateway has its own APIs which provides various services including the registering of Tyk API Definitions on the Gateway.
+2. [Create an API in File-based Mode]({{< ref "#create-an-api-in-file-based-mode" >}}) - alternatively you can create a Tyk API Definition in a file and then load it to the Gateway.
 
 
 #### Using Tyk Gateway API
