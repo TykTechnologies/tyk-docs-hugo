@@ -1,5 +1,5 @@
 ---
-title: Security Best Practices new
+title: Security Best Practices
 description: "Guide on API management and security best practices, including authentication, authorization, resource protection, governance, and OWASP threat mitigation with Tyk."
 tags: ["OWASP", "Security", "Top Ten", "API Management best practice", "API Security", "Authentication", "Security", "Configuration", "SSL", "Certificates", "Authentication", "Authorization", "API security", "API Gateway Security"]
 aliases:

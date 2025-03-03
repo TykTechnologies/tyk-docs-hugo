@@ -9,6 +9,18 @@ menu:
 weight: 2
 ---
 
+<b> *** TEMPORARY - RESTRUCTURE/MERGE *** </b>
+
+#### Create API
+
+When creating an API, either using the Tyk Gateway or Dashboard API, Tyk analyzes the first entry URL value from the Tyk OAS API Definition `servers` configuration:
+- it won't provide any change, if it already matches the API URL, OR
+- it will insert a new first servers object containing the correct API URL value
+
+This means that when you export this OAS API Definition to provide documentation for your developer portal, it will automatically tell your users the correct way to call the API now that Tyk is handling it.
+
+<b> *** END TEMPORARY - DELETE ABOVE THIS LINE *** </b>
+
 These tutorials will take you through the process of creating a Tyk OAS API from scratch.
 
 ### Tutorial 1: Create a Tyk OAS API using the Tyk Gateway API

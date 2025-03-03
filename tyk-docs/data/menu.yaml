@@ -105,6 +105,10 @@ menu:
         category: Page
         show: True
         path: /api-management/security-best-practices
+      - title: "Security Features"
+        category: Page
+        show: True
+        path: /api-management/security-features
       - title: "Gateway Configuration"
         category: Directory
         show: True
@@ -113,11 +117,11 @@ menu:
             path: /api-management/gateway-config-introduction
             category: Page
             show: True
-          - title: "Tyk OAS API"
+          - title: "Tyk OAS"
             path: /api-management/gateway-config-tyk-oas
             category: Page
             show: True
-          - title: "Tyk Classic API"
+          - title: "Tyk Classic"
             path: /api-management/gateway-config-tyk-classic
             category: Page
             show: True
@@ -173,10 +177,10 @@ menu:
           path: /api-management/stream-config
           category: Page
           show: True
-        - title: "Gateway Events"
-          path: /api-management/gateway-events
-          category: Page
-          show: True
+      - title: "Gateway Events"
+        path: /api-management/gateway-events
+        category: Page
+        show: True
       - title: "GraphQL"
         path: /api-management/graphql
         category: Page
