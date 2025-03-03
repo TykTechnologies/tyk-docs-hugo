@@ -1,8 +1,9 @@
 ---
 title: "Managing Tyk OAS API Definition"
-date: 2024-12-21
-tags: []
-description: ""
+date: 2025-02-10
+tags: ["Tyk OAS API", "Create", "Update", "Import", "Export", "Versioning", "API Key", "Security Policy"]
+keywords: ["Tyk OAS API", "Create", "Update", "Import", "Export", "Versioning", "API Key", "Security Policy"]
+description: "How to manage Tyk OAS API definition"
 aliases:
   - /getting-started/key-concepts/high-level-concepts
   - /getting-started/using-oas-definitions/create-an-oas-api

@@ -1,8 +1,9 @@
 ---
 title: "Managing Classic API Definition"
-date: 2024-12-21
-tags: []
-description: ""
+date: 2025-02-10
+tags: ["Tyk Classic API", "Create", "Update", "Import", "API Key", "Security Policy"]
+description: "How to manage Tyk Classic API definition"
+keywords: ["Tyk Classic API", "Create", "Update", "Import", "API Key", "Security Policy"]
 aliases:
   - /getting-started/create-api
   - /getting-started/import-apis
