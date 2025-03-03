@@ -153,38 +153,10 @@ menu:
                 path: /api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware
                 category: Page
                 show: False
-      - title: "Manage APIs"
-        category: Directory
+      - title: "Dashboard Configuration"
+        path: /api-management/dashboard-configuration
+        category: Page
         show: True
-        menu:
-          - title: "Tyk OAS APIs"
-            path: /api-management/gateway-config-managing-oas
-            category: Page
-            show: True
-          - title: "Tyk Classic APIs"
-            path: /api-management/gateway-config-managing-classic
-            category: Page
-            show: True
-          - title: "Deploy APIs"
-            category: Page
-            show: True
-            path: /api-management/manage-apis/deploy-apis/deploy-apis-overview
-          - title: "Useful Configurations"
-            path: /tyk-stack/tyk-gateway/important-prerequisites
-            category: Page
-            show: True
-          - title: "Monitoring and Troubleshooting APIs"
-            category: Page
-            show: True
-            path: /api-management/manage-apis/api-operations/api-observability
-          - title: "Tyk OAS APIs"
-            category: Directory
-            show: False
-            menu:
-              - title: "Extending an OAS API"
-                path: /api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware
-                category: Page
-                show: False
       - title: "API Versioning"
         path: /api-management/api-versioning
         category: Page
@@ -297,10 +269,6 @@ menu:
             path: /api-management/automations/sync
             category: Page
             show: True
-      - title: "Dashboard Configuration"
-        path: /api-management/dashboard-configuration
-        category: Page
-        show: True
       - title: "Manage Environments"
         path: /api-management/multiple-environments
         category: Page
