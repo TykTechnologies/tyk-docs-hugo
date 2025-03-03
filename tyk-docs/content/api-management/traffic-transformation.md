@@ -5,6 +5,7 @@ tags: ["Overview", "Allow List", "Block List", "Ignore Authentication", "Interna
 description: ""
 keywords: ["Overview", "Allow List", "Block List", "Ignore Authentication", "Internal Endpoint", "Request Method ", "Request Body ", "Request Headers ", "Response Body", "Response Headers", "Request Validation", "Mock Response", "URL Rewriting", "URL Rewrite middleware summary", "Virtual Endpoints", "Transformation Use Case: SOAP To REST", "Go Templates", "JQ Transforms", "Request Context Variables"]
 aliases:
+  - /concepts/middleware-execution-order
   - /advanced-configuration/transform-traffic
   - /product-stack/tyk-gateway/middleware/allow-list-middleware
   - /product-stack/tyk-gateway/middleware/allow-list-tyk-oas
@@ -171,6 +172,9 @@ The [Response Body Transform]({{< ref "api-management/traffic-transformation#res
 #### Response Header Transform
 
 The [Response Header Transform]({{< ref "api-management/traffic-transformation#response-headers-overview" >}}) middleware allows you to modify the header information provided in the response before it leaves the Gateway and is passed to the client.
+### Request Middleware Chain
+
+{{< img src="/img/diagrams/middleware-execution-order@3x.png" alt="Middleware execution flow" >}}
 
 ## Allow List
 
