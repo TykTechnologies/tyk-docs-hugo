@@ -557,10 +557,6 @@ menu:
                 path: /error-response-codes
                 category: Page
                 show: True
-      - title: "Tyk Sync"
-        category: Directory
-        show: False
-        menu:
       - title: "Tyk Helm Charts (Open Source)"
         category: Directory
         show: True
@@ -761,14 +757,6 @@ menu:
         path: /developer-support/faq
         category: Page
         show: True
-      - title: "SDK"
-        category: Directory
-        show: False
-        menu:
-      - title: "CLI"
-        category: Directory
-        show: False
-        menu:
       - title: "Deprecated pages"
         category: Directory
         show: False
@@ -861,12 +849,3 @@ menu:
             path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/customise-enterprise-portal
             category: Page
             show: True
-  - title: "Orphan"
-    path: /orphan
-    category: Label
-    show: False
-    menu:
-      - title: "Orphan pages"
-        path: /orphan/
-        category: Page
-        show: True
