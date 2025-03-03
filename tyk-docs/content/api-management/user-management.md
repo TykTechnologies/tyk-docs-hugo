@@ -296,6 +296,11 @@ It is important to note that all user roles are defined and enforced **at the Da
 ### Admin users
 An *admin* user has full read/write access to all properties. The initial user created during the bootstrapping of the Dashboard is automatically assigned the *admin* role.
 
+Two configuration parameters restrict the admin user. Both values should be set to `true` for improved security.
+
+* [security.forbid_admin_view_access_token]({{< ref "tyk-dashboard/configuration#securityforbid_admin_view_access_token" >}}) that restricts admin users from being able to view other users' Dashboard API Access Credentials (in the API and UI).
+* [security.forbid_admin_reset_access_token]({{< ref "tyk-dashboard/configuration#securityforbid_admin_reset_access_token" >}}) which prevents admin users from resetting the other users' access tokens.
+
 ### User permissions in the Tyk Dashboard API
 The permissions object, which is provided to the Dashboard API has this structure:
 

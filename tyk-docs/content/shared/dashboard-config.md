@@ -844,11 +844,15 @@ Type: `bool`<br />
 
 ForbidAdminViewAccessToken is a security feature that allows you to prevent the admin user from viewing the access token of a user. The default is false.
 
+Setting `true` to this field is recommended.
+
 ### security.forbid_admin_reset_access_token
 ENV: <b>TYK_DB_SECURITY_FORBIDADMINRESETACCESSTOKEN</b><br />
 Type: `bool`<br />
 
 ForbidAdminResetAccessToken is a security feature that allows you to prevent the admin user from resetting the access token of a user. The default is false.
+
+Setting `true` to this field is recommended. 
 
 ### ui
 This section controls various settings for the look and feel of the Dashboard UI.
