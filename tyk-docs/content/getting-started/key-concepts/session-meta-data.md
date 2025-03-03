@@ -11,7 +11,7 @@ The metadata field is important, because it can be used in various ways:
 
 - to inform an admin of the provenance of a token
 - values can be injected into headers for upstream services to consume (e.g. a user ID or an email address provided at the time of creation)
-- values can be used in dynamic [JavaScript]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#accessing-external-and-dynamic-data" >}}) middleware and Virtual Endpoints for further validation or request modification
+- values can be used in dynamic [JavaScript]({{< ref "api-management/plugins/javascript#accessing-external-and-dynamic-data" >}}) middleware and Virtual Endpoints for further validation or request modification
 
 Metadata is also injected by other Tyk Components when keys are created using "generative" methods, such as JSON Web Token and OIDC session creation and via the Developer Portal, to include information about the underlying identity of the token when it comes from a third-party such as an OAuth IDP (e.g. OIDC).
 
@@ -19,11 +19,11 @@ Metadata is also injected by other Tyk Components when keys are created using "g
 
 Metadata is exposed in several middleware for use in the middleware configuration:
 
-- [URL Rewrite]({{< ref "product-stack/tyk-gateway/middleware/url-rewrite-middleware#pattern" >}})
-- [Request Header Transformation]({{< ref "transform-traffic/request-headers#injecting-dynamic-data-into-headers" >}})
-- [Response Header Transformation]({{< ref "advanced-configuration/transform-traffic/response-headers#injecting-dynamic-data-into-headers" >}})
-- [Request Body Transformation]({{< ref "transform-traffic/request-body#data-accessible-to-the-middleware" >}})
-- [Response Body Transformation]({{< ref "advanced-configuration/transform-traffic/response-body#data-accessible-to-the-middleware" >}})
-- [Virtual Endpoints]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}})
+- [URL Rewrite]({{< ref "api-management/traffic-transformation#pattern" >}})
+- [Request Header Transformation]({{< ref "api-management/traffic-transformation#injecting-dynamic-data-into-headers" >}})
+- [Response Header Transformation]({{< ref "api-management/traffic-transformation#injecting-dynamic-data-into-headers" >}})
+- [Request Body Transformation]({{< ref "api-management/traffic-transformation#data-accessible-to-the-middleware" >}})
+- [Response Body Transformation]({{< ref "api-management/traffic-transformation#data-accessible-to-the-middleware" >}})
+- [Virtual Endpoints]({{< ref "api-management/traffic-transformation#virtual-endpoints-overview" >}})
 
-You can also access and update metadata from your [custom plugins]({{< ref "plugins" >}}).  For an example of this, take a look at this [gRPC enabled GO Server](https://github.com/TykTechnologies/tyk-grpc-go-basicauth-jwt).  It's a PoC middleware that injects a JWT value into metadata and then accesses it later in the stream.
+You can also access and update metadata from your [custom plugins]({{< ref "api-management/plugins/overview#" >}}).  For an example of this, take a look at this [gRPC enabled GO Server](https://github.com/TykTechnologies/tyk-grpc-go-basicauth-jwt).  It's a PoC middleware that injects a JWT value into metadata and then accesses it later in the stream.

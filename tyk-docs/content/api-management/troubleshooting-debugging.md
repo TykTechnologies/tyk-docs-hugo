@@ -5,6 +5,8 @@ linkTitle: API Management
 tags: ["troubleshooting", "debugging", "Open Source", "Self-Managed", "Tyk Cloud", "API Gateway"]
 description: "Tyk troubleshooting and debugging gateway, streams, pump, dashboard"
 aliases:
+    - /frequently-asked-questions/capping-analytics-data-storage
+    - /tyk-stack/dependencies/mongodb/x509-client-auth
     - /api-management/troubleshotting-debugging
     - /debugging-series/debugging-series
     - /debugging-series/mongodb-debugging
@@ -62,6 +64,7 @@ aliases:
     - troubleshooting/tyk-pump
     - tyk-rest-api/hot-reload
     - tyk-stack/tyk-pump/tyk-pump-configuration/graceful-shutdowm
+    - frequently-asked-questions/add-custom-certificates-to-docker-images
 ---
 
 ## Gateway
@@ -109,7 +112,7 @@ aliases:
     proxy.service_discovery.port_data_path = “ServicePort""
     ```
         
-    See [Tyk Gateway configuration]({{< ref "tyk-oss-gateway/configuration" >}}) and [Tyk Gateway API]({{< ref "tyk-gateway-api/api-definition-objects" >}}) for further information regarding API definition settings.
+    See [Tyk Gateway configuration]({{< ref "tyk-oss-gateway/configuration" >}}) and [Tyk Gateway API]({{< ref "api-management/gateway-config-tyk-classic" >}}) for further information regarding API definition settings.
 
 3. ##### Gateway proxy error "context canceled"
 
@@ -145,7 +148,7 @@ aliases:
 
     Make sure that API definitions are set up correctly. Information on how to do this with the Tyk Gateway API can be found in the following links:
 
-    *   [API Definition Object Details]({{< ref "tyk-gateway-api/api-definition-objects" >}})
+    *   [API Definition Object Details]({{< ref "api-management/gateway-config-tyk-classic" >}})
     *   [API Management]({{< ref "tyk-gateway-api" >}})
 
 5. ##### Users receive this error message when attempting to make API calls to an existing key.
@@ -360,7 +363,7 @@ aliases:
 
     **Cause**
 
-    There can be a couple of reasons for seeing this error about the [Distributed Rate Limiter]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}}):
+    There can be a couple of reasons for seeing this error about the [Distributed Rate Limiter]({{< ref "api-management/rate-limit#rate-limiting-layers" >}}):
 
     1. When you have more than one installation of the Gateway with one configured to use DRL, and others not.
     2. When the Gateway is started and the DRL receives an event before it has finished initialising.
@@ -406,6 +409,27 @@ aliases:
 
     This will fork and load a new process, passing all open handles to the new server and wait to drain the old ones.
 
+14. ##### How to add Custom Certificates to Trusted Storage of Docker Images
+
+    To add your custom Certificate Authority(CA) to your docker containers. You can mount your CA certificate directly into `/etc/ssl/certs` folder.
+
+    Docker: 
+    ```{.copyWrapper}
+    docker run -it tykio/tyk-gateway:latest \
+    -v $(pwd)/myCA.pem:/etc/ssl/certs/myCA.pem
+    ```
+
+    Kubernetes - using Helm Chart and secrets:
+    ```yaml
+    extraVolumes: 
+        - name: self-signed-ca
+        secret:
+            secretName: self-signed-ca-secret
+    extraVolumeMounts: 
+        - name: self-signed-ca
+        mountPath: "/etc/ssl/certs/myCA.pem"
+        subPath: myCA.pem
+    ```
 
 ## Dashboard
 
@@ -629,7 +653,7 @@ aliases:
 
     **Solution**
 
-    The best way to set the domain is to use the Tyk Dashboard Admin API, to obtain the organization object via a GET request and then update the object using a PUT request with the relevant CNAME added to the body of the request.<sup>[[1]({{<ref "dashboard-admin-api/organisations">}})]</sup> Restarting the process will then set the domain.
+    The best way to set the domain is to use the Tyk Dashboard Admin API, to obtain the organization object via a GET request and then update the object using a PUT request with the relevant CNAME added to the body of the request.<sup>[[1]({{<ref "api-management/dashboard-configuration#organizations-api">}})]</sup> Restarting the process will then set the domain.
 
 8. ##### runtime error invalid memory address or nil pointer dereference
 
@@ -748,9 +772,9 @@ aliases:
     As AWS DocumentDB runs with TLS enabled, we require a way to run it without disabling the TLS verification.
     DocumentDB uses self-signed certs for verification, and provides a bundle with root certificates for this purpose, so we need a way to load this bundle.
 
-    Additionally DocumentDB can't be exposed to the local machine outside of the Amazon Virtual Private Cloud (VPC), which means that even if verification is turned on, it will always fail since if we use a SSH tunnel or a similar method, the domain will differ from the original. Also, it can have [Mutual TLS]({{< ref "/api-management/client-authentication#use-mutual-tls" >}}) enabled.
+    Additionally DocumentDB can't be exposed to the local machine outside of the Amazon Virtual Private Cloud (VPC), which means that even if verification is turned on, it will always fail since if we use a SSH tunnel or a similar method, the domain will differ from the original. Also, it can have [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) enabled.
 
-    So, in order to support it, we provide the following variables for both our [Tyk Analytics Dashboard]({{< ref "tyk-dashboard/configuration" >}}) and [Tyk Pump]({{< ref "tyk-pump/configuration" >}}):
+    So, in order to support it, we provide the following variables for both our [Tyk Analytics Dashboard]({{< ref "tyk-dashboard/configuration" >}}) and [Tyk Pump]({{< ref "api-management/tyk-pump#tyk-pump-configuration" >}}):
 
     * `mongo_ssl_ca_file` - path to the PEM file with trusted root certificates
     * `mongo_ssl_pem_keyfile` - path to the PEM file which contains both client certificate and private key. This is required for Mutual TLS.
@@ -769,12 +793,12 @@ aliases:
 
     **Capped Collections**
 
-    If you are using DocumentDB, [capped collections]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage" >}}) are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details.
+    If you are using DocumentDB, [capped collections]({{< ref "api-management/tyk-pump#tyk-pump-capping-analytics-data-storage" >}}) are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details.
 
 13. ##### How to disable an API
 
     You will need to GET the API from the Dashboard, then set `active` property to `false`, then PUT it back.
-    See [Dashboard API - API Definitions]({{< ref "tyk-apis/tyk-dashboard-api/api-definitions" >}}) for more details on how to GET and PUT an API definition.
+    See [Dashboard API - API Definitions]({{< ref "api-management/dashboard-configuration#manage-apis---api-definition" >}}) for more details on how to GET and PUT an API definition.
 
 14. ##### How to Setup CORS
 
@@ -797,14 +821,14 @@ aliases:
     **Upstream does not handle CORS**
     If your upstream does not handle CORS, you should let Tyk manage all CORS related headers and responses. In order to do that you should **enable CORS** in Tyk and **NOT ENABLE** Options pass through.
 
-    To learn more, look for `CORS.options_passthrough` [here]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}).
+    To learn more, look for `CORS.options_passthrough` [here]({{< ref "api-management/gateway-config-tyk-classic#cors" >}}).
 
 
     **CORS middleware is allowing headers which I did not allow**
     This may be the case when you enable CORS but don't provide any headers explicitly (basically providing an empty array). In this case the CORS middleware will use some sensible defaults. 
     To allow all headers, you will need to provide `*` (although this is not recommended).
 
-    The same can happen with Allowed Origins and Allowed Methods. Read more about it [here]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}).
+    The same can happen with Allowed Origins and Allowed Methods. Read more about it [here]({{< ref "api-management/gateway-config-tyk-classic#cors" >}}).
 
     **CORS middleware is blocking my authenticated request**
     Please make sure that you did allow the authorization header name (e.g. `Authorization`) or else the request will be blocked by the CORS middleware. If you're having trouble on the developer portal with authenticated requests make sure to also allow the `Content-Type` header.
@@ -819,7 +843,7 @@ aliases:
 
 16. ##### How to rename or move existing headers in a request
 
-    To rename a header, or to move a value from one header to another (for example, moving an authentication token to a secondary place, or copying a value that gets replaced upstream) is easy with [context variables]({{< ref "context-variables" >}}). Here is an example where we move the value of `X-Custom-Header` to a new header called `X-New-Custom-Header` in all requests.
+    To rename a header, or to move a value from one header to another (for example, moving an authentication token to a secondary place, or copying a value that gets replaced upstream) is easy with [context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}). Here is an example where we move the value of `X-Custom-Header` to a new header called `X-New-Custom-Header` in all requests.
 
     We do this by setting the following in our API Definition Version section:
     ```{.copyWrapper}
@@ -887,19 +911,19 @@ aliases:
 
     **Solution**
 
-    See [System Payloads]({{< ref "tyk-configuration-reference/securing-system-payloads" >}}) for more details.
+    See [System Payloads]({{< ref "api-management/security-best-practices#sign-payloads" >}}) for more details.
 
 ## Pump
 
 1. ##### Capturing detailed logs
 
-    If you've seen the documentation for Tyk Dashboard's [log browser]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}}), then you'll also be wondering how to set up your Tyk configuration to enable detailed request logging.
+    If you've seen the documentation for Tyk Dashboard's [log browser]({{< ref "api-management/dashboard-configuration#activity-logs" >}}), then you'll also be wondering how to set up your Tyk configuration to enable detailed request logging.
 
     **What is detailed request logging?**
 
-    When [detailed request logging]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/detailed-recording" >}}) is enabled, Tyk will record the request and response in wire-format in the analytics database. This can be very useful when trying to debug API requests to see what went wrong for a user or client.
+    When [detailed request logging]({{< ref "api-management/logs-metrics#enable-detailed-recording" >}}) is enabled, Tyk will record the request and response in wire-format in the analytics database. This can be very useful when trying to debug API requests to see what went wrong for a user or client.
 
-    This mode is configured in the gateway and can be enabled at the [system]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/detailed-recording#configuration-at-the-gateway-level" >}}), [API]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/detailed-recording#configuration-at-the-api-level" >}}) or [access key]({{< ref "product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/detailed-recording#configuration-at-the-key-level" >}}) level.
+    This mode is configured in the gateway and can be enabled at the [system]({{< ref "api-management/logs-metrics#configure-at-gateway-level" >}}), [API]({{< ref "api-management/logs-metrics#configure-at-api-level" >}}) or [access key]({{< ref "api-management/logs-metrics#configure-at-key-level" >}}) level.
 
     You will also need your Tyk Pump configured to move data into your preferred data store.
 
@@ -965,7 +989,7 @@ aliases:
 
     If your Pump is configured to use `mongo_selective_pump` (e.g. store data in a collection per organization), ensure that the [Dashboard configuration setting]({{< ref "tyk-dashboard/configuration" >}}) `use_sharded_analytics` is set to `true`. 
 
-    The same applies in the reverse direction. If you are using `mongo-pump-aggregate` in your [pump configuration]({{< ref "tyk-pump/configuration" >}}), set `use_sharded_analytics` to false.
+    The same applies in the reverse direction. If you are using `mongo-pump-aggregate` in your [pump configuration]({{< ref "api-management/tyk-pump#tyk-pump-configuration" >}}), set `use_sharded_analytics` to false.
 
     This is because you've enabled `use_sharded_analytics` as per above and you're using the `mongo-pump-aggregate`, but you now also have to add a `mongo-pump-selective` in order to save individual requests to Mongo, which the Dashboard can read into the Log Browser.
 
@@ -1211,6 +1235,155 @@ Here, we'll outline the following:
     "mongo_ssl_insecure_skip_verify": true
     ```
 
+8. ##### How to Cap analytics data storage
+
+    What methods are available to enable me to manage my MongoDB analytics storage?
+
+    [Time Based Caps]({{< ref "api-management/tyk-pump#time-based-cap-in-single-tenant-environments" >}})
+
+    [Size Based Caps]({{< ref "api-management/tyk-pump#size-based-cap" >}})
+
+    {{< note success >}}
+**Note**  
+
+Time based caps (TTL indexes) are incompatible with already configured size based caps.
+    {{< /note >}}
+
+    {{< note success >}}
+**Note**  
+
+If you are using DocumentDB, capped collections are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details.
+    {{< /note >}}
+
+9. ##### MongoDB X.509 Client Authentication
+
+    You can use the *MongoDB X509 Certificate* flow to authenticate the *Tyk Dashboard*, *Tyk Pump*, and *Tyk MDCB* with your *MongoDB* install.  This is slightly different from [AWS DocumentDB setup instructions]({{< ref "api-management/troubleshooting-debugging#how-to-connect-to-documentdb-with-x509-client-cert" >}}).
+
+    Before we get into the configuration, we need to understand the two key components: connection strings and certificates.
+
+    1. **Connection Strings**
+
+        1) You must specify a username (and password if needed) in the connection string.  [Why do you need a username at all?](https://docs.mongodb.com/manual/tutorial/configure-x509-client-authentication/)
+
+        2) We must specify the following parameters: `?authSource=$external&authMechanism=MONGODB-X509"`
+
+        **An example of a connection string would be:**
+
+        ```bash
+        "mongodb://CN=tyk-mongo-client,OU=TykTest@<host>:<port>/<db>?authSource=$external&authMechanism=MONGODB-X509"
+        ```
+
+        ##### Passwords
+        If you have to include a password, you can do it after the username in basic auth format:
+
+        ```bash
+        "mongodb://CN=tyk-mongo-client,OU=TykTest,O=TykTest:mypassword@<host>:<port>/<db>?authSource=$external&authMechanism=MONGODB-X509"
+        ```
+
+        ##### URL Encoding Protected Characters
+        Note that you must URL encode the `:` character into `%40`.   So replace any `:` in the username field into the URL encoded version.
+
+    2. **Certificates**
+
+        You'll need to provide two certificates to complete the X509 Client Authentication:
+
+        **CA Cert** containing just the public key of the Certificate Authority (CA).
+
+        **Client Cert** containing both the public and private keys of the client.
+
+    ##### Configuration
+
+    Here's what it looks like all put together:
+
+    1. **Tyk Dashboard**
+
+        Your `tyk_analytics.conf` should include these fields at the root level:
+
+        ```json
+        {
+        ...
+        "mongo_url": "mongodb://<username>@<host>:<port>/<db>?authSource=$external&authMechanism=MONGODB-X509",
+        "mongo_use_ssl": true,
+        "mongo_ssl_ca_file": "ca.pem",
+        "mongo_ssl_pem_keyfile": "client.pem"
+        }
+        ```
+
+        | Config File           | Environment Variable | Type   | Examples
+        | ---                   | --                   | ----   | ---- |
+        | "mongo_url"                       | TYK_DB_MONGOURL      | string | "mongodb://{username}@{host}:{port}/{db}?authSource=$external&authMechanism=MONGODB-X509" |
+        | "mongo_use_ssl"                   | TYK_DB_MONGOUSESSL      | bool | true, false |
+        | "mongo_ssl_ca_file"               | TYK_DB_MONGOSSLCAFILE      | string | "certificates/ca.pem" |
+        | "mongo_ssl_pem_keyfile"           | TYK_DB_MONGOSSLPEMKEYFILE      | string | "certificates/key.pem" |
+        | "mongo_ssl_insecure_skip_verify"  | TYK_DB_MONGOSSLINSECURESKIPVERIFY      | bool | true, false |
+        | "mongo_ssl_allow_invalid_hostnames" | TYK_DB_MONGOSSLALLOWINVALIDHOSTNAMES      | bool | true, false |
+        | "mongo_session_consistency"       | TYK_DB_MONGOSESSIONCONSISTENCY      | string | "strong", "eventual", or "monotonic". default is "strong" |
+        | "mongo_batch_size"                | TYK_DB_MONGOBATCHSIZE      | int | Default "2000", min "100" |
+
+    2. **Tyk Pump**
+
+        Tyk offers three different MongoDB pumps (`mongo`, `mongo_aggregate`, and `mongo_selective`), each of which must be separately configured for X509 certificate authentication. 
+
+        The following fields must be set under the `meta` section of each pump (or set as environment variable):
+
+        ```yaml
+        { 
+        ...
+        "pumps": {
+            "mongo": {
+            "type": "mongo",
+            "meta": {
+                "collection_name": "tyk_analytics",
+                "mongo_url": "mongodb://CN=tyk-mongo-client,OU=TykTest@<host>:<port>/<db>?authSource=$external&authMechanism=MONGODB-X509",
+                "mongo_use_ssl": true,
+                "mongo_ssl_ca_file": "ca.pem",
+                "mongo_ssl_pem_keyfile": "client.pem"
+            }
+            }
+        }
+        }
+        ```
+
+        In addition to the other configs, these are the ones related to MongoDB:
+
+        | Config File           | Type  | Examples
+        | -- | -- | --
+        "mongo_url" | string     | "mongodb://{username}@{host}:{port}/{db}?authSource=$external&authMechanism=MONGODB-X509" |   
+        "mongo_use_ssl" | bool | true, false |
+        "mongo_ssl_ca_file" | string      | "certificates/ca.pem" |  
+        “mongo_ssl_pem_keyfile" | string     | "certificates/key.pem" |     
+        "mongo_ssl_insecure_skip_verify" | bool     | true, false |     
+        "mongo_ssl_allow_invalid_hostnames" | bool         | true, false | 
+
+    3. **Tyk MDCB**
+
+        As of Tyk MDCB v1.8.0, you have been able to secure Tyk MDCB with MongoDB using X509 Certificate Authentication flow.
+
+        The config settings are exactly the same as the Tyk Dashboard steps, just nested one level deeper:
+
+        **Example Config:**
+        ```json
+        {
+        ...
+        "analytics": {
+            "mongo_url": "mongodb://CN=tyk-mongo-client,OU=TykTest@<host>:<port>/<db>?authSource=$external&authMechanism=MONGODB-X509",
+            "mongo_use_ssl": true,
+            "mongo_ssl_ca_file": "ca.pem",
+            "mongo_ssl_pem_keyfile": "client.pem"
+        }
+        }
+        ```
+        | Config File           | Environment Variable | Type   | Examples
+        | ---                   | --                   | ----   | ---- |
+        "analytics.mongo_url" | TYK_MDCB_ANALYTICSCONFIG_MONGOURL | string   |  "mongodb://{username}@{host}:{port}/{db}?authSource=$external&authMechanism=MONGODB-X509"
+        "analytics.mongo_use_ssl" | TYK_MDCB_ANALYTICSCONFIG_MONGOUSESSL | bool | true, false |
+        "analytics.mongo_ssl_ca_file" | TYK_MDCB_ANALYTICSCONFIG_MONGOSSLCAFILE | string |  "certificates/ca.pem" |
+        "analytics.mongo_ssl_pem_keyfile" | TYK_MDCB_ANALYTICSCONFIG_MONGOSSLPEMKEYFILE | string | "certificates/key.pem" |
+        "analytics.mongo_ssl_insecure_skip_verify" | TYK_MDCB_ANALYTICSCONFIG_MONGOSSLINSECURESKIPVERIFY | bool | true, false |
+        "analytics.mongo_ssl_allow_invalid_hostnames" | TYK_MDCB_ANALYTICSCONFIG_MONGOSSLALLOWINVALIDHOSTNAMES | bool  | true, false |
+        "analytics.mongo_session_consistency" | TYK_MDCB_ANALYTICSCONFIG_MONGOSESSIONCONSISTENCY | string |  "strong", "eventual", or "monotonic". default is "strong" |
+        "analytics.mongo_batch_size" |  TYK_MDCB_ANALYTICSCONFIG_MONGOBATCHSIZE | int |  Default "2000", min "100" |
+
 ### Tyk Self-Managed
 
 This guide should help a user of Tyk Self-Managed in debugging common issues. A helpful way to go about this is by:
@@ -1338,7 +1511,7 @@ As shown above, the `debug` log level mode provides more information which will 
         value: debug
     ```
 
-    You can find the full [log levels]({{< ref "log-data" >}}) in our documentation.
+    You can find the full [log levels]({{< ref "api-management/logs-metrics#system-logs" >}}) in our documentation.
 
 #### Versions
 

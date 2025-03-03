@@ -29,7 +29,7 @@ To reach a detailed guide to creating Tyk API Definitions, please choose the tab
 {{< tab_start "Cloud" >}}
 <br>
 <br>
-Tyk Cloud is a fully managed service that makes it easy for API teams to create, secure, publish and maintain APIs at any scale, anywhere in the world. Tyk Cloud includes everything you need to manage your global API ecosystem: [Tyk Gateways]({{< ref "tyk-oss-gateway" >}}), [Tyk Dashboard]({{< ref "tyk-dashboard" >}}), [Tyk Developer Portal]({{< ref "tyk-developer-portal" >}}) and [Universal Data Graph]({{< ref "universal-data-graph" >}}). 
+Tyk Cloud is a fully managed service that makes it easy for API teams to create, secure, publish and maintain APIs at any scale, anywhere in the world. Tyk Cloud includes everything you need to manage your global API ecosystem: [Tyk Gateways]({{< ref "tyk-oss-gateway" >}}), [Tyk Dashboard]({{< ref "tyk-dashboard" >}}), [Tyk Developer Portal]({{< ref "tyk-developer-portal" >}}) and [Universal Data Graph]({{< ref "api-management/data-graph#overview" >}}). 
 <br>  
 
 To embark on your API journey with Tyk Cloud, we recommend going to our [Quick Start guide]({{< ref "#" >}}). This guide will walk you through the process of creating your very first API in Tyk Cloud.
@@ -53,7 +53,7 @@ If the command succeeds, you will see:
 
 **What did we just do?**
 
-We just sent an API definition to the Tyk `/apis` endpoint. See [API definition objects]({{< ref "tyk-gateway-api/api-definition-objects" >}}) for details of all the available objects. These objects encapsulate all of the settings for an API within Tyk.
+We just sent an API definition to the Tyk `/apis` endpoint. See [API definition objects]({{< ref "api-management/gateway-config-tyk-classic" >}}) for details of all the available objects. These objects encapsulate all of the settings for an API within Tyk.
 
 Want to learn more from one of our team of engineers?
 
@@ -150,7 +150,7 @@ All APIs deployed on Tyk Gateway are given a unique `API ID`; if you don't provi
 **What did we just do?**
 
 We just registered a new API on your Tyk Gateway by sending a Tyk API definition to your Gateway's `/apis` endpoint.  
-Tyk API definitions encapsulate all of the settings for an API within Tyk Gateway and are discussed in detail in the [API section]({{< ref "/tyk-gateway-api/api-definition-objects" >}}) of this documentation.
+Tyk API definitions encapsulate all of the settings for an API within Tyk Gateway and are discussed in detail in the [API section]({{< ref "api-management/gateway-config-tyk-classic" >}}) of this documentation.
 
 ## Restart or hot reload
 

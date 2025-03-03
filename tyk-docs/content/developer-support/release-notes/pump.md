@@ -24,7 +24,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### 1.11.2 Release Notes
 
-#### Release Date 10 January 2024
+#### Release Date 10 January 2025
 
 #### Release Highlights
 
