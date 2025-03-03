@@ -33,9 +33,9 @@ You can even create custom middleware (plugins) that will perform non-standard c
 
 Tyk Gateway is configurable at three levels of granularity:
 
-- **Gateway Level**: These settings apply to all API proxies hosted on Tyk
-- **API Level**: These settings apply to a specific API proxy
-- **Endpoint Level**: These settings apply to specific endpoints (operations consisting of HTTP method and path) within an API proxy
+- *Gateway settings* that apply to all API proxies hosted on Tyk
+- *API settings* that apply to a specific API proxy
+- *Endpoint settings* that apply to specific endpoints (operations consisting of HTTP method and path) within an API proxy
 
 Some features can be configured at multiple levels. Where this is the case, specific precedence rules apply and are described in the relevant section of the documentation.
 
@@ -47,7 +47,7 @@ If you are using a config file you can store settings, typically secrets, in env
 
 ### API and endpoint level settings
 
-API and endpoint level settings are configured using an [API definition]({{< ref "#api-definitions" >}}).
+API and endpoint level settings are configured using an *API definition*.
 
 This is a structured JSON object that encapsulates all of the details that apply specifically to that API, including the listen path, upstream target details, valid endpoints and operations, rate limits, authentication, versioning, and both built-in and custom middleware.
 
