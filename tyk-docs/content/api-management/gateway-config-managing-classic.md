@@ -4,6 +4,28 @@ date: 2024-12-21
 tags: []
 description: ""
 aliases:
+  - /getting-started/create-api
+  - /getting-started/import-apis
+  - /getting-started/create-security-policy
+  - /getting-started/create-api-key
+
+  - /get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/create-api
+  - /tyk-api-gateway-v1-9/tutorials/set-up-your-first-api
+  - /get-started/with-tyk-multi-cloud/tutorials/create-api
+  - /try-out-tyk/tutorials/create-api
+  - /getting-started/tutorials/create-api
+  - /tyk-configuration-reference/import-apis
+  - /getting-started/installation/tutorials/create-security-policy
+  - /try-out-tyk/tutorials/create-security-policy
+  - /getting-started/tutorials/create-security-policy
+  - /try-out-tyk/tutorials/create-security-policy
+  - /with-tyk-community-edition/tutorials/create-api-token
+  - /get-started/with-tyk-multi-cloud/tutorials/create-api-token
+  - /get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/create-api-token
+  - /get-started/with-tyk-cloud/tutorials/create-api-token
+  - /try-out-tyk/tutorials/create-api-key
+  - /try-out-tyk/create-api-key
+  - /getting-started/tutorials/create-api-key
 ---
 
 ## Create an API
@@ -364,3 +386,174 @@ You will see a response with your new key:
 ```
 
 The value returned in the `key` parameter of the response is the access key you can now use to access the API that was specified in the `access_rights` section of the call.
+
+## Import an API
+
+Tyk supports importing both API Blueprint and Swagger (OpenAPI) JSON definitions from either the Gateway or the Dashboard. Tyk will output the converted file to to `stdout`. Below are the commands you can use to get Tyk to switch to command mode and generate the respective API definitions for both API Blueprint and Swagger files.
+
+### API Blueprint is being deprecated
+
+Our support for API Blueprint is being deprecated. We have been packaging [aglio](https://github.com/danielgtaylor/aglio) in our Docker images for the Dashboard which enables rendering API Blueprint Format in the portal. This module is no longer maintained and is not compatible with newer NodeJS. If you wish to continue using this feature, you can do so by installing the module yourself in your Dockerfile. The imapct of this change is that our Docker images will no longer contain this functionality.
+
+As a work around, you can do the following:
+
+* Create API Blueprint in JSON format using the Apiary [Drafter](https://github.com/apiaryio/drafter) tool
+* Convert API Blueprint to OpenAPI (Swagger) using the Apiary [API Elements CLI](https://github.com/apiaryio/api-elements.js/tree/master/packages/cli) tool.
+
+### Using API Blueprint
+
+{{< note success >}}
+**Note**  
+
+See [note](#api-blueprint-is-being-deprecated) above regarding deprecation of support for API Blueprint.
+{{< /note >}}
+
+Tyk supports an easy way to import Apiary API Blueprints in JSON format using the command line.
+
+Blueprints can be imported and turned into standalone API definitions (for new APIs) and also imported as versions into existing APIs.
+
+It is possible to import APIs and generate mocks or to generate Allow Lists that pass-through to an upstream URL.
+
+All imported Blueprints must be in the JSON representation of Blueprint's markdown documents. This can be created using Apiary's [Snow Crash tool](https://github.com/apiaryio/snowcrash).
+
+Tyk outputs all new API definitions to `stdout`, so redirecting the output to a file is advised in order to generate new definitions to use in a real configuration.
+
+#### Importing a Blueprint as a new API:
+
+Create a new definition from the Blueprint:
+
+```{.copyWrapper}
+./tyk --import-blueprint=blueprint.json --create-api --org-id=<id> --upstream-target="http://widgets.com/api/"
+```
+
+#### Importing a definition as a version in an existing API:
+
+Add a version to a definition:
+
+```{.copyWrapper}
+./tyk --import-blueprint=blueprint.json --for-api=<path> --as-version="version_number"
+```
+
+#### Creating your API versions as a mock
+
+As the API Blueprint definition allows for example responses to be embedded, these examples can be imported as forced replies, in effect mocking out the API. To enable this mode, when generating a new API or importing as a version, simply add the `--as-mock` parameter.
+
+### Using Swagger (OpenAPI)
+
+Tyk supports importing Swagger documents to create API definitions and API versions. Swagger imports do not support mocking though, so sample data and replies will need to be added manually later.
+
+#### Importing a Swagger document as a new API
+
+Create a new definition from Swagger:
+
+```{.copyWrapper}
+./tyk --import-swagger=petstore.json --create-api --org-id=<id> --upstream-target="http://widgets.com/api/"
+```
+{{< note success >}}
+**Note**  
+
+When creating a new definition from an OAS 3.0 spec, you will have to manually add the listen path after the API is created.
+{{< /note >}}
+
+
+#### Importing a Swagger document as a version into an existing API
+
+Add a version to a definition:
+
+```{.copyWrapper}
+./tyk --import-swagger=petstore.json --for-api=<path> --as-version="version_number"
+```
+
+#### Mocks
+
+Tyk supports API mocking using our versioning `use_extended_paths` setup, adding mocked URL data to one of the three list types (white_list, black_list or ignored). In order to handle a mocked path, use an entry that has `action` set to `reply`:
+
+```json
+"ignored": [
+  {
+    "path": "/v1/ignored/with_id/{id}",
+    "method_actions": {
+      "GET": {
+        "action": "reply",
+        "code": 200,
+        "data": "Hello World",
+        "headers": {
+          "x-tyk-override": "tyk-override"
+        }
+      }
+    }
+  }
+],
+```
+
+See [Versioning]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}}) for more details.
+
+### Import APIs via the Dashboard API
+
+{{% include "import-api-include" %}}
+
+### Import APIs via the Dashboard UI
+
+1. **Select "APIs" from the "System Management" section**
+
+    {{< img src="/img/2.10/apis_menu.png" alt="API listing" >}}
+
+2. **Click "IMPORT API"**
+
+    {{< img src="/img/2.10/import_api_button.png" alt="Add API button location" >}}
+
+    Tyk supports the following import options:
+
+    1. From an Existing Tyk API definition
+    2. From a Apiary Blueprint (JSON) file
+    3. From a Swagger/OpenAPI (JSON only) file
+    4. From a SOAP WSDL definition file (new from v1.9)
+
+    To import a Tyk Definition, just copy and paste the definition into the code editor.
+
+    For Apiary Blueprint and Swagger/OpenAPI, the process is the same. For example:
+
+    Click the "From Swagger (JSON)" option from the pop-up
+
+    {{< img src="/img/2.10/import_api_json.png" alt="Import popup" >}}
+
+    For WSDL:
+
+    {{< img src="/img/2.10/import_api_wsdl.png" alt="Import WSDL" >}}
+
+3. **Enter API Information**
+
+    You need to enter the following information:
+
+    * Your **Upstream Target**
+    * A **Version Name** (optional)
+    * An optional **Service Name** and **Port** (WSDL only)
+    * Copy code into the editor
+
+4. **Click "Generate API"**
+
+    Your API will appear in your APIs list. If you select **EDIT** from the **ACTIONS** drop-down list, you can see the endpoints (from the [Endpoint Designer](https://tyk.io/docs/transform-traffic/endpoint-designer/)) that have been created as part of the import process.
+
+### Creating a new API Version by importing an API Definition using Tyk Dashboard
+
+As well as importing new APIs, with Tyk, you can also use import to create a new version of an existing Tyk Classic API.
+
+1. Open the API Designer page and select Import Version from the **Options** drop-down.
+
+    {{< img src="/img/oas/import-api-version.png" alt="Import API Version Drop-Down" >}}
+
+2. Select either OpenAPI (v2.0 or 3.0) or WSDL/XML as your source API
+
+3. You need to add a new **API Version Name**. **Upstream URL** is optional.
+
+    img src="/img/oas/import-api-version-config.png" alt="Import API Version Configuration" >}}
+
+4. Click **Import API**.
+
+    img src="/img/oas/import-api-button.png" alt="Import API" >}}
+
+5. Select the **Versions** tab and your new version will be available.
+6. Open the **Endpoint Designer** for your API and select your new version from **Edit Version**.
+7. You will see all the endpoints are saved for your new version.
+
+{{< img src="/img/oas/version-endpoints.png" alt="Version Endpoints" >}}
