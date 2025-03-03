@@ -43,19 +43,6 @@ menu:
         path: /getting-started/using-tyk-dashboard
         category: Page
         show: True
-  - title: "Deployment and Operations"
-    path: /apim
-    category: Label
-    show: False
-    menu:
-      - title: "Featured Guides"
-        category: Directory
-        show: False
-        menu:
-          - title: "Guide to Tyk installations"
-            path: /getting-started/installation
-            category: Page
-            show: True
   - title: "API Management"
     path: /getting-started
     category: Label
