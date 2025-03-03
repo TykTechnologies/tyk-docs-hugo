@@ -357,7 +357,7 @@ helm upgrade tyk tyk-helm/tyk-stack -n $NAMESPACE \
 
 Now Tyk Dashboard should be accessible through service `dashboard-svc-tyk-tyk-dashboard` at port `3000`. You can login to Dashboard using the admin email and password to start managing APIs. Tyk Gateway will be accessible through service `gateway-svc-tyk-tyk-gateway.tyk.svc` at port `8080`.
 
-You are now ready to [create an API]({{<ref "getting-started/create-api">}}).
+You are now ready to [create an API]({{<ref "api-management/gateway-config-managing-classic#create-an-api">}}).
 
 For the complete installation guide and configuration options, please see [Tyk Stack Helm Chart]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}).
 
@@ -490,7 +490,7 @@ helm upgrade tyk tyk-helm/tyk-stack -n $NAMESPACE \
 
 Now Tyk Dashboard should be accessible through service `dashboard-svc-tyk-tyk-dashboard` at port `3000`. You can login to Dashboard using the admin email and password to start managing APIs. Tyk Gateway will be accessible through service `gateway-svc-tyk-tyk-gateway.tyk.svc` at port `8080`.
 
-You are now ready to [create an API]({{<ref "getting-started/create-api">}}).
+You are now ready to [create an API]({{<ref "api-management/gateway-config-managing-classic#create-an-api">}}).
 
 For the complete installation guide and configuration options, please see [Tyk Stack Helm Chart]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}).
 
@@ -1560,7 +1560,7 @@ latest: digest: sha256:d67b8f55d729bb56e06fe38e17c2016a36f2edcd4f01760c0e62a13bb
 
 Inspect the logs (`heroku logs -a infinite-plains-14949`) to check that deployment was successful, also the node should be registered by the Dashboard in "System Management" -> "Nodes and Licenses" section.
 
-You're ready to follow the guide on [creating and managing your APIs]({{< ref "getting-started/create-api" >}}) with this Heroku deployment.
+You're ready to follow the guide on [creating and managing your APIs]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}}) with this Heroku deployment.
 
 {{< note success >}}
 **Note**  

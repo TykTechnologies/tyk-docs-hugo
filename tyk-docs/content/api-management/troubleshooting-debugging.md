@@ -445,7 +445,7 @@ aliases:
 
     **Solution**
 
-    Users should first [create a new API]({{< ref "getting-started/create-api" >}}) and then [create a new policy]({{< ref "getting-started/create-security-policy" >}}) with an existing API in the Access Rights.
+    Users should first [create a new API]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}}) and then [create a new policy]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}) with an existing API in the Access Rights.
 
 2. ##### Dashboard not showing any analytics data
 

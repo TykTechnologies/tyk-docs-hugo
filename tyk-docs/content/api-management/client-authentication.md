@@ -769,7 +769,7 @@ To protect an API with JWT, we need to execute the following steps:
 
 #### Set a Default Policy
 
-If Tyk cannot find a `pol` claim, it will apply this Default Policy. Select a policy that gives access to this API we are protecting, or [go create one first]({{< ref "getting-started/create-security-policy" >}}) if it doesn't exist.
+If Tyk cannot find a `pol` claim, it will apply this Default Policy. Select a policy that gives access to this API we are protecting, or [go create one first]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}) if it doesn't exist.
 
 Make sure to save the changes to the API Definition.
 
@@ -1409,7 +1409,7 @@ $ curl http://localhost:8080/basicauth/get \
 $ curl http://myusername:mypassword@localhost:8080/basicauth/get
 <200 response from upstream>
 ```
-We have full tutorials to guide you to [create an API Key]({{< ref "getting-started/create-api-key" >}}) via the Dashboard. 
+We have full tutorials to guide you to [create an API Key]({{< ref "api-management/gateway-config-managing-classic#access-an-api" >}}) via the Dashboard. 
 
 ##### Using the Tyk Gateway API
 
@@ -2493,7 +2493,7 @@ This will stop checking keys that are proxied by Tyk.
 {{< note success >}}
 **Note**  
 
-Keyless APIs cannot be selected for [Access Rights]({{< ref "getting-started/create-security-policy" >}}) in a security policy.
+Keyless APIs cannot be selected for [Access Rights]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}) in a security policy.
 {{< /note >}}
 
 #### Request a Public Resource

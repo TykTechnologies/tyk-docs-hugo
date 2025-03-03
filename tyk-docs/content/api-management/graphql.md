@@ -87,7 +87,7 @@ GraphQL API can be created in Tyk using:
 * Tyk Dashboard API
 * Tyk Gateway API - for OSS users
 
-The process is very similar to [HTTP API creation]({{< ref "getting-started/create-api" >}}) with a few additional steps to cover GraphQL-specific functionalities.
+The process is very similar to [HTTP API creation]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}}) with a few additional steps to cover GraphQL-specific functionalities.
 
 ### Via Tyk Dashboard UI
 
@@ -528,7 +528,7 @@ GraphQL introspection is enabled in Tyk by default. You can disable the introspe
 {{< tabs_start >}}
 {{< tab_start "Tyk Dashboard" >}}
 
-First, check the general information on [how to create a security policy with Tyk]({{< ref "getting-started/create-security-policy" >}})
+First, check the general information on [how to create a security policy with Tyk]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}})
 
 For GraphQL APIs the *API ACCESS* section will show additional, GQL-specific options that can be enabled. 
 
@@ -541,7 +541,7 @@ Because introspection control in Tyk works on Policy and Key level, it means you
 {{< tab_end >}}
 {{< tab_start "Tyk APIs" >}}
 
-First, you need to learn [how to create a security policy with Tyk API]({{< ref "getting-started/create-security-policy" >}}) or [how to create an API Key with Tyk API]({{< ref "api-management/policies#access-key-level-security" >}}).
+First, you need to learn [how to create a security policy with Tyk API]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}) or [how to create an API Key with Tyk API]({{< ref "api-management/policies#access-key-level-security" >}}).
 
 Once you learn how to utilize the API to create a security policy or a key, you can use the following snippet: 
 
@@ -1409,7 +1409,7 @@ When a field is restricted and used in a GraphQL operation, the consumer will re
 ### Field based permissions with the list of allowed types
 Field access can be restricted by setting up an allowed types list in a policy or directly on a key. If new fields are added to the GraphQL schema, you don't need to update the field-based permissions. This is because the fields that are not in the list of allowed types are automatically access-restricted.
 
-First, you need to learn [how to create a security policy with the API]({{< ref "getting-started/create-security-policy" >}}) or [how to create an API Key with the API]({{< ref "getting-started/create-security-policy" >}}).
+First, you need to learn [how to create a security policy with the API]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}) or [how to create an API Key with the API]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}).
 
 Once you learn how to utilize the API to create a security policy or key, you can use the following snippet:
 

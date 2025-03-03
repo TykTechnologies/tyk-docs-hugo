@@ -20,7 +20,7 @@ aliases:
 
 Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 Tyk has supported API definitions that embed the [OpenAPI Specification v3.0.x](https://spec.openapis.org/oas/v3.0.3) (OAS) format, which can offer significant time and complexity savings if you are already using it to design and document your APIs.
 
-If you can’t wait to get started, head on over to our [guide]({{< ref "getting-started/key-concepts/high-level-concepts" >}}) to using OAS API Definitions for some tutorials.
+If you can’t wait to get started, head on over to our [guide]({{< ref "api-management/gateway-config-managing-oas#" >}}) to using OAS API Definitions for some tutorials.
 
 ## What does a Tyk OAS API Definition look like?
 

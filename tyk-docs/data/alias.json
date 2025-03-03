@@ -805,5 +805,15 @@
     "tyk-multi-data-centre/mdcb-example-minimising-latency": "#minimizing-latency-with-mdcb",
     "tyk-multi-data-centre/setup-controller-data-centre": "#setup-mdcb-control-plane",
     "tyk-multi-data-centre/setup-worker-data-centres": "#setup-mdcb-data-plane",
-    "product-stack/tyk-enterprise-mdcb/advanced-configurations/synchroniser": "#synchroniser-feature-with-mdcb"
+    "product-stack/tyk-enterprise-mdcb/advanced-configurations/synchroniser": "#synchroniser-feature-with-mdcb",
+    "getting-started/key-concepts/high-level-concepts": "#",
+    "getting-started/using-oas-definitions/create-an-oas-api": "#create-a-tyk-oas-api",
+    "getting-started/using-oas-definitions/import-an-oas-api": "#import-a-tyk-oas-api",
+    "getting-started/using-oas-definitions/update-an-oas-api": "#update-a-tyk-oas-api",
+    "getting-started/using-oas-definitions/versioning-an-oas-api": "#versioning-a-tyk-oas-api",
+    "getting-started/using-oas-definitions/export-an-oas-api": "#export-a-tyk-oas-api",
+    "getting-started/create-api": "#create-an-api",
+    "getting-started/import-apis": "#import-an-api",
+    "getting-started/create-security-policy": "#secure-an-api",
+    "getting-started/create-api-key": "#access-an-api"
 }

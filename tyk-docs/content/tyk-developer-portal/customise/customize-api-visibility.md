@@ -16,7 +16,7 @@ In a nutshell, we are going to assign a group field to an API catalog profile, t
 *Please note that this does not support multiple groups for a single API catalog entry, nor for a single developer profile.* 
 
 ## Prerequisites
-1. You have an API created in your Dashboard. See [Create an API]({{< ref "getting-started/create-api" >}}) for more details.
+1. You have an API created in your Dashboard. See [Create an API]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}}) for more details.
 2. You have a Policy created in your Dashboard that has access rights to this API
 3. You have a Portal Catalog entry for this API. Here we will call it "Internal API"
 4. You have a developer account that can access your Developer Portal. 
