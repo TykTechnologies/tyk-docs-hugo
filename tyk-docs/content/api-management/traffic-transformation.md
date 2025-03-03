@@ -4382,7 +4382,7 @@ An operation is a combination of HTTP method and path or, as Tyk calls it, an en
 
 ###### Common (path-level) parameters
 
-[Common parameters](https://swagger.io/docs/specification/v3_0/describing-parameters/#common-parameters), that apply to all operations within a path, can be defined at the path level within the OpenAPI description. Tyk refers to these as path-level parameters and displays them as read-only fields in the Dashboard's API designer. If you need to add or modify common parameters you must use the *Raw Definition* editor, or edit your OpenAPI document outside Tyk and [update]({{< ref "getting-started/using-oas-definitions/update-an-oas-api" >}}) the API.
+[Common parameters](https://swagger.io/docs/specification/v3_0/describing-parameters/#common-parameters), that apply to all operations within a path, can be defined at the path level within the OpenAPI description. Tyk refers to these as path-level parameters and displays them as read-only fields in the Dashboard's API designer. If you need to add or modify common parameters you must use the *Raw Definition* editor, or edit your OpenAPI document outside Tyk and [update]({{< ref "api-management/gateway-config-managing-oas#update-a-tyk-oas-api" >}}) the API.
 
 ##### Request body
 
@@ -4402,7 +4402,7 @@ If you are creating your API without import, or if you only want to enable reque
 
 ##### Automatically enabling the request validation middleware
 
-The request validation middleware can be enabled for all endpoints that have defined schemas when [importing]({{< ref "getting-started/using-oas-definitions/import-an-oas-api#tutorial-5-create-an-api-that-validates-the-request-payload" >}}) an OpenAPI Document to create a Tyk OAS API.
+The request validation middleware can be enabled for all endpoints that have defined schemas when [importing]({{< ref "api-management/gateway-config-managing-oas#create-an-api-that-validates-the-request-payload" >}}) an OpenAPI Document to create a Tyk OAS API.
 - if you are using the `POST /apis/oas/import` endpoint in the [Tyk Dashboard API]({{< ref "tyk-dashboard-api" >}}) or [Tyk Gateway API]({{< ref "tyk-gateway-api" >}}) then you can do this by setting the `validateRequest=true` query parameter
 - if you are using the API Designer, select the **Auto-generate middleware to validate requests** option on the **Import API** screen
 

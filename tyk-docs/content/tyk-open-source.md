@@ -227,7 +227,7 @@ helm upgrade tyk-oss tyk-helm/tyk-oss -n $NAMESPACE --create-namespace \
 
 Now Tyk Gateway should be accessible through service `gateway-svc-tyk-oss-tyk-gateway` at port `8080`. 
 
-You are now ready to [create an API]({{<ref "getting-started/create-api">}}).
+You are now ready to [create an API]({{<ref "api-management/gateway-config-managing-classic#create-an-api">}}).
 
 For the complete installation guide and configuration options, please see [Tyk OSS Helm Chart]({{<ref "product-stack/tyk-charts/tyk-oss-chart">}}).
 

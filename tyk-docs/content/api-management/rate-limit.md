@@ -60,7 +60,7 @@ Key-level rate limiting is more focused on controlling traffic from individual s
 - **key-level per-API limit** limiting the rate of calls the user of a key can make to specific individual APIs
 - **key-level per-endpoint limit** limiting the rate of calls the user of a key can make to specific individual endpoints of an API
  
-These guides include explanation of how to configure key-level rate limits when using [API Keys]({{< ref "getting-started/create-api-key" >}}) and [Security Policies]({{< ref "getting-started/create-security-policy" >}}).
+These guides include explanation of how to configure key-level rate limits when using [API Keys]({{< ref "api-management/gateway-config-managing-classic#access-an-api" >}}) and [Security Policies]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}).
 
 #### Which scope should I use?
 
@@ -377,7 +377,7 @@ If no per-endpoint rate limit is defined, the endpoint will inherit the key-leve
 **Note**  
 The following assumptions are made:
  - The [ignore authentication]({{< ref "api-management/traffic-transformation#ignore-authentication-overview" >}}) middleware should not be enabled for the relevant endpoints.
- - If [path-based permissions]({{< ref "getting-started/create-security-policy#path-based-permissions" >}}) are configured, they must grant access to these endpoints for keys generated from the policies.
+ - If [path-based permissions]({{< ref "api-management/gateway-config-managing-classic#path-based-permissions" >}}) are configured, they must grant access to these endpoints for keys generated from the policies.
 {{< /note >}}
 
 You can configure per-endpoint rate limits from the API Designer in Tyk Dashboard as follows:

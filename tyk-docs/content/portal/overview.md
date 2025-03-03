@@ -184,7 +184,7 @@ There are two ways of creating API Products and Plans in the Developer Portal:
 
 - A Tyk Self-Managed [installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}})
 - Tyk Self-Managed [added as a provider]({{< ref "portal/overview#connect-to-a-provider" >}})
-- Have APIs [created in your Tyk installation]({{< ref "getting-started/create-api" >}}).
+- Have APIs [created in your Tyk installation]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}}).
 
 #### Import API Product and Plan
 

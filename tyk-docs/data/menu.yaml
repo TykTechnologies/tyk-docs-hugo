@@ -121,6 +121,42 @@ menu:
             path: /api-management/gateway-config-tyk-classic
             category: Page
             show: True
+      - title: "Manage APIs"
+        category: Directory
+        show: True
+        menu:
+          - title: "Tyk OAS APIs"
+            path: /api-management/gateway-config-managing-oas
+            category: Page
+            show: True
+          - title: "Tyk Classic APIs"
+            path: /api-management/gateway-config-managing-classic
+            category: Page
+            show: True
+          - title: "Deploy APIs"
+            category: Page
+            show: True
+            path: /api-management/manage-apis/deploy-apis/deploy-apis-overview
+          - title: "Useful Configurations"
+            path: /tyk-stack/tyk-gateway/important-prerequisites
+            category: Page
+            show: True
+          - title: "Monitoring and Troubleshooting APIs"
+            category: Page
+            show: True
+            path: /api-management/manage-apis/api-operations/api-observability
+          - title: "Tyk OAS APIs"
+            category: Directory
+            show: False
+            menu:
+              - title: "Extending an OAS API"
+                path: /api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware
+                category: Page
+                show: False
+      - title: "Dashboard Configuration"
+        path: /api-management/dashboard-configuration
+        category: Page
+        show: True
       - title: "API Versioning"
         path: /api-management/api-versioning
         category: Page
@@ -233,10 +269,6 @@ menu:
             path: /api-management/automations/sync
             category: Page
             show: True
-      - title: "Dashboard Configuration"
-        path: /api-management/dashboard-configuration
-        category: Page
-        show: True
       - title: "Manage Environments"
         path: /api-management/multiple-environments
         category: Page
@@ -245,126 +277,6 @@ menu:
         path: /api-management/troubleshooting-debugging
         category: Page
         show: True
-      - title: "Manage APIs"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            category: Directory
-            show: False
-            menu:
-          - title: "Tyk Classic APIs"
-            category: Directory
-            show: True
-            menu:
-              - title: "Plan and define APIs"
-                category: Page
-                show: False
-              - title: "Useful Configurations"
-                path: /tyk-stack/tyk-gateway/important-prerequisites
-                category: Page
-                show: True
-              - title: "Import APIs"
-                category: Page
-                show: False
-              - title: "New APIs"
-                category: Page
-                show: False
-              - title: "Define access to APIs"
-                category: Page
-                show: False
-              - title: "Define governance for APIs"
-                category: Page
-                show: False
-              - title: "Develop APIs"
-                category: Page
-                show: False
-              - title: "Protect and secure APIs"
-                category: Page
-                show: False
-              - title: "Create an API"
-                path: /getting-started/create-api
-                category: Page
-                show: True
-              - title: "Import an API"
-                path: /getting-started/import-apis
-                category: Page
-                show: True
-              - title: "Secure an API"
-                path: /getting-started/create-security-policy
-                category: Page
-                show: True
-              - title: "Access an API"
-                path: /getting-started/create-api-key
-                category: Page
-                show: True
-          - title: "API Operations"
-            category: Directory
-            show: False
-            menu:
-              - title: "Automated API operations"
-                category: Page
-                show: False
-              - title: "Version APIs"
-                category: Page
-                show: False
-              - title: "Troubleshoot APIs"
-                category: Page
-                show: False
-              - title: "Monitor APIs"
-                category: Page
-                show: False
-              - title: "API observability"
-                category: Page
-                show: False
-          - title: "Tyk OAS APIs"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /getting-started/key-concepts/high-level-concepts
-                category: Page
-                show: True
-              - title: "Get started with Tyk OAS APIs"
-                path: /getting-started/using-oas-definitions
-                category: Page
-                show: False
-              - title: "Create a Tyk OAS API"
-                path: /getting-started/using-oas-definitions/create-an-oas-api
-                category: Page
-                show: True
-              - title: "Import a Tyk OAS API"
-                path: /getting-started/using-oas-definitions/import-an-oas-api
-                category: Page
-                show: True
-              - title: "Update a Tyk OAS API"
-                path: /getting-started/using-oas-definitions/update-an-oas-api
-                category: Page
-                show: True
-              - title: "Extending an OAS API"
-                path: /api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware
-                category: Page
-                show: False
-              - title: "Enable middleware with an OAS API"
-                path: /getting-started/using-oas-definitions/update-api-with-oas
-                category: Page
-                show: False
-              - title: "Versioning an OAS API"
-                path: /getting-started/using-oas-definitions/versioning-an-oas-api
-                category: Page
-                show: True
-              - title: "Export an OAS API"
-                path: /getting-started/using-oas-definitions/export-an-oas-api
-                category: Page
-                show: True
-          - title: "Deploy APIs"
-            category: Page
-            show: True
-            path: /api-management/manage-apis/deploy-apis/deploy-apis-overview
-          - title: "Monitoring and Troubleshooting APIs"
-            category: Page
-            show: True
-            path: /api-management/manage-apis/api-operations/api-observability
       - title: "AI Management"
         category: Page
         path: /api-management/ai-management/overview
