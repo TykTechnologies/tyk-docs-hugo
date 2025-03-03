@@ -14,8 +14,8 @@ From Tyk Dashboard v1.8, you can now create and manage OAuth clients from the De
 
 ## Prerequisites
 
-1. An API created in your Dashboard using Tyk's ability to act as a OAuth provider. You need to have [OAuth 2.0]({{< ref "api-management/client-authentication#use-tyk-as-an-oauth-20-authorization-server" >}}) selected as the Authentication mode. See [Create an API]({{< ref "getting-started/create-api" >}}) for more details. 
-2. A Policy created in your Dashboard with the API created above selected in the **Access Rights > Add access rule** drop-down. See [Create a Security Policy]({{< ref "getting-started/create-security-policy" >}}) for more details.
+1. An API created in your Dashboard using Tyk's ability to act as a OAuth provider. You need to have [OAuth 2.0]({{< ref "api-management/client-authentication#use-tyk-as-an-oauth-20-authorization-server" >}}) selected as the Authentication mode. See [Create an API]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}}) for more details. 
+2. A Policy created in your Dashboard with the API created above selected in the **Access Rights > Add access rule** drop-down. See [Create a Security Policy]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}) for more details.
 3. A Portal Catalog entry for the API created above with the Policy you created selected from the **Available policies** drop-down. See [Create a Portal Entry]({{< ref "getting-started/tutorials/publish-api" >}}) for more details.
 4. A developer account created in your Developer Portal.
 

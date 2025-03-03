@@ -203,11 +203,11 @@ Although we have set the main factors of the key, they will be overridden by the
 
 ### How You Can Create Policies
 
-[With the Dashboard API]({{< ref "getting-started/create-security-policy#create-a-security-policy-with-the-api" >}})
+[With the Dashboard API]({{< ref "api-management/gateway-config-managing-classic#create-a-security-policy-with-the-api" >}})
 
-[With the Gateway API - Open Source tab]({{< ref "getting-started/create-security-policy" >}})
+[With the Gateway API - Open Source tab]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}})
 
-[With the Dashboard]({{< ref "getting-started/create-security-policy#create-a-security-policy-with-the-dashboard" >}})
+[With the Dashboard]({{< ref "api-management/gateway-config-managing-classic#create-a-security-policy-with-the-dashboard" >}})
 
 ---
 ---

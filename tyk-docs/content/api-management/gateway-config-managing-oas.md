@@ -63,9 +63,9 @@ We have a video that introduces how to use OpenAPI described APIs with Tyk.
 
 #### Creating Tyk OAS APIs
 
-You can [create Tyk OAS APIs]({{< ref "getting-started/using-oas-definitions/create-an-oas-api" >}}) using Tyk Gateway or Tyk Dashboard.
+You can [create Tyk OAS APIs]({{< ref "api-management/gateway-config-managing-oas#create-a-tyk-oas-api" >}}) using Tyk Gateway or Tyk Dashboard.
 
-With the addition of OpenAPI support, we have added a new [API Designer]({{< ref "getting-started/using-oas-definitions/create-an-oas-api#tutorial-3-create-a-tyk-oas-api-using-the-tyk-dashboard-gui" >}}) in the Tyk Dashboard. This includes syntax highlighting in the raw editor as well as a more intuitive approach to adding middleware to your APIs.
+With the addition of OpenAPI support, we have added a new [API Designer]({{< ref "api-management/gateway-config-managing-oas#tutorial-3-create-a-tyk-oas-api-using-the-tyk-dashboard-gui" >}}) in the Tyk Dashboard. This includes syntax highlighting in the raw editor as well as a more intuitive approach to adding middleware to your APIs.
 
 {{< note success >}}
 **Note**  
@@ -79,7 +79,7 @@ To enjoy writing a *Tyk OAS API definition* as if it is [a native programming la
 
 ##### Importing your OpenAPI description to Tyk
 
-If you already have a standard [OpenAPI document]({{< ref "api-management/gateway-config-tyk-oas#openapi-document" >}}) for your API, you can very easily [import it into Tyk]({{< ref "getting-started/using-oas-definitions/import-an-oas-api" >}}) and have it running in seconds. During the import Tyk will generate the required Tyk extension based on the OpenAPI description in the OpenAPI document and optional parameters you set in the import command. It will also try to establish the right place to send requests to and update the ‘public’ part of the API Definition to tell users how to send requests to the API gateway. It is also possible to [automatically configure some Tyk middleware]({{< ref "api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware" >}}) from the OpenAPI description, configuring how Tyk will handle requests to the API. An import takes in an *OpenAPI document* file and turns it into a *Tyk OAS API Definition*.
+If you already have a standard [OpenAPI document]({{< ref "api-management/gateway-config-tyk-oas#openapi-document" >}}) for your API, you can very easily [import it into Tyk]({{< ref "api-management/gateway-config-managing-oas#import-a-tyk-oas-api" >}}) and have it running in seconds. During the import Tyk will generate the required Tyk extension based on the OpenAPI description in the OpenAPI document and optional parameters you set in the import command. It will also try to establish the right place to send requests to and update the ‘public’ part of the API Definition to tell users how to send requests to the API gateway. It is also possible to [automatically configure some Tyk middleware]({{< ref "api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware" >}}) from the OpenAPI description, configuring how Tyk will handle requests to the API. An import takes in an *OpenAPI document* file and turns it into a *Tyk OAS API Definition*.
 
 {{< note success >}}
 **Note**  
@@ -91,11 +91,11 @@ There are two types of import: one that creates a Tyk Classic API Definition and
 
 Once a Tyk OAS API has been created in, or imported into, Tyk the Gateway will be able to manage and proxy traffic to the exposed endpoints as usual.
 
-We provide a flexible way for you to [export a Tyk OAS API definition]({{< ref "getting-started/using-oas-definitions/export-an-oas-api" >}}) so that you can store it in source control for CI/CD or GitOps deployment patterns. You can also [export the OpenAPI description]({{< ref "getting-started/using-oas-definitions/export-an-oas-api#tutorial-2-export-just-the-openapi-document" >}}), with the Tyk extension removed, for example to upload to your Developer Portal. This is great because it strips out all the settings that your developers don’t need to know about.
+We provide a flexible way for you to [export a Tyk OAS API definition]({{< ref "api-management/gateway-config-managing-oas#export-a-tyk-oas-api" >}}) so that you can store it in source control for CI/CD or GitOps deployment patterns. You can also [export the OpenAPI description]({{< ref "api-management/gateway-config-managing-oas#tutorial-2-export-just-the-openapi-document" >}}), with the Tyk extension removed, for example to upload to your Developer Portal. This is great because it strips out all the settings that your developers don’t need to know about.
 
-Your OpenAPI description is a living document that describes your upstream service. When this is updated (for example, due to the addition of a new endpoint) instead of having to create a new Tyk OAS API to expose this, you can easily [update the OpenAPI]({{< ref "getting-started/using-oas-definitions/update-an-oas-api" >}}) part of your Tyk OAS API with the new OpenAPI document.
+Your OpenAPI description is a living document that describes your upstream service. When this is updated (for example, due to the addition of a new endpoint) instead of having to create a new Tyk OAS API to expose this, you can easily [update the OpenAPI]({{< ref "api-management/gateway-config-managing-oas#update-a-tyk-oas-api" >}}) part of your Tyk OAS API with the new OpenAPI document.
 
-When you need to make breaking changes as your services and APIs evolve, it's easy to [use versioning with Tyk OAS APIs]({{< ref "getting-started/using-oas-definitions/versioning-an-oas-api" >}}).
+When you need to make breaking changes as your services and APIs evolve, it's easy to [use versioning with Tyk OAS APIs]({{< ref "api-management/gateway-config-managing-oas#versioning-a-tyk-oas-api" >}}).
 
 ### Community Feedback
  
@@ -107,7 +107,7 @@ These tutorials will take you through the process of managing a Tyk OAS API from
 
 ### Using the Tyk Gateway API
 
-In this tutorial we show you how to create a minimal Tyk OAS API using the Tyk Gateway API, starting with a [Tyk OAS API Definition]({{< ref "/getting-started/using-oas-definitions/oas-glossary#tyk-oas-api-definition" >}}).
+In this tutorial we show you how to create a minimal Tyk OAS API using the Tyk Gateway API, starting with a [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition" >}}).
 
 When making calls to the Tyk Gateway API you'll need to set the domain name and port for your environment and, in the API request header, must provide credentials in the `x-tyk-authorization` field for Tyk to authorize your request, as follows:
 
@@ -186,7 +186,7 @@ You can go to the `/apps` folder of your Tyk Gateway installation (by default in
 
 ### Using the Tyk Dashboard API
 
-You can also create APIs using the Tyk Dashboard API, starting with a [Tyk OAS API Definition]({{< ref "/getting-started/using-oas-definitions/oas-glossary#tyk-oas-api-definition" >}}).
+You can also create APIs using the Tyk Dashboard API, starting with a [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition" >}}).
 
 In this tutorial we will also show you how to test and protect your new API by enforcing an authentication requirement when making calls to the API.
   
@@ -407,7 +407,7 @@ To see the URL given to your API, check the Info section displayed at the top of
 
 ### Using Tyk Operator
 
-You can make use of Tyk Operator custom resources to configure [Tyk OAS API]({{<ref "getting-started/using-oas-definitions/oas-glossary#tyk-oas-api-definition">}}) in a Kubernetes environment.
+You can make use of Tyk Operator custom resources to configure [Tyk OAS API]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition">}}) in a Kubernetes environment.
 
 In this [tutorial]({{<ref "/api-management/automations#set-up-oas-api">}}) we guide you through the steps to create a new Tyk OAS API using Tyk Operator.
 
@@ -415,7 +415,7 @@ In this [tutorial]({{<ref "/api-management/automations#set-up-oas-api">}}) we gu
 
 As developers working on API development, it can be necessary for us to regularly update our API definition as, for example, we add endpoints or support new methods. This definition is normally generated either from our codebase or created using API design tools (such as [Swagger Editor]({{< ref "https://editor.swagger.io/" >}}), [Postman]({{< ref "https://www.postman.com/" >}}) and [Stoplight]({{< ref "https://stoplight.io/" >}})).
 
-One of the most powerful features of working with Tyk OAS is that you can make changes to your [Tyk OAS API Definition]({{< ref "/getting-started/using-oas-definitions/oas-glossary#tyk-oas-api-definition" >}}) or [OpenAPI Document]({{< ref "/getting-started/using-oas-definitions/oas-glossary#openapi-document" >}}) outside Tyk and then use this updated description to update the Tyk OAS API. You can simply update the configuration on Tyk without having to make any changes to the Tyk Gateway configuration (`x-tyk-api-gateway`).
+One of the most powerful features of working with Tyk OAS is that you can make changes to your [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition" >}}) or [OpenAPI Document]({{< ref "api-management/gateway-config-tyk-oas#openapi-document" >}}) outside Tyk and then use this updated description to update the Tyk OAS API. You can simply update the configuration on Tyk without having to make any changes to the Tyk Gateway configuration (`x-tyk-api-gateway`).
 
 In this section will walk you through different methods you can use to Update a Tyk OAS API using the Tyk Gateway API, Tyk Dashboard API and Tyk Dashboard GUI.
 
@@ -435,7 +435,7 @@ You can also run these steps using the Tyk Dashboard API, noting the differences
 {{< note success >}}
 **Note**  
 
-You will also need to have ‘admin’ or ‘api’ rights if [RBAC]({{< ref "/tyk-dashboard/rbac.md" >}}) is enabled.
+You will also need to have ‘admin’ or ‘api’ rights if [RBAC]({{< ref "api-management/user-management" >}}) is enabled.
 {{< /note >}}
 
 ### Create and update a keyless Tyk OAS API
@@ -444,7 +444,7 @@ You will also need to have ‘admin’ or ‘api’ rights if [RBAC]({{< ref "/t
 
 1. **Create an initial API**
 
-    Following the instructions to [create a Tyk OAS API]({{< ref "getting-started/using-oas-definitions/create-an-oas-api" >}}), create a new API by sending [this](https://bit.ly/39tnXgO) Tyk OAS API Definition to the Gateway API endpoint (this is an example that contains the very minimal required fields).
+    Following the instructions to [create a Tyk OAS API]({{< ref "api-management/gateway-config-managing-oas#create-a-tyk-oas-api" >}}), create a new API by sending [this](https://bit.ly/39tnXgO) Tyk OAS API Definition to the Gateway API endpoint (this is an example that contains the very minimal required fields).
 
     Remember to set the `x-tyk-authorization` value in your request header and curl the domain name and port to be the correct values for your environment. 
 
@@ -854,7 +854,7 @@ You've now got an API deployed on your Tyk Gateway, but it is keyless - anyone c
 
 1. **Create an Initial API**
 
-    Following the instructions to [create a Tyk OAS API]({{< ref "getting-started/using-oas-definitions/create-an-oas-api" >}}), create a new API by sending [this](https://bit.ly/39tnXgO) Tyk OAS API Definition to the Gateway API endpoint (this is an example that contains the very minimal required fields).
+    Following the instructions to [create a Tyk OAS API]({{< ref "api-management/gateway-config-managing-oas#create-a-tyk-oas-api" >}}), create a new API by sending [this](https://bit.ly/39tnXgO) Tyk OAS API Definition to the Gateway API endpoint (this is an example that contains the very minimal required fields).
 
     Remember to set the `x-tyk-authorization` value in your request header and curl the domain name and port to be the correct values for your environment. 
 
@@ -1146,7 +1146,7 @@ You have updated a Tyk OAS API, enabling authentication, using only the OpenAPI 
 
 ## Versioning a Tyk OAS API
 
-Tyk allows you to create versions of your APIs. When using Tyk OAS APIs versioning works slightly differently from with Tyk Classic APIs, to find out more please take a look at the dedicated [page]({{< ref "/getting-started/key-concepts/oas-versioning" >}}).
+Tyk allows you to create versions of your APIs. When using Tyk OAS APIs versioning works slightly differently from with Tyk Classic APIs, to find out more please take a look at the dedicated [page]({{< ref "api-management/api-versioning#tyk-oas-api-versioning-1" >}}).
 
 If you're ready to dive in, then this tutorial shows you how easy it is to create and manage versions of your Tyk OAS APIs using the open source Tyk Gateway API, Tyk Dashboard API and the Tyk Dashboard GUI.
 
@@ -1167,19 +1167,19 @@ You can also run these steps using the Tyk Dashboard API, noting the differences
 | Tyk Gateway API       | 8080     | `tyk/apis/oas`  | `x-tyk-authorization` | `secret` value set in `tyk.conf` |
 | Tyk Dashboard API     | 3000     | `api/apis/oas`  | `Authorization`       | From Dashboard User Profile      |
 
-As explained in the section on [Creating an OAS API]({{< ref "/getting-started/using-oas-definitions/create-an-oas-api" >}}) remember that when using the Tyk Dashboard API you only need to issue one command to create the API and load it onto the Gateway; when using the Tyk Gateway API you must remember to restart or hot reload the Gateway after creating the API.
+As explained in the section on [Creating an OAS API]({{< ref "api-management/gateway-config-managing-oas#create-a-tyk-oas-api" >}}) remember that when using the Tyk Dashboard API you only need to issue one command to create the API and load it onto the Gateway; when using the Tyk Gateway API you must remember to restart or hot reload the Gateway after creating the API.
 
 * When using the Tyk Dashboard API, you can find your credentials key from your **User Profile > Edit Profile > Tyk Dashboard API Access Credentials**
 
 {{< note success >}}
 **Note**
 
-You will also need to have ‘admin’ or ‘api’ rights if [RBAC]({{< ref "/tyk-dashboard/rbac.md" >}}) is enabled.
+You will also need to have ‘admin’ or ‘api’ rights if [RBAC]({{< ref "api-management/user-management" >}}) is enabled.
 {{< /note >}}
 
 1. **Create your base API**
 
-    You need to create a new API that will be the [Base API]({{< ref "/getting-started/key-concepts/oas-versioning" >}}) for the future versions. You do this by sending a Tyk OAS API Definition to the Tyk Gateway API's `apis/oas` endpoint. Note that there is no special command required to create this new API as a Base API - i.e. any Tyk OAS API can be used as a Base API.
+    You need to create a new API that will be the [Base API]({{< ref "api-management/api-versioning#tyk-oas-api-versioning-1" >}}) for the future versions. You do this by sending a Tyk OAS API Definition to the Tyk Gateway API's `apis/oas` endpoint. Note that there is no special command required to create this new API as a Base API - i.e. any Tyk OAS API can be used as a Base API.
 
     | Property     | Description            |
     |--------------|------------------------|
@@ -1505,7 +1505,7 @@ After setting up a versioned API, when creating subsequent versions, the dialog 
 
 ## Export a Tyk OAS API
 
-Tyk Gateway API and Tyk Dashboard API both support exporting the entire [Tyk OAS API Definition]({{< ref "/getting-started/using-oas-definitions/oas-glossary#tyk-oas-api-definition" >}}) or just the [OpenAPI Document]({{< ref "/getting-started/using-oas-definitions/oas-glossary#openapi-document" >}}) part so that you can manage or work on them outside Tyk.
+Tyk Gateway API and Tyk Dashboard API both support exporting the entire [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition" >}}) or just the [OpenAPI Document]({{< ref "api-management/gateway-config-tyk-oas#openapi-document" >}}) part so that you can manage or work on them outside Tyk.
 
 #### Differences between using the Tyk Dashboard API and Tyk Gateway API
 
@@ -1523,7 +1523,7 @@ You can also run these steps using the Tyk Dashboard API, noting the differences
 {{< note success >}}
 **Note**  
 
-You will also need to have ‘admin’ or ‘api’ rights if [RBAC]({{< ref "/tyk-dashboard/rbac.md" >}}) is enabled.
+You will also need to have ‘admin’ or ‘api’ rights if [RBAC]({{< ref "api-management/user-management" >}}) is enabled.
 {{< /note >}}
 
 ### Export the Tyk OAS API definition
@@ -1564,7 +1564,7 @@ curl --location --request GET 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API-I
 
 ## Import a Tyk OAS API
 
-Tyk supports importing [OpenAPI Documents]({{< ref "/getting-started/using-oas-definitions/oas-glossary#openapi-document" >}}) (in JSON format, OAS version 3.0.x) using the Tyk Gateway API, the Tyk Dashboard API or the [Tyk Dashboard GUI]({{< ref "#tutorial-7-using-the-tyk-dashboard-ui" >}}).
+Tyk supports importing [OpenAPI Documents]({{< ref "api-management/gateway-config-tyk-oas#openapi-document" >}}) (in JSON format, OAS version 3.0.x) using the Tyk Gateway API, the Tyk Dashboard API or the [Tyk Dashboard GUI]({{< ref "#tutorial-7-using-the-tyk-dashboard-ui" >}}).
 
 In the following tutorials, we provide the flows and commands you can use to get Tyk to generate the respective Tyk OAS API definitions from your OpenAPI Documents.
 
@@ -1579,14 +1579,14 @@ You can also run these steps using the Tyk Dashboard API, noting the differences
 | Tyk Gateway API       | 8080     | `tyk/apis/oas`  | `x-tyk-authorization` | `secret` value set in `tyk.conf` |
 | Tyk Dashboard API     | 3000     | `api/apis/oas`  | `Authorization`       | From Dashboard User Profile      |
 
-As explained in the section on [Creating an OAS API]({{< ref "/getting-started/using-oas-definitions/create-an-oas-api" >}}) remember that when using the Tyk Dashboard API you only need to issue one command to create the API and load it onto the Gateway; when using the Tyk Gateway API you must remember to restart or hot reload the Gateway after creating the API.
+As explained in the section on [Creating an OAS API]({{< ref "api-management/gateway-config-managing-oas#create-a-tyk-oas-api" >}}) remember that when using the Tyk Dashboard API you only need to issue one command to create the API and load it onto the Gateway; when using the Tyk Gateway API you must remember to restart or hot reload the Gateway after creating the API.
 
 * When using the Tyk Dashboard API, you can find your credentials key from your **User Profile > Edit Profile > Tyk Dashboard API Access Credentials**
 
 {{< note success >}}
 **Note**
 
-You will also need to have ‘admin’ or ‘api’ rights if [RBAC]({{< ref "/tyk-dashboard/rbac.md" >}}) is enabled.
+You will also need to have ‘admin’ or ‘api’ rights if [RBAC]({{< ref "api-management/user-management" >}}) is enabled.
 {{< /note >}}
 
 ### Create a Tyk OAS API by importing an OpenAPI Document
@@ -1912,9 +1912,9 @@ You created a fully functional Tyk OAS API Definition by providing an OpenAPI Do
 
     Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/tyk-gateway`) and check the newly created Tyk OAS API Definition.
 
-    You’ll see that Tyk has populated the `authentication` section within the `x-tyk-api-gateway` section according to the instructions you provided in the `import` request. The `api_key` security scheme has been enabled (which indicates that the [Authentication Token]({{< ref "/getting-started/key-concepts/authentication#authentication-token" >}}) mechanism has been applied).
+    You’ll see that Tyk has populated the `authentication` section within the `x-tyk-api-gateway` section according to the instructions you provided in the `import` request. The `api_key` security scheme has been enabled (which indicates that the [Authentication Token]({{< ref "api-management/gateway-config-tyk-oas#authentication-with-tyk-oas#authentication-token" >}}) mechanism has been applied).
 
-    For more information on how Tyk extracts data about security defined from the OpenAPI Document and what authentication mechanisms can be configured, see [Authentication with OAS]({{< ref "/content/getting-started/key-concepts/authentication.md" >}}).
+    For more information on how Tyk extracts data about security defined from the OpenAPI Document and what authentication mechanisms can be configured, see [Authentication with OAS]({{< ref "api-management/gateway-config-tyk-oas#authentication-with-tyk-oas" >}}).
 
     ```.json
     {
@@ -2205,7 +2205,7 @@ You created a Tyk OAS API that which tells your Tyk Gateway to allow access just
 
     You’ll see that Tyk has populated the `middleware` section within the `x-tyk-api-gateway` section, configuring the `operations` section to enable the `mockResponse` middleware for each endpoint in the `operationId` list in the OpenAPI Document that you provided. The option `fromOASExamples` has been enabled, which means that Tyk will use the schema defined in the `examples` section of the OpenAPI Document to construct the mock response.
 
-    For more information on how Tyk builds the `middleware.operations` structure to configure middleware, see [Paths]({{< ref "/getting-started/key-concepts/paths" >}}).
+    For more information on how Tyk builds the `middleware.operations` structure to configure middleware, see [Paths]({{< ref "api-management/gateway-config-tyk-oas#paths" >}}).
 
     ```.json
     {
@@ -2372,9 +2372,9 @@ You created an API which tells your Tyk Gateway to validate any incoming request
 
     You’ll see that Tyk has populated the `middleware` section within the `x-tyk-api-gateway` section, configuring the `operations` section to enable the `mockResponse` middleware for each endpoint in the `operationId` list in the OpenAPI Document that you provided. The option `fromOASExamples` has been enabled, which means that Tyk will use the schema defined in the `examples` section of the OpenAPI Document to construct the mock response.
 
-    For more information on how Tyk builds the `middleware.operations` structure to configure middleware, see [Paths]({{< ref "/content/getting-started/key-concepts/paths.md" >}}).
+    For more information on how Tyk builds the `middleware.operations` structure to configure middleware, see [Paths]({{< ref "api-management/gateway-config-tyk-oas#paths" >}}).
 
-    For more information on mock responses, see the dedicated [page]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}).
+    For more information on mock responses, see the dedicated [page]({{< ref "api-management/traffic-transformation#mock-response-overview" >}}).
 
     ```.json
     {
@@ -2429,7 +2429,7 @@ In this tutorial we will show you how to use the Tyk Dashboard to create a new T
     - From an existing Tyk API definition (Classic or OAS)
     - From a SOAP WSDL definition
 
-    The process for importing from an existing Tyk API definition or SOAP WSDL definition is explained [here]({{< ref "/getting-started/import-apis#import-apis-via-the-dashboard-api" >}}). The import function will now accept an existing Tyk OAS API definition, the process is the same as for a Tyk Classic API definition.
+    The process for importing from an existing Tyk API definition or SOAP WSDL definition is explained [here]({{< ref "api-management/gateway-config-managing-classic#import-apis-via-the-dashboard-api" >}}). The import function will now accept an existing Tyk OAS API definition, the process is the same as for a Tyk Classic API definition.
 
 ##### Importing an OpenAPI Document
 
@@ -2458,9 +2458,9 @@ When importing OpenAPI Documents using the Dashboard, Tyk detects the version of
 
     **Automatic Configuration options**
 
-    - **Generate Validate Request Middleware**: You can automatically validate paths that have the `requestBody` and `schema` fields configured. This allows your Tyk Gateway to validate your request payload against the schema provided in your definition. See [Request Validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-middleware" >}}) for more details.
-    - **Apply Detected Authentication**: You can automatically apply the authentication specified in the `security` and `securitySchemes` sections of your definition. See [Authentication]({{< ref "/content/getting-started/key-concepts/authentication.md" >}}) for more details.
-    - **Allow access only to defined paths**: You can restrict access to the paths documented in your definition. See [Paths]({{< ref "/content/getting-started/key-concepts/paths.md" >}}) for more details.
+    - **Generate Validate Request Middleware**: You can automatically validate paths that have the `requestBody` and `schema` fields configured. This allows your Tyk Gateway to validate your request payload against the schema provided in your definition. See [Request Validation]({{< ref "api-management/traffic-transformation#request-validation-overview" >}}) for more details.
+    - **Apply Detected Authentication**: You can automatically apply the authentication specified in the `security` and `securitySchemes` sections of your definition. See [Authentication]({{< ref "api-management/gateway-config-tyk-oas#authentication-with-tyk-oas" >}}) for more details.
+    - **Allow access only to defined paths**: You can restrict access to the paths documented in your definition. See [Paths]({{< ref "api-management/gateway-config-tyk-oas#paths" >}}) for more details.
 
 4. Click **Import API**.
 
