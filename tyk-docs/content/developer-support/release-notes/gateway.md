@@ -108,16 +108,40 @@ If you are upgrading to 5.8.0, please follow the detailed [upgrade instructions]
 <ul>
 <li>
 <details>
-<summary>Add Changelog item summary</summary>
+<summary>Tyk OAS Feature Parity</summary>
 
-Add changelog description
+Tyk OAS has now reached feature parity with the legacy Tyk Classic APIs. You can now leverage the majority of Tyk Gateway’s capabilities through Tyk OAS APIs, making them a viable alternative to Tyk Classic APIs.
+
+From Tyk 5.8.0, we support the following features when using Tyk OAS APIs with Tyk Gateway:
+- Uptime Testing
+- Event Handling: Custom Handler (MVP)
+- Upstream Authentication: HMAC Request Signing
+- Preserve Client Request Headers
+- Batch Request Support
+- Granular Control Over Client-to-Gateway HTTP
+- Upstream Load Balancing
+- Analytics Tag Headers
+- IP Access Control
+- Analytics Expiry Period
+- Custom Analytics Plugins
+- Gateway-to-Upstream SSL Configuration
+- API-Level Request Size Limit
+
+If you have existing Tyk Classic APIs, you can now consider migrating to Tyk OAS APIs for a modern and feature-complete experience.
 </details>
 </li>
 <li>
 <details>
-<summary>Add changelog item summary</summary>
+<summary>Upgraded to Golang 1.23</summary>
 
-Add changelog description
+Tyk Gateway now runs on Golang 1.23, bringing security and performance improvements. Key changes include unbuffered Timer/Ticker channels, removal of 3DES cipher suites, and updates to X509KeyPair handling. Users may need to adjust their setup for compatibility.
+</details>
+</li>
+<li>
+<details>
+<summary>Seamless API Key Rotation for MDCB Data Planes</summary>
+
+We have enhanced Tyk Gateway’s handling of API key rotation for MDCB Data Planes. The Gateway now listens for ResetUserKey events, verifies the key update, and dynamically applies the new API key without requiring a restart. For environments using KV storage (e.g., Vault), key rotation is fully resilient even if an edge Gateway restarts. However, for config file or environment variable setups, if the Gateway is stopped and restarted, a manual update will be required.
 </details>
 </li>
 </ul>
@@ -127,16 +151,23 @@ Add changelog description
 <ul>
 <li>
 <details>
-<summary>Add changelog item summary</summary>
+<summary>Resolved API authentication issue while handling redirects using "tyk://" Scheme</summary>
 
-Add changelog description
+This fix ensures that when API A redirects to API B using the tyk:// scheme, API B will now correctly authenticate using its own credentials, improving access control and preventing access denials. Users can now rely on the expected authentication flow without workarounds, providing a smoother experience when integrating APIs.
 </details>
 </li>
 <li>
 <details>
-<summary>Add changelog item summary</summary>
+<summary>Reduced False Alarms in Gateway Startup Logging</summary>
 
-Add changelog description 
+We've improved gateway logging to reduce misleading error messages during startup, making it easier to distinguish real issues from expected initialization behavior. A new initial delay seconds config lets you control when errors are logged, minimizing noise and improving troubleshooting.
+</details>
+</li>
+<li>
+<details>
+<summary>Edge Gateways Now Enter Emergency Mode When Disconnected from MDCB</summary>
+
+Fixed an issue where edge gateways failed to enter emergency mode when disconnected from MDCB, preventing traffic processing. Now, gateways properly load APIs and policies from the Redis backup when MDCB is unavailable.
 </details>
 </li>
 </ul>
