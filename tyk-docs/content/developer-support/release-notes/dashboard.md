@@ -100,35 +100,68 @@ If you are upgrading to 5.8.0, please follow the detailed [upgrade instructions]
 <ul>
 <li>
 <details>
-<summary>Add Changelog item summary</summary>
+<summary>New Dashboard Onboarding Flow</summary>
 
-Add changelog description
+We've introduced a guided onboarding experience in the Tyk Dashboard to help new users get started effortlessly. Our intuitive step-by-step guide walks you through creating your first API, setting up policies and keys, testing endpoints, and exploring analytics—ensuring you can navigate the Dashboard with ease and unlock its full potential from day one.
 </details>
 </li>
 <li>
 <details>
-<summary>Add changelog item summary</summary>
+<summary>YAML Support for Tyk OAS</summary>
 
-Add changelog description
+Tyk now fully supports YAML for OAS CRUD operations, giving users greater flexibility in managing their APIs. This enhancement streamlines workflows and improves efficiency, making it easier to work in both JSON and YAML formats 
+</details>
+</li>
+<li>
+<details>
+<summary>Tyk OAS Now Supports Multi-Part OpenAPI Imports</summary>
+
+We've enhanced Tyk’s OAS import capabilities to support multi-part OpenAPI documents using the $ref feature. This allows users to seamlessly import OAS definitions that reference external files, making it easier to manage complex API specifications and streamline workflows.
+</details>
+</li>
+<li>
+<details>s
+<summary>API Testing & Debugging with Tyk OAS</summary>
+
+We’ve added built-in testing and debugging capabilities to Tyk OAS, making it easier to validate and troubleshoot your APIs. With a floating debugging panel, improved UX, and an endpoint dropdown, you can now test your endpoints seamlessly within the Dashboard.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Form Performance in Tyk OAS API Designer</summary>
+
+We’ve optimized form validation in the Tyk Dashboard’s OAS API Designer to enhance user experience. Forms are now validated on blur instead of during every keystroke, preventing cursor jumps and improving typing responsiveness.
+</details>
+</li>
+<li>
+<details>
+<summary>Support for Read/Write Endpoints on RDS for Analytics and Logs</summary>
+
+Users can now configure separate RDS endpoints for read and write operations, optimizing database performance by handling reads on replicas and writes on the primary instance.
+
+New Configuration Fields:
+ReadConnectionString – Defines the connection string for read operations. Used only if ConnectionString is not set.
+WriteConnectionString – Defines the connection string for write operations. Used only if ConnectionString is not set.
+For backward compatibility, if ConnectionString is set, it will take precedence over the new fields.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved API Key Management for MDCB Data Planes</summary>
+
+To support seamless API key rotation for MDCB Data Planes, we have adjusted Dashboard API key reset permissions. Users with Real-Time Notifications enabled can now reset their own Dashboard API key via the UI or API, resolving conflicts that previously prevented key rotation. These changes ensure a more secure and automated approach to managing API keys while maintaining existing access controls.
 </details>
 </li>
 </ul>
 
-##### Fixed
+##### Change
 
 <ul>
 <li>
 <details>
-<summary>Add changelog item summary</summary>
+<summary>Support for PostgreSQL 1.17</summary>
 
-Add changelog description
-</details>
-</li>
-<li>
-<details>
-<summary>Add changelog item summary</summary>
-
-Add changelog description 
+The Dashboard now supports PostgreSQL 1.17, ensuring compatibility with the latest database version.
 </details>
 </li>
 </ul>
