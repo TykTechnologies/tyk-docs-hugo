@@ -1,4 +1,4 @@
-## Tyk OAS API Definition Object
+## Tyk vendor extension reference
 
 XTykAPIGateway contains custom Tyk API extensions for the OpenAPI definition.
 The values for the extensions are stored inside the OpenAPI document, under
@@ -63,8 +63,8 @@ ServiceDiscovery contains the configuration related to Service Discovery.
 
 Tyk classic API definition: `proxy.service_discovery`.
 
-**Field: `test` ([Test](#test))**
-Test contains the configuration related to uptime tests.
+**Field: `uptimeTests` ([UptimeTests](#uptimetests))**
+UptimeTests contains the configuration related to uptime tests.
 
 **Field: `mutualTLS` ([MutualTLS](#mutualtls))**
 MutualTLS contains the configuration for establishing a mutual TLS connection between Tyk and the upstream server.
@@ -77,6 +77,25 @@ RateLimit contains the configuration related to API level rate limit.
 
 **Field: `authentication` ([UpstreamAuth](#upstreamauth))**
 Authentication contains the configuration related to upstream authentication.
+
+**Field: `loadBalancing` ([LoadBalancing](#loadbalancing))**
+LoadBalancing contains configuration for load balancing between multiple upstream targets.
+
+**Field: `preserveHostHeader` ([PreserveHostHeader](#preservehostheader))**
+PreserveHostHeader contains the configuration for preserving the host header.
+
+**Field: `preserveTrailingSlash` ([PreserveTrailingSlash](#preservetrailingslash))**
+PreserveTrailingSlash contains the configuration for preserving the host header.
+
+**Field: `tlsTransport` ([TLSTransport](#tlstransport))**
+TLSTransport contains the configuration for TLS transport settings.
+
+Tyk classic API definition: `proxy.transport`.
+
+**Field: `proxy` ([Proxy](#proxy))**
+Proxy contains the configuration for an internal proxy.
+
+Tyk classic API definition: `proxy.proxy_url`.
 
 ### **Server**
 
@@ -117,6 +136,28 @@ EventHandlers contains the configuration related to Tyk Events.
 
 
 Tyk classic API definition: `event_handlers`.
+
+**Field: `ipAccessControl` ([IPAccessControl](#ipaccesscontrol))**
+IPAccessControl configures IP access control for this API.
+
+
+Tyk classic API definition: `allowed_ips` and `blacklisted_ips`.
+
+**Field: `batchProcessing` ([BatchProcessing](#batchprocessing))**
+BatchProcessing contains configuration settings to enable or disable batch request support for the API.
+
+
+Tyk classic API definition: `enable_batch_request_support`.
+
+**Field: `protocol` (`string`)**
+Protocol configures the HTTP protocol used by the API.
+Possible values are:
+- "http": Standard HTTP/1.1 protocol
+- "http2": HTTP/2 protocol with TLS
+- "h2c": HTTP/2 protocol without TLS (cleartext).
+
+**Field: `port` (`int`)**
+Port Setting this value will change the port that Tyk listens on. Default: 8080.
 
 ### **Middleware**
 
@@ -297,14 +338,32 @@ EndpointReturnsList is set `true` when the response type is a list instead of an
 
 Tyk classic API definition: `service_discovery.endpoint_returns_list`.
 
-### **Test**
+### **UptimeTests**
 
-Test holds the test configuration for service discovery.
+UptimeTests configures uptime tests.
+
+**Field: `enabled` (`boolean`)**
+Enabled if true enables uptime tests.
+
+
+Tyk classic API definition: `check_hosts_against_uptime_tests`.
 
 **Field: `serviceDiscovery` ([ServiceDiscovery](#servicediscovery))**
 ServiceDiscovery contains the configuration related to test Service Discovery.
 
 Tyk classic API definition: `proxy.service_discovery`.
+
+**Field: `tests` ([[]UptimeTest](#uptimetest))**
+Tests contains individual connectivity tests defined for checking if a service is online.
+
+**Field: `hostDownRetestPeriod` (`time.ReadableDuration`)**
+HostDownRetestPeriod is the time to wait until rechecking a failed test.
+If undefined, the default testing interval (10s) is in use.
+Setting this to a lower value would result in quicker recovery on failed checks.
+
+**Field: `logRetentionPeriod` (`time.ReadableDuration`)**
+LogRetentionPeriod holds a time to live for the uptime test results.
+If unset, a value of 100 years is the default.
 
 ### **MutualTLS**
 
@@ -393,6 +452,101 @@ BasicAuth holds the basic authentication configuration for upstream API authenti
 **Field: `oauth` ([UpstreamOAuth](#upstreamoauth))**
 OAuth contains the configuration for OAuth2 Client Credentials flow.
 
+**Field: `requestSigning` ([UpstreamRequestSigning](#upstreamrequestsigning))**
+RequestSigning holds the configuration for generating signed requests to an upstream API.
+
+### **LoadBalancing**
+
+LoadBalancing represents the configuration for load balancing between multiple upstream targets.
+
+**Field: `enabled` (`boolean`)**
+Enabled determines if load balancing is active.
+
+**Field: `targets` ([[]LoadBalancingTarget](#loadbalancingtarget))**
+Targets defines the list of targets with their respective weights for load balancing.
+
+### **PreserveHostHeader**
+
+PreserveHostHeader holds the configuration for preserving the host header.
+
+**Field: `enabled` (`boolean`)**
+Enabled activates preserving the host header.
+
+### **PreserveTrailingSlash**
+
+PreserveTrailingSlash holds the configuration for preserving the
+trailing slash when routed to upstream services.
+
+The default behaviour of Tyk is to strip any trailing slash (/) from
+the target URL when proxying the request upstream. In some use cases the
+upstream might expect the trailing slash - or might consider /users/ to
+be a different endpoint from /users (for example).
+
+**Field: `enabled` (`boolean`)**
+Enabled activates preserving the trailing slash when routing requests.
+
+### **TLSTransport**
+
+TLSTransport contains the configuration for TLS transport settings.
+This struct allows you to specify a custom proxy and set the minimum TLS versions and any SSL ciphers.
+
+Example:
+
+	{
+	  "proxy_url": "http(s)://proxy.url:1234",
+	  "minVersion": "1.0",
+	  "maxVersion": "1.0",
+	  "ciphers": [
+	    "TLS_RSA_WITH_AES_128_GCM_SHA256",
+	    "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"
+	  ],
+	  "insecureSkipVerify": true,
+	  "forceCommonNameCheck": false
+	}
+
+Tyk classic API definition: `proxy.transport`
+
+**Field: `insecureSkipVerify` (`boolean`)**
+InsecureSkipVerify controls whether a client verifies the server's certificate chain and host name.
+If InsecureSkipVerify is true, crypto/tls accepts any certificate presented by the server and any host name in that certificate.
+In this mode, TLS is susceptible to machine-in-the-middle attacks unless custom verification is used.
+This should be used only for testing or in combination with VerifyConnection or VerifyPeerCertificate.
+
+
+Tyk classic API definition: `proxy.transport.ssl_insecure_skip_verify`.
+
+**Field: `ciphers` (`[]string`)**
+Ciphers is a list of SSL ciphers to be used. If unset, the default ciphers will be used.
+
+
+Tyk classic API definition: `proxy.transport.ssl_ciphers`.
+
+**Field: `minVersion` (`string`)**
+MinVersion is the minimum SSL/TLS version that is acceptable.
+
+Tyk classic API definition: `proxy.transport.ssl_min_version`.
+
+**Field: `maxVersion` (`string`)**
+MaxVersion is the maximum SSL/TLS version that is acceptable.
+
+**Field: `forceCommonNameCheck` (`boolean`)**
+ForceCommonNameCheck forces the validation of the hostname against the certificate Common Name.
+
+
+Tyk classic API definition: `proxy.transport.ssl_force_common_name_check`.
+
+### **Proxy**
+
+Proxy contains the configuration for an internal proxy.
+
+Tyk classic API definition: `proxy.proxy_url`
+
+**Field: `enabled` (`boolean`)**
+Enabled determines if the proxy is active.
+
+**Field: `url` (`string`)**
+URL specifies the URL of the internal proxy.
+
 ### **ListenPath**
 
 ListenPath is the base path on Tyk to which requests for this API
@@ -470,6 +624,9 @@ Tyk classic API definition: `auth_configs["coprocess"]`.
 **Field: `securitySchemes` ([SecuritySchemes](#securityschemes))**
 SecuritySchemes contains security schemes definitions.
 
+**Field: `customKeyLifetime` ([CustomKeyLifetime](#customkeylifetime))**
+CustomKeyLifetime contains configuration for the maximum retention period for tokens.
+
 ### **ClientCertificates**
 
 ClientCertificates contains the configurations related to establishing static mutual TLS between the client and Tyk.
@@ -529,6 +686,28 @@ Enabled activates detailed tracing.
 EventHandlers holds the list of events to be processed for the API.
 
 Type defined as array of `EventHandler` values, see [EventHandler](#eventhandler) definition.
+
+### **IPAccessControl**
+
+IPAccessControl represents IP access control configuration.
+
+**Field: `enabled` (`boolean`)**
+Enabled indicates whether IP access control is enabled.
+
+**Field: `allow` (`[]string`)**
+Allow is a list of allowed IP addresses or CIDR blocks (e.g. "192.168.1.0/24").
+Note that if an IP address is present in both Allow and Block, the Block rule will take precedence.
+
+**Field: `block` (`[]string`)**
+Block is a list of blocked IP addresses or CIDR blocks (e.g. "192.168.1.100/32").
+If an IP address is present in both Allow and Block, the Block rule will take precedence.
+
+### **BatchProcessing**
+
+BatchProcessing represents the configuration for enabling or disabling batch request support for an API.
+
+**Field: `enabled` (`boolean`)**
+Enabled determines whether batch request support is enabled or disabled for the API.
 
 ### **Global**
 
@@ -600,6 +779,21 @@ ContextVariables contains the configuration related to Tyk context variables.
 **Field: `trafficLogs` ([TrafficLogs](#trafficlogs))**
 TrafficLogs contains the configurations related to API level log analytics.
 
+**Field: `requestSizeLimit` ([GlobalRequestSizeLimit](#globalrequestsizelimit))**
+RequestSizeLimit contains the configuration related to limiting the global request size.
+
+**Field: `ignoreCase` ([IgnoreCase](#ignorecase))**
+IgnoreCase contains the configuration to treat routes as case-insensitive.
+
+**Field: `skipRateLimit` (`boolean`)**
+SkipRateLimit determines whether the rate-limiting middleware logic should be skipped. Classic: `disable_rate_limit`.
+
+**Field: `skipQuota` (`boolean`)**
+SkipQuota determines whether quota enforcement should be bypassed. Classic: `disable_quota`.
+
+**Field: `skipQuotaReset` (`boolean`)**
+SkipQuotaReset indicates if quota limits should not be reset when creating or updating quotas for the API. Classic: `dont_set_quota_on_create`.
+
 ### **Operations**
 
 Operations holds Operation definitions.
@@ -631,6 +825,44 @@ Timeout is the TTL for a cached object in seconds.
 
 
 Tyk classic API definition: `service_discovery.cache_timeout`.
+
+### **UptimeTest**
+
+UptimeTest configures an uptime test check.
+
+**Field: `url` (`string`)**
+CheckURL is the URL for a request. If service discovery is in use,
+the hostname will be resolved to a service host.
+
+Examples:
+
+- `http://database1.company.local`
+- `https://webcluster.service/health`
+- `127.0.0.1:6379` (for TCP checks).
+
+**Field: `protocol` (`string`)**
+Protocol is the protocol for the request. Supported values are
+`http` and `tcp`, depending on what kind of check is performed.
+
+**Field: `timeout` (`time.ReadableDuration`)**
+Timeout declares a timeout for the request. If the test exceeds
+this timeout, the check fails.
+
+**Field: `method` (`string`)**
+Method allows you to customize the HTTP method for the test (`GET`, `POST`,...).
+
+**Field: `headers` (`map[string]string`)**
+Headers contain any custom headers for the back end service.
+
+**Field: `body` (`string`)**
+Body is the body of the test request.
+
+**Field: `commands` ([[]UptimeTestCommand](#uptimetestcommand))**
+Commands are used for TCP checks.
+
+**Field: `enableProxyProtocol` (`boolean`)**
+EnableProxyProtocol enables proxy protocol support when making request.
+The back end service needs to support this.
 
 ### **DomainToCertificate**
 
@@ -683,6 +915,41 @@ ClientCredentials holds the configuration for OAuth2 Client Credentials flow.
 
 **Field: `password` ([PasswordAuthentication](#passwordauthentication))**
 PasswordAuthentication holds the configuration for upstream OAauth password authentication flow.
+
+### **UpstreamRequestSigning**
+
+UpstreamRequestSigning represents configuration for generating signed requests to an upstream API.
+
+**Field: `enabled` (`boolean`)**
+Enabled determines if request signing is enabled or disabled.
+
+**Field: `signatureHeader` (`string`)**
+SignatureHeader specifies the HTTP header name for the signature.
+
+**Field: `algorithm` (`string`)**
+Algorithm represents the signing algorithm used (e.g., HMAC-SHA256).
+
+**Field: `keyId` (`string`)**
+KeyID identifies the key used for signing purposes.
+
+**Field: `headers` (`[]string`)**
+Headers contains a list of headers included in the signature calculation.
+
+**Field: `secret` (`string`)**
+Secret holds the secret used for signing when applicable.
+
+**Field: `certificateId` (`string`)**
+CertificateID specifies the certificate ID used in signing operations.
+
+### **LoadBalancingTarget**
+
+LoadBalancingTarget represents a single upstream target for load balancing with a URL and an associated weight.
+
+**Field: `url` (`string`)**
+URL specifies the upstream target URL for load balancing, represented as a string.
+
+**Field: `weight` (`int`)**
+Weight specifies the relative distribution factor for load balancing, determining the importance of this target.
 
 ### **HMAC**
 
@@ -761,6 +1028,38 @@ Tyk classic API definition: `custom_middleware.auth_check`.
 
 SecuritySchemes holds security scheme values, filled with Import().
 
+### **CustomKeyLifetime**
+
+CustomKeyLifetime contains configuration for custom key retention.
+
+**Field: `enabled` (`boolean`)**
+Enabled enables custom maximum retention for keys for the API
+
+
+Tyk classic API definition: `disable_expire_analytics`.
+
+**Field: `value` ([ReadableDuration](#readableduration))**
+Value configures the expiry interval for a Key.
+The value is a string that specifies the interval in a compact form,
+where hours, minutes and seconds are denoted by 'h', 'm' and 's' respectively.
+Multiple units can be combined to represent the duration.
+
+Examples of valid shorthand notations:
+- "1h"   : one hour
+- "20m"  : twenty minutes
+- "30s"  : thirty seconds
+- "1m29s": one minute and twenty-nine seconds
+- "1h30m" : one hour and thirty minutes
+
+An empty value is interpreted as "0s"
+
+
+Tyk classic API definition: `expire_analytics_after`.
+
+**Field: `respectValidity` (`boolean`)**
+RespectValidity ensures that Tyk respects the expiry configured in the key when the API level configuration grants a shorter lifetime.
+That is, Redis waits until the key has expired before deleting it.
+
 ### **EventHandler**
 
 EventHandler holds information about individual event to be configured on the API.
@@ -782,6 +1081,12 @@ Name is the name of event handler.
 
 **Field: `` ([WebhookEvent](#webhookevent))**
 Webhook contains WebhookEvent configs. Encoding and decoding is handled by the custom marshaller.
+
+**Field: `` ([JSVMEvent](#jsvmevent))**
+JSVMEvent holds information about JavaScript VM events.
+
+**Field: `` ([LogEvent](#logevent))**
+LogEvent represents the configuration for logging events tied to an event handler.
 
 ### **PluginConfig**
 
@@ -1022,6 +1327,51 @@ Enabled enables traffic log analytics for the API.
 
 Tyk classic API definition: `do_not_track`.
 
+**Field: `tagHeaders` (`[]string`)**
+TagHeaders is a string array of HTTP headers that can be extracted
+and transformed into analytics tags (statistics aggregated by tag, per hour).
+
+**Field: `customRetentionPeriod` ([ReadableDuration](#readableduration))**
+CustomRetentionPeriod configures a custom value for how long the analytics is retained for,
+defaults to 100 years.
+
+**Field: `plugins` ([CustomAnalyticsPlugins](#customanalyticsplugins))**
+Plugins configures custom plugins to allow for extensive modifications to analytics records
+The plugins would be executed in the order of configuration in the list.
+
+### **GlobalRequestSizeLimit**
+
+GlobalRequestSizeLimit holds configuration about the global limits for request sizes.
+
+**Field: `enabled` (`boolean`)**
+Enabled activates the Request Size Limit.
+
+Tyk classic API definition: `version_data.versions..global_size_limit_disabled`.
+
+**Field: `value` (`int64`)**
+Value contains the value of the request size limit.
+
+Tyk classic API definition: `version_data.versions..global_size_limit`.
+
+### **IgnoreCase**
+
+IgnoreCase will make route matching be case insensitive.
+This accepts request to `/AAA` or `/aaa` if set to true.
+
+**Field: `enabled` (`boolean`)**
+Enabled activates case insensitive route matching.
+
+### **UptimeTestCommand**
+
+UptimeTestCommand handles additional checks for tcp connections.
+
+**Field: `name` (`string`)**
+Name can be either `send` or `expect`, designating if the
+message should be sent, or read from the connection.
+
+**Field: `message` (`string`)**
+Message contains the payload to send or expect.
+
 ### **PinnedPublicKey**
 
 PinnedPublicKey contains a mapping from the domain name into a list of public keys.
@@ -1122,6 +1472,9 @@ Path is the path to shared object file in case of goplugin mode or path to JS co
 **Field: `rawBodyOnly` (`boolean`)**
 RawBodyOnly if set to true, do not fill body in request or response object.
 
+**Field: `requireSession` (`boolean`)**
+RequireSession passes down the session information for plugins after authentication.
+
 **Field: `idExtractor` ([IDExtractor](#idextractor))**
 IDExtractor configures ID extractor with coprocess custom authentication.
 
@@ -1162,6 +1515,23 @@ BodyTemplate is the template to be used for request payload.
 
 **Field: `headers` ([Headers](#headers))**
 Headers are the list of request headers to be used.
+
+### **JSVMEvent**
+
+JSVMEvent represents a JavaScript VM event configuration for event handlers.
+
+**Field: `functionName` (`string`)**
+FunctionName specifies the JavaScript function name to be executed.
+
+**Field: `path` (`string`)**
+Path specifies the path to the JavaScript file containing the function.
+
+### **LogEvent**
+
+LogEvent represents the configuration for logging events within an event handler.
+
+**Field: `logPrefix` (`string`)**
+LogPrefix defines the prefix used for log messages in the logging event.
 
 ### **PluginBundle**
 
@@ -1273,6 +1643,12 @@ Headers is an array of Header.
 
 Type defined as array of `Header` values, see [Header](#header) definition.
 
+### **CustomAnalyticsPlugins**
+
+CustomAnalyticsPlugins is a list of CustomPlugin objects for analytics.
+
+Type defined as array of `CustomPlugin` values, see [CustomPlugin](#customplugin) definition.
+
 ### **ClientToPolicy**
 
 ClientToPolicy contains a 1-1 mapping between Client ID and Policy ID.
@@ -1318,6 +1694,26 @@ Name is the name of the header.
 
 **Field: `value` (`string`)**
 Value is the value of the header.
+
+### **CustomPlugin**
+
+CustomPlugin configures custom plugin.
+
+**Field: `enabled` (`boolean`)**
+Enabled activates the custom pre plugin.
+
+**Field: `functionName` (`string`)**
+FunctionName is the name of authentication method.
+
+**Field: `path` (`string`)**
+Path is the path to shared object file in case of goplugin mode or path to JS code in case of otto auth plugin.
+
+**Field: `rawBodyOnly` (`boolean`)**
+RawBodyOnly if set to true, do not fill body in request or response object.
+
+**Field: `requireSession` (`boolean`)**
+RequireSession if set to true passes down the session information for plugins after authentication.
+RequireSession is used only with JSVM custom middleware.
 
 ### **IDExtractorConfig**
 

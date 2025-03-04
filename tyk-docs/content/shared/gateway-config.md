@@ -26,7 +26,7 @@ Custom hostname for the Control API
 ENV: <b>TYK_GW_CONTROLAPIPORT</b><br />
 Type: `int`<br />
 
-Set to run your Gateway Control API on a separate port, and protect it behind a firewall if needed. Please make sure you follow this guide when setting the control port https://tyk.io/docs/tyk-self-managed/#change-your-control-port.
+Set to run your Gateway Control API on a separate port, and protect it behind a firewall if needed. Please make sure you follow this guide when setting the control port https://tyk.io/docs/planning-for-production/#change-your-control-port.
 
 ### secret
 ENV: <b>TYK_GW_SECRET</b><br />
@@ -231,7 +231,7 @@ Start your Gateway HTTP server on specific server name
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_MINVERSION</b><br />
 Type: `uint16`<br />
 
-Minimum TLS version. Possible values: https://tyk.io/docs/api-management/certificates#supported-tls-versions
+Minimum TLS version. Possible values: https://tyk.io/docs/basic-config-and-security/security/tls-and-ssl/#values-for-tls-versions
 
 ### http_server_options.max_version
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_MAXVERSION</b><br />
@@ -271,7 +271,7 @@ Disable automatic character escaping, allowing to path original URL data to the 
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_CIPHERS</b><br />
 Type: `[]string`<br />
 
-Custom SSL ciphers. See list of ciphers here https://tyk.io/docs/api-management/certificates#supported-tls-cipher-suites
+Custom SSL ciphers. See list of ciphers here https://tyk.io/docs/basic-config-and-security/security/tls-and-ssl/#specify-tls-cipher-suites-for-tyk-gateway--tyk-dashboard
 
 ### http_server_options.max_request_body_size
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_MAXREQUESTBODYSIZE</b><br />
@@ -1666,6 +1666,40 @@ Type: `string`<br />
 You can now configure the log format to be either the standard or json format
 If not set or left empty, it will default to `standard`.
 
+### access_logs
+AccessLogs configures the output for access logs.
+If not configured, the access log is disabled.
+
+### access_logs.enabled
+ENV: <b>TYK_GW_ACCESSLOGS_ENABLED</b><br />
+Type: `bool`<br />
+
+Enabled controls enabling the transaction logs. Default: false.
+
+### access_logs.template
+ENV: <b>TYK_GW_ACCESSLOGS_TEMPLATE</b><br />
+Type: `[]string`<br />
+
+Template configures which fields to log into the access log.
+If unconfigured, all fields listed will be logged.
+
+Example: ["client_ip", "path"].
+
+Template Options:
+
+- `api_key` will include they obfuscated or hashed key.
+- `client_ip` will include the ip of the request.
+- `host` will include the host of the request.
+- `method` will include the request method.
+- `path` will include the path of the request.
+- `protocol` will include the protocol of the request.
+- `remote_addr` will include the remote address of the request.
+- `upstream_addr` will include the upstream address (scheme, host and path)
+- `upstream_latency` will include the upstream latency of the request.
+- `latency_total` will include the total latency of the request.
+- `user_agent` will include the user agent of the request.
+- `status` will include the response status code.
+
 ### tracing
 Section for configuring OpenTracing support
 Deprecated: use OpenTelemetry instead.
@@ -1980,7 +2014,7 @@ global session lifetime, in seconds.
 ENV: <b>TYK_GW_KV_KV</b><br />
 Type: `struct`<br />
 
-See more details https://tyk.io/docs/migration-to-tyk#store-configuration-with-key-value-store/
+See more details https://tyk.io/docs/tyk-configuration-reference/kv-store/
 
 ### kv.consul.address
 ENV: <b>TYK_GW_KV_CONSUL_ADDRESS</b><br />
@@ -2064,7 +2098,17 @@ KVVersion is the version number of Vault. Usually defaults to 2
 ENV: <b>TYK_GW_SECRETS</b><br />
 Type: `map[string]string`<br />
 
-Secrets are key-value pairs that can be accessed in the dashboard via "secrets://"
+Secrets configures a list of key/value pairs for the gateway.
+When configuring it via environment variable, the expected value
+is a comma separated list of key-value pairs delimited with a colon.
+
+Example: `TYK_GW_SECRETS=key1:value1,key2:/value2`
+Produces: `{"key1": "value1", "key2": "/value2"}`
+
+The secret value may be used as `secrets://key1` from the API definition.
+In versions before gateway 5.3, only `listen_path` and `target_url` fields
+have had the secrets replaced.
+See more details https://tyk.io/docs/tyk-configuration-reference/kv-store/#how-to-access-the-externally-stored-data
 
 ### override_messages
 Override the default error code and or message returned by middleware.
@@ -2094,7 +2138,7 @@ Sample Override Message Setting
 ENV: <b>TYK_GW_CLOUD</b><br />
 Type: `bool`<br />
 
-Cloud flag shows the Gateway runs in migration-to-tyk#begin-with-tyk-cloud.
+Cloud flag shows the Gateway runs in Tyk-cloud.
 
 ### jwt_ssl_insecure_skip_verify
 ENV: <b>TYK_GW_JWTSSLINSECURESKIPVERIFY</b><br />
