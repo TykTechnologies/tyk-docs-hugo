@@ -361,7 +361,7 @@ Tyk Gateway is written using Golang. This has a flexible plugin architecture whi
 
 Go plugins must therefore be [compiled]({{< ref "api-management/plugins/golang#plugin-compiler" >}}) and [loaded]({{< ref "api-management/plugins/golang#loading-custom-go-plugins-into-tyk" >}}) into the Gateway in order that the function named in the plugin configuration in the API definition can be located and executed at the appropriate stage in the request middleware processing chain.
 
-The custom code within the plugin has access to contextual data such as the session object and API definition. If required, it can [terminate the request]({{< ref "api-management/plugins/golang#terminating-the-request" >}}) and hence can provide a [Virtual Endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) style capability using the Go language, rather than JavaScript (as supported by the virtual endpoint middleware). This can then act as a high-performance replacement for the JavaScript virtual endpoints or for cases when you want to make use of external libraries.
+The custom code within the plugin has access to contextual data such as the session object and API definition. If required, it can [terminate the request]({{< ref "api-management/plugins/golang#terminating-the-request" >}}) and hence can provide a [Virtual Endpoint]({{< ref "api-management/traffic-transformation#virtual-endpoints-overview" >}}) style capability using the Go language, rather than JavaScript (as supported by the virtual endpoint middleware). This can then act as a high-performance replacement for the JavaScript virtual endpoints or for cases when you want to make use of external libraries.
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  ## Ignore Authentication middleware summary
@@ -374,7 +374,7 @@ The custom code within the plugin has access to contextual data such as the sess
 The [per-endpoint custom plugin]({{< ref "api-management/plugins/plugin-types#per-endpoint-custom-plugins" >}}) provides the facility to attach a custom Go plugin at the end of the request processing chain.
 This plugin allows you to add custom logic to the processing flow for the specific endpoint without adding to the processing complexity of other endpoints.
 It can [terminate the request]({{< ref "api-management/plugins/golang#terminating-the-request" >}}) if required,
-and provides a [Virtual Endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) style capability using the Go language, rather than JavaScript (as supported by the virtual endpoint middleware).
+and provides a [Virtual Endpoint]({{< ref "api-management/traffic-transformation#virtual-endpoints-overview" >}}) style capability using the Go language, rather than JavaScript (as supported by the virtual endpoint middleware).
 
 The middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
@@ -494,7 +494,7 @@ You are only able to add one custom plugin to each endpoint when using the API D
 The [per-endpoint custom plugin]({{< ref "api-management/plugins/plugin-types#per-endpoint-custom-plugins" >}}) provides the facility to attach a custom Golang plugin at the end of the request processing chain.
 This plugin allows you to add custom logic to the processing flow for the specific endpoint without adding to the processing complexity of other endpoints.
 It can [terminate the request]({{< ref "api-management/plugins/golang#terminating-the-request" >}}), if required,
-and hence can provide a [Virtual Endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) style capability using the Go language, rather than JavaScript (as supported by the virtual endpoint middleware).
+and hence can provide a [Virtual Endpoint]({{< ref "api-management/traffic-transformation#virtual-endpoints-overview" >}}) style capability using the Go language, rather than JavaScript (as supported by the virtual endpoint middleware).
 
 This middleware is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 

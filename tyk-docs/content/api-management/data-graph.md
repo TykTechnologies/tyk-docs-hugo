@@ -396,7 +396,7 @@ Global headers can be configured via Tyk API Definition. The correct place to do
 }
 ```
 
-Global headers now have access to all [request context variables]({{< ref "context-variables" >}}).
+Global headers now have access to all [request context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}).
 
 By default, any header that is configured as a global header, will be forwarded to all data sources of the UDG.
 
@@ -421,7 +421,7 @@ Data source headers can be configured via Tyk API Definition and via Tyk Dashboa
 }
 ```
 
-Data source headers now have access to all [request context variables]({{< ref "context-variables" >}}).
+Data source headers now have access to all [request context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}).
 
 #### Headers priority order
 
@@ -1890,7 +1890,7 @@ It is possible to import various UDG examples from the [official Tyk examples re
 
 We offer 3 ways of importing an example into Tyk:
  - Using [tyk-sync]({{< ref "api-management/automations/sync#synchronize-api-configurations-with-github-actions" >}})
- - Manually import via [Dashboard API Import]({{< ref "getting-started/import-apis" >}})
+ - Manually import via [Dashboard API Import]({{< ref "api-management/gateway-config-managing-classic#import-an-api" >}})
 - Using Tyk Dashboard to browse and import the examples directly
 
 #### Import via tyk-sync
@@ -1904,7 +1904,7 @@ Then you can move in the Dashboard UI to `APIs -> Import API` and select `Tyk AP
 
 Paste the API definition inside the text box and hit `Import API`.
 
-You can find more detailed instructions in the [Dashboard API Import documentation section]({{< ref "getting-started/import-apis" >}}).
+You can find more detailed instructions in the [Dashboard API Import documentation section]({{< ref "api-management/gateway-config-managing-classic#import-an-api" >}}).
 
 #### Import via Tyk Dashboard UI
 

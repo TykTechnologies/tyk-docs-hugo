@@ -38,7 +38,7 @@ You can use sharding to very quickly publish an API from a `development` system 
 
 With Tyk Community Edition and Tyk Pro, these clusters must all share the same Redis DB.
 
-If you are an Enterprise user, then you can go a step further and use the [Tyk Multi Data Center Bridge]({{< ref "tyk-multi-data-centre#managing-geographically-distributed-gateways-to-minimize-latency-and-protect-data-sovereignty" >}}) to have full multi-DC, multi-zone cluster segmentation, and manage APIs in different segments across different database back-ends.
+If you are an Enterprise user, then you can go a step further and use the [Tyk Multi Data Center Bridge]({{< ref "api-management/mdcb#managing-geographically-distributed-gateways-to-minimize-latency-and-protect-data-sovereignty" >}}) to have full multi-DC, multi-zone cluster segmentation, and manage APIs in different segments across different database back-ends.
 
 ### Analytics and Reporting
 
@@ -281,7 +281,7 @@ You can also use our new Tyk-Sync tool which allows you to sync your Policies (a
 
 With Tyk, it is easy to enable a sharded configuration, you can deploy Gateways which selectively load APIs.  This unlocks abilities to run Gateways in multiple zones, all connected to the same Control Plane.  This allows for GDPR deployments, development/test Gateways, or even DMZ/NON-DMZ Gateways.
 
-Couple this functionality with the Tyk [Multi Data Center Bridge]({{< ref "tyk-multi-data-centre#managing-geographically-distributed-gateways-to-minimize-latency-and-protect-data-sovereignty" >}}) to achieve a global, multi-cloud deployment.
+Couple this functionality with the Tyk [Multi Data Center Bridge]({{< ref "api-management/mdcb#managing-geographically-distributed-gateways-to-minimize-latency-and-protect-data-sovereignty" >}}) to achieve a global, multi-cloud deployment.
 
 ### Configure a Gateway as a shard
 

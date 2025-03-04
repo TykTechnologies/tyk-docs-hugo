@@ -37,6 +37,96 @@ Our minor releases are supported until our next minor comes out.
 
 ## 5.7 Release Notes
 
+### 5.7.2 Release Notes
+
+#### Release Date 19 February 2025
+
+#### Release Highlights
+
+This release focuses mainly on a security fix. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.7.2" >}}) below.
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies {#dependencies-5.7.2}
+
+##### Compatibility Matrix For Tyk Components
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.7.2 | MDCB v2.7.2     | MDCB v2.5.1 |
+|         | Operator v1.1.0  | Operator v0.17 |
+|         | Sync v2.0.2    | Sync v1.4.3 |
+|         | Helm Chart v2.2  | Helm all versions |
+| | EDP v1.12 | EDP all versions |
+| | Pump v1.11.1 | Pump all versions |
+| | TIB (if using standalone) v1.6.1 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.7.1}
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+
+#### Deprecations
+
+There are no deprecations in this release
+
+#### Upgrade instructions {#upgrade-5.7.2}
+If you are upgrading to 5.7.2, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.7.2)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.7.2
+    ```
+- Helm charts
+  - [tyk-charts v2.2.0]({{< ref "developer-support/release-notes/helm-chart#220-release-notes" >}})
+
+#### Changelog {#Changelog-v5.7.2}
+
+No changes have been implemented in this release.
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Adding a TLS/SSL certificate caused the page to go blank</summary>
+
+Fixed an issue where attempting to add a certificate on the TLS/SSL Certificates page caused the page to go blank with an error. This has been resolved by ensuring the file input is handled correctly.
+</details>
+</li>
+</ul>
+
+##### Security Fixes
+
+<ul>
+<li>
+<details>
+<summary>Critical Priority CVE Fixed</summary>
+
+- Fixed the following critical-priority CVE identified in the Dashboard UI, providing increased protection and improved security:
+    - [CVE-2025-21613](https://nvd.nist.gov/vuln/detail/CVE-2025-21613)
+</details>
+</li>
+<li>
+<details>
+<summary>High Priority CVE Fixed</summary>
+
+- Fixed the following CVE:
+    - [CVE-2025-21614](https://nvd.nist.gov/vuln/detail/CVE-2025-21614)
+</details>
+</li>
+</ul>
+
+---
+
 ### 5.7.1 Release Notes
 
 #### Release Date 31 December 2024
@@ -307,7 +397,7 @@ Removed an unnecessary field from the API Designer page under the Streams sectio
 <details>
 <summary>Automatic configuration of request validation for path-level parameters during import of OpenAPI description</summary>
 
-Tyk will now detect path-level parameters in the OpenAPI description and can be set to enable and configure the [Request Validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-tyk-oas" >}}) middleware automatically for these. Previously this automatic detection only worked for method-level parameters in the OpenAPI description.
+Tyk will now detect path-level parameters in the OpenAPI description and can be set to enable and configure the [Request Validation]({{< ref "api-management/traffic-transformation#request-validation-using-tyk-oas" >}}) middleware automatically for these. Previously this automatic detection only worked for method-level parameters in the OpenAPI description.
 </details>
 </li>
 <li>
@@ -1145,6 +1235,97 @@ Fixed the following high priority CVEs identified in the Tyk Dashboard, providin
 
 
 ## 5.3 Release Notes
+
+### 5.3.10 Release Notes
+
+#### Release Date 19 February 2025
+
+#### Release Highlights
+
+In this release, we upgraded the Golang version to `v1.23` and fixed a [CVE-2025-21613](https://nvd.nist.gov/vuln/detail/CVE-2025-21613]). For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.10">}}) below.
+
+#### Breaking Changes
+
+This release has no breaking changes.
+
+#### Dependencies {#dependencies-5.3.10}
+
+##### Compatibility Matrix For Tyk Components
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.3.10 | MDCB v2.5.1     | MDCB v2.5.1 |
+|         | Operator v0.17 | Operator v0.16 |
+|         | Sync v1.4.3   | Sync v1.4.3 |
+|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v2.0.0 | Helm all versions |
+| | EDP v1.8.3 | EDP all versions |
+| | Pump v1.9.0 | Pump all versions |
+| | TIB (if using standalone) v1.5.1 | TIB all versions |
+
+
+##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.3.10}
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments |
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- |
+| [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 |
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release 
+
+#### Upgrade Instructions
+If you are upgrading to 5.3.10, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.10)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.3.10
+    ```
+- Helm charts
+  - [tyk-charts v2.0.0]({{< ref "developer-support/release-notes/helm-chart#200-release-notes" >}})
+
+#### Changelog {#Changelog-v5.3.10}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Upgraded to Golang 1.23</summary>
+
+Tyk Dashboard now runs on Golang 1.23, bringing security and performance improvements. Key changes include unbuffered Timer/Ticker channels, removal of 3DES cipher suites, and updates to X509KeyPair handling. Users may need to adjust their setup for compatibility. 
+</details>
+</li>
+</ul>
+
+##### Security Fixes
+
+<ul>
+<li>
+<details>
+<summary>Critical Priority CVEs Fixed</summary>
+
+Fixed the following critical priority CVE identified in the Dashboard UI, providing increased protection and improved security:
+    - [CVE-2025-21613](https://nvd.nist.gov/vuln/detail/CVE-2025-21613)
+</details>
+</li>
+<li>
+<details>
+<summary>High Priority CVE Fixed</summary>
+
+- Fixed the following CVE:
+    - [CVE-2025-21614](https://nvd.nist.gov/vuln/detail/CVE-2025-21614)
+
+</details>
+</li>
+</ul>
+
+---
 
 ### 5.3.9 Release Notes
 
@@ -2588,7 +2769,7 @@ Fixed an issue when importing reasonably large OpenAPI documents via the Dashboa
 <details>
 <summary>Removed the need for a Description to be provided in the OpenAPI schema when autogenerating a Tyk OAS mock response</summary>
 
-Relaxed the strict validation for mock response so that the `Description` field is now optional for `response`, `responses` and `schema` within the OpenAPI description. Automatically configuring mock responses when using [Tyk OAS APIs]({{< ref "product-stack/tyk-gateway/middleware/mock-response-openapi" >}}) is now even easier.
+Relaxed the strict validation for mock response so that the `Description` field is now optional for `response`, `responses` and `schema` within the OpenAPI description. Automatically configuring mock responses when using [Tyk OAS APIs]({{< ref "api-management/traffic-transformation#mock-responses-using-openapi-metadata" >}}) is now even easier.
 </details>
 </li>
 <li>
@@ -2711,7 +2892,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
  <details>
  <summary>Poor experience when using the Open Policy Agent (OPA) editor</summary>
 
- Fixed two UI issues with the [OPA editor]({{< ref "tyk-dashboard/open-policy-agent#using-the-open-policy-agent-in-the-dashboard" >}}) in the Tyk Dashboard to improve experience when using this feature. Scrolling beyond the end of the OPA window does not now start to scroll the API Designer window, and minimizing then re-expanding the OPA editor no longer limits the text to one line.
+ Fixed two UI issues with the [OPA editor]({{< ref "api-management/dashboard-configuration#using-the-open-policy-agent-in-the-dashboard" >}}) in the Tyk Dashboard to improve experience when using this feature. Scrolling beyond the end of the OPA window does not now start to scroll the API Designer window, and minimizing then re-expanding the OPA editor no longer limits the text to one line.
  </details>
  </li>
  <li>
@@ -2793,7 +2974,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 <details>
 <summary>Unable to resize OPA editor in Tyk Dashboard</summary>
 
-Fixed an issue where the [OPA editor]({{< ref "tyk-dashboard/open-policy-agent#using-the-open-policy-agent-in-the-dashboard" >}}) was not resizable. The fix ensures the floating OPA editor is now resizable and the resizing operation is smooth, improving user experience.
+Fixed an issue where the [OPA editor]({{< ref "api-management/dashboard-configuration#using-the-open-policy-agent-in-the-dashboard" >}}) was not resizable. The fix ensures the floating OPA editor is now resizable and the resizing operation is smooth, improving user experience.
 </details>
 </li>
 <li>
@@ -3047,7 +3228,7 @@ We’ve added the ability to [configure]({{< ref "api-management/gateway-optimiz
 
 ##### Added Body Transform Middleware to Tyk OAS API Definition
 
-With this release, we are adding the much requested *Body Transformations* to *Tyk OAS API Definition*. You can now [configure]({{< ref "api-management/gateway-config-tyk-oas#transformbody" >}}) middleware for both [request]({{< ref "transform-traffic/request-body" >}}) and [response]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) *Body Transformations* and - as a *Tyk Dashboard* user - you’ll be able to do so from within our simple and elegant API Designer tool. Visually test and preview *Body Transformations* from within the API Designer.
+With this release, we are adding the much requested *Body Transformations* to *Tyk OAS API Definition*. You can now [configure]({{< ref "api-management/gateway-config-tyk-oas#transformbody" >}}) middleware for both [request]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) and [response]({{< ref "api-management/traffic-transformation#response-body-overview" >}}) *Body Transformations* and - as a *Tyk Dashboard* user - you’ll be able to do so from within our simple and elegant API Designer tool. Visually test and preview *Body Transformations* from within the API Designer.
 
 ##### Track Usage Of License APIs, Gateways And Distributed Data Planes Over Time
 
@@ -3532,7 +3713,7 @@ Tyk Dashboard has been enhanced with **all the custom middleware options** for T
 
 Tyk Dashboard hasn’t been left out, we’ve implemented a brand new version management UI for Tyk OAS APIs, to make it as easy as possible for you to manage those API versions as you develop and extend your API products with Tyk.
 
-We’ve improved support for [OAS Mock Responses]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}), with the Tyk OAS API definition now allowing you to register multiple Mock Responses in a single API, providing you with increased testing flexibility.
+We’ve improved support for [OAS Mock Responses]({{< ref "api-management/traffic-transformation#mock-response-overview" >}}), with the Tyk OAS API definition now allowing you to register multiple Mock Responses in a single API, providing you with increased testing flexibility.
 
 Another new feature in the Tyk OAS API Designer is that you can now update (PATCH) your existing Tyk OAS APIs through the Dashboard API without having to resort to curl. That should make life just that little bit easier.
 Of course, we’ve also addressed some bugs and usability issues as part of our ongoing ambition to make Tyk OAS API the best way for you to create and manage your APIs.
@@ -3595,7 +3776,7 @@ Importing OpenAPI v3 documents in order to generate Tyk OAS API definition is no
 - authentication mechanism
 - validation request rules and limit access only to the defined paths.
 
-[Importing OAS v3 via the Dashboard]({{< ref "getting-started/using-oas-definitions/import-an-oas-api.md#tutorial-7-using-the-tyk-dashboard-ui" >}})
+[Importing OAS v3 via the Dashboard]({{< ref "api-management/gateway-config-managing-oas#using-the-tyk-dashboard-ui" >}})
 
 ##### Updated the Tyk Dashboard version of Golang, to 1.16.
 
@@ -3784,7 +3965,7 @@ Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 
 
 As we extend our OAS support, we would very much like your feedback on how we can extend and update to best meet your needs: .
 
-This capability is available in both the open source and paid versions of Tyk. See our [High Level Concepts]({{< ref "getting-started/key-concepts/high-level-concepts" >}}) for more details, or jump to [OAS Getting Started documentation]({{< ref "getting-started/using-oas-definitions/create-an-oas-api" >}}).
+This capability is available in both the open source and paid versions of Tyk. See our [High Level Concepts]({{< ref "api-management/gateway-config-managing-oas#" >}}) for more details, or jump to [OAS Getting Started documentation]({{< ref "api-management/gateway-config-managing-oas#create-a-tyk-oas-api" >}}).
 
 
 ##### MDCB Synchroniser
@@ -3916,7 +4097,7 @@ If you’re using GraphQL upstream services with UDG, you’re now able to forwa
 
 ##### Extendable Tyk Dashboard permissions system
 
-The Tyk Dashboard permission system can now be extended by writing custom rules using an Open Policy Agent (OPA). The rule engine works on top of the Tyk Dashboard API, which means you can control not only access rules, but also the behavior of all Dashboard APIs (except your public developer portal). You can find more details about OPA [here]({{< ref "tyk-dashboard/open-policy-agent" >}}).
+The Tyk Dashboard permission system can now be extended by writing custom rules using an Open Policy Agent (OPA). The rule engine works on top of the Tyk Dashboard API, which means you can control not only access rules, but also the behavior of all Dashboard APIs (except your public developer portal). You can find more details about OPA [here]({{< ref "api-management/dashboard-configuration#extend-permissions-using-open-policy-agent-opa" >}}).
 
 In addition, you can now create your own custom permissions using the Additional Permissions API or by updating `security.additional_permissions` map in the Tyk Dashboard config, and writing Opa rule containing logic for the new permission.
 
@@ -4036,7 +4217,7 @@ We have a lot to update you on with our UX & UI revamp, but one thing we want to
 
 When you create, view or edit a key the steps are in a more logical order. We’ve removed the long form that needed to be filled out and replaced it with tabs so you can find and enter information easily. We’ve also grouped all information within each API so you know the exact set up of each of your access rights without any confusion. The new workflow should allow tasks to be completed faster and more efficiently.
 
-See updated tutorials on how to [create a policy]({{< ref "getting-started/create-security-policy" >}}) and [keys]({{< ref "getting-started/create-api-key" >}})
+See updated tutorials on how to [create a policy]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}) and [keys]({{< ref "api-management/gateway-config-managing-classic#access-an-api" >}})
 
 We also have a [blog post](https://tyk.io/the-transformation-of-policies-and-keys/) that explains what we've done, and why we did it.
 

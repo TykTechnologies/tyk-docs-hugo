@@ -22,15 +22,15 @@ Not sure what you need? Visit our [APIM comparison]({{< ref "apim" >}}) page to 
 
 The following tutorials will show you how to get up and running with Tyk depending on your installation type.
 
-### [Create an API]({{< ref "getting-started/create-api" >}})
+### [Create an API]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}})
 
 How to add a basic API to Tyk
 
-### [Create a Security Policy]({{< ref "getting-started/create-security-policy" >}})
+### [Create a Security Policy]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}})
 
 Create a Security Policy that can be applied to multiple keys
 
-### [Create an API Key]({{< ref "getting-started/create-api-key" >}})
+### [Create an API Key]({{< ref "api-management/gateway-config-managing-classic#access-an-api" >}})
 
 Create a key to apply Quotas and Rate limits to an API, or it can inherit settings from a Security Policy
 

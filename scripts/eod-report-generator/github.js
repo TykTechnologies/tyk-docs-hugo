@@ -97,13 +97,14 @@ export async function getPRReviews(owner, repo, pull_number) {
     }
 }
 
-export async function getMergedPRsAfterDate(owner, repo, mergeDate) {
+export async function getMergedPRsAfterDate(owner, repo, startDate, endDate) {
     try {
         // Convert the provided merge date to a Date object for comparison
-        const mergeDateObj = new Date(mergeDate);
+        const sd = new Date(startDate);
+        const ed = new Date(endDate);
 
         // Fetch all closed PRs (this includes merged PRs)
-        const allClosedPRs = await octokit.request(`GET /repos/${owner}/${repo}/pulls?state=closed&per_page=30`, {
+        const allClosedPRs = await octokit.request(`GET /repos/${owner}/${repo}/pulls?state=closed&per_page=100`, {
             owner: owner,
             repo: repo,
             headers: {
@@ -118,13 +119,13 @@ export async function getMergedPRsAfterDate(owner, repo, mergeDate) {
 
             if (pr.merged_at) {
                 const mergedAtDate = new Date(pr.merged_at);
-                // console.log("Merged date:", pr.merged_at, mergedAtDate, mergeDateObj);
-                return mergedAtDate > mergeDateObj; // Only consider merged PRs after the given date
+                // console.log("MergedAt Log", pr.title, mergedAtDate.toISOString(), ed.toISOString(), sd.toISOString(), mergedAtDate >= sd, mergedAtDate <= ed);
+                return mergedAtDate >= sd && mergedAtDate <= ed;
             }
             return false; // Exclude PRs that are closed but not merged
         });
 
-        console.log(`Total Closed PRs after date ${mergeDate}`, mergedPRs.length);
+        console.log(`Total Closed PRs after date ${startDate}`, mergedPRs.length);
         return mergedPRs;
     } catch (error) {
         console.error("Error fetching merged PRs after the specified date:", error);

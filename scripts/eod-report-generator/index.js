@@ -79,9 +79,10 @@ async function analyzePR(owner, repo, pr, ignoreBuger) {
     const owner = "TykTechnologies";
     const repo = "tyk-docs";
 
-    const date = process.env.PR_SCAN_DATE || new Date().toISOString();
-    console.log("Report Date:", date); // Example output: "2025-02-04T15:30:00Z"
-
+    const startDate = process.env.START_DATE || new Date().toISOString();
+    const endDate = process.env.END_DATE || new Date().toISOString();
+    console.log("Start Date:", startDate); // Example output: "2025-02-04T15:30:00Z"
+    console.log("End Date:", endDate); // Example output: "2025-02-04T15:30:00Z"
 
     try {
         // ###############################
@@ -104,7 +105,7 @@ async function analyzePR(owner, repo, pr, ignoreBuger) {
         // Get Merged PRs
         // ###############################
 
-        const mergedPrs = await getMergedPRsAfterDate(owner, repo, date);
+        const mergedPrs = await getMergedPRsAfterDate(owner, repo, startDate, endDate);
 
         eod_report_result = []; //Reset array
         for (const pr of mergedPrs) {
@@ -122,7 +123,7 @@ async function analyzePR(owner, repo, pr, ignoreBuger) {
         console.log("============ Final Print ============")
 
         console.log(`
-Hi all, EOD status report for ${date}, is as follows:
+Hi all, EOD status report for ${endDate}, is as follows:
 :white_check_mark: New published pages :partywizard::partywizard::partywizard::partywizard:
 ================================
 ${merged}
