@@ -351,8 +351,10 @@ authorization: 7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 ```
 
 **Sample Response**
+<details>
+<summary>Click to expand</summary>
 
-```
+```json
 {
   "api_model": {},
   "api_definition": {
@@ -497,6 +499,7 @@ authorization: 7a7b140f-2480-4d5a-4e78-24049e3ba7f8
   ]
 }
 ```
+</details>
 
 #### Delete API by ID
 
@@ -510,8 +513,12 @@ Authorization: 7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 **Sample Response**
 
-```
-{"Status":"OK","Message":"API deleted","Meta":null}
+```json
+{
+  "Status":"OK",
+  "Message":"API deleted",
+  "Meta":null
+}
 ```
 
 #### Create API Definition
@@ -643,7 +650,7 @@ authorization: 7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 **Sample Response**
 
-```
+```json
 {
   "Status": "OK",
   "Message": "API created",
@@ -784,7 +791,7 @@ authorization: 7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 **Sample Response**
 
-```
+```json
 {
   "Status": "OK",
   "Message": "Api updated",
@@ -895,7 +902,10 @@ authorization: 7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 ```
 
 **Sample Response**
-```
+<details>
+<summary>Click to expand</summary>
+
+```json
 {
     "data": [
         {
@@ -956,6 +966,7 @@ authorization: 7a7b140f-2480-4d5a-4e78-24049e3ba7f8
     "pages": 1
 }
 ```
+</details>
 
 #### Analytics of OAuth Client
 | **Property** | **Description** |
