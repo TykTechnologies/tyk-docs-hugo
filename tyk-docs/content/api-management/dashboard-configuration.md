@@ -3099,7 +3099,7 @@ If you are modifying a user password, you will need to include an access_key in 
 
 ### Single Sign On API
 
-The Dashboard Admin SSO API endpoint allows you to implement custom authentication schemes for the Dashboard and Portal. Our Tyk Identity Broker (TIB) internally also uses this API. See [Single Sign On]({{< ref "#single-sign-on-api-1" >}}) for more details.
+The Dashboard Admin SSO API endpoint allows you to implement custom authentication schemes for the Dashboard and Portal. Our Tyk Identity Broker (TIB) internally also uses this API. See [Single Sign On]({{< ref "api-management/external-service-integration#single-sign-on-sso" >}}) for more details.
 
 #### Generate authentication token
 
