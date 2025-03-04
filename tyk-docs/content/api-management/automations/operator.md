@@ -5066,3 +5066,25 @@ Here are the supported features:
 | Partitions                     | ✅        | v0.1           | [Partitioned policies]({{< ref "#security-policy-example" >}})       |
 | Per API limit                  | ✅        | v1.0           | [Per API Limit]({{< ref "#security-policy-example" >}})        |
 | Per-Endpoint limit             | ✅        | v1.0           | [Per Endpoint Limit]({{< ref "#security-policy-example" >}})        |
+
+##### Webhooks
+Webhooks can now be configured using the Helm chart by specifying the necessary settings in the values.yaml file of the operator.
+In addition to this, using `.Values.webhookPort` to set the operator service port has been deprecated and now replaced with 
+`.Values.webhooks.port`.
+
+```
+webhooks:
+  enabled: true
+  port: 9443
+  annotations: {}
+  tls:
+    useCertManager: true
+    secretName: webhook-server-cert
+    certificatesMountPath: "/tmp/k8s-webhook-server/serving-certs"
+```
+- `enabled`: Enables or disables webhooks.
+- `port`: Specifies the port for webhook communication.
+- `annotations`: Allows adding custom annotations.
+- `tls.useCertManager`: If true, Cert-Manager will handle TLS certificates.
+- `tls.secretName`: The name of the Kubernetes Secret storing the TLS certificate.
+- `tls.certificatesMountPath`: Path where the webhook server mounts its certificates.
