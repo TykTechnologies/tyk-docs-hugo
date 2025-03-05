@@ -197,13 +197,18 @@ To effectively use Tyk Streams for managing async APIs, it's important to first 
 
 ## Getting started
 
+This section provides a detailed guide for creating, configuring, and securing a **Streams API** using the Dashboard UI. Follow these steps below:
+
+{{< note >}}
+**Note**
+
+To follow along you will require **Enterprise Edition** of Tyk Gateway.
+
 Our first release of Tyk Streams is now available, and we'd love for you to try it out. Click the button to sign up and take it for a spin:
 
 {{< button_left href="https://survey.hsforms.com/1ItPCBg-_Tre8WFJZL4pp6Q3ifmg" color="green" content="Get started with Tyk Streams" >}}
 
-## Configure Streams API using dashboard
-
-This section provides a detailed guide for creating, configuring, and securing a **Streams API** using the Dashboard UI. Follow these steps below:
+{{< /note >}}
 
 ### Prerequisites
 
