@@ -129,6 +129,16 @@ Previously, TIB assigned a user to the last matched group when multiple groups w
 
 </ul>
 
+##### Security Fixes
+<ul>
+<li>
+<details>
+<summary>Fixed the following CVE</summary>
+
+
+
+</details>
+</li>
 ---
 
 ## 1.6 Release Notes
