@@ -7,6 +7,7 @@ menu:
 weight: 5 
 aliases:
   - /troubleshooting/tyk-dashboard/not-found-error-deve...
+robots: "noindex"
 ---
 
 ### Description

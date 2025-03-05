@@ -6,6 +6,7 @@ description: "A walk through how you can use custom Page Templates to control th
 tags: ["customizing EDP", EDP, "customizing APIs EDP"]
 aliases:
   - /tyk-developer-portal/customise/customize-api-visibility/
+robots: "noindex"
 ---
 
 By default, any user who accesses your developer Portal will be able to view all of the published APIs in the catalog. This behavior may not be desired and you may want to have more control of what APIs developers see in the catalog when accessing the portal. A common use case for this is if you have internal APIs that you want to publish only to your internal developers, and restrict view to others.

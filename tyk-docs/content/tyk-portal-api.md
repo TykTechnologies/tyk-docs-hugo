@@ -2,6 +2,7 @@
 title: Classic Portal API
 description: "Landing page for the Tyk Classic Portal API documentation"
 tags: ["Tyk Classic Portal API", "Classic Portal API "]
+robots: "noindex"
 ---
 
 This section describes the Tyk Classic Portal API endpoints. It includes the following:

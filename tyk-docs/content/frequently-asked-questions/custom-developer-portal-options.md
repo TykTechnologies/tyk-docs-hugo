@@ -5,6 +5,7 @@ menu:
   main:
     parent: "Frequently Asked Questions"
 weight: 0 
+robots: "noindex"
 ---
 
 Use case: What if your developer portal is not exactly what I need?

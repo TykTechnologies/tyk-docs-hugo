@@ -6,6 +6,7 @@ menu:
     parent: "Tyk Portal Classic"
 aliases:
   - /tyk-developer-portal/key-requests
+robots: "noindex"
 ---
 
 ## Key Requests

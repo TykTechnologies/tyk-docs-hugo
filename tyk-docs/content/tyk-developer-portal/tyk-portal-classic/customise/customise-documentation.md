@@ -8,6 +8,7 @@ menu:
 weight: 6
 aliases:
   - /tyk-developer-portal/customise/customise-documentation/
+robots: "noindex"
 ---
 
 This short guide will show you how easy it is to swap out out the default https://swagger.io/tools/swagger-ui/ library for Portal Catalog API documentation for another tool like [ReDoc](http://rebilly.github.io/ReDoc/) 
