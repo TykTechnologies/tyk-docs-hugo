@@ -93,6 +93,18 @@ SQLite support has been fully removed from Pump.
 
 </ul>
 
+##### Security Fixes
+<ul>
+<li>
+<details>
+<summary>Fixed the following CVE</summary>
+
+
+
+</details>
+</li>
+</ul>
+
 ---
 
 ## 1.11 Release Notes
