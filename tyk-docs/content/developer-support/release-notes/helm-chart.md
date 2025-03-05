@@ -30,7 +30,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-Tyk Charts 3.0 introduces significant improvements in configurability, reliability, and support for Tyk 5.8. This release enhances monitoring capabilities, expands Helm chart flexibility, and resolves key issues related to service availability and configuration management.
+Tyk Charts 3.0 significantly improves configurability, reliability, and support for Tyk 5.8. This release enhances monitoring capabilities, expands Helm chart flexibility, and resolves key issues related to service availability and configuration management.
 
 For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v3.0.0) below.
 
@@ -151,7 +151,7 @@ Users can now define a global image registry, making it easier to use private re
 <details>
 <summary>Gateway: Tyk Gateway startup probes</summary>
 
-Adds support for configuring custom startup probes, improving readiness checks.
+Adds support for configuring custom startup probes and improving readiness checks.
 </details>
 </li>
 
