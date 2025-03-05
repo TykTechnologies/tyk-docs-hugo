@@ -118,8 +118,6 @@ GraphQL) and asynchronous APIs, in addition to event-driven architectures. This 
 full potential of their event-driven systems while maintaining the same level of security, control and visibility they
 expect from their API management solution.
 
-
-
 ### How Tyk Streams Enables Async API Support?
 
 Tyk Streams seamlessly integrates with the Tyk API Gateway, allowing you to manage asynchronous APIs and event streams
@@ -202,6 +200,119 @@ To effectively use Tyk Streams for managing async APIs, it's important to first 
 Our first release of Tyk Streams is now available, and we'd love for you to try it out. Click the button to sign up and take it for a spin:
 
 {{< button_left href="https://survey.hsforms.com/1ItPCBg-_Tre8WFJZL4pp6Q3ifmg" color="green" content="Get started with Tyk Streams" >}}
+
+## Configure Streams API using dashboard
+
+This section provides a detailed guide for creating, configuring, and securing a **Streams API** using the Dashboard UI. Follow these steps below:
+
+### Prerequisites
+
+- **Docker**: We will be running the entire Tyk Stack on Docker. For installation, refer to this [guide](https://docs.docker.com/desktop/setup/install/mac-install/).
+- **wscat**: A webSocket testing tool to test our async APIs. For installation, refer to this [guide](https://www.npmjs.com/package/wscat)
+- **Git**: A CLI tool to work with git repositories. For installation, refer to this [guide](https://www.npmjs.com/package/wscat)
+- **Dashboard License**: We will configure Streams API using Dashboard. [Contact support]({{< ref "#support" >}}) to obtain license.
+- **Familiarity with Tyk Streams concepts**: Such as Input, Output, and  Processor. If you’re not familiar with these concepts, please refer to this [documentation]({{< ref "api-management/stream-config#overview" >}}).
+
+### Install Tyk Streams Demo
+
+The tyk-pro-docker-demo repository provides a docker compose environment that can be run locally to try out Tyk streams. Follow the below instructions to set it up.
+TODO: Is this required for cloud as well?
+
+1. Open your terminal and clone the git repository using the below command
+
+    ```bash
+    git clone https://github.com/TykTechnologies/tyk-pro-docker-demo
+    ```
+
+2. Create a `.env` file with the below content inside the `tyk-pro-docker-demo` directory 
+
+    ```bash
+    DASH_LICENSE=<paste_your_license_here>
+    DASHBOARD_VERSION=v5.7.2
+    GATEWAY_VERSION=v5.7.2
+    MDCB_VERSION=v2.7.2
+    TYK_DB_STREAMING_ENABLED=true
+    TYK_GW_STREAMING_ENABLED=true
+    ```
+3. TODO Need to modify docker-compose gateway docker image with gateway-ee
+
+4. Start the Tyk Streams demo by issuing the following command:
+
+    ```bash
+    ./up.sh
+    ```
+
+5. Open Tyk Dashboard in your browser by visiting http://localhost:3000 and login with the provided credentials.
+
+### Create the Streams API
+
+1. Click on **Streams & Events** from the sidebar. This will open a form for creating the Streams API.  
+
+   {{< img src="/img/streams/sidebar-navigation.png" alt="Sidebar Navigation" width="670px" height="500px" >}}
+   {{< img src="/img/streams/streams-and-events-wizard.png" alt="Streams & Events Wizard" width="670px" height="500px" >}}
+
+2. Enter a **unique API name**, select the **Streams** option, and click **Continue**.
+
+   {{< img src="/img/streams/streams-option.png" alt="Streams Option" width="670px" height="500px" >}}
+
+3. On the next screen, configure your Streams API:
+
+   - **Input**: Select one or more data sources.  
+   - **Processor**: Choose a single processor for handling the data.  
+   - **Output**: Define one or more output destinations.     
+   - For manual configuration, enable the **Advanced** checkbox to create a custom YAML template.  
+
+   {{< img src="/img/streams/selection.png" alt="Output Selection" width="670px" height="500px" >}}
+
+4. Click **Finish** to proceed to the API Details page.
+
+5. On the **API Details page**, review the auto-generated YAML configuration.  
+
+   {{< img src="/img/streams/api-details-page.png" alt="API Details Page" width="670px" height="500px" >}}
+
+6. Configure additional settings:
+
+   - **Authentication**: Choose an authentication mechanism (e.g., API Key, OAuth2).  
+   - **Gateway Status**: Set to **Active** or **Disabled**.
+   - **Access**: Select **Internal** (restricted) or **External** (public) access.
+
+7. Click **Save API**.  
+
+   - The API is now created, and a unique **API ID** is assigned.
+   - The API will appear in the **APIs listing screen**.
+
+
+### Secure the API
+
+1. Navigate to **Policies** in the sidebar and click **Add Policy**.  
+
+2. Select the newly created Streams API.  
+
+3. Configure the following:
+
+   - **Limits**: Define **Rate Limiting**, **Throttling**, and **Usage Quota**.
+   - **Configuration**: Provide a policy name and set a key expiration interval.  
+
+   {{< img src="/img/streams/pol-details-page.png" alt="Policy Details Page" width="670px" height="500px" >}}
+   
+4. Click **Create Policy** to save.
+
+5. Go to **Keys** from the sidebar and click **Add Key**.  
+
+6. On the key creation page:
+
+   - Select the newly created policy under the **Access Rights** tab.  
+
+   - Review the applied limits for the API.
+
+7. Click **Create Key**.  
+
+   - A popup will display the **Key Hash** and **Key ID**.  
+   - Use the **Key ID** to access the protected Streams API.
+
+### Test the API
+
+
 
 ## Use Cases
 
@@ -422,96 +533,6 @@ output:
     - The broker output with a fan_out pattern sends processed messages to multiple destinations: two different Kafka topics and an HTTP endpoint, demonstrating the capability to distribute events to various downstream consumers.
 
 These are just a few examples of the advanced async API scenarios made possible with Tyk Streams. The platform provides a flexible and extensible framework to design, deploy and manage sophisticated event-driven architectures.
-
-## Configure Streams API using dashboard
-
-### Overview
-
-This page provides a detailed guide for creating, configuring, and securing a **Streams API** using the Dashboard UI. Follow these steps to set up real-time streaming with authentication and access control.
-
-### Prerequisites
-
-Before you begin, make sure you have:
-
-- Access to the Dashboard.
-- Permissions to create APIs, policies, and keys.
-- A clear understanding of your streaming input, processing, and output requirements.
-
-### Create a Streams API
-
-#### Step 1: Define API Name and Type
-1. Click on **Streams & Events** from the sidebar. This will open a form for creating the Streams API.  
-   {{< img src="/img/streams/sidebar-navigation.png" alt="Sidebar Navigation" width="670px" height="500px" >}}
-   {{< img src="/img/streams/streams-and-events-wizard.png" alt="Streams & Events Wizard" width="670px" height="500px" >}}
-
-2. Enter a **unique API name**, select the **Streams** option, and click **Continue**.
-   {{< img src="/img/streams/streams-option.png" alt="Streams Option" width="670px" height="500px" >}}
-
-#### Step 2: Configure API Inputs, Processors, and Outputs
-1. On the next screen, configure your Streams API:
-   - **Input**: Select one or more data sources.  
-   - **Processor**: Choose a single processor for handling the data.  
-   - **Output**: Define one or more output destinations.     
-   - For manual configuration, enable the **Advanced** checkbox to create a custom YAML template.  
-
-   {{< img src="/img/streams/selection.png" alt="Output Selection" width="670px" height="500px" >}}
-
-2. Click **Finish** to proceed to the API Details page.
-
-#### Step 3: Review and Finalize API Details
-1. On the **API Details page**, review the auto-generated YAML configuration.  
-   {{< img src="/img/streams/api-details-page.png" alt="API Details Page" width="670px" height="500px" >}}
-
-2. Configure additional settings:
-   - **Authentication**: Choose an authentication mechanism (e.g., API Key, OAuth2).  
-   - **Gateway Status**: Set to **Active** or **Disabled**.
-   - **Access**: Select **Internal** (restricted) or **External** (public) access.
-
-3. Click **Save API**.  
-
-   - The API is now created, and a unique **API ID** is assigned.
-   - The API will appear in the **APIs listing screen**.
-
-### Access the Streams API
-
-#### Step 1: Create a Policy
-1. Navigate to **Policies** in the sidebar and click **Add Policy**.  
-
-2. Select the newly created Streams API.  
-
-3. Configure the following:
-   - **Limits**: Define **Rate Limiting**, **Throttling**, and **Usage Quota**.
-   - **Configuration**: Provide a policy name and set a key expiration interval.  
-
-   {{< img src="/img/streams/pol-details-page.png" alt="Policy Details Page" width="670px" height="500px" >}}
-   
-4. Click **Create Policy** to save.
-
-#### Step 2: Generate a Key
-1. Go to **Keys** from the sidebar and click **Add Key**.  
-
-2. On the key creation page:
-   - Select the newly created policy under the **Access Rights** tab.  
-
-   - Review the applied limits for the API.
-
-3. Click **Create Key**.  
-
-   - A popup will display the **Key Hash** and **Key ID**.  
-
-   - Use the **Key ID** to access the protected Streams API.
-
-### Summary
-
-By completing the steps outlined above, you will have:
-
-- A functional **Streams API** with real-time data delivery capabilities.
-- Policies and keys for authentication and access control.
-
-You can now use the **Key ID** to securely access the API for your applications.
-
-
-
 
 ## Glossary
 
