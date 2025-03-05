@@ -20,7 +20,7 @@ aliases:
 
 The upstream service receives requests from Tyk to the *upstream API* after processing based on the configuration applied in the Tyk API definition. Crucially the upstream service remains unaware of Tyk Gateway's processing, responding to incoming requests as it would for direct client-to-service communication. The *API proxy* deployed on Tyk is typically designed to have the same API endpoints, resources and methods that are defined for the upstream service's API. The *upstream API* will often be described according to the industry standard OpenAPI Specification - and this is where Tyk OAS comes in.
 
-### What is the OpenAPI Specification?
+### What is the OpenAPI Specification?
 
 The *OpenAPI Specification* (OAS) is a standardized framework for describing RESTful APIs in a machine-readable format (typically JSON or YAML). It defines how APIs should be documented, including details about endpoints, request/response formats, authentication, and error codes. In short, OAS is a blueprint for your API—detailing how the API behaves and how users or services can interact with it. The *OpenAPI Description* (OAD) is the actual content that adheres to this specification, essentially an object that describes the specific functionality of an API. The *OpenAPI Document* refers to a file that contains an OpenAPI description, following the OAS format.
 
