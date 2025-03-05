@@ -170,6 +170,13 @@ We've improved gateway logging to reduce misleading error messages during startu
 Fixed an issue where edge gateways failed to enter emergency mode when disconnected from MDCB, preventing traffic processing. Now, gateways properly load APIs and policies from the Redis backup when MDCB is unavailable.
 </details>
 </li>
+<li>
+<details>
+<summary>Multi-Value Response Headers in Coprocess Middleware</summary>
+
+Multi-value response headers were previously lost after synchronization with coprocess middleware, as only the first value was retained. This has been resolved, ensuring all response headers are properly synchronized and preserved
+</details>
+</li>
 </ul>
 
 ---
