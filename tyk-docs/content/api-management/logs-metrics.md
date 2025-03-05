@@ -31,7 +31,6 @@ aliases:
   - /advanced-configuration/distributed-tracing/jaeger
   - /advanced-configuration/distributed-tracing/newrelic
   - /advanced-configuration/distributed-tracing/zipkin
-
 ---
 
 ## Introduction
