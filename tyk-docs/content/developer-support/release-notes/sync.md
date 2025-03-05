@@ -17,7 +17,7 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
-## 2.0 Release Notes
+## 2.1 Release Notes
 
 ### 2.1.0 Release Notes
 
@@ -91,6 +91,9 @@ Ensures compatibility with Tyk 5.8, allowing seamless integration with the lates
 </details>
 </li>
 </ul>
+
+
+## 2.0 Release Notes
 
 ### 2.0.4 Release Notes
 
