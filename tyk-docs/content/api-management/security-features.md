@@ -66,13 +66,13 @@ spec:
 
 The CORS middleware has the following options:
 
-* `CORS.allowed_origins`: A list of origin domains to allow access from. Wildcards are also supported, e.g. `http://*.foo.com`
+* `CORS.allowed_origins`: A list of origin domains to allow access from. Wildcards are also supported, e.g. `http://*.foo.com`. Default value is `["*"]`
 
-* `CORS.allowed_methods`: A list of methods to allow access via.
+* `CORS.allowed_methods`: A list of methods to allow access via. Default value is `["GET", "POST", "HEAD"]`
 
-* `CORS.allowed_headers`: Headers that are allowed within a request.
+* `CORS.allowed_headers`: A list of headers that are allowed within a request. Default value is `["Origin", "Accept", "Content-Type", "X-Requested-With"]`
 
-* `CORS.exposed_headers`: Headers that are exposed back in the response.
+* `CORS.exposed_headers`: A list of headers that are exposed back in the response.
 
 * `CORS.allow_credentials`: Whether credentials (cookies) should be allowed.
 
@@ -83,9 +83,3 @@ the Tyk Portal documentation system will be able to test the API using trial key
 
 * `debug`: If set to `true`, this option produces log files for the CORS middleware.
 
-### Fallback values
-
-Always keep in mind that empty arrays will fallback to some sensible defaults. If you want to avoid this, you will have to provide explicit values.
- * Fallback values for `CORS.allowed_origins`: `["*"]`
- * Fallback values for `CORS.allowed_methods`: `["GET", "POST", "HEAD"]`
- * Fallback values for `CORS.allowed_headers`: `["Origin", "Accept", "Content-Type", "X-Requested-With"]`

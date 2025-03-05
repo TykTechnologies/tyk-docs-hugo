@@ -59,8 +59,8 @@ In the OpenAPI Specification *paths* define the API endpoints, while *operations
 
 Tyk will only make additions or modifications to the OAD when the user makes certain changes in the Tyk API Designer and as follows:
 
-- the URL on Tyk Gateway to which client requests should be sent will be added at the first location in the `servers` list
-- the OpenAPI Specification declares `paths` which describe the available endpoints (paths) and the operations that can be performed on them (such as `GET`, `POST`, `PUT`, `DELETE`). Tyk will modify this list if changes are made using the Tyk API Designer, for example if an endpoint is added.
+- The URL on Tyk Gateway to which client requests should be sent will be added at the first location in the `servers` list
+- The OpenAPI Specification declares `paths` which describe the available endpoints (paths) and the operations that can be performed on them (such as `GET`, `POST`, `PUT`, `DELETE`). Tyk will modify this list if changes are made using the Tyk API Designer, for example if an endpoint is added.
 
 Where Tyk might modify the OpenAPI description, this is noted in the appropriate section of the documentation.
 

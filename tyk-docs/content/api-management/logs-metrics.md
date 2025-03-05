@@ -483,17 +483,17 @@ Since there's no real value in aggregating something that has a total of 1 and a
 1. Open: In the Dashboard, with an API configured, open your API and click on "Advanced Options".
 2. Set up: Navigate down to the Tag Headers section and add `X-Team-Name` to the list.
 
-{{< img src="/img/custom-analytics-tags/tag-headers.png" alt="Tag Headers" >}}
+    {{< img src="/img/custom-analytics-tags/tag-headers.png" alt="Tag Headers" >}}
 
 3. Test: Using your preferred HTTP client, make a request that includes the `X-Team-Name` header. For example, with curl run the following:
 
-```bash
-curl http://tyk-gateway.localhost:8080/basic-open-api/get -H "X-Team-Name: devops-us-1" -vv
-```
+    ```bash
+    curl http://tyk-gateway.localhost:8080/basic-open-api/get -H "X-Team-Name: devops-us-1" -vv
+    ```
 
 4. Check: Navigate back to the Dashboard and select the "Log Browser" option to view the logged requests. Open the request record and in the "Gateway Metadata" section (on the right), you can find the "Tags" attached to our request. There you should see the header and value you sent in the request. You should also see that Tyk Gateway recorded it as a `tag`.
 
-{{< img src="/img/custom-analytics-tags/log-browser.png" alt="Log Browser" >}}
+    {{< img src="/img/custom-analytics-tags/log-browser.png" alt="Log Browser" >}}
 
 You can now get Tyk to track API requests that contain your business logic.
 
