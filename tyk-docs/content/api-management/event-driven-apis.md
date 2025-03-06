@@ -316,8 +316,7 @@ The tyk-pro-docker-demo repository offers a docker-compose environment you can r
    - A popup will display the **Key Hash** and **Key ID**.  
    - Use the **Key ID** to access the protected Streams API.
 
-### Test the API
-
+<!-- TODO: Add this section -->
 
 
 ## Use Cases
