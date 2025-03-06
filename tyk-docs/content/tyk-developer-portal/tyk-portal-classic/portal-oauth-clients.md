@@ -9,6 +9,8 @@ aliases:
   - /tyk-stack/tyk-developer-portal/portal-oauth-clients/
   - /tyk-developer-portal/portal-oauth-clients/
 robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 From Tyk Dashboard v1.8, you can now create and manage OAuth clients from the Developer Portal.

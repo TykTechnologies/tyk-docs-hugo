@@ -8,6 +8,8 @@ weight: 3
 aliases:
   - /tyk-dashboard-api/portal-developers/
 robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 ### List Developers
