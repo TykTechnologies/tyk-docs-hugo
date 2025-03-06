@@ -7,6 +7,7 @@ menu:
 weight: 1 
 aliases:
     - /tyk-developer-portal/keycloak-dcr
+robots: "noindex"
 ---
 
 We are going walk you through a basic integration of Tyk with Keycloak using the [OpenID Connect Dynamic Client Registration protocol](https://tools.ietf.org/html/rfc7591). Our current implementation provides support for the client credentials flow with support for {{< tooltip >}}JWT{{< definition >}} JSON Web Tokens{{< /definition >}}{{< /tooltip >}}. To the developer it works like this:

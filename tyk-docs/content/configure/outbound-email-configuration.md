@@ -7,6 +7,7 @@ menu:
 weight: 6 
 aliases:
   - /tyk-configuration-reference/outbound-email-configuration/
+robots: "noindex"
 ---
 
 ### Custom Email Templates

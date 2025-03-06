@@ -7,6 +7,7 @@ menu:
 weight: 1
 aliases:
   - /tyk-stack/tyk-developer-portal/key-requests/
+robots: "noindex"
 ---
 
 ### List All Key Requests

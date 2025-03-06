@@ -598,7 +598,7 @@ menu:
             path: /product-stack/tyk-charts/tyk-oss-chart
             category: Page
             show: True
-  - title: "Portal"
+  - title: "Developer Portal"
     category: Label
     show: True
     menu:
