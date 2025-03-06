@@ -197,14 +197,14 @@ To effectively use Tyk Streams for managing async APIs, it's important to first 
 
 ## Getting started
 
-This section provides a detailed guide for creating, configuring, and securing a **Streams API** using the Dashboard UI. Follow these steps below:
+This section provides a detailed guide for creating, configuring, and securing a **Streams API** using the Dashboard UI. Follow the steps below:
+
+<br>
 
 {{< note >}}
 **Note**
 
-To follow along you will require **Enterprise Edition** of Tyk Gateway.
-
-Our first release of Tyk Streams is now available, and we'd love for you to try it out. Click the button to sign up and take it for a spin:
+Our first release of Tyk Streams is now available, and we'd love for you to try it out. To follow along, you will require a license. Click the button to sign up and take it for a spin:
 
 {{< button_left href="https://survey.hsforms.com/1ItPCBg-_Tre8WFJZL4pp6Q3ifmg" color="green" content="Get started with Tyk Streams" >}}
 
@@ -212,16 +212,17 @@ Our first release of Tyk Streams is now available, and we'd love for you to try 
 
 ### Prerequisites
 
-- **Docker**: We will be running the entire Tyk Stack on Docker. For installation, refer to this [guide](https://docs.docker.com/desktop/setup/install/mac-install/).
-- **wscat**: A webSocket testing tool to test our async APIs. For installation, refer to this [guide](https://www.npmjs.com/package/wscat)
-- **Git**: A CLI tool to work with git repositories. For installation, refer to this [guide](https://www.npmjs.com/package/wscat)
-- **Dashboard License**: We will configure Streams API using Dashboard. [Contact support]({{< ref "#support" >}}) to obtain license.
+- **Docker**: We will run the entire Tyk Stack on Docker. For installation, refer to this [guide](https://docs.docker.com/desktop/setup/install/mac-install/).
+- **wscat**: A WebSocket testing tool to test our async APIs. For installation, refer to this [guide](https://www.npmjs.com/package/wscat)
+- **Git**: A CLI tool to work with git repositories. For installation, refer to this [guide](https://git-scm.com/downloads)
+- **Dashboard License**: We will configure Streams API using Dashboard. [Contact support](https://tyk.io/contact/) to obtain a license.
 - **Familiarity with Tyk Streams concepts**: Such as Input, Output, and  Processor. If you’re not familiar with these concepts, please refer to this [documentation]({{< ref "api-management/stream-config#overview" >}}).
 
 ### Install Tyk Streams Demo
 
-The tyk-pro-docker-demo repository provides a docker compose environment that can be run locally to try out Tyk streams. Follow the below instructions to set it up.
-TODO: Is this required for cloud as well?
+The tyk-pro-docker-demo repository offers a docker-compose environment you can run locally to explore Tyk streams. Follow the below instructions to set it up.
+
+<!-- TODO: Is this required for cloud as well? -->
 
 1. Open your terminal and clone the git repository using the below command
 
@@ -233,21 +234,21 @@ TODO: Is this required for cloud as well?
 
     ```bash
     DASH_LICENSE=<paste_your_license_here>
-    DASHBOARD_VERSION=v5.7.2
-    GATEWAY_VERSION=v5.7.2
-    MDCB_VERSION=v2.7.2
+    DASHBOARD_VERSION=<paste_latest_dashboard_version>
+    GATEWAY_VERSION=<paste_latest_gateway_version>
+    MDCB_VERSION=<paste_latest_mdcb_version>
     TYK_DB_STREAMING_ENABLED=true
     TYK_GW_STREAMING_ENABLED=true
     ```
-3. TODO Need to modify docker-compose gateway docker image with gateway-ee
+<!-- 3. TODO Need to modify docker-compose gateway docker image with gateway-ee -->
 
-4. Start the Tyk Streams demo by issuing the following command:
+3. Start the Tyk Streams demo by issuing the following command:
 
     ```bash
     ./up.sh
     ```
 
-5. Open Tyk Dashboard in your browser by visiting http://localhost:3000 and login with the provided credentials.
+4. Open Tyk Dashboard in your browser by visiting http://localhost:3000 and login with the provided credentials.
 
 ### Create the Streams API
 
