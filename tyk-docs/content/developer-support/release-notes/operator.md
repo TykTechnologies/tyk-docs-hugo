@@ -160,7 +160,8 @@ The Operator now properly links JWT default policies and JWT scope-to-policy map
 <details>
 <summary>Leader election flag </summary>
 
-Added `--leader-elect=true` to enable high availability, preventing issues in multi-instance deployments.
+Because of some issue in Operator helm chart, configurations options were not getting read correctly.
+Helm chart has been fixed and leader election works by default again.
 
 </details>
 </li>
