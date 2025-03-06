@@ -10,6 +10,8 @@ aliases:
   - /tyk-developer-portal/customise/custom-developer-po...
   - /tyk-developer-portal/customise/custom-developer-portal/
 robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 {{< note success >}}

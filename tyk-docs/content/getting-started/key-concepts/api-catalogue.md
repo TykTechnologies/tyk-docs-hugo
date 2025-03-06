@@ -7,6 +7,9 @@ menu:
 weight: 90
 aliases:
   - /concepts/api-catalogue/
+robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 The API Catalog is part of the API Developer Portal of the Dashboard. It is the central place for you to manage which APIs your registered developers have access to.

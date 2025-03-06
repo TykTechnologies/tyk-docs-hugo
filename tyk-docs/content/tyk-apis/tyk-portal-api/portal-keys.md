@@ -8,6 +8,8 @@ weight: 1
 aliases:
   - /tyk-stack/tyk-developer-portal/key-requests/
 robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 ### List All Key Requests

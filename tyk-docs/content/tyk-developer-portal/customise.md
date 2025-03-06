@@ -9,6 +9,8 @@ weight: 12
 aliases:
   - /tyk-developer-portal/tyk-portal-classic/customise
 robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 ### Customize look and feel

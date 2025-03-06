@@ -9,6 +9,8 @@ aliases:
   - /tyk-stack/tyk-developer-portal/dynamic-client-registration/
   - /tyk-developer-portal/dynamic-client-registration
 robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 ## OAuth 2.0 Dynamic Client Registration Protocol (DCR)
