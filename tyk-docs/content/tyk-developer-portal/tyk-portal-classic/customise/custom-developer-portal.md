@@ -9,7 +9,9 @@ weight: 5
 aliases:
   - /tyk-developer-portal/customise/custom-developer-po...
   - /tyk-developer-portal/customise/custom-developer-portal/
+robots: "noindex"
 ---
+
 {{< note success >}}
 **Note**  
 

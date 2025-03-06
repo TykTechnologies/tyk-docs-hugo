@@ -8,6 +8,7 @@ menu:
 weight: 12
 aliases:
   - /tyk-developer-portal/tyk-portal-classic/customise
+robots: "noindex"
 ---
 
 ### Customize look and feel

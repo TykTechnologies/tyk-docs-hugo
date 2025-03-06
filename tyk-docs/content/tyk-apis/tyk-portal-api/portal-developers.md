@@ -7,6 +7,7 @@ menu:
 weight: 3
 aliases:
   - /tyk-dashboard-api/portal-developers/
+robots: "noindex"
 ---
 
 ### List Developers

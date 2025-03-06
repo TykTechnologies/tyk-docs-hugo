@@ -7,6 +7,7 @@ menu:
 weight: 2 
 aliases:
   - /tyk-developer-portal/developer-profiles
+robots: "noindex"
 ---
 
 Users that are signed up to your portal are called "Developers", these users have access to a Dashboard page which show them their API usage over the past 7 days as well as the policy and quota limits on their relevant keys.

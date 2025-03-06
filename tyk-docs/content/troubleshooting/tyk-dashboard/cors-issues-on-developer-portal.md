@@ -4,7 +4,8 @@ title: CORS issues on developer portal
 menu:
   main:
     parent: "Tyk Dashboard Troubleshooting"
-weight: 6 
+weight: 6
+robots: "noindex"
 ---
 
 ### Description
