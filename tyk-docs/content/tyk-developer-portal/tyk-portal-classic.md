@@ -7,6 +7,7 @@ menu:
   main:
     parent: "Tyk Developer Portal"
 weight: 1
+robots: "noindex"
 ---
 
 The Tyk Classic Developer Portal is a small CMS-like system that enables you to expose a facade of your APIs and then allow third-party developers to register and use your APIs.
