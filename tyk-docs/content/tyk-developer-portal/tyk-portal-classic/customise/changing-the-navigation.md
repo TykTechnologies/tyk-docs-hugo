@@ -9,6 +9,8 @@ weight: 1
 aliases:
   - /tyk-developer-portal/customise/changing-the-navigation/
 robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 The Portal supports a data structure to hold rudimentary menus, all pages have access to all menus, and can be accessed using the `.Menus.MenuName` field tag. They are arrays that consist of slugs and names, an implementation example would be:

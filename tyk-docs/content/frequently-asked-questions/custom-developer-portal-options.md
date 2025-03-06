@@ -6,6 +6,8 @@ menu:
     parent: "Frequently Asked Questions"
 weight: 0 
 robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 Use case: What if your developer portal is not exactly what I need?

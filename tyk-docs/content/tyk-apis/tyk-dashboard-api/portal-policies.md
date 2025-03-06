@@ -6,6 +6,8 @@ menu:
     parent: "Tyk Dashboard API"
 weight: 2
 robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 ### Get List of Policies

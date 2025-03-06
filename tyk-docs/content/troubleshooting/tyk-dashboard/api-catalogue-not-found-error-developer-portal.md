@@ -6,6 +6,8 @@ menu:
     parent: "Tyk Dashboard Troubleshooting"
 weight: 5
 robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 ### Description
