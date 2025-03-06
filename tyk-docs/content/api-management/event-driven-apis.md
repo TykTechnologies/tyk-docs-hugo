@@ -220,7 +220,7 @@ Our first release of Tyk Streams is now available, and we'd love for you to try 
 
 ### Install Tyk Streams Demo
 
-The tyk-pro-docker-demo repository offers a docker-compose environment you can run locally to explore Tyk streams. Follow the below instructions to set it up.
+The [tyk-pro-docker-demo](https://github.com/TykTechnologies/tyk-pro-docker-demo) repository offers a docker-compose environment you can run locally to explore Tyk streams. Follow the below instructions to set it up.
 
 <!-- TODO: Is this required for cloud as well? -->
 
