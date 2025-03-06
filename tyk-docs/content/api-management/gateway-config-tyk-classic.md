@@ -40,7 +40,11 @@ For versions of Tyk prior to 5.8 not all Gateway features can be configured usin
 
 The Tyk Classic API definition has a flat structure that does not use the `omitempty` style, requiring all fields to be present even if set to null, resulting in a larger object than that for an equivalent Tyk OAS API definition.
 
-Note that there are some specific differences between Tyk Classic and Tyk OAS APIs, in particular with respect to [default authentication method](#configuring-authentication-for-tyk-classic-apis) and [API versioning](#tyk-classic-api-versioning).
+In the rest of this document we will summarise the different fields of the Tyk Classic API definition that are used to configure Tyk Gateway to handle traffic to your service.
+
+There are some specific differences between Tyk Classic and Tyk OAS APIs, in particular with respect to the [default authentication method](#configuring-authentication-for-tyk-classic-apis) and [API versioning](#tyk-classic-api-versioning). The notes in this page apply only to Tyk Classic APIs and supercede the notes elsewhere which refer to the use of Tyk OAS APIs.
+
+
 
 ## Tyk Classic API versioning
 
