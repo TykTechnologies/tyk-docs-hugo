@@ -1,7 +1,6 @@
 <div id="search-widget">
   <form id="searchForm">
     <input type="text" id="query" placeholder="Search..." required />
-    <button type="submit">Search</button>
   </form>
   <div id="results-overlay">
     <div class="overlay-header">
@@ -28,36 +27,22 @@
 
     /* Form styling */
     #searchForm {
-        display: flex;
         margin-bottom: 20px;
     }
 
     #query {
-        flex-grow: 1;
-        padding: 10px;
+        width: 100%;
+        padding: 10px 15px;
         font-size: 16px;
         border: 1px solid #ccc;
-        border-radius: 4px 0 0 4px;
+        border-radius: 4px;
         outline: none;
+        box-sizing: border-box;
     }
 
     #query:focus {
         border-color: #007BFF;
-    }
-
-    #searchForm button {
-        padding: 10px 20px;
-        font-size: 16px;
-        background-color: #007BFF;
-        border: none;
-        color: #fff;
-        cursor: pointer;
-        border-radius: 0 4px 4px 0;
-        transition: background-color 0.3s ease;
-    }
-
-    #searchForm button:hover {
-        background-color: #0056b3;
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
     }
 
     /* Overlay styling */
