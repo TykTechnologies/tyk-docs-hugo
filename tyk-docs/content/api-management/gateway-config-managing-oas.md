@@ -108,6 +108,18 @@ These tutorials will take you through the process of managing a Tyk OAS API from
 
 ### Using the Tyk Gateway API
 
+<b> *** TEMPORARY - RESTRUCTURE/MERGE *** </b>
+
+#### Create API
+
+When creating an API, either using the Tyk Gateway or Dashboard API, Tyk analyzes the first entry URL value from the Tyk OAS API Definition `servers` configuration:
+- it won't provide any change, if it already matches the API URL, OR
+- it will insert a new first servers object containing the correct API URL value
+
+This means that when you export this OAS API Definition to provide documentation for your developer portal, it will automatically tell your users the correct way to call the API now that Tyk is handling it.
+
+<b> *** END TEMPORARY - DELETE ABOVE THIS LINE *** </b>
+
 In this tutorial we show you how to create a minimal Tyk OAS API using the Tyk Gateway API, starting with a [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition" >}}).
 
 When making calls to the Tyk Gateway API you'll need to set the domain name and port for your environment and, in the API request header, must provide credentials in the `x-tyk-authorization` field for Tyk to authorize your request, as follows:
@@ -419,6 +431,20 @@ As developers working on API development, it can be necessary for us to regularl
 One of the most powerful features of working with Tyk OAS is that you can make changes to your [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition" >}}) or [OpenAPI Document]({{< ref "api-management/gateway-config-tyk-oas#openapi-document" >}}) outside Tyk and then use this updated description to update the Tyk OAS API. You can simply update the configuration on Tyk without having to make any changes to the Tyk Gateway configuration (`x-tyk-api-gateway`).
 
 In this section will walk you through different methods you can use to Update a Tyk OAS API using the Tyk Gateway API, Tyk Dashboard API and Tyk Dashboard GUI.
+
+<b> *** TEMPORARY - RESTRUCTURE/MERGE *** </b>
+
+#### Update API
+
+Whenever a Tyk API gets updated using either the Tyk Gateway or Dashboard API, Tyk analyzes the first entry URL value from the Tyk OAS API Definition `servers` configuration:
+
+- it won't provide any change, if it already matches the API URL, OR
+- it will insert a new first servers object containing the correct API URL value, if the servers section doesn’t exist at all in the Tyk OAS API Definition.
+- it updates the `url` value of the first entry in the servers section, if this is an outdated value of the API URL.
+
+This means that when you export an OAS API Definition to provide documentation for your developer portal, it will automatically tell users the correct way to call the API now that Tyk is handling it.
+
+<b> *** END TEMPORARY - DELETE ABOVE THIS LINE *** </b>
 
 ### Differences between using the Tyk Dashboard API and Tyk Gateway API
 
@@ -1564,6 +1590,217 @@ curl --location --request GET 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API-I
 ```
 
 ## Import a Tyk OAS API
+
+<b> *** TEMPORARY - RESTRUCTURE/MERGE *** </b>
+
+#### Import OAS Definition
+
+When you import an OAS API definition, Tyk analyzes the `servers` section of the definition so that it can automatically configure the upstream URL and the listen path for the Tyk API, as follows:
+
+The servers section is analyzed only if there is no `upstreamUrl` query parameter used together with the import API. If an upstreamUrl was specified, that will be used as the upstream for the API and the servers section will be ignored.
+
+The servers section may contain multiple upstream URLs. Currently, Tyk only analyzes the first entry in the list, and uses it as the upstream URL if it is valid. For example:
+
+For the following imported OAS server section
+```.json
+{
+  "servers": [
+    {
+      "url": "https://upstream-A.com"
+    },
+    {
+      "url": "http://upstream-B.com"
+    }
+  ]
+}
+```
+Tyk will read `https://upstream-A.com` and set it as the upstream URL for the newly created API.
+
+```.json
+{
+  ...
+  "x-tyk-api-gateway": {
+    ...
+    "upstream": {
+      "url": "https://upstream-A.com"
+    }
+  }
+}
+```
+Tyk will insert the API URL as the first entry in the servers section since all traffic will now travel through the Tyk Gateway.
+
+```.json
+{
+  "servers": [
+    {
+      "url": {API-URL}
+    },
+    {
+      "url": "https://upstream-A.com"
+    },
+    {
+      "url": "http://upstream-B.com"
+    }
+  ]
+}
+```
+If the first entry in the `servers` configuration contains a relative URL, or a format that Tyk can’t properly work with, the import will fail with an error. For example:
+When importing the following `servers` configuration:
+
+```.json
+{
+  "servers": [
+    {
+      "url": "/relative-url"
+    },
+    {
+      "url": "http://upstream-B.com"
+    }
+  ]
+}
+```
+Tyk will import API will error with the following message, asking for a valid URL format or upstreamUrl query parameter to be provided:
+```.json
+{
+    "status": "error",
+    "message": "error validating servers entry in OAS: Please update \"/relative-url\" to be a valid url or pass a valid url with upstreamURL query param"
+}
+```
+
+
+Tyk supports [OpenAPI server variables](https://learn.openapis.org/specification/servers.html#server-variables), so if the first `servers` entry contains a parameterised URL, Tyk will fill in the parameters with the values provided in the `variables` associated with that entry. For example:
+
+```.json
+{
+  "servers": [
+    {
+      "url": "https://upstream-A.com/{param1}"
+      "variables": {
+        "param1": {
+          "default": "default-value"
+        }
+      }
+    },
+    {
+      "url": "http://upstream-B.com"
+    }
+  ]
+}
+```
+
+will result in Tyk importing the API with the following upstream URL:
+
+```yaml
+{
+  ...
+  "x-tyk-api-gateway": {
+    ...
+    "upstream": {
+      "url": "https://upstream-A.com/default-value"
+    }
+  }
+}
+```
+
+
+#### Configuring middleware when importing an OAS API Definition
+
+When importing an OAS API Definition, if the request is accompanied by either `validateRequest` or `allowList` query params, Tyk traverses the entire paths section, and if there is an existing operationId setting already configured for a path, Tyk will copy that value and uses it as a key for the path middleware configuration, under `x-tyk-api-gateway.middleware.operations`.
+
+For example: We want to explicitly allow access for paths when importing the following OAS API Definition:
+
+```.json
+{
+  ...
+  "paths": {
+    "/pet": {
+      "post": {
+        ...
+        operationId: "addPet"
+      }
+    }
+  }
+}
+```
+The resulting Tyk OAS API Definition will use the `addPet` `operationId` to match the middleware configuration to the `/pet` `post` path and method. 
+
+Tyk OAS API Definition
+
+```.json
+{
+  ...
+  "paths": {
+    "/pet": {
+      "post": {
+        ...
+        operationId: "addPet"
+      }
+    }
+  },
+  "x-tyk-api-gateway": {
+    "middleware": {
+      "operations": {
+        "addPet": {
+          "allowList": {
+            "enabled": true
+          }
+        }
+      }
+    }
+  }
+}
+```
+If there is no existing `operationId` setting for a path, then Tyk will concatenate the path value with the method value, to generate an `operationId` unique value. Tyk uses that in the `x-tyk-api-gateway.middleware.operations` to link the middleware configuration back to the paths section
+
+For example: When you want to explicitly allow access for the paths when importing the following OAS API Definition:
+
+```.json
+{
+  ...
+  "paths": {
+    "/pet": {
+      "post": {
+        ...
+      }
+    }
+  }
+}
+```
+The resulting Tyk OAS API Definition will generate the petpost `operationId`, and use this value in both paths `operationId` as well as in `middleware.operations`.
+
+Tyk OAS API Definition:
+
+```.json
+{
+  ...
+  "paths": {
+    "/pet": {
+      "post": {
+        ...
+        operationId: "petpost"
+      }
+    }
+  },
+  "x-tyk-api-gateway": {
+    "middleware": {
+      "operations": {
+        "petpost": {
+          "allowList": {
+            "enabled": true
+          }
+        }
+      }
+    }
+  }
+}
+```
+{{< note success >}}
+**Note**  
+
+The same logic for configuring middleware applies as well when updating a Tyk OAS API Definition by providing an updated OAS API Definition. 
+{{< /note >}}
+
+<b> *** END TEMPORARY - DELETE ABOVE THIS LINE *** </b>
 
 Tyk supports importing [OpenAPI Documents]({{< ref "api-management/gateway-config-tyk-oas#openapi-document" >}}) (in JSON format, OAS version 3.0.x) using the Tyk Gateway API, the Tyk Dashboard API or the [Tyk Dashboard GUI]({{< ref "#using-the-tyk-dashboard-ui" >}}).
 
