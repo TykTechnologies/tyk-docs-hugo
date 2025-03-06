@@ -101,14 +101,14 @@ aliases:
 
 ## Overview
 
-We are excited to introduce our new product, *Tyk Streams*! 
-*Tyk Streams* is a powerful new feature in the Tyk API management platform that enables organizations to securely expose,
+*Tyk Streams* is a feature of Tyk API management platform that enables organizations to securely expose,
 manage and monetize real-time event streams and asynchronous APIs.
 
 With *Tyk Streams*, you can easily connect to event brokers and streaming platforms, such as
 [Apache Kafka](https://github.com/TykTechnologies/tyk-pro-docker-demo/tree/kafka), and expose them as
 managed API endpoints to internal and external consumers.
 
+<!-- TODO: Need to chanage Image -->
 <div style="display: flex; justify-content: center;">
 {{< img src="/img/streams/tyk-streams-overview.png" alt="Tyk Streams Overview" width="670px" height="500px" >}}
 </div>
@@ -129,55 +129,6 @@ alongside your existing synchronous APIs. It provides a range of capabilities to
 - **Analytics**: Monitor the usage and performance of your async APIs with detailed analytics and reporting. Gain insights into consumer behavior and system health.
 - **Developer Portal**: Publish your async APIs to the Tyk Developer Portal, providing a centralised catalog for discovery, documentation and subscription management.
 
-
-##### Configuration as Code
-
-Tyk Streams configuration natively integrates with Tyk OAS (our OpenAPI format for APIs), enabling *configuration-as-code*
-approach. This allows async API definitions to be version-controlled, collaborated on and deployed using GitOps workflows.
-
-```yaml
-{
-  "openapi": "3.0.3",
-  "info": {
-    "title": "test-api",
-    "version": "1.0.0"
-  },
-  …
-  "x-tyk-streaming": {
-    "streams": {
-      "test": {
-        "input": {
-          "kafka": {
-            "addresses": ["TODO"],
-            "topics": ["foo", "bar"],
-            "consumer_group": "foogroup"
-          }
-        },
-        "output": {
-          "http_server": {
-            "consumer_group": "$tyk_context.request_ip",
-            "ws_path": "/subscribe"
-          }
-        }
-      }
-    }
-  }
-  …
-}
-```
-
-
-
-### Configuring Async APIs via Dashboard UI
-
-The Tyk Dashboard provides a user-friendly interface for defining and managing async APIs. You can easily specify event
-broker details, subscribe to specific topics or channels, configure security policies, transformations and other API
-management capabilities.
-
-{{< img src="/img/streams/configure-streams.png" alt="Screenshot of Tyk Dashboard configuring API Streams" width="1000px" >}}
-
-
-
 ### Comparison to Other Products
 
 While some API management platforms offer basic support for async APIs and event-driven architectures, Tyk Streams
@@ -187,11 +138,6 @@ stands out by providing a comprehensive and flexible solution:
 - **Powerful mediation capabilities**: Tyk Streams allows you to transform and enrich event data, enabling protocol mediation and compatibility with diverse client requirements.
 - **Seamless integration**: Async APIs are managed alongside synchronous APIs within the Tyk platform, providing a unified developer portal, consistent security policies and centralised analytics.
 - **Flexibility and scalability**: Tyk Streams can be deployed in various architectures, from simple single-node setups to large-scale distributed deployments and can handle high-throughput event processing scenarios.
-
-By leveraging Tyk Streams, organizations can unlock the full potential of their event-driven architectures while
-benefiting from the robust API management capabilities of the Tyk platform.
-
-
 
 To effectively use Tyk Streams for managing async APIs, it's important to first understand the terminology and [key concepts]({{< ref "api-management/event-driven-apis#key-concepts" >}})
 
@@ -327,22 +273,16 @@ comprehensive set of capabilities to secure, transform, monitor and monetize you
 ### Security
 
 [Tyk Streams]({{< ref "api-management/event-driven-apis#" >}}) supports all the authentication and authorization options available for traditional synchronous APIs. This
-ensures that your async APIs are protected with the same level of security as your REST, GraphQL, and other API types.
+ensures that your async APIs are protected with the same level of security as your REST, GraphQL, and other API types. 
 
-- **Authentication**: Tyk supports multiple authentication methods for async APIs, including:
-
-    - Token-based authentication (e.g., JWT, OAuth 2.0)
-    - Basic authentication
-    - Custom authentication plugins
-
-- **Authorization**: Tyk enables fine-grained access control for async APIs based on policies and user roles. You can define granular permissions for specific topics, events or message types. 
+Refer this docs, to know more about [Authentication]({{< ref "api-management/client-authentication">}}) and [Authorization]({{< ref "api-management/policies" >}}) in Tyk.
 
 ### Transformations and Enrichment
 
 [Tyk Streams]({{< ref "api-management/event-driven-apis#" >}}) allows you to transform and enrich the messages flowing through your async APIs. You can modify message payloads, filter events, combine data from multiple sources and more.
 
-- **Transformation**: Use Tyk's powerful middleware and plugin system to transform message payloads on the fly. You can convert between different data formats (e.g., JSON to XML), filter fields, or apply custom logic.
-- **Enrichment**: Enrich your async API messages with additional data from external sources. For example, you can lookup customer information from a database and append it to the message payload.
+- **[Transformation]({{< ref "api-management/traffic-transformation" >}})**: Use Tyk's powerful middleware and plugin system to transform message payloads on the fly. You can convert between different data formats (e.g., JSON to XML), filter fields, or apply custom logic.
+- **[Enrichment]({{< ref "api-management/plugins/overview" >}})**: Enrich your async API messages with additional data from external sources. For example, you can lookup customer information from a database and append it to the message payload.
 
 ### Analytics and Monitoring
 
@@ -355,9 +295,6 @@ Tyk captures detailed analytics data for async API usage, including message rate
 
 - **Developer Portal Integration**: Async APIs can be published to the Tyk Developer Portal, allowing developers to browse, subscribe, and access documentation. Developers can manage their async API subscriptions just like traditional APIs.
 - **Webhooks**: Tyk supports exposing async APIs as webhooks, enabling developers to receive event notifications via HTTP callbacks. Developers can configure their webhook endpoints and subscribe to specific events or topics.
-
-With [Tyk Streams]({{< ref "api-management/event-driven-apis#" >}}), you can easily monetize your async APIs, provide a seamless developer experience, and manage the entire lifecycle of your event-driven architecture.
-
 
 ### Complex Event Processing
 
@@ -763,3 +700,51 @@ By enabling webhook subscriptions, developers can easily integrate real-time upd
 <!-- [Placeholder for a diagram illustrating the flow of webhook subscriptions and event notifications] -->
 
 With Tyk Streams and the Developer Portal integration, API publishers can effectively manage and expose async APIs, while developers can discover, subscribe to, and consume event streams effortlessly, enabling powerful real-time functionality in their applications.
+
+## TO BE Decided
+
+### Configuration as Code
+
+Tyk Streams configuration natively integrates with Tyk OAS (our OpenAPI format for APIs), enabling *configuration-as-code*
+approach. This allows async API definitions to be version-controlled, collaborated on and deployed using GitOps workflows.
+
+```yaml
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "test-api",
+    "version": "1.0.0"
+  },
+  …
+  "x-tyk-streaming": {
+    "streams": {
+      "test": {
+        "input": {
+          "kafka": {
+            "addresses": ["TODO"],
+            "topics": ["foo", "bar"],
+            "consumer_group": "foogroup"
+          }
+        },
+        "output": {
+          "http_server": {
+            "consumer_group": "$tyk_context.request_ip",
+            "ws_path": "/subscribe"
+          }
+        }
+      }
+    }
+  }
+  …
+}
+```
+
+
+
+### Configuring Async APIs via Dashboard UI
+
+The Tyk Dashboard provides a user-friendly interface for defining and managing async APIs. You can easily specify event
+broker details, subscribe to specific topics or channels, configure security policies, transformations and other API
+management capabilities.
+
+{{< img src="/img/streams/configure-streams.png" alt="Screenshot of Tyk Dashboard configuring API Streams" width="1000px" >}}
