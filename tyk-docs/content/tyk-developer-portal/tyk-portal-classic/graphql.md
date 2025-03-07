@@ -10,6 +10,8 @@ weight: 7
 aliases:
   - /tyk-developer-portal/graphql
 robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 As of Tyk v3.0.0, you can now publish GraphQL APIs, including [Universal Data Graph]({{< ref "api-management/data-graph#overview" >}}) APIs(UDG) to the Tyk Developer Portal.

@@ -7,6 +7,8 @@ menu:
 aliases:
   - /tyk-developer-portal/key-requests
 robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 ## Key Requests

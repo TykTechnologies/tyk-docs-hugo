@@ -8,6 +8,8 @@ weight: 6
 aliases:
   - /tyk-configuration-reference/outbound-email-configuration/
 robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 ### Custom Email Templates
