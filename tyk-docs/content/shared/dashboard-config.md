@@ -110,6 +110,37 @@ This option allows you to store different types of data in different databases. 
 ### storage.main
 Main database where the dashboard resources are stored (users, orgs, policies, etc)
 
+### storage.main.type
+ENV: <b>TYK_DB_STORAGE_MAIN_TYPE</b><br />
+Type: `DBType`<br />
+
+Type is the type of the database.
+Possible values are:
+  - "mongo": Use MongoDB.
+  - "postgres": Use PostgreSQL.
+  - "mysql": Use MySQL.
+
+### storage.main.connection_string
+ENV: <b>TYK_DB_STORAGE_MAIN_CONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+ConnectionString is the connection string for the database.
+Overrides ReadConnectionString and WriteConnectionString.
+
+### storage.main.read_connection_string
+ENV: <b>TYK_DB_STORAGE_MAIN_READCONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+ReadConnectionString is the connection string for read operations.
+Only used if ConnectionString is not set.
+
+### storage.main.write_connection_string
+ENV: <b>TYK_DB_STORAGE_MAIN_WRITECONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+WriteConnectionString is the connection string for write operations.
+Only used if ConnectionString is not set.
+
 ### storage.main.mongo
 Connection setting for a mongo database
 
@@ -161,8 +192,45 @@ Type: `bool`<br />
 
 auto configure based on currently MySQL version
 
+### storage.main.table_sharding
+ENV: <b>TYK_DB_STORAGE_MAIN_TABLESHARDING</b><br />
+Type: `bool`<br />
+
+Enable table sharding for the database
+
 ### storage.analytics
 Where all the analytics related data is stored
+
+### storage.analytics.type
+ENV: <b>TYK_DB_STORAGE_ANALYTICS_TYPE</b><br />
+Type: `DBType`<br />
+
+Type is the type of the database.
+Possible values are:
+  - "mongo": Use MongoDB.
+  - "postgres": Use PostgreSQL.
+  - "mysql": Use MySQL.
+
+### storage.analytics.connection_string
+ENV: <b>TYK_DB_STORAGE_ANALYTICS_CONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+ConnectionString is the connection string for the database.
+Overrides ReadConnectionString and WriteConnectionString.
+
+### storage.analytics.read_connection_string
+ENV: <b>TYK_DB_STORAGE_ANALYTICS_READCONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+ReadConnectionString is the connection string for read operations.
+Only used if ConnectionString is not set.
+
+### storage.analytics.write_connection_string
+ENV: <b>TYK_DB_STORAGE_ANALYTICS_WRITECONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+WriteConnectionString is the connection string for write operations.
+Only used if ConnectionString is not set.
 
 ### storage.analytics.mongo
 Connection setting for a mongo database
@@ -215,6 +283,43 @@ Type: `bool`<br />
 
 auto configure based on currently MySQL version
 
+### storage.analytics.table_sharding
+ENV: <b>TYK_DB_STORAGE_ANALYTICS_TABLESHARDING</b><br />
+Type: `bool`<br />
+
+Enable table sharding for the database
+
+### storage.logs.type
+ENV: <b>TYK_DB_STORAGE_LOGS_TYPE</b><br />
+Type: `DBType`<br />
+
+Type is the type of the database.
+Possible values are:
+  - "mongo": Use MongoDB.
+  - "postgres": Use PostgreSQL.
+  - "mysql": Use MySQL.
+
+### storage.logs.connection_string
+ENV: <b>TYK_DB_STORAGE_LOGS_CONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+ConnectionString is the connection string for the database.
+Overrides ReadConnectionString and WriteConnectionString.
+
+### storage.logs.read_connection_string
+ENV: <b>TYK_DB_STORAGE_LOGS_READCONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+ReadConnectionString is the connection string for read operations.
+Only used if ConnectionString is not set.
+
+### storage.logs.write_connection_string
+ENV: <b>TYK_DB_STORAGE_LOGS_WRITECONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+WriteConnectionString is the connection string for write operations.
+Only used if ConnectionString is not set.
+
 ### storage.logs.mongo
 Connection setting for a mongo database
 
@@ -266,8 +371,45 @@ Type: `bool`<br />
 
 auto configure based on currently MySQL version
 
+### storage.logs.table_sharding
+ENV: <b>TYK_DB_STORAGE_LOGS_TABLESHARDING</b><br />
+Type: `bool`<br />
+
+Enable table sharding for the database
+
 ### storage.uptime
 Where all the uptime related data is stored
+
+### storage.uptime.type
+ENV: <b>TYK_DB_STORAGE_UPTIME_TYPE</b><br />
+Type: `DBType`<br />
+
+Type is the type of the database.
+Possible values are:
+  - "mongo": Use MongoDB.
+  - "postgres": Use PostgreSQL.
+  - "mysql": Use MySQL.
+
+### storage.uptime.connection_string
+ENV: <b>TYK_DB_STORAGE_UPTIME_CONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+ConnectionString is the connection string for the database.
+Overrides ReadConnectionString and WriteConnectionString.
+
+### storage.uptime.read_connection_string
+ENV: <b>TYK_DB_STORAGE_UPTIME_READCONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+ReadConnectionString is the connection string for read operations.
+Only used if ConnectionString is not set.
+
+### storage.uptime.write_connection_string
+ENV: <b>TYK_DB_STORAGE_UPTIME_WRITECONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+WriteConnectionString is the connection string for write operations.
+Only used if ConnectionString is not set.
 
 ### storage.uptime.mongo
 Connection setting for a mongo database
@@ -320,6 +462,12 @@ Type: `bool`<br />
 
 auto configure based on currently MySQL version
 
+### storage.uptime.table_sharding
+ENV: <b>TYK_DB_STORAGE_UPTIME_TABLESHARDING</b><br />
+Type: `bool`<br />
+
+Enable table sharding for the database
+
 ### admin_secret
 ENV: <b>TYK_DB_ADMINSECRET</b><br />
 Type: `string`<br />
@@ -355,7 +503,7 @@ The hostname for the Redis collection and can be an IP address.
 ENV: <b>TYK_DB_REDISADDRS</b><br />
 Type: `[]string`<br />
 
-Used for configuring Redis clusters. See [Redis Cluster and Tyk Dashboard](https://tyk.io/docs/migration-to-tyk#configure-redis-cluster/) for more info. Example:
+Used for configuring Redis clusters. See [Redis Cluster and Tyk Dashboard](https://tyk.io/docs/tyk-stack/tyk-gateway/configuration/redis-cluster/) for more info. Example:
 ```
    "addrs": [
      "server1:6379",
@@ -701,7 +849,7 @@ SSL certificates used by your Gateway server. A list of certificate path to file
 ENV: <b>TYK_DB_HTTPSERVEROPTIONS_MINVERSION</b><br />
 Type: `uint16`<br />
 
-Minimum TLS version. See [TLS and SSL](https://tyk.io/docs/api-management/certificates/).
+Minimum TLS version. See [TLS and SSL](https://tyk.io/docs/basic-config-and-security/security/tls-and-ssl/).
 
 ### http_server_options.ssl_ciphers
 ENV: <b>TYK_DB_HTTPSERVEROPTIONS_CIPHERSUITES</b><br />
@@ -719,9 +867,11 @@ Disable TLS verifiation
 ENV: <b>TYK_DB_HTTPSERVEROPTIONS_PREFERSERVERCIPHERSUITES</b><br />
 Type: `bool`<br />
 
-A boolean value to control whether the server selects the preferred ciphersuite for the client, or the preferred ciphersuite for the server. If set to true, the server preferences in the order of the elements listed in `ssl_ciphers` is used.
+PreferServerCipherSuites is a legacy field and has no effect.
 
-For more information see [TLS and SSL](https://tyk.io/docs/api-management/certificates/)
+More info: https://github.com/golang/go/issues/45430.
+
+Deprecated: PreferServerCipherSuites is ignored.
 
 ### security
 This section controls login limits for both the Dashboard and the Developer Portal. The path for you audit log is also set here.
@@ -842,13 +992,13 @@ When using SAML with embedded identity broker, is required to upload a certifica
 ENV: <b>TYK_DB_SECURITY_FORBIDADMINVIEWACCESSTOKEN</b><br />
 Type: `bool`<br />
 
-ForbidAdminViewAccessToken is a security feature that allows you to prevent the admin user from viewing the access token of a user. The default is false.
+ForbidAdminViewAccessToken is a security feature that allows you to prevent the admin user from viewing the access token of a user. The default is false. Setting `true` to this field is recommended.
 
 ### security.forbid_admin_reset_access_token
 ENV: <b>TYK_DB_SECURITY_FORBIDADMINRESETACCESSTOKEN</b><br />
 Type: `bool`<br />
 
-ForbidAdminResetAccessToken is a security feature that allows you to prevent the admin user from resetting the access token of a user. The default is false.
+ForbidAdminResetAccessToken is a security feature that allows you to prevent the admin user from resetting the access token of a user. The default is false. Setting `true` to this field is recommended.
 
 ### ui
 This section controls various settings for the look and feel of the Dashboard UI.
@@ -915,6 +1065,15 @@ ENV: <b>TYK_DB_UI_DEV</b><br />
 Type: `bool`<br />
 
 Temporary : Enable dev mode feature on UI
+
+### ui.onboarding
+Onboarding section controls the onboarding quick start wizard.
+
+### ui.onboarding.enabled
+ENV: <b>TYK_DB_UI_ONBOARDING_ENABLED</b><br />
+Type: `bool`<br />
+
+Enabled is a boolean flag that enables the onboarding quick start wizard.
 
 ### home_dir
 ENV: <b>TYK_DB_HOMEDIR</b><br />
@@ -1201,7 +1360,13 @@ Type: `bool`<br />
 ValidateSchemaDefaults enables validation of values provided in `default` fields against the declared schemas in the OpenAPI Document. Defaults to false.
 
 ### streaming
-Holds Tyk Streaming configuration
+Streaming holds the configuration for Tyk Streaming functionalities
+
+### streaming.enabled
+ENV: <b>TYK_DB_STREAMING_ENABLED</b><br />
+Type: `bool`<br />
+
+This flag enables the Tyk Streaming feature.
 
 ### labs
 Experimental and beta features configuration settings
