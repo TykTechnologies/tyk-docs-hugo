@@ -121,6 +121,14 @@ menu:
             path: /api-management/gateway-config-tyk-classic
             category: Page
             show: True
+          - title: "What is URL path matching?"
+            path: /getting-started/key-concepts/url-matching
+            category: Page
+            show: True
+          - title: "What is Internal Looping?"
+            path: /advanced-configuration/transform-traffic/looping
+            category: Page
+            show: True
       - title: "Manage APIs"
         category: Directory
         show: True
@@ -273,6 +281,30 @@ menu:
         path: /api-management/multiple-environments
         category: Page
         show: True
+      - title: "Tyk Helm Charts (Open Source)"
+        category: Directory
+        show: True
+        menu:
+          - title: "Overview"
+            path: /product-stack/tyk-charts/overview
+            category: Page
+            show: True
+          - title: "Tyk Stack Chart"
+            path: /product-stack/tyk-charts/tyk-stack-chart
+            category: Page
+            show: True
+          - title: "Tyk Control Plane Chart"
+            path: /product-stack/tyk-charts/tyk-control-plane-chart
+            category: Page
+            show: True
+          - title: "Tyk Data Plane Chart"
+            path: /product-stack/tyk-charts/tyk-data-plane-chart
+            category: Page
+            show: True
+          - title: "Tyk Open Source Chart"
+            path: /product-stack/tyk-charts/tyk-oss-chart
+            category: Page
+            show: True
       - title: "Troubleshooting"
         path: /api-management/troubleshooting-debugging
         category: Page
@@ -284,7 +316,7 @@ menu:
   - title: "Product Stack"
     path: /tyk-stack
     category: Label
-    show: True
+    show: False
     menu:
       - title: "Overview"
         path: /tyk-stack
@@ -302,14 +334,7 @@ menu:
             category: Directory
             show: True
             menu:
-              - title: "What is URL path matching?"
-                path: /getting-started/key-concepts/url-matching
-                category: Page
-                show: True
-              - title: "What is Internal Looping?"
-                path: /advanced-configuration/transform-traffic/looping
-                category: Page
-                show: True
+
           - title: "API access control"
             category: Directory
             show: False
@@ -338,30 +363,6 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Tyk Helm Charts (Open Source)"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            path: /product-stack/tyk-charts/overview
-            category: Page
-            show: True
-          - title: "Tyk Stack Chart"
-            path: /product-stack/tyk-charts/tyk-stack-chart
-            category: Page
-            show: True
-          - title: "Tyk Control Plane Chart"
-            path: /product-stack/tyk-charts/tyk-control-plane-chart
-            category: Page
-            show: True
-          - title: "Tyk Data Plane Chart"
-            path: /product-stack/tyk-charts/tyk-data-plane-chart
-            category: Page
-            show: True
-          - title: "Tyk Open Source Chart"
-            path: /product-stack/tyk-charts/tyk-oss-chart
-            category: Page
-            show: True
   - title: "Developer Portal"
     category: Label
     show: True
