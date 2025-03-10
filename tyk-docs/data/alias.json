@@ -453,7 +453,6 @@
     "getting-started/key-concepts/servers": "#servers",
     "getting-started/key-concepts/what-is-an-api-definition": "#",
     "getting-started/using-oas-definitions/oas-glossary": "#oas-glossary",
-    "getting-started/using-oas-definitions/oas-reference": "#tyk-oas-api-feature-status",
     "tyk-apis/tyk-gateway-api/api-definition-objects/authentication": "#authentication-type-flags",
     
     "tyk-apis/tyk-gateway-api/api-definition-objects/custom-analytics": "#custom-analytics-tags-using-http-headers",

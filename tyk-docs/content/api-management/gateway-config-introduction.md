@@ -78,7 +78,7 @@ In Tyk 4.1, we introduced the Tyk OAS API definition but initially it supported 
 
 **Tyk 5.8 continues to support Tyk Classic for REST, but we will not be adding support for new features to this API definition style and strongly recommend migrating to Tyk OAS.**
 
-For Enterprise Edition users with an existing portfolio of Tyk Classic API definitions, we provide a [migration tool](TBC), available via the Dashboard API and UI.
+For Enterprise Edition users with an existing portfolio of Tyk Classic API definitions, we provide a [migration tool](), available via the Dashboard API and UI.
 
 ### Storing API definitions
 

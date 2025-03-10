@@ -40,8 +40,6 @@ Moving to Tyk OAS can help you save time, reduce risks of error and streamline y
 
 **The answer is probably: yes!**
 
-The key question is whether there is anything you currently use in your Tyk Classic APIs that isn’t yet supported by our Tyk OAS APIs. Whilst we have reached *feature maturity* for Tyk OAS, some Tyk Gateway features are not yet supported. You can see the status of what is and isn't yet supported [here]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-feature-status" >}}).
-
 {{< warning success >}}
 
 Warning
@@ -2150,9 +2148,9 @@ You created a fully functional Tyk OAS API Definition by providing an OpenAPI Do
 
     Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/tyk-gateway`) and check the newly created Tyk OAS API Definition.
 
-    You’ll see that Tyk has populated the `authentication` section within the `x-tyk-api-gateway` section according to the instructions you provided in the `import` request. The `api_key` security scheme has been enabled (which indicates that the [Authentication Token]({{< ref "api-management/gateway-config-tyk-oas#authentication-token" >}}) mechanism has been applied).
+    You’ll see that Tyk has populated the `authentication` section within the `x-tyk-api-gateway` section according to the instructions you provided in the `import` request. The `api_key` security scheme has been enabled (which indicates that the Authentication Token mechanism has been applied).
 
-    For more information on how Tyk extracts data about security defined from the OpenAPI Document and what authentication mechanisms can be configured, see [Authentication with OAS]({{< ref "api-management/gateway-config-tyk-oas#authentication-with-tyk-oas" >}}).
+    For more information on how Tyk extracts data about security defined from the OpenAPI Document and what authentication mechanisms can be configured, see [Authentication with OAS]({{< ref "api-management/client-authentication#authentication-with-tyk-oas" >}}).
 
     ```.json
     {
@@ -2697,7 +2695,7 @@ When importing OpenAPI Documents using the Dashboard, Tyk detects the version of
     **Automatic Configuration options**
 
     - **Generate Validate Request Middleware**: You can automatically validate paths that have the `requestBody` and `schema` fields configured. This allows your Tyk Gateway to validate your request payload against the schema provided in your definition. See [Request Validation]({{< ref "api-management/traffic-transformation#request-validation-overview" >}}) for more details.
-    - **Apply Detected Authentication**: You can automatically apply the authentication specified in the `security` and `securitySchemes` sections of your definition. See [Authentication]({{< ref "api-management/gateway-config-tyk-oas#authentication-with-tyk-oas" >}}) for more details.
+    - **Apply Detected Authentication**: You can automatically apply the authentication specified in the `security` and `securitySchemes` sections of your definition. See [Authentication]({{< ref "api-management/client-authentication#authentication-with-tyk-oas" >}}) for more details.
     - **Allow access only to defined paths**: You can restrict access to the paths documented in your definition. See [Paths]({{< ref "api-management/gateway-config-tyk-oas#paths" >}}) for more details.
 
 4. Click **Import API**.

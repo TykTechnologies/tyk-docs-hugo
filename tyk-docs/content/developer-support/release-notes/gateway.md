@@ -2134,8 +2134,7 @@ attack surface by eliminating unnecessary packages, which bolsters the security 
 <summary>Custom Response Plugins not working for Tyk OAS APIs</summary>
 
 We have resolved an issue where custom [response plugins]({{< ref "api-management/plugins/plugin-types#response-plugins" >}}) were not being
-triggered for Tyk OAS APIs. This fix ensures that all [supported]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-feature-status" >}})
-custom plugins are invoked as expected when using Tyk OAS APIs.
+triggered for Tyk OAS APIs. This fix ensures that all custom plugins are invoked as expected when using Tyk OAS APIs.
 
 </details>
 </li>
