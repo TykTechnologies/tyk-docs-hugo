@@ -1,6 +1,6 @@
 ---
 title: Classic Portal API
-description: "Landing page for the Tyk Classic Developer Portal API documentation"
+description: "Landing page for the Tyk Classic Portal API documentation"
 tags: ["Tyk Classic Portal API", "Classic Portal API"]
 robots: "noindex"
 algolia:
