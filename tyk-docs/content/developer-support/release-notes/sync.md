@@ -27,6 +27,8 @@ Our minor releases are supported until our next minor comes out.
 
 Tyk Sync 2.1 introduces performance improvements and enhanced control over API synchronization. This release optimizes resource updates, adds support for partial synchronization, and ensures compatibility with Tyk 5.8.
 
+Starting 2.1 release, Tyk Sync uses distroless docker image.
+
 Please refer to the [changelog]({{< ref "#Changelog-v2.1.0">}}) below for detailed explanation.
 
 #### Breaking Changes
@@ -87,6 +89,15 @@ The system now only sends API update or create requests to the Dashboard when ac
 <summary>Updated API definitions</summary>
 
 Ensures compatibility with Tyk 5.8, allowing seamless integration with the latest Gateway and Dashboard features.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Distroless Docker Image</summary>
+
+Starting v2.1.0 release, Tyk Sync will be using distroless docker image.
 
 </details>
 </li>
