@@ -8,6 +8,7 @@ aliases:
   - /getting-started/key-concepts/what-is-an-api-definition
   - /concepts/gateway-api
   - /getting-started/key-concepts/gateway-api
+  - /basic-config-and-security/security/gateway
 ---
 
 ## What is Tyk API Definition

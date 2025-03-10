@@ -72,6 +72,7 @@ menu:
         path: /api-management/client-authentication
         category: Page
         show: True
+      # This page is required for a client but cannot be shown on the navigation menu until 5.8 is released. We have removed it from Google Search and Algolia Result.
       - title: "Upstream Authentication"
         path: /api-management/upstream-authentication
         category: Page
@@ -509,26 +510,10 @@ menu:
             category: Directory
             show: False
             menu: 
-              - title: "Overview"
-                path: /basic-config-and-security
-                category: Page
-                show: False
               - title: "oauth"
                 category: page
                 show: False
                 path: /basic-config-and-security/security/authentication-authorization/ext-oauth-middleware
-              - title: "Gateway"
-                path: /basic-config-and-security/security/gateway
-                category: Page
-                show: False
-          - title: "Advanced configurations"
-            category: Directory
-            show: False
-            menu:
-              - title: "Overview"
-                path: /advanced-configuration
-                category: Page
-                show: False
           - title: "API documentation"
             category: Directory
             show: True
@@ -625,10 +610,6 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Overview"
-          path: /tyk-environment-variables
-          category: Page
-          show: False
         - title: "Gateway"
           path: /tyk-oss-gateway/configuration
           category: Page
@@ -785,10 +766,6 @@ menu:
             path: /frequently-asked-questions/enable-websockets-cloud
             category: Page
             show: True
-          - title: "Troubleshooting"
-            path: /troubleshooting
-            category: Page
-            show: True
           - title: "“301 Moved permanently“ error in the Dashboard API"
             path: /troubleshooting/tyk-cloud-classic/301-moved-permanently
             category: Page
@@ -805,47 +782,11 @@ menu:
             path: /troubleshooting/tyk-cloud-classic/organisation-quota-exceeded-error-dashboard-api
             category: Page
             show: True
-          - title: "Tyk Cloud Classic"
-            path: /troubleshooting/tyk-cloud
-            category: Page
-            show: True
-          - title: "Tyk Dashboard Troubleshooting"
-            path: /troubleshooting/tyk-dashboard
-            category: Page
-            show: True
-          - title: "Tyk Gateway Troubleshooting"
-            path: /troubleshooting/tyk-gateway
-            category: Page
-            show: True
-          - title: "Tyk Installation"
-            path: /troubleshooting/tyk-installation
-            category: Page
-            show: True
           - title: "404 when trying to access Tyk Gateway Repo"
             path: /troubleshooting/tyk-installation/404-trying-access-tyk-gateway-repo
             category: Page
             show: True
           - title: "Unable to parse JSON Error from Dashboard bootstrap.sh Script"
             path: /troubleshooting/tyk-installation/parsing-json-error-from-dashboard-bootstrap
-            category: Page
-            show: True
-          - title: "Tyk Multi-Cloud"
-            path: /troubleshooting/tyk-multi-cloud
-            category: Page
-            show: True
-          - title: "Tyk On-Premises"
-            path: /troubleshooting/tyk-on-premise/tyk-on-premise
-            category: Page
-            show: True
-          - title: "Tyk Pump Troubleshooting"
-            path: /troubleshooting/tyk-pump
-            category: Page
-            show: True
-          - title: "Configuration Options"
-            path: /tyk-cloud/configuration-options
-            category: Page
-            show: True
-          - title: "Overview"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/customise-enterprise-portal
             category: Page
             show: True

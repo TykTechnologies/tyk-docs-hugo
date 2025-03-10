@@ -19,6 +19,7 @@ aliases:
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization
   - /product-stack/tyk-enterprise-developer-portal/getting-started/customize-sign-up-form
   - /product-stack/tyk-enterprise-developer-portal/getting-started/customize-products-and-plans
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/customise-enterprise-portal
 ---
 
 {{< note success >}}

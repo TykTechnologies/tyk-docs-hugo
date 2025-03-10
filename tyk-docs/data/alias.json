@@ -815,5 +815,7 @@
     "getting-started/create-api": "#create-an-api",
     "getting-started/import-apis": "#import-an-api",
     "getting-started/create-security-policy": "#secure-an-api",
-    "getting-started/create-api-key": "#access-an-api"
+    "getting-started/create-api-key": "#access-an-api",
+    "troubleshooting/tyk-pump": "#pump",
+    "tyk-cloud/configuration-options": "#additional-cloud-configuration"
 }

@@ -18,6 +18,7 @@ aliases:
   - /basic-config-and-security/control-limit-traffic/key-expiry
   - /basic-config-and-security/security/key-hashing
   - /basic-config-and-security/security/key-level-security
+  - /basic-config-and-security
 ---
 
 ## Introduction
