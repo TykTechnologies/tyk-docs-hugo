@@ -260,7 +260,7 @@ If set to `true` the case of a call to endpoints for this API will be ignored. S
   * `getUser`
   * `GetUser`
 
-If set to true, this will override ignoring the case for a particular endpoint with the [Ignore]({{< ref "product-stack/tyk-gateway/middleware/ignore-tyk-oas#configuring-the-middleware-in-the-api-designer" >}}) and [Allowlist]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas#configuring-the-allow-list-in-the-api-designer" >}}) plugins. This setting can be overriden at a "global" Tyk level by setting `ignore_endpoint_case` to `true` in your `tyk.conf` file. See [ignore_endpoint_case]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) for details.
+If set to true, this will override ignoring the case for a particular endpoint with the [Ignore]({{< ref "api-management/traffic-transformation#api-designer-6" >}}) and [Allowlist]({{< ref "api-management/traffic-transformation#api-designer" >}}) plugins. This setting can be overriden at a "global" Tyk level by setting `ignore_endpoint_case` to `true` in your `tyk.conf` file. See [ignore_endpoint_case]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) for details.
 
 **Field: `enable_batch_request_support`**
 Set to true to enable batch support
