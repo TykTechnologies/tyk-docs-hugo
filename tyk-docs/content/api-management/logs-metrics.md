@@ -407,7 +407,7 @@ spec:
 ```
 
 #### Configure at Key Level
-An alternative approach to controlling detailed recording is to enable it only for specific [access keys]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}). This is particularly useful for debugging purposes where you can configure detailed recording only for the key(s) that are reporting issues.
+An alternative approach to controlling detailed recording is to enable it only for specific [access keys]({{< ref "api-management/policies#what-is-a-session-object" >}}). This is particularly useful for debugging purposes where you can configure detailed recording only for the key(s) that are reporting issues.
 
 You can enable detailed recording for a key simply by adding the following to the root of the key's JSON file:
 
@@ -1095,7 +1095,7 @@ Replace the variable fields with the relevant data.
 
     2. Initialize your Tyk environment.
 
-    3. Create a simple `httpbin` API using Tyk Dashboard. You can follow the [Tyk Dashboard documentation]({{< ref "getting-started/create-api" >}}) for more information.
+    3. Create a simple `httpbin` API using Tyk Dashboard. You can follow the [Tyk Dashboard documentation]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}}) for more information.
 
     4. Send requests to the API using cURL or Postman.
 

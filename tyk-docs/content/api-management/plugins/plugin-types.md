@@ -27,7 +27,7 @@ aliases:
 
 Custom Plugins enable users to execute custom code to complete tasks specific to their use case, allowing users to complete tasks that would not otherwise be possible using Tyk’s standard middleware options. 
 
-Tyk has a [pre-defined execution order]({{< ref "concepts/middleware-execution-order" >}}) for the middleware which also includes **seven hooks** for the custom plugins. As such, users can execute, or `hook`, their plugin in these phases of the API request/response lifecycle based on their specific use case.
+Tyk has a [pre-defined execution order]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}) for the middleware which also includes **seven hooks** for the custom plugins. As such, users can execute, or `hook`, their plugin in these phases of the API request/response lifecycle based on their specific use case.
 
 ## Plugin and Hook Types
 This table includes all the plugin types with the relevant hooks, their place in the execution chain, description and examples:
@@ -58,7 +58,7 @@ Tyk supports four types of plugins:
 
 ## Request Plugins
 
-There are 4 different phases in the [request lifecycle]({{< ref "concepts/middleware-execution-order" >}}) you can inject custom plugins, including [Authentication plugins]({{< ref "api-management/plugins/plugin-types#authentication-plugins" >}}).  There are performance advantages to picking the correct phase, and of course that depends on your use case and what functionality you need.
+There are 4 different phases in the [request lifecycle]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}) you can inject custom plugins, including [Authentication plugins]({{< ref "api-management/plugins/plugin-types#authentication-plugins" >}}).  There are performance advantages to picking the correct phase, and of course that depends on your use case and what functionality you need.
 
 ### Hook Capabilities
 | Functionality           |   Pre    |  Auth       | Post-Auth |    Post   |
@@ -70,7 +70,7 @@ There are 4 different phases in the [request lifecycle]({{< ref "concepts/middle
 | Can modify Session<sup>1</sup> <sup>2</sup> |    ❌      | ✅          |    ❌      |❌
 | Can Add More Than One<sup>3</sup> |    ✅      |        ❌   |✅          | ✅
 
-1. A [Session object]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}) contains allowances and identity information that is unique to each requestor
+1. A [Session object]({{< ref "api-management/policies#what-is-a-session-object" >}}) contains allowances and identity information that is unique to each requestor
 
 2. You can modify the session by using your programming language's SDK for Redis. Here is an [example](https://github.com/TykTechnologies/custom-plugins/blob/master/plugins/go-auth-multiple_hook_example/main.go#L135) of doing that in Golang.
 
@@ -335,7 +335,7 @@ There are two advance configuratin with plugin types:
 
 ## Per-Endpoint Custom Plugins
 
-Tyk's custom plugin architecture allows you to deploy custom logic that will be invoked at certain points in the [middleware chain]({{< ref "concepts/middleware-execution-order" >}}) as Tyk processes requests to your APIs.
+Tyk's custom plugin architecture allows you to deploy custom logic that will be invoked at certain points in the [middleware chain]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}) as Tyk processes requests to your APIs.
 
 At the API-level, there are several points in the processing flow where custom plugins can be "hooked", as explained [here]({{< ref "api-management/plugins/plugin-types#plugin-types" >}}). Each of these will be invoked for calls to any endpoint on an API. If you want to perform custom logic only for specific endpoints, you must include selective processing logic within the plugin.
 

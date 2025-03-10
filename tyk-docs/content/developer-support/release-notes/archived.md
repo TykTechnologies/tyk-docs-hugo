@@ -163,7 +163,7 @@ See our [Dashboard SSO documentation]({{< ref "api-management/dashboard-configur
 
 ### Importing WSDL APIs
 
-WSDL now is a first class citizen at Tyk. You can take your WSDL definition and simply import to the Dashboard, creating a nice boilerplate for your service. See [Import APIs]({{< ref "getting-started/import-apis" >}}) for more details.
+WSDL now is a first class citizen at Tyk. You can take your WSDL definition and simply import to the Dashboard, creating a nice boilerplate for your service. See [Import APIs]({{< ref "api-management/gateway-config-managing-classic#import-an-api" >}}) for more details.
 
 ### Updated Versions
 

@@ -6,6 +6,9 @@ description: "A walk through how you can use custom Page Templates to control th
 tags: ["customizing EDP", EDP, "customizing APIs EDP"]
 aliases:
   - /tyk-developer-portal/customise/customize-api-visibility/
+robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 By default, any user who accesses your developer Portal will be able to view all of the published APIs in the catalog. This behavior may not be desired and you may want to have more control of what APIs developers see in the catalog when accessing the portal. A common use case for this is if you have internal APIs that you want to publish only to your internal developers, and restrict view to others.
@@ -16,7 +19,7 @@ In a nutshell, we are going to assign a group field to an API catalog profile, t
 *Please note that this does not support multiple groups for a single API catalog entry, nor for a single developer profile.* 
 
 ## Prerequisites
-1. You have an API created in your Dashboard. See [Create an API]({{< ref "getting-started/create-api" >}}) for more details.
+1. You have an API created in your Dashboard. See [Create an API]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}}) for more details.
 2. You have a Policy created in your Dashboard that has access rights to this API
 3. You have a Portal Catalog entry for this API. Here we will call it "Internal API"
 4. You have a developer account that can access your Developer Portal. 

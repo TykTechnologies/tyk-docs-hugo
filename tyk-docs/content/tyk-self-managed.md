@@ -357,7 +357,7 @@ helm upgrade tyk tyk-helm/tyk-stack -n $NAMESPACE \
 
 Now Tyk Dashboard should be accessible through service `dashboard-svc-tyk-tyk-dashboard` at port `3000`. You can login to Dashboard using the admin email and password to start managing APIs. Tyk Gateway will be accessible through service `gateway-svc-tyk-tyk-gateway.tyk.svc` at port `8080`.
 
-You are now ready to [create an API]({{<ref "getting-started/create-api">}}).
+You are now ready to [create an API]({{<ref "api-management/gateway-config-managing-classic#create-an-api">}}).
 
 For the complete installation guide and configuration options, please see [Tyk Stack Helm Chart]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}).
 
@@ -490,7 +490,7 @@ helm upgrade tyk tyk-helm/tyk-stack -n $NAMESPACE \
 
 Now Tyk Dashboard should be accessible through service `dashboard-svc-tyk-tyk-dashboard` at port `3000`. You can login to Dashboard using the admin email and password to start managing APIs. Tyk Gateway will be accessible through service `gateway-svc-tyk-tyk-gateway.tyk.svc` at port `8080`.
 
-You are now ready to [create an API]({{<ref "getting-started/create-api">}}).
+You are now ready to [create an API]({{<ref "api-management/gateway-config-managing-classic#create-an-api">}}).
 
 For the complete installation guide and configuration options, please see [Tyk Stack Helm Chart]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}).
 
@@ -1560,7 +1560,7 @@ latest: digest: sha256:d67b8f55d729bb56e06fe38e17c2016a36f2edcd4f01760c0e62a13bb
 
 Inspect the logs (`heroku logs -a infinite-plains-14949`) to check that deployment was successful, also the node should be registered by the Dashboard in "System Management" -> "Nodes and Licenses" section.
 
-You're ready to follow the guide on [creating and managing your APIs]({{< ref "getting-started/create-api" >}}) with this Heroku deployment.
+You're ready to follow the guide on [creating and managing your APIs]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}}) with this Heroku deployment.
 
 {{< note success >}}
 **Note**  
@@ -4692,7 +4692,7 @@ For the generic `BreakerTriggered` event, the state change will be indicated in 
 
 **API-level circuit breaker**
 
-Tyk does not have an API-level circuit breaker that can be applied across all endpoints. If you are using the Tyk Dashboard, however, then you are able to use an [Open Policy Agent]({{< ref "tyk-dashboard/open-policy-agent" >}}) to append a circuit breaker to every API/Service using the regex `.*` path.
+Tyk does not have an API-level circuit breaker that can be applied across all endpoints. If you are using the Tyk Dashboard, however, then you are able to use an [Open Policy Agent]({{< ref "api-management/dashboard-configuration#extend-permissions-using-open-policy-agent-opa" >}}) to append a circuit breaker to every API/Service using the regex `.*` path.
 
 <hr>
 
@@ -6466,7 +6466,7 @@ These other Tyk components won’t see load proportional to your API requests.  
 
 The Tyk Dashboard liveness health check endpoint can be configured [here]({{< ref "tyk-dashboard/configuration#health_check_endpoint_name" >}}). 
 
-The Tyk MDCB liveness health check endpoint can be configured [here]({{< ref "tyk-multi-data-centre/setup-controller-data-centre#health-check" >}}). 
+The Tyk MDCB liveness health check endpoint can be configured [here]({{< ref "api-management/mdcb#health-check" >}}). 
 
 Currently, Tyk Dashboard and MDCB liveness endpoints only report whether the service is operational. It is important to note that the service may not yet be ready for use if it is unable to establish a connection with its dependent components (such as Redis and Datastore) or if they are offline.
 

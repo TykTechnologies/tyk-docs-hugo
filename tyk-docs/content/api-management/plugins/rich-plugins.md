@@ -120,7 +120,7 @@ The unpacked data will hold the actual `CoProcessObject` data structure.
 
 - `HookType` - the hook type (see below)
 - `Request`  - the HTTP request
-- `Session`  - the [Tyk session object]({{< ref "tyk-apis/tyk-gateway-api/token-session-object-details" >}}).
+- `Session`  - the [Tyk session object]({{< ref "api-management/policies#session-object" >}}).
 - `Metadata`  - the metadata from the session data above (key/value string map).
 - `Spec`     - the API specification data. Currently organization ID, API ID and config_data.
 
@@ -485,7 +485,7 @@ Indicates the remaining number of requests within the user's quota, which is ind
 The time in seconds during which the quota is valid. So for 1000 requests per hour, this value would be 3600 while `quota_max` and `quota_remaining` would be 1000.
 
 `access_rights`
-Defined as a `map<string, APIDefinition>` instance, that maps the session's API ID to an [AccessDefinition](#access-definition). The AccessDefinition defines the [access rights]({{< ref "api-management/policies#setting-granular-paths-on-a-per-key-basis" >}}) for the API in terms of allowed: versions and URLs(endpoints). Each URL (endpoint) has a list of allowed methods. For further details consult the tutorials for how to create a [security policy]({{< ref "getting-started/create-security-policy" >}}) for Tyk Cloud, Tyk Self Managed and Tyk OSS platforms.
+Defined as a `map<string, APIDefinition>` instance, that maps the session's API ID to an [AccessDefinition](#access-definition). The AccessDefinition defines the [access rights]({{< ref "api-management/policies#setting-granular-paths-on-a-per-key-basis" >}}) for the API in terms of allowed: versions and URLs(endpoints). Each URL (endpoint) has a list of allowed methods. For further details consult the tutorials for how to create a [security policy]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}) for Tyk Cloud, Tyk Self Managed and Tyk OSS platforms.
 
 `org_id`
 The organization this user belongs to. This can be used in conjunction with the org_id setting in the API Definition object to have tokens "owned" by organizations.

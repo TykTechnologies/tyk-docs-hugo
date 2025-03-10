@@ -9,7 +9,7 @@ tags:
     - Basic Auth
 description: Authenticating Tyk Gateway with upstream services
 date: "2024-11-18"
-
+robots: "noindex"
 ---
 
 ## Introduction

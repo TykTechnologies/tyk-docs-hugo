@@ -35,10 +35,9 @@ Before diving into lifecycle automations with Tyk, ensure you have the following
 - **Tyk Dashboard v3+ access** (for Tyk Sync setup)
   - Learn how to set up the Tyk Dashboard [here]({{<ref "tyk-dashboard">}})
 
-- **Basic knowledge of Kubernetes, YAML, and API concepts** (important for Tyk Operator and Tyk Sync)
+- **Basic knowledge of Kubernetes, YAML** (important for Tyk Operator and Tyk Sync)
   - For Kubernetes, visit the [official tutorials](https://kubernetes.io/docs/tutorials/)
   - For YAML, check out this [YAML tutorial](https://yaml.org/spec/1.2/spec.html)
-  - For API concepts, review our [API management basics]({{<ref "getting-started/key-concepts">}})
 
 If you're missing any of these prerequisites, please follow the provided links to set up the necessary components before proceeding with the lifecycle automation steps.
 
@@ -59,8 +58,3 @@ API Management in Kubernetes using Tyk Operator.
 ## Conclusion
 
 With Tyk’s automation tools, you now have a set of options for streamlining API management, from handling deployments within Kubernetes to establishing consistency across multiple environments. By integrating these tools, you can simplify complex API workflows, maintain secure configurations, and save time through reduced manual intervention.
-
-To continue building on what you’ve set up here, explore the following topics:
-
-- **Advanced Tyk API Management**: Leverage more of Tyk’s API capabilities for custom integrations and further automation possibilities. You can learn more about Tyk's custom integrations [here]({{<ref "product-stack/tyk-operator/advanced-configurations/custom-plugins">}})
-- **GraphQL Support**: You can learn more about how to support GraphQL federation via Tyk Operator [here]({{<ref "product-stack/tyk-operator/advanced-configurations/graphql-federation">}})

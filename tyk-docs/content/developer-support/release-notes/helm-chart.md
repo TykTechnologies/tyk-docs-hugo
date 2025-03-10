@@ -812,7 +812,7 @@ helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release: -->
 
 ##### Updated MDCB Health check probes
-MDCB v2.7.0 release introduces `/liveness` and `/readiness` probes which give more accurate and detail health check information. MDCB deployment has been updated to use the new endpoints. See [MDCB Health Check]({{<ref "tyk-multi-data-centre/setup-controller-data-centre#health-check">}}) section for information about the new probes.
+MDCB v2.7.0 release introduces `/liveness` and `/readiness` probes which give more accurate and detail health check information. MDCB deployment has been updated to use the new endpoints. See [MDCB Health Check]({{<ref "api-management/mdcb#health-check">}}) section for information about the new probes.
 
 ##### Updated default Tyk versions
 Tyk Charts 1.6 will install the following Tyk component versions by default.
@@ -910,7 +910,7 @@ Each change log item should be expandable. The first line summarises the changel
 <summary>MDCB: Updated liveness and readiness probes</summary>
 
 Updated MDCB liveness and readiness probes to `/liveness` and `/readiness` respectively. These endpoints are available from MDCB v2.7.0. If you are deploying an earlier version of MDCB, please update the paths to `/health` in values.yaml file.
-For more details about new endpoints, check [MDCB Health check]({{<ref "tyk-multi-data-centre/setup-controller-data-centre#health-check">}}) section.
+For more details about new endpoints, check [MDCB Health check]({{<ref "api-management/mdcb#health-check">}}) section.
 </details>
 </li>
 </ul>
@@ -1405,7 +1405,7 @@ We're pleased to announce the official release of the Tyk Helm Charts for Tyk Co
 
 With this release, we aim to provide a straightforward solution for deploying and managing Tyk Control Plane and Multi-Data Center Bridge (MDCB) using Helm Charts. Whether you're looking for our recommended setup configurations or need flexibility to adapt to your architectural requirements, our Helm Charts have you covered.
 
-To leverage this stable release and simplify your Tyk deployments, we invite you to explore our example setup for MDCB Control Plane using Helm Chart. Simply follow our [MDCB Control Plane setup guide]({{<ref "tyk-multi-data-centre/setup-controller-data-centre">}}) to get started.
+To leverage this stable release and simplify your Tyk deployments, we invite you to explore our example setup for MDCB Control Plane using Helm Chart. Simply follow our [MDCB Control Plane setup guide]({{<ref "api-management/mdcb#setup-mdcb-control-plane">}}) to get started.
 
 ##### Updated default Tyk versions
 Tyk Charts 1.4 will install the following Tyk component versions by default.
@@ -1827,7 +1827,7 @@ When enabled at `gateway.control.ingress.enabled`, an Ingress resource will be c
 <details>
 <summary>Gateway: Configure Gateway to work with MDCB synchroniser</summary>
 
-Allow users to configure worker gateway to work with [Tyk MDCB synchroniser]({{<ref "product-stack/tyk-enterprise-mdcb/advanced-configurations/synchroniser">}}) easily by setting `global.mdcbSynchronizer.enabled` in `tyk-data-plane`.
+Allow users to configure worker gateway to work with [Tyk MDCB synchroniser]({{<ref "api-management/mdcb#synchroniser-feature-with-mdcb">}}) easily by setting `global.mdcbSynchronizer.enabled` in `tyk-data-plane`.
 The control plane should be deployed with same `global.mdcbSynchronizer.enabled` value too.
 </details>
 </li>
