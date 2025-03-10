@@ -9,7 +9,7 @@ algolia:
 
 {{< warning success >}}
 
-**Attention: Upcoming deprecation for Tyk Classic portal**
+**Attention: Future deprecation of Tyk Classic Portal**
 
 You’ve reached a page related to the *Tyk Classic Developer Portal*. This product will soon be discontinued. If you
 haven’t started using it, please use our new [Developer Portal]({{< ref "portal/overview" >}}) instead.
