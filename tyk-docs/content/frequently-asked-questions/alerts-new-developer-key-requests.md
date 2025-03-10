@@ -4,7 +4,10 @@ title: Alerts on new developer key requests
 menu:
   main:
     parent: "Frequently Asked Questions"
-weight: 0 
+weight: 0
+robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 * Cloud users: If you are a paying customer and you don't use webhooks then you would need to contact us and we will set this up for you.

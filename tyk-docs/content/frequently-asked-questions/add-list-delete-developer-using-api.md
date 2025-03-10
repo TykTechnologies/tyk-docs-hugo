@@ -4,7 +4,10 @@ title: How to add, list or delete a developer using the API
 menu:
   main:
     parent: "Frequently Asked Questions"
-weight: 0 
+weight: 0
+robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 Please refer to the [Portal Developer API endpoints documentation]({{< ref "tyk-apis/tyk-portal-api/portal-developers" >}}).

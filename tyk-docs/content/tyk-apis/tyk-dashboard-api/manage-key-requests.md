@@ -4,7 +4,10 @@ title: Manage Key Requests
 menu:
   main:
     parent: "Tyk Dashboard API"
-weight: 9 
+weight: 9
+robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 ### List key requests

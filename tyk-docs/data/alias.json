@@ -815,5 +815,13 @@
     "getting-started/create-api": "#create-an-api",
     "getting-started/import-apis": "#import-an-api",
     "getting-started/create-security-policy": "#secure-an-api",
-    "getting-started/create-api-key": "#access-an-api"
+    "getting-started/create-api-key": "#access-an-api",
+    "concepts/middleware-execution-order": "#request-middleware-chain",
+    "error-response-codes": "#gateway-error-response-status-codes",
+    "frequently-asked-questions/change-logging-output-location": "#how-to-change-the-logging-output-location",
+    "frequently-asked-questions/clear-api-cache": "#how-to-clear--invalidate-api-cache",
+    "frequently-asked-questions/find-gateway-logging-output": "#how-to-find-the-gateway-logging-output",
+    "getting-started/key-concepts/session-meta-data": "#what-is-a-session-metadata",
+    "getting-started/key-concepts/what-is-a-session-object": "#what-is-a-session-object",
+    "tyk-apis/tyk-gateway-api/token-session-object-details": "#session-object"
 }
