@@ -3569,7 +3569,7 @@ In some cases, you will want to set global settings that affect all paths that a
 The **Advanced Options** tab is where you can configure Tyk's other powerful features including:
 - Upstream certificate management
 - [API-level caching]({{< ref "api-management/gateway-optimizations#configuring-the-cache-via-the-dashboard" >}}) including a button to invalidate (flush) the cache for the API
-- [CORS]({{< ref "api-management/gateway-config-tyk-classic#cors" >}})
+- [CORS]({{< ref "api-management/gateway-config-tyk-classic#cross-origin-resource-sharing-cors" >}})
 - Add custom attributes to the API definition as *config data* that can be accessed by middleware
 - Enable [context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}) so that they are extracted from requests and made available to middleware
 - Manage *segment tags* if you are working with [sharded gateways]({{< ref "api-management/multiple-environments#gateway-sharding" >}})
