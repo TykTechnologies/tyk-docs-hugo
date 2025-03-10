@@ -131,7 +131,7 @@ This is easy to do with Tyk. You can include the deprecated endpoint in the new 
 
 Tyk's access control model supports very granular permissions to versioned APIs.
 
-You can explicitly grant access to specific version(s) of an API by specifying only those version(s) in the [key]({{< ref "tyk-apis/tyk-gateway-api/token-session-object-details" >}}) (also known as an *authorization token*, *bearer token*, *access token*, *API token* or *token session object* - see [here]({{< ref "api-management/client-authentication#use-auth-tokens" >}})).
+You can explicitly grant access to specific version(s) of an API by specifying only those version(s) in the [key]({{< ref "api-management/policies#session-object" >}}) (also known as an *authorization token*, *bearer token*, *access token*, *API token* or *token session object* - see [here]({{< ref "api-management/client-authentication#use-auth-tokens" >}})).
 
 <br>
 {{< note success >}}
@@ -158,7 +158,7 @@ If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{
 
 ### Controlling access to Tyk OAS API versions
 
-You can explicitly grant access to specific version(s) of an API by specifying the individual API definitions for each version in the [key]({{< ref "tyk-apis/tyk-gateway-api/token-session-object-details" >}}) (also known as an *authorization token*, *bearer token*, *access token*, *API token* or *token session object* - see [here]({{< ref "api-management/client-authentication#use-auth-tokens" >}})).
+You can explicitly grant access to specific version(s) of an API by specifying the individual API definitions for each version in the [key]({{< ref "api-management/policies#session-object" >}}) (also known as an *authorization token*, *bearer token*, *access token*, *API token* or *token session object* - see [here]({{< ref "api-management/client-authentication#use-auth-tokens" >}})).
 
 When using Tyk OAS APIs there are some subtleties to the propagation of access control between versions of an API:
 - each version of an API is treated individually by Tyk Gateway, so access must be explicity granted for each version
@@ -354,7 +354,7 @@ If you're using Tyk Operator then check out the [configuring API versioning in T
 
 ### Controlling access to Tyk Classic API versions
 
-You can explicitly grant access to specific version(s) of an API by specifying only those version(s) in the [key]({{< ref "tyk-apis/tyk-gateway-api/token-session-object-details" >}}) (also known as an *authorization token*, *bearer token*, *access token*, *API token* or *token session object* - see [here]({{< ref "api-management/client-authentication#use-auth-tokens" >}})).
+You can explicitly grant access to specific version(s) of an API by specifying only those version(s) in the [key]({{< ref "api-management/policies#session-object" >}}) (also known as an *authorization token*, *bearer token*, *access token*, *API token* or *token session object* - see [here]({{< ref "api-management/client-authentication#use-auth-tokens" >}})).
 
 ### Configuring API versioning in the Tyk Classic API Definition
 

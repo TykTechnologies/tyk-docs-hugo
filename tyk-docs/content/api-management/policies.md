@@ -878,7 +878,7 @@ By default, the token itself is hashed and therefore **obfuscated**, this means 
 
 #### Where can I get more information?
 
-A session object is just a JSON object. For more details of each parameter in the session object, see [Tyk Token Session Object Details]({{< ref "tyk-apis/tyk-gateway-api/token-session-object-details" >}}).
+A session object is just a JSON object. For more details of each parameter in the session object, see [Tyk Token Session Object Details]({{< ref "api-management/policies#session-object" >}}).
 
 #### Session Object
 
@@ -981,7 +981,7 @@ A session object is just a JSON object. For more details of each parameter in th
 
 ### What is a Session Metadata
 
-As described in [What is a Session Object?]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}), all Tyk tokens can contain a metadata field. This field is a string key/value map that can store any kind of information about the underlying identity of a session.
+As described in [What is a Session Object?]({{< ref "api-management/policies#what-is-a-session-object" >}}), all Tyk tokens can contain a metadata field. This field is a string key/value map that can store any kind of information about the underlying identity of a session.
 
 The metadata field is important, because it can be used in various ways:
 

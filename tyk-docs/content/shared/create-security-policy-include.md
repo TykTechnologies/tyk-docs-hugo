@@ -81,7 +81,7 @@ To create a security policy with the Dashboard, follow these steps:
         * Access Denied 
     3. Set a time after which any Keys subscribed to your policy expire. Select a value from the drop-down list. This is a required setting. See [Key Expiry]({{< ref "api-management/policies#key-expiry" >}}) for more details.
     4. Add Tags to your policy. Any tags you add can be used when filtering Analytics Data. Tags are case sensitive.
-    5. Add Metadata to your policy. Adding metadata such as User IDs can be used by middleware components. See [Session Metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}) for more details.
+    5. Add Metadata to your policy. Adding metadata such as User IDs can be used by middleware components. See [Session Metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}}) for more details.
 
 6. **Save the policy**
 
