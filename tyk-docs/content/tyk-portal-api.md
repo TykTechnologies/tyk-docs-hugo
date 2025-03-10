@@ -11,7 +11,7 @@ algolia:
 
 **Attention: Future deprecation of Tyk Classic Portal**
 
-You’ve reached a page related to the *Tyk Classic Developer Portal*. This product will soon be discontinued. If you
+You’ve reached a page related to the *Tyk Classic Portal*. This product is no longer actively developed as it has been superseded by the new [Tyk Enterprise Developer Portal]({{< ref "portal/overview" >}}).
 haven’t started using it, please use our new [Developer Portal]({{< ref "portal/overview" >}}) instead.
 
 This page is for the classic developer portal, which has been superseded by our latest portal. Please note that the
