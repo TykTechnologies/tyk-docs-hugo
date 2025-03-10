@@ -14,6 +14,7 @@ algolia:
 You’ve reached a page related to the *Tyk Classic Portal*. This product is no longer actively developed as it
 has been superseded by the new [Tyk Developer Portal]({{< ref "portal/overview" >}}).
 
+</br>
 Please note that the Tyk Classic Portal now has limited support and maintenance. Please contact us at
 [support@tyk.io](<mailto:support@tyk.io?subject=Tyk classic developer portal>)if you have any questions.
 
