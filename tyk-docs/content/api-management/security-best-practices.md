@@ -73,7 +73,7 @@ As an APIM product, Tyk Gateway can be configured to use the following out-of-th
 - [Rate limiter / throttling]({{< ref "api-management/rate-limit#introduction" >}})
 - [Caching]({{< ref "api-management/gateway-optimizations#" >}})
 - [Enforced timeout]({{< ref "tyk-self-managed#enforced-timeouts" >}})
-- [IP restriction]({{< ref "api-management/gateway-config-tyk-classic#ip-blocklist-middleware" >}})
+- [IP restriction]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}})
 - [GraphQL query complexity limiting]({{< ref "api-management/graphql#complexity-limiting-1" >}})
 
 For Denial of Service (DoS) attacks it is recommended to use specialist 3rd party services to prevent DoS attacks from reaching your infrastructure.
@@ -309,7 +309,7 @@ This issue can be caused by both legitimate consumers and malicious attackers, b
 
 **Protect Failing Services**: Defend struggling endpoints by using a [circuit breaker]({{< ref "tyk-self-managed#circuit-breakers" >}}). This feature protects endpoints by detecting error responses, then blocking requests for a short duration to allow them to recover. The same principle can be applied in a wider sense by using [uptime tests]({{< ref "api-management/gateway-config-tyk-classic#uptime-tests" >}}), though this works on a host level instead, by removing failed hosts from the gateway load balancer.
 
-**Enforce Network-Level Security**: Problematic clients can be prevented from accessing the API by [blocking their address]({{< ref "api-management/gateway-config-tyk-classic#ip-blocklist-middleware" >}}). Conversely, for APIs with a known set of clients, [allow lists]({{< ref "api-management/gateway-config-tyk-classic#ip-allowlist-middleware" >}}) can be used to create a list of allowed addresses, thereby implicitly blocking every other address from the API.
+**Enforce Network-Level Security**: Problematic clients can be prevented from accessing the API by [blocking their address]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}}). Conversely, for APIs with a known set of clients, [allow lists]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}}) can be used to create a list of allowed addresses, thereby implicitly blocking every other address from the API.
 
 **Mitigate DoS Attacks**: Increase the chance of maintaining API availability during a denial of service attack by using [specialist mitigation services](https://www.cloudflare.com). These have the infrastructure capacity needed to handle [large scale distributed attacks](https://www.cloudflare.com/en-gb/learning/ddos/what-is-a-ddos-attack), with the purpose of preventing attacks from reaching the API infrastructure, thereby enabling the API to continue operating normally.
 

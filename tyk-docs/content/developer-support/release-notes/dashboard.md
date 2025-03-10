@@ -862,7 +862,7 @@ Experience a refreshed and modern look with our updated brand identity. The new 
 
 ##### Per Endpoint Rate Limiting
 
-Now configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "api-management/rate-limit#tyk-oas-api-definition" >}}) and [Tyk Classic APIs]({{< ref "api-management/rate-limit#tyk-classic-api-definition" >}}), providing granular protection for upstream services against overloading and abuse.
+Now configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "api-management/rate-limit#what-is-a-tyk-oas-api-definition" >}}) and [Tyk Classic APIs]({{< ref "api-management/rate-limit#tyk-classic-api-definition" >}}), providing granular protection for upstream services against overloading and abuse.
 
 #### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->

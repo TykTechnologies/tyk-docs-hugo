@@ -80,7 +80,7 @@ To enjoy writing a *Tyk OAS API definition* as if it is [a native programming la
 
 ##### Importing your OpenAPI description to Tyk
 
-If you already have a standard [OpenAPI document]({{< ref "api-management/gateway-config-tyk-oas#openapi-document" >}}) for your API, you can very easily [import it into Tyk]({{< ref "api-management/gateway-config-managing-oas#import-a-tyk-oas-api" >}}) and have it running in seconds. During the import Tyk will generate the required Tyk extension based on the OpenAPI description in the OpenAPI document and optional parameters you set in the import command. It will also try to establish the right place to send requests to and update the ‘public’ part of the API Definition to tell users how to send requests to the API gateway. It is also possible to [automatically configure some Tyk middleware]({{< ref "api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware" >}}) from the OpenAPI description, configuring how Tyk will handle requests to the API. An import takes in an *OpenAPI document* file and turns it into a *Tyk OAS API Definition*.
+If you already have a standard [OpenAPI document]({{< ref "api-management/gateway-config-tyk-oas#what-is-the-openapi-specification" >}}) for your API, you can very easily [import it into Tyk]({{< ref "api-management/gateway-config-managing-oas#import-a-tyk-oas-api" >}}) and have it running in seconds. During the import Tyk will generate the required Tyk extension based on the OpenAPI description in the OpenAPI document and optional parameters you set in the import command. It will also try to establish the right place to send requests to and update the ‘public’ part of the API Definition to tell users how to send requests to the API gateway. It is also possible to [automatically configure some Tyk middleware]({{< ref "api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware" >}}) from the OpenAPI description, configuring how Tyk will handle requests to the API. An import takes in an *OpenAPI document* file and turns it into a *Tyk OAS API Definition*.
 
 {{< note success >}}
 **Note**  
@@ -120,7 +120,7 @@ This means that when you export this OAS API Definition to provide documentation
 
 <b> *** END TEMPORARY - DELETE ABOVE THIS LINE *** </b>
 
-In this tutorial we show you how to create a minimal Tyk OAS API using the Tyk Gateway API, starting with a [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition" >}}).
+In this tutorial we show you how to create a minimal Tyk OAS API using the Tyk Gateway API, starting with a [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#what-is-a-tyk-oas-api-definition" >}}).
 
 When making calls to the Tyk Gateway API you'll need to set the domain name and port for your environment and, in the API request header, must provide credentials in the `x-tyk-authorization` field for Tyk to authorize your request, as follows:
 
@@ -199,7 +199,7 @@ You can go to the `/apps` folder of your Tyk Gateway installation (by default in
 
 ### Using the Tyk Dashboard API
 
-You can also create APIs using the Tyk Dashboard API, starting with a [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition" >}}).
+You can also create APIs using the Tyk Dashboard API, starting with a [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#what-is-a-tyk-oas-api-definition" >}}).
 
 In this tutorial we will also show you how to test and protect your new API by enforcing an authentication requirement when making calls to the API.
   
@@ -420,7 +420,7 @@ To see the URL given to your API, check the Info section displayed at the top of
 
 ### Using Tyk Operator
 
-You can make use of Tyk Operator custom resources to configure [Tyk OAS API]({{<ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition">}}) in a Kubernetes environment.
+You can make use of Tyk Operator custom resources to configure [Tyk OAS API]({{<ref "api-management/gateway-config-tyk-oas#what-is-a-tyk-oas-api-definition">}}) in a Kubernetes environment.
 
 In this [tutorial]({{<ref "api-management/automations/operator#set-up-oas-api">}}) we guide you through the steps to create a new Tyk OAS API using Tyk Operator.
 
@@ -428,7 +428,7 @@ In this [tutorial]({{<ref "api-management/automations/operator#set-up-oas-api">}
 
 As developers working on API development, it can be necessary for us to regularly update our API definition as, for example, we add endpoints or support new methods. This definition is normally generated either from our codebase or created using API design tools (such as [Swagger Editor]({{< ref "https://editor.swagger.io/" >}}), [Postman]({{< ref "https://www.postman.com/" >}}) and [Stoplight]({{< ref "https://stoplight.io/" >}})).
 
-One of the most powerful features of working with Tyk OAS is that you can make changes to your [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition" >}}) or [OpenAPI Document]({{< ref "api-management/gateway-config-tyk-oas#openapi-document" >}}) outside Tyk and then use this updated description to update the Tyk OAS API. You can simply update the configuration on Tyk without having to make any changes to the Tyk Gateway configuration (`x-tyk-api-gateway`).
+One of the most powerful features of working with Tyk OAS is that you can make changes to your [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#what-is-a-tyk-oas-api-definition" >}}) or [OpenAPI Document]({{< ref "api-management/gateway-config-tyk-oas#what-is-the-openapi-specification" >}}) outside Tyk and then use this updated description to update the Tyk OAS API. You can simply update the configuration on Tyk without having to make any changes to the Tyk Gateway configuration (`x-tyk-api-gateway`).
 
 In this section will walk you through different methods you can use to Update a Tyk OAS API using the Tyk Gateway API, Tyk Dashboard API and Tyk Dashboard GUI.
 
@@ -1532,7 +1532,7 @@ After setting up a versioned API, when creating subsequent versions, the dialog 
 
 ## Export a Tyk OAS API
 
-Tyk Gateway API and Tyk Dashboard API both support exporting the entire [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition" >}}) or just the [OpenAPI Document]({{< ref "api-management/gateway-config-tyk-oas#openapi-document" >}}) part so that you can manage or work on them outside Tyk.
+Tyk Gateway API and Tyk Dashboard API both support exporting the entire [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#what-is-a-tyk-oas-api-definition" >}}) or just the [OpenAPI Document]({{< ref "api-management/gateway-config-tyk-oas#what-is-the-openapi-specification" >}}) part so that you can manage or work on them outside Tyk.
 
 #### Differences between using the Tyk Dashboard API and Tyk Gateway API
 
@@ -1802,7 +1802,7 @@ The same logic for configuring middleware applies as well when updating a Tyk OA
 
 <b> *** END TEMPORARY - DELETE ABOVE THIS LINE *** </b>
 
-Tyk supports importing [OpenAPI Documents]({{< ref "api-management/gateway-config-tyk-oas#openapi-document" >}}) (in JSON format, OAS version 3.0.x) using the Tyk Gateway API, the Tyk Dashboard API or the [Tyk Dashboard GUI]({{< ref "#using-the-tyk-dashboard-ui" >}}).
+Tyk supports importing [OpenAPI Documents]({{< ref "api-management/gateway-config-tyk-oas#what-is-the-openapi-specification" >}}) (in JSON format, OAS version 3.0.x) using the Tyk Gateway API, the Tyk Dashboard API or the [Tyk Dashboard GUI]({{< ref "#using-the-tyk-dashboard-ui" >}}).
 
 In the following tutorials, we provide the flows and commands you can use to get Tyk to generate the respective Tyk OAS API definitions from your OpenAPI Documents.
 

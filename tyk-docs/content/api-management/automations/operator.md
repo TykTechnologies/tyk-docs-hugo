@@ -1448,7 +1448,7 @@ spec:
 
 #### IP Allowlist
 
-To enable [IP Allowlist]({{<ref "api-management/gateway-config-tyk-classic#ip-allowlist-middleware">}}), set the following fields:
+To enable [IP Allowlist]({{<ref "api-management/gateway-config-tyk-classic#ip-access-control">}}), set the following fields:
 
 * `enable_ip_whitelisting`: Enables IPs allowlist. When set to `true`, only requests coming from the explicit list of IP addresses defined in (`allowed_ips`) are allowed through.
 * `allowed_ips`: A list of strings that defines the IP addresses (in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation) notation) that are allowed access via Tyk.
@@ -1476,7 +1476,7 @@ spec:
 
 #### IP Blocklist
 
-To enable [IP Blocklist]({{<ref "api-management/gateway-config-tyk-classic#ip-blocklist-middleware">}}), set the following fields:
+To enable [IP Blocklist]({{<ref "api-management/gateway-config-tyk-classic#ip-access-control">}}), set the following fields:
 
 * `enable_ip_blacklisting`: Enables IPs blocklist. If set to `true`, requests coming from the explicit list of IP addresses (blacklisted_ips) are not allowed through.
 * `blacklisted_ips`: A list of strings that defines the IP addresses (in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation) notation) that are blocked access via Tyk. This list is explicit and wildcards are currently not supported. 

@@ -3573,7 +3573,7 @@ The **Advanced Options** tab is where you can configure Tyk's other powerful fea
 - Add custom attributes to the API definition as *config data* that can be accessed by middleware
 - Enable [context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}) so that they are extracted from requests and made available to middleware
 - Manage *segment tags* if you are working with [sharded gateways]({{< ref "api-management/multiple-environments#gateway-sharding" >}})
-- Manage client IP address [allow]({{< ref "api-management/gateway-config-tyk-classic#ip-allowlist-middleware" >}}) and [block]({{< ref "api-management/gateway-config-tyk-classic#ip-blocklist-middleware" >}}) lists
+- Manage client IP address [allow]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}}) and [block]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}}) lists
 - Attach [webhooks]({{< ref "api-management/gateway-events#event-handling-with-webhooks" >}}) that will be triggered for different events
 
 ### Uptime Tests
@@ -4073,7 +4073,7 @@ The default template is a blank API definition; your custom templates will conta
 {{< note success >}}
 **Note**  
 
-API Templates are exclusive to [Tyk OAS APIs]({{< ref "api-management/gateway-config-introduction#api-definition-types" >}}) and can be managed via the Tyk Dashboard API or within the Tyk Dashboard UI.
+API Templates are exclusive to [Tyk OAS APIs]({{< ref "api-management/gateway-config-introduction#api-definitions" >}}) and can be managed via the Tyk Dashboard API or within the Tyk Dashboard UI.
 {{< /note >}}
 
 ### When to use API templates
@@ -4134,7 +4134,7 @@ API Templates can be found in the **API Templates** section of the **API Managem
 {{< note success >}}
 **Note**  
 
-API Templates are exclusive to [Tyk OAS APIs]({{< ref "api-management/gateway-config-introduction#api-definition-types" >}}).
+API Templates are exclusive to [Tyk OAS APIs]({{< ref "api-management/gateway-config-introduction#api-definitions" >}}).
 {{< /note >}}
 
 #### Creating templates
@@ -4283,7 +4283,7 @@ The Tyk Dashboard API provides the following functionality to support working wi
 {{< note success >}}
 **Note**  
 
-API Templates are exclusive to [Tyk OAS APIs]({{< ref "api-management/gateway-config-introduction#api-definition-types" >}}).
+API Templates are exclusive to [Tyk OAS APIs]({{< ref "api-management/gateway-config-introduction#api-definitions" >}}).
 {{< /note >}}
 
 #### Structure of an API template

@@ -1013,7 +1013,7 @@ We are thrilled to introduce Tyk Gateway 5.5, bringing advanced rate-limiting ca
 
 ##### Per Endpoint Rate Limiting
 
-Now configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "api-management/rate-limit#tyk-oas-api-definition" >}}) and [Tyk Classic APIs]({{< ref "api-management/rate-limit#tyk-classic-api-definition" >}}), providing granular protection for upstream services against overloading and abuse.
+Now configure rate limits at the endpoint level for both [Tyk OAS]({{< ref "api-management/rate-limit#what-is-a-tyk-oas-api-definition" >}}) and [Tyk Classic APIs]({{< ref "api-management/rate-limit#tyk-classic-api-definition" >}}), providing granular protection for upstream services against overloading and abuse.
 
 ##### Root CA Support for Client Certificates
 
