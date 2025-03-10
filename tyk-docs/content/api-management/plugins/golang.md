@@ -18,7 +18,7 @@ aliases:
 
 ## Introduction
 
-Golang plugins are a very flexible and powerful way to extend the functionality of Tyk by attaching custom logic written in Go to [hooks]({{< ref "api-management/plugins/plugin-types#plugin-types" >}}) in the Tyk [middleware chain]({{< ref "concepts/middleware-execution-order" >}}).
+Golang plugins are a very flexible and powerful way to extend the functionality of Tyk by attaching custom logic written in Go to [hooks]({{< ref "api-management/plugins/plugin-types#plugin-types" >}}) in the Tyk [middleware chain]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}).
 The chain of middleware is specific to an API and gets created at API load time. When Tyk Gateway performs an API re-load it also loads any custom middleware and "injects" them into a chain to be called at different stages of the HTTP request life cycle.
 
 For a quick-start guide to working with Go plugins, start [here]({{< ref "api-management/plugins/overview#getting-started" >}}).
@@ -27,7 +27,7 @@ The [Go plugin writing guide]({{< ref "api-management/plugins/golang#writing-cus
 
 ## Supported plugin types
 
-All of Tyk's [custom middleware hooks]({{< ref "api-management/plugins/plugin-types#plugin-types" >}}) support Go plugins. They represent different stages in the request and response [middleware chain]({{< ref "concepts/middleware-execution-order" >}}) where custom functionality can be added.
+All of Tyk's [custom middleware hooks]({{< ref "api-management/plugins/plugin-types#plugin-types" >}}) support Go plugins. They represent different stages in the request and response [middleware chain]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}) where custom functionality can be added.
 
 - **Pre** - supports an array of middlewares to be run before any others (i.e. before authentication)
 - **Auth** - this middleware performs custom authentication and adds API key session info into the request context and can be used only if the API definition has both:

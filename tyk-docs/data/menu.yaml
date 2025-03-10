@@ -121,6 +121,14 @@ menu:
             path: /api-management/gateway-config-tyk-classic
             category: Page
             show: True
+          - title: "What is URL path matching?"
+            path: /getting-started/key-concepts/url-matching
+            category: Page
+            show: True
+          - title: "What is Internal Looping?"
+            path: /advanced-configuration/transform-traffic/looping
+            category: Page
+            show: True
       - title: "Manage APIs"
         category: Directory
         show: True
@@ -273,115 +281,6 @@ menu:
         path: /api-management/multiple-environments
         category: Page
         show: True
-      - title: "Troubleshooting"
-        path: /api-management/troubleshooting-debugging
-        category: Page
-        show: True
-      - title: "AI Management"
-        category: Page
-        path: /api-management/ai-management/overview
-        show: True
-  - title: "Product Stack"
-    path: /tyk-stack
-    category: Label
-    show: True
-    menu:
-      - title: "Overview"
-        path: /tyk-stack
-        category: Page
-        show: True
-      - title: "Tyk Gateway (Open Source)"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            path: /tyk-oss-gateway
-            category: Page
-            show: True
-          - title: "Key concepts"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /getting-started/key-concepts
-                category: Page
-                show: True
-              - title: "Request Middleware Chain"
-                path: /concepts/middleware-execution-order
-                category: Page
-                show: True
-              - title: "What is URL path matching?"
-                path: /getting-started/key-concepts/url-matching
-                category: Page
-                show: True
-              - title: "What is a Session Object?"
-                path: /getting-started/key-concepts/what-is-a-session-object
-                category: Page
-                show: True
-              - title: "What is Session Metadata?"
-                path: /getting-started/key-concepts/session-meta-data
-                category: Page
-                show: True
-              - title: "What is Internal Looping?"
-                path: /advanced-configuration/transform-traffic/looping
-                category: Page
-                show: True
-          - title: "API access control"
-            category: Directory
-            show: False
-            menu: 
-              - title: "Overview"
-                path: /basic-config-and-security
-                category: Page
-                show: False
-              - title: "oauth"
-                category: page
-                show: False
-                path: /basic-config-and-security/security/authentication-authorization/ext-oauth-middleware
-              - title: "Gateway"
-                path: /basic-config-and-security/security/gateway
-                category: Page
-                show: False
-          - title: "Advanced configurations"
-            category: Directory
-            show: False
-            menu:
-              - title: "Overview"
-                path: /advanced-configuration
-                category: Page
-                show: False
-          - title: "API documentation"
-            category: Directory
-            show: True
-            menu:
-              - title: "Token Session Object"
-                path: /tyk-apis/tyk-gateway-api/token-session-object-details
-                category: Page
-                show: True
-          - title: "Troubleshooting"
-            category: Directory
-            show: True
-            menu:
-              - title: "How to change the logging output location"
-                path: /frequently-asked-questions/change-logging-output-location
-                category: Page
-                show: True
-              - title: "How to clear / invalidate API cache"
-                path: /frequently-asked-questions/clear-api-cache
-                category: Page
-                show: True
-              - title: "How to find the Gateway logging output"
-                path: /frequently-asked-questions/find-gateway-logging-output
-                category: Page
-                show: True
-              - title: "Error Response Status Codes"
-                path: /error-response-codes
-                category: Page
-                show: True
-      - title: "Tyk Sync"
-        category: Directory
-        show: False
-        menu:
       - title: "Tyk Helm Charts (Open Source)"
         category: Directory
         show: True
@@ -406,6 +305,64 @@ menu:
             path: /product-stack/tyk-charts/tyk-oss-chart
             category: Page
             show: True
+      - title: "Troubleshooting"
+        path: /api-management/troubleshooting-debugging
+        category: Page
+        show: True
+      - title: "AI Management"
+        category: Page
+        path: /api-management/ai-management/overview
+        show: True
+  - title: "Product Stack"
+    path: /tyk-stack
+    category: Label
+    show: False
+    menu:
+      - title: "Overview"
+        path: /tyk-stack
+        category: Page
+        show: False
+      - title: "Tyk Gateway (Open Source)"
+        category: Directory
+        show: True
+        menu:
+          - title: "Overview"
+            path: /tyk-oss-gateway
+            category: Page
+            show: False
+          - title: "Key concepts"
+            category: Directory
+            show: True
+            menu:
+
+          - title: "API access control"
+            category: Directory
+            show: False
+            menu: 
+              - title: "Overview"
+                path: /basic-config-and-security
+                category: Page
+                show: False
+              - title: "oauth"
+                category: page
+                show: False
+                path: /basic-config-and-security/security/authentication-authorization/ext-oauth-middleware
+              - title: "Gateway"
+                path: /basic-config-and-security/security/gateway
+                category: Page
+                show: False
+          - title: "Advanced configurations"
+            category: Directory
+            show: False
+            menu:
+              - title: "Overview"
+                path: /advanced-configuration
+                category: Page
+                show: False
+      - title: "Tyk Sync"
+        category: Directory
+        show: False
+        menu:
   - title: "Developer Portal"
     category: Label
     show: True
