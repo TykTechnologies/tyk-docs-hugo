@@ -3569,11 +3569,11 @@ In some cases, you will want to set global settings that affect all paths that a
 The **Advanced Options** tab is where you can configure Tyk's other powerful features including:
 - Upstream certificate management
 - [API-level caching]({{< ref "api-management/gateway-optimizations#configuring-the-cache-via-the-dashboard" >}}) including a button to invalidate (flush) the cache for the API
-- [CORS]({{< ref "api-management/gateway-config-tyk-classic#cors" >}})
+- [CORS]({{< ref "api-management/gateway-config-tyk-classic#cross-origin-resource-sharing-cors" >}})
 - Add custom attributes to the API definition as *config data* that can be accessed by middleware
 - Enable [context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}) so that they are extracted from requests and made available to middleware
 - Manage *segment tags* if you are working with [sharded gateways]({{< ref "api-management/multiple-environments#gateway-sharding" >}})
-- Manage client IP address [allow]({{< ref "api-management/gateway-config-tyk-classic#ip-allowlist-middleware" >}}) and [block]({{< ref "api-management/gateway-config-tyk-classic#ip-blocklist-middleware" >}}) lists
+- Manage client IP address [allow]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}}) and [block]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}}) lists
 - Attach [webhooks]({{< ref "api-management/gateway-events#event-handling-with-webhooks" >}}) that will be triggered for different events
 
 ### Uptime Tests
@@ -4073,7 +4073,7 @@ The default template is a blank API definition; your custom templates will conta
 {{< note success >}}
 **Note**  
 
-API Templates are exclusive to [Tyk OAS APIs]({{< ref "api-management/gateway-config-introduction#api-definition-types" >}}) and can be managed via the Tyk Dashboard API or within the Tyk Dashboard UI.
+API Templates are exclusive to [Tyk OAS APIs]({{< ref "api-management/gateway-config-introduction#api-definitions" >}}) and can be managed via the Tyk Dashboard API or within the Tyk Dashboard UI.
 {{< /note >}}
 
 ### When to use API templates
@@ -4134,7 +4134,7 @@ API Templates can be found in the **API Templates** section of the **API Managem
 {{< note success >}}
 **Note**  
 
-API Templates are exclusive to [Tyk OAS APIs]({{< ref "api-management/gateway-config-introduction#api-definition-types" >}}).
+API Templates are exclusive to [Tyk OAS APIs]({{< ref "api-management/gateway-config-introduction#api-definitions" >}}).
 {{< /note >}}
 
 #### Creating templates
@@ -4283,7 +4283,7 @@ The Tyk Dashboard API provides the following functionality to support working wi
 {{< note success >}}
 **Note**  
 
-API Templates are exclusive to [Tyk OAS APIs]({{< ref "api-management/gateway-config-introduction#api-definition-types" >}}).
+API Templates are exclusive to [Tyk OAS APIs]({{< ref "api-management/gateway-config-introduction#api-definitions" >}}).
 {{< /note >}}
 
 #### Structure of an API template
@@ -4495,7 +4495,7 @@ The new Tyk OAS API will have this definition, combining the OpenAPI description
   }
 }
 ```
-Note that the `GET /xml` endpoint from the OpenAPI description and the `POST /anything` endpoint from the template (complete with `requestSizeLimit` middleware) have both been defined in the API definition. API-level caching has been enabled, as configured in the template. Tyk has included the `server` entry from the OpenAPI description (which points to the upstream server) and added the API URL on Tyk Gateway ([as explained here]({{< ref "api-management/gateway-config-tyk-oas#import-oas-definition" >}})).
+Note that the `GET /xml` endpoint from the OpenAPI description and the `POST /anything` endpoint from the template (complete with `requestSizeLimit` middleware) have both been defined in the API definition. API-level caching has been enabled, as configured in the template. Tyk has included the `server` entry from the OpenAPI description (which points to the upstream server) and added the API URL on Tyk Gateway ([as explained here]({{< ref "api-management/gateway-config-tyk-oas#modifying-the-openapi-description" >}})). 
 
 #### Applying a template when creating an API from a Tyk OAS API definition
 When creating an API using a complete Tyk OAS API definition (which includes `x-tyk-api-gateway`), you can use the `/apis/oas` endpoint to import the API defintiion.

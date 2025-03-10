@@ -182,7 +182,7 @@ The [Response Header Transform]({{< ref "api-management/traffic-transformation#r
 
 The Allow List middleware is a feature designed to restrict access to only specific API endpoints. It rejects requests to endpoints not specifically "allowed", returning `HTTP 403 Forbidden`. This enhances the security of the API by preventing unauthorized access to endpoints that are not explicitly permitted.
 
-Note that this is not the same as Tyk's [IP allow list]({{< ref "api-management/gateway-config-tyk-classic#ip-allowlist-middleware" >}}) feature, which is used to restrict access to APIs based upon the IP of the requestor.
+Note that this is not the same as Tyk's [IP allow list]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}}) feature, which is used to restrict access to APIs based upon the IP of the requestor.
 
 #### Use Cases
 
@@ -500,7 +500,7 @@ In this example the allow list middleware has been configured for `HTTP GET` req
 
 The Block List middleware is a feature designed to block access to specific API endpoints. Tyk Gateway rejects all requests made to endpoints with the block list enabled, returning `HTTP 403 Forbidden`.
 
-Note that this is not the same as Tyk's [IP block list]({{< ref "api-management/gateway-config-tyk-classic#ip-blocklist-middleware" >}}) feature, which is used to restrict access to APIs based upon the IP of the requestor.
+Note that this is not the same as Tyk's [IP block list]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}}) feature, which is used to restrict access to APIs based upon the IP of the requestor.
 
 #### Use Cases
 

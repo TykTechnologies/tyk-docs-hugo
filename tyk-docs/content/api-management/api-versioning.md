@@ -372,7 +372,7 @@ To add an API version, you must add a new entry in the `versions` list:
 - `use_extended_paths`: set to `true` to enable the `extended_paths` config
 - `extended_paths`: location for configuration of additional [endpoint-level middleware]({{< ref "api-management/traffic-transformation#" >}})
 - `global_*`: configuration of [API-level middleware]({{< ref "api-management/traffic-transformation#" >}}). The wildcard can be replaced by any of the API-level settings e.g. `global_size_limit`
-- `override_target`: alternative upstream (target) URL that should be used for this version, overriding the `target_url` configured in the `proxy` [section]({{< ref "api-management/gateway-config-tyk-classic#proxytarget_url" >}}) of the API definition; this can be used to redirect to a different hostname or domain if required
+- `override_target`: alternative upstream (target) URL that should be used for this version, overriding the `target_url` configured in the `proxy` [section]({{< ref "api-management/gateway-config-tyk-classic#proxy-transport-settings" >}}) of the API definition; this can be used to redirect to a different hostname or domain if required
 
 There is also some API-level configuration for versioning, which is located in the `definition` section of the Tyk Classic API definition:
 
