@@ -11,10 +11,11 @@ algolia:
 
 **Attention: Future deprecation of Tyk Classic Portal**
 
-You’ve reached a page related to the *Tyk Classic Developer Portal*. This product is no longer actively developed as it 
-has been superseded by the new [Tyk Developer Portal]({{< ref "portal/overview" >}}).
+You’ve reached a page related to the *Tyk Classic Portal*. This product is no longer actively developed as it 
+has been superseded by the new [Tyk Developer Portal]({{< ref "portal/overview" >}}). 
+If you were searching for API documentation of the Tyk Developer Portal please check our [Postman collection]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api/" >}})
 
-Please note that the Tyk Classic Developer Portal now has limited support and maintenance. Please contact us at 
+Please note that the Tyk Classic Portal now has limited support and maintenance. Please contact us at 
 [support@tyk.io](<mailto:support@tyk.io?subject=Tyk classic developer portal>)if you have any questions.
 
 {{< /warning >}}
