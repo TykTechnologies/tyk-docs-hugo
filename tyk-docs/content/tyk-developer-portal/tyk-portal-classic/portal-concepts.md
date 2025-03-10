@@ -7,6 +7,9 @@ menu:
 weight: 1
 aliases:
   - /tyk-developer-portal/portal-concepts
+robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 ## API Catalog

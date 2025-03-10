@@ -9,6 +9,9 @@ menu:
 weight: 12
 aliases:
   - /tyk-developer-portal/streams
+robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 As of Tyk v5.7.0, you can now publish Tyk Streams APIs to the Tyk Developer Portal.
