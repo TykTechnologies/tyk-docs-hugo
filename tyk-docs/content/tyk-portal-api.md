@@ -1,7 +1,7 @@
 ---
-title: Classic Portal API
+title: Classic Developer Portal API
 description: "Landing page for the Tyk Classic Portal API documentation"
-tags: ["Tyk Classic Portal API", "Classic Portal API "]
+tags: ["Tyk Classic Portal API", "Classic Portal API"]
 robots: "noindex"
 algolia:
   importance: 0
@@ -11,9 +11,9 @@ algolia:
 
 **Attention: Future deprecation of Tyk Classic Portal**
 
-You’ve reached a page related to the *Tyk Classic Portal*. This product is no longer actively developed as it has been superseded by the new [Tyk Enterprise Developer Portal]({{< ref "portal/overview" >}}).
+You’ve reached a page related to the *Tyk Classic Developer Portal*. This product is no longer actively developed as it has been superseded by the new [Tyk Developer Portal]({{< ref "portal/overview" >}}).
 
-Please note that the Tyk Classic Portal now has limited support and maintenance. Please contact us at 
+Please note that the Tyk Classic Developer Portal now has limited support and maintenance. Please contact us at 
 [support@tyk.io](<mailto:support@tyk.io?subject=Tyk classic developer portal>)if you have any questions.
 
 {{< /warning >}}
