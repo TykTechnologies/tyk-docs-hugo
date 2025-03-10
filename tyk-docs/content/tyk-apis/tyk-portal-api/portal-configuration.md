@@ -5,6 +5,9 @@ menu:
   main:
     parent: "Tyk Portal API"
 weight: 5
+robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 This section will cover the following endpoints:

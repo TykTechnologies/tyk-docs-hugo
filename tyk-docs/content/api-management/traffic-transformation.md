@@ -5,6 +5,7 @@ tags: ["Overview", "Allow List", "Block List", "Ignore Authentication", "Interna
 description: ""
 keywords: ["Overview", "Allow List", "Block List", "Ignore Authentication", "Internal Endpoint", "Request Method ", "Request Body ", "Request Headers ", "Response Body", "Response Headers", "Request Validation", "Mock Response", "URL Rewriting", "URL Rewrite middleware summary", "Virtual Endpoints", "Transformation Use Case: SOAP To REST", "Go Templates", "JQ Transforms", "Request Context Variables"]
 aliases:
+  - /concepts/middleware-execution-order
   - /advanced-configuration/transform-traffic
   - /product-stack/tyk-gateway/middleware/allow-list-middleware
   - /product-stack/tyk-gateway/middleware/allow-list-tyk-oas
@@ -76,7 +77,7 @@ aliases:
 
 ## Overview
 
-When you configure an API on Tyk, the Gateway will proxy all requests received at the listen path that you have defined through to the upstream (target) URL configured in the API definition. Responses from the upstream are likewise proxied on to the originating client. Requests and responses are processed through a powerful [chain of middleware]({{< ref "concepts/middleware-execution-order" >}}) that perform security and processing functions.
+When you configure an API on Tyk, the Gateway will proxy all requests received at the listen path that you have defined through to the upstream (target) URL configured in the API definition. Responses from the upstream are likewise proxied on to the originating client. Requests and responses are processed through a powerful [chain of middleware]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}) that perform security and processing functions.
 
 Within that chain are a highly configurable set of optional middleware that can, on a per-endpint basis:
 - apply processing to [API requests](#middleware-applied-to-the-api-request) before they are proxied to the upstream service
@@ -171,6 +172,9 @@ The [Response Body Transform]({{< ref "api-management/traffic-transformation#res
 #### Response Header Transform
 
 The [Response Header Transform]({{< ref "api-management/traffic-transformation#response-headers-overview" >}}) middleware allows you to modify the header information provided in the response before it leaves the Gateway and is passed to the client.
+### Request Middleware Chain
+
+{{< img src="/img/diagrams/middleware-execution-order@3x.png" alt="Middleware execution flow" >}}
 
 ## Allow List
 
@@ -1918,7 +1922,7 @@ When working with JSON format data, the middleware will unmarshal the data into 
 
 The middleware has direct access to the request body and also to dynamic data as follows:
  - [context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}), extracted from the request at the start of the middleware chain, can be injected into the template using the `._tyk_context.KEYNAME` namespace
- - [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}), from the Tyk Session Object linked to the request, can be injected into the template using the `._tyk_meta.KEYNAME` namespace 
+ - [session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}}), from the Tyk Session Object linked to the request, can be injected into the template using the `._tyk_meta.KEYNAME` namespace 
  - inbound form or query data can be accessed through the `._tyk_context.request_data` namespace where it will be available in as a `key:[]value` map
  - values from [key-value (KV) storage]({{< ref "tyk-self-managed#transformation-middleware" >}}) can be injected into the template using the notation appropriate to the location of the KV store
  
@@ -1948,7 +1952,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
  ## Request Body Transform middleware summary
   - The Request Body Transform middleware is an optional stage in Tyk's API Request processing chain, sitting between the [TBC]() and [TBC]() middleware.
   - The Request Body Transform middleware can be configured at the per-endpoint level within the API Definition and is supported by the API Designer within the Tyk Dashboard. 
-  - Request Body Transform can access both [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}) and [request context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}).
+  - Request Body Transform can access both [session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}}) and [request context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}).
  -->
 
 ### Using Tyk OAS {#request-body-using-tyk-oas}
@@ -2312,7 +2316,7 @@ In the request middleware chain, the API-level transform is applied before the e
 
 You can enrich the request headers by injecting data from context variables or session objects into the headers.
 - [context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}) are extracted from the request at the start of the middleware chain and can be injected into added headers using the `$tyk_context.` namespace
-- [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}), from the Tyk Session Object linked to the request, can be injected into added headers using the `$tyk_meta.` namespace
+- [session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}}), from the Tyk Session Object linked to the request, can be injected into added headers using the `$tyk_meta.` namespace
 - values from [key-value (KV) storage]({{< ref "tyk-self-managed#transformation-middleware" >}}) can be injected into added headers using the notation appropriate to the location of the KV store
 
 <hr>
@@ -2423,7 +2427,7 @@ For example:
 This configuration will add three new headers to each request:
 - `X-Static` with the value `foobar`
 - `X-Request-ID` with a dynamic value taken from the `request_id` [context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}})
-- `X-User-ID` with a dynamic value taken from the `uid` field in the [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}})
+- `X-User-ID` with a dynamic value taken from the `uid` field in the [session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}})
 
 It will also delete one header (if present) from each request:
 - `Auth_Id`
@@ -2613,7 +2617,7 @@ For example:
 This configuration will add three new headers to each request:
 - `X-Static` with the value `foobar`
 - `X-Request-ID` with a dynamic value taken from the `request_id` [context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}})
-- `X-User-ID` with a dynamic value taken from the `uid` field in the [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}})
+- `X-User-ID` with a dynamic value taken from the `uid` field in the [session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}})
 
 It will also delete one header (if present) from each request:
 - `Auth_Id`
@@ -3207,7 +3211,7 @@ When working with JSON format data, the middleware will unmarshal the data into 
 
 The middleware has direct access to the response body and also to dynamic data as follows:
 - [Context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}), extracted from the request at the start of the middleware chain, can be injected into the template using the `._tyk_context.KEYNAME` namespace
-- [Session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}), from the Tyk Session Object linked to the request, can be injected into the template using the `._tyk_meta.KEYNAME` namespace 
+- [Session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}}), from the Tyk Session Object linked to the request, can be injected into the template using the `._tyk_meta.KEYNAME` namespace 
 - Inbound form or query data can be accessed through the `._tyk_context.request_data` namespace where it will be available in as a `key:[]value` map
 - values from [key-value (KV) storage]({{< ref "tyk-self-managed#transformation-middleware" >}}) can be injected into the template using the notation appropriate to the location of the KV store
  
@@ -3237,7 +3241,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
  ## Response Body Transform middleware summary
   - The Response Body Transform middleware is an optional stage in Tyk's API Response processing chain, sitting between the [TBC]() and [TBC]() middleware.
   - The Response Body Transform middleware can be configured at the per-endpoint level within the API Definition and is supported by the API Designer within the Tyk Dashboard. 
-  - Response Body Transform can access both [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}) and [request context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}).
+  - Response Body Transform can access both [session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}}) and [request context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}).
  -->
 
 
@@ -3685,7 +3689,7 @@ In the response middleware chain, the endpoint-level transform is applied before
 
 You can enrich the response headers by injecting data from context variables or session objects into the headers.
 - [context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}), extracted from the request at the start of the middleware chain, can be injected into added headers using the `$tyk_context.` namespace
-- [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}), from the Tyk Session Object linked to the request, can be injected into added headers using the `$tyk_meta.` namespace
+- [session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}}), from the Tyk Session Object linked to the request, can be injected into added headers using the `$tyk_meta.` namespace
 - values from [key-value (KV) storage]({{< ref "tyk-self-managed#transformation-middleware" >}}) can be injected into added headers using the notation appropriate to the location of the KV store
 
 <hr>
@@ -3796,7 +3800,7 @@ For example:
 This configuration will add three new headers to each response:
 - `X-Static` with the value `foobar`
 - `X-Request-ID` with a dynamic value taken from the `request_id` [context variable]({{< ref "api-management/traffic-transformation#request-context-variables" >}})
-- `X-User-ID` with a dynamic value taken from the `uid` field in the [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}})
+- `X-User-ID` with a dynamic value taken from the `uid` field in the [session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}})
 
 It will also delete one header (if present) from each response:
 - `X-Secret`
@@ -3994,7 +3998,7 @@ For example:
 This configuration will add three new headers to each response:
 - `X-Static` with the value `foobar`
 - `X-Request-ID` with a dynamic value taken from the `request_id` [context variable]({{< ref "api-management/traffic-transformation#request-context-variables" >}})
-- `X-User-ID` with a dynamic value taken from the `uid` field in the [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}})
+- `X-User-ID` with a dynamic value taken from the `uid` field in the [session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}})
 
 It will also delete one header (if present) from each response:
  - `X-Secret`
@@ -4158,7 +4162,7 @@ This configuration will add three new headers to each response:
 
 - `X-Static` with the value `foobar`
 - `X-Request-ID` with a dynamic value taken from the `request_id` [context variable]({{< ref "api-management/traffic-transformation#request-context-variables" >}})
-- `X-User-ID` with a dynamic value taken from the `uid` field in the [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}})
+- `X-User-ID` with a dynamic value taken from the `uid` field in the [session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}})
 
 It will also delete one header (if present) from each response:
 
@@ -5514,7 +5518,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 ## URL Rewrite middleware summary
  - The URL Rewrite middleware is an optional stage in Tyk's API Request processing chain, sitting between the [Request Header Transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) and [Response Caching]({{< ref "api-management/gateway-optimizations#" >}}) middleware.
  - URL Rewrite is configured at the per-endpoint level within the API Definition and is supported by the API Designer within the Tyk Dashboard.
- - URL Rewrite can access both [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}) and [request context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}).
+ - URL Rewrite can access both [session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}}) and [request context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}).
  
 -->
 
@@ -5555,7 +5559,7 @@ The pattern takes the form of a regular expression (regex) against which the key
 
 This pattern can be a static regex or can contain dynamic variables:
 - [context variables]({{< ref "api-management/traffic-transformation#request-context-variables" >}}), extracted from the request at the start of the middleware chain, can be injected into the pattern regex using the `$tyk_context.` namespace
-- [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}), from the Tyk Session Object linked to the request, can be injected into the pattern regex using the `$tyk_meta.METADATA_KEY` namespace 
+- [session metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}}), from the Tyk Session Object linked to the request, can be injected into the pattern regex using the `$tyk_meta.METADATA_KEY` namespace 
 
 Percent-encoded (URL-encoded) characters can be used in the pattern regex when the key is the request path or path parameter
 - if the middleware is called with percent-encoded characters in the key, matching will first be attempted using the raw URL as provided
@@ -6215,7 +6219,7 @@ From a virtual endpoint, you can make calls out to other internal and upstream A
 
 ##### Enforcing custom policies
 
-Tyk provides a very flexible [middleware chain]({{< ref "concepts/middleware-execution-order" >}}) where you can combine functions to implement the access controls you require to protect your upstream services. Of course, not all scenarios can be covered by Tyk's standard middleware functions, but you can use a virtual endpoint to apply whatever custom logic you require to optimize your API experience.
+Tyk provides a very flexible [middleware chain]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}) where you can combine functions to implement the access controls you require to protect your upstream services. Of course, not all scenarios can be covered by Tyk's standard middleware functions, but you can use a virtual endpoint to apply whatever custom logic you require to optimize your API experience.
 
 ##### Dynamic Routing
 
