@@ -58,7 +58,15 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
 <details>
 <summary>--no-delete flag for partial synchronization</summary>
 
-Users can now prevent resource deletion during sync using the `--no-delete` flag, allowing more control over API synchronization.
+Added a --no-delete flag to prevent resource deletion during partial sync, giving users more control over API synchronization.
+
+</details>
+</li>
+<li>
+<details>
+<summary>Parallel processing for improved performance</summary>
+
+Improved synchronization speed by adding parallel processing, allowing faster execution of sync operations in large environments.
 
 </details>
 </li>
@@ -69,18 +77,9 @@ Users can now prevent resource deletion during sync using the `--no-delete` flag
 <ul>
 <li>
 <details>
-<summary>Parallel processing for improved performance</summary>
-
-Tyk Sync now supports running multiple processes in parallel, significantly boosting sync speed for large deployments.
-
-</details>
-</li>
-<li>
-<details>
 <summary>Optimized API update requests</summary>
 
-The system now only sends API update or create requests to the Dashboard when actual changes are detected, reducing unnecessary operations and improving efficiency.
-
+Fixed an issue where API synchronization was unnecessarily sending update or create requests to the Dashboard even when no changes were detected. This caused redundant operations and inefficiencies in large-scale deployments. The system now intelligently detects actual changes before making requests, optimizing performance.
 
 </details>
 </li>
@@ -88,7 +87,7 @@ The system now only sends API update or create requests to the Dashboard when ac
 <details>
 <summary>Updated API definitions</summary>
 
-Ensures compatibility with Tyk 5.8, allowing seamless integration with the latest Gateway and Dashboard features.
+Updated API definitions for full compatibility with Tyk 5.8, ensuring seamless integration with the latest Gateway and Dashboard features.
 
 </details>
 </li>
@@ -97,7 +96,7 @@ Ensures compatibility with Tyk 5.8, allowing seamless integration with the lates
 <details>
 <summary>Distroless Docker Image</summary>
 
-Starting v2.1.0 release, Tyk Sync will be using distroless docker image.
+Changed the Tyk Sync Docker image to a distroless base starting from version 2.1.0, reducing potential security vulnerabilities and minimizing the image size.
 
 </details>
 </li>
