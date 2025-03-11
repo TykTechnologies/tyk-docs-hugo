@@ -1452,7 +1452,7 @@ Tyk will automatically propagate tracing headers to APIs when tracing is enabled
 
 {{< note success >}}
 **Note**  
-Tyk's OpenTelemetry Tracing works with Jaeger and we recommend following our guide to [use OpenTelemetry with Jaeger]({{< ref "#api-management/logs-metrics#jaeger" >}}) rather than the following deprecated Open Tracing method. 
+Tyk's OpenTelemetry Tracing works with Jaeger and we recommend following our guide to [use OpenTelemetry with Jaeger]({{< ref "api-management/logs-metrics#jaeger" >}}) rather than the following deprecated Open Tracing method. 
 {{< /note >}}
 
 Prior to Tyk 5.2, you cannot use OpenTelemetry and so must use [OpenTracing](https://opentracing.io/) with the [Jaeger client libraries](https://www.jaegertracing.io/docs/1.11/client-libraries/) to send Tyk Gateway traces to Jaeger.

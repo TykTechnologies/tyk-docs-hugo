@@ -81,7 +81,7 @@ This object enables configuration of the basic allow list, block list and ignore
 You can configure a different target URL here which will be used instead of the value stored in `proxy.target_url`. Note that this will also override (and so is not compatible with) upstream load balancing and Service Discovery, if configured for this API.
 
 **Field: `version_data.versions.{version-name}.global_headers`**
-A `key:value` map of HTML headers to injext to the request.
+A `key:value` map of HTML headers to inject to the request.
 
 **Field: `version_data.versions.{version-name}.global_headers_remove`**
 A list of HTML headers to remove from the request.
