@@ -7,6 +7,9 @@ menu:
   main:
     parent: "Getting Started"
 weight: 6
+robots: "noindex"
+algolia:
+  importance: 0
 aliases:
   - /try-out-tyk/tutorials/create-portal-entry/
   - /tyk-api-gateway-v1-9/tutorials/set-up-your-portal/

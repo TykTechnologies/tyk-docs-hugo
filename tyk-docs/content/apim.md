@@ -8,6 +8,7 @@ aliases:
     - /getting-started/deployment-options/
 ---
 
+
 Tyk API Platform offers various deployment options, consisting of both [open source and proprietary]({{< ref "tyk-stack" >}})
 components.
 
@@ -22,9 +23,9 @@ Choosing the right one for your organization depends on your specific requiremen
 | [Tyk Dashboard]({{< ref "tyk-dashboard" >}})                                                                                                                                                                                       | -	          |✅	              |✅	 
 | [Single Sign On (SSO)]({{< ref "api-management/external-service-integration#single-sign-on-sso" >}})                                                                                                                                                         | -	          |✅	              |✅	      
 | [RBAC and API Teams]({{< ref "api-management/user-management#" >}})                                                                                                                                                                             | -	          |✅	              |✅	      
-| [Universal Data Graph]({{< ref "universal-data-graph" >}})                                                                                                                                                                         | -	          |✅	              |✅	      
+| [Universal Data Graph]({{< ref "api-management/data-graph#overview" >}})                                                                                                                                                                         | -	          |✅	              |✅	      
 | [Multi-Tenant]({{< ref "api-management/dashboard-configuration#organizations" >}})                                                                                                                                           | -	          |✅	              |✅	      
-| [Multi-Data Center]({{< ref "tyk-multi-data-centre#managing-geographically-distributed-gateways-to-minimize-latency-and-protect-data-sovereignty" >}})                                                                                                                                                                           | -	          |✅	              |✅	      
+| [Multi-Data Center]({{< ref "api-management/mdcb#managing-geographically-distributed-gateways-to-minimize-latency-and-protect-data-sovereignty" >}})                                                                                                                                                                           | -	          |✅	              |✅	      
 | [Developer Portal]({{< ref "tyk-developer-portal" >}})                                                                                                                                                                             | -		      |✅	              |✅	 
 | [Developer API Analytics]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}})                                                                                                                                                                   | -		      |✅	              |✅	   
 | Hybrid Deployments                                                                                                                                                                                                                 | -		      |-	              |✅

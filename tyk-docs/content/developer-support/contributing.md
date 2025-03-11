@@ -86,17 +86,17 @@ For your records, the following sections highlight the existing *INI tier 1 word
 - [cache_storage.master_name]({{< ref "tyk-oss-gateway/configuration#cache_storagemaster_name" >}})
 - [storage.master_name]({{< ref "tyk-oss-gateway/configuration#storagemaster_name" >}})
 - [slave_options]({{< ref "tyk-oss-gateway/configuration#slave_options" >}})
-- [blacklisted_ips]({{< ref "api-management/gateway-config-tyk-classic#ip-blocklist-middleware" >}})
-- [disable_ports_whitelist]({{< ref "key-concepts/tcp-proxy#allowing-specific-ports" >}})
-- [enable_ip_blacklisting]({{< ref "api-management/gateway-config-tyk-classic#ip-blocklist-middleware" >}})
-- [ports_whitelist]({{< ref "key-concepts/tcp-proxy#allowing-specific-ports" >}})
+- [blacklisted_ips]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}})
+- [disable_ports_whitelist]({{< ref "api-management/non-http-protocols#allowing-specific-ports" >}})
+- [enable_ip_blacklisting]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}})
+- [ports_whitelist]({{< ref "api-management/non-http-protocols#allowing-specific-ports" >}})
 
 ######  Tyk Classic API Definition {#gw-classic-api-definition}
 
 The [Tyk Gateway OpenAPI Document](https://github.com/TykTechnologies/tyk-docs/blob/master/tyk-docs/assets/others/gateway-swagger.yml) (Tyk Gateway swagger), includes references to the following Tyk Classic API Definition parameters:
 
-- [version_data.versions.{version-name}.extended_paths.black_list]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-classic#tyk-classic" >}}). There is also a parameter with equivalent functionality under the `paths` object (`version_data.versions.{version_name}.paths.black_list`).
-- [version_data.versions.{version-name}.extended_paths.white_list]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-classic#configuring-the-allow-list-in-the-tyk-classic-api-definition" >}}). There is also a parameter with equivalent functionality under the `paths` object (`version_data.versions.{version_name}.paths.while_list`).
+- [version_data.versions.{version-name}.extended_paths.black_list]({{< ref "api-management/traffic-transformation#api-definition-3" >}}). There is also a parameter with equivalent functionality under the `paths` object (`version_data.versions.{version_name}.paths.black_list`).
+- [version_data.versions.{version-name}.extended_paths.white_list]({{< ref "api-management/traffic-transformation#api-definition-1" >}}). There is also a parameter with equivalent functionality under the `paths` object (`version_data.versions.{version_name}.paths.while_list`).
 
 ##### Tyk Dashboard
 
@@ -110,7 +110,7 @@ The [Tyk Dashboard OpenAPI Document](https://github.com/TykTechnologies/tyk-docs
 
 **Dashboard UI**
 
-The Tyk Classic APIs *Endpoint Designer* shows configuration of [blacklist]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-classic#configuring-the-block-list-in-the-api-designer" >}}) and [whitelist]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-classic#configuring-the-allow-list-in-the-api-designer" >}}) middleware plugins.
+The Tyk Classic APIs *Endpoint Designer* shows configuration of [blacklist]({{< ref "api-management/traffic-transformation#api-designer-3" >}}) and [whitelist]({{< ref "api-management/traffic-transformation#api-definition-1" >}}) middleware plugins.
     
 ##### Tyk MDCB
 

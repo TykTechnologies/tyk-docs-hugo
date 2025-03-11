@@ -39,7 +39,7 @@ Tyk now can be used as a reverse proxy for your TCP services. It means that you 
 
 The main benefit of using Tyk as your TCP proxy is that functionality you used to managed your APIs now can be used for your TCP services as well. Features like load balancing, service discovery, Mutual TLS (both authorization and communication with upstream), certificate pinning: all work exactly the same way as for your HTTP APIs.
 
-See our [TCP Proxy Docs]({{< ref "key-concepts/tcp-proxy" >}}) for more details.
+See our [TCP Proxy Docs]({{< ref "api-management/non-http-protocols#tcp-proxy" >}}) for more details.
 
 ### APIs as Products
 
@@ -66,7 +66,7 @@ Other changes:
 
 Now you can set granular permissions on per user basis, by injecting permissions to the "scope" claim of a JSON Web Token. To make it work you need to provide mapping between the scope and policy ID, and thanks to enchanced policy merging capabilities mentioned above, Tyk will read the scope value from the JWT and will generate dynamic access rules. Your JWT scopes can look like `"users:read companies:write"` or similar, it is up to your imagination. OpenID supports it as well, but at the moment only if your OIDC provider can generate ID tokens in JWT format (which is very common this days).
 
-See our [JWT Scope docs]({{< ref "/api-management/client-authentication#use-json-web-tokens-jwt" >}}) for more details.
+See our [JWT Scope docs]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}) for more details.
 
 ### Go plugins
 
@@ -87,14 +87,14 @@ func AddFooBarHeader(rw http.ResponseWriter, r *http.Request) {
 }
 ```
 
-See our [Golang plugin documentation]({{< ref "plugins/supported-languages/golang" >}}) for more details.
+See our [Golang plugin documentation]({{< ref "api-management/plugins/golang#" >}}) for more details.
 
 ### Distributed tracing
 
 We have listened to you, and tracing is recently one of your most common requests. Distributed tracing takes your monitoring and profiling experience to the next level, since you can see the whole request flow, even if it has complex route though multiple services. And inside this flow, you can go deep down into the details like individual middleware execution performance.
 At the moment we are offering [OpenTracing](https://opentracing.io/) support, with [Zipkin](https://zipkin.io/) and [Jaeger](https://www.jaegertracing.io/) as supported tracers.
 
-See our [Distributed Tracing documentation]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview" >}}) for more details.
+See our [Distributed Tracing documentation]({{< ref "api-management/logs-metrics#opentelemetry" >}}) for more details.
 
 ### HMAC request signing
 
@@ -163,7 +163,7 @@ See our [Dashboard SSO documentation]({{< ref "api-management/dashboard-configur
 
 ### Importing WSDL APIs
 
-WSDL now is a first class citizen at Tyk. You can take your WSDL definition and simply import to the Dashboard, creating a nice boilerplate for your service. See [Import APIs]({{< ref "getting-started/import-apis" >}}) for more details.
+WSDL now is a first class citizen at Tyk. You can take your WSDL definition and simply import to the Dashboard, creating a nice boilerplate for your service. See [Import APIs]({{< ref "api-management/gateway-config-managing-classic#import-an-api" >}}) for more details.
 
 ### Updated Versions
 
@@ -745,7 +745,7 @@ We have added support for New Relic Instrumentation using:
 
 `"newrelic": {"app_name": "<app-id>", "license_key": "<key>"}`
 
-[Docs]({{< ref "basic-config-and-security/report-monitor-trigger-events/instrumentation" >}})
+[Docs]({{< ref "api-management/logs-metrics#statsd-instrumentation" >}})
 
 #### Default API Versioning
 
@@ -784,8 +784,8 @@ We have added support for specifying allowed  SSL ciphers using the following op
 * The JSVM `spec` object now has access to `APIID` and `OriginID` to reflect similar functionality of Coprocess plugins.
 * Plugins now have access to Host HTTP Header.
 
-[JSVM Docs]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide" >}})
-[Plugin Data Structure Docs]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures" >}})
+[JSVM Docs]({{< ref "api-management/plugins/javascript#using-javascript-with-tyk" >}})
+[Plugin Data Structure Docs]({{< ref "api-management/plugins/rich-plugins#rich-plugins-data-structures" >}})
 
 
 ### <a name="dashboard"></a>Tyk Dashboard v1.5.0
@@ -814,7 +814,7 @@ We have swapped out the old Getting started tutorial and added a new interactive
 
 We have extended the URL Rewrite plugin functionality by enabling users to create more advanced rewrite rules based on Header matches, Query string variable/value matches, Path part matches, (i.e. components of the path itself), Session metadata values, and Payload matches.
 
-[Docs]({{< ref "transform-traffic/url-rewriting" >}})
+[Docs]({{< ref "api-management/traffic-transformation#url-rewrite-middleware" >}})
 
 #### Portal Session Lifetime
 
@@ -912,7 +912,7 @@ Here are the packages and their versions we are releasing today: Tyk Gateway v2.
 
 #### Mutual TLS
 
-A major feature of this release is the implementation of Mutual TLS. Now you can protect your APIs by allow listing certificates, idenitfy users based on them, and increase security between Tyk and upstream API. For details, see [Mutual TLS]({{< ref "/api-management/client-authentication#use-mutual-tls" >}}).
+A major feature of this release is the implementation of Mutual TLS. Now you can protect your APIs by allow listing certificates, idenitfy users based on them, and increase security between Tyk and upstream API. For details, see [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}).
 
 
 #### Extended use of Multiple Policies
@@ -974,7 +974,7 @@ More SSO functionality is something that a lot of our customers have been asking
 ### <a name="gateway"></a>Tyk Gateway v2.4.0
 
 #### Mutual TLS support
-[Docs]({{< ref "/api-management/client-authentication#use-mutual-tls" >}})
+[Docs]({{< ref "api-management/client-authentication#use-mutual-tls" >}})
 
 #### Global API rate limits
 [Docs]({{< ref "api-management/rate-limit#rate-limiting-layers" >}})
@@ -1025,7 +1025,7 @@ We have added the `jsonMarshal` helper to the body transform templates. You can 
 
 Example: `{{ .myField | jsonMarshal }}`
 
-[Docs]({{< ref "transform-traffic/request-body" >}})
+[Docs]({{< ref "api-management/traffic-transformation#request-body-overview" >}})
 
 #### Added a blocking reload endpoint
 
@@ -1059,7 +1059,7 @@ This was very resource consuming and unstable feature. We recommend using load b
 ### <a name="dashboard"></a>Tyk Dashboard v1.4.0
 
 #### Mutual TLS support
-[Docs]({{< ref "/api-management/client-authentication#use-mutual-tls" >}})
+[Docs]({{< ref "api-management/client-authentication#use-mutual-tls" >}})
 
 #### Global API rate limits
 [Docs]({{< ref "api-management/rate-limit#rate-limiting-layers" >}})
@@ -1163,7 +1163,7 @@ This is a  UI only fix, it is still allowable via the API (which is OK).
 See https://tyk.io/docs/configure/tyk-pump-configuration/ for a sample pump.conf file.
 
 ### <a name="mdcb"></a> MDCB v1.4.0
-Added support for Mutual TLS, mentioned by Gateway and Dashboard above. See [Docs]({{< ref "/api-management/client-authentication#use-mutual-tls" >}})
+Added support for Mutual TLS, mentioned by Gateway and Dashboard above. See [Docs]({{< ref "api-management/client-authentication#use-mutual-tls" >}})
   
 Also fixed bug when Mongo connections became growing though the roof if client with wrong credentials tries to connect.
 

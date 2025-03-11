@@ -489,7 +489,7 @@ Note: If you are using `global.secrets.useSecretName`, you must configure the op
 This section explains how to configure the `tyk-gateway` section for updating the Gateway version, enabling TLS, enabling autoscaling etc.
 
 #### Update Tyk Gateway Version
-Set version of gateway at `tyk-gateway.gateway.image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/r/tykio/tyk-gateway/tags). Please check [Tyk Release notes]({{<ref "/developer-support/release-notes/gateway">}}) carefully while upgrading or downgrading.
+Set version of gateway at `tyk-gateway.gateway.image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/r/tykio/tyk-gateway/tags). Please check [Tyk Release notes]({{<ref "developer-support/release-notes/gateway">}}) carefully while upgrading or downgrading.
 
 #### Enabling TLS
 
@@ -586,7 +586,7 @@ An Ingress resource is created if `tyk-gateway.gateway.ingress.enabled` is set t
 
 *Control Port*
 
-Set `tyk-gateway.gateway.control.enabled` to true will allow you to run the [Gateway API]({{<ref "/tyk-gateway-api">}}) on a separate port and protect it behind a firewall if needed.
+Set `tyk-gateway.gateway.control.enabled` to true will allow you to run the [Gateway API]({{<ref "tyk-gateway-api">}}) on a separate port and protect it behind a firewall if needed.
 
 #### Sharding
 
@@ -688,9 +688,9 @@ To enable Pump, set `global.components.pump` to true, and configure below inside
 **Note**
 
 For additional information on Tyk Pump configurations, refer to the 
-[Setup Dashboard Analytics]({{<ref "tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config">}}) documentation.
+[Setup Dashboard Analytics]({{<ref "api-management/tyk-pump#setup-dashboard-analytics">}}) documentation.
 
-To explore the list of supported backends for Tyk Pump, please visit [Pump Backends]({{<ref "tyk-stack/tyk-pump/other-data-stores">}}).
+To explore the list of supported backends for Tyk Pump, please visit [Pump Backends]({{<ref "api-management/tyk-pump#external-data-stores">}}).
 {{< /note >}}
 
 #### Prometheus Pump
@@ -818,7 +818,7 @@ To enable [bootstrapping](#bootstrapping), set `global.components.bootstrap` to 
 {{< note success >}}
 **Note**
 
-During bootstrapping, admin user needs to reset its password. It may be denied by Dashboard OPA rules if [OPA]({{<ref "/tyk-dashboard/open-policy-agent">}}) was enabled. Please disable OPA during the initial bootstrapping or set Dashboard configuration [TYK_DB_SECURITY_ALLOWADMINRESETPASSWORD]({{<ref "tyk-dashboard/configuration#securityallow_admin_reset_password">}}) to true.
+During bootstrapping, admin user needs to reset its password. It may be denied by Dashboard OPA rules if [OPA]({{<ref "api-management/dashboard-configuration#extend-permissions-using-open-policy-agent-opa">}}) was enabled. Please disable OPA during the initial bootstrapping or set Dashboard configuration [TYK_DB_SECURITY_ALLOWADMINRESETPASSWORD]({{<ref "tyk-dashboard/configuration#securityallow_admin_reset_password">}}) to true.
 {{< /note >}}
 
 #### Bootstrapped Environments

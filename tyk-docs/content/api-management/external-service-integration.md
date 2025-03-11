@@ -499,10 +499,10 @@ There is a simplified flow, which does not require a corresponding OAuth client 
 
 ## SSO with OpenID Connect (OIDC)
 
-- Instruction on setting [SSO with Okta]({{< ref "" >}})
-- Instructions on setting [SSO with Auth0]({{< ref "" >}})
-- Instructions on setting [SSO with Keycloak]({{< ref "" >}})
-- Instructions on setting [SSO with AzureAD]({{< ref "" >}})
+- Instruction on setting [SSO with Okta]({{< ref "#oidc-with-okta" >}})
+- Instructions on setting [SSO with Auth0]({{< ref "#oidc-with-auth0" >}})
+- Instructions on setting [SSO with Keycloak]({{< ref "#oidc-with-keycloak" >}})
+- Instructions on setting [SSO with AzureAD]({{< ref "#oidc-with-azure-ad" >}})
 
 ### OIDC with Azure AD
 

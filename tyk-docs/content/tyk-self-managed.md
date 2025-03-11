@@ -357,7 +357,7 @@ helm upgrade tyk tyk-helm/tyk-stack -n $NAMESPACE \
 
 Now Tyk Dashboard should be accessible through service `dashboard-svc-tyk-tyk-dashboard` at port `3000`. You can login to Dashboard using the admin email and password to start managing APIs. Tyk Gateway will be accessible through service `gateway-svc-tyk-tyk-gateway.tyk.svc` at port `8080`.
 
-You are now ready to [create an API]({{<ref "getting-started/create-api">}}).
+You are now ready to [create an API]({{<ref "api-management/gateway-config-managing-classic#create-an-api">}}).
 
 For the complete installation guide and configuration options, please see [Tyk Stack Helm Chart]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}).
 
@@ -490,7 +490,7 @@ helm upgrade tyk tyk-helm/tyk-stack -n $NAMESPACE \
 
 Now Tyk Dashboard should be accessible through service `dashboard-svc-tyk-tyk-dashboard` at port `3000`. You can login to Dashboard using the admin email and password to start managing APIs. Tyk Gateway will be accessible through service `gateway-svc-tyk-tyk-gateway.tyk.svc` at port `8080`.
 
-You are now ready to [create an API]({{<ref "getting-started/create-api">}}).
+You are now ready to [create an API]({{<ref "api-management/gateway-config-managing-classic#create-an-api">}}).
 
 For the complete installation guide and configuration options, please see [Tyk Stack Helm Chart]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}).
 
@@ -798,7 +798,7 @@ Check [Tyk Gateway Sharding]({{< ref "api-management/multiple-environments#what-
 
 **Installing Tyk Enterprise Developer Portal**
 
-If you are deploying the **Tyk Enterprise Developer Portal**, set the appropriate values under the `enterprisePortal` section in your `values.yaml`. Please visit [Tyk Enterprise Developer Portal installation]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-helm" >}}) for a step by step guide.
+If you are deploying the **Tyk Enterprise Developer Portal**, set the appropriate values under the `enterprisePortal` section in your `values.yaml`. Please visit [Tyk Enterprise Developer Portal installation]({{< ref "portal/install#using-legacy-helm-chart" >}}) for a step by step guide.
 
 >**Note**: Helm chart supports Enterprise Portal v1.2.0+
 
@@ -1560,7 +1560,7 @@ latest: digest: sha256:d67b8f55d729bb56e06fe38e17c2016a36f2edcd4f01760c0e62a13bb
 
 Inspect the logs (`heroku logs -a infinite-plains-14949`) to check that deployment was successful, also the node should be registered by the Dashboard in "System Management" -> "Nodes and Licenses" section.
 
-You're ready to follow the guide on [creating and managing your APIs]({{< ref "getting-started/create-api" >}}) with this Heroku deployment.
+You're ready to follow the guide on [creating and managing your APIs]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}}) with this Heroku deployment.
 
 {{< note success >}}
 **Note**  
@@ -1605,7 +1605,7 @@ Apps in private spaces don't enable SSL/TLS by default. It needs to be configure
 
 **Gateway Plugins**
 
-In order to enable [rich plugins]({{< ref "plugins/supported-languages/rich-plugins" >}}) for the Gateway, please set the following Heroku config option to either `python` or `lua` depending on the type of plugins used:
+In order to enable [rich plugins]({{< ref "api-management/plugins/rich-plugins#" >}}) for the Gateway, please set the following Heroku config option to either `python` or `lua` depending on the type of plugins used:
 ```{.copyWrapper}
 heroku config:set TYK_PLUGINS="python" -a infinite-plains-14949
 ```
@@ -2106,7 +2106,7 @@ For a password, we recommend a combination of alphanumeric characters, with both
 
     **Configure your Developer Portal**
 
-    To set up your [Developer Portal]({{< ref "/content/tyk-developer-portal.md" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalog]({{< ref "/content/getting-started/tutorials/publish-api.md" >}}).
+    To set up your [Developer Portal]({{< ref "tyk-developer-portal" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalog]({{< ref "getting-started/tutorials/publish-api" >}}).
 
 ##### Using Ansible
 
@@ -2890,7 +2890,7 @@ You can now log in to the Tyk Dashboard from `127.0.0.1:3000`, using the usernam
 
 ###### **Configure your Developer Portal**
 
-To set up your [Developer Portal]({{< ref "/content/tyk-developer-portal.md" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalog]({{< ref "/content/getting-started/tutorials/publish-api.md" >}}).
+To set up your [Developer Portal]({{< ref "tyk-developer-portal" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalog]({{< ref "getting-started/tutorials/publish-api" >}}).
 
 ##### Using Ansible
 
@@ -3646,7 +3646,7 @@ This demo is NOT intended for production use or performance testing, since it us
 {{< note success >}}
 **Note**  
 
-The Tyk Pro Docker demo does not provide access to the [Developer Portal]({{< ref "tyk-developer-portal/tyk-enterprise-developer-portal" >}}).
+The Tyk Pro Docker demo does not provide access to the [Developer Portal]({{< ref "portal/overview#" >}}).
 {{< /note >}}
 
 #### Prerequisites
@@ -4048,7 +4048,7 @@ You can now log in to the Tyk Dashboard from `127.0.0.1:3000`, using the usernam
 
 **Configure your Developer Portal**
 
-To set up your [Developer Portal]({{< ref "/content/tyk-developer-portal.md" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalog]({{< ref "/content/getting-started/tutorials/publish-api.md" >}}).
+To set up your [Developer Portal]({{< ref "tyk-developer-portal" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalog]({{< ref "getting-started/tutorials/publish-api" >}}).
 
 ## Planning for Production
 
@@ -4148,7 +4148,7 @@ To keep real-time health-check data and make it available to the Health-check AP
 
 #### Selecting the appropriate log level
 
-Tyk provides multiple [log levels]({{< ref "log-data" >}}): error, warn, info, debug. Setting higher log levels consumes more computing resources and would have an impact on the Tyk component. Tyk installations default to log level info unless modified by config files or environment variables.
+Tyk provides multiple [log levels]({{< ref "api-management/logs-metrics#system-logs" >}}): error, warn, info, debug. Setting higher log levels consumes more computing resources and would have an impact on the Tyk component. Tyk installations default to log level info unless modified by config files or environment variables.
 
 It is recommended to set to debug only for the duration of troubleshooting as it adds heavier resource overheads. In high performance use cases for Tyk Gateway, consider setting a log level lower than info to improve overall throughput.
 
@@ -4187,7 +4187,7 @@ Please read carefully through this [doc]({{< ref "api-management/client-authenti
 
 #### Analytics Optimizations
 
-If using a [Redis cluster](https://redis.io/docs/management/scaling/) under high load it is recommended that analytics are distributed among the Redis shards. This can be configured by setting the [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) parameter to true. Furthermore, analytics can also be disabled for an API using the [do_not_track]({{< ref "api-management/gateway-config-tyk-classic#other-root-objects" >}}) configuration parameter. Alternatively, tracking for analytics can be disabled for selected endpoints using the [do not track endpoint plugin]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-tyk-oas/" >}}).
+If using a [Redis cluster](https://redis.io/docs/management/scaling/) under high load it is recommended that analytics are distributed among the Redis shards. This can be configured by setting the [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) parameter to true. Furthermore, analytics can also be disabled for an API using the [do_not_track]({{< ref "api-management/gateway-config-tyk-classic#traffic-logs" >}}) configuration parameter. Alternatively, tracking for analytics can be disabled for selected endpoints using the [do not track endpoint plugin]({{< ref "api-management/traffic-transformation#do-not-track-using-tyk-oas" >}}).
 
 ##### Protobuf Serialisation
 
@@ -4392,7 +4392,7 @@ From **Tyk 5.3**, additional options are available for more granular control:
 ```
 
 **Capping Analytics**
-Tyk Gateways can generate a lot of analytics data. Be sure to read about [capping your Dashboard analytics]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage" >}})
+Tyk Gateways can generate a lot of analytics data. Be sure to read about [capping your Dashboard analytics]({{< ref "api-management/tyk-pump#tyk-pump-capping-analytics-data-storage" >}})
 
 
 ##### Redis Sizing Guidelines
@@ -4452,7 +4452,7 @@ The network topology we like to use is:
 {{< note success >}} 
 **Note** 
 
-If you are using [DocumentDB](https://aws.amazon.com/documentdb/), [capped collections]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage" >}}) are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details. 
+If you are using [DocumentDB](https://aws.amazon.com/documentdb/), [capped collections]({{< ref "api-management/tyk-pump#tyk-pump-capping-analytics-data-storage" >}}) are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details. 
 {{< /note >}} 
 
 **Special notes for MongoDB Atlas**
@@ -4680,7 +4680,7 @@ Circuit breakers operate on a single Tyk Gateway, they do not centralise or pool
 
 **Circuit breaker events**
 
-The circuit breaker automatically controls the flow of requests to the upstream services quickly and efficiently, but it is equally important to alert you to the fact that there is an issue and to confirm when traffic will recommence once the issue is resolved. Tyk's [Event]({{< ref "basic-config-and-security/report-monitor-trigger-events" >}}) system provides the method by which the circuit breaker can alert you to these occurrences.
+The circuit breaker automatically controls the flow of requests to the upstream services quickly and efficiently, but it is equally important to alert you to the fact that there is an issue and to confirm when traffic will recommence once the issue is resolved. Tyk's [Event]({{< ref "api-management/gateway-events#event-categories" >}}) system provides the method by which the circuit breaker can alert you to these occurrences.
 
 - When the circuit breaker trips (from closed to open), Tyk will generate a `BreakerTripped` event
 - When the breaker resets (from open to closed), whether at the end of the cooldown period or if connection is restored while in _half-open_ mode, Tyk will generate a `BreakerReset` event
@@ -4692,7 +4692,7 @@ For the generic `BreakerTriggered` event, the state change will be indicated in 
 
 **API-level circuit breaker**
 
-Tyk does not have an API-level circuit breaker that can be applied across all endpoints. If you are using the Tyk Dashboard, however, then you are able to use an [Open Policy Agent]({{< ref "tyk-dashboard/open-policy-agent.md" >}}) to append a circuit breaker to every API/Service using the regex `.*` path.
+Tyk does not have an API-level circuit breaker that can be applied across all endpoints. If you are using the Tyk Dashboard, however, then you are able to use an [Open Policy Agent]({{< ref "api-management/dashboard-configuration#extend-permissions-using-open-policy-agent-opa" >}}) to append a circuit breaker to every API/Service using the regex `.*` path.
 
 <hr>
 
@@ -4895,7 +4895,7 @@ Use the *save* or *create* buttons to save the changes and activate the middlewa
 
 **Step 4: Optionally configure webhooks to respond to the circuit breaker events**
 
-The Dashboard supports the separate `BreakerTripped` and `BreakerReset` events, but not the combined `BreakerTriggered` [event type]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}). You should use **API Designer > Advanced Options** to add a Webhook plugin to your endpoint for each event.
+The Dashboard supports the separate `BreakerTripped` and `BreakerReset` events, but not the combined `BreakerTriggered` [event type]({{< ref "api-management/gateway-events#event-types" >}}). You should use **API Designer > Advanced Options** to add a Webhook plugin to your endpoint for each event.
 
 {{< img src="/img/dashboard/system-management/webhook-breaker.png" alt="Webhook events" >}}
 
@@ -5529,7 +5529,7 @@ spec:
 
 ##### gRPC load balancing
 
-You can also perform [gRPC Load balancing]({{< ref "key-concepts/grpc-proxy#grpc-load-balancing" >}}).
+You can also perform [gRPC Load balancing]({{< ref "api-management/non-http-protocols#grpc-load-balancing" >}}).
 
 
 #### Service Discovery
@@ -5984,7 +5984,7 @@ Securely store sensitive information like API keys, passwords, and certificates 
 
 ##### Support per-machine variables
 
-Storing local settings within the Tyk Gateway's configuration file allows you to have per instance variables, such as a machine ID, and inject these into API requests and responses using [transformation middleware]({{< ref "advanced-configuration/transform-traffic" >}}).
+Storing local settings within the Tyk Gateway's configuration file allows you to have per instance variables, such as a machine ID, and inject these into API requests and responses using [transformation middleware]({{< ref "api-management/traffic-transformation#" >}}).
 
 #### How external Key-Value storage works
 
@@ -6110,11 +6110,11 @@ From v5.3.0 onward, environment variables can have any `KEY_NAME`, and the full 
 ###### Transformation middleware
 
 Key-value references can be included in the following middleware, with the values retrieved dynamically when the middleware is called (during processing of an API request or response):
-- [request body transform]({{< ref "transform-traffic/request-body" >}})
-- [request header transform]({{< ref "transform-traffic/request-headers" >}})
-- [URL rewrite]({{< ref "transform-traffic/url-rewriting" >}})
-- [response body transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}})
-- [response header transform]({{< ref "advanced-configuration/transform-traffic/response-headers" >}})
+- [request body transform]({{< ref "api-management/traffic-transformation#request-body-overview" >}})
+- [request header transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}})
+- [URL rewrite]({{< ref "api-management/traffic-transformation#url-rewrite-middleware" >}})
+- [response body transform]({{< ref "api-management/traffic-transformation#response-body-overview" >}})
+- [response header transform]({{< ref "api-management/traffic-transformation#response-headers-overview" >}})
 
 To reference the *Value* assigned to a *Key* in one of the KV stores from these middleware use the following notation:
 - Consul: `$secret_consul.key`
@@ -6466,7 +6466,7 @@ These other Tyk components won’t see load proportional to your API requests.  
 
 The Tyk Dashboard liveness health check endpoint can be configured [here]({{< ref "tyk-dashboard/configuration#health_check_endpoint_name" >}}). 
 
-The Tyk MDCB liveness health check endpoint can be configured [here]({{< ref "tyk-multi-data-centre/setup-controller-data-centre#health-check" >}}). 
+The Tyk MDCB liveness health check endpoint can be configured [here]({{< ref "api-management/mdcb#health-check" >}}). 
 
 Currently, Tyk Dashboard and MDCB liveness endpoints only report whether the service is operational. It is important to note that the service may not yet be ready for use if it is unable to establish a connection with its dependent components (such as Redis and Datastore) or if they are offline.
 

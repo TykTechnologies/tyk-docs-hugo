@@ -294,7 +294,7 @@ Learn More: [TykOasApiDefinition in Security Policy]({{<ref "api-management/auto
 
 Tyk Operator now supports event handler integration for ApiDefinition, enabling webhooks to be triggered by specific API events. This allows for real-time, event-driven automation between Tyk and other systems, sending notifications or executing actions as events occur in the API lifecycle. The event_handlers field in the ApiDefinition CRD makes it easy to set up webhook-driven processes for better control and automation across your services.
 
-Learn More: [Event Webhook with Tyk Classic]({{<ref "product-stack/tyk-gateway/basic-config-and-security/report-monitor-and-trigger-events/event-webhook-tyk-classic">}})
+Learn More: [Event Webhook with Tyk Classic]({{<ref "api-management/gateway-events#webhook-event-handlers-with-tyk-classic-apis">}})
 </details>
 </li>
 <li>
@@ -428,10 +428,10 @@ For details please refer to the [changelog]({{< ref "#Changelog-v0.18.0">}}) bel
 
 Added to ApiDefinition [Custom Resource Definition (CRD)](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/): 
 
-- [introspection]({{<ref "graphql/introspection#turning-off-introspection">}}) option to enable/disable GraphQL introspection
-- [graphql.proxy.auth_headers]({{<ref "graphql-proxy-only#creating-a-graphql-api-via-the-dashboard-ui">}})
-- [graphql.proxy.subscription_type]({{<ref "getting-started/key-concepts/graphql-subscriptions">}})
-- [graphql.proxy.request_headers]({{<ref "graphql/gql-headers#request-headers">}})
+- [introspection]({{<ref "api-management/graphql#turning-off-introspection">}}) option to enable/disable GraphQL introspection
+- [graphql.proxy.auth_headers]({{<ref "api-management/graphql#creating-a-graphql-api-via-the-dashboard-ui">}})
+- [graphql.proxy.subscription_type]({{<ref "api-management/graphql#graphql-subscriptions">}})
+- [graphql.proxy.request_headers]({{<ref "api-management/graphql#request-headers">}})
 - graphql.proxy.use_response_extensions
 - graphql.proxy.request_headers_rewrite
 - graphql.proxy.features
