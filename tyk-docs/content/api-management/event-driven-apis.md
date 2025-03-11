@@ -11,6 +11,8 @@ aliases:
   - /product-stack/tyk-streaming/streams-configuration-using-ui
   - /product-stack/tyk-streaming/deployment-considerations
   - /product-stack/tyk-streaming/developer-portal-integration
+  - /api-management/async-apis/use-cases
+  - /api-management/async-apis/advanced-use-cases
 
   - /product-stack/tyk-streaming/getting-started
   - /product-stack/tyk-streaming/configuration/inputs/amqp-0-9/

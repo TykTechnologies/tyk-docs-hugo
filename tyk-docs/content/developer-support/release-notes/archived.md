@@ -163,7 +163,7 @@ See our [Dashboard SSO documentation]({{< ref "api-management/dashboard-configur
 
 ### Importing WSDL APIs
 
-WSDL now is a first class citizen at Tyk. You can take your WSDL definition and simply import to the Dashboard, creating a nice boilerplate for your service. See [Import APIs]({{< ref "getting-started/import-apis" >}}) for more details.
+WSDL now is a first class citizen at Tyk. You can take your WSDL definition and simply import to the Dashboard, creating a nice boilerplate for your service. See [Import APIs]({{< ref "api-management/gateway-config-managing-classic#import-an-api" >}}) for more details.
 
 ### Updated Versions
 
@@ -814,7 +814,7 @@ We have swapped out the old Getting started tutorial and added a new interactive
 
 We have extended the URL Rewrite plugin functionality by enabling users to create more advanced rewrite rules based on Header matches, Query string variable/value matches, Path part matches, (i.e. components of the path itself), Session metadata values, and Payload matches.
 
-[Docs]({{< ref "transform-traffic/url-rewriting" >}})
+[Docs]({{< ref "api-management/traffic-transformation#url-rewrite-middleware" >}})
 
 #### Portal Session Lifetime
 
@@ -1025,7 +1025,7 @@ We have added the `jsonMarshal` helper to the body transform templates. You can 
 
 Example: `{{ .myField | jsonMarshal }}`
 
-[Docs]({{< ref "transform-traffic/request-body" >}})
+[Docs]({{< ref "api-management/traffic-transformation#request-body-overview" >}})
 
 #### Added a blocking reload endpoint
 
