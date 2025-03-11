@@ -34,4 +34,4 @@ Environment variables (env var) can be used to override the settings defined in 
 |HTTP endpoints           |      8181      |
 
 
-{{< include "mdcb-config.md" >}}
+{{< include "mdcb-config" >}}

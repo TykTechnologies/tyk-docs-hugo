@@ -50,7 +50,7 @@ Otherwise, you can design an API from scratch or a template if you have configur
 * **APIs**: The APIs setup allows you to create and access your APIs. If this is your first time setting up an API, we suggest you use an example to learn more or you can go to [Configure your First API](/getting-started/configure-first-api) to learn more.
 {{< img src="/img/getting-started/api-management-apis.png" alt="API Management APIs" >}}
 
-* **API Templates**: API Templates allow you to create APIs with preconfigured settings quickly. You can set these up manually or save them from an API which you've already created. You can learn more about API Templates [here](/product-stack/tyk-dashboard/advanced-configurations/templates/template-overview/).
+* **API Templates**: API Templates allow you to create APIs with preconfigured settings quickly. You can set these up manually or save them from an API which you've already created. You can learn more about API Templates [here](/api-management/dashboard-configuration#governance-using-api-templates).
 
 * **Examples**: In Examples, you will find a few sample projects we put together to help you in your journey. We suggest you start with the Tyk OAS APIs and move on to GraphQL and UDG APIs to supplement learning how to setup your API.
 
@@ -70,8 +70,8 @@ Otherwise, you can design an API from scratch or a template if you have configur
 {{< img src="/img/getting-started/tabs-user-management.png" alt="User Management Side Bar" >}}
 
 * **Users**: Here, you can add, revoke, delete, or edit the details of users that need admin access to your Tyk dashboard. 'Revoking' a user will suspend their access without deleting their account. You can learn more about users [here](/tyk-dashboard-api/users).
-* **User Groups**: Similar as a **policy** is to a **key**, a **user group** is to a **user**. By defining user groups, you aggregate the permissions and access controls for multiple users. When you setup a user with a user group, they inherit the user groups' permissions. You can learn more about user groups [here](/tyk-apis/tyk-dashboard-api/user-groups).
-* **User Settings**: In User Settings, you can setup [TIB profiles](/tyk-stack/tyk-identity-broker/about-profiles/). This allows your users to access Tyk-managed APIs using their existing credentials.
+* **User Groups**: Similar as a **policy** is to a **key**, a **user group** is to a **user**. By defining user groups, you aggregate the permissions and access controls for multiple users. When you setup a user with a user group, they inherit the user groups' permissions. You can learn more about user groups [here](/api-management/dashboard-configuration#user-groups-api).
+* **User Settings**: In User Settings, you can setup [TIB profiles](/api-management/external-service-integration#exploring-tib-profiles). This allows your users to access Tyk-managed APIs using their existing credentials.
 
 #### Monitoring
 {{< img src="/img/getting-started/tabs-monitoring.png" alt="Monitoring Side Bar" >}}
@@ -89,6 +89,40 @@ Otherwise, you can design an API from scratch or a template if you have configur
 
 * **OPA Rules**: You can use this tab to edit your [OPA Rules](/tyk-dashboard/open-policy-agent/)- you can use these custom rules to control the behavior of all of your dashboard APIs. For example, you can restrict regular users to GET requests only, while allowing POST requests for admin roles. 
 
+* **Nodes & Licenses**: This page provides an overview of the Tyk installation, including license usage metrics and Gateway status. This is available only for `Tyk Self Managed` installations.
+
+    {{< img src="/img/getting-started/tabs-system-management-license.png" alt="System Management Side Bar" >}}
+
+    1. **License Information**:
+
+        - **Active Gateways**: Shows the number of available active gateways. An active gateway refers to a Tyk Gateway instance currently connected to a [Control Plane]({{< ref "api-management/mdcb#control-plane" >}}) and actively processing API requests. 
+            
+            **Note:** It doesn't count the [Data Plane]({{< ref "api-management/mdcb#data-plane" >}}).
+        
+        - **Total Gateways Available**: Total number of Gateways available per the license.
+        - **Remaining Gateways**: Unused license slots.
+        - **License Expiry**: Indicates the remaining time until the license expires (e.g., 'in 8 days').
+
+    2. **Active Gateways**:
+
+        - Lists the currently active gateways along with their hostnames.
+        - Includes a status indicator (green dot) to signify active connections.
+
+    3. **License Usage**:
+    
+        - It provides a visual representation of the number of **APIs** loaded in the gateway and displays the minimum, maximum, and average.
+
+    3. **Data Plane License Usage**:
+    
+        - It visually represents the maximum, minimum, and average number of [Data Planes]({{< ref "api-management/mdcb#data-plane" >}}) per day. The x-axis is the dates, while the Y axis is the number of data planes connected; for example, if we execute one cluster with groupID "A" and another with groupID "B," we will get two as max, without caring how many gateways running inside each cluster.
+
+    4. **Gateway License Usage**:
+
+        - This provides a visual representation of the maximum, minimum, and average number of total gateways (all deployed gateways, whether they are part of a data plane or control plane).
+
+    5. **Total API Traffic**:
+
+        - Provides a visual representation of **Total API Traffic** across all Gateways in the installation. This can be viewed over the past month or day.
 
 #### Classic Portal
 {{< img src="/img/getting-started/tabs-classic-portal.png" alt="Classic Portal Side Bar" >}}
