@@ -7,6 +7,9 @@ menu:
 weight: 1 
 aliases:
     - /tyk-developer-portal/keycloak-dcr
+robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 We are going walk you through a basic integration of Tyk with Keycloak using the [OpenID Connect Dynamic Client Registration protocol](https://tools.ietf.org/html/rfc7591). Our current implementation provides support for the client credentials flow with support for {{< tooltip >}}JWT{{< definition >}} JSON Web Tokens{{< /definition >}}{{< /tooltip >}}. To the developer it works like this:
@@ -109,7 +112,7 @@ Tyk lets you set global portal settings that apply to **all portal-listed APIs**
 
 **Providers:** Different providers might implement the standard in slightly different ways, Tyk provides a specific driver for each one. For IDPs that aren’t on the list use the **Other** option.
 
-**Grant Types:** The [OAuth 2.0 grant types]({{< ref "/api-management/client-authentication#use-tyk-as-an-oauth-20-authorization-server" >}}) that will be used by the client, see the [specification](https://openid.net/specs/openid-connect-registration-1_0.html#rfc.section.2) for more details.
+**Grant Types:** The [OAuth 2.0 grant types]({{< ref "api-management/client-authentication#use-tyk-as-an-oauth-20-authorization-server" >}}) that will be used by the client, see the [specification](https://openid.net/specs/openid-connect-registration-1_0.html#rfc.section.2) for more details.
 
 **Token Endpoint Auth Method:** defines the way the client will authenticate against the token endpoint.
 

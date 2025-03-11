@@ -1,6 +1,6 @@
 ---
 date: 2017-03-24T17:10:33Z
-title: Dynamic Client Registration
+title: Classic Portal - Dynamic Client Registration
 menu:
   main:
     parent: "Tyk Portal Classic"
@@ -8,6 +8,9 @@ weight: 3
 aliases:
   - /tyk-stack/tyk-developer-portal/dynamic-client-registration/
   - /tyk-developer-portal/dynamic-client-registration
+robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 ## OAuth 2.0 Dynamic Client Registration Protocol (DCR)

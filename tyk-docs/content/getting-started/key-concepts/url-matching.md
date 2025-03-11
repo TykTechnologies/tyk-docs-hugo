@@ -34,14 +34,14 @@ When configuring APIs, precise URL path matching helps developers:
 URL path matching is fundamental to the behavior of various Tyk middleware, including:
 
 - [Granular access control]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}})
-- [Allow List]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}})
-- [Block List]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware" >}})
-- [Request and Response transformation]({{< ref "advanced-configuration/transform-traffic" >}})
+- [Allow List]({{< ref "api-management/traffic-transformation#allow-list-overview" >}})
+- [Block List]({{< ref "api-management/traffic-transformation#block-list-overview" >}})
+- [Request and Response transformation]({{< ref "api-management/traffic-transformation#" >}})
 
 {{< note success >}}
 **Note**  
 
-The [URL Rewriting]({{< ref "transform-traffic/url-rewriting#how-url-rewriting-works" >}}) middleware's
+The [URL Rewriting]({{< ref "api-management/traffic-transformation#working-13" >}}) middleware's
 rule check implements regular expression matching only: it does not apply URL path matching logic and is not
 affected by the configurations described in this section
 {{< /note >}}
@@ -91,12 +91,12 @@ Tyk is acting as a secure proxy between the client and upstream service, so when
 <br>
 Thus a request to `<gateway-address>/<listen-path>/<version-identifier>/<endpoint-path>` will be proxied to `<target-url>/<listen-path>/<version-identifier>/<endpoint-path>`.
 <br>
-The [strip listen path]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#listenpath" >}}) option in the API definition is provided to remove the *listen path* from the upstream request; this allows differentiation between the publicly exposed API and private upstream API, for example to provide a cleaner, user-friendly facade to a legacy upstream service.
+The [strip listen path]({{< ref "api-management/gateway-config-tyk-oas#listenpath" >}}) option in the API definition is provided to remove the *listen path* from the upstream request; this allows differentiation between the publicly exposed API and private upstream API, for example to provide a cleaner, user-friendly facade to a legacy upstream service.
 {{< /note >}}
 
 ### Versioning identifier
 
-If [URL path versioning]({{< ref "product-stack/tyk-gateway/advanced-configurations/api-versioning/api-versioning#request-url-path" >}}) is in use for an API, Tyk will perform a match of the first fragment after the *listen path* to identify which version of the API should be invoked.
+If [URL path versioning]({{< ref "api-management/api-versioning#request-url-path" >}}) is in use for an API, Tyk will perform a match of the first fragment after the *listen path* to identify which version of the API should be invoked.
 
 ### Endpoint path
 
