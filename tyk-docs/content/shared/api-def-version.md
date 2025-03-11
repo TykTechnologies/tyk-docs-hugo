@@ -383,7 +383,7 @@ The `path` and `method` properties are the same as all other `extended_path` mid
 * `version_data.{version-name}.extended_paths.circuit_breakers.threshold_percent`: The threshold to use for triggering an event, in this case it is between 0 and 1, with 1 being 100% of requests.
 * `version_data.{version-name}.extended_paths.circuit_breakers.samples`: The number of samples to apply the threshold to, so `x%` of `y` samples will trip the circuit.
 * `version_data.{version-name}.extended_paths.circuit_breakers.return_to_service_after`: The number of seconds to take the path offline. Once this time limit is up, the breaker is reset and the service comes back online.
-* `version_data.{version-name}.extended_paths.url_rewrites`: Configuration for the [URL rewrite]({{< ref "product-stack/tyk-gateway/middleware/url-rewrite-middleware" >}}) middleware.
+* `version_data.{version-name}.extended_paths.url_rewrites`: Configuration for the [URL rewrite]({{< ref "api-management/traffic-transformation#url-rewriting-overview" >}}) middleware.
 
 * `version_data.{version-name}.extended_paths.url_rewrites.match_pattern`: This is the match pattern to use to extract parameters from the URL.
 

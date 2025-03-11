@@ -116,7 +116,7 @@ SQLite support has been fully removed from Pump.
 
 ### 1.11.2 Release Notes
 
-#### Release Date 10 January 2024
+#### Release Date 10 January 2025
 
 #### Release Highlights
 

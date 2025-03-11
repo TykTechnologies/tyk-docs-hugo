@@ -228,7 +228,7 @@ It is very likely that an `AuthFailure` event will fire on the same endpoint mor
 
 ##### Webhook payload
 
-When your webhook event handler is triggered, it will send an HTTP request to the configured target. For HTTP methods that support a request body, for example `POST`, the event handler will process a [Go template]({{< ref "product-stack/tyk-gateway/references/go-templates" >}}) to produce the payload.
+When your webhook event handler is triggered, it will send an HTTP request to the configured target. For HTTP methods that support a request body, for example `POST`, the event handler will process a [Go template]({{< ref "api-management/traffic-transformation#go-templates" >}}) to produce the payload.
 
 If no template is provided in the webhook event handler configuration in the API definition, Tyk Gateway will look for the default file `templates/default_webhook.json`. Any text file accessible to the Gateway can be used to store the Go template to be used by the event handler when constructing the payload.
 
@@ -870,7 +870,7 @@ If you are using our [Classic Developer Portal]({{< ref "tyk-developer-portal/ty
 
 The default quota consumption monitor will be triggered at the same level of quota usage for all users. Sometimes you might want to have a more granular approach with different triggering thresholds per user or organization. Sometimes you might want to fire the event at multiple thresholds, for example when the user hits 50%, 75% and 90% of their allowed quota.
 
-You can set user specific trigger levels for a user by additionally adding a `monitor` section to the access key ([Session Object]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}})). This has one field, which is an array of `trigger_limits` (thresholds) that must be in *descending* order and represent the percentage of the quota that must be reached in order for the trigger to be fired, for example:
+You can set user specific trigger levels for a user by additionally adding a `monitor` section to the access key ([Session Object]({{< ref "api-management/policies#what-is-a-session-object" >}})). This has one field, which is an array of `trigger_limits` (thresholds) that must be in *descending* order and represent the percentage of the quota that must be reached in order for the trigger to be fired, for example:
 
 ```yaml
 "monitor": {
