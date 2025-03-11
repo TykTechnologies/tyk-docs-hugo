@@ -4139,7 +4139,7 @@ Added a new feature that allows clients to retrieve the trace ID from response h
 <details>
 <summary>Allow detailed tracing to be enabled/disabled at API level</summary>
 
-Added configuration parameter to enable/disable [detail_tracing]({{< ref "api-management/logs-metrics#enable-detailed-tracing-at-api-level-optional" >}}) for *Tyk Classic API*.
+Added configuration parameter to enable/disable [detailed_tracing]({{< ref "api-management/logs-metrics#capturing-detailed-logs" >}}) for *Tyk Classic API*.
 </details>
 </li>
 <li>
