@@ -1448,7 +1448,7 @@ spec:
 
 #### IP Allowlist
 
-To enable [IP Allowlist]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control">}}), set the following fields:
+To enable [IP Allowlist]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}}), set the following fields:
 
 * `enable_ip_whitelisting`: Enables IPs allowlist. When set to `true`, only requests coming from the explicit list of IP addresses defined in (`allowed_ips`) are allowed through.
 * `allowed_ips`: A list of strings that defines the IP addresses (in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation) notation) that are allowed access via Tyk.
@@ -1476,7 +1476,7 @@ spec:
 
 #### IP Blocklist
 
-To enable [IP Blocklist]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control">}}), set the following fields:
+To enable [IP Blocklist]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}}), set the following fields:
 
 * `enable_ip_blacklisting`: Enables IPs blocklist. If set to `true`, requests coming from the explicit list of IP addresses (blacklisted_ips) are not allowed through.
 * `blacklisted_ips`: A list of strings that defines the IP addresses (in [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation) notation) that are blocked access via Tyk. This list is explicit and wildcards are currently not supported. 
@@ -5000,7 +5000,7 @@ The TykStreamsApiDefinition Custom Resource Definition (CRD) manages [Async API 
 
 ##### TykStreamsApiDefinition Features
 
-`TykStreamsApiDefinition` can support all features of [Tyk Streams]({{< ref "api-management/event-driven-apis#">}}). You just need to provide the Tyk Streams API definition via a ConfigMap. In addition to managing the CRUD (Create, Read, Update, Delete) of Tyk Streams API resources, the Tyk Operator helps you better manage resources through object linking to Security Policies. See below for a list of Operator features and examples:
+`TykStreamsApiDefinition` can support all features of [Tyk Streams]({{< ref "api-management/event-driven-apis#" >}}). You just need to provide the Tyk Streams API definition via a ConfigMap. In addition to managing the CRUD (Create, Read, Update, Delete) of Tyk Streams API resources, the Tyk Operator helps you better manage resources through object linking to Security Policies. See below for a list of Operator features and examples:
 
 | Features | Support | Supported From | Comments | Example |
 |----------|---------|-----------------|----------|--------|
