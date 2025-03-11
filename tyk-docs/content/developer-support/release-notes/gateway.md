@@ -98,7 +98,7 @@ If you are upgrading to 5.8.0, please follow the detailed [upgrade instructions]
     docker pull tykio/tyk-gateway:v5.8.0
     ``` 
 - Helm charts
-  - [tyk-charts v2.2.0]({{<ref "developer-support/release-notes/helm-chart#220-release-notes" >}})
+  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#220-release-notes" >}})
 
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
@@ -136,6 +136,13 @@ If you have existing Tyk Classic APIs, you can now consider migrating to Tyk OAS
 <summary>Upgraded to Golang 1.23</summary>
 
 Tyk Gateway now runs on Golang 1.23, bringing security and performance improvements. Key changes include unbuffered Timer/Ticker channels, removal of 3DES cipher suites, and updates to X509KeyPair handling. Users may need to adjust their setup for compatibility.
+</details>
+</li>
+<li>
+<details>
+<summary>Support for the Latest JSON Schema Version</summary>
+
+We have updated the library that supports JSON schema validation in the Tyk Classic Validate JSON middleware. This has introduced improved error messaging when a request does not match the expected schema, reporting where the error exists in the request payload.
 </details>
 </li>
 <li>
