@@ -56,7 +56,7 @@ Given the time difference between your upgrade and the release of this version, 
 There are no deprecations in this release.
 
 #### Upgrade instructions
-For users currently on v2.8.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower minor), it is advisable to bypass version 2.8.0 and proceed directly to this latest patch release.
+For users currently on v2.7.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower minor), it is advisable to bypass version 2.7.0 and proceed directly to this latest patch release.
 <br/>
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
