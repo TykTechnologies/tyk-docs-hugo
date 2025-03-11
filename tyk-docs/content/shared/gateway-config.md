@@ -26,7 +26,7 @@ Custom hostname for the Control API
 ENV: <b>TYK_GW_CONTROLAPIPORT</b><br />
 Type: `int`<br />
 
-Set to run your Gateway Control API on a separate port, and protect it behind a firewall if needed. Please make sure you follow [this guide]({{< ref "tyk-self-managed#change-your-control-port" >}}) when setting the control port.
+Set to run your Gateway Control API on a separate port, and protect it behind a firewall if needed. Please make sure you follow [this guide](https://tyk.io/docs/tyk-self-managed/#change-your-control-port) when setting the control port.
 
 ### secret
 ENV: <b>TYK_GW_SECRET</b><br />
@@ -231,7 +231,7 @@ Start your Gateway HTTP server on specific server name
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_MINVERSION</b><br />
 Type: `uint16`<br />
 
-Minimum TLS version. [Possible values]({{< ref "api-management/certificates#supported-tls-versions" >}})
+Minimum TLS version. [Possible values](https://tyk.io/docs/api-management/certificates/#supported-tls-versions)
 
 ### http_server_options.max_version
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_MAXVERSION</b><br />
@@ -271,7 +271,7 @@ Disable automatic character escaping, allowing to path original URL data to the 
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_CIPHERS</b><br />
 Type: `[]string`<br />
 
-Custom SSL ciphers. See list of ciphers [here]({{< ref"api-management/certificates#supported-tls-cipher-suites" >}})
+Custom SSL ciphers. See list of ciphers [here](https://tyk.io/docs/api-management/certificates/#supported-tls-cipher-suites)
 
 ### http_server_options.max_request_body_size
 ENV: <b>TYK_GW_HTTPSERVEROPTIONS_MAXREQUESTBODYSIZE</b><br />
@@ -287,7 +287,7 @@ Two methods are used to perform the comparison:
 
 A value of zero (default) means that no maximum is set and API requests will not be tested.
 
-See more information about setting request size limits [here]({{< ref "api-management/traffic-transformation#request-size-limit" >}})
+See more information about setting request size limits [here](https://tyk.io/docs/api-management/traffic-transformation/#request-size-limits)
 
 ### version_header
 ENV: <b>TYK_GW_VERSIONHEADER</b><br />
@@ -411,7 +411,7 @@ ENV: <b>TYK_GW_PORTWHITELIST</b><br />
 Type: `PortsWhiteList`<br />
 
 Defines the ports that will be available for the API services to bind to in the format
-documented [here]({{< ref "api-management/non-http-protocols#allowing-specific-ports" >}}).
+documented [here](https://tyk.io/docs/api-management/non-http-protocols/#allowing-specific-ports).
 Ports can be configured per protocol, e.g. https, tls etc.
 If configuring via environment variable `TYK_GW_PORTWHITELIST` then remember to escape
 JSON strings.
@@ -1853,7 +1853,7 @@ Enable distributed tracing
 ENV: <b>TYK_GW_HTTPPROFILE</b><br />
 Type: `bool`<br />
 
-Enable debugging of your Tyk Gateway by exposing [profiling information]({{< ref "api-management/troubleshooting-debugging" >}})
+Enable debugging of your Tyk Gateway by exposing [profiling information](https://tyk.io/docs/api-management/troubleshooting-debugging)
 
 ### use_redis_log
 ENV: <b>TYK_GW_USEREDISLOG</b><br />
@@ -1979,7 +1979,7 @@ global session lifetime, in seconds.
 ENV: <b>TYK_GW_KV_KV</b><br />
 Type: `struct`<br />
 
-See more [details]({{< ref "tyk-self-managed#store-configuration-with-key-value-store" >}})
+See more [details](https://tyk.io/docs/tyk-self-managed/#store-configuration-with-key-value-store)
 
 ### kv.consul.address
 ENV: <b>TYK_GW_KV_CONSUL_ADDRESS</b><br />
