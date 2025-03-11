@@ -18,7 +18,6 @@ aliases:
 **This page contains all release notes for Tyk Charts displayed in a reverse chronological order**
 
 ## Support Lifetime
-<!-- Required. replace X.Y with this release and set the correct quarter of the year -->
 Our minor releases are supported until our next minor comes out. 
 
 ---
@@ -35,58 +34,14 @@ Tyk Charts 3.0 significantly improves configurability, reliability, and support 
 For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v3.0.0) below.
 
 #### Breaking Changes
-<!-- Required. Use the following statement if there are no breaking changes, or explain if there are 
-This release has no breaking changes.-->
-
 Tyk Charts 3.0 introduces a breaking configuration changes for Tyk Dashboard: To provide a default secure configuration, `security.forbid_admin_view_access_token` and `security.forbid_admin_reset_access_token` are set to `true` to restrict admin users from being able to view and reset other users' Dashboard API Access Credentials.
-
-<!-- The following "Changed error log messages" section is Optional!
-Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
-<!-- ##### Changed error log messages
-Important for users who monitor Tyk components using the application logs (i.e. Tyk Gateway log, Tyk Dashboard log etc.).
-We try to avoid making changes to our log messages, especially at error and critical levels. However, sometimes it's necessary. Please find the list of changes made to the application log in this release: -->
-
-<!-- The following "|Planned Breaking Changes" section is optional!
-Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc.
-##### Planned Breaking Changes
- -->
-
-<!--
-##### Dependencies
-Required. Use this section to announce the following types of dependencies compatible with the release:
-
-Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
-
-3rd party dependencies and tools 
--->
-
-<!-- 
-###### Compatibility Matrix For Tyk Components
-Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
-An illustrative example is shown below. 
-| Gateway Version | Recommended Compatibility | Backwards Compatibility |
-|----    |---- |---- |
-| 5.3 LTS | Helm v2.2     | Helm vX - vY |
-|         | MDCB v2.5     | MDCB v1.7 - v2.4 |
-|         | Operator v1.8 | Operator vX - vY |
-|         | Sync v2.4.1   | Sync vX - vY |
-| | | EDP vX - vY |
-| | | Pump vX - vY |
-| | | TIB vX - vY |
--->
 
 #### Dependencies {#dependencies-3.0}
 
 ##### 3rd Party Dependencies & Tools
-<!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
-
-Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
-
-An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
-
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
-| [Kubernetes](https://kubernetes.io)                        | 1.26.x, 1.27.x, 1.28.x, 1.29.x, 1.30.x | 1.19+          |          | 
+| [Kubernetes](https://kubernetes.io)                        | 1.26.x, 1.27.x, 1.28.x, 1.29.x, 1.30.x, 1.31.x, 1.32.x | 1.19+          |          | 
 | [Helm](https://helm.sh)                                    | 3.14.x                 | 3.x                    |          | 
 | [Redis](https://redis.io)                                  | 6.2.x, 7.x    | 6.2.x, 7.x    | Used by Tyk Gateway and Dashboard | 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x | 5.0.x, 6.0.x, 7.0.x | Used by Tyk Dashboard, Pump, and MDCB | 
@@ -95,20 +50,9 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
 #### Deprecations
-<!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecation in this release.
 
-<!-- Optional section!
-Used to share and notify users about our plan to deprecate features, configs etc. 
-Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens
-###### Future deprecations. -->
-
 #### Upgrade instructions
-<!-- Required. For patches release (Z>0) use this: 
-For users currently on v2.1.x, we strongly recommend promptly upgrading to the latest release. 
-<br/>-->
-<!-- Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
--->
 You can use helm upgrade to upgrade your release
 
 ```bash
@@ -133,9 +77,9 @@ helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
 
 <li>
 <details>
-<summary>Pump: Health and liveness probes</summary>
+<summary>Pump: Readiness and liveness probes</summary>
 
-Added health and liveness probes for Tyk Pump, enabling proactive monitoring of Tyk Pump to improve system reliability.
+Added readiness and liveness probes using Tyk Pump's health check service, allowing proactive monitoring to detect failures and improve system reliability.
 </details>
 </li>
 
@@ -143,7 +87,7 @@ Added health and liveness probes for Tyk Pump, enabling proactive monitoring of 
 <details>
 <summary>Global: imageRegistry configuration</summary>
 
-Users can now define a global image registry, making it easier to use private registries.
+Added support for a global image registry, making it easier for users to configure private registries and streamline container image management.
 </details>
 </li>
 
@@ -151,7 +95,7 @@ Users can now define a global image registry, making it easier to use private re
 <details>
 <summary>Gateway: Tyk Gateway startup probes</summary>
 
-Adds support for configuring custom startup probes and improving readiness checks.
+Added configurable startup probes for Tyk Gateway, improving readiness checks to prevent premature traffic routing during initialization.
 </details>
 </li>
 
@@ -159,7 +103,7 @@ Adds support for configuring custom startup probes and improving readiness check
 <details>
 <summary>Gateway: Tyk Gateway access/transaction logs</summary>
 
-Support for configuring access logs for Tyk Gateway 5.8.
+Added support for configuring access logs in Tyk Gateway 5.8, allowing users to track API transaction logs for enhanced monitoring and debugging.
 </details>
 </li>
 
@@ -167,16 +111,15 @@ Support for configuring access logs for Tyk Gateway 5.8.
 <details>
 <summary>Gateway: OpenTelemetry header from Kubernetes secrets</summary>
 
-Securely injects authorization headers for OpenTelemetry traffic.
+Added support for retrieving a single OpenTelemetry Authorization header from a Kubernetes secret, enhancing security by preventing exposure of sensitive credentials in Helm values or Kubernetes manifests.
 </details>
 </li>
 
 <li>
 <details>
 <summary>Helm chart parameterization</summary>
-
-Hardcoded values in Helm charts have been replaced with configurable parameters for greater flexibility.
-
+	
+Replaced hardcoded values in Helm charts with configurable parameters, providing greater flexibility in deployment customization.
 </details>
 </li>
 
@@ -184,7 +127,7 @@ Hardcoded values in Helm charts have been replaced with configurable parameters 
 <details>
 <summary>Operator and tyk-bootstrap: Tolerations, affinity, and node selector</summary>
 
-Added tolerations, affinity, and node selector configuration to allow users to fine-tune Kubernetes scheduling for better resource allocation
+Added support for tolerations, affinity, and node selector configurations, enabling users to fine-tune Kubernetes scheduling for better resource allocation and workload distribution.
 </details>
 </li>
 
@@ -192,8 +135,7 @@ Added tolerations, affinity, and node selector configuration to allow users to f
 <details>
 <summary>Configurable test pod execution</summary>
 
-Users can enable or disable test pods based on their environment needs.
-
+Added support to enable or disable test pods, allowing users to optimize resource utilization based on their environment needs.
 </details>
 </li>
 
@@ -207,8 +149,7 @@ Users can enable or disable test pods based on their environment needs.
 <details>
 <summary>Support for restricting admin access token actions in Tyk Dashboard</summary>
 
-Updated default value of Dashboard configuration to restricting admin access token actions in Tyk Dashboard
-
+Improved security by setting security.forbid_admin_view_access_token and security.forbid_admin_reset_access_token to true by default, preventing admin users from viewing or resetting other users’ Dashboard API access credentials unless explicitly allowed.
 </details>
 </li>
 
@@ -218,12 +159,12 @@ Updated default value of Dashboard configuration to restricting admin access tok
 
  Tyk Charts 3.0 will install the following Tyk component versions by default.
 
-  - Tyk Gateway vTBD
-  - Tyk Dashboard vTBD
-  - Tyk Pump vTBD
-  - Tyk MDCB vTBD
-  - Tyk Developer Portal vTBD
-  - Tyk Operator vTBD
+  - Tyk Gateway v5.3.10
+  - Tyk Dashboard v5.3.10
+  - Tyk Pump v1.12.0
+  - Tyk MDCB v2.8.0
+  - Tyk Developer Portal v1.13.0
+  - Tyk Operator v1.2.0
 
 </details>
 </li>
@@ -238,8 +179,7 @@ Updated default value of Dashboard configuration to restricting admin access tok
 <details>
 <summary>Pump: Pump service annotation issue</summary>
 
-Resolved an issue affecting service annotations for Tyk Pump.
-
+Fixed an issue where service annotations for Tyk Pump were not being applied correctly, which caused misconfigurations in Kubernetes deployments. This has been resolved by ensuring annotations are properly processed.
 </details>
 </li>
 
@@ -247,8 +187,7 @@ Resolved an issue affecting service annotations for Tyk Pump.
 <details>
 <summary>Operator liveness and readiness probe failure</summary>
 
-Fixed a critical issue causing the operator to enter a CrashLoopBackOff state.
-
+Fixed an issue where the Operator’s liveness and readiness probes were failing, causing the service to enter a CrashLoopBackOff state. This has been resolved by adjusting probe configurations to ensure proper startup and health checks.
 </details>
 </li>
 
@@ -256,8 +195,7 @@ Fixed a critical issue causing the operator to enter a CrashLoopBackOff state.
 <details>
 <summary>Incorrect TYK_DB_TYKAPI_HOST and TYK_DB_TYKAPI_PORT values</summary>
 
-Corrected environment variable settings when control API is enabled.
-
+Fixed an issue where TYK_DB_TYKAPI_HOST and TYK_DB_TYKAPI_PORT environment variables were incorrectly set when the Control API was enabled, leading to connectivity issues. This has been resolved by ensuring the correct values are assigned during configuration.
 </details>
 </li>
 
