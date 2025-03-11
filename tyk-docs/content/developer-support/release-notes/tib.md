@@ -21,7 +21,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### 1.7.0 Release Notes
 
-#### Release Date xxxx
+#### Release Date 17 March 2025
 
 #### Release Highlights
 
