@@ -28,11 +28,15 @@ Our minor releases are supported until our next minor comes out.
 ---
 ## 2.8 Release Notes
 
-### Release Date xxx
+### 2.8.0 Release Notes
+
+#### Release Date 17 March 2025
 
 #### Release Highlights
 
 This release introduces Seamless API Key Rotation for MDCB Data Planes, eliminating the need for gateway restarts when rotating API keys. This enhancement improves security and operational efficiency by ensuring uninterrupted communication between MDCB and data planes while allowing smooth key updates.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v2.8.0" >}}) below.
 
 #### Breaking Changes
 This release removes support for SQLite in MDCB, aligning with the broader removal of SQLite from the Tyk Dashboard. This change improves compatibility with enterprise environments and addresses implementation issues related to SQLite.
@@ -65,34 +69,34 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
 
 ##### Added
 <ul>
-   <li>
- <details>
- <summary>Seamless API Key Rotation for MDCB Data Planes </summary>
+<li>
+<details>
+<summary>Seamless API Key Rotation for MDCB Data Planes </summary>
 MDCB now supports a seamless key rotation mechanism, allowing data planes to update their authentication keys without requiring service restarts. When a new API key is issued, MDCB temporarily retains the old key only to notify gateways that are still using it, instructing them to switch to the new key. However, the old key does not remain functional for authentication. Additionally, if a data plane gateway goes down during the key rotation process, it will automatically retrieve the new key upon restart, ensuring a smoother recovery process.
-    </details>
-  </li>
+</details>
+</li>
 </ul>
 
-##### Updated
+##### Changed
 <ul>
- 
- <li>
- <details>
- <summary>Support for PostgreSQL 1.17</summary>
+
+<li>
+<details>
+<summary>Support for PostgreSQL 1.17</summary>
 
 MDCB now supports PostgreSQL 1.17, ensuring compatibility with the latest database version.
- </details>
- </li>
+</details>
+</li>
 
- <li>
- <details>
- <summary>Removal of SQLite Support in MDCB</summary>
+<li>
+<details>
+<summary>Removal of SQLite Support in MDCB</summary>
 
 SQLite support has been fully removed from MDCB.
- </details>
- </li>
- 
- </ul>
+</details>
+</li>
+
+</ul>
 
 ---
 ## 2.7 Release Notes
