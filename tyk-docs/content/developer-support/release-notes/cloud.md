@@ -34,7 +34,7 @@ There are no deprecations in this release.
 <details>
 <summary>Enable/Disable Audit Logging for Control Plane Deployments</summary>
 
-Tyk Cloud now allows users to enable or disable audit logging for their Control Plane (CP) deployments through the UI or API, providing greater flexibility in managing compliance and storage costs. This update ensures that audit logs are only collected when needed, helping organizations optimize their logging strategies while maintaining security and compliance.
+Tyk Cloud allows users to enable or disable audit logging for their [Control Plane]({{< ref "api-management/mdcb#data-plane" >}}) (CP) deployments through the UI or API, providing greater flexibility in managing compliance and storage costs.
 </details>
 </li>  
 
@@ -50,7 +50,7 @@ Tyk Cloud now enforces audit log storage quotas based on entitlements, allowing 
 <details>
 <summary>Protecting Go Plugin Functionality by Isolating MServ API Definitions</summary>
 
-Tyk Cloud now moves MServ API definitions to a separate organization, preventing users from accidentally modifying or deleting them. Previously, these definitions were stored within the customer’s Tyk Dashboard deployment, which posed a risk of breaking Go plugin functionality. With this update, Go plugins remain fully operational, while deployments become more secure and error-proof.
+Tyk Cloud now moves MServ API definitions to a separate organization, preventing users from accidentally modifying or deleting them. Previously, these definitions were stored within the customer’s Tyk Dashboard deployment, posing the risk of breaking Go plugin functionality. With this update, Go plugins remain fully operational while deployments become more secure and error-proof.
 
 </details>
 </li>
@@ -71,35 +71,27 @@ Tyk Cloud now enables the onboarding wizard by default for trial users, providin
 <ul>
 <li>
 <details>
-<summary>Cloud SSO User Provisioning for First and Last Name</summary>
+<summary>Provision First and Last Name for Cloud SSO Users</summary>
 
-Tyk Cloud now correctly populates both first and last names when provisioning new users via SSO (Google SSO, KeyCloak). Previously, only the first name was set, causing validation errors when updating roles due to a missing last name. This fix ensures that SSO-provisioned users have complete profiles, preventing onboarding issues and improving role management for organizations
+Tyk Cloud now correctly populates first and last names when provisioning new users via SSO (Google SSO, KeyCloak). Previously, only the first name was set, causing validation errors when updating roles due to a missing last name. This fix ensures that SSO-provisioned users have complete profiles, preventing onboarding issues and improving role management for organizations
 
 </details>
 </li>    
-</ul>
 
-<ul>
 <li>
 <details>
-<summary>'Only Registered Users' Flag for SSO in Tyk Cloud</summary>
+<summary>Enforce 'Only Registered Users' Flag for SSO in Tyk Cloud</summary>
 
 Tyk Cloud now correctly enforces the 'Only Registered Users' flag for SSO (Google SSO, KeyCloak), preventing the creation of unregistered users via just-in-time provisioning. Previously, users without a corresponding local entry could still be created even when this setting was enabled.
 
 </details>
 </li>    
-</ul>
 
-<ul>
 <li>
 <details>
 <summary>Incorrect Display of Custom Domain Field in EDP</summary>
 
 Tyk Cloud now correctly hides the custom domain field in the Enterprise Developer Portal (EDP) edit page when the custom domain entitlement is not enabled. Previously, the field was visible even for organizations without access to this feature, causing confusion.
-
-</details>
-</li>    
-</ul>
 
 </details>
 </li>    
