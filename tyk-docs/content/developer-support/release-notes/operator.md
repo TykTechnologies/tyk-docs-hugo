@@ -15,7 +15,6 @@ aliases:
 **This page contains all release notes for Tyk Operator displayed in a reverse chronological order**
 
 ## Support Lifetime
-<!-- Required. replace X.Y with this release and set the correct quarter of the year -->
 Our minor releases are supported until our next minor comes out.
 
 ---
@@ -26,15 +25,10 @@ Our minor releases are supported until our next minor comes out.
 #### Release Date XX March 2025
 
 #### Release Highlights
-<!-- Required. Use similar ToV to previous release notes. For example for a patch release:
-This release primarily focuses on bug fixes.
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
--->
-###### Support for Tyk 5.8
+##### Support for Tyk 5.8
 Tyk Operator v1.2 introduces key enhancements and critical fixes to improve API management in Kubernetes environments. This release adds support for HMAC request signing and YAML-based OAS definitions, aligning with Tyk Gateway 5.8.
 
 #### Breaking Changes
-<!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
 #### Dependencies {#dependencies-1.2}
@@ -42,12 +36,11 @@ This release has no breaking changes.
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
-| [Kubernetes](https://kubernetes.io)                        | 1.26.x to 1.30.x       | 1.19.x to 1.30.x       |          | 
+| [Kubernetes](https://kubernetes.io)                        | 1.28.x to 1.32.x       | 1.19.x to 1.32.x       |          | 
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
 #### Deprecations
-<!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecations in this release.
 
 #### Upgrade instructions
