@@ -64,7 +64,7 @@ Users can now prevent resource deletion during sync using the `--no-delete` flag
 </li>
 </ul>
 
-##### Updated
+##### Fixed/Changed
 
 <ul>
 <li>
