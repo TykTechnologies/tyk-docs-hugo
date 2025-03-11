@@ -41,9 +41,11 @@ aliases:
 Our minor releases are supported until our next minor comes out.
 
 ---
-## 5.8.0 Release Notes
+## 5.8 Release Notes
 
-#### Release Date xxx
+### 5.8.0 Release Notes
+
+#### Release Date 17 March 2025
 
 #### Release Highlights
 
@@ -54,7 +56,6 @@ We are thrilled to announce new updates and improvements in Tyk 5.8.0, deliverin
 Add release highlight description
 
 #### Breaking Changes
-
 
 There are no breaking changes in this release.
 
