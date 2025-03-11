@@ -19,11 +19,15 @@ Our minor releases are supported until our next minor comes out.
 
 ## 1.7 Release Notes
 
+### 1.7.0 Release Notes
+
 #### Release Date xxxx
 
 #### Release Highlights
 
-This release introduces important enhancements to TIB, improving group-based permission mapping, adding support for proxy settings from environment variables, and allowing dynamic state values in the OAuth2 flow. These updates enhance security, flexibility, and integration capabilities for various enterprise environments.
+This release introduces enhancements to TIB, improving group-based permission mapping, adding support for proxy settings from environment variables, and allowing dynamic state values in the OAuth2 flow. 
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.7.0" >}}) below.
 
 #### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
@@ -104,9 +108,9 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Support for Proxy Settings Loaded from Environment Variables</summary>
+<summary>Load Proxy Settings from Environment Variables</summary>
 
-TIB now respects HTTP_PROXY, HTTPS_PROXY, and NO_PROXY environment variables when making outbound connections. This change ensures compatibility with air-gapped Kubernetes environments where external services can only be accessed via an HTTP proxy.
+TIB now respects `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables when making outbound connections. This change ensures compatibility with air-gapped Kubernetes environments where external services can only be accessed via an HTTP proxy.
 
 </details>
 </li>
@@ -123,10 +127,9 @@ The OAuth2 "state" field can now be dynamically set via the URL or form-encoded 
 <details>
 <summary>Improved Multi-Group Permission Mapping for Identity Providers</summary>
 
-Previously, TIB assigned a user to the last matched group when multiple groups were mapped, regardless of the identity provider (SAML, LDAP, OAuth, OIDC, etc.). The new functionality introduces support for multi-group mapping, allowing permissions to be intelligently merged. This update is backward compatible and ensures that multi-group rights (combined permissions) are only applied if the user does not have a groupId assigned via the Dashboard.
+Previously, TIB assigned a user to the last matched group when multiple groups were mapped, regardless of the identity provider (SAML, LDAP, OAuth, OIDC, etc.). The new functionality introduces support for multi-group mapping, allowing permissions to be merged. This update is backward compatible and ensures that multi-group rights (combined permissions) are only applied if the user does not have a `groupId` assigned via the Dashboard.
 </details>
 </li>
-
 </ul>
 
 ##### Security Fixes
@@ -139,6 +142,8 @@ Previously, TIB assigned a user to the last matched group when multiple groups w
 
 </details>
 </li>
+</ul>
+
 ---
 
 ## 1.6 Release Notes
