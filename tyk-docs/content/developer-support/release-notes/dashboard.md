@@ -4110,7 +4110,7 @@ https://github.com/TykTechnologies/tyk/releases/tag/v3.0.5
 Tyk Dashboard 3.2
 
 #### Upgrade process
-If you already have GraphQL or UDG APIs you need to follow this [upgrade guide]({{< ref "graphql/migration-guide" >}}).
+If you already have GraphQL or UDG APIs you need to follow this [upgrade guide]({{< ref "api-management/graphql#migrating-to-32" >}}).
 
 ## 3.1 Release Notes
 ### 3.1.0 Release Notes
@@ -4121,9 +4121,9 @@ If you already have GraphQL or UDG APIs you need to follow this [upgrade guide](
 You will notice that the experience for creating a new profile in the Identity management section of the dashboard was changed to a ‘wizard’ approach which reduces the time it takes to get started and configure a profile. 
 In addition, users are now able to use SAML for the dashboard and portal login, whether you use TIB(Tyk Identity Broker) internally or externally of the dashboard.
 
-This follows the recent changes that we have made to embed TIB (Tyk Identity Broker)in the dashboard. See 3.0 [release notes]({{< ref "release-notes/version-3.0" >}}) for more information regarding this. 
+This follows the recent changes that we have made to embed TIB (Tyk Identity Broker)in the dashboard. See 3.0 [release notes]({{< ref "developer-support/release-notes/dashboard#tyk-identity-broker-now-built-in-to-the-dashboard" >}}) for more information regarding this. 
 
-To learn more [see the documentation]({{< ref "getting-started/tyk-components/identity-broker" >}})
+To learn more [see the documentation]({{< ref "api-management/external-service-integration" >}})
 
 ##### UDG (Universal Data Graph) & GraphQL
 ###### Schema Validation
@@ -4134,7 +4134,7 @@ For any GraphQL API that is created via Dashboard or through our API, the GraphQ
 
 If you’ve configured just a proxy GraphQL API, you can now keep in sync the upstream schema with the one from the API definition, just by clicking on the `Get latest version` button on the `Schema` tab from API Designer
 
-Docs [here]({{< ref "graphql/syncing-schema" >}})
+Docs [here]({{< ref "api-management/graphql#syncing-gql-schema" >}})
 
 ###### Debug logs
 
@@ -4155,7 +4155,7 @@ Example:
 
 ```{"typename": "Query", "fielname": "countries", "response_body": "{\"data\":{}}", "status_code": 200}```
 
-Docs [here]({{< ref "graphql/graphql-playground" >}})
+Docs [here]({{< ref "api-management/graphql#graphql-playground" >}})
 
 ##### Portal
 ###### GraphQL Documentation
@@ -4167,7 +4167,7 @@ Also to overcome the CORS issues that you might encounter while testing document
 ###### Portal - API key is hidden in email
 You now have the option to hide the API key in the email generated after you approve the key request for a developer.
 
-[Docs here]({{< ref "tyk-developer-portal/key-requests" >}})
+[Docs here]({{< ref "tyk-developer-portal/tyk-portal-classic/key-requests" >}})
 
 
 #### Changelog

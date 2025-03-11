@@ -2260,7 +2260,7 @@ Cache-Control: no-cache
 ]
 ```
 
-You can control how long you want to store expired tokens in this list using `oauth_token_expired_retain_period` which specifies retain period for expired tokens stored in Redis. By default expired token not get removed. See [here]({{< ref "configure/tyk-gateway-configuration-options#a-name-oauth-token-expired-retain-period-a-oauth-token-expired-retain-period" >}}) for more details.
+You can control how long you want to store expired tokens in this list using `oauth_token_expired_retain_period` which specifies retain period for expired tokens stored in Redis. By default expired token not get removed. See [here]({{< ref "tyk-oss-gateway/configuration#a-name-oauth-token-expired-retain-period-a-oauth-token-expired-retain-period" >}}) for more details.
 
 #### Revoke a Single OAuth Client Token
 
@@ -2367,7 +2367,7 @@ http://{{dashboard-hostname}}/api/apis/oauth/{{api_id}}/authorize-client
 {{< note success >}}
 **Note**  
 
-This functionality is available from [v2.9.0]({{< ref "release-notes/version-2.9#single-sign-on-for-the-tyk-saas" >}}). If you have an older version please using the [admin api]({{< ref "tyk-apis/tyk-dashboard-admin-api/sso" >}})
+This functionality is available from [v2.9.0]({{< ref "developer-support/release-notes/archived#single-sign-on-for-the-tyk-saas" >}}). If you have an older version please using the [admin api]({{< ref "api-management/dashboard-configuration#single-sign-on-api-1" >}})
 {{< /note >}}
 
 

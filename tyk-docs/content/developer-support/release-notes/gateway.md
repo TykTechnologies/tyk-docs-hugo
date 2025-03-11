@@ -3972,7 +3972,7 @@ For OpenTelemetry users, we've included much-needed attributes, `http.response.b
 <details>
 <summary>Memory leak was encountered if OpenTelemetry enabled</summary>
 
-Fixed a memory leak issue in Gateway 5.2.0 if [OpenTelemetry](https://opentelemetry.io/) (abbreviated "OTel") is [enabled]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview#enabling-opentelemetry-in-two-steps" >}}). It was caused by multiple `otelhttp` handlers being created. We have updated the code to use a single instance of `otelhttp` handler in 5.2.1 to improve performance under high traffic load.
+Fixed a memory leak issue in Gateway 5.2.0 if [OpenTelemetry](https://opentelemetry.io/) (abbreviated "OTel") is [enabled]({{< ref "api-management/logs-metrics#opentelemetry" >}}). It was caused by multiple `otelhttp` handlers being created. We have updated the code to use a single instance of `otelhttp` handler in 5.2.1 to improve performance under high traffic load.
 </details>
 </li>
 <li>
@@ -4697,7 +4697,7 @@ This release primarily focuses on bug fixes. For a comprehensive list of changes
 We have added some great features to the Tyk OAS API definition bringing it closer to parity with our Tyk Classic API
 and to make it easier to get on board with Tyk using your Open API workflows.
 
-Tyk’s OSS users can now make use of extensive [custom middleware]({{< ref "plugins" >}}) options with your OAS
+Tyk’s OSS users can now make use of extensive [custom middleware]({{< ref "api-management/plugins/overview" >}}) options with your OAS
 APIs, to transform API requests and responses, exposing your upstream services in the way that suits your users and
 internal API governance rules. We’ve enhanced the Request Validation for Tyk OAS APIs to include parameter validation
 (path, query, headers, cookie) as well as the body validation that was introduced in Tyk 4.1.
@@ -4995,7 +4995,7 @@ So, if you upgrade from Tyk v4.1.0 to v4.2.0 you only need to have the plugins c
 - Added support for interfaces implementing interfaces in GQL schema editor
 - Added support for passing authorization header in GQL API Playgrounds for subscription APIs
 - Added TYK_GW_OMITCONFIGFILE option for Tyk Gateway to ignore the values in the config file and load its configuration only from environment variables and default values
-- Added a way to modify Tyk analytics record via Go plugins [configurable with API definition]({{< ref "plugins/analytics-plugins" >}}). Can be used to sanitise analytics data. 
+- Added a way to modify Tyk analytics record via Go plugins [configurable with API definition]({{< ref "api-management/plugins/plugin-types#analytics-plugins" >}}). Can be used to sanitise analytics data. 
 - Added new policy API REST endpoints
 - Added option to configure certificates for Tyk Gateway using [environment variable]({{< ref "tyk-oss-gateway/configuration#http_server_optionscertificates" >}})
 - Added support for Python 3.9 plugins
@@ -5100,7 +5100,7 @@ https://github.com/TykTechnologies/tyk/releases/tag/v3.0.5
 Tyk Gateway 3.2
 
 #### Upgrade process
-If you already have GraphQL or UDG APIs you need to follow this [upgrade guide]({{< ref "graphql/migration-guide" >}})
+If you already have GraphQL or UDG APIs you need to follow this [upgrade guide]({{< ref "api-management/graphql#migrating-to-32" >}})
 
 ## 3.1 Release Notes
 
@@ -5112,11 +5112,9 @@ If you already have GraphQL or UDG APIs you need to follow this [upgrade guide](
 You will notice that the experience for creating a new profile in the Identity management section of the dashboard was changed to a ‘wizard’ approach which reduces the time it takes to get started and configure a profile. 
 In addition, users are now able to use SAML for the dashboard and portal login, whether you use TIB(Tyk Identity Broker) internally or externally of the dashboard.
 
-This follows the recent changes that we have made to embed TIB (Tyk Identity Broker)in the dashboard. See 3.[release notes]({{< ref "release-notes/version-3.0" >}}) for more information 
-regarding this. 
-This follows the recent changes that we have made to embed TIB (Tyk Identity Broker)in the dashboard. See 3.0 [release notes]({{< ref "release-notes/version-3.0" >}}) for more information regarding this. 
+This follows the recent changes that we have made to embed TIB (Tyk Identity Broker)in the dashboard. See 3.0 [release notes]({{< ref "developer-support/release-notes/dashboard#tyk-identity-broker-now-built-in-to-the-dashboard" >}}) for more information regarding this. 
 
-To learn more [see the documentation]({{< ref "getting-started/tyk-components/identity-broker" >}})
+To learn more [see the documentation]({{< ref "api-management/external-service-integration" >}})
 
 ##### UDG (Universal Data Graph) & GraphQL
 ###### Schema Validation
@@ -5127,7 +5125,7 @@ For any GraphQL API that is created via Dashboard or through our API, the GraphQ
 
 If you’ve configured just a proxy GraphQL API, you can now keep in sync the upstream schema with the one from the API definition, just by clicking on the `Get latest version` button on the `Schema` tab from API Designer
 
-Docs [here]({{< ref "graphql/syncing-schema" >}})
+Docs [here]({{< ref "api-management/graphql#syncing-gql-schema" >}})
 
 ###### Debug logs
 
@@ -5148,7 +5146,7 @@ Example:
 
 ```{"typename": "Query", "fielname": "countries", "response_body": "{\"data\":{}}", "status_code": 200}```
 
-Docs [here]({{< ref "graphql/graphql-playground" >}})
+Docs [here]({{< ref "api-management/graphql#graphql-playground" >}})
 
 ##### Portal
 ###### GraphQL Documentation
@@ -5160,8 +5158,7 @@ Also to overcome the CORS issues that you might encounter while testing document
 ###### Portal - API key is hidden in email
 You now have the option to hide the API key in the email generated after you approve the key request for a developer.
 
-[Docs here]({{< ref "tyk-developer-portal/key-requests" >}})
-
+[Docs here]({{< ref "tyk-developer-portal/tyk-portal-classic/key-requests" >}})
 
 #### Changelog
 The 3.1 version includes the fixes that are part of 3.0.1. 

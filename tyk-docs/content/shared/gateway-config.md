@@ -287,7 +287,7 @@ Two methods are used to perform the comparison:
 
 A value of zero (default) means that no maximum is set and API requests will not be tested.
 
-See more information about setting request size limits [here]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits#maximum-request-sizes" >}})
+See more information about setting request size limits [here]({{< ref "api-management/traffic-transformation#request-size-limit" >}})
 
 ### version_header
 ENV: <b>TYK_GW_VERSIONHEADER</b><br />
@@ -411,7 +411,7 @@ ENV: <b>TYK_GW_PORTWHITELIST</b><br />
 Type: `PortsWhiteList`<br />
 
 Defines the ports that will be available for the API services to bind to in the format
-documented [here]({{< ref "key-concepts/tcp-proxy#allowing-specific-ports" >}}).
+documented [here]({{< ref "api-management/non-http-protocols#allowing-specific-ports" >}}).
 Ports can be configured per protocol, e.g. https, tls etc.
 If configuring via environment variable `TYK_GW_PORTWHITELIST` then remember to escape
 JSON strings.
@@ -1853,7 +1853,7 @@ Enable distributed tracing
 ENV: <b>TYK_GW_HTTPPROFILE</b><br />
 Type: `bool`<br />
 
-Enable debugging of your Tyk Gateway by exposing [profiling information]({{< ref "troubleshooting/tyk-gateway/profiling" >}})
+Enable debugging of your Tyk Gateway by exposing [profiling information]({{< ref "api-management/troubleshooting-debugging" >}})
 
 ### use_redis_log
 ENV: <b>TYK_GW_USEREDISLOG</b><br />
@@ -1979,7 +1979,7 @@ global session lifetime, in seconds.
 ENV: <b>TYK_GW_KV_KV</b><br />
 Type: `struct`<br />
 
-See more [details]({{< ref "migration-to-tyk#store-configuration-with-key-value-store" >}})
+See more [details]({{< ref "tyk-self-managed#store-configuration-with-key-value-store" >}})
 
 ### kv.consul.address
 ENV: <b>TYK_GW_KV_CONSUL_ADDRESS</b><br />
@@ -2093,7 +2093,7 @@ Sample Override Message Setting
 ENV: <b>TYK_GW_CLOUD</b><br />
 Type: `bool`<br />
 
-Cloud flag shows the Gateway runs in migration-to-tyk#begin-with-tyk-cloud.
+Cloud flag shows the Gateway runs in Tyk Cloud.
 
 ### jwt_ssl_insecure_skip_verify
 ENV: <b>TYK_GW_JWTSSLINSECURESKIPVERIFY</b><br />

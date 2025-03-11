@@ -37,7 +37,7 @@ For quick start guide, please see [Quick Start with Helm Chart and PostgreSQL]({
 
 * [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
 * [Helm 3+](https://helm.sh/docs/intro/install/)
-* [Redis]({{< ref "migration-to-tyk#configure-legacy-tyk-headless-helm-chart" >}}) should already be installed or accessible by the gateway and dashboard.
+* [Redis]({{< ref "tyk-open-source#configuration-options-for-redis" >}}) should already be installed or accessible by the gateway and dashboard.
 * [MongoDB](https://www.mongodb.com) or [PostgreSQL](https://www.postgresql.org) should already be installed or accessible by dashboard. Please consult the list of [supported versions]({{< ref "api-management/dashboard-configuration#supported-database" >}}) that are compatible with Tyk.
 
 {{< note success >}}

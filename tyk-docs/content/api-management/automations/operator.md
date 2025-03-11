@@ -1113,7 +1113,7 @@ Tyk Operator supported authentication types are listed in the [API Definition fe
 
 #### Create an API key
 
-You need to generate a key to access the `httpbin` API now. Follow [this guide]({{< ref "getting-started/create-api-key" >}}) to see how to create an API key for your installation. 
+You need to generate a key to access the `httpbin` API now. Follow [this guide]({{< ref "getting-started/configure-first-api#create-an-api-key" >}}) to see how to create an API key for your installation. 
 
 You can obtain the API name and API ID of our example `httpbin` API by following command:
 

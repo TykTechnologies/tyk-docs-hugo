@@ -49,8 +49,8 @@ This section lists commonly asked questions or frequently encountered issues and
 5. **How to Backup Middleware Directory for Custom Plugins ?**
 
     If you use custom middleware plugins to extend your application's capabilities, regularly back up the middleware directory to preserve your customizations.
-    Details on middleware installation for [Tyk Self-Managed users]({{< ref "plugins/supported-languages/javascript-middleware/install-middleware/tyk-pro" >}}) (users of the licensed product).
-    Details on middleware installation for [Tyk Open Source users]({{< ref "plugins/supported-languages/javascript-middleware/install-middleware/tyk-ce" >}})
+    Details on middleware installation for [Tyk Self-Managed users]({{< ref "api-management/plugins/javascript#installing-middleware-on-tyk-self-managed" >}}) (users of the licensed product).
+    Details on middleware installation for [Tyk Open Source users]({{< ref "api-management/plugins/javascript#installing-middleware-on-tyk-oss" >}})
 
     **Note:** Tyk's default name is `/middleware`. You might use a different name for it.
 

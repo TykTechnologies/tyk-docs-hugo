@@ -730,7 +730,7 @@ You need to enter the following information:
 
 4. **Click "Generate API"**
 
-Your API will appear in your APIs list. If you select **EDIT** from the **ACTIONS** drop-down list, you can see the endpoints (from the [Endpoint Designer]({{< ref "transform-traffic/endpoint-designer" >}})) that have been created as part of the import process.
+Your API will appear in your APIs list. If you select **EDIT** from the **ACTIONS** drop-down list, you can see the endpoints (from the [Endpoint Designer]({{< ref "api-management/dashboard-configuration#endpoint-designer" >}})) that have been created as part of the import process.
 
 ### Creating a new API Version by importing an API Definition using Tyk Dashboard
 
@@ -1856,7 +1856,7 @@ We recommend you restrict your IAM user as much as possible before sharing the c
 }
 ```
 
-Next you'll [set up the Python authentication code bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/python-code-bundle" >}}).
+Next you'll [set up the Python authentication code bundle]({{< ref "tyk-cloud#create-a-python-code-bundle" >}}).
 
 
 #### Uploading your Bundle

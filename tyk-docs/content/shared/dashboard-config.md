@@ -355,7 +355,7 @@ The hostname for the Redis collection and can be an IP address.
 ENV: <b>TYK_DB_REDISADDRS</b><br />
 Type: `[]string`<br />
 
-Used for configuring Redis clusters. See [Redis Cluster and Tyk Dashboard]({{< ref "migration-to-tyk#configure-redis-cluster" >}}) for more info. Example:
+Used for configuring Redis clusters. See [Redis Cluster and Tyk Dashboard]({{< ref "tyk-open-source#redis-cluster-and-tyk-dashboard" >}}) for more info. Example:
 ```
    "addrs": [
      "server1:6379",
@@ -1011,7 +1011,7 @@ Redirect all dashboard users to another URL
 ENV: <b>TYK_DB_SSOPERMISSIONDEFAULTS</b><br />
 Type: `map[ObjectGroup]string`<br />
 
-Specify permissions of the user who logged in using Admin SSO API (for example Tyk Identity Broker). See [Dashboard Admin SSO API]({{< ref "tyk-apis/tyk-dashboard-admin-api/sso" >}}) for more details.
+Specify permissions of the user who logged in using Admin SSO API (for example Tyk Identity Broker). See [Dashboard Admin SSO API]({{< ref "api-management/dashboard-configuration#single-sign-on-api-1" >}}) for more details.
 
 ### sso_default_group_id
 ENV: <b>TYK_DB_SSODEFAULTUSERGROUP</b><br />

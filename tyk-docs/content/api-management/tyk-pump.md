@@ -1019,7 +1019,7 @@ TYK_PMP_PUMPS_MOESIF_META_APPLICATIONID=your_moesif_application_id
 
 3. **Ensure analytics is enabled**
 
-If you want to log HTTP headers and body, ensure the [detailed analytics recording]({{< ref "analytics-and-reporting/useful-debug-modes" >}}) flag is set to true in your [Tyk Gateway Conf]({{< ref "tyk-oss-gateway/configuration" >}})
+If you want to log HTTP headers and body, ensure that [detailed analytics recording]({{< ref "api-management/logs-metrics#capturing-detailed-logs" >}}) is enabled true in your [Tyk Gateway Conf]({{< ref "tyk-oss-gateway/configuration" >}})
 
 ####### JSON / Conf File
 
@@ -1059,7 +1059,7 @@ $ curl localhost:8080
 ```
 {{< img src="/img/pump/moesif_step5.png" alt="Step5" >}}
 
-The Moesif Tyk integration automatically maps a [Tyk Token Alias](https://tyk.io/simpler-usage-tracking-token-aliases-migration-to-tyk#begin-with-tyk-cloud/) to a user id in Moesif. With a Moesif SDK, you can store additional customer demographics to break down API usage by customer email, company industry, and more.
+The Moesif Tyk integration automatically maps a [Tyk Token Alias](https://tyk.io/blog/simpler-usage-tracking-token-aliases-tyk-cloud/) to a user id in Moesif. With a Moesif SDK, you can store additional customer demographics to break down API usage by customer email, company industry, and more.
 
 #### Configuration options
 

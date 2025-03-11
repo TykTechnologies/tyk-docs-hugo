@@ -446,7 +446,7 @@ and you don't want some associate with a certain key to access the `balance` fie
     ]
 }
 ```
-Check the [Setup field-based permission]({{< ref "api-management/graphql/field-based-permissions#setup-field-based-permissions-in-dashboard" >}}) section, to learn how to configure them.
+Check the [Setup field-based permission]({{< ref "api-management/graphql#setup-field-based-permissions-in-dashboard" >}}) section, to learn how to configure them.
 
 
 #### Complexity Limiting
