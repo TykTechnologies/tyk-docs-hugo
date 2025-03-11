@@ -19,6 +19,48 @@ Our minor releases are supported until our next minor comes out.
 
 ## 2.0 Release Notes
 
+### 2.0.4 Release Notes
+
+#### Release Date 14 February 2025
+
+#### Release Highlights
+
+Tyk Sync 2.0.4 has been updated to fix a critical security vulnerability.
+
+Please refer to the [changelog]({{< ref "#Changelog-v2.0.4">}}) below for detailed explanation.
+
+#### Breaking Changes
+<!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
+This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+For users currently on v2.0.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version 2.0.0 and proceed directly to this latest patch release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
+
+#### Downloads
+- [Docker image v2.0.4](https://hub.docker.com/r/tykio/tyk-sync/tags?page=&page_size=&ordering=-name&name=v2.0.4)
+  - ```bash
+    docker pull tykio/tyk-sync:v2.0.4
+    ```
+
+#### Changelog {#Changelog-v2.0.4}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>CVE-2025-21613 resolved in Tyk Sync</summary>
+
+Resolved CVE-2025-21613 by updating the go-git library to v5.13.2. go-git is a highly extensible git implementation library written in pure Go. An argument injection vulnerability was discovered in go-git versions prior to v5.13. Successful exploitation of this vulnerability could allow an attacker to set arbitrary values to git-upload-pack flags. This only happens when the file transport protocol is being used, as that is the only protocol that shells out to git binaries. This vulnerability is fixed in 5.13.0.
+</details>
+</li>
+</ul>
+
 ### 2.0.1 Release Notes
 
 #### Release Date 05 December 2024
@@ -346,7 +388,7 @@ Tyk Sync supports both Tyk OAS APIs and Tyk Classic APIs when working with Tyk D
 
 Recommended usage:
 Tyk Dashboard setting: [allow-unsafe-oas]({{<ref "tyk-dashboard/configuration#allow_unsafe_oas">}})
-Tyk Sync: use the [--allow-unsafe-oas]({{<ref "/api-management/automations#synchronize-tyk-environment-with-github-repository">}}) when invoking the CLI
+Tyk Sync: use the [--allow-unsafe-oas]({{<ref "api-management/automations/sync">}}) when invoking the CLI
 
 ####### API Category is not yet supported
 API Categories are a new capability with v5.3.0 of Tyk Dashboard. API Categories are currently not supported in Tyk Sync for Tyk OAS APIs. This means that Tyk Sync will not be able to save the category definition set for the Tyk OAS API. Until we update Tyk Sync you would need to manually recreate the categories in the new environment.

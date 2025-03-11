@@ -109,7 +109,7 @@ The standard behaviour of Tyk, if an invalid version is requested in the version
 
 Typically Tyk will pass all request headers and parameters to the upstream service when proxying the request. For a versioned API, the version identifier (which may be in the form of a header, path parameter or URL fragment) will be included in this scope and passed to the upstream.
 
-The upstream (target) URL will be constructed by combining the configured `upstream.url` (`target_url` for Tyk Classic APIs) with the full request path unless configured otherwise (for example, by using the [strip listen path]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#listenpath" >}}) feature).
+The upstream (target) URL will be constructed by combining the configured `upstream.url` (`target_url` for Tyk Classic APIs) with the full request path unless configured otherwise (for example, by using the [strip listen path]({{< ref "api-management/gateway-config-tyk-oas#listenpath" >}}) feature).
 
 If the version identifier is in the request URL then it will be included in the upstream (target) URL. If you don't want to include this identifier, then you can set `stripVersioningData` (`strip_versioning_data` for Tyk Classic APIs) and Tyk will remove it prior to proxying the request.
 
@@ -125,13 +125,13 @@ API sunsetting is the process of phasing out or retiring an older version of an 
 
 When sunsetting API versions, you may have endpoints that become deprecated between versions. It can be more user friendly to retain those endpoints but return a helpful error, instead of just returning `HTTP 404 not found`.
 
-This is easy to do with Tyk. You can include the deprecated endpoint in the new version of the API and configure the [mock response]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}) middleware to provide your clients with relevant information and instruction. Alternatively, you could return a 302 header and redirect the user to the new endpoint.
+This is easy to do with Tyk. You can include the deprecated endpoint in the new version of the API and configure the [mock response]({{< ref "api-management/traffic-transformation#mock-response-overview" >}}) middleware to provide your clients with relevant information and instruction. Alternatively, you could return a 302 header and redirect the user to the new endpoint.
 
 ## Authorizing access to versioned APIs
 
 Tyk's access control model supports very granular permissions to versioned APIs.
 
-You can explicitly grant access to specific version(s) of an API by specifying only those version(s) in the [key]({{< ref "tyk-apis/tyk-gateway-api/token-session-object-details" >}}) (also known as an *authorization token*, *bearer token*, *access token*, *API token* or *token session object* - see [here]({{< ref "/api-management/client-authentication#use-auth-tokens" >}})).
+You can explicitly grant access to specific version(s) of an API by specifying only those version(s) in the [key]({{< ref "api-management/policies#session-object" >}}) (also known as an *authorization token*, *bearer token*, *access token*, *API token* or *token session object* - see [here]({{< ref "api-management/client-authentication#use-auth-tokens" >}})).
 
 <br>
 {{< note success >}}
@@ -152,13 +152,13 @@ API versioning is a crucial practice in API development and management that allo
 
 When working with Tyk OAS APIs, each version of an API has its own API definition. This means that there is complete flexibility to configure each version differently from the others.
 
-API versioning is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}). You can do this via the Tyk Dashboard API (by creating/updating the API definition via the /apis/oas POST handler) or in the API Designer. 
+API versioning is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API (by creating/updating the API definition via the /apis/oas POST handler) or in the API Designer. 
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}}) page.
 
 ### Controlling access to Tyk OAS API versions
 
-You can explicitly grant access to specific version(s) of an API by specifying the individual API definitions for each version in the [key]({{< ref "tyk-apis/tyk-gateway-api/token-session-object-details" >}}) (also known as an *authorization token*, *bearer token*, *access token*, *API token* or *token session object* - see [here]({{< ref "/api-management/client-authentication#use-auth-tokens" >}})).
+You can explicitly grant access to specific version(s) of an API by specifying the individual API definitions for each version in the [key]({{< ref "api-management/policies#session-object" >}}) (also known as an *authorization token*, *bearer token*, *access token*, *API token* or *token session object* - see [here]({{< ref "api-management/client-authentication#use-auth-tokens" >}})).
 
 When using Tyk OAS APIs there are some subtleties to the propagation of access control between versions of an API:
 - each version of an API is treated individually by Tyk Gateway, so access must be explicity granted for each version
@@ -172,7 +172,7 @@ This means that you could limit access to the [Base API](#base-and-child-apis) (
 
 Tyk OAS introduces the concept of a **Base API**, which acts as a "parent" API version that routes requests to the different versions of the API. The Base API definition stores the information required for Tyk Gateway to locate and route requests to the appropriate "child" API version.
 
-The "child" versions do not have any reference back to the "parent" and so can operate completely independently if required. Typically, and we recommend, the "child" versions should be configured as [Internal APIs]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#state" >}}) that are not directly reachable by clients outside Tyk.
+The "child" versions do not have any reference back to the "parent" and so can operate completely independently if required. Typically, and we recommend, the "child" versions should be configured as [Internal APIs]({{< ref "api-management/gateway-config-tyk-oas#state" >}}) that are not directly reachable by clients outside Tyk.
 
 The Base API is a working version of the API and is usually the only one configured as an *External API*, so that client requests are handled (and routed) according to the configuration set in the Base API (via the version identifier included in the header, url or query parameter).
 
@@ -182,7 +182,7 @@ Note that any version (including the Base API) can be set as *default* for [acce
 
 You can configure a Tyk OAS API as a [Base API](#base-and-child-apis) by adding the `versioning` object to the `info` section in the Tyk extension section, `x-tyk-api-gateway`.
 
-The `versioning` [object]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#versioning" >}}) has the following configuration:
+The `versioning` [object]({{< ref "api-management/gateway-config-tyk-oas#versioning" >}}) has the following configuration:
 - `enabled`: enable versioning
 - `name`: an identifier for this version of the API, for example `default` or `v1`
 - `default`: the `name` of the API definition that shall be treated as *default* (for [access control](#controlling-access-to-tyk-oas-api-versions) and [default fallback]({{< ref "api-management/api-versioning#default-api-version" >}})); if the base API is to be used as the default then you can instead use the value `self` in this field
@@ -354,7 +354,7 @@ If you're using Tyk Operator then check out the [configuring API versioning in T
 
 ### Controlling access to Tyk Classic API versions
 
-You can explicitly grant access to specific version(s) of an API by specifying only those version(s) in the [key]({{< ref "tyk-apis/tyk-gateway-api/token-session-object-details" >}}) (also known as an *authorization token*, *bearer token*, *access token*, *API token* or *token session object* - see [here]({{< ref "/api-management/client-authentication#use-auth-tokens" >}})).
+You can explicitly grant access to specific version(s) of an API by specifying only those version(s) in the [key]({{< ref "api-management/policies#session-object" >}}) (also known as an *authorization token*, *bearer token*, *access token*, *API token* or *token session object* - see [here]({{< ref "api-management/client-authentication#use-auth-tokens" >}})).
 
 ### Configuring API versioning in the Tyk Classic API Definition
 
@@ -368,11 +368,11 @@ This has the following configuration:
 To add an API version, you must add a new entry in the `versions` list:
 - `name`: an identifier for this version of the API, for example `default` or `v1`
 - `expires`: an optional expiry date for the API after which Tyk will reject any access request; accepted format is `2006-01-02 15:04`
-- `paths`: location for configuration of endpoint [ignore]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}), [allow]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}}) and [block]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware" >}}) lists
+- `paths`: location for configuration of endpoint [ignore]({{< ref "api-management/traffic-transformation#ignore-authentication-overview" >}}), [allow]({{< ref "api-management/traffic-transformation#allow-list-overview" >}}) and [block]({{< ref "api-management/traffic-transformation#block-list-overview" >}}) lists
 - `use_extended_paths`: set to `true` to enable the `extended_paths` config
-- `extended_paths`: location for configuration of additional [endpoint-level middleware]({{< ref "advanced-configuration/transform-traffic" >}})
-- `global_*`: configuration of [API-level middleware]({{< ref "advanced-configuration/transform-traffic" >}}). The wildcard can be replaced by any of the API-level settings e.g. `global_size_limit`
-- `override_target`: alternative upstream (target) URL that should be used for this version, overriding the `target_url` configured in the `proxy` [section]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/proxy-settings#proxytarget_url" >}}) of the API definition; this can be used to redirect to a different hostname or domain if required
+- `extended_paths`: location for configuration of additional [endpoint-level middleware]({{< ref "api-management/traffic-transformation#" >}})
+- `global_*`: configuration of [API-level middleware]({{< ref "api-management/traffic-transformation#" >}}). The wildcard can be replaced by any of the API-level settings e.g. `global_size_limit`
+- `override_target`: alternative upstream (target) URL that should be used for this version, overriding the `target_url` configured in the `proxy` [section]({{< ref "api-management/gateway-config-tyk-classic#proxytarget_url" >}}) of the API definition; this can be used to redirect to a different hostname or domain if required
 
 There is also some API-level configuration for versioning, which is located in the `definition` section of the Tyk Classic API definition:
 
