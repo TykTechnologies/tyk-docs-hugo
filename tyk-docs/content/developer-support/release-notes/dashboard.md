@@ -35,9 +35,11 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
+## 5.8 Release Notes
+
 ### 5.8.0 Release Notes
 
-#### Release Date xxx
+#### Release Date 17 March 2025
 
 #### Release Highlights
 
@@ -70,11 +72,11 @@ There are no breaking changes in this release.
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
-| [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.22 | 
+| [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.22 | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
 
 #### Deprecations
 
@@ -102,28 +104,28 @@ If you are upgrading to 5.8.0, please follow the detailed [upgrade instructions]
 <details>
 <summary>New Dashboard Onboarding Flow</summary>
 
-We've introduced a guided onboarding experience in the Tyk Dashboard to help new users get started effortlessly. Our intuitive step-by-step guide walks you through creating your first API, setting up policies and keys, testing endpoints, and exploring analytics—ensuring you can navigate the Dashboard with ease and unlock its full potential from day one.
+We have introduced a guided onboarding experience in the Tyk Dashboard to help new users start effortlessly. Our intuitive step-by-step guide walks you through creating your first API, setting up policies and keys, testing endpoints, and exploring analytics—ensuring you can navigate the Dashboard and unlock its full potential from day one.
 </details>
 </li>
 <li>
 <details>
 <summary>YAML Support for Tyk OAS</summary>
 
-Tyk now fully supports YAML for OAS CRUD operations, giving users greater flexibility in managing their APIs. This enhancement streamlines workflows and improves efficiency, making it easier to work in both JSON and YAML formats 
+Tyk fully supports YAML for OAS CRUD operations, giving users greater flexibility in managing their APIs. This enhancement streamlines workflows and improves efficiency, making it easier to work in both JSON and YAML formats 
 </details>
 </li>
 <li>
 <details>
 <summary>Tyk OAS Now Supports Multi-Part OpenAPI Imports</summary>
 
-We've enhanced Tyk’s OAS import capabilities to support multi-part OpenAPI documents using the $ref feature. This allows users to seamlessly import OAS definitions that reference external files, making it easier to manage complex API specifications and streamline workflows.
+We've enhanced Tyk’s OAS import capabilities to support multi-part OpenAPI documents using the $ref feature. It allows users to seamlessly import OAS definitions referencing external files, making it easier to manage complex API specifications.
 </details>
 </li>
 <li>
-<details>s
+<details>
 <summary>API Testing & Debugging with Tyk OAS</summary>
 
-We’ve added built-in testing and debugging capabilities to Tyk OAS, making it easier to validate and troubleshoot your APIs. With a floating debugging panel, improved UX, and an endpoint dropdown, you can now test your endpoints seamlessly within the Dashboard.
+We’ve added built-in testing and debugging capabilities to Tyk OAS, making validating and troubleshooting your APIs easier. With a floating debugging panel, improved UX, and an endpoint dropdown, you can test your endpoints within the Dashboard.
 </details>
 </li>
 <li>
@@ -141,17 +143,17 @@ Users can now configure separate RDS endpoints for read and write operations, op
 
 New Configuration Fields:
 
-ReadConnectionString – Defines the connection string for read operations. Used only if ConnectionString is not set.
-WriteConnectionString – Defines the connection string for write operations. Used only if ConnectionString is not set.
+- **ReadConnectionString**: Defines the connection string for read operations. It is only used if `ConnectionString` is not set.
+- **WriteConnectionString**: Defines the connection string for write operations. It is only used if `ConnectionString` is not set.
 
-For backward compatibility, if ConnectionString is set, it will take precedence over the new fields.
+For backward compatibility, if `ConnectionString` is set, it will take precedence over the new fields.
 </details>
 </li>
 <li>
 <details>
 <summary>Improved API Key Management for MDCB Data Planes</summary>
 
-To support seamless API key rotation for MDCB Data Planes, we have adjusted Dashboard API key reset permissions. Users with Real-Time Notifications enabled can now reset their own Dashboard API key via the UI or API, resolving conflicts that previously prevented key rotation. These changes ensure a more secure and automated approach to managing API keys while maintaining existing access controls.
+We have updated Dashboard API key reset permissions to support API key rotation for MDCB Data Planes. Users with Real-Time Notifications enabled can now reset their Dashboard API key via the UI or API, resolving conflicts that previously prevented key rotation. These changes ensure a more secure and automated approach to managing API keys while maintaining existing access controls.
 </details>
 </li>
 <li>
@@ -165,40 +167,40 @@ Users can now attach or upload certificates during the GraphQL API creation proc
 <details>
 <summary>Improved Dashboard Code Editor</summary>
 
-Upgraded the code editor component library and enhanced its styling for a better user experience, improved readability, and smoother performance.
+Upgraded the code editor component library and enhanced its styling for a better user experience, readability, and smoother performance.
 </details>
 </li>
 <li>
 <details>
 <summary>Improved Labelling in Tyk Dashboard</summary>
 
-We have made minor adjustments to labels within the Dashboard UI to enhance clarity and improve overall usability.
+We have made minor adjustments to labels within the Dashboard UI to enhance clarity.
 </details>
 </li>
 <li>
 <details>
 <summary>Bulk API Migration Endpoint for Tyk OAS Migration</summary>
 
-Introduced a bulk API migration endpoint with dry run, staging, and direct migration modes, enabling a seamless transition from Tyk Classic APIs to Tyk OAS APIs.
+Introduced a bulk API migration endpoint with a dry run, staging, and direct migration modes, enabling a seamless transition from Tyk Classic APIs to Tyk OAS APIs.
 </details>
 </li>
 <li>
 <details>
 <summary>Upstream Authentication Support in Tyk Dashboard</summary>
 
-Tyk Dashboard now supports integration with upstream services that are secured using Basic Auth, OAuth 2.0 Client Credentials, and OAuth 2.0 Password Grant in Tyk OAS APIs, providing greater flexibility in securing upstream authentication flows.
+Tyk Dashboard now supports integration with upstream services secured using Basic Auth, OAuth 2.0 Client Credentials, and OAuth 2.0 Password Grant in Tyk OAS APIs, providing flexibility in securing upstream authentication flows.
 </details>
 </li>
 <li>
 <details>
 <summary>Clarity on Supported TLS Versions in Tyk Classic API Designer</summary>
 
-Removed unsupported TLS versions 1.0 and 1.1 from the selector in Tyk Classic API Designer, improving clarity around supported TLS versions and enhancing security.
+Removed unsupported TLS versions 1.0 and 1.1 from the Tyk Classic API Designer selector, improving clarity around supported TLS versions and enhancing security.
 </details>
 </li>
 </ul>
 
-##### Change
+##### Changed
 
 <ul>
 <li>
