@@ -22,10 +22,15 @@ Our minor releases are supported until our next minor comes out.
 
 ## 1.12 Release Notes
 
-#### Release Date xxxx
+### 1.12.0 Release Notes
+
+#### Release Date 17 March 2025
 
 #### Release Highlights
+
 This release improves the security of the Tyk Prometheus Pump by introducing an option to obfuscate API keys in the /metrics endpoint. This enhancement prevents sensitive data from being exposed and aligns with best security practices.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.12.0" >}}) below.
 
 #### Breaking Changes
 This release removes support for SQLite in Pump, aligning with the broader removal of SQLite from the Tyk Dashboard. This change improves compatibility with enterprise environments and addresses implementation issues related to SQLite.
