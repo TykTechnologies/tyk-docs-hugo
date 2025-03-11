@@ -1,9 +1,26 @@
 ---
 date: 2017-03-27T16:05:33+01:00
 title: Frequently Asked Questions
-tags: ["configuration files backup", "backup tyk", "tyk.conf", "upgrade tyk", "database backup"]
-tags: ["Analytics", "Distributed Analytics", "Redis", "Redis Shards", "analytics_config.enable_multiple_analytics_keys" ]
-tags: ["do_not_track", "Analytics", "RPS", "Requests Per Second", "CPU", "high load", "high traffic"]
+tags:
+    - FAQ
+    - frequently asked questions
+    - answers
+    - configuration files backup
+    - backup tyk
+    - tyk.conf
+    - upgrade tyk
+    - database backup
+    - Analytics
+    - Distributed Analytics
+    - Redis
+    - Redis Shards
+    - analytics_config.enable_multiple_analytics_keys
+    - do_not_track
+    - RPS
+    - Requests Per Second
+    - CPU
+    - high load
+    - high traffic
 aliases:
     - /frequently-asked-questions/check-current-gateway-version/
     - /frequently-asked-questions/how-to-backup-tyk-cloud-deployment
