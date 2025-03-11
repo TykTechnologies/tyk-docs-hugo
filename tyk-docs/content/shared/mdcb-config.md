@@ -502,7 +502,7 @@ Type: `int`<br />
 ENV: <b>TYK_MDCB_OMITANALYTICSINDEXCREATION</b><br />
 Type: `bool`<br />
 
-Set to true to disable the Mongo storages default index creation. More detailed behavior explained at https://tyk.io/docs/tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config/#omitting-indexes.
+Set to true to disable the Mongo storages default index creation. More detailed behavior explained [here]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config#omitting-indexes" >}}).
 
 ### enable_separate_analytics_store
 ENV: <b>TYK_MDCB_ENABLESEPERATEANALYTICSSTORE</b><br />

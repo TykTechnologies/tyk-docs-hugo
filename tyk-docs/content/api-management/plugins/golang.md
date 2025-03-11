@@ -61,7 +61,7 @@ Plugins are currently supported only on Linux, FreeBSD, and macOS, making them u
 
 ### Tyk Plugin Compiler
 
-We provide the [Tyk Plugin Compiler](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler/) docker image, which we **strongly recommend** is used to build plugins compatible with the official Gateway releases. That tool provides the cross compilation toolchain, Go version used to build the release, ensures that compatible flags are used when compiling plugins (such as `-trimpath`, `CC`, `CGO_ENABLED`, `GOOS`, `GOARCH`) and also works around known Go issues such as:
+We provide the [Tyk Plugin Compiler]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler" >}}) docker image, which we **strongly recommend** is used to build plugins compatible with the official Gateway releases. That tool provides the cross compilation toolchain, Go version used to build the release, ensures that compatible flags are used when compiling plugins (such as `-trimpath`, `CC`, `CGO_ENABLED`, `GOOS`, `GOARCH`) and also works around known Go issues such as:
 
 - https://github.com/golang/go/issues/19004
 - https://www.reddit.com/r/golang/comments/qxghjv/plugin_already_loaded_when_a_plugin_is_loaded/
@@ -189,7 +189,7 @@ Using the *Go workspace* ensures build compatibility between the plugins and Gat
 
     Compatibility in general is a big concern when working with Go plugins: as the plugins are tightly coupled to the Gateway, consideration must always be made for the build restrictions enforced by environment and configuration options.
 
-    Continue with [Loading Go Plugins into Tyk](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/plugins/golang/loading-go-plugins/).
+    Continue with [Loading Go Plugins into Tyk]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/loading-go-plugins" >}}).
 
 ### Debugging Golang Plugins
 
@@ -323,7 +323,7 @@ Custom Go plugins can access various data objects relating to the API request:
 
 Custom Go plugins can also [terminate the request]({{< ref "api-management/plugins/golang#terminating-the-request" >}}) and stop further processing of the API request such that it is not sent to the upstream service.
 
-For more resources for writing plugins, please visit our [Plugin Hub]({{< ref "api-management/plugins/overview#plugins-hub">}}).
+For more resources for writing plugins, please visit our [Plugin Hub]({{< ref "api-management/plugins/overview#plugins-hub" >}}).
 To see an example of a Go plugin, please visit our [Go plugin examples]({{< ref "api-management/plugins/golang#example-custom-go-plugins" >}}) page.
 
 ### Accessing the internal state of a custom plugin
@@ -778,14 +778,14 @@ Here we see:
 
 The following supporting resources are provided for developing plugins on Tyk Cloud:
 
-- [Enabling Plugins On The Control Plane](https://tyk.io/docs/tyk-cloud/configuration-options/using-plugins/setup-control-plane/#what-do-i-need-to-do-to-use-plugins)
-- [Uploading Your Plugin Bundle To S3 Bucket](https://tyk.io/docs/tyk-cloud#uploading-your-bundle)
+- [Enabling Plugins On The Control Plane]({{< ref "tyk-cloud/configuration-options/using-plugins/setup-control-plane#what-do-i-need-to-do-to-use-plugins" >}})
+- [Uploading Your Plugin Bundle To S3 Bucket]({{< ref "tyk-cloud#uploading-your-bundle" >}})
 
 ## Example custom Go plugins
 
 This document provides a working example for providing specific functionality with a custom Go plugin.
 
-For more resources for writing plugins, please visit our [Plugin Hub]({{< ref "api-management/plugins/overview#plugins-hub">}}).
+For more resources for writing plugins, please visit our [Plugin Hub]({{< ref "api-management/plugins/overview#plugins-hub" >}}).
 
 ### Using a custom Go plugin as a virtual endpoint
 

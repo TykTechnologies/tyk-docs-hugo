@@ -681,9 +681,9 @@ For higher performance, the plugin could be written in Golang, and a connection 
     ```
 
     ##### How to Import?
-    [Tyk Pro](https://tyk.io/docs/tyk-configuration-reference/import-apis/#import-apis-via-the-dashboard)
+    [Tyk Pro]({{< ref "tyk-configuration-reference/import-apis#import-apis-via-the-dashboard" >}})
 
-    [Tyk CE](https://tyk.io/docs/try-out-tyk/tutorials/create-api/)
+    [Tyk CE]({{< ref "try-out-tyk/tutorials/create-api" >}})
 
 4. **Run WAF ModSecurity Using Docker**
 

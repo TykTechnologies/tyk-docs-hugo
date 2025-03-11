@@ -33,8 +33,8 @@ Tyk uses Redis to store the cached responses and, as you'd expect from Tyk, ther
 
 There are two approaches to configure caching for an API deployed with Tyk:
 
- - [Basic]({{< ref "api-management/gateway-optimizations#basic-caching">}}) or [Safe Request]({{< ref "api-management/gateway-optimizations#global-cache-safe-requests" >}}) caching is applied at the API level for all requests for which it is safe to do so.
- - [Advanced]({{< ref "api-management/gateway-optimizations#endpoint-caching">}}) caching options can be applied at the endpoint level.
+ - [Basic]({{< ref "api-management/gateway-optimizations#basic-caching" >}}) or [Safe Request]({{< ref "api-management/gateway-optimizations#global-cache-safe-requests" >}}) caching is applied at the API level for all requests for which it is safe to do so.
+ - [Advanced]({{< ref "api-management/gateway-optimizations#endpoint-caching" >}}) caching options can be applied at the endpoint level.
 
 Tyk's advanced caching options allow you to selectively cache the responses to all requests, only those from specific paths or only responses with specific status codes returned by the API. You can even cache dynamically based upon instruction from the upstream service received within the response.
 
@@ -71,7 +71,7 @@ Safe request caching at the API level is enabled by setting the `cache_all_safe_
 
 This mode of operation is referred to as Global Caching because it is applied globally within the scope of a single API. Picking this approach will override any per-endpoint (per-path) caching configuration, so it’s not suitable if granular control is required.
 
-Tyk does support safe request caching at the more granular, per-endpoint level, as described [here]({{< ref "api-management/gateway-optimizations#request-selective-cache-control">}}) - but `cache_all_safe_requests` must be set to `false` in that scenario.
+Tyk does support safe request caching at the more granular, per-endpoint level, as described [here]({{< ref "api-management/gateway-optimizations#request-selective-cache-control" >}}) - but `cache_all_safe_requests` must be set to `false` in that scenario.
 
 #### Cache Timeout
 The cache timeout (Time-To-Live or TTL) value can be configured per API and is the maximum age for which Tyk will consider a cache entry to be valid. You should use this to optimize the tradeoff between reducing calls to your upstream service and potential for changes to the upstream data.
@@ -91,7 +91,7 @@ Upstream cache control refers to caching API responses based on instructions pro
 
 ## Basic Caching
 
-_On this page we describe the use of Tyk's API response cache at the API level (Global); for details on the more advanced Endpoint level cache you should refer to [this]({{< ref "api-management/gateway-optimizations#endpoint-caching">}}) page._
+_On this page we describe the use of Tyk's API response cache at the API level (Global); for details on the more advanced Endpoint level cache you should refer to [this]({{< ref "api-management/gateway-optimizations#endpoint-caching" >}}) page._
 
 Caching is configured separately for each API according to values you set within the API definition. Subsequently, the caching scope is restricted to an API definition, rather than being applied across the portfolio of APIs deployed in the Gateway.
 
@@ -108,7 +108,7 @@ The main configuration options are:
 
 For more advanced use of the API-level cache we also have:
  - `cache_by_headers`: used to create multiple cache entries based on the value of a [header value](#selective-caching-by-header-value) of your choice
- - `enable_upstream_cache`: used to allow your [upstream service]({{< ref "api-management/gateway-optimizations#upstream-cache-control-1">}}) to identify the responses to be cached
+ - `enable_upstream_cache`: used to allow your [upstream service]({{< ref "api-management/gateway-optimizations#upstream-cache-control-1" >}}) to identify the responses to be cached
  - `cache_control_ttl_headers`: used with `enable_upstream_cache`
 
 #### An example of basic caching 
@@ -162,19 +162,19 @@ Follow these simple steps to enable and configure basic API caching via the Dash
     Here you must set:
 
     1.  **Enable caching** to enable the cache middleware
-    2.  **Cache timeout** to set the [TTL]({{< ref "api-management/gateway-optimizations#cache-timeout">}}) (in seconds) for cached requests
-    3.  **Cache only these status codes** to set which [response codes]({{< ref "api-management/gateway-optimizations#cache-response-codes">}}) to cache (ensure that you click **ADD** after entering each response code so that it is added to the list)
-    4.  **Cache all safe requests** to enable the [global cache]({{< ref "api-management/gateway-optimizations#global-cache-safe-requests">}})
+    2.  **Cache timeout** to set the [TTL]({{< ref "api-management/gateway-optimizations#cache-timeout" >}}) (in seconds) for cached requests
+    3.  **Cache only these status codes** to set which [response codes]({{< ref "api-management/gateway-optimizations#cache-response-codes" >}}) to cache (ensure that you click **ADD** after entering each response code so that it is added to the list)
+    4.  **Cache all safe requests** to enable the [global cache]({{< ref "api-management/gateway-optimizations#global-cache-safe-requests" >}})
 
 ## Endpoint Caching
 
 ### Overview
 
-On this page we describe how to configure Tyk's API response cache per endpoint within an API. This gives granular control over which paths are cached and allows you to vary cache configuration across API versions. For details on the API level (Global) cache you should refer to the [global-cache]({{< ref "api-management/gateway-optimizations#basic-caching">}}) configuration page.
+On this page we describe how to configure Tyk's API response cache per endpoint within an API. This gives granular control over which paths are cached and allows you to vary cache configuration across API versions. For details on the API level (Global) cache you should refer to the [global-cache]({{< ref "api-management/gateway-optimizations#basic-caching" >}}) configuration page.
 
 When you use the API-level cache, Tyk will maintain a cache entry for each combination of request method, request path (endpoint) and API key (if authentication is enabled) for an API. The Endpoint Caching middleware gives you granular control over which paths are cached and allows you to vary cache configuration across API versions.
 
-For details on the API-level cache you should refer to the [API-level cache]({{< ref "api-management/gateway-optimizations#basic-caching">}}) configuration page.
+For details on the API-level cache you should refer to the [API-level cache]({{< ref "api-management/gateway-optimizations#basic-caching" >}}) configuration page.
 
 #### When to use the Endpoint Caching middleware
 
@@ -194,7 +194,7 @@ For each endpoint in your API with endpoint caching middleware enabled, you can 
 {{< note success >}}
 **Note** 
 
-It's important to note that the [cache all safe requests]({{< ref "api-management/gateway-optimizations#global-cache-safe-requests">}}) feature of the API-level cache will overrule the per-endpoint configuration so you must ensure that both are not enabled for the same API.
+It's important to note that the [cache all safe requests]({{< ref "api-management/gateway-optimizations#global-cache-safe-requests" >}}) feature of the API-level cache will overrule the per-endpoint configuration so you must ensure that both are not enabled for the same API.
 {{< /note >}}
 
 ##### Request-selective cache control
@@ -363,7 +363,7 @@ If using Tyk Operator please refer to section [configuring the middleware in the
 
 When using the Tyk Classic API Definition, there are two options for endpoint caching - simple and advanced.
 
-The [simple](#simple-endpoint-cache) option works with the API-level cache and allows you to select which endpoints are cached, but relies upon the cache timeout (refresh) configured at the API-level. It will cache all responses received from the endpoint regardless of the HTTP response code for all [safe requests]({{< ref "api-management/gateway-optimizations#global-cache-safe-requests">}}).
+The [simple](#simple-endpoint-cache) option works with the API-level cache and allows you to select which endpoints are cached, but relies upon the cache timeout (refresh) configured at the API-level. It will cache all responses received from the endpoint regardless of the HTTP response code for all [safe requests]({{< ref "api-management/gateway-optimizations#global-cache-safe-requests" >}}).
 
 The [advanced](#advanced-endpoint-cache) option allows you to cache more selectively, giving control over the HTTP response codes to be cached, a per-endpoint cache timeout and also the possibility of caching responses only to requests containing specific data in the request body.
 
@@ -722,9 +722,9 @@ Cache invalidation is performed at the API level, so all cache entries for the A
 
 Tyk creates the API cache in Redis, as it gives high performance and low latency. By default, the cache will use the same database that is used to store the API keys, minimizing the deployment footprint.
 
-For [multi-data center]({{< ref "api-management/mdcb#redis">}}) deployments, the Data Planes have a locally deployed Redis. This enables them to have a localised cache close to the traffic-serving Gateways.
+For [multi-data center]({{< ref "api-management/mdcb#redis" >}}) deployments, the Data Planes have a locally deployed Redis. This enables them to have a localised cache close to the traffic-serving Gateways.
 
-The [cache key]({{< ref "api-management/gateway-optimizations#cache-key">}}) is used as the Redis key, for quick lookups.
+The [cache key]({{< ref "api-management/gateway-optimizations#cache-key" >}}) is used as the Redis key, for quick lookups.
 
 For high-traffic systems that make heavy use of caching, it can make sense to use separate Redis databases for cache storage and for API keys, at the expense of increased deployment footprint.
 

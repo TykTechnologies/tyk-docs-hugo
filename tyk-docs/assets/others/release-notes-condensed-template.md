@@ -147,7 +147,7 @@ Repeat the release notes section above for every patch here
 Please refer to the [upgrading Tyk]({{< ref "developer-support/upgrading" >}}) page for further guidance on the upgrade strategy.
 
 ### API Documentation
-- [OpenAPI Document]({{<ref "" >}})
+- [OpenAPI Document]({{< ref "" >}})
 - [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/collection/<collection-id>)
 
 ### FAQ

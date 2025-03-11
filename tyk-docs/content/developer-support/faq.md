@@ -49,8 +49,8 @@ This section lists commonly asked questions or frequently encountered issues and
 5. **How to Backup Middleware Directory for Custom Plugins ?**
 
     If you use custom middleware plugins to extend your application's capabilities, regularly back up the middleware directory to preserve your customizations.
-    Details on middleware installation for [Tyk Self-Managed users](https://tyk.io/docs/plugins/supported-languages/javascript-middleware/install-middleware/tyk-pro/) (users of the licensed product).
-    Details on middleware installation for [Tyk Open Source users](https://tyk.io/docs/plugins/supported-languages/javascript-middleware/install-middleware/tyk-ce/)
+    Details on middleware installation for [Tyk Self-Managed users]({{< ref "plugins/supported-languages/javascript-middleware/install-middleware/tyk-pro" >}}) (users of the licensed product).
+    Details on middleware installation for [Tyk Open Source users]({{< ref "plugins/supported-languages/javascript-middleware/install-middleware/tyk-ce" >}})
 
     **Note:** Tyk's default name is `/middleware`. You might use a different name for it.
 
@@ -60,14 +60,14 @@ This section lists commonly asked questions or frequently encountered issues and
     When using *Tyk Gateway* as an open-source product, it could use a dedicated directory to load your Tyk API definitions and start serving them. 
     If you use such a directory, ensure these definitions are part of your backup plan.
 
-    **Note:** Tyk's default name is `/apps`. You might use a different name for it based on this [config field](https://tyk.io/docs/tyk-stack/tyk-gateway/important-prerequisites/#tyk-config)
+    **Note:** Tyk's default name is `/apps`. You might use a different name for it based on this [config field]({{< ref "tyk-stack/tyk-gateway/important-prerequisites#tyk-config" >}})
 
 7. **How to Backup Tyk Policies Directory - For Tyk Open source users ?**
 
     When using *Tyk Gateway* as an open-source product, it could use a file to load policies to be used by API keys when consuming the APIs. 
     If you use a policies file, ensure it is also part of your backup plan.
 
-    **Note:** Tyk's default name is `/policies`. You might use a different name for it based on this [config field](https://tyk.io/docs/tyk-stack/tyk-gateway/important-prerequisites/#path-to-policies-file)
+    **Note:** Tyk's default name is `/policies`. You might use a different name for it based on this [config field]({{< ref "tyk-stack/tyk-gateway/important-prerequisites#path-to-policies-file" >}})
 
 8. **How to Backup Redis ?**
 

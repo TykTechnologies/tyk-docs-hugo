@@ -13,7 +13,7 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "changelog"]
 ### Release Highlights
 This Tyk Cloud update enhances Gateway version management, ensuring a more streamlined, secure, and user-friendly experience. With the new UI versioning updates, users have clearer visibility into supported versions, direct upgrade recommendations, and the ability to automate version upgrades for effortless maintenance.
 These changes empower teams to stay on supported, secure, and high-performing versions.
-For more details, check out the [documentation on Gateway versioning and auto-upgrades](https://tyk.io/docs/developer-support/release-notes/special-releases/)
+For more details, check out the [documentation on Gateway versioning and auto-upgrades]({{< ref "developer-support/release-notes/special-releases" >}})
 
 ### Breaking Changes
 
@@ -203,7 +203,7 @@ There are no deprecations in this release
 
 This Tyk Cloud update introduces features that improve both flexibility in plugin management and user onboarding. Now, [Mserv]({{< ref "tyk-cloud#uploading-your-bundle" >}}),  supports **multiple plugin bundles**, allowing greater customization and easier deployment of plugin configurations. Additionally, we added an **embedded product tour** to enhance the deployment experience, offering a guided walkthrough of Tyk Dashboard’s features, ideal for users familiarizing themselves with the platform during onboarding.
 
-For a comprehensive list of improvements and fixes, please check the detailed [changelog]({{< ref "#Changelog-v1.23.0">}}) below.
+For a comprehensive list of improvements and fixes, please check the detailed [changelog]({{< ref "#Changelog-v1.23.0" >}}) below.
 
 ### Breaking Changes
 

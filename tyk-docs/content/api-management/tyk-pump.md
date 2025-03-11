@@ -233,7 +233,7 @@ With this configuration, all the analytics records related to `org1` or `org2` w
 
 ### Setup Dashboard Analytics
 
-To enable [Dashboard Analytics]({{<ref "api-management/dashboard-configuration#traffic-analytics">}}), you would need to configure Tyk Pump to send analytic data to the Dashboard storage MongoDB / SQL.
+To enable [Dashboard Analytics]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}), you would need to configure Tyk Pump to send analytic data to the Dashboard storage MongoDB / SQL.
 
 These are the different pumps that handle different kinds of analytic data.
 
@@ -1019,7 +1019,7 @@ TYK_PMP_PUMPS_MOESIF_META_APPLICATIONID=your_moesif_application_id
 
 3. **Ensure analytics is enabled**
 
-If you want to log HTTP headers and body, ensure the [detailed analytics recording](https://tyk.io/docs/analytics-and-reporting/useful-debug-modes/) flag is set to true in your [Tyk Gateway Conf](https://tyk.io/docs/tyk-oss-gateway/configuration/)
+If you want to log HTTP headers and body, ensure the [detailed analytics recording]({{< ref "analytics-and-reporting/useful-debug-modes" >}}) flag is set to true in your [Tyk Gateway Conf]({{< ref "tyk-oss-gateway/configuration" >}})
 
 ####### JSON / Conf File
 
@@ -1589,7 +1589,7 @@ We'll show you how to setup Tyk Pump for Prometheus Service Discovery.
 
     If you have Prometheus Operator enabled on the cluster, it would look for “PodMonitor” or “ServiceMonitor” resources and scrap from specified port. The only thing you would need to modify here is the helm release name for Prometheus Operator.
 
-    Also you can customize Prometheus Custom Metrics based on your analytics needs. We are using `tyk_http_requests_total` and `tyk_http_latency` described [here]({{<ref "api-management/tyk-pump#monitor-your-apis-with-prometheus">}}) for illustration:
+    Also you can customize Prometheus Custom Metrics based on your analytics needs. We are using `tyk_http_requests_total` and `tyk_http_latency` described [here]({{< ref "api-management/tyk-pump#monitor-your-apis-with-prometheus" >}}) for illustration:
 
     ```bash
     NAMESPACE=tyk-oss
@@ -1639,7 +1639,7 @@ For Custom Metrics, commas are escaped to be used in helm --set command. You can
 
     {{< img src="/img/diagrams/pump-prometheus-1.png" alt="pump-prometheus" >}}
 
-    You can check our [Guide on Monitoring API with Prometheus]({{<ref "api-management/tyk-pump#useful-queries">}}) for a list of useful queries you can setup and use.
+    You can check our [Guide on Monitoring API with Prometheus]({{< ref "api-management/tyk-pump#useful-queries" >}}) for a list of useful queries you can setup and use.
 
     e.g. The custom metrics tyk_http_requests_total can be retrieved:
 

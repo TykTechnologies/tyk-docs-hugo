@@ -2260,7 +2260,7 @@ Cache-Control: no-cache
 ]
 ```
 
-You can control how long you want to store expired tokens in this list using `oauth_token_expired_retain_period` which specifies retain period for expired tokens stored in Redis. By default expired token not get removed. See [here](https://tyk.io/docs/configure/tyk-gateway-configuration-options/#a-name-oauth-token-expired-retain-period-a-oauth-token-expired-retain-period) for more details.
+You can control how long you want to store expired tokens in this list using `oauth_token_expired_retain_period` which specifies retain period for expired tokens stored in Redis. By default expired token not get removed. See [here]({{< ref "configure/tyk-gateway-configuration-options#a-name-oauth-token-expired-retain-period-a-oauth-token-expired-retain-period" >}}) for more details.
 
 #### Revoke a Single OAuth Client Token
 
@@ -2367,7 +2367,7 @@ http://{{dashboard-hostname}}/api/apis/oauth/{{api_id}}/authorize-client
 {{< note success >}}
 **Note**  
 
-This functionality is available from [v2.9.0](https://tyk.io/docs/release-notes/version-2.9/#single-sign-on-for-the-tyk-saas). If you have an older version please using the [admin api](https://tyk.io/docs/tyk-apis/tyk-dashboard-admin-api/sso/)
+This functionality is available from [v2.9.0]({{< ref "release-notes/version-2.9#single-sign-on-for-the-tyk-saas" >}}). If you have an older version please using the [admin api]({{< ref "tyk-apis/tyk-dashboard-admin-api/sso" >}})
 {{< /note >}}
 
 
@@ -3289,7 +3289,7 @@ To enable this feature, the minimum required versions for the Gateway and Dashbo
 
 #### Import Organization
 
-The [Organization object]({{<ref "#organizations" >}}) is the most fundamental object in a Tyk setup, all other ownership properties hang off the relationship between an Organization and its APIs, Policies and API Tokens.
+The [Organization object]({{< ref "#organizations" >}}) is the most fundamental object in a Tyk setup, all other ownership properties hang off the relationship between an Organization and its APIs, Policies and API Tokens.
 
 | **Property** | **Description**              |
 | ------------ | ---------------------------- |
@@ -4028,7 +4028,7 @@ These endpoints will return information for categories across all APIs in the sy
 
 #### Tyk Operator
 
-You can manage categories using Tyk Operator custom resources. Please refer to [Tyk Operator]({{<ref "api-management/automations/operator#api-categories">}}) documentation to see how to manage API categories for Tyk OAS APIs and Tyk Classic APIs.
+You can manage categories using Tyk Operator custom resources. Please refer to [Tyk Operator]({{< ref "api-management/automations/operator#api-categories" >}}) documentation to see how to manage API categories for Tyk OAS APIs and Tyk Classic APIs.
 
 ## Governance using API Templates
 
@@ -5336,7 +5336,7 @@ When `store_type` is set to `db`, audit logs will be stored in the main database
 
 #### Retrieving Audit Logs via API
 
-Since Tyk 5.7.0 a new API endpoint has been added to allow authorized users to retrieve audit logs from the database storage. To know more about the API specifications, check out the swagger [documentation]({{<ref "tyk-dashboard-api" >}}).
+Since Tyk 5.7.0 a new API endpoint has been added to allow authorized users to retrieve audit logs from the database storage. To know more about the API specifications, check out the swagger [documentation]({{< ref "tyk-dashboard-api" >}}).
 To access the audit logs through the API ensure that your user account or group has been granted the "Audit Logs" RBAC group. If you do not have the necessary permissions, please contact your system administrator.
 
 ## Supported Database
