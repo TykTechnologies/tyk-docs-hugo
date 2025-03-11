@@ -16,7 +16,7 @@ Built from the ground up to be the fastest API gateway on the planet. It does no
 
 **Industry Standard Authentication**: OIDC, JWT, bearer Tokens, Basic Auth, Client Certificates and more.
 
-**OpenAPI Standards**: Keep your OpenAPI 3.0 description as source of truth with [Tyk OAS APIs]({{< ref "getting-started/key-concepts/high-level-concepts" >}}), import your Swagger and OAS2/3 documents to scaffold Tyk Classic APIs.
+**OpenAPI Standards**: Keep your OpenAPI 3.0 description as source of truth with [Tyk OAS APIs]({{< ref "api-management/gateway-config-managing-oas#" >}}), import your Swagger and OAS2/3 documents to scaffold Tyk Classic APIs.
 
 **Ultra performant:** Low latency, and thousands of rps with just a single CPU, horizontally and vertically scalable.
 

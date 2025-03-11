@@ -7,6 +7,9 @@ menu:
 weight: 2 
 aliases:
   - /tyk-developer-portal/okta-dcr
+robots: "noindex"
+algolia:
+  importance: 0
 ---
 
 ## Introduction
