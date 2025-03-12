@@ -1,5 +1,5 @@
 ---
-title: "Developer Portal Settings"
+title: "Developer Portal Advanced Settings"
 date: 2022-12-28
 tags: ["Tyk Developer Portal","Enterprise Portal","Email","Notifications"]
 aliases:

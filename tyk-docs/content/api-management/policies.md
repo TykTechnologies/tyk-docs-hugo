@@ -5,6 +5,11 @@ tags: ["Policies", "Security", "Security Policy", "Access Key", "API Key"]
 description: "How to create and use policies and access keys in Tyk"
 keywords: ["Policies", "Security", "Security Policy", "Access Key", "API Key"]
 aliases:
+  - /getting-started/key-concepts/what-is-a-session-object
+  - /getting-started/key-concepts/session-meta-data
+  - /advanced-configuration/transform-traffic/looping
+  - /concepts/session-meta-data
+  - /concepts/what-is-a-session-object
   - /security/security-policies
   - /basic-config-and-security/security/security-policies
   - /security/security-policies/policies-guide
@@ -18,6 +23,7 @@ aliases:
   - /basic-config-and-security/control-limit-traffic/key-expiry
   - /basic-config-and-security/security/key-hashing
   - /basic-config-and-security/security/key-level-security
+  - /tyk-apis/tyk-gateway-api/token-session-object-details
 ---
 
 ## Introduction
@@ -835,3 +841,165 @@ Tyk manages timestamps in the Unix timestamp format - this means that when a dat
 Key sessions are created and updated using the Tyk REST API, in order to set the expiry date for a key, update the `expires` value with the timestamp of when the key should expire.
 
 Leave this field empty for it never to expire.
+
+## Understanding Tyk Session
+
+### What is a Session Object
+
+In Tyk, all identities are mapped to a session object. Identities can be in the form of Bearer Tokens, HMAC Keys, JSON Web Tokens, OpenID Connect identities and Basic Auth users.
+
+You should think about a session object as the metadata associated with a user, or the identity trying to gain access to your services.
+
+In Tyk, a session object encapsulates the following details for any given identity:
+
+*   What rate limit to apply
+*   What quota to apply
+*   What Access Control List to apply
+*   What policy ID to use to override the above (if set)
+*   When the session holder's access expires
+
+Tyk also allows some additional metadata for a session object which is valuable for transformation or upstream identification purposes:
+
+*   Metadata (a string key/value map that can hold any data)
+*   Alias (a human-readable name for the identity)
+
+{{< note success >}}
+**Note**  
+
+Expiry is not the same as invalidation, in Tyk, a session object will be "expired" but will still be in the database in order to inform the session owner that their token has expired and they should renew, if the token was invalidated (deleted after the expiry period), then the user would simply be denied access and their token would be invalid. This is important for developers that have (but shouldn't) hard-coded their token into their app so it is hard to change.
+{{< /note >}}
+
+
+#### Where are session objects stored?
+
+Session objects are stored in Redis, not in MongoDB or in the Gateway itself. Session objects are stored as a token string / JSON object key/value pair in the Redis DB.
+
+By default, the token itself is hashed and therefore **obfuscated**, this means using the Alias is important to identify token data in analytics and logs.
+
+#### Where can I get more information?
+
+A session object is just a JSON object. For more details of each parameter in the session object, see [Tyk Token Session Object Details]({{< ref "api-management/policies#session-object" >}}).
+
+#### Session Object
+
+```{.copyWrapper}
+{
+  "last_check": 0,
+  "allowance": 1000,
+  "rate": 1000,
+  "per": 1,
+  "expires": 1458669677,
+  "quota_max": 1000,
+  "quota_renews": 1458667309,
+  "quota_remaining": 1000,
+  "quota_renewal_rate": 3600,
+  "access_rights": {
+    "e1d21f942ec746ed416ab97fe1bf07e8": {
+      "api_name": "Closed",
+      "api_id": "e1d21f942ec746ed416ab97fe1bf07e8",
+      "versions": ["Default"],
+      "allowed_urls": null
+    }
+  },
+  "org_id": "53ac07777cbb8c2d53000002",
+  "oauth_client_id": "",
+  "basic_auth_data": {
+    "password": "",
+    "hash_type": ""
+  },
+  "jwt_data": {
+    "secret": ""
+  },
+  "hmac_enabled": false,
+  "hmac_string": "",
+  "is_inactive": false,
+  "apply_policy_id": "",
+  "apply_policies": [
+    "59672779fa4387000129507d",
+    "53222349fa4387004324324e",
+    "543534s9fa4387004324324d"
+    ],
+  "data_expires": 0,
+  "monitor": {
+    "trigger_limits": null
+  },
+  "meta_data": {
+    "test": "test-data"
+  },
+  "tags": ["tag1", "tag2"],
+  "alias": "john@smith.com" 
+}
+```
+
+* `last_check` (**deprecated**): No longer used, but this value is related to rate limiting.
+
+* `allowance` (**deprecated**): No longer directly used, this value, no key creation, should be the same as `rate`.
+
+* `rate`: The number of requests that are allowed in the specified rate limiting window.
+
+* `per`: The number of seconds that the rate window should encompass.
+
+* `expires`: A Unix timestamp that defines when the key should expire. You can set this to `0` (zero) if you don't want the key to expire.
+
+* `quota_max`: The maximum number of requests allowed during the quota period.
+
+* `quota_renews`: An epoch that defines when the quota renews.
+
+* `quota_remaining`: The number of requests remaining for this user's quota (unrelated to rate limit).
+
+* `quota_renewal_rate`: The time, in seconds. during which the quota is valid. So for `1000` requests per hour, this value would be `3600` while `quota_max` and `quota_remaining` would be `1000`.
+
+* `access_rights`: This section is defined in the Access Control section of this documentation, use this section define what APIs and versions this token has access to.
+
+* `org_id`: The organization this user belongs to, this can be used in conjunction with the `org_id` setting in the API Definition object to have tokens "owned" by organizations. See the Organizations Quotas section of the [Tyk Gateway API]({{< ref "tyk-gateway-api" >}}).
+
+* `oauth_client_id`: This is set by Tyk if the token is generated by an OAuth client during an OAuth authorization flow.
+
+* `basic_auth_data`: This section defines the basic auth password and hashing method.
+
+* `jwt_data`: This section contains a JWT shared secret if the ID matches a JWT ID.
+
+* `hmac_enabled`: If this token belongs to an HMAC user, this will set the token as a valid HMAC provider.
+
+* `hmac_string`: The value of the HMAC shared secret.
+
+* `is_inactive`: Set this value to `true` to deny access.
+
+* `apply_policy_id` (**supported but now deprecated**): The policy ID that is bound to this token.
+
+* `apply_policies`: This replaces `apply_policy_id` and lists your policy IDs as an array. This supports the **Multiple Policy** feature introduced in the  **v2.4 of the Gateway**.
+
+* `data_expires`: An value, in seconds, that defines when data generated by this token expires in the analytics DB (must be using Pro edition and MongoDB).
+
+* `monitor`: Rate monitor trigger settings, defined elsewhere in the documentation.
+
+* `meta_data`: Metadata to be included as part of the session, this is a key/value string map that can be used in other middleware such as transforms and header injection to embed user-specific data into a request, or alternatively to query the providence of a key.
+
+* `tags`: Tags are embedded into analytics data when the request completes. If a policy has tags, those tags will supersede the ones carried by the token (they will be overwritten).
+
+* `alias`: As of v2.1, an Alias offers a way to identify a token in a more human-readable manner, add an Alias to a token in order to have the data transferred into Analytics later on so you can track both hashed and un-hashed tokens to a meaningful identifier that doesn't expose the security of the underlying token.
+
+### What is a Session Metadata
+
+As described in [What is a Session Object?]({{< ref "api-management/policies#what-is-a-session-object" >}}), all Tyk tokens can contain a metadata field. This field is a string key/value map that can store any kind of information about the underlying identity of a session.
+
+The metadata field is important, because it can be used in various ways:
+
+- to inform an admin of the provenance of a token
+- values can be injected into headers for upstream services to consume (e.g. a user ID or an email address provided at the time of creation)
+- values can be used in dynamic [JavaScript]({{< ref "api-management/plugins/javascript#accessing-external-and-dynamic-data" >}}) middleware and Virtual Endpoints for further validation or request modification
+
+Metadata is also injected by other Tyk Components when keys are created using "generative" methods, such as JSON Web Token and OIDC session creation and via the Developer Portal, to include information about the underlying identity of the token when it comes from a third-party such as an OAuth IDP (e.g. OIDC).
+
+#### Middleware that can use metadata
+
+Metadata is exposed in several middleware for use in the middleware configuration:
+
+- [URL Rewrite]({{< ref "api-management/traffic-transformation#pattern" >}})
+- [Request Header Transformation]({{< ref "api-management/traffic-transformation#injecting-dynamic-data-into-headers" >}})
+- [Response Header Transformation]({{< ref "api-management/traffic-transformation#injecting-dynamic-data-into-headers" >}})
+- [Request Body Transformation]({{< ref "api-management/traffic-transformation#data-accessible-to-the-middleware" >}})
+- [Response Body Transformation]({{< ref "api-management/traffic-transformation#data-accessible-to-the-middleware" >}})
+- [Virtual Endpoints]({{< ref "api-management/traffic-transformation#virtual-endpoints-overview" >}})
+
+You can also access and update metadata from your [custom plugins]({{< ref "api-management/plugins/overview#" >}}).  For an example of this, take a look at this [gRPC enabled GO Server](https://github.com/TykTechnologies/tyk-grpc-go-basicauth-jwt).  It's a PoC middleware that injects a JWT value into metadata and then accesses it later in the stream.
