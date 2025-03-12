@@ -95,7 +95,7 @@ Previously, TIB assigned a user to the last matched group when multiple groups w
 <li>
 <details>
 <summary>Fixed the following CVE</summary>
-
+    - [GHSA-v778-237x](https://github.com/advisories/GHSA-v778-237x-gjrc)
 
 
 </details>
