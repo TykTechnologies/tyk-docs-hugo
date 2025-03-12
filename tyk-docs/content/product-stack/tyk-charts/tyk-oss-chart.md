@@ -30,7 +30,7 @@ For quick start guide, please see [Quick Start with Tyk OSS Helm Chart]({{< ref 
 
 * [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
 * [Helm 3+](https://helm.sh/docs/intro/install/)
-* [Redis]({{< ref "migration-to-tyk#configure-legacy-tyk-headless-helm-chart" >}}) should already be installed or accessible by the gateway. 
+* [Redis]({{< ref "tyk-open-source#configuration-options-for-redis" >}}) should already be installed or accessible by the gateway. 
 
 ## Tyk OSS Installations
 ### Installing the Chart
@@ -428,8 +428,6 @@ Please make sure you are installing MongoDB versions that are supported by Tyk. 
 {{< /note >}}
 
 Follow notes from the installation output to get connection details and update them in the `values.yaml` file.
-
-NOTE:  Please make sure you are installing a mongo helm chart that matches a supported [version]({{< ref "migration-to-tyk#database-management" >}}).
 
 *Important Note regarding MongoDB:* This helm chart enables the PodDisruptionBudget for MongoDB with an arbiter replica-count of 1. If you intend to perform system maintenance on the node where the MongoDB pod is running and this maintenance requires for the node to be drained, this action will be prevented due the replica count being 1. Increase the replica count in the helm chart deployment to a minimum of 2 to remedy this issue.
 

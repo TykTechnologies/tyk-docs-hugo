@@ -2260,7 +2260,7 @@ Cache-Control: no-cache
 ]
 ```
 
-You can control how long you want to store expired tokens in this list using `oauth_token_expired_retain_period` which specifies retain period for expired tokens stored in Redis. By default expired token not get removed. See [here]({{< ref "configure/tyk-gateway-configuration-options#a-name-oauth-token-expired-retain-period-a-oauth-token-expired-retain-period" >}}) for more details.
+You can control how long you want to store expired tokens in this list using `oauth_token_expired_retain_period` which specifies retain period for expired tokens stored in Redis. By default expired token not get removed. See [here]({{< ref "tyk-oss-gateway/configuration#oauth_token_expired_retain_period" >}}) for more details.
 
 #### Revoke a Single OAuth Client Token
 
@@ -2367,7 +2367,7 @@ http://{{dashboard-hostname}}/api/apis/oauth/{{api_id}}/authorize-client
 {{< note success >}}
 **Note**  
 
-This functionality is available from [v2.9.0]({{< ref "release-notes/version-2.9#single-sign-on-for-the-tyk-saas" >}}). If you have an older version please using the [admin api]({{< ref "tyk-apis/tyk-dashboard-admin-api/sso" >}})
+This functionality is available from [v2.9.0]({{< ref "developer-support/release-notes/archived#single-sign-on-for-the-tyk-saas" >}}). If you have an older version please using the [admin api]({{< ref "api-management/dashboard-configuration#single-sign-on-api-1" >}})
 {{< /note >}}
 
 
@@ -3535,7 +3535,7 @@ The Endpoint Designer allows to configure all elements of your Tyk Classic API a
 {{< img src="/img/dashboard/endpoint-designer/classic-endpoint-designer-core.png" alt="The Tyk Classic Endpoint Designer - Core Settings tab" >}}
 
 The **Core Settings** tab provides access to configure basic settings for the API:
-- [Detailed logging]({{< ref "api-management/logs-metrics#tyk-classic" >}})
+- [Detailed logging]({{< ref "api-management/logs-metrics#capturing-detailed-logs" >}})
 - API Settings including
    - Listen path
    - [API Categories]({{< ref "#governance-using-api-categories" >}})
@@ -3756,7 +3756,7 @@ Tyk Gateway will set `TrackPath` to `true` in transaction records generated for 
 {{< note success >}}
 **Note**  
 
-The *track endpoint* middleware only affects the inclusion of endpoints in the per-endpoint aggregates, it does not have any impact on other [aggregated data]({{< ref "#aggregated-analytics" >}}) nor the [per-request data]({{< ref "#per-request-raw-analytics" >}}).
+The *track endpoint* middleware only affects the inclusion of endpoints in the per-endpoint aggregates, it does not have any impact on other [aggregated data]({{< ref "api-management/logs-metrics#aggregated-analytics" >}}) nor the [per-request data]({{< ref "api-management/dashboard-configuration#activity-logs" >}}).
 {{< /note >}}
 
 #### Selecting Tyk OAS APIs endpoints to be tracked

@@ -173,7 +173,7 @@ aliases:
 
     **Solution**
 
-    Users are advised to upgrade to the latest versions of any Tyk packages at their earliest convenience as a patch was released to resolve this issue. Packages are available to download from [Packagecloud.io][1]. See [Upgrading Tyk]({{< ref "upgrading-tyk" >}}) for details on upgrading to the latest version. It may also be worth checking if any TLS certificates associated with the domain have expired.
+    Users are advised to upgrade to the latest versions of any Tyk packages at their earliest convenience as a patch was released to resolve this issue. Packages are available to download from [Packagecloud.io][1]. See [Upgrading Tyk]({{< ref "developer-support/upgrading" >}}) for details on upgrading to the latest version. It may also be worth checking if any TLS certificates associated with the domain have expired.
 
     [1]: https://packagecloud.io/tyk
 
@@ -343,7 +343,7 @@ aliases:
     curl http://127.0.0.1:8080/quickstart/headers -H 'Authorization: mycustomkey'
     ```
 
-    See also the Keys section of the [Gateway API Swagger doc]({{< ref "tyk-rest-api" >}}).
+    See also the Keys section of the [Tyk Gateway API documentation]({{< ref "tyk-gateway-api" >}}).
 
 
 10. ##### Redis persistence using containers
@@ -1077,7 +1077,7 @@ We also support limited customisation of the error codes and messages returned b
 
     **What is detailed request logging?**
 
-    When [detailed request logging]({{< ref "api-management/logs-metrics#enable-detailed-recording" >}}) is enabled, Tyk will record the request and response in wire-format in the analytics database. This can be very useful when trying to debug API requests to see what went wrong for a user or client.
+    When [detailed request logging]({{< ref "api-management/logs-metrics#capturing-detailed-logs" >}}) is enabled, Tyk will record the request and response in wire-format in the analytics database. This can be very useful when trying to debug API requests to see what went wrong for a user or client.
 
     This mode is configured in the gateway and can be enabled at the [system]({{< ref "api-management/logs-metrics#configure-at-gateway-level" >}}), [API]({{< ref "api-management/logs-metrics#configure-at-api-level" >}}) or [access key]({{< ref "api-management/logs-metrics#configure-at-key-level" >}}) level.
 
@@ -1671,14 +1671,14 @@ As shown above, the `debug` log level mode provides more information which will 
 
 #### Versions
 
-You can access all Tyk release information on the [release notes]({{< ref "developer-support/tyk-release-summary/overview" >}}) overview page.
+You can access all Tyk release information on the [release notes]({{< ref "developer-support/release-notes/overview" >}}) overview page.
 
 We recommend always using the [Long-Term Support (LTS) release]({{< ref "developer-support/release-notes/special-releases#long-term-support-releases" >}}) for stability and long term support.
 
 ##### Non-LTS versions
 Tyk is backwards compatible, upgrading to newer versions won't turn on new features or change the behavior of your existing environment.
 
-For the best experience when experimenting with Tyk and exploring its latest capabilities, you can use our latest version. You can access all Tyk releases on the [release notes summary]({{< ref "developer-support/tyk-release-summary/overview" >}}) page. 
+For the best experience when experimenting with Tyk and exploring its latest capabilities, you can use our latest version. You can access all Tyk releases on the [release notes summary]({{< ref "developer-support/release-notes/overview" >}}) page. 
 
 #### Dashboard
 

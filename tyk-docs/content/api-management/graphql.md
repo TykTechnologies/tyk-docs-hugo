@@ -446,7 +446,7 @@ and you don't want some associate with a certain key to access the `balance` fie
     ]
 }
 ```
-Check the [Setup field-based permission]({{< ref "api-management/graphql/field-based-permissions#setup-field-based-permissions-in-dashboard" >}}) section, to learn how to configure them.
+Check the [Setup field-based permission]({{< ref "api-management/graphql#setup-field-based-permissions-in-dashboard" >}}) section, to learn how to configure them.
 
 
 #### Complexity Limiting
@@ -473,7 +473,7 @@ The complexity of a GraphQL query is about its depth. checkout this query:
 The above query has a depth of seven since the nested queries are seven.
 
 Tyk offers a solution to limit the depth of a query.
-Check out [this link]({{< ref "api-management/graphql#enable-from-the-dashboard" >}}) on how to set query depth.
+Check out [this link]({{< ref "api-management/graphql#query-depth-limit" >}}) on how to set query depth.
 
 #### Developer Portal
 

@@ -2677,7 +2677,7 @@ This tutorial has been tested on Ubuntu 16.04 & 18.04 with few if any modificati
 
 **Prerequisites**
 
-- Have MongoDB/SQL and Redis installed - see [here]({{< ref "getting-started/installation/with-tyk-on-premises/on-ubuntu#prerequisites" >}}) for details.
+- Have MongoDB/SQL and Redis installed - see [here](#database-management) for details.
 - Ensure port `3000` is available. This is used by the Tyk Dashboard to provide the GUI and the Developer Portal.
 
 **Step 1: Set up our APT Repositories**
@@ -3425,7 +3425,7 @@ Elasticsearch and starts up Tyk pump to push analytics data from the Tyk platfor
   - [operator-httpbin](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/operator-httpbin): starts up an API examples using the tyk-operator.
   - [operator-jwt-hmac](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/operator-jwt-hmac): starts up API examples using the tyk-operator to demonstrate JWT HMAC auth.
   - [operator-udg](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/operator-udg): starts up Universal Data Graph API examples using the tyk-operator.
-- [portal](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/portal): deploys the [Tyk Enterprise Developer Portal]({{< ref "tyk-developer-portal/tyk-enterprise-developer-portal" >}}) as well as its dependency PostgreSQL.
+- [portal](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/portal): deploys the [Tyk Enterprise Developer Portal]({{< ref "portal/overview" >}}) as well as its dependency PostgreSQL.
 - [prometheus](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/prometheus): deploys Prometheus and starts up Tyk Pump to push analytics data from the Tyk platform to Prometheus.
   - [prometheus-grafana](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/prometheus-grafana): deploys the Prometheus deployment as well as a Grafana deployment and creates a Grafana dashboard for you to view the analytics.
 - [vault](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/vault): deploys Vault Operator and a Vault instance.

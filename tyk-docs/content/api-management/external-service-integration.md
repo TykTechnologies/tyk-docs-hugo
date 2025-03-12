@@ -1,5 +1,5 @@
 ---
-title: "Tyk Identiy Broker - Integrate Social Logins, IDPs, LDAP and Custom Authentication"
+title: "Tyk Identity Broker - Integrate Social Logins, IDPs, LDAP and Custom Authentication"
 date: 2025-01-10
 tags: ["Tyk Identity Broker", "TIB", "Identity Provider", "Identity Handler", "SSO", "Custom Authentication", "Custom Proxy Provder", "SAML", "OIDC", "OpenID Connect", "Profies", "IDPs", "Social Provider" ,"LDAP"]
 description: ""
@@ -506,7 +506,7 @@ There is a simplified flow, which does not require a corresponding OAuth client 
 
 ### OIDC with Azure AD
 
-This is an end-to-end worked example of how you can use [AzureAD](https://azure.microsoft.com/en-gb/services/active-directory/) and our [Tyk Identity Broker (TIB)]({{< ref "concepts/tyk-components/identity-broker" >}}) to log in to your Dashboard.
+This is an end-to-end worked example of how you can use [AzureAD](https://azure.microsoft.com/en-gb/services/active-directory/) and the Tyk Identity Broker (TIB) to log into your Dashboard.
 This guide assumes the following:
 
 You already have authorized access to Tyk's Dashboard. If you haven't, get the authorization key by following this [guide]({{< ref "api-management/user-management#using-dashboard-api" >}}).
@@ -619,7 +619,7 @@ To try this yourself, we have included the link: https://openidconnect.net/
 
 ### OIDC with Okta
 
-This is an end-to-end worked example of how you can use [Okta](https://www.okta.com/) and our [Tyk Identity Broker (TIB)]({{< ref "concepts/tyk-components/identity-broker" >}}) to log in to your Dashboard.
+This is an end-to-end worked example of how you can use [Okta](https://www.okta.com/) and the Tyk Identity Broker to log into your Dashboard.
 This guide assumes the following:
 
 * You already have authorized access to Tyk's Dashboard. If you haven't, [get the authorization key by following this doc]({{< ref "api-management/user-management#using-dashboard-api" >}}).

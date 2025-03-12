@@ -16,7 +16,7 @@ Tyk Gateway allows analytics to be recorded and stored in a persistent data stor
 
 Tyk Gateway generates transaction records for each API request and response, containing [analytics data]({{< ref "api-management/tyk-pump#tyk-analytics-record-fields" >}}) relating to: the originating host (where the request is coming from), which Tyk API version was used, the HTTP method requested and request path etc.
 
-The transaction records are transmitted to Redis and subsequently transferred to a persistent [data store]({{< ref "api-management/tyk-pump#external-data-stores" >}}) of your choice via Tyk Pump. Furthermore, Tyk Pump can also be configured to [aggregate]({{< ref "api-management/dashboard-configuration#aggregated-analytics" >}}) the transaction records (using different data keys - API ID, access key, endpoint, response status code, location) and write to a persistent data store. Tyk Dashboard uses this data for:
+The transaction records are transmitted to Redis and subsequently transferred to a persistent [data store]({{< ref "api-management/tyk-pump#external-data-stores" >}}) of your choice via Tyk Pump. Furthermore, Tyk Pump can also be configured to [aggregate]({{< ref "api-management/logs-metrics#aggregated-analytics" >}}) the transaction records (using different data keys - API ID, access key, endpoint, response status code, location) and write to a persistent data store. Tyk Dashboard uses this data for:
 - [Aggregated analytics]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}) - Displaying analytics based on the aggregated data.
 - [Log Browser]({{< ref "api-management/dashboard-configuration#activity-logs" >}}) to display raw transaction records.
 

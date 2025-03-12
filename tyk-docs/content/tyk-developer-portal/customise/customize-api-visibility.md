@@ -41,7 +41,7 @@ Go to Portal Management > Developers screen
 {{< img src="/img/dashboard/portal-management/deveoper_field_group.png" alt="developer_field_group.png" width=800 >}}
 
 
-This flag can also be [set programatically]({{< ref "tyk-developer-portal/customise/custom-developer-portal#updating-a-developer-example-adding-custom-fields" >}}).
+This flag can also be [set programatically]({{< ref "tyk-developer-portal/tyk-portal-classic/customise/custom-developer-portal#updating-a-developer-example-adding-custom-fields" >}}).
 
 
 ## Modify the Portal Catalog Template to add Show/Hide Logic

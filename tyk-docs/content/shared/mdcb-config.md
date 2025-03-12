@@ -126,7 +126,7 @@ SSL certificates used by your MDCB server. A list of certificate IDs or path to 
 ENV: <b>TYK_MDCB_SECURITY_PRIVATECERTIFICATEENCODINGSECRET</b><br />
 Type: `string`<br />
 
-Allows MDCB to use Mutual TLS. This requires to set `server_options.use_ssl` to true. See [Mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) for more details.
+Allows MDCB to use Mutual TLS. This requires to set `server_options.use_ssl` to true. See [Mutual TLS](https://tyk.io/docs/api-management/client-authentication/#use-mutual-tls) for more details.
 
 ### security.enable_http_secure_endpoints
 ENV: <b>TYK_MDCB_SECURITY_ENABLEHTTPSECUREENDPOINTS</b><br />
@@ -502,7 +502,7 @@ Type: `int`<br />
 ENV: <b>TYK_MDCB_OMITANALYTICSINDEXCREATION</b><br />
 Type: `bool`<br />
 
-Set to true to disable the Mongo storages default index creation. More detailed behavior explained [here]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config#omitting-indexes" >}}).
+Set to true to disable the Mongo storages default index creation. More detailed behavior explained [here](https://tyk.io/docs/api-management/tyk-pump/#omitting-indexes).
 
 ### enable_separate_analytics_store
 ENV: <b>TYK_MDCB_ENABLESEPERATEANALYTICSSTORE</b><br />
@@ -719,7 +719,7 @@ Specifies the group key TTL in seconds. This key is used to prevent a group of g
 ENV: <b>TYK_MDCB_ENABLEOWNERSHIP</b><br />
 Type: `bool`<br />
 
-Enables [API Ownership]({{< ref "api-management/user-management#api-ownership" >}}) in MDCB. It allows the gateways in the data plane cluster to load only APIs that are accessible by the user and user group associated with the `slave_options.api_key` that is used to connect to MDCB (defined in `tyk.config` of the gateway).
+Enables [API Ownership](https://tyk.io/docs/api-management/user-management/#api-ownership) in MDCB. It allows the gateways in the data plane cluster to load only APIs that are accessible by the user and user group associated with the `slave_options.api_key` that is used to connect to MDCB (defined in `tyk.config` of the gateway).
 This will be enforced if `enable_ownership` is also enabled in the Dashboard and your API definition has been associated with a user or user_group
 Defaults to `false`.
 

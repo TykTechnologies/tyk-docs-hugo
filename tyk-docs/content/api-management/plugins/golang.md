@@ -61,7 +61,7 @@ Plugins are currently supported only on Linux, FreeBSD, and macOS, making them u
 
 ### Tyk Plugin Compiler
 
-We provide the [Tyk Plugin Compiler]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler" >}}) docker image, which we **strongly recommend** is used to build plugins compatible with the official Gateway releases. That tool provides the cross compilation toolchain, Go version used to build the release, ensures that compatible flags are used when compiling plugins (such as `-trimpath`, `CC`, `CGO_ENABLED`, `GOOS`, `GOARCH`) and also works around known Go issues such as:
+We provide the [Tyk Plugin Compiler]({{< ref "api-management/plugins/golang#plugin-compiler" >}}) docker image, which we **strongly recommend** is used to build plugins compatible with the official Gateway releases. That tool provides the cross compilation toolchain, Go version used to build the release, ensures that compatible flags are used when compiling plugins (such as `-trimpath`, `CC`, `CGO_ENABLED`, `GOOS`, `GOARCH`) and also works around known Go issues such as:
 
 - https://github.com/golang/go/issues/19004
 - https://www.reddit.com/r/golang/comments/qxghjv/plugin_already_loaded_when_a_plugin_is_loaded/
@@ -189,7 +189,7 @@ Using the *Go workspace* ensures build compatibility between the plugins and Gat
 
     Compatibility in general is a big concern when working with Go plugins: as the plugins are tightly coupled to the Gateway, consideration must always be made for the build restrictions enforced by environment and configuration options.
 
-    Continue with [Loading Go Plugins into Tyk]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/loading-go-plugins" >}}).
+    Continue with [Loading Go Plugins into Tyk]({{< ref "api-management/plugins/golang#loading-custom-go-plugins-into-tyk" >}}).
 
 ### Debugging Golang Plugins
 
@@ -778,7 +778,7 @@ Here we see:
 
 The following supporting resources are provided for developing plugins on Tyk Cloud:
 
-- [Enabling Plugins On The Control Plane]({{< ref "tyk-cloud/configuration-options/using-plugins/setup-control-plane#what-do-i-need-to-do-to-use-plugins" >}})
+- [Enabling Plugins On The Control Plane]({{< ref "tyk-cloud#configure-plugins" >}})
 - [Uploading Your Plugin Bundle To S3 Bucket]({{< ref "tyk-cloud#uploading-your-bundle" >}})
 
 ## Example custom Go plugins
