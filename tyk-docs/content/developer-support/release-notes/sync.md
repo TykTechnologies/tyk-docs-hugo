@@ -100,6 +100,18 @@ Changed the Tyk Sync Docker image to a distroless base starting from version 2.1
 
 </details>
 </li>
+
+<li>
+<details>
+<summary>Tyk Sync updated to use Golang 1.23</summary>
+
+Tyk Sync is using [Golang 1.23](https://tip.golang.org/doc/go1.23) Programming Language starting with the 2.1.0 release. This brings improvements to the code base and allows us to benefit from the latest features and security enhancements in Go.
+
+</details>
+</li>
+
+
+
 </ul>
 
 
