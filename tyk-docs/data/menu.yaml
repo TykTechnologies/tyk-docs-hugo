@@ -65,7 +65,7 @@ menu:
         path: /getting-started
         category: Page
         show: True
-      - title: "Install and Configure"
+      - title: "Deploy Tyk"
         category: Directory
         show: True
         menu:
@@ -105,11 +105,11 @@ menu:
         category: Page
         show: True
         path: /api-management/security-best-practices
-      - title: "Gateway Configuration"
+      - title: "Tyk API Definitions"
         category: Directory
         show: True
         menu:
-          - title: "Introduction"
+          - title: "Overview"
             path: /api-management/gateway-config-introduction
             category: Page
             show: True
@@ -201,32 +201,28 @@ menu:
             path: /api-management/plugins/advance-config
             category: Page
             show: True
-      - title: "User Management"
-        path: /api-management/user-management
-        category: Page
-        show: True
       - title: "Event Driven APIs"
         category: Directory
         show: True
         menu:
-        - title: "Event Driven APIs"
+        - title: "Tyk Streams"
           path: /api-management/event-driven-apis
           category: Page
           show: True
-        - title: "Tyk Streams Configuration"
+        - title: "Tyk Streams Reference"
           path: /api-management/stream-config
-          category: Page
-          show: True
-        - title: "Gateway Events"
-          path: /api-management/gateway-events
           category: Page
           show: True
       - title: "GraphQL"
         path: /api-management/graphql
         category: Page
         show: True
-      - title: "Universal Data Graph"
+      - title: "Universal Data Graph (UDG)"
         path: /api-management/data-graph
+        category: Page
+        show: True
+      - title: "Non HTTP Protocols"
+        path: /api-management/non-http-protocols
         category: Page
         show: True
       - title: "Gateway Optimizations"
@@ -249,12 +245,12 @@ menu:
             path: /api-management/performance-monitoring
             category: Page
             show: True
-      - title: "Non HTTP Protocols"
-        path: /api-management/non-http-protocols
-        category: Page
-        show: True
       - title: "Traffic Transformation"
         path: /api-management/traffic-transformation
+        category: Page
+        show: True
+      - title: "Tyk Gateway Events"
+        path: /api-management/gateway-events
         category: Page
         show: True
       - title: "Manage Distributed Gateways"
@@ -273,7 +269,7 @@ menu:
             path: /api-management/automations/operator
             category: Page
             show: True
-          - title: "Synchronizing Tyk Configuraiton"
+          - title: "Synchronizing Tyk Configuration"
             path: /api-management/automations/sync
             category: Page
             show: True
@@ -281,7 +277,7 @@ menu:
         path: /api-management/multiple-environments
         category: Page
         show: True
-      - title: "Tyk Helm Charts (Open Source)"
+      - title: "Tyk Helm Charts"
         category: Directory
         show: True
         menu:
@@ -305,6 +301,10 @@ menu:
             path: /product-stack/tyk-charts/tyk-oss-chart
             category: Page
             show: True
+      - title: "User Management"
+        path: /api-management/user-management
+        category: Page
+        show: True
       - title: "Troubleshooting"
         path: /api-management/troubleshooting-debugging
         category: Page
