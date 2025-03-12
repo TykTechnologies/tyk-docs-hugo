@@ -75,7 +75,7 @@ Whilst AuthN and AuthZ are separate actions with different standards, they are o
 
 ## How does Tyk Implement Authentication and Authorization?
 
-The API request processing flow within Tyk Gateway consists of a [chain of middleware]({{< ref "concepts/middleware-execution-order" >}}) that perform different checks and transformations on the request (headers, parameters and payload). Several dedicated **authentication middleware** are provided and there is also support for user-provided **custom authentication plugins**. Multiple authentication middleware can be chained together if required by the API's access security needs. *Note that it is not possible to set the order of chained auth methods.*
+The API request processing flow within Tyk Gateway consists of a [chain of middleware]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}) that perform different checks and transformations on the request (headers, parameters and payload). Several dedicated **authentication middleware** are provided and there is also support for user-provided **custom authentication plugins**. Multiple authentication middleware can be chained together if required by the API's access security needs. *Note that it is not possible to set the order of chained auth methods.*
 
 The middleware to be used is selected and configured using the API definition:
 - when using Tyk OAS APIs, the OpenAPI description can contain a list of `securitySchemes` which define the authentication methods to be used for the API; the detailed configuration of the Tyk authentication middleware is set in the in the `server.authentication` section of the `x-tyk-api-gateway` extension
@@ -212,7 +212,7 @@ The *client* sends the *client Id* and *client secret* during the authorization 
 
 ### Manage Client Access Policies
  
-The *access tokens* issued to clients by *Tyk Authorization Server* are the same as other [session objects]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}) and can be associated with [access security policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}) at the point of creation. These allow the application of quotas, rate limits and access rights in the normal manner.
+The *access tokens* issued to clients by *Tyk Authorization Server* are the same as other [session objects]({{< ref "api-management/policies#what-is-a-session-object" >}}) and can be associated with [access security policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}) at the point of creation. These allow the application of quotas, rate limits and access rights in the normal manner.
 
 Security policies can be assigned to *client apps* and will be applied to all access tokens issued for that *client app*.
 
@@ -231,7 +231,7 @@ For all grant types, the first common step is the registration of the *client* w
 
 - redirect URI
 - [optional] [security policies](#manage-client-access-policies) to be applied to access tokens generated for the client
-- [optional] [metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}) to be added to the access tokens
+- [optional] [metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}}) to be added to the access tokens
 
 {{< img src="/img/api-management/security/fill-out-client-details-oauth.png" alt="Add New OAuth Client" >}}
 
@@ -2846,11 +2846,11 @@ Tyk makes a clear distinction between an API authorization key expiring and bein
 
 Tyk provides separate control for the expiration and deletion of keys.
 
-Note that where we talk about keys here, we are referring to [Session Objects]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}), also sometimes referred to as Session Tokens
+Note that where we talk about keys here, we are referring to [Session Objects]({{< ref "api-management/policies#what-is-a-session-object" >}}), also sometimes referred to as Session Tokens
 
 ### Key expiry
 
-Tyk's API keys ([token session objects]({{< ref "tyk-apis/tyk-gateway-api/token-session-object-details" >}})) have an `expires` field. This is a UNIX timestamp and, when this date/time is reached, the key will automatically expire; any subsequent API request made using the key will be rejected.
+Tyk's API keys ([token session objects]({{< ref "api-management/policies#session-object" >}})) have an `expires` field. This is a UNIX timestamp and, when this date/time is reached, the key will automatically expire; any subsequent API request made using the key will be rejected.
 
 ### Key lifetime
 

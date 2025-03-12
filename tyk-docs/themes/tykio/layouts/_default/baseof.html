@@ -54,6 +54,12 @@
     <meta name="robots" content="noindex">
     {{ end }}
 
+    {{ if isset .Params.algolia "importance" }}
+      <meta name="algolia-importance" content="{{ .Params.algolia.importance }}">
+    {{ else }}
+      <meta name="algolia-importance" content="100">
+    {{ end }}
+
     <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
     <link

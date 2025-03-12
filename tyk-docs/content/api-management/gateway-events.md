@@ -870,7 +870,7 @@ If you are using our [Classic Developer Portal]({{< ref "tyk-developer-portal/ty
 
 The default quota consumption monitor will be triggered at the same level of quota usage for all users. Sometimes you might want to have a more granular approach with different triggering thresholds per user or organization. Sometimes you might want to fire the event at multiple thresholds, for example when the user hits 50%, 75% and 90% of their allowed quota.
 
-You can set user specific trigger levels for a user by additionally adding a `monitor` section to the access key ([Session Object]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}})). This has one field, which is an array of `trigger_limits` (thresholds) that must be in *descending* order and represent the percentage of the quota that must be reached in order for the trigger to be fired, for example:
+You can set user specific trigger levels for a user by additionally adding a `monitor` section to the access key ([Session Object]({{< ref "api-management/policies#what-is-a-session-object" >}})). This has one field, which is an array of `trigger_limits` (thresholds) that must be in *descending* order and represent the percentage of the quota that must be reached in order for the trigger to be fired, for example:
 
 ```yaml
 "monitor": {

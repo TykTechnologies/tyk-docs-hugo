@@ -407,7 +407,7 @@ spec:
 ```
 
 #### Configure at Key Level
-An alternative approach to controlling detailed recording is to enable it only for specific [access keys]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}). This is particularly useful for debugging purposes where you can configure detailed recording only for the key(s) that are reporting issues.
+An alternative approach to controlling detailed recording is to enable it only for specific [access keys]({{< ref "api-management/policies#what-is-a-session-object" >}}). This is particularly useful for debugging purposes where you can configure detailed recording only for the key(s) that are reporting issues.
 
 You can enable detailed recording for a key simply by adding the following to the root of the key's JSON file:
 
