@@ -1,5 +1,5 @@
 ---
-title: "API Providers"
+title: "API Providers in the Developer Portal"
 date: 2025-02-10
 linkTitle: API Management
 tags: ["Developer Portal", "Tyk", "Managing Access", "Catalogs", "Rate Limit", "Dynamic Client Registration", "Documenting APIs"]

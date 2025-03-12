@@ -3853,7 +3853,7 @@ This will be configured as a pre request hook.
 Tyk Operator also supports configuring custom plugins using plugin bundles, where the source code and associated
 configuration is packaged into a zip file and uploaded to a remote webserver. Tyk Gateway will then download, extract,
 cache and execute the plugin bundles for each of the configured phases of the [API
-request lifecycle]({{< ref "concepts/middleware-execution-order" >}}).
+request lifecycle]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}).
 
 For a detailed guide, check out our blog post
 [How to Deploy Python Plugins in Tyk Running on Kubernetes](https://tyk.io/blog/how-to-deploy-python-plugins-in-tyk-running-on-kubernetes/),
