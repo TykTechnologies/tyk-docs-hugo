@@ -130,13 +130,6 @@ We’ve added built-in testing and debugging capabilities to Tyk OAS, making val
 </li>
 <li>
 <details>
-<summary>Improved Form Performance in Tyk OAS API Designer</summary>
-
-We’ve optimized form validation in the Tyk Dashboard’s OAS API Designer to enhance user experience. Forms are now validated on blur instead of during every keystroke, preventing cursor jumps and improving typing responsiveness.
-</details>
-</li>
-<li>
-<details>
 <summary>Support for Read/Write Endpoints on RDS for Analytics and Logs</summary>
 
 Users can now configure separate RDS endpoints for read and write operations, optimizing database performance by handling reads on replicas and writes on the primary instance.
@@ -151,16 +144,35 @@ For backward compatibility, if `ConnectionString` is set, it will take precedenc
 </li>
 <li>
 <details>
-<summary>Improved API Key Management for MDCB Data Planes</summary>
+<summary>Certificate Support for GraphQL Introspection During API Creation</summary>
 
-We have updated Dashboard API key reset permissions to support API key rotation for MDCB Data Planes. Users with Real-Time Notifications enabled can now reset their Dashboard API key via the UI or API, resolving conflicts that previously prevented key rotation. These changes ensure a more secure and automated approach to managing API keys while maintaining existing access controls.
+Users can now attach or upload certificates during the GraphQL API creation process to support mTLS-protected upstream introspection. This eliminates the need for manual certificate management and redeployment, improving workflow efficiency and reducing maintenance overhead.
 </details>
 </li>
 <li>
 <details>
-<summary>Certificate Support for GraphQL Introspection During API Creation</summary>
+<summary>Bulk API Migration Endpoint for Tyk OAS Migration</summary>
 
-Users can now attach or upload certificates during the GraphQL API creation process to support mTLS-protected upstream introspection. This eliminates the need for manual certificate management and redeployment, improving workflow efficiency and reducing maintenance overhead.
+Introduced a bulk API migration endpoint with a dry run, staging, and direct migration modes, enabling a seamless transition from Tyk Classic APIs to Tyk OAS APIs.
+</details>
+</li>
+<li>
+<details>
+<summary>Upstream Authentication Support in Tyk Dashboard</summary>
+
+Tyk Dashboard now supports integration with upstream services secured using Basic Auth, OAuth 2.0 Client Credentials, and OAuth 2.0 Password Grant in Tyk OAS APIs, providing flexibility in securing upstream authentication flows.
+</details>
+</li>
+</ul>
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Support for PostgreSQL 1.17</summary>
+
+The Dashboard now supports PostgreSQL 1.17, ensuring compatibility with the latest database version.
 </details>
 </li>
 <li>
@@ -179,35 +191,9 @@ We have made minor adjustments to labels within the Dashboard UI to enhance clar
 </li>
 <li>
 <details>
-<summary>Bulk API Migration Endpoint for Tyk OAS Migration</summary>
+<summary>Improved API Key Management for MDCB Data Planes</summary>
 
-Introduced a bulk API migration endpoint with a dry run, staging, and direct migration modes, enabling a seamless transition from Tyk Classic APIs to Tyk OAS APIs.
-</details>
-</li>
-<li>
-<details>
-<summary>Upstream Authentication Support in Tyk Dashboard</summary>
-
-Tyk Dashboard now supports integration with upstream services secured using Basic Auth, OAuth 2.0 Client Credentials, and OAuth 2.0 Password Grant in Tyk OAS APIs, providing flexibility in securing upstream authentication flows.
-</details>
-</li>
-<li>
-<details>
-<summary>Clarity on Supported TLS Versions in Tyk Classic API Designer</summary>
-
-Removed unsupported TLS versions 1.0 and 1.1 from the Tyk Classic API Designer selector, improving clarity around supported TLS versions and enhancing security.
-</details>
-</li>
-</ul>
-
-##### Changed
-
-<ul>
-<li>
-<details>
-<summary>Support for PostgreSQL 1.17</summary>
-
-The Dashboard now supports PostgreSQL 1.17, ensuring compatibility with the latest database version.
+We have updated Dashboard API key reset permissions to support API key rotation for MDCB Data Planes. Users with Real-Time Notifications enabled can now reset their Dashboard API key via the UI or API, resolving conflicts that previously prevented key rotation. These changes ensure a more secure and automated approach to managing API keys while maintaining existing access controls.
 </details>
 </li>
 <li>
@@ -215,6 +201,20 @@ The Dashboard now supports PostgreSQL 1.17, ensuring compatibility with the late
 <summary>"Manage Account" Link from Dashboard</summary>
 
 The "Manage Account" link in the Tyk Dashboard, which previously directed users to an outdated cloud login page, has been removed. This improves the user experience by eliminating confusion around account management and ensuring a more cohesive navigation flow between the Dashboard and Tyk Cloud.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Form Performance in Tyk OAS API Designer</summary>
+
+We’ve optimized form validation in the Tyk Dashboard’s OAS API Designer to enhance user experience. Forms are now validated on blur instead of during every keystroke, preventing cursor jumps and improving typing responsiveness.
+</details>
+</li>
+<li>
+<details>
+<summary>Clarity on Supported TLS Versions in Tyk Classic API Designer</summary>
+
+Removed unsupported TLS versions 1.0 and 1.1 from the Tyk Classic API Designer selector, improving clarity around supported TLS versions and enhancing security.
 </details>
 </li>
 </ul>
@@ -227,7 +227,7 @@ The "Manage Account" link in the Tyk Dashboard, which previously directed users 
 <summary>Enhanced OPA Rules for Token Reset and User Data Access</summary>
 
 Updated OPA rules in the Dashboard to allow all users to reset their own access tokens and view their user data, improving self-service while maintaining security.
-Customers with custom OPA rules must update their configurations to include the is_self_key_reset and is_me helper rules and add not is_self_key_reset and not is_me exceptions to enable this functionality.
+Customers with custom OPA rules must update their configurations to include the is_self_key_reset and is_me helper rules. Additionally, they must modify their rules to exclude cases where is_self_key_reset or is_me apply in order to enable this functionality.
 </details>
 </li>
 </ul>
