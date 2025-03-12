@@ -277,7 +277,7 @@ menu:
         path: /api-management/multiple-environments
         category: Page
         show: True
-      - title: "Tyk Helm Charts (Open Source)"
+      - title: "Tyk Helm Charts"
         category: Directory
         show: True
         menu:
