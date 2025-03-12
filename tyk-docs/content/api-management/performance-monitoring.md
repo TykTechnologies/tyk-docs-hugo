@@ -16,7 +16,7 @@ Tyk Gateway allows analytics to be recorded and stored in a persistent data stor
 
 Tyk Gateway generates transaction records for each API request and response, containing [analytics data]({{< ref "api-management/tyk-pump#tyk-analytics-record-fields" >}}) relating to: the originating host (where the request is coming from), which Tyk API version was used, the HTTP method requested and request path etc.
 
-The transaction records are transmitted to Redis and subsequently transferred to a persistent [data store]({{< ref "api-management/tyk-pump#external-data-stores" >}}) of your choice via Tyk Pump. Furthermore, Tyk Pump can also be configured to [aggregate]({{< ref "api-management/dashboard-configuration#aggregated-analytics" >}}) the transaction records (using different data keys - API ID, access key, endpoint, response status code, location) and write to a persistent data store. Tyk Dashboard uses this data for:
+The transaction records are transmitted to Redis and subsequently transferred to a persistent [data store]({{< ref "api-management/tyk-pump#external-data-stores" >}}) of your choice via Tyk Pump. Furthermore, Tyk Pump can also be configured to [aggregate]({{< ref "api-management/logs-metrics#aggregated-analytics" >}}) the transaction records (using different data keys - API ID, access key, endpoint, response status code, location) and write to a persistent data store. Tyk Dashboard uses this data for:
 - [Aggregated analytics]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}) - Displaying analytics based on the aggregated data.
 - [Log Browser]({{< ref "api-management/dashboard-configuration#activity-logs" >}}) to display raw transaction records.
 
@@ -50,7 +50,7 @@ We can see that **19,253.75** RPS was recorded for the *untracked* API; with **1
 Tyk is configurable, allowing fine grained control over which information should be recorded and which can be skipped, thus reducing CPU cycles, traffic and storage.
 
 Users can selectively prevent the generation of analytics for
-[do_not_track]({{<ref "api-management/traffic-transformation#do-not-track-overview">}}) middleware:
+[do_not_track]({{< ref "api-management/traffic-transformation#do-not-track-overview" >}}) middleware:
 - **Per API**: Tyk Gateway will not create records for requests/responses for any endpoints of an API.
 - **Per Endpoint**: Tyk Gateway will not create records for requests/responses for specific endpoints.
 
@@ -58,7 +58,7 @@ When set, this prevents Tyk Gateway from generating the transaction records. Wit
 
 ### Conclusion
 
-[Disabling]({{<ref "api-management/traffic-transformation#do-not-track-overview">}})  the creation of analytics (either per API or for specific endpoints) helps to reduce CPU cycles and network requests for systems that exhibit high load and traffic, e.g. social media platforms, streaming, financial services and trading platforms.
+[Disabling]({{< ref "api-management/traffic-transformation#do-not-track-overview" >}})  the creation of analytics (either per API or for specific endpoints) helps to reduce CPU cycles and network requests for systems that exhibit high load and traffic, e.g. social media platforms, streaming, financial services and trading platforms.
 
 Application decisions need to be made concerning which endpoints are non critical and can thus have analytics disabled. Furthermore, benchmarking and testing will be required to evaluate the actual benefits for the application specific use case.
 

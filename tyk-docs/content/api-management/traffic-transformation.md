@@ -109,7 +109,7 @@ The [Circuit Breaker]({{< ref "tyk-self-managed#circuit-breakers" >}}) is a prot
 
 #### Do Not Track Endpoint
 
-If [traffic logging]({{< ref "api-management/logs-metrics#logging-api-traffic" >}}) is enabled for your Tyk Gateway, then it will create transaction logs for all API requests (and responses) to deployed APIs. You can use the [Do-Not-Track]({{< ref "api-management/traffic-transformation#do-not-track-overview" >}}) middleware to suppress creation of transaction records for specific endpoints.
+If [traffic logging]({{< ref "api-management/logs-metrics#api-traffic-logs" >}}) is enabled for your Tyk Gateway, then it will create transaction logs for all API requests (and responses) to deployed APIs. You can use the [Do-Not-Track]({{< ref "api-management/traffic-transformation#do-not-track-overview" >}}) middleware to suppress creation of transaction records for specific endpoints.
 
 #### Enforced Timeout
 
@@ -805,7 +805,7 @@ Note also that the endpoint path has not been terminated with `$`. Requests to, 
 
 ### Overview {#do-not-track-overview}
 
-When [transaction logging]({{< ref "api-management/logs-metrics#logging-api-traffic" >}}) is enabled in the Tyk Gateway, a transaction record will be generated for every request made to an API endpoint deployed on the gateway. You can suppress the generation of transaction records for any API by enabling the do-not-track middleware. This provides granular control over request tracking.
+When [transaction logging]({{< ref "api-management/logs-metrics#api-traffic-logs" >}}) is enabled in the Tyk Gateway, a transaction record will be generated for every request made to an API endpoint deployed on the gateway. You can suppress the generation of transaction records for any API by enabling the do-not-track middleware. This provides granular control over request tracking.
 
 #### Use Cases
 
@@ -5632,7 +5632,7 @@ The format for these advanced trigger context variables is: `$tyk_context.trigge
 
 You can retrieve a value from KV storage by including a reference in the [appropriate notation]({{< ref "tyk-self-managed#transformation-middleware" >}}) for the KV location where the key-value pair is stored.
 
-If you use a value retrieved from [Consul]({{< ref "tyk-self-managed#consul">}}) or [Vault]({{< ref "tyk-self-managed#vault">}}), this must be the <b>last</b> part in the `rewriteTo` URL.
+If you use a value retrieved from [Consul]({{< ref "tyk-self-managed#consul" >}}) or [Vault]({{< ref "tyk-self-managed#vault" >}}), this must be the <b>last</b> part in the `rewriteTo` URL.
 
 For example, say you have a key named `userName` with value `jo` in my Consul KV store:
 - if you configure `rewriteTo` as `/my-api/users/$secret_consul.userName` this will redirect calls to `/my-api/users/jo`

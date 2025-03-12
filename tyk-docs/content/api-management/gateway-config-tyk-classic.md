@@ -40,11 +40,7 @@ For versions of Tyk prior to 5.8 not all Gateway features can be configured usin
 
 The Tyk Classic API definition has a flat structure that does not use the `omitempty` style, requiring all fields to be present even if set to null, resulting in a larger object than that for an equivalent Tyk OAS API definition.
 
-In the rest of this document we will summarise the different fields of the Tyk Classic API definition that are used to configure Tyk Gateway to handle traffic to your service.
-
-There are some specific differences between Tyk Classic and Tyk OAS APIs, in particular with respect to the [default authentication method](#configuring-authentication-for-tyk-classic-apis) and [API versioning](#tyk-classic-api-versioning). The notes in this page apply only to Tyk Classic APIs and supercede the notes elsewhere which refer to the use of Tyk OAS APIs.
-
-
+Note that there are some specific differences between Tyk Classic and Tyk OAS APIs, in particular with respect to [default authentication method](#configuring-authentication-for-tyk-classic-apis) and [API versioning](#tyk-classic-api-versioning).
 
 ## Tyk Classic API versioning
 
@@ -85,7 +81,7 @@ This object enables configuration of the basic allow list, block list and ignore
 You can configure a different target URL here which will be used instead of the value stored in `proxy.target_url`. Note that this will also override (and so is not compatible with) upstream load balancing and Service Discovery, if configured for this API.
 
 **Field: `version_data.versions.{version-name}.global_headers`**
-A `key:value` map of HTML headers to injext to the request.
+A `key:value` map of HTML headers to inject to the request.
 
 **Field: `version_data.versions.{version-name}.global_headers_remove`**
 A list of HTML headers to remove from the request.
@@ -254,13 +250,13 @@ Your Tyk Gateway can listen on multiple domains/subdomains through the use of re
   * `{subdomain:foo|bar}.example.com` will listen on foo.example.com and bar.example.com"
 
 **Field: `ignore_endpoint_case`**
-If set to `true` the case of a call to endpoints for this API will be ignored. So for an endpoint called `getuser` all the following calls will be allowed:
+If set to `true` when matching the URL path for requests to this API, the case of the endpoint path will be ignored. So for an API `my-api` and the endpoint `getuser`, requests to all of the following will be matched:
  
-  * `getuser`
-  * `getUser`
-  * `GetUser`
+  * `/my-api/getuser`
+  * `/my-api/getUser`
+  * `/my-api/GetUser`
 
-If set to true, this will override ignoring the case for a particular endpoint with the [Ignore]({{< ref "api-management/traffic-transformation#api-designer-6" >}}) and [Allowlist]({{< ref "api-management/traffic-transformation#api-designer" >}}) plugins. This setting can be overriden at a "global" Tyk level by setting `ignore_endpoint_case` to `true` in your `tyk.conf` file. See [ignore_endpoint_case]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) for details.
+If set to true, this will override the endpoint level settings in [Ignore]({{< ref "api-management/traffic-transformation#case-sensitivity-2" >}}), [Allowlist]({{< ref "api-management/traffic-transformation#case-sensitivity" >}}) and [Blocklist]({{< ref "api-management/traffic-transformation#case-sensitivity-1" >}}) middleware. This setting can be overriden at the Tyk Gateway level, and so applied to all APIs, by setting `ignore_endpoint_case` to `true` in your `tyk.conf` file. See [ignore_endpoint_case]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) for details.
 
 **Field: `enable_batch_request_support`**
 Set to true to enable batch support
@@ -284,6 +280,9 @@ If set to true, when the keys are created, edited or added for this API, the quo
 
 ### Traffic logs
 
+**Field: `enable_detailed_recording`**
+If this value is set to `true`, the Gateway will record the request and response payloads in traffic logs.
+
 **Field: `do_not_track`**
 If this value is set to `true`, the Gateway will not generate traffic logs for requests to the API.
 
@@ -292,6 +291,11 @@ This specifies a string array of HTTP headers values which turned into tags. For
 
 **Field: `expire_analytics_after`**
 This value (in seconds) will be used to indicate a TTL (ExpireAt) for the retention of analytics created from traffic logs generated for this API that are stored in MongoDB. If using an alternative analytics storage solution that does not respect ExpireAt then you must manage the record TTL separately.
+
+### OpenTelemetry
+
+**Field: `detailed_tracing`**
+If this value is set to `true`, the Gateway will generate detailed OpenTelemetry spans for requests to the API.
 
 ### API Level Rate Limits
 

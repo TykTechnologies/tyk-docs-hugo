@@ -730,7 +730,7 @@ You need to enter the following information:
 
 4. **Click "Generate API"**
 
-Your API will appear in your APIs list. If you select **EDIT** from the **ACTIONS** drop-down list, you can see the endpoints (from the [Endpoint Designer](https://tyk.io/docs/transform-traffic/endpoint-designer/)) that have been created as part of the import process.
+Your API will appear in your APIs list. If you select **EDIT** from the **ACTIONS** drop-down list, you can see the endpoints (from the [Endpoint Designer]({{< ref "api-management/dashboard-configuration#endpoint-designer" >}})) that have been created as part of the import process.
 
 ### Creating a new API Version by importing an API Definition using Tyk Dashboard
 
@@ -1158,7 +1158,7 @@ Content-Length: 59
 * [Helm 3+](https://helm.sh/docs/intro/install/)
 * Connection details to remote control plane from the above [section](#deploy-hybrid-gateways).
 
-The following quick start guide explains how to use the [Tyk Data Plane Helm chart]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart">}}) to configure Tyk Gateway that includes:
+The following quick start guide explains how to use the [Tyk Data Plane Helm chart]({{< ref "product-stack/tyk-charts/tyk-data-plane-chart" >}}) to configure Tyk Gateway that includes:
 - Redis for key storage
 - Tyk Pump to send analytics to Tyk Cloud and Prometheus
 
@@ -1203,7 +1203,7 @@ helm upgrade hybrid-dp tyk-helm/tyk-data-plane -n $NAMESPACE --create-namespace 
 
 Now Tyk Gateway should be accessible through service `gateway-svc-hybrid-dp-tyk-gateway` at port `8080`. Pump is also configured with Hybrid Pump which sends aggregated analytics to Tyk Cloud, and Prometheus Pump which expose metrics locally at `:9090/metrics`.
 
-For the complete installation guide and configuration options, please see [Tyk Data Plane Chart]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart">}}).
+For the complete installation guide and configuration options, please see [Tyk Data Plane Chart]({{< ref "product-stack/tyk-charts/tyk-data-plane-chart" >}}).
 
 
 ##### Remove hybrid data plane configuration
@@ -1856,7 +1856,7 @@ We recommend you restrict your IAM user as much as possible before sharing the c
 }
 ```
 
-Next you'll [set up the Python authentication code bundle](https://tyk.io/docs/tyk-cloud/configuration-options/using-plugins/python-code-bundle/).
+Next you'll [set up the Python authentication code bundle]({{< ref "tyk-cloud#create-a-python-code-bundle" >}}).
 
 
 #### Uploading your Bundle
@@ -2180,9 +2180,9 @@ pip3 install protobuf grpcio
 {{< warning success >}}
 **Warning**
 
-`tyk-hybrid` chart is deprecated. Please use our [Tyk Data Plane helm chart]({{<ref "#deploy-hybrid-gateways" >}}) instead. 
+`tyk-hybrid` chart is deprecated. Please use our [Tyk Data Plane helm chart]({{< ref "#deploy-hybrid-gateways" >}}) instead. 
 
-We recommend that all users to migrate to the `tyk-data-plane` Chart. Please review the [Configuration]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart#configuration">}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
+We recommend that all users to migrate to the `tyk-data-plane` Chart. Please review the [Configuration]({{< ref "product-stack/tyk-charts/tyk-data-plane-chart#configuration" >}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
 {{< /warning >}}
 
 1. **Add the Tyk official Helm repo `tyk-helm` to your local Helm repository**

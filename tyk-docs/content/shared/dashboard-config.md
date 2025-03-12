@@ -324,7 +324,7 @@ auto configure based on currently MySQL version
 ENV: <b>TYK_DB_ADMINSECRET</b><br />
 Type: `string`<br />
 
-This secret is to be used by a special set of endpoints that we call “Admin APIs”. This API is part of the super-admin context and therefore has a separate endpoint prefix `/admin`. It also requires a special auth header called admin-auth. This purpose of these endpoints is to allow functionality that regular Dashboard users should not have, such as create new organizations, create super users etc. See the [Admin API](https://tyk.io/docs/dashboard-admin-api/) for more information on these endpoints.
+This secret is to be used by a special set of endpoints that we call “Admin APIs”. This API is part of the super-admin context and therefore has a separate endpoint prefix `/admin`. It also requires a special auth header called admin-auth. This purpose of these endpoints is to allow functionality that regular Dashboard users should not have, such as create new organizations, create super users etc. See the [Admin API](https://tyk.io/docs/dashboard-admin-api) for more information on these endpoints.
 
 ### shared_node_secret
 ENV: <b>TYK_DB_NODESECRET</b><br />
@@ -355,7 +355,7 @@ The hostname for the Redis collection and can be an IP address.
 ENV: <b>TYK_DB_REDISADDRS</b><br />
 Type: `[]string`<br />
 
-Used for configuring Redis clusters. See [Redis Cluster and Tyk Dashboard](https://tyk.io/docs/migration-to-tyk#configure-redis-cluster/) for more info. Example:
+Used for configuring Redis clusters. See [Redis Cluster and Tyk Dashboard](https://tyk.io/docs/tyk-open-source/#redis-cluster-and-tyk-dashboard) for more info. Example:
 ```
    "addrs": [
      "server1:6379",
@@ -528,7 +528,7 @@ Type: `bool`<br />
 To retrieve a list of all key hash listings, set this option to true.
 
 ### email_backend
-Tyk supports an interface-based email back-end system. We support `mandrill`, `sendgrid`, `amazonses` and `mailgun`. See [Outbound Email Configuration](https://tyk.io/docs/configure/outbound-email-configuration/) for more details on configuring these different providers.
+Tyk supports an interface-based email back-end system. We support `mandrill`, `sendgrid`, `amazonses` and `mailgun`. See [Outbound Email Configuration](https://tyk.io/docs/configure/outbound-email-configuration) for more details on configuring these different providers.
 
 ### email_backend.enable_email_notifications
 ENV: <b>TYK_DB_EMAILBACKEND_ENABLEEMAILNOTIFICATIONS</b><br />
@@ -701,13 +701,13 @@ SSL certificates used by your Gateway server. A list of certificate path to file
 ENV: <b>TYK_DB_HTTPSERVEROPTIONS_MINVERSION</b><br />
 Type: `uint16`<br />
 
-Minimum TLS version. See [TLS and SSL](https://tyk.io/docs/api-management/certificates/).
+Minimum TLS version. See [TLS and SSL](https://tyk.io/docs/api-management/certificates).
 
 ### http_server_options.ssl_ciphers
 ENV: <b>TYK_DB_HTTPSERVEROPTIONS_CIPHERSUITES</b><br />
 Type: `[]string`<br />
 
-Array of allowed cipher suites as defined at https://golang.org/pkg/crypto/tls/#pkg-constants
+Array of allowed cipher suites as defined [here](https://golang.org/pkg/crypto/tls/#pkg-constants)
 
 ### http_server_options.ssl_insecure_skip_verify
 ENV: <b>TYK_DB_HTTPSERVEROPTIONS_SSLINSECURESKIPVERIFY</b><br />
@@ -721,7 +721,7 @@ Type: `bool`<br />
 
 A boolean value to control whether the server selects the preferred ciphersuite for the client, or the preferred ciphersuite for the server. If set to true, the server preferences in the order of the elements listed in `ssl_ciphers` is used.
 
-For more information see [TLS and SSL](https://tyk.io/docs/api-management/certificates/)
+For more information see [TLS and SSL](https://tyk.io/docs/api-management/certificates)
 
 ### security
 This section controls login limits for both the Dashboard and the Developer Portal. The path for you audit log is also set here.
@@ -1011,7 +1011,7 @@ Redirect all dashboard users to another URL
 ENV: <b>TYK_DB_SSOPERMISSIONDEFAULTS</b><br />
 Type: `map[ObjectGroup]string`<br />
 
-Specify permissions of the user who logged in using Admin SSO API (for example Tyk Identity Broker). See [Dashboard Admin SSO API](https://tyk.io/docs/tyk-apis/tyk-dashboard-admin-api/sso/) for more details.
+Specify permissions of the user who logged in using Admin SSO API (for example Tyk Identity Broker). See [Dashboard Admin SSO API](https://tyk.io/docs/api-management/dashboard-configuration#single-sign-on-api-1) for more details.
 
 ### sso_default_group_id
 ENV: <b>TYK_DB_SSODEFAULTUSERGROUP</b><br />

@@ -533,7 +533,7 @@ See [Versioning]({{< ref "api-management/api-versioning#tyk-classic-api-versioni
 
 4. **Click "Generate API"**
 
-    Your API will appear in your APIs list. If you select **EDIT** from the **ACTIONS** drop-down list, you can see the endpoints (from the [Endpoint Designer](https://tyk.io/docs/transform-traffic/endpoint-designer/)) that have been created as part of the import process.
+    Your API will appear in your APIs list. If you select **EDIT** from the **ACTIONS** drop-down list, you can see the endpoints (from the [Endpoint Designer]({{< ref "api-management/dashboard-configuration#exploring-api-endpoint-designer" >}})) that have been created as part of the import process.
 
 ### Creating a new API Version by importing an API Definition using Tyk Dashboard
 

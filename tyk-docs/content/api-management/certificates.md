@@ -322,7 +322,7 @@ This example shows how to enable a custom domain (`buraksekili.dev`) with a TLS 
 
 ## Using Tyk Certificate Storage
 
-In Tyk Gateway 2.4 and Tyk Dashboard 1.4 we added [Mutual TLS support](https://tyk.io/docs/security/tls-and-ssl/mutual-tls/) including special Certificate storage, which is used to store all kinds of certificates from public to server certificates with private keys.
+In Tyk Gateway 2.4 and Tyk Dashboard 1.4 we added [Mutual TLS support]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) including special Certificate storage, which is used to store all kinds of certificates from public to server certificates with private keys.
 
 {{< note success >}}
 **Note**  

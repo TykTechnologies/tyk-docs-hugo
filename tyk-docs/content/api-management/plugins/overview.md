@@ -1112,7 +1112,7 @@ Not all hooks are supported in every language. The following table shows you whi
 | Python     | ✅		 |✅	        |✅	       |✅	   |✅
 | Lua        | ✅	   |✅	        |✅	       |✅	   |❌
 
-More reading on the [hook types]({{< ref "api-management/plugins/rich-plugins#coprocess-dispatcher---hooks" >}}) in rich plugins and explanation with common use case for each [hook type]({{<ref "api-management/plugins/plugin-types#plugin-types">}}) 
+More reading on the [hook types]({{< ref "api-management/plugins/rich-plugins#coprocess-dispatcher---hooks" >}}) in rich plugins and explanation with common use case for each [hook type]({{< ref "api-management/plugins/plugin-types#plugin-types" >}}) 
 
 
 ### Plugin Driver Names

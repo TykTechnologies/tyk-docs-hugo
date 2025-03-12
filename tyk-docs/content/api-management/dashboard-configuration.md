@@ -2260,7 +2260,7 @@ Cache-Control: no-cache
 ]
 ```
 
-You can control how long you want to store expired tokens in this list using `oauth_token_expired_retain_period` which specifies retain period for expired tokens stored in Redis. By default expired token not get removed. See [here](https://tyk.io/docs/configure/tyk-gateway-configuration-options/#a-name-oauth-token-expired-retain-period-a-oauth-token-expired-retain-period) for more details.
+You can control how long you want to store expired tokens in this list using `oauth_token_expired_retain_period` which specifies retain period for expired tokens stored in Redis. By default expired token not get removed. See [here]({{< ref "tyk-oss-gateway/configuration#oauth_token_expired_retain_period" >}}) for more details.
 
 #### Revoke a Single OAuth Client Token
 
@@ -2367,7 +2367,7 @@ http://{{dashboard-hostname}}/api/apis/oauth/{{api_id}}/authorize-client
 {{< note success >}}
 **Note**  
 
-This functionality is available from [v2.9.0](https://tyk.io/docs/release-notes/version-2.9/#single-sign-on-for-the-tyk-saas). If you have an older version please using the [admin api](https://tyk.io/docs/tyk-apis/tyk-dashboard-admin-api/sso/)
+This functionality is available from [v2.9.0]({{< ref "developer-support/release-notes/archived#single-sign-on-for-the-tyk-saas" >}}). If you have an older version please using the [admin api]({{< ref "api-management/dashboard-configuration#single-sign-on-api-1" >}})
 {{< /note >}}
 
 
@@ -3289,7 +3289,7 @@ To enable this feature, the minimum required versions for the Gateway and Dashbo
 
 #### Import Organization
 
-The [Organization object]({{<ref "#organizations" >}}) is the most fundamental object in a Tyk setup, all other ownership properties hang off the relationship between an Organization and its APIs, Policies and API Tokens.
+The [Organization object]({{< ref "#organizations" >}}) is the most fundamental object in a Tyk setup, all other ownership properties hang off the relationship between an Organization and its APIs, Policies and API Tokens.
 
 | **Property** | **Description**              |
 | ------------ | ---------------------------- |
@@ -3535,7 +3535,7 @@ The Endpoint Designer allows to configure all elements of your Tyk Classic API a
 {{< img src="/img/dashboard/endpoint-designer/classic-endpoint-designer-core.png" alt="The Tyk Classic Endpoint Designer - Core Settings tab" >}}
 
 The **Core Settings** tab provides access to configure basic settings for the API:
-- [Detailed logging]({{< ref "api-management/logs-metrics#tyk-classic" >}})
+- [Detailed logging]({{< ref "api-management/logs-metrics#capturing-detailed-logs" >}})
 - API Settings including
    - Listen path
    - [API Categories]({{< ref "#governance-using-api-categories" >}})
@@ -3622,48 +3622,14 @@ The debugging level is set to **debug** for the request. This outputs all loggin
 
 The Tyk Dashboard provides a full set of analytics functions and graphs that you can use to segment and view your API traffic and activity. The Dashboard offers a great way for you to debug your APIs and quickly pin down where errors might be cropping up and for which clients.
 
-{{< note success >}}
-**Note**
-
-In Tyk v5.1 (and LTS patches v4.0.14 and v5.0.3) we introduced [User Owned Analytics]({{< ref "api-management/user-management#user-permissions" >}}) which can be used to limit the visibility of aggregate statistics to users when API Ownership is enabled. Due to the way that the analytics data are aggregated, not all statistics can be filtered by API and so may be inaccessible to users with the Owned Analytics permission.
-{{< /note >}}
-
-### How does Tyk capture and process Traffic Analytics?
-When a client makes a request to the Tyk Gateway, the details of the request and response are captured and stored in a temporary Redis list. This list is read (and then flushed) every 10 seconds by the [Tyk Pump]({{< ref "tyk-pump" >}}). The Pump processes the records that it has read from Redis and forwards them to the required data sinks using the pumps configured in your system. You can set up multiple pumps and configure them to send different analytics to different data sinks.
-
-The Mongo Aggregate and SQL Aggregate pumps perform aggregation of the raw analytics records before storing the aggregated statistics in the MongoDB or SQL database respectively.
+[User Owned Analytics]({{< ref "api-management/user-management#user-permissions" >}}), introduced in Tyk v5.1, can be used to limit the visibility of aggregate statistics to users when API Ownership is enabled. Due to the way that the analytics data are aggregated, not all statistics can be filtered by API and so may be inaccessible to users with the Owned Analytics permission.
 
 {{< note success >}}
 **Note**
 
-Note that you must [enable traffic analytics]({{< ref "api-management/logs-metrics#logging-api-traffic">}}) in your Tyk Gateway so that it will generate analytics records.
+For the Tyk Dashboard's analytics functionality to work, you must configure both per-request and aggregated pumps for the database platform that you are using. For more details see the [Setup Dashboard Analytics]({{< ref "api-management/tyk-pump#setup-dashboard-analytics" >}}) section.
 {{< /note >}}
 
-#### Minimal pump configuration for Tyk Dashboard analytics
-For the Tyk Dashboard's analytics functionality to work, you must configure both per request and aggregated pumps for the database platform that you are using
- - if you are using MongoDB, you must configure `mongo` and `mongo_aggregate` pumps
- - if you are using SQL, you must configure `sql` and `sql_aggregate` pumps
-
-#### Per-request (raw) analytics
-The transaction records contain information about each request and response, such as path or status. The fields captured in each analytics record are included in the [Tyk Pump documentation]({{< ref "api-management/tyk-pump#tyk-analytics-record-fields">}}).
-
-It is also possible to enable [detailed request logging]({{< ref "api-management/logs-metrics#enable-detailed-recording">}}) in the Gateway so that Tyk will log the requests and responses (including payloads) in wire format as base64 encoded data.
-
-These data are displayed in the Log Browser, on the [Activity logs]({{< ref "#activity-logs" >}}) screen in the Tyk Dashboard.
-
-#### Aggregated analytics
-The [Mongo Aggregate]({{< ref "api-management/tyk-pump#mongodb">}}) and [SQL Aggregate]({{< ref "api-management/tyk-pump#sql">}}) pumps will collate statistics from the analytics records, aggregated by hour, for the following keys:
-
-| Key            |  Analytics aggregated by         | Dashboard screen                                                                              |
-|----------------|----------------------------------|-----------------------------------------------------------------------------------------------|
-| `APIID`        | API                              | [Activity by API]({{< ref "#activity-by-api" >}})                      |
-| `TrackPath`    | API endpoint                     | [Activity by endpoint]({{< ref "#activity-by-endpoint" >}}) |
-| `ResponseCode` | HTTP status code (success/error) | [Activity by errors]({{< ref "#activity-by-error" >}})                    |
-| `APIVersion`   | API version                      | n/a                                                                                              |
-| `APIKey`       | Client access key/token          | [Activity by Key]({{< ref "#activity-by-key" >}})                    |
-| `OauthID`      | OAuth client (if OAuth used)     | [Traffic per OAuth Client]({{< ref "#activity-by-oauth-client" >}})    |
-| `Geo`          | Geographic location of client    | [Activity by location]({{< ref "#activity-by-location" >}}) |
-| `Tags`         | Custom session context tags      | n/a                                                                                              |
 
 ## Analyzing API Traffic Activity
 
@@ -3790,7 +3756,7 @@ Tyk Gateway will set `TrackPath` to `true` in transaction records generated for 
 {{< note success >}}
 **Note**  
 
-The *track endpoint* middleware only affects the inclusion of endpoints in the per-endpoint aggregates, it does not have any impact on other [aggregated data]({{< ref "#aggregated-analytics" >}}) nor the [per-request data]({{< ref "#per-request-raw-analytics" >}}).
+The *track endpoint* middleware only affects the inclusion of endpoints in the per-endpoint aggregates, it does not have any impact on other [aggregated data]({{< ref "api-management/logs-metrics#aggregated-analytics" >}}) nor the [per-request data]({{< ref "api-management/dashboard-configuration#activity-logs" >}}).
 {{< /note >}}
 
 #### Selecting Tyk OAS APIs endpoints to be tracked
@@ -4062,7 +4028,7 @@ These endpoints will return information for categories across all APIs in the sy
 
 #### Tyk Operator
 
-You can manage categories using Tyk Operator custom resources. Please refer to [Tyk Operator]({{<ref "api-management/automations/operator#api-categories">}}) documentation to see how to manage API categories for Tyk OAS APIs and Tyk Classic APIs.
+You can manage categories using Tyk Operator custom resources. Please refer to [Tyk Operator]({{< ref "api-management/automations/operator#api-categories" >}}) documentation to see how to manage API categories for Tyk OAS APIs and Tyk Classic APIs.
 
 ## Governance using API Templates
 
@@ -5370,7 +5336,7 @@ When `store_type` is set to `db`, audit logs will be stored in the main database
 
 #### Retrieving Audit Logs via API
 
-Since Tyk 5.7.0 a new API endpoint has been added to allow authorized users to retrieve audit logs from the database storage. To know more about the API specifications, check out the swagger [documentation]({{<ref "tyk-dashboard-api" >}}).
+Since Tyk 5.7.0 a new API endpoint has been added to allow authorized users to retrieve audit logs from the database storage. To know more about the API specifications, check out the swagger [documentation]({{< ref "tyk-dashboard-api" >}}).
 To access the audit logs through the API ensure that your user account or group has been granted the "Audit Logs" RBAC group. If you do not have the necessary permissions, please contact your system administrator.
 
 ## Supported Database
