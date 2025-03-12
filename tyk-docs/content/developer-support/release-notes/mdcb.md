@@ -82,9 +82,17 @@ MDCB now supports a seamless key rotation mechanism, allowing data planes to upd
 
 <li>
 <details>
-<summary>Support for PostgreSQL 1.17</summary>
+<summary>Support for PostgreSQL 17</summary>
 
-MDCB now supports PostgreSQL 1.17, ensuring compatibility with the latest database version.
+MDCB now supports PostgreSQL 17, ensuring compatibility with the latest database version.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Removal of SQLite Support in MDCB</summary>
+
+SQLite support has been fully removed from MDCB.
 </details>
 </li>
 
