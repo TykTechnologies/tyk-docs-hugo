@@ -1,5 +1,5 @@
 ---
-title: "Tyk Streams – Configure & Manage Event-Driven APIs"
+title: "Tyk Streams – Manage Event-Driven APIs"
 date: 2025-02-10
 tags: ["Tyk Streams", "Glossary", "Use Cases", "Asynchronus APIs", "Async", "Configuration"]
 description: "Introduction to Tyk Streams"
