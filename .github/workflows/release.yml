@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       next_latest_branch:
-        description: 'The new branch to create from master'
+        description: 'The new branch to create from master (e.g release-5.8)'
         required: true
       should_automerge:
         description: 'Do you want to automatically merge the PRs created ?'
