@@ -88,6 +88,14 @@ SQLite support has been fully removed from Pump.
 </details>
 </li>
 
+ 
+<li>
+<details>
+<summary>Golang Upgrade to 1.23</summary>
+
+</details>
+</li>
+
 </ul>
 
 ##### Security Fixes
