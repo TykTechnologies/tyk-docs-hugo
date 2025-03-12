@@ -104,19 +104,14 @@ SQLite support has been fully removed from MDCB.
 </details>
 </li>
 
-</ul>
-
-##### Updated
-<ul>
  
- <li>
- <details>
- <summary>Golang Upgrade to 1.23</summary>
+<li>
+<details>
+<summary>Golang Upgrade to 1.23</summary>
 
-
- </details>
- </li>
- </ul>
+</details>
+</li>
+</ul>
 
 ---
 ## 2.7 Release Notes
