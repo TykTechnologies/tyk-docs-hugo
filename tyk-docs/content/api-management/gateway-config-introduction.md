@@ -1,8 +1,8 @@
 ---
-title: "Gateway Configuration - API Definition"
+title: "Tyk API Definitions"
 date: 2025-01-10
-tags: ["Gateway", "Configuration", "API Definition", "API Definition Object", "API Definition Location"]
-description: "Explain the concept of Tyk API definiton"
+tags: ["API Definition", "API Definition Object", "API Definition Location"]
+description: "Explain the concept of Tyk API definition and the different types Tyk offers"
 keywords: ["Gateway", "Configuration", "API Definition", "API Definition Object", "API Definition Location"]
 aliases:
   - /getting-started/key-concepts/what-is-an-api-definition
