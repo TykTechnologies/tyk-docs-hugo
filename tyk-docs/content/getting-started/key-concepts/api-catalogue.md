@@ -12,6 +12,25 @@ algolia:
   importance: 0
 ---
 
+{{< warning success >}}
+
+**Attention:**
+
+You’ve reached a page related to the *Tyk Classic Portal*. If you were searching for *API documentation of the new Tyk
+Developer Portal* please use the latest
+[Postman collection]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) page.
+</br>
+</br>
+**Future deprecation of Tyk Classic Portal**
+
+This product is no longer actively developed as it
+has been superseded by the new [Tyk Developer Portal]({{< ref "portal/overview" >}}).
+</br>
+Please note that the Tyk Classic Portal now has limited support and maintenance. Please contact us at
+[support@tyk.io](<mailto:support@tyk.io?subject=Tyk classic developer portal>)if you have any questions.
+
+{{< /warning >}}
+
 The API Catalog is part of the API Developer Portal of the Dashboard. It is the central place for you to manage which APIs your registered developers have access to.
 
 The API catalog is completely separate from the regular API list section of the dashboard, as you may only wish to expose some of those APIs managed by Tyk to end users.
