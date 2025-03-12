@@ -28,7 +28,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-This release improves the security of the Tyk Prometheus Pump by introducing an option to obfuscate API keys in the /metrics endpoint. This enhancement prevents sensitive data from being exposed and aligns with best security practices.
+This release enhances Pump's database compatibility and security by adding support for PostgreSQL 1.17, removing SQLite support, and addressing critical security vulnerabilities (CVEs). These improvements ensure better performance, long-term stability, and overall enhanced security.
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.12.0" >}}) below.
 
@@ -69,14 +69,6 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
 ##### Changed
 
 <ul>
-<li>
-<details>
-<summary>Prometheus Pump API Key Obfuscation</summary>
-
-Previously, API keys were exposed in the /metrics endpoint, posing a potential security risk. With this update, API keys can now be obfuscated, preventing unintended exposure while maintaining full monitoring capabilities.
-
-</details>
-</li>
 
 <li>
 <details>
