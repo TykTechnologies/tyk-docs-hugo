@@ -28,7 +28,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-This release enhances Pump's database compatibility and security by adding support for PostgreSQL 1.17, removing SQLite support, and addressing critical security vulnerabilities (CVEs). These improvements ensure better performance, long-term stability, and overall enhanced security.
+This release enhances Pump's database compatibility and security by adding support for PostgreSQL 17, removing SQLite support, and addressing critical security vulnerabilities (CVEs). These improvements ensure better performance, long-term stability, and overall enhanced security.
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.12.0" >}}) below.
 
@@ -72,9 +72,9 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
 
 <li>
 <details>
-<summary>Support for PostgreSQL 1.17</summary>
+<summary>Support for PostgreSQL 17</summary>
 
-Pump now supports PostgreSQL 1.17, ensuring compatibility with the latest database version.
+Pump now supports PostgreSQL 17, ensuring compatibility with the latest database version.
 
 </details>
 </li>
