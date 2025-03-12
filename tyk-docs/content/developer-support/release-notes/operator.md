@@ -85,6 +85,14 @@ Tyk Operator now allows OAS API definitions in YAML format, increasing flexibili
 
 </details>
 </li>
+<li>
+<details>
+<summary>JWT OAS API policy linking </summary>
+
+Tyk Operator now supports linking of policies for JWT default policies and JWT scope-to-policy mappings using kubernetes names. They can set these fields in TykOASApiDefinition CRD.
+
+</details>
+</li>
 </ul>
 
 ##### Updated
@@ -128,7 +136,7 @@ Users can now disable cert-manager, making it optional rather than mandatory for
 <details>
 <summary>Circuit breaker schema validation</summary>
 
-Fixed a validation failure that blocked users on Operator 1.0.0 from upgrading.
+Fixed an issue where user was getting validation error while setting `threshold_precent` field of classic API Definition CRD starting from Operator v1.0.0, which blocked users from upgrading. 
 
 </details>
 </li>
@@ -137,15 +145,7 @@ Fixed a validation failure that blocked users on Operator 1.0.0 from upgrading.
 <details>
 <summary>Portal API Catalog infinite loop </summary>
 
-Resolved an issue where the Operator could enter an infinite loop when a PortalAPICatalogue CRD was created. 
-
-</details>
-</li>
-<li>
-<details>
-<summary>JWT OAS API policy linking </summary>
-
-The Operator now properly links JWT default policies and JWT scope-to-policy mappings using Kubernetes names.
+Resolved an issue where the Operator could enter an infinite loop when a PortalAPICatalogue CR was created. 
 
 </details>
 </li>
