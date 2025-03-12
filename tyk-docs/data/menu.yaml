@@ -85,6 +85,14 @@ menu:
         path: /api-management/client-authentication
         category: Page
         show: True
+      - title: "JSON Web Tokens"
+        path: /api-management/authentication/json-web-token
+        category: Page
+        show: True
+      - title: "HMAC Signatures"
+        path: /api-management/authentication/hmac-signatures
+        category: Page
+        show: True
       - title: "Upstream Authentication"
         path: /api-management/upstream-authentication
         category: Page
@@ -253,8 +261,20 @@ menu:
         path: /api-management/non-http-protocols
         category: Page
         show: True
+      - title: "TCP Proxy"
+        path: /api-management/non-http-protocols/tcp-proxy
+        category: Page
+        show: True
       - title: "Traffic Transformation"
         path: /api-management/traffic-transformation
+        category: Page
+        show: True
+      - title: "SOAP to REST"
+        path: /api-management/traffic-transformation/soap-to-rest
+        category: Page
+        show: True
+      - title: "URL Rewrite"
+        path: /api-management/traffic-transformation/url-rewriting
         category: Page
         show: True
       - title: "Manage Distributed Gateways"
