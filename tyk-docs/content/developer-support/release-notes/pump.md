@@ -95,8 +95,7 @@ SQLite support has been fully removed from Pump.
 <li>
 <details>
 <summary>Fixed the following CVE</summary>
-
-
+    - [GHSA-v778-237x](https://github.com/advisories/GHSA-v778-237x-gjrc)
 
 </details>
 </li>
