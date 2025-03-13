@@ -7,7 +7,7 @@ var buildTableOfContents = function () {
     ToC = $(".documentation-table-of-contents"),
     ToContent = $(".toc__content"),
     ToClbl = $('<span class="toc__label">On this page</span>'),
-    contentTitles = $("h1,h2, h3, h4, h5", "#main-content");
+    contentTitles = $("h2, h3, h4, h5", "#main-content");
 
   if (!ToC[0]) {
     return;
@@ -27,8 +27,8 @@ var buildTableOfContents = function () {
     ToC.prepend(ToClbl);
     var title = $(this).text();
 
-    if ($(this).is("h1")) {
-      var h1 = $(this)
+    if ($(this).is("h2")) {
+      var h2 = $(this)
         .text()
         .replace(/[^a-zA-Z0-9]/g, "")
         .toLowerCase();
@@ -41,27 +41,6 @@ var buildTableOfContents = function () {
       });
       accordionItem.append(accordionHeader);
       accordionGroup.append(accordionItem);
-    }
-    if ($(this).is("h2")) {
-      var link = $(`<a href="#${$(this).attr("id")}" class="sub_toc__item">${title}</a>`);
-      var h2 = $(this)
-        .text()
-        .replace(/[^a-zA-Z0-9]/g, "")
-        .toLowerCase();
-      var link = $(`<a href="#${$(this).attr("id")}" class="sub_toc__item sub-accordion-title">${title}</a>`);
-      var accordionContent = $('<div class="accordion-content"></div>').append(link);
-      if (accordionGroup.find(".accordion-item:last").length) {
-        accordionGroup.find(".accordion-item:last").append(accordionContent);
-      } else {
-        ToContent.append(accordionContent);
-      }
-
-      accordionContent.click(function () {
-        $(this).toggleClass("accordion-up");
-
-        // Toggle visibility of H4 elements under this H3
-        accordionContent.siblings(".sub-accordion-content").toggle();
-      });
     }
 
     if ($(this).is("h3")) {
