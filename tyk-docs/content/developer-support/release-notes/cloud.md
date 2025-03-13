@@ -56,6 +56,15 @@ Tyk Cloud now enables the onboarding wizard by default for trial users, providin
 
 </details>
 </li>
+
+<li>
+<details>
+<summary>Stability Improvements When Deploying Control Planes</summary>
+
+Tyk Cloud now features enhanced stability for Control Plane deployments, even in cases of license server issues.
+
+</details>
+</li>
   
 </ul>
 
@@ -96,7 +105,35 @@ Tyk Cloud now correctly enforces the 'Only Registered Users' flag for SSO (Googl
 Tyk Cloud now correctly hides the custom domain field in the Enterprise Developer Portal (EDP) edit page when the custom domain entitlement is not enabled. Previously, the field was visible even for organizations without access to this feature, causing confusion.
 
 </details>
-</li>    
+</li> 
+
+<li>
+<details>
+<summary>Improved Kubernetes Probes for Control Plane Deployments with SSO</summary>
+
+Tyk Cloud now ensures more reliable Kubernetes health checks for Control Plane deployments when SSO is configured.
+
+</details>
+</li> 
+
+<li>
+<details>
+<summary>Accurate Subscription Limits in Monitoring Charts</summary>
+
+The monitoring chart in Tyk Cloud now correctly displays the subscription limit based on the organization’s entitlement.
+
+</details>
+</li> 
+
+<li>
+<details>
+<summary>Improved Analytics Performance in Tyk Cloud</summary>
+
+Changing the analytics storage quota in Tyk Cloud no longer removes critical database indices, which previously led to performance degradation. This fix ensures that indices are preserved, maintaining fast query performance and data integrity. Customers should now experience improved analytics performance, especially when adjusting storage quotas.
+
+</details>
+</li> 
+
 </ul>
 
 ---
