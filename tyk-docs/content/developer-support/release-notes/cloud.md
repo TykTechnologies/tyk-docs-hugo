@@ -16,6 +16,13 @@ Tyk Cloud now provides greater compliance controls, allowing customers to manage
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.26.0" >}}) below.
 
+#### Admin Behavior Update in Control Planes v5.8.0
+In the next Tyk Cloud release, starting with the Control Planes version 5.8.0, we will be  restricting Tyk Dashboard admin users' ability to view and reset other users' API tokens. This change will automatically apply to all Control Plane deployments that are either newly created with or upgraded to version 5.8.0 or later.
+
+This security improvement helps protect sensitive access credentials and provides better isolation between user accounts. If your organization requires the previous behavior for specific operational needs, you can revert this change by submitting a request to Tyk Support.
+
+We remain committed to continuously improving the security of our platform while maintaining the flexibility needed for diverse environments.
+
 ### Breaking Changes
 
 There are no breaking changes in this release.
@@ -132,13 +139,6 @@ Changing the analytics storage quota in Tyk Cloud no longer removes critical dat
 </li> 
 
 </ul>
-
-# Admin Behavior Update in Control Planes v5.8.0
-In the next Tyk Cloud release, starting with the Control Planes version 5.8.0, we will be  restricting Tyk Dashboard admin users' ability to view and reset other users' API tokens. This change will automatically apply to all Control Plane deployments that are either newly created with or upgraded to version 5.8.0 or later.
-
-This security improvement helps protect sensitive access credentials and provides better isolation between user accounts. If your organization requires the previous behavior for specific operational needs, you can revert this change by submitting a request to Tyk Support.
-
-We remain committed to continuously improving the security of our platform while maintaining the flexibility needed for diverse environments.
 
 ---
 
