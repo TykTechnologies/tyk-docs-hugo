@@ -134,6 +134,9 @@ var buildTableOfContents = function () {
   var pageContent = $(".page-content");
   pageContent.on("scroll", highlightAnchor);
 
+   // Call highlightAnchor on page load
+   highlightAnchor();
+
   $(".accordion-item").each(function () {
     var accordionContent = $(this).find(".accordion-content");
     if (accordionContent.length) {
@@ -169,7 +172,7 @@ var buildTableOfContents = function () {
     .each(function () {
       idArray.push($(this).attr("href"));
     });
-  console.log(idArray);
+  console.log(idArray);  
   if (idArray.some((value) => currentUrl.includes(value))) {
     var lastAccordionItem = $("div.accordion-item:last,.accordion-content:last,.sub-accordion-content:last");
     lastAccordionItem.children("div").css("display", "block");
@@ -222,27 +225,41 @@ function activeTocToggle() {
 
 function highlightAnchor() {
   const contentTitles = $("h2, h3, h4, h5");
+  let highestVisibleHeading = null;
 
   contentTitles.each(function () {
     const sectionPosition = $(this).offset().top;
     const currentSectionId = $(this).attr("id");
+    const viewportHeight = $(window).height();
+    const scrollTop = $(window).scrollTop();
 
-    if (sectionPosition > 120 && sectionPosition < 120 + $(this).outerHeight() * 2) {
-      $(".toc__item, .sub_toc__item, .sub-sub-toc-item, .sub-sub-sub-toc-item").removeClass("js-active accordion-up");
-      $(
-        `.toc__item[href*="#${currentSectionId}"], .sub_toc__item[href*="#${currentSectionId}"], .sub-sub-toc-item[href*="#${currentSectionId}"], .sub-sub-sub-toc-item[href*="#${currentSectionId}"]`,
-      ).addClass("js-active accordion-up");
-
-      $(".accordion-up").each(function () {
-        $(this).siblings(".accordion-content").show();
-        $(this).siblings(".sub-accordion-content").show();
-      });
-
-      return false;
+    if (sectionPosition >= scrollTop && sectionPosition < scrollTop + viewportHeight) {
+      if (!highestVisibleHeading || sectionPosition < highestVisibleHeading.offset().top) {
+        highestVisibleHeading = $(this);
+      }
     }
-    $(".sub_toc__item.accordion-up").click(function () {
-      $(this).siblings(".sub-accordion-content").hide();
+  });
+
+  if (highestVisibleHeading) {
+    const currentSectionId = highestVisibleHeading.attr("id");
+    $(".toc__item, .sub_toc__item, .sub-sub-toc-item, .sub-sub-sub-toc-item").removeClass("js-active accordion-up");
+    const activeTocItem = $(
+      `.toc__item[href*="#${currentSectionId}"], .sub_toc__item[href*="#${currentSectionId}"], .sub-sub-toc-item[href*="#${currentSectionId}"], .sub-sub-sub-toc-item[href*="#${currentSectionId}"]`,
+    ).addClass("js-active accordion-up");
+
+    $(".accordion-up").each(function () {
+      $(this).siblings(".accordion-content").show();
+      $(this).siblings(".sub-accordion-content").show();
     });
+
+    // Scroll the TOC container to the highlighted item
+    if (activeTocItem.length) {
+      activeTocItem[0].scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  }
+
+  $(".sub_toc__item.accordion-up").click(function () {
+    $(this).siblings(".sub-accordion-content").hide();
   });
 }
 
