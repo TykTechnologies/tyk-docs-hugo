@@ -33,7 +33,6 @@ This release has no breaking changes.
 
 #### Dependencies
 
-      
 ##### 3rd Party Dependencies & Tools
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
@@ -51,7 +50,6 @@ There are no deprecations in this release.
 For users currently on v1.6.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version 1.6.0 and proceed directly to this latest patch release.
 <br/>
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
-
 
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/r/tykio/tyk-identity-broker/tags?name=1.7.0)
@@ -95,9 +93,8 @@ Previously, TIB assigned a user to the last matched group when multiple groups w
 <li>
 <details>
 <summary>Fixed the following CVE</summary>
-    - [GHSA-v778-237x](https://github.com/advisories/GHSA-v778-237x-gjrc)
 
-
+- [GHSA-v778-237x](https://github.com/advisories/GHSA-v778-237x-gjrc)
 </details>
 </li>
 </ul>
