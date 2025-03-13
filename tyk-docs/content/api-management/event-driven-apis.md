@@ -609,11 +609,9 @@ visibility into usage, performance, and errors.
 Tyk Streams provides out-of-the-box connectors for popular event brokers and async protocols, including:
 
 - [Apache Kafka](https://kafka.apache.org/documentation/)
-- [MQTT](https://mqtt.org/)
-- [RabbitMQ](https://www.rabbitmq.com/docs)
-- [Solace](https://docs.solace.com/Get-Started/Solace-PubSub-Platform.htm)
-- [RedPanda](https://docs.redpanda.com/current/home/)
-- [AMQP](https://www.amqp.org/)
+- [MQTT](https://mqtt.org/) (Coming Soon)
+- [Solace](https://docs.solace.com/Get-Started/Solace-PubSub-Platform.htm) (Coming Soon)
+- [AMQP](https://www.amqp.org/) (Coming Soon)
 - [WebSocket](https://websocket.org/guides/websocket-protocol/)
 - [Server-Sent Events](https://en.wikipedia.org/wiki/Server-sent_events) (SSE)
 - [Webhooks](https://en.wikipedia.org/wiki/Webhook)
