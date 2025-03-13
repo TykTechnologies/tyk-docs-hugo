@@ -104,6 +104,42 @@ var buildTableOfContents = function () {
         // You can add further logic if needed for H5 content
       });
     }
+    if ($(this).is("h5")) {
+      // Create a slug (for consistency, though it’s not used further here)
+      var h5Slug = $(this).text().replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+      // Create a link for the h5 heading.
+      // We’re using a new class name for h5 links to distinguish them from the others.
+      var h5Link = $(`<a href="#${$(this).attr("id")}" class="sub-sub-sub-sub-toc-item sub-accordion-title">${title}</a>`);
+      // Create a container for the h5 item.
+      var h5AccordionContent = $('<div class="sub-sub-sub-sub-accordion-content"></div>').append(h5Link);
+
+      // Try to find the parent's container (assumed to be the last h4 container).
+      if (
+        accordionGroup.find(
+          ".accordion-item:last .accordion-content:last .sub-accordion-content:last .sub-sub-accordion-content:last"
+        ).length
+      ) {
+        accordionGroup
+          .find(
+            ".accordion-item:last .accordion-content:last .sub-accordion-content:last .sub-sub-accordion-content:last"
+          )
+          .append(h5AccordionContent);
+      } else if (
+        // If no h4 container exists, fallback to the h3 container (or last sub-accordion-content)
+        accordionGroup.find(".accordion-item:last .accordion-content:last .sub-accordion-content:last").length
+      ) {
+        accordionGroup
+          .find(".accordion-item:last .accordion-content:last .sub-accordion-content:last")
+          .append(h5AccordionContent);
+      }
+
+      // Optionally add a click handler if you want toggle behavior for h5 items.
+      h5AccordionContent.click(function () {
+        $(this).parent().toggleClass("sub-accordion");
+        h5AccordionContent.find(".sub-sub-sub-sub-accordion-content").toggleClass("accordion-up");
+      });
+    }
+
   });
 
   ToContent.append(accordionGroup);
