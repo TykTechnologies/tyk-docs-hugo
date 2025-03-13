@@ -45,12 +45,7 @@ Our minor releases are supported until our next minor comes out.
 
 We are thrilled to announce new updates and improvements in Tyk 5.8.0, delivering more control, flexibility, and performance.  For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.0" >}}) below.
 
-##### Add release highlight summary
-
-Add release highlight description
-
 #### Breaking Changes
-<!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 
 There are no breaking changes in this release.
 
@@ -102,30 +97,30 @@ If you are upgrading to 5.8.0, please follow the detailed [upgrade instructions]
 <ul>
 <li>
 <details>
-<summary>New Dashboard Onboarding Flow</summary>
+<summary>Guided Onboarding for New Users </summary>
 
-We have introduced a guided onboarding experience in the Tyk Dashboard to help new users start effortlessly. Our intuitive step-by-step guide walks you through creating your first API, setting up policies and keys, testing endpoints, and exploring analytics—ensuring you can navigate the Dashboard and unlock its full potential from day one.
+We have introduced a guided onboarding experience in the Tyk Dashboard to help new users start effortlessly. Our step-by-step guide walks you through creating your first API, setting up policies and keys, testing endpoints, and exploring analytics—ensuring you can navigate the Dashboard and unlock its full potential from day one.
 </details>
 </li>
 <li>
 <details>
 <summary>YAML Support for Tyk OAS</summary>
 
-Tyk fully supports YAML for OAS CRUD operations, giving users greater flexibility in managing their APIs. This enhancement streamlines workflows and improves efficiency, making it easier to work in both JSON and YAML formats 
+Tyk fully supports YAML for Tyk OAS CRUD operations, giving users greater flexibility in managing their APIs. This enhancement make it easier to work in both JSON and YAML formats.
 </details>
 </li>
 <li>
 <details>
 <summary>Tyk OAS Now Supports Multi-Part OpenAPI Imports</summary>
 
-We've enhanced Tyk’s OAS import capabilities to support multi-part OpenAPI documents using the $ref feature. It allows users to seamlessly import OAS definitions referencing external files, making it easier to manage complex API specifications.
+We've enhanced Tyk’s OAS import capabilities to support multi-part OpenAPI documents using the `$ref` feature. It allows users to import OAS definitions referencing external files, making it easier to manage complex API specifications.
 </details>
 </li>
 <li>
 <details>
 <summary>API Testing & Debugging with Tyk OAS</summary>
 
-We’ve added built-in testing and debugging capabilities to Tyk OAS, making validating and troubleshooting your APIs easier. With a floating debugging panel, improved UX, and an endpoint dropdown, you can test your endpoints within the Dashboard.
+We’ve added built-in testing and debugging capabilities to Tyk OAS, making validating and troubleshooting your APIs easier. With a floating debugging panel and an endpoint dropdown, you can test your endpoints within the Dashboard.
 </details>
 </li>
 <li>
@@ -146,7 +141,7 @@ For backward compatibility, if `ConnectionString` is set, it will take precedenc
 <details>
 <summary>Certificate Support for GraphQL Introspection During API Creation</summary>
 
-Users can now attach or upload certificates during the GraphQL API creation process to support mTLS-protected upstream introspection. This eliminates the need for manual certificate management and redeployment, improving workflow efficiency and reducing maintenance overhead.
+Users can now attach certificates during the GraphQL API creation process to support mTLS-protected upstream introspection. This eliminates the need for manual certificate management and redeployment.
 </details>
 </li>
 <li>
@@ -170,16 +165,16 @@ Tyk Dashboard now supports integration with upstream services secured using Basi
 <ul>
 <li>
 <details>
-<summary>Support for PostgreSQL 1.17</summary>
+<summary>Support for PostgreSQL 17</summary>
 
-The Dashboard now supports PostgreSQL 1.17, ensuring compatibility with the latest database version.
+The Dashboard now supports PostgreSQL 17, ensuring compatibility with the latest database version.
 </details>
 </li>
 <li>
 <details>
 <summary>Improved Dashboard Code Editor</summary>
 
-Upgraded the code editor component library and enhanced its styling for a better user experience, readability, and smoother performance.
+Upgraded the code editor component library and enhanced its styling for a better user experience.
 </details>
 </li>
 <li>
