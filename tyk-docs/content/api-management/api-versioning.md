@@ -126,7 +126,7 @@ The standard behaviour of Tyk, if an invalid version is requested in the version
 
 Tyk OAS introduces the concept of a **Base API**, which acts as a *parent* that routes requests to the different *child* versions of the API. The Base API stores the information required for Tyk Gateway to locate and route requests to the appropriate *child* APIs.
 
-The *child* APIs do not have any reference back to the *parent* and so can operate completely independently if required. Typically, and we recommend, the *child* versions should be configured as [Internal APIs]({{< ref "api-management/traffic-transformation#internal-endpoint-1" >}}) that are not directly reachable by clients outside Tyk.
+The *child* APIs do not have any reference back to the *parent* and so can operate completely independently if required. Typically, and we recommend, the *child* versions should be configured as Internal APIs that are not directly reachable by clients outside Tyk.
 
 The Base API is a working version of the API and is usually the only one configured as an *External API*, so that client requests are handled (and routed) according to the configuration set in the Base API (via the version identifier included in the header, url or query parameter).
 
