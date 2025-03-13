@@ -1,7 +1,12 @@
 [
     {
         "path": "/docs/",
-        "name": "5.7 - Latest",
+        "name": "test-5.8 - Latest",
+        "branch": "release-test-5.8"
+    },
+    {
+        "path": "/docs/5.7/",
+        "name": "5.7",
         "branch": "release-5.7"
     },
     {
@@ -33,7 +38,6 @@
         "path": "/docs/5.1/",
         "name": "5.1",
         "branch": "release-5.1"
-
     },
     {
         "path": "/docs/5.0/",
@@ -75,7 +79,6 @@
         "name": "3 - LTS",
         "branch": "release-3-lts"
     },
-
     {
         "path": "/docs/nightly/",
         "name": "Nightly",
