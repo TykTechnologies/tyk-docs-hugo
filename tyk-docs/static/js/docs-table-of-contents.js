@@ -7,7 +7,7 @@ var buildTableOfContents = function () {
     ToC = $(".documentation-table-of-contents"),
     ToContent = $(".toc__content"),
     ToClbl = $('<span class="toc__label">On this page</span>'),
-    contentTitles = $("h2, h3, h4, h5", "#main-content");
+    contentTitles = $("h1,h2, h3, h4, h5", "#main-content");
 
   if (!ToC[0]) {
     return;
@@ -27,7 +27,7 @@ var buildTableOfContents = function () {
     ToC.prepend(ToClbl);
     var title = $(this).text();
 
-    if ($(this).is("h2")) {
+    if ($(this).is("h1")) {
       var h2 = $(this)
         .text()
         .replace(/[^a-zA-Z0-9]/g, "")
@@ -43,7 +43,7 @@ var buildTableOfContents = function () {
       accordionGroup.append(accordionItem);
     }
 
-    if ($(this).is("h3")) {
+    if ($(this).is("h2")) {
       var link = $(`<a href="#${$(this).attr("id")}" class="sub_toc__item">${title}</a>`);
       var h3 = $(this)
         .text()
@@ -65,7 +65,7 @@ var buildTableOfContents = function () {
       });
     }
 
-    if ($(this).is("h4")) {
+    if ($(this).is("h3")) {
       var h4 = $(this)
         .text()
         .replace(/[^a-zA-Z0-9]/g, "")
@@ -84,7 +84,7 @@ var buildTableOfContents = function () {
       });
     }
 
-    if ($(this).is("h5")) {
+    if ($(this).is("h4")) {
       var h5 = $(this)
         .text()
         .replace(/[^a-zA-Z0-9]/g, "")
@@ -200,7 +200,7 @@ function activeTocToggle() {
 // }
 
 function highlightAnchor() {
-  const contentTitles = $("h2, h3, h4, h5");
+  const contentTitles = $("h1,h2, h3, h4, h5");
 
   contentTitles.each(function () {
     const sectionPosition = $(this).offset().top;
