@@ -14,6 +14,8 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.2
 
 Tyk Cloud now provides greater compliance controls, allowing customers to manage audit logging and storage more effectively. With new entitlements-driven audit log storage and the ability to enable or disable audit logging per Control Plane deployment, users can optimize costs while maintaining security and compliance. These improvements give organizations more flexibility in handling audit data based on their specific regulatory and operational needs.
 
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.26.0" >}}) below.
+
 ### Breaking Changes
 
 There are no breaking changes in this release.
@@ -42,16 +44,7 @@ Tyk Cloud allows users to enable or disable audit logging for their [Control Pla
 <details>
 <summary>Audit Log Storage Entitlement for Tyk Cloud</summary>
 
-Tyk Cloud now enforces audit log storage quotas based on entitlements, allowing admins to control database usage and manage costs effectively. Similar to analytics storage, a size cap is applied to audit logs in MongoDB, ensuring organizations only store data within their allocated limit.
-</details>
-</li>
-
-<li>
-<details>
-<summary>Protecting Go Plugin Functionality by Isolating MServ API Definitions</summary>
-
-Tyk Cloud now moves MServ API definitions to a separate organization, preventing users from accidentally modifying or deleting them. Previously, these definitions were stored within the customer’s Tyk Dashboard deployment, posing the risk of breaking Go plugin functionality. With this update, Go plugins remain fully operational while deployments become more secure and error-proof.
-
+Tyk Cloud now enforces audit log storage quotas based on entitlements (a storage quota limit assigned to organization based on their subscription), allowing admins to control database usage and manage costs effectively. Similar to analytics storage, a size cap is applied to audit logs in MongoDB, ensuring organizations only store data within their allocated limit.
 </details>
 </li>
 
@@ -69,6 +62,15 @@ Tyk Cloud now enables the onboarding wizard by default for trial users, providin
 #### Fixed
 
 <ul>
+<li>
+<details>
+<summary>Protecting Go Plugin Functionality by Isolating MServ API Definitions</summary>
+
+Tyk Cloud now moves MServ API definitions to a separate organization, preventing users from accidentally modifying or deleting them. Previously, these definitions were stored within the customer’s Tyk Dashboard deployment, posing the risk of breaking Go plugin functionality. With this update, Go plugins remain fully operational while deployments become more secure and error-proof.
+
+</details>
+</li>
+
 <li>
 <details>
 <summary>Provision First and Last Name for Cloud SSO Users</summary>
