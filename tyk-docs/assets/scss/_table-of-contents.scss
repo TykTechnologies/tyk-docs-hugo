@@ -31,6 +31,34 @@
 .documentation-table-of-contents {
   padding: 60px 1rem 0.5rem 1.5rem;
 
+  .h1-item {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 0;
+    display: block;
+  }
+
+  .h1-container {
+    margin-bottom: 10px;
+    padding-left: 10px;
+  }
+
+  .accordion-item {
+    margin-left: 15px; /* Indent h2 under h1 */
+  }
+
+  .accordion-content {
+    margin-left: 20px; /* Indent h3 under h2 */
+  }
+
+  .sub-accordion-content {
+    margin-left: 25px; /* Indent h4 under h3 */
+  }
+
+  .sub-sub-accordion-content {
+    margin-left: 30px; /* Indent h5 under h4 */
+  }
+
   .sub_toc__item:hover,
   .sub-sub-toc-item:hover,
   .sub-sub-sub-toc-item:hover {
@@ -291,23 +319,6 @@
         &::after {
           rotate: 180deg;
         }
-      }
-    }
-
-    &__item {
-      display: block;
-      padding: 0.5rem 0;
-      font-size: 12px;
-      color: $brand-black;
-      word-wrap: break-word;
-
-      &.js-active {
-        font-weight: bold;
-        color: $brandpurple-dark;
-      }
-
-      &:hover {
-        color: $brandpurple-dark;
       }
     }
   }
