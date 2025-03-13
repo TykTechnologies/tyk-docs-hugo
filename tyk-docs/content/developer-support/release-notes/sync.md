@@ -21,13 +21,11 @@ Our minor releases are supported until our next minor comes out.
 
 ### 2.1.0 Release Notes
 
-#### Release Date XX March 2025
+#### Release Date 17 March 2025
 
 #### Release Highlights
 
 Tyk Sync 2.1 introduces performance improvements and enhanced control over API synchronization. This release optimizes resource updates, adds support for partial synchronization, and ensures compatibility with Tyk 5.8.
-
-Starting 2.1 release, Tyk Sync uses distroless docker image.
 
 Please refer to the [changelog]({{< ref "#Changelog-v2.1.0">}}) below for detailed explanation.
 
@@ -72,17 +70,9 @@ Improved synchronization speed by adding parallel processing, allowing faster ex
 </li>
 </ul>
 
-##### Fixed/Changed
+##### Changed
 
 <ul>
-<li>
-<details>
-<summary>Optimized API update requests</summary>
-
-Fixed an issue where API synchronization was unnecessarily sending update or create requests to the Dashboard even when no changes were detected. This caused redundant operations and inefficiencies in large-scale deployments. The system now intelligently detects actual changes before making requests, optimizing performance.
-
-</details>
-</li>
 <li>
 <details>
 <summary>Updated API definitions</summary>
@@ -110,8 +100,19 @@ Tyk Sync is using [Golang 1.23](https://tip.golang.org/doc/go1.23) Programming L
 </details>
 </li>
 
+</ul>
 
+##### Fixed
 
+<ul>
+<li>
+<details>
+<summary>Optimized API update requests</summary>
+
+Fixed an issue where API synchronization was unnecessarily sending update or create requests to the Dashboard even when no changes were detected. This caused redundant operations and inefficiencies in large-scale deployments. The system now intelligently detects actual changes before making requests, optimizing performance.
+
+</details>
+</li>
 </ul>
 
 
