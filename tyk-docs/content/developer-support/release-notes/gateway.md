@@ -2,8 +2,8 @@
 title: Tyk Gateway Release Notes
 date: 2024-10-08T15:51:11Z
 description:
-  "Release notes documenting updates, enhancements, and changes for Tyk Gateway versions within the 5.6.X series."
-tags: ["Tyk Gateway", "Release notes", "v5.6", "5.6.0", "5.6.1", "5.6", "changelog"]
+  "Release notes documenting updates, enhancements, and changes for Tyk Gateway."
+tags: ["Tyk Gateway", "Release notes", "changelog"]
 aliases:
   - /product-stack/tyk-gateway/release-notes/overview
   - /product-stack/tyk-gateway/release-notes/version-3.0
@@ -49,11 +49,23 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-We are thrilled to announce new updates and improvements in Tyk 5.8.0, delivering more control, flexibility, and performance.  For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.0" >}}) below.
+With Tyk 5.8.0 we are delighted to unlock the power and flexibility of Tyk OAS for all users, with full feature parity with the legacy Tyk Classic API definition. We are also bringing other updates and improvements, delivering more control, flexibility, and performance. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.0" >}}) below.
+
+##### Full support for Gateway configuration using Tyk OAS
+
+We have completed the journey with Tyk OAS that started in Tyk 4.1 - and now anything that you can configure using the Tyk Classic API definition is also available in the Tyk OAS API definition. Tyk OAS is now the recommended API style for all REST services, with Tyk Classic recommended for use only for GraphQL and TCP services.
+
+With Tyk OAS we combine the industry standard OpenAPI description with the Tyk Vendor Extension, which encapsulates all of the Tyk Gateway settings that cannot be inferred from the OpenAPI Specification (OAS). You can keep your service description (OAS) as source of truth and update the OpenAPI description part of a Tyk OAS API independently from the Tyk Vendor Extension - no need to unpick distributed vendor extensions from your OAS. For more details, please see the [documentation]({{< ref "api-management/gateway-config-introduction" >}}).
+
+##### Seamless API Key Rotation for MDCB Data Planes
+
+We have implemented a new feature for automatic propagation of rotated Dashboard API access keys to Data Planes. In a distributed deployment using MDCB, the Data Plane Gateways authenticate using access keys managed by Tyk Dashboard.
+
+From 5.8.0, when an access key is changed in the Dashboard, this will be propagated to the appropriate Data Plane Gateways via MDCB without the need to restart the Gateways. Note that unless you are using Vault or Consul to store the Data Plane access key (for example, you are using a local environment variable) it remains the responsibility of the system administrator to update tht source of truth so that Gateways pick up the correct key when starting up.
 
 #### Breaking Changes
 
-There are no breaking changes in this release.
+There are no breaking changes in this release, but please note that the upgrade to Go 1.23 may require changes to your setup.
 
 #### Dependencies {#dependencies-5.8.0}
 
@@ -75,7 +87,7 @@ There are no breaking changes in this release.
 | ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
 | [Go](https://go.dev/dl/)                                     | 1.23  |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}}) |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
@@ -107,32 +119,34 @@ If you are upgrading to 5.8.0, please follow the detailed [upgrade instructions]
 <details>
 <summary>Tyk OAS Feature Parity</summary>
 
-Tyk OAS has now reached feature parity with the legacy Tyk Classic APIs. You can now leverage the majority of Tyk Gateway’s capabilities through Tyk OAS APIs, making them a viable alternative to Tyk Classic APIs.
+In Tyk 5.8.0, we have added configuration of the following features into the Tyk OAS API definition, so that anything you can configure for a REST API via Tyk Classic you can also configure using Tyk OAS:
 
-From Tyk 5.8.0, we support the following features when using Tyk OAS APIs with Tyk Gateway:
-- Uptime Testing
-- Event Handling: Custom Handler (MVP)
-- Upstream Authentication: HMAC Request Signing
-- Preserve Client Request Headers
-- Batch Request Support
-- Granular Control Over Client-to-Gateway HTTP
-- Upstream Load Balancing
-- Analytics Tag Headers
-- IP Access Control
-- Analytics Expiry Period
-- Custom Analytics Plugins
-- Gateway-to-Upstream SSL Configuration
-- API-Level Request Size Limit
+- IP access control
+- API-Level request size limit
+- API-level ignore endpoint case
+- Skip rate limit middleware
+- Skip quota middleware
+- Skip quota reset on key creation
+- Custom analytics tags
+- Custom analytics retention period
+- Custom analytics plugins
+- Preserve client Host header
+- Gateway HTTP settings
+- Upstream uptime testing
+- Upstream load balancing
+- Upstream SSL configuration
+- Upstream authentication: HMAC request signing
+- Event handling: custom JS handler
+- Event handling: custom log Handler
+- Batch requests
 
-If you have existing Tyk Classic APIs, you can now consider migrating to Tyk OAS APIs for a modern and feature-complete experience.
 </details>
 </li>
-
 <li>
 <details>
-<summary>Seamless API Key Rotation for MDCB Data Planes</summary>
+<summary>Support for Seamless API Key Rotation for MDCB Data Planes</summary>
 
-We have enhanced Tyk Gateway’s handling of API key rotation for MDCB Data Planes. The Gateway now listens for ResetUserKey events, verifies the key update, and dynamically applies the new API key without requiring a restart. For environments using KV storage (e.g., Vault), key rotation is fully resilient even if an edge Gateway restarts. However, for config file or environment variable setups, if the Gateway is stopped and restarted, a manual update will be required.
+When deployed in an MDCB Data Plane, the Gateway can now retrieve a rotated Dashboard API key from MDCB. This will be propagated to all active Gateways in the Data Plane without the need for a Gateway restart. If you are using [Vault or Consul]({{< ref "tyk-self-managed#store-configuration-with-key-value-store" >}}) to store this credential, the Gateway will automatically update the stored value so that any new Gateways starting up in the cluster will automatically inherit the new access key.
 </details>
 </li>
 </ul>
@@ -140,23 +154,25 @@ We have enhanced Tyk Gateway’s handling of API key rotation for MDCB Data Plan
 ##### Changed
 
 <ul>
-
 <li>
 <details>
 <summary>Upgraded to Golang 1.23</summary>
+Tyk Gateway now runs on Golang 1.23, bringing security and performance improvements. Key changes include:
 
-Tyk Gateway now runs on Golang 1.23, bringing security and performance improvements. Key changes include unbuffered Timer/Ticker channels, removal of 3DES cipher suites, and updates to X509KeyPair handling. Users may need to adjust their setup for compatibility.
+- unbuffered Timer/Ticker channels
+- removal of 3DES cipher suites
+- updates to X509KeyPair handling.
+
+**You may need to adjust your setup for compatibility**. For more detail please see the official Go [release notes](https://go.dev/doc/go1.23).
 </details>
 </li>
-
 <li>
 <details>
-<summary>Support for the Latest JSON Schema Version</summary>
+<summary>Support for the Latest JSON Schema Version for Tyk Classic Request Validation</summary>
 
-We have updated the library that supports JSON schema validation in the Tyk Classic Validate JSON middleware. This has introduced improved error messaging when a request does not match the expected schema, reporting where the error exists in the request payload.
+We have updated the library that supports JSON schema validation in the Tyk Classic Validate JSON middleware. This introduces improved error messaging when a request does not match the expected schema, reporting where the error exists in the request payload.
 </details>
 </li>
-
 </ul>
 
 
@@ -165,9 +181,9 @@ We have updated the library that supports JSON schema validation in the Tyk Clas
 <ul>
 <li>
 <details>
-<summary>Resolved API authentication issue while handling redirects using "tyk://" Scheme</summary>
+<summary>Resolved API Authentication Issue when Performing Internal Looping using URL Rewrite</summary>
 
-This fix ensures that when API A redirects to API B using the tyk:// scheme, API B will now correctly authenticate using its own credentials, improving access control and preventing access denials. Users can now rely on the expected authentication flow without workarounds, providing a smoother experience when integrating APIs.
+We have fixed an issue where authentication was incorrectly handled for the Internal API when URL Rewrite middleware was used to redirect a request using the `tyk://` protocol. This fix ensures that when API A redirects to API B, authentication with API B will use the method configured for API B, improving access control and preventing access denials. Users can now rely on the expected authentication flow, providing a predictable experience when routing to internal APIs.
 </details>
 </li>
 <li>
@@ -179,9 +195,9 @@ We've improved gateway logging to reduce misleading error messages during startu
 </li>
 <li>
 <details>
-<summary>Edge Gateways Now Enter Emergency Mode When Disconnected from MDCB</summary>
+<summary>Edge Gateways Now Enter Emergency Mode when Disconnected from MDCB</summary>
 
-Fixed an issue where edge gateways failed to enter emergency mode when disconnected from MDCB, preventing traffic processing. Now, gateways properly load APIs and policies from the Redis backup when MDCB is unavailable.
+Fixed an issue where edge gateways failed to enter emergency mode when disconnected from MDCB, preventing traffic from being processed. Now, gateways properly load APIs and policies from the Redis backup when MDCB is unavailable.
 </details>
 </li>
 <li>
