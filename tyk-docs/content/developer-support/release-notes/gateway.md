@@ -77,9 +77,9 @@ There are no breaking changes in this release.
 
 | Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
 | ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
-| [Go](https://go.dev/dl/)                                     | 1.23  |  1.23  | [Go plugins]({{< ref "/plugins/supported-languages/golang" >}}) must be built using Go 1.23 | 
+| [Go](https://go.dev/dl/)                                     | 1.23  |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "/tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}}) |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
@@ -131,20 +131,7 @@ From Tyk 5.8.0, we support the following features when using Tyk OAS APIs with T
 If you have existing Tyk Classic APIs, you can now consider migrating to Tyk OAS APIs for a modern and feature-complete experience.
 </details>
 </li>
-<li>
-<details>
-<summary>Upgraded to Golang 1.23</summary>
 
-Tyk Gateway now runs on Golang 1.23, bringing security and performance improvements. Key changes include unbuffered Timer/Ticker channels, removal of 3DES cipher suites, and updates to X509KeyPair handling. Users may need to adjust their setup for compatibility.
-</details>
-</li>
-<li>
-<details>
-<summary>Support for the Latest JSON Schema Version</summary>
-
-We have updated the library that supports JSON schema validation in the Tyk Classic Validate JSON middleware. This has introduced improved error messaging when a request does not match the expected schema, reporting where the error exists in the request payload.
-</details>
-</li>
 <li>
 <details>
 <summary>Seamless API Key Rotation for MDCB Data Planes</summary>
@@ -153,6 +140,29 @@ We have enhanced Tyk Gateway’s handling of API key rotation for MDCB Data Plan
 </details>
 </li>
 </ul>
+
+##### Changed
+
+<ul>
+
+<li>
+<details>
+<summary>Upgraded to Golang 1.23</summary>
+
+Tyk Gateway now runs on Golang 1.23, bringing security and performance improvements. Key changes include unbuffered Timer/Ticker channels, removal of 3DES cipher suites, and updates to X509KeyPair handling. Users may need to adjust their setup for compatibility.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Support for the Latest JSON Schema Version</summary>
+
+We have updated the library that supports JSON schema validation in the Tyk Classic Validate JSON middleware. This has introduced improved error messaging when a request does not match the expected schema, reporting where the error exists in the request payload.
+</details>
+</li>
+
+</ul>
+
 
 ##### Fixed
 
