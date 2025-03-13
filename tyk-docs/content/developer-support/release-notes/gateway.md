@@ -51,10 +51,6 @@ Our minor releases are supported until our next minor comes out.
 
 We are thrilled to announce new updates and improvements in Tyk 5.8.0, delivering more control, flexibility, and performance.  For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.0" >}}) below.
 
-##### Add release highlight summary
-
-Add release highlight description
-
 #### Breaking Changes
 
 There are no breaking changes in this release.
