@@ -41,7 +41,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 #### Breaking Changes
 This release removes support for SQLite in MDCB, aligning with the broader removal of SQLite from the Tyk Dashboard. This change improves compatibility with enterprise environments and addresses implementation issues related to SQLite.
 
-#### Dependencies {#dependencies-X.Y.Z}
+#### Dependencies {#dependencies-2.8.0}
 
 ##### 3rd Party Dependencies & Tools
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
