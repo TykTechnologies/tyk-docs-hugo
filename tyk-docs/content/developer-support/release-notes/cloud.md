@@ -37,18 +37,13 @@ There are no deprecations in this release.
 <summary>Enable/Disable Audit Logging for Control Plane Deployments</summary>
 
 Tyk Cloud allows users to enable or disable audit logging for their [Control Plane]({{< ref "api-management/mdcb#data-plane" >}}) (CP) deployments, providing greater flexibility in managing compliance and storage costs. To enable this feature, please contact your account manager.
+
+Tyk Cloud now also enforces audit log storage quotas based on contractual terms (a storage quota limit assigned to organizations based on their subscription), allowing customers to manage costs effectively. Similar to analytics storage, a size cap is applied to audit logs, dropping the oldest logs to fit the new ones within the quota.
+
 For more information, please check the [Tyk Dashboard documentation on the feature](https://tyk.io/docs/api-management/dashboard-configuration/#retrieving-audit-logs-via-api)
 
 </details>
 </li>  
-
-<li>
-<details>
-<summary>Audit Log Storage Entitlement for Tyk Cloud</summary>
-
-Tyk Cloud now enforces audit log storage quotas based on contractual terms (a storage quota limit assigned to organization based on their subscription), allowing customers to manage costs effectively. Similar to analytics storage, a size cap is applied to audit logs, dropping oldest logs to fit the new ones within the quota.
-</details>
-</li>
 
 <li>
 <details>
