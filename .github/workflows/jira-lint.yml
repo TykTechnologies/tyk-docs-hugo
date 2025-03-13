@@ -1,6 +1,7 @@
 name: JIRA lint
 
 on:
+  push:
   pull_request:
     branches:
       - master
