@@ -1,8 +1,8 @@
 ---
 title: Tyk Dashboard Release Notes
 date: 2024-10-08T15:51:11Z
-description: "Release notes documenting updates, enhancements, and changes for Tyk Dashboard versions within the 5.6.X series."
-tags: ["Tyk Dashboard", "Release notes", "v5.6", "5.6.0", "5.6", "changelog"]
+description: "Release notes documenting updates, enhancements, and changes for Tyk Dashboard."
+tags: ["Tyk Dashboard", "Release notes", "changelog"]
 aliases:
   - /product-stack/tyk-dashboard/release-notes/overview
   - /product-stack/tyk-dashboard/release-notes/version-3.0
@@ -43,7 +43,29 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-We are thrilled to announce new updates and improvements in Tyk 5.8.0, delivering more control, flexibility, and performance.  For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.0" >}}) below.
+With Tyk 5.8.0 we are delighted to unlock the power and flexibility of Tyk OAS for all users, with full feature parity with the legacy Tyk Classic style for REST APIs. We are thrilled to announce new updates and improvements in Tyk 5.8.0, delivering more control, flexibility, and performance.  For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.0" >}}) below.
+
+##### Full support for API configuration using Tyk OAS
+
+We have completed the journey with Tyk OAS that started back in Tyk 4.1 - and now anything that you can configure using the Tyk Classic API definition is also available in the Tyk OAS API definition. Tyk OAS is now the recommended API style for all REST services, with Tyk Classic recommended for use only for GraphQL and TCP services.
+
+With Tyk OAS we combine the industry standard OpenAPI description with the Tyk Vendor Extension, which encapsulates all of the Tyk Gateway settings that cannot be inferred from the OpenAPI Specification (OAS). You can keep your service description (OAS) as source of truth and update the OpenAPI description part of a Tyk OAS API independently from the Tyk Vendor Extension - no need to unpick distributed vendor extensions from your OAS. For more details, please see the [documentation]({{< ref "api-management/gateway-config-introduction" >}}).
+
+Now that we have achieved this milestone we are keen to support users in migrating their existing Tyk Classic API portfolio to Tyk OAS and offer methods to do this both within the Tyk Dashboard Classic API Designer and via the Tyk Dashboard API. For more details of the migration tool, please see the [documentation]().
+
+##### Enhanced upstream authentication
+
+We are pleased to introduce advanced options for your Tyk OAS APIs when it comes to authenticating with the upstream service - a critical feature for integration with many partner services. With Tyk 5.8.0 you are now able to configure Tyk to act as an OAuth 2.0 client, retrieving an access token via the Client Credentials grant method. For legacy integrations Tyk can also support OAuth 2.0 Resource Owner Password Credentials grant and Basic Authentication methods. For more details please see the [documentation]({{< ref "api-management/upstream-authentication" >}}).
+
+##### Enhanced user experience within the Tyk Dashboard API Designer
+
+To accompany the launch of fully featured Tyk OAS capabilities, we have made a raft of improvements in the Tyk Dashboard GUI. There's an all-new API test and debug facility in the API designer, allowing you to issue requests to your APIs and then examine the debug traces produced by the Gateway without leaving the Tyk Dashboard. Our new, enhanced code editor allows you to work in YAML or JSON. We've also given the UI a spring clean to improve the usability.
+
+##### Seamless API Key Rotation for MDCB Data Planes
+
+We have implemented a new feature for automatic propagation of rotated Dashboard API access keys to Data Planes. In a distributed deployment using MDCB, the Data Plane Gateways authenticate using access keys managed by Tyk Dashboard.
+
+From 5.8.0, when an access key is changed in the Dashboard, this will be propagated to the appropriate Data Plane Gateways via MDCB without the need to restart the Gateways. Note that unless you are using Vault or Consul to store the Data Plane access key (for example, you are using a local environment variable) it remains the responsibility of the system administrator to update tht source of truth so that Gateways pick up the correct key when starting up.
 
 #### Breaking Changes
 
@@ -97,30 +119,23 @@ If you are upgrading to 5.8.0, please follow the detailed [upgrade instructions]
 <ul>
 <li>
 <details>
-<summary>Guided Onboarding for New Users </summary>
-
-We have introduced a guided onboarding experience in the Tyk Dashboard to help new users start effortlessly. Our step-by-step guide walks you through creating your first API, setting up policies and keys, testing endpoints, and exploring analytics—ensuring you can navigate the Dashboard and unlock its full potential from day one.
-</details>
-</li>
-<li>
-<details>
 <summary>YAML Support for Tyk OAS</summary>
 
-Tyk fully supports YAML for Tyk OAS CRUD operations, giving users greater flexibility in managing their APIs. This enhancement make it easier to work in both JSON and YAML formats.
+Tyk Dashboard's API and UI now support both YAML and JSON for Tyk OAS CRUD operations, giving users greater flexibility in managing their APIs.
 </details>
 </li>
 <li>
 <details>
 <summary>Tyk OAS Now Supports Multi-Part OpenAPI Imports</summary>
 
-We've enhanced Tyk’s OAS import capabilities to support multi-part OpenAPI documents using the `$ref` feature. It allows users to import OAS definitions referencing external files, making it easier to manage complex API specifications.
+We've enhanced Tyk’s OAS import capabilities to support multi-part OpenAPI documents using the `$ref` feature. It allows users to import OAS definitions that are split across multiple files, making it easier to manage complex API specifications.
 </details>
 </li>
 <li>
 <details>
 <summary>API Testing & Debugging with Tyk OAS</summary>
 
-We’ve added built-in testing and debugging capabilities to Tyk OAS, making validating and troubleshooting your APIs easier. With a floating debugging panel and an endpoint dropdown, you can test your endpoints within the Dashboard.
+We’ve added built-in testing and debugging capabilities to the Tyk OAS API Designer, making validating and troubleshooting your APIs easier. With a floating debugging panel and an endpoint dropdown, you can test your endpoints within the Dashboard UI.
 </details>
 </li>
 <li>
@@ -141,14 +156,14 @@ For backward compatibility, if `ConnectionString` is set, it will take precedenc
 <details>
 <summary>Certificate Support for GraphQL Introspection During API Creation</summary>
 
-Users can now attach certificates during the GraphQL API creation process to support mTLS-protected upstream introspection. This eliminates the need for manual certificate management and redeployment.
+Users can now attach certificates during the GraphQL API creation process to enabled mTLS-protected upstream introspection. This eliminates the need for manual certificate management and redeployment.
 </details>
 </li>
 <li>
 <details>
-<summary>Bulk API Migration Endpoint for Tyk OAS Migration</summary>
+<summary>New Dasboard API Migration Endpoint</summary>
 
-Introduced a bulk API migration endpoint with a dry run, staging, and direct migration modes, enabling a seamless transition from Tyk Classic APIs to Tyk OAS APIs.
+Introduced a new API migration [endpoint]() with dry run, staging, and direct migration modes, enabling a seamless transition from Tyk Classic to Tyk OAS. Use this endpoint to perform individual or bulk conversion of Tyk Classic to Tyk OAS APIs.
 </details>
 </li>
 <li>
@@ -156,6 +171,13 @@ Introduced a bulk API migration endpoint with a dry run, staging, and direct mig
 <summary>Upstream Authentication Support in Tyk Dashboard</summary>
 
 Tyk Dashboard now supports integration with upstream services secured using Basic Auth, OAuth 2.0 Client Credentials, and OAuth 2.0 Password Grant in Tyk OAS APIs, providing flexibility in securing upstream authentication flows.
+</details>
+</li>
+<li>
+<details>
+<summary>Quick Start Wizard for New Dashboard Users on Tyk Cloud</summary>
+
+We have introduced a guided onboarding experience for Tyk Cloud users to help new users start effortlessly. Our step-by-step guide walks you through creating your first API, setting up policies and keys, testing endpoints, and exploring analytics - ensuring you can navigate the Dashboard and unlock its full potential from day one.
 </details>
 </li>
 </ul>
