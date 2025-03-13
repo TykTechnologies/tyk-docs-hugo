@@ -12,7 +12,7 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.2
 
 ### Release Highlights
 
-Tyk Cloud now provides greater compliance controls, allowing customers to manage audit logging and storage more effectively. With new entitlements-driven audit log storage and the ability to enable or disable audit logging per Control Plane deployment, users can optimize costs while maintaining security and compliance. These improvements give organizations more flexibility in handling audit data based on their specific regulatory and operational needs.
+Tyk Cloud now provides greater compliance controls, allowing customers to manage audit logging and storage more effectively. With new audit log storage and the ability to enable or disable audit logging per Control Plane deployment, users can optimize costs while maintaining security and compliance. These improvements give organizations more flexibility in handling audit data based on their specific regulatory and operational needs. To enable this feature, please contact your account manager.
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.26.0" >}}) below.
 
@@ -36,7 +36,9 @@ There are no deprecations in this release.
 <details>
 <summary>Enable/Disable Audit Logging for Control Plane Deployments</summary>
 
-Tyk Cloud allows users to enable or disable audit logging for their [Control Plane]({{< ref "api-management/mdcb#data-plane" >}}) (CP) deployments through the UI or API, providing greater flexibility in managing compliance and storage costs.
+Tyk Cloud allows users to enable or disable audit logging for their [Control Plane]({{< ref "api-management/mdcb#data-plane" >}}) (CP) deployments, providing greater flexibility in managing compliance and storage costs. To enable this feature, please contact your account manager.
+For more information, please check the [Tyk Dashboard documentation on the feature](https://tyk.io/docs/api-management/dashboard-configuration/#retrieving-audit-logs-via-api)
+
 </details>
 </li>  
 
@@ -44,7 +46,7 @@ Tyk Cloud allows users to enable or disable audit logging for their [Control Pla
 <details>
 <summary>Audit Log Storage Entitlement for Tyk Cloud</summary>
 
-Tyk Cloud now enforces audit log storage quotas based on entitlements (a storage quota limit assigned to organization based on their subscription), allowing admins to control database usage and manage costs effectively. Similar to analytics storage, a size cap is applied to audit logs in MongoDB, ensuring organizations only store data within their allocated limit.
+Tyk Cloud now enforces audit log storage quotas based on contractual terms (a storage quota limit assigned to organization based on their subscription), allowing customers to manage costs effectively. Similar to analytics storage, a size cap is applied to audit logs, dropping oldest logs to fit the new ones within the quota.
 </details>
 </li>
 
@@ -75,7 +77,7 @@ Tyk Cloud now features enhanced stability for Control Plane deployments, even in
 <details>
 <summary>Protecting Go Plugin Functionality by Isolating MServ API Definitions</summary>
 
-Tyk Cloud now moves MServ API definitions to a separate organization, preventing users from accidentally modifying or deleting them. Previously, these definitions were stored within the customer’s Tyk Dashboard deployment, posing the risk of breaking Go plugin functionality. With this update, Go plugins remain fully operational while deployments become more secure and error-proof.
+Tyk Cloud now moves MServ API definitions to a separate organization, preventing users from accidentally modifying or deleting them. Previously, these definitions were stored within the customer’s Tyk Dashboard deployment, posing the risk of breaking Go plugin functionality. With this update, Go plugins remain fully operational while deployments become more secure and error-proof. This change applies to new deployments only; existing deployments with plugins enabled will be gradually migrated in the future to avoid unexpected service disruption.
 
 </details>
 </li>
@@ -109,9 +111,9 @@ Tyk Cloud now correctly hides the custom domain field in the Enterprise Develope
 
 <li>
 <details>
-<summary>Improved Kubernetes Probes for Control Plane Deployments with SSO</summary>
+<summary>Improved Probes for Control Plane Deployments with SSO</summary>
 
-Tyk Cloud now ensures more reliable Kubernetes health checks for Control Plane deployments when SSO is configured.
+Tyk Cloud now ensures more reliable health checks for Control Plane deployments when SSO is configured.
 
 </details>
 </li> 
