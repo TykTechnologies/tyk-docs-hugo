@@ -22,9 +22,12 @@ var buildTableOfContents = function () {
 
   ToContent.html("");
   var accordionGroup = $('<div class="accordion-group"></div>');
+  // Check if the label already exists before appending
+  if (ToC.find(".toc__label").length === 0) {
+    ToC.prepend(ToClbl);
+  }
 
   contentTitles.each(function () {
-    ToC.prepend(ToClbl);
     var title = $(this).text();
 
     if ($(this).is("h1")) {
@@ -34,6 +37,7 @@ var buildTableOfContents = function () {
         .toLowerCase();
       var accordionItem = $('<div class="accordion-item"></div>');
       var accordionHeader = $(`<a href="#${$(this).attr("id")}" class="toc__item">${title}</a>`);
+      
       accordionHeader.click(function () {
         $(this).toggleClass("accordion-up");
         // Toggle visibility of H3 elements under this H2
@@ -42,6 +46,7 @@ var buildTableOfContents = function () {
       accordionItem.append(accordionHeader);
       accordionGroup.append(accordionItem);
     }
+
     if ($(this).is("h2")) {
       var link = $(`<a href="#${$(this).attr("id")}" class="sub_toc__item">${title}</a>`);
       var h2 = $(this)
@@ -58,7 +63,6 @@ var buildTableOfContents = function () {
 
       accordionContent.click(function () {
         $(this).toggleClass("accordion-up");
-
         // Toggle visibility of H4 elements under this H3
         accordionContent.siblings(".sub-accordion-content").toggle();
       });
@@ -172,7 +176,7 @@ var buildTableOfContents = function () {
     .each(function () {
       idArray.push($(this).attr("href"));
     });
-  console.log(idArray);  
+  //console.log(idArray);  
   if (idArray.some((value) => currentUrl.includes(value))) {
     var lastAccordionItem = $("div.accordion-item:last,.accordion-content:last,.sub-accordion-content:last");
     lastAccordionItem.children("div").css("display", "block");
@@ -226,7 +230,7 @@ function activeTocToggle() {
 let lastHighlightedHeading = null;
 
 function highlightAnchor() {
-  const contentTitles = $("h2, h3, h4, h5");
+  const contentTitles = $("h1[id], h2[id], h3[id], h4[id], h5[id]");
   let highestVisibleHeading = null;
 
   contentTitles.each(function () {
@@ -244,38 +248,31 @@ function highlightAnchor() {
 
   if (highestVisibleHeading) {
     // Update the last highlighted heading
-    console.log("HIghest Visible Heading");
-    console.log(highestVisibleHeading);
     lastHighlightedHeading = highestVisibleHeading;
-    console.log("Last Highlighted Heading");
-    console.log(lastHighlightedHeading);
     const currentSectionId = highestVisibleHeading.attr("id");
     $(".toc__item, .sub_toc__item, .sub-sub-toc-item, .sub-sub-sub-toc-item").removeClass("js-active accordion-up");
     const activeTocItem = $(
       `.toc__item[href*="#${currentSectionId}"], .sub_toc__item[href*="#${currentSectionId}"], .sub-sub-toc-item[href*="#${currentSectionId}"], .sub-sub-sub-toc-item[href*="#${currentSectionId}"]`,
     ).addClass("js-active accordion-up");
 
-    $(".accordion-up").each(function () {
-      $(this).siblings(".accordion-content").show();
-      $(this).siblings(".sub-accordion-content").show();
-    });
+    // Open parent accordions
+    activeTocItem.parents(".accordion-content, .sub-accordion-content, .sub-sub-accordion-content").show();
+    activeTocItem.parents(".accordion-item, .sub-accordion-item, .sub-sub-accordion-item").addClass("accordion-up");
 
     // Scroll the TOC container to the highlighted item
     if (activeTocItem.length) {
       activeTocItem[0].scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
-
-    
   } else if (lastHighlightedHeading) {
-    console.log("else if section entered - last highlighted heading");
-    console.log(lastHighlightedHeading);
-    console.log("Highhiest visible heading");
-    console.log(highestVisibleHeading);
     // Keep the last highlighted heading active if no heading is visible
     const currentSectionId = lastHighlightedHeading.attr("id");
     const activeTocItem = $(
       `.toc__item[href*="#${currentSectionId}"], .sub_toc__item[href*="#${currentSectionId}"], .sub-sub-toc-item[href*="#${currentSectionId}"], .sub-sub-sub-toc-item[href*="#${currentSectionId}"]`,
     ).addClass("js-active accordion-up");
+
+    // Open parent accordions
+    activeTocItem.parents(".accordion-content, .sub-accordion-content, .sub-sub-accordion-content").show();
+    activeTocItem.parents(".accordion-item, .sub-accordion-item, .sub-sub-accordion-item").addClass("accordion-up");
 
     // Scroll the TOC container to the highlighted item
     if (activeTocItem.length) {
@@ -287,6 +284,37 @@ function highlightAnchor() {
     $(this).siblings(".sub-accordion-content").hide();
   });
 }
+
+function highlightAnchorOnLoad() {
+  const fragment = window.location.hash;
+  if (fragment) {
+    const targetElement = $(fragment);
+    if (targetElement.length) {
+      const currentSectionId = targetElement.attr("id");
+      $(".toc__item, .sub_toc__item, .sub-sub-toc-item, .sub-sub-sub-toc-item").removeClass("js-active accordion-up");
+      const activeTocItem = $(
+        `.toc__item[href*="#${currentSectionId}"], .sub_toc__item[href*="#${currentSectionId}"], .sub-sub-toc-item[href*="#${currentSectionId}"], .sub-sub-sub-toc-item[href*="#${currentSectionId}"]`,
+      ).addClass("js-active accordion-up");
+
+      // Open parent accordions
+      activeTocItem.parents(".accordion-content, .sub-accordion-content, .sub-sub-accordion-content").show();
+      activeTocItem.parents(".accordion-item, .sub-accordion-item, .sub-sub-accordion-item").addClass("accordion-up");
+
+      // Scroll the TOC container to the highlighted item
+      if (activeTocItem.length) {
+        activeTocItem[0].scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    }
+  } else {
+    highlightAnchor();
+  }
+}
+
+$(document).ready(function () {
+  buildTableOfContents();
+  highlightAnchorOnLoad();
+  $(window).on("scroll", highlightAnchor);
+});
 
 /**
  * Functionality to make TOC sidebar sticky
