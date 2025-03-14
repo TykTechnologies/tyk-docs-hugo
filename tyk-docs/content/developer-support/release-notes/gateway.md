@@ -190,7 +190,7 @@ We have fixed an issue where authentication was incorrectly handled for the Inte
 <details>
 <summary>Reduced False Alarms in Gateway Startup Logging</summary>
 
-We've improved gateway logging to reduce misleading error messages during startup, making it easier to distinguish real issues from expected initialization behavior. A new initial delay seconds config lets you control when errors are logged, minimizing noise and improving troubleshooting.
+Resolved initialization errors that caused unnecessary error logging during gateway startup, improving PID file handling and Redis connection state management.
 </details>
 </li>
 <li>
