@@ -223,6 +223,8 @@ function activeTocToggle() {
 // 	}
 // }
 
+let lastHighlightedHeading = null;
+
 function highlightAnchor() {
   const contentTitles = $("h2, h3, h4, h5");
   let highestVisibleHeading = null;
@@ -241,6 +243,12 @@ function highlightAnchor() {
   });
 
   if (highestVisibleHeading) {
+    // Update the last highlighted heading
+    console.log("HIghest Visible Heading");
+    console.log(highestVisibleHeading);
+    lastHighlightedHeading = highestVisibleHeading;
+    console.log("Last Highlighted Heading");
+    console.log(lastHighlightedHeading);
     const currentSectionId = highestVisibleHeading.attr("id");
     $(".toc__item, .sub_toc__item, .sub-sub-toc-item, .sub-sub-sub-toc-item").removeClass("js-active accordion-up");
     const activeTocItem = $(
@@ -251,6 +259,23 @@ function highlightAnchor() {
       $(this).siblings(".accordion-content").show();
       $(this).siblings(".sub-accordion-content").show();
     });
+
+    // Scroll the TOC container to the highlighted item
+    if (activeTocItem.length) {
+      activeTocItem[0].scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    
+  } else if (lastHighlightedHeading) {
+    console.log("else if section entered - last highlighted heading");
+    console.log(lastHighlightedHeading);
+    console.log("Highhiest visible heading");
+    console.log(highestVisibleHeading);
+    // Keep the last highlighted heading active if no heading is visible
+    const currentSectionId = lastHighlightedHeading.attr("id");
+    const activeTocItem = $(
+      `.toc__item[href*="#${currentSectionId}"], .sub_toc__item[href*="#${currentSectionId}"], .sub-sub-toc-item[href*="#${currentSectionId}"], .sub-sub-sub-toc-item[href*="#${currentSectionId}"]`,
+    ).addClass("js-active accordion-up");
 
     // Scroll the TOC container to the highlighted item
     if (activeTocItem.length) {
