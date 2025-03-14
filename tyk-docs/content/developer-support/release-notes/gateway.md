@@ -139,7 +139,13 @@ In Tyk 5.8.0, we have added configuration of the following features into the Tyk
 - Event handling: custom JS handler
 - Event handling: custom log Handler
 - Batch requests
+</details>
+</li>
+<li>
+<details>
+<summary>Transaction Logs for Better API Request Visibility</summary>
 
+Tyk Gateway now supports transaction logs, providing structured access logs for API requests. This improves debugging and observability without the overhead of enabling debug mode in production. Logs can be output in JSON format and customized via a template, ensuring flexibility while maintaining performance.
 </details>
 </li>
 <li>
