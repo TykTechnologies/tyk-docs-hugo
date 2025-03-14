@@ -208,9 +208,20 @@ Fixed an issue where edge gateways failed to enter emergency mode when disconnec
 </li>
 <li>
 <details>
+<summary>Optimized ctx.GetOASDefinition() for Improved Performance</summary>
+
+Improved the performance of ctx.GetOASDefinition() in custom plugins by replacing the deep copy operation with a more efficient cloning method. This optimization reduces memory usage by 95% and CPU consumption by 46%, significantly speeding up API definition retrieval.
+
+Thanks to @sebkehr for identifying this issue and providing valuable feedback to enhance Tyk's performance.
+</details>
+</li>
+<li>
+<details>
 <summary>Multi-Value Response Headers in Coprocess Middleware</summary>
 
 Multi-value response headers were previously lost after synchronization with coprocess middleware, as only the first value was retained. This has been resolved, ensuring all response headers are properly synchronized and preserved
+
+Thank you, @JanMA, for raising this issue and helping us improve response header handling.
 </details>
 </li>
 </ul>
