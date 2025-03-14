@@ -179,6 +179,13 @@ Tyk Gateway now runs on Golang 1.23, bringing security and performance improveme
 We have updated the library that supports JSON schema validation in the Tyk Classic Validate JSON middleware. This introduces improved error messaging when a request does not match the expected schema, reporting where the error exists in the request payload.
 </details>
 </li>
+<li>
+<details>
+<summary>Updated Default Configuration for Tyk Operator and Sync Compatibility</summary>
+
+Modified the default values of allow_explicit_policy_id and enable_duplicate_slugs to true in all example configuration files, ensuring consistency and alignment with recommended settings.
+</details>
+</li>
 </ul>
 
 
@@ -222,6 +229,13 @@ Thanks to @sebkehr for identifying this issue and providing valuable feedback to
 Multi-value response headers were previously lost after synchronization with coprocess middleware, as only the first value was retained. This has been resolved, ensuring all response headers are properly synchronized and preserved
 
 Thank you, @JanMA, for raising this issue and helping us improve response header handling.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed Incorrect OAuth Upstream Flow Selection</summary>
+
+Resolved an issue where the gateway incorrectly selected the OAuth upstream authentication flow when both client credentials and password flows were configured. The gateway now correctly respects the allowedAuthorizeTypes setting, ensuring the intended authentication flow is used.
 </details>
 </li>
 </ul>
