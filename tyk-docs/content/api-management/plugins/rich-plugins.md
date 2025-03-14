@@ -501,7 +501,7 @@ For further details see [BasicAuthData](#basicauthdata).
 Added to sessions where a Tyk key (embedding a shared secret) is used as the public key for signing the JWT. The JWT token's KID header value references the ID of a Tyk key. See [JWTData](#jwtdata) for an example.
 
 `hmac_enabled`
-When set to `true` this indicates generation of a [HMAC signature]({{< ref "api-management/client-authentication#sign-requests-with-hmac" >}}) using the secret provided in `hmac_secret`. If the generated signature matches the signature provided in the *Authorization* header then authentication of the request has passed.
+When set to `true` this indicates generation of a [HMAC signature]({{< ref "basic-config-and-security/security/authentication-authorization/hmac-signatures" >}}) using the secret provided in `hmac_secret`. If the generated signature matches the signature provided in the *Authorization* header then authentication of the request has passed.
 
 `hmac_secret`
 The value of the HMAC shared secret.

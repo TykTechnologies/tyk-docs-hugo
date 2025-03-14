@@ -85,6 +85,10 @@ menu:
         path: /api-management/client-authentication
         category: Page
         show: True
+      - title: "HMAC Signatures"
+        path: /basic-config-and-security/security/authentication-authorization/hmac-signatures
+        category: Page
+        show: true
       - title: "Upstream Authentication"
         path: /api-management/upstream-authentication
         category: Page

@@ -2100,22 +2100,7 @@
             "/docs/nightly/": "/api-management/client-authentication/"
         },
         "/basic-config-and-security/security/authentication-authorization/hmac-signatures/": {
-            "/docs/": "/api-management/client-authentication/",
-            "/docs/5.6/": "/api-management/authentication-authorization/",
-            "/docs/5.5/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
-            "/docs/5.4/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
-            "/docs/5.3/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
-            "/docs/5.2/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
-            "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
-            "/docs/5.0/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
-            "/docs/4.3/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
-            "/docs/4.2/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
-            "/docs/4.1/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
-            "/docs/4.0/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
-            "/docs/3.2/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
-            "/docs/3.1/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
-            "/docs/3-lts/": "/basic-config-and-security/security/authentication-authorization/hmac-signatures/",
-            "/docs/nightly/": "/api-management/client-authentication/"
+            "all_versions_are_similar_to_path": true
         },
         "/basic-config-and-security/security/authentication-authorization/json-web-tokens/": {
             "/docs/": "/api-management/client-authentication/",
