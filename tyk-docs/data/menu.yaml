@@ -221,7 +221,11 @@ menu:
         path: /api-management/data-graph
         category: Page
         show: True
-      - title: "Non HTTP Protocols"
+      - title: "TCP Proxy"
+        path: /key-concepts/tcp-proxy
+        category: Page
+        show: True
+      - title: "Other Non HTTP Protocols"
         path: /api-management/non-http-protocols
         category: Page
         show: True
