@@ -4,7 +4,7 @@ title: HMAC Signatures
 tags: ["HMAC", "Security"]
 description: "Using HMAC signatures"
 aliases:
-  - /api-management/client-authentication/#upstream-hmac-request-signing
+  - /api-management/client-authentication#upstream-hmac-request-signing
 ---
 
 
