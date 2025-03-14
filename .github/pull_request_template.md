@@ -11,4 +11,3 @@
 - [ ] Make sure you have started *your change* off *our latest `master`*.
 - [ ] I have [reviewed the guidelines](https://github.com/TykTechnologies/tyk-docs/blob/master/CONTRIBUTING.md) for contributing to this repository.
 - [ ] I have [read the technical guidelines](https://github.com/TykTechnologies/tyk-docs/blob/master/CONTRIBUTING-TECHNICAL-GUIDE.md) for contributing to this repository.
-
