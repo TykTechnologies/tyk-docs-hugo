@@ -229,6 +229,13 @@ We’ve optimized form validation in the Tyk Dashboard’s OAS API Designer to e
 </li>
 <li>
 <details>
+<summary>Updated Default Configuration for Tyk Operator and Sync Compatibility</summary>
+
+Modified the default values of allow_explicit_policy_id and enable_duplicate_slugs to true in all example configuration files, ensuring consistency and alignment with recommended settings.
+</details>
+</li>
+<li>
+<details>
 <summary>Clarity on Supported TLS Versions in Tyk Classic API Designer</summary>
 
 Removed unsupported TLS versions 1.0 and 1.1 from the Tyk Classic API Designer selector, improving clarity around supported TLS versions and enhancing security.
