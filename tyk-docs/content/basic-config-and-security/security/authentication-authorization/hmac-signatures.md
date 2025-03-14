@@ -3,6 +3,8 @@ date: 2017-03-23T15:47:26Z
 title: HMAC Signatures
 tags: ["HMAC", "Security"]
 description: "Using HMAC signatures"
+aliases:
+  - /api-management/client-authentication/#upstream-hmac-request-signing
 ---
 
 
