@@ -26,7 +26,7 @@ Follow these steps to quickly create and manage your APIs in Tyk Cloud.
 ## Prerequisites
 
 Before you begin, make sure you have:
-- [A Tyk Cloud account](/getting-started/create-account).
+- [A Tyk Cloud account](https://tyk.io/sign-up/#cloud).
 - Admin access to the Tyk Dashboard.
 - (optional) A backend service that your API will proxy (e.g., a RESTful API) - or you can use the httpbin service.
 
