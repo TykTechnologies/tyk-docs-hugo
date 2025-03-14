@@ -166,8 +166,8 @@ var buildTableOfContents = function () {
     .each(function () {
       idArray.push($(this).attr("href"));
     });
-  console.log(idArray);
-  if (idArray.some((value) => currentUrl.includes(value))) {
+  
+    if (idArray.some((value) => currentUrl.includes(value))) {
     var lastAccordionItem = $("div.accordion-item:last,.accordion-content:last,.sub-accordion-content:last");
     lastAccordionItem.children("div").css("display", "block");
   }
