@@ -1240,11 +1240,11 @@ spec:
 
 #### JWT
 
-This configuration uses [JWT tokens]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt">}}) for authentication.
+This configuration uses [JWT tokens]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens">}}) for authentication.
 
 Users can configure JWT authentication by defining the following fields:
 
-- `jwt_signing_method`: Specify the method used to sign the JWT. Refer to [JWT Signing Method]({{< ref "api-management/client-authentication#set-up-jwt-signing-method">}}) for supported methods.
+- `jwt_signing_method`: Specify the method used to sign the JWT. Refer to [JWT Signing Method]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#set-up-jwt-signing-method">}}) for supported methods.
 - `jwt_source`: Specify the public key used for verifying the JWT.
 - `jwt_identity_base_field`: Define the identity source, typically set to `sub` (subject), which uniquely identifies the user or entity.
 - `jwt_policy_field_name`: Specify the claim within the JWT payload that indicates the policy ID to apply.
@@ -3984,7 +3984,7 @@ Tyk Operator would dynamically update the API definition by generating internal 
 
 ### URL Rewrites 
 
-[URL rewriting]({{< ref "api-management/traffic-transformation#url-rewrite-middleware" >}}) in Tyk enables the alteration of incoming API request paths to align with the expected endpoint format of your backend services.
+[URL rewriting]({{< ref "transform-traffic/url-rewriting#url-rewrite-middleware" >}}) in Tyk enables the alteration of incoming API request paths to align with the expected endpoint format of your backend services.
 
 Assume that we wish to redirect incoming `GET /basic/` requests to an API defined by an ApiDefinition object named `proxy-api` in the `default` namespace. We want the `/basic/` prefix to be stripped from the request path and the redirected path should be of the format `/proxy/$1`, where the context variable `$1` is substituted with the remainder of the path request. For example `GET /basic/456` should become `GET /proxy/456`.
 
@@ -4016,7 +4016,7 @@ Here we can see that the `rewrite_to` field has been generated with the value `t
 
 ### URL Rewrite Triggers 
 
-[Triggers]({{< ref "api-management/traffic-transformation#url-rewrite-triggers" >}}) are configurations that specify actions based on certain conditions present in HTTP headers, query parameters, path parameters etc.
+[Triggers]({{< ref "transform-traffic/url-rewriting#url-rewrite-triggers" >}}) are configurations that specify actions based on certain conditions present in HTTP headers, query parameters, path parameters etc.
 
 Triggers are essential for executing specific actions when particular criteria are met, such as rewriting URLs. They are useful for automating actions based on real-time data received in requests. For example, you might use triggers to:
 

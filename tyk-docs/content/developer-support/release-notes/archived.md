@@ -67,7 +67,7 @@ Other changes:
 
 Now you can set granular permissions on per user basis, by injecting permissions to the "scope" claim of a JSON Web Token. To make it work you need to provide mapping between the scope and policy ID, and thanks to enchanced policy merging capabilities mentioned above, Tyk will read the scope value from the JWT and will generate dynamic access rules. Your JWT scopes can look like `"users:read companies:write"` or similar, it is up to your imagination. OpenID supports it as well, but at the moment only if your OIDC provider can generate ID tokens in JWT format (which is very common this days).
 
-See our [JWT Scope docs]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}) for more details.
+See our [JWT Scope docs]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) for more details.
 
 ### Go plugins
 
@@ -815,7 +815,7 @@ We have swapped out the old Getting started tutorial and added a new interactive
 
 We have extended the URL Rewrite plugin functionality by enabling users to create more advanced rewrite rules based on Header matches, Query string variable/value matches, Path part matches, (i.e. components of the path itself), Session metadata values, and Payload matches.
 
-[Docs]({{< ref "api-management/traffic-transformation#url-rewrite-middleware" >}})
+[Docs]({{< ref "transform-traffic/url-rewriting#url-rewrite-middleware" >}})
 
 #### Portal Session Lifetime
 
