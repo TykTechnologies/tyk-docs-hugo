@@ -200,11 +200,6 @@ function activeTocToggle() {
     }
   });
 
-  /* tocItems.on('click', function(e) {
-        if (window.innerWidth < 1024) {
-            tocLabel.removeClass('js-open');
-        }
-    }); */
 
   pageContent.on("click", function () {
     if (tocLabel.hasClass("js-open")) {
@@ -212,17 +207,6 @@ function activeTocToggle() {
     }
   });
 }
-
-// function throttle(fn, wait) {
-// 	// Avoiding excesive amount of checks per scroll
-// 	var time = Date.now();
-// 	return function() {
-// 	  if ((time + wait - Date.now()) < 0) {
-// 		fn();
-// 		time = Date.now();
-// 	  }
-// 	}
-// }
 
 
 function highlightAnchor() {
@@ -286,11 +270,7 @@ function activeTocToggle() {
     }
   });
 
-  /* tocItems.on('click', function(e) {
-        if (window.innerWidth < 1024) {
-            tocLabel.removeClass('js-open');
-        }
-    }); */
+ 
 
   pageContent.on("click", function () {
     if (tocLabel.hasClass("js-open")) {
@@ -298,56 +278,3 @@ function activeTocToggle() {
     }
   });
 }
-
-/**
- * Functionality to make TOC sidebar sticky
- */
-// var $window = $(window);
-// var $stickySidebar = $(".documentation-table-of-contents-container");
-// var $stickySidebarInner = $stickySidebar.find(".documentation-table-of-contents");
-// var stickyClass = "js-sticky";
-// var stickyBottomClass = "js-sticky--bottom";
-// var $anchored_sections, $currentSection;
-// var sidebarTop, windowScrolled, sidebarEnd, sidebarOverflow;
-
-// function stuckSidebar() {
-//   $stickySidebar.removeClass(stickyBottomClass);
-//   $stickySidebar.addClass(stickyClass);
-// }
-
-// function stuckToBottomSidebar() {
-//   $stickySidebar.addClass(stickyBottomClass);
-// }
-
-// function releaseSidebar() {
-//   $stickySidebar.removeClass(stickyClass);
-//   $stickySidebar.removeClass(stickyBottomClass);
-// }
-
-// function checkScrollStatus() {
-// 	sidebarEnd =
-// 		$stickySidebar.height() + sidebarTop - $stickySidebarInner.height();
-
-// 	if (windowScrolled > sidebarTop && windowScrolled > sidebarEnd) {
-// 		stuckToBottomSidebar();
-// 	} else if (windowScrolled > sidebarTop && windowScrolled < sidebarEnd) {
-// 		stuckSidebar();
-// 	} else {
-// 		releaseSidebar();
-// 	}
-// }
-
-// function highlightAnchor() {
-// 	$anchored_sections.each(function () {
-// 		var sectionPosition = $(this).offset().top;
-
-// 		if (sectionPosition < windowScrolled) {
-// 			$currentSection = $(this);
-// 		}
-
-// 		var id = $currentSection.attr("id");
-
-// 		$(".sticky__inner a").removeClass("js-active");
-// 		$('.sticky__inner a[href*="#' + id + '"]').addClass("js-active");
-// 	});
-// }
