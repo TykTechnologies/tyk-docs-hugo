@@ -1,5 +1,5 @@
 ---
-title: "Gateway Optimizations - Caching Responses"
+title: "Caching in Tyk Gateway"
 date: 2025-02-10
 tags: ["Caching", "Gateway Optimization", "Optimization", "Endpoint Caching", "Configuration"]
 description: "How to manage users, teams, permissions, rbac in Tyk Dashboard"
