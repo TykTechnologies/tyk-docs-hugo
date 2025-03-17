@@ -54,8 +54,8 @@
     <meta name="robots" content="noindex">
     {{ end }}
 
-    {{ if isset .Params.algolia "importance" }}
-      <meta name="algolia-importance" content="{{ .Params.algolia.importance }}">
+    {{ if and (isset .Params "algolia") (isset .Params.algolia "importance") }}
+    <meta name="algolia-importance" content="{{ .Params.algolia.importance }}">
     {{ else }}
       <meta name="algolia-importance" content="100">
     {{ end }}
