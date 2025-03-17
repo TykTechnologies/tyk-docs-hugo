@@ -4,8 +4,6 @@ date: 2025-01-10
 description: How to configure HMAC Signatures in Tyk
 tags: ["Authentication", "HMAC"]
 keywords: ["Authentication", "HMAC"]
-aliases:
-  - /basic-config-and-security/security/authentication-authorization/hmac-signatures
 ---
 
 ## Introduction
