@@ -270,7 +270,7 @@ menu:
           category: Page
           show: True
         - title: "SOAP to REST"
-          path: /api-management/traffic-transformation/soap-to-rest
+          path: /advanced-configuration/transform-traffic/soap-rest
           category: Page
           show: True
         - title: "URL Rewrite"

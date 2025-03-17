@@ -5,7 +5,6 @@ description: How to transform SOAP API to REST API in Tyk
 tags: ["Traffic Transformation", "SOAP", "REST", "SOAP to REST"]
 keywords: ["Traffic Transformation", "SOAP", "REST", "SOAP to REST"]
 aliases:
-  - /advanced-configuration/transform-traffic/soap-rest
 ---
 
 You can transform an existing SOAP service to a JSON REST service. This can be done from the Tyk Dashboard with no coding involved and should take around 10 minutes to perform the transform.
