@@ -1,5 +1,5 @@
 ---
-title: Transformation Use Case: SOAP To REST
+title: "Transformation Use Case: SOAP To REST"
 date: 2025-01-10
 description: How to transform SOAP API to REST API in Tyk
 tags: ["Traffic Transformation", "SOAP", "REST", "SOAP to REST"]
