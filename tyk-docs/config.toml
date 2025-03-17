@@ -7,8 +7,6 @@ enableGitInfo = true
 disableKinds = ["term","taxonomy"]
 canonifyURLs = false
 timeout = "60s"
-refLinksErrorLevel = "WARNING"
-refLinksNotFoundURL = ""
 [params]
 GithubEdit = "https://github.com/TykTechnologies/tyk-docs/edit/master/tyk-docs/content/"
 GithubReadOnly = "https://github.com/TykTechnologies/tyk-docs/blob/master/tyk-docs/content/"
@@ -21,7 +19,6 @@ showEmptyPages = false
 [markup]
   defaultMarkdownHandler = "goldmark"
   [markup.goldmark]
-    ignoreErrors = true
     [markup.goldmark.renderer]
       unsafe = true
   [markup.highlight]
