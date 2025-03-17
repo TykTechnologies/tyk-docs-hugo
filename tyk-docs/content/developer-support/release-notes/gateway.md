@@ -227,8 +227,6 @@ Thanks to @sebkehr for identifying this issue and providing valuable feedback to
 <summary>Multi-Value Response Headers in Coprocess Middleware</summary>
 
 Multi-value response headers were previously lost after synchronization with coprocess middleware, as only the first value was retained. This has been resolved, ensuring all response headers are properly synchronized and preserved
-
-Thank you, @JanMA, for raising this issue and helping us improve response header handling.
 </details>
 </li>
 <li>
