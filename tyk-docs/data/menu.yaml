@@ -229,7 +229,7 @@ menu:
         path: /api-management/non-http-protocols
         category: Page
         show: True
-      - title: "Gateway Optimizations"
+      - title: "Caching"
         path: /api-management/gateway-optimizations
         category: Page
         show: True
