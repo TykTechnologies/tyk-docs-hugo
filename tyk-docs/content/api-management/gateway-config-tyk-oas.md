@@ -380,7 +380,7 @@ securitySchemes: {
 
 All you need to do in the Tyk configuration is to enable the authentication and specify the header details.
 
-For more configuration options check the [JWT documentation]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}).
+For more configuration options check the [JWT documentation]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}).
 
 #### OAuth
 
