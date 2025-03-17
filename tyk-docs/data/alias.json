@@ -735,7 +735,6 @@
     "product-stack/tyk-gateway/middleware/endpoint-cache-tyk-oas": "#using-tyk-oas-api",
     "advanced-configuration/other-protocols": "#",
     "key-concepts/grpc-proxy": "#grpc-proxy",
-    "key-concepts/tcp-proxy": "#tcp-proxy",
     "advanced-configuration/websockets": "#websockets",
     "advanced-configuration/sse-proxy": "#websockets",
     "advanced-configuration/transform-traffic": "#",
