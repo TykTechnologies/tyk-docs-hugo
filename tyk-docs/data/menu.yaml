@@ -90,7 +90,7 @@ menu:
           category: Page
           show: True
         - title: "JSON Web Tokens"
-          path: /api-management/authentication/json-web-token
+          path: /basic-config-and-security/security/authentication-authorization/json-web-tokens
           category: Page
           show: True
         - title: "HMAC Signatures"
