@@ -40,17 +40,17 @@ With URL rewriting, you can design cleaner, more straightforward navigation stru
 
 ### Working
 
-Tyk's URL rewrite middleware uses the concepts of [triggers]({{< ref "api-management/traffic-transformation#url-rewrite-triggers" >}}) and [rules]({{< ref "api-management/traffic-transformation#url-rewrite-rules" >}}). These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk).
+Tyk's URL rewrite middleware uses the concepts of [triggers]({{< ref "api-management/traffic-transformation/url-rewriting#url-rewrite-triggers" >}}) and [rules]({{< ref "api-management/traffic-transformation/url-rewriting#url-rewrite-rules" >}}). These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk).
 
 A rule is a simple pattern match - you identify the location of a `key` and define a regex (called the `pattern`). Tyk will examine the API request and compare the `key` with the `pattern`. If there is a match, the rule will pass.
 
 A trigger combines one or more rules with a target (or `rewriteTo`) URL. If the logical combination of the rules results in a pass outcome, then the trigger is considered to have been fired and the target URL for the request will be rewritten.
 
-More detail on URL Rewrite triggers and rules can be found [here]({{< ref "api-management/traffic-transformation#url-rewriting-overview" >}}).
+More detail on URL Rewrite triggers and rules can be found [here]({{< ref "api-management/traffic-transformation/url-rewriting#url-rewriting-overview" >}}).
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the URL rewrite middleware [here]({{< ref "api-management/traffic-transformation#url-rewriting-using-tyk-oas" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the URL rewrite middleware [here]({{< ref "api-management/traffic-transformation/url-rewriting#url-rewriting-using-tyk-oas" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the URL rewrite middleware [here]({{< ref "api-management/traffic-transformation#url-rewriting-using-classic" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the URL rewrite middleware [here]({{< ref "api-management/traffic-transformation/url-rewriting#url-rewriting-using-classic" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
 
@@ -64,7 +64,7 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 ## URL Rewrite middleware
 
-Tyk's [URL rewrite]({{< ref "api-management/traffic-transformation#url-rewrite-middleware" >}}) middleware uses the concepts of [triggers](#url-rewrite-triggers) and [rules](#url-rewrite-rules) to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk Gateway through [looping]({{< ref "advanced-configuration/transform-traffic/looping" >}})).
+Tyk's [URL rewrite]({{< ref "api-management/traffic-transformation/url-rewriting#url-rewrite-middleware" >}}) middleware uses the concepts of [triggers](#url-rewrite-triggers) and [rules](#url-rewrite-rules) to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk Gateway through [looping]({{< ref "advanced-configuration/transform-traffic/looping" >}})).
 
 ### URL rewrite rules
 
@@ -183,13 +183,13 @@ This limitation does not apply to KV accessed from the other [supported KV store
 
 ## Using Tyk OAS {#url-rewriting-using-tyk-oas}
 
-Tyk's [URL rewriter]({{< ref "api-management/traffic-transformation#url-rewrite-middleware" >}}) uses the concepts of triggers and rules to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk).
+Tyk's [URL rewriter]({{< ref "api-management/traffic-transformation/url-rewriting#url-rewrite-middleware" >}}) uses the concepts of triggers and rules to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk).
 
-URL rewrite triggers and rules are explained in detail [here]({{< ref "api-management/traffic-transformation#url-rewriting-overview" >}}).
+URL rewrite triggers and rules are explained in detail [here]({{< ref "api-management/traffic-transformation/url-rewriting#url-rewriting-overview" >}}).
 
 When working with Tyk OAS APIs the rules and triggers are configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}); this can be done manually within the `.json` file or from the API Designer in the Tyk Dashboard.
 
-If you're using the legacy Tyk Classic APIs, then check out [this]({{< ref "api-management/traffic-transformation#url-rewriting-using-classic" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out [this]({{< ref "api-management/traffic-transformation/url-rewriting#url-rewriting-using-classic" >}}) page.
 
 ### API Definition
 
@@ -485,15 +485,15 @@ Adding and configuring the URL rewrite feature to your API endpoints is easy whe
 
 ## Using Classic {#url-rewriting-using-classic}
 
-Tyk's [URL rewriter]({{< ref "api-management/traffic-transformation#url-rewrite-middleware" >}}) uses the concepts of triggers and rules to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk).
+Tyk's [URL rewriter]({{< ref "api-management/traffic-transformation/url-rewriting#url-rewrite-middleware" >}}) uses the concepts of triggers and rules to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk).
 
-URL rewrite triggers and rules are explained in detail [here]({{< ref "api-management/traffic-transformation#url-rewriting-overview" >}}).
+URL rewrite triggers and rules are explained in detail [here]({{< ref "api-management/traffic-transformation/url-rewriting#url-rewriting-overview" >}}).
 
 When working with Tyk Classic APIs the rules and triggers are configured in the Tyk Classic API Definition; this can be done manually within the `.json` file or from the API Designer in the Tyk Dashboard.
 
 If you want to use dynamic data from context variables, you must [enable]({{< ref "api-management/traffic-transformation#enabling-context-variables-for-use-with-tyk-classic-apis" >}}) context variables for the API to be able to access them from the request header transform middleware.
 
-If you're using the newer Tyk OAS APIs, then check out [this]({{< ref "api-management/traffic-transformation#url-rewriting-using-tyk-oas" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out [this]({{< ref "api-management/traffic-transformation/url-rewriting#url-rewriting-using-tyk-oas" >}}) page.
 
 If you're using Tyk Operator then check out the [configuring the URL rewriter in Tyk Operator](#tyk-operator) section below.
 
