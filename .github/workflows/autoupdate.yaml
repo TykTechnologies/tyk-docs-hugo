@@ -3,7 +3,7 @@ name: autoupdate
 on:
   push:
     branches:
-      - master-disable-for-now
+      - master
 jobs:
   autoupdate:
     name: autoupdate
@@ -11,6 +11,6 @@ jobs:
     steps:
       - uses: docker://chinthakagodawita/autoupdate-action:v1
         env:
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+          GITHUB_TOKEN: ${{ secrets.ORG_GH_TOKEN }}
           # Only monitor PRs that are not currently in the draft state.
           PR_READY_STATE: "ready_for_review"
