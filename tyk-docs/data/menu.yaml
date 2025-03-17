@@ -82,9 +82,21 @@ menu:
             category: Page
             show: True
       - title: "Authentication and Authorization"
-        path: /api-management/client-authentication
-        category: Page
+        category: Directory
         show: True
+        menu:
+        - title: "Overview"
+          path: /api-management/client-authentication
+          category: Page
+          show: True
+        - title: "JSON Web Tokens"
+          path: /basic-config-and-security/security/authentication-authorization/json-web-tokens
+          category: Page
+          show: True
+        - title: "HMAC Signatures"
+          path: /basic-config-and-security/security/authentication-authorization/hmac-signatures
+          category: Page
+          show: True
       - title: "Upstream Authentication"
         path: /api-management/upstream-authentication
         category: Page
@@ -250,9 +262,21 @@ menu:
             category: Page
             show: True
       - title: "Traffic Transformation"
-        path: /api-management/traffic-transformation
-        category: Page
+        category: Directory
         show: True
+        menu:
+        - title: "Overview"
+          path: /api-management/traffic-transformation
+          category: Page
+          show: True
+        - title: "SOAP to REST"
+          path: /advanced-configuration/transform-traffic/soap-rest
+          category: Page
+          show: True
+        - title: "URL Rewrite"
+          path: /transform-traffic/url-rewriting
+          category: Page
+          show: True
       - title: "Tyk Gateway Events"
         path: /api-management/gateway-events
         category: Page
