@@ -1,9 +1,9 @@
 ---
 title: "Transform Traffic by using Tyk Middlewares"
 date: 2025-02-10
-tags: ["Overview", "Allow List", "Block List", "Ignore Authentication", "Internal Endpoint", "Request Method ", "Request Body ", "Request Headers ", "Response Body", "Response Headers", "Request Validation", "Mock Response", "URL Rewriting", "URL Rewrite middleware summary", "Virtual Endpoints", "Transformation Use Case: SOAP To REST", "Go Templates", "JQ Transforms", "Request Context Variables"]
+tags: ["Overview", "Allow List", "Block List", "Ignore Authentication", "Internal Endpoint", "Request Method ", "Request Body ", "Request Headers ", "Response Body", "Response Headers", "Request Validation", "Mock Response", "Virtual Endpoints", "Go Templates", "JQ Transforms", "Request Context Variables"]
 description: ""
-keywords: ["Overview", "Allow List", "Block List", "Ignore Authentication", "Internal Endpoint", "Request Method ", "Request Body ", "Request Headers ", "Response Body", "Response Headers", "Request Validation", "Mock Response", "URL Rewriting", "URL Rewrite middleware summary", "Virtual Endpoints", "Transformation Use Case: SOAP To REST", "Go Templates", "JQ Transforms", "Request Context Variables"]
+keywords: ["Overview", "Allow List", "Block List", "Ignore Authentication", "Internal Endpoint", "Request Method ", "Request Body ", "Request Headers ", "Response Body", "Response Headers", "Request Validation", "Mock Response", "Virtual Endpoints", "Go Templates", "JQ Transforms", "Request Context Variables"]
 aliases:
   - /concepts/middleware-execution-order
   - /advanced-configuration/transform-traffic
@@ -41,15 +41,10 @@ aliases:
   - /product-stack/tyk-gateway/middleware/mock-response-openapi
   - /product-stack/tyk-gateway/middleware/mock-response-tyk-oas
   - /product-stack/tyk-gateway/middleware/mock-response-tyk-classic
-  - /transform-traffic/url-rewriting
-  - /product-stack/tyk-gateway/middleware/url-rewrite-middleware
-  - /product-stack/tyk-gateway/middleware/url-rewrite-tyk-oas
-  - /product-stack/tyk-gateway/middleware/url-rewrite-tyk-classic
   - /advanced-configuration/compose-apis/virtual-endpoints
   - /product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-oas
   - /product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-classic
   - /advanced-configuration/compose-apis/demo-virtual-endpoint
-  - /advanced-configuration/transform-traffic/soap-rest
   - /product-stack/tyk-gateway/references/go-templates
   - /advanced-configuration/transform-traffic/jq-transformations
   - /context-variables
@@ -65,7 +60,6 @@ aliases:
   - /getting-started/key-concepts/context-variables
   - /compose-apis/virtual-endpoints
   - /advanced-configuration/compose-apis
-  - /advanced-configuration/transform-traffic/url-rewriting
   - /getting-started/using-oas-definitions/mock-response
   - /advanced-configuration/transform-traffic/validate-json
   - /transform-traffic/validate-json
@@ -155,7 +149,7 @@ If you do not want to include all endpoints in your [Activity by Endpoint]({{< r
 
 #### URL Rewrite
 
-[URL Rewriting]({{< ref "api-management/traffic-transformation#url-rewrite-middleware" >}}) in Tyk is a powerful feature that enables the modification of incoming API request paths to match the expected endpoint format of your backend services. This allows you to translate an outbound API interface to the internal structure of your services. It is a key capability used in [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}})
+[URL Rewriting]({{< ref "transform-traffic/url-rewriting#url-rewrite-middleware" >}}) in Tyk is a powerful feature that enables the modification of incoming API request paths to match the expected endpoint format of your backend services. This allows you to translate an outbound API interface to the internal structure of your services. It is a key capability used in [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}})
 
 #### Virtual Endpoint
 
@@ -1372,7 +1366,7 @@ The Internal Endpoint middleware instructs Tyk Gateway to ignore external reques
 
 ##### Internal routing decisions
 
-Internal endpoints are frequently used to make complex routing decisions that cannot be handled by the standard routing features. A single externally published endpoint can receive requests and then, based on inspection of the requests, the [URL rewrite]({{< ref "api-management/traffic-transformation#url-rewrite-middleware" >}}) middleware can route them to different internal endpoints and on to the appropriate upstream services.
+Internal endpoints are frequently used to make complex routing decisions that cannot be handled by the standard routing features. A single externally published endpoint can receive requests and then, based on inspection of the requests, the [URL rewrite]({{< ref "transform-traffic/url-rewriting#url-rewrite-middleware" >}}) middleware can route them to different internal endpoints and on to the appropriate upstream services.
 
 #### Working
 
@@ -1509,7 +1503,7 @@ For example:
 
 In this example, two endpoints have been defined:
 - the internal endpoint middleware has been configured for requests to the `GET /anything` endpoint
-- the [URL rewrite]({{< ref "api-management/traffic-transformation#url-rewrite-middleware" >}}) middleware has been configured for requests to the `GET /redirect` endpoint
+- the [URL rewrite]({{< ref "transform-traffic/url-rewriting#url-rewrite-middleware" >}}) middleware has been configured for requests to the `GET /redirect` endpoint
  
 Any calls made directly to `GET /example-internal-endpoint/anything` will be rejected, with Tyk returning `HTTP 403 Forbidden`, since the `/anything` endpoint is internal.
 
@@ -1894,7 +1888,7 @@ You can detect device types via headers or context variables and transform the r
 
 ##### SOAP to REST translation
 
-A common use of the request body transform middleware is to surface a legacy SOAP service with a REST API. Full details of how to perform this conversion using Tyk are provided [here]({{< ref "api-management/traffic-transformation#transformation-use-case-soap-to-rest" >}}).
+A common use of the request body transform middleware is to surface a legacy SOAP service with a REST API. Full details of how to perform this conversion using Tyk are provided [here]({{< ref "advanced-configuration/transform-traffic/soap-rest" >}}).
 
 #### Working
 
@@ -3183,7 +3177,7 @@ You can detect the client device types via headers or context variables and tran
 
 ##### SOAP to REST translation
 
-A common use of the response body transform middleware is when surfacing a legacy SOAP service with a REST API. Full details of how to perform this conversion using Tyk are provided [here]({{< ref "api-management/traffic-transformation#transformation-use-case-soap-to-rest" >}}).
+A common use of the response body transform middleware is when surfacing a legacy SOAP service with a REST API. Full details of how to perform this conversion using Tyk are provided [here]({{< ref "advanced-configuration/transform-traffic/soap-rest" >}}).
 
 #### Working
 
@@ -5495,6 +5489,7 @@ spec:
 ```
 
 
+<<<<<<< HEAD
 ## URL Rewriting
 
 ### Overview {#url-rewriting-overview}
@@ -6225,6 +6220,8 @@ spec:
 For further examples check out the [internal looping]({{< ref "api-management/automations/operator#internal-looping-with-tyk-operator" >}}) page.
 
 
+=======
+>>>>>>> ad7d7ff28 ([DX-1888] Split Pages and add H1 Headings (#6093))
 ## Virtual Endpoints
 
 ### Overview {#virtual-endpoints-overview}
@@ -6247,7 +6244,7 @@ Tyk provides a very flexible [middleware chain]({{< ref "api-management/traffic-
 
 ##### Dynamic Routing
 
-With a virtual endpoint you can implement complex dynamic routing of requests made to a single external endpoint on to different upstream services. The flexibility of the virtual endpoint gives access to data within the request (including the key session) and also the ability to make calls to other APIs to make decisions on the routing of the request. It can operate as a super-powered [URL rewrite]({{< ref "api-management/traffic-transformation#url-rewrite-middleware" >}}) middleware.
+With a virtual endpoint you can implement complex dynamic routing of requests made to a single external endpoint on to different upstream services. The flexibility of the virtual endpoint gives access to data within the request (including the key session) and also the ability to make calls to other APIs to make decisions on the routing of the request. It can operate as a super-powered [URL rewrite]({{< ref "transform-traffic/url-rewriting#url-rewrite-middleware" >}}) middleware.
 
 #### Working
 
@@ -6977,192 +6974,6 @@ function batchTest(request, session, config) {
 log("Batch Test initialised")                
 ```
 
-## Transformation Use Case: SOAP To REST
-
-You can transform an existing SOAP service to a JSON REST service. This can be done from the Tyk Dashboard with no coding involved and should take around 10 minutes to perform the transform.
-
-We also have a video which walks you through the SOAP to REST transform.
-
-{{< youtube jeNXLzpKCaA >}}
-
-### Prerequisites
-
-An existing SOAP service and the WSDL definition. For this example, we will use:
-
-- Upstream Target - [https://www.dataaccess.com/webservicesserver/numberconversion.wso](https://www.dataaccess.com/webservicesserver/numberconversion.wso)
-- The WSDL definition from - [https://www.dataaccess.com/webservicesserver/numberconversion.wso?WSDL](https://www.dataaccess.com/webservicesserver/numberconversion.wso?WSDL)
-- Postman Client (or other endpoint testing tool)
-
-
-1. **Import the WSDL API**
-
-    1. Select APIs from the System Management menu
-
-        {{< img src="/img/2.10/apis_menu.png" alt="APIs Menu" >}}
-
-    2. Click Import API
-
-        img src="/img/2.10/import_api_button.png" alt="Import API" >}}
-
-    3. Select **From WSDL** from the Import an API Definition window
-    4. In the **Upstream Target** field, enter `https://www.dataaccess.com/webservicesserver/numberconversion.wso` as listed in the Prerequisites.
-    5. Paste the WSDL definition from the link in Prerequisites
-    6. Click **Generate API**. You should now have an API named `NumberConversion` in your API list
-
-        img src="/img/2.10/numberservice_api.png" alt="NumberService API" >}}
-
-2. **Add the transforms to an Endpoint**
-
-    1. From the API list, select Edit from the Actions menu for the `NumberConversion` API
-    2. Select the **Endpoint Designer** tab. You should see 2 POST endpoints that were imported. We will apply the transforms to the `NumberToWords` endpoint.
-
-        {{< img src="/img/2.10/numberservice_endpoints.png" alt="Endpoints" >}}
-
-    3. Expand the `NumberToWords` endpoint. The following plugins should have been added as part of the import process.
-
-        - URL rewrite
-        - Track endpoint
-
-        {{< note success >}}
-**Note**  
-
-To make the URL a little friendlier, we're going to amend the Relative Path to just `/NumberToWords`. Update your API after doing this.
-        {{< /note >}}
-
-    4. Add the following plugins from the **Plugins** drop-down list:
-
-        - Body transform
-        - Modify headers
-
-3. **Modify the Body Transform Plugin**
-
-    **Set up the Request**
-
-    We use the `{{.FieldName}}` Golang template syntax to access the JSON request. For this template we will use `{{.numberToConvert}}`.
-
-    1. Expand the Body transform plugin. From the Request tab, copy the following into the Template section:
-
-    ```xml
-    <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.dataaccess.com/webservicesserver/">
-    <soapenv:Header/>
-    <soapenv:Body>
-        <web:NumberToDollars>
-            <web:dNum>{{.numberToConvert}}</web:dNum>
-        </web:NumberToDollars>
-    </soapenv:Body>
-    </soapenv:Envelope>
-    ```
-
-    2. In the Input field, enter the following:
-
-    ```json
-    {
-        "numberToConvert": 35
-    }
-    ```
-    {{< note success >}}
-**Note**  
-
-The '35' integer can be any number you want to convert
-    {{< /note >}}
-
-    3. Click **Test**. You should get the following in the Output field:
-
-    ```xml
-    <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.dataaccess.com/webservicesserver/">
-    <soapenv:Header/>
-    <soapenv:Body>
-        <web:NumberToDollars>
-            <web:dNum>35</web:dNum>
-        </web:NumberToDollars>
-    </soapenv:Body>
-    </soapenv:Envelope>
-    ```
-
-    **Set up the Response**
-
-    Again, for the response, we will be using the `{{.FieldName}}` syntax as the following `{{.Envelope.Body.NumberToDollarsResponse.NumberToDollarsResult}}`
-
-    1. For the Input Type, select XML
-
-    {{< img src="/img/2.10/body_trans_response_input.png" alt="Response Input Type" >}}
-
-    2. In the Template section enter:
-
-    ```yaml
-    {
-        "convertedNumber": "{{.Envelope.Body.NumberToDollarsResponse.NumberToDollarsResult}}"
-    }
-    ```
-    3. Enter the following into the input field:
-
-    ```xml
-    <soap12:Envelope xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
-    <soap12:Body>
-        <NumberToDollarsResponse xmlns="http://www.dataaccess.com/webservicesserver/">
-        <NumberToDollarsResult>thirty five dollars</NumberToDollarsResult>
-        </NumberToDollarsResponse>
-    </soap12:Body>
-    </soap12:Envelope>
-    ```
-    4. Click Test. You should get the following in the Output field:
-
-    ```json
-    {
-        "convertedNumber": "thirty five dollars"
-    }
-    ```
-
-5. **Change the Content-Type Header**
-
-    We now need to change the `content-type` header to allow the SOAP service to receive the payload in XML. We do this by using the **Modify header** plugin
-
-    1. Expand the Modify Header plugin
-    2. From the **Request** tab enter the following in the **Add this header** section
-    
-        - Header Name: `content-type`
-        - Header Value: `text/xml`
-
-    3. Click Add 
-
-        {{< img src="/img/2.10/add_header_type.png" alt="Modify Header Request" >}}
-
-    4. From the **Response** tab enter the following in the **Add this header** section
-    
-        - Header Name: `content-type`
-        - Header Value: `application/json`
-
-        {{< img src="/img/2.10/modify-header-response.png" alt="Modify Header Response" >}}
-
-    5. Click **Add**
-    6. Click **Update**
-
-    {{< img src="/img/2.10/update_number_conversion.png" alt="Update API" >}}
-
-### Testing the Endpoint
-
-You now need to test the endpoint. We are going to use Postman.
-
-{{< note success >}}
-**Note**  
-
-We have not set up any Authentication for this API, it has defaulted to `Open (Keyless)`.
-{{< /note >}}
-
-
-1. Copy the URL for your NumberConversion API with the NumberToWords endpoint - `https://tyk-url/numberconversion/NumberToWords/`
-2. Paste it as a POST URL in the Postman URL Request field
-3. Enter the following as a raw Body request
-
-```json
-{
-    "numberToConvert": 35
-}
-```
-Your Postman request should look similar to below (apart from the URL used)
-
-{{< img src="/img/2.10/postman_soap_rest.png" alt="Postman" >}}
-
 ## Go Templates
 
 Tyk's [request]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) and [response]({{< ref "api-management/traffic-transformation#response-body-overview" >}}) body transform middleware use the [Go template language](https://golang.org/pkg/text/template/) to parse and modify the provided input.
@@ -7474,7 +7285,7 @@ For example, to get the value stored in `test-header`, the syntax would be `$tyk
 ### Middleware that can use context variables:
 Context variables are exposed in three middleware plugins but are accessed differently depending on the caller as follows:
 
-1.   URL Rewriter - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [URL Rewriting]({{< ref "api-management/traffic-transformation#url-rewrite-middleware" >}}) for more details.
+1.   URL Rewriter - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [URL Rewriting]({{< ref "transform-traffic/url-rewriting#url-rewrite-middleware" >}}) for more details.
 2.   Modify Headers - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [Request Headers]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) for more details.
 3.   Body Transforms - Syntax is `{{ ._tyk_context.CONTEXTVARIABLES }}`. See [Body Transforms]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) for more details.
 

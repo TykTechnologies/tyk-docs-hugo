@@ -184,7 +184,6 @@
     "basic-config-and-security/security/authentication-authorization/bearer-tokens": "#use-auth-tokens",
     "basic-config-and-security/security/authentication-authorization/ext-oauth-middleware": "#integrate-with-external-authorization-server-deprecated",
     "basic-config-and-security/security/authentication-authorization/go-plugin-authentication": "#authenticate-using-go-plugins",
-    "basic-config-and-security/security/authentication-authorization/hmac-signatures": "#sign-requests-with-hmac",
     "basic-config-and-security/security/authentication-authorization/json-web-tokens": "#use-json-web-tokens-jwt",
     "basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-auth0": "#jwt-and-auth0-with-tyk",
     "basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-keycloak": "#jwt-and-keycloak-with-tyk",
