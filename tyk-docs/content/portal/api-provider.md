@@ -319,7 +319,7 @@ You can skip this step if you are using Tyk Developer Portal version 1.13.0 or l
 Go directly to [Configure Tyk Enterprise Developer Portal to work with an identity provider](#configure-tyk-enterprise-developer-portal-to-work-with-an-identity-provider).
 {{< /note >}}
 
-Tyk requires any API that uses the scope to policy mapping to have [a default policy]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}} ). Access rights and rate limits defined in the default policy take priority over other policies, including policies for the API Product and plan.
+Tyk requires any API that uses the scope to policy mapping to have [a default policy]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}} ). Access rights and rate limits defined in the default policy take priority over other policies, including policies for the API Product and plan.
 
 To avoid that, you need to create the No Operation API and policy that won't grant access to the APIs included in the API Product but will satisfy the requirement for a default policy.
 
