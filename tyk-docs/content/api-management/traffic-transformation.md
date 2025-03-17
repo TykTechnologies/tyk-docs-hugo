@@ -1888,7 +1888,7 @@ You can detect device types via headers or context variables and transform the r
 
 ##### SOAP to REST translation
 
-A common use of the request body transform middleware is to surface a legacy SOAP service with a REST API. Full details of how to perform this conversion using Tyk are provided [here]({{< ref "api-management/traffic-transformation#transformation-use-case-soap-to-rest" >}}).
+A common use of the request body transform middleware is to surface a legacy SOAP service with a REST API. Full details of how to perform this conversion using Tyk are provided [here]({{< ref "api-management/traffic-transformation/soap-to-rest" >}}).
 
 #### Working
 
@@ -3177,7 +3177,7 @@ You can detect the client device types via headers or context variables and tran
 
 ##### SOAP to REST translation
 
-A common use of the response body transform middleware is when surfacing a legacy SOAP service with a REST API. Full details of how to perform this conversion using Tyk are provided [here]({{< ref "api-management/traffic-transformation#transformation-use-case-soap-to-rest" >}}).
+A common use of the response body transform middleware is when surfacing a legacy SOAP service with a REST API. Full details of how to perform this conversion using Tyk are provided [here]({{< ref "api-management/traffic-transformation/soap-to-rest" >}}).
 
 #### Working
 
