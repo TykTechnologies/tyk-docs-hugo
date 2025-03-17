@@ -599,6 +599,10 @@ menu:
         path: /developer-support/support
         category: Page
         show: True
+      - title: "Glossary"
+        path: /developer-support/glossary
+        category: Page
+        show: True
       - title: "Environment Variables and Configs"
         category: Directory
         show: True
