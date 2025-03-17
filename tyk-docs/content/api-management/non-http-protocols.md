@@ -141,6 +141,7 @@ In this example you will expose a gRPC service via HTTPS using Tyk, but Tyk will
 
 Currently load balancing is not supported for gRPC.
 
+
 ## SSE Proxy
 
 [Server-Sent Events](https://en.wikipedia.org/wiki/Server-sent_events) (SSE) is a server push technology enabling a subscribed client to receive automatic updates from a server via a long running HTTP connection. 

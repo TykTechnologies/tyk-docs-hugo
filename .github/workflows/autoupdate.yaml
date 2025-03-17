@@ -3,7 +3,7 @@ name: autoupdate
 on:
   push:
     branches:
-      - master
+      - master-disable-for-now
 jobs:
   autoupdate:
     name: autoupdate
