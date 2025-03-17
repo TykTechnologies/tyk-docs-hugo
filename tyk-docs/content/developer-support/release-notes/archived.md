@@ -815,7 +815,7 @@ We have swapped out the old Getting started tutorial and added a new interactive
 
 We have extended the URL Rewrite plugin functionality by enabling users to create more advanced rewrite rules based on Header matches, Query string variable/value matches, Path part matches, (i.e. components of the path itself), Session metadata values, and Payload matches.
 
-[Docs]({{< ref "api-management/traffic-transformation/url-rewriting#url-rewrite-middleware" >}})
+[Docs]({{< ref "transform-traffic/url-rewriting#url-rewrite-middleware" >}})
 
 #### Portal Session Lifetime
 

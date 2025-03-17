@@ -149,7 +149,7 @@ If you do not want to include all endpoints in your [Activity by Endpoint]({{< r
 
 #### URL Rewrite
 
-[URL Rewriting]({{< ref "api-management/traffic-transformation/url-rewriting#url-rewrite-middleware" >}}) in Tyk is a powerful feature that enables the modification of incoming API request paths to match the expected endpoint format of your backend services. This allows you to translate an outbound API interface to the internal structure of your services. It is a key capability used in [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}})
+[URL Rewriting]({{< ref "transform-traffic/url-rewriting#url-rewrite-middleware" >}}) in Tyk is a powerful feature that enables the modification of incoming API request paths to match the expected endpoint format of your backend services. This allows you to translate an outbound API interface to the internal structure of your services. It is a key capability used in [internal looping]({{< ref "advanced-configuration/transform-traffic/looping" >}})
 
 #### Virtual Endpoint
 
@@ -1366,7 +1366,7 @@ The Internal Endpoint middleware instructs Tyk Gateway to ignore external reques
 
 ##### Internal routing decisions
 
-Internal endpoints are frequently used to make complex routing decisions that cannot be handled by the standard routing features. A single externally published endpoint can receive requests and then, based on inspection of the requests, the [URL rewrite]({{< ref "api-management/traffic-transformation/url-rewriting#url-rewrite-middleware" >}}) middleware can route them to different internal endpoints and on to the appropriate upstream services.
+Internal endpoints are frequently used to make complex routing decisions that cannot be handled by the standard routing features. A single externally published endpoint can receive requests and then, based on inspection of the requests, the [URL rewrite]({{< ref "transform-traffic/url-rewriting#url-rewrite-middleware" >}}) middleware can route them to different internal endpoints and on to the appropriate upstream services.
 
 #### Working
 
@@ -1503,7 +1503,7 @@ For example:
 
 In this example, two endpoints have been defined:
 - the internal endpoint middleware has been configured for requests to the `GET /anything` endpoint
-- the [URL rewrite]({{< ref "api-management/traffic-transformation/url-rewriting#url-rewrite-middleware" >}}) middleware has been configured for requests to the `GET /redirect` endpoint
+- the [URL rewrite]({{< ref "transform-traffic/url-rewriting#url-rewrite-middleware" >}}) middleware has been configured for requests to the `GET /redirect` endpoint
  
 Any calls made directly to `GET /example-internal-endpoint/anything` will be rejected, with Tyk returning `HTTP 403 Forbidden`, since the `/anything` endpoint is internal.
 
@@ -1888,7 +1888,7 @@ You can detect device types via headers or context variables and transform the r
 
 ##### SOAP to REST translation
 
-A common use of the request body transform middleware is to surface a legacy SOAP service with a REST API. Full details of how to perform this conversion using Tyk are provided [here]({{< ref "api-management/traffic-transformation/soap-to-rest" >}}).
+A common use of the request body transform middleware is to surface a legacy SOAP service with a REST API. Full details of how to perform this conversion using Tyk are provided [here]({{< ref "advanced-configuration/transform-traffic/soap-rest" >}}).
 
 #### Working
 
@@ -3177,7 +3177,7 @@ You can detect the client device types via headers or context variables and tran
 
 ##### SOAP to REST translation
 
-A common use of the response body transform middleware is when surfacing a legacy SOAP service with a REST API. Full details of how to perform this conversion using Tyk are provided [here]({{< ref "api-management/traffic-transformation/soap-to-rest" >}}).
+A common use of the response body transform middleware is when surfacing a legacy SOAP service with a REST API. Full details of how to perform this conversion using Tyk are provided [here]({{< ref "advanced-configuration/transform-traffic/soap-rest" >}}).
 
 #### Working
 
@@ -5487,7 +5487,7 @@ Tyk provides a very flexible [middleware chain]({{< ref "api-management/traffic-
 
 ##### Dynamic Routing
 
-With a virtual endpoint you can implement complex dynamic routing of requests made to a single external endpoint on to different upstream services. The flexibility of the virtual endpoint gives access to data within the request (including the key session) and also the ability to make calls to other APIs to make decisions on the routing of the request. It can operate as a super-powered [URL rewrite]({{< ref "api-management/traffic-transformation/url-rewriting#url-rewrite-middleware" >}}) middleware.
+With a virtual endpoint you can implement complex dynamic routing of requests made to a single external endpoint on to different upstream services. The flexibility of the virtual endpoint gives access to data within the request (including the key session) and also the ability to make calls to other APIs to make decisions on the routing of the request. It can operate as a super-powered [URL rewrite]({{< ref "transform-traffic/url-rewriting#url-rewrite-middleware" >}}) middleware.
 
 #### Working
 
@@ -6528,7 +6528,7 @@ For example, to get the value stored in `test-header`, the syntax would be `$tyk
 ### Middleware that can use context variables:
 Context variables are exposed in three middleware plugins but are accessed differently depending on the caller as follows:
 
-1.   URL Rewriter - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [URL Rewriting]({{< ref "api-management/traffic-transformation/url-rewriting#url-rewrite-middleware" >}}) for more details.
+1.   URL Rewriter - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [URL Rewriting]({{< ref "transform-traffic/url-rewriting#url-rewrite-middleware" >}}) for more details.
 2.   Modify Headers - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [Request Headers]({{< ref "api-management/traffic-transformation#request-headers-overview" >}}) for more details.
 3.   Body Transforms - Syntax is `{{ ._tyk_context.CONTEXTVARIABLES }}`. See [Body Transforms]({{< ref "api-management/traffic-transformation#request-body-overview" >}}) for more details.
 

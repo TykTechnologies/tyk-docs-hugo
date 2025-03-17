@@ -274,7 +274,7 @@ menu:
           category: Page
           show: True
         - title: "URL Rewrite"
-          path: /api-management/traffic-transformation/url-rewriting
+          path: /transform-traffic/url-rewriting
           category: Page
           show: True
       - title: "Tyk Gateway Events"

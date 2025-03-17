@@ -3984,7 +3984,7 @@ Tyk Operator would dynamically update the API definition by generating internal 
 
 ### URL Rewrites 
 
-[URL rewriting]({{< ref "api-management/traffic-transformation/url-rewriting#url-rewrite-middleware" >}}) in Tyk enables the alteration of incoming API request paths to align with the expected endpoint format of your backend services.
+[URL rewriting]({{< ref "transform-traffic/url-rewriting#url-rewrite-middleware" >}}) in Tyk enables the alteration of incoming API request paths to align with the expected endpoint format of your backend services.
 
 Assume that we wish to redirect incoming `GET /basic/` requests to an API defined by an ApiDefinition object named `proxy-api` in the `default` namespace. We want the `/basic/` prefix to be stripped from the request path and the redirected path should be of the format `/proxy/$1`, where the context variable `$1` is substituted with the remainder of the path request. For example `GET /basic/456` should become `GET /proxy/456`.
 
@@ -4016,7 +4016,7 @@ Here we can see that the `rewrite_to` field has been generated with the value `t
 
 ### URL Rewrite Triggers 
 
-[Triggers]({{< ref "api-management/traffic-transformation/url-rewriting#url-rewrite-triggers" >}}) are configurations that specify actions based on certain conditions present in HTTP headers, query parameters, path parameters etc.
+[Triggers]({{< ref "transform-traffic/url-rewriting#url-rewrite-triggers" >}}) are configurations that specify actions based on certain conditions present in HTTP headers, query parameters, path parameters etc.
 
 Triggers are essential for executing specific actions when particular criteria are met, such as rewriting URLs. They are useful for automating actions based on real-time data received in requests. For example, you might use triggers to:
 
