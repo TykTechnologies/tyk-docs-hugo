@@ -100,7 +100,7 @@ menu:
       - title: "Upstream Authentication"
         path: /api-management/upstream-authentication
         category: Page
-        show: False
+        show: True
       - title: "Rate Limiting"
         path: /api-management/rate-limit
         category: Page
