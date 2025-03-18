@@ -1,9 +1,9 @@
 ---
 title: "Non HTTP Protocol"
 date: 2024-12-21
-tags: ["gRPC", "TCP", "SSE", "Websocket", "Non HTTP Protocol"]
+tags: ["gRPC", "SSE", "Websocket", "Non HTTP Protocol"]
 description: "How to configure Non HTTP Protocols"
-keywords: ["gRPC", "TCP", "SSE", "Websocket", "Non HTTP Protocol"]
+keywords: ["gRPC", "SSE", "Websocket", "Non HTTP Protocol"]
 aliases:
   - /advanced-configuration/other-protocols
   - /key-concepts/grpc-proxy
@@ -23,7 +23,7 @@ Tyk supports gRPC passthrough proxying when using HTTP/2 as a transport (the mos
 
 The gRPC over HTTP2 specification defines the rules on how the gRPC protocol maps to a HTTP request, for more information [see](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md). In the context of the API Gateway, we are interested in the following:
 
-- You can target specific methods of the gRPC service using the format: `/{Service-Name}/{method name}`, for example: `/google.pubsub.v2.PublisherService/CreateTopic`. You can use this feature to apply standard ACL rules via Keys and Policies, or use URL rewrite plugins in our [Endpoint Desiger]({{< ref "api-management/traffic-transformation#url-rewrite-middleware" >}}). 
+- You can target specific methods of the gRPC service using the format: `/{Service-Name}/{method name}`, for example: `/google.pubsub.v2.PublisherService/CreateTopic`. You can use this feature to apply standard ACL rules via Keys and Policies, or use URL rewrite plugins in our [Endpoint Desiger]({{< ref "transform-traffic/url-rewriting#url-rewrite-middleware" >}}). 
 - HTTP method is always `POST`.
 gRPC custom request metadata is added as HTTP headers, where metadata key is directly mapped to the HTTP header with the same name. 
 
