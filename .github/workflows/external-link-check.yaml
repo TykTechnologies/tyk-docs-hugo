@@ -1,0 +1,20 @@
+name: Check Markdown Links
+
+on:
+  pull_request:
+    branches:
+      - master  # Adjust to your default branch
+
+jobs:
+  markdown-link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4  # Updated to latest version
+
+      - name: Check Markdown links
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          check-modified-files-only: 'yes'
+          use-verbose-mode: 'yes'  # Shows detailed output, including HTTP status
+          folder-path: 'tyk-docs/content'    # Adjust to the folder containing your Markdown files

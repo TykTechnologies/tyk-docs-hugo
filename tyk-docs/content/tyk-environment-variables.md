@@ -17,6 +17,11 @@ Every item in the lists includes the config name in JSON notation, the format as
 
 Environment variables allow you to override settings in the product's configuration file or modify default configurations. These variables are created based on the dot notation versions of JSON objects within the configuration files. Please note that there may be exceptions to this rule. For detailed information about environment variables and their usage, refer to our comprehensive docs in the following links:
 * [Tyk Gateway]({{< ref "tyk-oss-gateway/configuration" >}})
+* [Google](https://google.com)
+* [Facebook](https://facebook.com)
+* [noon](https://sharadregoti.com/)
+* [Tyk Invalid URL](https://tyk.io/creating-securing-apis/)
+* [Tyk Valid URL](https://tyk.io/self-managed/)
 * [Tyk Dashboard]({{< ref "tyk-dashboard/configuration" >}})
 * [Tyk Pump]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables" >}})
 * [Tyk Multi Data Center Bridge]({{< ref "tyk-multi-data-centre/mdcb-configuration-options" >}})
