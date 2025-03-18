@@ -177,6 +177,10 @@ var buildTableOfContents = function () {
   }
 
   highlightAnchor();
+  // Handle fragment in URL on page load for large screens
+  if (window.innerWidth >= 1024) {
+    handleFragmentOnLoad();
+  }
 
 };
 
@@ -219,10 +223,10 @@ function activeTocToggle() {
 }
 
 function highlightAnchor() {
-  console.log("highlightAnchor called");
   const contentTitles = $("h2, h3, h4, h5");
   let highestVisibleHeading = null;
 
+  // Find the highest visible heading in the viewport
   contentTitles.each(function () {
     const rect = $(this)[0].getBoundingClientRect();
     if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
@@ -234,37 +238,44 @@ function highlightAnchor() {
 
   if (highestVisibleHeading) {
     const currentSectionId = highestVisibleHeading.attr("id");
+    
+    // Remove active classes from all TOC items
     $(".toc__item, .sub_toc__item, .sub-sub-toc-item, .sub-sub-sub-toc-item").removeClass("js-active accordion-up");
-    $(
-      `.toc__item[href*="#${currentSectionId}"], .sub_toc__item[href*="#${currentSectionId}"], .sub-sub-toc-item[href*="#${currentSectionId}"], .sub-sub-sub-toc-item[href*="#${currentSectionId}"]`,
+
+    // Add active classes to the current TOC item
+    const activeTocItem = $(
+      `.toc__item[href="#${currentSectionId}"], 
+       .sub_toc__item[href="#${currentSectionId}"], 
+       .sub-sub-toc-item[href="#${currentSectionId}"], 
+       .sub-sub-sub-toc-item[href="#${currentSectionId}"]`
     ).addClass("js-active accordion-up");
 
-    $(".accordion-up").each(function () {
-      $(this).siblings(".accordion-content").show();
-      $(this).siblings(".sub-accordion-content").show();
-      $(this).siblings(".sub-sub-accordion-content").show();
+    // Expand all parent sections of the active TOC item
+    activeTocItem.parents(".accordion-content, .sub-accordion-content, .sub-sub-accordion-content").each(function () {
+      $(this).show(); // Ensure the parent section is visible
+      $(this).prev("a").addClass("accordion-up"); // Add the "accordion-up" class to the parent link
+    });
+
+    // Ensure all sibling items at the same level are visible
+    activeTocItem.closest(".sub-accordion-content, .accordion-content, .sub-sub-accordion-content").children().each(function () {
+      $(this).show(); // Make all sibling items visible
     });
 
     // Scroll the TOC container to the highlighted item on large screens
     if (window.innerWidth >= 1024) {
-      const activeTocItem = $(
-        `.toc__item[href*="#${currentSectionId}"], .sub_toc__item[href*="#${currentSectionId}"], .sub-sub-toc-item[href*="#${currentSectionId}"], .sub-sub-sub-toc-item[href*="#${currentSectionId}"]`,
-      );
       if (activeTocItem.length) {
         activeTocItem[0].scrollIntoView({ behavior: "smooth", block: "nearest" });
-
-        // Open all parent items
-        activeTocItem.parents(".accordion-item, .accordion-content, .sub-accordion-content").each(function () {
-          $(this).show();
-          $(this).prev("a").addClass("accordion-up");
-        });
       }
     }
   }
+}
 
-  $(".sub_toc__item.accordion-up").click(function () {
-    $(this).siblings(".sub-accordion-content").hide();
-  });
+// Function to handle fragment in URL on page load for large screens
+function handleFragmentOnLoad() {
+  var fragment = window.location.hash;
+  if (fragment) {
+    highlightAnchor();
+  }
 }
 
 // Call the function to build the table of contents with accordion functionality
