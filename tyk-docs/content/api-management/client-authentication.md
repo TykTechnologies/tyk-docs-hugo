@@ -1448,7 +1448,7 @@ security:
   - myAuthScheme: []
 ```
 
-With this configuration provided by the OpenAPI description, all that is left to be configured in the Tyk Vendor Extension is to enable authentication, to select this security scheme and to indicate where Tyk should look for the credentials. Usually the credentials will be provided in the `Authorization` header, but Tyk is configurable, via the Tyk Vendor Extension, to support custom header keys and credential passing via query parameter or cooke.
+With this configuration provided by the OpenAPI description, all that is left to be configured in the Tyk Vendor Extension is to enable authentication, to select this security scheme and to indicate where Tyk should look for the credentials. Usually the credentials will be provided in the `Authorization` header, but Tyk is configurable, via the Tyk Vendor Extension, to support custom header keys and credential passing via query parameter or cookie.
 
 ```yaml
 x-tyk-api-gateway:
