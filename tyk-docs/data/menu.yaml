@@ -81,14 +81,14 @@ menu:
             path: /tyk-self-managed
             category: Page
             show: True
-      - title: "Authentication and Authorization"
+      - title: "Client Authentication"
         path: /api-management/client-authentication
         category: Page
         show: True
       - title: "Upstream Authentication"
         path: /api-management/upstream-authentication
         category: Page
-        show: False
+        show: True
       - title: "Rate Limiting"
         path: /api-management/rate-limit
         category: Page
