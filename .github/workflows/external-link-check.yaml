@@ -1,5 +1,7 @@
 # Ref: https://github.com/gaurav-nelson/github-action-markdown-link-check
-name: Check Markdown Links
+# This GitHub action checks for external links (any link that is not part of https://tyk.io/docs/* is considered an external URL). It ignores the HUGO shortcode {{< ref "" >}}.
+# We are using this GitHub Action because the .htmltest GitHub Action is generating errors while checking external URLs and it confuses them with internal links. Refer to this PR https://github.com/TykTechnologies/tyk-docs/pull/5498
+name: Check Markdown External Links
 
 on:
   pull_request:
@@ -7,7 +9,7 @@ on:
       - master  # Adjust to your default branch
 
 jobs:
-  markdown-link-check:
+  run:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
