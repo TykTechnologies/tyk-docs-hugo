@@ -3,8 +3,7 @@
  */
 
 var buildTableOfContents = function () {
-  var
- ToCContainer = $(".documentation-table-of-contents-container"),
+  var ToCContainer = $(".documentation-table-of-contents-container"),
     ToC = $(".documentation-table-of-contents"),
     ToContent = $(".toc__content"),
     ToClbl = $('<span class="toc__label">On this page</span>'),
@@ -24,10 +23,11 @@ var buildTableOfContents = function () {
   ToContent.html("");
   var accordionGroup = $('<div class="accordion-group"></div>');
 
-  
-  ToC.prepend(ToClbl);
-  
-  
+  // Check if the label already exists before appending
+  if ($(".toc__label").length === 0) {
+    ToC.prepend(ToClbl);
+  }
+
   contentTitles.each(function () {
     var title = $(this).text();
 
@@ -118,18 +118,18 @@ var buildTableOfContents = function () {
   pageContent.on("scroll", highlightAnchor);
 
   // Open all sections by default on large screens
-  if (window.innerWidth >= 1024) {
-    $(".accordion-item").each(function () {
-      $(this).find(".accordion-content").show();
-      $(this).addClass("accordion-up");
-    });
-    $(".accordion-content").each(function () {
-      $(this).find(".sub-accordion-content").show();
-    });
-    $(".sub-accordion-content").each(function () {
-      $(this).find(".sub-sub-accordion-content").show();
-    });
-  }
+  // if (window.innerWidth >= 1024) {
+  //   $(".accordion-item").each(function () {
+  //     $(this).find(".accordion-content").show();
+  //     $(this).addClass("accordion-up");
+  //   });
+  //   $(".accordion-content").each(function () {
+  //     $(this).find(".sub-accordion-content").show();
+  //   });
+  //   $(".sub-accordion-content").each(function () {
+  //     $(this).find(".sub-sub-accordion-content").show();
+  //   });
+  // }
 
   $(".accordion-item").each(function () {
     var accordionContent = $(this).find(".accordion-content");
@@ -192,24 +192,34 @@ function activeTocToggle() {
   var tocItems = $(".toc__item");
   var pageContent = $(".page-content__container, .header");
 
+  // Initially hide the TOC content on small screens
+  if (window.innerWidth < 1024) {
+    $(".toc__content").hide();
+  }
+
+  // Remove any existing event handlers to prevent multiple bindings
+  tocLabel.off("click");
+
   tocLabel.on("click", function (e) {
+    console.log("tocLabel clicked");
     if (window.innerWidth < 1024) {
       $(e.currentTarget).toggleClass("js-open");
+      $(".toc__content").toggle();
     } else {
       $(e.currentTarget).removeClass("js-open");
     }
   });
 
-
   pageContent.on("click", function () {
     if (tocLabel.hasClass("js-open")) {
       tocLabel.removeClass("js-open");
+      $(".toc__content").hide();
     }
   });
 }
 
-
 function highlightAnchor() {
+  console.log("highlightAnchor called");
   const contentTitles = $("h2, h3, h4, h5");
   let highestVisibleHeading = null;
 
@@ -232,6 +242,7 @@ function highlightAnchor() {
     $(".accordion-up").each(function () {
       $(this).siblings(".accordion-content").show();
       $(this).siblings(".sub-accordion-content").show();
+      $(this).siblings(".sub-sub-accordion-content").show();
     });
 
     // Scroll the TOC container to the highlighted item on large screens
@@ -241,6 +252,12 @@ function highlightAnchor() {
       );
       if (activeTocItem.length) {
         activeTocItem[0].scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+        // Open all parent items
+        activeTocItem.parents(".accordion-item, .accordion-content, .sub-accordion-content").each(function () {
+          $(this).show();
+          $(this).prev("a").addClass("accordion-up");
+        });
       }
     }
   }
@@ -253,28 +270,3 @@ function highlightAnchor() {
 // Call the function to build the table of contents with accordion functionality
 $(document).ready(buildTableOfContents);
 $(document).on("turbolinks:load", buildTableOfContents);
-/**
- * Toggle TOC for small devices
- */
-
-function activeTocToggle() {
-  var tocLabel = $(".toc__label");
-  var tocItems = $(".toc__item");
-  var pageContent = $(".page-content__container, .header");
-
-  tocLabel.on("click", function (e) {
-    if (window.innerWidth < 1024) {
-      $(e.currentTarget).toggleClass("js-open");
-    } else {
-      $(e.currentTarget).removeClass("js-open");
-    }
-  });
-
- 
-
-  pageContent.on("click", function () {
-    if (tocLabel.hasClass("js-open")) {
-      tocLabel.removeClass("js-open");
-    }
-  });
-}
