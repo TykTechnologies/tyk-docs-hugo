@@ -187,7 +187,7 @@ Fixed an issue where service annotations for Tyk Pump were not being applied cor
 <details>
 <summary>Operator liveness and readiness probe failure</summary>
 
-Fixed an issue where the Operator’s liveness and readiness probes were failing, causing the service to enter a CrashLoopBackOff state. This has been resolved by adjusting probe configurations to ensure proper startup and health checks.
+Fixed an issue where the Operator’s liveness and readiness probes were failing, causing the service to enter a CrashLoopBackOff state. This has been resolved by adjusting configurations to ensure proper startup and health checks.
 </details>
 </li>
 
