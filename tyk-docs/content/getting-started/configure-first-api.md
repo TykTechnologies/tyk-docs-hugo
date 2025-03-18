@@ -2,7 +2,7 @@
 aliases:
 - /quickstart-configure-first-api
 date: 2020-06-24
-description: How to decide on which Tyk deployment option is best for you
+description: Configure your first API on Tyk Cloud
 linkTitle: Getting Started
 tags:
 - Tyk API Management
@@ -26,7 +26,7 @@ Follow these steps to quickly create and manage your APIs in Tyk Cloud.
 ## Prerequisites
 
 Before you begin, make sure you have:
-- [A Tyk Cloud account](/getting-started/create-account).
+- [A Tyk Cloud account](https://tyk.io/sign-up/#cloud).
 - Admin access to the Tyk Dashboard.
 - (optional) A backend service that your API will proxy (e.g., a RESTful API) - or you can use the httpbin service.
 
@@ -172,6 +172,6 @@ With your API live, monitor its traffic and analyze performance:
 
 ## Next Steps
 
-Congratulations! You've successfully created, secured, and deployed your first API in Tyk Cloud. Next, explore more advanced features such as adding [rate limiting]({{< ref "getting-started/key-concepts/rate-limiting" >}}) to protect your API from abuse.
+Congratulations! You've successfully created, secured, and deployed your first API in Tyk Cloud. Next, explore more advanced features such as adding [rate limiting]({{< ref "api-management/rate-limit#introduction" >}}) to protect your API from abuse.
 
 Explore more features in your [dashboard]({{< ref "getting-started/using-tyk-dashboard" >}}) to optimize and scale your API offerings.

@@ -7,7 +7,29 @@ menu:
 weight: 4 
 aliases:
   - /tyk-developer-portal/curity-dcr
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< warning success >}}
+
+**Attention:**
+
+You’ve reached a page related to the *Tyk Classic Portal*. If you were searching for *API documentation of the new Tyk
+Developer Portal* please use the latest
+[Postman collection]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) page.
+</br>
+</br>
+**Future deprecation of Tyk Classic Portal**
+
+This product is no longer actively developed as it
+has been superseded by the new [Tyk Developer Portal]({{< ref "portal/overview" >}}).
+</br>
+Please note that the Tyk Classic Portal now has limited support and maintenance. Please contact us at
+[support@tyk.io](<mailto:support@tyk.io?subject=Tyk classic developer portal>)if you have any questions.
+
+{{< /warning >}}
 
 This guide describes how to integrate [The Curity Identity Server](https://curity.io/) with the Tyk Developer Portal using [OpenID Connect Dynamic Client Registration protocol](https://tools.ietf.org/html/rfc7591).
 
@@ -24,7 +46,7 @@ Use case outline:
 ### Requirements
 
 - An installation of The Curity Identity Server. Follow the [Getting Started Guide](https://curity.io/resources/getting-started/) if an installation is not already available.
-- A [Tyk Self-Managed installation]({{< ref "tyk-self-managed/install" >}}) (Gateway + Dashboard).
+- A [Tyk Self-Managed installation]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}}) (Gateway + Dashboard).
 
 ### Enable DCR in The Curity Identity Server
 

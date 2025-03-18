@@ -6,11 +6,9 @@ tags: ["Analytics", "Distributed Analytics", "Redis", "Redis Shards", "analytics
 tags: ["do_not_track", "Analytics", "RPS", "Requests Per Second", "CPU", "high load", "high traffic"]
 aliases:
     - /frequently-asked-questions/check-current-gateway-version/
-    - /developer-support/frequently-asked-questions/what_is_the_performance_impact_of_analytics
     - /frequently-asked-questions/how-to-backup-tyk-cloud-deployment
     - /frequently-asked-questions
     - /frequently-asked-questions/how-to-backup-tyk
-    - /developer-support/frequently-asked-questions/how-to-reduce-cpu-usage-in-a-redis-cluster
     - /troubleshooting/tyk-installation/couldnt-unmarshal-config-error
     - /frequently-asked-questions/datadog-logs-showup-as-errors
 
@@ -26,7 +24,7 @@ This section lists commonly asked questions or frequently encountered issues and
 
 1. **If there's a configuration error or an unwanted change, can I easily revert to a previous API or Policy configuration? What are the options or best practices for effective rollbacks?**
     
-    You can configure [Tyk-Sync]({{< ref "/api-management/automations#synchronize-tyk-environment-with-github-repository" >}}) to synchronise APIs and Policies with any version control system, like GitHub or GitLab and use it to perform roll back. Keys are not synchronised with Tyk Sync.
+    You can configure [Tyk-Sync]({{< ref "api-management/automations/sync" >}}) to synchronise APIs and Policies with any version control system, like GitHub or GitLab and use it to perform roll back. Keys are not synchronised with Tyk Sync.
 
 2. **How to Backup Configuration Files of Tyk Component's ?**
 
@@ -100,6 +98,42 @@ This section lists commonly asked questions or frequently encountered issues and
     - For *Amazon RDS* users, check their [backup and restore documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_CommonTasks.BackupRestore.html). To further enhance your PostgreSQL backup process, you can explore services like [AWS RDS Automated Backups](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html) if you're hosting your database on AWS. 
     - For *CosmosDB* users check their [online backup and on-demand data restore documentation](https://learn.microsoft.com/en-us/azure/cosmos-db/postgresql/concepts-backup) 
 
+## Enterprise Developer Portal
+
+1. **What happens if the Portal goes down ?**
+
+    In the event of the portal application being down, the other components of the Tyk Stack will remain unaffected.
+    This means your APIs will still be operational, and analytics will continue to be recorded.
+    Developers will also be able to use their credentials for both oAuth2.0 and API Keys APIs.
+
+    However, since the portal application is down, developers won't be able to access their credentials or the analytical dashboard, request access to new API Products, or revoke or rotate their access credentials.
+    Additionally, admin users won't be able to use the portal, whether through its UI or APIs.
+    This means you won't be able to create, change, or remove any item managed by the portal, such as developers, organizations, content pages, API Products, plans, and more.
+
+    Despite this, you still have some control over access credentials.
+    If you need to rotate or remove access credentials, you can do so directly in the Tyk Dashboard or in your identity provider.
+
+2. **What happens if the Dashboard goes down ?**
+
+    If the Tyk Dashboard goes down, developers will still be able to access their access credentials, but they won't be able to rotate or remove their existing credentials, or request access to API Products.
+    Additionally, the API Analytics dashboard will be compromised.
+
+    However, API traffic will remain unaffected, meaning that your APIs will continue to be operational, and analytics will continue to be recorded.
+
+    In terms of admin functionality, the only limitation will be the inability to approve or reject access requests or revoke or rotate access credentials.
+
+
+3. **Does the portal support SQL databases for storing the portal's CMS assets ?**
+
+    {{< note success >}}
+    **Note** 
+
+    Tyk no longer supports SQLite as of Tyk 5.7.0. To avoid disruption, please transition to [PostgreSQL]({{< ref"tyk-self-managed#postgresql" >}}), [MongoDB]({{< ref "tyk-self-managed#mongodb" >}}), or one of the listed compatible alternatives.
+    {{< /note >}}
+
+    The Enterprise Developer Portal supports SQL databases (MariaDB, MySQL, and PostgreSQL) for storing the portal's CMS assets.
+    During the bootstrap process, the portal will create the appropriate tables in the main database. The only thing required to enable SQL storage for the portal's assets is to specify the `db` [storage type]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage" >}}) either via a config file or an environment variable.
+
 ## Tyk Gateway
 
 1. **How to Check Your Gateway Version ?**
@@ -144,110 +178,6 @@ This section lists commonly asked questions or frequently encountered issues and
 1. **How can I track and audit changes made to Tyk Dashboard configurations ?**
 
     To track changes in Dashboard configurations, please submit a [support ticket](https://support.tyk.io/hc/en-gb/articles/8671452599708-Ticket-Submission-Guide). No configuration changes will occur without your explicit request.
-
-## Performance
-
-1. **What Is The Performance Impact Of Analytics ?**
-
-    Tyk Gateway allows analytics to be recorded and stored in a persistent data store (MongoDB/SQL) for all APIs by default, via [Tyk Pump]({{< ref "tyk-stack/tyk-pump/tyk-analytics-record-fields" >}}).
-
-    Tyk Gateway generates transaction records for each API request and response, containing [analytics data]({{< ref "tyk-stack/tyk-pump/tyk-analytics-record-fields" >}}) relating to: the originating host (where the request is coming from), which Tyk API version was used, the HTTP method requested and request path etc.
-
-    The transaction records are transmitted to Redis and subsequently transferred to a persistent [data store]({{< ref "tyk-stack/tyk-pump/other-data-stores" >}}) of your choice via Tyk Pump. Furthermore, Tyk Pump can also be configured to [aggregate]({{< ref "tyk-dashboard-analytics#aggregated-analytics" >}}) the transaction records (using different data keys - API ID, access key, endpoint, response status code, location) and write to a persistent data store. Tyk Dashboard uses this data for:
-    - [Aggregated analytics]({{< ref "tyk-dashboard-analytics" >}}) - Displaying analytics based on the aggregated data.
-    - [Log Browser]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}}) to display raw transaction records.
-
-    **How Do Analytics Impact Performance?**
-
-    Analytics may introduce the problem of increased CPU load and a decrease in the number of requests per second (RPS).
-
-    In the *Tyk Dashboard API* screen below, there are two APIs, *track* and *notrack*. The APIs were created to conduct a simple load test, to show the gateway's RPS (requests per second) for each API:
-
-    - **track**: Traffic to this API is tracked, i.e. transaction records are generated for each request/response.
-    - **notrack**: Traffic to this API is not tracked, i.e. transaction records are not generated for each request/response.
-
-    {{< img src="img/faq/do-not-track-usage-scenario/dashboard_apis_measured.png" alt="apis measured in Tyk Dashboard" width="864">}}
-
-    100,000 requests were sent to each API and the rate at which Tyk was able to handle those requests (number of requests per second) was measured. The results for the *tracked* API are displayed in the left pane terminal window; with the right pane showing the results for the *untracked* API.
-
-    **Tracked API Performance**
-
-    {{< img src="img/faq/do-not-track-usage-scenario/track.png" alt="measuring tracked API performance impact" >}}
-
-    **Untracked API Performance**
-
-    {{< img src="img/faq/do-not-track-usage-scenario/notrack.png" alt="measuring do_not_track API performance impact" >}}
-
-    **Explaining the results**
-
-    We can see that **19,253.75** RPS was recorded for the *untracked* API; with **16,743.6011** RPS reported for the *tracked* API. The number of requests per second decreased by **~13%** when analytics was enabled.
-
-    **What Can Be Done To Address This Performance Impact?**
-
-    Tyk is configurable, allowing fine grained control over which information should be recorded and which can be skipped, thus reducing CPU cycles, traffic and storage.
-
-    Users can selectively prevent the generation of analytics for
-    [do_not_track]({{<ref "product-stack/tyk-gateway/middleware/do-not-track-middleware">}}) middleware:
-    - **Per API**: Tyk Gateway will not create records for requests/responses for any endpoints of an API.
-    - **Per Endpoint**: Tyk Gateway will not create records for requests/responses for specific endpoints.
-
-    When set, this prevents Tyk Gateway from generating the transaction records. Without transaction records, Tyk Pump will not transfer analytics to the chosen persistent data store. It's worth noting that the [track middleware]({{< ref "product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint" >}}) exclusively influences the generation of *endpoint popularity* aggregated data by Tyk Pump.
-
-    **Conclusion**
-
-    [Disabling]({{<ref "product-stack/tyk-gateway/middleware/do-not-track-middleware">}})  the creation of analytics (either per API or for specific endpoints) helps to reduce CPU cycles and network requests for systems that exhibit high load and traffic, e.g. social media platforms, streaming, financial services and trading platforms.
-
-    Application decisions need to be made concerning which endpoints are non critical and can thus have analytics disabled. Furthermore, benchmarking and testing will be required to evaluate the actual benefits for the application specific use case.
-
-    Subsequently, it is worthwhile monitoring traffic and system load and using this feature to improve performance. 
-
-1. **What does high CPU usage in a Redis node within a Redis Cluster mean ?**
-
-    When a single Redis node within a Redis Cluster exhibits high CPU usage, it indicates that the CPU resources of that particular node are being heavily utilized compared to others in the cluster.
-
-    The illustration below highlights the scenario where a single Redis node is exhibiting high CPU usage of 1.20% within a Redis Cluster. 
-
-    {{< img src="/img/faq/enable-multiple-analytics-keys/redis_single.png" width="768" alt="analytics keys stored in one Redis server" >}}
-
-2. **What could be causing this high CPU usage ?**
-
-    One possible reason for high CPU usage in a single Redis node within a Redis Cluster is that analytics features are enabled and keys are being stored within that specific Redis node.
-
-3. **How does storing keys within a single Redis server contribute to high CPU usage ?**
-
-    A high volume of analytics traffic can decrease performance, since all analytics keys are stored within one Redis server. Storing keys within a single Redis server can lead to increased CPU usage because all operations related to those keys, such as retrieval, updates and analytics processing, are concentrated on that server. This can result in heavier computational loads on that particular node. This leads to high CPU usage.
-
-4. **What can be done to address high CPU usage in this scenario ?**
-
-    Consider distributing the analytics keys across multiple Redis nodes within the cluster. This can help distribute the computational load more evenly, reducing the strain on any single node and potentially alleviating the high CPU usage.
-
-    In Redis, *key sharding* is a term used to describe the practice of distributing data across multiple Redis instances or *shards* based on the keys. This feature is provided by [Redis Cluster](https://redis.io/docs/management/scaling/) and provides horizontal scalability and improved performance. 
-
-    Tyk supports configuring this behavior so that analytics keys are distributed across multiple servers within a Redis cluster. The image below illustrates that CPU usage is reduced across two Redis servers after making this configuration change.
-
-    {{< img src="/img/faq/enable-multiple-analytics-keys/redis_distributed.png" width="600" alt="analytics keys distributed across Redis servers" >}}
-
-5. **How do I configure Tyk to distribute analytics keys to multiple Redis shards ?**
-
-    Follow these steps:
-
-    **1. Check that your Redis Cluster is correctly configured**
-
-    Confirm that the `enable_cluster` configuration option is set to true in the [Tyk Gateway]({{< ref "tyk-oss-gateway/configuration#storageenable_cluster" >}}), [Tyk Dashboard]({{< ref "tyk-dashboard/configuration#enable_cluster" >}}) and [Tyk Pump]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#analytics_storage_configenable_cluster" >}}) configuration files. This setting 
-    informs Tyk that a Redis Cluster is in use for key storage.
-
-    Ensure that the `addrs` array is populated in the [Tyk Gateway]({{< ref "tyk-oss-gateway/configuration#storageaddrs" >}}) and [Tyk Pump]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#analytics_storage_configaddrs" >}}) configuration files (*tyk.conf* and *pump.conf*) with the addresses of all Redis Cluster nodes. If you are using Tyk Self Managed (the licensed product), also update [Tyk Dashboard]({{< ref "tyk-dashboard/configuration#redis_addrs" >}}) configuration file (*tyk_analytics.conf*). This ensures that the Tyk components can interact with the entire Redis Cluster. Please refer to the [configure Redis Cluster]({{< ref "tyk-stack/tyk-gateway/configuration/redis-cluster#redis-cluster--tyk-gateway" >}}) guide for further details.
-
-    **2. Configure Tyk to distribute analytics keys to multiple Redis shards**
-
-    To distribute analytics keys across multiple Redis shards effectively you need to configure the Tyk components to leverage the Redis cluster's sharding capabilities:
-
-    1. **Optimize Analytics Configuration**: In the Tyk Gateway configuration (tyk.conf), set [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) to true. This option allows Tyk to distribute analytics data across Redis nodes, using multiple keys for the analytics. There's a corresponding option for Self Managed MDCB, also named [enable_multiple_analytics_keys]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#enable_multiple_analytics_keys" >}}). Useful only if the gateways in the data plane are configured to send analytics to MDCB.
-    2. **Optimize Connection Pool Settings**: Adjust the [optimization_max_idle]({{< ref "tyk-oss-gateway/configuration#storageoptimisation_max_idle" >}}) and [optimization_max_active]({{< ref "tyk-oss-gateway/configuration#storageoptimisation_max_active" >}}) settings in the configuration files to ensure that the connection pool can handle the analytics workload without overloading any Redis shard.
-    3. **Use a Separate Analytics Store**: For high analytics traffic, you can opt to use a dedicated *Redis Cluster* for analytics by setting [enable_separate_analytics_store]({{< ref "tyk-oss-gateway/configuration#enable_separate_analytics_store" >}}) to true in the Tyk Gateway configuration file (*tyk.conf*) and specifying the separate Redis cluster configuration in the `analytics_storage` section. Please consult the [separated analytics storage]({{< ref "tyk-stack/tyk-pump/separated-analytics-storage" >}}) guide for an example with *Tyk Pump* that can equally be applied to *Tyk Gateway*.
-    4. **Review and Test**: After implementing these changes, thoroughly review your configurations and conduct load testing to verify that the analytics traffic is now evenly distributed across all Redis shards.
-
-    By following these steps you can enhance the distribution of analytics traffic across the Redis shards. This should lead to improved scalability and performance of your Tyk deployment.
 
 ## Miscellaneous
 

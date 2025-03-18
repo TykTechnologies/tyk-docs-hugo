@@ -27,4 +27,4 @@ If `--conf` is not used, the first of the following paths to exist is used:
 `./tyk.conf`
 `/etc/tyk/tyk.conf`
 
-{{< include "gateway-config.md" >}}
+{{< include "gateway-config" >}}

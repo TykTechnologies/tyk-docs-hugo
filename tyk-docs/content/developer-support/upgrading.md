@@ -83,7 +83,7 @@ Tyk offers supporting tools for database migration and backing up APIs and polic
 
 ##### Migrating from MongoDB to SQL
 
-Use our [migration tool]({{< ref "planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}) to manage the switch from MongoDB to SQL.
+Use our [migration tool]({{< ref "tyk-self-managed#migrating-from-an-existing-mongodb-instance" >}}) to manage the switch from MongoDB to SQL.
 
 ##### Backup APIs Script
 
@@ -185,7 +185,7 @@ specified order. Adhering to the provided sequence is crucial for a smooth and s
 
 **Step 1. Upgrade Control Plane**
 
-Follow our guide for [upgrading Cloud Control Planes]({{< ref "tyk-cloud/environments-&-deployments/managing-control-planes#upgrade-control-planes" >}}).
+Follow our guide for [upgrading Cloud Control Planes]({{< ref "tyk-cloud#upgrade-control-planes" >}}).
 
 **Step 2. Upgrade Go Plugins**
 
@@ -194,12 +194,12 @@ Follow our guide for deploying your [Go plugins on Tyk Cloud]({{< ref "#go-plugi
 **Gateway Versions < 4.1.0.**
 
 1. Proceed with [upgrading your Tyk Data Plane (Gateway)](#upgrading-cloud-data-planes)
-2. Update the [custom_middleware_bundle]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file containing your upgrade plugin.
+2. Update the [custom_middleware_bundle]({{< ref "api-management/plugins/overview#plugin-bundles" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file containing your upgrade plugin.
 3. Validate that your plugin is working per your expectations.
 
 **Gateway Versions >= 4.1.0**
 
-1. Update the [custom_middleware_bundle]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file containing your upgraded plugin.
+1. Update the [custom_middleware_bundle]({{< ref "api-management/plugins/overview#plugin-bundles" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file containing your upgraded plugin.
 
 2. Validate that your plugin is working per your expectations as at this stage, your Gateway will be running the plugin for your current version still.
 
@@ -215,7 +215,7 @@ Follow our guide for deploying your [Go plugins on Tyk Cloud]({{< ref "#go-plugi
 
 ###### Step 3. Upgrade Cloud Data Plane {#upgrading-cloud-data-planes}
 
-Follow our guide for [upgrading Cloud Data Planes]({{< ref "tyk-cloud/environments-&-deployments/managing-gateways#upgrade-cloud-data-planes" >}}).
+Follow our guide for [upgrading Cloud Data Planes]({{< ref "tyk-cloud#managing-cloud-data-plane" >}}).
 
 **Upgrade Guide Video**
 Please refer to our [upgrade guide video](https://tyk-1.wistia.com/medias/t0oamm63ae) below for visual guidance:
@@ -255,7 +255,7 @@ following order:
 
 **Step 1. Upgrade your control plane**
 
-See Tyk Guide for how to [upgrade Control Planes]({{< ref "tyk-cloud/environments-&-deployments/managing-control-planes#upgrade-control-planes" >}})
+See Tyk Guide for how to [upgrade Control Planes]({{< ref "tyk-cloud#upgrade-control-planes" >}})
 
 **Step 2 Upgrade Go plugins**
 
@@ -264,14 +264,14 @@ Follow our guide for [upgrading your Go plugins on Tyk Cloud]({{< ref "#go-plugi
 **Gateway Versions < 4.1.0**
 
 1. Proceed with upgrading your [Tyk Data Plane Hybrid Gateways](#upgrading-data-plane-hybrid-gateways).
-2. Update the [custom_middleware_bundle]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}})
+2. Update the [custom_middleware_bundle]({{< ref "api-management/plugins/overview#plugin-bundles" >}})
 field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file
 containing your upgrade plugin.
 3. Validate that your plugin is working per your expectations.
 
 **Gateway Versions >= 4.1.0**
 
-1. Update the [custom_middleware_bundle]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}})
+1. Update the [custom_middleware_bundle]({{< ref "api-management/plugins/overview#plugin-bundles" >}})
 field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file
 containing your upgraded plugin.
 2. Validate that your plugin is working per your expectations as at this stage, your Gateway will be running the plugin
@@ -320,7 +320,7 @@ This guide explains how to deploy your custom Go plugins on Tyk Cloud:
 
 **Path 1 - Current Version < 4.1.0 and Target Version < 4.1.0**
 
-1. [Create a plugin bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) that includes the newly compiled version
+1. [Create a plugin bundle]({{< ref "api-management/plugins/overview#plugin-bundles" >}}) that includes the newly compiled version
 
     {{< img src="img/developer-support/path1-step5-bundle-contents.png" alt="Bundle ZIP example" width="800">}}
 
@@ -350,12 +350,12 @@ This guide explains how to deploy your custom Go plugins on Tyk Cloud:
     }
     ```
 
-2. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
+2. [Upload this bundle]({{< ref "tyk-cloud#uploading-your-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
 
 
 **Path 2 - Current Version >= 4.1.0 and Target Version >= 4.2.0**
 
-1. [Create a plugin bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) that includes both your current version’s plugin along with the newly compiled version
+1. [Create a plugin bundle]({{< ref "api-management/plugins/overview#plugin-bundles" >}}) that includes both your current version’s plugin along with the newly compiled version
 
     {{< img src="img/developer-support/path2-step5-bundle-contents.png" alt="Bundle ZIP example" width="800">}}
     
@@ -394,7 +394,7 @@ This guide explains how to deploy your custom Go plugins on Tyk Cloud:
     then *“_v5.2.0_linux_amd64”* would be appended to the shared object filename that the compiler creates
     - Your bundle zip file should include both the current version and target versions of the plugin.
 
-2. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
+2. [Upload this bundle]({{< ref "tyk-cloud#uploading-your-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
 
 
 ### Tyk Self Managed Upgrade Guide 
@@ -1071,7 +1071,7 @@ These commands are provided as general guidelines and should be used with cautio
 ### Open Source Upgrade Guide 
 
 The following guide explains how to upgrade Tyk Gateway when using Docker. For guides of other installation types check
-the "Self-manged" section, and look for the instruction regarding Tyk Gateway.
+the [self managed]({{< ref "#tyk-self-managed-upgrade-guide" >}}) section, and look for the instruction regarding Tyk Gateway.
 
 Before proceeding with the upgrade process, ensure that you have thoroughly reviewed and completed the steps outlined in
 the [pre-upgrade guidelines]({{< ref "#upgrade-guidelines" >}}). Once you
@@ -1106,7 +1106,7 @@ $ docker run \
   docker.tyk.io/tyk-gateway/tyk-gateway:v5.3
 ```
 
-For full installation details, check the usual [installation page]({{< ref "tyk-oss/ce-docker" >}}).
+For full installation details, check the usual [installation page]({{< ref "tyk-open-source#install-tyk-gateway-with-docker" >}}).
 
 **Docker compose upgrade in a simple environment**
 
@@ -1259,7 +1259,7 @@ docker rmi plugin_compiler_image_name_or_id
 ## Backup APIs and Policies 
 
 Backing up Tyk APIs and Policies is crucial for ensuring business continuity and data integrity. It safeguards against accidental data loss, system failures or corruption. This provides the opportunity to rollback to a stable state during upgrades or migrations, allowing you to restore configurations to a previous state to prevent disruptions with your API infrastructure.
-If you are using Self Managed deployment then we recommend that you use [Tyk Sync]({{< ref "/api-management/automations#synchronize-tyk-environment-with-github-repository" >}}) to backup your Tyk APIs and policies. 
+If you are using Self Managed deployment then we recommend that you use [Tyk Sync]({{< ref "api-management/automations/sync" >}}) to backup your Tyk APIs and policies. 
 
 ### Export And Restore APIs and Policies
 

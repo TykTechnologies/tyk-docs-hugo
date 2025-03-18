@@ -1,0 +1,30 @@
+name: Enforce PR Standards
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  check-pr:
+    runs-on: ubuntu-latest
+    if: ${{ !github.event.pull_request.draft }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '22' # Use your desired Node.js version
+
+      - name: Install dependencies
+        run: cd scripts/pr-review-bot/ && npm install
+
+      - name: Install dependencies
+        run: cd scripts/pr-review-bot/ && npm install
+
+      - name: Run PR checklist script
+        run: node scripts/pr-review-bot/index.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Use GitHub's automatically generated token
+          PR_NUMBER: ${{ github.event.pull_request.number }}

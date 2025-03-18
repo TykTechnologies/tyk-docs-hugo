@@ -3,17 +3,13 @@ title: "TCP Proxy"
 date: 2019-09-23T10:28:52+03:00
 description: Describe how you can use Tyk as a simple TCP Proxy
 tags: ["TCP Proxy", "TLS"]
-weight: 11
-menu:
-  main:
-    parent: "Key Concepts"
 ---
 
-### Using Tyk as a TCP Proxy
+## Using Tyk as a TCP Proxy
 
 Tyk can be used as a reverse proxy for your TCP services. It means that you can put Tyk not only on top of your APIs but on top of **any** network application, like databases, services using custom protocols etc.
 
-#### Set via your API
+### Set via your API
 
 To enable TCP proxying, set the `protocol` field either to `tcp` or `tls`. In the case of TLS, you can also specify a `certificate` field with a certificate ID or path to it.
 
@@ -32,7 +28,7 @@ The simplest TCP API definition looks like this:
 }
 ```
 
-#### Set via your Dashboard
+### Set via your Dashboard
 
 From the **API Designer > Core Settings** tab, select the appropriate protocol from the Protocol field drop-down list.
 
@@ -48,12 +44,12 @@ If Tyk sits behind another proxy, which has  the PROXY protocol enabled, you can
 
 As for features such as load balancing, service discovery, Mutual TLS (both authorization and communication with upstream), certificate pinning, etc. All work exactly the same way as for your HTTP APIs. 
 
-### Allowing specific ports
+## Allowing specific ports
 
 By default, you will not be able to run a service on a custom port, until you allow the required ports. 
 Since TCP services can be configured via the Dashboard, you should be careful who can create such services, and which ports they can use. Below is an example of allowing ports in `tyk.conf`:
 
-```
+```yaml
 {
   ...
   "ports_whitelist": {
@@ -81,7 +77,7 @@ As you can see, you can use either `ranges` or `ports` directives (or combine th
 You can also disable this behavior and allow any TCP port by setting `disable_ports_whitelist` to `true`.
 
 
-### Health checks
+## Health checks
 
 TCP health checks are configured the same way as HTTP ones.
 The main difference is that instead of specifying HTTP requests, you should specify a list of commands, which send data or expect some data in response. 
@@ -101,7 +97,7 @@ A simple health check which verifies only connectivity (e.g. if a port is open),
 }
 ```
 
-#### Complex example
+### Complex example
 
 Here is quite a complex example of using health checks, which shows a Redis Sentinel setup. In this configuration, we put a TCP proxy, e.g. Tyk, on top of two or more Redis nodes, and the role of the proxy will always direct the user to Redis master. To do that we will need to perform health checks against each Redis node, to detect if it is a master or not. In other words, Redis clients who communicate with Redis through the proxy will be always directed to the master, even in case of failover.
 

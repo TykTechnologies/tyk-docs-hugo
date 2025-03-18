@@ -7,7 +7,29 @@ menu:
 weight: 9 
 aliases:
   - /tyk-developer-portal/portal-events-notifications/
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< warning success >}}
+
+**Attention:**
+
+You’ve reached a page related to the *Tyk Classic Portal*. If you were searching for *API documentation of the new Tyk
+Developer Portal* please use the latest
+[Postman collection]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) page.
+</br>
+</br>
+**Future deprecation of Tyk Classic Portal**
+
+This product is no longer actively developed as it
+has been superseded by the new [Tyk Developer Portal]({{< ref "portal/overview" >}}).
+</br>
+Please note that the Tyk Classic Portal now has limited support and maintenance. Please contact us at
+[support@tyk.io](<mailto:support@tyk.io?subject=Tyk classic developer portal>)if you have any questions.
+
+{{< /warning >}}
 
 Tyk enables you to actively monitor both user and organization quotas. These active notifications are managed in the same way as webhooks and provides an easy way to notify your stakeholders, your own organization or the API end user when certain thresholds have been reached for their token.
 
@@ -17,7 +39,7 @@ Monitors are disabled by default in Tyk Cloud. Portal events are enabled and can
 
 ### How to Enable Monitors
 
-See [Monitors]({{< ref "basic-config-and-security/report-monitor-trigger-events/monitors" >}}) for details of how to configure quota consumption monitors.
+See [Monitors]({{< ref "api-management/gateway-events#monitoring-quota-consumption" >}}) for details of how to configure quota consumption monitors.
 
 ### Portal Events
 
@@ -33,7 +55,7 @@ The templates are available as text based or HTML. See the standard included one
 
 The Dashboard and Portal also support a certain level of events that you can use to notify your system of various things that have happened in the Portal.
 
-To configure them, add an `event_options` section to an Organization when you are creating them. See [Creating an Organization via the Dashboard Admin API]({{< ref "dashboard-admin-api/organisations#create-an-organization" >}}) for more details.
+To configure them, add an `event_options` section to an Organization when you are creating them. See [Creating an Organization via the Dashboard Admin API]({{< ref "api-management/dashboard-configuration#create-an-organization" >}}) for more details.
 
 Within this object, you can then register webhooks or/and an email address to notify when an event occurs:
 
