@@ -58,6 +58,350 @@ aliases:
 
 ---
 
+<b> *** TEMPORARY - RESTRUCTURE/MERGE *** </b>
+
+### Authentication with Tyk OAS
+
+OAS has the concept of `securitySchemes` which describes one way in which an API may be accessed, e.g. with a token. You can have multiple `securitySchemes` defined for an API. You decide which is actually active by declaring that in the security section. When hosting an API with Tyk, the only remaining question is which part of the flow does this security validation? If you do nothing more, then Tyk will pass the authentication to the upstream. However, if you do want Tyk to handle the authentication, then it is as simple as setting an authentication field in the `x-tyk-api-gateway` section of the Tyk OAS API Definition. 
+
+The OAS SecurityScheme Object accepts by default just 4 types: 
+- apiKey
+- http
+- oauth2
+- openIdConnect
+
+{{< note success >}}
+**Note**  
+
+The security section in the OAS API Definition can define a list of authentication mechanisms that the backend should use to authorize requests. For now, your Tyk Gateway will only take into consideration the first security item defined in the list. 
+{{< /note >}}
+
+Let’s go through the authentication mechanisms that Tyk supports and see how these can work together with OAS API Definition security schemes.
+
+#### Authentication Token
+
+When the `apiKey` securityScheme is configured in an OAS API Definition, this means that the authentication mechanism that can be configured in `x-tyk-api-gateway`, is an Authentication Token. 
+
+Since the location and token key name are documented in the OAS API Definition `securityScheme`, you only need to turn this authentication on at the Tyk level to tell Tyk to handle the authentication by setting `enabled` to `true`.
+
+Example:
+
+```yaml
+{
+...
+  securitySchemes: {
+    petstore_auth: {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  ...
+  },
+  security: [
+    {
+      "petstore_auth": []
+    }
+  ],
+  "x-tyk-api-gateway": {
+  ...
+  "server": {
+      "authentication": {
+        "securitySchemes": {
+          "petstore_auth": {
+            "enabled": true
+          }
+        }
+      }
+    }
+  }
+}
+```
+{{< note success >}}
+**Note**  
+
+OAS does not allow for an API to have both cookie and query parameter based token authentication at the same time. Since Tyk does allow this, we have allowed for this combination through the vendor specific fields. You can see how to do this next.
+{{< /note >}}
+
+#### Advanced Configuration
+
+##### Multiple locations for the authentication token
+
+With Tyk's configuration, API developers can tell the Tyk Gateway that the authentication token can be found in multiple locations. Since this is not possible with OAS, Tyk provides this capability within its vendor specific fields.
+
+Example:
+
+```yaml
+{
+...
+  securitySchemes: {
+    petstore_auth: {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  ...
+  },
+  security: [
+    {
+      "petstore_auth": []
+    }
+  ],
+  "x-tyk-api-gateway": {
+  ...
+  "server": {
+      "authentication": {
+        "securitySchemes": {
+          "petstore_auth": {
+            "enabled": true,
+            "query": {
+              "enabled": true,
+              "name": "query-key"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+In the above example, we can observe that, in `securitySchemes` the `header` location for the token is configured. In order to add another possible location for the token we can extend the Tyk configuration section.
+
+##### Dynamic Client mTLS
+
+Tyk can be configured to guess a user authentication key based on the provided client certificate. In other words, a user does not need to provide any key, except the certificate, and Tyk will be able to identify the user, apply policies, and do the monitoring - the same as with regular Tyk keys.
+
+The basic idea here is that you can create a key based on a provided certificate. You can then use this key or the cert for one or more users. For that user, you can enable the `enableClientCertificate` option.
+
+```yaml
+{
+  ...
+  "x-tyk-api-gateway": {
+  ...
+  "server": {
+      "authentication": {
+        "securitySchemes": {
+          "petstore_auth": {
+            "enabled": true,
+            "enableClientCertificate": true
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+#### Basic Authentication
+
+Having the `http` type as the `securityScheme` defined in OAS API Definition, with the schema field set to basic, means that the *Tyk Gateway* uses basic authentication as the protection mechanism. It expects an access key in the same way as any other access method. For more information see the [Basic Authentication documentation]({{< ref "api-management/client-authentication#use-basic-authentication" >}}).
+
+Example:
+
+```yaml
+{
+...
+securitySchemes: {
+  petstore_auth: {
+    "type": "http",
+    "scheme": "basic"
+  },
+  security: [
+    {
+      "petstore_auth": []
+    }
+  ],
+  "x-tyk-api-gateway": {
+  ...
+  "server": {
+    "authentication": {
+      "securitySchemes": {
+        "petstore_auth": {
+          "enabled": true,
+          "header": {
+            "enabled": true,
+            "name": "Authorization"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+#### Json Web Token (JWT)
+
+In order to configure a JWT authentication mechanism, the OAS API Definition `securitySchemes` section needs to define an `http` security type, but this time with a `bearer scheme` and with the `JWT bearerFormat`. On the Tyk configuration side, you just need to enable the authentication for the Tyk Gateway and specify the location where the token should be read from.
+
+Example:
+
+```yaml
+{
+...
+securitySchemes: {
+  petstore_auth: {
+    "type": "http",
+    "scheme": "bearer",
+    "bearerFormat": "JWT"
+  },
+  security: [
+    {
+      "petstore_auth": []
+    }
+  ],
+  "x-tyk-api-gateway": {
+  ...
+  "server": {
+    "authentication": {
+      "securitySchemes": {
+        "petstore_auth": {
+          "enabled": true,
+          "header": {
+            "enabled": true,
+            "name": "Authorization"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+All you need to do in the Tyk configuration is to enable the authentication and specify the header details.
+
+For more configuration options check the [JWT documentation]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}).
+
+#### OAuth
+
+The `oauth2` `securityScheme` type tells your Tyk Gateway to expect an API with the OAuth authentication method configured. The OAuth authorization mechanism needs to be enabled on the Tyk configuration side with a few details.
+
+Example:
+
+```yaml
+{
+  ...
+  securitySchemes: {
+    petstore_auth: {
+      "type": "oauth2",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://example.com/api/oauth/dialog",
+          "tokenUrl": "https://example.com/api/oauth/token",
+          "scopes": {
+            "write:pets": "modify pets in your account",
+            "read:pets": "read your pets"
+          }
+        }
+      }
+    }
+  },
+  security: [
+    {
+      "petstore_auth": []
+    }
+  ],
+  "x-tyk-api-gateway": {
+    ...
+    "server": {
+        "authentication": {
+          "securitySchemes": {
+            "petstore_auth": {
+              "enabled": true,
+              "header": {
+                "enabled": true,
+                "name": "Authorization"
+              },
+              "allowedAccessTypes": [
+                "authorization_code"
+              ],
+              "allowedAuthorizeTypes": [
+                "code"
+              ],
+              "authLoginRedirect": "https://example.com/api/oauth/dialog"
+            },
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+All you need to do in the Tyk configuration is to enable OAuth and specify the header details. See [OAuth documentation]({{< ref "api-management/client-authentication#use-tyk-as-an-oauth-20-authorization-server" >}}) for more details.
+
+#### Multiple Authentication mechanisms
+
+The `security` section in the OAS API Definition can define a list of security objects, and each security object can list a set of security schemes that the backend uses for authentication.
+
+Tyk only takes into consideration the first security object in the security list. If this object contains multiple security schemes, the Tyk Gateway understands to protect requests with all of these authentication mechanisms.
+
+Example:
+
+```yaml
+{
+  ...
+  securitySchemes: {
+    "auth-A": {...},
+    "auth-B": {...},
+    "auth-C": {...},
+    "auth-D": {...},
+  },
+  security: [
+    {
+      "auth-A": [],
+      "auth-C": []
+    },
+    {
+      "auth-B": []
+    },
+    {
+      "auth-D": []
+    }
+  ]
+}
+```
+For the above OAS configuration, Tyk looks at only the first `security` object:
+
+```yaml
+{      
+  "auth-A": [],       
+  "auth-C": []   
+ },
+ ```
+ These authentication mechanisms are then enabled for Tyk as follows:
+
+ ```yaml
+ {
+  ...
+  "x-tyk-api-gateway": {
+    ...
+    "server": {
+      "authentication": {
+        "enabled": true,
+        "baseIdentityProvider": "auth_token",
+        "securitySchemes": {
+          "auth-A": {
+            "enabled": true,
+            ...
+          },
+          "auth-C": {
+            "enabled": true,
+            ...
+          }
+        }
+      }
+    }
+  }
+}
+```
+Please observe the presence of the `baseIdentityProvider` field, as this is required when enabling multiple authentication mechanisms at the same time. See [Multiple Auth documentation]({{< ref "api-management/client-authentication#combine-authentication-methods" >}}) for more details.
+
+#### Automatically protecting Tyk OAS APIs
+
+All the Authentication mechanisms documented above can be automatically configured by Tyk at the time of import if the request is followed by the `authentication=true` query parameter. (Import task link)
+
+<b> *** END TEMPORARY - DELETE ABOVE THIS LINE *** </b>
+
+
 ## Introduction
 
 Tyk Gateway sits between your clients and your services, securely routing requests and responses. For each API proxy that you expose on Tyk, you can configure a range of different methods that clients must use to identify (authenticate) themselves to Tyk Gateway when making a request to access the API.
@@ -76,19 +420,11 @@ Whilst AuthN and AuthZ are separate actions with different standards, they are o
 
 The API request processing flow within Tyk Gateway consists of a [chain of middleware]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}) that perform different checks and transformations on the request (headers, parameters and payload). Several dedicated **authentication middleware** are provided and there is also support for user-provided **custom authentication plugins**. Multiple authentication middleware can be chained together if required by the API's access security needs. *Note that it is not possible to set the order of chained auth methods.*
 
-The OpenAPI description can contain a list of [securitySchemes](https://spec.openapis.org/oas/v3.0.3.html#security-scheme-object) which define the authentication methods to be used for the API; the detailed configuration of the Tyk authentication middleware is set in the [server.authentication]({{< ref "api-management/gateway-config-tyk-oas#authentication" >}}) section of the Tyk Vendor Extension.
+The middleware to be used is selected and configured using the API definition:
+- when using Tyk OAS APIs, the OpenAPI description can contain a list of `securitySchemes` which define the authentication methods to be used for the API; the detailed configuration of the Tyk authentication middleware is set in the in the `server.authentication` section of the `x-tyk-api-gateway` extension
+- when using Tyk Classic APIs, each authentication middleware has its own section within the API definition
 
-You must enable client authentication using the `server.authentication.enabled` flag and then configure the appropriate authentication method as indicated in the relevant section of this document. When creating a Tyk OAS API from an OpenAPI description, Tyk can automatically enable authentication based upon the content of the OpenAPI description as described [here]({{< ref "api-management/gateway-config-managing-oas#create-a-secured-api-when-importing-an-openapi-document" >}}).
-
-When using Tyk Classic APIs, each authentication middleware has its own fields within the API definition
-
-### Managing authorization data
-
-The data that the client provides with the API request used to authenticate with Tyk and confirm that it is authorized to access the API is often of no use to the upstream service and, depending on your security governance, may even be prohibited from being made available to the upstream.
-
-Tyk offers a simple option, separately configurable for each API to remove, or "strip", the authentication/authorization date from the incoming request before proxying to the upstream.
-
-This is controlled using the [server.authentication.stripAuthorizationData]({{< ref "api-management/gateway-config-tyk-oas#authentication" >}}) field in the Tyk Vendor Extension (Tyk Classic: `strip_auth_data`).
+For all authentication methods, Tyk provides an option to strip the authorization metadata (e.g. the `Authorization` header) from the request before proxying it to the upstream. This avoids the risk of accidentally exposing sensitive data to the upstream or conflicting with upstream authentication.
 
 ## What does Tyk Support?
 
@@ -143,7 +479,7 @@ Allow unrestricted access for public APIs.
 
 ## Use Tyk as an OAuth 2.0 Authorization Server
 
-Tyk can act as an OAuth 2.0 *authorization server*, performing token generation and management for *clients* accessing APIs deployed on Tyk. There are many great resources on the Internet that will help you to understand the OAuth 2.0 Authorization Framework, which we won't attempt to duplicate here. We will provide a basic introduction to the [concepts and terminology](#oauth-20-core-concepts) before we dive into the details of using Tyk as your *auth server*.
+Tyk can act as a OAuth 2.0 *authorization server*, performing token generation and management for *clients* accessing APIs deployed on Tyk. There are many great resources on the Internet that will help you to understand the OAuth 2.0 Authorization Framework, which we won't attempt to duplicate here. We have provided a basic introduction to the [concepts and terminology](#oauth-20-core-concepts) before we dive into the details of using Tyk as your *auth server*.
 
 Tyk offers some great features when used as the *authorization server* including:
 
@@ -511,7 +847,7 @@ When using Tyk as the Authorization Server, the API configuration can be applied
 
 #### Using the Tyk API Designer
 
-1. Client Authentication is configured on the **Settings** screen within the API Designer, within the **Server** section. Ensure that you are in **Edit** mode, click on the button to **Enable** *Authentication* and then select **Tyk OAuth 2.0** from the drop down options:
+1. Client Authentication is configured on the **Settings** screen within the Tyk OAS API Designer, within the **Server** section. Ensure that you are in **Edit** mode, click on the button to **Enable** *Authentication* and then select **Tyk OAuth 2.0** from the drop down options:
 
 {{< img src="/img/dashboard/system-management/oauth-auth-mode-new.png" alt="Set Authentication Mode" >}}
 
@@ -521,45 +857,20 @@ When using Tyk as the Authorization Server, the API configuration can be applied
 
 4. Select **Save API** to apply the new settings.
 
-#### Using the API Definition
+#### Using the Tyk OAS API Definition
 
-The OpenAPI Specification indicates the use of [OAuth 2.0 authentication](https://swagger.io/docs/specification/v3_0/authentication/oauth2/) in the `components.securitySchemes` object using the `type: oauth2`. Tyk supports the [authorizationCode]({{< ref "api-management/client-authentication#using-the-authorization-code-grant" >}}), [clientCredentials]({{< ref "api-management/client-authentication#using-the-client-credentials-grant" >}}) and [password]({{< ref "api-management/client-authentication#using-the-resource-owner-password-grant" >}}) flows and implements Relative Endpoint URLs for the `authorizationUrl`, `tokenUrl` and `refreshUrl`.
+The OpenAPI description can contain a list of `securitySchemes` which define the authentication methods available to be used for the API. This is described in detail [here](https://swagger.io/docs/specification/v3_0/authentication/oauth2/). Note that Tyk implements Relative Endpoint URLs, as described in that link, for the `authorizationUrl`, `tokenUrl` and `refreshUrl`. Remember to declare which of the defined `securitySchemes` and scopes are to be used by configuring the `security` fields in the OpenAPI description, note that Tyk only supports API level configuration of `security` not at the operation level.
 
-```yaml
-components:
-  securitySchemes:
-    myAuthScheme:
-      type: oauth2
-      flows:
-        authorizationCode:
-          authorizationUrl: ...
-          tokenUrl: ...
-          scopes: ...
+The Tyk specific configuration must be provided in the Tyk extension (`x-tyk-api-gateway`) within the Tyk OAS API definition by adding the `authentication` section within the `server` section.
 
-security:
-  - myAuthScheme: []
-```
+Set `server.authentication.enabled` to `true` to enable client authentication and add the `securitySchemes/oauth` section within `server.authentication`.
 
-With this configuration provided by the OpenAPI description, in the Tyk Vendor Extension we need to enable authentication, to select this security scheme and to indicate where Tyk should look for the OAuth token. Usually the token will be provided in the `Authorization` header, but Tyk is configurable, via the Tyk Vendor Extension, to support custom header keys and credential passing via query parameter or cooke.
-
-```yaml
-x-tyk-api-gateway:
-  server:
-    authentication:
-      enabled: true
-      securitySchemes:
-        myAuthScheme:
-          enabled: true
-          header:
-            enabled: true
-            name: Authorization
-```
-
-Note that URL query parameter keys and cookie names are case sensitive, whereas header names are case insensitive.
-
-You can optionally [strip the user credentials]({{< ref "api-management/client-authentication#managing-authorization-data" >}}) from the request prior to proxying to the upstream using the `authentication.stripAuthorizationData` field (Tyk Classic: `strip_auth_data`).
-
-With the OAuth method selected, you'll need to configure Tyk to handle the specific configuration of OAuth grants that you will support. All of the OAuth specific configuration is performed within the [authentication.securitySchemes.oauth]({{< ref "api-management/gateway-config-tyk-oas#oauth" >}}) object in the Tyk Vendor Extension.
+This has the following parameters:
+- `enabled` set this to `true` to enable client OAuth authentication
+- `allowedAuthorizeTypes` depending on the OAuth grant types to be supported: `code` or `token`
+- `authLoginRedirect` is the redirect URL to the *Identity Server* login page
+- `header`, `query` or `cookie` should be configured to indicate where the access token will be provided (once the client has successfully gained authorization to access the resource)
+- `refreshToken` set to `true` if Tyk should generate *refresh tokens*
 
 For example:
 
@@ -642,9 +953,6 @@ The *auth server* (Tyk) will issue an *access token* and *refresh token* in exch
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk and, with correctly configured and integrated *identity server* can be used to try out OAuth Client Authentication using Tyk as the Authorization Server.
 
-#### Using Tyk Classic APIs
-
-As noted in the Tyk Classic API [documentation]({{< ref "api-management/gateway-config-tyk-classic#configuring-authentication-for-tyk-classic-apis" >}}), you can select the Tyk as OAuth Server method using the `use_oauth2` option.
 
 ### Managing OAuth Tokens
 
@@ -773,80 +1081,16 @@ Remember to select **Save API** to apply these settings to your API.
 
 ##### Configuring Notifications in the Tyk OAS API Definition
 
-The example given [above]({{< ref "api-management/client-authentication#using-the-api-definition" >}}) includes the configuration necessary to issue notifications for token issuance (see lines 48-51 in the example).
+The example given [above](#using-the-tyk-oas-api-definition) includes the configuration necessary to issue notifications for token issuance (see lines 48-51 in the example).
+
+
+
 
 
 
 ## Use JSON Web Tokens (JWT)
 
 JSON Web Tokens (JWT) are a compact, URL-safe means of representing claims to be transferred between two parties. They are commonly used in API authentication and authorization.
-
-### Configuring your API to use JWT authentication
-
-The OpenAPI Specification treats JWT authentication as a variant of [bearer authentication](https://swagger.io/docs/specification/v3_0/authentication/bearer-authentication/) in the `components.securitySchemes` object using the `type: http`, `scheme: bearer` and `bearerFormat: jwt`:
-
-```yaml
-components:
-  securitySchemes:
-    myAuthScheme:
-      type: http
-      scheme: bearer
-      bearerFormat: jwt
-
-security:
-  - myAuthScheme: []
-```
-
-With this configuration provided by the OpenAPI description, in the Tyk Vendor Extension we need to enable authentication, to select this security scheme and to indicate where Tyk should look for the credentials. Usually the credentials will be provided in the `Authorization` header, but Tyk is configurable, via the Tyk Vendor Extension, to support custom header keys and credential passing via query parameter or cooke.
-
-```yaml
-x-tyk-api-gateway:
-  server:
-    authentication:
-      enabled: true
-      securitySchemes:
-        myAuthScheme:
-          enabled: true
-          header:
-            enabled: true
-            name: Authorization
-```
-
-Note that URL query parameter keys and cookie names are case sensitive, whereas header names are case insensitive.
-
-You can optionally [strip the user credentials]({{< ref "api-management/client-authentication#managing-authorization-data" >}}) from the request prior to proxying to the upstream using the `authentication.stripAuthorizationData` field (Tyk Classic: `strip_auth_data`).
-
-With the JWT method selected, you'll need to configure Tyk to handle the specific configuration of JSON Web Tokens that clients will be providing. All of the JWT specific configuration is performed within the [authentication.jwt]({{< ref "api-management/gateway-config-tyk-oas#jwt" >}}) object in the Tyk Vendor Extension.
-
-#### Multiple User Credential Locations
-
-The OpenAPI Specification's `securitySchemes` mechanism allows only one location for the user credentials, but in some scenarios an API might need to support multiple potential locations to support different clients.
-
-The Tyk Vendor Extension supports this by allowing configuration of alternative locations in the JWT entry in `server.authentication.securitySchemes`. Building on the previous example, we can add optional query and cookie locations as follows:
-
-```yaml
-x-tyk-api-gateway:
-  server:
-    authentication:
-      enabled: true
-      securitySchemes:
-        myAuthScheme:
-          enabled: true
-          header:
-            enabled: true
-            name: Authorization
-          query:
-            enabled: true
-            name: query-auth
-          cookie:
-            enabled: true
-            name: cookie-auth
-```
-
-#### Using Tyk Classic APIs
-
-As noted in the Tyk Classic API [documentation]({{< ref "api-management/gateway-config-tyk-classic#configuring-authentication-for-tyk-classic-apis" >}}), you can select JSON Web Token authentication using the `use_jwt` option.
-
 
 ### Protecting an API with JWT
 
@@ -860,8 +1104,8 @@ To protect an API with JWT, we need to execute the following steps:
 
 #### Set Authentication Mode
 
-1. [Select JSON Web Tokens]({{< ref "api-management/client-authentication#configuring-your-api-to-use-jwt-authentication" >}}) as the Authentication mode
-2. [Set the cryptographic signing method]({{< ref "api-management/client-authentication#set-up-jwt-signing-method" >}}) to `HMAC (shared)` and the public secret as `tyk123`
+1. Select JSON Web Tokens as the Authentication mode
+2. [Set the cryptographic signing method](#set-up-jwt-signing-method) to `HMAC (shared)` and the public secret as `tyk123`
 3. Set the Identity Source and Policy Field Name
 
 {{< img src="/img/api-management/security/jwt-hmac.png" alt="Target Details: JSON Web Token" >}}
@@ -1416,11 +1660,13 @@ View the diagram below for an overview of JWT flow in Tyk:
 
 ### Use Basic Authentication
 
-Basic Authentication is a straightforward authentication method where the user's credentials (username and password) are  sent to the server, usually in a standard HTTP header.
+Basic Authentication is a straightforward method where the user's credentials (username and password) are sent in an HTTP header encoded in Base64.
 
 #### How does Basic Authentication Work?
 
-The user credentials are combined and encoded in this form:
+An API request made using Basic Authentication will have an `Authorization` header that contains the API key.
+
+The value of the `Authorization` header will be in the form:
 
 ```
 Basic base64Encode(username:password)
@@ -1439,291 +1685,278 @@ In this example the username is `john@smith.com` and the password is `1234567` (
 
 ##### The Problem with Basic Authentication
 
-With Basic Authentication, the authentication credentials are transferred from client to server as encoded plain text. This is not a particularly secure way to transfer the credentials as it is highly susceptible to intercept; as the security of user authentication is usually of critical importance to API owners, Tyk recommends that Basic Authentication should only ever be used in conjunction with additional measures, such as [mTLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}).
+With Basic Authentication, the authentication credentials are transferred from client to server (in our case, the Tyk Gateway) as encoded plain text. This is not a particularly secure way to transfer the credentials as it is highly susceptible to intercept; as the security of user authentication is usually of critical importance to API owners, Tyk recommends that Basic Authentication should only ever be used in conjunction with a TLS such as SSL.
 
-#### Configuring your API to use Basic Authentication
+##### Protect your API with Basic Authentication
 
-The OpenAPI Specification indicates the use of [Basic Authentication](https://swagger.io/docs/specification/v3_0/authentication/basic-authentication/) in the `components.securitySchemes` object using the `type: http` and `scheme: basic`:
-
-```yaml
-components:
-  securitySchemes:
-    myAuthScheme:
-      type: http
-      scheme: basic
-
-security:
-  - myAuthScheme: []
-```
-
-With this configuration provided by the OpenAPI description, all that is left to be configured in the Tyk Vendor Extension is to enable authentication, to select this security scheme and to indicate where Tyk should look for the credentials. Usually the credentials will be provided in the `Authorization` header, but Tyk is configurable, via the Tyk Vendor Extension, to support custom header keys and credential passing via query parameter or cooke.
-
-```yaml
-x-tyk-api-gateway:
-  server:
-    authentication:
-      enabled: true
-      securitySchemes:
-        myAuthScheme:
-          enabled: true
-          header:
-            enabled: true
-            name: Authorization
-```
-
-Note that URL query parameter keys and cookie names are case sensitive, whereas header names are case insensitive.
-
-You can optionally [strip the user credentials]({{< ref "api-management/client-authentication#managing-authorization-data" >}}) from the request prior to proxying to the upstream using the `authentication.stripAuthorizationData` field (Tyk Classic: `strip_auth_data`).
-
-##### Multiple User Credential Locations
-
-The OpenAPI Specification's `securitySchemes` mechanism allows only one location for the user credentials, but in some scenarios an API might need to support multiple potential locations to support different clients.
-
-The Tyk Vendor Extension supports this by allowing configuration of alternative locations in the basic auth entry in `server.authentication.securitySchemes`. Building on the previous example, we can add optional query and cookie locations as follows:
-
-```yaml
-x-tyk-api-gateway:
-  server:
-    authentication:
-      enabled: true
-      securitySchemes:
-        myAuthScheme:
-          enabled: true
-          header:
-            enabled: true
-            name: Authorization
-          query:
-            enabled: true
-            name: query-auth
-          cookie:
-            enabled: true
-            name: cookie-auth
-```
-
-##### Extract Credentials from the Request Payload
-
-In some cases, for example when dealing with SOAP, user credentials can be passed within the request body rather in the standard Basic Authentication format. You can configure Tyk to handle this situation by extracting the username and password from the body using regular expression matching (regexps).
-
-You must instruct Tyk to check the request body by adding the `extractCredentialsFromBody` field to the basic auth entry in `server.authentication.securitySchemes`, for example:
-
-```yaml
-x-tyk-api-gateway:
-  server:
-    authentication:
-      enabled: true
-      securitySchemes:
-        myAuthScheme:
-          enabled: true
-        extractCredentialsFromBody:
-          enabled: true
-          userRegexp: '<User>(.*)</User>'
-          passwordRegexp: '<Password>(.*)</Password>'          
-```
-
-Note that each regexp should contain only one match group, which must point to the actual values of the user credentials.
-
-##### Caching User Credentials
-
-The default behaviour of Tyk's Basic Authentication middleware is to cache user credentials, improving the performance of the authentication step when a client makes frequent requests on behalf of the same user.
-
-When a request is received, it presents credentials which are checked against the users registered in Tyk. When a match occurs and the request is authorized, the matching credentials are stored in a cache with a configurable refresh period. When future requests are received, Tyk will check the presented credentials against those in the cache first, before checking the full list of registered users.
-
-The cache will refresh after `cacheTTL` seconds (Tyk Classic: `basic_auth.cache_ttl`).
-
-If you do not want to cache user credentials, you can turn this off using `disableCaching` in the basic auth entry in `server.authentication.securitySchemes` (Tyk Classic: `basic_auth.disable_caching`).
-
-##### Using Tyk Classic APIs
-
-As noted in the Tyk Classic API [documentation]({{< ref "api-management/gateway-config-tyk-classic#configuring-authentication-for-tyk-classic-apis" >}}), you can select Basic Authentication using the `use_basic_auth` option. This will default to expect the user credentials in the `Authorization` header.
+Authentication type is configured within your API Definition; this can be done via the [Tyk Dashboard](#enable-basic-authentication-using-the-tyk-dashboard) or directly within the [API Definition file](#enable-basic-authentication-in-your-file-based-api-definition).
 
 
-#### Using Tyk Dashboard to Configure Basic Authentication
+#### Enable Basic Auth
+##### Enable Basic Authentication using the Tyk Dashboard
 
-Using the Tyk Dashboard, you can configure the Basic Authentication method from the Server section in the API Designer by enabling **Authentication** and selecting **Basic Authentication** from the drop-down:
+1. Select your API from the **API Management > APIs** menu
+2. Scroll to the **Authentication** options
+3. Select **Basic Authentication** from the drop-down list
+4. Select **Strip Authorization Data** to strip any authorization data from your API requests.
+5. Tyk will by default assume you are using the `Authorization` header, but you can change this by setting the **Auth Key Header** name value
+6. You can select whether to use a URL query string parameter as well as a header, and what parameter to use. If this is left blank, it will use the **Auth Key Header** name value.
+7. You can select whether to use a **cookie value**. If this is left blank, it will use the Header name value.
 
 {{< img src="/img/api-management/security/basic-auth-api-setup.png" alt="Target Details: Basic Auth" >}}
 
-- select the location(s) where Tyk should look for the token
-- provide the key name for each location (we prefill the default `Authorization` for the *header* location, but you can replace this if required)
-- optionally select [strip authorization data]({{< ref "api-management/client-authentication#managing-authorization-data" >}}) to remove the auth token locations from the request prior to proxying to the upstream
-- optionally configure the [basic authentication cache]({{< ref "api-management/client-authentication#caching-user-credentials" >}})
-- optionally configure [extraction of credentials from the request body]({{< ref "api-management/client-authentication#extract-credentials-from-the-request-payload" >}})
+##### Enable Basic Authentication in your file-based API Definition 
 
-#### Registering Basic Authentication User Credentials with Tyk
+To enable Basic Authentication, the API Definition file needs to be set up to allow basic authentication rather than expecting a standard access token; this is achieved  by setting `use_basic_auth` to true:
 
-When using Basic Authentication, the API key used to access the API is not generated by the Tyk system, instead you need to create and register the credentials of your users with Tyk. Tyk will compare the credentials provided in the request against the list of users you have created.
+```{.copyWrapper}
+{
+  "name": "Tyk Test API",
+  ...
+  "use_basic_auth": true,
+  ...
+}
+```
 
-The way that this is implemented is through the creation of a key that grants access to the API (as you would for an API protected by [auth token]({{< ref "api-management/client-authentication#use-auth-tokens" >}})), however for this key you will provide a username and password.
+As you can see in the above example, enabling Basic Authentication is as simple as setting a flag for the feature in your API Definition object. Since Basic Authentication is a standard, Tyk will always look for the credentials as part of the `Authorization` header.
 
-When calling the API, users would never use the key itself as a token, instead their client must provide the Basic Auth credentials formed from the registered username and password, as [described previously]({{< ref "api-management/client-authentication#how-does-basic-authentication-work" >}}).
+##### Enable basic authentication using Tyk Operator
 
+Please consult the Tyk Operator supporting documentation for an example of how to [enable basic authentication]product-stack/tyk-operator/advanced-configurations/client-authentication#basic-authentication - ?does this exist? with Tyk Operator.
 
-##### Using Tyk Dashboard UI
+#### Create a Basic Authentication User
 
-You can use the Tyk Dashboard to register a user's Basic Authentication credentials that can then be used to access your API.
+When using Basic Authentication, the API key used to access the API is not generated by the Tyk system, instead you need to create at least one Basic Authentication user in the Tyk Gateway. Tyk will compare the Basic Authentication key provided in the request against the list of users you have created.
 
-Navigate to the **Keys** screen and select **Add Key**.
+##### Using Tyk Dashboard
 
-Follow the instructions in the [access key guide]({{< ref "api-management/gateway-config-managing-classic#access-an-api" >}}) and you'll notice that, when you select the Basic Auth protected API, a new **Authentication** tab appears:
+You can use the Tyk Dashboard to register a Basic Authentication key that can then be used to access your API. 
 
-Note that the **Authentication** tab will also be displayed if you create a key from a policy that grants access to a Basic Auth protected API.
+When you select the API, you can see that Basic Authentication settings are automatically displayed in the Authentication tab:
 
-Complete the user's credentials on this tab and create the key as normal. The key that is created in Tyk Dashboard is not in itself an access token (that is, it cannot be used directly to gain access to the API) but is used by Tyk to validate the credentials provided in the request and to determine the appropriate authorization, including expiry of authorization.
+{{< img src="/img/api-management/security/basic-auth-api-setup.png" alt="Basic Auth tab" >}}
 
-##### Using the Tyk Dashboard API
+Then add a username & password and save!
 
-You can register user credentials using the `POST /api/apis/keys/basic/{username}` endpoint in the [Tyk Dashboard API]({{< ref "tyk-dashboard-api" >}}). The request payload is a [Tyk Session Object]({{< ref "api-management/policies#what-is-a-session-object" >}}) (access key).
+Now you can curl the API in two different ways:
 
-- the user's *username* is provided as a path parameter
-- the user's *password* is provided as `basic_auth_data.password` within the request payload
+```
+$ curl http://localhost:8080/basicauth/get \
+  --header "Authorization: Basic $(echo -n 'myusername:mypassword' | base64)"
+<200 response>
 
-You use the `POST` method to create a new user and `PUT` to update an existing entry.
-
-{{< note success >}}
-**Note**  
-
-Be careful to ensure that the `org_id` is set correctly and consistently so that the Basic Authentication user is created in the correct organization.
-{{< /note >}}
+$ curl http://myusername:mypassword@localhost:8080/basicauth/get
+<200 response from upstream>
+```
+We have full tutorials to guide you to [create an API Key]({{< ref "api-management/gateway-config-managing-classic#access-an-api" >}}) via the Dashboard. 
 
 ##### Using the Tyk Gateway API
 
-You can register user credentials using the `POST /tyk/keys/{username}` endpoint in the [Tyk Dashboard API]({{< ref "tyk-dashboard-api" >}}). The request payload is a [Tyk Session Object]({{< ref "api-management/policies#what-is-a-session-object" >}}) (access key).
+This command creates a new basic authentication user in the Tyk Gateway with the user name `testuser` and password `mickey-mouse` by sending a `POST` command to the `/tyk/keys/` endpoint of Tyk Gateway API:
 
-- the user's *username* is provided as a path parameter
-- the user's *password* is provided as `basic_auth_data.password` within the request payload
-
-You use the `POST` method to create a new user and `PUT` to update an existing entry.
+```{.copyWrapper}
+curl -X POST -H "x-tyk-authorization: 352d20fe67be67f6340b4c0605b044c3" \
+ -s \
+ -H "Content-Type: application/json" \
+ -X POST \
+ -d '{
+    "allowance": 1000,
+    "rate": 1000,
+    "per": 1,
+    "expires": -1,
+    "quota_max": -1,
+    "org_id": "53ac07777cbb8c2d53000002",
+    "quota_renews": 1449051461,
+    "quota_remaining": -1,
+    "quota_renewal_rate": 60,
+    "access_rights": {
+        "{API-ID}": {
+            "api_id": "{API-ID}",
+            "api_name": "{API-NAME}",
+            "versions": ["Default"]
+        }
+    },
+    "meta_data": {},
+    "basic_auth_data": {
+        "password": "mickey-mouse"
+    }
+ }' http://{your-tyk-gateway-host}:{port}/tyk/keys/testuser | python -mjson.tool
+```
 
 {{< note success >}}
 **Note**  
 
+You use `POST` to create a new user and `PUT` to update an existing entry.
+
 Be careful to ensure that the `org_id` is set correctly and consistently so that the Basic Authentication user is created in the correct organization.
 {{< /note >}}
 
+##### Using the Tyk Dashboard API
+
+This command creates a new basic authentication user in the Tyk Gateway with the user name `testuser2` and password `minnie-mouse` by sending a `POST` command to the `/tyk/keys/` endpoint of Tyk Dashboard API:
+
+```{.copyWrapper}
+curl -X POST -H "Authorization: 907aed9f88514f175f1dccf8a921f741"
+ -s
+ -H "Content-Type: application/json"
+ -X POST
+ -d '{
+    "allowance": 1000,
+    "rate": 1000,
+    "per": 1,
+    "expires": -1,
+    "quota_max": -1,
+    "org_id": "53ac07777cbb8c2d53000002",
+    "quota_renews": 1449051461,
+    "quota_remaining": -1,
+    "quota_renewal_rate": 60,
+    "access_rights": {
+      "{API-ID}": {
+        "api_id": "{API-ID}", 
+        "api_name": "{API-NAME}", 
+        "versions": [
+            "Default"
+        ]
+      }
+    },
+    "meta_data": {},
+    "basic_auth_data": {
+      "password": "minnie-mouse"
+    }
+ }' http://{your-tyk-dashboard-host}:{port}/api/apis/keys/basic/testuser2 | python -mjson.tool
+```
+
+[See Basic Authentication via the Dashboard API]({{< ref "api-management/dashboard-configuration#basic-authentication-api" >}})
+
+{{< note success >}}
+**Note**  
+
+You use `POST` to create a new user and `PUT` to update an existing entry.
+
+Be careful to ensure that the `org_id` is set correctly and consistently so that the Basic Authentication user is created in the correct organization.
+{{< /note >}}
+
+#### Extract credentials from the request body
+
+In some cases, for example when dealing with SOAP, user credentials can be passed within the request body. To handle this situation, you can configure basic auth plugin to extract username and password from the body, by providing regexps like this:
+
+```{.copyWrapper}
+"basic_auth": {
+    "extract_from_body": true,
+    "body_user_regexp": "<User>(.*)</User>",
+    "body_password_regexp": "<Password>(.*)</Password>"
+}
+```
+
+Note that the regexp should contain only one match group, which points to the actual value.
 
 ### Use Auth Tokens
 
 > Any party in possession of an auth (or bearer) token (a "bearer") can use it to get access to the associated resources (without demonstrating possession of a cryptographic key). To prevent misuse, auth tokens need to be protected from disclosure in storage and in transport.
 
-Tyk provides auth (bearer) token access as one of the most convenient building blocks for managing security to your API. Tokens are added to a request as a header or as a query parameter. If added as a header, they may be preceded by the word "Bearer" to indicate their type, though this is optional. Usually these tokens are provided in the `Authorization` header, however Tyk can be configured to accept the token in a different header, as a query parameter or in a cookie.
+Tyk provides bearer token access as one of the most convenient building blocks for managing security to your API. In a Tyk setup, this is called "Access Tokens" and is the default mode of any API Definition created for Tyk.
 
-#### Configuring your API to use Auth Token
+Bearer tokens are added to a request as a header or as a query parameter. If added as a header, they may be preceded by the word "Bearer" to indicate their type, though this is optional.
 
-The OpenAPI Specification indicates the use of [Auth Token](https://swagger.io/docs/specification/v3_0/authentication/bearer-authentication/) in the `components.securitySchemes` object using `type: apiKey`. It also includes specification of the location (`in`) and key (`name`) that are to be used when providing the token to the API, for example:
+Traditionally these tokens are used as part of the `Authorization` header.
 
-```yaml
-components:
-  securitySchemes:
-    myAuthScheme:
-      type: apiKey
-      in: header
-      name: Authorization
-      
-security:
-  - myAuthScheme: []
+##### Enable auth (bearer) tokens in your API Definition with the Dashboard
+
+To enable the use of a bearer token in your API:
+
+1. Select your API from the **System Management > APIs** menu
+2. Scroll to the **Authentication** options
+3. Select **Authentication Token** from the drop-down list
+4. Select **Strip Authorization Data** to strip any authorization data from your API requests
+5. Tyk will by default assume you are using the `Authorization` header, but you can change this by setting the **Auth Key Header** name value
+6. You can select whether to use a URL query string parameter as well as a header, and what parameter to use. If this is left blank, it will use the **Auth Key Header** name value.
+7. You can select whether to use a **cookie value**. If this is left blank, it will use the Header name value.
+8. You can select to use a **client certificate**. This allows you to create dynamic keys based on certificates.
+
+{{< img src="/img/api-management/security/client-mtls-api-setup.png" alt="Target Details: Auth Token" >}}
+
+##### Enable auth (bearer) tokens in your API Definition with file-based
+
+Tyk will by default use the bearer token method to protect your API unless it is told otherwise.
+
+These tokens can be set as a *header, url parameter, or cookie name of a request*. A request for a resource at the API endpoint of `/api/widgets/12345` that uses access tokens will require the addition of a header field, traditionally this is the `Authorization` header.
+
+The name of the key can be defined as part of the API definition under the `auth` section of an API Definition file:
+
+```{.copyWrapper}
+"auth": {
+  "auth_header_name": "authorization",
+  "use_param": false,
+  "param_name": "",
+  "use_cookie": false,
+  "cookie_name": ""
+},
 ```
 
-With this configuration provided by the OpenAPI description, all that is left to be configured in the Tyk Vendor Extension is to enable authentication and to select this security scheme.
+To use URL query parameters instead of a header, set the `auth.use_param` setting in your API definition to `true`. 
 
-```yaml
-x-tyk-api-gateway:
-  server:
-    authentication:
-      enabled: true
-      securitySchemes:
-        myAuthScheme:
-          enabled: true
+{{< note success >}}
+**Note**  
+
+Unlike headers, URL query parameters are *case sensitive*.
+{{< /note >}}
+
+
+To use a cookie name instead of a header or request parameter, set the `use_cookie` parameter to `true`. Cookie names are also case sensitive.
+
+### Auth Token Signature Validation
+
+If you are migrating from platforms like Mashery, which use request signing, you can enable signature validation like this:
+
+```{.copyWrapper}
+...
+"auth": {
+  "validate_signature": true,
+  "signature": {
+    "algorithm": "MasherySHA256",
+    "header": "X-Signature",
+    "secret": "secret",
+    "allowed_clock_skew": 2
+  }
+}
+...
 ```
+`validate_signature`: boolean value to tell Tyk whether to enable signature validation or not
 
-Note that URL query parameter keys and cookie names are case sensitive, whereas header names are case insensitive.
+`signature.algorithm`: the algorithm you wish to validate the signature against. Currently supported
+ - `MasherySHA256`
+ - `MasheryMD5`
+ 
+ `signature.header`: header key of attempted signature
+ 
+ `signature.secret`: the shared secret which was used to sign the request
+ - Can hold a dynamic value, by referencing `$tyk_meta` or `$tyk_context` variables.
+ - Example: `"secret": "$tyk_meta.individual_secret"`. Which effectively means that you have created/imported the api key into Tyk, and have stored the shared secret in the field `individual_secret` of the session token's meta-data.
 
-You can optionally [strip the auth token]({{< ref "api-management/client-authentication#managing-authorization-data" >}}) from the request prior to proxying to the upstream using the `authentication.stripAuthorizationData` field  (Tyk Classic: `strip_auth_data`).
+`signature.allowed_clock_skew`: allowed deviation in seconds between UNIX timestamp of Tyk & UNIX timestamp used to generate the signed request
 
-#### Multiple Auth Token Locations
+**Custom tokens**
 
-The OpenAPI Specification's `securitySchemes` mechanism allows only one location for the auth token, but in some scenarios an API might need to support multiple potential locations to support different clients.
+It is possible to provide Tyk with your own custom tokens, this can be achieved using the Tyk Gateway REST API. This is very useful if you have your own identity provider and don't want Tyk to create and manage tokens for you, and instead just mirror those tokens within Tyk to off-load access control, quotas and rate limiting from your own application.
 
-The Tyk Vendor Extension supports this by allowing configuration of alternative locations in the auth token entry in `server.authentication.securitySchemes`. Building on the previous example, we can add optional query and cookie locations as follows:
+##### Enabling auth/bearer tokens with Tyk Operator
 
-```yaml
-x-tyk-api-gateway:
-  server:
-    authentication:
-      enabled: true
-      securitySchemes:
-        myAuthScheme:
-          enabled: true
-          query:
-            enabled: true
-            name: query-auth
-          cookie:
-            enabled: true
-            name: cookie-auth
-```
-
-#### Dynamic mTLS with Auth Token
-The Auth Token method can support [Dynamic mTLS]({{< ref "api-management/client-authentication#dynamic-mtls" >}}) where the client can provide a TLS certificate in lieu of a standard Auth Token. This can be configured for an API using the [enableClientCertificate]({{< ref "api-management/gateway-config-tyk-oas#token" >}})  option (Tyk Classic: `auth.use_certificate`).
-
-#### Auth Token with Signature
-
-If you are migrating from platforms like Mashery, which use request signing, you can enable signature validation alongside auth token by configuring the additional [signatureValidation]({{< ref "api-management/gateway-config-tyk-oas#token" >}}) field (Tyk Classic: `auth.signature`).
-
-You can configure:
-
-- the location of the signature
-- the algorithm used to create the signature (`MasherySHA256` or `MasheryMD5`)
-- secret used during signature
-- an allowable clock skew
-
-#### Using Custom Auth Tokens
-
-If you have your own identity provider you may want to use that to generate and manage the access tokens, rather than having Tyk generate the tokens. You can use the `POST /tyk/keys/{keyID}` endpoint in the [Tyk Gateway API]({{< ref "tyk-gateway-api" >}}) to import those tokens to Tyk, off-loading access control, quotas and rate limiting from your own application.
-
-#### Using Tyk Dashboard to Configure Auth Token
-
-Using the Tyk Dashboard, you can configure the Auth Token authentication method from the Server section in the API Designer by enabling **Authentication** and selecting **Auth Token** from the drop-down:
-
-{{< img src="/img/api-management/security/client-mtls-api-setup.png" alt="Configuring the Auth Token method" >}}
-
-- select the location(s) where Tyk should look for the token
-- provide the key name for each location (we prefill the default `Authorization` for the *header* location, but you can replace this if required)
-- select **Strip authorization data** to remove the auth token locations from the request prior to proxying to the upstream, as described [here]({{< ref "api-management/client-authentication#managing-authorization-data" >}})
-- optionally select **Enable client certificate** to enable [Dynamic mTLS]({{< ref "api-management/client-authentication#dynamic-mtls" >}}) for the API, so the client can provide a certificate in place of the token
-
-Note that the [auth token + signature]({{< ref "api-management/client-authentication#auth-token-with-signature" >}}) option is not available in the Tyk Dashboard API Designer.
-
-
-#### Using Tyk Classic APIs
-
-As noted in the Tyk Classic API [documentation]({{< ref "api-management/gateway-config-tyk-classic#configuring-authentication-for-tyk-classic-apis" >}}), a new Tyk Classic API will use the auth (bearer) token method by default with the token expected in the `Authorization` header, so configuration is slightly different as there is no need to `enable` this method. You should configure the `auth` object for any non-default settings, such as a different token location or Dynamic mTLS.
+Please consult the Tyk Operator supporting documentation for an example of how to [enable a bearer token]product-stack/tyk-operator/advanced-configurations/client-authentication#auth-token-bearer-token - Does this exist?? with Tyk Operator.
 
 
 
 ### Use Mutual TLS
 
-Mutual TLS (mTLS) is a robust security feature that ensures both the client and server authenticate each other using TLS certificates. This two-way authentication process provides enhanced security for API communications by cryptographically verifying the identity of both parties involved in the connection.
-
-In most cases when you try to access a secured HTTPS/TLS endpoint, you experience only the client-side check of the server certificate. The purpose of this check is to ensure that no fraud is involved and the data transfer between the client and server is encrypted. In fact, the TLS standard allows specifying the client certificate as well, so the server can accept connections only for clients with certificates registered with the server certificate authority, or provide additional security checks based on the information stored in the client certificate. This is what we call "Mutual TLS" - when both sides of the connection verify certificates. See the video below that gives you an introduction to mutual TLS and how it can be used to secure your APIs.
-
-{{< youtube-seo id="UzEzjon3IAo" title="Mutual TLS Intro">}}
+Mutual TLS (mTLS) is a robust security feature that ensures both the client and server authenticate each other using TLS certificates. This two-way authentication process provides enhanced security for API communications by verifying the identity of both parties involved in the connection.
 
 #### Why Use Mutual TLS?
 
 Mutual TLS is particularly valuable in environments where security is paramount, such as microservices architectures, financial services, healthcare, and any scenario requiring zero-trust security. It not only encrypts the data in transit but also ensures that the communicating parties are who they claim to be, mitigating the risks of unauthorized access and data breaches.
 
-* **Enhanced Security:** Provides two-way authentication, ensuring both the client and server are verified and trusted.
-* **Data Integrity:** Protects the data exchanged between client and server by encrypting it, preventing tampering or interception.
-* **Compliance:** Helps meet stringent security and compliance requirements, especially in regulated industries.
-
-#### Client mTLS for Tyk Cloud
-
-Tyk Cloud users cannot currently use mTLS to secure the client to Gateway communication for Tyk-hosted gateways.
+#### Concepts
 
 
-Tyk Hybrid users can, however, use mTLS with their self-hosted gateways.
-
-
-#### How Does Mutual TLS Work?
+##### How Does Mutual TLS Work?
 
 Mutual TLS operates by requiring both the client and server to present and verify TLS certificates during the handshake process. Here’s how it works:
 
@@ -1734,12 +1967,99 @@ Mutual TLS operates by requiring both the client and server to present and verif
 
 **Server Authentication:**
 
-1. Simultaneously, the server provides its own certificate to the client, which the client verifies against a trusted CA.
+1. Simultaneously, the client also verifies the server’s certificate against a trusted CA.
 
 This mutual verification ensures that both parties are legitimate, securing the connection from both ends.
 
-##### Client authorization with mTLS
-At the TLS level, authorization means only allowing access for clients who provide client certificates that are verified and trusted by the server. 
+##### Benefits of Mutual TLS
+
+* **Enhanced Security:** Provides two-way authentication, ensuring both the client and server are verified and trusted.
+* **Data Integrity:** Protects the data exchanged between client and server by encrypting it, preventing tampering or interception.
+* **Compliance:** Helps meet stringent security and compliance requirements, especially in regulated industries.
+
+
+##### What is Mutual TLS?
+
+{{< note success >}}
+**Note**  
+
+Mutual TLS is supported from Tyk Gateway 2.4, Tyk Dashboard 1.4 and MDCB 1.4
+{{< /note >}}
+
+
+Mutual TLS is a common security practice that uses client TLS certificates to provide an additional layer of protection, allowing to cryptographically verify the client information. 
+
+In most cases when you try to access a secured HTTPS/TLS endpoint, you experience only the client-side check of the server certificate. The purpose of this check is to ensure that no fraud is involved and the data transfer between the client and server is encrypted. In fact, the TLS standard allows specifying the client certificate as well, so the server can accept connections only for clients with certificates registered with the server certificate authority, or provide additional security checks based on the information stored in the client certificate. This is what we call "Mutual TLS" - when both sides of the connection verify certificates. See the video below that gives you an introduction to mutual TLS and how it can be used to secure your APIs.
+
+{{< youtube-seo id="UzEzjon3IAo" title="Mutual TLS Intro">}}
+
+##### Certificates 
+If you have had to configure an SSL server or SSH access, the following information below should be familiar to you. 
+
+Let's start with certificate definition. Here is what [Wikipedia](https://en.wikipedia.org/wiki/Public_key_certificate) says:
+
+> In cryptography, a public key certificate, also known as a digital certificate or identity certificate, is an electronic document used to prove the ownership of a public key. The certificate includes information about the key, information about the identity of its owner (called the subject), and the digital signature of an entity that has verified the certificate's contents (called the issuer). If the signature is valid, and the software examining the certificate trusts the issuer, then it can use that key to communicate securely with the certificate's subject.
+
+When it comes to authorization, it is enough for the server that has a public client certificate in its trusted certificate storage to trust it. However, if you need to send a request to the server protected by mutual TLS, or need to configure the TLS server itself, you also need to have a private key, used while generating the certificate, to sign the request.
+
+Using Tyk, you have two main certificate use cases:
+
+1. Certificates without public keys used for authorization and authentication
+2. Certificates with private keys used for upstream access, and server certificates (in other words when we need to sign and encrypt the request or 
+response).
+
+Before a certificate can be used by Tyk, it needs to be encoded into PEM format. If you are using an `openssl` command to generate certificates, it should use PEM by default. A nice bonus of the PEM format is that it allows having multiple entries inside the same file. So in cases where a certificate also requires a private key, you can just concatenate the two files together.
+
+##### Certificate Management 
+Tyk provides two options to manage certificates: plain files or certificate storage with a separate API.
+
+All configuration options, which require specifying certificates, support both plain file paths or certificate IDs. You are able to mix them up, and Tyk will automatically distinguish file names from certificate IDs.
+
+The Tyk Gateway and Dashboard Admin APIs provide endpoints to create, remove, list, and see information about certificates. For the Gateway, the endpoints are:
+
+* Create: `POST /tyk/certs` with PEM body. Returns `{"id": "<cert-id>", ... }`
+* Delete: `DELETE /tyk/certs/<cert-id>`
+* Get info: `GET /tyk/certs/<cert-id>`. Returns meta info about the certificate, something similar to: 
+```json
+{ 
+  "id": "<cert-id>",
+  "fingerprint": <fingerprint>,
+  "has_private_key": false, 
+  "issuer": <issuer>,
+  "subject": "<cn>", ... 
+}
+```
+* Get info about multiple certificates: `GET /tyk/certs/<cert-id1>,<cert-id2>,<cert-id3>`. 
+Returns array of meta info objects, similar to above.
+* List all certificate IDs: `GET /tyk/certs`. Returns something similar to:
+
+```json
+{ "certs": "<cert-id1>", "<cert-id2>", ...  }
+```
+
+The Dashboard Admin API is very similar, except for a few minor differences:
+
+* Endpoints start with `/api` instead of `/tyk`, e.g. `/api/certs`, `/api/certs/<cert-id>`, etc.
+* All certificates are managed in the context of the organization. In other words, certificates are not shared between organizations.
+
+Certificate storage uses a hex encoded certificate SHA256 fingerprint as its ID. When used with the Dashboard API, Tyk additionally appends the organization id to the certificate fingerprint. It means that certificate IDs are predictable, and you can check certificates by their IDs by manually 
+generating certificate SHA256 fingerprint using the following command:
+ 
+```{.copyWrapper}
+openssl x509 -noout -fingerprint -sha256 -inform pem -in <cert>.
+```
+
+You may notice that you can't get the raw certificate back, only its meta information. This is to ensure security. Certificates with private keys have special treatment and are encoded before storing. If a private key is found it will be encrypted with AES256 algorithm 3 using the `security.private_certificate_encoding_secret` secret, defined in `tyk.conf` file. Otherwise, the certificate will use the [secret]({{< ref "tyk-oss-gateway/configuration#secret" >}}) value in `tyk.conf`.
+
+###### MDCB 
+Mutual TLS configuration in an MDCB environment has specific requirements. An MDCB environment consists of a Control Plane and multiple Data Planes that, using MDCB, sync configuration. 
+The Control Plane and Data Plane deployments usually do not share any secrets; thus a certificate with private keys encoded with secret in the Control Plane will not be accessible to Data Plane gateways. 
+
+To solve this issue, you need to set `security.private_certificate_encoding_secret`  in the MDCB configuration file to the same value as specified in your management Gateway configuration file. By knowing the original secret, MDCB will be able to decode private keys, and 
+send them to client without password. Using a secure connection between Data Plane Gateways and MDCB is required in this case. See MDCB setup page for use_ssl usage.
+
+##### Authorization 
+At the TLS level, authorization means allowing only clients who provide client certificates that are verified and trusted by the server. 
 
 Tyk allows you to define a list of trusted certificates at the API level or Gateway (global) level. If you are updating API definition programmatically or via files, you need to set following the keys in your API 
 definition: 
@@ -1772,7 +2092,70 @@ Mutual TLS authentication does not require mutual TLS authorization to be turned
 
 If you want to use them both, just configure them separately. No additional knowledge is required.
 
-##### Dynamic vs Static mTLS
+##### Upstream mTLS 
+If your upstream API is protected with mutual TLS you can configure Tyk to send requests with the specified client certificate. You can specify one certificate per host and define a default certificate. 
+Upstream certificates can be defined on API definition level or global level in your Gateway configuration file. Specified client certificates will be used not only for internal Tyk calls but also for HTTP calls inside your JSVM middleware. 
+
+Inside your API definition you should set the `upstream_certificates` field to the following format:
+`{"example.com": "<cert-id>"}`. Defining on a global level looks the same, but should be specified via the `security.certificates.upstream` field in your Gateway configuration file.
+
+##### HTTP/HTTPS Protocol
+
+{{< warning success >}}
+**Note**  
+
+Do NOT include the protocol or Tyk will not match your certificates to the correct domain.
+{{< /warning >}}
+
+ For example: 
+ 
+ - **BAD** `https://api.production.myupstream.com` 
+ - **GOOD** `api.production.myupstream.com`. 
+ 
+ However, you need to include the port if the request is made via a non-standard HTTP port.
+
+##### Wild Cards
+To set a default client certificate, use `*` instead of domain name: `{"*": "<cert-id>"}`
+
+You may use wild cards in combination with text to match the domain, but it only works one level deep.
+
+Meaning, if your domain is `api.production.myupstream.com`
+
+the only wildcard value accepted would be `*.production.myupstream.com`.  The value `*.myupstream.com` will NOT work.
+
+**Setting through the Dashboard**
+
+
+To do the same via the Tyk Dashboard, go to the **API Designer** > **Advanced Options** panel > **Upstream certificates** section.
+
+{{< img src="/img/2.10/attach_upstream_cert.png" alt="upstream_cert" >}}
+
+{{< img src="/img/2.10/add_upstream_cert.png" alt="add_upstream_cert" >}}
+
+
+#### Tips and Tricks 
+You can create self-signed client and server certificates with this command:
+```{.copyWrapper}
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
+```
+
+For the server in `common name` specify a domain, or just pass `-subj "/CN=localhost"` to OpenSSL command. Then follow our [TLS and SSL Guide]({{< ref "api-management/certificates" >}}).
+
+To get certificate SHA256 fingerprint use the following command:
+```{.copyWrapper}
+openssl x509 -noout -fingerprint -sha256 -inform pem -in <cert>
+```
+If you are testing using cURL, your command will look like: 
+
+```{.copyWrapper}
+curl --cert client_cert.pem --key client_key.pem https://localhost:8181
+```
+
+#### mTLS for cloud users
+- Cloud users can secure their upstream services with mTLS but mTLS between the client (caller of the API) and Tyk's gateway cannot be done for the time being.
+- Multi cloud users - since you own and manage the gateways, you can use mTLS for gateway <--> upstream  as well as client <--> gateway connections.
+
+#### Client mTLS
 
 There are two ways to set up client mTLS in Tyk: static and dynamic. Each method is suited to different use cases, as outlined below:
 
@@ -1783,7 +2166,7 @@ There are two ways to set up client mTLS in Tyk: static and dynamic. Each method
 | Allow certs at the API level (one or more APIs per cert)           |   ✅    |   ❌      |
 | Allow certs at an individual level (one or more APIs per cert)     |   ❌    |   ✅      |
 
-#### Dynamic mTLS
+##### Dynamic Client mTLS
 
 Dynamic Client mTLS in Tyk allows you to authenticate users based solely on the provided client certificate, without the need for an additional authentication key. Tyk can identify the user, apply policies, and monitor usage just as with regular API keys.
 
@@ -1797,6 +2180,30 @@ To set up Dynamic Client mTLS, we need to follow these steps:
 * Make an API Request: Use curl with your certificate and key to make an API request to the protected API, ensuring the request returns a 200 response.
 
 * Allow Developers to Upload Certificates: Create a policy and catalog entry for the API, allowing developers to request keys and upload their public certificates through the Developer Portal. Developers can then make API requests using their cert and private key.
+
+##### Developer Portal - Self Serve Cert Trust
+
+Instead of manually creating keys, we can expose the Above API via the Developer Portal, where developers can add their own certs to use to access APIs.
+
+1. Create a policy for the API we set up above
+2. Create a catalog entry for this policy
+3. As a developer on the Portal, request a key for this API.  This will take us to this screen:
+
+{{< img src="/img/dashboard/system-management/portal_cert_request.png" alt="portal_cert_request" >}}
+
+Add your public cert (cert.pem from above) into here and hit "Request Key".  
+
+Now we can make an API request just using the pub + private key:
+
+```
+$ curl -k \
+       --cert cert.pem \
+       --key key.pem \
+       https://localhost:8080/mtls-api/my-endpoint
+
+<200 response>
+
+```
 
 
 ##### Protect the API
@@ -1841,10 +2248,6 @@ Instead of manually creating keys, you can allow developers to upload their own 
 1. **Create a Policy:** Create a policy for the API you set up earlier.
 2. **Create a Catalog Entry:** Create a catalog entry for this policy.
 3. **Request a Key through the Portal:** As a developer, request a key for the API through the Portal. This will present a screen where the developer can upload their public certificate.
-
-{{< img src="/img/dashboard/system-management/portal_cert_request.png" alt="portal_cert_request" >}}
-
-Add your public cert (cert.pem from above) into here and hit "Request Key".  
 
 4. **Make an API Request Using the Uploaded Certificate:** After adding the public certificate, developers can make API requests using their cert + private key:
 
@@ -1977,7 +2380,7 @@ spec:
 ```
 
 
-#### FAQ
+##### FAQ
 
 *   **Why am I getting an error stating that certificates are not enabled for this API?**
 
@@ -2000,15 +2403,226 @@ spec:
   **Note** 
   Root CA certificates are compatible only with Static mTLS and not with Dynamic mTLS.
 {{< /note >}}
+    
 
+#### Upstream mTLS
+
+If your upstream API is protected with mutual TLS (mTLS), you can configure Tyk to send requests with the specified client certificate. This ensures secure communication between Tyk and your upstream services.
+
+#### Key Features of Upstream mTLS
+
+*   **Certificate Per Host:** You can specify one certificate per host and define a default certificate.
+*   **API-Level or Global Configuration:** Upstream certificates can be defined at the API level or globally via the Gateway configuration file.
+*   **JSVM Middleware Support:** Specified client certificates will be used not only for internal Tyk calls but also for HTTP calls inside your JSVM middleware.
+
+#### How To Set Up Upstream mTLS
+
+To set up upstream mTLS in your API definition, you should configure the `upstream_certificates` field in the following format:
+
+```yaml
+{
+  "upstream_certificates": {
+    "example.com": "<cert-id>"
+  }
+}
+```
+
+If you want to configure this at a global level, specify it via the `security.certificates.upstream` field in your Gateway configuration file.
+
+#### Via Dashboard
+
+To configure upstream mTLS using the Tyk Dashboard:
+
+1.  Navigate to the API Designer.
+2.  Go to the Advanced Options panel.
+3.  Find the Upstream Certificates section and attach the appropriate certificate.
+
+    {{< img src="/img/2.10/attach_upstream_cert.png" alt="upstream_cert" >}}
+
+#### Via Tyk Operator using the Tyk Classic API Definition
+
+Tyk Operator supports configuring upstream mTLS using one of the following fields within the ApiDefinition object:
+
+- **upstream_certificate_refs**: Configure using certificates stored within Kubernetes secret objects.
+- **upstream_certificates**: Configure using certificates stored within Tyk Dashboard's certificate store.
+
+##### upstream_certificate_refs
+
+The `upstream_certificate_refs` field can be used to configure certificates for different domains. References can be held to multiple secrets which are used for the domain mentioned in the key. Currently "*" is used as a wildcard for all the domains
+
+The example listed below shows that the certificate in the secret, *my-test-tls*, is used for all domains.
+
+```yaml
+# First apply this manifest using the command
+# "kubectl apply -f config/samples/httpbin_upstream_cert.yaml"
+#
+# The operator will try to create the ApiDefinition and will succeed but will log an error that a certificate is missing
+# in the cluster for an upstream
+#
+# Generate your public-private key pair , for test you can use the following command to obtain one fast:
+# "openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out tls.crt -keyout tls.key"
+#
+# Run the following command to obtain the values that must be put inside the yaml that contians the secret resource:
+# "kubectl create secret tls my-test-tls --key="tls.key" --cert="tls.crt" -n default -o yaml --dry-run=client"
+#
+# Apply your TLS certificate using the following command: (we already have an example one in our repo)
+# "kubectl apply -f config/sample/simple_tls_secret.yaml"
+#
+# NOTE: the upstream_certificate_refs can hold references to multiple secrets which are used for the domain
+# mentioned in the key (currently "*" is used as a wildcard for all the domains)
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin
+spec:
+  name: httpbin
+  use_keyless: true
+  upstream_certificate_refs:
+    "*": my-test-tls
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+```
+
+A secret can be created and output in yaml format using the following command:
+
+```bash
+kubectl create secret tls my-test-tls --key="keyfile.key" --cert="certfile.crt" -n default -o yaml --dry-run=client
+kubectl apply -f path/to/your/tls_secret.yaml
+```
+
+##### upstream_certificates
+
+The `upstream_certificates` field allows certificates uploaded to the certificate store in Tyk Dashboard to be referenced in the Api Definition:
+
+```yaml
+# Skip the concatenation and .pem file creation if you already have a certificate in the correct format
+
+# First generate your public-private key pair , for test use you can use the following command to obtain one fast:
+# "openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out tls.crt -keyout tls.key"
+
+# Concatenate the above files to obtain a .pem file which we will upload using the dashboard UI
+# "cat tls.crt tls.key > cert.pem"
+
+# Upload it to the tyk certificate store using the dashboard
+
+# Fill in the manifest with the certificate id (the long hash) that you see is given to it in the dashboard
+# (in place of "INSERT UPLOADED CERTIFICATE NAME FROM DASHBOARD HERE")
+# Optional: Change the domain from "*" to something more specific if you need to use different
+# upstream certificates for different domains
+
+# Then apply this manifest using the command
+# "kubectl apply -f config/samples/httpbin_upstream_cert_manual.yaml"
+
+# The operator will try create the ApiDefinition and will succeed and it will have the requested domain upstream certificate
+# in the cluster for an upstream
+
+# NOTE: the upstream_certificate can hold multiple domain-certificateName pairs
+# (currently "*" is used as a wildcard for all the domains)
+
+apiVersion: tyk.tyk.io/v1alpha1
+kind: ApiDefinition
+metadata:
+  name: httpbin
+spec:
+  name: httpbin
+  use_keyless: true
+  upstream_certificates:
+    "*": #INSERT UPLOADED CERTIFICATE NAME FROM DASHBOARD HERE#
+  protocol: http
+  active: true
+  proxy:
+    target_url: http://httpbin.org
+    listen_path: /httpbin
+    strip_listen_path: true
+  version_data:
+    default_version: Default
+    not_versioned: true
+    versions:
+      Default:
+        name: Default
+```
+
+#### Via Tyk Operator using Tyk OAS API Definition{#tyk-operator-oas}
+Tyk Operator supports configuring upstream mTLS using the `mutualTLS` field in `TykOasApiDefinition` object:
+
+```yaml{hl_lines=["12-18"],linenos=false}
+apiVersion: tyk.tyk.io/v1alpha1
+ kind: TykOasApiDefinition
+ metadata:
+   name: petstore
+   namespace: default
+ spec:
+   tykOAS:
+     configmapRef:
+       name: petstore
+       namespace: default
+       keyName: petstore.json
+   mutualTLS:
+     enabled: true
+     domainToCertificateMapping:
+       - domain: "petstore.com"
+         certificateRef: petstore-domain
+       - domain: "petstore.co.uk"
+         certificateRef: petstore-uk-domain
+```
+
+
+
+#### Domain Configuration
+
+When specifying the domain for the upstream certificate, do **NOT** include the protocol (e.g., `https://`). Including the protocol will prevent Tyk from matching the certificates to the correct domain.
+
+**Incorrect:** `https://api.production.myupstream.com`
+
+**Correct:** `api.production.myupstream.com`
+
+If the request is made via a non-standard HTTP port, you need to include the port in the domain:
+
+**Correct:** `api.production.myupstream.com:8443`
+
+#### Wildcards
+
+You may use wildcards in combination with text to match the domain, but this only works one level deep.
+
+For example, if your domain is `api.production.myupstream.com`:
+
+**Correct:** `*.production.myupstream.com`
+
+**Incorrect:** `*.myupstream.com`
+
+#### Default Upstream Certificate
+
+To set a default client certificate, use `*` instead of a domain name:
+
+```yaml
+{
+  "upstream_certificates": {
+    "*": "<cert-id>"
+  }
+}
+```
+
+This configuration will apply the specified certificate to all upstream requests that do not match a more specific domain.
 
 ### Sign Requests with HMAC
+
+{{< note success >}} Note
+
+Tyk can interact with HMAC Signing in two ways. Firstly, as a client, we can validate the signature of incoming requests and map this to API access. You can also use Tyk to generate a header containing the signature of the request for use in upstream message integrity checks. For the upstream HMAC case please see [here]({{< ref "#upstream-hmac-request-signing" >}}) {{< /note >}}
 
 Hash-Based Message Authentication Code (HMAC) Signing is an access token method that adds another level of security by forcing the requesting client to also send along a signature that identifies the request temporally to ensure that the request is from the requesting user, using a secret key that is never broadcast over the wire.
 
 Tyk currently implements the latest draft of the [HMAC Request Signing standard](http://tools.ietf.org/html/draft-cavage-http-signatures-05).
-
-HMAC Signing is a good way to secure an API if message reliability is paramount, it goes without saying that all requests should go via TLS/SSL to ensure that MITM attacks can be minimized. There are many ways of managing HMAC, and because of the additional encryption processing overhead requests will be marginally slower than more standard access methods.
 
 An HMAC signature is essentially some additional data sent along with a request to identify the end-user using a hashed value, in our case we encode the 'date' header of a request, the algorithm would look like:
 
@@ -2022,7 +2636,7 @@ The full request header for an HMAC request uses the standard `Authorization` he
 Authorization: Signature keyId="hmac-key-1",algorithm="hmac-sha1",signature="Base64Encode(HMAC-SHA1(signing string))"
 ```
 
-Tyk supports the following HMAC algorithms: "hmac-sha1", "hmac-sha256", "hmac-sha384", "hmac-sha512”, and reads value from algorithm header. You can limit the allowed algorithms by setting the `hmac.allowedAlgorithms` (Tyk Classic: `hmac_allowed_algorithms`) field in API definition, like this: `"hmac_allowed_algorithms": ["hmac-sha256", "hmac-sha512"]`.
+Tyk supports the following HMAC algorithms: "hmac-sha1", "hmac-sha256", "hmac-sha384", "hmac-sha512”, and reads value from algorithm header. You can limit allowed algorithms by setting `hmac_allowed_algorithms` field in API definition, like this: `"hmac_allowed_algorithms": ["hmac-sha256", "hmac-sha512"]`.
 
 The date format for an encoded string is:
 
@@ -2032,9 +2646,7 @@ Mon, 02 Jan 2006 15:04:05 MST
 
 This is the standard for most browsers, but it is worth noting that requests will fail if they do not use the above format.
 
-#### Validating the signature of incoming requests
-
-When an HMAC-signed request comes into Tyk, the key is extracted from the `Authorization` header, and retrieved from Redis. If a key exists then Tyk will generate its own signature based on the request's "date" header, if this generated signature matches the signature in the `Authorization` header the request is passed.
+When an HMAC-signed request comes into Tyk, the key is extracted from the `Authorization` header, and retrieved from Redis. If the key exists then Tyk will generate its own signature based on the requests "date" header, if this generated signature matches the signature in the `Authorization` header the request is passed.
 
 ##### Supported headers
 
@@ -2091,57 +2703,96 @@ Older versions of some programming frameworks do not allow the Date header to be
 
 Tyk also implements the recommended clock-skew from the specification to prevent against replay attacks, a minimum lag of 300ms is allowed on either side of the date stamp, any more or less and the request will be rejected. This means that requesting machines need to be synchronised with NTP if possible.
 
-You can edit the length of the clock skew in the API Definition by setting the `hmac.allowedClockSkew` (Tyk Classic: `hmac_allowed_clock_skew`) value. This value will default to 0, which deactivates clock skew checks.
+You can edit the length of the clock skew in the API Definition by setting the `hmac_allowed_clock_skew` value in your API definition. This value will default to 0, which deactivates clock skew checks.
+
+##### Additional notes
+
+HMAC Signing is a good way to secure an API if message reliability is paramount, it goes without saying that all requests should go via TLS/SSL to ensure that MITM attacks can be minimized. There are many ways of managing HMAC, and because of the additional encryption processing overhead requests will be marginally slower than more standard access methods.
 
 #### Setting up HMAC using the Dashboard
 
 To enable the use of HMAC Signing in your API from the Dashboard:
 
-1. Scroll to the **Authentication** options
-2. Select **HMAC (Signed Authentication Key)** from the drop-down list
-3. Configure your **HMAC Request Signing** settings.
-4. Select **Strip Authorization Data** to strip any authorization data from your API requests.
-5. Select the location of the signature in the request.
+1. Select your API from the **System Management > APIs** menu
+2. Scroll to the **Authentication** options
+3. Select **HMAC (Signed Authetication Key)** from the drop-down list
+4. Configure your **HMAC Request Signing** settings.
+5. Select **Strip Authorization Data** to strip any authorization data from your API requests.
+6. Tyk will by default assume you are using the `Authorization` header, but you can change this by setting the **Auth Key Header** name value
+7. You can select whether to use a URL query string parameter as well as a header, and what parameter to use. If this is left blank, it will use the **Auth Key Header** name value.
+8. You can select whether to use a **cookie value**. If this is left blank, it will use the Header name value.
 
-{{< img src="/img/dashboard/api-designer/tyk-oas-hmac-auth-settings.png" alt="Configuring HMAC request signing" >}}
 
-#### Configuring your API to use HMAC Request Signing
+{{< img src="/img/2.10/hmac_auth_settings.png" alt="Target Details: HMAC" >}}
 
-HMAC request signing is configured within the Tyk Vendor Extension by adding the `hmac` object within the `server.authentication` section and enabling authentication.
 
-You must indicate where Tyk should look for the request signature (`header`, `query` or `cookie`) and which `algorithm` will be used to encrypt the secret to create the signature. You can also optionally configure a limit for the `allowedClockSkew` between the timestamp in the signature and the current time as measured by Tyk. 
+#### Setting up HMAC using an API Definition
 
-```yaml
-x-tyk-api-gateway:
-  server:
-    authentication:
-      enabled: true
-      hmac:
-        enabled: true
-        header:
-          enabled: true
-          name: Authorization
-        allowedAlgorithms:
-          - hmac-sha256
-        allowedClockSkew: -1
+To enable HMAC on your API, first you will need to set the API definition up to use the method, this is done in the API Definition file/object:
+
+```{.copyWrapper}
+{
+  "name": "Tyk Test API",
+  ...
+  "enable_signature_checking": true,
+  "use_basic_auth": false,
+  "use_keyless": false,
+  "use_oauth2": false,
+  "auth": {
+    "auth_header_name": ""
+  },
+  ...
+}
 ```
 
-Note that URL query parameter keys and cookie names are case sensitive, whereas header names are case insensitive.
+Ensure that the other methods are set to false.
 
-You can optionally [strip the auth token]({{< ref "api-management/client-authentication#managing-authorization-data" >}}) from the request prior to proxying to the upstream using the `authentication.stripAuthorizationData` field  (Tyk Classic: `strip_auth_data`).
+#### Setting up an HMAC Session Object
 
-##### Using Tyk Classic
+When creating a user session object, the settings should be modified to reflect that an HMAC secret needs to be generated alongside the key:
 
-As noted in the Tyk Classic API [documentation]({{< ref "api-management/gateway-config-tyk-classic#configuring-authentication-for-tyk-classic-apis" >}}), you can select HMAC Request Signing using the `enable_signature_checking` option. 
+```{.copyWrapper}
+{
+  ...
+  "hmac_enabled": true,
+  "hmac_string": "",
+  ...
+}
+```
 
-#### Registering an HMAC user with Tyk
+Creating HMAC keys is the same as creating regular access tokens - by using the Tyk Gateway API. Setting the `hmac_enabled` flag to `true`, Tyk will generate a secret key for the key owner (which should not be modified), but will be returned by the API so you can store and report it to your end-user.
 
-When using HMAC request signing, you need to provide Tyk with sufficient information to verify the client's identity from the signature in the request. You do this by creating and registering HMAC user [session objects]({{< ref "api-management/policies#what-is-a-session-object" >}}) with Tyk. When these are created, a matching HMAC secret is also generated, which must be used by the client when signing their requests.
 
-The way that this is implemented is through the creation of a key that grants access to the API (as you would for an API protected by [auth token]({{< ref "api-management/client-authentication#use-auth-tokens" >}})) and indicating that the key is to be used for HMAC signed requests by setting `hmac_enabled` to `true`. Tyk will return the HMAC secret in the response confirming creation of the key.
+#### Upstream HMAC request signing
 
-When calling the API, the client would never use the key itself as a token, instead they must sign requests using the provided secret.
+You can sign a request with HMAC, before sending to the upsteam target.
 
+This feature is implemented using [Draft 10](https://tools.ietf.org/html/draft-cavage-http-signatures-10) RFC.
+
+`(request-target)` and all the headers of the request will be used for generating signature string.
+If the request doesn't contain a `Date` header, middleware will add one as it is required according to above draft.
+
+A config option `request_signing` can be added in an API Definition to enable/disable the request signing. It has following format:
+
+```{.json}
+"request_signing": {
+  "is_enabled": true,
+  "secret": "xxxx",
+  "key_id": "1",
+  "algorithm": "hmac-sha256"
+}
+```
+
+The following algorithms are supported:
+
+1. `hmac-sha1`
+2. `hmac-sha256`
+3. `hmac-sha384`
+4. `hmac-sha512`
+
+<!-- To be added
+### Sign Requests with RSA
+-->
 
 ### Custom Authentication
 
@@ -2161,9 +2812,53 @@ Tyk allows for custom authentication logic using Python and JavaScript Virtual M
 
 Open or keyless authentication allows access to APIs without any authentication. This method is suitable for public APIs where access control is not required.
 
-Tyk OAS APIs are inherently "open" unless authentication is configured, however the older Tyk Classic API applies [auth token](#use-auth-tokens) protection by default.
+#### Configure the API as Open or Keyless in Tyk
 
-You can disable authentication for a Tyk Classic API by setting the `use_keyless` flag in the API definition.
+In Tyk, configure the API to not require any authentication for access.
+To implement keyless access, simply set the flag in your API Definition:
+
+```{.copyWrapper}
+{
+  ...
+  "use_keyless": true,
+  "auth": {
+      "auth_header_name": ""
+  },
+  ...
+}
+```
+This will stop checking keys that are proxied by Tyk.
+
+{{< note success >}}
+**Note**  
+
+Keyless APIs cannot be selected for [Access Rights]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}) in a security policy.
+{{< /note >}}
+
+#### Request a Public Resource
+
+Access the API directly without any authentication tokens or credentials.
+
+```bash
+curl -X GET \
+  https://api.example.com/public-resource
+```
+
+**Request:**
+
+| Parameter | Value                                  |
+| ---------- | ------------------------------------- |
+| **Method**  | `GET`                                   |
+| **URL**     | The API endpoint for the public resource. |
+
+
+**Request:**
+
+| Parameter       | Value                              |
+| --------------- | ---------------------------------- |
+| **Method**      | `GET`                                |
+| **URL**         | The API endpoint for the protected resource. |
+| **Authorization** | Bearer token, e.g., `Bearer ID_TOKEN`. |
 
 
 ### Integrate with External Authorization Server (deprecated)
@@ -2435,88 +3130,33 @@ The client application authenticates with the IdP which then provides an access 
 
 ## Combine Authentication Methods
 
-Tyk allows you to chain multiple authentication methods together so that each authentication must be successful for access to be granted to the API. For example, you can use an Access Token in combination with Basic Auth or with a JSON Web Token.
+As of Tyk v2.3, it is possible to have multiple authentication middleware chained together. For example, you can use an Access Token in combination with Basic Auth or with a JSON Web Token. Below is a video demonstration of this functionality:
 
-### Base Identity Provider
+{{< youtube-seo id="vYGYYXcJ6Wc" title="Protect an API with Multiple Authentication Types">}}
 
-When you configure Tyk to use multiple authentication methods, you must declare one to be the **base identity provider**. The [session object]({{< ref "api-management/policies#what-is-a-session-object" >}}) (access key/token) provided in that authentication step will be used by Tyk as the common "request context" and hence the source of truth for authorization (access control, rate limits and quotas).
+### Enable Multi (Chained) Authentication with the Dashboard
 
-You declare the base identity provider using the [server.authentication.baseIdentityProvider]({{< ref "api-management/gateway-config-tyk-oas#authentication" >}}) field in the Tyk Vendor Extension (Tyk Classic: `base_identity_provided_by`).
+To enable multi-chained authentication in your GUI, follow these steps:
 
+1.  Browse to the "Authentication" Section
 
-### Enable Multi (Chained) Authentication win the API Designer
+    First, navigate to the Endpoint Designer and view the "Core Settings" tab. In this section, you can choose various authentication methods. For this setup, you will configure multiple auth providers, which works slightly differently than setting up a single auth method.
 
-You can configure chained authentication using the Dashboard UI by following these steps:
+2.  Select the Multiple Auth Mechanisms Option
 
-1.  Enable **Authentication** in the **Servers** section
-
-2.  Select the **Multiple Authentication Mechanisms** option from the drop-down list.
+    Select the Use Multiple Auth Mechanisms option from the drop-down list. This will open a window that provides checkboxes for each supported auth type to be chained. Note that it is not possible to set the order of chained auth methods.
 
     {{< img src="/img/api-management/security/multiple-auth-choose-auth.png" alt="Select Multiple Auth" >}}
 
-3.  Select the **Authentication methods** you want to implement and identify the **Base identity provider**
+3.  Select Your Preferred Auth Methods and Base Identity Provider
+
+    Choose the authentication methods you want to chain together and select the base identity provider. The baseline provider will be the one that provides the current request context with the session object, defining the "true" access control list, rate limit, and quota to apply to the user.
 
     {{< img src="/img/api-management/security/multiple-auth-methods.png" alt="Select Auth Methods" >}}
 
-4.  You can now configure each of the individual authentication methods in the usual manner using the options in the API designer.
+    Once these are set up, you will see the traditional configuration screens for each of the auth methods selected in the checkboxes. Configure them as you would regular authentication modes.
 
-<!-- 18/3/25 removing this video as it's very old (Dashboard 1.9) and perhaps not as helpful as it could be
-{{< youtube-seo id="vYGYYXcJ6Wc" title="Protect an API with Multiple Authentication Types">}}
--->
-
-
-### Configuring multiple auth methods in the API definition
-
-The OpenAPI description can define multiple `securitySchemes` and then lists those to be used to protect the API in the `security` section. The OpenAPI Specification allows multiple entries in the `security` section of the API description, each of which can contain one or multiple schemes.
-
-Tyk only takes into consideration the first object in the `security` list. If this contains multiple schemes, then Tyk will implement these sequentially.
-
-In the following example, the OpenAPI description includes multiple security schemes and then defines three objects in the `security` list:
-
-```yaml
-{
-  ...
-  securitySchemes: {
-    "auth-A": {...},
-    "auth-B": {...},
-    "auth-C": {...},
-    "auth-D": {...},
-  },
-  security: [
-    {
-      "auth-A": [],
-      "auth-C": []
-    },
-    {
-      "auth-B": []
-    },
-    {
-      "auth-D": []
-    }
-  ]
-}
-```
-
-Tyk will consider only the first entry in the `security` list and so will implement the `auth-A` and `auth-B` schemes.
-
-In the Tyk Vendor Extension this would result in the following configuration:
-
-```yaml
-x-tyk-api-gateway:
-  server:
-    authentication:
-      enabled: true,
-      baseIdentityProvider: "auth-A"
-      securitySchemes:
-        auth-A:
-          enabled: true
-        auth-C:
-          enabled: true
-      ...
-```
-Note the presence of the `baseIdentityProvider` field which is required.
-
-### Using Tyk Classic APIs
+### Enable Multi (Chained) Authentication in Your API Definition
 
 To enable this mode, set the `base_identity_provided_by` field in your API Definitions to one of the supported chained enums below:
 
@@ -2530,7 +3170,11 @@ To enable this mode, set the `base_identity_provided_by` field in your API Defin
 
 The provider set here will then be the one that provides the session object that determines rate limits, ACL rules, and quotas.
 
-You must also configure the authentication methods to be used in the usual manner, as described in the relevant documentation. To ensure that auth token is implemented as part of the chained authentication, you must set `use_standard_auth` to `true`.
+Tyk will chain the auth mechanisms as they appear in the code and will default to an auth token if none are specified. You can explicitly set auth token support by setting `use_standard_auth` to `true`.
+
+### Enable Multi (Chained) Authentication with Tyk Operator
+
+Please consult the [Tyk Operator]/product-stack/tyk-operator/advanced-configurations/client-authentication#multiple-chained-auth - ??does this exist?? supporting documentation for an example of how to enable multi chained authentication with Tyk Operator.
 
 
 ## Set Physical Key Expiry and Deletion

@@ -141,57 +141,8 @@ Tyk Classic APIs *default to the auth token method* for authenticating requests.
 **Field: `use_keyless`**
 This will switch off all key checking and open the API definition up, some analytics will still be recorded, but rate-limiting, quotas and security policies will not be possible (there is no session to attach requests to). This is a good setting for checking if Tyk works and is proxying traffic correctly.
 
-**Field: `auth`**
-This object contains the basic configuration for the Auth (Bearer) Token method.
-
-**Field: `auth.auth_header_name`**
-The header name (key) where Tyk should look for the token.
-
-**Field: `auth.use_param`**
-Set this to true to instruct Tyk to expect the token in the URL parameter with key `auth.param_name`.
-
-**Field: `auth.param_name`**
-The name of the URL parameter key containing the auth token. Note that this is case sensitive.
-
-**Field: `auth.use_cookie`**
-Set this to true to instruct Tyk to expect the token in the URL parameter with key `auth.cookie_name`.
-
-**Field: `auth.cookie_name`**
-The name of the cookie containing the auth token. Note that this is case sensitive.
-
-**Field: `auth.use_certificate`**
-
-
-**Field: `auth.validate_signature`**
-Boolean value set to `true` to enable Auth Token Signature Validation
-
-**Field: `auth.signature`**
-Configuration for Auth Token Signature Validation
-
-**Field: `auth.signature.algorithm`**
-The algorithm you wish to validate the signature against. Options are:
-- `MasherySHA256`
-- `MasheryMD5`
- 
-**Field: `auth.signature.header`**
-Header key for attempted signature
-
-**Field: `auth.signature.secret`**
-The shared secret which was used to sign the request
-- this can hold a dynamic value, by referencing `$tyk_meta` or `$tyk_context` variables.
-- for example: if you have stored the shared secret in the field `individual_secret` of the session token's meta-data you would use the value `"secret": "$tyk_meta.individual_secret"`.
-
-**Field: `auth.signature.allowed_clock_skew`**
-Maximum permitted deviation in seconds between UNIX timestamp of Tyk & UNIX timestamp used to generate the signed request
-
 **Field: `use_basic_auth`**
 This method will enable basic auth as specified by the HTTP spec, an API with this flag set will request for a username and password and require a standard base64 Authentication header to be let through. 
-
-**Field: `basic_auth.disable_caching`**
-This disables the caching of basic authentication keys.
-
-**Field: `basic_auth.cache_ttl`**
-This is the refresh period for the basic authentication key cache (in seconds).
 
 **Field: `enable_signature_checking`**
 If this option is set to `true`, Tyk will implement the HMAC signing standard as proposed in the [HTTP Signatures Spec](https://web-payments.org/specs/ED/http-signatures/2014-02-01/#page-3). In particular the structure of the Authorization header and the encoding method need to be taken into account.
@@ -230,6 +181,9 @@ Posted data to your service will use this shared secret as an authorization head
 **Field: `notifications.oauth_on_keychange_url`**
 The URL that will be sent the updated information - the URL will be polled up to 3 times if there is a communications failure. On a `200 OK` response it stops.
 
+**Field: `strip_auth_data`**
+When set to `true`, auth related headers will be stripped from requests proxied through the gateway.
+
 **Field: `auth_configs`**
 This section allows definition of multiple chained authentication mechanisms that will be applied to requests to the API, with distinct authentication headers identified for the different auth modes.
 
@@ -243,19 +197,6 @@ For example:
   }
 }
 ```
-
-**Field: `base_identity_provided_by`**
-This enables multiple authentication and indicates which authentication method provides the session object that determines access control, rate limits and usage quotas.
-
-It should be set to one of the following:
-
-- `auth_token`
-- `hmac_key`
-- `basic_auth_user`
-- `jwt_claim`
-- `oidc_user`
-- `oauth_key`
-- `custom_auth`
 
 **Field: `enable_jwt`**
 Set JWT as the authentication method for this API.
@@ -557,32 +498,6 @@ Boolean flag to control at the API definition whether it is possible to use self
 
 **Field: `proxy.transport.ssl_force_common_name_check`**
 Use this setting to force the validation of a hostname against the certificate Common Name.
-
-### Upstream Authentication
-
-**Field: `strip_auth_data`**
-When set to `true`, auth related headers will be stripped from requests proxied through the gateway.
-
-**Field: `request_signing`**
-Configuration for Upstream Request Signing using HMAC or RSA algorithms.
-
-**Field: `request_signing.secret`**
-The secret used for signing (not shared with the upstream).
-
-**Field: `request_signing.key_id`**
-An identifier allocated by the upstream used to identify Tyk as the requesting client.
-
-**Field: `request_signing.algorithm`**
-The signing algorithm to be used - one from `hmac-sha1`, `hmac-sha256`, `hmac-sha384`, `hmac-sha512`, `hmac-rsa256`
-
-**Field: `request_signing.header_list`**
-A list of headers to be included in the signature calculation.
-
-**Field: `request_signing.certificate_id`**
-The certificate ID used in the RSA signing operation.
-
-**Field: `request_signing.signature_header`**
-The HTTP header to be used to pass the signature to the upstream.
 
 ### Uptime Tests
 
