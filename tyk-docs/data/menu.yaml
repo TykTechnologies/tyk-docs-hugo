@@ -81,12 +81,7 @@ menu:
             path: /tyk-self-managed
             category: Page
             show: True
-<<<<<<< HEAD
       - title: "Client Authentication"
-        path: /api-management/client-authentication
-        category: Page
-=======
-      - title: "Authentication and Authorization"
         category: Directory
 >>>>>>> ad7d7ff28 ([DX-1888] Split Pages and add H1 Headings (#6093))
         show: True
@@ -372,11 +367,6 @@ menu:
             path: /tyk-oss-gateway
             category: Page
             show: False
-          - title: "Key concepts"
-            category: Directory
-            show: True
-            menu:
-
           - title: "API access control"
             category: Directory
             show: False

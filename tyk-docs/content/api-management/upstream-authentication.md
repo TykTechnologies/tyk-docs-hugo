@@ -511,7 +511,11 @@ The following algorithms are supported:
 | HMAC SHA256       | `hmac-sha256`                         |
 | HMAC SHA384       | `hmac-sha384`                         |
 | HMAC SHA512       | `hmac-sha512`                         |
+<<<<<<< HEAD
 | RSA SHA256        | `rsa-sha256`                          |
+=======
+| RSA SHA256        | `hmac-sha256`                         |
+>>>>>>> 1a01efc27 (Update auth for 5.8)
 
 This feature is implemented using [Draft 10](https://tools.ietf.org/html/draft-cavage-http-signatures-10) RFC. The signatures generated according to this standard are temporal - that is, they include a time stamp. If there is no `Date` header in the request that is to be proxied to the upstream, Tyk will add one.
 

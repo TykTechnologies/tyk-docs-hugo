@@ -15,7 +15,74 @@ aliases:
 
 JSON Web Tokens (JWT) are a compact, URL-safe means of representing claims to be transferred between two parties. They are commonly used in API authentication and authorization.
 
-## Protecting an API with JWT
+### Configuring your API to use JWT authentication
+
+The OpenAPI Specification treats JWT authentication as a variant of [bearer authentication](https://swagger.io/docs/specification/v3_0/authentication/bearer-authentication/) in the `components.securitySchemes` object using the `type: http`, `scheme: bearer` and `bearerFormat: jwt`:
+
+```yaml
+components:
+  securitySchemes:
+    myAuthScheme:
+      type: http
+      scheme: bearer
+      bearerFormat: jwt
+
+security:
+  - myAuthScheme: []
+```
+
+With this configuration provided by the OpenAPI description, in the Tyk Vendor Extension we need to enable authentication, to select this security scheme and to indicate where Tyk should look for the credentials. Usually the credentials will be provided in the `Authorization` header, but Tyk is configurable, via the Tyk Vendor Extension, to support custom header keys and credential passing via query parameter or cooke.
+
+```yaml
+x-tyk-api-gateway:
+  server:
+    authentication:
+      enabled: true
+      securitySchemes:
+        myAuthScheme:
+          enabled: true
+          header:
+            enabled: true
+            name: Authorization
+```
+
+Note that URL query parameter keys and cookie names are case sensitive, whereas header names are case insensitive.
+
+You can optionally [strip the user credentials]({{< ref "api-management/client-authentication#managing-authorization-data" >}}) from the request prior to proxying to the upstream using the `authentication.stripAuthorizationData` field (Tyk Classic: `strip_auth_data`).
+
+With the JWT method selected, you'll need to configure Tyk to handle the specific configuration of JSON Web Tokens that clients will be providing. All of the JWT specific configuration is performed within the [authentication.jwt]({{< ref "api-management/gateway-config-tyk-oas#jwt" >}}) object in the Tyk Vendor Extension.
+
+#### Multiple User Credential Locations
+
+The OpenAPI Specification's `securitySchemes` mechanism allows only one location for the user credentials, but in some scenarios an API might need to support multiple potential locations to support different clients.
+
+The Tyk Vendor Extension supports this by allowing configuration of alternative locations in the JWT entry in `server.authentication.securitySchemes`. Building on the previous example, we can add optional query and cookie locations as follows:
+
+```yaml
+x-tyk-api-gateway:
+  server:
+    authentication:
+      enabled: true
+      securitySchemes:
+        myAuthScheme:
+          enabled: true
+          header:
+            enabled: true
+            name: Authorization
+          query:
+            enabled: true
+            name: query-auth
+          cookie:
+            enabled: true
+            name: cookie-auth
+```
+
+#### Using Tyk Classic APIs
+
+As noted in the Tyk Classic API [documentation]({{< ref "api-management/gateway-config-tyk-classic#configuring-authentication-for-tyk-classic-apis" >}}), you can select JSON Web Token authentication using the `use_jwt` option.
+
+
+### Protecting an API with JWT
 
 To protect an API with JWT, we need to execute the following steps:
 * Set Authentication Mode
@@ -25,21 +92,21 @@ To protect an API with JWT, we need to execute the following steps:
 * Generate a JWT
 
 
-### Set Authentication Mode
+#### Set Authentication Mode
 
-1. Select JSON Web Tokens as the Authentication mode
-2. [Set the cryptographic signing method](#set-up-jwt-signing-method) to `HMAC (shared)` and the public secret as `tyk123`
+1. [Select JSON Web Tokens]({{< ref "api-management/client-authentication#configuring-your-api-to-use-jwt-authentication" >}}) as the Authentication mode
+2. [Set the cryptographic signing method]({{< ref "api-management/client-authentication#set-up-jwt-signing-method" >}}) to `HMAC (shared)` and the public secret as `tyk123`
 3. Set the Identity Source and Policy Field Name
 
 {{< img src="/img/api-management/security/jwt-hmac.png" alt="Target Details: JSON Web Token" >}}
 
-### Set a Default Policy
+#### Set a Default Policy
 
 If Tyk cannot find a `pol` claim, it will apply this Default Policy. Select a policy that gives access to this API we are protecting, or [go create one first]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}) if it doesn't exist.
 
 Make sure to save the changes to the API Definition.
 
-### Generate a JWT
+#### Generate a JWT
 
 Let's generate a JWT so we can test our new protected API.
 
@@ -54,7 +121,7 @@ $ curl http://localhost:8080/my-jwt-api/get \
 --header "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.7u0ls1snw4tPEzd0JTFaf19oXoOvQYtowiHEAZnan74"
 ```
 
-## Use the JWT
+### Use the JWT
 
 The client includes the JWT in the Authorization header when making requests to the API.
 
@@ -72,18 +139,18 @@ curl -X GET \
 | **URL**         | The API endpoint for the protected resource.           |
 | **Authorization** | Bearer token, e.g., `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...`. |
 
-## JWT and Auth0 with Tyk
+### JWT and Auth0 with Tyk
 
 This will walk you through securing your APIs with JWTs via Auth0. We also have the following video that will walk you through the process.
 
 {{< youtube-seo id="jm4V7XzbrZw" title="Protect Your APIs with Auth0 JWT and Tyk">}}
 
-### Prerequisites
+#### Prerequisites
 
 * A free account with Auth0
 * A Tyk Self-Managed or Cloud installation
 
-### Create an Application in Auth0
+#### Create an Application in Auth0
 
 1. Log in to your Auth0 account.
 2. Select APIs from the Applications menu.
@@ -126,7 +193,7 @@ This will walk you through securing your APIs with JWTs via Auth0. We also have 
 
 
 
-### Create your API in Tyk
+#### Create your API in Tyk
 
 1. Log in to your Tyk Dashboard
 2. Create a new HTTP API (the default http://httpbin.org upstream URL is fine)
@@ -174,16 +241,16 @@ curl -X GET {API URL}  -H "Accept: application/json" -H "Authorization: Bearer {
 ```
 
 
-## JWT and Keycloak with Tyk
+### JWT and Keycloak with Tyk
 
 This guide will walk you through securing your APIs with JWTs via Keycloak.
 
-### Prerequisites
+#### Prerequisites
 
 * A Keycloak installation
 * A Tyk Self-Managed or Cloud installation
 
-### Create an Application in Keycloak
+#### Create an Application in Keycloak
 
 1. Access your Keycloak admin dashboard.
 2. Navigate to the Administration console.
@@ -259,12 +326,12 @@ This guide will walk you through securing your APIs with JWTs via Keycloak.
     }
     ```
 
-### Running in k8s
+#### Running in k8s
 
 If you are looking to POC this functionality in Kubernetes, you can run a fully worked-out example using our tyk-k8s-demo library. You can read more [here]({{< ref "tyk-self-managed#kubernetes-demo" >}}).
 
 
-## Create Your JWT API in Tyk
+### Create Your JWT API in Tyk
 
 1. Log in to your Tyk Dashboard.
 2. Create a new HTTP API (the default `http://httpbin.org` upstream URL is fine).
@@ -309,23 +376,23 @@ If you are looking to POC this functionality in Kubernetes, you can run a fully 
 
 
 
-## Split Token
+### Split Token
 
 OAuth2, OIDC, and their foundation, JWT, have been industry standards for many years and continue to evolve, particularly with the iterative improvements in the OAuth RFC, aligning with FHIR and Open Banking principles. The OAuth flow remains a dominant approach for secure API access.
 
 In the OAuth flow, two types of access tokens are commonly used: opaque and JWT (more precisely, JWS). However, the use of JWTs has sparked debates regarding security, as JWTs can leak information when base64 decoded. While some argue that JWTs should not contain sensitive information, others consider JWTs inherently insecure for authorization.
 
-### Introduction to Split Token Flow
+#### Introduction to Split Token Flow
 
 JWT Access Tokens can carry sensitive information, making them vulnerable if compromised. The Split Token Flow offers a solution by storing only the JWT signature on the client side while keeping the header and payload on the server side. This approach combines the flexibility of JWTs with the security of opaque tokens, ensuring that sensitive data is not exposed.
 
-### How Tyk Implements Split Token Flow
+#### How Tyk Implements Split Token Flow
 
 Tyk API Gateway is well-positioned to broker the communication between the client and the authorization server. It can handle requests for new access tokens, split the JWT, and return only the signature to the client, storing the rest of the token internally.
 
 Here’s how you can implement the Split Token Flow using the client credentials flow:
 
-### Request a JWT Access Token
+#### Request a JWT Access Token
 
 ```bash
 $ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" \
@@ -337,7 +404,7 @@ https://keycloak-host/auth/realms/tyk/protocol/openid-connect/token \
 
 This request returns a JWT access token.
 
-#### Split the JWT
+##### Split the JWT
 
 The JWT consists of three parts:
 
@@ -349,7 +416,7 @@ Using the Split Token Flow, only the signature is returned to the client, while 
 
 {{< img src="/img/2.10/split_token2.png" alt="Split Token Example" >}}
 
-#### Create a Virtual Endpoint in Tyk
+##### Create a Virtual Endpoint in Tyk
 
 Create a virtual endpoint or API in Tyk to handle the token request. This endpoint receives the auth request, exchanges credentials with the authorization server, and returns the split token.
 
@@ -426,11 +493,11 @@ This request uses the opaque token, which Tyk validates and then injects the ful
 
 
 
-## Configure your JWT Setup
+### Configure your JWT Setup
 Learn how to configure and manage JWT authentication in your Tyk API Gateway.
 
 
-### Set Up JWT Signing Method
+#### Set Up JWT Signing Method
 Select the cryptographic method to verify JWT signatures from the following options:
 
 - RSA public key
@@ -448,7 +515,7 @@ openssl genrsa -out key.rsa
 openssl rsa -in key.rsa -pubout > key.rsa.pub
 ```
 
-### RSA Supported Algorithms
+#### RSA Supported Algorithms
 
 Both RSA & PSA classes of RSA algorithms are supported by Tyk, including:
 - RS256
@@ -462,7 +529,7 @@ Read more about the differences between RSA & PSA classes of RSA algorithms [her
 
 To use either - simply select the "RSA" signing method in the Dashboard, and Tyk will use the appropriate algorithm based on the key you provide.
 
-### Set Up Individual JWT Secrets
+#### Set Up Individual JWT Secrets
 Enable Tyk to validate an inbound token using stored keys:
 
 1. Set up your token with the following fields:
@@ -477,14 +544,14 @@ Enable Tyk to validate an inbound token using stored keys:
 The advantage of using RSA is that only the hashed ID and public key of the end user are stored, ensuring high security.
 
 
-### Configure Identity Source and Policy Field Name
+#### Configure Identity Source and Policy Field Name
 Define the identity and policy applied to the JWT:
 
 - **Identity Source**: Select which identity claim to use (e.g., `sub`) for rate-limiting and quota counting.
 - **Policy Field Name**: Add a policy ID claim to the JWT that applies a specific security policy to the session.
 
 
-### Enable Dynamic Public Key Rotation Using JWKs
+#### Enable Dynamic Public Key Rotation Using JWKs
 Instead of a static public key, configure a public JSON Web Key Sets (JWKs) URL to dynamically verify JWT tokens:
 
 1. Use the JWKs URL to dynamically maintain and rotate active public keys.
@@ -533,18 +600,14 @@ The auth (bearer) tokens will be signed by the private key of the issuer, which 
 All of this happens automatically.  You just need to specify to Tyk what the JWKs url is, and then apply a "sub" and default policy in order for everything to work.  See Step #3, 4, and 5 under option #1 for explanations and examples.
 
 
+#### Adjust JWT Clock Skew Configuration
+Due to the nature of distributed systems it is expected that despite best efforts you can end up in a situation with clock skew between the issuing party (An OpenID/OAuth provider) and the validating party (Tyk).  
 
-### Adjust JWT Clock Skew Configuration
-Prevent token rejection due to clock skew between servers by configuring clock skew values:
+This means that in certain circumstances Tyk would reject requests to an API endpoint secured with JWT with the "Token is not valid yet" error . This occurs due to the clock on the Tyk server being behind the clock on the Identity Provider server even with all servers ntp sync'd from the same ntp server.
 
-- `jwt_issued_at_validation_skew`
-- `jwt_expires_at_validation_skew`
-- `jwt_not_before_validation_skew`
+You can configure maximum permissable skew on three claims (`IssueAt`, `ExpireAt` and `NotBefore`) in the API definition.
 
-All values are in seconds. The default is `0`.
-
-
-### Map JWT Scopes to Policies
+#### Map JWT Scopes to Policies
 Assign JWT scopes to security policies to control access:
 
 1. Specify scope-to-policy mapping:
@@ -576,7 +639,7 @@ Assign JWT scopes to security policies to control access:
 Several scopes in JWT claim will lead to have several policies applied to a key. In this case all policies should have `"per_api"` set to `true` and shouldn't have the same `API ID` in access rights. I.e. if claim with scopes contains value `"admin developer"` then two policies `"59672779fa4387000129507d"` and `"53222349fa4387004324324e"` will be applied to a key (with using our example config above).
 {{< /note >}}
 
-### Visualize JWT Flow in Tyk API Gateway
+#### Visualize JWT Flow in Tyk API Gateway
 View the diagram below for an overview of JWT flow in Tyk:
 
 {{< img src="/img/diagrams/diagram_docs_JSON-web-tokens@2x.png" alt="JSON Web Tokens Flow" >}}

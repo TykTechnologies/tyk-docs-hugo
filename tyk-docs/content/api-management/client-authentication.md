@@ -135,19 +135,23 @@ Allow unrestricted access for public APIs.
 
 ## Use Tyk as an OAuth 2.0 Authorization Server
 
+<<<<<<< HEAD
 Tyk can act as an OAuth 2.0 *authorization server*, performing token generation and management for *clients* accessing APIs deployed on Tyk. There are many great resources on the Internet that will help you to understand the OAuth 2.0 Authorization Framework, which we won't attempt to duplicate here. We will provide a basic introduction to the [concepts and terminology](#oauth-20-core-concepts) before we dive into the details of using Tyk as your *auth server*.
+=======
+Tyk can act as an OAuth 2.0 *authorization server*, performing token generation and management for *clients* accessing APIs deployed on Tyk. There are many great resources on the Internet that will help you to understand the OAuth 2.0 Authorization Framework, which we won't attempt to duplicate here. We will provide a basic introduction to the [concepts and terminology]({{< ref "api-management/client-authentication#oauth-20-core-concepts" >}}) before we dive into the details of using Tyk as your *auth server*.
+>>>>>>> 1a01efc27 (Update auth for 5.8)
 
 Tyk offers some great features when used as the *authorization server* including:
 
 - **Fine-Grained Access Control:** Manage access using Tyk's built-in access controls, including versioning and named API IDs
 - **Usage Analytics:** Leverage Tyk's analytics capabilities to monitor OAuth 2.0 usage effectively, grouping data by Client Id
-- **Multi-API Access**: Enable access to multiple APIs using a single OAuth token; configure one API for OAuth 2.0 token issuance and the other APIs with the [Auth Token](#use-auth-tokens) method, linking them through a common policy
+- **Multi-API Access**: Enable access to multiple APIs using a single OAuth token; configure one API for OAuth 2.0 token issuance and the other APIs with the [Auth Token]({{< ref "api-management/client-authentication#use-auth-tokens" >}}) method, linking them through a common policy
 
 *Tyk as OAuth authorization server* supports the following *grant types*:
 
-- [Authorization Code Grant](#using-the-authorization-code-grant): the *client* is redirected to an *identity server* where the *user* must approve access before an *access token* will be issued
-- [Client Credentials Grant](#using-the-client-credentials-grant): used for machine-to-machine access, authentication is performed using only the *client Id* and *client secret*
-- [Resource Owner Password Grant](#using-the-resource-owner-password-grant) (a.k.a. Password Grant): only for use where the *client* is highly trusted, as the *client* must provide the *Resource Owner*'s own credentials during authentication
+- [Authorization Code Grant]({{< ref "api-management/client-authentication#using-the-authorization-code-grant" >}}): the *client* is redirected to an *identity server* where the *user* must approve access before an *access token* will be issued
+- [Client Credentials Grant]({{< ref "api-management/client-authentication#using-the-client-credentials-grant" >}}): used for machine-to-machine access, authentication is performed using only the *client Id* and *client secret*
+- [Resource Owner Password Grant]({{< ref "api-management/client-authentication#using-the-resource-owner-password-grant" >}}) (a.k.a. Password Grant): only for use where the *client* is highly trusted, as the *client* must provide the *Resource Owner*'s own credentials during authentication
 
 {{< note success >}}
 **Note**  
@@ -158,8 +162,8 @@ Tyk offers some great features when used as the *authorization server* including
 To make use of this, you'll need to:
 
 - understand how to integrate your *client* (and, for Authorization Code grant, your *identity server*) according to the OAuth grant type
-- [register a client app](#client-app-registration) for each client that needs to access the API
-- [configure your API proxy](#configuring-your-api-proxy) to use the *Tyk OAuth 2.0* authentication method
+- [register a client app]({{< ref "api-management/client-authentication#client-app-registration" >}}) for each client that needs to access the API
+- [configure your API proxy]({{< ref "api-management/client-authentication#configuring-your-api-proxy" >}}) to use the *Tyk OAuth 2.0* authentication method
 
 
 <!--
@@ -222,14 +226,14 @@ For all grant types, the first common step is the registration of the *client* w
 
 #### Using the Tyk Dashboard UI
 
-1. *Client apps* are registered per-API, so the first step is to [configure Tyk OAuth 2.0](#configuring-your-api-proxy) as the security method to be used for the API. With this done, you can navigate to the OAuth Client management screen for the API from the **Actions** menu on the **Created APIs** screen:
+1. *Client apps* are registered per-API, so the first step is to [configure Tyk OAuth 2.0]({{< ref "api-management/client-authentication#configuring-your-api-proxy" >}}) as the security method to be used for the API. With this done, you can navigate to the OAuth Client management screen for the API from the **Actions** menu on the **Created APIs** screen:
 
 {{< img src="/img/api-management/security/create-oauth-from-api-list.png" alt="Accessing the list of OAuth Clients for an API" >}}
 
 2. You will now be prompted to register a *client app* that will be granted access to the API configuring:
 
 - redirect URI
-- [optional] [security policies](#manage-client-access-policies) to be applied to access tokens generated for the client
+- [optional] [security policies]({{< ref "api-management/client-authentication#manage-client-access-policies" >}}) to be applied to access tokens generated for the client
 - [optional] [metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}}) to be added to the access tokens
 
 {{< img src="/img/api-management/security/fill-out-client-details-oauth.png" alt="Add New OAuth Client" >}}
@@ -238,7 +242,7 @@ For all grant types, the first common step is the registration of the *client* w
 
 Select the **Create** button to register the *client app*.
 
-3. In the OAuth Client management screen, you will see a list of *client apps* registered with the API (as identified by their *client Id*). By clicking on the list item, or from the **Actions** menu's **Edit** option you will be taken to the *Edit Client app* screen, where you can see the *client secret* and make any modifications you need. There is also the option to [revoke tokens](#revoking-access-tokens) that have been issued for this *client app*.
+3. In the OAuth Client management screen, you will see a list of *client apps* registered with the API (as identified by their *client Id*). By clicking on the list item, or from the **Actions** menu's **Edit** option you will be taken to the *Edit Client app* screen, where you can see the *client secret* and make any modifications you need. There is also the option to [revoke tokens]({{< ref "api-management/client-authentication#revoking-access-tokens" >}}) that have been issued for this *client app*.
 
 {{< img src="/img/api-management/security/client-secret-oauth.png" alt="View client Id and client secret" >}}
 
@@ -256,25 +260,25 @@ The Tyk Dashboard API contains several endpoints that are provided to manage *cl
 
 ### Using the Authorization Code Grant
 
-When using Tyk as the Authorization Server with the Authorization Code grant, the following steps are followed after [registering the Client App](#client-app-registration):
+When using Tyk as the Authorization Server with the Authorization Code grant, the following steps are followed after [registering the Client App]({{< ref "api-management/client-authentication#client-app-registration" >}}):
 
 {{< img src="/img/diagrams/diagram_docs_authorization-code-grant-type@2x.png" alt="Authorization grant type flow" >}}
 
 **Explanatory notes:**
 
-(1) *client* makes a request to the [authorization endpoint](#authorization-request) on the *Auth Server*
+(1) *client* makes a request to the [authorization endpoint]({{< ref "api-management/client-authentication#authorization-request" >}}) on the *Auth Server*
 
 (2) The *Auth Server* notes the request parameters and returns `HTTP 307 Temporary Redirect`, redirecting the user to an *Identity Server* 
 
 (5) the *user* must log in on the *Identity Server* and authorize the *client*
 
-(6) when the *user* successfully authenticates and authorizes the request, the *Identity Server* must request an [Authorization Code](#authorization-code-request) from the *Auth Server*
+(6) when the *user* successfully authenticates and authorizes the request, the *Identity Server* must request an [Authorization Code]({{< ref "api-management/client-authentication#authorization-code-request" >}}) from the *Auth Server*
 
 (8) The *Identity Server* provides the *Authorization Code* to the *client*
 
-(9) The *client* exchanges the *Authorization Code* for an [Access Token](#exchange-the-authorization-code-for-an-access-token) from the *Auth Server*
+(9) The *client* exchanges the *Authorization Code* for an [Access Token]({{< ref "api-management/client-authentication#exchange-the-authorization-code-for-an-access-token" >}}) from the *Auth Server*
 
-(10) The *client* uses the *Access Token* to authenticate with the protected API using the [Auth Token](#use-auth-tokens) method
+(10) The *client* uses the *Access Token* to authenticate with the protected API using the [Auth Token{{< ref "api-management/client-authentication#use-auth-tokens" >}}) method
 
 #### Integration with Identity Server
 
@@ -345,7 +349,7 @@ If the *client Id* (`my-client-id`) is valid and `redirect_uri` matches the one 
 
 Once the *client* has the *authorization code*, it can exchange this for an *access token*, which is used to access the protected API. The token exchange endpoint for an API proxy on Tyk is a special endpoint automatically added to the proxy definition, accessible from `POST /<listen-path>/oauth/token`.
 
-This endpoint is protected using [Basic Authentication](#use-basic-authentication)) where the username is the *client Id* and the password is the *client secret*.
+This endpoint is protected using [Basic Authentication]({{< ref "api-management/client-authentication#use-basic-authentication" >}}) where the username is the *client Id* and the password is the *client secret*.
 
 The following parameters are required in the request:
 
@@ -366,13 +370,13 @@ curl -X POST \
   -d "grant_type=authorization_code&client_id=my-client-id&code=EaG1MK7LS8GbbwCAUwDo6Q&redirect_uri=http%3A%2F%2Fidentityserver.com%2Fclient-redirect-uri"
 ```
 
-This command, issued by the *client* is the final step to obtain an access token for the `/my-api` proxy deployed on a Tyk Gateway at `https://tyk.cloud.tyk.io`. The basic auth key is the base64 encoded representation of `my-client-id:my-client-secret` The `client_id` and `redirect_uri` match those provided in the initial [authorization request](#authorization-request). The `code` is the *authorization code* provided to the *identity server* in the [authorization code request](#authorization-code-request).
+This command, issued by the *client* is the final step to obtain an access token for the `/my-api` proxy deployed on a Tyk Gateway at `https://tyk.cloud.tyk.io`. The basic auth key is the base64 encoded representation of `my-client-id:my-client-secret` The `client_id` and `redirect_uri` match those provided in the initial [authorization request]({{< ref "api-management/client-authentication#authorization-request" >}}). The `code` is the *authorization code* provided to the *identity server* in the [authorization code request]({{< ref "api-management/client-authentication#authorization-code-request" >}}).
 
 The response payload contains:
 - `access_token`: the token which can be used by the *client* to access the protected API
 - `expires_in`: the expiration date/time of the access token
-- `token_type`: set to `bearer` indicating that the access token should be provided in an [Auth Token](#use-auth-tokens) request to the protected API
-- `refresh_token`: [optional] a special token that can be used in the [Refresh Token](#using-refresh-tokens) flow
+- `token_type`: set to `bearer` indicating that the access token should be provided in an [Auth Token]({{< ref "api-management/client-authentication#use-auth-tokens" >}}) request to the protected API
+- `refresh_token`: [optional] a special token that can be used in the [Refresh Token]({{< ref "api-management/client-authentication#using-refresh-tokens" >}}) flow
 
 For example:
 
@@ -388,9 +392,9 @@ For example:
 
 
 ### Using the Client Credentials Grant
-When using Tyk as the *authorization server* with the Client Credentials grant, the *client* accesses resources on behalf of itself rather than on behalf of a *user*, so there is no user login/authorization step (as seen with [Authorization Code grant](#using-the-authorization-code-grant)). This flow is ideal for server-to-server interactions.
+When using Tyk as the *authorization server* with the Client Credentials grant, the *client* accesses resources on behalf of itself rather than on behalf of a *user*, so there is no user login/authorization step (as seen with [Authorization Code grant]({{< ref "api-management/client-authentication#using-the-authorization-code-grant" >}})). This flow is ideal for server-to-server interactions.
 
-After [registering the Client App](#client-app-registration), the *client* simply requests an access token directly from the authorization server:
+After [registering the Client App]({{< ref "api-management/client-authentication#client-app-registration" >}}), the *client* simply requests an access token directly from the authorization server:
 
 {{< img src="/img/diagrams/diagram_docs_client-credentials-grant-type@2x.png" alt="Client Credentials grant type flow" >}}
 
@@ -423,7 +427,7 @@ This command, issued by the *client* will obtain an access token for the `/my-ap
 The response payload contains:
 - `access_token`: the token which can be used by the *client* to access the protected API
 - `expires_in`: the expiration date/time of the access token
-- `token_type`: set to `bearer` indicating that the access token should be provided in an [Auth Token](#use-auth-tokens) request to the protected API
+- `token_type`: set to `bearer` indicating that the access token should be provided in an [Auth Token]({{< ref "api-management/client-authentication#use-auth-tokens" >}}) request to the protected API
 
 For example:
 
@@ -444,9 +448,9 @@ Note that Client Credentials grant does not produce a *refresh token*.
 
 
 ### Using the Resource Owner Password Grant
-When using Tyk as the *authorization server* with the Resource Owner Password grant, the *client* provides the *user's* credentials when requesting an access token. There is no user login/authorization step (as seen with [Authorization Code grant](#using-the-authorization-code-grant)). **This flow is not recommended and is provided only for integration with legacy clients.**
+When using Tyk as the *authorization server* with the Resource Owner Password grant, the *client* provides the *user's* credentials when requesting an access token. There is no user login/authorization step (as seen with [Authorization Code grant]({{< ref "api-management/client-authentication#using-the-authorization-code-grant" >}})). **This flow is not recommended and is provided only for integration with legacy clients.**
 
-After [registering the Client App](#client-app-registration), the *client* simply requests an access token directly from the authorization server:
+After [registering the Client App]({{< ref "api-management/client-authentication#client-app-registration" >}}), the *client* simply requests an access token directly from the authorization server:
 
 {{< img src="/img/diagrams/diagram_docs_username-_-password-grant-type@2x.png" alt="Username and password grant sequence" >}}
 
@@ -454,7 +458,7 @@ After [registering the Client App](#client-app-registration), the *client* simpl
 
 The *client* obtains an access token for an API proxy on Tyk from a special endpoint automatically added to the proxy definition, accessible from `POST /<listen-path>/oauth/token`.
 
-This endpoint is protected using [Basic Authentication](#use-basic-authentication) where the username is the client Id and the password is the client secret.
+This endpoint is protected using [Basic Authentication]({{< ref "api-management/client-authentication#use-basic-authentication" >}}) where the username is the client Id and the password is the client secret.
 
 The following parameters are required in the request:
 
@@ -480,8 +484,8 @@ This command, issued by the *client* will obtain an access token for the `/my-ap
 The response payload contains:
 - `access_token`: the token which can be used by the *client* to access the protected API
 - `expires_in`: the expiration date/time of the access token
-- `token_type`: set to `bearer` indicating that the access token should be provided in an [Auth Token](#use-auth-tokens) request to the protected API
-- `refresh_token`: [optional] a special token that can be used in the [Refresh Token](#using-refresh-tokens) flow
+- `token_type`: set to `bearer` indicating that the access token should be provided in an [Auth Token]({{< ref "api-management/client-authentication##use-auth-tokens" >}}) request to the protected API
+- `refresh_token`: [optional] a special token that can be used in the [Refresh Token]({{< ref "api-management/client-authentication#using-refresh-tokens" >}}) flow
 
 For example:
 
@@ -497,7 +501,7 @@ For example:
 
 ### Configuring your API Proxy
 
-As explained [previously](#how-does-tyk-implement-authentication-and-authorization), the AuthN/Z methods to be used to secure an API proxy are configured in the API definition. This permits granular application of the most appropriate method to each API deployed on Tyk Gateway.
+As explained [previously]({{< ref "api-management/client-authentication#how-does-tyk-implement-authentication-and-authorization" >}}), the AuthN/Z methods to be used to secure an API proxy are configured in the API definition. This permits granular application of the most appropriate method to each API deployed on Tyk Gateway.
 
 When using Tyk as the Authorization Server, the API configuration can be applied using the Tyk Dashboard's API Designer UI, or by direct modification of the API definition. We will provide examples here when using Tyk OAS APIs. If you are using Tyk Classic APIs, the process is very similar, though there are differences in the location and specific labelling of options.
 
@@ -509,7 +513,7 @@ When using Tyk as the Authorization Server, the API configuration can be applied
 
 2. Select the OAuth Grant Type that you wish to use for the API, if appropriate you can also select the *Refresh Token* grant so that the Auth Server (Tyk) will generate both access and refresh tokens.
 
-3. Provide the requested configuration options depending on the selected Grant Type. Note that for *Authorization Code Grant*, **Redirect URL** should be the login page for your Identity Server and must be matched by the `redirect_uri` provided in the *client app* (and in the client's authentication request). The [Notifications](#oauth-token-notifications) configuration can be provided for *Authorization Code* and *Password* grants.
+3. Provide the requested configuration options depending on the selected Grant Type. Note that for *Authorization Code Grant*, **Redirect URL** should be the login page for your Identity Server and must be matched by the `redirect_uri` provided in the *client app* (and in the client's authentication request). The [Notifications]({{< ref "api-management/client-authentication#oauth-token-notifications" >}}) configuration can be provided for *Authorization Code* and *Password* grants.
 
 4. Select **Save API** to apply the new settings.
 
@@ -628,7 +632,7 @@ In this example:
 - Client authentication has been enabled (line 44)
 - The OpenAPI description declares the `oauth` security scheme that expects **Authorization Code** flow. Note that the `authorization URL` and `token URL` are declared relative to the API proxy listen path
 - Authorization requests (made to `POST /my-oauth-api/oauth/authorize`) will be redirected to `http://<identity-server>/client-redirect-uri` where the *Resource Owner* should be prompted to authorize the request
-- [Notifications](#oauth-token-notifications) of token issuance will be sent to `http://notifyme.com` with the `X-Tyk-Shared-Secret` header set to `oauth-shared-secret`
+- [Notifications]({{< ref "api-management/client-authentication#oauth-token-notifications" >}}) of token issuance will be sent to `http://notifyme.com` with the `X-Tyk-Shared-Secret` header set to `oauth-shared-secret`
 
 The *auth server* (Tyk) will issue an *access token* and *refresh token* in exchange for a valid *authorization code*. Once the client has a valid access token, it will be expected in the `Authorization` header of the request.
 
@@ -650,7 +654,7 @@ A *refresh token* can be issued by the *auth server* alongside the *access token
 - Authentication Code grant
 - Resource Owner Password grant
 
-You configure whether Tyk should issue a refresh token within the [API proxy definition](#configuring-your-api-proxy).
+You configure whether Tyk should issue a refresh token within the [API proxy definition]({{< ref "api-management/client-authentication#configuring-your-api-proxy" >}}).
 
 ##### Refreshing an Access Token
 
@@ -684,7 +688,7 @@ This command, issued by the *client* will obtain a new access token for the `/my
 The response payload contains:
 - `access_token`: a new *access token* which can be used by the *client* to access the protected API
 - `expires_in`: the expiration date/time of the access token
-- `token_type`: set to `bearer` indicating that the access token should be provided in an [Auth Token](#use-auth-tokens) request to the protected API
+- `token_type`: set to `bearer` indicating that the access token should be provided in an [Auth Token]({{< ref "api-management/client-authentication#use-auth-tokens" >}}) request to the protected API
 - `refresh_token`: a new *refresh token* that can be used later to refresh the new *access token*
 
 For example:
@@ -700,7 +704,7 @@ For example:
 
 #### Revoking Access Tokens
 
-OAuth access tokens have built in expiry, but if you need to [revoke](https://tools.ietf.org/html/rfc7009) a client's access to the API before this time, then you can use the option on the [OAuth Client management screen](#using-the-tyk-dashboard-ui) screen in Tyk Dashboard UI or the Tyk Dashboard API to do so. 
+OAuth access tokens have built in expiry, but if you need to [revoke](https://tools.ietf.org/html/rfc7009) a client's access to the API before this time, then you can use the option on the [OAuth Client management screen]({{< ref "api-management/client-authentication#using-the-tyk-dashboard-ui" >}}) screen in Tyk Dashboard UI or the Tyk Dashboard API to do so. 
 
 Using the **Tyk Dashboard API** you can revoke specific tokens (both access and refresh) or all tokens issued for a specific *client app* as follows:
 
@@ -767,6 +771,7 @@ Remember to select **Save API** to apply these settings to your API.
 
 The example given [above]({{< ref "api-management/client-authentication#using-the-api-definition" >}}) includes the configuration necessary to issue notifications for token issuance (see lines 48-51 in the example).
 
+<<<<<<< HEAD
 
 
 ## Use JSON Web Tokens (JWT)
@@ -1339,6 +1344,8 @@ View the diagram below for an overview of JWT flow in Tyk:
 
 {{< img src="/img/diagrams/diagram_docs_JSON-web-tokens@2x.png" alt="JSON Web Tokens Flow" >}}
 
+=======
+>>>>>>> 1a01efc27 (Update auth for 5.8)
 
 ## Other Authentication Methods
 
@@ -1385,7 +1392,11 @@ security:
   - myAuthScheme: []
 ```
 
+<<<<<<< HEAD
 With this configuration provided by the OpenAPI description, all that is left to be configured in the Tyk Vendor Extension is to enable authentication, to select this security scheme and to indicate where Tyk should look for the credentials. Usually the credentials will be provided in the `Authorization` header, but Tyk is configurable, via the Tyk Vendor Extension, to support custom header keys and credential passing via query parameter or cookie.
+=======
+With this configuration provided by the OpenAPI description, all that is left to be configured in the Tyk Vendor Extension is to enable authentication, to select this security scheme and to indicate where Tyk should look for the credentials. Usually the credentials will be provided in the `Authorization` header, but Tyk is configurable, via the Tyk Vendor Extension, to support custom header keys and credential passing via query parameter or cooke.
+>>>>>>> 1a01efc27 (Update auth for 5.8)
 
 ```yaml
 x-tyk-api-gateway:
@@ -1930,6 +1941,7 @@ spec:
   Root CA certificates are compatible only with Static mTLS and not with Dynamic mTLS.
 {{< /note >}}
 
+<<<<<<< HEAD
 
 ### Sign Requests with HMAC
 
@@ -2071,6 +2083,8 @@ The way that this is implemented is through the creation of a key that grants ac
 
 When calling the API, the client would never use the key itself as a token, instead they must sign requests using the provided secret.
 
+=======
+>>>>>>> 1a01efc27 (Update auth for 5.8)
 
 ### Custom Authentication
 
@@ -2090,7 +2104,11 @@ Tyk allows for custom authentication logic using Python and JavaScript Virtual M
 
 Open or keyless authentication allows access to APIs without any authentication. This method is suitable for public APIs where access control is not required.
 
+<<<<<<< HEAD
 Tyk OAS APIs are inherently "open" unless authentication is configured, however the older Tyk Classic API applies [auth token](#use-auth-tokens) protection by default.
+=======
+Tyk OAS APIs are inherently "open" unless authentication is configured, however the older Tyk Classic API applies [auth token]({{< ref "api-management/client-authentication#use-auth-tokens" >}}) protection by default.
+>>>>>>> 1a01efc27 (Update auth for 5.8)
 
 You can disable authentication for a Tyk Classic API by setting the `use_keyless` flag in the API definition.
 
@@ -2099,7 +2117,7 @@ You can disable authentication for a Tyk Classic API by setting the `use_keyless
 
 {{< note success >}}
 **Note**  
-Tyk has previously offered two types of OAuth authentication flow; [Tyk as the authorization server](#use-tyk-as-an-oauth-20-authorization-server) and Tyk connecting to an external *auth server* via a dedicated *External OAuth* option. The dedicated external *auth server* option was deprecated in Tyk 5.7.0.
+Tyk has previously offered two types of OAuth authentication flow; [Tyk as the authorization server]({{< ref "api-management/client-authentication#use-tyk-as-an-oauth-20-authorization-server" >}}) and Tyk connecting to an external *auth server* via a dedicated *External OAuth* option. The dedicated external *auth server* option was deprecated in Tyk 5.7.0.
 <br>
 
 For third-party OAuth integration we recommend using the JSON Web Token (JWT) middleware which is described [above]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}), which offers the same functionality with a more streamlined setup and reduced risk of misconfiguration.
@@ -2503,7 +2521,7 @@ For example, to have keys live in Redis for only 24 hours (and be deleted 24 hou
 There is a risk, when configuring API-level lifetime, that a key will be deleted before it has expired, as `session_lifetime` is applied regardless of whether the key is active or expired. To protect against this, you can configure the [session_lifetime_respects_key_expiration]({{< ref "tyk-oss-gateway/configuration#session_lifetime_respects_key_expiration" >}}) parameter in your `tyk.conf`, so that keys that have exceeded their lifetime will not be deleted from Redis until they have expired.
 {{< /note >}}
 
-This feature works nicely with [JWT]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) or [OIDC](#integrate-with-openid-connect-deprecated) authentication methods, as the keys are created in Redis the first time they are in use so you know when they will be removed. Be extra careful in the case of keys created by Tyk (Auth token or JWT with individual secrets) and set a long `session_lifetime`, otherwise the user might try to use the key **after** it has already been removed from Redis.
+This feature works nicely with [JWT]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) or [OIDC]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}) authentication methods, as the keys are created in Redis the first time they are in use so you know when they will be removed. Be extra careful in the case of keys created by Tyk (Auth token or JWT with individual secrets) and set a long `session_lifetime`, otherwise the user might try to use the key **after** it has already been removed from Redis.
 
 #### Gateway-level key lifetime control
 
