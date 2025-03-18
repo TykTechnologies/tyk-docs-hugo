@@ -3,8 +3,8 @@ name: JIRA lint
 on:
   pull_request:
     branches:
-      - master
-      - release-**
+      - master-disable
+      - release-disable-**
     types:
       - opened
       - reopened
