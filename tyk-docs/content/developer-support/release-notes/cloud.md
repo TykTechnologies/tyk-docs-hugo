@@ -1,8 +1,144 @@
 ---
 title: Tyk Cloud Release Notes
-date: xx
+date: 2025-02-10
 description: "Release notes documenting updates, enhancements, and changes for Tyk Cloud"
-tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "changelog"]
+tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.25", "1.25.0", "v1.26", "1.26.0", "changelog"]
+
+---
+
+## 1.26.0 Release Notes
+
+### Release Date 17 of March 2025
+
+### Release Highlights
+
+Tyk Cloud now provides greater compliance controls, allowing customers to manage audit logging and storage more effectively. With new audit log storage and the ability to enable or disable audit logging per Control Plane deployment, users can optimize costs while maintaining security and compliance. These improvements give organizations more flexibility in handling audit data based on their specific regulatory and operational needs. To enable this feature, please contact your account manager.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.26.0" >}}) below.
+
+#### Admin Behavior Update in Control Planes v5.8.0
+In the next Tyk Cloud release, starting with the Control Planes version 5.8.0, we will be  restricting Tyk Dashboard admin users' ability to view and reset other users' API tokens. This change will automatically apply to all Control Plane deployments that are either newly created with or upgraded to version 5.8.0 or later.
+
+This security improvement helps protect sensitive access credentials and provides better isolation between user accounts. If your organization requires the previous behavior for specific operational needs, you can revert this change by submitting a request to Tyk Support.
+
+We remain committed to continuously improving the security of our platform while maintaining the flexibility needed for diverse environments.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Downloads
+- [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Changelog {#Changelog-v1.26.0}
+
+#### Added
+
+<ul>
+<li>
+<details>
+<summary>Enable/Disable Audit Logging for Control Plane Deployments</summary>
+
+Tyk Cloud allows users to enable or disable audit logging for their [Control Plane]({{< ref "api-management/mdcb#data-plane" >}}) (CP) deployments, providing greater flexibility in managing compliance and storage costs. To enable this feature, please contact your account manager.
+
+Tyk Cloud now also enforces audit log storage quotas based on contractual terms (a storage quota limit assigned to organizations based on their subscription), allowing customers to manage costs effectively. Similar to analytics storage, a size cap is applied to audit logs, dropping the oldest logs to fit the new ones within the quota.
+
+For more information, please check the [Tyk Dashboard documentation on the feature](https://tyk.io/docs/api-management/dashboard-configuration/#retrieving-audit-logs-via-api)
+
+</details>
+</li>  
+
+<li>
+<details>
+<summary>Enhanced Onboarding Experience for Trial Users</summary>
+
+Tyk Cloud now enables the onboarding wizard by default for trial users, providing a guided Quick Start experience in Tyk 5.8.0.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Stability Improvements When Deploying Control Planes</summary>
+
+Tyk Cloud now features enhanced stability for Control Plane deployments, even in cases of license server issues.
+
+</details>
+</li>
+  
+</ul>
+
+#### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Protecting Go Plugin Functionality by Isolating MServ API Definitions</summary>
+
+Tyk Cloud now moves MServ API definitions to a separate organization, preventing users from accidentally modifying or deleting them. Previously, these definitions were stored within the customer’s Tyk Dashboard deployment, posing the risk of breaking Go plugin functionality. With this update, Go plugins remain fully operational while deployments become more secure and error-proof. This change applies to new deployments only; existing deployments with plugins enabled will be gradually migrated in the future to avoid unexpected service disruption.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Provision First and Last Name for Cloud SSO Users</summary>
+
+Tyk Cloud now correctly populates first and last names when provisioning new users via SSO (Google SSO, KeyCloak). Previously, only the first name was set, causing validation errors when updating roles due to a missing last name. This fix ensures that SSO-provisioned users have complete profiles, preventing onboarding issues and improving role management for organizations
+
+</details>
+</li>    
+
+<li>
+<details>
+<summary>Enforce 'Only Registered Users' Flag for SSO in Tyk Cloud</summary>
+
+Tyk Cloud now correctly enforces the 'Only Registered Users' flag for SSO (Google SSO, KeyCloak), preventing the creation of unregistered users via just-in-time provisioning. Previously, users without a corresponding local entry could still be created even when this setting was enabled.
+
+</details>
+</li>    
+
+<li>
+<details>
+<summary>Incorrect Display of Custom Domain Field in EDP</summary>
+
+Tyk Cloud now correctly hides the custom domain field in the Enterprise Developer Portal (EDP) edit page when the custom domain entitlement is not enabled. Previously, the field was visible even for organizations without access to this feature, causing confusion.
+
+</details>
+</li> 
+
+<li>
+<details>
+<summary>Improved Probes for Control Plane Deployments with SSO</summary>
+
+Tyk Cloud now ensures more reliable health checks for Control Plane deployments when SSO is configured.
+
+</details>
+</li> 
+
+<li>
+<details>
+<summary>Accurate Subscription Limits in Monitoring Charts</summary>
+
+The monitoring chart in Tyk Cloud now correctly displays the subscription limit based on the organization’s entitlement.
+
+</details>
+</li> 
+
+<li>
+<details>
+<summary>Improved Analytics Performance in Tyk Cloud</summary>
+
+Changing the analytics storage quota in Tyk Cloud no longer removes critical database indices, which previously led to performance degradation. This fix ensures that indices are preserved, maintaining fast query performance and data integrity. Customers should now experience improved analytics performance, especially when adjusting storage quotas.
+
+</details>
+</li> 
+
+</ul>
 
 ---
 
