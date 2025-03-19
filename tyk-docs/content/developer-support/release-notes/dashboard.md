@@ -196,7 +196,7 @@ The Dashboard now supports PostgreSQL 17, ensuring compatibility with the latest
 <details>
 <summary>Improved Dashboard Code Editor</summary>
 
-Upgraded the code editor component library and enhanced its styling for a better user experience.
+Upgraded the code editor component library and enhanced its styling for a better user experience. With this upgrade comes the facility to work in YAML or JSON and to switch seamlessly between formats.
 </details>
 </li>
 <li>
