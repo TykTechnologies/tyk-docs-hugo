@@ -61,11 +61,6 @@ We are pleased to introduce advanced options for your Tyk OAS APIs when it comes
 
 To accompany the launch of fully featured Tyk OAS capabilities, we have made a raft of improvements in the Tyk Dashboard GUI. There's an all-new API test and debug facility in the API designer, allowing you to issue requests to your APIs and then examine the debug traces produced by the Gateway without leaving the Tyk Dashboard. Our new, enhanced code editor allows you to work in YAML or JSON. We've also given the UI a spring clean to improve the usability.
 
-##### Seamless API Key Rotation for MDCB Data Planes
-
-We have implemented a new feature for automatic propagation of rotated Dashboard API access keys to Data Planes. In a distributed deployment using MDCB, the Data Plane Gateways authenticate using access keys managed by Tyk Dashboard.
-
-From 5.8.0, when an access key is changed in the Dashboard, this will be propagated to the appropriate Data Plane Gateways via MDCB without the need to restart the Gateways. Note that unless you are using Vault or Consul to store the Data Plane access key (for example, you are using a local environment variable) it remains the responsibility of the system administrator to update tht source of truth so that Gateways pick up the correct key when starting up.
 
 #### Breaking Changes
 
@@ -216,13 +211,6 @@ Upgraded the code editor component library and enhanced its styling for a better
 <summary>Improved Labelling in Tyk Dashboard</summary>
 
 We have made minor adjustments to labels within the Dashboard UI to enhance clarity.
-</details>
-</li>
-<li>
-<details>
-<summary>Improved API Key Management for MDCB Data Planes</summary>
-
-We have updated Dashboard API key reset permissions to support API key rotation for MDCB Data Planes. Users with Real-Time Notifications enabled can now reset their Dashboard API key via the UI or API, resolving conflicts that previously prevented key rotation. These changes ensure a more secure and automated approach to managing API keys while maintaining existing access controls.
 </details>
 </li>
 <li>
