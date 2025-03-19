@@ -24,4 +24,4 @@ jobs:
         uses: rojopolis/spellcheck-github-actions@0.47.0
         with:
           task_name: Markdown
-          source_files: tyk-docs/content/tyk-environment-variables.md tyk-docs/content/api-management/client-authentication.md
+          source_files: tyk-environment-variables.md api-management/client-authentication.md
