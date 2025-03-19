@@ -11,7 +11,7 @@ aliases:
   - /configure/environment-variables/
 ---
 
-Please find the following links to all the configuration reference pages per product (Gateway, Dashboard, Pump, MDCB, Enterprise Developer Portal and Identity Broker)
+Plese find the following links to all the configuration reference pages per product (Gateway, Dashboard, Pump, MDCB, Enterprise Developer Portal and Identity Broker)
 Each page includes a list of all the config fields that can be used in the config file to set and tune the product.
 Every item in the lists includes the config name in JSON notation, the format as an environment variable, the field type and a short description.
 
