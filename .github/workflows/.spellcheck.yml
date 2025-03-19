@@ -3,7 +3,7 @@ name: Spellcheck
 on:
   pull_request:
     paths:
-      - 'tyk-docs/**/*.md'  # Only run when Markdown files in content/ change
+      - '**/*.md'  # Trigger only if Markdown files change
 
 jobs:
   spellcheck:
@@ -11,9 +11,26 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # Needed to compare PR changes
 
-      - name: Run spellcheck
+      - name: Get changed Markdown files
+        id: changed-files
+        run: |
+          # Get the list of changed .md files in the PR
+          CHANGED_FILES=$(git diff --name-only --diff-filter=ACM HEAD^ HEAD | grep '\.md$' || true)
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No Markdown files changed, skipping spellcheck."
+            echo "files=" >> $GITHUB_OUTPUT
+          else
+            # Convert to space-separated list for the action
+            echo "files=$(echo $CHANGED_FILES | tr '\n' ' ')" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run spellcheck on changed files
+        if: steps.changed-files.outputs.files != ''
         uses: rojopolis/spellcheck-github-actions@0.47.0
         with:
           config_path: .spellcheck.yml
           task_name: Markdown
+          source_files: ${{ steps.changed-files.outputs.files }}

@@ -4,7 +4,7 @@ matrix:
       lang: en_US  # Enforces American English
     dictionary:
       wordlists:
-        - .wordlist.txt  # Your custom keywords to ignore
+        - .wordlist.txt  # Custom keywords to ignore
       output: wordlist.dic
       encoding: utf-8
     pipeline:
@@ -17,5 +17,5 @@ matrix:
             - code
             - pre
     sources:
-      - 'tyk-docs/content/**/*.md'  # Targets all Markdown files in the content directory
+      - 'dummy.md'  # Placeholder; will be overridden in the spellcheck Github action
     default_encoding: utf-8
