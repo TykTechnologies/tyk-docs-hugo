@@ -57,12 +57,6 @@ We have completed the journey with Tyk OAS that started in Tyk 4.1 - and now any
 
 With Tyk OAS we combine the industry standard OpenAPI description with the Tyk Vendor Extension, which encapsulates all of the Tyk Gateway settings that cannot be inferred from the OpenAPI Specification (OAS). You can keep your service description (OAS) as source of truth and update the OpenAPI description part of a Tyk OAS API independently from the Tyk Vendor Extension - no need to unpick distributed vendor extensions from your OAS. For more details, please see the [documentation]({{< ref "api-management/gateway-config-introduction" >}}).
 
-##### Seamless API Key Rotation for MDCB Data Planes
-
-We have implemented a new feature for automatic propagation of rotated Dashboard API access keys to Data Planes. In a distributed deployment using MDCB, the Data Plane Gateways authenticate using access keys managed by Tyk Dashboard.
-
-From 5.8.0, when an access key is changed in the Dashboard, this will be propagated to the appropriate Data Plane Gateways via MDCB without the need to restart the Gateways. Note that unless you are using Vault or Consul to store the Data Plane access key (for example, you are using a local environment variable) it remains the responsibility of the system administrator to update tht source of truth so that Gateways pick up the correct key when starting up.
-
 #### Breaking Changes
 
 There are no breaking changes in this release, but please note that the upgrade to Go 1.23 may require changes to your setup.
@@ -146,13 +140,6 @@ In Tyk 5.8.0, we have added configuration of the following features into the Tyk
 <summary>Transaction Logs for Better API Request Visibility</summary>
 
 Tyk Gateway now supports transaction logs, providing structured access logs for API requests. This improves debugging and observability without the overhead of enabling debug mode in production. Logs can be output in JSON format and customized via a template, ensuring flexibility while maintaining performance.
-</details>
-</li>
-<li>
-<details>
-<summary>Support for Seamless API Key Rotation for MDCB Data Planes</summary>
-
-When deployed in an MDCB Data Plane, the Gateway can now retrieve a rotated Dashboard API key from MDCB. This will be propagated to all active Gateways in the Data Plane without the need for a Gateway restart. If you are using [Vault or Consul]({{< ref "tyk-self-managed#store-configuration-with-key-value-store" >}}) to store this credential, the Gateway will automatically update the stored value so that any new Gateways starting up in the cluster will automatically inherit the new access key.
 </details>
 </li>
 </ul>
