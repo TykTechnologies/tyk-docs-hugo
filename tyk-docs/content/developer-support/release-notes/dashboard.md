@@ -224,7 +224,7 @@ The "Manage Account" link in the Tyk Dashboard, which previously directed users 
 <details>
 <summary>Improved Form Performance in API Designer</summary>
 
-We’ve optimized form validation in the Tyk Dashboard’s OAS API Designer to enhance user experience. Forms are now validated on blur instead of during every keystroke, preventing cursor jumps and improving typing responsiveness.
+We’ve optimized form validation in the API Designer to enhance user experience. Forms are now validated on blur instead of during every keystroke, preventing cursor jumps and improving typing responsiveness.
 </details>
 </li>
 <li>
