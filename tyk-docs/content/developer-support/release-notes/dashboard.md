@@ -156,7 +156,7 @@ For backward compatibility, if `ConnectionString` is set, it will take precedenc
 <details>
 <summary>Certificate Support for GraphQL Introspection During API Creation</summary>
 
-Users can now attach certificates during the GraphQL API creation process to enabled mTLS-protected upstream introspection. This eliminates the need for manual certificate management and redeployment.
+When creating a GraphQL API in the API designer, you can now attach certificates to be used during introspection of mTLS-protected upstream services. This simplifies the creation of GraphQL APIs by reducing the number of steps, as previously you had to use a dummy upstream during the initial creation and then reconfigure the API to perform introspection later.
 </details>
 </li>
 <li>
