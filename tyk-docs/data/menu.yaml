@@ -245,10 +245,18 @@ menu:
         path: /api-management/non-http-protocols
         category: Page
         show: True
-      - title: "Caching"
-        path: /api-management/gateway-optimizations
-        category: Page
+      - title: "Request Optimization"
+        category: Directory
         show: True
+        menu:
+        - title: "Response Caching"
+          path: /api-management/response-caching
+          category: Page
+          show: True
+        - title: "Batch Processing"
+          path: /api-management/batch-processing
+          category: Page
+          show: True
       - title: "API Observability"
         category: Directory
         show: True
