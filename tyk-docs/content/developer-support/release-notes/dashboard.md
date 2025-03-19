@@ -161,7 +161,7 @@ When creating a GraphQL API in the API designer, you can now attach certificates
 </li>
 <li>
 <details>
-<summary>New Dasboard API Migration Endpoint</summary>
+<summary>New Dasboard API Migration Endpoint to Convert Tyk Classic API Definitions to Tyk OAS</summary>
 
 Introduced a new API migration [endpoint]() with dry run, staging, and direct migration modes, enabling a seamless transition from Tyk Classic to Tyk OAS. Use this endpoint to perform individual or bulk conversion of Tyk Classic to Tyk OAS APIs.
 </details>
