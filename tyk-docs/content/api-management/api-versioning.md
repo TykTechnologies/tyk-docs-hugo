@@ -18,10 +18,10 @@ aliases:
 API versioning is a crucial practice in API development and management that allows you to evolve your API over time while maintaining backward compatibility for existing clients. As your API grows and changes, versioning provides a structured way to introduce new features, modify existing functionality, or deprecate outdated elements without breaking integrations for users who rely on previous versions.
 
 API versioning is important for several reasons:
-- flexibility: it allows you to improve and expand your API without disrupting existing users
-- stability: clients can continue using a specific version of the API, ensuring their applications remain functional
-- transition management: you can gradually phase out older versions while giving clients time to migrate to newer ones
-- documentation: each version can have its own documentation, making it easier for developers to understand the specific capabilities and limitations of the version they're using
+- **Flexibility**: It allows you to improve and expand your API without disrupting existing users.
+- **Stability**: Clients can continue using a specific version of the API, ensuring their applications remain functional.
+- **Transition management**: You can gradually phase out older versions while giving clients time to migrate to newer ones.
+- **Documentation**: Each version can have its own documentation, making it easier for developers to understand the specific capabilities and limitations of the version they're using.
 
 ---
 
@@ -66,10 +66,10 @@ For more details, see [this comparison]({{< ref "#comparison-between-tyk-oas-and
 
 Some key concepts that are important to understand when versioning your APIs are:
 
-- [version identifiers]({{< ref "api-management/api-versioning#version-identifiers" >}})
-- [default version]({{< ref "api-management/api-versioning#default-version" >}})
-- [base and child versions]({{< ref "api-management/api-versioning#base-and-child-apis" >}})
-- [controlling access to versions]({{< ref "api-management/api-versioning#controlling-access-to-versioned-apis" >}})
+- [Version identifiers]({{< ref "api-management/api-versioning#version-identifiers" >}})
+- [Default version]({{< ref "api-management/api-versioning#default-version" >}})
+- [Base and child versions]({{< ref "api-management/api-versioning#base-and-child-apis" >}})
+- [Controlling access to versions]({{< ref "api-management/api-versioning#controlling-access-to-versioned-apis" >}})
 
 ### Version Identifiers
 
@@ -275,31 +275,31 @@ Starting from a Tyk OAS API (either newly created or an existing non-versioned A
 
 1. **Create the new version**
 
-Select **Create a new version** from the **Actions** menu.
+    Select **Create a new version** from the **Actions** menu.
 
-{{< img src="/img/dashboard/api-designer/tyk-oas-version-menu-create-new.png" alt="Creating a new version of a Tyk OAS API from the Actions menu" >}}
+    {{< img src="/img/dashboard/api-designer/tyk-oas-version-menu-create-new.png" alt="Creating a new version of a Tyk OAS API from the Actions menu" >}}
 
-This will bring up the *Create new API version* pop-up.
+    This will bring up the *Create new API version* pop-up.
 
-{{< img src="/img/dashboard/api-designer/tyk-oas-version-modal-create-new.png" alt="Choosing the version name for a new version of a Tyk OAS API" >}}
+    {{< img src="/img/dashboard/api-designer/tyk-oas-version-modal-create-new.png" alt="Choosing the version name for a new version of a Tyk OAS API" >}}
 
-Assign your existing version a *name* (e.g. v1), then assign a *name* for the new version (e.g. v2). You should then select one of these to use as the *default* version.
+    Assign your existing version a *name* (e.g. v1), then assign a *name* for the new version (e.g. v2). You should then select one of these to use as the *default* version.
 
-Select **Create Version**
+    Select **Create Version**
 
 2. **Configure the new version**
 
-You'll be taken to the API designer view for the new version - remember that this will be a completely separate Tyk OAS API Definition for the new version. By default, Tyk Dashboard will have given this API the same name as the original, appending the *version name* that you assigned in **step 1**.
+    You'll be taken to the API designer view for the new version - remember that this will be a completely separate Tyk OAS API Definition for the new version. By default, Tyk Dashboard will have given this API the same name as the original, appending the *version name* that you assigned in **step 1**.
 
-Tyk will have set the *Access* to *Internal*, so that this version cannot be directly accessed by clients, only via the original (base) API.
+    Tyk will have set the *Access* to *Internal*, so that this version cannot be directly accessed by clients, only via the original (base) API.
 
-{{< img src="/img/dashboard/api-designer/tyk-oas-version-created.png" alt="New version of Tyk OAS API has been created" >}}
+    {{< img src="/img/dashboard/api-designer/tyk-oas-version-created.png" alt="New version of Tyk OAS API has been created" >}}
 
-Configure the new version of your API as required.
+    Configure the new version of your API as required.
 
-By default, Tyk will have configured the versioning identifier location as Request Header, with the key `x-api-version`. You can modify this by following the steps [here]({{< ref "api-management/api-versioning#configure-versioning-settings" >}}), but if you're happy with this then that's it - your new API version is ready for use.
+    By default, Tyk will have configured the versioning identifier location as Request Header, with the key `x-api-version`. You can modify this by following the steps [here]({{< ref "api-management/api-versioning#configure-versioning-settings" >}}), but if you're happy with this then that's it - your new API version is ready for use.
 
-Don't forget to select **Save API**.
+    Don't forget to select **Save API**.
 
 ### Working with versioned APIs
 
