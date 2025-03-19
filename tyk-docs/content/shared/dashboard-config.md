@@ -110,6 +110,37 @@ This option allows you to store different types of data in different databases. 
 ### storage.main
 Main database where the dashboard resources are stored (users, orgs, policies, etc)
 
+### storage.main.type
+ENV: <b>TYK_DB_STORAGE_MAIN_TYPE</b><br />
+Type: `DBType`<br />
+
+Type is the type of the database.
+Possible values are:
+  - "mongo": Use MongoDB.
+  - "postgres": Use PostgreSQL.
+  - "mysql": Use MySQL.
+
+### storage.main.connection_string
+ENV: <b>TYK_DB_STORAGE_MAIN_CONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+ConnectionString is the connection string for the database.
+Overrides ReadConnectionString and WriteConnectionString.
+
+### storage.main.read_connection_string
+ENV: <b>TYK_DB_STORAGE_MAIN_READCONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+ReadConnectionString is the connection string for read operations.
+Only used if ConnectionString is not set.
+
+### storage.main.write_connection_string
+ENV: <b>TYK_DB_STORAGE_MAIN_WRITECONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+WriteConnectionString is the connection string for write operations.
+Only used if ConnectionString is not set.
+
 ### storage.main.mongo
 Connection setting for a mongo database
 
@@ -161,8 +192,45 @@ Type: `bool`<br />
 
 auto configure based on currently MySQL version
 
+### storage.main.table_sharding
+ENV: <b>TYK_DB_STORAGE_MAIN_TABLESHARDING</b><br />
+Type: `bool`<br />
+
+Enable table sharding for the database
+
 ### storage.analytics
 Where all the analytics related data is stored
+
+### storage.analytics.type
+ENV: <b>TYK_DB_STORAGE_ANALYTICS_TYPE</b><br />
+Type: `DBType`<br />
+
+Type is the type of the database.
+Possible values are:
+  - "mongo": Use MongoDB.
+  - "postgres": Use PostgreSQL.
+  - "mysql": Use MySQL.
+
+### storage.analytics.connection_string
+ENV: <b>TYK_DB_STORAGE_ANALYTICS_CONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+ConnectionString is the connection string for the database.
+Overrides ReadConnectionString and WriteConnectionString.
+
+### storage.analytics.read_connection_string
+ENV: <b>TYK_DB_STORAGE_ANALYTICS_READCONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+ReadConnectionString is the connection string for read operations.
+Only used if ConnectionString is not set.
+
+### storage.analytics.write_connection_string
+ENV: <b>TYK_DB_STORAGE_ANALYTICS_WRITECONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+WriteConnectionString is the connection string for write operations.
+Only used if ConnectionString is not set.
 
 ### storage.analytics.mongo
 Connection setting for a mongo database
@@ -215,6 +283,43 @@ Type: `bool`<br />
 
 auto configure based on currently MySQL version
 
+### storage.analytics.table_sharding
+ENV: <b>TYK_DB_STORAGE_ANALYTICS_TABLESHARDING</b><br />
+Type: `bool`<br />
+
+Enable table sharding for the database
+
+### storage.logs.type
+ENV: <b>TYK_DB_STORAGE_LOGS_TYPE</b><br />
+Type: `DBType`<br />
+
+Type is the type of the database.
+Possible values are:
+  - "mongo": Use MongoDB.
+  - "postgres": Use PostgreSQL.
+  - "mysql": Use MySQL.
+
+### storage.logs.connection_string
+ENV: <b>TYK_DB_STORAGE_LOGS_CONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+ConnectionString is the connection string for the database.
+Overrides ReadConnectionString and WriteConnectionString.
+
+### storage.logs.read_connection_string
+ENV: <b>TYK_DB_STORAGE_LOGS_READCONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+ReadConnectionString is the connection string for read operations.
+Only used if ConnectionString is not set.
+
+### storage.logs.write_connection_string
+ENV: <b>TYK_DB_STORAGE_LOGS_WRITECONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+WriteConnectionString is the connection string for write operations.
+Only used if ConnectionString is not set.
+
 ### storage.logs.mongo
 Connection setting for a mongo database
 
@@ -266,8 +371,45 @@ Type: `bool`<br />
 
 auto configure based on currently MySQL version
 
+### storage.logs.table_sharding
+ENV: <b>TYK_DB_STORAGE_LOGS_TABLESHARDING</b><br />
+Type: `bool`<br />
+
+Enable table sharding for the database
+
 ### storage.uptime
 Where all the uptime related data is stored
+
+### storage.uptime.type
+ENV: <b>TYK_DB_STORAGE_UPTIME_TYPE</b><br />
+Type: `DBType`<br />
+
+Type is the type of the database.
+Possible values are:
+  - "mongo": Use MongoDB.
+  - "postgres": Use PostgreSQL.
+  - "mysql": Use MySQL.
+
+### storage.uptime.connection_string
+ENV: <b>TYK_DB_STORAGE_UPTIME_CONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+ConnectionString is the connection string for the database.
+Overrides ReadConnectionString and WriteConnectionString.
+
+### storage.uptime.read_connection_string
+ENV: <b>TYK_DB_STORAGE_UPTIME_READCONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+ReadConnectionString is the connection string for read operations.
+Only used if ConnectionString is not set.
+
+### storage.uptime.write_connection_string
+ENV: <b>TYK_DB_STORAGE_UPTIME_WRITECONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+WriteConnectionString is the connection string for write operations.
+Only used if ConnectionString is not set.
 
 ### storage.uptime.mongo
 Connection setting for a mongo database
@@ -320,11 +462,17 @@ Type: `bool`<br />
 
 auto configure based on currently MySQL version
 
+### storage.uptime.table_sharding
+ENV: <b>TYK_DB_STORAGE_UPTIME_TABLESHARDING</b><br />
+Type: `bool`<br />
+
+Enable table sharding for the database
+
 ### admin_secret
 ENV: <b>TYK_DB_ADMINSECRET</b><br />
 Type: `string`<br />
 
-This secret is to be used by a special set of endpoints that we call “Admin APIs”. This API is part of the super-admin context and therefore has a separate endpoint prefix `/admin`. It also requires a special auth header called admin-auth. This purpose of these endpoints is to allow functionality that regular Dashboard users should not have, such as create new organizations, create super users etc. See the [Admin API](https://tyk.io/docs/dashboard-admin-api) for more information on these endpoints.
+This secret is to be used by a special set of endpoints that we call “Admin APIs”. This API is part of the super-admin context and therefore has a separate endpoint prefix `/admin`. It also requires a special auth header called admin-auth. This purpose of these endpoints is to allow functionality that regular Dashboard users should not have, such as create new organizations, create super users etc. See the [Admin API](https://tyk.io/docs/dashboard-admin-api/) for more information on these endpoints.
 
 ### shared_node_secret
 ENV: <b>TYK_DB_NODESECRET</b><br />
@@ -528,7 +676,7 @@ Type: `bool`<br />
 To retrieve a list of all key hash listings, set this option to true.
 
 ### email_backend
-Tyk supports an interface-based email back-end system. We support `mandrill`, `sendgrid`, `amazonses` and `mailgun`. See [Outbound Email Configuration](https://tyk.io/docs/configure/outbound-email-configuration) for more details on configuring these different providers.
+Tyk supports an interface-based email back-end system. We support `mandrill`, `sendgrid`, `amazonses` and `mailgun`. See [Outbound Email Configuration](https://tyk.io/docs/configure/outbound-email-configuration/) for more details on configuring these different providers.
 
 ### email_backend.enable_email_notifications
 ENV: <b>TYK_DB_EMAILBACKEND_ENABLEEMAILNOTIFICATIONS</b><br />
@@ -701,13 +849,13 @@ SSL certificates used by your Gateway server. A list of certificate path to file
 ENV: <b>TYK_DB_HTTPSERVEROPTIONS_MINVERSION</b><br />
 Type: `uint16`<br />
 
-Minimum TLS version. See [TLS and SSL](https://tyk.io/docs/api-management/certificates).
+Minimum TLS version. Possible values: https://tyk.io/docs/api-management/certificates#supported-tls-versions
 
 ### http_server_options.ssl_ciphers
 ENV: <b>TYK_DB_HTTPSERVEROPTIONS_CIPHERSUITES</b><br />
 Type: `[]string`<br />
 
-Array of allowed cipher suites as defined [here](https://golang.org/pkg/crypto/tls/#pkg-constants)
+Array of allowed cipher suites as defined at https://golang.org/pkg/crypto/tls/#pkg-constants
 
 ### http_server_options.ssl_insecure_skip_verify
 ENV: <b>TYK_DB_HTTPSERVEROPTIONS_SSLINSECURESKIPVERIFY</b><br />
@@ -719,9 +867,11 @@ Disable TLS verifiation
 ENV: <b>TYK_DB_HTTPSERVEROPTIONS_PREFERSERVERCIPHERSUITES</b><br />
 Type: `bool`<br />
 
-A boolean value to control whether the server selects the preferred ciphersuite for the client, or the preferred ciphersuite for the server. If set to true, the server preferences in the order of the elements listed in `ssl_ciphers` is used.
+PreferServerCipherSuites is a legacy field and has no effect.
 
-For more information see [TLS and SSL](https://tyk.io/docs/api-management/certificates)
+More info: https://github.com/golang/go/issues/45430.
+
+Deprecated: PreferServerCipherSuites is ignored.
 
 ### security
 This section controls login limits for both the Dashboard and the Developer Portal. The path for you audit log is also set here.
@@ -842,13 +992,13 @@ When using SAML with embedded identity broker, is required to upload a certifica
 ENV: <b>TYK_DB_SECURITY_FORBIDADMINVIEWACCESSTOKEN</b><br />
 Type: `bool`<br />
 
-ForbidAdminViewAccessToken is a security feature that allows you to prevent the admin user from viewing the access token of a user. The default is false.
+ForbidAdminViewAccessToken is a security feature that allows you to prevent user admins from viewing the Dashboard API access tokens of other users. The default is `false`, however we recommend setting this to `true` for enhanced security.
 
 ### security.forbid_admin_reset_access_token
 ENV: <b>TYK_DB_SECURITY_FORBIDADMINRESETACCESSTOKEN</b><br />
 Type: `bool`<br />
 
-ForbidAdminResetAccessToken is a security feature that allows you to prevent the admin user from resetting the access token of a user. The default is false.
+ForbidAdminResetAccessToken is a security feature that allows you to prevent user admins from resetting the Dashboard API access tokens of other users. The default is `false`, however we recommend setting this to `true` for enhanced security.
 
 ### ui
 This section controls various settings for the look and feel of the Dashboard UI.
@@ -915,6 +1065,15 @@ ENV: <b>TYK_DB_UI_DEV</b><br />
 Type: `bool`<br />
 
 Temporary : Enable dev mode feature on UI
+
+### ui.onboarding
+Onboarding section controls the onboarding quick start wizard.
+
+### ui.onboarding.enabled
+ENV: <b>TYK_DB_UI_ONBOARDING_ENABLED</b><br />
+Type: `bool`<br />
+
+Enabled is a boolean flag that enables the onboarding quick start wizard.
 
 ### home_dir
 ENV: <b>TYK_DB_HOMEDIR</b><br />
@@ -1201,7 +1360,13 @@ Type: `bool`<br />
 ValidateSchemaDefaults enables validation of values provided in `default` fields against the declared schemas in the OpenAPI Document. Defaults to false.
 
 ### streaming
-Holds Tyk Streaming configuration
+Streaming holds the configuration for Tyk Streaming functionalities
+
+### streaming.enabled
+ENV: <b>TYK_DB_STREAMING_ENABLED</b><br />
+Type: `bool`<br />
+
+This flag enables the Tyk Streaming feature.
 
 ### labs
 Experimental and beta features configuration settings
