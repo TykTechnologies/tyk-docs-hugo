@@ -31,6 +31,6 @@ jobs:
         if: steps.changed-files.outputs.files != ''
         uses: rojopolis/spellcheck-github-actions@0.47.0
         with:
-          config_path: .spellcheck.yml
+          config_path: .spellcheck.yaml
           task_name: Markdown
           source_files: ${{ steps.changed-files.outputs.files }}
