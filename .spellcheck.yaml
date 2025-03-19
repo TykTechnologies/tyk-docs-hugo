@@ -1,7 +1,9 @@
 matrix:
   - name: Markdown
     aspell:
-      lang: en_US  # Enforces American English
+      aspell:
+        lang: en
+        d: en_US # American English
     dictionary:
       wordlists:
         - .wordlist.txt  # Custom keywords to ignore
