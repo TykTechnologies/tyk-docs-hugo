@@ -128,7 +128,7 @@ Tyk Dashboard's API and UI now support both YAML and JSON for Tyk OAS CRUD opera
 <details>
 <summary>Added Support for External References in OpenAPI Descriptions</summary>
 
-We've enhanced Tyk’s OAS import capabilities to support multi-part OpenAPI documents using the `$ref` feature. It allows users to import OAS definitions that are split across multiple files, making it easier to manage complex API specifications.
+We've enhanced Tyk's OpenAPI handling to allow the import of multi-part OpenAPI documents. This allows users to import OpenAPI descriptions that are split across multiple files, making it easier to manage complex API specifications.
 </details>
 </li>
 <li>
