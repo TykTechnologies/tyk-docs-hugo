@@ -17,6 +17,4 @@ matrix:
           ignores:
             - code
             - pre
-    sources:
-      - '!_site/*.md|!.wordlist.txt|!*.yml|!*.yaml|*/*.md|README.md'
     default_encoding: utf-8
