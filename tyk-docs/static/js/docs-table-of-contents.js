@@ -222,7 +222,11 @@ function activeTocToggle() {
   });
 }
 
+let isUserScrollingTOC = false; // Flag to track user scrolling in the TOC
+let isUserScrollingContent = false; // Flag to track user scrolling in the main content
+
 function highlightAnchor() {
+  console.log("highlightAnchor called");
   const contentTitles = $("h2, h3, h4, h5");
   let highestVisibleHeading = null;
 
@@ -238,14 +242,15 @@ function highlightAnchor() {
 
   if (highestVisibleHeading) {
     const currentSectionId = highestVisibleHeading.attr("id");
-    
+    console.log("currentSectionId", currentSectionId);
+
     // Remove active classes from all TOC items
     $(".toc__item, .sub_toc__item, .sub-sub-toc-item, .sub-sub-sub-toc-item").removeClass("js-active accordion-up");
 
     // Add active classes to the current TOC item
     const activeTocItem = $(
       `.toc__item[href="#${currentSectionId}"], 
-       .sub_toc__item[href="#${currentSectionId}"], 
+       .sub_toc__item[href="#${currentSectionId}"],
        .sub-sub-toc-item[href="#${currentSectionId}"], 
        .sub-sub-sub-toc-item[href="#${currentSectionId}"]`
     ).addClass("js-active accordion-up");
@@ -256,23 +261,52 @@ function highlightAnchor() {
       $(this).prev("a").addClass("accordion-up"); // Add the "accordion-up" class to the parent link
     });
 
-    // Ensure all sibling items at the same level are visible
-    activeTocItem.closest(".sub-accordion-content, .accordion-content, .sub-sub-accordion-content").children().each(function () {
-      $(this).show(); // Make all sibling items visible
-    });
+    // Ensure all sibling items within the same grandparent container are visible
+    const parentContainer = activeTocItem.closest(".sub-sub-accordion-content").parent(".sub-accordion-content");
+    if (parentContainer.length) {
+      console.log("Grandparent container found:", parentContainer);
+      parentContainer.children(".sub-sub-accordion-content").each(function () {
+        $(this).css("display", "block"); // Make all sibling items visible
+      });
+    } else {
+      console.log("Parent container found:", activeTocItem.closest(".sub-accordion-content, .accordion-content"));
+      activeTocItem.closest(".sub-accordion-content, .accordion-content").children().each(function () {
+        $(this).css("display", "block"); // Make all sibling items visible
+      });
+    }
 
     // Scroll the TOC container to the highlighted item on large screens
-    if (window.innerWidth >= 1024) {
-      if (activeTocItem.length) {
-        activeTocItem[0].scrollIntoView({ behavior: "smooth", block: "nearest" });
+    if (!isUserScrollingTOC && !isUserScrollingContent && window.innerWidth >= 1024) {
+      const tocContainer = $(".toc__content"); // Adjust this selector if needed
+      if (activeTocItem.length && tocContainer.length) {
+        const tocItemOffset = activeTocItem.offset().top - tocContainer.offset().top + tocContainer.scrollTop();
+        tocContainer.animate({ scrollTop: tocItemOffset }, 300); // Smooth scroll to position
       }
     }
   }
 }
 
+// Detect user scrolling in the TOC
+$(".toc__content").on("scroll", function () {
+  isUserScrollingTOC = true;
+  clearTimeout($.data(this, "scrollTimer"));
+  $.data(this, "scrollTimer", setTimeout(function () {
+    isUserScrollingTOC = false; // Re-enable automatic scrolling after user stops scrolling
+  }, 300));
+});
+
+// Detect user scrolling in the main content
+$(".page-content").on("scroll", function () {
+  isUserScrollingContent = true;
+  clearTimeout($.data(this, "scrollTimer"));
+  $.data(this, "scrollTimer", setTimeout(function () {
+    isUserScrollingContent = false; // Re-enable automatic scrolling after user stops scrolling
+  }, 300));
+});
+
 // Function to handle fragment in URL on page load for large screens
 function handleFragmentOnLoad() {
-  var fragment = window.location.hash;
+  const fragment = window.location.hash;
   if (fragment) {
     highlightAnchor();
   }
