@@ -138,7 +138,7 @@ Tyk Classic APIs do not have the base and child concept because all versions sha
 
 ### Controlling access to versioned APIs
 
-Tyk's access control model supports very granular permissions to versioned APIs using the `access_rights` assigned in the [access keys/tokens]({{< ref "api-management/policies##what-is-a-session-object" >}}) or [security policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}) that are applied to keys.
+Tyk's access control model supports very granular permissions to versioned APIs using the `access_rights` assigned in the [access keys/tokens]({{< ref "api-management/policies#what-is-a-session-object" >}}) or [security policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}) that are applied to keys.
 
 This means that you could restrict client access to only the [Base API]({{< ref "api-management/api-versioning#base-and-child-apis" >}}), while allowing developers to create and test new versions independently. These will only be added to the "routing table" in the Base API when the API owner is ready and access keys could then be updated to grant access to the new version(s).
 
