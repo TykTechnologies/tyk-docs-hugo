@@ -16,6 +16,4 @@ matrix:
           ignores:
             - code
             - pre
-    sources:
-      - 'dummy.md'  # Placeholder; will be overridden in the spellcheck Github action
     default_encoding: utf-8
