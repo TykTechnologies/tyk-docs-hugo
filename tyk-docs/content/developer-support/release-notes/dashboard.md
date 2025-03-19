@@ -251,7 +251,7 @@ Removed unsupported TLS versions 1.0 and 1.1 from the Tyk Classic API Designer s
 <summary>Enhanced OPA Rules for Token Reset and User Data Access</summary>
 
 Updated OPA rules in the Dashboard to allow all users to reset their own access tokens and view their user data, improving self-service while maintaining security.
-Customers with custom OPA rules must update their configurations to include the is_self_key_reset and is_me helper rules. Additionally, they must modify their rules to exclude cases where is_self_key_reset or is_me apply in order to enable this functionality.
+Note that users with custom OPA rules are strongly advised to update their configurations to include the `is_self_key_reset` and `is_me` helper rules. Additionally, they should modify their rules to exclude cases where `is_self_key_reset` or `is_me` apply, in order to enable this functionality.
 </details>
 </li>
 </ul>
