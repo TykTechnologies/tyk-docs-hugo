@@ -276,11 +276,11 @@ function highlightAnchor() {
     }
 
     // Scroll the TOC container to the highlighted item on large screens
-    if (!isUserScrollingTOC && !isUserScrollingContent && window.innerWidth >= 1024) {
+    if (!isUserScrollingTOC && window.innerWidth >= 1024) {
       const tocContainer = $(".toc__content"); // Adjust this selector if needed
       if (activeTocItem.length && tocContainer.length) {
         const tocItemOffset = activeTocItem.offset().top - tocContainer.offset().top + tocContainer.scrollTop();
-        tocContainer.animate({ scrollTop: tocItemOffset }, 300); // Smooth scroll to position
+        tocContainer.stop().animate({ scrollTop: tocItemOffset }, 300); // Smooth scroll to position
       }
     }
   }
@@ -302,6 +302,11 @@ $(".page-content").on("scroll", function () {
   $.data(this, "scrollTimer", setTimeout(function () {
     isUserScrollingContent = false; // Re-enable automatic scrolling after user stops scrolling
   }, 300));
+
+  // Call highlightAnchor to update the TOC while scrolling the main content
+  if (!isUserScrollingTOC) {
+    highlightAnchor();
+  }
 });
 
 // Function to handle fragment in URL on page load for large screens
