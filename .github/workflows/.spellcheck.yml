@@ -23,5 +23,5 @@ jobs:
         id: spellcheck
         uses: rojopolis/spellcheck-github-actions@v0
         with:
-          task_name: Markdown
+          task_name: ABCD
           source_files: ${{ steps.changed_files.outputs.all_changed_files }}
