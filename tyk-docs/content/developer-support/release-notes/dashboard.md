@@ -231,7 +231,7 @@ We’ve optimized form validation in the API Designer to enhance user experience
 <details>
 <summary>Updated Default Configuration for Tyk Operator and Sync Compatibility</summary>
 
-Modified the default values of allow_explicit_policy_id and enable_duplicate_slugs to true in all example configuration files, ensuring consistency and alignment with recommended settings.
+Modified the default values of `allow_explicit_policy_id` and `enable_duplicate_slugs` to `true` in the example Dashboard configuration file, to eliminate config problems when deploying Tyk Sync and Tyk Operator. This has no impact on existing deployments.
 </details>
 </li>
 <li>
