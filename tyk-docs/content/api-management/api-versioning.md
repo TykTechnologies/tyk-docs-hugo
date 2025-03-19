@@ -297,7 +297,7 @@ Starting from a Tyk OAS API (either newly created or an existing non-versioned A
 
     Configure the new version of your API as required.
 
-    By default, Tyk will have configured the versioning identifier location as Request Header, with the key `x-api-version`. You can modify this by following the steps [here]({{< ref "api-management/api-versioning#configure-versioning-settings" >}}), but if you're happy with this then that's it - your new API version is ready for use.
+    By default, Tyk will have configured the [versioning identifier location]({{< ref "api-management/api-versioning#version-identifier-location" >}}) as Request Header, with the key `x-api-version`. You can modify this if required, but if you're happy with this then that's it - your new API version is ready for use.
 
     Don't forget to select **Save API**.
 
@@ -331,7 +331,7 @@ You can, from the **Actions** menu:
 
 If you select **Edit Settings** you will open a pop-up that allows you to:
 - change the versioning identifier (location and/or key)
-- set the [versioning identifier pattern]({{< ref "api-management/api-versioning#stripping-url-path-version-and-default-fallback" >}}) (optional, if using URL path location)
+- set the [versioning identifier pattern]({{< ref "api-management/api-versioning#version-identifier-pattern" >}}) (optional, if using URL path location)
 - configure [fallback to default behaviour]({{< ref "api-management/api-versioning#fallback-to-default" >}})
 - configure [version identifier stripping]({{< ref "api-management/api-versioning#stripping-version-identifier" >}})
 
@@ -488,7 +488,7 @@ You can use the API Designer in the Tyk Dashboard to add and manage versions for
 
 4. **Set the default version**
 
-    You can choose any of your API versions to act as the [default]({{< ref "api-management/api-versioning#default-api-version" >}}).
+    You can choose any of your API versions to act as the [default]({{< ref "api-management/api-versioning#default-version" >}}).
 
     {{< img src="/img/dashboard/endpoint-designer/tyk-classic-version-set-default.png" alt="Choosing the default version for your API" >}}
 
