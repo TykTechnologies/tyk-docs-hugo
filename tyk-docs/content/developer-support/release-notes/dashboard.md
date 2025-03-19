@@ -236,7 +236,7 @@ Modified the default values of allow_explicit_policy_id and enable_duplicate_slu
 </li>
 <li>
 <details>
-<summary>Clarity on Supported TLS Versions in Tyk Classic API Designer</summary>
+<summary>Removed unsupported TLS options in Tyk Classic API Designer</summary>
 
 Removed unsupported TLS versions 1.0 and 1.1 from the Tyk Classic API Designer selector, improving clarity around supported TLS versions and enhancing security.
 </details>
