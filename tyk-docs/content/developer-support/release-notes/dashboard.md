@@ -194,6 +194,18 @@ The Dashboard now supports PostgreSQL 17, ensuring compatibility with the latest
 </li>
 <li>
 <details>
+<summary>Upgraded to Golang 1.23</summary>
+Tyk Dashboard now runs on Golang 1.23, bringing security and performance improvements. Key changes include:
+
+- unbuffered Timer/Ticker channels
+- removal of 3DES cipher suites
+- updates to X509KeyPair handling.
+
+**You may need to adjust your setup for compatibility**. For more detail please see the official Go [release notes](https://go.dev/doc/go1.23).
+</details>
+</li>
+<li>
+<details>
 <summary>Improved Dashboard Code Editor</summary>
 
 Upgraded the code editor component library and enhanced its styling for a better user experience. With this upgrade comes the facility to work in YAML or JSON and to switch seamlessly between formats.
