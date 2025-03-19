@@ -226,7 +226,6 @@ let isUserScrollingTOC = false; // Flag to track user scrolling in the TOC
 let isUserScrollingContent = false; // Flag to track user scrolling in the main content
 
 function highlightAnchor() {
-  console.log("highlightAnchor called");
   const contentTitles = $("h2, h3, h4, h5");
   let highestVisibleHeading = null;
 
@@ -242,8 +241,7 @@ function highlightAnchor() {
 
   if (highestVisibleHeading) {
     const currentSectionId = highestVisibleHeading.attr("id");
-    console.log("currentSectionId", currentSectionId);
-
+    
     // Remove active classes from all TOC items
     $(".toc__item, .sub_toc__item, .sub-sub-toc-item, .sub-sub-sub-toc-item").removeClass("js-active accordion-up");
 
@@ -264,12 +262,10 @@ function highlightAnchor() {
     // Ensure all sibling items within the same grandparent container are visible
     const parentContainer = activeTocItem.closest(".sub-sub-accordion-content").parent(".sub-accordion-content");
     if (parentContainer.length) {
-      console.log("Grandparent container found:", parentContainer);
       parentContainer.children(".sub-sub-accordion-content").each(function () {
         $(this).css("display", "block"); // Make all sibling items visible
       });
     } else {
-      console.log("Parent container found:", activeTocItem.closest(".sub-accordion-content, .accordion-content"));
       activeTocItem.closest(".sub-accordion-content, .accordion-content").children().each(function () {
         $(this).css("display", "block"); // Make all sibling items visible
       });
