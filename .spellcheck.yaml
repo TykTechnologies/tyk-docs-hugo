@@ -16,4 +16,7 @@ matrix:
           ignores:
             - code
             - pre
+    sources:
+      - tyk-docs/content/tyk-environment-variables.md
+      - tyk-docs/content/api-management/client-authentication.md
     default_encoding: utf-8
