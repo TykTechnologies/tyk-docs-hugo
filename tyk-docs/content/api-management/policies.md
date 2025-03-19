@@ -995,7 +995,7 @@ Metadata is also injected by other Tyk Components when keys are created using "g
 
 Metadata is exposed in several middleware for use in the middleware configuration:
 
-- [URL Rewrite]({{< ref "api-management/traffic-transformation#pattern" >}})
+- [URL Rewrite]({{< ref "transform-traffic/url-rewriting#pattern" >}})
 - [Request Header Transformation]({{< ref "api-management/traffic-transformation#injecting-dynamic-data-into-headers" >}})
 - [Response Header Transformation]({{< ref "api-management/traffic-transformation#injecting-dynamic-data-into-headers" >}})
 - [Request Body Transformation]({{< ref "api-management/traffic-transformation#data-accessible-to-the-middleware" >}})
