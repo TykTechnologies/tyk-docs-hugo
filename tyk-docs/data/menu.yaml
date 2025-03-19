@@ -233,10 +233,18 @@ menu:
         path: /api-management/data-graph
         category: Page
         show: True
-      - title: "Gateway Optimizations"
-        path: /api-management/gateway-optimizations
-        category: Page
+      - title: "Request Optimization"
+        category: Directory
         show: True
+        menu:
+        - title: "Response Caching"
+          path: /api-management/response-caching
+          category: Page
+          show: True
+        - title: "Batch Processing"
+          path: /api-management/batch-processing
+          category: Page
+          show: True
       - title: "API Observability"
         category: Directory
         show: True

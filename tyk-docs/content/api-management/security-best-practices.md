@@ -71,7 +71,7 @@ As an APIM product, Tyk Gateway can be configured to use the following out-of-th
 - [Circuit breaker]({{< ref "tyk-self-managed#circuit-breakers" >}})
 - [Payload size limiter]({{< ref "api-management/traffic-transformation#request-size-limits-overview" >}})
 - [Rate limiter / throttling]({{< ref "api-management/rate-limit#introduction" >}})
-- [Caching]({{< ref "api-management/gateway-optimizations#" >}})
+- [Caching]({{< ref "api-management/response-caching" >}})
 - [Enforced timeout]({{< ref "tyk-self-managed#enforced-timeouts" >}})
 - [IP restriction]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}})
 - [GraphQL query complexity limiting]({{< ref "api-management/graphql#complexity-limiting-1" >}})
@@ -303,7 +303,7 @@ This issue can be caused by both legitimate consumers and malicious attackers, b
 
 **Block Excessively Large Requests**: Place reasonable [limitations on payload sizes]({{< ref "api-management/traffic-transformation#request-size-limits-overview" >}}) to prevent oversized requests from reaching upstream servers, thereby avoiding the unnecessary consumption of resources.
 
-**Avoid Unnecessary Resource Usage**: Appropriate use of [caching]({{< ref "api-management/gateway-optimizations#" >}}) can reduce server resource consumption by simply returning cached responses instead of generating new ones. The extent to which caching can be used depends on the purpose of the endpoint, as it’s generally unsuitable for requests that modify data or responses that frequently change. Caching can be applied to [particular requests]({{< ref "api-management/gateway-optimizations#endpoint-caching" >}}) or enabled for an [entire API]({{< ref "api-management/gateway-optimizations#basic-caching" >}}), and can also be [controlled by the upstream API]({{< ref "api-management/gateway-optimizations#upstream-cache-control-1" >}}) or [invalidated programmatically]({{< ref "api-management/troubleshooting-debugging#how-to-clear--invalidate-api-cache" >}}).
+**Avoid Unnecessary Resource Usage**: Appropriate use of [caching]({{< ref "api-management/response-caching" >}}) can reduce server resource consumption by simply returning cached responses instead of generating new ones. The extent to which caching can be used depends on the purpose of the endpoint, as it’s generally unsuitable for requests that modify data or responses that frequently change. Caching can be applied to [particular requests]({{< ref "api-management/response-caching#endpoint-caching" >}}) or enabled for an [entire API]({{< ref "api-management/response-caching#basic-caching" >}}), and can also be [controlled by the upstream API]({{< ref "api-management/response-caching#upstream-cache-control-1" >}}) or [invalidated programmatically]({{< ref "api-management/troubleshooting-debugging#how-to-clear--invalidate-api-cache" >}}).
 
 **Limit Complex Long-Running Tasks**: Use [GraphQL complexity limiting]({{< ref "api-management/graphql#complexity-limiting-1" >}}) to prevent convoluted queries from being processed. Alternatively, [timeouts]({{< ref "tyk-self-managed#enforced-timeouts" >}}) can be used to terminate long-running requests that exceed a given time limit.
 
