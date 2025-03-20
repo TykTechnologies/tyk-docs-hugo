@@ -67,11 +67,6 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
     ```
 #### Changelog {#Changelog-v2.8.0}
 
-##### Added
-<ul>
-
-</ul>
-
 ##### Changed
 <ul>
 
@@ -91,6 +86,21 @@ SQLite support has been fully removed from MDCB.
 </details>
 </li>
 
+</ul>
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Resolved "Key Not Found" Errors Spamming MDCB Logs</summary>
+
+We've addressed an issue where MDCB logs were being flooded with "Key Not Found" errors, causing performance degradations in customer environments.
+With this fix, MDCB now handles these cases more efficiently, reducing log noise, preventing unnecessary resource consumption, and improving overall system stability.
+</details>
+    
+</li>
+  
 </ul>
 
 ---
