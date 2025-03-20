@@ -12,14 +12,14 @@ Batch Requests is a powerful Tyk Gateway feature that allows clients to make mul
 
 ### What are Batch Requests?
 
-Batch Requests act as an aggregator for multiple API calls. When a client sends a batch request to Tyk, the Gateway processes each request in the batch individually (applying all relevant middleware, authentication, and rate limiting) and returns a combined response containing the results of all requests.
+Batch Requests act as an aggregator for multiple API calls. When a client sends a batch request to Tyk, the Gateway processes each request individually (applying all relevant middleware, authentication, and rate limiting) and returns a combined response containing the results of all requests.
 
 ### Key Benefits
 
 - Reduced Network Overhead: Minimize the number of HTTP connections required for multiple related API operations
 - Improved Client Performance: Decrease latency by eliminating multiple round-trips to the server
 - Simplified Error Handling: Process success and failure responses for multiple operations in a single place
-- Maintained Security: Each individual request within a batch still goes through Tyk's full security pipeline
+- Maintained Security: Each request within a batch still goes through Tyk's full security pipeline
 - Flexible Execution: Choose between parallel or sequential execution of requests
 
 ### When to Use Batch Requests
@@ -46,7 +46,7 @@ This process ensures that security is maintained while providing the performance
 
 ### Configuration
 
-Batch Requests are disabled by default so you need to enable batch request support in your Tyk Gateway configuration:
+Batch Requests are disabled by default, so you need to enable batch request support in your Tyk Gateway configuration:
 
 `tyk.conf` file: `"enable_batch_request_support": true`
 or
@@ -54,7 +54,7 @@ environment variable: `TYK_GW_ENABLEBATCHREQUESTSUPPORT=true`
 
 ### Batch Request Endpoint
 
-When batch requests are enabled on the Gateway, Tyk automatically creates an additional logical endpoint for each API. This won't appear in the API definition and so is not added to the OpenAPI description. This `/tyk/batch/` endpoint accepts requests in a specific "batch" format and processes them as described in the next section.
+When batch requests are enabled on the Gateway, Tyk automatically creates an additional logical endpoint for each API. This won't appear in the API definition and so has not been added to the OpenAPI description. This `/tyk/batch/` endpoint accepts requests in a specific "batch" format and processes them as described in the next section.
 
 For example, if your API's listen path is
 
@@ -121,12 +121,12 @@ Where:
 In the example above, on receipt of a request to `POST /my-api/tyk/batch` with this payload, Tyk would process three requests in parallel:
 
 - `GET /my-api/resource/123` passing `x-header-1` and `Authorization` headers
-- `POST /my-api/resource/create` passing `x-header-2` and `Authorization` headers and the payload descrbied in `body`
+- `POST /my-api/resource/create` passing `x-header-2` and `Authorization` headers and the payload described in `body`
 - `GET /my-api/resource/invalid` passing `x-header-3` and `Authorization` headers
 
 ### Batch Response Format
 
-When you send a batch request to Tyk, each individual request within the batch is processed independently. This means that some requests in a batch may succeed while others fail. Tyk provides detailed response information for each request in the batch to help you identify and handle errors appropriately.
+When you send a batch request to Tyk, each request within the batch is processed independently. This means that some requests in a batch may succeed while others fail. Tyk provides detailed response information for each request in the batch to help you identify and handle errors appropriately.
 
 The response from a batch request is an array of response objects, each corresponding to one of the requests in the batch in the order that they appeared in the `requests` array:
 
@@ -171,11 +171,11 @@ Each response object contains:
 
 ### Response Status Codes
 
-The batch endpoint itself returns an `HTTP 200 OK` status code as long as the batch request was properly formatted and processed, regardless of whether individual requests within the batch succeeded or failed.
+The batch endpoint returns an `HTTP 200 OK` status code as long as the batch request was properly formatted and processed, regardless of whether individual requests within the batch succeeded or failed.
 
 To determine the success or failure of individual requests, you need to examine the status code for each request in the response array.
 
-In the previous example, we can see that the first two requests were successful, returning `HTTP 200 OK` and `HTTP 201 Created`, whereas the third failed returning `HTTP 404 Not found`.
+In the previous example, we can see that the first two requests were successful, returning `HTTP 200 OK` and `HTTP 201 Created`, whereas the third failed, returning `HTTP 404 Not found`.
 
 ## Invoking Batch Requests from Custom JavaScript Middleware
 
@@ -193,13 +193,13 @@ Requests to the `/tyk/batch/` endpoint do not require any authentication, howeve
 
 As this endpoint is keyless, no rate limiting is applied to the requests to `/tyk/batch/`.
 
-Each request in a batch is processed through Tyk's full security pipeline, including authentication and rate limiting, so API keys or other authentication credentials must be included in each individual request within the batch.
+Each request in a batch is processed through Tyk's full security pipeline, including authentication and rate limiting, so API keys or other authentication credentials must be included in each request within the batch.
 
 Rate limiting and quotas are applied to each request in the batch individually - so a batch containing three requests using the same API key will add three to their rate limit and quota counts. This could lead to one or more of the batched requests being rejected.
 
-This means that, whilst anyone can make a request to the batch endpoint, they can only successfully execute requests within the batch by providing valid authentication credentials in those requests.
+This means that, whilst anyone can request the batch endpoint, they can only successfully execute requests within the batch by providing valid authentication credentials in those requests.
 
-This means that the batch endpoint could potentially be used for reconnaissance, as attackers might determine which APIs exist based on responses. If this is a concern then you could consider:
+This means the batch endpoint could be used for reconnaissance, as attackers might determine which APIs exist based on responses. If this is a concern, then you could consider:
 
 - using IP allowlists to restrict access to your API
 - using [Internal Looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}) to put the batch request API behind a protected API
@@ -223,7 +223,7 @@ We recommend that you consider the following best practice guidelines when using
 
 ## Troubleshooting
 
-There are some common issues that can be encountered when using Tyk's batch requests feature.
+Some common issues can be encountered when using Tyk's batch requests feature.
 
 ### Missed trailing slash
 
@@ -236,8 +236,8 @@ Several specific issues can arise when using batch requests with custom domains:
 **DNS Resolution**: The Tyk Gateway needs to be able to resolve the custom domain internally. If the Gateway can't resolve the custom domain name, batch requests will fail with connection errors, even though external requests to the same API work fine.
 **Solution**: Ensure that the Tyk Gateway host can resolve the custom domain, either through proper DNS configuration or by adding entries to the host's `/etc/hosts` file.
 
-**Internal vs. External Routing**: When a batch request is made to a custom domain, Tyk needs to route the individual requests within the batch correctly. If the custom domain is only configured for external access but not for internal routing, the batch requests may fail.
-**Solution**: Configure your custom domain to work with both external and internal routing.
+**Internal vs. External Routing**: When a batch request is made to a custom domain, Tyk must route the individual requests within the batch correctly. If the custom domain is only configured for external access but not for internal routing, the batch requests may fail.
+**Solution**: Configure your custom domain to work with external and internal routing.
 
 **Certificate Validation**: If your custom domain uses HTTPS, certificate validation issues can occur during the internal processing of batch requests.
 **Solution**: Ensure that the certificates for your custom domain are properly configured and trusted by the Tyk Gateway.
