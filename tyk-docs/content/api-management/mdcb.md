@@ -255,11 +255,11 @@ sudo yum install tyk-sink
 
 ### Installing in a Kubernetes Cluster with our Helm Chart
 
-The [Tyk Control Plane]({{<ref "product-stack/tyk-charts/tyk-control-plane-chart">}}) helm chart is pre-configured to install Tyk control plane for multi data center API management from a single Dashboard with the MDCB component.
+The [Tyk Control Plane]({{< ref "product-stack/tyk-charts/tyk-control-plane-chart" >}}) helm chart is pre-configured to install Tyk control plane for multi data center API management from a single Dashboard with the MDCB component.
 
 Below is a concise instruction on how to set up an MDCB Control Plane with Redis and PostgreSQL.
 
-To access the comprehensive installation instructions and configuration options, please see [Tyk Control Plane Helm Chart]({{<ref "product-stack/tyk-charts/tyk-control-plane-chart">}}).
+To access the comprehensive installation instructions and configuration options, please see [Tyk Control Plane Helm Chart]({{< ref "product-stack/tyk-charts/tyk-control-plane-chart" >}}).
 
 #### Prerequisites
 - [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
@@ -367,7 +367,7 @@ Ensure that you are installing PostgreSQL versions that are supported by Tyk. Pl
 
     Now Tyk Dashboard and Tyk MDCB should be accessible through service `dashboard-svc-tyk-cp-tyk-dashboard` at port `3000` and `mdcb-svc-tyk-cp-tyk-mdcb` at port `9091` respectively. You can login to Dashboard using the admin email and password to start managing APIs.
 
-    You can use the MDCB connection details included in the installation output, to install the [MDCB Data Plane]({{<ref "api-management/mdcb#setup-mdcb-data-plane">}}).
+    You can use the MDCB connection details included in the installation output, to install the [MDCB Data Plane]({{< ref "api-management/mdcb#setup-mdcb-data-plane" >}}).
 
 ### Configuration
 If you install MDCB component with package, modify your `/opt/tyk-sink/tyk_sink.conf` file as follows:
@@ -454,7 +454,7 @@ From MDCB v2.7.0, there are 2 health check services available:
 1. `/liveness` endpoint returns a `HTTP 200 OK` response when the service is operational.
 2. `/readiness` endpoint returns a `HTTP 200 OK` response when MDCB is ready to accept requests. It ensures that dependent components such as Redis and data store are connected, and the gRPC server is ready for connection.
 
-See [MDCB API]({{<ref "tyk-mdcb-api">}}) for details of the endpoints.
+See [MDCB API]({{< ref "tyk-mdcb-api" >}}) for details of the endpoints.
 
 In MDCB v2.6.0 or earlier, MDCB only offers one health check endpoint at `/health` via the port defined by the `healthcheck_port` configuration setting. The default port is `8181`. The `/health` endpoint is also available on v2.7.0 or later for backward compatibility.
 
@@ -553,7 +553,7 @@ curl -H "x-tyk-authorization: <secured-endpoint-secret>" https://my-mdcb-host:81
 
 ### Enabling MDCB on Organization Object on Tyk Dashboard
 
-Before a worker gateway can connect to MDCB, it is important to enable the organization that owns all the APIs to be distributed to be allowed to utilize Tyk MDCB. To do this, the organization record needs to be modified with two flags using the [Tyk Dashboard Admin API](https://tyk.io/docs/dashboard-admin-api/).
+Before a worker gateway can connect to MDCB, it is important to enable the organization that owns all the APIs to be distributed to be allowed to utilize Tyk MDCB. To do this, the organization record needs to be modified with two flags using the [Tyk Dashboard Admin API]({{< ref "dashboard-admin-api" >}}).
 
 To make things easier, we will first set a few [environment variables]({{< ref "tyk-environment-variables" >}}):
 
@@ -636,7 +636,7 @@ Your Data Plane can be in the same physical data center as the Control Plane wit
 
 ### Installing in a Kubernetes Cluster with our Helm Chart
 
-The [Tyk Data Plane]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart">}}) helm chart is pre-configured to install Tyk Gateway and Tyk Pump that connects to MDCB or Tyk Cloud, our SaaS MDCB Control Plane. After setting up Tyk Control Plane with Helm Chart, obtain the required connection details from installation output and configure data plane chart as below. For Tyk Cloud users, following [Tyk Cloud instructions]({{<ref "tyk-cloud#deploy-hybrid-gateways">}}) to deploy your hybrid gateways.
+The [Tyk Data Plane]({{< ref "product-stack/tyk-charts/tyk-data-plane-chart" >}}) helm chart is pre-configured to install Tyk Gateway and Tyk Pump that connects to MDCB or Tyk Cloud, our SaaS MDCB Control Plane. After setting up Tyk Control Plane with Helm Chart, obtain the required connection details from installation output and configure data plane chart as below. For Tyk Cloud users, following [Tyk Cloud instructions]({{< ref "tyk-cloud#deploy-hybrid-gateways" >}}) to deploy your hybrid gateways.
 
 #### Prerequisites
 
@@ -644,7 +644,7 @@ The [Tyk Data Plane]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart">}}) 
 * [Helm 3+](https://helm.sh/docs/intro/install/)
 * Connection details to remote control plane from the tyk-control-plane installation output.
 
-The following quick start guide explains how to use the [Tyk Data Plane Helm chart]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart">}}) to configure Tyk Gateway that includes:
+The following quick start guide explains how to use the [Tyk Data Plane Helm chart]({{< ref "product-stack/tyk-charts/tyk-data-plane-chart" >}}) to configure Tyk Gateway that includes:
 - Redis for key storage
 - Tyk Pump to send analytics to Tyk Control Plane and Prometheus
 
@@ -652,7 +652,7 @@ At the end of this quickstart Tyk Gateway should be accessible through service `
 
 1. **Set connection details**
 
-    Set the below environment variables and replace values with connection details to your MDCB control plane. See [Tyk Data Plane]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart#obtain-remote-control-plane-connection-details-from-tyk-control-plane-chart">}}) documentation on how to get the connection details.
+    Set the below environment variables and replace values with connection details to your MDCB control plane. See [Tyk Data Plane]({{< ref "product-stack/tyk-charts/tyk-data-plane-chart#obtain-remote-control-plane-connection-details-from-tyk-control-plane-chart" >}}) documentation on how to get the connection details.
 
     ```bash
     USER_API_KEY=9d20907430e440655f15b851e4112345
@@ -690,7 +690,7 @@ At the end of this quickstart Tyk Gateway should be accessible through service `
 
     Now Tyk Gateway should be accessible through service `gateway-svc-tyk-dp-tyk-gateway` at port `8080`. Pump is also configured with Hybrid Pump which sends aggregated analytics to MDCB, and Prometheus Pump which expose metrics locally at `:9090/metrics`.
 
-    For the complete installation guide and configuration options, please see [Tyk Data Plane Chart]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart">}}).
+    For the complete installation guide and configuration options, please see [Tyk Data Plane Chart]({{< ref "product-stack/tyk-charts/tyk-data-plane-chart" >}}).
 
 ### Configuring an existing Tyk Gateway
 If you have Redis and a working Tyk Gateway deployed, follow below steps to configure your gateways to work in RPC mode.
@@ -978,7 +978,7 @@ The synchroniser feature is disabled by default. To enable it, please configure 
 
     Set `"security.private_certificate_encoding_secret"` with the certificate encoding secret. This is required because MDCB would decode the certificate first before propagating it to worker gateways. The worker Gateways could encode the certificate with their own secret.
 
-    Please see [MDCB configuration options](https://tyk.io/docs/tyk-multi-data-centre/mdcb-configuration-options/#securityprivate_certificate_encoding_secret) for reference
+    Please see [MDCB configuration options]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#securityprivate_certificate_encoding_secret" >}}) for reference
 
 ### Configuring the Synchroniser for Tyk Cloud
 

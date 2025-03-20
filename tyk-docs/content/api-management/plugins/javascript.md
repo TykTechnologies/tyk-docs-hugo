@@ -122,7 +122,7 @@ Custom JS plugins sit in the [middleware processing chain]({{< ref "api-manageme
 
 ##### Returning from Virtual Endpoint
 
-Unlike custom JS plugins, Virtual Endpoints always [terminate the request]({{< ref "api-management/traffic-transformation#working-14" >}}) so have a different method of returning from the JS function.
+Unlike custom JS plugins, Virtual Endpoints always [terminate the request]({{< ref "api-management/traffic-transformation#working-13" >}}) so have a different method of returning from the JS function.
 
 The function must return a `responseObject`. This is crucial as it determines the HTTP response that will be sent back to the client. The structure of this object is defined to ensure that the virtual endpoint can communicate the necessary response details back to the Tyk Gateway, which then forwards it to the client.
 
@@ -681,9 +681,9 @@ For higher performance, the plugin could be written in Golang, and a connection 
     ```
 
     ##### How to Import?
-    [Tyk Pro](https://tyk.io/docs/tyk-configuration-reference/import-apis/#import-apis-via-the-dashboard)
+    [Tyk Self-Managed]({{< ref "api-management/gateway-config-managing-classic#import-an-api" >}})
 
-    [Tyk CE](https://tyk.io/docs/try-out-tyk/tutorials/create-api/)
+    [Tyk OSS]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}})
 
 4. **Run WAF ModSecurity Using Docker**
 

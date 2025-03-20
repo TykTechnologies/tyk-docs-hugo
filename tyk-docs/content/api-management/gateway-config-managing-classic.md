@@ -487,7 +487,7 @@ Tyk supports API mocking using our versioning `use_extended_paths` setup, adding
 ],
 ```
 
-See [Versioning]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}}) for more details.
+See [Versioning]({{< ref "api-management/gateway-config-tyk-classic#tyk-classic-api-versioning" >}}) for more details.
 
 ### Import APIs via the Dashboard API
 
@@ -533,7 +533,7 @@ See [Versioning]({{< ref "api-management/api-versioning#tyk-classic-api-versioni
 
 4. **Click "Generate API"**
 
-    Your API will appear in your APIs list. If you select **EDIT** from the **ACTIONS** drop-down list, you can see the endpoints (from the [Endpoint Designer](https://tyk.io/docs/transform-traffic/endpoint-designer/)) that have been created as part of the import process.
+    Your API will appear in your APIs list. If you select **EDIT** from the **ACTIONS** drop-down list, you can see the endpoints (from the [Endpoint Designer]({{< ref "api-management/dashboard-configuration#exploring-api-endpoint-designer" >}})) that have been created as part of the import process.
 
 ### Creating a new API Version by importing an API Definition using Tyk Dashboard
 

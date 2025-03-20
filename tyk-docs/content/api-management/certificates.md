@@ -322,7 +322,7 @@ This example shows how to enable a custom domain (`buraksekili.dev`) with a TLS 
 
 ## Using Tyk Certificate Storage
 
-In Tyk Gateway 2.4 and Tyk Dashboard 1.4 we added [Mutual TLS support](https://tyk.io/docs/security/tls-and-ssl/mutual-tls/) including special Certificate storage, which is used to store all kinds of certificates from public to server certificates with private keys.
+In Tyk Gateway 2.4 and Tyk Dashboard 1.4 we added [Mutual TLS support]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) including special Certificate storage, which is used to store all kinds of certificates from public to server certificates with private keys.
 
 {{< note success >}}
 **Note**  
@@ -380,7 +380,7 @@ You can set `proxy.transport.ssl_insecure_skip_verify` in an API definition to a
 
 ## Internal Proxy Setup
 
-From v2.9.3 you can also specify a custom proxy and set the minimum TLS versions and any SSL ciphers within your API definitions. See [Internal Proxy Setup]({{< ref "api-management/gateway-config-tyk-classic#internal-proxy-setup" >}}) for more details.
+From v2.9.3 you can also specify a custom proxy and set the minimum TLS versions and any SSL ciphers within your API definitions. See [Internal Proxy Setup]({{< ref "api-management/gateway-config-tyk-classic#proxy-transport-settings" >}}) for more details.
 
 ## Certificate Pinning
 
