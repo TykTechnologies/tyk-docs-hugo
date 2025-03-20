@@ -3,8 +3,7 @@
  */
 
 var buildTableOfContents = function () {
-  var ToCContainer = $(".documentation-table-of-contents-container"),
-    ToC = $(".documentation-table-of-contents"),
+  var ToC = $(".documentation-table-of-contents"),
     ToContent = $(".toc__content"),
     ToClbl = $('<span class="toc__label">On this page</span>'),
     contentTitles = $("h2, h3, h4, h5", "#main-content");
