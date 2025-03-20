@@ -128,7 +128,7 @@ The Ops team should also take reponsibility for monitoring the APIs for errors a
 
 Tyk offers the following features to support improper inventory management:
 
-- [Versioning]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}}) allows newer versions of APIs to coexist with the older versions, facilitating deprecation and sunsetting.
+- [Versioning]({{< ref "api-management/api-versioning" >}}) allows newer versions of APIs to coexist with the older versions, facilitating deprecation and sunsetting.
 - [Sunsetting]({{< ref "api-management/api-versioning#sunsetting-api-versions" >}}) allows versions to be configured with an Expiry Time, ensuring that a version is not accessible after the expiry date.
 - [Key expiry]({{< ref "api-management/policies#access-key-expiry" >}}) ensures that access to an API is short lived, with a per key configurable Time to Live (TTL) for which a token remains valid before it expires. The implementation of key expiry, with a configurable Time To Live (TTL), mitigates the impact of compromised tokens by narrowing the window of vulnerability. Setting a TTL reduces the time frame during which a compromised token could be exploited, enhancing overall security.
 - Tyk Developer Portal catalogs APIs and facilitates granting access to them.  Integrated with a CMDB it can help keep documentation updated.
@@ -145,7 +145,7 @@ Attackers may identify and target the third party APIs/services used by an API. 
 It is the responsibility of the API to provide protection against these attacks. However, if the organization uses the Gateway as a forwarding proxy to third party APIs, then the following features could be used:
 
 - [JSON Schema validation]({{< ref "api-management/traffic-transformation#request-validation-using-classic" >}}) to validate that an incoming data payload meets a defined schema. Payloads that do not adhere to the schema are rejected.
-- [Versioning]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}}) allows newer versions of third party APIs to coexist with the older versions, facilitating deprecation and sunsetting.
+- [Versioning]({{< ref "api-management/api-versioning" >}}) allows newer versions of third party APIs to coexist with the older versions, facilitating deprecation and sunsetting.
 - [TLS]({{< ref "api-management/certificates" >}}) to ensure that clients use the right service and encrypt traffic.
 
 
@@ -372,7 +372,7 @@ Make sure to keep your private key safe!
 
 APIs need to be managed and governed just like any other resource, otherwise organizations risk losing track of their API estate and becoming unaware of potentially vulnerable APIs running within their infrastructure. This risk is magnified as the number of teams, environments and APIs increases. Use API management as part of overarching business processes to control how APIs are accessed, managed and deployed.
 
-**Restrict Version Availability**: Enforce the expiry of [API versions]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}}) that are planned for deprecation, by setting a sunset date, beyond which they will not be accessible.
+**Restrict Version Availability**: Enforce the expiry of [API versions]({{< ref "api-management/api-versioning" >}}) that are planned for deprecation, by setting a sunset date, beyond which they will not be accessible.
 
 **Enforce Key Expiry**: In many situations it’s best to issue API keys that have a short, finite lifetime, especially when serving anonymous, external consumers. Set [expiry dates]({{< ref "api-management/policies#access-key-expiry" >}}) for API keys, or use ephemeral credentials with complementary authentication techniques that support key renewal, such as [OAuth 2.0 refresh tokens]({{< ref "api-management/client-authentication#using-refresh-tokens" >}}) and [dynamic client registration]({{< ref "portal/api-provider#dynamic-client-registration" >}}). Then, should an API key fall into the wrong hands, there’s a chance that it has already expired.
 
