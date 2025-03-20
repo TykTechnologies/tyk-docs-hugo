@@ -20,6 +20,10 @@ Our minor releases are supported until our next minor comes out. This would be <
 
 #### Release Highlights
 
+<Add Release Summary>
+
+For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-vX.Y.Z) below.
+
 #### Breaking Changes
 This release has no breaking changes.
 
