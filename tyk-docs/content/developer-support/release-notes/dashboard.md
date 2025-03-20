@@ -175,6 +175,14 @@ Tyk Dashboard now supports integration with upstream services secured using Basi
 We have introduced a guided onboarding experience for Tyk Cloud users to help new users start effortlessly. Our step-by-step guide walks you through creating your first API, setting up policies and keys, testing endpoints, and exploring analytics - ensuring you can navigate the Dashboard and unlock its full potential from day one.
 </details>
 </li>
+<li>
+<details>
+<summary>View Audit Logs in the Dashboard UI</summary>
+
+Tyk Dashboard now provides enhanced visibility into user activity by allowing audit logs to be stored in a database and viewed directly in the Dashboard UI. Previously, these logs were only written to local files, limiting accessibility. With this update, admins can filter and review user actions more easily, improving security, and compliance tracking.
+</details>
+</li>
+
 </ul>
 
 ##### Changed
