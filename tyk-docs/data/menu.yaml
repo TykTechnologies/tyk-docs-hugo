@@ -83,7 +83,6 @@ menu:
             show: True
       - title: "Client Authentication"
         category: Directory
->>>>>>> ad7d7ff28 ([DX-1888] Split Pages and add H1 Headings (#6093))
         show: True
         menu:
         - title: "Overview"

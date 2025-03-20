@@ -1240,19 +1240,11 @@ spec:
 
 #### JWT
 
-<<<<<<< HEAD
 This configuration uses [JWT tokens]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}) for authentication.
 
 Users can configure JWT authentication by defining the following fields:
 
 - `jwt_signing_method`: Specify the method used to sign the JWT. Refer to [JWT Signing Method]({{< ref "api-management/client-authentication#set-up-jwt-signing-method" >}}) for supported methods.
-=======
-This configuration uses [JWT tokens]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens">}}) for authentication.
-
-Users can configure JWT authentication by defining the following fields:
-
-- `jwt_signing_method`: Specify the method used to sign the JWT. Refer to [JWT Signing Method]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#set-up-jwt-signing-method">}}) for supported methods.
->>>>>>> ad7d7ff28 ([DX-1888] Split Pages and add H1 Headings (#6093))
 - `jwt_source`: Specify the public key used for verifying the JWT.
 - `jwt_identity_base_field`: Define the identity source, typically set to `sub` (subject), which uniquely identifies the user or entity.
 - `jwt_policy_field_name`: Specify the claim within the JWT payload that indicates the policy ID to apply.
