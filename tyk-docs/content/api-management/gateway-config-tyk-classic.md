@@ -50,14 +50,47 @@ Whilst this allows for easy management of all the API versions, it limits the nu
 
 Tyk enforces strict access control to specific versions of APIs if these are specified in the access token (key). If, once Tyk has identified the API to load, and has allowed the access key through, it will check the access token's session data for access permissions. If it finds none, it will let the token through. However, if there are permissions and versions defined, it will be strict in **only** allowing access to that version.
 
+Key things to note when configuring versioning for a Tyk Classic API:
+
+- you must set `version_data.not_versioned` to `false` for Tyk to treat the API as versioned
+- `version_data.default_version` must contain the `name` of the version that shall be treated as default (for access control and default fallback)
+- you can use `version_data.paths` to configure endpoint-level ignore, allow and block lists (which can be used to configure a mock response)
+- you must use `version_data.extended_paths` to configure other endpoint-level middleware
+- common versioning configuration is mostly contained within the [definition]({{< ref "api-management/gateway-config-tyk-classic#common-versioning-configuration" >}}) object
+- configuration for the different versions is contained within the [version_data]({{< ref "api-management/gateway-config-tyk-classic#version-specific-configuration" >}}) object
+  - this also contains some common configuration (`not_versioned` and `default_version`)
+
+When you first create an API, it will not be "versioned" (i.e. `not_versioned` will be set to `true`) and there will be a single version with the name `Default` created in the `version_data` section.
+
+### Common versioning configuration
+
 **Field: `definition`**
-This object in the root of the Tyk Classic API definition handles information related to where Tyk should look for the version identifier.
+This object in the root of the Tyk Classic API definition handles information related to how Tyk should handle requests to the versioned API
 
 **Field: `definition.location`**
-Can either be: `header`, `url-param` or `url`. Tyk will then look for the version identifier in the appropriate location.
+Used to configure where the versioning identifier should be provided, one of:`header`, `url`, `url-param`.
 
 **Field: `definition.key`**
-The name of the key that contains the versioning identifier.
+The name of the key that contains the versioning identifier if `definition.location` is set to `header` or `url-param`.
+
+**Field: `definition.strip_versioning_data`**
+Set this to `true` to remove the versioning identifier when creating the upstream (target) URL.
+
+**Field: `definition.fallback_to_default`**
+Set this to `true` to invoke the default version if an invalid version is specified in the request.
+
+**Field: `definition.url_versioning_pattern`**
+Available from Tyk 5.5.0, if you are have set both `definition.strip_versioning_data` and `definition.fallback_to_default` to `true` and are using `definition.location=url` you can configure this with a regex that matches the format that you use for the versioning identifier (`versions.{version-name}.name`)
+
+The following fields are either deprecated or otherwise not used for Tyk Classic API versioning and should be left with their default values:
+
+- `definition.default`: defaults to an empty string `""`
+- `definition.enabled`: defaults to `false`
+- `definition.name`: defaults to an empty string `""`
+- `definition.strip_path`: deprecated field; defaults to `false`
+- `definition.versions`: defaults to an empty array `{}`
+
+### Version specific configuration
 
 **Field: `version_data`**
 This object contains the version status and configuration for  your API
@@ -65,8 +98,11 @@ This object contains the version status and configuration for  your API
 **Field: `version_data.not_versioned`**
 Set this to `false` to treat this as a versioned API. If you are not using versioning for this API you must have a single `Default` entry in the `version_data.versions` map.
 
+**Field: `version_data.default_version`**
+Used to configure where the versioning identifier should be provided, one of:`header`, `url`, `url-param`.
+
 **Field: `version_data.versions`**
-A list of objects that describe the versions of the API; there must be at least one (`Default`) version defined for any API (even non-versioned APIs). Each version of your API should be defined here with a unique `name`. For example:
+A list of objects that describe the versions of the API; there must be at least one (`Default`) version defined for any API (even non-versioned APIs). Each version of your API should be defined here with a unique `name`.
 
 **Field: `version_data.versions.{version-name}.name`**
 An identifier for this version of the API, for example `Default` or `v1`. The value given here is what will Tyk will match against the value in the `definition.key`.
@@ -78,7 +114,7 @@ If a value is set then Tyk will automatically deprecate access to the API after 
 This object enables configuration of the basic allow list, block list and ignore authentication middleware for specific endpoints in the API version. You can also configure these and many other per-endpoint middleware using the `extended_paths` field.
 
 **Field: `version_data.versions.{version-name}.override_target`**
-You can configure a different target URL here which will be used instead of the value stored in `proxy.target_url`. Note that this will also override (and so is not compatible with) upstream load balancing and Service Discovery, if configured for this API.
+You can configure a different target URL here which will be used instead of the value stored in `proxy.target_url`, redirecting requests to a different hostname or domain. Note that this will also override (and so is not compatible with) upstream load balancing and Service Discovery, if configured for this API.
 
 **Field: `version_data.versions.{version-name}.global_headers`**
 A `key:value` map of HTML headers to inject to the request.
