@@ -4303,7 +4303,7 @@ Added support to configure *OpenTelemetry* [sampling types and rates]({{< ref "t
 <details>
 <summary>Added span attributes to simplify identifying Tyk API and request meta-data per request</summary>
 
-Added span attributes to simplify identifying Tyk API and request meta-data per request. Example span attributes include: *tyk.api.id*, *tyk.api.name*, *tyk.api.orgid*, *tyk.api.tags*, *tyk.api.path*, *tyk.api.version*, *tyk.api.apikey*, *tyk.api.apikey.alias* and *tyk.api.oauthid*. This allows users to use *OpenTelemetry* [semantic conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/README.md) to filter and create metrics for increased insight and observability.
+Added span attributes to simplify identifying Tyk API and request meta-data per request. Example span attributes include: *tyk.api.id*, *tyk.api.name*, *tyk.api.orgid*, *tyk.api.tags*, *tyk.api.path*, *tyk.api.version*, *tyk.api.apikey*, *tyk.api.apikey.alias* and *tyk.api.oauthid*. This allows users to use *OpenTelemetry* [semantic conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.25.0/specification/trace/semantic_conventions/README.md) to filter and create metrics for increased insight and observability.
 </details>
 </li>
 <li>
@@ -5370,7 +5370,7 @@ We have bumped our major Tyk Gateway version from 2 to 3, a long overdue change 
 Importantly, such a big change in versions does not mean that we going to break backward compatibility. More-over we are restructuring our internal release strategy to guarantee more stability and to allow us to deliver all Tyk products at a faster pace. We aim to bring more clarity to our users on the stability criteria they can expect, based on the version number.
 Additionally we are introducing Long Term Releases (also known as LTS).
 
-Read more about this changes in our blogpost: https://tyk.io/introducing-long-term-support-some-changes-to-our-release-process-product-versioning/
+Read more about this changes in our blogpost: https://tyk.io/blog/introducing-long-term-support-some-changes-to-our-release-process-product-versioning/
 
 
 ##### Universal Data Graph and GraphQL
