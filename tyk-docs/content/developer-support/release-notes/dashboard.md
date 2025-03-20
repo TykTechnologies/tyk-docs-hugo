@@ -1,8 +1,8 @@
 ---
 title: Tyk Dashboard Release Notes
 date: 2024-10-08T15:51:11Z
-description: "Release notes documenting updates, enhancements, and changes for Tyk Dashboard versions within the 5.6.X series."
-tags: ["Tyk Dashboard", "Release notes", "v5.6", "5.6.0", "5.6", "changelog"]
+description: "Release notes documenting updates, enhancements, and changes for Tyk Dashboard."
+tags: ["Tyk Dashboard", "Release notes", "changelog"]
 aliases:
   - /product-stack/tyk-dashboard/release-notes/overview
   - /product-stack/tyk-dashboard/release-notes/version-3.0
@@ -43,7 +43,24 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-We are thrilled to announce new updates and improvements in Tyk 5.8.0, delivering more control, flexibility, and performance.  For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.0" >}}) below.
+With Tyk 5.8.0 we are delighted to unlock the power and flexibility of Tyk OAS for all users, with full feature parity with the legacy Tyk Classic style for REST APIs. We are thrilled to announce new updates and improvements in Tyk 5.8.0, delivering more control, flexibility, and performance.  For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.0" >}}) below.
+
+##### Full support for API configuration using Tyk OAS
+
+We have completed the journey with Tyk OAS that started back in Tyk 4.1 - and now anything that you can configure using the Tyk Classic API definition is also available in the Tyk OAS API definition. Tyk OAS is now the recommended API style for all REST services, with Tyk Classic recommended for use only for GraphQL and TCP services.
+
+With Tyk OAS we combine the industry standard OpenAPI description with the Tyk Vendor Extension, which encapsulates all of the Tyk Gateway settings that cannot be inferred from the OpenAPI Specification (OAS). You can keep your service description (OAS) as source of truth and update the OpenAPI description part of a Tyk OAS API independently from the Tyk Vendor Extension - no need to unpick distributed vendor extensions from your OAS. For more details, please see the [documentation]({{< ref "api-management/gateway-config-introduction" >}}).
+
+Now that we have achieved this milestone we are keen to support users in migrating their existing Tyk Classic API portfolio to Tyk OAS and offer methods to do this both within the Tyk Dashboard Classic API Designer and via the Tyk Dashboard API. For more details of the migration tool, please see the [documentation]().
+
+##### Enhanced upstream authentication
+
+We are pleased to introduce advanced options for your Tyk OAS APIs when it comes to authenticating with the upstream service - a critical feature for integration with many partner services. With Tyk 5.8.0 you are now able to configure Tyk to act as an OAuth 2.0 client, retrieving an access token via the Client Credentials grant method. For legacy integrations Tyk can also support OAuth 2.0 Resource Owner Password Credentials grant and Basic Authentication methods. For more details please see the [documentation]({{< ref "api-management/upstream-authentication" >}}).
+
+##### Enhanced user experience within the Tyk Dashboard API Designer
+
+To accompany the launch of fully featured Tyk OAS capabilities, we have made a raft of improvements in the Tyk Dashboard GUI. There's an all-new API test and debug facility in the API designer, allowing you to issue requests to your APIs and then examine the debug traces produced by the Gateway without leaving the Tyk Dashboard. Our new, enhanced code editor allows you to work in YAML or JSON. We've also given the UI a spring clean to improve the usability.
+
 
 #### Breaking Changes
 
@@ -67,10 +84,10 @@ There are no breaking changes in this release.
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
-| [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.22 | 
+| [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 13.x - 17.x            | Used by Tyk Dashboard | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | Used by Tyk Dashboard | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
 
 #### Deprecations
@@ -97,30 +114,23 @@ If you are upgrading to 5.8.0, please follow the detailed [upgrade instructions]
 <ul>
 <li>
 <details>
-<summary>Guided Onboarding for New Users </summary>
-
-We have introduced a guided onboarding experience in the Tyk Dashboard to help new users start effortlessly. Our step-by-step guide walks you through creating your first API, setting up policies and keys, testing endpoints, and exploring analytics—ensuring you can navigate the Dashboard and unlock its full potential from day one.
-</details>
-</li>
-<li>
-<details>
 <summary>YAML Support for Tyk OAS</summary>
 
-Tyk fully supports YAML for Tyk OAS CRUD operations, giving users greater flexibility in managing their APIs. This enhancement make it easier to work in both JSON and YAML formats.
+Tyk Dashboard's API and UI now support both YAML and JSON for Tyk OAS CRUD operations, giving users greater flexibility in managing their APIs.
 </details>
 </li>
 <li>
 <details>
-<summary>Tyk OAS Now Supports Multi-Part OpenAPI Imports</summary>
+<summary>Added Support for External References in OpenAPI Descriptions</summary>
 
-We've enhanced Tyk’s OAS import capabilities to support multi-part OpenAPI documents using the `$ref` feature. It allows users to import OAS definitions referencing external files, making it easier to manage complex API specifications.
+We've enhanced Tyk's OpenAPI handling to allow the import of multi-part OpenAPI documents. This allows users to import OpenAPI descriptions that are split across multiple files, making it easier to manage complex API specifications.
 </details>
 </li>
 <li>
 <details>
 <summary>API Testing & Debugging with Tyk OAS</summary>
 
-We’ve added built-in testing and debugging capabilities to Tyk OAS, making validating and troubleshooting your APIs easier. With a floating debugging panel and an endpoint dropdown, you can test your endpoints within the Dashboard.
+We’ve added built-in testing and debugging capabilities to the Tyk OAS API Designer, making validating and troubleshooting your APIs easier. With a floating debugging panel and an endpoint dropdown, you can test your endpoints within the Dashboard UI.
 </details>
 </li>
 <li>
@@ -141,14 +151,14 @@ For backward compatibility, if `ConnectionString` is set, it will take precedenc
 <details>
 <summary>Certificate Support for GraphQL Introspection During API Creation</summary>
 
-Users can now attach certificates during the GraphQL API creation process to support mTLS-protected upstream introspection. This eliminates the need for manual certificate management and redeployment.
+When creating a GraphQL API in the API designer, you can now attach certificates to be used during introspection of mTLS-protected upstream services. This simplifies the creation of GraphQL APIs by reducing the number of steps, as previously you had to use a dummy upstream during the initial creation and then reconfigure the API to perform introspection later.
 </details>
 </li>
 <li>
 <details>
-<summary>Bulk API Migration Endpoint for Tyk OAS Migration</summary>
+<summary>New Dasboard API Migration Endpoint to Convert Tyk Classic API Definitions to Tyk OAS</summary>
 
-Introduced a bulk API migration endpoint with a dry run, staging, and direct migration modes, enabling a seamless transition from Tyk Classic APIs to Tyk OAS APIs.
+Introduced a new API migration [endpoint]() with dry run, staging, and direct migration modes, enabling a seamless transition from Tyk Classic to Tyk OAS. Use this endpoint to perform individual or bulk conversion of Tyk Classic to Tyk OAS APIs.
 </details>
 </li>
 <li>
@@ -156,6 +166,13 @@ Introduced a bulk API migration endpoint with a dry run, staging, and direct mig
 <summary>Upstream Authentication Support in Tyk Dashboard</summary>
 
 Tyk Dashboard now supports integration with upstream services secured using Basic Auth, OAuth 2.0 Client Credentials, and OAuth 2.0 Password Grant in Tyk OAS APIs, providing flexibility in securing upstream authentication flows.
+</details>
+</li>
+<li>
+<details>
+<summary>Quick Start Wizard for New Dashboard Users on Tyk Cloud</summary>
+
+We have introduced a guided onboarding experience for Tyk Cloud users to help new users start effortlessly. Our step-by-step guide walks you through creating your first API, setting up policies and keys, testing endpoints, and exploring analytics - ensuring you can navigate the Dashboard and unlock its full potential from day one.
 </details>
 </li>
 </ul>
@@ -172,9 +189,21 @@ The Dashboard now supports PostgreSQL 17, ensuring compatibility with the latest
 </li>
 <li>
 <details>
+<summary>Upgraded to Golang 1.23</summary>
+Tyk Dashboard now runs on Golang 1.23, bringing security and performance improvements. Key changes include:
+
+- unbuffered Timer/Ticker channels
+- removal of 3DES cipher suites
+- updates to X509KeyPair handling.
+
+**You may need to adjust your setup for compatibility**. For more detail please see the official Go [release notes](https://go.dev/doc/go1.23).
+</details>
+</li>
+<li>
+<details>
 <summary>Improved Dashboard Code Editor</summary>
 
-Upgraded the code editor component library and enhanced its styling for a better user experience.
+Upgraded the code editor component library and enhanced its styling for a better user experience. With this upgrade comes the facility to work in YAML or JSON and to switch seamlessly between formats.
 </details>
 </li>
 <li>
@@ -186,13 +215,6 @@ We have made minor adjustments to labels within the Dashboard UI to enhance clar
 </li>
 <li>
 <details>
-<summary>Improved API Key Management for MDCB Data Planes</summary>
-
-We have updated Dashboard API key reset permissions to support API key rotation for MDCB Data Planes. Users with Real-Time Notifications enabled can now reset their Dashboard API key via the UI or API, resolving conflicts that previously prevented key rotation. These changes ensure a more secure and automated approach to managing API keys while maintaining existing access controls.
-</details>
-</li>
-<li>
-<details>
 <summary>"Manage Account" Link from Dashboard</summary>
 
 The "Manage Account" link in the Tyk Dashboard, which previously directed users to an outdated cloud login page, has been removed. This improves the user experience by eliminating confusion around account management and ensuring a more cohesive navigation flow between the Dashboard and Tyk Cloud.
@@ -200,14 +222,21 @@ The "Manage Account" link in the Tyk Dashboard, which previously directed users 
 </li>
 <li>
 <details>
-<summary>Improved Form Performance in Tyk OAS API Designer</summary>
+<summary>Improved Form Performance in API Designer</summary>
 
-We’ve optimized form validation in the Tyk Dashboard’s OAS API Designer to enhance user experience. Forms are now validated on blur instead of during every keystroke, preventing cursor jumps and improving typing responsiveness.
+We’ve optimized form validation in the API Designer to enhance user experience. Forms are now validated on blur instead of during every keystroke, preventing cursor jumps and improving typing responsiveness.
 </details>
 </li>
 <li>
 <details>
-<summary>Clarity on Supported TLS Versions in Tyk Classic API Designer</summary>
+<summary>Updated Default Configuration for Tyk Operator and Sync Compatibility</summary>
+
+Modified the default values of `allow_explicit_policy_id` and `enable_duplicate_slugs` to `true` in the example Dashboard configuration file, to eliminate config problems when deploying Tyk Sync and Tyk Operator. This has no impact on existing deployments.
+</details>
+</li>
+<li>
+<details>
+<summary>Removed unsupported TLS options in Tyk Classic API Designer</summary>
 
 Removed unsupported TLS versions 1.0 and 1.1 from the Tyk Classic API Designer selector, improving clarity around supported TLS versions and enhancing security.
 </details>
@@ -222,7 +251,14 @@ Removed unsupported TLS versions 1.0 and 1.1 from the Tyk Classic API Designer s
 <summary>Enhanced OPA Rules for Token Reset and User Data Access</summary>
 
 Updated OPA rules in the Dashboard to allow all users to reset their own access tokens and view their user data, improving self-service while maintaining security.
-Customers with custom OPA rules must update their configurations to include the is_self_key_reset and is_me helper rules. Additionally, they must modify their rules to exclude cases where is_self_key_reset or is_me apply in order to enable this functionality.
+Note that users with custom OPA rules are strongly advised to update their configurations to include the `is_self_key_reset` and `is_me` helper rules. Additionally, they should modify their rules to exclude cases where `is_self_key_reset` or `is_me` apply, in order to enable this functionality.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Control for Dashboard API Credentials</summary>
+
+Users can now always access their own Dashboard API credentials, regardless of permissions. Admins' ability to view or reset other users' credentials is now strictly controlled by security flags.
 </details>
 </li>
 </ul>
@@ -449,7 +485,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 #### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
-In 5.7.0, we have deprecated the dedicated [External OAuth]({{< ref "basic-config-and-security/security/authentication-authorization/ext-oauth-middleware" >}})  (Tyk Classic: `external_oauth`, Tyk OAS: `server.authentication.securitySchemes.externalOAuth`) and [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}})  (Tyk Classic: `auth_configs.oidc`, Tyk OAS: `server.authentication.oidc`) authentication methods. We advise users to switch to [JWT Authentication]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}).
+In 5.7.0, we have deprecated the dedicated [External OAuth]({{< ref "basic-config-and-security/security/authentication-authorization/ext-oauth-middleware" >}})  (Tyk Classic: `external_oauth`, Tyk OAS: `server.authentication.securitySchemes.externalOAuth`) and [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}})  (Tyk Classic: `auth_configs.oidc`, Tyk OAS: `server.authentication.oidc`) authentication methods. We advise users to switch to [JWT Authentication]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}).
 
 Additionally, SQLite has reached its End of Life in this release, enabling a fully static, CGO-free Tyk Dashboard optimised for RHEL8. Sqlite was previously recommended only to be used in basic proofs of concept. Now, for such scenarios and for production, we recommend migrating to PostgreSQL or MongoDB for better scalability and support.
 <!-- Optional section!
@@ -1663,7 +1699,7 @@ Given the time difference between your upgrade and the release of this version, 
 
 #### Deprecations
 
-This is an advanced notice that the dedicated External OAuth, OpenID Connect (OIDC) authentication options, and SQLite support will be deprecated starting in version 5.7.0. We recommend that users of the [External OAuth]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}}) and [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}) methods migrate to Tyk's dedicated [JWT Auth]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}) method. Please review your API configurations, as the Gateway logs will provide notifications for any APIs utilizing these methods.
+This is an advanced notice that the dedicated External OAuth, OpenID Connect (OIDC) authentication options, and SQLite support will be deprecated starting in version 5.7.0. We recommend that users of the [External OAuth]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}}) and [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}) methods migrate to Tyk's dedicated [JWT Auth]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) method. Please review your API configurations, as the Gateway logs will provide notifications for any APIs utilizing these methods.
 
 #### Upgrade Instructions
 If you are upgrading to 5.3.8, please follow the detailed [upgrade instructions](#upgrading-tyk).
@@ -1689,7 +1725,7 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 <details>
 <summary>Advanced notice of deprecation of dedicated External OAuth and OpenID Connect auth options</summary>
 
-The UI now displays a deprecation notice for the dedicated [External OAuth]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}}) and [OpenID Connect (OIDC)]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}) authentication mechanisms. This provides advanced notification that these authentication options will be deprecated in version 5.7.0. Users are advised to migrate to the [JWT Auth]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}) method, which supports integration with both OAuth and OIDC providers, in preparation for future upgrade.
+The UI now displays a deprecation notice for the dedicated [External OAuth]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}}) and [OpenID Connect (OIDC)]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}) authentication mechanisms. This provides advanced notification that these authentication options will be deprecated in version 5.7.0. Users are advised to migrate to the [JWT Auth]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) method, which supports integration with both OAuth and OIDC providers, in preparation for future upgrade.
 </details>
 </li>
 </ul>
