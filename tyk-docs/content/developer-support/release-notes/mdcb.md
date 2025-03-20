@@ -69,13 +69,7 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
 
 ##### Added
 <ul>
-<li>
-<details>
-<summary>Seamless API Key Rotation for MDCB Data Planes </summary>
 
-MDCB now supports a seamless key rotation mechanism, allowing data planes to update their authentication keys without requiring service restarts. When a new API key is issued, MDCB temporarily retains the old key only to notify gateways that are still using it, instructing them to switch to the new key. However, the old key does not remain functional for authentication. Additionally, if a data plane gateway goes down during the key rotation process, it will automatically retrieve the new key upon restart, ensuring a smoother recovery process.
-</details>
-</li>
 </ul>
 
 ##### Changed
