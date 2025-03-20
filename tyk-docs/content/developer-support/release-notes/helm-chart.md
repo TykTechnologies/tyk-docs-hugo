@@ -148,7 +148,7 @@ User can enable or disable Tyk Streams feature via `global.streaming.enabled`. T
 
 Introduced new configuration options to manage audit logging for the Tyk Dashboard. This enhancement allows users to enable, customize, and specify how audit logs are stored and formatted.
 
-To configure, see [Tyk Stack]({{<ref "product-stack/tyk-charts/tyk-stack-chart#audit-log-configurations">}}) documentation.
+To configure, see [Tyk Stack]({{< ref "product-stack/tyk-charts/tyk-stack-chart#audit-log-configurations" >}}) documentation.
 </details>
 </li>
 
@@ -158,7 +158,7 @@ To configure, see [Tyk Stack]({{<ref "product-stack/tyk-charts/tyk-stack-chart#a
 
 Introduced new options to enable and manage Open Policy Agent (OPA) support directly from the Helm chart. This feature simplifies the configuration process, guiding users to use the correct settings without relying on extraEnvs.
 
-To configure, see [Tyk Stack]({{<ref "product-stack/tyk-charts/tyk-stack-chart#opa-configurations">}}) documentation.
+To configure, see [Tyk Stack]({{< ref "product-stack/tyk-charts/tyk-stack-chart#opa-configurations" >}}) documentation.
 </details>
 </li>
 
@@ -172,7 +172,7 @@ Users can now define custom configurations for these probes, providing more flex
 
 This enhancement improves deployment reliability and ensures better integration with Kubernetes health monitoring systems.
 
-To configure, see [Tyk Stack]({{<ref "product-stack/tyk-charts/tyk-stack-chart#gateway-probes">}}) documentation.
+To configure, see [Tyk Stack]({{< ref "product-stack/tyk-charts/tyk-stack-chart#gateway-probes" >}}) documentation.
 </details>
 </li>
 
@@ -313,7 +313,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog](#C
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
-However, if you are upgrading to [Tyk Operator v1.0]({{<ref "developer-support/release-notes/operator#100-release-notes">}}) using the Helm Chart, please read the [license requirement]({{<ref "developer-support/release-notes/operator#breaking-changesv1.0.0">}}) and Tyk Operator [installation and upgrade instructions]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}}) carefully.
+However, if you are upgrading to [Tyk Operator v1.0]({{< ref "developer-support/release-notes/operator#100-release-notes" >}}) using the Helm Chart, please read the [license requirement]({{< ref "developer-support/release-notes/operator#breaking-changesv1.0.0" >}}) and Tyk Operator [installation and upgrade instructions]({{< ref "api-management/automations/operator#install-and-configure-tyk-operator" >}}) carefully.
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
@@ -510,8 +510,8 @@ From this version of Tyk Charts we also set the following configuration option t
 
 **Action required:**
 
-- Familiarize yourself with URL matching in Tyk [here]({{<ref "getting-started/key-concepts/url-matching">}}).
-- For production setup guidance, see [this guide]({{<ref "tyk-self-managed#ensure-you-are-matching-only-the-url-paths-that-you-want-to-match">}}).
+- Familiarize yourself with URL matching in Tyk [here]({{< ref "getting-started/key-concepts/url-matching" >}}).
+- For production setup guidance, see [this guide]({{< ref "tyk-self-managed#ensure-you-are-matching-only-the-url-paths-that-you-want-to-match" >}}).
 - Configure the new options via the Helm chart, and test the changes in a non-production environment before upgrading.
 
 ##### 2. Default Tyk Component Versions
@@ -658,7 +658,7 @@ URL path matching mode is configurable using these `tyk-gateway` chart parameter
 - `gateway.enablePathSuffixMatching` (default to `true`)
 - `gateway.enableStrictRoutes` (default to `true`)
 
-Learn more about the settings in the [URL Path Matching]({{<ref "getting-started/key-concepts/url-matching">}}) documentation.
+Learn more about the settings in the [URL Path Matching]({{< ref "getting-started/key-concepts/url-matching" >}}) documentation.
 
 </details>
 </li>
@@ -812,7 +812,7 @@ helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release: -->
 
 ##### Updated MDCB Health check probes
-MDCB v2.7.0 release introduces `/liveness` and `/readiness` probes which give more accurate and detail health check information. MDCB deployment has been updated to use the new endpoints. See [MDCB Health Check]({{<ref "tyk-multi-data-centre/setup-controller-data-centre#health-check">}}) section for information about the new probes.
+MDCB v2.7.0 release introduces `/liveness` and `/readiness` probes which give more accurate and detail health check information. MDCB deployment has been updated to use the new endpoints. See [MDCB Health Check]({{< ref "api-management/mdcb#health-check" >}}) section for information about the new probes.
 
 ##### Updated default Tyk versions
 Tyk Charts 1.6 will install the following Tyk component versions by default.
@@ -910,7 +910,7 @@ Each change log item should be expandable. The first line summarises the changel
 <summary>MDCB: Updated liveness and readiness probes</summary>
 
 Updated MDCB liveness and readiness probes to `/liveness` and `/readiness` respectively. These endpoints are available from MDCB v2.7.0. If you are deploying an earlier version of MDCB, please update the paths to `/health` in values.yaml file.
-For more details about new endpoints, check [MDCB Health check]({{<ref "tyk-multi-data-centre/setup-controller-data-centre#health-check">}}) section.
+For more details about new endpoints, check [MDCB Health check]({{< ref "api-management/mdcb#health-check" >}}) section.
 </details>
 </li>
 </ul>
@@ -1002,7 +1002,7 @@ Additionally, a disclaimer statement was added below the table, for customers to
 
 An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
 
-With PostgreSQL v11 has reach [EOL](https://www.postgresql.org/support/versioning/) on November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{<ref "tyk-self-managed#postgresql">}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
+With PostgreSQL v11 has reach [EOL](https://www.postgresql.org/support/versioning/) on November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
@@ -1068,7 +1068,7 @@ Tyk Operator can now be installed as an optional component alongside any of the 
 
 With bootstrapping, the `tyk-operator-conf` secret will be automatically configured during the bootstrapping process. This means that the Tyk Operator will be ready for use with just one command, simplifying the deployment and configuration process.
 
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.5.0">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.5.0" >}}) below.
 
 #### Downloads
 - [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v1.5.0.tar.gz)
@@ -1207,14 +1207,14 @@ mdcb:
 
 `global.components.operator` added to determine whether the Tyk Operator component should be installed.
 
-This feature adds a dependency on the Tyk Operator to the umbrella charts, facilitating the installation of the Tyk Operator component. Users can now easily install the Tyk Operator component by setting the `global.components.operator` parameter. Note that the Tyk Operator requires `cert-manager` to be installed beforehand. It also expects secret `tyk-operator-conf` is present in the installation namespace. You can enable bootstrapping at `global.components.bootstrap` if you are working on a new installation to have this secret created for you. Refer to the Tyk Operator [installation guide]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}}) for detailed information on pre-requisites.
+This feature adds a dependency on the Tyk Operator to the umbrella charts, facilitating the installation of the Tyk Operator component. Users can now easily install the Tyk Operator component by setting the `global.components.operator` parameter. Note that the Tyk Operator requires `cert-manager` to be installed beforehand. It also expects secret `tyk-operator-conf` is present in the installation namespace. You can enable bootstrapping at `global.components.bootstrap` if you are working on a new installation to have this secret created for you. Refer to the Tyk Operator [installation guide]({{< ref "api-management/automations/operator#install-and-configure-tyk-operator" >}}) for detailed information on pre-requisites.
 
 ```yaml
 global:
   components:
     # operator determines whether Tyk Operator component should be installed or not.
     # Tyk Operator needs cert-manager to be installed beforehand. Make sure that cert-manager is installed.
-    # For further details, please refer to https://tyk.io/docs//api-management/automations#install-and-configure-tyk-operator/
+    # For further details, please refer to https://tyk.io/docs/api-management/automations#install-and-configure-tyk-operator/
     operator: false
 ```
 
@@ -1405,7 +1405,7 @@ We're pleased to announce the official release of the Tyk Helm Charts for Tyk Co
 
 With this release, we aim to provide a straightforward solution for deploying and managing Tyk Control Plane and Multi-Data Center Bridge (MDCB) using Helm Charts. Whether you're looking for our recommended setup configurations or need flexibility to adapt to your architectural requirements, our Helm Charts have you covered.
 
-To leverage this stable release and simplify your Tyk deployments, we invite you to explore our example setup for MDCB Control Plane using Helm Chart. Simply follow our [MDCB Control Plane setup guide]({{<ref "tyk-multi-data-centre/setup-controller-data-centre">}}) to get started.
+To leverage this stable release and simplify your Tyk deployments, we invite you to explore our example setup for MDCB Control Plane using Helm Chart. Simply follow our [MDCB Control Plane setup guide]({{< ref "api-management/mdcb#setup-mdcb-control-plane" >}}) to get started.
 
 ##### Updated default Tyk versions
 Tyk Charts 1.4 will install the following Tyk component versions by default.
@@ -1415,7 +1415,7 @@ Tyk Charts 1.4 will install the following Tyk component versions by default.
 - Tyk MDCB v2.5.1
 - Tyk Developer Portal v1.8.5
 
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.4.0">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.4.0" >}}) below.
 
 #### Downloads
 - [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v1.4.0.tar.gz)
@@ -1447,7 +1447,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>OSS: Simplify Tyk Operator setup with Kubernetes Secret creation</summary>
 
-When you set `operatorSecret.enabled` to `true` in the `tyk-oss` chart, a Kubernetes Secret named `tyk-operator-conf` will be automatically created in the same namespace. This secret is essential for connecting Tyk Operator to the Gateway, enabling seamless management of Tyk API resources. To learn more about setting up Tyk Operator, check out [Tyk Operator installation]({{<ref "/api-management/automations#install-and-configure-tyk-operator">}}).
+When you set `operatorSecret.enabled` to `true` in the `tyk-oss` chart, a Kubernetes Secret named `tyk-operator-conf` will be automatically created in the same namespace. This secret is essential for connecting Tyk Operator to the Gateway, enabling seamless management of Tyk API resources. To learn more about setting up Tyk Operator, check out [Tyk Operator installation]({{< ref "api-management/automations/operator#install-and-configure-tyk-operator" >}}).
 </details>
 </li>
 
@@ -1610,7 +1610,7 @@ links to API documentation and FAQs. You can copy it from the previous release. 
 
 #### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
-For MongoDB users: Tyk Charts 1.3.0 uses `mongo-go` as the default driver to connect to MongoDB. `mongo-go` driver is compatible with MongoDB 4.4.x and above. For MongoDB versions prior to 4.4, please set `global.mongo.driver` to `mgo`. We recommend reading [Choose a MongoDB driver]({{<ref "/tyk-self-managed#choose-a-mongodb-driver">}}) when you need to change driver setting.
+For MongoDB users: Tyk Charts 1.3.0 uses `mongo-go` as the default driver to connect to MongoDB. `mongo-go` driver is compatible with MongoDB 4.4.x and above. For MongoDB versions prior to 4.4, please set `global.mongo.driver` to `mgo`. We recommend reading [Choose a MongoDB driver]({{< ref "tyk-self-managed#choose-a-mongodb-driver" >}}) when you need to change driver setting.
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
@@ -1700,16 +1700,16 @@ Tyk Charts 1.3 will install the following Tyk component versions by default.
 - Tyk MDCB v2.5.0
 - Tyk Developer Portal v1.8.3
 
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.3.0">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.3.0" >}}) below.
 
 ##### Support new features available from Tyk v5.3.0
 Tyk Charts 1.3 adds support for a number of new Tyk features available from Tyk 5.3.0. These include: Support use of SSL certificates when connecting to Redis, Configurations for OAS Validate examples and OAS Validate Schema defaults.
 
 ##### Graph Pump
-Tyk Charts 1.3 adds support for Graph MongoDB Pump, Graph SQL Pump and Graph SQL Aggregate Pump. see [Graph Pump setup]({{<ref "/tyk-stack/tyk-pump/tyk-pump-configuration/graph-pump">}}) to learn more about the GraphQL-specific metrics available.
+Tyk Charts 1.3 adds support for Graph MongoDB Pump, Graph SQL Pump and Graph SQL Aggregate Pump. see [Graph Pump setup]({{< ref "api-management/tyk-pump#graph-pump-setup" >}}) to learn more about the GraphQL-specific metrics available.
 
 ##### Enable Tyk Identity Broker (TIB) in Tyk Dashboard
-Tyk Charts 1.3 adds a field to enable Internal [Tyk Identity Broker (TIB)]({{<ref "tyk-identity-broker">}}) in Tyk Dashboard by field `tyk-dashboard.tib.enabled` to `true`.
+Tyk Charts 1.3 adds a field to enable Internal [Tyk Identity Broker (TIB)]({{< ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib" >}}) in Tyk Dashboard by field `tyk-dashboard.tib.enabled` to `true`.
 
 #### Downloads
 - [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v1.3.0.tar.gz)
@@ -1819,7 +1819,7 @@ To enable it, set `gateway.pdb.enabled` to `true` and configure `gateway.pdb.min
 <details>
 <summary>Gateway: Added Ingress template for gateway control service</summary>
 
-When enabled at `gateway.control.ingress.enabled`, an Ingress resource will be created to allow external access to gateway's [control service]({{<ref "tyk-self-managed#change-your-control-port">}}).
+When enabled at `gateway.control.ingress.enabled`, an Ingress resource will be created to allow external access to gateway's [control service]({{< ref "tyk-self-managed#change-your-control-port" >}}).
 </details>
 </li>
 
@@ -1827,7 +1827,7 @@ When enabled at `gateway.control.ingress.enabled`, an Ingress resource will be c
 <details>
 <summary>Gateway: Configure Gateway to work with MDCB synchroniser</summary>
 
-Allow users to configure worker gateway to work with [Tyk MDCB synchroniser]({{<ref "product-stack/tyk-enterprise-mdcb/advanced-configurations/synchroniser">}}) easily by setting `global.mdcbSynchronizer.enabled` in `tyk-data-plane`.
+Allow users to configure worker gateway to work with [Tyk MDCB synchroniser]({{< ref "api-management/mdcb#synchroniser-feature-with-mdcb" >}}) easily by setting `global.mdcbSynchronizer.enabled` in `tyk-data-plane`.
 The control plane should be deployed with same `global.mdcbSynchronizer.enabled` value too.
 </details>
 </li>
@@ -1860,7 +1860,7 @@ Users can configure Tyk Gateway initContainer image so that it is possible to lo
 <details>
 <summary>Dashboard: Added option to enable Tyk Identity Broker (TIB) in Tyk Dashboard</summary>
 
-You can enable Internal [Tyk Identity Broker (TIB)]({{<ref "tyk-identity-broker">}}) in Tyk Dashboard by field `tyk-dashboard.tib.enabled` to `true`.
+You can enable Internal [Tyk Identity Broker (TIB)]({{< ref "api-management/external-service-integration#what-is-tyk-identity-broker-tib" >}}) in Tyk Dashboard by field `tyk-dashboard.tib.enabled` to `true`.
 </details>
 </li>
 
@@ -1884,7 +1884,7 @@ Users can configure Tyk Dashboard service port name. Default is `http`.
 <details>
 <summary>Pump: Added Graph pump support</summary>
 
-[Graph Pumps]({{<ref "tyk-stack/tyk-pump/tyk-pump-configuration/graph-pump">}}) will be added when the user adds `mongo` or `postgres` to `pump.backend`. When `mongo` is added to `pump.backend` the Graph MongoDB Pump will be enabled. When `postgres` is added to `pump.backend` the Graph SQL Pump and Graph SQL Aggregate Pump will be enabled.
+[Graph Pumps]({{< ref "api-management/tyk-pump#graph-pump-setup" >}}) will be added when the user adds `mongo` or `postgres` to `pump.backend`. When `mongo` is added to `pump.backend` the Graph MongoDB Pump will be enabled. When `postgres` is added to `pump.backend` the Graph SQL Pump and Graph SQL Aggregate Pump will be enabled.
 </details>
 </li>
 
@@ -1926,7 +1926,7 @@ Users can configure Tyk Developer Portal service port name. Default is `http`.
 
 A new [MDCB component chart](https://github.com/TykTechnologies/tyk-charts/tree/main/components/tyk-mdcb) has been added to deploy MDCB. 
 It is currently in Beta. For installation instructions and configurations, please
-read [Tyk Control Plane chart]({{<ref "product-stack/tyk-charts/tyk-control-plane-chart">}}).
+read [Tyk Control Plane chart]({{< ref "product-stack/tyk-charts/tyk-control-plane-chart" >}}).
 </details>
 </li>
 
@@ -1936,7 +1936,7 @@ read [Tyk Control Plane chart]({{<ref "product-stack/tyk-charts/tyk-control-plan
 
 A new [Tyk Control Plane umbrella chart](https://github.com/TykTechnologies/tyk-charts/tree/main/tyk-control-plane) has been added to deploy Tyk Control Plane. 
 It is currently in Beta. For installation instructions and configurations, please
-read [Tyk Control Plane chart]({{<ref "product-stack/tyk-charts/tyk-control-plane-chart">}}).
+read [Tyk Control Plane chart]({{< ref "product-stack/tyk-charts/tyk-control-plane-chart" >}}).
 </details>
 </li>
 
@@ -1957,7 +1957,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Global config: Update default MongoDB driver to `mongo-go`</summary>
 
-Tyk Charts 1.3.0 uses `mongo-go` as the default driver to connect to MongoDB. `mongo-go` driver is compatible with MongoDB 4.4.x and above. For MongoDB versions prior to 4.4, please change `global.mongo.driver` to `mgo`. We recommend reading [Choose a MongoDB driver]({{<ref "tyk-self-managed#choose-a-mongodb-driver">}}) when you need to change driver setting.
+Tyk Charts 1.3.0 uses `mongo-go` as the default driver to connect to MongoDB. `mongo-go` driver is compatible with MongoDB 4.4.x and above. For MongoDB versions prior to 4.4, please change `global.mongo.driver` to `mgo`. We recommend reading [Choose a MongoDB driver]({{< ref "tyk-self-managed#choose-a-mongodb-driver" >}}) when you need to change driver setting.
 </details>
 </li>
 </ul>

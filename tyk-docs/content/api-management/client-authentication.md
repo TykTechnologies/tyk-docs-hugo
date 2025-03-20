@@ -56,8 +56,351 @@ aliases:
   - /api-management/authentication-authorization
 
 
-
 ---
+
+<b> *** TEMPORARY - RESTRUCTURE/MERGE *** </b>
+
+### Authentication with Tyk OAS
+
+OAS has the concept of `securitySchemes` which describes one way in which an API may be accessed, e.g. with a token. You can have multiple `securitySchemes` defined for an API. You decide which is actually active by declaring that in the security section. When hosting an API with Tyk, the only remaining question is which part of the flow does this security validation? If you do nothing more, then Tyk will pass the authentication to the upstream. However, if you do want Tyk to handle the authentication, then it is as simple as setting an authentication field in the `x-tyk-api-gateway` section of the Tyk OAS API Definition. 
+
+The OAS SecurityScheme Object accepts by default just 4 types: 
+- apiKey
+- http
+- oauth2
+- openIdConnect
+
+{{< note success >}}
+**Note**  
+
+The security section in the OAS API Definition can define a list of authentication mechanisms that the backend should use to authorize requests. For now, your Tyk Gateway will only take into consideration the first security item defined in the list. 
+{{< /note >}}
+
+Let’s go through the authentication mechanisms that Tyk supports and see how these can work together with OAS API Definition security schemes.
+
+#### Authentication Token
+
+When the `apiKey` securityScheme is configured in an OAS API Definition, this means that the authentication mechanism that can be configured in `x-tyk-api-gateway`, is an Authentication Token. 
+
+Since the location and token key name are documented in the OAS API Definition `securityScheme`, you only need to turn this authentication on at the Tyk level to tell Tyk to handle the authentication by setting `enabled` to `true`.
+
+Example:
+
+```yaml
+{
+...
+  securitySchemes: {
+    petstore_auth: {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  ...
+  },
+  security: [
+    {
+      "petstore_auth": []
+    }
+  ],
+  "x-tyk-api-gateway": {
+  ...
+  "server": {
+      "authentication": {
+        "securitySchemes": {
+          "petstore_auth": {
+            "enabled": true
+          }
+        }
+      }
+    }
+  }
+}
+```
+{{< note success >}}
+**Note**  
+
+OAS does not allow for an API to have both cookie and query parameter based token authentication at the same time. Since Tyk does allow this, we have allowed for this combination through the vendor specific fields. You can see how to do this next.
+{{< /note >}}
+
+#### Advanced Configuration
+
+##### Multiple locations for the authentication token
+
+With Tyk's configuration, API developers can tell the Tyk Gateway that the authentication token can be found in multiple locations. Since this is not possible with OAS, Tyk provides this capability within its vendor specific fields.
+
+Example:
+
+```yaml
+{
+...
+  securitySchemes: {
+    petstore_auth: {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  ...
+  },
+  security: [
+    {
+      "petstore_auth": []
+    }
+  ],
+  "x-tyk-api-gateway": {
+  ...
+  "server": {
+      "authentication": {
+        "securitySchemes": {
+          "petstore_auth": {
+            "enabled": true,
+            "query": {
+              "enabled": true,
+              "name": "query-key"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+In the above example, we can observe that, in `securitySchemes` the `header` location for the token is configured. In order to add another possible location for the token we can extend the Tyk configuration section.
+
+##### Dynamic Client mTLS
+
+Tyk can be configured to guess a user authentication key based on the provided client certificate. In other words, a user does not need to provide any key, except the certificate, and Tyk will be able to identify the user, apply policies, and do the monitoring - the same as with regular Tyk keys.
+
+The basic idea here is that you can create a key based on a provided certificate. You can then use this key or the cert for one or more users. For that user, you can enable the `enableClientCertificate` option.
+
+```yaml
+{
+  ...
+  "x-tyk-api-gateway": {
+  ...
+  "server": {
+      "authentication": {
+        "securitySchemes": {
+          "petstore_auth": {
+            "enabled": true,
+            "enableClientCertificate": true
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+#### Basic Authentication
+
+Having the `http` type as the `securityScheme` defined in OAS API Definition, with the schema field set to basic, means that the *Tyk Gateway* uses basic authentication as the protection mechanism. It expects an access key in the same way as any other access method. For more information see the [Basic Authentication documentation]({{< ref "api-management/client-authentication#use-basic-authentication" >}}).
+
+Example:
+
+```yaml
+{
+...
+securitySchemes: {
+  petstore_auth: {
+    "type": "http",
+    "scheme": "basic"
+  },
+  security: [
+    {
+      "petstore_auth": []
+    }
+  ],
+  "x-tyk-api-gateway": {
+  ...
+  "server": {
+    "authentication": {
+      "securitySchemes": {
+        "petstore_auth": {
+          "enabled": true,
+          "header": {
+            "enabled": true,
+            "name": "Authorization"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+#### Json Web Token (JWT)
+
+In order to configure a JWT authentication mechanism, the OAS API Definition `securitySchemes` section needs to define an `http` security type, but this time with a `bearer scheme` and with the `JWT bearerFormat`. On the Tyk configuration side, you just need to enable the authentication for the Tyk Gateway and specify the location where the token should be read from.
+
+Example:
+
+```yaml
+{
+...
+securitySchemes: {
+  petstore_auth: {
+    "type": "http",
+    "scheme": "bearer",
+    "bearerFormat": "JWT"
+  },
+  security: [
+    {
+      "petstore_auth": []
+    }
+  ],
+  "x-tyk-api-gateway": {
+  ...
+  "server": {
+    "authentication": {
+      "securitySchemes": {
+        "petstore_auth": {
+          "enabled": true,
+          "header": {
+            "enabled": true,
+            "name": "Authorization"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+All you need to do in the Tyk configuration is to enable the authentication and specify the header details.
+
+For more configuration options check the [JWT documentation]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}).
+
+#### OAuth
+
+The `oauth2` `securityScheme` type tells your Tyk Gateway to expect an API with the OAuth authentication method configured. The OAuth authorization mechanism needs to be enabled on the Tyk configuration side with a few details.
+
+Example:
+
+```yaml
+{
+  ...
+  securitySchemes: {
+    petstore_auth: {
+      "type": "oauth2",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://example.com/api/oauth/dialog",
+          "tokenUrl": "https://example.com/api/oauth/token",
+          "scopes": {
+            "write:pets": "modify pets in your account",
+            "read:pets": "read your pets"
+          }
+        }
+      }
+    }
+  },
+  security: [
+    {
+      "petstore_auth": []
+    }
+  ],
+  "x-tyk-api-gateway": {
+    ...
+    "server": {
+        "authentication": {
+          "securitySchemes": {
+            "petstore_auth": {
+              "enabled": true,
+              "header": {
+                "enabled": true,
+                "name": "Authorization"
+              },
+              "allowedAccessTypes": [
+                "authorization_code"
+              ],
+              "allowedAuthorizeTypes": [
+                "code"
+              ],
+              "authLoginRedirect": "https://example.com/api/oauth/dialog"
+            },
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+All you need to do in the Tyk configuration is to enable OAuth and specify the header details. See [OAuth documentation]({{< ref "api-management/client-authentication#use-tyk-as-an-oauth-20-authorization-server" >}}) for more details.
+
+#### Multiple Authentication mechanisms
+
+The `security` section in the OAS API Definition can define a list of security objects, and each security object can list a set of security schemes that the backend uses for authentication.
+
+Tyk only takes into consideration the first security object in the security list. If this object contains multiple security schemes, the Tyk Gateway understands to protect requests with all of these authentication mechanisms.
+
+Example:
+
+```yaml
+{
+  ...
+  securitySchemes: {
+    "auth-A": {...},
+    "auth-B": {...},
+    "auth-C": {...},
+    "auth-D": {...},
+  },
+  security: [
+    {
+      "auth-A": [],
+      "auth-C": []
+    },
+    {
+      "auth-B": []
+    },
+    {
+      "auth-D": []
+    }
+  ]
+}
+```
+For the above OAS configuration, Tyk looks at only the first `security` object:
+
+```yaml
+{      
+  "auth-A": [],       
+  "auth-C": []   
+ },
+ ```
+ These authentication mechanisms are then enabled for Tyk as follows:
+
+ ```yaml
+ {
+  ...
+  "x-tyk-api-gateway": {
+    ...
+    "server": {
+      "authentication": {
+        "enabled": true,
+        "baseIdentityProvider": "auth_token",
+        "securitySchemes": {
+          "auth-A": {
+            "enabled": true,
+            ...
+          },
+          "auth-C": {
+            "enabled": true,
+            ...
+          }
+        }
+      }
+    }
+  }
+}
+```
+Please observe the presence of the `baseIdentityProvider` field, as this is required when enabling multiple authentication mechanisms at the same time. See [Multiple Auth documentation]({{< ref "api-management/client-authentication#combine-authentication-methods" >}}) for more details.
+
+#### Automatically protecting Tyk OAS APIs
+
+All the Authentication mechanisms documented above can be automatically configured by Tyk at the time of import if the request is followed by the `authentication=true` query parameter. (Import task link)
+
+<b> *** END TEMPORARY - DELETE ABOVE THIS LINE *** </b>
+
 
 ## Introduction
 
@@ -75,7 +418,7 @@ Whilst AuthN and AuthZ are separate actions with different standards, they are o
 
 ## How does Tyk Implement Authentication and Authorization?
 
-The API request processing flow within Tyk Gateway consists of a [chain of middleware]({{< ref "concepts/middleware-execution-order" >}}) that perform different checks and transformations on the request (headers, parameters and payload). Several dedicated **authentication middleware** are provided and there is also support for user-provided **custom authentication plugins**. Multiple authentication middleware can be chained together if required by the API's access security needs. *Note that it is not possible to set the order of chained auth methods.*
+The API request processing flow within Tyk Gateway consists of a [chain of middleware]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}) that perform different checks and transformations on the request (headers, parameters and payload). Several dedicated **authentication middleware** are provided and there is also support for user-provided **custom authentication plugins**. Multiple authentication middleware can be chained together if required by the API's access security needs. *Note that it is not possible to set the order of chained auth methods.*
 
 The middleware to be used is selected and configured using the API definition:
 - when using Tyk OAS APIs, the OpenAPI description can contain a list of `securitySchemes` which define the authentication methods to be used for the API; the detailed configuration of the Tyk authentication middleware is set in the in the `server.authentication` section of the `x-tyk-api-gateway` extension
@@ -212,7 +555,7 @@ The *client* sends the *client Id* and *client secret* during the authorization 
 
 ### Manage Client Access Policies
  
-The *access tokens* issued to clients by *Tyk Authorization Server* are the same as other [session objects]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}) and can be associated with [access security policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}) at the point of creation. These allow the application of quotas, rate limits and access rights in the normal manner.
+The *access tokens* issued to clients by *Tyk Authorization Server* are the same as other [session objects]({{< ref "api-management/policies#what-is-a-session-object" >}}) and can be associated with [access security policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}) at the point of creation. These allow the application of quotas, rate limits and access rights in the normal manner.
 
 Security policies can be assigned to *client apps* and will be applied to all access tokens issued for that *client app*.
 
@@ -231,7 +574,7 @@ For all grant types, the first common step is the registration of the *client* w
 
 - redirect URI
 - [optional] [security policies](#manage-client-access-policies) to be applied to access tokens generated for the client
-- [optional] [metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}) to be added to the access tokens
+- [optional] [metadata]({{< ref "api-management/policies#what-is-a-session-metadata" >}}) to be added to the access tokens
 
 {{< img src="/img/api-management/security/fill-out-client-details-oauth.png" alt="Add New OAuth Client" >}}
 
@@ -249,10 +592,10 @@ The Tyk Dashboard API contains several endpoints that are provided to manage *cl
 
 | Action | Endpoint | Reference |
 | --- | --- | --- |
-| Register a new client app | `POST /api/apis/oauth/{{api-id}}` | [link]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#create-a-new-oauth20-client" >}}) |
-| Get a list of registered client apps | `GET /api/apis/oauth/{{api-id}}` | [link]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#list-oauth-clients" >}}) |
-| Get the details of a client app | `GET /api/apis/oauth/{{api-id}}/{{client_id}}` | [link]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#get-an-oauth20-client" >}}) |
-| Delete a client app | `DELETE /api/apis/oauth/{{api-id}}/{{client_id}}` | [link]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#delete-oauth-client" >}}) |
+| Register a new client app | `POST /api/apis/oauth/{{api-id}}` | [link]({{< ref "api-management/dashboard-configuration#create-a-new-oauth20-client" >}}) |
+| Get a list of registered client apps | `GET /api/apis/oauth/{{api-id}}` | [link]({{< ref "api-management/dashboard-configuration#list-oauth-clients" >}}) |
+| Get the details of a client app | `GET /api/apis/oauth/{{api-id}}/{{client_id}}` | [link]({{< ref "api-management/dashboard-configuration#get-an-oauth20-client" >}}) |
+| Delete a client app | `DELETE /api/apis/oauth/{{api-id}}/{{client_id}}` | [link]({{< ref "api-management/dashboard-configuration#delete-oauth-client" >}}) |
 
 
 ### Using the Authorization Code Grant
@@ -281,7 +624,7 @@ When using Tyk as the Authorization Server with the Authorization Code grant, th
 
 Whilst Tyk can provide the *authorization server* functionality, issuing and managing access and authorization tokens, the *identity server* functions (authenticating users (resource owners) and allowing them to authorize client access) must be performed by a separate Identity Provider (IdP).
 
-The identity server will need access to the Tyk Dashboard API to [obtain an Authorization Code]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#oauth20-authorization-code" >}}).
+The identity server will need access to the Tyk Dashboard API to [obtain an Authorization Code]({{< ref "api-management/dashboard-configuration#oauth20-authorization-code" >}}).
 
 #### Authorization Request
 
@@ -309,7 +652,7 @@ If the *client Id* (`my-client-id`) is valid, the response will be `HTTP 307 Tem
 
 #### Authorization Code Request
 
-The *Identity Server* requests an *Authorization Code* from the *Authentication Server*. Tyk's *authorization code* endpoint is hosted in the [Tyk Dashboard API]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#oauth20-authorization-code" >}}), accessible from `POST /api/apis/{api_id}/authorize-client`. The same `redirect_uri` as provided in the original request must be provided alongside the `client_id` as a security feature to verify the client identity.
+The *Identity Server* requests an *Authorization Code* from the *Authentication Server*. Tyk's *authorization code* endpoint is hosted in the [Tyk Dashboard API]({{< ref "api-management/dashboard-configuration#oauth20-authorization-code" >}}), accessible from `POST /api/apis/{api_id}/authorize-client`. The same `redirect_uri` as provided in the original request must be provided alongside the `client_id` as a security feature to verify the client identity.
 
 This endpoint is protected using the Dashboard API secret assigned to the *Identity Server*, which must be provided in the `Authorization` header.
 
@@ -677,9 +1020,9 @@ OAuth access tokens have built in expiry, but if you need to [revoke](https://to
 
 Using the **Tyk Dashboard API** you can revoke specific tokens (both access and refresh) or all tokens issued for a specific *client app* as follows:
 
-- [retrieve a list of all tokens for a client app]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#retrieve-all-current-tokens-for-specified-oauth20-client" >}})
-- [revoke a single token]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#revoke-a-single-oauth-client-token" >}})
-- [revoke all tokens for a client app]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management#revoke-all-oauth-client-tokens" >}})
+- [retrieve a list of all tokens for a client app]({{< ref "api-management/dashboard-configuration#retrieve-all-current-tokens-for-specified-oauth20-client" >}})
+- [revoke a single token]({{< ref "api-management/dashboard-configuration#revoke-a-single-oauth-client-token" >}})
+- [revoke all tokens for a client app]({{< ref "api-management/dashboard-configuration#revoke-all-oauth-client-tokens" >}})
 
 These endpoints are protected using the Dashboard API secret assigned to the user managing the tokens, which must be provided in the `Authorization` header.
 
@@ -769,7 +1112,7 @@ To protect an API with JWT, we need to execute the following steps:
 
 #### Set a Default Policy
 
-If Tyk cannot find a `pol` claim, it will apply this Default Policy. Select a policy that gives access to this API we are protecting, or [go create one first]({{< ref "getting-started/create-security-policy" >}}) if it doesn't exist.
+If Tyk cannot find a `pol` claim, it will apply this Default Policy. Select a policy that gives access to this API we are protecting, or [go create one first]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}) if it doesn't exist.
 
 Make sure to save the changes to the API Definition.
 
@@ -1267,16 +1610,12 @@ The auth (bearer) tokens will be signed by the private key of the issuer, which 
 All of this happens automatically.  You just need to specify to Tyk what the JWKs url is, and then apply a "sub" and default policy in order for everything to work.  See Step #3, 4, and 5 under option #1 for explanations and examples.
 
 
-
 #### Adjust JWT Clock Skew Configuration
-Prevent token rejection due to clock skew between servers by configuring clock skew values:
+Due to the nature of distributed systems it is expected that despite best efforts you can end up in a situation with clock skew between the issuing party (An OpenID/OAuth provider) and the validating party (Tyk).  
 
-- `jwt_issued_at_validation_skew`
-- `jwt_expires_at_validation_skew`
-- `jwt_not_before_validation_skew`
+This means that in certain circumstances Tyk would reject requests to an API endpoint secured with JWT with the "Token is not valid yet" error . This occurs due to the clock on the Tyk server being behind the clock on the Identity Provider server even with all servers ntp sync'd from the same ntp server.
 
-All values are in seconds. The default is `0`.
-
+You can configure maximum permissable skew on three claims (`IssueAt`, `ExpireAt` and `NotBefore`) in the API definition.
 
 #### Map JWT Scopes to Policies
 Assign JWT scopes to security policies to control access:
@@ -1409,7 +1748,7 @@ $ curl http://localhost:8080/basicauth/get \
 $ curl http://myusername:mypassword@localhost:8080/basicauth/get
 <200 response from upstream>
 ```
-We have full tutorials to guide you to [create an API Key]({{< ref "getting-started/create-api-key" >}}) via the Dashboard. 
+We have full tutorials to guide you to [create an API Key]({{< ref "api-management/gateway-config-managing-classic#access-an-api" >}}) via the Dashboard. 
 
 ##### Using the Tyk Gateway API
 
@@ -1487,7 +1826,7 @@ curl -X POST -H "Authorization: 907aed9f88514f175f1dccf8a921f741"
  }' http://{your-tyk-dashboard-host}:{port}/api/apis/keys/basic/testuser2 | python -mjson.tool
 ```
 
-[See Basic Authentication via the Dashboard API]({{< ref "tyk-apis/tyk-dashboard-api/basic-authentication" >}})
+[See Basic Authentication via the Dashboard API]({{< ref "api-management/dashboard-configuration#basic-authentication-api" >}})
 
 {{< note success >}}
 **Note**  
@@ -1710,7 +2049,7 @@ generating certificate SHA256 fingerprint using the following command:
 openssl x509 -noout -fingerprint -sha256 -inform pem -in <cert>.
 ```
 
-You may notice that you can't get the raw certificate back, only its meta information. This is to ensure security. Certificates with private keys have special treatment and are encoded before storing. If a private key is found it will be encrypted with AES256 algorithm 3 using the `security.private_certificate_encoding_secret` secret, defined in `tyk.conf` file. Otherwise, the certificate will use the [secret](https://tyk.io/docs/configure/tyk-gateway-configuration-options/#a-name-secret-a-secret) value in `tyk.conf`.
+You may notice that you can't get the raw certificate back, only its meta information. This is to ensure security. Certificates with private keys have special treatment and are encoded before storing. If a private key is found it will be encrypted with AES256 algorithm 3 using the `security.private_certificate_encoding_secret` secret, defined in `tyk.conf` file. Otherwise, the certificate will use the [secret]({{< ref "tyk-oss-gateway/configuration#secret" >}}) value in `tyk.conf`.
 
 ###### MDCB 
 Mutual TLS configuration in an MDCB environment has specific requirements. An MDCB environment consists of a Control Plane and multiple Data Planes that, using MDCB, sync configuration. 
@@ -2421,7 +2760,7 @@ When creating a user session object, the settings should be modified to reflect 
 }
 ```
 
-Creating HMAC keys is the same as creating regular access tokens - by using the [Tyk Gateway API]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/authentication" >}}). Setting the `hmac_enabled` flag to `true`, Tyk will generate a secret key for the key owner (which should not be modified), but will be returned by the API so you can store and report it to your end-user.
+Creating HMAC keys is the same as creating regular access tokens - by using the Tyk Gateway API. Setting the `hmac_enabled` flag to `true`, Tyk will generate a secret key for the key owner (which should not be modified), but will be returned by the API so you can store and report it to your end-user.
 
 
 #### Upstream HMAC request signing
@@ -2460,14 +2799,14 @@ The following algorithms are supported:
 #### Go Plugins
 
 Go Plugin Authentication allows you to implement custom authentication logic using the Go programming language. This method is useful for scenarios where you need to implement specialized authentication mechanisms that are not natively supported by Tyk.
-To learn more about using Tyk Golang Plugins, go [here](/plugins/supported-languages/golang/#supported-plugin-types)
+To learn more about using Tyk Golang Plugins, go [here]({{< ref "api-management/plugins/golang" >}})
 
 #### Use Python CoProcess and JSVM Plugin Authentication
 
 Tyk allows for custom authentication logic using Python and JavaScript Virtual Machine (JSVM) plugins. This method is useful for implementing unique authentication mechanisms that are tailored to your specific requirements.
 
-* See [Custom Authentication with a Python plugin]({{< ref "plugins/supported-languages/rich-plugins/python/custom-auth-python-tutorial" >}}) for a detailed example of a custom Python plugin.
-* See [JavaScript Middleware]({{< ref "plugins/supported-languages/javascript-middleware" >}}) for more details on using JavaScript Middleware. 
+* See [Custom Authentication with a Python plugin]({{< ref "api-management/plugins/rich-plugins#custom-authentication-plugin-tutorial" >}}) for a detailed example of a custom Python plugin.
+* See [JavaScript Middleware]({{< ref "api-management/plugins/javascript#" >}}) for more details on using JavaScript Middleware. 
 
 ### Open (No Authentication)
 
@@ -2493,7 +2832,7 @@ This will stop checking keys that are proxied by Tyk.
 {{< note success >}}
 **Note**  
 
-Keyless APIs cannot be selected for [Access Rights]({{< ref "getting-started/create-security-policy" >}}) in a security policy.
+Keyless APIs cannot be selected for [Access Rights]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}) in a security policy.
 {{< /note >}}
 
 #### Request a Public Resource
@@ -2846,11 +3185,11 @@ Tyk makes a clear distinction between an API authorization key expiring and bein
 
 Tyk provides separate control for the expiration and deletion of keys.
 
-Note that where we talk about keys here, we are referring to [Session Objects]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}), also sometimes referred to as Session Tokens
+Note that where we talk about keys here, we are referring to [Session Objects]({{< ref "api-management/policies#what-is-a-session-object" >}}), also sometimes referred to as Session Tokens
 
 ### Key expiry
 
-Tyk's API keys ([token session objects]({{< ref "tyk-apis/tyk-gateway-api/token-session-object-details" >}})) have an `expires` field. This is a UNIX timestamp and, when this date/time is reached, the key will automatically expire; any subsequent API request made using the key will be rejected.
+Tyk's API keys ([token session objects]({{< ref "api-management/policies#session-object" >}})) have an `expires` field. This is a UNIX timestamp and, when this date/time is reached, the key will automatically expire; any subsequent API request made using the key will be rejected.
 
 ### Key lifetime
 

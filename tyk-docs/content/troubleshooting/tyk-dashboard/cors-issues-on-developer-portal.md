@@ -4,8 +4,30 @@ title: CORS issues on developer portal
 menu:
   main:
     parent: "Tyk Dashboard Troubleshooting"
-weight: 6 
+weight: 6
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< warning success >}}
+
+**Attention:**
+
+You’ve reached a page related to the *Tyk Classic Portal*. If you were searching for *API documentation of the new Tyk
+Developer Portal* please use the latest
+[Postman collection]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) page.
+</br>
+</br>
+**Future deprecation of Tyk Classic Portal**
+
+This product is no longer actively developed as it
+has been superseded by the new [Tyk Developer Portal]({{< ref "portal/overview" >}}).
+</br>
+Please note that the Tyk Classic Portal now has limited support and maintenance. Please contact us at
+[support@tyk.io](<mailto:support@tyk.io?subject=Tyk classic developer portal>)if you have any questions.
+
+{{< /warning >}}
 
 ### Description
 
@@ -31,5 +53,5 @@ Make sure that your CORS in the `Advanced Options` of the API is enabled and the
  > **Note:** When creating a new API with Dashboard v3.1 and higher the CORS settings will be prefilled with some default values (but **disabled** by default).
 
  You can learn more about CORS on this pages:
- - [CORS in API Definition]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}})
+ - [CORS in API Definition]({{< ref "api-management/gateway-config-tyk-classic#cross-origin-resource-sharing-cors" >}})
  - [How to setup CORS]({{< ref "api-management/troubleshooting-debugging#how-to-setup-cors" >}}) 

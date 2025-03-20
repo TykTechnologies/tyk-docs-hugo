@@ -7,7 +7,29 @@ menu:
 weight: 3 
 aliases:
   - /tyk-developer-portal/gluu-dcr
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< warning success >}}
+
+**Attention:**
+
+You’ve reached a page related to the *Tyk Classic Portal*. If you were searching for *API documentation of the new Tyk
+Developer Portal* please use the latest
+[Postman collection]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) page.
+</br>
+</br>
+**Future deprecation of Tyk Classic Portal**
+
+This product is no longer actively developed as it
+has been superseded by the new [Tyk Developer Portal]({{< ref "portal/overview" >}}).
+</br>
+Please note that the Tyk Classic Portal now has limited support and maintenance. Please contact us at
+[support@tyk.io](<mailto:support@tyk.io?subject=Tyk classic developer portal>)if you have any questions.
+
+{{< /warning >}}
 
 We are going walk you through a basic integration of Tyk with [Gluu](https://gluu.org/) using the [OpenID Connect Dynamic Client Registration protocol](https://tools.ietf.org/html/rfc7591). Our current implementation provides support for the client credentials flow with support for {{< tooltip >}}JWT{{< definition >}} JSON Web Tokens{{< /definition >}}{{< /tooltip >}}. 
 
@@ -98,7 +120,7 @@ Once the "Override global settings" option is toggled, scroll down to the DCR se
 
 **Providers:** Different providers might implement the standard in slightly different ways. Tyk provides a specific driver for each one. For IDPs that aren’t on the list use the "Other" option. For this guide, pick "Gluu".
 
-**Grant Types:** The [OAuth 2.0 grant types]({{< ref "/api-management/client-authentication#use-tyk-as-an-oauth-20-authorization-server" >}}) types that will be used by the client, see the [specification](https://openid.net/specs/openid-connect-registration-1_0.html#rfc.section.2) for more details. Set "Client Credentials".
+**Grant Types:** The [OAuth 2.0 grant types]({{< ref "api-management/client-authentication#use-tyk-as-an-oauth-20-authorization-server" >}}) types that will be used by the client, see the [specification](https://openid.net/specs/openid-connect-registration-1_0.html#rfc.section.2) for more details. Set "Client Credentials".
 
 **Token Endpoint Auth Method:** defines the way the client will authenticate against the token endpoint. Use "Client Secret - Post".
 

@@ -1,7 +1,7 @@
 ---
 title: Tyk Enterprise Developer Portal Release Notes
-description: Release notes documenting updates, enhancements and changes for Tyk Enterprise Developer Portal v1.12.0
-tags: ["Developer Portal", "Release notes", "changelog", "v1.12.0"]
+description: Release notes documenting updates, enhancements and changes for Tyk Enterprise Developer Portal v1.13.0
+tags: ["Developer Portal", "Release notes", "changelog", "v1.13.0"]
 menu:
 main:
 parent: "Release Notes"
@@ -36,6 +36,216 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
+## 1.13 Release Notes
+### 1.13.0 Release Notes
+
+#### Release Date 31 Jan 2025
+
+#### Release Highlights
+The v1.13.0 release includes the following new features and improvements:
+- Improved UX for Products and Plan listing.
+- Added the ability to create, edit, and remove `Products` from the portal.
+- Added the ability to create, edit, and remove `Plan` from the portal.
+- EDP Resources now support custom IDs that allow the migration of elements between environments.
+- Security: 4 CVEs fixed.
+- Bugfixes: 5 bugs fixed.
+
+For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.13.0) below.
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are on 1.12.0 or an older version, we advise you to upgrade ASAP to this release.
+
+While upgrading to 1.13.0, Portal will automatically migrate the new Custom IDs to most of the existing resources. For more information, please refer to the [changelog](#Changelog-v1.13.0).
+To upgrade the portal's theme, please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
+
+#### Download
+- [Docker image v1.13.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.13.0)
+  - ```bash
+    docker pull tykio/portal:v1.13.0
+    ```
+- [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.13.0)
+
+#### Changelog {#Changelog-v1.13.0}
+
+##### Added
+<ul>
+<li>
+<details>
+<summary>Improved UX for Products and Plan listing</summary>
+
+The portal now provides an enhanced UI for browsing and managing products and plans, making it easier for administrators to organize and maintain their API offerings.
+
+</details>
+</li>
+<li>
+<details>
+<summary>Product and Plan Management</summary>
+
+Administrators can now create, edit, and remove `Products` and `Plans` directly from the portal admin UI, eliminating the need to manage these through the Tyk Dashboard. The new features include the following:
+
+- Product creation with full configuration options.
+- Plan management with pricing and quota settings.
+- Direct editing of existing `Products` and `Plans`.
+- Removal of deprecated offerings.
+
+With the added features, Portal provides greater control over the API lifecycle management process.
+
+</details>
+</li>
+<li>
+<details>
+<summary>Documentation-only Products</summary>
+
+Added support for creating documentation-only products in the Enterprise Developer Portal. This feature allows API Providers to:
+
+- Create products that serve purely as documentation repositories.
+- Share API documentation without exposing actual API endpoints.
+- Preview API documentation before making APIs available.
+
+This is particularly useful for scenarios where APIs are in development or when you want to share documentation with a limited audience before making the APIs publicly available.
+
+</details>
+</li>
+<li>
+<details>
+<summary>Custom ID Support for Resources</summary>
+
+EDP Resources now supports custom IDs (in addition to auto-increment integer IDs) to facilitate migration and reference between environments. This feature covers:
+
+- API Resources: Products, plans, tutorials, OAS documents, OAuth providers, and client types
+- Organizational Entities: Organizations, Users, Groups, and Catalogs
+- Content/Resources: Pages, content blocks, tags, menus, and menu items
+
+This enhancement makes it easier to maintain consistency across different environments and simplifies the migration process between environments.
+
+</details>
+</li>
+<li>
+<details>
+<summary>Enhanced Login Controls</summary>
+
+Admins can now configure more enhanced login controls, such as limits, expiration and intervals.
+
+These settings can be adjusted in the General Settings section of the portal admin UI to help maintain secure access to the portal.
+</details>
+</li>
+<li>
+<details>
+<summary>SSO Profile Management APIs</summary>
+
+Added new APIs for managing SSO profiles, enabling programmatic control over SSO configurations. These APIs allow administrators to:
+
+- Create SSO profiles
+- List all SSO profiles
+- Get details of a specific profile
+- Update existing profiles
+- Delete profiles 
+
+These endpoints enable the automation of SSO setup and management through CI/CD pipelines. Use cases include:
+
+- Automated deployment of SSO configurations across environments
+- Integration with identity management systems
+- Automated testing of SSO configurations
+
+This addition complements the embedded Tyk Identity Broker functionality introduced in v1.12.0, providing a complete programmatic interface for SSO management.
+
+</details>
+</li>
+<li>
+<details>
+<summary>Product and Plan Management APIs</summary>
+
+Added new APIs for managing Products and Plans programmatically, enabling automation of the product lifecycle. These APIs include:
+
+Products:
+- Create products 
+- List all products 
+- Get product details 
+- Update products
+- Delete products
+
+Plans:
+- Create plans
+- List all plans 
+- Get plan details
+- Update plans
+- Delete plans
+
+These APIs complement the UI-based product management capabilities, enabling automated workflows and CI/CD integration for product lifecycle management.
+
+</details>
+</li>
+</ul>
+
+##### Fixed
+<ul>
+<li>
+<details>
+<summary>App edit CSRF Token Validation</summary>
+
+Fixed an issue where CSRF token validation was failing during application edits, which prevented users from saving changes to their applications. This has been resolved by implementing proper token lifecycle management and validation.
+
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed MySQL SSO Profile handling</summary>
+
+Fixed an issue where EDP embedded Tyk Identity Broker profiles weren't being properly handled in MySQL environments, which caused storing SSO profiles failures. This has been resolved by correcting the database query handling for SSO profile data.
+
+</details>
+</li>
+<li>
+<details>
+<summary>Custom Attribute deletion</summary>
+
+Fixed an issue where deleting a single custom attribute would inadvertently remove all user custom attributes, which caused loss of user profile data. This has been resolved by implementing proper scoping for attribute deletion operations.
+
+</details>
+</li>
+<li>
+<details>
+<summary>Catalog Deletion Impact</summary>
+
+Fixed an issue where removing an active catalog would cause UI rendering problems for developers, which resulted in a poor user experience. This has been resolved by implementing proper cascading deletion of catalog resources.
+
+</details>
+</li>
+<li>
+<details>
+<summary>Theme Upload Validation</summary>
+
+Fixed an issue where uploading themes containing nested theme directories would corrupt the original theme, which caused theme installation failures. This has been resolved by implementing validation to detect and prevent nested theme uploads.
+
+</details>
+</li>
+</ul>
+
+##### Security Fixes
+<ul>
+<li>
+<details>
+<summary>High priority CVEs fixed</summary>
+
+Fixed the following high priority CVEs identified in the Tyk Enterprise Developer Portal:
+
+- [CVE-2022-24785](https://nvd.nist.gov/vuln/detail/CVE-2022-24785)
+- [CVE-2022-31129](https://nvd.nist.gov/vuln/detail/CVE-2022-31129)
+- [CVE-2024-45337](https://nvd.nist.gov/vuln/detail/CVE-2024-45337)
+- [CVE-2024-45338](https://nvd.nist.gov/vuln/detail/CVE-2024-45338)
+
+</details>
+</li>
+</ul>
+
+<!-- Previous release notes sections follow -->
+
 ## 1.12 Release Notes
 ### 1.12.0 Release Notes
 
@@ -63,7 +273,7 @@ There are no deprecations in this release.
 #### Upgrade instructions
 If you are on 1.11.0 or an older version we advise you to upgrade ASAP directly to this release.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
 
 #### Download
 - [Docker image v1.12.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.12.0)
@@ -104,7 +314,7 @@ We support out of the box integration with the following SSO providers type:
 - LDAP: Bind users to an LDAP server such as Azure Active Directory, using their username and password.
 - Social: The social provider should provide seamless integration with Google+ Github, Facebook, Salesforce, Digital Ocean and more.
 
-You can read more about the supported SSO providers [here]({{< ref "/tyk-identity-broker" >}}).
+You can read more about the supported SSO providers [here]({{< ref "tyk-identity-broker" >}}).
 
 </details>
 </li>
@@ -112,7 +322,7 @@ You can read more about the supported SSO providers [here]({{< ref "/tyk-identit
 <details>
 <summary>Creation of Apps and Credentials</summary>
 
-Admins now have enhanced control over application and credential creation in the portal, streamlining the onboarding process and reducing the need for API-based setups. With this update, admins can create applications and assign them to specific users, making it easier to onboard developers who aren’t using self-service options.
+Admins now have enhanced control over application and credential creation in the portal, streamlining the onboarding process and reducing the need for API-based setups. With this update, admins can create applications and assign them to specific users, making it easier to onboard developers who aren't using self-service options.
 
 For custom authorization scenarios —like when using an external OAuth2.0 provider— admins can now issue credentials directly in the portal. These credentials are stored as key-value pairs that developers can view, providing a more seamless alternative to manual credential sharing.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/1.12.0-non-tyk-managed-credential.png" width=500px alt="Non-Tyk managed credential">}}
@@ -264,7 +474,7 @@ links to API documentation and FAQs. You can copy it from the previous release. 
 This release has no breaking changes.
 
 #### Future breaking changes
-This release doesn’t introduce future breaking changes.
+This release doesn't introduce future breaking changes.
 
 #### Deprecations
 There are no deprecations in this release.
@@ -282,15 +492,15 @@ The v1.11.0 release includes the following new features and improvements:
 To improve stability under high loads, we conducted performance testing and identified that improper database configurations can cause unexpected portal restarts. To prevent this and ensure optimal performance, we recommend the following database settings:
 
 **Recommended Configuration:**
-- [PORTAL_DATABASE_MAX_OPEN_CONNECTIONS]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_max_open_connections" >}}): Set this value based on your database’s maximum connection limit divided by the number of portal instances. For example, if your database allows 200 connections and you are running 4 portal instances, set PORTAL_DATABASE_MAX_OPEN_CONNECTIONS to 50 per instance. This ensures that all instances can share the available connections without exceeding the database's limit, which could otherwise lead to performance degradation or errors.
-- [PORTAL_DATABASE_MAX_IDLE_CONNECTIONS]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_max_idle_connections" >}}): Set to 15 or a lower value based on your expected load. This setting keeps a reasonable number of connections readily available without tying up resources unnecessarily.
+- [PORTAL_DATABASE_MAX_OPEN_CONNECTIONS]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_max_open_connections" >}}): Set this value based on your database's maximum connection limit divided by the number of portal instances. For example, if your database allows 200 connections and you are running 4 portal instances, set PORTAL_DATABASE_MAX_OPEN_CONNECTIONS to 50 per instance. This ensures that all instances can share the available connections without exceeding the database's limit, which could otherwise lead to performance degradation or errors.
+- [PORTAL_DATABASE_MAX_IDLE_CONNECTIONS]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_max_idle_connections" >}}): Set to 15 or a lower value based on your expected load. This setting keeps a reasonable number of connections readily available without tying up resources unnecessarily.
 
 For reference, with 2 portal instances, `PORTAL_DATABASE_MAX_OPEN_CONNECTIONS` set to 30 and `PORTAL_DATABASE_MAX_IDLE_CONNECTIONS` set to 15, we could handle 90 active users.
 
 #### Upgrade instructions
 If you are on 1.10.0 or an older version we advise you to upgrade ASAP directly to this release.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
 
 #### Download
 - [Docker image v1.11.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.11.0)
@@ -309,14 +519,14 @@ To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "
 - Added APIs to manage blog posts along with their tags and categories.
 - Added a new API endpoint that allows the rotation of API credentials.
 - UI and API for themes soft delete. Soft deleted themes are not shown in the UI and API, but are kept in the database for future reference.
-- Added new TLS variables to set MinVersion ([portal_tls_min_version]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_min_version" >}}), MaxVersion ([PORTAL_TLSCONFIG_MAXVERSION]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_max_version" >}}), and CipherSuites ([PORTAL_TLS_CIPHER_SUITES]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_cipher_suites" >}}).
-- Added a new configuration to manage the idle timeout of the portal's session ([PORTAL_SESSION_IDLE_TIMEOUT]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_session_idle_timeout" >}}).
+- Added new TLS variables to set MinVersion ([portal_tls_min_version]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_min_version" >}}), MaxVersion ([PORTAL_TLSCONFIG_MAXVERSION]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_max_version" >}}), and CipherSuites ([PORTAL_TLS_CIPHER_SUITES]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_cipher_suites" >}}).
+- Added a new configuration to manage the idle timeout of the portal's session ([PORTAL_SESSION_IDLE_TIMEOUT]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_session_idle_timeout" >}}).
 - Added CSRF protection injection to portal's form. Now you don't need to add it manually to your templates.
 
 ##### Changed
 - Changed passwordrecovery links to be valid for 24 hours.
 - Changed password recovery links to be unique and valid for one use only.
-- Changed the default value of [PORTAL_DATABASE_CONNECTION_MAX_LIFETIME]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_connection_max_lifetime" >}}) to 1800000 milliseconds.
+- Changed the default value of [PORTAL_DATABASE_CONNECTION_MAX_LIFETIME]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_connection_max_lifetime" >}}) to 1800000 milliseconds.
 - Changed session token queries for better performance.
 - Introduced new indexes for better performance.
 
@@ -339,7 +549,7 @@ To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "
 - Fixed the portal API behavior to handle cases where the "Accept" header is absent. Previously, such requests resulted in a 500 Internal Server Error with no response body, causing the portal to panic.
 - Fixed a duplicated 404 error page when there is a not found error.
 - Fixed credential revocation error when OAuth2.0 provider is deleted. 
-- Fixed an issue where credentials weren’t deleted with OAuth2.0 provider removal.
+- Fixed an issue where credentials weren't deleted with OAuth2.0 provider removal.
 - Fixed an issue where the graph only displayed the peak value of 100, even when the average error rate was below 100.
 - Fixed several errors in the portal API specification.
 - Fixed the 19 CVEs, among which are:
@@ -373,7 +583,7 @@ To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "
 This release has no breaking changes.
 
 #### Future breaking changes
-This release doesn’t introduce future breaking changes.
+This release doesn't introduce future breaking changes.
 
 #### Deprecations
 There are no deprecations in this release.
@@ -387,7 +597,7 @@ The 1.10.0 addresses twenty high-priority bugs and vulnerabilities and introduce
 #### Upgrade instructions
 If you are on 1.9.0 or an older version we advise you to upgrade ASAP directly to this release.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
 
 #### Download
 - [Docker image v1.10.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.10.0)
@@ -399,8 +609,8 @@ To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "
 #### Changelog
 ##### Added
 - Added OAS APIs support. 
-- Added an assets cache for improved performance on database-backed themes. This speeds up the portal's pages loading time by 30%. It's enabled by default and you can disable using [PORTAL_ASSETS_CACHE_DISABLE]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_assets_cache_disable" >}}).
-- Added three new configuration options to manage database connections lifecycle: [PORTAL_DATABASE_MAX_OPEN_CONNECTIONS]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_max_open_connections" >}}), [PORTAL_DATABASE_MAX_IDLE_CONNECTIONS]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_max_idle_connections" >}}), and [PORTAL_DATABASE_CONNECTION_MAX_LIFETIME]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_connection_max_lifetime" >}}).
+- Added an assets cache for improved performance on database-backed themes. This speeds up the portal's pages loading time by 30%. It's enabled by default and you can disable using [PORTAL_ASSETS_CACHE_DISABLE]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_assets_cache_disable" >}}).
+- Added three new configuration options to manage database connections lifecycle: [PORTAL_DATABASE_MAX_OPEN_CONNECTIONS]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_max_open_connections" >}}), [PORTAL_DATABASE_MAX_IDLE_CONNECTIONS]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_max_idle_connections" >}}), and [PORTAL_DATABASE_CONNECTION_MAX_LIFETIME]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_connection_max_lifetime" >}}).
 
 ##### Fixed
 - Fixed the bug where `PORTAL_SESSION_LIFETIME` was calculated in minutes instead of seconds.
@@ -445,7 +655,7 @@ There are no deprecations in this release.
 
 #### Release Highlights
 The 1.9.0 release addresses several security vulnerability and bugs and introduces two new capabilities:
-- [Webhooks]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks.md" >}}) for events that happen in the portal.
+- [Webhooks]({{< ref "portal/customization" >}}) for events that happen in the portal.
 - [Admin APIs]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) for OAuth2.0 configuration. 
 
 #### Upgrade instructions
@@ -462,7 +672,7 @@ This release doesn't introduce any changes to the theme, so a theme upgrade is n
 
 #### Changelog
 ##### Added
-- Added [the webhooks]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks.md" >}}) capability that  enable real-time, automated data updates between the portal and 3rd party applications.
+- Added [the webhooks]({{< ref "portal/customization" >}}) capability that  enable real-time, automated data updates between the portal and 3rd party applications.
 - Added [admin APIs]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) for managing OAuth2.0 configuration. 
 
 ##### Fixed
@@ -500,7 +710,7 @@ If you are not on v1.8.4 then there's no urgency in updating.
 #### Upgrade instructions
 If you are on 1.8.4 you should **upgrade ASAP** directly to this release. This release doesn't introduce any changes to the theme, so a theme upgrade is not required.
 
-If you are on 1.8.3 or older version please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) to upgrade the portal's themes.
+If you are on 1.8.3 or older version please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) to upgrade the portal's themes.
 
 #### Download
 - [Docker image v1.8.5](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.8.5)
@@ -530,7 +740,7 @@ There are no deprecations in this release.
 #### Upgrade instructions
 If you are on 1.8.1 or an older version we advise you to upgrade ASAP directly to this release.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
 
 
 #### Release Highlights
@@ -566,15 +776,15 @@ The 1.8.4 release addresses ten high-priority bugs and vulnerabilities, and intr
 | /portal/private/profile      | Profile                |
 | /auth/password/login         | Developer portal login |
 | /auth/password/new           | Password reset         |
-- Changed the credential provisioning flow to automatically include DeveloperID, OrganizationID, ApplicationID, and TeamIDs in [the credential metadata]({{< ref "/product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model#default-attributes" >}}).
-- Added warning regarding potential PII exposure to the [custom attributes menu]({{< ref "/product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model#default-attributes" >}}).
+- Changed the credential provisioning flow to automatically include DeveloperID, OrganizationID, ApplicationID, and TeamIDs in [the credential metadata]({{< ref "portal/customization#default-attributes-of-user-model" >}}).
+- Added warning regarding potential PII exposure to the [custom attributes menu]({{< ref "portal/customization#default-attributes-of-user-model" >}}).
 - Changed the behavior of the portal for 404 errors. Now whenever a user requests non-existing page both private (e.i. requiring sign-in to access) or public, the portal now always renders the `not_found.tmpl` template.
-- Changed the behavior of the `Secure` cookie attribute that is set by [PORTAL_SESSION_SECURE]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_session_secure" >}}) so that the `Secure` attribute is always add to the `Set-Cookie` header whenever `PORTAL_SESSION_SECURE` is set to `true` or when TLS is enabled.
+- Changed the behavior of the `Secure` cookie attribute that is set by [PORTAL_SESSION_SECURE]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_session_secure" >}}) so that the `Secure` attribute is always add to the `Set-Cookie` header whenever `PORTAL_SESSION_SECURE` is set to `true` or when TLS is enabled.
 - Changed the behavior of removing a developer profile within the developers UI in the admin app. Now, when an admin tries to remove a developer profile and some of their credentials have been removed from the credentials provider, or if the provider itself is down or unreachable, the portal asks the admin if they still want to remove the developer profile by displaying a modal window.
-- Extended the `DELETE /users/:id` API endpoint by adding the [?force]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) query parameter to force removal of a user even if some of their credentials have been removed from the credentials provider, or if the provider itself is down or unreachable.
+- Extended the `DELETE /users/:id` API endpoint by adding the [?force]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) query parameter to force removal of a user even if some of their credentials have been removed from the credentials provider, or if the provider itself is down or unreachable.
 - Extended the `GET /pages/:id/content-blocks/:id:` API endpoint by adding additional fields in the response body: `Content`, `MarkdownContent`, `MarkdownEnabled`, `Name`, and `PageID`.
-- Extended [filesize limit]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts#part-1-create-a-new-theme" >}}) for individual files in themes to 5 MB.
-- Made the organization invite email's subject configurable via [the emails settings section]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization#list-of-email-notifications" >}}).
+- Extended [filesize limit]({{< ref "portal/customization#create-a-theme" >}}) for individual files in themes to 5 MB.
+- Made the organization invite email's subject configurable via [the emails settings section]({{< ref "portal/customization#supported-email-notifications" >}}).
 
 ##### Fixed
 - Fixed the bug where it was impossible to create an ordered list in the rich text editor in the admin app due to CSS issues.
@@ -602,7 +812,7 @@ There are no deprecations in this release.
 #### Upgrade instructions
 If you are on 1.8.1 or an older version we advise you to upgrade ASAP directly to this release.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
 
 
 #### Release Highlights
@@ -645,7 +855,7 @@ There are no deprecations in this release.
 #### Upgrade instructions
 If you are on 1.8.1 or an older version we advise you to upgrade ASAP directly to this release.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
 
 
 #### Release Highlights
@@ -692,7 +902,7 @@ There are no deprecations in this release.
 If you are on 1.8.0 or an older version we advise you to upgrade ASAP directly to this release.
 Unlike 1.8.0, 1.8.1 fixes the broken backward compatability for the default visual theme. Therefore, the upgrade path from earlier versions are straightforward. It is enough to just pull the latest version of the portal's container.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
 
 
 #### Release Highlights
@@ -743,7 +953,7 @@ There are no deprecations in this release.
 #### Upgrade instructions
 If you are on 1.7.0 or an older version we advise you to upgrade ASAP directly to this release.
 When upgrading from 1.6.0 or earlier versions, customers may experience problems when starting the portal. One of the possible issues is the following:
-- When the portal theme [manifest]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts#manifest-file" >}}) has a reference to a template that is not present in the theme then the theme won't be loaded. This check that prevents admin users from uploading themes with potential errors was introduced in version [1.7.0]({{< ref "#content-blocks-validation" >}}).
+- When the portal theme [manifest]({{< ref "portal/customization#manifest-file" >}}) has a reference to a template that is not present in the theme then the theme won't be loaded. This check that prevents admin users from uploading themes with potential errors was introduced in version [1.7.0]({{< ref "#content-blocks-validation" >}}).
 - At the same time, the default theme in version 1.6.0 of the portal had a reference in the theme manifest to the `portal_home` template that didn't exist in the theme.
 - The portal doesn't update the theme automatically because in that case any customer-made changes will be lost. Subsequently, upgrading from 1.6.0 to 1.8.0 may result in the following error when loading the theme:
 ```yaml
@@ -828,7 +1038,7 @@ Extend the User model with additional fields of one of four types:
   - Determine if developers can view the fields or are they restricted to only admin users?
   - Can developers edit the fields?
 
-All settings are available via the [admin API]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api.md" >}}) and the UI.
+All settings are available via the [admin API]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) and the UI.
 
 To create a custom attribute, define it in the custom attributes menu:
 {{< img src="/img/dashboard/portal-management/enterprise-portal/1.8.0-create-custom-attribute.png" width=500px alt="Create a custom attribute for the User model">}}
@@ -878,7 +1088,7 @@ Now when the [PORTAL_DCR_LOG_ENABLED]({{< ref "product-stack/tyk-enterprise-deve
 ##### Fixed
 - Fixed the bug where the database credentials were printed in the logs when bootstrapping the portal.
 - Fixed the bug where the session cookie was disclosing the username and role.
-- Fixed the bug where the [Forgot Password page]({{< ref "tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/reset-password.md#introduction" >}}) did not reflect the current theme.
+- Fixed the bug where the [Forgot Password page]({{< ref "portal/api-consumer#reset-password" >}}) did not reflect the current theme.
 - Fixed the bug where the DCR flow failed to create a client with policies managed by Tyk Operator.
 - Fixed the bug where an admin user couldn't upload a new theme file in Kubernetes environment.
 - Fixed the bug where the portal application went down after running for several hours in Kubernetes environment.
@@ -911,7 +1121,7 @@ If you are on a 1.6.0 or an older version we advise you to upgrade ASAP directly
 
 #### Release Highlights
 ##### Content blocks validation
-We added validation to the content pages. Now when an admin user tries to delete a content block that is necessary to render the page, the portal won’t let them to save the page.
+We added validation to the content pages. Now when an admin user tries to delete a content block that is necessary to render the page, the portal won't let them to save the page.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/1.7.0-content-block-validation.png" width=500px alt="Content-block validation">}}
 
 ##### Audit log capability 
@@ -1014,13 +1224,13 @@ To display API Products that support custom authentication, you need simply to c
 
 ##### Changed
 - Simplified the connection settings to the portal assets storage (where all images, themes, and other CMS files are stored) to help our customers get up to speed quicker. We are well aware that installing and configuring on-premise software can be tricky, especially when it comes to infrastructure, storage and databases. Hence, we have decided to ease this burden for you:
-  - By default, the portal uses the `db` [storage type]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage" >}}) for storing its themes and other CMS assets and it doesn’t require any additional configuration. This means, you can start the portal right away without specifying any additional setting for the assets storage.
+  - By default, the portal uses the `db` [storage type]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage" >}}) for storing its themes and other CMS assets and it doesn't require any additional configuration. This means, you can start the portal right away without specifying any additional setting for the assets storage.
   - We also simplified setting up S3 storage: now you need only to configure connection settings to the bucket and the portal will handle the rest.
 
 
 ##### Fixed
 - In 1.6.0 multiple important security bugs are fixed:
-  - Added the ability to disable the theme upload capability. Since we don’t validate the theme content it might have viruses and other malicious software. So, to provide super secure environments, we added a setting to disable the theme upload via the UI and API:
+  - Added the ability to disable the theme upload capability. Since we don't validate the theme content it might have viruses and other malicious software. So, to provide super secure environments, we added a setting to disable the theme upload via the UI and API:
     {{< img src="/img/dashboard/portal-management/enterprise-portal/1.6.0-theme-upload-is-disabled.png" width=500px alt="Mutual TLS auth API Product in the checkout flow">}}
   - Fixed the bug where the session is not invalidated after a user logs out.
   - Fixed the role permission issue where a provider-admin can deactivate and delete a super-admin.
@@ -1049,7 +1259,7 @@ If you are on a 1.4.0 or an older version we advise you to upgrade ASAP directly
 
 #### Release Highlights
 ##### Improved API Providers page
-Now the API Provider page has the Status and Last synced columns that help to digest the current status of an API Provider (Up, Down, or Unknown) and the last time it was synchronized. Now it’s much easier to digest the current status of API Providers connected to the portal.
+Now the API Provider page has the Status and Last synced columns that help to digest the current status of an API Provider (Up, Down, or Unknown) and the last time it was synchronized. Now it's much easier to digest the current status of API Providers connected to the portal.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/1.5.0-provider-page.png" alt="Improved provider page">}}
 
 ##### Add the SSL insecure skip verify flag for API Providers
@@ -1109,13 +1319,13 @@ There are no deprecations in this release.
 If you are on a 1.3.0 or an older version we advise you to upgrade ASAP directly to this release.
 
 #### Release Highlights
-##### SQL support for the portal’s assets
-Until recently, SQL storage was not supported for the portal’s assets: OAS files, themes, images, etc. Therefore, customers had to use at least two types of storage:
-- SQL for the portal’s metadata (users, products, access requests, etc).
+##### SQL support for the portal's assets
+Until recently, SQL storage was not supported for the portal's assets: OAS files, themes, images, etc. Therefore, customers had to use at least two types of storage:
+- SQL for the portal's metadata (users, products, access requests, etc).
 - Filesystem or S3 for assets (pictures, themes, etc).
 
 This is especially inconvenient in Kubernetes environment when customers had to use persistent volumes.
-With this new feature, customers can simply use the same SQL database (MySQL, MariaDB and PostgreSQL) for both assets and metadata. To use the `db` [storage type]({{< ref "/content/product-stack/tyk-enterprise-developer-portal/deploy/configuration.md#portal_storage" >}}) just set the `PORTAL_STORAGE=db` for environment variables or `"Storage": "db"` in a config file and you are good to go!
+With this new feature, customers can simply use the same SQL database (MySQL, MariaDB and PostgreSQL) for both assets and metadata. To use the `db` [storage type]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration.md#portal_storage" >}}) just set the `PORTAL_STORAGE=db` for environment variables or `"Storage": "db"` in a config file and you are good to go!
 
 ##### Response status code added to API analytics filters
 API Consumers now can filter API analytics by response status codes. This allows them to analyze traffic and error rate for specific response code for their API Products.
@@ -1165,7 +1375,7 @@ We added the new **API Analytics UI** which extends self-service capabilities fo
 The **API Analytics UI** has four tabs that help developers to navigate different analytical views:
 - **The overview tab** provides an overarching view on the API Products consumed by a developer. This tab has all information needed to quickly digest the current state of API Products, including: total traffic, number of errors, error breakdown by response code and top APIs by error code.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/1.3.0-analytics-for-api-consumers-overview.png" width="500px" alt="API Analytics UI - Overview tab">}}
-- **The Total API Calls** tab enables developers to analyze traffic from their application to the APIs they consume and how it’s changing over time.
+- **The Total API Calls** tab enables developers to analyze traffic from their application to the APIs they consume and how it's changing over time.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/1.3.0-analytics-for-api-consumers-total-calls.png" width="500px" alt="API Analytics UI - Total API Calls tab">}}
 - **The Errors** tab provides developers with information relating to total errors and error rates. Here developers can identify any issues with the APIs which they consume without filling any support tickets. Developers can switch between the total number of error and error rates.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/1.3.0-analytics-for-api-consumers-errors.png" width="500px" alt="API Analytics UI - Errors tab">}}
@@ -1220,10 +1430,10 @@ If you are on a 1.1.0 or an older version we advise you to upgrade ASAP directly
 This release is primarily focused on improved deployment support for Kubernetes and a variety of features to achieve better developer experience.
 
 ##### Full Kubernetes support
-The Tyk Enterprise Developer Portal is now available in Kubernetes and customer can launch it using our [helm charts]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-helm">}}). This feature makes the portal Kubernetes friendly by adding liveness, readiness probes, graceful shutdown and changing the portal lifecycle so that it’s possible to set an initial user and bootstrap the portal via APIs.
+The Tyk Enterprise Developer Portal is now available in Kubernetes and customer can launch it using our [helm charts]({{< ref "portal/install#using-legacy-helm-chart" >}}). This feature makes the portal Kubernetes friendly by adding liveness, readiness probes, graceful shutdown and changing the portal lifecycle so that it's possible to set an initial user and bootstrap the portal via APIs.
 
 ##### SSO for API Consumers and admins
-API Providers can [configure Single Sign-on]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso">}}) for the Enterprise developer portal so that it’s possible to login developers and admins to the portal user 3rd party IdP.
+API Providers can [configure Single Sign-on]({{< ref "portal/settings#configure-developer-portal-sso" >}}) for the Enterprise developer portal so that it's possible to login developers and admins to the portal user 3rd party IdP.
 
 ##### API Analytics for API Consumers
 This capability enables API Providers to get aggregated statistics about consumption of their APIs using Tyk Pump. In 1.2.0, we enabled the portal to attach the following tags to API Keys and oAuth clients:
@@ -1237,7 +1447,7 @@ This feature provides an API to make it easier for admin users to manage their A
 - Add link to Open API specification for APIs.
 
 ##### Add TLS support
-This feature enables API Provides to secure the portal with [HTTPs]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_enable" >}}).
+This feature enables API Provides to secure the portal with [HTTPs]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_enable" >}}).
 
 ##### Add enhanced logging configuration
 This new setting allows API Providers to set the logging [level]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_log_level" >}}) and [format]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_log_format" >}}). This offers API Providers more control over the logging behavior of their APIs.
@@ -1248,12 +1458,12 @@ This new setting allows API Providers to set the logging [level]({{< ref "produc
 #### Changelog
 
 ##### Added
-- Added Kubernetes support and [helm charts]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-helm" >}}).
-- Added [Single Sign-on]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso">}}) for API Consumers and admin users so that they can use their IdPs for managing admin users and developers.
+- Added Kubernetes support and [helm charts]({{< ref "portal/install#using-legacy-helm-chart" >}}).
+- Added [Single Sign-on]({{< ref "portal/settings#configure-developer-portal-sso" >}}) for API Consumers and admin users so that they can use their IdPs for managing admin users and developers.
 - Added organization and application metadata to auth tokens and OAuth2.0 clients so that API Providers can use Tyk Pump to create aggregated reports based on the metadata from tokens and OAuth2.0 clients.
 - Added Admin APIs for API Products to enable API Providers to update API Products using CI/CD pipelines.
-- Added [TLS]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_enable" >}}) support for the portal's UI.
-- Added config options to set the logging [level]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_log_level" >}}) and [format]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_log_format" >}}). This offers API Providers more control over the logging behavior of their APIs.
+- Added [TLS]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_enable" >}}) support for the portal's UI.
+- Added config options to set the logging [level]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_log_level" >}}) and [format]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_log_format" >}}). This offers API Providers more control over the logging behavior of their APIs.
 
 
 ##### Fixed
@@ -1281,7 +1491,7 @@ We advise you to upgrade ASAP directly to this release.
 This release introduce a variety of features to improve developer experience. Additionally, we've included support for the S3 storage type as well as some bug fixes.
 
 ##### Organization management for API Consumers
-Now API Consumers can [create organizations]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations">}}) and securely share credentials between their teammates. In greater detail:
+Now API Consumers can [create organizations]({{< ref "portal/api-consumer#manage-api-consumer-organizations" >}}) and securely share credentials between their teammates. In greater detail:
 - API Consumers can request to upgrade their account to an organizational account.
 - API Consumers can invite teammates to their organization and manage their roles.
 - API Consumers in the same organization share access credentials so that the API Consumer team will still have access to API credentials even if an admin user is on vacation or left the organization.
@@ -1289,15 +1499,15 @@ Now API Consumers can [create organizations]({{<ref "/tyk-stack/tyk-developer-po
 - API Providers can manually accept, reject or configure to accept all such request to accepted by default.
  
 ##### Get started guides
-API Providers can add [Get started guides]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products">}}) to API Products for better developer experiences:
+API Providers can add [Get started guides]({{< ref "portal/api-provider#documentation-for-your-api-products" >}}) to API Products for better developer experiences:
 - API Providers can add the **Get started guides** to API Products to speed-up onboarding of API Consumers.
 - API Providers can use HTML or Markdown editors for authoring content for API Consumers such as the Get started guides and blog posts.
 
 ##### Tags for API Products and blog posts
-API Providers can select which blogs posts to display on an API Product page using [the tags feature]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products#step-4-add-tags-to-blogs-and-api-products">}}). To achieve that, an API Provider can specify tags for both API Products and blog posts. Blog posts that match tags with an API Product are displayed in the 'Related blog content' section in the API Product page. This offers API Providers greater control over what blog posts to display on their API Product page.
+API Providers can select which blogs posts to display on an API Product page using [the tags feature]({{< ref "portal/api-provider#documentation-for-your-api-products" >}}). To achieve that, an API Provider can specify tags for both API Products and blog posts. Blog posts that match tags with an API Product are displayed in the 'Related blog content' section in the API Product page. This offers API Providers greater control over what blog posts to display on their API Product page.
 
 ##### S3 support
-We added [S3 support]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage">}}) for the portal assets storage (themes, images, OAS files). This update enhances the extensibility of our platform, allowing you to choose different storage solutions to better align with your specific needs.
+We added [S3 support]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage" >}}) for the portal assets storage (themes, images, OAS files). This update enhances the extensibility of our platform, allowing you to choose different storage solutions to better align with your specific needs.
 
 #### Download
 - [docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.1/images/sha256-a5ef5360f5bea6433a3c6675707470a2e380257804c2cb033305da3b04c28ae7?context=explore)
@@ -1305,15 +1515,15 @@ We added [S3 support]({{<ref "product-stack/tyk-enterprise-developer-portal/depl
 #### Changelog
 
 ##### Added
-- Added the [organization management capability]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations">}}) for API Consumers to safely share API access credentials between team members.
-- Added the [Get started guides]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products">}}) for API Products so that admins can explain to their consumers how use their API Products.
-- Added support for [S3 storage]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage">}}) for the portal's assets storage. Now our customers can use `s3` storage in addition to the filesystem which is especially important in Kubernetes environments.
-- Added [tags]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products#step-4-add-tags-to-blogs-and-api-products">}}) for API Products and blog posts so that API Providers have greater control over which blog posts to display on their API Product page.
+- Added the [organization management capability]({{< ref "portal/api-consumer#manage-api-consumer-organizations" >}}) for API Consumers to safely share API access credentials between team members.
+- Added the [Get started guides]({{< ref "portal/api-provider#documentation-for-your-api-products" >}}) for API Products so that admins can explain to their consumers how use their API Products.
+- Added support for [S3 storage]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage" >}}) for the portal's assets storage. Now our customers can use `s3` storage in addition to the filesystem which is especially important in Kubernetes environments.
+- Added [tags]({{< ref "portal/api-provider#documentation-for-your-api-products" >}}) for API Products and blog posts so that API Providers have greater control over which blog posts to display on their API Product page.
 
 
 ##### Fixed
 - Fixed a bug in the DCR flow where scopes from an API Product were not assigned to the OAuth2.0 client when creating a new OAuth2.0 client.
-- Fixed a bug with the bootstrap process to print _JWT_ instead of the portal’s internal auth token when bootstrapping the portal.
+- Fixed a bug with the bootstrap process to print _JWT_ instead of the portal's internal auth token when bootstrapping the portal.
 - Fixed a bug where plans and products were not removed for Tyk Dashboard instances that were disconnected from the portal instance. Subsequently, after this fix plans and products are only displayed for available Tyk Dashboard instances.
 
 

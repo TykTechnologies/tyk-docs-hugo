@@ -9,10 +9,32 @@ menu:
 weight: 12
 aliases:
   - /tyk-developer-portal/streams
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< warning success >}}
+
+**Attention:**
+
+You’ve reached a page related to the *Tyk Classic Portal*. If you were searching for *API documentation of the new Tyk
+Developer Portal* please use the latest
+[Postman collection]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) page.
+</br>
+</br>
+**Future deprecation of Tyk Classic Portal**
+
+This product is no longer actively developed as it
+has been superseded by the new [Tyk Developer Portal]({{< ref "portal/overview" >}}).
+</br>
+Please note that the Tyk Classic Portal now has limited support and maintenance. Please contact us at
+[support@tyk.io](<mailto:support@tyk.io?subject=Tyk classic developer portal>)if you have any questions.
+
+{{< /warning >}}
 
 As of Tyk v5.7.0, you can now publish Tyk Streams APIs to the Tyk Developer Portal.
 
 ## How To Set Up
 
-Simply create a [Tyk Streams API]({{< ref "product-stack/tyk-streaming/streams-configuration-using-ui#create-a-streams-api" >}}), create a [Policy]({{< ref "getting-started/create-security-policy#tutorial-create-a-security-policy-with-the-dashboard" >}}) which protects it, and then [publish it to the Developer Portal Catalog]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/publish-api-products-and-plans#part-1---publish-an-api-product" >}}).
+Simply create a [Tyk Streams API]({{< ref "api-management/event-driven-apis#create-a-streams-api" >}}), create a [Policy]({{< ref "api-management/gateway-config-managing-classic#create-a-security-policy-with-the-dashboard" >}}) which protects it, and then [publish it to the Developer Portal Catalog]({{< ref "portal/overview#publish-an-api-product" >}}).

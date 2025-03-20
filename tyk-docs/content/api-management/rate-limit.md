@@ -60,7 +60,7 @@ Key-level rate limiting is more focused on controlling traffic from individual s
 - **key-level per-API limit** limiting the rate of calls the user of a key can make to specific individual APIs
 - **key-level per-endpoint limit** limiting the rate of calls the user of a key can make to specific individual endpoints of an API
  
-These guides include explanation of how to configure key-level rate limits when using [API Keys]({{< ref "getting-started/create-api-key" >}}) and [Security Policies]({{< ref "getting-started/create-security-policy" >}}).
+These guides include explanation of how to configure key-level rate limits when using [API Keys]({{< ref "api-management/gateway-config-managing-classic#access-an-api" >}}) and [Security Policies]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}).
 
 #### Which scope should I use?
 
@@ -235,13 +235,13 @@ effect for a minimum of the configured window duration (`per`). Gateway and Redi
 resource usage is increased with this option.
 
 This option can be enabled using the following configuration option
-[enable_sentinel_rate_limiter]({{< ref "/tyk-oss-gateway/configuration.md#enable_sentinel_rate_limiter" >}}).
+[enable_sentinel_rate_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_sentinel_rate_limiter" >}}).
 
 To optimize performance, you may configure your rate limits with shorter
 window duration values (`per`), as that will cause Redis to hold less
 data at any given moment.
 
-Performance can be improved by enabling the [enable_non_transactional_rate_limiter]({{< ref "/tyk-oss-gateway/configuration.md#enable_non_transactional_rate_limiter" >}}). This leverages Redis Pipelining to enhance the performance of the Redis operations. Please consult the [Redis documentation](https://redis.io/docs/manual/pipelining/) for more information.
+Performance can be improved by enabling the [enable_non_transactional_rate_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_non_transactional_rate_limiter" >}}). This leverages Redis Pipelining to enhance the performance of the Redis operations. Please consult the [Redis documentation](https://redis.io/docs/manual/pipelining/) for more information.
 
 Please consider the [Fixed Window Rate Limiter]({{< ref "#fixed-window-rate-limiter" >}}) algorithm as an alternative, if Redis performance is an issue.
 
@@ -298,7 +298,7 @@ gateways, the DRL algorithm will be used if the rate limit exceeds 10
 requests per second. If it is 10 or fewer, the system will fall back to
 the Redis Rate Limiter.
 
-See [DRL Threshold]({{< ref "/tyk-oss-gateway/configuration.md#drl_threshold" >}}) for details on how to configure this feature.
+See [DRL Threshold]({{< ref "tyk-oss-gateway/configuration.md#drl_threshold" >}}) for details on how to configure this feature.
 
 
 ## Rate Limiting Layers
@@ -332,7 +332,7 @@ If you want to restrict an API client to a certain rate of requests to your APIs
 {{< note success >}}
 **Note**  
 
-It is assumed that the APIs being protected with a rate limit are using the [auth token]({{< ref "/api-management/client-authentication#use-auth-tokens" >}}) client authentication method and policies have already been created.
+It is assumed that the APIs being protected with a rate limit are using the [auth token]({{< ref "api-management/client-authentication#use-auth-tokens" >}}) client authentication method and policies have already been created.
 {{< /note >}}
 
 You can configure this rate limit from the API Designer in Tyk Dashboard as follows:
@@ -349,7 +349,7 @@ If you want to restrict API clients to a certain rate of requests for a specific
 {{< note success >}}
 **Note**  
 
-It is assumed that the APIs being protected with a rate limit are using the [auth token]({{< ref "/api-management/client-authentication#use-auth-tokens" >}}) client authentication method and policies have already been created.
+It is assumed that the APIs being protected with a rate limit are using the [auth token]({{< ref "api-management/client-authentication#use-auth-tokens" >}}) client authentication method and policies have already been created.
 {{< /note >}}
 
 You can configure this rate limit from the API Designer in Tyk Dashboard as follows:
@@ -376,8 +376,8 @@ If no per-endpoint rate limit is defined, the endpoint will inherit the key-leve
 {{< note success >}}
 **Note**  
 The following assumptions are made:
- - The [ignore authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}) middleware should not be enabled for the relevant endpoints.
- - If [path-based permissions]({{< ref "getting-started/create-security-policy#path-based-permissions" >}}) are configured, they must grant access to these endpoints for keys generated from the policies.
+ - The [ignore authentication]({{< ref "api-management/traffic-transformation#ignore-authentication-overview" >}}) middleware should not be enabled for the relevant endpoints.
+ - If [path-based permissions]({{< ref "api-management/gateway-config-managing-classic#path-based-permissions" >}}) are configured, they must grant access to these endpoints for keys generated from the policies.
 {{< /note >}}
 
 You can configure per-endpoint rate limits from the API Designer in Tyk Dashboard as follows:
@@ -438,7 +438,7 @@ Disabling the rate limiter at the API-Level does not disable rate limiting at th
 
 #### Can I set rate limits by IP address?
 
-Not yet, though IP-based rate limiting is possible using custom pre-processor middleware JavaScript that generates tokens based on IP addresses. See our [Middleware Scripting Guide]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide" >}}) for more details.
+Not yet, though IP-based rate limiting is possible using custom pre-processor middleware JavaScript that generates tokens based on IP addresses. See our [Middleware Scripting Guide]({{< ref "api-management/plugins/javascript#using-javascript-with-tyk" >}}) for more details.
 
 ## Rate Limiting by API
 
@@ -521,7 +521,7 @@ regex pattern `/.*` will be limited to 60 requests per second. The order
 of evaluation ensures that the specific `/user/login` endpoint is matched
 and evaluated before the regex pattern.
 
-The per-endpoint rate limit middleware allows you to enforce rate limits on specific endpoints. This middleware is configured in the [Tyk OAS API Definition]({{< ref "/tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}), either via the Tyk Dashboard API or in the API Designer.
+The per-endpoint rate limit middleware allows you to enforce rate limits on specific endpoints. This middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}), either via the Tyk Dashboard API or in the API Designer.
 
 If you’re using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/rate-limit#tyk-classic-api-definition" >}}) page.
 

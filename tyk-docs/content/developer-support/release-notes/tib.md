@@ -26,7 +26,7 @@ Our minor releases are supported until our next minor comes out.
 #### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release:
 This release primarily focuses on bug fixes.
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0" >}}) below.
 -->
 ###### Enhanced Security with JWE Support for OIDC SSO
 This release introduces JSON Web Encryption (JWE) support for OpenID Connect (OIDC) Single Sign-On (SSO) in the Tyk Identity Broker (TIB). With this enhancement, organizations can achieve greater security for token handling during authentication flows. JWE token validation and processing are now seamlessly integrated, offering configurable private key support for decryption.
@@ -115,7 +115,7 @@ Each change log item should be expandable. The first line summarises the changel
 
 This release adds support for JSON Web Encryption (JWE) in OIDC Single Sign-On (SSO) with TIB, providing enhanced security for token handling in authentication flows. This feature enables processing and validation of JWE tokens, with configuration options for setting the private key required for decryption.
 
-For more details, refer to the [OIDC SSO with JWE]({{<ref "/tyk-stack/tyk-identity-broker/about-profiles#social-profile-fields">}}) documentation.
+For more details, refer to the [OIDC SSO with JWE]({{< ref "api-management/external-service-integration#social-profile-fields" >}}) documentation.
 </details>
 </li>
 

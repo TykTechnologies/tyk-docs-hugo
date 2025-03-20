@@ -9,12 +9,6 @@ description: "Using middleware with Tyk OAS APIs"
 
 Tyk OAS APIs have access to an increasing range of Tyk middleware that you can configure to customize the handling of API requests and responses. In this guide we will show you how to enable some of these features in your Tyk OAS APIs.
 
-{{< note success >}}
-**Note**  
-
-Tyk OAS API support is currently in [Early Access]({{< ref "developer-support/release-notes/special-releases#early-access-features" >}}) and some Tyk features are not yet supported. You can see the status of what is and isn't yet supported [here]({{< ref "/getting-started/using-oas-definitions/oas-reference.md" >}}).
-{{< /note >}}
-
 ### allowList: permit access only to documented endpoints
 
 Tyk Gateway's allow list function explicitly allows access just to paths that are documented in the Tyk OAS API definition. You can enable this when updating a Tyk API OAS definition using the `PATCH` method by passing the `allowList` query parameter with the payload.
@@ -27,7 +21,7 @@ Tyk Gateway's allow list function explicitly allows access just to paths that ar
 | Body         | OAS API Definition                              |
 | Param        | Path param: `{API-ID}` Query param: `allowList` |
 
-For example, given the base Tyk OAS API used [here]({{< ref "/getting-started/using-oas-definitions/update-an-oas-api#tutorial-3-update-tyk-oas-api-definition-with-an-updated-openapi-definition" >}}) we can enable the `allowList` middleware with this `PATCH` command:
+For example, given the base Tyk OAS API used [here]({{< ref "api-management/gateway-config-managing-oas#update-tyk-oas-api-definition-with-an-updated-openapi-definition" >}}) we can enable the `allowList` middleware with this `PATCH` command:
 
 ```curl
 curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API-ID}?allowList=true' \
