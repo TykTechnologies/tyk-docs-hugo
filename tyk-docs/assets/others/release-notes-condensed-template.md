@@ -20,6 +20,10 @@ Our minor releases are supported until our next minor comes out. This would be <
 
 #### Release Highlights
 
+<Add Release Summary>
+
+For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-vX.Y.Z) below.
+
 #### Breaking Changes
 This release has no breaking changes.
 
@@ -107,6 +111,9 @@ The actual changelog item text should go here. It should be no more than three o
 <summary>Changelog item summary</summary>
 
 The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
+
+The line item should follow the below template.
+*Fixed an issue where [describe the issue], which caused [describe the impact]. This has been resolved by [describe the fix].*
 </details>
 </li>
 <li>
