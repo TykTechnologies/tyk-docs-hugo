@@ -25,8 +25,12 @@ Our minor releases are supported until our next minor comes out.
 #### Release Date XX March 2025
 
 #### Release Highlights
+
 ##### Support for Tyk 5.8
+
 Tyk Operator v1.2 introduces key enhancements and critical fixes to improve API management in Kubernetes environments. This release adds support for HMAC request signing and YAML-based OAS definitions, aligning with Tyk Gateway 5.8.
+
+For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.2.0) below.
 
 #### Breaking Changes
 This release has no breaking changes.
@@ -120,7 +124,7 @@ For users who cannot immediately update, there is an alternative option: modifyi
 <details>
 <summary>Operator reconciliation error handling</summary>
 
-Resolved an issue where reconciliation conflicts appeared as errors in logs. The Operator now initiates a retry instead.
+Fixed an issue where reconciliation conflicts appeared as errors in logs, which occurred because an outdated copy of the Kubernetes resource was being processed. This has been resolved by fetching the latest copy of the object from the cluster and retrying the operation.
 
 </details>
 </li>
