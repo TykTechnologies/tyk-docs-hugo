@@ -1519,6 +1519,99 @@ Upstream certificates can be defined on API definition level or global level in 
 Inside your API definition you should set the `upstream_certificates` field to the following format:
 `{"example.com": "<cert-id>"}`. Defining on a global level looks the same, but should be specified via the `security.certificates.upstream` field in your Gateway configuration file.
 
+##### Upstream Request Signing Using HMAC keys
+Hash-Based Message Authentication Code (HMAC) Signing enhances security by requiring the requesting client to include a cryptographic signature with each request. This signature is generated using a secret key or an upstream certificate, ensuring that the request is properly encrypted.
+
+The below yaml manifest shows how [Upstream Request Signing]({{<ref "api-management/client-authentication/#sign-requests-with-hmac">}}) are configured differently for [Tyk OAS APIs]({{< ref "#tyk-oas-api" >}}).
+
+Here's an example:
+
+```yaml{linenos=true, linenostart=1, hl_lines=["12-24"]}
+apiVersion: v1
+data:
+  secretKey: cGFzc3dvcmQxMjM=
+kind: Secret
+metadata:
+  name: upstream-secret
+  namespace: default
+type: Opaque
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: booking
+  namespace: default
+data:
+  test_oas.json: |-
+    {
+      "info": {
+        "title": "bin",
+        "version": "1.0.0"
+      },
+      "openapi": "3.0.3",
+      "components": {},
+      "paths": {},
+      "x-tyk-api-gateway": {
+        "info": {
+          "name": "bin",
+          "state": {
+            "active": true,
+            "internal": false
+          }
+        },
+        "server": {
+          "listenPath": {
+            "strip": true,
+            "value": "/bin/"
+          }
+        },
+        "upstream": {
+          "url": "http://httpbin.org/",
+          "authentication": {
+            "requestSigning": {
+              "enabled": true,
+              "signatureHeader": "Signature",
+              "algorithm": "hmac-sha256",
+              "keyId": "random-key-id", 
+              "headers": [],
+              "secret": ""
+            }
+          }
+        }
+      }
+    }
+---
+apiVersion: tyk.tyk.io/v1alpha1
+kind: TykOasApiDefinition
+metadata:
+  name: booking
+  namespace: default
+spec:
+  tykOAS:
+    configmapRef:
+      namespace: default
+      name: booking
+      keyName: test_oas.json
+  upstreamRequestSigning:
+    certificateRef: ""
+    secretRef:
+      namespace: default
+      name: upstream-secret
+      secretKey: secretKey   
+    algorithm: "hmac-sha256"
+    keyId: ""
+```
+
+In this example, a Tyk OAS API was created using the `upstreamRequestSigning` field. It can be broken down as follows:
+- `upstreamRequestSigning`: This defines the settings for Upstream Request Signing. in the example manifest, it configures Upstream Request Signing using the `booking` API.
+    - `certificateRef`: References a Secret containing the private and secret key for signing client API requests. This should be used if `secretRef` is not specified.
+    - `secretRef`: References a Kubernetes Secret that holds the secret key for signing client requests.
+    - `algorithm`: Specifies the algorithm used for signing.
+      - For `secretRef`, supported algorithms include: `hmac-sha1`, `hmac-sha256`, `hmac-sha384`, and `hmac-sha512`.
+      - For `certificateRef`, the required algorithm is `rsa-sha256`.
+    - `keyId`: A user-defined key assumed to be available on the upstream service. This is used in the `SignatureHeader` and should be included when using `certificateRef`. It is required when using the RSA algorithm.
+
 ##### HTTP/HTTPS Protocol
 
 {{< warning success >}}
