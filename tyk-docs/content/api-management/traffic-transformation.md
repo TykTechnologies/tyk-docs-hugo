@@ -4561,12 +4561,14 @@ If you're using Tyk Operator then check out the [configuring the middleware in T
 To enable the middleware you must add a new `validate_json` object to the `extended_paths` section of your API definition.
 
 The `validate_json` object has the following configuration:
+
 - `path`: the endpoint path
 - `method`: the endpoint HTTP method
 - `schema`: the [JSON schema](https://json-schema.org/understanding-json-schema/basics) against which the request body will be compared
 - `error_response_code`: the HTTP status code that will be returned if validation fails (defaults to `422 Unprocessable Entity`)
 
 For example:
+
 ```json  {linenos=true, linenostart=1}
 {
     "extended_paths": {
@@ -4597,13 +4599,35 @@ For example:
 
 In this example the Validate JSON middleware has been configured for requests to the `POST /register` endpoint. For any call made to this endpoint, Tyk will compare the request body with the schema and, if it does not match, the request will be rejected with the error code `HTTP 422 Unprocessable Entity`.
 
-{{< note success >}}
+##### Understanding JSON Schema Version Handling
 
-**Note**  
+The Gateway automatically detects the version of the JSON schema from the `$schema` field in your schema definition. This field specifies the version of the [JSON schema standard](https://json-schema.org/specification-links) to be followed.
 
-The Validate JSON middleware supports JSON Schema `draft-04`. Using another version will return an `unsupported schema error, unable to validate` error in the Tyk Gateway logs.
+From Tyk 5.8 onwards, supported versions are [draft-04](https://json-schema.org/draft-04/schema), [draft-06](https://json-schema.org/draft-06/schema) and [draft-07](https://json-schema.org/draft-07/schema).
 
-{{< /note >}}
+In previous versions of Tyk, only [draft-04](https://json-schema.org/draft-04/schema) is supported. Please be careful if downgrading from Tyk 5.8 to an earlier version that your JSON is valid as you might experience unexpected behaviour if using features from newer drafts of the JSON schema.
+
+- If the `$schema` field is present, the Gateway strictly follows the rules of the specified version.  
+- If the `$schema` field is missing or the version is not specified, the Gateway uses a hybrid mode that combines features from multiple schema versions. This mode ensures that the validation will still work, but may not enforce the exact rules of a specific version. 
+
+To ensure consistent and predictable validation, it is recommended to always include the `$schema` field in your schema definition. For example:  
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "firstname": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    }
+  }
+}
+```
+
+By including `$schema`, the validator can operate in strict mode, ensuring that the rules for your chosen schema version are followed exactly.
 
 #### API Designer
 
