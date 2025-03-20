@@ -34,7 +34,7 @@ Our minor releases are supported until our next minor comes out.
 
 #### Release Highlights
 
-This release introduces seamless API Key Rotation for MDCB Data Planes, eliminating the need for gateway restarts when rotating API keys. This enhancement improves security and operational efficiency by ensuring uninterrupted communication between MDCB and data planes while allowing smooth key updates.
+This release brings enhanced database compatibility and improved system stability. MDCB now fully supports PostgreSQL 17, ensuring seamless integration with the latest database version, while SQLite support has been removed to streamline maintenance. Additionally, we have resolved the "Key Not Found" error spam in MDCB logs, reducing unnecessary resource consumption and improving performance in customer environments.
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v2.8.0" >}}) below.
 
