@@ -95,7 +95,7 @@ The [Block List]({{< ref "api-management/traffic-transformation#block-list-overv
 
 #### Cache
 
-Tyk's [API-level cache]({{< ref "api-management/gateway-optimizations#basic-caching" >}}) does not discriminate between endpoints and will usually be configured to cache all safe requests. You can use the granular [Endpoint Cache]({{< ref "api-management/gateway-optimizations#endpoint-caching" >}}) to ensure finer control over which API responses are cached by Tyk.
+Tyk's [API-level cache]({{< ref "api-management/response-caching#basic-caching" >}}) does not discriminate between endpoints and will usually be configured to cache all safe requests. You can use the granular [Endpoint Cache]({{< ref "api-management/response-caching#endpoint-caching" >}}) to ensure finer control over which API responses are cached by Tyk.
 
 #### Circuit Breaker
 

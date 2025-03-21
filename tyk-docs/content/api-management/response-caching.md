@@ -1,9 +1,9 @@
 ---
-title: "Caching in Tyk Gateway"
+title: "Caching Responses"
 date: 2025-02-10
-tags: ["Caching", "Gateway Optimization", "Optimization", "Endpoint Caching", "Configuration"]
+tags: ["Caching", "Request Optimization", "Optimization", "Endpoint Caching", "Configuration", "Cache"]
 description: "How to manage users, teams, permissions, rbac in Tyk Dashboard"
-keywords: ["Caching", "Gateway Optimization", "Optimization", "Endpoint Caching", "Configuration"]
+keywords: ["Caching", "Gateway Optimization", "Optimization", "Endpoint Caching", "Configuration", "Cache"]
 aliases:
   - /basic-config-and-security/reduce-latency
   - /basic-config-and-security/reduce-latency/caching
@@ -14,6 +14,7 @@ aliases:
   - /basic-config-and-security/reduce-latency/caching/upstream-controlled-cache
   - /product-stack/tyk-gateway/middleware/endpoint-cache-tyk-classic
   - /product-stack/tyk-gateway/middleware/endpoint-cache-tyk-oas
+  - /api-management/gateway-optimizations
 ---
 
 ## Overview
@@ -33,8 +34,8 @@ Tyk uses Redis to store the cached responses and, as you'd expect from Tyk, ther
 
 There are two approaches to configure caching for an API deployed with Tyk:
 
- - [Basic]({{< ref "api-management/gateway-optimizations#basic-caching" >}}) or [Safe Request]({{< ref "api-management/gateway-optimizations#global-cache-safe-requests" >}}) caching is applied at the API level for all requests for which it is safe to do so.
- - [Advanced]({{< ref "api-management/gateway-optimizations#endpoint-caching" >}}) caching options can be applied at the endpoint level.
+ - [Basic]({{< ref "api-management/response-caching#basic-caching" >}}) or [Safe Request]({{< ref "api-management/response-caching#global-cache-safe-requests" >}}) caching is applied at the API level for all requests for which it is safe to do so.
+ - [Advanced]({{< ref "api-management/response-caching#endpoint-caching" >}}) caching options can be applied at the endpoint level.
 
 Tyk's advanced caching options allow you to selectively cache the responses to all requests, only those from specific paths or only responses with specific status codes returned by the API. You can even cache dynamically based upon instruction from the upstream service received within the response.
 
@@ -71,7 +72,7 @@ Safe request caching at the API level is enabled by setting the `cache_all_safe_
 
 This mode of operation is referred to as Global Caching because it is applied globally within the scope of a single API. Picking this approach will override any per-endpoint (per-path) caching configuration, so it’s not suitable if granular control is required.
 
-Tyk does support safe request caching at the more granular, per-endpoint level, as described [here]({{< ref "api-management/gateway-optimizations#request-selective-cache-control" >}}) - but `cache_all_safe_requests` must be set to `false` in that scenario.
+Tyk does support safe request caching at the more granular, per-endpoint level, as described [here]({{< ref "api-management/response-caching#request-selective-cache-control" >}}) - but `cache_all_safe_requests` must be set to `false` in that scenario.
 
 #### Cache Timeout
 The cache timeout (Time-To-Live or TTL) value can be configured per API and is the maximum age for which Tyk will consider a cache entry to be valid. You should use this to optimize the tradeoff between reducing calls to your upstream service and potential for changes to the upstream data.
@@ -91,7 +92,7 @@ Upstream cache control refers to caching API responses based on instructions pro
 
 ## Basic Caching
 
-_On this page we describe the use of Tyk's API response cache at the API level (Global); for details on the more advanced Endpoint level cache you should refer to [this]({{< ref "api-management/gateway-optimizations#endpoint-caching" >}}) page._
+_On this page we describe the use of Tyk's API response cache at the API level (Global); for details on the more advanced Endpoint level cache you should refer to [this]({{< ref "api-management/response-caching#endpoint-caching" >}}) page._
 
 Caching is configured separately for each API according to values you set within the API definition. Subsequently, the caching scope is restricted to an API definition, rather than being applied across the portfolio of APIs deployed in the Gateway.
 
@@ -108,7 +109,7 @@ The main configuration options are:
 
 For more advanced use of the API-level cache we also have:
  - `cache_by_headers`: used to create multiple cache entries based on the value of a [header value](#selective-caching-by-header-value) of your choice
- - `enable_upstream_cache`: used to allow your [upstream service]({{< ref "api-management/gateway-optimizations#upstream-cache-control-1" >}}) to identify the responses to be cached
+ - `enable_upstream_cache`: used to allow your [upstream service]({{< ref "api-management/response-caching#upstream-cache-control-1" >}}) to identify the responses to be cached
  - `cache_control_ttl_headers`: used with `enable_upstream_cache`
 
 #### An example of basic caching 
@@ -162,19 +163,19 @@ Follow these simple steps to enable and configure basic API caching via the Dash
     Here you must set:
 
     1.  **Enable caching** to enable the cache middleware
-    2.  **Cache timeout** to set the [TTL]({{< ref "api-management/gateway-optimizations#cache-timeout" >}}) (in seconds) for cached requests
-    3.  **Cache only these status codes** to set which [response codes]({{< ref "api-management/gateway-optimizations#cache-response-codes" >}}) to cache (ensure that you click **ADD** after entering each response code so that it is added to the list)
-    4.  **Cache all safe requests** to enable the [global cache]({{< ref "api-management/gateway-optimizations#global-cache-safe-requests" >}})
+    2.  **Cache timeout** to set the [TTL]({{< ref "api-management/response-caching#cache-timeout" >}}) (in seconds) for cached requests
+    3.  **Cache only these status codes** to set which [response codes]({{< ref "api-management/response-caching#cache-response-codes" >}}) to cache (ensure that you click **ADD** after entering each response code so that it is added to the list)
+    4.  **Cache all safe requests** to enable the [global cache]({{< ref "api-management/response-caching#global-cache-safe-requests" >}})
 
 ## Endpoint Caching
 
 ### Overview
 
-On this page we describe how to configure Tyk's API response cache per endpoint within an API. This gives granular control over which paths are cached and allows you to vary cache configuration across API versions. For details on the API level (Global) cache you should refer to the [global-cache]({{< ref "api-management/gateway-optimizations#basic-caching" >}}) configuration page.
+On this page we describe how to configure Tyk's API response cache per endpoint within an API. This gives granular control over which paths are cached and allows you to vary cache configuration across API versions. For details on the API level (Global) cache you should refer to the [global-cache]({{< ref "api-management/response-caching#basic-caching" >}}) configuration page.
 
 When you use the API-level cache, Tyk will maintain a cache entry for each combination of request method, request path (endpoint) and API key (if authentication is enabled) for an API. The Endpoint Caching middleware gives you granular control over which paths are cached and allows you to vary cache configuration across API versions.
 
-For details on the API-level cache you should refer to the [API-level cache]({{< ref "api-management/gateway-optimizations#basic-caching" >}}) configuration page.
+For details on the API-level cache you should refer to the [API-level cache]({{< ref "api-management/response-caching#basic-caching" >}}) configuration page.
 
 #### When to use the Endpoint Caching middleware
 
@@ -194,7 +195,7 @@ For each endpoint in your API with endpoint caching middleware enabled, you can 
 {{< note success >}}
 **Note** 
 
-It's important to note that the [cache all safe requests]({{< ref "api-management/gateway-optimizations#global-cache-safe-requests" >}}) feature of the API-level cache will overrule the per-endpoint configuration so you must ensure that both are not enabled for the same API.
+It's important to note that the [cache all safe requests]({{< ref "api-management/response-caching#global-cache-safe-requests" >}}) feature of the API-level cache will overrule the per-endpoint configuration so you must ensure that both are not enabled for the same API.
 {{< /note >}}
 
 ##### Request-selective cache control
@@ -204,9 +205,9 @@ You define a regex pattern and, if Tyk finds a match for this anywhere in the re
 
 <hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the Endpoint Caching middleware [here]({{< ref "api-management/gateway-optimizations#using-tyk-oas-api" >}}).
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the Endpoint Caching middleware [here]({{< ref "api-management/response-caching#using-tyk-oas-api" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the Endpoint Caching middleware [here]({{< ref "api-management/gateway-optimizations#using-classic-api" >}}).
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the Endpoint Caching middleware [here]({{< ref "api-management/response-caching#using-classic-api" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  ## Internal Endpoint middleware summary
@@ -217,11 +218,11 @@ If you're using Tyk Classic APIs, then you can find details and examples of how 
 
 ### Using Tyk OAS API
 
-The [Endpoint Caching]({{< ref "api-management/gateway-optimizations#endpoint-caching" >}}) middleware allows you to perform selective caching for specific endpoints rather than for the entire API, giving you granular control over which paths are cached.
+The [Endpoint Caching]({{< ref "api-management/response-caching#endpoint-caching" >}}) middleware allows you to perform selective caching for specific endpoints rather than for the entire API, giving you granular control over which paths are cached.
 
 When working with Tyk OAS APIs the middleware is configured in the [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/gateway-optimizations#using-classic-api" >}}) page.
+If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "api-management/response-caching#using-classic-api" >}}) page.
 
 #### Configuring the middleware in the Tyk OAS API Definition
 
@@ -245,7 +246,7 @@ The design of the Tyk OAS API Definition takes advantage of the `operationId` de
     - `enabled`: enable the middleware for the endpoint
     - `timeout`: set to the refresh period for the cache (in seconds)
     - `cacheResponseCodes`: HTTP responses codes to be cached (for example `200`)
-    - `cacheByRegex`: Pattern match for [selective caching by body value]({{< ref "api-management/gateway-optimizations#request-selective-cache-control" >}})
+    - `cacheByRegex`: Pattern match for [selective caching by body value]({{< ref "api-management/response-caching#request-selective-cache-control" >}})
 
     For example:
     ```json {hl_lines=["37-40", "45-51"],linenos=true, linenostart=1}
@@ -340,7 +341,7 @@ Adding endpoint caching to your API endpoints is easy when using the API Designe
     {{< note success >}}
 **Note**  
 
-Body value match or [request selective]({{< ref "api-management/gateway-optimizations#request-selective-cache-control" >}}) caching is not currently exposed in the Dashboard UI, so it must be enabled though either the raw API editor or the Dashboard API. 
+Body value match or [request selective]({{< ref "api-management/response-caching#request-selective-cache-control" >}}) caching is not currently exposed in the Dashboard UI, so it must be enabled though either the raw API editor or the Dashboard API. 
     {{< /note >}}
 
     Select **UPDATE MIDDLEWARE** to apply the change to the middleware configuration.
@@ -351,11 +352,11 @@ Body value match or [request selective]({{< ref "api-management/gateway-optimiza
 
 ### Using Classic API
 
-The [Endpoint Caching]({{< ref "api-management/gateway-optimizations#endpoint-caching" >}}) middleware allows you to perform selective caching for specific endpoints rather than for the entire API, giving you granular control over which paths are cached.
+The [Endpoint Caching]({{< ref "api-management/response-caching#endpoint-caching" >}}) middleware allows you to perform selective caching for specific endpoints rather than for the entire API, giving you granular control over which paths are cached.
 
 When working with Tyk Classic APIs the middleware is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
-If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/gateway-optimizations#using-tyk-oas-api" >}}) page.
+If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "api-management/response-caching#using-tyk-oas-api" >}}) page.
 
 If using Tyk Operator please refer to section [configuring the middleware in the Tyk Operator](#tyk-operator).
 
@@ -363,7 +364,7 @@ If using Tyk Operator please refer to section [configuring the middleware in the
 
 When using the Tyk Classic API Definition, there are two options for endpoint caching - simple and advanced.
 
-The [simple](#simple-endpoint-cache) option works with the API-level cache and allows you to select which endpoints are cached, but relies upon the cache timeout (refresh) configured at the API-level. It will cache all responses received from the endpoint regardless of the HTTP response code for all [safe requests]({{< ref "api-management/gateway-optimizations#global-cache-safe-requests" >}}).
+The [simple](#simple-endpoint-cache) option works with the API-level cache and allows you to select which endpoints are cached, but relies upon the cache timeout (refresh) configured at the API-level. It will cache all responses received from the endpoint regardless of the HTTP response code for all [safe requests]({{< ref "api-management/response-caching#global-cache-safe-requests" >}}).
 
 The [advanced](#advanced-endpoint-cache) option allows you to cache more selectively, giving control over the HTTP response codes to be cached, a per-endpoint cache timeout and also the possibility of caching responses only to requests containing specific data in the request body.
 
@@ -405,7 +406,7 @@ In this example, the endpoint caching middleware has been configured to cache al
 For ultimate control over what Tyk caches, you should use the advanced configuration options for the per-endpoint cache. You can separately configure, for each HTTP method for an endpoint:
 - an individual cache refresh (timeout)
 - a list of HTTP response codes that should be cached
-- a pattern match to cache only requests containing specific data in the [request body]({{< ref "api-management/gateway-optimizations#request-selective-cache-control" >}})
+- a pattern match to cache only requests containing specific data in the [request body]({{< ref "api-management/response-caching#request-selective-cache-control" >}})
 
 To enable the advanced middleware you must add a new `advance_cache_config` object to the `extended_paths` section of your API definition.
 
@@ -518,7 +519,7 @@ To enable and configure the advanced endpoint cache, follow these instructions:
     {{< note success >}}
     **Note**  
 
-    Body value match or [request selective]({{< ref "api-management/gateway-optimizations#request-selective-cache-control" >}}) caching is not currently exposed in the Dashboard UI, so it must be configured through either the raw API editor or the Dashboard API. 
+    Body value match or [request selective]({{< ref "api-management/response-caching#request-selective-cache-control" >}}) caching is not currently exposed in the Dashboard UI, so it must be configured through either the raw API editor or the Dashboard API. 
     {{< /note >}}
 
 4. **Save the API**
@@ -579,7 +580,7 @@ Advanced caching with Tyk Operator is a similar process to that for configuring 
 
 To enable the advanced middleware you must add a new `advance_cache_config` object to the `extended_paths` section of your API definition.
 
-This allows you to configure caching per endpoint. For each endpoint, it is possible to specify the endpoint path, method, list of response codes to cache, cache timeout and a cache key regular expression. The cache key regular expression represents a pattern match to cache only requests containing specific data in the [request body]({{< ref "api-management/gateway-optimizations#request-selective-cache-control" >}})
+This allows you to configure caching per endpoint. For each endpoint, it is possible to specify the endpoint path, method, list of response codes to cache, cache timeout and a cache key regular expression. The cache key regular expression represents a pattern match to cache only requests containing specific data in the [request body]({{< ref "api-management/response-caching#request-selective-cache-control" >}})
 
 For example:
 
@@ -724,7 +725,7 @@ Tyk creates the API cache in Redis, as it gives high performance and low latency
 
 For [multi-data center]({{< ref "api-management/mdcb#redis" >}}) deployments, the Data Planes have a locally deployed Redis. This enables them to have a localised cache close to the traffic-serving Gateways.
 
-The [cache key]({{< ref "api-management/gateway-optimizations#cache-key" >}}) is used as the Redis key, for quick lookups.
+The [cache key]({{< ref "api-management/response-caching#cache-key" >}}) is used as the Redis key, for quick lookups.
 
 For high-traffic systems that make heavy use of caching, it can make sense to use separate Redis databases for cache storage and for API keys, at the expense of increased deployment footprint.
 
