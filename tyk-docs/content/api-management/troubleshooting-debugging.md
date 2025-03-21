@@ -1673,7 +1673,7 @@ As shown above, the `debug` log level mode provides more information which will 
 
 You can access all Tyk release information on the [release notes](https://tyk.io/docs/developer-support/tyk-release-summary/overview/) overview page.
 
-We recommend always using the [Long-Term Support (LTS) release]({{< ref "developer-support/release-notes/special-releases#long-term-support-releases" >}}) for stability and long term support.
+We recommend always using the [Long-Term Support (LTS) release]({{< ref "developer-support/release-types/long-term-support" >}}) for stability and long term support.
 
 ##### Non-LTS versions
 Tyk is backwards compatible, upgrading to newer versions won't turn on new features or change the behavior of your existing environment.
