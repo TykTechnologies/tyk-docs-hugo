@@ -95,7 +95,7 @@ SQLite support has been fully removed from MDCB.
 <details>
 <summary>Resolved "Key Not Found" Errors Spamming MDCB Logs</summary>
 
-We've addressed an issue where MDCB logs were being flooded with "Key Not Found" errors, causing performance degradations in customer environments.
+We've addressed an issue where MDCB logs were flooded with "Key Not Found" errors, causing performance degradation in customer environments.
 With this fix, MDCB now handles these cases more efficiently, reducing log noise, preventing unnecessary resource consumption, and improving overall system stability.
 </details>
     
