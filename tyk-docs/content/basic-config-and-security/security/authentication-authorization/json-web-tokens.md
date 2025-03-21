@@ -94,15 +94,15 @@ To protect an API with JWT, we need to execute the following steps:
 
 ### Set Authentication Mode
 
-1. [Select JSON Web Tokens]({{< ref "api-management/client-authentication#configuring-your-api-to-use-jwt-authentication" >}}) as the Authentication mode
-2. [Set the cryptographic signing method]({{< ref "api-management/client-authentication#set-up-jwt-signing-method" >}}) to `HMAC (shared)` and the public secret as `tyk123`
+1. [Select JSON Web Tokens]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#configuring-your-api-to-use-jwt-authentication" >}}) as the Authentication mode
+2. [Set the cryptographic signing method]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#set-up-jwt-signing-method" >}}) to `HMAC (shared)` and the public secret as `tyk123`
 3. Set the Identity Source and Policy Field Name
 
 {{< img src="/img/api-management/security/jwt-hmac.png" alt="Target Details: JSON Web Token" >}}
 
 ### Set a Default Policy
 
-If Tyk cannot find a `pol` claim, it will apply this Default Policy. Select a policy that gives access to this API we are protecting, or [go create one first]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}) if it doesn't exist.
+If Tyk cannot find a `pol` claim, it will apply this Default Policy. Select a policy that gives access to this API we are protecting, or [create one]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}) if none exists.
 
 Make sure to save the changes to the API Definition.
 
@@ -503,7 +503,7 @@ Select the cryptographic method to verify JWT signatures from the following opti
 - RSA public key
 - HMAC shared secret
 - ECDSA
-- [Public JWKS URL](#enable-dynamic-public-key-rotation-using-jwks)
+- [Public JWKS URL]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#enable-dynamic-public-key-rotation-using-jwks" >}})
 
 {{< note success >}}
 **Note**: Leave the field blank to configure at the key level.
