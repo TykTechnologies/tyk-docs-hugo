@@ -48,7 +48,7 @@ This release removes support for SQLite in MDCB, aligning with the broader remov
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by MDCB | 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x | 4.4.x, 5.0.x, 6.0.x, 7.0.x | Used by MDCB | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x LTS        | 13.x - 17.x            | Used by MDCB | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | Used by MDCB | 
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
