@@ -87,9 +87,9 @@ For your records, the following sections highlight the existing *INI tier 1 word
 - [storage.master_name]({{< ref "tyk-oss-gateway/configuration#storagemaster_name" >}})
 - [slave_options]({{< ref "tyk-oss-gateway/configuration#slave_options" >}})
 - [blacklisted_ips]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}})
-- [disable_ports_whitelist]({{< ref "api-management/non-http-protocols#allowing-specific-ports" >}})
+- [disable_ports_whitelist]({{< ref "key-concepts/tcp-proxy#allowing-specific-ports" >}})
 - [enable_ip_blacklisting]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}})
-- [ports_whitelist]({{< ref "api-management/non-http-protocols#allowing-specific-ports" >}})
+- [ports_whitelist]({{< ref "key-concepts/tcp-proxy#allowing-specific-ports" >}})
 
 ######  Tyk Classic API Definition {#gw-classic-api-definition}
 
