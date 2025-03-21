@@ -249,8 +249,8 @@ To address this challenge, Tyk Operator allows you to directly reference certifi
 |------------------|-------------|---------|---------|
 | Client certifates | ✅ [Client mTLS]({{< ref "api-management/client-authentication#setup-static-mtls-in-tyk-operator-using-the-tyk-classic-api-definition" >}}) | ✅ [Client mTLS]({{< ref "api-management/client-authentication#setup-static-mtls-in-tyk-operator-using-tyk-oas-api-definition" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
 | Custom domain certificates | ✅ [TLS and SSL]({{< ref "api-management/certificates#dynamically-setting-ssl-certificates-for-custom-domains" >}}) | ✅ [TLS and SSL]({{< ref "api-management/certificates#dynamically-setting-ssl-certificates-for-custom-domains" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
-| Public keys pinning | ✅ [Certificate pinning]({{< ref "api-management/certificates#certificate-pinning" >}}) | ✅ [Certificate pinning]({{< ref "api-management/certificates#certificate-pinning" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
-| Upstream mTLS | ✅ [Upstream mTLS via Operator]({{< ref "api-management/client-authentication#via-tyk-operator-using-the-tyk-classic-api-definition" >}}) | ✅ [Upstream mTLS via Operator]({{< ref "api-management/client-authentication#tyk-operator-oas" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
+| Public keys pinning | ✅ [Certificate pinning]({{< ref "api-management/upstream-authentication#using-tyk-operator-to-configure-mtls-for-tyk-classic-apis" >}}) | ✅ [Certificate pinning]({{< ref "api-management/upstream-authentication#certificate-pinning" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
+| Upstream mTLS | ✅ [Upstream mTLS via Operator]({{< ref "api-management/upstream-authentication#using-tyk-operator-to-configure-mtls-for-tyk-classic-apis" >}}) | ✅ [Upstream mTLS via Operator]({{< ref "api-management/upstream-authentication#using-tyk-operator-to-configure-mtls" >}}) | Certificate ID can be set in the API Definition but configuring certificates from Secrets in CRD is not supported. |
 
 
 ## Install and Configure Tyk Operator
@@ -779,7 +779,7 @@ In this example, we added the following sections to configure key authentication
 - `security`: Applies the authentication globally to all endpoints.
 - `x-tyk-api-gateway.server.authentication`: Tyk-specific extension to enable the authentication scheme.
 
-You can configure your API for any Tyk supported authentication method by following [Authentication with Tyk OAS]({{< ref "api-management/client-authentication#authentication-with-tyk-oas">}}) documentation.
+You can configure your API for any Tyk supported authentication method by following the [Client Authentication]({{< ref "api-management/client-authentication">}}) documentation.
 
 Save your updated API definition in the same file, `oas-api-definition.json`.
 
@@ -1198,7 +1198,7 @@ In the below example, the authentication token is set by default to the `Authori
 - `use_param`: Set to true to allow the token to be passed as a query parameter.
 - `param_name`: Specify the parameter name if use_param is enabled.
 - `use_certificate`: Enable client certificate. This allows you to create dynamic keys based on certificates.
-- `validate_signature`: Enable [signature validation]({{< ref "api-management/client-authentication#auth-token-signature-validation" >}}).
+- `validate_signature`: Enable [signature validation]({{< ref "api-management/client-authentication#auth-token-with-signature" >}}).
 
 ```yaml {hl_lines=["13-35"],linenos=false}
 apiVersion: tyk.tyk.io/v1alpha1
@@ -1418,7 +1418,7 @@ spec:
 
 This setup allows for [multiple authentication]({{< ref "api-management/client-authentication#combine-authentication-methods" >}}) methods to be chained together, requiring clients to pass through each specified authentication provider.
 
-To enable multiple (chained) auth, you should set `base_identity_provided_by` field to one of the supported chained enums. Consult [Enable Multi (Chained) Authentication in your API Definition]({{< ref "api-management/client-authentication#enable-multi-chained-authentication-in-your-api-definition" >}}) for the supported auths.
+To enable multiple (chained) auth, you should set `base_identity_provided_by` field to one of the supported chained enums. Consult the [Multi (Chained) Authentication]({{< ref "api-management/client-authentication#combine-authentication-methods" >}}) section for the supported auths.
 
 In this example, we are creating an API definition with basic authentication and mTLS with basic authentication as base identity for `httpbin-multiple-authentications`.
 
