@@ -215,11 +215,11 @@ This means the batch endpoint could be used for reconnaissance, as attackers mig
 
 We recommend that you consider the following best practice guidelines when using batch requests:
 
-- Validate Before Sending: Perform client-side validation before including requests in a batch to minimize predictable errors.
-- Implement Timeouts: Set appropriate timeouts for batch requests to prevent long-running operations from blocking your application.
-- Log Detailed Errors: Log detailed error information for failed requests to facilitate debugging.
-- Group Similar Requests: Group requests with similar authentication requirements and rate limits to minimize errors.
-- Implement Circuit Breakers: Use circuit breaker patterns to prevent repeated failures when upstream services are experiencing issues.
+- **Validate Before Sending**: Perform client-side validation before including requests in a batch to minimize predictable errors.
+- **Implement Timeouts**: Set appropriate timeouts for batch requests to prevent long-running operations from blocking your application.
+- **Log Detailed Errors**: Log detailed error information for failed requests to facilitate debugging.
+- **Group Similar Requests**: Group requests with similar authentication requirements and rate limits to minimize errors.
+- **Implement Circuit Breakers**: Use circuit breaker patterns to prevent repeated failures when upstream services are experiencing issues.
 
 ## Troubleshooting
 
