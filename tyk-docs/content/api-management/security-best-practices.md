@@ -409,7 +409,7 @@ As part of using Mutual TLS, you can create a list of [trusted certificates]({{<
 **Certificate Pinning**
 
 
-Introduced in Tyk Gateway 2.6.0, [certificate pinning]({{< ref "api-management/certificates#certificate-pinning" >}}) is a feature which allows you to allow only specified public keys used to generate certificates, so you will be protected in case an upstream certificate is compromised.
+Introduced in Tyk Gateway 2.6.0, [certificate pinning]({{< ref "api-management/upstream-authentication#certificate-pinning" >}}) is a feature which allows you to allow only specified public keys used to generate certificates, so you will be protected in case an upstream certificate is compromised.
 
 **API Security**
 

@@ -111,7 +111,7 @@ Implement token-based authentication for API access.
 Establish secure channels with two-way certificate verification.
 {{< /badge >}}
 
-{{< badge title="HMAC" href="api-management/client-authentication/#sign-requests-with-hmac" >}}
+{{< badge title="HMAC" href="basic-config-and-security/security/authentication-authorization/hmac-signatures" >}}
 Verify message integrity using shared secret keys.
 {{< /badge >}}
 
