@@ -7,7 +7,7 @@ aliases:
   - /frequently-asked-questions/long-term-support-releases
   - /developer-support/long-term-support-releases
   - /developer-support/special-releases-and-features/long-term-support-releases
-  - /developer-support/release-types/special-releases
+  - /developer-support/release-notes/special-releases
 ---
 
 Welcome to Tyk's Long Term Support (LTS) Releases section. Here, we'll walk you through the practical aspects of how LTS benefits your business. Explore our approach to stability, understand semantic versioning and learn about our compatibility policies. We'll also cover support for non-LTS components and provide links on upgrading and staying informed about new LTS releases.
