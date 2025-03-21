@@ -20,9 +20,9 @@ Secure communication is essential in today's digital landscape. TLS/SSL protocol
 
 In this section, we delve into the following key topics: 
 
-1. **[Enabling TLS in Tyk components]({{< ref "api-management/certificates#enable-tlsssl-in-tyk" >}})**: 
+1. **[Enabling TLS in Tyk components]({{< ref "api-management/certificates#enable-tlsssl-in-tyk-components" >}})**: 
     Learn how to enable and configure TLS/SSL for Tyk Gateway and Dashboard to secure your communication.
-2. **[TLS Support in Tyk]({{< ref "api-management/certificates#tlsssl-configuration-fields" >}})**: 
+2. **[TLS Support in Tyk]({{< ref "api-management/certificates#tlsssl-configuration" >}})**: 
     Understand the supported TLS versions, cipher suites, their configurations, and best practices for secure communication.
 3. **[Configuring Tyk Certificate Storage]({{< ref "api-management/certificates#using-tyk-certificate-storage" >}})**: 
     Discover how to manage and store certificates for seamless TLS configuration in Tyk.
@@ -230,7 +230,6 @@ SSL-Session:
     Master-Key: 88D36C895808BDF9A5481A8CFD68A0B821CF8E6A6B8C39B40DB22DA82F6E2E791C77A38FDF5DC6D21AAE3D09825E4A2A
 ```
 
-## Additional TLS/SSL Configuration
 
 ### Validate Hostname against Common Name
 
@@ -341,34 +340,6 @@ This example shows how to enable a custom domain (`buraksekili.dev`) with a TLS 
 
 {{< tabs_end >}}
 
-## Using Tyk Certificate Storage
-
-In Tyk Gateway 2.4 and Tyk Dashboard 1.4 we added [Mutual TLS support]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) including special Certificate storage, which is used to store all kinds of certificates from public to server certificates with private keys.
-
-In order to add new server certificates to the Gateway:
-
-1. Ensure that both private key and certificates are in PEM format
-2. Concatenate Cert and Key files to single file
-3. Go to "Certificates" section of the Tyk Dashboard, upload certificate, and you will get a unique ID response
-4. Set it to the Tyk Gateway using one of the approaches below:
-
-    * Using your `tyk.conf`:
-
-    ```
-        "http_server_options": {
-            "ssl_certificates": ["<cert-id-1>", "<cert-id-2>"]
-        }
-    ```
-
-    * Using environment variables (handy for Multi-Cloud installation and Docker in general): `TYK_GW_HTTPSERVEROPTIONS_SSLCERTIFICATES=<cert-id>` (if you want to set multiple certificates just separate them using a comma.)
-
-    The Domain in this case will be extracted from standard certificate fields: `Subject.CommonName` or `DNSNames`.
-
-    {{< note success >}}
-**Note**  
-
-`Subject.CommonName` is deprecated and its support will be removed in Tyk V5.
-    {{< /note >}}
 
 ## Certificate Management 
 
@@ -411,6 +382,35 @@ openssl x509 -noout -fingerprint -sha256 -inform pem -in <cert>.
 ```
 
 You may notice that you can't get the raw certificate back, only its meta information. This is to ensure security. Certificates with private keys have special treatment and are encoded before storing. If a private key is found it will be encrypted with AES256 algorithm 3 using the `security.private_certificate_encoding_secret` secret, defined in `tyk.conf` file. Otherwise, the certificate will use the [secret]({{< ref "tyk-oss-gateway/configuration#secret" >}}) value in `tyk.conf`.
+
+### Using Tyk Certificate Storage
+
+In Tyk Gateway 2.4 and Tyk Dashboard 1.4 we added [Mutual TLS support]({{< ref "api-management/client-authentication#use-mutual-tls" >}}) including special Certificate storage, which is used to store all kinds of certificates from public to server certificates with private keys.
+
+In order to add new server certificates to the Gateway:
+
+1. Ensure that both private key and certificates are in PEM format
+2. Concatenate Cert and Key files to single file
+3. Go to "Certificates" section of the Tyk Dashboard, upload certificate, and you will get a unique ID response
+4. Set it to the Tyk Gateway using one of the approaches below:
+
+    * Using your `tyk.conf`:
+
+    ```
+        "http_server_options": {
+            "ssl_certificates": ["<cert-id-1>", "<cert-id-2>"]
+        }
+    ```
+
+    * Using environment variables (handy for Multi-Cloud installation and Docker in general): `TYK_GW_HTTPSERVEROPTIONS_SSLCERTIFICATES=<cert-id>` (if you want to set multiple certificates just separate them using a comma.)
+
+    The Domain in this case will be extracted from standard certificate fields: `DNSNames`.
+
+    {{< note success >}}
+**Note**  
+
+Prior to Tyk v5, the Domain could also be extracted from the now deprecated `Subject.CommonName` field.
+    {{< /note >}}
 
 ## Self Signed Certificates
 
