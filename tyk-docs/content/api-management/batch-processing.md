@@ -8,11 +8,11 @@ keywords: ["Request Optimization", "Optimization", "Batched Requests", "Batch", 
 
 ## Overview
 
-Batch Requests is a powerful Tyk Gateway feature that allows clients to make multiple API requests in a single HTTP call. Instead of sending numerous individual requests to different endpoints, clients can bundle these requests together, reducing network overhead and improving performance.
+Batch Requests is a powerful Tyk Gateway feature that allows clients to make multiple requests to an API in a single HTTP call. Instead of sending numerous individual requests to the API, clients can bundle these requests together, reducing network overhead and improving performance.
 
 ### What are Batch Requests?
 
-Batch Requests act as an aggregator for multiple API calls. When a client sends a batch request to Tyk, the Gateway processes each request in the batch individually (applying all relevant middleware, authentication, and rate limiting) and returns a combined response containing the results of all requests.
+Batch Requests act as an aggregator for multiple API calls. When a client sends a batch request to Tyk, the Gateway processes each request in the batch individually (applying all relevant middleware, authentication, and rate limiting) and returns a combined response containing the results of all requests. The scope of a batch request is limited to a single API deployed on Tyk, though can comprise requests to different endpoints (method and path) defined for that API.
 
 ### Key Benefits
 
@@ -46,27 +46,13 @@ This process ensures that security is maintained while providing the performance
 
 ### Configuration
 
-Batch Requests are disabled by default so you need to enable batch request support in your Tyk Gateway configuration:
-
-`tyk.conf` file: `"enable_batch_request_support": true`
-or
-environment variable: `TYK_GW_ENABLEBATCHREQUESTSUPPORT=true`
+Batch Requests are disabled by default, so you need to enable batch request support in your API definition by setting `server.batchProcessing.enabled` in the Tyk Vendor Extension (Tyk Classic: `enable_batch_request_support`).
 
 ### Batch Request Endpoint
 
-When batch requests are enabled on the Gateway, Tyk automatically creates an additional logical endpoint for each API. This won't appear in the API definition and so is not added to the OpenAPI description. This `/tyk/batch/` endpoint accepts requests in a specific "batch" format and processes them as described in the next section.
+When batch requests are enabled, Tyk automatically creates an additional logical endpoint on the subrouter for the API. This won't appear in the API definition and so will not be added to the OpenAPI description. This `/tyk/batch/` endpoint accepts requests in a specific "batch" format and processes them as described in the next section.
 
-For example, if your API's listen path is
-
-```
-/myapi/
-```
-
-the batch request endpoint would be:
-
-```
-/myapi/tyk/batch/
-```
+For example, if your API's listen path is `/myapi/` the batch request endpoint would be `/myapi/tyk/batch/`.
 
 Note that the trailing slash `/` at the end of the URL is required when calling this endpoint.
 
@@ -112,10 +98,10 @@ Batch requests must be sent as HTTP `POST` requests with a JSON payload that fol
 Where:
 
 - `requests`: An array of individual requests to be processed
-- `method`: The HTTP method for the individual request (`GET`, `POST`, `PUT`, `DELETE`, etc.)
-- `headers`: Any HTTP headers to include with the request
-- `body`: The request body (for `POST`, `PUT` requests)
-- `relative_url`: The endpoint for the request
+  - `method`: The HTTP method for the individual request (`GET`, `POST`, `PUT`, `DELETE`, etc.)
+  - `headers`: Any HTTP headers to include with the request
+  - `body`: The request body (for `POST`, `PUT` requests) in the format prescribed by the API (e.g. JSON string)
+  - `relative_url`: The endpoint for the request, which can include query parameters
 - `suppress_parallel_execution`: A boolean flag to control whether requests should be processed in parallel (`false`) or sequentially in the order that they appear in the array (`true`)
 
 In the example above, on receipt of a request to `POST /my-api/tyk/batch` with this payload, Tyk would process three requests in parallel:
@@ -124,6 +110,12 @@ In the example above, on receipt of a request to `POST /my-api/tyk/batch` with t
 - `POST /my-api/resource/create` passing `x-header-2` and `Authorization` headers and the payload descrbied in `body`
 - `GET /my-api/resource/invalid` passing `x-header-3` and `Authorization` headers
 
+### Execution Order
+
+Tyk will work through the requests in the batch in the order that they are declared in the `requests` array. The `suppress_parallel_execution` setting is used to determine whether Tyk should wait for each request to complete before starting the next (`true`), or if it should issue all of the requests in parallel (`false`).
+
+If sequential execution is in use, Tyk will work through the entire `requests` array regardless of whether any requests return errors. All responses (success and failure) will be logged and returned to the client as described [below]({{< ref "api-management/batch-processing#batch-response-format" >}}).
+ 
 ### Batch Response Format
 
 When you send a batch request to Tyk, each individual request within the batch is processed independently. This means that some requests in a batch may succeed while others fail. Tyk provides detailed response information for each request in the batch to help you identify and handle errors appropriately.
