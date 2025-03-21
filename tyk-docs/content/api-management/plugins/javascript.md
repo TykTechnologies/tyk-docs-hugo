@@ -122,7 +122,7 @@ Custom JS plugins sit in the [middleware processing chain]({{< ref "api-manageme
 
 ##### Returning from Virtual Endpoint
 
-Unlike custom JS plugins, Virtual Endpoints always [terminate the request]({{< ref "api-management/traffic-transformation#working-14" >}}) so have a different method of returning from the JS function.
+Unlike custom JS plugins, Virtual Endpoints always [terminate the request]({{< ref "api-management/traffic-transformation#working-13" >}}) so have a different method of returning from the JS function.
 
 The function must return a `responseObject`. This is crucial as it determines the HTTP response that will be sent back to the client. The structure of this object is defined to ensure that the virtual endpoint can communicate the necessary response details back to the Tyk Gateway, which then forwards it to the client.
 

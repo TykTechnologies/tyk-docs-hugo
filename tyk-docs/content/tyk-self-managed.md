@@ -6054,6 +6054,7 @@ In Tyk Gateway's configuration file (`tyk.conf`), you can retrieve values from K
 - `security.private_certificate_encoding_secret`
 - `db_app_conf_options.connection_string`
 - `policies.policy_connection_string`
+- `slave_options.api_key`
 
 To reference the *Value* assigned to a *Key* in one of the KV stores from the Gateway configuration file use the following notation:
 - Consul: `consul://path/to/key`
@@ -6112,7 +6113,7 @@ From v5.3.0 onward, environment variables can have any `KEY_NAME`, and the full 
 Key-value references can be included in the following middleware, with the values retrieved dynamically when the middleware is called (during processing of an API request or response):
 - [request body transform]({{< ref "api-management/traffic-transformation#request-body-overview" >}})
 - [request header transform]({{< ref "api-management/traffic-transformation#request-headers-overview" >}})
-- [URL rewrite]({{< ref "api-management/traffic-transformation#url-rewrite-middleware" >}})
+- [URL rewrite]({{< ref "transform-traffic/url-rewriting#url-rewrite-middleware" >}})
 - [response body transform]({{< ref "api-management/traffic-transformation#response-body-overview" >}})
 - [response header transform]({{< ref "api-management/traffic-transformation#response-headers-overview" >}})
 

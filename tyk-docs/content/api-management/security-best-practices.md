@@ -45,7 +45,7 @@ Authentication is a vital aspect of API security. Failure to do so, as noted by 
 
 Tyk provides the following features and authentication mechanisms:
 -  Prioritize secure methods, like [mutual TLS]({{< ref "api-management/client-authentication#use-mutual-tls" >}}), over [basic authentication]({{< ref "api-management/client-authentication#use-basic-authentication" >}}) wherever feasible.
-- API owners can integrate external Identity Providers (IdPs) supporting methods like [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}), [OAuth 2.0]({{< ref "api-management/client-authentication#using-the-authorization-code-grant" >}}) or [JSON Web Tokens]({{< ref "api-management/client-authentication#use-json-web-tokens-jwt" >}}).
+- API owners can integrate external Identity Providers (IdPs) supporting methods like [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}}), [OAuth 2.0]({{< ref "api-management/client-authentication#using-the-authorization-code-grant" >}}) or [JSON Web Tokens]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}).
 - [Single Sign-On]({{< ref "api-management/external-service-integration#single-sign-on-sso" >}}) can be used for a centralized and trusted authentication source. API operators can choose from common authentication methods such as OAuth 2.0, LDAP, and SAML.
 - [Dynamic Client Registration]({{< ref "tyk-developer-portal/tyk-portal-classic/dynamic-client-registration#oauth-20-dynamic-client-registration-protocol-dcr" >}}), enables third-party authorization servers to issue client credentials via the Tyk Developer Portal. This streamlines Identity Management, eliminating the need to manage credentials across multiple systems.
 - Tyk's default authentication setup disallows credentials in URLs, reducing the risk of inadvertent exposure through backend logs.
@@ -128,7 +128,7 @@ The Ops team should also take reponsibility for monitoring the APIs for errors a
 
 Tyk offers the following features to support improper inventory management:
 
-- [Versioning]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}}) allows newer versions of APIs to coexist with the older versions, facilitating deprecation and sunsetting.
+- [Versioning]({{< ref "api-management/api-versioning" >}}) allows newer versions of APIs to coexist with the older versions, facilitating deprecation and sunsetting.
 - [Sunsetting]({{< ref "api-management/api-versioning#sunsetting-api-versions" >}}) allows versions to be configured with an Expiry Time, ensuring that a version is not accessible after the expiry date.
 - [Key expiry]({{< ref "api-management/policies#access-key-expiry" >}}) ensures that access to an API is short lived, with a per key configurable Time to Live (TTL) for which a token remains valid before it expires. The implementation of key expiry, with a configurable Time To Live (TTL), mitigates the impact of compromised tokens by narrowing the window of vulnerability. Setting a TTL reduces the time frame during which a compromised token could be exploited, enhancing overall security.
 - Tyk Developer Portal catalogs APIs and facilitates granting access to them.  Integrated with a CMDB it can help keep documentation updated.
@@ -145,7 +145,7 @@ Attackers may identify and target the third party APIs/services used by an API. 
 It is the responsibility of the API to provide protection against these attacks. However, if the organization uses the Gateway as a forwarding proxy to third party APIs, then the following features could be used:
 
 - [JSON Schema validation]({{< ref "api-management/traffic-transformation#request-validation-using-classic" >}}) to validate that an incoming data payload meets a defined schema. Payloads that do not adhere to the schema are rejected.
-- [Versioning]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}}) allows newer versions of third party APIs to coexist with the older versions, facilitating deprecation and sunsetting.
+- [Versioning]({{< ref "api-management/api-versioning" >}}) allows newer versions of third party APIs to coexist with the older versions, facilitating deprecation and sunsetting.
 - [TLS]({{< ref "api-management/certificates" >}}) to ensure that clients use the right service and encrypt traffic.
 
 
@@ -372,7 +372,7 @@ Make sure to keep your private key safe!
 
 APIs need to be managed and governed just like any other resource, otherwise organizations risk losing track of their API estate and becoming unaware of potentially vulnerable APIs running within their infrastructure. This risk is magnified as the number of teams, environments and APIs increases. Use API management as part of overarching business processes to control how APIs are accessed, managed and deployed.
 
-**Restrict Version Availability**: Enforce the expiry of [API versions]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}}) that are planned for deprecation, by setting a sunset date, beyond which they will not be accessible.
+**Restrict Version Availability**: Enforce the expiry of [API versions]({{< ref "api-management/api-versioning" >}}) that are planned for deprecation, by setting a sunset date, beyond which they will not be accessible.
 
 **Enforce Key Expiry**: In many situations it’s best to issue API keys that have a short, finite lifetime, especially when serving anonymous, external consumers. Set [expiry dates]({{< ref "api-management/policies#access-key-expiry" >}}) for API keys, or use ephemeral credentials with complementary authentication techniques that support key renewal, such as [OAuth 2.0 refresh tokens]({{< ref "api-management/client-authentication#using-refresh-tokens" >}}) and [dynamic client registration]({{< ref "portal/api-provider#dynamic-client-registration" >}}). Then, should an API key fall into the wrong hands, there’s a chance that it has already expired.
 
