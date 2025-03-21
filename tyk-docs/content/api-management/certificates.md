@@ -118,7 +118,7 @@ $ curl -k https://localhost:3000
 <html response>
 ```
 
-## Enabling mTlS in MDCB 
+## Enable mTLS in MDCB 
 
 Mutual TLS configuration in an MDCB environment has specific requirements. An MDCB environment consists of a Control Plane and multiple Data Planes that, using MDCB, sync configuration. 
 The Control Plane and Data Plane deployments usually do not share any secrets; thus a certificate with private keys encoded with secret in the Control Plane will not be accessible to Data Plane gateways. 
