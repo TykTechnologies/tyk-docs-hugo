@@ -1,7 +1,7 @@
 ---
 title: Tyk Charts Release Notes
-description: "Release notes documenting updates, enhancements and changes for Tyk Charts versions within the 2.1 series."
-tags: ["Tyk Charts", "Release notes", "changelog", "v2.1", "v2.1.0", "v2.0.0", "v1.6.0", "v1.5.0", "v1.4.0", "v1.3.0" ]
+description: "Release notes documenting updates, enhancements and changes for Tyk Charts."
+tags: ["Tyk Charts", "Release notes", "changelog"]
 aliases:
   - /product-stack/tyk-charts/release-notes/version-1.3
   - /product-stack/tyk-charts/release-notes/version-1.4
@@ -18,9 +18,201 @@ aliases:
 **This page contains all release notes for Tyk Charts displayed in a reverse chronological order**
 
 ## Support Lifetime
-<!-- Required. replace X.Y with this release and set the correct quarter of the year -->
 Our minor releases are supported until our next minor comes out. 
 
+---
+## 3.0 Release Notes
+
+### 3.0.0 Release Notes
+
+#### Release Date XX March 2025
+
+#### Release Highlights
+
+Tyk Charts 3.0 significantly improves configurability, reliability, and support for Tyk 5.8. This release enhances monitoring capabilities, expands Helm chart flexibility, and resolves key issues related to service availability and configuration management.
+
+For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v3.0.0) below.
+
+#### Breaking Changes
+Tyk Charts 3.0 introduces a breaking configuration changes for Tyk Dashboard: To provide a default secure configuration, `security.forbid_admin_view_access_token` and `security.forbid_admin_reset_access_token` are set to `true` to restrict admin users from being able to view and reset other users' Dashboard API Access Credentials.
+
+#### Dependencies {#dependencies-3.0}
+
+##### 3rd Party Dependencies & Tools
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [Kubernetes](https://kubernetes.io)                        | 1.26.x, 1.27.x, 1.28.x, 1.29.x, 1.30.x, 1.31.x, 1.32.x | 1.19+          |          | 
+| [Helm](https://helm.sh)                                    | 3.14.x                 | 3.x                    |          | 
+| [Redis](https://redis.io)                                  | 6.2.x, 7.x    | 6.2.x, 7.x    | Used by Tyk Gateway and Dashboard | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x | 5.0.x, 6.0.x, 7.0.x | Used by Tyk Dashboard, Pump, and MDCB | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | Used by Tyk Dashboard, Pump, and MDCB | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecation in this release.
+
+#### Upgrade instructions
+You can use helm upgrade to upgrade your release
+
+```bash
+helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
+helm repo update
+
+helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
+```
+
+#### Downloads
+- [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v3.0.0.tar.gz)
+- [ArtifactHub - tyk-stack](https://artifacthub.io/packages/helm/tyk-helm/tyk-stack/3.0.0)
+- [ArtifactHub - tyk-control-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-control-plane/3.0.0)
+- [ArtifactHub - tyk-data-plane](https://artifacthub.io/packages/helm/tyk-helm/tyk-data-plane/3.0.0)
+- [ArtifactHub - tyk-oss](https://artifacthub.io/packages/helm/tyk-helm/tyk-oss/3.0.0)
+
+#### Changelog {#Changelog-v3.0.0}
+
+##### Added
+
+<ul>
+
+<li>
+<details>
+<summary>Pump: Readiness and liveness probes</summary>
+
+Added readiness and liveness probes using Tyk Pump's health check service, allowing proactive monitoring to detect failures and improve system reliability.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Global: imageRegistry configuration</summary>
+
+Added support for a global image registry, making it easier for users to configure private registries and streamline container image management.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Gateway: Tyk Gateway startup probes</summary>
+
+Added configurable startup probes for Tyk Gateway, improving readiness checks to prevent premature traffic routing during initialization.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Gateway: Tyk Gateway access/transaction logs</summary>
+
+Added support for configuring access logs in Tyk Gateway 5.8, allowing users to track API transaction logs for enhanced monitoring and debugging.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Gateway: OpenTelemetry header from Kubernetes secrets</summary>
+
+Added support for retrieving a single OpenTelemetry Authorization header from a Kubernetes secret, enhancing security by preventing exposure of sensitive credentials in Helm values or Kubernetes manifests.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Helm chart parameterization</summary>
+	
+Replaced hardcoded values in Helm charts with configurable parameters, providing greater flexibility in deployment customization.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Operator and tyk-bootstrap: Tolerations, affinity, and node selector</summary>
+
+Added support for tolerations, affinity, and node selector configurations, enabling users to fine-tune Kubernetes scheduling for better resource allocation and workload distribution.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Configurable test pod execution</summary>
+
+Added support to enable or disable test pods, allowing users to optimize resource utilization based on their environment needs.
+</details>
+</li>
+
+</ul>
+
+##### Changed
+
+<ul>
+
+<li>
+<details>
+<summary>Support for restricting admin access token actions in Tyk Dashboard</summary>
+
+Improved security by setting security.forbid_admin_view_access_token and security.forbid_admin_reset_access_token to true by default, preventing admin users from viewing or resetting other users’ Dashboard API access credentials unless explicitly allowed.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Updated default versions of Tyk components</summary>
+
+ Tyk Charts 3.0 will install the following Tyk component versions by default.
+
+  - Tyk Gateway v5.3.10
+  - Tyk Dashboard v5.3.10
+  - Tyk Pump v1.12.0
+  - Tyk MDCB v2.8.0
+  - Tyk Developer Portal v1.13.0
+  - Tyk Operator v1.2.0
+
+</details>
+</li>
+
+</ul>
+
+##### Fixed
+
+<ul>
+
+<li>
+<details>
+<summary>Pump: Pump service annotation issue</summary>
+
+Fixed an issue where service annotations for Tyk Pump were not being applied correctly, which caused misconfigurations in Kubernetes deployments. This has been resolved by ensuring annotations are properly processed.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Operator liveness and readiness probe failure</summary>
+
+Fixed an issue where the Operator’s liveness and readiness probes were failing, causing the service to enter a CrashLoopBackOff state. This has been resolved by adjusting configurations to ensure proper startup and health checks.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Incorrect TYK_DB_TYKAPI_HOST and TYK_DB_TYKAPI_PORT values</summary>
+
+Fixed an issue where TYK_DB_TYKAPI_HOST and TYK_DB_TYKAPI_PORT environment variables were incorrectly set when the Control API was enabled, leading to connectivity issues. This has been resolved by ensuring the correct values are assigned during configuration.
+</details>
+</li>
+
+</ul>
+
+<!-- ##### Security Fixes
+This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
+1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
+2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
+
+For agreed CVE security fixes, provide a link to the corresponding entry on the NIST website. For example:
+
+- Fixed the following CVEs:
+    - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
+-->
+
+<!-- Required. use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
 ---
 ## 2.2 Release Notes
 
