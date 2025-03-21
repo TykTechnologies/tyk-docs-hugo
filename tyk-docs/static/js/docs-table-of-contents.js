@@ -239,6 +239,15 @@ function highlightAnchor() {
     }
   });
 
+  // If a fragment exists in the URL, prioritize it over the visible heading
+  const fragment = window.location.hash;
+  if (fragment) {
+    const fragmentHeading = $(`[id="${fragment.substring(1)}"]`);
+    if (fragmentHeading.length) {
+      highestVisibleHeading = fragmentHeading;
+    }
+  }
+
   if (highestVisibleHeading) {
     const currentSectionId = highestVisibleHeading.attr("id");
     console.log("currentSectionId", currentSectionId);
