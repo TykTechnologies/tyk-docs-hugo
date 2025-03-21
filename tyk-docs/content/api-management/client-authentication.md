@@ -1520,7 +1520,7 @@ Inside your API definition you should set the `upstream_certificates` field to t
 `{"example.com": "<cert-id>"}`. Defining on a global level looks the same, but should be specified via the `security.certificates.upstream` field in your Gateway configuration file.
 
 ##### Upstream Request Signing Using HMAC keys
-Hash-Based Message Authentication Code (HMAC) Signing enhances security by requiring the requesting client to include a cryptographic signature with each request. This signature is generated using a secret key or an upstream certificate, ensuring that the request is properly encrypted.
+Hash-Based Message Authentication Code ([HMAC](https://en.wikipedia.org/wiki/HMAC)) Signing enhances security by requiring the requesting client to include a cryptographic signature with each request. This signature is generated using a secret key or an upstream certificate, ensuring that the request is properly encrypted.
 
 The below yaml manifest shows how [Upstream Request Signing]({{<ref "api-management/client-authentication/#sign-requests-with-hmac">}}) are configured differently for [Tyk OAS APIs]({{< ref "#tyk-oas-api" >}}).
 
