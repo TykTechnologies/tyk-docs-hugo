@@ -225,6 +225,7 @@ let isUserScrollingTOC = false; // Flag to track user scrolling in the TOC
 let isUserScrollingContent = false; // Flag to track user scrolling in the main content
 
 function highlightAnchor() {
+  console.log("highlightAnchor called");
   const contentTitles = $("h2, h3, h4, h5");
   let highestVisibleHeading = null;
 
@@ -240,7 +241,8 @@ function highlightAnchor() {
 
   if (highestVisibleHeading) {
     const currentSectionId = highestVisibleHeading.attr("id");
-    
+    console.log("currentSectionId", currentSectionId);
+
     // Remove active classes from all TOC items
     $(".toc__item, .sub_toc__item, .sub-sub-toc-item, .sub-sub-sub-toc-item").removeClass("js-active accordion-up");
 
@@ -261,14 +263,29 @@ function highlightAnchor() {
     // Ensure all sibling items within the same grandparent container are visible
     const parentContainer = activeTocItem.closest(".sub-sub-accordion-content").parent(".sub-accordion-content");
     if (parentContainer.length) {
+      console.log("Grandparent container found:", parentContainer);
       parentContainer.children(".sub-sub-accordion-content").each(function () {
         $(this).css("display", "block"); // Make all sibling items visible
       });
     } else {
-      activeTocItem.closest(".sub-accordion-content, .accordion-content").children().each(function () {
-        $(this).css("display", "block"); // Make all sibling items visible
-      });
+      const accordionParent = activeTocItem.closest(".accordion-content").parent(".accordion-item");
+      if (accordionParent.length) {
+        console.log("Accordion parent found:", accordionParent);
+        accordionParent.children(".accordion-content").each(function () {
+          $(this).css("display", "block"); // Make all sibling accordion-content divs visible
+        });
+      } else {
+        console.log("Parent container found:", activeTocItem.closest(".sub-accordion-content, .accordion-content"));
+        activeTocItem.closest(".sub-accordion-content, .accordion-content").children().each(function () {
+          $(this).css("display", "block"); // Make all sibling items visible
+        });
+      }
     }
+
+    // Ensure all child items of the highlighted item are visible
+    activeTocItem.siblings(".accordion-content, .sub-accordion-content, .sub-sub-accordion-content").each(function () {
+      $(this).show(); // Make all child sections visible
+    });
 
     // Scroll the TOC container to the highlighted item on large screens
     if (!isUserScrollingTOC && window.innerWidth >= 1024) {
