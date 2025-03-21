@@ -81,7 +81,7 @@ menu:
             path: /tyk-self-managed
             category: Page
             show: True
-      - title: "Authentication and Authorization"
+      - title: "Client Authentication"
         category: Directory
         show: True
         menu:
