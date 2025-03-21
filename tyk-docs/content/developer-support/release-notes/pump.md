@@ -1,6 +1,6 @@
 ---
 title: Tyk Pump Release Notes
-date: 2024-02-02T26:33:11Z
+date: 2024-02-02
 description: "Release notes documenting updates, enhancements and changes for Tyk Pump versions within the 1.11.X series."
 tags: ["Tyk Pump", "Release notes", "v1.11", "changelog"]
 aliases:

@@ -98,7 +98,7 @@
 
     {{ $scss := resources.Get "scss/main.scss" }}
     {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (eq hugo.Environment "development")) }}
-    {{ $css := $scss | resources.ToCSS $options }}
+    {{ $css := $scss | css.Sass $options }}
     <link rel="stylesheet" href="{{ $css.RelPermalink }}" />
   </head>
 
