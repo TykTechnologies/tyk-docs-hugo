@@ -16,20 +16,20 @@ Batch Requests act as an aggregator for multiple API calls. When a client sends 
 
 ### Key Benefits
 
-- Reduced Network Overhead: Minimize the number of HTTP connections required for multiple related API operations
-- Improved Client Performance: Decrease latency by eliminating multiple round-trips to the server
-- Simplified Error Handling: Process success and failure responses for multiple operations in a single place
-- Maintained Security: Each request within a batch still goes through Tyk's full security pipeline
-- Flexible Execution: Choose between parallel or sequential execution of requests
+- **Reduced Network Overhead**: Minimize the HTTP connections required for multiple related API operations.
+- **Improved Client Performance**: Decrease latency by eliminating multiple round-trips to the server.
+- **Simplified Error Handling**: Process success and failure responses for multiple operations in a single place.
+- **Maintained Security**: Each request within a batch still goes through Tyk's full security pipeline.
+- **Flexible Execution**: Choose between parallel or sequential execution of requests.
 
 ### When to Use Batch Requests
 
 Batch Requests are ideal for scenarios such as:
 
-- Mobile applications that need to fetch data from multiple endpoints during startup
-- Dashboard applications that need to populate multiple widgets with different API data
-- Complex workflows that require data from several API endpoints to complete a single user action
-- Integration scenarios where you need to synchronize operations across multiple services
+- Mobile applications that need to fetch data from multiple endpoints during startup.
+- Dashboard applications that need to populate multiple widgets with different API data.
+- Complex workflows that require data from several API endpoints to complete a single user action.
+- Integration scenarios where you need to synchronize operations across multiple services.
 
 ### How Batch Requests Work
 
@@ -201,15 +201,15 @@ This means that, whilst anyone can request the batch endpoint, they can only suc
 
 This means the batch endpoint could be used for reconnaissance, as attackers might determine which APIs exist based on responses. If this is a concern, then you could consider:
 
-- using IP allowlists to restrict access to your API
-- using [Internal Looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}) to put the batch request API behind a protected API
-- disabling batch requests entirely if you don't need this feature
+- Using IP allowlists to restrict access to your API.
+- Using [Internal Looping]({{< ref "advanced-configuration/transform-traffic/looping" >}}) to put the batch request API behind a protected API.
+- Disabling batch requests entirely if you don't need this feature.
 
 ## Performance Considerations
 
 - Setting `suppress_parallel_execution` to `false` provides better performance but doesn't guarantee response order.
-- For large batches, consider the impact on your upstream services
-- Tyk applies rate limiting to each request in the batch, which may cause some requests to be rejected if limits are exceeded
+- For large batches, consider the impact on your upstream services.
+- Tyk applies rate limiting to each request in the batch, which may cause some requests to be rejected if limits are exceeded.
 
 ## Best Practices when using Tyk's Batch Request feature
 
