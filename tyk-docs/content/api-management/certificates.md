@@ -20,17 +20,16 @@ Secure communication is essential in today's digital landscape. TLS/SSL protocol
 
 In this section, we delve into the following key topics: 
 
-1. **[Enabling TLS in Tyk components]({{< ref "#enable-tlsssl-in-tyk" >}})**: 
+1. **[Enabling TLS in Tyk components]({{< ref "api-management/certificates#enable-tlsssl-in-tyk" >}})**: 
     Learn how to enable and configure TLS/SSL for Tyk Gateway and Dashboard to secure your communication.
-2. **[TLS Support in Tyk]({{< ref "#tlsssl-support" >}})**: 
+2. **[TLS Support in Tyk]({{< ref "api-management/certificates#tlsssl-configuration-fields" >}})**: 
     Understand the supported TLS versions, cipher suites, their configurations, and best practices for secure communication.
-3. **[Configuring Tyk Certificate Storage]({{< ref "#using-tyk-certificate-storage" >}})**: 
+3. **[Configuring Tyk Certificate Storage]({{< ref "api-management/certificates#using-tyk-certificate-storage" >}})**: 
     Discover how to manage and store certificates for seamless TLS configuration in Tyk.
-4. **[Advanced TLS Configuration]({{< ref "#additional-tlsssl-configuration" >}})**: 
     Explore advanced TLS settings for enhanced security.
-5. **[Self Signed Certificates]({{< ref "#self-signed-certificates" >}})**: 
+4. **[Self Signed Certificates]({{< ref "api-management/certificates#self-signed-certificates" >}})**: 
     Learn how to configure and use self-signed certificates for secure communication in Tyk.
-6. **[Configuring Internal Proxy Setup]({{< ref "#internal-proxy-setup" >}})**: 
+5. **[Configuring Internal Proxy Setup]({{< ref "api-management/certificates#internal-proxy-setup" >}})**: 
     Set up internal proxies with TLS to ensure secure communication within your architecture.
 
 ### Certificates 
@@ -48,11 +47,11 @@ Using Tyk, you have two main certificate use cases:
 1. Certificates without public keys used for [client authorization and authentication]({{< ref "api-management/client-authentication#use-mutual-tls" >}})
 2. Certificates with private keys used for [upstream access]({{< ref "api-management/upstream-authentication#mutual-tls-mtls" >}}), and server certificates (in other words when we need to sign and encrypt the request or response).
 
-#### PEM format
+### PEM format
 
 Before a certificate can be used by Tyk, it must be encoded into **PEM format**. If you are using an `openssl` command to generate certificates, it should use PEM by default. A nice bonus of the PEM format is that it allows having multiple entries inside the same file. So in cases where a certificate also requires a private key, you can just concatenate the two files together.
 
-## Enable TLS/SSL in Tyk
+## Enable TLS/SSL in Tyk components
 
 TLS protocol is supported by all Tyk components. You can enable TLS in Tyk Gateway and Dashboard by modifying the `tyk.conf` and `tyk_analytics.conf` files.
 
@@ -118,7 +117,7 @@ $ curl -k https://localhost:3000
 <html response>
 ```
 
-## Enable mTLS in MDCB 
+### MDCB 
 
 Mutual TLS configuration in an MDCB environment has specific requirements. An MDCB environment consists of a Control Plane and multiple Data Planes that, using MDCB, sync configuration. 
 The Control Plane and Data Plane deployments usually do not share any secrets; thus a certificate with private keys encoded with secret in the Control Plane will not be accessible to Data Plane gateways. 
@@ -126,9 +125,8 @@ The Control Plane and Data Plane deployments usually do not share any secrets; t
 To solve this issue, you need to set `security.private_certificate_encoding_secret`  in the MDCB configuration file to the same value as specified in your management Gateway configuration file. By knowing the original secret, MDCB will be able to decode private keys, and 
 send them to client without password. Using a secure connection between Data Plane Gateways and MDCB is required in this case. See MDCB setup page for use_ssl usage.
 
-## TLS/SSL Support
 
-## TLS/SSL Configuration Fields
+## TLS/SSL Configuration
 
 TLS is configured in the `http_server_options` section of your Gateway and Dashboard configuration files. This has the following structure, common to both components:
 
@@ -372,7 +370,7 @@ In order to add new server certificates to the Gateway:
 `Subject.CommonName` is deprecated and its support will be removed in Tyk V5.
     {{< /note >}}
 
-### Certificate Management 
+## Certificate Management 
 
 Tyk provides two options to manage certificates: plain files or certificate storage with a separate API.
 
@@ -445,11 +443,11 @@ If you are testing using cURL, your command will look like:
 curl --cert client_cert.pem --key client_key.pem https://localhost:8181
 ```
 
-### Gateway
+### Using self-signed certificates with Tyk Gateway
 
 You can set `http_server_options.ssl_insecure_skip_verify` to `true` in your tyk.conf to allow the use of self-signed certificates when connecting to the Gateway.
 
-###  Dashboard
+###  Using self-signed certificates with Tyk Dashboard
 
 You can set `http_server_options.ssl_insecure_skip_verify` to `true` in your tyk_analytics.conf to allow the use of self-signed certificates when connecting to the Dashboard.
 
