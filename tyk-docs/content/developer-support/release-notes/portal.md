@@ -668,7 +668,7 @@ This release doesn't introduce any changes to the theme, so a theme upgrade is n
   - ```bash
     docker pull tykio/portal:v1.9.0
     ```
-- [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.8.5)
+- [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.8.4)
 
 #### Changelog
 ##### Added
@@ -717,7 +717,7 @@ If you are on 1.8.3 or older version please follow the [upgrade instructions]({{
   - ```bash
     docker pull tykio/portal:v1.8.5
     ```
-- [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.8.5)
+- [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.8.4)
 
 #### Changelog
 

@@ -1242,7 +1242,7 @@ Fixed the following high priority CVEs identified in the Tyk Dashboard, providin
 
 #### Release Highlights
 
-In this release, we upgraded the Golang version to `v1.23` and fixed a [CVE-2025-21613](https://nvd.nist.gov/vuln/detail/CVE-2025-21613]). For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.10">}}) below.
+In this release, we upgraded the Golang version to `v1.23` and fixed a [CVE-2025-21613](https://nvd.nist.gov/vuln/detail/CVE-2025-21613). For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.10">}}) below.
 
 #### Breaking Changes
 
@@ -3723,7 +3723,7 @@ Of course, we’ve also addressed some bugs and usability issues as part of our 
 This release is all about making things easier for our users with GraphQL and Universal Data Graph.
 
 In order to get our users up and running with a working Universal Data Graph quickly, we’ve created a repository of examples that anyone can import into their Dashboard or Gateway and see what Universal Data Graph is capable of. Import can be done in two ways:
-- manually, by simply copying a Tyk API definition from GitHub - [TykTechnologies/tyk-examples](https://TykTechnologies/tyk-examples): A repository containing example API definitions and policies for Tyk products. 
+- manually, by simply copying a Tyk API definition from GitHub - [TykTechnologies/tyk-examples](https://github.com/TykTechnologies/tyk-examples): A repository containing example API definitions and policies for Tyk products. 
 - via command line [using tyk-sync]({{< ref "api-management/data-graph#udg-examples" >}})
 
 To make it easier for our users to find their way to Universal Data Graph, we’ve also given it its own space in the Dashboard. From now on you can find UDG under Data Graphs section of the menu.
@@ -4190,7 +4190,7 @@ We have bumped our major Tyk Gateway version from 2 to 3, a long overdue change 
 Importantly, such a big change in versions does not mean that we going to break backward compatibility. More-over we are restructuring our internal release strategy to guarantee more stability and to allow us to deliver all Tyk products at a faster pace. We aim to bring more clarity to our users on the stability criteria they can expect, based on the version number.
 Additionally we are introducing Long Term Releases (also known as LTS).
 
-Read more about this changes in our blogpost: https://tyk.io/introducing-long-term-support-some-changes-to-our-release-process-product-versioning/
+Read more about this changes in our blogpost: https://tyk.io/blog/introducing-long-term-support-some-changes-to-our-release-process-product-versioning/
 
 ##### New Look and Feel
 
@@ -4219,7 +4219,7 @@ When you create, view or edit a key the steps are in a more logical order. We’
 
 See updated tutorials on how to [create a policy]({{< ref "api-management/gateway-config-managing-classic#secure-an-api" >}}) and [keys]({{< ref "api-management/gateway-config-managing-classic#access-an-api" >}})
 
-We also have a [blog post](https://tyk.io/the-transformation-of-policies-and-keys/) that explains what we've done, and why we did it.
+We also have a [blog post](https://tyk.io/blog/the-transformation-of-policies-and-keys/) that explains what we've done, and why we did it.
 
 
 ##### Tyk Identity broker now built-in to the Dashboard
