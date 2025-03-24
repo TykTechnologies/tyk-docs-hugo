@@ -1,0 +1,17 @@
+# autoupdate is a GitHub Action that auto-updates pull requests branches whenever changes land on their destination branch.
+name: autoupdate
+on:
+  push:
+    branches:
+      - master
+jobs:
+  autoupdate:
+    name: autoupdate
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: docker://chinthakagodawita/autoupdate-action:v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.ORG_GH_TOKEN }}
+          # Only monitor PRs that are not currently in the draft state.
+          PR_READY_STATE: "ready_for_review"
+          MERGE_CONFLICT_ACTION: "ignore"  # Possible option to prevent retrying failed merges
