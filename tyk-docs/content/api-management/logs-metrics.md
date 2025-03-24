@@ -1241,7 +1241,7 @@ Ensure the following prerequisites are met before proceeding:
     curl http://localhost:8080/hello-world/ -i
     ```
 
-    - Access Jaeger at `http://localhost:16686`.
+    - Access Jaeger at [http://localhost:16686](http://localhost:16686).
     - In Jaeger's interface:
     - Select the service named tyk-gateway.
     - Click the *Find Traces* button.
