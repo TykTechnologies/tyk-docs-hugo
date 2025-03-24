@@ -1,8 +1,8 @@
 ---
 title: Tyk Dashboard Release Notes
 date: 2024-10-08T15:51:11Z
-description: "Release notes documenting updates, enhancements, and changes for Tyk Dashboard versions within the 5.6.X series."
-tags: ["Tyk Dashboard", "Release notes", "v5.6", "5.6.0", "5.6", "changelog"]
+description: "Release notes documenting updates, enhancements, and changes for Tyk Dashboard."
+tags: ["Tyk Dashboard", "Release notes", "changelog"]
 aliases:
   - /product-stack/tyk-dashboard/release-notes/overview
   - /product-stack/tyk-dashboard/release-notes/version-3.0
@@ -32,6 +32,222 @@ aliases:
 ## Support Lifetime
 
 Our minor releases are supported until our next minor comes out.
+
+---
+
+## 5.8 Release Notes
+
+### 5.8.0 Release Notes
+
+#### Release Date 17 March 2025
+
+#### Release Highlights
+
+With Tyk 5.8.0 we are delighted to unlock the power and flexibility of Tyk OAS for all users, with full feature parity with the legacy Tyk Classic style for REST APIs. We are thrilled to announce new updates and improvements in Tyk 5.8.0, delivering more control, flexibility, and performance.  For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.8.0" >}}) below.
+
+##### Full support for API configuration using Tyk OAS
+
+We have completed the journey with Tyk OAS that started back in Tyk 4.1 - and now anything that you can configure using the Tyk Classic API definition is also available in the Tyk OAS API definition. Tyk OAS is now the recommended API style for all REST services, with Tyk Classic recommended for use only for GraphQL and TCP services.
+
+With Tyk OAS we combine the industry standard OpenAPI description with the Tyk Vendor Extension, which encapsulates all of the Tyk Gateway settings that cannot be inferred from the OpenAPI Specification (OAS). You can keep your service description (OAS) as source of truth and update the OpenAPI description part of a Tyk OAS API independently from the Tyk Vendor Extension - no need to unpick distributed vendor extensions from your OAS. For more details, please see the [documentation]({{< ref "api-management/gateway-config-introduction" >}}).
+
+Now that we have achieved this milestone we are keen to support users in migrating their existing Tyk Classic API portfolio to Tyk OAS and offer methods to do this both within the Tyk Dashboard Classic API Designer and via the Tyk Dashboard API. For more details of the migration tool, please see the [documentation]().
+
+##### Enhanced upstream authentication
+
+We are pleased to introduce advanced options for your Tyk OAS APIs when it comes to authenticating with the upstream service - a critical feature for integration with many partner services. With Tyk 5.8.0 you are now able to configure Tyk to act as an OAuth 2.0 client, retrieving an access token via the Client Credentials grant method. For legacy integrations Tyk can also support OAuth 2.0 Resource Owner Password Credentials grant and Basic Authentication methods. For more details please see the [documentation]({{< ref "api-management/upstream-authentication" >}}).
+
+##### Enhanced user experience within the Tyk Dashboard API Designer
+
+To accompany the launch of fully featured Tyk OAS capabilities, we have made a raft of improvements in the Tyk Dashboard GUI. There's an all-new API test and debug facility in the API designer, allowing you to issue requests to your APIs and then examine the debug traces produced by the Gateway without leaving the Tyk Dashboard. Our new, enhanced code editor allows you to work in YAML or JSON. We've also given the UI a spring clean to improve the usability.
+
+##### Seamless API Key Rotation for MDCB Data Planes
+
+We have implemented a new feature for automatic propagation of rotated Dashboard API access keys to Data Planes. In a distributed deployment using MDCB, the Data Plane Gateways authenticate using access keys managed by Tyk Dashboard.
+
+From 5.8.0, when an access key is changed in the Dashboard, this will be propagated to the appropriate Data Plane Gateways via MDCB without the need to restart the Gateways. Note that unless you are using Vault or Consul to store the Data Plane access key (for example, you are using a local environment variable) it remains the responsibility of the system administrator to update tht source of truth so that Gateways pick up the correct key when starting up.
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies {#dependencies-5.8.0}
+
+##### Compatibility Matrix For Tyk Components
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.8.0 | MDCB v2.8.0     | MDCB v2.5.1 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.0    | Sync v1.4.3 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.13 | EDP all versions |
+| | Pump v1.12.0| Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.8.0}
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.22       | 1.22       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.22 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 13.x - 17.x            | Used by Tyk Dashboard | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-oas-api-definition-object" >}})|
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.8.0}
+
+If you are upgrading to 5.8.0, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.8.0)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.8.0
+    ```
+- Helm charts
+  - [tyk-charts v3.0]({{< ref "developer-support/release-notes/helm-chart#220-release-notes" >}})
+
+#### Changelog {#Changelog-v5.8.0}
+
+##### Added
+
+<ul>
+<li>
+<details>
+<summary>YAML Support for Tyk OAS</summary>
+
+Tyk Dashboard's API and UI now support both YAML and JSON for Tyk OAS CRUD operations, giving users greater flexibility in managing their APIs.
+</details>
+</li>
+<li>
+<details>
+<summary>Tyk OAS Now Supports Multi-Part OpenAPI Imports</summary>
+
+We've enhanced Tyk’s OAS import capabilities to support multi-part OpenAPI documents using the `$ref` feature. It allows users to import OAS definitions that are split across multiple files, making it easier to manage complex API specifications.
+</details>
+</li>
+<li>
+<details>
+<summary>API Testing & Debugging with Tyk OAS</summary>
+
+We’ve added built-in testing and debugging capabilities to the Tyk OAS API Designer, making validating and troubleshooting your APIs easier. With a floating debugging panel and an endpoint dropdown, you can test your endpoints within the Dashboard UI.
+</details>
+</li>
+<li>
+<details>
+<summary>Support for Read/Write Endpoints on RDS for Analytics and Logs</summary>
+
+Users can now configure separate RDS endpoints for read and write operations, optimizing database performance by handling reads on replicas and writes on the primary instance.
+
+New Configuration Fields:
+
+- **ReadConnectionString**: Defines the connection string for read operations. It is only used if `ConnectionString` is not set.
+- **WriteConnectionString**: Defines the connection string for write operations. It is only used if `ConnectionString` is not set.
+
+For backward compatibility, if `ConnectionString` is set, it will take precedence over the new fields.
+</details>
+</li>
+<li>
+<details>
+<summary>Certificate Support for GraphQL Introspection During API Creation</summary>
+
+Users can now attach certificates during the GraphQL API creation process to enabled mTLS-protected upstream introspection. This eliminates the need for manual certificate management and redeployment.
+</details>
+</li>
+<li>
+<details>
+<summary>New Dasboard API Migration Endpoint</summary>
+
+Introduced a new API migration [endpoint]() with dry run, staging, and direct migration modes, enabling a seamless transition from Tyk Classic to Tyk OAS. Use this endpoint to perform individual or bulk conversion of Tyk Classic to Tyk OAS APIs.
+</details>
+</li>
+<li>
+<details>
+<summary>Upstream Authentication Support in Tyk Dashboard</summary>
+
+Tyk Dashboard now supports integration with upstream services secured using Basic Auth, OAuth 2.0 Client Credentials, and OAuth 2.0 Password Grant in Tyk OAS APIs, providing flexibility in securing upstream authentication flows.
+</details>
+</li>
+<li>
+<details>
+<summary>Quick Start Wizard for New Dashboard Users on Tyk Cloud</summary>
+
+We have introduced a guided onboarding experience for Tyk Cloud users to help new users start effortlessly. Our step-by-step guide walks you through creating your first API, setting up policies and keys, testing endpoints, and exploring analytics - ensuring you can navigate the Dashboard and unlock its full potential from day one.
+</details>
+</li>
+</ul>
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Support for PostgreSQL 17</summary>
+
+The Dashboard now supports PostgreSQL 17, ensuring compatibility with the latest database version.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Dashboard Code Editor</summary>
+
+Upgraded the code editor component library and enhanced its styling for a better user experience.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Labelling in Tyk Dashboard</summary>
+
+We have made minor adjustments to labels within the Dashboard UI to enhance clarity.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved API Key Management for MDCB Data Planes</summary>
+
+We have updated Dashboard API key reset permissions to support API key rotation for MDCB Data Planes. Users with Real-Time Notifications enabled can now reset their Dashboard API key via the UI or API, resolving conflicts that previously prevented key rotation. These changes ensure a more secure and automated approach to managing API keys while maintaining existing access controls.
+</details>
+</li>
+<li>
+<details>
+<summary>"Manage Account" Link from Dashboard</summary>
+
+The "Manage Account" link in the Tyk Dashboard, which previously directed users to an outdated cloud login page, has been removed. This improves the user experience by eliminating confusion around account management and ensuring a more cohesive navigation flow between the Dashboard and Tyk Cloud.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Form Performance in Tyk OAS API Designer</summary>
+
+We’ve optimized form validation in the Tyk Dashboard’s OAS API Designer to enhance user experience. Forms are now validated on blur instead of during every keystroke, preventing cursor jumps and improving typing responsiveness.
+</details>
+</li>
+<li>
+<details>
+<summary>Clarity on Supported TLS Versions in Tyk Classic API Designer</summary>
+
+Removed unsupported TLS versions 1.0 and 1.1 from the Tyk Classic API Designer selector, improving clarity around supported TLS versions and enhancing security.
+</details>
+</li>
+</ul>
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Enhanced OPA Rules for Token Reset and User Data Access</summary>
+
+Updated OPA rules in the Dashboard to allow all users to reset their own access tokens and view their user data, improving self-service while maintaining security.
+Customers with custom OPA rules must update their configurations to include the is_self_key_reset and is_me helper rules. Additionally, they must modify their rules to exclude cases where is_self_key_reset or is_me apply in order to enable this functionality.
+</details>
+</li>
+</ul>
 
 ---
 

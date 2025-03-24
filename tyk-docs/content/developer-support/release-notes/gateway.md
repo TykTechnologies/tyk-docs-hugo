@@ -3517,6 +3517,14 @@ in your OpenAPI descriptions, ensuring accurate and complete conversion to Graph
 </li>
 <li>
 <details>
+<summary>Added GODEBUG Flags for Backward Compatibility with Deprecated Ciphers</summary>
+
+We have added GODEBUG flags to enable deprecated insecure ciphers by default for backward compatibility. Existing users will not be affected. New users or those who wish to override these settings can do so at runtime using environment variables. 
+
+</details>
+</li>
+<li>
+<details>
 <summary>Expanded handling of HTTP Status Code ranges by OAS-to-GQL converter</summary>
 
 OAS-to-UDG converter can now handle HTTP status code ranges that are defined by the OpenAPI Specification. This means
