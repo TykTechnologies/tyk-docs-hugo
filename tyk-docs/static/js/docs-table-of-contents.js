@@ -13,9 +13,6 @@ var buildTableOfContents = function () {
   }
 
   if (contentTitles.length < 3) {
-    // Remove ToC if there are not enough links
-    //ToCContainer.remove();
-    //$('.page-content__main').addClass('no-toc');
     return;
   }
 
@@ -62,7 +59,6 @@ var buildTableOfContents = function () {
 
       accordionContent.click(function () {
         $(this).toggleClass("accordion-up");
-
         // Toggle visibility of H4 elements under this H3
         accordionContent.siblings(".sub-accordion-content").toggle();
       });
@@ -82,8 +78,6 @@ var buildTableOfContents = function () {
         $(this).parent().toggleClass("accordion-up");
         // Toggle visibility of H5 elements under this H4
         $(this).toggleClass("sub-accordion");
-
-        //subAccordionContent.find('.sub-sub-accordion-content').toggleClass('sub-accordion');
       });
     }
 
@@ -111,24 +105,6 @@ var buildTableOfContents = function () {
 
   ToContent.append(accordionGroup);
 
-  activeTocToggle();
-
-  var pageContent = $(".page-content");
-  pageContent.on("scroll", highlightAnchor);
-
-  // Open all sections by default on large screens
-  // if (window.innerWidth >= 1024) {
-  //   $(".accordion-item").each(function () {
-  //     $(this).find(".accordion-content").show();
-  //     $(this).addClass("accordion-up");
-  //   });
-  //   $(".accordion-content").each(function () {
-  //     $(this).find(".sub-accordion-content").show();
-  //   });
-  //   $(".sub-accordion-content").each(function () {
-  //     $(this).find(".sub-sub-accordion-content").show();
-  //   });
-  // }
 
   $(".accordion-item").each(function () {
     var accordionContent = $(this).find(".accordion-content");
@@ -175,169 +151,158 @@ var buildTableOfContents = function () {
     $(".toc__label").eq(1).remove();
   }
 
-  highlightAnchor();
-  // Handle fragment in URL on page load for large screens
-  if (window.innerWidth >= 1024) {
-    handleFragmentOnLoad();
-  }
-
 };
 
-// Call the function to build the table of contents with accordion functionality
-$(document).ready(buildTableOfContents);
-$(document).on("turbolinks:load", buildTableOfContents);
-/**
- * Toggle TOC for small devices
- */
+const pageContentContainer = document.querySelector(".page-content__container");
+let highestVisibleHeading = null;
 
-function activeTocToggle() {
-  var tocLabel = $(".toc__label");
-  var tocItems = $(".toc__item");
-  var pageContent = $(".page-content__container, .header");
-
-  // Initially hide the TOC content on small screens
-  if (window.innerWidth < 1024) {
-    $(".toc__content").hide();
+// Add an onscroll event to the page-content__container
+$(".page-content").on("scroll", function () {
+  newActiveId = getHighestHeading();
+  if(newActiveId != initialactiveId){
+    initialactiveId = newActiveId;
+    highlightActiveItem(initialactiveId);
   }
+});
 
-  // Remove any existing event handlers to prevent multiple bindings
-  tocLabel.off("click");
 
-  tocLabel.on("click", function (e) {
-    console.log("tocLabel clicked");
-    if (window.innerWidth < 1024) {
-      $(e.currentTarget).toggleClass("js-open");
-      $(".toc__content").toggle();
-    } else {
-      $(e.currentTarget).removeClass("js-open");
-    }
-  });
-
-  pageContent.on("click", function () {
-    if (tocLabel.hasClass("js-open")) {
-      tocLabel.removeClass("js-open");
-      $(".toc__content").hide();
-    }
-  });
+// get either the fragment on the intial load or if no fragment get the highest level visible heading
+function getActiveId(){
+  let activeId= null;
+  const fragment = window.location.hash;
+  if (fragment) {
+    activeId = fragment.slice(1);
+  } else {
+    activeId = getHighestHeading();
+  }
+  return activeId;
 }
 
-let isUserScrollingTOC = false; // Flag to track user scrolling in the TOC
-let isUserScrollingContent = false; // Flag to track user scrolling in the main content
 
-function highlightAnchor() {
-  console.log("highlightAnchor called");
+/// Get the highest visible heading and return its id
+function getHighestHeading() {
   const contentTitles = $("h2, h3, h4, h5");
   let highestVisibleHeading = null;
-
+  const headerHeight = 30; // Adjust this value to match the height of your fixed header
   // Find the highest visible heading in the viewport
   contentTitles.each(function () {
     const rect = $(this)[0].getBoundingClientRect();
-    if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+    // Ensure the heading is fully or partially visible in the viewport, accounting for the header
+    if (rect.top >= headerHeight && rect.top < window.innerHeight) {
       if (!highestVisibleHeading || rect.top < highestVisibleHeading[0].getBoundingClientRect().top) {
         highestVisibleHeading = $(this);
       }
     }
   });
 
-  // If a fragment exists in the URL, prioritize it over the visible heading
-  const fragment = window.location.hash;
-  if (fragment) {
-    const fragmentHeading = $(`[id="${fragment.substring(1)}"]`);
-    if (fragmentHeading.length) {
-      highestVisibleHeading = fragmentHeading;
-    }
-  }
+  return highestVisibleHeading ? highestVisibleHeading.attr("id") : null;
+}
 
-  if (highestVisibleHeading) {
-    const currentSectionId = highestVisibleHeading.attr("id");
-    console.log("currentSectionId", currentSectionId);
-
+// highlight the active heading
+function highlightActiveItem(activeId){
+  if(activeId){
     // Remove active classes from all TOC items
     $(".toc__item, .sub_toc__item, .sub-sub-toc-item, .sub-sub-sub-toc-item").removeClass("js-active accordion-up");
 
     // Add active classes to the current TOC item
     const activeTocItem = $(
-      `.toc__item[href="#${currentSectionId}"], 
-       .sub_toc__item[href="#${currentSectionId}"],
-       .sub-sub-toc-item[href="#${currentSectionId}"], 
-       .sub-sub-sub-toc-item[href="#${currentSectionId}"]`
+      `.toc__item[href="#${activeId}"], 
+       .sub_toc__item[href="#${activeId}"],
+       .sub-sub-toc-item[href="#${activeId}"], 
+       .sub-sub-sub-toc-item[href="#${activeId}"]`
     ).addClass("js-active accordion-up");
 
-    // Expand all parent sections of the active TOC item
-    activeTocItem.parents(".accordion-content, .sub-accordion-content, .sub-sub-accordion-content").each(function () {
-      $(this).show(); // Ensure the parent section is visible
-      $(this).prev("a").addClass("accordion-up"); // Add the "accordion-up" class to the parent link
-    });
-
-    // Ensure all sibling items within the same grandparent container are visible
-    const parentContainer = activeTocItem.closest(".sub-sub-accordion-content").parent(".sub-accordion-content");
-    if (parentContainer.length) {
-      console.log("Grandparent container found:", parentContainer);
-      parentContainer.children(".sub-sub-accordion-content").each(function () {
-        $(this).css("display", "block"); // Make all sibling items visible
-      });
-    } else {
-      const accordionParent = activeTocItem.closest(".accordion-content").parent(".accordion-item");
-      if (accordionParent.length) {
-        console.log("Accordion parent found:", accordionParent);
-        accordionParent.children(".accordion-content").each(function () {
-          $(this).css("display", "block"); // Make all sibling accordion-content divs visible
-        });
-      } else {
-        console.log("Parent container found:", activeTocItem.closest(".sub-accordion-content, .accordion-content"));
-        activeTocItem.closest(".sub-accordion-content, .accordion-content").children().each(function () {
-          $(this).css("display", "block"); // Make all sibling items visible
-        });
+    // detect the parent of the activeTocItem
+    const parent = activeTocItem.parent();
+    // get classes of the parent
+    const parentClasses = parent.attr("class");
+    if (parentClasses) {
+      // Check if parentClasses is exactly "accordion-content" or includes "accordion-content"
+      if (parentClasses === "accordion-content" || parentClasses.split(" ").includes("accordion-content")) {
+        expandAccordionClass(parent);
+      }
+      else if (parentClasses === "sub-accordion-content" || parentClasses.split(" ").includes("sub-accordion-content")) {
+        expandSubAccordionClass(parent);
+      }
+      else if (parentClasses === "sub-sub-accordion-content" || parentClasses.split(" ").includes("sub-sub-accordion-content")) {
+        expandSubSubAccordionClass(parent);
       }
     }
+    scrollToHighlightedItem();
+  }
+}
 
-    // Ensure all child items of the highlighted item are visible
-    activeTocItem.siblings(".accordion-content, .sub-accordion-content, .sub-sub-accordion-content").each(function () {
-      $(this).show(); // Make all child sections visible
-    });
-
-    // Scroll the TOC container to the highlighted item on large screens
-    if (!isUserScrollingTOC && window.innerWidth >= 1024) {
+//scroll to the highlighted item
+function scrollToHighlightedItem() {
+    const highlightedItem = $(".toc__item.js-active, .sub_toc__item.js-active, .sub-sub-toc-item.js-active, .sub-sub-sub-toc-item.js-active");
+    if (highlightedItem.length) {
       const tocContainer = $(".toc__content"); // Adjust this selector if needed
-      if (activeTocItem.length && tocContainer.length) {
-        const tocItemOffset = activeTocItem.offset().top - tocContainer.offset().top + tocContainer.scrollTop();
-        tocContainer.stop().animate({ scrollTop: tocItemOffset }, 300); // Smooth scroll to position
-      }
+      const tocItemOffset = highlightedItem.offset().top - tocContainer.offset().top + tocContainer.scrollTop();
+      // Smooth scroll the TOC container to bring the highlighted item to the top
+      tocContainer.animate({ scrollTop: tocItemOffset }, 30);
     }
-  }
 }
 
-// Detect user scrolling in the TOC
-$(".toc__content").on("scroll", function () {
-  isUserScrollingTOC = true;
-  clearTimeout($.data(this, "scrollTimer"));
-  $.data(this, "scrollTimer", setTimeout(function () {
-    isUserScrollingTOC = false; // Re-enable automatic scrolling after user stops scrolling
-  }, 300));
-});
-
-// Detect user scrolling in the main content
-$(".page-content").on("scroll", function () {
-  isUserScrollingContent = true;
-  clearTimeout($.data(this, "scrollTimer"));
-  $.data(this, "scrollTimer", setTimeout(function () {
-    isUserScrollingContent = false; // Re-enable automatic scrolling after user stops scrolling
-  }, 300));
-
-  // Call highlightAnchor to update the TOC while scrolling the main content
-  if (!isUserScrollingTOC) {
-    highlightAnchor();
-  }
-});
-
-// Function to handle fragment in URL on page load for large screens
-function handleFragmentOnLoad() {
-  const fragment = window.location.hash;
-  if (fragment) {
-    highlightAnchor();
-  }
+//expand the accordion item group
+function expandAccordionClass(AccordionItem){
+  const parent = AccordionItem.parent();
+  // get the first href tag of the parent and add the class accordion up to it
+  const parentHref = parent.find("a").first();
+  parentHref.addClass("accordion-up");
+  // add style display block to all child divs of the parent
+  parent.children("div").css("display", "block");  
 }
+
+//expand the sub accordion item group
+function expandSubAccordionClass(SubAccordionItem){
+  const parent = SubAccordionItem.parent();
+  // get the first href tag of the parent and add the class accordion up to it
+  const parentHref = parent.find("a").first();
+  parentHref.addClass("accordion-up");
+  // add style display block to all child divs of the parent
+  parent.children("div").css("display", "block"); 
+  // also expand the parent of the parent
+  expandAccordionClass(parent); 
+}
+
+// expand sub sub accordion item group
+function expandSubSubAccordionClass(SubSubAccordionItem){
+  const parent = SubSubAccordionItem.parent();
+  // get the first href tag of the parent and add the class accordion up to it
+  const parentHref = parent.find("a").first();
+  parentHref.addClass("accordion-up");
+  // add style display block to all child divs of the parent
+  parent.children("div").css("display", "block"); 
+  // also expand the parent of the parent
+  expandSubAccordionClass(parent); 
+}
+
+//handle clicks on the toc items
+function handleTocClicks(){
+  $(".toc__item, .sub_toc__item, .sub-sub-toc-item, .sub-sub-sub-toc-item").on("click", function (e) {
+    e.preventDefault();
+    const id = $(this).attr("href").slice(1);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      window.history.pushState(null, null, `#${id}`);
+    }
+  });
+}
+
+let initialactiveId;
 
 // Call the function to build the table of contents with accordion functionality
-$(document).ready(buildTableOfContents);
-$(document).on("turbolinks:load", buildTableOfContents);
+$(document).ready(function () {
+  buildTableOfContents();
+  initialactiveId = getActiveId();
+  highlightActiveItem(initialactiveId);
+  handleTocClicks(); // Bind the click handler to all TOC links
+});
+
+$(document).on("turbolinks:load", function () {
+  buildTableOfContents();
+  initialactiveId = getActiveId();
+  highlightActiveItem(initialactiveId);
+  handleTocClicks(); // Bind the click handler to all TOC links
+});
