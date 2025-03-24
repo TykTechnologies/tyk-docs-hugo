@@ -84,6 +84,7 @@ menu:
       - title: "Authentication and Authorization"
         category: Directory
         show: True
+        path: /api-management/client-authentication
         menu:
         - title: "Overview"
           path: /api-management/client-authentication
