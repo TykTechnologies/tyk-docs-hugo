@@ -59,7 +59,7 @@ With Tyk OAS we combine the industry standard OpenAPI description with the Tyk V
 
 #### Breaking Changes
 
-There are no breaking changes in this release, but please note that the upgrade to Go 1.23 may require changes to your setup.
+There are no breaking changes in this release.
 
 #### Dependencies {#dependencies-5.8.0}
 
