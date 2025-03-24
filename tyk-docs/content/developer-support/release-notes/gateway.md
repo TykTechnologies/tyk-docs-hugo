@@ -143,6 +143,13 @@ In Tyk 5.8.0, we have added configuration of the following features into the Tyk
 Tyk Gateway now supports transaction logs, providing structured access logs for API requests. This improves debugging and observability without the overhead of enabling debug mode in production. Logs can be output in JSON format and customized via a template, ensuring flexibility while maintaining performance.
 </details>
 </li>
+<li>
+<details>
+<summary>Added GODEBUG Flags for Backward Compatibility with Deprecated Ciphers</summary>
+
+We have added GODEBUG flags to enable deprecated insecure ciphers by default for backward compatibility. Existing users will not be affected. New users or those who wish to override these settings can do so at runtime using environment variables.
+</details>
+</li>
 </ul>
 
 ##### Changed
