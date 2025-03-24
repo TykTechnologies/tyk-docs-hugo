@@ -132,7 +132,7 @@ The following custom resources can be used to configure [Tyk Classic Developer P
 | PortalConfig       | tyk.tyk.io  | v1alpha1  | Configures [Portal Configuration]({{< ref "tyk-apis/tyk-portal-api/portal-configuration" >}}). |
 
 
-### Reconcilation With Tyk Operator 
+### iReconcilation With Tyk Operator 
 #### Controllers & Operators
 In Kubernetes, [controllers](https://kubernetes.io/docs/concepts/architecture/controller/) watch one or more Kubernetes resources, which can be built-in types like *Deployments* or custom resources like *ApiDefinition* - in this case, we refer to Controller as Operator. The purpose of a controller is to match the desired state by using Kubernetes APIs and external APIs.
 
@@ -513,10 +513,10 @@ To uninstall Tyk Operator, you need to run the following command:
 $ helm delete tyk-operator -n tyk-operator-system
 ```
 
-## Set Up OAS API
+## Set Up Tyk OAS API
 Setting up OpenAPI Specification (OAS) APIs with Tyk involves preparing an OAS-compliant API definition and configuring it within your Kubernetes cluster using Tyk Operator. This process allows you to streamline API management by storing the OAS definition in a Kubernetes ConfigMap and linking it to Tyk Gateway through a TykOasApiDefinition resource. 
 
-### Create your OAS API
+### Create your Tyk OAS API
 #### Prepare the Tyk OAS API Definition
 First, you need to have a complete Tyk OAS API definition file ready. This file will contain all the necessary configuration details for your API in OpenAPI Specification (OAS) format.
 
@@ -556,12 +556,12 @@ Save this API definition file (e.g., `oas-api-definition.json`) locally.
 {{< note success >}}
 **Tips**  
 
-You can create and configure your API easily using Tyk Dashboard in a developer environment, and then obtain the OAS API definition following these instructions:
+You can create and configure your API easily using Tyk Dashboard in a developer environment, and then obtain the Tyk OAS API definition following these instructions:
 
 1. Open the Tyk Dashboard
 2. Navigate to the API you want to manage with the Tyk Operator
-3. Click on the "Actions" menu button and select "View Raw Definition."
-4. This will display the raw OAS API definition of your API, which you can then copy and save locally.
+3. Click on the "Actions" menu button and select "View API Definition."
+4. This will display the raw Tyk OAS API definition of your API, which you can then copy and save locally.
 {{< /note >}}
 
 #### Create a ConfigMap for the Tyk OAS API Definition
@@ -585,12 +585,12 @@ There is inherent size limit to a ConfigMap. The data stored in a ConfigMap cann
 {{< note success >}}
 **Notes**
 
-If you prefer to create ConfigMap with a manifest using `kubectl apply` command, you may get an error that the annotation metadata cannot exceed 256KB. It is because by using `kubectl apply`, `kubectl` automatically saves the whole configuration in the annotation [kubectl.kubernetes.io/last-applied-configuration](https://kubernetes.io/docs/reference/labels-annotations-taints/#kubectl-kubernetes-io-last-applied-configuration) for tracking changes. Your OAS API Definition may easily exceed the size limit of annotations (256KB). Therefore, `kubectl create` is used here to get around the problem.
+If you prefer to create ConfigMap with a manifest using `kubectl apply` command, you may get an error that the annotation metadata cannot exceed 256KB. It is because by using `kubectl apply`, `kubectl` automatically saves the whole configuration in the annotation [kubectl.kubernetes.io/last-applied-configuration](https://kubernetes.io/docs/reference/labels-annotations-taints/#kubectl-kubernetes-io-last-applied-configuration) for tracking changes. Your Tyk OAS API Definition may easily exceed the size limit of annotations (256KB). Therefore, `kubectl create` is used here to get around the problem.
 {{< /note >}}
 
 #### Create a TykOasApiDefinition Custom Resource
 
-Now, create a `TykOasApiDefinition` resource to tell the Tyk Operator to use the OAS API definition stored in the ConfigMap.
+Now, create a `TykOasApiDefinition` resource to tell the Tyk Operator to use the Tyk OAS API definition stored in the ConfigMap.
 
 Create a manifest file named `tyk-oas-api-definition.yaml` with the following content:
 
@@ -602,9 +602,9 @@ metadata:
 spec:
   tykOAS:
     configmapRef:
-      name: tyk-oas-api-config   # Metadata name of the ConfigMap resource that stores the OAS API Definition
+      name: tyk-oas-api-config   # Metadata name of the ConfigMap resource that stores the Tyk OAS API Definition
       namespace: tyk             # Metadata namespace of the ConfigMap resource
-      keyName: oas-api-definition.json # Key for retrieving OAS API Definition from the ConfigMap
+      keyName: oas-api-definition.json # Key for retrieving Tyk OAS API Definition from the ConfigMap
 ```
 
 #### Apply the TykOasApiDefinition Manifest
@@ -615,7 +615,7 @@ Use `kubectl` to apply the `TykOasApiDefinition` manifest to your cluster:
 kubectl apply -f tyk-oas-api-definition.yaml
 ```
 
-This command creates a new `TykOasApiDefinition` resource in your cluster. The Tyk Operator will watch for this resource and configures Tyk Gateway or Tyk Dashboard with a new API using the provided OAS API definition.
+This command creates a new `TykOasApiDefinition` resource in your cluster. The Tyk Operator will watch for this resource and configures Tyk Gateway or Tyk Dashboard with a new API using the provided Tyk OAS API definition.
 
 #### Verify the Tyk OAS API Creation
 
@@ -655,10 +655,10 @@ The Tyk Operator will automatically detect the change and update the API in the 
 {{< note success >}}
 **Notes**
 
-`kubectl replace` without `--save-config` option is used here instead of `kubectl apply` because we do not want to save the OAS API definition in its annotation. If you want to enable `--save-config` option or use `kubectl apply`, the OAS API definition size would be further limited to at most 262144 bytes.
+`kubectl replace` without `--save-config` option is used here instead of `kubectl apply` because we do not want to save the Tyk OAS API definition in its annotation. If you want to enable `--save-config` option or use `kubectl apply`, the Tyk OAS API definition size would be further limited to at most 262144 bytes.
 {{< /note >}}
 
-#### OAS API Example
+#### Tyk OAS API Example
 This example shows the minimum resources and fields required to define a Tyk OAS API using Tyk Operator. 
 
 ```yaml{hl_lines=["7-7", "41-44"],linenos=true}
@@ -714,12 +714,12 @@ To apply it, simply save the manifest into a file (e.g., `tyk-oas-api.yaml`) and
 
 
 
-### Secure your OAS API
+### Secure your Tyk OAS API
 #### Update your Tyk OAS API Definition
 
 First, you'll modify your existing Tyk OAS API Definition to include the API key authentication configuration.
 
-When creating the OAS API, you stored your OAS definition in a file named `oas-api-definition.json` and created a ConfigMap named `tyk-oas-api-config` in the `tyk` namespace.
+When creating the Tyk OAS API, you stored your OAS definition in a file named `oas-api-definition.json` and created a ConfigMap named `tyk-oas-api-config` in the `tyk` namespace.
 
 Modify your Tyk OAS API Definition `oas-api-definition.json` as follow. 
 
@@ -803,9 +803,9 @@ metadata:
 spec:
   tykOAS:
     configmapRef:
-      name: tyk-oas-api-config   # Metadata name of the ConfigMap resource that stores the OAS API Definition
+      name: tyk-oas-api-config   # Metadata name of the ConfigMap resource that stores the Tyk OAS API Definition
       namespace: tyk             # Metadata namespace of the ConfigMap resource
-      keyName: oas-api-definition.json # Key for retrieving OAS API Definition from the ConfigMap
+      keyName: oas-api-definition.json # Key for retrieving Tyk OAS API Definition from the ConfigMap
 ```
 
 Any changes in the ConfigMap would be detected by Tyk Operator. Tyk Operator will then automatically reconcile the changes and update the API configuration at Tyk.
@@ -2048,7 +2048,7 @@ simple-stream            /streams/    true      Successful
 To update your API configuration, modify the linked `ConfigMap`. The Tyk Operator will automatically detect changes and update the API in the Tyk Gateway.
 
 ### Secure your Tyk Streams API
-To secure your Tyk Streams API, configure security fields in the OAS definition just as you would for a standard Tyk OAS API. For more details, refer to the [Secure your OAS API](#secure-your-oas-api) guide.
+To secure your Tyk Streams API, configure security fields in the OAS definition just as you would for a standard Tyk OAS API. For more details, refer to the [Secure your Tyk OAS API](#secure-your-tyk-oas-api) guide.
 
 ## Add a Security Policy to your API
 To further protect access to your APIs, you will want to add a security policy. 
@@ -2125,7 +2125,7 @@ In this example, we have defined a security policy as described below:
     - **`name`**: The Kubernetes metadata name of the API resource to which the policy grants access.
     - **`namespace`**: The Kubernetes namespace where the API resource is deployed.
     - **`kind`**: Tyk OAS APIs (`TykOasApiDefinition`), Tyk Streams (`TykStreamsApiDefinition`) and Tyk Classic APIs (`ApiDefinition`) can be referenced here. The API format can be specified by `kind` field. If omitted, `ApiDefinition` is assumed.
-    - **`versions`**: Specifies the API versions the policy will cover. If the API is not versioned, include the default version here. The default version of a Classic API is "Default". The default version of an OAS API is "".
+    - **`versions`**: Specifies the API versions the policy will cover. If the API is not versioned, include the default version here. The default version of a Classic API is "Default". The default version of a Tyk OAS API is "".
 
 In this example, the security policy will apply to an `ApiDefinition` resource named `httpbin` in the `default` namespace, a `TykOasApiDefinition` resource named `petstore` in the `default` namespace, and a `TykStreamsApiDefinition` resource named `http-to-kafka` in the `default` namespace. Note that with Tyk Operator, you do not need to specify API ID as in the raw [Policy definition]({{< ref "api-management/policies#policies-guide" >}}). Tyk Operator will automatically retrieve the API ID of referenced API Definition resources for you.
 
@@ -4571,7 +4571,7 @@ With Tyk Operator, you can easily associate different versions of your APIs usin
 
 When using the CRD for versioning configuration, you don't have to worry about knowing or managing the unique API IDs within Tyk. The Tyk Operator handles the actual API definition configuration behind the scenes, reducing the complexity of version management.
 
-In case if there is original versioning information in the base API Definition, the versioning information will be kept and be merged with what is specified in CRD. If there are conflicts between the OAS API Definition and CRD, we will make use of CRD values as the final configuration. 
+In case if there is original versioning information in the base API Definition, the versioning information will be kept and be merged with what is specified in CRD. If there are conflicts between the Tyk OAS API Definition and CRD, we will make use of CRD values as the final configuration. 
 
 Tyk Operator would also protect you from accidentally deleting a version of an API that is being referenced by another API, maintaining your API integrity.
 
@@ -4912,13 +4912,13 @@ Tyk provides multiple authentication options for client-to-gateway interactions,
 | IP Blocklist                  | ✅        | v0.5           | Blocks access from specific IP addresses.       |
 
 ##### Gateway to Upstream Authentication
-Tyk supports secure upstream connections through mutual TLS, certificate pinning, and public key verification to ensure data integrity between the gateway and backend services.
+Tyk supports secure upstream connections through mutual TLS, certificate pinning, and public key verification to ensure data integrity between the gateway and backend services. For full details, please see the [Upstream Authentication]({{< ref "api-management/upstream-authentication" >}}) section.
 
-| Type                                            | Supported | Supported From | Comments                     |
-|-------------------------------------------------|-----------|----------------|------------------------------|
-| Upstream Certificates mTLS                      | ✅        | v0.9           | Mutual TLS authentication for upstream connections. |
+| Type                                            | Supported | Supported From |
+|-------------------------------------------------|-----------|----------------|
+| Mutual TLS for upstream connectioons            | ✅        | v0.9           | Mutual TLS authentication for upstream connections. |
 | Public Key Certificate Pinning                  | ✅        | v0.9           | Ensures that the upstream certificate matches a known key. |
-| Upstream Request Signing                        | ❌        | -              | Upstream request signing is not implemented. |
+| Upstream Request Signing using HMAC             | ✅        | v1.2.0         | Attach an encrypted signature to requests to verify the gateway as the sender. |
 
 ##### API-level (Global) Features
 Tyk offers global features for APIs, such as detailed traffic logging, CORS management, rate limiting, header transformations, and analytics plugins, with support for tagging, load balancing, and dynamic variables.
