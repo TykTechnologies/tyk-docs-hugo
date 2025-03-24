@@ -171,7 +171,6 @@ function activeTocToggle() {
   tocLabel.off("click");
 
   tocLabel.on("click", function (e) {
-    console.log("tocLabel clicked");
     if (window.innerWidth < 1024) {
       $(e.currentTarget).toggleClass("js-open");
       $(".toc__content").toggle();
