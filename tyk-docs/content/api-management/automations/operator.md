@@ -132,7 +132,7 @@ The following custom resources can be used to configure [Tyk Classic Developer P
 | PortalConfig       | tyk.tyk.io  | v1alpha1  | Configures [Portal Configuration]({{< ref "tyk-apis/tyk-portal-api/portal-configuration" >}}). |
 
 
-### iReconcilation With Tyk Operator 
+### Reconciliation With Tyk Operator 
 #### Controllers & Operators
 In Kubernetes, [controllers](https://kubernetes.io/docs/concepts/architecture/controller/) watch one or more Kubernetes resources, which can be built-in types like *Deployments* or custom resources like *ApiDefinition* - in this case, we refer to Controller as Operator. The purpose of a controller is to match the desired state by using Kubernetes APIs and external APIs.
 
