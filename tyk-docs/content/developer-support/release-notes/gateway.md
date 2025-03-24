@@ -3328,6 +3328,14 @@ that code ranges defined as 1XX, 2XX, etc will be correctly converted by the too
 </li>
 <li>
 <details>
+<summary>Added GODEBUG Flags for Backward Compatibility with Deprecated Ciphers</summary>
+
+We have added GODEBUG flags to enable deprecated insecure ciphers by default for backward compatibility. Existing users will not be affected. New users or those who wish to override these settings can do so at runtime using environment variables.
+
+</details>
+</li>
+<li>
+<details>
 <summary>Added support for custom rate limit keys</summary>
 
 We have added the capability for users to define a [custom rate limit
