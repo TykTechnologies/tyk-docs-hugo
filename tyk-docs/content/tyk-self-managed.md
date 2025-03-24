@@ -159,7 +159,7 @@ The Tyk Gateway can run completely independently, requiring only a Redis databas
 
 #### Init Systems
 
-Tyk packages support [systemd](https://www.freedesktop.org/wiki/Software/systemd/), [Upstart](http://upstart.ubuntu.com/cookbook/) (both 0.6.x and 1.x) and SysVinit Linux init systems. During package installation only one is chosen depending on the operating system support, e.g.:
+Tyk packages support [systemd](https://www.freedesktop.org/wiki/Software/systemd/), [Upstart](https://web.archive.org/web/20230322064449/http://upstart.ubuntu.com/cookbook/) (both 0.6.x and 1.x) and SysVinit Linux init systems. During package installation only one is chosen depending on the operating system support, e.g.:
 
 *   CentOS 6, RHEL 6, Amazon Linux ship with Upstart 0.6.x
 *   Ubuntu 14.04, Debian Jessie with Upstart 1.x
@@ -1221,7 +1221,7 @@ A full Tyk Self-Managed installation can be deployed to Heroku dynos and workers
 1. Docker daemon installed and running locally
 2. [Heroku account](https://www.heroku.com/), the free plan is sufficient for a basic PoC but not recommended for production usage
 3. [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed
-4. MongoDB service (such as [Atlas](https://www.mongodb.com/cloud/atlas), [mLab](https://elements.heroku.com/addons/mongolab), [Compose](https://www.compose.com/) or your own deployment), this guide is based on MongoDB Atlas but others should work as well
+4. MongoDB service (such as [Atlas](https://www.mongodb.com/cloud/atlas), [mLab](https://elements.heroku.com/addons/mongolab), or your own deployment), this guide is based on MongoDB Atlas but others should work as well
 5. [Tyk License](https://tyk.io/pricing/on-premise/) (note that in case of running multiple gateway dynos, license type must match)
 6. Checkout the [Tyk quickstart repository](https://github.com/TykTechnologies/tyk-pro-heroku) from GitHub
 7. Python 2 or 3 in order to execute the bootstrap script
@@ -1638,7 +1638,7 @@ Please refer to [Heroku documentation on containers and registry](https://devcen
 
 ### Install on Microsoft Azure
   
-[Azure](https://azure.microsoft.com/en-us/overview/what-is-azure/) is Microsoft's cloud services platform. It supports both the running of [Ubuntu Servers](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Canonical.UbuntuServer?tab=Overview), as well as [Docker](https://www.docker.com/docker-azure) and [Docker-Compose](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-compose-quickstart).
+[Azure](https://azure.microsoft.com/en-us/overview/what-is-azure/) is Microsoft's cloud services platform. It supports both the running of [Ubuntu Servers](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/canonical.0001-com-ubuntu-server-focal?tab=overview), as well as [Docker](https://www.docker.com/docker-azure) and [Docker-Compose](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-compose-quickstart).
 
 For more details, see the [Azure Documentation](https://docs.microsoft.com/en-us/azure/).
 
@@ -1655,7 +1655,7 @@ See our video for installing Tyk on Ubuntu via Azure:
 
 {{< youtube -Q9Lox-DyTU >}}
 
-We also have a [blog post](https://tyk.io/getting-started-with-tyk-on-microsoft-azure-and-ubuntu/) that walks you through installing Tyk on Azure.
+We also have a [blog post](https://tyk.io/blog/getting-started-with-tyk-on-microsoft-azure-and-ubuntu/) that walks you through installing Tyk on Azure.
 
 
 ### Install to Google Cloud
@@ -4278,7 +4278,7 @@ An API Gateway serves as the single point of entry into your ecosystem, introduc
    - CPU scalability  
    - Head-to-head comparisons with competitors  
 
-2. **[Performance Tuning Your Gateway](https://tyk.io/performance-tuning-your-tyk-api-gateway/)**  
+2. **[Performance Tuning Your Gateway](https://tyk.io/blog/performance-tuning-your-tyk-api-gateway/)**  
    A step-by-step guide to fine-tuning your Gateway for maximum performance.  
 
 3. **[Manual Performance Testing on AWS](https://tyk.io/a-manual-for-simple-performance-testing-with-tyk-on-aws/)**  
@@ -5245,7 +5245,7 @@ The following component status will not be returned:
 {{< note success >}}
 **Note**  
 
-Health check is implemented as per the [Health Check Response Format for HTTP APIs](https://tools.ietf.org/id/draft-inadarei-api-health-check-01.html) RFC
+Health check is implemented as per the [Health Check Response Format for HTTP APIs](https://inadarei.github.io/rfc-healthcheck/) RFC
 {{< /note >}}
 
 An example of the response from this API is as follows:
@@ -5805,7 +5805,7 @@ This is needed since Tyk appends a "Host" header when proxying the request and t
 
 **For further Linkerd information, see:**
 
-[Linkerd - HTTP proxy documentation](https://linkerd.io/features/http-proxy/ ) (Alternatives Section)
+[Linkerd - HTTP proxy documentation](https://linkerd.io/2-edge/reference/proxy-configuration/) (Alternatives Section)
 
 [Linkered - Header Token Identifier documentation](https://linkerd.io/config/0.9.1/linkerd/index.html#header-token-identifier)
 

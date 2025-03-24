@@ -134,7 +134,7 @@ aliases:
     Such problems cause internal request processing queues, which cause latency growth (highly recommend measure it). 
     And in some cases latency can grow so big, that some clients can just disconnect/timeout because of it. 
 
-    Additionally, highly recommend read the following blog post https://tyk.io/performance-tuning-your-tyk-api-gateway/.
+    Additionally, highly recommend read the following blog post https://tyk.io/blog/performance-tuning-your-tyk-api-gateway/.
     For example, you can trade memory for performance, and context switch reduction by tuning garbage collector to run less frequently: see `Tuning Tyk’s Garbage Collector` section.
 
 

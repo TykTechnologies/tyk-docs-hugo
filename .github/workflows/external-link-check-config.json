@@ -2,6 +2,9 @@
     "ignorePatterns": [
         {
             "pattern": "^http://localhost.*"
+        },
+        {
+            "pattern": "https://evening-beach-40625.herokuapp.com"
         }
     ]
 }
