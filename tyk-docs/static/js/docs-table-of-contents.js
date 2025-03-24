@@ -104,6 +104,7 @@ var buildTableOfContents = function () {
   });
 
   ToContent.append(accordionGroup);
+  activeTocToggle();
 
 
   $(".accordion-item").each(function () {
@@ -155,6 +156,37 @@ var buildTableOfContents = function () {
 
 const pageContentContainer = document.querySelector(".page-content__container");
 let highestVisibleHeading = null;
+
+function activeTocToggle() {
+  var tocLabel = $(".toc__label");
+  var tocItems = $(".toc__item");
+  var pageContent = $(".page-content__container, .header");
+
+  // Initially hide the TOC content on small screens
+  if (window.innerWidth < 1024) {
+    $(".toc__content").hide();
+  }
+
+  // Remove any existing event handlers to prevent multiple bindings
+  tocLabel.off("click");
+
+  tocLabel.on("click", function (e) {
+    console.log("tocLabel clicked");
+    if (window.innerWidth < 1024) {
+      $(e.currentTarget).toggleClass("js-open");
+      $(".toc__content").toggle();
+    } else {
+      $(e.currentTarget).removeClass("js-open");
+    }
+  });
+
+  pageContent.on("click", function () {
+    if (tocLabel.hasClass("js-open")) {
+      tocLabel.removeClass("js-open");
+      $(".toc__content").hide();
+    }
+  });
+}
 
 // Add an onscroll event to the page-content__container
 $(".page-content").on("scroll", function () {
