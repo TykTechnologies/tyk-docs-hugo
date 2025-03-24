@@ -35,10 +35,9 @@ Before diving into lifecycle automations with Tyk, ensure you have the following
 - **Tyk Dashboard v3+ access** (for Tyk Sync setup)
   - Learn how to set up the Tyk Dashboard [here]({{<ref "tyk-dashboard">}})
 
-- **Basic knowledge of Kubernetes, YAML, and API concepts** (important for Tyk Operator and Tyk Sync)
+- **Basic knowledge of Kubernetes, YAML** (important for Tyk Operator and Tyk Sync)
   - For Kubernetes, visit the [official tutorials](https://kubernetes.io/docs/tutorials/)
   - For YAML, check out this [YAML tutorial](https://yaml.org/spec/1.2/spec.html)
-  - For API concepts, review our [API management basics]({{<ref "getting-started/key-concepts">}})
 
 If you're missing any of these prerequisites, please follow the provided links to set up the necessary components before proceeding with the lifecycle automation steps.
 

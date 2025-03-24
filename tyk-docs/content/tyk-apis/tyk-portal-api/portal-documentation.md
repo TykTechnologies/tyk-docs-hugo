@@ -3,7 +3,29 @@ date: 2017-03-27T12:28:24+01:00
 title: API Publishing Endpoints
 description: "This page details the API endpoint used for publishing APIs to Tyk classic Dev Portal. API platform teams and API owners can use this endpoint to integrate their APIs, making them visible and accessible to developers."
 tags: ["Tyk Classic Portal API Publishing Endpoints", "Classic Portal API"]
+robots: "noindex"
+algolia:
+  importance: 0
 ---
+
+{{< warning success >}}
+
+**Attention:**
+
+You’ve reached a page related to the *Tyk Classic Portal*. If you were searching for *API documentation of the new Tyk
+Developer Portal* please use the latest
+[Postman collection]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}) page.
+</br>
+</br>
+**Future deprecation of Tyk Classic Portal**
+
+This product is no longer actively developed as it
+has been superseded by the new [Tyk Developer Portal]({{< ref "portal/overview" >}}).
+</br>
+Please note that the Tyk Classic Portal now has limited support and maintenance. Please contact us at
+[support@tyk.io](<mailto:support@tyk.io?subject=Tyk classic developer portal>)if you have any questions.
+
+{{< /warning >}}
 This page describes the endpoints to create [catalog](#catalog) and [Swagger documentation](#documentation) for your API.
 
 </br>

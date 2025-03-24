@@ -118,11 +118,11 @@ The JS function must provide the `request` and `session.meta_data` objects in th
 return sampleMiddleware.ReturnData(request, session.meta_data);
 ```
 
-Custom JS plugins sit in the [middleware processing chain]({{< ref "concepts/middleware-execution-order" >}}) and pass the request onto the next middleware before it is proxied to the upstream. If required, however, a custom JS plugin can terminate the request and provide a custom response to the client if you configure the `ReturnOverrides` in the `request` object, as described [here]({{< ref "api-management/plugins/javascript#using-returnoverrides" >}}).
+Custom JS plugins sit in the [middleware processing chain]({{< ref "api-management/traffic-transformation#request-middleware-chain" >}}) and pass the request onto the next middleware before it is proxied to the upstream. If required, however, a custom JS plugin can terminate the request and provide a custom response to the client if you configure the `ReturnOverrides` in the `request` object, as described [here]({{< ref "api-management/plugins/javascript#using-returnoverrides" >}}).
 
 ##### Returning from Virtual Endpoint
 
-Unlike custom JS plugins, Virtual Endpoints always [terminate the request]({{< ref "api-management/traffic-transformation#working-14" >}}) so have a different method of returning from the JS function.
+Unlike custom JS plugins, Virtual Endpoints always [terminate the request]({{< ref "api-management/traffic-transformation#working-13" >}}) so have a different method of returning from the JS function.
 
 The function must return a `responseObject`. This is crucial as it determines the HTTP response that will be sent back to the client. The structure of this object is defined to ensure that the virtual endpoint can communicate the necessary response details back to the Tyk Gateway, which then forwards it to the client.
 
@@ -285,7 +285,7 @@ const httpRequest = {
 
 #### The `session` object
 
-Tyk uses an internal [session object]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}) to handle the quota, rate limits, access allowances and auth data of a specific key. JS middleware can be granted access to the session object but there is also the option to disable it as deserialising it into the JSVM is computationally expensive and can add latency. Other than the `meta_data` field, the session object itself cannot be directly edited as it is crucial to the correct functioning of Tyk.
+Tyk uses an internal [session object]({{< ref "api-management/policies#what-is-a-session-object" >}}) to handle the quota, rate limits, access allowances and auth data of a specific key. JS middleware can be granted access to the session object but there is also the option to disable it as deserialising it into the JSVM is computationally expensive and can add latency. Other than the `meta_data` field, the session object itself cannot be directly edited as it is crucial to the correct functioning of Tyk.
 
 ##### Limitations
 
@@ -438,7 +438,7 @@ This method does not execute asynchronously, so execution will block until a res
 
 To work with the key session object, two functions are provided: `TykGetKeyData` and `TykSetKeyData`:
 
-- `TykGetKeyData(api_key, api_id)`: Use this method to retrieve a [session object]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}) for the key and the API provided:
+- `TykGetKeyData(api_key, api_id)`: Use this method to retrieve a [session object]({{< ref "api-management/policies#what-is-a-session-object" >}}) for the key and the API provided:
 
   ```js
   // In an event handler, we can get the key idea from the event, and the API ID from the context variable.

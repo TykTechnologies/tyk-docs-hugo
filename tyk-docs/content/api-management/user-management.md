@@ -293,9 +293,15 @@ The Tyk Dashboard is multi-tenant capable and allows granular, role based user a
 
 It is important to note that all user roles are defined and enforced **at the Dashboard API level**, and the UI is merely reactive.
 
-### Admin users
-An *admin* user has full read/write access to all properties. The initial user created during the bootstrapping of the Dashboard is automatically assigned the *admin* role.
+### Admin Users
 
+An *admin* user has read and write access to all properties. The initial user created during the dashboard's bootstrapping process is automatically assigned the *admin* role.
+
+There are two configuration parameters that restrict the admin user’s capabilities. For enhanced security, both of these values should be set to `true`:
+
+- [security.forbid_admin_view_access_token]({{< ref "tyk-dashboard/configuration#securityforbid_admin_view_access_token" >}}): This parameter restricts admin users from viewing other users' Dashboard API Access Credentials, both in the API and the UI.
+  
+- [security.forbid_admin_reset_access_token]({{< ref "tyk-dashboard/configuration#securityforbid_admin_reset_access_token" >}}): This parameter prevents admin users from resetting the access tokens of other users.
 ### User permissions in the Tyk Dashboard API
 The permissions object, which is provided to the Dashboard API has this structure:
 
