@@ -159,7 +159,6 @@ let highestVisibleHeading = null;
 
 function activeTocToggle() {
   var tocLabel = $(".toc__label");
-  var tocItems = $(".toc__item");
   var pageContent = $(".page-content__container, .header");
 
   // Initially hide the TOC content on small screens
