@@ -140,6 +140,8 @@ You can see the URL given to your API, in the Info section displayed at the top 
 
     4. You can now add [middleware]({{< ref "api-management/traffic-transformation" >}}) to your endpoint via the **Add Middleware** button.
 
+    5. Click **Save API** to apply the changes to your API.
+
 7. Test your API
 
     From the **Info** section, copy the [API base path]({{< ref "api-management/gateway-config-managing-oas#api-base-path" >}}) and send a request to the API without providing an authorization token:
@@ -184,6 +186,16 @@ Armed with a Tyk OAS API definition, in YAML or JSON format, you can use this to
 3. From the Import API screen, select **Tyk API** because the object you want to import to Tyk is a complete API definition.
 
     {{< img src="/img/oas/api-create-import.png" alt="Choosing what to import" >}}
+
+    {{< note success >}}
+**Note**  
+
+On the Import API screen, there are three options for <b>Import Type</b>, it is important to select the correct one for the object that you want to load into Tyk:
+
+- <b>openAPI</b> is used only for [OpenAPI descriptions]({{< ref "api-management/gateway-config-tyk-oas#openapi-description" >}}) (without the [Tyk Vendor Extension]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension" >}}))
+- <b>TykAPI</b> is used for a full [Tyk OAS API definition]({{< ref "api-management/gateway-config-tyk-oas#what-is-a-tyk-oas-api-definition" >}}) (comprising OpenAPI description plus Tyk Vendor Extension) or Tyk Classic API definition
+- <b>WSDL/XML</b> is used for WSDL/XML content and will result in a Tyk Classic API
+    {{< /note >}}
 
 4. Now you can paste the entire Tyk OAS API definition into the text editor.
 
@@ -336,6 +348,16 @@ If you have a valid OAS 3.0 compliant OpenAPI description, in YAML or JSON forma
 3. From the Import API screen, select **openAPI** because the object you want to import to Tyk is an OpenAPI description.
 
     {{< img src="/img/oas/api-create-import.png" alt="Choosing what to import" >}}
+
+    {{< note success >}}
+**Note**  
+
+On the Import API screen, there are three options for <b>Import Type</b>, it is important to select the correct one for the object that you want to load into Tyk:
+
+- <b>openAPI</b> is used only for [OpenAPI descriptions]({{< ref "api-management/gateway-config-tyk-oas#openapi-description" >}}) (without the [Tyk Vendor Extension]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension" >}}))
+- <b>TykAPI</b> is used for a full [Tyk OAS API definition]({{< ref "api-management/gateway-config-tyk-oas#what-is-a-tyk-oas-api-definition" >}}) (comprising OpenAPI description plus Tyk Vendor Extension) or Tyk Classic API definition
+- <b>WSDL/XML</b> is used for WSDL/XML content and will result in a Tyk Classic API
+    {{< /note >}}
 
 4. Now you can choose the location of the OpenAPI description, which can be:
 
@@ -583,11 +605,9 @@ Alternatively, and especially when you need to make breaking changes as your ser
 
 As developers working on services it can be necessary to regularly update the API when, for example, we add endpoints or support new methods. 
 
-One of the most powerful features of working with Tyk OAS is that you can make changes to the OpenAPI description outside Tyk and then update the Tyk OAS API with the new description. You can simply update the OpenAPI part of the Tyk OAS API definition without having to make any changes to the [Tyk Vendor Extension]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension" >}}) (`x-tyk-api-gateway`).
+One of the most powerful features of working with Tyk OAS is that you can make changes to the OpenAPI description outside Tyk and then update your API with the updated details. You can simply update the OpenAPI part of the Tyk OAS API definition without having to make any changes to the [Tyk Vendor Extension]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension" >}}) (`x-tyk-api-gateway`).
 
 You can alternatively work on the full Tyk OAS API definition outside Tyk and update your existing API proxy with the new configuration, without having to create a [new version]({{< ref "api-management/api-versioning" >}}) of the API.
-
-In this section will walk you through different methods you can use to update a Tyk OAS API using the Tyk Dashboard API Designer, Tyk Dashboard API and Tyk Gateway API.
 
 {{< tabs_start >}}
 
