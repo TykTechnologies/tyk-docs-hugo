@@ -549,7 +549,7 @@ will error with the following message:
 
 #### Multi-part OpenAPI documents
 
-OAS 3.0 allows an OpenAPI description to be [split across multiple files](https://swagger.io/docs/specification/v3_0/using-ref/") by use of the `$ref` keyword.
+OAS 3.0 allows an OpenAPI description to be [split across multiple files](https://swagger.io/docs/specification/v3_0/using-ref/) by use of the `$ref` keyword.
 
 This allows you to share snippets of the API definition across multiple APIs, or to have specific ownership of elements of the API configuration owned by different teams.
 
