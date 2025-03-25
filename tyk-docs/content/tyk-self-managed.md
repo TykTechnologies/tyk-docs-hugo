@@ -1648,7 +1648,7 @@ Azure allows you to install Tyk in the following ways:
 
 **On-Premises**
 
-1. Via our [Ubuntu Setup]({{< ref "tyk-self-managed#install-gateway-1" >}}) on an installed Ubuntu Server on Azure.
+1. Via our [Ubuntu Setup]({{< ref "tyk-self-managed#debian-ubuntu-install-gateway" >}}) on an installed Ubuntu Server on Azure.
 2. Via our [Docker Installation]({{< ref "#docker-compose-setup" >}}) using Azure's Docker support.
 
 See our video for installing Tyk on Ubuntu via Azure:
@@ -1670,7 +1670,7 @@ Google Cloud allows you to install Tyk in the following ways:
 
 **On-Premises**
 
-1. Via our [Ubuntu Setup]({{< ref "tyk-self-managed#install-gateway-1" >}}) on an installed Ubuntu Server within Google Cloud.
+1. Via our [Ubuntu Setup]({{< ref "tyk-self-managed#debian-ubuntu-install-gateway" >}}) on an installed Ubuntu Server within Google Cloud.
 2. Via our [Docker Installation]({{< ref "#docker-compose-setup" >}}) using Google Cloud's Docker support.
 
 **Tyk Pump on GCP**
@@ -2528,9 +2528,9 @@ Installing Tyk on Ubuntu is very straightforward using our APT repositories, fol
 
 The suggested order would be to install Tyk Dashboard, then Tyk Pump and then Tyk Gateway for a full stack.
 
-- [Dashboard]({{< ref "tyk-self-managed#install-dashboard-1" >}})
-- [Pump]({{< ref "tyk-self-managed#install-pump-1" >}})
-- [Gateway]({{< ref "tyk-self-managed#install-gateway-1" >}})
+- [Dashboard]({{< ref "tyk-self-managed#Debian-Ubuntu-install-dashboard" >}})
+- [Pump]({{< ref "tyk-self-managed#Debian-Ubuntu-install-pump" >}})
+- [Gateway]({{< ref "tyk-self-managed#debian-ubuntu-install-gateway" >}})
 
 {{< note success >}}
 **Note**  
@@ -2667,7 +2667,7 @@ Read more about MongoDB configuration [here](https://github.com/ansible-collecti
 
 Read more about PostgreSQL configuration [here](https://github.com/geerlingguy/ansible-role-postgresql).
 
-#### Install Dashboard
+#### Install Dashboard {#Debian-Ubuntu-install-dashboard}
 
 ##### Using Shell
 
@@ -2945,7 +2945,7 @@ $ ansible-playbook playbook.yaml -t tyk-dashboard
 | dash.service.proto | `http` | Dashboard server protocol |
 | dash.service.tls | `false` | Set to `true` to enable SSL connections |
 
-#### Install Pump
+#### Install Pump {#Debian-Ubuntu-install-pump}
 
 ##### Using Shell
 
@@ -3116,7 +3116,7 @@ $ ansible-playbook playbook.yaml -t tyk-pump
 | Ubuntu | 18 | ✅ |
 | Ubuntu | 16 | ✅ |
 
-#### Install Gateway
+#### Install Gateway {#debian-ubuntu-install-gateway}
 
 ##### Using Shell
 
