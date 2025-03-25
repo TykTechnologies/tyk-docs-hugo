@@ -1443,7 +1443,7 @@ To add a gRPC plugin to your API definition, you must specify the bundle file na
 }
 ```
 
-The value of the `custom_middleware_bundle` field will be used in combination with the gateway settings to construct a bundle URL. For example, if Tyk Gateway is configured with a webserver base URL of https://my-bundle-server.com/bundles/ then an attempt would be made to download the bundle from https://my-bundle-server.com/bundles/mybundle.zip.
+The value of the `custom_middleware_bundle` field will be used in combination with the gateway settings to construct a bundle URL. For example, if Tyk Gateway is configured with a webserver base URL of `https://my-bundle-server.com/bundles/` then an attempt would be made to download the bundle from `https://my-bundle-server.com/bundles/mybundle.zip`.
 
 ####### Tyk Operator
 
