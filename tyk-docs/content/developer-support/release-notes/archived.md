@@ -804,7 +804,7 @@ With this release we have refreshed the entire Dashboard UI with a new look-and-
 
 We have added API and Policy search functionality, which should help those with long lists.
 
-* [API Docs]({{< ref "api-management/dashboard-configuration#manage-apis---api-definition" >}})
+* [API Docs]({{< ref "api-management/dashboard-configuration#manage-apis-api-definition" >}})
 * [Policy Docs]({{< ref "tyk-apis/tyk-dashboard-api/portal-policies" >}})
 
 #### A New, Interactive Getting Started Walkthrough
