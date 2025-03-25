@@ -95,7 +95,7 @@ When using Python plugins, the middleware function names are set globally. So, i
 
 ## How do rich plugins work ?
 
-### ID Extractor & Auth Plugins
+### ID Extractor & Auth Plugins {#id-extractor-auth-plugin}
 
 The ID Extractor is a caching mechanism that's used in combination with Tyk Plugins. It can be used specifically with plugins that implement custom authentication mechanisms. The ID Extractor works for all rich plugins: gRPC-based plugins, Python and Lua.
 
