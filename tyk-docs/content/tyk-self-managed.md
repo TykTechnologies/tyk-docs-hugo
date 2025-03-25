@@ -532,7 +532,7 @@ You use this at your own risk. Tyk is not supported on the Windows platform. How
 - [Python for Windows](https://www.python.org/downloads/windows/)
 - PowerShell running as administrator
 - Our Pro Demo Docker [GitHub repo](https://github.com/TykTechnologies/tyk-pro-docker-demo)
-- A free Tyk Self-Managed [Developer license](https://tyk.io/product/tyk-on-premises-free-edition/)
+- A free Tyk Self-Managed [Developer license](https://tyk.io/sign-up)
 
 Ensure that kubectl and helm prerequisites are configured on your Windows path environment variable
 
@@ -1638,7 +1638,7 @@ Please refer to [Heroku documentation on containers and registry](https://devcen
 
 ### Install on Microsoft Azure
   
-[Azure](https://azure.microsoft.com/en-us/overview/what-is-azure/) is Microsoft's cloud services platform. It supports both the running of [Ubuntu Servers](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/canonical.0001-com-ubuntu-server-focal?tab=overview), as well as [Docker](https://www.docker.com/docker-azure) and [Docker-Compose](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-compose-quickstart).
+[Azure](https://azure.microsoft.com/en-us/overview/what-is-azure/) is Microsoft's cloud services platform. It supports both the running of [Ubuntu Servers](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/canonical.0001-com-ubuntu-server-focal?tab=overview), as well as [Docker](https://learn.microsoft.com/en-us/previous-versions/azure/virtual-machines/linux/docker-machine) and [Docker-Compose](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-compose-quickstart).
 
 For more details, see the [Azure Documentation](https://docs.microsoft.com/en-us/azure/).
 
@@ -2676,8 +2676,7 @@ Tyk has its own APT repositories hosted by the kind folks at [packagecloud.io](h
 This tutorial has been tested on Ubuntu 16.04 & 18.04 with few if any modifications. We will install the Tyk Dashboard with all dependencies locally.
 
 **Prerequisites**
-
-- Have MongoDB/SQL and Redis installed - see [here](https://tyk.io/getting-started/installation/with-tyk-on-premises/on-ubuntu/#prerequisites) for details.
+- Have MongoDB/SQL and Redis installed - follow the guide for [installing databases on Debian/Ubuntu]({{< ref "#install-tyk-on-debian-or-ubuntu" >}}).
 - Ensure port `3000` is available. This is used by the Tyk Dashboard to provide the GUI and the Developer Portal.
 
 **Step 1: Set up our APT Repositories**
@@ -3630,7 +3629,7 @@ To complete the instruction above we have a tutorial video of tyk demo that cove
 ### Docker Compose Setup
 
 #### Who is this page for?
-This is the guide we recommend for a easy quick start. The instructions are the ones shared with you when you register to a [free trial]({{< ref "tyk-self-managed#getting-started-with-tyk-self-managed" >}}).
+This is the guide we recommend for a easy quick start. The instructions are the ones shared with you when you register to a [free trial](https://tyk.io/sign-up/).
 
 You can also use this guide for your PoC since it spins up a full Tyk Self Managed stack for you using our project *Docker Pro Demo*, however, if you are interested in learning Tyk, there's an option for [Tyk Demo]({{< ref "tyk-self-managed#explore-demos-and-proof-of-concepts" >}}) which is a project that spins up full Tyk stack that includes a prepopulate API definitions of all kinds, with various middleware options and can also spin up supporting tools such as Prometheus, Keycloak (IDP) etc.
 
@@ -3652,7 +3651,7 @@ The Tyk Pro Docker demo does not provide access to the [Developer Portal]({{< re
 #### Prerequisites
 
 * Our [Tyk Pro Docker demo on GitHub](https://github.com/TykTechnologies/tyk-pro-docker-demo)
-* A Tyk Pro [trial license](https://pages.tyk.io/get-started-with-tyk)
+* A Tyk Pro [trial license](https://tyk.io/sign-up/)
 
 #### Steps for Installation
 
@@ -3769,7 +3768,7 @@ You use this at your own risk. Tyk is not supported on the Windows platform. How
 - PowerShell running as administrator
 - Postman for [Windows](https://www.getpostman.com/downloads/)
 - Our Pro Demo Docker [GitHub repo](https://github.com/TykTechnologies/tyk-pro-docker-demo)
-- A free Tyk Self-Managed [Developer license](https://tyk.io/product/tyk-on-premises-free-edition/)
+- A free Tyk Self-Managed [Developer license](https://tyk.io/sign-up/)
 
 **Step 1 - Clone the Repo**
 
@@ -3964,7 +3963,7 @@ You use this at your own risk. Tyk is not supported on the Windows platform. How
 - PowerShell running as administrator
 - Postman for [Windows](https://www.getpostman.com/downloads/)
 - Our Pro Demo Docker [GitHub repo](https://github.com/TykTechnologies/tyk-pro-docker-demo)
-- A free Tyk Self-Managed [Developer license](https://tyk.io/product/tyk-on-premises-free-edition/)
+- A free Tyk Self-Managed [Developer license](https://tyk.io/sign-up/)
 - Optional: Ubuntu on Windows
 
 **Step 1 - Clone the Repo**
