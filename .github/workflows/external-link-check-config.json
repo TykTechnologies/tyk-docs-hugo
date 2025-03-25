@@ -10,6 +10,12 @@
         },
         {
             "pattern": "https://evening-beach-40625.herokuapp.com"
+        },
+        {
+            "pattern": "https://hub.docker.com/layers/tykio/tyk-{dashboard|gateway}/vX.Y.Z/images/{sha-image})"
+        },
+        {
+            "pattern": "https://my-bundle-server.com/bundles/"
         }
     ]
 }
