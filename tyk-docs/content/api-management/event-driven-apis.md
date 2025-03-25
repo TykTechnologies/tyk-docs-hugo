@@ -133,6 +133,8 @@ alongside your existing synchronous APIs. It provides a range of capabilities to
 
 ## Quick Start
 
+TODO: Fix this quick start and ensure it is executable.
+
 This section provides a detailed guide for creating, configuring, and securing a **Streams API** using the Dashboard UI.
 
 <br>
@@ -256,44 +258,92 @@ The [tyk-pro-docker-demo](https://github.com/TykTechnologies/tyk-pro-docker-demo
 
 ## How It Works
 
+
+
 ### Request Processing Flow
 
 
 ## Configuration Options
 
-Tyk Streams is configured both at the system (Gateway and Dashbaord) level and at the API definition level:
+Tyk Streams is configured at both the system level (Tyk Gateway and Dashboard) and the API definition level. System-level settings control global streaming behavior, while API-level configurations define specific stream inputs and outputs for an API.
 
 ### System Level
 
 #### Gateway Configuration
 
-In the tyk.conf file, Streams is configured in the streaming section:
+In the `tyk.conf` file, Streams is configured in the streaming section:
+
+{{< tabs_start >}}
+
+{{< tab_start "Config File" >}}
 
 ```json
+...
 "streaming": {
   "enabled": true,
 }
+...
 ```
+
+This enables Tyk Streams on Gateway. Refer to the [Tyk Gateway Configuration Reference]() for details.
+
+{{< tab_end >}}
+
+{{< tab_start "Environment Variable" >}}
+
+```bash
+TYK_GW_STREAMING_ENABLED=true
+```
+
+Refer to the [Tyk Gateway Configuration Reference]() for details.
+
+{{< tab_end >}}
+
+{{< tabs_end >}}
 
 #### Dashboard Configuration
 
-In the tyk.conf file, Streams is configured in the streaming section:
+In the `tyk_analytics.conf` file, Streams is configured in the streaming section:
+
+{{< tabs_start >}}
+
+{{< tab_start "Config File" >}}
 
 ```json
+...
 "streaming": {
   "enabled": true,
 }
+...
 ```
+
+This enables Tyk Streams on Dashboard. Refer to the [Tyk Dashboard Configuration Reference]() for details.
+
+{{< tab_end >}}
+
+{{< tab_start "Environment Variable" >}}
+
+```bash
+TYK_DB_STREAMING_ENABLED=true
+```
+
+Refer to the [Tyk Dashboard Configuration Reference]() for details.
+
+{{< tab_end >}}
+
+{{< tabs_end >}}
+
 
 ### API Definition
 
-At the API definition level, Streams is configured through an OpenAPI extension x-tyk-streaming:
+At the API definition level, Tyk Streams is configured through an OpenAPI extension `x-tyk-streaming`:
 
 ```json
 "x-tyk-streaming": {
   "streams": {
     "stream1": {
-
+      "input": { ... },
+      "output": { ... }
     }
   }
 }
@@ -303,54 +353,56 @@ At the API definition level, Streams is configured through an OpenAPI extension 
 
 {{< tab_start "Tyk OAS API (default)" >}}
 
-TODO: Add reference to tyk OAS
-
-```yaml
-{
-  "openapi": "3.0.3",
-  "info": {
-    "title": "test-api",
-    "version": "1.0.0"
-  },
-  …
-  "x-tyk-streaming": {
-    "streams": {
-      "test": {
-        "input": {
-          "kafka": {
-            "addresses": ["TODO"],
-            "topics": ["foo", "bar"],
-            "consumer_group": "foogroup"
-          }
-        },
-        "output": {
-          "http_server": {
-            "consumer_group": "$tyk_context.request_ip",
-            "ws_path": "/subscribe"
-          }
+```json
+...
+"x-tyk-streaming": {
+  "streams": {
+    "test": {
+      "input": {
+        "kafka": {
+          "addresses": ["TODO"],
+          "topics": ["foo", "bar"],
+          "consumer_group": "foogroup"
+        }
+      },
+      "output": {
+        "http_server": {
+          "consumer_group": "$tyk_context.request_ip",
+          "ws_path": "/subscribe"
         }
       }
     }
   }
-  …
 }
+...
 ```
+
+To know more about the configuration option, refer to this [documentation]().
 
 {{< tab_end >}}
 
 {{< tab_start "Tyk Classic API" >}}
 
-TODO: Add reference to tyk Classic
+TODO: Add sample JSON
+
+To know more about the configuration option, refer to this [documentation]().
 
 {{< tab_end >}}
 
 {{< tab_start "Dashboard UI" >}}
+
+TODO: Update the Image
 
 {{< img src="/img/streams/configure-streams.png" alt="Screenshot of Tyk Dashboard configuring API Streams" width="1000px" >}}
 
 {{< tab_end >}}
 
 {{< tab_start "Tyk Operator" >}}
+
+TODO: Add sample JSON
+
+To know more about the configuration option, refer to this [documentation]().
+
 {{< tab_end >}}
 
 {{< tabs_end >}}
