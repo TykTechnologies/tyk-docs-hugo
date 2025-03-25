@@ -314,7 +314,7 @@ function handleTocClicks(){
     const id = $(this).attr("href").slice(1);
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: "auto" });
       window.history.pushState(null, null, `#${id}`);
     }
   });
