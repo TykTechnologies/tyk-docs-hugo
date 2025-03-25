@@ -16,6 +16,9 @@ jobs:
     # Only run if the PR was actually merged
     if: ${{ github.event.pull_request.merged == true }}
 
+    env:
+      TYK_LATEST_RELEASE_BRANCH: "release-99" # Example value for testing
+
     steps:
       - name: Add a comment to the merged PR (only if labeler is in the org)
         uses: actions/github-script@v7
@@ -24,11 +27,13 @@ jobs:
           script: |
             // 1. The label format: e.g., "release-1", "release-1.0"
             const labelRegex = /^release-[0-9]+(\.[0-9]+)?$/;
+            const latestReleaseLabel = "latest-release";
             
             // 2. Get PR info
             const pullRequestNumber = context.payload.pull_request.number;
             const labelsOnPR = context.payload.pull_request.labels || [];
             console.log("Labels on the Pull Request:", labelsOnPR.map(label => label.name));
+
             // 3. Get all timeline events to see who labeled the PR
             const { data: prEvents } = await github.rest.issues.listEvents({
               owner: context.repo.owner,
@@ -57,7 +62,8 @@ jobs:
             // 6. For each label on the PR, check if it matches "release-.."
             //    If yes, we see who labeled it last and check their membership
             for (const label of labelsOnPR) {
-              if (labelRegex.test(label.name)) {
+              // Check if it's a regular release label or the special "latest-release" label
+              if (labelRegex.test(label.name)) || label.name === releaseNowLabel) {
                 const userWhoAddedLabel = labelToLastLabeler[label.name];
 
                 // If there's no recorded user (edge case), skip
@@ -88,13 +94,29 @@ jobs:
 
                 // 8. Comment only if user is in the org
                 if (isMember) {
-                  console.log(`Creating comment for label '${label.name}' on PR #${pullRequestNumber} by user '${userWhoAddedLabel}'.`);
-                  await github.rest.issues.createComment({
-                    owner: context.repo.owner,
-                    repo: context.repo.repo,
-                    issue_number: pullRequestNumber,
-                    body: `/release to ${label.name}`
-                  });
+                  let commentBody;
+
+                  // Handle special "latest-release" case
+                  if (label.name === latestReleaseLabel) {
+                    // Get the latest release branch from environment variable
+                    const latestReleaseBranch = process.env.TYK_LATEST_RELEASE_BRANCH;
+                    if (!latestReleaseBranch) {
+                      console.log("TYK_LATEST_RELEASE_BRANCH environment variable is not set");
+                      continue;
+                    }
+                    commentBody = `/release to ${latestReleaseBranch}`;
+                  } else {
+                    // Regular release label
+                    commentBody = `/release to ${label.name}`;
+                  }
+
+                  console.log(`Creating comment for label '$commentBody' on PR #${pullRequestNumber} by user '${userWhoAddedLabel}'.`);
+                  # await github.rest.issues.createComment({
+                  #   owner: context.repo.owner,
+                  #   repo: context.repo.repo,
+                  #   issue_number: pullRequestNumber,
+                  #   body: commentBody
+                  # });
                 }else{
                  console.log(`No comment created for label '${label.name}' on PR #${pullRequestNumber} because the user '${userWhoAddedLabel}' is not a member of the organization 'TykTechnologies'.`);
                  }
