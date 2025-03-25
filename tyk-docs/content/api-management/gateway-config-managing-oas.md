@@ -420,7 +420,7 @@ To see the URL given to your API, check the Info section displayed at the top of
 
 You can make use of Tyk Operator custom resources to configure [Tyk OAS APIs]({{< ref "api-management/gateway-config-tyk-oas" >}}) in a Kubernetes environment.
 
-In this [tutorial]({{< ref "api-management/automations/operator#set-up-oas-api" >}}) we guide you through the steps to create a new Tyk OAS API using Tyk Operator.
+In this [tutorial]({{< ref "api-management/automations/operator#set-up-tyk-oas-api" >}}) we guide you through the steps to create a new Tyk OAS API using Tyk Operator.
 
 ## Update a Tyk OAS API
 
