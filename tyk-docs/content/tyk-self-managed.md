@@ -159,7 +159,7 @@ The Tyk Gateway can run completely independently, requiring only a Redis databas
 
 #### Init Systems
 
-Tyk packages support [systemd](https://www.freedesktop.org/wiki/Software/systemd/), [Upstart](https://web.archive.org/web/20230322064449/http://upstart.ubuntu.com/cookbook/) (both 0.6.x and 1.x) and SysVinit Linux init systems. During package installation only one is chosen depending on the operating system support, e.g.:
+Tyk packages support [systemd](https://www.freedesktop.org/wiki/Software/systemd/), [Upstart](https://wiki.ubuntu.com/SystemdForUpstartUsers) (both 0.6.x and 1.x) and SysVinit Linux init systems. During package installation only one is chosen depending on the operating system support, e.g.:
 
 *   CentOS 6, RHEL 6, Amazon Linux ship with Upstart 0.6.x
 *   Ubuntu 14.04, Debian Jessie with Upstart 1.x
