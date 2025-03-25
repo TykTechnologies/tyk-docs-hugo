@@ -89,7 +89,7 @@ In this tutorial we guide you through the steps to create a new Tyk OAS API usin
 
 4. Deploy the API to your Gateway
 
-    - If you are using Tyk Cloud or a [sharded]() deployment you will be prompted to select on which Gateways the API should be deployed
+    - If you are using Tyk Cloud or a [sharded]({{< ref "api-management/multiple-environments" >}}) deployment you will be prompted to select on which Gateways the API should be deployed
 
     {{< img src="/img/oas/api-create-deploy-targets.png" alt="Choose where to deploy the API" >}}
 
@@ -585,7 +585,7 @@ As developers working on services it can be necessary to regularly update the AP
 
 One of the most powerful features of working with Tyk OAS is that you can make changes to the OpenAPI description outside Tyk and then update the Tyk OAS API with the new description. You can simply update the OpenAPI part of the Tyk OAS API definition without having to make any changes to the [Tyk Vendor Extension]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension" >}}) (`x-tyk-api-gateway`).
 
-You can alternatively work on the full Tyk OAS API definition outside Tyk and update your existing API proxy with the new configuration, without having to create a [new version]() of the API.
+You can alternatively work on the full Tyk OAS API definition outside Tyk and update your existing API proxy with the new configuration, without having to create a [new version]({{< ref "api-management/api-versioning" >}}) of the API.
 
 In this section will walk you through different methods you can use to update a Tyk OAS API using the Tyk Dashboard API Designer, Tyk Dashboard API and Tyk Gateway API.
 
