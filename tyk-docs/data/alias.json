@@ -398,7 +398,7 @@
     "tyk-dashboard": "#",
     "getting-started/key-concepts/dashboard-api": "#exploring-the-dashboard-api",
     "tyk-apis/tyk-dashboard-api/pagination": "#overview",
-    "tyk-apis/tyk-dashboard-api/api-definitions": "#manage-apis---api-definition",
+    "tyk-apis/tyk-dashboard-api/api-definitions": "#manage-apis-api-definition",
     "tyk-apis/tyk-dashboard-api/data-graphs-api": "#data-graphs-api",
     "tyk-apis/tyk-dashboard-api/analytics": "#analytics-api",
     "tyk-dashboard-api/users": "#users-api",

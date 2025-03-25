@@ -187,7 +187,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 }
 ```
 
-### Manage APIs - API Definition
+### Manage APIs - API Definition {#manage-apis-api-definition}
 
 {{< note success >}}
 **Note**  
