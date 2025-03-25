@@ -754,7 +754,7 @@ Whether you're using Tyk API Gateway in an open-source (OSS) or commercial deplo
         },
         "proxy": {
         "listen_path": "/hello-world/",
-        "target_url": "http://echo.tyk-demo.com:8080/",
+        "target_url": "http://httpbin.org/",
         "strip_listen_path": true
         },
         "active": true
@@ -1279,14 +1279,14 @@ Ensure the following prerequisites are met before proceeding:
         },
         "proxy": {
         "listen_path": "/hello-world/",
-        "target_url": "http://echo.tyk-demo.com:8080/",
+        "target_url": "http://httpbin.org/",
         "strip_listen_path": true
         },
         "active": true
     }
     ```
 
-    This API definition sets up a basic API named Hello-World for testing purposes, configured to proxy requests to `http://echo.tyk-demo.com:8080/`.
+    This API definition sets up a basic API named Hello-World for testing purposes, configured to proxy requests to `http://httpbin.org/`.
 
 3. **Run Tyk Gateway OSS with OpenTelemetry Enabled**
 
@@ -1455,7 +1455,7 @@ Please make sure you are installing Redis versions that are supported by Tyk. Pl
     protocol: http
     active: true
     proxy:
-    target_url: http://echo.tyk-demo.com:8080/
+    target_url: http://httpbin.org/
     listen_path: /hello-world
     strip_listen_path: true
     ```
@@ -1466,7 +1466,7 @@ Please make sure you are installing Redis versions that are supported by Tyk. Pl
     kubectl apply -f apidef-hello-world.yaml 
     ```
 
-    This step deploys an API definition named hello-world using the provided configuration. It enables a keyless HTTP API proxying requests to http://echo.tyk-demo.com:8080/ and accessible via the path /hello-world.
+    This step deploys an API definition named hello-world using the provided configuration. It enables a keyless HTTP API proxying requests to http://httpbin.org/ and accessible via the path /hello-world.
 
 5. **Explore OpenTelemetry traces in Jaeger**
 

@@ -142,7 +142,7 @@ In order to use the Gateway API to create a Tyk API Definition you will need the
         },
         "proxy": {
         "listen_path": "/hello-world/",
-        "target_url": "http://echo.tyk-demo.com:8080/",
+        "target_url": "http://httpbin.org",
         "strip_listen_path": true
         },
         "active": true
@@ -216,7 +216,7 @@ Create a file called `api1.json` and place it in the `/apps` folder of your Tyk 
   },
   "proxy": {
     "listen_path": "/test-api/",
-    "target_url": "http://echo.tyk-demo.com:8080/",
+    "target_url": "http://httpbin.org/",
     "strip_listen_path": true
   },
   "active": true
