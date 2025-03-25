@@ -349,7 +349,7 @@ If you have a valid OAS 3.0 compliant OpenAPI description, in YAML or JSON forma
 
     {{< img src="/img/oas/api-create-import-template.png" alt="Applying a template" >}}
 
-6. You can configure the *listen path* and *upstream (target) URL* in the **Manual configuration options** section. Note that if you do not provide a listen path, Tyk will default to `/` and if you do not provide an upstream URL, Tyk will use the first value provided in the [servers.url](api-management/gateway-config-managing-oas#api-base-path) section in the OpenAPI description.
+6. You can configure the *listen path* and *upstream (target) URL* in the **Manual configuration options** section. Note that if you do not provide a listen path, Tyk will default to `/` and if you do not provide an upstream URL, Tyk will use the first value provided in the [servers.url]({{< ref "api-management/gateway-config-managing-oas#api-base-path" >}}) section in the OpenAPI description.
 
     {{< img src="/img/oas/api-create-import-manual-options.png" alt="Configuring the listen path and upstream URL" >}}
 
