@@ -612,6 +612,14 @@ For example:
      algorithm: "hmac-sha256"
      keyId: ""
  ```
+In this example, a Tyk OAS API was created using the `upstreamRequestSigning` field. It can be broken down as follows:
+- `upstreamRequestSigning`: This defines the settings for Upstream Request Signing. in the example manifest, it configures Upstream Request Signing using the `booking` API.
+  - `certificateRef`: References a Secret containing the private and secret key for signing client API requests. This should be used if `secretRef` is not specified.
+  - `secretRef`: References a Kubernetes Secret that holds the secret key for signing client requests.
+  - `algorithm`: Specifies the algorithm used for signing.
+    - For `secretRef`, supported algorithms include: `hmac-sha1`, `hmac-sha256`, `hmac-sha384`, and `hmac-sha512`.
+    - For `certificateRef`, the required algorithm is `rsa-sha256`.
+  - `keyId`: A user-defined key assumed to be available on the upstream service. This is used in the `SignatureHeader` and should be included when using `certificateRef`. It is required when using the RSA algorithm.
 
 <hr>
 
