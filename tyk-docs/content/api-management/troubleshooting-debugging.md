@@ -1187,10 +1187,7 @@ We also support limited customisation of the error codes and messages returned b
 
     **Solution**
 
-    Users are advised to upgrade to the latest version of Tyk. They must also ensure that their Pump is configured with a `purge_delay` and an `optimisation_max_active` value that's greater than 0. Packages are available to download from [Packagecloud.io][1] and further details on how to upgrade can be found [here][2].
-
-    [1]: https://packagecloud.io/tyk
-    [2]: /upgrading-v2-3-v2-2/
+    Users are advised to upgrade to the latest version of Tyk. They must also ensure that their Pump is configured with a `purge_delay` and an `optimisation_max_active` value that's greater than 0. Packages are available to download from [Packagecloud.io](https://packagecloud.io/tyk) and further details on how to upgrade can be found [here]({{< ref "developer-support/upgrading" >}})
 
 6. ##### Pump overloaded
 
