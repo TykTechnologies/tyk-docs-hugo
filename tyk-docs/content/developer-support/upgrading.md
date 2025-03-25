@@ -70,8 +70,8 @@ Use the table below to find the appropriate upgrade guide for your platform:
 | **Tyk Cloud**        | [Cloud SaaS]({{< ref "#tyk-cloud" >}}) | Guide to Tyk Cloud SaaS |
 |                      | [Hybrid]({{< ref "#tyk-hybrid" >}}) | Guide for Hybrid environments with Gateway Data Plane(s) deployed locally or with a third-party cloud provider |
 |                      | [Go plugin]({{< ref "#go-plugin" >}}) | Guide for upgrading Go plugin on the Tyk Cloud |
-| **Tyk Self Managed** | [RHEL and CentOS]({{< ref "#linux---redhat-centos" >}}) | Guide for RPM-based Linux distributions |
-|                      | [Debian and Ubuntu]({{< ref "#linux---debian" >}}) | Guide for DEB-based Linux distributions |
+| **Tyk Self Managed** | [RHEL and CentOS]({{< ref "#upgrade-linux-redhat-centos" >}}) | Guide for RPM-based Linux distributions |
+|                      | [Debian and Ubuntu]({{< ref "#upgrade-linux-debian" >}}) | Guide for DEB-based Linux distributions |
 |                      | [Docker]({{< ref "#docker" >}}) | Guide for upgrading Docker images |
 |                      | [Helm]({{< ref "#helm" >}}) | Guide for upgrading Helm Charts |
 |                      | [Kubernetes]({{< ref "#kubernetes" >}}) | Guide for upgrading Kubernetes environment |
@@ -295,8 +295,8 @@ Follow the instructions for component deployment type:
 
 - [Docker]({{< ref "#docker" >}})
 - [Helm]({{< ref "#helm" >}})
-- [Linux Debian]({{< ref "#linux---debian" >}})
-- [Linux RHEL/CENTOS]({{< ref "#linux---redhat-centos" >}})
+- [Linux Debian]({{< ref "#upgrade-linux-debian" >}})
+- [Linux RHEL/CENTOS]({{< ref "#upgrade-linux-redhat-centos" >}})
 
 **Upgrade Guide Video**
 
@@ -554,7 +554,7 @@ $ curl  localhost:8080/hello | jq .
 2. Restart the deployment
 3. Check the log file
 
-#### Linux - Debian
+#### Linux - Debian {#upgrade-linux-debian}
 
 The following guide explains how to upgrade Tyk Self-Managed running on Debian
 
@@ -799,7 +799,7 @@ sudo apt-get install tyk-dashboard=<previous version>
 These commands are provided as general guidelines and should be used with caution. It's advisable to consult with your system administrator or seek assistance from a qualified professional before executing any system-level commands
 {{< /note >}}
 
-#### Linux - RedHat (CentOS) 
+#### Linux - RedHat (CentOS) {#upgrade-linux-redhat-centos}
 
 The following guide explains how to upgrade Tyk Self-Managed running on RHL
 

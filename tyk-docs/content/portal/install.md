@@ -62,7 +62,7 @@ For step-by-step instructions, please refer to [the Email Settings section]({{< 
 
 The portal installation process comprises two steps:
 1. **Install the portal application.** To install the portal and launch it in the bootstrap mode, you need to configure your portal instance by specifying settings such as TLS, log level, and database connection.
-For further guidance on launching the portal, please refer to one of the installation options: [Docker container]({{< ref "portal/install#docker" >}}), [Docker Compose]({{< ref "portal/install#docker-compose" >}}), [Helm chart]({{< ref "portal/install#using-legacy-helm-chart" >}}), or [RPM package]({{< ref "portal/install#red-hat-rhel--centos" >}}).
+For further guidance on launching the portal, please refer to one of the installation options: [Docker container]({{< ref "portal/install#docker" >}}), [Docker Compose]({{< ref "portal/install#docker-compose" >}}), [Helm chart]({{< ref "portal/install#using-legacy-helm-chart" >}}), or [RPM package]({{< ref "portal/install#linux-redhat-centos" >}}).
 2. **[Bootstrap the portal]({{< ref "#bootstrapping-enterprise-developer-portal" >}})** After you've launched the portal, it will wait for you to provide credentials for the super admin user before it starts accepting traffic.
 Once you've created the super admin user, the portal will complete its installation process by creating the necessary database structure and initialising the required assets for its operations. You can [bootstrap]({{< ref "#bootstrapping-enterprise-developer-portal" >}}) the portal either through the UI or using the bootstrap API.
 Please refer to [the Bootstrapping section]({{< ref "portal/install#bootstrapping-enterprise-developer-portal" >}}) for implementing this step.
@@ -85,7 +85,7 @@ Install with Docker Compose
 Install on Kubernetes
 {{< /badge >}}
 
-{{< badge read="10 mins" href="portal/install#red-hat-rhel--centos" image="/img/redhat-logo2.png" alt="Red Hat install">}}
+{{< badge read="10 mins" href="portal/install#linux-redhat-centos" image="/img/redhat-logo2.png" alt="Red Hat install">}}
 Install on Red Hat
 {{< /badge >}}
 
@@ -787,7 +787,7 @@ In case this is the first time you are launching the portal, it will be necessar
 > **Note**: Helm chart supports Enterprise Portal v1.2.0+.
 
 
-### Red Hat (RHEL / CentOS)
+### Red Hat (RHEL / CentOS) {#linux-redhat-centos}
 
 This guide provides a step-by-step recipe for launching the Tyk Enterprise Developer Portal using an RPM package in Red Hat environment (RHEL / CentOS).
 
