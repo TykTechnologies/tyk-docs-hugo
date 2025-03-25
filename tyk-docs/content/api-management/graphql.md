@@ -150,7 +150,7 @@ In order to complete the next steps, you need to have [Tyk Self Managed installe
 
 #### Prerequisites
 
-It is possible to create GQL APIs using [Tyk Dashboard APIs]({{< ref "api-management/dashboard-configuration#manage-apis---api-definition">}}). To make things easier you can use our [Postman collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview).
+It is possible to create GQL APIs using [Tyk Dashboard APIs]({{< ref "api-management/dashboard-configuration#manage-apis-api-definition">}}). To make things easier you can use our [Postman collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview).
 
 You will need an API key for your organization and one command to create a GQL API and make it live.
 
@@ -907,7 +907,7 @@ The schema validation will prevent you from saving or updating an API with a bro
  - No duplicated enum values
  - No usage of unknown types
 
-When using the [Dashboard API]({{< ref "api-management/dashboard-configuration#manage-apis---api-definition">}}) the response for a broken schema will be a *400 Bad Request* with a body containing the validation errors. For example:
+When using the [Dashboard API]({{< ref "api-management/dashboard-configuration#manage-apis-api-definition">}}) the response for a broken schema will be a *400 Bad Request* with a body containing the validation errors. For example:
 
 ```json
 {
