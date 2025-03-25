@@ -598,3 +598,37 @@ spec:
                     x-tyk-override-test: tyk-override
                     x-tyk-override-test-2: tyk-override-2
 ```
+
+## Creating Versioned APIs via the Tyk Dashboard and Gateway APIs
+
+As explained, you can directly [configure the version settings]({{< ref "api-management/api-versioning#configuring-api-versioning-in-the-api-definition" >}}) within the Tyk OAS API definition using the `info.versioning` section of the Tyk Vendor Extension.
+
+Alternatively, Tyk can look after the linking of base and child versions if you are using the Tyk Dashboard API or Tyk Gateway API to manage your Tyk OAS APIs.
+
+If you are using Tyk Classic, then you should configure versioning within the API definition prior to creating the API.
+
+### Creating Base Version
+
+When creating the [base version]({{< ref "api-management/api-versioning#base-and-child-apis" >}}) of your API, you do not need to do anything special - the version details will be added when you later create the first child version.
+
+### Creating Child Versions
+
+When you want to create a [child version]({{< ref "api-management/api-versioning#base-and-child-apis" >}}) for an existing API using the Tyk Dashboard API or Tyk Gateway API, you must provide additional query parameters to link the child and base APIs.
+
+These parameters are common to the `POST /api/apis/oas` and `POST /tyk/apis/oas` endpoints:
+
+- `base_api_id`: The API ID of the Base API to which the new version will be linked.
+- `base_api_version_name`: The version name of the base API while creating the first version. This doesn't have to be sent for the next versions but if it is set, it will override the base API version name.
+- `new_version_name`: The version name of the created version.
+- `set_default`: If true, the new version is set as default version.
+
+These options are also available when [updating an existing API definition]({{< ref "api-management/gateway-config-managing-oas#updating-an-api" >}}) using the `PATCH /api/apis/oas` or `PATCH /tyk/apis/oas` endpoints.
+
+#### Version Settings
+
+When using the Tyk Gateway API or Tyk Dashboard API to create new child versions, the default versioning settings will be:
+
+- versioning identifier location: header
+- versioning identifier key: `x-tyk-version`
+
+If you need to change these, you should do so within the `info.versioning` section of the API definition for the base version as explained [previously]({{< ref "api-management/api-versioning#configuring-api-versioning-in-the-api-definition" >}}).

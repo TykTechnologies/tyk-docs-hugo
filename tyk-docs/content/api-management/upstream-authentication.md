@@ -31,8 +31,14 @@ When using Tyk, you can choose from a range of authentication methods for each u
 {{< note success >}}
 **Note**  
 
-Note that OAuth 2.0 Password Grant is prohibited in the [OAuth 2.0 Security Best Practice](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics-13#section-3.4") but is supported by Tyk for use with legacy upstream services.
+Upstream Basic Authentication and Oauth 2.0 support are only available to licensed users, via the Tyk Dashboard. These features are not available to open source users.
 {{< /note >}}
+
+{{< warning success >}}
+**Warning**  
+
+Note that OAuth 2.0 Password Grant is prohibited in the [OAuth 2.0 Security Best Practice](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics-13#section-3.4") but is supported by Tyk for use with legacy upstream services.
+{{< /warning >}}
 
 
 ## Mutual TLS (mTLS)
