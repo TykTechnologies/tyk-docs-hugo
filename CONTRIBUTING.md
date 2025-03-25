@@ -1,5 +1,5 @@
 # Table of Contents
-testtttttt
+
 1. [Contributing to Tyk](#contributing-to-tyk)
 2. [Our SLA for issues and bugs](#our-sla-for-issues-and-bugs)
 3. [Filling an issue](#filling-an-issue)
