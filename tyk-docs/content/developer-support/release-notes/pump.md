@@ -1,6 +1,6 @@
 ---
 title: Tyk Pump Release Notes
-date: 2024-02-02T26:33:11Z
+date: 2024-02-02
 description: "Release notes documenting updates, enhancements and changes for Tyk Pump versions within the 1.11.X series."
 tags: ["Tyk Pump", "Release notes", "v1.11", "changelog"]
 aliases:
@@ -246,7 +246,7 @@ For users currently on v1.9.X, we strongly recommend promptly upgrading to the l
 
 #### FIPS Compliance
 
-Tyk Pump now offers [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) compliance. For further details please consult [Tyk API Management FIPS support]({{< ref "developer-support/release-notes/special-releases#fips-releases" >}})
+Tyk Pump now offers [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) compliance. For further details please consult [Tyk API Management FIPS support]({{< ref "developer-support/release-types/fips-release" >}})
 
 #### Security fixes
 This release focuses on improving security and compliance, enhancing integration capabilities, and ensuring robust performance in secure environments.
@@ -267,7 +267,7 @@ This release focuses on improving security and compliance, enhancing integration
 <details>
 <summary>Added FIPS compliance</summary>
 
-Added [FIPS compliance]({{< ref "developer-support/release-notes/special-releases#fips-releases" >}}) for Tyk Pump.
+Added [FIPS compliance]({{< ref "developer-support/release-types/fips-release" >}}) for Tyk Pump.
 </details>
 </li>
 </ul>
