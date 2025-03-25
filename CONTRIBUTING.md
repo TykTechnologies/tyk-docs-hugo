@@ -88,4 +88,3 @@ If you want to add tests and restrictions to our docs, you can do that by adding
 
 Check [this technical guide](./CONTRIBUTING-TECHNICAL-GUIDE.md) for detailed explanations on how to create and update doc pages including specific GUI components.
 
-
