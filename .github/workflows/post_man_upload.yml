@@ -1,0 +1,27 @@
+name: Convert Swagger to Postman and Upload
+
+on:
+  workflow_dispatch:
+    inputs:
+      next_latest_branch:
+        description: 'The new branch to create from master (e.g release-5.8)'
+        required: true
+
+jobs:
+  update-config-and-create-pr:
+    runs-on: ubuntu-latest
+    env:
+      AUTOMERGE: ${{ github.event.inputs.automerge }}
+    steps:
+      # Checkout master and update stable updater
+      - name: Checkout master branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{   github.event.inputs.next_latest_branch }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install openapi-to-postmanv2
+        run: npm install -g openapi-to-postmanv2
