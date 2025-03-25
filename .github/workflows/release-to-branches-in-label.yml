@@ -64,7 +64,7 @@ jobs:
             //    If yes, we see who labeled it last and check their membership
             for (const label of labelsOnPR) {
               // Check if it's a regular release label or the special "latest-release" label
-              if (labelRegex.test(label.name)) || label.name === releaseNowLabel) {
+              if (labelRegex.test(label.name) || label.name === releaseNowLabel) {
                 const userWhoAddedLabel = labelToLastLabeler[label.name];
 
                 // If there's no recorded user (edge case), skip
