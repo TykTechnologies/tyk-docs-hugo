@@ -327,6 +327,96 @@ Detailed recording can be configured at the Gateway level, affecting all APIs de
 }
 ```
 
+#### Enabling API Request Access Logs in Tyk Gateway
+
+As of Tyk Gateway `v5.8.0`, you can configure the Gateway to log individual API request transactions. To enable this feature, set the `TYK_GW_ACCESSLOGS_ENABLED` environment variable to `true`.
+
+##### Configuring output fields
+
+You can specify which fields are logged by configuring the `TYK_GW_ACCESSLOGS_TEMPLATE` environment variable. Below are the available values you can include:
+
+- `api_key`: Obfuscated or hashed API key used in the request.
+- `client_ip`: IP address of the client making the request.
+- `host`: Hostname of the request.
+- `method`: HTTP method used in the request (e.g., GET, POST).
+- `path`: URL path of the request.
+- `protocol`: Protocol used in the request (e.g., HTTP/1.1).
+- `remote_addr`: Remote address of the client.
+- `upstream_addr`: Full upstream address including scheme, host, and path.
+- `upstream_latency`: Roundtrip duration between the gateway sending the request to the upstream server and it receiving a response.
+- `latency_total`: Total time taken for the request, including upstream latency and additional processing by the gateway.
+- `user_agent`: User agent string from the client.
+- `status`: HTTP response status code.
+
+To configure, set `TYK_GW_ACCESSLOGS_TEMPLATE` environment variable with the desired values in the format: `["value1", "value2", ...]`.
+
+##### Default log example
+
+Configuration using `tyk.conf`
+
+```json
+{
+    "access_logs": {
+        "enabled": true
+    }
+}
+```
+
+Configuration using environment variables:
+
+```
+TYK_GW_ACCESSLOGS_ENABLED=true
+```
+
+Output:
+
+```
+time="Jan 29 08:27:09" level=info api_id=b1a41c9a89984ffd7bb7d4e3c6844ded api_key=00000000 api_name=httpbin client_ip="::1" host="localhost:8080" latency_total=62 method=GET org_id=678e6771247d80fd2c435bf3 path=/get prefix=access-log protocol=HTTP/1.1 remote_addr="[::1]:63251" status=200 upstream_addr="http://httpbin.org/get" upstream_latency=61 user_agent=PostmanRuntime/7.43.0
+```
+
+##### Custom template log example
+
+Configuration using `tyk.conf`
+
+```json
+{
+    "access_logs": {
+        "enabled": true,
+        "template": [
+            "api_key",
+            "remote_addr",
+            "upstream_addr"
+        ]
+    }
+}
+```
+
+Configuration using environment variables:
+
+```
+TYK_GW_ACCESSLOGS_ENABLED=true
+TYK_GW_ACCESSLOGS_TEMPLATE="api_key,remote_addr,upstream_addr"
+```
+
+Output:
+
+```
+time="Jan 29 08:27:48" level=info api_id=b1a41c9a89984ffd7bb7d4e3c6844ded api_key=00000000 api_name=httpbin org_id=678e6771247d80fd2c435bf3 prefix=access-log remote_addr="[::1]:63270" upstream_addr="http://httpbin.org/get"
+```
+
+##### Performance Considerations
+
+Enabling access logs introduces some performance overhead:
+
+- **Latency:** Increases consistently by approximately 4%–13%, depending on CPU allocation and configuration.
+- **Memory Usage:** Memory consumption increases by approximately 6%–7%.
+- **Allocations:** The number of memory allocations increases by approximately 5%–6%.
+
+{{< note >}}
+**Note**  
+While the overhead of enabling access logs is noticeable, the impact is relatively modest. These findings suggest the performance trade-off may be acceptable depending on the criticality of logging to your application.
+{{< /note >}}
+
 #### Aggregated analytics
 
 The traffic logs that Tyk Gateway generates are stored in the local [Redis]({{< ref "api-management/logs-metrics#how-api-traffic-logging-works" >}}) temporal storage. They must be transferred to a persistent data store (such as MongoDB or PostgreSQL) for use by analytics tools, typically using Tyk Pump. Tyk Pump can also generate aggregated statistics from these data using the dedicated [Mongo Aggregate]({{< ref "api-management/tyk-pump#mongodb" >}}) and [SQL Aggregate]({{< ref "api-management/tyk-pump#sql" >}}) pumps. These offload processing from Tyk Dashboard and reduce storage requirements compared with storing all of the raw logs.
@@ -664,7 +754,7 @@ Whether you're using Tyk API Gateway in an open-source (OSS) or commercial deplo
         },
         "proxy": {
         "listen_path": "/hello-world/",
-        "target_url": "http://echo.tyk-demo.com:8080/",
+        "target_url": "http://httpbin.org/",
         "strip_listen_path": true
         },
         "active": true
@@ -1189,14 +1279,14 @@ Ensure the following prerequisites are met before proceeding:
         },
         "proxy": {
         "listen_path": "/hello-world/",
-        "target_url": "http://echo.tyk-demo.com:8080/",
+        "target_url": "http://httpbin.org/",
         "strip_listen_path": true
         },
         "active": true
     }
     ```
 
-    This API definition sets up a basic API named Hello-World for testing purposes, configured to proxy requests to `http://echo.tyk-demo.com:8080/`.
+    This API definition sets up a basic API named Hello-World for testing purposes, configured to proxy requests to `http://httpbin.org/`.
 
 3. **Run Tyk Gateway OSS with OpenTelemetry Enabled**
 
@@ -1365,7 +1455,7 @@ Please make sure you are installing Redis versions that are supported by Tyk. Pl
     protocol: http
     active: true
     proxy:
-    target_url: http://echo.tyk-demo.com:8080/
+    target_url: http://httpbin.org/
     listen_path: /hello-world
     strip_listen_path: true
     ```
@@ -1376,7 +1466,7 @@ Please make sure you are installing Redis versions that are supported by Tyk. Pl
     kubectl apply -f apidef-hello-world.yaml 
     ```
 
-    This step deploys an API definition named hello-world using the provided configuration. It enables a keyless HTTP API proxying requests to http://echo.tyk-demo.com:8080/ and accessible via the path /hello-world.
+    This step deploys an API definition named hello-world using the provided configuration. It enables a keyless HTTP API proxying requests to http://httpbin.org/ and accessible via the path /hello-world.
 
 5. **Explore OpenTelemetry traces in Jaeger**
 
