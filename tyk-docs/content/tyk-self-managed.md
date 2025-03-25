@@ -1638,7 +1638,7 @@ Please refer to [Heroku documentation on containers and registry](https://devcen
 
 ### Install on Microsoft Azure
   
-[Azure](https://azure.microsoft.com/en-us/overview/what-is-azure/) is Microsoft's cloud services platform. It supports both the running of [Ubuntu Servers](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/canonical.0001-com-ubuntu-server-focal?tab=overview), as well as [Docker](https://learn.microsoft.com/en-us/previous-versions/azure/virtual-machines/linux/docker-machine) and [Docker-Compose](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-compose-quickstart).
+[Azure](https://azure.microsoft.com/en-us/explore/) is Microsoft's cloud services platform. It supports both the running of [Ubuntu Servers](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/canonical.0001-com-ubuntu-server-focal?tab=overview), as well as [Docker](https://learn.microsoft.com/en-us/previous-versions/azure/virtual-machines/linux/docker-machine) and [Docker-Compose](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-compose-quickstart).
 
 For more details, see the [Azure Documentation](https://docs.microsoft.com/en-us/azure/).
 
@@ -2713,7 +2713,7 @@ sudo apt-get update
 
 **Note**  
 
-`bionic` is the code name for Ubuntu 18.04. Please substitute it with your particular [ubuntu release](https://wiki.ubuntu.com/Releases), e.g. `focal`.
+`bionic` is the code name for Ubuntu 18.04. Please substitute it with your particular [ubuntu release](https://releases.ubuntu.com/), e.g. `focal`.
 
 {{< /note >}}
 
@@ -2990,7 +2990,7 @@ sudo apt-get update
 
 **Note**  
 
-`bionic` is the code name for Ubuntu 18.04. Please substitute it with your particular [ubuntu release](https://wiki.ubuntu.com/Releases), e.g. `focal`.
+`bionic` is the code name for Ubuntu 18.04. Please substitute it with your particular [ubuntu release](https://releases.ubuntu.com/), e.g. `focal`.
 
 {{< /note >}}
 
@@ -3161,7 +3161,7 @@ deb-src https://packagecloud.io/tyk/tyk-gateway/ubuntu/ bionic main
 
 
 
-`bionic` is the code name for Ubuntu 18.04. Please substitute it with your particular [ubuntu release](https://wiki.ubuntu.com/Releases), e.g. `focal`.
+`bionic` is the code name for Ubuntu 18.04. Please substitute it with your particular [ubuntu release](https://releases.ubuntu.com/), e.g. `focal`.
 
 {{< /note >}}
 
