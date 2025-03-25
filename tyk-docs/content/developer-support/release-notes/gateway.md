@@ -2645,7 +2645,7 @@ This release primarily focuses on bug fixes. For a comprehensive list of changes
 
 Tyk Gateway now offers [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) compliance. For further
 details please consult [Tyk API Management
-FIPS support]({{< ref "developer-support/release-notes/special-releases#fips-releases" >}}).
+FIPS support]({{< ref "developer-support/release-types/fips-release" >}}).
 
 #### Dependencies
 
@@ -2717,7 +2717,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Added FIPS compliance</summary>
 
-Added [FIPS compliance]({{< ref "developer-support/release-notes/special-releases#fips-releases" >}}) for Tyk Gateway.
+Added [FIPS compliance]({{< ref "developer-support/release-types/fips-release" >}}) for Tyk Gateway.
 
 </details>
 </li>
@@ -3125,7 +3125,7 @@ dependencies are used to provide plugin compiler functionality.
 
 ##### Tyk OAS APIs Compatibility Caveats - Tyk OSS {#TykOAS-v5.3.0}
 
-This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "developer-support/release-notes/special-releases#early-access-features" >}}).
+This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "developer-support/release-types/early-access-feature" >}}).
 
 For licensed deployments (Tyk Cloud, Self Managed including MDCB), please refer to the [release notes of Tyk Dashboard 5.3.0]({{<ref "developer-support/release-notes/dashboard#530-release-notes">}}).
 
@@ -3260,7 +3260,7 @@ elevate your experience with Tyk Gateway. For a comprehensive list of changes, p
 ##### Tyk OAS Feature Maturity
 
 Tyk OAS is now out of [Early
-Access]({{< ref "developer-support/release-notes/special-releases#early-access-features" >}}) as we have reached feature maturity.
+Access]({{< ref "developer-support/release-types/early-access-feature" >}}) as we have reached feature maturity.
 You are now able to make use of the majority of Tyk Gateway's features from your Tyk OAS APIs, so they are a credible alternative
 to the legacy Tyk Classic APIs.
 
@@ -3775,7 +3775,7 @@ links to API documentation and FAQs. You can copy it from the previous release. 
 **Attention**: Please read carefully this section. We have two topics to report:
 
 #### Early Access Features:
-Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "developer-support/release-notes/special-releases#early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
+Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{< ref "developer-support/release-types/early-access-feature" >}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
@@ -3816,7 +3816,7 @@ Fixed an issue where custom keys over 24 characters in length were deleted from 
 **Attention**: Please read carefully this section. We have two topics to report:
 
 #### Early Access Features:
-Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "developer-support/release-notes/special-releases#early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
+Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{< ref "developer-support/release-types/early-access-feature" >}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
@@ -3878,7 +3878,7 @@ Fixed a bug that was introduced in the fix applied to the URL Rewrite middleware
 **Attention**: Please read carefully this section. We have two topics to report:
 
 #### Early Access Features:
-Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "developer-support/release-notes/special-releases#early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
+Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{< ref "developer-support/release-types/early-access-feature" >}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
@@ -3981,7 +3981,7 @@ Fixed a minor issue with Go Plugin virtual endpoints where a runtime log error w
 **Attention**: Please read carefully this section. We have two topics to report:
 
 #### Early Access Features:
-Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "developer-support/release-notes/special-releases#early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
+Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{< ref "developer-support/release-types/early-access-feature" >}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
@@ -4108,7 +4108,7 @@ Fixed an issue where a duplicate error message was reported when a custom Go plu
 **Attention**: Please read carefully this section. We have two topics to report:
 
 #### Early Access Features:
-Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "developer-support/release-notes/special-releases#early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
+Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{< ref "developer-support/release-types/early-access-feature" >}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
@@ -4234,7 +4234,7 @@ Fixed a bug where, if you created a key which provided access to an inactive or 
 **Attention**: Please read carefully this section. We have two topics to report:
 
 #### Early Access Features:
-Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "developer-support/release-notes/special-releases#early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
+Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{< ref "developer-support/release-types/early-access-feature" >}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
@@ -4457,7 +4457,7 @@ Fixed a critical issue in MDCB v2.3 deployments, relating to *Data Plane* stabil
 Our Gateway is using [Golang 1.19](https://tip.golang.org/doc/go1.19) programming language starting with the 5.1 release. This brings improvements to the code base and allows us to benefit from the latest features and security enhancements in Go. Don’t forget that, if you’re using GoPlugins, you'll need to [recompile]({{< ref "api-management/plugins/golang#upgrading-your-tyk-gateway" >}}) these to maintain compatibility with the latest Gateway.
 
 #### Early Access Features:
-Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "developer-support/release-notes/special-releases#early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation.
+Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{< ref "developer-support/release-types/early-access-feature" >}}) for specific details. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
@@ -5154,7 +5154,7 @@ If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref
 #### Release Highlights
 
 ##### OpenAPI as a native API definition format
-Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 we now support defining APIs using the Open API Specification (OAS) as well, which can offer significant time and complexity savings. [This is an early access capability]({{< ref "developer-support/release-notes/special-releases#early-access-features" >}}).
+Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 we now support defining APIs using the Open API Specification (OAS) as well, which can offer significant time and complexity savings. [This is an early access capability]({{< ref "developer-support/release-types/early-access-feature" >}}).
 
 As we extend our OAS support, we would very much like your feedback on how we can extend and update to best meet your needs: .
 
