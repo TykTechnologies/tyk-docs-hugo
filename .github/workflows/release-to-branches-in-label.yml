@@ -6,6 +6,7 @@ on:
     branches:
       - master
       - main
+      - letz-release-now
     types:
       - closed
 
