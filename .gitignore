@@ -22,3 +22,5 @@ changed-files.txt
 !scripts/docs-rule-engine/package-lock.json
 !scripts/pr-review-bot/package.json
 !scripts/pr-review-bot/package-lock.json
+!scripts/eod-report-generator/package.json
+!scripts/eod-report-generator/package-lock.json

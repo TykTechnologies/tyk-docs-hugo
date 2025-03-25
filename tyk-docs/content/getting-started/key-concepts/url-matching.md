@@ -34,14 +34,14 @@ When configuring APIs, precise URL path matching helps developers:
 URL path matching is fundamental to the behavior of various Tyk middleware, including:
 
 - [Granular access control]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}})
-- [Allow List]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}})
-- [Block List]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware" >}})
-- [Request and Response transformation]({{< ref "advanced-configuration/transform-traffic" >}})
+- [Allow List]({{< ref "api-management/traffic-transformation#allow-list-overview" >}})
+- [Block List]({{< ref "api-management/traffic-transformation#block-list-overview" >}})
+- [Request and Response transformation]({{< ref "api-management/traffic-transformation#" >}})
 
 {{< note success >}}
 **Note**  
 
-The [URL Rewriting]({{< ref "transform-traffic/url-rewriting#how-url-rewriting-works" >}}) middleware's
+The [URL Rewriting]({{< ref "api-management/traffic-transformation#working-13" >}}) middleware's
 rule check implements regular expression matching only: it does not apply URL path matching logic and is not
 affected by the configurations described in this section
 {{< /note >}}

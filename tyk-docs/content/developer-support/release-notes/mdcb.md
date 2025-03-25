@@ -173,7 +173,7 @@ There are no deprecations in this release, however with the introduction of new 
 
 ##### Recommendations for users:
 
-- Migrate to new [health check]({{< ref "tyk-multi-data-centre/setup-controller-data-centre#health-check" >}}) endpoints in order to get more detailed information. For Kubernetes users, use Helm Charts v1.6 to upgrade MDCB to set liveness and readiness probes of MDCB deployment to the new health check endpoints.
+- Migrate to new [health check]({{< ref "api-management/mdcb#health-check" >}}) endpoints in order to get more detailed information. For Kubernetes users, use Helm Charts v1.6 to upgrade MDCB to set liveness and readiness probes of MDCB deployment to the new health check endpoints.
 
 #### Upgrade instructions
 If you are using a 2.6.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.6.0 and upgrade directly to this release.
@@ -181,7 +181,7 @@ If you are using a 2.6.x version, we advise you to upgrade ASAP to this latest r
 #### Release Highlights
 
 ##### New Health check probes
-Two new [health check]({{< ref "tyk-multi-data-centre/setup-controller-data-centre#health-check" >}}) endpoints have been added to improve monitoring and diagnostics:
+Two new [health check]({{< ref "api-management/mdcb#health-check" >}}) endpoints have been added to improve monitoring and diagnostics:
 
 1. `/liveness`: This endpoint provides a quick check to determine if the MDCB application is alive and running.
 2. `/readiness`: This endpoint offers a detailed status of components and dependencies required for MDCB to serve traffic. It includes status checks for:
@@ -192,7 +192,7 @@ Two new [health check]({{< ref "tyk-multi-data-centre/setup-controller-data-cent
 These new endpoints allow for more granular monitoring of MDCB's operational status, enabling quicker identification and resolution of potential issues.
 
 ##### New Configuration Access Endpoint
-Two new `/config` and `/env` [endpoints]({{< ref "tyk-multi-data-centre/setup-controller-data-centre#check-mdcb-configurations" >}}) have been implemented, allowing developers to access the current configuration state of the MDCB instance in real-time. This feature provides:
+Two new `/config` and `/env` [endpoints]({{< ref "api-management/mdcb#check-mdcb-configurations" >}}) have been implemented, allowing developers to access the current configuration state of the MDCB instance in real-time. This feature provides:
 
 - Secure access to configuration data
 - Automatic redaction of sensitive information
@@ -200,7 +200,7 @@ Two new `/config` and `/env` [endpoints]({{< ref "tyk-multi-data-centre/setup-co
 
 This addition enhances debugging capabilities and provides valuable insights into the MDCB instance's current settings.
 
-Please refer to the [changelog]({{< ref "#Changelog-v2.7.0">}}) below.
+Please refer to the [changelog]({{< ref "#Changelog-v2.7.0" >}}) below.
 
 #### Downloads
 - [Docker image v2.7.0](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.7.0)
@@ -298,7 +298,7 @@ MDCB 2.6.0 is an update for compatibility for synchronisation with Tyk v5.4 API 
 ##### Comprehensive Data Plane Node Information
 MDCB 2.6 introduces a new `/dataplanes` endpoint that provides a comprehensive view of all data plane nodes connected to MDCB, including crucial metadata and status information for each node. The admin secret is required in the header to access these information.
 
-Please refer to the [changelog]({{< ref "#Changelog-v2.6.0">}}) below.
+Please refer to the [changelog]({{< ref "#Changelog-v2.6.0" >}}) below.
 
 #### Downloads
 - [Docker image v2.6.0](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.6.0)
@@ -385,7 +385,7 @@ There are no deprecations in this release.
 If you are using a 2.4.x or 2.5.0 version, we advise you to upgrade as soon as possible to this latest release. If you are on an older version, you should skip 2.5.0 and upgrade directly to this release.
 
 #### Release Highlights
-This release contains bug fixes as detailed in the [changelog]({{< ref "#Changelog-v2.5.1">}}) below.
+This release contains bug fixes as detailed in the [changelog]({{< ref "#Changelog-v2.5.1" >}}) below.
 
 #### Downloads
 - [Docker image v2.5.1](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.5.1)
@@ -461,7 +461,7 @@ We have upgraded mongo-go driver to [mongo-go v1.13.1](https://github.com/mongod
 ##### Security Fixes
 We have fixed a security issue affecting MDCB v2.2.0 to v2.4.x, where certain per-API access rights from policies are not properly relayed to edge gateways. We strongly recommend upgrading to MDCB version 2.5.0 to ensure the proper enforcement of per-API access rights across all gateways in your deployment.
 
-Please refer to the [changelog]({{< ref "#Changelog-v2.5.0">}}) below.
+Please refer to the [changelog]({{< ref "#Changelog-v2.5.0" >}}) below.
 
 #### Downloads
 - [Docker image v2.5.0](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.5.0)
@@ -544,7 +544,7 @@ MDCB 2.4.x supports Tyk API definitions up to Tyk Gateway v5.3.0. Please use MDC
    
 MDCB uses `mongo-go` as the default MongoDB driver from v2.5.0. This provides support for MongoDB 4.4.x, 
 5.0.x, 6.0.x, 7.0.x. If you are using older MongoDB versions e.g. 3.x, please set MongoDB driver to `mgo`. 
-[MongoDB supported versions](https://tyk.io/docs/tyk-self-managed#supported-versions#supported-versions) 
+[MongoDB supported versions]({{< ref "tyk-self-managed#supported-versions" >}}) 
 page provides details on how to configure MongoDB drivers in Tyk.
  </details>
  </li>
@@ -630,7 +630,7 @@ There are no deprecations in this release.
 If you are using a 2.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.4.0 and upgrade directly to this release.
 
 #### Release Highlights
-This release enhances compatibility as detailed in the [changelog]({{< ref "#Changelog-v2.4.2">}}) below.
+This release enhances compatibility as detailed in the [changelog]({{< ref "#Changelog-v2.4.2" >}}) below.
 
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-mdcb-docker/v2.4.2/images/sha256-bdd708718153fdc25d13573d280fb5a715f11b1d2c97c6d59837d8dd83bf3c6c?context=explore)
@@ -664,7 +664,7 @@ There are no deprecations in this release.
 If you are using a 2.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.4.0 and upgrade directly to this release.
 
 #### Release Highlights
-This release enhances compatibility as detailed in the [changelog]({{< ref "#Changelog-v2.4.1">}}) below.
+This release enhances compatibility as detailed in the [changelog]({{< ref "#Changelog-v2.4.1" >}}) below.
 
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-mdcb-docker/v2.4.1/images/sha256-2debf08c95c46a4662a00b2193ee142998826ed7c5e2bb4a4633737c0a4de2e3?context=explore)
@@ -690,7 +690,7 @@ There are no deprecations in this release.
 If you are using a 2.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.4.0 and upgrade directly to this release.
 
 #### Release Highlights
-MDCB 2.4.0 is an update for compatibility for synchronisation with Tyk v5.2 API Definitions. It also enables gateway information visualisation on Tyk Dashboard v5.2+. Please refer to the [changelog]({{< ref "#Changelog-v2.4.0">}}) below.
+MDCB 2.4.0 is an update for compatibility for synchronisation with Tyk v5.2 API Definitions. It also enables gateway information visualisation on Tyk Dashboard v5.2+. Please refer to the [changelog]({{< ref "#Changelog-v2.4.0" >}}) below.
 
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-mdcb-docker/v2.4.0/images/sha256-b5fad5b4c1c8b912999816ab51ff51e62fdd733fc43256187f22e1218b287f26?context=explore)

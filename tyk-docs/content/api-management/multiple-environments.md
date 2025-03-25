@@ -38,7 +38,7 @@ You can use sharding to very quickly publish an API from a `development` system 
 
 With Tyk Community Edition and Tyk Pro, these clusters must all share the same Redis DB.
 
-If you are an Enterprise user, then you can go a step further and use the [Tyk Multi Data Center Bridge]({{< ref "tyk-multi-data-centre#managing-geographically-distributed-gateways-to-minimize-latency-and-protect-data-sovereignty" >}}) to have full multi-DC, multi-zone cluster segmentation, and manage APIs in different segments across different database back-ends.
+If you are an Enterprise user, then you can go a step further and use the [Tyk Multi Data Center Bridge]({{< ref "api-management/mdcb#managing-geographically-distributed-gateways-to-minimize-latency-and-protect-data-sovereignty" >}}) to have full multi-DC, multi-zone cluster segmentation, and manage APIs in different segments across different database back-ends.
 
 ### Analytics and Reporting
 
@@ -119,7 +119,7 @@ The ID you use in with any Dashboard API integrations will change as the documen
 
 ### Use Tyk-Sync
 
-You can also use our new Tyk-Sync tool which allows you to sync your APIs (and Policies) with a Version Control System (VCS). You can then move your APIs between environments. See [Tyk-Sync]({{< ref "/api-management/automations/sync" >}}) for more details.
+You can also use our new Tyk-Sync tool which allows you to sync your APIs (and Policies) with a Version Control System (VCS). You can then move your APIs between environments. See [Tyk-Sync]({{< ref "api-management/automations/sync" >}}) for more details.
 
 ## Move Keys Between Environments 
 
@@ -275,13 +275,13 @@ As you can see, under the hood, the policy has been migrated correctly with targ
 
 ### Use Tyk-Sync
 
-You can also use our new Tyk-Sync tool which allows you to sync your Policies (and APIs) with a Version Control System (VCS). You can then move your Policies between environments. See [Tyk-Sync]({{< ref "/api-management/automations/sync" >}}) for more details.
+You can also use our new Tyk-Sync tool which allows you to sync your Policies (and APIs) with a Version Control System (VCS). You can then move your Policies between environments. See [Tyk-Sync]({{< ref "api-management/automations/sync" >}}) for more details.
 
 ## Gateway Sharding
 
 With Tyk, it is easy to enable a sharded configuration, you can deploy Gateways which selectively load APIs.  This unlocks abilities to run Gateways in multiple zones, all connected to the same Control Plane.  This allows for GDPR deployments, development/test Gateways, or even DMZ/NON-DMZ Gateways.
 
-Couple this functionality with the Tyk [Multi Data Center Bridge]({{< ref "tyk-multi-data-centre#managing-geographically-distributed-gateways-to-minimize-latency-and-protect-data-sovereignty" >}}) to achieve a global, multi-cloud deployment.
+Couple this functionality with the Tyk [Multi Data Center Bridge]({{< ref "api-management/mdcb#managing-geographically-distributed-gateways-to-minimize-latency-and-protect-data-sovereignty" >}}) to achieve a global, multi-cloud deployment.
 
 ### Configure a Gateway as a shard
 
