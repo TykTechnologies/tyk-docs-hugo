@@ -249,7 +249,7 @@ Each change log item should be expandable. The first line summarises the changel
 
 The `TykOasApiDefinition` custom resource allows you to manage Tyk OAS APIs directly within your Kubernetes environment. You can now categorize APIs, manage multiple versions, and simplify SSL certificate management by referencing Kubernetes secrets. This enhancement offers a Kubernetes-native approach to managing Tyk APIs, streamlining operations and reducing the complexity of versioning and certificate handling across different environments.
 
-Learn More: [Create Tyk OAS API]({{< ref "api-management/automations/operator#set-up-oas-api" >}})
+Learn More: [Create Tyk OAS API]({{< ref "api-management/automations/operator#set-up-tyk-oas-api" >}})
 </details>
 </li>
 <li>
