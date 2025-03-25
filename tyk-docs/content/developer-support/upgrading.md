@@ -71,7 +71,7 @@ Use the table below to find the appropriate upgrade guide for your platform:
 |                      | [Hybrid]({{< ref "#tyk-hybrid" >}}) | Guide for Hybrid environments with Gateway Data Plane(s) deployed locally or with a third-party cloud provider |
 |                      | [Go plugin]({{< ref "#go-plugin" >}}) | Guide for upgrading Go plugin on the Tyk Cloud |
 | **Tyk Self Managed** | [RHEL and CentOS]({{< ref "#upgrade-linux-redhat-centos" >}}) | Guide for RPM-based Linux distributions |
-|                      | [Debian and Ubuntu]({{< ref "##upgrade-linux-debian" >}}) | Guide for DEB-based Linux distributions |
+|                      | [Debian and Ubuntu]({{< ref "#upgrade-linux-debian" >}}) | Guide for DEB-based Linux distributions |
 |                      | [Docker]({{< ref "#docker" >}}) | Guide for upgrading Docker images |
 |                      | [Helm]({{< ref "#helm" >}}) | Guide for upgrading Helm Charts |
 |                      | [Kubernetes]({{< ref "#kubernetes" >}}) | Guide for upgrading Kubernetes environment |
