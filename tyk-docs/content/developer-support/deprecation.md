@@ -8,7 +8,7 @@ aliases:
 
 ## Packages
 
-TODO: Add description about packages.
+Deb and rpm packages hosted on [packagecloud.io](https://packagecloud.io/tyk/).
 
 | Feature/Component  | Deprecation date  | Alternative  | Reason for deprecation | End of Life date  | Notes  |
 | :---- | :---- | :---- | :---- | :---- | :---- |
