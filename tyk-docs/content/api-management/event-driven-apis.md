@@ -258,10 +258,53 @@ The [tyk-pro-docker-demo](https://github.com/TykTechnologies/tyk-pro-docker-demo
 
 ## How It Works
 
+Tyk Streams is implemented as a middleware component in the Tyk Gateway. The architecture consists of the following logical components:
 
+1. **Stream Middleware**: A middleware component that intercepts API requests/responses. This is the entry point for stream processing, responsible for routing requests to the appropriate stream handlers.
+
+2. **Stream Manager**: Manages the lifecycle of stream instances (starting, stopping, resetting streams).
+
+3. **Stream Instance**: An individual stream instance that processes data according to its configuration.
+
+4. **Stream Analytics**: Captures analytics data for streams. Record API usage statistics through streams. Track performance metrics. Integrate with Tyk's existing analytics system
+
+<div style="display: flex; justify-content: center;">
+{{< img src="/img/streams/tyk-streams-how-it-works.png" alt="How Tyk Streams work" width="500px" height="500px" >}}
+</div>
 
 ### Request Processing Flow
 
+<div style="display: flex; justify-content: center;">
+{{< img src="/img/streams/tyk-streams-request-processing-flow.png" alt="Tyk Streams Request Processing Flow" height="500px" >}}
+</div>
+
+1. **Initial Request Handling:** 
+
+    When a request arrives at the Tyk Gateway, it goes through the standard middleware chain. If the API has streaming enabled, the request eventually reaches the streaming middleware.
+
+    In the overall Tyk middleware chain, the Streaming middleware runs after authentication and rate limiting but before the request is proxied to the upstream service. This allows it to:
+
+    1. Authenticate and authorize requests before streaming.
+    2. Apply rate limits to streaming connections.
+    3. Intercept requests that should be handled by streams before they reach the upstream.
+
+2. **Stream Configuration Loading:**
+
+    The middleware first loads the stream configuration from the API definition.
+
+3. **Stream Manager and Stream Creation**
+
+    - For each unique configuration, a Stream Manager is either created or retrieved from cache.
+
+    - The Stream Manager initializes individual streams based on the configuration.
+
+6. **Request Path Matching and Stream Execution:**
+
+    When a request comes in, the middleware checks if the path matches any registered stream routes When a route is matched, the corresponding handler is executed. The handler is wrapped with analytics tracking.
+
+7. **Stream Response**
+
+    The result of Stream handler execution is is streamed back to the client.
 
 ## Configuration Options
 
@@ -778,17 +821,6 @@ events.
 - **Backend Services**: The underlying services and systems that expose APIs or consume events.
 
 ## Key Concepts
-
-### Tyk Streams as middleware in Tyk API Gateway
-
-Tyk Streams operates as middleware within the Tyk API Gateway, providing the following functionalities:
-
-- **Middleware**: Tyk Streams introduces new middleware components that handle async-specific functionality such as
-protocol mediation, event transformations, and pub/sub messaging.
-- **API Definitions**: Tyk Streams is configured using the standard Tyk OAS format, including additional fields tailored
-for async protocols and event configurations.
-- **Analytics**: Async API traffic is captured and reported via *Prometheus*, *OpenTelemetry* or *StatsD*, providing
-visibility into usage, performance, and errors.
 
 ### Connectors and Protocol Mediation
 
