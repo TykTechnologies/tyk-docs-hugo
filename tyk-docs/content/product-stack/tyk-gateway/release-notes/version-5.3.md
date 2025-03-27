@@ -1659,6 +1659,15 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 
 Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
 <ul>
+
+  <li>
+<details>
+<summary>Added GODEBUG Flags for Backward Compatibility with Deprecated Ciphers</summary>
+
+We have added GODEBUG flags to enable deprecated insecure ciphers by default for backward compatibility. Existing users will not be affected. New users or those who wish to override these settings can do so at runtime using environment variables.
+</details>
+</li>
+
 <li>
 <details>
 <summary>Additional features now supported when working with Tyk OAS APIs</summary>
