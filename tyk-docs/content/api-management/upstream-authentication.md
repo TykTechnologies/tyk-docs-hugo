@@ -31,8 +31,14 @@ When using Tyk, you can choose from a range of authentication methods for each u
 {{< note success >}}
 **Note**  
 
-Note that OAuth 2.0 Password Grant is prohibited in the [OAuth 2.0 Security Best Practice](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics-13#section-3.4") but is supported by Tyk for use with legacy upstream services.
+Upstream Basic Authentication and Oauth 2.0 support are only available to licensed users, via the Tyk Dashboard. These features are not available to open source users.
 {{< /note >}}
+
+{{< warning success >}}
+**Warning**  
+
+Note that OAuth 2.0 Password Grant is prohibited in the [OAuth 2.0 Security Best Practice](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics-13#section-3.4") but is supported by Tyk for use with legacy upstream services.
+{{< /warning >}}
 
 
 ## Mutual TLS (mTLS)
@@ -631,7 +637,7 @@ An API request made using Basic Authentication will have an `Authorization` head
 
 The `<credentials>` are a base64 encoded concatenation of a client username and password, joined by a single colon `:`.
 
-Tyk supports Basic Authentication as a method for authenticating **clients** with the **Gateway** - you can use Tyk Gateway or Dashboard to create Basic Auth users, as explained in the [documentation]({{< ref "api-management/client-authentication/#registering-basic-authentication-user-credentials-with-tyk" >}}).
+Tyk supports Basic Authentication as a method for authenticating **clients** with the **Gateway** - you can use Tyk Gateway or Dashboard to create Basic Auth users, as explained in the [documentation]({{< ref "api-management/client-authentication#registering-basic-authentication-user-credentials-with-tyk" >}}).
 
 If your **upstream service** is protected using Basic Authentication then similarly, Tyk will need to provide user credentials, registered with the upstream, in the request.
 

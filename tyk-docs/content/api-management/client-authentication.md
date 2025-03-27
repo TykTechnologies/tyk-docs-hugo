@@ -70,7 +70,7 @@ The API request processing flow within Tyk Gateway consists of a [chain of middl
 
 The OpenAPI description can contain a list of [securitySchemes](https://spec.openapis.org/oas/v3.0.3.html#security-scheme-object) which define the authentication methods to be used for the API; the detailed configuration of the Tyk authentication middleware is set in the [server.authentication]({{< ref "api-management/gateway-config-tyk-oas#authentication" >}}) section of the Tyk Vendor Extension.
 
-You must enable client authentication using the `server.authentication.enabled` flag and then configure the appropriate authentication method as indicated in the relevant section of this document. When creating a Tyk OAS API from an OpenAPI description, Tyk can automatically enable authentication based upon the content of the OpenAPI description as described [here]({{< ref "api-management/gateway-config-managing-oas#create-a-secured-api-when-importing-an-openapi-document" >}}).
+You must enable client authentication using the `server.authentication.enabled` flag and then configure the appropriate authentication method as indicated in the relevant section of this document. When creating a Tyk OAS API from an OpenAPI description, Tyk can automatically enable authentication based upon the content of the OpenAPI description as described [here]({{< ref "api-management/gateway-config-managing-oas#importing-an-openapi-description-to-create-an-api" >}}).
 
 When using Tyk Classic APIs, each authentication middleware has its own fields within the API definition
 

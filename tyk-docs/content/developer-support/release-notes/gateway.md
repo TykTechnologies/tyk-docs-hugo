@@ -4965,7 +4965,7 @@ Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 
 
 As we extend our OAS support, we would very much like your feedback on how we can extend and update to best meet your needs: .
 
-This capability is available in both the open source and paid versions of Tyk. See our [High Level Concepts]({{< ref "api-management/gateway-config-managing-oas#" >}}) for more details, or jump to [OAS Getting Started documentation]({{< ref "api-management/gateway-config-managing-oas#create-a-tyk-oas-api" >}}).
+This capability is available in both the open source and paid versions of Tyk. See our [Tyk OAS documentation]({{< ref "api-management/gateway-config-tyk-oas" >}}) for more details.
 
 
 ##### MDCB Synchroniser

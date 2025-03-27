@@ -81,7 +81,7 @@ Want to learn more from one of our team of engineers?
 
 In Tyk v4.1 we introduced support for APIs defined according to the [OpenAPI Specification v3.0.3](https://spec.openapis.org/oas/v3.0.3) (OAS).  
 This introduces a standard way to describe the vendor-agnostic elements of an API (the OpenAPI Definition, stored as an OpenAPI Document); we take this and add Tyk-specific configuration options to create the *Tyk OAS API Definition*. You can import your own OpenAPI document and Tyk will use this to generate the Tyk OAS API Definition.  
-For a detailed tutorial on using OAS with Tyk Gateway, check out our guide to [creating a Tyk OAS API Definition]({{< ref "api-management/gateway-config-managing-oas#using-the-tyk-dashboard-api" >}}).
+For details on using Tyk OAS with Tyk Gateway, check out our guide to [working with Tyk OAS APIs]({{< ref "api-management/gateway-config-managing-oas" >}}).
 
 {{< /note >}}
 
@@ -558,3 +558,23 @@ As well as importing new APIs, with Tyk, you can also use import to create a new
 7. You will see all the endpoints are saved for your new version.
 
 {{< img src="/img/oas/version-endpoints.png" alt="Version Endpoints" >}}
+
+##### Import from an OpenAPI v2.0 Document
+
+1. From the Import API screen, select OpenAPI.
+
+    {{< img src="/img/oas/open-api-format.png" alt="Import OAS 2.0 API" >}}
+
+2. Paste your OAS v2.0 compliant definition into the code editor.
+
+    {{< img src="/img/oas/oas-2-code.png" alt="OAS 2.0 definition in Editor" >}}
+
+3. Note that the Dashboard has detected that an OAS v2.0 definition has been imported and you need to specify an upstream URL field to proceed.
+
+    {{< img src="/img/oas/upstream-url.png" alt="Upstream URL" >}}
+
+4. Click **Import API**. 
+
+    {{< img src="/img/oas/import-api-button.png" alt="Import API" >}}
+
+    Your API will be added to your list of APIs.
