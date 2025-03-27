@@ -153,6 +153,10 @@ menu:
             path: /api-management/gateway-config-managing-classic
             category: Page
             show: True
+          - title: "Migrate from Tyk Classic"
+            path: /api-management/migrate-tyk-classic
+            category: Page
+            show: True            
           - title: "Deploy APIs"
             category: Page
             show: True
