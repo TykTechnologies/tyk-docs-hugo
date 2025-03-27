@@ -134,7 +134,7 @@ aliases:
     Such problems cause internal request processing queues, which cause latency growth (highly recommend measure it). 
     And in some cases latency can grow so big, that some clients can just disconnect/timeout because of it. 
 
-    Additionally, highly recommend read the following blog post https://tyk.io/performance-tuning-your-tyk-api-gateway/.
+    Additionally, highly recommend read the following blog post https://tyk.io/blog/performance-tuning-your-tyk-api-gateway/.
     For example, you can trade memory for performance, and context switch reduction by tuning garbage collector to run less frequently: see `Tuning Tyk’s Garbage Collector` section.
 
 
@@ -1187,10 +1187,7 @@ We also support limited customisation of the error codes and messages returned b
 
     **Solution**
 
-    Users are advised to upgrade to the latest version of Tyk. They must also ensure that their Pump is configured with a `purge_delay` and an `optimisation_max_active` value that's greater than 0. Packages are available to download from [Packagecloud.io][1] and further details on how to upgrade can be found [here][2].
-
-    [1]: https://packagecloud.io/tyk
-    [2]: /upgrading-v2-3-v2-2/
+    Users are advised to upgrade to the latest version of Tyk. They must also ensure that their Pump is configured with a `purge_delay` and an `optimisation_max_active` value that's greater than 0. Packages are available to download from [Packagecloud.io](https://packagecloud.io/tyk) and further details on how to upgrade can be found [here]({{< ref "developer-support/upgrading" >}})
 
 6. ##### Pump overloaded
 
@@ -1673,7 +1670,7 @@ As shown above, the `debug` log level mode provides more information which will 
 
 You can access all Tyk release information on the [release notes](https://tyk.io/docs/developer-support/tyk-release-summary/overview/) overview page.
 
-We recommend always using the [Long-Term Support (LTS) release]({{< ref "developer-support/release-notes/special-releases#long-term-support-releases" >}}) for stability and long term support.
+We recommend always using the [Long-Term Support (LTS) release]({{< ref "developer-support/release-types/long-term-support" >}}) for stability and long term support.
 
 ##### Non-LTS versions
 Tyk is backwards compatible, upgrading to newer versions won't turn on new features or change the behavior of your existing environment.
