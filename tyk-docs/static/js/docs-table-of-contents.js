@@ -156,6 +156,7 @@ var buildTableOfContents = function () {
 
 const pageContentContainer = document.querySelector(".page-content__container");
 let highestVisibleHeading = null;
+let fragmentDetected = false;
 
 function activeTocToggle() {
   var tocLabel = $(".toc__label");
@@ -202,6 +203,7 @@ function getActiveId(){
   const fragment = window.location.hash;
   if (fragment) {
     activeId = fragment.slice(1);
+    fragmentDetected = true;
   } else {
     activeId = getHighestHeading();
   }
@@ -275,6 +277,10 @@ function scrollToHighlightedItem() {
 
 //expand the accordion item group
 function expandAccordionClass(AccordionItem){
+  if(fragmentDetected){
+    AccordionItem.addClass("accordion-up");
+    fragmentDetected = false;
+  }
   const parent = AccordionItem.parent();
   // get the first href tag of the parent and add the class accordion up to it
   const parentHref = parent.find("a").first();
@@ -285,6 +291,10 @@ function expandAccordionClass(AccordionItem){
 
 //expand the sub accordion item group
 function expandSubAccordionClass(SubAccordionItem){
+  if(fragmentDetected){
+    SubAccordionItem.addClass("sub-accordion");
+    fragmentDetected = false;
+  }
   const parent = SubAccordionItem.parent();
   // get the first href tag of the parent and add the class accordion up to it
   const parentHref = parent.find("a").first();
