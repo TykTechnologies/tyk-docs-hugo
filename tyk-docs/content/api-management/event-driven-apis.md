@@ -137,7 +137,7 @@ alongside your existing synchronous APIs. It provides a range of capabilities to
 
 <!-- TODO: Fix this quick start and ensure it is executable. -->
 
-In this guide, we will create and secure a **Streams API** using the Tyk Dashboard. TODO: Add that we will working with SSE and add an image of what we will be doing.
+In this guide, we will create a **Streams API** using the Tyk Dashboard. TODO: Add that we will working with SSE and add an image of what we will be doing.
 
 <br>
 
@@ -150,200 +150,148 @@ Our first release of Tyk Streams is now available, and we'd love for you to try 
 
 {{< /note >}}
 
-#### Prerequisites
+### Prerequisites
 
 - **Docker**: We will run the entire Tyk Stack on Docker. For installation, refer to this [guide](https://docs.docker.com/desktop/setup/install/mac-install/).
 - **Git**: A CLI tool to work with git repositories. For installation, refer to this [guide](https://git-scm.com/downloads)
 - **Dashboard License**: We will configure Streams API using Dashboard. [Contact support](https://tyk.io/contact/) to obtain a license.
-- **Familiarity with Tyk Streams concepts**: Such as Input, Output, and  Processor. If you’re not familiar with these concepts, please refer to this [documentation]({{< ref "api-management/stream-config#overview" >}}).
 
-### Install Tyk Demo
-
-The [tyk-demo](https://github.com/TykTechnologies/tyk-demo) repository offers a docker-compose environment you can run locally to explore Tyk streams. Follow the below instructions to set it up.
+### Instructions
 
 1. **Clone Git Repository:**
 
-    Open your terminal and clone the git repository using the below command.
+    The [tyk-demo](https://github.com/TykTechnologies/tyk-demo) repository offers a docker-compose environment you can run locally to explore Tyk streams. Open your terminal and clone the git repository using the below command.
 
     ```bash
     git clone https://github.com/TykTechnologies/tyk-demo
+    cd tyk-demo
     ```
 
 2. **Enable Tyk Streams:**
-    
-    To enable Tyk Streams in Gateway and Dashboard you need to set following configuration in the `.env` file
-    
-    This has been already set up in the `docker-compose` file. But in a self-managed instllation this has to be taken care of.
 
-3. Start the Tyk Streams demo by issuing the following command:
+   By default, Tyk Streams is disabled. To enable Tyk Streams in the Gateway and Dashboard, you need to configure the following settings:
 
+   Create an `.env` file and populate it with the values below:
+
+   ```bash
+   DASHBOARD_LICENCE=<your-dashboard-license>
+   GATEWAY_IMAGE_REPO=tyk-gateway-ee
+   TYK_DB_STREAMING_ENABLED=true
+   TYK_GW_STREAMING_ENABLED=true
+   ```
+
+   - `DASHBOARD_LICENCE`: Add your license key. Contact [support](https://tyk.io/contact/) to obtain a license.
+   - `GATEWAY_IMAGE_REPO`: Tyk Streams is available in the Enterprise Edition of the Gateway.
+   - `TYK_DB_STREAMING_ENABLED` and `TYK_GW_STREAMING_ENABLED`: These must be set to `true` to enable Tyk Streams in the Dashboard and Gateway, respectively. Refer to the [configuration options]({{< ref "" >}}) for more details.
+
+3. **Start Tyk Streams**
+
+    Execute the following command:
     ```bash
     ./up.sh
     ```
 
-4. Open Tyk Dashboard in your browser by visiting `http://localhost:3000` or `http://tyk-dashboard.localhost:3000` and login with the provided **admin** credentials.
+    This process will take a couple of minutes to complete and will display some credentials upon completion. Copy the **username, password, and API key**, and save them for later use.
+    ```
+            ▾ Tyk Demo Organisation
+                  Username : admin-user@example.org
+                  Password : 3LEsHO1jv1dt9Xgf
+          Dashboard API Key : 5ff97f66188e48646557ba7c25d8c601
+    ```
 
-### Create the Streams API
+4. **Verify Setup:**
 
-1. Create a file `streams-api.json` with the below content:
+    Open Tyk Dashboard in your browser by visiting [http://localhost:3000](http://localhost:3000) or [http://tyk-dashboard.localhost:3000](http://tyk-dashboard.localhost:3000) and login with the provided **admin** credentials.
+
+5. **Configure Streams API:**
+
+    Create a file `streams-api.json` with the below content:
 
     ```json
     {
-      "info": {
-        "title": "Streams Authentication",
-        "version": "1.0.0"
-      },
-      "openapi": "3.0.3",
-      "servers": [
-        {
-          "url": "http://tyk-gateway.localhost:8080/streams-authentication/"
-        }
-      ],
-      "x-tyk-streaming": {
-        "streams": {
-          "pipeline-validation": {
-            "input": {
-              "http_server": {
-                "allowed_verbs": [
-                  "POST"
-                ],
-                "path": "/post"
-              }
-            },
-            "output": {
-              "http_server": {
-                "stream_path": "/get/stream"
-              }
-            }
-          }
-        }
-      },
-      "security": [
-        {
-          "authToken": []
-        }
-      ],
-      "paths": {},
-      "components": {
-        "securitySchemes": {
-          "authToken": {
-            "type": "apiKey",
-            "in": "header",
-            "name": "Authorization"
-          }
-        }
-      },
-      "x-tyk-api-gateway": {
+        "components": {},
         "info": {
-          "dbId": "67e3bc2b0187960001f1b022",
-          "id": "42d23def8d3b47044f45670bf18db9ea",
-          "orgId": "5e9d9544a1dcd60001d0ed20",
-          "name": "Streams Authentication",
-          "state": {
-            "active": true,
-            "internal": false
-          }
+            "title": "Test Streams API",
+            "version": "1.0.0"
         },
-        "server": {
-          "authentication": {
-            "enabled": true,
-            "securitySchemes": {
-              "authToken": {
-                "enabled": true
-              }
+        "openapi": "3.0.3",
+        "paths": {},
+        "servers": [
+            {
+                "url": "http://tyk-gateway.localhost:8080/test-streams-api/"
             }
-          },
-          "listenPath": {
-            "strip": true,
-            "value": "/streams-authentication/"
-          }
+        ],
+        "x-tyk-api-gateway": {
+            "info": {
+                "name": "Test Streams API",
+                "state": {
+                    "active": true
+                }
+            },
+            "server": {
+                "listenPath": {
+                    "value": "/test-streams-api/",
+                    "strip": true
+                }
+            },
+            "upstream": {
+              "url": ""
+            }
+        },
+        "x-tyk-streaming": {
+            "streams": {
+                "default_stream": {
+                    "input": {
+                        "http_server": {
+                            "address": "",
+                            "allowed_verbs": [
+                                "POST"
+                            ],
+                            "path": "/post",
+                            "rate_limit": "",
+                            "timeout": "5s"
+                        },
+                        "label": ""
+                    },
+                    "output": {
+                        "http_server": {
+                            "address": "",
+                            "allowed_verbs": [
+                                "GET"
+                            ],
+                            "stream_path": "/get/stream"
+                        },
+                        "label": ""
+                    }
+                }
+            }
         }
-      }
     }
     ```
 
-2. Create the API by sending the executing the below command:
+6. **Create the API:**
+    
+    Create the API by executing the following command. Be sure to replace `<your-api-key>` with the API key you saved earlier:
 
-```bash
-```
+    ```bash
+    curl -H "Authorization: <your-api-key>" -H "Content-Type: application/vnd.tyk.streams.oas" http://localhost:3000/api/apis/streams -d @streams-api.json
+    ```
 
-<!-- 1. Click on **Streams & Events** from the sidebar. This will open a form for creating the Streams API.  
+7. **Test the API:**
 
-   {{< img src="/img/streams/sidebar-navigation.png" alt="Sidebar Navigation" width="670px" height="500px" >}}
-   {{< img src="/img/streams/streams-and-events-wizard.png" alt="Streams & Events Wizard" width="670px" height="500px" >}}
+   Open a terminal and execute the following command to start listening for messages from the Streams API you created:
 
-2. Enter a **unique API name**, select the **Streams** option, and click **Continue**.
+   ```bash
+   curl -N http://tyk-gateway.localhost:8080/test-streams-api/get/stream
+   ```
 
-   {{< img src="/img/streams/streams-option.png" alt="Streams Option" width="670px" height="500px" >}}
+   In a second terminal, execute the command below to send a message to the Streams API. You can run this command multiple times and modify the message to send different messages:
 
-3. On the next screen, configure your Streams API:
+   ```bash
+   curl -X POST http://tyk-gateway.localhost:8080/test-streams-api/post -H "Content-Type: text/plain" -d "Sending Stream Data..."
+   ```
 
-   - **Input**: Select one or more data sources.  
-   - **Processor**: Choose a single processor for handling the data.  
-   - **Output**: Define one or more output destinations.     
-   - For manual configuration, enable the **Advanced** checkbox to create a custom YAML template.  
-
-   {{< img src="/img/streams/selection.png" alt="Output Selection" width="670px" height="500px" >}}
-
-4. Click **Finish** to proceed to the API Details page.
-
-5. On the **API Details page**, review the auto-generated YAML configuration.  
-
-   {{< img src="/img/streams/api-details-page.png" alt="API Details Page" width="670px" height="500px" >}}
-
-6. Configure additional settings:
-
-   - **Authentication**: Choose an authentication mechanism (e.g., API Key, OAuth2).  
-   - **Gateway Status**: Set to **Active** or **Disabled**.
-   - **Access**: Select **Internal** (restricted) or **External** (public) access.
-
-7. Click **Save API**.  
-
-   - The API is now created, and a unique **API ID** is assigned.
-   - The API will appear in the **APIs listing screen**. -->
-
-
-### Secure the API
-
-1. Create the file with below content
-
-```json
-```
-
-2. Create the API by sending the executing the below command:
-
-```bash
-```
-
-<!-- 1. Navigate to **Policies** in the sidebar and click **Add Policy**.  
-
-2. Select the newly created Streams API.  
-
-3. Configure the following:
-
-   - **Limits**: Define **Rate Limiting**, **Throttling**, and **Usage Quota**.
-   - **Configuration**: Provide a policy name and set a key expiration interval.  
-
-   {{< img src="/img/streams/pol-details-page.png" alt="Policy Details Page" width="670px" height="500px" >}}
-   
-4. Click **Create Policy** to save.
-
-5. Go to **Keys** from the sidebar and click **Add Key**.  
-
-6. On the key creation page:
-
-   - Select the newly created policy under the **Access Rights** tab.  
-
-   - Review the applied limits for the API.
-
-7. Click **Create Key**.  
-
-   - A popup will display the **Key Hash** and **Key ID**.  
-   - Use the **Key ID** to access the protected Streams API. -->
-
-### Test the API
-
-
+   Now, you will see the message appear in the terminal window where you are listening for messages.
 
 ## How It Works
 
