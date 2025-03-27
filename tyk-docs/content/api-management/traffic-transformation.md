@@ -54,6 +54,7 @@ aliases:
   - /product-stack/tyk-gateway/middleware/do-not-track-middleware
   - /product-stack/tyk-gateway/middleware/do-not-track-tyk-oas
   - /product-stack/tyk-gateway/middleware/do-not-track-tyk-classic
+  - /api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware
 
   - /concepts/context-variables
   - /advanced-configuration/compose-apis/sample-batch-funtion

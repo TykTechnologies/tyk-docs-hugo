@@ -637,7 +637,7 @@ An API request made using Basic Authentication will have an `Authorization` head
 
 The `<credentials>` are a base64 encoded concatenation of a client username and password, joined by a single colon `:`.
 
-Tyk supports Basic Authentication as a method for authenticating **clients** with the **Gateway** - you can use Tyk Gateway or Dashboard to create Basic Auth users, as explained in the [documentation]({{< ref "api-management/client-authentication/#registering-basic-authentication-user-credentials-with-tyk" >}}).
+Tyk supports Basic Authentication as a method for authenticating **clients** with the **Gateway** - you can use Tyk Gateway or Dashboard to create Basic Auth users, as explained in the [documentation]({{< ref "api-management/client-authentication#registering-basic-authentication-user-credentials-with-tyk" >}}).
 
 If your **upstream service** is protected using Basic Authentication then similarly, Tyk will need to provide user credentials, registered with the upstream, in the request.
 
