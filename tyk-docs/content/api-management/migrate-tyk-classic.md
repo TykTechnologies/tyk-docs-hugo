@@ -86,7 +86,7 @@ There is a known issue in Tyk 5.8.0 that the <b>cancel</b> button does not work 
 
 ## Using the Migration API
 
-You can use the Tyk Dashboard API to convert individual APIs, multiple API, or all APIs stored in your API storage database via the dedicated [/migrate]({{< ref "api-management/migrate-tyk-classic#endpoint" >}}) endpoint.
+You can use the Tyk Dashboard API to convert individual APIs, multiple API, or all APIs stored in your API storage database via the dedicated [/migrate]({{< ref "api-management/migrate-tyk-classic#tyk-dashboard-api-migrate-endpoint" >}}) endpoint.
 
 ### Tyk Dashboard API Migrate Endpoint
 
