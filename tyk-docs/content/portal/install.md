@@ -717,7 +717,7 @@ To install the portal using helm charts, you need to take the following steps:
     ```
 
 ###### Configuration
-Please refer to this [guide]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}) for an explanation of all configuration options.
+Please refer to this [guide]({{< ref "product-stack/tyk-charts/tyk-stack-chart" >}}) for an explanation of all configuration options.
 
 > **Note**: Helm chart supports Enterprise Portal v1.2.0+.
 
@@ -726,7 +726,7 @@ Please refer to this [guide]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}
 {{< warning success >}}
 **Note**
 
-It is recommended to use new helm charts instead of legacy charts. Guide for new charts can be found [here]({{<ref "portal/install#using-new-helm-chart">}})
+It is recommended to use new helm charts instead of legacy charts. Guide for new charts can be found [here]({{< ref "portal/install#using-new-helm-chart" >}})
 
 {{< /warning >}}
 
