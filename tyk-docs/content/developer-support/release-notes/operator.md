@@ -19,7 +19,7 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
-## 1.2 Release Notes
+<!-- ## 1.2 Release Notes
 ### 1.2.0 Release Notes
 
 #### Release Date XX March 2025
@@ -164,7 +164,7 @@ Helm chart has been fixed and leader election works by default again.
 </li>
 </ul>
 
----
+--- -->
 
 ## 1.1 Release Notes
 ### 1.1.0 Release Notes

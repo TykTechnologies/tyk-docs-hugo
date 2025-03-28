@@ -17,7 +17,7 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
-## 2.1 Release Notes
+<!-- ## 2.1 Release Notes
 
 ### 2.1.0 Release Notes
 
@@ -30,7 +30,7 @@ Tyk Sync 2.1 introduces performance improvements and enhanced control over API s
 Please refer to the [changelog]({{< ref "#Changelog-v2.1.0">}}) below for detailed explanation.
 
 #### Breaking Changes
-<!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
+
 This release has no breaking changes.
 
 #### Deprecations
@@ -115,7 +115,7 @@ Fixed an issue where API synchronization was unnecessarily sending update or cre
 </li>
 </ul>
 
-
+ -->
 ## 2.0 Release Notes
 
 ### 2.0.4 Release Notes

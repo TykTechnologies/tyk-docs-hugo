@@ -16,7 +16,7 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
-## 1.7 Release Notes
+<!-- ## 1.7 Release Notes
 
 ### 1.7.0 Release Notes
 
@@ -100,7 +100,7 @@ Previously, TIB assigned a user to the last matched group when multiple groups w
 </ul>
 
 ---
-
+ -->
 ## 1.6 Release Notes
 
 ### 1.6.1 Release Notes

@@ -20,8 +20,8 @@ aliases:
 ## Support Lifetime
 Our minor releases are supported until our next minor comes out. 
 
----
-## 3.0 Release Notes
+<!-- --- -->
+<!-- ## 3.0 Release Notes
 
 ### 3.0.0 Release Notes
 
@@ -199,7 +199,7 @@ Fixed an issue where TYK_DB_TYKAPI_HOST and TYK_DB_TYKAPI_PORT environment varia
 </details>
 </li>
 
-</ul>
+</ul> -->
 
 <!-- ##### Security Fixes
 This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
