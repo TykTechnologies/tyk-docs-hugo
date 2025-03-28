@@ -4062,7 +4062,7 @@ Reference the *Tyk OAS API definition* from within your custom *Go Plugins*, bri
 
 ##### Configure Caching For Each API Endpoint
 
-We’ve added the ability to [configure]({{< ref "api-management/gateway-optimizations#configuring-the-middleware-in-the-tyk-oas-api-definition" >}}) per-endpoint timeouts for Tyk’s response cache, giving you increased flexibility to tailor your APIs to your upstream services.
+We’ve added the ability to [configure]({{< ref "api-management/response-caching#configuring-the-middleware-in-the-tyk-oas-api-definition" >}}) per-endpoint timeouts for Tyk’s response cache, giving you increased flexibility to tailor your APIs to your upstream services.
 
 ##### Added Header Management in Universal Data Graph
 
@@ -4153,7 +4153,7 @@ Added *OpenTelemetry* support for GraphQL. This is activated by setting [opentel
 <details>
 <summary>Add support to configure granual control over cache timeout at the endpoint level</summary>
 
-Added a new [timeout option]({{< ref "api-management/gateway-optimizations#configuring-the-middleware-in-the-tyk-oas-api-definition" >}}), offering granular control over cache timeout at the endpoint level.
+Added a new [timeout option]({{< ref "api-management/response-caching#configuring-the-middleware-in-the-tyk-oas-api-definition" >}}), offering granular control over cache timeout at the endpoint level.
 </details>
 </li>
 <li>
@@ -4965,7 +4965,7 @@ Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 
 
 As we extend our OAS support, we would very much like your feedback on how we can extend and update to best meet your needs: .
 
-This capability is available in both the open source and paid versions of Tyk. See our [High Level Concepts]({{< ref "api-management/gateway-config-managing-oas#" >}}) for more details, or jump to [OAS Getting Started documentation]({{< ref "api-management/gateway-config-managing-oas#create-a-tyk-oas-api" >}}).
+This capability is available in both the open source and paid versions of Tyk. See our [Tyk OAS documentation]({{< ref "api-management/gateway-config-tyk-oas" >}}) for more details.
 
 
 ##### MDCB Synchroniser

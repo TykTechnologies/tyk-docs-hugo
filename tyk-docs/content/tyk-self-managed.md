@@ -6054,6 +6054,7 @@ In Tyk Gateway's configuration file (`tyk.conf`), you can retrieve values from K
 - `security.private_certificate_encoding_secret`
 - `db_app_conf_options.connection_string`
 - `policies.policy_connection_string`
+- `slave_options.api_key`
 
 To reference the *Value* assigned to a *Key* in one of the KV stores from the Gateway configuration file use the following notation:
 - Consul: `consul://path/to/key`

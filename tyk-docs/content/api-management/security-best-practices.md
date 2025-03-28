@@ -71,7 +71,7 @@ As an APIM product, Tyk Gateway can be configured to use the following out-of-th
 - [Circuit breaker]({{< ref "tyk-self-managed#circuit-breakers" >}})
 - [Payload size limiter]({{< ref "api-management/traffic-transformation#request-size-limits-overview" >}})
 - [Rate limiter / throttling]({{< ref "api-management/rate-limit#introduction" >}})
-- [Caching]({{< ref "api-management/gateway-optimizations#" >}})
+- [Caching]({{< ref "api-management/response-caching" >}})
 - [Enforced timeout]({{< ref "tyk-self-managed#enforced-timeouts" >}})
 - [IP restriction]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}})
 - [GraphQL query complexity limiting]({{< ref "api-management/graphql#complexity-limiting-1" >}})
@@ -303,7 +303,7 @@ This issue can be caused by both legitimate consumers and malicious attackers, b
 
 **Block Excessively Large Requests**: Place reasonable [limitations on payload sizes]({{< ref "api-management/traffic-transformation#request-size-limits-overview" >}}) to prevent oversized requests from reaching upstream servers, thereby avoiding the unnecessary consumption of resources.
 
-**Avoid Unnecessary Resource Usage**: Appropriate use of [caching]({{< ref "api-management/gateway-optimizations#" >}}) can reduce server resource consumption by simply returning cached responses instead of generating new ones. The extent to which caching can be used depends on the purpose of the endpoint, as it’s generally unsuitable for requests that modify data or responses that frequently change. Caching can be applied to [particular requests]({{< ref "api-management/gateway-optimizations#endpoint-caching" >}}) or enabled for an [entire API]({{< ref "api-management/gateway-optimizations#basic-caching" >}}), and can also be [controlled by the upstream API]({{< ref "api-management/gateway-optimizations#upstream-cache-control-1" >}}) or [invalidated programmatically]({{< ref "api-management/troubleshooting-debugging#how-to-clear--invalidate-api-cache" >}}).
+**Avoid Unnecessary Resource Usage**: Appropriate use of [caching]({{< ref "api-management/response-caching" >}}) can reduce server resource consumption by simply returning cached responses instead of generating new ones. The extent to which caching can be used depends on the purpose of the endpoint, as it’s generally unsuitable for requests that modify data or responses that frequently change. Caching can be applied to [particular requests]({{< ref "api-management/response-caching#endpoint-caching" >}}) or enabled for an [entire API]({{< ref "api-management/response-caching#basic-caching" >}}), and can also be [controlled by the upstream API]({{< ref "api-management/response-caching#upstream-cache-control-1" >}}) or [invalidated programmatically]({{< ref "api-management/troubleshooting-debugging#how-to-clear--invalidate-api-cache" >}}).
 
 **Limit Complex Long-Running Tasks**: Use [GraphQL complexity limiting]({{< ref "api-management/graphql#complexity-limiting-1" >}}) to prevent convoluted queries from being processed. Alternatively, [timeouts]({{< ref "tyk-self-managed#enforced-timeouts" >}}) can be used to terminate long-running requests that exceed a given time limit.
 
@@ -376,7 +376,7 @@ APIs need to be managed and governed just like any other resource, otherwise org
 
 **Enforce Key Expiry**: In many situations it’s best to issue API keys that have a short, finite lifetime, especially when serving anonymous, external consumers. Set [expiry dates]({{< ref "api-management/policies#access-key-expiry" >}}) for API keys, or use ephemeral credentials with complementary authentication techniques that support key renewal, such as [OAuth 2.0 refresh tokens]({{< ref "api-management/client-authentication#using-refresh-tokens" >}}) and [dynamic client registration]({{< ref "portal/api-provider#dynamic-client-registration" >}}). Then, should an API key fall into the wrong hands, there’s a chance that it has already expired.
 
-**Use Standardized Specifications**: Use the [OpenAPI Specification](https://en.wikipedia.org/wiki/OpenAPI_Specification) standard to design APIs. These specification documents act as a source of truth that can generate [API configuration]({{< ref "api-management/gateway-config-managing-oas#import-a-tyk-oas-api" >}}) and [portal documentation]({{< ref "tyk-apis/tyk-portal-api/portal-documentation#create-documentation" >}}).
+**Use Standardized Specifications**: Use the [OpenAPI Specification](https://en.wikipedia.org/wiki/OpenAPI_Specification) standard to design APIs. These specification documents act as a source of truth that can generate [API configuration]({{< ref "api-management/gateway-config-tyk-oas" >}}) and [portal documentation]({{< ref "tyk-apis/tyk-portal-api/portal-documentation#create-documentation" >}}).
 
 **Understand API Usage**: Use [API analytics]({{< ref "api-management/dashboard-configuration#traffic-analytics" >}}) to report on usage. This captured data generates useful, actionable insights across a variety of metrics, such as API popularity, performance and trends.
 
@@ -409,7 +409,7 @@ As part of using Mutual TLS, you can create a list of [trusted certificates]({{<
 **Certificate Pinning**
 
 
-Introduced in Tyk Gateway 2.6.0, [certificate pinning]({{< ref "api-management/certificates#certificate-pinning" >}}) is a feature which allows you to allow only specified public keys used to generate certificates, so you will be protected in case an upstream certificate is compromised.
+Introduced in Tyk Gateway 2.6.0, [certificate pinning]({{< ref "api-management/upstream-authentication#certificate-pinning" >}}) is a feature which allows you to allow only specified public keys used to generate certificates, so you will be protected in case an upstream certificate is compromised.
 
 **API Security**
 

@@ -9188,7 +9188,9 @@ paths:
           required: false
           schema:
             type: integer
-        - description: Filters audit logs based on the specific URL path of the API endpoint that was accessed. This parameter allows you to focus on actions performed on particular resources or sections of your API.
+        - description: | 
+            This parameter filters audit logs based on partially matching the accessed API endpoint's URL path. It allows searching for actions performed on related resources or sections of the API by matching any portion of the URL. The match is case-sensitive and ignores additional path segments or query parameters beyond the matched portion.  
+            For example, if the database contains URLs like `/tib/create`, `/tib/get/1?schema=json`,  `/api/schema`, and `/schema1` searching with `url=schema` would return  `/api/schema` and `/schema1`.
           example: /api/apis
           in: query
           name: url
@@ -9209,9 +9211,29 @@ paths:
           required: false
           schema:
             type: string
+        - description: Determines whether the response should be a downloadable file containing the records. If set to `true`, the API returns a file instead of a JSON list of records. When enabled, pagination is not applied, and the file will include all records that match the search criteria.
+          example: true
+          in: query
+          name: download
+          required: false
+          schema:
+            type: boolean
+        - description: Specifies the format of the downloadable file. This parameter is only applied when `download` is set to `true`. If set to `csv`, the file content will be in CSV format; otherwise, JSON format will be used.
+          in: query
+          name: type
+          required: false
+          schema:
+            type: string
+            enum: [ csv, json ]
+          example: csv
       responses:
         "200":
           content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+                description: A file containing the audit logs in either JSON or CSV format, depending on the `type` query parameter.
             application/json:
               example:
                 pages: 1
@@ -9277,6 +9299,82 @@ paths:
                 Status: Error
           description: Forbidden
       summary: List audit logs
+      tags:
+        - AuditLogs
+  /api/audit-logs/{audit-log-id}:
+    get:
+      description: Retrieve a single audit log from database by ID
+      operationId: getAuditLog
+      parameters:
+        - description: ID of the audit log record to fetch.
+          example: 1
+          in: path
+          name: audit-log-id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                _id: 672a83e2b0418b224440ce29
+                req_id: 0462e283-a55f-41ab-6482-60d2eeb1858c
+                org_id: 66cf7f8db0418b1fbe91852b
+                date: Tue, 05 Nov 2024 17:45:22 -03
+                timestamp: 1730839522
+                ip: 127.0.0.1
+                user: jhon@mail.com
+                action: ''
+                method: GET
+                url: "/api/audit-logs"
+                status: 200
+              schema:
+                $ref: '#/components/schemas/AuditLog'
+          description: Audit Log retrieved successfully
+        "400":
+          content:
+            application/json:
+              example:
+                Message: could not retrieve audit record
+                Meta: null
+                Status: Error
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              example:
+                Message: Not authorised
+                Meta: null
+                Status: Error
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              example:
+                Message: 'access denied: You do not have permission to access  /api/audit-log'
+                Meta: null
+                Status: Error
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              example:
+                Message: could not retrieve audit record
+                Meta: null
+                Status: Error
+          description: NotFound
+        "500":
+          content:
+            application/json:
+              example:
+                Message: Failed to fetch audit record.
+                Meta: null
+                Status: Error
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Internal server error.
+      summary: Retrieve single audit log
       tags:
         - AuditLogs
 components:

@@ -3224,7 +3224,7 @@ We're thrilled to bring you some exciting enhancements and crucial fixes to impr
 
 Configure Caching Timeouts Per API Endpoint and Enable Advanced Caching Options From Within Dashboard
 
-We’ve added the ability to [configure]({{< ref "api-management/gateway-optimizations#configuring-the-middleware-in-the-tyk-oas-api-definition" >}}) per-endpoint timeouts for Tyk’s response cache, giving you increased flexibility to tailor your APIs to your upstream services. While doing this, we’ve also fixed a longstanding issue within the *Tyk Dashboard* so that you can configure more of the [advanced caching]({{< ref "api-management/gateway-optimizations#configuring-the-middleware-in-the-api-designer" >}}) options from within the UI.
+We’ve added the ability to [configure]({{< ref "api-management/response-caching#configuring-the-middleware-in-the-tyk-oas-api-definition" >}}) per-endpoint timeouts for Tyk’s response cache, giving you increased flexibility to tailor your APIs to your upstream services. While doing this, we’ve also fixed a longstanding issue within the *Tyk Dashboard* so that you can configure more of the [advanced caching]({{< ref "api-management/response-caching#configuring-the-middleware-in-the-api-designer" >}}) options from within the UI.
 
 ##### Added Body Transform Middleware to Tyk OAS API Definition
 
@@ -3776,7 +3776,7 @@ Importing OpenAPI v3 documents in order to generate Tyk OAS API definition is no
 - authentication mechanism
 - validation request rules and limit access only to the defined paths.
 
-[Importing OAS v3 via the Dashboard]({{< ref "api-management/gateway-config-managing-oas#using-the-tyk-dashboard-ui" >}})
+[Importing OAS v3 via the Dashboard]({{< ref "api-management/gateway-config-managing-oas#importing-an-openapi-description-to-create-an-api" >}})
 
 ##### Updated the Tyk Dashboard version of Golang, to 1.16.
 
@@ -3965,7 +3965,7 @@ Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 
 
 As we extend our OAS support, we would very much like your feedback on how we can extend and update to best meet your needs: .
 
-This capability is available in both the open source and paid versions of Tyk. See our [High Level Concepts]({{< ref "api-management/gateway-config-managing-oas#" >}}) for more details, or jump to [OAS Getting Started documentation]({{< ref "api-management/gateway-config-managing-oas#create-a-tyk-oas-api" >}}).
+This capability is available in both the open source and paid versions of Tyk. See our [Tyk OAS documentation]({{< ref "api-management/gateway-config-tyk-oas" >}}) for more details.
 
 
 ##### MDCB Synchroniser
