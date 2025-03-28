@@ -81,7 +81,7 @@ the dashboard and gateway. We must clarify this at the time of publishing this R
 |                 |                           | Pump vX - vY            |
 |                 |                           | TIB vX - vY             |
       
-##### 3rd Party Dependencies & Tools
+##### 3rd Party Dependencies & Tools {#3rdPartyTools-vX.Y.Z}
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.

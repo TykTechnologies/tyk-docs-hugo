@@ -95,7 +95,7 @@ When using Python plugins, the middleware function names are set globally. So, i
 
 ## How do rich plugins work ?
 
-### ID Extractor & Auth Plugins
+### ID Extractor & Auth Plugins {#id-extractor-auth-plugin}
 
 The ID Extractor is a caching mechanism that's used in combination with Tyk Plugins. It can be used specifically with plugins that implement custom authentication mechanisms. The ID Extractor works for all rich plugins: gRPC-based plugins, Python and Lua.
 
@@ -1443,7 +1443,7 @@ To add a gRPC plugin to your API definition, you must specify the bundle file na
 }
 ```
 
-The value of the `custom_middleware_bundle` field will be used in combination with the gateway settings to construct a bundle URL. For example, if Tyk Gateway is configured with a webserver base URL of https://my-bundle-server.com/bundles/ then an attempt would be made to download the bundle from https://my-bundle-server.com/bundles/mybundle.zip.
+The value of the `custom_middleware_bundle` field will be used in combination with the gateway settings to construct a bundle URL. For example, if Tyk Gateway is configured with a webserver base URL of `https://my-bundle-server.com/bundles/` then an attempt would be made to download the bundle from `https://my-bundle-server.com/bundles/mybundle.zip`.
 
 ####### Tyk Operator
 

@@ -159,7 +159,8 @@ The Tyk Gateway can run completely independently, requiring only a Redis databas
 
 #### Init Systems
 
-Tyk packages support [systemd](https://www.freedesktop.org/wiki/Software/systemd/), [Upstart](http://upstart.ubuntu.com/cookbook/) (both 0.6.x and 1.x) and SysVinit Linux init systems. During package installation only one is chosen depending on the operating system support, e.g.:
+Tyk packages support SysVinit Linux init systems, [systemd](https://www.freedesktop.org/wiki/Software/systemd/) and Upstart (both 0.6.x and 1.x, [FYI - Ubuntu stopped supporting Upstart] upstart(https://askubuntu.com/questions/1024120/will-ubuntu-18-04-lts-still-support-upstart-or-do-we-have-to-change-to-systemd)).
+During package installation only one is chosen depending on the operating system support, e.g.:
 
 *   CentOS 6, RHEL 6, Amazon Linux ship with Upstart 0.6.x
 *   Ubuntu 14.04, Debian Jessie with Upstart 1.x
@@ -218,7 +219,7 @@ Install on K8s
 Install with Ansible 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-self-managed#install-tyk-on-red-hat-rhel--centos" image="/img/redhat-logo2.png" alt="Red Hat install">}}
+{{< badge read="10 mins" href="tyk-self-managed#install-tyk-on-redhat-rhel-centos" image="/img/redhat-logo2.png" alt="Red Hat install">}}
 Install on Red Hat 
 {{< /badge >}}
 
@@ -532,7 +533,7 @@ You use this at your own risk. Tyk is not supported on the Windows platform. How
 - [Python for Windows](https://www.python.org/downloads/windows/)
 - PowerShell running as administrator
 - Our Pro Demo Docker [GitHub repo](https://github.com/TykTechnologies/tyk-pro-docker-demo)
-- A free Tyk Self-Managed [Developer license](https://tyk.io/product/tyk-on-premises-free-edition/)
+- A free Tyk Self-Managed [Developer license](https://tyk.io/sign-up)
 
 Ensure that kubectl and helm prerequisites are configured on your Windows path environment variable
 
@@ -1221,7 +1222,7 @@ A full Tyk Self-Managed installation can be deployed to Heroku dynos and workers
 1. Docker daemon installed and running locally
 2. [Heroku account](https://www.heroku.com/), the free plan is sufficient for a basic PoC but not recommended for production usage
 3. [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed
-4. MongoDB service (such as [Atlas](https://www.mongodb.com/cloud/atlas), [mLab](https://elements.heroku.com/addons/mongolab), [Compose](https://www.compose.com/) or your own deployment), this guide is based on MongoDB Atlas but others should work as well
+4. MongoDB service (such as [Atlas](https://www.mongodb.com/cloud/atlas), [mLab](https://elements.heroku.com/addons/mongolab), or your own deployment), this guide is based on MongoDB Atlas but others should work as well
 5. [Tyk License](https://tyk.io/pricing/on-premise/) (note that in case of running multiple gateway dynos, license type must match)
 6. Checkout the [Tyk quickstart repository](https://github.com/TykTechnologies/tyk-pro-heroku) from GitHub
 7. Python 2 or 3 in order to execute the bootstrap script
@@ -1231,12 +1232,12 @@ A full Tyk Self-Managed installation can be deployed to Heroku dynos and workers
 We will create two Heroku apps, one for the Tyk Gateway (with [Redis add-on](https://devcenter.heroku.com/articles/heroku-redis) attached to it) and another for the Dashboard and Pump.
 
 Given Heroku CLI is installed and your Heroku account is available, log into it:
-```{.copyWrapper}
+```bash
 heroku login
 ```
 
 Now create the Gateway app and note down its name:
-```{.copyWrapper}
+```bash
 heroku create
 ```
 ```
@@ -1250,7 +1251,7 @@ https://infinite-plains-14949.herokuapp.com/ | https://git.heroku.com/infinite-p
 {{< /note >}}
 
 Provision a Redis add-on (we'll use a `hobby-dev` plan for demonstration purposes but that's not suitable for production), replacing the app name with your own:
-```{.copyWrapper}
+```bash
 heroku addons:create heroku-redis:hobby-dev -a infinite-plains-14949
 ```
 ```
@@ -1263,7 +1264,7 @@ Use heroku addons:docs heroku-redis to view documentation
 ```
 
 Once add-on provisioning is done, the info command (replacing the add-on name with your own) will show the following output:
-```{.copyWrapper}
+```bash
 heroku addons:info redis-infinite-35445
 ```
 ```
@@ -1276,8 +1277,8 @@ Price:        free
 State:        created
 ```
 
-Time to create the Dasboard app and note down its name as well:
-```{.copyWrapper}
+Time to create the Dashboard app and note down its name as well:
+```bash
 heroku create
 ```
 ```
@@ -1286,7 +1287,7 @@ https://evening-beach-40625.herokuapp.com/ | https://git.heroku.com/evening-beac
 ```
 
 Since the Dashboard and Pump need access to the same Redis instance as the gateway, we'll need to share the Gateway app's add-on with this new app:
-```{.copyWrapper}
+```bash
 heroku addons:attach infinite-plains-14949::REDIS -a evening-beach-40625
 ```
 ```
@@ -1295,7 +1296,7 @@ Setting REDIS config vars and restarting ⬢ evening-beach-40625... done, v3
 ```
 
 To check that both apps have access to the same Redis add-on, we can utilize the `heroku config` command and check for the Redis endpoint:
-```{.copyWrapper}
+```bash
 heroku config -a infinite-plains-14949 | grep REDIS_URL
 heroku config -a evening-beach-40625 | grep REDIS_URL
 ```
@@ -1305,7 +1306,7 @@ Their outputs should match.
 **Deploy the Dashboard**
 
 It's recommended to start with the Dashboard so in your Heroku quickstart clone run:
-```{.copyWrapper}
+```bash
 cd analytics
 ls dashboard
 ```
@@ -1325,7 +1326,7 @@ You can use the `FROM` statement in `Dockerfile.web` to use specific dashboard v
 The [Dashboard configuration]({{< ref "tyk-dashboard/configuration" >}}) can be changed by either editing the `tyk_analytics.conf` file or injecting them as [environment variables]({{< ref "tyk-environment-variables" >}}) via `heroku config`. In this guide we'll use the latter for simplicity of demonstration but there is merit to both methods.
 
 First let's set the license key:
-```{.copyWrapper}
+```bash
 heroku config:set TYK_DB_LICENSEKEY="your license key here" -a evening-beach-40625
 ```
 ```
@@ -1334,7 +1335,7 @@ TYK_DB_LICENSEKEY: should show your license key here
 ```
 
 Now the MongoDB endpoint (replacing with your actual endpoint):
-```{.copyWrapper}
+```bash
 heroku config:set TYK_DB_MONGOURL="mongodb://user:pass@mongoprimary.net:27017,mongosecondary.net:27017,mongotertiary.net:27017" -a evening-beach-40625
 ```
 ```
@@ -1343,7 +1344,7 @@ TYK_DB_MONGOURL: mongodb://user:pass@mongoprimary.net:27017,mongosecondary.net:2
 ```
 
 And enable SSL for it if your service supports/requires this:
-```{.copyWrapper}
+```bash
 heroku config:set TYK_DB_MONGOUSESSL="true" -a evening-beach-40625
 ```
 ```
@@ -1352,7 +1353,7 @@ TYK_DB_MONGOUSESSL: true
 ```
 
 Since the Tyk Dashboard needs to access gateways sometimes, we'll need to specify the Gateway endpoint too, which is the Gateway app's URL:
-```{.copyWrapper}
+```bash
 heroku config:set TYK_DB_TYKAPI_HOST="https://infinite-plains-14949.herokuapp.com" -a evening-beach-40625
 heroku config:set TYK_DB_TYKAPI_PORT="443" -a evening-beach-40625
 ```
@@ -1367,7 +1368,7 @@ This is enough for a basic Dashboard setup but we recommend also changing at lea
 
 Since the Tyk Pump is also a part of this application (as a worker process), we'll need to configure it too.
 
-```{.copyWrapper}
+```bash
 ls pump
 ```
 ```
@@ -1375,7 +1376,7 @@ Dockerfile.pump  entrypoint.sh  pump.conf
 ```
 
 Same principles apply here as well. Here we'll need to configure MongoDB endpoints for all the Pumps (this can also be done in the `pump.conf` file):
-```{.copyWrapper}
+```bash
 heroku config:set PMP_MONGO_MONGOURL="mongodb://user:pass@mongoprimary.net:27017,mongosecondary.net:27017,mongotertiary.net:27017" -a evening-beach-40625
 heroku config:set PMP_MONGO_MONGOUSESSL="true"
 
@@ -1386,7 +1387,7 @@ heroku config:set PMP_MONGOAGG_MONGOUSESSL="true"
 With the configuration in place it's finally time to deploy our app to Heroku.
 
 First, make sure CLI is logged in to Heroku containers registry:
-```{.copyWrapper}
+```bash
 heroku container:login
 ```
 ```
@@ -1394,7 +1395,7 @@ Login Succeeded
 ```
 
 Provided you're currently in `analytics` directory of the quickstart repo:
-```{.copyWrapper}
+```bash
 heroku container:push --recursive -a evening-beach-40625
 ```
 ```
@@ -1459,7 +1460,7 @@ This has built Docker images for both dashboard and pump, as well as pushed them
 Provided everything went well (and if not, inspect the application logs), you should be seeing the Dashboard login page at your app URL (e.g "https://evening-beach-40625.herokuapp.com/").
 
 However, it doesn't yet have any accounts. It order to populate it please run the `dashboard/bootstrap.sh` script:
-```{.copyWrapper}
+```bash
 dashboard/bootstrap.sh evening-beach-40625.herokuapp.com
 ```
 ```
@@ -1482,7 +1483,7 @@ It will generate a default organization with random admin username and a specifi
 If this was successful, you should be able to log into your dashboard now.
 
 The last step in this app is to start the Pump worker dyno since by default only the web dyno is enabled:
-```{.copyWrapper}
+```bash
 heroku dyno:scale pump=1 -a evening-beach-40625
 ```
 ```
@@ -1490,7 +1491,7 @@ Scaling dynos... done, now running pump at 1:Free
 ```
 
 At that point the dyno formation should look like this:
-```{.copyWrapper}
+```bash
 heroku dyno:scale -a evening-beach-40625
 ```
 ```
@@ -1501,7 +1502,7 @@ pump=1:Free web=1:Free
 
 The process is very similar for the Tyk Gateway, except it doesn't have a worker process and doesn't need access to MongoDB.
 
-```{.copyWrapper}
+```bash
 cd ../gateway
 ls
 ```
@@ -1512,7 +1513,7 @@ Dockerfile.web  entrypoint.sh  tyk.conf
 All these files serve the same purpose as with the Dasboard and the Pump. [Configuration]({{< ref "tyk-oss-gateway/configuration" >}}) can either be edited in `tyk.conf` or [injected]({{< ref "tyk-environment-variables" >}}) with `heroku config`.
 
 To get things going we'll need to set following options for the Dashboard endpoint (substituting the actual endpoint and the app name, now for the gateway app):
-```{.copyWrapper}
+```bash
 heroku config:set TYK_GW_DBAPPCONFOPTIONS_CONNECTIONSTRING="https://evening-beach-40625.herokuapp.com" -a infinite-plains-14949
 heroku config:set TYK_GW_POLICIES_POLICYCONNECTIONSTRING="https://evening-beach-40625.herokuapp.com" -a infinite-plains-14949
 ```
@@ -1524,7 +1525,7 @@ TYK_GW_POLICIES_POLICYCONNECTIONSTRING: https://evening-beach-40625.herokuapp.co
 ```
 
 Since the Redis configuration will be automatically discovered (it's already injected by Heroku), we're ready to deploy:
-```{.copyWrapper}
+```bash
 heroku container:push --recursive -a infinite-plains-14949
 ```
 ```
@@ -1573,19 +1574,19 @@ To use the [geographic log distribution]({{< ref "api-management/dashboard-confi
 Most instructions are valid for [Heroku Private Spaces runtime](https://devcenter.heroku.com/articles/private-spaces). However there are several differences to keep in mind.
 
 Heroku app creation commands must include the private space name in the `--space` flag, e.g.:
-```{.copyWrapper}
+```bash
 heroku create --space test-space-virginia
 ```
 
 When deploying to the app, the container must be released manually after pushing the image to the app:
-```{.copyWrapper}
+```bash
 heroku container:push --recursive -a analytics-app-name
 heroku container:release web -a analytics-app-name
 heroku container:release pump -a analytics-app-name
 ```
 
 Similarly, the Gateway:
-```{.copyWrapper}
+```bash
 heroku container:push --recursive -a gateway-app-name
 heroku container:release web -a gateway-app-name
 ```
@@ -1593,7 +1594,7 @@ heroku container:release web -a gateway-app-name
 Please allow several minutes for the first deployment to start as additional infrastructure is being created for it. Next deployments are faster.
 
 Private spaces maintain stable set of IPs that can be used for allowing fixed set of IPs on your upstream side (e.g. on an external database service). Find them using the following command:
-```{.copyWrapper}
+```bash
 heroku spaces:info --space test-space-virginia
 ```
 
@@ -1606,7 +1607,7 @@ Apps in private spaces don't enable SSL/TLS by default. It needs to be configure
 **Gateway Plugins**
 
 In order to enable [rich plugins]({{< ref "api-management/plugins/rich-plugins#" >}}) for the Gateway, please set the following Heroku config option to either `python` or `lua` depending on the type of plugins used:
-```{.copyWrapper}
+```bash
 heroku config:set TYK_PLUGINS="python" -a infinite-plains-14949
 ```
 ```
@@ -1638,7 +1639,7 @@ Please refer to [Heroku documentation on containers and registry](https://devcen
 
 ### Install on Microsoft Azure
   
-[Azure](https://azure.microsoft.com/en-us/overview/what-is-azure/) is Microsoft's cloud services platform. It supports both the running of [Ubuntu Servers](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Canonical.UbuntuServer?tab=Overview), as well as [Docker](https://www.docker.com/docker-azure) and [Docker-Compose](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-compose-quickstart).
+[Azure](https://azure.microsoft.com/en-us/explore/) is Microsoft's cloud services platform. It supports both the running of [Ubuntu Servers](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/canonical.0001-com-ubuntu-server-focal?tab=overview), as well as [Docker](https://learn.microsoft.com/en-us/previous-versions/azure/virtual-machines/linux/docker-machine) and [Docker-Compose](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-compose-quickstart).
 
 For more details, see the [Azure Documentation](https://docs.microsoft.com/en-us/azure/).
 
@@ -1648,14 +1649,14 @@ Azure allows you to install Tyk in the following ways:
 
 **On-Premises**
 
-1. Via our [Ubuntu Setup]({{< ref "tyk-self-managed#install-gateway-1" >}}) on an installed Ubuntu Server on Azure.
+1. Via our [Ubuntu Setup]({{< ref "tyk-self-managed#debian-ubuntu-install-gateway" >}}) on an installed Ubuntu Server on Azure.
 2. Via our [Docker Installation]({{< ref "#docker-compose-setup" >}}) using Azure's Docker support.
 
 See our video for installing Tyk on Ubuntu via Azure:
 
 {{< youtube -Q9Lox-DyTU >}}
 
-We also have a [blog post](https://tyk.io/getting-started-with-tyk-on-microsoft-azure-and-ubuntu/) that walks you through installing Tyk on Azure.
+We also have a [blog post](https://tyk.io/blog/getting-started-with-tyk-on-microsoft-azure-and-ubuntu/) that walks you through installing Tyk on Azure.
 
 
 ### Install to Google Cloud
@@ -1670,7 +1671,7 @@ Google Cloud allows you to install Tyk in the following ways:
 
 **On-Premises**
 
-1. Via our [Ubuntu Setup]({{< ref "tyk-self-managed#install-gateway-1" >}}) on an installed Ubuntu Server within Google Cloud.
+1. Via our [Ubuntu Setup]({{< ref "tyk-self-managed#debian-ubuntu-install-gateway" >}}) on an installed Ubuntu Server within Google Cloud.
 2. Via our [Docker Installation]({{< ref "#docker-compose-setup" >}}) using Google Cloud's Docker support.
 
 **Tyk Pump on GCP**
@@ -1682,7 +1683,7 @@ When running Tyk Pump in GCP using [Cloud Run](https://cloud.google.com/run/docs
 2. Update the Tyk Gateway [configuration]({{< ref "tyk-oss-gateway/configuration#analytics_configstorage_expiration_time" >}}) to keep the stats for 3 mins to allow Tyk Pump to process them. This value should be greater than the Pump [purge delay]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#purge_delay" >}}) to ensure the analytics data exists long enough in Redis to be processed by the Pump. 
 
 
-### Install Tyk on Red Hat (RHEL / CentOS)
+### Install Tyk on Red Hat (RHEL / CentOS) {#install-tyk-on-redhat-rhel-centos}
 
 Select the preferred way of installing Tyk by selecting **Shell** or **Ansible** tab for instructions.
 There are 4 components which needs to be installed. Each can be installed via shell or ansible
@@ -1909,7 +1910,7 @@ This configuration should also work (with some tweaks) for CentOS.
 **Prerequisites**
 
 *   Ensure port `3000` is open: This is used by the Dashboard to provide the GUI and the Classic Developer Portal.
-*   Follow the steps provided in this link [Getting started on Red Hat (RHEL / CentOS)]({{< ref "#install-tyk-on-red-hat-rhel--centos" >}}) to install and configure Tyk dependencies.
+*   Follow the steps provided in this link [Getting started on Red Hat (RHEL / CentOS)]({{< ref "#install-tyk-on-redhat-rhel-centos" >}}) to install and configure Tyk dependencies.
 
 1. **Set up YUM Repositories**
 
@@ -2528,9 +2529,9 @@ Installing Tyk on Ubuntu is very straightforward using our APT repositories, fol
 
 The suggested order would be to install Tyk Dashboard, then Tyk Pump and then Tyk Gateway for a full stack.
 
-- [Dashboard]({{< ref "tyk-self-managed#install-dashboard-1" >}})
-- [Pump]({{< ref "tyk-self-managed#install-pump-1" >}})
-- [Gateway]({{< ref "tyk-self-managed#install-gateway-1" >}})
+- [Dashboard]({{< ref "tyk-self-managed#Debian-Ubuntu-install-dashboard" >}})
+- [Pump]({{< ref "tyk-self-managed#Debian-Ubuntu-install-pump" >}})
+- [Gateway]({{< ref "tyk-self-managed#debian-ubuntu-install-gateway" >}})
 
 {{< note success >}}
 **Note**  
@@ -2667,7 +2668,7 @@ Read more about MongoDB configuration [here](https://github.com/ansible-collecti
 
 Read more about PostgreSQL configuration [here](https://github.com/geerlingguy/ansible-role-postgresql).
 
-#### Install Dashboard
+#### Install Dashboard {#Debian-Ubuntu-install-dashboard}
 
 ##### Using Shell
 
@@ -2676,8 +2677,7 @@ Tyk has its own APT repositories hosted by the kind folks at [packagecloud.io](h
 This tutorial has been tested on Ubuntu 16.04 & 18.04 with few if any modifications. We will install the Tyk Dashboard with all dependencies locally.
 
 **Prerequisites**
-
-- Have MongoDB/SQL and Redis installed - see [here](#database-management) for details.
+- Have MongoDB/SQL and Redis installed - follow the guide for [installing databases on Debian/Ubuntu]({{< ref "#install-tyk-on-debian-or-ubuntu" >}}).
 - Ensure port `3000` is available. This is used by the Tyk Dashboard to provide the GUI and the Developer Portal.
 
 **Step 1: Set up our APT Repositories**
@@ -2714,7 +2714,7 @@ sudo apt-get update
 
 **Note**  
 
-`bionic` is the code name for Ubuntu 18.04. Please substitute it with your particular [ubuntu release](https://wiki.ubuntu.com/Releases), e.g. `focal`.
+`bionic` is the code name for Ubuntu 18.04. Please substitute it with your particular [ubuntu release](https://releases.ubuntu.com/), e.g. `focal`.
 
 {{< /note >}}
 
@@ -2946,7 +2946,7 @@ $ ansible-playbook playbook.yaml -t tyk-dashboard
 | dash.service.proto | `http` | Dashboard server protocol |
 | dash.service.tls | `false` | Set to `true` to enable SSL connections |
 
-#### Install Pump
+#### Install Pump {#Debian-Ubuntu-install-pump}
 
 ##### Using Shell
 
@@ -2991,7 +2991,7 @@ sudo apt-get update
 
 **Note**  
 
-`bionic` is the code name for Ubuntu 18.04. Please substitute it with your particular [ubuntu release](https://wiki.ubuntu.com/Releases), e.g. `focal`.
+`bionic` is the code name for Ubuntu 18.04. Please substitute it with your particular [ubuntu release](https://releases.ubuntu.com/), e.g. `focal`.
 
 {{< /note >}}
 
@@ -3117,7 +3117,7 @@ $ ansible-playbook playbook.yaml -t tyk-pump
 | Ubuntu | 18 | ✅ |
 | Ubuntu | 16 | ✅ |
 
-#### Install Gateway
+#### Install Gateway {#debian-ubuntu-install-gateway}
 
 ##### Using Shell
 
@@ -3162,7 +3162,7 @@ deb-src https://packagecloud.io/tyk/tyk-gateway/ubuntu/ bionic main
 
 
 
-`bionic` is the code name for Ubuntu 18.04. Please substitute it with your particular [ubuntu release](https://wiki.ubuntu.com/Releases), e.g. `focal`.
+`bionic` is the code name for Ubuntu 18.04. Please substitute it with your particular [ubuntu release](https://releases.ubuntu.com/), e.g. `focal`.
 
 {{< /note >}}
 
@@ -3630,7 +3630,7 @@ To complete the instruction above we have a tutorial video of tyk demo that cove
 ### Docker Compose Setup
 
 #### Who is this page for?
-This is the guide we recommend for a easy quick start. The instructions are the ones shared with you when you register to a [free trial]({{< ref "tyk-self-managed#getting-started-with-tyk-self-managed" >}}).
+This is the guide we recommend for a easy quick start. The instructions are the ones shared with you when you register to a [free trial](https://tyk.io/sign-up/).
 
 You can also use this guide for your PoC since it spins up a full Tyk Self Managed stack for you using our project *Docker Pro Demo*, however, if you are interested in learning Tyk, there's an option for [Tyk Demo]({{< ref "tyk-self-managed#explore-demos-and-proof-of-concepts" >}}) which is a project that spins up full Tyk stack that includes a prepopulate API definitions of all kinds, with various middleware options and can also spin up supporting tools such as Prometheus, Keycloak (IDP) etc.
 
@@ -3652,7 +3652,7 @@ The Tyk Pro Docker demo does not provide access to the [Developer Portal]({{< re
 #### Prerequisites
 
 * Our [Tyk Pro Docker demo on GitHub](https://github.com/TykTechnologies/tyk-pro-docker-demo)
-* A Tyk Pro [trial license](https://pages.tyk.io/get-started-with-tyk)
+* A Tyk Pro [trial license](https://tyk.io/sign-up/)
 
 #### Steps for Installation
 
@@ -3769,7 +3769,7 @@ You use this at your own risk. Tyk is not supported on the Windows platform. How
 - PowerShell running as administrator
 - Postman for [Windows](https://www.getpostman.com/downloads/)
 - Our Pro Demo Docker [GitHub repo](https://github.com/TykTechnologies/tyk-pro-docker-demo)
-- A free Tyk Self-Managed [Developer license](https://tyk.io/product/tyk-on-premises-free-edition/)
+- A free Tyk Self-Managed [Developer license](https://tyk.io/sign-up/)
 
 **Step 1 - Clone the Repo**
 
@@ -3964,7 +3964,7 @@ You use this at your own risk. Tyk is not supported on the Windows platform. How
 - PowerShell running as administrator
 - Postman for [Windows](https://www.getpostman.com/downloads/)
 - Our Pro Demo Docker [GitHub repo](https://github.com/TykTechnologies/tyk-pro-docker-demo)
-- A free Tyk Self-Managed [Developer license](https://tyk.io/product/tyk-on-premises-free-edition/)
+- A free Tyk Self-Managed [Developer license](https://tyk.io/sign-up/)
 - Optional: Ubuntu on Windows
 
 **Step 1 - Clone the Repo**
@@ -4254,12 +4254,12 @@ docker run --ulimit nofile=80000:80000 \
 
 {{< note success >}}
 **Note**
-If you are not using systemd or Docker, please consult your Operating System documentation for controlling the number of File Descriptors available for your process.
+If you are not using *systemd* or Docker, please consult your Operating System documentation for controlling the number of File Descriptors available for your process.
 {{< /note >}}
 
 #### File modification at runtime
 
-Understanding what files are created or modified by the Dashboard and Gateway during runtime can be important if you are running infrastructure orchestration systems such as Puppet, which may erroneously see such changes as problems which need correcting.
+Understanding what files are created or modified by the Dashboard and Gateway during runtime can be important if you are running infrastructure orchestration systems such as Puppet, which may erroneously see such changes as problems that need correcting.
 
 *   Both the Gateway and Dashboard will create a default configuration file if one is not found.
 *   Dashboard will write the license into the configuration file if you add it via the UI.
@@ -4278,7 +4278,7 @@ An API Gateway serves as the single point of entry into your ecosystem, introduc
    - CPU scalability  
    - Head-to-head comparisons with competitors  
 
-2. **[Performance Tuning Your Gateway](https://tyk.io/performance-tuning-your-tyk-api-gateway/)**  
+2. **[Performance Tuning Your Gateway](https://tyk.io/blog/performance-tuning-your-tyk-api-gateway/)**  
    A step-by-step guide to fine-tuning your Gateway for maximum performance.  
 
 3. **[Manual Performance Testing on AWS](https://tyk.io/a-manual-for-simple-performance-testing-with-tyk-on-aws/)**  
@@ -4323,11 +4323,11 @@ If you are making use of the Tyk Caching feature, then it is possible to use a s
 
 Tyk makes heavy use of Redis in order to provide a fast and reliable service, in order to do so effectively, it keeps a passive connection pool ready. For high-performance setups, this pool needs to be expanded to handle more simultaneous connections, otherwise you may run out of Redis connections.
 
-Tyk also lets you set a maximum number of open connections, so that you don't over-commit connections to the server.
+Tyk also lets you set a maximum number of open connections so that you don't over-commit connections to the server.
 
 To set your maximums and minimums, edit your `tyk.conf` and `tyk_analytics.conf` files to include:
 
-```{.copyWrapper}
+```yaml
 "storage": {
   ...
   "optimisation_max_idle": 2000,
@@ -4423,7 +4423,7 @@ You can calculate your Redis RAM requirements by entering your known values in t
 
 From Tyk 5.0.2, we added an option to use the official MongoDB Go driver to connect to MongoDB. 
 
-We recommend using the mongo-go driver if you are using MongoDB 4.4.x+. For MongoDB versions prior to 4.4, please use the mgo driver.
+We recommend using the *mongo-go* driver if you are using MongoDB 4.4.x+. For MongoDB versions prior to 4.4, please use the *mgo* driver.
 
 With the mongo-go driver, we support the latest versions of MongoDB (5.0.x, v6.0.x, and v7.0.x) and also features such as the "+srv" connection string and SCRAM-SHA-256. For more details, visit the MongoDB doc:
 * [Connection Guide](https://www.mongodb.com/docs/drivers/go/v1.11/fundamentals/connection/)
@@ -4456,7 +4456,7 @@ If you are using [DocumentDB](https://aws.amazon.com/documentdb/), [capped colle
 {{< /note >}} 
 
 **Special notes for MongoDB Atlas**
-In order to integrate with [MongoDB Atlas](https://www.mongodb.com/atlas/database), make sure the IP firewall connections are whitelisted on the Atlas side, and then use the following Tyk Dashboard configurations to connect: 
+To integrate with [MongoDB Atlas](https://www.mongodb.com/atlas/database), make sure the IP firewall connections are whitelisted on the Atlas side, and then use the following Tyk Dashboard configurations to connect: 
 ``` 
 - TYK_DB_MONGOURL=mongodb://admin:password@tykdb-shard-00-00.h42pp.mongodb.net:27017,tykdb-shard-00-01.h42pp.mongodb.net:27017,tykdb-shard-00-02.h42pp.mongodb.net:27017/tyk_analytics?authSource=admin - TYK_DB_ENABLECLUSTER=false - TYK_DB_MONGOUSESSL=true 
 ``` 
@@ -4466,7 +4466,7 @@ More information on these configuration variables [here]({{< ref "tyk-dashboard/
 
 ##### MongoDB Sizing Guidelines
 
-The aggregate record size depends on the number of APIs and Keys you have. Each counter size ~50b, and every aggregated value has its own counter. 
+The aggregate record size depends on the number of APIs and Keys you have. Each counter size is ~50b, and every aggregated value has its own counter. 
 
 So an hourly aggregate record is computed like this: 50 * active_apis + 50 * api_versions + 50 * active_api_keys  + 50 * oauth_keys, etc. 
 
@@ -4482,11 +4482,11 @@ Working data in terms of MongoDB is the data you query most often. The graphs di
 
 So if you rely only on this kind of analytic data, you will not experience issues with working data and memory issues. It is literally hundreds of MBs. 
 
-Even if you use the Log browser, its usage access is usually quite random, and it is unlikely that you check requests for every request. So it can't be called working data. And it is ok to store it on disk, and allow MongoDB to do the disk lookups to fetch the data. 
+Even if you use the Log browser, its usage access is usually quite random, and it is unlikely that you check requests for every request. So it can't be called working data. And it is ok to store it on disk and allow MongoDB to do the disk lookups to fetch the data. 
 
 Note, that in order to do fast queries, even from the disk, MongoDB uses indexes. MongoDB recommends that indexes should fit into memory, and be considered working data, but only the part of the index which is commonly used. For example the last month of data. 
 
-For an aggregate collection, the average index size is 6% from the overall collection. For requests stats it is around 30%. 
+For an aggregate collection, the average index size is 6% of the overall collection. For requests stats, it is around 30%. 
 
 
 **MongoDB Sizing Example**
@@ -4494,11 +4494,11 @@ If you serve 1 million requests per day, and require fast access to the last sev
 
 Request_logs_index ( 30% * (1GB * 7) ) + aggregated(3month * 30MB) ~= 2.1GB + 90MB = ~ 2.2GB
 
-In addition to storing working data in memory, MongoDB also requires space for some internal data structures. In general multiplying the resulting number by 2x should be enough. In the above example, your MongoDB server should have around 4.4GB of available memory.
+In addition to storing working data in memory, MongoDB also requires space for some internal data structures. In general, multiplying the resulting number by 2x should be enough. In the above example, your MongoDB server should have around 4.4GB of available memory.
 
 **Audit Log storage**
 
-From Tyk Dashboard v5.7+, audit log can be configured to be stored in the database. If you choose to store the audit logs in database, you need to account for additional storage for audit logs in the database setup. The size of this table will depend on the number of operations recorded, with each record averaging 1350 to 1450 bytes.
+From Tyk Dashboard v5.7+,the  audit log can be configured to be stored in the database. If you choose to store the audit logs in the database, you need to account for additional storage for audit logs in the database setup. The size of this table will depend on the number of operations recorded, with each record averaging 1350 to 1450 bytes.
 
 **Audit Log Considerations**
 
@@ -4544,16 +4544,16 @@ How you configure your PostgreSQL installation depends on whether you are instal
 
 ##### Migrating from an existing MongoDB instance
 
-For v4.0 we have provided a migration command that will help you migrate all data from the main storage layer (APIs, Policies, Users, UserGroups, Webhooks, Certificates, Portal Settings, Portal Catalogs, Portal Pages, Portal CSS etc.).
+For v4.0 we have provided a migration command that will help you migrate all data from the main storage layer (APIs, Policies, Users, UserGroups, Webhooks, Certificates, Portal Settings, Portal Catalogs, Portal Pages, Portal CSS, etc.).
 
 {{< note success >}}
 **Note**  
 
-The migration tool will not migrate any Logs, Analytics or Uptime analytics data.
+The migration tool will not migrate any Logs, Analytics, or Uptime analytics data.
 {{< /note >}}
 
 1. Make sure your new SQL platform and the existing MongoDB instance are both running
-2. Configure the `main` part of  `storage` section of your `tyk-analytics.conf`:
+2. Configure the `main` part of the  `storage` section of your `tyk-analytics.conf`:
 
 ```yaml
 {
@@ -4572,14 +4572,14 @@ The migration tool will not migrate any Logs, Analytics or Uptime analytics data
 ```console
 ./tyk-analytics migrate-sql
 ```
-You will see output listing the transfer of each database table. For example: `Migrating 'tyk_apis' collection. Records found: 7`.
+You will see an output listing the transfer of each database table. For example: `Migrating 'tyk_apis' collection. Records found: 7`.
 
 4. You can now remove your `mongo_url` (or `TYK_DB_MONGOURL` environment variable) from your `tyk-analytics.conf`
 5. Restart your Tyk Dashboard
 
 ##### PostgreSQL Sizing Guidelines
 
-The aggregate record size depends on the number of APIs and Keys you have. Each counter size ~50b, and every aggregated value has its own counter. 
+The aggregate record size depends on the number of APIs and Keys you have. Each counter size is ~50b, and every aggregated value has its own counter. 
 
 So an hourly aggregate record is computed like this: 50 * active_apis + 50 * api_versions + 50 * active_api_keys  + 50 * oauth_keys, etc. 
 
@@ -4718,7 +4718,7 @@ If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{
 
 ##### Configuring the Circuit Breaker in the Tyk OAS API Definition
 
-The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. Endpoint `paths` entries (and the associated `operationId`) can contain wildcards in the form of any string bracketed by curly braces, for example `/status/{code}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
+The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. Endpoint `paths` entries (and the associated `operationId`) can contain wildcards in the form of any string bracketed by curly braces, for example `/status/{code}`. These wildcards are so they are human-readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
 The circuit breaker middleware (`circuitBreaker`) can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId` (as configured in the `paths` section of your OpenAPI Document).
 
@@ -5245,13 +5245,13 @@ The following component status will not be returned:
 {{< note success >}}
 **Note**  
 
-Health check is implemented as per the [Health Check Response Format for HTTP APIs](https://tools.ietf.org/id/draft-inadarei-api-health-check-01.html) RFC
+Health check is implemented as per the [Health Check Response Format for HTTP APIs](https://inadarei.github.io/rfc-healthcheck/) RFC
 {{< /note >}}
 
 An example of the response from this API is as follows:
 
 
-```{.copyWrapper}
+```yaml
 {
   "status": "pass",
   "version": "v3.1.1",
@@ -5292,7 +5292,7 @@ By default, the liveness health check runs on the `/hello` path. But
 it can be configured to run on any path you want to set. For example:
 
 
-```{.copyWrapper}
+```yaml
 health_check_endpoint_name: "status"
 ```
 
@@ -5467,7 +5467,7 @@ Setting up load balancing is done on a per API basis, and is defined in the API 
 
 *   `proxy.target_list`: A list of upstream targets (can be one or many hosts):
 
-```{.copyWrapper}
+```yaml
 "target_list": [
   "http://10.0.0.1",
   "http://10.0.0.2",
@@ -5617,7 +5617,7 @@ In the above example, the **port data path** would be `port`.
 
 Service discovery is configured on a per-API basis, and is set up in the API Object under the `proxy` section of your API Definition:
 
-```{.copyWrapper}
+```yaml
 enable_load_balancing: true,
 service_discovery: {
   use_discovery_service: true,
@@ -5687,7 +5687,7 @@ In the above example, the `port_data_path` would be `port`.
 
 For integrating service discovery with Mesosphere, you can use the following configuration parameters:
 
-```{.copyWrapper}
+```yaml
   isNested = false
   isTargetList = true
   endpointReturnsList = false
@@ -5701,7 +5701,7 @@ For integrating service discovery with Mesosphere, you can use the following con
 
 For integrating service discovery with Eureka, you can use the following configuration parameters (this assumes that the endpoint will return JSON and not XML, this is achieved by creating an API Definition that injects the header that requests the data type and using this API Definition as the endpoint):
 
-```{.copyWrapper}
+```yaml
   isNested = false
   isTargetList = true
   endpointReturnsList = false
@@ -5715,7 +5715,7 @@ For integrating service discovery with Eureka, you can use the following configu
 
 For integrating with etcd, you can use the following configurations:
 
-```{.copyWrapper}
+```yaml
   isNested = false
   isTargetList = false
   endpointReturnsList = false
@@ -5731,7 +5731,7 @@ For this, you need to spin up a REST server that communicates with the Zookeeper
 Here is one open source project, ZooREST, that does just that: https://github.com/Difrex/zoorest
 
 With Zookeeper and ZooREST running, test the query endpoint. Don't forget the `+json`:
-```{.copyWrapper}
+```curl
 $ curl http://zoorest:8889/v1/get/zk_tyk+json
 {
   "data": {
@@ -5745,7 +5745,7 @@ $ curl http://zoorest:8889/v1/get/zk_tyk+json
 ```
 
 Then, you can use the following Tyk SD configurations:
-```{.copyWrapper}
+```yaml
   isNested = false
   isTargetList = false
   endpointReturnsList = false
@@ -5759,7 +5759,7 @@ Then, you can use the following Tyk SD configurations:
 
 For integrating service discovery with Consul, you can use the following configuration parameters:
 
-```{.copyWrapper}
+```yaml
   isNested = false
   isTargetList = true
   endpointReturnsList = true
@@ -5781,9 +5781,9 @@ To integrate Tyk with Linkerd perform the following:
 
 **Configure Linkerd**
 
-For integrating with Linkerd, you need to add the following configuration to your `linkerd.yaml` file, located in the `config/` directory:
+To integrate with Linkerd, you need to add the following configuration to your `linkerd.yaml` file, located in the `config/` directory:
 
-```{.copyWrapper}
+```yaml
   routers:
   - protocol: http
     identifier:
@@ -5795,9 +5795,9 @@ Then, in your Tyk Dashboard:
 
 1. Select your API from the **System Management > APIs** section and click **Edit**.
 
-2. From the **Core Settings** tab, set the **Target URL** to the Linkerd http server `host:port` address.
+2. From the **Core Settings** tab, set the **Target URL** to the Linkerd HTTP server `host:port` address.
 
-3. From the **Endpoint Designer** tab click **Global Version Settings** enter `Custom-Header` in the **Add this header**: field and the value of the Linkerd `app-id` in the **Header value** field.
+3. From the **Endpoint Designer** tab click **Global Version Settings** and enter `Custom-Header` in the **Add this header**: field and the value of the Linkerd `app-id` in the **Header value** field.
 
 4. Click **Update** to save your changes.
 
@@ -5805,7 +5805,7 @@ This is needed since Tyk appends a "Host" header when proxying the request and t
 
 **For further Linkerd information, see:**
 
-[Linkerd - HTTP proxy documentation](https://linkerd.io/features/http-proxy/ ) (Alternatives Section)
+[Linkerd - HTTP proxy documentation](https://linkerd.io/2-edge/reference/proxy-configuration/) (Alternatives Section)
 
 [Linkered - Header Token Identifier documentation](https://linkerd.io/config/0.9.1/linkerd/index.html#header-token-identifier)
 
@@ -5820,7 +5820,7 @@ Tyk uptime awareness is not meant to replace traditional uptime monitoring tools
 
 ##### Compatibility 
 
-Uptime tests is only available for Tyk Self-Managed users. It is not available on Tyk Cloud.
+Uptime tests are only available for Tyk Self-Managed users. It is not available on Tyk Cloud.
 
 ##### How do the uptime tests work?
 
@@ -5835,7 +5835,7 @@ The Gateway running the uptime test will have a worker pool defined so that it c
 
 To configure uptime tests, add the relevant section to your `tyk.conf`:
 
-```{.copyWrapper}
+```yaml
 "uptime_tests": {
   "disable": false, // disable uptime tests on the node completely
   "poller_group":"",
@@ -5849,17 +5849,17 @@ To configure uptime tests, add the relevant section to your `tyk.conf`:
 ```
 
 *   `disable`: When set to `false` this tells Tyk to run uptime tests, if you do not want any uptime tests to run on a Gateway, set it to `true` and they will be disabled on those Gateways (this could be useful if you are running uptime tests in a separate group of Tyk instances).
-*   `poller_group`: This field is used to define a different group of uptime tests. All the gateways that have the same `poller_group`, will be candidate to be elected as the primary Gateway of its group. This could be useful if you are running uptime tests in a segmented or sharded group of Tyk instances.
+*   `poller_group`: This field is used to define a different group of uptime tests. All the gateways that have the same `poller_group`, will be candidates to be elected as the primary Gateway of its group. This could be useful if you are running uptime tests in a segmented or sharded group of Tyk instances.
 *   `enable_uptime_analytics`: Tyk supports the recording of the data that is generated by the uptime tests, these can then be tabulated in the dashboard. Set to `true` to enable uptime analytics. However, since uptime tests run constantly, they can generate large amounts of data, for some users who do not wish to manage this data, they can disable it by setting this value to `false`.
 *   `failure_trigger_sample_size`: Here we tell Tyk to trigger a `HostDown` or `HostUp` event after the test has failed or passed a set number of times; `3` in this example. Setting the number to higher values can protect against false positives, but can increase lead incident time due to the verification.
-*   `time_wait`: The number of seconds between running tests. In this example it is set to `300` seconds.
+*   `time_wait`: The number of seconds between running tests. In this example, it is set to `300` seconds.
 *   `checker_pool_size`: The worker pool for uptime tests. In this example we have configured Tyk to keep `50` idle workers in memory to send tests to, in other words, with this configuration, you are pretty much guaranteed asynchronous testing for up to 50 tests.
 
 ##### Configure with the API Definition
 
-Uptime test check lists sit within API configurations, so in your API Definition add a section for the tests:
+Uptime test checklists sit within API configurations, so in your API Definition add a section for the tests:
 
-```{.copyWrapper}
+```yaml
 uptime_tests: {
   check_list: [
     {
@@ -5880,7 +5880,7 @@ uptime_tests: {
 
 Uptime tests are not versioned.
 
-In the above example there are two forms for the Uptime test, a "quick" form, which assumes a GET request:
+In the above example, there are two forms for the Uptime test, a "quick" form, which assumes a GET request:
 
 ```
 {

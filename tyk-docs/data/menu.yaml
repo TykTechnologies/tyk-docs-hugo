@@ -619,14 +619,34 @@ menu:
     category: Label
     show: True
     menu:
-      - title: "Community Forum"
+      - title: "Community Support"
         path: /developer-support/community
         category: Page
         show: True
-      - title: "Support Channels"
+      - title: "Support SLA"
         path: /developer-support/support
         category: Page
         show: True
+      - title: "Tyk Release Types"
+        category: Directory
+        show: True
+        menu:
+          - title: "Long Term Support Release"
+            path: /developer-support/release-types/long-term-support
+            category: Page
+            show: True
+          - title: "Early access feature"
+            path: /developer-support/release-types/early-access-feature
+            category: Page
+            show: True
+          - title: "Lab Release"
+            path: /developer-support/release-types/lab-release
+            category: Page
+            show: True
+          - title: "FIPS Release"
+            path: /developer-support/release-types/fips-release
+            category: Page
+            show: True
       - title: "Environment Variables and Configs"
         category: Directory
         show: True
@@ -745,10 +765,6 @@ menu:
           show: True
         - title: "Archived Releases"
           path: /developer-support/release-notes/archived
-          category: Page
-          show: True
-        - title: "Special Releases"
-          path: /developer-support/release-notes/special-releases
           category: Page
           show: True
       - title: "Contributing"
