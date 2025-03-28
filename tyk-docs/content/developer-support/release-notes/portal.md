@@ -1430,10 +1430,10 @@ If you are on a 1.1.0 or an older version we advise you to upgrade ASAP directly
 This release is primarily focused on improved deployment support for Kubernetes and a variety of features to achieve better developer experience.
 
 ##### Full Kubernetes support
-The Tyk Enterprise Developer Portal is now available in Kubernetes and customer can launch it using our [helm charts]({{<ref "portal/install#using-legacy-helm-chart">}}). This feature makes the portal Kubernetes friendly by adding liveness, readiness probes, graceful shutdown and changing the portal lifecycle so that it's possible to set an initial user and bootstrap the portal via APIs.
+The Tyk Enterprise Developer Portal is now available in Kubernetes and customer can launch it using our [helm charts]({{< ref "portal/install#using-legacy-helm-chart" >}}). This feature makes the portal Kubernetes friendly by adding liveness, readiness probes, graceful shutdown and changing the portal lifecycle so that it's possible to set an initial user and bootstrap the portal via APIs.
 
 ##### SSO for API Consumers and admins
-API Providers can [configure Single Sign-on]({{<ref "portal/settings#configure-developer-portal-sso">}}) for the Enterprise developer portal so that it's possible to login developers and admins to the portal user 3rd party IdP.
+API Providers can [configure Single Sign-on]({{< ref "portal/settings#configure-developer-portal-sso" >}}) for the Enterprise developer portal so that it's possible to login developers and admins to the portal user 3rd party IdP.
 
 ##### API Analytics for API Consumers
 This capability enables API Providers to get aggregated statistics about consumption of their APIs using Tyk Pump. In 1.2.0, we enabled the portal to attach the following tags to API Keys and oAuth clients:
@@ -1447,7 +1447,7 @@ This feature provides an API to make it easier for admin users to manage their A
 - Add link to Open API specification for APIs.
 
 ##### Add TLS support
-This feature enables API Provides to secure the portal with [HTTPs]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_enable" >}}).
+This feature enables API Provides to secure the portal with [HTTPs]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_enable" >}}).
 
 ##### Add enhanced logging configuration
 This new setting allows API Providers to set the logging [level]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_log_level" >}}) and [format]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_log_format" >}}). This offers API Providers more control over the logging behavior of their APIs.
@@ -1459,10 +1459,10 @@ This new setting allows API Providers to set the logging [level]({{< ref "produc
 
 ##### Added
 - Added Kubernetes support and [helm charts]({{< ref "portal/install#using-legacy-helm-chart" >}}).
-- Added [Single Sign-on]({{<ref "portal/settings#configure-developer-portal-sso">}}) for API Consumers and admin users so that they can use their IdPs for managing admin users and developers.
+- Added [Single Sign-on]({{< ref "portal/settings#configure-developer-portal-sso" >}}) for API Consumers and admin users so that they can use their IdPs for managing admin users and developers.
 - Added organization and application metadata to auth tokens and OAuth2.0 clients so that API Providers can use Tyk Pump to create aggregated reports based on the metadata from tokens and OAuth2.0 clients.
 - Added Admin APIs for API Products to enable API Providers to update API Products using CI/CD pipelines.
-- Added [TLS]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_enable" >}}) support for the portal's UI.
+- Added [TLS]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_enable" >}}) support for the portal's UI.
 - Added config options to set the logging [level]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_log_level" >}}) and [format]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_log_format" >}}). This offers API Providers more control over the logging behavior of their APIs.
 
 
@@ -1491,7 +1491,7 @@ We advise you to upgrade ASAP directly to this release.
 This release introduce a variety of features to improve developer experience. Additionally, we've included support for the S3 storage type as well as some bug fixes.
 
 ##### Organization management for API Consumers
-Now API Consumers can [create organizations]({{<ref "portal/api-consumer#manage-api-consumer-organizations">}}) and securely share credentials between their teammates. In greater detail:
+Now API Consumers can [create organizations]({{< ref "portal/api-consumer#manage-api-consumer-organizations" >}}) and securely share credentials between their teammates. In greater detail:
 - API Consumers can request to upgrade their account to an organizational account.
 - API Consumers can invite teammates to their organization and manage their roles.
 - API Consumers in the same organization share access credentials so that the API Consumer team will still have access to API credentials even if an admin user is on vacation or left the organization.
@@ -1499,15 +1499,15 @@ Now API Consumers can [create organizations]({{<ref "portal/api-consumer#manage-
 - API Providers can manually accept, reject or configure to accept all such request to accepted by default.
  
 ##### Get started guides
-API Providers can add [Get started guides]({{<ref "portal/api-provider#documentation-for-your-api-products">}}) to API Products for better developer experiences:
+API Providers can add [Get started guides]({{< ref "portal/api-provider#documentation-for-your-api-products" >}}) to API Products for better developer experiences:
 - API Providers can add the **Get started guides** to API Products to speed-up onboarding of API Consumers.
 - API Providers can use HTML or Markdown editors for authoring content for API Consumers such as the Get started guides and blog posts.
 
 ##### Tags for API Products and blog posts
-API Providers can select which blogs posts to display on an API Product page using [the tags feature]({{<ref "portal/api-provider#documentation-for-your-api-products">}}). To achieve that, an API Provider can specify tags for both API Products and blog posts. Blog posts that match tags with an API Product are displayed in the 'Related blog content' section in the API Product page. This offers API Providers greater control over what blog posts to display on their API Product page.
+API Providers can select which blogs posts to display on an API Product page using [the tags feature]({{< ref "portal/api-provider#documentation-for-your-api-products" >}}). To achieve that, an API Provider can specify tags for both API Products and blog posts. Blog posts that match tags with an API Product are displayed in the 'Related blog content' section in the API Product page. This offers API Providers greater control over what blog posts to display on their API Product page.
 
 ##### S3 support
-We added [S3 support]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage">}}) for the portal assets storage (themes, images, OAS files). This update enhances the extensibility of our platform, allowing you to choose different storage solutions to better align with your specific needs.
+We added [S3 support]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage" >}}) for the portal assets storage (themes, images, OAS files). This update enhances the extensibility of our platform, allowing you to choose different storage solutions to better align with your specific needs.
 
 #### Download
 - [docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.1/images/sha256-a5ef5360f5bea6433a3c6675707470a2e380257804c2cb033305da3b04c28ae7?context=explore)
@@ -1515,10 +1515,10 @@ We added [S3 support]({{<ref "product-stack/tyk-enterprise-developer-portal/depl
 #### Changelog
 
 ##### Added
-- Added the [organization management capability]({{<ref "portal/api-consumer#manage-api-consumer-organizations">}}) for API Consumers to safely share API access credentials between team members.
-- Added the [Get started guides]({{<ref "portal/api-provider#documentation-for-your-api-products">}}) for API Products so that admins can explain to their consumers how use their API Products.
-- Added support for [S3 storage]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage">}}) for the portal's assets storage. Now our customers can use `s3` storage in addition to the filesystem which is especially important in Kubernetes environments.
-- Added [tags]({{<ref "portal/api-provider#documentation-for-your-api-products">}}) for API Products and blog posts so that API Providers have greater control over which blog posts to display on their API Product page.
+- Added the [organization management capability]({{< ref "portal/api-consumer#manage-api-consumer-organizations" >}}) for API Consumers to safely share API access credentials between team members.
+- Added the [Get started guides]({{< ref "portal/api-provider#documentation-for-your-api-products" >}}) for API Products so that admins can explain to their consumers how use their API Products.
+- Added support for [S3 storage]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage" >}}) for the portal's assets storage. Now our customers can use `s3` storage in addition to the filesystem which is especially important in Kubernetes environments.
+- Added [tags]({{< ref "portal/api-provider#documentation-for-your-api-products" >}}) for API Products and blog posts so that API Providers have greater control over which blog posts to display on their API Product page.
 
 
 ##### Fixed
