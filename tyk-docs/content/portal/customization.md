@@ -2635,7 +2635,7 @@ The Tyk Enterprise Developer Portal sends notifications for the following events
 
 ### Behavior of Welcome and Activation Emails
 
-When creating a user account from the admin UI or via [the admin APIs]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api">}}), an admin user can create the user account as active or inactive.
+When creating a user account from the admin UI or via [the admin APIs]({{< ref "product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}), an admin user can create the user account as active or inactive.
 The behavior of activation emails varies depending on whether the user account is activated upon creation:
 - If the user account is created as inactive, the portal will send the welcome email. Then, upon activation of the user account, it will send the activation email.
 - If the user account is created as active, the portal will only send the welcome email and will suppress the activation email.
@@ -2783,7 +2783,7 @@ The configuration process consists of two steps:
 
 2. **Select Event Types for the Webhook**
 
-    To finish configuration, select types of events that should be sent to the **Target URL** and save the changes. Refer the docs below to know more about [supported event types]({{<ref "#supported-portal-events" >}})
+    To finish configuration, select types of events that should be sent to the **Target URL** and save the changes. Refer the docs below to know more about [supported event types]({{< ref "#supported-portal-events" >}})
     {{< img src="img/dashboard/portal-management/enterprise-portal/edp-select-webhook-events-for-channel.png" alt="Select webhook events" >}}
 
 

@@ -754,7 +754,7 @@ You can now specify a default API version, and it will be used if a version is n
 
 `spec.version_data.default_version`
 
-[Docs]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}})
+[Docs]({{< ref "api-management/gateway-config-tyk-classic#tyk-classic-api-versioning" >}})
 
 #### Disable URL Encoding
 
@@ -804,7 +804,7 @@ With this release we have refreshed the entire Dashboard UI with a new look-and-
 
 We have added API and Policy search functionality, which should help those with long lists.
 
-* [API Docs]({{< ref "api-management/dashboard-configuration#manage-apis---api-definition" >}})
+* [API Docs]({{< ref "api-management/dashboard-configuration#manage-apis-api-definition" >}})
 * [Policy Docs]({{< ref "tyk-apis/tyk-dashboard-api/portal-policies" >}})
 
 #### A New, Interactive Getting Started Walkthrough
@@ -992,7 +992,7 @@ If no user agent is specified in a request, it is now set as `Tyk/$VERSION`.
 #### Include `x-tyk-api-expires` date header for versioned APIs
 If a request is made for an API which has an expiry date, the response will include the `x-tyk-api-expires` header with expiry date. 
 
-[Docs]({{< ref "api-management/api-versioning#tyk-classic-api-versioning-1" >}})
+[Docs]({{< ref "api-management/gateway-config-tyk-classic#tyk-classic-api-versioning" >}})
 
 #### Run Admin Control API on a separate port
 Using `control_api_port` option in configuration file, you can run the admin control api on a separate port, and hide it behind firewall if needed.

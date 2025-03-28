@@ -40,7 +40,7 @@ This release has no breaking changes.
 |                 |                           | Pump vX - vY            |
 |                 |                           | TIB vX - vY             |
       
-##### 3rd Party Dependencies & Tools
+##### 3rd Party Dependencies & Tools {#3rdPartyTools-vX.Y.Z}
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.19, 1.20, 1.21       | 1.19, 1.20, 1.21       | All our binaries| 
@@ -154,7 +154,7 @@ Repeat the release notes section above for every patch here
 Please refer to the [upgrading Tyk]({{< ref "developer-support/upgrading" >}}) page for further guidance on the upgrade strategy.
 
 ### API Documentation
-- [OpenAPI Document]({{<ref "" >}})
+- [OpenAPI Document]({{< ref "" >}})
 - [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/collection/<collection-id>)
 
 ### FAQ

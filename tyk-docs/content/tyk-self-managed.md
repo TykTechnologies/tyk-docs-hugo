@@ -159,7 +159,8 @@ The Tyk Gateway can run completely independently, requiring only a Redis databas
 
 #### Init Systems
 
-Tyk packages support [systemd](https://www.freedesktop.org/wiki/Software/systemd/), [Upstart](http://upstart.ubuntu.com/cookbook/) (both 0.6.x and 1.x) and SysVinit Linux init systems. During package installation only one is chosen depending on the operating system support, e.g.:
+Tyk packages support SysVinit Linux init systems, [systemd](https://www.freedesktop.org/wiki/Software/systemd/) and Upstart (both 0.6.x and 1.x, [FYI - Ubuntu stopped supporting Upstart] upstart(https://askubuntu.com/questions/1024120/will-ubuntu-18-04-lts-still-support-upstart-or-do-we-have-to-change-to-systemd)).
+During package installation only one is chosen depending on the operating system support, e.g.:
 
 *   CentOS 6, RHEL 6, Amazon Linux ship with Upstart 0.6.x
 *   Ubuntu 14.04, Debian Jessie with Upstart 1.x
@@ -200,7 +201,7 @@ If you prefer guided support, we recommend exploring our [Tyk Technical PoC Guid
 Once you have obtained your license, you can proceed with the installation options provided below.
 
 ##### **Tyk Demo - The Perfect PoC Experience**
-Head over to our **Tyk Demo** guides in [Kubernetes]({{<ref "tyk-self-managed#kubernetes-demo">}}) or [Docker]({{<ref "tyk-self-managed#docker-demo">}}). These guides, with zero to none effort, will spin up the full Tyk infrastructure (Tyk stack) with examples of Tyk's capabilities and integrations out-of-the-box.
+Head over to our **Tyk Demo** guides in [Kubernetes]({{< ref "tyk-self-managed#kubernetes-demo" >}}) or [Docker]({{< ref "tyk-self-managed#docker-demo" >}}). These guides, with zero to none effort, will spin up the full Tyk infrastructure (Tyk stack) with examples of Tyk's capabilities and integrations out-of-the-box.
 
 ## Installation Options for Tyk Self-Managed
 
@@ -218,7 +219,7 @@ Install on K8s
 Install with Ansible 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-self-managed#install-tyk-on-red-hat-rhel--centos" image="/img/redhat-logo2.png" alt="Red Hat install">}}
+{{< badge read="10 mins" href="tyk-self-managed#install-tyk-on-redhat-rhel-centos" image="/img/redhat-logo2.png" alt="Red Hat install">}}
 Install on Red Hat 
 {{< /badge >}}
 
@@ -248,10 +249,10 @@ to our teams on support or the cummunity forum if you have questions, requests o
 
 Get started with one of our quick start guides:
 
-- [Quick Start with PostgreSQL]({{<ref "#install-tyk-stack-with-helm-chart-postgresql">}})
-- [Quick Start with MongoDB]({{<ref "tyk-self-managed#install-tyk-stack-with-helm-chart-mongodb">}})
+- [Quick Start with PostgreSQL]({{< ref "#install-tyk-stack-with-helm-chart-postgresql" >}})
+- [Quick Start with MongoDB]({{< ref "tyk-self-managed#install-tyk-stack-with-helm-chart-mongodb" >}})
 
-Or go to [Tyk Stack helm chart]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}) for detailed installation instructions and configuration options.
+Or go to [Tyk Stack helm chart]({{< ref "product-stack/tyk-charts/tyk-stack-chart" >}}) for detailed installation instructions and configuration options.
 
 #### Install Tyk Stack with Helm Chart (PostgreSQL)
 
@@ -357,9 +358,9 @@ helm upgrade tyk tyk-helm/tyk-stack -n $NAMESPACE \
 
 Now Tyk Dashboard should be accessible through service `dashboard-svc-tyk-tyk-dashboard` at port `3000`. You can login to Dashboard using the admin email and password to start managing APIs. Tyk Gateway will be accessible through service `gateway-svc-tyk-tyk-gateway.tyk.svc` at port `8080`.
 
-You are now ready to [create an API]({{<ref "api-management/gateway-config-managing-classic#create-an-api">}}).
+You are now ready to [create an API]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}}).
 
-For the complete installation guide and configuration options, please see [Tyk Stack Helm Chart]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}).
+For the complete installation guide and configuration options, please see [Tyk Stack Helm Chart]({{< ref "product-stack/tyk-charts/tyk-stack-chart" >}}).
 
 #### Install Tyk Stack with Helm Chart (MongoDB)
 
@@ -373,7 +374,7 @@ The following guides provide instructions to install Redis, MongoDB, and Tyk sta
 {{< note success >}}
 **Note**
 
-If you want to enable Tyk Enterprise Developer Portal, please use [PostgreSQL]({{<ref "#install-tyk-stack-with-helm-chart-postgresql">}}). MongoDB is not supported in Developer Portal.
+If you want to enable Tyk Enterprise Developer Portal, please use [PostgreSQL]({{< ref "#install-tyk-stack-with-helm-chart-postgresql" >}}). MongoDB is not supported in Developer Portal.
 {{< /note >}}
 
 **Quick Start**
@@ -490,9 +491,9 @@ helm upgrade tyk tyk-helm/tyk-stack -n $NAMESPACE \
 
 Now Tyk Dashboard should be accessible through service `dashboard-svc-tyk-tyk-dashboard` at port `3000`. You can login to Dashboard using the admin email and password to start managing APIs. Tyk Gateway will be accessible through service `gateway-svc-tyk-tyk-gateway.tyk.svc` at port `8080`.
 
-You are now ready to [create an API]({{<ref "api-management/gateway-config-managing-classic#create-an-api">}}).
+You are now ready to [create an API]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}}).
 
-For the complete installation guide and configuration options, please see [Tyk Stack Helm Chart]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}).
+For the complete installation guide and configuration options, please see [Tyk Stack Helm Chart]({{< ref "product-stack/tyk-charts/tyk-stack-chart" >}}).
 
 
 #### Install Tyk Stack on Windows with Helm
@@ -532,7 +533,7 @@ You use this at your own risk. Tyk is not supported on the Windows platform. How
 - [Python for Windows](https://www.python.org/downloads/windows/)
 - PowerShell running as administrator
 - Our Pro Demo Docker [GitHub repo](https://github.com/TykTechnologies/tyk-pro-docker-demo)
-- A free Tyk Self-Managed [Developer license](https://tyk.io/product/tyk-on-premises-free-edition/)
+- A free Tyk Self-Managed [Developer license](https://tyk.io/sign-up)
 
 Ensure that kubectl and helm prerequisites are configured on your Windows path environment variable
 
@@ -553,9 +554,9 @@ Now you have your prerequisites, follow the instructions from our [Tyk Helm Char
 {{< warning success >}}
 **Warning**
 
-`tyk-pro` chart is deprecated. Please use our [Tyk Stack helm chart]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}) instead. 
+`tyk-pro` chart is deprecated. Please use our [Tyk Stack helm chart]({{< ref "product-stack/tyk-charts/tyk-stack-chart" >}}) instead. 
 
-We recommend all users migrate to the `tyk-stack` Chart. Please review the [Configuration]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
+We recommend all users migrate to the `tyk-stack` Chart. Please review the [Configuration]({{< ref "product-stack/tyk-charts/tyk-stack-chart" >}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
 {{< /warning >}}
 
 **Introduction**
@@ -1221,7 +1222,7 @@ A full Tyk Self-Managed installation can be deployed to Heroku dynos and workers
 1. Docker daemon installed and running locally
 2. [Heroku account](https://www.heroku.com/), the free plan is sufficient for a basic PoC but not recommended for production usage
 3. [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed
-4. MongoDB service (such as [Atlas](https://www.mongodb.com/cloud/atlas), [mLab](https://elements.heroku.com/addons/mongolab), [Compose](https://www.compose.com/) or your own deployment), this guide is based on MongoDB Atlas but others should work as well
+4. MongoDB service (such as [Atlas](https://www.mongodb.com/cloud/atlas), [mLab](https://elements.heroku.com/addons/mongolab), or your own deployment), this guide is based on MongoDB Atlas but others should work as well
 5. [Tyk License](https://tyk.io/pricing/on-premise/) (note that in case of running multiple gateway dynos, license type must match)
 6. Checkout the [Tyk quickstart repository](https://github.com/TykTechnologies/tyk-pro-heroku) from GitHub
 7. Python 2 or 3 in order to execute the bootstrap script
@@ -1638,7 +1639,7 @@ Please refer to [Heroku documentation on containers and registry](https://devcen
 
 ### Install on Microsoft Azure
   
-[Azure](https://azure.microsoft.com/en-us/overview/what-is-azure/) is Microsoft's cloud services platform. It supports both the running of [Ubuntu Servers](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Canonical.UbuntuServer?tab=Overview), as well as [Docker](https://www.docker.com/docker-azure) and [Docker-Compose](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-compose-quickstart).
+[Azure](https://azure.microsoft.com/en-us/explore/) is Microsoft's cloud services platform. It supports both the running of [Ubuntu Servers](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/canonical.0001-com-ubuntu-server-focal?tab=overview), as well as [Docker](https://learn.microsoft.com/en-us/previous-versions/azure/virtual-machines/linux/docker-machine) and [Docker-Compose](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-compose-quickstart).
 
 For more details, see the [Azure Documentation](https://docs.microsoft.com/en-us/azure/).
 
@@ -1648,14 +1649,14 @@ Azure allows you to install Tyk in the following ways:
 
 **On-Premises**
 
-1. Via our [Ubuntu Setup]({{< ref "tyk-self-managed#install-gateway-1" >}}) on an installed Ubuntu Server on Azure.
+1. Via our [Ubuntu Setup]({{< ref "tyk-self-managed#debian-ubuntu-install-gateway" >}}) on an installed Ubuntu Server on Azure.
 2. Via our [Docker Installation]({{< ref "#docker-compose-setup" >}}) using Azure's Docker support.
 
 See our video for installing Tyk on Ubuntu via Azure:
 
 {{< youtube -Q9Lox-DyTU >}}
 
-We also have a [blog post](https://tyk.io/getting-started-with-tyk-on-microsoft-azure-and-ubuntu/) that walks you through installing Tyk on Azure.
+We also have a [blog post](https://tyk.io/blog/getting-started-with-tyk-on-microsoft-azure-and-ubuntu/) that walks you through installing Tyk on Azure.
 
 
 ### Install to Google Cloud
@@ -1670,7 +1671,7 @@ Google Cloud allows you to install Tyk in the following ways:
 
 **On-Premises**
 
-1. Via our [Ubuntu Setup]({{< ref "tyk-self-managed#install-gateway-1" >}}) on an installed Ubuntu Server within Google Cloud.
+1. Via our [Ubuntu Setup]({{< ref "tyk-self-managed#debian-ubuntu-install-gateway" >}}) on an installed Ubuntu Server within Google Cloud.
 2. Via our [Docker Installation]({{< ref "#docker-compose-setup" >}}) using Google Cloud's Docker support.
 
 **Tyk Pump on GCP**
@@ -1682,7 +1683,7 @@ When running Tyk Pump in GCP using [Cloud Run](https://cloud.google.com/run/docs
 2. Update the Tyk Gateway [configuration]({{< ref "tyk-oss-gateway/configuration#analytics_configstorage_expiration_time" >}}) to keep the stats for 3 mins to allow Tyk Pump to process them. This value should be greater than the Pump [purge delay]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#purge_delay" >}}) to ensure the analytics data exists long enough in Redis to be processed by the Pump. 
 
 
-### Install Tyk on Red Hat (RHEL / CentOS)
+### Install Tyk on Red Hat (RHEL / CentOS) {#install-tyk-on-redhat-rhel-centos}
 
 Select the preferred way of installing Tyk by selecting **Shell** or **Ansible** tab for instructions.
 There are 4 components which needs to be installed. Each can be installed via shell or ansible
@@ -1909,7 +1910,7 @@ This configuration should also work (with some tweaks) for CentOS.
 **Prerequisites**
 
 *   Ensure port `3000` is open: This is used by the Dashboard to provide the GUI and the Classic Developer Portal.
-*   Follow the steps provided in this link [Getting started on Red Hat (RHEL / CentOS)]({{< ref "#install-tyk-on-red-hat-rhel--centos" >}}) to install and configure Tyk dependencies.
+*   Follow the steps provided in this link [Getting started on Red Hat (RHEL / CentOS)]({{< ref "#install-tyk-on-redhat-rhel-centos" >}}) to install and configure Tyk dependencies.
 
 1. **Set up YUM Repositories**
 
@@ -2528,9 +2529,9 @@ Installing Tyk on Ubuntu is very straightforward using our APT repositories, fol
 
 The suggested order would be to install Tyk Dashboard, then Tyk Pump and then Tyk Gateway for a full stack.
 
-- [Dashboard]({{< ref "tyk-self-managed#install-dashboard-1" >}})
-- [Pump]({{< ref "tyk-self-managed#install-pump-1" >}})
-- [Gateway]({{< ref "tyk-self-managed#install-gateway-1" >}})
+- [Dashboard]({{< ref "tyk-self-managed#Debian-Ubuntu-install-dashboard" >}})
+- [Pump]({{< ref "tyk-self-managed#Debian-Ubuntu-install-pump" >}})
+- [Gateway]({{< ref "tyk-self-managed#debian-ubuntu-install-gateway" >}})
 
 {{< note success >}}
 **Note**  
@@ -2667,7 +2668,7 @@ Read more about MongoDB configuration [here](https://github.com/ansible-collecti
 
 Read more about PostgreSQL configuration [here](https://github.com/geerlingguy/ansible-role-postgresql).
 
-#### Install Dashboard
+#### Install Dashboard {#Debian-Ubuntu-install-dashboard}
 
 ##### Using Shell
 
@@ -2676,8 +2677,7 @@ Tyk has its own APT repositories hosted by the kind folks at [packagecloud.io](h
 This tutorial has been tested on Ubuntu 16.04 & 18.04 with few if any modifications. We will install the Tyk Dashboard with all dependencies locally.
 
 **Prerequisites**
-
-- Have MongoDB/SQL and Redis installed - see [here](https://tyk.io/getting-started/installation/with-tyk-on-premises/on-ubuntu/#prerequisites) for details.
+- Have MongoDB/SQL and Redis installed - follow the guide for [installing databases on Debian/Ubuntu]({{< ref "#install-tyk-on-debian-or-ubuntu" >}}).
 - Ensure port `3000` is available. This is used by the Tyk Dashboard to provide the GUI and the Developer Portal.
 
 **Step 1: Set up our APT Repositories**
@@ -2714,7 +2714,7 @@ sudo apt-get update
 
 **Note**  
 
-`bionic` is the code name for Ubuntu 18.04. Please substitute it with your particular [ubuntu release](https://wiki.ubuntu.com/Releases), e.g. `focal`.
+`bionic` is the code name for Ubuntu 18.04. Please substitute it with your particular [ubuntu release](https://releases.ubuntu.com/), e.g. `focal`.
 
 {{< /note >}}
 
@@ -2946,7 +2946,7 @@ $ ansible-playbook playbook.yaml -t tyk-dashboard
 | dash.service.proto | `http` | Dashboard server protocol |
 | dash.service.tls | `false` | Set to `true` to enable SSL connections |
 
-#### Install Pump
+#### Install Pump {#Debian-Ubuntu-install-pump}
 
 ##### Using Shell
 
@@ -2991,7 +2991,7 @@ sudo apt-get update
 
 **Note**  
 
-`bionic` is the code name for Ubuntu 18.04. Please substitute it with your particular [ubuntu release](https://wiki.ubuntu.com/Releases), e.g. `focal`.
+`bionic` is the code name for Ubuntu 18.04. Please substitute it with your particular [ubuntu release](https://releases.ubuntu.com/), e.g. `focal`.
 
 {{< /note >}}
 
@@ -3117,7 +3117,7 @@ $ ansible-playbook playbook.yaml -t tyk-pump
 | Ubuntu | 18 | ✅ |
 | Ubuntu | 16 | ✅ |
 
-#### Install Gateway
+#### Install Gateway {#debian-ubuntu-install-gateway}
 
 ##### Using Shell
 
@@ -3162,7 +3162,7 @@ deb-src https://packagecloud.io/tyk/tyk-gateway/ubuntu/ bionic main
 
 
 
-`bionic` is the code name for Ubuntu 18.04. Please substitute it with your particular [ubuntu release](https://wiki.ubuntu.com/Releases), e.g. `focal`.
+`bionic` is the code name for Ubuntu 18.04. Please substitute it with your particular [ubuntu release](https://releases.ubuntu.com/), e.g. `focal`.
 
 {{< /note >}}
 
@@ -3425,7 +3425,7 @@ Elasticsearch and starts up Tyk pump to push analytics data from the Tyk platfor
   - [operator-httpbin](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/operator-httpbin): starts up an API examples using the tyk-operator.
   - [operator-jwt-hmac](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/operator-jwt-hmac): starts up API examples using the tyk-operator to demonstrate JWT HMAC auth.
   - [operator-udg](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/operator-udg): starts up Universal Data Graph API examples using the tyk-operator.
-- [portal](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/portal): deploys the [Tyk Enterprise Developer Portal](https://tyk.io/docs/tyk-developer-portal/tyk-enterprise-developer-portal/) as well as its dependency PostgreSQL.
+- [portal](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/portal): deploys the [Tyk Enterprise Developer Portal]({{< ref "portal/overview" >}}) as well as its dependency PostgreSQL.
 - [prometheus](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/prometheus): deploys Prometheus and starts up Tyk Pump to push analytics data from the Tyk platform to Prometheus.
   - [prometheus-grafana](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/prometheus-grafana): deploys the Prometheus deployment as well as a Grafana deployment and creates a Grafana dashboard for you to view the analytics.
 - [vault](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/vault): deploys Vault Operator and a Vault instance.
@@ -3630,7 +3630,7 @@ To complete the instruction above we have a tutorial video of tyk demo that cove
 ### Docker Compose Setup
 
 #### Who is this page for?
-This is the guide we recommend for a easy quick start. The instructions are the ones shared with you when you register to a [free trial]({{< ref "tyk-self-managed#getting-started-with-tyk-self-managed" >}}).
+This is the guide we recommend for a easy quick start. The instructions are the ones shared with you when you register to a [free trial](https://tyk.io/sign-up/).
 
 You can also use this guide for your PoC since it spins up a full Tyk Self Managed stack for you using our project *Docker Pro Demo*, however, if you are interested in learning Tyk, there's an option for [Tyk Demo]({{< ref "tyk-self-managed#explore-demos-and-proof-of-concepts" >}}) which is a project that spins up full Tyk stack that includes a prepopulate API definitions of all kinds, with various middleware options and can also spin up supporting tools such as Prometheus, Keycloak (IDP) etc.
 
@@ -3640,7 +3640,7 @@ The *Tyk Pro Docker Demo* is our [Self-Managed]({{< ref "tyk-self-managed" >}}) 
 {{< warning success >}}
 **Warning**
 
-This demo is NOT intended for production use or performance testing, since it uses docker compose and the configuration files are not specifically tuned for performance testing or high loads. Please visit the [Planning for Production]({{<ref "tyk-self-managed#planning-for-production" >}}) page to learn how to configure settings for optimal performance.
+This demo is NOT intended for production use or performance testing, since it uses docker compose and the configuration files are not specifically tuned for performance testing or high loads. Please visit the [Planning for Production]({{< ref "tyk-self-managed#planning-for-production" >}}) page to learn how to configure settings for optimal performance.
 
 {{< /warning >}}
 {{< note success >}}
@@ -3652,7 +3652,7 @@ The Tyk Pro Docker demo does not provide access to the [Developer Portal]({{< re
 #### Prerequisites
 
 * Our [Tyk Pro Docker demo on GitHub](https://github.com/TykTechnologies/tyk-pro-docker-demo)
-* A Tyk Pro [trial license](https://pages.tyk.io/get-started-with-tyk)
+* A Tyk Pro [trial license](https://tyk.io/sign-up/)
 
 #### Steps for Installation
 
@@ -3769,7 +3769,7 @@ You use this at your own risk. Tyk is not supported on the Windows platform. How
 - PowerShell running as administrator
 - Postman for [Windows](https://www.getpostman.com/downloads/)
 - Our Pro Demo Docker [GitHub repo](https://github.com/TykTechnologies/tyk-pro-docker-demo)
-- A free Tyk Self-Managed [Developer license](https://tyk.io/product/tyk-on-premises-free-edition/)
+- A free Tyk Self-Managed [Developer license](https://tyk.io/sign-up/)
 
 **Step 1 - Clone the Repo**
 
@@ -3964,7 +3964,7 @@ You use this at your own risk. Tyk is not supported on the Windows platform. How
 - PowerShell running as administrator
 - Postman for [Windows](https://www.getpostman.com/downloads/)
 - Our Pro Demo Docker [GitHub repo](https://github.com/TykTechnologies/tyk-pro-docker-demo)
-- A free Tyk Self-Managed [Developer license](https://tyk.io/product/tyk-on-premises-free-edition/)
+- A free Tyk Self-Managed [Developer license](https://tyk.io/sign-up/)
 - Optional: Ubuntu on Windows
 
 **Step 1 - Clone the Repo**
@@ -4187,11 +4187,11 @@ Please read carefully through this [doc]({{< ref "api-management/client-authenti
 
 #### Analytics Optimizations
 
-If using a [Redis cluster](https://redis.io/docs/management/scaling/) under high load it is recommended that analytics are distributed among the Redis shards. This can be configured by setting the [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) parameter to true. Furthermore, analytics can also be disabled for an API using the [do_not_track]({{< ref "api-management/gateway-config-tyk-classic#other-root-objects" >}}) configuration parameter. Alternatively, tracking for analytics can be disabled for selected endpoints using the [do not track endpoint plugin]({{< ref "api-management/traffic-transformation#do-not-track-using-tyk-oas" >}}).
+If using a [Redis cluster](https://redis.io/docs/management/scaling/) under high load it is recommended that analytics are distributed among the Redis shards. This can be configured by setting the [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) parameter to true. Furthermore, analytics can also be disabled for an API using the [do_not_track]({{< ref "api-management/gateway-config-tyk-classic#traffic-logs" >}}) configuration parameter. Alternatively, tracking for analytics can be disabled for selected endpoints using the [do not track endpoint plugin]({{< ref "api-management/traffic-transformation#do-not-track-using-tyk-oas" >}}).
 
 ##### Protobuf Serialisation
 
-In Tyk Gateway, using [protobuf]({{< ref "tyk-oss-gateway/configuration/#analytics_configserializer_type" >}}) serialisation, instead of [msgpack](https://msgpack.org) can increase performance for sending and processing analytics. 
+In Tyk Gateway, using [protobuf]({{< ref "tyk-oss-gateway/configuration#analytics_configserializer_type" >}}) serialisation, instead of [msgpack](https://msgpack.org) can increase performance for sending and processing analytics. 
 <br/>
 **Note:** *protobuf* is not currently supported in *MDCB* deployment.
 
@@ -4278,7 +4278,7 @@ An API Gateway serves as the single point of entry into your ecosystem, introduc
    - CPU scalability  
    - Head-to-head comparisons with competitors  
 
-2. **[Performance Tuning Your Gateway](https://tyk.io/performance-tuning-your-tyk-api-gateway/)**  
+2. **[Performance Tuning Your Gateway](https://tyk.io/blog/performance-tuning-your-tyk-api-gateway/)**  
    A step-by-step guide to fine-tuning your Gateway for maximum performance.  
 
 3. **[Manual Performance Testing on AWS](https://tyk.io/a-manual-for-simple-performance-testing-with-tyk-on-aws/)**  
@@ -5245,7 +5245,7 @@ The following component status will not be returned:
 {{< note success >}}
 **Note**  
 
-Health check is implemented as per the [Health Check Response Format for HTTP APIs](https://tools.ietf.org/id/draft-inadarei-api-health-check-01.html) RFC
+Health check is implemented as per the [Health Check Response Format for HTTP APIs](https://inadarei.github.io/rfc-healthcheck/) RFC
 {{< /note >}}
 
 An example of the response from this API is as follows:
@@ -5805,7 +5805,7 @@ This is needed since Tyk appends a "Host" header when proxying the request and t
 
 **For further Linkerd information, see:**
 
-[Linkerd - HTTP proxy documentation](https://linkerd.io/features/http-proxy/ ) (Alternatives Section)
+[Linkerd - HTTP proxy documentation](https://linkerd.io/2-edge/reference/proxy-configuration/) (Alternatives Section)
 
 [Linkered - Header Token Identifier documentation](https://linkerd.io/config/0.9.1/linkerd/index.html#header-token-identifier)
 
@@ -5970,7 +5970,7 @@ ie: `www.myapi.com:3000`
 #### Using external Key Value storage with Tyk
 
 
-With Tyk Gateway you can store configuration data (typically authentication secrets or upstream server locations) in Key-Value (KV) systems such as [Vault]({{< ref "#vault">}}), and [Consul]({{< ref "#consul">}}) and then reference these values during configuration of the Tyk Gateway or APIs deployed on the Gateway.
+With Tyk Gateway you can store configuration data (typically authentication secrets or upstream server locations) in Key-Value (KV) systems such as [Vault]({{< ref "#vault" >}}), and [Consul]({{< ref "#consul" >}}) and then reference these values during configuration of the Tyk Gateway or APIs deployed on the Gateway.
 
 #### When to use external Key-Value storage
 
@@ -6054,6 +6054,7 @@ In Tyk Gateway's configuration file (`tyk.conf`), you can retrieve values from K
 - `security.private_certificate_encoding_secret`
 - `db_app_conf_options.connection_string`
 - `policies.policy_connection_string`
+- `slave_options.api_key`
 
 To reference the *Value* assigned to a *Key* in one of the KV stores from the Gateway configuration file use the following notation:
 - Consul: `consul://path/to/key`
