@@ -1,0 +1,87 @@
+[
+    {
+        "path": "/docs/",
+        "name": "5.8 - Latest",
+        "branch": "release-5.8"
+    },
+    {
+        "path": "/docs/5.7/",
+        "name": "5.7",
+        "branch": "release-5.7"
+    },
+    {
+        "path": "/docs/5.6/",
+        "name": "5.6",
+        "branch": "release-5.6"
+    },
+    {
+        "path": "/docs/5.5/",
+        "name": "5.5",
+        "branch": "release-5.5"
+    },
+    {
+        "path": "/docs/5.4/",
+        "name": "5.4",
+        "branch": "release-5.4"
+    },
+    {
+        "path": "/docs/5.3/",
+        "name": "5.3 - LTS",
+        "branch": "release-5.3"
+    },
+    {
+        "path": "/docs/5.2/",
+        "name": "5.2",
+        "branch": "release-5.2"
+    },
+    {
+        "path": "/docs/5.1/",
+        "name": "5.1",
+        "branch": "release-5.1"
+    },
+    {
+        "path": "/docs/5.0/",
+        "name": "5 - LTS",
+        "branch": "release-5"
+    },
+    {
+        "path": "/docs/4.3/",
+        "name": "4.3",
+        "branch": "release-4.3"
+    },
+    {
+        "path": "/docs/4.2/",
+        "name": "4.2",
+        "branch": "release-4.2"
+    },
+    {
+        "path": "/docs/4.1/",
+        "name": "4.1",
+        "branch": "release-4.1"
+    },
+    {
+        "path": "/docs/4.0/",
+        "name": "4 - LTS",
+        "branch": "release-4"
+    },
+    {
+        "path": "/docs/3.2/",
+        "name": "3.2",
+        "branch": "release-3.2"
+    },
+    {
+        "path": "/docs/3.1/",
+        "name": "3.1",
+        "branch": "release-3.1"
+    },
+    {
+        "path": "/docs/3-lts/",
+        "name": "3 - LTS",
+        "branch": "release-3-lts"
+    },
+    {
+        "path": "/docs/nightly/",
+        "name": "Nightly",
+        "branch": "master"
+    }
+]
