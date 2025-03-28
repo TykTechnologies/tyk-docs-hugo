@@ -78,15 +78,15 @@ In Tyk 4.1, we introduced the Tyk OAS API definition but initially it supported 
 
 **Tyk 5.8 continues to support Tyk Classic for REST, but we will not be adding support for new features to this API definition style and strongly recommend migrating to Tyk OAS.**
 
-For Enterprise Edition users with an existing portfolio of Tyk Classic API definitions, we provide a [migration tool](), available via the Dashboard API and UI.
+For Tyk Dashboard users with an existing portfolio of Tyk Classic API definitions, we provide a [migration tool]({{< ref "api-management/migrate-tyk-classic" >}}), available via the Dashboard API and UI.
 
 ### Storing API definitions
 
-For Tyk Open Core users, API definitions should be stored in `.json` files in the following location accessible by the Tyk Gateway:
+For Tyk Open Source users, API definitions should be stored in `.json` files in the following location accessible by the Tyk Gateway:
 - `/var/tyk-gateway/apps` (Linux)
 - `/opt/tyk-gateway/apps` (Docker)
 
-For Enterprise Edition users, API definitions will be kept in your [main storage]({{< ref "api-management/dashboard-configuration#data-storage-solutions" >}}).
+For Tyk Dashboard users, API definitions will be kept in your [main storage]({{< ref "api-management/dashboard-configuration#data-storage-solutions" >}}).
 
 ### A note on terminology
 
