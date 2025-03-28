@@ -1,7 +1,7 @@
 ---
 title: Tyk Operator Release Notes
-tag: ["Tyk Operator", "Release notes", "v1.0", "changelog", "v1.0.0", "v0.18.0", "v0.17.1", "v0.17.0", "v0.16.0" ]
-description: "Release notes documenting updates, enhancements, fixes and changes for Tyk Operator versions within the 1.0.x series."
+tag: ["Tyk Operator", "Release notes", "changelog"]
+description: "Release notes documenting updates, enhancements, fixes and changes for Tyk Operator."
 aliases:
   - /product-stack/tyk-operator/release-notes/operator-0.16
   - /product-stack/tyk-operator/release-notes/operator-0.17
@@ -15,10 +15,156 @@ aliases:
 **This page contains all release notes for Tyk Operator displayed in a reverse chronological order**
 
 ## Support Lifetime
-<!-- Required. replace X.Y with this release and set the correct quarter of the year -->
 Our minor releases are supported until our next minor comes out.
 
 ---
+
+<!-- ## 1.2 Release Notes
+### 1.2.0 Release Notes
+
+#### Release Date XX March 2025
+
+#### Release Highlights
+
+##### Support for Tyk 5.8
+
+Tyk Operator v1.2 introduces key enhancements and critical fixes to improve API management in Kubernetes environments. This release adds support for HMAC request signing and YAML-based OAS definitions, aligning with Tyk Gateway 5.8.
+
+For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.2.0) below.
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Dependencies {#dependencies-1.2}
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [Kubernetes](https://kubernetes.io)                        | 1.28.x to 1.32.x       | 1.19.x to 1.32.x       |          | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+
+Tyk Operator v1.2 introduced new Custom Resource Definitions (CRDs). Before upgrading to Tyk Operator v1.2 with Helm Chart, please run the following commands to install the CRDs:
+
+```bash
+$ kubectl apply -f https://raw.githubusercontent.com/TykTechnologies/tyk-charts/refs/heads/main/tyk-operator-crds/crd-v1.2.0.yaml
+```
+
+
+Go to the [Upgrading Tyk Operator]({{<ref "api-management/automations/operator#install-and-configure-tyk-operator">}}) section for detailed upgrade instructions.
+
+
+#### Downloads
+- [Docker image v1.2.0](https://hub.docker.com/r/tykio/tyk-operator/tags?page=&page_size=&ordering=&name=v1.2.0)
+  - ```bash
+    docker pull tykio/tyk-operator:v1.2.0
+    ```
+- Helm chart
+  - tyk-charts v3.0.0 
+
+#### Changelog {#Changelog-v1.2.0}
+
+##### Added
+
+<ul>
+<li>
+<details>
+<summary>HMAC request signing support</summary>
+
+Tyk Operator now supports HMAC request signing, enabling enhanced security and integrity for API requests. This feature aligns with Tyk 5.8 capabilities.
+
+[Learn More]({{< ref "api-management/client-authentication#upstream-hmac-request-signing" >}})
+</details>
+</li>
+<li>
+<details>
+<summary>YAML-based OAS API definitions</summary>
+
+Tyk Operator now allows OAS API definitions in YAML format, increasing flexibility in API configurations.
+
+</details>
+</li>
+<li>
+<details>
+<summary>JWT OAS API policy linking </summary>
+
+Tyk Operator now supports linking of policies for JWT default policies and JWT scope-to-policy mappings using kubernetes names. They can set these fields in TykOASApiDefinition CRD.
+
+</details>
+</li>
+</ul>
+
+##### Updated
+
+<ul>
+<li>
+<details>
+<summary>Removed dependency on kube-rbac-proxy</summary>
+
+Tyk Operator removed dependency on kubebuilder's `rbac-proxy` for authentication/authorization of metrics server.
+`WithAuthenticationAndAuthorization` feature provided by Controller-Runtime will be used instead.
+
+Users are encouraged to update to Tyk Operator v1.2 to benefit from this change.
+
+For users who cannot immediately update, there is an alternative option: modifying the Operator's Helm chart configuration to replace the image `gcr.io/kubebuilder/kube-rbac-proxy` with another trusted source. For details, please see [Issue 365](https://github.com/TykTechnologies/tyk-charts/issues/365).
+
+</details>
+</li>
+</ul>
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Operator reconciliation error handling</summary>
+
+Fixed an issue where reconciliation conflicts appeared as errors in logs, which occurred because an outdated copy of the Kubernetes resource was being processed. This has been resolved by fetching the latest copy of the object from the cluster and retrying the operation.
+
+</details>
+</li>
+<li>
+<details>
+<summary>Cert-manager dependency</summary>
+
+Users can now disable cert-manager, making it optional rather than mandatory for onboarding. This enhances flexibility in deployment configurations.
+
+</details>
+</li>
+<li>
+<details>
+<summary>Circuit breaker schema validation</summary>
+
+Fixed an issue where user was getting validation error while setting `threshold_precent` field of classic API Definition CRD starting from Operator v1.0.0, which blocked users from upgrading. 
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Portal API Catalog infinite loop </summary>
+
+Resolved an issue where the Operator could enter an infinite loop when a PortalAPICatalogue CR was created. 
+
+</details>
+</li>
+<li>
+<details>
+<summary>Leader election flag </summary>
+
+Because of some issue in Operator helm chart, configurations options were not getting read correctly.
+Helm chart has been fixed and leader election works by default again.
+
+</details>
+</li>
+</ul>
+
+--- -->
 
 ## 1.1 Release Notes
 ### 1.1.0 Release Notes

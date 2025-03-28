@@ -1,7 +1,7 @@
 ---
 title: Tyk Sync Release Notes
-tag: ["Tyk Sync", "Release notes", "v2.0", "2.0.0", "changelog" ]
-description: "Release notes documenting updates, enhancements, fixes and changes for Tyk Sync versions within the 2.0.X series."
+tag: ["Tyk Sync", "Release notes", "changelog" ]
+description: "Release notes documenting updates, enhancements, fixes and changes for Tyk Sync."
 aliases:
   - /product-stack/tyk-sync/release-notes/sync-1.4
   - /product-stack/tyk-sync/release-notes/sync-1.5
@@ -17,6 +17,105 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
+<!-- ## 2.1 Release Notes
+
+### 2.1.0 Release Notes
+
+#### Release Date 17 March 2025
+
+#### Release Highlights
+
+Tyk Sync 2.1 introduces performance improvements and enhanced control over API synchronization. This release optimizes resource updates, adds support for partial synchronization, and ensures compatibility with Tyk 5.8.
+
+Please refer to the [changelog]({{< ref "#Changelog-v2.1.0">}}) below for detailed explanation.
+
+#### Breaking Changes
+
+This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+For users currently on v2.0.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version 2.0.0 and proceed directly to this latest patch release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
+
+#### Downloads
+- [Docker image v2.1.0](https://hub.docker.com/r/tykio/tyk-sync/tags?page=&page_size=&ordering=-name&name=v2.1.0)
+  - ```bash
+    docker pull tykio/tyk-sync:v2.1.0
+    ```
+
+#### Changelog {#Changelog-v2.1.0}
+
+##### Added
+
+<ul>
+<li>
+<details>
+<summary>--no-delete flag for partial synchronization</summary>
+
+Added a --no-delete flag to prevent resource deletion during partial sync, giving users more control over API synchronization.
+
+</details>
+</li>
+<li>
+<details>
+<summary>Parallel processing for improved performance</summary>
+
+Improved synchronization speed by adding parallel processing, allowing faster execution of sync operations in large environments.
+
+</details>
+</li>
+</ul>
+
+##### Changed
+
+<ul>
+<li>
+<details>
+<summary>Updated API definitions</summary>
+
+Updated API definitions for full compatibility with Tyk 5.8, ensuring seamless integration with the latest Gateway and Dashboard features.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Distroless Docker Image</summary>
+
+Changed the Tyk Sync Docker image to a distroless base starting from version 2.1.0, reducing potential security vulnerabilities and minimizing the image size.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Tyk Sync updated to use Golang 1.23</summary>
+
+Tyk Sync is using [Golang 1.23](https://tip.golang.org/doc/go1.23) Programming Language starting with the 2.1.0 release. This brings improvements to the code base and allows us to benefit from the latest features and security enhancements in Go.
+
+</details>
+</li>
+
+</ul>
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Optimized API update requests</summary>
+
+Fixed an issue where API synchronization was unnecessarily sending update or create requests to the Dashboard even when no changes were detected. This caused redundant operations and inefficiencies in large-scale deployments. The system now intelligently detects actual changes before making requests, optimizing performance.
+
+</details>
+</li>
+</ul>
+
+ -->
 ## 2.0 Release Notes
 
 ### 2.0.4 Release Notes
