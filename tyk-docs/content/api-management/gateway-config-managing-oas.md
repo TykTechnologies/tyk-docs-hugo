@@ -1171,7 +1171,7 @@ You have updated a Tyk OAS API, enabling authentication, using only the OpenAPI 
 
 ## Versioning a Tyk OAS API
 
-Tyk allows you to create versions of your APIs. When using Tyk OAS APIs versioning works slightly differently from with Tyk Classic APIs, to find out more please take a look at the dedicated [page]({{< ref "tyk-docs/content/api-management/api-versioning" >}}).
+Tyk allows you to create versions of your APIs. When using Tyk OAS APIs versioning works slightly differently from with Tyk Classic APIs, to find out more please take a look at the dedicated [page]({{< ref "api-management/api-versioning" >}}).
 
 If you're ready to dive in, then this tutorial shows you how easy it is to create and manage versions of your Tyk OAS APIs using the open source Tyk Gateway API, Tyk Dashboard API and the Tyk Dashboard GUI.
 

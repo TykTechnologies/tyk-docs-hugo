@@ -149,7 +149,7 @@ Changing the analytics storage quota in Tyk Cloud no longer removes critical dat
 ### Release Highlights
 This Tyk Cloud update enhances Gateway version management, ensuring a more streamlined, secure, and user-friendly experience. With the new UI versioning updates, users have clearer visibility into supported versions, direct upgrade recommendations, and the ability to automate version upgrades for effortless maintenance.
 These changes empower teams to stay on supported, secure, and high-performing versions.
-For more details, check out the [documentation on Gateway versioning and auto-upgrades]({{< ref "developer-support/release-notes/special-releases" >}})
+For more details, check out the [documentation on Gateway versioning and auto-upgrades]({{< ref "developer-support/release-types/long-term-support" >}})
 
 ### Breaking Changes
 
