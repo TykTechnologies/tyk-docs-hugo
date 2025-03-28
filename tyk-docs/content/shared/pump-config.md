@@ -5009,7 +5009,7 @@ ENV: <b>TYK_PMP_STATSDCONNECTIONSTRING</b><br />
 Type: `string`<br />
 
 Connection string for StatsD monitoring for information please see the
-[Instrumentation docs](https://tyk.io/docs/basic-config-and-security/report-monitor-trigger-events/instrumentation/).
+[Instrumentation docs](https://tyk.io/docs/api-management/logs-metrics/#statsd-instrumentation).
 
 ### statsd_prefix
 ENV: <b>TYK_PMP_STATSDPREFIX</b><br />
@@ -5083,7 +5083,7 @@ Defines if tyk-pump should ignore all the values in configuration file. Speciall
 ENV: <b>TYK_PMP_HTTPPROFILE</b><br />
 Type: `bool`<br />
 
-Enable debugging of Tyk Pump by exposing profiling information, the same as the gateway https://tyk.io/docs/troubleshooting/tyk-gateway/profiling/
+Enable debugging of Tyk Pump by exposing profiling information, the same as the [gateway](https://tyk.io/docs/api-management/troubleshooting-debugging)
 
 ### raw_request_decoded
 ENV: <b>TYK_PMP_DECODERAWREQUEST</b><br />
