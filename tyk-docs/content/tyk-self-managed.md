@@ -219,7 +219,7 @@ Install on K8s
 Install with Ansible 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-self-managed#install-tyk-on-red-hat-rhel--centos" image="/img/redhat-logo2.png" alt="Red Hat install">}}
+{{< badge read="10 mins" href="tyk-self-managed#install-tyk-on-redhat-rhel-centos" image="/img/redhat-logo2.png" alt="Red Hat install">}}
 Install on Red Hat 
 {{< /badge >}}
 
@@ -1683,7 +1683,7 @@ When running Tyk Pump in GCP using [Cloud Run](https://cloud.google.com/run/docs
 2. Update the Tyk Gateway [configuration]({{< ref "tyk-oss-gateway/configuration#analytics_configstorage_expiration_time" >}}) to keep the stats for 3 mins to allow Tyk Pump to process them. This value should be greater than the Pump [purge delay]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#purge_delay" >}}) to ensure the analytics data exists long enough in Redis to be processed by the Pump. 
 
 
-### Install Tyk on Red Hat (RHEL / CentOS)
+### Install Tyk on Red Hat (RHEL / CentOS) {#install-tyk-on-redhat-rhel-centos}
 
 Select the preferred way of installing Tyk by selecting **Shell** or **Ansible** tab for instructions.
 There are 4 components which needs to be installed. Each can be installed via shell or ansible
@@ -1910,7 +1910,7 @@ This configuration should also work (with some tweaks) for CentOS.
 **Prerequisites**
 
 *   Ensure port `3000` is open: This is used by the Dashboard to provide the GUI and the Classic Developer Portal.
-*   Follow the steps provided in this link [Getting started on Red Hat (RHEL / CentOS)]({{< ref "#install-tyk-on-red-hat-rhel--centos" >}}) to install and configure Tyk dependencies.
+*   Follow the steps provided in this link [Getting started on Red Hat (RHEL / CentOS)]({{< ref "#install-tyk-on-redhat-rhel-centos" >}}) to install and configure Tyk dependencies.
 
 1. **Set up YUM Repositories**
 
