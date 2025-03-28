@@ -65,7 +65,7 @@ Go to the [Upgrading Tyk Operator]({{<ref "api-management/automations/operator#i
     docker pull tykio/tyk-operator:v1.2.0
     ```
 - Helm chart
-  - tyk-charts v3.0.0 
+  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#220-release-notes" >}})
 
 #### Changelog {#Changelog-v1.2.0}
 
