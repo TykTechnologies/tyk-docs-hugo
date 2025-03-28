@@ -1,6 +1,6 @@
 ---
 date: 2023-08-04T18:24:52+01:00
-title: Developer Support
+title: Cummunity Support
 tags: [
     "FAQ",
     "Troubleshooting",
@@ -23,7 +23,7 @@ Tyk offers a range of developer support services to assist with troubleshooting 
 Prospective customers seeking technical advice can [contact us](https://tyk.io/contact/) to arrange a consultation with
 one of our expert engineers.
 
-## Community
+## Community support
 
 Our [community](https://community.tyk.io/) is available to everyone, offering the following channels:
 
