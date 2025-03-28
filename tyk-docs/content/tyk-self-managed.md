@@ -201,7 +201,7 @@ If you prefer guided support, we recommend exploring our [Tyk Technical PoC Guid
 Once you have obtained your license, you can proceed with the installation options provided below.
 
 ##### **Tyk Demo - The Perfect PoC Experience**
-Head over to our **Tyk Demo** guides in [Kubernetes]({{<ref "tyk-self-managed#kubernetes-demo">}}) or [Docker]({{<ref "tyk-self-managed#docker-demo">}}). These guides, with zero to none effort, will spin up the full Tyk infrastructure (Tyk stack) with examples of Tyk's capabilities and integrations out-of-the-box.
+Head over to our **Tyk Demo** guides in [Kubernetes]({{< ref "tyk-self-managed#kubernetes-demo" >}}) or [Docker]({{< ref "tyk-self-managed#docker-demo" >}}). These guides, with zero to none effort, will spin up the full Tyk infrastructure (Tyk stack) with examples of Tyk's capabilities and integrations out-of-the-box.
 
 ## Installation Options for Tyk Self-Managed
 
@@ -249,10 +249,10 @@ to our teams on support or the cummunity forum if you have questions, requests o
 
 Get started with one of our quick start guides:
 
-- [Quick Start with PostgreSQL]({{<ref "#install-tyk-stack-with-helm-chart-postgresql">}})
-- [Quick Start with MongoDB]({{<ref "tyk-self-managed#install-tyk-stack-with-helm-chart-mongodb">}})
+- [Quick Start with PostgreSQL]({{< ref "#install-tyk-stack-with-helm-chart-postgresql" >}})
+- [Quick Start with MongoDB]({{< ref "tyk-self-managed#install-tyk-stack-with-helm-chart-mongodb" >}})
 
-Or go to [Tyk Stack helm chart]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}) for detailed installation instructions and configuration options.
+Or go to [Tyk Stack helm chart]({{< ref "product-stack/tyk-charts/tyk-stack-chart" >}}) for detailed installation instructions and configuration options.
 
 #### Install Tyk Stack with Helm Chart (PostgreSQL)
 
@@ -358,9 +358,9 @@ helm upgrade tyk tyk-helm/tyk-stack -n $NAMESPACE \
 
 Now Tyk Dashboard should be accessible through service `dashboard-svc-tyk-tyk-dashboard` at port `3000`. You can login to Dashboard using the admin email and password to start managing APIs. Tyk Gateway will be accessible through service `gateway-svc-tyk-tyk-gateway.tyk.svc` at port `8080`.
 
-You are now ready to [create an API]({{<ref "api-management/gateway-config-managing-classic#create-an-api">}}).
+You are now ready to [create an API]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}}).
 
-For the complete installation guide and configuration options, please see [Tyk Stack Helm Chart]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}).
+For the complete installation guide and configuration options, please see [Tyk Stack Helm Chart]({{< ref "product-stack/tyk-charts/tyk-stack-chart" >}}).
 
 #### Install Tyk Stack with Helm Chart (MongoDB)
 
@@ -374,7 +374,7 @@ The following guides provide instructions to install Redis, MongoDB, and Tyk sta
 {{< note success >}}
 **Note**
 
-If you want to enable Tyk Enterprise Developer Portal, please use [PostgreSQL]({{<ref "#install-tyk-stack-with-helm-chart-postgresql">}}). MongoDB is not supported in Developer Portal.
+If you want to enable Tyk Enterprise Developer Portal, please use [PostgreSQL]({{< ref "#install-tyk-stack-with-helm-chart-postgresql" >}}). MongoDB is not supported in Developer Portal.
 {{< /note >}}
 
 **Quick Start**
@@ -491,9 +491,9 @@ helm upgrade tyk tyk-helm/tyk-stack -n $NAMESPACE \
 
 Now Tyk Dashboard should be accessible through service `dashboard-svc-tyk-tyk-dashboard` at port `3000`. You can login to Dashboard using the admin email and password to start managing APIs. Tyk Gateway will be accessible through service `gateway-svc-tyk-tyk-gateway.tyk.svc` at port `8080`.
 
-You are now ready to [create an API]({{<ref "api-management/gateway-config-managing-classic#create-an-api">}}).
+You are now ready to [create an API]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}}).
 
-For the complete installation guide and configuration options, please see [Tyk Stack Helm Chart]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}).
+For the complete installation guide and configuration options, please see [Tyk Stack Helm Chart]({{< ref "product-stack/tyk-charts/tyk-stack-chart" >}}).
 
 
 #### Install Tyk Stack on Windows with Helm
@@ -554,9 +554,9 @@ Now you have your prerequisites, follow the instructions from our [Tyk Helm Char
 {{< warning success >}}
 **Warning**
 
-`tyk-pro` chart is deprecated. Please use our [Tyk Stack helm chart]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}) instead. 
+`tyk-pro` chart is deprecated. Please use our [Tyk Stack helm chart]({{< ref "product-stack/tyk-charts/tyk-stack-chart" >}}) instead. 
 
-We recommend all users migrate to the `tyk-stack` Chart. Please review the [Configuration]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
+We recommend all users migrate to the `tyk-stack` Chart. Please review the [Configuration]({{< ref "product-stack/tyk-charts/tyk-stack-chart" >}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
 {{< /warning >}}
 
 **Introduction**
@@ -3425,7 +3425,7 @@ Elasticsearch and starts up Tyk pump to push analytics data from the Tyk platfor
   - [operator-httpbin](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/operator-httpbin): starts up an API examples using the tyk-operator.
   - [operator-jwt-hmac](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/operator-jwt-hmac): starts up API examples using the tyk-operator to demonstrate JWT HMAC auth.
   - [operator-udg](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/operator-udg): starts up Universal Data Graph API examples using the tyk-operator.
-- [portal](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/portal): deploys the [Tyk Enterprise Developer Portal](https://tyk.io/docs/tyk-developer-portal/tyk-enterprise-developer-portal/) as well as its dependency PostgreSQL.
+- [portal](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/portal): deploys the [Tyk Enterprise Developer Portal]({{< ref "portal/overview" >}}) as well as its dependency PostgreSQL.
 - [prometheus](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/prometheus): deploys Prometheus and starts up Tyk Pump to push analytics data from the Tyk platform to Prometheus.
   - [prometheus-grafana](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/prometheus-grafana): deploys the Prometheus deployment as well as a Grafana deployment and creates a Grafana dashboard for you to view the analytics.
 - [vault](https://github.com/TykTechnologies/tyk-k8s-demo/tree/main/src/deployments/vault): deploys Vault Operator and a Vault instance.
@@ -3640,7 +3640,7 @@ The *Tyk Pro Docker Demo* is our [Self-Managed]({{< ref "tyk-self-managed" >}}) 
 {{< warning success >}}
 **Warning**
 
-This demo is NOT intended for production use or performance testing, since it uses docker compose and the configuration files are not specifically tuned for performance testing or high loads. Please visit the [Planning for Production]({{<ref "tyk-self-managed#planning-for-production" >}}) page to learn how to configure settings for optimal performance.
+This demo is NOT intended for production use or performance testing, since it uses docker compose and the configuration files are not specifically tuned for performance testing or high loads. Please visit the [Planning for Production]({{< ref "tyk-self-managed#planning-for-production" >}}) page to learn how to configure settings for optimal performance.
 
 {{< /warning >}}
 {{< note success >}}
@@ -4187,11 +4187,11 @@ Please read carefully through this [doc]({{< ref "api-management/client-authenti
 
 #### Analytics Optimizations
 
-If using a [Redis cluster](https://redis.io/docs/management/scaling/) under high load it is recommended that analytics are distributed among the Redis shards. This can be configured by setting the [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) parameter to true. Furthermore, analytics can also be disabled for an API using the [do_not_track]({{< ref "api-management/gateway-config-tyk-classic#other-root-objects" >}}) configuration parameter. Alternatively, tracking for analytics can be disabled for selected endpoints using the [do not track endpoint plugin]({{< ref "api-management/traffic-transformation#do-not-track-using-tyk-oas" >}}).
+If using a [Redis cluster](https://redis.io/docs/management/scaling/) under high load it is recommended that analytics are distributed among the Redis shards. This can be configured by setting the [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) parameter to true. Furthermore, analytics can also be disabled for an API using the [do_not_track]({{< ref "api-management/gateway-config-tyk-classic#traffic-logs" >}}) configuration parameter. Alternatively, tracking for analytics can be disabled for selected endpoints using the [do not track endpoint plugin]({{< ref "api-management/traffic-transformation#do-not-track-using-tyk-oas" >}}).
 
 ##### Protobuf Serialisation
 
-In Tyk Gateway, using [protobuf]({{< ref "tyk-oss-gateway/configuration/#analytics_configserializer_type" >}}) serialisation, instead of [msgpack](https://msgpack.org) can increase performance for sending and processing analytics. 
+In Tyk Gateway, using [protobuf]({{< ref "tyk-oss-gateway/configuration#analytics_configserializer_type" >}}) serialisation, instead of [msgpack](https://msgpack.org) can increase performance for sending and processing analytics. 
 <br/>
 **Note:** *protobuf* is not currently supported in *MDCB* deployment.
 
@@ -5970,7 +5970,7 @@ ie: `www.myapi.com:3000`
 #### Using external Key Value storage with Tyk
 
 
-With Tyk Gateway you can store configuration data (typically authentication secrets or upstream server locations) in Key-Value (KV) systems such as [Vault]({{< ref "#vault">}}), and [Consul]({{< ref "#consul">}}) and then reference these values during configuration of the Tyk Gateway or APIs deployed on the Gateway.
+With Tyk Gateway you can store configuration data (typically authentication secrets or upstream server locations) in Key-Value (KV) systems such as [Vault]({{< ref "#vault" >}}), and [Consul]({{< ref "#consul" >}}) and then reference these values during configuration of the Tyk Gateway or APIs deployed on the Gateway.
 
 #### When to use external Key-Value storage
 
@@ -6054,6 +6054,7 @@ In Tyk Gateway's configuration file (`tyk.conf`), you can retrieve values from K
 - `security.private_certificate_encoding_secret`
 - `db_app_conf_options.connection_string`
 - `policies.policy_connection_string`
+- `slave_options.api_key`
 
 To reference the *Value* assigned to a *Key* in one of the KV stores from the Gateway configuration file use the following notation:
 - Consul: `consul://path/to/key`
