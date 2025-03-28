@@ -16,11 +16,11 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
-<!-- ## 1.7 Release Notes
+## 1.7 Release Notes
 
 ### 1.7.0 Release Notes
 
-#### Release Date 17 March 2025
+#### Release Date 28 March 2025
 
 #### Release Highlights
 
@@ -100,7 +100,7 @@ Previously, TIB assigned a user to the last matched group when multiple groups w
 </ul>
 
 ---
- -->
+
 ## 1.6 Release Notes
 
 ### 1.6.1 Release Notes

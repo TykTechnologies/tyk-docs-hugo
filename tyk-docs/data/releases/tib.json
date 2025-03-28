@@ -1,8 +1,13 @@
 {
   "home": "tyk-identity-broker",
   "licensed": false,
-  "latest": "1.6.1",
-  "releaseNotesPath": "developer-support/release-notes/tib#16-release-notes",
+  "latest": "1.7.0",
+  "releaseNotesPath": "developer-support/release-notes/tib",
+  "1.7.0": {
+    "date": "28/03/2024",
+    "tag": "https://github.com/TykTechnologies/tyk-identity-broker/releases/tag/v1.7.0",
+    "docker": "https://hub.docker.com/r/tykio/tyk-identity-broker/tags?page=1&name=1.7.0"
+  },
   "1.6.1": {
     "date": "5/11/2024",
     "tag": "https://github.com/TykTechnologies/tyk-identity-broker/releases/tag/v1.6.1",
