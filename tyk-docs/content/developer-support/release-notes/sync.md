@@ -17,11 +17,11 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
-<!-- ## 2.1 Release Notes
+## 2.1 Release Notes
 
 ### 2.1.0 Release Notes
 
-#### Release Date 17 March 2025
+#### Release Date 28 March 2025
 
 #### Release Highlights
 
@@ -115,7 +115,7 @@ Fixed an issue where API synchronization was unnecessarily sending update or cre
 </li>
 </ul>
 
- -->
+
 ## 2.0 Release Notes
 
 ### 2.0.4 Release Notes
