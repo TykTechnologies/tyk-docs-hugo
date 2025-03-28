@@ -20,11 +20,11 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
-<!-- ## 1.12 Release Notes
+## 1.12 Release Notes
 
 ### 1.12.0 Release Notes
 
-#### Release Date 17 March 2025
+#### Release Date 28 March 2025
 
 #### Release Highlights
 
@@ -103,7 +103,7 @@ SQLite support has been fully removed from Pump.
 </ul>
 
 ---
- -->
+
 ## 1.11 Release Notes
 
 ### 1.11.2 Release Notes
