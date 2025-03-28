@@ -1,8 +1,8 @@
 ---
-title: "Tyk Identiy Broker - Integrate Social Logins, IDPs, LDAP and Custom Authentication"
+title: "Tyk Identity Broker - Integrate Social Logins, IDPs, LDAP and Custom Authentication"
 date: 2025-01-10
 tags: ["Tyk Identity Broker", "TIB", "Identity Provider", "Identity Handler", "SSO", "Custom Authentication", "Custom Proxy Provder", "SAML", "OIDC", "OpenID Connect", "Profies", "IDPs", "Social Provider" ,"LDAP"]
-description: ""
+description: "Learn how to integrate external services with Tyk API Gateway. Discover how to use middleware plugins, webhooks, and service discovery to extend your API functionality and connect with third-party systems."
 keywords: ["Tyk Identity Broker", "TIB", "Identity Provider", "Identity Handler", "SSO", "Custom Authentication", "Custom Proxy Provder", "SAML", "OIDC", "OpenID Connect", "Profies", "IDPs", "Social Provider" ,"LDAP"]
 aliases:
   - /integrate/3rd-party-identity-providers
@@ -193,7 +193,7 @@ In order to know and understand each of the attributes, implications as well as 
 | Field                            | Description                                                                                                                                                                   | Required                                                         |
 |----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
 | IDPMetadataURL      | This is a URL, e.g. `https://login.microsoftonline.com/your-tenant-id/federationmetadata/2007-06/federationmetadata.xml`, that links to [XML metadata](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf) containing information necessary for interaction with SAML-enabled identity or service providers. The document contains example URLs of endpoints, information about supported bindings, identifiers and public keys. Once you create your TIB profile you can find the SP metadata file under *{Dashboard HOST}/auth/{TIB Profile Name}/saml/metadata* | Yes |
-| CertLocation        | An X.509 certificate and the private key for signing your requests to the IDP. The value for `CertLocation` should be the path to a single file with the cert and key concatenated, e.g. `/etc/ssl/certs/example_cert.pem`. When used in an [embedded TIB instance in the dashboard]({{<ref "#installing-tyk-identity-broker-tib">}}) then the `CertLocation` value can be the *certId* from the certificate manager. For further details please refer to [SSO with SAML]({{< ref "#sso-with-saml" >}})                                                                                                           | Yes |
+| CertLocation        | An X.509 certificate and the private key for signing your requests to the IDP. The value for `CertLocation` should be the path to a single file with the cert and key concatenated, e.g. `/etc/ssl/certs/example_cert.pem`. When used in an [embedded TIB instance in the dashboard]({{< ref "#installing-tyk-identity-broker-tib" >}}) then the `CertLocation` value can be the *certId* from the certificate manager. For further details please refer to [SSO with SAML]({{< ref "#sso-with-saml" >}})                                                                                                           | Yes |
 | SAMLBaseURL         | The host of TIB, e.g. `http://tyk-dashboard:3000/`, that will be used in the metadata document for the Service Provider. This will form part of the metadata URL used as the Entity ID by the IDP. The redirects configured in the IDP must match the expected Host and URI configured in the metadata document made available by Tyk Identity Broker.                                                                 | Yes |
 | ForceAuthentication | Ignore any session held by the IDP and force re-login every request. Defaults to false                                                                                                                                                                                                                                                                                             | No  |
 | SAMLBinding         | Key for looking up the email claim in the SAML assertion form the IDP. Defaults to: https://schemas.xmlsoap.org/ws/2005/05/identity/claims.xsd                                                                                                                                                                                                                             | No  |
@@ -249,7 +249,7 @@ Below are the three deployment options to install TIB as a standalone applicatio
 
 3. **Helm Chart for Kubernetes:**
 
-    [Tyk Helm Chart]({{<ref "product-stack/tyk-charts/overview">}}) does not support installing TIB as separate application. If you want to enable embedded TIB in Dashboard, you can do so by updating `tib.enabled` to `true` in `tyk-dashboard` chart. If you are using an umbrella chart from us (e.g. `tyk-stack` and `tyk-control-plane`), you can do so by updating `tyk-dashboard.tib.enabled` to `true`.
+    [Tyk Helm Chart]({{< ref "product-stack/tyk-charts/overview" >}}) does not support installing TIB as separate application. If you want to enable embedded TIB in Dashboard, you can do so by updating `tib.enabled` to `true` in `tyk-dashboard` chart. If you are using an umbrella chart from us (e.g. `tyk-stack` and `tyk-control-plane`), you can do so by updating `tyk-dashboard.tib.enabled` to `true`.
 
 ### Important TIB Configurations
 
@@ -510,7 +510,7 @@ This is an end-to-end worked example of how you can use [AzureAD](https://www.mi
 ) to log in to your Dashboard.
 This guide assumes the following:
 
-You already have authorized access to Tyk's Dashboard. If you haven't, get the authorization key by following this [guide]({{< ref "api-management/user-management#using-dashboard-api">}}).
+You already have authorized access to Tyk's Dashboard. If you haven't, get the authorization key by following this [guide]({{< ref "api-management/user-management#using-dashboard-api" >}}).
 
 #### Configuration at Azure
 
@@ -573,7 +573,7 @@ As illustrated in the screen below the following information must be provided:
 - Identity provider role
 - Tyk User Group: This can be created from the User Groups section of the dashboard (reference a link to a page in tyk docs here to show how to create a user group). When creating your User Group, one can also select and adjust the permissions for each group. 
 
-For more information on how to set and change user permissions, head to this [guide]({{< ref "api-management/user-management#using-dashboard-ui-1">}})
+For more information on how to set and change user permissions, head to this [guide]({{< ref "api-management/user-management#using-dashboard-ui-1" >}})
 
 {{< img src="/img/azureAD/raw-editor.png" alt="Profile Configuration - Raw-editor" >}}
 
@@ -620,8 +620,7 @@ To try this yourself, we have included the link: https://openidconnect.net/
 
 ### OIDC with Okta
 
-This is an end-to-end worked example of how you can use [Okta](https://www.okta.com/) and our [Tyk Identity Broker (TIB)](https://tyk.io/docs/concepts/tyk-components/identity-broker/
-) to log in to your Dashboard.
+This is an end-to-end worked example of how you can use [Okta](https://www.okta.com/) and the Tyk Identity Broker to log into your Dashboard.
 This guide assumes the following:
 
 * You already have authorized access to Tyk's Dashboard. If you haven't, [get the authorization key by following this doc]({{< ref "api-management/user-management#using-dashboard-api" >}}).
@@ -1438,7 +1437,7 @@ The configuration below will proxy a request to `http://{TARGET-HOSTNAME}:{PORT}
   - Test the basic SSO flow to ensure it's working correctly
 
 4. **Enable JWE**
-  - [Updated the TIB profile via API]{{{< ref "tyk-identity-broker/tib-rest-api#a-nameupdate-profilea-update-profile" >}}}
+  - [Updated the TIB profile via API]({{< ref "tyk-identity-broker/tib-rest-api#a-nameupdate-profilea-update-profile" >}})
     - Add the following fields to the `ProviderConfig` section:
 
       ```json
