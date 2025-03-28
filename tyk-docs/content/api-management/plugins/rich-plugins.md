@@ -501,7 +501,7 @@ For further details see [BasicAuthData](#basicauthdata).
 Added to sessions where a Tyk key (embedding a shared secret) is used as the public key for signing the JWT. The JWT token's KID header value references the ID of a Tyk key. See [JWTData](#jwtdata) for an example.
 
 `hmac_enabled`
-When set to `true` this indicates generation of a [HMAC signature]({{< ref "api-management/client-authentication#sign-requests-with-hmac" >}}) using the secret provided in `hmac_secret`. If the generated signature matches the signature provided in the *Authorization* header then authentication of the request has passed.
+When set to `true` this indicates generation of a [HMAC signature]({{< ref "basic-config-and-security/security/authentication-authorization/hmac-signatures" >}}) using the secret provided in `hmac_secret`. If the generated signature matches the signature provided in the *Authorization* header then authentication of the request has passed.
 
 `hmac_secret`
 The value of the HMAC shared secret.
@@ -2302,7 +2302,7 @@ In this tutorial we learned how Tyk gRPC plugins work. For a production-level se
 
 - Configure an appropriate web server and path to serve your plugin bundles.
 
-[1]: https://tyk.io/docs/get-started/with-tyk-on-premise/installation/
+[1]: /tyk-self-managed#installation-options-for-tyk-self-managed
 [2]: https://github.com/TykTechnologies/tyk-cli
 [3]: /img/dashboard/system-management/api_settings.png
 [4]: /img/dashboard/system-management/plugin_options.png
@@ -2601,7 +2601,7 @@ In this tutorial we learned how Tyk gRPC plugins work. For a production-level se
 - Configure an appropriate web server and path to serve your plugin bundles.
 - See the following [GitHub repo](https://github.com/TykTechnologies/tyk-plugin-demo-dotnet) for a gRPC based .NET plugin that incorporates authentication based on Microsoft SQL Server. 
 
-[1]: https://tyk.io/docs/get-started/with-tyk-on-premise/installation/
+[1]: /tyk-self-managed#installation-options-for-tyk-self-managed
 [2]: https://github.com/TykTechnologies/tyk-cli
 [3]: /img/dashboard/system-management/plugin_options.png
 [4]: /img/dashboard/system-management/plugin_auth_mode.png
@@ -2616,7 +2616,7 @@ The sample code that we'll use implements a very simple authentication layer usi
 
 #### Requirements
 
-- Tyk Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here](https://tyk.io/docs/get-started/with-tyk-on-premise/installation/) for more installation options.
+- Tyk Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here]({{< ref "/tyk-self-managed#installation-options-for-tyk-self-managed" >}}) for more installation options.
 - The Tyk CLI utility, which is bundled with our RPM and DEB packages, and can be installed separately from [https://github.com/TykTechnologies/tyk-cli](https://github.com/TykTechnologies/tyk-cli)
 - In Tyk 2.8 and upwards the Tyk CLI is part of the gateway binary, you can find more information by running "tyk help bundle".
 - NodeJS v6.x.x [https://nodejs.org/en/download/](https://nodejs.org/en/download/) 
@@ -2799,7 +2799,7 @@ In this tutorial we learned how Tyk gRPC plugins work. For a production-level se
 
 - Configure an appropriate web server and path to serve your plugin bundles.
 
-[1]: https://tyk.io/docs/get-started/with-tyk-on-premise/installation/
+[1]: /tyk-self-managed#installation-options-for-tyk-self-managed
 [2]: https://github.com/TykTechnologies/tyk-cli
 [3]: /img/dashboard/system-management/plugin_options.png
 [4]: /img/dashboard/system-management/plugin_auth_mode.png

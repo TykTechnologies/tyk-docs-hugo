@@ -126,7 +126,7 @@ aliases:
 
     When it happens on the high load, it can be a lot of different reasons.
     For example your OS is running out of system limits, like number of opened sockets, and to validate it, you need to try your system limits.
-    See this guide https://tyk.io/docs/tyk-self-managed#resource-limits
+    See [this guide]({{< ref "tyk-self-managed#resource-limits" >}}).
 
     Additionally, it can be CPU bottleneck: you can't process more than your machine  can do.
     And note that it is not only about the actual utilization %, it is also about context switches it has to do. 
@@ -173,7 +173,7 @@ aliases:
 
     **Solution**
 
-    Users are advised to upgrade to the latest versions of any Tyk packages at their earliest convenience as a patch was released to resolve this issue. Packages are available to download from [Packagecloud.io][1]. See [Upgrading Tyk](https://tyk.io/docs/upgrading-tyk/) for details on upgrading to the latest version. It may also be worth checking if any TLS certificates associated with the domain have expired.
+    Users are advised to upgrade to the latest versions of any Tyk packages at their earliest convenience as a patch was released to resolve this issue. Packages are available to download from [Packagecloud.io][1]. See [Upgrading Tyk]({{< ref "developer-support/upgrading" >}}) for details on upgrading to the latest version. It may also be worth checking if any TLS certificates associated with the domain have expired.
 
     [1]: https://packagecloud.io/tyk
 
@@ -343,7 +343,7 @@ aliases:
     curl http://127.0.0.1:8080/quickstart/headers -H 'Authorization: mycustomkey'
     ```
 
-    See also the Keys section of the [Gateway API Swagger doc](https://tyk.io/docs/tyk-rest-api/).
+    See also the Keys section of the [Tyk Gateway API documentation]({{< ref "tyk-gateway-api" >}}).
 
 
 10. ##### Redis persistence using containers
@@ -809,7 +809,7 @@ We also support limited customisation of the error codes and messages returned b
 
     **Solution**
 
-    The best way to set the domain is to use the Tyk Dashboard Admin API, to obtain the organization object via a GET request and then update the object using a PUT request with the relevant CNAME added to the body of the request.<sup>[[1]({{<ref "api-management/dashboard-configuration#organizations-api">}})]</sup> Restarting the process will then set the domain.
+    The best way to set the domain is to use the Tyk Dashboard Admin API, to obtain the organization object via a GET request and then update the object using a PUT request with the relevant CNAME added to the body of the request.<sup>[[1]({{< ref "api-management/dashboard-configuration#organizations-api" >}})]</sup> Restarting the process will then set the domain.
 
 8. ##### runtime error invalid memory address or nil pointer dereference
 
@@ -977,14 +977,14 @@ We also support limited customisation of the error codes and messages returned b
     **Upstream does not handle CORS**
     If your upstream does not handle CORS, you should let Tyk manage all CORS related headers and responses. In order to do that you should **enable CORS** in Tyk and **NOT ENABLE** Options pass through.
 
-    To learn more, look for `CORS.options_passthrough` [here]({{< ref "api-management/gateway-config-tyk-classic#cors" >}}).
+    To learn more, look for `CORS.options_passthrough` [here]({{< ref "api-management/gateway-config-tyk-classic#cross-origin-resource-sharing-cors" >}}).
 
 
     **CORS middleware is allowing headers which I did not allow**
     This may be the case when you enable CORS but don't provide any headers explicitly (basically providing an empty array). In this case the CORS middleware will use some sensible defaults. 
     To allow all headers, you will need to provide `*` (although this is not recommended).
 
-    The same can happen with Allowed Origins and Allowed Methods. Read more about it [here]({{< ref "api-management/gateway-config-tyk-classic#cors" >}}).
+    The same can happen with Allowed Origins and Allowed Methods. Read more about it [here]({{< ref "api-management/gateway-config-tyk-classic#cross-origin-resource-sharing-cors" >}}).
 
     **CORS middleware is blocking my authenticated request**
     Please make sure that you did allow the authorization header name (e.g. `Authorization`) or else the request will be blocked by the CORS middleware. If you're having trouble on the developer portal with authenticated requests make sure to also allow the `Content-Type` header.
@@ -1077,7 +1077,7 @@ We also support limited customisation of the error codes and messages returned b
 
     **What is detailed request logging?**
 
-    When [detailed request logging]({{< ref "api-management/logs-metrics#enable-detailed-recording" >}}) is enabled, Tyk will record the request and response in wire-format in the analytics database. This can be very useful when trying to debug API requests to see what went wrong for a user or client.
+    When [detailed request logging]({{< ref "api-management/logs-metrics#capturing-detailed-logs" >}}) is enabled, Tyk will record the request and response in wire-format in the analytics database. This can be very useful when trying to debug API requests to see what went wrong for a user or client.
 
     This mode is configured in the gateway and can be enabled at the [system]({{< ref "api-management/logs-metrics#configure-at-gateway-level" >}}), [API]({{< ref "api-management/logs-metrics#configure-at-api-level" >}}) or [access key]({{< ref "api-management/logs-metrics#configure-at-key-level" >}}) level.
 
@@ -1668,14 +1668,14 @@ As shown above, the `debug` log level mode provides more information which will 
 
 #### Versions
 
-You can access all Tyk release information on the [release notes](https://tyk.io/docs/developer-support/tyk-release-summary/overview/) overview page.
+You can access all Tyk release information on the [release notes]({{< ref "developer-support/release-notes/overview" >}}) overview page.
 
 We recommend always using the [Long-Term Support (LTS) release]({{< ref "developer-support/release-types/long-term-support" >}}) for stability and long term support.
 
 ##### Non-LTS versions
 Tyk is backwards compatible, upgrading to newer versions won't turn on new features or change the behavior of your existing environment.
 
-For the best experience when experimenting with Tyk and exploring its latest capabilities, you can use our latest version. You can access all Tyk releases on the [release notes summary](https://tyk.io/docs/developer-support/tyk-release-summary/overview/) page. 
+For the best experience when experimenting with Tyk and exploring its latest capabilities, you can use our latest version. You can access all Tyk releases on the [release notes summary]({{< ref "developer-support/release-notes/overview" >}}) page. 
 
 #### Dashboard
 
@@ -1689,7 +1689,7 @@ As mentioned above, errors can happen in any of the components of your Tyk deplo
 ##### Dashboard Level
 
 When debugging an issue, in order to isolate the gateway from the Dashboard, try to call the same API ednpoint on both Tyk Dashboard and Tyk Gateway 
-If it works with the gateway API only, then the issue is likely to be in the Dashboard. It could be that you need to set in the Dashboard some [configuration parameters](https://tyk.io/docs/tyk-dashboard/configuration/) (using the config file or via environment variables).
+If it works with the gateway API only, then the issue is likely to be in the Dashboard. It could be that you need to set in the Dashboard some [configuration parameters]({{< ref "tyk-dashboard/configuration" >}}) (using the config file or via environment variables).
 
 ##### Gateway or API level
 
