@@ -54,6 +54,7 @@ aliases:
   - /product-stack/tyk-gateway/middleware/do-not-track-middleware
   - /product-stack/tyk-gateway/middleware/do-not-track-tyk-oas
   - /product-stack/tyk-gateway/middleware/do-not-track-tyk-classic
+  - /api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware
 
   - /concepts/context-variables
   - /advanced-configuration/compose-apis/sample-batch-funtion
@@ -95,7 +96,7 @@ The [Block List]({{< ref "api-management/traffic-transformation#block-list-overv
 
 #### Cache
 
-Tyk's [API-level cache]({{< ref "api-management/gateway-optimizations#basic-caching" >}}) does not discriminate between endpoints and will usually be configured to cache all safe requests. You can use the granular [Endpoint Cache]({{< ref "api-management/gateway-optimizations#endpoint-caching" >}}) to ensure finer control over which API responses are cached by Tyk.
+Tyk's [API-level cache]({{< ref "api-management/response-caching#basic-caching" >}}) does not discriminate between endpoints and will usually be configured to cache all safe requests. You can use the granular [Endpoint Cache]({{< ref "api-management/response-caching#endpoint-caching" >}}) to ensure finer control over which API responses are cached by Tyk.
 
 #### Circuit Breaker
 
@@ -103,7 +104,7 @@ The [Circuit Breaker]({{< ref "tyk-self-managed#circuit-breakers" >}}) is a prot
 
 #### Do Not Track Endpoint
 
-If [traffic logging]({{< ref "api-management/logs-metrics#logging-api-traffic" >}}) is enabled for your Tyk Gateway, then it will create transaction logs for all API requests (and responses) to deployed APIs. You can use the [Do-Not-Track]({{< ref "api-management/traffic-transformation#do-not-track-overview" >}}) middleware to suppress creation of transaction records for specific endpoints.
+If [traffic logging]({{< ref "api-management/logs-metrics#api-traffic-logs" >}}) is enabled for your Tyk Gateway, then it will create transaction logs for all API requests (and responses) to deployed APIs. You can use the [Do-Not-Track]({{< ref "api-management/traffic-transformation#do-not-track-overview" >}}) middleware to suppress creation of transaction records for specific endpoints.
 
 #### Enforced Timeout
 
@@ -176,7 +177,7 @@ The [Response Header Transform]({{< ref "api-management/traffic-transformation#r
 
 The Allow List middleware is a feature designed to restrict access to only specific API endpoints. It rejects requests to endpoints not specifically "allowed", returning `HTTP 403 Forbidden`. This enhances the security of the API by preventing unauthorized access to endpoints that are not explicitly permitted.
 
-Note that this is not the same as Tyk's [IP allow list]({{< ref "api-management/gateway-config-tyk-classic#ip-allowlist-middleware" >}}) feature, which is used to restrict access to APIs based upon the IP of the requestor.
+Note that this is not the same as Tyk's [IP allow list]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}}) feature, which is used to restrict access to APIs based upon the IP of the requestor.
 
 #### Use Cases
 
@@ -494,7 +495,7 @@ In this example the allow list middleware has been configured for `HTTP GET` req
 
 The Block List middleware is a feature designed to block access to specific API endpoints. Tyk Gateway rejects all requests made to endpoints with the block list enabled, returning `HTTP 403 Forbidden`.
 
-Note that this is not the same as Tyk's [IP block list]({{< ref "api-management/gateway-config-tyk-classic#ip-blocklist-middleware" >}}) feature, which is used to restrict access to APIs based upon the IP of the requestor.
+Note that this is not the same as Tyk's [IP block list]({{< ref "api-management/gateway-config-tyk-classic#ip-access-control" >}}) feature, which is used to restrict access to APIs based upon the IP of the requestor.
 
 #### Use Cases
 
@@ -799,7 +800,7 @@ Note also that the endpoint path has not been terminated with `$`. Requests to, 
 
 ### Overview {#do-not-track-overview}
 
-When [transaction logging]({{< ref "api-management/logs-metrics#logging-api-traffic" >}}) is enabled in the Tyk Gateway, a transaction record will be generated for every request made to an API endpoint deployed on the gateway. You can suppress the generation of transaction records for any API by enabling the do-not-track middleware. This provides granular control over request tracking.
+When [transaction logging]({{< ref "api-management/logs-metrics#api-traffic-logs" >}}) is enabled in the Tyk Gateway, a transaction record will be generated for every request made to an API endpoint deployed on the gateway. You can suppress the generation of transaction records for any API by enabling the do-not-track middleware. This provides granular control over request tracking.
 
 #### Use Cases
 
@@ -4380,7 +4381,7 @@ An operation is a combination of HTTP method and path or, as Tyk calls it, an en
 
 ###### Common (path-level) parameters
 
-[Common parameters](https://swagger.io/docs/specification/v3_0/describing-parameters/#common-parameters), that apply to all operations within a path, can be defined at the path level within the OpenAPI description. Tyk refers to these as path-level parameters and displays them as read-only fields in the Dashboard's API designer. If you need to add or modify common parameters you must use the *Raw Definition* editor, or edit your OpenAPI document outside Tyk and [update]({{< ref "api-management/gateway-config-managing-oas#update-a-tyk-oas-api" >}}) the API.
+[Common parameters](https://swagger.io/docs/specification/v3_0/describing-parameters/#common-parameters), that apply to all operations within a path, can be defined at the path level within the OpenAPI description. Tyk refers to these as path-level parameters and displays them as read-only fields in the Dashboard's API designer. If you need to add or modify common parameters you must use the *Raw Definition* editor, or edit your OpenAPI document outside Tyk and [update]({{< ref "api-management/gateway-config-managing-oas#updating-an-api" >}}) the API.
 
 ##### Request body
 
@@ -4400,7 +4401,7 @@ If you are creating your API without import, or if you only want to enable reque
 
 ##### Automatically enabling the request validation middleware
 
-The request validation middleware can be enabled for all endpoints that have defined schemas when [importing]({{< ref "api-management/gateway-config-managing-oas#create-an-api-that-validates-the-request-payload" >}}) an OpenAPI Document to create a Tyk OAS API.
+The request validation middleware can be enabled for all endpoints that have defined schemas when [importing]({{< ref "api-management/gateway-config-managing-oas#importing-an-openapi-description-to-create-an-api" >}}) an OpenAPI Document to create a Tyk OAS API.
 - if you are using the `POST /apis/oas/import` endpoint in the [Tyk Dashboard API]({{< ref "tyk-dashboard-api" >}}) or [Tyk Gateway API]({{< ref "tyk-gateway-api" >}}) then you can do this by setting the `validateRequest=true` query parameter
 - if you are using the API Designer, select the **Auto-generate middleware to validate requests** option on the **Import API** screen
 
@@ -4555,12 +4556,14 @@ If you're using Tyk Operator then check out the [configuring the middleware in T
 To enable the middleware you must add a new `validate_json` object to the `extended_paths` section of your API definition.
 
 The `validate_json` object has the following configuration:
+
 - `path`: the endpoint path
 - `method`: the endpoint HTTP method
 - `schema`: the [JSON schema](https://json-schema.org/understanding-json-schema/basics) against which the request body will be compared
 - `error_response_code`: the HTTP status code that will be returned if validation fails (defaults to `422 Unprocessable Entity`)
 
 For example:
+
 ```json  {linenos=true, linenostart=1}
 {
     "extended_paths": {
@@ -4591,13 +4594,35 @@ For example:
 
 In this example the Validate JSON middleware has been configured for requests to the `POST /register` endpoint. For any call made to this endpoint, Tyk will compare the request body with the schema and, if it does not match, the request will be rejected with the error code `HTTP 422 Unprocessable Entity`.
 
-{{< note success >}}
+##### Understanding JSON Schema Version Handling
 
-**Note**  
+The Gateway automatically detects the version of the JSON schema from the `$schema` field in your schema definition. This field specifies the version of the [JSON schema standard](https://json-schema.org/specification-links) to be followed.
 
-The Validate JSON middleware supports JSON Schema `draft-04`. Using another version will return an `unsupported schema error, unable to validate` error in the Tyk Gateway logs.
+From Tyk 5.8 onwards, supported versions are [draft-04](https://json-schema.org/draft-04/schema), [draft-06](https://json-schema.org/draft-06/schema) and [draft-07](https://json-schema.org/draft-07/schema).
 
-{{< /note >}}
+In previous versions of Tyk, only [draft-04](https://json-schema.org/draft-04/schema) is supported. Please be careful if downgrading from Tyk 5.8 to an earlier version that your JSON is valid as you might experience unexpected behaviour if using features from newer drafts of the JSON schema.
+
+- If the `$schema` field is present, the Gateway strictly follows the rules of the specified version.  
+- If the `$schema` field is missing or the version is not specified, the Gateway uses a hybrid mode that combines features from multiple schema versions. This mode ensures that the validation will still work, but may not enforce the exact rules of a specific version. 
+
+To ensure consistent and predictable validation, it is recommended to always include the `$schema` field in your schema definition. For example:  
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "firstname": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    }
+  }
+}
+```
+
+By including `$schema`, the validator can operate in strict mode, ensuring that the rules for your chosen schema version are followed exactly.
 
 #### API Designer
 

@@ -81,7 +81,7 @@ menu:
             path: /tyk-self-managed
             category: Page
             show: True
-      - title: "Authentication and Authorization"
+      - title: "Client Authentication"
         category: Directory
         show: True
         menu:
@@ -100,7 +100,7 @@ menu:
       - title: "Upstream Authentication"
         path: /api-management/upstream-authentication
         category: Page
-        show: False
+        show: True
       - title: "Rate Limiting"
         path: /api-management/rate-limit
         category: Page
@@ -117,6 +117,10 @@ menu:
         category: Page
         show: True
         path: /api-management/security-best-practices
+      - title: "Security Features"
+        category: Page
+        show: True
+        path: /api-management/security-features
       - title: "Tyk API Definitions"
         category: Directory
         show: True
@@ -125,11 +129,11 @@ menu:
             path: /api-management/gateway-config-introduction
             category: Page
             show: True
-          - title: "Tyk OAS API"
+          - title: "Tyk OAS"
             path: /api-management/gateway-config-tyk-oas
             category: Page
             show: True
-          - title: "Tyk Classic API"
+          - title: "Tyk Classic"
             path: /api-management/gateway-config-tyk-classic
             category: Page
             show: True
@@ -169,14 +173,6 @@ menu:
             category: Page
             show: True
             path: /api-management/manage-apis/api-operations/api-observability
-          - title: "Tyk OAS APIs"
-            category: Directory
-            show: False
-            menu:
-              - title: "Extending an OAS API"
-                path: /api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware
-                category: Page
-                show: False
       - title: "Manage Tyk Dashboard"
         path: /api-management/dashboard-configuration
         category: Page
@@ -245,10 +241,18 @@ menu:
         path: /api-management/non-http-protocols
         category: Page
         show: True
-      - title: "Caching"
-        path: /api-management/gateway-optimizations
-        category: Page
+      - title: "Request Optimization"
+        category: Directory
         show: True
+        menu:
+        - title: "Response Caching"
+          path: /api-management/response-caching
+          category: Page
+          show: True
+        - title: "Batch Processing"
+          path: /api-management/batch-processing
+          category: Page
+          show: True
       - title: "API Observability"
         category: Directory
         show: True
@@ -281,7 +285,7 @@ menu:
           path: /transform-traffic/url-rewriting
           category: Page
           show: True
-      - title: "Tyk Gateway Events"
+      - title: "Gateway Events"
         path: /api-management/gateway-events
         category: Page
         show: True
