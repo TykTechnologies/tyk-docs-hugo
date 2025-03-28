@@ -394,7 +394,7 @@ Below is the list of functions currently provided by Tyk.
 - `rawlog(string)`: Calling `rawlog("this message")` will cause Tyk to log the string to Tyk's default logger output without any additional formatting, like adding prefix or date. This function can be used if you want to have own log format, and parse it later with custom tooling.
 - `b64enc` - Encode string to base64
 - `b64dec` - Decode base64 string
-- `TykBatchRequest` this function is similar to `TykMakeHttpRequest` but makes use of the Tyk Batch API. See the Batch Requests section of the [Tyk Gateway API]({{< ref "tyk-gateway-api" >}}) for more details.
+- `TykBatchRequest` this function is similar to `TykMakeHttpRequest` but makes use of Tyk's [batch request feature]({{< ref "api-management/batch-processing" >}}).
 - `TykMakeHttpRequest(JSON.stringify(requestObject))`: This method is used to make an HTTP request, requests are encoded as JSON for deserialisation in the min binary and translation to a system HTTP call. The request object has the following structure:
 
 ```js
@@ -681,9 +681,9 @@ For higher performance, the plugin could be written in Golang, and a connection 
     ```
 
     ##### How to Import?
-    [Tyk Pro](https://tyk.io/docs/tyk-configuration-reference/import-apis/#import-apis-via-the-dashboard)
+    [Tyk Self-Managed]({{< ref "api-management/gateway-config-managing-classic#import-an-api" >}})
 
-    [Tyk CE](https://tyk.io/docs/try-out-tyk/tutorials/create-api/)
+    [Tyk OSS]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}})
 
 4. **Run WAF ModSecurity Using Docker**
 

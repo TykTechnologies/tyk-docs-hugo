@@ -8,13 +8,11 @@ keywords: ["Authentication", "HMAC"]
 
 ## Introduction
 
-{{< note success >}} Note
-
-Tyk can interact with HMAC Signing in two ways. Firstly, as a client, we can validate the signature of incoming requests and map this to API access. You can also use Tyk to generate a header containing the signature of the request for use in upstream message integrity checks. For the upstream HMAC case please see [here]({{< ref "#upstream-hmac-request-signing" >}}) {{< /note >}}
-
 Hash-Based Message Authentication Code (HMAC) Signing is an access token method that adds another level of security by forcing the requesting client to also send along a signature that identifies the request temporally to ensure that the request is from the requesting user, using a secret key that is never broadcast over the wire.
 
 Tyk currently implements the latest draft of the [HMAC Request Signing standard](http://tools.ietf.org/html/draft-cavage-http-signatures-05).
+
+HMAC Signing is a good way to secure an API if message reliability is paramount, it goes without saying that all requests should go via TLS/SSL to ensure that MITM attacks can be minimized. There are many ways of managing HMAC, and because of the additional encryption processing overhead requests will be marginally slower than more standard access methods.
 
 An HMAC signature is essentially some additional data sent along with a request to identify the end-user using a hashed value, in our case we encode the 'date' header of a request, the algorithm would look like:
 
@@ -28,7 +26,7 @@ The full request header for an HMAC request uses the standard `Authorization` he
 Authorization: Signature keyId="hmac-key-1",algorithm="hmac-sha1",signature="Base64Encode(HMAC-SHA1(signing string))"
 ```
 
-Tyk supports the following HMAC algorithms: "hmac-sha1", "hmac-sha256", "hmac-sha384", "hmac-sha512”, and reads value from algorithm header. You can limit allowed algorithms by setting `hmac_allowed_algorithms` field in API definition, like this: `"hmac_allowed_algorithms": ["hmac-sha256", "hmac-sha512"]`.
+Tyk supports the following HMAC algorithms: "hmac-sha1", "hmac-sha256", "hmac-sha384", "hmac-sha512”, and reads value from algorithm header. You can limit the allowed algorithms by setting the `hmac.allowedAlgorithms` (Tyk Classic: `hmac_allowed_algorithms`) field in your API definition, like this: `"hmac_allowed_algorithms": ["hmac-sha256", "hmac-sha512"]`.
 
 The date format for an encoded string is:
 
@@ -38,7 +36,9 @@ Mon, 02 Jan 2006 15:04:05 MST
 
 This is the standard for most browsers, but it is worth noting that requests will fail if they do not use the above format.
 
-When an HMAC-signed request comes into Tyk, the key is extracted from the `Authorization` header, and retrieved from Redis. If the key exists then Tyk will generate its own signature based on the requests "date" header, if this generated signature matches the signature in the `Authorization` header the request is passed.
+## How Tyk validates the signature of incoming requests
+
+When an HMAC-signed request comes into Tyk, the key is extracted from the `Authorization` header, and retrieved from Redis. If a key exists then Tyk will generate its own signature based on the request's "date" header, if this generated signature matches the signature in the `Authorization` header the request is passed.
 
 ### Supported headers
 
@@ -50,8 +50,68 @@ Tyk API Gateway supports full header signing through the use of the `headers` HM
 All headers should be in lowercase.
 {{< /note >}}
 
+#### Date header not allowed for legacy .Net
 
-### A sample signature generation snippet
+Older versions of some programming frameworks do not allow the Date header to be set, which can causes problems with implementing HMAC, therefore, if Tyk detects a `x-aux-date` header, it will use this to replace the Date header.
+
+### Clock Skew
+
+Tyk also implements the recommended clock-skew from the specification to prevent against replay attacks, a minimum lag of 300ms is allowed on either side of the date stamp, any more or less and the request will be rejected. This means that requesting machines need to be synchronised with NTP if possible.
+
+You can edit the length of the clock skew in the API Definition by setting the `hmac.allowedClockSkew` (Tyk Classic: `hmac_allowed_clock_skew`) value. This value will default to 0, which deactivates clock skew checks.
+
+## Setting up HMAC using the Dashboard
+
+To enable the use of HMAC Signing in your API from the Dashboard:
+
+1. Scroll to the **Authentication** options
+2. Select **HMAC (Signed Authentication Key)** from the drop-down list
+3. Configure your **HMAC Request Signing** settings.
+4. Select **Strip Authorization Data** to strip any authorization data from your API requests.
+5. Select the location of the signature in the request.
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-hmac-auth-settings.png" alt="Configuring HMAC request signing" >}}
+
+## Configuring your API to use HMAC Request Signing
+
+HMAC request signing is configured within the Tyk Vendor Extension by adding the `hmac` object within the `server.authentication` section and enabling authentication.
+
+You must indicate where Tyk should look for the request signature (`header`, `query` or `cookie`) and which `algorithm` will be used to encrypt the secret to create the signature. You can also optionally configure a limit for the `allowedClockSkew` between the timestamp in the signature and the current time as measured by Tyk. 
+
+```yaml
+x-tyk-api-gateway:
+  server:
+    authentication:
+      enabled: true
+      hmac:
+        enabled: true
+        header:
+          enabled: true
+          name: Authorization
+        allowedAlgorithms:
+          - hmac-sha256
+        allowedClockSkew: -1
+```
+
+Note that URL query parameter keys and cookie names are case sensitive, whereas header names are case insensitive.
+
+You can optionally [strip the auth token]({{< ref "api-management/client-authentication#managing-authorization-data" >}}) from the request prior to proxying to the upstream using the `authentication.stripAuthorizationData` field  (Tyk Classic: `strip_auth_data`).
+
+### Using Tyk Classic
+
+As noted in the Tyk Classic API [documentation]({{< ref "api-management/gateway-config-tyk-classic#configuring-authentication-for-tyk-classic-apis" >}}), you can select HMAC Request Signing using the `enable_signature_checking` option. 
+
+## Registering an HMAC user with Tyk
+
+When using HMAC request signing, you need to provide Tyk with sufficient information to verify the client's identity from the signature in the request. You do this by creating and registering HMAC user [session objects]({{< ref "api-management/policies#what-is-a-session-object" >}}) with Tyk. When these are created, a matching HMAC secret is also generated, which must be used by the client when signing their requests.
+
+The way that this is implemented is through the creation of a key that grants access to the API (as you would for an API protected by [auth token]({{< ref "api-management/client-authentication#use-auth-tokens" >}})) and indicating that the key is to be used for HMAC signed requests by setting `hmac_enabled` to `true`. Tyk will return the HMAC secret in the response confirming creation of the key.
+
+When calling the API, the client would never use the key itself as a token, instead they must sign requests using the provided secret.
+
+## Generating a signature
+
+This code snippet gives an example of how a client could construct and generate a Request Signature.
 
 ```{.copyWrapper}
 ...
@@ -86,103 +146,3 @@ req.Header.Add("Authorization",
 
 ...
 ```
-
-### Date header not allowed for legacy .Net
-
-Older versions of some programming frameworks do not allow the Date header to be set, which can causes problems with implementing HMAC, therefore, if Tyk detects a `x-aux-date` header, it will use this to replace the Date header.
-
-### Clock Skew
-
-Tyk also implements the recommended clock-skew from the specification to prevent against replay attacks, a minimum lag of 300ms is allowed on either side of the date stamp, any more or less and the request will be rejected. This means that requesting machines need to be synchronised with NTP if possible.
-
-You can edit the length of the clock skew in the API Definition by setting the `hmac_allowed_clock_skew` value in your API definition. This value will default to 0, which deactivates clock skew checks.
-
-### Additional notes
-
-HMAC Signing is a good way to secure an API if message reliability is paramount, it goes without saying that all requests should go via TLS/SSL to ensure that MITM attacks can be minimized. There are many ways of managing HMAC, and because of the additional encryption processing overhead requests will be marginally slower than more standard access methods.
-
-## Setting up HMAC using the Dashboard
-
-To enable the use of HMAC Signing in your API from the Dashboard:
-
-1. Select your API from the **System Management > APIs** menu
-2. Scroll to the **Authentication** options
-3. Select **HMAC (Signed Authetication Key)** from the drop-down list
-4. Configure your **HMAC Request Signing** settings.
-5. Select **Strip Authorization Data** to strip any authorization data from your API requests.
-6. Tyk will by default assume you are using the `Authorization` header, but you can change this by setting the **Auth Key Header** name value
-7. You can select whether to use a URL query string parameter as well as a header, and what parameter to use. If this is left blank, it will use the **Auth Key Header** name value.
-8. You can select whether to use a **cookie value**. If this is left blank, it will use the Header name value.
-
-
-{{< img src="/img/2.10/hmac_auth_settings.png" alt="Target Details: HMAC" >}}
-
-
-## Setting up HMAC using an API Definition
-
-To enable HMAC on your API, first you will need to set the API definition up to use the method, this is done in the API Definition file/object:
-
-```{.copyWrapper}
-{
-  "name": "Tyk Test API",
-  ...
-  "enable_signature_checking": true,
-  "use_basic_auth": false,
-  "use_keyless": false,
-  "use_oauth2": false,
-  "auth": {
-    "auth_header_name": ""
-  },
-  ...
-}
-```
-
-Ensure that the other methods are set to false.
-
-## Setting up an HMAC Session Object
-
-When creating a user session object, the settings should be modified to reflect that an HMAC secret needs to be generated alongside the key:
-
-```{.copyWrapper}
-{
-  ...
-  "hmac_enabled": true,
-  "hmac_string": "",
-  ...
-}
-```
-
-Creating HMAC keys is the same as creating regular access tokens - by using the [Tyk Gateway API]({{< ref "api-management/gateway-config-tyk-classic#authentication-type-flags" >}}). Setting the `hmac_enabled` flag to `true`, Tyk will generate a secret key for the key owner (which should not be modified), but will be returned by the API so you can store and report it to your end-user.
-
-
-## Upstream HMAC request signing
-
-You can sign a request with HMAC, before sending to the upsteam target.
-
-This feature is implemented using [Draft 10](https://tools.ietf.org/html/draft-cavage-http-signatures-10) RFC.
-
-`(request-target)` and all the headers of the request will be used for generating signature string.
-If the request doesn't contain a `Date` header, middleware will add one as it is required according to above draft.
-
-A config option `request_signing` can be added in an API Definition to enable/disable the request signing. It has following format:
-
-```{.json}
-"request_signing": {
-  "is_enabled": true,
-  "secret": "xxxx",
-  "key_id": "1",
-  "algorithm": "hmac-sha256"
-}
-```
-
-The following algorithms are supported:
-
-1. `hmac-sha1`
-2. `hmac-sha256`
-3. `hmac-sha384`
-4. `hmac-sha512`
-
-<!-- To be added
-# Sign Requests with RSA
--->
-
