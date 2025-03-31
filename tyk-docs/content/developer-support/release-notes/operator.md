@@ -19,10 +19,10 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
-<!-- ## 1.2 Release Notes
+## 1.2 Release Notes
 ### 1.2.0 Release Notes
 
-#### Release Date XX March 2025
+#### Release Date 01 April 2025
 
 #### Release Highlights
 
@@ -65,7 +65,7 @@ Go to the [Upgrading Tyk Operator]({{<ref "api-management/automations/operator#i
     docker pull tykio/tyk-operator:v1.2.0
     ```
 - Helm chart
-  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#220-release-notes" >}})
+  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
 
 #### Changelog {#Changelog-v1.2.0}
 
@@ -164,7 +164,7 @@ Helm chart has been fixed and leader election works by default again.
 </li>
 </ul>
 
---- -->
+---
 
 ## 1.1 Release Notes
 ### 1.1.0 Release Notes
