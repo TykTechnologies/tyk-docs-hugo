@@ -49,7 +49,7 @@ Note that both <b>Promote</b> and <b>Direct</b> operations are destructive. The 
 
 The API Designer provides a simple interface to migrate your Tyk Classic APIs to Tyk OAS offering both **staged** and **direct** conversions.
 
-1. First ensure that you have taken a backup of your APIs, in case of accidental deletion - the direct and promote operations are destructive and will permanently delete the original Tyk Classic API definition from your database.
+1. First ensure that you have taken a backup of your API, in case of accidental deletion - the direct and promote operations are destructive and will permanently delete the original Tyk Classic API definition from your database. You can export the API definition using the **Actions** menu or, if you want to backup all APIs you can do so via the Tyk Dashboard API by following [these instructions]({{< ref "https://tyk.io/docs/developer-support/upgrading#backup-apis-and-policies" >}}).
 
 2. Find the API that you want to convert in the list of **Created APIs**. You can use the **Select API type** filter to show just Tyk Classic APIs.
 
@@ -175,7 +175,7 @@ Tyk OAS uses the more advanced [Validate Request]({{< ref "api-management/traffi
 ## Recommended Migration Strategy
 
 For a safe migration approach, we recommend following these steps:
-1. **Back Up Your APIs**: Perform a full back-up of your API Definitions - remember that the final migration is destructive, as the Tyk OAS APIs will inherit the database and API IDs of the originals
+1. **Back Up Your APIs**: Perform a full [back-up]({{< ref "developer-support/upgrading#backup-apis-and-policies" >}}) of your API Definitions - remember that the final migration is destructive, as the Tyk OAS APIs will inherit the database and API IDs of the originals
 2. **Start with Dry Run**: Use the `dryRun` mode to validate the migration before making changes
 3. **Stage Critical APIs**: For important APIs, use the `stage` mode to create test versions
 4. **Test Thoroughly**: Verify all functionality in the staged APIs
