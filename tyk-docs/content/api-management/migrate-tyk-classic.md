@@ -42,7 +42,7 @@ Tyk Dashboard supports four different migration modes to suit your needs:
 {{< warning success >}}
 **Warning**  
 
-Note that both **Promote** and **Direct** operations are destructive. The converted API will replace the original in the API database, inheriting both API Id and database ID.
+Note that both <b>Promote</b> and <b>Direct</b> operations are destructive. The converted API will replace the original in the API database, inheriting both API Id and database ID.
 {{< /warning >}}
 
 ## Using the API Designer
