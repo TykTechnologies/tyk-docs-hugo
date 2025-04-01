@@ -10,7 +10,7 @@ description: "API Migration: Converting Tyk Classic APIs to Tyk OAS Format"
 
 From Tyk 5.8.0, you can convert your existing [Tyk Classic APIs]({{< ref "api-management/gateway-config-tyk-classic.md" >}}) to the recommended [Tyk OAS API]({{< ref "api-management/gateway-config-tyk-oas" >}}) format.
 
-The API Migration feature provides a powerful way to convert your existing Tyk Classic API definitions to the newer Tyk OAS format with various options to ensure a smooth transition. We've built support into the Tyk Dashboard's [API Designer]({{< ref "api-management/migrate-tyk-classic#using-the-api-designer" >}}) to convert individual Tyk Classic APIs one-by-one. The Tyk Dashboard API [migrate endpoint]({{< ref "api-management/migrate-tyk-classic#using-the-migration-api" >}}) allows you to migrate individual APIs or perform bulk migrations.
+The API Migration feature provides a powerful way to convert your existing Tyk Classic API definitions to the newer Tyk OAS format with various options to ensure a smooth transition. We've built support into the Tyk Dashboard's [API Designer]({{< ref "api-management/migrate-tyk-classic#using-the-api-designer" >}}) to convert individual Tyk Classic APIs one by one. The Tyk Dashboard API [migrate endpoint]({{< ref "api-management/migrate-tyk-classic#using-the-migration-api" >}}) allows you to migrate individual APIs or perform bulk migrations.
 
 ## Features of Tyk Dashboard's Migration Feature
 
@@ -24,7 +24,7 @@ The API Migration feature provides a powerful way to convert your existing Tyk C
 
 Tyk Dashboard supports four different migration modes to suit your needs:
 
-1. **Dry Run Mode**: Simulates the conversion process without making any actual changes. This mode returns the converted API definitions in Tyk OAS format for your review, allowing you to verify the conversion before committing to it.
+1. **Dry Run Mode**: Simulates the conversion process without making changes. This mode returns the converted API definitions in Tyk OAS format for your review, allowing you to verify the conversion before committing to it.
 
 2. **Stage Mode**: Perform a phased conversion by creating staged copies of your APIs in Tyk OAS format alongside the existing Tyk Classic APIs. You can then thoroughly test that the migrated APIs will behave as expected without affecting production traffic. When you are happy, you can **promote** the staged APIs.
 
@@ -32,8 +32,8 @@ Tyk Dashboard supports four different migration modes to suit your needs:
 
     - The API ID will have the `staging-` prefix added
     - "[staged] " prefix will be added to the API name
-    - the listen path will be modified by addition of the `/tyk-staging` prefix
-    - a reference will be added to link the staged API to the original Tyk Classic API's ID
+    - The listen path will be modified by the addition of the `/tyk-staging` prefix
+    - A reference will be added to link the staged API to the original Tyk Classic API's ID
 
 3. **Promote Mode**: Promote previously staged APIs, replacing their Tyk Classic counterparts. This process removes the staging prefixes from ID, name, and listen path. It then replaces the original Tyk Classic API with the Tyk OAS version - the Tyk OAS API will inherit both the API ID and database ID of the original API.
 
@@ -47,7 +47,7 @@ Note that both <b>Promote</b> and <b>Direct</b> operations are destructive. The 
 
 ## Using the API Designer
 
-The API Designer provides a simple interface to migrate your Tyk Classic APIs to Tyk OAS offering both **staged** and **direct** conversions.
+The API Designer provides a simple interface for migrating your Tyk Classic APIs to Tyk OAS, offering both **staged** and **direct** conversions.
 
 1. First ensure that you have taken a backup of your API, in case of accidental deletion - the direct and promote operations are destructive and will permanently delete the original Tyk Classic API definition from your database. You can export the API definition using the **Actions** menu or, if you want to backup all APIs you can do so via the Tyk Dashboard API by following [these instructions]({{< ref "https://tyk.io/docs/developer-support/upgrading#backup-apis-and-policies" >}}).
 
@@ -111,9 +111,9 @@ Indicate the migration [mode] using the following options:
 - `promote`
 - `direct`
 
-Choose to convert specific APIs by providing their API IDs in the `apiIDs` array, or convert all your Tyk Classic APIs in one go using the `all` option.
+You can convert specific APIs by providing their API IDs in the `apiIDs` array or convert all your Tyk Classic APIs in one go using the `all` option.
 
-Set `abortOnFailure` to `true` if you want Tyk to stop processing if it encounters a failure while performing the operation on a batch of APIs.
+Set `abortOnFailure` to `true` if you want Tyk to stop processing if it encounters a failure while operating on a batch of APIs.
 
 You can only have one **staged** version of a Tyk Classic API, so if you have already started the migration of an API and try again - for example after making changes to the original Tyk Classic API, the operation will fail. Use **overrideStaged** to delete the existing staged API and create a new one.
 
@@ -154,8 +154,8 @@ There are some differences between the way Tyk Gateway works with Tyk Classic an
 
 When migrating APIs with regex-based path parameters, be aware that:
 
-- In Tyk Classic the Gateway only routes requests matching the regex pattern
-- In Tyk OAS the Gateway routes all requests matching the pattern structure by default
+- In Tyk Classic, the Gateway only routes requests matching the regex pattern
+- In Tyk OAS, the Gateway routes all requests matching the pattern structure by default
 
 Recommended action: Enable the [Validate Request]({{< ref "api-management/traffic-transformation#request-validation-using-tyk-oas" >}}) middleware in your migrated Tyk OAS API to maintain the same behavior.
 
@@ -163,14 +163,14 @@ Recommended action: Enable the [Validate Request]({{< ref "api-management/traffi
 
 The position of mock response middleware in the request processing chain [differs between Tyk Classic and Tyk OAS]({{< ref "api-management/traffic-transformation#middleware-execution-order-during-request-processing" >}}):
 
-- In Tyk Classic it appears at the start of the request processing chain (before authentication)
-- In Tyk OAS it appears at the end of the request processing chain
+- In Tyk Classic, it appears at the start of the request processing chain (before authentication)
+- In Tyk OAS, it appears at the end of the request processing chain
 
-During migration, the system automatically adds the [ignore authentication]({{< ref "api-management/traffic-transformation#ignore-authentication-1" >}}) middleware to endpoints with mock responses to maintain similar behavior. Note, however that any other middleware configured for that endpoint or at API level will be applied for the Tyk OAS API (which was not the case for the Tyk Classic API).
+During migration, the system automatically adds the [ignore authentication]({{< ref "api-management/traffic-transformation#ignore-authentication-1" >}}) middleware to endpoints with mock responses to maintain similar behavior. Note, however, that any other middleware configured for that endpoint or at the API level will be applied for the Tyk OAS API (which was not the case for the Tyk Classic API).
 
 ### Enhanced Request Validation
 
-Tyk OAS uses the more advanced [Validate Request]({{< ref "api-management/traffic-transformation#request-validation-using-tyk-oas" >}}) middleware, whereas Tyk Classic is limited to the [Validate JSON]({{< ref "api-management/traffic-transformation#request-validation-using-classic" >}}) middleware. The migration will configure Validate Request to check just the request body (as performed by Validate JSON).
+Tyk OAS uses the more advanced [Validate Request]({{< ref "api-management/traffic-transformation#request-validation-using-tyk-oas" >}}) middleware, whereas Tyk Classic is limited to the [Validate JSON]({{< ref "api-management/traffic-transformation#request-validation-using-classic" >}}) middleware. The migration will configure Validate Request to check the request body (as performed by Validate JSON).
 
 ## Recommended Migration Strategy
 
