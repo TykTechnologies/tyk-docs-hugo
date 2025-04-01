@@ -1141,9 +1141,6 @@ The country code in the log browser has been changed to a link to the geographic
 #### Fixed the` proxy.preserve_host_header` field when saved via the UI.
 Previously, the field was available in the API definition, but got removed if the API was saved via the UI.
 
-#### Fixed the port removal in service discovery properties.
-https://github.com/TykTechnologies/tyk-analytics-ui/issues/12
-
 #### Prevent an admin user revoking their own permissions.
 This is a  UI only fix, it is still allowable via the API (which is OK).
 
