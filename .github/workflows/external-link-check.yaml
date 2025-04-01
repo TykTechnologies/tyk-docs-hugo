@@ -18,7 +18,7 @@ jobs:
       - name: Check Markdown links
         uses: gaurav-nelson/github-action-markdown-link-check@v1
         with:
-          config-file: .github/workflows/external-link-check-config.json
           check-modified-files-only: 'yes'
+          config-file: .github/workflows/external-link-check-config.json
           use-verbose-mode: 'yes'  # Shows detailed output, including HTTP status
           folder-path: 'tyk-docs/content'    # Adjust to the folder containing your Markdown files
