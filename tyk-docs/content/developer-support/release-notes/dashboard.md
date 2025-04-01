@@ -51,7 +51,7 @@ We have completed the journey with Tyk OAS that started back in Tyk 4.1 - and no
 
 With Tyk OAS we combine the industry standard OpenAPI description with the Tyk Vendor Extension, which encapsulates all of the Tyk Gateway settings that cannot be inferred from the OpenAPI Specification (OAS). You can keep your service description (OAS) as source of truth and update the OpenAPI description part of a Tyk OAS API independently from the Tyk Vendor Extension - no need to unpick distributed vendor extensions from your OAS. For more details, please see the [documentation]({{< ref "api-management/gateway-config-tyk-oas" >}}).
 
-Now that we have achieved this milestone we are keen to support users in migrating their existing Tyk Classic API portfolio to Tyk OAS and offer methods to do this both within the Tyk Dashboard Classic API Designer and via the Tyk Dashboard API. For more details of the migration tool, please see the [documentation]({{< ref "api-management/migrate-tyk-classic" >}}).
+Now that we have achieved this milestone we are keen to support users in migrating their existing Tyk Classic API portfolio to Tyk OAS and offer methods to do this both within the Tyk Dashboard Classic API Designer and via the Tyk Dashboard API. For more details of the migration tool, please see the [documentation]({{< ref "api-management/migrate-from-tyk-classic" >}}).
 
 ##### Enhanced upstream authentication
 
@@ -158,7 +158,7 @@ When creating a GraphQL API in the API designer, you can now attach certificates
 <details>
 <summary>Convert Tyk Classic API Definitions to Tyk OAS</summary>
 
-Introduced a new [API migration facility]({{< ref "api-management/migrate-tyk-classic" >}}) to the Tyk Dashboard API and API Designer enabling a seamless transition from Tyk Classic to Tyk OAS. Both methods offer direct and staged conversions of individual APIs. The Tyk Dashboard API also supports bulk API conversions.
+Introduced a new [API migration facility]({{< ref "api-management/migrate-from-tyk-classic" >}}) to the Tyk Dashboard API and API Designer enabling a seamless transition from Tyk Classic to Tyk OAS. Both methods offer direct and staged conversions of individual APIs. The Tyk Dashboard API also supports bulk API conversions.
 
 Note that there is a known issue where the Cancel button in the Promote Staged API confirmation modal does not function. If you select Promote Staged API but decide not to proceed, you will need to use your browser’s Back button to exit the modal. This issue will be resolved in the next patch.
 </details>

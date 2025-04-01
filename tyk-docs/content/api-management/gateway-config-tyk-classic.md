@@ -32,7 +32,7 @@ Tyk's legacy API definition is now called Tyk Classic and is used for GraphQL, X
 
 From Tyk 5.8 we recommend that any REST APIs are migrated to the newer [Tyk OAS API]({{< ref "api-management/gateway-config-tyk-oas" >}}) style, in order that they can benefit from simpler configuration and future enhancements.
 
-For Tyk Dashboard users with an existing portfolio of Tyk Classic API definitions, we provide a [migration tool]({{< ref "api-management/migrate-tyk-classic" >}}), available via the Dashboard API and UI.
+For Tyk Dashboard users with an existing portfolio of Tyk Classic API definitions, we provide a [migration tool]({{< ref "api-management/migrate-from-tyk-classic" >}}), available via the Dashboard API and UI.
 
 {{< note success >}}
 **Note**  

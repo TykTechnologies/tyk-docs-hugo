@@ -158,7 +158,7 @@ menu:
             category: Page
             show: True
           - title: "Migrate from Tyk Classic"
-            path: /api-management/migrate-tyk-classic
+            path: /api-management/migrate-from-tyk-classic
             category: Page
             show: True            
           - title: "Deploy APIs"
