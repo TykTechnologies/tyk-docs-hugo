@@ -8,6 +8,7 @@ aliases:
     - /getting-started/deployment-options/
 ---
 
+
 Tyk API Platform offers various deployment options, consisting of both [open source and proprietary]({{< ref "tyk-stack" >}})
 components.
 

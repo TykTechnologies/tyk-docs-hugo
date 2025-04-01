@@ -9,7 +9,7 @@ on:
       - master  # Adjust to your default branch
 
 jobs:
-  run:
+  run-on-pr:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -19,5 +19,6 @@ jobs:
         uses: gaurav-nelson/github-action-markdown-link-check@v1
         with:
           check-modified-files-only: 'yes'
+          config-file: .github/workflows/external-link-check-config.json
           use-verbose-mode: 'yes'  # Shows detailed output, including HTTP status
           folder-path: 'tyk-docs/content'    # Adjust to the folder containing your Markdown files

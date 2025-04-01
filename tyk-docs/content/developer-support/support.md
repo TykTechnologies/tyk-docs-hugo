@@ -11,7 +11,7 @@ aliases:
   - /frequently-asked-questions/sla-policies
 ---
 
-The following table outlines our current Tyk Support SLA Policies
+The following table outlines our current Tyk Support [SLA](https://support.zendesk.com/hc/en-us/articles/4408829459866-Defining-SLA-policies#:~:text=A%20service%20level%20agreement%2C%20or,resolve%20them%20within%202%20hours) Policies
 
 {{% scrollable-width %}}
 | Included Capabilities            | Free         | Standard                                             | Enhanced (Silver) | Premier    | Signature (Gold) |
