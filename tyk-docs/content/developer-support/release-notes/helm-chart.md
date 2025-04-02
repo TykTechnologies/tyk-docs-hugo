@@ -25,7 +25,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### 3.0.0 Release Notes
 
-#### Release Date 01 April 2025
+#### Release Date 02 April 2025
 
 #### Release Highlights
 
