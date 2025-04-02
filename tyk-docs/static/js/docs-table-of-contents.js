@@ -143,10 +143,10 @@ var buildTableOfContents = function () {
       idArray.push($(this).attr("href"));
     });
   
-    if (idArray.some((value) => currentUrl.includes(value))) {
-    var lastAccordionItem = $("div.accordion-item:last,.accordion-content:last,.sub-accordion-content:last");
-    lastAccordionItem.children("div").css("display", "block");
-  }
+    //if (idArray.some((value) => currentUrl.includes(value))) {
+      //var lastAccordionItem = $("div.accordion-item:last,.accordion-content:last,.sub-accordion-content:last");
+      //lastAccordionItem.children("div").css("display", "block");
+    //}
 
   if ($(".toc__label").length > 0) {
     $(".toc__label").eq(1).remove();
@@ -243,14 +243,17 @@ function highlightActiveItem(activeId){
        .sub-sub-toc-item[href="#${activeId}"], 
        .sub-sub-sub-toc-item[href="#${activeId}"]`
     ).addClass("js-active accordion-up");
-
+    
     // detect the parent of the activeTocItem
     const parent = activeTocItem.parent();
     // get classes of the parent
     const parentClasses = parent.attr("class");
     if (parentClasses) {
-      // Check if parentClasses is exactly "accordion-content" or includes "accordion-content"
-      if (parentClasses === "accordion-content" || parentClasses.split(" ").includes("accordion-content")) {
+      if (parentClasses === "accordion-item" || parentClasses.split(" ").includes("accordion-item")) {
+        expandAccordionGroup(parent);
+      }
+      else if (parentClasses === "accordion-content" || parentClasses.split(" ").includes("accordion-content")) {
+        // Check if parentClasses is exactly "accordion-content" or includes "accordion-content"
         expandAccordionClass(parent);
       }
       else if (parentClasses === "sub-accordion-content" || parentClasses.split(" ").includes("sub-accordion-content")) {
@@ -275,6 +278,15 @@ function scrollToHighlightedItem() {
     }
 }
 
+function expandAccordionGroup(AccordionItem) {
+  if (fragmentDetected) {
+    AccordionItem.addClass("accordion-up");
+    fragmentDetected = false;
+  }
+  const children = AccordionItem.children("div.accordion-content");
+  children.css("display", "block");
+}
+
 //expand the accordion item group
 function expandAccordionClass(AccordionItem){
   if(fragmentDetected){
@@ -286,7 +298,8 @@ function expandAccordionClass(AccordionItem){
   const parentHref = parent.find("a").first();
   parentHref.addClass("accordion-up");
   // add style display block to all child divs of the parent
-  parent.children("div").css("display", "block");  
+  parent.children("div").css("display", "block");
+  AccordionItem.children("div").css("display", "block");  
 }
 
 //expand the sub accordion item group
