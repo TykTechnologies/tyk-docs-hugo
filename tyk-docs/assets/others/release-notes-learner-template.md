@@ -41,7 +41,7 @@ For example, for a minor version `5.6`, it can include notes for `5.6.0`, `5.6.1
 #### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release:
 This release primarily focuses on bug fixes.
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0" >}}) below.
 -->
 
 #### Breaking Changes
@@ -259,7 +259,7 @@ If there were changes in any of Tyk’s API docs:
 - Has a link to the endpoint documentation being included?
 - Has the benefit of the new/updated endpoint been explained in the release highlights and changelog?
 -->
-- [OpenAPI Document]({{<ref "" >}})
+- [OpenAPI Document]({{< ref "" >}})
 - [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/collection/<collection-id>)
 
 ### FAQ

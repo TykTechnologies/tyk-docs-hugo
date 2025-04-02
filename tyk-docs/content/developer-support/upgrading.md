@@ -218,11 +218,9 @@ Follow our guide for deploying your [Go plugins on Tyk Cloud]({{< ref "#go-plugi
 Follow our guide for [upgrading Cloud Data Planes]({{< ref "tyk-cloud#managing-cloud-data-plane" >}}).
 
 **Upgrade Guide Video**
-Please refer to our [upgrade guide video](https://tyk-1.wistia.com/medias/t0oamm63ae) below for visual guidance:
+Please refer to our [upgrade guide video](https://youtu.be/2rzU8YdKKFM) below for visual guidance:
 
-<div>
-<iframe src="https://fast.wistia.net/embed/iframe/t0oamm63ae" title="Wistia video player" allowfullscreen frameborder="0" scrolling="no" class="responsive-frame" name="wistia_embed" ></iframe>
-</div>
+{{< youtube 2rzU8YdKKFM >}}
 
 #### Tyk Hybrid
 
@@ -300,11 +298,9 @@ Follow the instructions for component deployment type:
 
 **Upgrade Guide Video**
 
-Please refer to our [video](https://tyk-1.wistia.com/medias/4nf9fggatz) for further supporting with upgrading Tyk Self-Managed (RPM).
+Please refer to our [video](https://youtu.be/HfiLSRBdrfs) for further supporting with upgrading Tyk Self-Managed (RPM).
 
-<div>
-<iframe src="https://fast.wistia.net/embed/iframe/4nf9fggatz" title="Wistia video player" allowfullscreen frameborder="0" scrolling="no" class="responsive-frame" name="wistia_embed" ></iframe>
-</div>
+{{< youtube HfiLSRBdrfs >}}
 
 #### Go Plugin
 
@@ -560,12 +556,10 @@ The following guide explains how to upgrade Tyk Self-Managed running on Debian
 
 **Upgrade Guide Video**
 
-Please refer to our [upgrade guide video](https://tyk-1.wistia.com/medias/dcyna9zwqf) below for visual guidance of
+Please refer to our [upgrade guide video](https://youtu.be/dx1tcsbo3F8) below for visual guidance of
 upgrading Tyk Self-Managed (DEB).
 
-<div>
-<iframe src="https://fast.wistia.net/embed/iframe/dcyna9zwqf" title="Wistia video player" allowfullscreen frameborder="0" scrolling="no" class="responsive-frame" name="wistia_embed" ></iframe>
-</div>
+{{< youtube dx1tcsbo3F8 >}}
 
 **Preparations**
 
@@ -806,12 +800,10 @@ The following guide explains how to upgrade Tyk Self-Managed running on RHL
 
 **Upgrade guide video**
 
-Please refer to our [upgrade guide video](https://tyk-1.wistia.com/medias/p2c7gjzsk6) below for visual guidance of
+Please refer to our [upgrade guide video](https://youtu.be/Dm_lboEOm6w) below for visual guidance of
 upgrading Tyk Self-Managed (RPM).
 
-<div>
-<iframe src="https://fast.wistia.net/embed/iframe/p2c7gjzsk6" title="Wistia video player" allowfullscreen frameborder="0" scrolling="no" class="responsive-frame" name="wistia_embed" ></iframe>
-</div>
+{{< youtube Dm_lboEOm6w >}}
 
 ---
 

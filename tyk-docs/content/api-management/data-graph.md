@@ -102,7 +102,7 @@ External DataSources are those APIs that you're not (yet) managing through tyk.
 For simplicity reasons you can also add these to your data graph without previously adding them as a dedicated API to tyk.
 If you later decide you want to add additional middlewares to one of them you can always make the transition from external to internal API.
 
-Head over to the [connect data source]({{<ref "api-management/data-graph#udg" >}}) section to learn about the supported data sources and how to connect them to Tyk.
+Head over to the [connect data source]({{< ref "api-management/data-graph#udg" >}}) section to learn about the supported data sources and how to connect them to Tyk.
 
 ### Arguments
 
