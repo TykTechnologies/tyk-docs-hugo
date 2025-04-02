@@ -172,13 +172,13 @@ Let's break down how Tyk Streams facilitates this, focusing on the distinct prod
 *   **Flow:**
     1.  The Joker Service *publishes* the joke response as a message onto a different backend topic (e.g., the `discussion` topic in Kafka).
     2.  **Tyk Streams Role (Consumer):** Tyk Gateway is configured via another (or the same) API definition to *subscribe* to the `discussion` topic.
-    3.  When Tyk receives a message from the `discussion` topic, it identifies the relevant connected client(s).
-    4.  Tyk *pushes* the message content (the joke) to the appropriate client(s) using a suitable real-time protocol like Server-Sent Events (SSE) or WebSockets, via an endpoint like `ws://gateway/ws` or an SSE equivalent.
-    5.  The browser, initially connected to the Tyk WebSocket/SSE endpoint, receives the pushed message and displays the joke.
+    3.  When Tyk receives a message from the `discussion` topic, it *pushes* the message content (the joke) to the appropriate client(s) using a suitable real-time protocol like Server-Sent Events (SSE) or WebSockets. 
+    **Note:** In case of multiple clients, events would round-robin amongst the consumers. So consumers would only receive every-other message.
+    
+    4.  The browser, initially connected to the Tyk WebSocket/SSE endpoint, receives the pushed message and displays the joke.
 *   **Value Demonstrated:**
     *   **Protocol Bridging:** Tyk translates Kafka messages into SSE/WebSocket messages suitable for web clients.
     *   **Decoupling:** The browser doesn't need a Kafka client; it uses standard web protocols (SSE/WS) provided by Tyk. The Joker Service only needs to publish to Kafka, unaware of the final client protocol.
-    *   **Fan-out (Implicit):** Tyk can potentially manage multiple client connections and deliver messages appropriately (though this specific POC might be 1:1).
 
 The following sections will guide you through the prerequisites and steps to configure Tyk Gateway to implement this use case.
 
@@ -187,6 +187,7 @@ The following sections will guide you through the prerequisites and steps to con
 - **Docker**: We will run the entire Tyk Stack on Docker. For installation, refer to this [guide](https://docs.docker.com/desktop/setup/install/mac-install/).
 - **Git**: A CLI tool to work with git repositories. For installation, refer to this [guide](https://git-scm.com/downloads)
 - **Dashboard License**: We will configure Streams API using Dashboard. [Contact support](https://tyk.io/contact/) to obtain a license.
+- **Curl and JQ**: These tools will be used for testing.
 
 ### Instructions
 
@@ -235,34 +236,34 @@ The following sections will guide you through the prerequisites and steps to con
 
     Open Tyk Dashboard in your browser by visiting [http://localhost:3000](http://localhost:3000) or [http://tyk-dashboard.localhost:3000](http://tyk-dashboard.localhost:3000) and login with the provided **admin** credentials.
 
-5. **Configure Streams API:**
+5. **Create Producer API:**
 
-    Create a file `streams-api.json` with the below content:
+    Create a file `producer.json` with the below content: (**Note:** Replace `<replace-with-your-ip>` with your IP assigned to your computer)
 
     ```json
     {
         "components": {},
         "info": {
-            "title": "Test Streams API",
+            "title": "gpt-chat",
             "version": "1.0.0"
         },
         "openapi": "3.0.3",
         "paths": {},
         "servers": [
             {
-                "url": "http://tyk-gateway.localhost:8080/test-streams-api/"
+                "url": "http://tyk-gateway.localhost:8080/gpt-chat/"
             }
         ],
         "x-tyk-api-gateway": {
             "info": {
-                "name": "Test Streams API",
+                "name": "gpt-chat",
                 "state": {
                     "active": true
                 }
             },
             "server": {
                 "listenPath": {
-                    "value": "/test-streams-api/",
+                    "value": "/gpt-chat/",
                     "strip": true
                 }
             },
@@ -279,9 +280,83 @@ The following sections will guide you through the prerequisites and steps to con
                             "allowed_verbs": [
                                 "POST"
                             ],
-                            "path": "/post",
+                            "path": "/chat",
                             "rate_limit": "",
                             "timeout": "5s"
+                        },
+                        "label": ""
+                    },
+                    "output": {
+                        "kafka": {
+                            "addresses": ["<replace-with-your-ip>:9092"],
+                            "max_in_flight": 10,
+                            "topic": "chat"
+                        },
+                        "label": ""
+                    }
+                }
+            }
+        }
+    }
+    ```
+    
+    Create the API by executing the following command. Be sure to replace `<your-api-key>` with the API key you saved earlier:
+
+    ```bash
+    curl -H "Authorization: <your-api-key>" -H "Content-Type: application/vnd.tyk.streams.oas" http://localhost:3000/api/apis/streams -d @producer.json
+    ```
+
+    You should expect a response as shown below
+    ```bash
+    {"Status":"OK","Message":"API created","Meta":"67e54cadbfa2f900013b501c","ID":"3ddcc8e1b1534d1d4336dc6b64a0d22f"}
+    ```
+
+5. **Create Consumer API:**
+
+    Create a file `consumer.json` with the below content: (**Note:** Replace `<replace-with-your-ip>` with your IP assigned to your computer)
+
+    ```json
+    {
+        "components": {},
+        "info": {
+            "title": "gpt-discuss",
+            "version": "1.0.0"
+        },
+        "openapi": "3.0.3",
+        "paths": {},
+        "servers": [
+            {
+                "url": "http://tyk-gateway.localhost:8080/gpt-discuss/"
+            }
+        ],
+        "x-tyk-api-gateway": {
+            "info": {
+                "name": "gpt-discuss",
+                "state": {
+                    "active": true
+                }
+            },
+            "server": {
+                "listenPath": {
+                    "value": "/gpt-discuss/",
+                    "strip": true
+                }
+            },
+            "upstream": {
+              "url": ""
+            }
+        },
+        "x-tyk-streaming": {
+            "streams": {
+                "default_stream": {
+                    "input": {
+                        "kafka": {
+                            "addresses": ["<replace-with-your-ip>:9092"],
+                            "auto_replay_nacks": true,
+                            "checkpoint_limit": 1024,
+                            "consumer_group": "tyk-streams",
+                            "target_version": "3.3.0",
+                            "topics": ["discussion"]
                         },
                         "label": ""
                     },
@@ -291,7 +366,7 @@ The following sections will guide you through the prerequisites and steps to con
                             "allowed_verbs": [
                                 "GET"
                             ],
-                            "stream_path": "/get/stream"
+                            "stream_path": "/sse"
                         },
                         "label": ""
                     }
@@ -300,13 +375,11 @@ The following sections will guide you through the prerequisites and steps to con
         }
     }
     ```
-
-6. **Create the API:**
     
     Create the API by executing the following command. Be sure to replace `<your-api-key>` with the API key you saved earlier:
 
     ```bash
-    curl -H "Authorization: <your-api-key>" -H "Content-Type: application/vnd.tyk.streams.oas" http://localhost:3000/api/apis/streams -d @streams-api.json
+    curl -H "Authorization: <your-api-key>" -H "Content-Type: application/vnd.tyk.streams.oas" http://localhost:3000/api/apis/streams -d @consumer.json
     ```
 
     You should expect a response as shown below
@@ -314,23 +387,82 @@ The following sections will guide you through the prerequisites and steps to con
     {"Status":"OK","Message":"API created","Meta":"67e54cadbfa2f900013b501c","ID":"3ddcc8e1b1534d1d4336dc6b64a0d22f"}
     ```
 
-7. **Test the API:**
+7. **Start Joker Service:**
 
-   Open a terminal and execute the following command to start listening for messages from the Streams API you created:
+    Create a file `joker-service.sh` with the below content:
+
+    ```bash
+    #!/bin/bash
+
+    # Container name
+    CONTAINER="tyk-demo-kafka-1"
+
+    # Kafka bootstrap server
+    BOOTSTRAP_SERVER="localhost:9092"
+
+    # Topics
+    SOURCE_TOPIC="chat"
+    TARGET_TOPIC="discussion"
+
+    # Kafka consumer and producer commands
+    CONSUMER_CMD="/opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server $BOOTSTRAP_SERVER --topic $SOURCE_TOPIC --from-beginning"
+    PRODUCER_CMD="/opt/kafka/bin/kafka-console-producer.sh --broker-list $BOOTSTRAP_SERVER --topic $TARGET_TOPIC"
+
+    # Joke API URL
+    JOKE_API="https://icanhazdadjoke.com/"
+
+    echo "Starting to listen for messages on '$SOURCE_TOPIC'..."
+
+    # Run the consumer in the container, pipe output to a while loop
+    docker exec -i $CONTAINER bash -c "$CONSUMER_CMD" | while IFS= read -r message; do
+        # Skip empty lines
+        [ -z "$message" ] && continue
+
+        echo "Received message from $SOURCE_TOPIC: $message"
+        
+        # Fetch a random joke from the API and extract it with grep/sed
+        joke=$(curl -s -H "Accept: application/json" "$JOKE_API" | grep -o '"joke":"[^"]*"' | sed 's/"joke":"\(.*\)"/\1/')
+        
+        # Check if joke was fetched successfully
+        if [ -n "$joke" ]; then
+            response_message="In response to '$message': Here's a dad joke - $joke"
+        else
+            response_message="In response to '$message': Couldn't fetch a joke, sorry!"
+        fi
+        
+        # Send the response message to 'discussion' topic
+        echo "$response_message" | docker exec -i $CONTAINER bash -c "$PRODUCER_CMD"
+        
+        echo "Posted to $TARGET_TOPIC: $response_message"
+    done
+
+    echo "Consumer stopped."
+    ```
+
+    Make the file executable and start the service
+
+    ```bash
+    chmod +x joker-service.sh
+    ./joker-service.sh
+    ```
+
+8. **Test the API:**
+
+   Open a terminal and execute the following command to start listening for messages from the Consumer API you created:
 
    ```bash
-   curl -N http://tyk-gateway.localhost:8080/test-streams-api/get/stream
+   curl -N http://tyk-gateway.localhost:8080/gpt-discuss/sse
    ```
 
-   In a second terminal, execute the command below to send a message to the Streams API. You can run this command multiple times and modify the message to send different messages:
+   In a second terminal, execute the command below to send a message to the Producer API. You can run this command multiple times and modify the message to send different messages:
 
    ```bash
-   curl -X POST http://tyk-gateway.localhost:8080/test-streams-api/post -H "Content-Type: text/plain" -d "Sending Stream Data..."
+   curl -X POST http://tyk-gateway.localhost:8080/gpt-chat/chat -H "Content-Type: text/plain" -d "Tell me a joke."
    ```
 
    Now, you will see the message appear in the terminal window where you are listening for messages.
 
-**Wrapping Up:** And that’s it—you’ve just set up a real-time streaming pipeline with Tyk Streams! From here, you can tweak the configuration to suit your needs, [explore key concepts]({{< ref "" >}}), or explore more [advanced use cases]({{< ref "" >}}).
+**Wrapping Up:** And that’s it—you’ve just created a Async API with Tyk Streams! From here, you can tweak the configuration to suit your needs, [explore key concepts]({{< ref "" >}}), or explore more [advanced use cases]({{< ref "" >}}).
 
 ## How It Works
 
