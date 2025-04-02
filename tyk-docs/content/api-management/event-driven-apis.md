@@ -902,14 +902,3 @@ architectures.
 - **Event Brokers**: External systems such as Apache Kafka, MQTT brokers, or WebSocket servers that produce and consume
 events.
 - **Backend Services**: The underlying services and systems that expose APIs or consume events.
-
-## Key Concepts
-
-<!-- In addition to the native protocol support, Tyk Streams offers powerful protocol mediation capabilities. This allows you
-to expose async APIs using different protocols than the backend event broker, making it easier to support a diverse client
-requirements.
-
-For example, you can:
-- Expose a Kafka topic as a WebSocket API
-- Convert MQTT messages to HTTP webhooks
-- Bridge between different async protocols (e.g., Kafka to MQTT) -->
