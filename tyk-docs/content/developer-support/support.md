@@ -1,30 +1,35 @@
 ---
-title: "Support SLA Policies"
-date: 2023-08-14
-tags: ["SLA", "Policies"]
-description: "This page outlines our Tyk Support SLA Policies"
-menu:
-  main:
-    parent: "Frequently Asked Questions"
-weight: 0
+title: "Tyk Support Options"
+date: 2023-11-15
+tags: ["Support", "SLA", "Contract", "Order Form", "Entitlements"]
+description: "Learn about Tyk's flexible support offerings and how your specific entitlements are defined."
 aliases:
-  - /frequently-asked-questions/sla-policies
+ - /frequently-asked-questions/sla-policies
+ - /docs/nightly/developer-support/support/
 ---
 
-The following table outlines our current Tyk Support [SLA](https://support.zendesk.com/hc/en-us/articles/4408829459866-Defining-SLA-policies#:~:text=A%20service%20level%20agreement%2C%20or,resolve%20them%20within%202%20hours) Policies
+## Commitment to Your Success
 
-{{% scrollable-width %}}
-| **Package**                | **Enhanced**                     | **Premier**                     | **Signature**                   | **SLA1+**                     |
-|----------------------------|----------------------------------|----------------------------------|----------------------------------|--------------------------------|
-| **Support Hours**          | 9x5 1TZ                         | 24x7x365                        | 24x7x365                        | 24x7x365                      |
-| **Named Users**            | 3                               | 5                               | 10                              | -                             |
-| **Response Time (Severity 1)** | 4 hours                     | 2 hours                         | 1 hour                          | 15 minutes                    |
-| **Response Time (Severity 2)** | 12 hours                    | 8 hours                         | 4 hours                         | -                             |
-| **Response Time (Severity 3)** | 24 hours                    | 24 hours                        | 8 hours                         | -                             |
-| **Support Portal**         | ✅ Included                     | ✅ Included                     | ✅ Included                     | -                             |
-| **Screen Shares**          | ❌ Not included                | 6 per year                      | ✅ Included                     | -                             |
-| **Phone Support (Severity 1)** | ❌ Not included            | ❌ Not included                | ✅ Included                     | -                             |
-| **Support Service Review** | ❌ Not included                | ❌ Not included                | ✅ 1 per year                   | -                             |
-| **Slack Channel**          | ❌ Not available               | ❌ Not available               | ✅ £36k pa                      | ✅ cost by negotiation         |
-{{% /scrollable-width %}}
+At Tyk, we understand that reliable, accessible support is crucial for your operational success when running our API Management platform. We are committed to providing timely and effective assistance to our valued customers.
 
+## Flexible Support Tailored to Your Needs
+
+Tyk provides flexible support options designed to align with varying customer requirements. Our offerings range from standard business hours coverage to comprehensive 24x7x365 support, featuring rapid response Service Level Agreements (SLAs) and dedicated communication channels tailored to the criticality of your deployment.
+
+## Finding Your Specific Entitlements
+
+Because our support packages are designed for flexibility and are often customized, the specific details of your support plan are outlined in your commercial agreement with Tyk.
+
+**Specific entitlements, including:**
+
+- Guaranteed response times based on severity
+- Support coverage hours (e.g., 9x5, 24x7)
+- Available communication channels (e.g., Support Portal, dedicated Slack, phone)
+
+These entitlements will be detailed in your individual Tyk Order Form or Master Services Agreement (MSA).
+
+## Next Steps
+
+- **Prospective Customers / Upgrades:** If you are evaluating Tyk or wish to discuss the available support packages, please contact our [team](https://tyk.io/contact/). They can provide detailed information on the options best suited to your requirements.
+
+---
