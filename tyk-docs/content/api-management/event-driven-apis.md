@@ -215,7 +215,7 @@ The following sections will guide you through the prerequisites and steps to con
 
    - `DASHBOARD_LICENCE`: Add your license key. Contact [support](https://tyk.io/contact/) to obtain a license.
    - `GATEWAY_IMAGE_REPO`: Tyk Streams is available in the Enterprise Edition of the Gateway.
-   - `TYK_DB_STREAMING_ENABLED` and `TYK_GW_STREAMING_ENABLED`: These must be set to `true` to enable Tyk Streams in the Dashboard and Gateway, respectively. Refer to the [configuration options]({{< ref "" >}}) for more details.
+   - `TYK_DB_STREAMING_ENABLED` and `TYK_GW_STREAMING_ENABLED`: These must be set to `true` to enable Tyk Streams in the Dashboard and Gateway, respectively. Refer to the [configuration options]({{< ref "tyk-oss-gateway/configuration#streaming" >}}) for more details.
 
 3. **Start Tyk Streams**
 
@@ -462,7 +462,7 @@ The following sections will guide you through the prerequisites and steps to con
 
    Now, you will see the message appear in the terminal window where you are listening for messages.
 
-**Wrapping Up:** And that’s it—you’ve just created a Async API with Tyk Streams! From here, you can tweak the configuration to suit your needs, [explore key concepts]({{< ref "" >}}), or explore more [advanced use cases]({{< ref "" >}}).
+**Wrapping Up:** And that’s it—you’ve just created a Async API with Tyk Streams! From here, you can tweak the configuration to suit your needs, [explore glossary]({{< ref "#glossary" >}}), or explore more [advanced use cases]({{< ref "#use-cases" >}}).
 
 ## How It Works
 
@@ -559,7 +559,7 @@ TYK_GW_STREAMING_ENABLED=true
 
 {{< tabs_end >}}
 
-This enables Tyk Streams on Gateway. Refer to the [Tyk Gateway Configuration Reference]() for details.
+This enables Tyk Streams on Gateway. Refer to the [Tyk Gateway Configuration Reference]({{< ref "tyk-oss-gateway/configuration#streamingenabled" >}}) for details.
 
 #### Dashboard Configuration
 
@@ -589,7 +589,7 @@ TYK_DB_STREAMING_ENABLED=true
 
 {{< tabs_end >}}
 
-This enables Tyk Streams on Dashboard. Refer to the [Tyk Dashboard Configuration Reference]() for details.
+This enables Tyk Streams on Dashboard. Refer to the [Tyk Dashboard Configuration Reference]({{< ref "tyk-dashboard/configuration#streamingenabled" >}}) for details.
 
 ### API Definition
 
@@ -641,7 +641,7 @@ At the API definition level, Tyk Streams is configured through an OpenAPI extens
 ...
 ```
 
-To know more about the configuration option, refer to this [documentation]().
+To know more about the configuration option, refer to this [documentation]({{< ref "api-management/gateway-config-tyk-oas#xtykstreaming" >}}).
 
 {{< tab_end >}}
 
