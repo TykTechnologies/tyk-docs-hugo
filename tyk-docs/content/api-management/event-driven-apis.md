@@ -614,21 +614,28 @@ At the API definition level, Tyk Streams is configured through an OpenAPI extens
 ...
 "x-tyk-streaming": {
   "streams": {
-    "test": {
-      "input": {
-        "kafka": {
-          "addresses": ["TODO"],
-          "topics": ["foo", "bar"],
-          "consumer_group": "foogroup"
-        }
-      },
-      "output": {
-        "http_server": {
-          "consumer_group": "$tyk_context.request_ip",
-          "ws_path": "/subscribe"
-        }
+      "default_stream": {
+          "input": {
+              "http_server": {
+                  "address": "",
+                  "allowed_verbs": [
+                      "POST"
+                  ],
+                  "path": "/chat",
+                  "rate_limit": "",
+                  "timeout": "5s"
+              },
+              "label": ""
+          },
+          "output": {
+              "kafka": {
+                  "addresses": ["localhost:9092"],
+                  "max_in_flight": 10,
+                  "topic": "chat"
+              },
+              "label": ""
+          }
       }
-    }
   }
 }
 ...
@@ -640,31 +647,29 @@ To know more about the configuration option, refer to this [documentation]().
 
 {{< tab_start "Tyk Classic API" >}}
 
-TODO: Add sample JSON
-
-To know more about the configuration option, refer to this [documentation]().
+Tyk Streams is not supported for Tyk Classic API definition.
 
 {{< tab_end >}}
 
 {{< tab_start "Dashboard UI" >}}
 
-TODO: Update the Image
+1. Click on **Streams & Events** from the sidebar. This will open a form for creating the Streams API.  
+   {{< img src="/img/streams/sidebar-navigation.png" alt="Sidebar Navigation" width="670px" height="500px" >}}
+   {{< img src="/img/streams/streams-and-events-wizard.png" alt="Streams & Events Wizard" width="670px" height="500px" >}}
 
-{{< img src="/img/streams/configure-streams.png" alt="Screenshot of Tyk Dashboard configuring API Streams" width="1000px" >}}
+2. Enter a **unique API name**, select the **Streams** option, and click **Continue**.
+   {{< img src="/img/streams/streams-option.png" alt="Streams Option" width="670px" height="500px" >}}
 
-{{< tab_end >}}
+3. On the next screen, configure your Streams API:
+   {{< img src="/img/streams/selection.png" alt="Output Selection" width="670px" height="500px" >}}
 
-{{< tab_start "Tyk Operator" >}}
+4. On the **API Details page**, review the auto-generated YAML configuration and **save** the API.
+   {{< img src="/img/streams/api-details-page.png" alt="API Details Page" width="670px" height="500px" >}}
 
-TODO: Add sample JSON
-
-To know more about the configuration option, refer to this [documentation]().
 
 {{< tab_end >}}
 
 {{< tabs_end >}}
-
-## /////The Content below still is not ready //////
 
 ## Use Cases
 
