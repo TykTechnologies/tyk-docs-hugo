@@ -22,7 +22,7 @@ Our minor releases are supported until our next minor comes out.
 ## 1.2 Release Notes
 ### 1.2.0 Release Notes
 
-#### Release Date 01 April 2025
+#### Release Date 02 April 2025
 
 #### Release Highlights
 
