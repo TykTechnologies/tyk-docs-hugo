@@ -48,7 +48,7 @@ Our upgrade process adheres to the following standards:
 - **Breaking changes:** Breaking changes are rare and will be explicitly stated in the release notes.
 - **Configuration files:** Upgrades do not overwrite your configuration files. However, it’s good practice to routinely back up these files (using git or another tool) before upgrading, so any customizations are saved.
 - **Migration scripts:** Migration scripts for your APIs, policies, or other assets are generally not required unless specified in the release notes.
-- **Long Term Support:** Refer to our [versioning and long-term support policies]({{< ref "developer-support/release-notes/special-releases#long-term-support-releases" >}}) for details on major and minor releases, patches, and support dates.
+- **Long Term Support:** Refer to our [versioning and long-term support policies]({{< ref "developer-support/release-types/long-term-support" >}}) for details on major and minor releases, patches, and support dates.
 - **Preparations:** Review the [preparation guidelines]({{< ref "#upgrade-guidelines" >}}) before starting the upgrade.
 - **Release notes:** Always check the "Upgrade Instructions" section in the relevant release notes.
 - **Backups:** Follow our [comprehensive backup guide]({{< ref "developer-support/faq#tyk-configuration" >}}) before starting the upgrade.
@@ -70,8 +70,8 @@ Use the table below to find the appropriate upgrade guide for your platform:
 | **Tyk Cloud**        | [Cloud SaaS]({{< ref "#tyk-cloud" >}}) | Guide to Tyk Cloud SaaS |
 |                      | [Hybrid]({{< ref "#tyk-hybrid" >}}) | Guide for Hybrid environments with Gateway Data Plane(s) deployed locally or with a third-party cloud provider |
 |                      | [Go plugin]({{< ref "#go-plugin" >}}) | Guide for upgrading Go plugin on the Tyk Cloud |
-| **Tyk Self Managed** | [RHEL and CentOS]({{< ref "#linux---redhat-centos" >}}) | Guide for RPM-based Linux distributions |
-|                      | [Debian and Ubuntu]({{< ref "#linux---debian" >}}) | Guide for DEB-based Linux distributions |
+| **Tyk Self Managed** | [RHEL and CentOS]({{< ref "#upgrade-linux-redhat-centos" >}}) | Guide for RPM-based Linux distributions |
+|                      | [Debian and Ubuntu]({{< ref "#upgrade-linux-debian" >}}) | Guide for DEB-based Linux distributions |
 |                      | [Docker]({{< ref "#docker" >}}) | Guide for upgrading Docker images |
 |                      | [Helm]({{< ref "#helm" >}}) | Guide for upgrading Helm Charts |
 |                      | [Kubernetes]({{< ref "#kubernetes" >}}) | Guide for upgrading Kubernetes environment |
@@ -218,11 +218,9 @@ Follow our guide for deploying your [Go plugins on Tyk Cloud]({{< ref "#go-plugi
 Follow our guide for [upgrading Cloud Data Planes]({{< ref "tyk-cloud#managing-cloud-data-plane" >}}).
 
 **Upgrade Guide Video**
-Please refer to our [upgrade guide video](https://tyk-1.wistia.com/medias/t0oamm63ae) below for visual guidance:
+Please refer to our [upgrade guide video](https://youtu.be/2rzU8YdKKFM) below for visual guidance:
 
-<div>
-<iframe src="https://fast.wistia.net/embed/iframe/t0oamm63ae" title="Wistia video player" allowfullscreen frameborder="0" scrolling="no" class="responsive-frame" name="wistia_embed" ></iframe>
-</div>
+{{< youtube 2rzU8YdKKFM >}}
 
 #### Tyk Hybrid
 
@@ -295,16 +293,14 @@ Follow the instructions for component deployment type:
 
 - [Docker]({{< ref "#docker" >}})
 - [Helm]({{< ref "#helm" >}})
-- [Linux Debian]({{< ref "#linux---debian" >}})
-- [Linux RHEL/CENTOS]({{< ref "#linux---redhat-centos" >}})
+- [Linux Debian]({{< ref "#upgrade-linux-debian" >}})
+- [Linux RHEL/CENTOS]({{< ref "#upgrade-linux-redhat-centos" >}})
 
 **Upgrade Guide Video**
 
-Please refer to our [video](https://tyk-1.wistia.com/medias/4nf9fggatz) for further supporting with upgrading Tyk Self-Managed (RPM).
+Please refer to our [video](https://youtu.be/HfiLSRBdrfs) for further supporting with upgrading Tyk Self-Managed (RPM).
 
-<div>
-<iframe src="https://fast.wistia.net/embed/iframe/4nf9fggatz" title="Wistia video player" allowfullscreen frameborder="0" scrolling="no" class="responsive-frame" name="wistia_embed" ></iframe>
-</div>
+{{< youtube HfiLSRBdrfs >}}
 
 #### Go Plugin
 
@@ -554,18 +550,16 @@ $ curl  localhost:8080/hello | jq .
 2. Restart the deployment
 3. Check the log file
 
-#### Linux - Debian
+#### Linux - Debian {#upgrade-linux-debian}
 
 The following guide explains how to upgrade Tyk Self-Managed running on Debian
 
 **Upgrade Guide Video**
 
-Please refer to our [upgrade guide video](https://tyk-1.wistia.com/medias/dcyna9zwqf) below for visual guidance of
+Please refer to our [upgrade guide video](https://youtu.be/dx1tcsbo3F8) below for visual guidance of
 upgrading Tyk Self-Managed (DEB).
 
-<div>
-<iframe src="https://fast.wistia.net/embed/iframe/dcyna9zwqf" title="Wistia video player" allowfullscreen frameborder="0" scrolling="no" class="responsive-frame" name="wistia_embed" ></iframe>
-</div>
+{{< youtube dx1tcsbo3F8 >}}
 
 **Preparations**
 
@@ -799,19 +793,17 @@ sudo apt-get install tyk-dashboard=<previous version>
 These commands are provided as general guidelines and should be used with caution. It's advisable to consult with your system administrator or seek assistance from a qualified professional before executing any system-level commands
 {{< /note >}}
 
-#### Linux - RedHat (CentOS) 
+#### Linux - RedHat (CentOS) {#upgrade-linux-redhat-centos}
 
 The following guide explains how to upgrade Tyk Self-Managed running on RHL
 
 
 **Upgrade guide video**
 
-Please refer to our [upgrade guide video](https://tyk-1.wistia.com/medias/p2c7gjzsk6) below for visual guidance of
+Please refer to our [upgrade guide video](https://youtu.be/Dm_lboEOm6w) below for visual guidance of
 upgrading Tyk Self-Managed (RPM).
 
-<div>
-<iframe src="https://fast.wistia.net/embed/iframe/p2c7gjzsk6" title="Wistia video player" allowfullscreen frameborder="0" scrolling="no" class="responsive-frame" name="wistia_embed" ></iframe>
-</div>
+{{< youtube Dm_lboEOm6w >}}
 
 ---
 

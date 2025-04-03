@@ -81,7 +81,7 @@ menu:
             path: /tyk-self-managed
             category: Page
             show: True
-      - title: "Authentication and Authorization"
+      - title: "Client Authentication"
         category: Directory
         show: True
         menu:
@@ -100,7 +100,7 @@ menu:
       - title: "Upstream Authentication"
         path: /api-management/upstream-authentication
         category: Page
-        show: False
+        show: True
       - title: "Rate Limiting"
         path: /api-management/rate-limit
         category: Page
@@ -117,6 +117,10 @@ menu:
         category: Page
         show: True
         path: /api-management/security-best-practices
+      - title: "Security Features"
+        category: Page
+        show: True
+        path: /api-management/security-features
       - title: "Tyk API Definitions"
         category: Directory
         show: True
@@ -125,11 +129,11 @@ menu:
             path: /api-management/gateway-config-introduction
             category: Page
             show: True
-          - title: "Tyk OAS API"
+          - title: "Tyk OAS"
             path: /api-management/gateway-config-tyk-oas
             category: Page
             show: True
-          - title: "Tyk Classic API"
+          - title: "Tyk Classic"
             path: /api-management/gateway-config-tyk-classic
             category: Page
             show: True
@@ -153,6 +157,10 @@ menu:
             path: /api-management/gateway-config-managing-classic
             category: Page
             show: True
+          - title: "Migrate from Tyk Classic"
+            path: /api-management/migrate-from-tyk-classic
+            category: Page
+            show: True            
           - title: "Deploy APIs"
             category: Page
             show: True
@@ -165,14 +173,6 @@ menu:
             category: Page
             show: True
             path: /api-management/manage-apis/api-operations/api-observability
-          - title: "Tyk OAS APIs"
-            category: Directory
-            show: False
-            menu:
-              - title: "Extending an OAS API"
-                path: /api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware
-                category: Page
-                show: False
       - title: "Manage Tyk Dashboard"
         path: /api-management/dashboard-configuration
         category: Page
@@ -241,10 +241,18 @@ menu:
         path: /api-management/non-http-protocols
         category: Page
         show: True
-      - title: "Caching"
-        path: /api-management/gateway-optimizations
-        category: Page
+      - title: "Request Optimization"
+        category: Directory
         show: True
+        menu:
+        - title: "Response Caching"
+          path: /api-management/response-caching
+          category: Page
+          show: True
+        - title: "Batch Processing"
+          path: /api-management/batch-processing
+          category: Page
+          show: True
       - title: "API Observability"
         category: Directory
         show: True
@@ -277,7 +285,7 @@ menu:
           path: /transform-traffic/url-rewriting
           category: Page
           show: True
-      - title: "Tyk Gateway Events"
+      - title: "Gateway Events"
         path: /api-management/gateway-events
         category: Page
         show: True
@@ -615,14 +623,34 @@ menu:
     category: Label
     show: True
     menu:
-      - title: "Community Forum"
+      - title: "Community Support"
         path: /developer-support/community
         category: Page
         show: True
-      - title: "Support Channels"
+      - title: "Support SLA"
         path: /developer-support/support
         category: Page
         show: True
+      - title: "Tyk Release Types"
+        category: Directory
+        show: True
+        menu:
+          - title: "Long Term Support Release"
+            path: /developer-support/release-types/long-term-support
+            category: Page
+            show: True
+          - title: "Early access feature"
+            path: /developer-support/release-types/early-access-feature
+            category: Page
+            show: True
+          - title: "Lab Release"
+            path: /developer-support/release-types/lab-release
+            category: Page
+            show: True
+          - title: "FIPS Release"
+            path: /developer-support/release-types/fips-release
+            category: Page
+            show: True
       - title: "Environment Variables and Configs"
         category: Directory
         show: True
@@ -741,10 +769,6 @@ menu:
           show: True
         - title: "Archived Releases"
           path: /developer-support/release-notes/archived
-          category: Page
-          show: True
-        - title: "Special Releases"
-          path: /developer-support/release-notes/special-releases
           category: Page
           show: True
       - title: "Deprecation"
