@@ -52,4 +52,11 @@ document.addEventListener("DOMContentLoaded", function () {
         modal.style.display = "none";
         event.stopPropagation(); // Prevent modal click from triggering
     });
+
+    // Close modal when pressing the Escape key
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && modal.style.display === "flex") {
+            modal.style.display = "none";
+        }
+    });
 });
