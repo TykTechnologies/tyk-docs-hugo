@@ -187,9 +187,9 @@ Let's break down how Tyk Streams facilitates this, focusing on the distinct prod
     3.  When Tyk receives a message from the `discussion` topic, it *pushes* the message content (the joke) to the appropriate client(s) using a suitable real-time protocol like Server-Sent Events (SSE) or WebSockets. 
     **Note:** In case of multiple clients, events would round-robin amongst the consumers. So consumers would only receive every-other message.
     
-    4.  The browser, initially connected to the Tyk WebSocket/SSE endpoint, receives the pushed message and displays the joke.
+    4.  The browser, initially connected to the Tyk SSE endpoint, receives the pushed message and displays the joke.
 *   **Value Demonstrated:**
-    *   **Protocol Bridging:** Tyk translates Kafka messages into SSE/WebSocket messages suitable for web clients.
+    *   **Protocol Bridging:** Tyk translates Kafka messages into SSE messages suitable for web clients.
     *   **Decoupling:** The browser doesn't need a Kafka client; it uses standard web protocols (SSE/WS) provided by Tyk. The Joker Service only needs to publish to Kafka, unaware of the final client protocol.
 
 The following sections will guide you through the prerequisites and steps to configure Tyk Gateway to implement this use case.
@@ -226,7 +226,7 @@ The following sections will guide you through the prerequisites and steps to con
    ```
 
    - `DASHBOARD_LICENCE`: Add your license key. Contact [support](https://tyk.io/contact/) to obtain a license.
-   - `GATEWAY_IMAGE_REPO`: Tyk Streams is available in the Enterprise Edition of the Gateway.
+   - `GATEWAY_IMAGE_REPO`: Tyk Streams is available as part of the Enterprise Edition of the Gateway.
    - `TYK_DB_STREAMING_ENABLED` and `TYK_GW_STREAMING_ENABLED`: These must be set to `true` to enable Tyk Streams in the Dashboard and Gateway, respectively. Refer to the [configuration options]({{< ref "tyk-oss-gateway/configuration#streaming" >}}) for more details.
 
 3. **Start Tyk Streams**
@@ -318,7 +318,7 @@ The following sections will guide you through the prerequisites and steps to con
     curl -H "Authorization: <your-api-key>" -H "Content-Type: application/vnd.tyk.streams.oas" http://localhost:3000/api/apis/streams -d @producer.json
     ```
 
-    You should expect a response as shown below
+    You should expect a response similar to the one shown below, indicating success. Note that the Meta and ID values will be different each time:
     ```bash
     {"Status":"OK","Message":"API created","Meta":"67e54cadbfa2f900013b501c","ID":"3ddcc8e1b1534d1d4336dc6b64a0d22f"}
     ```
@@ -394,7 +394,7 @@ The following sections will guide you through the prerequisites and steps to con
     curl -H "Authorization: <your-api-key>" -H "Content-Type: application/vnd.tyk.streams.oas" http://localhost:3000/api/apis/streams -d @consumer.json
     ```
 
-    You should expect a response as shown below
+    You should expect a response similar to the one shown below, indicating success. Note that the Meta and ID values will be different each time:
     ```bash
     {"Status":"OK","Message":"API created","Meta":"67e54cadbfa2f900013b501c","ID":"3ddcc8e1b1534d1d4336dc6b64a0d22f"}
     ```
