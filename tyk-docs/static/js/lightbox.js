@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.style.justifyContent = "center";
     modal.style.alignItems = "center";
     modal.style.cursor = "pointer";
-    
+
     let img = document.createElement("img");
     img.style.maxWidth = "90%";
     img.style.maxHeight = "90%";
-    
+
     let closeButton = document.createElement("span");
     closeButton.innerHTML = "&times;";
     closeButton.style.position = "absolute";
@@ -24,24 +24,29 @@ document.addEventListener("DOMContentLoaded", function () {
     closeButton.style.fontSize = "30px";
     closeButton.style.color = "white";
     closeButton.style.cursor = "pointer";
-    
+
     modal.appendChild(img);
     modal.appendChild(closeButton);
     document.body.appendChild(modal);
-    
-    // Open modal when any image is clicked
-    document.addEventListener("click", function (event) {
-        if (event.target.tagName === "IMG") {
-            img.src = event.target.src;
-            modal.style.display = "flex";
+
+    // Open modal when an image inside #main-content is clicked
+    const mainContent = document.getElementById("main-content");
+    if (mainContent) {
+        mainContent.addEventListener("click", function (event) {
+            if (event.target.tagName === "IMG" && event.target !== img) {
+                img.src = event.target.src;
+                modal.style.display = "flex";
+            }
+        });
+    }
+
+    // Close modal when clicked (but not when clicking the image itself)
+    modal.addEventListener("click", function (event) {
+        if (event.target !== img) {
+            modal.style.display = "none";
         }
     });
-    
-    // Close modal when clicked
-    modal.addEventListener("click", function () {
-        modal.style.display = "none";
-    });
-    
+
     // Close modal when clicking the close button
     closeButton.addEventListener("click", function (event) {
         modal.style.display = "none";
