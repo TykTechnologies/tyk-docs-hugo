@@ -771,6 +771,10 @@ menu:
           path: /developer-support/release-notes/archived
           category: Page
           show: True
+      - title: "Deprecation"
+        path: /developer-support/deprecation
+        category: Page
+        show: True
       - title: "Contributing"
         path: /developer-support/contributing
         category: Page
