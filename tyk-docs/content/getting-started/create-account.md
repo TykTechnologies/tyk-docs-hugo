@@ -87,7 +87,7 @@ After a few minutes, the "Add API" button should appear. Select it and you will 
 
 
 ### Step 7: Start Creating APIs
-Finally, you will be taken to the Tyk Dashboard. Select "Design From Scratch" and continue on to [our tutorial](/getting-started/configure-first-api) to learn how to setup and secure your APIs.
+Finally, you will be taken to the Tyk Dashboard. Select "Design From Scratch" and continue on to [our tutorial]({{< ref "getting-started/configure-first-api" >}}) to learn how to setup and secure your APIs.
 
 {{< img src="/img/getting-started/create-account-design-from-scratch.png" alt="Create Account Design From Scratch" >}}
 
