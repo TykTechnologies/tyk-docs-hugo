@@ -539,7 +539,7 @@ In the `tyk.conf` file, Streams is configured in the streaming section:
 
 {{< tab_start "Config File" >}}
 
-```json
+```yaml
 ...
 "streaming": {
   "enabled": true,
