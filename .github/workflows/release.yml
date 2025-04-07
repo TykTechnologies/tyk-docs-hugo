@@ -15,7 +15,7 @@ jobs:
   update-config-and-create-pr:
     runs-on: ubuntu-latest
     env:
-      AUTOMERGE: ${{ github.event.inputs.automerge }}
+      AUTOMERGE: ${{ github.event.inputs.should_automerge }}
     steps:
       # Checkout master and update stable updater
       - name: Checkout master branch
