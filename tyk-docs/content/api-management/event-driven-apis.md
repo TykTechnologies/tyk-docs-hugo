@@ -185,7 +185,7 @@ Let's break down how Tyk Streams facilitates this, focusing on the distinct prod
     1.  The Joker Service *publishes* the joke response as a message onto a different backend topic (e.g., the `discussion` topic in Kafka).
     2.  **Tyk Streams Role (Consumer):** Tyk Gateway is configured via another (or the same) API definition to *subscribe* to the `discussion` topic.
     3.  When Tyk receives a message from the `discussion` topic, it *pushes* the message content (the joke) to the appropriate client(s) using a suitable real-time protocol like Server-Sent Events (SSE) or WebSockets. 
-    **Note:** In case of multiple clients, events would round-robin amongst the consumers. So consumers would only receive every-other message.
+    **Note:** In case of multiple clients, events would round-robin amongst the consumers.
     
     4.  The browser, initially connected to the Tyk SSE endpoint, receives the pushed message and displays the joke.
 *   **Value Demonstrated:**
