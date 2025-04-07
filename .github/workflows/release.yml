@@ -147,7 +147,7 @@ jobs:
           git push origin ${{ github.event.inputs.next_latest_branch }}
 
       - name: Auto Merge pull requests created
-        if: ${{ github.event.inputs.should_automerge}}
+        if: ${{ inputs.should_automerge}}
         env:
           GITHUB_TOKEN: ${{ secrets.TYK_SCRIPTS_TOKEN}}
         run: |
