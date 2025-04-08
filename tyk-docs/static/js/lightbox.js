@@ -47,9 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (image.closest('a')) {
             return true;
         }
-        
-        console.log("Hello Image", image);
-        
 
         // Check against the exclusion list
         for (const selector of excludedImages) {
