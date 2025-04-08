@@ -1,6 +1,6 @@
 ---
 date: 2023-08-04T18:24:52+01:00
-title: Cummunity Support
+title: Community Support
 tags: [
     "FAQ",
     "Troubleshooting",
