@@ -21,7 +21,7 @@ In this page, we’ll walk through the primary tools for automating API manageme
 Before diving into lifecycle automations with Tyk, ensure you have the following:
 
 - **A Tyk installation** (Self-Managed or Cloud)
-  - If you don't have Tyk installed, follow our [installation guide]({{<ref "tyk-self-managed#installation-options-for-tyk-self-managed">}})
+  - If you don't have Tyk installed, follow our [installation guide]({{< ref "tyk-self-managed#installation-options-for-tyk-self-managed" >}})
   - For Tyk Cloud, sign up [here](https://tyk.io/sign-up/)
   - Tyk Operator license key. Starting from Tyk Operator v1.0, a valid license key is required.
 
@@ -33,12 +33,11 @@ Before diving into lifecycle automations with Tyk, ensure you have the following
   - Verify your installation by running `helm version` in your terminal
 
 - **Tyk Dashboard v3+ access** (for Tyk Sync setup)
-  - Learn how to set up the Tyk Dashboard [here]({{<ref "tyk-dashboard">}})
+  - Learn how to set up the Tyk Dashboard [here]({{< ref "tyk-dashboard" >}})
 
-- **Basic knowledge of Kubernetes, YAML, and API concepts** (important for Tyk Operator and Tyk Sync)
+- **Basic knowledge of Kubernetes, YAML** (important for Tyk Operator and Tyk Sync)
   - For Kubernetes, visit the [official tutorials](https://kubernetes.io/docs/tutorials/)
   - For YAML, check out this [YAML tutorial](https://yaml.org/spec/1.2/spec.html)
-  - For API concepts, review our [API management basics]({{<ref "getting-started/key-concepts">}})
 
 If you're missing any of these prerequisites, please follow the provided links to set up the necessary components before proceeding with the lifecycle automation steps.
 

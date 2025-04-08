@@ -1,5 +1,5 @@
 ---
-title: "Developers / API Consumers"
+title: "Developers and API Consumers in the Developer Portal"
 date: 2022-02-10
 linkTitle: API Management
 tags: ["Developer Portal", "Tyk", "API Consumer", "Developer", "Organization", "Invite Codes", "Consumer Registration"]

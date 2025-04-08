@@ -1,6 +1,6 @@
 ---
 title: Tyk Pump Release Notes
-date: 2024-02-02T26:33:11Z
+date: 2024-02-02
 description: "Release notes documenting updates, enhancements and changes for Tyk Pump versions within the 1.11.X series."
 tags: ["Tyk Pump", "Release notes", "v1.11", "changelog"]
 aliases:
@@ -17,6 +17,90 @@ aliases:
 ## Support Lifetime
 
 Our minor releases are supported until our next minor comes out.
+
+---
+
+## 1.12 Release Notes
+
+### 1.12.0 Release Notes
+
+#### Release Date 28 March 2025
+
+#### Release Highlights
+
+This release enhances Pump's database compatibility and security by adding support for PostgreSQL 17, removing SQLite support, and addressing critical security vulnerabilities (CVEs). These improvements ensure better performance, long-term stability, and overall enhanced security.
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.12.0" >}}) below.
+
+#### Breaking Changes
+This release removes support for SQLite in Pump, aligning with the broader removal of SQLite from the Tyk Dashboard. This change improves compatibility with enterprise environments and addresses implementation issues related to SQLite.
+
+#### Dependencies
+
+##### 3rd Party Dependencies & Tools
+
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "tyk-self-managed#postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
+
+| Third Party Dependency                                    | Tested Versions   | Compatible Versions      | Comments                   |
+| --------------------------------------------------------- | ----------------- | ------------------------ | -------------------------- |
+| [MongoDB](https://www.mongodb.com/try/download/community) | 5.x, 6.x, and 7.0 | 4.4.x, 5.x, 6.x, and 7.0 | Used by Tyk Pump and Tyk Dashboard      |
+| [PostgreSQL](https://www.postgresql.org/download/)        | 13.x - 17.x    | 13.x - 17.x              | Used by Tyk Pump and Tyk Dashboard      |
+| [Redis](https://redis.io/download/)                       | 6.x - 7.0         | 6.x - 7.x                | Used by all Tyk components |
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+For users currently on v1.11.0, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version 1.11.0 and proceed directly to this latest patch release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
+
+#### Downloads
+- [Docker Image v1.12.0](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.12.0)
+  - ```bash
+    docker pull tykio/tyk-pump-docker-pub:v1.12.0
+    ```
+- Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.12.0)
+
+#### Changelog {#Changelog-v1.12.0}
+
+##### Changed
+
+<ul>
+
+<li>
+<details>
+<summary>Support for PostgreSQL 17</summary>
+
+Pump now supports PostgreSQL 17, ensuring compatibility with the latest database version.
+
+</details>
+</li>
+
+<li>
+<details>
+<summary>Removal of SQLite Support in Pump</summary>
+
+SQLite support has been fully removed from Pump.
+
+</details>
+</li>
+
+
+</ul>
+
+##### Security Fixes
+<ul>
+<li>
+<details>
+<summary>Fixed the following CVE</summary>
+
+- [GHSA-v778-237x](https://github.com/advisories/GHSA-v778-237x-gjrc)
+</details>
+</li>
+</ul>
 
 ---
 
@@ -246,7 +330,7 @@ For users currently on v1.9.X, we strongly recommend promptly upgrading to the l
 
 #### FIPS Compliance
 
-Tyk Pump now offers [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) compliance. For further details please consult [Tyk API Management FIPS support]({{< ref "developer-support/release-notes/special-releases#fips-releases" >}})
+Tyk Pump now offers [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) compliance. For further details please consult [Tyk API Management FIPS support]({{< ref "developer-support/release-types/fips-release" >}})
 
 #### Security fixes
 This release focuses on improving security and compliance, enhancing integration capabilities, and ensuring robust performance in secure environments.
@@ -267,7 +351,7 @@ This release focuses on improving security and compliance, enhancing integration
 <details>
 <summary>Added FIPS compliance</summary>
 
-Added [FIPS compliance]({{< ref "developer-support/release-notes/special-releases#fips-releases" >}}) for Tyk Pump.
+Added [FIPS compliance]({{< ref "developer-support/release-types/fips-release" >}}) for Tyk Pump.
 </details>
 </li>
 </ul>

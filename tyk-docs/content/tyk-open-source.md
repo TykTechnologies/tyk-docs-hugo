@@ -190,7 +190,7 @@ The main way to install the Open Source *Tyk Gateway* in a Kubernetes cluster is
 We are actively working to add flexibility and more user flows to our chart. Please reach out
 to our teams on support or the community forum if you have questions, requests or suggestions for improvements.
 
-Get started with our [Quick Start guide]({{<ref "#quick-start-with-helm-chart">}}) or go to [Tyk Open Source helm chart]({{<ref "product-stack/tyk-charts/tyk-oss-chart">}}) for detailed installation instructions and configuration options.
+Get started with our [Quick Start guide]({{< ref "#quick-start-with-helm-chart" >}}) or go to [Tyk Open Source helm chart]({{< ref "product-stack/tyk-charts/tyk-oss-chart" >}}) for detailed installation instructions and configuration options.
 
 #### Quick Start with Helm Chart
 
@@ -228,17 +228,17 @@ helm upgrade tyk-oss tyk-helm/tyk-oss -n $NAMESPACE --create-namespace \
 
 Now Tyk Gateway should be accessible through service `gateway-svc-tyk-oss-tyk-gateway` at port `8080`. 
 
-You are now ready to [create an API]({{<ref "api-management/gateway-config-managing-classic#create-an-api">}}).
+You are now ready to [create an API]({{< ref "api-management/gateway-config-managing-classic#create-an-api" >}}).
 
-For the complete installation guide and configuration options, please see [Tyk OSS Helm Chart]({{<ref "product-stack/tyk-charts/tyk-oss-chart">}}).
+For the complete installation guide and configuration options, please see [Tyk OSS Helm Chart]({{< ref "product-stack/tyk-charts/tyk-oss-chart" >}}).
 
 #### Configure Legacy Tyk Headless Helm Chart
 {{< warning success >}}
 **Warning**
 
-`tyk-headless` chart is deprecated. Please use our Tyk Chart for Tyk Open Source at [tyk-oss]({{<ref "#quick-start-with-helm-chart">}}) instead. 
+`tyk-headless` chart is deprecated. Please use our Tyk Chart for Tyk Open Source at [tyk-oss]({{< ref "#quick-start-with-helm-chart" >}}) instead. 
 
-We recommend all users migrate to the `tyk-oss` Chart. Please review the [Configuration]({{<ref "#quick-start-with-helm-chart">}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
+We recommend all users migrate to the `tyk-oss` Chart. Please review the [Configuration]({{< ref "#quick-start-with-helm-chart" >}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
 {{< /warning >}}
 
 This is the preferred (and easiest) way to install the Tyk OSS Gateway on Kubernetes.

@@ -52,7 +52,7 @@ menu:
         path: /getting-started
         category: Page
         show: True
-      - title: "Install and Configure"
+      - title: "Deploy Tyk"
         category: Directory
         show: True
         menu:
@@ -68,15 +68,26 @@ menu:
             path: /tyk-self-managed
             category: Page
             show: True
-      - title: "Authentication and Authorization"
-        path: /api-management/client-authentication
-        category: Page
+      - title: "Client Authentication"
+        category: Directory
         show: True
-      # This page is required for a client but cannot be shown on the navigation menu until 5.8 is released. We have removed it from Google Search and Algolia Result.
+        menu:
+        - title: "Overview"
+          path: /api-management/client-authentication
+          category: Page
+          show: True
+        - title: "JSON Web Tokens"
+          path: /basic-config-and-security/security/authentication-authorization/json-web-tokens
+          category: Page
+          show: True
+        - title: "HMAC Signatures"
+          path: /basic-config-and-security/security/authentication-authorization/hmac-signatures
+          category: Page
+          show: True
       - title: "Upstream Authentication"
         path: /api-management/upstream-authentication
         category: Page
-        show: False
+        show: True
       - title: "Rate Limiting"
         path: /api-management/rate-limit
         category: Page
@@ -93,20 +104,32 @@ menu:
         category: Page
         show: True
         path: /api-management/security-best-practices
-      - title: "Gateway Configuration"
+      - title: "Security Features"
+        category: Page
+        show: True
+        path: /api-management/security-features
+      - title: "Tyk API Definitions"
         category: Directory
         show: True
         menu:
-          - title: "Introduction"
+          - title: "Overview"
             path: /api-management/gateway-config-introduction
             category: Page
             show: True
-          - title: "Tyk OAS API"
+          - title: "Tyk OAS"
             path: /api-management/gateway-config-tyk-oas
             category: Page
             show: True
-          - title: "Tyk Classic API"
+          - title: "Tyk Classic"
             path: /api-management/gateway-config-tyk-classic
+            category: Page
+            show: True
+          - title: "What is URL path matching?"
+            path: /getting-started/key-concepts/url-matching
+            category: Page
+            show: True
+          - title: "What is Internal Looping?"
+            path: /advanced-configuration/transform-traffic/looping
             category: Page
             show: True
       - title: "Manage APIs"
@@ -121,6 +144,10 @@ menu:
             path: /api-management/gateway-config-managing-classic
             category: Page
             show: True
+          - title: "Migrate from Tyk Classic"
+            path: /api-management/migrate-from-tyk-classic
+            category: Page
+            show: True            
           - title: "Deploy APIs"
             category: Page
             show: True
@@ -133,15 +160,7 @@ menu:
             category: Page
             show: True
             path: /api-management/manage-apis/api-operations/api-observability
-          - title: "Tyk OAS APIs"
-            category: Directory
-            show: False
-            menu:
-              - title: "Extending an OAS API"
-                path: /api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware
-                category: Page
-                show: False
-      - title: "Dashboard Configuration"
+      - title: "Manage Tyk Dashboard"
         path: /api-management/dashboard-configuration
         category: Page
         show: True
@@ -181,38 +200,46 @@ menu:
             path: /api-management/plugins/advance-config
             category: Page
             show: True
-      - title: "User Management"
-        path: /api-management/user-management
-        category: Page
-        show: True
       - title: "Event Driven APIs"
         category: Directory
         show: True
         menu:
-        - title: "Event Driven APIs"
+        - title: "Tyk Streams"
           path: /api-management/event-driven-apis
           category: Page
           show: True
-        - title: "Tyk Streams Configuration"
+        - title: "Tyk Streams Reference"
           path: /api-management/stream-config
-          category: Page
-          show: True
-        - title: "Gateway Events"
-          path: /api-management/gateway-events
           category: Page
           show: True
       - title: "GraphQL"
         path: /api-management/graphql
         category: Page
         show: True
-      - title: "Universal Data Graph"
+      - title: "Universal Data Graph (UDG)"
         path: /api-management/data-graph
         category: Page
         show: True
-      - title: "Gateway Optimizations"
-        path: /api-management/gateway-optimizations
+      - title: "TCP Proxy"
+        path: /key-concepts/tcp-proxy
         category: Page
         show: True
+      - title: "Other Non HTTP Protocols"
+        path: /api-management/non-http-protocols
+        category: Page
+        show: True
+      - title: "Request Optimization"
+        category: Directory
+        show: True
+        menu:
+        - title: "Response Caching"
+          path: /api-management/response-caching
+          category: Page
+          show: True
+        - title: "Batch Processing"
+          path: /api-management/batch-processing
+          category: Page
+          show: True
       - title: "API Observability"
         category: Directory
         show: True
@@ -229,12 +256,24 @@ menu:
             path: /api-management/performance-monitoring
             category: Page
             show: True
-      - title: "Non HTTP Protocols"
-        path: /api-management/non-http-protocols
-        category: Page
-        show: True
       - title: "Traffic Transformation"
-        path: /api-management/traffic-transformation
+        category: Directory
+        show: True
+        menu:
+        - title: "Overview"
+          path: /api-management/traffic-transformation
+          category: Page
+          show: True
+        - title: "SOAP to REST"
+          path: /advanced-configuration/transform-traffic/soap-rest
+          category: Page
+          show: True
+        - title: "URL Rewrite"
+          path: /transform-traffic/url-rewriting
+          category: Page
+          show: True
+      - title: "Gateway Events"
+        path: /api-management/gateway-events
         category: Page
         show: True
       - title: "Manage Distributed Gateways"
@@ -253,12 +292,40 @@ menu:
             path: /api-management/automations/operator
             category: Page
             show: True
-          - title: "Synchronizing Tyk Configuraiton"
+          - title: "Synchronizing Tyk Configuration"
             path: /api-management/automations/sync
             category: Page
             show: True
       - title: "Manage Environments"
         path: /api-management/multiple-environments
+        category: Page
+        show: True
+      - title: "Tyk Helm Charts"
+        category: Directory
+        show: True
+        menu:
+          - title: "Overview"
+            path: /product-stack/tyk-charts/overview
+            category: Page
+            show: True
+          - title: "Tyk Stack Chart"
+            path: /product-stack/tyk-charts/tyk-stack-chart
+            category: Page
+            show: True
+          - title: "Tyk Control Plane Chart"
+            path: /product-stack/tyk-charts/tyk-control-plane-chart
+            category: Page
+            show: True
+          - title: "Tyk Data Plane Chart"
+            path: /product-stack/tyk-charts/tyk-data-plane-chart
+            category: Page
+            show: True
+          - title: "Tyk Open Source Chart"
+            path: /product-stack/tyk-charts/tyk-oss-chart
+            category: Page
+            show: True
+      - title: "User Management"
+        path: /api-management/user-management
         category: Page
         show: True
       - title: "Troubleshooting"
@@ -268,6 +335,64 @@ menu:
       - title: "AI Management"
         category: Page
         path: /api-management/ai-management/overview
+        show: True
+  - title: "Product Stack"
+    path: /tyk-stack
+    category: Label
+    show: False
+    menu:
+      - title: "Overview"
+        path: /tyk-stack
+        category: Page
+        show: False
+      - title: "Tyk Gateway (Open Source)"
+        category: Directory
+        show: True
+        menu:
+          - title: "Overview"
+            path: /tyk-oss-gateway
+            category: Page
+            show: False
+          - title: "Key concepts"
+            category: Directory
+            show: True
+            menu:
+
+          - title: "API access control"
+            category: Directory
+            show: False
+            menu: 
+              - title: "oauth"
+                category: page
+                show: False
+                path: /basic-config-and-security/security/authentication-authorization/ext-oauth-middleware
+  - title: "Developer Portal"
+    category: Label
+    show: True
+    menu:
+      - title: "Overview"
+        path: /portal/overview
+        category: Page
+        show: True
+      - title: "Install and Configure"
+        path: /portal/install
+        category: Page
+        show: True
+      - title: "API Consumer"
+        path: /portal/api-consumer
+        category: Page
+        show: True
+      - title: "API Provider"
+        path: /portal/api-provider
+        category: Page
+        show: True
+      - title: "Customization"
+        path: /portal/customization
+        category: Page
+        show: True
+      - title: "Advance Configuration"
+        path: /portal/settings
+        category: Page
         show: True
       - title: "Tyk Classic Developer Portal"
         category: Directory
@@ -461,151 +586,38 @@ menu:
                     path: /tyk-apis/tyk-dashboard-api/portal-policies
                     category: Page
                     show: True
-  - title: "Product Stack"
-    path: /tyk-stack
-    category: Label
-    show: True
-    menu:
-      - title: "Overview"
-        path: /tyk-stack
-        category: Page
-        show: True
-      - title: "Tyk Gateway (Open Source)"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            path: /tyk-oss-gateway
-            category: Page
-            show: True
-          - title: "Key concepts"
-            category: Directory
-            show: True
-            menu:
-              - title: "Overview"
-                path: /getting-started/key-concepts
-                category: Page
-                show: True
-              - title: "Request Middleware Chain"
-                path: /concepts/middleware-execution-order
-                category: Page
-                show: True
-              - title: "What is URL path matching?"
-                path: /getting-started/key-concepts/url-matching
-                category: Page
-                show: True
-              - title: "What is a Session Object?"
-                path: /getting-started/key-concepts/what-is-a-session-object
-                category: Page
-                show: True
-              - title: "What is Session Metadata?"
-                path: /getting-started/key-concepts/session-meta-data
-                category: Page
-                show: True
-              - title: "What is Internal Looping?"
-                path: /advanced-configuration/transform-traffic/looping
-                category: Page
-                show: True
-          - title: "API access control"
-            category: Directory
-            show: False
-            menu: 
-              - title: "oauth"
-                category: page
-                show: False
-                path: /basic-config-and-security/security/authentication-authorization/ext-oauth-middleware
-          - title: "API documentation"
-            category: Directory
-            show: True
-            menu:
-              - title: "Token Session Object"
-                path: /tyk-apis/tyk-gateway-api/token-session-object-details
-                category: Page
-                show: True
-          - title: "Troubleshooting"
-            category: Directory
-            show: True
-            menu:
-              - title: "How to change the logging output location"
-                path: /frequently-asked-questions/change-logging-output-location
-                category: Page
-                show: True
-              - title: "How to clear / invalidate API cache"
-                path: /frequently-asked-questions/clear-api-cache
-                category: Page
-                show: True
-              - title: "How to find the Gateway logging output"
-                path: /frequently-asked-questions/find-gateway-logging-output
-                category: Page
-                show: True
-              - title: "Error Response Status Codes"
-                path: /error-response-codes
-                category: Page
-                show: True
-      - title: "Tyk Helm Charts (Open Source)"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            path: /product-stack/tyk-charts/overview
-            category: Page
-            show: True
-          - title: "Tyk Stack Chart"
-            path: /product-stack/tyk-charts/tyk-stack-chart
-            category: Page
-            show: True
-          - title: "Tyk Control Plane Chart"
-            path: /product-stack/tyk-charts/tyk-control-plane-chart
-            category: Page
-            show: True
-          - title: "Tyk Data Plane Chart"
-            path: /product-stack/tyk-charts/tyk-data-plane-chart
-            category: Page
-            show: True
-          - title: "Tyk Open Source Chart"
-            path: /product-stack/tyk-charts/tyk-oss-chart
-            category: Page
-            show: True
-  - title: "Portal"
-    category: Label
-    show: True
-    menu:
-      - title: "Overview"
-        path: /portal/overview
-        category: Page
-        show: True
-      - title: "Install and Configure"
-        path: /portal/install
-        category: Page
-        show: True
-      - title: "API Consumer"
-        path: /portal/api-consumer
-        category: Page
-        show: True
-      - title: "API Provider"
-        path: /portal/api-provider
-        category: Page
-        show: True
-      - title: "Customization"
-        path: /portal/customization
-        category: Page
-        show: True
-      - title: "Advance Configuration"
-        path: /portal/settings
-        category: Page
-        show: True
   - title: "Developer Support"
     category: Label
     show: True
     menu:
-      - title: "Community Forum"
+      - title: "Community Support"
         path: /developer-support/community
         category: Page
         show: True
-      - title: "Support Channels"
+      - title: "Support SLA"
         path: /developer-support/support
         category: Page
         show: True
+      - title: "Tyk Release Types"
+        category: Directory
+        show: True
+        menu:
+          - title: "Long Term Support Release"
+            path: /developer-support/release-types/long-term-support
+            category: Page
+            show: True
+          - title: "Early access feature"
+            path: /developer-support/release-types/early-access-feature
+            category: Page
+            show: True
+          - title: "Lab Release"
+            path: /developer-support/release-types/lab-release
+            category: Page
+            show: True
+          - title: "FIPS Release"
+            path: /developer-support/release-types/fips-release
+            category: Page
+            show: True
       - title: "Environment Variables and Configs"
         category: Directory
         show: True
@@ -722,10 +734,10 @@ menu:
           path: /developer-support/release-notes/archived
           category: Page
           show: True
-        - title: "Special Releases"
-          path: /developer-support/release-notes/special-releases
-          category: Page
-          show: True
+      - title: "Deprecation"
+        path: /developer-support/deprecation
+        category: Page
+        show: True
       - title: "Contributing"
         path: /developer-support/contributing
         category: Page

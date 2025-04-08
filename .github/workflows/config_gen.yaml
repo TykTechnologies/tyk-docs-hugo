@@ -66,4 +66,4 @@ jobs:
           path: ./tyk-docs
           branch-suffix: random
           delete-branch: true
-          reviewers: dcs3spp
+          reviewers: sharadregoti
