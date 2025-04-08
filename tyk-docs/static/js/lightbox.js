@@ -1,4 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Array of images to exclude from the modal functionality
+    // You can add class names, IDs, or src patterns to match
+    const excludedImages = [
+        'img[src="/docs/img/copy.png"]', // Exclude specific image by src
+        // '.no-expand', // Images with class 'no-expand'
+        // '#logo-image', // Image with ID 'logo-image'
+        // 'img[data-no-expand="true"]', // Images with data attribute
+        // 'img[src*="icon"]', // Images with 'icon' in their src
+        // Add more selectors as needed
+    ];
+
     // Create the modal elements
     let modal = document.createElement("div");
     modal.style.position = "fixed";
@@ -29,22 +40,38 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.appendChild(closeButton);
     document.body.appendChild(modal);
 
+    // Function to check if an image should be excluded
+    function shouldExcludeImage(image) {
+        // Check if image is inside an anchor tag
+        if (image.closest('a')) {
+            return true;
+        }
+        
+        // Check against the exclusion list
+        for (const selector of excludedImages) {
+            if (image.matches(selector)) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
     // Set cursor style for all images in main-content
     const mainContent = document.getElementById("main-content");
     if (mainContent) {
-        // Add pointer cursor to all images in main-content that are not inside anchor tags
+        // Add pointer cursor to all images in main-content that are not excluded
         const contentImages = mainContent.querySelectorAll("img");
         contentImages.forEach(image => {
-            // Check if the image is not inside an anchor tag
-            if (!image.closest('a')) {
+            if (!shouldExcludeImage(image)) {
                 image.style.cursor = "pointer";
             }
         });
 
         mainContent.addEventListener("click", function (event) {
             if (event.target.tagName === "IMG" && event.target !== img) {
-                // Check if the clicked image is not inside an anchor tag
-                if (!event.target.closest('a')) {
+                // Check if the clicked image should not be excluded
+                if (!shouldExcludeImage(event.target)) {
                     img.src = event.target.src;
                     modal.style.display = "flex";
                 }
