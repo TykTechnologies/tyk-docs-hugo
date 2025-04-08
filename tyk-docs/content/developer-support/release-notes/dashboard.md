@@ -4436,7 +4436,7 @@ Read more about this changes in our blogpost: https://tyk.io/blog/introducing-lo
 
 We have a brand new look to our Tyk Dashboard. About half a year ago, we made some changes to our visual branding to better express our love for creativity and great UX. Those changes started with our website and now we are also incorporating these visual changes into the UI of our products. We do this to keep our brand consistent across the whole Tyk experience and to enhance your experience using our products. 
 
-See our updated [Tutorials]({{< ref "getting-started/installation" >}}) section.
+See our updated [Tutorials]({{< ref "tyk-self-managed" >}}) section.
 
 ##### Universal Data Graph and GraphQL
 

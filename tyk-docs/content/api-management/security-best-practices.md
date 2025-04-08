@@ -115,7 +115,7 @@ Tyk offers several mechanisms to help protect an API from Security Misconfigurat
 - [Error Templates]({{< ref "api-management/gateway-events#error-templates" >}}) can be used to return a response body based on status code and content type. This can help minimize the implementation details returned to the client.
 - [CORS functionality]({{< ref "api-management/gateway-config-tyk-classic#cross-origin-resource-sharing-cors" >}}) allows the Tyk Gateway to limit API access to particular browser-based consumers.
 - [Policy Path-Based Permissions]({{< ref "api-management/policies#secure-your-apis-by-method-and-path" >}}) and the [allowlist]({{< ref "api-management/traffic-transformation#api-definition" >}}) plugin can be used to prevent clients from accessing API endpoints using non-authorized HTTP methods. For example, blocking the use of the DELETE method on an endpoint which should only accept GET requests.
-- [Environment variables]({{< ref "tyk-environment-variables" >}}) can help standardize configuration across containerised deployments.
+- [Environment variables]({{< ref "tyk-oss-gateway/configuration" >}}) can help standardize configuration across containerised deployments.
 - For GraphQL APIs:
 - [Schema Introspection]({{< ref "api-management/graphql#introspection" >}}) ensures that the Tyk Dashboard automatically uses the schema of the upstream GraphQL API and can keep it synchronised if it changes.
 - [GraphQL Schema Validation]({{< ref "api-management/graphql#schema-validation" >}}) prevents invalid schemas from being saved. This catches errors such as duplicate type names and usage of unknown types.

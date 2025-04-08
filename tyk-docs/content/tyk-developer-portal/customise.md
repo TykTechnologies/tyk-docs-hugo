@@ -8,6 +8,7 @@ menu:
 weight: 12
 aliases:
   - /tyk-developer-portal/tyk-portal-classic/customise
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/customise-enterprise-portal
 robots: "noindex"
 algolia:
   importance: 0
