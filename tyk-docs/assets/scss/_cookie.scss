@@ -7,11 +7,11 @@
   bottom: -100%;
   left: 0;
   right: 0;
-  background: $brand-light-green;
-  color: #03031c;
-  padding: 0 32px;
+  background: $banner-dark-purple;
+  color: $white;
+  padding: 0;
   box-shadow: 0 -2px 16px rgba(47, 54, 64, 0.39);
-
+  z-index: 1000;
   transition: 400ms;
 }
 
@@ -20,38 +20,43 @@
 }
 
 .cookie-container a {
-  color: #444444;
+  color: $cookie-banner-green;
   text-decoration: underline;
 }
 
 .cookie-btn1 {
-  background: $white;
-  color: $brand-black;
-  padding: 9px 12px;
-  font-size: 13px;
-  margin-bottom: 16px;
+  background: $cookie-banner-green;
+  color: $banner-dark-purple;
+  padding: 8px 16px;
+  font-size: 11px;
   cursor: pointer;
   border-radius: 20px;
   text-transform: uppercase;
   font-weight: 700;
+  border: none;
+  letter-spacing: 0.5px;
+  min-width: 80px;
+  margin: 0;
 }
 
 .cookie-btn1:hover{
-  background-color: #cbcccb;
+  background-color: #00c5a9;
 }
 
 .cookie-btn2 {
-  background: $brand-light-green;
+  background: transparent;
   color: $white;
-  padding: 9px 12px;
-  font-size: 13px;
-  margin-bottom: 16px;
+  padding: 8px 16px;
+  font-size: 11px;
   cursor: pointer;
   border-radius: 20px;
-  border: solid 2px $white;
+  border: solid 1px $white;
   text-transform: uppercase;
   font-weight: 700;
+  letter-spacing: 0.5px;
+  min-width: 80px;
+  margin: 0;
 }
 .cookie-btn2:hover{
-  background-color: #00ae94;
+  background-color: rgba(255, 255, 255, 0.1);
 }
