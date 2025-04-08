@@ -32,16 +32,22 @@ document.addEventListener("DOMContentLoaded", function () {
     // Set cursor style for all images in main-content
     const mainContent = document.getElementById("main-content");
     if (mainContent) {
-        // Add pointer cursor to all images in main-content
+        // Add pointer cursor to all images in main-content that are not inside anchor tags
         const contentImages = mainContent.querySelectorAll("img");
         contentImages.forEach(image => {
-            image.style.cursor = "pointer";
+            // Check if the image is not inside an anchor tag
+            if (!image.closest('a')) {
+                image.style.cursor = "pointer";
+            }
         });
 
         mainContent.addEventListener("click", function (event) {
             if (event.target.tagName === "IMG" && event.target !== img) {
-                img.src = event.target.src;
-                modal.style.display = "flex";
+                // Check if the clicked image is not inside an anchor tag
+                if (!event.target.closest('a')) {
+                    img.src = event.target.src;
+                    modal.style.display = "flex";
+                }
             }
         });
     }
