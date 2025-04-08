@@ -70,6 +70,7 @@ aliases:
     - /tyk-stack/tyk-pump/tyk-pump-configuration/graceful-shutdowm
     - /frequently-asked-questions/add-custom-certificates-to-docker-images
     - /troubleshooting/tyk-on-premise/tyk-on-premise
+    - /troubleshooting/tyk-installation/parsing-json-error-from-dashboard-bootstrap
 ---
 
 ## Gateway

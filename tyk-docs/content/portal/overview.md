@@ -20,6 +20,7 @@ aliases:
   - /product-stack/tyk-enterprise-developer-portal/getting-started/create-api-product-and-plan
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/getting-started-with-enterprise-portal
+  - /tyk-developer-portal
 ---
 
 {{< note success >}}

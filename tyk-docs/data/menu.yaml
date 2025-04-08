@@ -56,6 +56,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Tyk Stack"
+            path: /tyk-stack
+            category: Page
+            show: True
           - title: "Tyk Cloud"
             path: /tyk-cloud
             category: Page
@@ -341,10 +345,6 @@ menu:
     category: Label
     show: False
     menu:
-      - title: "Overview"
-        path: /tyk-stack
-        category: Page
-        show: False
       - title: "Tyk Gateway (Open Source)"
         category: Directory
         show: True
@@ -353,11 +353,6 @@ menu:
             path: /tyk-oss-gateway
             category: Page
             show: False
-          - title: "Key concepts"
-            category: Directory
-            show: True
-            menu:
-
           - title: "API access control"
             category: Directory
             show: False
@@ -750,55 +745,3 @@ menu:
         path: /developer-support/faq
         category: Page
         show: True
-      - title: "Deprecated pages"
-        category: Directory
-        show: False
-        menu:
-          - title: "Dashboard"
-            path: /basic-config-and-security/security/dashboard
-            category: Page
-            show: True
-          - title: "Get started"
-            path: /tyk-dashboard/getting-started
-            category: Page
-            show: True
-          - title: "Tyk Developer Portal"
-            path: /tyk-developer-portal
-            category: Page
-            show: True
-          - title: "Key information doesn't appear in Dashboard for Tyk Multi-Cloud users"
-            path: /troubleshooting/tyk-multi-cloud/token-information-doesnt-appear-dashboard-tyk-multi-cloud-users/
-            category: Page
-            show: True
-          - title: "Cloud Classic Virtual Endpoints not working"
-            path: /frequently-asked-questions/cloud-classic-virtual-endpoints-not-working
-            category: Page
-            show: True
-          - title: "How to enable websockets in Cloud"
-            path: /frequently-asked-questions/enable-websockets-cloud
-            category: Page
-            show: True
-          - title: "“301 Moved permanently“ error in the Dashboard API"
-            path: /troubleshooting/tyk-cloud-classic/301-moved-permanently
-            category: Page
-            show: True
-          - title: "413 Request Entity Too Large"
-            path: /troubleshooting/tyk-cloud-classic/413-request-entity-large
-            category: Page
-            show: True
-          - title: "“504 GATEWAY_TIMEOUT“ error"
-            path: /troubleshooting/tyk-cloud-classic/504-gateway-timeout-error
-            category: Page
-            show: True
-          - title: "“Organisation quota has been exceeded“ error in the Dashboard API"
-            path: /troubleshooting/tyk-cloud-classic/organisation-quota-exceeded-error-dashboard-api
-            category: Page
-            show: True
-          - title: "404 when trying to access Tyk Gateway Repo"
-            path: /troubleshooting/tyk-installation/404-trying-access-tyk-gateway-repo
-            category: Page
-            show: True
-          - title: "Unable to parse JSON Error from Dashboard bootstrap.sh Script"
-            path: /troubleshooting/tyk-installation/parsing-json-error-from-dashboard-bootstrap
-            category: Page
-            show: True
