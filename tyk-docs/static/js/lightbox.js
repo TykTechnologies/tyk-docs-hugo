@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Array of images to exclude from the modal functionality
     // You can add class names, IDs, or src patterns to match
     const excludedImages = [
-        'img[src="/docs/img/copy.png"]', // Exclude specific image by src
+        '.copy-icon', // Exclude all images with class 'copy-icon'
+        // 'img[src="/docs/img/copy.png"]', // Exclude specific image by src
         // '.no-expand', // Images with class 'no-expand'
         // '#logo-image', // Image with ID 'logo-image'
         // 'img[data-no-expand="true"]', // Images with data attribute
@@ -47,6 +48,9 @@ document.addEventListener("DOMContentLoaded", function () {
             return true;
         }
         
+        console.log("Hello Image", image);
+        
+
         // Check against the exclusion list
         for (const selector of excludedImages) {
             if (image.matches(selector)) {
