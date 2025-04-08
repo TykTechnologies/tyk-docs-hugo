@@ -15,7 +15,7 @@ jobs:
   update-config-and-create-pr:
     runs-on: ubuntu-latest
     env:
-      AUTOMERGE: ${{ github.event.inputs.automerge }}
+      AUTOMERGE: ${{ github.event.inputs.should_automerge }}
     steps:
       # Checkout master and update stable updater
       - name: Checkout master branch
@@ -147,7 +147,7 @@ jobs:
           git push origin ${{ github.event.inputs.next_latest_branch }}
 
       - name: Auto Merge pull requests created
-        if: ${{ github.event.inputs.should_automerge}}
+        if: ${{ inputs.should_automerge}}
         env:
           GITHUB_TOKEN: ${{ secrets.TYK_SCRIPTS_TOKEN}}
         run: |
