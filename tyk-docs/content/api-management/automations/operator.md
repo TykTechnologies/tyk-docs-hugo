@@ -274,6 +274,8 @@ maintaining a single source of truth for your API configurations.
 Tyk Operator uses cert-manager to provision certificates for the webhook server. If you don't have cert-manager
 installed, you can follow this command to install it:
 
+Alternatively, you have the option to manually handle TLS certificates by disabling the `cert-manager` requirement. For more details, please refer to this [configuration]({{< ref "#webhook-configuration" >}}).
+
 ```console
 $ kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.8.0/cert-manager.yaml
 ```
@@ -429,6 +431,10 @@ in `tyk-operator-system` namespace.
 
 **Helm configurations**
 
+{{< note warning >}} **Note**
+Starting from Tyk Operator v1.2.0, `webhookPort` is deprecated in favor of `webhooks.port`.
+{{< /note >}}
+
 | Key                                         | Type   | Default                                |
 | ------------------------------------------- | ------ | -------------------------------------- |
 | envFrom[0].secretRef.name                   | string | `"tyk-operator-conf"`                  |
@@ -467,10 +473,6 @@ in `tyk-operator-system` namespace.
 | webhooks.tls.useCertManager             | bool   | `true`                                 |
 | webhooks.tls.secretName                 | string | `webhook-server-cert`                  |
 | webhooks.tls.certificatesMountPath      | string | `/tmp/k8s-webhook-server/serving-certs`|
-
-{{< note success >}} **Note**
-Starting Operator v1.2.0, `webhookPort` is deprecated in favor of webhooks.port.
- {{< /note >}}
 
 ### Upgrading Tyk Operator
 
@@ -522,6 +524,28 @@ To uninstall Tyk Operator, you need to run the following command:
 ```console
 $ helm delete tyk-operator -n tyk-operator-system
 ```
+
+### Webhook Configuration
+
+Starting from Operator v1.2.0 release, [Kubernetes Webhooks](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers) can now be configured using the Helm chart by specifying the necessary settings in the values.yaml file of the operator.
+Since webhooks are enabled by default, there will be no impact to existing users.
+
+```
+webhooks:
+  enabled: true
+  port: 9443
+  annotations: {}
+  tls:
+    useCertManager: true
+    secretName: webhook-server-cert
+    certificatesMountPath: "/tmp/k8s-webhook-server/serving-certs"
+```
+- `enabled`: Enables or disables webhooks.
+- `port`: Specifies the port for webhook communication.
+- `annotations`: Allows adding custom annotations.
+- `tls.useCertManager`: If true, Cert-Manager will handle TLS certificates.
+- `tls.secretName`: The name of the Kubernetes Secret storing the TLS certificate.
+- `tls.certificatesMountPath`: Path where the webhook server mounts its certificates.
 
 ## Set Up Tyk OAS API
 Setting up OpenAPI Specification (OAS) APIs with Tyk involves preparing an OAS-compliant API definition and configuring it within your Kubernetes cluster using Tyk Operator. This process allows you to streamline API management by storing the OAS definition in a Kubernetes ConfigMap and linking it to Tyk Gateway through a TykOasApiDefinition resource. 
@@ -5076,27 +5100,3 @@ Here are the supported features:
 | Partitions                     | ✅        | v0.1           | [Partitioned policies]({{< ref "#security-policy-example" >}})       |
 | Per API limit                  | ✅        | v1.0           | [Per API Limit]({{< ref "#security-policy-example" >}})        |
 | Per-Endpoint limit             | ✅        | v1.0           | [Per Endpoint Limit]({{< ref "#security-policy-example" >}})        |
-
-##### Webhooks
-Starting from Operator v1.2.0 release, Webhooks can now be configured using the Helm chart by specifying the necessary settings in the values.yaml file of the operator.
-Since webhooks are enabled by default, there will be no impact to existing users.
-
-In addition to this, using `.Values.webhookPort` to set the operator service port has been deprecated and now replaced with `.Values.webhooks.port`. 
-We recommend that users start using the new configurations.
-
-```
-webhooks:
-  enabled: true
-  port: 9443
-  annotations: {}
-  tls:
-    useCertManager: true
-    secretName: webhook-server-cert
-    certificatesMountPath: "/tmp/k8s-webhook-server/serving-certs"
-```
-- `enabled`: Enables or disables webhooks.
-- `port`: Specifies the port for webhook communication.
-- `annotations`: Allows adding custom annotations.
-- `tls.useCertManager`: If true, Cert-Manager will handle TLS certificates.
-- `tls.secretName`: The name of the Kubernetes Secret storing the TLS certificate.
-- `tls.certificatesMountPath`: Path where the webhook server mounts its certificates.
