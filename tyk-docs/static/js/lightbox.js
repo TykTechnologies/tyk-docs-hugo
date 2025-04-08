@@ -29,9 +29,15 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.appendChild(closeButton);
     document.body.appendChild(modal);
 
-    // Open modal when an image inside #main-content is clicked
+    // Set cursor style for all images in main-content
     const mainContent = document.getElementById("main-content");
     if (mainContent) {
+        // Add pointer cursor to all images in main-content
+        const contentImages = mainContent.querySelectorAll("img");
+        contentImages.forEach(image => {
+            image.style.cursor = "pointer";
+        });
+
         mainContent.addEventListener("click", function (event) {
             if (event.target.tagName === "IMG" && event.target !== img) {
                 img.src = event.target.src;
