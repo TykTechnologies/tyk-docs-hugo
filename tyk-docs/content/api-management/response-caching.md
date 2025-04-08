@@ -203,11 +203,10 @@ For ultimate control over what Tyk caches, you can optionally configure the endp
 
 You define a regex pattern and, if Tyk finds a match for this anywhere in the request body, the response will be cached.  
 
-<hr>
 
-If you're using Tyk OAS APIs, then you can find details and examples of how to configure the Endpoint Caching middleware [here]({{< ref "api-management/response-caching#using-tyk-oas-api" >}}).
+If you're using Tyk OAS APIs, please see [details and examples of how to configurethe Endpoint Caching middleware]({{< ref "api-management/response-caching#using-tyk-oas-api" >}}).
 
-If you're using Tyk Classic APIs, then you can find details and examples of how to configure the Endpoint Caching middleware [here]({{< ref "api-management/response-caching#using-classic-api" >}}).
+For Tyk Classic APIs, please see [details and examples of how to configure the Endpoint Caching middleware]({{< ref "api-management/response-caching#using-classic-api" >}}).
 
 <!-- proposed "summary box" to be shown graphically on each middleware page
  ## Internal Endpoint middleware summary

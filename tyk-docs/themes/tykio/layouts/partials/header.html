@@ -1,30 +1,48 @@
 <header class="home_header">
-  <nav style="padding: 16px 5px;">
-    <div class="header-refresh">
-      <a href="{{ "" | relURL }}">
-        <img
-          src="{{ "img/Tyk-Docs-logo-Dark.svg" | relURL }}"
-          width="147"
-          height="32"
-          alt="Tyk API Gateway and API Management" />
-      </a>
-      <div class="search_widget">
-        <div style="padding: 8px 8px 7px 10px" class="search-input" id="search_container"></div>
+  <!-- Top navigation bar -->
+  <div class="top-bar">
+    <div class="top-bar-container">
+      <div class="top-bar-links">
+        <a href="https://tyk.io" class="top-bar-link" target="_blank" rel="noopener">Tyk Website</a>
+        <a href="https://tyk.io/support" class="top-bar-link" target="_blank" rel="noopener">24/7 Support</a>
+        <a href="https://tyk.io/community" class="top-bar-link" target="_blank" rel="noopener">Community</a>
       </div>
-      <div class="m-hide">
+    </div>
+  </div>
+  
+  <!-- Main header area -->
+  <nav class="tyk-header">
+    <div class="header-container">
+      <!-- Logo -->
+      <div class="header-left">
+        <a href="{{ "" | relURL }}" class="logo-link">
+          <img
+            src="{{ "img/Tyk-Docs-logo-Light.svg" | relURL }}"
+            width="200"
+            height="43"
+            alt="Tyk API Gateway and API Management" />
+        </a>
+      </div>
+      
+  <!-- Search widget -->
+  <div class="search_widget">
+    <div class="search-input" id="search_container">
+      <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M17.5 17.5L13.875 13.875M15.8333 9.16667C15.8333 12.8486 12.8486 15.8333 9.16667 15.8333C5.48477 15.8333 2.5 12.8486 2.5 9.16667C2.5 5.48477 5.48477 2.5 9.16667 2.5C12.8486 2.5 15.8333 5.48477 15.8333 9.16667Z" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="search-placeholder">Search the docs or ask a question</span>
+    </div>
+  </div>
+      
+      <!-- Action buttons -->
+      <div class="header-right m-hide">
         <div class="header__nav_container">
-          {{- partial "menu_top_external.html" . -}}
-          <a href="https://dashboard.cloud-ara.tyk.io/login" class="fs-xs text-nowrap mn-btn">Cloud Login</a>
-          <div class="dropdown">
-            <span class="dropbtn">Help &#9662;</span>
-            <div class="dropdown-content">
-              <a href="https://community.tyk.io/">Community</a>
-              <a href="https://support.tyk.io/">24/7 Support</a>
-            </div>
-          </div>
+          <a href="https://dashboard.cloud-ara.tyk.io/login" class="header-button login-button" target="_blank" rel="noopener">Cloud Login</a>
+          <a href="https://tyk.io/sign-up/" class="header-button install-button" target="_blank" rel="noopener">Install</a>
         </div>
       </div>
 
+      <!-- Mobile menu button -->
       <button class="m-show burger" data-toggle="show-submenu"></button>
     </div>
   </nav>

@@ -1,0 +1,218 @@
+/* ==========================================================================
+Typography Utilities - Additional utility classes for typography
+========================================================================== */
+
+// Text alignment
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+// Text transforms
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+// Font weights with specific utility classes
+.font-bold {
+  font-weight: 700; // bold
+}
+
+.font-semibold {
+  font-weight: 600; // semibold
+}
+
+.font-medium {
+  font-weight: 500; // medium
+}
+
+.font-regular {
+  font-weight: 400; // normal
+}
+
+.font-light {
+  font-weight: 300; // light
+}
+
+// Line heights
+.leading-tight {
+  line-height: 1.2;
+}
+
+.leading-normal {
+  line-height: 1.5;
+}
+
+.leading-loose {
+  line-height: 1.8;
+}
+
+// Text colors
+.text-dark {
+  color: #333;
+}
+
+.text-medium {
+  color: #666;
+}
+
+.text-light {
+  color: #999;
+}
+
+.text-primary {
+  color: #8438FA; // Primary purple
+}
+
+.text-secondary {
+  color: #00E4C7; // Green color from the brand
+}
+
+// Text decoration
+.text-no-underline {
+  text-decoration: none;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-line-through {
+  text-decoration: line-through;
+}
+
+// Text overflow
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-break {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+// Font styles
+.text-italic {
+  font-style: italic;
+}
+
+.text-normal {
+  font-style: normal;
+}
+
+// Typography spacing
+.text-spacing-tight {
+  letter-spacing: -0.05em;
+}
+
+.text-spacing-normal {
+  letter-spacing: normal;
+}
+
+.text-spacing-wide {
+  letter-spacing: 0.05em;
+}
+
+// Preserve whitespace
+.text-pre {
+  white-space: pre;
+}
+
+.text-pre-wrap {
+  white-space: pre-wrap;
+}
+
+.text-pre-line {
+  white-space: pre-line;
+}
+
+// Word break
+.text-break-normal {
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.text-break-words {
+  overflow-wrap: break-word;
+}
+
+.text-break-all {
+  word-break: break-all;
+}
+
+// Special utility for code and technical content
+.code-font {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+// Document-specific utility classes based on the design system shown in screenshot
+.heading-1 {
+  font-size: 32px;
+  line-height: 36px;
+  font-weight: 700;
+}
+
+.heading-2 {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 700;
+}
+
+.heading-3 {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+}
+
+.heading-4 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+}
+
+// Responsive typography utilities
+@media only screen and (max-width: 768px) {
+  .md\:text-left {
+    text-align: left;
+  }
+  
+  .md\:text-center {
+    text-align: center;
+  }
+  
+  .md\:text-right {
+    text-align: right;
+  }
+  
+  .md\:heading-1 {
+    font-size: 28px;
+    line-height: 32px;
+  }
+  
+  .md\:heading-2 {
+    font-size: 22px;
+    line-height: 26px;
+  }
+  
+  .md\:heading-3 {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

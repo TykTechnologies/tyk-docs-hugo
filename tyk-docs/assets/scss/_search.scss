@@ -1,4 +1,5 @@
 /* Search Container */
+/* Legacy search styles - maintained for compatibility with other pages */
 .documentation-search-container {
     position: relative;
     line-height: normal;
@@ -89,17 +90,6 @@
 .ais-hits--item .media-heading.em em {
     color: $brandgreen-4;
 }
-
-
-
-
-
-
-
-
-
-
-
 /* NEW SEARCH CONTAINER */
 
 #searchbox {
@@ -125,17 +115,58 @@
     }
 }
 
+/* Main search styles from screenshot */
+#search_container {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    width: 100%;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    box-sizing: border-box;
+    z-index: 5; /* Ensure search is clickable */
+}
+
+#search_container:hover,
+#search_container:focus-within {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.search-icon {
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.search-placeholder {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Algolia autocomplete styling */
 span.algolia-autocomplete {
     position: relative;
     width: 100%;
 }
 
 .algolia-autocomplete input {
-    --webkit-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
     max-width: 100%;
     text-align: left;
     font-family: 'Inter', sans-serif;
     font-weight: normal;
+    background: transparent;
+    border: none;
+    color: white;
+    width: 100%;
+    outline: none;
 }
 
 .algolia-autocomplete .ds-dropdown-menu {
@@ -145,20 +176,21 @@ span.algolia-autocomplete {
 }
 
 .algolia-autocomplete input::-webkit-input-placeholder {
-    color: $brandpurple-7;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .algolia-autocomplete input:-ms-input-placeholder {
-    color: $brandpurple-7;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .algolia-autocomplete input::placeholder {
-    color: $brandpurple-7;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .js-active .algolia-autocomplete input,
 .algolia-autocomplete input:focus {
-    background-color: #fff !important;
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
 }
 
 .ais-SearchBox-submit,
@@ -200,18 +232,37 @@ span.algolia-autocomplete {
 
 .ais-SearchBox-submit svg path,
 .ais-SearchBox-reset svg path {
-    fill: #505071;
+    fill: white;
     stroke-width: 2;
 }
 
+/* DocSearch styling */
+.DocSearch-Button {
+    border-radius: 20px !important;
+    flex: 1 !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    height: 40px !important;
+    margin: 0 !important;
+    padding: 0 16px !important;
+    color: #ffffff !important;
+}
+
+.DocSearch-Button:hover,
+.DocSearch-Button:active,
+.DocSearch-Button:focus {
+    background: rgba(255, 255, 255, 0.15) !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+    outline: none;
+}
+
+/* Search Results */
 .documentation-search-results {
     padding: 20px;
     background: $white;
-    border: 2px solid $brandpurple-4;
-    border-bottom: 2px solid $brandpurple-9;
-    border-radius: 30px;
+    border-radius: 12px;
     overflow: auto;
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
     color: $black;
     max-height: 400px;
     display: none;
@@ -246,10 +297,11 @@ span.algolia-autocomplete {
     background-color: unset;
 }
 
-// aside {
-//     display: none;
-// }
+.algolia-autocomplete .ds-dropdown-menu [class^='ds-dataset-'] {
+    max-height: 400px!important;
+}
 
+/* General styles */
 h2#feature-setups {
     color: $brand-black;
 }
@@ -259,25 +311,19 @@ pre {
     margin-bottom: 1rem !important;
 }
 
-
-.algolia-autocomplete .ds-dropdown-menu [class^='ds-dataset-'] {
-    max-height: 400px!important;
+/* Media queries for responsive search */
+@media only screen and (max-width: 1024px) {
+    .search_widget {
+        width: 320px;
+    }
+    
+    .search-placeholder {
+        font-size: 14px;
+    }
 }
 
-.DocSearch-Button {
-    border-radius: 0!important;
-    flex: 1!important;
-    background:white!important;
-    height: 30px!important;
-    margin: 0 0 0 0!important;
-    padding: 0 0!important;
-}
-
-.DocSearch-Button:hover,
-.DocSearch-Button:active,
-.DocSearch-Button:focus {
-    background: var(--docsearch-searchbox-focus-background);
-    box-shadow: none!important;
-    color: var(--docsearch-text-color);
-    outline: none;
+@media only screen and (max-width: 768px) {
+    .search_widget {
+        width: 70%;
+    }
 }

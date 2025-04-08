@@ -1,4 +1,4 @@
-body {
+  body {
   scrollbar-width: none;
 
   &::-webkit-scrollbar {
@@ -9,6 +9,8 @@ body {
 .section-page {
   height: calc(100vh - #{$header-height} - #{$header-tabs-height});
   overflow: hidden;
+  margin-top: 0; /* Remove top margin completely */
+  padding-top: 140px; /* Adjusted to original value */
 
   &.hasSidebar {
     background: $white;
@@ -29,6 +31,7 @@ body {
   @include breakpoint(large, down) {
     height: 100vh;
     padding-bottom: 0;
+    padding-top: 95px; /* Return to original value for mobile */
   }
 }
 
@@ -38,6 +41,7 @@ body {
   padding-top: 0px;
   overflow-y: scroll;
   overflow-x: hidden;
+  /* Removed z-index to prevent overlap issues with side menu */
 
   .hasSidebar & {
     width: 90%;
@@ -83,6 +87,7 @@ body {
       padding-right: 20px;
       padding-top: 10px;
       padding-left: 20px;
+      /* Removed z-index to prevent overlap issues */
     }
   }
 
@@ -108,7 +113,7 @@ body {
   }
 
   .section-page {
-    padding-top: 0;
+    margin-top: 0; /* Remove margin for mobile view */
     background: transparent !important;
   }
 }

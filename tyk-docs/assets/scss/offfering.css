@@ -1,0 +1,23 @@
+.title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edition-badge-container {
+    /* Styles for the container, if needed */
+}
+
+.edition-badge {
+    font-size: 0.7em;
+    /* Adjust size as needed */
+    font-weight: bold;
+    color: #fff;
+    /* White text */
+    background-color: #007bff;
+    /* Blue background */
+    border-radius: 3px;
+    padding: 2px 5px;
+    margin-left: 5px;
+    /* Add some space between title and badge */
+}

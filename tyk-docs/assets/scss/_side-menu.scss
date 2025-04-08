@@ -6,6 +6,11 @@ Tree View
   flex-direction: column;
   justify-content: space-between;
   width: 16%;
+  margin-top: 0; /* Remove top margin completely */
+  padding-top: 0; /* Remove top padding */
+  z-index: 15; /* Restore original z-index for clickability */
+  padding-left: 0;
+  margin-left: 0; /* Remove all left margins */
 
   @include breakpoint(large) {
     .section-page:not(.hasSidebar) & {
@@ -407,7 +412,7 @@ Tree View
     --tabs-menu-outside-offset: calc(var(--page-submenu-inline-padding) - 20px);
 
     position: fixed;
-    top: 12%;
+    top: 95px; /* Adjusted to match desktop position */
     /* bottom: 0; */
     right: 0;
     overflow: auto;
@@ -416,8 +421,8 @@ Tree View
     width: 100vw;
     max-width: 100%;
     /* padding-block: 60px 0; */
-    z-index: 10;
-    margin: 0;
+    z-index: 15; /* Ensure proper stacking with header (20) and logo (30) */
+    margin: 0; /* Reset all margins for mobile menu */
     max-height: 100vh;
 
     .version-selector {

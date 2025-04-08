@@ -1,0 +1,235 @@
+/* ==========================================================================
+Typography
+========================================================================== */
+
+// Import fonts if not already done elsewhere
+// @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+// Base font settings
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Heading Styles based on the design system
+h1, .h1-heading-xlarge {
+  font-size: 32px;
+  line-height: 36px;
+  font-weight: 700; // bold
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  position: relative;
+  /* Removed z-index that caused side menu click issues */
+}
+
+h2, .h2-heading-large {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 700; // bold
+  margin-top: 2em; // Space before the border
+  margin-bottom: 0.5em;
+  border-top: 2px solid #e0e0e0; // Use a border instead of a pseudo-element
+  padding-top: 4em; // Doubled space between border and heading text
+}
+
+/* First h2 in the content area should not have a border */
+.page-content h2:first-of-type {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 1em;
+}
+
+/* Ensure consistent spacing between elements */
+p + h2, ul + h2, ol + h2, div + h2, section + h2, table + h2 {
+  margin-top: 2em;
+  padding-top: 4em;
+}
+
+h3, .h3-heading-large {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700; // bold
+  margin-top: 1.25em;
+  margin-bottom: 0.5em;
+  position: relative;
+  /* Removed z-index that caused side menu click issues */
+}
+
+h4, .h4-heading-medium {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700; // bold
+  margin-top: 1.25em;
+  margin-bottom: 0.5em;
+}
+
+h5, .h5-heading-small {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700; // bold
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+h6, .h6-heading-xsmall {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 700; // bold
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+// Body text styles
+.body-text-large {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.body-text-default {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.body-text-small {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.body-text-xsmall {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+// Text styling
+.text-bold {
+  font-weight: 700;
+}
+
+.text-medium {
+  font-weight: 500;
+}
+
+.text-regular {
+  font-weight: 400;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+// Specialized elements
+.last-updated {
+  font-size: 12px;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 1.5em;
+}
+
+pre, code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  line-height: 1.4;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+pre {
+  padding: 1em;
+  overflow-x: auto;
+}
+
+code {
+  padding: 0.2em 0.4em;
+}
+
+// Links
+a {
+  color: #8438FA; // Using the purple from the brand gradient
+  text-decoration: none;
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: #6028B9; // Darker shade for hover
+    text-decoration: underline;
+  }
+}
+
+// Lists
+ul, ol {
+  padding-left: 1.5em;
+  margin-bottom: 1em;
+  
+  li {
+    margin-bottom: 0.5em;
+  }
+}
+
+// Blockquotes
+blockquote {
+  border-left: 4px solid #8438FA;
+  padding-left: 1em;
+  margin-left: 0;
+  font-style: italic;
+  color: #555;
+}
+
+// Table typography
+table {
+  font-size: 14px;
+  line-height: 1.5;
+  
+  th {
+    font-weight: 700;
+  }
+}
+
+// Content-specific styles for the API documentation
+.api-endpoint {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  background-color: #f5f5f5;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+.parameter-name {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 500;
+}
+
+// Section titles (like "Overview", "Prerequisites")
+.section-title {
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 700;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  color: #333;
+}
+
+// Responsive typography
+@media only screen and (max-width: 768px) {
+  h1, .h1-heading-xlarge {
+    font-size: 28px;
+    line-height: 32px;
+  }
+  
+  h2, .h2-heading-large {
+    font-size: 22px;
+    line-height: 26px;
+  }
+  
+  h3, .h3-heading-large {
+    font-size: 18px;
+    line-height: 22px;
+  }
+  
+  .section-title {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}

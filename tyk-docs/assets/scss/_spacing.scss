@@ -1,0 +1,310 @@
+/* ==========================================================================
+Spacing System
+========================================================================== */
+
+// Base spacing unit: 4px
+// Using multiples of 4px for consistency
+
+// Spacing Variables
+$space-00: 0;      // 0px
+$space-05: 2px;    // Half of base unit
+$space-10: 4px;    // Base spacing unit
+$space-15: 8px;    // 2x base
+$space-20: 12px;   // 3x base
+$space-25: 16px;   // 4x base
+$space-30: 20px;   // 5x base
+$space-35: 24px;   // 6x base
+$space-40: 32px;   // 8x base
+$space-45: 36px;   // 9x base
+$space-50: 40px;   // 10x base
+$space-55: 44px;   // 11x base
+$space-60: 48px;   // 12x base
+$space-65: 56px;   // 14x base
+$space-70: 64px;   // 16x base
+$space-75: 72px;   // 18x base
+$space-80: 80px;   // 20x base
+$space-85: 88px;   // 22x base
+$space-90: 96px;   // 24x base
+$space-95: 104px;  // 26x base
+$space-100: 112px; // 28x base
+$space-105: 120px; // 30x base
+$space-110: 128px; // 32x base
+
+// Space usage description
+// $space-00: No spacing
+// $space-05: Tiny spacing for fine adjustments
+// $space-10: Minimum spacing between related elements
+// $space-15: Default spacing for small related elements
+// $space-20: Standard spacing for buttons and UI elements
+// $space-25: Spacing to separate related elements with normal padding
+// $space-30: Spacing to separate unrelated elements or groups
+// $space-35: Spacing to separate sub-sections of content
+// $space-40: Spacing to separate sub-sections of content
+// $space-45: Spacing to separate sub-sections of content
+// $space-50: Spacing to separate sub-sections of content
+// $space-55-110: Larger spacing for major section separations
+
+// Generate margin and padding utility classes for all directions
+@each $space-key, $space-value in (
+  "00": $space-00,
+  "05": $space-05,
+  "10": $space-10,
+  "15": $space-15,
+  "20": $space-20,
+  "25": $space-25,
+  "30": $space-30,
+  "35": $space-35,
+  "40": $space-40,
+  "45": $space-45,
+  "50": $space-50,
+  "55": $space-55,
+  "60": $space-60,
+  "65": $space-65,
+  "70": $space-70,
+  "75": $space-75,
+  "80": $space-80,
+  "85": $space-85,
+  "90": $space-90,
+  "95": $space-95,
+  "100": $space-100,
+  "105": $space-105,
+  "110": $space-110
+) {
+  // Margin in all directions
+  .m-#{$space-key} {
+    margin: $space-value !important;
+  }
+  
+  // Margin top
+  .mt-#{$space-key} {
+    margin-top: $space-value !important;
+  }
+  
+  // Margin right
+  .mr-#{$space-key} {
+    margin-right: $space-value !important;
+  }
+  
+  // Margin bottom
+  .mb-#{$space-key} {
+    margin-bottom: $space-value !important;
+  }
+  
+  // Margin left
+  .ml-#{$space-key} {
+    margin-left: $space-value !important;
+  }
+  
+  // Margin horizontal (left and right)
+  .mx-#{$space-key} {
+    margin-left: $space-value !important;
+    margin-right: $space-value !important;
+  }
+  
+  // Margin vertical (top and bottom)
+  .my-#{$space-key} {
+    margin-top: $space-value !important;
+    margin-bottom: $space-value !important;
+  }
+  
+  // Padding in all directions
+  .p-#{$space-key} {
+    padding: $space-value !important;
+  }
+  
+  // Padding top
+  .pt-#{$space-key} {
+    padding-top: $space-value !important;
+  }
+  
+  // Padding right
+  .pr-#{$space-key} {
+    padding-right: $space-value !important;
+  }
+  
+  // Padding bottom
+  .pb-#{$space-key} {
+    padding-bottom: $space-value !important;
+  }
+  
+  // Padding left
+  .pl-#{$space-key} {
+    padding-left: $space-value !important;
+  }
+  
+  // Padding horizontal (left and right)
+  .px-#{$space-key} {
+    padding-left: $space-value !important;
+    padding-right: $space-value !important;
+  }
+  
+  // Padding vertical (top and bottom)
+  .py-#{$space-key} {
+    padding-top: $space-value !important;
+    padding-bottom: $space-value !important;
+  }
+}
+
+// Gap utilities for flexbox and grid layouts
+@each $space-key, $space-value in (
+  "00": $space-00,
+  "05": $space-05,
+  "10": $space-10,
+  "15": $space-15,
+  "20": $space-20,
+  "25": $space-25,
+  "30": $space-30,
+  "35": $space-35,
+  "40": $space-40,
+  "45": $space-45,
+  "50": $space-50,
+  "55": $space-55,
+  "60": $space-60,
+  "65": $space-65,
+  "70": $space-70,
+  "75": $space-75,
+  "80": $space-80
+) {
+  // Gap for both row and column
+  .gap-#{$space-key} {
+    gap: $space-value !important;
+  }
+  
+  // Row gap
+  .gap-row-#{$space-key} {
+    row-gap: $space-value !important;
+  }
+  
+  // Column gap
+  .gap-col-#{$space-key} {
+    column-gap: $space-value !important;
+  }
+}
+
+// Responsive spacing utilities - for example, only showing a limited set for medium screens
+@media (max-width: 768px) {
+  @each $space-key, $space-value in (
+    "00": $space-00,
+    "05": $space-05,
+    "10": $space-10,
+    "15": $space-15,
+    "20": $space-20,
+    "25": $space-25,
+    "30": $space-30,
+    "35": $space-35,
+    "40": $space-40
+  ) {
+    .m-md-#{$space-key} {
+      margin: $space-value !important;
+    }
+    
+    .mt-md-#{$space-key} {
+      margin-top: $space-value !important;
+    }
+    
+    .mb-md-#{$space-key} {
+      margin-bottom: $space-value !important;
+    }
+    
+    .mx-md-#{$space-key} {
+      margin-left: $space-value !important;
+      margin-right: $space-value !important;
+    }
+    
+    .my-md-#{$space-key} {
+      margin-top: $space-value !important;
+      margin-bottom: $space-value !important;
+    }
+    
+    .p-md-#{$space-key} {
+      padding: $space-value !important;
+    }
+    
+    .pt-md-#{$space-key} {
+      padding-top: $space-value !important;
+    }
+    
+    .pb-md-#{$space-key} {
+      padding-bottom: $space-value !important;
+    }
+    
+    .px-md-#{$space-key} {
+      padding-left: $space-value !important;
+      padding-right: $space-value !important;
+    }
+    
+    .py-md-#{$space-key} {
+      padding-top: $space-value !important;
+      padding-bottom: $space-value !important;
+    }
+  }
+}
+
+// Section spacing with semantic names
+.section-spacing-sm {
+  margin-bottom: $space-40 !important;
+}
+
+.section-spacing-md {
+  margin-bottom: $space-60 !important;
+}
+
+.section-spacing-lg {
+  margin-bottom: $space-80 !important;
+}
+
+.section-spacing-xl {
+  margin-bottom: $space-100 !important;
+}
+
+// Content-specific spacing patterns
+.content-block-spacing {
+  margin-bottom: $space-30 !important;
+}
+
+.paragraph-spacing {
+  margin-bottom: $space-20 !important;
+}
+
+.list-item-spacing {
+  margin-bottom: $space-10 !important;
+}
+
+.form-field-spacing {
+  margin-bottom: $space-25 !important;
+}
+
+.button-spacing {
+  margin-right: $space-15 !important;
+}
+
+// Generate spacing variables if needed for JavaScript
+:root {
+  @each $space-key, $space-value in (
+    "00": $space-00,
+    "05": $space-05,
+    "10": $space-10,
+    "15": $space-15,
+    "20": $space-20,
+    "25": $space-25,
+    "30": $space-30,
+    "35": $space-35,
+    "40": $space-40,
+    "45": $space-45,
+    "50": $space-50,
+    "55": $space-55,
+    "60": $space-60,
+    "65": $space-65,
+    "70": $space-70,
+    "75": $space-75,
+    "80": $space-80,
+    "85": $space-85,
+    "90": $space-90,
+    "95": $space-95,
+    "100": $space-100,
+    "105": $space-105,
+    "110": $space-110
+  ) {
+    --space-#{$space-key}: #{$space-value};
+  }
+}
