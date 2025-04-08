@@ -21,6 +21,8 @@ aliases:
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
   - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/getting-started-with-enterprise-portal
   - /tyk-developer-portal
+  - /concepts/tyk-components/developer-portal
+  - /getting-started/tyk-components/developer-portal
 ---
 
 {{< note success >}}
