@@ -5,6 +5,128 @@ description: "Release notes documenting updates, enhancements, and changes for T
 tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.25", "1.25.0", "v1.26", "1.26.0", "changelog"]
 
 ---
+## 1.27.0 Release Notes
+
+### Release Date x of April 2025
+
+### Release Highlights
+
+
+
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.26.0" >}}) below.
+
+### Breaking Changes
+
+There are no breaking changes in this release.
+
+### Downloads
+- [latest version of Mserv](https://github.com/TykTechnologies/mserv/releases/latest)
+
+### Deprecations
+
+There are no deprecations in this release.
+
+### Changelog {#Changelog-v1.26.0}
+
+#### Added
+
+<ul>
+<li>
+<details>
+<summary></summary>
+
+
+</details>
+</li>  
+
+<li>
+<details>
+<summary></summary>
+
+
+
+</details>
+</li>
+
+<li>
+<details>
+<summary></summary>
+
+
+
+</details>
+</li>
+  
+</ul>
+
+#### Fixed
+
+<ul>
+<li>
+<details>
+<summary></summary>
+
+
+
+</details>
+</li>
+
+<li>
+<details>
+<summary></summary>
+
+
+
+</details>
+</li>    
+
+<li>
+<details>
+<summary></summary>
+
+
+
+</details>
+</li>    
+
+<li>
+<details>
+<summary></summary>
+
+
+
+</details>
+</li> 
+
+<li>
+<details>
+<summary></summary>
+
+
+
+</details>
+</li> 
+
+<li>
+<details>
+<summary></summary>
+
+
+
+</details>
+</li> 
+
+<li>
+<details>
+<summary></summary>
+
+
+
+</details>
+</li> 
+
+</ul>
+
 
 ## 1.26.0 Release Notes
 
