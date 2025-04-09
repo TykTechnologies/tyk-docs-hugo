@@ -122,7 +122,7 @@ expect from their API management solution.
 
 ### Why use Tyk Streams
 
-Tyk Streams seamlessly integrates with the Tyk API Gateway, allowing you to manage asynchronous APIs and event streams
+Tyk Stream is a powerful stream processing engine integrated into the Tyk API Gateway, available as part of the Enterprise Edition. It allows you to manage asynchronous APIs and event streams as part of your API ecosystem, and enables real-time data processing, transformation, and intelligent routing.
 alongside your existing synchronous APIs. It provides a range of capabilities to support async API management, including:
 
 - **Protocol Mediation**: Tyk Streams can mediate between different asynchronous protocols and API styles, such as WebSocket, Server-Sent Events (SSE) and Webhooks. This allows you to expose your event streams in a format that is compatible with your consumers' requirements.
