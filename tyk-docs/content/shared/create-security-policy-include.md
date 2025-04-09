@@ -52,7 +52,7 @@ To create a security policy with the Dashboard, follow these steps:
 
     **Throttling**
 
-    When hitting quota or rate limits, you can automatically queue and auto-retry client requests. Throttling can be configured at a key or policy level. See [Request Throttling]({{< ref "api-management/rate-limit#request-throttling" >}}) for more details.
+    When hitting quota or rate limits, you can automatically queue and auto-retry client requests. Throttling can be configured at a key or policy level. See [Request Throttling]({{< ref "api-management/request-throttling" >}}) for more details.
 
     **Usage Quotas**
 
