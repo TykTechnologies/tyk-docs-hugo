@@ -538,9 +538,33 @@ graph TD
 
 Understanding how these components work together is key. Here’s the typical flow when a request interacts with a Tyk Streams-enabled API endpoint:
 
-<div style="display: flex; justify-content: center;">
-{{< img src="/img/streams/tyk-streams-request-processing-flow.png" alt="Tyk Streams Request Processing Flow" height="500px" >}}
-</div>
+```mermaid
+sequenceDiagram
+    participant Client
+    participant TykGateway as Tyk Gateway
+    participant StreamingMiddleware as Streaming Middleware
+    participant StreamManager as Stream Manager
+    participant StreamInstance as Stream Instance
+    participant UpstreamService as Upstream Service
+
+    Client->>TykGateway: HTTP Request
+    TykGateway->>StreamingMiddleware: Process Request
+    StreamingMiddleware->>StreamingMiddleware: Strip Listen Path
+    StreamingMiddleware->>StreamingMiddleware: Check if path is handled by streams
+
+    alt Path handled by streams
+        StreamingMiddleware->>StreamManager: Create/Get Stream Manager for request
+        StreamingMiddleware->>StreamManager: Match request to route
+        StreamManager->>StreamInstance: Handle request
+        StreamInstance->>Client: Stream response
+    else Not handled by streams
+        StreamingMiddleware-->>TykGateway: Continue middleware chain
+        TykGateway->>UpstreamService: Proxy request
+        UpstreamService->>TykGateway: Response
+    end
+
+    TykGateway->>Client: HTTP Response
+```
 
 1.  **Request Arrival & Gateway Pre-processing**: A client sends a request to an API endpoint managed by Tyk Gateway. The request passes through the initial middleware like authentication, key validation, and rate limiting.
 2.  **Streaming Middleware Interception**: The request reaches the `Stream Middleware`. It checks the request path against the stream routes defined in the API configuration.
