@@ -120,7 +120,7 @@ GraphQL) and asynchronous APIs, in addition to event-driven architectures. This 
 full potential of their event-driven systems while maintaining the same level of security, control and visibility they
 expect from their API management solution.
 
-### Key Benefits
+### Why use Tyk Streams
 
 Tyk Streams seamlessly integrates with the Tyk API Gateway, allowing you to manage asynchronous APIs and event streams
 alongside your existing synchronous APIs. It provides a range of capabilities to support async API management, including:
