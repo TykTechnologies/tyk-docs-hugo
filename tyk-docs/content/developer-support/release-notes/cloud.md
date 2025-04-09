@@ -2,7 +2,7 @@
 title: Tyk Cloud Release Notes
 date: 2025-02-10
 description: "Release notes documenting updates, enhancements, and changes for Tyk Cloud"
-tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.25", "1.25.0", "v1.26", "1.26.0", "changelog"]
+tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.25", "1.25.0", "v1.26", "1.26.0", "1.27.0", "changelog"]
 
 ---
 ## 1.27.0 Release Notes
@@ -11,9 +11,9 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.2
 
 ### Release Highlights
 
+This release focuses on improving the stability, security, and reliability of Tyk Cloud. We’ve addressed several  bugs, enhanced UI behavior, resolved performance bottlenecks, and implemented secure defaults to strengthen the platform’s security posture. These improvements contribute to a more robust and consistent experience across the board.
 
-
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.26.0" >}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.27.0" >}}) below.
 
 ### Breaking Changes
 
@@ -26,33 +26,43 @@ There are no breaking changes in this release.
 
 There are no deprecations in this release.
 
-### Changelog {#Changelog-v1.26.0}
+### Changelog {#Changelog-v1.27.0}
 
 #### Added
 
 <ul>
 <li>
 <details>
-<summary></summary>
+<summary>Clear Error Message Shown When Control Plane Deployment Fails</summary>
 
+Tyk Cloud now displays a clear and informative error message when a Control Plane fails to deploy. Previously, users received no feedback, causing confusion. The new message lets users know the issue is being addressed and provides guidance on what to do next, improving transparency and user experience during deployment failures.
 
 </details>
 </li>  
 
 <li>
 <details>
-<summary></summary>
+<summary>UI Support for Enabling Audit Logging on Control Planes</summary>
 
-
+Audit logging can now be enabled or disabled directly from the UI for Control Plane deployments, if included in your plan.
 
 </details>
 </li>
 
 <li>
 <details>
-<summary></summary>
+<summary>Secure Defaults Now Applied for Admin Token Visibility</summary>
 
+As announced in the previous release, Tyk Cloud now defaults to secure settings that restrict admin users from viewing or resetting API tokens of other users in the Dashboard.
 
+</details>
+</li>
+
+<li>
+<details>
+<summary>Improved Performance of Hybrid Visibility Functionality</summary>
+
+We’ve made backend improvements to enhance the performance and stability of hybrid node visibility features in Tyk Cloud. These changes help support larger datasets more efficiently, ensuring smoother operations and better scalability behind the scenes.
 
 </details>
 </li>
@@ -64,66 +74,30 @@ There are no deprecations in this release.
 <ul>
 <li>
 <details>
-<summary></summary>
+<summary>Telemetry Optional Fields Now Persist After Saving</summary>
 
-
+Tyk Cloud has resolved an issue where optional fields in the ‘Edit New Relic Connection’ section of the Telemetry UI would disappear after saving. With this fix, all optional configuration fields now persist correctly, ensuring that user-defined telemetry settings are saved and visible for further updates.
 
 </details>
 </li>
 
 <li>
 <details>
-<summary></summary>
+<summary>Telemetry Export Now Applies Correctly on Existing Deployments</summary>
 
-
-
-</details>
-</li>    
-
-<li>
-<details>
-<summary></summary>
-
-
+We’ve fixed an issue where enabling telemetry export on an existing deployment did not apply the expected network policy changes. The update now ensures that configuration changes are consistently applied, so telemetry features work as intended without requiring manual intervention.
 
 </details>
 </li>    
 
 <li>
 <details>
-<summary></summary>
+<summary>Team Dropdown No Longer Locks When Switching Deployment Types</summary>
 
-
-
-</details>
-</li> 
-
-<li>
-<details>
-<summary></summary>
-
-
+We’ve resolved a UI issue where the team dropdown became unresponsive when switching between Control Plane and Hybrid Data Plane types during deployment creation. This fix ensures that users can seamlessly switch deployment types.
 
 </details>
-</li> 
-
-<li>
-<details>
-<summary></summary>
-
-
-
-</details>
-</li> 
-
-<li>
-<details>
-<summary></summary>
-
-
-
-</details>
-</li> 
+</li>    
 
 </ul>
 
