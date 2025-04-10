@@ -24,10 +24,10 @@ In this tutorial, we will configure Request Throttling on a Tyk Security Policy 
 
 Since we are providing a full example, we recommend installing the following, however, if you have a running deployment as a playground, please feel free to jump to [step 6: set up a policy with throttling]({{< ref "#policy-setup" >}}).
 
-- **Docker**: We will run the entire Tyk Stack on Docker. For installation, refer to this [guide](https://docs.docker.com/desktop/setup/install/mac-install/).
+- **Docker**: We will run the entire Tyk Stack on Docker. For installation, refer to this [guide](https://docs.docker.com/desktop/setup/install/mac-install/)
 - **Git**: A CLI tool to work with git repositories. For installation, refer to this [guide](https://git-scm.com/downloads)
-- **Dashboard License**: We will configure Streams API using Dashboard. [Contact support](https://tyk.io/contact/) to obtain a license.
-- **Curl, seq and xargs**: These tools will be used for testing.
+- **Dashboard License**: We will configure Streams API using Dashboard. [Contact support](https://tyk.io/contact/) to obtain a license
+- **Curl, seq and xargs**: These tools will be used for testing
 
 ### Instructions
 #### Start up Tyk stack
@@ -73,12 +73,16 @@ Since we are providing a full example, we recommend installing the following, ho
 #### API set up
 
 5.  **Create an API:**
-    -   Log in to your Tyk Dashboard.
-    -   Navigate to **API Management > APIs**.
-    -   Click **Add New API**. 
-    -   Click **Import**. 
-    -   Select **Import Type** as **Tyk API**.
-    -   Copy the below content in the text box and click **Import API** to create an API. 
+    1. Log in to your Tyk Dashboard.
+    2. Navigate to **API Management > APIs**
+    3. Click **Add New API**
+    4. Click **Import**
+    5. Select **Import Type** as **Tyk API**
+    6. Copy the below Tyk OAS definition in the text box and click **Import API** to create an API
+
+        <details>
+        <summary><b>Click to expand API Definition</b></summary>
+
         ```json
         {
             "components": {
@@ -149,6 +153,8 @@ Since we are providing a full example, we recommend installing the following, ho
         }
         ```
 
+        </details>
+
 <!-- 5. **Create an API:**
 
     Create a file `api.json` with the below content:
@@ -175,31 +181,42 @@ Since we are providing a full example, we recommend installing the following, ho
 #### Policy and rate limit set up {#policy-setup}
 6.  **Create and Configure an Security Policy with Rate Limiting:**
 
-    1.  Navigate to **API Security > Policies** in the Tyk Dashboard sidebar.
-    2.  Click the **Add Policy** button.
-    3.  Under the **1. Access Rights** tab:
-        *   In the **Add API Access Rule** section, select the `Request Throttling Test` API
+    <details>
+    <summary><b>Click to expand to see a detailed steps to configure rate limit in the Tyk Dashboard UI</b></summary>
+
+    1.  Navigate to **API Security > Policies** in the Tyk Dashboard sidebar
+    2.  Click the **Add Policy** button
+    3.  Under the **1. Access Rights** tab, in the **Add API Access Rule** section, select the `Request Throttling Test` API
     4.  Scroll down to the **Global Limits and Quota** section (still under the **1. Access Rights** tab):
         *   Set the following values for `Rate Limiting`
-        *   Enter `5` into the **Requests (or connection attempts)** field.
-        *   Enter `10` into the **Per (seconds):** field.
-    5.  Select the **2. Configuration** tab.
-    6.  In the **Policy Name** field, enter `Request Throttling Policy`.
-    7.  From the **Key expire after** dropdown, select `Key never expire`.
-    8.  Click the **Create Policy** button.
+        *   Enter `5` into the **Requests (or connection attempts)** field
+        *   Enter `10` into the **Per (seconds):** field
+    5.  Select the **2. Configuration** tab
+    6.  In the **Policy Name** field, enter `Request Throttling Policy`
+    7.  From the **Key expire after** dropdown, select `1 hour`
+    8.  Click the **Create Policy** button
+        
+    </details>
+
+    {{< img src="/img/dashboard/system-management/rate-limit-in-policy.png" alt="policy with throttling configured" >}}
 
 7.  **Associate an Access Key with the Policy:**
 
-    1.  Navigate to **API Security > Keys** in the Tyk Dashboard sidebar.
-    2.  Click the **Add Key** button.
+    <details>
+    <summary><b>Click to expand to see a detailed steps to Associate an Access Key with the Policy in the Tyk Dashboard UI</b></summary>
+
+    1.  Navigate to **API Security > Keys** in the Tyk Dashboard sidebar
+    2.  Click the **Add Key** button
     3.  Under the **1. Access Rights** tab:
         *   In the **Apply Policy** section, select the `Request Throttling Policy` API
-    5.  Select the **2. Configuration** tab.
-    6.  In the **Alias** field, enter `Request Throttling Key`.
-    7.  From the **Expires** dropdown, select `Do not expire key`.
-    8.  Click the **Create Key** button.
-    9.  A pop-up window **"Key created successfully"** will appear displaying the key details. **Copy the Key ID (hash)** value shown and save it securely. You will need this key to make API requests in the following steps.
-    10. Click **OK** to close the pop-up.
+    5.  Select the **2. Configuration** tab
+    6.  In the **Alias** field, enter `Request Throttling Key`
+    7.  From the **Expires** dropdown, select `Do not expire key`
+    8.  Click the **Create Key** button
+    9.  A pop-up window **"Key created successfully"** will appear displaying the key details. **Copy the Key ID (hash)** value shown and save it securely. You will need this key to make API requests in the following steps
+    10. Click **OK** to close the pop-up
+
+    </details>
 
 8. **Test Rate Limit**
 
@@ -232,16 +249,16 @@ Since we are providing a full example, we recommend installing the following, ho
 #### Throttling set up
 9.  **Configure Request Throttling by Updating the Security Policy**
 
-    1.  Navigate to **API Security > Policies** in the Tyk Dashboard sidebar.
-    2.  Click on the `Request Throttling Policy`.
+    1.  Navigate to **API Security > Policies** in the Tyk Dashboard sidebar
+    2.  Click on the `Request Throttling Policy`
     3.  Under the **1. Access Rights** tab:
-        *   In the **Global Limits and Quota** section.
+        *   In the **Global Limits and Quota** section
         *   Set the following values for `Throttling`
-        *   Uncheck the `Disable Throttling` checkbox.
-        *   Enter `3` into the **Throttle retries (or connection attempts)** field.
-        *   Enter `2` into the **Per (seconds):** field.
-    4.  Click the **Update** button.
-    5.  A pop-up window will appear to confirm the changes. Click **Update** to close the pop-up.
+        *   Uncheck the `Disable Throttling` checkbox
+        *   Enter `3` into the **Throttle retries (or connection attempts)** field
+        *   Enter `2` into the **Per (seconds):** field
+    4.  Click the **Update** button
+    5.  A pop-up window will appear to confirm the changes. Click **Update** to close the pop-up
 
 #### Testing
 10. **Test Request Throttling**
@@ -253,11 +270,11 @@ Since we are providing a full example, we recommend installing the following, ho
         ```
 
     2.  **Expected Observation:**
-        *   You will still see the first ~5 requests return `HTTP/1.1 200 OK` quickly.
-        *   Critically, the subsequent requests (6 through 10) will **not** immediately return `429`. Instead, you should observe a **delay** before their status lines appear.
-        *   After the delay (`throttle_interval`), Tyk will retry the queued requests. Some might now succeed (return `200 OK`) if the rate limit window allows.
-        *   If a request is retried `throttle_retry_limit` (3) times and still encounters the rate limit, *then* it will finally return `HTTP/1.1 429 Too Many Requests`.
-        *   Overall, you might see more `200 OK` responses compared to the previous test, and any `429` responses will appear significantly later.
+        *   You will still see the first ~5 requests return `HTTP/1.1 200 OK` quickly
+        *   Critically, the subsequent requests (6 through 10) will **not** immediately return `429`. Instead, you should observe a **delay** before their status lines appear
+        *   After the delay (`throttle_interval`), Tyk will retry the queued requests. Some might now succeed (return `200 OK`) if the rate limit window allows
+        *   If a request is retried `throttle_retry_limit` (3) times and still encounters the rate limit, *then* it will finally return `HTTP/1.1 429 Too Many Requests`
+        *   Overall, you might see more `200 OK` responses compared to the previous test, and any `429` responses will appear significantly later
 
     **Sample Output (Illustrative - timing is key):**
 
@@ -287,101 +304,106 @@ Request Throttling is configured within Tyk [Security Policies]({{< ref "/api-ma
 
 The configuration involves setting two specific fields:
 
-- `throttle_interval`: Defines the wait time (in seconds) between retry attempts for a queued request.
-- `throttle_retry_limit`: Sets the maximum number of retry attempts before the request is rejected.
+- `throttle_interval`: Defines the wait time (in seconds) between retry attempts for a queued request. (*Note*: Do not set it to `0`. If you do, no delay is applied, and the request is immediately retried. This will creates a “busy waiting” scenario that consumes more resources than a positive interval value)
+- `throttle_retry_limit`: Sets the maximum number of retry attempts before the request is rejected. (*Note*: Do not set it to `0`. Setting it to `0` means that there will be no throttling on the request)
 
-Both fields must be set to a value of 0 or greater to enable throttling. Setting either to `-1` (the default) disables the feature.
+To enable throttling,b oth fields must be set to a value greater than `0`. 
+
+### Disable throttling
+
+The default value is `-1` and means it is disabled by default.
+Setting `throttle_interval` and `throttle_retry_limit` values to  any number smaller than `0`, to ensure the feature is diabled.
+
 
 You can configure these settings using either the Tyk Dashboard UI or the Tyk Dashboard API.
 
-{{< tabs_start >}}
-
-{{< tab_start "Dashboard UI" >}}
+### Configure via UI
 
 The Tyk Dashboard provides a straightforward interface to set throttling parameters on both Policies and Keys.
 
-**For Policies:**
+#### Configure in the policy level
 
-1.  Navigate to **API Security > Policies** in the Tyk Dashboard sidebar.
-2.  Click the **Add Policy** button.
+The image below shows a policy with throttling. Any key using this policy will inherit the throttling settings and behaves as follows: wait 2 seconds between retries for queued requests, attempting up to 3 times before failing (so overall 6 seconds before getting another 429 error response).
+
+{{< img src="/img/dashboard/system-management/throttling-in-policy.png" alt="policy with throttling configured" >}}
+
+<br>
+<details>
+<summary><b>Click to expand to see a detailed steps to configure Request Throttling in the Tyk Dashboard UI</b></summary>
+
+1.  Navigate to **API Security > Policies** in the Tyk Dashboard sidebar
+2.  Click the **Add Policy** button
+3.  Under the **1. Access Rights** tab and in the **Add API Access Rule** section, select the required API
+4.  Scroll down to the **Global Limits and Quota** section (still under the **1. Access Rights** tab):
+    *   To enable `Throttling`, `Rate Limiting` should be configured
+    *   Enter some value into the **Requests (or connection attempts)** field
+    *   Enter some value into the **Per (seconds):** field
+    *   Now enable `Throttling` by setting the following values in the `Throttling` section:
+    *   Uncheck the `Disable Throttling` checkbox
+    *   Enter some value into the **Throttle retries (or connection attempts)** field
+    *   Enter some value into the **Per (seconds):** field
+5.  Select the **2. Configuration** tab
+6.  In the **Policy Name** field, enter a name
+7.  From the **Key expire after** dropdown, select an option
+8.  Click the **Create Policy** button
+</details>
+
+#### Configure in the access key level
+
+Note: Direct key configuration overrides policy settings only for that specific key.
+
+1.  Navigate to **API Security > Keys** in the Tyk Dashboard sidebar
+2.  Click the **Create Key** button
 3.  Under the **1. Access Rights** tab:
+    *   Select **Choose API**
     *   In the **Add API Access Rule** section, select the required API
 4.  Scroll down to the **Global Limits and Quota** section (still under the **1. Access Rights** tab):
-    *   To enable `Throttling`, `Rate Limiting` should be configured.
-    *   Enter some value into the **Requests (or connection attempts)** field.
-    *   Enter some value into the **Per (seconds):** field.
-
+    *   To enable `Throttling`, `Rate Limiting` should be configured
+    *   Enter some value into the **Requests (or connection attempts)** field
+    *   Enter some value into the **Per (seconds):** field
     *   Now enable `Throttling` by setting the following values in the `Throttling` section:
-    *   Uncheck the `Disable Throttling` checkbox.
-    *   Enter some value into the **Throttle retries (or connection attempts)** field.
-    *   Enter some value into the **Per (seconds):** field.
-5.  Select the **2. Configuration** tab.
-6.  In the **Policy Name** field, enter a name.
-7.  From the **Key expire after** dropdown, select an option.
-8.  Click the **Create Policy** button.
+    *   Uncheck the `Disable Throttling` checkbox
+    *   Enter some value into the **Throttle retries (or connection attempts)** field
+    *   Enter some value into the **Per (seconds):** field
+5.  Select the **2. Configuration** tab
+6.  In the **Alias** field, enter a name
+7.  From the **Expires** dropdown, select an option
+8.  Click the **Create Key** button
 
-**For Access Keys:**
+### Configure via API
 
-1.  Navigate to **API Security > Keys** in the Tyk Dashboard sidebar.
-2.  Click the **Create Key** button.
-3.  Under the **1. Access Rights** tab:
-    *   Select **Choose API**.
-    *   In the **Add API Access Rule** section, select the required API
-4.  Scroll down to the **Global Limits and Quota** section (still under the **1. Access Rights** tab):
-    *   To enable `Throttling`, `Rate Limiting` should be configured.
-    *   Enter some value into the **Requests (or connection attempts)** field.
-    *   Enter some value into the **Per (seconds):** field.
-
-    *   Now enable `Throttling` by setting the following values in the `Throttling` section:
-    *   Uncheck the `Disable Throttling` checkbox.
-    *   Enter some value into the **Throttle retries (or connection attempts)** field.
-    *   Enter some value into the **Per (seconds):** field.
-5.  Select the **2. Configuration** tab.
-6.  In the **Alias** field, enter a name.
-7.  From the **Expires** dropdown, select an option.
-8.  Click the **Create Key** button.
-
-
-{{< tab_end >}}
-
-{{< tab_start "Tyk Dashboard API" >}}
-
-You can enable and configure Request Throttling by directly manipulating the Policy object or the Access Key using the Tyk Dashboard API.
-
-**Example Configuration (Policy Object):**
-
-Retrieve the policy object using `GET /api/portal/policies/{POLICY_ID}`. Add or modify the `throttle_interval` and `throttle_retry_limit` fields within the policy JSON object. Then, update the policy using `PUT /api/portal/policies/{POLICY_ID}` with the modified object, or create a new one using `POST /api/portal/policies/`.
+These are the fields that you can set directly in the Policy object or the Access Key:
 
 ```json
 {
-  // ... other policy fields ...
-  "throttle_interval": 1,       // Wait 1 second between retries
-  "throttle_retry_limit": 5,    // Attempt a maximum of 5 retries
-  // ... other policy fields ...
+  // ... other policy/session object fields ...
+  "throttle_interval": 2,       // Wait 1 second between retries
+  "throttle_retry_limit": 3,    // Attempt a maximum of 5 retries
+  // ... other policy/session fields ...
 }
 ```
-
-**Example Configuration (Access Key):**
-
-Retrieve the key's session object using `GET /api/keys/{KEY_ID}`. Add or modify the `throttle_interval` and `throttle_retry_limit` fields within the session object JSON. Then, update the key using `PUT /api/keys/{KEY_ID}` with the modified session object.
-
-```json
-{
-  // ... other session object fields ...
-  "throttle_interval": 2,       // Wait 2 seconds between retries
-  "throttle_retry_limit": 3,    // Attempt a maximum of 3 retries
-  // ... other session object fields ...
-}
-```
+#### Configure in the policy level
+To update the policy, do the following:
+1. Retrieve the policy object using `GET /api/portal/policies/{POLICY_ID}`
+2. Add or modify the `throttle_interval` and `throttle_retry_limit` fields within the policy JSON object
+3. Update the policy using `PUT /api/portal/policies/{POLICY_ID}` with the modified object, or create a new one using `POST /api/portal/policies/`
 
 **Explanation:**
+The above adds throttling to a policy. Any key using this policy will inherit the throttling settings and behaves as follows: wait 1 second between retries for queued requests, attempting up to 5 times before failing (so overall 5 seconds before getting another 429 error response).
 
-*   The first example configures a policy. Any key using this policy will inherit the throttling settings: wait 1 second between retries for queued requests, attempting up to 5 times before failing.
-*   The second example configures a specific key's session object directly: wait 2 seconds between retries, attempting up to 3 times. Note: Direct key configuration overrides policy settings for that specific key.
+#### Configure in the access key level
 
-{{< tab_end >}}
+Note: Direct key configuration overrides policy settings only for that specific key.
 
-{{< tabs_end >}}
+To update the access key do the following:
+1. Retrieve the key's session object using `GET /api/keys/{KEY_ID}`
+2. Add or modify the `throttle_interval` and `throttle_retry_limit` fields within the session object JSON
+3. Update the key using `PUT /api/keys/{KEY_ID}` with the modified session object
+
+
+**Explanation:**
+The above adds throttling to a key. Any request made by the key will behave as follows: wait 1 second between retries for queued requests, attempting up to 5 times before failing (so overall 5 seconds before getting another 429 error response).
+
 
 ---
 ## How It Works
@@ -428,9 +450,3 @@ Think of it like trying to access a service with a restriction on how many peopl
 y immediately. With Throttling enabled, the service instead asks you to wait briefly (the interval) and tries your entry again shortly, checking if the rate limit has freed up capacity, repeating this a f
 ew times (the retry limit) before finally turning you away if access is still restricted.
 
----
-## FAQs
-
-### Can I disable Request Throttling?
-    
-Yes, you can. If you set `throttle_interval` and `throttle_retry_limit` values to smaller than `0`, the feature will not work. The default value is `-1` and means it is disabled by default.
