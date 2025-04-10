@@ -10,7 +10,7 @@ aliases:
 
 ## Introduction
 
-Tyk's Request Throttling feature provides a mechanism to manage traffic spikes by queuing and automatically retrying client requests that exceed [rate limits]({{< ref "" >}}) or [quotas]({{< ref "" >}}), rather than immediately rejecting them. This helps protect upstream services from sudden bursts and improves the resilience of API interactions during temporary congestion.
+Tyk's Request Throttling feature provides a mechanism to manage traffic spikes by queuing and automatically retrying client requests that exceed [rate limits]({{< ref "" >}}), rather than immediately rejecting them. This helps protect upstream services from sudden bursts and improves the resilience of API interactions during temporary congestion.
 
 <!-- TODO: Add an image. -->
 
