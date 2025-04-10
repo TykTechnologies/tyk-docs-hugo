@@ -67,9 +67,9 @@ Tyk Identity Broker (TIB) is a component providing a bridge between various Iden
 
 TIB can act as a bridge between the API Gateway, Tyk Portal or even the Tyk Dashboard, and makes it easy to integrate custom IDMs to your system.
 
-Starting from Tyk v3.0 TIB has been added as a built-in feature of the Tyk Dashboard. You no longer have to setup a separated instance of the service to make it work with the Dashboard. You now have two options: 
+Starting from Tyk v3.0 TIB has been added as a built-in feature of the Tyk Dashboard. You no longer have to setup a separated instance of the service to make it work with the Dashboard. You now have two options:
 1. Internal TIB: Embedded in dashboard. Easy configuration and set up. Share the same port as the dashboard
-2. External TIB: Installation of TIB as a different component for advanced use cases. Requires changes to the config files and separate port.  
+2. External TIB: Installation of TIB as a different component for advanced use cases. Requires changes to the config files and separate port.
 
 
 **What can you do with the Tyk Identity Broker (TIB)?**
@@ -219,7 +219,7 @@ Below are the prerequisites of TIB:
 - Redis
 - Tyk Dashboard v0.9.7.1+ (Only if you want to do SSO to Tyk Dashboard UI or Tyk Developer Portal)
 
-### Enable Embedded TIB 
+### Enable Embedded TIB
 
 For the embedded TIB you don't have to do anything, only ensure that in the Dashboard's config file `identity_broker` is not pointing to an external service, and `identity_broker.enabled` is set to `true`. For example:
 
@@ -241,15 +241,15 @@ Below are the three deployment options to install TIB as a standalone applicatio
 
 1. **Docker:**
 
-    You can install via [Docker](https://hub.docker.com/r/tykio/tyk-identity-broker/).
+   You can install via [Docker](https://hub.docker.com/r/tykio/tyk-identity-broker/).
 
 2. **Linux Packages:**
 
-    You can install via [packages](https://packagecloud.io/tyk/tyk-identity-broker/install#bash-deb) (deb or rpm).
+   You can install via [packages](https://packagecloud.io/tyk/tyk-identity-broker/install#bash-deb) (deb or rpm).
 
 3. **Helm Chart for Kubernetes:**
 
-    [Tyk Helm Chart]({{< ref "product-stack/tyk-charts/overview" >}}) does not support installing TIB as separate application. If you want to enable embedded TIB in Dashboard, you can do so by updating `tib.enabled` to `true` in `tyk-dashboard` chart. If you are using an umbrella chart from us (e.g. `tyk-stack` and `tyk-control-plane`), you can do so by updating `tyk-dashboard.tib.enabled` to `true`.
+   [Tyk Helm Chart]({{< ref "product-stack/tyk-charts/overview" >}}) does not support installing TIB as separate application. If you want to enable embedded TIB in Dashboard, you can do so by updating `tib.enabled` to `true` in `tyk-dashboard` chart. If you are using an umbrella chart from us (e.g. `tyk-stack` and `tyk-control-plane`), you can do so by updating `tyk-dashboard.tib.enabled` to `true`.
 
 ### Important TIB Configurations
 
@@ -271,7 +271,7 @@ Usage of ./tyk-auth-proxy:
         Path to the profiles file (default "profiles.json")
 ```
 
-See [how to configure TIB](https://github.com/TykTechnologies/tyk-identity-broker#how-to-configure-tib) 
+See [how to configure TIB](https://github.com/TykTechnologies/tyk-identity-broker#how-to-configure-tib)
 
 
 ## Exploring Tyk Identity Broker REST API
@@ -321,12 +321,12 @@ The Dashboard exposes two APIs:
 - `/api/sso` -  See [Dashboard API SSO]({{< ref "api-management/dashboard-configuration#single-sign-on-api" >}}) for more details.
 
 which allow you to generate a temporary authentication token, valid for 60 seconds. They make same thing you can select one of them and use it.
-However, the admin API requires `admin-auth` header which should be same with `admin-secret` parameter in `tyk_analytics.conf`, the regular API requires `authorization` header which should be same with the user authentication token.  
+However, the admin API requires `admin-auth` header which should be same with `admin-secret` parameter in `tyk_analytics.conf`, the regular API requires `authorization` header which should be same with the user authentication token.
 
 #### Using the Token
 
 Once you have issued a token you can login to the dashboard using the `/tap` url, or to the portal using the `<portal-url>/sso` URL, and provide an authentication token via the `nonce` query param.
-If `nonce` is valid, Tyk will create a temporary user and log them in. 
+If `nonce` is valid, Tyk will create a temporary user and log them in.
 
 If you want to re-use existing dashboard users, instead of creating temporary ones, you can set `"sso_enable_user_lookup": true` variable in the Dashboard config file (`tyk_analytics.conf`). This way you can set individual permissions for users logged via SSO.
 
@@ -351,7 +351,7 @@ If you use the token with `dashboard` scope, and would like to avoid login in as
 
 As alternative, you can set `sso_default_group_id` to specify User Group ID assigned to SSO users.
 
-In order to set individual user permissions, you should first create this users in the dashboard first, set needed permissions, enable `sso_enable_user_lookup` to `true` inside dashboard config. If SSO user with the same email will be found in Dashboard users, it will re-use his permissions. 
+In order to set individual user permissions, you should first create this users in the dashboard first, set needed permissions, enable `sso_enable_user_lookup` to `true` inside dashboard config. If SSO user with the same email will be found in Dashboard users, it will re-use his permissions.
 
 ##### Sample Login Request
 
@@ -456,7 +456,7 @@ When TIB successfully authorizes the user, and generates the token using the rel
 
 There is a simplified flow, which does not require a corresponding OAuth client in Tyk Gateway, and can just generate a standard token with the same flow.
 
-### Log into Dashboard with Google 
+### Log into Dashboard with Google
 
 Similarly to logging into an app using Tyk, OAuth and Google Plus, if we have our callback URL and client IDs set up with Google, we can use the following profile setup to access our Dashboard using a social provider:
 
@@ -488,8 +488,8 @@ Similarly to logging into an app using Tyk, OAuth and Google Plus, if we have ou
 
 The login to the Dashboard makes use of a one-time nonce to log the user in to the session. The nonce is only accessible for a few seconds. It is recommended that in production use, all of these transactions happen over SSL connections to avoid MITM snooping.
 
-`Domain` constraint ensures that only users from `yourdomain.com` domain-based email accounts are allowed to login. 
- Replace it with correct domain or remove this section if you don't want to set this constraint.
+`Domain` constraint ensures that only users from `yourdomain.com` domain-based email accounts are allowed to login.
+Replace it with correct domain or remove this section if you don't want to set this constraint.
 
 
 When TIB successfully authorizes the user, and generates the token using the relevant OAuth credentials, it will redirect the user to the relevant redirect with their token or auth code as a fragment in the URL for the app to decode and use as needed.
@@ -517,18 +517,18 @@ You already have authorized access to Tyk's Dashboard. If you haven't, get the a
 1. Access your Azure Portal and navigate to the Azure Active Directory page.
 
 2. Go to app registrations and create or access an application you want to use for Dashboard access.
-    
-    - If you are creating an application, give it a name and register it 
+
+   - If you are creating an application, give it a name and register it
 
 3. Add a redirect URL to your application as callback to TIB in your Azure application:
 
-    - In your app, either via the Authentication menu or the redirect URL shortcut navigate to and add the redirect to TIB in the Web category i.e. `http://localhost:3000/auth/{PROFILE-NAME-IN-TIB}/openid-connect/callback`.
+   - In your app, either via the Authentication menu or the redirect URL shortcut navigate to and add the redirect to TIB in the Web category i.e. `http://localhost:3000/auth/{PROFILE-NAME-IN-TIB}/openid-connect/callback`.
 
-    {{< img src="/img/azureAD/redirect-URL-1.png" alt="Redirect URL" >}}
+   {{< img src="/img/azureAD/redirect-URL-1.png" alt="Redirect URL" >}}
 
-4. Go to Overview and add a secret in Client Credentials. Don't forget to copy the secret value, not the secretID. 
+4. Go to Overview and add a secret in Client Credentials. Don't forget to copy the secret value, not the secretID.
 
-    {{< img src="/img/azureAD/overview-1.png" alt="Overview" >}}
+   {{< img src="/img/azureAD/overview-1.png" alt="Overview" >}}
 
 Check Microsoft's [documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app) for more detail.
 
@@ -536,27 +536,27 @@ Check Microsoft's [documentation](https://docs.microsoft.com/en-us/azure/active-
 
 1. Log in to your dashboard and select Identity Management, located under System Management
 2. Create a profile and select OpenID Connect as the provider type
-3. Under Profile Configuration, paste the secret value, clientID, and well-known endpoint URL from the Azure site. 
-    - Profile Configuation may look something like this:
+3. Under Profile Configuration, paste the secret value, clientID, and well-known endpoint URL from the Azure site.
+   - Profile Configuation may look something like this:
 
-    {{< img src="/img/azureAD/profile-configuration-1.png" alt="Profile Configuration" >}}
+   {{< img src="/img/azureAD/profile-configuration-1.png" alt="Profile Configuration" >}}
 
-    - The well-known endpoint URL is created by Azure and can be located by selecting Endpoints on their site
+   - The well-known endpoint URL is created by Azure and can be located by selecting Endpoints on their site
 
-    {{< img src="/img/azureAD/endpoints-11.png" alt="Endpoints" >}}
+   {{< img src="/img/azureAD/endpoints-11.png" alt="Endpoints" >}}
 
 #### Test your Azure Login:
 
 From the browser call `http://localhost:3000/auth/{PROFILE-NAME-IN-TIB}/openid-connect`
 - If it's working you'll be redirected to Azures's web page and asked for your username and password.
 
-    {{< img src="/img/azureAD/username.png" alt="Username" >}}
+  {{< img src="/img/azureAD/username.png" alt="Username" >}}
 
-    {{< img src="/img/azureAD/password.png" alt="Password" >}}
-  
+  {{< img src="/img/azureAD/password.png" alt="Password" >}}
+
 - If it's working you'll be redirected to Azures's web page and asked for your username and password.
 
-    {{< img src="/img/azureAD/dashboard.png" alt="Dashboard" >}}
+  {{< img src="/img/azureAD/dashboard.png" alt="Dashboard" >}}
 
 #### Enhancements
 
@@ -571,7 +571,7 @@ Group mapping can be managed from Advanced Settings section of the Profile Confi
 As illustrated in the screen below the following information must be provided:
 
 - Identity provider role
-- Tyk User Group: This can be created from the User Groups section of the dashboard (reference a link to a page in tyk docs here to show how to create a user group). When creating your User Group, one can also select and adjust the permissions for each group. 
+- Tyk User Group: This can be created from the User Groups section of the dashboard (reference a link to a page in tyk docs here to show how to create a user group). When creating your User Group, one can also select and adjust the permissions for each group.
 
 For more information on how to set and change user permissions, head to this [guide]({{< ref "api-management/user-management#using-dashboard-ui-1" >}})
 
@@ -584,37 +584,37 @@ You can select the scopes you would like your request to include. By default, Ty
 For debugging purposes, you can find an example we created using the OpenID Connect playground.
 1. Add the redirect url found on the OpenID Connect site to the redirect urls found under the Web section
 
-    {{< img src="/img/azureAD/openid_connect/access_redirect_urls.png" alt="Access redirect urls" >}}
+   {{< img src="/img/azureAD/openid_connect/access_redirect_urls.png" alt="Access redirect urls" >}}
 
-    {{< img src="/img/azureAD/openid_connect/additional_redirect_url.png" alt="Additional URL Added" >}}
+   {{< img src="/img/azureAD/openid_connect/additional_redirect_url.png" alt="Additional URL Added" >}}
 
 2. Copy the OpenID Connect endpoint from the Azure site
-3. On the OpenID Connect site select Edit. In the Server Template dropdown menu select the Custom option and paste the endpoint in the Discovery Document URL. 
+3. On the OpenID Connect site select Edit. In the Server Template dropdown menu select the Custom option and paste the endpoint in the Discovery Document URL.
 
-    {{< img src="/img/azureAD/openid_connect/edit_button.png" alt="Edit Button" >}}
+   {{< img src="/img/azureAD/openid_connect/edit_button.png" alt="Edit Button" >}}
 
-    {{< img src="/img/azureAD/openid_connect/custom_dropdown.png" alt="Custom Dropdown" >}}
+   {{< img src="/img/azureAD/openid_connect/custom_dropdown.png" alt="Custom Dropdown" >}}
 
 4. Press the Use Discovery Document button and this will autofill Authorization Token Endpoint, Token Endpoint, and Token Keys Endpoint
 
-    {{< img src="/img/azureAD/openid_connect/discovery_document.png" alt="Discovery Document" >}}
+   {{< img src="/img/azureAD/openid_connect/discovery_document.png" alt="Discovery Document" >}}
 
 5. Copy and paste the Client ID and Client Secret from the Azure site to your ConnectID. Scope is autofilled for you and save the configuration.
 
-    {{< img src="/img/azureAD/openid_connect/client_id_client_secret.png" alt="Client ID and Secret" >}}
+   {{< img src="/img/azureAD/openid_connect/client_id_client_secret.png" alt="Client ID and Secret" >}}
 6. Press start at the bottom of the Request window and if done correctly, this should prompt you to sign in to your Azure account.
 
-    {{< img src="/img/azureAD/openid_connect/step-2.png" alt="OpenID Connect Step 2" >}}
+   {{< img src="/img/azureAD/openid_connect/step-2.png" alt="OpenID Connect Step 2" >}}
 7. You should then be redirected back to OpenID Connect where you'll be shown the Exchange Code. This needs to be turned into an access token. Press the exchange button under the request and then press Next.
 
-    {{< img src="/img/azureAD/openid_connect/step-3.png" alt="OpenID Connect Step 3" >}}
-    {{< img src="/img/azureAD/openid_connect/step-4.png" alt="OpenID Connect Step 4" >}}
+   {{< img src="/img/azureAD/openid_connect/step-3.png" alt="OpenID Connect Step 3" >}}
+   {{< img src="/img/azureAD/openid_connect/step-4.png" alt="OpenID Connect Step 4" >}}
 8. We can then verify this by pressing the verify button. We can also view the information or scope of what is being returned by heading to jwt.io and viewing the payload: data there.
 
-    {{< img src="/img/azureAD/openid_connect/step-5.png" alt="OpenID Connect Step 5" >}}
-9. We are given an object with key, value pairs and we can pass in the key ie. name to our Custom User Group and the value of to our Identity Provider Role in our Tyk dashboard as shown in the example above. 
+   {{< img src="/img/azureAD/openid_connect/step-5.png" alt="OpenID Connect Step 5" >}}
+9. We are given an object with key, value pairs and we can pass in the key ie. name to our Custom User Group and the value of to our Identity Provider Role in our Tyk dashboard as shown in the example above.
 
-    {{< img src="/img/azureAD/openid_connect/step-6.png" alt="OpenID Connect Step 6" >}}
+   {{< img src="/img/azureAD/openid_connect/step-6.png" alt="OpenID Connect Step 6" >}}
 
 To try this yourself, we have included the link: https://openidconnect.net/
 
@@ -639,7 +639,7 @@ This guide assumes the following:
    - Tick `Authorization Code`
    - Click `Done`
 
-    Note: These instruction are for the new Okta's `Developer Console`, for the `Classic UI` instructions are slightly different.
+   Note: These instruction are for the new Okta's `Developer Console`, for the `Classic UI` instructions are slightly different.
 
 
 3. Add a callback to TIB in your application:
@@ -650,7 +650,7 @@ This guide assumes the following:
    Under the `Assignments` tab, make sure group assignments is set to *everyone* (for now, you will change this later!).
 
 5. This is how it should look like after step #4
-{{< img src="/img/okta-sso/Okta-create-app.png" alt="okta-create-app" >}}
+   {{< img src="/img/okta-sso/Okta-create-app.png" alt="okta-create-app" >}}
 
 #### Configuration at TIB
 
@@ -691,45 +691,45 @@ This guide assumes the following:
    See [Install TIB]({{< ref "api-management/external-service-integration" >}}) for detailed instructions on how to install TIB
 8. Test that it works:
    From the broswer call `http://localhost:3010/auth/{PROFILE-NAME-IN-TIB}/openid-connect`
-    - If it's working you'll be redirected to Okta's web page and will be asked to enter your Okta user name and password.
-    - If you were successfully authenticated by Okta then you'll be redirected to the Tyk Dashboard and login into it without going through the login page. Job's done!
+   - If it's working you'll be redirected to Okta's web page and will be asked to enter your Okta user name and password.
+   - If you were successfully authenticated by Okta then you'll be redirected to the Tyk Dashboard and login into it without going through the login page. Job's done!
 9. If you need to update your profile then you can use TIB's REST API as follows:
 
 ```{.copyWrapper} 
 curl http://{TIB-DOMAIN}:{TIB-PORT}/api/profiles/{PROFILE-NAME-IN-TIB} -H "Authorization: {MY-SECRET}" -H "Content-type: application/json" -X PUT --data "@./my-new-dashboard-profile.json" | prettyjson
 ```
 
-  - POST and DELETE calls apply as normal
-  - You can post a few profiles to TIB.
-  - See [TIB REST API]({{< ref "tyk-identity-broker/tib-rest-api" >}}) for more details.
+- POST and DELETE calls apply as normal
+- You can post a few profiles to TIB.
+- See [TIB REST API]({{< ref "tyk-identity-broker/tib-rest-api" >}}) for more details.
 
 #### Understanding the flow
- 1. The initial call to the endpoint on TIB was redirected to Okta
- 2. Okta identified the user
- 3. Okta redirected the call back to TIB endpoint (according to the callback you set up on the client earlier in step 3) and from TIB
- 4. TIB, via REST API call to the dashboard, created a nonce and a special session attached to it.
- 5. TIB redirected the call to the dashboard to a special endpoint `/tap` ( it was defined on the profile under `ReturnURL`) with the nonce that was created.
- 6. The Dashboard on the `/tap` endpoint finds the session that is attached to the `nonce`, login the user and redirect to the dashboard first page
+1. The initial call to the endpoint on TIB was redirected to Okta
+2. Okta identified the user
+3. Okta redirected the call back to TIB endpoint (according to the callback you set up on the client earlier in step 3) and from TIB
+4. TIB, via REST API call to the dashboard, created a nonce and a special session attached to it.
+5. TIB redirected the call to the dashboard to a special endpoint `/tap` ( it was defined on the profile under `ReturnURL`) with the nonce that was created.
+6. The Dashboard on the `/tap` endpoint finds the session that is attached to the `nonce`, login the user and redirect to the dashboard first page
 
 #### Enabling MFA and SSO
 
 Once it's working you can also add two more enhancements - SSO and MFA
 
 ##### SSO login into the Dashboard via a login page
-   You will need to:
-	- set up a web server with a login page and a form for `user` and `password`
-	- Update `tyk_analytics.conf` to redirect logins to that url
-    Explicit details are in [steps 6-7]({{< ref "#create-login-page" >}})
+You will need to:
+- set up a web server with a login page and a form for `user` and `password`
+- Update `tyk_analytics.conf` to redirect logins to that url
+Explicit details are in [steps 6-7]({{< ref "#create-login-page" >}})
 
 ##### Multi-Factor-Authentication (MFA) Support
-   MFA works out-of-the-box in Tyk since luckily Okta supports it. you would need to add it to the configuration of the account holder. Under `Security --> Multifactor --> Factor types` you can choose the types you want. For instance I chose Google Authenticator.
+MFA works out-of-the-box in Tyk since luckily Okta supports it. you would need to add it to the configuration of the account holder. Under `Security --> Multifactor --> Factor types` you can choose the types you want. For instance I chose Google Authenticator.
 
-   1. While trying to login to the Dashboard, Okta enforced the MFA and asked me to use the Google Authenticator:
+1. While trying to login to the Dashboard, Okta enforced the MFA and asked me to use the Google Authenticator:
    {{< img src="/img/okta-sso/okta-mfa-setup-1.png" alt="okta-mfa-setup-1" >}}
 
-   2. I had to download the Google Authenticator and identify with the generated code
+2. I had to download the Google Authenticator and identify with the generated code
    {{< img src="/img/okta-sso/okta-mfa-download-google-authenticator-2.png" alt="okta-mfa-download-google-authenticator-2" >}}
-   3. I successfully authenticated with Google Authenticator
+3. I successfully authenticated with Google Authenticator
    {{< img src="/img/okta-sso/okta-mfa-google-auth-approved-3.png" alt="okta-mfa-google-auth-approved-3" >}}
 
 #### Common Error
@@ -761,59 +761,59 @@ This will walk you through securing access to your Tyk Dashboard using OpenID Co
 
 3. Click Create User and complete the new user form, using the default **Username-Password-Authentication** Connection method.
 4. Click Create to save your new user.
-{{< img src="/img/sso-auth0/auth0-user-details.png" alt="Auth0 User profile" width="400px" height="400" >}}
+   {{< img src="/img/sso-auth0/auth0-user-details.png" alt="Auth0 User profile" width="400px" height="400" >}}
 
 #### Create an Auth0 application
 
 You will use settings from your Auth0 application within the Tyk Dashboard Identity profile you will create.
 
 1. Select Applications from the Auth0 menu.
-{{< img src="/img/sso-auth0/auth0-create-app.png" alt="Auth0 Applications" width="400px" height="300" >}}
+   {{< img src="/img/sso-auth0/auth0-create-app.png" alt="Auth0 Applications" width="400px" height="300" >}}
 2. Click **Create Application**.
 3. Give your application a name and select **Regular Web Application** from the applications types.
-{{< img src="/img/sso-auth0/auth0-app-type.png" alt="Auth0 Application information" width="400px" height="400" >}}
+   {{< img src="/img/sso-auth0/auth0-app-type.png" alt="Auth0 Application information" width="400px" height="400" >}}
 4. Click **Create**.
 5. After you application has been created select the **Basic Information** tab.
-{{< img src="/img/sso-auth0/auth0-app-basic-info.png" alt="Auth0 Application Basic information" width="400px" height="400" >}}
+   {{< img src="/img/sso-auth0/auth0-app-basic-info.png" alt="Auth0 Application Basic information" width="400px" height="400" >}}
 6. You will use the **Domain**, **Client Id** and **Client Secret** values in the Identity profile you create next in the Tyk Dashboard.
 
 #### Create an Identity Management profile in your Dashboard
 
 1. Log in to your Tyk Dashboard as an Admin user.
 2. Select **Identity Management** from the **System Management** menu.
-{{< img src="/img/sso-auth0/tyk-create-profile.png" alt="Create Identity profile" width="800px" height="400" >}}
+   {{< img src="/img/sso-auth0/tyk-create-profile.png" alt="Create Identity profile" width="800px" height="400" >}}
 3. Click **Create Profile**.
 4. In the **Profile action** section enter a name for your profile and make sure the **Login to Tyk Dashboard** option is selected.
-{{< img src="/img/sso-auth0/tyk-new-profile.png" alt="Identity Profile action settings" width="400px" height="400" >}}
+   {{< img src="/img/sso-auth0/tyk-new-profile.png" alt="Identity Profile action settings" width="400px" height="400" >}}
 5. Click Next. In the **Provider type** section, select **OpenID Connect**.
-{{< img src="/img/sso-auth0/tyk-openid.png" alt="Identity profile Provider type" width="400px" height="400" >}}
+   {{< img src="/img/sso-auth0/tyk-openid.png" alt="Identity profile Provider type" width="400px" height="400" >}}
 6. Click Next. Copy the **Client ID** value from your **Auth0 application** > **Basic Information** and paste it in the **Client ID / Key** field.
 7. Copy the **Client Secret** value from your **Auth0 application** > **Basic Information** and paste it in the **Secret** field.
-8. You need to add a **Discover URL (well known endpoint)**. Use the following URL, replacing `<<your-auth0-domain>>` with the **Domain** value from your **Auth0 application** > **Basic Information**. 
+8. You need to add a **Discover URL (well known endpoint)**. Use the following URL, replacing `<<your-auth0-domain>>` with the **Domain** value from your **Auth0 application** > **Basic Information**.
 
-    `https://<<your-auth0-domain>>/.well-known/openid-configuration`
+   `https://<<your-auth0-domain>>/.well-known/openid-configuration`
 
-    {{< img src="/img/sso-auth0/tyk-new-profile-config.png" alt="Tyk new identity profile configuration" width="400px" height="400" >}}
+   {{< img src="/img/sso-auth0/tyk-new-profile-config.png" alt="Tyk new identity profile configuration" width="400px" height="400" >}}
 
 9. Copy the **Callback URL** and paste it into the **Allowed Callback URLs** field in your **Auth0 application** > **Basic Information**.
-{{< img src="/img/sso-auth0/auth0-tyk-callback-url.png" alt="Auth0 Allowed Callback URLs" width="400px" height="400" >}}
+   {{< img src="/img/sso-auth0/auth0-tyk-callback-url.png" alt="Auth0 Allowed Callback URLs" width="400px" height="400" >}}
 10. Click **Save Changes** to update your Auth0 Application.
 11. Click **Create Profile** to save your Identity profile in your Tyk Dashboard.
 
 #### Test your Auth0 Login
 
 1. From your **Identity Management Profiles** click the profile you created to open it.
-{{< img src="/img/sso-auth0/tyk-profile-list.png" alt="Tyk Identity Profiles" width="800px" height="400" >}}
+   {{< img src="/img/sso-auth0/tyk-profile-list.png" alt="Tyk Identity Profiles" width="800px" height="400" >}}
 2. Click the **Login URL**.
-{{< img src="/img/sso-auth0/tyk-id-profile-provider-config.png" alt="Tyk Identity Profile Config" width="800px" height="400" >}}
+   {{< img src="/img/sso-auth0/tyk-id-profile-provider-config.png" alt="Tyk Identity Profile Config" width="800px" height="400" >}}
 3. You will now see the Auth0 login form in a browser tab.
-{{< img src="/img/sso-auth0/auth0-login.png" alt="Auth0 login form" width="400px" height="400" >}}
+   {{< img src="/img/sso-auth0/auth0-login.png" alt="Auth0 login form" width="400px" height="400" >}}
 4. Enter the email address and password of your Auth0 user.
-5. You may be asked to authorize your Auth0 application. 
-{{< img src="/img/sso-auth0/auth0-accept.png" alt="Accept Auth0 application" width="400px" height="400" >}}
+5. You may be asked to authorize your Auth0 application.
+   {{< img src="/img/sso-auth0/auth0-accept.png" alt="Accept Auth0 application" width="400px" height="400" >}}
 6. Click **Accept**.
 7. You will now be taken to the Tyk Dashboard.
-{{< img src="/img/sso-auth0/tyk-dash-success.png" alt="Tyk Dashboard from Auth0 SSO login" width="800px" height="400" >}}
+   {{< img src="/img/sso-auth0/tyk-dash-success.png" alt="Tyk Dashboard from Auth0 SSO login" width="800px" height="400" >}}
 
 ### OIDC with Keycloak
 
@@ -837,7 +837,7 @@ This is a walk-through of how you can use [Keycloak](https://www.keycloak.org) a
 
    {{< img src="/img/keycloak-sso/retrieve-client-secret.png" alt="Retrieve Client Secret" width="900px" height="900">}}
 
-4. Retrieve the discovery endpoint of the realm, `https://<your-keycloak-host-and-realm>/.well-known/openid-configuration`. 
+4. Retrieve the discovery endpoint of the realm, `https://<your-keycloak-host-and-realm>/.well-known/openid-configuration`.
 
    This is accessible from “Realm Settings” > “General” Tab > OpenID Endpoint Configuration. You will need it in later steps.
 
@@ -905,7 +905,7 @@ The provider config for SAML has the following values that can be configured in 
 
 `IDPMetaDataURL` - The metadata URL of your IDP which will provide Tyk Identity Broker with information about the IDP such as EntityID, Endpoints (Single Sign On Service Endpoint, Single Logout Service Endpoint), its public X.509 cert, NameId Format, Organization info and Contact info.
 
-This metadata XML can be signed providing a public X.509 cert and the private key.     
+This metadata XML can be signed providing a public X.509 cert and the private key.
 
 `CertLocation`: An X.509 certificate and the private key for signing your requests to the IDP, this should be one single file with the cert and key concatenated. When using internal identity broker, this value should be the id of the certificate uploaded via certificate manager in dashboard, otherwise it should be a path where the certificate is placed.
 
@@ -977,9 +977,9 @@ All commands shown are run from inside the Tyk host environment.
 
 1. **Download TIB**
 
-    You can download TIB from the [releases page of the TIB repository on GitHub](https://github.com/TykTechnologies/tyk-identity-broker/releases). The release names contain the architecture and version i.e. `tib-linux-<architecture>-<version>.tar.gz`. This example uses `amd64` and `0.2.1` for all the commands, but you should update them to use the latest version and relevant architecture for your platform.
+   You can download TIB from the [releases page of the TIB repository on GitHub](https://github.com/TykTechnologies/tyk-identity-broker/releases). The release names contain the architecture and version i.e. `tib-linux-<architecture>-<version>.tar.gz`. This example uses `amd64` and `0.2.1` for all the commands, but you should update them to use the latest version and relevant architecture for your platform.
 
-    First step is to download TIB onto the environment:
+   First step is to download TIB onto the environment:
 
     ```{.copyWrapper}
     wget https://github.com/TykTechnologies/tyk-identity-broker/releases/download/v0.2.1/tib-linux-amd64-0.2.1.tar.gz
@@ -987,13 +987,13 @@ All commands shown are run from inside the Tyk host environment.
 
 2. **Extract and store TIB**
 
-    As the other Tyk components are installed in your `/opt` directory, we recommend you install TIB there too:
+   As the other Tyk components are installed in your `/opt` directory, we recommend you install TIB there too:
 
     ```{.copyWrapper}
     tar -xvzf tib-linux-amd64-0.2.1.tar.gz
     ```
 
-    TIB will now be extracted to the directory `tib-0.2.1`, let's move this to `/opt` and change to that directory:
+   TIB will now be extracted to the directory `tib-0.2.1`, let's move this to `/opt` and change to that directory:
 
     ```{.copyWrapper}
     sudo mv tib-0.2.1 /opt
@@ -1002,22 +1002,22 @@ All commands shown are run from inside the Tyk host environment.
 
 3. **Configure TIB**
 
-    There are two configuration files for TIB:
+   There are two configuration files for TIB:
 
-    1. `tib.conf` for the main application configuration settings
-    2. `profiles.json` to configure the profiles which TIB will attempt to authenticate against
+   1. `tib.conf` for the main application configuration settings
+   2. `profiles.json` to configure the profiles which TIB will attempt to authenticate against
 
-    Out of the box you don't need to change much, but there are several attributes you should check to make sure they are correct for your environment:
+   Out of the box you don't need to change much, but there are several attributes you should check to make sure they are correct for your environment:
 
-    * `Secret`: The REST API secret used when configuring TIB remotely
-    * `TykAPISettings.GatewayConfig.Endpoint`: The URL through which TIB can communicate with your Tyk Gateway
-    * `TykAPISettings.GatewayConfig.Port`: The port through which TIB can communicate with your Tyk Gateway
-    * `TykAPISettings.GatewayConfig.AdminSecret`: The secret required for TIB to communicate with your Tyk Gateway REST API - must match the `secret` property in your Gateway's `tyk.conf`
-    * `TykAPISettings.DashboardConfig.Endpoint`: The URL through which TIB can communicate with your Tyk Dashboard
-    * `TykAPISettings.DashboardConfig.Port`: The port through which TIB can communicate with your Tyk Dashboard
-    * `TykAPISettings.DashboardConfig.AdminSecret`: The secret required for TIB to communicate with your Tyk Dashboard Admin REST API - must match the `admin_secret` property in your Dashboard's `tyk_analytics.conf`
+   * `Secret`: The REST API secret used when configuring TIB remotely
+   * `TykAPISettings.GatewayConfig.Endpoint`: The URL through which TIB can communicate with your Tyk Gateway
+   * `TykAPISettings.GatewayConfig.Port`: The port through which TIB can communicate with your Tyk Gateway
+   * `TykAPISettings.GatewayConfig.AdminSecret`: The secret required for TIB to communicate with your Tyk Gateway REST API - must match the `secret` property in your Gateway's `tyk.conf`
+   * `TykAPISettings.DashboardConfig.Endpoint`: The URL through which TIB can communicate with your Tyk Dashboard
+   * `TykAPISettings.DashboardConfig.Port`: The port through which TIB can communicate with your Tyk Dashboard
+   * `TykAPISettings.DashboardConfig.AdminSecret`: The secret required for TIB to communicate with your Tyk Dashboard Admin REST API - must match the `admin_secret` property in your Dashboard's `tyk_analytics.conf`
 
-    The `tib.conf` for this example is as follows (yours might require different values):
+   The `tib.conf` for this example is as follows (yours might require different values):
 
     ```{.copyWrapper}
     {
@@ -1058,20 +1058,20 @@ All commands shown are run from inside the Tyk host environment.
 
 4. **Set up the LDAP profile**
 
-    TIB ships with a default `profiles.json` file which contains many example configuration for different scenarios. This guide is focused on LDAP authentication for the Dashboard, so we will update `profiles.json` to contain a single profile for this purpose.
+   TIB ships with a default `profiles.json` file which contains many example configuration for different scenarios. This guide is focused on LDAP authentication for the Dashboard, so we will update `profiles.json` to contain a single profile for this purpose.
 
-    The key attributes for LDAP profile are:
+   The key attributes for LDAP profile are:
 
-    * `ID`: The ID by which we will activate the profile by calling the appropriate TIB endpoint
-    * `OrgId`: The organization id which the profile is connected to - make sure this is the correct id for your organization (see the [Dashboard Admin API documentation]({{< ref "api-management/dashboard-configuration#organizations-api" >}}) for details on how to retrieve this)
-    * `IdentityHandlerConfig.DashboardCredential`: The Dashboard API Access credential which is used as authorization header
-    * `ProviderConfig.FailureRedirect`: The URL which TIB will redirect to if the authentication fails
-    * `ProviderConfig.LDAPPort`: The port through which TIB can communicate with your LDAP server
-    * `ProviderConfig.LDAPServer`: The URL through which TIB can communicate with your LDAP server
-    * `ProviderConfig.LDAPUserDN`: The distinguished name which TIB will use to identify the user - this should be updated to match your LDAP installation and must retain the `*USERNAME*` token as this is replaced by the actual username at runtime
-    * `ReturnURL`: The URL which TIB will redirect to if the authentication succeeds - this should be the `/tap` endpoint of your Tyk Dashboard
+   * `ID`: The ID by which we will activate the profile by calling the appropriate TIB endpoint
+   * `OrgId`: The organization id which the profile is connected to - make sure this is the correct id for your organization (see the [Dashboard Admin API documentation]({{< ref "api-management/dashboard-configuration#organizations-api" >}}) for details on how to retrieve this)
+   * `IdentityHandlerConfig.DashboardCredential`: The Dashboard API Access credential which is used as authorization header
+   * `ProviderConfig.FailureRedirect`: The URL which TIB will redirect to if the authentication fails
+   * `ProviderConfig.LDAPPort`: The port through which TIB can communicate with your LDAP server
+   * `ProviderConfig.LDAPServer`: The URL through which TIB can communicate with your LDAP server
+   * `ProviderConfig.LDAPUserDN`: The distinguished name which TIB will use to identify the user - this should be updated to match your LDAP installation and must retain the `*USERNAME*` token as this is replaced by the actual username at runtime
+   * `ReturnURL`: The URL which TIB will redirect to if the authentication succeeds - this should be the `/tap` endpoint of your Tyk Dashboard
 
-    The `profiles.json` for this example is as follows (again, update values for your environment):
+   The `profiles.json` for this example is as follows (again, update values for your environment):
 
     ```{.copyWrapper}
     [
@@ -1096,18 +1096,18 @@ All commands shown are run from inside the Tyk host environment.
     ]
     ```
 
-    Notice that this is a JSON array object with a single element; an LDAP profile. The LDAP server referenced by this profile is the freely-available service provided forumsys.com. See [their documentation](https://www.forumsys.com/tutorials/integration-how-to/ldap/online-ldap-test-server/) for more information. You can use any OpenLDAP compatible server.
+   Notice that this is a JSON array object with a single element; an LDAP profile. The LDAP server referenced by this profile is the freely-available service provided forumsys.com. See [their documentation](https://www.forumsys.com/tutorials/integration-how-to/ldap/online-ldap-test-server/) for more information. You can use any OpenLDAP compatible server.
 
 5. **Start TIB**
 
-    Start TIB by executing the TIB binary. This will produce an output log into the console which you can use to watch TIB process requests. Since TIB looks for the config file in the local directory, you should execute the application from there too.
+   Start TIB by executing the TIB binary. This will produce an output log into the console which you can use to watch TIB process requests. Since TIB looks for the config file in the local directory, you should execute the application from there too.
 
     ```{.copyWrapper}
     cd /opt/tib-0.2.1
     ./tib
     ```
 
-    If all is well you should see TIB output a few messages when it starts:
+   If all is well you should see TIB output a few messages when it starts:
 
     ```
     toth/tothic: no SESSION_SECRET environment variable is set. The default cookie store is not available and any calls will fail. Ignore this warning if you are using a different store.
@@ -1123,22 +1123,22 @@ All commands shown are run from inside the Tyk host environment.
     INFO[0000] [MAIN] Broker Listening on :3010
     ```
 
-    Start a new shell session to carry on with the remaining process.
+   Start a new shell session to carry on with the remaining process.
 
 <a id="create-login-page"></a>
 
 6. **Create a login page**
 
-    TIB works by having credentials sent to it, so a login page must be made in order to fulfill this requirement. For this example we will create a basic login form hosted by Nginx. We can't just place the login page in our Dashboard directory as the Dashboard is not a standard web server, it only serves the pages which it has been compiled to serve. Any non-compiled page will produce a 404 response.
+   TIB works by having credentials sent to it, so a login page must be made in order to fulfill this requirement. For this example we will create a basic login form hosted by Nginx. We can't just place the login page in our Dashboard directory as the Dashboard is not a standard web server, it only serves the pages which it has been compiled to serve. Any non-compiled page will produce a 404 response.
 
-    Install Nginx and start it:
+   Install Nginx and start it:
 
     ```{.copyWrapper}
     sudo apt-get install nginx
     sudo service nginx start
     ```
 
-    Nginx will now serve pages out of the default web root directory `/usr/share/nginx/www`. We now need to create a web page there. This command will pipe the echoed text into a file called `login.html` which is stored in the web root:
+   Nginx will now serve pages out of the default web root directory `/usr/share/nginx/www`. We now need to create a web page there. This command will pipe the echoed text into a file called `login.html` which is stored in the web root:
 
     ```{.copyWrapper}
     echo \
@@ -1157,38 +1157,38 @@ All commands shown are run from inside the Tyk host environment.
     | sudo tee /usr/share/nginx/www/login.html > /dev/null
     ```
 
-    The login form contains two inputs named `username` and `password`. TIB looks for these exact parameter names when processing the request, so if you are creating your own login page you must use these input names.
+   The login form contains two inputs named `username` and `password`. TIB looks for these exact parameter names when processing the request, so if you are creating your own login page you must use these input names.
 
-    Please make sure you are using `POST` method in the form, to avoid browser caching.
+   Please make sure you are using `POST` method in the form, to avoid browser caching.
 
-    The form action `http://my-tyk-instance.com:3010/auth/1/ldap` is the TIB endpoint which will start the authentication process. The URL can be broken down as follows:
+   The form action `http://my-tyk-instance.com:3010/auth/1/ldap` is the TIB endpoint which will start the authentication process. The URL can be broken down as follows:
 
-    * `http://my-tyk-instance.com`: The method and hostname used to connect to TIB - you should use HTTPS to prevent confidential data from being exposed
-    * `3010`: The default port for TIB
-    * `auth`: The special TIB endpoint which accepts authentication requests
-    * `1`: The number of the profile which we are using - matches against the `ID` property of the profile in `profiles.json`
-    * `ldap`: We need to add a string to the end of the request, so we have used `ldap` here
+   * `http://my-tyk-instance.com`: The method and hostname used to connect to TIB - you should use HTTPS to prevent confidential data from being exposed
+   * `3010`: The default port for TIB
+   * `auth`: The special TIB endpoint which accepts authentication requests
+   * `1`: The number of the profile which we are using - matches against the `ID` property of the profile in `profiles.json`
+   * `ldap`: We need to add a string to the end of the request, so we have used `ldap` here
 
 7. **Update the Dashboard config**
 
-    Update the Dashboard config so that any unauthenticated requests are redirected to your custom login page. We do this by updating the `sso_custom_login_url` property of the Dashboard's `tyk_analytics.conf` file, which by default is located in the `/opt/tyk-dashboard` directory. For example (ommitting all other lines in the config file and trailing comma):
+   Update the Dashboard config so that any unauthenticated requests are redirected to your custom login page. We do this by updating the `sso_custom_login_url` property of the Dashboard's `tyk_analytics.conf` file, which by default is located in the `/opt/tyk-dashboard` directory. For example (ommitting all other lines in the config file and trailing comma):
 
     ```{.copyWrapper}
     "sso_custom_login_url": "http://my-tyk-instance.com/login.html"
     ```
 
-    Since the Dashboard runs on port 3000 by default, this URL will use the default HTTP port of 80 which will be handled by Nginx.
+   Since the Dashboard runs on port 3000 by default, this URL will use the default HTTP port of 80 which will be handled by Nginx.
 
 8. **Test that it works**
 
-    Now that we have TIB installed and configured, Nginx installed and hosting our custom login page, and the Dashboard configured to redirect to that login page we can now test the solution. Remember that this example is using the LDAP provided at forumsys.com, so if you are using your own LDAP then substitute the username and password with appropriate values from your system.
+   Now that we have TIB installed and configured, Nginx installed and hosting our custom login page, and the Dashboard configured to redirect to that login page we can now test the solution. Remember that this example is using the LDAP provided at forumsys.com, so if you are using your own LDAP then substitute the username and password with appropriate values from your system.
 
-    1. Open a web browser (if you're already logged in to the Dashboard, logout now) and attempt to access the Dashboard - `http://my-tyk-instance.com:3000`
-    2. This should be redirected to the custom login page - `http://my-tyk-instance.com/login.html`
-    3. Enter `read-only-admin` as the username
-    4. Enter `password` as the password
-    5. Submit the form
-    6. You should now be logged in to the Dashboard
+   1. Open a web browser (if you're already logged in to the Dashboard, logout now) and attempt to access the Dashboard - `http://my-tyk-instance.com:3000`
+   2. This should be redirected to the custom login page - `http://my-tyk-instance.com/login.html`
+   3. Enter `read-only-admin` as the username
+   4. Enter `password` as the password
+   5. Submit the form
+   6. You should now be logged in to the Dashboard
 
 
 ## Advance LDAP Configuration
@@ -1236,7 +1236,7 @@ The request should be a `POST`.
 If you make this request with a valid user that can bind to the LDAP server, Tyk will redirect the user to the dashboard with a valid session. There's no more to it, this mechanism is pass-through and is transparent to the user, with TIB acting as a direct client to the LDAP provider.
 
 {{< note success >}}
-**Note**  
+**Note**
 
 The `LDAPUserDN` field MUST contain the special `*USERNAME*` marker in order to construct the users DN properly.
 {{< /note >}}
@@ -1417,52 +1417,52 @@ The configuration below will proxy a request to `http://{TARGET-HOSTNAME}:{PORT}
 ### Steps for Configuration
 
 1. **Prepare Encryption Keys**
-  
-  - Load the certificate with the private key into Tyk:
-    - **For embedded TIB in Dashboard:** Use Tyk Dashboard's certificate manager. In the below image you can see the module in dashboard that allows to upload certificates:
-      {{< img src="/img/dashboard/certificate-manager/adding-certificate.gif" alt="Certificate manager" >}}
-    - **For standalone TIB:** Store the certificate as a file accessible to Tyk
 
-  - Load the public key into your IdP for ID token encryption (process varies by IdP)
+- Load the certificate with the private key into Tyk:
+   - **For embedded TIB in Dashboard:** Use Tyk Dashboard's certificate manager. In the below image you can see the module in dashboard that allows to upload certificates:
+     {{< img src="/img/dashboard/certificate-manager/adding-certificate.gif" alt="Certificate manager" >}}
+   - **For standalone TIB:** Store the certificate as a file accessible to Tyk
+
+- Load the public key into your IdP for ID token encryption (process varies by IdP)
 
 2. **Configure the Identity Provider**
 - Create a new client in your IdP for Tyk Identity Broker
 
 3. **Setup OIDC Profile**
-  - Create a new [TIB profile]({{< ref "#exploring-tib-profiles" >}}):
-    - Select Social > OIDC as the provider
-    - Enter the client key and client secret from the IdP
-    - Copy the callback URL from TIB and add it to the IdP client's allowed redirect URLs
-    {{< img src="/img/tib/profiles/tib-profile-creation.gif" alt="Profile creation" >}}
-  - Test the basic SSO flow to ensure it's working correctly
+- Create a new [TIB profile]({{< ref "#exploring-tib-profiles" >}}):
+   - Select Social > OIDC as the provider
+   - Enter the client key and client secret from the IdP
+   - Copy the callback URL from TIB and add it to the IdP client's allowed redirect URLs
+     {{< img src="/img/tib/profiles/tib-profile-creation.gif" alt="Profile creation" >}}
+- Test the basic SSO flow to ensure it's working correctly
 
 4. **Enable JWE**
-  - [Updated the TIB profile via API]({{< ref "tyk-identity-broker/tib-rest-api#update-profile" >}})
-    - Add the following fields to the `ProviderConfig` section:
+- [Updated the TIB profile via API]({{< ref "tyk-identity-broker/tib-rest-api#update-profile" >}})
+   - Add the following fields to the `ProviderConfig` section:
 
-      ```json
-      ...
-      "ProviderConfig": {
-        "JWE": {
-          "Enabled": true,
-          "PrivateKeyLocation": "CERT-ID"
-        },
-      ...
-      ```
+     ```json
+     ...
+     "ProviderConfig": {
+       "JWE": {
+         "Enabled": true,
+         "PrivateKeyLocation": "CERT-ID"
+       },
+     ...
+     ```
 
-    - Set `PrivateKeyLocation` to either:
+   - Set `PrivateKeyLocation` to either:
       - The certificate ID from the certificate manager, or
       - The file path where the certificate and private key are stored
-    
-  - Update the IdP client configuration
-    - Enable JWE for the client
-    - Provide the public key for encryption
+
+- Update the IdP client configuration
+   - Enable JWE for the client
+   - Provide the public key for encryption
 
 5. **Verification**
-  - Test the complete flow with JWE enabled to ensure proper functionality.
+- Test the complete flow with JWE enabled to ensure proper functionality.
 
 ### Troubleshooting
-While setting up JWE with Tyk Identity Broker, you may encounter some challenges. This section outlines common issues and their solutions to help you navigate the implementation process smoothly. 
+While setting up JWE with Tyk Identity Broker, you may encounter some challenges. This section outlines common issues and their solutions to help you navigate the implementation process smoothly.
 
 1. **oauth2: error decoding JWT token: jws: invalid token received, not all parts available** it means that JWE is not enabled in the profile and the IDP is already using JWE.
 2. **JWE Private Key not loaded** Tyk encountered some issues while loading the certificate with the private key. Ensure that the path or certId are correct.
