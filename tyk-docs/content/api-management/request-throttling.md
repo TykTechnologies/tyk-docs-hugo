@@ -10,7 +10,7 @@ aliases:
 
 ## Introduction
 
-Tyk's Request Throttling feature provides a mechanism to manage traffic spikes by queuing and automatically retrying client requests that exceed [rate limits]({{< ref "" >}}), rather than immediately rejecting them. This helps protect upstream services from sudden bursts and improves the resilience of API interactions during temporary congestion.
+Tyk's Request Throttling feature provides a mechanism to manage traffic spikes by queuing and automatically retrying client requests that exceed [rate limits]({{< ref "/api-management/rate-limit" >}}), rather than immediately rejecting them. This helps protect upstream services from sudden bursts and improves the resilience of API interactions during temporary congestion.
 
 <!-- TODO: Add an image. -->
 
@@ -274,7 +274,7 @@ This comparison clearly shows how Request Throttling changes the behaviour from 
 ---
 ## Configuration Options
 
-Request Throttling is configured within Tyk [Security Policies]({{< ref "" >}}) or directly on individual [Access Keys]({{< ref "" >}}).
+Request Throttling is configured within Tyk [Security Policies]({{< ref "/api-management/policies" >}}) or directly on individual [Access Keys]({{< ref "" >}}).
 
 The configuration involves setting two specific fields:
 
@@ -383,7 +383,7 @@ TODO: This will work after the changes in Tyk streams is merged. For review you 
 flowchart LR
     A[Client Request] --> GW(Tyk Gateway);
 
-    subgraph Limit & Quota Checks
+    subgraph Rate Limits
         GW --> RL{Rate Limit OK?};
         RL -- Yes --> Q{Quota OK?};
         RL -- No --> T{Throttle Enabled?};
@@ -409,13 +409,15 @@ flowchart LR
     Failure --> Client;
 ```
 
-Tyk's Request Throttling intercepts API requests *after* they have exceeded a configured [Rate Limit]({{< ref "" >}}) or [Request Quota]({{< ref "" >}}). 
+Tyk's Request Throttling intercepts API requests *after* they have exceeded a configured [Rate Limit]({{< ref "/api-management/rate-limit" >}}). 
 
-Instead of immediately rejecting these requests with a `429 Too Many Requests` error (which is the default rate-limiting behaviour), the Gateway temporarily holds them in a queue. After waiting for a specified duration (`throttle_interval`), Tyk attempts to process the request again, re-checking the rate limit/quota status. 
+Instead of immediately rejecting these requests with a `429 Too Many Requests` error (which is the default rate-limiting behaviour), the Gateway temporarily holds them in a queue. After waiting for a specified duration (`throttle_interval`), Tyk attempts to process the request again, re-checking the rate limit status. 
 
 This retry cycle repeats until either the request can be successfully processed (if capacity becomes available) or a configured maximum number of retries (`throttle_retry_limit`) is reached. Only after exhausting all retries does Tyk return the `429` error to the client.
 
-Think of it like trying to access a service with two restrictions: a limit on how many people can enter per minute (Rate Limit) and a total daily entry pass limit (Quota). If you arrive and *either* the per-minute entry is full *or* you've used your daily pass allowance, standard behaviour is to turn you away immediately. With Throttling enabled, the service instead asks you to wait briefly (the interval) and tries your entry again shortly, checking *both* the per-minute flow and your pass status again, repeating this a few times (the retry limit) before finally turning you away if access is still restricted.
+Think of it like trying to access a service with a restriction on how many people can enter per minute (Rate Limit). If you arrive when the per-minute limit is full, standard behaviour is to turn you awa
+y immediately. With Throttling enabled, the service instead asks you to wait briefly (the interval) and tries your entry again shortly, checking if the rate limit has freed up capacity, repeating this a f
+ew times (the retry limit) before finally turning you away if access is still restricted.
 
 ---
 ## FAQs
