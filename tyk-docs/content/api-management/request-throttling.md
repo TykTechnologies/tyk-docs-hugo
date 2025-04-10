@@ -12,13 +12,17 @@ aliases:
 
 Tyk's Request Throttling feature provides a mechanism to manage traffic spikes by queuing and automatically retrying client requests that exceed [rate limits]({{< ref "/api-management/rate-limit" >}}), rather than immediately rejecting them. This helps protect upstream services from sudden bursts and improves the resilience of API interactions during temporary congestion.
 
+
+
 <!-- TODO: Add an image. -->
 ---
-## Tutorial to throttling - setup and testing guide"
-
+## Tutorial to throttling - setup and testing guide
+### Overview
 In this tutorial, we will configure Request Throttling on a Tyk Security Policy to protect a backend service from sudden traffic spikes. We'll start by defining a basic rate limit on a policy, then enable throttling with specific retry settings to handle bursts exceeding that limit, associate a key with the policy, and finally test the behaviour using simulated traffic. This guide primarily uses the Tyk Dashboard for configuration.
 
 ### Prerequisites
+
+Since we are providing a full example, we recommend installing the following, however, if you have a running deployment as a playground, please feel free to jump to [step 6: set up a policy with throttling]({{< ref "#policy-setup" >}}).
 
 - **Docker**: We will run the entire Tyk Stack on Docker. For installation, refer to this [guide](https://docs.docker.com/desktop/setup/install/mac-install/).
 - **Git**: A CLI tool to work with git repositories. For installation, refer to this [guide](https://git-scm.com/downloads)
@@ -26,6 +30,7 @@ In this tutorial, we will configure Request Throttling on a Tyk Security Policy 
 - **Curl, seq and xargs**: These tools will be used for testing.
 
 ### Instructions
+#### Start up Tyk stack
 
 1. **Clone Git Repository:**
 
@@ -64,6 +69,8 @@ In this tutorial, we will configure Request Throttling on a Tyk Security Policy 
 4. **Verify Setup:**
 
     Open Tyk Dashboard in your browser by visiting [http://localhost:3000](http://localhost:3000) or [http://tyk-dashboard.localhost:3000](http://tyk-dashboard.localhost:3000) and login with the provided **admin** credentials.
+
+#### API set up
 
 5.  **Create an API:**
     -   Log in to your Tyk Dashboard.
@@ -165,6 +172,7 @@ In this tutorial, we will configure Request Throttling on a Tyk Security Policy 
     {"Status":"OK","Message":"API created","Meta":"67f3b6f17bdf060001c1ae18","ID":"955871990da047146a40f1f8ceb62d79"}%                                                                   
     ``` -->
 
+#### Policy and rate limit set up {#policy-setup}
 6.  **Create and Configure an Security Policy with Rate Limiting:**
 
     1.  Navigate to **API Security > Policies** in the Tyk Dashboard sidebar.
@@ -195,7 +203,7 @@ In this tutorial, we will configure Request Throttling on a Tyk Security Policy 
 
 8. **Test Rate Limit**
 
-    Before enabling throttling, let's observe the standard rate limiting behaviour. We'll send 10 requests in quick succession using `xargs` to simulate a burst that exceeds our configured limit (5 requests per 10 seconds).
+    So far, we've created a policy for an API definition and created a key that complies with that policy. Before enabling throttling, let's observe the standard rate limiting behaviour. We'll send 10 requests in quick succession using `xargs` to simulate a burst that exceeds our configured limit (5 requests per 10 seconds).
 
     1.  Open your terminal.
     2.  Execute the following command, replacing `<replace-with-key-id>` with the API Key ID you saved earlier:
@@ -221,6 +229,7 @@ In this tutorial, we will configure Request Throttling on a Tyk Security Policy 
     HTTP/1.1 200 OK
     ```
 
+#### Throttling set up
 9.  **Configure Request Throttling by Updating the Security Policy**
 
     1.  Navigate to **API Security > Policies** in the Tyk Dashboard sidebar.
@@ -234,6 +243,7 @@ In this tutorial, we will configure Request Throttling on a Tyk Security Policy 
     4.  Click the **Update** button.
     5.  A pop-up window will appear to confirm the changes. Click **Update** to close the pop-up.
 
+#### Testing
 10. **Test Request Throttling**
 
     1.  **Repeat the Test:** Open your terminal and execute the *exact same command* as in step 4:
