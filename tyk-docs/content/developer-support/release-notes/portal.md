@@ -37,6 +37,43 @@ Our minor releases are supported until our next minor comes out.
 ---
 
 ## 1.13 Release Notes
+
+### 1.13.1 Release Notes
+
+#### Release Date XXX
+
+#### Release Highlights
+This release is focused mainly on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.13.1) below.
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are on 1.12.0 or an older version, we advise you to upgrade ASAP to this release.
+
+#### Download
+- [Docker image v1.13.1](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.13.1)
+  - ```bash
+    docker pull tykio/portal:v1.13.1
+    ```
+- [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.13.1)
+
+#### Changelog {#Changelog-v1.13.1}
+
+<ul>
+<li>
+<details>
+<summary>Add changelog summary</summary>
+
+Add changelog description 
+</details>
+</li>
+</ul>
+
+
 ### 1.13.0 Release Notes
 
 #### Release Date 31 Jan 2025
