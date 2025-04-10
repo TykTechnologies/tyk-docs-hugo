@@ -13,9 +13,8 @@ aliases:
 Tyk's Request Throttling feature provides a mechanism to manage traffic spikes by queuing and automatically retrying client requests that exceed [rate limits]({{< ref "/api-management/rate-limit" >}}), rather than immediately rejecting them. This helps protect upstream services from sudden bursts and improves the resilience of API interactions during temporary congestion.
 
 <!-- TODO: Add an image. -->
-
 ---
-## Quick Start
+## Tutorial to throttling - setup and testing guide"
 
 In this tutorial, we will configure Request Throttling on a Tyk Security Policy to protect a backend service from sudden traffic spikes. We'll start by defining a basic rate limit on a policy, then enable throttling with specific retry settings to handle bursts exceeding that limit, associate a key with the policy, and finally test the behaviour using simulated traffic. This guide primarily uses the Tyk Dashboard for configuration.
 
@@ -274,7 +273,7 @@ This comparison clearly shows how Request Throttling changes the behaviour from 
 ---
 ## Configuration Options
 
-Request Throttling is configured within Tyk [Security Policies]({{< ref "/api-management/policies" >}}) or directly on individual [Access Keys]({{< ref "" >}}).
+Request Throttling is configured within Tyk [Security Policies]({{< ref "/api-management/policies" >}}) or directly on individual [Access Keys]({{< ref "/api-management/client-authentication#use-auth-tokens" >}}).
 
 The configuration involves setting two specific fields:
 
