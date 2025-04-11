@@ -259,30 +259,33 @@ This script also starts `Kafka` within a Docker container, which is necessary fo
 
     Create a file `producer.json` with the below content: (**Note:** `tyk-demo-kafka-1` is the hostname used to access Kafka running in a container; alternatively, you can use the IP address assigned to your computer.)
 
+    <details>
+    <summary><b>Click to expand the API Definition</b></summary>
+
     ```json
     {
         "components": {},
         "info": {
-            "title": "gpt-chat",
+            "title": "jippity-chat",
             "version": "1.0.0"
         },
         "openapi": "3.0.3",
         "paths": {},
         "servers": [
             {
-                "url": "http://tyk-gateway.localhost:8080/gpt-chat/"
+                "url": "http://tyk-gateway.localhost:8080/jippity-chat/"
             }
         ],
         "x-tyk-api-gateway": {
             "info": {
-                "name": "gpt-chat",
+                "name": "jippity-chat",
                 "state": {
                     "active": true
                 }
             },
             "server": {
                 "listenPath": {
-                    "value": "/gpt-chat/",
+                    "value": "/jippity-chat/",
                     "strip": true
                 }
             },
@@ -318,6 +321,9 @@ This script also starts `Kafka` within a Docker container, which is necessary fo
         }
     }
     ```
+
+    </details>
+
     
     Create the API by executing the following command. Be sure to replace `<your-api-key>` with the API key you saved earlier:
 
@@ -334,30 +340,33 @@ This script also starts `Kafka` within a Docker container, which is necessary fo
 
     Create a file `consumer.json` with the below content: (**Note:** `tyk-demo-kafka-1` is the hostname used to access Kafka running in a container; alternatively, you can use the IP address assigned to your computer.)
 
+    <details>
+    <summary><b>Click to expand the API Definition</b></summary>
+
     ```json
     {
         "components": {},
         "info": {
-            "title": "gpt-discuss",
+            "title": "jippity-discuss",
             "version": "1.0.0"
         },
         "openapi": "3.0.3",
         "paths": {},
         "servers": [
             {
-                "url": "http://tyk-gateway.localhost:8080/gpt-discuss/"
+                "url": "http://tyk-gateway.localhost:8080/jippity-discuss/"
             }
         ],
         "x-tyk-api-gateway": {
             "info": {
-                "name": "gpt-discuss",
+                "name": "jippity-discuss",
                 "state": {
                     "active": true
                 }
             },
             "server": {
                 "listenPath": {
-                    "value": "/gpt-discuss/",
+                    "value": "/jippity-discuss/",
                     "strip": true
                 }
             },
@@ -394,6 +403,9 @@ This script also starts `Kafka` within a Docker container, which is necessary fo
         }
     }
     ```
+
+    </details>
+
     
     Create the API by executing the following command. Be sure to replace `<your-api-key>` with the API key you saved earlier:
 
@@ -410,6 +422,9 @@ This script also starts `Kafka` within a Docker container, which is necessary fo
 
     Create a file `joker-service.sh` with the below content:
 
+    <details>
+    <summary><b>Click to expand Joker Service</b></summary>
+
     ```bash
     #!/bin/bash
 
@@ -424,7 +439,7 @@ This script also starts `Kafka` within a Docker container, which is necessary fo
     TARGET_TOPIC="discussion"
 
     # Kafka consumer and producer commands
-    CONSUMER_CMD="/opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server $BOOTSTRAP_SERVER --topic $SOURCE_TOPIC --from-beginning"
+    CONSUMER_CMD="/opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server $BOOTSTRAP_SERVER --topic $SOURCE_TOPIC"
     PRODUCER_CMD="/opt/kafka/bin/kafka-console-producer.sh --broker-list $BOOTSTRAP_SERVER --topic $TARGET_TOPIC"
 
     # Joke API URL
@@ -439,8 +454,8 @@ This script also starts `Kafka` within a Docker container, which is necessary fo
 
         echo "Received message from $SOURCE_TOPIC: $message"
         
-        # Fetch a random joke from the API and extract it with grep/sed
-        joke=$(curl -s -H "Accept: application/json" "$JOKE_API" | grep -o '"joke":"[^"]*"' | sed 's/"joke":"\(.*\)"/\1/')
+        # Fetch a random joke from the API and extract it with jq
+        joke=$(curl -s -H "Accept: application/json" "$JOKE_API" | jq .joke)
         
         # Check if joke was fetched successfully
         if [ -n "$joke" ]; then
@@ -458,6 +473,9 @@ This script also starts `Kafka` within a Docker container, which is necessary fo
     echo "Consumer stopped."
     ```
 
+    </details>
+
+
     Make the file executable and start the service
 
     ```bash
@@ -470,13 +488,13 @@ This script also starts `Kafka` within a Docker container, which is necessary fo
    Open a terminal and execute the following command to start listening for messages from the Consumer API you created:
 
    ```bash
-   curl -N http://tyk-gateway.localhost:8080/gpt-discuss/sse
+   curl -N http://tyk-gateway.localhost:8080/jippity-discuss/sse
    ```
 
    In a second terminal, execute the command below to send a message to the Producer API. You can run this command multiple times and modify the message to send different messages:
 
    ```bash
-   curl -X POST http://tyk-gateway.localhost:8080/gpt-chat/chat -H "Content-Type: text/plain" -d "Tell me a joke."
+   curl -X POST http://tyk-gateway.localhost:8080/jippity-chat/chat -H "Content-Type: text/plain" -d "Tell me a joke."
    ```
 
    Now, you will see the message appear in the terminal window where you are listening for messages.
@@ -508,7 +526,7 @@ To manage these asynchronous interactions, the Tyk Streams module relies on seve
 1.  **Stream Middleware**: This component plugs into the Tyk Gateway's request processing chain. It runs *after* standard middleware like authentication and rate limiting but *before* the request would normally be proxied. Its job is to inspect incoming requests, identify if they match a configured stream path, and if so, divert them from the standard proxy flow into the stream handling logic.
 2.  **Stream Manager**: Acts as the supervisor for streaming operations defined in an API. For a given stream configuration, it's responsible for initializing, managing the lifecycle (starting/stopping), and coordinating the necessary `Stream Instances`. It ensures the correct streaming infrastructure is ready based on the API definition.
 3.  **Stream Instance**: Represents a running, active instance of a specific stream processing task. Each instance executes the logic defined in its configuration – connecting to an event broker, processing messages, transforming data, handling connections, etc. There can be multiple instances depending on the configuration and workload.
-4.  **Stream Analytics**: This component captures telemetry data specific to stream operations, such as message throughput, connection counts, processing latency, and errors. It feeds this data into the standard Tyk analytics pipeline, allowing you to monitor the health and performance of your streams alongside your synchronous APIs.
+4.  **Stream Analytics**: This component captures telemetry data specific to stream operations, such as message throughput, connection counts, processing latency, and errors. This data can be exported to popular analytics platforms like Prometheus, OpenTelemetry, and StatsD.
 
 The following diagram shows the relationships and primary interactions between these internal components and how they relate to the Gateway and Upstream API:
 
@@ -845,14 +863,6 @@ In this example:
     - **Enriches** the high-value orders by retrieving the customer ID and email from a separate data source.
     - **Adds** a new high_value_order flag to each qualifying event.
 - **Output Handling**: Processed high-value order events are exposed via a WebSocket stream at the endpoint */high-value-orders*.
-
-{{< note success >}}
-
-**Kafka Demo**
-
-For a practical demonstration of Kafka and Tyk Streams integration, please visit our comprehensive [Kafka Integration Demo](https://github.com/TykTechnologies/tyk-pro-docker-demo/tree/kafka).
-
-{{< /note >}}
 
 ### Legacy Modernization
 
