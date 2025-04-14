@@ -63,12 +63,28 @@ If you are on 1.12.0 or an older version, we advise you to upgrade ASAP to this 
 
 #### Changelog {#Changelog-v1.13.1}
 
+#### Fixed 
+
 <ul>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Revoking One Client Credential No Longer Deletes All from Keycloak</summary>
 
-Add changelog description 
+Resolved an issue where revoking a single client credential from an app with multiple credentials would remove all associated clients in Keycloak. This fix ensures only the selected credential is deleted, maintaining sync between the Tyk Portal and Keycloak and preventing access errors. Essential for customers using Dynamic Client Registration (DCR) flows.
+</details>
+</li>
+<li>
+<details>
+<summary>SSO Now Works with Multiple Portal Replicas in EDP</summary>
+
+Fixed an issue where SSO login to the Enterprise Developer Portal failed with a "301 SSO Nonce" error when multiple Portal replicas were deployed. The nonce is now stored in a shared database instead of memory, ensuring consistent authentication across load-balanced instances. This permanent fix supports scalable, reliable SSO for high-availability setups.
+</details>
+</li>
+<li>
+<details>
+<summary>API Description Field Restored</summary>
+
+Resolved a regression introduced in v1.13.0 that removed the ability to view or edit API descriptions on the API Product page. The API description field is now visible and editable again, restoring parity with earlier versions and ensuring API documentation remains complete and user-friendly.
 </details>
 </li>
 </ul>
