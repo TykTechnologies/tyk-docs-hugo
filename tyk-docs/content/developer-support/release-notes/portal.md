@@ -82,6 +82,13 @@ Fixed an issue where SSO login to the Enterprise Developer Portal failed with a 
 </li>
 <li>
 <details>
+<summary>Password No Longer Overwritten on User Profile Updates</summary>
+
+Addressed an issue where editing and saving a user’s profile in the admin portal would unintentionally change their password due to double encryption. Admins can now safely update user details without affecting login credentials. Passwords will only change when explicitly updated.
+</details>
+</li>
+<li>
+<details>
 <summary>API Description Field Restored</summary>
 
 Resolved a regression introduced in v1.13.0 that removed the ability to view or edit API descriptions on the API Product page. The API description field is now visible and editable again, restoring parity with earlier versions and ensuring API documentation remains complete and user-friendly.
