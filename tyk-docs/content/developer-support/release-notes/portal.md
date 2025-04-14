@@ -70,14 +70,14 @@ If you are on 1.12.0 or an older version, we advise you to upgrade ASAP to this 
 <details>
 <summary>Revoking One Client Credential No Longer Deletes All from Keycloak</summary>
 
-Resolved an issue where revoking a single client credential from an app with multiple credentials would remove all associated clients in Keycloak. This fix ensures only the selected credential is deleted, maintaining sync between the Tyk Portal and Keycloak and preventing access errors. Essential for customers using Dynamic Client Registration (DCR) flows.
+Fixed an issue where all client credentials associated with an app would be incorrectly removed from Keycloak when credentials are revoked in the Tyk Portal. This would lead to credentials existing in Tyk Developer Portal but not in Keycloak. Now, when an app with multiple client credentials has one set of credentials revoked in Tyk Deve Portal, only those credentials will be removed from Keycloak, with the others remaining valid.
 </details>
 </li>
 <li>
 <details>
-<summary>SSO Now Works with Multiple Portal Replicas in EDP</summary>
+<summary>SSO Now Works Properly with Multiple Portal Replicas</summary>
 
-Fixed an issue where SSO login to the Enterprise Developer Portal failed with a "301 SSO Nonce" error when multiple Portal replicas were deployed. The nonce is now stored in a shared database instead of memory, ensuring consistent authentication across load-balanced instances. This permanent fix supports scalable, reliable SSO for high-availability setups.
+Fixed issue where users couldn't log in via SSO when multiple instances (replicas) of Portal were deployed
 </details>
 </li>
 <li>
