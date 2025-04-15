@@ -1088,15 +1088,15 @@ A topic is a named destination within a broker where events are published. Subsc
 
 Tyk Streams is an extension to the Tyk API Gateway that supports asynchronous APIs and event-driven architectures. It solves the challenge of managing both synchronous and asynchronous APIs in a unified platform, allowing organizations to handle real-time event streams alongside traditional REST APIs.
 
-</details> <details> <summary><b>Which event brokers and protocols does Tyk Streams support?</b></summary>
+</details> 
+
+<details> <summary><b>Which event brokers and protocols does Tyk Streams support?</b></summary>
 
 Refer this [documentation]({{< ref "#supported-connectors-and-protocols" >}}).
 
-</details> <details> <summary><b>How can I handle large file uploads through Tyk without memory issues?</b></summary>
+</details> 
 
-Large file uploads via multipart forms can cause memory issues as Tyk buffers the entire content. As a workaround, you can use a client that sends data in "chunked" mode without specifying Content-Length. A community member has also developed a fork of Tyk Gateway 5.2.6 that supports streaming for multipart content types, which avoids buffering the payload.
-
-</details> <details> <summary><b>How can I enable Tyk Streams on Tyk Cloud?</b></summary>
+<details> <summary><b>How can I enable Tyk Streams on Tyk Cloud?</b></summary>
 
 Currently, Streams are only available for hybrid customers on Tyk Cloud. To enable it:
 
@@ -1106,19 +1106,27 @@ Currently, Streams are only available for hybrid customers on Tyk Cloud. To enab
 
 3.  Update the license claim for the organization. Note that this will redeploy all Control Planes and Control Data Planes in the organization.
 
-</details> <details> <summary><b>Can I publish Tyk Streams APIs to the Developer Portal?</b></summary>
+</details> 
+
+<details> <summary><b>Can I publish Tyk Streams APIs to the Developer Portal?</b></summary>
 
 Yes, as of Tyk v5.7.0, you can publish Tyk Streams APIs to the Tyk Developer Portal. The process is similar to publishing traditional APIs: create a Tyk Streams API, create a Policy to protect it, and publish it to the Developer Portal Catalog.
 
-</details> <details> <summary><b>How does Tyk Streams handle protocol mediation?</b></summary>
+</details> 
+
+<details> <summary><b>How does Tyk Streams handle protocol mediation?</b></summary>
 
 Tyk Streams offers protocol mediation capabilities that allow you to expose async APIs using protocols different from those of the backend event broker. For example, you can expose a Kafka topic as a WebSocket API, convert MQTT messages to HTTP webhooks, or bridge between different async protocols (e.g., Kafka to MQTT).
 
-</details> <details> <summary><b>What deployment considerations should I keep in mind for Tyk Streams?</b></summary>
+</details> 
+
+<details> <summary><b>What deployment considerations should I keep in mind for Tyk Streams?</b></summary>
 
 Tyk Streams is embedded within the Tyk Gateway and scales with your existing Tyk infrastructure. No additional configuration or separate infrastructure is required.
 
-</details> <details> <summary><b>Is Tyk Streams available in all Tyk editions?</b></summary>
+</details> 
+
+<details> <summary><b>Is Tyk Streams available in all Tyk editions?</b></summary>
 
 Tyk Streams is a newer feature that is available only in the `enterprise` edition. Currently, it's only available for hybrid customers on Tyk Cloud. Check the latest documentation or contact Tyk support for specific availability in your edition.
 
