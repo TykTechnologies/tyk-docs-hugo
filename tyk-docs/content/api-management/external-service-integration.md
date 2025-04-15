@@ -1437,7 +1437,7 @@ The configuration below will proxy a request to `http://{TARGET-HOSTNAME}:{PORT}
   - Test the basic SSO flow to ensure it's working correctly
 
 4. **Enable JWE**
-  - [Updated the TIB profile via API]({{< ref "tyk-identity-broker/tib-rest-api#a-nameupdate-profilea-update-profile" >}})
+  - [Updated the TIB profile via API]({{< ref "tyk-identity-broker/tib-rest-api#update-profile" >}})
     - Add the following fields to the `ProviderConfig` section:
 
       ```json
