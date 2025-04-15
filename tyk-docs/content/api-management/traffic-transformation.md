@@ -5417,7 +5417,7 @@ You can use the API Designer in the Tyk Dashboard to configure the Mock Response
 
 1. **Add an endpoint for the path and configure a list plugin**
 
-    For the mock response to be enabled, the endpoint must also be in a list. We recommend adding the path to an allow list by [selecting]({{< ref "api-management/traffic-transformation#api-definition-1" >}}) the **Whitelist** plugin.
+    For the mock response to be enabled, the endpoint must also be in a list. We recommend adding the path to an allow list by [selecting]({{< ref "api-management/traffic-transformation#api-definition-1" >}}) the **Allow List** plugin.
 
 2. **Add the mock response plugin**
 
