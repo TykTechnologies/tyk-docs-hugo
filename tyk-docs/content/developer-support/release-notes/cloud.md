@@ -11,7 +11,7 @@ tags: ["Tyk Cloud", "Release notes", "v1.23", "1.23.0", "v1.24", "1.24.0", "v1.2
 
 ### Release Highlights
 
-This release focuses on improving the stability, security, and reliability of Tyk Cloud. We’ve addressed several  bugs, enhanced UI behavior, resolved performance bottlenecks, and implemented secure defaults to strengthen the platform’s security posture. These improvements contribute to a more robust and consistent experience across the board.
+This release focuses on improving Tyk Cloud's stability, security, and reliability. We’ve addressed several bugs, enhanced UI behavior, resolved performance bottlenecks, and implemented secure defaults to strengthen the platform’s security posture. 
 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.27.0" >}}) below.
 
