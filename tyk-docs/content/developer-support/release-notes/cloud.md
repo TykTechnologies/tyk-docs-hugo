@@ -35,7 +35,7 @@ There are no deprecations in this release.
 <details>
 <summary>Clear Error Message Shown When Control Plane Deployment Fails</summary>
 
-Tyk Cloud now displays a clear and informative error message when a Control Plane fails to deploy. Previously, users received no feedback, causing confusion. The new message lets users know the issue is being addressed and provides guidance on what to do next, improving transparency and user experience during deployment failures.
+Tyk Cloud now displays an informative error message when a Control Plane fails to deploy. Previously, users received no feedback, causing confusion. The new message lets users know the issue is being addressed and guides what to do next, improving transparency and user experience during deployment failures.
 
 </details>
 </li>  
@@ -44,7 +44,7 @@ Tyk Cloud now displays a clear and informative error message when a Control Plan
 <details>
 <summary>UI Support for Enabling Audit Logging on Control Planes</summary>
 
-Audit logging can now be enabled or disabled directly from the UI for Control Plane deployments, if included in your plan.
+Audit logging can now be enabled or disabled directly from the UI for Control Plane deployments if it is included in your plan.
 
 </details>
 </li>
@@ -53,7 +53,7 @@ Audit logging can now be enabled or disabled directly from the UI for Control Pl
 <details>
 <summary>Secure Defaults Now Applied for Admin Token Visibility</summary>
 
-As announced in the previous release, Tyk Cloud now defaults to secure settings that restrict admin users from viewing or resetting API tokens of other users in the Dashboard.
+As announced in the previous release, Tyk Cloud now defaults to secure settings that restrict admin users from viewing or resetting other users' API tokens in the Dashboard.
 
 </details>
 </li>
