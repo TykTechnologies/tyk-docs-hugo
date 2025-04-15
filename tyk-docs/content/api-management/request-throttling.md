@@ -257,7 +257,7 @@ You can configure these settings using either the Tyk Dashboard UI or the Tyk Da
 
 ### Configure via UI
 
-The Tyk Dashboard provides a straightforward interface to set throttling parameters on both Policies and Keys.
+The Tyk Dashboard provides a straightforward interface to set throttling parameters on both Security Policies and Access Keys.
 
 {{< tabs_start >}}
 
@@ -405,3 +405,29 @@ Think of it like trying to access a service with a restriction on how many peopl
 y immediately. With Throttling enabled, the service instead asks you to wait briefly (the interval) and tries your entry again shortly, checking if the rate limit has freed up capacity, repeating this a f
 ew times (the retry limit) before finally turning you away if access is still restricted.
 
+---
+## FAQ
+
+<details> <summary><b>What is the difference between rate limiting and request throttling in Tyk?</b></summary>
+
+Rate limiting and request throttling serve different purposes in Tyk:
+
+-   Rate Limiting: Sets a maximum number of requests allowed within a specific time window (e.g., 100 requests per minute). When the limit is reached, additional requests receive an HTTP 429 error response.
+
+-   Request Throttling: A mechanism that queues and auto-retries client requests when they hit quota or rate limits. Instead of immediately rejecting excess requests, Tyk will queue them and retry automatically based on configured parameters.
+
+Rate limiting is about rejecting excess traffic, while throttling is about managing and smoothing traffic spikes by queuing and retrying requests.
+
+</details> 
+
+<details> <summary><b>How do I configure request throttling in Tyk?</b></summary>
+
+Refer to this [documentation]({{< ref "#configuration-options" >}}).
+
+</details> 
+
+<details> <summary><b>Is request throttling enabled by default in Tyk?</b></summary>
+
+No, request throttling is disabled by default in Tyk. The default values for both `throttle_interval` and `throttle_retry_limit` are set to `-1` , which means the feature is inactive. To enable throttling, you need to explicitly set positive values for both parameters.
+
+</details> 
