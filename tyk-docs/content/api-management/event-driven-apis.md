@@ -643,10 +643,10 @@ If you manage your APIs via the Tyk Dashboard, you also need to enable Streams s
 {{< tabs_start >}}
 {{< tab_start "Config File" >}}
 ```yaml
-// tyk_analytics.conf
+# tyk_analytics.conf
 ...
 "streaming": {
-  "enabled": true // Required to enable Streams UI in the Dashboard
+  "enabled": true # Required to enable Streams UI in the Dashboard
 }
 ...
 ```
@@ -670,22 +670,22 @@ The core structure under `x-tyk-streaming` is the `streams` object, which contai
 *   **`output`**: Specifies where the data goes after processing (e.g., published to Kafka, sent over WebSocket, delivered via webhook).
 
 ```yaml
-// Inside your Tyk OAS API Definition
+# Inside your Tyk OAS API Definition
 ...
 "x-tyk-streaming": {
   "streams": {
-    "your_stream_name": { // A unique name for this stream configuration within the API
+    "your_stream_name": { # A unique name for this stream configuration within the API
       "input": {
-        // Input configuration object - specifies the data source
-        // Example: "http_server": { ... } or "kafka": { ... }
+        # Input configuration object - specifies the data source
+        # Example: "http_server": { ... } or "kafka": { ... }
       },
       "output": {
-        // Output configuration object - specifies the data destination
-        // Example: "kafka": { ... } or "websocket_server": { ... }
+        # Output configuration object - specifies the data destination
+        # Example: "kafka": { ... } or "websocket_server": { ... }
       }
-      // Optional processing/transformation steps can also be defined here
+      # Optional processing/transformation steps can also be defined here
     },
-    "another_stream": { // You can define multiple independent streams
+    "another_stream": { # You can define multiple independent streams
       "input": { ... },
       "output": { ... }
     }
