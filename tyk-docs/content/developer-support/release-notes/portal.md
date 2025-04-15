@@ -70,14 +70,14 @@ If you are on 1.12.0 or an older version, we advise you to upgrade ASAP to this 
 <details>
 <summary>Revoking One Client Credential No Longer Deletes All from Keycloak</summary>
 
-Fixed an issue where all client credentials associated with an app would be incorrectly removed from Keycloak when credentials are revoked in the Tyk Portal. This would lead to credentials existing in Tyk Developer Portal but not in Keycloak. Now, when an app with multiple client credentials has one set of credentials revoked in Tyk Deve Portal, only those credentials will be removed from Keycloak, with the others remaining valid.
+Fixed an issue where all client credentials associated with an app would be incorrectly removed from Keycloak when credentials are revoked in the Tyk Portal. This would lead to credentials existing in the Tyk Developer Portal but not in Keycloak. Now, when an app with multiple client credentials has one set of credentials revoked in the Tyk Developer Portal, only those credentials will be removed from Keycloak, with the others remaining valid.
 </details>
 </li>
 <li>
 <details>
 <summary>SSO Now Works Properly with Multiple Portal Replicas</summary>
 
-Fixed issue where users couldn't log in via SSO when multiple instances (replicas) of Portal were deployed
+Fixed an issue where users couldn't log in via SSO when multiple instances (replicas) of Portal were deployed
 </details>
 </li>
 <li>
