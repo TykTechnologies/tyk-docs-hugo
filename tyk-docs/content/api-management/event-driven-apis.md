@@ -618,13 +618,14 @@ Enable the Streams processing engine within the Gateway by setting `enabled` to 
 
 {{< tabs_start >}}
 {{< tab_start "Config File" >}}
-```yaml
-# tyk.conf
-...
-"streaming": {
-  "enabled": true # Required to activate Streams functionality
+```json
+{
+// Partial config from tyk.conf
+    "streaming": {
+        "enabled": true // Required to activate Streams functionality
+    },
+// ... more config follows
 }
-...
 ```
 {{< tab_end >}}
 {{< tab_start "Environment Variable" >}}
@@ -642,13 +643,14 @@ If you manage your APIs via the Tyk Dashboard, you also need to enable Streams s
 
 {{< tabs_start >}}
 {{< tab_start "Config File" >}}
-```yaml
-# tyk_analytics.conf
-...
-"streaming": {
-  "enabled": true # Required to enable Streams UI in the Dashboard
+```json
+{
+// Partial config from tyk_analytics.conf
+    "streaming": {
+        "enabled": true // Required to activate Streams functionality
+    },
+// ... more config follows
 }
-...
 ```
 {{< tab_end >}}
 {{< tab_start "Environment Variable" >}}
@@ -669,29 +671,30 @@ The core structure under `x-tyk-streaming` is the `streams` object, which contai
 *   **`input`**: Specifies how data enters this stream (e.g., via an HTTP request, by consuming from Kafka, connecting via WebSocket).
 *   **`output`**: Specifies where the data goes after processing (e.g., published to Kafka, sent over WebSocket, delivered via webhook).
 
-```yaml
-# Inside your Tyk OAS API Definition
-...
-"x-tyk-streaming": {
-  "streams": {
-    "your_stream_name": { # A unique name for this stream configuration within the API
-      "input": {
-        # Input configuration object - specifies the data source
-        # Example: "http_server": { ... } or "kafka": { ... }
-      },
-      "output": {
-        # Output configuration object - specifies the data destination
-        # Example: "kafka": { ... } or "websocket_server": { ... }
-      }
-      # Optional processing/transformation steps can also be defined here
+```json
+{
+// Partial config from Tyk OAS API Definition
+    "x-tyk-streaming": {
+        "streams": {
+            "your_stream_name": { // A unique name for this stream configuration within the API
+                "input": {
+                    // Input configuration object - specifies the data source
+                    // Example: "http_server": { ... } or "kafka": { ... }
+                },
+                "output": {
+                    // Output configuration object - specifies the data destination
+                    // Example: "kafka": { ... } or "websocket_server": { ... }
+                }
+                // Optional processing/transformation steps can also be defined here
+            },
+            "another_stream": { // You can define multiple independent streams
+                "input": { ... },
+                "output": { ... }
+            }
+        }
     },
-    "another_stream": { # You can define multiple independent streams
-      "input": { ... },
-      "output": { ... }
-    }
-  }
+// ... more config follows
 }
-...
 ```
 
 **Available Input and Output Types:**
@@ -703,31 +706,33 @@ Tyk supports various connector types for both `input` and `output`. **The specif
 {{< tabs_start >}}
 
 {{< tab_start "Tyk OAS API Definition" >}}
-```yaml
-...
-"x-tyk-streaming": {
-  "streams": {
-      "http_to_kafka_chat": {
-          "input": {
-              "http_server": {
-                  "path": "/chat",
-                  "allowed_verbs": [ "POST" ],
-                
-              },
-              "label": "HTTP Chat Input"
-          },
-          "output": {
-              "kafka": {
-                  "addresses": ["kafka-broker:9092"],
-                  "topic": "chat",
-                
-              },
-              "label": "Kafka Chat Output"
-          }
-      }
-  }
+```json
+{
+// Partial config from Tyk OAS API Definition
+    "x-tyk-streaming": {
+        "streams": {
+            "http_to_kafka_chat": {
+                "input": {
+                    "http_server": {
+                        "path": "/chat",
+                        "allowed_verbs": [ "POST" ],
+                        
+                    },
+                    "label": "HTTP Chat Input"
+                },
+                "output": {
+                    "kafka": {
+                        "addresses": ["kafka-broker:9092"],
+                        "topic": "chat",
+                        
+                    },
+                    "label": "Kafka Chat Output"
+                }
+            }
+        }
+    },
+// ... more config follows
 }
-...
 ```
 
 For comprehensive details on all fields within `x-tyk-streaming`, see the [Tyk OAS Extension documentation]({{< ref "api-management/gateway-config-tyk-oas#xtykstreaming" >}}).
