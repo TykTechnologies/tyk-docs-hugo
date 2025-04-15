@@ -596,15 +596,7 @@ sequenceDiagram
 
 ### Scaling and Availability
 
-The beauty of Tyk Streams is that it’s baked into the Tyk Gateway, so it scales naturally as your API traffic ramps up—no extra setup or separate systems required. It’s efficient too, reusing the same resources as the Gateway to keep things lean. 
-
-Tyk Streams ensures reliable message delivery across a cluster of Tyk Gateway instances. Whether clients connect through a load balancer or directly to individual gateway nodes, Tyk Streams guarantees that messages are delivered to each connected consumer.
-
-Under the hood, Tyk Streams utilizes [Redis Streams](https://redis.io/docs/latest/develop/data-types/streams/) for efficient and reliable message distribution within the Tyk Gateway cluster. This enables:
-
-- **Fault tolerance**: If a gateway node fails, clients connected to other nodes continue to receive messages uninterrupted.
-- **Load balancing**: Messages are evenly distributed across the gateway cluster, ensuring optimal performance and resource utilization.
-- **Message persistence**: Redis Streams provides durability, allowing messages to be persisted and replayed if necessary.
+The beauty of Tyk Streams is that it’s baked into the Tyk Gateway, so it scales naturally as your API traffic ramps up—no extra setup or separate systems required. It’s efficient too, reusing the same resources as the Gateway to keep things lean.
 
 ---
 ## Configuration Options
