@@ -105,6 +105,10 @@ menu:
         path: /api-management/rate-limit
         category: Page
         show: True
+      - title: "Request Quotas"
+        path: /api-management/request-quotas
+        category: Page
+        show: True
       - title: "Security Policy and Access Keys"
         path: /api-management/policies
         category: Page

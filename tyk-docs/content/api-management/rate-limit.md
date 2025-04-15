@@ -5,14 +5,12 @@ tags: ["Rate Limit", "Rate Limiting", "Rate Limit Algorithms", "Distributed Rate
 description: Overview of Rate Limiting with the Tyk Gateway
 keywords: ["Rate Limit", "Rate Limiting", "Rate Limit Algorithms", "Distributed Rate Limiter", "Redis Rate Limiter", "Fixed Window", "Spike Arrest", "Rate Limit Scope", "Local", "Local rate Limits", "Request Throttling", "Quotas", "Tyk Classic", "Tyk Classic API", "Tyk OAS", "Tyk OAS API", "Rate Limiting", "Global limits", "Per API limits", "Request Throttling", "Request Quotas"]
 aliases:
-  - /control-limit-traffic/request-quotas
   - /control-limit-traffic/rate-limiting
   - /basic-config-and-security/control-limit-traffic
   - /getting-started/key-concepts/rate-limiting
   - /basic-config-and-security/control-limit-traffic/rate-limiting
   - /product-stack/tyk-gateway/middleware/endpoint-rate-limit-oas
   - /product-stack/tyk-gateway/middleware/endpoint-rate-limit-classic
-  - /basic-config-and-security/control-limit-traffic/request-quotas
   - /basic-config-and-security/control-limit-traffic/request-throttling
   - /product-stack/tyk-streaming/configuration/rate-limits/overview
   - /product-stack/tyk-streaming/configuration/rate-limits/local
