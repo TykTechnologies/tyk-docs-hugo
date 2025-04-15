@@ -893,3 +893,159 @@ Yes, you can. If you set `throttle_interval` and `throttle_retry_limit` values t
 
 Get the policy object with `GET /api/portal/policies/` or the key's session object via `GET /api/apis/{API-ID}/keys/` and then  set two fields, `throttle_interval` and `throttle_retry_limit` in the object and create a new object or update the exsiting one.
 
+## FAQ
+
+<details> <summary><b>How does spike arrest work in Tyk?</b></summary>
+
+Spike arrest in Tyk is a protection mechanism that limits the number of requests processed within a specified time interval. If the incoming request rate exceeds this limit, excess requests are throttled to ensure the API server remains available and responsive.
+
+When using the Redis Rate Limiter algorithm, Tyk implements a "spike arrest" behavior that blocks access to the API when the rate exceeds the configured limit. The API will not accept further calls until the rate drops below the specified limit for the entire duration of the configured time window.
+
+For example, if your rate limit is 3000 requests/minute, the call rate would need to stay below 3000 requests/minute for a full minute before traffic is resumed.
+
+</details> 
+
+<details> <summary><b>What rate limiting algorithms does Tyk support?</b></summary>
+
+Tyk supports three rate limiting algorithms:
+
+1.  Distributed Rate Limiter (DRL): The default algorithm that implements a token bucket approach without using Redis. It divides the configured rate limit among gateway instances.
+
+2.  Redis Rate Limiter (RRL): Implements a sliding window log algorithm that provides accurate rate limiting by tracking each request in Redis.
+
+3.  Fixed Window Rate Limiter: Uses a simple counter in Redis that resets after each configured time window.
+
+Each algorithm has different characteristics and is suitable for different use cases. The algorithm is selected at the Gateway level and applies to all APIs.
+
+</details> 
+
+<details> <summary><b>At what levels can I apply rate limits in Tyk?</b></summary>
+
+Tyk allows you to apply rate limits at multiple levels:
+
+1.  API-level rate limiting: Protects your upstream service from being overwhelmed by limiting the total number of requests to an API from all sources.
+
+2.  Key-level rate limiting: Controls traffic from individual API consumers and can be configured in three ways:
+
+    -   Global limit: Restricts the total number of calls a key can make to all APIs
+    -   Per-API limit: Restricts calls to specific individual APIs
+    -   Per-endpoint limit: Restricts calls to specific endpoints of an API
+
+When multiple rate limits are configured, they are evaluated in a specific order with API-level limits taking precedence over key-level limits.
+
+</details> 
+
+<details> <summary><b>How does Rate Limit Smoothing work in Tyk?</b></summary>
+
+Rate Limit Smoothing is an optional mechanism available with the Redis Rate Limiter that dynamically adjusts the request rate limit based on current traffic patterns. It helps manage request spikes by gradually increasing or decreasing the rate limit instead of making abrupt changes.
+
+The mechanism uses a concept of "current allowance" that moves between a lower threshold and the maximum configured rate. As traffic approaches the current allowance, Tyk emits events and adjusts the allowance incrementally.
+
+To configure rate limit smoothing, you need to set parameters in the
+
+`smoothing`
+
+object:
+
+-   `enabled`
+
+    : Boolean to enable/disable smoothing
+-   `threshold`
+
+    : Initial rate limit (current allowance)
+-   `step`
+
+    : Increment for increasing/decreasing the current allowance
+-   `trigger`
+
+    : Fraction that determines when smoothing events are emitted
+-   `delay`
+
+    : Hold-off period between smoothing events (in seconds)
+
+This feature helps prevent abrupt service disruptions during traffic spikes.
+
+</details> 
+
+<details> <summary><b>What happens when a rate limit is exceeded in Tyk?</b></summary>
+
+When a rate limit is exceeded in Tyk, the default behavior is to block the request and return an HTTP 429 (Rate Limit Exceeded) response to the client.
+
+However, if request throttling is enabled, Tyk will queue the excess requests and retry them automatically based on the configured throttling parameters (
+
+`throttle_interval`
+
+and
+
+`throttle_retry_limit`
+
+).
+
+The specific behavior also depends on which rate limiting algorithm is in use. For example, with the Redis Rate Limiter, Tyk implements a "spike arrest" behavior where traffic is blocked until the rate drops below the limit for the entire duration of the configured time window.
+
+</details> 
+
+<details> <summary><b>Can I set different rate limits for different API endpoints?</b></summary>
+
+Yes, Tyk allows you to set different rate limits for specific endpoints using the per-endpoint rate limit middleware. This can be configured in both Tyk Classic API Definition and Tyk OAS API Definition.
+
+For example, you might want to set a higher rate limit for a health check endpoint that consumes minimal resources, while maintaining stricter limits on more resource-intensive endpoints.
+
+You can configure per-endpoint rate limits through the API Designer in the Tyk Dashboard by:
+
+1.  Adding an endpoint that matches the path and method you want to limit
+2.  Selecting the Rate Limit middleware
+3.  Configuring the rate and time period
+4.  Saving the API configuration
+
+This allows for fine-grained control over traffic to different parts of your API.
+
+</details> 
+
+<details> <summary><b>How does Tyk handle rate limits in a multi-gateway deployment?</b></summary>
+
+In a multi-gateway deployment, Tyk's rate limiting behavior depends on the algorithm in use:
+
+1.  Distributed Rate Limiter (DRL): Divides the configured rate limit equally among gateway instances. For example, a rate limit of 100 requests/minute with 2 gateways yields 50 requests/minute per gateway. This works well for evenly distributed traffic but can be less accurate with uneven distribution or low rate limits.
+
+2.  Redis Rate Limiter: Uses Redis to maintain a cluster-wide rate limit (shared counter), ensuring accurate rate limiting across all gateways. This is more accurate but requires additional Redis operations.
+
+3.  Fixed Window Rate Limiter: Also uses Redis but with a simpler implementation that maintains consistent resource usage regardless of traffic volume.
+
+For deployments with varying traffic patterns or lower rate limits, Tyk provides a
+
+`drl_threshold`
+
+configuration that can automatically switch between DRL and Redis-based rate limiting based on the request volume.
+
+</details> 
+
+<details> <summary><b>Can I disable rate limiting for specific APIs in Tyk?</b></summary>
+
+Yes, you can disable rate limiting for specific APIs in Tyk. This can be done in two ways:
+
+1.  In the API Designer: Select the "Disable Rate Limits" option in the API settings.
+
+2.  In the API Definition: Set the value of
+
+    `disable_rate_limit`
+
+    to
+
+    `true`
+
+    in your API definition.
+
+Alternatively, you can effectively disable rate limiting by setting the values of
+
+`Rate`
+
+and
+
+`Per (Seconds)`
+
+to 0 in the API Designer.
+
+Note that disabling rate limiting at the API level does not disable rate limiting at the key level. Tyk will still enforce key-level rate limits even if the API-level limit is not set.
+
+</details>
