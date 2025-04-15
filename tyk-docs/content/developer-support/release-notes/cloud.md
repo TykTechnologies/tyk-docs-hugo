@@ -85,7 +85,7 @@ Fixed an issue where optional fields in the ‘Edit New Relic Connection’ sect
 <details>
 <summary>Telemetry Export Now Applies Correctly on Existing Deployments</summary>
 
-We’ve fixed an issue where enabling telemetry export on an existing deployment did not apply the expected network policy changes. The update now ensures that configuration changes are consistently applied, so telemetry features work as intended without requiring manual intervention.
+Fixed an issue where enabling telemetry export on an existing deployment did not apply the expected network policy changes. This fix ensures that configuration changes are consistently applied, so telemetry features work as intended without requiring manual intervention.
 
 </details>
 </li>    
