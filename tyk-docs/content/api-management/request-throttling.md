@@ -13,64 +13,26 @@ aliases:
 Tyk's Request Throttling feature provides a mechanism to manage traffic spikes by queuing and automatically retrying client requests that exceed [rate limits]({{< ref "/api-management/rate-limit" >}}), rather than immediately rejecting them. This helps protect upstream services from sudden bursts and improves the resilience of API interactions during temporary congestion.
 
 
-
 <!-- TODO: Add an image. -->
 ---
-## Tutorial to throttling - setup and testing guide
+## Quick Start
+
 ### Overview
+
 In this tutorial, we will configure Request Throttling on a Tyk Security Policy to protect a backend service from sudden traffic spikes. We'll start by defining a basic rate limit on a policy, then enable throttling with specific retry settings to handle bursts exceeding that limit, associate a key with the policy, and finally test the behaviour using simulated traffic. This guide primarily uses the Tyk Dashboard for configuration.
 
 ### Prerequisites
 
-Since we are providing a full example, we recommend installing the following, however, if you have a running deployment as a playground, please feel free to jump to [step 6: set up a policy with throttling]({{< ref "#policy-setup" >}}).
-
 - **Docker**: We will run the entire Tyk Stack on Docker. For installation, refer to this [guide](https://docs.docker.com/desktop/setup/install/mac-install/)
 - **Git**: A CLI tool to work with git repositories. For installation, refer to this [guide](https://git-scm.com/downloads)
-- **Dashboard License**: We will configure Streams API using Dashboard. [Contact support](https://tyk.io/contact/) to obtain a license
+- **Dashboard License**: We will configure Request Throttling using Dashboard. [Contact support](https://tyk.io/contact/) to obtain a license
 - **Curl, seq and xargs**: These tools will be used for testing
 
 ### Instructions
-#### Start up Tyk stack
 
-1. **Clone Git Repository:**
+{{< include "start-tyk-demo" >}}
 
-    The [tyk-demo](https://github.com/TykTechnologies/tyk-demo) repository offers a docker-compose environment you can run locally to explore Tyk streams. Open your terminal and clone the git repository using the below command.
-
-    ```bash
-    git clone https://github.com/TykTechnologies/tyk-demo
-    cd tyk-demo
-    ```
-
-2. **Add Dashboard License:**
-
-   Create an `.env` file and populate it with the values below:
-
-   ```bash
-   DASHBOARD_LICENCE=<your-dashboard-license>
-   ```
-
-   - `DASHBOARD_LICENCE`: Add your license key. Contact [support](https://tyk.io/contact/) to obtain a license.
-
-3. **Start Tyk Streams**
-
-    Execute the following command:
-    ```bash
-    ./up.sh
-    ```
-
-    This process will take a couple of minutes to complete and will display some credentials upon completion. Copy the Dashboard **username, password, and API key**, and save them for later use.
-    ```
-            ▾ Tyk Demo Organisation
-                  Username : admin-user@example.org
-                  Password : 3LEsHO1jv1dt9Xgf
-          Dashboard API Key : 5ff97f66188e48646557ba7c25d8c601
-    ```
-
-4. **Verify Setup:**
-
-    Open Tyk Dashboard in your browser by visiting [http://localhost:3000](http://localhost:3000) or [http://tyk-dashboard.localhost:3000](http://tyk-dashboard.localhost:3000) and login with the provided **admin** credentials.
-
-#### API set up
+#### Create an API
 
 5.  **Create an API:**
     1. Log in to your Tyk Dashboard.
@@ -155,30 +117,7 @@ Since we are providing a full example, we recommend installing the following, ho
 
         </details>
 
-<!-- 5. **Create an API:**
-
-    Create a file `api.json` with the below content:
-
-    ```json
-
-    ```
-
-    Create the API by executing the following command. Be sure to replace `<your-api-key>` with the API key you saved earlier:
-
-    ```bash
-    curl --location 'http://localhost:3000/api/apis/oas' \
-    --header 'Content-Type: application/json' \
-    --header 'Accept: application/json' \
-    --header 'Authorization: Bearer <your-api-key>' \
-    -d @api.json
-    ```
-
-    You should expect a response similar to the one shown below, indicating success. Note that the Meta and ID values will be different each time:
-    ```bash
-    {"Status":"OK","Message":"API created","Meta":"67f3b6f17bdf060001c1ae18","ID":"955871990da047146a40f1f8ceb62d79"}%                                                                   
-    ``` -->
-
-#### Policy and rate limit set up {#policy-setup}
+#### Configure Policy and Rate Limit {#policy-setup}
 6.  **Create and Configure an Security Policy with Rate Limiting:**
 
     <details>
@@ -246,7 +185,7 @@ Since we are providing a full example, we recommend installing the following, ho
     HTTP/1.1 200 OK
     ```
 
-#### Throttling set up
+#### Configure Throttling
 9.  **Configure Request Throttling by Updating the Security Policy**
 
     1.  Navigate to **API Security > Policies** in the Tyk Dashboard sidebar
@@ -307,13 +246,12 @@ The configuration involves setting two specific fields:
 - `throttle_interval`: Defines the wait time (in seconds) between retry attempts for a queued request. (*Note*: Do not set it to `0`. If you do, no delay is applied, and the request is immediately retried. This will creates a “busy waiting” scenario that consumes more resources than a positive interval value)
 - `throttle_retry_limit`: Sets the maximum number of retry attempts before the request is rejected. (*Note*: Do not set it to `0`. Setting it to `0` means that there will be no throttling on the request)
 
-To enable throttling,b oth fields must be set to a value greater than `0`. 
+To enable throttling, both fields must be set to a value greater than `0`. 
 
 ### Disable throttling
 
 The default value is `-1` and means it is disabled by default.
-Setting `throttle_interval` and `throttle_retry_limit` values to  any number smaller than `0`, to ensure the feature is diabled.
-
+Setting `throttle_interval` and `throttle_retry_limit` values to any number smaller than `0`, to ensure the feature is diabled.
 
 You can configure these settings using either the Tyk Dashboard UI or the Tyk Dashboard API.
 
@@ -321,7 +259,9 @@ You can configure these settings using either the Tyk Dashboard UI or the Tyk Da
 
 The Tyk Dashboard provides a straightforward interface to set throttling parameters on both Policies and Keys.
 
-#### Configure in the policy level
+{{< tabs_start >}}
+
+{{< tab_start "Security Policy" >}}
 
 The image below shows a policy with throttling. Any key using this policy will inherit the throttling settings and behaves as follows: wait 2 seconds between retries for queued requests, attempting up to 3 times before failing (so overall 6 seconds before getting another 429 error response).
 
@@ -348,7 +288,9 @@ The image below shows a policy with throttling. Any key using this policy will i
 8.  Click the **Create Policy** button
 </details>
 
-#### Configure in the access key level
+{{< tab_end >}}
+
+{{< tab_start "Access Key" >}}
 
 Note: Direct key configuration overrides policy settings only for that specific key.
 
@@ -370,6 +312,10 @@ Note: Direct key configuration overrides policy settings only for that specific 
 7.  From the **Expires** dropdown, select an option
 8.  Click the **Create Key** button
 
+{{< tab_end >}}
+
+{{< tabs_end >}}
+
 ### Configure via API
 
 These are the fields that you can set directly in the Policy object or the Access Key:
@@ -382,7 +328,11 @@ These are the fields that you can set directly in the Policy object or the Acces
   // ... other policy/session fields ...
 }
 ```
-#### Configure in the policy level
+
+{{< tabs_start >}}
+
+{{< tab_start "Security Policy" >}}
+
 To update the policy, do the following:
 1. Retrieve the policy object using `GET /api/portal/policies/{POLICY_ID}`
 2. Add or modify the `throttle_interval` and `throttle_retry_limit` fields within the policy JSON object
@@ -391,7 +341,9 @@ To update the policy, do the following:
 **Explanation:**
 The above adds throttling to a policy. Any key using this policy will inherit the throttling settings and behaves as follows: wait 1 second between retries for queued requests, attempting up to 5 times before failing (so overall 5 seconds before getting another 429 error response).
 
-#### Configure in the access key level
+{{< tab_end >}}
+
+{{< tab_start "Access Key" >}}
 
 Note: Direct key configuration overrides policy settings only for that specific key.
 
@@ -404,6 +356,9 @@ To update the access key do the following:
 **Explanation:**
 The above adds throttling to a key. Any request made by the key will behave as follows: wait 1 second between retries for queued requests, attempting up to 5 times before failing (so overall 5 seconds before getting another 429 error response).
 
+{{< tab_end >}}
+
+{{< tabs_end >}}
 
 ---
 ## How It Works
