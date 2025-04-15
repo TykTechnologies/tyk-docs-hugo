@@ -76,7 +76,7 @@ We’ve made backend improvements to enhance the performance and stability of hy
 <details>
 <summary>Telemetry Optional Fields Now Persist After Saving</summary>
 
-Tyk Cloud has resolved an issue where optional fields in the ‘Edit New Relic Connection’ section of the Telemetry UI would disappear after saving. With this fix, all optional configuration fields now persist correctly, ensuring that user-defined telemetry settings are saved and visible for further updates.
+Fixed an issue where optional fields in the ‘Edit New Relic Connection’ section of the Telemetry UI would disappear after saving. With this fix, all optional configuration fields now persist correctly, ensuring that user-defined telemetry settings are saved and visible for further updates.
 
 </details>
 </li>
