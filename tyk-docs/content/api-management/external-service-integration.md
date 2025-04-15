@@ -1438,11 +1438,7 @@ The configuration below will proxy a request to `http://{TARGET-HOSTNAME}:{PORT}
   - Test the basic SSO flow to ensure it's working correctly
 
 4. **Enable JWE**
-<<<<<<< HEAD
-  - [Updated the TIB profile via API]{{{< ref "tyk-identity-broker/tib-rest-api#a-nameupdate-profilea-update-profile" >}}}
-=======
   - [Updated the TIB profile via API]({{< ref "tyk-identity-broker/tib-rest-api#update-profile" >}})
->>>>>>> d7284d0af... [DX-1939] Update hugo version to 0.145.0 (#6286)
     - Add the following fields to the `ProviderConfig` section:
 
       ```json
