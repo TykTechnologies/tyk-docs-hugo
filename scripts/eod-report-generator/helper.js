@@ -26,7 +26,9 @@ const githubSlackUserNameMapping = {
     "JRWu": "@Jia Wu",
     "JoanCamosTyk": "@Joan",
     "LLe27": "@Long Le",
-    "olamilekan000": "@Ola"
+    "olamilekan000": "@Ola",
+    "brianoh1979": "@brian",
+    "scott-tyk-web": "@scott"
 }
 
 const githubStatusToMessageMapping = {
