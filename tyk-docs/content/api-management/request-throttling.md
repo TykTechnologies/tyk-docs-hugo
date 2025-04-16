@@ -141,7 +141,7 @@ In this tutorial, we will configure Request Throttling on a Tyk Security Policy 
     3.  Under the **1. Access Rights** tab:
         *   In the **Apply Policy** section, select the `Request Throttling Policy` API
     5.  Select the **2. Configuration** tab
-    6.  In the **Alias** field, enter `Request Throttling Key`. 
+    6.  In the **Alias** field, enter `Request Throttling Key`. This provides a human-readable identifier that makes tracking and managing this specific access key easier in your analytics and logs.
     7.  From the **Expires** dropdown, select `1 hour`
     8.  Click the **Create Key** button
     9.  A pop-up window **"Key created successfully"** will appear displaying the key details. **Copy the Key ID (hash)** value shown and save it securely. You will need this key to make API requests in the following steps
@@ -151,7 +151,7 @@ In this tutorial, we will configure Request Throttling on a Tyk Security Policy 
 
 8. **Test Rate Limit**
 
-    So far, we've created a policy for an API definition and created a key that complies with that policy. Before enabling throttling, let's observe the standard rate limiting behaviour. We'll send 10 requests in quick succession using `xargs` to simulate a burst that exceeds our configured limit (5 requests per 10 seconds).
+    So far, we've created a policy for an API definition and created a key that complies with that policy. Before enabling throttling, let's observe the standard rate limiting behaviour. We'll send 10 requests in parallel using `xargs` to simulate a burst that exceeds our configured limit (5 requests per 10 seconds).
 
     1.  Open your terminal.
     2.  Execute the following command, replacing `<replace-with-key-id>` with the API Key ID you saved earlier:
@@ -270,13 +270,13 @@ The image below shows a policy with throttling. Any key using this policy will i
 2.  Click the **Add Policy** button
 3.  Under the **1. Access Rights** tab and in the **Add API Access Rule** section, select the required API
 4.  Scroll down to the **Global Limits and Quota** section (still under the **1. Access Rights** tab):
-    *   To enable `Throttling`, `Rate Limiting` should be configured
-    *   Enter some value into the **Requests (or connection attempts)** field
-    *   Enter some value into the **Per (seconds):** field
+    *   To enable *Throttling*,  we must configure *Rate Limiting* in the policy.
+        *   Field **Requests (or connection attempts)**  - Enter the number of requests you want to allow before rate limit is applied.
+        *   Field **Per (seconds):** - Enter the time window in seconds during which the number of requests specified above is allowed.
     *   Now enable `Throttling` by setting the following values in the `Throttling` section:
-    *   Uncheck the `Disable Throttling` checkbox
-    *   Enter some value into the **Throttle retries (or connection attempts)** field
-    *   Enter some value into the **Per (seconds):** field
+        *   Uncheck the `Disable Throttling` checkbox
+        *   Field **Throttle retries (or connection attempts)** - Enter the maximum number of times Tyk should attempt to retry a request after it has been queued due to exceeding a rate limit or quota.
+        *   Field **Per (seconds):** - Enter the time interval in seconds Tyk should wait between each retry attempt for a queued request.
 5.  Select the **2. Configuration** tab
 6.  In the **Policy Name** field, enter a name
 7.  From the **Key expire after** dropdown, select an option
@@ -295,13 +295,13 @@ Note: Direct key configuration overrides policy settings only for that specific 
     *   Select **Choose API**
     *   In the **Add API Access Rule** section, select the required API
 4.  Scroll down to the **Global Limits and Quota** section (still under the **1. Access Rights** tab):
-    *   To enable `Throttling`, `Rate Limiting` should be configured
-    *   Enter some value into the **Requests (or connection attempts)** field
-    *   Enter some value into the **Per (seconds):** field
+    *   To enable *Throttling*,  we must configure *Rate Limiting* in the Access Key.
+        *   Field **Requests (or connection attempts)**  - Enter the number of requests you want to allow before rate limit is applied.
+        *   Field **Per (seconds):** - Enter the time window in seconds during which the number of requests specified above is allowed.
     *   Now enable `Throttling` by setting the following values in the `Throttling` section:
-    *   Uncheck the `Disable Throttling` checkbox
-    *   Enter some value into the **Throttle retries (or connection attempts)** field
-    *   Enter some value into the **Per (seconds):** field
+        *   Uncheck the `Disable Throttling` checkbox
+        *   Field **Throttle retries (or connection attempts)** - Enter the maximum number of times Tyk should attempt to retry a request after it has been queued due to exceeding a rate limit or quota.
+        *   Field **Per (seconds):** - Enter the time interval in seconds Tyk should wait between each retry attempt for a queued request.
 5.  Select the **2. Configuration** tab
 6.  In the **Alias** field, enter a name
 7.  From the **Expires** dropdown, select an option
@@ -317,10 +317,10 @@ These are the fields that you can set directly in the Policy object or the Acces
 
 ```json
 {
-  // ... other policy/session object fields ...
-  "throttle_interval": 2,       // Wait 1 second between retries
-  "throttle_retry_limit": 3,    // Attempt a maximum of 5 retries
-  // ... other policy/session fields ...
+  // Partial policy/session object fields
+  "throttle_interval": 2,       // Wait 2 second between retries
+  "throttle_retry_limit": 3,    // Attempt a maximum of 3 retries
+  // ... more config follows
 }
 ```
 
@@ -358,8 +358,6 @@ The above adds throttling to a key. Any request made by the key will behave as f
 ---
 ## How It Works
 
-TODO: This will work after the changes in Tyk streams is merged. For review you can copy the code and it into a mermaid editor.
-
 ```mermaid
 flowchart LR
     A[Client Request] --> GW(Tyk Gateway);
@@ -369,17 +367,17 @@ flowchart LR
         RL -- Yes --> Q{Quota OK?};
         RL -- No --> T{Throttle Enabled?};
         Q -- Yes --> Fwd[Forward Request];
-        Q -- No --> T;
+        Q -- No --> Reject[Reject Request];
     end
 
     subgraph Throttling Logic
-        T -- No --> Reject[Reject];
+        T -- No --> Reject;
         T -- Yes --> Queue[Queue Request];
-        Queue --> Wait[Wait];
+        Queue --> Wait[Wait ThrottleInterval];
         Wait --> RetryL{Retry Limit Reached?};
         RetryL -- Yes --> Reject;
-        RetryL -- No --> Recheck(Re-evaluate Both Limits);
-        %% Loop back to the start of the checks for a full re-evaluation %%
+        RetryL -- No --> Recheck(Re-evaluate Rate Limit Only);
+        %% Loop back to rate limit check only %%
         Recheck --> RL;
     end
 
@@ -402,6 +400,46 @@ ew times (the retry limit) before finally turning you away if access is still re
 
 ---
 ## FAQ
+
+<!-- More FAQ -->
+
+<details> <summary><b>What is Request Throttling in Tyk?</b></summary>
+
+Request Throttling in Tyk is a mechanism that allows for graceful handling of rate limit violations. Instead of immediately rejecting requests that exceed rate limits, throttling gives clients a chance to retry after a specified delay.
+
+</details> 
+
+<details> <summary><b>How does Request Throttling differ from Rate Limiting?</b></summary>
+
+Rate Limiting is a mechanism to restrict the number of requests a client can make in a given time period (e.g., 100 requests per minute). Request Throttling is an extension of rate limiting that provides a retry mechanism when rate limits are exceeded. Instead of immediately failing with a 429 status code, throttling allows the gateway to wait and retry the request internally.
+
+</details> 
+
+<details> <summary><b>Does Request Throttling work with Request Quotas?</b></summary>
+
+No, Request Throttling in Tyk is exclusively linked to rate limits and does not work with request quotas. When a quota is exceeded, the request is immediately rejected without any throttling or retry attempts. Throttling is only applied when rate limits are exceeded.
+</details> 
+
+<details> <summary><b>How do I configure Request Throttling in Tyk?</b></summary>
+
+Refer to this [documentation]({{< ref "#configuration-options" >}}).
+
+</details> 
+
+<details> <summary><b>How does Request Throttling affect response times?</b></summary>
+
+Request Throttling can increase response times for requests that exceed rate limits, as the gateway will wait for the specified `ThrottleInterval` between retry attempts. The maximum additional latency would be `ThrottleInterval × ThrottleRetryLimit` seconds. This trade-off provides better success rates at the cost of potentially longer response times for some requests.
+</details> 
+
+<details> <summary><b>Can I monitor throttled requests in Tyk?</b></summary>
+
+Yes, Tyk tracks throttled requests in its health check metrics. You can monitor the `ThrottledRequestsPS` (throttled requests per second) metric to see how often requests are being throttled. Additionally, when a request is throttled, Tyk emits a `RateLimitExceeded` event that can be captured in your monitoring system.
+</details> 
+
+<details> <summary><b>Is Request Throttling enabled by default?</b></summary>
+
+No, Request Throttling is not enabled by default. To enable throttling, you need to explicitly set `ThrottleRetryLimit` to a value greater than 0 and configure an appropriate `ThrottleInterval`. These settings can be applied through policies or directly in session objects.
+</details>
 
 <details> <summary><b>What is the difference between rate limiting and request throttling in Tyk?</b></summary>
 
