@@ -1098,13 +1098,7 @@ Refer this [documentation]({{< ref "#supported-connectors-and-protocols" >}}).
 
 <details> <summary><b>How can I enable Tyk Streams on Tyk Cloud?</b></summary>
 
-Currently, Streams are only available for hybrid customers on Tyk Cloud. To enable it:
-
-1.  Update the organization's entitlement by setting `EnableStreams` to `true`
-
-2.  Edit the deployment object to add the environment variable `TYK_DB_STREAMING_ENABLED` set to `true`
-
-3.  Update the license claim for the organization. Note that this will redeploy all Control Planes and Control Data Planes in the organization.
+Currently, Tyk Streams is only available for hybrid customers on Tyk Cloud. To enable it, [contact support](https://tyk.io/contact/).
 
 </details> 
 
@@ -1114,20 +1108,14 @@ Yes, as of Tyk v5.7.0, you can publish Tyk Streams APIs to the Tyk Developer Por
 
 </details> 
 
-<details> <summary><b>How does Tyk Streams handle protocol mediation?</b></summary>
-
-Tyk Streams offers protocol mediation capabilities that allow you to expose async APIs using protocols different from those of the backend event broker. For example, you can expose a Kafka topic as a WebSocket API, convert MQTT messages to HTTP webhooks, or bridge between different async protocols (e.g., Kafka to MQTT).
-
-</details> 
-
 <details> <summary><b>What deployment considerations should I keep in mind for Tyk Streams?</b></summary>
 
-Tyk Streams is embedded within the Tyk Gateway and scales with your existing Tyk infrastructure. No additional configuration or separate infrastructure is required.
+Tyk Streams is embedded within the Tyk Gateway and scales with your existing Tyk infrastructure. No additional infrastructure is required.
 
 </details> 
 
 <details> <summary><b>Is Tyk Streams available in all Tyk editions?</b></summary>
 
-Tyk Streams is a newer feature that is available only in the `enterprise` edition. Currently, it's only available for hybrid customers on Tyk Cloud. Check the latest documentation or contact Tyk support for specific availability in your edition.
+Tyk Streams is available exclusively in the `enterprise` edition. Currently, it is only accessible for hybrid customers using Tyk Cloud. Please refer to the latest documentation or reach out to [Tyk support](https://tyk.io/contact/) for specific availability in your edition.
 
 </details>
