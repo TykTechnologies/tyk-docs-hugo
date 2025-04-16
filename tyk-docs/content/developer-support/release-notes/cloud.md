@@ -97,7 +97,16 @@ Fixed an issue where enabling telemetry export on an existing deployment did not
 We’ve resolved a UI issue where the team dropdown became unresponsive when switching between Control Plane and Hybrid Data Plane types during deployment creation. This fix ensures that users can seamlessly switch deployment types.
 
 </details>
-</li>    
+</li> 
+
+<li>
+<details>
+<summary>Reduced Data in Telemetry Configuration Responses</summary>
+
+We’ve removed unnecessary data from telemetry export configuration API responses to ensure cleaner and more secure payloads.
+
+</details>
+</li> 
 
 </ul>
 
