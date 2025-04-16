@@ -1,9 +1,9 @@
 ---
 title: "Request Throttling"
 date: 2025-01-10
-tags: [""]
-description: ""
-keywords: [""]
+tags: ["Request Throttling"]
+description: "What is Request Throttling in Tyk Gateway?"
+keywords: ["Request Throttling"]
 aliases:
   - /basic-config-and-security/control-limit-traffic/request-throttling
 ---
@@ -23,18 +23,14 @@ In this tutorial, we will configure Request Throttling on a Tyk Security Policy 
 
 ### Prerequisites
 
-- **Docker**: We will run the entire Tyk Stack on Docker. For installation, refer to this [guide](https://docs.docker.com/desktop/setup/install/mac-install/)
-- **Git**: A CLI tool to work with git repositories. For installation, refer to this [guide](https://git-scm.com/downloads)
-- **Dashboard License**: We will configure Request Throttling using Dashboard. [Contact support](https://tyk.io/contact/) to obtain a license
-- **Curl, seq and xargs**: These tools will be used for testing
+- **Working Tyk Environment:** You need access to a running Tyk instance that includes both the Tyk Gateway and Tyk Dashboard components. For setup instructions using Docker, please refer to the [Tyk Quick Start](https://github.com/TykTechnologies/tyk-pro-docker-demo?tab=readme-ov-file#quick-start).
+- **Curl, seq and xargs**: These tools will be used for testing.
 
 ### Instructions
 
-{{< include "start-tyk-demo" >}}
-
 #### Create an API
 
-5.  **Create an API:**
+1.  **Create an API:**
     1. Log in to your Tyk Dashboard.
     2. Navigate to **API Management > APIs**
     3. Click **Add New API**
@@ -104,11 +100,6 @@ In this tutorial, we will configure Request Throttling on a Tyk Security Policy 
                     }
                 },
                 "upstream": {
-                    "rateLimit": {
-                        "enabled": false,
-                        "per": "10s",
-                        "rate": 5
-                    },
                     "url": "http://httpbin.org/"
                 }
             }
@@ -118,6 +109,7 @@ In this tutorial, we will configure Request Throttling on a Tyk Security Policy 
         </details>
 
 #### Configure Policy and Rate Limit {#policy-setup}
+
 6.  **Create and Configure an Security Policy with Rate Limiting:**
 
     <details>
@@ -149,8 +141,8 @@ In this tutorial, we will configure Request Throttling on a Tyk Security Policy 
     3.  Under the **1. Access Rights** tab:
         *   In the **Apply Policy** section, select the `Request Throttling Policy` API
     5.  Select the **2. Configuration** tab
-    6.  In the **Alias** field, enter `Request Throttling Key`
-    7.  From the **Expires** dropdown, select `Do not expire key`
+    6.  In the **Alias** field, enter `Request Throttling Key`. 
+    7.  From the **Expires** dropdown, select `1 hour`
     8.  Click the **Create Key** button
     9.  A pop-up window **"Key created successfully"** will appear displaying the key details. **Copy the Key ID (hash)** value shown and save it securely. You will need this key to make API requests in the following steps
     10. Click **OK** to close the pop-up
@@ -186,6 +178,9 @@ In this tutorial, we will configure Request Throttling on a Tyk Security Policy 
     ```
 
 #### Configure Throttling
+
+Now that the policy enforces a basic rate limit, we will enable and configure Request Throttling. This adds the queue-and-retry behavior for requests that exceed the limit, preventing immediate rejection and helping to smooth out traffic spikes.
+
 9.  **Configure Request Throttling by Updating the Security Policy**
 
     1.  Navigate to **API Security > Policies** in the Tyk Dashboard sidebar
@@ -429,5 +424,7 @@ Refer to this [documentation]({{< ref "#configuration-options" >}}).
 <details> <summary><b>Is request throttling enabled by default in Tyk?</b></summary>
 
 No, request throttling is disabled by default in Tyk. The default values for both `throttle_interval` and `throttle_retry_limit` are set to `-1` , which means the feature is inactive. To enable throttling, you need to explicitly set positive values for both parameters.
+
+Refer to this [documentation]({{< ref "#configuration-options" >}}).
 
 </details> 

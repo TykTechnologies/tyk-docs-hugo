@@ -101,7 +101,7 @@ menu:
         path: /api-management/upstream-authentication
         category: Page
         show: True
-      - title: "Control API Traffic"
+      - title: "API Traffic Control"
         category: Directory
         show: True
         menu:
