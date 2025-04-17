@@ -123,22 +123,11 @@ menu:
         path: /api-management/gateway-config-introduction
         show: True
         menu:
-          - title: "Tyk OAS"
-            path: /api-management/gateway-config-tyk-oas
-            category: Page
-            show: True
           - title: "Tyk Classic"
             path: /api-management/gateway-config-tyk-classic
             category: Page
             show: True
-          - title: "What is URL path matching?"
-            path: /getting-started/key-concepts/url-matching
-            category: Page
-            show: True
-          - title: "What is Internal Looping?"
-            path: /advanced-configuration/transform-traffic/looping
-            category: Page
-            show: True
+
       - title: "Manage APIs"
         category: Directory
         show: True
@@ -159,6 +148,14 @@ menu:
             category: Page
             show: True
             path: /api-management/manage-apis/deploy-apis/deploy-apis-overview
+          - title: "What is URL path matching"
+            path: /getting-started/key-concepts/url-matching
+            category: Page
+            show: True
+          - title: "What is Internal Looping"
+            path: /advanced-configuration/transform-traffic/looping
+            category: Page
+            show: True
           - title: "Useful Configurations"
             path: /tyk-stack/tyk-gateway/important-prerequisites
             category: Page
@@ -645,72 +642,78 @@ menu:
             path: /developer-support/release-types/fips-release
             category: Page
             show: True
-      - title: "Environment Variables and Configs"
+      - title: "Reference Documentation"
         category: Directory
         show: True
+        path: /tyk-environment-variables
         menu:
-        - title: "Overview"
-          path: /tyk-environment-variables
-          category: Page
-          show: False
-        - title: "Gateway"
-          path: /tyk-oss-gateway/configuration
-          category: Page
+        - title: "Env Vars and Configs"
+          category: Directory
           show: True
-        - title: "Dashboard"
-          path: /tyk-dashboard/configuration
-          category: Page
+          menu:
+          - title: "Gateway"
+            path: /tyk-oss-gateway/configuration
+            category: Page
+            show: True
+          - title: "Dashboard"
+            path: /tyk-dashboard/configuration
+            category: Page
+            show: True
+          - title: "Pump"
+            path: /tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables
+            category: Page
+            show: True
+          - title: "Developer Portal"
+            path: /product-stack/tyk-enterprise-developer-portal/deploy/configuration
+            category: Page
+            show: True
+          - title: "MDCB"
+            path: /tyk-multi-data-centre/mdcb-configuration-options
+            category: Page
+            show: True
+          - title: "Identity Broker"
+            path: /tyk-configuration-reference/tyk-identity-broker-configuration
+            category: Page
+            show: True
+        - title: "Tyk API Documentation"
+          category: Directory
           show: True
-        - title: "Pump"
-          path: /tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables
-          category: Page
-          show: True
-        - title: "Enterprise Developer Portal"
-          path: /product-stack/tyk-enterprise-developer-portal/deploy/configuration
-          category: Page
-          show: True
-        - title: "Multi Data Center Bridge"
-          path: /tyk-multi-data-centre/mdcb-configuration-options
-          category: Page
-          show: True
-        - title: "Tyk Identity Broker"
-          path: /tyk-configuration-reference/tyk-identity-broker-configuration
-          category: Page
-          show: True
-      - title: "API Documentation"
-        category: Directory
-        show: True
-        menu:
-        - title: "Overview"
           path: /tyk-apis
+          menu:
+          - title: "Gateway API"
+            path: /tyk-gateway-api
+            category: Page
+            show: True
+          - title: "Dashboard API"
+            path: /tyk-dashboard-api
+            category: Page
+            show: True
+          - title: "Dashboard Admin API"
+            path: /dashboard-admin-api
+            category: Page
+            show: True
+          - title: "MDCB API"
+            path: /tyk-mdcb-api
+            category: Page
+            show: True
+          - title: "Developer Portal API"
+            path: /product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api
+            category: Page
+            show: True
+          - title: "Developer Portal Admin API"
+            path: /product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.13.0-list-of-endpoints
+            category: Page
+            show: True
+          - title: "Identity Broker"
+            path: /tyk-identity-broker/tib-rest-api
+            category: Page
+            show: True
+        - title: Tyk OAS API Def Object
           category: Page
           show: True
-        - title: "Gateway"
-          path: /tyk-gateway-api
-          category: Page
-          show: True
-        - title: "Dashboard"
-          path: /tyk-dashboard-api
-          category: Page
-          show: True
-        - title: "Dashboard Admin"
-          path: /dashboard-admin-api
-          category: Page
-          show: True
-        - title: "Multi Data Center Bridge"
-          path: /tyk-mdcb-api
-          category: Page
-          show: True
-        - title: "Enterprise Developer Portal"
-          path: /product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api
-          category: Page
-          show: True
-        - title: "Enterprise Developer Portal Admin"
-          path: /product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.13.0-list-of-endpoints
-          category: Page
-          show: True
-        - title: "Tyk Identity Broker"
-          path: /tyk-identity-broker/tib-rest-api
+          path: /api-management/gateway-config-tyk-oas
+        - title: Tyk Classic API Def Object
+          path: /api-management/gateway-config-tyk-classic
           category: Page
           show: True
       - title: "Release Notes"

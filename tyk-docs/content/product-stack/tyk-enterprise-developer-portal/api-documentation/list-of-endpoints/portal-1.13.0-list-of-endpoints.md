@@ -1,14 +1,11 @@
 ---
-title: "List of endpoints exposed by Tyk Enterprise Developer Portal v1.13.0"
+title: "Tyk Developer Portal Admin APIs - v1.13.0"
 date: 2024-02-29
-tags: ["Tyk Developer Portal","Enterprise Portal","Endpoints","Firewall","Integration","Portal 1.13.0"]
+tags: ["Tyk Developer Portal", "Enterprise Portal", "Endpoints", "Firewall", "Integration", "Portal 1.13.0"]
 description: "Internal APIs exposed by Tyk Developer Portal"
-menu:
-    main:
-        parent: "Configuring firewall"
 aliases:
   - /product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.9.0-list-of-endpoints
-weight: 3
+
 ---
 
 {{< note success >}}
@@ -18,10 +15,13 @@ If you are interested in getting access, contact us at [support@tyk.io](<mailto:
 
 {{< /note >}}
 
+
 ## Introduction
 
-In highly secure environments, it is often necessary to configure a firewall precisely and to allow only the endpoints exposed for the portal, while banning all other routes.
-For this purpose, we have prepared a list of all endpoints exposed by the Tyk Enterprise Developer Portal v1.13.0.
+In highly secure environments, it is often necessary to configure a firewall and to allow only the endpoints exposed for the portal, while banning all other routes.
+For this purpose, we have prepared a list of all endpoints exposed by the *Tyk Developer Portal v1.13.0*.
+
+In highly secure environments, it's often necessary to configure a firewall to allow only the specific endpoints exposed by the portal, while blocking all other routes. To support this, we've compiled a list of all endpoints exposed by the *Tyk Developer Portal v1.13.0*.
 
 {{< note success >}}
 
