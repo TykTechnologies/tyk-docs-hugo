@@ -1,9 +1,9 @@
 ---
-title: "Rate Limiting"
+title: "Request Quotas"
 date: 2025-01-10
-tags: [""]
+tags: ["Request Quotas"]
 description: Overview of Rate Limiting with the Tyk Gateway
-keywords: [""]
+keywords: ["Request Quotas"]
 aliases:
   - /control-limit-traffic/request-quotas
   - /basic-config-and-security/control-limit-traffic/request-quotas
@@ -14,18 +14,15 @@ aliases:
 Request Quotas in Tyk Gateway allow you to set a maximum total number of API requests allowed for a specific API key or policy over longer, defined periods (e.g., day, week, month). This feature is distinct from rate limiting (which controls requests per second) and is essential for managing API consumption, enforcing service tiers, and protecting your backend services from sustained overuse over time.
 
 ```mermaid
-graph LR
-    A[API Request Received] --> B(Check Key/Policy Quota);
-    B --> C{Quota Remaining > 0?};
-    C -- Yes --> D[Decrement Quota Counter];
-    D --> E[Allow Request to Backend];
-    C -- No --> F[Reject Request (403 Quota Exceeded)];
-
-    subgraph Quota Reset Logic (Event-Driven)
-        direction LR
-        G{Period Expired?} -- Yes --> H[Reset Counter on Next Request];
-    end
-    %% Note: Reset happens when period expires AND the key is used again.
+flowchart LR
+    Client[API Client] -->|Makes Request| Gateway[Tyk Gateway]
+    Gateway -->|Check Quota| Redis[(Redis)]
+    Redis -->|Quota OK| Gateway
+    Redis -->|Quota Exceeded| Gateway
+    Gateway -->|If Quota OK| Upstream[Upstream API]
+    Gateway -->|If Quota Exceeded| Reject[Reject Request]
+    Upstream -->|Response| Gateway
+    Gateway -->|Response| Client
 ```
 
 ### Key Benefits
@@ -201,4 +198,211 @@ Refer to the [Tyk Classic API Definition reference (`disable_quota`)]({{< ref "#
 
 ## How It Works
 
+Request Quotas in Tyk limit the total number of API requests a client can make within a defined time period (hours, days, months). Unlike rate limits that control requests per second, quotas manage the overall consumption volume over longer periods. When a client reaches their quota limit, further requests are rejected until the quota period renews. This feature helps API providers implement usage-based pricing tiers, prevent API abuse, control infrastructure costs, and ensure fair resource distribution among clients. Request Quotas can be applied at individual key, policy, or organization-wide levels, giving you flexible control over how your APIs are consumed.
+
+```mermaid
+flowchart LR
+    Client[API Client] -->|Makes Request| Gateway[Tyk Gateway]
+    Gateway -->|Check Quota| Redis[(Redis)]
+    Redis -->|Quota OK| Gateway
+    Redis -->|Quota Exceeded| Gateway
+    Gateway -->|If Quota OK| Upstream[Upstream API]
+    Gateway -->|If Quota Exceeded| Reject[Reject Request]
+    Upstream -->|Response| Gateway
+    Gateway -->|Response| Client
+```
+
+Think of Request Quotas like a prepaid phone plan with a fixed number of minutes per month. When you sign up, you get allocated a specific number of call minutes (API requests) that you can use over the billing period. You can make calls (API requests) at any pace you want – all at once or spread throughout the month – but once you've used up your allocated minutes, you can't make any more calls until the next billing cycle begins.
+
+In this analogy:
+- The phone plan is your API subscription with a specific quota
+- The minutes are the number of API requests allowed
+- The billing period is the quota renewal period (hour, day, month)
+- The usage counter is Tyk tracking how many requests you've made
+- The "minutes remaining" display is the quota_remaining value
+- The "call blocked" message is the 403 Forbidden response when quota is exceeded
+- The new billing cycle is when your quota resets
+
+Just as different phone plans offer different minute allocations, different API keys or policies in Tyk can have different quota limits based on the subscription tier.
+
 ## FAQs
+
+<details> <summary><b>What are Request Quotas in Tyk?</b></summary>
+
+Request Quotas in Tyk are limits on the total number of API requests a client can make within a specific time period. Unlike rate limits (which control requests per second), quotas control the total number of requests over longer periods like hours, days, or months. Once a quota is exhausted, further requests are rejected until the quota renews.
+</details>
+
+<details> <summary><b>How do Request Quotas differ from Rate Limits?</b></summary>
+
+While both control API usage, they serve different purposes:
+- **Rate Limits** control the frequency of requests (e.g., 10 requests per second) to prevent traffic spikes and ensure consistent performance
+- **Request Quotas** control the total volume of requests over a longer period (e.g., 10,000 requests per month) to manage overall API consumption and often align with business/pricing models
+</details>
+
+<details> <summary><b>How are Request Quotas configured in Tyk?</b></summary>
+
+Request Quotas can be configured at multiple levels:
+- **API Level**: Set in the API definition with `disable_quota` flag
+- **Key Level**: Set in the session object with parameters like `quota_max`, `quota_renewal_rate`, etc.
+- **Policy Level**: Define quotas in policies that can be applied to multiple keys
+- **Organization Level**: Set quotas for an entire organization using `enforce_org_quotas`
+</details>
+
+<details> <summary><b>What are the key parameters for Request Quotas?</b></summary>
+
+The main parameters for configuring quotas are:
+- `quota_max`: Maximum number of requests allowed during the quota period
+- `quota_remaining`: Number of requests remaining for the current period
+- `quota_renewal_rate`: Time in seconds during which the quota is valid (e.g., 3600 for hourly quotas)
+- `quota_renews`: Timestamp indicating when the quota will reset
+</details>
+
+<details> <summary><b>Can I disable Request Quotas for specific APIs?</b></summary>
+
+Yes, you can disable quotas for specific APIs by setting the `disable_quota` flag to `true` in the API definition. This will bypass quota checking for all requests to that API, regardless of any quotas set at the key or policy level.
+</details>
+
+<details> <summary><b>What happens when a Request Quota is exceeded?</b></summary>
+
+When a quota is exceeded:
+1. The request is rejected with a 403 Forbidden status code
+2. A "QuotaExceeded" event is triggered (which can be used for notifications or monitoring)
+3. The client must wait until the quota renewal period before making additional requests
+4. The quota violation is logged and can be monitored in the Tyk Dashboard
+</details>
+
+<details> <summary><b>How are Request Quotas tracked and stored?</b></summary>
+
+Tyk stores quota information in Redis:
+- Quota keys are prefixed with "quota-" followed by the key identifier
+- For each request, Tyk increments a counter in Redis and checks if it exceeds the quota_max
+- When a quota period expires, the counter is reset
+- For distributed deployments, quota information is synchronized across all Tyk nodes
+</details>
+
+<details> <summary><b>Can I set different quotas for different endpoints within the same API?</b></summary>
+
+Yes, you can implement per-endpoint quotas by using policies with the "per_api" partitioning enabled. This allows you to define different quota limits for different API endpoints, giving you fine-grained control over resource usage.
+</details>
+
+<details> <summary><b>How do organization-level quotas work?</b></summary>
+
+Organization quotas allow you to limit the total number of requests across all keys belonging to an organization. When enabled (using `enforce_org_quotas`), Tyk tracks the combined usage of all keys in the organization and rejects requests when the organization quota is exceeded, regardless of individual key quotas.
+</details>
+
+<details> <summary><b>Can I monitor quota usage and receive notifications before quotas are exceeded?</b></summary>
+
+Yes, Tyk provides quota monitoring capabilities:
+- You can set up trigger monitors with percentage thresholds
+- When usage reaches a threshold (e.g., 80% of quota), Tyk can trigger notifications
+- These notifications can be sent via webhooks to external systems
+- The monitoring configuration is set in the `monitor` section of your Tyk configuration
+</details>
+
+<details> <summary><b>Why isn't my quota resetting automatically at midnight?</b></summary>
+
+Tyk's quota renewal is event-driven rather than time-driven. Quotas don't automatically reset at specific times (like midnight); instead, they reset when the first request is made after the renewal period has passed. If no requests are made after the renewal time, the quota counter remains unchanged until the next request triggers the check and renewal process.
+</details>
+
+<details> <summary><b>How can I manually reset a quota for a specific key?</b></summary>
+
+You can manually reset a quota for a specific key in two ways:
+
+**Via Tyk Dashboard:**
+1. Navigate to the "Keys" section
+2. Find and select the key you want to reset
+3. Click on "Reset Quota" button
+
+**Via Tyk Gateway API:**
+```
+POST /tyk/keys/reset/{key_id}
+Authorization: {your-gateway-secret}
+```
+This endpoint will reset the quota for the specified key immediately, allowing the key to make requests up to its quota limit again.
+</details>
+
+<details> <summary><b>Does Tyk count failed requests against my quota?</b></summary>
+
+Yes, by default Tyk counts all requests against the quota regardless of the response status code (2xx, 4xx, 5xx). This means that even failed requests with error responses will decrement the available quota. This behavior is by design to prevent abuse and ensure consistent quota enforcement regardless of the upstream API's response.
+</details>
+
+<details> <summary><b>Why are my quota counts inconsistent in a multi-gateway setup?</b></summary>
+
+In multi-datacenter or multi-region setups, quota inconsistencies can occur due to:
+
+1. **Redis replication lag**: If you're using separate Redis instances with replication, there may be delays in syncing quota information
+2. **Network latency**: In geographically distributed setups, network delays can cause temporary inconsistencies
+3. **Configuration issues**: Each gateway must be properly configured to use the same Redis database for quota storage
+
+To resolve this, ensure all gateways are configured to use the same Redis database or a properly configured Redis cluster with minimal replication lag. For multi-region deployments, consider using Redis Enterprise or a similar solution with cross-region synchronization capabilities.
+</details>
+
+<details> <summary><b>Why do I see "Quota disabled" error logs when I've intentionally disabled quotas?</b></summary>
+
+In some older versions of Tyk, setting `quota_max` to -1 (to disable quotas) would generate an error log message: "Quota disabled: quota max <= 0". This was a known issue that has been fixed in more recent versions.
+
+If you're still seeing these logs, consider:
+1. Upgrading to the latest version of Tyk
+2. Adjusting your log level to reduce noise
+3. Using the API definition's `disable_quota` flag instead of setting `quota_max` to -1
+
+This log message is informational and doesn't indicate a functional problem with your API.
+</details>
+
+<details> <summary><b>Can I set quotas to only count successful requests?</b></summary>
+
+By default, Tyk counts all requests against the quota regardless of response code. There is no built-in configuration to count only successful (2xx) responses toward quota limits.
+
+If you need this functionality, you have two options:
+1. Implement a custom middleware plugin that conditionally decrements the quota based on response codes
+2. Use the Tyk Pump to track successful vs. failed requests separately in your analytics platform, and implement quota management at the application level
+</details>
+
+<details> <summary><b>How can I monitor quota usage across my organization?</b></summary>
+
+To monitor quota usage across your organization:
+
+1. **Dashboard Analytics**: Use the Tyk Dashboard to view quota usage for individual keys and APIs
+2. **Tyk Pump**: Configure Tyk Pump to send quota usage data to external analytics systems like Elasticsearch, InfluxDB, or Prometheus
+3. **Webhooks**: Set up quota threshold webhooks to receive notifications when keys reach certain quota usage percentages
+4. **API Endpoints**: Use the Tyk Gateway API to programmatically check quota status for specific keys
+
+For organization-wide visibility, consider implementing a custom dashboard using the analytics data collected via Tyk Pump.
+</details>
+
+<details> <summary><b>What happens if I change a quota mid-period?</b></summary>
+
+If you modify a quota configuration mid-period (before the renewal time):
+
+1. For **increasing** the quota: The new maximum will apply, but the current remaining count stays the same
+2. For **decreasing** the quota: If the new quota is less than what's already been used, further requests will be rejected
+3. For **changing the renewal rate**: The new renewal period will apply from the next renewal
+
+Changes to quota settings take effect immediately but don't reset the current usage counter. If you need to apply new settings and reset the counter immediately, use the "Reset Quota" functionality.
+</details>
+
+<details> <summary><b>Can I implement different quota plans for different users?</b></summary>
+
+Yes, Tyk provides several ways to implement different quota plans:
+
+1. **Policies**: Create different policies with varying quota limits and assign them to keys based on subscription level
+2. **Key-specific settings**: Override policy quotas for individual keys when necessary
+3. **Meta Data**: Use key metadata to dynamically adjust quota behavior through middleware
+4. **Multiple APIs**: Create separate API definitions with different quota configurations for different service tiers
+
+This flexibility allows you to implement complex quota schemes that align with your business model and customer tiers.
+</details>
+
+<details> <summary><b>How do I troubleshoot quota issues?</b></summary>
+
+When troubleshooting quota issues:
+
+1. **Check Redis**: Ensure Redis is functioning properly and examine the quota keys directly
+2. **Review logs**: Look for quota-related messages in the Tyk Gateway logs
+3. **Verify configuration**: Confirm that quota settings are correctly configured in policies and API definitions
+4. **Test with the API**: Use the Tyk Gateway API to check quota status for specific keys
+5. **Monitor request headers**: Examine the `X-Rate-Limit-Remaining` headers in API responses
+
+For multi-gateway setups, also verify that all gateways are using the same Redis instance and that there are no synchronization issues between Redis clusters.
+</details>
+
