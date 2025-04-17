@@ -1,4 +1,4 @@
-/* Styles for clickable directory items in navigation */
+/* Minimal styles for clickable directory items in navigation - reduced to eliminate flickering */
 .directory-link {
   display: block;
   text-decoration: none;
@@ -15,4 +15,15 @@
 .active > .directory-link {
   font-weight: bold;
   color: #00D9BA;
+}
+
+/* Stop animations - potential source of flickering */
+.st-open, .st-collapsed, .st-treed, .st-treed ul, .st-treed li {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Force render layers to prevent painting issues */
+.st-treed {
+  contain: layout style;
 }
