@@ -83,12 +83,9 @@ menu:
             show: True
       - title: "Client Authentication"
         category: Directory
+        path: /api-management/client-authentication
         show: True
         menu:
-        - title: "Overview"
-          path: /api-management/client-authentication
-          category: Page
-          show: True
         - title: "JSON Web Tokens"
           path: /basic-config-and-security/security/authentication-authorization/json-web-tokens
           category: Page
@@ -123,12 +120,9 @@ menu:
         path: /api-management/security-features
       - title: "Tyk API Definitions"
         category: Directory
+        path: /api-management/gateway-config-introduction
         show: True
         menu:
-          - title: "Overview"
-            path: /api-management/gateway-config-introduction
-            category: Page
-            show: True
           - title: "Tyk OAS"
             path: /api-management/gateway-config-tyk-oas
             category: Page
