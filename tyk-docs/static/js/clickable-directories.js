@@ -11,9 +11,8 @@
       $link.off();
       
       $link.on('click', function(e) {
-        window.location = href;
         e.preventDefault();
-        e.stopPropagation();
+        window.location = href;
         return false;
       });
       
@@ -27,8 +26,14 @@
       $('.active').parents('li').removeClass('st-collapsed').addClass('st-open');
     }
     
+    // Initial call to ensure parents are open
     ensureParentsOpen();
-    setInterval(ensureParentsOpen, 300);
+    
+    // Event-driven approach instead of continuous polling
+    // Attach to relevant events that might require parent expansion
+    $(document).on('click', '.st-treed a', ensureParentsOpen);
+    $(document).on('DOMSubtreeModified', '.st-treed', ensureParentsOpen);
+    $(window).on('hashchange', ensureParentsOpen);
   }
   
   $(document).ready(function() {
