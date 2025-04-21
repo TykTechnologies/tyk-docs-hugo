@@ -40,7 +40,7 @@ Our minor releases are supported until our next minor comes out.
 
 ### 1.13.1 Release Notes
 
-#### Release Date 17 April 2025
+#### Release Date 19 April 2025
 
 #### Release Highlights
 This release is focused mainly on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.13.1) below.
