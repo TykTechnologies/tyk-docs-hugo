@@ -37,6 +37,68 @@ Our minor releases are supported until our next minor comes out.
 ---
 
 ## 1.13 Release Notes
+
+### 1.13.1 Release Notes
+
+#### Release Date 19 April 2025
+
+#### Release Highlights
+This release is focused mainly on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v1.13.1) below.
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are on 1.13.0 or an older version, we advise you to upgrade ASAP to this release.
+
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "portal/customization#upgrading-themes" >}}) for the portal's themes.
+
+#### Download
+- [Docker image v1.13.1](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.13.1)
+  - ```bash
+    docker pull tykio/portal:v1.13.1
+    ```
+- [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.13.1)
+
+#### Changelog {#Changelog-v1.13.1}
+
+#### Fixed 
+
+<ul>
+<li>
+<details>
+<summary>Revoking One Client Credential No Longer Deletes All from Keycloak</summary>
+
+Fixed an issue where all client credentials associated with an app would be incorrectly removed from Keycloak when credentials are revoked in the Tyk Portal. This would lead to credentials existing in the Tyk Developer Portal but not in Keycloak. Now, when an app with multiple client credentials has one set of credentials revoked in the Tyk Developer Portal, only those credentials will be removed from Keycloak, with the others remaining valid.
+</details>
+</li>
+<li>
+<details>
+<summary>SSO Now Works Properly with Multiple Portal Replicas</summary>
+
+Fixed an issue where users couldn't log in via SSO when multiple instances (replicas) of Portal were deployed
+</details>
+</li>
+<li>
+<details>
+<summary>Password No Longer Overwritten on User Profile Updates</summary>
+
+Addressed an issue where editing and saving a user’s profile in the admin portal would unintentionally change their password due to double encryption. Admins can now safely update user details without affecting login credentials. Passwords will only change when explicitly updated.
+</details>
+</li>
+<li>
+<details>
+<summary>API Description Field Restored</summary>
+
+Resolved a regression introduced in v1.13.0 that removed the ability to view or edit API descriptions on the API Product page. The API description field is now visible and editable again, restoring parity with earlier versions and ensuring API documentation remains complete and user-friendly.
+</details>
+</li>
+</ul>
+
+
 ### 1.13.0 Release Notes
 
 #### Release Date 31 Jan 2025
