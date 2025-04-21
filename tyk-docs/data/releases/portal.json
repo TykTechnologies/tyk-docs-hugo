@@ -4,7 +4,7 @@
   "latest": "1.13.1",
   "releaseNotesPath": "developer-support/release-notes/portal",
   "1.13.1": {
-    "date": "17/04/2025",
+    "date": "19/04/2025",
     "docker":"https://hub.docker.com/r/tykio/portal/tags?page=1&name=1.13.1"
   },
   "1.13.0": {
