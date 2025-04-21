@@ -32,162 +32,383 @@ flowchart LR
 *   **Protect Backend Services:** Prevent individual consumers from overwhelming upstream services with consistently high volume over long durations.
 *   **Enable Usage-Based Monetization:** Provide a clear mechanism for charging based on consumption tiers.
 
-## Quick Start
+---
+## Quick 
 
+### Overview
+
+In this tutorial, we will configure Request Quotas on a Tyk Security Policy to limit the total number of requests an API key can make over a defined period. Unlike rate limits (requests per second), quotas control overall volume. We'll set a low quota limit with a short renewal period for easy testing, associate a key with the policy, observe requests being blocked once the quota is exhausted, and finally verify that the quota resets after the period elapses. This guide primarily uses the Tyk Dashboard for configuration.
+
+### Prerequisites
+
+-   **Working Tyk Environment:** You need access to a running Tyk instance that includes both the Tyk Gateway and Tyk Dashboard components. For setup instructions using Docker, please refer to the [Tyk Quick Start](https://github.com/TykTechnologies/tyk-pro-docker-demo?tab=readme-ov-file#quick-start).
+-   **Curl, Seq and Sleep**: These tools will be used for testing.
+
+### Instructions
+
+#### Create an API
+
+1.  **Create an API:**
+    1.  Log in to your Tyk Dashboard.
+    2.  Navigate to **API Management > APIs**
+    3.  Click **Add New API**
+    4.  Click **Import**
+    5.  Select **Import Type** as **Tyk API**
+    6.  Copy the below Tyk OAS definition in the text box and click **Import API** to create an API.
+
+        <details>
+        <summary><b>Click to expand API Definition</b></summary>
+
+        ```json
+        {
+            "components": {
+                "securitySchemes": {
+                    "authToken": {
+                        "in": "header",
+                        "name": "Authorization",
+                        "type": "apiKey"
+                    }
+                }
+            },
+            "info": {
+                "title": "Request Quota Test",
+                "version": "1.0.0"
+            },
+            "openapi": "3.0.3",
+            "paths": {},
+            "security": [
+                {
+                    "authToken": []
+                }
+            ],
+            "servers": [
+                {
+                    "url": "http://tyk-gateway.localhost:8080/request-quota-test/"
+                }
+            ],
+            "x-tyk-api-gateway": {
+                "info": {
+                    "name": "Request Quota Test",
+                    "state": {
+                        "active": true
+                    }
+                },
+                "middleware": {
+                    "global": {
+                        "contextVariables": {
+                            "enabled": true
+                        },
+                        "trafficLogs": {
+                            "enabled": true
+                        }
+                    }
+                },
+                "server": {
+                    "authentication": {
+                        "enabled": true,
+                        "securitySchemes": {
+                            "authToken": {
+                                "enabled": true
+                            }
+                        }
+                    },
+                    "listenPath": {
+                        "strip": true,
+                        "value": "/request-quota-test/"
+                    }
+                },
+                "upstream": {
+                    "url": "http://httpbin.org/"
+                }
+            }
+        }
+        ```
+
+        </details>
+
+#### Configure Policy and Quota {#policy-setup}
+
+2.  **Create and Configure a Security Policy with a Request Quota:**
+
+    <details>
+    <summary><b>Click to expand to see detailed steps to configure a Request Quota in the Tyk Dashboard UI</b></summary>
+
+    1.  Navigate to **API Security > Policies** in the Tyk Dashboard sidebar.
+    2.  Click the **Add Policy** button.
+    3.  Under the **1. Access Rights** tab, in the **Add API Access Rule** section, select the `Request Quota Test` API.
+    4.  Scroll down to the **Global Limits and Quota** section (still under the **1. Access Rights** tab):
+        *   **Important:** Disable **Rate Limiting** by selecting **Disable rate limiting** option, so it doesn't interfere with testing the quota.
+        *   Set the following values for `Usage Quotas`:
+        *   Enter `10` into the **Max Requests per period** field. (This is our low quota limit for testing).
+        *   Select `Custom` from the **Quota resets every:** dropdown and enter `60` in the adjacent field. (This sets a short 60-second reset period for quick testing).
+    5.  Select the **2. Configuration** tab.
+    6.  In the **Policy Name** field, enter `Request Quota Policy`.
+    7.  From the **Key expire after** dropdown, select `1 hour`.
+    8.  Click the **Create Policy** button.
+
+    </details>
+
+    TODO: Add Image
+    *(Note: Replace with an actual screenshot showing the Quota fields configured as described)*
+
+3.  **Associate an Access Key with the Policy:**
+
+    <details>
+    <summary><b>Click to expand to see detailed steps to Associate an Access Key with the Policy in the Tyk Dashboard UI</b></summary>
+
+    1.  Navigate to **API Security > Keys** in the Tyk Dashboard sidebar.
+    2.  Click the **Add Key** button.
+    3.  Under the **1. Access Rights** tab:
+        *   In the **Apply Policy** section, select the `Request Quota Policy`.
+    4.  Select the **2. Configuration** tab.
+    5.  In the **Alias** field, enter `Request Quota Key`. This provides a human-readable identifier.
+    6.  From the **Expires** dropdown, select `1 hour`.
+    7.  Click the **Create Key** button.
+    8.  A pop-up window **"Key created successfully"** will appear displaying the key details. **Copy the Key ID** value shown and save it securely. You will need this key to make API requests in the following steps.
+    9.  Click **OK** to close the pop-up.
+
+    </details>
+
+#### Testing
+
+4.  **Test Quota Exhaustion:**
+
+    We've set a quota of 10 requests per 60 seconds. Let's send more than 10 requests within that window to observe the quota being enforced.
+
+    1.  Open your terminal.
+    2.  Execute the following command, replacing `<replace-with-key-id>` with the API Key ID you saved earlier. This command attempts to send 15 requests sequentially.
+
+        ```bash
+        for i in $(seq 1 15); do \
+          echo -n "Request $i: "; \
+          curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: <replace-with-key-id>" http://tyk-gateway.localhost:8080/request-quota-test/get; \
+          sleep 0.1; \
+        done
+        ```
+        *(Note: The `sleep 0.1` adds a tiny delay, but ensure all 15 requests execute well within the 60-second quota window).*
+
+    3.  **Expected Observation:** You should see the first 10 requests succeed, returning an HTTP status code `200`. After the 10th request, the subsequent requests (11 through 15) should be blocked by the quota limit, returning an HTTP status code `403` (Forbidden).
+
+    **Sample Output:**
+
+    ```bash
+    Request 1: 200
+    Request 2: 200
+    Request 3: 200
+    Request 4: 200
+    Request 5: 200
+    Request 6: 200
+    Request 7: 200
+    Request 8: 200
+    Request 9: 200
+    Request 10: 200
+    Request 11: 403
+    Request 12: 403
+    Request 13: 403
+    Request 14: 403
+    Request 15: 403
+    ```
+
+5.  **Test Quota Reset:**
+
+    Now, let's wait for the quota period (60 seconds) to elapse and then send another request to verify that the quota allowance has been reset.
+
+    1.  In the same terminal, wait for slightly longer than the reset period. The command below waits for 70 seconds.
+
+        ```bash
+        echo "Waiting for quota to reset (70 seconds)..."
+        sleep 70
+        echo "Wait complete. Sending one more request..."
+        ```
+
+    2.  Send one more request using the same API key:
+
+        ```bash
+        curl -s -o /dev/null -w "%{http_code}\n" -H "Authorization: <replace-with-key-id>" http://tyk-gateway.localhost:8080/request-quota-test/get
+        ```
+
+    3.  **Expected Observation:** This single request should now succeed, returning an HTTP status code `200`. This demonstrates that because the 60-second quota period ended, the *next* request made after that period triggered the quota reset, replenishing the allowance.
+
+    **Sample Output:**
+
+    ```bash
+    Waiting for quota to reset (70 seconds)...
+    Wait complete. Sending one more request...
+    200
+    ```
+
+This quick start demonstrates the fundamental behaviour of Request Quotas: limiting the total number of requests allowed within a specific period and automatically resetting the allowance once that period renews (triggered by the next request).
+
+---
 ## Configuration Options
 
-Request Quotas are primarily configured in two places within Tyk:
+Request Quotas is configured within Tyk [Security Policies]({{< ref "/api-management/policies" >}}) or directly on individual [Access Keys]({{< ref "/api-management/client-authentication#use-auth-tokens" >}}).
 
-1.  **Security Policy:** Applying a quota limit to a policy enforces that limit on *all* API keys associated with that policy. This is the recommended approach for managing quotas across groups of users or tiers.
-2.  **API Key:** Setting a quota directly on an individual API key overrides any quota set by policies associated with that key. This allows for specific exceptions or custom limits for individual consumers.
+The configuration involves setting two specific fields:
 
-Additionally, you can disable quota enforcement entirely for a specific API via its API Definition.
+1. **QuotaMax**: The maximum number of requests allowed during the quota period.
+   - Set to `-1` for unlimited requests
+   - Set to a positive integer (e.g., `1000`) to limit total requests
 
-Let's explore the configuration methods:
+2. **QuotaRenewalRate**: The time period in seconds for which the quota applies.
+   - Example: `3600` for hourly quota (1 hour = 3600 seconds)
+   - Example: `86400` for daily quota (24 hours = 86400 seconds)
+   - Example: `2592000` for monthly quota (30 days = 2592000 seconds)
+
+
+### Configure via UI
+
+The Tyk Dashboard provides a straightforward interface to set request quotas parameters on both Security Policies and Access Keys.
 
 {{< tabs_start >}}
 
-{{< tab_start "Dashboard UI" >}}
+{{< tab_start "Security Policy" >}}
 
-The Tyk Dashboard provides the most straightforward way to configure quotas, either on a Security Policy or an individual API Key.
+The image below shows a policy with request quotas. Any key using this policy will inherit the quota settings and behaves as follows: each key will be permitted 1000 requests per 24-hour (86400 seconds) cycle before the quota resets.
 
-**Configuring on a Security Policy:**
+{{< img src="/img/dashboard/system-management/request-quotas-in-policy.png" alt="policy with request quota configured" >}}
 
-1.  Navigate to **System Management > Policies**.
-2.  Create a new Policy or **Edit** an existing one.
-3.  Locate the **Usage Quotas** section (or similar, depending on UI version - often grouped with Rate Limiting).
-4.  Set **Max Requests per period**: Define the maximum number of requests allowed during the reset period (e.g., `10000`). Use `-1` for unlimited.
-5.  Set **Quota resets every**: Choose the duration after which the quota allowance replenishes (e.g., `Month`, `Week`, `Day`, or a custom duration in seconds).
-6.  Optionally, enable **Set per API Limits and Quota** if you want this policy to define different quotas for specific APIs it grants access to.
-7.  **Save** or **Update** the Policy. Keys using this policy will now be subject to this quota.
+<br>
+<details>
+<summary><b>Click to expand to see a detailed steps to configure Request Quotas in the Tyk Dashboard UI</b></summary>
 
-**Configuring on an API Key:**
-
-1.  Navigate to **System Management > Keys**.
-2.  Create a new Key or **Edit** an existing one.
-3.  In the **API Access Rights** section, ensure the key has access to the desired API(s).
-4.  Enable the **Set per API Limits and Quota** toggle for the specific API you want to apply a key-level quota to.
-5.  Configure the **Usage Quotas** for that API within the key's settings:
-    *   **Max Requests per period**: Set the limit (e.g., `5000`). Use `-1` for unlimited. This overrides the policy quota for this specific key *for this specific API*.
-    *   **Quota resets every**: Select the reset period.
-    *   The **Remaining requests for period** field will display the current count (initially equal to Max Requests).
-    {{< img src="/img/2.10/api_rate_limits_keys.png" alt="Tyk API Gateway Quotas on an API Key" >}} 
-    *(Image depicts setting Per API Quotas on a Key)*
-6.  **Save** or **Update** the Key.
-
-**Note:** If "Set per API Limits and Quota" is *not* enabled on the key for a specific API, the quota settings from the applied Security Policy (if any) will be used.
-
-Refer to the Dashboard documentation for [Policies]({{< ref "#link-to-policy-docs" >}}) and [Keys]({{< ref "#link-to-key-docs" >}}) for more UI details.
+1.  Navigate to **API Security > Policies** in the Tyk Dashboard sidebar
+2.  Click the **Add Policy** button
+3.  Under the **1. Access Rights** tab and in the **Add API Access Rule** section, select the required API
+4.  Scroll down to the **Global Limits and Quota** section (still under the **1. Access Rights** tab):
+    *   Enable `Request Quotas` by setting the following values in the `Usage Quotas` section:
+        *   Uncheck the `Unlimited Requests` checkbox
+        *   Field **Requests (or connection attempts) per period** - Enter the total number of requests a client is allowed to make using during the defined quota period.
+        *   Field **Quota resets every:** - Select the duration of the quota period.
+5.  Select the **2. Configuration** tab
+6.  In the **Policy Name** field, enter a name
+7.  From the **Key expire after** dropdown, select an option
+8.  Click the **Create Policy** button
+</details>
 
 {{< tab_end >}}
 
-{{< tab_start "Session Object (API)" >}}
+{{< tab_start "Access Key" >}}
 
-You can configure quotas programmatically by manipulating a key's **Session Object** via the Tyk Gateway API. This is useful for automation or integration with external systems. The session object is a JSON structure associated with each API key.
+The image below shows an access key with request quotas. This access key behaves as follows: each key will be permitted 1000 requests per 24-hour (86400 seconds) cycle before the quota resets.
 
-Key quota parameters within the session object:
+**Note:** Direct key configuration overrides policy settings only for that specific key.
 
-*   `quota_max` (Integer): The maximum number of requests allowed in the period. Set to `-1` for unlimited.
-*   `quota_remaining` (Integer): The current number of requests left. Typically initialized to the same value as `quota_max`. Tyk decrements this counter.
-*   `quota_renewal_rate` (Integer): The duration of the quota period in seconds. The quota will reset *after* this duration has passed, upon the next request using the key.
+{{< img src="/img/dashboard/system-management/request-quotas-in-key.png" alt="policy with request quota configured" >}}
 
-**Example Session Object Snippet:**
+<br>
+<details>
+<summary><b>Click to expand to see a detailed steps to configure Request Quota in the Tyk Dashboard UI</b></summary>
+
+1.  Navigate to **API Security > Keys** in the Tyk Dashboard sidebar
+2.  Click the **Create Key** button
+3.  Under the **1. Access Rights** tab:
+    *   Select **Choose API**
+    *   In the **Add API Access Rule** section, select the required API
+4.  Scroll down to the **Global Limits and Quota** section (still under the **1. Access Rights** tab):
+    *   Enable `Request Quotas` by setting the following values in the `Usage Quotas` section:
+        *   Uncheck the `Unlimited Requests` checkbox
+        *   Field **Requests (or connection attempts) per period** - Enter the total number of requests a client is allowed to make using during the defined quota period.
+        *   Field **Quota resets every:** - Select the duration of the quota period.
+5.  Select the **2. Configuration** tab
+6.  In the **Alias** field, enter a name. This provides a human-readable identifier that makes tracking and managing this specific access key easier in your analytics and logs.
+7.  From the **Expires** dropdown, select an option
+8.  Click the **Create Key** button
+</details>
+
+{{< tab_end >}}
+
+{{< tabs_end >}}
+
+### Configure via API
+
+These are the fields that you can set directly in the Policy object or the Access Key:
 
 ```json
 {
-  // ... other session object fields like access_rights, org_id etc.
-  "quota_max": 10000,
-  "quota_remaining": 10000,
-  "quota_renewal_rate": 2592000, // 30 days (60*60*24*30)
-  "allowance": 1000, // Example rate limit setting (separate from quota)
-  "rate": 1000,      // Example rate limit setting
-  "per": 60          // Example rate limit setting
-  // ...
+  // Partial policy/session object fields
+  "quota_max": 1000,       // Allow one thousand requests
+  "quota_renewal_rate": 86400,    // 1 day or 24 hours
+  // ... more config follows
 }
 ```
 
+{{< tabs_start >}}
+
+{{< tab_start "Security Policy" >}}
+
+To update the policy, do the following:
+1. Retrieve the policy object using `GET /api/portal/policies/{POLICY_ID}`
+2. Add or modify the `quota_max` and `quota_renewal_rate` fields within the policy JSON object
+3. Update the policy using `PUT /api/portal/policies/{POLICY_ID}` with the modified object, or create a new one using `POST /api/portal/policies/`
+
 **Explanation:**
-
-This snippet configures the key to allow a maximum (`quota_max`) of 10,000 requests. The counter (`quota_remaining`) starts at 10,000. The quota period lasts for 2,592,000 seconds (`quota_renewal_rate`), which is 30 days. After 30 days have elapsed, the *next* request made with this key will trigger a reset of `quota_remaining` back to `quota_max`.
-
-**Note:** Modifying the session object requires using the [Tyk Gateway API endpoint for Keys]({{< ref "#link-to-gateway-api-key-mgmt" >}}). Be careful when updating session objects to preserve other necessary fields.
+The above adds request quotas to a policy. Any key using this policy will inherit the quotas settings and behaves as follows: each key will be permitted 1000 requests per 24-hour (86400 seconds) cycle before the quota resets.
 
 {{< tab_end >}}
 
-{{< tab_start "API Definition (Disabling)" >}}
+{{< tab_start "Access Key" >}}
+
+**Note:** Direct key configuration overrides policy settings only for that specific key.
+
+To update the access key do the following:
+1. Retrieve the key's session object using `GET /api/keys/{KEY_ID}`
+2. Add or modify the `quota_max` and `quota_renewal_rate` fields within the session object JSON
+3. Update the key using `PUT /api/keys/{KEY_ID}` with the modified session object
+
+**Explanation:**
+The above adds quotas to an access key. Any request made by the key will behave as follows: each key will be permitted 1000 requests per 24-hour (86400 seconds) cycle before the quota resets.
+
+{{< tab_end >}}
+
+{{< tabs_end >}}
+
+### Disable Quotas via API Definition
+
+TODO: Both of the below configurations is not available in the reference documentation
 
 You cannot *set* quota values within an API Definition, but you can *disable* quota checking entirely for all requests proxied through that specific API, regardless of Key or Policy settings. This is useful if an API should never have quota limits applied.
 
-This is configured within the API Definition file itself.
+{{< tabs_start >}}
 
-{{< tabs_start nested="true" >}}
-{{< tab_start "Tyk OAS" >}}
+{{< tab_start "Tyk OAS API Definition" >}}
 
 In a Tyk OAS API Definition (JSON or YAML), set the `disableQuota` field within the `x-tyk-api-gateway` extension object.
 
-```yaml
-# Tyk OAS API Definition (YAML Example)
-...
-x-tyk-api-gateway:
-  info:
-    name: "My API - No Quotas"
-    ...
-  middleware:
-    disableQuota: true # Set to true to disable quota checks
-  ...
-upstream:
-  url: http://my-backend.com
-...
-
+```json
+{
+  // Partial config from Tyk OAS API Definition
+  "x-tyk-api-gateway": {
+    "middleware": {
+      "disableQuota": true // Set to true to disable quota checks
+    }
+  },
+  // ... more config follows
+}
 ```
 
-Refer to the [Tyk OAS API Definition reference (`disableQuota`)]({{< ref "api-management/gateway-config-tyk-oas#disablequota" >}}) for details.
+Refer to the [Tyk OAS API Definition reference]({{< ref "api-management/gateway-config-tyk-oas#disablequota" >}}) for details.
 
 {{< tab_end >}}
-{{< tab_start "Tyk Classic" >}}
+{{< tab_start "Tyk Classic API Definition" >}}
 
 In a Tyk Classic API Definition (JSON), set the `disable_quota` field to `true`.
 
 ```json
-// Tyk Classic API Definition (JSON Example)
 {
-  "name": "My API - No Quotas",
-  "api_id": "my-api-no-quotas",
-  "use_keyless": false,
-  "auth": {
-    "auth_header_name": "authorization"
-  },
-  "definition": {
-    "location": "header",
-    "key": "x-api-version"
-  },
-  "version_data": {
-    "not_versioned": true,
-    "versions": {
-      "Default": {
-        "name": "Default",
-        "use_extended_paths": true
-      }
-    }
-  },
-  "proxy": {
-    "listen_path": "/my-api-no-quotas/",
-    "target_url": "http://my-backend.com",
-    "strip_listen_path": true
-  },
+  // Partial config from Tyk Classic API Definition
   "disable_quota": true // Set to true to disable quota checks
+  // ... more config follows
 }
 
 ```
 
-Refer to the [Tyk Classic API Definition reference (`disable_quota`)]({{< ref "#link-to-classic-api-def-disable-quota" >}}) for details.
-
-{{< tab_end >}}
-{{< tabs_end >}}
+Refer to the [Tyk Classic API Definition reference]({{< ref "#link-to-classic-api-def-disable-quota" >}}) for details.
 
 {{< tab_end >}}
 
 {{< tabs_end >}}
+
 
 ### Important Considerations
 
@@ -196,9 +417,14 @@ Refer to the [Tyk Classic API Definition reference (`disable_quota`)]({{< ref "#
 *   **Event-Driven Resets:** Quotas reset *after* the `quota_renewal_rate` (in seconds) has passed *and* upon the next request using the key. They do not reset automatically on a fixed schedule (e.g., precisely at midnight or the 1st of the month) unless external automation is used to update the session object.
 *   **Response Headers:** When quotas are active, Tyk typically adds `X-RateLimit-Limit`, `X-RateLimit-Remaining`, and `X-RateLimit-Reset` headers to responses, allowing clients to track their usage. (Note: Header names might be configurable).
 
+---
 ## How It Works
 
-Request Quotas in Tyk limit the total number of API requests a client can make within a defined time period (hours, days, months). Unlike rate limits that control requests per second, quotas manage the overall consumption volume over longer periods. When a client reaches their quota limit, further requests are rejected until the quota period renews. This feature helps API providers implement usage-based pricing tiers, prevent API abuse, control infrastructure costs, and ensure fair resource distribution among clients. Request Quotas can be applied at individual key, policy, or organization-wide levels, giving you flexible control over how your APIs are consumed.
+Request Quotas in Tyk limit the total number of API requests a client can make within a defined time period (hours, days, months). Unlike rate limits that control the frequency of requests over short intervals (like seconds or minutes) to prevent immediate system overload, Request Quotas control the total volume of requests allowed over much longer periods to manage overall consumption and align with service tiers. 
+
+When a client reaches their quota limit, further requests are rejected until the quota period renews. This helps API providers implement usage-based pricing tiers, prevent API abuse, control infrastructure costs, and ensure fair resource distribution among clients.
+
+Think of Request Quotas like a prepaid phone plan with a fixed number of minutes per month. When you sign up, you get allocated a specific number of call minutes (API requests) that you can use over the billing period. You can make calls (API requests) at any pace you want – all at once or spread throughout the month – but once you've used up your allocated minutes, you can't make any more calls until the next billing cycle begins.
 
 ```mermaid
 flowchart LR
@@ -212,19 +438,109 @@ flowchart LR
     Gateway -->|Response| Client
 ```
 
-Think of Request Quotas like a prepaid phone plan with a fixed number of minutes per month. When you sign up, you get allocated a specific number of call minutes (API requests) that you can use over the billing period. You can make calls (API requests) at any pace you want – all at once or spread throughout the month – but once you've used up your allocated minutes, you can't make any more calls until the next billing cycle begins.
+### How Tyk Actually Implements Quotas
 
-In this analogy:
-- The phone plan is your API subscription with a specific quota
-- The minutes are the number of API requests allowed
-- The billing period is the quota renewal period (hour, day, month)
-- The usage counter is Tyk tracking how many requests you've made
-- The "minutes remaining" display is the quota_remaining value
-- The "call blocked" message is the 403 Forbidden response when quota is exceeded
-- The new billing cycle is when your quota resets
+Tyk implements request quotas using a Redis-based counter mechanism with time-based expiration. Here's a detailed breakdown of the implementation:
 
-Just as different phone plans offer different minute allocations, different API keys or policies in Tyk can have different quota limits based on the subscription tier.
+```mermaid
+graph LR
+    A[API Request Received] --> B(Check Redis Quota Counter);
+    B -- Counter < QuotaMax --> C{Increment Redis Counter};
+    C --> D[Calculate quota_remaining = QuotaMax - Counter];
+    D --> E[Update Session State];
+    E --> F[Forward Request to Upstream];
+    B -- Counter >= QuotaMax --> G[Reject Request with 403];
+```
 
+#### Core Components
+
+1. **Redis Storage**: Quotas are tracked in Redis using incrementing counters for each API key, with a TTL set to the quota renewal period, resetting the counter to 0 on the next request after expiration.
+    Here is an sample Redis key for a  Request Quota:
+    ```
+    quota-[scope]-[key_hash]
+    ```
+
+    Where:
+    - `scope` is optional and represents an API-specific allowance scope
+    - `key_hash` is the hashed API key (if hash keys is enabled)
+
+2. **Session State**: Quota configuration is stored in the user's `SessionState`, which contains several quota-related fields:
+
+    - `QuotaMax`: Maximum number of requests allowed during the quota period.
+    - `QuotaRemaining`: Number of requests remaining for the current period. **Note:** This is a derived value, not the primary counter.
+    - `QuotaRenews`: Unix timestamp when the quota will reset.
+    - `QuotaRenewalRate`: Time in seconds for the quota period (e.g., 3600 for hourly quotas).
+
+3. **Middleware**: The quota check is performed by the `RateLimitAndQuotaCheck` middleware
+
+#### Quota Enforcement
+
+The core logic for checking and enforcing Request Quotas executes within the `RateLimitAndQuotaCheck` middleware, which is a step in the request processing pipeline. Here's a breakdown of this process:
+
+1.  **Initiation:** As a request enters the Tyk Gateway, it passes through configured middleware. When it hits the `RateLimitAndQuotaCheck` middleware, the quota validation process begins.
+
+2.  **Applicability Check:** The middleware first determines if quota enforcement is relevant:
+    *   It checks the API Definition to see if quotas are globally disabled. If so, the process stops here for quotas, and the request proceeds.
+    *   It identifies the API key used for the request and retrieves its associated `SessionState`.
+
+3.  **Retrieve Limits:** The middleware accesses the `SessionState` to get the specific quota parameters applicable to this key and potentially the specific API being accessed (if per-API quotas are configured):
+    *   `QuotaMax`: The maximum number of requests allowed.
+    *   `QuotaRenewalRate`: The duration (in seconds) of the quota period used for setting the TTL in Redis.
+
+4.  **Redis Interaction & Enforcement:** This is the core enforcement step, interacting directly with Redis:
+    *   **Construct Key:** Generates the unique Redis key for tracking this specific quota counter (e.g., `quota-{scope}-{api-key-hash}`).
+    *   **Check Expiry/Existence:** It checks Redis to see if the key exists and if its TTL is still valid.
+    *   **Handle Renewal (If Expired/Missing):** If the key doesn't exist or its TTL has passed, Tyk initiates the renewal logic described previously (attempting a distributed lock, setting the counter to 0, and applying the `QuotaRenewalRate` as the new TTL).
+    *   **Increment Counter:** Tyk atomically increments the Redis counter value. This operation returns the *new* value of the counter *after* the increment.
+    *   **Compare Against Limit:** The middleware compares this *new* counter value against the `QuotaMax` retrieved from the session state.
+    *   **Decision:**
+        *   If `new_counter_value <= QuotaMax`: The request is within the allowed quota.
+        *   If `new_counter_value > QuotaMax`: The quota limit has been exceeded by this request.
+
+5.  **Outcome:**
+    *   **Quota OK:** The middleware allows the request to proceed to the next stage in the processing pipeline (e.g., other middleware, upstream service).
+    *   **Quota Exceeded:** The middleware halts further processing of the request down the standard pipeline. It prepares and returns an error response to the client, typically `HTTP 403 Forbidden` with a "Quota exceeded" message.
+
+6.  **Session State Update:** Regardless of whether the request was allowed or blocked due to the quota, the middleware calls an internal function (like `updateSessionQuota`) to update the in-memory `SessionState` associated with the API key. This update synchronizes the `QuotaRemaining` field in the session with the latest calculated state based on the Redis counter and its expiry. This ensures that subsequent operations within the same request lifecycle (if any) or diagnostic information have access to the most recent quota status.
+
+#### Quota Reset Mechanisms
+
+The available allowance (`QuotaRemaining`) for an API key is replenished back to its maximum (`QuotaMax`) through several distinct mechanisms:
+
+1.  **Event-Driven Renewal (Primary Mechanism):**
+    *   **Condition:** This occurs *after* the time duration specified by `QuotaRenewalRate` (in seconds) has elapsed since the quota period began (i.e., since the last reset or key creation/update). In Redis, this corresponds to the Time-To-Live (TTL) expiring on the quota tracking key.
+    *   **Trigger:** The reset is **not** automatic based on a timer. It is triggered by the **next API request** made using that specific key *after* the `QuotaRenewalRate` duration has passed (and the Redis TTL has expired).
+    *   **Process:** Upon detecting the expired TTL during that next request, Tyk resets the Redis counter (typically by setting it to 0 and immediately incrementing it to 1 for the current request) and applies a *new* TTL based on the `QuotaRenewalRate`. This effectively makes the full `QuotaMax` available for the new period starting from that moment.
+
+    ```mermaid
+    graph LR
+        A[Request After Quota Period] --> B{Redis Key Expired?};
+        B -- Yes --> C[Reset Counter to 0];
+        C --> D[Set New Expiration];
+        D --> E[Process Request Normally];
+        B -- No --> F[Continue Normal Processing];
+    ```
+
+2.  **Manual Reset via API:**
+    *   **Mechanism:** You can force an immediate quota reset for a specific API key by calling a endpoint on the Tyk Gateway Admin API.
+    *   **Effect:** This action deletes the corresponding quota tracking key directly in Redis. The *next* request using this API key will then find no existing key, triggering the renewal logic (Step 1) as if the period had just expired, immediately granting the full `QuotaMax` and setting a new TTL. This provides an immediate, on-demand refresh of the quota allowance.
+
+3.  **Key Creation or Update:**
+    *   **Trigger:** When a new API key is created, or an existing key's configuration is updated (e.g., via the Dashboard or the Gateway API), Tyk reapplies the quota settings based on the current policy or key-specific configuration.
+    *   **Process:** This typically involves setting the `QuotaRemaining` value to `QuotaMax` in the key's session data and ensuring the corresponding Redis key is created with the correct initial value (or implicitly reset) and its TTL set according to the `QuotaRenewalRate`. This ensures the key starts with a fresh quota allowance according to its defined limits.
+    *   **Exception:** This behavior can be suppressed if the API definition includes the `DontSetQuotasOnCreate` field (referred to as `SkipQuotaReset` in the OAS specification), which prevents automatic quota resets during key creation or updates.
+  
+#### Key Technical Aspects
+
+1. **Time-Based Reset**: Unlike rate limiting which uses sliding windows, quotas have a fixed renewal time determined by `QuotaRenewalRate` (in seconds)
+
+2. **Atomic Operations**: Redis pipelining is used to ensure atomic increment and expiration setting:
+
+3. **Race Condition Handling**: Distributed locks prevent multiple servers from simultaneously resetting quotas
+
+4. **Quota Scope Support**: The implementation supports both global quotas and API-specific quotas through the scoping mechanism
+
+---
 ## FAQs
 
 <details> <summary><b>What are Request Quotas in Tyk?</b></summary>
@@ -239,7 +555,7 @@ While both control API usage, they serve different purposes:
 - **Request Quotas** control the total volume of requests over a longer period (e.g., 10,000 requests per month) to manage overall API consumption and often align with business/pricing models
 </details>
 
-<details> <summary><b>How are Request Quotas configured in Tyk?</b></summary>
+<details> <summary><b>Mark: How are Request Quotas configured in Tyk?</b></summary>
 
 Request Quotas can be configured at multiple levels:
 - **API Level**: Set in the API definition with `disable_quota` flag
@@ -257,7 +573,7 @@ The main parameters for configuring quotas are:
 - `quota_renews`: Timestamp indicating when the quota will reset
 </details>
 
-<details> <summary><b>Can I disable Request Quotas for specific APIs?</b></summary>
+<details> <summary><b>Mark: Can I disable Request Quotas for specific APIs?</b></summary>
 
 Yes, you can disable quotas for specific APIs by setting the `disable_quota` flag to `true` in the API definition. This will bypass quota checking for all requests to that API, regardless of any quotas set at the key or policy level.
 </details>
@@ -356,18 +672,6 @@ By default, Tyk counts all requests against the quota regardless of response cod
 If you need this functionality, you have two options:
 1. Implement a custom middleware plugin that conditionally decrements the quota based on response codes
 2. Use the Tyk Pump to track successful vs. failed requests separately in your analytics platform, and implement quota management at the application level
-</details>
-
-<details> <summary><b>How can I monitor quota usage across my organization?</b></summary>
-
-To monitor quota usage across your organization:
-
-1. **Dashboard Analytics**: Use the Tyk Dashboard to view quota usage for individual keys and APIs
-2. **Tyk Pump**: Configure Tyk Pump to send quota usage data to external analytics systems like Elasticsearch, InfluxDB, or Prometheus
-3. **Webhooks**: Set up quota threshold webhooks to receive notifications when keys reach certain quota usage percentages
-4. **API Endpoints**: Use the Tyk Gateway API to programmatically check quota status for specific keys
-
-For organization-wide visibility, consider implementing a custom dashboard using the analytics data collected via Tyk Pump.
 </details>
 
 <details> <summary><b>What happens if I change a quota mid-period?</b></summary>
