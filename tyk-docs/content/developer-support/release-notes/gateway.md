@@ -1730,6 +1730,116 @@ links to API documentation and FAQs. You can copy it from the previous release. 
 
 ### 5.3.10 Release Notes
 
+#### Release Date XXX
+
+#### Release Highlights
+
+This release focuses mainly on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.11" >}}) below.
+
+#### Breaking Changes
+
+This release has no breaking changes.
+
+#### Dependencies
+
+##### Compatibility Matrix For Tyk Components
+
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.3.11 | MDCB v2.8.0     | MDCB v2.8.0 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.0    | Sync v2.1.0 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.13 | EDP all versions |
+| | Pump v1.12.0 | Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.23  |  1.23  | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.3.11}
+
+If you are upgrading to 5.3.11, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+#### Downloads
+
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.3.11)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.3.11
+    ``` 
+- Helm charts
+  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+
+#### Changelog {#Changelog-v5.3.11}
+
+##### Added 
+
+<ul>
+<li>
+<details>
+<summary>Added GODEBUG Flags for Backward Compatibility with Deprecated Ciphers</summary>
+
+We have added GODEBUG flags to enable deprecated insecure ciphers by default for backward compatibility. Existing users will not be affected. New users or those who wish to override these settings can do so at runtime using environment variables.
+</details>
+</li>
+</ul>
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Fixed Inconsistent Context Behavior in UDG APIs</summary>
+
+Fixed a bug where headers being sent upstream in UDG APIs were not being cached accurately, ensuring correct and consistent context handling for all requests.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Route Matching Logic for API Requests</summary>
+
+Resolved an issue where some API requests were routed incorrectly due to path sorting not prioritizing specific routes over parameterized ones.
+</details>
+</li>
+<li>
+<details>
+<summary>Resolved Incorrect Timeout Application for Specific API Endpoints</summary>
+
+Fixed an issue where proxy_default_timeout for specific API endpoints were not being applied correctly, causing requests to use the global timeout instead.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed race condition in gateway license allocation</summary>
+
+Resolved a race condition in gateway license allocation that occasionally allowed more or fewer gateways than licensed to register and serve traffic.
+</details>
+</li>
+<li>
+<details>
+<summary>Multi-Value Response Headers in Coprocess Middleware</summary>
+
+Multi-value response headers were previously lost after synchronization with coprocess middleware, as only the first value was retained. This has been resolved, ensuring all response headers are properly synchronized and preserved
+</details>
+</li>
+</ul>
+
+
+### 5.3.10 Release Notes
+
 #### Release Date 19 February 2025
 
 #### Release Highlights
