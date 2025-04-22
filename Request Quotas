@@ -1,0 +1,345 @@
+---------- Original Page Content Start -----------
+## Request Quotas
+
+A quota is similar to a rate limit, as it allows a certain number of requests through in a time period. However traditionally these periods are much longer, For example, if you would like to have a user only have 10,000 requests to the API per month, you can create a key that has no rate limiting but will disallow access once the quota is empty. Tyk will automatically reset the quota if the time limit on reset has been exceeded.
+
+### How do Quotas Work?
+
+Quotas in Tyk use a decrementing counter in the token's session object to measure when to block inbound requests.
+
+### How do Quotas Renew?
+
+In Tyk, most things are event-driven, the same goes for quotas. Since all quotas have a reset time limit, they do not "reset" on a specific date (e.g. 1st of the month), instead they "reset" on or after a date has passed, and only when the key is actively being used. This means that the period can "move" if the token is only partially active.
+
+### Why is the Quota System Like This?
+
+In a system with 1,000,000 tokens, managing timers to watch and monitor each token is extremely expensive and inefficient. So in order to keep quotas sane and not clutter up the DB with unnecessary timers, quotas are event-driven.
+
+It is possible to have monthly quotas that set on a specific date, using the Tyk Gateway API it is possible to reset known token quotas periodically using an external timer.
+
+### Can I Disable Quotas?
+
+Yes you can - to disable the quota middleware in an API definition, select the **Disable Quotas** option in the API designer, or set the value of `disable_quota` to `true` in your API Definition.
+
+### Set a Quota with the Dashboard
+
+1.  Add a Key from the **System Management > Keys** menu.
+
+2.  Ensure the new key has access to the APIs you wish it work with by selecting the API from **Access Rights** > **Choose API**. Turn the **Set per API Limits and Quota** options on.
+
+3.  From the **Usage Quotas** section, set the **Max Requests per period** - this is the maximum number of requests that are allowed to pass through the proxy during the period.
+
+4.  Set the **Quota resets every** drop down to the period you would like the quota to be active for. If the pre-sets do not meet your requirements, the quota period can be set using the session object method and the REST API.
+
+5.  The **Remaining requests for period** field displays how many more times the API can be requested for the quota set.
+    
+{{< img src="/img/2.10/api_rate_limits_keys.png" alt="Tyk API Gateway Quotas" >}}
+
+1.  Save the token, it will be created instantly.
+
+### Set a Quota with the Session Object
+
+In order to set a quota for a token:
+
+1. Ensure that `quota_max` is set to the maximum amount of requests that a user is allowed to make in a time period.
+2. Ensure `quota_remaining` is set to the same value as `quota_max`, this is the value that will decrement on each request (failed or successful).
+3. Set the `quota_renewal_rate` to the value, in seconds, of when the quota should renew. For example, if you would like it to renew every 30 days, you would have `2592000` seconds `(((60*60) * 24) * 30 = 2592000)`.
+
+{{< note success >}}
+**Note**  
+
+To set an unlimited quota, set `quota_max` to `-1`.
+{{< /note >}}
+
+[1]: /img/dashboard/system-management/usage_quotas_2.5.png
+
+---------- Original Page Content END -----------
+
+
+---------- Content Generate from Internal AI System Start -----------
+
+Request Quotas in Tyk: A Comprehensive Guide
+============================================
+
+1\. Introduction
+----------------
+
+Request quotas in Tyk are a powerful feature that allows you to limit the total number of API requests a consumer can make over a specified period. Unlike rate limiting which controls requests per second in a rolling window, quotas establish an absolute maximum number of requests allowed over longer periods such as days, weeks, or months.
+
+Request quotas serve several important purposes:
+
+-   Protecting backend services from excessive load
+-   Implementing tiered service plans with different usage allowances
+-   Monetizing APIs based on consumption
+-   Ensuring fair usage across all API consumers
+
+2\. How Does It Work?
+---------------------
+
+Tyk's quota system works by tracking the total number of requests made by each API key or security policy over a defined reset period. When a request is made, Tyk:
+
+1.  Checks if the requesting key has a quota limit set
+2.  Verifies if the current request would exceed that quota
+3.  Either allows the request and decrements the remaining quota or rejects it with a quota exceeded error
+4.  Resets the quota counter when the quota period expires
+
+`1sequenceDiagram  2  participant Client 3  participant Tyk Gateway 4  participant Backend API 5
+6 Client->>Tyk Gateway: API Request with Key 7  Note over Tyk Gateway: Check quota for key 8
+9  alt Quota available 10 Tyk Gateway->>Tyk Gateway: Decrement remaining quota 11 Tyk Gateway->>Backend API: Forward request 12 Backend API->>Tyk Gateway: Response 13 Tyk Gateway->>Client: Return response 14  else Quota exceeded 15 Tyk Gateway->>Client: 403 Quota Exceeded 16  end  17
+18  Note over Tyk Gateway: Reset quota counter when period expires`
+
+Quotas can be applied at two levels:
+
+-   Key Level: Set directly on individual API keys
+-   Policy Level: Applied to all keys associated with a policy (overrides individual key settings)
+
+3\. How Does It Compare to Other Traffic Control Options
+--------------------------------------------------------
+
+Tyk offers several traffic control mechanisms, each serving different purposes:
+
+| Feature | Purpose | Time Window | Behavior |
+| --- | --- | --- | --- |
+| Request Quotas | Limit total requests over extended periods | Days, weeks, months | Absolute maximum with periodic reset |
+| Rate Limiting | Control requests per second | Seconds (rolling window) | Smooths traffic spikes |
+| Throttling | Handle overflow when limits are reached | Immediate | Queues and retries requests instead of rejecting |
+
+`1graph TD 2 A[Traffic Control Options]  --> B[Request Quotas]  3 A --> C[Rate Limiting]  4 A --> D[Throttling]  5
+6 B --> B1[Long-term usage limits]  7 B --> B2[Absolute maximum]  8 B --> B3[Periodic reset]  9
+10 C --> C1[Short-term traffic control]  11 C --> C2[Rolling window]  12 C --> C3[Requests per second]  13
+14 D --> D1[Queue overflow requests]  15 D --> D2[Auto-retry mechanism]  16 D --> D3[Works with quotas and rate limits]`
+
+When to use each option:
+
+-   Request Quotas: For subscription-based API plans with monthly allowances
+-   Rate Limiting: To protect against traffic spikes and ensure consistent performance
+-   Throttling: When you want to queue rather than reject excess requests
+-   Combined Approach: Most production APIs use both quotas and rate limits together
+
+4\. Configuration Options
+-------------------------
+
+### Setting Quotas via the Dashboard
+
+1.  For Individual Keys:
+
+    -   Navigate to "Keys" section in the Dashboard
+    -   Create a new key or edit an existing one
+    -   Set the "Usage Quota" to your desired limit
+    -   Select the reset period (per day, week, or month)
+2.  For Policies:
+
+    -   Go to "Policies" in the Dashboard
+    -   Create or edit a policy
+    -   In the "Global Rate Limits and Quota" section, set the "Usage Quota"
+    -   Select the quota reset period
+    -   Note: Policy quotas override individual key quotas
+
+### Setting Quotas via the Session Object
+
+For more advanced configurations or programmatic quota management, you can modify the session object directly:
+
+`1{  2  "quota_max":  1000,  3  "quota_remaining":  1000,  4  "quota_renewal_rate":  60,  5  "access_rights":  {...},  6  "org_id":  "1",  7  "allowance":  100,  8  "rate":  100,  9  "per":  1,  10  "expires":  1422113671  11}`
+
+Key parameters:
+
+-   `quota_max`
+
+    : The maximum number of requests allowed in the quota period
+-   `quota_remaining`
+
+    : The number of requests remaining in the current period
+-   `quota_renewal_rate`
+
+    : The time in seconds before the quota resets
+
+### Special Quota Values
+
+-   `-1`
+
+    : Represents unlimited quota
+-   Any positive integer: Sets the maximum number of requests
+
+### Per-API Quota Overrides
+
+You can set different quotas for different APIs when using policies:
+
+1.  Enable "Set per API Rate Limits and Quota" in the policy
+2.  Configure specific quota limits for each API
+
+`1graph TD 2 A[Policy Configuration]  --> B[Global Quota Settings]  3 A --> C[Per-API Quota Override]  4
+5 B --> B1[Applied to all APIs]  6 B --> B2[Single quota value]  7
+8 C --> C1[Different quotas per API]  9 C --> C2[More granular control]  10 C --> C3[Overrides global settings]`
+
+### Quota Response Headers
+
+When quotas are enabled, Tyk adds helpful headers to API responses:
+
+-   `X-Ratelimit-Limit`
+
+    : The maximum quota value
+-   `X-Ratelimit-Remaining`
+
+    : The number of requests remaining
+-   `X-Ratelimit-Reset`
+
+    : The time until quota reset (in seconds)
+
+These headers allow clients to track their quota usage and adjust their behavior accordingly.
+
+5\. Best Practices
+------------------
+
+-   Set Reasonable Limits: Consider your backend capacity and expected usage patterns
+-   Combine with Rate Limiting: Use quotas for long-term limits and rate limiting for short-term protection
+-   Consider Throttling: Enable throttling to queue rather than reject requests when quotas are reached
+-   Monitor Usage: Use Tyk Analytics to track quota usage and adjust limits if needed
+-   Communicate Limits: Make sure your API consumers understand their quota limits
+-   Plan for Overages: Decide how to handle quota exceeded scenarios (reject, throttle, or upgrade)
+
+6\. Troubleshooting
+-------------------
+
+Common quota-related issues and solutions:
+
+1.  Unexpected Quota Resets:
+
+    -   Check the quota renewal rate setting
+    -   Verify timezone settings if using day/week/month periods
+2.  Quota Not Being Applied:
+
+    -   Confirm the quota is set correctly on the key or policy
+    -   Check for
+
+        `-1`
+
+        values which indicate unlimited quota
+3.  Policy Quotas Not Overriding Key Quotas:
+
+    -   Remember that policy settings take precedence over individual key settings
+    -   Verify the policy is correctly applied to the key
+
+I've researched this information from multiple sources to provide you with a comprehensive guide on Request Quotas in Tyk.
+
+----------------
+
+Request Quotas in Tyk API Gateway: A Comprehensive Guide
+========================================================
+
+I'll provide you with a detailed guide on Request Quotas in Tyk API Gateway, drawing from multiple sources to give you the most comprehensive information.
+
+What Are Request Quotas?
+------------------------
+
+Request quotas in Tyk are a traffic management mechanism that limits the total number of requests a user is allowed to make over a longer period of time. Unlike rate limits (which operate on a per-second basis), quotas function as an absolute maximum number of requests allowed over extended periods such as a day, week, or month.
+
+How Quotas Differ from Rate Limits
+----------------------------------
+
+-   Rate Limits: Control requests per second (short-term control)
+-   Quotas: Control total request volume over longer periods (days, weeks, months)
+
+As stated in Tyk documentation: "While a rate limit is a rolling window, a quota is an absolute maximum that a user is allowed to have over a week, a day or a month."
+
+Setting Up Request Quotas
+-------------------------
+
+### Using the Tyk Dashboard
+
+1.  In Security Policies:
+
+    -   Navigate to the policy configuration section
+    -   Under "Setting Global Rate Limits and Quota"
+    -   Set the "Usage Quotas" value to your desired limit
+    -   Quotas can be set to any positive number, or -1 for unlimited
+2.  Per API Quota Override:
+
+    -   You can enable "Set per API Rate Limits and Quota" to override global settings for specific APIs
+
+### Using the Session Object (API)
+
+You can also set quotas programmatically via the Tyk API by modifying the session object. This allows for more granular control and automation of quota management.
+
+Important Quota Behaviors
+-------------------------
+
+1.  Policy Precedence: The usage quota set by a policy will override any quota applied to an individual key.
+
+2.  Quota Values:
+
+    -   Any positive number (e.g., 1000, 10000)
+    -   -1 for unlimited requests
+3.  Reset Periods: Quotas can be configured to reset on different intervals:
+
+    -   Daily
+    -   Weekly
+    -   Monthly
+    -   Never (one-time quota)
+
+Quota Management in Context
+---------------------------
+
+Quotas are part of Tyk's broader resource consumption management strategy. According to Tyk documentation:
+
+"Excessive resource consumption poses a risk to APIs. As the number of concurrent requests handled by a server increases, so too does its consumption of CPU, RAM and storage resources."
+
+Quotas help prevent this by:
+
+-   Ensuring fair usage among API consumers
+-   Protecting backend services from overload
+-   Enabling monetization strategies based on usage tiers
+
+Policy Partitioning with Quotas
+-------------------------------
+
+In some cases, you may want to manage quotas separately from other access controls. Tyk supports "Policy Partitioning" which allows you to:
+
+-   Manage quota settings at one policy level
+-   Manage other settings (like access controls) at another policy level
+-   Apply some settings directly to the key itself
+
+This provides flexibility in how you structure your API access controls.
+
+Monitoring and Enforcing Quotas
+-------------------------------
+
+When a user exceeds their quota:
+
+1.  By default, Tyk will return a 403 Forbidden error
+2.  Alternatively, you can enable throttling to queue and auto-retry requests when quotas are hit
+
+Integrating Quotas with Business Models
+---------------------------------------
+
+Quotas are particularly useful for:
+
+-   Freemium API models (limited free tier, paid unlimited tiers)
+-   Usage-based billing
+-   SLA enforcement
+-   Preventing API abuse
+
+Conclusion
+----------
+
+Request quotas are a powerful tool in Tyk's traffic management arsenal. They provide longer-term control over API usage compared to rate limits, helping you manage resource consumption, enforce fair usage policies, and implement various business models for your APIs.
+
+By properly configuring quotas alongside rate limits and other security measures, you can ensure your APIs remain available, performant, and protected from excessive usage.
+
+Sources I Checked
+-----------------
+
+I've gathered this information by checking multiple sources:
+
+1.  Default Knowledge Base: Provided basic information about quotas vs rate limits
+2.  Confluence API:
+    -   Found detailed information about quota implementation
+    -   Identified how quotas fit into the broader resource management strategy
+3.  Search API:
+    -   Confirmed information about quota settings in policies
+    -   Found additional details about quota reset periods
+
+The information across sources was consistent, with each providing complementary details about how quotas function in Tyk.
+
+Sources
+
+---------- Content Generate from Internal AI System END -----------
