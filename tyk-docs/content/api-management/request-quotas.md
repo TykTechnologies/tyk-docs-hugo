@@ -545,7 +545,7 @@ The available allowance (`QuotaRemaining`) for an API key is replenished back to
 
 <details> <summary><b>What are Request Quotas in Tyk?</b></summary>
 
-Request Quotas in Tyk are limits on the total number of API requests a client can make within a specific time period. Unlike rate limits (which control requests per second), quotas control the total number of requests over longer periods like hours, days, or months. Once a quota is exhausted, further requests are rejected until the quota renews.
+Request Quotas in Tyk limit the total number of API requests a client can make within a specific time period. Unlike rate limits (which control requests per second), quotas control the total number of requests over longer periods like hours, days, or months. Once a quota is exhausted, further requests are rejected until the quota is renewed.
 
 </details> 
 
@@ -579,7 +579,7 @@ The main parameters for configuring quotas are:
 
 <details> <summary><b>Mark: Can I disable Request Quotas for specific APIs?</b></summary>
 
-Yes, you can disable quotas for specific APIs by setting the `disable_quota` flag to `true` in the API definition. This will bypass quota checking for all requests to that API, regardless of any quotas set at the key or policy level.
+You can disable quotas for specific APIs by setting the `disable_quota` flag to `true` in the API definition. This config will bypass quota checking for all requests to that API, regardless of any quotas set at the key or policy level.
 
 </details> 
 
@@ -605,7 +605,7 @@ Tyk stores quota information in Redis:
 
 <details> <summary><b>Can I set different quotas for different endpoints within the same API?</b></summary>
 
-Yes, you can implement per-endpoint quotas by using policies with the "per_api" partitioning enabled. This allows you to define different quota limits for different API endpoints, giving you fine-grained control over resource usage.
+Yes, you can implement per-endpoint quotas using policies enabling the "per_api" partitioning. This config allows you to define different quota limits for API endpoints, giving you fine-grained control over resource usage.
 
 </details> 
 
@@ -627,7 +627,7 @@ Yes, Tyk provides quota monitoring capabilities:
 
 <details> <summary><b>Why isn't my quota resetting automatically at midnight?</b></summary>
 
-Tyk's quota renewal is event-driven rather than time-driven. Quotas don't automatically reset at specific times (like midnight); instead, they reset when the first request is made after the renewal period has passed. If no requests are made after the renewal time, the quota counter remains unchanged until the next request triggers the check and renewal process.
+Tyk's quota renewal is event-driven rather than time-driven. Quotas don't automatically reset at specific times (like midnight); instead, they reset when the first request is made after the renewal period has passed. If no requests are made after renewal, the quota counter remains unchanged until the next request triggers the check and renewal process.
 
 </details> 
 
@@ -645,13 +645,13 @@ You can manually reset a quota for a specific key in two ways:
 POST /tyk/keys/reset/{key_id}
 Authorization: {your-gateway-secret}
 ```
-This endpoint will reset the quota for the specified key immediately, allowing the key to make requests up to its quota limit again.
+This endpoint will immediately reset the quota for the specified key, allowing the key to make requests up to its quota limit again.
 
 </details> 
 
 <details> <summary><b>Does Tyk count failed requests against my quota?</b></summary>
 
-Yes, by default Tyk counts all requests against the quota regardless of the response status code (2xx, 4xx, 5xx). This means that even failed requests with error responses will decrement the available quota. This behavior is by design to prevent abuse and ensure consistent quota enforcement regardless of the upstream API's response.
+Yes, by default, Tyk counts all requests against the quota regardless of the response status code (2xx, 4xx, 5xx). This means that even failed requests with error responses will decrement the available quota. This behavior is designed to prevent abuse and ensure consistent quota enforcement regardless of the upstream API's response.
 
 </details> 
 
@@ -663,7 +663,7 @@ In multi-datacenter or multi-region setups, quota inconsistencies can occur due 
 2. **Network latency**: In geographically distributed setups, network delays can cause temporary inconsistencies
 3. **Configuration issues**: Each gateway must be properly configured to use the same Redis database for quota storage
 
-To resolve this, ensure all gateways are configured to use the same Redis database or a properly configured Redis cluster with minimal replication lag. For multi-region deployments, consider using Redis Enterprise or a similar solution with cross-region synchronization capabilities.
+To resolve this, ensure all gateways are configured to use the same Redis database or a properly configured Redis cluster with minimal replication lag. Consider using Redis Enterprise or a similar solution with cross-region synchronization capabilities for multi-region deployments.
 
 </details> 
 
@@ -682,11 +682,11 @@ This log message is informational and doesn't indicate a functional problem with
 
 <details> <summary><b>Can I set quotas to only count successful requests?</b></summary>
 
-By default, Tyk counts all requests against the quota regardless of response code. There is no built-in configuration to count only successful (2xx) responses toward quota limits.
+By default, Tyk counts all requests against the quota regardless of the response code. There is no built-in configuration to count only successful (2xx) responses toward quota limits.
 
 If you need this functionality, you have two options:
 1. Implement a custom middleware plugin that conditionally decrements the quota based on response codes
-2. Use the Tyk Pump to track successful vs. failed requests separately in your analytics platform, and implement quota management at the application level
+2. Use the Tyk Pump to track successful vs. failed requests separately in your analytics platform and implement quota management at the application level
 
 </details> 
 
@@ -698,7 +698,7 @@ If you modify a quota configuration mid-period (before the renewal time):
 2. For **decreasing** the quota: If the new quota is less than what's already been used, further requests will be rejected
 3. For **changing the renewal rate**: The new renewal period will apply from the next renewal
 
-Changes to quota settings take effect immediately but don't reset the current usage counter. If you need to apply new settings and reset the counter immediately, use the "Reset Quota" functionality.
+Changes to quota settings take effect immediately, but don't reset the current usage counter. Use the "Reset Quota" functionality to apply new settings and reset the counter immediately.
 
 </details> 
 
@@ -708,7 +708,7 @@ Yes, Tyk provides several ways to implement different quota plans:
 
 1. **Policies**: Create different policies with varying quota limits and assign them to keys based on subscription level
 2. **Key-specific settings**: Override policy quotas for individual keys when necessary
-3. **Meta Data**: Use key metadata to dynamically adjust quota behavior through middleware
+3. **Meta Data**: Use key metadata to adjust quota behavior through middleware dynamically
 4. **Multiple APIs**: Create separate API definitions with different quota configurations for different service tiers
 
 This flexibility allows you to implement complex quota schemes that align with your business model and customer tiers.
@@ -725,6 +725,6 @@ When troubleshooting quota issues:
 4. **Test with the API**: Use the Tyk Gateway API to check quota status for specific keys
 5. **Monitor request headers**: Examine the `X-Rate-Limit-Remaining` headers in API responses
 
-For multi-gateway setups, also verify that all gateways are using the same Redis instance and that there are no synchronization issues between Redis clusters.
+For multi-gateway setups, verify that all gateways use the same Redis instance and that there are no synchronization issues between Redis clusters.
 </details>
 
