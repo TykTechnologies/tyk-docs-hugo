@@ -33,7 +33,7 @@ flowchart LR
 *   **Enable Usage-Based Monetization:** Provide a clear mechanism for charging based on consumption tiers.
 
 ---
-## Quick 
+## Quick Start 
 
 ### Overview
 
@@ -420,49 +420,50 @@ Refer to the [Tyk Classic API Definition reference]({{< ref "#link-to-classic-ap
 ---
 ## How It Works
 
-Request Quotas in Tyk limit the total number of API requests a client can make within a defined time period (hours, days, months). Unlike rate limits that control the frequency of requests over short intervals (like seconds or minutes) to prevent immediate system overload, Request Quotas control the total volume of requests allowed over much longer periods to manage overall consumption and align with service tiers. 
+Request Quotas in Tyk limit a client's total number of API requests within a defined period (hours, days, months). Unlike rate limits that control the frequency of requests over short intervals (like seconds or minutes) to prevent immediate system overload, Request Quotas control the total volume of requests allowed over much longer periods to manage overall consumption and align with service tiers. 
 
-When a client reaches their quota limit, further requests are rejected until the quota period renews. This helps API providers implement usage-based pricing tiers, prevent API abuse, control infrastructure costs, and ensure fair resource distribution among clients.
+When clients reach their quota limit, further requests are rejected until the quota period renews. It helps API providers implement usage-based pricing tiers, prevent API abuse, control infrastructure costs, and ensure fair resource distribution among clients.
 
-Think of Request Quotas like a prepaid phone plan with a fixed number of minutes per month. When you sign up, you get allocated a specific number of call minutes (API requests) that you can use over the billing period. You can make calls (API requests) at any pace you want – all at once or spread throughout the month – but once you've used up your allocated minutes, you can't make any more calls until the next billing cycle begins.
+Think of Request Quotas as a prepaid phone plan with a fixed number of minutes per month. When you sign up, you get allocated a specific number of call minutes (API requests) that you can use over the billing period. You can make calls (API requests) at any pace you want – all at once or spread throughout the month – but once you've used up your allocated minutes, you can't make any more calls until the next billing cycle begins.
 
 ```mermaid
 flowchart LR
-    Client[API Client] -->|Makes Request| Gateway[Tyk Gateway]
-    Gateway -->|Check Quota| Redis[(Redis)]
-    Redis -->|Quota OK| Gateway
-    Redis -->|Quota Exceeded| Gateway
-    Gateway -->|If Quota OK| Upstream[Upstream API]
-    Gateway -->|If Quota Exceeded| Reject[Reject Request]
-    Upstream -->|Response| Gateway
-    Gateway -->|Response| Client
+ Client[API Client] -->|Makes Request| Gateway[Tyk Gateway]
+ Gateway -->|Check Quota| Redis[(Redis)]
+ Redis -->|Quota OK| Gateway
+ Redis -->|Quota Exceeded| Gateway
+ Gateway -->|If Quota OK| Upstream[Upstream API]
+ Gateway -->|If Quota Exceeded| Reject[Reject Request]
+ Upstream -->|Response| Gateway
+ Gateway -->|Response| Client
 ```
 
-### How Tyk Actually Implements Quotas
+### How Tyk Implements Quotas
 
 Tyk implements request quotas using a Redis-based counter mechanism with time-based expiration. Here's a detailed breakdown of the implementation:
 
 ```mermaid
 graph LR
-    A[API Request Received] --> B(Check Redis Quota Counter);
-    B -- Counter < QuotaMax --> C{Increment Redis Counter};
-    C --> D[Calculate quota_remaining = QuotaMax - Counter];
-    D --> E[Update Session State];
-    E --> F[Forward Request to Upstream];
-    B -- Counter >= QuotaMax --> G[Reject Request with 403];
+ A[API Request Received] --> B(Check Redis Quota Counter);
+ B -- Counter < QuotaMax --> C{Increment Redis Counter};
+ C --> D[Calculate quota_remaining = QuotaMax - Counter];
+ D --> E[Update Session State];
+ E --> F[Forward Request to Upstream];
+ B -- Counter >= QuotaMax --> G[Reject Request with 403];
 ```
 
 #### Core Components
 
-1. **Redis Storage**: Quotas are tracked in Redis using incrementing counters for each API key, with a TTL set to the quota renewal period, resetting the counter to 0 on the next request after expiration.
-    Here is an sample Redis key for a  Request Quota:
+1. **Redis Storage**: Quotas are tracked in Redis using incrementing counters for each API key. The TTL is set to the quota renewal period, and the counter is reset to 0 on the next request after expiration.
+
+    Here is a sample Redis key for a  Request Quota:
     ```
     quota-[scope]-[key_hash]
     ```
 
     Where:
-    - `scope` is optional and represents an API-specific allowance scope
-    - `key_hash` is the hashed API key (if hash keys is enabled)
+        - `scope` is optional and represents an API-specific allowance scope
+        - `key_hash` is the hashed API key (if hash keys are enabled)
 
 2. **Session State**: Quota configuration is stored in the user's `SessionState`, which contains several quota-related fields:
 
@@ -475,17 +476,17 @@ graph LR
 
 #### Quota Enforcement
 
-The core logic for checking and enforcing Request Quotas executes within the `RateLimitAndQuotaCheck` middleware, which is a step in the request processing pipeline. Here's a breakdown of this process:
+The core logic for checking and enforcing Request Quotas is executed within the `RateLimitAndQuotaCheck` middleware, which is a step in the request processing pipeline. Here's a breakdown of this process:
 
-1.  **Initiation:** As a request enters the Tyk Gateway, it passes through configured middleware. When it hits the `RateLimitAndQuotaCheck` middleware, the quota validation process begins.
+1.  **Initiation:** As a request enters the Tyk Gateway, it passes through configured middleware. The quota validation process begins when it hits the `RateLimitAndQuotaCheck` middleware.
 
 2.  **Applicability Check:** The middleware first determines if quota enforcement is relevant:
-    *   It checks the API Definition to see if quotas are globally disabled. If so, the process stops here for quotas, and the request proceeds.
-    *   It identifies the API key used for the request and retrieves its associated `SessionState`.
+    * It checks the API Definition to see if quotas are globally disabled. If so, the process stops here for quotas and the request proceeds.
+    * It identifies the API key for the request and retrieves its associated `SessionState`.
 
 3.  **Retrieve Limits:** The middleware accesses the `SessionState` to get the specific quota parameters applicable to this key and potentially the specific API being accessed (if per-API quotas are configured):
     *   `QuotaMax`: The maximum number of requests allowed.
-    *   `QuotaRenewalRate`: The duration (in seconds) of the quota period used for setting the TTL in Redis.
+    *   `QuotaRenewalRate`: The duration (in seconds) of the quota period for setting the TTL in Redis.
 
 4.  **Redis Interaction & Enforcement:** This is the core enforcement step, interacting directly with Redis:
     *   **Construct Key:** Generates the unique Redis key for tracking this specific quota counter (e.g., `quota-{scope}-{api-key-hash}`).
@@ -494,14 +495,14 @@ The core logic for checking and enforcing Request Quotas executes within the `Ra
     *   **Increment Counter:** Tyk atomically increments the Redis counter value. This operation returns the *new* value of the counter *after* the increment.
     *   **Compare Against Limit:** The middleware compares this *new* counter value against the `QuotaMax` retrieved from the session state.
     *   **Decision:**
-        *   If `new_counter_value <= QuotaMax`: The request is within the allowed quota.
-        *   If `new_counter_value > QuotaMax`: The quota limit has been exceeded by this request.
+        * If `new_counter_value <= QuotaMax`: The request is within the allowed quota.
+        * If `new_counter_value > QuotaMax`: This request has exceeded the quota limit.
 
 5.  **Outcome:**
     *   **Quota OK:** The middleware allows the request to proceed to the next stage in the processing pipeline (e.g., other middleware, upstream service).
-    *   **Quota Exceeded:** The middleware halts further processing of the request down the standard pipeline. It prepares and returns an error response to the client, typically `HTTP 403 Forbidden` with a "Quota exceeded" message.
+    *   **Quota Exceeded:** The middleware halts further request processing down the standard pipeline. It prepares and returns an error response to the client, typically `HTTP 403 Forbidden` with a "Quota exceeded" message.
 
-6.  **Session State Update:** Regardless of whether the request was allowed or blocked due to the quota, the middleware calls an internal function (like `updateSessionQuota`) to update the in-memory `SessionState` associated with the API key. This update synchronizes the `QuotaRemaining` field in the session with the latest calculated state based on the Redis counter and its expiry. This ensures that subsequent operations within the same request lifecycle (if any) or diagnostic information have access to the most recent quota status.
+6.  **Session State Update:** Regardless of whether the request was allowed or blocked due to the quota, the middleware calls an internal function (like `updateSessionQuota`) to update the in-memory `SessionState` associated with the API key. This update synchronizes the `QuotaRemaining` field in the session with the latest calculated state based on the Redis counter and its expiry. It ensures that subsequent operations within the same request lifecycle (if any) or diagnostic information have access to the most recent quota status.
 
 #### Quota Reset Mechanisms
 
@@ -514,25 +515,25 @@ The available allowance (`QuotaRemaining`) for an API key is replenished back to
 
     ```mermaid
     graph LR
-        A[Request After Quota Period] --> B{Redis Key Expired?};
-        B -- Yes --> C[Reset Counter to 0];
-        C --> D[Set New Expiration];
-        D --> E[Process Request Normally];
-        B -- No --> F[Continue Normal Processing];
+    A[Request After Quota Period] --> B{Redis Key Expired?};
+    B -- Yes --> C[Reset Counter to 0];
+    C --> D[Set New Expiration];
+    D --> E[Process Request Normally];
+    B -- No --> F[Continue Normal Processing];
     ```
 
 2.  **Manual Reset via API:**
-    *   **Mechanism:** You can force an immediate quota reset for a specific API key by calling a endpoint on the Tyk Gateway Admin API.
-    *   **Effect:** This action deletes the corresponding quota tracking key directly in Redis. The *next* request using this API key will then find no existing key, triggering the renewal logic (Step 1) as if the period had just expired, immediately granting the full `QuotaMax` and setting a new TTL. This provides an immediate, on-demand refresh of the quota allowance.
+    *   **Mechanism:** You can force an immediate quota reset for a specific API key by calling an endpoint on the Tyk Gateway Admin API.
+    *   **Effect:** This action directly deletes the corresponding quota tracking key in Redis. The *next* request using this API key will find no existing key, triggering the renewal logic (Step 1) as if the period had just expired, immediately granting the full `QuotaMax` and setting a new TTL. This provides an immediate, on-demand refresh of the quota allowance.
 
 3.  **Key Creation or Update:**
-    *   **Trigger:** When a new API key is created, or an existing key's configuration is updated (e.g., via the Dashboard or the Gateway API), Tyk reapplies the quota settings based on the current policy or key-specific configuration.
+    *   **Trigger:** When a new API key is created or an existing key's configuration is updated (e.g., via the Dashboard or the Gateway API), Tyk reapplies the quota settings based on the current policy or key-specific configuration.
     *   **Process:** This typically involves setting the `QuotaRemaining` value to `QuotaMax` in the key's session data and ensuring the corresponding Redis key is created with the correct initial value (or implicitly reset) and its TTL set according to the `QuotaRenewalRate`. This ensures the key starts with a fresh quota allowance according to its defined limits.
     *   **Exception:** This behavior can be suppressed if the API definition includes the `DontSetQuotasOnCreate` field (referred to as `SkipQuotaReset` in the OAS specification), which prevents automatic quota resets during key creation or updates.
   
 #### Key Technical Aspects
 
-1. **Time-Based Reset**: Unlike rate limiting which uses sliding windows, quotas have a fixed renewal time determined by `QuotaRenewalRate` (in seconds)
+1. **Time-Based Reset**: Unlike rate limiting, which uses sliding windows, quotas have a fixed renewal time determined by `QuotaRenewalRate` (in seconds)
 
 2. **Atomic Operations**: Redis pipelining is used to ensure atomic increment and expiration setting:
 
