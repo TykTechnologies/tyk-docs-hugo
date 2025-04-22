@@ -95,9 +95,72 @@ If you are upgrading to 5.8.1, please follow the detailed [upgrade instructions]
 <ul>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Improved password error messaging on Add User page</summary>
 
-Add changelog description 
+Improved formatting for the password error on the add user page
+</details>
+</li>
+<li>
+<details>
+<summary>License allocation now works across multiple dashboards</summary>
+
+Converted license allocation to be stored in a distributed manner to allow a setup with multiple dashboards.
+</details>
+</li>
+<li>
+<details>
+<summary>Resolved vertical overflow display issue in APIs table</summary>
+
+Fixed display issue on the APIs table rows when content doesn't fit vertically
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed race condition in gateway license allocation</summary>
+
+Resolved a race condition in gateway license allocation that occasionally allowed more or fewer gateways than licensed to register and serve traffic.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed API Category filter on Activity Overview page</summary>
+
+Fixed an issue where the API Category filter did not work as expected on the Activity Overview page in Dashboard Monitoring.
+</details>
+</li>
+<li>
+<details>
+<summary>Corrected certificate list colors based on private key presence</summary>
+
+Fixed colors on the certificates list table when a certificate contains or does not contain a private key.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed API creation from pasted YAML definitions</summary>
+
+Fixed an issue that prevented creation of an API from a YAML format Tyk OAS API definitions using the "paste API definition" method. You can now export your Tyk OAS API definition in YAML or JSON format and use the content of this file to create a new API.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed broken cancel button in API promotion flow</summary>
+
+Fixed an issue when using API Designer to migrate an API from Tyk Classic to Tyk OAS. Previously the cancel button did not work when promoting a staged API; this how now been fixed.
+</details>
+</li>
+<li>
+<details>
+<summary>Replaced crypto.randomUUID() to fix UI errors</summary>
+
+Replaced calls to crypto.randomUUID() which caused errors in the UI.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed import issue for Tyk OAS ZIPs with YAML entrypoints</summary>
+
+Resolved a bug that blocked multipart OAS ZIP imports when using a YAML file as the entrypoint.
 </details>
 </li>
 </ul>
