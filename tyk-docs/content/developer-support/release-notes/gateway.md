@@ -106,9 +106,37 @@ If you are upgrading to 5.8.1, please follow the detailed [upgrade instructions]
 <ul>
 <li>
 <details>
-<summary>Add ChangeLog Summary</summary>
+<summary>Fixed Inconsistent Context Behavior in UDG APIs</summary>
 
-Add changelog description
+Fixed a bug where headers being sent upstream in UDG APIs were not being cached accurately, ensuring correct and consistent context handling for all requests.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Route Matching Logic for API Requests</summary>
+
+Resolved an issue where some API requests were routed incorrectly due to path sorting not prioritizing specific routes over parameterized ones.
+</details>
+</li>
+<li>
+<details>
+<summary>Resolved Incorrect Timeout Application for Specific API Endpoints</summary>
+
+Fixed an issue where proxy_default_timeout for specific API endpoints were not being applied correctly, causing requests to use the global timeout instead.
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed race condition in gateway license allocation</summary>
+
+Resolved a race condition in gateway license allocation that occasionally allowed more or fewer gateways than licensed to register and serve traffic.
+</details>
+</li>
+<li>
+<details>
+<summary>Resolved merging issue in field-based policy permissions</summary>
+
+Resolved a bug where allowed_types from multiple policies were incorrectly merged using intersection logic. Policies now correctly merge fields to allow access to any fields listed across the applied policies.
 </details>
 </li>
 </ul>
