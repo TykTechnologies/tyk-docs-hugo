@@ -139,6 +139,7 @@ In this tutorial, we will configure Request Quotas on a Tyk Security Policy to l
         *   **Important:** Disable **Rate Limiting** by selecting **Disable rate limiting** option, so it doesn't interfere with testing the quota.
         * Set the following values for `Usage Quotas`:
         * Enter `10` into the **Max Requests per period** field. (This is our low quota limit for testing).
+        * TODO: 60 seconds cannot be selected.
         * Select `Custom` from the **Quota resets every:** dropdown and enter `60` in the adjacent field. (This sets a short 60-second reset period for quick testing).
     5. Select the **2. Configuration** tab.
     6. In the **Policy Name** field, enter `Request Quota Policy`.
