@@ -254,6 +254,112 @@ The configuration involves setting two specific fields:
    - Example: `86400` for the daily quota (24 hours = 86400 seconds)
    - Example: `2592000` for the monthly quota (30 days = 2592000 seconds)
 
+### System-Level Configuration
+
+Global quota settings are configured in the Tyk Gateway configuration file (`tyk.conf`). These settings affect how quotas are enforced across the entire gateway.
+
+{{< tabs_start >}}
+{{< tab_start "Config File" >}}
+
+```json
+{
+// Partial config from tyk.conf
+  "enforce_org_quotas": true,
+  "enforce_org_data_detail_logging": false,
+  "monitor": {
+    "enable_trigger_monitors": true,
+    "global_trigger_limit": 80.0,
+    "monitor_user_keys": true,
+    "monitor_org_keys": true
+  },
+// ... more config follows
+}
+```
+
+- `enforce_org_quotas`: When set to `true`, enables organization-level quota enforcement
+- `monitor.enable_trigger_monitors`: Enables quota monitoring and webhook triggers
+- `monitor.global_trigger_limit`: Percentage of quota usage that triggers alerts (e.g., 80.0 means 80%)
+- `monitor.monitor_user_keys`: Enables monitoring for individual API keys
+- `monitor.monitor_org_keys`: Enables monitoring for organization quotas
+
+{{< tab_end >}}
+{{< tab_start "Environment Variable" >}}
+```bash
+export TYK_GW_ENFORCEORGQUOTAS=true
+```
+{{< tab_end >}}
+{{< tabs_end >}}
+
+Refer to the [Tyk Gateway Configuration Reference]({{< ref "tyk-oss-gateway/configuration/#enforce_org_quotas" >}}) for more details on this setting.
+
+### Organization-Level Configuration
+
+Organization quotas limit the total number of requests across all APIs for a specific organization. These are enforced by the `OrganizationMonitor` middleware when `enforce_org_quotas` is enabled.
+
+- `quota_max`: Maximum number of requests allowed during the quota period
+- `quota_renewal_rate`: Time in seconds for the quota period (e.g., 3600 for hourly quotas)
+
+Organization quotas are configured through the Tyk Dashboard API or Gateway API:
+
+```bash
+curl -X POST -H "Authorization: {your-api-key}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "quota_max": 1000,
+    "quota_renewal_rate": 3600,
+  }' \
+  http://tyk-gateway:8080/tyk/org/keys/{org-id}
+```
+
+### API-Level Configuration
+
+You **cannot set** quota values within an API Definition, but you can **disable** quota checking entirely for all requests proxied through that specific API, regardless of Key or Policy settings. This is useful if an API should never have quota limits applied.
+
+{{< tabs_start >}}
+
+{{< tab_start "Tyk OAS API Definition" >}}
+
+In a Tyk OAS API Definition, you can globally disable quotas for specific APIs:
+
+- **skipQuota**: When set to true, disables quota enforcement for the API.
+- **skipQuotaReset**: When set to true, prevents quota counters from being reset when creating or updating quotas.
+
+```json
+{
+  // Partial config from Tyk OAS API Definition
+  "middleware": {
+    "global": {
+      "skipQuota": true,
+      "skipQuotaReset": false
+    }
+  },
+  // ... more config follows
+}
+```
+
+Refer to the [Tyk OAS API Definition reference]({{< ref "api-management/gateway-config-tyk-oas#global" >}}) for details.
+
+{{< tab_end >}}
+{{< tab_start "Tyk Classic API Definition" >}}
+
+In a Tyk Classic API Definition (JSON), set the `disable_quota` field to `true`.
+
+```json
+{
+  // Partial config from Tyk Classic API Definition
+  "disable_quota": true // Set to true to disable quota checks
+  // ... more config follows
+}
+
+```
+
+Refer to the [Tyk Classic API Definition reference]({{< ref "#link-to-classic-api-def-disable-quota" >}}) for details.
+
+{{< tab_end >}}
+
+{{< tabs_end >}}
+
+
 
 ### Configure via UI
 
@@ -361,53 +467,6 @@ The above adds quotas to an access key. Any request made by the key will behave 
 {{< tab_end >}}
 
 {{< tabs_end >}}
-
-### Disable Quotas via API Definition
-
-TODO: Both of the below configurations is not available in the reference documentation
-
-You cannot *set* quota values within an API Definition, but you can *disable* quota checking entirely for all requests proxied through that specific API, regardless of Key or Policy settings. This is useful if an API should never have quota limits applied.
-
-{{< tabs_start >}}
-
-{{< tab_start "Tyk OAS API Definition" >}}
-
-In a Tyk OAS API Definition (JSON or YAML), set the `disableQuota` field within the `x-tyk-api-gateway` extension object.
-
-```json
-{
-  // Partial config from Tyk OAS API Definition
-  "x-tyk-api-gateway": {
-    "middleware": {
-      "disableQuota": true // Set to true to disable quota checks
-    }
- },
-  // ... more config follows
-}
-```
-
-Refer to the [Tyk OAS API Definition reference]({{< ref "api-management/gateway-config-tyk-oas#disablequota" >}}) for details.
-
-{{< tab_end >}}
-{{< tab_start "Tyk Classic API Definition" >}}
-
-In a Tyk Classic API Definition (JSON), set the `disable_quota` field to `true`.
-
-```json
-{
-  // Partial config from Tyk Classic API Definition
-  "disable_quota": true // Set to true to disable quota checks
-  // ... more config follows
-}
-
-```
-
-Refer to the [Tyk Classic API Definition reference]({{< ref "#link-to-classic-api-def-disable-quota" >}}) for details.
-
-{{< tab_end >}}
-
-{{< tabs_end >}}
-
 
 ### Important Considerations
 
@@ -557,13 +616,9 @@ While both control API usage, they serve different purposes:
 
 </details> 
 
-<details> <summary><b>Mark: How are Request Quotas configured in Tyk?</b></summary>
+<details> <summary><b>How are Request Quotas configured in Tyk?</b></summary>
 
-Request Quotas can be configured at multiple levels:
-- **API Level**: Set in the API definition with `disable_quota` flag
-- **Key Level**: Set in the session object with parameters like `quota_max`, `quota_renewal_rate`, etc.
-- **Policy Level**: Define quotas in policies that can be applied to multiple keys
-- **Organization Level**: Set quotas for an entire organization using `enforce_org_quotas`
+Refer this [documentation]({{< ref "#configuration-options" >}}).
 
 </details> 
 
@@ -577,9 +632,11 @@ The main parameters for configuring quotas are:
 
 </details> 
 
-<details> <summary><b>Mark: Can I disable Request Quotas for specific APIs?</b></summary>
+<details> <summary><b>Can I disable Request Quotas for specific APIs?</b></summary>
 
 You can disable quotas for specific APIs by setting the `disable_quota` flag to `true` in the API definition. This config will bypass quota checking for all requests to that API, regardless of any quotas set at the key or policy level.
+
+Refer this [documentation]({{< ref "#api-level-configuration" >}}).
 
 </details> 
 
