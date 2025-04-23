@@ -1,5 +1,5 @@
 ---
-title: "UI Examples: Pill Label Shortcode"
+title: "UI Examples: Pill label shortcode"
 date: 2024-04-23
 draft: false
 ---
@@ -12,9 +12,9 @@ Click on any example to see details about its usage and styling.
 
 ---
 
-## Default Style - Enterprise Edition {#enterprise-edition}
+## Default style - Enterprise edition {#enterprise-edition}
 
-### Enterprise Security Features {{< pill-label text="EE" >}}
+### Enterprise security features {{< pill-label text="EE" >}}
 
 <details>
 <summary>Click to view usage and styling</summary>
@@ -34,13 +34,13 @@ Example appearance: `[  EE  ]` (outline style with purple text)
 
 Code example:
 ```
-### Enterprise Security Features {{</* pill-label text="EE" */>}}
+### Enterprise security features {{</* pill-label text="EE" */>}}
 ```
 </details>
 
 ---
 
-## Dark Purple Style - Cloud Features {#cloud-features}
+## Dark purple style - Cloud features {#cloud-features}
 
 ### Governance {{< pill-label text="CLOUD" class="pill-brandpurple-dark" >}}
 
@@ -61,15 +61,15 @@ Example appearance: `[CLOUD]` (solid purple background with white text)
 
 Code example:
 ```
-### Cloud-Only Feature {{</* pill-label text="CLOUD" class="pill-brandpurple-dark" */>}}
+### Cloud-only feature {{</* pill-label text="CLOUD" class="pill-brandpurple-dark" */>}}
 ```
 </details>
 
 ---
 
-## Yellow Style - Lab Releases {#lab-releases}
+## Yellow style - Lab releases {#lab-releases}
 
-### AI Future Feature {{< pill-label text="LAB RELEASE" class="pill-yellow" >}}
+### AI future feature {{< pill-label text="LAB RELEASE" class="pill-yellow" >}}
 
 <details>
 <summary>Click to view usage and styling</summary>
@@ -88,15 +88,15 @@ Example appearance: `[LAB RELEASE]` (solid yellow background with black text)
 
 Code example:
 ```
-### Lab Feature {{</* pill-label text="LAB RELEASE" class="pill-yellow" */>}}
+### Lab feature {{</* pill-label text="LAB RELEASE" class="pill-yellow" */>}}
 ```
 </details>
 
 ---
 
-## Red Style - Deprecated Features {#deprecated-features}
+## Red style - Deprecated features {#deprecated-features}
 
-### Tyk Classic API Definition {{< pill-label text="DEPRECATED" class="pill-red" >}}
+### Tyk classic API definition {{< pill-label text="DEPRECATED" class="pill-red" >}}
 
 <details>
 <summary>Click to view usage and styling</summary>
@@ -115,15 +115,15 @@ Example appearance: `[DEPRECATED]` (solid red background with white text)
 
 Code example:
 ```
-### Tyk Classic API Definition {{</* pill-label text="DEPRECATED" class="pill-red" */>}}
+### Tyk classic API definition {{</* pill-label text="DEPRECATED" class="pill-red" */>}}
 ```
 </details>
 
 ---
 
-## Light Purple Style - Tutorials {#tutorials}
+## Light purple style - Tutorials {#tutorials}
 
-### Tyk Streams Getting Started {{< pill-label text="TUTORIAL" class="pill-default" >}}
+### Tyk streams getting started {{< pill-label text="TUTORIAL" class="pill-default" >}}
 
 <details>
 <summary>Click to view usage and styling</summary>
@@ -142,15 +142,15 @@ Example appearance: `[TUTORIAL]` (light purple background with dark purple text)
 
 Code example:
 ```
-### Tyk Streams Getting Started {{</* pill-label text="TUTORIAL" class="pill-default" */>}}
+### Tyk streams getting started {{</* pill-label text="TUTORIAL" class="pill-default" */>}}
 ```
 </details>
 
 ---
 
-## Green Style - New Features {#new-features}
+## Green style - New features {#new-features}
 
-### New Feature {{< pill-label text="NEW" class="pill-brandgreen" >}}
+### New feature {{< pill-label text="NEW" class="pill-brandgreen" >}}
 
 <details>
 <summary>Click to view usage and styling</summary>
@@ -169,15 +169,15 @@ Example appearance: `[NEW]` (solid green background with black text)
 
 Code example:
 ```
-### New Feature {{</* pill-label text="NEW" class="pill-brandgreen" */>}}
+### New feature {{</* pill-label text="NEW" class="pill-brandgreen" */>}}
 ```
 </details>
 
 ---
 
-## Custom Styling {#custom-styling}
+## Custom styling {#custom-styling}
 
-### Custom Label {{< pill-label text="CUSTOM" style="background-color: #f0f0f0; color: #333; border: 1px solid #ccc;" >}}
+### Custom label {{< pill-label text="CUSTOM" style="background-color: #f0f0f0; color: #333; border: 1px solid #ccc;" >}}
 
 <details>
 <summary>Click to view usage and styling</summary>
@@ -197,13 +197,13 @@ Example appearance: `[CUSTOM]` (custom styling as specified)
 
 Code example:
 ```
-### Custom Label {{</* pill-label text="CUSTOM" style="background-color: #f0f0f0; color: #333; border: 1px solid #ccc;" */>}}
+### Custom label {{</* pill-label text="CUSTOM" style="background-color: #f0f0f0; color: #333; border: 1px solid #ccc;" */>}}
 ```
 </details>
 
 ---
 
-## Reference Table {#reference-table}
+## Reference table {#reference-table}
 
 | Class Name | Best For | Background | Text Color | Border |
 |------------|----------|------------|------------|--------|
