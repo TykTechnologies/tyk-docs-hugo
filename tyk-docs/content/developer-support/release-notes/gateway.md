@@ -101,7 +101,7 @@ If you are upgrading to 5.8.0, please follow the detailed [upgrade instructions]
     docker pull tykio/tyk-gateway:v5.8.0
     ``` 
 - Helm charts
-  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#220-release-notes" >}})
+  - [tyk-charts v3.0.0]({{<ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
 
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 

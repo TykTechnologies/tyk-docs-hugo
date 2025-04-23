@@ -101,7 +101,7 @@ Tyk Operator manages multiple custom resources to help users create and maintain
 
 **ApiDefinition**: Available on all versions of Tyk Operator. It represents a [Tyk Classic API configuration]({{< ref "api-management/gateway-config-tyk-classic" >}}). Tyk Classic API is the traditional format used for defining all APIs in Tyk, and now the recommended format for non-HTTP APIs such as TCP, GraphQL, and Universal Data Graph (UDG). Tyk Operator supports the major features of Tyk Classic API and the feature support details can be tracked [here]({{< ref "#apidefinition-crd" >}}).
 
-**TykStreamsApiDefinition**: Available from Tyk Operator v1.1. It represents an [Async API configuration]({{< ref "api-management/event-driven-apis#configuration-as-code">}}) which is based on [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas">}}). Tyk Operator supports all [Tyk Streams]({{< ref "api-management/event-driven-apis#">}}) features as they become available on the Gateway.
+**TykStreamsApiDefinition**: Available from Tyk Operator v1.1. It represents an [Async API configuration]({{< ref "api-management/event-driven-apis#configuration-options">}}) which is based on [Tyk OAS API Definition]({{< ref "api-management/gateway-config-tyk-oas">}}). Tyk Operator supports all [Tyk Streams]({{< ref "api-management/event-driven-apis#">}}) features as they become available on the Gateway.
 
 **SecurityPolicy**: Available on all versions of Tyk Operator. It represents a [Tyk Security Policy configuration]({{< ref "#security-policy-example" >}}). Security Policies in Tyk provide a way to define and enforce security controls, including authentication, authorization, and rate limiting for APIs managed in Tyk. Tyk Operator supports essential features of Security Policies, allowing users to centrally manage access control and security enforcement for all APIs across clusters.
 
@@ -115,7 +115,7 @@ The following custom resources can be used to configure APIs and policies at [Ty
 |--------------------|-------------|-----------|---------------------------------------------------------------------------------------------------|
 | TykOasApiDefinition| tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk OAS API Definition object]({{< ref "api-management/gateway-config-tyk-oas" >}})                                 |
 | ApiDefinition      | tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk Classic API Definition object]({{< ref "api-management/gateway-config-tyk-classic" >}})                                 |
-| TykStreamsApiDefinition| tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk Streams]({{< ref "api-management/event-driven-apis#configuration-as-code" >}})                                 |
+| TykStreamsApiDefinition| tyk.tyk.io  | v1alpha1  | Defines configuration of [Tyk Streams]({{< ref "api-management/event-driven-apis#configuration-options" >}})                                 |
 | SecurityPolicy     | tyk.tyk.io  | v1alpha1  | Defines configuration of [security policies]({{< ref "api-management/policies#what-is-a-security-policy" >}}). Operator supports linking ApiDefinition custom resources in SecurityPolicy's access list so that API IDs do not need to be hardcoded in the resource manifest.        |
 | SubGraph           | tyk.tyk.io  | v1alpha1  | Defines a [GraphQL federation subgraph]({{< ref "api-management/graphql#subgraphs-and-supergraphs" >}}).                                           |
 | SuperGraph         | tyk.tyk.io  | v1alpha1  | Defines a [GraphQL federation supergraph]({{< ref "api-management/graphql#subgraphs-and-supergraphs" >}}).                                        |
@@ -274,6 +274,8 @@ maintaining a single source of truth for your API configurations.
 Tyk Operator uses cert-manager to provision certificates for the webhook server. If you don't have cert-manager
 installed, you can follow this command to install it:
 
+Alternatively, you have the option to manually handle TLS certificates by disabling the `cert-manager` requirement. For more details, please refer to this [configuration]({{< ref "#webhook-configuration" >}}).
+
 ```console
 $ kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.8.0/cert-manager.yaml
 ```
@@ -429,6 +431,10 @@ in `tyk-operator-system` namespace.
 
 **Helm configurations**
 
+{{< note warning >}} **Note**
+Starting from Tyk Operator v1.2.0, `webhookPort` is deprecated in favor of `webhooks.port`.
+{{< /note >}}
+
 | Key                                         | Type   | Default                                |
 | ------------------------------------------- | ------ | -------------------------------------- |
 | envFrom[0].secretRef.name                   | string | `"tyk-operator-conf"`                  |
@@ -461,6 +467,12 @@ in `tyk-operator-system` namespace.
 | resources                                   | object | `{}`                                   |
 | serviceMonitor                              | bool   | `false`                                |
 | webhookPort                                 | int    | `9443`                                 |
+| webhooks.enabled                        | bool   | `true`                                 |
+| webhooks.port                           | int    | `9443`                                 |
+| webhooks.annotations                    | object | `{}`                                   |
+| webhooks.tls.useCertManager             | bool   | `true`                                 |
+| webhooks.tls.secretName                 | string | `webhook-server-cert`                  |
+| webhooks.tls.certificatesMountPath      | string | `/tmp/k8s-webhook-server/serving-certs`|
 
 ### Upgrading Tyk Operator
 
@@ -512,6 +524,28 @@ To uninstall Tyk Operator, you need to run the following command:
 ```console
 $ helm delete tyk-operator -n tyk-operator-system
 ```
+
+### Webhook Configuration
+
+Starting from Operator v1.2.0 release, [Kubernetes Webhooks](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers) can now be configured using the Helm chart by specifying the necessary settings in the values.yaml file of the operator.
+Since webhooks are enabled by default, there will be no impact to existing users.
+
+```
+webhooks:
+  enabled: true
+  port: 9443
+  annotations: {}
+  tls:
+    useCertManager: true
+    secretName: webhook-server-cert
+    certificatesMountPath: "/tmp/k8s-webhook-server/serving-certs"
+```
+- `enabled`: Enables or disables webhooks.
+- `port`: Specifies the port for webhook communication.
+- `annotations`: Allows adding custom annotations.
+- `tls.useCertManager`: If true, Cert-Manager will handle TLS certificates.
+- `tls.secretName`: The name of the Kubernetes Secret storing the TLS certificate.
+- `tls.certificatesMountPath`: Path where the webhook server mounts its certificates.
 
 ## Set Up Tyk OAS API
 Setting up OpenAPI Specification (OAS) APIs with Tyk involves preparing an OAS-compliant API definition and configuring it within your Kubernetes cluster using Tyk Operator. This process allows you to streamline API management by storing the OAS definition in a Kubernetes ConfigMap and linking it to Tyk Gateway through a TykOasApiDefinition resource. 
@@ -4996,7 +5030,7 @@ The TykOasApiDefinition Custom Resource Definition (CRD) manages [Tyk OAS API De
 | Link with SecurityPolicy | ✅      | v1.0 | - | [Protect an API]({{< ref "#add-a-security-policy-to-your-api" >}}) |
 
 #### TykStreamsApiDefinition CRD
-The TykStreamsApiDefinition Custom Resource Definition (CRD) manages [Async API configuration]({{< ref "api-management/event-driven-apis#configuration-as-code" >}}) within a Kubernetes environment.
+The TykStreamsApiDefinition Custom Resource Definition (CRD) manages [Async API configuration]({{< ref "api-management/event-driven-apis#configuration-options" >}}) within a Kubernetes environment.
 
 ##### TykStreamsApiDefinition Features
 

@@ -1669,7 +1669,7 @@ type User {
 }
 ```
 
-#### Creating a subgraph via the Dasboard UI
+#### Creating a subgraph via the Dashboard UI
 
 1. Log in to the Dashboard and go to APIs > Add New API > Federation > Subgraph.
 {{< img src="/img/dashboard/graphql/add-subgraph-api.png" alt="Add federation subgraph" >}}
@@ -1690,22 +1690,22 @@ In case your upstream URL is protected, select **Upstream Protected** and provid
 {{< note success >}}
 Note
 
-In v4.0 subgraphs will be set to **Internal** by default.
+In v4.0, subgraphs will be set to **Internal** by default.
 
 {{< /note >}}
 
-4. Once you have configured all the options click Save. The subgraph is now visible in the list of APIs.
+4. Once you have configured all the options, click Save. The subgraph is now visible in the list of APIs.
 {{< img src="/img/dashboard/graphql/subgraph-api-listing.png" alt="Subgraph API listing" >}}
 
-#### Creating a supergraph via the Dasboard UI
+#### Creating a supergraph via the Dashboard UI
 1. Log in to the Dashboard and go to APIs > Add New API > Federation > Supergraph.
 {{< img src="/img/dashboard/graphql/add-supergraph-api.png" alt="Add supergraph API" >}}
 
-2. In the Details section select all the subgraphs that will be included in your supergraph.
+2. In the Details section, select all the subgraphs that will be included in your supergraph.
 {{< img src="/img/dashboard/graphql/select-subgraphs.png" alt="Select subgraphs" >}}
 
 3. Go to Configure API and configure your supergraph just as you would any other API in Tyk.
-4. Once you configure all the options click Save. The supergraph is now available in your list of APIs.
+4. Once you configure all the options, click Save. The supergraph is now available in your list of APIs.
 {{< img src="/img/dashboard/graphql/supergraph-api-listing.png" alt="Supergraph API listing" >}}
 
 #### Defining Headers
@@ -1714,7 +1714,7 @@ In v4.0 you can define global (Supergraph) headers. Global headers are forwarded
 ##### Setting a Global Header
 
 1. After creating your supergraph, open the API in your Dashboard.
-2. From the Subgraphs tab click Global Headers.
+2. From the Subgraphs tab, click Global Headers.
 {{< img src="/img/dashboard/graphql/global-header1.png" alt="Global Header setup for a supergraph" >}}
 
 3. Enter your header name and value. You can add more headers by clicking Add Headers.
