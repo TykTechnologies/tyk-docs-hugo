@@ -5,6 +5,8 @@ info:
     name: Tyk Technologies
     url: https://tyk.io/contact
   description: |-
+    <img src="https://tyk.io/docs/img/dashboard_admin_swagger_image.png" width="963" height="250">
+   
     For Tyk On-Premises installations only, the Dashboard Admin API has two endpoints and is used to set up and provision a Tyk Dashboard instance without the command line.
 
     In order to use the Dashboard Admin API, you'll need to get the `admin_secret` value from your Tyk Dashboard configurations.
