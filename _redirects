@@ -15,3 +15,4 @@
 /docs/3-lts/* https://release-3-lts--tyk-docs.netlify.app/docs/:splat 200!
 /docs/nightly/* https://tyk-docs.netlify.app/docs/:splat 200! 
 /docs/5.8/* https://release-5-8--tyk-docs.netlify.app/docs/:splat 200!
+/docs/ai/* https://tyktechnologies.github.io/midsommar/:splat 200!
