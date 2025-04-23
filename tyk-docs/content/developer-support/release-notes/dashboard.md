@@ -1476,6 +1476,92 @@ Fixed the following high priority CVEs identified in the Tyk Dashboard, providin
 
 ## 5.3 Release Notes
 
+### 5.3.11 Release Notes
+
+#### Release Date XXX
+
+#### Release Highlights
+
+This release focuses mainly on a security fix. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.11" >}}) below.
+
+#### Breaking Changes
+
+There are no breaking changes in this release.
+
+#### Dependencies {#dependencies-5.3.11}
+
+##### Compatibility Matrix For Tyk Components
+
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.3.11 | MDCB v2.8.0     | MDCB v2.8.0 |
+|         | Operator v1.2.0  | Operator v0.17 |
+|         | Sync v2.1.0    | Sync v2.1.0 |
+|         | Helm Chart v3.0  | Helm all versions |
+| | EDP v1.13 | EDP all versions |
+| | Pump v1.12.0| Pump all versions |
+| | TIB (if using standalone) v1.7.0 | TIB all versions |
+
+##### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.8.0}
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.23       | 1.23       | [Go plugins]({{< ref "api-management/plugins/golang" >}}) must be built using Go 1.23 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 13.x - 17.x        | 13.x - 17.x            | Used by Tyk Dashboard | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "api-management/gateway-config-tyk-oas#tyk-vendor-extension-reference" >}})|
+
+#### Deprecations
+
+There are no deprecations in this release.
+
+#### Upgrade instructions {#upgrade-5.3.11}
+
+If you are upgrading to 5.8.1, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+
+#### Downloads
+
+- [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.11)
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.3.11
+    ```
+- Helm charts
+  - [tyk-charts v3.0.0]({{< ref "developer-support/release-notes/helm-chart#300-release-notes" >}})
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>License allocation now works across multiple dashboards</summary>
+
+Converted license allocation to be stored in a distributed manner to allow a setup with multiple dashboards.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved password error messaging on Add User page</summary>
+
+Improved formatting for the password error on the add user page
+</details>
+</li>
+<li>
+<details>
+<summary>Enhanced OPA Rules for Token Reset and User Data Access</summary>
+
+Updated OPA rules in the Dashboard to allow all users to reset their own access tokens and view their user data, improving self-service while maintaining security. Note that users with custom OPA rules are strongly advised to update their configurations to include the is_self_key_reset and is_me helper rules. Additionally, they should modify their rules to exclude cases where is_self_key_reset or is_me apply, in order to enable this functionality.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Control for Dashboard API Credentials</summary>
+
+Users can now always access their own Dashboard API credentials, regardless of permissions. Admins’ ability to view or reset other users’ credentials is now strictly controlled by security flags
+</details>
+</li>
+</ul>
+
 ### 5.3.10 Release Notes
 
 #### Release Date 19 February 2025
