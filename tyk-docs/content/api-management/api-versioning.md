@@ -632,3 +632,4 @@ When using the Tyk Gateway API or Tyk Dashboard API to create new child versions
 - versioning identifier key: `x-tyk-version`
 
 If you need to change these, you should do so within the `info.versioning` section of the API definition for the base version as explained [previously]({{< ref "api-management/api-versioning#configuring-api-versioning-in-the-api-definition" >}}).
+
