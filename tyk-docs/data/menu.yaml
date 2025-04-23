@@ -769,10 +769,6 @@ menu:
         path: /developer-support/deprecation
         category: Page
         show: True
-      - title: "Contributing"
-        path: /developer-support/contributing
-        category: Page
-        show: True
       - title: "Upgrading Guide"
         path: /developer-support/upgrading
         category: Page
@@ -781,6 +777,15 @@ menu:
         path: /developer-support/faq
         category: Page
         show: True
+      - title: "Docs Contribution"
+        path: /developer-support/contributing
+        category: Directory
+        show: True
+        menu:
+          - title: "UI Example: Pill Label shortcode"
+            path: /ui-examples/test-pill-label
+            category: Page
+            show: true
       - title: "SDK"
         category: Directory
         show: False
