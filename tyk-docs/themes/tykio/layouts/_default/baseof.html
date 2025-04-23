@@ -1,309 +1,193 @@
 <!doctype html>
 
 <html class="no-js" lang="{{ .Site.LanguageCode }}">
+  <head>
+    <style>
+      /* Basic styles for the dropdown */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
 
-<head>
-  <style>
-    /* Basic styles for the dropdown */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 140px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        right: 0; /* Align dropdown content to the left of the button */
+        border-radius: 8px; /* Add rounded corners */
+      }
 
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: white;
-      min-width: 140px;
-      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-      right: 0;
-      /* Align dropdown content to the left of the button */
-      border-radius: 8px;
-      /* Add rounded corners */
-    }
+      .dropdown-content a {
+        color: black;
+        padding: 8px 12px;
+        text-decoration: none;
+        display: block;
+      }
 
-    .dropdown-content a {
-      color: black;
-      padding: 8px 12px;
-      text-decoration: none;
-      display: block;
-    }
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+        border-radius: 8px; /* Add rounded corners */
+      }
 
-    .dropdown-content a:hover {
-      background-color: #f1f1f1;
-      border-radius: 8px;
-      /* Add rounded corners */
-    }
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
 
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
+      .dropdown:hover .dropbtn {
+        cursor: pointer;
+      }
+    </style>
 
-    .dropdown:hover .dropbtn {
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <title>{{ .Title }}</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{{ .Description }}" />
+    <meta name="keywords" content="{{ with .Params.tags }}{{ delimit . ", " }}{{ end }}" />
+    {{ partial "google_search_console_metadata.html" . }}
+    {{ partial "site_schema.html" . }}
 
-  <meta charset="UTF-8" />
-  <title>{{ .Title }}</title>
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="{{ .Description }}" />
-  <meta name="keywords" content="{{ with .Params.tags }}{{ delimit . " , " }}{{ end }}" />
-  {{ partial "google_search_console_metadata.html" . }}
-  {{ partial "site_schema.html" . }}
+    {{ if eq .Params.robots "noindex" }}
+    <meta name="robots" content="noindex">
+    {{ end }}
 
-  {{ if eq .Params.robots "noindex" }}
-  <meta name="robots" content="noindex">
-  {{ end }}
+    {{ if and (isset .Params "algolia") (isset .Params.algolia "importance") }}
+    <meta name="algolia-importance" content="{{ .Params.algolia.importance }}">
+    {{ else }}
+      <meta name="algolia-importance" content="100">
+    {{ end }}
 
-  {{ if and (isset .Params "algolia") (isset .Params.algolia "importance") }}
-  <meta name="algolia-importance" content="{{ .Params.algolia.importance }}">
-  {{ else }}
-  <meta name="algolia-importance" content="100">
-  {{ end }}
+    <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet" />
 
-  <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
-
-  {{ $canonicalLink := replace .Permalink .Site.BaseURL .Site.Params.CanonicalBaseUrl }}
-  <link rel="canonical" href="{{ $canonicalLink }}" />
-  <!--{{ if not (or (findRE `docs/nightly` .Permalink) (findRE `docs/\d\.\d` .Permalink)) }}
+    {{ $canonicalLink := replace .Permalink .Site.BaseURL  .Site.Params.CanonicalBaseUrl }}
+    <link rel="canonical" href="{{ $canonicalLink }}" />
+    <!--{{ if not (or (findRE `docs/nightly` .Permalink) (findRE `docs/\d\.\d` .Permalink)) }}
       <link rel="canonical" href="{{ .Permalink }}" />
     {{ else }}
       <meta name="robots" content="noindex" />
     {{ end }}
 		-->
 
-  <link rel="icon" type="image/png" href="{{ " images/favicon/favicon-32x32.png" | relURL }}" sizes="32x32" />
-  <link rel="icon" type="image/png" href="{{ " images/favicon/favicon-16x16.png" | relURL }}" sizes="16x16" />
-  <link rel="shortcut icon" href="{{ " images/favicon/favicon.ico" | relURL }}" />
+    <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-32x32.png" | relURL }}" sizes="32x32" />
+    <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-16x16.png" | relURL }}" sizes="16x16" />
+    <link rel="shortcut icon" href="{{ "images/favicon/favicon.ico" | relURL }}" />
 
-  <link rel="dns-prefetch" href="//ajax.googleapis.com" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-  <script src="{{ " js/scroll_to_active_tab.js" | relURL }}"></script>
-  <script src="{{ " js/modernizr.min.js" | relURL }}"></script>
-  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js?ver=1.12.0"></script>
-  {{ if .HasShortcode "github_star_button" }}
-  <script defer src="https://buttons.github.io/buttons.js"></script>
-  {{ end }}
+    <link rel="dns-prefetch" href="//ajax.googleapis.com" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous" />
+    <script src="{{ "js/scroll_to_active_tab.js" | relURL }}"></script>
+    <script src="{{ "js/modernizr.min.js" | relURL }}"></script>
+    <script
+      type="text/javascript"
+      src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js?ver=1.12.0"></script>
+    {{ if .HasShortcode "github_star_button" }}
+      <script defer src="https://buttons.github.io/buttons.js"></script>
+    {{ end }}
 
-  {{ partial "head_tracking.html" . }}
+    {{ partial "head_tracking.html" . }}
 
-  {{ $scss := resources.Get "scss/main.scss" }}
-  {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (eq hugo.Environment "development")) }}
-  {{ $css := $scss | toCSS $options }}
-  <link rel="stylesheet" href="{{ $css.RelPermalink }}" />
-</head>
+    {{ $scss := resources.Get "scss/main.scss" }}
+    {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (eq hugo.Environment "development")) }}
+    {{ $css := $scss | toCSS $options }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" />
+  </head>
 
-<body class="page-documentation {{ if not .Params.hideSidebar }}hasSidebar{{ end }}">
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVX4PCL" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+  <body class="page-documentation {{ if not .Params.hideSidebar }}hasSidebar{{ end }}">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-NVX4PCL"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
-  <!-- Header -->
-  {{ partial "header.html" . }}
-
-
-  <!-- Page content -->
-  <section class="section-page {{ if not .Params.hideSidebar }}hasSidebar{{ end }}">
-    <!-- Side menu -->
-    <aside class="page-submenu" data-turbolinks-permanent>
-      {{ partial "side_menu.html" . }}
-    </aside>
-
-    <article class="page-content {{ if .Params.hideSidebar }}home-mobile-padding{{ end }}">
-      <main class="page-content__main">
-        <div class="wysiwyg page-content__container">
-          {{ if .Params.diffTitle }}
-          {{ if .Params.diffTitleName }}
-          <h1>{{ .Params.diffTitleName }}</h1>
-          {{ end }}
-          {{ else }}
-          <h1>{{ .Title }}</h1>
-          {{ end }}
-
-          {{- partial "page_metadata.html" . -}}
+    <!-- Header -->
+    {{ partial "header.html" . }}
 
 
-          <div id="main-content">
-            {{ block "content" . }}
-            {{ .Content }}
+    <!-- Page content -->
+    <section class="section-page {{ if not .Params.hideSidebar }}hasSidebar{{ end }}">
+      <!-- Side menu -->
+      <aside class="page-submenu" data-turbolinks-permanent>
+        {{ partial "side_menu.html" . }}
+      </aside>
+
+      <article class="page-content {{ if .Params.hideSidebar }}home-mobile-padding{{ end }}">
+        <main class="page-content__main">
+          <div class="wysiwyg page-content__container">
+            {{ if .Params.diffTitle }}
+              {{ if .Params.diffTitleName }}
+                <h1>{{ .Params.diffTitleName }}</h1>
+              {{ end }}
+            {{ else }}
+              <h1>{{ .Title }}</h1>
+            {{ end }}
+
+            {{- partial "page_metadata.html" . -}}
+
+
+            <div id="main-content">
+              {{ block "content" . }}
+                {{ .Content }}
+              {{ end }}
+            </div>
+            {{- partial "related_posts.html" . -}}
+            {{- if not .Params.landingPage -}}
+              {{- partial "contribute_data.html" . -}}
+              <nav class="docs-navigation clear" {{ if .Params.hideSidebar }}style="display: none !important"{{ end }}>
+                <a id="previousArticle"></a>
+                <img src="{{ "img/nav-center.png" | relURL }}" alt="Page forward and back image" />
+                <a id="nextArticle"></a>
+              </nav>
             {{ end }}
           </div>
-          {{- partial "related_posts.html" . -}}
-          {{- if not .Params.landingPage -}}
-          {{- partial "contribute_data.html" . -}}
-          <nav class="docs-navigation clear" {{ if .Params.hideSidebar }}style="display: none !important" {{ end }}>
-            <a id="previousArticle"></a>
-            <img src="{{ " img/nav-center.png" | relURL }}" alt="Page forward and back image" />
-            <a id="nextArticle"></a>
-          </nav>
-          {{ end }}
+
+          <div class="documentation-table-of-contents-container page-content__sidebar">
+            <nav class="documentation-table-of-contents">
+              <div class="toc__content"></div>
+            </nav>
+          </div>
+        </main>
+
+        <footer class="footer">
+          {{ partial "footer.html" . }}
+        </footer>
+
+        <div class="return-top">
+          <a href="javascript:" class="button grey medium bottom">Return to Top</a>
         </div>
 
-        <div class="documentation-table-of-contents-container page-content__sidebar">
-          <nav class="documentation-table-of-contents">
-            <div class="toc__content"></div>
-          </nav>
-        </div>
-      </main>
+        <a href="javascript:" class="icon-right" id="return-to-top"></a>
+      </article>
+    </section>
 
-      <footer class="footer">
-        {{ partial "footer.html" . }}
-      </footer>
+    <!-- Footer scripts -->
+    {{ partial "footer_scripts.html" . }}
 
-      <div class="return-top">
-        <a href="javascript:" class="button grey medium bottom">Return to Top</a>
-      </div>
+    <!-- Ask AI Chat -->
+    {{ partial "ai-chat-widget.html" . }}
 
-      <a href="javascript:" class="icon-right" id="return-to-top"></a>
-    </article>
-  </section>
+    <!-- Cookie Notice -->
+    {{ partial "cookie_notice.html" . }}
 
-  <!-- Footer scripts -->
-  {{ partial "footer_scripts.html" . }}
+    {{ if .Page.Store.Get "hasMermaid" }}
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+    {{ end }}
 
-
-  <!-- Cookie Notice -->
-  {{ partial "cookie_notice.html" . }}
-
-  {{ if .Page.Store.Get "hasMermaid" }}
-  <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({ startOnLoad: true });
-  </script>
-  {{ end }}
-
-  <!-- Ask AI Button -->
-  <button onclick="toggleChat()" style="position: fixed; bottom: 400px; right: 20px; z-index: 1000;">Ask AI</button>
-
-  <!-- Chat Modal -->
-  <div id="chat-modal" style="display: none;">
-    <div style="
-    position: fixed;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    max-width: 90%;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    z-index: 1001;
-    padding: 20px;
-    animation: fadeIn 0.3s ease-out;
-  ">
-      <!-- Close Button -->
-      <div style="text-align: right;">
-        <button onclick="toggleChat()" style="
-        background: none;
-        border: none;
-        font-size: 20px;
-        font-weight: bold;
-        cursor: pointer;
-      ">&times;</button>
-      </div>
-
-      <!-- BotUI container -->
-      <div id="botui-app">
-        <bot-ui></bot-ui>
-      </div>
-    </div>
-
-    <!-- Optional dark backdrop -->
-    <div onclick="toggleChat()" style="
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.3);
-    z-index: 1000;
-  "></div>
-  </div>
-
-  <style>
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translate(-50%, -45%);
-      }
-
-      to {
-        opacity: 1;
-        transform: translate(-50%, -50%);
-      }
-    }
-  </style>
-
-
-  <!-- BotUI Styles -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/botui/build/botui-theme-default.css">
-  <!-- Vue and BotUI Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-  <script src="https://cdn.jsdelivr.net/npm/botui/build/botui.min.js"></script>
-
-  <script>
-    let botui;
-    let botStarted = false;
-
-    function toggleChat() {
-      const modal = document.getElementById('chat-modal');
-      const isVisible = modal.style.display === 'block';
-      modal.style.display = isVisible ? 'none' : 'block';
-
-      if (!botStarted && !isVisible) {
-        startChat();
-        botStarted = true;
-      }
-    }
-
-    function startChat() {
-      botui = new BotUI('botui-app');
-
-      botui.message.add({
-        content: "Hi! Ask me anything about our docs."
-      }).then(() => askQuestion());
-    }
-
-    function askQuestion() {
-      botui.action.text({
-        action: {
-          placeholder: 'Ask a question...'
-        }
-      }).then(res => {
-        const question = res.value;
-
-        botui.message.add({ loading: true });
-
-        fetch('https://ai-gateway.tyk.technology/ai/anthropic-gateway/v1', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer a='
-          },
-          body: JSON.stringify({
-            model: 'anthropic-gateway',
-            messages: [{ role: 'user', content: question }]
-          })
-        })
-          .then(r => r.json())
-          .then(data => {
-            const reply = data.choices?.[0]?.message?.content || "Sorry, I didn't get that.";
-            botui.message.remove(1); // remove loading
-            botui.message.add({ content: reply }).then(() => askQuestion());
-          })
-          .catch(() => {
-            botui.message.remove(1);
-            botui.message.add({ content: "Oops! Something went wrong." });
-          });
-      });
-    }
-  </script>
-
-</body>
-
+  </body>
 </html>
