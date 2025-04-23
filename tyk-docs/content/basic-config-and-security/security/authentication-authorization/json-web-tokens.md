@@ -98,7 +98,7 @@ To protect an API with JWT, we need to execute the following steps:
 2. [Set the cryptographic signing method]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#set-up-jwt-signing-method" >}}) to `HMAC (shared)` and the public secret as `tyk123`
 3. Set the Identity Source and Policy Field Name
 
-{{< img src="/img/api-management/security/jwt-hmac.png" alt="Target Details: JSON Web Token" >}}
+{{< img src="/img/api-management/security/jwt-auth-settings.png" alt="Target Details: JSON Web Token" >}}
 
 ### Set a Default Policy
 
