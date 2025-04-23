@@ -1,0 +1,5 @@
+{{ $text := .Get "text" }}
+{{ $class := .Get "class" | default "pill-outline-brandpurple-light" }}
+{{ $style := .Get "style" }}
+
+<span class="pill {{ $class }}" {{ with $style }}style="{{ . }}"{{ end }}>{{ $text }}</span>
