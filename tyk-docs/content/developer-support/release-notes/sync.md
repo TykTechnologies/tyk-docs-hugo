@@ -50,9 +50,9 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
 <ul>
 <li>
 <details>
-<summary>Add changelog summary</summary>
+<summary>Fixed incorrect API-level rate limits from dump command</summary>
 
-Add changelog description
+Fixed an issue where the dump command could incorrectly set API-level rate limits in a policy that did not set such limits. This was due to an issue with Sync interpreting the default value if no limit is set in the policy. Now Sync respects the original policy if no API-level rate limit is set.
 </details>
 </li>
 </ul>
