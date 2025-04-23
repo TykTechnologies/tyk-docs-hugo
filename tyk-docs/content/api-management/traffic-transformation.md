@@ -5422,7 +5422,7 @@ You can use the API Designer in the Tyk Dashboard to configure the Mock Response
 
     Now select the **Mock response** plugin.
 
-{{< img src="/img/dashboard/endpoint-designer/testapi-allowlist.png" alt="Selecting the mock response middleware for a Tyk Classic API" >}}
+    {{< img src="/img/dashboard/endpoint-designer/testapi-allowlist.png" alt="Selecting the mock response middleware for a Tyk Classic API" >}}
 
 3. **Configure the middleware**
 
