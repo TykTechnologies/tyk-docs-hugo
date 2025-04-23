@@ -177,8 +177,25 @@ menu:
         show: True
       - title: "Identity Management"
         path: /api-management/external-service-integration
-        category: Page
+        category: Directory
         show: True
+        menu:
+        - title: "SSO with Social IDP"
+          path: /api-management/single-sign-on-social-idp
+          category: Page
+          show: True
+        - title: "SSO with OpenID Connect"
+          path: /api-management/single-sign-on-oidc
+          category: Page
+          show: True
+        - title: "SSO with SAML"
+          path: /api-management/single-sign-on-saml
+          category: Page
+          show: True
+        - title: "SSO with LDAP"
+          path: /api-management/single-sign-on-ldap
+          category: Page
+          show: True
       - title: "Custom Plugins"
         category: Directory
         show: True
