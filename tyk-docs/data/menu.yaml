@@ -93,10 +93,18 @@ menu:
         path: /api-management/upstream-authentication
         category: Page
         show: True
-      - title: "Rate Limiting"
-        path: /api-management/rate-limit
-        category: Page
+      - title: "API Traffic Control"
+        category: Directory
         show: True
+        menu:
+        - title: "Rate Limiting"
+          path: /api-management/rate-limit
+          category: Page
+          show: True
+        - title: "Request Throttling"
+          path: /api-management/request-throttling
+          category: Page
+          show: True
       - title: "Security Policy and Access Keys"
         path: /api-management/policies
         category: Page
