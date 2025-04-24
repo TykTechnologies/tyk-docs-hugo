@@ -140,7 +140,7 @@ In Tyk 5.8.0, we have added configuration of the following features into the Tyk
 <details>
 <summary>Transaction Logs for Better API Request Visibility</summary>
 
-Tyk Gateway now supports transaction logs, providing structured access logs for API requests. This improves debugging and observability without the overhead of enabling debug mode in production. Logs can be output in JSON format and customized via a template, ensuring flexibility while maintaining performance.
+Tyk Gateway now supports transaction logs, providing structured access logs for API requests. This improves debugging and observability without the overhead of enabling debug mode in production. Logs can be output in JSON format and customized via a template, ensuring flexibility while maintaining performance. Find more details in our [Transaction Logs documentation]({{< ref "api-management/logs-metrics#enabling-api-request-access-logs-in-tyk-gateway" >}}).
 </details>
 </li>
 <li>
