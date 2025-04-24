@@ -813,6 +813,8 @@
     "getting-started/import-apis": "#import-an-api",
     "getting-started/create-security-policy": "#secure-an-api",
     "getting-started/create-api-key": "#access-an-api",
+    "troubleshooting/tyk-pump": "#pump",
+    "tyk-cloud/configuration-options": "#additional-cloud-configuration",
     "concepts/middleware-execution-order": "#request-middleware-chain",
     "error-response-codes": "#gateway-error-response-status-codes",
     "frequently-asked-questions/change-logging-output-location": "#how-to-change-the-logging-output-location",
