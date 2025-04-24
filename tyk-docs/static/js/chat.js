@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const signal = controller.signal;
   
       // Make a POST request to the streaming endpoint
-      fetch('http://localhost:3000/api/stream', {
+      fetch('http://localhost:9090/api/stream', {
         method: 'POST',
         headers: headers,
         body: JSON.stringify({ prompt: message }),
