@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const signal = controller.signal;
   
       // Make a POST request to the streaming endpoint
-      fetch('http://localhost:9090/api/stream', {
+      fetch('https://tyk-docs-ask-ai.dokku.tyk.technology/api/stream', {
         method: 'POST',
         headers: headers,
         body: JSON.stringify({ prompt: message }),
