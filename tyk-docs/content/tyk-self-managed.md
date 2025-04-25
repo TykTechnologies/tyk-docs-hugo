@@ -1183,7 +1183,7 @@ The `bootstrap` command makes bootstrapping easier. It helps you to create organ
 
 **Environment Variables**
 
-You can override the config values by environment variables. See [how to configure an environment variable]({{< ref "tyk-environment-variables" >}}). 
+You can override the config values by environment variables. See [how to configure an environment variable]({{< ref "tyk-oss-gateway/configuration" >}}). 
 
 For example, you can override hostname, port, mongo url, redis host and redis port values by exporting the following variables:
 
@@ -1323,7 +1323,7 @@ You can use the `FROM` statement in `Dockerfile.web` to use specific dashboard v
 {{< /note >}}
 
 
-The [Dashboard configuration]({{< ref "tyk-dashboard/configuration" >}}) can be changed by either editing the `tyk_analytics.conf` file or injecting them as [environment variables]({{< ref "tyk-environment-variables" >}}) via `heroku config`. In this guide we'll use the latter for simplicity of demonstration but there is merit to both methods.
+The [Dashboard configuration]({{< ref "tyk-dashboard/configuration" >}}) can be changed by either editing the `tyk_analytics.conf` file or injecting them as [environment variables]({{< ref "tyk-oss-gateway/configuration" >}}) via `heroku config`. In this guide we'll use the latter for simplicity of demonstration but there is merit to both methods.
 
 First let's set the license key:
 ```bash
@@ -1510,7 +1510,7 @@ ls
 Dockerfile.web  entrypoint.sh  tyk.conf
 ```
 
-All these files serve the same purpose as with the Dasboard and the Pump. [Configuration]({{< ref "tyk-oss-gateway/configuration" >}}) can either be edited in `tyk.conf` or [injected]({{< ref "tyk-environment-variables" >}}) with `heroku config`.
+All these files serve the same purpose as with the Dasboard and the Pump. [Configuration]({{< ref "tyk-oss-gateway/configuration" >}}) can either be edited in `tyk.conf` or [injected]({{< ref "tyk-oss-gateway/configuration" >}}) with `heroku config`.
 
 To get things going we'll need to set following options for the Dashboard endpoint (substituting the actual endpoint and the app name, now for the gateway app):
 ```bash
