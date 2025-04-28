@@ -1,9 +1,9 @@
 ---
 title: "Request Quotas"
 date: 2025-01-10
-tags: ["Request Quotas"]
-description: Overview of Rate Limiting with the Tyk Gateway
-keywords: ["Request Quotas"]
+tags: ["Request Quotas", "API Quotas", "Usage Limits", "Consumption Control"]
+description: Overview of Rate Quotas with the Tyk Gateway
+keywords: ["Request Quotas", "API Quotas", "Usage Limits", "Consumption Control"]
 aliases:
   - /control-limit-traffic/request-quotas
   - /basic-config-and-security/control-limit-traffic/request-quotas
