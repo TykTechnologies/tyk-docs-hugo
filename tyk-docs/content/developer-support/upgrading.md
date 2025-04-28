@@ -166,7 +166,7 @@ A blue-green deployment involves two identical production environments, labeled 
 2. **Traffic Routing:** Use a load balancer or DNS to route traffic to the green environment (current production) while the blue environment undergoes the upgrade.
 3. **Upgrade Process:**
    - A VM snapshot is a recommended method for replication, but other methods such as a new deployment process can also be used.
-   - If using a new deployment process, follow the [deployment instructions]({{< ref "getting-started/installation" >}}) appropriate for your platform.
+   - If using a new deployment process, follow the [deployment instructions]({{< ref "tyk-self-managed" >}}) appropriate for your platform.
 4. **Switch Environments:** Once the upgrade is complete, switch the traffic to the upgraded environment.
 
 
