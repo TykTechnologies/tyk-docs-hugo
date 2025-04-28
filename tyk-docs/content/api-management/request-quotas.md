@@ -136,11 +136,11 @@ In this tutorial, we will configure Request Quotas on a Tyk Security Policy to l
     2. Click the **Add Policy** button.
     3. Under the **1. Access Rights** tab, in the **Add API Access Rule** section, select the `Request Quota Test` API.
     4. Scroll down to the **Global Limits and Quota** section (still under the **1. Access Rights** tab):
-        *   **Important:** Disable **Rate Limiting** by selecting **Disable rate limiting** option, so it doesn't interfere with testing the quota.
+        * **Important:** Disable **Rate Limiting** by selecting **Disable rate limiting** option, so it doesn't interfere with testing the quota.
         * Set the following values for `Usage Quotas`:
-        * Enter `10` into the **Max Requests per period** field. (This is our low quota limit for testing).
-        * TODO: 60 seconds cannot be selected.
-        * Select `Custom` from the **Quota resets every:** dropdown and enter `60` in the adjacent field. (This sets a short 60-second reset period for quick testing).
+          * Uncheck the `Unlimited requests` checkbox
+          * Enter `10` into the **Max Requests per period** field. (This is our low quota limit for testing).
+          * Select `1 hour` from the **Quota resets every:** dropdown. (In the next step, we will modify it to 60 seconds via API for quick testing, as 1 hour is a very long period. From the dashboard, we can only select pre-configured options.)
     5. Select the **2. Configuration** tab.
     6. In the **Policy Name** field, enter `Request Quota Policy`.
     7. From the **Key expire after** dropdown, select `1 hour`.
@@ -148,7 +148,29 @@ In this tutorial, we will configure Request Quotas on a Tyk Security Policy to l
 
     </details>
 
-    TODO: Add Image *(Note: Replace with an actual screenshot showing the Quota fields configured as described)*
+    {{< img src="/img/dashboard/system-management/request-quotas-policy-quick-start.png" alt="policy with request quota configured" >}}
+
+4.  **Update Quota Reset Period via API:**
+
+    As the Dashboard UI doesn't allow setting a shorter duration, we will set the Quota reset period to a value of 1 minute for testing purposes. The following commands search for the policy, modify its `quota_renewal_rate` to 60 seconds, and update the API.
+
+    **Note:** Obtain your Dashboard API key by clicking on the User profile at the top right corner, then click on `Edit Profile`, and select the key available under `Tyk Dashboard API Access Credentials`. Now in the below command replace <your-api-key> with the API key you obtained from the Dashboard UI.
+
+    ```
+    curl -s --location 'http://localhost:3000/api/portal/policies/search?q=Request%20Quota%20Policy' \
+    -H "Authorization: <your-api-key>" \
+    -H "Accept: application/json" > policy.json
+
+    jq '.Data[0] | .quota_renewal_rate = 60' policy.json > updated_policy.json
+    jq -r '.Data[0]._id' policy.json > policy_id.txt
+
+    curl --location "http://localhost:3000/api/portal/policies/$(cat policy_id.txt)" \
+    -H "Authorization: <your-api-key>" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -X PUT \
+    -d @updated_policy.json
+    ```
 
 3.  **Associate an Access Key with the Policy:**
 
@@ -242,7 +264,7 @@ This quick start demonstrates the fundamental behaviour of Request Quotas: they 
 ---
 ## Configuration Options
 
-Request Quotas is configured within Tyk [Security Policies]({{< ref "/api-management/policies" >}}) or directly on individual [Access Keys]({{< ref "/api-management/client-authentication#use-auth-tokens" >}}).
+Request Quotas in Tyk can be configured at various levels.
 
 The configuration involves setting two specific fields:
 
@@ -291,9 +313,11 @@ export TYK_GW_ENFORCEORGQUOTAS=true
 {{< tab_end >}}
 {{< tabs_end >}}
 
-Refer to the [Tyk Gateway Configuration Reference]({{< ref "tyk-oss-gateway/configuration/#enforce_org_quotas" >}}) for more details on this setting.
+Refer to the [Tyk Gateway Configuration Reference]({{< ref "tyk-oss-gateway/configuration#enforce_org_quotas" >}}) for more details on this setting.
 
-### Organization-Level Configuration
+<!-- Why we are commenting org quotas: Organization quotas are a hangover from the Classic Cloud, where all clients shared a deployment. They are not documented anywhere presently, and I’m not sure why we would start to do so - but if we’re going to, we need to be very careful not to add complexity to the way users configure things. -->
+
+<!-- ### Organization-Level Configuration
 
 Organization quotas limit the total number of requests across all APIs for a specific organization. These are enforced by the `OrganizationMonitor` middleware when `enforce_org_quotas` is enabled.
 
@@ -310,7 +334,7 @@ curl -X POST -H "Authorization: {your-api-key}" \
     "quota_renewal_rate": 3600,
   }' \
   http://tyk-gateway:8080/tyk/org/keys/{org-id}
-```
+``` -->
 
 ### API-Level Configuration
 
