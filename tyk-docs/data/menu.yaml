@@ -101,6 +101,10 @@ menu:
           path: /api-management/rate-limit
           category: Page
           show: True
+        - title: "Request Quotas"
+          path: /api-management/request-quotas
+          category: Page
+          show: True
         - title: "Request Throttling"
           path: /api-management/request-throttling
           category: Page
