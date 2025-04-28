@@ -10,6 +10,7 @@ This page demonstrates all available styles and usage examples of the pill-label
 
 Click on any example to see details about its usage and styling.
 
+
 ---
 
 ## Default style - Enterprise edition {#enterprise-edition}
