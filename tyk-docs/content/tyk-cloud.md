@@ -99,6 +99,13 @@ aliases:
   - /python-custom-auth-plugin/setup-control-plane
   - /python-custom-auth-plugin/uploading-bundle
   - /tyk-cloud/initial-portal-config
+  - /troubleshooting/tyk-multi-cloud/token-information-doesnt-appear-dashboard-tyk-multi-cloud-users
+  - /frequently-asked-questions/cloud-classic-virtual-endpoints-not-working
+  - /frequently-asked-questions/enable-websockets-cloud
+  - /troubleshooting/tyk-cloud-classic/301-moved-permanently
+  - /troubleshooting/tyk-cloud-classic/413-request-entity-large
+  - /troubleshooting/tyk-cloud-classic/504-gateway-timeout-error
+  - /troubleshooting/tyk-cloud-classic/organisation-quota-exceeded-error-dashboard-api
 ---
 
 ## What is Tyk Cloud

@@ -68,6 +68,7 @@ aliases:
   - /advanced-configuration/transform-traffic/request-headers
   - /advanced-configuration/transform-traffic/request-body
   - /transform-traffic/endpoint-designer
+  - /advanced-configuration
 ---
 
 ## Overview

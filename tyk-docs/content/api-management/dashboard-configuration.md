@@ -38,6 +38,8 @@ aliases:
   - /tyk-apis/tyk-dashboard-admin-api/import
   - /advanced-configuration/transform-traffic/endpoint-designer
   - /transform-traffic/endpoint-designer
+  - /tyk-dashboard/getting-started
+  - /basic-config-and-security/security/dashboard
 ## Traffic Analytics
   - /analyse
   - /tyk-stack/tyk-pump/tyk-dash-analytics
