@@ -44,12 +44,11 @@ var buildTableOfContents = function () {
     }
 
     if ($(this).is("h3")) {
-      var link = $(`<a href="#${$(this).attr("id")}" class="sub_toc__item">${title}</a>`);
+      var link = $(`<a href="#${$(this).attr("id")}" class="sub_toc__item sub-accordion-title">${title}</a>`);
       var h3 = $(this)
         .text()
         .replace(/[^a-zA-Z0-9]/g, "")
         .toLowerCase();
-      var link = $(`<a href="#${$(this).attr("id")}" class="sub_toc__item sub-accordion-title">${title}</a>`);
       var accordionContent = $('<div class="accordion-content"></div>').append(link);
       if (accordionGroup.find(".accordion-item:last").length) {
         accordionGroup.find(".accordion-item:last").append(accordionContent);
@@ -57,10 +56,13 @@ var buildTableOfContents = function () {
         ToContent.append(accordionContent);
       }
 
-      accordionContent.click(function () {
-        $(this).toggleClass("accordion-up");
+      link.click(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $parentContent = $(this).parent('.accordion-content');
+        $parentContent.toggleClass("accordion-up");
         // Toggle visibility of H4 elements under this H3
-        accordionContent.siblings(".sub-accordion-content").toggle();
+        $parentContent.children('.sub-accordion-content').toggle();
       });
     }
 

@@ -49,7 +49,7 @@ starts with:
 
 ## Hot reload is critical in Tyk CE
 
-Each time you add an API definition in Tyk CE, you need to make a hot reload API call as follows DELITE:
+Each time you add an API definition in Tyk CE, you need to make a hot reload API call as follows:
 
 ```curl
 curl -H "x-tyk-authorization: {your-secret}" -s https://{your-tyk-host}:{port}/tyk/reload/group | python -mjson.tool

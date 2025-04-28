@@ -37,7 +37,8 @@ setTimeout(function(container){
   $(container).find('> .tab-content > .tab-pane').each(function(idx, item) {
     var navTabs = $(this.parentNode.parentNode).find('> .nav-tabs'),
         title = $(this).attr('title');
-    navTabs.append('<li><a href="#">'+title+'</a></li');
+    var anchor = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    navTabs.append('<li><a href="#' + anchor + '">'+title+'</a></li');
   });
 
   $(container).find('> ul.nav-tabs').each(function() {
@@ -58,6 +59,7 @@ setTimeout(function(container){
     $(container).find('> .tab-content > .active').removeClass('active');
     tab.addClass('active');
     tabPane.addClass('active');
+    history.pushState(null, null, this.getAttribute('href'));
   });
 }, 0, tabsBontainer)
 
