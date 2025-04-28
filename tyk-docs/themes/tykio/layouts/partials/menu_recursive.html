@@ -31,38 +31,6 @@
             {{- if eq $path $pagePath -}}
               {{- $has = true -}}
             {{- end -}}
-            {{- if (isset . "menu") -}}
-              {{- range .menu -}}
-                {{- $path := replace .path "/" "" -}}
-                {{- if eq $path $pagePath -}}
-                  {{- $has = true -}}
-                {{- end -}}
-                {{- if (isset . "menu") -}}
-                  {{- range .menu -}}
-                    {{- $path := replace .path "/" "" -}}
-                    {{- if eq $path $pagePath -}}
-                      {{- $has = true -}}
-                    {{- end -}}
-                    {{- if (isset . "menu") -}}
-                      {{- range .menu -}}
-                        {{- $path := replace .path "/" "" -}}
-                        {{- if eq $path $pagePath -}}
-                          {{- $has = true -}}
-                        {{- end -}}
-                        {{- if (isset . "menu") -}}
-                          {{- range .menu -}}
-                            {{- $path := replace .path "/" "" -}}
-                            {{- if eq $path $pagePath -}}
-                              {{- $has = true -}}
-                            {{- end -}}
-                          {{- end -}}
-                        {{- end -}}
-                      {{- end -}}
-                    {{- end -}}
-                  {{- end -}}
-                {{- end -}}
-              {{- end -}}
-            {{- end -}}
           {{- end -}}
         {{- end -}}
       {{- end -}}
@@ -73,7 +41,7 @@
       {{- $has = false -}}
     {{ end }}
 
-    {{- if and (isset . "menu") (ne .category "Label") -}}
+    {{- if and (isset . "menu") (ne .category "Label") (ne .category "Tab") -}}
       {{ if or (.show) ($showEmptyPages) -}}
         <li
           class="category-{{ .category }} {{ if $is }}active{{ end }} {{ if or $is $has (eq .category `Label`) }}
@@ -99,6 +67,8 @@
         <hr />
         <h6 style="font-size: 15px;">{{ .title }}</h6>
       {{- end -}}
+      {{- partial "menu_recursive.html" (dict "menu" .menu "page" $page "site" $site) -}}
+    {{- else if and (.show) (eq .category "Tab") -}}
       {{- partial "menu_recursive.html" (dict "menu" .menu "page" $page "site" $site) -}}
     {{- else -}}
       {{ if or (.show) ($showEmptyPages) -}}

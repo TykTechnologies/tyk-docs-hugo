@@ -100,6 +100,17 @@
     {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (eq hugo.Environment "development")) }}
     {{ $css := $scss | toCSS $options }}
     <link rel="stylesheet" href="{{ $css.RelPermalink }}" />
+    <link rel="stylesheet" href="{{ "css/tabs.css" | relURL }}" />
+    {{ if .Site.Params.custom_css }}
+      {{ range .Site.Params.custom_css }}
+        <link rel="stylesheet" href="{{ . | relURL }}" />
+      {{ end }}
+    {{ end }}
+    {{ if .Site.Params.custom_js }}
+      {{ range .Site.Params.custom_js }}
+        <script src="{{ . | relURL }}"></script>
+      {{ end }}
+    {{ end }}
   </head>
 
   <body class="page-documentation {{ if not .Params.hideSidebar }}hasSidebar{{ end }}">
@@ -116,6 +127,8 @@
     <!-- Header -->
     {{ partial "header.html" . }}
 
+    <!-- Main navigation tabs -->
+    {{ partial "tabs_menu.html" . }}
 
     <!-- Page content -->
     <section class="section-page {{ if not .Params.hideSidebar }}hasSidebar{{ end }}">

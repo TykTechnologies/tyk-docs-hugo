@@ -1,11 +1,43 @@
 <button class="submenu-close overlay-close m-show icon-close" data-toggle="show-submenu">Close</button>
 
-{{- if not .Params.hideSidebar -}}
+{{- $pagePath := .RelPermalink -}}
+{{- $pagePath := replace $pagePath "/docs" "" -}}
+{{- $pagePath := replace $pagePath "/nightly" "" -}}
+{{- $pagePath := replace $pagePath "/" "" -}}
+{{- $showEmptyPages := .Site.Params.showEmptyPages -}}
 
+{{- if not .Params.hideSidebar -}}
   <nav class="aside-submenu no-icons">
-    <div class="header__tabs-menu header__tabs-menu--collapsable">
+    <div class="header__tabs-menu">
       <nav class="links-container">
-        {{- partial "tabs_menu.html" . -}}
+        {{- range .Site.Data.menu.menu -}}
+          {{- if eq .category "Tab" -}}
+            {{- $selected := false -}}
+            {{- $path_not_empty := false -}}
+            {{- $path := replace .path "/" "" -}}
+            {{- if eq $path $pagePath -}}
+              {{- $selected = true -}}
+              {{- if ne $path "" -}}
+                {{- $path_not_empty = true -}}
+              {{- end -}}
+            {{- end -}}
+            {{- if (isset . "menu") -}}
+              {{- range .menu -}}
+                {{- $path := replace .path "/" "" -}}
+                {{- if eq $path $pagePath -}}
+                  {{- $selected = true -}}
+                  {{- if ne $path "" -}}
+                    {{- $path_not_empty = true -}}
+                  {{- end -}}
+                {{- end -}}
+              {{- end -}}
+            {{- end -}}
+            {{- $prefixPath := strings.TrimLeft "/" .path -}}
+            {{- if or (.show) ($showEmptyPages) -}}
+              <a href="{{$prefixPath | relURL}}" class="{{if not .show}} paint-red {{end}} {{if (and $selected $path_not_empty )}} active{{end}}">{{- .title -}}</a>
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
       </nav>
     </div>
 
@@ -14,14 +46,39 @@
     </div>
   </nav>
 {{ else }}
-
   <section class="header__tabs-menu">
     <nav class="links-container">
-      {{- partial "tabs_menu.html" . -}}
+      {{- range .Site.Data.menu.menu -}}
+        {{- if eq .category "Tab" -}}
+          {{- $selected := false -}}
+          {{- $path_not_empty := false -}}
+          {{- $path := replace .path "/" "" -}}
+          {{- if eq $path $pagePath -}}
+            {{- $selected = true -}}
+            {{- if ne $path "" -}}
+              {{- $path_not_empty = true -}}
+            {{- end -}}
+          {{- end -}}
+          {{- if (isset . "menu") -}}
+            {{- range .menu -}}
+              {{- $path := replace .path "/" "" -}}
+              {{- if eq $path $pagePath -}}
+                {{- $selected = true -}}
+                {{- if ne $path "" -}}
+                  {{- $path_not_empty = true -}}
+                {{- end -}}
+              {{- end -}}
+            {{- end -}}
+          {{- end -}}
+          {{- $prefixPath := strings.TrimLeft "/" .path -}}
+          {{- if or (.show) ($showEmptyPages) -}}
+            <a href="{{$prefixPath | relURL}}" class="{{if not .show}} paint-red {{end}} {{if (and $selected $path_not_empty )}} active{{end}}">{{- .title -}}</a>
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
     </nav>
   </section>
 {{ end }}
-
 
 <div>
   <div class="version-selector">
