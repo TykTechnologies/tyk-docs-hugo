@@ -9,9 +9,9 @@ tags: ["Tyk Governance"]
 
 Tyk Governance is a universal API governance platform that enables organizations to establish, enforce, and monitor governance policies across multiple API platforms and gateways. It solves the challenge of fragmented API management by providing a centralized approach to governance, regardless of where your APIs are hosted or which technologies they use.
 
-In today's complex API ecosystems, organizations struggle with inconsistent standards, security vulnerabilities, and compliance gaps across different API platforms. Tyk Governance bridges these gaps by creating a unified governance layer that works seamlessly with Tyk Gateway and extends to third-party API platforms like AWS API Gateway.
+In today's complex API ecosystems, organizations struggle with inconsistent standards, security vulnerabilities, and compliance gaps across different API platforms. Tyk Governance bridges these gaps by creating a unified governance layer that works seamlessly with Tyk Gateway and extends to third-party API platforms, such as AWS API Gateway.
 
-{{< img src="/img/governance/governance-overview.png" alt="Tyk Governance provides centralized visibility and organisations across different API platforms" >}}
+{{< img src="/img/governance/governance-overview.png" alt="Tyk Governance provides centralized visibility and organizations across different API platforms" >}}
 
 ## Key Benefits
 
@@ -51,7 +51,7 @@ API developers rely on Tyk Governance to design and implement APIs that meet org
 * Real-time feedback during development
 * Reduced rework and faster release cycles
 
-**Example:** An API developer receives immediate feedback that their new payment API is missing required rate limiting policies, allowing them to fix the issue before submitting for review.
+**Example:** An API developer receives immediate feedback that their new payment API is missing required rate-limiting policies, allowing them to fix the issue before submitting for review.
 
 ```mermaid
 flowchart LR
