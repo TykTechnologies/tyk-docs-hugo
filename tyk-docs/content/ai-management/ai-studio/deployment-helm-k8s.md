@@ -309,4 +309,4 @@ kubectl describe pod <pod-name>
 
 ## Next Steps
 
-Once deployed, proceed to the [Initial Configuration]({{< ref "ai-management/configuration" >}}) guide to set up Tyk AI Studio.
+Once deployed, proceed to the [Initial Configuration]({{< ref "ai-management/ai-studio/configuration" >}}) guide to set up Tyk AI Studio.

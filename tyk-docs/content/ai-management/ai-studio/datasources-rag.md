@@ -20,18 +20,18 @@ The primary goal is to enhance LLM interactions by:
 
 *   **Data Source:** A configuration in Tyk AI Studio that defines a connection to a specific knowledge base (typically a vector store) and the associated embedding service used to populate it.
 *   **Vector Store Abstraction:** Tyk AI Studio provides a unified interface to interact with various vector database types (e.g., Pinecone, Milvus, ChromaDB). Administrators configure the connection details for their chosen store.
-*   **Embedding Service:** Text needs to be converted into numerical vector embeddings before being stored and searched. Administrators configure the embedding service (e.g., OpenAI `text-embedding-ada-002`, a local Sentence Transformer model via an API endpoint) and its credentials (using [Secrets Management]({{< ref "ai-management/secrets" >}})).
+*   **Embedding Service:** Text needs to be converted into numerical vector embeddings before being stored and searched. Administrators configure the embedding service (e.g., OpenAI `text-embedding-ada-002`, a local Sentence Transformer model via an API endpoint) and its credentials (using [Secrets Management]({{< ref "ai-management/ai-studio/secrets" >}})).
 *   **File Processing:** Administrators upload documents (e.g., PDF, TXT, DOCX) to a Data Source configuration. Tyk AI Studio automatically:
     *   Chunks the documents into smaller, manageable pieces.
     *   Uses the configured Embedding Service to convert each chunk into a vector embedding.
     *   Stores the text chunk and its corresponding embedding in the configured Vector Store.
 *   **RAG (Retrieval-Augmented Generation):** The core process where:
-    1.  A user's query in the [Chat Interface]({{< ref "ai-management/chat-interface" >}}) is embedded using the same embedding service.
+    1.  A user's query in the [Chat Interface]({{< ref "ai-management/ai-studio/chat-interface" >}}) is embedded using the same embedding service.
     2.  This query embedding is used to search the relevant vector store(s) for the most similar text chunks (based on vector similarity).
     3.  The retrieved text chunks are added as context to the prompt sent to the LLM.
     4.  The LLM uses this context to generate a more informed and relevant response.
 *   **Data Source Catalogues:** Similar to Tools, Data Sources are grouped into Catalogues for easier management and assignment to user groups.
-*   **Privacy Levels:** Each Data Source has a privacy level. It can only be used in RAG if its level is less than or equal to the privacy level of the [LLM Configuration]({{< ref "ai-management/llm-management" >}}) being used, ensuring data governance.
+*   **Privacy Levels:** Each Data Source has a privacy level. It can only be used in RAG if its level is less than or equal to the privacy level of the [LLM Configuration]({{< ref "ai-management/ai-studio/llm-management" >}}) being used, ensuring data governance.
 
     Privacy levels define how data is protected by controlling LLM access based on its sensitivity:
     - Public – Safe to share (e.g., blogs, press releases).
@@ -59,12 +59,12 @@ Administrators configure Data Sources via the UI or API:
 2.  **Configure Vector Store:**
     *   Select the database type (e.g., `pinecone`).
     *   Provide connection details (e.g., endpoint/connection string, namespace/index name).
-    *   Reference a [Secret]({{< ref "ai-management/secrets" >}}) containing the API key/credentials.
+    *   Reference a [Secret]({{< ref "ai-management/ai-studio/secrets" >}}) containing the API key/credentials.
 3.  **Configure Embedding Service:**
     *   Select the vendor/type (e.g., `openai`, `local`).
     *   Specify the model name (if applicable).
     *   Provide the service URL (if applicable, for local models).
-    *   Reference a [Secret]({{< ref "ai-management/secrets" >}}) containing the API key (if applicable).
+    *   Reference a [Secret]({{< ref "ai-management/ai-studio/secrets" >}}) containing the API key (if applicable).
 4.  **Upload Files:** Upload documents to be chunked, embedded, and indexed into the vector store.
 
     ![Placeholder: Datasource Config](https://placehold.co/600x400?text=DataSource+Config)
@@ -72,13 +72,13 @@ Administrators configure Data Sources via the UI or API:
 ## Organizing & Assigning Data Sources (Admin)
 
 *   **Create Catalogues:** Group related Data Sources into Catalogues (e.g., "Product Docs", "Support KB").
-*   **Assign to Groups:** Assign Data Source Catalogues to specific [User Groups]({{< ref "ai-management/user-management" >}}).
+*   **Assign to Groups:** Assign Data Source Catalogues to specific [User Groups]({{< ref "ai-management/ai-studio/user-management" >}}).
 
     ![Placeholder: Catalogue Config](https://placehold.co/600x400?text=DataSource+Catalogue+Config)
 
 ## Using Data Sources (User)
 
-Data Sources are primarily used implicitly via RAG within the [Chat Interface]({{< ref "ai-management/chat-interface" >}}).
+Data Sources are primarily used implicitly via RAG within the [Chat Interface]({{< ref "ai-management/ai-studio/chat-interface" >}}).
 
 A Data Source will be used for RAG if:
 

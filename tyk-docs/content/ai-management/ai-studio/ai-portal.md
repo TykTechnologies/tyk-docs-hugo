@@ -20,7 +20,7 @@ The main goals of the AI Portal are:
 
 ## Key Features
 
-*   **Chat Interface:** Access to all [Chat Experiences]({{< ref "ai-management/chat-interface" >}}) the user has permission to use, with a clean, intuitive UI for conversational interactions.
+*   **Chat Interface:** Access to all [Chat Experiences]({{< ref "ai-management/ai-studio/chat-interface" >}}) the user has permission to use, with a clean, intuitive UI for conversational interactions.
 *   **Documentation Hub:** Integrated documentation for available AI services, tools, and data sources.
 *   **User Profile Management:** Self-service capabilities for updating profile information and preferences.
 *   **History & Favorites:** Access to past chat sessions and ability to bookmark favorite conversations.

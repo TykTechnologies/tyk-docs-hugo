@@ -574,90 +574,152 @@ menu:
     category: Label
     show: True
     menu:
-      - title: "Introduction"
+      - title: "Overview"
+        category: Page
+        path: /ai-management/overview
+        show: True
+      - title: "Tyk MCPs"
+        path: /ai-management/tyk-mcps/overview
         category: Directory
-        show: true
+        show: True
         menu:
-          - title: "Quickstart"
-            path: /ai-management/quickstart
+          - title: "API as MCP"
             category: Page
-            show: true
-          - title: "Core Concepts"
-            path: /ai-management/core-concepts
+            path: /ai-management/tyk-mcps/api-to-mcp
+            show: True
+          - title: "Dashboard API as MCP"
             category: Page
-            show: true
-      - title: "Getting Started"
+            path: /ai-management/tyk-mcps/dashboard-api-to-mcp
+            show: True
+          - title: "Tyk Docs as MCP"
+            category: Page
+            path: /ai-management/tyk-mcps/tyk-docs-mcp
+            show: True
+      - title: "AI Studio"
+        path: /ai-management/ai-studio/overview
         category: Directory
-        show: true
+        show: True
         menu:
-          - title: "Installation (Helm/K8s)"
-            path: /ai-management/deployment-helm-k8s
-            category: Page
-            show: true
-          - title: "Initial Configuration"
-            path: /ai-management/configuration
-            category: Page
-            show: true
-      - title: "Core Features"
-        category: Directory
-        show: true
-        menu:
-          - title: "AI Gateway"
-            path: /ai-management/proxy
-            category: Page
-            show: true
-          - title: "AI Portal"
-            path: /ai-management/ai-portal
-            category: Page
-            show: true
-          - title: "Chat Interface"
-            path: /ai-management/chat-interface
-            category: Page
-            show: true
-          - title: "LLM Management"
-            path: /ai-management/llm-management
-            category: Page
-            show: true
-          - title: "Tools & Extensibility"
-            path: /ai-management/tools
-            category: Page
-            show: true
-          - title: "Data Sources & RAG"
-            path: /ai-management/datasources-rag
-            category: Page
-            show: true
-          - title: "Filters & Policies"
-            path: /ai-management/filters
-            category: Page
-            show: true
-      - title: "Administration"
-        category: Directory
-        show: true
-        menu:
-          - title: "User Management & RBAC"
-            path: /ai-management/user-management
-            category: Page
-            show: true
-          - title: "SSO Integration"
-            path: /ai-management/sso
-            category: Page
-            show: true
-          - title: "Secrets Management"
-            path: /ai-management/secrets
-            category: Page
-            show: true
-          - title: "Budget Control"
-            path: /ai-management/budgeting
-            category: Page
-            show: true
-          - title: "Analytics & Monitoring"
-            path: /ai-management/analytics
-            category: Page
-            show: true
-          - title: "Notifications"
-            path: /ai-management/notifications
-            category: Page
-            show: true
+          - title: "Introduction"
+            category: Directory
+            show: True
+            menu:
+              - title: "Quickstart"
+                category: Page
+                path: /ai-management/ai-studio/quickstart
+                show: True
+              - title: "Core Concepts"
+                category: Page
+                path: /ai-management/ai-studio/core-concepts
+                show: True
+          - title: "Getting Started"
+            category: Directory
+            show: True
+            menu:
+              - title: "Installation (Helm/K8s)"
+                category: Page
+                path: /ai-management/ai-studio/deployment-helm-k8s
+                show: True
+              - title: "Initial Configuration"
+                category: Page
+                path: /ai-management/ai-studio/configuration
+                show: True
+          - title: "Core Features"
+            category: Directory
+            show: True
+            menu:
+              - title: "AI Gateway"
+                category: Page
+                path: /ai-management/ai-studio/proxy
+                show: True
+              - title: "AI Portal"
+                category: Page
+                path: /ai-management/ai-studio/ai-portal
+                show: True
+              - title: "Chat Interface"
+                category: Page
+                path: /ai-management/ai-studio/chat-interface
+                show: True
+              - title: "LLM Management"
+                category: Page
+                path: /ai-management/ai-studio/llm-management
+                show: True
+              - title: "LLMs"
+                category: Page
+                path: /ai-management/ai-studio/llms
+                show: True
+              - title: "Call Settings"
+                category: Page
+                path: /ai-management/ai-studio/call-settings
+                show: True
+              - title: "Tools & Extensibility"
+                category: Page
+                path: /ai-management/ai-studio/tools
+                show: True
+              - title: "Data Sources & RAG"
+                category: Page
+                path: /ai-management/ai-studio/datasources-rag
+                show: True
+              - title: "Filters & Policies"
+                category: Page
+                path: /ai-management/ai-studio/filters
+                show: True
+              - title: "Catalogs"
+                category: Page
+                path: /ai-management/ai-studio/catalogs
+                show: True
+              - title: "Apps"
+                category: Page
+                path: /ai-management/ai-studio/apps
+                show: True
+              - title: "Model Prices"
+                category: Page
+                path: /ai-management/ai-studio/model-prices
+                show: True
+          - title: "Administration"
+            category: Directory
+            show: True
+            menu:
+              - title: "User Management & RBAC"
+                category: Page
+                path: /ai-management/ai-studio/user-management
+                show: True
+              - title: "Users"
+                category: Page
+                path: /ai-management/ai-studio/users
+                show: True
+              - title: "Groups"
+                category: Page
+                path: /ai-management/ai-studio/groups
+                show: True
+              - title: "SSO Integration"
+                category: Page
+                path: /ai-management/ai-studio/sso
+                show: True
+              - title: "Secrets Management"
+                category: Page
+                path: /ai-management/ai-studio/secrets
+                show: True
+              - title: "Budget Control"
+                category: Page
+                path: /ai-management/ai-studio/budgeting
+                show: True
+              - title: "Analytics & Monitoring"
+                category: Page
+                path: /ai-management/ai-studio/analytics
+                show: True
+              - title: "Dashboard"
+                category: Page
+                path: /ai-management/ai-studio/dashboard
+                show: True
+              - title: "Notifications"
+                category: Page
+                path: /ai-management/ai-studio/notifications
+                show: True
+              - title: "API Documentation"
+                category: Page
+                path: /ai-management/ai-studio/ai-studio-swagger
+                show: True
   - title: "Developer Support"
     category: Label
     show: True

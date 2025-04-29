@@ -41,7 +41,7 @@ Administrators configure SSO providers within the Tyk AI Studio administration i
 3.  **Profile Mapping:** Configure how attributes received from the IdP (e.g., email, name, group memberships) map to Tyk AI Studio user profiles.
     *   Identify which IdP attribute contains the unique user identifier (e.g., `email`, `sub`, `preferred_username`).
     *   Map IdP attributes to Tyk AI Studio user fields (e.g., `given_name` -> First Name, `family_name` -> Last Name).
-4.  **Group Mapping (Optional but Recommended):** Configure rules to automatically assign users to Tyk AI Studio [Groups]({{< ref "ai-management/user-management" >}}) based on group information received from the IdP.
+4.  **Group Mapping (Optional but Recommended):** Configure rules to automatically assign users to Tyk AI Studio [Groups]({{< ref "ai-management/ai-studio/user-management" >}}) based on group information received from the IdP.
     *   *Example:* If the IdP sends a `groups` claim containing "Tyk AI Studio Admins", map this to automatically add the user to the "Administrators" group in Tyk AI Studio.
 5.  **Enable Provider:** Activate the configured IdP for user login.
 
