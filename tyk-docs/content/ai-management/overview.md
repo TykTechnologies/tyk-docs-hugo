@@ -1,73 +1,86 @@
 ---
 date: 2025-04-28
-title: AI Management
+title: AI management
 tags: ["Tyk AI management", "AI Studio", "Tyk MCPs"]
 description: "Tyk AI Management landing page. This page provides an overview of Tyk's AI management solutions including AI Studio and MCPs."
 ---
 
-# AI Management with Tyk
+As artificial intelligence becomes increasingly integrated into enterprise systems, organisations need structured, secure, and governed approaches to manage AI capabilities effectively. Tyk's AI management solutions are designed to help enterprises integrate, control, and scale AI applications while maintaining compliance and security.
 
-As artificial intelligence transforms the business landscape, organizations face both tremendous opportunities and significant challenges. Tyk's AI Management solutions empower enterprises to harness the full potential of AI while maintaining robust governance, security, and control.
+## Secure AI for the enterprise
 
-Tyk offers comprehensive AI management capabilities as follows:
+Tyk's AI management solutions address key challenges in AI governance, security, and integration. They enable organisations to deploy AI capabilities while maintaining oversight, managing risks, and meeting enterprise standards.
 
-## [AI Studio](/ai-management/ai-studio/overview)
+## AI integration architecture and its importance
 
-Tyk AI Studio is a comprehensive platform designed specifically for platform teams to manage and deploy AI applications with confidence. It enables organizations to:
+Integrating AI into existing systems requires a structured architecture that connects models, APIs, and specialised tools securely and efficiently.
 
-- **Centralize governance** of AI systems with role-based access control and compliance features
-- **Optimize costs** through usage monitoring, budgeting, and performance analytics
-- **Enhance security** with a unified AI gateway as a single point of control
-- **Streamline development** by providing curated AI service catalogs to developers
-- **Enable collaboration** through intuitive AI chat interfaces
+A managed AI integration architecture provides:
 
-AI Studio helps organizations avoid the pitfalls of "Shadow AI" by providing centralized management of credentials, logging, and access controls for all AI interactions across the enterprise.
+- **Standardisation** to ensure interoperability across AI components
+- **Security** across AI workflows and data interactions
+- **Governance** to monitor and control AI usage and data
+- **Scalability** for enterprise-wide deployment and increasing complexity
+- **Interoperability** across vendors and services
 
-[Learn more about AI Studio →](/ai-management/ai-studio/overview)
+Without a structured approach, organisations risk fragmented solutions, security gaps, and unmanaged AI usage ("shadow AI"). By integrating AI into existing systems, enterprises can achieve a more secure and efficient approach to AI management.
 
-## [Tyk MCPs (Model Context Protocol)](/ai-management/tyk-mcps/overview)
+## Tyk’s AI management capabilities
 
-Tyk Model Context Protocol (MCP) servers extend your AI capabilities by connecting to external services and resources. With MCPs, you can:
+Tyk provides two key solutions for AI management:
 
-- **Integrate seamlessly** with external AI providers and services
-- **Build custom tools** that AI agents can use to perform tasks
-- **Access specialized resources** including files, APIs, and system information
-- **Create reusable components** for AI applications
-- **Enhance AI interactions** with contextual information and capabilities
+### [AI Studio]({{< ref "ai-management/ai-studio/overview" >}})
 
-MCPs follow a standardized protocol that allows Tyk to communicate with external services, expanding the functionality available to your AI applications. This enables powerful use cases such as:
+Tyk AI Studio is a platform for managing and deploying AI applications securely and at scale. It provides:
 
-- Creating AI assistants that can search your company's documentation
-- Building agents that can interact with your databases and APIs
-- Developing specialized tools for industry-specific AI applications
+- **Centralised governance** with role-based access control and compliance tracking
+- **Cost management** through usage monitoring and budgeting tools
+- **Security features** including unified access controls and credential management
+- **Developer enablement** via curated AI service catalogues
+- **Collaboration tools** through intuitive AI interfaces
 
-[Learn more about Tyk MCPs →](/ai-management/tyk-mcps/overview)
+AI Studio supports enterprises in reducing unauthorised AI usage by providing central management across all AI interactions.
 
-## Choosing the Right Solution
+[Explore AI Studio]({{< ref "ai-management/ai-studio/overview" >}})
 
-Both AI Studio and MCPs can be used independently or together, depending on your organization's needs:
+### [Tyk MCPs]({{< ref "ai-management/tyk-mcps/overview" >}})
 
-- **AI Studio** provides a complete platform for enterprise AI management with built-in governance, monitoring, and collaboration features.
-- **Tyk MCPs** offer flexibility and extensibility for connecting your AI systems to external services and resources.
+The [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) provides a standardised method for AI components to interact with external resources.
 
-For most enterprise deployments, we recommend starting with AI Studio and integrating MCPs as needed to extend functionality for specific use cases.
+With MCPs, organisations can:
 
-## Getting Started
+- **Integrate securely** with external AI providers and services
+- **Build custom tools** for AI agents
+- **Access resources** such as files, APIs, and databases
+- **Enhance AI workflows** with contextual information
 
-To begin your AI management journey with Tyk:
+MCPs help expand AI system functionality by enabling secure, standardised interactions between services.
 
-1. Explore the [AI Studio documentation](/ai-management/ai-studio/overview) to understand its capabilities
-2. Learn about [Tyk MCPs](/ai-management/tyk-mcps/overview) and how they can extend your AI systems
-3. [Request a demo](https://tyk.io/ai-demo/) to see Tyk's AI management solutions in action
+[Learn more about Tyk MCPs]({{< ref "ai-management/tyk-mcps/overview" >}})
 
-## Enterprise Benefits
+### How AI Studio and MCPs work together
 
-Organizations implementing Tyk's AI management solutions realize significant benefits:
+Tyk AI Studio and Tyk MCPs are complementary:
 
-- **Reduced risk** through centralized governance and enhanced security
-- **Improved efficiency** by streamlining AI workflows and development
-- **Better cost control** with usage monitoring and budgeting features
-- **Increased innovation** by democratizing access to AI capabilities
-- **Stronger compliance** with data protection regulations and industry standards
+- **AI Studio** offers governance, monitoring, and development tooling for AI management.
+- **Tyk MCPs** provide secure connections to external services and APIs.
 
-Tyk's AI management solutions help you accelerate AI adoption while maintaining the governance and control necessary for enterprise deployments.
+Together, they create a flexible, governed framework for managing AI applications at scale.
+
+## Next steps
+
+To start using Tyk's AI management capabilities:
+
+1. Explore the [AI Studio documentation]({{< ref "ai-management/ai-studio/overview" >}})
+2. Review [Tyk MCPs]({{< ref "ai-management/tyk-mcps/overview" >}}) and how they extend AI systems
+3. [Request a demo](https://tyk.io/ai-demo/) to see the platform in action.
+
+## Key outcomes
+
+Tyk's AI management solutions are designed to:
+
+- **Reduce risk** through centralised access and monitoring
+- **Improve efficiency** across AI development workflows
+- **Enhance cost control** with usage and budgeting insights
+- **Support compliance** with data protection and security standards
+- **Enable scalable architectures** based on open protocols

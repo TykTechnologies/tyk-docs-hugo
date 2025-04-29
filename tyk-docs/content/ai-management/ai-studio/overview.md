@@ -7,169 +7,98 @@ aliases:
   - api-management/ai-management/overview
 ---
 
-**AI Management for Platform Teams**
-
-We are excited to introduce our product for AI management - Tyk AI Studio
-
-Tyk AI Studio enables platform teams to:
-- Centralise access credentials to AI vendors, be that commercial offerings or in-house ones
-- Log and measure how AI is being used internally
-- Build and release Chatbots for internal Slack channels
-- Ingest data into a knowledge corpus, with siloed access settings
-- Build AI functions (Smart Functions) as a Service for common, single-task automations (e.g. summarise this article) or modulated pass-through to upstream AI’s with query inspection to provide context-aware access control.
-- Script complex multi-modal assistants that can selectively determine which AI vendor, model, and data set to use depending on the nature of the user input
-- Full-blown RBAC to democratise access to LLMs without impinging on security obligations
-
-For more information and demo requests visit [Tyk AI Studio](https://tyk.io/tyk-ai-studio/)
-
-## MCP Integration
-
-Tyk AI Studio seamlessly integrates with Model Context Protocol (MCP), providing powerful capabilities for extending AI functionality:
-
-- **Remote MCP catalogue & server support** - AI Studio exposes a remote MCP server, making it simple for enterprises to securely integrate their internal APIs and tools centrally, without relying on local workarounds.
-  
-- **Secure local MCP server generator** - For development or isolated environments, AI Studio includes an MCP generator that converts OpenAPI specs into locally installable MCP servers, proxied through the Tyk AI Gateway for observability and policy enforcement.
-
-These MCP capabilities enable your organization to build a structured, secure AI supply chain while maintaining governance and control over how AI interacts with your systems.
-
----
+Tyk AI Studio is a comprehensive platform that enables platform teams to manage and deploy AI applications with enterprise-grade governance, security, and control.
 
 ## Key Features
 
-{{< feature-cards >}}
+{{< feature-cards dataFile="ai-studio-features" >}}
 
-## AI's promise vs. the reality:
-Stellar efficiency, stumbling adoption
+Tyk AI Studio enables platform teams to:
+- Centralise access credentials to AI vendors, including commercial and in-house offerings
+- Log and measure AI usage across the organization
+- Build and release Chatbots for internal collaboration
+- Ingest data into a knowledge corpus with siloed access settings
+- Create AI functions as a service for common automations
+- Script complex multi-modal assistants that intelligently select which AI vendor, model, and data set to use
+- Implement role-based access control to democratise LLM access while maintaining security
 
-AI has transformed business operations, presenting significant potential when used effectively. However, [74% of companies](https://www.bcg.com/press/24october2024-ai-adoption-in-2024-74-of-companies-struggle-to-achieve-and-scale-value) struggle to fully realize its value. Despite the opportunities AI provides, it also introduces risks and challenges for CIOs and CTOs including:
+## Enterprise AI Challenges
 
-* **Shadow AI**: Unauthorized tools running without oversight.
-* **Data privacy and compliance**: Balancing innovation with regulations like GDPR and CCPA.
-* **Security and access control**: Maintaining robust authentication and role-based access.
-* **Spiralling costs**: Unlimited AI consumption leading to high expenses due to uncontrolled token usage without rate limiting.
+Organizations implementing AI face several key challenges:
 
-## Integrate AI with confidence and avoid chaos
+* **Shadow AI**: Unauthorized tools running without governance or oversight
+* **Data privacy and compliance**: Meeting regulatory requirements while enabling innovation
+* **Security and access control**: Implementing proper authentication and authorization
+* **Cost management**: Controlling expenses from unmonitored AI usage
 
-Companies want to use AI, and when properly integrated and governed, it can drive huge revenue growth. But adopting AI must not outpace internal governance. It has to integrate with existing data services to enable innovation while maintaining strong governance. Your AI integration also needs to avoid compliance risks, support effective cost management and deliver a user-friendly developer experience.
+## Integrate AI with Confidence
 
-**Trusted by global enterprises**
+Tyk AI Studio helps organizations harness AI's potential while ensuring proper governance, security, compliance, and control. Purpose-built for enterprises, this AI gateway and management solution enables seamless governance that overcomes the risks and challenges of AI adoption.
 
-![Company Logos](/company-logos.svg)
+{{< youtube-seo id="J2BY7NYRk7U" title="Tyk AI Studio" >}}
 
-<div class="ai-studio-section">
-<h2>Introducing Tyk AI Studio</h2>
-<p>Tyk AI Studio helps organizations harness AI's potential while ensuring proper governance, security, compliance, and control. Purpose-built for enterprises, this AI gateway and management solution enables seamless governance that overcomes the risks and challenges of AI adoption.</p>
+## Solution Components
 
-<div class="video-container">
-  <iframe 
-    src="https://www.youtube.com/embed/J2BY7NYRk7U?si=tpxmeSBFcMfKPEuV&amp;controls=1" 
-    title="YouTube video player" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    allowfullscreen>
-  </iframe>
-</div>
+Tyk AI Studio provides a comprehensive suite of capabilities to manage, govern, and interact with AI across your organization:
 
-### Tooling, processes, and governance for peace of mind
+### Centralized AI management
 
-Tyk AI Studio provides an AI gateway and comprehensive suite of capabilities to manage, govern, and interact with AI across your organization:
+Unify and control AI usage across your organization:
+- Govern AI with role-based access control, rate limiting and audit logging
+- Monitor usage, costs, budgets, and performance in real time
+- Manage how LLMs are accessed and used, with an AI gateway as a single point of control
+- Ensure compliance with global privacy regulations through customizable data flow management
 
-<div class="feature-detail">
-  <div class="text-content">
-    <h4>Centralized AI management</h4>
-    <p>Unify and control AI usage across your organization.</p>
-    <ul>
-        <li>Govern AI with role-based access control, rate limiting and audit logging.</li>
-        <li>Monitor usage, costs, budgets, and performance in real time.</li>
-        <li>Manage how LLMs are accessed and used, with an AI gateway as a single point of control.</li>
-        <li>Ensure compliance with global privacy regulations through customizable data flow management.</li>
-    </ul>
-  </div>
-  <div class="image-content">
-    <img src="/centralized-management.webp" alt="Tyk AI Studio Management Dashboard">
-  </div>
-</div>
+### AI Gateway
 
-<div class="feature-detail">
-  <div class="text-content">
-    <h4>AI gateway</h4>
-    <p>Seamlessly connect to AI tools and models.</p>
-    <ul>
-        <li>Proxy to large language models (LLMs) and integrate custom data models and tools.</li>
-        <li>Use the AI gateway to enable secure, scalable access to AI services across teams.</li>
-        <li>Track usage statistics, cost breakdowns, and tool utilization to optimize resources.</li>
-    </ul>
-  </div>
-  <div class="image-content">
-    <img src="/ai-gateway.webp" alt="Tyk AI Gateway">
-  </div>
-</div>
+Seamlessly connect to AI tools and models:
+- Proxy to large language models (LLMs) and integrate custom data models and tools
+- Use the [AI Gateway]({{< ref "ai-management/ai-studio/proxy" >}}) to enable secure, scalable access to AI services across teams
+- Track usage statistics, cost breakdowns, and tool utilization to optimize resources
 
-<div class="feature-detail">
-  <div class="text-content">
-    <h4>AI portal</h4>
-    <p>Empower developers with a curated AI service catalog.</p>
-    <ul>
-        <li>Simplify access to AI tools and services through a unified portal.</li>
-        <li>Enable seamless integration with internal systems and external workflows.</li>
-        <li>Accelerate innovation by providing developers with the tools they need to build faster.</li>
-    </ul>
-  </div>
-  <div class="image-content">
-    <img src="/ai-portal.webp" alt="Tyk AI Portal">
-  </div>
-</div>
+### AI Portal
 
-<div class="feature-detail">
-  <div class="text-content">
-    <h4>AI chat</h4>
-    <p>Bring AI-powered collaboration to every user.</p>
-    <ul>
-        <li>Deliver intuitive chat interfaces for direct interaction with AI tools and data sources.</li>
-        <li>Enable teams to access AI-driven insights through a unified, secure chat experience.</li>
-        <li>Foster collaboration and innovation across your organization.</li>
-    </ul>
-  </div>
-  <div class="image-content">
-    <img src="/ai-chat.webp" alt="Tyk AI Chat">
-  </div>
-</div>
-</div>
+Empower developers with a curated AI service catalog:
+- Simplify access to AI tools and services through a unified portal
+- Enable seamless integration with internal systems and external workflows
+- Accelerate innovation by providing developers with the tools they need to build faster
 
-<div class="accelerate-adoption-section">
-  <div class="container"> 
-    <h3>Accelerate adoption, scale usage, succeed without risk</h3>
-    <p class="product-features-intro">Tyk AI Studio empowers organizations to adopt AI securely and efficiently, delivering a host of benefits:</p>
-    <ul class="product-ul">
-      <li class="product-li"><span class="bold-txt">Centralized governance and control:</span> Consistency at the core of your business for enhanced security, compliance, troubleshooting and auditing.</li>
-      <li class="product-li"><span class="bold-txt">Strengthened security:</span> Enjoy the peace of mind that stems from strict access controls, secure interactions and region-specific compliance.</li>
-      <li class="product-li"><span class="bold-txt">Simplified workflows:</span> Reap the rewards of reduced complexity and enhanced efficiency while supporting your developers and less technical users to work with multiple LLMs and tools.</li>
-      <li class="product-li"><span class="bold-txt">Trusted data privacy:</span> Trust in your rigorous compliance with data protection standards, reducing your risk of reputational, operational and financial damage.</li>
-      <li class="product-li"><span class="bold-txt">Seamless integration:</span> Enhance workflows in customer support, development, and marketing while equipping your teams with trusted AI tools for outstanding efficiency.</li>
-      <li class="product-li"><span class="bold-txt">Cost optimization:</span> Use your AI gateway to benefit from control over expenses and accountability, enforcing smarter budgets.</li>
-    </ul>
-  </div>
-</div>
+### AI Chat
 
-<div class="real-world-apps-section">
-  <div class="container">
-    <h3>Real-world applications</h3>
-    <p class="product-features-intro">Proxying LLM traffic through an AI gateway delivers control, visibility, and scalability. It ensures you can use LLMs effectively, securely, and cost-efficiently, as these real-world uses highlight:</p>
-    <ul class="product-ul">
-      <li class="product-li"><span class="bold-txt">Interact with your APIs:</span> Connect up your API management to open up API interaction to wider teams.</li>
-      <li class="product-li"><span class="bold-txt">Banking and financial services:</span> Ensure only anonymized customer data is sent to LLMs, tracking usage by department to manage costs.</li>
-      <li class="product-li"><span class="bold-txt">Software development:</span> Leverage AI for code suggestions and issue tracking in Jira.</li>
-      <li class="product-li"><span class="bold-txt">Data governance:</span> Audit and secure AI interactions to meet regulatory standards.</li>
-      <li class="product-li"><span class="bold-txt">Healthcare:</span> Route LLM traffic through an AI gateway to comply with HIPAA, protecting patient data while enabling AI-driven insights.</li>
-      <li class="product-li"><span class="bold-txt">E-commerce:</span> Integrate LLMs with product catalogs via a gateway, allowing employees to query inventory or sales data through a chat interface.</li>
-    </ul>
-  </div>
-</div>
+Bring AI-powered collaboration to every user:
+- Deliver intuitive chat interfaces for direct interaction with AI tools and data sources
+- Enable teams to access AI-driven insights through a unified, secure chat experience
+- Foster collaboration and innovation across your organization
 
-<div class="pre-empt-chaos-section">
-  <div class="container">
-    <h3>Pre-empt chaos, avoid disruption and adopt AI now</h3>
-    <p>AI adoption is inevitable. With Tyk AI Studio, governance isn’t an afterthought—it’s built into every layer of your AI strategy.</p>
-    <a href="https://tyk.io/ai-demo/" class="cta-button">Request a demo</a>
-  </div>
-</div>
+## Benefits
+
+Tyk AI Studio empowers organizations to adopt AI securely and efficiently, delivering:
+
+- **Centralized governance and control:** Consistency at the core of your business for enhanced security, compliance, troubleshooting and auditing
+- **Strengthened security:** Peace of mind from strict access controls, secure interactions and region-specific compliance
+- **Simplified workflows:** Reduced complexity and enhanced efficiency supporting developers and less technical users to work with multiple LLMs and tools
+- **Trusted data privacy:** Rigorous compliance with data protection standards, reducing risk of reputational, operational and financial damage
+- **Seamless integration:** Enhanced workflows in customer support, development, and marketing with trusted AI tools
+- **Cost optimization:** Control over expenses and accountability, enabling smarter budgets
+
+## Use Cases
+
+Proxying LLM traffic through the AI Gateway delivers control, visibility, and scalability across various scenarios:
+
+- **Interact with your APIs:** Connect your API management to enable API interaction for wider teams
+- **Banking and financial services:** Ensure only anonymized customer data is sent to LLMs, tracking usage by department to manage costs
+- **Software development:** Leverage AI for code suggestions and issue tracking in Jira
+- **Data governance:** Audit and secure AI interactions to meet regulatory standards
+- **Healthcare:** Route LLM traffic through an AI gateway to comply with HIPAA, protecting patient data while enabling AI-driven insights
+- **E-commerce:** Integrate LLMs with product catalogs, allowing employees to query inventory or sales data through a chat interface
+
+## MCP servers in AI Studio
+
+[Remote MCP server capabilities]({{<ref "ai-management/ai-studio/overview#mcp-for-enterprise-use" >}}) - AI Studio can expose a remote MCP server, making it simple for enterprises to connect their internal APIs and tools securely and centrally, without relying on makeshift solutions or unauthorized local installations.
+
+For more details about Model Context Protocol (MCP) integration, please visit the [Tyk MCPs overview]({{< ref "ai-management/tyk-mcps/overview" >}}) page.
+
+</br>
+{{< button_left href="https://tyk.io/ai-demo" color="green" content="Request a demo" >}}
+
+

@@ -5,83 +5,110 @@ tags: ["AI MCP", "MCPs in Tyk", "Model Context Protocol"]
 description: "A comprehensive guide to Model Context Protocol (MCP) servers in Tyk and how they extend AI capabilities."
 ---
 
-# Tyk Model Context Protocol (MCP) Servers
+## MCP capabilities
+
+[Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) servers help AI systems securely interact with external services and tools. They establish structured, governed connections that integrate seamlessly with your Tyk environment.
 
 ## What are MCPs?
 
-Model Context Protocol (MCP) servers are a powerful way to extend the capabilities of AI systems by connecting them to external services, tools, and resources. MCP is a critical component in building a structured AI supply chain for enterprises, with both OpenAI and Google pledging support for this standard in their models and clients.
+Model Context Protocol (MCP) servers extend AI systems by exposing external services, tools, and resources in a standardised way.
 
-In the Tyk ecosystem, MCPs enable AI agents to:
+With Tyk MCPs, your AI agents can:
 
 - Access external data sources and APIs
-- Execute specialized tools and functions
+- Execute specialised tools and functions
 - Interact with system resources
 - Retrieve contextual information
 
-MCPs follow a standardized protocol that allows for seamless communication between AI agents and external systems, providing a structured way to expand what your AI applications can do while maintaining governance and control.
+MCPs use a defined protocol to connect AI agents with external systems, expanding AI capabilities while maintaining governance and control.
 
-## How MCPs Work
+Tyk MCPs adhere to the open MCP specification and extend it with enterprise-grade features, including enhanced security, governance, and monitoring capabilities.
 
-MCPs operate as standalone servers that implement the Model Context Protocol. When an AI agent needs to perform a task that requires external resources or functionality, it can:
+## Why standardisation matters
 
-1. Connect to an MCP server
-2. Request available tools and resources
-3. Execute tools and access resources as needed
-4. Process the results and continue its operations
+The MCP specification standardises how AI agents discover and interact with external capabilities. This helps:
 
-The MCP acts as a bridge between the AI and the external world, handling authentication, resource access, and tool execution in a secure and controlled manner.
+- **Simplify integration** across diverse systems
+- **Enhance security** through consistent architecture
+- **Promote interoperability** with different vendor solutions
+- **Improve governance** when managing AI systems at scale
 
-## Core Components of MCPs
+## How MCPs work
 
-### Tools
+MCPs operate as independent servers using the Model Context Protocol. When an AI agent needs external resources, the workflow typically follows:
 
-Tools are executable functions that an AI agent can use to perform specific tasks. Each tool has:
+1. The agent queries the MCP server for available tools and resources.
+2. The agent selects a tool based on metadata and schema descriptions.
+3. The agent invokes a tool with structured input.
+4. The MCP server processes the request and returns structured output.
 
-- A unique identifier
-- An input schema defining required parameters
-- A description of its functionality
-- A function that performs the actual operation
+MCP servers act as bridges between AI applications and external systems, securely managing authentication, access, and execution.
 
-Examples of tools include:
+## MCP for Enterprise use {#mcp-for-enterprise-use}
 
-- Searching documentation
-- Querying databases
-- Calling external APIs
-- Performing calculations
-- Generating visualizations
+Tyk extends the MCP model for enterprise deployments with the following capabilities:
 
-### Resources
+- **Remote MCP catalogues and server support** – Expose internal APIs and tools to AI assistants securely without requiring local installations.
+- **Secure local MCP server deployment** – Deploy MCP servers within controlled environments, integrated with Tyk AI Gateway for monitoring and governance.
+- **Standardised protocols** – Maintain interoperability standards for seamless integration into existing workflows.
 
-Resources represent data sources that an AI agent can access for context or information. Resources are identified by URIs and can include:
+These features enable enterprises to scale AI integrations securely while ensuring compliance and operational control.
 
-- Files and documents
-- API responses
-- Database records
-- System information
-- Configuration settings
+## Getting started with Tyk MCPs
 
-## Getting Started with Tyk MCPs
+### Ready-to-use MCP options {#ready-to-use-mcp-options}
 
-### Setting Up an MCP Server
+Tyk offers several ready-to-use MCP integrations:
 
-To set up an MCP server, you can use one of Tyk's pre-built MCP implementations or create your own custom server. Basic steps include:
+- **[API to MCP]({{< ref "ai-management/tyk-mcps/api-to-mcp" >}})** – Convert existing APIs (via OpenAPI/Swagger specs) into MCP-accessible tools.
+- **[Dashboard API to MCP]({{< ref "ai-management/tyk-mcps/dashboard-api-to-mcp" >}})** – Expose the Tyk Dashboard API for management and monitoring.
+- **[Tyk Docs MCP]({{< ref "ai-management/tyk-mcps/tyk-docs-mcp" >}})** – Provide AI access to searchable Tyk documentation.
 
-1. Choose or create an MCP server implementation
-2. Configure the server with the tools and resources you want to expose
-3. Deploy the server so it's accessible to your AI applications
-4. Connect your AI agents to the MCP server
+### Setting up an MCP server
 
-### Available MCP Implementations
+To set up your own MCP server:
 
-Tyk provides several MCP implementations that you can use or adapt:
+1. Choose an MCP implementation or build a custom one.
+2. Define available tools and resources.
+3. Deploy the server in a location accessible by your AI agents.
+4. Register the server in AI Studio for usage.
 
-- **[api-to-mcp](/ai-management/tyk-mcps/api-to-mcp)**: Convert existing APIs to MCP-compatible endpoints
-- **[dashboard-api-tp-mcp](/ai-management/tyk-mcps/dashboard-api-to-mcp)**: Connect to Tyk Dashboard API
-- **[tyk-docs-mcp](/ai-management/tyk-mcps/tyk-docs-mcp)**: Search and retrieve information from documentation
+### Using MCPs with IDEs
 
-### Configuring an MCP Server
+MCPs can be integrated with various IDE AI assistants to enhance their capabilities. Here's how to connect Tyk MCPs to common development environments:
 
-MCP servers are configured with JSON files that define the available tools and resources. A typical configuration looks like:
+#### VSCode with Cline
+
+To add a Tyk MCP server to Cline in VSCode:
+
+1. Open your VSCode settings (File > Preferences > Settings)
+2. Search for "Cline" settings
+3. Locate the "MCP Servers" setting
+4. Add a new MCP server entry:
+
+```json
+"cline.mcpServers": [
+  {
+    "name": "tyk-docs-mcp",
+    "command": "npx",
+    "args": ["-y", "@tyk-technologies/docs-mcp@latest"]
+  },
+  {
+    "name": "tyk-api-mcp",
+    "command": "npx",
+    "args": ["-y", "@tyk-technologies/api-to-mcp", "--spec", "https://your-api-spec.json"]
+  }
+]
+```
+
+For installation instructions and more detailed configuration options, refer to the GitHub repositories for each MCP:
+- [API to MCP](https://github.com/TykTechnologies/api-to-mcp)
+- [Tyk Docs MCP](https://github.com/TykTechnologies/docs-mcp)
+- [Dashboard API to MCP](https://github.com/TykTechnologies/dashboard-api-to-mcp)
+
+### Configuring an MCP server
+
+MCP servers are configured using JSON files that define the tools and resources they expose. A basic example:
 
 ```json
 {
@@ -116,79 +143,4 @@ MCP servers are configured with JSON files that define the available tools and r
 }
 ```
 
-## Using MCPs with Tyk AI Studio
-
-MCPs integrate seamlessly with Tyk AI Studio, enhancing the capabilities of your AI applications. To use an MCP with AI Studio:
-
-1. Deploy your MCP server
-2. Register the MCP server with AI Studio
-3. Configure access controls and permissions
-4. Use the MCP tools and resources in your AI applications
-
-This integration allows you to leverage both the governance and control features of AI Studio with the extensibility and flexibility of MCPs.
-
-## Common Use Cases
-
-### Documentation Search
-
-Create an MCP that allows AI agents to search your organization's documentation, making it easier for them to provide accurate and contextual responses.
-
-### API Integration
-
-Build MCPs that connect to your internal APIs, allowing AI agents to retrieve data and perform operations within your systems.
-
-### Custom Tool Development
-
-Develop specialized tools for your industry or use case, such as financial calculators, medical diagnosis assistants, or engineering analysis tools.
-
-### Content Generation
-
-Implement MCPs that provide access to templates, brand guidelines, and content repositories to assist with content generation tasks.
-
-## Best Practices
-
-### Security
-
-- Implement proper authentication and authorization for your MCP servers
-- Validate and sanitize all inputs from AI agents
-- Limit access to sensitive resources and tools
-- Monitor and audit MCP usage
-
-### Performance
-
-- Optimize tool implementations for speed and efficiency
-- Cache frequently accessed resources
-- Implement rate limiting to prevent overload
-- Monitor server performance and scale as needed
-
-### Governance
-
-- Document all tools and resources comprehensively
-- Maintain version control for your MCP configurations
-- Implement logging and auditing for compliance
-- Establish clear ownership and maintenance responsibilities
-
-## Advanced Topics
-
-### Custom MCP Development
-
-Learn how to develop custom MCP servers tailored to your specific needs, including:
-
-- Creating custom tool implementations
-- Integrating with proprietary systems
-- Handling specialized authentication requirements
-- Optimizing for specific use cases
-
-### MCP Federation
-
-Discover how to use multiple MCP servers together to create a federated network of capabilities for your AI applications.
-
-### MCP Versioning and Lifecycle Management
-
-Best practices for managing MCP versions, deprecating old functionality, and introducing new capabilities.
-
-## Conclusion
-
-Tyk MCPs provide a powerful way to extend the capabilities of your AI applications by connecting them to external services, tools, and resources. By implementing MCPs, you can create more capable, contextual, and useful AI solutions that integrate seamlessly with your existing systems and workflows.
-
-For more information on implementing MCPs, refer to our [GitHub repositories](https://github.com/TykTechnologies/docs-mcp) and reach out to the Tyk team for support with your specific use cases.
+For more information on implementing MCPs, refer to our [GitHub docs-mcp repository](https://github.com/TykTechnologies/docs-mcp) or [contact the Tyk team](https://tyk.io/contact/) do thiscuss your specific use cases.

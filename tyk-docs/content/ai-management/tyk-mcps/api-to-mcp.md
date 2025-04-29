@@ -1,151 +1,211 @@
 ---
-title: API to MCP
+title: API to MCP in Tyk Gateway
 date: 2025-04-28
 tags: ["AI MCP", "API-to-MCP", "Tyk AI MCP"]
-description: ""
+description: "Learn how to transform your existing APIs into MCP-compatible tools using Tyk's API to MCP solution."
 ---
-
-## Introduction
-
-API to MCP is a powerful tool that creates Model Context Protocol (MCP) servers from OpenAPI/Swagger specifications. It enables AI assistants to interact with your APIs by transforming standard OpenAPI specifications into MCP-compatible tools that AI models can use directly.
 
 ## Overview
 
-The API to MCP tool acts as a bridge between your existing REST APIs and AI assistants. It dynamically loads OpenAPI specifications and exposes the API operations as MCP tools at runtime, allowing AI models to:
+**API to MCP** enables the transformation of OpenAPI specifications into MCP-compatible tool definitions. It allows AI assistants to work with your existing APIs without requiring changes to your backend services.
 
-- Understand your API's capabilities
-- Execute API operations with proper parameters
-- Process API responses in a structured way
+### Key Benefits
 
-This enables seamless integration of your existing APIs with AI assistants without requiring any changes to your API implementation.
+- Reuse existing APIs without modification
+- Provide standardised access to AI systems
+- Apply governance and access controls
+- Avoid building custom AI interfaces
+- Based on open standards (OpenAPI, MCP)
 
-## Key Features
+### Requirements
 
-- **Dynamic OpenAPI Loading**: Load specifications from local files or HTTP/HTTPS URLs
-- **OpenAPI Overlay Support**: Apply overlays to customize specifications
-- **Flexible Operation Filtering**: Include/exclude specific operations using glob patterns
-- **Comprehensive Parameter Handling**: Preserves formats and includes metadata
-- **Authentication Support**: Handles API keys, OAuth tokens, and other security schemes
-- **Custom Headers**: Add custom headers to all API requests
-- **MCP Extensions**: Support for custom `x-mcp` extensions to override tool names and descriptions
-- **Multiple Integration Options**: Works with Claude Desktop, Cursor, Vercel AI SDK, and other MCP-compatible environments
+- Valid OpenAPI (Swagger) specification
+- Accessible, live API endpoint
+
+---
+
+## Quick Start
+
+Follow these steps to connect an OpenAPI specification to an AI assistant using API to MCP.
+
+### Prerequisites
+
+- Node.js installed
+- A valid OpenAPI/Swagger specification
+- Running API service
+- AI assistant with MCP support (e.g., [Claude](https://claude.ai/), [VS Code with Cline](https://marketplace.visualstudio.com/items?itemName=anthropic.anthropic-vscode), [Cursor](https://cursor.sh/))
+
+### Step-by-Step Guide
+
+1. Run *API to MCP* tool with your API specification::
+   ```bash
+   npx -y @tyk-technologies/api-to-mcp --spec=https://petstore3.swagger.io/api/v3/openapi.json
+   ```
+
+2. Configure your AI assistant:
+   - For Claude Desktop: Add the MCP server to its configuration settings.
+
+3. Ask the AI to perform an operation (e.g., "List all pets").
+
+---
+
+## How It Works
+
+API to MCP serves as a middleware that translates OpenAPI specifications into tools that AI assistants can discover and invoke via MCP.
+
+```mermaid
+graph TD
+    A[OpenAPI Specification] -->|Load & Parse| B[API to MCP Tool]
+    C[OpenAPI Overlays] -->|Optional| B
+    B -->|Generate| D[MCP Server]
+    D -->|Expose API Operations as| E[MCP Tools]
+    F[AI Assistant] -->|Discovers & Uses| E
+    E -->|Executes| G[Your REST API]
+    G -->|Returns Data| E
+    E -->|Formats Response| F
+```
+
+---
+
+## Use Cases
+
+- **AI-powered API access**: Allow AI to discover and invoke APIs automatically
+- **Chatbot integration**: Extend chatbots with backend capabilities
+- **Automated documentation**: Use AI to generate contextual docs
+- **AI-driven testing**: Let AI validate and explore APIs
+- **Workflow automation**: Connect AI with business systems
+
+---
+
+## Jobs-To-Be-Done (JTBD)
+
+### Enable AI Access to Existing APIs
+
+Expose your APIs to AI assistants using OpenAPI specs—no code changes needed.
+
+### Standardise Interactions
+
+Use MCP tool definitions to unify how AI interacts with multiple services.
+
+### Apply Governance
+
+Control which operations are exposed and how they are used.
+
+### Enhance Discovery
+
+Allow AI assistants to auto-discover available operations and metadata.
+
+### Simplify Testing
+
+Leverage natural language to generate test requests and analyse responses.
+
+---
+
+## Best Practices
+
+- **Start small**: Begin with safe, limited API access
+- **Whitelist/Blacklist**: Filter API operations carefully
+- **Secure headers**: Add auth headers to protect APIs
+- **Monitor usage**: Observe AI interaction patterns
+- **Version specs**: Use version control for OpenAPI files
+- **Use env vars**: Avoid hardcoding secrets
+- **Test safely**: Validate before production
+
+---
+
+## FAQs
+
+**Can I use non-REST APIs?**  
+Not yet—OpenAPI-based REST APIs are supported. gRPC and GraphQL support is planned.
+
+**Which AI assistants are supported?**  
+Any that support MCP: Claude, Cursor, Cline, and others.
+
+**How is authentication handled?**  
+Via env vars or config. Use API keys, OAuth, or headers.
+
+**Can I restrict access to specific endpoints?**  
+Yes—use whitelists/blacklists in your config or CLI flags.
+
+---
+
+## Troubleshooting
+
+**"Command not found"**  
+Try `npx @tyk-technologies/api-to-mcp` to avoid installation issues.
+
+**MCP server doesn't start**  
+Check Node.js version and OpenAPI validity.
+
+**AI can't find tools**  
+Confirm the MCP server is registered correctly in your assistant.
+
+**Requests fail**  
+Check credentials, API URL, and endpoint health.
+
+---
 
 ## Installation
 
-### Global Installation
+### Global
 
 ```bash
-npm install -g @tyktechnologies/api-to-mcp
+npm install -g @tyk-technologies/api-to-mcp
 ```
 
-### Project Installation
+### Project
 
 ```bash
-npm install @tyktechnologies/api-to-mcp
+npm install @tyk-technologies/api-to-mcp
 ```
-
-## Usage
 
 ### Basic Usage
 
 ```bash
-# Using npx (no installation required)
-npx @tyktechnologies/api-to-mcp --spec=https://petstore3.swagger.io/api/v3/openapi.json
+# No install needed
+npx @tyk-technologies/api-to-mcp --spec=https://petstore3.swagger.io/api/v3/openapi.json
 
 # If installed globally
-api-to-mcp --spec=./path/to/openapi.json
+tyk-api-to-mcp --spec=./path/to/openapi.json
 ```
 
-### Configuration Options
+---
 
-Configuration can be provided via command-line arguments, environment variables, or a JSON configuration file.
+## Configuration
 
-#### Command Line Options
+### CLI Options
 
 ```bash
-# Basic usage with OpenAPI spec
-api-to-mcp --spec=./path/to/openapi.json
-
-# Apply overlays
-api-to-mcp --spec=./path/to/openapi.json --overlays=./path/to/overlay.json,https://example.com/api/overlay.json
-
-# Filter operations
-api-to-mcp --spec=./path/to/openapi.json --whitelist="getPet*,POST:/users/*"
-
-# Specify target API URL
-api-to-mcp --spec=./path/to/openapi.json --targetUrl=https://api.example.com
-
-# Add custom headers
-api-to-mcp --spec=./path/to/openapi.json --headers='{"X-Api-Version":"1.0.0"}'
-
-# Disable X-MCP header
-api-to-mcp --spec=./path/to/openapi.json --disableXMcp
+tyk-api-to-mcp --spec=./api.json   --overlays=./overlay.json   --whitelist="getPet*,POST:/users/*"   --targetUrl=https://api.example.com
 ```
 
-#### Environment Variables
+### Environment Variables
 
 ```bash
-# Set OpenAPI spec path
-export OPENAPI_SPEC_PATH=./path/to/openapi.json
-
-# Set overlay paths
-export OPENAPI_OVERLAY_PATHS=./path/to/overlay1.json,./path/to/overlay2.json
-
-# Set target API URL
+export OPENAPI_SPEC_PATH=./api.json
 export TARGET_API_BASE_URL=https://api.example.com
-
-# Filter operations
-export MCP_WHITELIST_OPERATIONS=getPet*,POST:/users/*
-
-# Set API key
 export API_KEY=your-api-key
-
-# Set security scheme name
-export SECURITY_SCHEME_NAME=ApiKeyAuth
-
-# Add custom headers
-export CUSTOM_HEADERS='{"X-Custom-Header":"custom-value"}'
-export HEADER_X_API_Version=1.0.0
-
-# Disable X-MCP header
-export DISABLE_X_MCP=true
 ```
 
-#### JSON Configuration File
-
-Create a `config.json` file:
+### Config File Example
 
 ```json
 {
-  "spec": "./path/to/openapi-spec.json",
-  "overlays": "./path/to/overlay1.json,https://example.com/api/overlay.json",
+  "spec": "./api.json",
   "targetUrl": "https://api.example.com",
   "whitelist": "getPets,createPet,/pets/*",
-  "blacklist": "deletePet,/admin/*",
   "apiKey": "your-api-key",
-  "securitySchemeName": "ApiKeyAuth",
-  "securityCredentials": {
-    "ApiKeyAuth": "your-api-key",
-    "OAuth2": "your-oauth-token"
-  },
   "headers": {
-    "X-Custom-Header": "custom-value",
-    "User-Agent": "OpenAPI-MCP-Client/1.0"
-  },
-  "disableXMcp": false
+    "X-Custom-Header": "value"
+  }
 }
 ```
 
-### Integration with AI Assistants
+---
 
-#### Claude Desktop
+## Integration Examples
 
-1. Open Claude Desktop and navigate to Settings > Developer
-2. Edit the configuration file:
-   - macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
-   - Windows: `%APPDATA%\Claude\claude_desktop_config.json`
-
-3. Add this configuration:
+### Claude Desktop
 
 ```json
 {
@@ -154,7 +214,7 @@ Create a `config.json` file:
       "command": "npx",
       "args": [
         "-y",
-        "@tyktechnologies/api-to-mcp",
+        "@tyk-technologies/api-to-mcp",
         "--spec",
         "https://petstore3.swagger.io/api/v3/openapi.json"
       ],
@@ -164,15 +224,7 @@ Create a `config.json` file:
 }
 ```
 
-4. Restart Claude Desktop
-
-#### Cursor
-
-1. Create a configuration file in one of these locations:
-   - Project-specific: `.cursor/mcp.json` in your project directory
-   - Global: `~/.cursor/mcp.json` in your home directory
-
-2. Add this configuration:
+### Cursor
 
 ```json
 {
@@ -181,9 +233,9 @@ Create a `config.json` file:
       "command": "npx",
       "args": [
         "-y",
-        "@tyktechnologies/api-to-mcp",
+        "@tyk-technologies/api-to-mcp",
         "--spec",
-        "./path/to/your/openapi.json"
+        "./api.json"
       ],
       "name": "My API Tools"
     }
@@ -191,106 +243,44 @@ Create a `config.json` file:
 }
 ```
 
-3. Restart Cursor or reload the window
-
-#### Vercel AI SDK
-
-```javascript
-import { experimental_createMCPClient } from 'ai';
-import { Experimental_StdioMCPTransport } from 'ai/mcp-stdio';
-import { generateText } from 'ai';
-import { createGoogleGenerativeAI } from '@ai-sdk/google';
-
-// Initialize the Google Generative AI provider
-const google = createGoogleGenerativeAI({
-  apiKey: process.env.GOOGLE_API_KEY,
-});
-const model = google('gemini-2.0-flash');
-
-// Create an MCP client with stdio transport
-const mcpClient = await experimental_createMCPClient({
-  transport: {
-    type: 'stdio',
-    command: 'npx',
-    args: ['-y', '@tyktechnologies/api-to-mcp', '--spec', 'https://petstore3.swagger.io/api/v3/openapi.json'],
-    env: {
-      // You can set environment variables here
-      // API_KEY: process.env.YOUR_API_KEY,
-    },
-  },
-});
-
-async function main() {
-  try {
-    // Retrieve tools from the MCP server
-    const tools = await mcpClient.tools();
-
-    // Generate text using the AI SDK with MCP tools
-    const { text } = await generateText({
-      model,
-      prompt: 'List all available pets in the pet store using the API.',
-      tools,
-    });
-
-    console.log('Generated text:', text);
-  } catch (error) {
-    console.error('Error:', error);
-  } finally {
-    // Always close the MCP client to release resources
-    await mcpClient.close();
-  }
-}
-
-main();
-```
+---
 
 ## Development
 
-### Setup
+### Local Setup
 
 ```bash
-# Clone the repository
 git clone https://github.com/TykTechnologies/api-to-mcp.git
 cd api-to-mcp
-
-# Install dependencies
 npm install
-
-# Build the project
 npm run build
-
-# Run in development mode with auto-reload
 npm run dev
 ```
 
-### Testing
+### Fork and Customize
+
+1. Fork the repo
+2. Add OpenAPI specs to `specs/`
+3. Edit default config
+4. Update metadata in `package.json`
+5. Publish with:
 
 ```bash
-# Run all tests
-npm test
-
-# Run integration tests only
-npm run test:integration
+npm version 1.0.0
+npm publish
 ```
 
-## Customizing and Publishing Your Own Version
+---
 
-You can fork this repository to create your own customized version of the API to MCP tool:
+## Summary
 
-1. Fork the repository
-2. Add your OpenAPI specs to the `specs` directory
-3. Configure default settings in `config.json`
-4. Update `package.json` with your package name and details
-5. Publish to npm:
-   ```bash
-   npm version 1.0.0
-   npm publish
-   ```
+API to MCP enables AI assistants to safely and consistently access your APIs by converting OpenAPI specs into MCP tools. This allows teams to leverage existing APIs while adding AI capabilities securely and efficiently.
 
-## License
+---
 
-MIT
+## Resources
 
-## Support
-
-For issues, feature requests, or questions, please open an issue on the [GitHub repository](https://github.com/TykTechnologies/api-to-mcp).
+- [GitHub Repository](https://github.com/TykTechnologies/api-to-mcp)
+- [Tyk AI Management Docs](https://tyk.io/docs/ai-management/)
+- [API to MCP Docs](https://tyk.io/docs/ai-management/tyk-mcps/api-to-mcp/)
+- [Contact Support](https://tyk.io/contact/)
