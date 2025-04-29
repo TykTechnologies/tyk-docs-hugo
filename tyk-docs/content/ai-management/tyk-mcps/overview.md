@@ -75,9 +75,9 @@ To set up an MCP server, you can use one of Tyk's pre-built MCP implementations 
 
 Tyk provides several MCP implementations that you can use or adapt:
 
-- **[dashboard-mcp](/ai-management/tyk-mcps/dashboard-mcp)**: Connect to Tyk Dashboard API
-- **[tyk-docs-mcp](/ai-management/tyk-mcps/tyk-docs-mcp)**: Search and retrieve information from documentation
 - **[api-to-mcp](/ai-management/tyk-mcps/api-to-mcp)**: Convert existing APIs to MCP-compatible endpoints
+- **[dashboard-api-tp-mcp](/ai-management/tyk-mcps/dashboard-api-to-mcp)**: Connect to Tyk Dashboard API
+- **[tyk-docs-mcp](/ai-management/tyk-mcps/tyk-docs-mcp)**: Search and retrieve information from documentation
 
 ### Configuring an MCP Server
 
