@@ -129,46 +129,58 @@ Use labels to indicate lifecycle stage (Development, Testing, Production, Deprec
 
 ## FAQs
 
-**Q: Can I create custom labels with my own predefined values?**  
-A: Yes, Governance Administrators can create custom labels with either free text values or a predefined list of acceptable values.
+<details> <summary><b>Can I create custom labels with my own predefined values?</b></summary>
 
-**Q: How do labels differ from tags?**  
-A: Labels are structured key-value pairs that can be validated and used for governance, while tags are typically simpler, unstructured text values used primarily for search.
+Yes, Governance Administrators can create custom labels with either free text values or a predefined list of acceptable values.
 
-**Q: Can I bulk apply labels to multiple APIs?**  
-A: Yes, the platform supports bulk label operations through API to efficiently categorize groups of APIs. The bulk edit feature on UI will be added in subsequent releases.
+</details> 
 
-**Q: Are labels from source systems preserved during discovery?**  
-A: Yes, the discovery process attempts to map source system metadata to corresponding labels in the governance platform where possible.
+<details> <summary><b>How do labels differ from tags?</b></summary>
 
-**Q: Can I use labels to control access to APIs?**  
-A: Yes, labels can be used in conjunction with the access control system to determine which users can view or manage specific categories of APIs.
+Labels are structured key-value pairs that can be validated and used for governance, while tags are typically simpler, unstructured text values used primarily for search.
+
+</details> 
+
+<details> <summary><b>Can I bulk apply labels to multiple APIs?</b></summary>
+
+Yes, the platform supports bulk label operations through API to efficiently categorize groups of APIs. The bulk edit feature on UI will be added in subsequent releases.
+
+</details> 
+
+<details> <summary><b>Are labels from source systems preserved during discovery?</b></summary>
+
+Yes, the discovery process attempts to map source system metadata to corresponding labels in the governance platform where possible.
+
+</details> 
+
+<details> <summary><b>Can I use labels to control access to APIs?</b></summary>
+
+Yes, labels can be used in conjunction with the access control system to determine which users can view or manage specific categories of APIs.
+
+</details> 
 
 ## Troubleshooting
 
-### Common Issues
+<details> <summary><b>Labels not appearing in filter options</b></summary>
 
-**Issue: Labels not appearing in filter options**  
-- Ensure the label has been properly defined by a Governance Admin
-- Check that at least one API has been tagged with this label
-- Refresh the browser cache if the label was recently added
+- Ensure the label has been properly defined by a Governance Admin  
+- Check that at least one API has been tagged with this label  
+- Refresh the browser cache if the label was recently added  
 
-**Issue: Cannot add a specific label value**  
-- For predefined value labels, check that the value you're trying to add is in the allowed list
-- Verify you have sufficient permissions to modify the API's labels
-- Ensure the label hasn't been deprecated or replaced
+</details> 
 
-**Issue: Bulk labeling operation failed**  
-- Check that all APIs in the selection exist and are accessible
-- Verify the label format matches the expected structure
-- Look for validation errors if any APIs already have conflicting labels
+<details> <summary><b>Cannot add a specific label value</b></summary>
 
-### Logs
+- For predefined value labels, check that the value you're trying to add is in the allowed list  
+- Verify you have sufficient permissions to modify the API's labels  
+- Ensure the label hasn't been deprecated or replaced  
 
-Look for these log patterns in the application logs:
+</details> 
 
-```
-INFO: Label definition created: [label_key]
-INFO: Label [label_key] applied to API [api_id]
-ERROR: Failed to apply label: [error details]
-```
+<details> <summary><b>Bulk labeling operation failed</b></summary>
+
+- Check that all APIs in the selection exist and are accessible  
+- Verify the label format matches the expected structure  
+- Look for validation errors if any APIs already have conflicting labels  
+
+</details>

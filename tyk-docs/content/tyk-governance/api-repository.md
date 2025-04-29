@@ -97,43 +97,52 @@ Developers often recreate APIs because they're unaware of existing ones. A compl
 
 ## FAQs
 
-**Q: How does the system handle duplicate APIs discovered from different sources?**  
-A: The system uses a combination of API path, name, and other metadata to identify potential duplicates. These are flagged for review in the dashboard, allowing administrators to merge or manage them appropriately.
+<details> <summary><b>How does the system handle duplicate APIs discovered from different sources?</b></summary>
 
-**Q: Can I customize the metadata extracted during discovery?**  
-A: Yes, the governance agent can be configured to extract additional custom metadata fields specific to your organization's needs.
+The system uses a combination of API path, name, and other metadata to identify potential duplicates. These are flagged for review in the dashboard, allowing administrators to merge or manage them appropriately.
 
-**Q: How secure is the API discovery process?**  
-A: The discovery process uses secure authentication methods for each provider and transmits data via encrypted channels. The agent requires minimal permissions—just enough to read API configurations.
+</details> 
 
-**Q: Will discovery impact the performance of my API gateways?**  
-A: The discovery process is designed to be lightweight and non-intrusive. It primarily reads configuration data rather than analyzing traffic, minimizing any performance impact.
+<details> <summary><b>Can I customize the metadata extracted during discovery?</b></summary>
+
+Yes, the governance agent can be configured to extract additional custom metadata fields specific to your organization's needs.
+
+</details> 
+
+<details> <summary><b>How secure is the API discovery process?</b></summary>
+
+The discovery process uses secure authentication methods for each provider and transmits data via encrypted channels. The agent requires minimal permissions—just enough to read API configurations.
+
+</details> 
+
+<details> <summary><b>Will discovery impact the performance of my API gateways?</b></summary>
+
+The discovery process is designed to be lightweight and non-intrusive. It primarily reads configuration data rather than analyzing traffic, minimizing any performance impact.
+
+</details>
 
 ## Troubleshooting
 
-### Common Issues
+<details> <summary><b>APIs from a specific source aren't being discovered</b></summary>
 
-**Issue: APIs from a specific source aren't being discovered**  
-- Check the agent logs for authentication errors
-- Verify the provider configuration in the governance agent config
-- Ensure the agent has network access to the API source
+- Check the agent logs for authentication errors  
+- Verify the provider configuration in the governance agent config  
+- Ensure the agent has network access to the API source  
 
-**Issue: Discovered APIs are missing metadata**  
-- Some API sources may not expose all metadata
-- Check if the API definition in the source is complete
-- Consider enhancing the API definition at the source
+</details> 
 
-**Issue: Agent fails to connect to the governance platform**  
-- Verify the governance URL and token in the agent configuration
-- Check network connectivity between the agent and governance platform
-- Examine the agent logs for specific connection errors
+<details> <summary><b>Discovered APIs are missing metadata</b></summary>
 
-### Logs
+- Some API sources may not expose all metadata  
+- Check if the API definition in the source is complete  
+- Consider enhancing the API definition at the source  
 
-Look for these log patterns in the agent logs:
+</details> 
 
-```
-INFO: Starting discovery for provider: [provider-name]
-INFO: Discovered [n] APIs from [provider-name]
-ERROR: Failed to authenticate with [provider-name]: [error details]
-```
+<details> <summary><b>Agent fails to connect to the governance platform</b></summary>
+
+- Verify the governance URL and token in the agent configuration  
+- Check network connectivity between the agent and governance platform  
+- Examine the agent logs for specific connection errors  
+
+</details>

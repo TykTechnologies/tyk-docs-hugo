@@ -11,7 +11,7 @@ This section provides a detailed explanation of the key technical concepts that 
 
 Tyk Governance is a comprehensive API governance platform designed to provide centralized visibility, control, and policy enforcement across distributed API ecosystems. It enables organizations to establish and maintain consistent standards, security practices, and compliance requirements across multiple API gateways and management platforms.
 
-At its core, Tyk Governance acts as a federated control plane that sits above your existing API infrastructure, regardless of whether you're using Tyk exclusively or a mix of different API management solutions. It collects, analyzes, and governs API definitions from various sources, ensuring they adhere to your organization's standards and best practices.
+At its core, Tyk Governance is a federated control plane that sits above your existing API infrastructure, regardless of whether you're using Tyk exclusively or a mix of different API management solutions. It collects, analyzes, and governs API definitions from various sources, ensuring they adhere to your organization's standards and best practices.
 
 ```mermaid
 flowchart LR
@@ -69,7 +69,7 @@ A governance ruleset in Tyk Governance is a set of rules and standards that APIs
 
 ### Spectral Ruleset Compatibility
 
-Tyk Governance rulesets are compatible with the Spectral ruleset format, a widely adopted standard for API linting and governance. This compatibility offers several advantages:
+Tyk Governance rulesets are compatible with the Spectral ruleset format, a widely adopted API linting and governance standard. This compatibility offers several advantages:
 
 1. **Familiar Format**: Teams already using Spectral can easily migrate their existing rulesets.
 2. **Ecosystem Integration**: Leverage the broader ecosystem of pre-built Spectral rules.
@@ -98,7 +98,7 @@ rate-limit-exists:
       function: truthy
 ```
 
-Rulesets can be customized to meet specific organizational needs and can evolve as API best practices and security requirements change.
+Rulesets can be customized to meet organizational needs and evolve as API best practices and security requirements change.
 
 ## Supported API Platforms
 
@@ -233,7 +233,7 @@ Notably, the following are NOT transmitted:
 
 ### Agent
 
-A component that connects to API Providers to extract and sync API definitions.
+A component that connects to API Providers (Tyk, AWS API Gateway, etc.) to extract and sync API definitions.
 
 ### API Maturity
 

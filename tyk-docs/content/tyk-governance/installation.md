@@ -5,7 +5,7 @@ description: ""
 tags: ["Tyk Governance"]
 ---
 
-This section moves from concepts to hands-on implementation, providing you with the practical steps needed to get started with Tyk Governance.
+This section moves from concepts to hands-on implementation, providing the practical steps needed to start with Tyk Governance.
 
 ## Prerequisites
 
@@ -91,7 +91,7 @@ flowchart LR
 
 **Scenario example:**
 
-- **Cloud-Only Organization**: Acme Corp uses Tyk Cloud for all their API management needs. They want to implement governance across their APIs without additional infrastructure management. By enabling the Governance feature in Tyk Cloud, an agent is automatically deployed and their APIs are immediately available in the Governance dashboard.
+- **Cloud-Only Organization**: Acme Corp uses Tyk Cloud for all its API management needs. It wants to implement governance across its APIs without additional infrastructure management. By enabling the Governance feature in Tyk Cloud, an agent is automatically deployed, and its APIs are immediately available in the Governance dashboard.
 
 #### Tyk Cloud with Customer-Deployed Agents
 
@@ -119,8 +119,8 @@ flowchart LR
 
 **Scenario examples:**
 
-- **Self-Managed Tyk User**: Beta Inc. runs their own Tyk Dashboard deployment on-premises for security and compliance reasons. They deploy a Governance agent in their environment that connects to the cloud-hosted Governance platform.
-- **AWS API Gateway User**: Gamma Services uses AWS API Gateway for all their APIs. They deploy a Governance agent in their AWS environment that connects to Tyk Governance in the cloud.
+- **Self-Managed Tyk User**: Beta Inc. runs its own Tyk Dashboard deployment on-premises for security and compliance reasons. It deploys a Governance agent in its environment that connects to the cloud-hosted Governance platform.
+- **AWS API Gateway User**: Gamma Services uses AWS API Gateway for all its APIs. They deploy a Governance agent in their AWS environment that connects to Tyk Governance in the cloud.
 
 #### Hybrid Deployment
 
@@ -151,11 +151,11 @@ flowchart LR
 
 **Scenario example:**
 
-- **Multi-Platform Enterprise**: Delta Corp uses Tyk Cloud for their public-facing APIs but also maintains AWS API Gateway for legacy services and a self-managed Tyk Gateway for sensitive internal APIs.
+- **Multi-Platform Enterprise**: Delta Corp uses Tyk Cloud for their public-facing APIs. It also maintains AWS API Gateway for legacy services and a self-managed Tyk Gateway for sensitive internal APIs.
 
 ## Installation
 
-The installation process for Tyk Governance varies depending on whether you're an existing Tyk Cloud customer and which deployment model you're using.
+The installation process for Tyk Governance varies depending on whether you're an existing Tyk Cloud customer and which deployment model you use.
 
 ### Requesting Access to Tyk Governance
 
@@ -205,47 +205,48 @@ For environments where you need to install agents manually (non-Tyk platforms or
 - Network connectivity between the agent and both the Governance Platform and your API management platform
 - Docker or Kubernetes for container-based deployment (recommended)
 
-**Step 1: Generate Agent Token**
+#### Generate Agent Token
 
-Since the UI for generating agent tokens is not currently available, you'll need to use the API to create a token. After receiving your Governance Platform credentials, follow these steps:
+Since the UI for generating agent tokens is unavailable, you'll need to use the API to create a token. After receiving your Governance Platform credentials, follow these steps:
 
 1. **Obtain an API Key**:
 	 - Log in to the Governance Platform using the credentials provided in your welcome email
-	 - Check your API key under "Users" section
+	 - Check your API key under the "Users" section
 
 2. **Generate an Agent Token using the API**:
 
-```bash
-# Replace these values with your actual information
-GOVERNANCE_URL="https://your-governance-instance.tyk.io:50051"
-API_KEY="your-api-key"
-AGENT_NAME="My AWS Agent (US)"
-AGENT_ID="aws-agent-us1"
+    ```bash
+    # Replace these values with your actual information
+    GOVERNANCE_URL="https://your-governance-instance.tyk.io:50051"
+    API_KEY="your-api-key"
+    AGENT_NAME="My AWS Agent (US)"
+    AGENT_ID="aws-agent-us1"
 
-# API call to create an agent token
-curl -X POST "${GOVERNANCE_URL}/auth/token" \
-  -H "Authorization: ${API_KEY}" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "agent_id": "'"${AGENT_ID}"'",
-    "name": "'"${AGENT_NAME}"'"
-  }'
-```
+    # API call to create an agent token
+    curl -X POST "${GOVERNANCE_URL}/auth/token" \
+      -H "Authorization: ${API_KEY}" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "agent_id": "'"${AGENT_ID}"'",
+        "name": "'"${AGENT_NAME}"'"
+      }'
+    ```
 
-Example response:
+    Example response:
 
-```json
-{
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-}
-```
+    ```json
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    }
+    ```
 
 3. **Save the token securely**:
+
 	 - Copy the `token` value from the response
-	 - Store it securely as you'll need it for agent configuration
+	 - Store it securely, as you'll need it for agent configuration
 	 - Note: This token cannot be retrieved later, so make sure to save it
 
-**Step 2: Prepare Configuration**
+#### Prepare Configuration
 
 Create a configuration file named `agent-config.yaml` with the following structure:
 
@@ -330,9 +331,9 @@ healthProbe:
     port: 5959
 ```
 
-**Step 3: Deploy the Agent**
+#### Deploy the Agent
 
-**Docker Deployment:**
+  **Docker Deployment:**
 
 ```bash
 docker run -d --name tyk-governance-agent \
@@ -340,7 +341,7 @@ docker run -d --name tyk-governance-agent \
   tykio/governance-agent:latest
 ```
 
-**Kubernetes Deployment:**
+  **Kubernetes Deployment:**
 
 1. Create a Kubernetes secret for the configuration:
 
@@ -375,17 +376,17 @@ spec:
         - name: TYK_AGENT_LICENSEKEY
           value: your-governance-license # Replace with your governance license key
         ports:
-	     - name: health
-	       containerPort: 5959
-	       protocol: TCP
-	     livenessProbe:
-	       httpGet:
-	         path: /health
-	         port: health
-		  readinessProbe:
-	       httpGet:
-	         path: /live
-	         port: health
+      - name: health
+        containerPort: 5959
+        protocol: TCP
+      livenessProbe:
+        httpGet:
+          path: /health
+          port: health
+      readinessProbe:
+        httpGet:
+          path: /live
+          port: health
         volumeMounts:
         - mountPath: /app/config.yaml
           name: agent-config
@@ -405,27 +406,27 @@ Apply with:
 kubectl apply -f agent-deployment.yaml
 ```
 
-**Step 4: Verify Agent Connection**
+#### Verify Agent Connection
 
 1. Check if the agent is running properly:
 
-```bash
-# For Docker
-docker logs tyk-governance-agent
+    ```bash
+    # For Docker
+    docker logs tyk-governance-agent
 
-# For Kubernetes
-kubectl logs -l app=tyk-governance-agent -n your-namespace
-```
+    # For Kubernetes
+    kubectl logs -l app=tyk-governance-agent -n your-namespace
+    ```
 
- 2. Look for log messages indicating successful connection:
+ 2. Look for log messages indicating a successful connection:
 
-```
-Agent started successfully 
-Connected to Governance service 
-Heartbeat established
-```
+    ```
+    Agent started successfully 
+    Connected to Governance service 
+    Heartbeat established
+    ```
 
-**Step 5: Trigger Initial Sync**
+####  Trigger Initial Sync
 
 1. In the Governance Platform, navigate to "API Repository"
 2. Click "Sync Now"
@@ -444,7 +445,7 @@ This is the simplest deployment model for existing Tyk Cloud customers.
 1. Requesting Access to Tyk Governance
 2. Enable the Governance feature in Tyk Cloud Control Plane as described in [Enabling Governance Feature for Cloud Control Planes](#enabling-governance-feature-for-cloud-control-planes)
 3. Wait for automatic agent deployment
-4. Access the Governance Hub from Cloud UI sidebar
+4. Access the Governance Hub from the Cloud UI sidebar
 5. Navigate to "API Repository" to view your automatically discovered APIs
 6. Trigger "Sync APIs" to pull updates from the control planes
 
@@ -462,7 +463,7 @@ This example demonstrates how to set up governance across multiple API platforms
 3. Create configuration files for each agent
 4. Deploy each agent using Docker or Kubernetes as described in [Installing a Local Agent](#installing-a-local-agent)
 5. Verify agent connections in the Governance Platform
-6. Access the Governance Hub with provided URL
+6. Access the Governance Hub with the provided URL
 7. Navigate to "API Repository" to view your automatically discovered APIs
 8. Trigger "Sync APIs" to pull updates from all agents
 
