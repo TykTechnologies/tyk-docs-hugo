@@ -570,6 +570,94 @@ menu:
                     path: /tyk-apis/tyk-dashboard-api/portal-policies
                     category: Page
                     show: True
+  - title: "AI Management"
+    category: Label
+    show: True
+    menu:
+      - title: "Introduction"
+        category: Directory
+        show: true
+        menu:
+          - title: "Quickstart"
+            path: /ai-management/quickstart
+            category: Page
+            show: true
+          - title: "Core Concepts"
+            path: /ai-management/core-concepts
+            category: Page
+            show: true
+      - title: "Getting Started"
+        category: Directory
+        show: true
+        menu:
+          - title: "Installation (Helm/K8s)"
+            path: /ai-management/deployment-helm-k8s
+            category: Page
+            show: true
+          - title: "Initial Configuration"
+            path: /ai-management/configuration
+            category: Page
+            show: true
+      - title: "Core Features"
+        category: Directory
+        show: true
+        menu:
+          - title: "AI Gateway"
+            path: /ai-management/proxy
+            category: Page
+            show: true
+          - title: "AI Portal"
+            path: /ai-management/ai-portal
+            category: Page
+            show: true
+          - title: "Chat Interface"
+            path: /ai-management/chat-interface
+            category: Page
+            show: true
+          - title: "LLM Management"
+            path: /ai-management/llm-management
+            category: Page
+            show: true
+          - title: "Tools & Extensibility"
+            path: /ai-management/tools
+            category: Page
+            show: true
+          - title: "Data Sources & RAG"
+            path: /ai-management/datasources-rag
+            category: Page
+            show: true
+          - title: "Filters & Policies"
+            path: /ai-management/filters
+            category: Page
+            show: true
+      - title: "Administration"
+        category: Directory
+        show: true
+        menu:
+          - title: "User Management & RBAC"
+            path: /ai-management/user-management
+            category: Page
+            show: true
+          - title: "SSO Integration"
+            path: /ai-management/sso
+            category: Page
+            show: true
+          - title: "Secrets Management"
+            path: /ai-management/secrets
+            category: Page
+            show: true
+          - title: "Budget Control"
+            path: /ai-management/budgeting
+            category: Page
+            show: true
+          - title: "Analytics & Monitoring"
+            path: /ai-management/analytics
+            category: Page
+            show: true
+          - title: "Notifications"
+            path: /ai-management/notifications
+            category: Page
+            show: true
   - title: "Developer Support"
     category: Label
     show: True
