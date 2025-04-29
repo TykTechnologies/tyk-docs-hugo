@@ -378,7 +378,7 @@ In a Tyk Classic API Definition (JSON), set the `disable_quota` field to `true`.
 
 ```
 
-Refer to the [Tyk Classic API Definition reference]({{< ref "api-management/gateway-config-tyk-classic/" >}}) for details.
+Refer to the [Tyk Classic API Definition reference]({{< ref "api-management/gateway-config-tyk-classic" >}}) for details.
 
 {{< tab_end >}}
 
