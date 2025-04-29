@@ -7,5 +7,3 @@ description: "Using the Tyk Dashboard API as a Model Context Protocol (MCP) serv
 
 # Dashboard API as MCP
 
-This page has been relocated to [Tyk Dashboard MCP](/ai-management/tyk-mcps/tyk-dashboard-mcp).
-

@@ -573,7 +573,7 @@ menu:
         path: /ai-management/overview
         show: True
       - title: "Tyk MCPs"
-        path: /ai-management/tyk-mcps
+        path: /ai-management/tyk-mcps/overview
         category: Directory
         show: True
         menu:
@@ -590,7 +590,7 @@ menu:
             path: /ai-management/tyk-mcps/tyk-docs-mcp
             show: True
       - title: "AI Studio"
-        path: /ai-management/ai-studio
+        path: /ai-management/ai-studio/overview
         category: Directory
         show: True
         menu:
@@ -598,10 +598,6 @@ menu:
             category: Directory
             show: True
             menu:
-              - title: "Overview"
-                category: Page
-                path: /ai-management/ai-studio/overview
-                show: True
               - title: "Quickstart"
                 category: Page
                 path: /ai-management/ai-studio/quickstart
