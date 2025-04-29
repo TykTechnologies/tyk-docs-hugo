@@ -6,7 +6,6 @@ menu:
     category: Label
     show: True
   - title: "Overview"
-    path: /
     category: Label
     show: True
     menu:
@@ -27,7 +26,6 @@ menu:
         category: Page
         show: True
   - title: "Getting Started"
-    path: /
     category: Label
     show: True
     menu:
@@ -345,10 +343,6 @@ menu:
       - title: "Troubleshooting"
         path: /api-management/troubleshooting-debugging
         category: Page
-        show: True
-      - title: "AI Management"
-        category: Page
-        path: /api-management/ai-management/overview
         show: True
   - title: "Developer Portal"
     category: Label
