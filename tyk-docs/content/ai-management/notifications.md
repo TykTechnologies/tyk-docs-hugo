@@ -29,7 +29,7 @@ The Notification System aims to:
 
 Examples of events that might trigger notifications include:
 
-*   **[Budget Control]({{< ref "ai-management/llm-management#budget-control-system" >}}):**
+*   **[Budget Control]({{< ref "ai-management/llm-management" >}}):**
     *   Approaching spending limit threshold (e.g., 80% of budget).
     *   Reaching or exceeding spending limit.
 *   **[User Management]({{< ref "ai-management/user-management" >}}):**
