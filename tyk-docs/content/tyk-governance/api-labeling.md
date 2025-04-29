@@ -19,11 +19,6 @@ API Labeling and Categorization enables you to organize, classify, and filter yo
 - Supports governance policy application based on API characteristics (Governance Policy feature is coming soon)
 - Enables reporting and analytics based on business context (Reporting feature is coming soon)
 
-### Dependencies
-
-- API Repository populated from API sources
-- Governance Admin privileges for creating and managing label definitions (Note: only admin access is available at the moment)
-
 ## Quick Start
 
 In this tutorial, we'll explore how to use API labeling to categorize and filter APIs in your organization's API Repository.
@@ -31,7 +26,7 @@ In this tutorial, we'll explore how to use API labeling to categorize and filter
 ### Prerequisites
 
 - Access to the Tyk Governance Hub
-- Governance Admin access for creating new label definitions
+- Governance Admin access for creating new label definitions (Note: only admin access is available at the moment)
 
 ### Step-by-Step
 

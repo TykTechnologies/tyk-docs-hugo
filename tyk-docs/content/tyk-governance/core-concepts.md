@@ -69,7 +69,7 @@ A governance ruleset in Tyk Governance is a set of rules and standards that APIs
 
 ### Spectral Ruleset Compatibility
 
-Tyk Governance rulesets are compatible with the Spectral ruleset format, a widely adopted API linting and governance standard. This compatibility offers several advantages:
+Tyk Governance rulesets are compatible with the [Spectral ruleset](https://meta.stoplight.io/docs/spectral/01baf06bdd05a-rulesets) format, a widely adopted API linting and governance standard. This compatibility offers several advantages:
 
 1. **Familiar Format**: Teams already using Spectral can easily migrate their existing rulesets.
 2. **Ecosystem Integration**: Leverage the broader ecosystem of pre-built Spectral rules.
