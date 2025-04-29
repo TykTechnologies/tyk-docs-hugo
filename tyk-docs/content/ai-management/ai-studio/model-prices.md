@@ -1,15 +1,11 @@
 ---
-title: "Model Prices"
-weight: 20
-# bookFlatSection: false
-# bookToc: true
-# bookHidden: false
-# bookCollapseSection: false
-# bookComments: false
-# bookSearchExclude: false
+title: "Model Prices View for Tyk AI Studio"
+date: 2025-04-25
+tags: ["AI Studio", "AI Management", "Model Price"]
+description: "How to manage model prices in AI Studio?"
+keywords: ["AI Studio", "AI Management", "Model Price"]
+draft: true
 ---
-
-# Model Prices View for Tyk AI Studio
 
 The **Model Prices View** allows administrators to manage and track the cost associated with Large Language Model (LLM) usage. This section is essential for monitoring expenses and setting pricing for LLM use within the AI Gateway and Chat Room features. Below is a detailed breakdown of the table and its features:
 

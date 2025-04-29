@@ -1,15 +1,10 @@
 ---
 title: "Installation (Helm/Kubernetes)"
-weight: 2
-# bookFlatSection: false
-# bookToc: true
-# bookHidden: false
-# bookCollapseSection: false
-# bookComments: false
-# bookSearchExclude: false
+date: 2025-04-25
+tags: ["AI Studio", "AI Management"]
+description: "Install Tyk AI Studio"
+keywords: ["AI Studio", "AI Management"]
 ---
-
-# Installation (Helm/Kubernetes)
 
 This guide explains how to deploy Tyk AI Studio (Tyk AI Studio), a secure and extensible AI gateway, using Helm on Kubernetes.
 
@@ -314,4 +309,4 @@ kubectl describe pod <pod-name>
 
 ## Next Steps
 
-Once deployed, proceed to the [Initial Configuration](./configuration.md) guide to set up Tyk AI Studio.
+Once deployed, proceed to the [Initial Configuration]({{< ref "ai-management/ai-studio/configuration" >}}) guide to set up Tyk AI Studio.

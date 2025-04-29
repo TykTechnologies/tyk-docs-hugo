@@ -1,15 +1,10 @@
 ---
 title: "Data Sources & RAG"
-weight: 25
-# bookFlatSection: false
-# bookToc: true
-# bookHidden: false
-# bookCollapseSection: false
-# bookComments: false
-# bookSearchExclude: false
+date: 2025-04-25
+tags: ["AI Studio", "AI Management", "Datasources", "RAG"]
+description: "How to integrate Data Sources & RAG in Tyk AI Studio?"
+keywords: ["AI Studio", "AI Management", "Datasources", "RAG"]
 ---
-
-# Data Sources & RAG
 
 Tyk AI Studio's Data Source system connects the platform to external knowledge bases, primarily vector stores, enabling **Retrieval-Augmented Generation (RAG)**. This allows Large Language Models (LLMs) to access and utilize specific information from your documents, grounding their responses in factual data.
 
@@ -25,18 +20,18 @@ The primary goal is to enhance LLM interactions by:
 
 *   **Data Source:** A configuration in Tyk AI Studio that defines a connection to a specific knowledge base (typically a vector store) and the associated embedding service used to populate it.
 *   **Vector Store Abstraction:** Tyk AI Studio provides a unified interface to interact with various vector database types (e.g., Pinecone, Milvus, ChromaDB). Administrators configure the connection details for their chosen store.
-*   **Embedding Service:** Text needs to be converted into numerical vector embeddings before being stored and searched. Administrators configure the embedding service (e.g., OpenAI `text-embedding-ada-002`, a local Sentence Transformer model via an API endpoint) and its credentials (using [Secrets Management](./secrets.md)).
+*   **Embedding Service:** Text needs to be converted into numerical vector embeddings before being stored and searched. Administrators configure the embedding service (e.g., OpenAI `text-embedding-ada-002`, a local Sentence Transformer model via an API endpoint) and its credentials (using [Secrets Management]({{< ref "ai-management/ai-studio/secrets" >}})).
 *   **File Processing:** Administrators upload documents (e.g., PDF, TXT, DOCX) to a Data Source configuration. Tyk AI Studio automatically:
     *   Chunks the documents into smaller, manageable pieces.
     *   Uses the configured Embedding Service to convert each chunk into a vector embedding.
     *   Stores the text chunk and its corresponding embedding in the configured Vector Store.
 *   **RAG (Retrieval-Augmented Generation):** The core process where:
-    1.  A user's query in the [Chat Interface](./chat-interface.md) is embedded using the same embedding service.
+    1.  A user's query in the [Chat Interface]({{< ref "ai-management/ai-studio/chat-interface" >}}) is embedded using the same embedding service.
     2.  This query embedding is used to search the relevant vector store(s) for the most similar text chunks (based on vector similarity).
     3.  The retrieved text chunks are added as context to the prompt sent to the LLM.
     4.  The LLM uses this context to generate a more informed and relevant response.
 *   **Data Source Catalogues:** Similar to Tools, Data Sources are grouped into Catalogues for easier management and assignment to user groups.
-*   **Privacy Levels:** Each Data Source has a privacy level. It can only be used in RAG if its level is less than or equal to the privacy level of the [LLM Configuration](./llm-management.md) being used, ensuring data governance.
+*   **Privacy Levels:** Each Data Source has a privacy level. It can only be used in RAG if its level is less than or equal to the privacy level of the [LLM Configuration]({{< ref "ai-management/ai-studio/llm-management" >}}) being used, ensuring data governance.
 
     Privacy levels define how data is protected by controlling LLM access based on its sensitivity:
     - Public – Safe to share (e.g., blogs, press releases).
@@ -64,12 +59,12 @@ Administrators configure Data Sources via the UI or API:
 2.  **Configure Vector Store:**
     *   Select the database type (e.g., `pinecone`).
     *   Provide connection details (e.g., endpoint/connection string, namespace/index name).
-    *   Reference a [Secret](./secrets.md) containing the API key/credentials.
+    *   Reference a [Secret]({{< ref "ai-management/ai-studio/secrets" >}}) containing the API key/credentials.
 3.  **Configure Embedding Service:**
     *   Select the vendor/type (e.g., `openai`, `local`).
     *   Specify the model name (if applicable).
     *   Provide the service URL (if applicable, for local models).
-    *   Reference a [Secret](./secrets.md) containing the API key (if applicable).
+    *   Reference a [Secret]({{< ref "ai-management/ai-studio/secrets" >}}) containing the API key (if applicable).
 4.  **Upload Files:** Upload documents to be chunked, embedded, and indexed into the vector store.
 
     ![Placeholder: Datasource Config](https://placehold.co/600x400?text=DataSource+Config)
@@ -77,13 +72,13 @@ Administrators configure Data Sources via the UI or API:
 ## Organizing & Assigning Data Sources (Admin)
 
 *   **Create Catalogues:** Group related Data Sources into Catalogues (e.g., "Product Docs", "Support KB").
-*   **Assign to Groups:** Assign Data Source Catalogues to specific [User Groups](./user-management.md).
+*   **Assign to Groups:** Assign Data Source Catalogues to specific [User Groups]({{< ref "ai-management/ai-studio/user-management" >}}).
 
     ![Placeholder: Catalogue Config](https://placehold.co/600x400?text=DataSource+Catalogue+Config)
 
 ## Using Data Sources (User)
 
-Data Sources are primarily used implicitly via RAG within the [Chat Interface](./chat-interface.md).
+Data Sources are primarily used implicitly via RAG within the [Chat Interface]({{< ref "ai-management/ai-studio/chat-interface" >}}).
 
 A Data Source will be used for RAG if:
 
@@ -91,4 +86,116 @@ A Data Source will be used for RAG if:
 2.  The user belongs to a Group that has been assigned that Data Source Catalogue.
 3.  The Data Source's privacy level is compatible with the LLM being used.
 
-APIs may also exist for directly querying configured Data Sources programmatically.
+## Programmatic Access via API
+
+Tyk AI Studio provides a direct API endpoint for querying configured Data Sources programmatically:
+
+### Datasource API Endpoint
+
+*   **Endpoint:** `/datasource/{dsSlug}` (where `{dsSlug}` is the datasource identifier)
+*   **Method:** POST
+*   **Authentication:** Bearer token required in the Authorization header
+
+### Request Format
+
+```json
+{
+  "query": "your semantic search query here",
+  "n": 5  // optional, number of results to return (default: 3)
+}
+```
+
+### Response Format
+
+```json
+{
+  "documents": [
+    {
+      "content": "text content of the document chunk",
+      "metadata": {
+        "source": "filename.pdf",
+        "page": 42
+      }
+    },
+    // additional results...
+  ]
+}
+```
+
+### Example Usage
+
+#### cURL
+
+```bash
+curl -X POST "https://your-tyk-instance/datasource/product-docs" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"query": "How do I configure authentication?", "n": 3}'
+```
+
+#### Python
+
+```python
+import requests
+
+url = "https://your-tyk-instance/datasource/product-docs"
+headers = {
+    "Authorization": "Bearer YOUR_TOKEN",
+    "Content-Type": "application/json"
+}
+payload = {
+    "query": "How do I configure authentication?",
+    "n": 3
+}
+
+response = requests.post(url, json=payload, headers=headers)
+results = response.json()
+
+for doc in results["documents"]:
+    print(f"Content: {doc['content']}")
+    print(f"Source: {doc['metadata']['source']}")
+    print("---")
+```
+
+#### JavaScript
+
+```javascript
+async function queryDatasource() {
+  const response = await fetch('https://your-tyk-instance/datasource/product-docs', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer YOUR_TOKEN',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      query: 'How do I configure authentication?',
+      n: 3
+    })
+  });
+  
+  const data = await response.json();
+  
+  data.documents.forEach(doc => {
+    console.log(`Content: ${doc.content}`);
+    console.log(`Source: ${doc.metadata.source}`);
+    console.log('---');
+  });
+}
+```
+
+### Common Issues and Troubleshooting
+
+1. **Trailing Slash Error:** The endpoint does not accept a trailing slash. Use `/datasource/{dsSlug}` and not `/datasource/{dsSlug}/`.
+
+2. **Authentication Errors:** Ensure your Bearer token is valid and has not expired. The token must have permissions to access the specified datasource.
+
+3. **404 Not Found:** Verify that the datasource slug is correct and that the datasource exists and is properly configured.
+
+4. **403 Forbidden:** Check that your user account has been granted access to the datasource catalogue containing this datasource.
+
+5. **Empty Results:** If you receive an empty documents array, try:
+   - Reformulating your query to better match the content
+   - Increasing the value of `n` to get more results
+   - Verifying that the datasource has been properly populated with documents
+
+This API endpoint allows developers to build custom applications that leverage the semantic search capabilities of configured vector stores without needing to implement the full RAG pipeline.

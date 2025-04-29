@@ -1,15 +1,10 @@
 ---
 title: "AI Portal"
-weight: 80
-# bookFlatSection: false
-# bookToc: true
-# bookHidden: false
-# bookCollapseSection: false
-# bookComments: false
-# bookSearchExclude: false
+date: 2025-04-25
+tags: ["AI Studio", "AI Management", "AI Portal"]
+description: "How AI Portal works?"
+keywords: ["AI Studio", "AI Management", "AI Portal"]
 ---
-
-# AI Portal
 
 The Tyk AI Studio's AI Portal provides a user-friendly web interface where end users can interact with configured AI capabilities. It serves as the primary access point for users to engage with Chat Experiences, view documentation, and manage their account settings.
 
@@ -25,7 +20,7 @@ The main goals of the AI Portal are:
 
 ## Key Features
 
-*   **Chat Interface:** Access to all [Chat Experiences](./chat-interface.md) the user has permission to use, with a clean, intuitive UI for conversational interactions.
+*   **Chat Interface:** Access to all [Chat Experiences]({{< ref "ai-management/ai-studio/chat-interface" >}}) the user has permission to use, with a clean, intuitive UI for conversational interactions.
 *   **Documentation Hub:** Integrated documentation for available AI services, tools, and data sources.
 *   **User Profile Management:** Self-service capabilities for updating profile information and preferences.
 *   **History & Favorites:** Access to past chat sessions and ability to bookmark favorite conversations.
@@ -65,6 +60,39 @@ While the AI Portal primarily provides a web-based user interface, it is built o
 *   **Authentication API:** `/api/v1/auth/...` endpoints for managing user sessions.
 *   **Chat API:** `/api/v1/chat/...` endpoints for programmatic access to chat functionality.
 *   **User Profile API:** `/api/v1/users/...` endpoints for managing user information.
+*   **Datasource API:** `/datasource/{dsSlug}` endpoint for directly querying configured data sources.
+
+### Datasource API
+
+The Datasource API allows direct semantic search against configured vector stores:
+
+*   **Endpoint:** `/datasource/{dsSlug}` (where `{dsSlug}` is the datasource identifier)
+*   **Method:** POST
+*   **Authentication:** Bearer token required
+*   **Request Format:**
+    ```json
+    {
+      "query": "your search query here",
+      "n": 5  // optional, number of results to return (default: 3)
+    }
+    ```
+*   **Response Format:**
+    ```json
+    {
+      "documents": [
+        {
+          "content": "text content of the document chunk",
+          "metadata": {
+            "source": "filename.pdf",
+            "page": 42
+          }
+        },
+        // additional results...
+      ]
+    }
+    ```
+
+**Important Note:** The endpoint does not accept a trailing slash. Use `/datasource/{dsSlug}` and not `/datasource/{dsSlug}/`.
 
 This API-first approach ensures that all functionality available through the AI Portal can also be accessed programmatically for custom applications or integrations.
 

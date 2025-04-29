@@ -1,4 +1,10 @@
-# LLM Management
+---
+title: "LLM Management"
+date: 2025-04-25
+tags: ["AI Studio", "AI Management", "LLM Management"]
+description: "How to manage LLMs in Tyk AI Studio?"
+keywords: ["AI Studio", "AI Management", "LLM Management"]
+---
 
 Tyk AI Studio provides a centralized system for managing Large Language Model (LLM) providers, models, associated costs, and usage budgets. This allows administrators to control which models are available, how they are used, and track associated expenses.
 

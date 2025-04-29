@@ -1,15 +1,11 @@
 ---
-title: "Call Settings"
-weight: 15
-# bookFlatSection: false
-# bookToc: true
-# bookHidden: false
-# bookCollapseSection: false
-# bookComments: false
-# bookSearchExclude: false
+title: "LLM Call Settings"
+date: 2025-04-25
+tags: ["AI Studio", "AI Management", "LLMs", "Large Language Models", "LLM Call Settings"]
+description: "How to configure LLMs in AI Studio?"
+keywords: ["AI Studio", "AI Management", "LLMs", "Large Language Models", "LLM Call Settings"]
+draft: true
 ---
-
-# LLM Call Settings
 
 The **LLM Call Settings** section allows administrators to configure default runtime parameters for Large Language Models (LLMs) used in chat interactions and middleware system function calls. These settings provide control over how the LLM processes inputs and generates outputs. It is important to note that these settings are not utilized in the AI Gateway proxy since applications are expected to define their own model configurations.
 

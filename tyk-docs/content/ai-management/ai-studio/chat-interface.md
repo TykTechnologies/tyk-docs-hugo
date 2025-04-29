@@ -1,12 +1,9 @@
 ---
 title: "Chat Interface"
-weight: 70
-# bookFlatSection: false
-# bookToc: true
-# bookHidden: false
-# bookCollapseSection: false
-# bookComments: false
-# bookSearchExclude: false
+date: 2025-04-25
+tags: ["AI Studio", "AI Management", "Chat Interface"]
+description: "How AI Studios Chat Interface works?"
+keywords: ["AI Studio", "AI Management", "Chat Interface"]
 ---
 
 # Chat Interface
@@ -26,12 +23,12 @@ The main goals of the Chat Interface are:
 
 *   **Chat Sessions:** Each conversation happens within a session, preserving history and context.
 *   **Streaming Responses:** LLM responses are streamed back to the user for a more interactive feel.
-*   **Tool Integration:** Seamlessly uses configured [Tools](./tools.md) when the LLM determines they are necessary to fulfill a user's request. The available tools depend on the Chat Experience configuration and the user's group permissions.
-*   **Data Source (RAG) Integration:** Can automatically query configured [Data Sources](./datasources-rag.md) to retrieve relevant information (Retrieval-Augmented Generation) to enhance LLM responses. The available data sources depend on the Chat Experience configuration and the user's group permissions.
+*   **Tool Integration:** Seamlessly uses configured [Tools]({{< ref "ai-management/ai-studio/tools" >}}) when the LLM determines they are necessary to fulfill a user's request. The available tools depend on the Chat Experience configuration and the user's group permissions.
+*   **Data Source (RAG) Integration:** Can automatically query configured [Data Sources]({{< ref "ai-management/ai-studio/datasources-rag" >}}) to retrieve relevant information (Retrieval-Augmented Generation) to enhance LLM responses. The available data sources depend on the Chat Experience configuration and the user's group permissions.
 *   **System Prompts:** Administrators can define specific system prompts for different Chat Experiences to guide the LLM's persona, tone, and behavior.
 *   **History:** Users can view their past chat sessions.
 *   **File Upload (Context):** Users might be able to upload files directly within a chat to provide temporary context for the LLM (depending on configuration).
-*   **Access Control:** Users only see and can interact with Chat Experiences assigned to their [Groups](./user-management.md).
+*   **Access Control:** Users only see and can interact with Chat Experiences assigned to their [Groups]({{< ref "ai-management/ai-studio/user-management" >}}).
 
 ## Using the Chat Interface
 
@@ -48,12 +45,12 @@ Users access the Chat Interface through the Tyk AI Studio web UI.
 Administrators configure the available "Chat Experiences" (formerly known as Chat Rooms) via the UI or API. Configuration involves:
 
 *   **Naming:** Giving the Chat Experience a descriptive name.
-*   **Assigning LLM:** Linking to a specific [LLM Configuration](./llm-management.md).
-*   **Enabling Tools:** Selecting which [Tool Catalogues](./tools.md) are available.
-*   **Enabling Data Sources:** Selecting which [Data Source Catalogues](./datasources-rag.md) are available.
+*   **Assigning LLM:** Linking to a specific [LLM Configuration]({{< ref "ai-management/ai-studio/llm-management" >}}).
+*   **Enabling Tools:** Selecting which [Tool Catalogues]({{< ref "ai-management/ai-studio/tools" >}}) are available.
+*   **Enabling Data Sources:** Selecting which [Data Source Catalogues]({{< ref "ai-management/ai-studio/datasources-rag" >}}) are available.
 *   **Setting System Prompt:** Defining the guiding prompt for the LLM.
-*   **Applying Filters:** Associating specific [Filters](./filters.md) for governance.
-*   **Assigning Groups:** Determining which [User Groups](./user-management.md) can access this Chat Experience.
+*   **Applying Filters:** Associating specific [Filters]({{< ref "ai-management/ai-studio/filters" >}}) for governance.
+*   **Assigning Groups:** Determining which [User Groups]({{< ref "ai-management/ai-studio/user-management" >}}) can access this Chat Experience.
 *   **Enabling/Disabling Features:** Toggling features like file uploads or direct tool usage.
 
     ![Placeholder: Chat Config](https://placehold.co/600x400?text=Chat+Experience+Config)

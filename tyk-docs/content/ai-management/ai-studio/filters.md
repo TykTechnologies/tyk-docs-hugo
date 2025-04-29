@@ -1,15 +1,10 @@
 ---
-title: "Filters"
-weight: 40
-# bookFlatSection: false
-# bookToc: true
-# bookHidden: false
-# bookCollapseSection: false
-# bookComments: false
-# bookSearchExclude: false
+title: "Filters and Middleware"
+date: 2025-04-25
+tags: ["AI Studio", "AI Management", "Filters", "Middlewares"]
+description: "How to use Filters and Middleware in Tyk AI Studio?"
+keywords: ["AI Studio", "AI Management", "Filters", "Middlewares"]
 ---
-
-# Filters and Middleware
 
 The **Filters List View** allows administrators to manage filters and middleware applied to prompts or data sent to Large Language Models (LLMs) via the AI Gateway or Chat Rooms. Filters and middleware ensure data governance, compliance, and security by processing or controlling the flow of information. Below is an enhanced description with the distinction between **Filters** and **Middleware**:
 

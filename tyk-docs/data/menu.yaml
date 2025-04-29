@@ -638,14 +638,6 @@ menu:
                 category: Page
                 path: /ai-management/ai-studio/llm-management
                 show: True
-              - title: "LLMs"
-                category: Page
-                path: /ai-management/ai-studio/llms
-                show: True
-              - title: "Call Settings"
-                category: Page
-                path: /ai-management/ai-studio/call-settings
-                show: True
               - title: "Tools & Extensibility"
                 category: Page
                 path: /ai-management/ai-studio/tools
@@ -658,18 +650,7 @@ menu:
                 category: Page
                 path: /ai-management/ai-studio/filters
                 show: True
-              - title: "Catalogs"
-                category: Page
-                path: /ai-management/ai-studio/catalogs
-                show: True
-              - title: "Apps"
-                category: Page
-                path: /ai-management/ai-studio/apps
-                show: True
-              - title: "Model Prices"
-                category: Page
-                path: /ai-management/ai-studio/model-prices
-                show: True
+
           - title: "Administration"
             category: Directory
             show: True
@@ -677,14 +658,6 @@ menu:
               - title: "User Management & RBAC"
                 category: Page
                 path: /ai-management/ai-studio/user-management
-                show: True
-              - title: "Users"
-                category: Page
-                path: /ai-management/ai-studio/users
-                show: True
-              - title: "Groups"
-                category: Page
-                path: /ai-management/ai-studio/groups
                 show: True
               - title: "SSO Integration"
                 category: Page
@@ -701,10 +674,6 @@ menu:
               - title: "Analytics & Monitoring"
                 category: Page
                 path: /ai-management/ai-studio/analytics
-                show: True
-              - title: "Dashboard"
-                category: Page
-                path: /ai-management/ai-studio/dashboard
                 show: True
               - title: "Notifications"
                 category: Page

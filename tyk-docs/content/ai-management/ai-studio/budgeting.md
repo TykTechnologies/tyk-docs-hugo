@@ -1,4 +1,10 @@
-# Budget Control
+---
+title: "Budget Control"
+date: 2025-04-25
+tags: ["AI Studio", "AI Management", "Budget Control"]
+description: "How to configure budgets in Tyk AI Studio?"
+keywords: ["AI Studio", "AI Management", "Budget Control"]
+---
 
 Tyk AI Studio provides a Budget Control system to help organizations manage and limit spending on Large Language Model (LLM) usage.
 
@@ -31,7 +37,7 @@ Administrators configure these budgets via the Tyk AI Studio UI or API.
 
 ## Enforcement
 
-Budget enforcement primarily occurs at the **[Proxy & API Gateway](./proxy.md)**:
+Budget enforcement primarily occurs at the **[Proxy & API Gateway]({{< ref "ai-management/ai-studio/proxy" >}})**:
 
 1.  **Request Received:** The Proxy receives a request destined for an LLM.
 2.  **Cost Estimation:** Before forwarding the request, the Proxy might estimate the potential maximum cost (or rely on post-request cost calculation).
@@ -42,9 +48,9 @@ Budget enforcement primarily occurs at the **[Proxy & API Gateway](./proxy.md)**
 
 ## Integration with Other Systems
 
-*   **[Analytics & Monitoring](./analytics.md):** The Analytics system provides the cost data used to track spending against budgets. The current spent amount for a budget period is derived from aggregated analytics data.
-*   **[Model Pricing](./llm-management.md#model-pricing-system):** The pricing definitions are essential for the Analytics system to calculate costs accurately, which in turn feeds the Budget Control system.
-*   **[Notification System](./notifications.md):** Budgets can be configured to trigger notifications when spending approaches or reaches defined thresholds (e.g., alert admin when 80% of budget is consumed, notify user/admin when budget is exceeded).
+*   **[Analytics & Monitoring]({{< ref "ai-management/ai-studio/analytics" >}}):** The Analytics system provides the cost data used to track spending against budgets. The current spent amount for a budget period is derived from aggregated analytics data.
+*   **[Model Pricing]({{< ref "ai-management/ai-studio/llm-management" >}}):** The pricing definitions are essential for the Analytics system to calculate costs accurately, which in turn feeds the Budget Control system.
+*   **[Notification System]({{< ref "ai-management/ai-studio/notifications" >}}):** Budgets can be configured to trigger notifications when spending approaches or reaches defined thresholds (e.g., alert admin when 80% of budget is consumed, notify user/admin when budget is exceeded).
 
 ## Benefits
 

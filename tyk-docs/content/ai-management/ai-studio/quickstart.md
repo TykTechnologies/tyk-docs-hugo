@@ -1,15 +1,10 @@
 ---
 title: "Quickstart"
-weight: 1
-# bookFlatSection: false
-# bookToc: true
-# bookHidden: false
-# bookCollapseSection: false
-# bookComments: false
-# bookSearchExclude: false
+date: 2025-04-25
+tags: ["AI Studio", "AI Management", "Quickstart"]
+description: "AI Studio Quickstart"
+keywords: ["AI Studio", "AI Management", "Quickstart"]
 ---
-
-# Quickstart Guide
 
 This guide will help you get started with the Tyk AI Studio using Docker Compose.
 
@@ -131,5 +126,3 @@ If you encounter issues:
 2. Ensure your `.env` file contains valid API keys
 3. Verify that Docker and Docker Compose are properly installed
 4. Check the logs for any error messages: `docker compose logs -f`
-
-For more detailed information about the portal features and usage, refer to the [Dashboard Documentation](dashboard.md).

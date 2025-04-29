@@ -1,4 +1,10 @@
-# Notification System
+---
+title: "Notification"
+date: 2025-04-25
+tags: ["AI Studio", "AI Management", "Notifications"]
+description: "How to configure notifications in Tyk AI Studio?"
+keywords: ["AI Studio", "AI Management", "Notifications"]
+---
 
 Tyk AI Studio includes a centralized Notification System responsible for generating and delivering alerts and messages to users and administrators based on specific system events.
 
@@ -23,10 +29,10 @@ The Notification System aims to:
 
 Examples of events that might trigger notifications include:
 
-*   **[Budget Control](./llm-management.md#budget-control-system):**
+*   **[Budget Control]({{< ref "ai-management/ai-studio/llm-management" >}}):**
     *   Approaching spending limit threshold (e.g., 80% of budget).
     *   Reaching or exceeding spending limit.
-*   **[User Management](./user-management.md):**
+*   **[User Management]({{< ref "ai-management/ai-studio/user-management" >}}):**
     *   New user registration/invitation.
     *   Password reset request.
     *   Changes in user roles or group memberships.

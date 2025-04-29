@@ -1,15 +1,11 @@
 ---
-title: "Dashboard"
-weight: 3
-# bookFlatSection: false
-# bookToc: true
-# bookHidden: false
-# bookCollapseSection: false
-# bookComments: false
-# bookSearchExclude: false
+title: "Dashboard Overview for Tyk AI Studio"
+date: 2025-04-25
+tags: ["AI Studio", "AI Management", "Dashboard"]
+description: "Overview of dashboard in AI Studio?"
+keywords: ["AI Studio", "AI Management", "Dashboard"]
+draft: true
 ---
-
-# Dashboard Overview for Tyk AI Studio
 
 This dashboard provides an overview of user engagement, cost analysis, and tool/model usage for the Tyk AI Studio. Below is a breakdown of the various elements and their significance:
 

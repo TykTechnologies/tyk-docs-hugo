@@ -1,15 +1,11 @@
 ---
-title: "Catalogs Datasource"
-weight: 70
-# bookFlatSection: false
-# bookToc: true
-# bookHidden: false
-# bookCollapseSection: false
-# bookComments: false
-# bookSearchExclude: false
+title: "Catalogs View for Tyk AI Studio"
+date: 2025-04-25
+tags: ["AI Studio", "AI Management", "Catalogs"]
+description: "How to manage catalogs and in AI Studio?"
+keywords: ["AI Studio", "AI Management", "Catalogs"]
+draft: true
 ---
-
-# Catalogs Overview
 
 The **Catalogs View** provides administrators with a centralized interface to group and manage related resources such as Large Language Models (LLMs), Data Sources, and Tools. By organizing these resources into catalogs, administrators can efficiently manage access control and simplify the assignment of resources to user groups.
 
