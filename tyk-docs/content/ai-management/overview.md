@@ -11,7 +11,7 @@ As artificial intelligence transforms the business landscape, organizations face
 
 Tyk offers comprehensive AI management capabilities as follows:
 
-## [AI Studio](/ai-management/ai-studio/)
+## [AI Studio](/ai-management/ai-studio/overview)
 
 Tyk AI Studio is a comprehensive platform designed specifically for platform teams to manage and deploy AI applications with confidence. It enables organizations to:
 
@@ -23,9 +23,9 @@ Tyk AI Studio is a comprehensive platform designed specifically for platform tea
 
 AI Studio helps organizations avoid the pitfalls of "Shadow AI" by providing centralized management of credentials, logging, and access controls for all AI interactions across the enterprise.
 
-[Learn more about AI Studio →](/ai-management/ai-studio/)
+[Learn more about AI Studio →](/ai-management/ai-studio/overview)
 
-## [Tyk MCPs (Model Context Protocol)](/ai-management/tyk-mcps/)
+## [Tyk MCPs (Model Context Protocol)](/ai-management/tyk-mcps/overview)
 
 Tyk Model Context Protocol (MCP) servers extend your AI capabilities by connecting to external services and resources. With MCPs, you can:
 
@@ -41,7 +41,7 @@ MCPs follow a standardized protocol that allows Tyk to communicate with external
 - Building agents that can interact with your databases and APIs
 - Developing specialized tools for industry-specific AI applications
 
-[Learn more about Tyk MCPs →](/ai-management/tyk-mcps/)
+[Learn more about Tyk MCPs →](/ai-management/tyk-mcps/overview)
 
 ## Choosing the Right Solution
 
@@ -56,8 +56,8 @@ For most enterprise deployments, we recommend starting with AI Studio and integr
 
 To begin your AI management journey with Tyk:
 
-1. Explore the [AI Studio documentation](/ai-management/ai-studio/) to understand its capabilities
-2. Learn about [Tyk MCPs](/ai-management/tyk-mcps/) and how they can extend your AI systems
+1. Explore the [AI Studio documentation](/ai-management/ai-studio/overview) to understand its capabilities
+2. Learn about [Tyk MCPs](/ai-management/tyk-mcps/overview) and how they can extend your AI systems
 3. [Request a demo](https://tyk.io/ai-demo/) to see Tyk's AI management solutions in action
 
 ## Enterprise Benefits
