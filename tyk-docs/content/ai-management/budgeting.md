@@ -49,7 +49,7 @@ Budget enforcement primarily occurs at the **[Proxy & API Gateway]({{< ref "ai-m
 ## Integration with Other Systems
 
 *   **[Analytics & Monitoring]({{< ref "ai-management/analytics" >}}):** The Analytics system provides the cost data used to track spending against budgets. The current spent amount for a budget period is derived from aggregated analytics data.
-*   **[Model Pricing]({{< ref "ai-management/llm-management" >}}#model-pricing-system):** The pricing definitions are essential for the Analytics system to calculate costs accurately, which in turn feeds the Budget Control system.
+*   **[Model Pricing]({{< ref "ai-management/llm-management#model-pricing-system" >}}):** The pricing definitions are essential for the Analytics system to calculate costs accurately, which in turn feeds the Budget Control system.
 *   **[Notification System]({{< ref "ai-management/notifications" >}}):** Budgets can be configured to trigger notifications when spending approaches or reaches defined thresholds (e.g., alert admin when 80% of budget is consumed, notify user/admin when budget is exceeded).
 
 ## Benefits

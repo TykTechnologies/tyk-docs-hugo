@@ -127,4 +127,4 @@ If you encounter issues:
 3. Verify that Docker and Docker Compose are properly installed
 4. Check the logs for any error messages: `docker compose logs -f`
 
-For more detailed information about the portal features and usage, refer to the [Dashboard Documentation](dashboard.md).
+For more detailed information about the portal features and usage, refer to the [Dashboard Documentation]({{< ref "ai-management/dashboard" >}}).
