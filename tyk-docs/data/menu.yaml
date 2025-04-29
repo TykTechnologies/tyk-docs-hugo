@@ -641,11 +641,11 @@ menu:
               - title: "LLMs"
                 category: Page
                 path: /ai-management/ai-studio/llms
-                show: True
+                show: False
               - title: "Call Settings"
                 category: Page
                 path: /ai-management/ai-studio/call-settings
-                show: True
+                show: False
               - title: "Tools & Extensibility"
                 category: Page
                 path: /ai-management/ai-studio/tools
@@ -661,15 +661,15 @@ menu:
               - title: "Catalogs"
                 category: Page
                 path: /ai-management/ai-studio/catalogs
-                show: True
+                show: False
               - title: "Apps"
                 category: Page
                 path: /ai-management/ai-studio/apps
-                show: True
+                show: False
               - title: "Model Prices"
                 category: Page
                 path: /ai-management/ai-studio/model-prices
-                show: True
+                show: False
           - title: "Administration"
             category: Directory
             show: True
@@ -681,11 +681,11 @@ menu:
               - title: "Users"
                 category: Page
                 path: /ai-management/ai-studio/users
-                show: True
+                show: False
               - title: "Groups"
                 category: Page
                 path: /ai-management/ai-studio/groups
-                show: True
+                show: False
               - title: "SSO Integration"
                 category: Page
                 path: /ai-management/ai-studio/sso
@@ -705,7 +705,7 @@ menu:
               - title: "Dashboard"
                 category: Page
                 path: /ai-management/ai-studio/dashboard
-                show: True
+                show: False
               - title: "Notifications"
                 category: Page
                 path: /ai-management/ai-studio/notifications
