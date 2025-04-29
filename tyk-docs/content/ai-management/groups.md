@@ -1,13 +1,12 @@
 ---
-title: "Groups"
-weight: 5
-# bookFlatSection: false
-# bookToc: true
-# bookHidden: false
-# bookCollapseSection: false
-# bookComments: false
-# bookSearchExclude: false
+title: "Groups View for Tyk AI Studio"
+date: 2025-04-25
+tags: ["AI Studio", "AI Management", "Groups"]
+description: "Overview of groups in AI Studio?"
+keywords: ["AI Studio", "AI Management", "Groups"]
+draft: true
 ---
+
 
 # Groups View for Tyk AI Studio
 

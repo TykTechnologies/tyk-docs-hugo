@@ -1,15 +1,11 @@
 ---
-title: "Users"
-weight: 1
-# bookFlatSection: false
-# bookToc: true
-# bookHidden: false
-# bookCollapseSection: false
-# bookComments: false
-# bookSearchExclude: false
+title: "Users List View for Tyk AI Studio"
+date: 2025-04-25
+tags: ["AI Studio", "AI Management", "Users"]
+description: "How to configure Users in AI Studio?"
+keywords: ["AI Studio", "AI Management", "Users"]
+draft: true
 ---
-
-# Users List View for Tyk AI Studio
 
 The Users List View provides administrators with an overview of all registered users on the platform. This interface allows for managing users' access and permissions. Below is a detailed explanation of its components:
 

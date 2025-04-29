@@ -1,15 +1,12 @@
 ---
-title: "Apps"
-weight: 60
-# bookFlatSection: false
-# bookToc: true
-# bookHidden: false
-# bookCollapseSection: false
-# bookComments: false
-# bookSearchExclude: false
+title: "Apps View for Tyk AI Studio"
+date: 2025-04-25
+tags: ["AI Studio", "AI Management", "Apps"]
+description: "How to configure apps in AI Studio?"
+keywords: ["AI Studio", "AI Management", "Apps"]
+draft: true
 ---
 
-# Apps
 
 The **Apps View** is used to manage user-created applications that interact with Large Language Models (LLMs) and data sources via the Tyk AI Gateway. These apps provide a mechanism for users to define and encapsulate the functionality and resources they need for API interactions. Below is a detailed overview of the Apps View and its functionality.
 

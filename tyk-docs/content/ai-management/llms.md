@@ -1,15 +1,11 @@
 ---
-title: "Llms"
-weight: 10
-# bookFlatSection: false
-# bookToc: true
-# bookHidden: false
-# bookCollapseSection: false
-# bookComments: false
-# bookSearchExclude: false
+title: "Large Language Models (LLMs)"
+date: 2025-04-25
+tags: ["AI Studio", "AI Management", "LLMs", "Large Language Models"]
+description: "How to configure LLMs in AI Studio?"
+keywords: ["AI Studio", "AI Management", "LLMs", "Large Language Models"]
+draft: true
 ---
-
-# The LLMs Vendor List
 
 The **LLMs View** provides administrators with an overview of the Large Language Model (LLM) vendors integrated into the portal. This section allows for managing the LLMs available for use in Chat Room features and the AI Gateway. Below is a breakdown of the features and data displayed:
 
