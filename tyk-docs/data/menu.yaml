@@ -638,14 +638,14 @@ menu:
                 category: Page
                 path: /ai-management/ai-studio/llm-management
                 show: True
-              - title: "LLMs"
-                category: Page
-                path: /ai-management/ai-studio/llms
-                show: False
-              - title: "Call Settings"
-                category: Page
-                path: /ai-management/ai-studio/call-settings
-                show: False
+              # - title: "LLMs"
+              #   category: Page
+              #   path: /ai-management/ai-studio/llms
+              #   show: False
+              # - title: "Call Settings"
+              #   category: Page
+              #   path: /ai-management/ai-studio/call-settings
+              #   show: False
               - title: "Tools & Extensibility"
                 category: Page
                 path: /ai-management/ai-studio/tools
@@ -658,18 +658,18 @@ menu:
                 category: Page
                 path: /ai-management/ai-studio/filters
                 show: True
-              - title: "Catalogs"
-                category: Page
-                path: /ai-management/ai-studio/catalogs
-                show: False
-              - title: "Apps"
-                category: Page
-                path: /ai-management/ai-studio/apps
-                show: False
-              - title: "Model Prices"
-                category: Page
-                path: /ai-management/ai-studio/model-prices
-                show: False
+              # - title: "Catalogs"
+              #   category: Page
+              #   path: /ai-management/ai-studio/catalogs
+              #   show: False
+              # - title: "Apps"
+              #   category: Page
+              #   path: /ai-management/ai-studio/apps
+              #   show: False
+              # - title: "Model Prices"
+              #   category: Page
+              #   path: /ai-management/ai-studio/model-prices
+              #   show: False
           - title: "Administration"
             category: Directory
             show: True
@@ -678,14 +678,14 @@ menu:
                 category: Page
                 path: /ai-management/ai-studio/user-management
                 show: True
-              - title: "Users"
-                category: Page
-                path: /ai-management/ai-studio/users
-                show: False
-              - title: "Groups"
-                category: Page
-                path: /ai-management/ai-studio/groups
-                show: False
+              # - title: "Users"
+              #   category: Page
+              #   path: /ai-management/ai-studio/users
+              #   show: False
+              # - title: "Groups"
+              #   category: Page
+              #   path: /ai-management/ai-studio/groups
+              #   show: False
               - title: "SSO Integration"
                 category: Page
                 path: /ai-management/ai-studio/sso
@@ -702,10 +702,10 @@ menu:
                 category: Page
                 path: /ai-management/ai-studio/analytics
                 show: True
-              - title: "Dashboard"
-                category: Page
-                path: /ai-management/ai-studio/dashboard
-                show: False
+              # - title: "Dashboard"
+              #   category: Page
+              #   path: /ai-management/ai-studio/dashboard
+              #   show: False
               - title: "Notifications"
                 category: Page
                 path: /ai-management/ai-studio/notifications
