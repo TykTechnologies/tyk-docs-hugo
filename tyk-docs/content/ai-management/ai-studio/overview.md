@@ -3,7 +3,7 @@ title: AI Studio
 date: 2025-04-28
 tags: ["AI Management", "Platform Teams", "Tyk AI Studio"]
 description: "AI Management for Platform Teams with Tyk AI Studio, a comprehensive platform for managing and deploying AI LLMs and chats"
-alias: 
+aliases:
   - api-management/ai-management/overview
 ---
 
@@ -21,6 +21,16 @@ Tyk AI Studio enables platform teams to:
 - Full-blown RBAC to democratise access to LLMs without impinging on security obligations
 
 For more information and demo requests visit [Tyk AI Studio](https://tyk.io/tyk-ai-studio/)
+
+## MCP Integration
+
+Tyk AI Studio seamlessly integrates with Model Context Protocol (MCP), providing powerful capabilities for extending AI functionality:
+
+- **Remote MCP catalogue & server support** - AI Studio exposes a remote MCP server, making it simple for enterprises to securely integrate their internal APIs and tools centrally, without relying on local workarounds.
+  
+- **Secure local MCP server generator** - For development or isolated environments, AI Studio includes an MCP generator that converts OpenAPI specs into locally installable MCP servers, proxied through the Tyk AI Gateway for observability and policy enforcement.
+
+These MCP capabilities enable your organization to build a structured, secure AI supply chain while maintaining governance and control over how AI interacts with your systems.
 
 ---
 

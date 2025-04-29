@@ -9,7 +9,7 @@ description: "Tyk AI Management landing page. This page provides an overview of 
 
 As artificial intelligence transforms the business landscape, organizations face both tremendous opportunities and significant challenges. Tyk's AI Management solutions empower enterprises to harness the full potential of AI while maintaining robust governance, security, and control.
 
-Tyk offers two key solutions in the AI management space:
+Tyk offers comprehensive AI management capabilities as follows:
 
 ## [AI Studio](/ai-management/ai-studio/)
 
