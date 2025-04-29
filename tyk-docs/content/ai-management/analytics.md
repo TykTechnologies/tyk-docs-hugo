@@ -20,13 +20,13 @@ The Analytics System serves several key purposes:
 
 ## Data Collection
 
-The primary point of data collection is the **[Proxy & API Gateway](./proxy.md)**. As requests flow through the proxy:
+The primary point of data collection is the **[Proxy & API Gateway]({{< ref "ai-management/proxy" >}})**. As requests flow through the proxy:
 
 1.  **Request Details:** Information about the incoming request is captured (e.g., user ID, application ID, requested LLM/route, timestamp).
 2.  **LLM Interaction:** Details about the interaction with the backend LLM are recorded (e.g., model used, prompt tokens, completion tokens, latency).
-3.  **Cost Calculation:** Using data from the [Model Pricing System](./llm-management.md#model-pricing-system), the cost of the interaction is calculated based on token counts.
-4.  **Tool Usage:** If the interaction involved [Tools](./tools.md), relevant details might be logged (e.g., which tool was called, success/failure).
-5.  **Chat Context:** For interactions originating from the [Chat Interface](./chat-interface.md), metadata about the chat session might be included.
+3.  **Cost Calculation:** Using data from the [Model Pricing System]({{< ref "ai-management/llm-management" >}}#model-pricing-system), the cost of the interaction is calculated based on token counts.
+4.  **Tool Usage:** If the interaction involved [Tools]({{< ref "ai-management/tools" >}}), relevant details might be logged (e.g., which tool was called, success/failure).
+5.  **Chat Context:** For interactions originating from the [Chat Interface]({{< ref "ai-management/chat-interface" >}}), metadata about the chat session might be included.
 
 ## Architecture
 
@@ -71,7 +71,7 @@ Administrators typically access analytics data via dashboards within the Tyk AI 
 
 ## Integration with Other Systems
 
-*   **[Budget Control](./llm-management.md#budget-control-system):** Analytics data (specifically cost) is likely used by the Budget Control system to track spending against defined limits.
-*   **[Model Pricing](./llm-management.md#model-pricing-system):** The pricing definitions are crucial for calculating the cost metric within the analytics system.
+*   **[Budget Control]({{< ref "ai-management/llm-management" >}}#budget-control-system):** Analytics data (specifically cost) is likely used by the Budget Control system to track spending against defined limits.
+*   **[Model Pricing]({{< ref "ai-management/llm-management" >}}#model-pricing-system):** The pricing definitions are crucial for calculating the cost metric within the analytics system.
 
 By providing detailed analytics, Tyk AI Studio enables organizations to effectively manage costs, understand usage patterns, and ensure the optimal performance of their AI interactions.

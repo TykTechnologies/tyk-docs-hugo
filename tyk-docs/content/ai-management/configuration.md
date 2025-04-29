@@ -28,7 +28,7 @@ One of the most common initial steps is connecting Tyk AI Studio to an LLM provi
     *   **Configuration Name:** Give it a recognizable name (e.g., `OpenAI-GPT-4o`).
     *   **Model Name(s):** Specify the exact model identifier(s) provided by the vendor (e.g., `gpt-4o`, `gpt-4-turbo`).
     *   **API Key (Using Secrets):**
-        *   **IMPORTANT:** Do *not* paste your API key directly here. Instead, use [Secrets Management](./secrets.md).
+        *   **IMPORTANT:** Do *not* paste your API key directly here. Instead, use [Secrets Management]({{< ref "ai-management/secrets" >}}).
         *   If you haven't already, go to the **Secrets** section in the admin UI and create a new secret:
             *   **Variable Name:** `OPENAI_API_KEY` (or similar)
             *   **Secret Value:** Paste your actual OpenAI API key here.
@@ -40,16 +40,16 @@ One of the most common initial steps is connecting Tyk AI Studio to an LLM provi
 
     ![Placeholder: LLM Config UI](https://placehold.co/600x400?text=LLM+Configuration+UI)
 
-This LLM is now available for use within Tyk AI Studio, subject to [User/Group permissions](./user-management.md).
+This LLM is now available for use within Tyk AI Studio, subject to [User/Group permissions]({{< ref "ai-management/user-management" >}}).
 
-For more details, see the [LLM Management](./llm-management.md) documentation.
+For more details, see the [LLM Management]({{< ref "ai-management/llm-management" >}}) documentation.
 
 ## 3. Verify Core System Settings
 
 While most core settings are configured during deployment, you can usually review them within the administration UI:
 
 *   **Site URL:** Check that the base URL for accessing the portal is correct.
-*   **Email Configuration:** If using features like user invites or notifications, ensure SMTP settings are correctly configured and test email delivery if possible ([Notifications](./notifications.md)).
+*   **Email Configuration:** If using features like user invites or notifications, ensure SMTP settings are correctly configured and test email delivery if possible ([Notifications]({{< ref "ai-management/notifications" >}})).
 
 ## 4. Configuration Reference (Deployment)
 
@@ -68,8 +68,8 @@ Refer to the **Configuration Options** detailed within the [Installation Guide](
 
 With the initial configuration complete, you can now:
 
-*   Explore [User Management](./user-management.md) to create users and groups.
-*   Set up [Tools](./tools.md) for external API integration.
-*   Configure [Data Sources](./datasources-rag.md) for RAG.
-*   Define [Filters](./filters.md) for custom request/response logic.
-*   Try out the [Chat Interface](./chat-interface.md).
+*   Explore [User Management]({{< ref "ai-management/user-management" >}}) to create users and groups.
+*   Set up [Tools]({{< ref "ai-management/tools" >}}) for external API integration.
+*   Configure [Data Sources]({{< ref "ai-management/datasources-rag" >}}) for RAG.
+*   Define [Filters]({{< ref "ai-management/filters" >}}) for custom request/response logic.
+*   Try out the [Chat Interface]({{< ref "ai-management/chat-interface" >}}).

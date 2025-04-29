@@ -33,7 +33,7 @@ The Secrets Management system aims to:
 
 *   **Runtime Resolution:** When a configuration uses a field containing a secret reference (e.g., `$SECRET/MY_KEY`):
     1.  The configuration itself stores the `$SECRET/MY_KEY` string, *not* the actual secret value.
-    2.  Only when the system needs the actual value at runtime (e.g., the [Proxy](./proxy.md) preparing a request for an LLM, or a [Tool](./tools.md) calling its external API), Tyk AI Studio retrieves the encrypted secret value, decrypts it using the `TYK_AI_SECRET_KEY`, and injects the plain text value into the operation.
+    2.  Only when the system needs the actual value at runtime (e.g., the [Proxy]({{< ref "ai-management/proxy" >}}) preparing a request for an LLM, or a [Tool]({{< ref "ai-management/tools" >}}) calling its external API), Tyk AI Studio retrieves the encrypted secret value, decrypts it using the `TYK_AI_SECRET_KEY`, and injects the plain text value into the operation.
     3.  The decrypted value is typically used immediately and not persisted further.
 
 ## Creating & Managing Secrets (Admin)
@@ -54,11 +54,11 @@ Secrets can be updated or deleted as needed. Updating a secret value will automa
 
 Secrets are commonly used in:
 
-*   **[LLM Configurations](./llm-management.md):** Storing API keys for providers like OpenAI, Anthropic, Google Vertex AI, etc.
+*   **[LLM Configurations]({{< ref "ai-management/llm-management" >}}):** Storing API keys for providers like OpenAI, Anthropic, Google Vertex AI, etc.
     *   *Example:* In the API Key field for an OpenAI configuration: `$SECRET/OPENAI_API_KEY`
-*   **[Tool Configurations](./tools.md):** Storing API keys, authentication tokens (Bearer, Basic Auth), or other credentials needed to interact with the external API the tool represents.
+*   **[Tool Configurations]({{< ref "ai-management/tools" >}}):** Storing API keys, authentication tokens (Bearer, Basic Auth), or other credentials needed to interact with the external API the tool represents.
     *   *Example:* In a field for a custom header for a JIRA tool: `Authorization: Basic $SECRET/JIRA_BASIC_AUTH_TOKEN`
-*   **[Data Source Configurations](./datasources-rag.md):** Storing API keys or connection credentials for vector databases (e.g., Pinecone, Milvus) or embedding service providers.
+*   **[Data Source Configurations]({{< ref "ai-management/datasources-rag" >}}):** Storing API keys or connection credentials for vector databases (e.g., Pinecone, Milvus) or embedding service providers.
     *   *Example:* In the API Key field for a Pinecone vector store: `$SECRET/PINECONE_API_KEY`
 
 ## Security Considerations

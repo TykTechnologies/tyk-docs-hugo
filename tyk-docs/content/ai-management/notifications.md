@@ -29,10 +29,10 @@ The Notification System aims to:
 
 Examples of events that might trigger notifications include:
 
-*   **[Budget Control](./llm-management.md#budget-control-system):**
+*   **[Budget Control]({{< ref "ai-management/llm-management" >}}#budget-control-system):**
     *   Approaching spending limit threshold (e.g., 80% of budget).
     *   Reaching or exceeding spending limit.
-*   **[User Management](./user-management.md):**
+*   **[User Management]({{< ref "ai-management/user-management" >}}):**
     *   New user registration/invitation.
     *   Password reset request.
     *   Changes in user roles or group memberships.

@@ -14,25 +14,25 @@ The Proxy serves several critical functions:
 
 *   **Unified Access Point:** Provides a single, consistent endpoint for applications to interact with various LLMs.
 *   **Security Enforcement:** Handles authentication, authorization, and applies security policies.
-*   **Policy Management:** Enforces rules related to budget limits, model access, and applies custom [Filters](./filters.md).
-*   **Observability:** Logs detailed analytics data for each request, feeding the [Analytics & Monitoring](./analytics.md) system.
+*   **Policy Management:** Enforces rules related to budget limits, model access, and applies custom [Filters]({{< ref "ai-management/filters" >}}).
+*   **Observability:** Logs detailed analytics data for each request, feeding the [Analytics & Monitoring]({{< ref "ai-management/analytics" >}}) system.
 *   **Vendor Abstraction:** Hides the complexities of different LLM provider APIs, especially through the OpenAI-compatible endpoint.
 
 ## Core Functions
 
-1.  **Request Routing:** Incoming requests include a `routeId` in their path (e.g., `/proxy/{routeId}/...` or `/openai/{routeId}/...`). The Proxy uses this `routeId` to identify the target [LLM Configuration](./llm-management.md) and route the request accordingly.
+1.  **Request Routing:** Incoming requests include a `routeId` in their path (e.g., `/proxy/{routeId}/...` or `/openai/{routeId}/...`). The Proxy uses this `routeId` to identify the target [LLM Configuration]({{< ref "ai-management/llm-management" >}}) and route the request accordingly.
 
 2.  **Authentication & Authorization:**
     *   Validates the API key provided by the client application.
     *   Identifies the associated Application and User.
-    *   Checks if the Application/User group has permission to access the requested LLM Configuration based on [RBAC rules](./user-management.md).
+    *   Checks if the Application/User group has permission to access the requested LLM Configuration based on [RBAC rules]({{< ref "ai-management/user-management" >}}).
 
 3.  **Policy Enforcement:** Before forwarding the request to the backend LLM, the Proxy enforces policies defined in the LLM Configuration or globally:
-    *   **Budget Checks:** Verifies if the estimated cost exceeds the configured [Budgets](./llm-management.md) for the App or LLM.
+    *   **Budget Checks:** Verifies if the estimated cost exceeds the configured [Budgets]({{< ref "ai-management/llm-management" >}}) for the App or LLM.
     *   **Model Access:** Ensures the requested model is allowed for the specific LLM configuration.
-    *   **Filters:** Applies configured request [Filters](./filters.md) to modify the incoming request payload.
+    *   **Filters:** Applies configured request [Filters]({{< ref "ai-management/filters" >}}) to modify the incoming request payload.
 
-4.  **Analytics Logging:** After receiving the response from the backend LLM (and potentially applying response Filters), the Proxy logs detailed information about the interaction (user, app, model, tokens used, cost, latency, etc.) to the [Analytics](./analytics.md) database.
+4.  **Analytics Logging:** After receiving the response from the backend LLM (and potentially applying response Filters), the Proxy logs detailed information about the interaction (user, app, model, tokens used, cost, latency, etc.) to the [Analytics]({{< ref "ai-management/analytics" >}}) database.
 
 ## Endpoints
 
@@ -67,6 +67,6 @@ Tyk AI Studio typically exposes two primary types of proxy endpoints:
 
 ## Configuration & Security
 
-The behavior of the Proxy for a specific route is determined by the corresponding [LLM Configuration](./llm-management.md), which includes details about the backend vendor, model access, budget limits, and associated filters.
+The behavior of the Proxy for a specific route is determined by the corresponding [LLM Configuration]({{< ref "ai-management/llm-management" >}}), which includes details about the backend vendor, model access, budget limits, and associated filters.
 
 By centralizing LLM access through the Proxy, Tyk AI Studio provides a robust layer for security, control, and observability over AI interactions.
