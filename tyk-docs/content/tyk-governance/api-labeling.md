@@ -61,14 +61,37 @@ In this tutorial, we'll explore how to use API labeling to categorize and filter
 
 5. **Create a custom label (Admin only)**
 
-	As a Governance Admin:
+	Governance Admin users can create custom labels programmatically using the API:
 
-	- Navigate to the Label Management section
-	- Click "Add New Label"
-	- Define the label key (e.g., "Compliance")
-	- Specify whether it accepts free text or select from predefined values
-	- If using predefined values, enter the allowed values (e.g., "PCI-DSS", "GDPR", "HIPAA")
-	- Save the new label definition
+	Example using cURL:
+
+```bash
+	curl -X POST https://your-governancel-instance.tyk.io/api/labels/ \
+	-H "Content-Type: application/json" \
+	-H "X-API-Key: YOUR_ADMIN_TOKEN" \
+	-d '{
+		"name": "compliance",
+		"values": ["PCI-DSS", "GDPR", "HIPAA"]
+	}'
+```
+
+A successful request will return a 200 OK status code and the newly created label object:
+
+```json
+	{
+	"id": "64a1b2c3d4e5f6a7b8c9d0e1",
+	"name": "compliance",
+	"values": ["PCI-DSS", "GDPR", "HIPAA"]
+	}
+```
+
+**Notes**:
+- The name field is required and must be unique
+- The values field is optional. If provided, it defines the allowed values for this label
+- If values is empty, the label will accept any value (free text)
+- Only users with admin privileges can create labels
+- Once created, labels can be applied to APIs using the /api/{api-id}/labels endpoint
+- After creating a custom label, it will be available for selection when labeling APIs, either through the UI or via the API labeling endpoints.
 
 ### Validation
 
@@ -123,7 +146,7 @@ Use labels to indicate lifecycle stage (Development, Testing, Production, Deprec
 - **Assign label management responsibility** to a specific role or team to maintain consistency
 - **Review and update labels periodically** to ensure they remain relevant as your API landscape evolves
 - **Include label application in API onboarding workflows** to ensure consistent metadata from the start
-- **Create label templates for common API types** to speed up consistent labeling
+- **Use consistent labeling conventions** across all APIs to facilitate effective filtering and governance
 - **Combine multiple labels in filters** for more precise API discovery
 - **Use criticality and domain labels** as the foundation of your governance strategy
 
@@ -141,23 +164,11 @@ Labels are structured key-value pairs that can be validated and used for governa
 
 </details> 
 
-<details> <summary><b>Can I bulk apply labels to multiple APIs?</b></summary>
-
-Yes, the platform supports bulk label operations through API to efficiently categorize groups of APIs. The bulk edit feature on UI will be added in subsequent releases.
-
-</details> 
-
 <details> <summary><b>Are labels from source systems preserved during discovery?</b></summary>
 
 Yes, the discovery process attempts to map source system metadata to corresponding labels in the governance platform where possible.
 
 </details> 
-
-<details> <summary><b>Can I use labels to control access to APIs?</b></summary>
-
-Yes, labels can be used in conjunction with the access control system to determine which users can view or manage specific categories of APIs.
-
-</details> 
 
 ## Troubleshooting
 
@@ -176,11 +187,3 @@ Yes, labels can be used in conjunction with the access control system to determi
 - Ensure the label hasn't been deprecated or replaced  
 
 </details> 
-
-<details> <summary><b>Bulk labeling operation failed</b></summary>
-
-- Check that all APIs in the selection exist and are accessible  
-- Verify the label format matches the expected structure  
-- Look for validation errors if any APIs already have conflicting labels  
-
-</details>

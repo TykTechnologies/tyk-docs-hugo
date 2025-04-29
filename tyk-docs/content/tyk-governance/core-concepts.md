@@ -9,13 +9,13 @@ This section provides a detailed explanation of the key technical concepts that 
 
 ## What is Tyk Governance?
 
-Tyk Governance is a comprehensive API governance platform designed to provide centralized visibility, control, and policy enforcement across distributed API ecosystems. It enables organizations to establish and maintain consistent standards, security practices, and compliance requirements across multiple API gateways and management platforms.
+Tyk Governance is a comprehensive API Governance platform designed to provide centralized visibility, control, and policy enforcement across distributed API ecosystems. It enables organizations to establish and maintain consistent standards, security practices, and compliance requirements across multiple API gateways and management platforms.
 
 At its core, Tyk Governance is a federated control plane that sits above your existing API infrastructure, regardless of whether you're using Tyk exclusively or a mix of different API management solutions. It collects, analyzes, and governs API definitions from various sources, ensuring they adhere to your organization's standards and best practices.
 
 ```mermaid
 flowchart LR
-    subgraph "Tyk Governance Platform"
+    subgraph "Tyk Governance hub"
         GS["Governance Service"] --- RE["Rule Engine"]
         GS --- AR["API Repository"]
         GS --- RP["Reporting"]
@@ -106,10 +106,10 @@ Tyk Governance is designed to work with a wide range of API management platforms
 
 ### Current Platform Compatibility
 
-| Platform        | Tested Version | Support Level | Supported Features                                |
+| Platform        | Tested Version | Supported API Types | Supported Features                                |
 | --------------- | -------------- | ------------- | ------------------------------------------------- |
-| Tyk Dashboard   | 5.8+           | Full          | Complete integration with all governance features |
-| AWS API Gateway | All            | High          | API definition export, OAS schema export          |
+| Tyk Dashboard   | 5.3+           | Tyk OAS       | Complete integration with all governance features |
+| AWS API Gateway | All            | Rest APIs     | API definition export, OAS schema export          |
 
 ### Integration Capabilities
 
@@ -123,7 +123,7 @@ Tyk Governance integrates with these platforms through specialized agents that:
 
 ### Future Platform Support
 
-The Tyk Governance roadmap includes plans to expand support to additional platforms.
+The Tyk Governance roadmap includes plans to expand support to additional platforms and API Types.
 
 ## How It Works
 
@@ -159,7 +159,7 @@ The Governance Core is a Tyk Cloud hosted and managed service, providing several
 
 ### Customer-Hosted Agents
 
-While the core service is cloud-hosted, customers host their own agents within their environments:
+While the core service is cloud-hosted, customers can host their own agents within their environments:
 
 1. **Credential Isolation**: Tyk Governance never directly accesses your API platforms; all credentials remain within your environment.
 2. **Network Security**: The agent requires accepting inbound traffic from the cloud-based governance dashboard. All communication between agents and the dashboard is secured via TLS encryption.
@@ -189,9 +189,9 @@ sequenceDiagram
 
 Tyk Governance uses a secure bidirectional streaming protocol for efficient synchronization:
 
-1. **Registration**: Agents register with the governance platform and establish a secure connection.
+1. **Registration**: Agents register with the Governance hub and establish a secure connection.
 2. **Heartbeat**: Agents maintain a health check stream to indicate their status.
-3. **Sync Request**: The governance platform can trigger a sync operation on demand or on schedule.
+3. **Sync Request**: The Governance hub can trigger a sync operation on demand or on schedule.
 4. **Streaming Response**: Agents stream API definitions back to the platform as they are extracted.
 5. **Incremental Updates**: Only changed APIs are synchronized to minimize network traffic.
 
@@ -219,8 +219,6 @@ The information exchanged between agents and the Governance service includes:
 2. **From Governance to Agent**:
 	- Sync requests and configuration
 	- Authentication tokens and renewal information
-	- Filtering criteria for API selection
-	- Heartbeat acknowledgments
 
 Notably, the following are NOT transmitted:
 

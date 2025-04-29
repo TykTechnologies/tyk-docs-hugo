@@ -43,13 +43,13 @@ For detailed installation and configuration instructions, please refer to the [
 
 	 The dashboard provides a comprehensive view of all discovered APIs across your organization, with filtering and search capabilities.
 
+     {{< img src="img/governance/api-list.png" >}}
+
 3. **Examine API details**
 
 	 Click on any API to view detailed information including specifications, ownership, authentication methods, and governance status.
 
-4. **Apply labels and categorization**
-
-	 Use the Edit feature to organize APIs by domain, environment, or custom categories for better management.
+     {{< img src="img/governance/api-details.png" >}}
 
 ## How It Works
 
@@ -93,10 +93,9 @@ Developers often recreate APIs because they're unaware of existing ones. A compl
 - **Implement a review process** for newly discovered APIs to ensure proper classification and ownership assignment
 - **Integrate discovery with your CI/CD pipeline** to automatically synchronize new APIs as they're deployed
 - **Establish clear ownership** for each API to ensure accountability for governance and maintenance
-- **Use consistent labeling conventions** across all APIs to facilitate effective filtering and governance
 
 ## FAQs
-
+<!--
 <details> <summary><b>How does the system handle duplicate APIs discovered from different sources?</b></summary>
 
 The system uses a combination of API path, name, and other metadata to identify potential duplicates. These are flagged for review in the dashboard, allowing administrators to merge or manage them appropriately.
@@ -108,7 +107,7 @@ The system uses a combination of API path, name, and other metadata to identify 
 Yes, the governance agent can be configured to extract additional custom metadata fields specific to your organization's needs.
 
 </details> 
-
+-->
 <details> <summary><b>How secure is the API discovery process?</b></summary>
 
 The discovery process uses secure authentication methods for each provider and transmits data via encrypted channels. The agent requires minimal permissions—just enough to read API configurations.
