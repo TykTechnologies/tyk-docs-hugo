@@ -36,7 +36,7 @@ In this tutorial, we'll explore how to use API labeling to categorize and filter
 
 2. **Explore default labels**
 
-	The platform comes with pre-configured default labels such as "Business Domain" and "API Criticality".
+	Tyk Governance comes with pre-configured default labels such as "Business Domain" and "API Criticality".
 
 3. **Apply labels to APIs**
 
@@ -100,7 +100,7 @@ API Labeling and Categorization works through a flexible key-value metadata syst
 
 ### Labeling System Architecture
 
-1. **Bootstrap Default Labels**: During initial setup, the platform creates default label definitions such as "Business Domain" and "API Criticality".
+1. **Bootstrap Default Labels**: During initial setup, Tyk Governance creates default label definitions such as "Business Domain" and "API Criticality".
 2. **Label Definition**: Each label has:
 	- A unique key (e.g., "business_domain")
 	- A display name (e.g., "Business Domain")
@@ -112,7 +112,7 @@ API Labeling and Categorization works through a flexible key-value metadata syst
 	- Value: The specific value for this API (e.g., "Finance")
 
 4. **Label Storage**: Labels are stored as metadata with each API in the repository database.
-5. **Search and Filter**: The platform indexes labels to enable efficient filtering and searching.
+5. **Search and Filter**: Tyk Governance indexes labels to enable efficient filtering and searching.
 
 ## Use Cases
 
@@ -161,7 +161,7 @@ Labels are structured key-value pairs that can be validated and used for governa
 
 <details> <summary><b>Are labels from source systems preserved during discovery?</b></summary>
 
-Yes, the discovery process attempts to map source system metadata to corresponding labels in the governance platform where possible.
+Yes, the discovery process attempts to map source system metadata to corresponding labels in the governance hub where possible.
 
 </details> 
 

@@ -17,7 +17,7 @@ Before beginning the installation and setup process for Tyk Governance, ensure y
 ### System Requirements
 
 **For Tyk Governance Hub:**
-- No local system requirements as the platform is fully hosted and managed by Tyk in the cloud
+- No local system requirements as Tyk Governance is fully hosted and managed by Tyk in the cloud
 
 **For Tyk Governance Agent:**
 - Minimum 1 CPU core
@@ -30,7 +30,7 @@ Before beginning the installation and setup process for Tyk Governance, ensure y
 ### Permission Requirements
 
 **For Agent Installation:**
-- Read access to your API management platforms (Tyk, AWS API Gateway, etc.)
+- Read access to your API providers (Tyk, AWS API Gateway, etc.)
 - Ability to create and manage containers or services in your environment
 - Network configuration permissions to establish outbound connections
 - Permission to create and manage secrets for storing API credentials
@@ -39,7 +39,7 @@ Before beginning the installation and setup process for Tyk Governance, ensure y
 
 **For Tyk Governance Agent:**
 - Inbound access from the Tyk Governance Hub (default 50051 for gRPC)
-- Outbound access to your API management platforms
+- Outbound access to your API providers
 - Outbound HTTPS (port 443) access to the Tyk Governance Hub
 - If API Provider gateways run on different networks, network routes must allow the agent to communicate with those networks
 
@@ -114,8 +114,8 @@ flowchart LR
 
 **When to use this model:**
 - You use self-managed Tyk deployments (not Tyk Cloud)
-- You use AWS API Gateway or other supported platforms
-- You need to govern APIs across platforms that aren't in Tyk Cloud
+- You use AWS API Gateway or other supported providers
+- You need to govern APIs across providers that aren't in Tyk Cloud
 
 **Scenario examples:**
 
@@ -202,7 +202,7 @@ For environments where you need to install agents manually (non-Tyk platforms or
 
 **Prerequisites for Agent Installation:**
 - Access to the Governance hub to generate agent tokens
-- Network connectivity between the agent and both the Governance hub and your API management platform
+- Network connectivity between the agent and both the Governance hub and your API provider
 - Docker or Kubernetes for container-based deployment (recommended)
 
 #### Generate Agent Token
@@ -301,7 +301,7 @@ governanceDashboard:
 #==============================================================================
 # API Provider Configurations
 #==============================================================================
-# List of API management platforms this agent will connect to
+# List of API providers this agent will connect to
 # Each agent can connect to multiple providers of different types
 instances:
   #--------------------------------------------------------------------------
@@ -495,12 +495,12 @@ This is the simplest deployment model for existing Tyk Cloud customers.
 
 ### Example 2: Multi-Platform Governance with Custom Agents
 
-This example demonstrates how to set up governance across multiple API platforms.
+This example demonstrates how to set up governance across multiple API providers.
 
 **Configuration Steps:**
 
 1. Requesting Access to Tyk Governance
-2. Generate agent tokens for each platform as described in [Installing a Local Agent](#installing-a-local-agent)
+2. Generate agent tokens for each provider as described in [Installing a Local Agent](#installing-a-local-agent)
 3. Create configuration files for each agent
 4. Deploy each agent using Docker or Kubernetes as described in [Installing a Local Agent](#installing-a-local-agent)
 5. Verify agent connections
@@ -509,4 +509,4 @@ This example demonstrates how to set up governance across multiple API platforms
 8. Trigger "ReSync" to pull updates from all agents
 
 **Expected Outcome:**
-- APIs from all platforms will be discovered and displayed in a unified repository
+- APIs from all providers will be discovered and displayed in a unified repository

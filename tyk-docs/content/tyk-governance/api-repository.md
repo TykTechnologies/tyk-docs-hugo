@@ -53,14 +53,14 @@ For detailed installation and configuration instructions, please refer to the [
 
 ## How It Works
 
-The API Repository works by deploying agents that connect to various API sources, extract metadata, and synchronize this information with the central governance platform. Think of it as an automated API census that continuously updates your API inventory.
+The API Repository works by deploying agents that connect to various API sources, extract metadata, and synchronize this information with the central governance hub. Think of it as an automated API census that continuously updates your API inventory.
 
 ### Discovery Process
 
 1. **Agent Deployment**: Agents are deployed to connect with various API sources.
 2. **API Source Connection**: Agents authenticate and connect to configured API sources.
 3. **Metadata Extraction**: Agents extract API metadata including routes, authentication methods, and specifications.
-4. **Synchronization**: Extracted data is sent to the governance platform through secure gRPC streams.
+4. **Synchronization**: Extracted data is sent to the governance hub through secure gRPC streams.
 5. **Inventory Creation**: APIs are cataloged in a centralized repository with relevant metadata.
 6. **Classification**: APIs can be tagged and categorized based on extracted and custom metadata.
 7. **Continuous Updates**: Regular scans maintain an up-to-date inventory and identify changes.
@@ -138,10 +138,10 @@ The discovery process is designed to be lightweight and non-intrusive. It primar
 
 </details> 
 
-<details> <summary><b>Agent fails to connect to the governance platform</b></summary>
+<details> <summary><b>Agent fails to connect to the governance hub</b></summary>
 
 - Verify the governance URL and token in the agent configuration  
-- Check network connectivity between the agent and governance platform  
+- Check network connectivity between the agent and governance hub  
 - Examine the agent logs for specific connection errors  
 
 </details>

@@ -9,7 +9,7 @@ This section provides a detailed explanation of the key technical concepts that 
 
 ## What is Tyk Governance?
 
-Tyk Governance is a comprehensive API Governance platform designed to provide centralized visibility, control, and policy enforcement across distributed API ecosystems. It enables organizations to establish and maintain consistent standards, security practices, and compliance requirements across multiple API gateways and management platforms.
+Tyk Governance is a comprehensive API Governance hub designed to provide centralized visibility, control, and policy enforcement across distributed API ecosystems. It enables organizations to establish and maintain consistent standards, security practices, and compliance requirements across multiple API gateways and management platforms.
 
 At its core, Tyk Governance is a federated control plane that sits above your existing API infrastructure, regardless of whether you're using Tyk exclusively or a mix of different API management solutions. It collects, analyzes, and governs API definitions from various sources, ensuring they adhere to your organization's standards and best practices.
 
@@ -50,8 +50,8 @@ Organizations today face several challenges in multi-gateway environments:
 
 Tyk Governance addresses these challenges through:
 
-1. **Unified API Repository**: A central inventory of all APIs across different platforms.
-2. **Cross-Platform Policy Enforcement**: Consistent application of governance policies regardless of the underlying API platform.
+1. **Unified API Repository**: A central inventory of all APIs across different providers.
+2. **Cross-Platform Policy Enforcement**: Consistent application of governance policies regardless of the underlying API provider.
 3. **Automated Compliance Checking**: Continuous validation of APIs against organizational standards and regulatory requirements.
 4. **Maturity Assessment**: Evaluation and scoring of APIs based on design, security, documentation, and performance criteria.
 5. **Centralized Reporting**: Comprehensive visibility into API compliance and governance status.
@@ -100,20 +100,20 @@ rate-limit-exists:
 
 Rulesets can be customized to meet organizational needs and evolve as API best practices and security requirements change.
 
-## Supported API Platforms
+## Supported API Providers
 
 Tyk Governance is designed to work with a wide range of API management platforms, allowing organizations to maintain governance regardless of their existing API infrastructure.
 
-### Current Platform Compatibility
+### Current API Provider Compatibility
 
-| Platform        | Tested Version | Supported API Types | Supported Features                                |
+| API Provider        | Tested Version | Supported API Types | Supported Features                                |
 | --------------- | -------------- | ------------- | ------------------------------------------------- |
 | Tyk Dashboard   | 5.3+           | Tyk OAS       | Complete integration with all governance features |
 | AWS API Gateway | All            | Rest APIs     | API definition export, OAS schema export          |
 
 ### Integration Capabilities
 
-Tyk Governance integrates with these platforms through specialized agents that:
+Tyk Governance integrates with these providers through specialized agents that:
 
 1. Connect to the platform's management APIs
 2. Extract API definitions and configurations
@@ -121,7 +121,7 @@ Tyk Governance integrates with these platforms through specialized agents that:
 4. Apply Tyk-specific extensions where applicable
 5. Synchronize definitions with the central governance repository
 
-### Future Platform Support
+### Future API Provider Support
 
 The Tyk Governance roadmap includes plans to expand support to additional platforms and API Types.
 
@@ -161,7 +161,7 @@ The Governance Core is a Tyk Cloud hosted and managed service, providing several
 
 While the core service is cloud-hosted, customers can host their own agents within their environments:
 
-1. **Credential Isolation**: Tyk Governance never directly accesses your API platforms; all credentials remain within your environment.
+1. **Credential Isolation**: Tyk Governance never directly accesses your API providers; all credentials remain within your environment.
 2. **Network Security**: The agent requires accepting inbound traffic from the cloud-based governance dashboard. All communication between agents and the dashboard is secured via TLS encryption.
 3. **Deployment Flexibility**: Deploy agents in any environment where they can access your API platforms.
 4. **Lightweight Footprint**: Agents have minimal resource requirements and can run in containers or VMs.
@@ -174,10 +174,10 @@ sequenceDiagram
     participant Governance
     participant RuleEngine
     
-    Agent->>Governance: Register with platform
+    Agent->>Governance: Register with governance hub
     Governance->>Agent: Issue authentication token
     Governance->>Agent: Send sync request
-    Agent->>Agent: Probe API management platform
+    Agent->>Agent: Get APIs from API providers
     Agent->>Governance: Stream API definitions
     Governance->>Governance: Store in repository
     Governance->>RuleEngine: Validate against rules
@@ -192,7 +192,7 @@ Tyk Governance uses a secure bidirectional streaming protocol for efficient sync
 1. **Registration**: Agents register with the Governance hub and establish a secure connection.
 2. **Heartbeat**: Agents maintain a health check stream to indicate their status.
 3. **Sync Request**: The Governance hub can trigger a sync operation on demand or on schedule.
-4. **Streaming Response**: Agents stream API definitions back to the platform as they are extracted.
+4. **Streaming Response**: Agents stream API definitions back to the governance hub as they are extracted.
 5. **Incremental Updates**: Only changed APIs are synchronized to minimize network traffic.
 
 ### Security Measures
