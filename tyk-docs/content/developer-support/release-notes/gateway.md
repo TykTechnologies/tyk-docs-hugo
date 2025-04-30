@@ -1818,7 +1818,7 @@ Resolved an issue where some API requests were routed incorrectly due to path so
 <details>
 <summary>Resolved Incorrect Timeout Application for Specific API Endpoints</summary>
 
-Fixed an issue where proxy_default_timeout for specific API endpoints were not being applied correctly, causing requests to use the global timeout instead.
+Fixed an issue where [proxy_default_timeout]({{< ref "tyk-oss-gateway/configuration#proxy_default_timeout" >}}) for specific API endpoints was not being applied correctly, causing requests to use the global timeout instead.
 </details>
 </li>
 <li>
