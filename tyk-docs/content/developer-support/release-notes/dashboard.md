@@ -1545,7 +1545,7 @@ Fixed an issue where the Dashboard might not allow the correct number of Gateway
 <details>
 <summary>Various fixes to the Dashboard UI</summary>
 
-Improved formatting for the password error on the add user page
+We have implemented various fixes and improvements in the Dashboard GUI to enhance usability.
 </details>
 </li>
 <li>
