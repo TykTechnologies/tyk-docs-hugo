@@ -1734,7 +1734,7 @@ links to API documentation and FAQs. You can copy it from the previous release. 
 
 #### Release Highlights
 
-This release focuses mainly on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.11" >}}) below.
+This patch release contains various bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.11" >}}) below.
 
 #### Breaking Changes
 
