@@ -16,7 +16,7 @@ This allows AI tools to interpret, invoke, and structure API operations without 
 - Allow AI assistants to understand and call API operations
 - Configure basic access controls (e.g., filtering operations and setting headers) to manage how AI tools interact with your APIs
 
-If you're looking for quick setup, [jump to Quick Start](#quick-start). For deeper understanding, see [How It Works](#how-it-works) and [Use Cases](#use-cases).
+If you're looking for quick setup, [jump to Quick Start]({{< ref "#quick-start" >}}). For deeper understanding, see [How It Works]({{< ref "#how-it-works" >}}) and [Use Cases]({{< ref "#use-cases" >}}).
 
 ```mermaid
 graph LR
@@ -44,7 +44,7 @@ graph LR
 - **MCP Extensions:** Support for custom x-mcp extensions to override tool names and descriptions
 - **Multiple Integration Options:** Works with Claude Desktop, Cursor, Vercel AI SDK, and other MCP-compatible environments
 
-Check the [complete technical list](https://github.com/TykTechnologies/api-to-mcp?tab=readme-ov-file#features) is available in our GH repository.
+Check the [complete technical list](https://github.com/TykTechnologies/api-to-mcp#features) is available in our GitHub repository.
 
 ## Quick Start
 
@@ -52,7 +52,7 @@ To get started quickly, the primary way to use it is by configuring your AI assi
 
 ### Requirements
 - [Node.js v18+](https://nodejs.org/en/download) installed
-- An accessible OpenAPI specification, e.g. `https://petstore3.swagger.io/api/v3/openapi.json"` (could be a local file as well)
+- An accessible OpenAPI specification, e.g. `https://petstore3.swagger.io/api/v3/openapi.json` (could be a local file as well)
 - Claude Desktop (which we show in this example) or other MCP-compatible AI assistant that supports connecting to external MCP-compatible tool servers (e.g. Cursor, Vercel AI SDK, Cline extension in VS Code etc.)
 
 ### Configure your AI Assistant
@@ -87,8 +87,7 @@ Once connected, ask the AI to perform an operation (e.g., "List all pets" or "Cr
 
 ## How It Works
 
-### The **API to MCP** user flow
-The **API to MCP** tool:
+### User flow in *API to MCP** user flow
 
 1.  **Input**: Your OpenAPI specification (required) and optional overlays
 2.  **Processing**: The API to MCP tool loads the spec, applies any overlays, and transforms API operations into MCP tools

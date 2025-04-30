@@ -62,15 +62,17 @@ To get started quickly, the primary way to use it is by configuring your AI assi
 To connect the tool with MCP-compatible assistants, you need to register it as an MCP server. Most AI assistance share similar MCP server definition. This is the definition for *docs-mcp*:
 
 ```json
-"mcpServers": {
-    "tyk-docs-search": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@tyk-technologies/docs-mcp@latest"
-      ],
-      "enabled": true
-    }
+{
+  "mcpServers": {
+      "tyk-docs-search": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@tyk-technologies/docs-mcp@latest"
+        ],
+        "enabled": true
+      }
+  }
 }
 ```
 

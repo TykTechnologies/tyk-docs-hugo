@@ -9,7 +9,7 @@ description: "Talk to Tyk Dashboard like a person using AI tools"
 
 Use `tyk-dashboard-mcp` to expose your **Tyk Dashboard API** to AI assistants like Claude, Cursor, or VS Code extensions — enabling natural-language interaction with your Tyk Dashboard.
 
-This tool is a preconfigured fork of [api-to-mcp GH repository](https://github.com/TykTechnologies/api-to-mcp), designed specifically for the *Tyk Dashboard* API. It comes bundled with a predefined OpenAPI spec and overlays, so you don’t need to configure much manually.
+This tool is a preconfigured fork of [api-to-mcp GitHub repository](https://github.com/TykTechnologies/api-to-mcp), designed specifically for the *Tyk Dashboard* API. It comes bundled with a predefined OpenAPI spec and overlays, so you don’t need to configure much manually.
 
 Learn more about the core functionality in the [API to MCP guide]({{< ref "ai-management/tyk-mcps/api-to-mcp/" >}}).
 
@@ -49,7 +49,7 @@ Once connected, you, with your AI assistants, can perform helpful actions on you
 
 Refer to your assistant’s docs for where to place this config — e.g.
 - `claude_desktop_config.json` for [Claude configuration](https://modelcontextprotocol.io/quickstart/user#2-add-the-filesystem-mcp-server)
-- `.cursor-config.json` for [Cursor configiration](https://docs.cursor.com/context/model-context-protocol#configuring-mcp-servers)
+- `.cursor-config.json` for [Cursor configuration](https://docs.cursor.com/context/model-context-protocol#configuring-mcp-servers)
 - `cline_mcp_settings.json` for [Cline configuration](https://docs.roocode.com/features/mcp/using-mcp-in-roo#configuring-mcp-servers) (as a VS Code extension).
 
 **Step 2.**
@@ -73,7 +73,7 @@ Here you can see the response of asking the *Cline* in VS Code:
 
 - You don’t need to manually define an OpenAPI spec — this tool includes the official Tyk Dashboard OpenAPI spec.
 - You can fork or extend the tool if you want to include additional internal APIs alongside the dashboard.
-- It's an open source and you can find it in [tyk-dashboard-mcp GitHub Repo](https://github.com/TykTechnologies/tyk-dashboard-mcp)
+- It's an open source and you can find it in [tyk-dashboard-mcp GitHub repository](https://github.com/TykTechnologies/tyk-dashboard-mcp)
 
 ## FAQs
 
@@ -94,7 +94,7 @@ Only the operations defined in the OpenAPI spec. You can customize the access li
         "--target",
         "https://your-dashboard-domain.com",
         "--headers",
-        "Authorization: $TYK_API_KEY"
+        "Authorization: $TYK_API_KEY",
         "--whitelist",
         "getApis*,POST:/api/apis/oas",
       ],
