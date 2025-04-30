@@ -1,0 +1,71 @@
+<style>
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 2rem;
+  }
+  @media (min-width: 576px) {
+    .feature-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 992px) {
+    .feature-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .feature-item {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 16px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  }
+  .feature-icon {
+    font-size: 3.5rem;
+    margin-bottom: 16px;
+  }
+  .feature-title {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    color: #333;
+  }
+  .feature-description {
+    color: #666;
+    flex-grow: 1;
+  }
+  .feature-button {
+    margin-top: 16px;
+  }
+  .feature-button a {
+    display: inline-block;
+    background-color: #00AEF0;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+</style>
+
+<div class="container">
+  <div class="feature-grid">
+    {{ $dataFile := .Get "dataFile" }}
+    {{ range (index $.Site.Data $dataFile).components }}
+    <div class="feature-item">
+      <div class="feature-icon">{{ .icon }}</div>
+      <div class="feature-title">{{ .title }}</div>
+      <p class="feature-description">{{ .description }}</p>
+      {{ if .path }}
+      <div class="feature-button">
+        <a href="{{ .path | relURL }}">{{ .button_text }}</a>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</div>
