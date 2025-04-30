@@ -2,210 +2,64 @@
 title: API to MCP in Tyk Gateway
 date: 2025-04-28
 tags: ["AI MCP", "API-to-MCP", "Tyk AI MCP"]
-description: "Learn how to transform your existing APIs into MCP-compatible tools using Tyk's API to MCP solution."
+description: "Enable AI assistants to safely and dynamically interact with your existing APIs using Tyk's API to MCP tooling."
 ---
 
 ## Overview
 
-**API to MCP** enables the transformation of OpenAPI specifications into MCP-compatible tool definitions. It allows AI assistants to work with your existing APIs without requiring changes to your backend services.
+**API to MCP** enables AI assistants to safely and dynamically interact with your existing APIs. It allows non-technical users to access API functionality through natural language, while developers retain full control over what endpoints are exposed and how they are accessed.
 
-### Key Benefits
+Under the hood, it works by transforming OpenAPI-documented REST APIs into **Model Context Protocol (MCP)** tool definitions. This allows AI tools to interpret, invoke, and structure API operations without requiring any backend modifications.
 
-- Reuse existing APIs without modification
-- Provide standardised access to AI systems
-- Apply governance and access controls
-- Avoid building custom AI interfaces
-- Based on open standards (OpenAPI, MCP)
+Use this tool to:
+- Expose your APIs for AI interaction
+- Allow AI assistants to understand and call API operations
+- Configure basic access controls (e.g., filtering operations and setting headers) to manage how AI tools interact with your APIs
 
-### Requirements
+If you're looking for quick setup, [jump to Quick Start](#quick-start). For deeper understanding, see [How It Works](#how-it-works) and [Use Cases](#use-cases).
 
-- Valid OpenAPI (Swagger) specification
-- Accessible, live API endpoint
+```mermaid
+graph LR
+    A["Your OpenAPI"] --> B["Tyk API-to-MCP Tool"]
+    B --> C["Tyk MCP Server"]
+    D["AI Assistant"] <--> C
+    C <--> E["Your API"]
+    
+    style A fill:#d3e5ef,stroke:#333,stroke-width:2px,font-size:18px
+    style B fill:#d5f5e3,stroke:#333,stroke-width:2px,font-size:18px
+    style C fill:#d5f5e3,stroke:#333,stroke-width:2px,font-size:18px
+    style D fill:#eeeeee,stroke:#333,stroke-width:2px,font-size:18px
+    style E fill:#fdebd0,stroke:#333,stroke-width:2px,font-size:18px
+    
+    linkStyle default stroke-width:3px
+```
 
----
+## Key Features
+- **Dynamic OpenAPI Loading:** Load specifications from local files or HTTP/HTTPS URLs
+- **OpenAPI Overlay Support:** Apply overlays to customize specifications
+- **Flexible Operation Filtering:** Include/exclude specific operations using glob patterns
+- **Comprehensive Parameter Handling:** Preserves formats and includes metadata
+- **Authentication Support:** Handles API keys, OAuth tokens, and other security schemes
+- **Custom Headers:** Add custom headers to all API requests
+- **MCP Extensions:** Support for custom x-mcp extensions to override tool names and descriptions
+- **Multiple Integration Options:** Works with Claude Desktop, Cursor, Vercel AI SDK, and other MCP-compatible environments
+
+Check the [complete technical list](https://github.com/TykTechnologies/api-to-mcp?tab=readme-ov-file#features) is in our GH repository.
 
 ## Quick Start
 
-Follow these steps to connect an OpenAPI specification to an AI assistant using API to MCP.
+To get started quickly, the primary way to use it is by configuring your AI assistant to run it directly as an MCP tool.
 
-### Prerequisites
+### Requirements
+- [Node.js](https://nodejs.org/en) installed
+- An accesible OpenAPI specification, e.g. `https://petstore3.swagger.io/api/v3/openapi.json"` (could be a local file as well)
+- Claude Desktop (which we show in this example) or other MCP-compatible AI assistant that supports connecting to external MCP-compatible tool servers (e.g. Cursor, Vercel AI SDK, Cline extension in VS Code etc.), 
 
-- Node.js installed
-- A valid OpenAPI/Swagger specification
-- Running API service
-- AI assistant with MCP support (e.g., [Claude](https://claude.ai/), [VS Code with Cline](https://marketplace.visualstudio.com/items?itemName=anthropic.anthropic-vscode), [Cursor](https://cursor.sh/))
+### Configure with your AI Assistant
 
-### Step-by-Step Guide
+#### MCP connnection definition
+To connect the tool with Claude Desktop or other MCP-compatible assistants, you need to register it as an MCP server. Most AI assistance share similar MCP server definition. This is the definition for *api-to-mcp* with petstore as the OpenAPI.
 
-1. Run *API to MCP* tool with your API specification::
-   ```bash
-   npx -y @tyk-technologies/api-to-mcp --spec=https://petstore3.swagger.io/api/v3/openapi.json
-   ```
-
-2. Configure your AI assistant:
-   - For Claude Desktop: Add the MCP server to its configuration settings.
-
-3. Ask the AI to perform an operation (e.g., "List all pets").
-
----
-
-## How It Works
-
-API to MCP serves as a middleware that translates OpenAPI specifications into tools that AI assistants can discover and invoke via MCP.
-
-```mermaid
-graph TD
-    A[OpenAPI Specification] -->|Load & Parse| B[API to MCP Tool]
-    C[OpenAPI Overlays] -->|Optional| B
-    B -->|Generate| D[MCP Server]
-    D -->|Expose API Operations as| E[MCP Tools]
-    F[AI Assistant] -->|Discovers & Uses| E
-    E -->|Executes| G[Your REST API]
-    G -->|Returns Data| E
-    E -->|Formats Response| F
-```
-
----
-
-## Use Cases
-
-- **AI-powered API access**: Allow AI to discover and invoke APIs automatically
-- **Chatbot integration**: Extend chatbots with backend capabilities
-- **Automated documentation**: Use AI to generate contextual docs
-- **AI-driven testing**: Let AI validate and explore APIs
-- **Workflow automation**: Connect AI with business systems
-
----
-
-## Jobs-To-Be-Done (JTBD)
-
-### Enable AI Access to Existing APIs
-
-Expose your APIs to AI assistants using OpenAPI specs—no code changes needed.
-
-### Standardise Interactions
-
-Use MCP tool definitions to unify how AI interacts with multiple services.
-
-### Apply Governance
-
-Control which operations are exposed and how they are used.
-
-### Enhance Discovery
-
-Allow AI assistants to auto-discover available operations and metadata.
-
-### Simplify Testing
-
-Leverage natural language to generate test requests and analyse responses.
-
----
-
-## Best Practices
-
-- **Start small**: Begin with safe, limited API access
-- **Whitelist/Blacklist**: Filter API operations carefully
-- **Secure headers**: Add auth headers to protect APIs
-- **Monitor usage**: Observe AI interaction patterns
-- **Version specs**: Use version control for OpenAPI files
-- **Use env vars**: Avoid hardcoding secrets
-- **Test safely**: Validate before production
-
----
-
-## FAQs
-
-**Can I use non-REST APIs?**  
-Not yet—OpenAPI-based REST APIs are supported. gRPC and GraphQL support is planned.
-
-**Which AI assistants are supported?**  
-Any that support MCP: Claude, Cursor, Cline, and others.
-
-**How is authentication handled?**  
-Via env vars or config. Use API keys, OAuth, or headers.
-
-**Can I restrict access to specific endpoints?**  
-Yes—use whitelists/blacklists in your config or CLI flags.
-
----
-
-## Troubleshooting
-
-**"Command not found"**  
-Try `npx @tyk-technologies/api-to-mcp` to avoid installation issues.
-
-**MCP server doesn't start**  
-Check Node.js version and OpenAPI validity.
-
-**AI can't find tools**  
-Confirm the MCP server is registered correctly in your assistant.
-
-**Requests fail**  
-Check credentials, API URL, and endpoint health.
-
----
-
-## Installation
-
-### Global
-
-```bash
-npm install -g @tyk-technologies/api-to-mcp
-```
-
-### Project
-
-```bash
-npm install @tyk-technologies/api-to-mcp
-```
-
-### Basic Usage
-
-```bash
-# No install needed
-npx @tyk-technologies/api-to-mcp --spec=https://petstore3.swagger.io/api/v3/openapi.json
-
-# If installed globally
-tyk-api-to-mcp --spec=./path/to/openapi.json
-```
-
----
-
-## Configuration
-
-### CLI Options
-
-```bash
-tyk-api-to-mcp --spec=./api.json   --overlays=./overlay.json   --whitelist="getPet*,POST:/users/*"   --targetUrl=https://api.example.com
-```
-
-### Environment Variables
-
-```bash
-export OPENAPI_SPEC_PATH=./api.json
-export TARGET_API_BASE_URL=https://api.example.com
-export API_KEY=your-api-key
-```
-
-### Config File Example
-
-```json
-{
-  "spec": "./api.json",
-  "targetUrl": "https://api.example.com",
-  "whitelist": "getPets,createPet,/pets/*",
-  "apiKey": "your-api-key",
-  "headers": {
-    "X-Custom-Header": "value"
-  }
-}
-```
-
----
-
-## Integration Examples
-
-### Claude Desktop
 
 ```json
 {
@@ -224,63 +78,172 @@ export API_KEY=your-api-key
 }
 ```
 
-### Cursor
+**Step 1.** You would need to add the code above to the AI assitant in order to register the MCP server:
 
-```json
-{
-  "servers": [
-    {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@tyk-technologies/api-to-mcp",
-        "--spec",
-        "./api.json"
-      ],
-      "name": "My API Tools"
-    }
-  ]
-}
+- **Claude Desktop**: For MacOS, you need to update `~/Library/Application Support/Claude/claude_desktop_config.json`. See the [Claude Desktop setup instructions](https://github.com/TykTechnologies/api-to-mcp?tab=readme-ov-file#setting-up-in-claude-desktop) for Windows OS and more customization options.
+- **Cursor**: See the [Cursor setup guide](https://github.com/TykTechnologies/api-to-mcp#cursor) for instruction on setting it with Cursor.
+
+**Step 2.** Once connected, ask the AI to perform an operation (e.g., "List all pets" or "Create a new user").
+
+## How It Works
+
+### The **API to MCP** user flow
+The **API to MCP** tool:
+
+1.  **Input**: Your OpenAPI specification (required) and optional overlays
+2.  **Processing**: The API to MCP tool loads the spec, applies any overlays, and transforms API operations into MCP tools
+3.  **Runtime**: The MCP server exposes these tools to AI assistants, which are now discoverable to the AI assistant
+4.  **Execution Flow**: When you ask the AI assistant a question, it calls the tool (via the MCP server), which translates the request, forwards it to your API, and returns a formatted response.
+
+
+```mermaid
+flowchart LR
+    subgraph "Input"
+        A["OpenAPI Specification"] 
+        B["Optional Overlays"]
+    end
+
+    subgraph "API to MCP Tool"
+        C["1. Load & Parse<br>OpenAPI Spec"]
+        D["2. Apply Overlays<br>(if provided)"]
+        E["3. Transform API Operations<br>into MCP Tools"]
+        F["MCP Server"]
+    end
+
+    subgraph "Runtime"
+        G["4. AI Assistant<br>Discovers Tools"]
+        H["AI Assistant<br>Calls Tools"]
+        I["Your API"]
+    end
+
+    A -->|YAML/JSON| C
+    B -->|Optional| D
+    C --> D
+    D --> E
+    E -->|Register Tools| F
+    F -->|Expose Tools| G
+    G --> H
+    H -->|Request| F
+    F -->|Translate & Forward| I
+    I -->|Response| F
+    F -->|Format & Return| H
+
+    classDef input fill:#f9f,stroke:#333,stroke-width:2px,font-size:18px;
+    classDef tool fill:#bbf,stroke:#333,stroke-width:2px,font-size:18px;
+    classDef runtime fill:#bfb,stroke:#333,stroke-width:2px,font-size:18px;
+    
+    class A,B input;
+    class C,D,E,F tool;
+    class G,H,I runtime;
+```
+
+
+
+### Runtime Request Flow
+
+The following diagram illustrates the flow of a request through the system at runtime:
+
+```mermaid
+sequenceDiagram
+    participant AI as "AI Client"
+    participant MCP as "MCP Server"
+    participant Tool as "Tool Handler"
+    participant API as "API Client"
+    participant Target as "Target API"
+
+    AI->>MCP: Invoke Tool
+    MCP->>Tool: Execute Tool Handler
+    Tool->>Tool: Extract Parameters
+    Tool->>Tool: Validate Input
+    Tool->>API: executeApiCall()
+    API->>API: Apply Security
+    API->>API: Construct Request
+    API->>Target: Make HTTP Request
+    Target-->>API: HTTP Response
+
+    alt Successful Response
+        API-->>Tool: Success Response
+        Tool->>MCP: Format MCP Result
+        MCP-->>AI: Tool Execution Success
+    else Error Response
+        API-->>Tool: Error Response
+        Tool->>MCP: Map to MCP Error
+        MCP-->>AI: Tool Execution Error
+    end
 ```
 
 ---
 
-## Development
+## Use Cases
 
-### Local Setup
-
-```bash
-git clone https://github.com/TykTechnologies/api-to-mcp.git
-cd api-to-mcp
-npm install
-npm run build
-npm run dev
-```
-
-### Fork and Customize
-
-1. Fork the repo
-2. Add OpenAPI specs to `specs/`
-3. Edit default config
-4. Update metadata in `package.json`
-5. Publish with:
-
-```bash
-npm version 1.0.0
-npm publish
-```
+- **AI-powered API access**: Natural language interfaces over your existing APIs
+- **Chatbots**: Let bots invoke backend services contextually
+- **Auto-docs & validation**: Use AI to test, describe, or troubleshoot APIs
+- **AI-driven testing**: Natural-language test generation and feedback
+- **Workflow automation**: Connect APIs and AI logic in real time
 
 ---
+
+## Common Use Scenarios
+
+Use **API to MCP** when you need to:
+
+### 🔌 Connect AI Assistants to Existing APIs
+Let AI tools understand and call your existing API operations using natural language — no code changes needed.
+
+### 🧩 Create a Unified Interface for AI Systems  
+Standardize how APIs are accessed by AI across your organization with a consistent protocol (MCP).
+
+### 🔒 Control API Access for AI
+Filter which operations are available to AI, apply authentication, and monitor usage securely.
+
+### 🔍 Improve API Discoverability  
+Enable AI systems to automatically list available endpoints, input parameters, and expected responses.
+
+### 🧪 Test APIs Using AI
+Use AI assistants to generate test inputs, invoke endpoints, and validate responses in a conversational way.
+
+---
+
+## Best Practices
+
+- **Start small**: Only expose safe, limited endpoints
+- **Use filters**: Whitelist or blacklist endpoints as needed
+- **Secure your APIs**: Pass tokens, headers, or keys securely
+- **Track usage**: Monitor tool access and patterns
+- **Version specs**: Maintain OpenAPI version control
+- **Use env vars**: Don't hardcode secrets in CLI or config
+- **Validate safely**: Test in staging before going live
+
+---
+
+## Customize your own version of the api-to-mcp tool
+
+If you'd like to share your MCP with a predefined OpenAPI spec and configuration, you can customize this tool to fit your needs. This is especially useful if you want to distribute a ready-to-use setup for others.
+
+By creating a customized version, others can use the tool with minimal configuration --- no need to manually specify specs or overlays.
+
+Refer to the [customization and publishing guide](https://github.com/TykTechnologies/api-to-mcp?tab=readme-ov-file#customizing-and-publishing-your-own-version) in the *api-to-mcp* repository for step-by-step instructions.
+
+---
+
+## FAQs
+
+**Does this work with GraphQL?**  
+Not currently — OpenAPI REST APIs only.
+
+**How do I secure my API requests?**  
+Use `--headers`, environment variables. Check the [configuration section](https://github.com/TykTechnologies/api-to-mcp/tree/main#configuration) for more details.
+
+**Can I hide or rename tools?**  
+Yes — use `x-mcp` extensions and filters.
+
+**What AI tools are supported?**  
+Any tool that supports MCP: Claude, Cursor, VS Code, and more.
+
 
 ## Summary
 
-API to MCP enables AI assistants to safely and consistently access your APIs by converting OpenAPI specs into MCP tools. This allows teams to leverage existing APIs while adding AI capabilities securely and efficiently.
+API to MCP transforms OpenAPI specs into AI-compatible tools using the MCP standard. It enables your AI stack to dynamically understand, test, and invoke your existing APIs securely — with zero changes to your backend.
 
----
-
-## Resources
-
-- [GitHub Repository](https://github.com/TykTechnologies/api-to-mcp)
-- [Tyk AI Management Docs](https://tyk.io/docs/ai-management/)
-- [API to MCP Docs](https://tyk.io/docs/ai-management/tyk-mcps/api-to-mcp/)
-- [Contact Support](https://tyk.io/contact/)
+[View on GitHub →](https://github.com/TykTechnologies/api-to-mcp)
