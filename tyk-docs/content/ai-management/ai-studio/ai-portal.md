@@ -8,6 +8,7 @@ keywords: ["AI Studio", "AI Management", "AI Portal"]
 
 The Tyk AI Studio's AI Portal provides a user-friendly web interface where end users can interact with configured AI capabilities. It serves as the primary access point for users to engage with Chat Experiences, view documentation, and manage their account settings.
 
+
 ## Purpose
 
 The main goals of the AI Portal are:
