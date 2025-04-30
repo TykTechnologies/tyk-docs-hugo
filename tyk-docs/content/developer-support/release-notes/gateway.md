@@ -1804,7 +1804,7 @@ We have added GODEBUG flags to enable deprecated insecure ciphers by default for
 <details>
 <summary>Fixed Inconsistent Context Behavior in UDG APIs</summary>
 
-Fixed a bug where headers being sent upstream in UDG APIs were not being cached accurately, ensuring correct and consistent context handling for all requests.
+Addressed an issue for UDG APIs where caching led to the forwarding of stale values for headers that contained content variables towards the upstream of the UDG apis.
 </details>
 </li>
 <li>
