@@ -236,7 +236,7 @@ Now you can generate an access token for the agent.
 
 ```bash
 # API call to create an agent token
-curl -X POST "${GOVERNANCE_URL}/api/auth/token" \
+curl -X POST "${GOVERNANCE_URL}/api/auth/token/" \
   -H "X-API-Key: ${API_KEY}" \
   -H "Content-Type: application/json" \
   -d '{
