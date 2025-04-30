@@ -572,20 +572,20 @@ menu:
         category: Page
         path: /ai-management/overview
         show: True
-      - title: "AI-Ready tools - Tyk MCPs"
+      - title: "MCPs"
         path: /ai-management/tyk-mcps/overview
         category: Directory
         show: True
         menu:
-          - title: "OpenAPI AI"
+          - title: "API to MCP"
             category: Page
             path: /ai-management/tyk-mcps/api-to-mcp
             show: True
-          - title: "Dashboard API AI"
+          - title: "Dashboard API to MCP"
             category: Page
             path: /ai-management/tyk-mcps/dashboard-api-to-mcp
             show: True
-          - title: "Tyk Docs AI"
+          - title: "Tyk Docs MCP"
             category: Page
             path: /ai-management/tyk-mcps/tyk-docs-mcp
             show: True

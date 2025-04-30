@@ -949,7 +949,7 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   termsOfService: http://swagger.io/terms/
-  title: Midsommar API
+  title: AI Studio API
   version: "1.0"
 paths:
   /analytics/chat-interactions-for-chat:
