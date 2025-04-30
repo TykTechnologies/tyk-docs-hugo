@@ -16,27 +16,20 @@ Learn more about the core functionality in the [API to MCP guide]({{< ref "ai-ma
 
 ## Use Cases
 
-With this setup, AI assistants can:
-
-- List, describe, and query your managed APIs
-- Read org, user, and key settings (with the right permissions)
-- Perform admin tasks via natural language (if permitted)
-
 Once connected, you, with your AI assistants, can perform helpful actions on your Tyk Dashboard using natural language. For example:
 - Explore your API landscape - List APIs, describe endpoints in plain English, review policies
 - Query other Dashboard settings for audits or support tasks - users, and keys
 - Automate admin tasks - Create or update API definitions (e.g., OAS-based APIs) through AI-driven flows, reducing manual clicks (please note that we haven't documented this just yet)
-- Power AI developer tools - Use this as a backend for developer assistants like Claude, Cursor, or VS Code extensions to guide devs while on boarding and using Tyk Dashboard on daily basis.
+- Power AI developer tools - Use this as a backend for developer assistants like Claude, Cursor, or VS Code extensions to guide devs while on boarding and using Tyk Dashboard on daily basis. Ideal for internal use cases like AI-driven dashboards, documentation bots, or dev portals powered by LLMs.
 - Build internal chatbots - Create internal tools that let team members ask questions like “What APIs are active?” or “What’s the global rate limit defined API X?”
 
-Ideal for internal use cases like AI-driven dashboards, documentation bots, or dev portals powered by LLMs.
 
 ## Setup Instructions
 
 
-### 1. Connect to Your AI Assistant
+### Connect to Your AI Assistant
 
-Use the following MCP server config for Claude Desktop, Cursor, Cline or any other MCP-compatible tool:
+**Step 1.** Use the following MCP server config for Claude Desktop, Cursor, Cline or any other MCP-compatible tool:
 
 ```json
 {
@@ -57,8 +50,12 @@ Use the following MCP server config for Claude Desktop, Cursor, Cline or any oth
 }
 ```
 
-Refer to your assistant’s docs for where to place this config — e.g., `claude_desktop_config.json` for Claude, `.cursor-config.json` for Cursor and `cline_mcp_settings.json` for [Cline configuration](https://docs.roocode.com/features/mcp/using-mcp-in-roo#configuring-mcp-servers) (as a VS Code extension).
+Refer to your assistant’s docs for where to place this config — e.g.
+- `claude_desktop_config.json` for [Claude configuration](https://modelcontextprotocol.io/quickstart/user#2-add-the-filesystem-mcp-server)
+- `.cursor-config.json` for [Cursor configiration](https://docs.cursor.com/context/model-context-protocol#configuring-mcp-servers)
+- `cline_mcp_settings.json` for [Cline configuration](https://docs.roocode.com/features/mcp/using-mcp-in-roo#configuring-mcp-servers) (as a VS Code extension).
 
+**Step 2.** Once connected, ask your AI assistant to perform an operation (e.g., "List all apis" or "Create a new user").
 
 ## Tips
 
