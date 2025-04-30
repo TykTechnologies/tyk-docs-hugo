@@ -1550,16 +1550,16 @@ Improved formatting for the password error on the add user page
 </li>
 <li>
 <details>
-<summary>Enhanced OPA Rules for Token Reset and User Data Access</summary>
+<summary>Improved Control for Dashboard API Credentials</summary>
 
-Updated OPA rules in the Dashboard to allow all users to reset their access tokens and view their user data, improving self-service while maintaining security. Note that users with custom OPA rules are strongly advised to update their configurations to include the is_self_key_reset and is_me helper rules. Additionally, they should modify their rules to exclude cases where is_self_key_reset or is_me apply, to enable this functionality.
+Users can now always access their own Dashboard API credentials, regardless of permissions. Admins’ ability to view or reset other users’ credentials is now strictly controlled by security flags
 </details>
 </li>
 <li>
 <details>
-<summary>Improved Control for Dashboard API Credentials</summary>
+<summary>Enhanced OPA Rules for Token Reset and User Data Access</summary>
 
-Users can now always access their own Dashboard API credentials, regardless of permissions. Admins’ ability to view or reset other users’ credentials is now strictly controlled by security flags
+Updated OPA rules in the Dashboard to allow all users to reset their access tokens and view their user data, improving self-service while maintaining security. Note that users with custom OPA rules are strongly advised to update their configurations to include the is_self_key_reset and is_me helper rules. Additionally, they should modify their rules to exclude cases where is_self_key_reset or is_me apply, to enable this functionality.
 </details>
 </li>
 </ul>
