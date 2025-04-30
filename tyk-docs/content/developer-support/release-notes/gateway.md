@@ -1830,6 +1830,13 @@ Resolved a race condition in self-managed deployments which occasionally lead to
 </li>
 <li>
 <details>
+<summary>Fixed Gateway crash loop on restart without MDCB in Kubernetes</summary>
+
+Resolved a bug where Gateway pods in Kubernetes would enter a crash loop on restart if MDCB was down. The issue occurred due to the HTTP router failing to initialize properly during cold start. This fix ensures stable Gateway recovery even when MDCB is offline. 
+</details>
+</li>
+<li>
+<details>
 <summary>Multi-Value Response Headers in Coprocess Middleware</summary>
 
 Multi-value response headers were previously lost after synchronization with coprocess middleware, as only the first value was retained. This has been resolved, ensuring all response headers are properly synchronized and preserved
