@@ -50,13 +50,13 @@ The [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction)
 With MCPs, organisations can:
 
 - **Integrate securely** with external AI providers and services
-- **Build custom tools** for AI agents
+- **Build custom tools** for AI assistants and workflows
 - **Access resources** such as files, APIs, and databases
 - **Enhance AI workflows** with contextual information
 
 MCPs help expand AI system functionality by enabling secure, standardised interactions between services.
 
-[Learn more about Tyk MCPs]({{< ref "ai-management/tyk-mcps/overview" >}})
+[Explore Tyk MCPs]({{< ref "ai-management/tyk-mcps/overview" >}})
 
 ### How AI Studio and MCPs work together
 

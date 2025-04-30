@@ -11,7 +11,7 @@ description: "A comprehensive guide to Model Context Protocol (MCP) servers in T
 
 ## What are MCPs?
 
-Model Context Protocol (MCP) servers extend AI systems by exposing external services, tools, and resources in a standardised way.
+Model Context Protocol (MCP) servers extend AI systems by exposing external services, tools, and resources in a standardised way. They act as bridges between AI applications and external systems, securely managing authentication, access, and execution.
 
 With Tyk MCPs, your AI agents can:
 
@@ -22,8 +22,6 @@ With Tyk MCPs, your AI agents can:
 
 MCPs use a defined protocol to connect AI agents with external systems, expanding AI capabilities while maintaining governance and control.
 
-Tyk MCPs adhere to the open MCP specification and extend it with enterprise-grade features, including enhanced security, governance, and monitoring capabilities.
-
 ## Why standardisation matters
 
 The MCP specification standardises how AI agents discover and interact with external capabilities. This helps:
@@ -32,17 +30,6 @@ The MCP specification standardises how AI agents discover and interact with exte
 - **Enhance security** through consistent architecture
 - **Promote interoperability** with different vendor solutions
 - **Improve governance** when managing AI systems at scale
-
-## How MCPs work
-
-MCPs operate as independent servers using the *Model Context Protocol*. When an AI agent needs external resources, the workflow typically follows:
-
-1. The agent queries the MCP server for available tools and resources.
-2. The agent selects a tool based on metadata and schema descriptions.
-3. The agent invokes a tool with structured input.
-4. The MCP server processes the request and returns structured output.
-
-MCP servers act as bridges between AI applications and external systems, securely managing authentication, access, and execution.
 
 ## MCP for Enterprise use {#mcp-for-enterprise-use}
 

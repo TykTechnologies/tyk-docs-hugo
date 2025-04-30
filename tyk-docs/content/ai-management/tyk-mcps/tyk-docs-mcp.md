@@ -86,6 +86,6 @@ To enable the tool, paste the above configuration into your AI assistant’s MCP
 Once connected, ask the AI to perform an operation as suggested in the [use cases above]({{< ref "#use-cases" >}})
 
 
-## How It Works
+## How It Works under the hood
 
 Tyk Docs MCP tool is built on top of the [@buger/probe-docs-mcp project](https://github.com/buger/docs-mcp). This package comes with Tyk's documentation already bundled, offering a plug-and-play experience for users who want to integrate Tyk documentation into their AI assistants.

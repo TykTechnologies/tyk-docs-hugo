@@ -11,7 +11,7 @@ Use `tyk-dashboard-mcp` to expose your **Tyk Dashboard API** to AI assistants li
 
 This tool is a preconfigured fork of [api-to-mcp GitHub repository](https://github.com/TykTechnologies/api-to-mcp), designed specifically for the *Tyk Dashboard* API. It comes bundled with a predefined OpenAPI spec and overlays, so you don’t need to configure much manually.
 
-Learn more about the core functionality in the [API to MCP guide]({{< ref "ai-management/tyk-mcps/api-to-mcp/" >}}).
+Explore the core functionality in the [API to MCP guide]({{< ref "ai-management/tyk-mcps/api-to-mcp/" >}}).
 
 
 ## Use Cases
