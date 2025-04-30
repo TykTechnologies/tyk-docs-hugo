@@ -1543,13 +1543,6 @@ Fixed an issue where the Dashboard might not allow the correct number of Gateway
 </li>
 <li>
 <details>
-<summary>Various fixes to the Dashboard UI</summary>
-
-We have implemented various fixes and improvements in the Dashboard GUI to enhance usability.
-</details>
-</li>
-<li>
-<details>
 <summary>Improved Control for Dashboard API Credentials</summary>
 
 Users can now always access their own Dashboard API credentials, regardless of permissions. Admins’ ability to view or reset other users’ credentials is now strictly controlled by security flags
@@ -1560,6 +1553,13 @@ Users can now always access their own Dashboard API credentials, regardless of p
 <summary>Enhanced OPA Rules for Token Reset and User Data Access</summary>
 
 Updated OPA rules in the Dashboard to allow all users to reset their access tokens and view their user data, improving self-service while maintaining security. Note that users with custom OPA rules are strongly advised to update their configurations to include the is_self_key_reset and is_me helper rules. Additionally, they should modify their rules to exclude cases where is_self_key_reset or is_me apply, to enable this functionality.
+</details>
+</li>
+<li>
+<details>
+<summary>Various fixes to the Dashboard UI</summary>
+
+We have implemented various fixes and improvements in the Dashboard GUI to enhance usability.
 </details>
 </li>
 </ul>
