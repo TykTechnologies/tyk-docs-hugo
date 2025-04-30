@@ -7,7 +7,7 @@ description: "Talk to Tyk documentation like a person using AI tools. Use Docs M
 
 ## Overview
 
-*Tyk Docs MCP* is a tool [MCP server](https://github.com/modelcontext/spec) exposing the Tyk documentation to connected AI assistants. It enables the users of AI assistants "talk to" Tyk's documentation. Instead of searching manually, users can ask natural-language questions — and get answers backed by Tyk offifcial docs. The tool makes AI-assisted support, troubleshooting, and documentation exploration fast and reliable.
+*Tyk Docs MCP* is a tool [MCP server](https://github.com/modelcontext/spec) exposing the Tyk documentation to connected AI assistants. It enables the users of AI assistants "talk to" Tyk's documentation. Instead of searching manually, users can ask natural-language questions — and get answers backed by Tyk official docs. The tool makes AI-assisted support, troubleshooting, and documentation exploration fast and reliable.
 
 
 Here you can see the AI assistant chooses to use Tyk Docs MCP (*Cline* in VS Code) while answering the query *How do I set a rate limit for a Tyk API?*:
@@ -53,11 +53,6 @@ Let AI do the digging — here’s how teams use Tyk Docs MCP:
 To get started quickly, the primary way to use it is by configuring your AI assistant to run it directly as an MCP tool.
 
 ### Requirements
-
-- [Node.js v18+](https://nodejs.org/en/download) installed
-- Internet access to reach Tyk documentation index
-
-### Requirements
 - [Node.js v18+](https://nodejs.org/en/download) installed
 - Internet access to reach Tyk documentation index
 - MCP-compatible AI assistant that supports connecting to external MCP-compatible tool servers (e.g. Claude, Cursor, Vercel AI SDK, Cline extension in VS Code etc.), 
@@ -86,7 +81,7 @@ To enable the tool, paste the above configuration into your AI assistant’s MCP
 - **Cursor**: See the [Cursor setup guide](https://github.com/TykTechnologies/api-to-mcp#cursor) for instruction on setting it with Cursor.
 
 **Step 2.**
-Once connected, ask the AI to perform an operation as succested in the [use cases above]({{< ref "#use-cases" >}})
+Once connected, ask the AI to perform an operation as suggested in the [use cases above]({{< ref "#use-cases" >}})
 
 
 ## How It Works

@@ -9,7 +9,7 @@ description: "Talk to Tyk Dashboard like a person using AI tools"
 
 Use `tyk-dashboard-mcp` to expose your **Tyk Dashboard API** to AI assistants like Claude, Cursor, or VS Code extensions — enabling natural-language interaction with your Tyk Dashboard.
 
-This tool is a preconfigured fork of [api-to-mcp GH repository](ttps://github.com/TykTechnologies/api-to-mcp), designed specifically for the *Tyk Dashboard* API. It comes bundled with a predefined OpenAPI spec and overlays, so you don’t need to configure much manually.
+This tool is a preconfigured fork of [api-to-mcp GH repository](https://github.com/TykTechnologies/api-to-mcp), designed specifically for the *Tyk Dashboard* API. It comes bundled with a predefined OpenAPI spec and overlays, so you don’t need to configure much manually.
 
 Learn more about the core functionality in the [API to MCP guide]({{< ref "ai-management/tyk-mcps/api-to-mcp/" >}}).
 
@@ -17,11 +17,11 @@ Learn more about the core functionality in the [API to MCP guide]({{< ref "ai-ma
 ## Use Cases
 
 Once connected, you, with your AI assistants, can perform helpful actions on your Tyk Dashboard using natural language. For example:
-- Explore your API landscape - List APIs, describe endpoints in plain English, review policies
-- Query other Dashboard settings for audits or support tasks - users, and keys
-- Automate admin tasks - Create or update API definitions (e.g., OAS-based APIs) through AI-driven flows, reducing manual clicks (please note that we haven't documented this just yet)
-- Power AI developer tools - Use this as a backend for developer assistants like Claude, Cursor, or VS Code extensions to guide devs while on boarding and using Tyk Dashboard on daily basis. Ideal for internal use cases like AI-driven dashboards, documentation bots, or dev portals powered by LLMs.
-- Build internal chatbots - Create internal tools that let team members ask questions like “What APIs are active?” or “What’s the global rate limit defined API X?”
+- **Explore your API landscape** - List APIs, describe endpoints in plain English, review policies
+- **Query Dashboard settings for audits or support tasks** - List users and keys
+- **Automate admin tasks** - Create or update API definitions (e.g., OAS-based APIs) through AI-driven flows, reducing manual clicks (please note that we haven't documented this just yet)
+- **Power AI developer tools** - Use this as a backend for developer assistants like Claude, Cursor, or VS Code extensions to guide devs while on boarding and using Tyk Dashboard on daily basis. Ideal for internal use cases like AI-driven dashboards, documentation bots, or dev portals powered by LLMs.
+- **Build internal chatbots** - Create internal tools that let team members ask questions like "What APIs are active?" or "What's the global rate limit defined API X?"
 
 
 ## Setup Instructions
@@ -31,7 +31,7 @@ Once connected, you, with your AI assistants, can perform helpful actions on you
 ```json
 {
   "mcpServers": {
-    "tyk-dashboard": {
+    "tyk-dashboard-api": {
       "command": "npx",
       "args": [
         "-y",
@@ -86,7 +86,7 @@ Only the operations defined in the OpenAPI spec. You can customize the access li
 ```json
 {
   "mcpServers": {
-    "my-api": {
+    "tyk-dashboard-api": {
       "command": "npx",
       "args": [
         "-y",
@@ -101,7 +101,5 @@ Only the operations defined in the OpenAPI spec. You can customize the access li
       "enabled": true
     }
   }
-}```
-
-
-
+}
+```

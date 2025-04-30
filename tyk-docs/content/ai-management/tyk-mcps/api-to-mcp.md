@@ -66,7 +66,7 @@ To connect the tool with Claude Desktop or other MCP-compatible assistants, you 
       "command": "npx",
       "args": [
         "-y",
-        "@tyk-technologies/api-to-mc@latest",
+        "@tyk-technologies/api-to-mcp@latest",
         "--spec",
         "https://petstore3.swagger.io/api/v3/openapi.json"
       ],
@@ -170,6 +170,8 @@ sequenceDiagram
     end
 ```
 
+API to MCP  can be found in [api-to-mcp GitHub repository](https://github.com/TykTechnologies/api-to-mcp)
+
 ## Use cases
 
 Use **API to MCP** when you need to:
@@ -230,5 +232,3 @@ Any tool that supports MCP: Claude, Cursor, VS Code, and more.
 ## Summary
 
 API to MCP transforms OpenAPI specs into AI-compatible tools using the MCP standard. It enables your AI stack to dynamically understand, test, and invoke your existing APIs securely — without modifying your existing backend.
-
-[View on GitHub →](https://github.com/TykTechnologies/api-to-mcp)
