@@ -555,7 +555,7 @@ curl -H "x-tyk-authorization: <secured-endpoint-secret>" https://my-mdcb-host:81
 
 Before a worker gateway can connect to MDCB, it is important to enable the organization that owns all the APIs to be distributed to be allowed to utilize Tyk MDCB. To do this, the organization record needs to be modified with two flags using the [Tyk Dashboard Admin API]({{< ref "dashboard-admin-api" >}}).
 
-To make things easier, we will first set a few [environment variables]({{< ref "tyk-environment-variables" >}}):
+To make things easier, we will first set a few [environment variables]({{< ref "tyk-oss-gateway/configuration" >}}):
 
 1. `export DASH_ADMIN_SECRET=<YOUR_ADMIN_SECRET>`
 

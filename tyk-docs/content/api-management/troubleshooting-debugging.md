@@ -57,18 +57,20 @@ aliases:
     - /troubleshooting/tyk-pump/pump-overloaded
     - /tyk-configuration-reference/hot-restart-tyk-gateway-process
     - /tyk-stack/tyk-pump/useful-debug-modes
-    - analytics-and-reporting/useful-debug-modes
-    - debugging-series
-    - troubleshooting/tyk-cloud
-    - troubleshooting/tyk-dashboard
+    - /analytics-and-reporting/useful-debug-modes
+    - /debugging-series
+    - /troubleshooting/tyk-cloud
+    - /troubleshooting/tyk-dashboard
     - /troubleshooting/tyk-dashboard/fatal-dashboard-port...
-    - troubleshooting/tyk-gateway
-    - troubleshooting/tyk-installation
-    - troubleshooting/tyk-multi-cloud
-    - troubleshooting/tyk-pump
-    - tyk-rest-api/hot-reload
-    - tyk-stack/tyk-pump/tyk-pump-configuration/graceful-shutdowm
-    - frequently-asked-questions/add-custom-certificates-to-docker-images
+    - /troubleshooting/tyk-gateway
+    - /troubleshooting/tyk-installation
+    - /troubleshooting/tyk-multi-cloud
+    - /troubleshooting/tyk-pump
+    - /tyk-rest-api/hot-reload
+    - /tyk-stack/tyk-pump/tyk-pump-configuration/graceful-shutdowm
+    - /frequently-asked-questions/add-custom-certificates-to-docker-images
+    - /troubleshooting/tyk-on-premise/tyk-on-premise
+    - /troubleshooting/tyk-installation/parsing-json-error-from-dashboard-bootstrap
 ---
 
 ## Gateway

@@ -140,7 +140,7 @@ In Tyk 5.8.0, we have added configuration of the following features into the Tyk
 <details>
 <summary>Transaction Logs for Better API Request Visibility</summary>
 
-Tyk Gateway now supports transaction logs, providing structured access logs for API requests. This improves debugging and observability without the overhead of enabling debug mode in production. Logs can be output in JSON format and customized via a template, ensuring flexibility while maintaining performance.
+Tyk Gateway now supports transaction logs, providing structured access logs for API requests. This improves debugging and observability without the overhead of enabling debug mode in production. Logs can be output in JSON format and customized via a template, ensuring flexibility while maintaining performance. Find more details in our [Transaction Logs documentation]({{< ref "api-management/logs-metrics#enabling-api-request-access-logs-in-tyk-gateway" >}}).
 </details>
 </li>
 <li>
@@ -495,7 +495,7 @@ Given the potential time difference between your upgrade and the release of this
 
 #### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
-In 5.7.0, we have deprecated the dedicated [External OAuth]({{< ref "basic-config-and-security/security/authentication-authorization/ext-oauth-middleware" >}})  (Tyk Classic: `external_oauth`, Tyk OAS: `server.authentication.securitySchemes.externalOAuth`) and [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}})  (Tyk Classic: `auth_configs.oidc`, Tyk OAS: `server.authentication.oidc`) authentication methods. We advise users to switch to [JWT Authentication]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}).
+In 5.7.0, we have deprecated the dedicated [External OAuth]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}})  (Tyk Classic: `external_oauth`, Tyk OAS: `server.authentication.securitySchemes.externalOAuth`) and [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}})  (Tyk Classic: `auth_configs.oidc`, Tyk OAS: `server.authentication.oidc`) authentication methods. We advise users to switch to [JWT Authentication]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}).
 
 
 #### Upgrade instructions {#upgrade-5.7.0}

@@ -68,6 +68,7 @@ aliases:
   - /advanced-configuration/transform-traffic/request-headers
   - /advanced-configuration/transform-traffic/request-body
   - /transform-traffic/endpoint-designer
+  - /advanced-configuration
 ---
 
 ## Overview
@@ -5422,7 +5423,7 @@ You can use the API Designer in the Tyk Dashboard to configure the Mock Response
 
     Now select the **Mock response** plugin.
 
-{{< img src="/img/dashboard/endpoint-designer/mock-response.png" alt="Selecting the mock response middleware for a Tyk Classic API" >}}
+    {{< img src="/img/dashboard/endpoint-designer/testapi-allowlist.png" alt="Selecting the mock response middleware for a Tyk Classic API" >}}
 
 3. **Configure the middleware**
 

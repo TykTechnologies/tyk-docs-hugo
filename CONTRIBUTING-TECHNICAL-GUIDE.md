@@ -62,7 +62,7 @@ For external contributions, we recommend contributing to Tyk in the following wa
 2. Run `docker-compose up` from the project directory
 
 ### Run Hugo Locally
-1. Install [Hugo v0.110.0+extended or greater](https://gohugo.io/installation/)
+1. Install [Hugo v0.145.0+extended or greater](https://gohugo.io/installation/)
 2. Run `hugo server --theme=tykio --buildDrafts --enableGitInfo` from the `tyk-docs/tyk-docs` directory
 3. Go to  [http://localhost:1313/docs/nightly/](http://localhost:1313/docs/nightly/) to view the docs locally
 4. The content itself is just markdown that follows the front matter block. After making a change, Hugo should auto-reload and you will be able to see the changes live in your browser. If not, refresh. Sometimes Hugo gets confused and you may need to re-run it
@@ -400,6 +400,29 @@ the tooltip text to display{{< /definition >}}{{< /tooltip >}}
 
 ![tooltip-demo](https://user-images.githubusercontent.com/1983518/109049790-916c4880-76d0-11eb-8b3a-ad107d317468.gif)
 
+### Pill label shortcode {#pill-label-shortcode}
+
+The `pill-label` shortcode creates small, pill-shaped labels that can be added next to headers to highlight features, statuses, or other information.
+
+Basic usage:
+```
+### Feature Name {{< pill-label text="LABEL" >}}
+```
+
+You can also specify a class or custom styling:
+```
+### Feature Name {{< pill-label text="LABEL" class="pill-red" >}}
+### Feature Name {{< pill-label text="LABEL" style="background-color: #f0f0f0; color: #333;" >}}
+```
+
+For detailed examples and all available styling options, see the [pill-label examples page](content/ui-examples/test-pill-label.md). You can run Hugo locally to see how the pill labels appear in your browser:
+
+```
+hugo server --theme=tykio --buildDrafts --enableGitInfo
+```
+
+Then navigate to `http://localhost:1313/docs/nightly/ui-examples/test-pill-label/` to view the examples.
+
 ## License
 
 Tyk is released under the MPL v2.0 please see the [license file](LICENSE.md) for a full version of the license.
@@ -421,7 +444,7 @@ When you create a PR in this repository:
 **For Contributors Outside Tyk:** A Tyk team member will need to approve the Netlify CI build for your pull request (PR). You will need to wait 
 until the CI status is green.
 
-**Locating Your Changes:** Since there’s no search feature in this Netlify build, you can find your changes by following these steps:
+**Locating Your Changes:** Since there's no search feature in this Netlify build, you can find your changes by following these steps:
 	1.	Copy the file path: From the file path in GitHub, copy the portion after `/content` up to the end, excluding the `.md` file extension.
 	2.	Construct the URL: Append this copied path to the Netlify URL after `/docs/nightly`.
 	3.	Example: To see the document at tyk-docs GitHub repository, copy `/tyk-self-managed/install` (omit `.md`) and add it after /docs/nightly/ in the Netlify URL, resulting in [https://deploy-preview-2330--tyk-docs.netlify.app/docs/nightly/tyk-self-managed/install/](https://deploy-preview-2330--tyk-docs.netlify.app/docs/nightly/tyk-self-managed/install/).

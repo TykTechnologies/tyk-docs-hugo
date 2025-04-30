@@ -495,7 +495,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 #### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
-In 5.7.0, we have deprecated the dedicated [External OAuth]({{< ref "basic-config-and-security/security/authentication-authorization/ext-oauth-middleware" >}})  (Tyk Classic: `external_oauth`, Tyk OAS: `server.authentication.securitySchemes.externalOAuth`) and [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}})  (Tyk Classic: `auth_configs.oidc`, Tyk OAS: `server.authentication.oidc`) authentication methods. We advise users to switch to [JWT Authentication]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}).
+In 5.7.0, we have deprecated the dedicated [External OAuth]({{< ref "api-management/client-authentication#integrate-with-external-authorization-server-deprecated" >}})  (Tyk Classic: `external_oauth`, Tyk OAS: `server.authentication.securitySchemes.externalOAuth`) and [OpenID Connect]({{< ref "api-management/client-authentication#integrate-with-openid-connect-deprecated" >}})  (Tyk Classic: `auth_configs.oidc`, Tyk OAS: `server.authentication.oidc`) authentication methods. We advise users to switch to [JWT Authentication]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}).
 
 Additionally, SQLite has reached its End of Life in this release, enabling a fully static, CGO-free Tyk Dashboard optimised for RHEL8. Sqlite was previously recommended only to be used in basic proofs of concept. Now, for such scenarios and for production, we recommend migrating to PostgreSQL or MongoDB for better scalability and support.
 <!-- Optional section!
@@ -4436,7 +4436,7 @@ Read more about this changes in our blogpost: https://tyk.io/blog/introducing-lo
 
 We have a brand new look to our Tyk Dashboard. About half a year ago, we made some changes to our visual branding to better express our love for creativity and great UX. Those changes started with our website and now we are also incorporating these visual changes into the UI of our products. We do this to keep our brand consistent across the whole Tyk experience and to enhance your experience using our products. 
 
-See our updated [Tutorials]({{< ref "getting-started/installation" >}}) section.
+See our updated [Tutorials]({{< ref "tyk-self-managed" >}}) section.
 
 ##### Universal Data Graph and GraphQL
 
