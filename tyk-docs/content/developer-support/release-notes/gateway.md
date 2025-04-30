@@ -1730,7 +1730,7 @@ links to API documentation and FAQs. You can copy it from the previous release. 
 
 ### 5.3.11 Release Notes
 
-#### Release Date XXX
+#### Release Date 30 April 2025
 
 #### Release Highlights
 
