@@ -26,9 +26,6 @@ Once connected, you, with your AI assistants, can perform helpful actions on you
 
 ## Setup Instructions
 
-
-### Connect to Your AI Assistant
-
 **Step 1.** Use the following MCP server config for Claude Desktop, Cursor, Cline or any other MCP-compatible tool:
 
 ```json
@@ -56,6 +53,20 @@ Refer to your assistant’s docs for where to place this config — e.g.
 - `cline_mcp_settings.json` for [Cline configuration](https://docs.roocode.com/features/mcp/using-mcp-in-roo#configuring-mcp-servers) (as a VS Code extension).
 
 **Step 2.** Once connected, ask your AI assistant to perform an operation (e.g., "List all apis" or "Create a new user").
+
+## Examples
+
+Here you can see the response of asking the *Cline* in VS Code:
+
+1. Task: *Show me the Tyk dashboard api endpoint to create apis*
+
+{{< img alt="Screenshot of the response to request of AI to create a new user" src="/img/ai-mcp/ask-dashboard-howto-create-apis-screenshot.png" >}}
+
+</br>
+
+2. Task: *Please create a new user in tyk dashboard*
+
+{{< img alt="Screenshot of the response to request of AI to create a new user" src="/img/ai-mcp/ask-dashboard-to-create-user-screenshot.png" >}}
 
 ## Tips
 
