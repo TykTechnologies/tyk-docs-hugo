@@ -1,0 +1,5883 @@
+basePath: /api/v1
+definitions:
+  analytics.ChartData:
+    properties:
+      data:
+        items:
+          type: number
+        type: array
+      labels:
+        items:
+          type: string
+        type: array
+    type: object
+  analytics.Dataset:
+    properties:
+      data:
+        items:
+          type: number
+        type: array
+      label:
+        type: string
+      yAxisID:
+        type: string
+    type: object
+  analytics.MultiAxisChartData:
+    properties:
+      datasets:
+        items:
+          $ref: '#/definitions/analytics.Dataset'
+        type: array
+      labels:
+        items:
+          type: string
+        type: array
+    type: object
+  analytics.VendorModelCost:
+    properties:
+      currency:
+        type: string
+      model:
+        type: string
+      totalCost:
+        type: number
+      vendor:
+        type: string
+    type: object
+  api.AppInput:
+    description: App input model
+    properties:
+      data:
+        properties:
+          attributes:
+            properties:
+              datasource_ids:
+                items:
+                  type: integer
+                type: array
+              description:
+                type: string
+              llm_ids:
+                items:
+                  type: integer
+                type: array
+              name:
+                type: string
+              user_id:
+                type: integer
+            type: object
+          type:
+            type: string
+        type: object
+    type: object
+  api.AppResponse:
+    description: App response model
+    properties:
+      attributes:
+        properties:
+          credential_id:
+            type: integer
+          datasource_ids:
+            items:
+              type: integer
+            type: array
+          description:
+            type: string
+          llm_ids:
+            items:
+              type: integer
+            type: array
+          name:
+            type: string
+          user_id:
+            type: integer
+        type: object
+      id:
+        type: string
+      type:
+        type: string
+    type: object
+  api.CatalogueInput:
+    description: Catalogue input model
+    properties:
+      data:
+        properties:
+          attributes:
+            properties:
+              name:
+                type: string
+            type: object
+          type:
+            type: string
+        type: object
+    type: object
+  api.CatalogueLLMInput:
+    description: Catalogue-LLM relationship input model
+    properties:
+      data:
+        properties:
+          id:
+            type: string
+          type:
+            type: string
+        type: object
+    type: object
+  api.CatalogueResponse:
+    description: Catalogue response model
+    properties:
+      attributes:
+        properties:
+          llm_names:
+            items:
+              type: string
+            type: array
+          name:
+            type: string
+        type: object
+      id:
+        type: string
+      type:
+        type: string
+    type: object
+  api.ChatHistoryRecordInput:
+    description: Chat History Record input model
+    properties:
+      data:
+        properties:
+          attributes:
+            properties:
+              chat_id:
+                type: integer
+              name:
+                type: string
+              session_id:
+                type: string
+              user_id:
+                type: integer
+            type: object
+          type:
+            type: string
+        type: object
+    type: object
+  api.ChatHistoryRecordListResponse:
+    description: Chat History Record list response model
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/api.ChatHistoryRecordResponse'
+        type: array
+    type: object
+  api.ChatHistoryRecordResponse:
+    description: Chat History Record response model
+    properties:
+      attributes:
+        properties:
+          chat_id:
+            type: integer
+          name:
+            type: string
+          session_id:
+            type: string
+          user_id:
+            type: integer
+        type: object
+      id:
+        type: string
+      type:
+        type: string
+    type: object
+  api.ChatInput:
+    description: Chat input model
+    properties:
+      data:
+        properties:
+          attributes:
+            properties:
+              group_ids:
+                items:
+                  type: integer
+                type: array
+              llm_id:
+                type: integer
+              llm_settings_id:
+                type: integer
+              name:
+                type: string
+            type: object
+          type:
+            type: string
+        type: object
+    type: object
+  api.ChatResponse:
+    description: Chat response model
+    properties:
+      attributes:
+        properties:
+          groups:
+            items:
+              $ref: '#/definitions/api.GroupResponse'
+            type: array
+          llm_id:
+            type: integer
+          llm_settings_id:
+            type: integer
+          name:
+            type: string
+        type: object
+      id:
+        type: string
+      type:
+        type: string
+    type: object
+  api.CredentialInput:
+    description: Credential input model
+    properties:
+      data:
+        properties:
+          attributes:
+            properties:
+              active:
+                type: boolean
+            type: object
+          type:
+            type: string
+        type: object
+    type: object
+  api.CredentialResponse:
+    description: Credential response model
+    properties:
+      attributes:
+        properties:
+          active:
+            type: boolean
+          key_id:
+            type: string
+          secret:
+            type: string
+        type: object
+      id:
+        type: string
+      type:
+        type: string
+    type: object
+  api.DataCatalogueDatasourceInput:
+    description: Data Catalogue-Datasource relationship input model
+    properties:
+      data:
+        properties:
+          id:
+            type: string
+          type:
+            type: string
+        type: object
+    type: object
+  api.DataCatalogueInput:
+    description: Data Catalogue input model
+    properties:
+      data:
+        properties:
+          attributes:
+            properties:
+              icon:
+                type: string
+              long_description:
+                type: string
+              name:
+                type: string
+              short_description:
+                type: string
+            type: object
+          type:
+            type: string
+        type: object
+    type: object
+  api.DataCatalogueResponse:
+    description: Data Catalogue response model
+    properties:
+      attributes:
+        properties:
+          datasources:
+            items:
+              $ref: '#/definitions/api.DatasourceResponse'
+            type: array
+          icon:
+            type: string
+          long_description:
+            type: string
+          name:
+            type: string
+          short_description:
+            type: string
+          tags:
+            items:
+              $ref: '#/definitions/api.TagResponse'
+            type: array
+        type: object
+      id:
+        type: string
+      type:
+        type: string
+    type: object
+  api.DataCatalogueTagInput:
+    description: Data Catalogue-Tag relationship input model
+    properties:
+      data:
+        properties:
+          id:
+            type: string
+          type:
+            type: string
+        type: object
+    type: object
+  api.DatasourceInput:
+    description: Datasource input model
+    properties:
+      data:
+        properties:
+          attributes:
+            properties:
+              active:
+                type: boolean
+              db_conn_api_key:
+                type: string
+              db_conn_string:
+                type: string
+              db_name:
+                type: string
+              db_source_type:
+                type: string
+              embed_api_key:
+                type: string
+              embed_model:
+                type: string
+              embed_url:
+                type: string
+              embed_vendor:
+                type: string
+              icon:
+                type: string
+              long_description:
+                type: string
+              name:
+                type: string
+              privacy_score:
+                type: integer
+              short_description:
+                type: string
+              tags:
+                items:
+                  type: string
+                type: array
+              url:
+                type: string
+              user_id:
+                type: integer
+            type: object
+          type:
+            type: string
+        type: object
+    type: object
+  api.DatasourceResponse:
+    description: Datasource response model
+    properties:
+      attributes:
+        properties:
+          active:
+            type: boolean
+          db_conn_api_key:
+            type: string
+          db_conn_string:
+            type: string
+          db_name:
+            type: string
+          db_source_type:
+            type: string
+          embed_api_key:
+            type: string
+          embed_model:
+            type: string
+          embed_url:
+            type: string
+          embed_vendor:
+            type: string
+          icon:
+            type: string
+          long_description:
+            type: string
+          name:
+            type: string
+          privacy_score:
+            type: integer
+          short_description:
+            type: string
+          tags:
+            items:
+              $ref: '#/definitions/api.TagResponse'
+            type: array
+          url:
+            type: string
+          user_id:
+            type: integer
+        type: object
+      id:
+        type: string
+      type:
+        type: string
+    type: object
+  api.ErrorResponse:
+    description: Error response model
+    properties:
+      errors:
+        items:
+          properties:
+            detail:
+              type: string
+            title:
+              type: string
+          type: object
+        type: array
+    type: object
+  api.FilterInput:
+    description: Filter input model
+    properties:
+      data:
+        properties:
+          attributes:
+            properties:
+              description:
+                type: string
+              name:
+                type: string
+              script:
+                items:
+                  type: integer
+                type: array
+            type: object
+          type:
+            type: string
+        type: object
+    type: object
+  api.FilterResponse:
+    description: Filter response model
+    properties:
+      attributes:
+        properties:
+          description:
+            type: string
+          name:
+            type: string
+          script:
+            items:
+              type: integer
+            type: array
+        type: object
+      id:
+        type: string
+      type:
+        type: string
+    type: object
+  api.GroupCatalogueInput:
+    description: Group-Catalogue relationship input model
+    properties:
+      data:
+        properties:
+          id:
+            type: string
+          type:
+            type: string
+        type: object
+    type: object
+  api.GroupInput:
+    description: Group input model
+    properties:
+      data:
+        properties:
+          attributes:
+            properties:
+              name:
+                type: string
+            type: object
+          type:
+            type: string
+        type: object
+    type: object
+  api.GroupResponse:
+    description: Group response model
+    properties:
+      attributes:
+        properties:
+          name:
+            type: string
+        type: object
+      id:
+        type: string
+      type:
+        type: string
+    type: object
+  api.GroupToolCatalogueInput:
+    description: Group-ToolCatalogue relationship input model
+    properties:
+      data:
+        properties:
+          id:
+            type: string
+          type:
+            type: string
+        type: object
+    type: object
+  api.LLMInput:
+    description: LLM input model
+    properties:
+      data:
+        properties:
+          attributes:
+            properties:
+              active:
+                type: boolean
+              api_endpoint:
+                type: string
+              api_key:
+                type: string
+              logo_url:
+                type: string
+              long_description:
+                type: string
+              name:
+                type: string
+              privacy_score:
+                type: integer
+              short_description:
+                type: string
+              vendor:
+                type: string
+            type: object
+          type:
+            type: string
+        type: object
+    type: object
+  api.LLMResponse:
+    description: LLM response model
+    properties:
+      attributes:
+        properties:
+          active:
+            type: boolean
+          api_endpoint:
+            type: string
+          api_key:
+            type: string
+          logo_url:
+            type: string
+          long_description:
+            type: string
+          name:
+            type: string
+          privacy_score:
+            type: integer
+          short_description:
+            type: string
+          vendor:
+            type: string
+        type: object
+      id:
+        type: string
+      type:
+        type: string
+    type: object
+  api.LLMSettingsInput:
+    properties:
+      data:
+        properties:
+          attributes:
+            properties:
+              max_length:
+                type: integer
+              max_tokens:
+                type: integer
+              metadata:
+                additionalProperties: true
+                type: object
+              min_length:
+                type: integer
+              model_name:
+                type: string
+              repetition_penalty:
+                type: number
+              seed:
+                type: integer
+              stop_words:
+                items:
+                  type: string
+                type: array
+              temperature:
+                type: number
+              top_k:
+                type: integer
+              top_p:
+                type: number
+            type: object
+          type:
+            type: string
+        type: object
+    type: object
+  api.LLMSettingsResponse:
+    properties:
+      attributes:
+        properties:
+          max_length:
+            type: integer
+          max_tokens:
+            type: integer
+          metadata:
+            additionalProperties: true
+            type: object
+          min_length:
+            type: integer
+          model_name:
+            type: string
+          repetition_penalty:
+            type: number
+          seed:
+            type: integer
+          stop_words:
+            items:
+              type: string
+            type: array
+          temperature:
+            type: number
+          top_k:
+            type: integer
+          top_p:
+            type: number
+        type: object
+      id:
+        type: string
+      type:
+        type: string
+    type: object
+  api.ModelPriceInput:
+    description: Model Price input model
+    properties:
+      data:
+        properties:
+          attributes:
+            properties:
+              cpt:
+                type: number
+              currency:
+                type: string
+              model_name:
+                type: string
+              vendor:
+                type: string
+            type: object
+          type:
+            type: string
+        type: object
+    type: object
+  api.ModelPriceResponse:
+    description: Model Price response model
+    properties:
+      attributes:
+        properties:
+          cpt:
+            type: number
+          currency:
+            type: string
+          model_name:
+            type: string
+          vendor:
+            type: string
+        type: object
+      id:
+        type: string
+      type:
+        type: string
+    type: object
+  api.OperationInput:
+    description: Operation input model
+    properties:
+      data:
+        properties:
+          attributes:
+            properties:
+              operation:
+                type: string
+            type: object
+          type:
+            type: string
+        type: object
+    type: object
+  api.OperationsResponse:
+    description: Tool operations response model
+    properties:
+      operations:
+        items:
+          type: string
+        type: array
+    type: object
+  api.TagInput:
+    description: Tag input model
+    properties:
+      data:
+        properties:
+          attributes:
+            properties:
+              name:
+                type: string
+            type: object
+          type:
+            type: string
+        type: object
+    type: object
+  api.TagResponse:
+    description: Tag response model
+    properties:
+      attributes:
+        properties:
+          name:
+            type: string
+        type: object
+      id:
+        type: string
+      type:
+        type: string
+    type: object
+  api.ToolCatalogueInput:
+    description: Tool Catalogue input model
+    properties:
+      data:
+        properties:
+          attributes:
+            properties:
+              icon:
+                type: string
+              long_description:
+                type: string
+              name:
+                type: string
+              short_description:
+                type: string
+            type: object
+          type:
+            type: string
+        type: object
+    type: object
+  api.ToolCatalogueResponse:
+    description: Tool Catalogue response model
+    properties:
+      attributes:
+        properties:
+          icon:
+            type: string
+          long_description:
+            type: string
+          name:
+            type: string
+          short_description:
+            type: string
+          tags:
+            items:
+              $ref: '#/definitions/api.TagResponse'
+            type: array
+          tools:
+            items:
+              $ref: '#/definitions/api.ToolResponse'
+            type: array
+        type: object
+      id:
+        type: string
+      type:
+        type: string
+    type: object
+  api.ToolCatalogueTagInput:
+    description: Tool Catalogue-Tag relationship input model
+    properties:
+      data:
+        properties:
+          id:
+            type: string
+          type:
+            type: string
+        type: object
+    type: object
+  api.ToolCatalogueToolInput:
+    description: Tool Catalogue-Tool relationship input model
+    properties:
+      data:
+        properties:
+          id:
+            type: string
+          type:
+            type: string
+        type: object
+    type: object
+  api.ToolInput:
+    description: Tool input model
+    properties:
+      data:
+        properties:
+          attributes:
+            properties:
+              auth_key:
+                type: string
+              auth_schema_name:
+                type: string
+              description:
+                type: string
+              name:
+                type: string
+              oas_spec:
+                items:
+                  type: integer
+                type: array
+              privacy_score:
+                type: integer
+              tool_type:
+                type: string
+            type: object
+          type:
+            type: string
+        type: object
+    type: object
+  api.ToolResponse:
+    description: Tool response model
+    properties:
+      attributes:
+        properties:
+          auth_key:
+            type: string
+          auth_schema_name:
+            type: string
+          description:
+            type: string
+          name:
+            type: string
+          oas_spec:
+            items:
+              type: integer
+            type: array
+          operations:
+            items:
+              type: string
+            type: array
+          privacy_score:
+            type: integer
+          tool_type:
+            type: string
+        type: object
+      id:
+        type: string
+      type:
+        type: string
+    type: object
+  api.UserAccessibleCataloguesResponse:
+    description: User accessible catalogues response model
+    properties:
+      attributes:
+        properties:
+          catalogues:
+            items:
+              $ref: '#/definitions/api.CatalogueResponse'
+            type: array
+        type: object
+      id:
+        type: string
+      type:
+        type: string
+    type: object
+  api.UserGroupInput:
+    description: User-group relationship input model
+    properties:
+      data:
+        properties:
+          id:
+            type: string
+          type:
+            type: string
+        type: object
+    type: object
+  api.UserInput:
+    description: User input model
+    properties:
+      data:
+        properties:
+          attributes:
+            properties:
+              email:
+                type: string
+              name:
+                type: string
+              password:
+                type: string
+            type: object
+          type:
+            type: string
+        type: object
+    type: object
+  api.UserResponse:
+    description: User response model
+    properties:
+      attributes:
+        properties:
+          email:
+            type: string
+          name:
+            type: string
+        type: object
+      id:
+        type: string
+      type:
+        type: string
+    type: object
+  api.VendorListResponse:
+    description: Vendor list response model
+    properties:
+      data:
+        items:
+          type: string
+        type: array
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@tyk.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is the API for the AI Studio user and group management system.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: AI Studio API
+  version: "1.0"
+paths:
+  /analytics/chat-interactions-for-chat:
+    get:
+      consumes:
+      - application/json
+      description: Get the number of interactions for a specific chat over time
+      parameters:
+      - description: Start date (YYYY-MM-DD)
+        in: query
+        name: start_date
+        required: true
+        type: string
+      - description: End date (YYYY-MM-DD)
+        in: query
+        name: end_date
+        required: true
+        type: string
+      - description: Chat ID
+        in: query
+        name: chat_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/analytics.ChartData'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get chat interactions for a specific chat
+      tags:
+      - Analytics
+  /analytics/chat-records-per-day:
+    get:
+      consumes:
+      - application/json
+      description: Get the total number of chat records per day for a given time period
+      parameters:
+      - description: Start date (YYYY-MM-DD)
+        in: query
+        name: start_date
+        required: true
+        type: string
+      - description: End date (YYYY-MM-DD)
+        in: query
+        name: end_date
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/analytics.ChartData'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get chat records per day
+      tags:
+      - Analytics
+  /analytics/chat-records-per-user:
+    get:
+      consumes:
+      - application/json
+      description: Get the total number of chat records per user for a given time
+        period
+      parameters:
+      - description: Start date (YYYY-MM-DD)
+        in: query
+        name: start_date
+        required: true
+        type: string
+      - description: End date (YYYY-MM-DD)
+        in: query
+        name: end_date
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/analytics.ChartData'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get chat records per user
+      tags:
+      - Analytics
+  /analytics/cost-analysis:
+    get:
+      consumes:
+      - application/json
+      description: Get the total cost per day for a given time period
+      parameters:
+      - description: Start date (YYYY-MM-DD)
+        in: query
+        name: start_date
+        required: true
+        type: string
+      - description: End date (YYYY-MM-DD)
+        in: query
+        name: end_date
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/analytics.ChartData'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get cost analysis
+      tags:
+      - Analytics
+  /analytics/model-usage:
+    get:
+      consumes:
+      - application/json
+      description: Get the usage statistics for a specific model over time
+      parameters:
+      - description: Start date (YYYY-MM-DD)
+        in: query
+        name: start_date
+        required: true
+        type: string
+      - description: End date (YYYY-MM-DD)
+        in: query
+        name: end_date
+        required: true
+        type: string
+      - description: Model Name
+        in: query
+        name: model_name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/analytics.ChartData'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get usage statistics for a specific model
+      tags:
+      - Analytics
+  /analytics/most-used-llm-models:
+    get:
+      consumes:
+      - application/json
+      description: Get the usage count for each LLM model
+      parameters:
+      - description: Start date (YYYY-MM-DD)
+        in: query
+        name: start_date
+        required: true
+        type: string
+      - description: End date (YYYY-MM-DD)
+        in: query
+        name: end_date
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/analytics.ChartData'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get most used LLM models
+      tags:
+      - Analytics
+  /analytics/token-usage-and-cost-for-app:
+    get:
+      consumes:
+      - application/json
+      description: Get the token usage and total cost for a specific app over time
+      parameters:
+      - description: Start date (YYYY-MM-DD)
+        in: query
+        name: start_date
+        required: true
+        type: string
+      - description: End date (YYYY-MM-DD)
+        in: query
+        name: end_date
+        required: true
+        type: string
+      - description: App ID
+        in: query
+        name: app_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/analytics.MultiAxisChartData'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get token usage and cost for a specific app
+      tags:
+      - Analytics
+  /analytics/token-usage-for-app:
+    get:
+      consumes:
+      - application/json
+      description: Get the token usage for a specific app over time
+      parameters:
+      - description: Start date (YYYY-MM-DD)
+        in: query
+        name: start_date
+        required: true
+        type: string
+      - description: End date (YYYY-MM-DD)
+        in: query
+        name: end_date
+        required: true
+        type: string
+      - description: App ID
+        in: query
+        name: app_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/analytics.ChartData'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get token usage for a specific app
+      tags:
+      - Analytics
+  /analytics/token-usage-per-app:
+    get:
+      consumes:
+      - application/json
+      description: Get the total token usage for each app
+      parameters:
+      - description: Start date (YYYY-MM-DD)
+        in: query
+        name: start_date
+        required: true
+        type: string
+      - description: End date (YYYY-MM-DD)
+        in: query
+        name: end_date
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/analytics.ChartData'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get token usage per app
+      tags:
+      - Analytics
+  /analytics/token-usage-per-user:
+    get:
+      consumes:
+      - application/json
+      description: Get the total token usage for each user
+      parameters:
+      - description: Start date (YYYY-MM-DD)
+        in: query
+        name: start_date
+        required: true
+        type: string
+      - description: End date (YYYY-MM-DD)
+        in: query
+        name: end_date
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/analytics.ChartData'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get token usage per user
+      tags:
+      - Analytics
+  /analytics/tool-calls-per-day:
+    get:
+      consumes:
+      - application/json
+      description: Get the total number of tool calls per day for a given time period
+      parameters:
+      - description: Start date (YYYY-MM-DD)
+        in: query
+        name: start_date
+        required: true
+        type: string
+      - description: End date (YYYY-MM-DD)
+        in: query
+        name: end_date
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/analytics.ChartData'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get tool calls per day
+      tags:
+      - Analytics
+  /analytics/tool-usage-statistics:
+    get:
+      consumes:
+      - application/json
+      description: Get the usage count for each tool
+      parameters:
+      - description: Start date (YYYY-MM-DD)
+        in: query
+        name: start_date
+        required: true
+        type: string
+      - description: End date (YYYY-MM-DD)
+        in: query
+        name: end_date
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/analytics.ChartData'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get tool usage statistics
+      tags:
+      - Analytics
+  /analytics/total-cost-per-vendor-and-model:
+    get:
+      consumes:
+      - application/json
+      description: Get the total cost per vendor and model for a given time period,
+        including currency
+      parameters:
+      - description: Start date (YYYY-MM-DD)
+        in: query
+        name: start_date
+        required: true
+        type: string
+      - description: End date (YYYY-MM-DD)
+        in: query
+        name: end_date
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/analytics.VendorModelCost'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get total cost per vendor and model
+      tags:
+      - Analytics
+  /analytics/unique-users-per-day:
+    get:
+      consumes:
+      - application/json
+      description: Get the number of unique users per day
+      parameters:
+      - description: Start date (YYYY-MM-DD)
+        in: query
+        name: start_date
+        required: true
+        type: string
+      - description: End date (YYYY-MM-DD)
+        in: query
+        name: end_date
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/analytics.ChartData'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get unique users per day
+      tags:
+      - Analytics
+  /analytics/vendor-usage:
+    get:
+      consumes:
+      - application/json
+      description: Get the usage statistics for a specific vendor over time
+      parameters:
+      - description: Start date (YYYY-MM-DD)
+        in: query
+        name: start_date
+        required: true
+        type: string
+      - description: End date (YYYY-MM-DD)
+        in: query
+        name: end_date
+        required: true
+        type: string
+      - description: Vendor Name
+        in: query
+        name: vendor
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/analytics.ChartData'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get usage statistics for a specific vendor
+      tags:
+      - Analytics
+  /apps:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all apps
+      parameters:
+      - description: Page number
+        in: query
+        name: page
+        type: integer
+      - description: Page size
+        in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.AppResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: List all apps
+      tags:
+      - apps
+    post:
+      consumes:
+      - application/json
+      description: Create a new app with the provided information
+      parameters:
+      - description: App information
+        in: body
+        name: app
+        required: true
+        schema:
+          $ref: '#/definitions/api.AppInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/api.AppResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Create a new app
+      tags:
+      - apps
+  /apps/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete an app by its ID
+      parameters:
+      - description: App ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete an app
+      tags:
+      - apps
+    get:
+      consumes:
+      - application/json
+      description: Get details of an app by its ID
+      parameters:
+      - description: App ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.AppResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get an app by ID
+      tags:
+      - apps
+    patch:
+      consumes:
+      - application/json
+      description: Update an existing app's information
+      parameters:
+      - description: App ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated app information
+        in: body
+        name: app
+        required: true
+        schema:
+          $ref: '#/definitions/api.AppInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.AppResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Update an app
+      tags:
+      - apps
+  /apps/{id}/activate-credential:
+    post:
+      consumes:
+      - application/json
+      description: Activate the credential associated with an app
+      parameters:
+      - description: App ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Activate app credential
+      tags:
+      - apps
+  /apps/{id}/deactivate-credential:
+    post:
+      consumes:
+      - application/json
+      description: Deactivate the credential associated with an app
+      parameters:
+      - description: App ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Deactivate app credential
+      tags:
+      - apps
+  /apps/by-name:
+    get:
+      consumes:
+      - application/json
+      description: Get details of an app by its name
+      parameters:
+      - description: App name
+        in: query
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.AppResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get app by name
+      tags:
+      - apps
+  /apps/count:
+    get:
+      consumes:
+      - application/json
+      description: Get the total number of apps
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: integer
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Count all apps
+      tags:
+      - apps
+  /apps/search:
+    get:
+      consumes:
+      - application/json
+      description: Search for apps based on a search term
+      parameters:
+      - description: Search term
+        in: query
+        name: searchTerm
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.AppResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Search apps
+      tags:
+      - apps
+  /catalogues:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all catalogues with their associated LLM names
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.CatalogueResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: List all catalogues
+      tags:
+      - catalogues
+    post:
+      consumes:
+      - application/json
+      description: Create a new catalogue with the provided information
+      parameters:
+      - description: Catalogue information
+        in: body
+        name: catalogue
+        required: true
+        schema:
+          $ref: '#/definitions/api.CatalogueInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/api.CatalogueResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Create a new catalogue
+      tags:
+      - catalogues
+  /catalogues/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a catalogue by its ID
+      parameters:
+      - description: Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete a catalogue
+      tags:
+      - catalogues
+    get:
+      consumes:
+      - application/json
+      description: Get details of a catalogue by its ID
+      parameters:
+      - description: Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.CatalogueResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get a catalogue by ID
+      tags:
+      - catalogues
+    patch:
+      consumes:
+      - application/json
+      description: Update an existing catalogue's information
+      parameters:
+      - description: Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated catalogue information
+        in: body
+        name: catalogue
+        required: true
+        schema:
+          $ref: '#/definitions/api.CatalogueInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.CatalogueResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Update a catalogue
+      tags:
+      - catalogues
+  /catalogues/{id}/llms:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all LLMs in a specific catalogue
+      parameters:
+      - description: Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.LLMResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: List LLMs in a catalogue
+      tags:
+      - catalogues
+    post:
+      consumes:
+      - application/json
+      description: Add an LLM to a specific catalogue
+      parameters:
+      - description: Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: LLM to add
+        in: body
+        name: llm
+        required: true
+        schema:
+          $ref: '#/definitions/api.CatalogueLLMInput'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Add an LLM to a catalogue
+      tags:
+      - catalogues
+  /catalogues/{id}/llms/{llmId}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove an LLM from a specific catalogue
+      parameters:
+      - description: Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: LLM ID
+        in: path
+        name: llmId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Remove an LLM from a catalogue
+      tags:
+      - catalogues
+  /catalogues/search:
+    get:
+      consumes:
+      - application/json
+      description: Search for catalogues using a name stub
+      parameters:
+      - description: Name stub to search for
+        in: query
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.CatalogueResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Search catalogues by name
+      tags:
+      - catalogues
+  /catalogues/search-by-stub:
+    get:
+      consumes:
+      - application/json
+      description: Search for catalogues using a name stub
+      parameters:
+      - description: Name stub to search for
+        in: query
+        name: stub
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.CatalogueResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Search catalogues by name stub
+      tags:
+      - catalogues
+  /chat-history-records:
+    get:
+      consumes:
+      - application/json
+      description: List chat history records for a given user
+      parameters:
+      - description: User ID
+        in: query
+        name: user_id
+        required: true
+        type: integer
+      - description: Page number
+        in: query
+        name: page
+        type: integer
+      - description: Page size
+        in: query
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ChatHistoryRecordListResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: List chat history records
+      tags:
+      - chat-history
+    post:
+      consumes:
+      - application/json
+      description: Create a new chat history record with the given input
+      parameters:
+      - description: Chat History Record Input
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/api.ChatHistoryRecordInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/api.ChatHistoryRecordResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Create a new chat history record
+      tags:
+      - chat-history
+  /chat-history-records/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a chat history record by its ID
+      parameters:
+      - description: Chat History Record ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Delete a chat history record
+      tags:
+      - chat-history
+    get:
+      consumes:
+      - application/json
+      description: Get a chat history record by its ID
+      parameters:
+      - description: Chat History Record ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ChatHistoryRecordResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get a chat history record
+      tags:
+      - chat-history
+  /chats:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all chats
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.ChatResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: List all chats
+      tags:
+      - chats
+    post:
+      consumes:
+      - application/json
+      description: Create a new chat with the provided information
+      parameters:
+      - description: Chat information
+        in: body
+        name: chat
+        required: true
+        schema:
+          $ref: '#/definitions/api.ChatInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/api.ChatResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Create a new chat
+      tags:
+      - chats
+  /chats/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a chat by its ID
+      parameters:
+      - description: Chat ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete a chat
+      tags:
+      - chats
+    get:
+      consumes:
+      - application/json
+      description: Get details of a chat by its ID
+      parameters:
+      - description: Chat ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ChatResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get a chat by ID
+      tags:
+      - chats
+    patch:
+      consumes:
+      - application/json
+      description: Update an existing chat's information
+      parameters:
+      - description: Chat ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated chat information
+        in: body
+        name: chat
+        required: true
+        schema:
+          $ref: '#/definitions/api.ChatInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ChatResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Update a chat
+      tags:
+      - chats
+  /chats/by-group:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of chats associated with a specific group
+      parameters:
+      - description: Group ID
+        in: query
+        name: group_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.ChatResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get chats by group ID
+      tags:
+      - chats
+  /credentials:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all credentials
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.CredentialResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: List all credentials
+      tags:
+      - credentials
+    post:
+      consumes:
+      - application/json
+      description: Create a new credential
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/api.CredentialResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Create a new credential
+      tags:
+      - credentials
+  /credentials/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a credential by its ID
+      parameters:
+      - description: Credential ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete a credential
+      tags:
+      - credentials
+    get:
+      consumes:
+      - application/json
+      description: Get details of a credential by its ID
+      parameters:
+      - description: Credential ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.CredentialResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get a credential by ID
+      tags:
+      - credentials
+    patch:
+      consumes:
+      - application/json
+      description: Update an existing credential's information
+      parameters:
+      - description: Credential ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated credential information
+        in: body
+        name: credential
+        required: true
+        schema:
+          $ref: '#/definitions/api.CredentialInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.CredentialResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Update a credential
+      tags:
+      - credentials
+  /credentials/{id}/activate:
+    post:
+      consumes:
+      - application/json
+      description: Activate a credential by its ID
+      parameters:
+      - description: Credential ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.CredentialResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Activate a credential
+      tags:
+      - credentials
+  /credentials/{id}/deactivate:
+    post:
+      consumes:
+      - application/json
+      description: Deactivate a credential by its ID
+      parameters:
+      - description: Credential ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.CredentialResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Deactivate a credential
+      tags:
+      - credentials
+  /credentials/active:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all active credentials
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.CredentialResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: List active credentials
+      tags:
+      - credentials
+  /credentials/key/{keyId}:
+    get:
+      consumes:
+      - application/json
+      description: Get details of a credential by its Key ID
+      parameters:
+      - description: Credential Key ID
+        in: path
+        name: keyId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.CredentialResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get a credential by Key ID
+      tags:
+      - credentials
+  /data-catalogues:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all data catalogues
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.DataCatalogueResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: List all data catalogues
+      tags:
+      - data-catalogues
+    post:
+      consumes:
+      - application/json
+      description: Create a new data catalogue with the provided information
+      parameters:
+      - description: Data Catalogue information
+        in: body
+        name: dataCatalogue
+        required: true
+        schema:
+          $ref: '#/definitions/api.DataCatalogueInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/api.DataCatalogueResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Create a new data catalogue
+      tags:
+      - data-catalogues
+  /data-catalogues/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a data catalogue by its ID
+      parameters:
+      - description: Data Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete a data catalogue
+      tags:
+      - data-catalogues
+    get:
+      consumes:
+      - application/json
+      description: Get details of a data catalogue by its ID
+      parameters:
+      - description: Data Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.DataCatalogueResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get a data catalogue by ID
+      tags:
+      - data-catalogues
+    patch:
+      consumes:
+      - application/json
+      description: Update an existing data catalogue's information
+      parameters:
+      - description: Data Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated data catalogue information
+        in: body
+        name: dataCatalogue
+        required: true
+        schema:
+          $ref: '#/definitions/api.DataCatalogueInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.DataCatalogueResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Update a data catalogue
+      tags:
+      - data-catalogues
+  /data-catalogues/{id}/datasources:
+    post:
+      consumes:
+      - application/json
+      description: Add a datasource to a specific data catalogue
+      parameters:
+      - description: Data Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Datasource to add
+        in: body
+        name: datasource
+        required: true
+        schema:
+          $ref: '#/definitions/api.DataCatalogueDatasourceInput'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Add a datasource to a data catalogue
+      tags:
+      - data-catalogues
+  /data-catalogues/{id}/datasources/{datasourceId}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove a datasource from a specific data catalogue
+      parameters:
+      - description: Data Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Datasource ID
+        in: path
+        name: datasourceId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Remove a datasource from a data catalogue
+      tags:
+      - data-catalogues
+  /data-catalogues/{id}/tags:
+    post:
+      consumes:
+      - application/json
+      description: Add a tag to a specific data catalogue
+      parameters:
+      - description: Data Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Tag to add
+        in: body
+        name: tag
+        required: true
+        schema:
+          $ref: '#/definitions/api.DataCatalogueTagInput'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Add a tag to a data catalogue
+      tags:
+      - data-catalogues
+  /data-catalogues/{id}/tags/{tagId}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove a tag from a specific data catalogue
+      parameters:
+      - description: Data Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Tag ID
+        in: path
+        name: tagId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Remove a tag from a data catalogue
+      tags:
+      - data-catalogues
+  /data-catalogues/by-datasource:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of data catalogues associated with a specific datasource
+      parameters:
+      - description: Datasource ID
+        in: query
+        name: datasourceId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.DataCatalogueResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get data catalogues by datasource
+      tags:
+      - data-catalogues
+  /data-catalogues/by-tag:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of data catalogues associated with a specific tag
+      parameters:
+      - description: Tag name
+        in: query
+        name: tagName
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.DataCatalogueResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get data catalogues by tag
+      tags:
+      - data-catalogues
+  /data-catalogues/search:
+    get:
+      consumes:
+      - application/json
+      description: Search for data catalogues using a query string
+      parameters:
+      - description: Search query
+        in: query
+        name: query
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.DataCatalogueResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Search data catalogues
+      tags:
+      - data-catalogues
+  /datasources:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all datasources
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.DatasourceResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: List all datasources
+      tags:
+      - datasources
+    post:
+      consumes:
+      - application/json
+      description: Create a new datasource with the provided information
+      parameters:
+      - description: Datasource information
+        in: body
+        name: datasource
+        required: true
+        schema:
+          $ref: '#/definitions/api.DatasourceInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/api.DatasourceResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Create a new datasource
+      tags:
+      - datasources
+  /datasources/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a datasource by its ID
+      parameters:
+      - description: Datasource ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete a datasource
+      tags:
+      - datasources
+    get:
+      consumes:
+      - application/json
+      description: Get details of a datasource by its ID
+      parameters:
+      - description: Datasource ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.DatasourceResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get a datasource by ID
+      tags:
+      - datasources
+    patch:
+      consumes:
+      - application/json
+      description: Update an existing datasource's information
+      parameters:
+      - description: Datasource ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated datasource information
+        in: body
+        name: datasource
+        required: true
+        schema:
+          $ref: '#/definitions/api.DatasourceInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.DatasourceResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Update a datasource
+      tags:
+      - datasources
+  /datasources/by-tag:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of datasources associated with a specific tag
+      parameters:
+      - description: Tag name
+        in: query
+        name: tag
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.DatasourceResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get datasources by tag
+      tags:
+      - datasources
+  /datasources/search:
+    get:
+      consumes:
+      - application/json
+      description: Search for datasources using a query string
+      parameters:
+      - description: Search query
+        in: query
+        name: query
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.DatasourceResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Search datasources
+      tags:
+      - datasources
+  /filters:
+    get:
+      description: Get a list of all filters
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.FilterResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: List all filters
+      tags:
+      - filters
+    post:
+      consumes:
+      - application/json
+      description: Create a new filter with the given input data
+      parameters:
+      - description: Filter input
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/api.FilterInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/api.FilterResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Create a new filter
+      tags:
+      - filters
+  /filters/{id}:
+    delete:
+      description: Delete a filter by its ID
+      parameters:
+      - description: Filter ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Delete a filter
+      tags:
+      - filters
+    get:
+      description: Get a filter's details by its ID
+      parameters:
+      - description: Filter ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.FilterResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get a filter by ID
+      tags:
+      - filters
+    patch:
+      consumes:
+      - application/json
+      description: Update an existing filter's details
+      parameters:
+      - description: Filter ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated filter input
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/api.FilterInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.FilterResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Update a filter
+      tags:
+      - filters
+  /groups:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all groups
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.GroupResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: List all groups
+      tags:
+      - groups
+    post:
+      consumes:
+      - application/json
+      description: Create a new group with the provided information
+      parameters:
+      - description: Group information
+        in: body
+        name: group
+        required: true
+        schema:
+          $ref: '#/definitions/api.GroupInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/api.GroupResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Create a new group
+      tags:
+      - groups
+  /groups/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a group by its ID
+      parameters:
+      - description: Group ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete a group
+      tags:
+      - groups
+    get:
+      consumes:
+      - application/json
+      description: Get details of a group by its ID
+      parameters:
+      - description: Group ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.GroupResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get a group by ID
+      tags:
+      - groups
+    patch:
+      consumes:
+      - application/json
+      description: Update an existing group's information
+      parameters:
+      - description: Group ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated group information
+        in: body
+        name: group
+        required: true
+        schema:
+          $ref: '#/definitions/api.GroupInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.GroupResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Update a group
+      tags:
+      - groups
+  /groups/{id}/catalogues:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all catalogues in a specific group
+      parameters:
+      - description: Group ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.CatalogueResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: List catalogues in a group
+      tags:
+      - groups
+    post:
+      consumes:
+      - application/json
+      description: Add a catalogue to a specific group
+      parameters:
+      - description: Group ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Catalogue to add
+        in: body
+        name: catalogue
+        required: true
+        schema:
+          $ref: '#/definitions/api.GroupCatalogueInput'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Add a catalogue to a group
+      tags:
+      - groups
+  /groups/{id}/catalogues/{catalogueId}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove a catalogue from a specific group
+      parameters:
+      - description: Group ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Catalogue ID
+        in: path
+        name: catalogueId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Remove a catalogue from a group
+      tags:
+      - groups
+  /groups/{id}/data-catalogues:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all data catalogues in a specific group
+      parameters:
+      - description: Group ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.DataCatalogueResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: List data catalogues in a group
+      tags:
+      - groups
+    post:
+      consumes:
+      - application/json
+      description: Add a data catalogue to a specific group
+      parameters:
+      - description: Group ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Data Catalogue to add
+        in: body
+        name: dataCatalogue
+        required: true
+        schema:
+          $ref: '#/definitions/api.DataCatalogueInput'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Add a data catalogue to a group
+      tags:
+      - groups
+  /groups/{id}/data-catalogues/{dataCatalogueId}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove a data catalogue from a specific group
+      parameters:
+      - description: Group ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Data Catalogue ID
+        in: path
+        name: dataCatalogueId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Remove a data catalogue from a group
+      tags:
+      - groups
+  /groups/{id}/tool-catalogues:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all tool catalogues in a specific group
+      parameters:
+      - description: Group ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.ToolCatalogueResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: List tool catalogues in a group
+      tags:
+      - groups
+    post:
+      consumes:
+      - application/json
+      description: Add a tool catalogue to a specific group
+      parameters:
+      - description: Group ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Tool Catalogue to add
+        in: body
+        name: toolCatalogue
+        required: true
+        schema:
+          $ref: '#/definitions/api.GroupToolCatalogueInput'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Add a tool catalogue to a group
+      tags:
+      - groups
+  /groups/{id}/tool-catalogues/{toolCatalogueId}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove a tool catalogue from a specific group
+      parameters:
+      - description: Group ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Tool Catalogue ID
+        in: path
+        name: toolCatalogueId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Remove a tool catalogue from a group
+      tags:
+      - groups
+  /groups/{id}/users:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all users in a specific group
+      parameters:
+      - description: Group ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.UserResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: List users in a group
+      tags:
+      - groups
+    post:
+      consumes:
+      - application/json
+      description: Add a user to a specific group
+      parameters:
+      - description: Group ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: User to add
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/api.UserGroupInput'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Add a user to a group
+      tags:
+      - groups
+  /groups/{id}/users/{userId}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove a user from a specific group
+      parameters:
+      - description: Group ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: User ID
+        in: path
+        name: userId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Remove a user from a group
+      tags:
+      - groups
+  /groups/search:
+    get:
+      consumes:
+      - application/json
+      description: Search for groups using a name stub
+      parameters:
+      - description: Name stub to search for
+        in: query
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.GroupResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Search groups by name
+      tags:
+      - groups
+  /llm-settings:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all LLM settings
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.LLMSettingsResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: List all LLM settings
+      tags:
+      - llm-settings
+    post:
+      consumes:
+      - application/json
+      description: Create new LLM settings with the provided information
+      parameters:
+      - description: LLM settings information
+        in: body
+        name: settings
+        required: true
+        schema:
+          $ref: '#/definitions/api.LLMSettingsInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/api.LLMSettingsResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Create new LLM settings
+      tags:
+      - llm-settings
+  /llm-settings/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete LLM settings by its ID
+      parameters:
+      - description: LLM Settings ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete LLM settings
+      tags:
+      - llm-settings
+    get:
+      consumes:
+      - application/json
+      description: Get details of LLM settings by its ID
+      parameters:
+      - description: LLM Settings ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.LLMSettingsResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get LLM settings by ID
+      tags:
+      - llm-settings
+    patch:
+      consumes:
+      - application/json
+      description: Update existing LLM settings information
+      parameters:
+      - description: LLM Settings ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated LLM settings information
+        in: body
+        name: settings
+        required: true
+        schema:
+          $ref: '#/definitions/api.LLMSettingsInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.LLMSettingsResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Update LLM settings
+      tags:
+      - llm-settings
+  /llm-settings/search:
+    get:
+      consumes:
+      - application/json
+      description: Search for LLM settings using a model name stub
+      parameters:
+      - description: Model name stub to search for
+        in: query
+        name: model_name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.LLMSettingsResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Search LLM settings by model name
+      tags:
+      - llm-settings
+  /llms:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all LLMs
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.LLMResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: List all LLMs
+      tags:
+      - llms
+    post:
+      consumes:
+      - application/json
+      description: Create a new LLM with the provided information
+      parameters:
+      - description: LLM information
+        in: body
+        name: llm
+        required: true
+        schema:
+          $ref: '#/definitions/api.LLMInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/api.LLMResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Create a new LLM
+      tags:
+      - llms
+  /llms/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete an LLM by its ID
+      parameters:
+      - description: LLM ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete an LLM
+      tags:
+      - llms
+    get:
+      consumes:
+      - application/json
+      description: Get details of an LLM by its ID
+      parameters:
+      - description: LLM ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.LLMResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get an LLM by ID
+      tags:
+      - llms
+    patch:
+      consumes:
+      - application/json
+      description: Update an existing LLM's information
+      parameters:
+      - description: LLM ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated LLM information
+        in: body
+        name: llm
+        required: true
+        schema:
+          $ref: '#/definitions/api.LLMInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.LLMResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Update an LLM
+      tags:
+      - llms
+  /llms/max-privacy-score:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of LLMs with privacy score less than or equal to the
+        specified value
+      parameters:
+      - description: Maximum privacy score
+        in: query
+        name: max_score
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.LLMResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get LLMs by maximum privacy score
+      tags:
+      - llms
+  /llms/min-privacy-score:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of LLMs with privacy score greater than or equal to
+        the specified value
+      parameters:
+      - description: Minimum privacy score
+        in: query
+        name: min_score
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.LLMResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get LLMs by minimum privacy score
+      tags:
+      - llms
+  /llms/privacy-score-range:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of LLMs with privacy score within the specified range
+      parameters:
+      - description: Minimum privacy score
+        in: query
+        name: min_score
+        required: true
+        type: integer
+      - description: Maximum privacy score
+        in: query
+        name: max_score
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.LLMResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get LLMs by privacy score range
+      tags:
+      - llms
+  /llms/search:
+    get:
+      consumes:
+      - application/json
+      description: Search for LLMs using a name stub
+      parameters:
+      - description: Name stub to search for
+        in: query
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.LLMResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Search LLMs by name
+      tags:
+      - llms
+  /model-prices:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all model prices
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.ModelPriceResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get all model prices
+      tags:
+      - model-prices
+    post:
+      consumes:
+      - application/json
+      description: Create a new model price with the provided information
+      parameters:
+      - description: Model Price information
+        in: body
+        name: modelPrice
+        required: true
+        schema:
+          $ref: '#/definitions/api.ModelPriceInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/api.ModelPriceResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Create a new model price
+      tags:
+      - model-prices
+  /model-prices/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a model price by its ID
+      parameters:
+      - description: Model Price ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete a model price
+      tags:
+      - model-prices
+    get:
+      consumes:
+      - application/json
+      description: Get details of a model price by its ID
+      parameters:
+      - description: Model Price ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ModelPriceResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get a model price by ID
+      tags:
+      - model-prices
+    patch:
+      consumes:
+      - application/json
+      description: Update an existing model price's information
+      parameters:
+      - description: Model Price ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated model price information
+        in: body
+        name: modelPrice
+        required: true
+        schema:
+          $ref: '#/definitions/api.ModelPriceInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ModelPriceResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Update a model price
+      tags:
+      - model-prices
+  /model-prices/by-vendor:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of model prices for a specific vendor
+      parameters:
+      - description: Vendor name
+        in: query
+        name: vendor
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.ModelPriceResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get model prices by vendor
+      tags:
+      - model-prices
+  /tags:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all tags
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.TagResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: List all tags
+      tags:
+      - tags
+    post:
+      consumes:
+      - application/json
+      description: Create a new tag with the provided information
+      parameters:
+      - description: Tag information
+        in: body
+        name: tag
+        required: true
+        schema:
+          $ref: '#/definitions/api.TagInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/api.TagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Create a new tag
+      tags:
+      - tags
+  /tags/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a tag by its ID
+      parameters:
+      - description: Tag ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete a tag
+      tags:
+      - tags
+    get:
+      consumes:
+      - application/json
+      description: Get details of a tag by its ID
+      parameters:
+      - description: Tag ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.TagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get a tag by ID
+      tags:
+      - tags
+    patch:
+      consumes:
+      - application/json
+      description: Update an existing tag's information
+      parameters:
+      - description: Tag ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated tag information
+        in: body
+        name: tag
+        required: true
+        schema:
+          $ref: '#/definitions/api.TagInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.TagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Update a tag
+      tags:
+      - tags
+  /tags/search:
+    get:
+      consumes:
+      - application/json
+      description: Search for tags using a name stub
+      parameters:
+      - description: Name stub to search for
+        in: query
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.TagResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Search tags by name
+      tags:
+      - tags
+  /tool-catalogues:
+    get:
+      description: Get a list of all tool catalogues
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.ToolCatalogueResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: List all tool catalogues
+      tags:
+      - tool-catalogues
+    post:
+      consumes:
+      - application/json
+      description: Create a new tool catalogue with the provided information
+      parameters:
+      - description: Tool Catalogue information
+        in: body
+        name: toolCatalogue
+        required: true
+        schema:
+          $ref: '#/definitions/api.ToolCatalogueInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/api.ToolCatalogueResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Create a new tool catalogue
+      tags:
+      - tool-catalogues
+  /tool-catalogues/{id}:
+    delete:
+      description: Delete a tool catalogue by its ID
+      parameters:
+      - description: Tool Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Delete a tool catalogue
+      tags:
+      - tool-catalogues
+    get:
+      description: Get details of a tool catalogue by its ID
+      parameters:
+      - description: Tool Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ToolCatalogueResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get a tool catalogue by ID
+      tags:
+      - tool-catalogues
+    patch:
+      consumes:
+      - application/json
+      description: Update an existing tool catalogue's information
+      parameters:
+      - description: Tool Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated Tool Catalogue information
+        in: body
+        name: toolCatalogue
+        required: true
+        schema:
+          $ref: '#/definitions/api.ToolCatalogueInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ToolCatalogueResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Update a tool catalogue
+      tags:
+      - tool-catalogues
+  /tool-catalogues/{id}/tags:
+    get:
+      description: Get all tags in a specified tool catalogue
+      parameters:
+      - description: Tool Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.TagResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get tags in a tool catalogue
+      tags:
+      - tool-catalogues
+    post:
+      consumes:
+      - application/json
+      description: Add a tag to a specified tool catalogue
+      parameters:
+      - description: Tool Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Tag to add
+        in: body
+        name: tag
+        required: true
+        schema:
+          $ref: '#/definitions/api.ToolCatalogueTagInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ToolCatalogueResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Add a tag to a tool catalogue
+      tags:
+      - tool-catalogues
+  /tool-catalogues/{id}/tags/{tagId}:
+    delete:
+      description: Remove a tag from a specified tool catalogue
+      parameters:
+      - description: Tool Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Tag ID
+        in: path
+        name: tagId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Remove a tag from a tool catalogue
+      tags:
+      - tool-catalogues
+  /tool-catalogues/{id}/tools:
+    get:
+      description: Get all tools in a specified tool catalogue
+      parameters:
+      - description: Tool Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.ToolResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get tools in a tool catalogue
+      tags:
+      - tool-catalogues
+    post:
+      consumes:
+      - application/json
+      description: Add a tool to a specified tool catalogue
+      parameters:
+      - description: Tool Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Tool to add
+        in: body
+        name: tool
+        required: true
+        schema:
+          $ref: '#/definitions/api.ToolCatalogueToolInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ToolCatalogueResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Add a tool to a tool catalogue
+      tags:
+      - tool-catalogues
+  /tool-catalogues/{id}/tools/{toolId}:
+    delete:
+      description: Remove a tool from a specified tool catalogue
+      parameters:
+      - description: Tool Catalogue ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Tool ID
+        in: path
+        name: toolId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Remove a tool from a tool catalogue
+      tags:
+      - tool-catalogues
+  /tool-catalogues/search:
+    get:
+      description: Search for tool catalogues using a query string
+      parameters:
+      - description: Search query
+        in: query
+        name: query
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.ToolCatalogueResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Search tool catalogues
+      tags:
+      - tool-catalogues
+  /tools:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all tools
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.ToolResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get all tools
+      tags:
+      - tools
+    post:
+      consumes:
+      - application/json
+      description: Create a new tool with the provided information
+      parameters:
+      - description: Tool information
+        in: body
+        name: tool
+        required: true
+        schema:
+          $ref: '#/definitions/api.ToolInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/api.ToolResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Create a new tool
+      tags:
+      - tools
+  /tools/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a tool by its ID
+      parameters:
+      - description: Tool ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete a tool
+      tags:
+      - tools
+    get:
+      consumes:
+      - application/json
+      description: Get details of a tool by its ID
+      parameters:
+      - description: Tool ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ToolResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get a tool by ID
+      tags:
+      - tools
+    patch:
+      consumes:
+      - application/json
+      description: Update an existing tool's information
+      parameters:
+      - description: Tool ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated tool information
+        in: body
+        name: tool
+        required: true
+        schema:
+          $ref: '#/definitions/api.ToolInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ToolResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Update a tool
+      tags:
+      - tools
+  /tools/{id}/operations:
+    delete:
+      consumes:
+      - application/json
+      description: Remove an operation from a specific tool
+      parameters:
+      - description: Tool ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Operation to remove
+        in: body
+        name: operation
+        required: true
+        schema:
+          $ref: '#/definitions/api.OperationInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ToolResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Remove operation from tool
+      tags:
+      - tools
+    get:
+      consumes:
+      - application/json
+      description: Get all operations associated with a specific tool
+      parameters:
+      - description: Tool ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.OperationsResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get tool operations
+      tags:
+      - tools
+    post:
+      consumes:
+      - application/json
+      description: Add an operation to a specific tool
+      parameters:
+      - description: Tool ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Operation to add
+        in: body
+        name: operation
+        required: true
+        schema:
+          $ref: '#/definitions/api.OperationInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ToolResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Add operation to tool
+      tags:
+      - tools
+  /tools/by-type:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of tools of a specific type
+      parameters:
+      - description: Tool Type
+        in: query
+        name: type
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.ToolResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get tools by type
+      tags:
+      - tools
+  /tools/search:
+    get:
+      consumes:
+      - application/json
+      description: Search for tools by name or description
+      parameters:
+      - description: Search Query
+        in: query
+        name: query
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.ToolResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Search tools
+      tags:
+      - tools
+  /users:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all users
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.UserResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: List all users
+      tags:
+      - users
+    post:
+      consumes:
+      - application/json
+      description: Create a new user with the provided information
+      parameters:
+      - description: User information
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/api.UserInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/api.UserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Create a new user
+      tags:
+      - users
+  /users/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a user by their ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Delete a user
+      tags:
+      - users
+    get:
+      consumes:
+      - application/json
+      description: Get details of a user by their ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.UserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get a user by ID
+      tags:
+      - users
+    patch:
+      consumes:
+      - application/json
+      description: Update an existing user's information
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated user information
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/api.UserInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.UserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Update a user
+      tags:
+      - users
+  /users/{id}/catalogues:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all catalogues accessible to a user
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.UserAccessibleCataloguesResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get user accessible catalogues
+      tags:
+      - users
+  /users/{userId}/apps:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of apps for a specific user
+      parameters:
+      - description: User ID
+        in: path
+        name: userId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.AppResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get apps by user ID
+      tags:
+      - apps
+  /users/{userId}/apps/count:
+    get:
+      consumes:
+      - application/json
+      description: Get the total number of apps for a specific user
+      parameters:
+      - description: User ID
+        in: path
+        name: userId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: integer
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Count apps by user ID
+      tags:
+      - apps
+  /users/{userId}/groups:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all groups a specific user belongs to
+      parameters:
+      - description: User ID
+        in: path
+        name: userId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.GroupResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get groups for a user
+      tags:
+      - groups
+  /vendors/embedders:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of available embedders
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.VendorListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get available embedders
+      tags:
+      - vendors
+  /vendors/llm-drivers:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of available LLM drivers
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.VendorListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get available LLM drivers
+      tags:
+      - vendors
+  /vendors/vector-stores:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of available vector stores
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.VendorListResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - BearerAuth: []
+      summary: Get available vector stores
+      tags:
+      - vendors
+security:
+- BearerAuth: []
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
