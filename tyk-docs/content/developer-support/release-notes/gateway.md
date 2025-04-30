@@ -1825,7 +1825,7 @@ Fixed an issue where an [enforced timeout]({{< ref "tyk-self-managed#enforced-ti
 <details>
 <summary>Fixed race condition in gateway license allocation</summary>
 
-Resolved a race condition in gateway license allocation that occasionally allowed more or fewer gateways than licensed to register and serve traffic.
+Resolved a race condition in self-managed deployments which occasionally lead to fewer Gateways registering with the Dashboard than the number that had been licensed. Now Tyk Self-Managed deployments will allow the licensed number of Gateways to register and serve traffic.
 </details>
 </li>
 <li>
