@@ -96,7 +96,7 @@ Proxying LLM traffic through the AI Gateway delivers control, visibility, and sc
 
 [Remote MCP server capabilities]({{<ref "ai-management/overview#mcp-for-enterprise-use" >}}) - AI Studio can expose a remote MCP server, making it simple for enterprises to connect their internal APIs and tools securely and centrally, without relying on makeshift solutions or unauthorized local installations.
 
-For more details about Model Context Protocol (MCP) integration, please visit the [Tyk MCPs overview]({{< ref "ai-management/tyk-mcps/overview" >}}) page.
+For more details about Model Context Protocol (MCP) integration, please visit the [Tyk MCPs overview]({{< ref "ai-management/mcps/overview" >}}) page.
 
 </br>
 {{< button_left href="https://tyk.io/ai-demo" color="green" content="Request a demo" >}}

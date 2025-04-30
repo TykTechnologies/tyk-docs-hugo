@@ -43,7 +43,7 @@ AI Studio supports enterprises in reducing unauthorised AI usage by providing ce
 
 [Explore AI Studio]({{< ref "ai-management/ai-studio/overview" >}})
 
-### [Tyk MCPs]({{< ref "ai-management/tyk-mcps/overview" >}})
+### [Tyk MCPs]({{< ref "ai-management/mcps/overview" >}})
 
 The [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) provides a standardised method for AI components to interact with external resources.
 
@@ -56,7 +56,7 @@ With MCPs, organisations can:
 
 MCPs help expand AI system functionality by enabling secure, standardised interactions between services.
 
-[Explore Tyk MCPs]({{< ref "ai-management/tyk-mcps/overview" >}})
+[Explore Tyk MCPs]({{< ref "ai-management/mcps/overview" >}})
 
 ### How AI Studio and MCPs work together
 
@@ -72,7 +72,7 @@ Together, they create a flexible, governed framework for managing AI application
 To start using Tyk's AI management capabilities:
 
 1. Explore the [AI Studio documentation]({{< ref "ai-management/ai-studio/overview" >}})
-2. Review [Tyk MCPs]({{< ref "ai-management/tyk-mcps/overview" >}}) and how they extend AI systems
+2. Review [Tyk MCPs]({{< ref "ai-management/mcps/overview" >}}) and how they extend AI systems
 3. [Request a demo](https://tyk.io/ai-demo/) to see the platform in action.
 
 ## Key outcomes

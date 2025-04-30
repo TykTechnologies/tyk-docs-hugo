@@ -573,21 +573,21 @@ menu:
         path: /ai-management/overview
         show: True
       - title: "MCPs"
-        path: /ai-management/tyk-mcps/overview
+        path: /ai-management/mcps/overview
         category: Directory
         show: True
         menu:
           - title: "API to MCP"
             category: Page
-            path: /ai-management/tyk-mcps/api-to-mcp
+            path: /ai-management/mcps/api-to-mcp
             show: True
           - title: "Dashboard API to MCP"
             category: Page
-            path: /ai-management/tyk-mcps/dashboard-api-to-mcp
+            path: /ai-management/mcps/dashboard-api-to-mcp
             show: True
           - title: "Tyk Docs MCP"
             category: Page
-            path: /ai-management/tyk-mcps/tyk-docs-mcp
+            path: /ai-management/mcps/tyk-docs-mcp
             show: True
       - title: "AI Studio"
         path: /ai-management/ai-studio/overview
