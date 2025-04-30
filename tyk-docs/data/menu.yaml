@@ -570,6 +570,30 @@ menu:
                     path: /tyk-apis/tyk-dashboard-api/portal-policies
                     category: Page
                     show: True
+  - title: "API Governance"
+    category: Label
+    show: True
+    menu:
+      - title: "Overview"
+        path: /tyk-governance/overview
+        category: Page
+        show: True
+      - title: "Core Concepts"
+        path: /tyk-governance/core-concepts
+        category: Page
+        show: True
+      - title: "Installation"
+        path: /tyk-governance/installation
+        category: Page
+        show: True
+      - title: "Federated API Repository"
+        path: /tyk-governance/api-repository
+        category: Page
+        show: True
+      - title: "API Labeling and Categorization"
+        path: /tyk-governance/api-labeling
+        category: Page
+        show: True
   - title: "Developer Support"
     category: Label
     show: True
