@@ -46,7 +46,7 @@ graph LR
 
 Check the [complete technical list](https://github.com/TykTechnologies/api-to-mcp#features) is available in our GitHub repository.
 
-## Quick Start
+## Quick Start {#quick-start}
 
 To get started quickly, the primary way to use it is by configuring your AI assistant to run it directly as an MCP tool.
 
@@ -85,7 +85,7 @@ To enable the tool, paste the above configuration into your AI assistant’s MCP
 **Step 2.**
 Once connected, ask the AI to perform an operation (e.g., "List all pets" or "Create a new user").
 
-## How It Works
+## How It Works {#how-it-works}
 
 ### User flow in *API to MCP** user flow
 
@@ -171,7 +171,7 @@ sequenceDiagram
 
 API to MCP  can be found in [api-to-mcp GitHub repository](https://github.com/TykTechnologies/api-to-mcp)
 
-## Use cases
+## Use cases {#use-cases}
 
 Use **API to MCP** when you need to:
 

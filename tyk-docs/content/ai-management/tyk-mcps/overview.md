@@ -35,7 +35,7 @@ The MCP specification standardises how AI agents discover and interact with exte
 
 ## How MCPs work
 
-MCPs operate as independent servers using the Model Context Protocol. When an AI agent needs external resources, the workflow typically follows:
+MCPs operate as independent servers using the *Model Context Protocol*. When an AI agent needs external resources, the workflow typically follows:
 
 1. The agent queries the MCP server for available tools and resources.
 2. The agent selects a tool based on metadata and schema descriptions.
@@ -54,9 +54,7 @@ Tyk extends the MCP model for enterprise deployments with the following capabili
 
 These features enable enterprises to scale AI integrations securely while ensuring compliance and operational control.
 
-## Getting started with Tyk MCPs
-
-### Ready-to-use MCP options {#ready-to-use-mcp-options}
+## Ready-to-use MCP options {#ready-to-use-mcp-options}
 
 Tyk offers several ready-to-use MCP integrations:
 
@@ -64,49 +62,4 @@ Tyk offers several ready-to-use MCP integrations:
 - **[Dashboard API to MCP]({{< ref "ai-management/tyk-mcps/dashboard-api-to-mcp" >}})** – Expose the Tyk Dashboard API for management and monitoring.
 - **[Tyk Docs MCP]({{< ref "ai-management/tyk-mcps/tyk-docs-mcp" >}})** – Provide AI access to searchable Tyk documentation.
 
-### Setting up an MCP server
-
-To set up your own MCP server:
-
-1. Choose an MCP implementation or build a custom one.
-2. Define available tools and resources.
-3. Deploy the server in a location accessible by your AI agents.
-
-### Configuring an MCP server
-
-MCP servers are configured using JSON files that define the tools and resources they expose. A basic example:
-
-```json
-{
-  "server_name": "example-mcp",
-  "description": "Example MCP server with basic tools",
-  "tools": [
-    {
-      "name": "search_docs",
-      "description": "Search documentation for relevant information",
-      "input_schema": {
-        "type": "object",
-        "properties": {
-          "query": {
-            "type": "string",
-            "description": "The search query"
-          },
-          "max_results": {
-            "type": "number",
-            "description": "Maximum number of results to return"
-          }
-        },
-        "required": ["query"]
-      }
-    }
-  ],
-  "resources": {
-    "documentation": {
-      "description": "Access to documentation files",
-      "uri_pattern": "docs://*"
-    }
-  }
-}
-```
-
-For more information on implementing MCPs, refer to our [GitHub docs-mcp repository](https://github.com/TykTechnologies/docs-mcp) or [contact the Tyk team](https://tyk.io/contact/) do thiscuss your specific use cases.
+For more information on implementing MCPs, [contact the Tyk team](https://tyk.io/contact/) do discuss your specific use cases.
