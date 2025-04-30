@@ -9,9 +9,9 @@ description: "Enable AI assistants to safely and dynamically interact with your 
 
 **API to MCP** enables AI assistants to safely and dynamically interact with your existing APIs. It allows non-technical users to access API functionality through natural language, while developers retain full control over what endpoints are exposed and how they are accessed.
 
-Under the hood, it works by transforming OpenAPI-documented REST APIs into [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) tool definitions. This allows AI tools to interpret, invoke, and structure API operations without requiring any backend modifications.
+This allows AI tools to interpret, invoke, and structure API operations without requiring any backend modifications.
 
-Use this tool to:
+**Use this tool to:**
 - Expose your APIs for AI interaction
 - Allow AI assistants to understand and call API operations
 - Configure basic access controls (e.g., filtering operations and setting headers) to manage how AI tools interact with your APIs
@@ -39,27 +39,25 @@ graph LR
 - **OpenAPI Overlay Support:** Apply overlays to customize specifications
 - **Flexible Operation Filtering:** Include/exclude specific operations using glob patterns
 - **Comprehensive Parameter Handling:** Preserves formats and includes metadata
+- **Built-in Access Control & Security:** Control which endpoints are exposed, enforce authentication (API keys, OAuth, etc.), and add custom headers to all API requests, for secure AI access
 - **Authentication Support:** Handles API keys, OAuth tokens, and other security schemes
-- **Custom Headers:** Add custom headers to all API requests
 - **MCP Extensions:** Support for custom x-mcp extensions to override tool names and descriptions
 - **Multiple Integration Options:** Works with Claude Desktop, Cursor, Vercel AI SDK, and other MCP-compatible environments
 
-Check the [complete technical list](https://github.com/TykTechnologies/api-to-mcp?tab=readme-ov-file#features) is in our GH repository.
+Check the [complete technical list](https://github.com/TykTechnologies/api-to-mcp?tab=readme-ov-file#features) is available in our GH repository.
 
 ## Quick Start
 
 To get started quickly, the primary way to use it is by configuring your AI assistant to run it directly as an MCP tool.
 
 ### Requirements
-- [Node.js](https://nodejs.org/en) installed
-- An accesible OpenAPI specification, e.g. `https://petstore3.swagger.io/api/v3/openapi.json"` (could be a local file as well)
-- Claude Desktop (which we show in this example) or other MCP-compatible AI assistant that supports connecting to external MCP-compatible tool servers (e.g. Cursor, Vercel AI SDK, Cline extension in VS Code etc.), 
+- [Node.js v18+](https://nodejs.org/en/download) installed
+- An accessible OpenAPI specification, e.g. `https://petstore3.swagger.io/api/v3/openapi.json"` (could be a local file as well)
+- Claude Desktop (which we show in this example) or other MCP-compatible AI assistant that supports connecting to external MCP-compatible tool servers (e.g. Cursor, Vercel AI SDK, Cline extension in VS Code etc.)
 
-### Configure with your AI Assistant
+### Configure your AI Assistant
 
-#### MCP connnection definition
-To connect the tool with Claude Desktop or other MCP-compatible assistants, you need to register it as an MCP server. Most AI assistance share similar MCP server definition. This is the definition for *api-to-mcp* with petstore as the OpenAPI.
-
+To connect the tool with Claude Desktop or other MCP-compatible assistants, you need to register it as an MCP server. Most AI assistance share similar MCP server definition. This is the definition for *api-to-mcp* with petstore as the OpenAPI:
 
 ```json
 {
@@ -68,7 +66,7 @@ To connect the tool with Claude Desktop or other MCP-compatible assistants, you 
       "command": "npx",
       "args": [
         "-y",
-        "@tyk-technologies/api-to-mcp",
+        "@tyk-technologies/api-to-mc@latest",
         "--spec",
         "https://petstore3.swagger.io/api/v3/openapi.json"
       ],
@@ -78,12 +76,14 @@ To connect the tool with Claude Desktop or other MCP-compatible assistants, you 
 }
 ```
 
-**Step 1.** You would need to add the code above to the AI assitant in order to register the MCP server:
+**Step 1.**
+To enable the tool, paste the above configuration into your AI assistant’s MCP config file
 
 - **Claude Desktop**: For MacOS, you need to update `~/Library/Application Support/Claude/claude_desktop_config.json`. See the [Claude Desktop setup instructions](https://github.com/TykTechnologies/api-to-mcp?tab=readme-ov-file#setting-up-in-claude-desktop) for Windows OS and more customization options.
 - **Cursor**: See the [Cursor setup guide](https://github.com/TykTechnologies/api-to-mcp#cursor) for instruction on setting it with Cursor.
 
-**Step 2.** Once connected, ask the AI to perform an operation (e.g., "List all pets" or "Create a new user").
+**Step 2.**
+Once connected, ask the AI to perform an operation (e.g., "List all pets" or "Create a new user").
 
 ## How It Works
 
@@ -99,7 +99,7 @@ The **API to MCP** tool:
 ```mermaid
 flowchart LR
     subgraph "Input"
-        A["OpenAPI Specification"] 
+        A["OpenAPI Specification"]
         B["Optional Overlays"]
     end
 
@@ -137,9 +137,7 @@ flowchart LR
     class G,H,I runtime;
 ```
 
-
-
-### Runtime Request Flow
+### Request lifecycle: how an AI assistant invokes an API tool”
 
 The following diagram illustrates the flow of a request through the system at runtime:
 
@@ -172,43 +170,30 @@ sequenceDiagram
     end
 ```
 
----
-
-## Use Cases
-
-- **AI-powered API access**: Natural language interfaces over your existing APIs
-- **Chatbots**: Let bots invoke backend services contextually
-- **Auto-docs & validation**: Use AI to test, describe, or troubleshoot APIs
-- **AI-driven testing**: Natural-language test generation and feedback
-- **Workflow automation**: Connect APIs and AI logic in real time
-
----
-
 ## Use cases
 
 Use **API to MCP** when you need to:
 
-### 🔌 Connect AI Assistants to Existing APIs
-Let AI tools understand and call your existing API operations using natural language — no code changes needed, just [configuration](https://github.com/TykTechnologies/api-to-mcp/tree/main#configuration).
+- **Connect AI Assistants to Existing APIs** - Let AI tools understand and call your existing API operations using natural language — no code changes needed, just [configuration](https://github.com/TykTechnologies/api-to-mcp/#configuration).
 
-### 🧩 Create a Unified Interface for AI Systems  
-Standardize how APIs are accessed by AI across your organization with a consistent protocol (MCP).
+- **Create a Unified Interface for AI Systems** - Standardize how APIs are accessed by AI across your organization with a consistent protocol (MCP).
 
-### 🔒 Control API Access for AI
-Filter which operations are available to AI, apply authentication, and monitor usage securely.
+- **Control API Access for AI** - Filter which operations are available to AI, apply authentication, and monitor usage securely.
 
-### 🔍 Improve API Discoverability  
-Enable AI systems to automatically list available endpoints, input parameters, and expected responses.
+- **Improve API Discoverability** - Enable AI systems to automatically list available endpoints, input parameters, and expected responses.
 
-### 🧪 Test APIs Using AI
-Use AI assistants to generate test inputs, invoke endpoints, and validate responses in a conversational way.
+- **Test APIs Using AI** - Use AI assistants to generate test inputs, invoke endpoints, and validate responses in a conversational way. Natural-language test generation and feedback.
+
+- **Auto-docs & validation** - Use AI to test, describe, or troubleshoot APIs in a conversational way. Natural-language test generation and feedback.
+
+- **Workflow Automation** - Connect APIs and AI logic in real time to automate workflows and streamline processes.
 
 ---
 
 ## Best Practices
 
 - **Start small**: Only expose safe, limited endpoints
-- **Use filters**: Whitelist or blacklist endpoints as needed
+- **Use filters**: allow list or block list endpoints as needed
 - **Secure your APIs**: Pass tokens, headers, or keys securely
 - **Track usage**: Monitor tool access and patterns
 - **Version specs**: Maintain OpenAPI version control
@@ -219,7 +204,7 @@ Use AI assistants to generate test inputs, invoke endpoints, and validate respon
 
 ## Customize your own version of the api-to-mcp tool
 
-If you'd like to share your MCP with a predefined OpenAPI spec and configuration, you can customize this tool to fit your needs. This is especially useful if you want to distribute a ready-to-use setup for others.
+If you'd like to share your MCP with a predefined OpenAPI spec and configuration, you can customize this tool to fit your needs. Useful for sharing pre-configured setups with others.
 
 By creating a customized version, others can use the tool with minimal configuration --- no need to manually specify specs or overlays.
 
@@ -229,21 +214,21 @@ Refer to the [customization and publishing guide](https://github.com/TykTechnolo
 
 ## FAQs
 
-**Does this work with GraphQL?**  
+**Does this work with GraphQL?**
 Not currently — OpenAPI REST APIs only.
 
-**How do I secure my API requests?**  
+**How do I secure my API requests?**
 Use `--headers`, environment variables. Check the [configuration section](https://github.com/TykTechnologies/api-to-mcp/tree/main#configuration) for more details.
 
-**Can I hide or rename tools?**  
+**Can I hide or rename tools?**
 Yes — use `x-mcp` extensions and filters.
 
-**What AI tools are supported?**  
+**What AI tools are supported?**
 Any tool that supports MCP: Claude, Cursor, VS Code, and more.
 
 
 ## Summary
 
-API to MCP transforms OpenAPI specs into AI-compatible tools using the MCP standard. It enables your AI stack to dynamically understand, test, and invoke your existing APIs securely — with zero changes to your backend.
+API to MCP transforms OpenAPI specs into AI-compatible tools using the MCP standard. It enables your AI stack to dynamically understand, test, and invoke your existing APIs securely — without modifying your existing backend.
 
 [View on GitHub →](https://github.com/TykTechnologies/api-to-mcp)

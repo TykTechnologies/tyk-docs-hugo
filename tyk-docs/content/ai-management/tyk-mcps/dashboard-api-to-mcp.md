@@ -52,7 +52,8 @@ Refer to your assistant’s docs for where to place this config — e.g.
 - `.cursor-config.json` for [Cursor configiration](https://docs.cursor.com/context/model-context-protocol#configuring-mcp-servers)
 - `cline_mcp_settings.json` for [Cline configuration](https://docs.roocode.com/features/mcp/using-mcp-in-roo#configuring-mcp-servers) (as a VS Code extension).
 
-**Step 2.** Once connected, ask your AI assistant to perform an operation (e.g., "List all apis" or "Create a new user").
+**Step 2.**
+Once connected, ask your AI assistant to perform an operation (e.g., "List all apis" or "Create a new user").
 
 ## Examples
 
