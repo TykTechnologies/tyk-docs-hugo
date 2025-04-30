@@ -1543,7 +1543,7 @@ Fixed an issue where the Dashboard might not allow the correct number of Gateway
 </li>
 <li>
 <details>
-<summary>Improved password error messaging on Add User page</summary>
+<summary>Various fixes to the Dashboard UI</summary>
 
 Improved formatting for the password error on the add user page
 </details>
