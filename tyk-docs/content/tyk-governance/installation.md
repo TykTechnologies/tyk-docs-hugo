@@ -89,10 +89,6 @@ flowchart LR
 - You want the simplest possible setup with minimal configuration
 - You don't have any APIs on other platforms that need governance
 
-**Scenario example:**
-
-- **Cloud-Only Organization**: Acme Corp uses Tyk Cloud for all its API management needs. It wants to implement governance across its APIs without additional infrastructure management. By enabling the Governance feature in Tyk Cloud, an agent is automatically deployed, and its APIs are immediately available in the Governance dashboard.
-
 #### Tyk Cloud with Customer-Deployed Agents
 
 ```mermaid
@@ -116,11 +112,6 @@ flowchart LR
 - You use self-managed Tyk deployments (not Tyk Cloud)
 - You use AWS API Gateway or other supported providers
 - You need to govern APIs across providers that aren't in Tyk Cloud
-
-**Scenario examples:**
-
-- **Self-Managed Tyk User**: Beta Inc. runs its own Tyk Dashboard deployment on-premises for security and compliance reasons. It deploys a Governance agent in its environment that connects to the cloud-hosted Governance hub.
-- **AWS API Gateway User**: Gamma Services uses AWS API Gateway for all its APIs. They deploy a Governance agent in their AWS environment that connects to Tyk Governance in the cloud.
 
 #### Hybrid Deployment
 
@@ -149,19 +140,15 @@ flowchart LR
 - You have a mix of cloud and on-premises API deployments
 - You need comprehensive governance across your entire API ecosystem
 
-**Scenario example:**
-
-- **Multi-Platform Enterprise**: Delta Corp uses Tyk Cloud for their public-facing APIs. It also maintains AWS API Gateway for legacy services and a self-managed Tyk Gateway for sensitive internal APIs.
-
 ## Installation
 
 The installation process for Tyk Governance varies depending on whether you're an existing Tyk Cloud customer and which deployment model you use.
 
 ### Requesting Access to Tyk Governance
 
-1. **Contact Tyk for Early Access**
+1. **Contact Tyk for Access**
 	- Reach out to your Tyk Account Manager or visit [tyk.io/contact-book-a-demo](https://tyk.io/contact-book-a-demo/)
-	- Specify that you're interested in early access to Tyk Governance
+	- Specify that you're interested in access to Tyk Governance
 	- Provide information about your current API management environment
 
 2. **Receive Access Credentials**

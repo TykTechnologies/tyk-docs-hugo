@@ -23,6 +23,17 @@ In today's complex API ecosystems, organizations struggle with inconsistent stan
 
 ## Who Should Use Tyk Governance
 
+Tyk Governance transforms API governance from a fragmented, post-deployment concern into a proactive, continuous, and scalable process across your entire API ecosystem.
+
+```mermaid
+flowchart LR
+    A[Enterprise Architects and Security Leads] -->|Define Policies| B[Tyk Governance]
+    C[Platform Engineers] -->|Integrate Tools| B
+    B -->|Provide Feedback| D[API Developers]
+    D -->|Create Compliant APIs| B
+    B -->|Compliance Reporting| A[Enterprise Architects and Security Leads]
+```
+
 ### Enterprise Architects & Security Leads
 
 Enterprise architects and security leads use Tyk Governance to establish organization-wide standards and ensure strategic alignment of the API program. They benefit from:
@@ -52,14 +63,3 @@ API developers rely on Tyk Governance to design and implement APIs that meet org
 * Reduced rework and faster release cycles
 
 **Example:** An API developer receives immediate feedback that their new payment API is missing required rate-limiting policies, allowing them to fix the issue before submitting for review.
-
-```mermaid
-flowchart LR
-    A[Enterprise Architects and Security Leads] -->|Define Policies| B[Tyk Governance]
-    C[Platform Engineers] -->|Integrate Tools| B
-    B -->|Provide Feedback| D[API Developers]
-    D -->|Create Compliant APIs| B
-    B -->|Compliance Reporting| A[Enterprise Architects and Security Leads]
-```
-
-Tyk Governance transforms API governance from a fragmented, post-deployment concern into a proactive, continuous, and scalable process across your entire API ecosystem.

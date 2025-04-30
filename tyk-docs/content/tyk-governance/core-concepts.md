@@ -104,12 +104,15 @@ Rulesets can be customized to meet organizational needs and evolve as API best p
 
 Tyk Governance is designed to work with a wide range of API management platforms, allowing organizations to maintain governance regardless of their existing API infrastructure.
 
-### Current API Provider Compatibility
+### API Provider Compatibility
 
-| API Provider        | Tested Version | Supported API Types | Supported Features                                |
+| API Provider        | Tested Version | Supported API Types | Supported Features                      |
 | --------------- | -------------- | ------------- | ------------------------------------------------- |
 | Tyk Dashboard   | 5.3+           | Tyk OAS       | Complete integration with all governance features |
 | AWS API Gateway | All            | Rest APIs     | API definition export, OAS schema export          |
+| Azure | -            | -     | Coming Soon          |
+| Kong  | -            | -     | Coming Soon          |
+| WSO2  | -            | -     | Coming Soon          |
 
 ### Integration Capabilities
 
