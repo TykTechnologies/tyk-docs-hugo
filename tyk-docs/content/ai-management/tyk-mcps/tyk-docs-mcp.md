@@ -1,8 +1,8 @@
 ---
-title: Tyk Docs MCP
+title: Natural-language interaction with Tyk Docs (Docs MCP)
 date: 2025-04-28
-tags: ["AI MCP", "Tyk Docs", "Documentation Search"]
-description: "Use the Tyk Docs MCP to enable AI assistants to search and retrieve information from Tyk documentation."
+tags: ["AI MCP", "Tyk Docs", "AI Documentation Search", "Talk to Tyk Docs"]
+description: "Talk to Tyk documentation like a person using AI tools. UseDocs MCP to enable AI assistants to search and retrieve information from Tyk documentation."
 ---
 
 # Tyk Docs MCP

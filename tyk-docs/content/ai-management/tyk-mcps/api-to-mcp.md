@@ -1,5 +1,5 @@
 ---
-title: API to MCP in Tyk Gateway
+title: Natural-language interaction with your APIs (API to MCP)
 date: 2025-04-28
 tags: ["AI MCP", "API-to-MCP", "Tyk AI MCP"]
 description: "Enable AI assistants to safely and dynamically interact with your existing APIs using Tyk's API to MCP tooling."
@@ -9,7 +9,7 @@ description: "Enable AI assistants to safely and dynamically interact with your 
 
 **API to MCP** enables AI assistants to safely and dynamically interact with your existing APIs. It allows non-technical users to access API functionality through natural language, while developers retain full control over what endpoints are exposed and how they are accessed.
 
-Under the hood, it works by transforming OpenAPI-documented REST APIs into **Model Context Protocol (MCP)** tool definitions. This allows AI tools to interpret, invoke, and structure API operations without requiring any backend modifications.
+Under the hood, it works by transforming OpenAPI-documented REST APIs into [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) tool definitions. This allows AI tools to interpret, invoke, and structure API operations without requiring any backend modifications.
 
 Use this tool to:
 - Expose your APIs for AI interaction
@@ -184,12 +184,12 @@ sequenceDiagram
 
 ---
 
-## Common Use Scenarios
+## Use cases
 
 Use **API to MCP** when you need to:
 
 ### 🔌 Connect AI Assistants to Existing APIs
-Let AI tools understand and call your existing API operations using natural language — no code changes needed.
+Let AI tools understand and call your existing API operations using natural language — no code changes needed, just [configuration](https://github.com/TykTechnologies/api-to-mcp/tree/main#configuration).
 
 ### 🧩 Create a Unified Interface for AI Systems  
 Standardize how APIs are accessed by AI across your organization with a consistent protocol (MCP).

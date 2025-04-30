@@ -577,7 +577,7 @@ menu:
         category: Directory
         show: True
         menu:
-          - title: "API as MCP"
+          - title: "APIs as MCP"
             category: Page
             path: /ai-management/tyk-mcps/api-to-mcp
             show: True
