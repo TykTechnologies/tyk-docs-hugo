@@ -1538,7 +1538,7 @@ If you are upgrading to 5.8.1, please follow the detailed [upgrade instructions]
 <details>
 <summary>License allocation now works across multiple dashboards</summary>
 
-Converted license allocation to be stored in a distributed manner to allow a setup with multiple dashboards.
+Fixed an issue where the Dashboard might not allow the correct number of Gateways to connect. This was due to a conflict with license management in deployments with multiple Dashboards which has now been resolved.
 </details>
 </li>
 <li>
