@@ -1811,7 +1811,7 @@ Addressed an issue for UDG APIs where caching led to the forwarding of stale val
 <details>
 <summary>Improved Route Matching Logic for API Requests</summary>
 
-Resolved an issue where some API requests were routed incorrectly due to path sorting not prioritizing specific routes over parameterized ones.
+Resolved an issue where requests could be routed incorrectly due to inverted prioritisation of dynamically declared paths over those with similar static paths. Now, statically declared paths take priority in the path matching algorithm, so if API1 has listen path `/path/{param}/endpoint` and API2 has listen path `/path/specific/endpoint` a request to `/path/specific/endpoint/resource` will be correctly routed to API2.
 </details>
 </li>
 <li>
