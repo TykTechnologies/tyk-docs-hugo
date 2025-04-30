@@ -200,7 +200,7 @@ Since the UI for generating agent tokens is unavailable, you'll need to use the 
 	 - Log in to the Governance hub using the credentials provided in your welcome email
 	 - Check your Access key under the "Settings > User Profile" section
 
-     {{< img src="img/governance/user-profile.jpg" >}}
+     {{< img src="img/governance/user-profile.png" >}}
 
 2. **Create an Agent using the API**:
 
@@ -456,7 +456,7 @@ waiting for sync requests from the dashboard
 1. In the Governance hub, navigate to "API Repository"
 2. Click the "ReSync" button to initiate synchronisation
 
-{{< img src="img/governance/sync-repository.jpg" >}}
+{{< img src="img/governance/sync-repository.png" >}}
 
 3. Monitor the sync progress in the UI or refresh the page manually.
 
