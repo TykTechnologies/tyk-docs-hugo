@@ -36,15 +36,7 @@ flowchart LR
 
 Federated API management refers to the practice of managing APIs across multiple, distributed platforms while maintaining consistent governance, visibility, and control.
 
-### Multi-gateway Environment Challenges
-
-Organizations today face several challenges in multi-gateway environments:
-
-1. **Inconsistent Standards**: Different teams may implement varying standards for API design, security, and documentation.
-2. **Fragmented Visibility**: No single view of all APIs across the organization.
-3. **Compliance Gaps**: Difficulty ensuring all APIs meet regulatory and internal governance requirements.
-4. **Operational Complexity**: Managing and monitoring APIs across disparate systems requires significant effort.
-5. **Security Vulnerabilities**: Inconsistent security practices can lead to vulnerabilities.
+Organizations struggle with API sprawl, with many lacking visibility into their total number of APIs. Multiple gateways across teams create security vulnerabilities, governance gaps, and inefficiency. This "API debt" results in inconsistent security protocols, missed reuse opportunities, and increased risk from shadow APIs. Large enterprises need a solution that balances centralized governance with team autonomy—enabling visibility across different gateways while allowing teams to use their preferred tools. The ideal approach provides unified oversight without forcing consolidation, ensuring compliance while preserving innovation and operational independence.
 
 ### Tyk Governance Solutions
 
