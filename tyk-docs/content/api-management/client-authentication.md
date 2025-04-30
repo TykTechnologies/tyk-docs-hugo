@@ -161,11 +161,9 @@ To make use of this, you'll need to:
 - [register a client app](#client-app-registration) for each client that needs to access the API
 - [configure your API proxy](#configuring-your-api-proxy) to use the *Tyk OAuth 2.0* authentication method
 
-
-<!--
 This video probably needs to be re-recorded with Tyk OAS, so not publishing for now:
 {{< youtube-seo id="C4CUDTIHynk" title="Using OAuth2.0 To Authenticate Your APIs">}}
--->
+
 
 ### OAuth 2.0 Core Concepts
 
@@ -1062,7 +1060,7 @@ Mutual TLS (mTLS) is a robust security feature that ensures both the client and 
 
 In most cases when you try to access a secured HTTPS/TLS endpoint, you experience only the client-side check of the server certificate. The purpose of this check is to ensure that no fraud is involved and the data transfer between the client and server is encrypted. In fact, the TLS standard allows specifying the client certificate as well, so the server can accept connections only for clients with certificates registered with the server certificate authority, or provide additional security checks based on the information stored in the client certificate. This is what we call "Mutual TLS" - when both sides of the connection verify certificates. See the video below that gives you an introduction to mutual TLS and how it can be used to secure your APIs.
 
-{{< youtube-seo id="UzEzjon3IAo" title="Mutual TLS Intro">}}
+{{< youtube-seo id="UzEzjon3IAo" title="Mutual TLS Intro" >}}
 
 #### Why Use Mutual TLS?
 
