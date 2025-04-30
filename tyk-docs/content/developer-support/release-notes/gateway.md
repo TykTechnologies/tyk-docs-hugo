@@ -1818,7 +1818,7 @@ Resolved an issue where requests could be routed incorrectly due to inverted pri
 <details>
 <summary>Resolved Issue With Default Enforced Request Timeout </summary>
 
-Fixed an issue where [proxy_default_timeout]({{< ref "tyk-oss-gateway/configuration#proxy_default_timeout" >}}) for specific API endpoints was not being applied correctly, causing requests to use the global timeout instead.
+Fixed an issue where an [enforced timeout]({{< ref "tyk-self-managed#enforced-timeouts" >}}) set for a specific API endpoint could be overruled by the configured [proxy_default_timeout]({{< ref "tyk-oss-gateway/configuration#proxy_default_timeout" >}}). Now if an endpoint-level timeout is set then this will be honoured, regardless of any default timeout that is configured.
 </details>
 </li>
 <li>
