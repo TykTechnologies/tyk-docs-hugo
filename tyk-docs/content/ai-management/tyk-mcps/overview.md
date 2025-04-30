@@ -71,40 +71,6 @@ To set up your own MCP server:
 1. Choose an MCP implementation or build a custom one.
 2. Define available tools and resources.
 3. Deploy the server in a location accessible by your AI agents.
-4. Register the server in AI Studio for usage.
-
-### Using MCPs with IDEs
-
-MCPs can be integrated with various IDE AI assistants to enhance their capabilities. Here's how to connect Tyk MCPs to common development environments:
-
-#### VSCode with Cline
-
-To add a Tyk MCP server to Cline in VSCode:
-
-1. Open your VSCode settings (File > Preferences > Settings)
-2. Search for "Cline" settings
-3. Locate the "MCP Servers" setting
-4. Add a new MCP server entry:
-
-```json
-"cline.mcpServers": [
-  {
-    "name": "tyk-docs-mcp",
-    "command": "npx",
-    "args": ["-y", "@tyk-technologies/docs-mcp@latest"]
-  },
-  {
-    "name": "tyk-api-mcp",
-    "command": "npx",
-    "args": ["-y", "@tyk-technologies/api-to-mcp", "--spec", "https://your-api-spec.json"]
-  }
-]
-```
-
-For installation instructions and more detailed configuration options, refer to the GitHub repositories for each MCP:
-- [API to MCP](https://github.com/TykTechnologies/api-to-mcp)
-- [Tyk Docs MCP](https://github.com/TykTechnologies/docs-mcp)
-- [Dashboard API to MCP](https://github.com/TykTechnologies/dashboard-api-to-mcp)
 
 ### Configuring an MCP server
 

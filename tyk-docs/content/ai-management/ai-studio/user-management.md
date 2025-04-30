@@ -67,7 +67,7 @@ Groups are central to managing permissions:
     2.  The user securely provides this key to their application or script.
     3.  The application includes the key in the `Authorization` header for requests to Tyk AI Studio APIs:
         ```
-        Authorization: Bearer <your-midsommar-api-key>
+        Authorization: Bearer <your-ai-sudio-api-key>
         ```
     4.  Tyk AI Studio validates the key and associates the request with the user who generated it.
 

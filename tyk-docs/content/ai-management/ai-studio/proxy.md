@@ -49,8 +49,8 @@ Tyk AI Studio typically exposes two primary types of proxy endpoints:
     import openai
 
     client = openai.OpenAI(
-        base_url="https://your-midsommar-host/openai/my-anthropic-config/v1",
-        api_key="YOUR_MIDSOMMAR_APP_API_KEY"
+        base_url="https://your-ai-studio-host/openai/my-anthropic-config/v1",
+        api_key="YOUR_AI_STUDIO_APP_API_KEY"
     )
 
     response = client.chat.completions.create(
