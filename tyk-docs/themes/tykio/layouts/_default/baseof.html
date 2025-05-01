@@ -102,7 +102,7 @@
     <link rel="stylesheet" href="{{ $css.RelPermalink }}" />
   </head>
 
-  <body class="page-documentation {{ if not .Params.hideSidebar }}hasSidebar{{ end }}">
+  <body class="page-documentation {{ if and (not .Params.hideSidebar) (not .IsHome) }}hasSidebar{{ end }}">
     <!-- Google Tag Manager (noscript) -->
     <noscript
       ><iframe
@@ -118,13 +118,15 @@
 
 
     <!-- Page content -->
-    <section class="section-page {{ if not .Params.hideSidebar }}hasSidebar{{ end }}">
+    <section class="section-page {{ if and (not .Params.hideSidebar) (not .IsHome) }}hasSidebar{{ end }}">
       <!-- Side menu -->
+      {{ if not .IsHome }}
       <aside class="page-submenu" data-turbolinks-permanent>
         {{ partial "side_menu.html" . }}
       </aside>
+      {{ end }}
 
-      <article class="page-content {{ if .Params.hideSidebar }}home-mobile-padding{{ end }}">
+      <article class="page-content {{ if or .Params.hideSidebar .IsHome }}home-mobile-padding{{ end }}">
         <main class="page-content__main">
           <div class="wysiwyg page-content__container">
             {{ if .Params.diffTitle }}

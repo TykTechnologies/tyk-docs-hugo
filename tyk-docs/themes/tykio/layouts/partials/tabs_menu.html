@@ -6,7 +6,7 @@
 <div class="tabs-wrapper">
   <div class="tabs-container">
     {{- range .Site.Data.menu.menu -}}
-      {{- if .tab_on_top -}}
+      {{- if eq .category "Tab" -}}
         {{- $selected := false -}}
         {{- $is_home := eq (lower .title) "home" -}}
         {{- $path_not_empty := false -}}

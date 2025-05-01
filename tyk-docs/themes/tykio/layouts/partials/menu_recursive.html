@@ -9,13 +9,14 @@
 {{- $parentActive := .parent_active | default false -}}
 {{- $isHome := eq $pagePath "" -}}
 
+{{- if not $isHome -}}
 <ul>
-  {{- range .menu -}}
+  {{- range $index, $item := .menu -}}
     {{- $is := false -}}
     {{- $has := false -}}
     {{- $isActiveParent := false -}}
 
-    {{- if eq .category "Label" -}}
+    {{- if or (eq .category "Label") (eq .category "Tab") -}}
       {{- if (isset . "menu") -}}
         {{- range .menu -}}
           {{- $path := replace .path "/" "" -}}
@@ -54,10 +55,10 @@
       {{- $has = false -}}
     {{ end }}
 
-    {{- if and (isset . "menu") (ne .category "Label") -}}
+    {{- if and (isset . "menu") (ne .category "Label") (ne .category "Tab") -}}
       {{ if or $isActiveParent $parentActive -}}
         <li
-          class="category-{{ .category }} {{ if $is }}active{{ end }} {{ if or $is $has (eq .category `Label`) }}
+          class="category-{{ .category }} {{ if $is }}active{{ end }} {{ if or $is $has (eq .category `Label`) (eq .category `Tab`) }}
             st-open
           {{ else }}
             st-collapsed
@@ -73,10 +74,12 @@
           {{- partial "menu_recursive.html" (dict "menu" .menu "page" $page "site" $site "parent_active" (or $isActiveParent $parentActive)) -}}
         </li>
       {{ end }}
-    {{- else if and (.show) (eq .category "Label") -}}
+    {{- else if and (.show) (or (eq .category "Label") (eq .category "Tab")) -}}
       {{- if or $isActiveParent (and $isHome (eq .title "Home")) -}}
-        <hr />
-        <h6 style="font-size: 15px;">{{ .title }}</h6>
+        {{- if eq .category "Label" -}}
+          <hr />
+        {{- end -}}
+        <h6 style="font-size: 15px;" class="{{ if and (eq .category "Tab") (eq $index 0) }}first-tab{{ end }}">{{ .title }}</h6>
         {{- if $isActiveParent -}}
           {{- partial "menu_recursive.html" (dict "menu" .menu "page" $page "site" $site "parent_active" true) -}}
         {{- end -}}
@@ -105,3 +108,4 @@
     {{- end -}}
   {{- end -}}
 </ul>
+{{- end -}}

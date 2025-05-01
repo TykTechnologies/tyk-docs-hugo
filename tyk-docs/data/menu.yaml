@@ -3,15 +3,16 @@
 menu:
   - title: "Home"
     path: /
-    category: Label
+    category: Tab
     show: True
-  - title: "Overview"
-    path: /tyk-overview
-    category: Label
+    menu: 
+
+  - title: "API Management"
+    path: /getting-started
+    category: Tab
     show: True
-    tab_on_top: true
     menu:
-      - title: "Tyk Overview"
+      - title: "Overview"
         path: /tyk-overview
         category: Page
         show: True
@@ -25,32 +26,6 @@ menu:
         show: True
       - title: "Plan Your API Integration"
         path: /plan-your-api-integration
-        category: Page
-        show: True
-  - title: "Getting Started"
-    category: Label
-    show: True
-    menu:
-      - title: "Create Account"
-        path: /getting-started/create-account
-        category: Page
-        show: True
-      - title: "Configure Your First API"
-        path: /getting-started/configure-first-api
-        category: Page
-        show: True
-      - title: "Using Tyk Dashboard"
-        path: /getting-started/using-tyk-dashboard
-        category: Page
-        show: True
-  - title: "API Management"
-    path: /getting-started
-    category: Label
-    show: True
-    tab_on_top: true
-    menu:
-      - title: "Overview"
-        path: /getting-started
         category: Page
         show: True
       - title: "Deploy Tyk"
@@ -82,276 +57,320 @@ menu:
         path: /api-management/client-authentication
         show: True
         menu:
-        - title: "JSON Web Tokens"
-          path: /basic-config-and-security/security/authentication-authorization/json-web-tokens
-          category: Page
-          show: True
-        - title: "HMAC Signatures"
-          path: /basic-config-and-security/security/authentication-authorization/hmac-signatures
-          category: Page
-          show: True
-      - title: "Upstream Authentication"
-        path: /api-management/upstream-authentication
-        category: Page
-        show: True
-      - title: "API Traffic Control"
+          - title: "JSON Web Tokens"
+            path: /basic-config-and-security/security/authentication-authorization/json-web-tokens
+            category: Page
+            show: True
+          - title: "HMAC Signatures"
+            path: /basic-config-and-security/security/authentication-authorization/hmac-signatures
+            category: Page
+            show: True
+      - title: "Getting Started"
         category: Directory
         show: True
         menu:
-        - title: "Rate Limiting"
-          path: /api-management/rate-limit
-          category: Page
-          show: True
-        - title: "Request Quotas"
-          path: /api-management/request-quotas
-          category: Page
-          show: True
-        - title: "Request Throttling"
-          path: /api-management/request-throttling
-          category: Page
-          show: True
-      - title: "Security Policy and Access Keys"
-        path: /api-management/policies
-        category: Page
-        show: True
-      - title: "Certificates"
-        path: /api-management/certificates
-        category: Page
-        show: True
-      - title: "Security Best Practices"
-        category: Page
-        show: True
-        path: /api-management/security-best-practices
-      - title: "Security Features"
-        category: Page
-        show: True
-        path: /api-management/security-features
-      - title: "Tyk API Definitions"
-        category: Directory
-        path: /api-management/gateway-config-introduction
-        show: True
-        menu:
-          - title: "Tyk OAS"
-            path: /api-management/gateway-config-tyk-oas
+          - title: "Tyk Stack"
+            path: /tyk-stack
             category: Page
             show: True
-          - title: "Tyk Classic"
-            path: /api-management/gateway-config-tyk-classic
+          - title: "Tyk Cloud"
+            path: /tyk-cloud
             category: Page
             show: True
-          - title: "What is URL path matching?"
-            path: /getting-started/key-concepts/url-matching
+          - title: "Tyk Open Source"
+            path: /tyk-open-source
             category: Page
             show: True
-          - title: "What is Internal Looping?"
-            path: /advanced-configuration/transform-traffic/looping
+          - title: "Tyk Self Managed"
+            path: /tyk-self-managed
             category: Page
             show: True
-      - title: "Manage APIs"
-        category: Directory
-        show: True
-        menu:
-          - title: "Tyk OAS APIs"
-            path: /api-management/gateway-config-managing-oas
-            category: Page
-            show: True
-          - title: "Tyk Classic APIs"
-            path: /api-management/gateway-config-managing-classic
-            category: Page
-            show: True
-          - title: "Migrate from Tyk Classic"
-            path: /api-management/migrate-from-tyk-classic
-            category: Page
-            show: True            
-          - title: "Deploy APIs"
-            category: Page
-            show: True
-            path: /api-management/manage-apis/deploy-apis/deploy-apis-overview
-          - title: "Useful Configurations"
-            path: /tyk-stack/tyk-gateway/important-prerequisites
-            category: Page
-            show: True
-          - title: "Monitoring and Troubleshooting APIs"
-            category: Page
-            show: True
-            path: /api-management/manage-apis/api-operations/api-observability
-      - title: "Manage Tyk Dashboard"
-        path: /api-management/dashboard-configuration
-        category: Page
-        show: True
-      - title: "API Versioning"
-        path: /api-management/api-versioning
-        category: Page
-        show: True
-      - title: "Identity Management"
-        path: /api-management/external-service-integration
-        category: Page
-        show: True
-      - title: "Custom Plugins"
-        category: Directory
+      - title: "Manage API"
+        category: Label
         show: True
         menu:
           - title: "Overview"
-            path: /api-management/plugins/overview
+            path: /getting-started
             category: Page
             show: True
-          - title: "Plugin Types"
-            path: /api-management/plugins/plugin-types
+          - title: "Tyk Gateway"
+            path: /tyk-oss-gateway
             category: Page
             show: True
-          - title: "Golang Plugins"
-            path: /api-management/plugins/golang
+          - title: "Client Authentication"
+            category: Directory
+            path: /api-management/client-authentication
+            show: True
+            menu:
+              - title: "JSON Web Tokens"
+                path: /basic-config-and-security/security/authentication-authorization/json-web-tokens
+                category: Page
+                show: True
+              - title: "HMAC Signatures"
+                path: /basic-config-and-security/security/authentication-authorization/hmac-signatures
+                category: Page
+                show: True
+          - title: "Upstream Authentication"
+            path: /api-management/upstream-authentication
             category: Page
             show: True
-          - title: "Javscript Plugins"
-            path: /api-management/plugins/javascript
+          - title: "API Traffic Control"
+            category: Directory
+            show: True
+            menu:
+              - title: "Rate Limiting"
+                path: /api-management/rate-limit
+                category: Page
+                show: True
+              - title: "Request Quotas"
+                path: /api-management/request-quotas
+                category: Page
+                show: True
+              - title: "Request Throttling"
+                path: /api-management/request-throttling
+                category: Page
+                show: True
+          - title: "Security Policy and Access Keys"
+            path: /api-management/policies
             category: Page
             show: True
-          - title: "Rich Plugins"
-            path: /api-management/plugins/rich-plugins
+          - title: "Certificates"
+            path: /api-management/certificates
             category: Page
             show: True
-          - title: "Advance Configuration"
-            path: /api-management/plugins/advance-config
+          - title: "Security Best Practices"
+            path: /api-management/security-best-practices
             category: Page
             show: True
-      - title: "Event Driven APIs"
-        category: Directory
-        show: True
-        menu:
-        - title: "Tyk Streams"
-          path: /api-management/event-driven-apis
-          category: Page
-          show: True
-        - title: "Tyk Streams Reference"
-          path: /api-management/stream-config
-          category: Page
-          show: True
-      - title: "GraphQL"
-        path: /api-management/graphql
-        category: Page
-        show: True
-      - title: "Universal Data Graph (UDG)"
-        path: /api-management/data-graph
-        category: Page
-        show: True
-      - title: "TCP Proxy"
-        path: /key-concepts/tcp-proxy
-        category: Page
-        show: True
-      - title: "Other Non HTTP Protocols"
-        path: /api-management/non-http-protocols
-        category: Page
-        show: True
-      - title: "Request Optimization"
-        category: Directory
-        show: True
-        menu:
-        - title: "Response Caching"
-          path: /api-management/response-caching
-          category: Page
-          show: True
-        - title: "Batch Processing"
-          path: /api-management/batch-processing
-          category: Page
-          show: True
-      - title: "API Observability"
-        category: Directory
-        show: True
-        menu:
-          - title: "Metrics and Logs"
-            path: /api-management/logs-metrics
+          - title: "Security Features"
+            path: /api-management/security-features
             category: Page
             show: True
-          - title: "Metrics Exporter"
-            path: /api-management/tyk-pump
+          - title: "Tyk API Definitions"
+            category: Directory
+            path: /api-management/gateway-config-introduction
+            show: True
+            menu:
+              - title: "Tyk OAS"
+                path: /api-management/gateway-config-tyk-oas
+                category: Page
+                show: True
+              - title: "Tyk Classic"
+                path: /api-management/gateway-config-tyk-classic
+                category: Page
+                show: True
+              - title: "What is URL path matching?"
+                path: /getting-started/key-concepts/url-matching
+                category: Page
+                show: True
+              - title: "What is Internal Looping?"
+                path: /advanced-configuration/transform-traffic/looping
+                category: Page
+                show: True
+          - title: "Manage APIs"
+            category: Directory
+            show: True
+            menu:
+              - title: "Tyk OAS APIs"
+                path: /api-management/gateway-config-managing-oas
+                category: Page
+                show: True
+              - title: "Tyk Classic APIs"
+                path: /api-management/gateway-config-managing-classic
+                category: Page
+                show: True
+              - title: "Migrate from Tyk Classic"
+                path: /api-management/migrate-from-tyk-classic
+                category: Page
+                show: True            
+              - title: "Deploy APIs"
+                path: /api-management/manage-apis/deploy-apis/deploy-apis-overview
+                category: Page
+                show: True
+              - title: "Useful Configurations"
+                path: /tyk-stack/tyk-gateway/important-prerequisites
+                category: Page
+                show: True
+              - title: "Monitoring and Troubleshooting APIs"
+                path: /api-management/manage-apis/api-operations/api-observability
+                category: Page
+                show: True
+          - title: "Manage Tyk Dashboard"
+            path: /api-management/dashboard-configuration
             category: Page
             show: True
-          - title: "Performance Monitoring"
-            path: /api-management/performance-monitoring
+          - title: "API Versioning"
+            path: /api-management/api-versioning
             category: Page
             show: True
-      - title: "Traffic Transformation"
-        category: Directory
-        show: True
-        menu:
-        - title: "Overview"
-          path: /api-management/traffic-transformation
-          category: Page
-          show: True
-        - title: "SOAP to REST"
-          path: /advanced-configuration/transform-traffic/soap-rest
-          category: Page
-          show: True
-        - title: "URL Rewrite"
-          path: /transform-traffic/url-rewriting
-          category: Page
-          show: True
-      - title: "Gateway Events"
-        path: /api-management/gateway-events
-        category: Page
-        show: True
-      - title: "Manage Distributed Gateways"
-        path: /api-management/mdcb
-        category: Page
-        show: True
-      - title: "Automations Tools"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            path: /api-management/automations
+          - title: "Identity Management"
+            path: /api-management/external-service-integration
             category: Page
             show: True
-          - title: "API Management in Kubernetes"
-            path: /api-management/automations/operator
+          - title: "Custom Plugins"
+            category: Directory
+            show: True
+            menu:
+              - title: "Overview"
+                path: /api-management/plugins/overview
+                category: Page
+                show: True
+              - title: "Plugin Types"
+                path: /api-management/plugins/plugin-types
+                category: Page
+                show: True
+              - title: "Golang Plugins"
+                path: /api-management/plugins/golang
+                category: Page
+                show: True
+              - title: "Javscript Plugins"
+                path: /api-management/plugins/javascript
+                category: Page
+                show: True
+              - title: "Rich Plugins"
+                path: /api-management/plugins/rich-plugins
+                category: Page
+                show: True
+              - title: "Advance Configuration"
+                path: /api-management/plugins/advance-config
+                category: Page
+                show: True
+          - title: "Event Driven APIs"
+            category: Directory
+            show: True
+            menu:
+              - title: "Tyk Streams"
+                path: /api-management/event-driven-apis
+                category: Page
+                show: True
+              - title: "Tyk Streams Reference"
+                path: /api-management/stream-config
+                category: Page
+                show: True
+          - title: "GraphQL"
+            path: /api-management/graphql
             category: Page
             show: True
-          - title: "Synchronizing Tyk Configuration"
-            path: /api-management/automations/sync
+          - title: "Universal Data Graph (UDG)"
+            path: /api-management/data-graph
             category: Page
             show: True
-      - title: "Manage Environments"
-        path: /api-management/multiple-environments
-        category: Page
-        show: True
-      - title: "Tyk Helm Charts"
-        category: Directory
-        show: True
-        menu:
-          - title: "Overview"
-            path: /product-stack/tyk-charts/overview
+          - title: "TCP Proxy"
+            path: /key-concepts/tcp-proxy
             category: Page
             show: True
-          - title: "Tyk Stack Chart"
-            path: /product-stack/tyk-charts/tyk-stack-chart
+          - title: "Other Non HTTP Protocols"
+            path: /api-management/non-http-protocols
             category: Page
             show: True
-          - title: "Tyk Control Plane Chart"
-            path: /product-stack/tyk-charts/tyk-control-plane-chart
+          - title: "Request Optimization"
+            category: Directory
+            show: True
+            menu:
+              - title: "Response Caching"
+                path: /api-management/response-caching
+                category: Page
+                show: True
+              - title: "Batch Processing"
+                path: /api-management/batch-processing
+                category: Page
+                show: True
+          - title: "API Observability"
+            category: Directory
+            show: True
+            menu:
+              - title: "Metrics and Logs"
+                path: /api-management/logs-metrics
+                category: Page
+                show: True
+              - title: "Metrics Exporter"
+                path: /api-management/tyk-pump
+                category: Page
+                show: True
+              - title: "Performance Monitoring"
+                path: /api-management/performance-monitoring
+                category: Page
+                show: True
+          - title: "Traffic Transformation"
+            category: Directory
+            show: True
+            menu:
+              - title: "Overview"
+                path: /api-management/traffic-transformation
+                category: Page
+                show: True
+              - title: "SOAP to REST"
+                path: /advanced-configuration/transform-traffic/soap-rest
+                category: Page
+                show: True
+              - title: "URL Rewrite"
+                path: /transform-traffic/url-rewriting
+                category: Page
+                show: True
+          - title: "Gateway Events"
+            path: /api-management/gateway-events
             category: Page
             show: True
-          - title: "Tyk Data Plane Chart"
-            path: /product-stack/tyk-charts/tyk-data-plane-chart
+          - title: "Manage Distributed Gateways"
+            path: /api-management/mdcb
             category: Page
             show: True
-          - title: "Tyk Open Source Chart"
-            path: /product-stack/tyk-charts/tyk-oss-chart
+          - title: "Automations Tools"
+            category: Directory
+            show: True
+            menu:
+              - title: "Overview"
+                path: /api-management/automations
+                category: Page
+                show: True
+              - title: "API Management in Kubernetes"
+                path: /api-management/automations/operator
+                category: Page
+                show: True
+              - title: "Synchronizing Tyk Configuration"
+                path: /api-management/automations/sync
+                category: Page
+                show: True
+          - title: "Manage Environments"
+            path: /api-management/multiple-environments
             category: Page
             show: True
-      - title: "User Management"
-        path: /api-management/user-management
-        category: Page
-        show: True
-      - title: "Troubleshooting"
-        path: /api-management/troubleshooting-debugging
-        category: Page
-        show: True
+          - title: "Tyk Helm Charts"
+            category: Directory
+            show: True
+            menu:
+              - title: "Overview"
+                path: /product-stack/tyk-charts/overview
+                category: Page
+                show: True
+              - title: "Tyk Stack Chart"
+                path: /product-stack/tyk-charts/tyk-stack-chart
+                category: Page
+                show: True
+              - title: "Tyk Control Plane Chart"
+                path: /product-stack/tyk-charts/tyk-control-plane-chart
+                category: Page
+                show: True
+              - title: "Tyk Data Plane Chart"
+                path: /product-stack/tyk-charts/tyk-data-plane-chart
+                category: Page
+                show: True
+              - title: "Tyk Open Source Chart"
+                path: /product-stack/tyk-charts/tyk-oss-chart
+                category: Page
+                show: True
+          - title: "User Management"
+            path: /api-management/user-management
+            category: Page
+            show: True
+          - title: "Troubleshooting"
+            path: /api-management/troubleshooting-debugging
+            category: Page
+            show: True
   - title: "Developer Portal"
-    category: Label
+    category: Tab
     show: True
     path: /portal/overview
-    tab_on_top: true
     menu:
       - title: "Overview"
         path: /portal/overview
@@ -570,8 +589,9 @@ menu:
                     category: Page
                     show: True
   - title: "AI Management"
-    category: Label
+    category: Tab
     show: True
+    path: /ai-management/overview
     menu:
       - title: "Overview"
         category: Page
@@ -688,8 +708,9 @@ menu:
                 path: /ai-management/ai-studio/ai-studio-swagger
                 show: True
   - title: "API Governance"
-    category: Label
+    category: Tab
     show: True
+    path: /tyk-governance/overview
     menu:
       - title: "Overview"
         path: /tyk-governance/overview
@@ -711,10 +732,10 @@ menu:
         path: /tyk-governance/api-labeling
         category: Page
         show: True
-
   - title: "Developer Support"
-    category: Label
+    category: Tab
     show: True
+    path: /developer-support/community
     menu:
       - title: "Community Support"
         path: /developer-support/community
@@ -889,16 +910,3 @@ menu:
             path: /ui-examples/youtube-video-embed
             category: Page
             show: true
-  - title: API Governance 
-    category: Label
-    show: False
-    tab_on_top: true
-
-  - title: "AI Studio"
-    category: Label
-    show: True
-    tab_on_top: true
-    path: http://tyk.io/docs/ai
-
-     
-
