@@ -28,7 +28,6 @@ menu:
         category: Page
         show: True
   - title: "Getting Started"
-    path: /
     category: Label
     show: True
     menu:
@@ -101,6 +100,10 @@ menu:
         menu:
         - title: "Rate Limiting"
           path: /api-management/rate-limit
+          category: Page
+          show: True
+        - title: "Request Quotas"
+          path: /api-management/request-quotas
           category: Page
           show: True
         - title: "Request Throttling"
@@ -344,10 +347,6 @@ menu:
         path: /api-management/troubleshooting-debugging
         category: Page
         show: True
-      - title: "AI Management"
-        category: Page
-        path: /api-management/ai-management/overview
-        show: True
   - title: "Developer Portal"
     category: Label
     show: True
@@ -570,6 +569,149 @@ menu:
                     path: /tyk-apis/tyk-dashboard-api/portal-policies
                     category: Page
                     show: True
+  - title: "AI Management"
+    category: Label
+    show: True
+    menu:
+      - title: "Overview"
+        category: Page
+        path: /ai-management/overview
+        show: True
+      - title: "MCPs"
+        path: /ai-management/mcps/overview
+        category: Directory
+        show: True
+        menu:
+          - title: "API to MCP"
+            category: Page
+            path: /ai-management/mcps/api-to-mcp
+            show: True
+          - title: "Dashboard API to MCP"
+            category: Page
+            path: /ai-management/mcps/dashboard-api-to-mcp
+            show: True
+          - title: "Tyk Docs MCP"
+            category: Page
+            path: /ai-management/mcps/tyk-docs-mcp
+            show: True
+      - title: "AI Studio"
+        path: /ai-management/ai-studio/overview
+        category: Directory
+        show: True
+        menu:
+          - title: "Introduction"
+            category: Directory
+            show: True
+            menu:
+              - title: "Quickstart"
+                category: Page
+                path: /ai-management/ai-studio/quickstart
+                show: True
+              - title: "Core Concepts"
+                category: Page
+                path: /ai-management/ai-studio/core-concepts
+                show: True
+          - title: "Getting Started"
+            category: Directory
+            show: True
+            menu:
+              - title: "Installation (Helm/K8s)"
+                category: Page
+                path: /ai-management/ai-studio/deployment-helm-k8s
+                show: True
+              - title: "Initial Configuration"
+                category: Page
+                path: /ai-management/ai-studio/configuration
+                show: True
+          - title: "Core Features"
+            category: Directory
+            show: True
+            menu:
+              - title: "AI Gateway"
+                category: Page
+                path: /ai-management/ai-studio/proxy
+                show: True
+              - title: "AI Portal"
+                category: Page
+                path: /ai-management/ai-studio/ai-portal
+                show: True
+              - title: "Chat Interface"
+                category: Page
+                path: /ai-management/ai-studio/chat-interface
+                show: True
+              - title: "LLM Management"
+                category: Page
+                path: /ai-management/ai-studio/llm-management
+                show: True
+              - title: "Tools & Extensibility"
+                category: Page
+                path: /ai-management/ai-studio/tools
+                show: True
+              - title: "Data Sources & RAG"
+                category: Page
+                path: /ai-management/ai-studio/datasources-rag
+                show: True
+              - title: "Filters & Policies"
+                category: Page
+                path: /ai-management/ai-studio/filters
+                show: True
+          - title: "Administration"
+            category: Directory
+            show: True
+            menu:
+              - title: "User Management & RBAC"
+                category: Page
+                path: /ai-management/ai-studio/user-management
+                show: True
+              - title: "SSO Integration"
+                category: Page
+                path: /ai-management/ai-studio/sso
+                show: True
+              - title: "Secrets Management"
+                category: Page
+                path: /ai-management/ai-studio/secrets
+                show: True
+              - title: "Budget Control"
+                category: Page
+                path: /ai-management/ai-studio/budgeting
+                show: True
+              - title: "Analytics & Monitoring"
+                category: Page
+                path: /ai-management/ai-studio/analytics
+                show: True
+              - title: "Notifications"
+                category: Page
+                path: /ai-management/ai-studio/notifications
+                show: True
+              - title: "API Documentation"
+                category: Page
+                path: /ai-management/ai-studio/ai-studio-swagger
+                show: True
+  - title: "API Governance"
+    category: Label
+    show: True
+    menu:
+      - title: "Overview"
+        path: /tyk-governance/overview
+        category: Page
+        show: True
+      - title: "Core Concepts"
+        path: /tyk-governance/core-concepts
+        category: Page
+        show: True
+      - title: "Installation"
+        path: /tyk-governance/installation
+        category: Page
+        show: True
+      - title: "Federated API Repository"
+        path: /tyk-governance/api-repository
+        category: Page
+        show: True
+      - title: "API Labeling and Categorization"
+        path: /tyk-governance/api-labeling
+        category: Page
+        show: True
+
   - title: "Developer Support"
     category: Label
     show: True
@@ -722,10 +864,6 @@ menu:
         path: /developer-support/deprecation
         category: Page
         show: True
-      - title: "Contributing"
-        path: /developer-support/contributing
-        category: Page
-        show: True
       - title: "Upgrading Guide"
         path: /developer-support/upgrading
         category: Page
@@ -734,6 +872,23 @@ menu:
         path: /developer-support/faq
         category: Page
         show: True
+      - title: "Docs Contribution"
+        path: /developer-support/contributing
+        category: Directory
+        show: True
+        menu:
+          - title: "UI Example: Pill Label shortcode"
+            path: /ui-examples/test-pill-label
+            category: Page
+            show: true
+          - title: "UI Example: Feature Cards shortcode"
+            path: /ui-examples/feature-cards
+            category: Page
+            show: true
+          - title: "UI Example: YouTube Video Embed shortcode"
+            path: /ui-examples/youtube-video-embed
+            category: Page
+            show: true
   - title: API Governance 
     category: Label
     show: False
@@ -744,3 +899,6 @@ menu:
     show: True
     tab_on_top: true
     path: http://tyk.io/docs/ai
+
+     
+
