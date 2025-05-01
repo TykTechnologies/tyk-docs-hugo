@@ -6,9 +6,10 @@ menu:
     category: Label
     show: True
   - title: "Overview"
-    path: /
+    path: /tyk-overview
     category: Label
     show: True
+    tab_on_top: true
     menu:
       - title: "Tyk Overview"
         path: /tyk-overview
@@ -47,6 +48,7 @@ menu:
     path: /getting-started
     category: Label
     show: True
+    tab_on_top: true
     menu:
       - title: "Overview"
         path: /getting-started
@@ -349,6 +351,8 @@ menu:
   - title: "Developer Portal"
     category: Label
     show: True
+    path: /portal/overview
+    tab_on_top: true
     menu:
       - title: "Overview"
         path: /portal/overview
@@ -730,3 +734,13 @@ menu:
         path: /developer-support/faq
         category: Page
         show: True
+  - title: API Governance 
+    category: Label
+    show: False
+    tab_on_top: true
+
+  - title: "AI Studio"
+    category: Label
+    show: True
+    tab_on_top: true
+    path: http://tyk.io/docs/ai

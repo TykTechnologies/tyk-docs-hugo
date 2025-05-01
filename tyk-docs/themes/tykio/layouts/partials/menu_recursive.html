@@ -6,12 +6,33 @@
 {{- $pagePath := replace $pagePath "/docs" "" -}}
 {{- $pagePath := replace $pagePath "/nightly" "" -}}
 {{- $pagePath := replace $pagePath "/" "" -}}
-
+{{- $parentActive := .parent_active | default false -}}
+{{- $isHome := eq $pagePath "" -}}
 
 <ul>
   {{- range .menu -}}
     {{- $is := false -}}
     {{- $has := false -}}
+    {{- $isActiveParent := false -}}
+
+    {{- if eq .category "Label" -}}
+      {{- if (isset . "menu") -}}
+        {{- range .menu -}}
+          {{- $path := replace .path "/" "" -}}
+          {{- if eq $path $pagePath -}}
+            {{- $isActiveParent = true -}}
+          {{- end -}}
+          {{- if (isset . "menu") -}}
+            {{- range .menu -}}
+              {{- $path := replace .path "/" "" -}}
+              {{- if eq $path $pagePath -}}
+                {{- $isActiveParent = true -}}
+              {{- end -}}
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
 
     {{- $path := replace .path "/" "" -}}
     {{- if eq $path $pagePath -}}
@@ -25,46 +46,6 @@
         {{- if eq $path $pagePath -}}
           {{- $has = true -}}
         {{- end -}}
-        {{- if (isset . "menu") -}}
-          {{- range .menu -}}
-            {{- $path := replace .path "/" "" -}}
-            {{- if eq $path $pagePath -}}
-              {{- $has = true -}}
-            {{- end -}}
-            {{- if (isset . "menu") -}}
-              {{- range .menu -}}
-                {{- $path := replace .path "/" "" -}}
-                {{- if eq $path $pagePath -}}
-                  {{- $has = true -}}
-                {{- end -}}
-                {{- if (isset . "menu") -}}
-                  {{- range .menu -}}
-                    {{- $path := replace .path "/" "" -}}
-                    {{- if eq $path $pagePath -}}
-                      {{- $has = true -}}
-                    {{- end -}}
-                    {{- if (isset . "menu") -}}
-                      {{- range .menu -}}
-                        {{- $path := replace .path "/" "" -}}
-                        {{- if eq $path $pagePath -}}
-                          {{- $has = true -}}
-                        {{- end -}}
-                        {{- if (isset . "menu") -}}
-                          {{- range .menu -}}
-                            {{- $path := replace .path "/" "" -}}
-                            {{- if eq $path $pagePath -}}
-                              {{- $has = true -}}
-                            {{- end -}}
-                          {{- end -}}
-                        {{- end -}}
-                      {{- end -}}
-                    {{- end -}}
-                  {{- end -}}
-                {{- end -}}
-              {{- end -}}
-            {{- end -}}
-          {{- end -}}
-        {{- end -}}
       {{- end -}}
     {{- end -}}
 
@@ -74,7 +55,7 @@
     {{ end }}
 
     {{- if and (isset . "menu") (ne .category "Label") -}}
-      {{ if or (.show) ($showEmptyPages) -}}
+      {{ if or $isActiveParent $parentActive -}}
         <li
           class="category-{{ .category }} {{ if $is }}active{{ end }} {{ if or $is $has (eq .category `Label`) }}
             st-open
@@ -89,19 +70,19 @@
           {{- else -}}
             <a class="{{ if not .show }}paint-red{{ end }}">{{- .title -}}</a>
           {{- end -}}
-          {{- partial "menu_recursive.html" (dict "menu" .menu "page" $page "site" $site) -}}
+          {{- partial "menu_recursive.html" (dict "menu" .menu "page" $page "site" $site "parent_active" (or $isActiveParent $parentActive)) -}}
         </li>
       {{ end }}
     {{- else if and (.show) (eq .category "Label") -}}
-      {{- if eq .title "Home" -}}
-        <a href="{{ "" | relURL }}" style="font-size: 15px;">{{ .title }}</a>
-      {{- else -}}
+      {{- if or $isActiveParent (and $isHome (eq .title "Home")) -}}
         <hr />
         <h6 style="font-size: 15px;">{{ .title }}</h6>
+        {{- if $isActiveParent -}}
+          {{- partial "menu_recursive.html" (dict "menu" .menu "page" $page "site" $site "parent_active" true) -}}
+        {{- end -}}
       {{- end -}}
-      {{- partial "menu_recursive.html" (dict "menu" .menu "page" $page "site" $site) -}}
     {{- else -}}
-      {{ if or (.show) ($showEmptyPages) -}}
+      {{ if or $isActiveParent $parentActive -}}
         <li class="st-file {{ if $is }}active{{ end }} {{ if not .show }}paint-red{{ end }}">
           {{- $prefixPath := strings.TrimLeft "/" .path -}}
           {{- $prefixPath := strings.TrimRight "/" .path -}}
