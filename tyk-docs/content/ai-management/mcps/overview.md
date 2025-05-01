@@ -45,8 +45,8 @@ These features enable enterprises to scale AI integrations securely while ensuri
 
 Tyk offers several ready-to-use MCP integrations:
 
-- **[API to MCP]({{< ref "ai-management/tyk-mcps/api-to-mcp" >}})** – Convert existing APIs (via OpenAPI/Swagger specs) into MCP-accessible tools.
-- **[Dashboard API to MCP]({{< ref "ai-management/tyk-mcps/dashboard-api-to-mcp" >}})** – Expose the Tyk Dashboard API for management and monitoring.
-- **[Tyk Docs MCP]({{< ref "ai-management/tyk-mcps/tyk-docs-mcp" >}})** – Provide AI access to searchable Tyk documentation.
+- **[API to MCP]({{< ref "ai-management/mcps/api-to-mcp" >}})** – Convert existing APIs (via OpenAPI/Swagger specs) into MCP-accessible tools.
+- **[Dashboard API to MCP]({{< ref "ai-management/mcps/dashboard-api-to-mcp" >}})** – Expose the Tyk Dashboard API for management and monitoring.
+- **[Tyk Docs MCP]({{< ref "ai-management/mcps/tyk-docs-mcp" >}})** – Provide AI access to searchable Tyk documentation.
 
 For more information on implementing MCPs, [contact the Tyk team](https://tyk.io/contact/) do discuss your specific use cases.
