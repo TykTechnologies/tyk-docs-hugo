@@ -1518,7 +1518,7 @@ There are no deprecations in this release.
 
 #### Upgrade instructions {#upgrade-5.3.11}
 
-If you are upgrading to 5.8.1, please follow the detailed [upgrade instructions](#upgrading-tyk). 
+If you are upgrading to 5.3.11, please follow the detailed [upgrade instructions](#upgrading-tyk). 
 
 #### Downloads
 
