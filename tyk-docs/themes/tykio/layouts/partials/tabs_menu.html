@@ -12,8 +12,7 @@
         {{- $path_not_empty := false -}}
         {{- $path := replace .path "/" "" -}}
         {{- $has_active_child := false -}}
-        
-        {{- /* Check if current page matches tab path */ -}}
+
         {{- if eq $path $pagePath -}}
           {{- $selected = true -}}
           {{- if or (ne $path "") $is_home -}}
@@ -21,7 +20,6 @@
           {{- end -}}
         {{- end -}}
 
-        {{- /* Check all descendants recursively */ -}}
         {{- if (isset . "menu") -}}
           {{- range .menu -}}
             {{- $childPath := replace .path "/" "" -}}
