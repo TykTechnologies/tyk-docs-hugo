@@ -13,6 +13,7 @@
         {{- $path := replace .path "/" "" -}}
         {{- $has_active_child := false -}}
         
+        {{- /* Check if current page matches tab path */ -}}
         {{- if eq $path $pagePath -}}
           {{- $selected = true -}}
           {{- if or (ne $path "") $is_home -}}
@@ -20,14 +21,27 @@
           {{- end -}}
         {{- end -}}
 
+        {{- /* Check all descendants recursively */ -}}
         {{- if (isset . "menu") -}}
           {{- range .menu -}}
-            {{- $path := replace .path "/" "" -}}
-            {{- if eq $path $pagePath -}}
+            {{- $childPath := replace .path "/" "" -}}
+            {{- if eq $childPath $pagePath -}}
               {{- $selected = true -}}
               {{- $has_active_child = true -}}
-              {{- if or (ne $path "") $is_home -}}
+              {{- if or (ne $childPath "") $is_home -}}
                 {{- $path_not_empty = true -}}
+              {{- end -}}
+            {{- end -}}
+            {{- if (isset . "menu") -}}
+              {{- range .menu -}}
+                {{- $grandChildPath := replace .path "/" "" -}}
+                {{- if eq $grandChildPath $pagePath -}}
+                  {{- $selected = true -}}
+                  {{- $has_active_child = true -}}
+                  {{- if or (ne $grandChildPath "") $is_home -}}
+                    {{- $path_not_empty = true -}}
+                  {{- end -}}
+                {{- end -}}
               {{- end -}}
             {{- end -}}
           {{- end -}}
