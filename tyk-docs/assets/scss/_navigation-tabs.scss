@@ -1,11 +1,18 @@
 .tabs-menu {
-  box-shadow: 0 4px 0px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid #e3ceff;
+  height: 45px;
 }
 
 .tabs-wrapper {
   position: relative;
   width: 100%;
-  margin: 20px 0;
+  margin-top: 20px;
   overflow: hidden;
   background: #fff;
 }
@@ -15,11 +22,11 @@
   flex-wrap: nowrap;
   overflow-x: auto;
   gap: 20px;
-  padding: 8px 16px;
   background: #fff;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  padding-left: 25px;
 }
 
 .tabs-container::-webkit-scrollbar {
@@ -31,7 +38,6 @@
 }
 
 .tab-link {
-  padding: 8px 16px;
   color: #374151;
   text-decoration: none;
   border-radius: 4px;
@@ -43,10 +49,6 @@
 }
 
 @media(max-width: 768px) {
-  .tabs-container {
-    padding: 10px 25px 20px 20px;
-  }
-
   .tab-item {
     font-size: 13px;
   }
@@ -55,12 +57,12 @@
     padding: 8px 0;
   }
 
-  .tabs-wrapper .nav_sub_active {
-    border-bottom: 2px solid #8438fa;
+  .tabs-menu {
+    height: 42px;
   }
 
-  .tabs-wrapper {
-    margin: 0;
+  .tabs-wrapper .nav_sub_active {
+    border-bottom: 2px solid #8438fa;
   }
 }
 
@@ -93,4 +95,8 @@
     display: flex;
     flex-direction: column;
   }
+}
+
+.page-content, .section-page {
+  padding-top: 35px;
 }
