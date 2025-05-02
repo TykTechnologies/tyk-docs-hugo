@@ -1223,7 +1223,7 @@ spec:
 
 #### Auth Token (Bearer Token)
 
-This setup requires a [bearer token]({{< ref "api-management/client-authentication#use-auth-tokens" >}}) for access.
+This setup requires a [bearer token]({{< ref "api-management/authentication/bearer-token" >}}) for access.
 
 In the below example, the authentication token is set by default to the `Authorization` header of the request. You can customize this behavior by configuring the following fields:
 
@@ -1232,7 +1232,7 @@ In the below example, the authentication token is set by default to the `Authori
 - `use_param`: Set to true to allow the token to be passed as a query parameter.
 - `param_name`: Specify the parameter name if use_param is enabled.
 - `use_certificate`: Enable client certificate. This allows you to create dynamic keys based on certificates.
-- `validate_signature`: Enable [signature validation]({{< ref "api-management/client-authentication#auth-token-with-signature" >}}).
+- `validate_signature`: Enable [signature validation]({{< ref "api-management/authentication/bearer-token#auth-token-with-signature" >}}).
 
 ```yaml {hl_lines=["13-35"],linenos=false}
 apiVersion: tyk.tyk.io/v1alpha1

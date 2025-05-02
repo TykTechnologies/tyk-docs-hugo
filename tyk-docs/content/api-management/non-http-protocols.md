@@ -54,7 +54,7 @@ After setting your Tyk configuration, all you need to do is to send credentials 
 `Basic base64Encode(username:password)`
 
 ### Token Based Authentication
-Tyk supports Token Based Authentication in gRPC. See [Bearer Tokens]({{< ref "/api-management/client-authentication#use-auth-tokens" >}}) to configure Token Based Authentication in Tyk. 
+Tyk supports Token Based Authentication in gRPC. See [Bearer Tokens]({{< ref "api-management/authentication/bearer-token" >}}) to configure Token Based Authentication in Tyk. 
 
 After setting your Tyk configuration, all you need to do is to send a token in an `Authorization` header from your gRPC client.
 

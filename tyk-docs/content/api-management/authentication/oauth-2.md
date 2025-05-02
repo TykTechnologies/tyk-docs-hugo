@@ -31,7 +31,7 @@ Tyk offers some great features when used as the *authorization server* including
 
 - **Fine-Grained Access Control:** Manage access using Tyk's built-in access controls, including versioning and named API IDs
 - **Usage Analytics:** Leverage Tyk's analytics capabilities to monitor OAuth 2.0 usage effectively, grouping data by Client Id
-- **Multi-API Access**: Enable access to multiple APIs using a single OAuth token; configure one API for OAuth 2.0 token issuance and the other APIs with the [Auth Token](#use-auth-tokens) method, linking them through a common policy
+- **Multi-API Access**: Enable access to multiple APIs using a single OAuth token; configure one API for OAuth 2.0 token issuance and the other APIs with the [Auth Token]({{< ref "api-management/authentication/bearer-token" >}}) method, linking them through a common policy
 
 *Tyk as OAuth authorization server* supports the following *grant types*:
 
@@ -162,7 +162,7 @@ When using Tyk as the Authorization Server with the Authorization Code grant, th
 
 (9) The *client* exchanges the *Authorization Code* for an [Access Token](#exchange-the-authorization-code-for-an-access-token) from the *Auth Server*
 
-(10) The *client* uses the *Access Token* to authenticate with the protected API using the [Auth Token](#use-auth-tokens) method
+(10) The *client* uses the *Access Token* to authenticate with the protected API using the [Auth Token]({{< ref "api-management/authentication/bearer-token" >}}) method
 
 ### Integration with Identity Server
 
@@ -259,7 +259,7 @@ This command, issued by the *client* is the final step to obtain an access token
 The response payload contains:
 - `access_token`: the token which can be used by the *client* to access the protected API
 - `expires_in`: the expiration date/time of the access token
-- `token_type`: set to `bearer` indicating that the access token should be provided in an [Auth Token](#use-auth-tokens) request to the protected API
+- `token_type`: set to `bearer` indicating that the access token should be provided in an [Auth Token]({{< ref "api-management/authentication/bearer-token" >}}) request to the protected API
 - `refresh_token`: [optional] a special token that can be used in the [Refresh Token](#using-refresh-tokens) flow
 
 For example:
@@ -311,7 +311,7 @@ This command, issued by the *client* will obtain an access token for the `/my-ap
 The response payload contains:
 - `access_token`: the token which can be used by the *client* to access the protected API
 - `expires_in`: the expiration date/time of the access token
-- `token_type`: set to `bearer` indicating that the access token should be provided in an [Auth Token](#use-auth-tokens) request to the protected API
+- `token_type`: set to `bearer` indicating that the access token should be provided in an [Auth Token]({{< ref "api-management/authentication/bearer-token" >}}) request to the protected API
 
 For example:
 
@@ -368,7 +368,7 @@ This command, issued by the *client* will obtain an access token for the `/my-ap
 The response payload contains:
 - `access_token`: the token which can be used by the *client* to access the protected API
 - `expires_in`: the expiration date/time of the access token
-- `token_type`: set to `bearer` indicating that the access token should be provided in an [Auth Token](#use-auth-tokens) request to the protected API
+- `token_type`: set to `bearer` indicating that the access token should be provided in an [Auth Token]({{< ref "api-management/authentication/bearer-token" >}}) request to the protected API
 - `refresh_token`: [optional] a special token that can be used in the [Refresh Token](#using-refresh-tokens) flow
 
 For example:
@@ -572,7 +572,7 @@ This command, issued by the *client* will obtain a new access token for the `/my
 The response payload contains:
 - `access_token`: a new *access token* which can be used by the *client* to access the protected API
 - `expires_in`: the expiration date/time of the access token
-- `token_type`: set to `bearer` indicating that the access token should be provided in an [Auth Token](#use-auth-tokens) request to the protected API
+- `token_type`: set to `bearer` indicating that the access token should be provided in an [Auth Token]({{< ref "api-management/authentication/bearer-token" >}}) request to the protected API
 - `refresh_token`: a new *refresh token* that can be used later to refresh the new *access token*
 
 For example:

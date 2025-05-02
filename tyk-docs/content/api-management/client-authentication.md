@@ -82,7 +82,7 @@ Securely transmit information between parties.
 Secure APIs with username and password credentials.
 {{< /badge >}}
 
-{{< badge title="Auth Tokens" href="api-management/client-authentication/#use-auth-tokens" >}}
+{{< badge title="Auth Tokens" href="api-management/authentication/bearer-token" >}}
 Implement token-based authentication for API access.
 {{< /badge >}}
 
@@ -436,7 +436,7 @@ Tyk allows for custom authentication logic using Python and JavaScript Virtual M
 
 Open or keyless authentication allows access to APIs without any authentication. This method is suitable for public APIs where access control is not required.
 
-Tyk OAS APIs are inherently "open" unless authentication is configured, however the older Tyk Classic API applies [auth token](#use-auth-tokens) protection by default.
+Tyk OAS APIs are inherently "open" unless authentication is configured, however the older Tyk Classic API applies [auth token]({{< ref "api-management/authentication/bearer-token" >}}) protection by default.
 
 You can disable authentication for a Tyk Classic API by setting the `use_keyless` flag in the API definition.
 

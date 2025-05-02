@@ -493,7 +493,7 @@ Token-based authentication (also referred to as Auth Token) is a method whereby 
 
 The server determines how the key should be provided - typically in a request header, cookie or query parameter.
 
-Tyk supports [Auth Token]({{< ref "api-management/client-authentication#use-auth-tokens" >}}) as a method for authenticating **clients** with the **Gateway** - you can use Tyk Gateway or Dashboard to generate access *keys* for an Auth Token protected API as explained in the [documentation]({{< ref "api-management/policies" >}}). The client must then provide the *key* in the appropriate parameter for each request.
+Tyk supports [Auth Token]({{< ref "api-management/authentication/bearer-token" >}}) as a method for authenticating **clients** with the **Gateway** - you can use Tyk Gateway or Dashboard to generate access *keys* for an Auth Token protected API as explained in the [documentation]({{< ref "api-management/policies" >}}). The client must then provide the *key* in the appropriate parameter for each request.
 
 If your **upstream service** is protected using Auth Token then similarly, Tyk will need to provide a token, issued by the upstream, in the request.
 

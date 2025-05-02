@@ -96,7 +96,7 @@ Using the Tyk Dashboard, you can configure the Auth Token authentication method 
 - select **Strip authorization data** to remove the auth token locations from the request prior to proxying to the upstream, as described [here]({{< ref "api-management/client-authentication#managing-authorization-data" >}})
 - optionally select **Enable client certificate** to enable [Dynamic mTLS]({{< ref "api-management/client-authentication#dynamic-mtls" >}}) for the API, so the client can provide a certificate in place of the token
 
-Note that the [auth token + signature]({{< ref "api-management/client-authentication#auth-token-with-signature" >}}) option is not available in the Tyk Dashboard API Designer.
+Note that the [auth token + signature]({{< ref "api-management/authentication/bearer-token#auth-token-with-signature" >}}) option is not available in the Tyk Dashboard API Designer.
 
 
 ## Using Tyk Classic APIs
