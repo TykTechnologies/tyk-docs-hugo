@@ -47,14 +47,14 @@ Tyk supports all kinds of gRPC streaming (client streaming, server streaming and
 Tyk supports Mutual Authentication in gRPC. See [Mutual TLS]({{< ref "/api-management/client-authentication#use-mutual-tls" >}}) to configure Mutual Authentication in Tyk. 
 
 ### Basic Authentication
-Tyk supports Basic Authentication in gRPC. See [Basic Authentication]({{< ref "/api-management/client-authentication#use-basic-authentication" >}}) to configure Basic Authentication in Tyk. 
+Tyk supports Basic Authentication in gRPC. See [Basic Authentication]({{< ref "api-management/authentication/basic-authentication" >}}) to configure Basic Authentication in Tyk. 
 
 After setting your Tyk configuration, all you need to do is to send credentials with the correct base64 format in an `Authorization` header from your gRPC client. 
 
 `Basic base64Encode(username:password)`
 
 ### Token Based Authentication
-Tyk supports Token Based Authentication in gRPC. See [Bearer Tokens]({{< ref "/api-management/client-authentication#use-auth-tokens" >}}) to configure Token Based Authentication in Tyk. 
+Tyk supports Token Based Authentication in gRPC. See [Bearer Tokens]({{< ref "api-management/authentication/bearer-token" >}}) to configure Token Based Authentication in Tyk. 
 
 After setting your Tyk configuration, all you need to do is to send a token in an `Authorization` header from your gRPC client.
 
