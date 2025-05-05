@@ -70,7 +70,7 @@ Use Ctrl+F or the sidebar to find specific topics, for example “JWT” for JSO
 You can also use the links below to jump directly to the appropriate sections to learn how to secure your APIs using Tyk.
 
 {{< grid >}}
-{{< badge title="OAuth 2.0" href="api-management/client-authentication/#use-tyk-as-an-oauth-20-authorization-server" >}}
+{{< badge title="OAuth 2.0" href="api-management/authentication/oauth-2" >}}
 Delegate authentication using one of the most widely used open standard protocols
 {{< /badge >}}
 
@@ -78,7 +78,7 @@ Delegate authentication using one of the most widely used open standard protocol
 Securely transmit information between parties.
 {{< /badge >}}
 
-{{< badge title="Basic Auth" href="api-management/client-authentication/#use-basic-authentication" >}}
+{{< badge title="Basic Auth" href="api-management/authentication/basic-authentication" >}}
 Secure APIs with username and password credentials.
 {{< /badge >}}
 
@@ -445,7 +445,7 @@ You can disable authentication for a Tyk Classic API by setting the `use_keyless
 
 {{< note success >}}
 **Note**  
-Tyk has previously offered two types of OAuth authentication flow; [Tyk as the authorization server](#use-tyk-as-an-oauth-20-authorization-server) and Tyk connecting to an external *auth server* via a dedicated *External OAuth* option. The dedicated external *auth server* option was deprecated in Tyk 5.7.0.
+Tyk has previously offered two types of OAuth authentication flow; [Tyk as the authorization server]() and Tyk connecting to an external *auth server* via a dedicated *External OAuth* option. The dedicated external *auth server* option was deprecated in Tyk 5.7.0.
 <br>
 
 For third-party OAuth integration we recommend using the JSON Web Token (JWT) middleware which is described [above]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}), which offers the same functionality with a more streamlined setup and reduced risk of misconfiguration.

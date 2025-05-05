@@ -637,7 +637,7 @@ An API request made using Basic Authentication will have an `Authorization` head
 
 The `<credentials>` are a base64 encoded concatenation of a client username and password, joined by a single colon `:`.
 
-Tyk supports Basic Authentication as a method for authenticating **clients** with the **Gateway** - you can use Tyk Gateway or Dashboard to create Basic Auth users, as explained in the [documentation]({{< ref "api-management/client-authentication#registering-basic-authentication-user-credentials-with-tyk" >}}).
+Tyk supports Basic Authentication as a method for authenticating **clients** with the **Gateway** - you can use Tyk Gateway or Dashboard to create Basic Auth users, as explained in the [documentation]({{< ref "api-management/authentication/basic-authentication#registering-basic-authentication-user-credentials-with-tyk" >}}).
 
 If your **upstream service** is protected using Basic Authentication then similarly, Tyk will need to provide user credentials, registered with the upstream, in the request.
 
@@ -752,7 +752,7 @@ The Authentication Server (auth server) has the concept of an OAuth Client - thi
 
 The auth server is often managed by a trusted third party Identity Provider (IdP) such as Okta or Auth0.
 
-Tyk supports OAuth 2.0 as a method for authenticating **clients** with the **Gateway** - you can use Tyk's own auth server functionality via the [Tyk OAuth 2.0]({{< ref "api-management/client-authentication#use-tyk-as-an-oauth-20-authorization-server" >}}) auth method or obtain the access token via a third party auth server and use the [JWT Auth]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) method.
+Tyk supports OAuth 2.0 as a method for authenticating **clients** with the **Gateway** - you can use Tyk's own auth server functionality via the [Tyk OAuth 2.0]({{< ref "api-management/authentication/oauth-2" >}}) auth method or obtain the access token via a third party auth server and use the [JWT Auth]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) method.
 
 If your **upstream service** is protected using OAuth 2.0 then similarly, Tyk will need to obtain a valid access token to provide in the request to the upstream.
 

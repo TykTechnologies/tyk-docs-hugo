@@ -35,7 +35,7 @@ Tyk offers some great features when used as the *authorization server* including
 
 *Tyk as OAuth authorization server* supports the following *grant types*:
 
-- [Authorization Code Grant](#using-the-authorization-code-grant): the *client* is redirected to an *identity server* where the *user* must approve access before an *access token* will be issued
+- [Authorization Code Grant]({{< ref "#using-the-authorization-code-grant" >}}): the *client* is redirected to an *identity server* where the *user* must approve access before an *access token* will be issued
 - [Client Credentials Grant](#using-the-client-credentials-grant): used for machine-to-machine access, authentication is performed using only the *client Id* and *client secret*
 - [Resource Owner Password Grant](#using-the-resource-owner-password-grant) (a.k.a. Password Grant): only for use where the *client* is highly trusted, as the *client* must provide the *Resource Owner*'s own credentials during authentication
 
@@ -233,7 +233,7 @@ If the *client Id* (`my-client-id`) is valid and `redirect_uri` matches the one 
 
 Once the *client* has the *authorization code*, it can exchange this for an *access token*, which is used to access the protected API. The token exchange endpoint for an API proxy on Tyk is a special endpoint automatically added to the proxy definition, accessible from `POST /<listen-path>/oauth/token`.
 
-This endpoint is protected using [Basic Authentication](#use-basic-authentication)) where the username is the *client Id* and the password is the *client secret*.
+This endpoint is protected using [Basic Authentication]({{< ref "api-management/authentication/basic-authentication" >}}) where the username is the *client Id* and the password is the *client secret*.
 
 The following parameters are required in the request:
 
@@ -276,7 +276,7 @@ For example:
 
 
 ## Using the Client Credentials Grant
-When using Tyk as the *authorization server* with the Client Credentials grant, the *client* accesses resources on behalf of itself rather than on behalf of a *user*, so there is no user login/authorization step (as seen with [Authorization Code grant](#using-the-authorization-code-grant)). This flow is ideal for server-to-server interactions.
+When using Tyk as the *authorization server* with the Client Credentials grant, the *client* accesses resources on behalf of itself rather than on behalf of a *user*, so there is no user login/authorization step (as seen with [Authorization Code grant]({{< ref "#using-the-authorization-code-grant" >}})). This flow is ideal for server-to-server interactions.
 
 After [registering the Client App](#client-app-registration), the *client* simply requests an access token directly from the authorization server:
 
@@ -332,7 +332,7 @@ Note that Client Credentials grant does not produce a *refresh token*.
 
 
 ## Using the Resource Owner Password Grant
-When using Tyk as the *authorization server* with the Resource Owner Password grant, the *client* provides the *user's* credentials when requesting an access token. There is no user login/authorization step (as seen with [Authorization Code grant](#using-the-authorization-code-grant)). **This flow is not recommended and is provided only for integration with legacy clients.**
+When using Tyk as the *authorization server* with the Resource Owner Password grant, the *client* provides the *user's* credentials when requesting an access token. There is no user login/authorization step (as seen with [Authorization Code grant]({{< ref "#using-the-authorization-code-grant" >}})). **This flow is not recommended and is provided only for integration with legacy clients.**
 
 After [registering the Client App](#client-app-registration), the *client* simply requests an access token directly from the authorization server:
 
@@ -342,7 +342,7 @@ After [registering the Client App](#client-app-registration), the *client* simpl
 
 The *client* obtains an access token for an API proxy on Tyk from a special endpoint automatically added to the proxy definition, accessible from `POST /<listen-path>/oauth/token`.
 
-This endpoint is protected using [Basic Authentication](#use-basic-authentication) where the username is the client Id and the password is the client secret.
+This endpoint is protected using [Basic Authentication]({{< ref "api-management/authentication/basic-authentication" >}}) where the username is the client Id and the password is the client secret.
 
 The following parameters are required in the request:
 
@@ -385,7 +385,7 @@ For example:
 
 ## Configuring your API Proxy
 
-As explained [previously](#how-does-tyk-implement-authentication-and-authorization), the AuthN/Z methods to be used to secure an API proxy are configured in the API definition. This permits granular application of the most appropriate method to each API deployed on Tyk Gateway.
+As explained [previously]({{< ref "api-management/client-authentication#how-does-tyk-implement-authentication-and-authorization" >}}), the AuthN/Z methods to be used to secure an API proxy are configured in the API definition. This permits granular application of the most appropriate method to each API deployed on Tyk Gateway.
 
 When using Tyk as the Authorization Server, the API configuration can be applied using the Tyk Dashboard's API Designer UI, or by direct modification of the API definition. We will provide examples here when using Tyk OAS APIs. If you are using Tyk Classic APIs, the process is very similar, though there are differences in the location and specific labelling of options.
 
@@ -403,7 +403,7 @@ When using Tyk as the Authorization Server, the API configuration can be applied
 
 ### Using the API Definition
 
-The OpenAPI Specification indicates the use of [OAuth 2.0 authentication](https://swagger.io/docs/specification/v3_0/authentication/oauth2/) in the `components.securitySchemes` object using the `type: oauth2`. Tyk supports the [authorizationCode]({{< ref "api-management/client-authentication#using-the-authorization-code-grant" >}}), [clientCredentials]({{< ref "api-management/client-authentication#using-the-client-credentials-grant" >}}) and [password]({{< ref "api-management/client-authentication#using-the-resource-owner-password-grant" >}}) flows and implements Relative Endpoint URLs for the `authorizationUrl`, `tokenUrl` and `refreshUrl`.
+The OpenAPI Specification indicates the use of [OAuth 2.0 authentication](https://swagger.io/docs/specification/v3_0/authentication/oauth2/) in the `components.securitySchemes` object using the `type: oauth2`. Tyk supports the [authorizationCode]({{< ref "api-management/authentication/oauth-2#using-the-authorization-code-grant" >}}), [clientCredentials]({{< ref "#using-the-client-credentials-grant" >}}) and [password]({{< ref "#using-the-resource-owner-password-grant" >}}) flows and implements Relative Endpoint URLs for the `authorizationUrl`, `tokenUrl` and `refreshUrl`.
 
 ```yaml
 components:
@@ -653,4 +653,4 @@ Remember to select **Save API** to apply these settings to your API.
 
 #### Configuring Notifications in the Tyk OAS API Definition
 
-The example given [above]({{< ref "api-management/client-authentication#using-the-api-definition" >}}) includes the configuration necessary to issue notifications for token issuance (see lines 48-51 in the example).
+The example given [above]({{< ref "#using-the-api-definition" >}}) includes the configuration necessary to issue notifications for token issuance (see lines 48-51 in the example).

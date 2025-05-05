@@ -138,8 +138,8 @@ Using the Tyk Dashboard, you can configure the Basic Authentication method from 
 - select the location(s) where Tyk should look for the token
 - provide the key name for each location (we prefill the default `Authorization` for the *header* location, but you can replace this if required)
 - optionally select [strip authorization data]({{< ref "api-management/client-authentication#managing-authorization-data" >}}) to remove the auth token locations from the request prior to proxying to the upstream
-- optionally configure the [basic authentication cache]({{< ref "api-management/client-authentication#caching-user-credentials" >}})
-- optionally configure [extraction of credentials from the request body]({{< ref "api-management/client-authentication#extract-credentials-from-the-request-payload" >}})
+- optionally configure the [basic authentication cache]({{< ref "api-management/authentication/basic-authentication#caching-user-credentials" >}})
+- optionally configure [extraction of credentials from the request body]({{< ref "#extract-credentials-from-the-request-payload" >}})
 
 ## Registering Basic Authentication User Credentials with Tyk
 
@@ -147,7 +147,7 @@ When using Basic Authentication, the API key used to access the API is not gener
 
 The way that this is implemented is through the creation of a key that grants access to the API (as you would for an API protected by [auth token]({{< ref "api-management/authentication/bearer-token" >}})), however for this key you will provide a username and password.
 
-When calling the API, users would never use the key itself as a token, instead their client must provide the Basic Auth credentials formed from the registered username and password, as [described previously]({{< ref "api-management/client-authentication#how-does-basic-authentication-work" >}}).
+When calling the API, users would never use the key itself as a token, instead their client must provide the Basic Auth credentials formed from the registered username and password, as [described previously]({{< ref "#how-does-basic-authentication-work" >}}).
 
 
 ### Using Tyk Dashboard UI

@@ -1365,7 +1365,7 @@ curl http://localhost:8080/httpbin-jwt1/get -H 'Authorization: Bearer eyJhbGciOi
 
 #### Basic Authentication
 
-This configuration uses [Basic Authentication]({{< ref "api-management/client-authentication#use-basic-authentication" >}}), requiring a username and password for access.
+This configuration uses [Basic Authentication]({{< ref "api-management/authentication/basic-authentication" >}}), requiring a username and password for access.
 
 ```yaml {hl_lines=["13-13"],linenos=false}
 apiVersion: tyk.tyk.io/v1alpha1
